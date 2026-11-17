@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Sử dụng khóa này để xác thực các yêu cầu API. Tạo lại sẽ vô hiệu hóa khóa hiện tại.",
   "User Config": "Cấu hình người dùng",
   "Version %s is available. Please upgrade your installation.": "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn.",
-  "View All": "Xem tất cả",
   "Yellow": "Vàng",
   "%d repeat event created successfully.": {
     "other": "%d sự kiện lặp lại đã được tạo thành công."
@@ -4928,7 +4927,6 @@
   "Qualify them for a position.": "Cấp điều kiện cho họ ở một vị trí.",
   "Reactivate": "Kích hoạt lại",
   "Read the theme authoring guide": "Đọc hướng dẫn tạo giao diện",
-  "Recent Emails": "Email gần đây",
   "Recipient": "Người nhận",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Số người nhận (%d) vượt quá mức tối đa cho phép mỗi lần gửi (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Người nhận phải được cung cấp dưới dạng personId và familyId, không phải địa chỉ email",

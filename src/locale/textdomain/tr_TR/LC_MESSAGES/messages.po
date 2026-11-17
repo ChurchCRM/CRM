@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin."
 
 #: 
-msgid "View All"
-msgstr "Tümünü Görüntüle"
-
-#: 
 msgid "Yellow"
 msgstr "Sarı"
 
@@ -20330,10 +20326,6 @@ msgstr "Yeniden etkinleştir"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Tema yazım kılavuzunu okuyun"
-
-#: 
-msgid "Recent Emails"
-msgstr "Son E-postalar"
 
 #: 
 msgid "Recipient"

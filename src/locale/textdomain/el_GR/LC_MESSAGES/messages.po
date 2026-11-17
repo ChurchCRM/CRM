@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Η έκδοση %s είναι διαθέσιμη. Παρακαλώ αναβαθμίστε την εγκατάστασή σας."
 
 #: 
-msgid "View All"
-msgstr "Προβολή Όλων"
-
-#: 
 msgid "Yellow"
 msgstr "Κίτρινο"
 
@@ -20330,10 +20326,6 @@ msgstr "Επανενεργοποίηση"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Διαβάστε τον οδηγό δημιουργίας θεμάτων"
-
-#: 
-msgid "Recent Emails"
-msgstr "Πρόσφατα email"
 
 #: 
 msgid "Recipient"

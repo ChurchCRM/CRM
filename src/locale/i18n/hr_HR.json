@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Koristite ovaj ključ za autentifikaciju API zahtjeva. Regeneriranje će poništiti trenutni ključ.",
   "User Config": "Konfiguracija korisnika",
   "Version %s is available. Please upgrade your installation.": "Verzija %s je dostupna. Molim nadogradite vašu instalaciju.",
-  "View All": "Prikaži sve",
   "Yellow": "Žuta",
   "%d repeat event created successfully.": {
     "one": "%d ponavljajući događaj uspješno kreiran.",
@@ -4976,7 +4975,6 @@
   "Qualify them for a position.": "Kvalificiraj ga za poziciju.",
   "Reactivate": "Ponovno aktiviraj",
   "Read the theme authoring guide": "Pročitajte vodič za izradu tema",
-  "Recent Emails": "Nedavna e-pošta",
   "Recipient": "Primatelj",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Broj primatelja (%d) premašuje najveći dopušteni broj po slanju (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Primatelji moraju biti navedeni kao personId i familyId, a ne kao adrese e-pošte",

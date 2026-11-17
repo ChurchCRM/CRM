@@ -2661,7 +2661,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Použite tento kľúč na autentifikáciu požiadaviek API. Regenerácia zneplatní aktuálny kľúč.",
   "User Config": "Konfigurácia používateľa",
   "Version %s is available. Please upgrade your installation.": "Verzia %s je dostupná. Upgradujte vašu inštaláciu.",
-  "View All": "Zobraziť všetko",
   "Yellow": "Žltá",
   "%d repeat event created successfully.": {
     "one": "%d opakovaná udalosť bola úspešne vytvorená.",
@@ -5000,7 +4999,6 @@
   "Qualify them for a position.": "Kvalifikovať ho na pozíciu.",
   "Reactivate": "Znova aktivovať",
   "Read the theme authoring guide": "Prečítajte si príručku k tvorbe tém",
-  "Recent Emails": "Nedávne e-maily",
   "Recipient": "Príjemca",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Počet príjemcov (%d) prekračuje maximum povolené na jedno odoslanie (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Príjemcovia musia byť zadaní ako personId a familyId, nie ako e-mailové adresy",

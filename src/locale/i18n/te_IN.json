@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API అభ్యర్థనలను ప్రమాణీకరించడానికి ఈ కీని ఉపయోగించండి. పునర్జనించడం ప్రస్తుత కీని చెల్లకుండా చేస్తుంది.",
   "User Config": "వినియోగదారు కాన్ఫిగ్",
   "Version %s is available. Please upgrade your installation.": "వెర్షన్ %s అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి.",
-  "View All": "అన్నీ చూడండి",
   "Yellow": "పసుపు రంగు",
   "%d repeat event created successfully.": {
     "one": "%d పునరావృత కార్యక్రమం విజయవంతంగా సృష్టించబడింది.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "వారిని ఒక స్థానానికి అర్హులుగా చేయండి.",
   "Reactivate": "మళ్ళీ క్రియాశీలం చేయండి",
   "Read the theme authoring guide": "థీమ్ రచన మార్గదర్శిని చదవండి",
-  "Recent Emails": "ఇటీవలి ఇమెయిల్‌లు",
   "Recipient": "గ్రహీత",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "గ్రహీతల సంఖ్య (%d) ఒక్క పంపకానికి అనుమతించిన గరిష్టాన్ని (%d) మించిపోయింది",
   "Recipients must be given as personIds and familyIds, not as email addresses": "గ్రహీతలను ఇమెయిల్ చిరునామాలుగా కాకుండా personIds మరియు familyIds గా ఇవ్వాలి",

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Käytä tätä avainta API-pyyntöjen todentamiseen. Uudelleenluominen mitätöi nykyisen avaimen.",
   "User Config": "Käyttäjän asetukset",
   "Version %s is available. Please upgrade your installation.": "Versio %s on saatavilla. Päivitä asennuksesi.",
-  "View All": "Näytä kaikki",
   "Yellow": "Keltainen",
   "%d repeat event created successfully.": {
     "one": "%d toistuva tapahtuma luotu onnistuneesti.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Kelpuuta heidät tehtävään.",
   "Reactivate": "Ota uudelleen käyttöön",
   "Read the theme authoring guide": "Lue teemojen laatimisopas",
-  "Recent Emails": "Viimeisimmät sähköpostit",
   "Recipient": "Vastaanottaja",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Vastaanottajien määrä (%d) ylittää yhtä lähetystä kohden sallitun enimmäismäärän (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Vastaanottajat on annettava personId- ja familyId-tunnuksina, ei sähköpostiosoitteina",

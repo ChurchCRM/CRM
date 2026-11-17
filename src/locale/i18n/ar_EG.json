@@ -2679,7 +2679,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "استخدم هذا المفتاح للمصادقة على طلبات واجهة برمجة التطبيقات. ستؤدي إعادة التوليد إلى إبطال المفتاح الحالي.",
   "User Config": "إعدادات المستخدم",
   "Version %s is available. Please upgrade your installation.": "الإصدار %s متاح. يُرجى تحديث التثبيت.",
-  "View All": "عرض الكل",
   "Yellow": "أصفر",
   "%d repeat event created successfully.": {
     "zero": "لم يتم إنشاء أي حدث متكرر.",
@@ -5048,7 +5047,6 @@
   "Qualify them for a position.": "أهّله لمهمة.",
   "Reactivate": "إعادة التفعيل",
   "Read the theme authoring guide": "اقرأ دليل تأليف السمات",
-  "Recent Emails": "الرسائل الأخيرة",
   "Recipient": "المستلم",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "عدد المستلمين (%d) يتجاوز الحد الأقصى المسموح به لكل إرسال (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "يجب تحديد المستلمين بمعرّفات personIds وfamilyIds لا بعناوين البريد الإلكتروني",

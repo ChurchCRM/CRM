@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Használja ezt a kulcsot az API-kérések hitelesítéséhez. Az újragenerálás érvényteleníti az aktuális kulcsot.",
   "User Config": "Felhasználói konfiguráció",
   "Version %s is available. Please upgrade your installation.": "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést.",
-  "View All": "Összes megtekintése",
   "Yellow": "Sárga",
   "%d repeat event created successfully.": {
     "one": "%d ismétlődő esemény sikeresen létrehozva.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Képesítsd őket egy pozícióra.",
   "Reactivate": "Újraaktiválás",
   "Read the theme authoring guide": "Olvasd el a témakészítési útmutatót",
-  "Recent Emails": "Legutóbbi e-mailek",
   "Recipient": "Címzett",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "A címzettek száma (%d) meghaladja a küldésenként megengedett maximumot (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "A címzetteket personId és familyId értékként kell megadni, nem e-mail-címként",

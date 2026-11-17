@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Użyj tego klucza do uwierzytelniania żądań API. Zregenerowanie unieważni bieżący klucz.",
   "User Config": "Konfiguracja użytkownika",
   "Version %s is available. Please upgrade your installation.": "Wersja %s jest dostępna. Proszę zaktualizować instalację.",
-  "View All": "Pokaż wszystkie",
   "Yellow": "Żółty",
   "%d repeat event created successfully.": {
     "one": "Pomyślnie utworzono %d powtarzające się wydarzenie.",
@@ -4976,7 +4975,6 @@
   "Qualify them for a position.": "Nadaj im kwalifikacje do funkcji.",
   "Reactivate": "Aktywuj ponownie",
   "Read the theme authoring guide": "Przeczytaj poradnik tworzenia motywów",
-  "Recent Emails": "Ostatnie e-maile",
   "Recipient": "Adresat",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Liczba adresatów (%d) przekracza maksimum dozwolone na jedną wysyłkę (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Adresaci muszą być podani jako personId i familyId, a nie jako adresy e-mail",

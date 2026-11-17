@@ -11269,10 +11269,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
 
 #: 
-msgid "View All"
-msgstr "Vizualizați toate"
-
-#: 
 msgid "Yellow"
 msgstr "Galben"
 
@@ -20413,10 +20409,6 @@ msgstr "Reactivează"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Citiți ghidul de creare a temelor"
-
-#: 
-msgid "Recent Emails"
-msgstr "E-mailuri recente"
 
 #: 
 msgid "Recipient"
