@@ -176,6 +176,8 @@ The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line,
 
 - Write for church administrators, staff and volunteers. Say where things are (**Admin → System → Church Information**) and what changed ("used to print blank labels; now uses the family address").
 - Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
+- **Workflow and impact first** (the marketing repo's Translation Rule, applied to notes): every user-facing bullet opens with the person's work and what changes for them — who is doing what, and what is different when they do it next. The feature or mechanism is the proof, never the lead. Test: if the bullet could be pasted into another product's release notes unchanged, rewrite it around the church task.
+- **No implementation vocabulary in user-facing sections:** no URL routes (`/account`, `/finance/envelopes`), no library, tool or vendor names the reader does not operate (KeePassXC, TomSelect, POEditor), no schema, column, API or back-end terms. Write menu paths in words (**Finance → Envelopes**) when the reader needs to find the thing; a route is not a menu path.
 - Weight notes by reach: a change seen on every screen is a feature; a capability few use yet gets one line.
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
