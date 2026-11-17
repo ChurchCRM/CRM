@@ -11342,14 +11342,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Đăng ký bị tắt cho sự kiện không hoạt động. Kích hoạt sự kiện từ Bảng điều khiển Sự kiện để bật đăng ký."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Đã đăng ký tham dự sự kiện: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Đã đăng xuất khỏi sự kiện: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Đóng tất cả sự kiện bị kẹt"
 
@@ -22451,10 +22443,6 @@ msgstr "Đăng ký khách đi bộ"
 #: 
 msgid "Register walk-in guest"
 msgstr "Đăng ký khách đi bộ"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Được đăng ký làm khách đi bộ tại máy kiosk trong sự kiện: %s"
 
 #: 
 msgid "Registering..."

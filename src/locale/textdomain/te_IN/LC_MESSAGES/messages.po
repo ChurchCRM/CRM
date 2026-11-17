@@ -11321,14 +11321,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "నిష్క్రియ కార్యక్రమాలకు చెక్-ఇన్ నిలిపివేయబడింది. చెక్-ఇన్ ప్రారంభించడానికి కార్యక్రమాల డాష్‌బోర్డ్ నుండి కార్యక్రమాన్ని సక్రియం చేయండి."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "కార్యక్రమంలో చెక్-ఇన్ అయ్యారు: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "కార్యక్రమం నుండి చెక్-అవుట్ అయ్యారు: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "అన్ని నిలిచిన కార్యక్రమాలను మూసివేయి"
 
@@ -22448,10 +22440,6 @@ msgstr "ముందస్తు సమాచారం లేని అతిథ
 #: 
 msgid "Register walk-in guest"
 msgstr "ముందస్తు సమాచారం లేని అతిథిని నమోదు చేయండి"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "కార్యక్రమం సమయంలో కియోస్క్‌లో ముందస్తు సమాచారం లేని అతిథిగా నమోదు చేయబడింది: %s"
 
 #: 
 msgid "Registering..."

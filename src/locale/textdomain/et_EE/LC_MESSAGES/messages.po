@@ -11342,14 +11342,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Registreerimine on mitteaktiivsetele sündmustele keelatud. Registreerimise lubamiseks aktiveerige sündmus sündmuste armatuurlaual."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Registreeriti sündmusele: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Lahkuti sündmuselt: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Sulge kõik kinnijäänud sündmused"
 
@@ -22469,10 +22461,6 @@ msgstr "Registreerige külalinen"
 #: 
 msgid "Register walk-in guest"
 msgstr "registreerige külalinen"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Registreeritud külalisena kioska kaudu ürituse ajal: %s"
 
 #: 
 msgid "Registering..."

@@ -11368,14 +11368,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Inaktív eseményeknél a bejelentkezés le van tiltva. Aktiválja az eseményt az Események irányítópultjáról a bejelentkezés engedélyezéséhez."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Bejelentkezve az eseményre: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Kijelentkezve az eseményről: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Minden beragadt esemény lezárása"
 
@@ -22495,10 +22487,6 @@ msgstr "Vendég regisztrálása"
 #: 
 msgid "Register walk-in guest"
 msgstr "vendég regisztrálása"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Vendégként regisztrálva a kioskon az esemény során: %s"
 
 #: 
 msgid "Registering..."

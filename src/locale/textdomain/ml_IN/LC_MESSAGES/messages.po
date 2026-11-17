@@ -11310,14 +11310,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "നിർജ്ജീവ പരിപാടികൾക്ക് ചെക്ക്-ഇൻ പ്രവർത്തനരഹിതമാണ്. ചെക്ക്-ഇൻ പ്രാപ്തമാക്കാൻ പരിപാടി ഡാഷ്ബോർഡിൽ നിന്ന് പരിപാടി സക്രിയമാക്കുക."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "പരിപാടിയിൽ ചെക്ക് ഇൻ ചെയ്തു: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "പരിപാടിയിൽ നിന്ന് ചെക്ക് ഔട്ട് ചെയ്തു: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "എല്ലാ കുരുങ്ങിയ പരിപാടികളും അടയ്ക്കുക"
 
@@ -22437,10 +22429,6 @@ msgstr "നേരിട്ടെത്തിയ അതിഥിയെ രജി�
 #: 
 msgid "Register walk-in guest"
 msgstr "നേരിട്ടെത്തിയ അതിഥിയെ രജിസ്റ്റർ ചെയ്യുക"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "പരിപാടിക്കിടെ കിയോസ്കിൽ നേരിട്ടെത്തിയ അതിഥിയായി രജിസ്റ്റർ ചെയ്തു: %s"
 
 #: 
 msgid "Registering..."
