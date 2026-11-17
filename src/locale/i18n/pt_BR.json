@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Use esta chave para autenticar requisições de API. Regenerar invalidará a chave atual.",
   "User Config": "Configuração do usuário",
   "Version %s is available. Please upgrade your installation.": "A versão %s está disponível. Por favor, atualize sua instalação.",
-  "View All": "Ver todos",
   "Yellow": "Amarelo",
   "%d repeat event created successfully.": {
     "one": "%d evento recorrente criado com sucesso.",

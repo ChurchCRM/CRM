@@ -11258,10 +11258,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "版本 %s 已可用。请升级您的安装。"
 
 #: 
-msgid "View All"
-msgstr "查看全部"
-
-#: 
 msgid "Yellow"
 msgstr "黄色"
 

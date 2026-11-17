@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "このキーを使用してAPIリクエストを認証してください。再生成すると現在のキーは無効になります。",
   "User Config": "ユーザー設定",
   "Version %s is available. Please upgrade your installation.": "バージョン%sが利用可能です。インストールをアップグレードしてください。",
-  "View All": "すべて表示",
   "Yellow": "黄",
   "%d repeat event created successfully.": {
     "other": "%d 件の繰り返しイベントが正常に作成されました。"

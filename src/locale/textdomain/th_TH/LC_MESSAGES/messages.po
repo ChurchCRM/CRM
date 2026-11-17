@@ -11171,10 +11171,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ"
 
 #: 
-msgid "View All"
-msgstr "ดูทั้งหมด"
-
-#: 
 msgid "Yellow"
 msgstr "สีเหลือง"
 

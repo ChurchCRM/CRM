@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API isteklerini doğrulamak için bu anahtarı kullanın. Yeniden oluşturma mevcut anahtarı geçersiz kılar.",
   "User Config": "Kullanıcı Yapılandırması",
   "Version %s is available. Please upgrade your installation.": "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin.",
-  "View All": "Tümünü Görüntüle",
   "Yellow": "Sarı",
   "%d repeat event created successfully.": {
     "one": "%d tekrar eden etkinlik başarıyla oluşturuldu.",

@@ -11226,10 +11226,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést."
 
 #: 
-msgid "View All"
-msgstr "Összes megtekintése"
-
-#: 
 msgid "Yellow"
 msgstr "Sárga"
 
