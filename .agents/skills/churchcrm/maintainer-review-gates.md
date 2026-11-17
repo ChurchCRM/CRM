@@ -23,7 +23,7 @@ The author is a volunteer. Be thankful, specific, and focused on what matters.
 The review opens with one welcome sentence when it fits, then one short paragraph of what the PR does, then **Church-user impact** before any other heading:
 
 - First pull request from this author on ChurchCRM/CRM: `Welcome to ChurchCRM, @author.`
-- Their previous pull request on this repo was opened more than six months ago: `Welcome back, @author.`
+- Their previous pull request on this repo was opened more than four weeks ago: `Welcome back, @author.`
 - Anyone else: `Thanks @author.` with no welcome sentence.
 
 Count every pull request they opened here, including closed ones. Skip the welcome on a re-review of the same author in the same week. The lookup is in `pr-review.md`.

@@ -42,7 +42,7 @@ gh pr list --repo ChurchCRM/CRM --author <LOGIN> --state all --limit 20 --json n
 
 `--comments` omits inline threads. The GraphQL call lists every thread (resolved or not, any author, including bots) and each review's state. Read all unresolved threads and check each against the current code.
 
-The author list decides the opening in `maintainer-review-gates.md`. Ignore the PR under review. No other row means a first pull request (`Welcome to ChurchCRM`). The newest other `createdAt` older than six months means `Welcome back`. A newer row means `Thanks` only.
+The author list decides the opening in `maintainer-review-gates.md`. Ignore the PR under review. No other row means a first pull request (`Welcome to ChurchCRM`). The newest other `createdAt` older than four weeks means `Welcome back`. A newer row means `Thanks` only.
 
 Answer before reading code:
 
