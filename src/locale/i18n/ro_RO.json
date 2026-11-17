@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Utilizați această cheie pentru a autentifica cererile API. Regenerarea va invalida cheia curentă.",
   "User Config": "Configurare utilizator",
   "Version %s is available. Please upgrade your installation.": "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea.",
-  "View All": "Vizualizați toate",
   "Yellow": "Galben",
   "%d repeat event created successfully.": {
     "one": "%d eveniment repetat a fost creat cu succes.",

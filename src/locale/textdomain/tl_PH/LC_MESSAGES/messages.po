@@ -11168,10 +11168,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation."
 
 #: 
-msgid "View All"
-msgstr "Tingnan Lahat"
-
-#: 
 msgid "Yellow"
 msgstr "Dilaw"
 

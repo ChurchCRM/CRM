@@ -11199,10 +11199,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "גרסה %s זמינה. אנא שדרג את ההתקנה שלך."
 
 #: 
-msgid "View All"
-msgstr "הצג הכל"
-
-#: 
 msgid "Yellow"
 msgstr "צהוב"
 

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Bruk denne nøkkelen til å autentisere API-forespørsler. Regenerering vil ugyldiggjøre den gjeldende nøkkelen.",
   "User Config": "Brukerkonfigurasjon",
   "Version %s is available. Please upgrade your installation.": "Versjon %s er tilgjengelig. Vennligst oppgrader installasjonen din.",
-  "View All": "Vis alle",
   "Yellow": "Gul",
   "%d repeat event created successfully.": {
     "one": "%d gjentakende arrangement ble opprettet.",

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Kasutage seda võtit API-päringute autentimiseks. Taasloomisel muutub praegune võti kehtetuks.",
   "User Config": "Kasutaja seaded",
   "Version %s is available. Please upgrade your installation.": "Versioon %s on saadaval. Palun uuendage oma paigaldust.",
-  "View All": "Vaata kõiki",
   "Yellow": "Kollane",
   "%d repeat event created successfully.": {
     "one": "%d korduv sündmus loodi edukalt.",

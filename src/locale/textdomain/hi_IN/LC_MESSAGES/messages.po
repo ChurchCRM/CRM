@@ -11170,10 +11170,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "संस्करण %s उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।"
 
 #: 
-msgid "View All"
-msgstr "सभी देखें"
-
-#: 
 msgid "Yellow"
 msgstr "पीला"
 

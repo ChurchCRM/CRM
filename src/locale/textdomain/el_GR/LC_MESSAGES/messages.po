@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Η έκδοση %s είναι διαθέσιμη. Παρακαλώ αναβαθμίστε την εγκατάστασή σας."
 
 #: 
-msgid "View All"
-msgstr "Προβολή Όλων"
-
-#: 
 msgid "Yellow"
 msgstr "Κίτρινο"
 
