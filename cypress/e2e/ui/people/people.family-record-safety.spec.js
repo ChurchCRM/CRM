@@ -1,7 +1,9 @@
 const formValues = (url, id) =>
     cy.request(url).then(({ body }) => {
         const form = new DOMParser().parseFromString(String(body), "text/html").querySelector(`#${id}Editor`);
-        expect(form, `#${id}Editor`).to.exist;
+        if (!(form instanceof HTMLFormElement)) {
+            throw new Error(`#${id}Editor was not in ${url}`);
+        }
         return Object.fromEntries(new FormData(form).entries());
     });
 
