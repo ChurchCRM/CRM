@@ -64,12 +64,13 @@ function createOpportunity(name) {
 }
 
 function link(personId, names) {
-    cy.then(() => {
-        const body = {};
+    const url = `/people/view/${personId}`;
+    cy.sessionCsrfToken(url).then((csrf_token) => {
+        const body = { csrf_token };
         names.forEach((name, i) => {
             body[`VolunteerOpportunityIDs[${i}]`] = String(opportunities[name]);
         });
-        cy.request({ method: "POST", url: `/people/view/${personId}`, form: true, body, followRedirect: false });
+        cy.request({ method: "POST", url, form: true, body, followRedirect: false });
     });
 }
 
