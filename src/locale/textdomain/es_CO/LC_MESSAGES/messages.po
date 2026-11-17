@@ -11050,10 +11050,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Valor JSON no válido — la configuración no fue guardada. Por favor corríjalo e intente de nuevo."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Únase al proyecto de traducción en POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Configuración de idioma y región"
 
@@ -15317,10 +15313,6 @@ msgstr "Compradores de esta recaudación de fondos"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Orígenes de inserción del calendario"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Las traducciones de ChurchCRM son gestionadas por la comunidad en POEditor. Puede colaborar"
 
 #: 
 msgid "Current $URL[0] value"

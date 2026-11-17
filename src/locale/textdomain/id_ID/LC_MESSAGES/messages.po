@@ -11061,10 +11061,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bergabunglah dengan Proyek Terjemahan di POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Pengaturan bahasa dan regional"
 
@@ -15319,10 +15315,6 @@ msgstr "Pembeli untuk penggalangan dana ini"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Asal Sematkan Kalender"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan"
 
 #: 
 msgid "Current $URL[0] value"
