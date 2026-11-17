@@ -20,6 +20,14 @@ Leave CI status out of the review; branch protection owns it.
 
 The author is a volunteer. Be thankful, specific, and focused on what matters.
 
+The review opens with one welcome sentence when it fits, then one short paragraph of what the PR does, then **Church-user impact** before any other heading:
+
+- First pull request from this author on ChurchCRM/CRM: `Welcome to ChurchCRM, @author.`
+- Their previous pull request on this repo was opened more than six months ago: `Welcome back, @author.`
+- Anyone else: `Thanks @author.` with no welcome sentence.
+
+Count every pull request they opened here, including closed ones. Skip the welcome on a re-review of the same author in the same week. The lookup is in `pr-review.md`.
+
 ## Comment Resolution
 
 Read every review thread on the PR (inline threads and review summaries, from people and bots) before you review or report on it. Resolve a thread when the current PR code addresses it (question answered, bug fixed, design decision made). Leave it open, with a reply, when it is not addressed. A bot's `CHANGES_REQUESTED` review stays until that bot reviews again, so a green check does not mean approval: report the unresolved threads and each bot's latest review state.
@@ -29,7 +37,9 @@ Read every review thread on the PR (inline threads and review summaries, from pe
 When a PR has no hard blocks, use this clear format instead of checkbox lists:
 
 ```markdown
-Thanks @author. One short paragraph of what the PR does.
+Welcome to ChurchCRM, @author. One short paragraph of what the PR does.
+
+**Church-user impact:** [role, job, what changes for them] or "no user-facing change: [why]".
 
 **Verified:**
 - ✓ [specific item]
@@ -99,7 +109,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 
 ## Review shape
 
-1. Thank the contributor. Say what the PR does after reading the file list.
+1. Open with the welcome or thanks from Tone. Say what the PR does after reading the file list. Put **Church-user impact** next, before the findings.
 2. Check title + body against the current file list.
 3. Hard blocks first (Request changes). Every draft states RBAC impact and design approval, including "no RBAC impact: <why>".
 4. Then a **checkbox list of what is still open** (never CI).
@@ -117,7 +127,9 @@ Then the body that would go on GitHub:
 **When no hard blocks:**
 
 ```markdown
-Thanks @author. One short paragraph of what the PR does.
+Welcome to ChurchCRM, @author. One short paragraph of what the PR does.
+
+**Church-user impact:** [role, job, what changes for them] or "no user-facing change: [why]".
 
 **Verified:**
 - ✓ [specific item]
@@ -131,7 +143,9 @@ No hard blocks.
 **When there are issues:**
 
 ```markdown
-Thanks @author. One short paragraph of what the PR does.
+Welcome back, @author. One short paragraph of what the PR does.
+
+**Church-user impact:** [role, job, what changes for them] or "no user-facing change: [why]".
 
 ## Hard blocks
 
