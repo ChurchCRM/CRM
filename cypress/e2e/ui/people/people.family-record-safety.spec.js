@@ -1,8 +1,8 @@
 const formValues = (url, id) =>
     cy.request(url).then(({ body }) => {
-        const form = Cypress.$(new DOMParser().parseFromString(body, "text/html")).find(`#${id}Editor`);
-        expect(form).to.have.length(1);
-        return Object.fromEntries(form.serializeArray().map(({ name, value }) => [name, value]));
+        const form = new DOMParser().parseFromString(String(body), "text/html").querySelector(`#${id}Editor`);
+        expect(form, `#${id}Editor`).to.exist;
+        return Object.fromEntries(new FormData(form).entries());
     });
 
 const save = (url, body, status = 302) =>
