@@ -724,6 +724,7 @@
         <column name="usr_ManageMyMinistries" phpName="ManageMyMinistries" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="Volunteer v2 (2026-09-18): Manage My Ministries - opens the Ministries heading, the Ministry Dashboard and the pages of the ministries this login coordinates (volunteer_scope_vscp); grants nothing over other ministries"/>
         <column name="usr_Notes" phpName="Notes" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_Admin" phpName="Admin" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
+        <column name="usr_IsOwner" phpName="IsOwner" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="At most one true row is enforced in PHP, not with a partial unique index"/>
         <column name="usr_defaultFY" phpName="DefaultFY" type="SMALLINT" size="9" required="true" defaultValue="10"/>
         <column name="usr_currentDeposit" phpName="CurrentDeposit" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="50" required="true"/>
@@ -2006,6 +2007,71 @@
             <index-column name="lpa_lps_ID"/>
             <index-column name="lpa_Time"/>
         </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="role_rol" idMethod="native" phpName="Role" description="A staff role: built-in, template, or a church copy">
+        <column name="rol_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="rol_Key" phpName="Key" type="VARCHAR" size="64" required="true"/>
+        <column name="rol_Name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+        <column name="rol_Kind" phpName="Kind" type="VARCHAR" size="16" required="true"/>
+        <column name="rol_Version" phpName="Version" type="INTEGER" required="true" defaultValue="1"/>
+        <column name="rol_CopiedFrom" phpName="CopiedFrom" type="VARCHAR" size="64"/>
+        <unique name="rol_key_uidx">
+            <unique-column name="rol_Key"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="role_grant_rgr" idMethod="native" phpName="RoleGrant" description="One permission a role grants, on one scope">
+        <column name="rgr_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="rgr_rol_ID" phpName="RoleId" type="INTEGER" required="true"/>
+        <column name="rgr_Permission" phpName="Permission" type="VARCHAR" size="64" required="true"/>
+        <column name="rgr_Scope" phpName="Scope" type="VARCHAR" size="32" required="true" defaultValue="all"/>
+        <foreign-key foreignTable="role_rol" name="fk_rgr_role" phpName="Role" refPhpName="RoleGrant">
+            <reference local="rgr_rol_ID" foreign="rol_ID"/>
+        </foreign-key>
+        <unique name="rgr_role_permission_scope_uidx">
+            <unique-column name="rgr_rol_ID"/>
+            <unique-column name="rgr_Permission"/>
+            <unique-column name="rgr_Scope"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="user_role_uro" idMethod="native" phpName="UserRole" description="A role assigned to a staff user">
+        <column name="uro_usr_ID" phpName="UserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
+        <column name="uro_rol_ID" phpName="RoleId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="uro_AssignedBy_usr_ID" phpName="AssignedByUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="uro_ApprovedBy_usr_ID" phpName="ApprovedByUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="uro_AssignedAt" phpName="AssignedAt" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="user_usr" name="fk_uro_user" phpName="User" refPhpName="UserRole" onDelete="cascade">
+            <reference local="uro_usr_ID" foreign="usr_per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="role_rol" name="fk_uro_role" phpName="Role" refPhpName="UserRole">
+            <reference local="uro_rol_ID" foreign="rol_ID"/>
+        </foreign-key>
+        <index name="uro_rol_idx">
+            <index-column name="uro_rol_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="role_audit_rau" idMethod="native" phpName="RoleAudit" description="Role changes, Owner sensitive reads, and ownership transfer">
+        <column name="rau_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="rau_Actor_usr_ID" phpName="ActorUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="rau_Subject_usr_ID" phpName="SubjectUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="rau_Action" phpName="Action" type="VARCHAR" size="32" required="true"/>
+        <column name="rau_Detail" phpName="Detail" type="LONGVARCHAR"/>
+        <column name="rau_Time" phpName="Time" type="TIMESTAMP" required="true"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
