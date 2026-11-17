@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\MultibuyQuery;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
