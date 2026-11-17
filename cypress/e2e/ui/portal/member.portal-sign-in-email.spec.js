@@ -273,7 +273,7 @@ describe("Member Portal sign-in by email", () => {
             expect(response.status).to.eq(302);
             expect(response.redirectedToUrl).to.match(/\/admin\/$/);
         });
-        cy.request({ url: "/PropertyList.php", followRedirect: false }).its("status").should("eq", 302);
+        cy.request({ url: "/people/properties", followRedirect: false }).its("status").should("eq", 302);
     });
 
     it("signs out a portal-only session completely and lands on /portal/login", () => {

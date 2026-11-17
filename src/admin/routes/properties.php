@@ -53,7 +53,7 @@ function adminPropertyEditor(Request $request, Response $response, array $args):
     $description = (string) $property->getProDescription();
     $prompt = (string) $property->getProPrompt();
     $errors = [];
-    $listUrl = '/PropertyList.php?Type=' . $class;
+    $listUrl = '/people/properties/' . $class;
 
     if ($request->getMethod() === 'POST') {
         $body = (array) $request->getParsedBody();
