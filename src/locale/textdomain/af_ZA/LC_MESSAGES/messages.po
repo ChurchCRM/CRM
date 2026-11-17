@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Ken 'n nuwe geleentheid vir vrywilligers toe"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Besonderhede oor elektroniese transaksies"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nie-aftrekbare bedrag mag nie groter wees as die totale bedrag nie."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Volg gesinne se toeseggings en fondsbydraes per fiskale jaar"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaksiebesonderhede"
-
-#: 
 msgid "Unmapped"
 msgstr "Nie gekarteer"
 
@@ -9508,10 +9500,6 @@ msgstr "Bekyk gesin-toeseggingsopsommings en fondstoekennings"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Bekyk groeplede, rolle, en eienskappe"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Kyk transaksie-besonderhede vir 'n verbintenis-betaling"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11072,10 +11060,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Ongeldige JSON-waarde — instelling is nie gestoor nie. Korrigeer dit asseblief en probeer weer."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Sluit aan by die Vertaalprojek op POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Taal- en streeksinstellings"
 
@@ -11215,10 +11199,6 @@ msgstr "Gebruikersinstellings"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Weergawe %s is beskikbaar. Gradeer asseblief u installasie op."
-
-#: 
-msgid "View All"
-msgstr "Sien Alles"
 
 #: 
 msgid "Yellow"
@@ -15334,10 +15314,6 @@ msgstr "Kopers vir hierdie fondsinsamelingsgeleentheid"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalender-insluit-oorspronge"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-vertalings word deur die gemeenskap op POEditor bestuur. Jy kan help deur"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20352,10 +20328,6 @@ msgid "Read the theme authoring guide"
 msgstr "Lees die temaskrywersgids"
 
 #: 
-msgid "Recent Emails"
-msgstr "Onlangse e-posse"
-
-#: 
 msgid "Recipient"
 msgstr "Ontvanger"
 
@@ -22530,10 +22502,6 @@ msgstr "Soek volgens gesinsnaam"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Soek volgens gesinsnaam of koevertnr."
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Kan nie 'n gesin uitvee wat beloftes of betalings het nie. Skuif of verwyder eers die finansiële rekords."
 
 #: 
 msgid "You cannot delete your own account."
@@ -27246,4 +27214,714 @@ msgstr "Jou data is joune. Dit rapporteer oor die sagteware, nooit oor jou kerk 
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Jou data is joune. Om installasies te tel, rapporteer ChurchCRM dat dit geïnstalleer of opgegradeer is en of dit gewerk het, 'n aanmelding een keer per dag terwyl dit gebruik word, asook die weergawenommer, jou land, die tipe databasis en 'n ewekansige installasie-ID. Dit rapporteer nooit lidmaat-, bydrae- of ander kerkrekords, jou kerk se naam, jou webadres of bedienernaam, of e-posadresse nie. Jy kan dit enige tyd by Admin → Telemetrie afskakel; 'n mislukte installasie of opgradering word steeds gerapporteer. Waarskuwings, foutbesonderhede en bladsybesoeke word slegs gedeel as jy dit kies."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: Oop deposito's: %2$d. Maak hulle toe sodat elke skenking afgehandel is voordat state gestuur word."
+msgstr[1] "%1$s: Oop deposito's: %2$d. Maak hulle toe sodat elke skenking afgehandel is voordat state gestuur word."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Koevertnommers gestoor: %d."
+msgstr[1] "Koevertnommers gestoor: %d."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "Gesinne: %d"
+msgstr[1] "Gesinne: %d"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: alle deposito’s is gesluit. Die skenkingstate kan nou voorberei word."
+
+#: 
+msgid "12 months"
+msgstr "12 maande"
+
+#: 
+msgid "30 days"
+msgstr "30 dae"
+
+#: 
+msgid "90 days"
+msgstr "90 dae"
+
+#: 
+msgid "Add Property"
+msgstr "Voeg eienskap by"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Voeg nog 'n paar karakters of 'n simbool by."
+
+#: 
+msgid "Add and edit events"
+msgstr "Voeg gebeurtenisse by en wysig dit"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Voeg meer karakters by of meng getalle en simbole in."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Voeg meer karakters by en meng hoofletters en kleinletters, syfers en simbole."
+
+#: 
+msgid "Add people and families"
+msgstr "Voeg mense en gesinne by"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administrateurs het alle toestemmings vir elke geaktiveerde funksie."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Deaktiveer ook aanmelding, sodat hulle nie die ledeportaal kan gebruik nie"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Voordat jy state stuur"
+
+#: 
+msgid "Birthday today"
+msgstr "Verjaar vandag"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Kan nie die private belastingkwitansie-handtekeninglêer skep nie. Kontroleer dat die stoorvouer skryfbaar is."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Kan nie die belastingkwitansie-handtekeningbergingvouer %s skep nie. Maak seker dat die webbediener daarna kan skryf, of stel 'n skryfbare vouer in die belastingkwitansie-handtekening-bergingpad-instelling."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Kan nie die private belastingkwitansie-handtekening enkodeer nie."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Kan nie veld in daardie rigting beweeg nie"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Kan nie die private belastingkwitansie-handtekening lees nie."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Kan nie die private handtekening verwyder nie."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Kan nie die private belastingkwitansie-handtekeninglêer verwyder nie."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Die toepassing se vouer vir die berging van belastingkwitansie-handtekeninge kon nie bepaal word nie."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Kan nie die private handtekening stoor nie."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Kan nie die toegangswag %s in die belastingkwitansie-handtekeningstoorvouer skryf nie."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Verander rol van geselekteerde lede: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Kerkboekjaar"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM Stelselkontrole"
+
+#: 
+msgid "Custom field not found"
+msgstr "Gepasmaakte veld nie gevind nie"
+
+#: 
+msgid "Delete people and families"
+msgstr "Vee mense en gesinne uit"
+
+#: 
+msgid "Delete the login for"
+msgstr "Vee die aanmelding uit vir"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Tydreeks vir depositografiek"
+
+#: 
+msgid "Disabled at"
+msgstr "Gedeaktiveer op"
+
+#: 
+msgid "Disabled by"
+msgstr "Gedeaktiveer deur"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Die aflaai sluit alle skenkers vir die jaar in. «Hersien en filter» wys eers die totale en laat jou volgens gesin, fonds, kategorie of datum filtreer."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Duplikaat koevertnommer"
+
+#: 
+msgid "Edit people and families"
+msgstr "Wysig mense en gesinne"
+
+#: 
+msgid "Email people and groups"
+msgstr "E-pos mense en groepe"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Aktiveer die ontbrekende PHP-uitbreidings in jou webbedienerkonfigurasie, herbegin die webbediener en herlaai dan hierdie bladsy. As jy 'n gasheerverskaffer gebruik, vra hulle om die gelyste uitbreidings te aktiveer."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Voer 'n opstellingsleutel handmatig in"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Voer 'n beginnommer van 0 tot %d in."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Gaan volskerm in"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Voer hierdie sleutel in jou verifikasie- of wagwoordbestuurder in deur tydgebaseerde (TOTP), 6-syfer-kodes en 'n 30-sekonde-interval te gebruik. Hou hierdie sleutel privaat."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Voer jou gebruikersnaam of e-pos in"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Koevertnommers moet heelgetalle van 0 tot %d wees. Geen veranderinge is gestoor nie."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Geleenthede is vir hierdie kerk afgeskakel"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Verlaat volskerm"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Kon nie gepasmaakte veld uitvee nie"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Kon nie gepasmaakte veld skuif nie"
+
+#: 
+msgid "Fair"
+msgstr "Redelik"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Gesinne met ’n skenkingsbelofte vir %1$s en geen skenkingsbelofte vir %2$s nie."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Gesinne met ten minste een lid in"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Finansies is afgeskakel vir hierdie kerk"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Vind gesinne met ’n skenkingsbelofte in een boekjaar, maar nie in ’n ander nie."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Die vouer waarin die private handtekening vir skenkingstate gestoor word. Laat dit leeg om die ingeboude private vouer Images/TaxSignatures te gebruik, wat direkte webtoegang blokkeer. Om ’n ander vouer te gebruik, voer ’n absolute pad buite die ChurchCRM-vouer in waarheen die webbediener kan skryf."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Fondsinsamelings is vir hierdie kerk afgeskakel"
+
+#: 
+msgid "Good"
+msgstr "Goed"
+
+#: 
+msgid "Have an email"
+msgstr "Met ’n e-posadres"
+
+#: 
+msgid "Hide setup key"
+msgstr "Versteek opstellingsleutel"
+
+#: 
+msgid "How to respond"
+msgstr "Hoe om te reageer"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Idees wat op jou beoordeling wag"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Onaktiewe gesinne word uitgesluit. Betalings tel nie as skenkingsbeloftes nie."
+
+#: 
+msgid "Invalid request."
+msgstr "Ongeldige versoek."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Ongeldige handtekeningbeelddata."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Ongeldige gestoorde belastingkwitansie-handtekeningidentifiseerder."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Ongeldige berging van belastingkwitansie-handtekening."
+
+#: 
+msgid "Last successful login"
+msgstr "Laaste suksesvolle aanmelding"
+
+#: 
+msgid "Lockout state"
+msgstr "Uitsluittoestand"
+
+#: 
+msgid "Login deleted"
+msgstr "Aanmelding uitgevee"
+
+#: 
+msgid "Mail only"
+msgstr "Slegs gewone pos"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Bestuur alle kerkbedieninge"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Lede geskuif na {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Lede het nie verander nie omdat hulle die groep verlaat het of 'n kerkbediening bestuur hul rol: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "kerklike bedieningskoördineerder"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minute tot outomatiese ontsluiting"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Ontbrekende skenkingsbeloftes"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Geen GitHub-rekening nie? Vertel ons op Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Geen aktiewe gesin het ’n skenkingsbelofte vir %1$s sonder ’n skenkingsbelofte vir %2$s nie."
+
+#: 
+msgid "No families found."
+msgstr "Geen gesinne gevind nie."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Geen kerklike bediening toegewys nie"
+
+#: 
+msgid "No open deposit"
+msgstr "Geen oop deposito nie"
+
+#: 
+msgid "No pledge for"
+msgstr "Geen skenkingsbelofte vir"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Nie aan hierdie rekening toegestaan nie"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Lei nie 'n vrywilligerspan nie"
+
+#: 
+msgid "Not locked"
+msgstr "Nie gesluit nie"
+
+#: 
+msgid "Number of Payments"
+msgstr "Aantal betalings"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Een minuut. Ons deel nie wat jy stuur nie."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Maak 'n idee oop. Stem met 👍 as jou kerk dit nodig het, en voeg 'n kort opmerking by oor hoe jy vandag werk."
+
+#: 
+msgid "Open deposit"
+msgstr "Oop deposito"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Wagwoordverandering word vereis by volgende aanmelding"
+
+#: 
+msgid "Password strength"
+msgstr "Wagwoordsterkte"
+
+#: 
+msgid "People & Families"
+msgstr "Mense en gesinne"
+
+#: 
+msgid "Pledged for"
+msgstr "Skenkingsbelofte vir"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Berei skenkingstate voor"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Voorskou voorbeeldbrief"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identifiseerder van die private handtekeninglêer vir Kanadese skenkingstate. Word deur die oplaai van handtekeninge bestuur."
+
+#: 
+msgid "Property Type"
+msgstr "Tipe eienskap"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Verskaf slegs PNG of JPEG handtekening beelddata."
+
+#: 
+msgid "Report Issue"
+msgstr "Rapporteer kwessie"
+
+#: 
+msgid "Requirement"
+msgstr "Vereiste"
+
+#: 
+msgid "Return Home"
+msgstr "Terug na die tuisblad"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Hersien ’n boekjaar en laai dan die skenkingstate af."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Hersien en sluit deposito"
+
+#: 
+msgid "Review and Filter"
+msgstr "Hersien en filter"
+
+#: 
+msgid "Review and vote"
+msgstr "Hersien en stem"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Hersien die jaar en laai dan die skenkingstate af."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Hersien wat ons oorweeg"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Rolle en toestemmings"
+
+#: 
+msgid "Select at least one member."
+msgstr "Kies ten minste een lid."
+
+#: 
+msgid "Setup key"
+msgstr "Opstellingsleutel"
+
+#: 
+msgid "Sign-in status"
+msgstr "Aanmeldingstatus"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Stoorvouer vir handtekeninge"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Handtekening opgedateer maar die vorige private handtekeninglêer kon nie verwyder word nie."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Sommige PHP-vereistes ontbreek. ChurchCRM het dit nodig voordat dit kan voortgaan."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Begin 'n deposito en voeg dan elke betaling daarby."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Begin koevertnommer"
+
+#: 
+msgid "Strong"
+msgstr "Sterk"
+
+#: 
+msgid "Support"
+msgstr "Ondersteuning"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Belasting-ID en PDF-instellings"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Die lys kon nie gelaai word nie. Jy kan steeds die idees op GitHub oopmaak."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Die naam kan hoogstens %d karakters wees"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Die bladsy wat jy versoek het kon nie gevind word nie. Dit is dalk geskuif, hernoem of bestaan ​​nie meer nie."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Die veldetiket kan hoogstens %d karakters wees"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Die geselekteerde lede het reeds daardie rol."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Die handtekeningbeeld kon nie gedekodeer word nie."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Die handtekeningprent mag nie groter as 2 MiB wees nie."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Die handtekeningprent moet binne 2000 × 1000 pieksels pas."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Die belastingkwitansie-handtekeningstoorvouer %s kan nie deur die webbediener geskryf word nie."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Die belastingkwitansie-handtekeningstoorvouer kan nie 'n simboliese skakel wees nie."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Die belastingkwitansie-handtekeningstoorpad moet buite die ChurchCRM-lêergids wees. Laat die instelling leeg om die ingeboude private vouer te gebruik."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Die belastingkwitansie-handtekeningbergingpad-instelling moet 'n absolute vouerpad wees."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Hierdie koevertnommers word eers gestoor wanneer jy «Dateer gesinsrekords op» kies."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Hulle kan nie as personeel of by die ledeportaal aanmeld nie. Hulle sessies, toestelle en wagwoordlose aanmeldsleutels word verwyder."
+
+#: 
+msgid "This password looks strong."
+msgstr "Hierdie wagwoord lyk sterk."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Dit verwyder slegs die aanmelding. Die persoon en hul notas bly."
+
+#: 
+msgid "Time Range"
+msgstr "Tydreeks"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Tweefaktor-verifikasie ingestel"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Kan nie outomaties kopieer nie. Kies en kopieer die opstellingsleutel met die hand."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Laai 'n PNG- of JPEG-handtekeningprent op."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Gebruik handtekeningoplaai of -verwydering om hierdie instelling te verander."
+
+#: 
+msgid "User Details"
+msgstr "Gebruikerbesonderhede"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Gebruikersnaam of e-posadres"
+
+#: 
+msgid "View all ideas"
+msgstr "Bekyk alle idees"
+
+#: 
+msgid "View events"
+msgstr "Bekyk geleenthede"
+
+#: 
+msgid "View people and families"
+msgstr "Bekyk mense en gesinne"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Vrywilligersbestuur is afgeskakel vir hierdie kerk"
+
+#: 
+msgid "Weak"
+msgstr "Swak"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Wat hierdie rekening nou kan doen (leesalleen)"
+
+#: 
+msgid "You must select a class"
+msgstr "Jy moet 'n kategorie kies"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Jou kerklike boekjaar begin nie op 1 Januarie nie. Belastingowerhede wil dikwels kwitansies vir die kalenderjaar hê: kies Hersien en Filter en stel die datums op 1 Januarie – 31 Desember."
+
+#: 
+msgid "system user API key regenerated"
+msgstr "stelselgebruiker API sleutel hergenereer"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "stelselgebruiker het hul wagwoord via ’n skakel in ’n e-pos teruggestel"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "stelselgebruiker het tweefaktor-verifikasie afgeskakel"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "stelselgebruiker het tweefaktor-verifikasie aangeskakel"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "stelselgebruiker-tweefaktor-verifikasie gedeaktiveer deur admin"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "'n Familie met beloftes of betalings kan nie uitgevee word nie. Deaktiveer die familie eerder om die finansiële geskiedenis te bewaar. Skuif die finansiële rekords slegs indien gepas."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Deaktiveer eerder die familie"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Deaktiveer die familie eerder as om dit uit te vee."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Deaktiveer die persoon eerder as om hulle uit te vee."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Aangetekende geskiedenis: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Hierdie familie kan nie uitgevee word nie omdat dit notas het. Deaktiveer die familie eerder om hul geskiedenis te bewaar."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Hierdie persoon kan nie uitgevee word nie omdat hulle aangetekende aktiwiteite het. Deaktiveer die persoon eerder om hul geskiedenis te bewaar."
+
+#: 
+msgid "attendance"
+msgstr "bywoning"
+
+#: 
+msgid "financial history"
+msgstr "finansiële geskiedenis"
+
+#: 
+msgid "notes"
+msgstr "notas"
+
+#: 
+msgid "recorded activities"
+msgstr "aangetekende aktiwiteite"
+
+#: 
+msgid "volunteer service history"
+msgstr "geskiedenis van vrywilligerdiens"
+
+#: 
+msgid "%s by %s"
+msgstr "%s deur %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Voer jou wagwoord of 'n kode van jou verifikasie-app in om twee-faktor-verifikasie te verander."
+
+#: 
+msgid "Latest Notes"
+msgstr "Jongste notas"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nog geen notas is bygevoeg nie."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Begin inskrywing om 'n QR-kode te kry."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Daardie wagwoord of kode is nie reg nie. Twee-faktor-verifikasie is steeds aan."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Twee-faktor-verifikasie is reeds opgestel. Die geheim daarvan word slegs tydens inskrywing gewys."
 

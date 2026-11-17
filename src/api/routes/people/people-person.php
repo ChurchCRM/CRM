@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -250,14 +251,19 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-        $blockedReason = $person->getLoginDeletionBlockedReason();
-        if ($blockedReason !== null) {
-            throw new HttpForbiddenException($request, $blockedReason);
-        }
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
         // fires it too. See #9768.
-        $person->delete();
+        $photo = $person->getPhoto();
+        try {
+            $person->delete();
+        } catch (PersonDeletionBlockedException $exception) {
+            return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
+        }
+
+        // Filesystem deletions cannot be rolled back; remove photos only
+        // after the ORM deletion has committed successfully.
+        $photo->delete();
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);

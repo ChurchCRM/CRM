@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 23:41+0000\n"
+"POT-Creation-Date: 2026-11-17 18:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,6 +300,10 @@ msgstr ""
 
 #, php-format
 msgid "%s Giving Statement"
+msgstr ""
+
+#, php-format
+msgid "%s by %s"
 msgstr ""
 
 #, php-format
@@ -2874,7 +2878,7 @@ msgstr ""
 msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
 msgstr ""
 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
 msgstr ""
 
 #, php-format
@@ -3628,7 +3632,7 @@ msgstr ""
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
 msgstr ""
 
 msgid "ChurchCRM version"
@@ -4727,6 +4731,15 @@ msgstr ""
 msgid "Deactivate schedule"
 msgstr ""
 
+msgid "Deactivate the family instead"
+msgstr ""
+
+msgid "Deactivate the family instead of deleting it."
+msgstr ""
+
+msgid "Deactivate the person instead of deleting them."
+msgstr ""
+
 msgid "Deactivate this ministry before deleting it."
 msgstr ""
 
@@ -5649,9 +5662,6 @@ msgstr ""
 msgid "El Salvador"
 msgstr ""
 
-msgid "Electronic Transaction Details"
-msgstr ""
-
 msgid "Email"
 msgstr ""
 
@@ -6159,6 +6169,9 @@ msgid "Enter your new password"
 msgstr ""
 
 msgid "Enter your password"
+msgstr ""
+
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
 msgstr ""
 
 msgid "Enter your username and password as usual"
@@ -8411,6 +8424,9 @@ msgstr ""
 msgid "Help Improve Translations"
 msgstr ""
 
+msgid "Help Translate on GitHub"
+msgstr ""
+
 msgid "Help Wanted"
 msgstr ""
 
@@ -9298,9 +9314,6 @@ msgstr ""
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
 msgstr ""
 
-msgid "Join the Translation Project on POEditor"
-msgstr ""
-
 #. Context: countries
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
@@ -9582,6 +9595,9 @@ msgid "Latest"
 msgstr ""
 
 msgid "Latest Families"
+msgstr ""
+
+msgid "Latest Notes"
 msgstr ""
 
 msgid "Latest People"
@@ -11447,6 +11463,9 @@ msgstr ""
 
 msgctxt "other"
 msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr ""
+
+msgid "No notes have been added yet."
 msgstr ""
 
 msgid "No one checked in yet"
@@ -13901,9 +13920,6 @@ msgstr ""
 msgid "Recent Deposits"
 msgstr ""
 
-msgid "Recent Emails"
-msgstr ""
-
 msgid "Recent Friends"
 msgstr ""
 
@@ -13963,6 +13979,10 @@ msgid "Record: they accepted"
 msgstr ""
 
 msgid "Record: they declined"
+msgstr ""
+
+#, php-format
+msgid "Recorded history: %s."
 msgstr ""
 
 msgid "Recording a Payment"
@@ -16041,6 +16061,9 @@ msgstr ""
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr ""
 
+msgid "Start enrollment to get a QR code."
+msgstr ""
+
 msgid "Start typing a name"
 msgstr ""
 
@@ -16644,6 +16667,9 @@ msgid "That page had been open too long. Please try again."
 msgstr ""
 
 msgid "That passkey is removed. It can no longer sign you in."
+msgstr ""
+
+msgid "That password or code is not right. Two-factor authentication is still on."
 msgstr ""
 
 msgid "That person already holds this position on this occurrence"
@@ -17670,6 +17696,9 @@ msgstr ""
 msgid "This event type is used by"
 msgstr ""
 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr ""
+
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr ""
 
@@ -17848,6 +17877,9 @@ msgid "This person belongs to a family — approve the family instead"
 msgstr ""
 
 msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr ""
+
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
 msgstr ""
 
 msgid "This person could not be signed out."
@@ -18306,9 +18338,6 @@ msgstr ""
 msgid "Track family pledges and fund contributions by fiscal year"
 msgstr ""
 
-msgid "Transaction Details"
-msgstr ""
-
 msgid "Translating missing strings to improve coverage"
 msgstr ""
 
@@ -18436,6 +18465,9 @@ msgid "Two-factor authentication enrolled"
 msgstr ""
 
 msgid "Two-factor authentication has been disabled"
+msgstr ""
+
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr ""
 
 msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
@@ -19198,9 +19230,6 @@ msgstr ""
 msgid "View %d failed sends across all email history"
 msgstr ""
 
-msgid "View All"
-msgstr ""
-
 msgid "View All Deposits"
 msgstr ""
 
@@ -19270,6 +19299,9 @@ msgstr ""
 msgid "View all (including inactive)"
 msgstr ""
 
+msgid "View all emails"
+msgstr ""
+
 msgid "View all families on an interactive map"
 msgstr ""
 
@@ -19331,9 +19363,6 @@ msgid "View the event"
 msgstr ""
 
 msgid "View this email"
-msgstr ""
-
-msgid "View transaction details for a pledge payment"
 msgstr ""
 
 msgid "Visitors can sign up on your public registration form."
@@ -20501,6 +20530,9 @@ msgstr ""
 msgid "assigned"
 msgstr ""
 
+msgid "attendance"
+msgstr ""
+
 msgid "body is required"
 msgstr ""
 
@@ -20617,6 +20649,9 @@ msgid "fields"
 msgstr ""
 
 msgid "files"
+msgstr ""
+
+msgid "financial history"
 msgstr ""
 
 msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
@@ -20785,6 +20820,9 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
+msgid "notes"
+msgstr ""
+
 msgid "of"
 msgstr ""
 
@@ -20875,6 +20913,9 @@ msgid "record(s) successfully added to selected Group."
 msgstr ""
 
 msgid "record(s) successfully deleted from the selected Group."
+msgstr ""
+
+msgid "recorded activities"
 msgstr ""
 
 msgid "records"
@@ -20994,6 +21035,9 @@ msgid "user"
 msgstr ""
 
 msgid "view families missing an email"
+msgstr ""
+
+msgid "volunteer service history"
 msgstr ""
 
 msgid "window end"

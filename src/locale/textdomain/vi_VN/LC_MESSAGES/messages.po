@@ -1509,10 +1509,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Thêm thành viên mới vào Mục vụ"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Chi tiết giao dịch điện tử"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Số tiền không được khấu trừ không được lớn hơn tổng số tiền."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Theo dõi cam kết dâng hiến của gia đình và đóng góp quỹ theo năm tài chính"
 
 #: 
-msgid "Transaction Details"
-msgstr "Chi tiet giao dich"
-
-#: 
 msgid "Unmapped"
 msgstr "Chua ghep noi"
 
@@ -9508,10 +9500,6 @@ msgstr "Xem tóm tắt cam kết dâng hiến của gia đình và phân bổ qu
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Xem chi tiết giao dịch cho khoản thanh toán cam kết dâng hiến"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11072,10 +11060,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Giá trị JSON không hợp lệ — cài đặt chưa được lưu. Vui lòng sửa và thử lại."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Tham gia Dự án Dịch thuật trên POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Cài đặt ngôn ngữ và khu vực"
 
@@ -11215,10 +11199,6 @@ msgstr "Cấu hình người dùng"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn."
-
-#: 
-msgid "View All"
-msgstr "Xem tất cả"
 
 #: 
 msgid "Yellow"
@@ -15330,10 +15310,6 @@ msgstr "Người mua cho chương trình gây quỹ này"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Nguồn gốc nhúng lịch"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20337,10 +20313,6 @@ msgid "Read the theme authoring guide"
 msgstr "Đọc hướng dẫn tạo giao diện"
 
 #: 
-msgid "Recent Emails"
-msgstr "Email gần đây"
-
-#: 
 msgid "Recipient"
 msgstr "Người nhận"
 
@@ -22511,10 +22483,6 @@ msgstr "Tìm theo tên gia đình"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Tìm theo tên gia đình hoặc số phong bì"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản thanh toán. Hãy chuyển hoặc xóa các bản ghi tài chính trước."
 
 #: 
 msgid "You cannot delete your own account."
@@ -27225,4 +27193,711 @@ msgstr "Dữ liệu của bạn thuộc về bạn. Báo cáo này chỉ nói v�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Dữ liệu của bạn thuộc về bạn. Để đếm số bản cài đặt, ChurchCRM báo cáo việc đã được cài đặt hoặc nâng cấp và có thành công hay không, một tín hiệu mỗi ngày khi đang sử dụng, cùng với số phiên bản, quốc gia của bạn, loại cơ sở dữ liệu và một ID cài đặt ngẫu nhiên. Nó không bao giờ báo cáo hồ sơ thành viên, dâng hiến hoặc hồ sơ khác của Hội thánh, tên Hội thánh, địa chỉ web hoặc tên máy chủ của bạn, hay địa chỉ email. Bạn có thể tắt tính năng này bất cứ lúc nào tại Quản trị → Đo lường từ xa; lần cài đặt hoặc nâng cấp thất bại vẫn được báo cáo. Cảnh báo, chi tiết lỗi và lượt xem trang chỉ được chia sẻ nếu bạn chọn."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: còn %2$d khoản nộp đang mở. Hãy đóng để mỗi khoản dâng hiến được chốt trước khi gửi bảng kê."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Đã lưu %d số phong bì."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d gia đình"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: mọi khoản nộp đều đã đóng. Bảng kê sẵn sàng để chuẩn bị."
+
+#: 
+msgid "12 months"
+msgstr "12 tháng"
+
+#: 
+msgid "30 days"
+msgstr "30 ngày"
+
+#: 
+msgid "90 days"
+msgstr "90 ngày"
+
+#: 
+msgid "Add Property"
+msgstr "Thêm thuộc tính"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Thêm vài ký tự hoặc một ký hiệu."
+
+#: 
+msgid "Add and edit events"
+msgstr "Thêm và chỉnh sửa sự kiện"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Thêm nhiều ký tự hơn hoặc trộn thêm số và ký hiệu."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Thêm nhiều ký tự hơn, đồng thời trộn chữ hoa, chữ thường, số và ký hiệu."
+
+#: 
+msgid "Add people and families"
+msgstr "Thêm người và gia đình"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Quản trị viên có mọi quyền khi tính năng này được bật."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Đồng thời vô hiệu hóa đăng nhập để họ không thể dùng Cổng thành viên"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Trước khi gửi bảng kê"
+
+#: 
+msgid "Birthday today"
+msgstr "Hôm nay sinh nhật"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Không thể tạo tệp chữ ký thuế riêng tư. Hãy kiểm tra thư mục lưu trữ có ghi được không."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Không thể tạo thư mục lưu trữ chữ ký thuế %s. Hãy đảm bảo máy chủ web có thể ghi vào đó, hoặc đặt một thư mục có thể ghi trong cài đặt đường dẫn lưu trữ chữ ký thuế."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Không thể xóa gia đình có cam kết hoặc khoản thanh toán. Hãy ngừng kích hoạt gia đình thay vì xóa để giữ lại lịch sử tài chính. Chỉ chuyển các bản ghi tài chính khi phù hợp."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Không thể mã hóa chữ ký thuế riêng tư."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Không thể di chuyển trường theo hướng đó"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Không thể đọc chữ ký thuế riêng tư."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Không thể xóa chữ ký riêng tư."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Không thể xóa tệp chữ ký thuế riêng tư."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Không thể xác định thư mục ứng dụng để lưu trữ chữ ký thuế."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Không thể lưu chữ ký riêng tư."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Không thể ghi tệp bảo vệ truy cập %s vào thư mục lưu trữ chữ ký thuế."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Đổi vai trò của các thành viên đã chọn: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Năm tài chính của hội thánh"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Kiểm tra hệ thống ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Không tìm thấy trường tùy chỉnh"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Thay vào đó, ngừng kích hoạt gia đình"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Hãy ngừng kích hoạt gia đình thay vì xóa."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Hãy ngừng kích hoạt người này thay vì xóa."
+
+#: 
+msgid "Delete people and families"
+msgstr "Xóa người và gia đình"
+
+#: 
+msgid "Delete the login for"
+msgstr "Xóa tài khoản đăng nhập của"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Khoảng thời gian của biểu đồ khoản nộp"
+
+#: 
+msgid "Disabled at"
+msgstr "Vô hiệu hóa lúc"
+
+#: 
+msgid "Disabled by"
+msgstr "Vô hiệu hóa bởi"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Tải xuống sẽ gửi mọi người dâng hiến trong năm. Xem lại và lọc hiển thị tổng số trước và cho phép bạn thu hẹp theo gia đình, quỹ, lớp hoặc ngày."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Số phong bì bị trùng"
+
+#: 
+msgid "Edit people and families"
+msgstr "Chỉnh sửa người và gia đình"
+
+#: 
+msgid "Email people and groups"
+msgstr "Gửi email cho người và nhóm"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Bật các phần mở rộng PHP còn thiếu trong cấu hình máy chủ web, khởi động lại máy chủ web, rồi tải lại trang này. Nếu bạn dùng nhà cung cấp lưu trữ, hãy nhờ họ bật các phần mở rộng được liệt kê."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Nhập khóa thiết lập thủ công"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Nhập số bắt đầu từ 0 đến %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Vào toàn màn hình"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Nhập khóa này vào ứng dụng xác thực hoặc trình quản lý mật khẩu của bạn, dùng mã 6 chữ số theo thời gian (TOTP) với chu kỳ 30 giây. Hãy giữ khóa này bí mật."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Nhập tên người dùng hoặc email của bạn"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Số phong bì phải là số nguyên từ 0 đến %d. Chưa có gì được lưu."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Sự kiện đã bị tắt cho hội thánh này"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Thoát toàn màn hình"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Xóa trường tùy chỉnh không thành công"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Di chuyển trường tùy chỉnh không thành công"
+
+#: 
+msgid "Fair"
+msgstr "Trung bình"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Các gia đình đã cam kết cho %s và chưa có cam kết cho %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Các gia đình có ít nhất một thành viên thuộc"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Tài chính đã bị tắt cho hội thánh này"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Tìm các gia đình đã cam kết trong một năm tài chính nhưng không trong năm khác."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Thư mục lưu chữ ký riêng tư của bảng kê dâng hiến. Để trống để dùng thư mục riêng tư tích hợp Images/TaxSignatures, nơi chặn truy cập web trực tiếp. Để dùng thư mục khác, hãy nhập đường dẫn tuyệt đối nằm ngoài thư mục ChurchCRM mà máy chủ web có thể ghi."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Gây quỹ đã bị tắt cho hội thánh này"
+
+#: 
+msgid "Good"
+msgstr "Tốt"
+
+#: 
+msgid "Have an email"
+msgstr "Có email"
+
+#: 
+msgid "Hide setup key"
+msgstr "Ẩn khóa thiết lập"
+
+#: 
+msgid "How to respond"
+msgstr "Cách phản hồi"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Các ý tưởng đang chờ bạn xem xét"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Các gia đình không hoạt động bị loại trừ. Khoản thanh toán không được tính là cam kết."
+
+#: 
+msgid "Invalid request."
+msgstr "Yêu cầu không hợp lệ."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Dữ liệu hình ảnh chữ ký không hợp lệ."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Mã định danh chữ ký thuế đã lưu không hợp lệ."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Nơi lưu trữ chữ ký thuế không hợp lệ."
+
+#: 
+msgid "Last successful login"
+msgstr "Lần đăng nhập thành công gần nhất"
+
+#: 
+msgid "Lockout state"
+msgstr "Trạng thái khóa"
+
+#: 
+msgid "Login deleted"
+msgstr "Đã xóa tài khoản đăng nhập"
+
+#: 
+msgid "Mail only"
+msgstr "Chỉ gửi thư"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Quản lý tất cả mục vụ"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Đã chuyển thành viên sang {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Thành viên không thay đổi vì đã rời nhóm hoặc vai trò do một mục vụ quản lý: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Điều phối viên mục vụ"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Số phút đến khi tự động mở khóa"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Cam kết còn thiếu"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Chưa có tài khoản GitHub? Hãy cho chúng tôi biết trên Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Không có gia đình đang hoạt động nào cam kết cho %s mà chưa có cam kết cho %s."
+
+#: 
+msgid "No families found."
+msgstr "Không tìm thấy gia đình nào."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Chưa được giao mục vụ"
+
+#: 
+msgid "No open deposit"
+msgstr "Không có khoản nộp đang mở"
+
+#: 
+msgid "No pledge for"
+msgstr "Không có cam kết cho"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Không được cấp cho tài khoản này"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Không dẫn dắt đội tình nguyện"
+
+#: 
+msgid "Not locked"
+msgstr "Không bị khóa"
+
+#: 
+msgid "Number of Payments"
+msgstr "Số lượng thanh toán"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Chỉ một phút. Chúng tôi không chia sẻ những gì bạn gửi."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Mở một ý tưởng. Bình chọn bằng 👍 nếu hội thánh bạn cần, và thêm một nhận xét ngắn về cách bạn đang làm việc hiện nay."
+
+#: 
+msgid "Open deposit"
+msgstr "Khoản nộp đang mở"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Yêu cầu đổi mật khẩu ở lần đăng nhập tiếp theo"
+
+#: 
+msgid "Password strength"
+msgstr "Độ mạnh mật khẩu"
+
+#: 
+msgid "People & Families"
+msgstr "Người và gia đình"
+
+#: 
+msgid "Pledged for"
+msgstr "Đã cam kết cho"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Chuẩn bị bảng kê dâng hiến"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Xem trước thư mẫu"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Mã định danh tài nguyên chữ ký riêng tư của bảng kê dâng hiến Canada. Được quản lý bằng cách tải chữ ký lên."
+
+#: 
+msgid "Property Type"
+msgstr "Loại thuộc tính"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Chỉ cung cấp dữ liệu hình ảnh chữ ký PNG hoặc JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Lịch sử đã ghi: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Báo cáo sự cố"
+
+#: 
+msgid "Requirement"
+msgstr "Yêu cầu"
+
+#: 
+msgid "Return Home"
+msgstr "Về trang chủ"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Xem lại một năm tài chính, rồi tải xuống bảng kê dâng hiến."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Xem lại và đóng khoản nộp"
+
+#: 
+msgid "Review and Filter"
+msgstr "Xem lại và lọc"
+
+#: 
+msgid "Review and vote"
+msgstr "Xem lại và bình chọn"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Xem lại năm đó, rồi tải xuống bảng kê dâng hiến."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Xem những gì chúng tôi đang cân nhắc"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Vai trò và quyền"
+
+#: 
+msgid "Select at least one member."
+msgstr "Chọn ít nhất một thành viên."
+
+#: 
+msgid "Setup key"
+msgstr "Khóa thiết lập"
+
+#: 
+msgid "Sign-in status"
+msgstr "Trạng thái đăng nhập"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Thư mục lưu trữ chữ ký"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Đã cập nhật chữ ký nhưng không thể xóa tệp chữ ký riêng tư trước đó."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Thiếu một số yêu cầu PHP. ChurchCRM cần chúng trước khi có thể tiếp tục."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Bắt đầu một khoản nộp, rồi thêm từng khoản thanh toán vào đó."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Số phong bì bắt đầu"
+
+#: 
+msgid "Strong"
+msgstr "Mạnh"
+
+#: 
+msgid "Support"
+msgstr "Hỗ trợ"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Cài đặt mã số thuế và PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Không thể tải danh sách. Bạn vẫn có thể mở các ý tưởng trên GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Tên có thể dài tối đa %d ký tự"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Không tìm thấy trang bạn yêu cầu. Trang có thể đã được di chuyển, đổi tên hoặc không còn tồn tại."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Lời nhắc có thể dài tối đa %d ký tự"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Các thành viên đã chọn đã có vai trò đó."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Không thể giải mã hình ảnh chữ ký."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Hình ảnh chữ ký không được lớn hơn 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Hình ảnh chữ ký phải nằm trong 2000 × 1000 pixel."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Máy chủ web không thể ghi vào thư mục lưu trữ chữ ký thuế %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Thư mục lưu trữ chữ ký thuế không thể là liên kết tượng trưng."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Đường dẫn lưu trữ chữ ký thuế phải nằm ngoài thư mục ChurchCRM. Để trống cài đặt để dùng thư mục riêng tư tích hợp."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Cài đặt đường dẫn lưu trữ chữ ký thuế phải là đường dẫn thư mục tuyệt đối."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Các số phong bì này sẽ không được lưu cho đến khi bạn chọn Cập nhật hồ sơ gia đình."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Họ không thể đăng nhập với tư cách nhân viên hoặc vào Cổng thành viên, và các phiên, thiết bị và khóa truy cập của họ sẽ bị xóa."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Không thể xóa gia đình này vì có ghi chú. Hãy ngừng kích hoạt gia đình thay vì xóa để giữ lại lịch sử."
+
+#: 
+msgid "This password looks strong."
+msgstr "Mật khẩu này có vẻ mạnh."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Không thể xóa người này vì có hoạt động đã ghi. Hãy ngừng kích hoạt người này thay vì xóa để giữ lại lịch sử."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Thao tác này chỉ xóa tài khoản đăng nhập. Người đó và các ghi chú vẫn được giữ lại."
+
+#: 
+msgid "Time Range"
+msgstr "Khoảng thời gian"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Đã đăng ký xác thực hai yếu tố"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Không thể sao chép tự động. Hãy chọn và sao chép khóa thiết lập thủ công."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Tải lên hình ảnh chữ ký PNG hoặc JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Dùng chức năng tải lên hoặc xóa chữ ký để thay đổi cài đặt này."
+
+#: 
+msgid "User Details"
+msgstr "Chi tiết người dùng"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Tên người dùng hoặc địa chỉ email"
+
+#: 
+msgid "View all ideas"
+msgstr "Xem tất cả ý tưởng"
+
+#: 
+msgid "View events"
+msgstr "Xem sự kiện"
+
+#: 
+msgid "View people and families"
+msgstr "Xem người và gia đình"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Quản lý tình nguyện viên đã bị tắt cho hội thánh này"
+
+#: 
+msgid "Weak"
+msgstr "Yếu"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Những gì tài khoản này có thể làm hiện tại (chỉ đọc)"
+
+#: 
+msgid "You must select a class"
+msgstr "Bạn phải chọn một lớp"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Năm tài chính của hội thánh bạn không bắt đầu vào ngày 1 tháng 1. Cơ quan thuế thường cần biên nhận theo năm dương lịch: hãy chọn Xem lại và lọc rồi đặt ngày từ 1 tháng 1 đến 31 tháng 12."
+
+#: 
+msgid "attendance"
+msgstr "điểm danh"
+
+#: 
+msgid "financial history"
+msgstr "lịch sử tài chính"
+
+#: 
+msgid "notes"
+msgstr "ghi chú"
+
+#: 
+msgid "recorded activities"
+msgstr "hoạt động đã ghi"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "khóa API của người dùng hệ thống đã được tạo lại"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "người dùng hệ thống đã đặt lại mật khẩu từ liên kết trong email"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "người dùng hệ thống đã tắt xác thực hai yếu tố"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "người dùng hệ thống đã bật xác thực hai yếu tố"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "xác thực hai yếu tố của người dùng hệ thống đã bị quản trị viên vô hiệu hóa"
+
+#: 
+msgid "volunteer service history"
+msgstr "lịch sử phục vụ tình nguyện"
+
+#: 
+msgid "%s by %s"
+msgstr "%s bởi %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Nhập mật khẩu của bạn hoặc mã từ ứng dụng xác thực để thay đổi xác thực hai yếu tố."
+
+#: 
+msgid "Latest Notes"
+msgstr "Ghi chú mới nhất"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Chưa có ghi chú nào được thêm."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Bắt đầu đăng ký để nhận mã QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Mật khẩu hoặc mã đó không đúng. Xác thực hai yếu tố vẫn đang bật."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Xác thực hai yếu tố đã được thiết lập. Bí mật của nó chỉ hiển thị trong quá trình đăng ký."
 

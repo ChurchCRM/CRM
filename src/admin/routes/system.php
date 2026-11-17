@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\DatabaseVersionService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
@@ -402,14 +403,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/church-info', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        // Read flash message from session (set by POST handler)
-        $sGlobalMessage      = '';
-        $sGlobalMessageClass = 'success';
-        if (isset($_SESSION['sGlobalMessage'])) {
-            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
-        }
+        $flash = FlashService::take();
+        $sGlobalMessage      = $flash['message'] ?? '';
+        $sGlobalMessageClass = $flash['class'] ?? 'success';
 
         // iChurchLatitude / iChurchLongitude are stored as strings in
         // config_cfg but are semantically floats. Cast on read so the view
@@ -633,11 +629,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // still saved the rest of the form, but warn the admin so they know
         // to enter coordinates manually.
         if ($geocodingFailed) {
-            $_SESSION['sGlobalMessage']      = gettext('Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.');
-            $_SESSION['sGlobalMessageClass'] = 'warning';
+            FlashService::set(gettext('Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.'), 'warning');
         } else {
-            $_SESSION['sGlobalMessage']      = gettext('Church information saved successfully');
-            $_SESSION['sGlobalMessageClass'] = 'success';
+            FlashService::set(gettext('Church information saved successfully'));
         }
 
         return $response
@@ -666,13 +660,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/localization', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        $sGlobalMessage      = '';
-        $sGlobalMessageClass = 'success';
-        if (isset($_SESSION['sGlobalMessage'])) {
-            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
-        }
+        $flash = FlashService::take();
+        $sGlobalMessage      = $flash['message'] ?? '';
+        $sGlobalMessageClass = $flash['class'] ?? 'success';
 
         $localeSettings = [
             'sLanguage'              => SystemConfig::getValue('sLanguage'),
@@ -696,7 +686,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
 
         // Per-locale stats for the Display Preview: translation completeness %
-        // (from locale/poeditor.json) + whether the GNU locale is installed on
+        // (from locale/locale-stats.json) + whether the GNU locale is installed on
         // the host OS (so the admin knows date/number formatting will work).
         // The system-locale check shells out via LocaleService; if exec() is
         // disabled we degrade gracefully (systemAvailable = null = "unknown").
@@ -728,7 +718,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                     || in_array(str_replace('_', '-', $code), $availableNormalized, true);
             }
 
-            // Translation % comes from locale/poeditor.json; guard so a missing
+            // Translation % comes from locale/locale-stats.json; guard so a missing
             // file on a given install degrades to "not tracked" instead of 500.
             $showPercentage = false;
             $percentage     = 0;
@@ -816,8 +806,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $effectiveThousands = $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault();
         $effectiveDecimal   = $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault();
         if ($effectiveThousands === $effectiveDecimal) {
-            $_SESSION['sGlobalMessage']      = gettext('Thousands separator and decimal separator must be different characters.');
-            $_SESSION['sGlobalMessageClass'] = 'danger';
+            FlashService::set(gettext('Thousands separator and decimal separator must be different characters.'), 'danger');
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
                 ->withStatus(303);
@@ -828,8 +817,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sThousandsSeparator', $effectiveThousands);
         SystemConfig::setValue('sDecimalSeparator', $effectiveDecimal);
 
-        $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        FlashService::set(gettext('Localization settings saved successfully'));
 
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')

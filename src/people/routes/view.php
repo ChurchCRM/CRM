@@ -348,9 +348,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $timelineService = new TimelineService();
     $personTimeline  = $timelineService->getForPerson($iPersonID);
 
-    // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
-    $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
-
     // ── Portal sign-in card (member sign-in design §11.3) ───────────────────
     $portalSignIn = $currentUser->isEditRecordsEnabled()
         ? (new PersonSignInService())->statusFor($person, $currentUser->isAdmin())
@@ -435,8 +432,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,
         'personTimeline'         => $personTimeline,
-        // Email history
-        'emailHistory'           => $emailHistory,
+        // Email history URL used by the person timeline
+        'emailHistoryUrl'        => SystemURLs::getRootPath() . '/people/view/' . (int) $iPersonID . '/emails',
         // Portal sign-in card: null when the viewer lacks Edit Records
         'portalSignIn'           => $portalSignIn,
         'portalSignInCanManage'  => $currentUser->isAdmin(),

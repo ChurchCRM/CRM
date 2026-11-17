@@ -132,7 +132,7 @@ declare namespace Cypress {
      * an authenticated browser session for that user.
      *
      * localeValue must be the locale field from src/locale/locales.json
-     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the locale code).
      *
      * Designed for locale smoke tests only; never touches system-wide sLanguage config.
      * @param localeValue - The locale field value from locales.json
@@ -394,10 +394,14 @@ declare namespace Cypress {
      */
     createPersonWithBirthday(personData: {
       name: string;
-      month: number;
-      day: number;
+      month?: number;
+      day?: number;
       year?: number | null;
       lastName?: string;
+      email?: string;
+      createFamily?: boolean;
+      familyId?: number;
+      familyRole?: number;
     }): Chainable<number>;
 
     /**

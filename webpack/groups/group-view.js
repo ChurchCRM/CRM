@@ -518,12 +518,35 @@ function initDataTable() {
         },
       },
       {
+        title: i18next.t("Home Phone"),
+        data: "Person.HomePhone",
+        defaultContent: "",
+        render: (data, type) => {
+          if (type !== "display") return data || "";
+          if (!data) return '<span class="text-muted">—</span>';
+          return '<a href="tel:' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(data) + "</a>";
+        },
+      },
+      {
+        title: i18next.t("Address"),
+        data: "Person.Address",
+        defaultContent: "",
+        render: (data, type) => {
+          if (type !== "display") return data || "";
+          return data ? window.CRM.escapeHtml(data) : '<span class="text-muted">—</span>';
+        },
+      },
+      {
         width: "1",
         title: "",
         data: null,
         orderable: false,
         searchable: false,
         className: "text-end w-1 no-export",
+        // The row actions must never be collapsed away by the responsive
+        // table: without a priority they are the rightmost column and the
+        // first hidden when wider columns (Address, Home Phone) overflow.
+        responsivePriority: 1,
         render: (_data, _type, full) => {
           // GHSA-m649-24q9-q6r4: escapeAttribute for the data-name attribute context (encodes quotes)
           const escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
