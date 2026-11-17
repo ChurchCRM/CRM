@@ -336,24 +336,25 @@ class FinancialService
     public function validateChecks(object $payment, ?string $excludeGroupKey = null): void
     {
         AuthService::requireUserGroupMembership('bFinance');
-        //validate that the payment options are valid
-        //If the payment method is a check and the bRequireCheckNumber setting is enabled,
-        //then the check number must be present, and it must not already have been used for this family
-        //if the payment method is cash, there must not be a check number
-        if (SystemConfig::getBooleanValue('bRequireCheckNumber')
-            && !empty($payment->type) && $payment->type === 'Payment'
-            && !empty($payment->iMethod) && $payment->iMethod === 'CHECK'
-            && empty($payment->iCheckNo)) {
+        if (empty($payment->type) || $payment->type !== 'Payment') {
+            return;
+        }
+        $method = $payment->iMethod ?? '';
+        $checkNumber = trim((string) ($payment->iCheckNo ?? ''));
+        // Blank and 0 mean "no check number": churches that do not record numbers enter 0 for every check.
+        $hasCheckNumber = ltrim($checkNumber, '0') !== '';
+
+        if ($method === 'CHECK' && !$hasCheckNumber && SystemConfig::getBooleanValue('bRequireCheckNumber')) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
-        // detect check inconsistencies
-        if (!empty($payment->type) && $payment->type === 'Payment' && isset($payment->iCheckNo)) {
-            if (!empty($payment->iMethod) && $payment->iMethod === 'CASH') {
-                throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } elseif (!empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !empty($payment->FamilyID) && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID, $excludeGroupKey)) {
-                //build routine to make sure this check number hasn't been used by this family yet (look at group key)
-                throw new \Exception("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
-            }
+        if (!$hasCheckNumber) {
+            return;
+        }
+        if ($method === 'CASH') {
+            throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
+        }
+        if ($method === 'CHECK' && !empty($payment->FamilyID) && $this->locateFamilyCheck($checkNumber, (string) $payment->FamilyID, $excludeGroupKey)) {
+            throw new \Exception("Check number '" . $checkNumber . "' for selected family already exists.");
         }
     }
 
@@ -688,6 +689,7 @@ class FinancialService
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
+            ->orderById(Criteria::DESC)
             ->limit($limit);
 
         if ($fyid !== null && $fyid > 0) {
@@ -865,17 +867,21 @@ class FinancialService
     }
 
     /**
-     * Get current deposit from session.
+     * The deposit in hand: the session's open deposit, else the newest open deposit.
+     * A closed session deposit is returned only when no deposit is open.
      *
      * @return Deposit|null
      */
     public function getCurrentDeposit(): ?Deposit
     {
         $currentDepositId = $_SESSION['iCurrentDeposit'] ?? null;
-        if ($currentDepositId) {
-            return DepositQuery::create()->findOneById((int) $currentDepositId);
+        $deposit = $currentDepositId ? DepositQuery::create()->findOneById((int) $currentDepositId) : null;
+        if ($deposit !== null && !$deposit->getClosed()) {
+            return $deposit;
         }
-        return null;
+
+        // A treasurer with no deposit in hand continues the newest open one.
+        return DepositQuery::create()->filterByClosed(false)->orderByDate(Criteria::DESC)->orderById(Criteria::DESC)->findOne() ?? $deposit;
     }
 
     /**
@@ -885,7 +891,7 @@ class FinancialService
      */
     public function getCurrentDepositId(): ?int
     {
-        return $_SESSION['iCurrentDeposit'] ?? null;
+        return $this->getCurrentDeposit()?->getId();
     }
 
     /**
@@ -920,7 +926,7 @@ class FinancialService
             'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,
-            'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),
+            'recentDeposits'   => $this->getRecentDeposits(5),
             'activeFunds'      => $activeFunds,
             'activeFundCount'  => $activeFunds->count(),
             'totalFundCount'   => $donationFundService->getCount(),
@@ -930,7 +936,7 @@ class FinancialService
             'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'currentDeposit'   => $currentDeposit,
-            'currentDepositId' => $this->getCurrentDepositId(),
+            'currentDepositId' => $currentDeposit?->getId(),
         ];
     }
 

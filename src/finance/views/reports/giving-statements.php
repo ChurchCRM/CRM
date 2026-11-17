@@ -160,7 +160,7 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
     </div>
 
     <div class="d-flex gap-2">
-        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/finance/reports') ?>"><?= gettext('Back') ?></a>
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/finance/reports/year-end') ?>"><?= gettext('Back') ?></a>
         <button type="submit" class="btn btn-primary" id="previewReport"><i class="fa-solid fa-eye me-1"></i><?= gettext('Preview') ?></button>
     </div>
 </form>

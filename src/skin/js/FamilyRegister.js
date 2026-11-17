@@ -445,7 +445,7 @@
       [
         {
           rule: "required",
-          errorMessage: i18next.t("City is required"),
+          errorMessage: i18next.t("City is required."),
         },
       ],
       cityContainer ? { errorsContainer: cityContainer } : {},
@@ -458,7 +458,7 @@
       [
         {
           rule: "required",
-          errorMessage: i18next.t("Zip code is required"),
+          errorMessage: i18next.t("ZIP code is required."),
         },
       ],
       zipContainer ? { errorsContainer: zipContainer } : {},

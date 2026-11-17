@@ -55,6 +55,7 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         $linkedGroups[] = [
             'id'   => (int) $group->getId(),
             'name' => $group->getName(),
+            'url'  => $group->getViewURI(),
         ];
     }
 

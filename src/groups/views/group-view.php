@@ -280,6 +280,20 @@ $sManagedTitle = $bIsMinistryPool
                 </div>
                 <?php endif; ?>
 
+                <?php if ($bCanManageGroups): ?>
+                <div class="d-none" id="bulkRoleBar">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                        <button type="button" class="btn btn-sm btn-primary" id="bulkChangeRole">
+                            <i class="fa-solid fa-user-tag me-1"></i><?= gettext('Change Role') ?>
+                            <span class="badge bg-white text-primary ms-1" id="bulkSelectedCount">0</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="bulkClearSelection">
+                            <?= gettext('Clear selection') ?>
+                        </button>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 <!-- DataTable -->
                 <div class="overflow-visible">
                     <table class="table table-hover table-vcenter table-sm" id="membersTable"></table>

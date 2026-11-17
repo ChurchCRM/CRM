@@ -21,6 +21,10 @@
             "kind": "schema",
             "reason": "Migration spec for the 7.8.3 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
         },
+        "cypress/e2e/api/private/admin/private.admin.user-settings-cascade.spec.js": {
+            "kind": "schema",
+            "reason": "Schema spec for #8672: the user_settings foreign key, its ON DELETE CASCADE and the 7.8.5 upgrade block that removes orphaned settings have no HTTP surface."
+        },
         "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
             "kind": "schema",
             "reason": "Member sign-in schema spec (#10463): the person-keyed tables, their foreign keys, ON DELETE rules and unique token hashes, and how the application reads a stored grant it would never write, have no HTTP surface."
@@ -64,6 +68,10 @@
         "cypress/support/password-reset-fixtures.js": {
             "kind": "fixture",
             "reason": "Deterministic password-reset token fixtures (including legacy/expired links) and exact user/token snapshots and restoration for #10201. Password hashes and token uses have no HTTP read surface; the spec exercises GET and POST through HTTP."
+        },
+        "cypress/support/person-deletion-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Deterministic legacy history fixtures and stored relationship snapshots for #10485 where no complete HTTP surface exists. The behavior spec uses HTTP for supported operations and person/family deletion."
         }
     },
     "baseline": {
@@ -134,7 +142,6 @@
         "cypress/e2e/ui/portal/member.portal-volunteer.spec.js": 46,
         "cypress/e2e/ui/portal/portal.e2e-member-week.spec.js": 42,
         "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37,
-        "cypress/e2e/ui/security/limited-access.spec.js": 7,
         "cypress/e2e/ui/session/session.empty-password.spec.js": 8
     }
 }

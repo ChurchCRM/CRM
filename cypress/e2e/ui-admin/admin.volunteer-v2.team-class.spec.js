@@ -153,6 +153,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_STUDENT}"]`).should("exist");
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
         cy.get(`#membersTable .changeMembership[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
+        cy.get("#membersTable .member-select").should("not.exist");
     });
 
     it("the portal team page names the class, read-only", () => {

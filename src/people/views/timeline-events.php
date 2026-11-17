@@ -16,7 +16,7 @@ if (empty($timeline)) { ?>
         <span><?= gettext('No timeline events yet.') ?></span>
     </div>
 <?php } else {
-    $timelineCounts = ['notes' => 0, 'events' => 0, 'email' => 0, 'system' => 0];
+    $timelineCounts = ['notes' => 0, 'events' => 0, 'email' => 0, 'account' => 0, 'system' => 0];
     foreach ($timeline as $tlItem) {
         $cat = $tlItem['category'] ?? 'notes';
         if (isset($timelineCounts[$cat])) {
@@ -40,6 +40,12 @@ if (empty($timeline)) { ?>
             <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['email'] ?></span>
         </button>
         <?php } ?>
+        <?php if ($timelineCounts['account'] > 0) { ?>
+        <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="account">
+            <i class="fa-solid fa-user-shield me-1"></i><?= gettext('Account') ?>
+            <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['account'] ?></span>
+        </button>
+        <?php } ?>
         <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
             <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
             <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
@@ -47,6 +53,11 @@ if (empty($timeline)) { ?>
         <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
             <?= gettext('Show all') ?>
         </button>
+        <?php if ($timelineCounts['email'] > 0 && !empty($emailHistoryUrl ?? null)) : ?>
+        <a class="btn btn-sm btn-link" id="timeline-email-history-link" href="<?= InputUtils::escapeAttribute($emailHistoryUrl) ?>">
+            <?= gettext('View all emails') ?>
+        </a>
+        <?php endif; ?>
     </div>
     <div class="timeline-empty-notice alert alert-info" style="display:none;">
         <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
@@ -69,6 +80,14 @@ if (empty($timeline)) { ?>
                                 <span class="text-secondary small"><?= $item['text'] ?> <?= InputUtils::escapeHTML(gettext($item['header'])) ?></span>
                                 <small class="text-muted flex-shrink-0"><?= InputUtils::escapeHTML((string) $item['datetime']) ?></small>
                             </div>
+                            <?php if (($item['category'] ?? '') === 'email') : ?>
+                                <div class="text-secondary small mt-1">
+                                    <?= gettext('Sent by') ?>:
+                                    <?= $item['emailSentBy'] !== null
+                                        ? InputUtils::escapeHTML((string) $item['emailSentBy'])
+                                        : gettext('Automatic') ?>
+                                </div>
+                            <?php endif; ?>
                         <?php } else {
                             // Treat an empty deleteLink/editLink as "no action" — note-type
                             // items always set these keys, so a redacted private-note

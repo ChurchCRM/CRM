@@ -52,7 +52,7 @@ describe("Admin: temporary account lockout (#10197)", () => {
         lockOut(maxFailedLogins);
 
         cy.setupAdminSession();
-        cy.visit(`/v2/user/${LOCKOUT_USER_ID}`);
+        cy.visit(`/admin/system/users/${LOCKOUT_USER_ID}`);
         cy.get('[data-cy="lockout-minutes-left"]').should("contain.text", "Minutes until it unlocks by itself: 2");
 
         const filterToLockoutUser = () => {

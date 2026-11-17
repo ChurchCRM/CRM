@@ -24,6 +24,7 @@
  * extractor scans only `webpack/**` and `src/skin/js/**` (design §5.10, F31).
  */
 
+import { clearInlineError, renderInlineError } from "../common/inline-error";
 import { createMinistry, errorMessage, notifyError, notifySuccess } from "./api";
 
 function byId<T extends HTMLElement>(id: string): T | null {
@@ -45,10 +46,10 @@ function modal(id: string): { show(): void; hide(): void } | null {
 
 function showError(message: string): void {
   const box = byId("ministry-create-form-error");
-  const text = box?.querySelector(".volunteer-error-text");
-  if (text) {
-    text.textContent = message;
-  }
+  renderInlineError(box, message, {
+    className: "alert alert-danger",
+    icon: "fa-solid fa-circle-exclamation me-1",
+  });
   show(box, true);
   notifyError(message);
 }
@@ -84,7 +85,9 @@ export function initMinistryCreate(): void {
   }
 
   const open = (): void => {
-    show(byId("ministry-create-form-error"), false);
+    const errorBox = byId("ministry-create-form-error");
+    clearInlineError(errorBox);
+    show(errorBox, false);
     const name = byId<HTMLInputElement>("ministry-create-name");
     const description = byId<HTMLInputElement>("ministry-create-description");
     if (name) {

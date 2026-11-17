@@ -14,12 +14,12 @@ describe("Session Password Reset", () => {
             cy.contains("Enter your login name and we will email you a link to reset your password.").should("be.visible");
             cy.get("input[name='username']").should("exist").should("be.visible");
             cy.get("#resetPassword").should("exist").should("be.visible").should("be.enabled").should("contain", "Send Reset Email");
-            cy.contains("Back to login").should("exist").should("be.visible");
+            cy.contains("Back to Login").should("exist").should("be.visible");
         });
 
         it("Should show validation error when username is empty", () => {
             cy.get("#resetPassword").click();
-            cy.contains("Login Name is Required").should("be.visible");
+            cy.contains("Login Name is required").should("be.visible");
             cy.get("#resetPassword").should("not.be.disabled");
         });
 
@@ -38,10 +38,10 @@ describe("Session Password Reset", () => {
         it("Should show success message and redirect on valid user", () => {
             cy.get("input[name='username']").type("admin");
             cy.get("#resetPassword").click();
-            
+
             // Wait for success notification
             cy.contains("Check your email for a password reset link").should("be.visible");
-            
+
             // Should redirect to login after a delay
             cy.url({ timeout: 5000 }).should("not.contain", "/session/forgot-password/reset-request");
         });
@@ -52,10 +52,10 @@ describe("Session Password Reset", () => {
                 statusCode: 500,
                 body: { error: "Server error" }
             }).as("failedReset");
-            
+
             cy.get("input[name='username']").type("admin");
             cy.get("#resetPassword").click();
-            
+
             cy.wait("@failedReset");
             cy.contains("Sorry, we are unable to process your request at this point in time.").should("be.visible");
             cy.get("#resetPassword").should("not.be.disabled").should("contain", "Send Reset Email");
@@ -64,21 +64,21 @@ describe("Session Password Reset", () => {
         it("Should handle case-insensitive username", () => {
             cy.get("input[name='username']").type("ADMIN");
             cy.get("#resetPassword").click();
-            
+
             cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
 
         it("Should trim whitespace from username", () => {
             cy.get("input[name='username']").type("  admin  ");
             cy.get("#resetPassword").click();
-            
+
             cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
 
         it("Should show error for non-existent user (but success message for security)", () => {
             cy.get("input[name='username']").type("nonexistentuser123");
             cy.get("#resetPassword").click();
-            
+
             // API returns success: true for security reasons, so user sees success message
             cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
@@ -88,10 +88,10 @@ describe("Session Password Reset", () => {
             cy.get("input[name='username']").type("nonexistentuser123");
             cy.get("#resetPassword").click();
             cy.contains("Check your email for a password reset link").should("be.visible");
-            
+
             // Go back to login and return to reset page
             cy.visit("/session/forgot-password/reset-request");
-            
+
             // Second attempt with valid user
             cy.get("input[name='username']").type("admin");
             cy.get("#resetPassword").click();
@@ -181,6 +181,72 @@ describe("Session Password Reset", () => {
         function seedToken(type = "password", expired = false, remaining = 1) {
             return seedResetToken(storageKey, user.usr_per_ID, type, expired, remaining);
         }
+
+        it("Should update the password strength meter on the reset page", () => {
+            cy.then(() => seedToken());
+            cy.visit(url());
+
+            // Hidden when no password is entered
+            cy.get("#PasswordStrengthContainer")
+            .should("not.be.visible");
+
+            // Weak password
+            cy.get("#password").type("abc", { log: false });
+
+            cy.get("#PasswordStrengthContainer")
+            .should("be.visible");
+
+            cy.get("#PasswordStrengthLabel")
+            .should("contain", "Weak");
+
+            cy.get("#PasswordStrengthBar")
+            .should("have.attr", "aria-valuenow", "25");
+            cy.screenshot("11565-weak-password");
+
+            // Fair password
+            cy.get("#password")
+                .clear()
+                .type("Abcdefgh", { log: false });
+
+            cy.get("#PasswordStrengthLabel")
+                .should("contain", "Fair");
+
+            cy.get("#PasswordStrengthBar")
+                .should("have.attr", "aria-valuenow", "50");
+
+            cy.screenshot("11565-fair-password");
+
+            // Good password
+            cy.get("#password")
+                .clear()
+                .type("Abcdefgh12", { log: false });
+
+            cy.get("#PasswordStrengthLabel")
+                .should("contain", "Good");
+
+            cy.get("#PasswordStrengthBar")
+                .should("have.attr", "aria-valuenow", "75");
+
+            cy.screenshot("11565-good-password");
+            // Strong password
+            cy.get("#password")
+            .clear()
+            .type("HelloWorld123!", { log: false });
+
+            cy.get("#PasswordStrengthLabel")
+            .should("contain", "Strong");
+
+            cy.get("#PasswordStrengthBar")
+            .should("have.attr", "aria-valuenow", "100");
+            cy.screenshot("11565-strong-password");
+
+            // Meter hides when cleared
+            cy.get("#password").clear();
+
+            cy.get("#PasswordStrengthContainer")
+            .should("not.be.visible");
+        });
+
 
         for (const format of ["legacy plaintext", "SHA-256"]) {
             it(`GET preserves password and token; POST works once and rejects reuse (${format})`, () => {

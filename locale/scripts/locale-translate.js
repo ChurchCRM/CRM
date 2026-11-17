@@ -20,6 +20,9 @@
  * valid ones, lists the rejected ones with the reason, and records identical-to-English
  * values in locale/terms/english-ok.json. An empty value leaves the term untranslated.
  *
+ * Batch files come from the repo (npm run locale:missing); after translating, npm run locale:apply
+ * writes them into the locale files.
+ *
  * See .claude/commands/locale-translate.md for the workflow.
  */
 
@@ -51,7 +54,7 @@ function buildLocaleMap() {
     const map = {};
     for (const [name, entry] of Object.entries(localesConfig)) {
         if (entry.skip_audit) continue;
-        map[entry.poEditor] = { name, locale: entry.locale, countryCode: entry.countryCode };
+        map[entry.localeCode] = { name, locale: entry.locale, countryCode: entry.countryCode };
     }
     return map;
 }
@@ -63,8 +66,8 @@ function hasUntranslatedValues(terms) {
     );
 }
 
-function getBatchFiles(poEditorCode) {
-    const localeDir = path.join(config.terms.missing, poEditorCode);
+function getBatchFiles(localeCode, { includeFilled = false } = {}) {
+    const localeDir = path.join(config.terms.missing, localeCode);
     if (!fs.existsSync(localeDir)) return [];
     return fs.readdirSync(localeDir)
         .filter(f => f.endsWith('.json'))
@@ -72,7 +75,7 @@ function getBatchFiles(poEditorCode) {
         .map(f => path.join(localeDir, f))
         .filter(fp => {
             const data = loadJSON(fp);
-            return data && hasUntranslatedValues(data);
+            return data && (includeFilled || hasUntranslatedValues(data));
         });
 }
 
@@ -89,7 +92,7 @@ function countUntranslated(terms) {
 function cmdList(localeMap) {
     const missingDir = config.terms.missing;
     if (!fs.existsSync(missingDir)) {
-        console.log('No missing terms directory found. Run: npm run locale:download (the downloader now generates missing-term batches)');
+        console.log('No missing-term batches. Run: npm run locale:missing');
         return;
     }
 
@@ -117,7 +120,8 @@ function cmdList(localeMap) {
     }
     console.log(`\n  Total: ${results.length} locales, ${results.reduce((n, r) => n + r.total, 0)} terms\n`);
     console.log('  To translate, run in Claude Code: /locale-translate --locale <code>');
-    console.log('  Or translate all at once:         /locale-translate --all\n');
+    console.log('  Or translate all at once:         /locale-translate --all');
+    console.log('  Then write them into the locale files: npm run locale:apply\n');
 }
 
 function cmdReadFile(filePath) {
@@ -176,7 +180,7 @@ function pluralShapeProblems(existing, value) {
 
 function scriptsFor(code) {
     const locales = loadJSON(config.localesJson) || {};
-    return Object.values(locales).find(entry => String(entry.poEditor).toLowerCase() === code.toLowerCase())?.scripts;
+    return Object.values(locales).find(entry => String(entry.localeCode).toLowerCase() === code.toLowerCase())?.scripts;
 }
 
 function applyToBatch(code, absPath, incoming, { write = true } = {}) {
@@ -264,9 +268,9 @@ function cmdApplyBulk(translationsJson) {
         if (incoming === null || typeof incoming !== 'object' || Array.isArray(incoming)) {
             exitWith(`${code}: expected an object of term: translation pairs`);
         }
-        const files = getBatchFiles(code);
+        const files = getBatchFiles(code, { includeFilled: true });
         if (files.length === 0) {
-            console.error(`❌ ${code}: no batch files with untranslated terms`);
+            console.error(`❌ ${code}: no batch files`);
             process.exitCode = 1;
             continue;
         }
@@ -336,7 +340,14 @@ function cmdExport(localeMap, localeArg) {
             }
         }
     }
-    console.log(JSON.stringify({ strings, plurals }, null, 2));
+    // Where each term is used in the code (locale/terms/context.json, written
+    // by locale:missing), so a translator can resolve ambiguous short strings.
+    const allContext = loadJSON(config.terms.context) || {};
+    const context = {};
+    for (const key of [...Object.keys(strings), ...Object.values(plurals).flatMap(p => Object.keys(p))]) {
+        if (allContext[key]) context[key] = allContext[key];
+    }
+    console.log(JSON.stringify({ strings, plurals, context }, null, 2));
 }
 
 // ---------------------------------------------------------------------------

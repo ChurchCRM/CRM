@@ -216,6 +216,17 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.get('#FirstName').type(personData.name);
     cy.get('#LastName').type(personData.lastName ?? 'TestUser');
     cy.get('#Gender').select('1');
+    if (personData.email) {
+        cy.get('#Email').type(personData.email);
+    }
+
+    if (personData.createFamily) {
+        cy.get('#familyId').select('-1', { force: true });
+        cy.get('#FamilyRole').select('1', { force: true });
+    } else if (personData.familyId) {
+        cy.get('#familyId').select(String(personData.familyId), { force: true });
+        cy.get('#FamilyRole').select(String(personData.familyRole ?? 2), { force: true });
+    }
 
     if (personData.month > 0) {
         cy.get('#BirthMonth').select(padded(personData.month));
@@ -234,6 +245,28 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.url().should('match', /people\/view\/\d+/);
 
     return cy.url().then((url) => Number(/\/people\/view\/(\d+)/.exec(url)[1]));
+});
+
+/**
+ * Stores a family's envelope number through the Envelope Manager as the admin, then signs out.
+ */
+Cypress.Commands.add('setFamilyEnvelope', (familyId, envelope) => {
+    cy.clearCookies();
+    cy.readEnv('admin.username').then((username) =>
+        cy.readEnv('admin.password').then((password) =>
+            cy.request({ method: 'POST', url: '/session/begin', form: true, body: { User: username, Password: password } }),
+        ),
+    );
+    cy.request('/finance/envelopes').then(({ body }) => {
+        const csrfToken = body.match(/name="csrf_token" value="([^"]+)"/)[1];
+        cy.request({
+            method: 'POST',
+            url: '/finance/envelopes',
+            form: true,
+            body: { csrf_token: csrfToken, action: 'save', [`envelopes[${familyId}]`]: String(envelope) },
+        });
+    });
+    cy.clearCookies();
 });
 
 /**

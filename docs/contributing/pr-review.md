@@ -40,9 +40,9 @@ Fix failing CI before asking for review; a PR merges only with green CI.
 Do not hold a feature or bug-fix PR solely because user documentation, screenshots/video, blog, or marketing content is missing. Review and merge the code when its actual safety, behavior, tests, and CI gates pass; record useful content work as a follow-up.
 
 - User manual updates belong in the docs repository and describe released behavior. Merge/publish them according to that repository's release process.
-- For useful user-visible changes, leave a concise follow-up note and link or create one focused issue for the relevant docs, screenshots/video, or content. Do not require every feature to have every asset.
-- A missing new capture is a follow-up. Breaking an existing one is not: if the change removes or renames something a `playwright/` spec uses, update the spec in the same PR, as you would a Cypress selector.
-- Invite non-code contributors to write how-to guides, capture real-product screenshots, make short walkthroughs, improve translations, or explain a feature's value to churches. Provide a clear issue, confirmed product behavior, and contribution path.
+- For useful user-visible changes, leave a concise follow-up note and link or create one focused issue for the relevant docs or content. Do not require every feature to have every asset.
+- Cypress specs cover every behavior change. A Playwright capture is optional: add one only when it wows a church viewer or makes a docs page clearly easier to follow (a workflow story, a result screen, a before/after). A standard click-through flow earns none, and a missing capture is never a review item. Breaking an existing one is: if the change removes or renames something a `playwright/` spec uses, update the spec in the same PR, as you would a Cypress selector.
+- Invite non-code contributors to write how-to guides that lead with the outcome and the gotchas, make short walkthroughs of real workflows, improve translations, or explain a feature's value to churches. Provide a clear issue, confirmed product behavior, and contribution path.
 - Marketing should explain the church problem or outcome and accurately state when the feature is available. Bug/security-only fixes usually need no marketing follow-up.
 - Demo-import data in `src/admin/demo/config.json` can be followed up separately (not Cypress seed if tests would break).
 - A later member-facing consumer for storage-only admin work can be tracked separately.

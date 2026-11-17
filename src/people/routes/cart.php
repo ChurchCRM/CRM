@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
@@ -320,15 +321,14 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             $familyService->autoGeocodeFamily($newFamily);
         }
 
-        $_SESSION['sGlobalMessage'] = sprintf(
+        FlashService::set(sprintf(
             ngettext(
                 '%d person successfully added to selected family.',
                 '%d people successfully added to selected family.',
                 $count
             ),
             $count
-        );
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        ));
 
         return SlimUtils::renderRedirect(
             $response,

@@ -26,7 +26,7 @@ For each bundled item, say whether it shortens or completes the job end to end, 
 
 Rate the whole issue and each item high, medium, or low ROI. Weigh how many churches use the workflow, how often it occurs, today's pain, and build and maintenance cost. End with one recommendation: proceed as scoped; proceed with a slimmed scope naming exactly what to cut and move elsewhere; keep closed or close; or split, naming the split.
 
-A change that tells or extends a user workflow story earns a marketing capture. A screen or CRUD operation on its own does not; state which applies.
+A capture is optional. State whether the change passes the value test in `marketing-visuals-pipeline.md` (it wows a church viewer, or makes a docs page clearly easier to follow). A standard click-through flow, a new screen or a CRUD operation does not.
 
 ## Draft output
 
@@ -35,4 +35,4 @@ Draft in chat. Post only when a maintainer says to post. Include:
 - **User & job:** one or two lines
 - **What exists on master today:** baseline and current workaround
 - **Per-item workflow verdicts:** one entry per bundled item
-- **ROI and recommendation:** overall and item ratings, exact slimmed scope when applicable, and whether the change earns a marketing capture
+- **ROI and recommendation:** overall and item ratings, exact slimmed scope when applicable, and whether the change passes the capture value test

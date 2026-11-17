@@ -21,16 +21,19 @@ $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 switch ($sType) {
     case 'p':
         $sTypeName = gettext('Person');
+        $sRecordType = 'person';
         $sTypeIcon = 'fa-person-half-dress';
         break;
 
     case 'f':
         $sTypeName = gettext('Family');
+        $sRecordType = 'family';
         $sTypeIcon = 'fa-people-roof';
         break;
 
     case 'g':
         $sTypeName = gettext('Group');
+        $sRecordType = 'group';
         $sTypeIcon = 'fa-user-group';
         break;
 
@@ -106,7 +109,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <a href="PropertyTypeList.php?class=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-sm btn-outline-secondary me-2">
                     <i class="fa-solid fa-tags me-1"></i><?= gettext('Manage') ?> <?= InputUtils::escapeHTML($sTypeName) ?> <?= gettext('Property Types') ?>
                 </a>
-                <a href="PropertyEditor.php?Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-sm btn-primary">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/properties/<?= $sRecordType ?>/new" class="btn btn-sm btn-primary">
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New') ?>
                 </a>
             </div>
@@ -128,7 +131,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No properties defined yet') ?>
                         <br>
-                        <a href="PropertyEditor.php?Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-primary btn-sm mt-3">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/properties/<?= $sRecordType ?>/new" class="btn btn-primary btn-sm mt-3">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Your First Property') ?>
                         </a>
                     </td>
@@ -163,7 +166,7 @@ require_once __DIR__ . '/Include/Header.php';
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="PropertyEditor.php?PropertyID=<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
+                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/properties/<?= (int) $prop['pro_ID'] ?>/edit">
                                         <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>
