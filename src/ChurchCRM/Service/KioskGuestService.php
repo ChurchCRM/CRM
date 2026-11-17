@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
-use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use Propel\Runtime\Propel;
 
@@ -48,14 +47,6 @@ class KioskGuestService
         $con->beginTransaction();
         try {
             $guest->save($con);
-            $note = new Note();
-            $note->setPerId($guest->getId());
-            $note->setFamId(0);
-            $note->setType('event');
-            $note->setPrivate(0);
-            $note->setEntered(Person::SELF_REGISTER);
-            $note->setText(sprintf(gettext('Registered as a walk-in guest at the kiosk during event: %s'), $event->getTitle()));
-            $note->save($con);
             $event->checkInPerson($guest->getId(), null, $con);
             $con->commit();
         } catch (\Throwable $e) {

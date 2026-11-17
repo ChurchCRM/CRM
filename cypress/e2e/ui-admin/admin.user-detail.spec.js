@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { inOwnCookieJar } from '../../support/cookie-jar';
+
 describe('Administrator diagnoses and manages another login', () => {
     let temporaryUserCreated = false;
 
@@ -41,6 +43,16 @@ describe('Administrator diagnoses and manages another login', () => {
         cy.visit('/admin/system/users/25');
         cy.get('[data-cy="user-username"]').should('have.text', 'admin-detail-test');
         cy.then(() => { temporaryUserCreated = true; });
+        const ballotSetting = '/api/user/25/setting/notification.dismissed.d2fa1db07ef75272d4cdfba18d2';
+        inOwnCookieJar(() => {
+            cy.makePrivateAdminAPICall('POST', ballotSetting, { value: 'true' }, 200)
+                .its('body.value').should('eq', 'true');
+        });
+        cy.reload();
+        inOwnCookieJar(() => {
+            cy.makePrivateAdminAPICall('GET', ballotSetting, null, 200)
+                .its('body.value').should('eq', 'true');
+        });
         cy.get('[data-cy="user-admin-actions"] a[href$="/changePassword"]').click();
         cy.get('#NewPassword1').type('Detail-Test-Password-837!');
         cy.get('#NewPassword2').type('Detail-Test-Password-837!');

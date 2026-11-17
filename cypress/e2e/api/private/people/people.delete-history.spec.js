@@ -279,4 +279,5 @@ describe("Person deletion preserves recorded history", () => {
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 404));
     });
+
 });
