@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "新しいボランティア機会を割り当て"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "電子取引の詳細"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "控除対象外金額を合計金額より大きくすることはできません。"
 
@@ -2133,10 +2129,6 @@ msgstr "入金日"
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "これにより、データベース内の家族エンベロープ番号がこのページで選択したものに上書きされます。続行しますか?"
-
-#: 
-msgid "Family Select"
-msgstr "世帯選択"
 
 #: 
 msgid "Welcome to"
@@ -9384,10 +9376,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "会計年度別に家族の献金誓約と基金への拠出を追跡"
 
 #: 
-msgid "Transaction Details"
-msgstr "取引詳細"
-
-#: 
 msgid "Unmapped"
 msgstr "未マッピング"
 
@@ -9470,10 +9458,6 @@ msgstr "家族の献金誓約概要と基金配分を表示"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "グループメンバー、役割、プロパティを表示"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "献金誓約の入金の取引詳細を表示"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11034,10 +11018,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "無効なJSON値 — 設定が保存されませんでした。修正してもう一度お試しください。"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditorの翻訳プロジェクトに参加する"
-
-#: 
 msgid "Language and regional settings"
 msgstr "言語および地域設定"
 
@@ -11177,10 +11157,6 @@ msgstr "ユーザー設定"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "バージョン%sが利用可能です。インストールをアップグレードしてください。"
-
-#: 
-msgid "View All"
-msgstr "すべて表示"
 
 #: 
 msgid "Yellow"
@@ -15294,10 +15270,6 @@ msgid "Calendar Embed Origins"
 msgstr "カレンダー埋め込み元"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM の翻訳は POEditor のコミュニティによって管理されています。次の方法でご協力いただけます："
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "現在の $URL[0] の値"
 
@@ -15464,10 +15436,6 @@ msgstr "献金基金"
 #: 
 msgid "user"
 msgstr "ユーザー"
-
-#: 
-msgid "with at least one"
-msgstr "少なくとも1つ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17238,10 +17206,6 @@ msgstr "今会計年度の集計額"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%sは完全なhttps://のウェブアドレスである必要があります。例: https://example.org/yourchurch"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "アカウントの権限が制限されています。管理者にお問い合わせください。"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20307,10 +20271,6 @@ msgid "Read the theme authoring guide"
 msgstr "テーマ作成ガイドを読む"
 
 #: 
-msgid "Recent Emails"
-msgstr "最近のメール"
-
-#: 
 msgid "Recipient"
 msgstr "宛先"
 
@@ -22481,10 +22441,6 @@ msgstr "家族名で検索"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "家族名または封筒番号で検索"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "誓約または支払いがある家族は削除できません。先に財務記録を移動または削除してください。"
 
 #: 
 msgid "You cannot delete your own account."
@@ -27195,4 +27151,711 @@ msgstr "データはあなたのものです。報告するのはソフトウェ
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "データはあなたのものです。インストール数を集計するため、ChurchCRM はインストールまたはアップグレードされたことと成功したかどうか、使用中の 1 日 1 回のチェックイン、さらにバージョン番号、国、データベースの種類、ランダムなインストール ID を報告します。会員、献金、その他の教会の記録、教会名、Web アドレスやサーバー名、メールアドレスは決して報告しません。管理 → テレメトリーでいつでもオフにできます。失敗したインストールやアップグレードは引き続き報告されます。警告、エラーの詳細、ページビューは、あなたが選んだ場合にのみ共有されます。"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: 入金が%2$d件まだ開いています。明細を送信する前に、すべての献金が確定するよう閉じてください。"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "封筒番号を%d件保存しました。"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d家族"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: すべての入金が閉じられています。明細を準備できます。"
+
+#: 
+msgid "12 months"
+msgstr "12か月"
+
+#: 
+msgid "30 days"
+msgstr "30日"
+
+#: 
+msgid "90 days"
+msgstr "90日"
+
+#: 
+msgid "Add Property"
+msgstr "プロパティを追加"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "文字をもう少し、または記号を追加してください。"
+
+#: 
+msgid "Add and edit events"
+msgstr "イベントの追加と編集"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "文字を増やすか、数字や記号を混ぜてください。"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "文字を増やし、大文字・小文字・数字・記号を組み合わせてください。"
+
+#: 
+msgid "Add people and families"
+msgstr "人と家族の追加"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "この機能がオンの間、管理者はすべての権限を持ちます。"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "サインインも無効にして、メンバーポータルを使えないようにする"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "明細を送信する前に"
+
+#: 
+msgid "Birthday today"
+msgstr "今日が誕生日"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "非公開の税務署名ファイルを作成できません。保存フォルダーが書き込み可能か確認してください。"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "税務署名の保存フォルダー %s を作成できません。Webサーバーが書き込めることを確認するか、税務署名の保存パス設定で書き込み可能なフォルダーを指定してください。"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "誓約または支払いがある家族は削除できません。財務履歴を残すため、代わりに家族を無効にしてください。財務記録の移動は必要な場合のみ行ってください。"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "非公開の税務署名をエンコードできません。"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "フィールドをその方向に移動できません"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "非公開の税務署名を読み取れません。"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "非公開の署名を削除できません。"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "非公開の税務署名ファイルを削除できません。"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "税務署名の保存用アプリケーションフォルダーを解決できません。"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "非公開の署名を保存できません。"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "税務署名の保存フォルダーにアクセスガード %s を書き込めません。"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "選択したメンバーの役割を変更: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "教会の会計年度"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM システムチェック"
+
+#: 
+msgid "Custom field not found"
+msgstr "カスタムフィールドが見つかりません"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "代わりに家族を無効にする"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "削除する代わりに、家族を無効にしてください。"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "削除する代わりに、その人を無効にしてください。"
+
+#: 
+msgid "Delete people and families"
+msgstr "人と家族の削除"
+
+#: 
+msgid "Delete the login for"
+msgstr "次のログインを削除:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "入金グラフの期間"
+
+#: 
+msgid "Disabled at"
+msgstr "無効にした日時"
+
+#: 
+msgid "Disabled by"
+msgstr "無効にしたユーザー"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "ダウンロードでは、その年のすべての献金者が送信されます。「確認して絞り込む」では、先に合計が表示され、家族・基金・クラス・日付で絞り込めます。"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "封筒番号の重複"
+
+#: 
+msgid "Edit people and families"
+msgstr "人と家族の編集"
+
+#: 
+msgid "Email people and groups"
+msgstr "人とグループへのメール送信"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Webサーバーの設定で不足しているPHP拡張機能を有効にし、Webサーバーを再起動してから、このページを再読み込みしてください。ホスティング事業者を利用している場合は、記載の拡張機能を有効にするよう依頼してください。"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "セットアップキーを手動で入力"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "0 から %d までの開始番号を入力してください。"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "全画面表示"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "このキーを認証アプリまたはパスワードマネージャーに、時間ベース(TOTP)の6桁コード、30秒間隔で入力してください。このキーは他人に見せないでください。"
+
+#: 
+msgid "Enter your username or email"
+msgstr "ユーザー名またはメールアドレスを入力"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "封筒番号は 0 から %d までの整数にしてください。何も保存されませんでした。"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "この教会ではイベントがオフになっています"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "全画面表示を終了"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "カスタムフィールドを削除できませんでした"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "カスタムフィールドを移動できませんでした"
+
+#: 
+msgid "Fair"
+msgstr "普通"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "%s に誓約し、%s には誓約がない家族。"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "次に所属するメンバーが1人以上いる家族:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "この教会では財務がオフになっています"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "ある会計年度に誓約し、別の年度には誓約していない家族を探します。"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "献金明細の非公開署名を保存するフォルダー。空欄にすると、直接のWebアクセスを遮断する組み込みの非公開フォルダー Images/TaxSignatures を使用します。別のフォルダーを使う場合は、ChurchCRM フォルダーの外にあり、Webサーバーが書き込める絶対パスを入力してください。"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "この教会ではファンドレイザーがオフになっています"
+
+#: 
+msgid "Good"
+msgstr "良い"
+
+#: 
+msgid "Have an email"
+msgstr "メールアドレスあり"
+
+#: 
+msgid "Hide setup key"
+msgstr "セットアップキーを隠す"
+
+#: 
+msgid "How to respond"
+msgstr "返信方法"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "確認待ちのアイデア"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "無効な家族は除外されます。支払いは誓約として数えません。"
+
+#: 
+msgid "Invalid request."
+msgstr "無効なリクエストです。"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "署名画像のデータが無効です。"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "保存された税務署名の識別子が無効です。"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "税務署名の保存先が無効です。"
+
+#: 
+msgid "Last successful login"
+msgstr "最後に成功したログイン"
+
+#: 
+msgid "Lockout state"
+msgstr "ロックの状態"
+
+#: 
+msgid "Login deleted"
+msgstr "ログインを削除しました"
+
+#: 
+msgid "Mail only"
+msgstr "郵送のみ"
+
+#: 
+msgid "Manage all ministries"
+msgstr "すべての奉仕を管理"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "メンバーを {{role}} に移動しました: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "グループを離れた、または奉仕が役割を管理しているため変更されなかったメンバー: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "奉仕コーディネーター"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "自動ロック解除までの分数"
+
+#: 
+msgid "Missing Pledges"
+msgstr "未登録の誓約"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "GitHubアカウントがありませんか? Discordでお知らせください"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "%s に誓約し、%s に誓約がない有効な家族はありません。"
+
+#: 
+msgid "No families found."
+msgstr "家族が見つかりません。"
+
+#: 
+msgid "No ministry assigned"
+msgstr "奉仕が割り当てられていません"
+
+#: 
+msgid "No open deposit"
+msgstr "開いている入金はありません"
+
+#: 
+msgid "No pledge for"
+msgstr "誓約なし:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "このアカウントには付与されていません"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "ボランティアチームを率いていません"
+
+#: 
+msgid "Not locked"
+msgstr "ロックされていません"
+
+#: 
+msgid "Number of Payments"
+msgstr "支払い件数"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "1分で完了します。送信内容は共有しません。"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "アイデアを開きます。教会に必要なら 👍 で投票し、現在の運用について短いコメントを追加してください。"
+
+#: 
+msgid "Open deposit"
+msgstr "開いている入金"
+
+#: 
+msgid "Password change required at next login"
+msgstr "次回ログイン時にパスワードの変更が必要"
+
+#: 
+msgid "Password strength"
+msgstr "パスワードの強度"
+
+#: 
+msgid "People & Families"
+msgstr "人と家族"
+
+#: 
+msgid "Pledged for"
+msgstr "誓約先:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "献金明細の準備"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "サンプルレターをプレビュー"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "カナダの献金明細用の非公開署名アセット識別子。署名のアップロードで管理されます。"
+
+#: 
+msgid "Property Type"
+msgstr "プロパティの種類"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "PNGまたはJPEGの署名画像データのみを指定してください。"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "記録された履歴: %s。"
+
+#: 
+msgid "Report Issue"
+msgstr "問題を報告"
+
+#: 
+msgid "Requirement"
+msgstr "要件"
+
+#: 
+msgid "Return Home"
+msgstr "ホームに戻る"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "会計年度を確認してから、献金明細をダウンロードしてください。"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "入金を確認して閉じる"
+
+#: 
+msgid "Review and Filter"
+msgstr "確認して絞り込む"
+
+#: 
+msgid "Review and vote"
+msgstr "確認して投票"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "年を確認してから、献金明細をダウンロードしてください。"
+
+#: 
+msgid "Review what we are considering"
+msgstr "検討中の内容を見る"
+
+#: 
+msgid "Roles & permissions"
+msgstr "役割と権限"
+
+#: 
+msgid "Select at least one member."
+msgstr "メンバーを1人以上選択してください。"
+
+#: 
+msgid "Setup key"
+msgstr "セットアップキー"
+
+#: 
+msgid "Sign-in status"
+msgstr "サインインの状態"
+
+#: 
+msgid "Signature storage folder"
+msgstr "署名の保存フォルダー"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "署名は更新されましたが、以前の非公開署名ファイルを削除できませんでした。"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "一部のPHP要件が不足しています。続行するには ChurchCRM にこれらが必要です。"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "入金を開始し、そこに各支払いを追加します。"
+
+#: 
+msgid "Starting envelope number"
+msgstr "封筒の開始番号"
+
+#: 
+msgid "Strong"
+msgstr "強い"
+
+#: 
+msgid "Support"
+msgstr "サポート"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "納税者番号とPDFの設定"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "リストを読み込めませんでした。GitHubでアイデアを開くことはできます。"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "名前は %d 文字以内にしてください"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "お探しのページが見つかりません。移動、名前変更、または削除された可能性があります。"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "プロンプトは %d 文字以内にしてください"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "選択したメンバーはすでにその役割を持っています。"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "署名画像をデコードできませんでした。"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "署名画像は2 MiB以下にしてください。"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "署名画像は2000 × 1000ピクセル以内にしてください。"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "税務署名の保存フォルダー %s にWebサーバーが書き込めません。"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "税務署名の保存フォルダーはシンボリックリンクにできません。"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "税務署名の保存パスは ChurchCRM フォルダーの外にする必要があります。組み込みの非公開フォルダーを使う場合は、設定を空欄にしてください。"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "税務署名の保存パス設定は、フォルダーの絶対パスにする必要があります。"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "これらの封筒番号は、「家族記録を更新」を選択するまで保存されません。"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "スタッフとしても、メンバーポータルにもサインインできなくなり、セッション、デバイス、パスキーは削除されます。"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "この家族にはメモがあるため削除できません。履歴を残すため、代わりに家族を無効にしてください。"
+
+#: 
+msgid "This password looks strong."
+msgstr "このパスワードは強力です。"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "この人には記録された活動があるため削除できません。履歴を残すため、代わりにその人を無効にしてください。"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "ログインのみが削除されます。その人とメモは残ります。"
+
+#: 
+msgid "Time Range"
+msgstr "期間"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "二要素認証を登録済み"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "自動的にコピーできません。セットアップキーを選択して手動でコピーしてください。"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "PNGまたはJPEGの署名画像をアップロードしてください。"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "この設定を変更するには、署名のアップロードまたは削除を使用してください。"
+
+#: 
+msgid "User Details"
+msgstr "ユーザーの詳細"
+
+#: 
+msgid "Username or Email Address"
+msgstr "ユーザー名またはメールアドレス"
+
+#: 
+msgid "View all ideas"
+msgstr "すべてのアイデアを見る"
+
+#: 
+msgid "View events"
+msgstr "イベントの表示"
+
+#: 
+msgid "View people and families"
+msgstr "人と家族の表示"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "この教会ではボランティア管理がオフになっています"
+
+#: 
+msgid "Weak"
+msgstr "弱い"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "このアカウントが現在できること(読み取り専用)"
+
+#: 
+msgid "You must select a class"
+msgstr "クラスを選択してください"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "教会の会計年度は1月1日に始まりません。税務当局は暦年の領収書を求めることが多いため、「確認して絞り込む」を選び、日付を1月1日〜12月31日に設定してください。"
+
+#: 
+msgid "attendance"
+msgstr "出席"
+
+#: 
+msgid "financial history"
+msgstr "財務履歴"
+
+#: 
+msgid "notes"
+msgstr "メモ"
+
+#: 
+msgid "recorded activities"
+msgstr "記録された活動"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "システムユーザーのAPIキーを再生成しました"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "システムユーザーがメールのリンクからパスワードをリセットしました"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "システムユーザーが二要素認証をオフにしました"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "システムユーザーが二要素認証をオンにしました"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "システムユーザーの二要素認証が管理者によって無効にされました"
+
+#: 
+msgid "volunteer service history"
+msgstr "ボランティア奉仕の履歴"
+
+#: 
+msgid "%s by %s"
+msgstr "%s、%sより"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "二要素認証を変更するには、パスワードまたは認証アプリのコードを入力してください。"
+
+#: 
+msgid "Latest Notes"
+msgstr "最新のメモ"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "メモはまだ追加されていません。"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QRコードを取得するには、登録を開始してください。"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "そのパスワードまたはコードが正しくありません。二要素認証は引き続き有効です。"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "二要素認証はすでに設定されています。そのシークレットは登録時にのみ表示されます。"
 

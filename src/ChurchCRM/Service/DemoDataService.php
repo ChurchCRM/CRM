@@ -1402,6 +1402,12 @@ class DemoDataService
                 continue;
             }
 
+            $occurrenceEnd = $assignments->getScheduleService()->resolveOccurrenceWindow($occurrence)['end'] ?? null;
+            if ($occurrenceEnd !== null && $occurrenceEnd < DateTimeUtils::getToday()) {
+                $this->addWarning("Schedule '{$data['name']}' of {$team->getName()} has no upcoming occurrence {$plan['occurrence']}; assignment skipped");
+                continue;
+            }
+
             $assignment = $assignments->assign(
                 $occurrence,
                 $positions[$plan['position']],

@@ -38,10 +38,10 @@ community plugin files never show up as "orphans".
 
 ## Plugin localization
 
-Community plugins do **not** go through POeditor. Ship PHP `.mo` files
+Community plugins ship their own PHP `.mo` files
 under `{plugin}/locale/textdomain/{locale}/LC_MESSAGES/{plugin-id}.mo`
 and JS `{plugin}/locale/i18n/{locale}.json` flat key/value maps. See
-[`plugin-development.md → Plugin Localization`](../../../.agents/skills/churchcrm/plugin-development.md#plugin-localization-independent-of-poeditor).
+[`plugin-development.md → Plugin Localization`](../../../.agents/skills/churchcrm/plugin-development.md#plugin-localization).
 
 ## UI and themes
 

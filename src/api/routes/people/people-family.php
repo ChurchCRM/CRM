@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -13,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -29,18 +31,6 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-// ── Low-sensitivity family read endpoints ────────────────────────────────────
-// Photo, avatar, and nav are considered non-sensitive metadata. They use
-// FamilyReadMiddleware which enforces entity existence (404 if family not
-// found) but applies the read-default baseline (canReadFamily) instead of the
-// family-scope restriction. This makes them accessible to any authenticated
-// user who has passed the isEditSelfExclusive() check in AuthMiddleware —
-// including zero-permission users, who retain read-only access to people and
-// family records under the read-default policy (#9003).
-//
-// Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
-// remain in the FamilyMiddleware group below which enforces canViewFamily()
-// per GHSA-jjcj-h3cm-p7x7.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -130,11 +120,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     });
 })->add(FamilyReadMiddleware::class);
 
-// ── Sensitive / write family endpoints ───────────────────────────────────────
-// All routes here use FamilyMiddleware (the scope-enforcing version),
-// which applies canViewFamily() and restricts EditSelf-scoped users to their own
-// family per GHSA-jjcj-h3cm-p7x7. Write routes additionally carry per-route
-// EditRecords / DeleteRecord middleware.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
@@ -356,7 +341,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 $family->setDateDeactivated(null);
             }
 
-
             // Create a note to record the status change
             $note = new Note();
             $note->setFamId($family->getId());
@@ -487,7 +471,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="deleteMembers", in="query", required=false, @OA\Schema(type="boolean", default=false),
      *         description="If true, also delete all family members. If false, members are unlinked from the family."),
      *     @OA\Response(response=200, description="Family deleted"),
-     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has a login the current user may not delete"),
+     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has protected history or a login the current user may not delete"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -497,73 +481,101 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $familyId = $family->getId();
         $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
-        // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
-        $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
-            ->filterByFamId($familyId)
-            ->count();
-        if ($financeCount > 0) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.'),
-                [],
-                403
-            );
-        }
-
-        if ($deleteMembers) {
-            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find();
-            foreach ($members as $member) {
-                $blockedReason = $member->getLoginDeletionBlockedReason();
-                if ($blockedReason !== null) {
-                    return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+        $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $familyPhoto = $family->getPhoto();
+        $memberPhotos = [];
+        try {
+            $con->transaction(function () use ($family, $familyId, $deleteMembers, $con, &$memberPhotos): void {
+                // Acquire the same lock as family-note writers before the first
+                // consistent read in this transaction.
+                PersonDeletionService::lockFamily((int) $familyId, $con);
+                // Lock target members before the first nonlocking history read.
+                // This serializes concurrent person-note writers even when
+                // their notes carry FamId=0 and take no family-row lock.
+                $membersToDelete = [];
+                if ($deleteMembers) {
+                    $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                        ->filterByFamId($familyId)
+                        ->orderById()
+                        ->lockForUpdate()
+                        ->find($con);
                 }
+                PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
+
+                // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
+                $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+                    ->filterByFamId($familyId)
+                    ->count($con);
+                if ($financeCount > 0) {
+                    throw new PersonDeletionBlockedException(
+                        gettext('Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate.')
+                    );
+                }
+
+                if ($deleteMembers) {
+                    foreach ($membersToDelete as $member) {
+                        PersonDeletionService::assertCanDelete($member, $con);
+                    }
+                }
+
+                // Delete associated notes
+                \ChurchCRM\model\ChurchCRM\NoteQuery::create()
+                    ->filterByFamId($familyId)
+                    ->delete($con);
+
+                // Remove family property assignments
+                $familyProps = \ChurchCRM\model\ChurchCRM\PropertyQuery::create()
+                    ->filterByProClass('f')
+                    ->find($con);
+                foreach ($familyProps as $prop) {
+                    \ChurchCRM\model\ChurchCRM\RecordPropertyQuery::create()
+                        ->filterByPropertyId($prop->getProId())
+                        ->filterByRecordId($familyId)
+                        ->delete($con);
+                }
+
+                if ($deleteMembers) {
+                    foreach ($membersToDelete as $member) {
+                        $memberPhotos[] = $member->getPhoto();
+                    }
+                    $membersToDelete->delete($con);
+                } else {
+                    // Unlink members from the family
+                    $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                        ->filterByFamId($familyId)
+                        ->find($con);
+                    foreach ($members as $member) {
+                        $member->setFamId(0);
+                        $member->save($con);
+                    }
+                }
+
+                // Remove custom field data via ORM
+                \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
+                    ->filterByFamId($familyId)
+                    ->delete($con);
+
+                // Delete the family record itself. Family::preDelete() removes the
+                // photo file from disk; member deletion above triggers Person::preDelete
+                // for each member, which cleans up their photos too (#1697).
+                // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
+                $family->delete($con);
+            });
+        } catch (PersonDeletionBlockedException $exception) {
+            // A family cascade may be blocked by an individual member.
+            // Recommend the family-level alternative as well as that member's reason.
+            $message = $exception->getMessage();
+            if (!str_contains($message, gettext('Deactivate the family instead'))) {
+                $message .= ' ' . gettext('Deactivate the family instead of deleting it.');
             }
+            return SlimUtils::renderErrorJSON($response, $message, [], 403, $exception, $request);
         }
 
-        // Delete associated notes
-        \ChurchCRM\model\ChurchCRM\NoteQuery::create()
-            ->filterByFamId($familyId)
-            ->delete();
-
-        // Remove family property assignments
-        $familyProps = \ChurchCRM\model\ChurchCRM\PropertyQuery::create()
-            ->filterByProClass('f')
-            ->find();
-        foreach ($familyProps as $prop) {
-            \ChurchCRM\model\ChurchCRM\RecordPropertyQuery::create()
-                ->filterByPropertyId($prop->getProId())
-                ->filterByRecordId($familyId)
-                ->delete();
+        // No filesystem effects until every database operation commits.
+        foreach ($memberPhotos as $memberPhoto) {
+            $memberPhoto->delete();
         }
-
-        if ($deleteMembers) {
-            \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find()
-                ->delete();
-        } else {
-            // Unlink members from the family
-            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find();
-            foreach ($members as $member) {
-                $member->setFamId(0);
-                $member->save();
-            }
-        }
-
-        // Remove custom field data via ORM
-        \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
-            ->filterByFamId($familyId)
-            ->delete();
-
-        // Delete the family record itself. Family::preDelete() removes the
-        // photo file from disk; member deletion above triggers Person::preDelete
-        // for each member, which cleans up their photos too (#1697).
-        // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
-        $family->delete();
+        $familyPhoto->delete();
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);

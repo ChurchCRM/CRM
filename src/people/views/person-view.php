@@ -458,6 +458,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $iPersonID ?>/emails"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Email History') ?></a>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
@@ -694,31 +695,6 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
         <?php if ($canSendEmail) : ?>
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
         <?php endif; ?>
-
-        <!-- Email history: 5 most recent, full list on its own page -->
-        <?php $emailHistory = $emailHistory ?? ['rows' => [], 'total' => 0]; ?>
-        <div class="card mb-3" id="email-history-card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-1"></i> <?= gettext('Recent Emails') ?>
-                    <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $emailHistory['total'] ?></span>
-                </h3>
-            </div>
-            <div class="card-body p-0">
-                <?php
-                $emailHistoryRows = $emailHistory['rows'];
-                $emailHistoryShowTo = false;
-                include __DIR__ . '/partials/email-history-table.php';
-                ?>
-            </div>
-            <?php if ((int) $emailHistory['total'] > 0) : ?>
-            <div class="card-footer text-end py-2">
-                <a href="<?= $sRootPath ?>/people/view/<?= (int) $iPersonID ?>/emails" id="email-history-show-all">
-                    <?= gettext('Show all') ?> (<?= (int) $emailHistory['total'] ?>) <i class="fa-solid fa-chevron-right fa-xs ms-1"></i>
-                </a>
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php include __DIR__ . '/partials/email-history-modal.php'; ?>
 
         <!-- Tabbed Content -->
         <div class="card">

@@ -4,6 +4,7 @@
 > Churches keep their real working documents outside ChurchCRM — event flyers and registration forms in Google Drive, permission slips in shared folders, sheet music in Dropbox, budgets in spreadsheets. What users keep asking for is not another file host: it is a way to *attach those documents to the records in ChurchCRM* — above all to events — so the flyer, the form and the sign-up sheet sit next to the event they belong to, visible to exactly the right audience. Issue #350 has carried the general ask ("File Upload and management", event forms, sheet music, downloads, worship planning) since 2016, and #8950 already specifies the events case in detail: multiple labeled external links per event with per-link visibility across the public calendar, the member portal and staff. This RFC proposes the general capability: **labeled links to external resources, attached to ChurchCRM records, each with an explicit visibility audience** — starting from external links only, with no file upload or hosting.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-05
 **Owner:** @dawoudio
 **Proposal issues:** [#350](https://github.com/ChurchCRM/CRM/issues/350) (File Upload and management) · [#8950](https://github.com/ChurchCRM/CRM/issues/8950) (Event resource links with public calendar, member portal, and staff visibility) · **Related:** [#817](https://github.com/ChurchCRM/CRM/issues/817) (event planning and resources)

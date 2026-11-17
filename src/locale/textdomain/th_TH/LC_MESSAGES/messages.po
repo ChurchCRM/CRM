@@ -1493,10 +1493,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "กำหนดโอกาสอาสาสมัครใหม่"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "รายละเอียดธุรกรรมอิเล็กทรอนิกส์"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "จำนวนที่ไม่สามารถหักลดหย่อนได้ไม่สามารถมากกว่าจำนวนรวมได้"
 
@@ -2145,10 +2141,6 @@ msgstr "วันที่ฝาก"
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "การดำเนินการนี้จะเขียนทับหมายเลขซองจดหมายครอบครัวในฐานข้อมูลด้วยที่เลือกในหน้านี้ ดำเนินการต่อ?"
-
-#: 
-msgid "Family Select"
-msgstr "เลือกครอบครัว"
 
 #: 
 msgid "Welcome to"
@@ -9396,10 +9388,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ติดตามคำปฏิญาณถวายของครอบครัวและการบริจาคกองทุนตามปีงบประมาณ"
 
 #: 
-msgid "Transaction Details"
-msgstr "รายละเอียดธุรกรรม"
-
-#: 
 msgid "Unmapped"
 msgstr "ยังไม่จับคู่"
 
@@ -9482,10 +9470,6 @@ msgstr "ดูสรุปคำปฏิญาณถวายของครอ
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11046,10 +11030,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "เข้าร่วมโครงการแปลบน POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "การตั้งค่าภาษาและภูมิภาค"
 
@@ -11189,10 +11169,6 @@ msgstr "การกำหนดค่าผู้ใช้"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ"
-
-#: 
-msgid "View All"
-msgstr "ดูทั้งหมด"
 
 #: 
 msgid "Yellow"
@@ -15306,10 +15282,6 @@ msgid "Calendar Embed Origins"
 msgstr "แหล่งที่มาของการฝังปฏิทิน"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "การแปล ChurchCRM ดูแลโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "ค่า $URL[0] ปัจจุบัน"
 
@@ -15476,10 +15448,6 @@ msgstr "สำหรับกองทุน"
 #: 
 msgid "user"
 msgstr "ผู้ใช้"
-
-#: 
-msgid "with at least one"
-msgstr "พร้อมอย่างน้อยหนึ่งรายการ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17250,10 +17218,6 @@ msgstr "ยอดระดมทุนในปีงบประมาณนี
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s ต้องเป็นที่อยู่เว็บแบบเต็มรูปแบบ https:// เช่น https://example.org/yourchurch"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "บัญชีมีสิทธิ์การใช้งานจำกัด กรุณาติดต่อผู้ดูแลระบบ"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20319,10 +20283,6 @@ msgid "Read the theme authoring guide"
 msgstr "อ่านคู่มือการสร้างธีม"
 
 #: 
-msgid "Recent Emails"
-msgstr "อีเมลล่าสุด"
-
-#: 
 msgid "Recipient"
 msgstr "ผู้รับ"
 
@@ -22493,10 +22453,6 @@ msgstr "ค้นหาตามชื่อครอบครัว"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "ค้นหาตามชื่อครอบครัวหรือเลขที่ซองถวาย"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "ไม่สามารถลบครอบครัวที่มีคำปฏิญาณถวายหรือการชำระเงินได้ โปรดย้ายหรือลบบันทึกการเงินก่อน"
 
 #: 
 msgid "You cannot delete your own account."
@@ -27207,4 +27163,711 @@ msgstr "ข้อมูลของคุณเป็นของคุณ ร�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "ข้อมูลของคุณเป็นของคุณ เพื่อนับจำนวนการติดตั้ง ChurchCRM จะรายงานว่าถูกติดตั้งหรืออัปเกรดและสำเร็จหรือไม่ การแจ้งสถานะวันละครั้งขณะใช้งาน รวมถึงหมายเลขเวอร์ชัน ประเทศของคุณ ประเภทฐานข้อมูล และรหัสการติดตั้งแบบสุ่ม โดยจะไม่รายงานข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล คุณปิดได้ทุกเมื่อที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล โดยการติดตั้งหรืออัปเกรดที่ล้มเหลวจะยังคงถูกรายงาน คำเตือน รายละเอียดข้อผิดพลาด และการดูหน้าเพจจะถูกแชร์เฉพาะเมื่อคุณเลือกเท่านั้น"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: ยังมีรายการนำฝาก %2$d รายการที่เปิดอยู่ โปรดปิดเพื่อให้ทุกเงินถวายเป็นข้อมูลสุดท้ายก่อนส่งใบสรุป"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "บันทึกหมายเลขซอง %d รายการแล้ว"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d ครอบครัว"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: รายการนำฝากทั้งหมดปิดแล้ว ใบสรุปพร้อมให้จัดเตรียม"
+
+#: 
+msgid "12 months"
+msgstr "12 เดือน"
+
+#: 
+msgid "30 days"
+msgstr "30 วัน"
+
+#: 
+msgid "90 days"
+msgstr "90 วัน"
+
+#: 
+msgid "Add Property"
+msgstr "เพิ่มคุณสมบัติ"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "เพิ่มอักขระอีกเล็กน้อยหรือเพิ่มสัญลักษณ์"
+
+#: 
+msgid "Add and edit events"
+msgstr "เพิ่มและแก้ไขกิจกรรม"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "เพิ่มอักขระให้มากขึ้นหรือผสมตัวเลขและสัญลักษณ์"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "เพิ่มอักขระให้มากขึ้น และผสมตัวพิมพ์ใหญ่ ตัวพิมพ์เล็ก ตัวเลข และสัญลักษณ์"
+
+#: 
+msgid "Add people and families"
+msgstr "เพิ่มบุคคลและครอบครัว"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "ผู้ดูแลระบบมีสิทธิ์ทั้งหมดตราบเท่าที่เปิดใช้ฟีเจอร์นี้อยู่"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "ปิดใช้งานการลงชื่อเข้าใช้ด้วย เพื่อให้ไม่สามารถใช้พอร์ทัลสมาชิกได้"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "ก่อนส่งใบสรุป"
+
+#: 
+msgid "Birthday today"
+msgstr "วันเกิดวันนี้"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "ไม่สามารถสร้างไฟล์ลายเซ็นภาษีส่วนตัวได้ โปรดตรวจสอบว่าโฟลเดอร์จัดเก็บเขียนได้"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "ไม่สามารถสร้างโฟลเดอร์จัดเก็บลายเซ็นภาษี %s ได้ โปรดตรวจสอบว่าเว็บเซิร์ฟเวอร์เขียนลงได้ หรือกำหนดโฟลเดอร์ที่เขียนได้ในการตั้งค่าพาธจัดเก็บลายเซ็นภาษี"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "ไม่สามารถลบครอบครัวที่มีคำมั่นสัญญาหรือการชำระเงินได้ ให้ปิดใช้งานครอบครัวแทนเพื่อเก็บประวัติการเงินไว้ ย้ายบันทึกการเงินเฉพาะเมื่อเหมาะสม"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "ไม่สามารถเข้ารหัสลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "ไม่สามารถย้ายฟิลด์ไปในทิศทางนั้นได้"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "ไม่สามารถอ่านลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "ไม่สามารถลบลายเซ็นส่วนตัวได้"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "ไม่สามารถลบไฟล์ลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "ไม่สามารถระบุโฟลเดอร์แอปพลิเคชันสำหรับจัดเก็บลายเซ็นภาษีได้"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "ไม่สามารถจัดเก็บลายเซ็นส่วนตัวได้"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "ไม่สามารถเขียนตัวป้องกันการเข้าถึง %s ลงในโฟลเดอร์จัดเก็บลายเซ็นภาษีได้"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "เปลี่ยนบทบาทของสมาชิกที่เลือก: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "ปีงบประมาณของคริสตจักร"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ตรวจสอบระบบ ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "ไม่พบฟิลด์กำหนดเอง"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "ปิดใช้งานครอบครัวแทน"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "ปิดใช้งานครอบครัวแทนการลบ"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "ปิดใช้งานบุคคลนี้แทนการลบ"
+
+#: 
+msgid "Delete people and families"
+msgstr "ลบบุคคลและครอบครัว"
+
+#: 
+msgid "Delete the login for"
+msgstr "ลบการเข้าสู่ระบบของ"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "ช่วงเวลาของแผนภูมิการนำฝาก"
+
+#: 
+msgid "Disabled at"
+msgstr "ปิดใช้งานเมื่อ"
+
+#: 
+msgid "Disabled by"
+msgstr "ปิดใช้งานโดย"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "การดาวน์โหลดจะส่งผู้ถวายทุกคนในปีนั้น ตรวจสอบและกรองจะแสดงยอดรวมก่อนและให้คุณจำกัดตามครอบครัว กองทุน ชั้นเรียน หรือวันที่ได้"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "หมายเลขซองซ้ำ"
+
+#: 
+msgid "Edit people and families"
+msgstr "แก้ไขบุคคลและครอบครัว"
+
+#: 
+msgid "Email people and groups"
+msgstr "ส่งอีเมลถึงบุคคลและกลุ่ม"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "เปิดใช้งานส่วนขยาย PHP ที่ขาดอยู่ในการกำหนดค่าเว็บเซิร์ฟเวอร์ รีสตาร์ตเว็บเซิร์ฟเวอร์ แล้วโหลดหน้านี้ใหม่ หากคุณใช้ผู้ให้บริการโฮสติ้ง ให้ขอให้เขาเปิดใช้งานส่วนขยายที่ระบุ"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "ป้อนรหัสตั้งค่าด้วยตนเอง"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "ป้อนหมายเลขเริ่มต้นตั้งแต่ 0 ถึง %d"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "เข้าสู่โหมดเต็มหน้าจอ"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "ป้อนรหัสนี้ลงในแอปยืนยันตัวตนหรือตัวจัดการรหัสผ่านของคุณ โดยใช้รหัส 6 หลักตามเวลา (TOTP) และช่วงเวลา 30 วินาที โปรดเก็บรหัสนี้เป็นความลับ"
+
+#: 
+msgid "Enter your username or email"
+msgstr "ป้อนชื่อผู้ใช้หรืออีเมลของคุณ"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "หมายเลขซองต้องเป็นจำนวนเต็มตั้งแต่ 0 ถึง %d ไม่ได้บันทึกสิ่งใด"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "กิจกรรมถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "ออกจากโหมดเต็มหน้าจอ"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "ลบฟิลด์กำหนดเองไม่สำเร็จ"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "ย้ายฟิลด์กำหนดเองไม่สำเร็จ"
+
+#: 
+msgid "Fair"
+msgstr "พอใช้"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "ครอบครัวที่ให้คำมั่นสำหรับ %s และไม่มีคำมั่นสำหรับ %s"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "ครอบครัวที่มีสมาชิกอย่างน้อยหนึ่งคนใน"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "การเงินถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "ค้นหาครอบครัวที่ให้คำมั่นในปีงบประมาณหนึ่งแต่ไม่ได้ให้ในอีกปีหนึ่ง"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "โฟลเดอร์ที่จัดเก็บลายเซ็นส่วนตัวของใบสรุปเงินถวาย เว้นว่างไว้เพื่อใช้โฟลเดอร์ส่วนตัวในตัว Images/TaxSignatures ซึ่งบล็อกการเข้าถึงผ่านเว็บโดยตรง หากต้องการใช้โฟลเดอร์อื่น ให้ป้อนพาธสัมบูรณ์ที่อยู่นอกโฟลเดอร์ ChurchCRM และเว็บเซิร์ฟเวอร์เขียนลงได้"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "การระดมทุนถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Good"
+msgstr "ดี"
+
+#: 
+msgid "Have an email"
+msgstr "มีอีเมล"
+
+#: 
+msgid "Hide setup key"
+msgstr "ซ่อนรหัสตั้งค่า"
+
+#: 
+msgid "How to respond"
+msgstr "วิธีตอบกลับ"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "ไอเดียที่รอการตรวจสอบของคุณ"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "ไม่รวมครอบครัวที่ไม่ใช้งาน การชำระเงินไม่นับเป็นคำมั่น"
+
+#: 
+msgid "Invalid request."
+msgstr "คำขอไม่ถูกต้อง"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "ข้อมูลรูปภาพลายเซ็นไม่ถูกต้อง"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "ตัวระบุลายเซ็นภาษีที่จัดเก็บไว้ไม่ถูกต้อง"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "ที่จัดเก็บลายเซ็นภาษีไม่ถูกต้อง"
+
+#: 
+msgid "Last successful login"
+msgstr "การเข้าสู่ระบบสำเร็จล่าสุด"
+
+#: 
+msgid "Lockout state"
+msgstr "สถานะการล็อก"
+
+#: 
+msgid "Login deleted"
+msgstr "ลบการเข้าสู่ระบบแล้ว"
+
+#: 
+msgid "Mail only"
+msgstr "ทางไปรษณีย์เท่านั้น"
+
+#: 
+msgid "Manage all ministries"
+msgstr "จัดการงานรับใช้ทั้งหมด"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "ย้ายสมาชิกไปที่ {{role}} แล้ว: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "สมาชิกที่ไม่เปลี่ยนแปลงเพราะออกจากกลุ่มแล้วหรืองานรับใช้เป็นผู้จัดการบทบาทของเขา: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "ผู้ประสานงานงานรับใช้"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "นาทีจนกว่าจะปลดล็อกอัตโนมัติ"
+
+#: 
+msgid "Missing Pledges"
+msgstr "คำมั่นที่ขาดหาย"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "ไม่มีบัญชี GitHub? บอกเราที่ Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "ไม่มีครอบครัวที่ใช้งานอยู่ที่ให้คำมั่นสำหรับ %s โดยไม่มีคำมั่นสำหรับ %s"
+
+#: 
+msgid "No families found."
+msgstr "ไม่พบครอบครัว"
+
+#: 
+msgid "No ministry assigned"
+msgstr "ไม่มีงานรับใช้ที่มอบหมาย"
+
+#: 
+msgid "No open deposit"
+msgstr "ไม่มีรายการนำฝากที่เปิดอยู่"
+
+#: 
+msgid "No pledge for"
+msgstr "ไม่มีคำมั่นสำหรับ"
+
+#: 
+msgid "Not granted to this account"
+msgstr "ไม่ได้ให้สิทธิ์แก่บัญชีนี้"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "ไม่ได้นำทีมอาสาสมัคร"
+
+#: 
+msgid "Not locked"
+msgstr "ไม่ถูกล็อก"
+
+#: 
+msgid "Number of Payments"
+msgstr "จำนวนการชำระเงิน"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "หนึ่งนาที เราไม่แบ่งปันสิ่งที่คุณส่ง"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "เปิดไอเดีย โหวตด้วย 👍 หากคริสตจักรของคุณต้องการ และเพิ่มความเห็นสั้น ๆ ว่าตอนนี้คุณทำงานอย่างไร"
+
+#: 
+msgid "Open deposit"
+msgstr "รายการนำฝากที่เปิดอยู่"
+
+#: 
+msgid "Password change required at next login"
+msgstr "ต้องเปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป"
+
+#: 
+msgid "Password strength"
+msgstr "ความแข็งแรงของรหัสผ่าน"
+
+#: 
+msgid "People & Families"
+msgstr "บุคคลและครอบครัว"
+
+#: 
+msgid "Pledged for"
+msgstr "ให้คำมั่นสำหรับ"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "จัดเตรียมใบสรุปเงินถวาย"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "ดูตัวอย่างจดหมาย"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "ตัวระบุแอสเซ็ตลายเซ็นส่วนตัวของใบสรุปเงินถวายแคนาดา จัดการโดยการอัปโหลดลายเซ็น"
+
+#: 
+msgid "Property Type"
+msgstr "ประเภทคุณสมบัติ"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "ระบุเฉพาะข้อมูลรูปภาพลายเซ็นแบบ PNG หรือ JPEG"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "ประวัติที่บันทึกไว้: %s"
+
+#: 
+msgid "Report Issue"
+msgstr "รายงานปัญหา"
+
+#: 
+msgid "Requirement"
+msgstr "ข้อกำหนด"
+
+#: 
+msgid "Return Home"
+msgstr "กลับหน้าแรก"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "ตรวจสอบปีงบประมาณหนึ่งปี แล้วดาวน์โหลดใบสรุปเงินถวาย"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "ตรวจสอบและปิดรายการนำฝาก"
+
+#: 
+msgid "Review and Filter"
+msgstr "ตรวจสอบและกรอง"
+
+#: 
+msgid "Review and vote"
+msgstr "ตรวจสอบและโหวต"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "ตรวจสอบปีนั้น แล้วดาวน์โหลดใบสรุปเงินถวาย"
+
+#: 
+msgid "Review what we are considering"
+msgstr "ดูสิ่งที่เรากำลังพิจารณา"
+
+#: 
+msgid "Roles & permissions"
+msgstr "บทบาทและสิทธิ์"
+
+#: 
+msgid "Select at least one member."
+msgstr "เลือกสมาชิกอย่างน้อยหนึ่งคน"
+
+#: 
+msgid "Setup key"
+msgstr "รหัสตั้งค่า"
+
+#: 
+msgid "Sign-in status"
+msgstr "สถานะการลงชื่อเข้าใช้"
+
+#: 
+msgid "Signature storage folder"
+msgstr "โฟลเดอร์จัดเก็บลายเซ็น"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "อัปเดตลายเซ็นแล้ว แต่ไม่สามารถลบไฟล์ลายเซ็นส่วนตัวก่อนหน้าได้"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "ขาดข้อกำหนด PHP บางอย่าง ChurchCRM ต้องการสิ่งเหล่านี้ก่อนจึงจะดำเนินการต่อได้"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "เริ่มรายการนำฝาก แล้วเพิ่มการชำระเงินแต่ละรายการลงไป"
+
+#: 
+msgid "Starting envelope number"
+msgstr "หมายเลขซองเริ่มต้น"
+
+#: 
+msgid "Strong"
+msgstr "แข็งแรง"
+
+#: 
+msgid "Support"
+msgstr "การสนับสนุน"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "การตั้งค่าเลขประจำตัวผู้เสียภาษีและ PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "ไม่สามารถโหลดรายการได้ คุณยังเปิดไอเดียบน GitHub ได้"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "ชื่อยาวได้ไม่เกิน %d อักขระ"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "ไม่พบหน้าที่คุณร้องขอ อาจถูกย้าย เปลี่ยนชื่อ หรือไม่มีอยู่อีกต่อไป"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "พรอมต์ยาวได้ไม่เกิน %d อักขระ"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "สมาชิกที่เลือกมีบทบาทนั้นอยู่แล้ว"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "ไม่สามารถถอดรหัสรูปภาพลายเซ็นได้"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "รูปภาพลายเซ็นต้องมีขนาดไม่เกิน 2 MiB"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "รูปภาพลายเซ็นต้องอยู่ภายใน 2000 × 1000 พิกเซล"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "เว็บเซิร์ฟเวอร์เขียนลงโฟลเดอร์จัดเก็บลายเซ็นภาษี %s ไม่ได้"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "โฟลเดอร์จัดเก็บลายเซ็นภาษีไม่สามารถเป็นลิงก์สัญลักษณ์ได้"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "พาธจัดเก็บลายเซ็นภาษีต้องอยู่นอกโฟลเดอร์ ChurchCRM เว้นว่างการตั้งค่าไว้เพื่อใช้โฟลเดอร์ส่วนตัวในตัว"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "การตั้งค่าพาธจัดเก็บลายเซ็นภาษีต้องเป็นพาธโฟลเดอร์แบบสัมบูรณ์"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "หมายเลขซองเหล่านี้จะไม่ถูกบันทึกจนกว่าคุณจะเลือกอัปเดตข้อมูลครอบครัว"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "เขาไม่สามารถลงชื่อเข้าใช้ในฐานะเจ้าหน้าที่หรือพอร์ทัลสมาชิกได้ และเซสชัน อุปกรณ์ และพาสคีย์ของเขาจะถูกลบ"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "ไม่สามารถลบครอบครัวนี้ได้เพราะมีบันทึก ให้ปิดใช้งานครอบครัวแทนเพื่อเก็บประวัติไว้"
+
+#: 
+msgid "This password looks strong."
+msgstr "รหัสผ่านนี้ดูแข็งแรง"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "ไม่สามารถลบบุคคลนี้ได้เพราะมีกิจกรรมที่บันทึกไว้ ให้ปิดใช้งานบุคคลนี้แทนเพื่อเก็บประวัติไว้"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "การดำเนินการนี้ลบเฉพาะการเข้าสู่ระบบ บุคคลและบันทึกของเขายังคงอยู่"
+
+#: 
+msgid "Time Range"
+msgstr "ช่วงเวลา"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "ลงทะเบียนการยืนยันตัวตนสองขั้นตอนแล้ว"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "ไม่สามารถคัดลอกอัตโนมัติได้ โปรดเลือกและคัดลอกรหัสตั้งค่าด้วยตนเอง"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "อัปโหลดรูปภาพลายเซ็นแบบ PNG หรือ JPEG"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "ใช้การอัปโหลดหรือลบลายเซ็นเพื่อเปลี่ยนการตั้งค่านี้"
+
+#: 
+msgid "User Details"
+msgstr "รายละเอียดผู้ใช้"
+
+#: 
+msgid "Username or Email Address"
+msgstr "ชื่อผู้ใช้หรือที่อยู่อีเมล"
+
+#: 
+msgid "View all ideas"
+msgstr "ดูไอเดียทั้งหมด"
+
+#: 
+msgid "View events"
+msgstr "ดูกิจกรรม"
+
+#: 
+msgid "View people and families"
+msgstr "ดูบุคคลและครอบครัว"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "การจัดการอาสาสมัครถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Weak"
+msgstr "อ่อน"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "สิ่งที่บัญชีนี้ทำได้ในขณะนี้ (อ่านอย่างเดียว)"
+
+#: 
+msgid "You must select a class"
+msgstr "คุณต้องเลือกชั้นเรียน"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "ปีงบประมาณของคริสตจักรไม่ได้เริ่มวันที่ 1 มกราคม หน่วยงานภาษีมักต้องการใบเสร็จตามปีปฏิทิน: เลือกตรวจสอบและกรอง แล้วตั้งวันที่เป็น 1 มกราคม – 31 ธันวาคม"
+
+#: 
+msgid "attendance"
+msgstr "การเข้าร่วม"
+
+#: 
+msgid "financial history"
+msgstr "ประวัติการเงิน"
+
+#: 
+msgid "notes"
+msgstr "บันทึก"
+
+#: 
+msgid "recorded activities"
+msgstr "กิจกรรมที่บันทึกไว้"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "สร้างคีย์ API ของผู้ใช้ระบบใหม่แล้ว"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "ผู้ใช้ระบบรีเซ็ตรหัสผ่านจากลิงก์ในอีเมล"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "ผู้ใช้ระบบปิดการยืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "ผู้ใช้ระบบเปิดการยืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "ผู้ดูแลระบบปิดใช้งานการยืนยันตัวตนสองขั้นตอนของผู้ใช้ระบบ"
+
+#: 
+msgid "volunteer service history"
+msgstr "ประวัติการรับใช้อาสาสมัคร"
+
+#: 
+msgid "%s by %s"
+msgstr "%s โดย %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ป้อนรหัสผ่านของคุณหรือรหัสจากแอปยืนยันตัวตนเพื่อเปลี่ยนการยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Latest Notes"
+msgstr "บันทึกย่อล่าสุด"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "ยังไม่มีการเพิ่มบันทึกย่อ"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "เริ่มการลงทะเบียนเพื่อรับรหัส QR"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "รหัสผ่านหรือรหัสนั้นไม่ถูกต้อง การยืนยันตัวตนแบบสองปัจจัยยังคงเปิดอยู่"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "การยืนยันตัวตนแบบสองปัจจัยได้รับการตั้งค่าแล้ว ความลับของมันจะแสดงเฉพาะระหว่างการลงทะเบียนเท่านั้น"
 

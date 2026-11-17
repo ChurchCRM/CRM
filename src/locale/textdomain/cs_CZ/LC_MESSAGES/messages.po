@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Přiřadit novou dobrovolnickou příležitost"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detaily elektronické transakce"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodečitatelná částka nesmí být vyšší než celková částka."
 
@@ -2154,10 +2150,6 @@ msgstr "Datum vkladu"
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Tím se čísla obálek rodin v databázi přepíší čísly vybranými na této stránce.  Pokračovat?"
-
-#: 
-msgid "Family Select"
-msgstr "Výběr rodiny"
 
 #: 
 msgid "Welcome to"
@@ -9424,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Sledovat rodinné závazky a příspěvky do fondů podle fiskálního roku"
 
 #: 
-msgid "Transaction Details"
-msgstr "Podrobnosti transakce"
-
-#: 
 msgid "Unmapped"
 msgstr "Nepřiřazeno"
 
@@ -9510,10 +9498,6 @@ msgstr "Zobrazit přehledy závazků rodin a alokace fondů"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobrazit členy skupiny, role a vlastnosti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Zobrazit podrobnosti transakce pro platbu závazku"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11074,10 +11058,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Neplatná hodnota JSON — nastavení nebylo uloženo. Opravte ji prosím a zkuste to znovu."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Připojte se k projektu překladu na POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Jazyková a regionální nastavení"
 
@@ -11217,10 +11197,6 @@ msgstr "Konfigurace uživatele"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
-
-#: 
-msgid "View All"
-msgstr "Zobrazit vše"
 
 #: 
 msgid "Yellow"
@@ -15342,10 +15318,6 @@ msgid "Calendar Embed Origins"
 msgstr "Zdroje pro vložení kalendáře"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Překlady ChurchCRM spravuje komunita na POEditor. Můžete pomoci"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Aktuální hodnota $URL[0]"
 
@@ -15512,10 +15484,6 @@ msgstr "pro fondy"
 #: 
 msgid "user"
 msgstr "uživatel"
-
-#: 
-msgid "with at least one"
-msgstr "s alespoň jedním"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17290,10 +17258,6 @@ msgstr "Vybráno v tomto fiskálním roce"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20377,10 +20341,6 @@ msgid "Read the theme authoring guide"
 msgstr "Přečtěte si průvodce tvorbou motivů"
 
 #: 
-msgid "Recent Emails"
-msgstr "Poslední e-maily"
-
-#: 
 msgid "Recipient"
 msgstr "Příjemce"
 
@@ -22559,10 +22519,6 @@ msgstr "Hledat podle jména rodiny"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Hledat podle jména rodiny nebo čísla obálky"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nelze smazat rodinu, která má závazky nebo platby. Nejprve přesuňte nebo odstraňte finanční záznamy."
 
 #: 
 msgid "You cannot delete your own account."
@@ -27277,4 +27233,717 @@ msgstr "Vaše data patří vám. Hlásí se informace o softwaru, nikdy o vaší
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Vaše data patří vám. Aby bylo možné počítat instalace, ChurchCRM hlásí, že byl nainstalován nebo aktualizován a zda to proběhlo úspěšně, jednou denně během používání odešle hlášení a dále číslo verze, vaši zemi, typ databáze a náhodné ID instalace. Nikdy nehlásí záznamy o členech, darech ani jiné záznamy církve, název vaší církve, vaši webovou adresu nebo název serveru ani e-mailové adresy. Kdykoli to můžete vypnout v Správa → Telemetrie; neúspěšná instalace nebo aktualizace se hlásí i nadále. Varování, podrobnosti o chybách a zobrazení stránek se sdílí jen tehdy, pokud to zvolíte."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d vklad je stále otevřený. Uzavřete ho, aby byl každý dar konečný, než se odešlou výkazy."
+msgstr[1] "%1$s: %2$d vklady jsou stále otevřené. Uzavřete je, aby byl každý dar konečný, než se odešlou výkazy."
+msgstr[2] "%1$s: %2$d vkladů je stále otevřených. Uzavřete je, aby byl každý dar konečný, než se odešlou výkazy."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Uloženo %d číslo obálky."
+msgstr[1] "Uložena %d čísla obálek."
+msgstr[2] "Uloženo %d čísel obálek."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d rodina"
+msgstr[1] "%d rodiny"
+msgstr[2] "%d rodin"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: všechny vklady jsou uzavřené. Výkazy jsou připraveny k vytvoření."
+
+#: 
+msgid "12 months"
+msgstr "12 měsíců"
+
+#: 
+msgid "30 days"
+msgstr "30 dní"
+
+#: 
+msgid "90 days"
+msgstr "90 dní"
+
+#: 
+msgid "Add Property"
+msgstr "Přidat vlastnost"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Přidejte ještě několik znaků nebo symbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Přidávat a upravovat události"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Přidejte další znaky nebo použijte číslice a symboly."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Přidejte další znaky a kombinujte velká a malá písmena, číslice a symboly."
+
+#: 
+msgid "Add people and families"
+msgstr "Přidávat osoby a rodiny"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Správci mají všechna oprávnění, dokud je funkce zapnutá."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Zakázat také přihlašování, aby nemohli používat portál pro členy"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Než odešlete výkazy"
+
+#: 
+msgid "Birthday today"
+msgstr "Dnes má narozeniny"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Nelze vytvořit soukromý soubor daňového podpisu. Zkontrolujte, zda lze do složky úložiště zapisovat."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Nelze vytvořit složku %s pro úložiště daňového podpisu. Zajistěte, aby do ní mohl webový server zapisovat, nebo nastavte zapisovatelnou složku v nastavení cesty úložiště daňového podpisu."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Rodinu, která má přísliby nebo platby, nelze smazat. Místo toho rodinu deaktivujte, aby se zachovala finanční historie. Finanční záznamy přesuňte jen tehdy, když je to vhodné."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Nelze zakódovat soukromý daňový podpis."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Pole nelze přesunout tímto směrem"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Nelze přečíst soukromý daňový podpis."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Nelze odstranit soukromý podpis."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Nelze odstranit soukromý soubor daňového podpisu."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Nelze určit složku aplikace pro úložiště daňového podpisu."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Nelze uložit soukromý podpis."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Nelze zapsat ochranu přístupu %s do složky úložiště daňového podpisu."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Změnit roli vybraných členů: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Fiskální rok církve"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Kontrola systému ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Vlastní pole nebylo nalezeno"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Místo toho rodinu deaktivovat"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Místo smazání rodinu deaktivujte."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Místo smazání osobu deaktivujte."
+
+#: 
+msgid "Delete people and families"
+msgstr "Mazat osoby a rodiny"
+
+#: 
+msgid "Delete the login for"
+msgstr "Smazat přihlášení pro"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Časový rozsah grafu vkladů"
+
+#: 
+msgid "Disabled at"
+msgstr "Zakázáno"
+
+#: 
+msgid "Disabled by"
+msgstr "Zakázal(a)"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Stažení odešle všechny dárce za rok. Kontrola a filtr nejprve ukáže součty a umožní zúžit výběr podle rodiny, fondu, třídy nebo data."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Duplicitní číslo obálky"
+
+#: 
+msgid "Edit people and families"
+msgstr "Upravovat osoby a rodiny"
+
+#: 
+msgid "Email people and groups"
+msgstr "Posílat e-maily osobám a skupinám"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Povolte chybějící rozšíření PHP v konfiguraci webového serveru, restartujte webový server a znovu načtěte tuto stránku. Pokud používáte hosting, požádejte poskytovatele o povolení uvedených rozšíření."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Zadat klíč nastavení ručně"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Zadejte počáteční číslo od 0 do %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Přejít na celou obrazovku"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Zadejte tento klíč do své ověřovací aplikace nebo správce hesel pomocí časových kódů (TOTP), 6místných, s 30sekundovým intervalem. Klíč uchovejte v soukromí."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Zadejte své uživatelské jméno nebo e-mail"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Čísla obálek musí být celá čísla od 0 do %d. Nic nebylo uloženo."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Události jsou pro tuto církev vypnuty"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Ukončit celou obrazovku"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Vlastní pole se nepodařilo smazat"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Vlastní pole se nepodařilo přesunout"
+
+#: 
+msgid "Fair"
+msgstr "Průměrné"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Rodiny, které se zavázaly na %s a nemají příslib na %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Rodiny s alespoň jedním členem ve"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Finance jsou pro tuto církev vypnuty"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Najděte rodiny, které se zavázaly v jednom fiskálním roce a v jiném ne."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Složka, kde je uložen soukromý podpis na výkazech darů. Nechte prázdné pro použití vestavěné soukromé složky Images/TaxSignatures, která blokuje přímý přístup z webu. Pro jinou složku zadejte absolutní cestu mimo složku ChurchCRM, do které může webový server zapisovat."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Sbírky jsou pro tuto církev vypnuty"
+
+#: 
+msgid "Good"
+msgstr "Dobré"
+
+#: 
+msgid "Have an email"
+msgstr "Mají e-mail"
+
+#: 
+msgid "Hide setup key"
+msgstr "Skrýt klíč nastavení"
+
+#: 
+msgid "How to respond"
+msgstr "Jak odpovědět"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Nápady čekající na vaše posouzení"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Neaktivní rodiny jsou vynechány. Platby se nepočítají jako přísliby."
+
+#: 
+msgid "Invalid request."
+msgstr "Neplatný požadavek."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Neplatná data obrázku podpisu."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Neplatný uložený identifikátor daňového podpisu."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Neplatné úložiště daňového podpisu."
+
+#: 
+msgid "Last successful login"
+msgstr "Poslední úspěšné přihlášení"
+
+#: 
+msgid "Lockout state"
+msgstr "Stav uzamčení"
+
+#: 
+msgid "Login deleted"
+msgstr "Přihlášení smazáno"
+
+#: 
+msgid "Mail only"
+msgstr "Pouze pošta"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Spravovat všechny služby"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Členové přesunuti do role {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Členové beze změny, protože opustili skupinu nebo jejich roli spravuje služba: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordinátor služby"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuty do automatického odemknutí"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Chybějící přísliby"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Nemáte účet GitHub? Napište nám na Discordu"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Žádná aktivní rodina se nezavázala na %s bez příslibu na %s."
+
+#: 
+msgid "No families found."
+msgstr "Nebyly nalezeny žádné rodiny."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Není přiřazena žádná služba"
+
+#: 
+msgid "No open deposit"
+msgstr "Žádný otevřený vklad"
+
+#: 
+msgid "No pledge for"
+msgstr "Žádný příslib na"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Tomuto účtu neuděleno"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Nevede tým dobrovolníků"
+
+#: 
+msgid "Not locked"
+msgstr "Neuzamčeno"
+
+#: 
+msgid "Number of Payments"
+msgstr "Počet plateb"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Jedna minuta. To, co odešlete, nesdílíme."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Otevřete nápad. Hlasujte 👍, pokud ho vaše církev potřebuje, a přidejte krátký komentář o tom, jak pracujete dnes."
+
+#: 
+msgid "Open deposit"
+msgstr "Otevřený vklad"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Při příštím přihlášení je nutná změna hesla"
+
+#: 
+msgid "Password strength"
+msgstr "Síla hesla"
+
+#: 
+msgid "People & Families"
+msgstr "Osoby a rodiny"
+
+#: 
+msgid "Pledged for"
+msgstr "Příslib na"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Připravit výkazy darů"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Náhled ukázkového dopisu"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Soukromý identifikátor podpisu na kanadských výkazech darů. Spravuje se nahráním podpisu."
+
+#: 
+msgid "Property Type"
+msgstr "Typ vlastnosti"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Poskytněte pouze data obrázku podpisu ve formátu PNG nebo JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Zaznamenaná historie: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Nahlásit problém"
+
+#: 
+msgid "Requirement"
+msgstr "Požadavek"
+
+#: 
+msgid "Return Home"
+msgstr "Zpět na úvod"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Zkontrolujte fiskální rok a poté stáhněte výkazy darů."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Zkontrolovat a uzavřít vklad"
+
+#: 
+msgid "Review and Filter"
+msgstr "Kontrola a filtr"
+
+#: 
+msgid "Review and vote"
+msgstr "Zkontrolovat a hlasovat"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Zkontrolujte rok a poté stáhněte výkazy darů."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Podívejte se, co zvažujeme"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Role a oprávnění"
+
+#: 
+msgid "Select at least one member."
+msgstr "Vyberte alespoň jednoho člena."
+
+#: 
+msgid "Setup key"
+msgstr "Klíč nastavení"
+
+#: 
+msgid "Sign-in status"
+msgstr "Stav přihlášení"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Složka úložiště podpisu"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Podpis byl aktualizován, ale předchozí soukromý soubor podpisu se nepodařilo odstranit."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Chybí některé požadavky PHP. ChurchCRM je potřebuje, než bude moci pokračovat."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Zahajte vklad a poté k němu přidejte každou platbu."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Počáteční číslo obálky"
+
+#: 
+msgid "Strong"
+msgstr "Silné"
+
+#: 
+msgid "Support"
+msgstr "Podpora"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Nastavení daňového ID a PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Seznam se nepodařilo načíst. Nápady můžete stále otevřít na GitHubu."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Název může mít nejvýše %d znaků"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Požadovaná stránka nebyla nalezena. Mohla být přesunuta, přejmenována nebo už neexistuje."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Zadání může mít nejvýše %d znaků"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Vybraní členové už tuto roli mají."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Obrázek podpisu se nepodařilo dekódovat."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Obrázek podpisu nesmí být větší než 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Obrázek podpisu se musí vejít do 2000 × 1000 pixelů."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Do složky %s pro úložiště daňového podpisu nemůže webový server zapisovat."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Složka úložiště daňového podpisu nemůže být symbolický odkaz."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Cesta úložiště daňového podpisu musí být mimo složku ChurchCRM. Nechte nastavení prázdné pro použití vestavěné soukromé složky."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Nastavení cesty úložiště daňového podpisu musí být absolutní cesta ke složce."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Tato čísla obálek se neuloží, dokud nevyberete Aktualizovat záznamy rodin."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Nemohou se přihlásit jako zaměstnanci ani do portálu pro členy a jejich relace, zařízení a přístupové klíče budou odstraněny."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Tuto rodinu nelze smazat, protože má poznámky. Místo toho rodinu deaktivujte, aby se zachovala její historie."
+
+#: 
+msgid "This password looks strong."
+msgstr "Toto heslo vypadá silně."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Tuto osobu nelze smazat, protože má zaznamenané aktivity. Místo toho osobu deaktivujte, aby se zachovala její historie."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Tím se odstraní pouze přihlášení. Osoba a její poznámky zůstanou."
+
+#: 
+msgid "Time Range"
+msgstr "Časový rozsah"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Dvoufázové ověření nastaveno"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Automaticky kopírovat nelze. Vyberte klíč nastavení a zkopírujte ho ručně."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Nahrajte obrázek podpisu ve formátu PNG nebo JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Toto nastavení změníte nahráním nebo odebráním podpisu."
+
+#: 
+msgid "User Details"
+msgstr "Podrobnosti o uživateli"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Uživatelské jméno nebo e-mail"
+
+#: 
+msgid "View all ideas"
+msgstr "Zobrazit všechny nápady"
+
+#: 
+msgid "View events"
+msgstr "Zobrazovat události"
+
+#: 
+msgid "View people and families"
+msgstr "Zobrazovat osoby a rodiny"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Správa dobrovolníků je pro tuto církev vypnuta"
+
+#: 
+msgid "Weak"
+msgstr "Slabé"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Co může tento účet právě teď dělat (jen pro čtení)"
+
+#: 
+msgid "You must select a class"
+msgstr "Musíte vybrat třídu"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Fiskální rok vaší církve nezačíná 1. ledna. Daňové úřady často chtějí potvrzení za kalendářní rok: vyberte Kontrola a filtr a nastavte data na 1. ledna – 31. prosince."
+
+#: 
+msgid "attendance"
+msgstr "docházka"
+
+#: 
+msgid "financial history"
+msgstr "finanční historie"
+
+#: 
+msgid "notes"
+msgstr "poznámky"
+
+#: 
+msgid "recorded activities"
+msgstr "zaznamenané aktivity"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "API klíč systémového uživatele byl znovu vygenerován"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "systémový uživatel obnovil heslo z odkazu v e-mailu"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "systémový uživatel vypnul dvoufázové ověření"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "systémový uživatel zapnul dvoufázové ověření"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "dvoufázové ověření systémového uživatele vypnul správce"
+
+#: 
+msgid "volunteer service history"
+msgstr "historie dobrovolnické služby"
+
+#: 
+msgid "%s by %s"
+msgstr "%s od %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Zadejte své heslo nebo kód z ověřovací aplikace, chcete-li změnit dvoufaktorové ověřování."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nejnovější poznámky"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Zatím nebyly přidány žádné poznámky."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Zahajte registraci a získejte QR kód."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Toto heslo nebo kód není správný. Dvoufaktorové ověřování je stále zapnuté."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Dvoufaktorové ověřování je již nastaveno. Jeho tajný klíč se zobrazí pouze během registrace."
 

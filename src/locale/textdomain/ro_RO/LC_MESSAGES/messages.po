@@ -1537,10 +1537,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Atribui o oportunitate Voluntar nou"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronice detaliile tranzactiei"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Suma nedeductibile nu poate fi mai mare decât suma totală."
 
@@ -2213,10 +2209,6 @@ msgstr "Dată depozit"
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
-
-#: 
-msgid "Family Select"
-msgstr "Selectează familie"
 
 #: 
 msgid "Welcome to"
@@ -9494,10 +9486,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Urmăriți angajamentele familiale și contribuțiile la fonduri pe an fiscal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalii tranzacție"
-
-#: 
 msgid "Unmapped"
 msgstr "Nemapat"
 
@@ -9580,10 +9568,6 @@ msgstr "Vizualizați sumarele angajamentelor familiale și alocările fondurilor
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vizualizează detaliile tranzacției pentru o plată de angajament"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11144,10 +11128,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Valoare JSON invalidă — setarea nu a fost salvată. Vă rugăm să o corectați și să încercați din nou."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Alăturați-vă proiectului de traducere pe POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Setări de limbă și regionale"
 
@@ -11287,10 +11267,6 @@ msgstr "Configurare utilizator"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
-
-#: 
-msgid "View All"
-msgstr "Vizualizați toate"
 
 #: 
 msgid "Yellow"
@@ -15412,10 +15388,6 @@ msgid "Calendar Embed Origins"
 msgstr "Origini de incorporare calendar"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteti ajuta"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Valoarea curenta $URL[0]"
 
@@ -15582,10 +15554,6 @@ msgstr "pentru fonduri"
 #: 
 msgid "user"
 msgstr "utilizator"
-
-#: 
-msgid "with at least one"
-msgstr "cu cel putin unul"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17360,10 +17328,6 @@ msgstr "Sumă strânsă în acest an fiscal"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s trebuie să fie o adresă web completă https://, de exemplu https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Contul are permisiuni limitate. Contactați un administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20447,10 +20411,6 @@ msgid "Read the theme authoring guide"
 msgstr "Citiți ghidul de creare a temelor"
 
 #: 
-msgid "Recent Emails"
-msgstr "E-mailuri recente"
-
-#: 
 msgid "Recipient"
 msgstr "Destinatar"
 
@@ -22629,10 +22589,6 @@ msgstr "Caută după numele familiei"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Caută după numele familiei sau nr. plicului"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare."
 
 #: 
 msgid "You cannot delete your own account."
@@ -27347,4 +27303,717 @@ msgstr "Datele dvs. vă aparțin. Aceste rapoarte privesc software-ul, niciodat�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Datele dvs. vă aparțin. Pentru a număra instalările, ChurchCRM raportează că a fost instalat sau actualizat și dacă a funcționat, un semnal o dată pe zi cât timp este folosit, plus numărul versiunii, țara dvs., tipul bazei de date și un ID de instalare aleatoriu. Nu raportează niciodată datele membrilor, donațiile sau alte date ale bisericii, numele bisericii dvs., adresa web sau numele serverului ori adresele de e-mail. Puteți dezactiva aceasta oricând în Administrare → Telemetrie; o instalare sau o actualizare eșuată este raportată în continuare. Avertismentele, detaliile despre erori și vizualizările de pagini sunt partajate doar dacă alegeți acest lucru."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d depunere este încă deschisă. Închideți-o pentru ca fiecare dar să fie final înainte de trimiterea extraselor."
+msgstr[1] "%1$s: %2$d depuneri sunt încă deschise. Închideți-le pentru ca fiecare dar să fie final înainte de trimiterea extraselor."
+msgstr[2] "%1$s: %2$d de depuneri sunt încă deschise. Închideți-le pentru ca fiecare dar să fie final înainte de trimiterea extraselor."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "S-a salvat %d număr de plic."
+msgstr[1] "S-au salvat %d numere de plic."
+msgstr[2] "S-au salvat %d de numere de plic."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d familie"
+msgstr[1] "%d familii"
+msgstr[2] "%d de familii"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: toate depunerile sunt închise. Extrasele sunt gata de pregătit."
+
+#: 
+msgid "12 months"
+msgstr "12 luni"
+
+#: 
+msgid "30 days"
+msgstr "30 de zile"
+
+#: 
+msgid "90 days"
+msgstr "90 de zile"
+
+#: 
+msgid "Add Property"
+msgstr "Adaugă proprietate"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Adăugați încă câteva caractere sau un simbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Adăugare și editare de evenimente"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Adăugați mai multe caractere sau amestecați cifre și simboluri."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Adăugați mai multe caractere și combinați litere mari și mici, cifre și simboluri."
+
+#: 
+msgid "Add people and families"
+msgstr "Adăugare de persoane și familii"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratorii au toate permisiunile cât timp funcția este activată."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Dezactivează și autentificarea, ca să nu poată folosi Portalul membrilor"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Înainte de a trimite extrasele"
+
+#: 
+msgid "Birthday today"
+msgstr "Zi de naștere astăzi"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Nu se poate crea fișierul privat al semnăturii fiscale. Verificați dacă dosarul de stocare permite scrierea."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Nu se poate crea dosarul %s pentru stocarea semnăturii fiscale. Asigurați-vă că serverul web poate scrie în el sau setați un dosar inscriptibil în setarea căii de stocare a semnăturii fiscale."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "O familie care are angajamente sau plăți nu poate fi ștearsă. Dezactivați familia în schimb pentru a păstra istoricul financiar. Mutați înregistrările financiare doar dacă este cazul."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Nu se poate codifica semnătura fiscală privată."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Câmpul nu poate fi mutat în acea direcție"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Nu se poate citi semnătura fiscală privată."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Nu se poate elimina semnătura privată."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Nu se poate elimina fișierul privat al semnăturii fiscale."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Nu se poate stabili dosarul aplicației pentru stocarea semnăturii fiscale."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Nu se poate stoca semnătura privată."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Nu se poate scrie protecția de acces %s în dosarul de stocare a semnăturii fiscale."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Schimbă rolul membrilor selectați: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Anul fiscal al bisericii"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Verificarea sistemului ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Câmpul personalizat nu a fost găsit"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Dezactivează familia în schimb"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Dezactivați familia în loc să o ștergeți."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Dezactivați persoana în loc să o ștergeți."
+
+#: 
+msgid "Delete people and families"
+msgstr "Ștergere de persoane și familii"
+
+#: 
+msgid "Delete the login for"
+msgstr "Șterge contul pentru"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Interval de timp al graficului depunerilor"
+
+#: 
+msgid "Disabled at"
+msgstr "Dezactivat la"
+
+#: 
+msgid "Disabled by"
+msgstr "Dezactivat de"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Descărcarea trimite toți donatorii din an. Revizuiește și filtrează afișează mai întâi totalurile și vă permite să restrângeți după familie, fond, clasă sau dată."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Număr de plic duplicat"
+
+#: 
+msgid "Edit people and families"
+msgstr "Editare de persoane și familii"
+
+#: 
+msgid "Email people and groups"
+msgstr "Trimitere de e-mailuri către persoane și grupuri"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Activați extensiile PHP lipsă în configurația serverului web, reporniți serverul web și reîncărcați această pagină. Dacă folosiți un furnizor de găzduire, rugați-l să activeze extensiile listate."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Introdu manual o cheie de configurare"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Introduceți un număr de pornire de la 0 la %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Intră în ecran complet"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Introduceți această cheie în aplicația de autentificare sau în managerul de parole, folosind coduri de 6 cifre bazate pe timp (TOTP) și un interval de 30 de secunde. Păstrați această cheie privată."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Introduceți numele de utilizator sau e-mailul"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Numerele de plic trebuie să fie numere întregi de la 0 la %d. Nu s-a salvat nimic."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Evenimentele sunt dezactivate pentru această biserică"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Ieși din ecran complet"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Câmpul personalizat nu a putut fi șters"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Câmpul personalizat nu a putut fi mutat"
+
+#: 
+msgid "Fair"
+msgstr "Acceptabilă"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Familii care s-au angajat pentru %s și nu au angajament pentru %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Familii cu cel puțin un membru în"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Finanțele sunt dezactivate pentru această biserică"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Găsiți familiile care s-au angajat într-un an fiscal și nu în altul."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Dosarul în care este stocată semnătura privată de pe extrasele de donații. Lăsați gol pentru a folosi dosarul privat încorporat Images/TaxSignatures, care blochează accesul web direct. Pentru alt dosar, introduceți o cale absolută din afara dosarului ChurchCRM în care serverul web poate scrie."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Campaniile de strângere de fonduri sunt dezactivate pentru această biserică"
+
+#: 
+msgid "Good"
+msgstr "Bună"
+
+#: 
+msgid "Have an email"
+msgstr "Au e-mail"
+
+#: 
+msgid "Hide setup key"
+msgstr "Ascunde cheia de configurare"
+
+#: 
+msgid "How to respond"
+msgstr "Cum să răspundeți"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Idei care așteaptă revizuirea dvs."
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Familiile inactive sunt omise. Plățile nu se numără ca angajamente."
+
+#: 
+msgid "Invalid request."
+msgstr "Cerere nevalidă."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Date nevalide ale imaginii semnăturii."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Identificator salvat al semnăturii fiscale nevalid."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Stocare nevalidă a semnăturii fiscale."
+
+#: 
+msgid "Last successful login"
+msgstr "Ultima autentificare reușită"
+
+#: 
+msgid "Lockout state"
+msgstr "Starea blocării"
+
+#: 
+msgid "Login deleted"
+msgstr "Cont șters"
+
+#: 
+msgid "Mail only"
+msgstr "Doar poștă"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Gestionează toate slujirile"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Membri mutați la rolul {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Membri nemodificați deoarece au părăsit grupul sau rolul lor este gestionat de o slujire: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Coordonator de slujire"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minute până la deblocarea automată"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Angajamente lipsă"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Nu aveți cont GitHub? Spuneți-ne pe Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Nicio familie activă nu s-a angajat pentru %s fără angajament pentru %s."
+
+#: 
+msgid "No families found."
+msgstr "Nu s-au găsit familii."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Nicio slujire atribuită"
+
+#: 
+msgid "No open deposit"
+msgstr "Nicio depunere deschisă"
+
+#: 
+msgid "No pledge for"
+msgstr "Niciun angajament pentru"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Nu este acordat acestui cont"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Nu conduce o echipă de voluntari"
+
+#: 
+msgid "Not locked"
+msgstr "Neblocat"
+
+#: 
+msgid "Number of Payments"
+msgstr "Număr de plăți"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Un minut. Nu partajăm ceea ce trimiteți."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Deschideți o idee. Votați cu 👍 dacă biserica dvs. are nevoie de ea și adăugați un scurt comentariu despre cum lucrați astăzi."
+
+#: 
+msgid "Open deposit"
+msgstr "Depunere deschisă"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Este necesară schimbarea parolei la următoarea autentificare"
+
+#: 
+msgid "Password strength"
+msgstr "Puterea parolei"
+
+#: 
+msgid "People & Families"
+msgstr "Persoane și familii"
+
+#: 
+msgid "Pledged for"
+msgstr "Angajat pentru"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Pregătește extrasele de donații"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Previzualizează scrisoarea exemplu"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identificatorul resursei semnăturii private canadiene de pe extrasele de donații. Gestionat prin încărcarea semnăturii."
+
+#: 
+msgid "Property Type"
+msgstr "Tip de proprietate"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Furnizați doar datele imaginii semnăturii în format PNG sau JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Istoric înregistrat: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Raportează o problemă"
+
+#: 
+msgid "Requirement"
+msgstr "Cerință"
+
+#: 
+msgid "Return Home"
+msgstr "Înapoi la pagina principală"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Revizuiți un an fiscal, apoi descărcați extrasele de donații."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Revizuiește și închide depunerea"
+
+#: 
+msgid "Review and Filter"
+msgstr "Revizuiește și filtrează"
+
+#: 
+msgid "Review and vote"
+msgstr "Revizuiește și votează"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Revizuiți anul, apoi descărcați extrasele de donații."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Vedeți ce luăm în considerare"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Roluri și permisiuni"
+
+#: 
+msgid "Select at least one member."
+msgstr "Selectați cel puțin un membru."
+
+#: 
+msgid "Setup key"
+msgstr "Cheie de configurare"
+
+#: 
+msgid "Sign-in status"
+msgstr "Starea autentificării"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Dosar de stocare a semnăturii"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Semnătura a fost actualizată, dar fișierul privat anterior al semnăturii nu a putut fi eliminat."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Lipsesc unele cerințe PHP. ChurchCRM are nevoie de ele înainte de a continua."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Începeți o depunere, apoi adăugați fiecare plată la ea."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Număr de plic de început"
+
+#: 
+msgid "Strong"
+msgstr "Puternică"
+
+#: 
+msgid "Support"
+msgstr "Asistență"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Setări pentru cod fiscal și PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Lista nu a putut fi încărcată. Puteți deschide totuși ideile pe GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Numele poate avea cel mult %d caractere"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Pagina solicitată nu a fost găsită. Este posibil să fi fost mutată, redenumită sau să nu mai existe."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Promptul poate avea cel mult %d caractere"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Membrii selectați au deja acel rol."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Imaginea semnăturii nu a putut fi decodată."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Imaginea semnăturii nu poate depăși 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Imaginea semnăturii trebuie să încapă în 2000 × 1000 de pixeli."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Serverul web nu poate scrie în dosarul %s de stocare a semnăturii fiscale."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Dosarul de stocare a semnăturii fiscale nu poate fi o legătură simbolică."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Calea de stocare a semnăturii fiscale trebuie să fie în afara dosarului ChurchCRM. Lăsați setarea goală pentru a folosi dosarul privat încorporat."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Setarea căii de stocare a semnăturii fiscale trebuie să fie o cale absolută de dosar."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Aceste numere de plic nu sunt salvate până nu selectați Actualizează înregistrările familiei."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Nu se pot autentifica ca personal sau în Portalul membrilor, iar sesiunile, dispozitivele și cheile de acces ale lor sunt eliminate."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Această familie nu poate fi ștearsă deoarece are notițe. Dezactivați familia în schimb pentru a-i păstra istoricul."
+
+#: 
+msgid "This password looks strong."
+msgstr "Această parolă pare puternică."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Această persoană nu poate fi ștearsă deoarece are activități înregistrate. Dezactivați persoana în schimb pentru a-i păstra istoricul."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Aceasta elimină doar contul. Persoana și notițele ei rămân."
+
+#: 
+msgid "Time Range"
+msgstr "Interval de timp"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Autentificare în doi pași înregistrată"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Nu se poate copia automat. Selectați și copiați manual cheia de configurare."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Încărcați o imagine de semnătură PNG sau JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Folosiți încărcarea sau eliminarea semnăturii pentru a schimba această setare."
+
+#: 
+msgid "User Details"
+msgstr "Detalii utilizator"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Nume de utilizator sau adresă de e-mail"
+
+#: 
+msgid "View all ideas"
+msgstr "Vezi toate ideile"
+
+#: 
+msgid "View events"
+msgstr "Vizualizare de evenimente"
+
+#: 
+msgid "View people and families"
+msgstr "Vizualizare de persoane și familii"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Gestionarea voluntarilor este dezactivată pentru această biserică"
+
+#: 
+msgid "Weak"
+msgstr "Slabă"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Ce poate face acest cont acum (doar citire)"
+
+#: 
+msgid "You must select a class"
+msgstr "Trebuie să selectați o clasă"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Anul fiscal al bisericii dvs. nu începe la 1 ianuarie. Autoritățile fiscale cer adesea chitanțe pentru anul calendaristic: alegeți Revizuiește și filtrează și setați datele la 1 ianuarie – 31 decembrie."
+
+#: 
+msgid "attendance"
+msgstr "prezență"
+
+#: 
+msgid "financial history"
+msgstr "istoric financiar"
+
+#: 
+msgid "notes"
+msgstr "notițe"
+
+#: 
+msgid "recorded activities"
+msgstr "activități înregistrate"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "cheia API a utilizatorului de sistem a fost regenerată"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "utilizatorul de sistem și-a resetat parola dintr-un link primit prin e-mail"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "utilizatorul de sistem a dezactivat autentificarea în doi pași"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "utilizatorul de sistem a activat autentificarea în doi pași"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "autentificarea în doi pași a utilizatorului de sistem a fost dezactivată de administrator"
+
+#: 
+msgid "volunteer service history"
+msgstr "istoric de serviciu voluntar"
+
+#: 
+msgid "%s by %s"
+msgstr "%s de %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Introduceți parola sau un cod din aplicația de autentificare pentru a schimba autentificarea cu doi factori."
+
+#: 
+msgid "Latest Notes"
+msgstr "Cele mai recente note"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nu au fost adăugate note încă."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Începeți înscrierea pentru a obține un cod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Parola sau codul respectiv nu este corect. Autentificarea cu doi factori este încă activată."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentificarea cu doi factori este deja configurată. Secretul acesteia este afișat doar în timpul înscrierii."
 

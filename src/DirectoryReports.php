@@ -14,11 +14,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// The directory lists contact details of the whole congregation: staff users only.
-if (AuthenticationManager::getCurrentUser()->isEditSelfExclusive()) {
-    RedirectUtils::securityRedirect('Staff');
-}
-
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
 $aBreadcrumbs = PageHeader::breadcrumbs([

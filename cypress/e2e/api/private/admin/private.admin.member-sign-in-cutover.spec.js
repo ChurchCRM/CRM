@@ -36,6 +36,10 @@ const db = (sql, params = []) =>
         return result.rows;
     });
 
+// These upgrade fixtures recreate the pre-7.8.3 schema only for this spec.
+const restoreLegacyColumn = () => db("ALTER TABLE user_usr ADD COLUMN usr_EditSelf tinyint(1) unsigned NOT NULL DEFAULT 0");
+const dropLegacyColumn = () =>
+    cy.task("db:upgradeBlock", { script: "7.8.5-drop-editself.sql", block: "drop retired Edit Self column" }).its("error").should("be.null");
 const runCutover = () => cy.task("db:upgradeBlock", CUTOVER).its("error").should("be.null");
 const config = (name) => cy.makePrivateAdminAPICall("GET", `${CONFIG_URL}/${name}`, null, 200).its("body.value");
 const setConfig = (name, value) => cy.makePrivateAdminAPICall("POST", `${CONFIG_URL}/${name}`, { value }, 200);
@@ -62,6 +66,7 @@ const addAccount = (key, { editSelf, admin, notes, addRecords }, index) => {
 
 describe("7.8.3 upgrade: the release-day cutover", () => {
     before(() => {
+        restoreLegacyColumn();
         cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible: [{ type: "calendar", id: 1 }] }, 200);
         config("iMemberSignInFormerAccounts").then((value) => {
             formerBefore = Number(value || 0);
@@ -96,6 +101,7 @@ describe("7.8.3 upgrade: the release-day cutover", () => {
     });
 
     after(() => {
+        dropLegacyColumn();
         const ids = Object.values(per);
         db(`DELETE FROM user_usr WHERE usr_per_ID IN (${ids.map(() => "?").join(",")})`, ids);
         cy.cleanupPeople(ids);
@@ -217,6 +223,20 @@ describe("7.8.3 upgrade: the release-day cutover", () => {
         cy.signInAsMember(per.selfService);
         cy.request("/portal/").its("body").should("include", '<html lang="fr-FR"');
     });
+
+    it("drops the retired column safely on repeat runs and keeps staff and member access", () => {
+        dropLegacyColumn();
+        dropLegacyColumn();
+        db("SELECT COUNT(*) AS n FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_usr' AND COLUMN_NAME = 'usr_EditSelf'")
+            .its("0.n")
+            .should("eq", 0);
+        db("SELECT usr_Admin AS admin FROM user_usr WHERE usr_per_ID = ?", [per.administrator]).its("0.admin").should("eq", 1);
+        db("SELECT usr_Admin AS admin FROM user_usr WHERE usr_per_ID = ?", [per.readOnly]).its("0.admin").should("eq", 0);
+        cy.makePrivateAdminAPICall("GET", `/api/person/${per.selfService}`, null, 200);
+        cy.signInAsMember(per.selfService);
+        cy.request("/portal/").its("body").should("include", '<html lang="fr-FR"');
+        feedStatus(feeds.selfService).should("eq", 200);
+    });
 });
 
 // The account's id is its person's id, so the rows it wrote outlive it (design §12).
@@ -299,6 +319,7 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
         });
 
     before(() => {
+        restoreLegacyColumn();
         config("iMemberSignInFormerAccounts").then((value) => {
             formerCount = Number(value || 0);
         });
@@ -441,6 +462,7 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
     });
 
     after(() => {
+        dropLegacyColumn();
         cy.clearCookies();
         if (id.ministry) {
             cy.makePrivateAdminAPICall("POST", `${VOLUNTEER}/ministries/${id.ministry}`, { active: false }, [200, 404]);
