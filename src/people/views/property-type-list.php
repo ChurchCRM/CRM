@@ -40,7 +40,7 @@ require_once __DIR__ . '/../../Include/Header.php';
                 <tr>
                     <th><?= gettext('Name') ?></th>
                     <th><?= gettext('Class') ?></th>
-                    <th class="text-center"><?= gettext('In Use') ?></th>
+                    <th class="text-center" title="<?= gettext('Properties / Assignments') ?>"><?= gettext('In Use') ?></th>
                     <th class="text-center w-1"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
@@ -80,9 +80,24 @@ require_once __DIR__ . '/../../Include/Header.php';
                         <span class="badge <?= $badgeClass ?>"><i class="fa-solid <?= $icon ?> me-1"></i><?= $label ?></span>
                     </td>
                     <td class="text-center">
-                        <span class="badge <?= $type['properties'] > 0 ? 'bg-green-lt text-green' : 'bg-light text-dark' ?>">
-                            <?= (int) $type['properties'] ?>
-                        </span>
+                        <?php
+                        $props = (int) $type['properties'];
+                        $assigns = (int) ($type['assignments'] ?? 0);
+                        $used = $props > 0 || $assigns > 0;
+                        $recordLabel = match ($type['class']) {
+                            'p' => gettext('people'),
+                            'f' => gettext('families'),
+                            'g' => gettext('groups'),
+                            default => gettext('records'),
+                        };
+                        ?>
+                        <?php if ($used): ?>
+                            <span class="badge bg-green-lt text-green" title="<?= $props ?> <?= gettext('properties') ?>, <?= $assigns ?> <?= $recordLabel ?>">
+                                <i class="fa-solid fa-check me-1"></i><?= $props ?> / <?= $assigns ?>
+                            </span>
+                        <?php else: ?>
+                            <span class="badge bg-light text-dark">0</span>
+                        <?php endif; ?>
                     </td>
                     <td class="w-1">
                         <div class="dropdown">
