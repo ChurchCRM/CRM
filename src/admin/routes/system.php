@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\DatabaseVersionService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
@@ -375,6 +376,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDear'             => gettext('Greeting'),
             'sConfirmSincerely' => gettext('Closing'),
             'sConfirmSigner'    => gettext('Signer'),
+            'sTaxSignatureStoragePath' => gettext('Signature storage folder'),
         ];
         $letterSettings = array_map(function (array $setting) use ($labels): array {
             $setting['label'] = $labels[$setting['name']];
@@ -401,14 +403,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/church-info', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        // Read flash message from session (set by POST handler)
-        $sGlobalMessage      = '';
-        $sGlobalMessageClass = 'success';
-        if (isset($_SESSION['sGlobalMessage'])) {
-            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
-        }
+        $flash = FlashService::take();
+        $sGlobalMessage      = $flash['message'] ?? '';
+        $sGlobalMessageClass = $flash['class'] ?? 'success';
 
         // iChurchLatitude / iChurchLongitude are stored as strings in
         // config_cfg but are semantically floats. Cast on read so the view
@@ -632,11 +629,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // still saved the rest of the form, but warn the admin so they know
         // to enter coordinates manually.
         if ($geocodingFailed) {
-            $_SESSION['sGlobalMessage']      = gettext('Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.');
-            $_SESSION['sGlobalMessageClass'] = 'warning';
+            FlashService::set(gettext('Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.'), 'warning');
         } else {
-            $_SESSION['sGlobalMessage']      = gettext('Church information saved successfully');
-            $_SESSION['sGlobalMessageClass'] = 'success';
+            FlashService::set(gettext('Church information saved successfully'));
         }
 
         return $response
@@ -665,13 +660,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/localization', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        $sGlobalMessage      = '';
-        $sGlobalMessageClass = 'success';
-        if (isset($_SESSION['sGlobalMessage'])) {
-            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
-        }
+        $flash = FlashService::take();
+        $sGlobalMessage      = $flash['message'] ?? '';
+        $sGlobalMessageClass = $flash['class'] ?? 'success';
 
         $localeSettings = [
             'sLanguage'              => SystemConfig::getValue('sLanguage'),
@@ -695,7 +686,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
 
         // Per-locale stats for the Display Preview: translation completeness %
-        // (from locale/poeditor.json) + whether the GNU locale is installed on
+        // (from locale/locale-stats.json) + whether the GNU locale is installed on
         // the host OS (so the admin knows date/number formatting will work).
         // The system-locale check shells out via LocaleService; if exec() is
         // disabled we degrade gracefully (systemAvailable = null = "unknown").
@@ -727,7 +718,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                     || in_array(str_replace('_', '-', $code), $availableNormalized, true);
             }
 
-            // Translation % comes from locale/poeditor.json; guard so a missing
+            // Translation % comes from locale/locale-stats.json; guard so a missing
             // file on a given install degrades to "not tracked" instead of 500.
             $showPercentage = false;
             $percentage     = 0;
@@ -815,8 +806,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $effectiveThousands = $thousands !== '' ? $thousands : SystemConfig::getConfigItem('sThousandsSeparator')->getDefault();
         $effectiveDecimal   = $decimal !== '' ? $decimal : SystemConfig::getConfigItem('sDecimalSeparator')->getDefault();
         if ($effectiveThousands === $effectiveDecimal) {
-            $_SESSION['sGlobalMessage']      = gettext('Thousands separator and decimal separator must be different characters.');
-            $_SESSION['sGlobalMessageClass'] = 'danger';
+            FlashService::set(gettext('Thousands separator and decimal separator must be different characters.'), 'danger');
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
                 ->withStatus(303);
@@ -827,8 +817,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sThousandsSeparator', $effectiveThousands);
         SystemConfig::setValue('sDecimalSeparator', $effectiveDecimal);
 
-        $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        FlashService::set(gettext('Localization settings saved successfully'));
 
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
@@ -892,9 +881,38 @@ function adminViewUserAccount(Request $request, Response $response, array $args)
         throw new HttpNotFoundException($request, gettext('User not found'));
     }
 
-    return (new PhpRenderer(__DIR__ . '/../../account/views/'))->render($response, 'account.php', [
+    $isLocked = $user->isLocked();
+    $canAdminister = AuthenticationManager::getCurrentUser()->isAdmin();
+    $statusRows = [
+        ['label' => gettext('Sign-in status'), 'value' => $user->getSignInBlockedLabel() ?? gettext('Enabled')],
+        ['label' => gettext('Last successful login'), 'value' => $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?: gettext('Never')],
+        ['label' => gettext('Failed login attempts'), 'value' => (string) $user->getFailedLogins()],
+        ['label' => gettext('Lockout state'), 'value' => $isLocked ? gettext('Locked') : gettext('Not locked')],
+        ['label' => gettext('Password change required at next login'), 'value' => $user->getNeedPasswordChange() ? gettext('Yes') : gettext('No')],
+        ['label' => gettext('Two-factor authentication enrolled'), 'value' => $user->is2FactorAuthEnabled() ? gettext('Yes') : gettext('No')],
+    ];
+    if ($isLocked) {
+        $statusRows[] = ['label' => gettext('Minutes until automatic unlock'), 'value' => (string) \ChurchCRM\Authentication\SignInThrottle::minutesUntilUnlock($user)];
+    }
+    if ($user->getPerson() !== null) {
+        $portalStatus = (new \ChurchCRM\Service\PersonSignInService())->statusFor($user->getPerson(), $canAdminister);
+        $statusRows[] = ['label' => gettext('Portal sign-in'), 'value' => $portalStatus['reasonLabel'] ?? gettext('Enabled')];
+        if ($portalStatus['signInDisabled']) {
+            $statusRows[] = ['label' => gettext('Reason'), 'value' => $portalStatus['disabledReason'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled by'), 'value' => $portalStatus['disabledBy']['name'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled at'), 'value' => $portalStatus['disabledAt'] ?? gettext('Not set')];
+        }
+    }
+
+    return (new PhpRenderer(__DIR__ . '/../views/'))->render($response, 'user-view.php', [
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('User Details'),
+        'sPageSubtitle' => $user->getFullName(),
         'user' => $user,
+        'statusRows' => $statusRows,
+        'canAdminister' => $canAdminister,
+        'canDelete' => $canAdminister && (new UserService())->getUserDeletionBlockedReason($user, AuthenticationManager::getCurrentUser()) === null,
+        'canResetPassword' => $canAdminister && SystemConfig::isEmailEnabled() && !empty($user->getEmail()),
         'permissionGroups' => (new UserPermissionsService())->getEffectivePermissions($user),
         'loginAsPersonHistory' => (new LoginAsPersonHistoryService())->cardForUser($personId),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
@@ -1013,7 +1031,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['showPersonSelect'] = true;
             $pageArgs['people']           = $userService->getAssignablePeople();
             $pageArgs['sUserName']        = '';
-            $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+            $pageArgs['perms']            = ['admin' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'manageGroups' => 0,
                                              'finance' => 0, 'manageFundraisers' => 0,
@@ -1065,7 +1083,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
     }
 
     $pageArgs['perms'] = [
-        'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+        'admin' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
         'manageGroups' => 0,
         'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
@@ -1151,7 +1169,6 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
     $pageArgs['sUserName']  = $user->getUserName();
     $pageArgs['perms']      = [
         'admin'        => $user->getAdmin(),
-        'editSelf'     => $user->getEditSelf(),
         'addRecords'   => $user->getAddRecords(),
         'editRecords'  => $user->getEditRecords(),
         'deleteRecords' => $user->getDeleteRecords(),

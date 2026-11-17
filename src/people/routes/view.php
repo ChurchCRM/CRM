@@ -48,7 +48,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->isEditRecordsEnabled()) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
@@ -336,11 +336,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $fam_Name = $personData['fam_Name'] ?? '';
 
     // Edit permission
-    $bOkToEdit = (
-        $currentUser->isEditRecordsEnabled() ||
-        ($currentUser->isEditSelfEnabled() && $iPersonID === $currentUser->getId()) ||
-        ($currentUser->isEditSelfEnabled() && $fam_ID !== '' && (int)$fam_ID === (int)$currentUser->getPerson()->getFamId())
-    );
+    $bOkToEdit = $currentUser->isEditRecordsEnabled();
 
     // ── Map configuration ────────────────────────────────────────────────────
     $personMapConfig = null;
@@ -356,9 +352,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // ── Timeline ─────────────────────────────────────────────────────────────
     $timelineService = new TimelineService();
     $personTimeline  = $timelineService->getForPerson($iPersonID);
-
-    // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
-    $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
 
     // ── Portal sign-in card (member sign-in design §11.3) ───────────────────
     $portalSignIn = $currentUser->isEditRecordsEnabled()
@@ -444,8 +437,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,
         'personTimeline'         => $personTimeline,
-        // Email history
-        'emailHistory'           => $emailHistory,
+        // Email history URL used by the person timeline
+        'emailHistoryUrl'        => SystemURLs::getRootPath() . '/people/view/' . (int) $iPersonID . '/emails',
         // Portal sign-in card: null when the viewer lacks Edit Records
         'portalSignIn'           => $portalSignIn,
         'portalSignInCanManage'  => $currentUser->isAdmin(),

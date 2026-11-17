@@ -1,6 +1,7 @@
 # RFC: ChurchCRM authorization, identity and sensitive-record access
 
 **Status:** Accepted — direction accepted 2026-10-27, proposed in this PR for final approval. Implementation is not approved until the F0 gate clears and phase 1 meets its parity gate.  
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-10-10  
 **Historical parent:** [#8591](https://github.com/ChurchCRM/CRM/issues/8591) (closed; not the live work queue) · **Design PR:** [#10511](https://github.com/ChurchCRM/CRM/pull/10511)  
 **Authority:** ChurchCRM/CRM code on the default branch; the [member sign-in](https://github.com/ChurchCRM/CRM/blob/feature/member-sign-in/docs/design/member-sign-in.md) design ([#10464](https://github.com/ChurchCRM/CRM/pull/10464), accepted for 7.9.0) is not shipped behavior.

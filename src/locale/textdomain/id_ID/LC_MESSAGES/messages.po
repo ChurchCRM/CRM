@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tetapkan Peluang Relawan Baru"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Rincian Transaksi Elektronik"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Jumlah yang tidak dapat dikurangi tidak boleh lebih besar dari jumlah total."
 
@@ -2156,10 +2152,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ini akan menimpa nomor amplop keluarga dalam database dengan yang dipilih pada halaman ini. Terus?"
 
 #: 
-msgid "Family Select"
-msgstr "Keluarga Pilih"
-
-#: 
 msgid "Welcome to"
 msgstr "Selamat Datang di"
 
@@ -2458,10 +2450,6 @@ msgstr "Lihat Semua Setoran"
 #: 
 msgid "Deposit Reports"
 msgstr "Laporan Setoran"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Edit Slip Setoran"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6059,14 +6047,6 @@ msgid "Close All Deposits"
 msgstr "Tutup Semua Setoran"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Ditutup vs Total"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Selesaikan tugas ini untuk memastikan pelaporan donasi akhir tahun yang akurat."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurasi Email"
 
@@ -6083,28 +6063,12 @@ msgid "Create First Deposit"
 msgstr "Buat Setoran Pertama"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Buat atau buka setoran terlebih dahulu"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Buat atau pilih setoran untuk memulai."
-
-#: 
-msgid "Current Deposit"
-msgstr "Setoran Saat Ini"
-
-#: 
 msgid "Day"
 msgstr "Hari"
 
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistik Setoran"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6133,10 +6097,6 @@ msgstr "Ubah Pembayaran"
 #: 
 msgid "Edit Person"
 msgstr "Ubah Jemaat"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Pastikan semua setoran tahun tersebut telah ditutup sebelum membuat laporan."
 
 #: 
 msgid "F"
@@ -6243,10 +6203,6 @@ msgid "New Pledge"
 msgstr "Janji Iman Baru"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Tidak Ada Setoran Aktif"
-
-#: 
 msgid "No active funds configured."
 msgstr "Tidak ada dana aktif yang dikonfigurasi."
 
@@ -6279,10 +6235,6 @@ msgid "Pledge Reports"
 msgstr "Laporan Janji Iman"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Cetak atau kirim email laporan donasi tahunan ke donatur."
-
-#: 
 msgid "Quick Actions"
 msgstr "Tindakan Cepat"
 
@@ -6313,10 +6265,6 @@ msgstr "Pulihkan"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Pulihkan dari cadangan. Menghapus data saat ini."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Tinjau Dana Donasi"
 
 #: 
 msgid "Save and Add New Family"
@@ -6355,14 +6303,6 @@ msgid "System Info"
 msgstr "Info Sistem"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Redaksi Laporan Donasi"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Daftar Periksa Laporan Tahun Pajak"
-
-#: 
 msgid "Total"
 msgstr "Total"
 
@@ -6383,10 +6323,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Pengguna harus Admin atau memiliki izin Keuangan"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Pastikan nama dana dan deskripsi sudah akurat."
-
-#: 
 msgid "YTD Payments"
 msgstr "Pembayaran Tahun Berjalan"
 
@@ -6403,20 +6339,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Ekstensi ZipArchive diperlukan untuk pembaruan"
 
 #: 
-msgid "active"
-msgstr "aktif"
-
-#: 
 msgid "found"
 msgstr "ditemukan"
 
 #: 
 msgid "issues"
 msgstr "masalah"
-
-#: 
-msgid "open"
-msgstr "terbuka"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7910,10 +7838,6 @@ msgstr "Pindahkan Persembahan ke Keluarga yang Dipilih"
 #: 
 msgid "Calendar not found"
 msgstr "Kalender tidak ditemukan"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Lanjutkan ke Dasbor"
 
 #: 
 msgid "Current Password"
@@ -9483,10 +9407,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Lacak janji persembahan keluarga dan kontribusi dana berdasarkan tahun fiskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detail Transaksi"
-
-#: 
 msgid "Unmapped"
 msgstr "Belum dipetakan"
 
@@ -9569,10 +9489,6 @@ msgstr "Lihat ringkasan janji persembahan keluarga dan alokasi dana"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Lihat anggota grup, peran, dan properti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11133,10 +11049,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bergabunglah dengan Proyek Terjemahan di POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Pengaturan bahasa dan regional"
 
@@ -11284,10 +11196,6 @@ msgstr "Lihat Semua"
 #: 
 msgid "Yellow"
 msgstr "Kuning"
-
-#: 
-msgid "Your current access levels (read-only)"
-msgstr "Tingkat akses Anda saat ini (hanya baca)"
 
 #: 
 msgid "%d repeat event created successfully."
@@ -13820,10 +13728,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Harap konfirmasi penghapusan status pengguna dari"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Harap konfirmasi atur ulang jumlah login gagal"
 
@@ -14635,10 +14539,6 @@ msgid "Access level"
 msgstr "Tingkat akses"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administrator memiliki akses penuh ke semua fitur dan data. Izin individu tidak berlaku."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Semua pengguna dapat melihat anggota jemaat. Izin ini tidak dapat dihapus."
 
@@ -15405,14 +15305,6 @@ msgid "Calendar Embed Origins"
 msgstr "Asal Sematkan Kalender"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan"
-
-#: 
-msgid "Closed Deposits"
-msgstr "Setoran Ditutup"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Nilai $URL[0] saat ini"
 
@@ -15553,10 +15445,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
 
 #: 
-msgid "Total Deposits"
-msgstr "Total Setoran"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Perbarui ke URL yang valid yang"
 
@@ -15583,10 +15471,6 @@ msgstr "untuk dana-dana"
 #: 
 msgid "user"
 msgstr "pengguna"
-
-#: 
-msgid "with at least one"
-msgstr "dengan setidaknya satu"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17357,10 +17241,6 @@ msgstr "Dana Terkumpul Tahun Fiskal Ini"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s harus berupa alamat web https:// yang lengkap, misalnya https://example.org/gerejaanda."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Akun memiliki izin terbatas. Hubungi administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -22602,10 +22482,6 @@ msgid "Search by family name or envelope #"
 msgstr "Cari berdasarkan nama keluarga atau no. amplop"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Keluarga yang memiliki janji persembahan atau pembayaran tidak dapat dihapus. Pindahkan atau hapus dahulu catatan keuangannya."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Anda tidak dapat menghapus akun Anda sendiri."
 
@@ -23984,10 +23860,6 @@ msgid "%s Giving Statement"
 msgstr "Laporan Pemberian %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Sesuaikan teks yang muncul pada laporan pemberian (sTaxReport1, sTaxReport2, dan seterusnya)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24010,10 +23882,6 @@ msgstr "Kirim surel Laporan Pemberian %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Nomor Amplop"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Buat Laporan Pemberian"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24054,10 +23922,6 @@ msgstr "Tidak dapat mengirim surel laporan pemberian: keluarga ini tidak memilik
 #: 
 msgid "Undesignated"
 msgstr "Tanpa peruntukan"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pemberian."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24272,10 +24136,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pembayaran belum masuk ke setoran mana pun."
 
 #: 
-msgid "Can be emailed"
-msgstr "Dapat dikirim melalui surel"
-
-#: 
 msgid "Closing line"
 msgstr "Baris penutup"
 
@@ -24304,16 +24164,8 @@ msgid "Opening line"
 msgstr "Baris pembuka"
 
 #: 
-msgid "Print and mail"
-msgstr "Cetak dan kirim pos"
-
-#: 
 msgid "Qty"
 msgstr "Jml"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Tinjau tahun tersebut, lalu cetak atau kirim surel laporan pemberian."
 
 #: 
 msgid "Signed by"
@@ -24322,10 +24174,6 @@ msgstr "Ditandatangani oleh"
 #: 
 msgid "Thank-you line"
 msgstr "Baris terima kasih"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pajak."
 
 #: 
 msgid "Year-End Giving"
@@ -27342,4 +27190,711 @@ msgstr "Data Anda milik Anda. Laporan ini tentang perangkat lunak, tidak pernah 
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Data Anda milik Anda. Untuk menghitung instalasi, ChurchCRM melaporkan bahwa ia telah diinstal atau diperbarui dan apakah berhasil, laporan sekali sehari selama digunakan, ditambah nomor versi, negara Anda, jenis basis data, dan ID instalasi acak. ChurchCRM tidak pernah melaporkan data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Anda dapat menonaktifkannya kapan saja di Admin → Telemetri; instalasi atau pembaruan yang gagal tetap dilaporkan. Peringatan, detail kesalahan, dan tampilan halaman hanya dibagikan jika Anda memilihnya."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d setoran masih terbuka. Tutup agar setiap persembahan final sebelum laporan dikirim."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d nomor amplop disimpan."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d keluarga"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: semua setoran sudah ditutup. Laporan siap disiapkan."
+
+#: 
+msgid "12 months"
+msgstr "12 bulan"
+
+#: 
+msgid "30 days"
+msgstr "30 hari"
+
+#: 
+msgid "90 days"
+msgstr "90 hari"
+
+#: 
+msgid "Add Property"
+msgstr "Tambah Properti"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Tambahkan beberapa karakter lagi atau satu simbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Menambah dan mengedit acara"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Tambahkan lebih banyak karakter atau campurkan angka dan simbol."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Tambahkan lebih banyak karakter, dan campurkan huruf besar dan kecil, angka, serta simbol."
+
+#: 
+msgid "Add people and families"
+msgstr "Menambah orang dan keluarga"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administrator memiliki semua izin selama fitur ini aktif."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Nonaktifkan juga login agar mereka tidak dapat menggunakan Portal Anggota"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Sebelum Mengirim Laporan"
+
+#: 
+msgid "Birthday today"
+msgstr "Ulang tahun hari ini"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Tidak dapat membuat berkas tanda tangan pajak pribadi. Pastikan folder penyimpanan dapat ditulisi."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Tidak dapat membuat folder penyimpanan tanda tangan pajak %s. Pastikan server web dapat menulis ke sana, atau tetapkan folder yang dapat ditulisi pada pengaturan jalur penyimpanan tanda tangan pajak."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Keluarga yang memiliki janji atau pembayaran tidak dapat dihapus. Nonaktifkan keluarga sebagai gantinya untuk menjaga riwayat keuangan. Pindahkan catatan keuangan hanya jika sesuai."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Tidak dapat mengenkode tanda tangan pajak pribadi."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Tidak dapat memindahkan kolom ke arah itu"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Tidak dapat membaca tanda tangan pajak pribadi."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Tidak dapat menghapus tanda tangan pribadi."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Tidak dapat menghapus berkas tanda tangan pajak pribadi."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Tidak dapat menentukan folder aplikasi untuk penyimpanan tanda tangan pajak."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Tidak dapat menyimpan tanda tangan pribadi."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Tidak dapat menulis pelindung akses %s di folder penyimpanan tanda tangan pajak."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Ubah peran anggota terpilih: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Tahun Fiskal Gereja"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Pemeriksaan Sistem ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Kolom khusus tidak ditemukan"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Nonaktifkan keluarga sebagai gantinya"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Nonaktifkan keluarga alih-alih menghapusnya."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Nonaktifkan orang ini alih-alih menghapusnya."
+
+#: 
+msgid "Delete people and families"
+msgstr "Menghapus orang dan keluarga"
+
+#: 
+msgid "Delete the login for"
+msgstr "Hapus login untuk"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Rentang waktu grafik setoran"
+
+#: 
+msgid "Disabled at"
+msgstr "Dinonaktifkan pada"
+
+#: 
+msgid "Disabled by"
+msgstr "Dinonaktifkan oleh"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Unduhan mengirim setiap donatur dalam tahun tersebut. Tinjau dan Filter menampilkan total terlebih dahulu dan memungkinkan Anda mempersempit menurut keluarga, dana, kelas, atau tanggal."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Nomor amplop ganda"
+
+#: 
+msgid "Edit people and families"
+msgstr "Mengedit orang dan keluarga"
+
+#: 
+msgid "Email people and groups"
+msgstr "Mengirim email ke orang dan grup"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Aktifkan ekstensi PHP yang hilang di konfigurasi server web Anda, mulai ulang server web, lalu muat ulang halaman ini. Jika Anda memakai penyedia hosting, minta mereka mengaktifkan ekstensi yang tercantum."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Masukkan kunci penyiapan secara manual"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Masukkan nomor awal dari 0 sampai %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Masuk layar penuh"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Masukkan kunci ini ke aplikasi autentikator atau pengelola kata sandi Anda dengan kode berbasis waktu (TOTP) 6 digit dan interval 30 detik. Jaga kerahasiaan kunci ini."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Masukkan nama pengguna atau email Anda"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Nomor amplop harus berupa bilangan bulat dari 0 sampai %d. Tidak ada yang disimpan."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Acara dimatikan untuk gereja ini"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Keluar dari layar penuh"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Gagal menghapus kolom khusus"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Gagal memindahkan kolom khusus"
+
+#: 
+msgid "Fair"
+msgstr "Cukup"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Keluarga yang berjanji untuk %s dan tidak memiliki janji untuk %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Keluarga dengan setidaknya satu anggota di"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Keuangan dimatikan untuk gereja ini"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Temukan keluarga yang berjanji pada satu tahun fiskal dan tidak pada tahun lainnya."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Folder tempat tanda tangan pribadi laporan persembahan disimpan. Biarkan kosong untuk memakai folder pribadi bawaan, Images/TaxSignatures, yang memblokir akses web langsung. Untuk memakai folder lain, masukkan jalur absolut di luar folder ChurchCRM yang dapat ditulisi oleh server web."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Penggalangan dana dimatikan untuk gereja ini"
+
+#: 
+msgid "Good"
+msgstr "Baik"
+
+#: 
+msgid "Have an email"
+msgstr "Memiliki email"
+
+#: 
+msgid "Hide setup key"
+msgstr "Sembunyikan kunci penyiapan"
+
+#: 
+msgid "How to respond"
+msgstr "Cara menanggapi"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ide yang menunggu tinjauan Anda"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Keluarga tidak aktif dikecualikan. Pembayaran tidak dihitung sebagai janji."
+
+#: 
+msgid "Invalid request."
+msgstr "Permintaan tidak valid."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Data gambar tanda tangan tidak valid."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Pengenal tanda tangan pajak tersimpan tidak valid."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Penyimpanan tanda tangan pajak tidak valid."
+
+#: 
+msgid "Last successful login"
+msgstr "Login berhasil terakhir"
+
+#: 
+msgid "Lockout state"
+msgstr "Status penguncian"
+
+#: 
+msgid "Login deleted"
+msgstr "Login dihapus"
+
+#: 
+msgid "Mail only"
+msgstr "Hanya surat"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Kelola semua pelayanan"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Anggota dipindahkan ke {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Anggota tidak diubah karena telah keluar dari grup atau perannya dikelola oleh pelayanan: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordinator pelayanan"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Menit hingga dibuka otomatis"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Janji yang Hilang"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Tidak punya akun GitHub? Beri tahu kami di Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Tidak ada keluarga aktif yang berjanji untuk %s tanpa janji untuk %s."
+
+#: 
+msgid "No families found."
+msgstr "Tidak ada keluarga ditemukan."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Tidak ada pelayanan yang ditetapkan"
+
+#: 
+msgid "No open deposit"
+msgstr "Tidak ada setoran terbuka"
+
+#: 
+msgid "No pledge for"
+msgstr "Tidak ada janji untuk"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Tidak diberikan kepada akun ini"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Tidak memimpin tim relawan"
+
+#: 
+msgid "Not locked"
+msgstr "Tidak terkunci"
+
+#: 
+msgid "Number of Payments"
+msgstr "Jumlah Pembayaran"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Satu menit. Kami tidak membagikan apa yang Anda kirim."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Buka sebuah ide. Beri suara dengan 👍 jika gereja Anda membutuhkannya, dan tambahkan komentar singkat tentang cara Anda bekerja saat ini."
+
+#: 
+msgid "Open deposit"
+msgstr "Setoran terbuka"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Penggantian kata sandi diperlukan saat login berikutnya"
+
+#: 
+msgid "Password strength"
+msgstr "Kekuatan kata sandi"
+
+#: 
+msgid "People & Families"
+msgstr "Orang & Keluarga"
+
+#: 
+msgid "Pledged for"
+msgstr "Dijanjikan untuk"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Siapkan Laporan Persembahan"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Pratinjau Surat Contoh"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Pengenal aset tanda tangan pribadi laporan persembahan Kanada. Dikelola melalui unggahan tanda tangan."
+
+#: 
+msgid "Property Type"
+msgstr "Jenis Properti"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Berikan hanya data gambar tanda tangan PNG atau JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Riwayat tercatat: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Laporkan Masalah"
+
+#: 
+msgid "Requirement"
+msgstr "Persyaratan"
+
+#: 
+msgid "Return Home"
+msgstr "Kembali ke Beranda"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Tinjau satu tahun fiskal, lalu unduh laporan persembahan."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Tinjau dan Tutup Setoran"
+
+#: 
+msgid "Review and Filter"
+msgstr "Tinjau dan Filter"
+
+#: 
+msgid "Review and vote"
+msgstr "Tinjau dan beri suara"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Tinjau tahunnya, lalu unduh laporan persembahan."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Lihat apa yang sedang kami pertimbangkan"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Peran & izin"
+
+#: 
+msgid "Select at least one member."
+msgstr "Pilih setidaknya satu anggota."
+
+#: 
+msgid "Setup key"
+msgstr "Kunci penyiapan"
+
+#: 
+msgid "Sign-in status"
+msgstr "Status login"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Folder penyimpanan tanda tangan"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Tanda tangan diperbarui, tetapi berkas tanda tangan pribadi sebelumnya tidak dapat dihapus."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Beberapa persyaratan PHP hilang. ChurchCRM memerlukannya sebelum dapat melanjutkan."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Mulai sebuah setoran, lalu tambahkan setiap pembayaran ke dalamnya."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Nomor amplop awal"
+
+#: 
+msgid "Strong"
+msgstr "Kuat"
+
+#: 
+msgid "Support"
+msgstr "Dukungan"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Pengaturan ID Pajak dan PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Daftar tidak dapat dimuat. Anda masih dapat membuka ide di GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Nama dapat berisi paling banyak %d karakter"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Halaman yang Anda minta tidak ditemukan. Halaman mungkin telah dipindahkan, diganti namanya, atau tidak ada lagi."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Prompt dapat berisi paling banyak %d karakter"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Anggota yang dipilih sudah memiliki peran itu."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Gambar tanda tangan tidak dapat didekode."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Gambar tanda tangan tidak boleh lebih besar dari 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Gambar tanda tangan harus muat dalam 2000 × 1000 piksel."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Folder penyimpanan tanda tangan pajak %s tidak dapat ditulisi oleh server web."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Folder penyimpanan tanda tangan pajak tidak boleh berupa tautan simbolis."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Jalur penyimpanan tanda tangan pajak harus berada di luar folder ChurchCRM. Biarkan pengaturan kosong untuk memakai folder pribadi bawaan."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Pengaturan jalur penyimpanan tanda tangan pajak harus berupa jalur folder absolut."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Nomor amplop ini tidak disimpan sampai Anda memilih Perbarui Catatan Keluarga."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Mereka tidak dapat login sebagai staf atau ke Portal Anggota, dan sesi, perangkat, serta passkey mereka dihapus."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Keluarga ini tidak dapat dihapus karena memiliki catatan. Nonaktifkan keluarga sebagai gantinya untuk menjaga riwayatnya."
+
+#: 
+msgid "This password looks strong."
+msgstr "Kata sandi ini terlihat kuat."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Orang ini tidak dapat dihapus karena memiliki aktivitas tercatat. Nonaktifkan orang ini sebagai gantinya untuk menjaga riwayatnya."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Ini hanya menghapus login. Orang tersebut dan catatannya tetap ada."
+
+#: 
+msgid "Time Range"
+msgstr "Rentang Waktu"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Autentikasi dua faktor terdaftar"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Tidak dapat menyalin otomatis. Pilih dan salin kunci penyiapan secara manual."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Unggah gambar tanda tangan PNG atau JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Gunakan unggah atau hapus tanda tangan untuk mengubah pengaturan ini."
+
+#: 
+msgid "User Details"
+msgstr "Detail Pengguna"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Nama Pengguna atau Alamat Email"
+
+#: 
+msgid "View all ideas"
+msgstr "Lihat semua ide"
+
+#: 
+msgid "View events"
+msgstr "Melihat acara"
+
+#: 
+msgid "View people and families"
+msgstr "Melihat orang dan keluarga"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Manajemen Relawan dimatikan untuk gereja ini"
+
+#: 
+msgid "Weak"
+msgstr "Lemah"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Apa yang dapat dilakukan akun ini saat ini (hanya baca)"
+
+#: 
+msgid "You must select a class"
+msgstr "Anda harus memilih kelas"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Tahun fiskal gereja Anda tidak dimulai pada 1 Januari. Otoritas pajak sering meminta tanda terima untuk tahun kalender: pilih Tinjau dan Filter lalu atur tanggal ke 1 Januari – 31 Desember."
+
+#: 
+msgid "attendance"
+msgstr "kehadiran"
+
+#: 
+msgid "financial history"
+msgstr "riwayat keuangan"
+
+#: 
+msgid "notes"
+msgstr "catatan"
+
+#: 
+msgid "recorded activities"
+msgstr "aktivitas tercatat"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "kunci API pengguna sistem dibuat ulang"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "pengguna sistem mengatur ulang kata sandinya dari tautan email"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "pengguna sistem mematikan autentikasi dua faktor"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "pengguna sistem menyalakan autentikasi dua faktor"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "autentikasi dua faktor pengguna sistem dinonaktifkan oleh admin"
+
+#: 
+msgid "volunteer service history"
+msgstr "riwayat pelayanan relawan"
+
+#: 
+msgid "%s by %s"
+msgstr "%s oleh %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Masukkan kata sandi Anda atau kode dari aplikasi autentikator Anda untuk mengubah autentikasi dua faktor."
+
+#: 
+msgid "Latest Notes"
+msgstr "Catatan Terbaru"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Belum ada catatan yang ditambahkan."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Mulai pendaftaran untuk mendapatkan kode QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
 

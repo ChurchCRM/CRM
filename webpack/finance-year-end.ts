@@ -1,20 +1,23 @@
 /**
- * Year-End Giving: the statement wording panel. Admins edit the wording in place; the panel saves
- * through the System Config API and reloads so the letter preview matches.
+ * Year-End Giving: the statement wording panel. Each field saves as it changes, through the
+ * finance config API, like the Statement Settings page.
  */
 function wire(): void {
   const host = document.getElementById("statementWording");
   const settings = host?.dataset.settings;
-  if (!host || !settings || !window.CRM?.settingsPanel) {
+  if (!host || !settings || !window.CRM?.SettingsPanel) {
     return;
   }
 
-  window.CRM.settingsPanel.init({
+  new window.CRM.SettingsPanel().init({
     container: "#statementWording",
     title: host.dataset.title ?? "",
     icon: "fa-solid fa-pen-to-square",
     settings: JSON.parse(settings),
-    onSave: () => window.location.reload(),
+    showAllSettingsLink: false,
+    autoSave: true,
+    columns: 1,
+    configApiPath: "/finance/api/config",
   });
 }
 

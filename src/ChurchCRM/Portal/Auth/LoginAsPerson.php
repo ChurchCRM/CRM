@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Portal\PortalExtension;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -168,8 +169,7 @@ final class LoginAsPerson
             return;
         }
         self::finish($record, $reason === SignInReason::MEMBER_SIGN_IN_OFF ? LoginAsPersonEndReason::MEMBER_SIGN_IN_OFF : LoginAsPersonEndReason::ENDED, true);
-        $_SESSION['sGlobalMessage'] = sprintf(gettext('Login as Person ended: %s'), self::refusalMessage($reason));
-        $_SESSION['sGlobalMessageClass'] = 'warning';
+        FlashService::set(sprintf(gettext('Login as Person ended: %s'), self::refusalMessage($reason)), 'warning');
     }
 
     /** The PHP session is being destroyed (sign-out, or a staff session that ended). */

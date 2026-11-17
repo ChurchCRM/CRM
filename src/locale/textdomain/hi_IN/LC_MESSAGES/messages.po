@@ -1484,10 +1484,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "एक नया स्वयंसेवक अवसर सौंपें"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "इलेक्ट्रॉनिक लेनदेन विवरण"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
 
@@ -2138,10 +2134,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "यह डेटाबेस में परिवार के लिफाफा नंबरों को इस पृष्ठ पर चयनित नंबरों से बदल देगा। जारी रखें?"
 
 #: 
-msgid "Family Select"
-msgstr "परिवार चयन"
-
-#: 
 msgid "Welcome to"
 msgstr "स्वागत है"
 
@@ -2436,10 +2428,6 @@ msgstr "सभी जमा देखें"
 #: 
 msgid "Deposit Reports"
 msgstr "जमा रिपोर्ट"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "जमा पर्ची संपादित करें"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6034,14 +6022,6 @@ msgid "Close All Deposits"
 msgstr "सभी जमा बंद करें"
 
 #: 
-msgid "Closed vs Total"
-msgstr "बंद बनाम कुल"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "अपने दाताओं के लिए सटीक वर्ष के अंत कर रिपोर्टिंग सुनिश्चित करने के लिए इन कार्यों को पूरा करें।"
-
-#: 
 msgid "Configure Email"
 msgstr "ईमेल कॉन्फ़िगर करें"
 
@@ -6058,28 +6038,12 @@ msgid "Create First Deposit"
 msgstr "पहली जमा बनाएं"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "पहले जमा बनाएं या खोलें"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "शुरू करने के लिए जमा बनाएं या चुनें।"
-
-#: 
-msgid "Current Deposit"
-msgstr "वर्तमान जमा"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
 #: 
 msgid "Dec"
 msgstr "दिसंबर"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "जमा सांख्यिकी"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6108,10 +6072,6 @@ msgstr "भुगतान संपादित करें"
 #: 
 msgid "Edit Person"
 msgstr "व्यक्ति संपादित करें"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "विवरण जनरेट करने से पहले सुनिश्चित करें कि कर वर्ष के लिए सभी जमा बंद हैं।"
 
 #: 
 msgid "F"
@@ -6218,10 +6178,6 @@ msgid "New Pledge"
 msgstr "नई प्रतिज्ञा"
 
 #: 
-msgid "No Active Deposit"
-msgstr "कोई सक्रिय जमा नहीं"
-
-#: 
 msgid "No active funds configured."
 msgstr "कोई सक्रिय फंड कॉन्फ़िगर नहीं है।"
 
@@ -6254,10 +6210,6 @@ msgid "Pledge Reports"
 msgstr "प्रतिज्ञा रिपोर्ट"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "सभी दाताओं को वार्षिक दान विवरण प्रिंट या ईमेल करें।"
-
-#: 
 msgid "Quick Actions"
 msgstr "त्वरित कार्रवाइयाँ"
 
@@ -6288,10 +6240,6 @@ msgstr "पुनर्स्थापित करें"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "बैकअप फ़ाइल से रिस्टोर करें। मौजूदा डेटा मिटा देता है।"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "दान निधि की समीक्षा करें"
 
 #: 
 msgid "Save and Add New Family"
@@ -6330,14 +6278,6 @@ msgid "System Info"
 msgstr "सिस्टम जानकारी"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "कर रिपोर्ट शब्दावली"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "कर वर्ष रिपोर्टिंग चेकलिस्ट"
-
-#: 
 msgid "Total"
 msgstr "कुल"
 
@@ -6358,10 +6298,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या वित्त अनुमति होनी चाहिए"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "सत्यापित करें कि फंड नाम और विवरण विवरणों के लिए सटीक हैं।"
-
-#: 
 msgid "YTD Payments"
 msgstr "वर्ष-दर-वर्ष भुगतान"
 
@@ -6378,20 +6314,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "अपग्रेड के लिए ZipArchive एक्सटेंशन आवश्यक है"
 
 #: 
-msgid "active"
-msgstr "सक्रिय"
-
-#: 
 msgid "found"
 msgstr "मिला"
 
 #: 
 msgid "issues"
 msgstr "समस्याएं"
-
-#: 
-msgid "open"
-msgstr "खुला"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7889,10 +7817,6 @@ msgstr "चुने गए परिवार में चंदा स्थ�
 #: 
 msgid "Calendar not found"
 msgstr "कैलेंडर नहीं मिला"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "डैशबोर्ड पर जारी रखें"
 
 #: 
 msgid "Current Password"
@@ -9463,10 +9387,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञाओं और कोष योगदान को ट्रैक करें"
 
 #: 
-msgid "Transaction Details"
-msgstr "लेनदेन विवरण"
-
-#: 
 msgid "Unmapped"
 msgstr "मैप नहीं किया गया"
 
@@ -9549,10 +9469,6 @@ msgstr "पारिवारिक प्रतिज्ञा सारां�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "समूह सदस्य, भूमिकाएँ और विशेषताएँ देखें"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "प्रतिज्ञा भुगतान के लिए लेनदेन विवरण देखें"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11113,10 +11029,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "अमान्य JSON मान — सेटिंग सहेजी नहीं गई। कृपया इसे सुधारें और पुनः प्रयास करें।"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor पर अनुवाद परियोजना में शामिल हों"
-
-#: 
 msgid "Language and regional settings"
 msgstr "भाषा और क्षेत्रीय सेटिंग्स"
 
@@ -11264,10 +11176,6 @@ msgstr "सभी देखें"
 #: 
 msgid "Yellow"
 msgstr "पीला"
-
-#: 
-msgid "Your current access levels (read-only)"
-msgstr "आपके वर्तमान पहुँच स्तर (केवल-पठन)"
 
 #: 
 msgid "%d repeat event created successfully."
@@ -13801,10 +13709,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "कृपया इस उपयोगकर्ता के लिए 2 फैक्टर ऑथेंटिकेशन अक्षम करने की पुष्टि करें"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "कृपया इससे उपयोगकर्ता स्थिति हटाने की पुष्टि करें"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "कृपया विफल लॉगिन गणना को रीसेट करने की पुष्टि करें"
 
@@ -14617,10 +14521,6 @@ msgid "Access level"
 msgstr "पहुँच स्तर"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "प्रशासकों को सभी सुविधाओं और डेटा तक पूर्ण पहुँच है। व्यक्तिगत अनुमतियाँ लागू नहीं होती हैं।"
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "सभी उपयोगकर्ता मण्डली के सदस्यों को देख सकते हैं। यह अनुमति हटाई नहीं जा सकती।"
 
@@ -15389,14 +15289,6 @@ msgid "Calendar Embed Origins"
 msgstr "कैलेंडर एम्बेड उत्पत्ति"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM के अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
-
-#: 
-msgid "Closed Deposits"
-msgstr "बंद जमाएँ"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "वर्तमान $URL[0] मान"
 
@@ -15537,10 +15429,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
 
 #: 
-msgid "Total Deposits"
-msgstr "कुल जमाएँ"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "इसे एक वैध URL में अपडेट करें जो"
 
@@ -15567,10 +15455,6 @@ msgstr "निधियों के लिए"
 #: 
 msgid "user"
 msgstr "उपयोगकर्ता"
-
-#: 
-msgid "with at least one"
-msgstr "कम से कम एक के साथ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17343,10 +17227,6 @@ msgstr "इस वित्तीय वर्ष में जुटाई ग�
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s एक पूर्ण https:// वेब पता होना चाहिए, उदाहरण के लिए https://example.org/yourchurch।"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "खाते की अनुमतियाँ सीमित हैं। किसी एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -22601,10 +22481,6 @@ msgid "Search by family name or envelope #"
 msgstr "परिवार के नाम या लिफ़ाफ़ा क्र. से खोजें"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "जिस परिवार के पास प्रतिज्ञाएँ या भुगतान हैं, उसे हटाया नहीं जा सकता। पहले वित्तीय रिकॉर्ड स्थानांतरित करें या हटाएँ।"
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "आप अपना स्वयं का खाता नहीं हटा सकते।"
 
@@ -23983,10 +23859,6 @@ msgid "%s Giving Statement"
 msgstr "%s दान विवरण"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "दान विवरणों पर दिखने वाले पाठ को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24009,10 +23881,6 @@ msgstr "%s दान विवरण ईमेल करें"
 #: 
 msgid "Envelope Numbers"
 msgstr "लिफाफा संख्याएँ"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "दान विवरण बनाएँ"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24053,10 +23921,6 @@ msgstr "दान विवरण ईमेल नहीं किया जा 
 #: 
 msgid "Undesignated"
 msgstr "अनिर्दिष्ट"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी दान विवरणों पर दिखाई दे।"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24271,10 +24135,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d भुगतान अभी किसी जमा पर नहीं हैं।"
 
 #: 
-msgid "Can be emailed"
-msgstr "ईमेल किया जा सकता है"
-
-#: 
 msgid "Closing line"
 msgstr "समापन पंक्ति"
 
@@ -24303,16 +24163,8 @@ msgid "Opening line"
 msgstr "आरंभिक पंक्ति"
 
 #: 
-msgid "Print and mail"
-msgstr "प्रिंट करें और डाक से भेजें"
-
-#: 
 msgid "Qty"
 msgstr "मात्रा"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "वर्ष की समीक्षा करें, फिर दान विवरण प्रिंट करें या ईमेल करें।"
 
 #: 
 msgid "Signed by"
@@ -24321,10 +24173,6 @@ msgstr "हस्ताक्षरकर्ता"
 #: 
 msgid "Thank-you line"
 msgstr "धन्यवाद पंक्ति"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी कर विवरणों पर दिखाई दे।"
 
 #: 
 msgid "Year-End Giving"
@@ -27343,4 +27191,714 @@ msgstr "आपका डेटा आपका है। यह सॉफ़्�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "आपका डेटा आपका है। इंस्टॉल गिनने के लिए, ChurchCRM रिपोर्ट करता है कि वह इंस्टॉल या अपग्रेड हुआ और क्या वह सफल रहा, उपयोग के दौरान दिन में एक बार चेक-इन, साथ ही संस्करण संख्या, आपका देश, डेटाबेस का प्रकार और एक यादृच्छिक इंस्टॉलेशन आईडी। यह कभी भी सदस्य, दान या अन्य कलीसिया रिकॉर्ड, आपकी कलीसिया का नाम, आपका वेब पता या सर्वर नाम, या ईमेल पते रिपोर्ट नहीं करता। आप इसे कभी भी एडमिन → टेलीमेट्री में बंद कर सकते हैं; विफल इंस्टॉल या अपग्रेड की सूचना फिर भी दी जाती है। चेतावनियाँ, त्रुटि विवरण और पृष्ठ दृश्य केवल तभी साझा होते हैं जब आप चुनते हैं।"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d जमा अभी भी खुला है। विवरण भेजने से पहले इसे बंद करें ताकि हर दान अंतिम हो जाए।"
+msgstr[1] "%1$s: %2$d जमा अभी भी खुले हैं। विवरण भेजने से पहले इन्हें बंद करें ताकि हर दान अंतिम हो जाए।"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d लिफ़ाफ़ा संख्या सहेजी गई।"
+msgstr[1] "%d लिफ़ाफ़ा संख्याएँ सहेजी गईं।"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d परिवार"
+msgstr[1] "%d परिवार"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: सभी जमा बंद हैं। विवरण तैयार करने के लिए तैयार हैं।"
+
+#: 
+msgid "12 months"
+msgstr "12 महीने"
+
+#: 
+msgid "30 days"
+msgstr "30 दिन"
+
+#: 
+msgid "90 days"
+msgstr "90 दिन"
+
+#: 
+msgid "Add Property"
+msgstr "गुण जोड़ें"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "कुछ और अक्षर या एक चिह्न जोड़ें।"
+
+#: 
+msgid "Add and edit events"
+msgstr "कार्यक्रम जोड़ें और संपादित करें"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "और अक्षर जोड़ें या संख्याएँ और चिह्न मिलाएँ।"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "और अक्षर जोड़ें, और बड़े-छोटे अक्षर, संख्याएँ और चिह्न मिलाएँ।"
+
+#: 
+msgid "Add people and families"
+msgstr "लोग और परिवार जोड़ें"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "जब तक सुविधा चालू है, प्रशासकों के पास सभी अनुमतियाँ होती हैं।"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "साइन-इन भी अक्षम करें, ताकि वे सदस्य पोर्टल का उपयोग न कर सकें"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "विवरण भेजने से पहले"
+
+#: 
+msgid "Birthday today"
+msgstr "आज जन्मदिन"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "निजी कर हस्ताक्षर फ़ाइल नहीं बनाई जा सकती। जाँचें कि संग्रहण फ़ोल्डर लिखने योग्य है।"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "कर हस्ताक्षर संग्रहण फ़ोल्डर %s नहीं बनाया जा सकता। सुनिश्चित करें कि वेब सर्वर इसमें लिख सके, या कर हस्ताक्षर संग्रहण पथ सेटिंग में लिखने योग्य फ़ोल्डर सेट करें।"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "जिस परिवार की प्रतिज्ञाएँ या भुगतान हैं उसे हटाया नहीं जा सकता। वित्तीय इतिहास सुरक्षित रखने के लिए इसके बजाय परिवार को निष्क्रिय करें। वित्तीय रिकॉर्ड केवल उचित होने पर ही स्थानांतरित करें।"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "निजी कर हस्ताक्षर को एन्कोड नहीं किया जा सकता।"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "फ़ील्ड को उस दिशा में नहीं ले जाया जा सकता"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "निजी कर हस्ताक्षर नहीं पढ़ा जा सकता।"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "निजी हस्ताक्षर हटाया नहीं जा सकता।"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "निजी कर हस्ताक्षर फ़ाइल हटाई नहीं जा सकती।"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "कर हस्ताक्षर संग्रहण के लिए एप्लिकेशन फ़ोल्डर का पता नहीं लगाया जा सकता।"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "निजी हस्ताक्षर संग्रहीत नहीं किया जा सकता।"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "कर हस्ताक्षर संग्रहण फ़ोल्डर में एक्सेस गार्ड %s नहीं लिखा जा सकता।"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "चयनित सदस्यों की भूमिका बदलें: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "चर्च का वित्तीय वर्ष"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM सिस्टम जाँच"
+
+#: 
+msgid "Custom field not found"
+msgstr "कस्टम फ़ील्ड नहीं मिला"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "इसके बजाय परिवार को निष्क्रिय करें"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "परिवार को हटाने के बजाय निष्क्रिय करें।"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "व्यक्ति को हटाने के बजाय निष्क्रिय करें।"
+
+#: 
+msgid "Delete people and families"
+msgstr "लोग और परिवार हटाएँ"
+
+#: 
+msgid "Delete the login for"
+msgstr "इसका लॉगिन हटाएँ:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "जमा चार्ट की समय सीमा"
+
+#: 
+msgid "Disabled at"
+msgstr "अक्षम किया गया"
+
+#: 
+msgid "Disabled by"
+msgstr "अक्षम करने वाला"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "डाउनलोड करने पर वर्ष के हर दानदाता को भेजा जाता है। समीक्षा और फ़िल्टर पहले कुल दिखाता है और आपको परिवार, निधि, कक्षा या तिथि से सीमित करने देता है।"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "लिफ़ाफ़ा संख्या दोहराई गई"
+
+#: 
+msgid "Edit people and families"
+msgstr "लोग और परिवार संपादित करें"
+
+#: 
+msgid "Email people and groups"
+msgstr "लोगों और समूहों को ईमेल करें"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "अपने वेब सर्वर कॉन्फ़िगरेशन में छूटे हुए PHP एक्सटेंशन सक्षम करें, वेब सर्वर पुनः आरंभ करें, फिर यह पृष्ठ पुनः लोड करें। यदि आप होस्टिंग प्रदाता का उपयोग करते हैं, तो उनसे सूचीबद्ध एक्सटेंशन सक्षम करने को कहें।"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "सेटअप कुंजी स्वयं दर्ज करें"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "0 से %d तक की प्रारंभिक संख्या दर्ज करें।"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "फ़ुलस्क्रीन में जाएँ"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "यह कुंजी अपने ऑथेंटिकेटर या पासवर्ड प्रबंधक में समय-आधारित (TOTP), 6-अंकीय कोड और 30 सेकंड के अंतराल के साथ दर्ज करें। इस कुंजी को निजी रखें।"
+
+#: 
+msgid "Enter your username or email"
+msgstr "अपना उपयोगकर्ता नाम या ईमेल दर्ज करें"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "लिफ़ाफ़ा संख्याएँ 0 से %d तक की पूर्ण संख्याएँ होनी चाहिए। कुछ भी सहेजा नहीं गया।"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "इस चर्च के लिए कार्यक्रम बंद हैं"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "फ़ुलस्क्रीन से बाहर निकलें"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "कस्टम फ़ील्ड हटाने में विफल"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "कस्टम फ़ील्ड ले जाने में विफल"
+
+#: 
+msgid "Fair"
+msgstr "ठीक-ठाक"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "वे परिवार जिन्होंने %s के लिए प्रतिज्ञा की और %s के लिए प्रतिज्ञा नहीं है।"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "वे परिवार जिनका कम से कम एक सदस्य इसमें है:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "इस चर्च के लिए वित्त बंद है"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "वे परिवार खोजें जिन्होंने एक वित्तीय वर्ष में प्रतिज्ञा की और दूसरे में नहीं।"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "वह फ़ोल्डर जहाँ दान विवरण का निजी हस्ताक्षर संग्रहीत है। अंतर्निहित निजी फ़ोल्डर Images/TaxSignatures का उपयोग करने के लिए खाली छोड़ें, जो सीधी वेब पहुँच को रोकता है। दूसरा फ़ोल्डर उपयोग करने के लिए ChurchCRM फ़ोल्डर के बाहर का ऐसा निरपेक्ष पथ दर्ज करें जिसमें वेब सर्वर लिख सके।"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "इस चर्च के लिए धन-संग्रह बंद है"
+
+#: 
+msgid "Good"
+msgstr "अच्छा"
+
+#: 
+msgid "Have an email"
+msgstr "ईमेल है"
+
+#: 
+msgid "Hide setup key"
+msgstr "सेटअप कुंजी छिपाएँ"
+
+#: 
+msgid "How to respond"
+msgstr "कैसे उत्तर दें"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "आपकी समीक्षा की प्रतीक्षा में विचार"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "निष्क्रिय परिवार छोड़ दिए जाते हैं। भुगतान प्रतिज्ञा नहीं गिने जाते।"
+
+#: 
+msgid "Invalid request."
+msgstr "अमान्य अनुरोध।"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "हस्ताक्षर छवि का डेटा अमान्य है।"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "संग्रहीत कर हस्ताक्षर पहचानकर्ता अमान्य है।"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "कर हस्ताक्षर संग्रहण अमान्य है।"
+
+#: 
+msgid "Last successful login"
+msgstr "अंतिम सफल लॉगिन"
+
+#: 
+msgid "Lockout state"
+msgstr "लॉकआउट की स्थिति"
+
+#: 
+msgid "Login deleted"
+msgstr "लॉगिन हटाया गया"
+
+#: 
+msgid "Mail only"
+msgstr "केवल डाक"
+
+#: 
+msgid "Manage all ministries"
+msgstr "सभी सेवकाइयाँ प्रबंधित करें"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "सदस्य {{role}} में ले जाए गए: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "सदस्य जो नहीं बदले क्योंकि उन्होंने समूह छोड़ दिया या उनकी भूमिका कोई सेवकाई प्रबंधित करती है: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "सेवकाई समन्वयक"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "स्वचालित अनलॉक तक मिनट"
+
+#: 
+msgid "Missing Pledges"
+msgstr "छूटी हुई प्रतिज्ञाएँ"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "GitHub खाता नहीं है? हमें Discord पर बताएँ"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "किसी भी सक्रिय परिवार ने %s के लिए प्रतिज्ञा नहीं की जबकि %s के लिए प्रतिज्ञा न हो।"
+
+#: 
+msgid "No families found."
+msgstr "कोई परिवार नहीं मिला।"
+
+#: 
+msgid "No ministry assigned"
+msgstr "कोई सेवकाई नहीं सौंपी गई"
+
+#: 
+msgid "No open deposit"
+msgstr "कोई खुला जमा नहीं"
+
+#: 
+msgid "No pledge for"
+msgstr "इसके लिए कोई प्रतिज्ञा नहीं:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "इस खाते को नहीं दिया गया"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "स्वयंसेवक टीम का नेतृत्व नहीं करता"
+
+#: 
+msgid "Not locked"
+msgstr "लॉक नहीं है"
+
+#: 
+msgid "Number of Payments"
+msgstr "भुगतानों की संख्या"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "एक मिनट। आप जो भेजते हैं, हम उसे साझा नहीं करते।"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "कोई विचार खोलें। यदि आपके चर्च को इसकी ज़रूरत है तो 👍 से वोट करें, और आज आप कैसे काम करते हैं, इसके बारे में छोटी टिप्पणी जोड़ें।"
+
+#: 
+msgid "Open deposit"
+msgstr "खुला जमा"
+
+#: 
+msgid "Password change required at next login"
+msgstr "अगले लॉगिन पर पासवर्ड बदलना आवश्यक"
+
+#: 
+msgid "Password strength"
+msgstr "पासवर्ड की मज़बूती"
+
+#: 
+msgid "People & Families"
+msgstr "लोग और परिवार"
+
+#: 
+msgid "Pledged for"
+msgstr "इसके लिए प्रतिज्ञा:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "दान विवरण तैयार करें"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "नमूना पत्र का पूर्वावलोकन"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "कनाडाई दान विवरण के निजी हस्ताक्षर की एसेट पहचानकर्ता। हस्ताक्षर अपलोड द्वारा प्रबंधित।"
+
+#: 
+msgid "Property Type"
+msgstr "गुण का प्रकार"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "केवल PNG या JPEG हस्ताक्षर छवि का डेटा दें।"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "दर्ज इतिहास: %s।"
+
+#: 
+msgid "Report Issue"
+msgstr "समस्या की रिपोर्ट करें"
+
+#: 
+msgid "Requirement"
+msgstr "आवश्यकता"
+
+#: 
+msgid "Return Home"
+msgstr "मुख्य पृष्ठ पर लौटें"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "किसी वित्तीय वर्ष की समीक्षा करें, फिर दान विवरण डाउनलोड करें।"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "जमा की समीक्षा करें और बंद करें"
+
+#: 
+msgid "Review and Filter"
+msgstr "समीक्षा और फ़िल्टर"
+
+#: 
+msgid "Review and vote"
+msgstr "समीक्षा करें और वोट दें"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "वर्ष की समीक्षा करें, फिर दान विवरण डाउनलोड करें।"
+
+#: 
+msgid "Review what we are considering"
+msgstr "देखें कि हम क्या विचार कर रहे हैं"
+
+#: 
+msgid "Roles & permissions"
+msgstr "भूमिकाएँ और अनुमतियाँ"
+
+#: 
+msgid "Select at least one member."
+msgstr "कम से कम एक सदस्य चुनें।"
+
+#: 
+msgid "Setup key"
+msgstr "सेटअप कुंजी"
+
+#: 
+msgid "Sign-in status"
+msgstr "साइन-इन स्थिति"
+
+#: 
+msgid "Signature storage folder"
+msgstr "हस्ताक्षर संग्रहण फ़ोल्डर"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "हस्ताक्षर अपडेट हो गया, लेकिन पिछली निजी हस्ताक्षर फ़ाइल हटाई नहीं जा सकी।"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "कुछ PHP आवश्यकताएँ छूटी हैं। आगे बढ़ने से पहले ChurchCRM को इनकी ज़रूरत है।"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "एक जमा शुरू करें, फिर उसमें हर भुगतान जोड़ें।"
+
+#: 
+msgid "Starting envelope number"
+msgstr "लिफ़ाफ़ों की प्रारंभिक संख्या"
+
+#: 
+msgid "Strong"
+msgstr "मज़बूत"
+
+#: 
+msgid "Support"
+msgstr "सहायता"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "कर पहचान और PDF सेटिंग"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "सूची लोड नहीं हो सकी। आप फिर भी GitHub पर विचार खोल सकते हैं।"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "नाम अधिकतम %d अक्षरों का हो सकता है"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "आपका अनुरोधित पृष्ठ नहीं मिला। हो सकता है उसे स्थानांतरित किया गया हो, उसका नाम बदला गया हो, या वह अब मौजूद न हो।"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "प्रॉम्प्ट अधिकतम %d अक्षरों का हो सकता है"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "चयनित सदस्यों के पास पहले से वह भूमिका है।"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "हस्ताक्षर छवि को डीकोड नहीं किया जा सका।"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "हस्ताक्षर छवि 2 MiB से बड़ी नहीं होनी चाहिए।"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "हस्ताक्षर छवि 2000 × 1000 पिक्सेल में समानी चाहिए।"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "कर हस्ताक्षर संग्रहण फ़ोल्डर %s वेब सर्वर द्वारा लिखने योग्य नहीं है।"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "कर हस्ताक्षर संग्रहण फ़ोल्डर सिम्बॉलिक लिंक नहीं हो सकता।"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "कर हस्ताक्षर संग्रहण पथ ChurchCRM फ़ोल्डर के बाहर होना चाहिए। अंतर्निहित निजी फ़ोल्डर का उपयोग करने के लिए सेटिंग खाली छोड़ें।"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "कर हस्ताक्षर संग्रहण पथ सेटिंग निरपेक्ष फ़ोल्डर पथ होनी चाहिए।"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "जब तक आप परिवार रिकॉर्ड अपडेट करें नहीं चुनते, ये लिफ़ाफ़ा संख्याएँ सहेजी नहीं जातीं।"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "वे स्टाफ़ के रूप में या सदस्य पोर्टल में साइन इन नहीं कर सकते, और उनके सत्र, डिवाइस और पासकी हटा दिए जाते हैं।"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "इस परिवार को हटाया नहीं जा सकता क्योंकि इसमें नोट्स हैं। इतिहास सुरक्षित रखने के लिए इसके बजाय परिवार को निष्क्रिय करें।"
+
+#: 
+msgid "This password looks strong."
+msgstr "यह पासवर्ड मज़बूत दिखता है।"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "इस व्यक्ति को हटाया नहीं जा सकता क्योंकि इसकी दर्ज गतिविधियाँ हैं। इतिहास सुरक्षित रखने के लिए इसके बजाय व्यक्ति को निष्क्रिय करें।"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "यह केवल लॉगिन हटाता है। व्यक्ति और उसके नोट्स बने रहते हैं।"
+
+#: 
+msgid "Time Range"
+msgstr "समय सीमा"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "दो-चरणीय प्रमाणीकरण पंजीकृत"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "अपने आप कॉपी नहीं हो सका। सेटअप कुंजी चुनकर स्वयं कॉपी करें।"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "PNG या JPEG हस्ताक्षर छवि अपलोड करें।"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "यह सेटिंग बदलने के लिए हस्ताक्षर अपलोड या हटाना उपयोग करें।"
+
+#: 
+msgid "User Details"
+msgstr "उपयोगकर्ता विवरण"
+
+#: 
+msgid "Username or Email Address"
+msgstr "उपयोगकर्ता नाम या ईमेल पता"
+
+#: 
+msgid "View all ideas"
+msgstr "सभी विचार देखें"
+
+#: 
+msgid "View events"
+msgstr "कार्यक्रम देखें"
+
+#: 
+msgid "View people and families"
+msgstr "लोग और परिवार देखें"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "इस चर्च के लिए स्वयंसेवक प्रबंधन बंद है"
+
+#: 
+msgid "Weak"
+msgstr "कमज़ोर"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "यह खाता अभी क्या कर सकता है (केवल पढ़ने के लिए)"
+
+#: 
+msgid "You must select a class"
+msgstr "आपको एक कक्षा चुननी होगी"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "आपके चर्च का वित्तीय वर्ष 1 जनवरी से शुरू नहीं होता। कर अधिकारी अक्सर कैलेंडर वर्ष की रसीदें चाहते हैं: समीक्षा और फ़िल्टर चुनें और तिथियाँ 1 जनवरी – 31 दिसंबर सेट करें।"
+
+#: 
+msgid "attendance"
+msgstr "उपस्थिति"
+
+#: 
+msgid "financial history"
+msgstr "वित्तीय इतिहास"
+
+#: 
+msgid "notes"
+msgstr "नोट्स"
+
+#: 
+msgid "recorded activities"
+msgstr "दर्ज गतिविधियाँ"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "सिस्टम उपयोगकर्ता की API कुंजी फिर से बनाई गई"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "सिस्टम उपयोगकर्ता ने ईमेल किए गए लिंक से अपना पासवर्ड रीसेट किया"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "सिस्टम उपयोगकर्ता ने दो-चरणीय प्रमाणीकरण बंद किया"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "सिस्टम उपयोगकर्ता ने दो-चरणीय प्रमाणीकरण चालू किया"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "सिस्टम उपयोगकर्ता का दो-चरणीय प्रमाणीकरण व्यवस्थापक द्वारा अक्षम किया गया"
+
+#: 
+msgid "volunteer service history"
+msgstr "स्वयंसेवक सेवा का इतिहास"
+
+#: 
+msgid "%s by %s"
+msgstr "%s द्वारा %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "टू-फैक्टर ऑथेंटिकेशन बदलने के लिए अपना पासवर्ड या अपने ऑथेंटिकेटर ऐप का कोड दर्ज करें।"
+
+#: 
+msgid "Latest Notes"
+msgstr "नवीनतम नोट्स"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "अभी तक कोई नोट नहीं जोड़ा गया है।"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR कोड पाने के लिए नामांकन शुरू करें।"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "वह पासवर्ड या कोड सही नहीं है। टू-फैक्टर ऑथेंटिकेशन अभी भी चालू है।"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "टू-फैक्टर ऑथेंटिकेशन पहले से सेट है। इसका सीक्रेट केवल नामांकन के दौरान दिखाया जाता है।"
 

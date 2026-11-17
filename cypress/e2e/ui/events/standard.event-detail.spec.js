@@ -215,6 +215,23 @@ describe("Event Detail - Did Not Attend List", () => {
         cy.contains("h3", "Did Not Attend").should("not.exist");
     });
 
+    it("Add All to Cart puts the checked-in attendees in the cart", () => {
+        cy.intercept("POST", "**/api/cart/").as("addToCart");
+        cy.visit(`event/view/${pastGroupEventId}`);
+        cy.get("#event-add-attendees-to-cart").should("be.visible").click();
+        cy.wait("@addToCart").then(({ request, response }) => {
+            const sent =
+                typeof request.body === "string"
+                    ? JSON.parse(request.body)
+                    : request.body;
+            expect(response.statusCode).to.eq(200);
+            expect(sent.Persons).to.have.length.greaterThan(0);
+            expect(response.body.added.length + response.body.duplicate.length).to.eq(
+                sent.Persons.length,
+            );
+        });
+    });
+
     // Run last — calls checkin-all which changes state for all subsequent tests.
     // Must use forceLogin after the API call to restore a valid browser session
     // (the API request overwrites the PHP session's auth provider — see file header).

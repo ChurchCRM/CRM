@@ -4,6 +4,7 @@
 > This RFC sets the durable rules for making ChurchCRM work clear, reviewable, and safe. Maintainers own readiness and decisions; agents execute, not approve. Size by review burden and risk, split epics by independently testable user outcomes, and use existing labels and review gates. The canonical [issue-readiness guide](../contributing/issue-readiness.md) is the short operational checklist; this RFC preserves the accepted decisions. Current pilot work and issue-by-issue findings belong only in the [implementation tracker](https://github.com/ChurchCRM/CRM/issues/10634).
 
 **Status:** Accepted  
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-10-17  
 **Owner:** George Dawoud  
 **Rollout:** [#10634](https://github.com/ChurchCRM/CRM/issues/10634)  

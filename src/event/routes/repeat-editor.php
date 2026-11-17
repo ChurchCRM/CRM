@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\EventService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\RecurrenceDateGenerator;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -142,8 +143,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     }
 
     if (!empty($errorMsg)) {
-        $_SESSION['sGlobalMessage'] = $errorMsg;
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set($errorMsg, 'danger');
         $target = SystemURLs::getRootPath() . '/event/repeat-editor';
         if ($iTypeID > 0) {
             $target .= '/' . $iTypeID;
@@ -173,18 +173,15 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
             'inactive'        => InputUtils::filterInt($body['EventStatus'] ?? 0),
         ]);
         $count = count($createdIds);
-        $_SESSION['sGlobalMessage'] = sprintf(
+        FlashService::set(sprintf(
             ngettext('%d repeat event created successfully.', '%d repeat events created successfully.', $count),
             $count
-        );
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        ));
     } catch (\InvalidArgumentException $e) {
-        $_SESSION['sGlobalMessage'] = $e->getMessage();
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set($e->getMessage(), 'danger');
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('Repeat event creation failed', ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-        $_SESSION['sGlobalMessage'] = gettext('Repeat events could not be created. Check the application log for details.');
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set(gettext('Repeat events could not be created. Check the application log for details.'), 'danger');
     }
 
     return $response

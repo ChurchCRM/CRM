@@ -37,9 +37,12 @@ gh pr view <NUMBER>
 gh pr view <NUMBER> --comments
 gh pr view <NUMBER> --json title,body,headRefName,headRefOid,baseRefName,state,latestReviews,reviews,comments
 gh api graphql -f query='{repository(owner:"ChurchCRM",name:"CRM"){pullRequest(number:<NUMBER>){reviewThreads(first:100){nodes{id isResolved isOutdated path line comments(first:20){nodes{author{login} body}}}} reviews(first:50){nodes{author{login} state submittedAt commit{abbreviatedOid}}}}}}'
+gh pr list --repo ChurchCRM/CRM --author <LOGIN> --state all --limit 20 --json number,createdAt
 ```
 
 `--comments` omits inline threads. The GraphQL call lists every thread (resolved or not, any author, including bots) and each review's state. Read all unresolved threads and check each against the current code.
+
+The author list decides the opening in `maintainer-review-gates.md`. Ignore the PR under review. No other row means a first pull request (`Welcome to ChurchCRM`). The newest other `createdAt` older than four weeks means `Welcome back`. A newer row means `Thanks` only.
 
 Answer before reading code:
 
@@ -51,7 +54,7 @@ Answer before reading code:
 - Does it add a subsystem, table family, auth model, plugin API or cross-cutting middleware, or change a documented design? Find the linked RFC or design (`docs/decisions/`, `docs/design/`, epic, issue) and the maintainer's approval. Report both; missing is a hard block (gates item 12).
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
-Run [church-review.md](./church-review.md) on the PR's linked issue and on the change as delivered. A PR can pass every code gate and still miss the user's job through the wrong surface, a duplicated path, or a review-first action made one click. Report the church-review verdict (user, job, ROI) in the draft. A user-facing change with no identifiable user job is a follow-up; a destructive action or member-data exposure flagged by the workflow review is a hard block under Security and RBAC.
+Run [church-review.md](./church-review.md) on the PR's linked issue and on the change as delivered. A PR can pass every code gate and still miss the user's job through the wrong surface, a duplicated path, or a review-first action made one click. Report the church-review verdict (user, job, ROI) in the draft. For any change that lists or acts on people or families, also work the status-and-scale checks in the gates file (deactivated families, deceased people, 200+ row lists) and state the treatment in the draft. A user-facing change with no identifiable user job is a follow-up; a destructive action or member-data exposure flagged by the workflow review is a hard block under Security and RBAC.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 
@@ -157,7 +160,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] The page is built around a role's task (`frontend-development.md`): primary action in the page header, table above the fold, entry buttons land in the task
 - [ ] Renders in **light and dark**, at **desktop, tablet and phone**: the author states the pass; screenshots if they exist
 - [ ] Every `@media` rule survives the restyle; Cypress selectors the change touches still match
-- [ ] `playwright/` specs, videos and helpers that use anything the change removes, renames or reroutes are updated in the same PR (grep `playwright/` for the ids, routes, settings and labels in the diff); locators carry no English text; captures marked `usedIn` still exist
+- [ ] Playwright selector updates are the `pr gates` lint check. A review does not re-check removed ids.
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
 - [ ] Messages use `window.CRM.notify()`, confirmations `confirmAction()`, persistent notices `alertAction()` (no native or direct `bootbox.confirm/alert`); one-value prompts use `promptAction()`; forms and rich flows use `bootbox.dialog` or a Bootstrap modal
@@ -223,7 +226,7 @@ The docs PR stays separate from the feature PR and waits for the release.
 
 ## Phase 6 — Draft the review (do not post yet)
 
-Use the output block in `maintainer-review-gates.md`. The draft always contains the RBAC line, the design-approval line, and a "Church-user impact:" line, even when the answers are "no RBAC impact: <why>", "no architectural change", or "no user-facing change: <why>".
+Use the output block in `maintainer-review-gates.md`. The GitHub body starts with the welcome or thanks, then what the PR does, then **Church-user impact** before Verified or Hard blocks. The draft always contains that impact line, the RBAC line, and the design-approval line, even when the answers are "no user-facing change: <why>", "no RBAC impact: <why>", or "no architectural change".
 
 - Hard blocks → `REQUEST_CHANGES`
 - Follow-ups only → `COMMENT`
