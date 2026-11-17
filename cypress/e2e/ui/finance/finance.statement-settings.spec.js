@@ -57,6 +57,20 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
         });
 
+        it("shows a charity-details notice until the receipt fields are set", () => {
+            const keys = ["sCharityLegalName", "sCharityRegisteredAddress", "sCharityRegistrationNumber", "sReceiptIssueLocality"];
+            keys.forEach((key) => cy.setSystemConfig(key, ""));
+            cy.visit("/finance/");
+            cy.get("#charity-details-banner").should("be.visible");
+            cy.get("#year-end-entry a.btn-primary").should("be.visible");
+            keys.forEach((key) => cy.setSystemConfig(key, "Sample charity"));
+            cy.reload();
+            cy.get("#charity-details-banner").should("not.exist");
+            cy.visit("/finance/statements/settings");
+            cy.get("#statementTax input[name='sCharityLegalName']").should("have.value", "Sample charity");
+            keys.forEach((key) => cy.setSystemConfig(key, ""));
+        });
+
         it("keeps statement settings out of System Settings", () => {
             cy.visit("/SystemSettings.php");
             for (const key of ["sGivingStatementOpening", "sGivingStatementClosing", "sGivingStatementQuestions", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
@@ -72,6 +86,9 @@ describe("Finance Statement Settings", () => {
             cy.visit("/finance/statements/settings");
             cy.url().should("include", "/finance/statements/settings");
             cy.contains("Statement Settings");
+            cy.get("#statementTax textarea[name='sCharityRegisteredAddress']").should("be.visible");
+            cy.get("#statementTax input[name='sCharityLegalName']").should("be.visible");
+            cy.get("#statementTax input[name='bCanadianGivingStatement']").should("exist");
         });
     });
 

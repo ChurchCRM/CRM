@@ -21,6 +21,12 @@ $allowedKeys = [
     'sGivingStatementQuestions',
     'sTaxSigner',
     'sChurchTaxId',
+    'sCharityLegalName',
+    'sCharityRegisteredAddress',
+    'sCharityRegistrationNumber',
+    'sReceiptIssueLocality',
+    'sReceiptClosing',
+    'bCanadianGivingStatement',
     'iPDFOutputType',
 ];
 

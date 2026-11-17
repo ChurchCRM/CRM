@@ -322,7 +322,7 @@ describe("Admin - Tax signature control", () => {
             for (const width of [1440, 820, 390]) {
                 cy.viewport(width, 1000);
                 cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
-                cy.get("#canadian-settings-card").scrollIntoView().should("be.visible");
+                cy.get("#tax-signature-card").scrollIntoView().should("be.visible");
                 cy.document().then((document) => expect(document.documentElement.scrollWidth).to.be.at.most(width));
                 cy.screenshot(`canadian-settings-${theme}-${width}`);
             }

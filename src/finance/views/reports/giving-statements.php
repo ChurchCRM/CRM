@@ -5,6 +5,7 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require __DIR__ . '/../_charity-details-banner.php';
 
 $selected = static fn (string $key): array => array_map('strval', (array) ($query[$key] ?? []));
 $selectedFamilies = array_map('strval', $criteria['familyIds']);

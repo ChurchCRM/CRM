@@ -37,18 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  const canadianPanel = document.getElementById("canadian-settings-panel");
-  if (canadianPanel && window.CRM.SettingsPanel) {
-    new window.CRM.SettingsPanel().init({
-      container: "#canadian-settings-panel",
-      title: canadianPanel.dataset.title,
-      icon: "fa-solid fa-receipt",
-      settings: JSON.parse(canadianPanel.dataset.settings),
-      showAllSettingsLink: false,
-      autoSave: true,
-      columns: 1,
-    });
-  }
   const signatureFile = document.getElementById("tax-signature-file");
   const signatureRemove = document.getElementById("tax-signature-remove");
   const signatureError = document.getElementById("tax-signature-error");

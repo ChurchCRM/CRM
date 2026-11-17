@@ -5,6 +5,7 @@ use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require __DIR__ . '/../_charity-details-banner.php';
 
 $year = $overview['year'];
 $root = SystemURLs::getRootPath();
@@ -124,7 +125,8 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                  data-title="<?= InputUtils::escapeAttribute(gettext('Giving Report (Tax Statements)')) ?>"
                  data-settings="<?= InputUtils::escapeAttribute(json_encode($panelSettings, JSON_THROW_ON_ERROR)) ?>"></div>
             <a href="<?= $root ?>/finance/reports/giving-statements/sample" class="btn btn-outline-secondary mb-3" id="sampleLetter" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Preview Sample Letter') ?></a>
-            <a href="<?= $root ?>/finance/statements/settings" class="btn btn-ghost-secondary mb-3" id="statementSettingsLink"><?= gettext('Tax ID and PDF Settings') ?></a>
+            <a href="<?= $root ?>/finance/statements/settings" class="btn btn-ghost-secondary mb-3" id="statementSettingsLink"><?= gettext('Statement Settings') ?></a>
+            <p class="form-text"><?= gettext('The letter text above is the ordinary giving statement. Charity name, registration number, and the Canadian receipt switch are on Statement Settings.') ?></p>
         </div>
 
         <div class="col-lg-5">

@@ -61,29 +61,10 @@ unset($setting);
     </div>
 </div>
 
-<div class="card mt-3" id="canadian-settings-card">
-    <div class="card-header"><h3 class="card-title"><?= gettext('Charity details') ?></h3></div>
+<div class="card mt-3" id="tax-signature-card">
+    <div class="card-header"><h3 class="card-title"><?= gettext('Tax Signature') ?></h3></div>
     <div class="card-body">
-        <p class="form-text"><?= gettext('Legal name, registered address, registration number, and issue locality are stored for any church. Canadian official receipts require a CRA number in the form 123456789RR0001, a currency symbol that identifies CAD, and a signature. Saving the number does not check that format or CRA registration status.') ?></p>
-        <?php
-        $canadianSettings = \ChurchCRM\dto\SystemConfig::getSettingsConfig([
-            'bCanadianGivingStatement', 'sCharityLegalName', 'sCharityRegisteredAddress',
-            'sCharityRegistrationNumber', 'sReceiptIssueLocality', 'sReceiptClosing', 'sTaxSigner',
-        ]);
-        foreach ($canadianSettings as &$setting) {
-            if ($setting['name'] === 'sCharityRegisteredAddress') {
-                $setting['type'] = 'textarea';
-            }
-            if ($setting['name'] === 'sTaxSigner') {
-                $setting['label'] = gettext('Giving Statement Printed Signer');
-                $setting['tooltip'] = gettext('Independent of the confirmation-letter signer. Confirm this person is authorized before generating a Canadian receipt.');
-            }
-        }
-        unset($setting);
-        ?>
-        <div id="canadian-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Charity details')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($canadianSettings, JSON_THROW_ON_ERROR)) ?>"></div>
-        <hr>
-        <h4><?= gettext('Tax Signature') ?></h4>
+        <p class="form-text"><?= gettext('Charity name, address, registration number, and the Canadian receipt switch are edited under Finance, Statement Settings. This page stores the signature image those receipts print.') ?></p>
         <p id="tax-signature-status" role="status" aria-live="polite"></p>
         <label class="form-label" for="tax-signature-file"><?= gettext('Upload a PNG or JPEG signature image.') ?></label>
         <input class="form-control mb-2" id="tax-signature-file" type="file" accept="image/png,image/jpeg">
