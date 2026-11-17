@@ -4928,7 +4928,6 @@
   "Qualify them for a position.": "為他們授予某個職位的資格。",
   "Reactivate": "重新啟用",
   "Read the theme authoring guide": "閱讀主題製作指南",
-  "Recent Emails": "最近的電子郵件",
   "Recipient": "收件人",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "收件人數量（%d）超過每次傳送的上限（%d）",
   "Recipients must be given as personIds and familyIds, not as email addresses": "收件人必須以 personId 和 familyId 提供，而不是電子郵件地址",

@@ -20415,10 +20415,6 @@ msgid "Read the theme authoring guide"
 msgstr "Citiți ghidul de creare a temelor"
 
 #: 
-msgid "Recent Emails"
-msgstr "E-mailuri recente"
-
-#: 
 msgid "Recipient"
 msgstr "Destinatar"
 

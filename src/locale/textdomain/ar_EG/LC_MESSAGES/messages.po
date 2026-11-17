@@ -20424,10 +20424,6 @@ msgid "Read the theme authoring guide"
 msgstr "اقرأ دليل تأليف السمات"
 
 #: 
-msgid "Recent Emails"
-msgstr "الرسائل الأخيرة"
-
-#: 
 msgid "Recipient"
 msgstr "المستلم"
 

@@ -20323,10 +20323,6 @@ msgid "Read the theme authoring guide"
 msgstr "Lexoni udhëzuesin e krijimit të temave"
 
 #: 
-msgid "Recent Emails"
-msgstr "Email-et e fundit"
-
-#: 
 msgid "Recipient"
 msgstr "Marrësi"
 

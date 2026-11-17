@@ -4928,7 +4928,6 @@
   "Qualify them for a position.": "직책 자격을 부여하세요.",
   "Reactivate": "다시 활성화",
   "Read the theme authoring guide": "테마 제작 안내서 읽기",
-  "Recent Emails": "최근 이메일",
   "Recipient": "수신자",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "수신자 수(%d)가 한 번에 보낼 수 있는 최대 수(%d)를 초과합니다",
   "Recipients must be given as personIds and familyIds, not as email addresses": "수신자는 이메일 주소가 아니라 personIds와 familyIds로 지정해야 합니다",

@@ -4928,7 +4928,6 @@
   "Qualify them for a position.": "Cấp điều kiện cho họ ở một vị trí.",
   "Reactivate": "Kích hoạt lại",
   "Read the theme authoring guide": "Đọc hướng dẫn tạo giao diện",
-  "Recent Emails": "Email gần đây",
   "Recipient": "Người nhận",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Số người nhận (%d) vượt quá mức tối đa cho phép mỗi lần gửi (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Người nhận phải được cung cấp dưới dạng personId và familyId, không phải địa chỉ email",

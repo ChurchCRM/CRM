@@ -20321,10 +20321,6 @@ msgid "Read the theme authoring guide"
 msgstr "Pročitajte vodič za izradu tema"
 
 #: 
-msgid "Recent Emails"
-msgstr "Nedavna e-pošta"
-
-#: 
 msgid "Recipient"
 msgstr "Primatelj"
 

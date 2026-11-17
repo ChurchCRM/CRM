@@ -20332,10 +20332,6 @@ msgid "Read the theme authoring guide"
 msgstr "Tema yazım kılavuzunu okuyun"
 
 #: 
-msgid "Recent Emails"
-msgstr "Son E-postalar"
-
-#: 
 msgid "Recipient"
 msgstr "Alıcı"
 

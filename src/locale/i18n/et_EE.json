@@ -4952,7 +4952,6 @@
   "Qualify them for a position.": "Kvalifitseeri nad ülesandele.",
   "Reactivate": "Aktiveeri uuesti",
   "Read the theme authoring guide": "Loe teemade koostamise juhendit",
-  "Recent Emails": "Hiljutised e-kirjad",
   "Recipient": "Saaja",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Saajate arv (%d) ületab ühe saatmise lubatud maksimumi (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Saajad tuleb anda personId ja familyId väärtustena, mitte e-posti aadressidena",

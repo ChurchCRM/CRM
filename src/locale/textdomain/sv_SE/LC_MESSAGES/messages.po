@@ -20419,10 +20419,6 @@ msgid "Read the theme authoring guide"
 msgstr "Läs guiden för att skapa teman"
 
 #: 
-msgid "Recent Emails"
-msgstr "Senaste e-postmeddelanden"
-
-#: 
 msgid "Recipient"
 msgstr "Mottagare"
 

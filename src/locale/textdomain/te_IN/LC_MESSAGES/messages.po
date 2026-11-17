@@ -20310,10 +20310,6 @@ msgid "Read the theme authoring guide"
 msgstr "థీమ్ రచన మార్గదర్శిని చదవండి"
 
 #: 
-msgid "Recent Emails"
-msgstr "ఇటీవలి ఇమెయిల్‌లు"
-
-#: 
 msgid "Recipient"
 msgstr "గ్రహీత"
 

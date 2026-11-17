@@ -20380,10 +20380,6 @@ msgid "Read the theme authoring guide"
 msgstr "Прочитати посібник зі створення тем"
 
 #: 
-msgid "Recent Emails"
-msgstr "Нещодавні листи"
-
-#: 
 msgid "Recipient"
 msgstr "Отримувач"
 

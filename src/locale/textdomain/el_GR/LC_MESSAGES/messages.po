@@ -20332,10 +20332,6 @@ msgid "Read the theme authoring guide"
 msgstr "Διαβάστε τον οδηγό δημιουργίας θεμάτων"
 
 #: 
-msgid "Recent Emails"
-msgstr "Πρόσφατα email"
-
-#: 
 msgid "Recipient"
 msgstr "Παραλήπτης"
 

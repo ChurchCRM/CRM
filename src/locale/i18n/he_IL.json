@@ -4952,7 +4952,6 @@
   "Qualify them for a position.": "הסמכתם לתפקיד.",
   "Reactivate": "הפעלה מחדש",
   "Read the theme authoring guide": "קראו את מדריך כתיבת ערכות הנושא",
-  "Recent Emails": "דוא\"ל אחרון",
   "Recipient": "נמען",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "מספר הנמענים (%d) חורג מהמקסימום המותר לשליחה (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "יש לתת נמענים כ-personIds ו-familyIds, לא ככתובות דוא\"ל",

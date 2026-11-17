@@ -20306,10 +20306,6 @@ msgid "Read the theme authoring guide"
 msgstr "Baca panduan pembuatan tema"
 
 #: 
-msgid "Recent Emails"
-msgstr "Email Terbaru"
-
-#: 
 msgid "Recipient"
 msgstr "Penerima"
 
