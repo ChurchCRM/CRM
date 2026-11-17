@@ -345,7 +345,6 @@ describe("GET /api/groups/:id/emails", () => {
             const comment = `enabled test ${Date.now()}`;
             cy.setSystemConfig('bEnableDepositPostedNotification', "true");
             cy.setSystemConfig('sToEmailAddress', "churchcrm@example.com");
-            cy.setSystemConfig('sDateFormatLong', 'm/d/Y');
             cy.task("mail:clear");
             cy.makePrivateAdminAPICall("POST", "/api/deposits", {
                 depositType: "Bank",
@@ -364,7 +363,7 @@ describe("GET /api/groups/:id/emails", () => {
                     const message = messages[0];
                     cy.task("mail:get", message.id).then((email) => {
                         expect(email.to).to.include("churchcrm@example.com");
-                        expect(email.body).to.contain("10/25/2025");
+                        expect(email.body).to.contain("2025-10-25");
                         expect(email.body).to.contain("Total");
                         expect(email.body).to.contain(`/finance/deposit/${id}`);
                     });
@@ -373,7 +372,6 @@ describe("GET /api/groups/:id/emails", () => {
         });
 
         after(() => {
-            cy.setSystemConfig('sDateFormatLong', 'Y-m-d');
             cy.setupAdminSession();
             testDepositIds.forEach((id) => {
                 cy.request("POST", `/api/deposits/${id}`, {
