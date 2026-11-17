@@ -11171,10 +11171,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versie %s is beschikbaar. Werk uw installatie bij."
 
 #: 
-msgid "View All"
-msgstr "Alles weergeven"
-
-#: 
 msgid "Yellow"
 msgstr "Geel"
 

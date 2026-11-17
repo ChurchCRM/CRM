@@ -11220,10 +11220,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "La versione %s è disponibile. Aggiornare l'installazione."
 
 #: 
-msgid "View All"
-msgstr "Visualizza tutto"
-
-#: 
 msgid "Yellow"
 msgstr "Giallo"
 

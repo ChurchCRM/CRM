@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin."
 
 #: 
-msgid "View All"
-msgstr "Tümünü Görüntüle"
-
-#: 
 msgid "Yellow"
 msgstr "Sarı"
 

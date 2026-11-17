@@ -11199,10 +11199,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
 
 #: 
-msgid "View All"
-msgstr "Zobrazit vše"
-
-#: 
 msgid "Yellow"
 msgstr "Žlutá"
 

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "השתמש במפתח זה לאימות בקשות API. יצירה מחדש תבטל את המפתח הנוכחי.",
   "User Config": "הגדרות משתמש",
   "Version %s is available. Please upgrade your installation.": "גרסה %s זמינה. אנא שדרג את ההתקנה שלך.",
-  "View All": "הצג הכל",
   "Yellow": "צהוב",
   "%d repeat event created successfully.": {
     "one": "אירוע חוזר אחד נוצר בהצלחה.",

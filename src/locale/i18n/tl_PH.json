@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Gamitin ang key na ito upang i-authenticate ang mga kahilingan ng API. Ang pag-regenerate ay magpapawalang-bisa ng kasalukuyang key.",
   "User Config": "Pagsasaayos ng Gumagamit",
   "Version %s is available. Please upgrade your installation.": "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation.",
-  "View All": "Tingnan Lahat",
   "Yellow": "Dilaw",
   "%d repeat event created successfully.": {
     "one": "%d paulit-ulit na kaganapan ay matagumpay na nalilikha.",

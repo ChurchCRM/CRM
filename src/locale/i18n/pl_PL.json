@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Użyj tego klucza do uwierzytelniania żądań API. Zregenerowanie unieważni bieżący klucz.",
   "User Config": "Konfiguracja użytkownika",
   "Version %s is available. Please upgrade your installation.": "Wersja %s jest dostępna. Proszę zaktualizować instalację.",
-  "View All": "Pokaż wszystkie",
   "Yellow": "Żółty",
   "%d repeat event created successfully.": {
     "one": "Pomyślnie utworzono %d powtarzające się wydarzenie.",

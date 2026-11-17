@@ -11172,10 +11172,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versio %s on saatavilla. Päivitä asennuksesi."
 
 #: 
-msgid "View All"
-msgstr "Näytä kaikki"
-
-#: 
 msgid "Yellow"
 msgstr "Keltainen"
 

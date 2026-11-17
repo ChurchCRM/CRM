@@ -2661,7 +2661,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Використовуйте цей ключ для автентифікації API-запитів. Оновлення ключа зробить поточний ключ недійсним.",
   "User Config": "Конфігурація користувача",
   "Version %s is available. Please upgrade your installation.": "Версія %s доступна. Будь ласка, оновіть вашу інсталяцію.",
-  "View All": "Переглянути все",
   "Yellow": "Жовтий",
   "%d repeat event created successfully.": {
     "one": "%d повторювана подія успішно створена.",
