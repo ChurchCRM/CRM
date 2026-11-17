@@ -47,9 +47,16 @@ final class PersonDeletionService
             $categories[] = gettext('financial history');
         }
 
+        // Notes about the person themself are judged by the first check,
+        // which carries the kiosk self-registration exemptions. The
+        // entered/edited checks below therefore cover only notes about
+        // other people: without the PerId exclusion they re-count the
+        // guest's own self-authored check-in 'event' note (a kiosk has no
+        // user session, so it is attributed to the guest themself) and a
+        // checked-in kiosk guest stays undeletable after attendance removal.
         if (self::hasSubstantiveNotes(NoteQuery::create()->filterByPerId($personId), $connection, $personId)
-            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEnteredBy($personId), $connection)
-            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEditedBy($personId), $connection)
+            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEnteredBy($personId)->filterByPerId($personId, Criteria::NOT_EQUAL), $connection)
+            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEditedBy($personId)->filterByPerId($personId, Criteria::NOT_EQUAL), $connection)
         ) {
             $categories[] = gettext('notes');
         }
