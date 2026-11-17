@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Määrake uus vabatahtliku võimalus"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektroonilise tehingu üksikasjad"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Mahaarvatud summa ei saa olla suurem kui kogusumma."
 
@@ -9421,10 +9417,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Jälgige perekonna lubadusi ja fondi panuseid majandusaasta kaupa"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tehingu üksikasjad"
-
-#: 
 msgid "Unmapped"
 msgstr "Seostamata"
 
@@ -9507,10 +9499,6 @@ msgstr "Vaadake perekonna lubaduste kokkuvõtteid ja fondide jaotusi"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vaadake grupi liikmeid, rolle ja omadusi"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vaadake lubaduse makse tehingu üksikasju"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11069,10 +11057,6 @@ msgstr "Indigosinine"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Vigane JSON-väärtus — seadet ei salvestatud. Palun parandage see ja proovige uuesti."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Liituge tõlkeprojektiga POEditoris"
 
 #: 
 msgid "Language and regional settings"
@@ -15333,10 +15317,6 @@ msgstr "Selle korjandusaktsiooni ostjad"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalendri manustamise päritolud"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM tõlkeid haldab kogukond POEditoris. Saad aidata"
 
 #: 
 msgid "Current $URL[0] value"

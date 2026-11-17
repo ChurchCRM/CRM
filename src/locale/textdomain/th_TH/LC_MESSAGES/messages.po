@@ -1493,10 +1493,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "กำหนดโอกาสอาสาสมัครใหม่"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "รายละเอียดธุรกรรมอิเล็กทรอนิกส์"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "จำนวนที่ไม่สามารถหักลดหย่อนได้ไม่สามารถมากกว่าจำนวนรวมได้"
 
@@ -9392,10 +9388,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ติดตามคำปฏิญาณถวายของครอบครัวและการบริจาคกองทุนตามปีงบประมาณ"
 
 #: 
-msgid "Transaction Details"
-msgstr "รายละเอียดธุรกรรม"
-
-#: 
 msgid "Unmapped"
 msgstr "ยังไม่จับคู่"
 
@@ -9478,10 +9470,6 @@ msgstr "ดูสรุปคำปฏิญาณถวายของครอ
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11040,10 +11028,6 @@ msgstr "สีคราม"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "เข้าร่วมโครงการแปลบน POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15300,10 +15284,6 @@ msgstr "ผู้ซื้อสำหรับการระดมทุนน
 #: 
 msgid "Calendar Embed Origins"
 msgstr "แหล่งที่มาของการฝังปฏิทิน"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "การแปล ChurchCRM ดูแลโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย"
 
 #: 
 msgid "Current $URL[0] value"

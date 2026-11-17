@@ -1537,10 +1537,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一个新的义工机会"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "电子交易详情"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金额不能大于总金额。"
 
@@ -9479,10 +9475,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "按财年跟踪家庭奉献承诺和基金捐献"
 
 #: 
-msgid "Transaction Details"
-msgstr "交易详情"
-
-#: 
 msgid "Unmapped"
 msgstr "未映射"
 
@@ -9565,10 +9557,6 @@ msgstr "查看家庭奉献承诺摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "查看小组成员、角色和属性"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "查看奉献承诺付款的交易详情"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11127,10 +11115,6 @@ msgstr "靛蓝色"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "JSON 值无效——设置未保存。请更正后重试。"
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "加入 POEditor 上的翻译项目"
 
 #: 
 msgid "Language and regional settings"
@@ -15387,10 +15371,6 @@ msgstr "此次募捐活动的买家"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "日历嵌入来源"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理，您可以通过以下方式参与贡献"
 
 #: 
 msgid "Current $URL[0] value"

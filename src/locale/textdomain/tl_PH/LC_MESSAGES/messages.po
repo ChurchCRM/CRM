@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Italaga ang Bagong Pagkakataon bilang Boluntaryo"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Mga Detalye ng Electronic na Transaksyon"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ang halagang Hindi Mababawas ay hindi maaaring mas malaki kaysa sa kabuuang halaga."
 
@@ -9389,10 +9385,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Subaybayan ang mga pangako ng pamilya at mga kontribusyon ng pondo ayon sa taong piskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Mga Detalye ng Transaksyon"
-
-#: 
 msgid "Unmapped"
 msgstr "Hindi Na-mapa"
 
@@ -9475,10 +9467,6 @@ msgstr "Tingnan ang mga buod ng pangako ng pamilya at mga alokasyon ng pondo"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Tingnan ang mga miyembro ng grupo, mga papel, at mga katangian"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Tingnan ang mga detalye ng transaksyon para sa isang pagbabayad ng pangako"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11037,10 +11025,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Di-wastong JSON value — hindi na-save ang setting. Mangyaring itama ito at subukang muli."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Sumali sa Translation Project sa POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15301,10 +15285,6 @@ msgstr "Mga bumibili para sa fundraiser na ito"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Mga Pinagmulan ng Calendar Embed"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Ang mga pagsasalin ng ChurchCRM ay pinamamahalaan ng komunidad sa POEditor. Maaari kang tumulong sa pamamagitan ng"
 
 #: 
 msgid "Current $URL[0] value"

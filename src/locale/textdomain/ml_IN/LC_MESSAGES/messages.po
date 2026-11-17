@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "പുതിയ സ്വമേധയാ അവസരം നൽകുക"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "ഇലക്ട്രോണിക് ഇടപാട് വിശദാംശങ്ങൾ"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "കിഴിവ് ലഭിക്കാത്ത തുക ആകെ തുകയേക്കാൾ കൂടാൻ കഴിയില്ല."
 
@@ -9389,10 +9385,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "സാമ്പത്തിക വർഷം അനുസരിച്ച് കുടുംബ സാമ്പത്തിക പ്രതിബദ്ധതകളും ഫണ്ട് സംഭാവനകളും ട്രാക്ക് ചെയ്യുക"
 
 #: 
-msgid "Transaction Details"
-msgstr "ഇടപാട് വിശദാംശങ്ങൾ"
-
-#: 
 msgid "Unmapped"
 msgstr "മാപ്പ് ചെയ്തിട്ടില്ല"
 
@@ -9475,10 +9467,6 @@ msgstr "കുടുംബ സാമ്പത്തിക പ്രതിബദ�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ഗ്രൂപ്പ് അംഗങ്ങൾ, റോളുകൾ, ഗുണങ്ങൾ കാണുക"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ഒരു സാമ്പത്തിക പ്രതിബദ്ധത പേമെന്റിന്റെ ഇടപാട് വിശദാംശങ്ങൾ കാണുക"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11037,10 +11025,6 @@ msgstr "ഇൻഡിഗോ"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Invalid JSON value — setting save ആയില്ല. ശരിയാക്കി വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor-ലെ Translation Project-ൽ ചേരുക"
 
 #: 
 msgid "Language and regional settings"
@@ -15301,10 +15285,6 @@ msgstr "ഈ ഫണ്ട്‍റൈസറ്കായി വാങ്ങുന�
 #: 
 msgid "Calendar Embed Origins"
 msgstr "കലണ്ഡർ ഉൾചേർക്കൽ ഉറവിടങ്ങൾ"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM വിവർത്തനങ്ങൾ POEditor-ല്‍ കമ്മ്യൂണിറ്റി നിയന്ത്രിക്കുന്നു. നിങ്ങൾക്ക് സഹായിക്കാം"
 
 #: 
 msgid "Current $URL[0] value"

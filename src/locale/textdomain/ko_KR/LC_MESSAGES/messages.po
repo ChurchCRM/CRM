@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "새 사역 배정"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "전자 거래 상세"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
 
@@ -9408,10 +9404,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "회계연도별 가족 서약 및 기금 기부 추적"
 
 #: 
-msgid "Transaction Details"
-msgstr "거래 세부 정보"
-
-#: 
 msgid "Unmapped"
 msgstr "매핑 안 됨"
 
@@ -9494,10 +9486,6 @@ msgstr "가족 서약 요약 및 기금 배분 보기"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "그룹 교인, 역할 및 속성 보기"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "서약 납부의 거래 세부 정보 보기"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11056,10 +11044,6 @@ msgstr "남색"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "유효하지 않은 JSON 값입니다 — 설정이 저장되지 않았습니다. 수정 후 다시 시도해 주세요."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor에서 번역 프로젝트에 참여하세요"
 
 #: 
 msgid "Language and regional settings"
@@ -15316,10 +15300,6 @@ msgstr "이 모금 행사의 구매자"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "캘린더 임베드 출처"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 번역은 POEditor의 커뮤니티에서 관리됩니다."
 
 #: 
 msgid "Current $URL[0] value"

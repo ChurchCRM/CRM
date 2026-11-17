@@ -1487,10 +1487,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Määritä uusi vapaaehtoistyömahdollisuus"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Sähköisen tapahtuman tiedot"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Vähennyskelvoton summa ei voi olla suurempi kuin kokonaissumma."
 
@@ -9393,10 +9389,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Seuraa perheen lupauksia ja rahastomaksuja tilivuosittain"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tapahtuman tiedot"
-
-#: 
 msgid "Unmapped"
 msgstr "Yhdistämätön"
 
@@ -9479,10 +9471,6 @@ msgstr "Näytä perheen lupausyhteenvedot ja rahastojako"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Näytä ryhmän jäsenet, roolit ja ominaisuudet"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Näytä lupausmaksun tapahtumatiedot"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11041,10 +11029,6 @@ msgstr "Indigonsininen"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Virheellinen JSON-arvo — asetusta ei tallennettu. Korjaa se ja yritä uudelleen."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Liity käännösprojektiin POEditorissa"
 
 #: 
 msgid "Language and regional settings"
@@ -15305,10 +15289,6 @@ msgstr "Tämän varainhankintatapahtuman ostajat"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalenterin upotuslähteet"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-käännöksiä hallinnoi yhteisö POEditorissa. Voit auttaa"
 
 #: 
 msgid "Current $URL[0] value"

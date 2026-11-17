@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Priradiť novú dobrovoľnícku príležitosť"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detaily elektronickej transakcie"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodpočítateľná suma nemôže byť väčšia ako celková suma."
 
@@ -9407,10 +9403,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Sledovať záväzky rodiny a príspevky do fondov podľa fiškálneho roka"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detaily transakcie"
-
-#: 
 msgid "Unmapped"
 msgstr "Nepriradené"
 
@@ -9493,10 +9485,6 @@ msgstr "Zobraziť súhrny záväzkov rodiny a pridelenia fondov"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobraziť členov skupiny, roly a vlastnosti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Zobraziť detaily transakcie pre platbu záväzku"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11055,10 +11043,6 @@ msgstr "Indigová"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Neplatná hodnota JSON — nastavenie nebolo uložené. Opravte ho a skúste znova."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Pridajte sa k prekladateľskému projektu na POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15327,10 +15311,6 @@ msgstr "Kupujúci pre túto zbierku"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Pôvody vkladania kalendára"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Preklady ChurchCRM spravuje komunita na POEditor. Môžete pomôcť"
 
 #: 
 msgid "Current $URL[0] value"

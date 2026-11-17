@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Nieuw vrijwilligerswerk koppelen"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronische Transactie Details"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Niet Aftrekbaar bedrag kan niet groter zijn dan het totale bedrag."
 
@@ -9392,10 +9388,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Gezinstoezeggingen en fondsbijdragen bijhouden per boekjaar"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transactiedetails"
-
-#: 
 msgid "Unmapped"
 msgstr "Niet gekoppeld"
 
@@ -9478,10 +9470,6 @@ msgstr "Overzichten van gezinstoezeggingen en fondstoewijzingen bekijken"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Groepsleden, rollen en eigenschappen bekijken"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Transactiedetails bekijken voor een toegezegde betaling"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11040,10 +11028,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Ongeldige JSON-waarde — instelling is niet opgeslagen. Corrigeer het en probeer het opnieuw."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Doe mee aan het vertaalproject op POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15304,10 +15288,6 @@ msgstr "Kopers voor deze fondsenwerving"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalender insluit-origins"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-vertalingen worden door de gemeenschap beheerd op POEditor. U kunt helpen door"
 
 #: 
 msgid "Current $URL[0] value"

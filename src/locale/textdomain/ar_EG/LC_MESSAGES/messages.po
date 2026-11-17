@@ -1496,10 +1496,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "تعيين المتطوعين الفرص جديد"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "تفاصيل العملية الإلكترونية"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "كمية NonDeductible لا يمكن أن يكون أكبر من المبلغ الإجمالي."
 
@@ -9454,10 +9450,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "تتبع تعهدات العائلة ومساهمات الصندوق حسب السنة المالية"
 
 #: 
-msgid "Transaction Details"
-msgstr "تفاصيل المعاملة"
-
-#: 
 msgid "Unmapped"
 msgstr "غير مرسوم"
 
@@ -9540,10 +9532,6 @@ msgstr "عرض ملخصات التعهدات العائلية وتخصيصات �
 #: 
 msgid "View group members, roles, and properties"
 msgstr "عرض أعضاء المجموعة والأدوار والخصائص"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "عرض تفاصيل المعاملة لدفعة التعهد"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11102,10 +11090,6 @@ msgstr "نيلي"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "قيمة JSON غير صالحة — لم يتم حفظ الإعداد. يُرجى تصحيحه والمحاولة مرة أخرى."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "انضم إلى مشروع الترجمة على POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15382,10 +15366,6 @@ msgstr "المشترون لهذا النشاط الخيري"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "مصادر تضمين التقويم"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ترجمات ChurchCRM تُدار من قبل المجتمع على POEditor. يمكنك المساعدة من خلال"
 
 #: 
 msgid "Current $URL[0] value"
