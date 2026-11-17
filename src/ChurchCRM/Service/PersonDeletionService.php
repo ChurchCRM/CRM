@@ -47,8 +47,8 @@ final class PersonDeletionService
             $categories[] = gettext('financial history');
         }
 
-        if (self::hasSubstantiveNotes(NoteQuery::create()->filterByPerId($personId), $connection, $personId)
-            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEnteredBy($personId), $connection)
+        if (self::hasSubstantiveNotes(NoteQuery::create()->filterByPerId($personId), $connection, $personId, 'PerId')
+            || self::hasSubstantiveNotes(NoteQuery::create()->filterByEnteredBy($personId), $connection, $personId, 'EnteredBy')
             || self::hasSubstantiveNotes(NoteQuery::create()->filterByEditedBy($personId), $connection)
         ) {
             $categories[] = gettext('notes');
@@ -141,7 +141,7 @@ final class PersonDeletionService
             ->find($connection);
     }
 
-    private static function hasSubstantiveNotes(NoteQuery $query, ?ConnectionInterface $connection, ?int $subjectPersonId = null): bool
+    private static function hasSubstantiveNotes(NoteQuery $query, ?ConnectionInterface $connection, ?int $subjectPersonId = null, ?string $subjectField = null): bool
     {
         // Every note type except the automatic 'create'/'edit' entries is
         // recorded history ('note', 'user', 'photo', timeline entries, ...),
@@ -153,11 +153,14 @@ final class PersonDeletionService
         // attendance was removed. The check-in timeline entry from that
         // same transaction is part of the same system entry: a kiosk has
         // no user session, so Event::addTimelineNote attributes it to the
-        // guest themself. When the query is the subject's own notes
-        // ($subjectPersonId given), 'event' entries the subject authored
-        // about themself do not count either. 'event' notes from any other
-        // author (e.g. check-in/out timeline entries recorded by staff)
-        // still count.
+        // guest themself. That entry surfaces in two of the checks: the
+        // subject's own notes (they are its subject) and the authored-by
+        // check (they are its author). When $subjectField names the column
+        // the query constrains, 'event' entries that are the subject's own
+        // system entry about themself do not count in either. 'event'
+        // notes from any other author (e.g. check-in/out timeline entries
+        // recorded by staff) still count, as do entries the subject
+        // authored about anyone else.
         $typedNotes = clone $query;
         $eventNotes = clone $query;
         $allNotes = clone $query;
@@ -167,8 +170,10 @@ final class PersonDeletionService
         }
 
         $eventNotes->filterByType('event')->filterByEnteredBy(Person::SELF_REGISTER, Criteria::NOT_EQUAL);
-        if ($subjectPersonId !== null) {
+        if ($subjectField === 'PerId') {
             $eventNotes->filterByEnteredBy($subjectPersonId, Criteria::NOT_EQUAL);
+        } elseif ($subjectField === 'EnteredBy') {
+            $eventNotes->filterByPerId($subjectPersonId, Criteria::NOT_EQUAL);
         }
         if ($eventNotes->exists($connection)) {
             return true;
