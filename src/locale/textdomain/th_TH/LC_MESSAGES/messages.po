@@ -20287,10 +20287,6 @@ msgid "Read the theme authoring guide"
 msgstr "อ่านคู่มือการสร้างธีม"
 
 #: 
-msgid "Recent Emails"
-msgstr "อีเมลล่าสุด"
-
-#: 
 msgid "Recipient"
 msgstr "ผู้รับ"
 

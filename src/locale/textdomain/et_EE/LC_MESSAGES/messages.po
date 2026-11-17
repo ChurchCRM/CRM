@@ -20331,10 +20331,6 @@ msgid "Read the theme authoring guide"
 msgstr "Loe teemade koostamise juhendit"
 
 #: 
-msgid "Recent Emails"
-msgstr "Hiljutised e-kirjad"
-
-#: 
 msgid "Recipient"
 msgstr "Saaja"
 

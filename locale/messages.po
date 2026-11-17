@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 04:35+0000\n"
+"POT-Creation-Date: 2026-11-17 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13920,9 +13920,6 @@ msgstr ""
 msgid "Recent Deposits"
 msgstr ""
 
-msgid "Recent Emails"
-msgstr ""
-
 msgid "Recent Friends"
 msgstr ""
 
@@ -19300,6 +19297,9 @@ msgid "View User"
 msgstr ""
 
 msgid "View active only"
+msgstr ""
+
+msgid "View all"
 msgstr ""
 
 msgid "View all (including inactive)"

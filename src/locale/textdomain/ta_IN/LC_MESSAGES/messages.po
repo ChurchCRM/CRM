@@ -20344,10 +20344,6 @@ msgid "Read the theme authoring guide"
 msgstr "தீம் உருவாக்க வழிகாட்டியைப் படிக்கவும்"
 
 #: 
-msgid "Recent Emails"
-msgstr "சமீபத்திய மின்னஞ்சல்கள்"
-
-#: 
 msgid "Recipient"
 msgstr "பெறுநர்"
 

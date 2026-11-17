@@ -20395,10 +20395,6 @@ msgid "Read the theme authoring guide"
 msgstr "Leia o guia de criação de temas"
 
 #: 
-msgid "Recent Emails"
-msgstr "E-mails recentes"
-
-#: 
 msgid "Recipient"
 msgstr "Destinatário"
 

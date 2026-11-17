@@ -20330,10 +20330,6 @@ msgid "Read the theme authoring guide"
 msgstr "קראו את מדריך כתיבת ערכות הנושא"
 
 #: 
-msgid "Recent Emails"
-msgstr "דוא\"ל אחרון"
-
-#: 
 msgid "Recipient"
 msgstr "נמען"
 

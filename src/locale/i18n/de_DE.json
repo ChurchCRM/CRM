@@ -4952,7 +4952,6 @@
   "Qualify them for a position.": "Für eine Aufgabe qualifizieren.",
   "Reactivate": "Reaktivieren",
   "Read the theme authoring guide": "Anleitung zur Theme-Erstellung lesen",
-  "Recent Emails": "Letzte E-Mails",
   "Recipient": "Empfänger",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Die Empfängerzahl (%d) überschreitet das pro Sendung erlaubte Maximum (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Empfänger müssen als personIds und familyIds angegeben werden, nicht als E-Mail-Adressen",

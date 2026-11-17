@@ -20338,10 +20338,6 @@ msgid "Read the theme authoring guide"
 msgstr "የገጽታ ማዘጋጃ መመሪያውን አንብብ"
 
 #: 
-msgid "Recent Emails"
-msgstr "የቅርብ ጊዜ ኢሜይሎች"
-
-#: 
 msgid "Recipient"
 msgstr "ተቀባይ"
 

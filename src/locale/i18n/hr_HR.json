@@ -4976,7 +4976,6 @@
   "Qualify them for a position.": "Kvalificiraj ga za poziciju.",
   "Reactivate": "Ponovno aktiviraj",
   "Read the theme authoring guide": "Pročitajte vodič za izradu tema",
-  "Recent Emails": "Nedavna e-pošta",
   "Recipient": "Primatelj",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Broj primatelja (%d) premašuje najveći dopušteni broj po slanju (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Primatelji moraju biti navedeni kao personId i familyId, a ne kao adrese e-pošte",

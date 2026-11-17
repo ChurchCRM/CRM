@@ -20303,10 +20303,6 @@ msgid "Read the theme authoring guide"
 msgstr "Lue teemojen laatimisopas"
 
 #: 
-msgid "Recent Emails"
-msgstr "Viimeisimmät sähköpostit"
-
-#: 
 msgid "Recipient"
 msgstr "Vastaanottaja"
 

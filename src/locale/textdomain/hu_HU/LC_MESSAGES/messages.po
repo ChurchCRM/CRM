@@ -20357,10 +20357,6 @@ msgid "Read the theme authoring guide"
 msgstr "Olvasd el a témakészítési útmutatót"
 
 #: 
-msgid "Recent Emails"
-msgstr "Legutóbbi e-mailek"
-
-#: 
 msgid "Recipient"
 msgstr "Címzett"
 

@@ -4952,7 +4952,6 @@
   "Qualify them for a position.": "அவர்களை ஒரு பொறுப்புக்குத் தகுதிப்படுத்து.",
   "Reactivate": "மீண்டும் செயல்படுத்து",
   "Read the theme authoring guide": "தீம் உருவாக்க வழிகாட்டியைப் படிக்கவும்",
-  "Recent Emails": "சமீபத்திய மின்னஞ்சல்கள்",
   "Recipient": "பெறுநர்",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "பெறுநர் எண்ணிக்கை (%d) ஒரு அனுப்புதலுக்கு அனுமதிக்கப்பட்ட அதிகபட்சத்தை (%d) மீறுகிறது",
   "Recipients must be given as personIds and familyIds, not as email addresses": "பெறுநர்கள் மின்னஞ்சல் முகவரிகளாக அல்லாமல் personIds மற்றும் familyIds ஆகக் கொடுக்கப்பட வேண்டும்",

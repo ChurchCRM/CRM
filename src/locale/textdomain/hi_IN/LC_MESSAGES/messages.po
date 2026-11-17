@@ -20301,10 +20301,6 @@ msgid "Read the theme authoring guide"
 msgstr "थीम बनाने की मार्गदर्शिका पढ़ें"
 
 #: 
-msgid "Recent Emails"
-msgstr "हाल के ईमेल"
-
-#: 
 msgid "Recipient"
 msgstr "प्राप्तकर्ता"
 

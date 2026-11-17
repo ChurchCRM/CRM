@@ -20275,10 +20275,6 @@ msgid "Read the theme authoring guide"
 msgstr "テーマ作成ガイドを読む"
 
 #: 
-msgid "Recent Emails"
-msgstr "最近のメール"
-
-#: 
 msgid "Recipient"
 msgstr "宛先"
 
