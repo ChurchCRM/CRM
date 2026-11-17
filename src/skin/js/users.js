@@ -216,6 +216,7 @@ function setUserTwoFactorRequired(userId, required) {
   window.CRM.AdminAPIRequest({
     path: `user/${userId}/setTwoFactorRequired`,
     method: "POST",
+    headers: { "X-CSRF-Token": document.getElementById("user-listing-table")?.dataset.csrfToken || "" },
     data: JSON.stringify({ required }),
   }).done(() => {
     window.location.href = `${window.CRM.root}/admin/system/users`;

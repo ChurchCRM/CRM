@@ -9,6 +9,7 @@ use ChurchCRM\Emails\users\UnlockedEmail;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\UserService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -119,7 +120,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
         $user->setTwoFactorRequirement($required);
 
         return SlimUtils::renderJSON($response, ['required' => (bool) $user->getTwoFactorAuthRequired()]);
-    });
+    })->add(new CSRFMiddleware());
 
     /**
      * @OA\Post(
