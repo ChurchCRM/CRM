@@ -10,6 +10,7 @@ require dirname(__DIR__, 2) . '/bootstrap.php';
 
 /**
  * In-memory User stand-in so preference pack/load can be tested without the DB.
+ * getSetting() returns null for never-stored keys (same contract as User).
  */
 final class DirectoryReportPreferencesMemoryUser extends User
 {
@@ -23,6 +24,16 @@ final class DirectoryReportPreferencesMemoryUser extends User
     public function setSetting($name, $value): void
     {
         $this->settings[(string) $name] = (string) $value;
+    }
+
+    public function getSetting($name)
+    {
+        $key = (string) $name;
+        if (!array_key_exists($key, $this->settings)) {
+            return null;
+        }
+
+        return (object) ['name' => $key, 'value' => $this->settings[$key]];
     }
 
     public function getSettingValue($name)
@@ -94,3 +105,50 @@ Assert::null($prefs->load($user));
 Assert::same('', $user->getSettingValue(DirectoryReportPreferences::SAVED));
 Assert::same('', $user->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS));
 Assert::same('', $user->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS . '.1'));
+
+// Attacker-controlled chunk count via user-settings API must not drive unbounded loops
+// or invent rows for indexes that were never stored (maintainer hard block on #11571).
+$forged = new DirectoryReportPreferencesMemoryUser();
+$forged->setSetting(DirectoryReportPreferences::SAVED, '1');
+$forged->setSetting(DirectoryReportPreferences::CLASSIFICATIONS, '999999999');
+$forged->setSetting(DirectoryReportPreferences::CLASSIFICATIONS . '.1', '10,11');
+$forged->setSetting(DirectoryReportPreferences::EXCLUDE_INACTIVE, '0');
+$forged->setSetting(DirectoryReportPreferences::SHOW, str_repeat('0', count(DirectoryReportPreferences::SHOW_KEYS)));
+
+$beforeKeys = array_keys($forged->allSettings());
+$forgedLoaded = $prefs->load($forged);
+Assert::notNull($forgedLoaded);
+Assert::same([10, 11], $forgedLoaded['classifications'], 'load must stop at the first missing chunk');
+
+$prefs->clear($forged);
+Assert::same('', $forged->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS));
+Assert::same('', $forged->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS . '.1'));
+Assert::null(
+    $forged->getSetting(DirectoryReportPreferences::CLASSIFICATIONS . '.2'),
+    'clear must not invent empty chunk keys for a forged count'
+);
+Assert::true(
+    count($forged->allSettings()) <= count($beforeKeys) + 2,
+    'clear against a forged count must stay bounded'
+);
+
+$resave = new DirectoryReportPreferencesMemoryUser();
+$resave->setSetting(DirectoryReportPreferences::CLASSIFICATIONS, '999999999');
+$prefs->save($resave, [
+    'classifications' => [7],
+    'groups' => [],
+    'excludeInactive' => false,
+    'headRoles' => [],
+    'spouseRoles' => [],
+    'show' => [],
+    'customFieldOrders' => [],
+]);
+Assert::same('1', $resave->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS));
+Assert::same('7', $resave->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS . '.1'));
+Assert::null(
+    $resave->getSetting(DirectoryReportPreferences::CLASSIFICATIONS . '.2'),
+    'save must not invent empty chunk keys up to a forged previous count'
+);
+Assert::true(
+    (int) $resave->getSettingValue(DirectoryReportPreferences::CLASSIFICATIONS) <= DirectoryReportPreferences::MAX_CHUNKS
+);

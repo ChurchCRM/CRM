@@ -44,6 +44,13 @@ class DirectoryReportPreferences
     private const MAX_VALUE = 50;
 
     /**
+     * Hard cap on numbered chunks per list. A few dozen covers any real ID list
+     * and bounds loops when the base count key is attacker-controlled via the
+     * user-settings API (maintainer review on #11571).
+     */
+    public const MAX_CHUNKS = 40;
+
+    /**
      * Primary setting names (list bases hold a chunk count; data lives in {base}.N).
      *
      * @return list<string>
@@ -147,13 +154,21 @@ class DirectoryReportPreferences
     private function saveIdList(User $user, string $base, array $ids): void
     {
         $chunks = $this->chunkIds($ids);
-        $previous = $user->getSettingValue($base);
-        $previousCount = ctype_digit($previous) ? (int) $previous : 0;
+        if (count($chunks) > self::MAX_CHUNKS) {
+            $chunks = array_slice($chunks, 0, self::MAX_CHUNKS);
+        }
         $count = max(count($chunks), 1);
-        $clearUntil = max($previousCount, $count);
+        $previousCount = $this->boundedChunkCount($user->getSettingValue($base));
 
-        for ($i = 1; $i <= $clearUntil; $i++) {
+        for ($i = 1; $i <= $count; $i++) {
             $user->setSetting($base . '.' . $i, $chunks[$i - 1] ?? '');
+        }
+        // Only clear chunk keys that were previously stored — never invent empty rows.
+        for ($i = $count + 1; $i <= $previousCount; $i++) {
+            $name = $base . '.' . $i;
+            if ($user->getSetting($name) !== null) {
+                $user->setSetting($name, '');
+            }
         }
         $user->setSetting($base, (string) $count);
     }
@@ -169,14 +184,22 @@ class DirectoryReportPreferences
             return $this->unpackIds($raw);
         }
 
-        $count = $raw === '' ? 0 : (int) $raw;
+        $count = $this->boundedChunkCount($raw);
         if ($count < 1) {
             return [];
         }
 
         $ids = [];
         for ($i = 1; $i <= $count; $i++) {
-            foreach ($this->unpackIds($user->getSettingValue($base . '.' . $i)) as $id) {
+            $name = $base . '.' . $i;
+            if ($user->getSetting($name) === null) {
+                break;
+            }
+            $value = $user->getSettingValue($name);
+            if ($value === '') {
+                break;
+            }
+            foreach ($this->unpackIds($value) as $id) {
                 $ids[] = $id;
             }
         }
@@ -186,13 +209,27 @@ class DirectoryReportPreferences
 
     private function clearIdList(User $user, string $base): void
     {
-        $raw = $user->getSettingValue($base);
-        $count = ctype_digit($raw) ? (int) $raw : 0;
-        $clearUntil = max($count, 1);
-        for ($i = 1; $i <= $clearUntil; $i++) {
-            $user->setSetting($base . '.' . $i, '');
+        $count = $this->boundedChunkCount($user->getSettingValue($base));
+        for ($i = 1; $i <= $count; $i++) {
+            $name = $base . '.' . $i;
+            if ($user->getSetting($name) !== null) {
+                $user->setSetting($name, '');
+            }
         }
         $user->setSetting($base, '');
+    }
+
+    /**
+     * Digits-only chunk counts, hard-capped so a huge user_settings value cannot
+     * force unbounded getSettingValue / setSetting loops.
+     */
+    private function boundedChunkCount(string $raw): int
+    {
+        if ($raw === '' || !ctype_digit($raw)) {
+            return 0;
+        }
+
+        return min((int) $raw, self::MAX_CHUNKS);
     }
 
     /**
