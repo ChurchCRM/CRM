@@ -53,7 +53,9 @@ function listProperties(Request $request, Response $response, array $args): Resp
     $properties = PropertyQuery::create()
         ->filterByProClass($sType)
         ->joinWithPropertyType()
-        ->orderByPropertyTypePrtName()
+        ->usePropertyTypeQuery()
+            ->orderByPrtName()
+        ->endUse()
         ->orderByProName()
         ->find();
 
