@@ -44,6 +44,17 @@ publication need the maintainer's specific authorization or existing
 explicitly granted scope.
 A role assignment is not permission to merge, close issues or send a message.
 
+## Worker run protocol
+
+Applies to any agent implementing an assigned issue, whatever the tool:
+
+- The issue is the spec. A handoff names the issue, the tool, and the model/effort tier — nothing else needs restating. If an issue lacks acceptance criteria or scope, that is a defect in the issue: fix the issue, not a side prompt.
+- First action: assign the issue to DawoudIO — assignment is the in-progress signal. If it is already assigned to anyone else, do not start and do not reassign; report and move on.
+- Open the draft PR with the first push (the first compiling slice), then one push per finished slice. The run never waits for the maintainer mid-task: no step needs approval, review, or a reply. Blockers are written into the PR body, not sent back as questions.
+- Flip the PR to Ready yourself when the work is finished and CI is green — a finished PR left in draft is a defect, and the maintainer's only click is merge. Never merge.
+- Verification for behavior changes is Cypress E2E only (`.agents/skills/churchcrm/cypress-testing.md`): every new test is a Cypress spec; no new PHP test scripts.
+- PR body: what changed per file, the named verification results, anything stopped on — and for user-facing changes a task-flow walkthrough: the task a staff member or user is trying to do, the exact steps with this change, and where the flow can snag. The maintainer reviews by trying the task.
+
 ## Token economics
 
 Tokens are a shared, finite budget across every agent lane. Spend them where judgment is needed; scripts and CI spend none.
