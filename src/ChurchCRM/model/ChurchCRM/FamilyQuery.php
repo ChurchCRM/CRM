@@ -52,7 +52,9 @@ class FamilyQuery extends BaseFamilyQuery
         $names = [];
         foreach ($pairs as [$month, $day]) {
             $name = 'weddingObserved' . ++$this->weddingConditionCount;
-            $this->condition($name, 'Family.Weddingdate LIKE ?', sprintf('%%-%02d-%02d', $month, $day));
+            // Compare the formatted month-day. LIKE against the DATE column makes MariaDB
+            // parse the bound pattern as a date, and '%-02-29' is not a date.
+            $this->condition($name, "DATE_FORMAT(Family.Weddingdate, '%m-%d') = ?", sprintf('%02d-%02d', $month, $day));
             $names[] = $name;
         }
 
