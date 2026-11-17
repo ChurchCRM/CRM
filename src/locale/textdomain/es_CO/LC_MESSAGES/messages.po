@@ -11179,10 +11179,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "La versión %s está disponible. Por favor actualice su instalación."
 
 #: 
-msgid "View All"
-msgstr "Ver todo"
-
-#: 
 msgid "Yellow"
 msgstr "Amarillo"
 
@@ -20324,10 +20320,6 @@ msgstr "Reactivar"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lea la guía de autoría del tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Correos recientes"
 
 #: 
 msgid "Recipient"

@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "ใช้คีย์นี้เพื่อยืนยันตัวตนสำหรับคำขอ API การสร้างใหม่จะทำให้คีย์ปัจจุบันใช้งานไม่ได้",
   "User Config": "การกำหนดค่าผู้ใช้",
   "Version %s is available. Please upgrade your installation.": "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ",
-  "View All": "ดูทั้งหมด",
   "Yellow": "สีเหลือง",
   "%d repeat event created successfully.": {
     "other": "สร้างกิจกรรมซ้ำ %d รายการสำเร็จแล้ว"
@@ -4928,7 +4927,6 @@
   "Qualify them for a position.": "ให้เขามีคุณสมบัติสำหรับตำแหน่ง",
   "Reactivate": "เปิดใช้งานอีกครั้ง",
   "Read the theme authoring guide": "อ่านคู่มือการสร้างธีม",
-  "Recent Emails": "อีเมลล่าสุด",
   "Recipient": "ผู้รับ",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "จำนวนผู้รับ (%d) เกินจำนวนสูงสุดที่อนุญาตต่อการส่งหนึ่งครั้ง (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "ต้องระบุผู้รับเป็น personIds และ familyIds ไม่ใช่ที่อยู่อีเมล",

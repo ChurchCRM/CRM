@@ -11200,10 +11200,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versioon %s on saadaval. Palun uuendage oma paigaldust."
 
 #: 
-msgid "View All"
-msgstr "Vaata kõiki"
-
-#: 
 msgid "Yellow"
 msgstr "Kollane"
 
@@ -20329,10 +20325,6 @@ msgstr "Aktiveeri uuesti"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Loe teemade koostamise juhendit"
-
-#: 
-msgid "Recent Emails"
-msgstr "Hiljutised e-kirjad"
 
 #: 
 msgid "Recipient"

@@ -11175,10 +11175,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Verzija %s je dostupna. Molim nadogradite vašu instalaciju."
 
 #: 
-msgid "View All"
-msgstr "Prikaži sve"
-
-#: 
 msgid "Yellow"
 msgstr "Žuta"
 
@@ -20319,10 +20315,6 @@ msgstr "Ponovno aktiviraj"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Pročitajte vodič za izradu tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Nedavna e-pošta"
 
 #: 
 msgid "Recipient"

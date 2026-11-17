@@ -11272,10 +11272,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Версия %s доступна. Пожалуйста, обновите вашу установку."
 
 #: 
-msgid "View All"
-msgstr "Просмотреть все"
-
-#: 
 msgid "Yellow"
 msgstr "Жёлтый"
 
@@ -20431,10 +20427,6 @@ msgstr "Активировать снова"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Прочитать руководство по созданию тем"
-
-#: 
-msgid "Recent Emails"
-msgstr "Недавние письма"
 
 #: 
 msgid "Recipient"

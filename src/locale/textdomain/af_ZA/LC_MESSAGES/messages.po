@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Weergawe %s is beskikbaar. Gradeer asseblief u installasie op."
 
 #: 
-msgid "View All"
-msgstr "Sien Alles"
-
-#: 
 msgid "Yellow"
 msgstr "Geel"
 
@@ -20330,10 +20326,6 @@ msgstr "Heraktiveer"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lees die temaskrywersgids"
-
-#: 
-msgid "Recent Emails"
-msgstr "Onlangse e-posse"
 
 #: 
 msgid "Recipient"

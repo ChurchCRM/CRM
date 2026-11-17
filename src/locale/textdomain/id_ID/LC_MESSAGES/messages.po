@@ -11190,10 +11190,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versi %s tersedia. Silakan perbarui instalasi Anda."
 
 #: 
-msgid "View All"
-msgstr "Lihat Semua"
-
-#: 
 msgid "Yellow"
 msgstr "Kuning"
 
@@ -20304,10 +20300,6 @@ msgstr "Aktifkan kembali"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Baca panduan pembuatan tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email Terbaru"
 
 #: 
 msgid "Recipient"

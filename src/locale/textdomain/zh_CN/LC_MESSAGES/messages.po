@@ -11258,10 +11258,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "版本 %s 已可用。请升级您的安装。"
 
 #: 
-msgid "View All"
-msgstr "查看全部"
-
-#: 
 msgid "Yellow"
 msgstr "黄色"
 
@@ -20372,10 +20368,6 @@ msgstr "重新启用"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "阅读主题制作指南"
-
-#: 
-msgid "Recent Emails"
-msgstr "最近的电子邮件"
 
 #: 
 msgid "Recipient"
