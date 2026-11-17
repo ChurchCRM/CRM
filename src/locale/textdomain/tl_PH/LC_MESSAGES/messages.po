@@ -11310,14 +11310,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Ang check-in ay hindi pinagana para sa mga hindi aktibong kaganapan. I-activate ang kaganapan mula sa Dashboard ng mga Kaganapan para paganahin ang check-in."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Nag-check in sa kaganapan: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Nag-check out mula sa kaganapan: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Isara ang Lahat ng Natitirang Kaganapan"
 
@@ -22437,10 +22429,6 @@ msgstr "Magparehistro ng Walk-In Guest"
 #: 
 msgid "Register walk-in guest"
 msgstr "Magparehistro ng walk-in guest"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Nakarehistro bilang walk-in guest sa kiosk sa panahon ng event: %s"
 
 #: 
 msgid "Registering..."

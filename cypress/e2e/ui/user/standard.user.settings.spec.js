@@ -28,7 +28,7 @@ describe("Standard User Settings Page", () => {
             cy.contains("Security");
             cy.get("#editSettings")
                 .should("have.attr", "href")
-                .and("contain", "SettingsIndividual.php");
+                .and("contain", "/account/settings");
         });
     });
 

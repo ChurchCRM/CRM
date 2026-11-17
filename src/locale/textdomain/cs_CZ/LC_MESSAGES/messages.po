@@ -11342,14 +11342,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Přihlašování je zakázáno pro neaktivní události. Aktivujte událost z přehledu událostí, abyste povolili přihlašování."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Přihlášen k události: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Odhlášen z události: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Uzavřít všechny zaseklé události"
 
@@ -22487,10 +22479,6 @@ msgstr "Zaregistrujte hosta"
 #: 
 msgid "Register walk-in guest"
 msgstr "zaregistrujte hosta"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Zaregistrován jako host u kiosku během akce: %s"
 
 #: 
 msgid "Registering..."

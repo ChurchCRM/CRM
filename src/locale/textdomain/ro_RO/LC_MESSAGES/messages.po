@@ -11412,14 +11412,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Înregistrarea prezenței este dezactivată pentru evenimentele inactive. Activați evenimentul din Tabloul de Bord Evenimente pentru a activa înregistrarea."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Prezență înregistrată la evenimentul: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Ieșire înregistrată de la evenimentul: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Închide toate evenimentele blocate"
 
@@ -22557,10 +22549,6 @@ msgstr "Înregistrați Oaspele care Sosesc"
 #: 
 msgid "Register walk-in guest"
 msgstr "Înregistrați oaspete care sosesc"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Înregistrat ca oaspete care sosește la chioșc în timpul evenimentului: %s"
 
 #: 
 msgid "Registering..."

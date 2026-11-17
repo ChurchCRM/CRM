@@ -11363,14 +11363,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Відмітку вимкнено для неактивних подій. Активуйте подію з панелі подій, щоб увімкнути відмітку."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Відмічено на події: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Знято відмітку з події: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Закрити всі застряглі події"
 
@@ -22526,10 +22518,6 @@ msgstr "Зареєструвати гостя"
 #: 
 msgid "Register walk-in guest"
 msgstr "зареєструвати гостя"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Зареєстрований як гість на кіоску під час події: %s"
 
 #: 
 msgid "Registering..."

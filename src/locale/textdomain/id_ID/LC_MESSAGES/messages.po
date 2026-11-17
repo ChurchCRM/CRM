@@ -11331,14 +11331,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Absen masuk dinonaktifkan untuk acara yang tidak aktif. Aktifkan acara dari Dasbor Acara untuk mengaktifkan absen masuk."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Diabsen masuk ke acara: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Diabsen keluar dari acara: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Tutup Semua Acara Terhenti"
 
@@ -22440,10 +22432,6 @@ msgstr "Daftarkan Tamu Yang Datang"
 #: 
 msgid "Register walk-in guest"
 msgstr "Daftarkan tamu yang datang"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Terdaftar sebagai tamu yang datang di kiosk selama acara: %s"
 
 #: 
 msgid "Registering..."
