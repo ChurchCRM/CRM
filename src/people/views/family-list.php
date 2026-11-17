@@ -153,9 +153,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <span class="cart-label"><?= $isInCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?= $family->getId() ?>">
+                                <button type="button" class="dropdown-item text-danger delete-family" data-family_id="<?= $family->getId() ?>">
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </td>

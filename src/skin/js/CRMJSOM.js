@@ -1120,11 +1120,23 @@ window.CRM.dashboard = {
       const familyId = $btn.data("family_id");
       window.CRM.confirmAction(
         i18next.t("Delete this family?"),
-        i18next.t(
-          "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
-        ),
+        i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
+          "<br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
+          i18next.t("Also delete family members") +
+          "</label>",
         () => {
-          window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
+          const deleteMembers = document.getElementById("deleteFamilyMembersToo")?.checked === true;
+          const path = "family/" + familyId + (deleteMembers ? "?deleteMembers=true" : "");
+          window.CRM.APIRequest({ method: "DELETE", path: path })
+            .done(() => {
+              window.location.href = window.CRM.root + "/people/family";
+            })
+            .fail((xhr) => {
+              const msg =
+                (xhr && xhr.responseJSON && xhr.responseJSON.message) ||
+                i18next.t("Delete failed. Deactivate the family instead to preserve history.");
+              window.CRM.notify(window.CRM.escapeHtml(String(msg)), { type: "danger", delay: 8000 });
+            });
         },
         {
           confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),

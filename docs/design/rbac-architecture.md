@@ -32,7 +32,7 @@ V1 authorization is 13 switches plus three implicit rules. Almost every check go
 | 1 | Admin | `user_usr.usr_Admin` | `isAdmin()` | The whole `/admin` app (`AdminRoleAuthMiddleware`), users, settings, plugins, imports, logs, email log, text messages, CSV export, kiosk admin, property types, other users' private notes (`canReadPrivateNotes()`); and implies every switch below |
 | 2 | Add Records | `usr_AddRecords` | `isAddRecordsEnabled()` | New person and family, cart-to-family, donated items and paddle numbers (tracked in #10684) |
 | 3 | Edit Records | `usr_EditRecords` | `isEditRecordsEnabled()` | Person/family editors, properties on people, Why Came, verify report, group member properties, Sunday School edits |
-| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family (`DeleteRecordRoleAuthMiddleware`, `SelectDelete.php`) |
+| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family (`DeleteRecordRoleAuthMiddleware` on the people API) |
 | 5 | Manage Groups | `usr_ManageGroups` | `isManageGroupsEnabled()` | Groups, group properties, group cart, Sunday School admin, events tied to groups |
 | 6 | Finance | `usr_Finance` | `isFinanceEnabled()` | Deposits, pledges, envelopes, all finance reports, finance search, giving on person and family pages. Also needs `bEnabledFinance` |
 | 7 | Manage Fundraisers | `usr_ManageFundraisers` | `isManageFundraisersEnabled()` | Fundraisers. Also needs `bEnabledFundraiser` |

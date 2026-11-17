@@ -79,7 +79,7 @@ The test database is built from two files, mounted in order by `docker/docker-co
 
 - Delete what the spec creates, in `after`, through the API. A failing cleanup assertion is a finding.
 - A closed deposit refuses to delete its payments. Reopen it first: `POST /api/deposits/{id}` with `depositClosed: false`, then `DELETE`.
-- Payments left on a seeded family replace the delete controls on `SelectDelete.php` with the donations list, which fails any later spec that deletes that family.
+- Payments left on a seeded family cause the family delete API to return 403, which fails any later spec that deletes that family.
 - A "row counts changed" failure follows another failure in the same spec file. Find the first failure.
 
 ## Triage a red run
