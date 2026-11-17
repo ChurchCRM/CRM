@@ -6,9 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\UserPermissionsService;
-use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
-use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,8 +17,6 @@ $app->get('/', 'viewOwnAccount');
 $app->get('/2fa', 'viewOwnTwoFactor');
 $app->get('/password', 'changeOwnPassword');
 $app->post('/password', 'changeOwnPassword')->add(new CSRFMiddleware('user_change_password'));
-$app->get('/settings', 'viewOwnSettings');
-$app->post('/settings', 'saveOwnSettings')->add(new CSRFMiddleware('user_settings'));
 
 function viewOwnAccount(Request $request, Response $response): Response
 {
@@ -70,26 +66,4 @@ function changeOwnPassword(Request $request, Response $response): Response
     }
 
     return $renderer->render($response, 'password.php', $pageArgs);
-}
-
-function viewOwnSettings(Request $request, Response $response): Response
-{
-    return (new PhpRenderer(__DIR__ . '/../views/'))->render($response, 'settings.php', [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('My User Settings'),
-        'sPageSubtitle' => gettext('Manage your personal preferences and account settings'),
-        'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('My Account'), '/account'],
-            [gettext('My Settings')],
-        ]),
-        'settings' => (new UserService())->getEditableUserConfigs(AuthenticationManager::getCurrentUser()),
-    ]);
-}
-
-function saveOwnSettings(Request $request, Response $response): Response
-{
-    $body = (array) $request->getParsedBody();
-    (new UserService())->saveEditableUserConfigs(AuthenticationManager::getCurrentUser(), (array) ($body['newValue'] ?? []));
-
-    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/account/settings');
 }
