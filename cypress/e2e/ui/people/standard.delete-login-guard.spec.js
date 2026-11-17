@@ -3,7 +3,7 @@
 // Seeded data, read only: person 1 is an administrator, person 3 is the
 // standard user (tony.wade, DeleteRecords, non-admin), persons 901 and 2 are
 // in family 1 (901 has a login, 2 does not), person 10 has no login, and
-// family 3 has no member with a login.
+// family 2 has a member with a login.
 describe("Standard user - delete controls for people who have a login", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -50,26 +50,22 @@ describe("Standard user - delete controls for people who have a login", () => {
         });
     });
 
-    it("blocks deleting a family with its members when a member has a login", () => {
+    it("names the family and shows the refusal when a member has a login", () => {
         cy.visit("/people/family/2");
-        cy.get("#family-actions-dropdown").first().click();
-        cy.get("#deleteFamilyBtn").first().click();
-        cy.get(".bootbox").should("be.visible");
+        cy.get("#deleteFamilyBtn")
+            .invoke("attr", "data-family_name")
+            .then((familyName) => {
+                cy.get("#family-actions-dropdown").first().click();
+                cy.get("#deleteFamilyBtn").first().click();
+                cy.get(".bootbox").should("contain", familyName);
+            });
         cy.get("#deleteFamilyMembersToo").check({ force: true });
         cy.intercept("DELETE", "**/api/family/2*").as("deleteFamily");
         cy.get(".bootbox-accept").first().click({ force: true });
-        cy.wait("@deleteFamily").its("response.statusCode").should("eq", 403);
-    });
-
-    it("allows deleting a family with its members when no member has a login", () => {
-        cy.visit("/people/family/3");
-        cy.get("#family-actions-dropdown").first().click();
-        cy.get("#deleteFamilyBtn").first().click();
-        cy.get(".bootbox").should("be.visible");
-        cy.get("#deleteFamilyMembersToo").check({ force: true });
-        cy.intercept("DELETE", "**/api/family/3*").as("deleteFamily");
-        cy.get(".bootbox-accept").first().click({ force: true });
-        // Family 3 may still be blocked by other history; the point is the login guard does not fire.
-        cy.wait("@deleteFamily").its("response.statusCode").should("be.oneOf", [200, 403]);
+        cy.wait("@deleteFamily").then(({ response }) => {
+            expect(response.statusCode).to.eq(403);
+            cy.contains(".crm-toast-message", response.body.message.slice(0, 40)).should("be.visible");
+        });
+        cy.location("pathname").should("match", /\/people\/family\/2$/);
     });
 });

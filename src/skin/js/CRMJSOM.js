@@ -899,12 +899,12 @@ window.CRM.dashboard = {
    * Render a standard family action dropdown menu.
    * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
    * @param {number} familyId
-   * @param {string} _familyName - Unused; kept for parity with the person renderer
+   * @param {string} familyName - Used in delete confirmation
    * @param {Object} [options]
    * @param {boolean} [options.inCart=false] - Whether family is already in cart
    * @returns {string} HTML string
    */
-  window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
+  window.CRM.renderFamilyActionMenu = (familyId, familyName, options) => {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
@@ -938,7 +938,7 @@ window.CRM.dashboard = {
         className: "delete-family",
         icon: "fa-solid fa-trash",
         label: i18next.t("Delete"),
-        data: { family_id: familyId },
+        data: { family_id: familyId, family_name: familyName || "" },
       },
     ]);
   };
@@ -1118,25 +1118,21 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       const familyId = $btn.data("family_id");
+      const familyName = $btn.data("family_name");
       window.CRM.confirmAction(
         i18next.t("Delete this family?"),
         i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
-          "<br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
+          " <b>" +
+          window.CRM.escapeHtml(String(familyName || "")) +
+          "</b><br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
           i18next.t("Also delete family members") +
           "</label>",
         () => {
           const deleteMembers = document.getElementById("deleteFamilyMembersToo")?.checked === true;
           const path = "family/" + familyId + (deleteMembers ? "?deleteMembers=true" : "");
-          window.CRM.APIRequest({ method: "DELETE", path: path })
-            .done(() => {
-              window.location.href = window.CRM.root + "/people/family";
-            })
-            .fail((xhr) => {
-              const msg =
-                (xhr && xhr.responseJSON && xhr.responseJSON.message) ||
-                i18next.t("Delete failed. Deactivate the family instead to preserve history.");
-              window.CRM.notify(window.CRM.escapeHtml(String(msg)), { type: "danger", delay: 8000 });
-            });
+          window.CRM.APIRequest({ method: "DELETE", path: path }).done(() => {
+            window.location.href = window.CRM.root + "/people/family";
+          });
         },
         {
           confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),

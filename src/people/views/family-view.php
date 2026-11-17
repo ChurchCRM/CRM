@@ -231,7 +231,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <button type="button" class="dropdown-item text-danger delete-family" id="deleteFamilyBtn" data-family_id="<?= $family->getId() ?>">
+                        <button type="button" class="dropdown-item text-danger delete-family" id="deleteFamilyBtn" data-family_id="<?= $family->getId() ?>" data-family_name="<?= InputUtils::escapeAttribute($family->getName()) ?>">
                             <i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete Family') ?>
                         </button>
                     <?php } ?>
