@@ -14,7 +14,7 @@
 | A5 | **New Administrator template is core system administration only** (users, roles, settings, system). Finance, people, groups and the rest are separate roles a church adds. | Settles the D2 wildcard question for new admins: no wildcard. |
 | A6 | **Assigning roles:** a holder of `roles.assign` may give another user only a role whose grants (permission and scope) all fall within the assigner's own effective grants, never to themselves; the Owner may give any role. Roles holding a sensitive permission need a second approver. Every change is audited and the person is notified. | Settles the D2 grant ceiling and self-escalation rule. |
 | A7 | **Rebuilt setup wizard with an Owner account ("admin 0").** The wizard asks for the real password (no shipped default) and which roles to create. Every install has exactly one Owner. | New. Replaces the seeded `admin`/`changeme` account. |
-| A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**: the RFC's P6 row needs an amendment naming the Owner. Mitigation in §6. |
+| A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**, named in the RFC's P6 row. Mitigation in §6. |
 | A9 | **Admin-only split.** CSV export and the People Report CSV move to `export.people`; the email log and text messages to `communication.log.read`; other users' private notes to `notes.private.read` (sensitive). The rest of today's admin-only features stay with Administrator (§4.3). | New permissions; the bulk export gate of #10516 starts from `export.people`. |
 | A10 | **Sensitive at cutover:** `notes.private.read`, every `finance.*` permission and `export.people`. Assigning a role that holds one needs a second approver; the Owner's use of one is audited. | Applies P6-style controls to giving data and bulk export. |
 | A11 | **Second approver:** when the Owner assigns a sensitive role, no approver is needed; it is audited. When anyone else assigns one, the Owner or another holder of `roles.assign` (neither the assigner nor the recipient) approves before it takes effect. | Refines A6 so a one-person church can work. |
@@ -232,14 +232,51 @@ All access goes through Propel models and the service; no page writes these tabl
    4. Mark the Owner: the administrator running the upgrade wizard (A12, A13). The report names them to every administrator and says how to transfer ownership.
    5. Verify: for every user, the effective permission set computed from roles equals the set computed from the columns. If any user differs, abort and roll back the transaction.
    6. Drop `usr_Admin`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`, `usr_ManageGroups`, `usr_Finance`, `usr_ManageFundraisers`, `usr_ManageMinistries`, `usr_ManageMyMinistries`, `usr_Notes`, and the `bAddEvent` and `bEmailMailto` rows of `userconfig_ucfg` (A3). Step 3 reads the effective `ucfg_permission` value, including the per-user row copied from the `ucfg_per_id = 0` default.
-2. **Parity gate before merge:** a fixture set covers every switch alone, every pair, admin, zero switches, a portal principal, a coordinator with and without scope rows, and each module flag off. Each fixture runs the V1 predicates on `master` and the V2 predicates on the branch against the same database and must agree. Cypress specs run as one user per switch (RFC lesson 6).
+2. **Parity gate before merge:** a fixture set covers every switch alone, every pair, admin, zero switches, a portal principal, a coordinator with and without scope rows, and each module flag off. Each fixture runs the V1 predicates on `master` and the V2 predicates on the branch against the same database and must agree. The Cypress side is the persona matrix of the [authorization test strategy](authz-test-strategy.md) (`cypress/support/personas-data.js`, `cypress/support/gates/coverage.js`): the cutover changes seed data, not specs.
 3. **Rollback:** restore the backup and reinstall the previous release. The release notes say so plainly.
 
 ## 9. Setup wizard (A7)
 
 Today the wizard still shows the seeded `admin` / `changeme` login (`src/setup/templates/setup-steps.php`). The rebuilt wizard asks for church name, the Owner's name, email and password (no default), and which built-in roles or templates to create. It creates the Owner and nothing else; other accounts are created afterwards from the user editor. Existing installs are not re-run through the wizard; the upgrade marks an Owner (§8 step 1.4).
 
-## 10. Roadmap
+## 10. Administrator workflow
+
+Phase 1 lets a church give people built-in roles. It does not let a church edit roles; copies and templates come after phase 1. The server enforces every rule below; the UI only explains it.
+
+### 10.1 Where it lives
+
+| Page | Today | Phase 1 |
+|---|---|---|
+| Users list `/admin/system/users` | Name, status, last sign-in | A Roles column, a filter by role, and a **Pending approvals** count |
+| User view `/admin/system/users/{id}` | "Roles & permissions" card from `UserPermissionsService` | Roles held, with who gave each and when. Effective access per permission with its `Decision` reason (not granted, module off, outside the user's ministries). Access history from `role_audit_rau` |
+| User editor `/admin/system/users/new`, `/{id}/edit` | Permission checkboxes | Role picker (§10.3) |
+| Roles `/admin/system/roles` (new) | — | Read-only list of built-in roles: what each grants, how many hold it, link to the holders |
+| Admin dashboard | Users tile | Owner card (§6) and pending approvals |
+
+### 10.2 Journeys
+
+| Job | What the administrator does | Rules the service applies |
+|---|---|---|
+| Morning after the upgrade | Nothing. The upgrade report lists each user with their new roles; access is unchanged | A2, A4, A12 |
+| Add a staff member | Users → Add User → pick the person → pick roles → check the effective-access preview → Save. The new user gets a welcome email | Ceiling and no-self (A6). A sensitive role is saved as pending; the other roles apply at once |
+| Change someone's roles | User view → Edit → add or remove roles → Save. The user is emailed the change | Takes effect on their next request (§5.1). Removal never needs approval |
+| Approve a sensitive role | Users list → Pending approvals → review who asked, for whom and what it grants → Approve or Decline | Approver is the Owner or another `roles.assign` holder, never the assigner or recipient (A11). Pending grants nothing. Owner assignments skip this step and are audited |
+| "Why can't Jane do X?" | User view → effective access shows the row and its reason | Reasons come from `Decision`, so the page and the 403 agree |
+| Move an admin off Legacy Administrator | User view → **Replace with Administrator** → the page lists what they would lose → tick the roles that keep what they still need → Save | Optional, never automatic. Sensitive roles in the selection follow the approval rule |
+| Staff member leaves | Disable the account (sign-in blocked, roles kept for re-enable) or delete the user (assignments removed by cascade) | The audit rows stay, keyed by user id |
+| Owner moves on | Owner's user view → Transfer ownership → pick an active account → re-authenticate | §3.4, §6. The Owner cannot be deleted, disabled or demoted |
+| One-person church | The Owner does everything | No approver needed (A11); every sensitive assignment is audited |
+
+### 10.3 Role picker
+
+- Roles appear as cards grouped like today's permission card (People & Families, Groups, Finance, Events, Email, Volunteers, Administration), each with one plain sentence of what it allows. No permission matrix (RFC R5).
+- A role the assigner may not give is shown disabled with the reason ("You do not hold Finance"), never hidden, so the assigner knows whom to ask.
+- Sensitive roles carry a badge and say that someone else must approve.
+- The preview is the effective-access list of §10.1 for the unsaved selection, computed by the same service.
+- Saving a change that removes the user's last role, or grants a sensitive one, asks first with `confirmAction()`.
+- Tabler cards, light and dark, usable on a phone; every string through `gettext()`.
+
+## 11. Roadmap
 
 Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` once, when the parity gate passes. Each item is one PR into that branch.
 
@@ -252,7 +289,10 @@ Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` on
 | 5 | Predicate seam: `User` predicates and `isEnabledSecurity()` ask the service; admin bypass removed | 4, 10 | Parity fixtures green against the service |
 | 6 | Upgrade conversion, verification and column drop (§8) | 3, 5 | Upgrade tests from seeded V1 data, including abort on mismatch |
 | 6a | Hold the automatic upgrade for the cutover release; maintenance page; wizard runs backup, Owner, cutover (A13) | 6 | Auto-upgrade stops at the cutover; wizard path tested end to end |
-| 7 | User editor: role picker replaces the checkboxes; `roles.assign`, grant ceiling, no-self, second approver for sensitive, audit, notice | 4 | Cypress per rule |
+| 7 | User editor role picker and effective-access preview (§10.3); `roles.assign`, grant ceiling, no-self, audit, email notice | 4 | Cypress per rule |
+| 7a | Pending approvals: queue on the Users list and dashboard, approve and decline (§10.2) | 7 | Cypress: assigner and recipient cannot approve; pending grants nothing |
+| 7b | Users list Roles column and filter, user view roles and access history, read-only Roles page (§10.1) | 7 | Cypress; light, dark and phone pass |
+| 7c | Replace Legacy Administrator with Administrator plus chosen roles (§10.2) | 7, 10 | Cypress: the loss list matches the service |
 | 8 | Owner: flag, safeguards (§6), transfer flow | 3, 4 | Cypress and audit assertions |
 | 9 | Setup wizard rebuild (§9) | 8 | Fresh-install Cypress run |
 | 10 | Admin-only split (§4.3): classify every `isAdmin()` call; new permissions for export, communication log, private notes | 2 | Callers moved; negative tests |
@@ -261,10 +301,9 @@ Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` on
 
 After phase 1: church templates and role copies; then per-feature migration of call sites to `can()` with scopes and sensitivity (RFC F3), starting where the audits found the most exposure (exports, notes, custom fields).
 
-## 11. Still open
+## 12. Still open
 
 Asked one at a time as the design proceeds; recorded here until answered.
 
 - Church template catalog for the first release after phase 1.
-- RFC 0002 edits for A2, A3 and A8, and removal of its `EditSelf`-preservation text (§9 R4 Accept, T4, the chosen target architecture), which #11454 made moot.
 - RFC D1, D3, D4, D5, D7, D8 are untouched by phase 1 and stay open.
