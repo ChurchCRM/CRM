@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "ผู้ใช้ระบบปิดการยืนยันตัวตนสองขั้นตอน",
   "system user turned on two-factor authentication": "ผู้ใช้ระบบเปิดการยืนยันตัวตนสองขั้นตอน",
   "system user two-factor authentication disabled by admin": "ผู้ดูแลระบบปิดใช้งานการยืนยันตัวตนสองขั้นตอนของผู้ใช้ระบบ",
-  "volunteer service history": "ประวัติการรับใช้อาสาสมัคร"
+  "volunteer service history": "ประวัติการรับใช้อาสาสมัคร",
+  "%s by %s": "%s โดย %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "ป้อนรหัสผ่านของคุณหรือรหัสจากแอปยืนยันตัวตนเพื่อเปลี่ยนการยืนยันตัวตนแบบสองปัจจัย",
+  "Latest Notes": "บันทึกย่อล่าสุด",
+  "No notes have been added yet.": "ยังไม่มีการเพิ่มบันทึกย่อ",
+  "Start enrollment to get a QR code.": "เริ่มการลงทะเบียนเพื่อรับรหัส QR",
+  "That password or code is not right. Two-factor authentication is still on.": "รหัสผ่านหรือรหัสนั้นไม่ถูกต้อง การยืนยันตัวตนแบบสองปัจจัยยังคงเปิดอยู่",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "การยืนยันตัวตนแบบสองปัจจัยได้รับการตั้งค่าแล้ว ความลับของมันจะแสดงเฉพาะระหว่างการลงทะเบียนเท่านั้น"
 }

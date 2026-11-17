@@ -7041,5 +7041,12 @@
   "financial history": "السجل المالي",
   "notes": "ملاحظات",
   "recorded activities": "الأنشطة المسجَّلة",
-  "volunteer service history": "سجل الخدمة التطوعية"
+  "volunteer service history": "سجل الخدمة التطوعية",
+  "%s by %s": "%s بواسطة %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "أدخل كلمة المرور أو رمزًا من تطبيق المصادقة لتغيير المصادقة الثنائية.",
+  "Latest Notes": "أحدث الملاحظات",
+  "No notes have been added yet.": "لم تتم إضافة أي ملاحظات بعد.",
+  "Start enrollment to get a QR code.": "ابدأ التسجيل للحصول على رمز QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "كلمة المرور أو الرمز هذا غير صحيح. المصادقة الثنائية ما زالت مفعّلة.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "المصادقة الثنائية مفعّلة بالفعل. يظهر سرّها فقط أثناء التسجيل."
 }

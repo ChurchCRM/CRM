@@ -27895,3 +27895,31 @@ msgstr "tweestapsverificatie van systeemgebruiker uitgeschakeld door beheerder"
 msgid "volunteer service history"
 msgstr "geschiedenis van vrijwilligersdienst"
 
+#: 
+msgid "%s by %s"
+msgstr "%s door %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Voer uw wachtwoord of een code uit uw authenticator-app in om tweefactorauthenticatie te wijzigen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nieuwste notities"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Er zijn nog geen notities toegevoegd."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Start de inschrijving om een QR-code te krijgen."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Dat wachtwoord of die code is niet juist. Tweefactorauthenticatie staat nog steeds aan."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Tweefactorauthenticatie is al ingesteld. Het geheim wordt alleen tijdens de inschrijving getoond."
+

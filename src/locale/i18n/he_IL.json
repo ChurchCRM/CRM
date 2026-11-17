@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "משתמש מערכת כיבה אימות דו-שלבי",
   "system user turned on two-factor authentication": "משתמש מערכת הפעיל אימות דו-שלבי",
   "system user two-factor authentication disabled by admin": "האימות הדו-שלבי של משתמש המערכת הושבת על ידי מנהל",
-  "volunteer service history": "היסטוריית שירות התנדבותי"
+  "volunteer service history": "היסטוריית שירות התנדבותי",
+  "%s by %s": "%s מאת %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "הזן את הסיסמה שלך או קוד מאפליקציית האימות כדי לשנות את האימות הדו-שלבי.",
+  "Latest Notes": "ההערות האחרונות",
+  "No notes have been added yet.": "עדיין לא נוספו הערות.",
+  "Start enrollment to get a QR code.": "התחל את ההרשמה כדי לקבל קוד QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "הסיסמה או הקוד הזה אינם נכונים. האימות הדו-שלבי עדיין פעיל.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "האימות הדו-שלבי כבר מוגדר. הסוד שלו מוצג רק במהלך ההרשמה."
 }
