@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Weka Fursa Mpya ya Kujitolea"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Maelezo ya Muamala wa Kielektroniki"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Kiasi kisichoweza kukatwa hakiwezi kuwa kikubwa kuliko jumla ya kiasi."
 
@@ -9418,10 +9414,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Fuatilia ahadi za sadaka za familia na michango ya mifuko kwa mwaka wa fedha"
 
 #: 
-msgid "Transaction Details"
-msgstr "Maelezo ya Muamala"
-
-#: 
 msgid "Unmapped"
 msgstr "Haijaunganishwa"
 
@@ -9504,10 +9496,6 @@ msgstr "Tazama muhtasari wa ahadi za sadaka za familia na mgawanyo wa mifuko"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Tazama washiriki wa kikundi, majukumu, na sifa"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Tazama maelezo ya muamala kwa malipo ya ahadi ya sadaka"
 
 #: 
 msgid "We could not find the family you were looking for."

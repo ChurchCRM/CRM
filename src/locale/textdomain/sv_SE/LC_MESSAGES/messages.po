@@ -1557,10 +1557,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tilldela en ny frivillig möjlighet"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronisk överföring detaljer"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ej avdragsgiltig summa kan inte vara störer än slutsumman"
 
@@ -9509,10 +9505,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Spåra familjens givarlöften och fondinsatser per räkenskapsår"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaktionsdetaljer"
-
-#: 
 msgid "Unmapped"
 msgstr "Omappad"
 
@@ -9595,10 +9587,6 @@ msgstr "Visa familjens givarlöftessammanfattningar och fondfördelningar"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Visa gruppmedlemmar, roller och egenskaper"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Visa transaktionsdetaljer för en givarlöftesbetalning"
 
 #: 
 msgid "We could not find the family you were looking for."

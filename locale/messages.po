@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 01:45+0000\n"
+"POT-Creation-Date: 2026-11-17 04:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5660,9 +5660,6 @@ msgstr ""
 
 #. Context: countries
 msgid "El Salvador"
-msgstr ""
-
-msgid "Electronic Transaction Details"
 msgstr ""
 
 msgid "Email"
@@ -18344,9 +18341,6 @@ msgstr ""
 msgid "Track family pledges and fund contributions by fiscal year"
 msgstr ""
 
-msgid "Transaction Details"
-msgstr ""
-
 msgid "Translating missing strings to improve coverage"
 msgstr ""
 
@@ -19372,9 +19366,6 @@ msgid "View the event"
 msgstr ""
 
 msgid "View this email"
-msgstr ""
-
-msgid "View transaction details for a pledge payment"
 msgstr ""
 
 msgid "Visitors can sign up on your public registration form."

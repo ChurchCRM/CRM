@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "הקצה הזדמנות התנדבות חדשה"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "פרטי עסקה אלקטרונית"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -9420,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "מעקב אחר התחייבויות כספיות משפחתיות ותרומות לקרנות לפי שנת כספים"
 
 #: 
-msgid "Transaction Details"
-msgstr "פרטי עסקה"
-
-#: 
 msgid "Unmapped"
 msgstr "לא ממופה"
 
@@ -9506,10 +9498,6 @@ msgstr "צפייה בסיכומי התחייבויות כספיות משפחתי
 #: 
 msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "צפייה בפרטי עסקה עבור תשלום התחייבות כספית"
 
 #: 
 msgid "We could not find the family you were looking for."

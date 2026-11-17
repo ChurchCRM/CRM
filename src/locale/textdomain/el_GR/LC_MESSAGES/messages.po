@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Αναθέστε μια Νέα Εθελοντική Ευκαιρία"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Στοιχεία Ηλεκτρονικής Συναλλαγής"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Το μη εκπιπτόμενο ποσό δεν μπορεί να είναι μεγαλύτερο από το συνολικό ποσό."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Παρακολούθηση οικονομικών δεσμεύσεων οικογένειας και συνεισφορών ανά οικονομικό έτος"
 
 #: 
-msgid "Transaction Details"
-msgstr "Λεπτομέρειες συναλλαγής"
-
-#: 
 msgid "Unmapped"
 msgstr "Χωρίς αντιστοίχιση"
 
@@ -9508,10 +9500,6 @@ msgstr "Προβολή συνόψεων οικονομικών δεσμεύσε�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Προβολή μελών ομάδας, ρόλων και ιδιοτήτων"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Προβολή λεπτομερειών συναλλαγής για πληρωμή οικονομικής δέσμευσης"
 
 #: 
 msgid "We could not find the family you were looking for."

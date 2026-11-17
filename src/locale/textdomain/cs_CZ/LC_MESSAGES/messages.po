@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Přiřadit novou dobrovolnickou příležitost"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detaily elektronické transakce"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodečitatelná částka nesmí být vyšší než celková částka."
 
@@ -9420,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Sledovat rodinné závazky a příspěvky do fondů podle fiskálního roku"
 
 #: 
-msgid "Transaction Details"
-msgstr "Podrobnosti transakce"
-
-#: 
 msgid "Unmapped"
 msgstr "Nepřiřazeno"
 
@@ -9506,10 +9498,6 @@ msgstr "Zobrazit přehledy závazků rodin a alokace fondů"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobrazit členy skupiny, role a vlastnosti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Zobrazit podrobnosti transakce pro platbu závazku"
 
 #: 
 msgid "We could not find the family you were looking for."

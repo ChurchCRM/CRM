@@ -1535,10 +1535,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Przypisz Nowe Zadanie dla Wolontariusza"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Szczegóły Płatności Elektronicznej"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nie Odliczalna Wartość nie może przekraczać całości Kwoty"
 
@@ -9486,10 +9482,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Śledź zobowiązania rodzinne i wpłaty na fundusze według roku obrachunkowego"
 
 #: 
-msgid "Transaction Details"
-msgstr "Szczegóły transakcji"
-
-#: 
 msgid "Unmapped"
 msgstr "Nieprzypisane"
 
@@ -9572,10 +9564,6 @@ msgstr "Wyświetl podsumowania zobowiązań rodziny i alokacje funduszy"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Wyświetl członków grupy, role i właściwości"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Wyświetl szczegóły transakcji wpłaty zobowiązania"
 
 #: 
 msgid "We could not find the family you were looking for."
