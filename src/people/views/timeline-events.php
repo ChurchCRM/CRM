@@ -55,7 +55,7 @@ if (empty($timeline)) { ?>
         </button>
         <?php if ($timelineCounts['email'] > 0 && !empty($emailHistoryUrl ?? null)) : ?>
         <a class="btn btn-sm btn-link" id="timeline-email-history-link" href="<?= InputUtils::escapeAttribute($emailHistoryUrl) ?>">
-            <?= gettext('View all') ?>
+            <?= gettext('View all emails') ?>
         </a>
         <?php endif; ?>
     </div>
