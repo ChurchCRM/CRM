@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Χρησιμοποιήστε αυτό το κλειδί για την πιστοποίηση αιτήσεων API. Η αναδημιουργία θα ακυρώσει το τρέχον κλειδί.",
   "User Config": "Διαμόρφωση Χρήστη",
   "Version %s is available. Please upgrade your installation.": "Η έκδοση %s είναι διαθέσιμη. Παρακαλώ αναβαθμίστε την εγκατάστασή σας.",
-  "View All": "Προβολή Όλων",
   "Yellow": "Κίτρινο",
   "%d repeat event created successfully.": {
     "one": "Δημιουργήθηκε επιτυχώς %d επαναλαμβανόμενη εκδήλωση.",

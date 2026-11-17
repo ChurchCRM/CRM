@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "ใช้คีย์นี้เพื่อยืนยันตัวตนสำหรับคำขอ API การสร้างใหม่จะทำให้คีย์ปัจจุบันใช้งานไม่ได้",
   "User Config": "การกำหนดค่าผู้ใช้",
   "Version %s is available. Please upgrade your installation.": "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ",
-  "View All": "ดูทั้งหมด",
   "Yellow": "สีเหลือง",
   "%d repeat event created successfully.": {
     "other": "สร้างกิจกรรมซ้ำ %d รายการสำเร็จแล้ว"

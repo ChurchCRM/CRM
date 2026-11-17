@@ -11197,10 +11197,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Toleo %s linapatikana. Tafadhali sasisha usakinishaji wako."
 
 #: 
-msgid "View All"
-msgstr "Ona Yote"
-
-#: 
 msgid "Yellow"
 msgstr "Njano"
 

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Tumia ufunguo huu kuthibitisha maombi ya API. Kuzalisha upya kutabatilisha ufunguo wa sasa.",
   "User Config": "Usanidi wa Mtumiaji",
   "Version %s is available. Please upgrade your installation.": "Toleo %s linapatikana. Tafadhali sasisha usakinishaji wako.",
-  "View All": "Ona Yote",
   "Yellow": "Njano",
   "%d repeat event created successfully.": {
     "one": "Tukio %d la kurudia limeundwa kwa mafanikio.",

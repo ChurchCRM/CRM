@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "使用此金鑰驗證 API 請求，重新產生後目前的金鑰將失效。",
   "User Config": "使用者設定",
   "Version %s is available. Please upgrade your installation.": "版本 %s 已可用，請升級您的安裝。",
-  "View All": "檢視全部",
   "Yellow": "黃色",
   "%d repeat event created successfully.": {
     "other": "%d 個重複事件建立成功。"

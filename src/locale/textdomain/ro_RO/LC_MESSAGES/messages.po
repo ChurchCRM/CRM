@@ -11269,10 +11269,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
 
 #: 
-msgid "View All"
-msgstr "Vizualizați toate"
-
-#: 
 msgid "Yellow"
 msgstr "Galben"
 

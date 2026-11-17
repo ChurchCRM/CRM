@@ -11159,10 +11159,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "バージョン%sが利用可能です。インストールをアップグレードしてください。"
 
 #: 
-msgid "View All"
-msgstr "すべて表示"
-
-#: 
 msgid "Yellow"
 msgstr "黄"
 

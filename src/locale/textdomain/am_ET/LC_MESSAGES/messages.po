@@ -11206,10 +11206,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "ስሪት %s አለ። እባክዎ ጭነቱን ያዘምኑ።"
 
 #: 
-msgid "View All"
-msgstr "ሁሉንም ይመልከቱ"
-
-#: 
 msgid "Yellow"
 msgstr "ቢጫ"
 

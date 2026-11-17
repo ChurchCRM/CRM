@@ -2679,7 +2679,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "استخدم هذا المفتاح للمصادقة على طلبات واجهة برمجة التطبيقات. ستؤدي إعادة التوليد إلى إبطال المفتاح الحالي.",
   "User Config": "إعدادات المستخدم",
   "Version %s is available. Please upgrade your installation.": "الإصدار %s متاح. يُرجى تحديث التثبيت.",
-  "View All": "عرض الكل",
   "Yellow": "أصفر",
   "%d repeat event created successfully.": {
     "zero": "لم يتم إنشاء أي حدث متكرر.",

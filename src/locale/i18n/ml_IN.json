@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API അഭ്യർത്ഥനകൾ പ്രാമാണീകരിക്കാൻ ഈ കീ ഉപയോഗിക്കുക. പുനർനിർമ്മിക്കുന്നത് നിലവിലെ കീ അസാധുവാക്കും.",
   "User Config": "ഉപയോക്തൃ കോൺഫിഗ്",
   "Version %s is available. Please upgrade your installation.": "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക.",
-  "View All": "എല്ലാം കാണുക",
   "Yellow": "മഞ്ഞ",
   "%d repeat event created successfully.": {
     "one": "%d ആവർത്തന പരിപാടി വിജയകരമായി സൃഷ്ടിച്ചു.",

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API అభ్యర్థనలను ప్రమాణీకరించడానికి ఈ కీని ఉపయోగించండి. పునర్జనించడం ప్రస్తుత కీని చెల్లకుండా చేస్తుంది.",
   "User Config": "వినియోగదారు కాన్ఫిగ్",
   "Version %s is available. Please upgrade your installation.": "వెర్షన్ %s అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి.",
-  "View All": "అన్నీ చూడండి",
   "Yellow": "పసుపు రంగు",
   "%d repeat event created successfully.": {
     "one": "%d పునరావృత కార్యక్రమం విజయవంతంగా సృష్టించబడింది.",

@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Gunakan kunci ini untuk mengautentikasi permintaan API. Memperbarui akan membatalkan kunci saat ini.",
   "User Config": "Konfigurasi Pengguna",
   "Version %s is available. Please upgrade your installation.": "Versi %s tersedia. Silakan perbarui instalasi Anda.",
-  "View All": "Lihat Semua",
   "Yellow": "Kuning",
   "%d repeat event created successfully.": {
     "other": "%d acara berulang berhasil dibuat."

@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Használja ezt a kulcsot az API-kérések hitelesítéséhez. Az újragenerálás érvényteleníti az aktuális kulcsot.",
   "User Config": "Felhasználói konfiguráció",
   "Version %s is available. Please upgrade your installation.": "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést.",
-  "View All": "Összes megtekintése",
   "Yellow": "Sárga",
   "%d repeat event created successfully.": {
     "one": "%d ismétlődő esemény sikeresen létrehozva.",

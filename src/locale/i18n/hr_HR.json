@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Koristite ovaj ključ za autentifikaciju API zahtjeva. Regeneriranje će poništiti trenutni ključ.",
   "User Config": "Konfiguracija korisnika",
   "Version %s is available. Please upgrade your installation.": "Verzija %s je dostupna. Molim nadogradite vašu instalaciju.",
-  "View All": "Prikaži sve",
   "Yellow": "Žuta",
   "%d repeat event created successfully.": {
     "one": "%d ponavljajući događaj uspješno kreiran.",

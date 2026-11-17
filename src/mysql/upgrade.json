@@ -144,7 +144,7 @@
   },
   "current": {
     "versions": ["7.8.5"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.6-remove-event-notes.sql"],
     "dbVersion": "7.8.6"
   }
 }

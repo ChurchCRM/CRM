@@ -11187,10 +11187,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "버전 %s을(를) 사용할 수 있습니다. 설치를 업그레이드해 주세요."
 
 #: 
-msgid "View All"
-msgstr "모두 보기"
-
-#: 
 msgid "Yellow"
 msgstr "노랑"
 

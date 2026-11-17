@@ -5,9 +5,7 @@
   "Help Translate on GitHub": [
     "src/account/views/account.php:356"
   ],
-  "View all": [
-    "src/people/routes/map.php:88",
-    "src/people/views/person-list.php:192",
+  "View all emails": [
     "src/people/views/timeline-events.php:58"
   ]
 }

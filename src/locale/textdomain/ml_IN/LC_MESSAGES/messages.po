@@ -11168,10 +11168,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക."
 
 #: 
-msgid "View All"
-msgstr "എല്ലാം കാണുക"
-
-#: 
 msgid "Yellow"
 msgstr "മഞ്ഞ"
 
