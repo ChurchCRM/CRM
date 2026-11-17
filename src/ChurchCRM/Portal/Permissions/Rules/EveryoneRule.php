@@ -2,12 +2,12 @@
 
 namespace ChurchCRM\Portal\Permissions\Rules;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Portal\Permissions\BulkPortalRule;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalRuleGrant;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /** The baseline every signed-in person has (member sign-in design §8.3, source 1). */
@@ -64,7 +64,7 @@ final class EveryoneRule implements BulkPortalRule
             new PortalRuleGrant(CorePortalCapabilities::DEVICES_MANAGE, null, $label),
         ];
         if ($familyId > 0) {
-            $grants[] = new PortalRuleGrant(CorePortalCapabilities::FAMILY_VIEW, PortalScope::family($familyId), $label);
+            $grants[] = new PortalRuleGrant(CorePortalCapabilities::FAMILY_VIEW, Scope::family($familyId), $label);
         }
         $grants[] = new PortalRuleGrant(CorePortalCapabilities::CALENDAR_VIEW, null, $label);
         $grants[] = new PortalRuleGrant(CorePortalCapabilities::VOLUNTEER_USE, null, $label);

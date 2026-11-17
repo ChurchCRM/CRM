@@ -2,17 +2,17 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authorization\EffectiveGrant;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PortalGrantQuery;
 use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Portal\Auth\PortalSignInRules;
 use ChurchCRM\Portal\Permissions\BulkPortalRule;
-use ChurchCRM\Portal\Permissions\EffectiveGrant;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapability;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
 use ChurchCRM\Portal\Permissions\PortalRule;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Portal\Permissions\Rules\EveryoneRule;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -130,7 +130,7 @@ final class PortalPermissionsService
             $scopes = [];
             foreach ($people as $person) {
                 foreach ($byPerson[(int) $person->getId()] as $grant) {
-                    $scopes[] = new PortalScope($grant['scope']['type'], $grant['scope']['id']);
+                    $scopes[] = new Scope($grant['scope']['type'], $grant['scope']['id']);
                 }
             }
             $scopeNames = PortalGrantService::scopeNames($scopes);
@@ -221,7 +221,7 @@ final class PortalPermissionsService
         $givers = [];
         $given = [];
         foreach ($this->givenGrantsQuery()->find() as $row) {
-            $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
+            $scope = new Scope((string) $row->getScopeType(), (int) $row->getScopeId());
             if (isset($inPopulation[(int) $row->getPersonId()]) && PortalAuthorizationService::fitsCatalog((string) $row->getCapability(), $scope)) {
                 $given[] = [$row, $scope];
             }
