@@ -51,6 +51,16 @@ Still needs a specific yes, every time:
 - A push to `master` or another protected branch, a push to someone else's branch, or a plain `--force`
 - Anything outside the assigned task's scope — a new issue, an unrelated fix, a scope expansion. Stop and ask there; that is where the decision is.
 
+## Worker run protocol
+
+Applies to any agent implementing an assigned issue, whatever the tool.
+
+- The issue is the spec. A handoff names the issue, the tool, and the model/effort tier — nothing else needs restating. If an issue lacks acceptance criteria or scope, that is a defect in the issue: fix the issue, not a side prompt.
+- First action: assign the issue to DawoudIO — assignment is the in-progress signal. If it is already assigned to anyone else, do not start and do not reassign; report and move on.
+- The run never waits for the maintainer mid-task: no step needs approval, review, or a reply beyond the task approval above. Blockers are written into the PR body, not sent back as questions.
+- Flip the PR to Ready yourself when the work is finished and CI is green — a finished PR left in draft is a defect, and the maintainer's only click is merge. If the session ends with CI still running, flip it at the next check that shows green.
+- PR body for user-facing changes includes a task-flow walkthrough: the task a staff member or user is trying to do, the exact steps with this change, and where the flow can snag. The maintainer reviews by trying the task. (Verification itself is Cypress E2E only — see `cypress-testing.md`.)
+
 ## Sessions without a toolchain
 
 Mobile and cloud app sessions have no PHP, Node, Docker, database, or browser stack running. That changes where validation happens, never whether work proceeds:
