@@ -61,7 +61,7 @@ unset($setting);
     </div>
 </div>
 
-<div class="card mt-3" id="tax-signature-card">
+<div class="card mt-3" id="tax-signature-card" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
     <div class="card-header"><h3 class="card-title"><?= gettext('Tax Signature') ?></h3></div>
     <div class="card-body">
         <p class="form-text"><?= gettext('Charity name, address, registration number, and the Canadian receipt switch are edited under Finance, Statement Settings. This page stores the signature image those receipts print.') ?></p>

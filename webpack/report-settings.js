@@ -49,6 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
     signatureError.textContent =
       xhr.responseJSON?.message || xhr.responseJSON?.error || t("Upload failed. Please check the file and try again.");
   };
+  const signatureCsrf = signatureFile?.closest("#tax-signature-card")?.dataset.csrfToken ?? "";
+  const signatureRequest = (options) =>
+    window.CRM.AdminAPIRequest({
+      ...options,
+      headers: { "X-CSRF-Token": signatureCsrf },
+    });
   if (signatureFile) {
     window.CRM.AdminAPIRequest({ method: "GET", path: "system/tax-signature" })
       .done(signatureState)
@@ -60,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const reader = new FileReader();
       reader.onload = () => {
         signatureFile.disabled = true;
-        window.CRM.AdminAPIRequest({
+        signatureRequest({
           method: "POST",
           path: "system/tax-signature",
           data: JSON.stringify({ imgBase64: reader.result }),
@@ -83,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         t("Remove the stored tax signature? Canadian receipts require a signature on file."),
         () => {
           signatureError.textContent = "";
-          window.CRM.AdminAPIRequest({ method: "DELETE", path: "system/tax-signature" })
+          signatureRequest({ method: "DELETE", path: "system/tax-signature" })
             .done(signatureState)
             .fail(signatureFailure);
         },
