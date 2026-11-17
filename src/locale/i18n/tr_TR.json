@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API isteklerini doğrulamak için bu anahtarı kullanın. Yeniden oluşturma mevcut anahtarı geçersiz kılar.",
   "User Config": "Kullanıcı Yapılandırması",
   "Version %s is available. Please upgrade your installation.": "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin.",
-  "View All": "Tümünü Görüntüle",
   "Yellow": "Sarı",
   "%d repeat event created successfully.": {
     "one": "%d tekrar eden etkinlik başarıyla oluşturuldu.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Onları bir pozisyon için yetkilendirin.",
   "Reactivate": "Yeniden etkinleştir",
   "Read the theme authoring guide": "Tema yazım kılavuzunu okuyun",
-  "Recent Emails": "Son E-postalar",
   "Recipient": "Alıcı",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Alıcı sayısı (%d), gönderim başına izin verilen en yüksek sayıyı (%d) aşıyor",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Alıcılar e-posta adresi olarak değil, personId ve familyId olarak verilmelidir",

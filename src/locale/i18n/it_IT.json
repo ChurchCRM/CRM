@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Utilizzare questa chiave per autenticare le richieste API. La rigenerazione invaliderà la chiave corrente.",
   "User Config": "Configurazione utente",
   "Version %s is available. Please upgrade your installation.": "La versione %s è disponibile. Aggiornare l'installazione.",
-  "View All": "Visualizza tutto",
   "Yellow": "Giallo",
   "%d repeat event created successfully.": {
     "one": "%d evento ricorrente creato con successo.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Qualificali per un incarico.",
   "Reactivate": "Riattiva",
   "Read the theme authoring guide": "Leggi la guida alla creazione dei temi",
-  "Recent Emails": "Email recenti",
   "Recipient": "Destinatario",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Il numero di destinatari (%d) supera il massimo consentito per invio (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "I destinatari devono essere indicati come personIds e familyIds, non come indirizzi email",

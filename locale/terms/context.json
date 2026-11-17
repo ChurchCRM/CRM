@@ -4,5 +4,8 @@
   ],
   "Help Translate on GitHub": [
     "src/account/views/account.php:356"
+  ],
+  "View all emails": [
+    "src/people/views/timeline-events.php:58"
   ]
 }

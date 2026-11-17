@@ -11288,10 +11288,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Version %s är tillgänglig. Vänligen uppgradera din installation."
 
 #: 
-msgid "View All"
-msgstr "Visa alla"
-
-#: 
 msgid "Yellow"
 msgstr "Gul"
 
@@ -20417,10 +20413,6 @@ msgstr "Återaktivera"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Läs guiden för att skapa teman"
-
-#: 
-msgid "Recent Emails"
-msgstr "Senaste e-postmeddelanden"
 
 #: 
 msgid "Recipient"

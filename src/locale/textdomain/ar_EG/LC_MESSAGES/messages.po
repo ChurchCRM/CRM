@@ -11233,10 +11233,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "الإصدار %s متاح. يُرجى تحديث التثبيت."
 
 #: 
-msgid "View All"
-msgstr "عرض الكل"
-
-#: 
 msgid "Yellow"
 msgstr "أصفر"
 
@@ -20422,10 +20418,6 @@ msgstr "إعادة التفعيل"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "اقرأ دليل تأليف السمات"
-
-#: 
-msgid "Recent Emails"
-msgstr "الرسائل الأخيرة"
 
 #: 
 msgid "Recipient"

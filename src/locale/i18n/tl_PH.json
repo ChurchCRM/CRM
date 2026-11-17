@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Gamitin ang key na ito upang i-authenticate ang mga kahilingan ng API. Ang pag-regenerate ay magpapawalang-bisa ng kasalukuyang key.",
   "User Config": "Pagsasaayos ng Gumagamit",
   "Version %s is available. Please upgrade your installation.": "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation.",
-  "View All": "Tingnan Lahat",
   "Yellow": "Dilaw",
   "%d repeat event created successfully.": {
     "one": "%d paulit-ulit na kaganapan ay matagumpay na nalilikha.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Gawin silang kuwalipikado para sa isang posisyon.",
   "Reactivate": "I-reactivate",
   "Read the theme authoring guide": "Basahin ang gabay sa paggawa ng tema",
-  "Recent Emails": "Kamakailang Mga Email",
   "Recipient": "Tatanggap",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Lumampas ang bilang ng tatanggap (%d) sa pinakamataas na pinapayagan sa bawat pagpapadala (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Dapat ibigay ang mga tatanggap bilang personIds at familyIds, hindi bilang mga email address",

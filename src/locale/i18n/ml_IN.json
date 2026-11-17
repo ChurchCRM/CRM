@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API അഭ്യർത്ഥനകൾ പ്രാമാണീകരിക്കാൻ ഈ കീ ഉപയോഗിക്കുക. പുനർനിർമ്മിക്കുന്നത് നിലവിലെ കീ അസാധുവാക്കും.",
   "User Config": "ഉപയോക്തൃ കോൺഫിഗ്",
   "Version %s is available. Please upgrade your installation.": "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക.",
-  "View All": "എല്ലാം കാണുക",
   "Yellow": "മഞ്ഞ",
   "%d repeat event created successfully.": {
     "one": "%d ആവർത്തന പരിപാടി വിജയകരമായി സൃഷ്ടിച്ചു.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "അവരെ ഒരു സ്ഥാനത്തിന് യോഗ്യരാക്കുക.",
   "Reactivate": "വീണ്ടും സജീവമാക്കുക",
   "Read the theme authoring guide": "തീം രചനാ ഗൈഡ് വായിക്കുക",
-  "Recent Emails": "സമീപകാല ഇമെയിലുകൾ",
   "Recipient": "സ്വീകർത്താവ്",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "സ്വീകർത്താക്കളുടെ എണ്ണം (%d) ഒരു തവണ അയയ്ക്കാവുന്ന പരമാവധിയെ (%d) കവിയുന്നു",
   "Recipients must be given as personIds and familyIds, not as email addresses": "സ്വീകർത്താക്കളെ ഇമെയിൽ വിലാസങ്ങളായല്ല, personIds, familyIds എന്നിവയായി നൽകണം",

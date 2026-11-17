@@ -2661,7 +2661,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Використовуйте цей ключ для автентифікації API-запитів. Оновлення ключа зробить поточний ключ недійсним.",
   "User Config": "Конфігурація користувача",
   "Version %s is available. Please upgrade your installation.": "Версія %s доступна. Будь ласка, оновіть вашу інсталяцію.",
-  "View All": "Переглянути все",
   "Yellow": "Жовтий",
   "%d repeat event created successfully.": {
     "one": "%d повторювана подія успішно створена.",
@@ -5000,7 +4999,6 @@
   "Qualify them for a position.": "Надайте їм кваліфікацію для позиції.",
   "Reactivate": "Активувати знову",
   "Read the theme authoring guide": "Прочитати посібник зі створення тем",
-  "Recent Emails": "Нещодавні листи",
   "Recipient": "Отримувач",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Кількість отримувачів (%d) перевищує максимум на одне розсилання (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Отримувачі мають задаватися як personIds і familyIds, а не як адреси ел. пошти",
