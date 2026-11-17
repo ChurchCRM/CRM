@@ -1121,10 +1121,11 @@ window.CRM.dashboard = {
       const familyName = $btn.data("family_name");
       window.CRM.confirmAction(
         i18next.t("Delete this family?"),
-        i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
-          " <b>" +
+        "<p class='fw-bold'>" +
           window.CRM.escapeHtml(String(familyName || "")) +
-          "</b><br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
+          "</p>" +
+          i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
+          "<br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
           i18next.t("Also delete family members") +
           "</label>",
         () => {
