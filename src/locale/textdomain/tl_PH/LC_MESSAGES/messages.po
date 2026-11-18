@@ -833,14 +833,6 @@ msgid "Assign"
 msgstr "Italaga"
 
 #: 
-msgid "Date Updated"
-msgstr "Petsa ng Pag-update"
-
-#: 
-msgid "Updated By"
-msgstr "Na-update Ni"
-
-#: 
 msgid "Since"
 msgstr "Mula noong"
 
@@ -1345,10 +1337,6 @@ msgid "Updated"
 msgstr "Na-update"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(ang aksyong ito ay hindi na mababawi)"
-
-#: 
 msgid "Note Editor"
 msgstr "Editor ng Tala"
 
@@ -1573,10 +1561,6 @@ msgid "Warning"
 msgstr "Babala"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Ang uri ng katangiang ito ay ginagamit pa ng kahit isang katangian."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Pakikumpirma ang pagbubura ng Uri ng Katangiang ito"
 
@@ -1602,44 +1586,8 @@ msgid "Please confirm deletion of"
 msgstr "Pakikumpirma ang pagbubura ng"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Paumanhin, may mga rekord ng mga donasyon mula sa pamilyang ito. Ang pamilyang ito ay hindi maaaring burahin."
-
-#: 
-msgid "Return to Family View"
-msgstr "Bumalik sa View ng Pamilya"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "BABALA: Ang pamilyang ito ay may mga rekord ng mga donasyon at HINDI maaaring burahin hanggang ang mga donasyong ito ay maiugnay sa ibang pamilya."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "BABALA: Ang aksyong ito ay hindi na mababawi at maaaring may legal na implikasyon!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "KASALUKUYANG PAMILYA NA MAY MGA DONASYON"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Tandaan: Mabubura rin nito ang lahat ng Tala na nauugnay sa rekord ng Pamilyang ito."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Burahin ang Rekord ng Pamilya LAMANG"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Burahin ang Rekord ng Pamilya AT ang mga Miyembro ng Pamilya"
-
-#: 
 msgid "Listing"
 msgstr "Listahan"
-
-#: 
-msgid "My User Settings"
-msgstr "Aking mga Setting ng User"
 
 #: 
 msgid "Variable name"
@@ -6704,10 +6652,6 @@ msgid "Add Property Type"
 msgstr "Magdagdag ng Uri ng Katangian"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Magdagdag ng Iyong Unang Uri ng Katangian"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Sa pagbubura ng larangang ito, mawawala ang lahat ng datos ng miyembro ng grupo na itinalaga para sa larangang ito nang hindi na mababawi!"
 
@@ -6726,10 +6670,6 @@ msgstr "Naka-check Out"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Kasalukuyang Taong Piskal"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Burahin (magbubura ng lahat ng nauugnay na rekord)"
 
 #: 
 msgid "Edit Property Type"
@@ -6780,10 +6720,6 @@ msgid "No property types found"
 msgstr "Walang nakitang mga uri ng katangian"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Bilang ng mga rekord na gumagamit ng uri ng katangiang ito"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Opsyonal na detalyadong paglalarawan ng uri ng katangiang ito"
 
@@ -6814,10 +6750,6 @@ msgstr "Piliin ang uri ng rekord na inilalapat ng katangiang ito"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Subaybayan at pamahalaan ang mga pangakong pangako ayon sa pamilya at pondo"
-
-#: 
-msgid "View Properties"
-msgstr "Tingnan ang mga Katangian"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7795,18 +7727,6 @@ msgstr "Ang URL ng WebDAV Endpoint ay kinakailangan."
 #: 
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Sigurado ka bang gusto mong permanenteng burahin ang rekord ng pangako na ito?"
-
-#: 
-msgid "Cancel and Return to Family View"
-msgstr "Kanselahin at Bumalik sa View ng Pamilya"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Kung burahin mo ang uri na ito, aalisin mo rin ang lahat ng mga katangian na gumagamit nito at mawawala ang anumang kaukulang mga takda ng katangian."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Ilipat ang mga Donasyon sa Napiling Pamilya"
 
 #: 
 msgid "Calendar not found"
@@ -8911,10 +8831,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Pamahalaan ang mga pagkakataon bilang boluntaryo at italaga ang mga miyembro"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Pamahalaan ang iyong mga personal na kagustuhan at mga setting ng account"
-
-#: 
 msgid "Map cart items"
 msgstr "I-mapa ang mga item ng cart"
 
@@ -8949,10 +8865,6 @@ msgstr "Ilipat sa Grupo"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Lilipat mula sa isang kasalukuyang ChurchCRM o ChurchInfo installation? I-upload ang iyong backup file at awtomatiko naming ire-restore ang iyong datos."
-
-#: 
-msgid "My Settings"
-msgstr "Aking mga Setting"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -11044,10 +10956,6 @@ msgid "Manage 2FA"
 msgstr "Pamahalaan ang 2FA"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Pamahalaan ang mga karagdagang kagustuhan tulad ng mga delimiter ng email at mga opsyon sa display"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Pamahalaan ang iyong API key para sa mga external na integrasyon"
 
@@ -11714,14 +11622,6 @@ msgid "e.g., 40.7128"
 msgstr "hal., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Nagkaroon ng error habang tinatanggal ang pamilya."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Nagkaroon ng error habang inililipat ang mga donasyon."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Kailangan ng hindi bababa sa isang miyembro ng pamilya"
 
@@ -11740,10 +11640,6 @@ msgstr "Nabigo ang pagtanggal"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Ang direksyon ay dapat na \"up\" o \"down\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Nabigo ang paglipat ng mga donasyon."
 
 #: 
 msgid "Finance permission required"
@@ -11780,10 +11676,6 @@ msgstr "Hindi nahanap ang membership"
 #: 
 msgid "Password successfully changed for"
 msgstr "Matagumpay na nabago ang password para sa"
-
-#: 
-msgid "Please select a target family."
-msgstr "Mangyaring pumili ng target na pamilya."
 
 #: 
 msgid "Target family not found"
@@ -15355,14 +15247,6 @@ msgid "Output Method"
 msgstr "Paraan ng Output"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Mangyaring kumpirmahin ang pagbubura ng rekord ng pamilyang ito"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Mangyaring pumili ng ibang pamilya upang iugnay ang mga donasyong ito"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Slip ng Remittance"
 
@@ -15665,18 +15549,6 @@ msgstr "Magdagdag ng Klase sa Sunday School"
 #: 
 msgid "Delete this family?"
 msgstr "Burahin ang pamilyang ito?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Gusto mo bang burahin ang pamilyang ito? Dadalhin ka sa isang pahina upang pumili kung ano ang ibibura. Hindi na ito mababago."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Kumpirmasyon ng Pagbubura ng Pamilya"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Kumpirmasyon ng Pagbubura ng Uri ng Ari-arian"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 00:43+0000\n"
+"POT-Creation-Date: 2026-11-18 01:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -265,6 +265,10 @@ msgid "%d queued"
 msgstr ""
 
 #, php-format
+msgid "%d releases available since your installed version."
+msgstr ""
+
+#, php-format
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] ""
@@ -416,9 +420,6 @@ msgid "(not set)"
 msgstr ""
 
 msgid "(optional — leave blank to include all roles)"
-msgstr ""
-
-msgid "(this action cannot be undone)"
 msgstr ""
 
 msgctxt "one"
@@ -749,6 +750,9 @@ msgid "A string value is required"
 msgstr ""
 
 msgid "A substitute has already been proposed for this assignment"
+msgstr ""
+
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
 msgstr ""
 
 msgid "A system update is available. Please upgrade your installation."
@@ -1107,9 +1111,6 @@ msgid "Add Your First Family"
 msgstr ""
 
 msgid "Add Your First Property"
-msgstr ""
-
-msgid "Add Your First Property Type"
 msgstr ""
 
 msgid "Add a Person"
@@ -1638,6 +1639,9 @@ msgstr ""
 msgid "Already in a family"
 msgstr ""
 
+msgid "Also delete family members"
+msgstr ""
+
 msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr ""
 
@@ -1710,12 +1714,6 @@ msgid "An error occurred processing the plugin request"
 msgstr ""
 
 msgid "An error occurred while deleting files."
-msgstr ""
-
-msgid "An error occurred while deleting the family."
-msgstr ""
-
-msgid "An error occurred while moving donations."
 msgstr ""
 
 msgid "An error occurred while rendering the error page."
@@ -2016,6 +2014,9 @@ msgid "Ask your host to move the database to a supported version, then try again
 msgstr ""
 
 msgid "Ask your host to move the database to a supported version."
+msgstr ""
+
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
 msgstr ""
 
 msgid "Asked — your coordinator will confirm it."
@@ -2763,9 +2764,6 @@ msgstr ""
 msgid "CSV Individual Records"
 msgstr ""
 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr ""
-
 msgid "Calendar"
 msgstr ""
 
@@ -2852,9 +2850,6 @@ msgid "Canary Islands (islas Canarias)"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
-
-msgid "Cancel and Return to Family View"
 msgstr ""
 
 msgid "Cancel assignment"
@@ -4691,9 +4686,6 @@ msgstr ""
 msgid "Date Start"
 msgstr ""
 
-msgid "Date Updated"
-msgstr ""
-
 msgid "Date Without Year"
 msgstr ""
 
@@ -4907,9 +4899,6 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "Delete (will delete all associated records)"
-msgstr ""
-
 msgctxt "one"
 msgid "Delete ({{count}})"
 msgstr ""
@@ -4943,12 +4932,6 @@ msgid "Delete Event Type"
 msgstr ""
 
 msgid "Delete Family"
-msgstr ""
-
-msgid "Delete Family Record AND Family Members"
-msgstr ""
-
-msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Fund"
@@ -5086,6 +5069,9 @@ msgid "Deleting a ministry requires volunteer manager access"
 msgstr ""
 
 msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr ""
+
+msgid "Deleting it will also remove"
 msgstr ""
 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
@@ -5327,9 +5313,6 @@ msgid "Do not show"
 msgstr ""
 
 msgid "Do you have any suggestions for us?"
-msgstr ""
-
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
 msgstr ""
 
 msgid "Do you want to delete this person?  This cannot be undone."
@@ -6892,9 +6875,6 @@ msgstr ""
 msgid "Failed to move custom field"
 msgstr ""
 
-msgid "Failed to move donations."
-msgstr ""
-
 msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
 msgstr ""
 
@@ -7108,9 +7088,6 @@ msgid "Family Custom List Options Editor"
 msgstr ""
 
 msgid "Family Data Verified"
-msgstr ""
-
-msgid "Family Delete Confirmation"
 msgstr ""
 
 msgid "Family Editor"
@@ -8759,9 +8736,6 @@ msgstr ""
 msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
 msgstr ""
 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr ""
-
 msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
 msgstr ""
 
@@ -9044,6 +9018,10 @@ msgid "Installed Software Version"
 msgstr ""
 
 msgid "Installed on Server"
+msgstr ""
+
+#, php-format
+msgid "Installed version: %s"
 msgstr ""
 
 msgid "Installing…"
@@ -10191,9 +10169,6 @@ msgstr ""
 msgid "Manage a team"
 msgstr ""
 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr ""
-
 msgid "Manage all ministries"
 msgstr ""
 
@@ -10237,9 +10212,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr ""
 
 msgid "Manage your API key for external integrations"
-msgstr ""
-
-msgid "Manage your personal preferences and account settings"
 msgstr ""
 
 #, php-format
@@ -10816,9 +10788,6 @@ msgstr ""
 msgid "Move"
 msgstr ""
 
-msgid "Move Donations to Selected Family"
-msgstr ""
-
 msgid "Move Members"
 msgstr ""
 
@@ -10911,13 +10880,7 @@ msgstr ""
 msgid "My Giving"
 msgstr ""
 
-msgid "My Settings"
-msgstr ""
-
 msgid "My Teams"
-msgstr ""
-
-msgid "My User Settings"
 msgstr ""
 
 msgid "My ministries and teams"
@@ -11999,9 +11962,6 @@ msgstr ""
 msgid "Note text is required"
 msgstr ""
 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr ""
-
 msgid "Noted in the family timeline"
 msgstr ""
 
@@ -12090,9 +12050,6 @@ msgid "Number of lines to display"
 msgstr ""
 
 msgid "Number of months since becoming a friend"
-msgstr ""
-
-msgid "Number of records using this property type"
 msgstr ""
 
 msgid "Number too large. Must be between -2147483648 and 2147483647"
@@ -13279,9 +13236,6 @@ msgstr ""
 msgid "Please confirm deletion of this Property Type"
 msgstr ""
 
-msgid "Please confirm deletion of this family record"
-msgstr ""
-
 msgid "Please confirm deletion of this group record"
 msgstr ""
 
@@ -13393,12 +13347,6 @@ msgid "Please select a person to create a user account for."
 msgstr ""
 
 msgid "Please select a role."
-msgstr ""
-
-msgid "Please select a target family."
-msgstr ""
-
-msgid "Please select another family with whom to associate these donations"
 msgstr ""
 
 msgid "Please select at least one buyer to generate statements."
@@ -13753,6 +13701,9 @@ msgstr ""
 msgid "Properties"
 msgstr ""
 
+msgid "Properties / Assignments"
+msgstr ""
+
 msgid "Properties Form"
 msgstr ""
 
@@ -13768,9 +13719,6 @@ msgstr ""
 msgid "Property Type"
 msgstr ""
 
-msgid "Property Type Delete Confirmation"
-msgstr ""
-
 msgid "Property Type List"
 msgstr ""
 
@@ -13780,10 +13728,16 @@ msgstr ""
 msgid "Property assignment not found."
 msgstr ""
 
+msgid "Property deleted"
+msgstr ""
+
 msgid "Property deleted successfully."
 msgstr ""
 
 msgid "Property not found"
+msgstr ""
+
+msgid "Property type deleted"
 msgstr ""
 
 msgid "Property type not found"
@@ -14152,6 +14106,12 @@ msgstr ""
 msgid "Release Notes"
 msgstr ""
 
+msgid "Release notes are unavailable right now."
+msgstr ""
+
+msgid "Releases"
+msgstr ""
+
 msgid "Reload"
 msgstr ""
 
@@ -14194,6 +14154,9 @@ msgid "Remote backup failed. Check server logs for details."
 msgstr ""
 
 msgid "Remove"
+msgstr ""
+
+msgid "Remove 2FA requirement"
 msgstr ""
 
 msgid "Remove All from Cart"
@@ -14340,6 +14303,9 @@ msgstr ""
 msgid "Request failed ({{status}})"
 msgstr ""
 
+msgid "Require 2FA"
+msgstr ""
+
 msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
 msgstr ""
 
@@ -14383,6 +14349,9 @@ msgid "Reset Failed Logins"
 msgstr ""
 
 msgid "Reset Filters"
+msgstr ""
+
+msgid "Reset Options"
 msgstr ""
 
 msgid "Reset Password"
@@ -14476,9 +14445,6 @@ msgid "Return to Event Types"
 msgstr ""
 
 msgid "Return to Families"
-msgstr ""
-
-msgid "Return to Family View"
 msgstr ""
 
 msgid "Return to Fundraiser Dashboard"
@@ -14853,6 +14819,9 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
+msgid "Say whether 2FA is required."
+msgstr ""
+
 msgid "Say why sign-in is being disabled."
 msgstr ""
 
@@ -15057,6 +15026,9 @@ msgid "Security Recommendation"
 msgstr ""
 
 msgid "Security token missing. Please refresh the page."
+msgstr ""
+
+msgid "Security updates and support are provided for the latest version only."
 msgstr ""
 
 msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
@@ -15508,6 +15480,9 @@ msgid "Set up email first."
 msgstr ""
 
 msgid "Set up now"
+msgstr ""
+
+msgid "Set up two-factor authentication to continue."
 msgstr ""
 
 msgid "Set your church name, address, and contact details"
@@ -15970,9 +15945,6 @@ msgid "Something needs changing"
 msgstr ""
 
 msgid "Something went wrong"
-msgstr ""
-
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr ""
 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -18001,9 +17973,6 @@ msgstr ""
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
 msgstr ""
 
-msgid "This property type is still being used by at least one property."
-msgstr ""
-
 msgid "This removes the login only. The person and their notes stay."
 msgstr ""
 
@@ -18069,6 +18038,9 @@ msgstr ""
 msgid "This user must set a new password the next time they sign in."
 msgstr ""
 
+msgid "This user must set up 2FA"
+msgstr ""
+
 msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
 msgstr ""
 
@@ -18088,6 +18060,9 @@ msgid "This will create a group-specific properties table for this group.  You s
 msgstr ""
 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr ""
+
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
 msgstr ""
 
 msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
@@ -18873,9 +18848,6 @@ msgstr ""
 msgid "Updated"
 msgstr ""
 
-msgid "Updated By"
-msgstr ""
-
 msgid "Updated Families"
 msgstr ""
 
@@ -19280,6 +19252,10 @@ msgid "Version"
 msgstr ""
 
 #, php-format
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr ""
+
+#, php-format
 msgid "Version %s is available. Please upgrade your installation."
 msgstr ""
 
@@ -19356,9 +19332,6 @@ msgid "View Pledge"
 msgstr ""
 
 msgid "View Profile"
-msgstr ""
-
-msgid "View Properties"
 msgstr ""
 
 msgid "View User"
@@ -19637,12 +19610,6 @@ msgid "Voting Members — Review List"
 msgstr ""
 
 msgid "W"
-msgstr ""
-
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr ""
-
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr ""
 
 msgid "WNW"
@@ -20337,6 +20304,9 @@ msgstr ""
 msgid "You're up to date!"
 msgstr ""
 
+msgid "You're up to date."
+msgstr ""
+
 msgid "Younger than the minimum age"
 msgstr ""
 
@@ -20641,6 +20611,9 @@ msgstr ""
 msgid "complete"
 msgstr ""
 
+msgid "currently have properties of this type."
+msgstr ""
+
 msgid "data for member"
 msgstr ""
 
@@ -20753,6 +20726,9 @@ msgid "goalAmount must be a non-negative number"
 msgstr ""
 
 msgid "goalAmount must be non-negative"
+msgstr ""
+
+msgid "groups"
 msgstr ""
 
 msgid "has not served yet"
@@ -20969,6 +20945,9 @@ msgid "positionIds must be a list of position ids"
 msgstr ""
 
 msgid "properties"
+msgstr ""
+
+msgid "properties and all their assignments so nothing is left hanging."
 msgstr ""
 
 msgid "recipient"
