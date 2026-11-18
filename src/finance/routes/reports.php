@@ -60,10 +60,13 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports/year-end.php', [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Year-End Giving'),
-            'sPageSubtitle' => gettext('Review the year, then download giving statements.'),
+            'sPageSubtitle' => gettext('Check the year, set up the statement, then download.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Finance'), '/finance/'],
                 [gettext('Year-End Giving')],
+            ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
             ]),
             'years' => $years,
             'overview' => YearEndGivingService::overview($year),

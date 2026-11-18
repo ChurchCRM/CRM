@@ -72,6 +72,10 @@ $app->get('/statements/settings', function (Request $request, Response $response
             [gettext('Year-End Giving'), '/finance/reports/year-end'],
             [gettext('Statement Settings')],
         ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Giving Statements'), 'url' => '/finance/reports/giving-statements', 'icon' => 'fa-file-invoice-dollar', 'adminOnly' => false],
+            ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
+        ]),
         'sections'     => $sections,
     ];
 

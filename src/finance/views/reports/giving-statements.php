@@ -148,6 +148,12 @@ $freshReview = empty($query['reviewed']) && ($query['review'] ?? '') === '1';
 
 <form method="get" action="<?= InputUtils::escapeAttribute($base) ?>" id="givingReportForm" data-preview-url="<?= InputUtils::escapeAttribute($base . '/preview') ?>">
     <input type="hidden" name="preview" value="1">
+    <?php $narrowOpen = $summary === null || $summary['gifts'] === 0; ?>
+    <?php if (!$narrowOpen) : ?>
+    <p><button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#narrowList" aria-expanded="false" aria-controls="narrowList" id="narrowListToggle"><i class="fa-solid fa-sliders me-1"></i><?= gettext('Narrow the list') ?></button>
+    <span class="text-body-secondary small ms-2"><?= InputUtils::escapeHTML(DateTimeUtils::formatDate($criteria['dateStart'])) ?> – <?= InputUtils::escapeHTML(DateTimeUtils::formatDate($criteria['dateEnd'])) ?></span></p>
+    <?php endif; ?>
+    <div id="narrowList" class="collapse <?= $narrowOpen ? 'show' : '' ?>">
     <div class="card mb-3">
         <div class="card-header"><h3 class="card-title"><?= gettext('Filters') ?></h3></div>
         <div class="card-body">
@@ -254,6 +260,7 @@ $freshReview = empty($query['reviewed']) && ($query['review'] ?? '') === '1';
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="d-flex gap-2">
