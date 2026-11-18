@@ -15,6 +15,7 @@ use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -512,7 +513,7 @@ foreach (NotificationService::getNotifications() as $notification) {
           </div>
         </div>
         <?php if ($notification->getDismissSettingKey()): ?>
-          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" aria-label="<?= gettext('Dismiss') ?>"></button>
+          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
         <?php endif; ?>
       </div>
 <?php } ?>

@@ -5109,11 +5109,6 @@ msgstr "查看人員頁面"
 
 #: 
 #, fuzzy
-msgid "Family has no emails to use"
-msgstr "家庭沒有電子郵件可使用"
-
-#: 
-#, fuzzy
 msgid "Deleted"
 msgstr "已刪除"
 
@@ -11470,14 +11465,6 @@ msgstr "簽到操作者"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "未啟用的活動禁止簽到，請在活動儀表板中啟用活動以啟用簽到。"
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "已簽到活動：%s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "已從活動簽出：%s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22583,10 +22570,6 @@ msgid "Register walk-in guest"
 msgstr "註冊來客"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "在事件期間通過自助終端註冊為來客：%s"
-
-#: 
 msgid "Registering..."
 msgstr "正在註冊..."
 
@@ -24435,10 +24418,6 @@ msgstr "有投票權的會友 — 審查名單"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "零會停用選用要求。年齡需要完整出生日期；會籍期間需要入會日期。缺少必要日期的人會被略過並分開計數。已過世的人、非在籍的人與分類，以及非在籍或待審查的家庭與人一律排除；使用的是目前的分類與狀態，不是歷史狀態。"
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "%s 的應付金額：%s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -27111,10 +27090,6 @@ msgid "Last verified"
 msgstr "上次核實"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "此家庭中沒有任何已批准的活躍成員擁有電子郵件地址。請改為當面核實。"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "找不到這些財政年度的奉獻承諾。"
 
@@ -27137,10 +27112,6 @@ msgstr "請使用此電子郵件地址登入會眾門戶，檢視您的家庭資
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "此家庭處於待用狀態，因此不會寄送驗證電子郵件給它。"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "此自助登記的家庭正在等待批准。批准後，系統會以電子郵件邀請該家庭登入會眾門戶並檢視其資料。"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

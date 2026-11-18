@@ -105,7 +105,7 @@ PHP-rendered tables write the standard HTML pattern directly.
 | — | `dropdown-divider` | Always |
 | 4 | Delete (`fa-solid fa-trash`, `text-danger`) | Always |
 
-Person Delete is a `.delete-person` button with `data-person_id` and `data-person_name`, handled globally by `CRMJSOM.js`. Family Delete links to `SelectDelete.php?FamilyID={id}`.
+Person Delete is a `.delete-person` button with `data-person_id` and `data-person_name`, handled globally by `CRMJSOM.js`. Family Delete is a `.delete-family` button with `data-family_id`, handled globally by `CRMJSOM.js` (confirms then calls `DELETE /api/family/{id}`).
 
 Any table that lists people includes this standard menu. Domain actions (Check Out, Assign Role) sit between View/Edit/View Family and Cart, each group separated by dividers.
 

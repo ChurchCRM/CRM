@@ -877,12 +877,12 @@ class User extends BaseUser
         $wasEnabled = $this->is2FactorAuthEnabled();
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
-        // If the 2FA mandate is active, stamp a fresh grace period start so the user
-        // gets a new window rather than being instantly locked out after disabling.
+        // If 2FA is required for this user, stamp a fresh grace period start so
+        // they get a new window rather than being instantly locked out after disabling.
         // Only a real enabled-to-disabled transition earns that fresh window: with
         // no secret set there is nothing to disable, and restamping would let an
         // unenrolled user postpone a pending enrollment deadline indefinitely.
-        if ($wasEnabled && SystemConfig::getBooleanValue('bRequire2FA')) {
+        if ($wasEnabled && $this->isTwoFactorAuthMandated()) {
             $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
         }
         $this->save();
@@ -894,11 +894,36 @@ class User extends BaseUser
     }
 
     /**
+     * True when this user must use 2FA: bRequire2FA requires it for everyone,
+     * or an administrator required it for this user (#9690).
+     */
+    public function isTwoFactorAuthMandated(): bool
+    {
+        return SystemConfig::getBooleanValue('bRequire2FA') || (bool) $this->getTwoFactorAuthRequired();
+    }
+
+    /**
+     * Turns the per-user 2FA requirement on or off. Turning it on gives a user
+     * who has not enrolled a fresh grace window from today; turning it off
+     * clears the window unless bRequire2FA still applies.
+     */
+    public function setTwoFactorRequirement(bool $required): void
+    {
+        $this->setTwoFactorAuthRequired($required);
+        if ($required && !$this->is2FactorAuthEnabled()) {
+            $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
+        } elseif (!$required && !SystemConfig::getBooleanValue('bRequire2FA')) {
+            $this->setTwoFactorAuthGracePeriodStart(null);
+        }
+        $this->save();
+    }
+
+    /**
      * Returns the mandatory-2FA grace status for this user.
      *
      * Possible values:
      *   'enrolled'     — user already has 2FA set up
-     *   'not-required' — bRequire2FA is off
+     *   'not-required' — neither bRequire2FA nor this user's own requirement is on
      *   'immediate'    — mandate active, grace period is 0 (legacy hard-block)
      *   'within-grace' — mandate active, deadline not yet reached
      *   'expired'      — mandate active, deadline has passed
@@ -912,7 +937,7 @@ class User extends BaseUser
             return 'enrolled';
         }
 
-        if (!SystemConfig::getBooleanValue('bRequire2FA')) {
+        if (!$this->isTwoFactorAuthMandated()) {
             return 'not-required';
         }
 

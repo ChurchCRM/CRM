@@ -56,6 +56,7 @@ export const COVERAGE = {
     "src/api/routes/map.php": { spec: "cypress/e2e/api/private/standard/private.map.geocode-all.spec.js" },
     "src/api/routes/cart.php": { rows: ["cart-emails-api"] },
     "src/api/routes/email.php": { rows: ["email-send-api", "email-preview-api", "email-batch-api", "email-batch-send-api"] },
+    "src/people/routes/properties.php": { rows: ["people-property-lists"] },
     "src/people/routes/email.php": { rows: ["people-email-page"] },
     "src/people/routes/text.php": { rows: ["people-text-page"] },
     "src/people/routes/sign-in-email.php": { rows: ["sign-in-email-page"] },
