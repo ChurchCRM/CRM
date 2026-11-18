@@ -81,7 +81,7 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderErrorJSON($response, gettext('Configuration item not found'), [], 404, null, $request);
     }
 
-    if ($configName === 'sCanadianTaxSignatureAsset') {
+    if ($configName === 'sTaxSignatureAsset') {
         return SlimUtils::renderErrorJSON($response, gettext('Use signature upload or removal to change this setting.'), [], 400, null, $request);
     }
 

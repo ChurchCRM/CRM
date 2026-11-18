@@ -199,7 +199,7 @@ describe("Private Canadian giving-statement signature", () => {
 
     it("stores a re-encoded private image with an opaque random identifier and removes it", () => {
         cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").then((firstIdentifier) => {
+        cy.getSystemConfig("sTaxSignatureAsset").then((firstIdentifier) => {
             expect(firstIdentifier).to.match(/^[a-f0-9]{64}\.png$/);
             cy.readEnv("admin.api.key").then((key) => {
                 cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, encoding: "base64" }).then((image) => {
@@ -213,11 +213,11 @@ describe("Private Canadian giving-statement signature", () => {
             cy.request({ url: absoluteUrl(`/Images/TaxSignatures/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
             cy.request({ url: absoluteUrl("/Images/TaxSignatures/"), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
-            cy.getSystemConfig("sCanadianTaxSignatureAsset").should("not.eq", firstIdentifier);
+            cy.getSystemConfig("sTaxSignatureAsset").should("not.eq", firstIdentifier);
             cy.request({ url: absoluteUrl(`/Images/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("eq", 404);
         });
         cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+        cy.getSystemConfig("sTaxSignatureAsset").should("eq", "");
         cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
         cy.readEnv("admin.api.key").then((key) => {
             cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, failOnStatusCode: false }).its("status").should("eq", 404);
@@ -277,9 +277,9 @@ describe("Private Canadian giving-statement signature", () => {
 
     it("blocks direct asset-setting writes", () => {
         for (const value of ["https://example.com/signature.png", "../../Include/Config.php", "a".repeat(64) + ".png", ""]) {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sCanadianTaxSignatureAsset", { value }, 400);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sTaxSignatureAsset", { value }, 400);
         }
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+        cy.getSystemConfig("sTaxSignatureAsset").should("eq", "");
     });
 
     it("rejects session writes without CSRF and denies finance-only access", () => {

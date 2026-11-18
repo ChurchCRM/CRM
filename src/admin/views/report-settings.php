@@ -62,9 +62,9 @@ unset($setting);
 </div>
 
 <div class="card mt-3" id="tax-signature-card" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
-    <div class="card-header"><h3 class="card-title"><?= gettext('Tax Signature') ?></h3></div>
+    <div class="card-header"><h3 class="card-title"><?= gettext('Signature Image') ?></h3></div>
     <div class="card-body">
-        <p class="form-text"><?= gettext('Charity name, address, registration number, and the Canadian receipt switch are edited under Finance, Statement Settings. This page stores the signature image those receipts print.') ?></p>
+        <p class="form-text"><?= gettext('This image prints above the signer\'s name on giving statements and receipts. Charity details and the signer\'s printed name are under Finance, Statement Settings.') ?></p>
         <p id="tax-signature-status" role="status" aria-live="polite"></p>
         <label class="form-label" for="tax-signature-file"><?= gettext('Upload a PNG or JPEG signature image.') ?></label>
         <input class="form-control mb-2" id="tax-signature-file" type="file" accept="image/png,image/jpeg">

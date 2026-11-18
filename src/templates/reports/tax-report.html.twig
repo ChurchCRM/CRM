@@ -100,6 +100,7 @@
       <p>{{ closing }}</p>
       {% if questions %}<p>{{ questions }}</p>{% endif %}
       {% if sincerely %}<p>{{ sincerely }},</p>{% endif %}
+      {% if signature %}<img src="{{ signature }}" style="max-width: 50mm; max-height: 20mm;" alt="{{ gettext('Authorized Signature') }}">{% endif %}
       {% if signer %}<p>{{ signer }}</p>{% endif %}
     </div>
 

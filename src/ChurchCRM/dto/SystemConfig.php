@@ -230,7 +230,7 @@ class   SystemConfig
             'sCharityRegistrationNumber' => new ConfigItem('sCharityRegistrationNumber', 'text', '', gettext('Charity Registration Number')),
             'sReceiptIssueLocality' => new ConfigItem('sReceiptIssueLocality', 'text', '', gettext('Receipt Issue Locality')),
             'sReceiptClosing' => new ConfigItem('sReceiptClosing', 'text', 'Sincerely', gettext('Receipt Closing')),
-            'sCanadianTaxSignatureAsset'           => new ConfigItem('sCanadianTaxSignatureAsset', 'text', '', gettext('Private Canadian giving-statement signature asset identifier. Managed by signature upload.')),
+            'sTaxSignatureAsset'           => new ConfigItem('sTaxSignatureAsset', 'text', '', gettext('Private giving-statement signature asset identifier. Managed by signature upload.')),
             'sTaxSignatureStoragePath'             => new ConfigItem('sTaxSignatureStoragePath', 'text', '', gettext('Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to.')),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
             'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
@@ -617,7 +617,7 @@ class   SystemConfig
 
     public static function setValue(string $name, $value, bool $serverManaged = false): void
     {
-        if ($name === 'sCanadianTaxSignatureAsset' && !$serverManaged) {
+        if ($name === 'sTaxSignatureAsset' && !$serverManaged) {
             throw new \InvalidArgumentException(gettext('Use signature upload or removal to change this setting.'));
         }
 

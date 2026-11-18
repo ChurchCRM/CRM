@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     signatureRemove.addEventListener("click", () => {
       confirmAction(
-        t("Tax Signature"),
-        t("Remove the stored tax signature? Canadian receipts require a signature on file."),
+        t("Signature Image"),
+        t("Remove the stored signature image? Official receipts require one on file."),
         () => {
           signatureError.textContent = "";
           signatureRequest({ method: "DELETE", path: "system/tax-signature" })

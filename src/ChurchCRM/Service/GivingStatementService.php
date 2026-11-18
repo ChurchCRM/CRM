@@ -234,6 +234,7 @@ class GivingStatementService
             'questions' => SystemConfig::getValue('sGivingStatementQuestions'),
             'sincerely' => SystemConfig::getValue('sConfirmSincerely'),
             'signer' => SystemConfig::getValue('sTaxSigner'),
+            'signature' => TaxSignatureService::hasUploaded() && ($image = TaxSignatureService::image()) !== null ? 'data:image/png;base64,' . base64_encode($image) : null,
             'empty_message' => gettext('No contributions were recorded for this period.'),
             'remittance' => $remittance,
             'families' => $families,
