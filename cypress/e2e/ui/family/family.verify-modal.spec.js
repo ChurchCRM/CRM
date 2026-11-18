@@ -93,6 +93,9 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
 
     it("says nobody can be invited while member sign-in is off", () => {
         setConfig("bMemberSignIn", "0");
+        // Toggling the master switch drops the browser's staff session
+        // (the visit lands on the login page), so sign back in first.
+        cy.setupAdminSession();
         cy.visit("/people/family/1");
         openVerifyModal();
         cy.get("#verify-nobody-can-sign-in").should("contain", "Member sign-in is off, so nobody in the Campbell family can sign in");
