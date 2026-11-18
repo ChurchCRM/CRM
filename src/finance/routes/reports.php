@@ -149,7 +149,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/giving-statements/sample', function (Request $request, Response $response): Response {
-        $document = ($request->getQueryParams()['template'] ?? '') === 'canadian'
+        $template = $request->getQueryParams()['template'] ?? (GivingStatementService::isCanadianChurch() ? 'canadian' : '');
+        $document = $template === 'canadian' && GivingStatementService::isCanadianChurch()
             ? GivingStatementService::canadianSampleDocument() : GivingStatementService::sampleDocument();
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 

@@ -126,14 +126,21 @@ describe("Canadian reviewed receipts", () => {
         noOverlap: "1", retainOriginal: "1", ...overrides,
     });
     // A refused receipt renders the review page again (HTML), naming the family.
+    // The review step fingerprints each family's gifts and address; the download must send them back.
+    const reviewSnapshots = (token, overrides = {}) => cy.request({ method: "POST", url: "/finance/reports/giving-statements?template=canadian",
+        body: { ...body(overrides), review: "1", csrf_token: token }, failOnStatusCode: false }).then(({ body: html }) => {
+        const snapshot = {};
+        for (const [, id, value] of String(html).matchAll(/name="snapshot\[(\d+)\]" value="([a-f0-9]+)"/g)) snapshot[id] = value;
+        return snapshot;
+    });
     const receipt = (overrides = {}, expectedStatus = 200) => {
         return cy.request("/finance/reports/giving-statements?template=canadian").then(({ body: page }) => {
             const token = page.match(/name="csrf_token" value="([^"]+)"/)[1];
-            return cy.request({ method: "POST", url: download, body: { ...body(overrides), csrf_token: token },
+            return reviewSnapshots(token, overrides).then((snapshot) => cy.request({ method: "POST", url: download, body: { ...body({ snapshot, ...overrides }), csrf_token: token },
                 encoding: "binary", failOnStatusCode: false }).then((response) => {
                 expect(response.status).to.eq(expectedStatus);
                 return response;
-            });
+            }));
         });
     };
     const refusal = (overrides, ...phrases) => receipt(overrides, 400).then((response) => {
@@ -208,12 +215,21 @@ describe("Canadian reviewed receipts", () => {
                 expect(lines.join(" ")).to.not.include("Authorized Treasurer");
             });
     });
+    it("calls out missing Canadian settings on the preview PDF", () => {
+        later(() => cy.setSystemConfig("sCharityLegalName", settings.sCharityLegalName));
+        cy.setSystemConfig("sCharityLegalName", "");
+        cy.request({ url: "/finance/reports/giving-statements/sample", encoding: "binary" })
+            .then((response) => pdfText(response.body)).then((lines) => {
+                expect(lines.join(" ")).to.include("Still missing").and.include("Charity legal name");
+            });
+    });
     it("names the family on a shared envelope, and blocks missing charity settings and a non-CAD symbol", () => {
         later(() => setEnvelope(secondFamilyId, 0));
         setEnvelope(secondFamilyId, 459);
         cy.freshAdminFormLogin({ enabled: true });
         refusal({}, "CanadianReceiptFixture", "Shared-envelope conflict");
-        cy.then(() => undo.splice(0).forEach((fn) => fn()));
+        setEnvelope(secondFamilyId, 0);
+        cy.freshAdminFormLogin({ enabled: true });
         later(() => cy.setSystemConfig("sCharityLegalName", settings.sCharityLegalName));
         cy.setSystemConfig("sCharityLegalName", "");
         cy.freshAdminFormLogin({ enabled: true });
@@ -233,6 +249,16 @@ describe("Canadian reviewed receipts", () => {
                 expect(lines.join(" ")).to.not.include("not an official donation receipt");
                 expect(lines.join(" ")).to.include("Giving Statement");
             });
+    });
+    it("refuses a receipt when the gifts changed after the review", () => {
+        cy.request("/finance/reports/giving-statements?template=canadian").then(({ body: page }) => {
+            const token = page.match(/name="csrf_token" value="([^"]+)"/)[1];
+            reviewSnapshots(token).then((stale) => {
+                addPayment({ Date: "2025-02-01" }, [{ FundID: "1", Amount: 10, NonDeductible: 0 }]);
+                cy.freshAdminFormLogin({ enabled: true });
+                refusal({ snapshot: stale }, "CanadianReceiptFixture", "changed since the review");
+            });
+        });
     });
     it("rejects an advantage without silently skipping it", () => {
         addPayment({ Date: "2025-02-01" }, [{ FundID: "1", Amount: 10, NonDeductible: 1 }]);
@@ -259,9 +285,10 @@ describe("Canadian reviewed receipts", () => {
         const addRows = (count, date) => addPayment({ Date: date },
             Array.from({ length: count }, () => ({ FundID: "1", Amount: 1, NonDeductible: 0, Comment: "Literal <b>donor-facing</b>" })));
         // Leave one base row: remove the 2025-12-31 gift for this test and restore it after.
-        cy.then(() => cy.makePrivateAdminAPICall("DELETE", `/api/payments/${baseKeys[1]}`, null, 200));
-        later(() => addPayment({ Date: "2025-12-31" }, [{ FundID: "1", Amount: 50, NonDeductible: 0, Comment: "Private <memo>" }], baseKeys)
-            .then(() => baseKeys.splice(1, 1)));
+        cy.then(() => cy.makePrivateAdminAPICall("DELETE", `/api/payments/${baseKeys[1]}`, null, 200).then(() => {
+            baseKeys.splice(1, 1);
+            later(() => addPayment({ Date: "2025-12-31" }, [{ FundID: "1", Amount: 50, NonDeductible: 0, Comment: "Private <memo>" }], baseKeys));
+        }));
         cy.freshAdminFormLogin({ enabled: true });
         receipt().then((response) => {
             expect((response.body.match(/\/Type\s*\/Page\b/g) || []).length).to.eq(1);

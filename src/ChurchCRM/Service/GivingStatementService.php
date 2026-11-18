@@ -24,6 +24,8 @@ class GivingStatementService
 {
     private const FIRST_YEAR = 1990;
 
+    private const CAD_SYMBOLS = ['$', 'CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'];
+
     /** Sample data stays independent of the donor/payment query and model paths. */
     public static function sampleDocument(): array
     {
@@ -326,7 +328,37 @@ class GivingStatementService
             'advantage' => CurrencyFormatter::format(0),
             'duplicate' => false, 'signature' => null, 'sincerely' => gettext('Sincerely'),
             'signer' => 'Sample Authorized Signer (fictional)',
+            'setup_problems' => self::canadianSetupProblems(),
         ]);
+    }
+
+    /** What a Canadian church still has to fill in before official receipts can be generated. */
+    public static function canadianSetupProblems(): array
+    {
+        $details = self::charityDetails();
+        $problems = [];
+        foreach (['legal_name' => gettext('Charity legal name'), 'registered_address' => gettext('Charity registered address'), 'locality' => gettext('Issue locality')] as $key => $label) {
+            if ($details[$key] === '') {
+                $problems[] = $label;
+            }
+        }
+        $registration = strtoupper(preg_replace('/\s+/u', '', $details['registration']));
+        if ($registration === '') {
+            $problems[] = gettext('Registration number');
+        } elseif (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $registration)) {
+            $problems[] = gettext('Registration number in the form 123456789RR0001');
+        }
+        if (trim(SystemConfig::getValue('sTaxSigner')) === '') {
+            $problems[] = gettext('Signer');
+        }
+        if (!TaxSignatureService::hasUploaded()) {
+            $problems[] = gettext('Signature image (Admin, Report Settings)');
+        }
+        if (!in_array(strtoupper(trim(SystemConfig::getValue('sCurrencySymbol'))), self::CAD_SYMBOLS, true)) {
+            $problems[] = gettext('Currency symbol $ or CAD');
+        }
+
+        return $problems;
     }
 
     /** Canadian receipts apply when Church Info names Canada as the church country. */
@@ -386,9 +418,11 @@ class GivingStatementService
     public static function canadianReview(array $options): array
     {
         $groups = self::canadianPayments($options['year'], $options['familyIds']);
+        $found = self::canadianFamilies($options['familyIds']);
+        $holders = self::envelopeHolders($found);
         $families = [];
         foreach ($options['familyIds'] as $id) {
-            $family = FamilyQuery::create()->findPk($id);
+            $family = $found[$id] ?? null;
             if (!$family instanceof Family) {
                 throw new InvalidArgumentException(gettext('A selected family no longer exists.'));
             }
@@ -404,14 +438,58 @@ class GivingStatementService
             $families[] = [
                 'id' => $id,
                 'name' => $family->getName(),
+                'inactive' => !$family->isActive(),
+                'snapshot' => self::canadianSnapshot($family, $payments),
                 'address' => $family->getMailingAddressLines(),
                 'suggestedName' => self::canadianSuggestedName($family),
                 'gifts' => count($payments),
                 'total' => CurrencyFormatter::format($cents / 100),
-                'problems' => self::canadianFamilyProblems($family, $payments),
+                'problems' => self::canadianFamilyProblems($family, $payments, null, $holders),
             ];
         }
         return $families;
+    }
+
+    /** @return array<int, Family> the selected families by ID, in one query */
+    private static function canadianFamilies(array $ids): array
+    {
+        $families = [];
+        foreach (FamilyQuery::create()->filterById($ids)->find() as $family) {
+            $families[(int) $family->getId()] = $family;
+        }
+
+        return $families;
+    }
+
+    /**
+     * How many families hold each selected envelope number, across all families,
+     * in one grouped query.
+     *
+     * @param array<int, Family> $families
+     *
+     * @return array<int, int>
+     */
+    private static function envelopeHolders(array $families): array
+    {
+        $envelopes = array_values(array_filter(array_map(static fn (Family $family): int => (int) $family->getEnvelope(), $families), static fn (int $envelope): bool => $envelope > 0));
+        $counts = [];
+        if ($envelopes === []) {
+            return $counts;
+        }
+        foreach (FamilyQuery::create()->filterByEnvelope($envelopes)->select(['Envelope'])->withColumn('COUNT(*)', 'Holders')->groupByEnvelope()->find() as $row) {
+            $counts[(int) $row['Envelope']] = (int) $row['Holders'];
+        }
+
+        return $counts;
+    }
+
+    /** Fingerprint of what the treasurer reviewed, so a download can tell the gifts or address changed since. */
+    private static function canadianSnapshot(Family $family, array $payments): string
+    {
+        return hash('sha256', json_encode([
+            $family->getMailingAddressLines(),
+            array_map(static fn (Pledge $payment): array => [$payment->getId(), $payment->getAmount(), $payment->getNondeductible(), $payment->getDate('Y-m-d')], $payments),
+        ], JSON_THROW_ON_ERROR));
     }
 
     /**
@@ -435,7 +513,7 @@ class GivingStatementService
      *
      * @param Pledge[] $payments the family's payments in the receipt year
      */
-    public static function canadianFamilyProblems(Family $family, array $payments, ?string $issueDate = null): array
+    public static function canadianFamilyProblems(Family $family, array $payments, ?string $issueDate = null, ?array $envelopeHolders = null): array
     {
         $problems = [];
         if ($payments === []) {
@@ -452,7 +530,8 @@ class GivingStatementService
             }
         }
         $envelope = (int) $family->getEnvelope();
-        if ($envelope > 0 && FamilyQuery::create()->filterByEnvelope($envelope)->count() > 1) {
+        $holders = $envelopeHolders[$envelope] ?? ($envelopeHolders === null && $envelope > 0 ? FamilyQuery::create()->filterByEnvelope($envelope)->count() : 0);
+        if ($envelope > 0 && $holders > 1) {
             $problems[] = gettext('Shared-envelope conflict: another family currently has this envelope number.');
         }
         foreach ($payments as $payment) {
@@ -529,7 +608,7 @@ class GivingStatementService
         }
         $currency = strtoupper(trim(SystemConfig::getValue('sCurrencySymbol')));
         // canadianOptions() already requires a Canadian church, so a plain $ means CAD here.
-        if (!in_array($currency, ['$', 'CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'], true)) {
+        if (!in_array($currency, self::CAD_SYMBOLS, true)) {
             throw new InvalidArgumentException(gettext('The system currency symbol must be $ or identify CAD for Canadian receipts.'));
         }
         $legal = self::charityDetails();
@@ -546,6 +625,8 @@ class GivingStatementService
         }
         $year = $options['year'];
         $groups = self::canadianPayments($year, $options['familyIds']);
+        $found = self::canadianFamilies($options['familyIds']);
+        $holders = self::envelopeHolders($found);
         $families = [];
         foreach (self::canadianReview($options) as $review) {
             $id = $review['id'];
@@ -555,8 +636,11 @@ class GivingStatementService
                 throw new InvalidArgumentException(sprintf(gettext('%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature.'), $review['name']));
             }
             $payments = $groups[$id] ?? [];
-            $family = FamilyQuery::create()->findPk($id);
-            $problems = self::canadianFamilyProblems($family, $payments, $issueDate);
+            $family = $found[$id];
+            if (!is_array($input['snapshot'] ?? null) || ($input['snapshot'][$id] ?? null) !== $review['snapshot']) {
+                throw new InvalidArgumentException(sprintf(gettext('%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again.'), $review['name']));
+            }
+            $problems = self::canadianFamilyProblems($family, $payments, $issueDate, $holders);
             if ($problems !== []) {
                 throw new InvalidArgumentException(sprintf(gettext('%s: %s No receipt was generated.'), $review['name'], implode(' ', $problems)));
             }

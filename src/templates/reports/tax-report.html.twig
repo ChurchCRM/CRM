@@ -6,17 +6,28 @@
       {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
       <htmlpagefooter name="receipt-{{ loop.index }}"><div>{{ family.serial }} — {{ gettext('Page') }} {PAGENO}</div></htmlpagefooter>
       <sethtmlpagefooter name="receipt-{{ loop.index }}" value="on" show-this-page="1" />
+      {% if sample|default(false) and setup_problems|default([]) %}
+        <div class="meta"><strong>{{ gettext('Not ready to issue Canadian receipts. Still missing') }}:</strong> {{ setup_problems|join(', ') }}</div>
+      {% elseif sample|default(false) %}
+        <div class="meta">{{ gettext('All required Canadian receipt settings are filled in.') }}</div>
+      {% endif %}
+      <table width="100%"><tr>
+        <td valign="top" width="50%">
+          <strong>{{ legal_name }}</strong><br>{{ registered_address|nl2br }}<br>
+          {{ gettext('Registration Number') }}: {{ registration }}
+        </td>
+        <td valign="top" width="50%">
+          {{ gettext('Receipt No.') }}: {{ family.serial }}<br>
+          {{ gettext('Gift Calendar Year') }}: {{ gift_year }}<br>
+          {{ gettext('Issue Date') }}: {{ issue_date }}<br>
+          {{ gettext('Issue Locality') }}: {{ locality }}<br>{{ gettext('Currency') }}: CAD
+          {% if duplicate %}<br><strong>{{ gettext('Duplicate copy / Copie duplicata') }}</strong>{% endif %}
+        </td>
+      </tr></table>
       <div class="meta">
-        <strong>{{ legal_name }}</strong><br>{{ registered_address|nl2br }}<br>
-        {{ gettext('Registration Number') }}: {{ registration }}
         {% if sample|default(false) %}<h1>{{ gettext('SAMPLE — NOT VALID FOR TAX PURPOSES') }}</h1>{% endif %}
         <h1>{{ title }}</h1>
         <p>{{ gettext('Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu') }}</p>
-        <p>{{ gettext('Receipt No.') }}: {{ family.serial }}<br>
-        {{ gettext('Gift Calendar Year') }}: {{ gift_year }}<br>
-        {{ gettext('Issue Date') }}: {{ issue_date }}<br>
-        {{ gettext('Issue Locality') }}: {{ locality }}<br>{{ gettext('Currency') }}: CAD</p>
-        {% if duplicate %}<strong>{{ gettext('Duplicate copy / Copie duplicata') }}</strong>{% endif %}
       </div>
       <div class="recipient"><strong>{{ family.salutation }}</strong><br>{{ family.address|nl2br }}</div>
       <table class="gifts">

@@ -69,9 +69,11 @@ $freshReview = empty($query['reviewed']) && ($query['review'] ?? '') === '1';
         <label class="form-label" for="issueDate"><?= $isDuplicate ? gettext('Original Issue Date (enter from retained original)') : gettext('Issue Date') ?></label>
         <input class="form-control mb-3" type="date" name="issueDate" id="issueDate" max="<?= DateTimeUtils::getTodayDate() ?>" value="<?= InputUtils::escapeAttribute($answer('issueDate', $isDuplicate ? '' : DateTimeUtils::getTodayDate())) ?>" required>
         <?php foreach ($canadianReview as $review) : ?>
-        <?php $id = (int) $review['id']; $ok = $review['problems'] === []; $include = $ok && ($freshReview || in_array((string) $id, $included, true)); ?>
+        <?php $id = (int) $review['id']; $changed = $perFamily('snapshot', $id) !== '' && $perFamily('snapshot', $id) !== $review['snapshot']; $ok = $review['problems'] === []; $include = $ok && ($freshReview || in_array((string) $id, $included, true)); ?>
         <fieldset class="border rounded p-3 mb-3" data-family-id="<?= $id ?>">
-            <legend class="float-none w-auto fs-4"><?= InputUtils::escapeHTML($review['name']) ?></legend>
+            <legend class="float-none w-auto fs-4"><?= InputUtils::escapeHTML($review['name']) ?><?php if ($review['inactive']) : ?> <span class="badge bg-secondary-lt text-secondary fs-6"><?= gettext('Inactive') ?></span><?php endif; ?></legend>
+            <input type="hidden" name="snapshot[<?= $id ?>]" value="<?= InputUtils::escapeAttribute($review['snapshot']) ?>">
+            <?php if ($changed) : ?><div class="alert alert-warning" role="status"><?= gettext('The gifts or mailing address changed since you last checked. Review them and confirm the donor again.') ?></div><?php endif; ?>
             <p><?= nl2br(InputUtils::escapeHTML($review['address'])) ?></p>
             <p class="text-secondary"><?= InputUtils::escapeHTML(sprintf(ngettext('%1$d gift, %2$s', '%1$d gifts, %2$s', (int) $review['gifts']), (int) $review['gifts'], $review['total'])) ?></p>
             <?php if (!$ok) : ?>
@@ -89,7 +91,7 @@ $freshReview = empty($query['reviewed']) && ($query['review'] ?? '') === '1';
                 <?php $mixed = $perFamily('mixedDonors', $id); ?>
                 <option value=""><?= gettext('Select') ?></option><option value="no" <?= $mixed === 'no' ? 'selected' : '' ?>><?= gettext('Yes — one verified donor set') ?></option><option value="yes" <?= $mixed === 'yes' ? 'selected' : '' ?>><?= gettext('No — different donors; handle outside this feature') ?></option>
             </select>
-            <label class="form-check"><input class="form-check-input" type="checkbox" name="donorVerified[<?= $id ?>]" value="1" <?= $checked($perFamily('donorVerified', $id) === '1') ?>><span class="form-check-label"><?= gettext('These are the true donors for every gift in this family/calendar year, and the mailing address is correct.') ?></span></label>
+            <label class="form-check"><input class="form-check-input" type="checkbox" name="donorVerified[<?= $id ?>]" value="1" <?= $checked(!$changed && $perFamily('donorVerified', $id) === '1') ?>><span class="form-check-label"><?= gettext('These are the true donors for every gift in this family/calendar year, and the mailing address is correct.') ?></span></label>
         </fieldset>
         <?php endforeach; ?>
         <?php foreach ([
