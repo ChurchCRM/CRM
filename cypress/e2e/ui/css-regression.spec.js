@@ -42,20 +42,30 @@ describe("CSS Regression — No Auth Style Leakage", () => {
         });
 
         it("Submit button should not have auth-page gradient", () => {
-            cy.get("#FinancialReportTypes").select("Zero Givers");
+            cy.get("#FinancialReportTypes").select("Pledge Reminders");
             cy.get("#FinancialReports").submit();
-            cy.contains("Financial Reports: Zero Givers").should("be.visible");
+            cy.contains("Financial Reports: Pledge Reminders").should("be.visible");
 
             cy.get("#createReport").should("be.visible")
                 .invoke("css", "background-image")
                 .should("not.include", "667eea");
         });
+    });
+
+    describe("Zero Givers report — buttons render without auth styles", () => {
+        beforeEach(() => {
+            cy.visit("/finance/reports/zero-givers");
+        });
+
+        it("Download button should not have auth-page gradient", () => {
+            cy.get(".page-title").contains("Zero Givers").should("be.visible");
+
+            cy.get("#downloadZeroGivers").should("be.visible")
+                .invoke("css", "background-image")
+                .should("not.include", "667eea");
+        });
 
         it("Report form labels should be properly styled", () => {
-            cy.get("#FinancialReportTypes").select("Zero Givers");
-            cy.get("#FinancialReports").submit();
-
-            // Form labels should exist and be visible on the Zero Givers filter page
             cy.get("label.form-label").should("have.length.at.least", 1)
                 .first().should("be.visible");
         });

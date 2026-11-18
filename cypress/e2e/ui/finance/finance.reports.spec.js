@@ -75,28 +75,19 @@ describe("Financial Reports", () => {
     });
 
     it("Zero Givers", () => {
-        cy.visit("FinancialReports.php");
-        cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Zero Givers");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Zero Givers");
-        cy.window().then(function (win) {
-            win.document
-                .getElementById("createReport")
-                .addEventListener("click", () => {
-                    setTimeout(function () {
-                        win.location.reload();
-                    }, 10_000);
-                });
+        cy.visit("/finance/reports");
+        cy.get('#financeReports a[href$="/finance/reports/zero-givers"]').first().click();
+        cy.location("pathname").should("match", /\/finance\/reports\/zero-givers$/);
+        cy.contains("Zero Givers");
 
-            /* Make sure the file exists */
-            cy.intercept("/", (req) => {
-                req.reply((res) => {
-                    expect(res.statusCode).to.equal(200);
-                });
-            });
-
-            cy.get("#createReport").click();
+        cy.intercept("GET", "**/finance/reports/zero-givers/download*").as("zeroGivers");
+        cy.get("#DateStart").clear().type("1990-01-01");
+        cy.get("#DateEnd").clear().type("1990-12-31");
+        cy.get("#downloadZeroGiversCsv").click();
+        cy.wait("@zeroGivers").then(({ request, response }) => {
+            expect(request.url).to.include("DateStart=1990-01-01");
+            expect(response.statusCode).to.equal(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
         });
     });
 
