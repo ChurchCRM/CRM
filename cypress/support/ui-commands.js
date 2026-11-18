@@ -17,9 +17,19 @@ Cypress.Commands.add('dismissSystemNotifications', () => {
         if ($buttons.length === 0) {
             return;
         }
-        cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+        const $session = $buttons.filter((_, el) => el.closest('[data-notification-id]')?.dataset.notificationId === 'system-update-available');
+        const $persistent = $buttons.not($session);
+        const aliases = [];
+        if ($persistent.length > 0) {
+            cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+            aliases.push(...Array($persistent.length).fill('@dismissNotification'));
+        }
+        if ($session.length > 0) {
+            cy.intercept('POST', '**/v2/releases/dismiss-update-notice').as('dismissUpdateNotice');
+            aliases.push(...Array($session.length).fill('@dismissUpdateNotice'));
+        }
         cy.wrap($buttons).click({ multiple: true });
-        cy.wait(Array($buttons.length).fill('@dismissNotification'));
+        cy.wait(aliases);
         cy.get('.crm-system-notification').should('not.exist');
     });
 });

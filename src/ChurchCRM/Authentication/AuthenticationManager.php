@@ -463,19 +463,11 @@ class AuthenticationManager
 
     /**
      * Check for system updates and store result in session.
-     * Only runs for admin users on login. The upgrade notification is
-     * rendered on page load by NotificationService::loadSessionNotifications().
+     * Runs once at login for every staff user. The notice is rendered later
+     * by NotificationService::loadSessionNotifications().
      */
     private static function checkSystemUpdates(): void
     {
-        $currentUser = self::getCurrentUser();
-        if (!$currentUser->isAdmin()) {
-            $_SESSION['systemUpdateAvailable'] = false;
-            $_SESSION['systemUpdateVersion'] = null;
-            $_SESSION['systemLatestVersion'] = null;
-            return;
-        }
-
         $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
         $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];

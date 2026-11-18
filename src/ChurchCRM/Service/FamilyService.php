@@ -27,6 +27,28 @@ class FamilyService
      */
     public const MAX_FAILURE_DETAILS = 20;
 
+    /**
+     * @param int[] $personIds
+     * @return array<int, Person>
+     */
+    public function getMembersForUpdate(int $familyId, array $personIds): array
+    {
+        $members = [];
+        foreach (PersonQuery::create()->filterByFamId($familyId)->find() as $member) {
+            $members[(int) $member->getId()] = $member;
+        }
+
+        $selected = [];
+        foreach ($personIds as $personId) {
+            if (!isset($members[$personId]) || isset($selected[$personId])) {
+                throw new \InvalidArgumentException('Invalid family member');
+            }
+            $selected[$personId] = $members[$personId];
+        }
+
+        return $selected;
+    }
+
     private $logger;
 
     public function __construct()

@@ -5043,10 +5043,6 @@ msgid "View Person Page"
 msgstr "Vizualizați pagina persoanei"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familia nu are adrese de email de utilizat"
-
-#: 
 msgid "Deleted"
 msgstr "Șters"
 
@@ -11410,14 +11406,6 @@ msgstr "Prezență înregistrată de"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Înregistrarea prezenței este dezactivată pentru evenimentele inactive. Activați evenimentul din Tabloul de Bord Evenimente pentru a activa înregistrarea."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Prezență înregistrată la evenimentul: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Ieșire înregistrată de la evenimentul: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22559,10 +22547,6 @@ msgid "Register walk-in guest"
 msgstr "Înregistrați oaspete care sosesc"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Înregistrat ca oaspete care sosește la chioșc în timpul evenimentului: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Înregistrare în curs..."
 
@@ -24411,10 +24395,6 @@ msgstr "Membri cu drept de vot — Listă de revizuire"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "Zero dezactivează o cerință opțională. Vârsta necesită o dată de naștere completă; durata apartenenței necesită o dată de apartenență. Persoanele cărora le lipsesc datele obligatorii sunt omise și numărate separat. Persoanele decedate, persoanele și clasificările inactive, precum și familiile și persoanele inactive sau în așteptarea revizuirii sunt întotdeauna excluse; se folosesc clasificarea și statutul actuale, nu statutul istoric."
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "Sumă datorată pentru %s: %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -27087,10 +27067,6 @@ msgid "Last verified"
 msgstr "Ultima verificare"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Niciun membru activ și aprobat al acestei familii nu are adresă de e-mail. Verificați informațiile personal."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nu s-au găsit angajamente pentru acești ani fiscali."
 
@@ -27113,10 +27089,6 @@ msgstr "Conectați-vă la portalul comunității cu această adresă de e-mail p
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Această familie este inactivă, așa că nu i se trimit e-mailuri de verificare."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Această familie auto-înregistrată așteaptă aprobarea. La aprobare, familia primește prin e-mail o invitație de a se conecta la portalul comunității și de a-și verifica informațiile."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -9,6 +9,7 @@ use ChurchCRM\Emails\users\UnlockedEmail;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\UserService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -92,6 +93,34 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderSuccessJSON($response);
     });
+
+    /**
+     * @OA\Post(
+     *     path="/api/user/{userId}/setTwoFactorRequired",
+     *     summary="Require or stop requiring 2FA for one user (Admin role required)",
+     *     description="Works alongside bRequire2FA. A user who has not enrolled gets the same grace period and enrollment redirect as under bRequire2FA, starting today.",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true, @OA\JsonContent(required={"required"}, @OA\Property(property="required", type="boolean"))),
+     *     @OA\Response(response=200, description="Requirement saved",
+     *         @OA\JsonContent(@OA\Property(property="required", type="boolean"))
+     *     ),
+     *     @OA\Response(response=400, description="required is missing or not a boolean"),
+     *     @OA\Response(response=403, description="Admin role required")
+     * )
+     */
+    $group->post('/setTwoFactorRequired', function (Request $request, Response $response, array $args): Response {
+        $input = $request->getParsedBody();
+        $required = is_array($input) ? ($input['required'] ?? null) : null;
+        if (!is_bool($required)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Say whether 2FA is required.'), [], 400);
+        }
+        $user = $request->getAttribute('user');
+        $user->setTwoFactorRequirement($required);
+
+        return SlimUtils::renderJSON($response, ['required' => (bool) $user->getTwoFactorAuthRequired()]);
+    })->add(new CSRFMiddleware());
 
     /**
      * @OA\Post(

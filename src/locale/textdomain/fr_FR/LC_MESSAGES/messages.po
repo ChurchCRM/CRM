@@ -4979,10 +4979,6 @@ msgid "View Person Page"
 msgstr "Voir Page de la personne"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Aucune adresse email renseignée pour cette famille"
-
-#: 
 msgid "Deleted"
 msgstr "Supprimé"
 
@@ -11338,14 +11334,6 @@ msgstr "Enregistrement par"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "L'enregistrement est désactivé pour les événements inactifs. Activez l'événement depuis le tableau de bord des événements pour activer l'enregistrement."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Enregistré à l'événement : %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Sorti de l'événement : %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22469,10 +22457,6 @@ msgid "Register walk-in guest"
 msgstr "Enregistrer un visiteur qui arrive"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Enregistré en tant que visiteur à la borne lors de l'événement: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Enregistrement en cours..."
 
@@ -24321,10 +24305,6 @@ msgstr "Membres votants — Liste d'examen"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "Zéro désactive une condition facultative. L'âge exige une date de naissance complète ; la durée d'appartenance exige une date d'appartenance. Les personnes sans les dates requises sont omises et comptées à part. Les personnes décédées, les personnes et classifications inactives, ainsi que les familles et personnes inactives ou en attente d'examen sont toujours exclues ; la classification et le statut actuels sont utilisés, et non l'historique."
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "Montant dû pour %s : %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -26997,10 +26977,6 @@ msgid "Last verified"
 msgstr "Dernière vérification"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Aucun membre actif et approuvé de cette famille n'a d'adresse e-mail. Vérifiez plutôt les informations en personne."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Aucune promesse de don n'a été trouvée pour ces années fiscales."
 
@@ -27023,10 +26999,6 @@ msgstr "Connectez-vous au portail des fidèles avec cette adresse e-mail pour v�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Cette famille est inactive, elle ne reçoit donc pas d'e-mails de vérification."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Cette famille auto-inscrite attend d'être approuvée. L'approbation envoie à la famille une invitation par e-mail à se connecter au portail des fidèles et à vérifier ses informations."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

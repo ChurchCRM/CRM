@@ -5007,10 +5007,6 @@ msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "A család nem rendelkezik e-mailekhez"
-
-#: 
 msgid "Deleted"
 msgstr "Törölve"
 
@@ -11366,14 +11362,6 @@ msgstr "Bejelentkeztette"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Inaktív eseményeknél a bejelentkezés le van tiltva. Aktiválja az eseményt az Események irányítópultjáról a bejelentkezés engedélyezéséhez."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Bejelentkezve az eseményre: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Kijelentkezve az eseményről: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22497,10 +22485,6 @@ msgid "Register walk-in guest"
 msgstr "vendég regisztrálása"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Vendégként regisztrálva a kioskon az esemény során: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Regisztráció..."
 
@@ -24349,10 +24333,6 @@ msgstr "Szavazó tagok — felülvizsgálati lista"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "A nulla kikapcsol egy választható feltételt. Az életkorhoz teljes születési dátum kell; a tagság időtartamához tagsági dátum. A szükséges dátum nélküli személyek kimaradnak, és külön vannak számolva. Az elhunyt személyek, az inaktív személyek és besorolások, valamint az inaktív vagy felülvizsgálatra váró családok és személyek mindig kimaradnak; a jelenlegi besorolás és állapot számít, nem a korábbi."
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "%s esedékes összege: %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -27025,10 +27005,6 @@ msgid "Last verified"
 msgstr "Utolsó ellenőrzés"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "A család egyik aktív, jóváhagyott tagjának sincs e-mail-címe. Ehelyett ellenőrizze az adatokat személyesen."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Ezekre a költségvetési évekre nem található felajánlás."
 
@@ -27051,10 +27027,6 @@ msgstr "Jelentkezzen be a tagi portálra ezzel az e-mail-címmel, és tekintse �
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ez a család inaktív, ezért nem kap ellenőrző e-maileket."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ez az önregisztrált család jóváhagyásra vár. Jóváhagyáskor a család e-mailben meghívót kap, hogy jelentkezzen be a tagi portálra és tekintse át adatait."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
