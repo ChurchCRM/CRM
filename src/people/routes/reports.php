@@ -1,8 +1,10 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DirectoryReportPreferences;
 use ChurchCRM\Service\DirectoryReportService;
 use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
@@ -138,7 +140,7 @@ function postPeopleDirectory(Request $request, Response $response): Response
     $text = fn (string $key, int $length = 255): string => mb_substr(trim((string) preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F]/', '', is_scalar($post[$key] ?? null) ? (string) $post[$key] : '')), 0, $length);
     $paper = $text('PageSize');
 
-    $pdf = (new DirectoryReportService())->pdf([
+    $options = [
         'classifications' => $classifications === [] ? null : $classifications,
         'groups' => $ids('GroupID'),
         'cartIds' => $cartDirectory ? array_map('intval', array_filter(explode(',', Cart::getCartIdString()))) : null,
@@ -147,7 +149,14 @@ function postPeopleDirectory(Request $request, Response $response): Response
         'spouseRoles' => $ids('sDirRoleSpouse'),
         'show' => $show,
         'customFieldOrders' => $customFieldOrders,
-    ], [
+    ];
+    // Remember DirectoryReportService option keys only (issue #11465); layout/title stay
+    // session-ephemeral. Cart directory omits classifications, so it must not overwrite prefs.
+    if (!$cartDirectory) {
+        (new DirectoryReportPreferences())->save(AuthenticationManager::getCurrentUser(), $options);
+    }
+
+    $pdf = (new DirectoryReportService())->pdf($options, [
         'paper' => in_array($paper, ['letter', 'a4'], true) ? $paper : 'legal',
         'booklet' => $text('sDirLayout') === 'booklet',
         'columns' => InputUtils::filterInt($post['NumCols'] ?? '1') ?: 1,

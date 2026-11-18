@@ -165,6 +165,7 @@ class MailingLabelService
 
         $people = PersonQuery::create()
             ->filterById($personIds, Criteria::IN)
+            ->filterByNeedsReview(false)
             ->filterByDateDeceased(null, Criteria::ISNULL)
             ->leftJoinWithFamily()
             ->orderByLastName()
@@ -362,6 +363,7 @@ class MailingLabelService
         $members = PersonQuery::create()
             ->filterByFamId($familyId)
             ->filterById($personIds, Criteria::IN)
+            ->filterByNeedsReview(false)
             ->filterByDateDeceased(null, Criteria::ISNULL)
             ->orderByLastName()
             ->orderByFirstName()

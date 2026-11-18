@@ -43,7 +43,7 @@ function adminPropertyTypeEditor(Request $request, Response $response, array $ar
 
         $errors = PropertyTypeService::save($propertyType, $class, $name, $description);
         if ($errors === []) {
-            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/PropertyTypeList.php');
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/properties/types');
         }
     }
 
@@ -58,7 +58,7 @@ function adminPropertyTypeEditor(Request $request, Response $response, array $ar
         'sPageSubtitle' => gettext('Create or edit property type categories'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
-            [gettext('Property Types'), '/PropertyTypeList.php'],
+            [gettext('Property Types'), '/people/properties/types'],
             [$pageTitle],
         ]),
         'isNew' => $isNew,
