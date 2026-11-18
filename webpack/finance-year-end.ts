@@ -18,6 +18,7 @@ function wire(): void {
     autoSave: true,
     columns: 1,
     configApiPath: "/finance/api/config",
+    csrfToken: host.dataset.csrfToken ?? "",
   });
 }
 

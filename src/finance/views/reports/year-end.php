@@ -123,6 +123,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
 
             <div id="statementWording" class="mb-3"
                  data-title="<?= InputUtils::escapeAttribute(gettext('Giving Report (Tax Statements)')) ?>"
+                 data-csrf-token="<?= InputUtils::escapeAttribute(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?>"
                  data-settings="<?= InputUtils::escapeAttribute(json_encode($panelSettings, JSON_THROW_ON_ERROR)) ?>"></div>
             <a href="<?= $root ?>/finance/reports/giving-statements/sample" class="btn btn-outline-secondary mb-3" id="sampleLetter" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Preview Sample Letter') ?></a>
             <a href="<?= $root ?>/finance/statements/settings" class="btn btn-ghost-secondary mb-3" id="statementSettingsLink"><?= gettext('Statement Settings') ?></a>

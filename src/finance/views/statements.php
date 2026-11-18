@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -32,7 +33,8 @@ $(document).ready(function () {
             showAllSettingsLink: false,
             autoSave: true,
             columns: 1,
-            configApiPath: '/finance/api/config'
+            configApiPath: '/finance/api/config',
+            csrfToken: <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken()) ?>
         });
     });
 });

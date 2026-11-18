@@ -71,6 +71,32 @@ describe("Finance Statement Settings", () => {
             keys.forEach((key) => cy.setSystemConfig(key, ""));
         });
 
+        it("lets each user dismiss the charity-details notice", () => {
+            const dismissKey = "notification.dismissed.charity-details";
+            cy.setSystemConfig("sCharityLegalName", "");
+            cy.visit("/finance/");
+            cy.window().its("CRM.userId").then((userId) => {
+                const resetDismissal = () => cy.request("POST", `/api/user/${userId}/setting/${dismissKey}`, { value: "" });
+                resetDismissal();
+                cy.reload();
+                cy.intercept("POST", `**/api/user/${userId}/setting/${dismissKey}`).as("dismiss");
+                cy.get("#charity-details-banner .js-dismiss-notification").click();
+                cy.wait("@dismiss").its("response.statusCode").should("eq", 200);
+                cy.reload();
+                cy.get("#year-end-entry a.btn-primary").should("be.visible");
+                cy.get("#charity-details-banner").should("not.exist");
+                resetDismissal();
+                cy.reload();
+                cy.get("#charity-details-banner").should("be.visible");
+            });
+        });
+
+        it("rejects a statement setting save without the session CSRF token", () => {
+            cy.request({ method: "POST", url: "/finance/api/config/sTaxSigner", body: { value: "No token" }, failOnStatusCode: false })
+                .its("status")
+                .should("eq", 403);
+        });
+
         it("keeps statement settings out of System Settings", () => {
             cy.visit("/SystemSettings.php");
             for (const key of ["sGivingStatementOpening", "sGivingStatementClosing", "sGivingStatementQuestions", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
