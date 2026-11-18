@@ -12910,14 +12910,6 @@ msgid "Click Save to apply."
 msgstr "לחצו על שמירה להחלה."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API לוח הגזירים אינו זמין. אנא העתק את כתובת ה- URL באופן ידני."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "הלוח אינו זמין. אנא השתמשו בלחצן ההורדה לשמירת הקודים שלכם."
-
-#: 
 msgid "Code incomplete"
 msgstr "קוד לא מלא"
 

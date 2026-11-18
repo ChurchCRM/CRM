@@ -13040,14 +13040,6 @@ msgid "Click Save to apply."
 msgstr "點擊儲存以套用。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪貼簿API不可用。請手動複製URL。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "剪貼簿不可用。請使用下載按鈕儲存您的驗證碼。"
-
-#: 
 msgid "Code incomplete"
 msgstr "驗證碼不完整"
 

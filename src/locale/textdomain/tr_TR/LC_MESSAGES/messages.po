@@ -12912,14 +12912,6 @@ msgid "Click Save to apply."
 msgstr "Uygulamak için Kaydet'e tıklayın."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Pano API kullanılamaz. Lütfen URL'yi manuel olarak kopyalayın."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Pano kullanılamıyor. Kodlarınızı kaydetmek için İndir düğmesini kullanın."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod tamamlanmadı"
 

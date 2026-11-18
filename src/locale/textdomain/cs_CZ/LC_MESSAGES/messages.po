@@ -12911,14 +12911,6 @@ msgid "Click Save to apply."
 msgstr "Klikněte na Uložit pro použití."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API schránky není k dispozici. Zkopírujte prosím adresu URL ručně."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Schránka není dostupná. Pro uložení kódů použijte tlačítko Stáhnout."
-
-#: 
 msgid "Code incomplete"
 msgstr "Nekompletní kód"
 

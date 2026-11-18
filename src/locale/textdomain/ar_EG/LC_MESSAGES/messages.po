@@ -12948,14 +12948,6 @@ msgid "Click Save to apply."
 msgstr "انقر فوق حفظ للتطبيق."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "واجهة برمجة تطبيقات الحافظة غير متاحة. يرجى نسخ عنوان URL يدويًا."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "الحافظة غير متاحة. يرجى استخدام زر التنزيل لحفظ الرموز."
-
-#: 
 msgid "Code incomplete"
 msgstr "الرمز غير مكتمل"
 

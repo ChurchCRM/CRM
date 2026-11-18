@@ -12937,14 +12937,6 @@ msgid "Click Save to apply."
 msgstr "Kattintson a Mentés gombra az alkalmazáshoz."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A vágólap API nem elérhető. Kérjük, manuálisan másolja az URL-t."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot."
-
-#: 
 msgid "Code incomplete"
 msgstr "A kód hiányos"
 

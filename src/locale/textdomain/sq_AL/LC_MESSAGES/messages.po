@@ -12903,14 +12903,6 @@ msgid "Click Save to apply."
 msgstr "Kliko Ruaj për të zbatuar."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API e Clipboard nuk është në dispozicion. Ju lutemi kopjojeni URL-in manualisht."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Kllipbordi nuk është i disponueshëm. Ju lutemi përdorni butonin e Shkarkimit për të ruajtur kodet tuaja."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kodi i paplotësuar"
 

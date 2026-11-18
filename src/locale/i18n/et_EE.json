@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "Registreerimine ebaõnnestus. Palun proovige uuesti.",
   "Check-out failed. Please try again.": "Lahkumine ebaõnnestus. Palun proovige uuesti.",
   "Click Save to apply.": "Klõpsake Salvesta, et rakendada.",
-  "Clipboard API not available. Please copy the URL manually.": "Lõikepuhvri API pole saadaval. Kopeerige URL käsitsi.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Lõikelaud pole saadaval. Kasutage koodide salvestamiseks allalaadimise nuppu.",
   "Code incomplete": "Kood pole lõpetatud",
   "Code is invalid": "Kood on sobimatu",
   "Confirm Activation": "Kinnitage aktiveerimine",

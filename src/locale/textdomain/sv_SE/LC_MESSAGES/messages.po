@@ -12999,14 +12999,6 @@ msgid "Click Save to apply."
 msgstr "Klicka på Spara för att tillämpa."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API ii leat geasuheapmi. Maŋŋe vahkke URL almmusin."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Urklipp är inte tillgängligt. Använd knappen Ladda ned för att spara dina koder."
-
-#: 
 msgid "Code incomplete"
 msgstr "Koden ofullständig"
 

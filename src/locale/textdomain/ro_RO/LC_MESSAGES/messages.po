@@ -12981,14 +12981,6 @@ msgid "Click Save to apply."
 msgstr "Faceți clic pe Salvare pentru a aplica."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
-
-#: 
 msgid "Code incomplete"
 msgstr "Cod incomplet"
 

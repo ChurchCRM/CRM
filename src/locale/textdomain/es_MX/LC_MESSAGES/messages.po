@@ -12881,14 +12881,6 @@ msgid "Click Save to apply."
 msgstr "Haga clic en Guardar para aplicar."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API del portapapeles no disponible. Por favor, copia la URL manualmente."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "El portapapeles no está disponible. Use el botón Descargar para guardar sus códigos."
-
-#: 
 msgid "Code incomplete"
 msgstr "Código incompleto"
 

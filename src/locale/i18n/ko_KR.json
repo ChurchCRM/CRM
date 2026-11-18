@@ -3061,8 +3061,6 @@
   "Check-in failed. Please try again.": "체크인에 실패했습니다. 다시 시도해 주세요.",
   "Check-out failed. Please try again.": "체크아웃에 실패했습니다. 다시 시도해 주세요.",
   "Click Save to apply.": "적용하려면 저장을 클릭하세요.",
-  "Clipboard API not available. Please copy the URL manually.": "클립보드 API를 사용할 수 없습니다. URL을 수동으로 복사하십시오.",
-  "Clipboard not available. Please use the Download button to save your codes.": "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요.",
   "Code incomplete": "코드 미완성",
   "Code is invalid": "코드가 유효하지 않음",
   "Confirm Activation": "활성화 확인",

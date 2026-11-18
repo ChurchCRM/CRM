@@ -12909,14 +12909,6 @@ msgid "Click Save to apply."
 msgstr "Cliquez sur Enregistrer pour appliquer."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "L'API du presse-papiers n'est pas disponible. Veuillez copier l'URL manuellement."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Presse-papiers non disponible. Veuillez utiliser le bouton Télécharger pour enregistrer vos codes."
-
-#: 
 msgid "Code incomplete"
 msgstr "Code incomplet"
 

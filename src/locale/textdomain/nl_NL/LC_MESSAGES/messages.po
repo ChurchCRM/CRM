@@ -12882,14 +12882,6 @@ msgid "Click Save to apply."
 msgstr "Klik op Opslaan om toe te passen."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Klembord API niet beschikbaar. Kopieer de URL handmatig."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Klembord niet beschikbaar. Gebruik de downloadknop om uw codes op te slaan."
-
-#: 
 msgid "Code incomplete"
 msgstr "Code onvolledig"
 

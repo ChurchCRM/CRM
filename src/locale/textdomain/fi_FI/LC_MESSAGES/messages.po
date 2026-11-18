@@ -12883,14 +12883,6 @@ msgid "Click Save to apply."
 msgstr "Napsauta Tallenna ottaaksesi käyttöön."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Leikepöydän API ei ole saatavilla. Kopioi URL manuaalisesti."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Leikepöytä ei ole käytettävissä. Käytä Lataa-painiketta tallentaaksesi koodisi."
-
-#: 
 msgid "Code incomplete"
 msgstr "Koodi epätäydellinen"
 

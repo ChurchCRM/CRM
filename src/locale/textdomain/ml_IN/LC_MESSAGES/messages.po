@@ -12879,14 +12879,6 @@ msgid "Click Save to apply."
 msgstr "പ്രയോഗിക്കാൻ Save ക്ലിക്ക് ചെയ്യൂ."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "ക്ലിപ്‌ബോർഡ് API ലഭ്യമല്ല. ദയവായി URL സ്വമേധയാ പകർത്തുക."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ക്ലിപ്പ്ബോർഡ് ലഭ്യമല്ല. കോഡുകൾ സംരക്ഷിക്കാൻ ഡൗൺലോഡ് ബട്ടൺ ഉപയോഗിക്കുക."
-
-#: 
 msgid "Code incomplete"
 msgstr "കോഡ് അപൂർണ്ണം"
 

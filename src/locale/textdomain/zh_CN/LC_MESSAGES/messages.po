@@ -12968,14 +12968,6 @@ msgid "Click Save to apply."
 msgstr "单击保存进行应用。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪贴板API不可用。请手动复制URL。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "剪贴板不可用。请使用下载按钮保存您的代码。"
-
-#: 
 msgid "Code incomplete"
 msgstr "验证码不完整"
 

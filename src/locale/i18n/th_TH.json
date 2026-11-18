@@ -3061,8 +3061,6 @@
   "Check-in failed. Please try again.": "การลงทะเบียนล้มเหลว กรุณาลองอีกครั้ง",
   "Check-out failed. Please try again.": "การลงทะเบียนออกล้มเหลว กรุณาลองอีกครั้ง",
   "Click Save to apply.": "คลิกบันทึกเพื่อใช้งาน",
-  "Clipboard API not available. Please copy the URL manually.": "API คลิปบอร์ดไม่พร้อมใช้งาน โปรดคัดลอก URL ด้วยตนเอง",
-  "Clipboard not available. Please use the Download button to save your codes.": "ไม่สามารถใช้คลิปบอร์ดได้ โปรดใช้ปุ่มดาวน์โหลดเพื่อบันทึกรหัสของคุณ",
   "Code incomplete": "รหัสไม่สมบูรณ์",
   "Code is invalid": "รหัสไม่ถูกต้อง",
   "Confirm Activation": "ยืนยันการเปิดใช้งาน",

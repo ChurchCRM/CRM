@@ -12917,14 +12917,6 @@ msgid "Click Save to apply."
 msgstr "ተግባር ይጠቀሙ ከእንጀራ ጠቅ።"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API አለም አቀፍ አይደለም። እባክዎ URL ን በእጅ ይቅዱ።"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ክሊፕቦርድ አይገኝም። ኮዶቹን ለማስቀመጥ ዝርዝር አውርድ ቁልፍን ይጠቀሙ።"
-
-#: 
 msgid "Code incomplete"
 msgstr "ኮድ አልተጠናቀቀም"
 

@@ -3061,8 +3061,6 @@
   "Check-in failed. Please try again.": "簽到失敗，請重試。",
   "Check-out failed. Please try again.": "簽出失敗，請重試。",
   "Click Save to apply.": "點擊儲存以套用。",
-  "Clipboard API not available. Please copy the URL manually.": "剪貼簿API不可用。請手動複製URL。",
-  "Clipboard not available. Please use the Download button to save your codes.": "剪貼簿不可用。請使用下載按鈕儲存您的驗證碼。",
   "Code incomplete": "驗證碼不完整",
   "Code is invalid": "驗證碼無效",
   "Confirm Activation": "確認激活",

@@ -3091,8 +3091,6 @@
   "Check-in failed. Please try again.": "Відмітка не вдалася. Спробуйте ще раз.",
   "Check-out failed. Please try again.": "Зняття відмітки не вдалося. Спробуйте ще раз.",
   "Click Save to apply.": "Натисніть Зберегти, щоб застосувати.",
-  "Clipboard API not available. Please copy the URL manually.": "API буфера обміну недоступна. Будь ласка, скопіюйте URL вручну.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Буфер обміну недоступний. Скористайтеся кнопкою Завантажити, щоб зберегти коди.",
   "Code incomplete": "Код неповний",
   "Code is invalid": "Код недійсний",
   "Confirm Activation": "Підтвердьте активацію",
