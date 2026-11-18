@@ -39,54 +39,36 @@ describe("Main Dashboard", () => {
  * NOT receive any permission-error popup. A finance user must still
  * see the deposit chart and trigger the backing API call.
  */
-describe("Main Dashboard - Deposits widget authorization", () => {
+describe("Main Dashboard - Finance navigation entry card authorization", () => {
     describe("Finance-enabled user (admin)", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("renders the deposit chart and calls the deposits API", () => {
-            // Deposit #1 is the only fixture deposit with pledges attached, so
-            // it's the only one with real chart data (the others sum to
-            // null). The fixture ships a static date that inevitably ages
-            // past the API's 90-day window, starving the chart of data —
-            // refreshing it to today here keeps the test stable regardless
-            // of when it runs.
-            cy.request({
-                method: "POST",
-                url: "/api/deposits/1",
-                body: {
-                    depositType: "Bank",
-                    depositComment: "Updated Test Deposit",
-                    depositDate: new Date().toISOString().slice(0, 10),
-                    depositClosed: false,
-                },
-            });
-
+        it("displays finance entry card and does not render deposit chart or call deposit API", () => {
             cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
             cy.visit("v2/dashboard");
 
-            // The finance-only row must exist for finance users.
-            cy.get("#depositChartRow").should("exist");
-            cy.get("#deposit-lineGraph").should("exist");
-            cy.contains("Deposit Tracking").should("be.visible");
+            // Deposit chart has moved to finance dashboard
+            cy.get("#depositChartRow").should("not.exist");
+            cy.get("#deposit-lineGraph").should("not.exist");
+            cy.contains("Deposit Tracking").should("not.exist");
 
-            // The JS guard should trigger the deposits API call.
-            cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
-            cy.get("@depositsApi").its("request.url").should("include", "days=90");
+            // Finance entry card is visible and links to finance dashboard
+            cy.get("#financeEntryCard")
+                .should("be.visible")
+                .and("have.attr", "href")
+                .and("include", "/finance/");
+            cy.get("#financeEntryCard").contains("Finance");
 
-            // ApexCharts must actually render into the container, not just
-            // leave an empty div — catches chart-library regressions
-            // (e.g. major version bumps) that a container-existence check
-            // alone would miss.
-            cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
-            cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
+            // Deposits API is not called on home dashboard
+            cy.get("@depositsApi.all").should("have.length", 0);
         });
     });
 
     describe("User without finance permission", () => {
         beforeEach(() => cy.setupNoFinanceSession());
 
-        it("hides the entire deposit tracking card from non-finance users", () => {
+        it("hides the finance entry card and deposit tracking from non-finance users", () => {
             cy.visit("v2/dashboard");
 
             // Wait for the dashboard to fully render before asserting
@@ -94,13 +76,14 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             cy.contains("Families");
             cy.contains("People");
 
-            // Root-cause fix (PHP): the entire deposit tracking row
+            // Root-cause fix (PHP): the finance entry card and deposit tracking
             // must be absent from the DOM, not just hidden.
+            cy.get("#financeEntryCard").should("not.exist");
             cy.get("#depositChartRow").should("not.exist");
             cy.get("#deposit-lineGraph").should("not.exist");
 
-            // No noisy empty-state text advertising a feature the user
-            // cannot access.
+            // No noisy empty-state or finance links for unauthorized users
+            cy.contains("Finance Dashboard").should("not.exist");
             cy.contains("Deposit Tracking").should("not.exist");
             cy.contains("No Deposit Tracking").should("not.exist");
             cy.contains(
@@ -121,12 +104,10 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             cy.contains("People");
             cy.contains("Sunday School");
 
-            // The bootbox error popup ("User must be an Admin or have
-            // Finance permission.") used to appear here — it must not.
+            // The bootbox error popup used to appear here — it must not.
             cy.get(".bootbox").should("not.exist");
 
             // And the deposits endpoint must never have been called.
-            // This is the exact regression being fixed.
             cy.get("@depositsApi.all").should("have.length", 0);
         });
     });

@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
       chart.render();
     }
 
+    initDepositTrackingChart();
+
     if (config.isAdmin) {
       window.CRM.settingsPanel.init({
         container: "#financialSettings",
@@ -82,3 +84,121 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function initDepositTrackingChart() {
+  const $ = window.jQuery || window.$;
+  if (!$("#deposit-lineGraph").length) {
+    return;
+  }
+
+  const allowedDepositDays = [30, 90, 365];
+  const defaultDepositDays = 90;
+  let depositChartRequestId = 0;
+
+  const resolveDepositDays = (rawDays) => {
+    const days = parseInt(rawDays, 10);
+    return allowedDepositDays.includes(days) ? days : defaultDepositDays;
+  };
+
+  const loadDepositChart = (rawDays) => {
+    const days = resolveDepositDays(rawDays);
+    const requestId = ++depositChartRequestId;
+
+    if (window.depositChart) {
+      window.depositChart.destroy();
+      window.depositChart = null;
+    }
+
+    $("#depositChartRow .card-body").html('<div id="deposit-lineGraph" class="deposit-line-graph"></div>');
+
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "deposits/dashboard?days=" + days,
+    }).done((data) => {
+      if (requestId !== depositChartRequestId) {
+        return;
+      }
+
+      const lineDataRaw = data;
+
+      if (!lineDataRaw || lineDataRaw.length === 0) {
+        $("#depositChartRow .card-body").html(
+          '<div class="empty py-4">' +
+            '<div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
+            '<p class="empty-title">' +
+            i18next.t("No Deposits") +
+            "</p>" +
+            '<p class="empty-subtitle text-muted">' +
+            i18next.t("No deposit data available yet") +
+            "</p>" +
+            "</div>",
+        );
+        return;
+      }
+
+      const labels = [];
+      const values = [];
+      $.each(lineDataRaw, (i, val) => {
+        labels.push(moment(val.Date).format("MM-DD-YY"));
+        values.push(val.totalAmount);
+      });
+
+      const depositChartOptions = {
+        chart: {
+          type: "line",
+          height: 250,
+          sparkline: {
+            enabled: false,
+          },
+          toolbar: {
+            show: true,
+            tools: {
+              download: true,
+              selection: true,
+              zoom: true,
+              zoomin: true,
+              zoomout: true,
+              reset: true,
+            },
+          },
+        },
+        series: [
+          {
+            name: i18next.t("Deposit Value"),
+            data: values,
+          },
+        ],
+        xaxis: {
+          categories: labels,
+        },
+        yaxis: {
+          title: {
+            text: i18next.t("Amount"),
+          },
+        },
+        stroke: {
+          curve: "smooth",
+          width: 2,
+        },
+        grid: {
+          show: true,
+          borderColor: "#e0e0e0",
+        },
+      };
+
+      const depositChartElement = document.getElementById("deposit-lineGraph");
+      if (depositChartElement) {
+        const depositChart = new window.ApexCharts(depositChartElement, depositChartOptions);
+        depositChart.render();
+        window.depositChart = depositChart;
+      }
+    });
+  };
+
+  const initialDays = resolveDepositDays($("#deposit-days").val());
+  loadDepositChart(initialDays);
+
+  $("#deposit-days").on("change", function () {
+    loadDepositChart($(this).val());
+  });
+}

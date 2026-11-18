@@ -176,45 +176,67 @@ $sRootPath = SystemURLs::getRootPath();
         </div>
     </div>
 
-    <div class="card mb-3" id="payments-by-fund">
-        <div class="card-header">
-            <h3 class="card-title"><?= gettext('Payments by Fund') ?></h3>
-            <span class="ms-auto text-body-secondary small"><?= InputUtils::escapeHTML($fyLabel) ?></span>
-        </div>
-        <?php if ($paymentsByFund !== []): ?>
-        <div class="row g-0">
-            <div class="col-lg-7 card-body">
-                <div id="payments-by-fund-chart" aria-hidden="true"></div>
+    <div class="row mb-3 g-3">
+        <div class="col-lg-6">
+            <div class="card h-100" id="payments-by-fund">
+                <div class="card-header">
+                    <h3 class="card-title"><?= gettext('Payments by Fund') ?></h3>
+                    <span class="ms-auto text-body-secondary small"><?= InputUtils::escapeHTML($fyLabel) ?></span>
+                </div>
+                <?php if ($paymentsByFund !== []): ?>
+                <div class="row g-0">
+                    <div class="col-lg-7 card-body">
+                        <div id="payments-by-fund-chart" aria-hidden="true"></div>
+                    </div>
+                    <div class="col-lg-5">
+                        <table class="table table-vcenter mb-0">
+                            <caption class="visually-hidden"><?= gettext('Payments by Fund') ?> — <?= InputUtils::escapeHTML($fyLabel) ?></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col"><?= gettext('Fund') ?></th>
+                                    <th scope="col" class="text-end"><?= gettext('Amount') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($paymentsByFund as $fund): ?>
+                                <tr data-fund-id="<?= (int) $fund['fundId'] ?>">
+                                    <th scope="row" class="text-break"><?= InputUtils::escapeHTML($fund['name']) ?></th>
+                                    <td class="text-end text-nowrap"><?= CurrencyFormatter::formatHtml($fund['amount']) ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row"><?= gettext('Total') ?></th>
+                                    <td class="text-end text-nowrap fw-bold"><?= CurrencyFormatter::formatHtml($ytdPaymentTotal ?? 0) ?></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <?php else: ?>
+                <div class="card-body text-body-secondary"><?= gettext('No payments found for this period.') ?></div>
+                <?php endif; ?>
             </div>
-            <div class="col-lg-5">
-                <table class="table table-vcenter mb-0">
-                    <caption class="visually-hidden"><?= gettext('Payments by Fund') ?> — <?= InputUtils::escapeHTML($fyLabel) ?></caption>
-                    <thead>
-                        <tr>
-                            <th scope="col"><?= gettext('Fund') ?></th>
-                            <th scope="col" class="text-end"><?= gettext('Amount') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($paymentsByFund as $fund): ?>
-                        <tr data-fund-id="<?= (int) $fund['fundId'] ?>">
-                            <th scope="row" class="text-break"><?= InputUtils::escapeHTML($fund['name']) ?></th>
-                            <td class="text-end text-nowrap"><?= CurrencyFormatter::formatHtml($fund['amount']) ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th scope="row"><?= gettext('Total') ?></th>
-                            <td class="text-end text-nowrap fw-bold"><?= CurrencyFormatter::formatHtml($ytdPaymentTotal ?? 0) ?></td>
-                        </tr>
-                    </tfoot>
-                </table>
+        </div>
+        <div class="col-lg-6">
+            <div class="card h-100" id="depositChartRow">
+                <div class="card-header d-flex flex-wrap align-items-center gap-2">
+                    <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
+                    <div class="ms-auto d-inline-flex align-items-center gap-2">
+                        <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
+                        <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
+                            <option value="30"><?= gettext('30 days') ?></option>
+                            <option value="90" selected><?= gettext('90 days') ?></option>
+                            <option value="365"><?= gettext('12 months') ?></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="deposit-lineGraph" class="deposit-line-graph"></div>
+                </div>
             </div>
         </div>
-        <?php else: ?>
-        <div class="card-body text-body-secondary"><?= gettext('No payments found for this period.') ?></div>
-        <?php endif; ?>
     </div>
 
     <div class="row">

@@ -90,3 +90,66 @@ describe("Treasurer reviews payments by fund", () => {
         cy.get("#payments-by-fund-chart").should("not.exist");
     });
 });
+
+describe("Deposit Tracking on Finance Dashboard", () => {
+    describe("Finance-enabled user", () => {
+        beforeEach(() => {
+            cy.setupFinanceOnlySession();
+            cy.request({
+                method: "POST",
+                url: "/api/deposits/1",
+                body: {
+                    depositType: "Bank",
+                    depositComment: "Updated Test Deposit",
+                    depositDate: new Date().toISOString().slice(0, 10),
+                    depositClosed: false,
+                },
+                failOnStatusCode: false,
+            });
+        });
+
+        it("renders the deposit chart and calls the deposits API with default 90 days", () => {
+            cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
+
+            cy.visit("/finance/");
+
+            cy.get("#depositChartRow").should("exist");
+            cy.get("#deposit-lineGraph").should("exist");
+            cy.contains("Deposit Tracking").should("be.visible");
+
+            cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
+            cy.get("@depositsApi").its("request.url").should("include", "days=90");
+
+            cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
+            cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
+        });
+
+        it("updates time range when selecting 30 days and 12 months", () => {
+            cy.intercept("GET", "**/api/deposits/dashboard?days=30").as("deposits30");
+            cy.intercept("GET", "**/api/deposits/dashboard?days=365").as("deposits365");
+
+            cy.visit("/finance/");
+
+            cy.get("#deposit-days").select("30");
+            cy.wait("@deposits30").its("response.statusCode").should("eq", 200);
+
+            cy.get("#deposit-days").select("365");
+            cy.wait("@deposits365").its("response.statusCode").should("eq", 200);
+        });
+    });
+
+    describe("User without finance permission", () => {
+        beforeEach(() => cy.setupNoFinanceSession());
+
+        it("denies access to finance dashboard and deposit tracking", () => {
+            cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
+
+            cy.visit("/finance/", { failOnStatusCode: false });
+
+            cy.url().should("include", "/v2/access-denied");
+            cy.get("#depositChartRow").should("not.exist");
+            cy.get("#deposit-lineGraph").should("not.exist");
+            cy.get("@depositsApi.all").should("have.length", 0);
+        });
+    });
+});

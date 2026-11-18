@@ -1,6 +1,6 @@
 /**
  * Root Dashboard — webpack entry
- * Initializes dashboard tables and ApexCharts deposit tracker
+ * Initializes dashboard tables and widgets
  */
 
 import { initializeMainDashboard } from "../src/skin/js/MainDashboard";

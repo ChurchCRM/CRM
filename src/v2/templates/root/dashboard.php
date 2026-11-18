@@ -142,6 +142,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <?php endif; ?>
     </div>
+    <?php if ($depositEnabled): ?>
+    <div class="col-6 col-md-4 col-lg">
+        <a href="<?= $sRootPath ?>/finance/" class="card card-sm text-decoration-none" id="financeEntryCard">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-green text-white avatar rounded-circle">
+                            <i class="fa-solid fa-coins icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium text-body"><?= gettext('Finance') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Dashboard') ?></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?php if ($eventsEnabled) { ?>
@@ -242,29 +261,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-
-<?php if ($depositEnabled) { ?>
-<div class="row">
-    <div class="col-12">
-        <div class="card mb-3" id="depositChartRow">
-            <div class="card-header d-flex flex-wrap align-items-center gap-2">
-                <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
-                <div class="ms-auto d-inline-flex align-items-center gap-2">
-                    <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
-                    <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
-                        <option value="30"><?= gettext('30 days') ?></option>
-                        <option value="90" selected><?= gettext('90 days') ?></option>
-                        <option value="365"><?= gettext('12 months') ?></option>
-                    </select>
-                </div>
-            </div>
-            <div class="card-body">
-                <div id="deposit-lineGraph" class="deposit-line-graph"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
 <?php
