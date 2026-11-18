@@ -4,10 +4,18 @@ import { restoreSettings, setConfig, useMemberSignIn } from "../../../support/me
 
 // The family page re-renders the actions dropdown as its async pieces
 // land; a click issued the moment the element appears can hit a detached
-// node (master run 44228216478). Wait for visibility first — the same
-// settle pattern as the coordinator spec logins (#11742).
+// node (master run 44228216478). Visibility alone did not settle it —
+// the click still detached on master run 44416437007, in the test that
+// re-visits the page after changing the sign-in classification. So:
+// wait for the late-loading verification card to land first, then
+// re-query the button in a separate command and focus it before
+// clicking. A chained .click() keeps the subject captured before the
+// re-render and clicks the detached node; a fresh query picks up the
+// replacement node instead.
 const openActionsDropdown = () => {
-    cy.get("#family-actions-dropdown").should("be.visible").click();
+    cy.get("#family-verification-card").should("be.visible");
+    cy.get("#family-actions-dropdown").should("be.visible");
+    cy.get("#family-actions-dropdown").focus().click();
 };
 
 const openVerifyModal = () => {
