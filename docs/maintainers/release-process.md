@@ -144,6 +144,7 @@ Starts after Publish (3.4) and runs about a week.
 | 6.5 | A few days later, share the blog post on social media | | ✋ |
 | 6.6 | Week-long marketing push | | ✋ |
 | 6.7 | Evaluate the campaign | Signals: GA4 on churchcrm.io (`utm_campaign=release-<tag>` on Discord links, `github_content` on README/CONTRIBUTING links), GitHub release ZIP download counts, PostHog `crm_version` for opted-in installs, social platform analytics | ✋ |
+| 6.8 | Softaculous: send nothing | Softaculous (Script 621) pulls new releases on its own next-day cycle — it checks daily, rebuilds, tests, and launches within about 24h — so a release-notification email changes nothing and is not sent. Contact Punit (punit@softaculous.com) only for substantive issues, such as the demo | ✋ |
 
 Marketing judgment calls stay with the maintainer: which feature leads, whether a blog is warranted, and the week's cadence. An agent can draft the week's plan (launch posts, blog draft, blog share, follow-ups) from the final release notes.
 
