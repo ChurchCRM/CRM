@@ -717,11 +717,15 @@ window.Stepper = Stepper;
   // Credentials the server needs to read the database version
   const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_USER", "DB_PASSWORD"];
 
+  // Bumped whenever a connection field changes, so a check that finishes afterwards is ignored
+  let databaseCheckId = 0;
+
   function isDatabaseWarningShown() {
     return !$("#db-version-warning").hasClass("d-none");
   }
 
   function hideDatabaseWarning() {
+    databaseCheckId += 1;
     $("#db-version-warning").addClass("d-none");
     $("#db-version-ack").prop("checked", false);
     $("#submit-setup").prop("disabled", false);
@@ -762,7 +766,11 @@ window.Stepper = Stepper;
     }
 
     $("#submit-setup").prop("disabled", true);
+    const checkId = databaseCheckId;
     checkDatabaseVersion().then((result) => {
+      if (checkId !== databaseCheckId) {
+        return; // the connection settings changed while checking: the next click checks the new ones
+      }
       if (result && result.supported === false) {
         showDatabaseWarning(result);
         return;
