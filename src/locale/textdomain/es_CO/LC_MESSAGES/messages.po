@@ -5043,10 +5043,6 @@ msgid "Enter event description..."
 msgstr "Ingrese la descripción del evento..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Ingrese nota de texto aquí..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -8011,10 +8007,6 @@ msgid "or later to continue."
 msgstr "o posterior para continuar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notas de \"por qué vino\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultado para \"%s\""
@@ -8124,10 +8116,6 @@ msgstr "Añadir o editar registros individuales de personas"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Añadir o editar artículos donados para eventos de recaudación de fondos"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Añadir o editar notas de personas y familias"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9090,10 +9078,6 @@ msgstr "Registrar varios ganadores del sorteo benéfico a la vez"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Registrar nuevos compromisos de donación y pagos"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Registrar por qué los asistentes visitaron su parroquia"
 
 #: 
 msgid "Remove from Class"
@@ -14425,24 +14409,12 @@ msgid "People &amp; Families"
 msgstr "Personas &amp; Familias"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "La nota que intenta editar ya no existe."
-
-#: 
 msgid "User List"
 msgstr "Lista de usuarios"
 
 #: 
 msgid "View Person"
 msgstr "Ver persona"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "No tiene permiso para agregar una nota para esta familia."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "No tiene permiso para agregar una nota para esta persona."
 
 #: 
 msgid "Account locked"
@@ -15145,10 +15117,6 @@ msgstr "El monto de la meta debe ser no negativo"
 #: 
 msgid "thru %s"
 msgstr "hasta %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notas de \"Por qué vino\" para %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

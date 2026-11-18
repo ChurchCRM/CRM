@@ -5043,10 +5043,6 @@ msgid "Enter event description..."
 msgstr "Zadajte popis udalosti..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Zadajte text poznámky..."
-
-#: 
 msgid "Note"
 msgstr "Poznámka"
 
@@ -8017,10 +8013,6 @@ msgid "or later to continue."
 msgstr "alebo novšiu na pokračovanie."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Prečo prišli\" Poznámky"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d výsledok pre \"%s\""
@@ -8131,10 +8123,6 @@ msgstr "Pridať alebo upraviť záznamy jednotlivých osôb"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Pridať alebo upraviť darované položky pre zbierky"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Pridať alebo upraviť poznámky pre osoby a rodiny"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9097,10 +9085,6 @@ msgstr "Zaznamenať viacerých víťazov zbierky naraz"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Zaznamenať nové záväzky a platby"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Zaznamenať, prečo návštevníci navštívili vašu cirkev"
 
 #: 
 msgid "Remove from Class"
@@ -14433,24 +14417,12 @@ msgid "People &amp; Families"
 msgstr "Ľudia &amp; Rodiny"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Poznámka, ktorú sa pokúšate upraviť, už neexistuje."
-
-#: 
 msgid "User List"
 msgstr "Zoznam používateľov"
 
 #: 
 msgid "View Person"
 msgstr "Zobraziť osobu"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nemáte oprávnenie pridať poznámku pre túto rodinu."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
 
 #: 
 msgid "Account locked"
@@ -15155,10 +15127,6 @@ msgstr "goalAmount musí byť nezáporné"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Poznámky Prečo prišiel pre %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

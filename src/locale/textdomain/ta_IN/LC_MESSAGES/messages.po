@@ -5071,10 +5071,6 @@ msgid "Enter event description..."
 msgstr "நிகழ்வு விளக்கத்தை உள்ளிடவும்..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "குறிப்பு உரையை இங்கே உள்ளிடவும்..."
-
-#: 
 msgid "Note"
 msgstr "குறிப்பு"
 
@@ -8040,10 +8036,6 @@ msgid "or later to continue."
 msgstr "அல்லது தொடர பிறகு."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"ஏன் வந்தீர்கள்\" குறிப்புகள்"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\" க்கு %d முடிவு"
@@ -8152,10 +8144,6 @@ msgstr "தனிநபர் பதிவுகளைச் சேர்க்�
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "நிதி திரட்டல் நிகழ்வுகளுக்கு நன்கொடையளிக்கப்பட்ட பொருட்களைச் சேர்க்க அல்லது திருத்த"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "நபர்கள் மற்றும் குடும்பங்களுக்கான குறிப்புகளைச் சேர்க்க அல்லது திருத்த"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9118,10 +9106,6 @@ msgstr "ஒரே நேரத்தில் பல நிதி திரட�
 #: 
 msgid "Record new pledges and payments"
 msgstr "புதிய நிதி உறுதிமொழிகள் மற்றும் பணம் செலுத்தல்களைப் பதிவு செய்யுங்கள்"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "வருகையாளர்கள் ஏன் உங்கள் திருச்சபைக்கு வந்தார்கள் என்பதைப் பதிவு செய்யுங்கள்"
 
 #: 
 msgid "Remove from Class"
@@ -14456,24 +14440,12 @@ msgid "People &amp; Families"
 msgstr "நபர்கள் &amp; குடும்பங்கள்"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "நீங்கள் திருத்த முயற்சிக்கும் குறிப்பு இனி இல்லை."
-
-#: 
 msgid "User List"
 msgstr "பயனர் பட்டியல்"
 
 #: 
 msgid "View Person"
 msgstr "நபரைப் பார்க்கவும்"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "இந்த குடும்பத்திற்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "இந்த நபருக்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
 
 #: 
 msgid "Account locked"
@@ -15174,10 +15146,6 @@ msgstr "இலக்கு தொகை எதிர்மறையற்றத�
 #: 
 msgid "thru %s"
 msgstr "%s வரை"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s-க்கான \"ஏன் வந்தார்\" குறிப்புகள்"
 
 #: 
 msgid "%1$s of the %2$s family"

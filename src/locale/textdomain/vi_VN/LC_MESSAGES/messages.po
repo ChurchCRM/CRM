@@ -5079,10 +5079,6 @@ msgid "Enter event description..."
 msgstr "Nhập mô tả sự kiện..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Nhập nội dung ghi chú tại đây..."
-
-#: 
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -8035,10 +8031,6 @@ msgid "or later to continue."
 msgstr "hoặc mới hơn để tiếp tục."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Ghi chu \"Ly do den\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d kết quả cho \"%s\""
@@ -8146,10 +8138,6 @@ msgstr "Them hoac chinh sua ho so ca nhan"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Them hoac chinh sua cac mon qua tang cho su kien gay quy"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Them hoac chinh sua ghi chu cho ca nhan va gia dinh"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9112,10 +9100,6 @@ msgstr "Ghi nhan nhieu nguoi trung thuong gay quy cung luc"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Ghi nhận cam kết dâng hiến và các khoản dâng hiến mới"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 
 #: 
 msgid "Remove from Class"
@@ -14442,24 +14426,12 @@ msgid "People &amp; Families"
 msgstr "Cá nhân &amp; Gia đình"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
-
-#: 
 msgid "User List"
 msgstr "Danh sách người dùng"
 
 #: 
 msgid "View Person"
 msgstr "Xem thông tin cá nhân"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Bạn không có quyền thêm ghi chú cho người này."
 
 #: 
 msgid "Account locked"
@@ -15158,10 +15130,6 @@ msgstr "goalAmount phải không âm"
 #: 
 msgid "thru %s"
 msgstr "đến %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Ghi chú \"Lý do đến\" cho %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

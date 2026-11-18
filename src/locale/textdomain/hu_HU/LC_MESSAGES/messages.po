@@ -5097,10 +5097,6 @@ msgid "Enter event description..."
 msgstr "Adjon meg eseményleírást..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Adjon meg jegyzet szöveget itt..."
-
-#: 
 msgid "Note"
 msgstr "Megjegyzés"
 
@@ -8059,10 +8055,6 @@ msgid "or later to continue."
 msgstr "vagy újabb a folytatáshoz."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Miért jött\" megjegyzések"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d találat erre: \"%s\""
@@ -8171,10 +8163,6 @@ msgstr "Személyi adatlapok hozzáadása vagy szerkesztése"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adománygyűjtő rendezvényekhez felajánlott tárgyak hozzáadása vagy szerkesztése"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Megjegyzések hozzáadása vagy szerkesztése személyekhez és családokhoz"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9137,10 +9125,6 @@ msgstr "Több adománygyűjtési sorsolási nyertes rögzítése egyszerre"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Új felajánlások és befizetések rögzítése"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
 msgid "Remove from Class"
@@ -14469,24 +14453,12 @@ msgid "People &amp; Families"
 msgstr "Személyek &amp; Családok"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
-
-#: 
 msgid "User List"
 msgstr "Felhasználók listája"
 
 #: 
 msgid "View Person"
 msgstr "Személy megtekintése"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
 
 #: 
 msgid "Account locked"
@@ -15187,10 +15159,6 @@ msgstr "A célösszeg nem lehet negatív"
 #: 
 msgid "thru %s"
 msgstr "%s-ig"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Miért jött jegyzetek %1$s %2$s számára"
 
 #: 
 msgid "%1$s of the %2$s family"

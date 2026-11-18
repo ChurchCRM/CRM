@@ -5039,10 +5039,6 @@ msgid "Enter event description..."
 msgstr "Ipasok ang paglalarawan ng kaganapan..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Ipasok ang teksto ng tala dito..."
-
-#: 
 msgid "Note"
 msgstr "Tala"
 
@@ -8001,10 +7997,6 @@ msgid "or later to continue."
 msgstr "o mas bago para magpatuloy."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Mga Tala ng \"Bakit Dumating\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resulta para sa \"%s\""
@@ -8113,10 +8105,6 @@ msgstr "Magdagdag o mag-edit ng mga indibidwal na rekord ng tao"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Magdagdag o mag-edit ng mga item na ibinigay para sa mga fundraising na kaganapan"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Magdagdag o mag-edit ng mga tala para sa mga tao at pamilya"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9079,10 +9067,6 @@ msgstr "Itala ang maraming panalo ng pagguhit ng fundraiser nang sabay-sabay"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Itala ang mga bagong pangako at pagbabayad"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Itala kung bakit dumalo ang mga kalahok sa iyong simbahan"
 
 #: 
 msgid "Remove from Class"
@@ -14411,24 +14395,12 @@ msgid "People &amp; Families"
 msgstr "Mga Tao &amp; Mga Pamilya"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Ang talang sinusubukan mong i-edit ay wala na."
-
-#: 
 msgid "User List"
 msgstr "Listahan ng mga Gumagamit"
 
 #: 
 msgid "View Person"
 msgstr "Tingnan ang Tao"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Wala kang pahintulot na magdagdag ng tala para sa pamilyang ito."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Wala kang pahintulot na magdagdag ng tala para sa taong ito."
 
 #: 
 msgid "Account locked"
@@ -15129,10 +15101,6 @@ msgstr "Ang goalAmount ay dapat na hindi negatibo"
 #: 
 msgid "thru %s"
 msgstr "hanggang %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Mga tala ng Dahil sa Pagdating para kay %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

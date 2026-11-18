@@ -5076,10 +5076,6 @@ msgid "Enter event description..."
 msgstr "أدخل وصف الحدث..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "أدخل نص الملاحظة هنا..."
-
-#: 
 msgid "Note"
 msgstr "ملاحظة"
 
@@ -8062,10 +8058,6 @@ msgid "or later to continue."
 msgstr "أو أحدث للمتابعة."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "ملاحظات \"لماذا جاء\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "لا توجد نتائج لـ \"%s\""
@@ -8178,10 +8170,6 @@ msgstr "أضف أو عدل سجلات الأشخاص الفردية"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "أضف أو عدل العناصر المتبرع بها لأحداث جمع التبرعات"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "أضف أو عدل الملاحظات للأشخاص والعائلات"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9144,10 +9132,6 @@ msgstr "تسجيل عدة فائزين من سحب الجمع الخيري في 
 #: 
 msgid "Record new pledges and payments"
 msgstr "تسجيل التعهدات والدفعات الجديدة"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "سجل لماذا زار الحاضرون كنيستك"
 
 #: 
 msgid "Remove from Class"
@@ -14484,24 +14468,12 @@ msgid "People &amp; Families"
 msgstr "الأفراد والعائلات"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
-
-#: 
 msgid "User List"
 msgstr "قائمة المستخدمين"
 
 #: 
 msgid "View Person"
 msgstr "عرض الشخص"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائلة."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
 
 #: 
 msgid "Account locked"
@@ -15210,10 +15182,6 @@ msgstr "يجب أن يكون مبلغ الهدف غير سالب"
 #: 
 msgid "thru %s"
 msgstr "حتى %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "ملاحظات \"سبب الحضور\" لـ %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

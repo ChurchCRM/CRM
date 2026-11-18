@@ -5063,10 +5063,6 @@ msgid "Enter event description..."
 msgstr "Vendosni përshkrimin e ngjarjes..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Vendosni tekstin e shënimit këtu..."
-
-#: 
 msgid "Note"
 msgstr "Shënim"
 
@@ -8025,10 +8021,6 @@ msgid "or later to continue."
 msgstr "ose më vonë për të vazhduar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Shënime \"Pse Erdhe\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat për \"%s\""
@@ -8137,10 +8129,6 @@ msgstr "Shto ose redakto skedarët e personave individualë"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Shto ose redakto artikujt e dhuruar për ngjarjet e mbledhjes së fondeve"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Shto ose redakto shënime për njerëzit dhe familjet"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9103,10 +9091,6 @@ msgstr "Regjistroj fitues të nxjerrjes së mbledhjes fundesh me shumë njëher�
 #: 
 msgid "Record new pledges and payments"
 msgstr "Regjistroj premtimet dhe pagesa të reja"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
 
 #: 
 msgid "Remove from Class"
@@ -14435,24 +14419,12 @@ msgid "People &amp; Families"
 msgstr "Njerëz &amp; Familje"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
-
-#: 
 msgid "User List"
 msgstr "Lista e Përdoruesve"
 
 #: 
 msgid "View Person"
 msgstr "Shiko Personin"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
 
 #: 
 msgid "Account locked"
@@ -15153,10 +15125,6 @@ msgstr "goalAmount duhet të jetë jo-negativ"
 #: 
 msgid "thru %s"
 msgstr "deri %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Shënime Pse erdhi për %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

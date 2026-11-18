@@ -5039,10 +5039,6 @@ msgid "Enter event description..."
 msgstr "Unesite opis događaja..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Unesite tekst bilješke ovdje..."
-
-#: 
 msgid "Note"
 msgstr "Bilješka"
 
@@ -8007,10 +8003,6 @@ msgid "or later to continue."
 msgstr "ili noviju za nastavak."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Bilješke „Zašto sam došao“"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat za \"%s\""
@@ -8120,10 +8112,6 @@ msgstr "Dodaj ili uredi pojedinačne zapise osoba"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Dodaj ili uredi stavke donirane za akcije prikupljanja sredstava"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Dodaj ili uredi bilješke za vjernike i obitelji"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9086,10 +9074,6 @@ msgstr "Bilježite više dobitnika akcije prikupljanja odjednom"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Bilježite nove zavjete i uplate"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Bilježite zašto su posjetitelji došli u vašu župu"
 
 #: 
 msgid "Remove from Class"
@@ -14420,24 +14404,12 @@ msgid "People &amp; Families"
 msgstr "Osobe i obitelji"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Bilješka koju pokušavate urediti više ne postoji."
-
-#: 
 msgid "User List"
 msgstr "Popis korisnika"
 
 #: 
 msgid "View Person"
 msgstr "Pregled osobe"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nemate dozvolu za dodavanje bilješke za ovu obitelj."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
 
 #: 
 msgid "Account locked"
@@ -15140,10 +15112,6 @@ msgstr "goalAmount mora biti nenegativan"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Bilješke Zašto je došao za %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

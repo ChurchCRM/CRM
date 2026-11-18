@@ -5076,10 +5076,6 @@ msgid "Enter event description..."
 msgstr "Введіть опис події..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Введіть текст нотатки тут..."
-
-#: 
 msgid "Note"
 msgstr "Нотатка"
 
@@ -8050,10 +8046,6 @@ msgid "or later to continue."
 msgstr "або пізнішу версію для продовження."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Примітки \"Чому прибув\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "Один результат для \"%s\""
@@ -8164,10 +8156,6 @@ msgstr "Додати або відредагувати записи окреми
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Додати або відредагувати предмети, пожертвовані для збору коштів"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Додати або відредагувати примітки для людей та сімей"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9130,10 +9118,6 @@ msgstr "Записуйте кількох переможців розіграш�
 #: 
 msgid "Record new pledges and payments"
 msgstr "Записуйте нові обіцянки та платежі"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Запишіть, чому відвідувачі відвідали вашу церкву"
 
 #: 
 msgid "Remove from Class"
@@ -14466,24 +14450,12 @@ msgid "People &amp; Families"
 msgstr "Люди &amp; Родини"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Нотатка, яку ви намагаєтесь редагувати, більше не існує."
-
-#: 
 msgid "User List"
 msgstr "Список користувачів"
 
 #: 
 msgid "View Person"
 msgstr "Переглянути особу"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "У вас немає дозволу додавати нотатку для цієї родини."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "У вас немає дозволу додавати нотатку для цієї особи."
 
 #: 
 msgid "Account locked"
@@ -15188,10 +15160,6 @@ msgstr "goalAmount має бути невід'ємним"
 #: 
 msgid "thru %s"
 msgstr "до %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Нотатки \"Чому прийшов\" для %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

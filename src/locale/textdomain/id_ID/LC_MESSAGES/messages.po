@@ -5068,10 +5068,6 @@ msgid "Enter event description..."
 msgstr "Masukkan deskripsi event..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Masukkan catatan..."
-
-#: 
 msgid "Note"
 msgstr "Catatan"
 
@@ -8024,10 +8020,6 @@ msgid "or later to continue."
 msgstr "atau lebih baru untuk melanjutkan."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Catatan \"Alasan Datang\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d hasil untuk \"%s\""
@@ -8135,10 +8127,6 @@ msgstr "Tambah atau edit catatan individu"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Tambah atau edit barang yang disumbangkan untuk acara penggalangan dana"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Tambah atau edit catatan untuk orang dan keluarga"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9101,10 +9089,6 @@ msgstr "Catat beberapa pemenang undian penggalangan dana sekaligus"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Catat janji persembahan dan pembayaran baru"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Catat mengapa peserta mengunjungi gereja Anda"
 
 #: 
 msgid "Remove from Class"
@@ -14431,24 +14415,12 @@ msgid "People &amp; Families"
 msgstr "Anggota &amp; Keluarga"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Catatan yang ingin Anda edit sudah tidak ada."
-
-#: 
 msgid "User List"
 msgstr "Daftar Pengguna"
 
 #: 
 msgid "View Person"
 msgstr "Lihat Anggota"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
 
 #: 
 msgid "Account locked"
@@ -15147,10 +15119,6 @@ msgstr "goalAmount harus non-negatif"
 #: 
 msgid "thru %s"
 msgstr "s.d. %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Catatan \"Alasan Datang\" untuk %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

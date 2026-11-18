@@ -5043,10 +5043,6 @@ msgid "Enter event description..."
 msgstr "Syötä tapahtuman kuvaus..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Kirjoita muistiinpano tähän..."
-
-#: 
 msgid "Note"
 msgstr "Muistiinpano"
 
@@ -8005,10 +8001,6 @@ msgid "or later to continue."
 msgstr "tai uudempi jatkaaksesi."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Tulosyy\" -muistiinpanot"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d tulos haulle \"%s\""
@@ -8117,10 +8109,6 @@ msgstr "Lisää tai muokkaa yksittäisten henkilöiden tietoja"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Lisää tai muokkaa varainkeruutapahtumiin lahjoitettuja esineitä"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Lisää tai muokkaa henkilöiden ja perheiden muistiinpanoja"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9083,10 +9071,6 @@ msgstr "Kirjaa useita varainkeruuarvonnan voittajia kerralla"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Kirjaa uusia lupauksia ja maksuja"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Kirjaa, miksi kävijät vierailivat seurakunnassasi"
 
 #: 
 msgid "Remove from Class"
@@ -14415,24 +14399,12 @@ msgid "People &amp; Families"
 msgstr "Henkilöt &amp; Perheet"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Muokattavaksi yritettävää muistiinpanoa ei enää ole olemassa."
-
-#: 
 msgid "User List"
 msgstr "Käyttäjäluettelo"
 
 #: 
 msgid "View Person"
 msgstr "Tarkastele henkilöä"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
 
 #: 
 msgid "Account locked"
@@ -15133,10 +15105,6 @@ msgstr "goalAmount ei saa olla negatiivinen"
 #: 
 msgid "thru %s"
 msgstr "%s asti"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Miksi tuli\" -muistiinpanot henkilölle %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
