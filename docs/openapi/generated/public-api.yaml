@@ -31,49 +31,32 @@ servers:
     url: 'http://localhost/churchcrm'
     description: 'Local development at /churchcrm'
 paths:
-  /api/public/data/countries:
+  '/api/public/portal-calendar/{token}/calendar.ics':
     get:
       tags:
-        - Lookups
-      summary: 'List all countries'
-      description: 'Returns the full list of countries used in address fields.'
-      operationId: getCountries
-      responses:
-        '200':
-          description: 'Array of country objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
-                  type: object
-  '/api/public/data/countries/{countryCode}/states':
-    get:
-      tags:
-        - Lookups
-      summary: 'List states/provinces for a country'
-      description: 'Returns all states or provinces for the given ISO country code.'
-      operationId: getStates
+        - 'Member Portal'
+      summary: "A member's Member Portal calendar feed (iCalendar)"
+      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, as is the token of a person who may no longer sign in to the Member Portal.'
+      operationId: getPortalCalendarFeed
       parameters:
         -
-          name: countryCode
+          name: token
           in: path
-          description: 'ISO 3166-1 alpha-2 country code'
+          description: "The member's feed token, 64 hex characters, from the Subscribe dialog on the portal calendar page"
           required: true
           schema:
             type: string
-            example: US
+            example: 4f3c…
       responses:
         '200':
-          description: 'Array of state/province objects'
+          description: 'An iCalendar document'
           content:
-            application/json:
+            text/calendar:
               schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
-                  type: object
+                type: string
+                format: binary
+        '404':
+          description: 'Unknown token, a token that has been reset, or a person who may no longer sign in'
   /api/public/user/login:
     post:
       tags:
@@ -151,32 +134,125 @@ paths:
                 type: object
         '400':
           description: 'userName field is required'
-  '/api/public/portal-calendar/{token}/calendar.ics':
+  /api/public/echo:
     get:
       tags:
-        - 'Member Portal'
-      summary: "A member's Member Portal calendar feed (iCalendar)"
-      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, as is the token of a person who may no longer sign in to the Member Portal.'
-      operationId: getPortalCalendarFeed
+        - Utility
+      summary: 'Health check / echo'
+      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
+      operationId: getEcho
+      responses:
+        '200':
+          description: 'Echo response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: echo }
+                type: object
+  /api/public/csp-report:
+    post:
+      tags:
+        - Utility
+      summary: 'Log a Content Security Policy violation report'
+      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
+      operationId: logCSPReport
+      requestBody:
+        description: 'CSP violation report object (browser-generated)'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              csp-report:
+                document-uri: 'https://example.com'
+                violated-directive: script-src
+      responses:
+        '204':
+          description: 'Report logged successfully (no content)'
+        '429':
+          description: 'Too many reports from this address; nothing was logged'
+  '/api/public/calendar/{CalendarAccessToken}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events as JSON'
+      description: 'Returns events for a publicly shared calendar using its access token.'
+      operationId: getPublicCalendarEvents
       parameters:
         -
-          name: token
+          name: CalendarAccessToken
           in: path
-          description: "The member's feed token, 64 hex characters, from the Subscribe dialog on the portal calendar page"
+          description: "The calendar's public access token (found in calendar settings)"
           required: true
           schema:
             type: string
-            example: 4f3c…
+            example: abc123token
       responses:
         '200':
-          description: 'An iCalendar document'
+          description: 'Array of event objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  '/api/public/calendar/{CalendarAccessToken}/ics':
+    get:
+      tags:
+        - Calendar
+      summary: 'Download public calendar as ICS file'
+      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
+      operationId: getPublicCalendarICS
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'iCalendar file'
           content:
             text/calendar:
               schema:
                 type: string
                 format: binary
         '404':
-          description: 'Unknown token, a token that has been reset, or a person who may no longer sign in'
+          description: 'Invalid or expired access token'
+  '/api/public/calendar/{CalendarAccessToken}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events in FullCalendar format'
+      description: 'Returns events formatted for the FullCalendar JavaScript library.'
+      operationId: getPublicCalendarFullCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
   /api/public/register/family:
     post:
       tags:
@@ -339,125 +415,49 @@ paths:
                   error: { type: string, example: 'Validation Error' }
                   failures: { type: array, items: { type: string } }
                 type: object
-  /api/public/echo:
+  /api/public/data/countries:
     get:
       tags:
-        - Utility
-      summary: 'Health check / echo'
-      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
-      operationId: getEcho
+        - Lookups
+      summary: 'List all countries'
+      description: 'Returns the full list of countries used in address fields.'
+      operationId: getCountries
       responses:
         '200':
-          description: 'Echo response'
-          content:
-            application/json:
-              schema:
-                properties:
-                  message: { type: string, example: echo }
-                type: object
-  /api/public/csp-report:
-    post:
-      tags:
-        - Utility
-      summary: 'Log a Content Security Policy violation report'
-      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
-      operationId: logCSPReport
-      requestBody:
-        description: 'CSP violation report object (browser-generated)'
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-            example:
-              csp-report:
-                document-uri: 'https://example.com'
-                violated-directive: script-src
-      responses:
-        '204':
-          description: 'Report logged successfully (no content)'
-        '429':
-          description: 'Too many reports from this address; nothing was logged'
-  '/api/public/calendar/{CalendarAccessToken}/events':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events as JSON'
-      description: 'Returns events for a publicly shared calendar using its access token.'
-      operationId: getPublicCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          description: "The calendar's public access token (found in calendar settings)"
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'Array of event objects'
+          description: 'Array of country objects'
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
+                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
                   type: object
-        '404':
-          description: 'Invalid or expired access token'
-  '/api/public/calendar/{CalendarAccessToken}/ics':
+  '/api/public/data/countries/{countryCode}/states':
     get:
       tags:
-        - Calendar
-      summary: 'Download public calendar as ICS file'
-      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
-      operationId: getPublicCalendarICS
+        - Lookups
+      summary: 'List states/provinces for a country'
+      description: 'Returns all states or provinces for the given ISO country code.'
+      operationId: getStates
       parameters:
         -
-          name: CalendarAccessToken
+          name: countryCode
           in: path
+          description: 'ISO 3166-1 alpha-2 country code'
           required: true
           schema:
             type: string
-            example: abc123token
+            example: US
       responses:
         '200':
-          description: 'iCalendar file'
-          content:
-            text/calendar:
-              schema:
-                type: string
-                format: binary
-        '404':
-          description: 'Invalid or expired access token'
-  '/api/public/calendar/{CalendarAccessToken}/fullcalendar':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events in FullCalendar format'
-      description: 'Returns events formatted for the FullCalendar JavaScript library.'
-      operationId: getPublicCalendarFullCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'FullCalendar-compatible event array'
+          description: 'Array of state/province objects'
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
+                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
                   type: object
-        '404':
-          description: 'Invalid or expired access token'
 tags:
   -
     name: Utility
