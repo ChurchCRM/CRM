@@ -24057,10 +24057,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "Wpłaty, których nie ma jeszcze na żadnym depozycie: %d."
 
 #: 
-msgid "Closing line"
-msgstr "Zdanie końcowe"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Każdy depozyt z datą w tym roku jest zamknięty."
 
@@ -24073,28 +24069,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Każda wpłata z tego roku jest na depozycie."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Wygeneruj zestawienia podatkowe"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport ofiar (zestawienia podatkowe)"
-
-#: 
-msgid "Opening line"
-msgstr "Zdanie wstępne"
-
-#: 
 msgid "Qty"
 msgstr "Ilość"
-
-#: 
-msgid "Signed by"
-msgstr "Podpisane przez"
-
-#: 
-msgid "Thank-you line"
-msgstr "Zdanie z podziękowaniem"
 
 #: 
 msgid "Year-End Giving"
@@ -24253,10 +24229,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Katalog tymczasowy PDF musi być bezwzględną ścieżką katalogu."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Numer podatkowy kościoła (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Zdanie końcowe"
 
@@ -24299,10 +24271,6 @@ msgstr "Ustawienia zestawienia"
 #: 
 msgid "Statement Wording"
 msgstr "Treść zestawienia"
-
-#: 
-msgid "Tax Information"
-msgstr "Informacje podatkowe"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24351,10 +24319,6 @@ msgstr "Używana jest nazwa i adres kościoła"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Używana jest ścieżka winiety ustawiona w Ustawieniach systemu"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Treść, numer podatkowy i obsługa PDF dla zestawień darowizn"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27174,10 +27138,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Wyłącz także logowanie, aby nie mogli korzystać z Portalu członka"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Zanim wyślesz zestawienia"
-
-#: 
 msgid "Birthday today"
 msgstr "Dziś urodziny"
 
@@ -27518,10 +27478,6 @@ msgid "Preview Sample Letter"
 msgstr "Podgląd przykładowego listu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Prywatny identyfikator zasobu podpisu na kanadyjskich zestawieniach darowizn. Zarządzany przez przesłanie podpisu."
-
-#: 
 msgid "Property Type"
 msgstr "Typ właściwości"
 
@@ -27560,10 +27516,6 @@ msgstr "Przegląd i filtr"
 #: 
 msgid "Review and vote"
 msgstr "Przejrzyj i zagłosuj"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Przejrzyj rok, a następnie pobierz zestawienia darowizn."
 
 #: 
 msgid "Review what we are considering"
@@ -27612,10 +27564,6 @@ msgstr "Silne"
 #: 
 msgid "Support"
 msgstr "Wsparcie"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Ustawienia NIP i PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

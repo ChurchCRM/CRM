@@ -24083,10 +24083,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d платежей ещё не включены ни в один депозит."
 
 #: 
-msgid "Closing line"
-msgstr "Заключительная строка"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Все депозиты, датированные этим годом, закрыты."
 
@@ -24099,28 +24095,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Каждый платёж этого года включён в депозит."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Сформировать налоговые выписки"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Отчёт о пожертвованиях (налоговые выписки)"
-
-#: 
-msgid "Opening line"
-msgstr "Вступительная строка"
-
-#: 
 msgid "Qty"
 msgstr "Кол-во"
-
-#: 
-msgid "Signed by"
-msgstr "Подписал"
-
-#: 
-msgid "Thank-you line"
-msgstr "Строка благодарности"
 
 #: 
 msgid "Year-End Giving"
@@ -24279,10 +24255,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Временный каталог PDF должен быть абсолютным путём к каталогу."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Налоговый идентификатор церкви (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Заключительная строка"
 
@@ -24325,10 +24297,6 @@ msgstr "Параметры выписки"
 #: 
 msgid "Statement Wording"
 msgstr "Формулировки выписки"
-
-#: 
-msgid "Tax Information"
-msgstr "Налоговые сведения"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24377,10 +24345,6 @@ msgstr "Используются название и адрес церкви"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Используется путь к бланку из системных параметров"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Формулировки, налоговый идентификатор и обработка PDF для выписок о пожертвованиях"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27205,10 +27169,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Также отключить вход, чтобы они не могли пользоваться порталом участников"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Перед отправкой выписок"
-
-#: 
 msgid "Birthday today"
 msgstr "Сегодня день рождения"
 
@@ -27549,10 +27509,6 @@ msgid "Preview Sample Letter"
 msgstr "Просмотреть образец письма"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Приватный идентификатор подписи на канадских выписках о пожертвованиях. Управляется через загрузку подписи."
-
-#: 
 msgid "Property Type"
 msgstr "Тип свойства"
 
@@ -27591,10 +27547,6 @@ msgstr "Проверить и отфильтровать"
 #: 
 msgid "Review and vote"
 msgstr "Просмотреть и проголосовать"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Проверьте год, затем скачайте выписки о пожертвованиях."
 
 #: 
 msgid "Review what we are considering"
@@ -27643,10 +27595,6 @@ msgstr "Надёжный"
 #: 
 msgid "Support"
 msgstr "Поддержка"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Налоговый номер и настройки PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

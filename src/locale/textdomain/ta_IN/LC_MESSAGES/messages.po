@@ -23986,10 +23986,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d கட்டணங்கள் இன்னும் எந்த வைப்புத்தொகையிலும் இல்லை."
 
 #: 
-msgid "Closing line"
-msgstr "நிறைவு வரி"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "இந்த ஆண்டில் தேதியிடப்பட்ட ஒவ்வொரு வைப்புத்தொகையும் மூடப்பட்டுள்ளது."
 
@@ -24002,28 +23998,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "இந்த ஆண்டின் ஒவ்வொரு கட்டணமும் ஒரு வைப்புத்தொகையில் உள்ளது."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "வரி அறிக்கைகளை உருவாக்கவும்"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "கொடை அறிக்கை (வரி அறிக்கைகள்)"
-
-#: 
-msgid "Opening line"
-msgstr "தொடக்க வரி"
-
-#: 
 msgid "Qty"
 msgstr "எண்ணிக்கை"
-
-#: 
-msgid "Signed by"
-msgstr "கையொப்பமிட்டவர்"
-
-#: 
-msgid "Thank-you line"
-msgstr "நன்றி வரி"
 
 #: 
 msgid "Year-End Giving"
@@ -24182,10 +24158,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF தற்காலிக கோப்பகம் ஒரு முழுமையான கோப்பகப் பாதையாக இருக்க வேண்டும்."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "திருச்சபை வரி அடையாளம் (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "நிறைவு வரி"
 
@@ -24228,10 +24200,6 @@ msgstr "அறிக்கை அமைப்புகள்"
 #: 
 msgid "Statement Wording"
 msgstr "அறிக்கை சொற்கள்"
-
-#: 
-msgid "Tax Information"
-msgstr "வரித் தகவல்"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24280,10 +24248,6 @@ msgstr "திருச்சபை பெயரையும் முகவர�
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "கணினி அமைப்புகளில் அமைக்கப்பட்ட தலைப்புப் படப் பாதையைப் பயன்படுத்துகிறது"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "கொடை அறிக்கைகளுக்கான சொற்கள், வரி அடையாளம் மற்றும் PDF கையாளுதல்"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27098,10 +27062,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "உறுப்பினர் தளத்தைப் பயன்படுத்த முடியாதபடி உள்நுழைவையும் முடக்கு"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "அறிக்கைகளை அனுப்புவதற்கு முன்"
-
-#: 
 msgid "Birthday today"
 msgstr "இன்று பிறந்தநாள்"
 
@@ -27442,10 +27402,6 @@ msgid "Preview Sample Letter"
 msgstr "மாதிரிக் கடிதத்தை முன்னோட்டமிடு"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "கனடிய காணிக்கை அறிக்கையின் தனிப்பட்ட கையொப்ப சொத்து அடையாளங்காட்டி. கையொப்பப் பதிவேற்றம் மூலம் நிர்வகிக்கப்படுகிறது."
-
-#: 
 msgid "Property Type"
 msgstr "பண்பு வகை"
 
@@ -27484,10 +27440,6 @@ msgstr "மதிப்பாய்வு செய்து வடிகட்�
 #: 
 msgid "Review and vote"
 msgstr "மதிப்பாய்வு செய்து வாக்களி"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ஆண்டை மதிப்பாய்வு செய்து, பின்னர் காணிக்கை அறிக்கைகளைப் பதிவிறக்கவும்."
 
 #: 
 msgid "Review what we are considering"
@@ -27536,10 +27488,6 @@ msgstr "வலுவானது"
 #: 
 msgid "Support"
 msgstr "ஆதரவு"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "வரி அடையாள எண் மற்றும் PDF அமைப்புகள்"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

@@ -24084,10 +24084,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 筆付款尚未列入任何存款。"
 
 #: 
-msgid "Closing line"
-msgstr "結尾語"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "本年度日期的每筆存款都已結案。"
 
@@ -24100,28 +24096,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "本年度的每筆付款都已列入存款。"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "產生稅務證明"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "奉獻報表（稅務證明）"
-
-#: 
-msgid "Opening line"
-msgstr "開頭語"
-
-#: 
 msgid "Qty"
 msgstr "數量"
-
-#: 
-msgid "Signed by"
-msgstr "簽署人"
-
-#: 
-msgid "Thank-you line"
-msgstr "感謝語"
 
 #: 
 msgid "Year-End Giving"
@@ -24280,10 +24256,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 暫存目錄必須是絕對目錄路徑。"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "教會稅務編號（EIN）"
-
-#: 
 msgid "Closing Line"
 msgstr "結尾語"
 
@@ -24326,10 +24298,6 @@ msgstr "證明設定"
 #: 
 msgid "Statement Wording"
 msgstr "證明用語"
-
-#: 
-msgid "Tax Information"
-msgstr "稅務資訊"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24378,10 +24346,6 @@ msgstr "使用教會名稱與地址"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "使用系統設定中的信頭路徑"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "奉獻證明的用語、稅務編號與 PDF 處理"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27191,10 +27155,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "同時停用登入,讓他們無法使用成員入口網站"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "寄出對帳單之前"
-
-#: 
 msgid "Birthday today"
 msgstr "今天生日"
 
@@ -27535,10 +27495,6 @@ msgid "Preview Sample Letter"
 msgstr "預覽範例信函"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "加拿大奉獻對帳單私有簽名的資產識別碼。透過上傳簽名來管理。"
-
-#: 
 msgid "Property Type"
 msgstr "屬性類型"
 
@@ -27577,10 +27533,6 @@ msgstr "檢視並篩選"
 #: 
 msgid "Review and vote"
 msgstr "檢視並投票"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "檢視該年度,然後下載奉獻對帳單。"
 
 #: 
 msgid "Review what we are considering"
@@ -27629,10 +27581,6 @@ msgstr "強"
 #: 
 msgid "Support"
 msgstr "支援"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "稅號和 PDF 設定"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

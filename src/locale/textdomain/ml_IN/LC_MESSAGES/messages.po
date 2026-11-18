@@ -23941,10 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d പേയ്‌മെന്റുകൾ ഇതുവരെ ഒരു നിക്ഷേപത്തിലും ഇല്ല."
 
 #: 
-msgid "Closing line"
-msgstr "അവസാന വരി"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "ഈ വർഷം തീയതിയിട്ട എല്ലാ നിക്ഷേപവും അടച്ചിരിക്കുന്നു."
 
@@ -23957,28 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "ഈ വർഷത്തെ എല്ലാ പേയ്‌മെന്റും ഒരു നിക്ഷേപത്തിലുണ്ട്."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "നികുതി പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "ദാന റിപ്പോർട്ട് (നികുതി പ്രസ്താവനകൾ)"
-
-#: 
-msgid "Opening line"
-msgstr "ആരംഭ വരി"
-
-#: 
 msgid "Qty"
 msgstr "എണ്ണം"
-
-#: 
-msgid "Signed by"
-msgstr "ഒപ്പിട്ടത്"
-
-#: 
-msgid "Thank-you line"
-msgstr "നന്ദി വരി"
 
 #: 
 msgid "Year-End Giving"
@@ -24137,10 +24113,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF താൽക്കാലിക ഡയറക്ടറി ഒരു സമ്പൂർണ ഡയറക്ടറി പാത്ത് ആയിരിക്കണം."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "പള്ളി നികുതി ഐഡി (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "അവസാന വരി"
 
@@ -24183,10 +24155,6 @@ msgstr "പ്രസ്താവന ക്രമീകരണങ്ങൾ"
 #: 
 msgid "Statement Wording"
 msgstr "പ്രസ്താവന വാചകം"
-
-#: 
-msgid "Tax Information"
-msgstr "നികുതി വിവരം"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24235,10 +24203,6 @@ msgstr "പള്ളിയുടെ പേരും വിലാസവും ഉ
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "സിസ്റ്റം ക്രമീകരണങ്ങളിൽ സജ്ജമാക്കിയ ലെറ്റർഹെഡ് പാത്ത് ഉപയോഗിക്കുന്നു"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ദാന പ്രസ്താവനകൾക്കുള്ള വാചകം, നികുതി ഐഡി, PDF കൈകാര്യം"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27053,10 +27017,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "അംഗ പോർട്ടൽ ഉപയോഗിക്കാൻ കഴിയാത്തവിധം സൈൻ-ഇനും പ്രവർത്തനരഹിതമാക്കുക"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "പ്രസ്താവനകൾ അയയ്ക്കുന്നതിന് മുമ്പ്"
-
-#: 
 msgid "Birthday today"
 msgstr "ഇന്ന് ജന്മദിനം"
 
@@ -27397,10 +27357,6 @@ msgid "Preview Sample Letter"
 msgstr "സാമ്പിൾ കത്ത് പ്രിവ്യൂ ചെയ്യുക"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "കനേഡിയൻ ദാന പ്രസ്താവനയുടെ സ്വകാര്യ ഒപ്പ് അസറ്റ് തിരിച്ചറിയൽ. ഒപ്പ് അപ്‌ലോഡ് വഴി നിയന്ത്രിക്കുന്നു."
-
-#: 
 msgid "Property Type"
 msgstr "സവിശേഷതാ തരം"
 
@@ -27439,10 +27395,6 @@ msgstr "അവലോകനം ചെയ്ത് ഫിൽട്ടർ ചെയ
 #: 
 msgid "Review and vote"
 msgstr "അവലോകനം ചെയ്ത് വോട്ട് ചെയ്യുക"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "വർഷം അവലോകനം ചെയ്യുക, തുടർന്ന് ദാന പ്രസ്താവനകൾ ഡൗൺലോഡ് ചെയ്യുക."
 
 #: 
 msgid "Review what we are considering"
@@ -27491,10 +27443,6 @@ msgstr "ശക്തം"
 #: 
 msgid "Support"
 msgstr "പിന്തുണ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "നികുതി ഐഡിയും PDF ക്രമീകരണങ്ങളും"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

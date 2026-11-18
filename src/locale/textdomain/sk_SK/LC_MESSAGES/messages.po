@@ -23997,10 +23997,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d platieb zatiaľ nie je na žiadnom vklade."
 
 #: 
-msgid "Closing line"
-msgstr "Záverečný riadok"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Každý vklad datovaný v tomto roku je uzavretý."
 
@@ -24013,28 +24009,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Každá platba v tomto roku je na vklade."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generovať daňové výpisy"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Správa o daroch (daňové výpisy)"
-
-#: 
-msgid "Opening line"
-msgstr "Úvodný riadok"
-
-#: 
 msgid "Qty"
 msgstr "Počet"
-
-#: 
-msgid "Signed by"
-msgstr "Podpísal"
-
-#: 
-msgid "Thank-you line"
-msgstr "Riadok s poďakovaním"
 
 #: 
 msgid "Year-End Giving"
@@ -24193,10 +24169,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Dočasný adresár PDF musí byť absolútna cesta k adresáru."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Daňové ID cirkvi (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Záverečný riadok"
 
@@ -24239,10 +24211,6 @@ msgstr "Nastavenia výpisu"
 #: 
 msgid "Statement Wording"
 msgstr "Znenie výpisu"
-
-#: 
-msgid "Tax Information"
-msgstr "Daňové údaje"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24291,10 +24259,6 @@ msgstr "Používa sa názov a adresa cirkvi"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Používa sa cesta k hlavičke nastavená v systémových nastaveniach"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Znenie, daňové ID a spracovanie PDF pre výpisy darov"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27095,10 +27059,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Zakázať aj prihlasovanie, aby nemohli používať portál pre členov"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Skôr než odošlete výkazy"
-
-#: 
 msgid "Birthday today"
 msgstr "Dnes má narodeniny"
 
@@ -27439,10 +27399,6 @@ msgid "Preview Sample Letter"
 msgstr "Náhľad ukážkového listu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Súkromný identifikátor podpisu na kanadských výkazoch darov. Spravuje sa nahraním podpisu."
-
-#: 
 msgid "Property Type"
 msgstr "Typ vlastnosti"
 
@@ -27481,10 +27437,6 @@ msgstr "Kontrola a filter"
 #: 
 msgid "Review and vote"
 msgstr "Skontrolovať a hlasovať"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Skontrolujte rok a potom stiahnite výkazy darov."
 
 #: 
 msgid "Review what we are considering"
@@ -27533,10 +27485,6 @@ msgstr "Silné"
 #: 
 msgid "Support"
 msgstr "Podpora"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Nastavenia daňového ID a PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
