@@ -1,5 +1,4 @@
 {
-  "The charity registration number must be text.": "",
   "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info.": "",
   "The charity's registered address. Blank uses the address on Church Info.": "",
   "The closing phrase above the signer, for example Sincerely.": "",
@@ -13,8 +12,9 @@
   "There are no payments in the selected calendar year.": "",
   "These are the true donors for every gift in this family/calendar year, and the mailing address is correct.": "",
   "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings.": "",
-  "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs. Keep the original PDF and an external receipt log at the charity's Canadian records location. Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original. This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements. A signature image is not a secure digital signature.": "",
+  "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs.": "",
   "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information.": "",
+  "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements.": "",
   "This user must set up 2FA": "",
   "This will permanently delete the family record and its notes. This cannot be undone.": "",
   "Total commitment": "",
@@ -29,6 +29,6 @@
   "View all emails": "",
   "Yes — one verified donor set": "",
   "Your church country is Canada, so Canadian official receipts are also available when you generate statements.": "",
-  "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt. Official receipts need a registration number in the form 123456789RR0001 and a signature image.": "",
+  "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt.": "",
   "groups": ""
 }
