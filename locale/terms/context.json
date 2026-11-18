@@ -2,6 +2,15 @@
   "({{count}} installments)": [
     "webpack/finance-pledge-editor.js:56"
   ],
+  "%d families currently have properties of this type.": [
+    "src/people/views/property-type-list.php:148"
+  ],
+  "%d groups currently have properties of this type.": [
+    "src/people/views/property-type-list.php:149"
+  ],
+  "%d people currently have properties of this type.": [
+    "src/people/views/property-type-list.php:146"
+  ],
   "%d releases available since your installed version.": [
     "src/v2/templates/root/releases.php:27"
   ],
@@ -38,11 +47,8 @@
     "src/finance/views/pledges/editor.php:203",
     "webpack/finance-pledge-editor.js:67"
   ],
-  "currently have properties of this type.": [
-    "src/people/views/property-type-list.php:150"
-  ],
-  "Deleting it will also remove": [
-    "src/people/views/property-type-list.php:153"
+  "Deleting it will also remove %d properties and all their assignments so nothing is left hanging.": [
+    "src/people/views/property-type-list.php:157"
   ],
   "Enter the schedule and installment dates to preview the commitment.": [
     "webpack/finance-pledge-editor.js:70"
@@ -91,16 +97,13 @@
   "Properties / Assignments": [
     "src/people/views/property-type-list.php:46"
   ],
-  "properties and all their assignments so nothing is left hanging.": [
-    "src/people/views/property-type-list.php:153"
-  ],
   "Property deleted": [
     "src/admin/routes/api/system/property-definitions.php:38",
     "src/api/routes/people/groups-form-props.php:111",
     "src/people/views/property-list.php:128"
   ],
   "Property type deleted": [
-    "src/people/views/property-type-list.php:168"
+    "src/people/views/property-type-list.php:172"
   ],
   "Release notes are unavailable right now.": [
     "src/v2/templates/root/releases.php:20"
@@ -174,8 +177,5 @@
   ],
   "View all emails": [
     "src/people/views/timeline-events.php:58"
-  ],
-  "You're up to date.": [
-    "src/v2/templates/root/releases.php:24"
   ]
 }
