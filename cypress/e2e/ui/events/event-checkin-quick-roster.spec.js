@@ -57,8 +57,10 @@ describe("Quick roster check-in", () => {
             const count = before.trim();
             waitingRow().then(($row) => {
                 const personId = $row.attr("data-person-id");
+                cy.intercept("DELETE", `**/api/events/${eventId}/attendance/${personId}`).as("undo");
                 cy.wrap($row).find('[data-action="checkin"]').click();
                 cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`).find('[data-action="undo"]').click();
+                cy.wait("@undo").its("response.statusCode").should("eq", 200);
                 cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`).should("not.have.class", "bg-success-subtle");
                 cy.get("#checkedInCount").should("have.text", count);
             });
