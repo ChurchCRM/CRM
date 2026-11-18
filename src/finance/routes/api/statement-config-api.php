@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -11,6 +12,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * All routes require FinanceRoleAuth (Finance role or Admin), enforced by
  * FinanceRoleAuthMiddleware at the module level in src/finance/index.php.
+ * Saves also need the session CSRF token in X-CSRF-Token (API-key requests skip it).
  *
  * Mounted at /finance/api/config/{configName} via src/finance/index.php.
  */
@@ -21,6 +23,11 @@ $allowedKeys = [
     'sGivingStatementQuestions',
     'sTaxSigner',
     'sChurchTaxId',
+    'sCharityLegalName',
+    'sCharityRegisteredAddress',
+    'sCharityRegistrationNumber',
+    'sReceiptIssueLocality',
+    'sReceiptClosing',
     'iPDFOutputType',
 ];
 
@@ -64,5 +71,5 @@ $app->group('/api/config/{configName}', function (RouteCollectorProxy $group) us
         SystemConfig::setValue($configName, $value);
 
         return SlimUtils::renderJSON($response, ['value' => SystemConfig::getValue($configName)]);
-    });
+    })->add(new CSRFMiddleware());
 });

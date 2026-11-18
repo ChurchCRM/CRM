@@ -136,7 +136,6 @@ module.exports = {
     'error': './webpack/error',
     'feature-toggles': './webpack/feature-toggles',
     'finance-report-options': './webpack/finance-report-options',
-    'finance-year-end': './webpack/finance-year-end',
     'groups-group-view': './webpack/groups/group-view',
     'groups-group-properties-form': './webpack/groups/group-properties-form',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
