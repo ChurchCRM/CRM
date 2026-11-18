@@ -191,8 +191,12 @@ function escape_php_single_quoted($value)
 
 // The server version reported on a connection made with the entered credentials, or null when it cannot be read.
 // No database name is used, so a database that does not exist yet does not hide the version.
+// PDO::ATTR_TIMEOUT only limits opening the socket; a server that accepts it and never sends its
+// handshake is cut off by the mysqlnd read timeout.
 function read_db_server_version(string $host, string $port, string $user, string $password): ?string
 {
+    $previousReadTimeout = ini_set('mysqlnd.net_read_timeout', '5');
+
     try {
         $pdo = new PDO(
             sprintf('mysql:host=%s;port=%s', $host, $port),
@@ -204,6 +208,10 @@ function read_db_server_version(string $host, string $port, string $user, string
         return (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
     } catch (\Throwable $e) {
         return null;
+    } finally {
+        if ($previousReadTimeout !== false) {
+            ini_set('mysqlnd.net_read_timeout', $previousReadTimeout);
+        }
     }
 }
 
