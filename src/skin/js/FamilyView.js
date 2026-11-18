@@ -339,8 +339,12 @@ function initializeFamilyView() {
     window.CRM.APIRequest({
       method: "POST",
       path: `family/${window.CRM.currentFamily}/approve-review`,
-    }).then(() => {
-      window.location.reload();
+    }).then((data) => {
+      if (!data.cannotSignIn) {
+        window.location.reload();
+        return;
+      }
+      window.CRM.showNoInvitationNotice(data.cannotSignIn, () => window.location.reload());
     });
   });
 

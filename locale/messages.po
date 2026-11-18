@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 18:06+0000\n"
+"POT-Creation-Date: 2026-11-18 00:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -419,6 +419,14 @@ msgid "(optional — leave blank to include all roles)"
 msgstr ""
 
 msgid "(this action cannot be undone)"
+msgstr ""
+
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr ""
+
+msgctxt "other"
+msgid "({{count}} installments)"
 msgstr ""
 
 msgid "+{{total}} more"
@@ -1668,14 +1676,16 @@ msgstr ""
 msgid "Amount Min"
 msgstr ""
 
-#, php-format
-msgid "Amount due for %s: %s"
-msgstr ""
-
 msgid "Amount exceeds maximum allowed (999999.99)"
 msgstr ""
 
 msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "Amount per installment"
+msgstr ""
+
+msgid "Amounts entered are"
 msgstr ""
 
 msgid "An Error Occurred"
@@ -1883,6 +1893,9 @@ msgid "Approved"
 msgstr ""
 
 msgid "Approved Community Plugins"
+msgstr ""
+
+msgid "Approved, but no invitation was sent"
 msgstr ""
 
 msgid "Apr"
@@ -3262,10 +3275,6 @@ msgstr ""
 msgid "Checked in"
 msgstr ""
 
-#, php-format
-msgid "Checked in to event: %s"
-msgstr ""
-
 msgid "Checked in {{count}} people."
 msgstr ""
 
@@ -3274,10 +3283,6 @@ msgid "Checked in: %1$d of %2$d on the class roster"
 msgstr ""
 
 msgid "Checked out"
-msgstr ""
-
-#, php-format
-msgid "Checked out from event: %s"
 msgstr ""
 
 msgid "Checked-in-by person is not an adult family member"
@@ -3322,6 +3327,9 @@ msgid "Choose %s to run this report."
 msgstr ""
 
 msgid "Choose None, TLS or SSL for encryption."
+msgstr ""
+
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
 msgstr ""
 
 msgid "Choose a class"
@@ -3471,6 +3479,9 @@ msgid "Choose the theme members see, turn portal sections on or off, and see who
 msgstr ""
 
 msgid "Choose the week of the month, from 1st to 5th"
+msgstr ""
+
+msgid "Choose total commitment or installment amount."
 msgstr ""
 
 msgid "Choose weekly, monthly or yearly"
@@ -3835,6 +3846,9 @@ msgid "Comment"
 msgstr ""
 
 msgid "Comments"
+msgstr ""
+
+msgid "Commitment amount"
 msgstr ""
 
 msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
@@ -6135,7 +6149,16 @@ msgstr ""
 msgid "Enter the 6-digit code from your authenticator app to complete login"
 msgstr ""
 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr ""
+
 msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr ""
+
+msgid "Enter valid first and last installment dates in order."
+msgstr ""
+
+msgid "Enter valid installment amounts with at most two decimal places."
 msgstr ""
 
 msgid "Enter valid report dates."
@@ -6518,6 +6541,9 @@ msgid "Existing Volunteer Opportunities"
 msgstr ""
 
 msgid "Existing ministry"
+msgstr ""
+
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
 msgstr ""
 
 msgid "Exit"
@@ -7165,9 +7191,6 @@ msgstr ""
 msgid "Family emails not moved"
 msgstr ""
 
-msgid "Family has no emails to use"
-msgstr ""
-
 msgid "Family has no street address to geocode"
 msgstr ""
 
@@ -7494,6 +7517,9 @@ msgstr ""
 msgid "First date"
 msgstr ""
 
+msgid "First installment"
+msgstr ""
+
 msgid "First month of the fiscal year"
 msgstr ""
 
@@ -7684,6 +7710,9 @@ msgid "Full access — grants all privileges."
 msgstr ""
 
 msgid "Full changelog"
+msgstr ""
+
+msgid "Full commitment"
 msgstr ""
 
 msgid "Full release notes"
@@ -9020,6 +9049,12 @@ msgstr ""
 msgid "Installing…"
 msgstr ""
 
+msgid "Installment amounts can only be used for pledges."
+msgstr ""
+
+msgid "Installment dates must be within the selected fiscal year."
+msgstr ""
+
 msgid "Integrity"
 msgstr ""
 
@@ -9534,6 +9569,9 @@ msgid "Last day"
 msgstr ""
 
 msgid "Last fiscal year to include"
+msgstr ""
+
+msgid "Last installment on or before"
 msgstr ""
 
 msgid "Last invited"
@@ -10421,6 +10459,10 @@ msgstr ""
 msgid "Member sign-in is off for the church."
 msgstr ""
 
+#, php-format
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr ""
+
 msgid "Member sign-in is off."
 msgstr ""
 
@@ -11211,9 +11253,6 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr ""
-
 msgid "No address on file"
 msgstr ""
 
@@ -11686,6 +11725,10 @@ msgid "Nobody has a grade to promote."
 msgstr ""
 
 msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr ""
+
+#, php-format
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
 msgstr ""
 
 msgid "Nobody in the directory matches that name."
@@ -14085,10 +14128,6 @@ msgstr ""
 msgid "Registered"
 msgstr ""
 
-#, php-format
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr ""
-
 msgid "Registering..."
 msgstr ""
 
@@ -14120,6 +14159,10 @@ msgid "Reload command sent"
 msgstr ""
 
 msgid "Remaining"
+msgstr ""
+
+#, php-format
+msgid "Remaining commitment for %s: %s"
 msgstr ""
 
 msgid "Remembered device"
@@ -14280,6 +14323,12 @@ msgid "Reporting"
 msgstr ""
 
 msgid "Reports"
+msgstr ""
+
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr ""
+
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
 msgstr ""
 
 msgid "Request Family Info Verification"
@@ -15990,6 +16039,9 @@ msgstr ""
 msgid "Special option"
 msgstr ""
 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr ""
+
 msgid "Spouse Role"
 msgstr ""
 
@@ -16739,6 +16791,10 @@ msgid "That wedding date is not a valid date."
 msgstr ""
 
 #, php-format
+msgid "The %s family has no living members to invite to the member portal."
+msgstr ""
+
+#, php-format
 msgid "The %s must be a date in YYYY-MM-DD form"
 msgstr ""
 
@@ -16999,6 +17055,9 @@ msgid "The family has no living, active head of household or spouse"
 msgstr ""
 
 msgid "The family is inactive"
+msgstr ""
+
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
 msgstr ""
 
 msgid "The geocoding service did not answer — try again later"
@@ -17967,7 +18026,7 @@ msgstr ""
 msgid "This self-registered family is pending review"
 msgstr ""
 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
 msgstr ""
 
 msgid "This setting must be a number"
@@ -18309,6 +18368,9 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
+msgid "Total commitment"
+msgstr ""
+
 msgid "Total contributions"
 msgstr ""
 
@@ -18579,6 +18641,9 @@ msgid "Unable to load state list. Please check your network connection or try ag
 msgstr ""
 
 msgid "Unable to open file"
+msgstr ""
+
+msgid "Unable to preview the commitment."
 msgstr ""
 
 msgid "Unable to re-encode JSON for configuration"
@@ -18919,6 +18984,9 @@ msgstr ""
 msgid "Use authenticator app instead"
 msgstr ""
 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr ""
+
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
@@ -19197,6 +19265,9 @@ msgid "Verify Info"
 msgstr ""
 
 msgid "Verify People"
+msgstr ""
+
+msgid "Verify the family in person instead."
 msgstr ""
 
 msgid "Verify your identity"

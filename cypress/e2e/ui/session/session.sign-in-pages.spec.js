@@ -168,11 +168,11 @@ describe("Sign-in pages", () => {
             cy.location("pathname").should("match", /\/groups\/dashboard$/);
 
             cy.clearCookies();
-            cy.visit("/PropertyList.php?Type=p");
+            cy.visit("/people/properties/p");
             cy.location("pathname").should("match", /\/admin\/$/);
             signInAtAdmin(admin());
-            cy.location("pathname").should("match", /\/PropertyList\.php$/);
-            cy.location("search").should("eq", "?Type=p");
+            cy.location("pathname").should("match", /\/people\/properties\/[pfg]$/);
+            cy.location("pathname").should("match", /\/people\/properties\/p$/);
         });
     });
 
@@ -226,7 +226,7 @@ describe("Sign-in pages", () => {
             emailSignIn(judith.email);
             cy.visit("/");
             cy.location("pathname").should("match", /\/portal\/$/);
-            ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/PropertyList.php"].forEach(expectStaffSignInRedirect);
+            ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/people/properties/p"].forEach(expectStaffSignInRedirect);
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/admin/");

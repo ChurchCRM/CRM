@@ -45,6 +45,11 @@ $(document).ready(() => {
     disableUserTwoFactorAuth($(this).data("user_id"), $(this).data("user_name"));
   });
 
+  $(document).on("click", ".js-set-2fa-required", function (e) {
+    e.preventDefault();
+    setUserTwoFactorRequired($(this).data("user_id"), String($(this).data("required")) === "true");
+  });
+
   $(document).on("click", ".js-delete-user", function (e) {
     e.preventDefault();
     deleteUser($(this).data("user_id"), $(this).data("user_name"));
@@ -205,4 +210,15 @@ function disableUserTwoFactorAuth(userId, userName) {
       });
     },
   );
+}
+
+function setUserTwoFactorRequired(userId, required) {
+  window.CRM.AdminAPIRequest({
+    path: `user/${userId}/setTwoFactorRequired`,
+    method: "POST",
+    headers: { "X-CSRF-Token": document.getElementById("user-listing-table")?.dataset.csrfToken || "" },
+    data: JSON.stringify({ required }),
+  }).done(() => {
+    window.location.href = `${window.CRM.root}/admin/system/users`;
+  });
 }

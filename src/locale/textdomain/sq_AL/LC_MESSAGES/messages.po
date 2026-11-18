@@ -4973,10 +4973,6 @@ msgid "View Person Page"
 msgstr "Shiko faqjen e personit"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familja nuk ka email për t'u përdorur"
-
-#: 
 msgid "Deleted"
 msgstr "Fshirë"
 
@@ -11332,14 +11328,6 @@ msgstr "Regjistruar Nga"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Regjistrimi është i çaktivizuar për ngjarjet joaktive. Aktivizoni ngjarjen nga Paneli i Ngjarjeve për të mundësuar regjistrimin."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Regjistruar në ngjarje: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Çregjistruar nga ngjarje: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22463,10 +22451,6 @@ msgid "Register walk-in guest"
 msgstr "regjistroni mysafirin"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Regjistruar si mysafir në kiosk gjatë ngjarjes: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Po regjistrohet..."
 
@@ -24315,10 +24299,6 @@ msgstr "Anëtarët me të drejtë vote — Lista e shqyrtimit"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "Zero çaktivizon një kërkesë opsionale. Mosha kërkon një datë të plotë lindjeje; kohëzgjatja e anëtarësisë kërkon një datë anëtarësie. Personat pa datat e kërkuara lihen jashtë dhe numërohen veçmas. Personat e ndjerë, personat dhe klasifikimet joaktive, si dhe familjet dhe personat joaktivë ose në pritje të shqyrtimit përjashtohen gjithmonë; përdoret klasifikimi dhe statusi aktual, jo statusi historik."
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "Shuma e detyruar për %s: %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -26991,10 +26971,6 @@ msgid "Last verified"
 msgstr "Verifikuar së fundi"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Asnjë anëtar aktiv dhe i miratuar i kësaj familjeje nuk ka adresë emaili. Verifikojini të dhënat personalisht."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nuk u gjetën premtime për këto vite fiskale."
 
@@ -27017,10 +26993,6 @@ msgstr "Hyni në portalin e anëtarëve me këtë adresë emaili për të shqyrt
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Kjo familje është joaktive, prandaj nuk i dërgohen emaile verifikimi."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Kjo familje e vetëregjistruar pret miratimin. Miratimi i dërgon familjes me email një ftesë për të hyrë në portalin e anëtarëve dhe për të shqyrtuar të dhënat e saj."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

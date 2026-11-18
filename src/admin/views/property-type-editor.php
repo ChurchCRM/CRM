@@ -63,7 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
 
             <div class="d-flex justify-content-between border-top pt-3 mt-3">
-                <a href="<?= SystemURLs::getRootPath() ?>/PropertyTypeList.php" class="btn btn-secondary">
+                <a href="<?= SystemURLs::getRootPath() ?>/people/properties/types" class="btn btn-secondary">
                     <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Cancel') ?>
                 </a>
                 <button type="submit" class="btn btn-primary" id="save-property-type">

@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\PledgeCommitmentService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -142,6 +143,33 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
+     *     path="/payments/pledge-installments",
+     *     summary="Preview the number of pledge installments within a fiscal year",
+     *     tags={"Finance"}, security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="schedule", in="query", required=true, @OA\Schema(type="string", enum={"Weekly","Monthly","Quarterly"})),
+     *     @OA\Parameter(name="first", in="query", required=true, @OA\Schema(type="string", format="date")),
+     *     @OA\Parameter(name="last", in="query", required=true, @OA\Schema(type="string", format="date")),
+     *     @OA\Parameter(name="fyId", in="query", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Installment count", @OA\JsonContent(@OA\Property(property="count", type="integer"))),
+     *     @OA\Response(response=400, description="Invalid schedule or dates"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/pledge-installments', function (Request $request, Response $response): Response {
+        $params = $request->getQueryParams();
+        try {
+            $count = PledgeCommitmentService::installmentCount(
+                (string) ($params['schedule'] ?? ''), $params['first'] ?? null, $params['last'] ?? null, (int) ($params['fyId'] ?? 0)
+            );
+
+            return SlimUtils::renderJSON($response, ['count' => $count]);
+        } catch (\UnexpectedValueException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
+        }
+    });
+
+    /**
+     * @OA\Get(
      *     path="/payments/pledges/{groupKey}",
      *     summary="Get pledge/payment details by group key (Finance role required)",
      *     description="Returns all rows sharing the same GroupKey, including per-fund amounts and family information.",
@@ -208,7 +236,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      * @OA\Post(
      *     path="/payments/pledges",
      *     summary="Create a new pledge or multi-fund payment (Finance role required)",
-     *     description="Creates one or more pledge_plg rows sharing a single GroupKey. Supports multi-fund splits where amounts across funds must sum to the desired total. Set `type` to 'Pledge' or 'Payment'.",
+     *     description="Creates one or more pledge_plg rows sharing a single GroupKey. amountBasis defaults to total for compatibility. For installment pledges, supply amountBasis=installment, schedule (Weekly/Monthly/Quarterly), firstInstallment and lastInstallment (ISO dates within FYID); FundSplit amounts are per installment and stored as full commitments. Set `type` to 'Pledge' or 'Payment'.",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(

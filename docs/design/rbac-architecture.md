@@ -32,7 +32,7 @@ V1 authorization is 12 switches, the predicates derived from them, and four impl
 | 1 | Admin | `user_usr.usr_Admin` | `isAdmin()` | The whole `/admin` app (`AdminRoleAuthMiddleware`), users, settings, plugins, imports, logs, every user's email log (others see their own), text messages, CSV export, kiosk admin, property types, Login as Person, other users' private notes (`canReadPrivateNotes()`); and implies every switch below. About 95 direct `isAdmin()` calls |
 | 2 | Add Records | `usr_AddRecords` | `isAddRecordsEnabled()` | New person and family, cart-to-family, donated items and paddle numbers |
 | 3 | Edit Records | `usr_EditRecords` | `isEditRecordsEnabled()`, `canReadAttendance()` | Person/family editors, properties on people, Why Came, verify report, group member properties, Sunday School edits, another person's attendance |
-| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family only (`DeleteRecordRoleAuthMiddleware`, `SelectDelete.php`) |
+| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family only (`DeleteRecordRoleAuthMiddleware` on the people API) |
 | 5 | Manage Groups | `usr_ManageGroups` | `isManageGroupsEnabled()` | Groups, group properties, group cart, Sunday School admin, events tied to groups |
 | 6 | Finance | `usr_Finance` | `isFinanceEnabled()` | Deposits, pledges, envelopes, all finance reports, finance search, giving on person and family pages. Also needs `bEnabledFinance` |
 | 7 | Manage Fundraisers | `usr_ManageFundraisers` | `isManageFundraisersEnabled()` | Fundraisers, including their deletes. Also needs `bEnabledFundraiser` |
