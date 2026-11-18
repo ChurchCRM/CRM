@@ -8,6 +8,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require __DIR__ . '/_charity-details-banner.php';
 
 // $dashboardData is injected by the route controller (finance/routes/dashboard.php)
 // It includes FY-scoped data for the selectedFyid passed in the GET ?fyid param.

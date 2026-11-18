@@ -5208,10 +5208,6 @@ msgid "Enter event description..."
 msgstr "輸入活動描述..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "在此處輸入筆記文字..."
-
-#: 
 msgid "Note"
 msgstr "筆記"
 
@@ -8164,10 +8160,6 @@ msgid "or later to continue."
 msgstr "或更高版本以繼續。"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "「來訪原因」備註"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%s 的 %d 個結果"
@@ -8275,10 +8267,6 @@ msgstr "新增或編輯個人記錄"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "新增或編輯募款活動的捐贈物品"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "新增或編輯個人和家庭備註"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9241,10 +9229,6 @@ msgstr "一次記錄多位募款抽獎得獎者"
 #: 
 msgid "Record new pledges and payments"
 msgstr "記錄新的奉獻承諾和奉獻款項"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "記錄來訪者造訪教會的原因"
 
 #: 
 msgid "Remove from Class"
@@ -13040,14 +13024,6 @@ msgid "Click Save to apply."
 msgstr "點擊儲存以套用。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪貼簿API不可用。請手動複製URL。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "剪貼簿不可用。請使用下載按鈕儲存您的驗證碼。"
-
-#: 
 msgid "Code incomplete"
 msgstr "驗證碼不完整"
 
@@ -14579,24 +14555,12 @@ msgid "People &amp; Families"
 msgstr "會眾與家庭"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "您嘗試編輯的備註已不存在。"
-
-#: 
 msgid "User List"
 msgstr "使用者清單"
 
 #: 
 msgid "View Person"
 msgstr "檢視成員"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "您沒有為此家庭新增備註的權限。"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "您沒有為此成員新增備註的權限。"
 
 #: 
 msgid "Account locked"
@@ -15295,10 +15259,6 @@ msgstr "目標金額必須為非負數"
 #: 
 msgid "thru %s"
 msgstr "至 %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "「來訪原因」備註（%1$s %2$s）"
 
 #: 
 msgid "%1$s of the %2$s family"

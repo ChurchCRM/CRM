@@ -128,6 +128,21 @@ describe("Standard Family", () => {
 });
 
 describe("Family Wedding Date Edit Workflow", () => {
+    // The legacy FamilyEditor and the family profile are the heaviest page
+    // loads in this file; on a loaded runner their load event can exceed
+    // the project's 30s pageLoadTimeout (nightly run 44298284457). The
+    // timeout also orphaned the family this suite creates — its id is only
+    // tracked after the landing completes — which tripped the row-count
+    // guard at the end of the file. Give this suite's navigations more
+    // room, then restore the project default.
+    before(() => {
+        Cypress.config("pageLoadTimeout", 120000);
+    });
+
+    after(() => {
+        Cypress.config("pageLoadTimeout", 30000);
+    });
+
     beforeEach(() => cy.setupStandardSession());
 
     it("Create family without wedding date, then add wedding date via edit", () => {

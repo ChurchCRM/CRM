@@ -5072,10 +5072,6 @@ msgid "Enter event description..."
 msgstr "Etkinlik açıklaması girin..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Not metnini buraya girin..."
-
-#: 
 msgid "Note"
 msgstr "Not"
 
@@ -8034,10 +8030,6 @@ msgid "or later to continue."
 msgstr "veya devam etmek için daha sonrası."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Geliş Nedeni\" Notları"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d sonuç \"%s\" için"
@@ -8146,10 +8138,6 @@ msgstr "Bireysel kişi kayıtlarını ekle veya düzenle"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Bağış toplama etkinlikleri için bağışlanan öğeleri ekle veya düzenle"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Kişiler ve aileler için not ekle veya düzenle"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9112,10 +9100,6 @@ msgstr "Birden fazla bağış toplama çekilişi kazananını aynı anda kaydet"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Yeni bağış taahhütleri ve ödemeleri kaydet"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Katılımcıların kilisenizi neden ziyaret ettiğini kaydedin"
 
 #: 
 msgid "Remove from Class"
@@ -12912,14 +12896,6 @@ msgid "Click Save to apply."
 msgstr "Uygulamak için Kaydet'e tıklayın."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Pano API kullanılamaz. Lütfen URL'yi manuel olarak kopyalayın."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Pano kullanılamıyor. Kodlarınızı kaydetmek için İndir düğmesini kullanın."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod tamamlanmadı"
 
@@ -14452,24 +14428,12 @@ msgid "People &amp; Families"
 msgstr "Kişiler &amp; Aileler"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Düzenlemeye çalıştığınız not artık mevcut değil."
-
-#: 
 msgid "User List"
 msgstr "Kullanıcı Listesi"
 
 #: 
 msgid "View Person"
 msgstr "Kişiyi Görüntüle"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Bu aile için not ekleme izniniz yok."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Bu kişi için not ekleme izniniz yok."
 
 #: 
 msgid "Account locked"
@@ -15170,10 +15134,6 @@ msgstr "goalAmount negatif olmamalıdır"
 #: 
 msgid "thru %s"
 msgstr "%s tarihine kadar"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s için \"Neden Geldi\" notları"
 
 #: 
 msgid "%1$s of the %2$s family"

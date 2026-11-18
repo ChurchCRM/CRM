@@ -5041,10 +5041,6 @@ msgid "Enter event description..."
 msgstr "इवेंट विवरण दर्ज करें..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "यहाँ नोट टेक्स्ट दर्ज करें..."
-
-#: 
 msgid "Note"
 msgstr "नोट"
 
@@ -8003,10 +7999,6 @@ msgid "or later to continue."
 msgstr "या बाद में जारी रखने के लिए।"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"आने का कारण\" नोट्स"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d परिणाम \"%s\" के लिए"
@@ -8115,10 +8107,6 @@ msgstr "व्यक्तिगत रिकॉर्ड जोड़ें य
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "धन संग्रह कार्यक्रमों के लिए दान की गई वस्तुएँ जोड़ें या संपादित करें"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "लोगों और परिवारों के लिए नोट्स जोड़ें या संपादित करें"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9081,10 +9069,6 @@ msgstr "एक साथ कई धन संग्रह ड्राइंग 
 #: 
 msgid "Record new pledges and payments"
 msgstr "नई प्रतिज्ञाएँ और भुगतान रिकॉर्ड करें"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "रिकॉर्ड करें कि उपस्थित लोग आपकी कलीसिया में क्यों आए"
 
 #: 
 msgid "Remove from Class"
@@ -12881,14 +12865,6 @@ msgid "Click Save to apply."
 msgstr "लागू करने के लिए सहेजें पर क्लिक करें।"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "क्लिपबोर्ड API उपलब्ध नहीं है। कृपया URL को मैनुअली कॉपी करें।"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "क्लिपबोर्ड उपलब्ध नहीं है। अपने कोड सहेजने के लिए डाउनलोड बटन का उपयोग करें।"
-
-#: 
 msgid "Code incomplete"
 msgstr "कोड अधूरा है"
 
@@ -14421,24 +14397,12 @@ msgid "People &amp; Families"
 msgstr "लोग &amp; परिवार"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "जिस नोट को आप संपादित करने का प्रयास कर रहे हैं वह अब मौजूद नहीं है।"
-
-#: 
 msgid "User List"
 msgstr "उपयोगकर्ता सूची"
 
 #: 
 msgid "View Person"
 msgstr "व्यक्ति देखें"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "आपको इस परिवार के लिए नोट जोड़ने की अनुमति नहीं है।"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "आपको इस व्यक्ति के लिए नोट जोड़ने की अनुमति नहीं है।"
 
 #: 
 msgid "Account locked"
@@ -15139,10 +15103,6 @@ msgstr "goalAmount गैर-ऋणात्मक होनी चाहिए"
 #: 
 msgid "thru %s"
 msgstr "%s तक"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s के लिए \"क्यों आए\" नोट्स"
 
 #: 
 msgid "%1$s of the %2$s family"

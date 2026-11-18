@@ -5072,10 +5072,6 @@ msgid "Enter event description..."
 msgstr "Εισαγάγετε περιγραφή εκδήλωσης..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Εισαγάγετε κείμενο σημείωσης εδώ..."
-
-#: 
 msgid "Note"
 msgstr "Σημείωση"
 
@@ -8034,10 +8030,6 @@ msgid "or later to continue."
 msgstr "ή μεταγενέστερη για να συνεχίσετε."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Σημειώσεις «Γιατί ήρθαν»"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d αποτέλεσμα για «%s»"
@@ -8146,10 +8138,6 @@ msgstr "Προσθήκη ή επεξεργασία ατομικών εγγραφ
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Προσθήκη ή επεξεργασία δωρεών για εκδηλώσεις ενίσχυσης"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Προσθήκη ή επεξεργασία σημειώσεων για άτομα και οικογένειες"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9112,10 +9100,6 @@ msgstr "Καταγραφή πολλαπλών νικητών κλήρωσης ε
 #: 
 msgid "Record new pledges and payments"
 msgstr "Καταγραφή νέων οικονομικών δεσμεύσεων και πληρωμών"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Καταγράψτε γιατί οι επισκέπτες ήρθαν στην ενορία σας"
 
 #: 
 msgid "Remove from Class"
@@ -12912,14 +12896,6 @@ msgid "Click Save to apply."
 msgstr "Κάντε κλικ στο Αποθήκευση για εφαρμογή."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Το API του προχείρου δεν είναι διαθέσιμο. Αντιγράψτε το URL με το χέρι."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Το πρόχειρο δεν είναι διαθέσιμο. Χρησιμοποιήστε το κουμπί Λήψης για να αποθηκεύσετε τους κωδικούς σας."
-
-#: 
 msgid "Code incomplete"
 msgstr "Ο κώδικας είναι ελλιπής"
 
@@ -14452,24 +14428,12 @@ msgid "People &amp; Families"
 msgstr "Ενορίτες &amp; Οικογένειες"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Η σημείωση που προσπαθείτε να επεξεργαστείτε δεν υπάρχει πλέον."
-
-#: 
 msgid "User List"
 msgstr "Λίστα Χρηστών"
 
 #: 
 msgid "View Person"
 msgstr "Προβολή Μέλους"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτήν την οικογένεια."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
 
 #: 
 msgid "Account locked"
@@ -15170,10 +15134,6 @@ msgstr "Το ποσό στόχου πρέπει να είναι μη αρνητ�
 #: 
 msgid "thru %s"
 msgstr "έως %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Σημειώσεις «Λόγος Προσέλευσης» για %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

@@ -1962,6 +1962,73 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/api/person/{personId}/why-came':
+    get:
+      tags:
+        - People
+      summary: 'Get why-came entry for a person'
+      operationId: getPersonWhyCame
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Why-came entry or null'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - People
+      summary: 'Create or update why-came entry for a person'
+      description: 'Matches legacy WhyCameEditor permission (EditRecords). Creates if none exists for the person.'
+      operationId: createOrUpdatePersonWhyCame
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                join:
+                  type: string
+                come:
+                  type: string
+                suggest:
+                  type: string
+                hearOfUs:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Why-came saved'
+        '201':
+          description: 'Why-came created'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
   '/api/attendance/person/{personId}':
     get:
       tags:

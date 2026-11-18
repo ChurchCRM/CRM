@@ -5141,10 +5141,6 @@ msgid "Enter event description..."
 msgstr "Skriv inn beskrivelse av hendelse..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Skriv inn notattekst her..."
-
-#: 
 msgid "Note"
 msgstr "Notat"
 
@@ -8103,10 +8099,6 @@ msgid "or later to continue."
 msgstr "eller nyere for å fortsette."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notater om \"Hvorfor kom de\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultat for \"%s\""
@@ -8215,10 +8207,6 @@ msgstr "Legg til eller rediger personopplysninger"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Legg til eller rediger gjenstander donert til innsamlingsarrangementer"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Legg til eller rediger notater for personer og familier"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9181,10 +9169,6 @@ msgstr "Registrer flere vinnere av innsamlingslotteri samtidig"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Registrer nye giverløfter og innbetalinger"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Registrer hvorfor besøkende kom til kirken"
 
 #: 
 msgid "Remove from Class"
@@ -12981,14 +12965,6 @@ msgid "Click Save to apply."
 msgstr "Klikk Lagre for å bruke endringene."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API ikke tilgjengelig. Kopier URL manuelt."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Utklippstavle er ikke tilgjengelig. Bruk Last ned-knappen for å lagre kodene dine."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kode ufullstendig"
 
@@ -14521,24 +14497,12 @@ msgid "People &amp; Families"
 msgstr "Personer &amp; familier"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Notatet du prøver å redigere eksisterer ikke lenger."
-
-#: 
 msgid "User List"
 msgstr "Brukerliste"
 
 #: 
 msgid "View Person"
 msgstr "Vis person"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Du har ikke tillatelse til å legge til et notat for denne familien."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
 
 #: 
 msgid "Account locked"
@@ -15239,10 +15203,6 @@ msgstr "målBeløp må være ikke-negativt"
 #: 
 msgid "thru %s"
 msgstr "t.o.m. %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Hvorfor kom\"-notater for %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

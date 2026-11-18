@@ -5134,10 +5134,6 @@ msgid "Enter event description..."
 msgstr "Introduza a descrição do evento..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Introduza o texto da anotação aqui..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -8096,10 +8092,6 @@ msgid "or later to continue."
 msgstr "ou posterior para continuar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notas \"motivo da visita\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultado para \"%s\""
@@ -8208,10 +8200,6 @@ msgstr "Adicionar ou editar registos individuais de pessoas"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adicionar ou editar itens doados para eventos de angariação de fundos"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adicionar ou editar notas para pessoas e famílias"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9174,10 +9162,6 @@ msgstr "Registar vários vencedores de sorteios de angariação de fundos de uma
 #: 
 msgid "Record new pledges and payments"
 msgstr "Registar novas promessas de doação e pagamentos"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Registar o motivo pelo qual os participantes visitaram a sua paróquia"
 
 #: 
 msgid "Remove from Class"
@@ -12974,14 +12958,6 @@ msgid "Click Save to apply."
 msgstr "Clique em Guardar para aplicar."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A API da Área de Transferência não está disponível. Copie o URL manualmente."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Área de transferência indisponível. Utilize o botão Transferir para guardar os seus códigos."
-
-#: 
 msgid "Code incomplete"
 msgstr "Código incompleto"
 
@@ -14514,24 +14490,12 @@ msgid "People &amp; Families"
 msgstr "Pessoas &amp; Famílias"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A nota que está a tentar editar já não existe."
-
-#: 
 msgid "User List"
 msgstr "Lista de utilizadores"
 
 #: 
 msgid "View Person"
 msgstr "Ver pessoa"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Não tem permissão para adicionar uma nota para esta família."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Não tem permissão para adicionar uma nota para esta pessoa."
 
 #: 
 msgid "Account locked"
@@ -15232,10 +15196,6 @@ msgstr "O valor da meta deve ser não negativo"
 #: 
 msgid "thru %s"
 msgstr "até %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notas \"Motivo da Visita\" para %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

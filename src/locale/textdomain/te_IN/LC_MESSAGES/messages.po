@@ -5050,10 +5050,6 @@ msgid "Enter event description..."
 msgstr "ఈవెంట్ వివరణను నమోదు చేయండి..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "ఇక్కడ నోట్ టెక్స్ట్ నమోదు చేయండి..."
-
-#: 
 msgid "Note"
 msgstr "నోట్"
 
@@ -8012,10 +8008,6 @@ msgid "or later to continue."
 msgstr "లేదా కొనసాగించడానికి తర్వాత."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"ఎందుకు వచ్చారు\" గమనికలు"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\" కోసం %d ఫలితం"
@@ -8124,10 +8116,6 @@ msgstr "వ్యక్తిగత వ్యక్తి రికార్డ�
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "నిధిసంచయ కార్యక్రమాల కోసం దానం చేసిన అంశాలను జోడించండి లేదా సవరించండి"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "ప్రజల మరియు కుటుంబాల కోసం గమనికలను జోడించండి లేదా సవరించండి"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9090,10 +9078,6 @@ msgstr "ఒకేసారి బహుళ ఫండ్‌రైజర్ డ్
 #: 
 msgid "Record new pledges and payments"
 msgstr "కొత్త ప్రతిజ్ఞలు మరియు చెల్లింపులను రికార్డ్ చేయండి"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "హాజరైన వారు మీ చర్చిని ఎందుకు సందర్శించారో రికార్డ్ చేయండి"
 
 #: 
 msgid "Remove from Class"
@@ -12890,14 +12874,6 @@ msgid "Click Save to apply."
 msgstr "వర్తింపచేయడానికి సేవ్ చేయండిని క్లిక్ చేయండి."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "క్లిప్‌బోర్డ్ API అందుబాటులో లేదు. దయచేసి URL ను మానవీయంగా కాపీ చేయండి."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "క్లిప్‌బోర్డ్ అందుబాటులో లేదు. మీ కోడ్‌లను సేవ్ చేయడానికి దయచేసి డౌన్‌లోడ్ బటన్‌ను ఉపయోగించండి."
-
-#: 
 msgid "Code incomplete"
 msgstr "కోడ్ అసంపూర్ణంగా ఉంది"
 
@@ -14430,24 +14406,12 @@ msgid "People &amp; Families"
 msgstr "వ్యక్తులు &amp; కుటుంబాలు"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "మీరు సవరించడానికి ప్రయత్నిస్తున్న గమనిక ఇకపై లేదు."
-
-#: 
 msgid "User List"
 msgstr "వినియోగదారు జాబితా"
 
 #: 
 msgid "View Person"
 msgstr "వ్యక్తిని చూడండి"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ఈ కుటుంబానికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ఈ వ్యక్తికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
 
 #: 
 msgid "Account locked"
@@ -15148,10 +15112,6 @@ msgstr "లక్ష్య మొత్తం ప్రతికూలేతర�
 #: 
 msgid "thru %s"
 msgstr "%s వరకు"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s కోసం \"ఎందుకు వచ్చారు\" గమనికలు"
 
 #: 
 msgid "%1$s of the %2$s family"

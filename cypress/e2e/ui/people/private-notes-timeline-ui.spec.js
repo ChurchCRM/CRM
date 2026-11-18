@@ -93,7 +93,7 @@ describe("UI Private Notes Timeline", () => {
 
             cy.contains("Admin's full private note").should("be.visible");
             cy.contains("Admin's full private note").parent().parent().within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("exist");
+                cy.get("[data-open-note-id]").should("exist");
             });
         });
 
@@ -129,7 +129,7 @@ describe("UI Private Notes Timeline", () => {
             cy.contains("Admin's private family note with details").should("be.visible");
             cy.contains("Admin's private family note with details")
                 .parent().parent().within(() => {
-                    cy.get("a[href*='NoteEditor.php']").should("exist");
+                    cy.get("[data-open-note-id]").should("exist");
                 });
         });
 
@@ -154,7 +154,7 @@ describe("UI Private Notes Timeline", () => {
 
             // Admin can now edit private notes they don't own — edit link should exist.
             cy.contains("User private").closest(".card-body").within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("exist");
+                cy.get("[data-open-note-id]").should("exist");
                 cy.get("button[data-note-id]").should("exist");
             });
         });
@@ -165,7 +165,7 @@ describe("UI Private Notes Timeline", () => {
             cy.get("#nav-item-timeline", { timeout: 10000 }).click();
 
             cy.contains("Admin private").closest(".card-body").within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("be.visible");
+                cy.get("[data-open-note-id]").should("be.visible");
                 cy.get("button[data-note-id]").should("be.visible");
             });
         });

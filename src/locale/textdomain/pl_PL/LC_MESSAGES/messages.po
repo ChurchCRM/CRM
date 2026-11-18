@@ -5129,10 +5129,6 @@ msgid "Enter event description..."
 msgstr "Wprowadź opis wydarzenia..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Wpisz treść notatki..."
-
-#: 
 msgid "Note"
 msgstr "Notatka"
 
@@ -8097,10 +8093,6 @@ msgid "or later to continue."
 msgstr "lub nowszej, aby kontynuować."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notatki \"Dlaczego przyszli\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d wynik dla \"%s\""
@@ -8210,10 +8202,6 @@ msgstr "Dodaj lub edytuj dane osobowe"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Dodaj lub edytuj przedmioty przekazane na cele charytatywne"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Dodaj lub edytuj notatki dla osób i rodzin"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9176,10 +9164,6 @@ msgstr "Zarejestruj wielu zwycięzców losowania zbiórki jednocześnie"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Zarejestruj nowe zobowiązania i wpłaty"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Zapisz, dlaczego odwiedzający przyszli do kościoła"
 
 #: 
 msgid "Remove from Class"
@@ -12977,14 +12961,6 @@ msgid "Click Save to apply."
 msgstr "Kliknij Zapisz, aby zastosować."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Interfejs API schowka jest niedostępny. Proszę skopiować adres URL ręcznie."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Schowek jest niedostępny. Użyj przycisku Pobierz, aby zapisać swoje kody."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod niekompletny"
 
@@ -14518,24 +14494,12 @@ msgid "People &amp; Families"
 msgstr "Wierni i rodziny"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Notatka, którą próbujesz edytować, już nie istnieje."
-
-#: 
 msgid "User List"
 msgstr "Lista użytkowników"
 
 #: 
 msgid "View Person"
 msgstr "Podgląd osoby"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nie masz uprawnień do dodania notatki dla tej rodziny."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nie masz uprawnień do dodania notatki dla tej osoby."
 
 #: 
 msgid "Account locked"
@@ -15238,10 +15202,6 @@ msgstr "goalAmount musi być nieujemny"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notatki „Dlaczego przyszedł” dla %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

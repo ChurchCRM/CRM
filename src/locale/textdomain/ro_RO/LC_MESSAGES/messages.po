@@ -5133,10 +5133,6 @@ msgid "Enter event description..."
 msgstr "Introduceți descrierea evenimentului..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Introduceți textul notei aici..."
-
-#: 
 msgid "Note"
 msgstr "Notă"
 
@@ -8101,10 +8097,6 @@ msgid "or later to continue."
 msgstr "sau o versiune mai nouă pentru a continua."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Note \"De ce au venit\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat pentru \"%s\""
@@ -8214,10 +8206,6 @@ msgstr "Adaugă sau editează înregistrări individuale"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adaugă sau editează obiecte donate pentru evenimente de strângere de fonduri"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adaugă sau editează note pentru persoane și familii"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9180,10 +9168,6 @@ msgstr "Înregistrați mai mulți câștigători ai tombolei simultan"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Înregistrați angajamente și plăți noi"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
 msgid "Remove from Class"
@@ -12981,14 +12965,6 @@ msgid "Click Save to apply."
 msgstr "Faceți clic pe Salvare pentru a aplica."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
-
-#: 
 msgid "Code incomplete"
 msgstr "Cod incomplet"
 
@@ -14522,24 +14498,12 @@ msgid "People &amp; Families"
 msgstr "Persoane &amp; Familii"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Nota pe care încercați să o editați nu mai există."
-
-#: 
 msgid "User List"
 msgstr "Listă utilizatori"
 
 #: 
 msgid "View Person"
 msgstr "Vizualizare persoană"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această familie."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
 
 #: 
 msgid "Account locked"
@@ -15242,10 +15206,6 @@ msgstr "goalAmount trebuie să fie non-negativ"
 #: 
 msgid "thru %s"
 msgstr "până la %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Note de ce a venit pentru %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

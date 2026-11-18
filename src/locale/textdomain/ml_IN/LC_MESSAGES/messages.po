@@ -5039,10 +5039,6 @@ msgid "Enter event description..."
 msgstr "ഇവന്റ് വിവരണം നൽകുക..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "ഇവിടെ കുറിപ്പ് ടെക്സ്റ്റ് നൽകുക..."
-
-#: 
 msgid "Note"
 msgstr "കുറിപ്പ്"
 
@@ -8001,10 +7997,6 @@ msgid "or later to continue."
 msgstr "അല്ലെങ്കിൽ തുടരാൻ."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"വന്ന കാരണം\" കുറിപ്പുകൾ"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"-ന് %d ഫലം"
@@ -8113,10 +8105,6 @@ msgstr "വ്യക്തി റെക്കോർഡ് ചേർക്കൂ 
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "ഫണ്ട്‌റൈസർ ഇനങ്ങൾ ചേർക്കൂ അല്ലെങ്കിൽ എഡിറ്റ് ചെയ്യൂ"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "ആളുകൾ, കുടുംബങ്ങൾക്ക് കുറിപ്പ് ചേർക്കൂ"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9079,10 +9067,6 @@ msgstr "ഒരേ സമയം ഒന്നിലധികം ഫണ്ട് �
 #: 
 msgid "Record new pledges and payments"
 msgstr "പുതിയ സാമ്പത്തിക പ്രതിബദ്ധതകളും പേമെന്റുകളും രേഖപ്പെടുത്തുക"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "സഭ സന്ദർശിച്ചവർ എന്തിനാണ് വന്നതെന്ന് രേഖപ്പെടുത്തുക"
 
 #: 
 msgid "Remove from Class"
@@ -12879,14 +12863,6 @@ msgid "Click Save to apply."
 msgstr "പ്രയോഗിക്കാൻ Save ക്ലിക്ക് ചെയ്യൂ."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "ക്ലിപ്‌ബോർഡ് API ലഭ്യമല്ല. ദയവായി URL സ്വമേധയാ പകർത്തുക."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ക്ലിപ്പ്ബോർഡ് ലഭ്യമല്ല. കോഡുകൾ സംരക്ഷിക്കാൻ ഡൗൺലോഡ് ബട്ടൺ ഉപയോഗിക്കുക."
-
-#: 
 msgid "Code incomplete"
 msgstr "കോഡ് അപൂർണ്ണം"
 
@@ -14419,24 +14395,12 @@ msgid "People &amp; Families"
 msgstr "ആളുകളും &amp; കുടുംബങ്ങളും"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "നിങ്ങൾ എഡിറ്റ് ചെയ്യാൻ ശ്രമിക്കുന്ന കുറിപ്പ് ഇനി നിലവിലില്ല."
-
-#: 
 msgid "User List"
 msgstr "ഉപയോക്തൃ പട്ടിക"
 
 #: 
 msgid "View Person"
 msgstr "വ്യക്തിയെ കാണുക"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ഈ കുടുംബത്തിനായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ഈ വ്യക്തിക്കായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
 
 #: 
 msgid "Account locked"
@@ -15137,10 +15101,6 @@ msgstr "goalAmount നെഗറ്റീവ് ആകരുത്"
 #: 
 msgid "thru %s"
 msgstr "%s വരെ"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s-നുള്ള \"എന്തിന് വന്നു\" കുറിപ്പുകൾ"
 
 #: 
 msgid "%1$s of the %2$s family"

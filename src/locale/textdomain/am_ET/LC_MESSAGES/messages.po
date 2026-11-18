@@ -5077,10 +5077,6 @@ msgid "Enter event description..."
 msgstr "የክስተት መግለጫ ያስገቡ..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "የማስታወሻ ጽሁፍ እዚህ ያስገቡ..."
-
-#: 
 msgid "Note"
 msgstr "ማስታወሻ"
 
@@ -8039,10 +8035,6 @@ msgid "or later to continue."
 msgstr "ወይም ቆይቶ ለመቀጠል።"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"ለምን መጡ\" ማስታወሻዎች"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "ለ \"%s\" አንድ ውጤት"
@@ -8151,10 +8143,6 @@ msgstr "የግለሰብ ሰዎች ሪከርድ ያክሉ ወይም ያርትዑ"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "ለገንዘብ መሰብሰቢያ ክስተቶች በሚናገርብ ንጥረ ነገሮች ያክሉ ወይም ያርትዑ"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "ሰዎች እና ቤተሰቦች ማስታወሻ ያክሉ ወይም ያርትዑ"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9117,10 +9105,6 @@ msgstr "ብዙ ገንዘብ ስብ ዋንጪ አንዴ ረ"
 #: 
 msgid "Record new pledges and payments"
 msgstr "ተፈላጊ ተቀባይነት እና ገንዘብ ሰበአት ረ"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "ምንድነ ሰብ ተዋጽኦ ዳሰሱ ረ"
 
 #: 
 msgid "Remove from Class"
@@ -12917,14 +12901,6 @@ msgid "Click Save to apply."
 msgstr "ተግባር ይጠቀሙ ከእንጀራ ጠቅ።"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API አለም አቀፍ አይደለም። እባክዎ URL ን በእጅ ይቅዱ።"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ክሊፕቦርድ አይገኝም። ኮዶቹን ለማስቀመጥ ዝርዝር አውርድ ቁልፍን ይጠቀሙ።"
-
-#: 
 msgid "Code incomplete"
 msgstr "ኮድ አልተጠናቀቀም"
 
@@ -14458,24 +14434,12 @@ msgid "People &amp; Families"
 msgstr "ሰዎች &amp; ቤተሰቦች"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "ለማስተካከል እየሞከሩት ያሉት ማስታወሻ አሁን የለም።"
-
-#: 
 msgid "User List"
 msgstr "የተጠቃሚዎች ዝርዝር"
 
 #: 
 msgid "View Person"
 msgstr "ሰው ይመልከቱ"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ለዚህ ቤተሰብ ማስታወሻ ለማከል ፈቃድ የለዎትም።"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ለዚህ ሰው ማስታወሻ ለማከል ፈቃድ የለዎትም።"
 
 #: 
 msgid "Account locked"
@@ -15176,10 +15140,6 @@ msgstr "goalAmount አሉታዊ መሆን የለበትም"
 #: 
 msgid "thru %s"
 msgstr "እስከ %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "ለምን መጡ ማስታወሻዎች ለ %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
