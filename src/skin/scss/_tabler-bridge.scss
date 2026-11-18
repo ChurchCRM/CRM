@@ -261,7 +261,7 @@ select {
 // so cards, sidebar and header merge. Step the page down and firm up edges and tints.
 // Tints derive from the live colour so a custom primary still works.
 :root:not([data-bs-theme="dark"]) {
-  --tblr-body-bg: var(--tblr-gray-100);
+  --tblr-body-bg: oklch(94.5% 0.004 250);
   --tblr-border-color: var(--tblr-gray-300);
   --tblr-border-color-translucent: rgba(24, 36, 51, 0.16);
   --tblr-shadow-card: 0 1px 3px rgba(24, 36, 51, 0.1);
