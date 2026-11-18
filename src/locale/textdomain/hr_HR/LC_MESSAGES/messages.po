@@ -833,14 +833,6 @@ msgid "Assign"
 msgstr "Dodijeli"
 
 #: 
-msgid "Date Updated"
-msgstr "Datum ažuriranja"
-
-#: 
-msgid "Updated By"
-msgstr "Ažurirao"
-
-#: 
 msgid "Since"
 msgstr "Od"
 
@@ -1345,10 +1337,6 @@ msgid "Updated"
 msgstr "Ažurirano"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(ova radnja se ne može poništiti)"
-
-#: 
 msgid "Note Editor"
 msgstr "Urednik bilješki"
 
@@ -1573,10 +1561,6 @@ msgid "Warning"
 msgstr "Upozorenje"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Ova vrsta svojstva još uvijek se koristi u najmanje jednom svojstvu."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Potvrdite brisanje ove vrste svojstva"
 
@@ -1602,44 +1586,8 @@ msgid "Please confirm deletion of"
 msgstr "Potvrdite brisanje"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Žao nam je, postoje zapisi o darovima ove obitelji. Ova obitelj se ne može obrisati."
-
-#: 
-msgid "Return to Family View"
-msgstr "Povratak na prikaz obitelji"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "UPOZORENJE: Ova obitelj ima zapise o darovima i NE MOŽE biti obrisana dok ti darovi nisu pridruženi drugoj obitelji."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "UPOZORENJE: Ova radnja se ne može poništiti i može imati pravne posljedice!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "TRENUTNA OBITELJ S DAROVIMA"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Napomena: Ovo će također obrisati sve bilješke pridružene ovom obiteljskom zapisu."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Obriši SAMO obiteljski zapis"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Obriši obiteljski zapis I članove obitelji"
-
-#: 
 msgid "Listing"
 msgstr "Popis"
-
-#: 
-msgid "My User Settings"
-msgstr "Moje korisničke postavke"
 
 #: 
 msgid "Variable name"
@@ -6708,10 +6656,6 @@ msgid "Add Property Type"
 msgstr "Dodaj vrstu svojstva"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Dodaj svoju prvu vrstu svojstva"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Brisanjem ovog polja nepovratno ćete izgubiti sve podatke članova skupini dodijeljene za ovo polje!"
 
@@ -6730,10 +6674,6 @@ msgstr "Odjavljen"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Trenutna fiskalna godina"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Obriši (briše sve pridružene zapise)"
 
 #: 
 msgid "Edit Property Type"
@@ -6784,10 +6724,6 @@ msgid "No property types found"
 msgstr "Nisu pronađene vrste svojstava"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Broj zapisa koji koriste ovu vrstu svojstva"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Neobavezni detaljni opis ove vrste svojstva"
 
@@ -6818,10 +6754,6 @@ msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Pratite i upravljajte obvezama zavjeta prema obitelji i fondu"
-
-#: 
-msgid "View Properties"
-msgstr "Prikaži svojstva"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7801,18 +7733,6 @@ msgstr "URL WebDAV krajnje točke je obavezan."
 #: 
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Jeste li sigurni da želite trajno obrisati ovaj zapis zavjeta?"
-
-#: 
-msgid "Cancel and Return to Family View"
-msgstr "Odustani i povratak na prikaz obitelji"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Ako obrišete ovu vrstu, uklonit ćete i sva svojstva koja je koriste i izgubiti sve odgovarajuće dodjele svojstava."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Premjesti darove u odabranu obitelj"
 
 #: 
 msgid "Calendar not found"
@@ -8918,10 +8838,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Upravljajte volonterskim mogućnostima i dodjeljujte članove"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Upravljajte vašim osobnim preferencijama i postavkama računa"
-
-#: 
 msgid "Map cart items"
 msgstr "Mapiraj stavke košarice"
 
@@ -8956,10 +8872,6 @@ msgstr "Premjesti u skupinu"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Prelazite s postojeće ChurchCRM ili ChurchInfo instalacije? Učitajte vašu datoteku sigurnosne kopije i automatski ćemo obnoviti vaše podatke."
-
-#: 
-msgid "My Settings"
-msgstr "Moje postavke"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -11051,10 +10963,6 @@ msgid "Manage 2FA"
 msgstr "Upravljaj 2FA"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Upravljajte dodatnim preferencijama poput razdjelnika e-pošte i opcija prikaza"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Upravljajte vašim API ključem za vanjske integracije"
 
@@ -11722,14 +11630,6 @@ msgid "e.g., 40.7128"
 msgstr "npr. 45.8150"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Greška pri brisanju obitelji."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Greška pri premještanju darova."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Potreban je najmanje jedan član obitelji"
 
@@ -11748,10 +11648,6 @@ msgstr "Brisanje nije uspjelo"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Smjer mora biti \"gore\" ili \"dolje\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Premještanje darova nije uspjelo."
 
 #: 
 msgid "Finance permission required"
@@ -11788,10 +11684,6 @@ msgstr "Članstvo nije pronađeno"
 #: 
 msgid "Password successfully changed for"
 msgstr "Lozinka je uspješno promijenjena za"
-
-#: 
-msgid "Please select a target family."
-msgstr "Molim odaberite ciljnu obitelj."
 
 #: 
 msgid "Target family not found"
@@ -15366,14 +15258,6 @@ msgid "Output Method"
 msgstr "Metoda izlaza"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Molimo potvrdite brisanje ovog zapisa obitelji"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Uplatnica"
 
@@ -15676,18 +15560,6 @@ msgstr "Dodaj nedjeljnoškolsku skupinu"
 #: 
 msgid "Delete this family?"
 msgstr "Obrisati ovu obitelj?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Želite li obrisati ovu obitelj? Bit ćete preusmjereni na stranicu za odabir što obrisati. Ova radnja se ne može poništiti."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Potvrda brisanja obitelji"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Potvrda brisanja vrste svojstva"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"

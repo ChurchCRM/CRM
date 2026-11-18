@@ -142,15 +142,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const props = parseInt(this.dataset.properties || '0', 10);
             const assigns = parseInt(this.dataset.assignments || '0', 10);
             const csrfToken = this.dataset.csrfToken || '';
-            const recordLabel = cls === 'p' ? '<?= gettext("people") ?>' : (cls === 'f' ? '<?= gettext("families") ?>' : '<?= gettext("groups") ?>');
+            const assignsSentence = cls === 'p'
+                ? '<?= gettext("%d people currently have properties of this type.") ?>'
+                : (cls === 'f'
+                    ? '<?= gettext("%d families currently have properties of this type.") ?>'
+                    : '<?= gettext("%d groups currently have properties of this type.") ?>');
             let message = '<p><?= gettext("Please confirm deletion of this Property Type") ?>: <strong>' + window.CRM.escapeHtml(name) + '</strong></p>';
             if (props > 0 || assigns > 0) {
                 let warn = '<div class="alert alert-warning"><strong><?= gettext("Warning") ?>:</strong> ';
                 if (assigns > 0) {
-                    warn += assigns + ' ' + recordLabel + ' <?= gettext("currently have properties of this type.") ?> ';
+                    warn += assignsSentence.replace('%d', assigns) + ' ';
                 }
                 if (props > 0) {
-                    warn += '<?= gettext("Deleting it will also remove") ?> ' + props + ' <?= gettext("properties and all their assignments so nothing is left hanging.") ?>';
+                    warn += '<?= gettext("Deleting it will also remove %d properties and all their assignments so nothing is left hanging.") ?>'.replace('%d', props);
                 }
                 warn += '</div>';
                 message = warn + message;

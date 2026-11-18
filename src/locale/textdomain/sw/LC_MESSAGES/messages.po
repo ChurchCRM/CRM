@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "Kadiria"
 
 #: 
-msgid "Date Updated"
-msgstr "Tarehe Ilisasishwa"
-
-#: 
-msgid "Updated By"
-msgstr "Imesasishwa Na"
-
-#: 
 msgid "Since"
 msgstr "Tokea"
 
@@ -1362,10 +1354,6 @@ msgid "Updated"
 msgstr "Imesasishwa"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(kitendo hiki hakiwezi kutenduliwa)"
-
-#: 
 msgid "Note Editor"
 msgstr "Kumbuka Mhariri"
 
@@ -1590,10 +1578,6 @@ msgid "Warning"
 msgstr "Onyo"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Aina hii ya mali bado inatumiwa na angalau mali moja."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Tafadhali thibitisha kufutwa kwa Aina hii ya Mali"
 
@@ -1619,44 +1603,8 @@ msgid "Please confirm deletion of"
 msgstr "Tafadhali thibitisha kufutwa kwa"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Samahani, kuna rekodi za michango kutoka kwa familia hii. Huenda familia hii isifutwe."
-
-#: 
-msgid "Return to Family View"
-msgstr "Rudi kwa Mwonekano wa Familia"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ONYO: Familia hii ina rekodi za michango na HAKUNA KUFUTWA hadi michango hii ihusishwe na familia nyingine."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "ONYO: Hatua hii haiwezi kutenduliwa na inaweza kuwa na athari za kisheria!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FAMILIA YA SASA NA MICHANGO"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Kumbuka: Hatua hii pia itafuta Madokezo yote yanayohusiana na rekodi hii ya Familia."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Futa Rekodi ya Familia PEKEE"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Futa Rekodi ya Familia NA Wanafamilia"
-
-#: 
 msgid "Listing"
 msgstr "Kuorodhesha"
-
-#: 
-msgid "My User Settings"
-msgstr "Mipangilio Yangu ya Mtumiaji"
 
 #: 
 msgid "Variable name"
@@ -6733,10 +6681,6 @@ msgid "Add Property Type"
 msgstr "Ongeza Aina ya Mali"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Ongeza Aina Yako ya Kwanza ya Mali"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Kwa kufuta sehemu hii, utapoteza bila kurudi data zote za wanakikundi zilizowekwa kwa sehemu hii!"
 
@@ -6755,10 +6699,6 @@ msgstr "Ameondoka"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Mwaka wa Fedha wa Sasa"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Futa (itafuta rekodi zote zinazohusiana)"
 
 #: 
 msgid "Edit Property Type"
@@ -6809,10 +6749,6 @@ msgid "No property types found"
 msgstr "Hakuna aina za mali zilizopatikana"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Idadi ya rekodi zinazotumia aina hii ya mali"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Maelezo ya kina ya hiari ya aina hii ya mali"
 
@@ -6843,10 +6779,6 @@ msgstr "Chagua aina ya rekodi ambayo mali hii inatumika"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Fuatilia na simamia ahadi kwa familia na mfuko"
-
-#: 
-msgid "View Properties"
-msgstr "Tazama Mali"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7824,18 +7756,6 @@ msgstr "URL ya Mwisho wa WebDAV inahitajika."
 #: 
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Je, una uhakika unataka kufuta kwa kudumu rekodi hii ya ahadi?"
-
-#: 
-msgid "Cancel and Return to Family View"
-msgstr "Ghairi na Rudi kwa Muonekano wa Familia"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Ukifuta aina hii, utaondoa pia mali zote zinazotumia na kupoteza mgawanyo wowote wa mali unaohusiana."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Hamisha Matoleo kwa Familia Iliyochaguliwa"
 
 #: 
 msgid "Calendar not found"
@@ -8940,10 +8860,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Simamia fursa za kujitolea na tenga washiriki"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Simamia mapendeleo yako binafsi na mipangilio ya akaunti"
-
-#: 
 msgid "Map cart items"
 msgstr "Onyesha vitu vya orodha kwenye ramani"
 
@@ -8978,10 +8894,6 @@ msgstr "Hamisha kwenye Kikundi"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Unahamia kutoka usakinishaji uliopo wa ChurchCRM au ChurchInfo? Pakia faili yako ya nakala na tutarejesha data yako kiotomatiki."
-
-#: 
-msgid "My Settings"
-msgstr "Mipangilio Yangu"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -11073,10 +10985,6 @@ msgid "Manage 2FA"
 msgstr "Simamia 2FA"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Simamia mapendeleo ya ziada kama vitenganishi vya barua pepe na chaguo za kuonyesha"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Simamia ufunguo wako wa API kwa muunganiko wa nje"
 
@@ -11743,14 +11651,6 @@ msgid "e.g., 40.7128"
 msgstr "mf., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Hitilafu ilitokea wakati wa kufuta familia."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Hitilafu ilitokea wakati wa kuhamisha michango."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Angalau mwanafamilia mmoja anahitajika"
 
@@ -11769,10 +11669,6 @@ msgstr "Kufuta kumeshindwa"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Mwelekeo lazima uwe \"juu\" au \"chini\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Imeshindwa kuhamisha michango."
 
 #: 
 msgid "Finance permission required"
@@ -11809,10 +11705,6 @@ msgstr "Uanachama haukupatikana"
 #: 
 msgid "Password successfully changed for"
 msgstr "Nywila imebadilishwa kwa mafanikio kwa"
-
-#: 
-msgid "Please select a target family."
-msgstr "Tafadhali chagua familia lengwa."
 
 #: 
 msgid "Target family not found"
@@ -15384,14 +15276,6 @@ msgid "Output Method"
 msgstr "Njia ya Kutoa"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Tafadhali thibitisha kufuta rekodi hii ya familia"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Tafadhali chagua familia nyingine ya kushirikisha michango hii"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Stakabadhi ya Malipo"
 
@@ -15694,18 +15578,6 @@ msgstr "Ongeza Darasa la Shule ya Jumapili"
 #: 
 msgid "Delete this family?"
 msgstr "Futa familia hii?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Unataka kufuta familia hii? Utapelekwa kwenye ukurasa wa kuchagua nini kifutwe. Hii haiwezi kutenduliwa."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Uthibitisho wa Kufuta Familia"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Uthibitisho wa Kufuta Aina ya Mali"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
