@@ -10625,6 +10625,46 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/admin/api/user/{userId}/setTwoFactorRequired':
+    post:
+      tags:
+        - Admin
+      summary: 'Require or stop requiring 2FA for one user (Admin role required)'
+      description: 'Works alongside bRequire2FA. A user who has not enrolled gets the same grace period and enrollment redirect as under bRequire2FA, starting today.'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - required
+              properties:
+                required:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Requirement saved'
+          content:
+            application/json:
+              schema:
+                properties:
+                  required: { type: boolean }
+                type: object
+        '400':
+          description: 'required is missing or not a boolean'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/admin/api/user/{userId}/login/reset':
     post:
       tags:
