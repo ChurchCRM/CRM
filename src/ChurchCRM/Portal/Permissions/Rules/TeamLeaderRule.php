@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Permissions\Rules;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
@@ -9,7 +10,6 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Portal\Permissions\BulkPortalRule;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalRuleGrant;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -94,7 +94,7 @@ final class TeamLeaderRule implements BulkPortalRule
      */
     private static function grants(int $teamId, string $teamName): array
     {
-        $scope = PortalScope::team($teamId);
+        $scope = Scope::team($teamId);
         $label = sprintf(gettext('Leader of %s'), $teamName);
 
         return [

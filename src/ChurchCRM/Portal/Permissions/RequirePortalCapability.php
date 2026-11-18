@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Decision;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
@@ -34,7 +36,7 @@ final class RequirePortalCapability implements MiddlewareInterface
     public const SCOPE_ATTRIBUTE = 'portalScope';
 
     /**
-     * @param Closure(ServerRequestInterface, PortalPrincipal): (PortalScope|false)|null $resolveScope
+     * @param Closure(ServerRequestInterface, PortalPrincipal): (Scope|false)|null $resolveScope
      *        null: held on any scope; false from the closure: the person has no family
      * @param Closure(ResponseInterface): ResponseInterface|null $noFamily
      */
@@ -57,10 +59,10 @@ final class RequirePortalCapability implements MiddlewareInterface
     {
         return new self(
             $capability,
-            static function (ServerRequestInterface $request) use ($capability, $argument): PortalScope {
-                $type = PortalCapabilityRegistry::get($capability)?->scopeType ?? PortalScope::NONE;
+            static function (ServerRequestInterface $request) use ($capability, $argument): Scope {
+                $type = PortalCapabilityRegistry::get($capability)?->scopeType ?? Scope::NONE;
 
-                return new PortalScope($type, (int) SlimUtils::getRouteArgument($request, $argument));
+                return new Scope($type, (int) SlimUtils::getRouteArgument($request, $argument));
             },
             null,
         );
@@ -77,11 +79,11 @@ final class RequirePortalCapability implements MiddlewareInterface
     {
         return new self(
             $capability,
-            static function (): PortalScope|false {
+            static function (): Scope|false {
                 $person = PortalContext::person();
                 $familyId = $person instanceof Person ? (int) $person->getFamId() : 0;
 
-                return $familyId > 0 ? PortalScope::family($familyId) : false;
+                return $familyId > 0 ? Scope::family($familyId) : false;
             },
             $refusal,
             $noFamily,
@@ -124,11 +126,11 @@ final class RequirePortalCapability implements MiddlewareInterface
     }
 
     /** A scope of the right type, so decide() reports why an unscoped check fails. */
-    private function anyScope(): ?PortalScope
+    private function anyScope(): ?Scope
     {
         $type = PortalCapabilityRegistry::get($this->capability)?->scopeType;
 
-        return $type === null || $type === PortalScope::NONE ? null : new PortalScope($type, 0);
+        return $type === null || $type === Scope::NONE ? null : new Scope($type, 0);
     }
 
     /**
