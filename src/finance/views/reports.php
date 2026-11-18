@@ -49,7 +49,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
                     ['href' => '/FinancialReports.php?ReportType=Pledge%20Family%20Summary', 'title' => gettext('Pledge Family Summary'), 'description' => gettext('Detailed breakdown of pledges and payments by family.')],
                     ['href' => '/finance/reports/pledge-comparison', 'title' => gettext('Pledge Comparison'), 'description' => gettext('Compare family pledge totals for two fiscal years.')],
                     ['href' => '/finance/reports/missing-pledges', 'title' => gettext('Missing Pledges'), 'description' => gettext('Find families that pledged in one fiscal year and not in another.')],
-                    ['href' => '/FinancialReports.php?ReportType=Pledge%20Reminders', 'title' => gettext('Pledge Reminders'), 'description' => gettext('Generate reminder letters for families with outstanding pledges.')],
+                    ['href' => '/finance/reports/pledge-reminders', 'title' => gettext('Pledge Reminders'), 'description' => gettext('Generate reminder letters for families with outstanding pledges.')],
                 ],
             ],
             [
