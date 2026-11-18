@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Utils\URLValidator;
@@ -53,6 +54,42 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $localeInfo = LocaleService::getLocaleSetupInfo();
 
         return SlimUtils::renderJSON($response, $localeInfo);
+    });
+
+    $group->post('DatabaseVersionCheck', function (Request $request, Response $response, array $args): Response {
+        $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
+        if (file_exists($docRoot . '/Include/Config.php')) {
+            return $response->withStatus(403, 'Setup is already complete.');
+        }
+
+        $setupData = $request->getParsedBody();
+        if (
+            !isset($setupData['DB_SERVER_NAME'], $setupData['DB_SERVER_PORT'], $setupData['DB_USER'], $setupData['DB_PASSWORD'])
+            || !is_valid_hostname($setupData['DB_SERVER_NAME'])
+            || !is_valid_port($setupData['DB_SERVER_PORT'])
+            || !is_valid_db_user($setupData['DB_USER'])
+            || !is_valid_db_password($setupData['DB_PASSWORD'])
+        ) {
+            return SlimUtils::renderJSON($response, ['error' => 'Invalid database connection settings'], 400);
+        }
+
+        $serverVersion = read_db_server_version(
+            sanitize_db_field($setupData['DB_SERVER_NAME']),
+            preg_replace('/[^0-9]/', '', $setupData['DB_SERVER_PORT']),
+            sanitize_db_field($setupData['DB_USER']),
+            $setupData['DB_PASSWORD']
+        );
+
+        // A server that cannot be reached or read is not warned about, like DatabaseVersionService itself
+        $check = DatabaseVersionService::check($serverVersion);
+        $message = $check['supported'] ? null : DatabaseVersionService::getUnsupportedMessage($serverVersion);
+
+        return SlimUtils::renderJSON($response, [
+            'supported' => $check['supported'],
+            'engine'    => $check['engine'],
+            'version'   => $check['version'],
+            'message'   => $message,
+        ]);
     });
 
     $postHandler = function (Request $request, Response $response, array $args): Response {
@@ -150,6 +187,24 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 function escape_php_single_quoted($value)
 {
     return addcslashes($value, "'\\");
+}
+
+// The server version reported on a connection made with the entered credentials, or null when it cannot be read.
+// No database name is used, so a database that does not exist yet does not hide the version.
+function read_db_server_version(string $host, string $port, string $user, string $password): ?string
+{
+    try {
+        $pdo = new PDO(
+            sprintf('mysql:host=%s;port=%s', $host, $port),
+            $user,
+            $password,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5]
+        );
+
+        return (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
+    } catch (\Throwable $e) {
+        return null;
+    }
 }
 
 function sanitize_db_field($value)

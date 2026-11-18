@@ -714,6 +714,64 @@ window.Stepper = Stepper;
     return hasFields ? validator : null;
   }
 
+  // Credentials the server needs to read the database version
+  const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_USER", "DB_PASSWORD"];
+
+  function isDatabaseWarningShown() {
+    return !$("#db-version-warning").hasClass("d-none");
+  }
+
+  function hideDatabaseWarning() {
+    $("#db-version-warning").addClass("d-none");
+    $("#db-version-ack").prop("checked", false);
+    $("#submit-setup").prop("disabled", false);
+  }
+
+  function showDatabaseWarning(result) {
+    $("#db-version-message").text(result.message);
+    $("#db-version-ack").prop("checked", false);
+    $("#db-version-warning").removeClass("d-none");
+    $("#submit-setup").prop("disabled", true);
+    document.getElementById("db-version-warning").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  // Resolves with the server's verdict, or null when it could not be checked: only a positively read old version warns
+  function checkDatabaseVersion() {
+    const data = {};
+    for (const id of DB_CONNECTION_FIELDS) {
+      data[id] = document.getElementById(id).value;
+    }
+
+    return new Promise((resolve) => {
+      $.ajax({
+        url: `${rootPath}/setup/DatabaseVersionCheck`,
+        method: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+      })
+        .done((response) => resolve(response))
+        .fail(() => resolve(null));
+    });
+  }
+
+  // Warn about an unsupported database, but never block the install itself: the acknowledgment unlocks it
+  function checkDatabaseThenInstall() {
+    if (isDatabaseWarningShown() && $("#db-version-ack").prop("checked")) {
+      submitSetupData();
+      return;
+    }
+
+    $("#submit-setup").prop("disabled", true);
+    checkDatabaseVersion().then((result) => {
+      if (result && result.supported === false) {
+        showDatabaseWarning(result);
+        return;
+      }
+      $("#submit-setup").prop("disabled", false);
+      submitSetupData();
+    });
+  }
+
   function submitSetupData() {
     const form = document.getElementById("setup-form");
     const formData = {};
@@ -912,7 +970,7 @@ window.Stepper = Stepper;
       if (validators["step-database"]) {
         validators["step-database"].revalidate().then((isValid) => {
           if (isValid) {
-            submitSetupData();
+            checkDatabaseThenInstall();
           } else {
             window.CRM.notify("Please fill in all required fields correctly.", {
               type: "danger",
@@ -921,9 +979,17 @@ window.Stepper = Stepper;
           }
         });
       } else {
-        submitSetupData();
+        checkDatabaseThenInstall();
       }
     });
+
+    // The acknowledgment unlocks the install; changing the connection settings asks for a fresh check
+    document.getElementById("db-version-ack").addEventListener("change", (event) => {
+      $("#submit-setup").prop("disabled", !event.target.checked);
+    });
+    for (const id of DB_CONNECTION_FIELDS) {
+      document.getElementById(id).addEventListener("input", hideDatabaseWarning);
+    }
 
     // Handle prerequisites Next button
     document.getElementById("prerequisites-next-btn").addEventListener("click", () => {

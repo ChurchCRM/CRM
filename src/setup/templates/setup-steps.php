@@ -285,6 +285,22 @@ require_once __DIR__ . '/header.php';
                         </div>
                     </div>
 
+                    <!-- Unsupported database warning (hidden until the entered server is checked) -->
+                    <div class="alert alert-danger mt-3 d-none" id="db-version-warning" role="alert">
+                        <h5 class="alert-heading"><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Unsupported database server') ?></h5>
+                        <p id="db-version-message"></p>
+                        <ul>
+                            <li><?= gettext('This database no longer receives security fixes from its vendor.') ?></li>
+                            <li><?= gettext('You can install now: ChurchCRM will install and run.') ?></li>
+                            <li><?= gettext('Upgrades will be blocked until the database is moved to a supported version.') ?></li>
+                        </ul>
+                        <p><?= gettext('We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target.') ?></p>
+                        <div class="form-check mb-0">
+                            <input class="form-check-input" type="checkbox" id="db-version-ack">
+                            <label class="form-check-label" for="db-version-ack"><?= gettext('I understand this database is unsupported and upgrades will be blocked') ?></label>
+                        </div>
+                    </div>
+
                     <div class="setup-actions">
                         <button type="button" class="btn btn-success btn-lg" id="submit-setup">
                             <i class="fa-solid fa-database me-2"></i>Install ChurchCRM

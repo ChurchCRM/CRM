@@ -96,6 +96,92 @@ describe('01 - Setup Wizard', () => {
             cy.get('#ROOT_PATH').should('be.visible');
         });
 
+        // The wizard checks the entered server with DatabaseVersionService; an old server is stubbed
+        // through the check response because CI only runs a supported database.
+        const unsupportedDatabase = {
+            supported: false,
+            engine: 'MySQL',
+            version: '8.0.36',
+            message: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports (MySQL 8.4 or MariaDB 10.11 and later).',
+        };
+
+        const openConfigureStep = () => {
+            cy.visit('/setup');
+            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
+            cy.get('#prerequisites-next-btn').click();
+            cy.get('#step-database').should('have.class', 'active');
+            cy.get('#DB_SERVER_NAME').clear().type(dbConfig.host);
+            cy.get('#DB_SERVER_PORT').clear().type(dbConfig.port);
+            cy.get('#DB_NAME').clear().type(dbConfig.name);
+            cy.get('#DB_USER').clear().type(dbConfig.user);
+            cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
+            cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
+        };
+
+        it('should warn about an unsupported database and gate the install on an acknowledgment', () => {
+            cy.intercept('POST', '**/setup/DatabaseVersionCheck', { body: unsupportedDatabase }).as('versionCheck');
+            cy.intercept({ method: 'POST', pathname: /\/setup\/$/ }, { statusCode: 200, body: {} }).as('install');
+            openConfigureStep();
+
+            cy.get('#db-version-warning').should('have.class', 'd-none');
+            cy.get('#submit-setup').click();
+            cy.wait('@versionCheck');
+
+            cy.get('#db-version-warning').should('be.visible').and('have.class', 'alert-danger');
+            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36').and('contain.text', 'MySQL 8.4 or MariaDB 10.11');
+            cy.get('#db-version-warning').should('contain.text', 'security fixes').and('contain.text', 'Upgrades will be blocked');
+            cy.get('#db-version-ack').should('not.be.checked');
+            cy.get('#submit-setup').should('be.disabled');
+
+            // Changing the connection settings asks for a fresh check
+            cy.get('#DB_SERVER_NAME').type('x');
+            cy.get('#db-version-warning').should('have.class', 'd-none');
+            cy.get('#submit-setup').should('not.be.disabled');
+            cy.get('#DB_SERVER_NAME').type('{backspace}');
+            cy.get('#submit-setup').click();
+            cy.get('#db-version-warning').should('be.visible');
+            cy.get('#submit-setup').should('be.disabled');
+
+            // The acknowledgment unlocks the install, which is never blocked
+            cy.get('#db-version-ack').check();
+            cy.get('#submit-setup').should('not.be.disabled').click();
+            cy.wait('@install');
+            cy.get('#setup-success').should('be.visible');
+        });
+
+        it('should not warn when the database is supported', () => {
+            cy.intercept('POST', '**/setup/DatabaseVersionCheck', {
+                body: { supported: true, engine: 'MariaDB', version: '11.4.2', message: null },
+            }).as('versionCheck');
+            cy.intercept({ method: 'POST', pathname: /\/setup\/$/ }, { statusCode: 200, body: {} }).as('install');
+            openConfigureStep();
+
+            cy.get('#submit-setup').click();
+            cy.wait('@versionCheck');
+            cy.wait('@install');
+            cy.get('#db-version-warning').should('have.class', 'd-none');
+            cy.get('#setup-success').should('be.visible');
+        });
+
+        it('should not warn when the database version cannot be read', () => {
+            cy.request({
+                method: 'POST',
+                url: '/setup/DatabaseVersionCheck',
+                body: { DB_SERVER_NAME: dbConfig.host, DB_SERVER_PORT: dbConfig.port, DB_USER: dbConfig.user, DB_PASSWORD: 'not-the-password' },
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body.supported).to.eq(true);
+                expect(response.body.message).to.eq(null);
+            });
+
+            cy.request({
+                method: 'POST',
+                url: '/setup/DatabaseVersionCheck',
+                body: { DB_SERVER_NAME: 'bad host!', DB_SERVER_PORT: dbConfig.port, DB_USER: dbConfig.user, DB_PASSWORD: dbConfig.password },
+                failOnStatusCode: false,
+            }).its('status').should('eq', 400);
+        });
+
         it('should complete full installation with database setup', () => {
             cy.visit('/setup');
             
@@ -114,7 +200,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
             cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
             
-            // Submit the setup form
+            // Submit the setup form (the CI database is supported, so no version warning gates it)
             cy.get('#submit-setup').click();
             
             // Wait for setup modal to appear
