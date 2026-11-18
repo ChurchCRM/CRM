@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 01:31+0000\n"
+"POT-Creation-Date: 2026-11-18 02:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,6 +175,10 @@ msgid "%d failed (all time)"
 msgstr ""
 
 #, php-format
+msgid "%d families currently have properties of this type."
+msgstr ""
+
+#, php-format
 msgid "%d family"
 msgid_plural "%d families"
 msgstr[0] ""
@@ -194,6 +198,10 @@ msgstr ""
 
 #, php-format
 msgid "%d giving statement emailed to the family successfully."
+msgstr ""
+
+#, php-format
+msgid "%d groups currently have properties of this type."
 msgstr ""
 
 #, php-format
@@ -246,6 +254,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d payments are not on any deposit yet."
+msgstr ""
+
+#, php-format
+msgid "%d people currently have properties of this type."
 msgstr ""
 
 #, php-format
@@ -5071,7 +5083,8 @@ msgstr ""
 msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
 msgstr ""
 
-msgid "Deleting it will also remove"
+#, php-format
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
 msgstr ""
 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
@@ -20304,9 +20317,6 @@ msgstr ""
 msgid "You're up to date!"
 msgstr ""
 
-msgid "You're up to date."
-msgstr ""
-
 msgid "Younger than the minimum age"
 msgstr ""
 
@@ -20609,9 +20619,6 @@ msgid "click to expand"
 msgstr ""
 
 msgid "complete"
-msgstr ""
-
-msgid "currently have properties of this type."
 msgstr ""
 
 msgid "data for member"
@@ -20945,9 +20952,6 @@ msgid "positionIds must be a list of position ids"
 msgstr ""
 
 msgid "properties"
-msgstr ""
-
-msgid "properties and all their assignments so nothing is left hanging."
 msgstr ""
 
 msgid "recipient"
