@@ -1105,5 +1105,5 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
-echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/note-why-came-modal.js') . '"></script>';
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/note-why-came-modal.min.js') . '"></script>';
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

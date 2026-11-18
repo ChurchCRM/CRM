@@ -107,6 +107,8 @@ module.exports = {
     'admin-member-portal': './webpack/admin-member-portal.ts',
     // Admin → Convert Volunteer Opportunities (#10606).
     'admin-volunteer-conversion': './webpack/admin-volunteer-conversion.ts',
+    // Shared note / Why Came modal on the person and family views.
+    'note-why-came-modal': './webpack/note-why-came-modal.ts',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
     'report-settings': './webpack/report-settings',
