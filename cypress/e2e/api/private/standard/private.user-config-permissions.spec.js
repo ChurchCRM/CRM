@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-// Issue #10683 — user config API must honor the same per-setting permission
-// stored on UserConfig rows as the /account/settings page.
+// Issue #10683 — user config API must honor the per-setting permission
+// stored on UserConfig rows.
 // Existing seed: user 3 (tony.wade) has bAddEvent permission FALSE, and an
 // editable bEmailMailto=1. All successful test writes preserve seeded values.
 describe("User configuration API write authorization", () => {

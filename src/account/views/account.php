@@ -209,17 +209,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <?php endif; ?>
-
-            <hr>
-
-            <div class="row mb-3">
-              <div class="col-sm-9 offset-sm-3">
-                <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/account/settings" class="btn btn-outline-secondary">
-                  <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
-                </a>
-                <small class="form-text mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
-              </div>
-            </div>
           </div>
 
           <!-- =============== APPEARANCE =============== -->
