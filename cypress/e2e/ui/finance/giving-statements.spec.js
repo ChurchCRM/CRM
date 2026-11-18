@@ -135,8 +135,15 @@ describe("Canadian statement review form", () => {
         cy.get("#canadianFamily").select("1");
         cy.get("#copyKind").select("duplicate");
         cy.get('[name="review"]').click();
-        cy.get('[name="donorNames[1]"]').should("have.value", "");
+        // Prefilled from the heads of household, and still editable.
+        cy.get('[name="donorNames[1]"]').invoke("val").should("include", "Mathew").and("include", "Alice");
+        cy.get('[name="donorNames[1]"]').should("not.be.disabled");
         cy.get('[name="donorVerified[1]"]').should("not.be.checked");
+        // The Campbell family has no postal code, so the review names the problem and leaves it out.
+        cy.get('fieldset[data-family-id="1"] .alert-danger').should("contain", "mailing address is incomplete");
+        cy.get('fieldset[data-family-id="1"] [name="family[]"]').should("be.disabled").and("not.be.checked");
+        cy.get("#canadianBlocked").should("be.visible");
+        cy.get("#canadianDownload").should("be.disabled");
         cy.get("#issueDate").should("have.value", "");
         cy.get("#DateStart, #DateEnd, #fundsList, #deposit, #minimum").should("not.exist");
         cy.get("#canadianDownload").should("have.attr", "formaction").and("include", "/download");

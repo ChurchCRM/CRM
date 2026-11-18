@@ -355,17 +355,134 @@ class GivingStatementService
         return ['year' => $year, 'familyIds' => $ids, 'copyKind' => $copy];
     }
 
+    /**
+     * The selected families with everything the review step shows: the address,
+     * a suggested donor name, the gift count and total, and any problem that
+     * would stop that family's receipt. The issue date is not known yet, so the
+     * date check waits for the download.
+     */
     public static function canadianReview(array $options): array
     {
+        $groups = self::canadianPayments($options['year'], $options['familyIds']);
         $families = [];
         foreach ($options['familyIds'] as $id) {
             $family = FamilyQuery::create()->findPk($id);
             if (!$family instanceof Family) {
                 throw new InvalidArgumentException(gettext('A selected family no longer exists.'));
             }
-            $families[] = ['id' => $id, 'name' => $family->getName(), 'address' => $family->getMailingAddressLines()];
+            $payments = $groups[$id] ?? [];
+            $cents = 0;
+            foreach ($payments as $payment) {
+                try {
+                    $cents += self::exactCents($payment->getAmount());
+                } catch (InvalidArgumentException) {
+                    // canadianFamilyProblems() reports the invalid amount.
+                }
+            }
+            $families[] = [
+                'id' => $id,
+                'name' => $family->getName(),
+                'address' => $family->getMailingAddressLines(),
+                'suggestedName' => self::canadianSuggestedName($family),
+                'gifts' => count($payments),
+                'total' => CurrencyFormatter::format($cents / 100),
+                'problems' => self::canadianFamilyProblems($family, $payments),
+            ];
         }
         return $families;
+    }
+
+    /**
+     * Living heads of household and spouses, as the treasurer's starting point
+     * for the verified donor name. The treasurer can edit it.
+     */
+    public static function canadianSuggestedName(Family $family): string
+    {
+        $names = [];
+        foreach (array_merge($family->getHeadPeople(), $family->getSpousePeople()) as $person) {
+            $name = trim($person->getFullName());
+            if (!$person->isDeceased() && $name !== '' && !in_array($name, $names, true)) {
+                $names[] = $name;
+            }
+        }
+        return implode(' & ', $names);
+    }
+
+    /**
+     * Why this family cannot get a receipt, as readable sentences. Empty when it can.
+     *
+     * @param Pledge[] $payments the family's payments in the receipt year
+     */
+    public static function canadianFamilyProblems(Family $family, array $payments, ?string $issueDate = null): array
+    {
+        $problems = [];
+        if ($payments === []) {
+            $problems[] = gettext('There are no payments in the selected calendar year.');
+        }
+        $parts = $family->getMailingAddressParts();
+        if (trim((string) ($parts['Country'] ?? '')) === '') {
+            $parts['Country'] = trim(SystemConfig::getValue('sDefaultCountry'));
+        }
+        foreach (['Address1', 'City', 'State', 'Zip', 'Country'] as $part) {
+            if (trim((string) ($parts[$part] ?? '')) === '') {
+                $problems[] = gettext('The mailing address is incomplete. A street, city, province, and postal code are required.');
+                break;
+            }
+        }
+        $envelope = (int) $family->getEnvelope();
+        if ($envelope > 0 && FamilyQuery::create()->filterByEnvelope($envelope)->count() > 1) {
+            $problems[] = gettext('Shared-envelope conflict: another family currently has this envelope number.');
+        }
+        foreach ($payments as $payment) {
+            try {
+                $cents = self::exactCents($payment->getAmount());
+                $advantage = self::exactCents($payment->getNondeductible());
+            } catch (InvalidArgumentException $error) {
+                $problems[] = $error->getMessage();
+                continue;
+            }
+            if ($cents <= 0) {
+                $problems[] = gettext('A payment is zero or negative.');
+            }
+            if ($advantage !== 0) {
+                $problems[] = gettext('A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only.');
+            }
+            if ($payment->getProblem()) {
+                $problems[] = gettext('A payment is marked as a problem.');
+            }
+            if (in_array($payment->getMethod(), ['CREDITCARD', 'BANKDRAFT'], true) && !self::depositClosed($payment)) {
+                $problems[] = gettext('A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared.');
+            }
+            $paidOn = $payment->getDate('Y-m-d');
+            if (!is_string($paidOn)) {
+                $problems[] = gettext('A payment has no date.');
+            } elseif ($issueDate !== null && $paidOn > $issueDate) {
+                $problems[] = gettext('A payment is dated after the issue date.');
+            }
+        }
+        return array_values(array_unique($problems));
+    }
+
+    /**
+     * Card and bank-draft gifts count as cleared once their deposit is closed.
+     */
+    private static function depositClosed(Pledge $payment): bool
+    {
+        $deposit = $payment->getDepId() ? DepositQuery::create()->findPk($payment->getDepId()) : null;
+
+        return $deposit !== null && (bool) $deposit->getClosed();
+    }
+
+    /**
+     * @return array<int, Pledge[]> the year's payments for the families, by family ID
+     */
+    private static function canadianPayments(int $year, array $familyIds): array
+    {
+        $groups = [];
+        foreach (PledgeQuery::create()->filterForTaxReport("$year-01-01", "$year-12-31", [], $familyIds)->find() as $payment) {
+            $groups[(int) $payment->getFamId()][] = $payment;
+        }
+        return $groups;
     }
 
     public static function canadianDocument(array $input): array
@@ -389,8 +506,9 @@ class GivingStatementService
             throw new InvalidArgumentException(gettext('Compare the duplicate with the retained original and confirm all receipt information is unchanged.'));
         }
         $currency = strtoupper(trim(SystemConfig::getValue('sCurrencySymbol')));
-        if (!in_array($currency, ['CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'], true)) {
-            throw new InvalidArgumentException(gettext('The system currency must explicitly identify CAD for Canadian receipts.'));
+        // canadianOptions() already requires Canadian receipts to be on, so a plain $ means CAD here.
+        if (!in_array($currency, ['$', 'CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'], true)) {
+            throw new InvalidArgumentException(gettext('The system currency symbol must be $ or identify CAD for Canadian receipts.'));
         }
         $legal = [];
         foreach (['sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber', 'sReceiptIssueLocality', 'sTaxSigner'] as $key) {
@@ -407,44 +525,27 @@ class GivingStatementService
             throw new InvalidArgumentException(gettext('Upload the authorized tax signature in Report Settings.'));
         }
         $year = $options['year'];
-        $groups = [];
-        foreach (PledgeQuery::create()->filterForTaxReport("$year-01-01", "$year-12-31", [], $options['familyIds'])->find() as $payment) {
-            $groups[(int) $payment->getFamId()][] = $payment;
-        }
+        $groups = self::canadianPayments($year, $options['familyIds']);
         $families = [];
         foreach (self::canadianReview($options) as $review) {
             $id = $review['id'];
-            if (empty($groups[$id])) {
-                throw new InvalidArgumentException(sprintf(gettext('No payments in the selected calendar year for family %s. No receipt was generated.'), $review['name']));
-            }
             $name = trim(self::scalar($input['donorNames'][$id] ?? ''));
             if (!mb_check_encoding($name, 'UTF-8') || mb_strlen($name) < 1 || mb_strlen($name) > 300
                 || ($input['donorVerified'][$id] ?? '') !== '1' || ($input['mixedDonors'][$id] ?? '') !== 'no') {
-                throw new InvalidArgumentException(gettext('Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature.'));
+                throw new InvalidArgumentException(sprintf(gettext('%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature.'), $review['name']));
             }
-            $family = $groups[$id][0]->getFamily();
-            $parts = $family->getMailingAddressParts();
-            foreach (['Address1', 'City', 'State', 'Zip', 'Country'] as $part) {
-                if (trim((string) ($parts[$part] ?? '')) === '') {
-                    throw new InvalidArgumentException(gettext('A complete mailing address is required for every donor.'));
-                }
+            $payments = $groups[$id] ?? [];
+            $family = FamilyQuery::create()->findPk($id);
+            $problems = self::canadianFamilyProblems($family, $payments, $issueDate);
+            if ($problems !== []) {
+                throw new InvalidArgumentException(sprintf(gettext('%s: %s No receipt was generated.'), $review['name'], implode(' ', $problems)));
             }
             $envelope = (int) $family->getEnvelope();
-            if ($envelope > 0 && FamilyQuery::create()->filterByEnvelope($envelope)->count() > 1) {
-                throw new InvalidArgumentException(gettext('Shared-envelope conflict: another family currently has this envelope number.'));
-            }
             $total = 0;
             $gifts = [];
-            foreach ($groups[$id] as $payment) {
+            foreach ($payments as $payment) {
                 $cents = self::exactCents($payment->getAmount());
-                if ($cents <= 0 || self::exactCents($payment->getNondeductible()) !== 0 || $payment->getProblem()
-                    || (in_array($payment->getMethod(), ['CREDITCARD', 'BANKDRAFT'], true) && !$payment->getAutCleared())) {
-                    throw new InvalidArgumentException(gettext('Every included payment must be positive, cleared, monetary and without an advantage or problem. No rows were skipped.'));
-                }
                 $paidOn = $payment->getDate('Y-m-d');
-                if (!is_string($paidOn) || $paidOn > $issueDate) {
-                    throw new InvalidArgumentException(gettext('The issue date must be on or after every included payment date.'));
-                }
                 $total += $cents;
                 $gifts[] = ['date' => DateTimeUtils::formatDate($paidOn),
                     'fund' => $payment->getDonationFund()?->getName() ?? gettext('Undesignated'),
