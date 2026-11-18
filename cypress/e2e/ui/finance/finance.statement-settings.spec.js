@@ -57,6 +57,22 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
         });
 
+        describe("Canadian church", () => {
+            let previousCountry;
+            before(() => {
+                cy.getSystemConfig("sChurchCountry").then((value) => { previousCountry = value; });
+                cy.setSystemConfig("sChurchCountry", "CA");
+            });
+            after(() => cy.restoreSystemConfig("sChurchCountry", previousCountry));
+
+            it("explains Canadian receipts on the settings page and offers settings in the statements header", () => {
+                cy.visit("/finance/statements/settings");
+                cy.get("#canadian-receipts-info").should("be.visible");
+                cy.visit("/finance/reports/giving-statements");
+                cy.get(".btn-list a[href$='/finance/statements/settings']").should("be.visible");
+                cy.get(".btn-list a[href$='/admin/system/report-settings']").should("be.visible");
+            });
+
         it("shows a charity-details notice until the receipt fields are set", () => {
             const keys = ["sCharityLegalName", "sCharityRegisteredAddress", "sCharityRegistrationNumber", "sReceiptIssueLocality"];
             keys.forEach((key) => cy.setSystemConfig(key, ""));
@@ -90,6 +106,7 @@ describe("Finance Statement Settings", () => {
                 cy.get("#charity-details-banner").should("be.visible");
             });
         });
+        });
 
         it("rejects a statement setting save without the session CSRF token", () => {
             cy.request({ method: "POST", url: "/finance/api/config/sTaxSigner", body: { value: "No token" }, failOnStatusCode: false })
@@ -114,7 +131,6 @@ describe("Finance Statement Settings", () => {
             cy.contains("Statement Settings");
             cy.get("#statementTax textarea[name='sCharityRegisteredAddress']").should("be.visible");
             cy.get("#statementTax input[name='sCharityLegalName']").should("be.visible");
-            cy.get("#statementTax input[name='bCanadianGivingStatement']").should("exist");
         });
     });
 

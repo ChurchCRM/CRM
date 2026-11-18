@@ -3,10 +3,11 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\InputUtils;
 
-if (!SystemConfig::getBooleanValue('bEnabledFinance')) {
+if (!SystemConfig::getBooleanValue('bEnabledFinance') || !GivingStatementService::isCanadianChurch()) {
     return;
 }
 
@@ -16,9 +17,8 @@ if (AuthenticationManager::getCurrentUser()->getSettingValue($charityDismissKey)
     return;
 }
 
-$charityKeys = ['sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber', 'sReceiptIssueLocality'];
-foreach ($charityKeys as $charityKey) {
-    if (trim((string) SystemConfig::getValue($charityKey)) === '') {
+foreach (GivingStatementService::charityDetails() as $charityValue) {
+    if ($charityValue === '') {
         ?>
 <div class="alert alert-info alert-dismissible" role="status" id="charity-details-banner" data-notification-id="charity-details" data-dismiss-key="<?= InputUtils::escapeAttribute($charityDismissKey) ?>">
     <?= gettext('Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then.') ?>

@@ -28,7 +28,6 @@ $allowedKeys = [
     'sCharityRegistrationNumber',
     'sReceiptIssueLocality',
     'sReceiptClosing',
-    'bCanadianGivingStatement',
     'iPDFOutputType',
 ];
 

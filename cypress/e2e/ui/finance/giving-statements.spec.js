@@ -122,12 +122,12 @@ describe("Giving statements", () => {
 });
 
 describe("Canadian statement review form", () => {
-    let previousFlag;
+    let previousCountry;
     before(() => {
-        cy.getSystemConfig("bCanadianGivingStatement").then((value) => { previousFlag = value; });
-        cy.setSystemConfig("bCanadianGivingStatement", "1");
+        cy.getSystemConfig("sChurchCountry").then((value) => { previousCountry = value; });
+        cy.setSystemConfig("sChurchCountry", "CA");
     });
-    after(() => cy.restoreSystemConfig("bCanadianGivingStatement", previousFlag));
+    after(() => cy.restoreSystemConfig("sChurchCountry", previousCountry));
     beforeEach(() => cy.freshAdminFormLogin({ enabled: true }));
     it("requires donor review without selecting members or carrying standard filters", () => {
         cy.visit(`${statementsPath}?template=canadian`);

@@ -73,7 +73,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     // Giving Statements page. The Canadian download renders it again, with the
     // treasurer's answers kept, when a receipt cannot be generated.
     $renderStatements = function (Response $response, array $query, string $canadianError = '', int $status = 200): Response {
-        $canadianEnabled = SystemConfig::getBooleanValue('bCanadianGivingStatement');
+        $canadianEnabled = GivingStatementService::isCanadianChurch();
         $canadian = ($query['template'] ?? '') === 'canadian' && $canadianEnabled;
         $canadianReview = [];
         if ($canadian && (($query['review'] ?? '') === '1' || $canadianError !== '')) {
@@ -106,6 +106,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Year-End Giving'), '/finance/reports/year-end'],
                 [gettext('Giving Statements')],
+            ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
+                ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
             ]),
             'canadianEnabled' => $canadianEnabled,
             'canadian' => $canadian,

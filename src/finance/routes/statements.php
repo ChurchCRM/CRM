@@ -16,7 +16,7 @@ $app->get('/statements/settings', function (Request $request, Response $response
         ]],
         'statementTax' => [gettext('Charity on receipts'), 'fa-solid fa-building-columns', [
             'sChurchTaxId', 'sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber',
-            'sReceiptIssueLocality', 'sReceiptClosing', 'bCanadianGivingStatement',
+            'sReceiptIssueLocality', 'sReceiptClosing',
         ]],
         'statementOutput' => [gettext('PDF Output'), 'fa-solid fa-file-pdf', [
             'iPDFOutputType',
@@ -34,13 +34,15 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'sCharityRegistrationNumber' => gettext('Registration number'),
         'sReceiptIssueLocality' => gettext('Issue locality'),
         'sReceiptClosing' => gettext('Receipt closing'),
-        'bCanadianGivingStatement' => gettext('Canadian official receipts'),
         'iPDFOutputType' => gettext('PDF Handling'),
     ];
     $help = [
-        'sChurchTaxId' => gettext('Printed on ordinary giving statements. In the United States this is often the EIN. The same value is on Church Info.'),
-        'sCharityRegistrationNumber' => gettext('Any registration number. Canadian official receipts require the form 123456789RR0001. Saving this does not check that form.'),
-        'bCanadianGivingStatement' => gettext('Shows the Canadian receipt on Giving Statements. Ordinary statements are then marked as not an official donation receipt. The signature image is uploaded under Admin, Report Settings.'),
+        'sChurchTaxId' => gettext('Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info.'),
+        'sCharityLegalName' => gettext('The name the charity is registered under. It can differ from the church name.'),
+        'sCharityRegisteredAddress' => gettext('The charity\'s registered address. Blank uses the address on Church Info.'),
+        'sCharityRegistrationNumber' => gettext('The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info.'),
+        'sReceiptIssueLocality' => gettext('The place where receipts are issued. Blank uses the city on Church Info.'),
+        'sReceiptClosing' => gettext('The closing phrase above the signer, for example Sincerely.'),
     ];
 
     $sections = [];

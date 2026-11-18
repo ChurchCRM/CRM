@@ -225,7 +225,6 @@ class   SystemConfig
             'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
             'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
-            'bCanadianGivingStatement' => new ConfigItem('bCanadianGivingStatement', 'boolean', '0', gettext('Enable Canadian Giving Statements')),
             'sCharityLegalName' => new ConfigItem('sCharityLegalName', 'text', '', gettext('Charity Legal Name')),
             'sCharityRegisteredAddress' => new ConfigItem('sCharityRegisteredAddress', 'text', '', gettext('Charity Registered Address')),
             'sCharityRegistrationNumber' => new ConfigItem('sCharityRegistrationNumber', 'text', '', gettext('Charity Registration Number')),

@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -9,6 +10,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
+    <?php if (GivingStatementService::isCanadianChurch()) : ?>
+        <div class="alert alert-info" role="status" id="canadian-receipts-info">
+            <?= gettext('Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt. Official receipts need a registration number in the form 123456789RR0001 and a signature image (Admin, Report Settings).') ?>
+        </div>
+    <?php endif; ?>
     <div class="mb-3">
         <a class="btn btn-outline-primary" href="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/sample" target="_blank" rel="noopener">
             <i class="fa-solid fa-file-pdf me-1" aria-hidden="true"></i><?= gettext('Preview PDF') ?>

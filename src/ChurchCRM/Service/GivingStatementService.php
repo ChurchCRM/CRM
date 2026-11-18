@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\data\Countries;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -225,7 +227,7 @@ class GivingStatementService
         return [
             'letterhead' => $graphic !== null ? 'graphic' : 'address',
             'letterhead_image' => $graphic,
-            'title' => SystemConfig::getBooleanValue('bCanadianGivingStatement') ? gettext('Giving statement — not an official donation receipt') : gettext('Giving Statement'),
+            'title' => self::isCanadianChurch() ? gettext('Giving statement — not an official donation receipt') : gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
             'opening' => trim(SystemConfig::getValue('sGivingStatementOpening') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
             'closing' => SystemConfig::getValue('sGivingStatementClosing'),
@@ -326,10 +328,29 @@ class GivingStatementService
         ]);
     }
 
+    /** Canadian receipts apply when Church Info names Canada as the church country. */
+    public static function isCanadianChurch(): bool
+    {
+        return Countries::toISO(ChurchMetaData::getChurchCountry()) === 'CA';
+    }
+
+    /** Charity fields on Statement Settings. The legal name is its own fact (not the church's display name); the rest fall back to Church Info. */
+    public static function charityDetails(): array
+    {
+        $pick = static fn (string $key, string $fallback): string => trim(SystemConfig::getValue($key)) ?: trim($fallback);
+
+        return [
+            'legal_name' => trim(SystemConfig::getValue('sCharityLegalName')),
+            'registered_address' => $pick('sCharityRegisteredAddress', ChurchMetaData::getChurchFullAddress()),
+            'registration' => $pick('sCharityRegistrationNumber', ChurchMetaData::getChurchTaxId()),
+            'locality' => $pick('sReceiptIssueLocality', ChurchMetaData::getChurchCity()),
+        ];
+    }
+
     public static function canadianOptions(array $input): array
     {
-        if (!SystemConfig::getBooleanValue('bCanadianGivingStatement')) {
-            throw new InvalidArgumentException(gettext('Canadian giving statements are disabled.'));
+        if (!self::isCanadianChurch()) {
+            throw new InvalidArgumentException(gettext('Canadian official receipts require Canada as the church country on Church Info.'));
         }
         foreach (['funds', 'classList', 'DateStart', 'DateEnd', 'deposit'] as $key) {
             if (!empty($input[$key])) {
@@ -506,19 +527,17 @@ class GivingStatementService
             throw new InvalidArgumentException(gettext('Compare the duplicate with the retained original and confirm all receipt information is unchanged.'));
         }
         $currency = strtoupper(trim(SystemConfig::getValue('sCurrencySymbol')));
-        // canadianOptions() already requires Canadian receipts to be on, so a plain $ means CAD here.
+        // canadianOptions() already requires a Canadian church, so a plain $ means CAD here.
         if (!in_array($currency, ['$', 'CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'], true)) {
             throw new InvalidArgumentException(gettext('The system currency symbol must be $ or identify CAD for Canadian receipts.'));
         }
-        $legal = [];
-        foreach (['sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber', 'sReceiptIssueLocality', 'sTaxSigner'] as $key) {
-            $legal[$key] = trim(SystemConfig::getValue($key));
-            if ($legal[$key] === '') {
-                throw new InvalidArgumentException(gettext('Complete the charity legal name, registered address, registration number, issue locality, and printed signer.'));
-            }
+        $legal = self::charityDetails();
+        $legal['signer'] = trim(SystemConfig::getValue('sTaxSigner'));
+        if (in_array('', $legal, true)) {
+            throw new InvalidArgumentException(gettext('Complete the charity legal name, registered address, registration number, issue locality, and printed signer.'));
         }
-        $legal['sCharityRegistrationNumber'] = strtoupper(preg_replace('/\s+/u', '', $legal['sCharityRegistrationNumber']));
-        if (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $legal['sCharityRegistrationNumber'])) {
+        $legal['registration'] = strtoupper(preg_replace('/\s+/u', '', $legal['registration']));
+        if (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $legal['registration'])) {
             throw new InvalidArgumentException(gettext('The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.'));
         }
         if (!TaxSignatureService::hasUploaded() || ($image = TaxSignatureService::image()) === null) {
@@ -558,8 +577,8 @@ class GivingStatementService
         }
         return array_merge(self::document($families, "$year-01-01", "$year-12-31"), [
             'canadian' => true, 'title' => gettext('Official Receipt / Reçu officiel'),
-            'legal_name' => $legal['sCharityLegalName'], 'registered_address' => $legal['sCharityRegisteredAddress'],
-            'registration' => $legal['sCharityRegistrationNumber'], 'locality' => $legal['sReceiptIssueLocality'],
+            'legal_name' => $legal['legal_name'], 'registered_address' => $legal['registered_address'],
+            'registration' => $legal['registration'], 'locality' => $legal['locality'],
             'gift_year' => $year, 'issue_date' => DateTimeUtils::formatDate($issueDate),
             'advantage' => CurrencyFormatter::format(0),
             'duplicate' => $options['copyKind'] === 'duplicate', 'sincerely' => SystemConfig::getValue('sReceiptClosing'),

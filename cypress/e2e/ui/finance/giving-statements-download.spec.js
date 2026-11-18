@@ -64,7 +64,7 @@ describe("Giving statements download", () => {
 
 describe("Canadian reviewed receipts", () => {
     const settings = {
-        bCanadianGivingStatement: "1",
+        sChurchCountry: "CA",
         sCharityLegalName: "Sample Canadian Charity",
         sCharityRegisteredAddress: "456 Sample Street\nOttawa ON K1A 0A1\nCanada",
         sCharityRegistrationNumber: "123456789 rr 0001",
@@ -223,9 +223,9 @@ describe("Canadian reviewed receipts", () => {
         cy.freshAdminFormLogin({ enabled: true });
         refusal({}, "currency symbol");
     });
-    it("honors the disabled flag", () => {
-        later(() => cy.setSystemConfig("bCanadianGivingStatement", "1"));
-        cy.setSystemConfig("bCanadianGivingStatement", "0");
+    it("refuses Canadian receipts when the church country is not Canada", () => {
+        later(() => cy.setSystemConfig("sChurchCountry", "CA"));
+        cy.setSystemConfig("sChurchCountry", "US");
         cy.freshAdminFormLogin({ enabled: true });
         cy.request({ method: "POST", url: download, body: body({ csrf_token: "invalid" }), failOnStatusCode: false }).its("status").should("eq", 403);
         cy.request({ url: `${download}?familyId=${familyId}&year=2025`, encoding: "binary" })
