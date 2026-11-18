@@ -1,4 +1,7 @@
 {
+  "%d families currently have properties of this type.": "",
+  "%d groups currently have properties of this type.": "",
+  "%d people currently have properties of this type.": "",
   "%d releases available since your installed version.": "",
   "({{count}} installments)": {
     "one": "",
@@ -14,7 +17,7 @@
   "Choose total commitment or installment amount.": "",
   "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by": "",
   "Commitment amount": "",
-  "Deleting it will also remove": "",
+  "Deleting it will also remove %d properties and all their assignments so nothing is left hanging.": "",
   "Enter the schedule and installment dates to preview the commitment.": "",
   "Enter valid first and last installment dates in order.": "",
   "Enter valid installment amounts with at most two decimal places.": "",
@@ -54,8 +57,5 @@
   "Verify the family in person instead.": "",
   "Version %s is available. Please ask your administrator to upgrade your installation.": "",
   "View all emails": "",
-  "You're up to date.": "",
-  "currently have properties of this type.": "",
-  "groups": "",
-  "properties and all their assignments so nothing is left hanging.": ""
+  "groups": ""
 }
