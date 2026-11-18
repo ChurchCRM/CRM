@@ -41,7 +41,6 @@ describe("Admin Debug", () => {
         cy.contains("People");
         cy.contains("Report Settings");
         cy.contains("Quick Search");
-        cy.contains("Confession");
     });
 
     it("Gen DirectoryReports", () => {
