@@ -833,14 +833,6 @@ msgid "Assign"
 msgstr "നൽകുക"
 
 #: 
-msgid "Date Updated"
-msgstr "അപ്‌ഡേറ്റ് ചെയ്ത തീയതി"
-
-#: 
-msgid "Updated By"
-msgstr "അപ്‌ഡേറ്റ് ചെയ്തത്"
-
-#: 
 msgid "Since"
 msgstr "മുതൽ"
 
@@ -1345,10 +1337,6 @@ msgid "Updated"
 msgstr "അപ്‌ഡേറ്റ് ചെയ്തു"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(ഈ പ്രവർത്തനം പഴയ നിലയിലേക്ക് മടക്കാനാവില്ല)"
-
-#: 
 msgid "Note Editor"
 msgstr "കുറിപ്പ് എഡിറ്റർ"
 
@@ -1573,10 +1561,6 @@ msgid "Warning"
 msgstr "മുന്നറിയിപ്പ്"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "ഈ സ്വഭാവ തരം ഇപ്പോഴും കുറഞ്ഞത് ഒരു സ്വഭാവം ഉപയോഗിക്കുന്നു."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "ഈ സ്വഭാവ തരം ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
 
@@ -1602,44 +1586,8 @@ msgid "Please confirm deletion of"
 msgstr "ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "ക്ഷമിക്കണം, ഈ കുടുംബത്തിൽ നിന്ന് സംഭാവന രേഖകൾ ഉണ്ട്. ഈ കുടുംബം ഇല്ലാതാക്കാൻ കഴിയില്ല."
-
-#: 
-msgid "Return to Family View"
-msgstr "കുടുംബ കാഴ്ചയിലേക്ക് മടങ്ങുക"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "മുന്നറിയിപ്പ്: ഈ കുടുംബത്തിൽ സംഭാവന രേഖകൾ ഉണ്ട്, ഈ സംഭാവനകൾ മറ്റൊരു കുടുംബവുമായി ബന്ധിപ്പിക്കുന്നതുവരെ ഇത് ഇല്ലാതാക്കാൻ കഴിയില്ല."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "മുന്നറിയിപ്പ്: ഈ പ്രവർത്തനം പഴയ നിലയിലേക്ക് മടക്കാനാകില്ല, ഇത് നിയമ പ്രത്യാഘാതങ്ങൾ ഉണ്ടാക്കിയേക്കാം!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "സംഭാവനകളുള്ള നിലവിലെ കുടുംബം"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "കുറിപ്പ്: ഈ കുടുംബ റെക്കോർഡുമായി ബന്ധപ്പെട്ട എല്ലാ കുറിപ്പുകളും ഇല്ലാതാകും."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "കുടുംബ റെക്കോർഡ് മാത്രം ഇല്ലാതാക്കുക"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "കുടുംബ റെക്കോർഡും കുടുംബാംഗങ്ങളും ഇല്ലാതാക്കുക"
-
-#: 
 msgid "Listing"
 msgstr "ലിസ്‌റ്റ്"
-
-#: 
-msgid "My User Settings"
-msgstr "എന്റെ ഉപയോക്തൃ ക്രമീകരണങ്ങൾ"
 
 #: 
 msgid "Variable name"
@@ -5091,10 +5039,6 @@ msgid "Enter event description..."
 msgstr "ഇവന്റ് വിവരണം നൽകുക..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "ഇവിടെ കുറിപ്പ് ടെക്സ്റ്റ് നൽകുക..."
-
-#: 
 msgid "Note"
 msgstr "കുറിപ്പ്"
 
@@ -6704,10 +6648,6 @@ msgid "Add Property Type"
 msgstr "സ്വഭാവ തരം ചേർക്കുക"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "നിങ്ങളുടെ ആദ്യ സ്വഭാവ തരം ചേർക്കൂ"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "ഈ ഫീൽഡ് ഇല്ലാതാക്കിയാൽ ഈ ഫീൽഡിന് നൽകിയ ഗ്രൂപ്പ് അംഗ ഡേറ്റ നഷ്ടമാകും!"
 
@@ -6726,10 +6666,6 @@ msgstr "ചെക്ക്-ഔട്ട് ചെയ്തു"
 #: 
 msgid "Current Fiscal Year"
 msgstr "നിലവിലെ ധനകാര്യ വർഷം"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "ഇല്ലാതാക്കുക (ബന്ധപ്പെട്ട എല്ലാ റെക്കോർഡുകളും ഇല്ലാതാകും)"
 
 #: 
 msgid "Edit Property Type"
@@ -6780,10 +6716,6 @@ msgid "No property types found"
 msgstr "സ്വഭാവ തരങ്ങൾ കണ്ടെത്തിയില്ല"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "ഈ സ്വഭാവ തരം ഉപയോഗിക്കുന്ന റെക്കോർഡുകളുടെ എണ്ണം"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "ഈ സ്വഭാവ തരത്തിന്റെ ഐഛിക വിശദ വിവരണം"
 
@@ -6814,10 +6746,6 @@ msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "കുടുംബം, ഫണ്ട് അനുസരിച്ച് സംഭാവന പ്രതിജ്ഞ ട്രാക്ക്, മാനേജ് ചെയ്യൂ"
-
-#: 
-msgid "View Properties"
-msgstr "സ്വഭാവങ്ങൾ കാണുക"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7797,18 +7725,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "ഈ സംഭാവന പ്രതിജ്ഞ റെക്കോർഡ് ശാശ്വതമായി ഇല്ലാതാക്കണോ?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "റദ്ദാക്കി കുടുംബ കാഴ്ചയിലേക്ക് മടങ്ങൂ"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "ഈ തരം ഇല്ലാതാക്കിയാൽ, ഇത് ഉപയോഗിക്കുന്ന സ്വഭാവങ്ങളും നഷ്ടമാകും."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "തിരഞ്ഞെടുത്ത കുടുംബത്തിലേക്ക് സംഭാവനകൾ മാറ്റൂ"
-
-#: 
 msgid "Calendar not found"
 msgstr "കലണ്ടർ കണ്ടെത്തിയില്ല"
 
@@ -8081,10 +7997,6 @@ msgid "or later to continue."
 msgstr "അല്ലെങ്കിൽ തുടരാൻ."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"വന്ന കാരണം\" കുറിപ്പുകൾ"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"-ന് %d ഫലം"
@@ -8193,10 +8105,6 @@ msgstr "വ്യക്തി റെക്കോർഡ് ചേർക്കൂ 
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "ഫണ്ട്‌റൈസർ ഇനങ്ങൾ ചേർക്കൂ അല്ലെങ്കിൽ എഡിറ്റ് ചെയ്യൂ"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "ആളുകൾ, കുടുംബങ്ങൾക്ക് കുറിപ്പ് ചേർക്കൂ"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8911,10 +8819,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "സ്വമേധാ അവസരങ്ങൾ നിയന്ത്രിക്കുകയും അംഗങ്ങളെ നിയോഗിക്കുകയും ചെയ്യുക"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "നിങ്ങളുടെ വ്യക്തിഗത മുൻഗണനകളും അക്കൗണ്ട് ക്രമീകരണങ്ങളും നിയന്ത്രിക്കുക"
-
-#: 
 msgid "Map cart items"
 msgstr "കാർട്ട് ഇനങ്ങൾ ഭൂപടത്തിൽ കാണുക"
 
@@ -8949,10 +8853,6 @@ msgstr "ഗ്രൂപ്പിലേക്ക് നീക്കുക"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "നിലവിലുള്ള ChurchCRM അല്ലെങ്കിൽ ChurchInfo ഇൻസ്റ്റലേഷനിൽ നിന്ന് മാറുകയാണോ? നിങ്ങളുടെ ബാക്കപ്പ് ഫയൽ അപ്‌ലോഡ് ചെയ്യുക, ഞങ്ങൾ നിങ്ങളുടെ ഡേറ്റ സ്വയം പുനഃസ്ഥാപിക്കും."
-
-#: 
-msgid "My Settings"
-msgstr "എന്റെ ക്രമീകരണങ്ങൾ"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9167,10 +9067,6 @@ msgstr "ഒരേ സമയം ഒന്നിലധികം ഫണ്ട് �
 #: 
 msgid "Record new pledges and payments"
 msgstr "പുതിയ സാമ്പത്തിക പ്രതിബദ്ധതകളും പേമെന്റുകളും രേഖപ്പെടുത്തുക"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "സഭ സന്ദർശിച്ചവർ എന്തിനാണ് വന്നതെന്ന് രേഖപ്പെടുത്തുക"
 
 #: 
 msgid "Remove from Class"
@@ -11044,10 +10940,6 @@ msgid "Manage 2FA"
 msgstr "2FA manage ചെയ്യുക"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Email delimiters, display options പോലുള്ള additional preferences manage ചെയ്യുക"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "External integrations-നായി API key manage ചെയ്യുക"
 
@@ -11714,14 +11606,6 @@ msgid "e.g., 40.7128"
 msgstr "ഉദാ., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "കുടുംബം ഇല്ലാതാക്കുന്നതിൽ പിഴവ് സംഭവിച്ചു."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "സംഭാവനകൾ മാറ്റുന്നതിൽ പിഴവ് സംഭവിച്ചു."
-
-#: 
 msgid "At least one family member is required"
 msgstr "കുറഞ്ഞത് ഒരു കുടുംബാംഗമെങ്കിലും ആവശ്യമാണ്"
 
@@ -11740,10 +11624,6 @@ msgstr "ഇല്ലാതാക്കൽ പരാജയപ്പെട്ട�
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "ദിശ \"മുകളിലേക്ക്\" അല്ലെങ്കിൽ \"താഴേക്ക്\" ആയിരിക്കണം"
-
-#: 
-msgid "Failed to move donations."
-msgstr "സംഭാവനകൾ മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു."
 
 #: 
 msgid "Finance permission required"
@@ -11780,10 +11660,6 @@ msgstr "അംഗത്വം കണ്ടെത്തിയില്ല"
 #: 
 msgid "Password successfully changed for"
 msgstr "പാസ്‌വേഡ് വിജയകരമായി മാറ്റി"
-
-#: 
-msgid "Please select a target family."
-msgstr "ദയവായി ഒരു ലക്ഷ്യ കുടുംബം തിരഞ്ഞെടുക്കുക."
 
 #: 
 msgid "Target family not found"
@@ -12985,14 +12861,6 @@ msgstr "ചെക്ക്-ഔട്ട് പരാജയപ്പെട്ട�
 #: 
 msgid "Click Save to apply."
 msgstr "പ്രയോഗിക്കാൻ Save ക്ലിക്ക് ചെയ്യൂ."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "ക്ലിപ്‌ബോർഡ് API ലഭ്യമല്ല. ദയവായി URL സ്വമേധയാ പകർത്തുക."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ക്ലിപ്പ്ബോർഡ് ലഭ്യമല്ല. കോഡുകൾ സംരക്ഷിക്കാൻ ഡൗൺലോഡ് ബട്ടൺ ഉപയോഗിക്കുക."
 
 #: 
 msgid "Code incomplete"
@@ -14527,24 +14395,12 @@ msgid "People &amp; Families"
 msgstr "ആളുകളും &amp; കുടുംബങ്ങളും"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "നിങ്ങൾ എഡിറ്റ് ചെയ്യാൻ ശ്രമിക്കുന്ന കുറിപ്പ് ഇനി നിലവിലില്ല."
-
-#: 
 msgid "User List"
 msgstr "ഉപയോക്തൃ പട്ടിക"
 
 #: 
 msgid "View Person"
 msgstr "വ്യക്തിയെ കാണുക"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ഈ കുടുംബത്തിനായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ഈ വ്യക്തിക്കായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
 
 #: 
 msgid "Account locked"
@@ -15247,10 +15103,6 @@ msgid "thru %s"
 msgstr "%s വരെ"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s-നുള്ള \"എന്തിന് വന്നു\" കുറിപ്പുകൾ"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s കുടുംബത്തിലെ %1$s"
 
@@ -15353,14 +15205,6 @@ msgstr "ഉപകരണങ്ങൾ രജിസ്റ്റർ ചെയ്യ�
 #: 
 msgid "Output Method"
 msgstr "ഔട്ട്‌പുട്ട് രീതി"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "ഈ കുടുംബ രേഖ ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "ഈ സംഭാവനകൾ ബന്ധിപ്പിക്കാൻ മറ്റൊരു കുടുംബത്തെ തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Remittance Slip"
@@ -15665,18 +15509,6 @@ msgstr "സണ്ഡേ സ്കൂൾ ക്ലാസ് ചേർക്കു
 #: 
 msgid "Delete this family?"
 msgstr "ഈ കുടുംബം ഇല്ലാതാക്കണോ?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "ഈ കുടുംബം ഇല്ലാതാക്കണോ? എന്ത് ഇല്ലാതാക്കണമെന്ന് തിരഞ്ഞെടുക്കാൻ തിരഞ്ഞെടുക്കാൻ ഊരു പേജിലേക്ക് കൊണ്ടുപോകും. ഇത് പഴയപടിയാക്കാൻ കഴിയില്‍."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "കുടുംബം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "പ്രോപ്പർട്ടി തരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24109,10 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d പേയ്‌മെന്റുകൾ ഇതുവരെ ഒരു നിക്ഷേപത്തിലും ഇല്ല."
 
 #: 
-msgid "Closing line"
-msgstr "അവസാന വരി"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "ഈ വർഷം തീയതിയിട്ട എല്ലാ നിക്ഷേപവും അടച്ചിരിക്കുന്നു."
 
@@ -24125,28 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "ഈ വർഷത്തെ എല്ലാ പേയ്‌മെന്റും ഒരു നിക്ഷേപത്തിലുണ്ട്."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "നികുതി പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "ദാന റിപ്പോർട്ട് (നികുതി പ്രസ്താവനകൾ)"
-
-#: 
-msgid "Opening line"
-msgstr "ആരംഭ വരി"
-
-#: 
 msgid "Qty"
 msgstr "എണ്ണം"
-
-#: 
-msgid "Signed by"
-msgstr "ഒപ്പിട്ടത്"
-
-#: 
-msgid "Thank-you line"
-msgstr "നന്ദി വരി"
 
 #: 
 msgid "Year-End Giving"
@@ -24305,10 +24113,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF താൽക്കാലിക ഡയറക്ടറി ഒരു സമ്പൂർണ ഡയറക്ടറി പാത്ത് ആയിരിക്കണം."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "പള്ളി നികുതി ഐഡി (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "അവസാന വരി"
 
@@ -24351,10 +24155,6 @@ msgstr "പ്രസ്താവന ക്രമീകരണങ്ങൾ"
 #: 
 msgid "Statement Wording"
 msgstr "പ്രസ്താവന വാചകം"
-
-#: 
-msgid "Tax Information"
-msgstr "നികുതി വിവരം"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24403,10 +24203,6 @@ msgstr "പള്ളിയുടെ പേരും വിലാസവും ഉ
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "സിസ്റ്റം ക്രമീകരണങ്ങളിൽ സജ്ജമാക്കിയ ലെറ്റർഹെഡ് പാത്ത് ഉപയോഗിക്കുന്നു"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ദാന പ്രസ്താവനകൾക്കുള്ള വാചകം, നികുതി ഐഡി, PDF കൈകാര്യം"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27221,10 +27017,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "അംഗ പോർട്ടൽ ഉപയോഗിക്കാൻ കഴിയാത്തവിധം സൈൻ-ഇനും പ്രവർത്തനരഹിതമാക്കുക"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "പ്രസ്താവനകൾ അയയ്ക്കുന്നതിന് മുമ്പ്"
-
-#: 
 msgid "Birthday today"
 msgstr "ഇന്ന് ജന്മദിനം"
 
@@ -27565,10 +27357,6 @@ msgid "Preview Sample Letter"
 msgstr "സാമ്പിൾ കത്ത് പ്രിവ്യൂ ചെയ്യുക"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "കനേഡിയൻ ദാന പ്രസ്താവനയുടെ സ്വകാര്യ ഒപ്പ് അസറ്റ് തിരിച്ചറിയൽ. ഒപ്പ് അപ്‌ലോഡ് വഴി നിയന്ത്രിക്കുന്നു."
-
-#: 
 msgid "Property Type"
 msgstr "സവിശേഷതാ തരം"
 
@@ -27607,10 +27395,6 @@ msgstr "അവലോകനം ചെയ്ത് ഫിൽട്ടർ ചെയ
 #: 
 msgid "Review and vote"
 msgstr "അവലോകനം ചെയ്ത് വോട്ട് ചെയ്യുക"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "വർഷം അവലോകനം ചെയ്യുക, തുടർന്ന് ദാന പ്രസ്താവനകൾ ഡൗൺലോഡ് ചെയ്യുക."
 
 #: 
 msgid "Review what we are considering"
@@ -27659,10 +27443,6 @@ msgstr "ശക്തം"
 #: 
 msgid "Support"
 msgstr "പിന്തുണ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "നികുതി ഐഡിയും PDF ക്രമീകരണങ്ങളും"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

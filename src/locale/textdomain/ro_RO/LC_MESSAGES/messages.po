@@ -863,14 +863,6 @@ msgid "Assign"
 msgstr "Atribuie"
 
 #: 
-msgid "Date Updated"
-msgstr "Data actualizării"
-
-#: 
-msgid "Updated By"
-msgstr "Actualizat de"
-
-#: 
 msgid "Since"
 msgstr "De la"
 
@@ -1398,10 +1390,6 @@ msgid "Updated"
 msgstr "Actualizat"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Această acțiune nu poate fi anulată)"
-
-#: 
 msgid "Note Editor"
 msgstr "Nota editorului"
 
@@ -1630,10 +1618,6 @@ msgid "Warning"
 msgstr "Atenție"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Acest tip de proprietate este încă utilizat de către cel puțin o proprietate."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vă rugăm să confirmați ștergerea acestui Tip Proprietate"
@@ -1661,44 +1645,8 @@ msgid "Please confirm deletion of"
 msgstr "Vă rugăm să confirmați ștergerea"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Ne pare rău, există înregistrări ale donații de la această familie. Această familie nu pot fi șterse."
-
-#: 
-msgid "Return to Family View"
-msgstr "A reveni la ecranul de familie"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "AVERTISMENT: Această familie are înregistrări de donații și nu pot fi șterse până când aceste donații sunt asociate cu o alta familie."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "AVERTISMENT: Această acțiune nu poate fi anulată și ar putea avea implicații juridice!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "Curente ale familiei cu donatii"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Notă: Aceasta va șterge, de asemenea, toate notele asociate cu acest livret de familie."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Șterge Înregistrare singura familie"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Șterge livret de familie și membrii familiilor"
-
-#: 
 msgid "Listing"
 msgstr "Listare"
-
-#: 
-msgid "My User Settings"
-msgstr "Mi Setări utilizator"
 
 #: 
 msgid "Variable name"
@@ -5185,10 +5133,6 @@ msgid "Enter event description..."
 msgstr "Introduceți descrierea evenimentului..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Introduceți textul notei aici..."
-
-#: 
 msgid "Note"
 msgstr "Notă"
 
@@ -6802,10 +6746,6 @@ msgid "Add Property Type"
 msgstr "Adăugați Tip de Proprietate"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Adăugați Primul Dvs. Tip de Proprietate"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Prin ștergerea acestui câmp, veți pierde irevocabil toate datele membrilor grupului atribuite acestui câmp!"
 
@@ -6824,10 +6764,6 @@ msgstr "Înregistrat ieșire"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Anul Fiscal Curent"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Șterge (va șterge toate înregistrările asociate)"
 
 #: 
 msgid "Edit Property Type"
@@ -6878,10 +6814,6 @@ msgid "No property types found"
 msgstr "Nu s-au găsit tipuri de proprietate"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Numărul de înregistrări care utilizează acest tip de proprietate"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Descriere detaliată opțională a acestui tip de proprietate"
 
@@ -6912,10 +6844,6 @@ msgstr "Selectați tipul de înregistrare la care se aplică această proprietat
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Urmăriți și gestionați angajamentele după familie și fond"
-
-#: 
-msgid "View Properties"
-msgstr "Vizualizare Proprietăți"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7897,18 +7825,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Sigur doriți să ștergeți permanent această înregistrare de angajament?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Anulați și Reveniți la Vizualizarea Familiei"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Dacă ștergeți acest tip, veți elimina și toate proprietățile care îl folosesc și veți pierde atribuirile de proprietăți corespunzătoare."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Mută Donațiile la Familia Selectată"
-
-#: 
 msgid "Calendar not found"
 msgstr "Calendar negăsit"
 
@@ -8181,10 +8097,6 @@ msgid "or later to continue."
 msgstr "sau o versiune mai nouă pentru a continua."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Note \"De ce au venit\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat pentru \"%s\""
@@ -8294,10 +8206,6 @@ msgstr "Adaugă sau editează înregistrări individuale"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adaugă sau editează obiecte donate pentru evenimente de strângere de fonduri"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adaugă sau editează note pentru persoane și familii"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9012,10 +8920,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Gestionează oportunitățile de voluntariat și atribuiți membri"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Gestionează preferințele personale și setările contului"
-
-#: 
 msgid "Map cart items"
 msgstr "Afișează selecția pe hartă"
 
@@ -9050,10 +8954,6 @@ msgstr "Mută în grup"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Vă mutați de la o instalare existentă ChurchCRM sau ChurchInfo? Încărcați fișierul de copie de siguranță și vă vom restaura datele automat."
-
-#: 
-msgid "My Settings"
-msgstr "Setările mele"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9268,10 +9168,6 @@ msgstr "Înregistrați mai mulți câștigători ai tombolei simultan"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Înregistrați angajamente și plăți noi"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
 msgid "Remove from Class"
@@ -11145,10 +11041,6 @@ msgid "Manage 2FA"
 msgstr "Gestionați 2FA"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Gestionați preferințe suplimentare, cum ar fi delimitatorii de e-mail și opțiunile de afișare"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Gestionați cheia API pentru integrări externe"
 
@@ -11816,14 +11708,6 @@ msgid "e.g., 40.7128"
 msgstr "ex., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "A apărut o eroare la ștergerea familiei."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "A apărut o eroare la mutarea donațiilor."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Este necesar cel puțin un membru al familiei"
 
@@ -11842,10 +11726,6 @@ msgstr "Ștergerea a eșuat"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Direcția trebuie să fie \"sus\" sau \"jos\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Mutarea donațiilor a eșuat."
 
 #: 
 msgid "Finance permission required"
@@ -11882,10 +11762,6 @@ msgstr "Apartenența nu a fost găsită"
 #: 
 msgid "Password successfully changed for"
 msgstr "Parola a fost schimbată cu succes pentru"
-
-#: 
-msgid "Please select a target family."
-msgstr "Vă rugăm selectați o familie țintă."
 
 #: 
 msgid "Target family not found"
@@ -13087,14 +12963,6 @@ msgstr "Ieșirea a eșuat. Vă rugăm să încercați din nou."
 #: 
 msgid "Click Save to apply."
 msgstr "Faceți clic pe Salvare pentru a aplica."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
 
 #: 
 msgid "Code incomplete"
@@ -14630,24 +14498,12 @@ msgid "People &amp; Families"
 msgstr "Persoane &amp; Familii"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Nota pe care încercați să o editați nu mai există."
-
-#: 
 msgid "User List"
 msgstr "Listă utilizatori"
 
 #: 
 msgid "View Person"
 msgstr "Vizualizare persoană"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această familie."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
 
 #: 
 msgid "Account locked"
@@ -15352,10 +15208,6 @@ msgid "thru %s"
 msgstr "până la %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Note de ce a venit pentru %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s din familia %2$s"
 
@@ -15458,14 +15310,6 @@ msgstr "Deschide o fereastra de 2 minute pentru inregistrarea dispozitivelor la"
 #: 
 msgid "Output Method"
 msgstr "Metoda de iesire"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "Va rugam sa confirmati stergerea acestei inregistrari de familie"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Va rugam sa selectati o alta familie cu care sa asociati aceste donatii"
 
 #: 
 msgid "Remittance Slip"
@@ -15770,18 +15614,6 @@ msgstr "Adaugati o clasa de Scoala Duminicala"
 #: 
 msgid "Delete this family?"
 msgstr "Stergeti aceasta familie?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Doriti sa stergeti aceasta familie? Veti fi directionat la o pagina pentru a alege ce sa stergeti. Aceasta actiune nu poate fi anulata."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Confirmare stergere familie"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Confirmare stergere tip de proprietate"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24229,10 +24061,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d plăți nu sunt încă pe niciun depozit."
 
 #: 
-msgid "Closing line"
-msgstr "Rând de încheiere"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Fiecare depozit datat în acest an este închis."
 
@@ -24245,28 +24073,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Fiecare plată din acest an este pe un depozit."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generați extrasele fiscale"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport de donații (extrase fiscale)"
-
-#: 
-msgid "Opening line"
-msgstr "Rând de deschidere"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Signed by"
-msgstr "Semnat de"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rând de mulțumire"
 
 #: 
 msgid "Year-End Giving"
@@ -24425,10 +24233,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Directorul temporar PDF trebuie să fie o cale absolută de director."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Cod fiscal al bisericii (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Rând de încheiere"
 
@@ -24471,10 +24275,6 @@ msgstr "Setări extras"
 #: 
 msgid "Statement Wording"
 msgstr "Formularea extrasului"
-
-#: 
-msgid "Tax Information"
-msgstr "Informații fiscale"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24523,10 +24323,6 @@ msgstr "Se folosesc numele și adresa bisericii"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Se folosește calea antetului setată în Setările de sistem"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formularea, codul fiscal și gestionarea PDF pentru extrasele de donații"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27346,10 +27142,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Dezactivează și autentificarea, ca să nu poată folosi Portalul membrilor"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Înainte de a trimite extrasele"
-
-#: 
 msgid "Birthday today"
 msgstr "Zi de naștere astăzi"
 
@@ -27690,10 +27482,6 @@ msgid "Preview Sample Letter"
 msgstr "Previzualizează scrisoarea exemplu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificatorul resursei semnăturii private canadiene de pe extrasele de donații. Gestionat prin încărcarea semnăturii."
-
-#: 
 msgid "Property Type"
 msgstr "Tip de proprietate"
 
@@ -27732,10 +27520,6 @@ msgstr "Revizuiește și filtrează"
 #: 
 msgid "Review and vote"
 msgstr "Revizuiește și votează"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Revizuiți anul, apoi descărcați extrasele de donații."
 
 #: 
 msgid "Review what we are considering"
@@ -27784,10 +27568,6 @@ msgstr "Puternică"
 #: 
 msgid "Support"
 msgstr "Asistență"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Setări pentru cod fiscal și PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

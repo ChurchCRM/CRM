@@ -854,14 +854,6 @@ msgid "Assign"
 msgstr "Atribuir"
 
 #: 
-msgid "Date Updated"
-msgstr "Data de atualização"
-
-#: 
-msgid "Updated By"
-msgstr "Atualizado por"
-
-#: 
 #, fuzzy
 msgid "Since"
 msgstr "Desde"
@@ -1387,10 +1379,6 @@ msgid "Updated"
 msgstr "Atualizado"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(esta ação não pode ser desfeita)"
-
-#: 
 msgid "Note Editor"
 msgstr "Editor de notas"
 
@@ -1619,10 +1607,6 @@ msgid "Warning"
 msgstr "Aviso:"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Este tipo de propriedade ainda está a ser usado por pelo menos uma propriedade."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Confirme a eliminação deste tipo de propriedade"
 
@@ -1648,45 +1632,8 @@ msgid "Please confirm deletion of"
 msgstr "Por favor, confirme a eliminação de"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Lamentamos, existem registos de doações desta família. Esta família não pode ser eliminada."
-
-#: 
-msgid "Return to Family View"
-msgstr "Retorrna para a visualização de famílias"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ATENÇÃO: Esta família tem registos de doações e NÃO pode ser eliminada até essas doações serem associadas a outra família."
-
-#: 
-#, fuzzy
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "AVISO: Esta ação não pode ser desfeita"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "Atual família com doações"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Nota: Isso também irá eliminar todas as notas associadas a este registo Família."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Eliminar APENAS o registo da família"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Remover a família e TODOS os membros"
-
-#: 
 msgid "Listing"
 msgstr "Listagem"
-
-#: 
-msgid "My User Settings"
-msgstr "Minhas definições de utilizador"
 
 #: 
 msgid "Variable name"
@@ -5187,10 +5134,6 @@ msgid "Enter event description..."
 msgstr "Introduza a descrição do evento..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Introduza o texto da anotação aqui..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -6800,10 +6743,6 @@ msgid "Add Property Type"
 msgstr "Adicionar tipo de propriedade"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Adicione o seu primeiro tipo de propriedade"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Ao eliminar este campo, perderá irrevogavelmente todos os dados dos membros do grupo atribuídos a este campo!"
 
@@ -6822,10 +6761,6 @@ msgstr "Saída registada"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Ano Fiscal atual"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Eliminar (eliminará todos os registos associados)"
 
 #: 
 msgid "Edit Property Type"
@@ -6876,10 +6811,6 @@ msgid "No property types found"
 msgstr "Não foram encontrados tipos de propriedade"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Número de registos que utilizam este tipo de propriedade"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Descrição detalhada opcional deste tipo de propriedade"
 
@@ -6910,10 +6841,6 @@ msgstr "Selecione o tipo de registo a que esta propriedade se aplica"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Acompanhe e gira as promessas por família e fundo"
-
-#: 
-msgid "View Properties"
-msgstr "Ver propriedades"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7893,18 +7820,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Tem a certeza de que pretende eliminar permanentemente este registo de promessa?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Cancelar e regressar à vista da família"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Se eliminar este tipo, também removerá todas as propriedades que o utilizam e perderá as atribuições de propriedade correspondentes."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Mover ofertas para a família selecionada"
-
-#: 
 msgid "Calendar not found"
 msgstr "Calendário não encontrado"
 
@@ -8177,10 +8092,6 @@ msgid "or later to continue."
 msgstr "ou posterior para continuar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notas \"motivo da visita\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultado para \"%s\""
@@ -8289,10 +8200,6 @@ msgstr "Adicionar ou editar registos individuais de pessoas"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adicionar ou editar itens doados para eventos de angariação de fundos"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adicionar ou editar notas para pessoas e famílias"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9007,10 +8914,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Gerir oportunidades de voluntariado e atribuir fiéis"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Gerir as suas preferências pessoais e definições de conta"
-
-#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
@@ -9045,10 +8948,6 @@ msgstr "Mover para grupo"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "A migrar de uma instalação existente do ChurchCRM ou ChurchInfo? Carregue o seu ficheiro de cópia de segurança e restauraremos os seus dados automaticamente."
-
-#: 
-msgid "My Settings"
-msgstr "As minhas definições"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9263,10 +9162,6 @@ msgstr "Registar vários vencedores de sorteios de angariação de fundos de uma
 #: 
 msgid "Record new pledges and payments"
 msgstr "Registar novas promessas de doação e pagamentos"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Registar o motivo pelo qual os participantes visitaram a sua paróquia"
 
 #: 
 msgid "Remove from Class"
@@ -11140,10 +11035,6 @@ msgid "Manage 2FA"
 msgstr "Gerir autenticação de dois fatores"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Gerir preferências adicionais como delimitadores de e-mail e opções de apresentação"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Gerir a sua chave de API para integrações externas"
 
@@ -11810,14 +11701,6 @@ msgid "e.g., 40.7128"
 msgstr "ex.: 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Ocorreu um erro ao eliminar a família."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Ocorreu um erro ao mover as doações."
-
-#: 
 msgid "At least one family member is required"
 msgstr "É necessário pelo menos um membro da família"
 
@@ -11836,10 +11719,6 @@ msgstr "Falha ao eliminar"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "A direção deve ser \"cima\" ou \"baixo\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Falha ao mover as doações."
 
 #: 
 msgid "Finance permission required"
@@ -11876,10 +11755,6 @@ msgstr "Adesão não encontrada"
 #: 
 msgid "Password successfully changed for"
 msgstr "Palavra-passe alterada com sucesso para"
-
-#: 
-msgid "Please select a target family."
-msgstr "Por favor, selecione uma família de destino."
 
 #: 
 msgid "Target family not found"
@@ -13081,14 +12956,6 @@ msgstr "O registo de saída falhou. Por favor, tente novamente."
 #: 
 msgid "Click Save to apply."
 msgstr "Clique em Guardar para aplicar."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A API da Área de Transferência não está disponível. Copie o URL manualmente."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Área de transferência indisponível. Utilize o botão Transferir para guardar os seus códigos."
 
 #: 
 msgid "Code incomplete"
@@ -14623,24 +14490,12 @@ msgid "People &amp; Families"
 msgstr "Pessoas &amp; Famílias"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A nota que está a tentar editar já não existe."
-
-#: 
 msgid "User List"
 msgstr "Lista de utilizadores"
 
 #: 
 msgid "View Person"
 msgstr "Ver pessoa"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Não tem permissão para adicionar uma nota para esta família."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Não tem permissão para adicionar uma nota para esta pessoa."
 
 #: 
 msgid "Account locked"
@@ -15343,10 +15198,6 @@ msgid "thru %s"
 msgstr "até %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notas \"Motivo da Visita\" para %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s da família %2$s"
 
@@ -15449,14 +15300,6 @@ msgstr "Abre uma janela de 2 minutos para os dispositivos se registarem em"
 #: 
 msgid "Output Method"
 msgstr "Método de saída"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "Por favor, confirme a eliminação deste registo de família"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Por favor, selecione outra família à qual associar estas doações"
 
 #: 
 msgid "Remittance Slip"
@@ -15761,18 +15604,6 @@ msgstr "Adicionar turma de Escola Dominical"
 #: 
 msgid "Delete this family?"
 msgstr "Eliminar esta família?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Deseja eliminar esta família? Será direcionado para uma página para escolher o que eliminar. Esta ação não pode ser desfeita."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Confirmação de eliminação de família"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Confirmação de eliminação de tipo de propriedade"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24205,10 +24036,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagamentos ainda não estão em nenhum depósito."
 
 #: 
-msgid "Closing line"
-msgstr "Linha de encerramento"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Todos os depósitos datados deste ano estão fechados."
 
@@ -24221,28 +24048,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Todos os pagamentos deste ano estão num depósito."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gerar declarações fiscais"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Relatório de donativos (declarações fiscais)"
-
-#: 
-msgid "Opening line"
-msgstr "Linha de abertura"
-
-#: 
 msgid "Qty"
 msgstr "Qtd."
-
-#: 
-msgid "Signed by"
-msgstr "Assinado por"
-
-#: 
-msgid "Thank-you line"
-msgstr "Linha de agradecimento"
 
 #: 
 msgid "Year-End Giving"
@@ -24401,10 +24208,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "O diretório temporário de PDF tem de ser um caminho absoluto de diretório."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "NIF da igreja (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Linha de encerramento"
 
@@ -24447,10 +24250,6 @@ msgstr "Definições das declarações"
 #: 
 msgid "Statement Wording"
 msgstr "Texto das declarações"
-
-#: 
-msgid "Tax Information"
-msgstr "Informação fiscal"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24499,10 +24298,6 @@ msgstr "A usar o nome e a morada da igreja"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "A usar o caminho do papel timbrado definido nas Definições do sistema"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Texto, NIF e tratamento de PDF das declarações de donativos"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27317,10 +27112,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Desativar também o acesso para impedir o uso do portal de membros"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Antes de enviar os comprovantes"
-
-#: 
 msgid "Birthday today"
 msgstr "Aniversário hoje"
 
@@ -27645,10 +27436,6 @@ msgid "Preview Sample Letter"
 msgstr "Visualizar modelo de carta"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificador do ficheiro privado de assinatura dos comprovantes de doações canadenses. Gerido pelo envio de assinaturas."
-
-#: 
 msgid "Property Type"
 msgstr "Tipo de propriedade"
 
@@ -27683,10 +27470,6 @@ msgstr "Rever e filtrar"
 #: 
 msgid "Review and vote"
 msgstr "Rever e votar"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Reveja o ano e depois descarregue os comprovantes de doações."
 
 #: 
 msgid "Review what we are considering"
@@ -27735,10 +27518,6 @@ msgstr "Forte"
 #: 
 msgid "Support"
 msgstr "Suporte"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Identificação fiscal e configurações de PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

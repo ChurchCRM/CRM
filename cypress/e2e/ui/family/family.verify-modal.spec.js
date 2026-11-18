@@ -2,8 +2,16 @@
 
 import { restoreSettings, setConfig, useMemberSignIn } from "../../../support/member-sign-in";
 
+// The family page re-renders the actions dropdown as its async pieces
+// land; a click issued the moment the element appears can hit a detached
+// node (master run 44228216478). Wait for visibility first — the same
+// settle pattern as the coordinator spec logins (#11742).
+const openActionsDropdown = () => {
+    cy.get("#family-actions-dropdown").should("be.visible").click();
+};
+
 const openVerifyModal = () => {
-    cy.get("#family-actions-dropdown").click();
+    openActionsDropdown();
     cy.contains(".dropdown-item", "Verify Info").click();
     cy.get("#confirm-verify").should("be.visible");
 };
@@ -27,14 +35,14 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
 
     it("should display verify option in Actions dropdown", () => {
         // Open the Actions dropdown
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         // Verify Info should be in the dropdown
         cy.contains(".dropdown-item", "Verify Info").should("be.visible");
     });
 
     it("should open confirmation modal when verify clicked from Actions menu", () => {
         // Open Actions dropdown and click Verify Info
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
 
         // Modal should be visible
@@ -43,7 +51,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display email list in modal body", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
@@ -52,7 +60,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display all verification action buttons", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
@@ -63,7 +71,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should offer one email button, with no URL or PDF email, when SMTP is configured and emails are present", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
@@ -93,6 +101,9 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
 
     it("says nobody can be invited while member sign-in is off", () => {
         setConfig("bMemberSignIn", "0");
+        // Toggling the master switch drops the browser's staff session
+        // (the visit lands on the login page), so sign back in first.
+        cy.setupAdminSession();
         cy.visit("/people/family/1");
         openVerifyModal();
         cy.get("#verify-nobody-can-sign-in").should("contain", "Member sign-in is off, so nobody in the Campbell family can sign in");

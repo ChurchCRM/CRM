@@ -8,6 +8,12 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $letterheadUrl = LetterheadService::getUrlPath();
+foreach ($letterSettings as &$setting) {
+    if ($setting['name'] === 'sConfirmSigner') {
+        $setting['label'] = gettext('Confirmation Letter Printed Signer');
+    }
+}
+unset($setting);
 ?>
 
 <div class="row">
@@ -52,6 +58,19 @@ $letterheadUrl = LetterheadService::getUrlPath();
 <div class="row mt-3">
     <div class="col-12">
         <div id="letter-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Letter greeting and signature')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($letterSettings, JSON_THROW_ON_ERROR)) ?>"></div>
+    </div>
+</div>
+
+<div class="card mt-3" id="tax-signature-card" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
+    <div class="card-header"><h3 class="card-title"><?= gettext('Signature Image') ?></h3></div>
+    <div class="card-body">
+        <p class="form-text"><?= gettext('This image prints above the signer\'s name on giving statements and receipts. Charity details and the signer\'s printed name are under Finance, Statement Settings.') ?></p>
+        <p id="tax-signature-status" role="status" aria-live="polite"></p>
+        <label class="form-label" for="tax-signature-file"><?= gettext('Upload a PNG or JPEG signature image.') ?></label>
+        <input class="form-control mb-2" id="tax-signature-file" type="file" accept="image/png,image/jpeg">
+        <div class="form-text mb-2"><?= gettext('Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature.') ?></div>
+        <button class="btn btn-outline-danger" id="tax-signature-remove" type="button" disabled><?= gettext('Remove') ?></button>
+        <p class="text-danger mt-2" id="tax-signature-error" role="alert"></p>
     </div>
 </div>
 

@@ -123,8 +123,8 @@ if (empty($timeline)) { ?>
                                     </button>
                                     <div class="ms-auto d-flex gap-1">
                                         <?php if ($hasActions) { ?>
-                                            <?php if (!empty($item["editLink"])) { ?>
-                                                <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-secondary py-0 px-2"><i class="fa-solid fa-pen fa-sm me-1"></i><?= gettext('Edit') ?></a>
+                                            <?php if (!empty($item["editLink"]) && $noteId !== null) { ?>
+                                                <button type="button" class="btn btn-sm btn-ghost-secondary py-0 px-2" data-open-note-id="<?= (int) $noteId ?>"><i class="fa-solid fa-pen fa-sm me-1"></i><?= gettext('Edit') ?></button>
                                             <?php } ?>
                                             <?php if ($noteId !== null) { ?>
                                                 <button type="button" class="btn btn-sm btn-ghost-danger py-0 px-2" data-bs-toggle="modal" data-bs-target="#deleteNoteModal" data-note-id="<?= htmlspecialchars($noteId) ?>">

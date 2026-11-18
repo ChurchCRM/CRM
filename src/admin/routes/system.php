@@ -28,6 +28,7 @@ use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -390,6 +391,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         }, SystemConfig::getSettingsConfig(array_keys($labels)));
 
         return $renderer->render($response, 'report-settings.php', [
+            'csrfToken' => CSRFUtils::generateToken(),
             'letterSettings' => $letterSettings,
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Report Settings'),

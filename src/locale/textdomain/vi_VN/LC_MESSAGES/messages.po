@@ -850,14 +850,6 @@ msgid "Assign"
 msgstr "Thêm vào"
 
 #: 
-msgid "Date Updated"
-msgstr "Ngày cập nhật"
-
-#: 
-msgid "Updated By"
-msgstr "Cập nhật bởi"
-
-#: 
 msgid "Since"
 msgstr "Từ"
 
@@ -1373,10 +1365,6 @@ msgid "Updated"
 msgstr "Đã cập nhật"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Hành động này không thể được hoàn tác)"
-
-#: 
 msgid "Note Editor"
 msgstr "Chỉnh sửa ghi chú"
 
@@ -1601,10 +1589,6 @@ msgid "Warning"
 msgstr "Cảnh báo"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Loại thuộc tính này được sử dụng bởi một thuộc tính khác"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vui lòng xác nhận việc xóa Loại Thuộc tính này"
 
@@ -1630,44 +1614,8 @@ msgid "Please confirm deletion of"
 msgstr "Vui lòng xác nhận xóa"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Xin lỗi, có hồ sơ đóng góp từ gia đình này. Gia đình này có thể không bị xóa."
-
-#: 
-msgid "Return to Family View"
-msgstr "Quay lại Chế độ xem gia đình"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "CẢNH BÁO: Gia đình này có hồ sơ về các khoản đóng góp và KHÔNG thể bị xóa cho đến khi các khoản đóng góp này được liên kết với một gia đình khác."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "CẢNH BÁO: Không thể hoàn tác hành động này và có thể có ý nghĩa pháp lý!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "GIA ĐÌNH HIỆN TẠI VỚI TẶNG KÈM"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Ghi chú: Điều này sẽ xóa tất cả các Ghi chú liên kết với bản ghi của gia đình này"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "CHỈ xóa bỏ bản ghi gia đình"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
-
-#: 
-msgid "My User Settings"
-msgstr "Cài đặt thành viên"
 
 #: 
 msgid "Variable name"
@@ -5131,10 +5079,6 @@ msgid "Enter event description..."
 msgstr "Nhập mô tả sự kiện..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Nhập nội dung ghi chú tại đây..."
-
-#: 
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -6740,10 +6684,6 @@ msgid "Add Property Type"
 msgstr "Thêm Loại Thuộc tính"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Thêm Loại Thuộc tính Đầu tiên của Bạn"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
 
@@ -6762,10 +6702,6 @@ msgstr "Đã điểm danh ra"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Năm Tài chính Hiện tại"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Xóa (sẽ xóa tất cả các bản ghi liên quan)"
 
 #: 
 msgid "Edit Property Type"
@@ -6816,10 +6752,6 @@ msgid "No property types found"
 msgstr "Không tìm thấy loại thuộc tính"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Số bản ghi sử dụng loại thuộc tính này"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Mô tả chi tiết tùy chọn của loại thuộc tính này"
 
@@ -6850,10 +6782,6 @@ msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Theo dõi và quản lý các cam kết theo gia đình và quỹ"
-
-#: 
-msgid "View Properties"
-msgstr "Xem Thuộc tính"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7831,18 +7759,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Bạn có chắc muốn xóa vĩnh viễn bản ghi cam kết này không?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Hủy và quay lại chế độ xem gia đình"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Nếu bạn xóa loại này, bạn cũng sẽ xóa tất cả thuộc tính sử dụng nó và mất mọi phân công thuộc tính tương ứng."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Di Chuyển Đóng Góp đến gia đình đã chọn"
-
-#: 
 msgid "Calendar not found"
 msgstr "Không tìm thấy lịch"
 
@@ -8115,10 +8031,6 @@ msgid "or later to continue."
 msgstr "hoặc mới hơn để tiếp tục."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Ghi chu \"Ly do den\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d kết quả cho \"%s\""
@@ -8226,10 +8138,6 @@ msgstr "Them hoac chinh sua ho so ca nhan"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Them hoac chinh sua cac mon qua tang cho su kien gay quy"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Them hoac chinh sua ghi chu cho ca nhan va gia dinh"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8944,10 +8852,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Quan ly co hoi tinh nguyen va gan thanh vien"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Quan ly tuy chon ca nhan va cai dat tai khoan cua ban"
-
-#: 
 msgid "Map cart items"
 msgstr "Hien thi danh sach tren ban do"
 
@@ -8982,10 +8886,6 @@ msgstr "Di chuyen den nhom"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Chuyen tu ban cai dat ChurchCRM hoac ChurchInfo hien co? Tai len tep sao luu va chung toi se khoi phuc du lieu cua ban tu dong."
-
-#: 
-msgid "My Settings"
-msgstr "Cai dat cua toi"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9200,10 +9100,6 @@ msgstr "Ghi nhan nhieu nguoi trung thuong gay quy cung luc"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Ghi nhận cam kết dâng hiến và các khoản dâng hiến mới"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 
 #: 
 msgid "Remove from Class"
@@ -11077,10 +10973,6 @@ msgid "Manage 2FA"
 msgstr "Quản lý xác thực 2 yếu tố"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Quản lý các tùy chọn bổ sung như dấu phân cách email và tùy chọn hiển thị"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Quản lý khóa API của bạn cho các tích hợp bên ngoài"
 
@@ -11746,14 +11638,6 @@ msgid "e.g., 40.7128"
 msgstr "vd., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Đã xảy ra lỗi khi xóa gia đình."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Đã xảy ra lỗi khi di chuyển các khoản dâng hiến."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Cần có ít nhất một thành viên gia đình"
 
@@ -11772,10 +11656,6 @@ msgstr "Xóa thất bại"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Hướng phải là \"lên\" hoặc \"xuống\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Không thể di chuyển các khoản dâng hiến."
 
 #: 
 msgid "Finance permission required"
@@ -11812,10 +11692,6 @@ msgstr "Không tìm thấy tư cách thành viên"
 #: 
 msgid "Password successfully changed for"
 msgstr "Mật khẩu đã được thay đổi thành công cho"
-
-#: 
-msgid "Please select a target family."
-msgstr "Vui lòng chọn một gia đình đích."
 
 #: 
 msgid "Target family not found"
@@ -13017,14 +12893,6 @@ msgstr "Đăng xuất thất bại. Vui lòng thử lại."
 #: 
 msgid "Click Save to apply."
 msgstr "Nhan Luu de ap dung."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard không có sẵn. Vui lòng sao chép URL theo cách thủ công."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
 
 #: 
 msgid "Code incomplete"
@@ -14558,24 +14426,12 @@ msgid "People &amp; Families"
 msgstr "Cá nhân &amp; Gia đình"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
-
-#: 
 msgid "User List"
 msgstr "Danh sách người dùng"
 
 #: 
 msgid "View Person"
 msgstr "Xem thông tin cá nhân"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Bạn không có quyền thêm ghi chú cho người này."
 
 #: 
 msgid "Account locked"
@@ -15276,10 +15132,6 @@ msgid "thru %s"
 msgstr "đến %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Ghi chú \"Lý do đến\" cho %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s thuộc gia đình %2$s"
 
@@ -15382,14 +15234,6 @@ msgstr "Mở cửa sổ 2 phút để các thiết bị đăng ký tại"
 #: 
 msgid "Output Method"
 msgstr "Phương thức xuất"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "Vui lòng xác nhận xóa hồ sơ gia đình này"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản dâng hiến này"
 
 #: 
 msgid "Remittance Slip"
@@ -15694,18 +15538,6 @@ msgstr "Thêm lớp Trường Chúa nhật"
 #: 
 msgid "Delete this family?"
 msgstr "Xóa gia đình này?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Bạn có muốn xóa gia đình này không? Bạn sẽ được chuyển đến trang để chọn những gì cần xóa. Thao tác này không thể hoàn tác."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Xác nhận xóa gia đình"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Xác nhận xóa loại thuộc tính"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24123,10 +23955,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d khoản thanh toán chưa thuộc đợt nộp nào."
 
 #: 
-msgid "Closing line"
-msgstr "Dòng kết"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Mọi đợt nộp có ngày trong năm nay đã được đóng."
 
@@ -24139,28 +23967,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Mọi khoản thanh toán trong năm nay đều thuộc một đợt nộp."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tạo bản kê thuế"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Báo cáo dâng hiến (bản kê thuế)"
-
-#: 
-msgid "Opening line"
-msgstr "Dòng mở đầu"
-
-#: 
 msgid "Qty"
 msgstr "SL"
-
-#: 
-msgid "Signed by"
-msgstr "Ký bởi"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dòng cảm ơn"
 
 #: 
 msgid "Year-End Giving"
@@ -24319,10 +24127,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Thư mục tạm PDF phải là đường dẫn thư mục tuyệt đối."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Mã số thuế nhà thờ (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Dòng kết"
 
@@ -24365,10 +24169,6 @@ msgstr "Cài đặt bản kê"
 #: 
 msgid "Statement Wording"
 msgstr "Lời văn bản kê"
-
-#: 
-msgid "Tax Information"
-msgstr "Thông tin thuế"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24417,10 +24217,6 @@ msgstr "Đang dùng tên và địa chỉ nhà thờ"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Đang dùng đường dẫn phần đầu thư đã đặt trong Cài đặt hệ thống"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lời văn, mã số thuế và cách xử lý PDF cho bản kê dâng hiến"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27230,10 +27026,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Đồng thời vô hiệu hóa đăng nhập để họ không thể dùng Cổng thành viên"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Trước khi gửi bảng kê"
-
-#: 
 msgid "Birthday today"
 msgstr "Hôm nay sinh nhật"
 
@@ -27574,10 +27366,6 @@ msgid "Preview Sample Letter"
 msgstr "Xem trước thư mẫu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Mã định danh tài nguyên chữ ký riêng tư của bảng kê dâng hiến Canada. Được quản lý bằng cách tải chữ ký lên."
-
-#: 
 msgid "Property Type"
 msgstr "Loại thuộc tính"
 
@@ -27616,10 +27404,6 @@ msgstr "Xem lại và lọc"
 #: 
 msgid "Review and vote"
 msgstr "Xem lại và bình chọn"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Xem lại năm đó, rồi tải xuống bảng kê dâng hiến."
 
 #: 
 msgid "Review what we are considering"
@@ -27668,10 +27452,6 @@ msgstr "Mạnh"
 #: 
 msgid "Support"
 msgstr "Hỗ trợ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Cài đặt mã số thuế và PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

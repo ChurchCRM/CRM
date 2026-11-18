@@ -155,9 +155,9 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext('Cart') ?></span>
             </button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-            <a class="btn btn-ghost-info" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>">
+            <button type="button" class="btn btn-ghost-info" data-open-note-family="<?= (int) $family->getId() ?>">
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Add Note') ?>
-            </a>
+            </button>
             <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="dropdown">
@@ -1105,4 +1105,5 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/note-why-came-modal.min.js') . '"></script>';
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

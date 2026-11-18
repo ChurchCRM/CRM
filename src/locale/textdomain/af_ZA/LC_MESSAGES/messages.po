@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "Toewys"
 
 #: 
-msgid "Date Updated"
-msgstr "Datum opgedateer"
-
-#: 
-msgid "Updated By"
-msgstr "Opgedateer deur"
-
-#: 
 msgid "Since"
 msgstr "Sedert"
 
@@ -1362,10 +1354,6 @@ msgid "Updated"
 msgstr "Opgedateer"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(hierdie handeling kan nie ongedaan gemaak word nie)"
-
-#: 
 msgid "Note Editor"
 msgstr "Nota-redakteur"
 
@@ -1590,10 +1578,6 @@ msgid "Warning"
 msgstr "Waarskuwing"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Hierdie tipe eiendom word steeds deur ten minste een eiendom gebruik."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Bevestig die verwydering van hierdie eiendomstipe"
 
@@ -1619,44 +1603,8 @@ msgid "Please confirm deletion of"
 msgstr "Bevestig die verwydering van"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Jammer, daar is rekords van donasies van hierdie familie. Hierdie gesin mag nie verwyder word nie."
-
-#: 
-msgid "Return to Family View"
-msgstr "Keer terug na Family View"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "WAARSKUWING: Hierdie familie het rekords van donasies en mag NIE verwyder word voordat hierdie donasies met 'n ander gesin geassosieer word nie."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "WAARSKUWING: Hierdie aksie kan nie ongedaan gemaak word nie en kan wettige gevolge hê!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "HUIDIGE GESIN MET SKENKINGS"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Opmerking: Dit sal ook alle notas wat verband hou met hierdie gesinsrekord, uitvee."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Vee SLEGS Gesinsrekord uit"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Verwyder gesinsrekord EN familielede"
-
-#: 
 msgid "Listing"
 msgstr "Lys"
-
-#: 
-msgid "My User Settings"
-msgstr "My gebruikersinstellings"
 
 #: 
 msgid "Variable name"
@@ -5124,10 +5072,6 @@ msgid "Enter event description..."
 msgstr "Voer gebeurtenisbeskrywing in..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Voer notaateks hier in..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -6737,10 +6681,6 @@ msgid "Add Property Type"
 msgstr "Voeg eiendomstipe by"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Voeg jou eerste eiendomstipe by"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Deur hierdie veld te verwyder, sal u onherroeplik alle groep-liddata wat aan hierdie veld toegeken is, verloor!"
 
@@ -6759,10 +6699,6 @@ msgstr "Afgemeld"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Huidige Fiskale Jaar"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Verwyder (sal alle geassosieerde rekords uitvee)"
 
 #: 
 msgid "Edit Property Type"
@@ -6813,10 +6749,6 @@ msgid "No property types found"
 msgstr "Geen eiendomstipes gevind nie"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Aantal rekords wat hierdie eiendomstipe gebruik"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Opsionele gedetailleerde beskrywing van hierdie eiendomstipe"
 
@@ -6847,10 +6779,6 @@ msgstr "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Volg en bestuur belofte-verpligtinge per gesin en fonds"
-
-#: 
-msgid "View Properties"
-msgstr "Bekyk eienskappe"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7830,18 +7758,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Is u seker u wil hierdie toewyding permanent verwyder?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Kanselleer en keer terug na Gesinsiening"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "As u hierdie tipe verwyder, sal u ook alle eienskappe wat dit gebruik verwyder en alle ooreenstemmende eienskap-toekennings verloor."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Skuif Offergawes na Gekose Gesin"
-
-#: 
 msgid "Calendar not found"
 msgstr "Kalender nie gevind nie"
 
@@ -8114,10 +8030,6 @@ msgid "or later to continue."
 msgstr "of later om voort te gaan."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Waarom Gekom\" Notas"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultaat vir \"%s\""
@@ -8226,10 +8138,6 @@ msgstr "Individuele persoonrekords byvoeg of wysig"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Items gedoneer vir insamelingsgebeure byvoeg of wysig"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Notas vir mense en families byvoeg of wysig"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8944,10 +8852,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Bestuur vrywilliger-geleenthede en ken geloofsgenote toe"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Bestuur jou persoonlike voorkeure en rekeningsinstellings"
-
-#: 
 msgid "Map cart items"
 msgstr "Kaarteer lys-items"
 
@@ -8982,10 +8886,6 @@ msgstr "Beweeg na Ministerie"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Stap oor van 'n bestaande ChurchCRM- of ChurchInfo-installasie? Laai jou rugsteunlêer op en ons sal jou gegewens outomaties herstel."
-
-#: 
-msgid "My Settings"
-msgstr "My Instellings"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9200,10 +9100,6 @@ msgstr "Teken veelvuldige insamelingsgebeure-trekking-wenners op eenmaal"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Teken nuwe verbintenisse en betalings"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Teken waarom aanwesiges jou kerk besoek het"
 
 #: 
 msgid "Remove from Class"
@@ -11077,10 +10973,6 @@ msgid "Manage 2FA"
 msgstr "Bestuur 2FA"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Bestuur addisionele voorkeure soos e-pos-afgrensers en vertoonopsies"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "Bestuur u API-sleutel vir eksterne integrasies"
 
@@ -11747,14 +11639,6 @@ msgid "e.g., 40.7128"
 msgstr "bv., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "'n Fout het voorgekom tydens die verwydering van die gesin."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "'n Fout het voorgekom tydens die skuif van skenkings."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Ten minste een gesinslid word benodig"
 
@@ -11773,10 +11657,6 @@ msgstr "Verwydering misluk"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Rigting moet \"op\" of \"af\" wees"
-
-#: 
-msgid "Failed to move donations."
-msgstr "Het misluk om skenkings te skuif."
 
 #: 
 msgid "Finance permission required"
@@ -11813,10 +11693,6 @@ msgstr "Lidmaatskap nie gevind nie"
 #: 
 msgid "Password successfully changed for"
 msgstr "Wagwoord suksesvol verander vir"
-
-#: 
-msgid "Please select a target family."
-msgstr "Kies asseblief 'n teikengesin."
 
 #: 
 msgid "Target family not found"
@@ -13018,14 +12894,6 @@ msgstr "Uittekening het misluk. Probeer asseblief weer."
 #: 
 msgid "Click Save to apply."
 msgstr "Klik Stoor om toe te pas."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API nie beskikbaar nie. Kopieer asseblief die URL handmatig."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Knipbord nie beskikbaar nie. Gebruik asseblief die Aflaai-knoppie om u kodes te stoor."
 
 #: 
 msgid "Code incomplete"
@@ -14560,24 +14428,12 @@ msgid "People &amp; Families"
 msgstr "Mense &amp; Gesinne"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Die nota wat u probeer wysig, bestaan nie meer nie."
-
-#: 
 msgid "User List"
 msgstr "Gebruikerslys"
 
 #: 
 msgid "View Person"
 msgstr "Bekyk Persoon"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "U het nie toestemming om 'n nota vir hierdie gesin by te voeg nie."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
 
 #: 
 msgid "Account locked"
@@ -15280,10 +15136,6 @@ msgid "thru %s"
 msgstr "tot %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Hoekom Gekom\" notas vir %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s van die %2$s-gesin"
 
@@ -15386,14 +15238,6 @@ msgstr "Maak 'n 2-minuut-venster oop vir toestelle om by te registreer"
 #: 
 msgid "Output Method"
 msgstr "Uitsetmetode"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "Bevestig asseblief die verwydering van hierdie gesinrekord"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Kies asseblief 'n ander gesin waarmee hierdie skenkings geassosieer moet word"
 
 #: 
 msgid "Remittance Slip"
@@ -15698,18 +15542,6 @@ msgstr "Voeg Sondagskoolklas By"
 #: 
 msgid "Delete this family?"
 msgstr "Verwyder hierdie gesin?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Wil jy hierdie gesin verwyder? Jy sal na 'n bladsy geneem word om te kies wat verwyder moet word. Dit kan nie ongedaan gemaak word nie."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Gesin-verwyderingsbevestiging"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Eiendomstipe-verwyderingsbevestiging"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24142,10 +23974,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalings is nog nie op enige deposito nie."
 
 #: 
-msgid "Closing line"
-msgstr "Slotreël"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Elke deposito wat in hierdie jaar gedateer is, is gesluit."
 
@@ -24158,28 +23986,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Elke betaling in hierdie jaar is op 'n deposito."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Genereer belastingstate"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Bydraeverlag (Belastingstate)"
-
-#: 
-msgid "Opening line"
-msgstr "Openingsreël"
-
-#: 
 msgid "Qty"
 msgstr "Aantal"
-
-#: 
-msgid "Signed by"
-msgstr "Geteken deur"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dankie-reël"
 
 #: 
 msgid "Year-End Giving"
@@ -24338,10 +24146,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Die tydelike PDF-gids moet 'n absolute gidspad wees."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Kerkbelastingnommer (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Slotreël"
 
@@ -24384,10 +24188,6 @@ msgstr "Staatinstellings"
 #: 
 msgid "Statement Wording"
 msgstr "Staatbewoording"
-
-#: 
-msgid "Tax Information"
-msgstr "Belastinginligting"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24436,10 +24236,6 @@ msgstr "Gebruik die kerknaam en adres"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Gebruik die briefhoofpad wat in Stelselinstellings gestel is"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Bewoording, belastingnommer en PDF-hantering vir bydraestate"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27254,10 +27050,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Deaktiveer ook aanmelding, sodat hulle nie die ledeportaal kan gebruik nie"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Voordat jy state stuur"
-
-#: 
 msgid "Birthday today"
 msgstr "Verjaar vandag"
 
@@ -27582,10 +27374,6 @@ msgid "Preview Sample Letter"
 msgstr "Voorskou voorbeeldbrief"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifiseerder van die private handtekeninglêer vir Kanadese skenkingstate. Word deur die oplaai van handtekeninge bestuur."
-
-#: 
 msgid "Property Type"
 msgstr "Tipe eienskap"
 
@@ -27620,10 +27408,6 @@ msgstr "Hersien en filter"
 #: 
 msgid "Review and vote"
 msgstr "Hersien en stem"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Hersien die jaar en laai dan die skenkingstate af."
 
 #: 
 msgid "Review what we are considering"
@@ -27672,10 +27456,6 @@ msgstr "Sterk"
 #: 
 msgid "Support"
 msgstr "Ondersteuning"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Belasting-ID en PDF-instellings"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

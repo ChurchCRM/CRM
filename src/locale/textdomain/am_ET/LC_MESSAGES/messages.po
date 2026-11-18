@@ -838,14 +838,6 @@ msgid "Assign"
 msgstr "መድብ"
 
 #: 
-msgid "Date Updated"
-msgstr "የዘመነበት ቀን"
-
-#: 
-msgid "Updated By"
-msgstr "ያዘመነዉ ሰዉ"
-
-#: 
 msgid "Since"
 msgstr "ጀምሮ"
 
@@ -1361,10 +1353,6 @@ msgid "Updated"
 msgstr "ተዘምኗል"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(ይህን ተግባር ወደ ቦታው መመልስ አይቻልም)"
-
-#: 
 msgid "Note Editor"
 msgstr "ጽሁፍ ማረሚያ"
 
@@ -1589,10 +1577,6 @@ msgid "Warning"
 msgstr "ማስጥንቀቂያ"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "ይህ የንብረት አይነት ቢያንስ በሆነ ንብረት ጥቅም ላይ ውልዋል"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "እባክዎ የንብረት አይነቱ መሰርዝ እንደሚፈልጉ ያረጋግጡ"
 
@@ -1618,44 +1602,8 @@ msgid "Please confirm deletion of"
 msgstr "እባክዎ ስረዛውን ያረጋግጡ"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "ይቅርታ፣ የዚህ ቤተሰብ ልገሳ መዛግብት አሉ። የዚህን ቤተሰብ መረጃ ማጥፋት አይቻልም።"
-
-#: 
-msgid "Return to Family View"
-msgstr "ወደ ቤተሰብ እይታ ተመለስ"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ማስጠንቀቂያ፡ ይህ ቤተሰብ የልገሳ መዛግብት አለው እና እነዚህ ልገሳዎች ከሌላ ቤተሰብ ጋር እስኪገናኙ ድረስ ሊሰረዙ አይችሉም።"
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "ማስጠንቀቂያ፡ ይህ እርምጃ ሊቀለበስ አይችልም እና ህጋዊ አንድምታ ሊኖረው ይችላል!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "አሁን ያለው ቤተሰብ ከልገሳ ጋር"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "ማስታወሻ፡ ይህ እንዲሁም ከዚህ የቤተሰብ መዝገብ ጋር የተያያዙ ሁሉንም ማስታወሻዎች ይሰርዛል"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "የቤተሰብ መዝገብ ብቻ ሰርዝ"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "የቤተሰብ መዝገብ እና የቤተሰብ አባላት ሰርዝ "
-
-#: 
 msgid "Listing"
 msgstr "መዘርዘር"
-
-#: 
-msgid "My User Settings"
-msgstr "የተጠቃሚ ቅንብሮች"
 
 #: 
 msgid "Variable name"
@@ -5129,10 +5077,6 @@ msgid "Enter event description..."
 msgstr "የክስተት መግለጫ ያስገቡ..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "የማስታወሻ ጽሁፍ እዚህ ያስገቡ..."
-
-#: 
 msgid "Note"
 msgstr "ማስታወሻ"
 
@@ -6742,10 +6686,6 @@ msgid "Add Property Type"
 msgstr "የንብረት ዓይነት ጨምር"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "የመጀመሪያ የንብረት ዓይነትዎን ያክሉ"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "ይህን መስክ በመሰረዝ፣ ለዚህ መስክ የተመደበውን ሁሉንም የቡድን አባል ውሂብ በማይመለስ ሁኔታ ያጣሉ!"
 
@@ -6764,10 +6704,6 @@ msgstr "ወጥቷል"
 #: 
 msgid "Current Fiscal Year"
 msgstr "የአሁኑ የፊስካል አመት"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "ሰርዝ (ሁሉንም ተዛማጅ መዝገቦች ይሰርዛል)"
 
 #: 
 msgid "Edit Property Type"
@@ -6818,10 +6754,6 @@ msgid "No property types found"
 msgstr "ምንም የንብረት ዓይነቶች አልተገኙም"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "ይህን የንብረት ዓይነት የሚጠቀሙ መዝገቦች ብዛት"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "የዚህ የንብረት ዓይነት አማራጭ ዝርዝር መግለጫ"
 
@@ -6852,10 +6784,6 @@ msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይ�
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "የቃል ኪዳን ቁርጠኝነቶችን በቤተሰብ እና በፈንድ ይከታተሉ እና ያስተዳድሩ"
-
-#: 
-msgid "View Properties"
-msgstr "ባህሪያትን ይመልከቱ"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7835,18 +7763,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "ይህን ቃል ኪዳን ሪኮርድ ለዘለዓለም ሊሰርዙ ይፈልጋሉ?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "ሰርዝ እና ወደ ቤተሰብ ዕይታ ተመለስ"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "ይህን ዓይነት ከሰረዙ ሁሉንም ባሕሪዎቹን ያስወግዳሉ እና ሁሉም ተዛማጅ ባሕሪ ምደቦች ይጠፋሉ።"
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "ቁርባን ወደ ተመረጠው ቤተሰብ ቀይር"
-
-#: 
 msgid "Calendar not found"
 msgstr "ቀን መቁጠሪያ አልተገኘም"
 
@@ -8119,10 +8035,6 @@ msgid "or later to continue."
 msgstr "ወይም ቆይቶ ለመቀጠል።"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"ለምን መጡ\" ማስታወሻዎች"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "ለ \"%s\" አንድ ውጤት"
@@ -8231,10 +8143,6 @@ msgstr "የግለሰብ ሰዎች ሪከርድ ያክሉ ወይም ያርትዑ"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "ለገንዘብ መሰብሰቢያ ክስተቶች በሚናገርብ ንጥረ ነገሮች ያክሉ ወይም ያርትዑ"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "ሰዎች እና ቤተሰቦች ማስታወሻ ያክሉ ወይም ያርትዑ"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8949,10 +8857,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "ሌባ ስኞ እና አባላት ተመደቡ ይሸፍኑ"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "ወደ ግል ምረጫ እና ሥርዓት ቅንብር ይሸፍኑ"
-
-#: 
 msgid "Map cart items"
 msgstr "ገበያ ንጥል ካርታ"
 
@@ -8987,10 +8891,6 @@ msgstr "ወደ ቡድን ዘዋወር"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "ከ ውጪ ChurchCRM ወይም ChurchInfo ተዋቅሮ? ተጠቀጥቦች ፋይል ሙላ እና ውሎ መረጃ አገሪት።"
-
-#: 
-msgid "My Settings"
-msgstr "ቢኬቤት ቅንብር"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9205,10 +9105,6 @@ msgstr "ብዙ ገንዘብ ስብ ዋንጪ አንዴ ረ"
 #: 
 msgid "Record new pledges and payments"
 msgstr "ተፈላጊ ተቀባይነት እና ገንዘብ ሰበአት ረ"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "ምንድነ ሰብ ተዋጽኦ ዳሰሱ ረ"
 
 #: 
 msgid "Remove from Class"
@@ -11082,10 +10978,6 @@ msgid "Manage 2FA"
 msgstr "2FA ያስተዳድሩ"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "እንደ ኢሜይል ማብቂያዎችና ማሳያ አማራጮች ያሉ ተጨማሪ ምርጫዎችን ያስተዳድሩ"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "ለውጫዊ ውህደቶች የ API ቁልፍዎን ያስተዳድሩ"
 
@@ -11752,14 +11644,6 @@ msgid "e.g., 40.7128"
 msgstr "ለምሳሌ፣ 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "ቤተሰቡን ሲሰርዙ ስህተት ተከስቷል።"
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "ስጦታዎችን ሲያንቀሳቅሱ ስህተት ተከስቷል።"
-
-#: 
 msgid "At least one family member is required"
 msgstr "ቢያንስ አንድ የቤተሰብ አባል ያስፈልጋል"
 
@@ -11778,10 +11662,6 @@ msgstr "መሰረዝ አልተሳካም"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "አቅጣጫ \"ወደ ላይ\" ወይም \"ወደ ታች\" መሆን አለበት"
-
-#: 
-msgid "Failed to move donations."
-msgstr "ስጦታዎችን ማንቀሳቀስ አልተሳካም።"
 
 #: 
 msgid "Finance permission required"
@@ -11818,10 +11698,6 @@ msgstr "አባልነት አልተገኘም"
 #: 
 msgid "Password successfully changed for"
 msgstr "ለ የይለፍ ቃል በተሳካ ሁኔታ ተቀይሯል"
-
-#: 
-msgid "Please select a target family."
-msgstr "ዒላማ ቤተሰብ ይምረጡ።"
 
 #: 
 msgid "Target family not found"
@@ -13023,14 +12899,6 @@ msgstr "መውጣት አልተሳካም። እባክዎ እንደገና ሞክ�
 #: 
 msgid "Click Save to apply."
 msgstr "ተግባር ይጠቀሙ ከእንጀራ ጠቅ።"
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API አለም አቀፍ አይደለም። እባክዎ URL ን በእጅ ይቅዱ።"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ክሊፕቦርድ አይገኝም። ኮዶቹን ለማስቀመጥ ዝርዝር አውርድ ቁልፍን ይጠቀሙ።"
 
 #: 
 msgid "Code incomplete"
@@ -14566,24 +14434,12 @@ msgid "People &amp; Families"
 msgstr "ሰዎች &amp; ቤተሰቦች"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "ለማስተካከል እየሞከሩት ያሉት ማስታወሻ አሁን የለም።"
-
-#: 
 msgid "User List"
 msgstr "የተጠቃሚዎች ዝርዝር"
 
 #: 
 msgid "View Person"
 msgstr "ሰው ይመልከቱ"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ለዚህ ቤተሰብ ማስታወሻ ለማከል ፈቃድ የለዎትም።"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ለዚህ ሰው ማስታወሻ ለማከል ፈቃድ የለዎትም።"
 
 #: 
 msgid "Account locked"
@@ -15286,10 +15142,6 @@ msgid "thru %s"
 msgstr "እስከ %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "ለምን መጡ ማስታወሻዎች ለ %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "የ %2$s ቤተሰብ %1$s"
 
@@ -15392,14 +15244,6 @@ msgstr "መሣሪያዎች ለ2 ደቂቃ ምዝገባ መስኮት ይከፍታ
 #: 
 msgid "Output Method"
 msgstr "የውጤት ዘዴ"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "እባክዎ የዚህን ቤተሰብ መዝገብ ሰረዛ ያረጋግጡ"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "እባክዎ እነዚህን መዋጮዎች ለማያያዝ ሌላ ቤተሰብ ይምረጡ"
 
 #: 
 msgid "Remittance Slip"
@@ -15704,18 +15548,6 @@ msgstr "የሰንበት ትምህርት ቤት ክፍል ጨምር"
 #: 
 msgid "Delete this family?"
 msgstr "ይህን ቤተሰብ ይሰርዙ?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "ይህን ቤተሰብ መሰርዝ ይፈልጋሉ? ምን እንደሚሰርዙ ለምዘጋ ወደ ገጽ ይወሰዳሉ። ሊቀለበስ አይችልም።"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "የቤተሰብ ሰርዛ ማረጋገጫ"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "የንብረት ዓይነት ሰርዛ ማረጋገጫ"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24148,10 +23980,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d ክፍያዎች እስካሁን በምንም ተቀማጭ ላይ አይደሉም።"
 
 #: 
-msgid "Closing line"
-msgstr "የመዝጊያ መስመር"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "በዚህ ዓመት የተቀመጠ እያንዳንዱ ተቀማጭ ተዘግቷል።"
 
@@ -24164,28 +23992,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "በዚህ ዓመት ያለ እያንዳንዱ ክፍያ በተቀማጭ ላይ ነው።"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "የግብር መግለጫዎችን ፍጠር"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "የስጦታ ሪፖርት (የግብር መግለጫዎች)"
-
-#: 
-msgid "Opening line"
-msgstr "የመክፈቻ መስመር"
-
-#: 
 msgid "Qty"
 msgstr "ብዛት"
-
-#: 
-msgid "Signed by"
-msgstr "የፈረመው"
-
-#: 
-msgid "Thank-you line"
-msgstr "የምስጋና መስመር"
 
 #: 
 msgid "Year-End Giving"
@@ -24344,10 +24152,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "ጊዜያዊው PDF ማውጫ ፍጹም የማውጫ መንገድ መሆን አለበት።"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "የቤተ ክርስቲያን የግብር መታወቂያ (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "የመዝጊያ መስመር"
 
@@ -24390,10 +24194,6 @@ msgstr "የመግለጫ ቅንብሮች"
 #: 
 msgid "Statement Wording"
 msgstr "የመግለጫ ቃላት"
-
-#: 
-msgid "Tax Information"
-msgstr "የግብር መረጃ"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24442,10 +24242,6 @@ msgstr "የቤተ ክርስቲያኑን ስም እና አድራሻ በመጠቀ�
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "በስርዓት ቅንብሮች ውስጥ የተቀመጠውን የራስጌ መንገድ በመጠቀም"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ለስጦታ መግለጫዎች ቃላት፣ የግብር መታወቂያ እና PDF አያያዝ"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27260,10 +27056,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "የአባላት መግቢያውን እንዳይጠቀሙ መግባትንም አሰናክል"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "መግለጫዎችን ከመላክዎ በፊት"
-
-#: 
 msgid "Birthday today"
 msgstr "ዛሬ የልደት ቀን"
 
@@ -27604,10 +27396,6 @@ msgid "Preview Sample Letter"
 msgstr "የናሙና ደብዳቤ ቅድመ ዕይታ"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "የካናዳ የስጦታ መግለጫዎች የግል ፊርማ ንብረት መለያ። በፊርማ ጭነት የሚተዳደር።"
-
-#: 
 msgid "Property Type"
 msgstr "የባሕሪ ዓይነት"
 
@@ -27646,10 +27434,6 @@ msgstr "ገምግም እና አጣራ"
 #: 
 msgid "Review and vote"
 msgstr "ገምግም እና ድምጽ ስጥ"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ዓመቱን ይገምግሙ፣ ከዚያ የስጦታ መግለጫዎችን ያውርዱ።"
 
 #: 
 msgid "Review what we are considering"
@@ -27698,10 +27482,6 @@ msgstr "ጠንካራ"
 #: 
 msgid "Support"
 msgstr "ድጋፍ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "የግብር መታወቂያ እና የPDF ቅንብሮች"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

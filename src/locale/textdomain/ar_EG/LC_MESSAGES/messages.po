@@ -838,14 +838,6 @@ msgid "Assign"
 msgstr "تعيين"
 
 #: 
-msgid "Date Updated"
-msgstr "تاريخ التحديث"
-
-#: 
-msgid "Updated By"
-msgstr "حدثت بواسطة"
-
-#: 
 msgid "Since"
 msgstr "منذ"
 
@@ -1360,10 +1352,6 @@ msgid "Updated"
 msgstr "تم التحديث"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(لا يمكن التراجع عن هذا الإجراء)"
-
-#: 
 msgid "Note Editor"
 msgstr "ملاحظة المحرر"
 
@@ -1588,10 +1576,6 @@ msgid "Warning"
 msgstr "تحذير"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "لا تزال تستخدم هذا النوع الممتلكات عن طريق خاصية واحدة على الأقل."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "يرجى تأكيد حذف هذا نوع العقار"
 
@@ -1617,44 +1601,8 @@ msgid "Please confirm deletion of"
 msgstr "يرجى تأكيد حذف"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "عذرا، هناك سجلات التبرعات من هذه العائلة. قد لا يتم حذف هذه العائلة."
-
-#: 
-msgid "Return to Family View"
-msgstr "عودة إلى العرض الأسرة"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "تحذير: هذه عائلة لديها سجلات التبرعات وقد لا يتم حذف حتى ترتبط هذه التبرعات مع أسرة أخرى."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "تحذير: هذا العمل لا يمكن أن يكون التراجع وقد تترتب عليه آثار قانونية!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FAMILY الحالية بتبرعات"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "ملاحظة: هذا أيضا حذف كل الملاحظات المرتبطة بهذا سجل الأسرة."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "حذف سجل الأسرة فقط"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "حذف سجل الأسرة وعدد أفراد الأسرة"
-
-#: 
 msgid "Listing"
 msgstr "قائمة"
-
-#: 
-msgid "My User Settings"
-msgstr "بلدي إعدادات المستخدم"
 
 #: 
 msgid "Variable name"
@@ -5128,10 +5076,6 @@ msgid "Enter event description..."
 msgstr "أدخل وصف الحدث..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "أدخل نص الملاحظة هنا..."
-
-#: 
 msgid "Note"
 msgstr "ملاحظة"
 
@@ -6757,10 +6701,6 @@ msgid "Add Property Type"
 msgstr "إضافة نوع الخاصية"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "أضف نوع الخاصية الأول"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!"
 
@@ -6779,10 +6719,6 @@ msgstr "تم تسجيل المغادرة"
 #: 
 msgid "Current Fiscal Year"
 msgstr "السنة المالية الحالية"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "حذف (سيحذف جميع السجلات المرتبطة)"
 
 #: 
 msgid "Edit Property Type"
@@ -6833,10 +6769,6 @@ msgid "No property types found"
 msgstr "لم يتم العثور على أنواع خصائص"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "عدد السجلات التي تستخدم نوع الخاصية هذا"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "وصف تفصيلي اختياري لنوع الخاصية هذا"
 
@@ -6867,10 +6799,6 @@ msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاص�
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "تتبع وإدارة التزامات التعهدات حسب العائلة والصندوق"
-
-#: 
-msgid "View Properties"
-msgstr "عرض الخصائص"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7858,18 +7786,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "هل أنت متأكد أنك تريد حذف سجل التعهد هذا نهائياً؟"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "إلغاء والعودة إلى عرض العائلة"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "إذا حذفت هذا النوع، ستزيل أيضاً جميع الخصائص التي تستخدمه وستفقد جميع تعيينات الخصائص المقابلة."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "نقل التقدمات إلى العائلة المحددة"
-
-#: 
 msgid "Calendar not found"
 msgstr "التقويم غير موجود"
 
@@ -8142,10 +8058,6 @@ msgid "or later to continue."
 msgstr "أو أحدث للمتابعة."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "ملاحظات \"لماذا جاء\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "لا توجد نتائج لـ \"%s\""
@@ -8258,10 +8170,6 @@ msgstr "أضف أو عدل سجلات الأشخاص الفردية"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "أضف أو عدل العناصر المتبرع بها لأحداث جمع التبرعات"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "أضف أو عدل الملاحظات للأشخاص والعائلات"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8976,10 +8884,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "إدارة فرص التطوع وتعيين الأعضاء"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "إدارة التفضيلات الشخصية وإعدادات حسابك"
-
-#: 
 msgid "Map cart items"
 msgstr "خريطة العناصر المحددة"
 
@@ -9014,10 +8918,6 @@ msgstr "انتقل إلى الجماعة"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "هل تنتقل من تثبيت ChurchCRM أو ChurchInfo الموجود؟ قم بتحميل ملف النسخة الاحتياطية وسنستعيد بيانات تلقائيا."
-
-#: 
-msgid "My Settings"
-msgstr "إعداداتي"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9232,10 +9132,6 @@ msgstr "تسجيل عدة فائزين من سحب الجمع الخيري في 
 #: 
 msgid "Record new pledges and payments"
 msgstr "تسجيل التعهدات والدفعات الجديدة"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "سجل لماذا زار الحاضرون كنيستك"
 
 #: 
 msgid "Remove from Class"
@@ -11109,10 +11005,6 @@ msgid "Manage 2FA"
 msgstr "إدارة المصادقة الثنائية"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "إدارة التفضيلات الإضافية مثل محددات البريد الإلكتروني وخيارات العرض"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "إدارة مفتاح واجهة برمجة التطبيقات للتكاملات الخارجية"
 
@@ -11783,14 +11675,6 @@ msgid "e.g., 40.7128"
 msgstr "مثلاً، 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "حدث خطأ أثناء حذف الأسرة."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "حدث خطأ أثناء نقل التبرعات."
-
-#: 
 msgid "At least one family member is required"
 msgstr "مطلوب عضو واحد على الأقل في الأسرة"
 
@@ -11809,10 +11693,6 @@ msgstr "فشل الحذف"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "يجب أن يكون الاتجاه \"لأعلى\" أو \"لأسفل\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "فشل نقل التبرعات."
 
 #: 
 msgid "Finance permission required"
@@ -11849,10 +11729,6 @@ msgstr "لم يتم العثور على العضوية"
 #: 
 msgid "Password successfully changed for"
 msgstr "تم تغيير كلمة المرور بنجاح لـ"
-
-#: 
-msgid "Please select a target family."
-msgstr "يرجى اختيار أسرة مستهدفة."
 
 #: 
 msgid "Target family not found"
@@ -13054,14 +12930,6 @@ msgstr "فشل تسجيل الخروج. يرجى المحاولة مرة أخر�
 #: 
 msgid "Click Save to apply."
 msgstr "انقر فوق حفظ للتطبيق."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "واجهة برمجة تطبيقات الحافظة غير متاحة. يرجى نسخ عنوان URL يدويًا."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "الحافظة غير متاحة. يرجى استخدام زر التنزيل لحفظ الرموز."
 
 #: 
 msgid "Code incomplete"
@@ -14600,24 +14468,12 @@ msgid "People &amp; Families"
 msgstr "الأفراد والعائلات"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
-
-#: 
 msgid "User List"
 msgstr "قائمة المستخدمين"
 
 #: 
 msgid "View Person"
 msgstr "عرض الشخص"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائلة."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
 
 #: 
 msgid "Account locked"
@@ -15328,10 +15184,6 @@ msgid "thru %s"
 msgstr "حتى %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "ملاحظات \"سبب الحضور\" لـ %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s من عائلة %2$s"
 
@@ -15434,14 +15286,6 @@ msgstr "يفتح نافذة لمدة دقيقتين لتسجيل الأجهزة"
 #: 
 msgid "Output Method"
 msgstr "طريقة الإخراج"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "يرجى تأكيد حذف سجل العائلة هذا"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "يرجى اختيار عائلة أخرى لربط هذه التبرعات بها"
 
 #: 
 msgid "Remittance Slip"
@@ -15746,18 +15590,6 @@ msgstr "إضافة فصل مدرسة الأحد"
 #: 
 msgid "Delete this family?"
 msgstr "هل تريد حذف هذه العائلة؟"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "هل تريد حذف هذه العائلة؟ سيتم نقلك إلى صفحة لاختيار ما تريد حذفه. لا يمكن التراجع عن هذا الإجراء."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "تأكيد حذف العائلة"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "تأكيد حذف نوع الخاصية"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24250,10 +24082,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d مدفوعات ليست مدرجة في أي إيداع بعد."
 
 #: 
-msgid "Closing line"
-msgstr "سطر الختام"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "كل إيداع بتاريخ هذا العام مغلق."
 
@@ -24266,28 +24094,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "كل دفعة في هذا العام مدرجة في إيداع."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "إنشاء الكشوف الضريبية"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "تقرير العطاء (الكشوف الضريبية)"
-
-#: 
-msgid "Opening line"
-msgstr "سطر الافتتاح"
-
-#: 
 msgid "Qty"
 msgstr "الكمية"
-
-#: 
-msgid "Signed by"
-msgstr "بتوقيع"
-
-#: 
-msgid "Thank-you line"
-msgstr "سطر الشكر"
 
 #: 
 msgid "Year-End Giving"
@@ -24446,10 +24254,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "يجب أن يكون المجلد المؤقت لملفات PDF مسار مجلد مطلقًا."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "الرقم الضريبي للكنيسة (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "سطر الختام"
 
@@ -24492,10 +24296,6 @@ msgstr "إعدادات الكشف"
 #: 
 msgid "Statement Wording"
 msgstr "صياغة الكشف"
-
-#: 
-msgid "Tax Information"
-msgstr "البيانات الضريبية"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24544,10 +24344,6 @@ msgstr "باستخدام اسم الكنيسة وعنوانها"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "باستخدام مسار الترويسة المحدد في إعدادات النظام"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "الصياغة والرقم الضريبي والتعامل مع PDF لكشوف العطاء"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27382,10 +27178,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "تعطيل تسجيل الدخول أيضًا لمنع استخدام بوابة الأعضاء"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "قبل إرسال الكشوف"
-
-#: 
 msgid "Birthday today"
 msgstr "عيد ميلاد اليوم"
 
@@ -27710,10 +27502,6 @@ msgid "Preview Sample Letter"
 msgstr "معاينة نموذج خطاب"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "معرّف ملف التوقيع الخاص بكشوف التبرعات الكندية. يُدار من خلال رفع التوقيع."
-
-#: 
 msgid "Property Type"
 msgstr "نوع الخاصية"
 
@@ -27748,10 +27536,6 @@ msgstr "مراجعة وتصفية"
 #: 
 msgid "Review and vote"
 msgstr "مراجعة وتصويت"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "راجع السنة، ثم نزّل كشوف التبرعات."
 
 #: 
 msgid "Review what we are considering"
@@ -27800,10 +27584,6 @@ msgstr "قوية"
 #: 
 msgid "Support"
 msgstr "الدعم"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "المعرّف الضريبي وإعدادات PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

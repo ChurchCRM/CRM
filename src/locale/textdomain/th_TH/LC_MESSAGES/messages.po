@@ -845,14 +845,6 @@ msgid "Assign"
 msgstr "กำหนด"
 
 #: 
-msgid "Date Updated"
-msgstr "วันที่อัปเดต"
-
-#: 
-msgid "Updated By"
-msgstr "อัปเดตโดย"
-
-#: 
 msgid "Since"
 msgstr "ตั้งแต่"
 
@@ -1357,10 +1349,6 @@ msgid "Updated"
 msgstr "อัปเดตแล้ว"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(การดำเนินการนี้ไม่สามารถเลิกทำได้)"
-
-#: 
 msgid "Note Editor"
 msgstr "ตัวแก้ไขบันทึก"
 
@@ -1585,10 +1573,6 @@ msgid "Warning"
 msgstr "คำเตือน"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "ประเภทคุณสมบัตินี้ยังคงถูกใช้งานโดยอย่างน้อยหนึ่งคุณสมบัติ"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "กรุณายืนยันการลบประเภทคุณสมบัตินี้"
 
@@ -1614,44 +1598,8 @@ msgid "Please confirm deletion of"
 msgstr "กรุณายืนยันการลบ"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "ขออภัย มีบันทึกการบริจาคจากครอบครัวนี้ ครอบครัวนี้ไม่สามารถลบได้"
-
-#: 
-msgid "Return to Family View"
-msgstr "กลับไปที่มุมมองครอบครัว"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "คำเตือน: ครอบครัวนี้มีบันทึกการบริจาคและไม่สามารถลบได้จนกว่าจะเชื่อมโยงการบริจาคเหล่านี้กับครอบครัวอื่น"
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "คำเตือน: การดำเนินการนี้ไม่สามารถเลิกทำได้และอาจมีผลกระทบทางกฎหมาย!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "ครอบครัวปัจจุบันที่มีการบริจาค"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "หมายเหตุ: การดำเนินการนี้จะลบบันทึกทั้งหมดที่เกี่ยวข้องกับระเบียนครอบครัวนี้ด้วย"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "ลบระเบียนครอบครัวเท่านั้น"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "ลบระเบียนครอบครัวและสมาชิกครอบครัว"
-
-#: 
 msgid "Listing"
 msgstr "รายการ"
-
-#: 
-msgid "My User Settings"
-msgstr "การตั้งค่าผู้ใช้ของฉัน"
 
 #: 
 msgid "Variable name"
@@ -5101,10 +5049,6 @@ msgid "Enter event description..."
 msgstr "ป้อนคำอธิบายกิจกรรม..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "ป้อนข้อความบันทึกที่นี่..."
-
-#: 
 msgid "Note"
 msgstr "บันทึก"
 
@@ -6710,10 +6654,6 @@ msgid "Add Property Type"
 msgstr "เพิ่มประเภทคุณสมบัติ"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "เพิ่มประเภทคุณสมบัติแรกของคุณ"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "การลบฟิลด์นี้จะทำให้คุณสูญเสียข้อมูลสมาชิกกลุ่มทั้งหมดที่กำหนดสำหรับฟิลด์นี้อย่างถาวร!"
 
@@ -6732,10 +6672,6 @@ msgstr "เช็คเอาท์แล้ว"
 #: 
 msgid "Current Fiscal Year"
 msgstr "ปีงบประมาณปัจจุบัน"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "ลบ (จะลบระเบียนที่เกี่ยวข้องทั้งหมด)"
 
 #: 
 msgid "Edit Property Type"
@@ -6786,10 +6722,6 @@ msgid "No property types found"
 msgstr "ไม่พบประเภทคุณสมบัติ"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "จำนวนระเบียนที่ใช้ประเภทคุณสมบัตินี้"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "คำอธิบายรายละเอียดทางเลือกของประเภทคุณสมบัตินี้"
 
@@ -6820,10 +6752,6 @@ msgstr "เลือกประเภทระเบียนที่คุณ
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "ติดตามและจัดการความมุ่งมั่นคำมั่นสัญญาตามครอบครัวและกองทุน"
-
-#: 
-msgid "View Properties"
-msgstr "ดูคุณสมบัติ"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7801,18 +7729,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "คุณแน่ใจหรือว่าต้องการลบรายการคำมั่นสัญญานี้อย่างถาวร?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "ยกเลิกและกลับสู่มุมมองครอบครัว"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "ถ้าคุณลบประเภทนี้ คุณจะลบคุณสมบัติทั้งหมดที่ใช้มันและสูญเสียการกำหนดคุณสมบัติที่เกี่ยวข้อง"
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "ย้ายเงินถวายไปยังครอบครัวที่เลือก"
-
-#: 
 msgid "Calendar not found"
 msgstr "ไม่พบปฏิทิน"
 
@@ -8085,10 +8001,6 @@ msgid "or later to continue."
 msgstr "หรือใหม่กว่าเพื่อดำเนินการต่อ"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "บันทึก \"เหตุผลที่มา\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "ผลการค้นหา %d สำหรับ \"%s\""
@@ -8196,10 +8108,6 @@ msgstr "เพิ่มหรือแก้ไขข้อมูลบุคค
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "เพิ่มหรือแก้ไขสิ่งของบริจาคสำหรับกิจกรรมระดมทุน"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "เพิ่มหรือแก้ไขบันทึกสำหรับบุคคลและครอบครัว"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8914,10 +8822,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "จัดการโอกาสอาสาสมัครและกำหนดสมาชิก"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "จัดการค่ากำหนดส่วนตัวและการตั้งค่าบัญชี"
-
-#: 
 msgid "Map cart items"
 msgstr "แสดงรายการบนแผนที่"
 
@@ -8952,10 +8856,6 @@ msgstr "ย้ายไปยังกลุ่ม"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "ย้ายจาก ChurchCRM หรือ ChurchInfo ที่มีอยู่? อัปโหลดไฟล์สำรองของคุณแล้วเราจะกู้คืนข้อมูลให้โดยอัตโนมัติ"
-
-#: 
-msgid "My Settings"
-msgstr "การตั้งค่าของฉัน"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9170,10 +9070,6 @@ msgstr "บันทึกผู้ชนะการจับรางวัล
 #: 
 msgid "Record new pledges and payments"
 msgstr "บันทึกคำปฏิญาณถวายและการถวายใหม่"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
 
 #: 
 msgid "Remove from Class"
@@ -11047,10 +10943,6 @@ msgid "Manage 2FA"
 msgstr "จัดการการยืนยันตัวตนสองขั้นตอน"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "จัดการการตั้งค่าเพิ่มเติม เช่น ตัวคั่นอีเมลและตัวเลือกการแสดงผล"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "จัดการคีย์ API ของคุณสำหรับการเชื่อมต่อภายนอก"
 
@@ -11716,14 +11608,6 @@ msgid "e.g., 40.7128"
 msgstr "เช่น 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "เกิดข้อผิดพลาดขณะลบครอบครัว"
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "เกิดข้อผิดพลาดขณะย้ายการบริจาค"
-
-#: 
 msgid "At least one family member is required"
 msgstr "ต้องมีสมาชิกครอบครัวอย่างน้อยหนึ่งคน"
 
@@ -11742,10 +11626,6 @@ msgstr "การลบล้มเหลว"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "ทิศทางต้องเป็น \"ขึ้น\" หรือ \"ลง\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "ไม่สามารถย้ายการบริจาคได้"
 
 #: 
 msgid "Finance permission required"
@@ -11782,10 +11662,6 @@ msgstr "ไม่พบการเป็นสมาชิก"
 #: 
 msgid "Password successfully changed for"
 msgstr "เปลี่ยนรหัสผ่านสำเร็จสำหรับ"
-
-#: 
-msgid "Please select a target family."
-msgstr "โปรดเลือกครอบครัวเป้าหมาย"
 
 #: 
 msgid "Target family not found"
@@ -12987,14 +12863,6 @@ msgstr "การลงทะเบียนออกล้มเหลว ก�
 #: 
 msgid "Click Save to apply."
 msgstr "คลิกบันทึกเพื่อใช้งาน"
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API คลิปบอร์ดไม่พร้อมใช้งาน โปรดคัดลอก URL ด้วยตนเอง"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ไม่สามารถใช้คลิปบอร์ดได้ โปรดใช้ปุ่มดาวน์โหลดเพื่อบันทึกรหัสของคุณ"
 
 #: 
 msgid "Code incomplete"
@@ -14528,24 +14396,12 @@ msgid "People &amp; Families"
 msgstr "ผู้คน &amp; ครอบครัว"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "บันทึกที่คุณพยายามแก้ไขไม่มีอยู่อีกต่อไปแล้ว"
-
-#: 
 msgid "User List"
 msgstr "รายชื่อผู้ใช้"
 
 #: 
 msgid "View Person"
 msgstr "ดูข้อมูลบุคคล"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับครอบครัวนี้"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
 
 #: 
 msgid "Account locked"
@@ -15246,10 +15102,6 @@ msgid "thru %s"
 msgstr "ถึง %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "บันทึก \"เหตุผลที่มา\" สำหรับ %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s จากครอบครัว %2$s"
 
@@ -15352,14 +15204,6 @@ msgstr "เปิดช่วงเวลา 2 นาทีสำหรับอ
 #: 
 msgid "Output Method"
 msgstr "วิธีการส่งออก"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "กรุณายืนยันการลบบันทึกครอบครัวนี้"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการถวายทรัพย์เหล่านี้"
 
 #: 
 msgid "Remittance Slip"
@@ -15664,18 +15508,6 @@ msgstr "เพิ่มชั้นเรียนโรงเรียนวั
 #: 
 msgid "Delete this family?"
 msgstr "ลบครอบครัวนี้?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "คุณต้องการลบครอบครัวนี้หรือไม่? คุณจะถูกนำไปยังหน้าเพื่อเลือกสิ่งที่จะลบ การดำเนินการนี้ไม่สามารถเรียกคืนได้"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "ยืนยันการลบครอบครัว"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "ยืนยันการลบประเภทคุณสมบัติ"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24093,10 +23925,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
 
 #: 
-msgid "Closing line"
-msgstr "บรรทัดปิด"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "รายการนำฝากทุกรายการที่ลงวันที่ในปีนี้ปิดแล้ว"
 
@@ -24109,28 +23937,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "การชำระเงินทุกรายการในปีนี้อยู่ในรายการนำฝาก"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "สร้างใบแจ้งภาษี"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "รายงานการถวาย (ใบแจ้งภาษี)"
-
-#: 
-msgid "Opening line"
-msgstr "บรรทัดเปิด"
-
-#: 
 msgid "Qty"
 msgstr "จำนวน"
-
-#: 
-msgid "Signed by"
-msgstr "ลงนามโดย"
-
-#: 
-msgid "Thank-you line"
-msgstr "บรรทัดขอบคุณ"
 
 #: 
 msgid "Year-End Giving"
@@ -24289,10 +24097,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "ไดเรกทอรีชั่วคราวของ PDF ต้องเป็นเส้นทางไดเรกทอรีแบบเต็ม"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "เลขผู้เสียภาษีของคริสตจักร (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "บรรทัดปิด"
 
@@ -24335,10 +24139,6 @@ msgstr "การตั้งค่าใบแจ้ง"
 #: 
 msgid "Statement Wording"
 msgstr "ถ้อยคำในใบแจ้ง"
-
-#: 
-msgid "Tax Information"
-msgstr "ข้อมูลภาษี"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24387,10 +24187,6 @@ msgstr "ใช้ชื่อและที่อยู่ของคริส
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ถ้อยคำ เลขผู้เสียภาษี และการจัดการ PDF สำหรับใบแจ้งการถวาย"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27200,10 +26996,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "ปิดใช้งานการลงชื่อเข้าใช้ด้วย เพื่อให้ไม่สามารถใช้พอร์ทัลสมาชิกได้"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "ก่อนส่งใบสรุป"
-
-#: 
 msgid "Birthday today"
 msgstr "วันเกิดวันนี้"
 
@@ -27544,10 +27336,6 @@ msgid "Preview Sample Letter"
 msgstr "ดูตัวอย่างจดหมาย"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "ตัวระบุแอสเซ็ตลายเซ็นส่วนตัวของใบสรุปเงินถวายแคนาดา จัดการโดยการอัปโหลดลายเซ็น"
-
-#: 
 msgid "Property Type"
 msgstr "ประเภทคุณสมบัติ"
 
@@ -27586,10 +27374,6 @@ msgstr "ตรวจสอบและกรอง"
 #: 
 msgid "Review and vote"
 msgstr "ตรวจสอบและโหวต"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ตรวจสอบปีนั้น แล้วดาวน์โหลดใบสรุปเงินถวาย"
 
 #: 
 msgid "Review what we are considering"
@@ -27638,10 +27422,6 @@ msgstr "แข็งแรง"
 #: 
 msgid "Support"
 msgstr "การสนับสนุน"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "การตั้งค่าเลขประจำตัวผู้เสียภาษีและ PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

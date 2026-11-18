@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "배정"
 
 #: 
-msgid "Date Updated"
-msgstr "수정 날짜"
-
-#: 
-msgid "Updated By"
-msgstr "수정자"
-
-#: 
 msgid "Since"
 msgstr "기준"
 
@@ -1362,10 +1354,6 @@ msgid "Updated"
 msgstr "수정일"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(되돌릴 수 없습니다)"
-
-#: 
 msgid "Note Editor"
 msgstr "메모 편집"
 
@@ -1590,10 +1578,6 @@ msgid "Warning"
 msgstr "경고"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "이 속성 유형은 아직 사용 중입니다."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "이 속성 유형을 삭제할지 확인하세요."
 
@@ -1619,44 +1603,8 @@ msgid "Please confirm deletion of"
 msgstr "삭제할지 확인하세요:"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "이 가족의 헌금 기록이 있어 삭제할 수 없습니다."
-
-#: 
-msgid "Return to Family View"
-msgstr "가족 화면으로 돌아가기"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "경고: 이 가족은 헌금 기록이 있어 다른 가족에 이관하기 전까지 삭제할 수 없습니다."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "경고: 이 작업은 되돌릴 수 없으며 법적 문제가 발생할 수 있습니다!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "현재 헌금 기록이 있는 가족"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "참고: 이 가족에 달린 모든 메모도 함께 삭제됩니다."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "가족 기록만 삭제"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "가족 기록과 구성원 모두 삭제"
-
-#: 
 msgid "Listing"
 msgstr "목록"
-
-#: 
-msgid "My User Settings"
-msgstr "내 사용자 설정"
 
 #: 
 msgid "Variable name"
@@ -5117,10 +5065,6 @@ msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "여기에 메모를 입력하세요..."
-
-#: 
 msgid "Note"
 msgstr "메모"
 
@@ -6726,10 +6670,6 @@ msgid "Add Property Type"
 msgstr "속성 유형 추가"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "첫 번째 속성 유형 추가"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
@@ -6748,10 +6688,6 @@ msgstr "체크아웃 완료"
 #: 
 msgid "Current Fiscal Year"
 msgstr "현재 회계연도"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "삭제 (모든 관련 레코드가 삭제됩니다)"
 
 #: 
 msgid "Edit Property Type"
@@ -6802,10 +6738,6 @@ msgid "No property types found"
 msgstr "속성 유형을 찾을 수 없습니다"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "이 속성 유형을 사용하는 레코드 수"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "이 속성 유형에 대한 선택적 상세 설명"
 
@@ -6836,10 +6768,6 @@ msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "가족 및 기금별 서약 약정 추적 및 관리"
-
-#: 
-msgid "View Properties"
-msgstr "속성 보기"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7817,18 +7745,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "이 헌금 서약 기록을 영구적으로 삭제하시겠습니까?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "취소하고 가족 보기로 돌아가기"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성도 제거되고 해당 속성 배정도 모두 삭제됩니다."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "헌금을 선택한 가족으로 이동"
-
-#: 
 msgid "Calendar not found"
 msgstr "캘린더를 찾을 수 없습니다"
 
@@ -8101,10 +8017,6 @@ msgid "or later to continue."
 msgstr "이상 버전이 계속하려면 필요합니다."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"방문 이유\" 메모"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"에 대한 %d개의 결과"
@@ -8212,10 +8124,6 @@ msgstr "개인 기록 추가 또는 편집"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "모금 행사를 위해 기부된 물품 추가 또는 편집"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "사람과 가족에 대한 메모 추가 또는 편집"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8930,10 +8838,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "봉사 기회 관리 및 교인 배정"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "개인 환경설정 및 계정 설정 관리"
-
-#: 
 msgid "Map cart items"
 msgstr "목록 항목 지도에 표시"
 
@@ -8968,10 +8872,6 @@ msgstr "그룹으로 이동"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "기존 ChurchCRM 또는 ChurchInfo에서 이전하시나요? 백업 파일을 업로드하면 데이터를 자동으로 복원해 드립니다."
-
-#: 
-msgid "My Settings"
-msgstr "내 설정"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9186,10 +9086,6 @@ msgstr "여러 모금 추첨 당첨자를 한 번에 기록"
 #: 
 msgid "Record new pledges and payments"
 msgstr "새 서약 및 납부 기록"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "참석자가 교회를 방문한 이유 기록"
 
 #: 
 msgid "Remove from Class"
@@ -11063,10 +10959,6 @@ msgid "Manage 2FA"
 msgstr "이중 인증 관리"
 
 #: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "이메일 구분자 및 표시 옵션과 같은 추가 환경 설정 관리"
-
-#: 
 msgid "Manage your API key for external integrations"
 msgstr "외부 연동을 위한 API 키 관리"
 
@@ -11732,14 +11624,6 @@ msgid "e.g., 40.7128"
 msgstr "예: 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "가족을 삭제하는 중 오류가 발생했습니다."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "헌금을 이동하는 중 오류가 발생했습니다."
-
-#: 
 msgid "At least one family member is required"
 msgstr "최소 한 명의 가족 구성원이 필요합니다"
 
@@ -11758,10 +11642,6 @@ msgstr "삭제 실패"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "방향은 \"위\" 또는 \"아래\"여야 합니다"
-
-#: 
-msgid "Failed to move donations."
-msgstr "헌금 이동에 실패했습니다."
 
 #: 
 msgid "Finance permission required"
@@ -11798,10 +11678,6 @@ msgstr "회원 정보를 찾을 수 없습니다"
 #: 
 msgid "Password successfully changed for"
 msgstr "비밀번호가 성공적으로 변경되었습니다:"
-
-#: 
-msgid "Please select a target family."
-msgstr "대상 가족을 선택하세요."
 
 #: 
 msgid "Target family not found"
@@ -13003,14 +12879,6 @@ msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
 #: 
 msgid "Click Save to apply."
 msgstr "적용하려면 저장을 클릭하세요."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "클립보드 API를 사용할 수 없습니다. URL을 수동으로 복사하십시오."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요."
 
 #: 
 msgid "Code incomplete"
@@ -14544,24 +14412,12 @@ msgid "People &amp; Families"
 msgstr "교인 및 가족"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
-
-#: 
 msgid "User List"
 msgstr "사용자 목록"
 
 #: 
 msgid "View Person"
 msgstr "교인 보기"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
 
 #: 
 msgid "Account locked"
@@ -15262,10 +15118,6 @@ msgid "thru %s"
 msgstr "%s까지"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s의 \"방문 이유\" 메모"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s 가정의 %1$s"
 
@@ -15368,14 +15220,6 @@ msgstr "기기가 등록할 수 있는 2분 창을 엽니다"
 #: 
 msgid "Output Method"
 msgstr "출력 방법"
-
-#: 
-msgid "Please confirm deletion of this family record"
-msgstr "이 가족 기록 삭제를 확인해 주세요"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
 
 #: 
 msgid "Remittance Slip"
@@ -15680,18 +15524,6 @@ msgstr "주일학교 반 추가"
 #: 
 msgid "Delete this family?"
 msgstr "이 가정을 삭제하시겠습니까?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "이 가정을 삭제하시겠습니까? 삭제할 항목을 선택하는 페이지로 이동합니다. 이 작업은 취소할 수 없습니다."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "가정 삭제 확인"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "속성 유형 삭제 확인"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -24109,10 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
 
 #: 
-msgid "Closing line"
-msgstr "맺음말"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "올해 날짜의 입금은 모두 마감되었습니다."
 
@@ -24125,28 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "올해의 모든 납부가 입금에 포함되어 있습니다."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "세금 명세서 생성"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "헌금 보고서(세금 명세서)"
-
-#: 
-msgid "Opening line"
-msgstr "인사말"
-
-#: 
 msgid "Qty"
 msgstr "수량"
-
-#: 
-msgid "Signed by"
-msgstr "서명한 사람"
-
-#: 
-msgid "Thank-you line"
-msgstr "감사 문구"
 
 #: 
 msgid "Year-End Giving"
@@ -24305,10 +24113,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 임시 디렉터리는 절대 경로여야 합니다."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "교회 납세자 번호(EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "맺음말"
 
@@ -24351,10 +24155,6 @@ msgstr "명세서 설정"
 #: 
 msgid "Statement Wording"
 msgstr "명세서 문구"
-
-#: 
-msgid "Tax Information"
-msgstr "세금 정보"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24403,10 +24203,6 @@ msgstr "교회 이름과 주소 사용"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "헌금 명세서의 문구, 납세자 번호, PDF 처리"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27216,10 +27012,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "로그인도 비활성화하여 회원 포털을 사용하지 못하게 하기"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "명세서를 보내기 전에"
-
-#: 
 msgid "Birthday today"
 msgstr "오늘 생일"
 
@@ -27560,10 +27352,6 @@ msgid "Preview Sample Letter"
 msgstr "샘플 편지 미리 보기"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "캐나다 헌금 명세서 비공개 서명 자산 식별자입니다. 서명 업로드로 관리됩니다."
-
-#: 
 msgid "Property Type"
 msgstr "속성 유형"
 
@@ -27602,10 +27390,6 @@ msgstr "검토 및 필터"
 #: 
 msgid "Review and vote"
 msgstr "검토 및 투표"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "해당 연도를 검토한 다음 헌금 명세서를 다운로드하세요."
 
 #: 
 msgid "Review what we are considering"
@@ -27654,10 +27438,6 @@ msgstr "강함"
 #: 
 msgid "Support"
 msgstr "지원"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "세금 ID 및 PDF 설정"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
