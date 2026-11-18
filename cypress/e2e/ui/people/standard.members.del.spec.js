@@ -41,11 +41,14 @@ describe("Standard Family", () => {
             // Open Actions dropdown, then click Delete
             cy.get("#family-actions-dropdown").first().click();
             cy.get("#deleteFamilyBtn").first().click();
-            cy.url().should("contain", "SelectDelete.php");
+
+            // Confirmation dialog (API-driven)
+            cy.get(".bootbox").should("be.visible");
+            cy.get("#deleteFamilyMembersToo").check({ force: true });
 
             // Intercept the API delete call so we can wait for it
             cy.intercept("DELETE", `**/api/family/${familyId}*`).as("deleteFamily");
-            cy.get("#deleteFamilyAndMembersBtn").first().click();
+            cy.get(".bootbox-accept").first().click({ force: true });
             cy.wait("@deleteFamily").its("response.statusCode").should("eq", 200);
             cy.url({ timeout: 10000 }).should("contain", "people/family");
 

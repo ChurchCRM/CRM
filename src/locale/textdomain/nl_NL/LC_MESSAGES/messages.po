@@ -4951,10 +4951,6 @@ msgid "View Person Page"
 msgstr "Persoonspagina bekijken"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
 msgid "Deleted"
 msgstr "Verwijderd"
 
@@ -11311,14 +11307,6 @@ msgstr "Ingecheckt door"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Inchecken is uitgeschakeld voor inactieve evenementen. Activeer het evenement vanuit het Evenementenoverzicht om inchecken in te schakelen."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Ingecheckt bij evenement: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Uitgecheckt van evenement: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22442,10 +22430,6 @@ msgid "Register walk-in guest"
 msgstr "Walk-in-gast registreren"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Geregistreerd als walk-in-gast bij de kiosk tijdens evenement: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Registreren..."
 
@@ -24294,10 +24278,6 @@ msgstr "Stemgerechtigde leden — beoordelingslijst"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "Nul schakelt een optionele vereiste uit. Voor leeftijd is een volledige geboortedatum nodig; voor lidmaatschapsduur een lidmaatschapsdatum. Personen zonder de vereiste datums worden weggelaten en apart geteld. Overleden personen, inactieve personen en classificaties, en inactieve of ter beoordeling staande gezinnen en personen worden altijd uitgesloten; de huidige classificatie en status worden gebruikt, niet de historische status."
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "Verschuldigd bedrag voor %s: %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -26970,10 +26950,6 @@ msgid "Last verified"
 msgstr "Laatst geverifieerd"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Geen enkel actief, goedgekeurd lid van dit gezin heeft een e-mailadres. Verifieer de gegevens in plaats daarvan persoonlijk."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Er zijn geen toezeggingen gevonden voor deze fiscale jaren."
 
@@ -26996,10 +26972,6 @@ msgstr "Meld u met dit e-mailadres aan bij het ledenportaal om de gegevens van u
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Dit gezin is niet actief en ontvangt daarom geen verificatie-e-mails."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Dit zelf geregistreerde gezin wacht op goedkeuring. Bij goedkeuring ontvangt het gezin per e-mail een uitnodiging om zich aan te melden bij het ledenportaal en zijn gegevens te controleren."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -250,8 +250,11 @@ function approve(path, payload) {
     path: path,
     data: payload ? JSON.stringify(payload) : undefined,
   })
-    .done(() => {
+    .done((data) => {
       window.CRM.notify(i18next.t("Approved"), { type: "success", delay: 3000 });
+      if (data?.cannotSignIn) {
+        window.CRM.showNoInvitationNotice(data.cannotSignIn);
+      }
       reloadSelfRegister();
     })
     .fail((xhr) => {

@@ -4987,10 +4987,6 @@ msgid "View Person Page"
 msgstr "የግል ገጽ ይመልከቱ"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
-
-#: 
 msgid "Deleted"
 msgstr "ሳሩ"
 
@@ -11346,14 +11342,6 @@ msgstr "ያስመዘገበ"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "ምዝገባ ለንቁ ያልሆኑ ዝግጅቶች ተሰናክሏል። ምዝገባን ለማንቃት ዝግጅቱን ከዝግጅቶች ዳሽቦርድ አንቃ።"
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "ወደ ዝግጅቱ ተመዝግቧል: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "ከዝግጅቱ ወጥቷል: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -22478,10 +22466,6 @@ msgid "Register walk-in guest"
 msgstr "ያልተጠበቀ እንግዳ መዝግብ"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "በክስተቱ ወቅት በኪዮስክ እንደ ያልተጠበቀ እንግዳ ተመዝግቧል፦ %s"
-
-#: 
 msgid "Registering..."
 msgstr "በመመዝገብ ላይ..."
 
@@ -24330,10 +24314,6 @@ msgstr "የድምጽ መስጫ አባላት — የግምገማ ዝርዝር"
 #: 
 msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr "ዜሮ አማራጭ መስፈርትን ያጠፋል። ዕድሜ ሙሉ የልደት ቀን ይፈልጋል፤ የአባልነት ጊዜ የአባልነት ቀን ይፈልጋል። አስፈላጊ ቀኖች የጎደላቸው ሰዎች ይተዋሉ እና ለየብቻ ይቆጠራሉ። የሞቱ ሰዎች፣ ንቁ ያልሆኑ ሰዎች እና ምደባዎች፣ እና ንቁ ያልሆኑ ወይም ግምገማ የሚጠብቁ ቤተሰቦች እና ሰዎች ሁልጊዜ ይገለላሉ፤ የአሁኑ ምደባ እና ሁኔታ ጥቅም ላይ ይውላል፣ ታሪካዊ ሁኔታ አይደለም።"
-
-#: 
-msgid "Amount due for %s: %s"
-msgstr "ለ%s የሚከፈል መጠን፦ %s"
 
 #: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
@@ -27006,10 +26986,6 @@ msgid "Last verified"
 msgstr "ለመጨረሻ ጊዜ የተረጋገጠው"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "የዚህ ቤተሰብ ንቁና የጸደቀ አባል አንዳቸውም የኢሜይል አድራሻ የላቸውም። በምትኩ በአካል ያረጋግጡ።"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "ለእነዚህ የበጀት ዓመታት ምንም የቃል ኪዳን አልተገኘም።"
 
@@ -27032,10 +27008,6 @@ msgstr "የቤተሰብዎን መረጃ ለመገምገም በዚህ የኢሜ�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "ይህ ቤተሰብ እንቅስቃሴ-አልባ ስለሆነ የማረጋገጫ ኢሜይሎች አይላኩለትም።"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "ራሱን ያስመዘገበው ይህ ቤተሰብ ይሁንታን እየጠበቀ ነው። ሲጸድቅ ቤተሰቡ ወደ የአባላት ፖርታል ገብቶ መረጃውን እንዲገመግም የግብዣ ኢሜይል ይላክለታል።"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

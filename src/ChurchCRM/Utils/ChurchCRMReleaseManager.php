@@ -12,6 +12,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
 use Github\ResultPager;
+use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 
 class ChurchCRMReleaseManager
 {
@@ -38,12 +39,43 @@ class ChurchCRMReleaseManager
         }
     }
 
+    private const RELEASE_CACHE_TTL = 3600;
+
+    private static function gitHubClient(): Client
+    {
+        return Client::createWithHttpClient(GuzzleAdapter::createWithConfig(['timeout' => 5, 'connect_timeout' => 3]));
+    }
+
+    private static function releaseCacheFile(bool $allowPrerelease): string
+    {
+        return rtrim(SystemURLs::getDocumentRoot(), '/\\') . '/Include/cache/releases' . ($allowPrerelease ? '-prerelease' : '') . '.ser';
+    }
+
     /**
+     * Every staff login checks for updates, so the release list is shared by
+     * all sessions for an hour instead of costing each login a GitHub request.
+     *
      * @return ChurchCRMRelease[]
      */
     private static function populateReleases(): array
     {
-        $client = new Client();
+        $file = self::releaseCacheFile(SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade'));
+        if (is_file($file) && time() - (int) filemtime($file) < self::RELEASE_CACHE_TTL) {
+            $cached = @unserialize((string) file_get_contents($file), ['allowed_classes' => [ChurchCRMRelease::class]]);
+            if (is_array($cached) && $cached !== []) {
+                return $cached;
+            }
+        }
+
+        return self::fetchReleases();
+    }
+
+    /**
+     * @return ChurchCRMRelease[]
+     */
+    private static function fetchReleases(): array
+    {
+        $client = self::gitHubClient();
         $eligibleReleases = [];
         $allowPrerelease = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
 
@@ -124,6 +156,13 @@ class ChurchCRMReleaseManager
             LoggerUtils::getAppLogger()->error('Error updating release metadata: ' . $errorMessage, ['exception' => $ex]);
         }
 
+        if ($eligibleReleases !== []) {
+            $file = self::releaseCacheFile($allowPrerelease);
+            if (is_dir(dirname($file)) || @mkdir(dirname($file), 0o775, true)) {
+                @file_put_contents($file, serialize($eligibleReleases), LOCK_EX);
+            }
+        }
+
         return $eligibleReleases;
     }
 
@@ -131,7 +170,7 @@ class ChurchCRMReleaseManager
     {
         $logger = LoggerUtils::getAppLogger();
         $logger->debug('checkForUpdates() called');
-        $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        $_SESSION['ChurchCRMReleases'] = self::fetchReleases();
         unset($_SESSION['ChurchCRMAllStableReleases']);
         $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
@@ -649,7 +688,7 @@ class ChurchCRMReleaseManager
             return $_SESSION['ChurchCRMAllStableReleases'];
         }
 
-        $client = new Client();
+        $client = self::gitHubClient();
         try {
             $pager = new ResultPager($client);
             $gitHubReleases = $pager->fetchAll(
