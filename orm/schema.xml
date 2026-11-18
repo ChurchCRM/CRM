@@ -582,6 +582,9 @@
         <column name="plg_FYID" phpName="FyId" type="SMALLINT" size="9" sqlType="mediumint(9)"/>
         <column name="plg_date" phpName="Date" type="DATE"/>
         <column name="plg_amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
+        <column name="plg_installment_amount" phpName="InstallmentAmount" type="DECIMAL" size="8" scale="2"/>
+        <column name="plg_first_installment" phpName="FirstInstallment" type="DATE"/>
+        <column name="plg_last_installment" phpName="LastInstallment" type="DATE"/>
         <column name="plg_schedule" phpName="Schedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
         <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT')"/>
         <column name="plg_comment" phpName="Comment" type="LONGVARCHAR"/>
