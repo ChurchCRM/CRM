@@ -93,7 +93,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
     <div class="row row-cards">
         <div class="col-lg-7">
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('1. Check the year') ?></h3></div>
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i>1. <?= gettext('Check the year') ?></h3></div>
                 <div class="list-group list-group-flush" id="yearChecklist">
                     <?php foreach ($steps as $step) : ?>
                         <div class="list-group-item d-flex align-items-center">
@@ -114,7 +114,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
 
         <div class="col-lg-5">
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-pen-to-square me-2"></i><?= gettext('2. Set up the statement') ?></h3></div>
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-pen-to-square me-2"></i>2. <?= gettext('Set up the statement') ?></h3></div>
                 <div class="card-body d-grid gap-2">
                     <?php if (GivingStatementService::isCanadianChurch()) : ?>
                         <div class="alert alert-info mb-0" role="status" id="canadian-receipts-info"><?= gettext('Your church country is Canada, so Canadian official receipts are also available when you generate statements.') ?></div>
@@ -125,7 +125,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                 </div>
             </div>
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-file-invoice-dollar me-2"></i><?= gettext('3. Generate Tax Statements') ?> <?= InputUtils::escapeHTML($overview['label']) ?></h3></div>
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-file-invoice-dollar me-2"></i>3. <?= gettext('Generate Tax Statements') ?> <?= InputUtils::escapeHTML($overview['label']) ?></h3></div>
                 <div class="card-body d-grid gap-2">
                     <?php if ($hasStatements) : ?>
                         <a class="btn btn-primary" id="yearPdf" href="<?= InputUtils::escapeAttribute($root . '/finance/reports/giving-statements/download?output=pdf&' . $period) ?>"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></a>

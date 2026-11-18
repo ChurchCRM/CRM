@@ -337,14 +337,14 @@ class GivingStatementService
     {
         $details = self::charityDetails();
         $problems = [];
-        foreach (['legal_name' => gettext('Charity legal name'), 'registered_address' => gettext('Charity registered address'), 'locality' => gettext('Issue locality')] as $key => $label) {
+        foreach (['legal_name' => gettext('Charity Legal Name'), 'registered_address' => gettext('Charity Registered Address'), 'locality' => gettext('Receipt Issue Locality')] as $key => $label) {
             if ($details[$key] === '') {
                 $problems[] = $label;
             }
         }
         $registration = strtoupper(preg_replace('/\s+/u', '', $details['registration']));
         if ($registration === '') {
-            $problems[] = gettext('Registration number');
+            $problems[] = gettext('Charity Registration Number');
         } elseif (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $registration)) {
             $problems[] = gettext('Registration number in the form 123456789RR0001');
         }
