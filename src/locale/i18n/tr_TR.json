@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "Giriş başarısız oldu. Lütfen tekrar deneyin.",
   "Check-out failed. Please try again.": "Çıkış başarısız oldu. Lütfen tekrar deneyin.",
   "Click Save to apply.": "Uygulamak için Kaydet'e tıklayın.",
-  "Clipboard API not available. Please copy the URL manually.": "Pano API kullanılamaz. Lütfen URL'yi manuel olarak kopyalayın.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Pano kullanılamıyor. Kodlarınızı kaydetmek için İndir düğmesini kullanın.",
   "Code incomplete": "Kod tamamlanmadı",
   "Code is invalid": "Kod geçersiz",
   "Confirm Activation": "Aktivasyonu onaylayın",

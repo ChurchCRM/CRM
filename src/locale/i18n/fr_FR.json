@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "L'enregistrement a échoué. Veuillez réessayer.",
   "Check-out failed. Please try again.": "La sortie a échoué. Veuillez réessayer.",
   "Click Save to apply.": "Cliquez sur Enregistrer pour appliquer.",
-  "Clipboard API not available. Please copy the URL manually.": "L'API du presse-papiers n'est pas disponible. Veuillez copier l'URL manuellement.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Presse-papiers non disponible. Veuillez utiliser le bouton Télécharger pour enregistrer vos codes.",
   "Code incomplete": "Code incomplet",
   "Code is invalid": "Le code n'est pas valide",
   "Confirm Activation": "Confirmer l'activation",

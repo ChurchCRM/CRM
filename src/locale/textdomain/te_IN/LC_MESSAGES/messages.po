@@ -12890,14 +12890,6 @@ msgid "Click Save to apply."
 msgstr "వర్తింపచేయడానికి సేవ్ చేయండిని క్లిక్ చేయండి."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "క్లిప్‌బోర్డ్ API అందుబాటులో లేదు. దయచేసి URL ను మానవీయంగా కాపీ చేయండి."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "క్లిప్‌బోర్డ్ అందుబాటులో లేదు. మీ కోడ్‌లను సేవ్ చేయడానికి దయచేసి డౌన్‌లోడ్ బటన్‌ను ఉపయోగించండి."
-
-#: 
 msgid "Code incomplete"
 msgstr "కోడ్ అసంపూర్ణంగా ఉంది"
 

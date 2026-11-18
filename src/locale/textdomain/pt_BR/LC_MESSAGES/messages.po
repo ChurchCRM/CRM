@@ -12880,14 +12880,6 @@ msgid "Click Save to apply."
 msgstr "Clique em Salvar para aplicar."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A API da Área de Transferência não está disponível. Copie a URL manualmente."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Área de transferência não disponível. Use o botão Baixar para salvar seus códigos."
-
-#: 
 msgid "Code incomplete"
 msgstr "Código incompleto"
 

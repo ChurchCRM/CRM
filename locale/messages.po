@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 02:50+0000\n"
+"POT-Creation-Date: 2026-11-18 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3760,12 +3760,6 @@ msgid "Click to upload photo"
 msgstr ""
 
 msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
-msgstr ""
-
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr ""
-
-msgid "Clipboard not available. Please use the Download button to save your codes."
 msgstr ""
 
 #. Context: countries

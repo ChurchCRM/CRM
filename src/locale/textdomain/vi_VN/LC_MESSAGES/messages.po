@@ -12911,14 +12911,6 @@ msgid "Click Save to apply."
 msgstr "Nhan Luu de ap dung."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard không có sẵn. Vui lòng sao chép URL theo cách thủ công."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
-
-#: 
 msgid "Code incomplete"
 msgstr "Mã chưa đầy đủ"
 

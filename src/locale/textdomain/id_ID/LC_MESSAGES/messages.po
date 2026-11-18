@@ -12900,14 +12900,6 @@ msgid "Click Save to apply."
 msgstr "Klik Simpan untuk menerapkan."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard tidak tersedia. Salin URL secara manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Papan klip tidak tersedia. Gunakan tombol Unduh untuk menyimpan kode Anda."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kode tidak lengkap"
 

@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "Το check-in απέτυχε. Παρακαλώ δοκιμάστε ξανά.",
   "Check-out failed. Please try again.": "Το check-out απέτυχε. Παρακαλώ δοκιμάστε ξανά.",
   "Click Save to apply.": "Κάντε κλικ στο Αποθήκευση για εφαρμογή.",
-  "Clipboard API not available. Please copy the URL manually.": "Το API του προχείρου δεν είναι διαθέσιμο. Αντιγράψτε το URL με το χέρι.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Το πρόχειρο δεν είναι διαθέσιμο. Χρησιμοποιήστε το κουμπί Λήψης για να αποθηκεύσετε τους κωδικούς σας.",
   "Code incomplete": "Ο κώδικας είναι ελλιπής",
   "Code is invalid": "Ο κώδικας είναι άκυρος",
   "Confirm Activation": "Επιβεβαιώστε την ενεργοποίηση",

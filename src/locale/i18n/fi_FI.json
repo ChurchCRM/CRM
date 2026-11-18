@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "Sisäänkirjaus epäonnistui. Yritä uudelleen.",
   "Check-out failed. Please try again.": "Uloskirjaus epäonnistui. Yritä uudelleen.",
   "Click Save to apply.": "Napsauta Tallenna ottaaksesi käyttöön.",
-  "Clipboard API not available. Please copy the URL manually.": "Leikepöydän API ei ole saatavilla. Kopioi URL manuaalisesti.",
-  "Clipboard not available. Please use the Download button to save your codes.": "Leikepöytä ei ole käytettävissä. Käytä Lataa-painiketta tallentaaksesi koodisi.",
   "Code incomplete": "Koodi epätäydellinen",
   "Code is invalid": "Koodi on virheellinen",
   "Confirm Activation": "Vahvista aktivointi",

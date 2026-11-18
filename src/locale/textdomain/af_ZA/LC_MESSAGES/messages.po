@@ -12912,14 +12912,6 @@ msgid "Click Save to apply."
 msgstr "Klik Stoor om toe te pas."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API nie beskikbaar nie. Kopieer asseblief die URL handmatig."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Knipbord nie beskikbaar nie. Gebruik asseblief die Aflaai-knoppie om u kodes te stoor."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kode Onvolledig"
 

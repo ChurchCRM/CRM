@@ -12908,14 +12908,6 @@ msgid "Click Save to apply."
 msgstr "Bofya Hifadhi kutumia."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API haipatikani. Tafadhali niga URL kwa njia ya mkono."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Ubao wa kunakili haupatikani. Tafadhali tumia kitufe cha Pakua kuhifadhi nambari zako."
-
-#: 
 msgid "Code incomplete"
 msgstr "Nambari haijakamilika"
 

@@ -12911,14 +12911,6 @@ msgid "Click Save to apply."
 msgstr "Klõpsake Salvesta, et rakendada."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Lõikepuhvri API pole saadaval. Kopeerige URL käsitsi."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Lõikelaud pole saadaval. Kasutage koodide salvestamiseks allalaadimise nuppu."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kood pole lõpetatud"
 

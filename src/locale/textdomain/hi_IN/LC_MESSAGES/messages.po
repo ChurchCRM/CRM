@@ -12881,14 +12881,6 @@ msgid "Click Save to apply."
 msgstr "लागू करने के लिए सहेजें पर क्लिक करें।"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "क्लिपबोर्ड API उपलब्ध नहीं है। कृपया URL को मैनुअली कॉपी करें।"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "क्लिपबोर्ड उपलब्ध नहीं है। अपने कोड सहेजने के लिए डाउनलोड बटन का उपयोग करें।"
-
-#: 
 msgid "Code incomplete"
 msgstr "कोड अधूरा है"
 

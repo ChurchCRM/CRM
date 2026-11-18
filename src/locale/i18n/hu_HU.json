@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "A bejelentkezés sikertelen. Kérjük, próbálja újra.",
   "Check-out failed. Please try again.": "A kijelentkezés sikertelen. Kérjük, próbálja újra.",
   "Click Save to apply.": "Kattintson a Mentés gombra az alkalmazáshoz.",
-  "Clipboard API not available. Please copy the URL manually.": "A vágólap API nem elérhető. Kérjük, manuálisan másolja az URL-t.",
-  "Clipboard not available. Please use the Download button to save your codes.": "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot.",
   "Code incomplete": "A kód hiányos",
   "Code is invalid": "A kód érvénytelen",
   "Confirm Activation": "Aktiválás megerősítése",

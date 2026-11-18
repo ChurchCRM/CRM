@@ -12879,14 +12879,6 @@ msgid "Click Save to apply."
 msgstr "I-click ang I-save para ilapat."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Hindi available ang Clipboard API. Pakikopya ang URL nang manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Hindi available ang clipboard. Gamitin ang button na I-download upang i-save ang iyong mga code."
-
-#: 
 msgid "Code incomplete"
 msgstr "Hindi kumpleto ang code"
 

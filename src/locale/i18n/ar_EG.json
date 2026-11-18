@@ -3111,8 +3111,6 @@
   "Check-in failed. Please try again.": "فشل تسجيل الحضور. يرجى المحاولة مرة أخرى.",
   "Check-out failed. Please try again.": "فشل تسجيل الخروج. يرجى المحاولة مرة أخرى.",
   "Click Save to apply.": "انقر فوق حفظ للتطبيق.",
-  "Clipboard API not available. Please copy the URL manually.": "واجهة برمجة تطبيقات الحافظة غير متاحة. يرجى نسخ عنوان URL يدويًا.",
-  "Clipboard not available. Please use the Download button to save your codes.": "الحافظة غير متاحة. يرجى استخدام زر التنزيل لحفظ الرموز.",
   "Code incomplete": "الرمز غير مكتمل",
   "Code is invalid": "الرمز غير صحيح",
   "Confirm Activation": "تفعيل تأكيد",

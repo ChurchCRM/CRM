@@ -12977,14 +12977,6 @@ msgid "Click Save to apply."
 msgstr "Kliknij Zapisz, aby zastosować."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Interfejs API schowka jest niedostępny. Proszę skopiować adres URL ręcznie."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Schowek jest niedostępny. Użyj przycisku Pobierz, aby zapisać swoje kody."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod niekompletny"
 

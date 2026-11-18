@@ -12985,14 +12985,6 @@ msgid "Click Save to apply."
 msgstr "Klicken Sie auf Speichern, um die Änderungen anzuwenden."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Zwischenablage-API nicht verfügbar. Bitte kopieren Sie die URL manuell."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Zwischenablage nicht verfügbar. Bitte verwenden Sie die Schaltfläche Herunterladen, um Ihre Codes zu speichern."
-
-#: 
 msgid "Code incomplete"
 msgstr "Code unvollständig"
 

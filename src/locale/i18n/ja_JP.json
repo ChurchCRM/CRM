@@ -3061,8 +3061,6 @@
   "Check-in failed. Please try again.": "チェックインに失敗しました。もう一度お試しください。",
   "Check-out failed. Please try again.": "チェックアウトに失敗しました。もう一度お試しください。",
   "Click Save to apply.": "保存をクリックして適用します。",
-  "Clipboard API not available. Please copy the URL manually.": "クリップボードAPIは利用できません。URLを手動でコピーしてください。",
-  "Clipboard not available. Please use the Download button to save your codes.": "クリップボードが使用できません。ダウンロードボタンを使用してコードを保存してください。",
   "Code incomplete": "コードが不完全です",
   "Code is invalid": "コードが無効です",
   "Confirm Activation": "アクティブ化を確認",

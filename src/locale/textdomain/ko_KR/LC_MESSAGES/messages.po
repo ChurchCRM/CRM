@@ -12897,14 +12897,6 @@ msgid "Click Save to apply."
 msgstr "적용하려면 저장을 클릭하세요."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "클립보드 API를 사용할 수 없습니다. URL을 수동으로 복사하십시오."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요."
-
-#: 
 msgid "Code incomplete"
 msgstr "코드 미완성"
 

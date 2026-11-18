@@ -12887,14 +12887,6 @@ msgid "Click Save to apply."
 msgstr "Kliknite Spremi za primjenu."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API međuspremnika nije dostupan. Molim ručno kopirajte URL."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Međuspremnik nije dostupan. Molim koristite gumb Preuzmi za spremanje kodova."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod je nepotpun"
 

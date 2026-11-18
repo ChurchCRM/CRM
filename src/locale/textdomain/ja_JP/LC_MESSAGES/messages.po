@@ -12869,14 +12869,6 @@ msgid "Click Save to apply."
 msgstr "保存をクリックして適用します。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "クリップボードAPIは利用できません。URLを手動でコピーしてください。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "クリップボードが使用できません。ダウンロードボタンを使用してコードを保存してください。"
-
-#: 
 msgid "Code incomplete"
 msgstr "コードが不完全です"
 

@@ -3071,8 +3071,6 @@
   "Check-in failed. Please try again.": "Error al registrar la entrada. Por favor, inténtelo de nuevo.",
   "Check-out failed. Please try again.": "Error al registrar la salida. Por favor, inténtelo de nuevo.",
   "Click Save to apply.": "Haga clic en Guardar para aplicar.",
-  "Clipboard API not available. Please copy the URL manually.": "API del portapapeles no disponible. Por favor, copia la URL manualmente.",
-  "Clipboard not available. Please use the Download button to save your codes.": "El portapapeles no está disponible. Utilice el botón Descargar para guardar sus códigos.",
   "Code incomplete": "Código incompleto",
   "Code is invalid": "El código no es válido",
   "Confirm Activation": "Confirme activación",

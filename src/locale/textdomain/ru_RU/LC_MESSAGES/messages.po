@@ -12985,14 +12985,6 @@ msgid "Click Save to apply."
 msgstr "Нажмите «Сохранить» для применения."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API буфера обмена недоступен. Пожалуйста, скопируйте URL вручную."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Буфер обмена недоступен. Используйте кнопку «Скачать», чтобы сохранить коды."
-
-#: 
 msgid "Code incomplete"
 msgstr "Код не полон"
 

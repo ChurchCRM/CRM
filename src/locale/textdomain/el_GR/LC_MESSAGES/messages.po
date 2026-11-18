@@ -12912,14 +12912,6 @@ msgid "Click Save to apply."
 msgstr "Κάντε κλικ στο Αποθήκευση για εφαρμογή."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Το API του προχείρου δεν είναι διαθέσιμο. Αντιγράψτε το URL με το χέρι."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Το πρόχειρο δεν είναι διαθέσιμο. Χρησιμοποιήστε το κουμπί Λήψης για να αποθηκεύσετε τους κωδικούς σας."
-
-#: 
 msgid "Code incomplete"
 msgstr "Ο κώδικας είναι ελλιπής"
 
