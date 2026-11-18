@@ -68,6 +68,7 @@ describe("Finance Statement Settings", () => {
             it("explains Canadian receipts on the settings page and offers settings in the statements header", () => {
                 cy.visit("/finance/statements/settings");
                 cy.get("#canadian-receipts-info").should("be.visible");
+                cy.get("#signature-upload-link").should("have.attr", "href").and("include", "/admin/system/report-settings");
                 cy.visit("/finance/reports/giving-statements");
                 cy.get(".btn-list a[href$='/finance/statements/settings']").should("be.visible");
                 cy.get(".btn-list a[href$='/admin/system/report-settings']").should("be.visible");
