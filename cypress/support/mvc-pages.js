@@ -24,7 +24,7 @@ export const MVC_PAGES = {
         "/people/cart/to-family",
     ],
     groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
-    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/reports/zero-givers", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
+    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/reports/zero-givers", "/finance/reports/pledge-reminders", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
     event: ["/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
     fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],

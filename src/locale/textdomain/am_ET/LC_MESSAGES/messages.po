@@ -23980,10 +23980,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d ክፍያዎች እስካሁን በምንም ተቀማጭ ላይ አይደሉም።"
 
 #: 
-msgid "Closing line"
-msgstr "የመዝጊያ መስመር"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "በዚህ ዓመት የተቀመጠ እያንዳንዱ ተቀማጭ ተዘግቷል።"
 
@@ -23996,28 +23992,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "በዚህ ዓመት ያለ እያንዳንዱ ክፍያ በተቀማጭ ላይ ነው።"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "የግብር መግለጫዎችን ፍጠር"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "የስጦታ ሪፖርት (የግብር መግለጫዎች)"
-
-#: 
-msgid "Opening line"
-msgstr "የመክፈቻ መስመር"
-
-#: 
 msgid "Qty"
 msgstr "ብዛት"
-
-#: 
-msgid "Signed by"
-msgstr "የፈረመው"
-
-#: 
-msgid "Thank-you line"
-msgstr "የምስጋና መስመር"
 
 #: 
 msgid "Year-End Giving"
@@ -24176,10 +24152,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "ጊዜያዊው PDF ማውጫ ፍጹም የማውጫ መንገድ መሆን አለበት።"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "የቤተ ክርስቲያን የግብር መታወቂያ (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "የመዝጊያ መስመር"
 
@@ -24222,10 +24194,6 @@ msgstr "የመግለጫ ቅንብሮች"
 #: 
 msgid "Statement Wording"
 msgstr "የመግለጫ ቃላት"
-
-#: 
-msgid "Tax Information"
-msgstr "የግብር መረጃ"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24274,10 +24242,6 @@ msgstr "የቤተ ክርስቲያኑን ስም እና አድራሻ በመጠቀ�
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "በስርዓት ቅንብሮች ውስጥ የተቀመጠውን የራስጌ መንገድ በመጠቀም"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ለስጦታ መግለጫዎች ቃላት፣ የግብር መታወቂያ እና PDF አያያዝ"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27092,10 +27056,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "የአባላት መግቢያውን እንዳይጠቀሙ መግባትንም አሰናክል"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "መግለጫዎችን ከመላክዎ በፊት"
-
-#: 
 msgid "Birthday today"
 msgstr "ዛሬ የልደት ቀን"
 
@@ -27436,10 +27396,6 @@ msgid "Preview Sample Letter"
 msgstr "የናሙና ደብዳቤ ቅድመ ዕይታ"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "የካናዳ የስጦታ መግለጫዎች የግል ፊርማ ንብረት መለያ። በፊርማ ጭነት የሚተዳደር።"
-
-#: 
 msgid "Property Type"
 msgstr "የባሕሪ ዓይነት"
 
@@ -27478,10 +27434,6 @@ msgstr "ገምግም እና አጣራ"
 #: 
 msgid "Review and vote"
 msgstr "ገምግም እና ድምጽ ስጥ"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ዓመቱን ይገምግሙ፣ ከዚያ የስጦታ መግለጫዎችን ያውርዱ።"
 
 #: 
 msgid "Review what we are considering"
@@ -27530,10 +27482,6 @@ msgstr "ጠንካራ"
 #: 
 msgid "Support"
 msgstr "ድጋፍ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "የግብር መታወቂያ እና የPDF ቅንብሮች"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

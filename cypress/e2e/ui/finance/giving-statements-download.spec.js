@@ -220,7 +220,7 @@ describe("Canadian reviewed receipts", () => {
         cy.setSystemConfig("sCharityLegalName", "");
         cy.request({ url: "/finance/reports/giving-statements/sample", encoding: "binary" })
             .then((response) => pdfText(response.body)).then((lines) => {
-                expect(lines.join(" ")).to.include("Still missing").and.include("Charity legal name");
+                expect(lines.join(" ")).to.include("Still missing").and.include("Charity Legal Name");
             });
     });
     it("names the family on a shared envelope, and blocks missing charity settings and a non-CAD symbol", () => {

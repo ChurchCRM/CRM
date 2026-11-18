@@ -23974,10 +23974,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalings is nog nie op enige deposito nie."
 
 #: 
-msgid "Closing line"
-msgstr "Slotreël"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Elke deposito wat in hierdie jaar gedateer is, is gesluit."
 
@@ -23990,28 +23986,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Elke betaling in hierdie jaar is op 'n deposito."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Genereer belastingstate"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Bydraeverlag (Belastingstate)"
-
-#: 
-msgid "Opening line"
-msgstr "Openingsreël"
-
-#: 
 msgid "Qty"
 msgstr "Aantal"
-
-#: 
-msgid "Signed by"
-msgstr "Geteken deur"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dankie-reël"
 
 #: 
 msgid "Year-End Giving"
@@ -24170,10 +24146,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Die tydelike PDF-gids moet 'n absolute gidspad wees."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Kerkbelastingnommer (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Slotreël"
 
@@ -24216,10 +24188,6 @@ msgstr "Staatinstellings"
 #: 
 msgid "Statement Wording"
 msgstr "Staatbewoording"
-
-#: 
-msgid "Tax Information"
-msgstr "Belastinginligting"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24268,10 +24236,6 @@ msgstr "Gebruik die kerknaam en adres"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Gebruik die briefhoofpad wat in Stelselinstellings gestel is"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Bewoording, belastingnommer en PDF-hantering vir bydraestate"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27086,10 +27050,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Deaktiveer ook aanmelding, sodat hulle nie die ledeportaal kan gebruik nie"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Voordat jy state stuur"
-
-#: 
 msgid "Birthday today"
 msgstr "Verjaar vandag"
 
@@ -27414,10 +27374,6 @@ msgid "Preview Sample Letter"
 msgstr "Voorskou voorbeeldbrief"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifiseerder van die private handtekeninglêer vir Kanadese skenkingstate. Word deur die oplaai van handtekeninge bestuur."
-
-#: 
 msgid "Property Type"
 msgstr "Tipe eienskap"
 
@@ -27452,10 +27408,6 @@ msgstr "Hersien en filter"
 #: 
 msgid "Review and vote"
 msgstr "Hersien en stem"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Hersien die jaar en laai dan die skenkingstate af."
 
 #: 
 msgid "Review what we are considering"
@@ -27504,10 +27456,6 @@ msgstr "Sterk"
 #: 
 msgid "Support"
 msgstr "Ondersteuning"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Belasting-ID en PDF-instellings"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

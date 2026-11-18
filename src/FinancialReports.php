@@ -25,7 +25,7 @@ if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
-if (!in_array($sReportType, ['Pledge Family Summary', 'Pledge Reminders'], true)) {
+if (!in_array($sReportType, ['Pledge Family Summary'], true)) {
     $sReportType = '';
 }
 
@@ -66,7 +66,6 @@ if ($sReportType === '') {
         <select class="form-select" name="ReportType" id="FinancialReportTypes">
           <option selected disabled value="0"><?= gettext('Select Report Type') ?></option>
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
-          <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
         </select>
       </div>
       <div class="d-flex gap-2">
@@ -81,7 +80,6 @@ if ($sReportType === '') {
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
         case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
-        case 'Pledge Reminders':        $action = 'finance/reports/pledge-reminders/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
@@ -91,7 +89,7 @@ if ($sReportType === '') {
 
     <?php
     // Filter by Classification and Families
-    if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) {
+    if ($sReportType === 'Pledge Family Summary') {
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -149,14 +147,14 @@ if ($sReportType === '') {
       </div>
     <?php } ?>
 
-    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) : ?>
+    <?php if ($sReportType === 'Pledge Family Summary') : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
         <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Pledge Reminders'])) :
+    <?php if ($sReportType === 'Pledge Family Summary') :
         $funds = DonationFundQuery::create()
             ->orderByActive()
             ->orderByName()
@@ -182,35 +180,6 @@ if ($sReportType === '') {
     <?php endif; ?>
 
       <h4 class="mt-4 mb-3"><?= gettext('Other Settings') ?></h4>
-
-    <?php if ($sReportType === 'Pledge Reminders') : ?>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Include') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="pledge_filter" value="pledge" id="pledgeFilterPledge" checked>
-            <label class="form-check-label" for="pledgeFilterPledge"><?= gettext('Only Payments with Pledges') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="pledge_filter" value="all" id="pledgeFilterAll">
-            <label class="form-check-label" for="pledgeFilterAll"><?= gettext('All Payments') ?></label>
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Generate') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="only_owe" value="yes" id="onlyOweYes" checked>
-            <label class="form-check-label" for="onlyOweYes"><?= gettext('Only Families with unpaid pledges') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="only_owe" value="no" id="onlyOweNo">
-            <label class="form-check-label" for="onlyOweNo"><?= gettext('All Families') ?></label>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
 
       <input type="hidden" name="output" value="pdf">
 

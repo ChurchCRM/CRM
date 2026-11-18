@@ -23955,10 +23955,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d khoản thanh toán chưa thuộc đợt nộp nào."
 
 #: 
-msgid "Closing line"
-msgstr "Dòng kết"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Mọi đợt nộp có ngày trong năm nay đã được đóng."
 
@@ -23971,28 +23967,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Mọi khoản thanh toán trong năm nay đều thuộc một đợt nộp."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tạo bản kê thuế"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Báo cáo dâng hiến (bản kê thuế)"
-
-#: 
-msgid "Opening line"
-msgstr "Dòng mở đầu"
-
-#: 
 msgid "Qty"
 msgstr "SL"
-
-#: 
-msgid "Signed by"
-msgstr "Ký bởi"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dòng cảm ơn"
 
 #: 
 msgid "Year-End Giving"
@@ -24151,10 +24127,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Thư mục tạm PDF phải là đường dẫn thư mục tuyệt đối."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Mã số thuế nhà thờ (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Dòng kết"
 
@@ -24197,10 +24169,6 @@ msgstr "Cài đặt bản kê"
 #: 
 msgid "Statement Wording"
 msgstr "Lời văn bản kê"
-
-#: 
-msgid "Tax Information"
-msgstr "Thông tin thuế"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24249,10 +24217,6 @@ msgstr "Đang dùng tên và địa chỉ nhà thờ"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Đang dùng đường dẫn phần đầu thư đã đặt trong Cài đặt hệ thống"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lời văn, mã số thuế và cách xử lý PDF cho bản kê dâng hiến"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27062,10 +27026,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Đồng thời vô hiệu hóa đăng nhập để họ không thể dùng Cổng thành viên"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Trước khi gửi bảng kê"
-
-#: 
 msgid "Birthday today"
 msgstr "Hôm nay sinh nhật"
 
@@ -27406,10 +27366,6 @@ msgid "Preview Sample Letter"
 msgstr "Xem trước thư mẫu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Mã định danh tài nguyên chữ ký riêng tư của bảng kê dâng hiến Canada. Được quản lý bằng cách tải chữ ký lên."
-
-#: 
 msgid "Property Type"
 msgstr "Loại thuộc tính"
 
@@ -27448,10 +27404,6 @@ msgstr "Xem lại và lọc"
 #: 
 msgid "Review and vote"
 msgstr "Xem lại và bình chọn"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Xem lại năm đó, rồi tải xuống bảng kê dâng hiến."
 
 #: 
 msgid "Review what we are considering"
@@ -27500,10 +27452,6 @@ msgstr "Mạnh"
 #: 
 msgid "Support"
 msgstr "Hỗ trợ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Cài đặt mã số thuế và PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

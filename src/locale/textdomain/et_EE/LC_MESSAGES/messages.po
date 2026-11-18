@@ -23973,10 +23973,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d makset ei ole veel ühelgi deposiidil."
 
 #: 
-msgid "Closing line"
-msgstr "Lõpurida"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Kõik selle aasta deposiidid on suletud."
 
@@ -23989,28 +23985,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Iga selle aasta makse on deposiidil."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Koostage maksutõendid"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Annetuste aruanne (maksutõendid)"
-
-#: 
-msgid "Opening line"
-msgstr "Avalause"
-
-#: 
 msgid "Qty"
 msgstr "Kogus"
-
-#: 
-msgid "Signed by"
-msgstr "Allkirjastaja"
-
-#: 
-msgid "Thank-you line"
-msgstr "Tänurida"
 
 #: 
 msgid "Year-End Giving"
@@ -24169,10 +24145,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF-i ajutine kaust peab olema absoluutne kaustatee."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Kiriku maksukohustuslase number (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Lõpurida"
 
@@ -24215,10 +24187,6 @@ msgstr "Tõendi sätted"
 #: 
 msgid "Statement Wording"
 msgstr "Tõendi sõnastus"
-
-#: 
-msgid "Tax Information"
-msgstr "Maksuteave"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24267,10 +24235,6 @@ msgstr "Kasutatakse koguduse nime ja aadressi"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Kasutatakse süsteemisätetes määratud kirjaplangi teed"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Annetuste tõendite sõnastus, maksukohustuslase number ja PDF-i käsitlemine"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27085,10 +27049,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Keela ka sisselogimine, et nad ei saaks liikmeportaali kasutada"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Enne ülevaadete saatmist"
-
-#: 
 msgid "Birthday today"
 msgstr "Täna on sünnipäev"
 
@@ -27429,10 +27389,6 @@ msgid "Preview Sample Letter"
 msgstr "Eelvaata näidiskirja"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kanada annetusülevaadete privaatse allkirja varaidentifikaator. Hallatakse allkirja üleslaadimisega."
-
-#: 
 msgid "Property Type"
 msgstr "Omaduse tüüp"
 
@@ -27471,10 +27427,6 @@ msgstr "Ülevaatus ja filter"
 #: 
 msgid "Review and vote"
 msgstr "Vaata üle ja hääleta"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Vaadake aasta üle ja laadige seejärel alla annetusülevaated."
 
 #: 
 msgid "Review what we are considering"
@@ -27523,10 +27475,6 @@ msgstr "Tugev"
 #: 
 msgid "Support"
 msgstr "Tugi"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Maksukood ja PDF-i seaded"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

@@ -24047,10 +24047,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d Zahlungen sind noch keiner Einzahlung zugeordnet."
 
 #: 
-msgid "Closing line"
-msgstr "Schlusstext"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Jede Einzahlung mit Datum in diesem Jahr ist geschlossen."
 
@@ -24063,28 +24059,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Jede Zahlung in diesem Jahr ist einer Einzahlung zugeordnet."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Steuerbescheinigungen erstellen"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Spendenbericht (Steuerbescheinigungen)"
-
-#: 
-msgid "Opening line"
-msgstr "Einleitungstext"
-
-#: 
 msgid "Qty"
 msgstr "Anz."
-
-#: 
-msgid "Signed by"
-msgstr "Unterzeichnet von"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dankeszeile"
 
 #: 
 msgid "Year-End Giving"
@@ -24243,10 +24219,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Das temporäre PDF-Verzeichnis muss ein absoluter Verzeichnispfad sein."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Steuernummer der Gemeinde (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Schlusstext"
 
@@ -24289,10 +24261,6 @@ msgstr "Einstellungen für Bescheinigungen"
 #: 
 msgid "Statement Wording"
 msgstr "Formulierung der Bescheinigung"
-
-#: 
-msgid "Tax Information"
-msgstr "Steuerangaben"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24341,10 +24309,6 @@ msgstr "Name und Anschrift der Gemeinde werden verwendet"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Der in den Systemeinstellungen hinterlegte Briefkopfpfad wird verwendet"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formulierung, Steuer-ID und PDF-Verarbeitung für Spendenbescheinigungen"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27159,10 +27123,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Auch die Anmeldung deaktivieren, um den Zugang zum Mitgliederportal zu verhindern"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Vor dem Versand der Bescheinigungen"
-
-#: 
 msgid "Birthday today"
 msgstr "Heute Geburtstag"
 
@@ -27487,10 +27447,6 @@ msgid "Preview Sample Letter"
 msgstr "Musterbrief anzeigen"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kennung der privaten Unterschriftsdatei für kanadische Spendenbescheinigungen. Wird über den Upload der Unterschrift verwaltet."
-
-#: 
 msgid "Property Type"
 msgstr "Eigenschaftstyp"
 
@@ -27525,10 +27481,6 @@ msgstr "Prüfen und filtern"
 #: 
 msgid "Review and vote"
 msgstr "Prüfen und abstimmen"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Prüfen Sie das Jahr und laden Sie anschließend die Spendenbescheinigungen herunter."
 
 #: 
 msgid "Review what we are considering"
@@ -27577,10 +27529,6 @@ msgstr "Stark"
 #: 
 msgid "Support"
 msgstr "Hilfe"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Steuerkennung und PDF-Einstellungen"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

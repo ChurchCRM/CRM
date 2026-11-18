@@ -23943,10 +23943,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d भुगतान अभी किसी जमा पर नहीं हैं।"
 
 #: 
-msgid "Closing line"
-msgstr "समापन पंक्ति"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "इस वर्ष का हर जमा बंद है।"
 
@@ -23959,28 +23955,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "इस वर्ष का हर भुगतान किसी जमा पर है।"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "कर विवरण बनाएँ"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "दान रिपोर्ट (कर विवरण)"
-
-#: 
-msgid "Opening line"
-msgstr "आरंभिक पंक्ति"
-
-#: 
 msgid "Qty"
 msgstr "मात्रा"
-
-#: 
-msgid "Signed by"
-msgstr "हस्ताक्षरकर्ता"
-
-#: 
-msgid "Thank-you line"
-msgstr "धन्यवाद पंक्ति"
 
 #: 
 msgid "Year-End Giving"
@@ -24139,10 +24115,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF अस्थायी निर्देशिका एक निरपेक्ष निर्देशिका पथ होनी चाहिए।"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "चर्च कर पहचान (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "समापन पंक्ति"
 
@@ -24185,10 +24157,6 @@ msgstr "विवरण सेटिंग"
 #: 
 msgid "Statement Wording"
 msgstr "विवरण की शब्दावली"
-
-#: 
-msgid "Tax Information"
-msgstr "कर जानकारी"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24237,10 +24205,6 @@ msgstr "चर्च का नाम और पता उपयोग हो �
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "सिस्टम सेटिंग में सेट पत्रशीर्ष पथ उपयोग हो रहा है"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "दान विवरणों के लिए शब्दावली, कर पहचान और PDF प्रबंधन"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27055,10 +27019,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "साइन-इन भी अक्षम करें, ताकि वे सदस्य पोर्टल का उपयोग न कर सकें"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "विवरण भेजने से पहले"
-
-#: 
 msgid "Birthday today"
 msgstr "आज जन्मदिन"
 
@@ -27399,10 +27359,6 @@ msgid "Preview Sample Letter"
 msgstr "नमूना पत्र का पूर्वावलोकन"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "कनाडाई दान विवरण के निजी हस्ताक्षर की एसेट पहचानकर्ता। हस्ताक्षर अपलोड द्वारा प्रबंधित।"
-
-#: 
 msgid "Property Type"
 msgstr "गुण का प्रकार"
 
@@ -27441,10 +27397,6 @@ msgstr "समीक्षा और फ़िल्टर"
 #: 
 msgid "Review and vote"
 msgstr "समीक्षा करें और वोट दें"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "वर्ष की समीक्षा करें, फिर दान विवरण डाउनलोड करें।"
 
 #: 
 msgid "Review what we are considering"
@@ -27493,10 +27445,6 @@ msgstr "मज़बूत"
 #: 
 msgid "Support"
 msgstr "सहायता"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "कर पहचान और PDF सेटिंग"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

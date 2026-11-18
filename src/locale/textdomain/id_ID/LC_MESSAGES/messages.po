@@ -23944,10 +23944,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pembayaran belum masuk ke setoran mana pun."
 
 #: 
-msgid "Closing line"
-msgstr "Baris penutup"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Setiap setoran bertanggal tahun ini sudah ditutup."
 
@@ -23960,28 +23956,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Setiap pembayaran tahun ini sudah masuk ke setoran."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Buat Laporan Pajak"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Laporan Pemberian (Laporan Pajak)"
-
-#: 
-msgid "Opening line"
-msgstr "Baris pembuka"
-
-#: 
 msgid "Qty"
 msgstr "Jml"
-
-#: 
-msgid "Signed by"
-msgstr "Ditandatangani oleh"
-
-#: 
-msgid "Thank-you line"
-msgstr "Baris terima kasih"
 
 #: 
 msgid "Year-End Giving"
@@ -24140,10 +24116,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Direktori sementara PDF harus berupa jalur direktori absolut."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "ID Pajak Gereja (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Baris Penutup"
 
@@ -24186,10 +24158,6 @@ msgstr "Pengaturan Laporan"
 #: 
 msgid "Statement Wording"
 msgstr "Redaksi Laporan"
-
-#: 
-msgid "Tax Information"
-msgstr "Informasi Pajak"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24238,10 +24206,6 @@ msgstr "Menggunakan nama dan alamat gereja"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Menggunakan jalur kop surat yang diatur di Pengaturan Sistem"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Redaksi, ID pajak, dan penanganan PDF untuk laporan pemberian"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27051,10 +27015,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Nonaktifkan juga login agar mereka tidak dapat menggunakan Portal Anggota"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Sebelum Mengirim Laporan"
-
-#: 
 msgid "Birthday today"
 msgstr "Ulang tahun hari ini"
 
@@ -27395,10 +27355,6 @@ msgid "Preview Sample Letter"
 msgstr "Pratinjau Surat Contoh"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Pengenal aset tanda tangan pribadi laporan persembahan Kanada. Dikelola melalui unggahan tanda tangan."
-
-#: 
 msgid "Property Type"
 msgstr "Jenis Properti"
 
@@ -27437,10 +27393,6 @@ msgstr "Tinjau dan Filter"
 #: 
 msgid "Review and vote"
 msgstr "Tinjau dan beri suara"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Tinjau tahunnya, lalu unduh laporan persembahan."
 
 #: 
 msgid "Review what we are considering"
@@ -27489,10 +27441,6 @@ msgstr "Kuat"
 #: 
 msgid "Support"
 msgstr "Dukungan"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Pengaturan ID Pajak dan PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

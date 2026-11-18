@@ -24061,10 +24061,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d plăți nu sunt încă pe niciun depozit."
 
 #: 
-msgid "Closing line"
-msgstr "Rând de încheiere"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Fiecare depozit datat în acest an este închis."
 
@@ -24077,28 +24073,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Fiecare plată din acest an este pe un depozit."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generați extrasele fiscale"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport de donații (extrase fiscale)"
-
-#: 
-msgid "Opening line"
-msgstr "Rând de deschidere"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Signed by"
-msgstr "Semnat de"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rând de mulțumire"
 
 #: 
 msgid "Year-End Giving"
@@ -24257,10 +24233,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Directorul temporar PDF trebuie să fie o cale absolută de director."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Cod fiscal al bisericii (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Rând de încheiere"
 
@@ -24303,10 +24275,6 @@ msgstr "Setări extras"
 #: 
 msgid "Statement Wording"
 msgstr "Formularea extrasului"
-
-#: 
-msgid "Tax Information"
-msgstr "Informații fiscale"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24355,10 +24323,6 @@ msgstr "Se folosesc numele și adresa bisericii"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Se folosește calea antetului setată în Setările de sistem"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formularea, codul fiscal și gestionarea PDF pentru extrasele de donații"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27178,10 +27142,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Dezactivează și autentificarea, ca să nu poată folosi Portalul membrilor"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Înainte de a trimite extrasele"
-
-#: 
 msgid "Birthday today"
 msgstr "Zi de naștere astăzi"
 
@@ -27522,10 +27482,6 @@ msgid "Preview Sample Letter"
 msgstr "Previzualizează scrisoarea exemplu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificatorul resursei semnăturii private canadiene de pe extrasele de donații. Gestionat prin încărcarea semnăturii."
-
-#: 
 msgid "Property Type"
 msgstr "Tip de proprietate"
 
@@ -27564,10 +27520,6 @@ msgstr "Revizuiește și filtrează"
 #: 
 msgid "Review and vote"
 msgstr "Revizuiește și votează"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Revizuiți anul, apoi descărcați extrasele de donații."
 
 #: 
 msgid "Review what we are considering"
@@ -27616,10 +27568,6 @@ msgstr "Puternică"
 #: 
 msgid "Support"
 msgstr "Asistență"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Setări pentru cod fiscal și PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

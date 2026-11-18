@@ -23999,10 +23999,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d befizetés még nincs egyetlen befizetési tételen sem."
 
 #: 
-msgid "Closing line"
-msgstr "Záró sor"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Az idei dátumú befizetések mindegyike le van zárva."
 
@@ -24015,28 +24011,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Az idei befizetések mindegyike szerepel egy befizetési tételen."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Adóigazolások készítése"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Adakozási jelentés (adóigazolások)"
-
-#: 
-msgid "Opening line"
-msgstr "Nyitó sor"
-
-#: 
 msgid "Qty"
 msgstr "Db"
-
-#: 
-msgid "Signed by"
-msgstr "Aláírta"
-
-#: 
-msgid "Thank-you line"
-msgstr "Köszönő sor"
 
 #: 
 msgid "Year-End Giving"
@@ -24195,10 +24171,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "A PDF ideiglenes mappa abszolút elérési út legyen."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Gyülekezeti adószám (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Záró sor"
 
@@ -24241,10 +24213,6 @@ msgstr "Igazolás beállításai"
 #: 
 msgid "Statement Wording"
 msgstr "Igazolás szövege"
-
-#: 
-msgid "Tax Information"
-msgstr "Adóadatok"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24293,10 +24261,6 @@ msgstr "A gyülekezet nevének és címének használata"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "A Rendszerbeállításokban megadott levélfej-útvonal használata"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Szöveg, adószám és PDF-kezelés az adományigazolásokhoz"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27111,10 +27075,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "A bejelentkezés letiltása is, hogy ne használhassák a Tagi portált"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Mielőtt kimutatásokat küld"
-
-#: 
 msgid "Birthday today"
 msgstr "Ma van a születésnapja"
 
@@ -27455,10 +27415,6 @@ msgid "Preview Sample Letter"
 msgstr "Mintalevél előnézete"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "A kanadai adománykimutatások privát aláírásának azonosítója. Az aláírás feltöltésével kezelhető."
-
-#: 
 msgid "Property Type"
 msgstr "Tulajdonságtípus"
 
@@ -27497,10 +27453,6 @@ msgstr "Áttekintés és szűrés"
 #: 
 msgid "Review and vote"
 msgstr "Áttekintés és szavazás"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Tekintse át az évet, majd töltse le az adománykimutatásokat."
 
 #: 
 msgid "Review what we are considering"
@@ -27549,10 +27501,6 @@ msgstr "Erős"
 #: 
 msgid "Support"
 msgstr "Támogatás"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Adóazonosító és PDF-beállítások"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
