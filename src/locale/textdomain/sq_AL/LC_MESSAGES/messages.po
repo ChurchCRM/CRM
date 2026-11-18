@@ -4973,10 +4973,6 @@ msgid "View Person Page"
 msgstr "Shiko faqjen e personit"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familja nuk ka email për t'u përdorur"
-
-#: 
 msgid "Deleted"
 msgstr "Fshirë"
 
@@ -24305,10 +24301,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Zero çaktivizon një kërkesë opsionale. Mosha kërkon një datë të plotë lindjeje; kohëzgjatja e anëtarësisë kërkon një datë anëtarësie. Personat pa datat e kërkuara lihen jashtë dhe numërohen veçmas. Personat e ndjerë, personat dhe klasifikimet joaktive, si dhe familjet dhe personat joaktivë ose në pritje të shqyrtimit përjashtohen gjithmonë; përdoret klasifikimi dhe statusi aktual, jo statusi historik."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Shuma e detyruar për %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Nuk mund të krijohet ruajtja e përkohshme private e PDF në drejtorinë e zgjedhur."
 
@@ -26979,10 +26971,6 @@ msgid "Last verified"
 msgstr "Verifikuar së fundi"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Asnjë anëtar aktiv dhe i miratuar i kësaj familjeje nuk ka adresë emaili. Verifikojini të dhënat personalisht."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nuk u gjetën premtime për këto vite fiskale."
 
@@ -27005,10 +26993,6 @@ msgstr "Hyni në portalin e anëtarëve me këtë adresë emaili për të shqyrt
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Kjo familje është joaktive, prandaj nuk i dërgohen emaile verifikimi."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Kjo familje e vetëregjistruar pret miratimin. Miratimi i dërgon familjes me email një ftesë për të hyrë në portalin e anëtarëve dhe për të shqyrtuar të dhënat e saj."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

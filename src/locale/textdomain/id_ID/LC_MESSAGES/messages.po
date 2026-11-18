@@ -4978,10 +4978,6 @@ msgid "View Person Page"
 msgstr "Lihat Halaman Individu"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Keluarga tidak memiliki email"
-
-#: 
 msgid "Deleted"
 msgstr "Terhapus"
 
@@ -24284,10 +24280,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nol menonaktifkan syarat opsional. Usia memerlukan tanggal lahir lengkap; lama keanggotaan memerlukan tanggal keanggotaan. Orang yang tidak memiliki tanggal wajib diabaikan dan dihitung secara terpisah. Orang yang telah meninggal, orang dan klasifikasi yang tidak aktif, serta keluarga dan orang yang tidak aktif atau menunggu tinjauan selalu dikecualikan; klasifikasi dan status saat ini yang digunakan, bukan status historis."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Jumlah terutang untuk %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Tidak dapat membuat penyimpanan sementara PDF yang privat di direktori yang dipilih."
 
@@ -26958,10 +26950,6 @@ msgid "Last verified"
 msgstr "Terakhir diverifikasi"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Tidak ada anggota keluarga ini yang aktif dan disetujui yang memiliki alamat email. Verifikasi secara langsung saja."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Tidak ditemukan janji persembahan untuk tahun fiskal ini."
 
@@ -26984,10 +26972,6 @@ msgstr "Masuk ke portal jemaat dengan alamat email ini untuk meninjau informasi 
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Keluarga ini tidak aktif, sehingga tidak dikirimi email verifikasi."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Keluarga yang mendaftar mandiri ini sedang menunggu persetujuan. Jika disetujui, keluarga akan menerima email undangan untuk masuk ke portal jemaat dan meninjau informasinya."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

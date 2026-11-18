@@ -5051,10 +5051,6 @@ msgid "View Person Page"
 msgstr "Vis personside"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familien har ingen e-postadresser"
-
-#: 
 msgid "Deleted"
 msgstr "Slettet"
 
@@ -24383,10 +24379,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Null slår av et valgfritt krav. Alder krever fullstendig fødselsdato; medlemsvarighet krever en medlemsdato. Personer som mangler nødvendige datoer, utelates og telles for seg. Avdøde, inaktive personer og klassifiseringer, og inaktive familier og personer eller de som venter på vurdering, utelates alltid. Gjeldende klassifisering og status brukes, ikke historisk status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Skyldig beløp for %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Kan ikke opprette privat midlertidig PDF-lagring i den valgte mappen."
 
@@ -27057,10 +27049,6 @@ msgid "Last verified"
 msgstr "Sist bekreftet"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Ingen aktive, godkjente medlemmer av denne familien har e-postadresse. Bekreft opplysningene personlig i stedet."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Fant ingen giverløfter for disse regnskapsårene."
 
@@ -27083,10 +27071,6 @@ msgstr "Logg på medlemsportalen med denne e-postadressen for å se over familie
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Denne familien er inaktiv og får derfor ikke bekreftelses-e-post."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Denne selvregistrerte familien venter på godkjenning. Når den godkjennes, får familien en e-post med invitasjon til å logge på medlemsportalen og se over opplysningene sine."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

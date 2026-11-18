@@ -4951,10 +4951,6 @@ msgid "View Person Page"
 msgstr "Persoonspagina bekijken"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
 msgid "Deleted"
 msgstr "Verwijderd"
 
@@ -24284,10 +24280,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nul schakelt een optionele vereiste uit. Voor leeftijd is een volledige geboortedatum nodig; voor lidmaatschapsduur een lidmaatschapsdatum. Personen zonder de vereiste datums worden weggelaten en apart geteld. Overleden personen, inactieve personen en classificaties, en inactieve of ter beoordeling staande gezinnen en personen worden altijd uitgesloten; de huidige classificatie en status worden gebruikt, niet de historische status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Verschuldigd bedrag voor %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Kan geen privé tijdelijke PDF-opslag maken in de gekozen map."
 
@@ -26958,10 +26950,6 @@ msgid "Last verified"
 msgstr "Laatst geverifieerd"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Geen enkel actief, goedgekeurd lid van dit gezin heeft een e-mailadres. Verifieer de gegevens in plaats daarvan persoonlijk."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Er zijn geen toezeggingen gevonden voor deze fiscale jaren."
 
@@ -26984,10 +26972,6 @@ msgstr "Meld u met dit e-mailadres aan bij het ledenportaal om de gegevens van u
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Dit gezin is niet actief en ontvangt daarom geen verificatie-e-mails."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Dit zelf geregistreerde gezin wacht op goedkeuring. Bij goedkeuring ontvangt het gezin per e-mail een uitnodiging om zich aan te melden bij het ledenportaal en zijn gegevens te controleren."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -4982,10 +4982,6 @@ msgid "View Person Page"
 msgstr "Kişi sayfasını görüntüle"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Ailenin kullanılacak e -postaları yok"
-
-#: 
 msgid "Deleted"
 msgstr "silindi"
 
@@ -24314,10 +24310,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Sıfır, isteğe bağlı bir şartı kapatır. Yaş için tam bir doğum tarihi, üyelik süresi için bir üyelik tarihi gerekir. Gerekli tarihleri eksik kişiler atlanır ve ayrı sayılır. Vefat etmiş kişiler, etkin olmayan kişiler ve sınıflandırmalar ile etkin olmayan veya inceleme bekleyen aileler ve kişiler her zaman hariç tutulur; geçmiş durum değil, güncel sınıflandırma ve durum kullanılır."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s için ödenecek tutar: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Seçilen dizinde özel PDF geçici deposu oluşturulamıyor."
 
@@ -26988,10 +26980,6 @@ msgid "Last verified"
 msgstr "Son doğrulama"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Bu ailenin aktif ve onaylı hiçbir üyesinin e-posta adresi yok. Bunun yerine bilgileri yüz yüze doğrulayın."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Bu mali yıllar için bağış taahhüdü bulunamadı."
 
@@ -27014,10 +27002,6 @@ msgstr "Aile bilgilerinizi gözden geçirmek için bu e-posta adresiyle üye por
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Bu aile aktif değil, bu nedenle doğrulama e-postası gönderilmez."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Kendi kaydını yapan bu aile onay bekliyor. Onaylandığında aileye, üye portalında oturum açıp bilgilerini gözden geçirmesi için e-postayla bir davet gönderilir."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -4978,10 +4978,6 @@ msgid "View Person Page"
 msgstr "Tazama Ukurasa wa Mtu"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familia haina barua pepe za kutumia"
-
-#: 
 msgid "Deleted"
 msgstr "Imefutwa"
 
@@ -24310,10 +24306,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Sifuri huzima sharti la hiari. Umri unahitaji tarehe kamili ya kuzaliwa; muda wa uanachama unahitaji tarehe ya uanachama. Watu wasio na tarehe zinazohitajika huachwa na kuhesabiwa kando. Watu waliofariki, watu na uainishaji wasio hai, na familia na watu wasio hai au wanaosubiri ukaguzi huwa hawajumuishwi; uainishaji na hadhi ya sasa hutumiwa, si hadhi ya kihistoria."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Kiasi kinachodaiwa kwa %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Haiwezi kuunda hifadhi ya muda ya faragha ya PDF katika saraka iliyochaguliwa."
 
@@ -26984,10 +26976,6 @@ msgid "Last verified"
 msgstr "Ilithibitishwa mwisho"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Hakuna mshirika hai na aliyeidhinishwa wa familia hii aliye na anwani ya barua pepe. Thibitisha ana kwa ana badala yake."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Hakuna ahadi zilizopatikana kwa miaka hii ya fedha."
 
@@ -27010,10 +26998,6 @@ msgstr "Ingia kwenye tovuti ya washirika kwa anwani hii ya barua pepe ili kukagu
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Familia hii haitumiki, kwa hivyo haitumiwi barua pepe za uthibitisho."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Familia hii iliyojiandikisha inasubiri idhini. Ikiidhinishwa, familia itatumiwa barua pepe ya mwaliko wa kuingia kwenye tovuti ya washirika na kukagua taarifa zake."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

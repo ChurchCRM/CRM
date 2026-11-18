@@ -1,9 +1,99 @@
 {
+  "({{count}} installments)": [
+    "webpack/finance-pledge-editor.js:56"
+  ],
+  "Amount per installment": [
+    "src/finance/views/pledges/detail.php:138",
+    "src/finance/views/pledges/editor.php:150",
+    "webpack/finance-pledge-editor.js:66"
+  ],
+  "Amounts entered are": [
+    "src/finance/views/pledges/editor.php:147"
+  ],
+  "Approved, but no invitation was sent": [
+    "webpack/common/no-invitation-notice.ts:15"
+  ],
+  "Choose total commitment or installment amount.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:48"
+  ],
+  "Choose Weekly, Monthly or Quarterly for an installment amount.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:22"
+  ],
   "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by": [
     "src/account/views/account.php:349"
   ],
+  "Commitment amount": [
+    "src/finance/views/pledges/editor.php:203",
+    "webpack/finance-pledge-editor.js:67"
+  ],
+  "Enter the schedule and installment dates to preview the commitment.": [
+    "webpack/finance-pledge-editor.js:70"
+  ],
+  "Enter valid first and last installment dates in order.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:15"
+  ],
+  "Enter valid installment amounts with at most two decimal places.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:62"
+  ],
+  "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift.": [
+    "src/finance/views/pledges/editor.php:152"
+  ],
+  "First installment": [
+    "src/finance/views/pledges/editor.php:166"
+  ],
+  "Full commitment": [
+    "src/finance/views/pledges/editor.php:178"
+  ],
   "Help Translate on GitHub": [
     "src/account/views/account.php:356"
+  ],
+  "Installment amounts can only be used for pledges.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:54"
+  ],
+  "Installment dates must be within the selected fiscal year.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:19"
+  ],
+  "Last installment on or before": [
+    "src/finance/views/pledges/editor.php:168"
+  ],
+  "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal.": [
+    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:52"
+  ],
+  "Nobody in the %s family can sign in to the member portal under the current sign-in rule.": [
+    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:56"
+  ],
+  "Remaining commitment for %s: %s": [
+    "src/ChurchCRM/Service/PledgeReminderService.php:176"
+  ],
+  "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation.": [
+    "src/finance/views/pledges/editor.php:180"
+  ],
+  "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation.": [
+    "src/finance/views/pledges/detail.php:140"
+  ],
+  "Specify the amount basis when editing a recurring pledge.": [
+    "src/ChurchCRM/Service/FinancialService.php:555"
+  ],
+  "The %s family has no living members to invite to the member portal.": [
+    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:54"
+  ],
+  "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places.": [
+    "src/ChurchCRM/Service/PledgeCommitmentService.php:67"
+  ],
+  "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information.": [
+    "src/people/views/family-view.php:1039"
+  ],
+  "Total commitment": [
+    "src/finance/views/pledges/editor.php:149"
+  ],
+  "Unable to preview the commitment.": [
+    "webpack/finance-pledge-editor.js:84"
+  ],
+  "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months.": [
+    "src/finance/views/pledges/editor.php:170"
+  ],
+  "Verify the family in person instead.": [
+    "src/people/views/family-view.php:1052"
   ],
   "View all emails": [
     "src/people/views/timeline-events.php:58"

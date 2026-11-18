@@ -4982,10 +4982,6 @@ msgid "View Person Page"
 msgstr "Sien persoonbladsy"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Gesin het geen e-posse om te gebruik nie"
-
-#: 
 msgid "Deleted"
 msgstr "Geskrap"
 
@@ -24314,10 +24310,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nul skakel 'n opsionele vereiste af. Ouderdom vereis 'n volledige geboortedatum; lidmaatskapduur vereis 'n lidmaatskapdatum. Mense sonder vereiste datums word weggelaat en afsonderlik getel. Oorlede mense, onaktiewe mense en klassifikasies, en onaktiewe of hangende-hersiening-gesinne en -mense word altyd uitgesluit; huidige klassifikasie en status word gebruik, nie historiese status nie."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Bedrag verskuldig vir %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Kan nie private tydelike PDF-berging in die gekose gids skep nie."
 
@@ -26988,10 +26980,6 @@ msgid "Last verified"
 msgstr "Laas geverifieer"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Geen aktiewe, goedgekeurde lid van hierdie gesin het 'n e-posadres nie. Verifieer dit eerder persoonlik."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Geen verbintenisse is vir hierdie fiskale jare gevind nie."
 
@@ -27014,10 +27002,6 @@ msgstr "Meld met hierdie e-posadres by die lidmaatportaal aan om jou gesin se in
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Hierdie gesin is onaktief, dus word geen verifikasie-e-posse aan hulle gestuur nie."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Hierdie selfgeregistreerde gesin wag op goedkeuring. Met goedkeuring word 'n uitnodiging aan die gesin ge-e-pos om by die lidmaatportaal aan te meld en hul inligting na te gaan."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

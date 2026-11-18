@@ -4953,10 +4953,6 @@ msgid "View Person Page"
 msgstr "Näytä henkilösivu"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Perheellä ei ole sähköpostiosoitteita käytettäväksi"
-
-#: 
 msgid "Deleted"
 msgstr "Poistettu"
 
@@ -24285,10 +24281,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nolla poistaa valinnaisen vaatimuksen käytöstä. Ikä edellyttää täydellistä syntymäaikaa ja jäsenyyden kesto jäsenyyspäivää. Henkilöt, joilta vaadittu päivämäärä puuttuu, jätetään pois ja lasketaan erikseen. Kuolleet, passiiviset henkilöt ja luokitukset sekä passiiviset tai tarkistusta odottavat perheet ja henkilöt jätetään aina pois. Käytössä on nykyinen luokitus ja tila, ei historiallista tilaa."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Erääntyvä summa kohteelle %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Yksityistä väliaikaista PDF-tallennustilaa ei voi luoda valittuun kansioon."
 
@@ -26959,10 +26951,6 @@ msgid "Last verified"
 msgstr "Viimeksi vahvistettu"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Kenelläkään tämän perheen aktiivisella, hyväksytyllä jäsenellä ei ole sähköpostiosoitetta. Vahvista tiedot sen sijaan henkilökohtaisesti."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Näille tilivuosille ei löytynyt lupauksia."
 
@@ -26985,10 +26973,6 @@ msgstr "Kirjaudu jäsenportaaliin tällä sähköpostiosoitteella tarkistaaksesi
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Tämä perhe on epäaktiivinen, joten sille ei lähetetä vahvistussähköposteja."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Tämä itse rekisteröitynyt perhe odottaa hyväksyntää. Hyväksyminen lähettää perheelle sähköpostikutsun kirjautua jäsenportaaliin ja tarkistaa tietonsa."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

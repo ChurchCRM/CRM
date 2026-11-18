@@ -4987,10 +4987,6 @@ msgid "View Person Page"
 msgstr "የግል ገጽ ይመልከቱ"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
-
-#: 
 msgid "Deleted"
 msgstr "ሳሩ"
 
@@ -24320,10 +24316,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "ዜሮ አማራጭ መስፈርትን ያጠፋል። ዕድሜ ሙሉ የልደት ቀን ይፈልጋል፤ የአባልነት ጊዜ የአባልነት ቀን ይፈልጋል። አስፈላጊ ቀኖች የጎደላቸው ሰዎች ይተዋሉ እና ለየብቻ ይቆጠራሉ። የሞቱ ሰዎች፣ ንቁ ያልሆኑ ሰዎች እና ምደባዎች፣ እና ንቁ ያልሆኑ ወይም ግምገማ የሚጠብቁ ቤተሰቦች እና ሰዎች ሁልጊዜ ይገለላሉ፤ የአሁኑ ምደባ እና ሁኔታ ጥቅም ላይ ይውላል፣ ታሪካዊ ሁኔታ አይደለም።"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "ለ%s የሚከፈል መጠን፦ %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "በተመረጠው ማውጫ ውስጥ የግል ጊዜያዊ PDF ማከማቻ መፍጠር አልተቻለም።"
 
@@ -26994,10 +26986,6 @@ msgid "Last verified"
 msgstr "ለመጨረሻ ጊዜ የተረጋገጠው"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "የዚህ ቤተሰብ ንቁና የጸደቀ አባል አንዳቸውም የኢሜይል አድራሻ የላቸውም። በምትኩ በአካል ያረጋግጡ።"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "ለእነዚህ የበጀት ዓመታት ምንም የቃል ኪዳን አልተገኘም።"
 
@@ -27020,10 +27008,6 @@ msgstr "የቤተሰብዎን መረጃ ለመገምገም በዚህ የኢሜ�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "ይህ ቤተሰብ እንቅስቃሴ-አልባ ስለሆነ የማረጋገጫ ኢሜይሎች አይላኩለትም።"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "ራሱን ያስመዘገበው ይህ ቤተሰብ ይሁንታን እየጠበቀ ነው። ሲጸድቅ ቤተሰቡ ወደ የአባላት ፖርታል ገብቶ መረጃውን እንዲገመግም የግብዣ ኢሜይል ይላክለታል።"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

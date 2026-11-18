@@ -4980,10 +4980,6 @@ msgid "View Person Page"
 msgstr "צפה בדף אדם"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
 msgid "Deleted"
 msgstr "נמחק"
 
@@ -24312,10 +24308,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "אפס מבטל דרישה רשות. גיל דורש תאריך לידה מלא; משך חברות דורש תאריך חברות. אנשים שחסרים להם תאריכים נדרשים מושמטים ונספרים בנפרד. אנשים שנפטרו, אנשים וסיווגים לא פעילים, ומשפחות ואנשים לא פעילים או הממתינים לסקירה תמיד אינם נכללים; נעשה שימוש בסיווג ובסטטוס הנוכחיים, לא בסטטוס היסטורי."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "סכום לתשלום עבור %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "לא ניתן ליצור אחסון זמני פרטי ל-PDF בתיקייה שנבחרה."
 
@@ -26986,10 +26978,6 @@ msgid "Last verified"
 msgstr "אומתה לאחרונה"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "לאף חבר פעיל ומאושר במשפחה זו אין כתובת דוא\"ל. אמתו את הפרטים באופן אישי במקום זאת."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "לא נמצאו התחייבויות לשנות כספים אלה."
 
@@ -27012,10 +27000,6 @@ msgstr "היכנסו לפורטל החברים עם כתובת דוא\"ל זו �
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "משפחה זו אינה פעילה, ולכן לא נשלחות אליה הודעות אימות בדוא\"ל."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "משפחה זו שנרשמה בעצמה ממתינה לאישור. לאחר האישור תישלח למשפחה בדוא\"ל הזמנה להיכנס לפורטל החברים ולעיין בפרטיה."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

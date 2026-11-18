@@ -4953,10 +4953,6 @@ msgid "View Person Page"
 msgstr "Zobraziť stránku osoby"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Rodina nemá žiadne e-maily"
-
-#: 
 msgid "Deleted"
 msgstr "Odstránené"
 
@@ -24337,10 +24333,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nula vypne voliteľnú požiadavku. Vek vyžaduje úplný dátum narodenia; dĺžka členstva vyžaduje dátum členstva. Ľudia bez požadovaných dátumov sa vynechajú a spočítajú osobitne. Zosnulí, neaktívni ľudia a klasifikácie a neaktívne rodiny a ľudia alebo rodiny a ľudia čakajúci na kontrolu sú vždy vylúčení; používa sa aktuálna klasifikácia a stav, nie historický stav."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Suma splatná za %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "V zvolenom adresári nemožno vytvoriť súkromné dočasné úložisko PDF."
 
@@ -27011,10 +27003,6 @@ msgid "Last verified"
 msgstr "Naposledy overené"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Žiadny aktívny a schválený člen tejto rodiny nemá e-mailovú adresu. Overte údaje radšej osobne."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Pre tieto fiškálne roky sa nenašli žiadne záväzky."
 
@@ -27037,10 +27025,6 @@ msgstr "Prihláste sa do portálu členov touto e-mailovou adresou a skontrolujt
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Táto rodina je neaktívna, preto jej nie sú zasielané overovacie e-maily."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Táto samostatne zaregistrovaná rodina čaká na schválenie. Po schválení dostane rodina e-mailom pozvánku na prihlásenie do portálu členov a kontrolu svojich údajov."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

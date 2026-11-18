@@ -4989,10 +4989,6 @@ msgid "View Person Page"
 msgstr "Xem trang cá nhân"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Gia đình không có email nào để sử dụng"
-
-#: 
 msgid "Deleted"
 msgstr "Đã xóa"
 
@@ -24295,10 +24291,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Số 0 tắt một yêu cầu không bắt buộc. Tuổi cần ngày sinh đầy đủ; thời gian hội viên cần ngày gia nhập. Người thiếu ngày bắt buộc bị bỏ qua và được đếm riêng. Người đã qua đời, người và phân loại không hoạt động, cùng gia đình và người không hoạt động hoặc đang chờ duyệt luôn bị loại; hệ thống dùng phân loại và trạng thái hiện tại, không dùng trạng thái cũ."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Số phải nộp cho %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Không thể tạo nơi lưu PDF tạm riêng tư trong thư mục đã chọn."
 
@@ -26969,10 +26961,6 @@ msgid "Last verified"
 msgstr "Xác minh lần cuối"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Không có thành viên nào đang hoạt động và đã được phê duyệt của gia đình này có địa chỉ email. Hãy xác minh trực tiếp thay thế."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Không tìm thấy cam kết dâng hiến nào cho các năm tài chính này."
 
@@ -26995,10 +26983,6 @@ msgstr "Đăng nhập vào cổng Hội thánh bằng địa chỉ email này đ
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Gia đình này không hoạt động nên không được gửi email xác minh."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Gia đình tự đăng ký này đang chờ phê duyệt. Khi được phê duyệt, gia đình sẽ nhận email mời đăng nhập vào cổng Hội thánh và xem lại thông tin của mình."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

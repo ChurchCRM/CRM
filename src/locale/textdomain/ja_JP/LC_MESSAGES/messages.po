@@ -4947,10 +4947,6 @@ msgid "View Person Page"
 msgstr "人物ページを表示"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "家族には使用できるメールがありません"
-
-#: 
 msgid "Deleted"
 msgstr "削除"
 
@@ -24253,10 +24249,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "0にすると、任意の条件は無効になります。年齢には完全な生年月日が必要です。会員期間には入会日が必要です。必要な日付がない人は除外され、別に数えられます。逝去した人、無効な人と分類、および無効または確認待ちの家族と人は常に除外されます。過去の状態ではなく、現在の分類と状態が使われます。"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s の請求額: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "選択したディレクトリに、非公開のPDF一時保存領域を作成できません。"
 
@@ -26927,10 +26919,6 @@ msgid "Last verified"
 msgstr "最終確認日"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "この家族には、メールアドレスを持つアクティブで承認済みのメンバーがいません。代わりに対面で確認してください。"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "これらの会計年度の献金誓約は見つかりませんでした。"
 
@@ -26953,10 +26941,6 @@ msgstr "このメールアドレスでメンバーポータルにサインイン
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "この家族は非アクティブのため、確認メールは送信されません。"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "この自己登録した家族は承認待ちです。承認すると、メンバーポータルにサインインして情報を確認するよう招待するメールが家族に送信されます。"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
