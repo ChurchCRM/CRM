@@ -23970,10 +23970,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "Malipo %d bado hayako kwenye amana yoyote."
 
 #: 
-msgid "Closing line"
-msgstr "Mstari wa kufunga"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Kila amana yenye tarehe ya mwaka huu imefungwa."
 
@@ -23986,28 +23982,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Kila malipo ya mwaka huu yako kwenye amana."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tengeneza taarifa za kodi"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Ripoti ya utoaji (Taarifa za kodi)"
-
-#: 
-msgid "Opening line"
-msgstr "Mstari wa kufungua"
-
-#: 
 msgid "Qty"
 msgstr "Idadi"
-
-#: 
-msgid "Signed by"
-msgstr "Imesainiwa na"
-
-#: 
-msgid "Thank-you line"
-msgstr "Mstari wa shukrani"
 
 #: 
 msgid "Year-End Giving"
@@ -24166,10 +24142,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Saraka ya muda ya PDF lazima iwe njia kamili ya saraka."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Kitambulisho cha kodi cha kanisa (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Mstari wa kufunga"
 
@@ -24212,10 +24184,6 @@ msgstr "Mipangilio ya taarifa"
 #: 
 msgid "Statement Wording"
 msgstr "Maneno ya taarifa"
-
-#: 
-msgid "Tax Information"
-msgstr "Taarifa za kodi"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24264,10 +24232,6 @@ msgstr "Inatumia jina na anwani ya kanisa"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Inatumia njia ya kichwa cha barua iliyowekwa katika Mipangilio ya Mfumo"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Maneno, kitambulisho cha kodi na ushughulikiaji wa PDF kwa taarifa za utoaji"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27082,10 +27046,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Zima pia kuingia, ili wasiweze kutumia Lango la Washiriki"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Kabla ya Kutuma Taarifa"
-
-#: 
 msgid "Birthday today"
 msgstr "Siku ya kuzaliwa leo"
 
@@ -27426,10 +27386,6 @@ msgid "Preview Sample Letter"
 msgstr "Hakiki Barua ya Mfano"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kitambulisho cha rasilimali ya sahihi ya faragha ya taarifa za utoaji za Kanada. Husimamiwa kwa kupakia sahihi."
-
-#: 
 msgid "Property Type"
 msgstr "Aina ya Sifa"
 
@@ -27468,10 +27424,6 @@ msgstr "Kagua na Chuja"
 #: 
 msgid "Review and vote"
 msgstr "Kagua na upige kura"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Kagua mwaka, kisha pakua taarifa za utoaji."
 
 #: 
 msgid "Review what we are considering"
@@ -27520,10 +27472,6 @@ msgstr "Imara"
 #: 
 msgid "Support"
 msgstr "Msaada"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Mipangilio ya Kitambulisho cha Kodi na PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

@@ -23972,10 +23972,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagos todavía no están en ningún depósito."
 
 #: 
-msgid "Closing line"
-msgstr "Línea de cierre"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Todos los depósitos con fecha de este año están cerrados."
 
@@ -23988,28 +23984,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Cada pago de este año está en un depósito."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generar estados de cuenta tributarios"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Informe de donaciones (estados de cuenta tributarios)"
-
-#: 
-msgid "Opening line"
-msgstr "Línea de apertura"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Signed by"
-msgstr "Firmado por"
-
-#: 
-msgid "Thank-you line"
-msgstr "Línea de agradecimiento"
 
 #: 
 msgid "Year-End Giving"
@@ -24168,10 +24144,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "El directorio temporal de PDF debe ser una ruta absoluta de directorio."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Identificación tributaria de la iglesia (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Línea de cierre"
 
@@ -24214,10 +24186,6 @@ msgstr "Configuración del estado de cuenta"
 #: 
 msgid "Statement Wording"
 msgstr "Redacción del estado de cuenta"
-
-#: 
-msgid "Tax Information"
-msgstr "Información tributaria"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24266,10 +24234,6 @@ msgstr "Se usan el nombre y la dirección de la iglesia"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Se usa la ruta del membrete definida en Configuración del sistema"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Redacción, identificación tributaria y manejo de PDF de los estados de cuenta de donaciones"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27089,10 +27053,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Desactivar también el inicio de sesión para impedir el acceso al portal de miembros"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Antes de enviar los comprobantes"
-
-#: 
 msgid "Birthday today"
 msgstr "Cumpleaños de hoy"
 
@@ -27417,10 +27377,6 @@ msgid "Preview Sample Letter"
 msgstr "Vista previa de una carta de ejemplo"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificador del archivo privado de firma de los comprobantes de donaciones canadienses. Se administra mediante la carga de firmas."
-
-#: 
 msgid "Property Type"
 msgstr "Tipo de propiedad"
 
@@ -27455,10 +27411,6 @@ msgstr "Revisar y filtrar"
 #: 
 msgid "Review and vote"
 msgstr "Revisar y votar"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Revise el año y luego descargue los comprobantes de donaciones."
 
 #: 
 msgid "Review what we are considering"
@@ -27507,10 +27459,6 @@ msgstr "Fuerte"
 #: 
 msgid "Support"
 msgstr "Ayuda"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Identificación fiscal y configuración de PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

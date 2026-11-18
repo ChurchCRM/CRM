@@ -23913,10 +23913,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d 件の支払いは、まだどの入金にも含まれていません。"
 
 #: 
-msgid "Closing line"
-msgstr "結びの文"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "今年の日付の入金はすべて締め切られています。"
 
@@ -23929,28 +23925,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "今年の支払いはすべて入金に含まれています。"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "税務明細書を作成"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "献金レポート（税務明細書）"
-
-#: 
-msgid "Opening line"
-msgstr "冒頭の文"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Signed by"
-msgstr "署名者"
-
-#: 
-msgid "Thank-you line"
-msgstr "感謝の文"
 
 #: 
 msgid "Year-End Giving"
@@ -24109,10 +24085,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF一時ディレクトリは、絶対パスである必要があります。"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "教会の納税者番号（EIN）"
-
-#: 
 msgid "Closing Line"
 msgstr "結びの文"
 
@@ -24155,10 +24127,6 @@ msgstr "明細書の設定"
 #: 
 msgid "Statement Wording"
 msgstr "明細書の文言"
-
-#: 
-msgid "Tax Information"
-msgstr "税務情報"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24207,10 +24175,6 @@ msgstr "教会名と住所を使用"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "システム設定で指定したレターヘッドのパスを使用"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "献金明細書の文言、納税者番号、PDFの扱い"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27020,10 +26984,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "サインインも無効にして、メンバーポータルを使えないようにする"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "明細を送信する前に"
-
-#: 
 msgid "Birthday today"
 msgstr "今日が誕生日"
 
@@ -27364,10 +27324,6 @@ msgid "Preview Sample Letter"
 msgstr "サンプルレターをプレビュー"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "カナダの献金明細用の非公開署名アセット識別子。署名のアップロードで管理されます。"
-
-#: 
 msgid "Property Type"
 msgstr "プロパティの種類"
 
@@ -27406,10 +27362,6 @@ msgstr "確認して絞り込む"
 #: 
 msgid "Review and vote"
 msgstr "確認して投票"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "年を確認してから、献金明細をダウンロードしてください。"
 
 #: 
 msgid "Review what we are considering"
@@ -27458,10 +27410,6 @@ msgstr "強い"
 #: 
 msgid "Support"
 msgstr "サポート"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "納税者番号とPDFの設定"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

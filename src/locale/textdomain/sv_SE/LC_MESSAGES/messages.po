@@ -24061,10 +24061,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalningar ligger ännu inte på någon insättning."
 
 #: 
-msgid "Closing line"
-msgstr "Avslutningsrad"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Alla insättningar daterade i år är stängda."
 
@@ -24077,28 +24073,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Varje betalning i år ligger på en insättning."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Skapa skatteintyg"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Gåvorapport (skatteintyg)"
-
-#: 
-msgid "Opening line"
-msgstr "Inledningsrad"
-
-#: 
 msgid "Qty"
 msgstr "Antal"
-
-#: 
-msgid "Signed by"
-msgstr "Undertecknat av"
-
-#: 
-msgid "Thank-you line"
-msgstr "Tackrad"
 
 #: 
 msgid "Year-End Giving"
@@ -24257,10 +24233,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Den tillfälliga katalogen för PDF måste vara en absolut sökväg."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Församlingens skatte-ID (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Avslutningsrad"
 
@@ -24303,10 +24275,6 @@ msgstr "Intygsinställningar"
 #: 
 msgid "Statement Wording"
 msgstr "Intygets lydelse"
-
-#: 
-msgid "Tax Information"
-msgstr "Skatteuppgifter"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24355,10 +24323,6 @@ msgstr "Använder församlingens namn och adress"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Använder sökvägen till brevhuvudet som angetts i systeminställningarna"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lydelse, skatte-ID och PDF-hantering för gåvointyg"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27173,10 +27137,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Inaktivera även inloggning, så att de inte kan använda medlemsportalen"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Innan du skickar sammanställningar"
-
-#: 
 msgid "Birthday today"
 msgstr "Fyller år idag"
 
@@ -27517,10 +27477,6 @@ msgid "Preview Sample Letter"
 msgstr "Förhandsgranska exempelbrev"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifierare för den privata kanadensiska signaturen för gåvosammanställningar. Hanteras via uppladdning av signatur."
-
-#: 
 msgid "Property Type"
 msgstr "Egenskapstyp"
 
@@ -27559,10 +27515,6 @@ msgstr "Granska och filtrera"
 #: 
 msgid "Review and vote"
 msgstr "Granska och rösta"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Granska året och ladda sedan ned gåvosammanställningar."
 
 #: 
 msgid "Review what we are considering"
@@ -27611,10 +27563,6 @@ msgstr "Stark"
 #: 
 msgid "Support"
 msgstr "Support"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Skatte-ID och PDF-inställningar"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

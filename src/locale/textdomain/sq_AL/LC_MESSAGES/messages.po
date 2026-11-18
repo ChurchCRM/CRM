@@ -23965,10 +23965,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagesa nuk janë ende në asnjë depozitë."
 
 #: 
-msgid "Closing line"
-msgstr "Rreshti i mbylljes"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Çdo depozitë e datuar në këtë vit është mbyllur."
 
@@ -23981,28 +23977,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Çdo pagesë në këtë vit është në një depozitë."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gjeneroni deklaratat tatimore"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raporti i dhurimeve (deklaratat tatimore)"
-
-#: 
-msgid "Opening line"
-msgstr "Rreshti i hapjes"
-
-#: 
 msgid "Qty"
 msgstr "Sasia"
-
-#: 
-msgid "Signed by"
-msgstr "Nënshkruar nga"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rreshti i falënderimit"
 
 #: 
 msgid "Year-End Giving"
@@ -24161,10 +24137,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Drejtoria e përkohshme e PDF duhet të jetë një shteg absolut drejtorie."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Numri tatimor i kishës (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Rreshti i mbylljes"
 
@@ -24207,10 +24179,6 @@ msgstr "Cilësimet e deklaratës"
 #: 
 msgid "Statement Wording"
 msgstr "Formulimi i deklaratës"
-
-#: 
-msgid "Tax Information"
-msgstr "Informacioni tatimor"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24259,10 +24227,6 @@ msgstr "Duke përdorur emrin dhe adresën e kishës"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Duke përdorur shtegun e kokës së letrës të vendosur te Cilësimet e sistemit"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formulimi, numri tatimor dhe trajtimi i PDF për deklaratat e dhurimeve"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27077,10 +27041,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Gjithashtu çaktivizoni identifikimin, në mënyrë që ata të mos mund të përdorin Portalin e Anëtarëve"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Përpara se të dërgoni deklarata"
-
-#: 
 msgid "Birthday today"
 msgstr "Sot ditelindjen"
 
@@ -27405,10 +27365,6 @@ msgid "Preview Sample Letter"
 msgstr "Shiko paraprakisht Letër Shembull"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifikuesi i pasurisë së nënshkrimit të deklaratës private kanadeze të dhurimit. Menaxhohet nga ngarkimi i nënshkrimit."
-
-#: 
 msgid "Property Type"
 msgstr "Lloji i atributit të personalizuar"
 
@@ -27443,10 +27399,6 @@ msgstr "Rishikoni dhe filtro"
 #: 
 msgid "Review and vote"
 msgstr "Rishikoni dhe votoni"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Rishikoni vitin, më pas shkarkoni deklaratat e dhurimit."
 
 #: 
 msgid "Review what we are considering"
@@ -27495,10 +27447,6 @@ msgstr "I fortë"
 #: 
 msgid "Support"
 msgstr "Mbështetje"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "ID Tatimore dhe Cilësimet PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

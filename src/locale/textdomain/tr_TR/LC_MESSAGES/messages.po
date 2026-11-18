@@ -23974,10 +23974,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d ödeme henüz hiçbir depozitoda değil."
 
 #: 
-msgid "Closing line"
-msgstr "Kapanış satırı"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Bu yıl tarihli her depozito kapatılmıştır."
 
@@ -23990,28 +23986,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Bu yıldaki her ödeme bir depozitodadır."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Vergi bildirimleri oluştur"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Bağış raporu (vergi bildirimleri)"
-
-#: 
-msgid "Opening line"
-msgstr "Açılış satırı"
-
-#: 
 msgid "Qty"
 msgstr "Adet"
-
-#: 
-msgid "Signed by"
-msgstr "İmzalayan"
-
-#: 
-msgid "Thank-you line"
-msgstr "Teşekkür satırı"
 
 #: 
 msgid "Year-End Giving"
@@ -24170,10 +24146,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF geçici dizini mutlak bir dizin yolu olmalıdır."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Kilise vergi kimliği (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Kapanış satırı"
 
@@ -24216,10 +24188,6 @@ msgstr "Bildirim ayarları"
 #: 
 msgid "Statement Wording"
 msgstr "Bildirim metni"
-
-#: 
-msgid "Tax Information"
-msgstr "Vergi bilgileri"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24268,10 +24236,6 @@ msgstr "Kilise adı ve adresi kullanılıyor"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Sistem Ayarları’nda belirlenen antet yolu kullanılıyor"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Bağış bildirimleri için metin, vergi kimliği ve PDF işleme"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27086,10 +27050,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Üye Portalı'nı kullanamamaları için oturum açmayı da devre dışı bırak"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Özetleri Göndermeden Önce"
-
-#: 
 msgid "Birthday today"
 msgstr "Bugün doğum günü"
 
@@ -27430,10 +27390,6 @@ msgid "Preview Sample Letter"
 msgstr "Örnek Mektubu Önizle"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kanada bağış özeti özel imza varlığı tanımlayıcısı. İmza yüklemesiyle yönetilir."
-
-#: 
 msgid "Property Type"
 msgstr "Özellik Türü"
 
@@ -27472,10 +27428,6 @@ msgstr "İncele ve Filtrele"
 #: 
 msgid "Review and vote"
 msgstr "İncele ve oy ver"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Yılı inceleyin, ardından bağış özetlerini indirin."
 
 #: 
 msgid "Review what we are considering"
@@ -27524,10 +27476,6 @@ msgstr "Güçlü"
 #: 
 msgid "Support"
 msgstr "Destek"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Vergi Kimliği ve PDF Ayarları"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

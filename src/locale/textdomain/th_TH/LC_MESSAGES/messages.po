@@ -23925,10 +23925,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
 
 #: 
-msgid "Closing line"
-msgstr "บรรทัดปิด"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "รายการนำฝากทุกรายการที่ลงวันที่ในปีนี้ปิดแล้ว"
 
@@ -23941,28 +23937,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "การชำระเงินทุกรายการในปีนี้อยู่ในรายการนำฝาก"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "สร้างใบแจ้งภาษี"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "รายงานการถวาย (ใบแจ้งภาษี)"
-
-#: 
-msgid "Opening line"
-msgstr "บรรทัดเปิด"
-
-#: 
 msgid "Qty"
 msgstr "จำนวน"
-
-#: 
-msgid "Signed by"
-msgstr "ลงนามโดย"
-
-#: 
-msgid "Thank-you line"
-msgstr "บรรทัดขอบคุณ"
 
 #: 
 msgid "Year-End Giving"
@@ -24121,10 +24097,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "ไดเรกทอรีชั่วคราวของ PDF ต้องเป็นเส้นทางไดเรกทอรีแบบเต็ม"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "เลขผู้เสียภาษีของคริสตจักร (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "บรรทัดปิด"
 
@@ -24167,10 +24139,6 @@ msgstr "การตั้งค่าใบแจ้ง"
 #: 
 msgid "Statement Wording"
 msgstr "ถ้อยคำในใบแจ้ง"
-
-#: 
-msgid "Tax Information"
-msgstr "ข้อมูลภาษี"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24219,10 +24187,6 @@ msgstr "ใช้ชื่อและที่อยู่ของคริส
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ถ้อยคำ เลขผู้เสียภาษี และการจัดการ PDF สำหรับใบแจ้งการถวาย"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27032,10 +26996,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "ปิดใช้งานการลงชื่อเข้าใช้ด้วย เพื่อให้ไม่สามารถใช้พอร์ทัลสมาชิกได้"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "ก่อนส่งใบสรุป"
-
-#: 
 msgid "Birthday today"
 msgstr "วันเกิดวันนี้"
 
@@ -27376,10 +27336,6 @@ msgid "Preview Sample Letter"
 msgstr "ดูตัวอย่างจดหมาย"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "ตัวระบุแอสเซ็ตลายเซ็นส่วนตัวของใบสรุปเงินถวายแคนาดา จัดการโดยการอัปโหลดลายเซ็น"
-
-#: 
 msgid "Property Type"
 msgstr "ประเภทคุณสมบัติ"
 
@@ -27418,10 +27374,6 @@ msgstr "ตรวจสอบและกรอง"
 #: 
 msgid "Review and vote"
 msgstr "ตรวจสอบและโหวต"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ตรวจสอบปีนั้น แล้วดาวน์โหลดใบสรุปเงินถวาย"
 
 #: 
 msgid "Review what we are considering"
@@ -27470,10 +27422,6 @@ msgstr "แข็งแรง"
 #: 
 msgid "Support"
 msgstr "การสนับสนุน"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "การตั้งค่าเลขประจำตัวผู้เสียภาษีและ PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

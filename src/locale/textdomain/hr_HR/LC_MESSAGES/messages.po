@@ -23967,10 +23967,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d uplata još nije ni na jednom pologu."
 
 #: 
-msgid "Closing line"
-msgstr "Završni redak"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Svaki polog s datumom u ovoj godini je zatvoren."
 
@@ -23983,28 +23979,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Svaka uplata u ovoj godini je na pologu."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Izradi porezne potvrde"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Izvještaj o darovima (porezne potvrde)"
-
-#: 
-msgid "Opening line"
-msgstr "Uvodni redak"
-
-#: 
 msgid "Qty"
 msgstr "Kol."
-
-#: 
-msgid "Signed by"
-msgstr "Potpisao"
-
-#: 
-msgid "Thank-you line"
-msgstr "Redak zahvale"
 
 #: 
 msgid "Year-End Giving"
@@ -24163,10 +24139,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Privremeni direktorij za PDF mora biti apsolutna putanja direktorija."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Porezni broj crkve (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Završni redak"
 
@@ -24209,10 +24181,6 @@ msgstr "Postavke potvrde"
 #: 
 msgid "Statement Wording"
 msgstr "Tekst potvrde"
-
-#: 
-msgid "Tax Information"
-msgstr "Porezni podaci"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24261,10 +24229,6 @@ msgstr "Koristi se naziv i adresa crkve"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Koristi se putanja zaglavlja postavljena u postavkama sustava"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Tekst, porezni broj i rukovanje PDF-om za potvrde o darovima"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27084,10 +27048,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Onemogući i prijavu kako ne bi mogli koristiti portal za članove"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Prije slanja izvještaja"
-
-#: 
 msgid "Birthday today"
 msgstr "Danas ima rođendan"
 
@@ -27428,10 +27388,6 @@ msgid "Preview Sample Letter"
 msgstr "Pregled primjera pisma"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Privatni identifikator potpisa na kanadskim izvještajima o darovima. Upravlja se prijenosom potpisa."
-
-#: 
 msgid "Property Type"
 msgstr "Vrsta svojstva"
 
@@ -27470,10 +27426,6 @@ msgstr "Pregled i filtar"
 #: 
 msgid "Review and vote"
 msgstr "Pregledaj i glasaj"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Pregledajte godinu, a zatim preuzmite izvještaje o darovima."
 
 #: 
 msgid "Review what we are considering"
@@ -27522,10 +27474,6 @@ msgstr "Jaka"
 #: 
 msgid "Support"
 msgstr "Podrška"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Postavke poreznog ID-a i PDF-a"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

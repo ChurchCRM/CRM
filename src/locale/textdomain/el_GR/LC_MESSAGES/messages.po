@@ -23974,10 +23974,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d πληρωμές δεν ανήκουν ακόμη σε καμία κατάθεση."
 
 #: 
-msgid "Closing line"
-msgstr "Καταληκτική γραμμή"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Κάθε κατάθεση με ημερομηνία εντός αυτού του έτους είναι κλειστή."
 
@@ -23990,28 +23986,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Κάθε πληρωμή αυτού του έτους ανήκει σε κατάθεση."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Αναφορά προσφορών (Φορολογικές βεβαιώσεις)"
-
-#: 
-msgid "Opening line"
-msgstr "Εισαγωγική γραμμή"
-
-#: 
 msgid "Qty"
 msgstr "Ποσ."
-
-#: 
-msgid "Signed by"
-msgstr "Υπογραφή από"
-
-#: 
-msgid "Thank-you line"
-msgstr "Γραμμή ευχαριστίας"
 
 #: 
 msgid "Year-End Giving"
@@ -24170,10 +24146,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Ο προσωρινός κατάλογος PDF πρέπει να είναι απόλυτη διαδρομή καταλόγου."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Φορολογικός αριθμός εκκλησίας (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Καταληκτική γραμμή"
 
@@ -24216,10 +24188,6 @@ msgstr "Ρυθμίσεις βεβαίωσης"
 #: 
 msgid "Statement Wording"
 msgstr "Διατύπωση βεβαίωσης"
-
-#: 
-msgid "Tax Information"
-msgstr "Φορολογικές πληροφορίες"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24268,10 +24236,6 @@ msgstr "Χρήση του ονόματος και της διεύθυνσης τ
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Χρήση της διαδρομής επιστολόχαρτου που ορίστηκε στις Ρυθμίσεις συστήματος"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Διατύπωση, φορολογικός αριθμός και διαχείριση PDF για τις βεβαιώσεις προσφορών"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27086,10 +27050,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Απενεργοποίηση και της σύνδεσης, ώστε να μην μπορούν να χρησιμοποιούν την Πύλη μελών"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Πριν στείλετε καταστάσεις"
-
-#: 
 msgid "Birthday today"
 msgstr "Γενέθλια σήμερα"
 
@@ -27430,10 +27390,6 @@ msgid "Preview Sample Letter"
 msgstr "Προεπισκόπηση δείγματος επιστολής"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Ιδιωτικό αναγνωριστικό πόρου υπογραφής για καναδικές καταστάσεις προσφορών. Διαχειρίζεται μέσω της μεταφόρτωσης υπογραφής."
-
-#: 
 msgid "Property Type"
 msgstr "Τύπος ιδιότητας"
 
@@ -27472,10 +27428,6 @@ msgstr "Ανασκόπηση και φιλτράρισμα"
 #: 
 msgid "Review and vote"
 msgstr "Ανασκόπηση και ψηφοφορία"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Ανασκοπήστε το έτος και μετά κατεβάστε τις καταστάσεις προσφορών."
 
 #: 
 msgid "Review what we are considering"
@@ -27524,10 +27476,6 @@ msgstr "Ισχυρή"
 #: 
 msgid "Support"
 msgstr "Υποστήριξη"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Ρυθμίσεις ΑΦΜ και PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

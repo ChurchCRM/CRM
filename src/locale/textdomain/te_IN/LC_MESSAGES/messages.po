@@ -23952,10 +23952,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d చెల్లింపులు ఇంకా ఏ డిపాజిట్‌లోనూ లేవు."
 
 #: 
-msgid "Closing line"
-msgstr "ముగింపు వాక్యం"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "ఈ సంవత్సరం తేదీతో ఉన్న ప్రతి డిపాజిట్ మూసివేయబడింది."
 
@@ -23968,28 +23964,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "ఈ సంవత్సరంలోని ప్రతి చెల్లింపు ఒక డిపాజిట్‌లో ఉంది."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "పన్ను ప్రకటనలను రూపొందించండి"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "దాన నివేదిక (పన్ను ప్రకటనలు)"
-
-#: 
-msgid "Opening line"
-msgstr "ప్రారంభ వాక్యం"
-
-#: 
 msgid "Qty"
 msgstr "పరిమాణం"
-
-#: 
-msgid "Signed by"
-msgstr "సంతకం చేసినవారు"
-
-#: 
-msgid "Thank-you line"
-msgstr "కృతజ్ఞత వాక్యం"
 
 #: 
 msgid "Year-End Giving"
@@ -24148,10 +24124,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF తాత్కాలిక డైరెక్టరీ సంపూర్ణ డైరెక్టరీ మార్గం అయి ఉండాలి."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "చర్చి పన్ను గుర్తింపు (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "ముగింపు వాక్యం"
 
@@ -24194,10 +24166,6 @@ msgstr "ప్రకటన సెట్టింగ్‌లు"
 #: 
 msgid "Statement Wording"
 msgstr "ప్రకటన పదాలు"
-
-#: 
-msgid "Tax Information"
-msgstr "పన్ను సమాచారం"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24246,10 +24214,6 @@ msgstr "చర్చి పేరు మరియు చిరునామాన
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "సిస్టమ్ సెట్టింగ్‌లలో సెట్ చేసిన లేఖ శీర్షిక మార్గాన్ని ఉపయోగిస్తోంది"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "దాన ప్రకటనల కోసం పదాలు, పన్ను గుర్తింపు మరియు PDF నిర్వహణ"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27064,10 +27028,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "సభ్య పోర్టల్‌ను ఉపయోగించలేకుండా సైన్-ఇన్‌ను కూడా నిలిపివేయండి"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "ప్రకటనలు పంపే ముందు"
-
-#: 
 msgid "Birthday today"
 msgstr "ఈ రోజు పుట్టినరోజు"
 
@@ -27408,10 +27368,6 @@ msgid "Preview Sample Letter"
 msgstr "నమూనా లేఖను ప్రివ్యూ చేయండి"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "కెనడియన్ కానుక ప్రకటన ప్రైవేట్ సంతకం ఆస్తి ఐడెంటిఫైయర్. సంతకం అప్‌లోడ్ ద్వారా నిర్వహించబడుతుంది."
-
-#: 
 msgid "Property Type"
 msgstr "లక్షణ రకం"
 
@@ -27450,10 +27406,6 @@ msgstr "సమీక్షించి ఫిల్టర్ చేయండి"
 #: 
 msgid "Review and vote"
 msgstr "సమీక్షించి ఓటు వేయండి"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "సంవత్సరాన్ని సమీక్షించండి, ఆపై కానుక ప్రకటనలను డౌన్‌లోడ్ చేయండి."
 
 #: 
 msgid "Review what we are considering"
@@ -27502,10 +27454,6 @@ msgstr "బలమైనది"
 #: 
 msgid "Support"
 msgstr "మద్దతు"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "పన్ను ID మరియు PDF సెట్టింగ్‌లు"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

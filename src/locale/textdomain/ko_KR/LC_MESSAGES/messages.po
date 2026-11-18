@@ -23941,10 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
 
 #: 
-msgid "Closing line"
-msgstr "맺음말"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "올해 날짜의 입금은 모두 마감되었습니다."
 
@@ -23957,28 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "올해의 모든 납부가 입금에 포함되어 있습니다."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "세금 명세서 생성"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "헌금 보고서(세금 명세서)"
-
-#: 
-msgid "Opening line"
-msgstr "인사말"
-
-#: 
 msgid "Qty"
 msgstr "수량"
-
-#: 
-msgid "Signed by"
-msgstr "서명한 사람"
-
-#: 
-msgid "Thank-you line"
-msgstr "감사 문구"
 
 #: 
 msgid "Year-End Giving"
@@ -24137,10 +24113,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 임시 디렉터리는 절대 경로여야 합니다."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "교회 납세자 번호(EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "맺음말"
 
@@ -24183,10 +24155,6 @@ msgstr "명세서 설정"
 #: 
 msgid "Statement Wording"
 msgstr "명세서 문구"
-
-#: 
-msgid "Tax Information"
-msgstr "세금 정보"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24235,10 +24203,6 @@ msgstr "교회 이름과 주소 사용"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "헌금 명세서의 문구, 납세자 번호, PDF 처리"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27048,10 +27012,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "로그인도 비활성화하여 회원 포털을 사용하지 못하게 하기"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "명세서를 보내기 전에"
-
-#: 
 msgid "Birthday today"
 msgstr "오늘 생일"
 
@@ -27392,10 +27352,6 @@ msgid "Preview Sample Letter"
 msgstr "샘플 편지 미리 보기"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "캐나다 헌금 명세서 비공개 서명 자산 식별자입니다. 서명 업로드로 관리됩니다."
-
-#: 
 msgid "Property Type"
 msgstr "속성 유형"
 
@@ -27434,10 +27390,6 @@ msgstr "검토 및 필터"
 #: 
 msgid "Review and vote"
 msgstr "검토 및 투표"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "해당 연도를 검토한 다음 헌금 명세서를 다운로드하세요."
 
 #: 
 msgid "Review what we are considering"
@@ -27486,10 +27438,6 @@ msgstr "강함"
 #: 
 msgid "Support"
 msgstr "지원"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "세금 ID 및 PDF 설정"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

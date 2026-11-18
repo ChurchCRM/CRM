@@ -23941,10 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "May %d bayad na wala pa sa anumang deposito."
 
 #: 
-msgid "Closing line"
-msgstr "Pangwakas na linya"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Sarado na ang bawat deposito na may petsa sa taong ito."
 
@@ -23957,28 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Ang bawat bayad sa taong ito ay nasa isang deposito."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gumawa ng mga Pahayag ng Buwis"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Ulat ng Pagbibigay (Mga Pahayag ng Buwis)"
-
-#: 
-msgid "Opening line"
-msgstr "Pambungad na linya"
-
-#: 
 msgid "Qty"
 msgstr "Dami"
-
-#: 
-msgid "Signed by"
-msgstr "Nilagdaan ni"
-
-#: 
-msgid "Thank-you line"
-msgstr "Linya ng pasasalamat"
 
 #: 
 msgid "Year-End Giving"
@@ -24137,10 +24113,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Ang pansamantalang direktoryo ng PDF ay dapat ganap na landas ng direktoryo."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Tax ID ng Simbahan (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Pangwakas na Linya"
 
@@ -24183,10 +24155,6 @@ msgstr "Mga Setting ng Pahayag"
 #: 
 msgid "Statement Wording"
 msgstr "Mga Salita ng Pahayag"
-
-#: 
-msgid "Tax Information"
-msgstr "Impormasyon sa Buwis"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24235,10 +24203,6 @@ msgstr "Ginagamit ang pangalan at address ng simbahan"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Ginagamit ang landas ng letterhead na nakatakda sa System Settings"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Mga salita, tax ID, at paghawak ng PDF para sa mga pahayag ng pagbibigay"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27053,10 +27017,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "I-disable din ang pag-sign in, para hindi nila magamit ang Portal ng Miyembro"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Bago Magpadala ng mga Pahayag"
-
-#: 
 msgid "Birthday today"
 msgstr "Kaarawan ngayon"
 
@@ -27397,10 +27357,6 @@ msgid "Preview Sample Letter"
 msgstr "I-preview ang Sample na Liham"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifier ng asset ng pribadong lagda ng pahayag ng pag-aabuloy sa Canada. Pinamamahalaan sa pamamagitan ng pag-upload ng lagda."
-
-#: 
 msgid "Property Type"
 msgstr "Uri ng Katangian"
 
@@ -27439,10 +27395,6 @@ msgstr "Suriin at Salain"
 #: 
 msgid "Review and vote"
 msgstr "Suriin at bumoto"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Suriin ang taon, pagkatapos ay i-download ang mga pahayag ng pag-aabuloy."
 
 #: 
 msgid "Review what we are considering"
@@ -27491,10 +27443,6 @@ msgstr "Malakas"
 #: 
 msgid "Support"
 msgstr "Suporta"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Mga Setting ng Tax ID at PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."

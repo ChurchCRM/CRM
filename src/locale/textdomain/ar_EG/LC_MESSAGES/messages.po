@@ -24082,10 +24082,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d مدفوعات ليست مدرجة في أي إيداع بعد."
 
 #: 
-msgid "Closing line"
-msgstr "سطر الختام"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "كل إيداع بتاريخ هذا العام مغلق."
 
@@ -24098,28 +24094,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "كل دفعة في هذا العام مدرجة في إيداع."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "إنشاء الكشوف الضريبية"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "تقرير العطاء (الكشوف الضريبية)"
-
-#: 
-msgid "Opening line"
-msgstr "سطر الافتتاح"
-
-#: 
 msgid "Qty"
 msgstr "الكمية"
-
-#: 
-msgid "Signed by"
-msgstr "بتوقيع"
-
-#: 
-msgid "Thank-you line"
-msgstr "سطر الشكر"
 
 #: 
 msgid "Year-End Giving"
@@ -24278,10 +24254,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "يجب أن يكون المجلد المؤقت لملفات PDF مسار مجلد مطلقًا."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "الرقم الضريبي للكنيسة (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "سطر الختام"
 
@@ -24324,10 +24296,6 @@ msgstr "إعدادات الكشف"
 #: 
 msgid "Statement Wording"
 msgstr "صياغة الكشف"
-
-#: 
-msgid "Tax Information"
-msgstr "البيانات الضريبية"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24376,10 +24344,6 @@ msgstr "باستخدام اسم الكنيسة وعنوانها"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "باستخدام مسار الترويسة المحدد في إعدادات النظام"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "الصياغة والرقم الضريبي والتعامل مع PDF لكشوف العطاء"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27214,10 +27178,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "تعطيل تسجيل الدخول أيضًا لمنع استخدام بوابة الأعضاء"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "قبل إرسال الكشوف"
-
-#: 
 msgid "Birthday today"
 msgstr "عيد ميلاد اليوم"
 
@@ -27542,10 +27502,6 @@ msgid "Preview Sample Letter"
 msgstr "معاينة نموذج خطاب"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "معرّف ملف التوقيع الخاص بكشوف التبرعات الكندية. يُدار من خلال رفع التوقيع."
-
-#: 
 msgid "Property Type"
 msgstr "نوع الخاصية"
 
@@ -27580,10 +27536,6 @@ msgstr "مراجعة وتصفية"
 #: 
 msgid "Review and vote"
 msgstr "مراجعة وتصويت"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "راجع السنة، ثم نزّل كشوف التبرعات."
 
 #: 
 msgid "Review what we are considering"
@@ -27632,10 +27584,6 @@ msgstr "قوية"
 #: 
 msgid "Support"
 msgstr "الدعم"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "المعرّف الضريبي وإعدادات PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
