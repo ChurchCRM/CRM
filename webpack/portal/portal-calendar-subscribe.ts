@@ -17,6 +17,7 @@
  * bootbox or a Bootstrap modal, so the portal keeps one dialog style that a
  * church theme restyles with the portal tokens.
  */
+import { copyText } from "../common/copy-to-clipboard";
 import { getCsrfToken, type PortalApiResult, sendPortalJSON, t } from "./portal-forms";
 import { reloadWhenSignedOut } from "./portal-session";
 
@@ -208,10 +209,12 @@ function failureMessage<T>(result: PortalApiResult<T>): string {
 }
 
 /**
- * Copy the address. `navigator.clipboard` needs a secure context, which a
- * church on plain HTTP does not have — so when it is missing or refused, the
- * fallback selects the text and lets the member press the key combination
- * their device uses.
+ * Copy the address through the shared helper (#11458). `navigator.clipboard`
+ * needs a secure context, which a church on plain HTTP does not have — so
+ * when the Clipboard API is missing or refused, the fallback selects the
+ * visible input and lets the member press the key combination their device
+ * uses, instead of the helper's hidden-textarea `execCommand` fallback: the
+ * member is meant to see the address selected.
  */
 async function copyAddress(): Promise<void> {
   const input = element<HTMLInputElement>("portal-calendar-subscribe-url");
@@ -219,14 +222,9 @@ async function copyAddress(): Promise<void> {
     return;
   }
 
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(input.value);
-      setNotice(t("The calendar address was copied."));
-      return;
-    }
-  } catch {
-    // Fall through to the selection fallback below.
+  if (await copyText(input.value, { execCommandFallback: false })) {
+    setNotice(t("The calendar address was copied."));
+    return;
   }
 
   input.focus();
