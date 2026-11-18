@@ -5145,10 +5145,6 @@ msgid "Enter event description..."
 msgstr "Ereignisbeschreibung eingeben..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Notiztext hier eingeben..."
-
-#: 
 msgid "Note"
 msgstr "Notiz"
 
@@ -8107,10 +8103,6 @@ msgid "or later to continue."
 msgstr "oder höher, um fortzufahren."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notizen \"Wie Sie kamen\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d Ergebnis für \"%s\""
@@ -8219,10 +8211,6 @@ msgstr "Einzelne Personendatensätze hinzufügen oder bearbeiten"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Gespendete Gegenstände für Spendenaktionen hinzufügen oder bearbeiten"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Notizen für Personen und Familien hinzufügen oder bearbeiten"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9185,10 +9173,6 @@ msgstr "Mehrere Gewinner einer Spendenverlosung auf einmal erfassen"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Neue Spendenversprechen und Zahlungen erfassen"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Grund des Besuchs der Gemeinde erfassen"
 
 #: 
 msgid "Remove from Class"
@@ -14517,24 +14501,12 @@ msgid "People &amp; Families"
 msgstr "Personen &amp; Familien"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Die Notiz, die Sie bearbeiten möchten, existiert nicht mehr."
-
-#: 
 msgid "User List"
 msgstr "Benutzerliste"
 
 #: 
 msgid "View Person"
 msgstr "Person anzeigen"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Sie haben keine Berechtigung, eine Notiz für diese Familie hinzuzufügen."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Sie haben keine Berechtigung, eine Notiz für diese Person hinzuzufügen."
 
 #: 
 msgid "Account locked"
@@ -15235,10 +15207,6 @@ msgstr "goalAmount darf nicht negativ sein"
 #: 
 msgid "thru %s"
 msgstr "bis %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "„Warum gekommen“-Notizen für %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

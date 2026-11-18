@@ -5040,10 +5040,6 @@ msgid "Enter event description..."
 msgstr "Digite a descrição do evento..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Digite o texto da anotação aqui..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -8002,10 +7998,6 @@ msgid "or later to continue."
 msgstr "ou posterior para continuar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notas \"motivo da visita\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultado para \"%s\""
@@ -8114,10 +8106,6 @@ msgstr "Adicionar ou editar registros individuais de pessoas"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adicionar ou editar itens doados para eventos de arrecadação de fundos"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adicionar ou editar notas para pessoas e famílias"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9080,10 +9068,6 @@ msgstr "Registrar vários vencedores de sorteios de arrecadação de fundos de u
 #: 
 msgid "Record new pledges and payments"
 msgstr "Registrar novas promessas de doação e pagamentos"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Registrar o motivo pelo qual os participantes visitaram a sua paróquia"
 
 #: 
 msgid "Remove from Class"
@@ -14412,24 +14396,12 @@ msgid "People &amp; Families"
 msgstr "Pessoas &amp; Famílias"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A nota que você está tentando editar não existe mais."
-
-#: 
 msgid "User List"
 msgstr "Lista de usuários"
 
 #: 
 msgid "View Person"
 msgstr "Visualizar pessoa"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Você não tem permissão para adicionar uma nota para esta família."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Você não tem permissão para adicionar uma nota para esta pessoa."
 
 #: 
 msgid "Account locked"
@@ -15130,10 +15102,6 @@ msgstr "O valor da meta não pode ser negativo"
 #: 
 msgid "thru %s"
 msgstr "até %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notas \"Motivo da visita\" para %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

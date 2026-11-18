@@ -5049,10 +5049,6 @@ msgid "Enter event description..."
 msgstr "ป้อนคำอธิบายกิจกรรม..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "ป้อนข้อความบันทึกที่นี่..."
-
-#: 
 msgid "Note"
 msgstr "บันทึก"
 
@@ -8005,10 +8001,6 @@ msgid "or later to continue."
 msgstr "หรือใหม่กว่าเพื่อดำเนินการต่อ"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "บันทึก \"เหตุผลที่มา\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "ผลการค้นหา %d สำหรับ \"%s\""
@@ -8116,10 +8108,6 @@ msgstr "เพิ่มหรือแก้ไขข้อมูลบุคค
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "เพิ่มหรือแก้ไขสิ่งของบริจาคสำหรับกิจกรรมระดมทุน"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "เพิ่มหรือแก้ไขบันทึกสำหรับบุคคลและครอบครัว"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9082,10 +9070,6 @@ msgstr "บันทึกผู้ชนะการจับรางวัล
 #: 
 msgid "Record new pledges and payments"
 msgstr "บันทึกคำปฏิญาณถวายและการถวายใหม่"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
 
 #: 
 msgid "Remove from Class"
@@ -14412,24 +14396,12 @@ msgid "People &amp; Families"
 msgstr "ผู้คน &amp; ครอบครัว"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "บันทึกที่คุณพยายามแก้ไขไม่มีอยู่อีกต่อไปแล้ว"
-
-#: 
 msgid "User List"
 msgstr "รายชื่อผู้ใช้"
 
 #: 
 msgid "View Person"
 msgstr "ดูข้อมูลบุคคล"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับครอบครัวนี้"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
 
 #: 
 msgid "Account locked"
@@ -15128,10 +15100,6 @@ msgstr "goalAmount ต้องไม่ติดลบ"
 #: 
 msgid "thru %s"
 msgstr "ถึง %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "บันทึก \"เหตุผลที่มา\" สำหรับ %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

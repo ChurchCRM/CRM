@@ -5070,10 +5070,6 @@ msgid "Enter event description..."
 msgstr "הזן תיאור אירוע..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "הזן את הטקסט להערה כאן..."
-
-#: 
 msgid "Note"
 msgstr "הערה"
 
@@ -8032,10 +8028,6 @@ msgid "or later to continue."
 msgstr "או גרסה מאוחרת יותר להמשיך."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "הערות «למה הגיעו»"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "תוצאה %d עבור «%s»"
@@ -8144,10 +8136,6 @@ msgstr "הוספה או עריכה של רשומות אישיות"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "הוספה או עריכה של פריטים שנתרמו לאירועי גיוס כספים"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "הוספה או עריכה של הערות עבור אנשים ומשפחות"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9110,10 +9098,6 @@ msgstr "רישום מספר זוכי הגרלת גיוס כספים בבת אח�
 #: 
 msgid "Record new pledges and payments"
 msgstr "רישום התחייבויות כספיות ותשלומים חדשים"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "תעדו מדוע משתתפים ביקרו בקהילה שלכם"
 
 #: 
 msgid "Remove from Class"
@@ -14442,24 +14426,12 @@ msgid "People &amp; Families"
 msgstr "אנשים &amp; משפחות"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "ההערה שאתה מנסה לערוך כבר אינה קיימת."
-
-#: 
 msgid "User List"
 msgstr "רשימת משתמשים"
 
 #: 
 msgid "View Person"
 msgstr "הצג אדם"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "אין לך הרשאה להוסיף הערה עבור משפחה זו."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "אין לך הרשאה להוסיף הערה עבור אדם זה."
 
 #: 
 msgid "Account locked"
@@ -15160,10 +15132,6 @@ msgstr "סכום היעד חייב להיות לא שלילי"
 #: 
 msgid "thru %s"
 msgstr "עד %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "הערות \"מדוע הגיע\" עבור %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

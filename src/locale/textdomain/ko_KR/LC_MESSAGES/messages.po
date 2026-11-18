@@ -5065,10 +5065,6 @@ msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "여기에 메모를 입력하세요..."
-
-#: 
 msgid "Note"
 msgstr "메모"
 
@@ -8021,10 +8017,6 @@ msgid "or later to continue."
 msgstr "이상 버전이 계속하려면 필요합니다."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"방문 이유\" 메모"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"에 대한 %d개의 결과"
@@ -8132,10 +8124,6 @@ msgstr "개인 기록 추가 또는 편집"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "모금 행사를 위해 기부된 물품 추가 또는 편집"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "사람과 가족에 대한 메모 추가 또는 편집"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9098,10 +9086,6 @@ msgstr "여러 모금 추첨 당첨자를 한 번에 기록"
 #: 
 msgid "Record new pledges and payments"
 msgstr "새 서약 및 납부 기록"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "참석자가 교회를 방문한 이유 기록"
 
 #: 
 msgid "Remove from Class"
@@ -14428,24 +14412,12 @@ msgid "People &amp; Families"
 msgstr "교인 및 가족"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
-
-#: 
 msgid "User List"
 msgstr "사용자 목록"
 
 #: 
 msgid "View Person"
 msgstr "교인 보기"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
 
 #: 
 msgid "Account locked"
@@ -15144,10 +15116,6 @@ msgstr "목표 금액은 음수가 아니어야 합니다"
 #: 
 msgid "thru %s"
 msgstr "%s까지"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s의 \"방문 이유\" 메모"
 
 #: 
 msgid "%1$s of the %2$s family"

@@ -5072,10 +5072,6 @@ msgid "Enter event description..."
 msgstr "Voer gebeurtenisbeskrywing in..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Voer notaateks hier in..."
-
-#: 
 msgid "Note"
 msgstr "Nota"
 
@@ -8034,10 +8030,6 @@ msgid "or later to continue."
 msgstr "of later om voort te gaan."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Waarom Gekom\" Notas"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultaat vir \"%s\""
@@ -8146,10 +8138,6 @@ msgstr "Individuele persoonrekords byvoeg of wysig"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Items gedoneer vir insamelingsgebeure byvoeg of wysig"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Notas vir mense en families byvoeg of wysig"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9112,10 +9100,6 @@ msgstr "Teken veelvuldige insamelingsgebeure-trekking-wenners op eenmaal"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Teken nuwe verbintenisse en betalings"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Teken waarom aanwesiges jou kerk besoek het"
 
 #: 
 msgid "Remove from Class"
@@ -14444,24 +14428,12 @@ msgid "People &amp; Families"
 msgstr "Mense &amp; Gesinne"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Die nota wat u probeer wysig, bestaan nie meer nie."
-
-#: 
 msgid "User List"
 msgstr "Gebruikerslys"
 
 #: 
 msgid "View Person"
 msgstr "Bekyk Persoon"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "U het nie toestemming om 'n nota vir hierdie gesin by te voeg nie."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
 
 #: 
 msgid "Account locked"
@@ -15162,10 +15134,6 @@ msgstr "doelwitBedrag moet nie-negatief wees"
 #: 
 msgid "thru %s"
 msgstr "tot %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Hoekom Gekom\" notas vir %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"

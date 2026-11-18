@@ -5136,10 +5136,6 @@ msgid "Enter event description..."
 msgstr "输入活动描述..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "在此处输入笔记文本..."
-
-#: 
 msgid "Note"
 msgstr "笔记"
 
@@ -8092,10 +8088,6 @@ msgid "or later to continue."
 msgstr "或更高版本以继续。"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"为什么来\" 笔记"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d 个 \"%s\" 的结果"
@@ -8203,10 +8195,6 @@ msgstr "添加或编辑个人记录"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "添加或编辑为筹款活动捐赠的物品"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "为人员和家族添加或编辑笔记"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9169,10 +9157,6 @@ msgstr "一次记录多个募捐抽奖获奖者"
 #: 
 msgid "Record new pledges and payments"
 msgstr "记录新的奉献承诺和奉献款"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "记录来访者来教会的原因"
 
 #: 
 msgid "Remove from Class"
@@ -14499,24 +14483,12 @@ msgid "People &amp; Families"
 msgstr "人员与家庭"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "您尝试编辑的备注已不存在。"
-
-#: 
 msgid "User List"
 msgstr "用户列表"
 
 #: 
 msgid "View Person"
 msgstr "查看人员"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "您没有权限为此家庭添加备注。"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "您没有权限为此人添加备注。"
 
 #: 
 msgid "Account locked"
@@ -15215,10 +15187,6 @@ msgstr "目标金额必须为非负数"
 #: 
 msgid "thru %s"
 msgstr "至 %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s 的“来访原因”备注"
 
 #: 
 msgid "%1$s of the %2$s family"
