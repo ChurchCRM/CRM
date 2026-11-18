@@ -73,6 +73,17 @@ Cypress.Commands.add("shareMemberPortalCalendars", (visible) =>
     cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible }, 200),
 );
 
+// Directory report prefs (#11465) are stored per user; clear the saved flag so form
+// specs that assert defaults are not polluted by an earlier people/reports/directory POST.
+Cypress.Commands.add("clearDirectoryReportPrefs", (userId = 1) =>
+    cy.makePrivateAdminAPICall(
+        "POST",
+        `/api/user/${userId}/setting/reports.directory.saved`,
+        { value: "" },
+        200,
+    ),
+);
+
 Cypress.Commands.add("makePrivateUserAPICall", privateApiCall("user.api.key"));
 
 // grace.financeonly (id=904): Finance=1, non-admin.

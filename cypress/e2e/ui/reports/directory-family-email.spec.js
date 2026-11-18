@@ -15,6 +15,7 @@ describe("Directory report - email belongs to people", () => {
 
     beforeEach(() => {
         cy.setupAdminSession();
+        cy.clearDirectoryReportPrefs();
     });
 
     after(() => {
