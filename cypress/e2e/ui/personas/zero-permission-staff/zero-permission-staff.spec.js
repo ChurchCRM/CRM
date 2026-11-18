@@ -103,9 +103,14 @@ describe("Zero-Permission User (all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        it("WhyCameEditor is denied (EditRecords)", () => {
-            cy.visit("WhyCameEditor.php?PersonID=2", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+        it("Why Came API is denied (EditRecords)", () => {
+            cy.request({
+                method: "GET",
+                url: "/api/person/2/why-came",
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(403);
+            });
         });
 
         // Finance=0 — the finance module stays closed.

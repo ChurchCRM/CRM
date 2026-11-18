@@ -54,8 +54,8 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
 
         maliciousUrls.forEach((maliciousUrl) => {
             it(`should reject: ${maliciousUrl.substring(0, 40)}...`, () => {
-                // Visit WhyCameEditor with malicious linkBack
-                cy.visit(`/WhyCameEditor.php?PersonID=1&WhyCameID=0&linkBack=${encodeURIComponent(maliciousUrl)}`, {
+                // Visit a page that honors linkBack with a malicious value
+                cy.visit(`/finance/pledge/new?linkBack=${encodeURIComponent(maliciousUrl)}`, {
                     failOnStatusCode: false
                 });
 
@@ -103,7 +103,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
 
         validUrls.forEach((validUrl) => {
             it(`should accept: ${validUrl}`, () => {
-                cy.visit(`/WhyCameEditor.php?PersonID=1&WhyCameID=0&linkBack=${encodeURIComponent(validUrl)}`, {
+                cy.visit(`/finance/pledge/new?linkBack=${encodeURIComponent(validUrl)}`, {
                     failOnStatusCode: false
                 });
 
@@ -151,7 +151,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
 
         controlCharUrls.forEach((maliciousUrl) => {
             it(`should reject control characters: ${maliciousUrl.substring(0, 30)}...`, () => {
-                cy.visit(`/WhyCameEditor.php?PersonID=1&WhyCameID=0&linkBack=${maliciousUrl}`, {
+                cy.visit(`/finance/pledge/new?linkBack=${maliciousUrl}`, {
                     failOnStatusCode: false
                 });
 
@@ -165,22 +165,22 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
                         const href = $link.attr('href');
                         const resolved = new URL(href, baseUrl);
                         expect(resolved.host).to.equal(baseHost);
-                        expect(resolved.href).to.match(/(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
+                        expect(resolved.href).to.match(/(\/finance\/)/);
                     } else if ($button && $button.length) {
                         cy.wrap($button).click({ force: true });
                         cy.location('host').should('eq', baseHost);
-                        cy.location('href').should('match', /(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
+                        cy.location('href').should('match', /(\/finance\/)/);
                     } else {
                         cy.contains('Cancel').then(($el) => {
                             const href = $el.prop('href') || $el.attr('href');
                             if (href) {
                                 const resolved = new URL(href, baseUrl);
                                 expect(resolved.host).to.equal(baseHost);
-                                expect(resolved.href).to.match(/(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
+                                expect(resolved.href).to.match(/(\/finance\/)/);
                             } else {
                                 cy.wrap($el).click({ force: true });
                                 cy.location('host').should('eq', baseHost);
-                                cy.location('href').should('match', /(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
+                                cy.location('href').should('match', /(\/finance\/)/);
                             }
                         });
                     }
