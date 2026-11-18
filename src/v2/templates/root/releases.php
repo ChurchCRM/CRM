@@ -21,7 +21,7 @@ $releases = array_reverse($preview['upgradePath'] ?? []); // Same newest-first o
             </div>
         <?php elseif (empty($releases)): ?>
             <div class="alert alert-success" id="releases-up-to-date">
-                <?= gettext('You\'re up to date.') ?>
+                <?= gettext('You\'re up to date!') ?>
             </div>
         <?php else: ?>
             <p><?= sprintf(gettext('%d releases available since your installed version.'), count($releases)) ?></p>
