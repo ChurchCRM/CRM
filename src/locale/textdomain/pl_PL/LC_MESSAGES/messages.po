@@ -5039,10 +5039,6 @@ msgid "View Person Page"
 msgstr "Zobacz stronę osoby"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Rodzina nie ma adresów e-mail"
-
-#: 
 msgid "Deleted"
 msgstr "Skasowane"
 
@@ -24397,10 +24393,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Zero wyłącza opcjonalny wymóg. Wiek wymaga pełnej daty urodzenia, a staż członkostwa — daty członkostwa. Osoby bez wymaganych dat są pomijane i liczone osobno. Osoby zmarłe, osoby i klasyfikacje nieaktywne oraz rodziny i osoby nieaktywne lub oczekujące na przegląd są zawsze wykluczone. Używana jest bieżąca klasyfikacja i status, a nie status historyczny."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Kwota należna za %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Nie można utworzyć prywatnego magazynu tymczasowego PDF w wybranym katalogu."
 
@@ -27071,10 +27063,6 @@ msgid "Last verified"
 msgstr "Ostatnio zweryfikowano"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Żaden aktywny, zatwierdzony członek tej rodziny nie ma adresu e-mail. Zamiast tego zweryfikuj dane osobiście."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nie znaleziono zobowiązań za te lata podatkowe."
 
@@ -27097,10 +27085,6 @@ msgstr "Zaloguj się do portalu wspólnoty za pomocą tego adresu e-mail, aby pr
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ta rodzina jest nieaktywna, więc nie otrzymuje e-maili weryfikacyjnych."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ta samodzielnie zarejestrowana rodzina czeka na zatwierdzenie. Po zatwierdzeniu rodzina otrzyma e-mailem zaproszenie do zalogowania się do portalu wspólnoty i przejrzenia swoich danych."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

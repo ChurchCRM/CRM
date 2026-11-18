@@ -4975,10 +4975,6 @@ msgid "View Person Page"
 msgstr "개인 페이지 보기"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
 msgid "Deleted"
 msgstr "삭제됨"
 
@@ -24281,10 +24277,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "0은 선택 요건을 끕니다. 연령에는 완전한 출생일이 필요하고, 교인 기간에는 교인 등록일이 필요합니다. 필요한 날짜가 없는 사람은 제외되며 따로 집계됩니다. 사망한 사람, 비활성 사람과 분류, 비활성이거나 검토 대기 중인 가정과 사람은 항상 제외됩니다. 과거 상태가 아니라 현재 분류와 상태를 사용합니다."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s 미납액: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "선택한 디렉터리에 비공개 PDF 임시 저장소를 만들 수 없습니다."
 
@@ -26955,10 +26947,6 @@ msgid "Last verified"
 msgstr "마지막 확인"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "이 가족의 활성 승인 교인 중 이메일 주소가 있는 사람이 없습니다. 대신 직접 만나 확인하세요."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "이 회계 연도들에 대한 서약을 찾을 수 없습니다."
 
@@ -26981,10 +26969,6 @@ msgstr "이 이메일 주소로 교인 포털에 로그인하여 가족 정보�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "이 가족은 비활성 상태이므로 확인 이메일이 발송되지 않습니다."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "이 자가 등록 가족은 승인을 기다리고 있습니다. 승인하면 교인 포털에 로그인하여 정보를 검토하라는 초대 이메일이 가족에게 발송됩니다."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

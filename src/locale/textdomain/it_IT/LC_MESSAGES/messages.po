@@ -5001,10 +5001,6 @@ msgid "View Person Page"
 msgstr "Visualizza la pagina della persona"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "La famiglia non ha email da usare"
-
-#: 
 msgid "Deleted"
 msgstr "Eliminato"
 
@@ -24334,10 +24330,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Zero disattiva un requisito facoltativo. L'età richiede una data di nascita completa; la durata dell'appartenenza richiede una data di appartenenza. Le persone senza le date richieste sono omesse e conteggiate a parte. Le persone decedute, le persone e le classificazioni inattive e le famiglie e le persone inattive o in attesa di verifica sono sempre escluse; si usano la classificazione e lo stato attuali, non lo stato storico."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Importo dovuto per %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Impossibile creare l'archivio temporaneo privato dei PDF nella cartella selezionata."
 
@@ -27008,10 +27000,6 @@ msgid "Last verified"
 msgstr "Ultima verifica"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Nessun membro attivo e approvato di questa famiglia ha un indirizzo email. Verifica invece di persona."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nessun impegno trovato per questi anni fiscali."
 
@@ -27034,10 +27022,6 @@ msgstr "Accedi al portale dei fedeli con questo indirizzo email per controllare 
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Questa famiglia è inattiva, quindi non riceve email di verifica."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Questa famiglia auto-registrata è in attesa di approvazione. Approvandola, la famiglia riceve via email un invito ad accedere al portale dei fedeli e a controllare le proprie informazioni."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

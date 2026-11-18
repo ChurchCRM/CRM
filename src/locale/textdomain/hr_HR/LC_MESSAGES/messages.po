@@ -4949,10 +4949,6 @@ msgid "View Person Page"
 msgstr "Prikaži stranicu osobe"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Obitelj nema e-pošta za korištenje"
-
-#: 
 msgid "Deleted"
 msgstr "Obrisano"
 
@@ -24307,10 +24303,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nula isključuje neobavezan uvjet. Za dob je potreban potpun datum rođenja, a za trajanje članstva datum članstva. Osobe kojima nedostaju obavezni datumi izostavljaju se i broje zasebno. Preminule osobe, neaktivne osobe i klasifikacije te neaktivne obitelji i osobe ili one koje čekaju pregled uvijek su isključene. Koriste se trenutačna klasifikacija i status, a ne povijesni status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Dospjeli iznos za %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Nije moguće stvoriti privatnu privremenu pohranu PDF-a u odabranom direktoriju."
 
@@ -26981,10 +26973,6 @@ msgid "Last verified"
 msgstr "Posljednja provjera"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Nijedan aktivni, odobreni član ove obitelji nema adresu e-pošte. Umjesto toga provjerite podatke osobno."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Za ove fiskalne godine nisu pronađeni zavjeti."
 
@@ -27007,10 +26995,6 @@ msgstr "Prijavite se na portal članova ovom adresom e-pošte kako biste pregled
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ova je obitelj neaktivna, pa joj se ne šalje e-pošta za provjeru."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ova samostalno registrirana obitelj čeka odobrenje. Odobrenjem obitelj e-poštom dobiva pozivnicu za prijavu na portal članova i pregled svojih podataka."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

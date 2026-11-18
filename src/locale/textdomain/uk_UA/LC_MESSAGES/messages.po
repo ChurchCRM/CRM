@@ -4986,10 +4986,6 @@ msgid "View Person Page"
 msgstr "Переглянути сторінку особи"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Сім'я не має електронних листів для використання"
-
-#: 
 msgid "Deleted"
 msgstr "Видалено"
 
@@ -24370,10 +24366,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Нуль вимикає необов’язкову вимогу. Для віку потрібна повна дата народження; для тривалості членства — дата членства. Людей без обов’язкових дат пропускають і рахують окремо. Померлі, неактивні люди та класифікації, а також неактивні родини й люди або ті, що очікують перегляду, завжди виключені; використовуються поточні класифікація та статус, а не історичні."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Сума до сплати за %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Не вдається створити приватне тимчасове сховище PDF у вибраному каталозі."
 
@@ -27044,10 +27036,6 @@ msgid "Last verified"
 msgstr "Остання перевірка"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Жоден активний схвалений член цієї сім'ї не має адреси електронної пошти. Натомість перевірте дані особисто."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Обіцянок пожертв за ці фінансові роки не знайдено."
 
@@ -27070,10 +27058,6 @@ msgstr "Увійдіть на портал парафії з цією адрес
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ця сім'я неактивна, тому їй не надсилаються листи для перевірки."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ця самостійно зареєстрована сім'я очікує схвалення. Після схвалення сім'я отримає лист із запрошенням увійти на портал парафії та переглянути свої дані."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

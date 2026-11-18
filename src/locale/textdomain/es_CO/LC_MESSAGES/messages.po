@@ -4953,10 +4953,6 @@ msgid "View Person Page"
 msgstr "Ver página de persona"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "La familia no tiene correo electrónicos para usar"
-
-#: 
 msgid "Deleted"
 msgstr "Eliminado"
 
@@ -24312,10 +24308,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Cero desactiva un requisito opcional. La edad exige una fecha de nacimiento completa; la duración de la membresía exige una fecha de membresía. Las personas a las que les faltan fechas obligatorias se omiten y se cuentan por separado. Las personas fallecidas, las personas y clasificaciones inactivas, y las familias y personas inactivas o pendientes de revisión siempre se excluyen; se usan la clasificación y el estado actuales, no el estado histórico."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Valor por pagar de %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "No se puede crear el almacenamiento temporal privado de PDF en el directorio seleccionado."
 
@@ -26986,10 +26978,6 @@ msgid "Last verified"
 msgstr "Última verificación"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Ningún miembro activo y aprobado de esta familia tiene dirección de correo. Verifique la información en persona."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "No se encontraron compromisos de donación para estos años fiscales."
 
@@ -27012,10 +27000,6 @@ msgstr "Inicie sesión en el portal de miembros con esta dirección de correo pa
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Esta familia está inactiva, por lo que no se le envían correos de verificación."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Esta familia autorregistrada está pendiente de aprobación. Al aprobarla, se envía a la familia por correo una invitación para iniciar sesión en el portal de miembros y revisar su información."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

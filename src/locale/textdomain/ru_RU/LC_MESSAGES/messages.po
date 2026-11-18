@@ -5039,10 +5039,6 @@ msgid "View Person Page"
 msgstr "Перейти к странице человека"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "У семьи нет адресов электронной почты"
-
-#: 
 msgid "Deleted"
 msgstr "Удалить"
 
@@ -24423,10 +24419,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Ноль отключает необязательное требование. Для возраста нужна полная дата рождения, для продолжительности членства — дата начала членства. Люди без необходимых дат исключаются и учитываются отдельно. Умершие, неактивные люди и классификации, а также неактивные или ожидающие проверки семьи и люди всегда исключаются. Используются текущие классификация и статус, а не прежние."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Сумма к оплате за %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Не удаётся создать закрытое временное хранилище PDF в выбранном каталоге."
 
@@ -27097,10 +27089,6 @@ msgid "Last verified"
 msgstr "Последняя проверка"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Ни у одного активного одобренного члена этой семьи нет адреса электронной почты. Вместо этого проверьте сведения лично."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Обязательства по пожертвованиям за эти отчетные годы не найдены."
 
@@ -27123,10 +27111,6 @@ msgstr "Войдите на портал общины с этим адресом
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Эта семья неактивна, поэтому ей не отправляются письма для проверки."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Эта самостоятельно зарегистрированная семья ожидает одобрения. После одобрения семье придет письмо с приглашением войти на портал общины и проверить свои сведения."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

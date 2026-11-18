@@ -4982,10 +4982,6 @@ msgid "View Person Page"
 msgstr "Προβολή καρτέλας Μέλους"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Η οικογένεια δεν έχει email για χρήση"
-
-#: 
 msgid "Deleted"
 msgstr "Διαγράφηκε"
 
@@ -24314,10 +24310,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Το μηδέν απενεργοποιεί μία προαιρετική απαίτηση. Η ηλικία απαιτεί πλήρη ημερομηνία γέννησης· η διάρκεια ιδιότητας μέλους απαιτεί ημερομηνία ιδιότητας μέλους. Τα άτομα που δεν έχουν τις απαιτούμενες ημερομηνίες παραλείπονται και καταμετρώνται χωριστά. Τα αποβιώσαντα άτομα, τα ανενεργά άτομα και οι ανενεργές ταξινομήσεις, καθώς και οι ανενεργές οικογένειες και άτομα ή όσα εκκρεμούν για έλεγχο, αποκλείονται πάντα· χρησιμοποιούνται η τρέχουσα ταξινόμηση και κατάσταση, όχι η ιστορική."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Οφειλόμενο ποσό για %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Δεν είναι δυνατή η δημιουργία ιδιωτικού προσωρινού χώρου PDF στον επιλεγμένο κατάλογο."
 
@@ -26988,10 +26980,6 @@ msgid "Last verified"
 msgstr "Τελευταία επαλήθευση"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Κανένα ενεργό, εγκεκριμένο μέλος αυτής της οικογένειας δεν έχει διεύθυνση email. Επαληθεύστε τα στοιχεία αυτοπροσώπως."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Δεν βρέθηκαν οικονομικές δεσμεύσεις για αυτά τα οικονομικά έτη."
 
@@ -27014,10 +27002,6 @@ msgstr "Συνδεθείτε στην πύλη μελών με αυτή τη δ�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Αυτή η οικογένεια είναι ανενεργή, επομένως δεν της αποστέλλονται email επαλήθευσης."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Αυτή η αυτοεγγεγραμμένη οικογένεια περιμένει έγκριση. Με την έγκριση, η οικογένεια λαμβάνει με email πρόσκληση να συνδεθεί στην πύλη μελών και να ελέγξει τα στοιχεία της."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

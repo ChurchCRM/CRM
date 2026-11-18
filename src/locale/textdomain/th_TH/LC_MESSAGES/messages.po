@@ -4959,10 +4959,6 @@ msgid "View Person Page"
 msgstr "ดูหน้าบุคคล"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "ครอบครัวไม่มีอีเมลให้ใช้"
-
-#: 
 msgid "Deleted"
 msgstr "ลบแล้ว"
 
@@ -24265,10 +24261,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "ค่าศูนย์ปิดเงื่อนไขที่ไม่บังคับ อายุต้องมีวันเกิดที่ครบ ระยะเวลาการเป็นสมาชิกต้องมีวันที่เป็นสมาชิก คนที่ขาดวันที่ที่จำเป็นจะถูกข้ามและนับแยก ผู้เสียชีวิต คนและประเภทสมาชิกที่ไม่ใช้งาน และครอบครัวกับคนที่ไม่ใช้งานหรือรอการตรวจ จะถูกยกเว้นเสมอ ใช้ประเภทและสถานะปัจจุบัน ไม่ใช่สถานะในอดีต"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "ยอดที่ต้องชำระสำหรับ %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "สร้างที่เก็บไฟล์ PDF ชั่วคราวแบบส่วนตัวในไดเรกทอรีที่เลือกไม่ได้"
 
@@ -26939,10 +26931,6 @@ msgid "Last verified"
 msgstr "ยืนยันล่าสุด"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "ไม่มีสมาชิกที่ใช้งานอยู่และได้รับอนุมัติของครอบครัวนี้คนใดมีที่อยู่อีเมล โปรดยืนยันข้อมูลด้วยตนเองแทน"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "ไม่พบคำปฏิญาณถวายสำหรับปีงบประมาณเหล่านี้"
 
@@ -26965,10 +26953,6 @@ msgstr "ลงชื่อเข้าใช้พอร์ทัลสมาช
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "ครอบครัวนี้ไม่ใช้งาน จึงไม่มีการส่งอีเมลยืนยันไปให้"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "ครอบครัวที่ลงทะเบียนด้วยตนเองนี้กำลังรอการอนุมัติ เมื่ออนุมัติแล้ว ครอบครัวจะได้รับอีเมลเชิญให้ลงชื่อเข้าใช้พอร์ทัลสมาชิกและตรวจสอบข้อมูลของตน"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

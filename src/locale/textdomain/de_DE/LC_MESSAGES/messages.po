@@ -5055,10 +5055,6 @@ msgid "View Person Page"
 msgstr "Personenseite anzeigen"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
 msgid "Deleted"
 msgstr "Gelöscht"
 
@@ -24387,10 +24383,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Null schaltet eine optionale Voraussetzung aus. Für das Alter ist ein vollständiges Geburtsdatum nötig, für die Mitgliedsdauer ein Mitgliedschaftsdatum. Personen ohne die erforderlichen Daten werden ausgelassen und getrennt gezählt. Verstorbene Personen, inaktive Personen und Klassifikationen sowie inaktive oder noch zu prüfende Familien und Personen sind immer ausgeschlossen; es gelten die aktuelle Klassifikation und der aktuelle Status, nicht ein früherer Status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Fälliger Betrag für %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Im gewählten Verzeichnis kann kein privater temporärer PDF-Speicher angelegt werden."
 
@@ -27061,10 +27053,6 @@ msgid "Last verified"
 msgstr "Zuletzt bestätigt"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Kein aktives, genehmigtes Mitglied dieser Familie hat eine E-Mail-Adresse. Bestätigen Sie die Angaben stattdessen persönlich."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Für diese Steuerjahre wurden keine Spendenversprechen gefunden."
 
@@ -27087,10 +27075,6 @@ msgstr "Melden Sie sich mit dieser E-Mail-Adresse im Gemeindeportal an, um die A
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Diese Familie ist inaktiv und erhält daher keine Bestätigungs-E-Mails."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Diese selbst registrierte Familie wartet auf Genehmigung. Mit der Genehmigung erhält die Familie per E-Mail eine Einladung, sich im Gemeindeportal anzumelden und ihre Angaben zu prüfen."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -4986,10 +4986,6 @@ msgid "View Person Page"
 msgstr "عرض صفحة الشخص"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها"
-
-#: 
 msgid "Deleted"
 msgstr "تم الحذف"
 
@@ -24422,10 +24418,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "الصفر يعطّل شرطًا اختياريًا. يشترط العمر تاريخ ميلاد كاملًا، وتشترط مدة العضوية تاريخ عضوية. يُغفل من تنقصهم التواريخ المطلوبة ويُحصون على حدة. يُستبعد دائمًا المتوفون والأشخاص والتصنيفات غير النشطين، والأسر والأشخاص غير النشطين أو قيد المراجعة؛ ويُستخدم التصنيف والحالة الحاليان لا الحالة التاريخية."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "المبلغ المستحق عن %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "تعذّر إنشاء تخزين مؤقت خاص لملفات PDF في المجلد المحدد."
 
@@ -27096,10 +27088,6 @@ msgid "Last verified"
 msgstr "آخر تحقق"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "لا يوجد لدى أي عضو نشط ومعتمد في هذه الأسرة عنوان بريد إلكتروني. تحقق من المعلومات شخصيًا بدلًا من ذلك."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "لم يُعثر على تعهدات لهاتين السنتين الماليتين."
 
@@ -27122,10 +27110,6 @@ msgstr "سجّل الدخول إلى بوابة الأعضاء بعنوان ال
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "هذه الأسرة غير نشطة، لذا لا تُرسل إليها رسائل التحقق."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "هذه الأسرة المسجلة ذاتيًا بانتظار الاعتماد. عند اعتمادها تُرسل إلى الأسرة دعوة بالبريد الإلكتروني لتسجيل الدخول إلى بوابة الأعضاء ومراجعة معلوماتها."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

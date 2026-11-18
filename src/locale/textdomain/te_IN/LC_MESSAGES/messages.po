@@ -4960,10 +4960,6 @@ msgid "View Person Page"
 msgstr "వ్యక్తి పేజీని వీక్షించండి"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
-
-#: 
 msgid "Deleted"
 msgstr "తొలగించబడిన"
 
@@ -24292,10 +24288,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "సున్నా ఐచ్ఛిక అవసరాన్ని నిలిపివేస్తుంది. వయస్సుకు పూర్తి పుట్టిన తేదీ అవసరం; సభ్యత్వ వ్యవధికి సభ్యత్వ తేదీ అవసరం. అవసరమైన తేదీలు లేని వ్యక్తులు వదిలివేయబడి విడిగా లెక్కించబడతారు. మరణించిన వ్యక్తులు, నిష్క్రియ వ్యక్తులు మరియు వర్గీకరణలు, మరియు నిష్క్రియ లేదా సమీక్ష పెండింగ్‌లో ఉన్న కుటుంబాలు మరియు వ్యక్తులు ఎల్లప్పుడూ మినహాయించబడతారు; చారిత్రక స్థితి కాదు, ప్రస్తుత వర్గీకరణ మరియు స్థితి ఉపయోగించబడతాయి."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s కు చెల్లించవలసిన మొత్తం: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "ఎంచుకున్న డైరెక్టరీలో ప్రైవేట్ PDF తాత్కాలిక నిల్వను సృష్టించలేరు."
 
@@ -26966,10 +26958,6 @@ msgid "Last verified"
 msgstr "చివరిగా ధృవీకరించినది"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "ఈ కుటుంబంలోని క్రియాశీల, ఆమోదిత సభ్యులెవరికీ ఇమెయిల్ చిరునామా లేదు. బదులుగా వ్యక్తిగతంగా ధృవీకరించండి."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "ఈ ఆర్థిక సంవత్సరాలకు ప్రతిజ్ఞలు ఏవీ కనుగొనబడలేదు."
 
@@ -26992,10 +26980,6 @@ msgstr "మీ కుటుంబ సమాచారాన్ని సమీక
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "ఈ కుటుంబం నిష్క్రియంగా ఉంది, కాబట్టి దీనికి ధృవీకరణ ఇమెయిల్‌లు పంపబడవు."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "స్వయంగా నమోదు చేసుకున్న ఈ కుటుంబం ఆమోదం కోసం వేచి ఉంది. ఆమోదించినప్పుడు, సభ్య పోర్టల్‌కు సైన్ ఇన్ చేసి సమాచారాన్ని సమీక్షించమని కుటుంబానికి ఆహ్వానం ఇమెయిల్ చేయబడుతుంది."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

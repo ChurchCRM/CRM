@@ -4949,10 +4949,6 @@ msgid "View Person Page"
 msgstr "Tingnan ang Pahina ng Tao"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Ang pamilya ay walang mga email na magagamit"
-
-#: 
 msgid "Deleted"
 msgstr "Nabura"
 
@@ -24281,10 +24277,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Pinapatay ng zero ang isang opsyonal na kinakailangan. Ang edad ay nangangailangan ng kumpletong petsa ng kapanganakan; ang tagal ng pagiging miyembro ay nangangailangan ng petsa ng pagiging miyembro. Ang mga taong kulang ang kinakailangang petsa ay hindi isinasama at binibilang nang hiwalay. Palaging hindi kasama ang mga namatay, mga hindi aktibong tao at klasipikasyon, at mga hindi aktibo o nakabinbing-pagsusuri na pamilya at tao; ginagamit ang kasalukuyang klasipikasyon at katayuan, hindi ang dating katayuan."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Halagang dapat bayaran para sa %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Hindi makagawa ng pribadong pansamantalang imbakan ng PDF sa napiling direktoryo."
 
@@ -26955,10 +26947,6 @@ msgid "Last verified"
 msgstr "Huling na-verify"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Walang aktibo at aprubadong miyembro ng pamilyang ito na may email address. Beripikahin na lang ito nang personal."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Walang nakitang pangako para sa mga taong piskal na ito."
 
@@ -26981,10 +26969,6 @@ msgstr "Mag-sign in sa portal ng miyembro gamit ang email address na ito para su
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Hindi aktibo ang pamilyang ito, kaya hindi ito pinapadalhan ng mga email ng beripikasyon."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Naghihintay ng pag-apruba ang pamilyang ito na nag-self-register. Kapag inaprubahan, padadalhan ang pamilya ng email na imbitasyon para mag-sign in sa portal ng miyembro at suriin ang kanilang impormasyon."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."

@@ -4951,10 +4951,6 @@ msgid "View Person Page"
 msgstr "व्यक्ति पृष्ठ देखें"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
-
-#: 
 msgid "Deleted"
 msgstr "हटा दिया गया"
 
@@ -24283,10 +24279,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "शून्य किसी वैकल्पिक शर्त को बंद करता है। आयु के लिए पूरी जन्म तिथि चाहिए; सदस्यता अवधि के लिए सदस्यता तिथि चाहिए। आवश्यक तिथि न रखने वाले लोग छोड़ दिए जाते हैं और अलग गिने जाते हैं। दिवंगत लोग, निष्क्रिय लोग और वर्गीकरण, तथा निष्क्रिय या समीक्षा-लंबित परिवार और लोग हमेशा बाहर रहते हैं; वर्तमान वर्गीकरण और स्थिति का उपयोग होता है, ऐतिहासिक स्थिति का नहीं।"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s के लिए देय राशि: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "चुनी निर्देशिका में निजी PDF अस्थायी संग्रहण नहीं बनाया जा सकता।"
 
@@ -26957,10 +26949,6 @@ msgid "Last verified"
 msgstr "पिछला सत्यापन"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "इस परिवार के किसी भी सक्रिय, स्वीकृत सदस्य का ईमेल पता नहीं है। इसके बजाय व्यक्तिगत रूप से सत्यापित करें।"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "इन वित्तीय वर्षों के लिए कोई प्रतिज्ञा नहीं मिली।"
 
@@ -26983,10 +26971,6 @@ msgstr "अपने परिवार की जानकारी देख�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "यह परिवार निष्क्रिय है, इसलिए इसे सत्यापन ईमेल नहीं भेजे जाते।"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "यह स्व-पंजीकृत परिवार स्वीकृति की प्रतीक्षा में है। स्वीकृत करने पर परिवार को सदस्य पोर्टल में साइन इन करके अपनी जानकारी देखने का आमंत्रण ईमेल किया जाता है।"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
