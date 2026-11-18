@@ -29,11 +29,11 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'sGivingStatementQuestions' => gettext('Questions Line'),
         'sTaxSigner'     => gettext('Signer'),
         'sChurchTaxId'   => gettext('Tax ID on statements'),
-        'sCharityLegalName' => gettext('Charity legal name'),
-        'sCharityRegisteredAddress' => gettext('Charity registered address'),
-        'sCharityRegistrationNumber' => gettext('Registration number'),
-        'sReceiptIssueLocality' => gettext('Issue locality'),
-        'sReceiptClosing' => gettext('Receipt closing'),
+        'sCharityLegalName' => gettext('Charity Legal Name'),
+        'sCharityRegisteredAddress' => gettext('Charity Registered Address'),
+        'sCharityRegistrationNumber' => gettext('Charity Registration Number'),
+        'sReceiptIssueLocality' => gettext('Receipt Issue Locality'),
+        'sReceiptClosing' => gettext('Receipt Closing'),
         'iPDFOutputType' => gettext('PDF Handling'),
     ];
     $help = [

@@ -14,8 +14,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="container-fluid">
     <?php if (GivingStatementService::isCanadianChurch()) : ?>
         <div class="alert alert-info" role="status" id="canadian-receipts-info">
-            <?= gettext('Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt. Official receipts need a registration number in the form 123456789RR0001 and a signature image.') ?>
-            <strong class="ms-1"><?= TaxSignatureService::hasUploaded() ? gettext('Signature on file.') : gettext('No signature on file.') ?></strong>
+            <?= gettext('Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt.') ?> <?= gettext('Official receipts need a registration number in the form 123456789RR0001 and a signature image.') ?>
+            <strong class="ms-1"><?= TaxSignatureService::hasUploaded() ? gettext('Signature on file') : gettext('No signature on file') ?></strong>
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) : ?>
                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/report-settings" id="signature-upload-link"><?= gettext('Upload or replace the signature') ?></a>
             <?php else : ?>

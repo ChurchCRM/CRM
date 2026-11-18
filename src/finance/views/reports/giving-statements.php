@@ -23,8 +23,8 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
 <?php endif; ?>
 <?php if ($canadianError !== '') : ?><div class="alert alert-danger" role="alert" id="canadianError"><?= InputUtils::escapeHTML($canadianError) ?></div><?php endif; ?>
 <?php if ($canadian) : ?>
-<div class="alert alert-info" role="note"><?= gettext('This option formats a Canadian receipt but does not keep a receipt register or retain PDFs. Keep the original PDF and an external receipt log at the charity\'s Canadian records location. Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original. This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements. A signature image is not a secure digital signature.') ?></div>
-<p><?= gettext('Historical envelope changes are unsupported. Mixed-donor family payment sets cannot be split here; handle them outside this feature. If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures.') ?></p>
+<div class="alert alert-info" role="note"><?= gettext('This option formats a Canadian receipt but does not keep a receipt register or retain PDFs.') ?> <?= gettext('Keep the original PDF and an external receipt log at the charity\'s Canadian records location.') ?> <?= gettext('Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original.') ?> <?= gettext('This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements.') ?> <?= gettext('A signature image is not a secure digital signature.') ?></div>
+<p><?= gettext('Historical envelope changes are unsupported.') ?> <?= gettext('Mixed-donor family payment sets cannot be split here; handle them outside this feature.') ?> <?= gettext('If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures.') ?></p>
 <?php
 $answer = static fn (string $key, string $default = ''): string => is_scalar($query[$key] ?? null) ? (string) $query[$key] : $default;
 $perFamily = static fn (string $key, int $id): string => is_array($query[$key] ?? null) && is_scalar($query[$key][$id] ?? null) ? (string) $query[$key][$id] : '';
@@ -75,7 +75,7 @@ $freshReview = empty($query['reviewed']) && ($query['review'] ?? '') === '1';
             <input type="hidden" name="snapshot[<?= $id ?>]" value="<?= InputUtils::escapeAttribute($review['snapshot']) ?>">
             <?php if ($changed) : ?><div class="alert alert-warning" role="status"><?= gettext('The gifts or mailing address changed since you last checked. Review them and confirm the donor again.') ?></div><?php endif; ?>
             <p><?= nl2br(InputUtils::escapeHTML($review['address'])) ?></p>
-            <p class="text-secondary"><?= InputUtils::escapeHTML(sprintf(ngettext('%1$d gift, %2$s', '%1$d gifts, %2$s', (int) $review['gifts']), (int) $review['gifts'], $review['total'])) ?></p>
+            <p class="text-secondary"><?= InputUtils::escapeHTML(sprintf(ngettext('%1$d gift totaling %2$s', '%1$d gifts totaling %2$s', (int) $review['gifts']), (int) $review['gifts'], $review['total'])) ?></p>
             <?php if (!$ok) : ?>
             <div class="alert alert-danger" role="alert">
                 <strong><?= gettext('No receipt can be generated for this family yet') ?>:</strong>
