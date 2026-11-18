@@ -54,7 +54,6 @@ describe("Person Profile", () => {
     it("Edit Why Came", () => {
         cy.visit(`/people/view/${personId}`);
 
-        cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.focused().should("have.id", "noteWhyCameModal");
         cy.get("#whyJoin").should("be.enabled");
@@ -65,7 +64,6 @@ describe("Person Profile", () => {
         cy.get("#noteWhyCameSave").click();
         cy.get("#noteWhyCameModal").should("not.exist");
 
-        cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.get("#whySuggest").should("have.value", "More Youth Meetings");
     });
@@ -77,7 +75,6 @@ describe("Why Came editor for an Edit Records-only user", () => {
     it("opens the editor from the person page and saves", () => {
         const note = "Saved by an Edit Records-only user";
         cy.visit("/people/view/2");
-        cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.focused().should("have.id", "noteWhyCameModal");
         cy.get("#whyJoin").should("be.enabled");
@@ -85,7 +82,6 @@ describe("Why Came editor for an Edit Records-only user", () => {
         cy.get("#noteWhyCameSave").click();
         cy.get("#noteWhyCameModal").should("not.exist");
 
-        cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.get("#whyJoin").should("have.value", note);
     });

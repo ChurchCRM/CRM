@@ -440,7 +440,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
     </div>
     <div class="col-lg-8">
         <!-- Toolbar -->
-        <div class="d-flex align-items-center mb-3 gap-2 d-print-none">
+        <div class="d-flex flex-wrap align-items-center mb-3 gap-2 d-print-none">
             <?php if ($bOkToEdit) { ?>
             <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
             <?php } ?>
@@ -451,15 +451,17 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext("Add Note") ?>
             </button>
             <?php } ?>
+            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+            <button type="button" class="btn btn-ghost-info" id="editWhyCame" data-open-why-came="<?= (int) $iPersonID ?>">
+                <i class="fa-solid fa-circle-question me-1"></i><?= gettext("Why Came") ?>
+            </button>
+            <?php } ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" id="person-actions-dropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $iPersonID ?>/emails"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Email History') ?></a>
-                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                        <button type="button" class="dropdown-item" id="editWhyCame" data-open-why-came="<?= (int) $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></button>
-                    <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
                         <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
