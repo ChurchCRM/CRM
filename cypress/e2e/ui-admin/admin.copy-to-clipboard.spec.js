@@ -50,7 +50,7 @@ describe("Copy to clipboard", () => {
     });
 
     it("copies a debug value and shows the success toast", () => {
-        cy.visit("admin/system/debug");
+        cy.visit("admin/system/debug#collapseEnvironment");
         cy.get("#env-app .copy-btn")
             .first()
             .invoke("attr", "data-copy")
@@ -65,7 +65,7 @@ describe("Copy to clipboard", () => {
     });
 
     it("falls back to execCommand when the Clipboard API refuses", () => {
-        cy.visit("admin/system/debug");
+        cy.visit("admin/system/debug#collapseEnvironment");
         cy.window().then((win) => {
             stubClipboard(win, cy.stub().rejects(new Error("denied")).as("writeText"));
             cy.stub(win.document, "execCommand").returns(true).as("execCopy");
@@ -77,7 +77,7 @@ describe("Copy to clipboard", () => {
     });
 
     it("shows the manual-copy dialog when every copy mechanism fails", () => {
-        cy.visit("admin/system/debug");
+        cy.visit("admin/system/debug#collapseEnvironment");
         cy.get("#env-app .copy-btn")
             .first()
             .invoke("attr", "data-copy")
