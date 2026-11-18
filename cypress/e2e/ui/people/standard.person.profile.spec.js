@@ -39,13 +39,13 @@ describe("Person Profile", () => {
 
         // "Add Note" is a standalone toolbar button, not inside the Actions dropdown
         cy.contains("button", "Add Note").click();
-        cy.get("#noteWhyCameModal").should("be.visible");
+        cy.focused().should("have.id", "noteWhyCameModal");
 
         const currentDateString = new Date().toISOString();
         const noteText = `This is a test note: ${currentDateString}`;
         cy.get("#noteText").type(noteText);
         cy.get("#noteWhyCameSave").click();
-        cy.get("#noteWhyCameModal").should("not.be.visible");
+        cy.get("#noteWhyCameModal").should("not.exist");
 
         cy.get("#nav-item-timeline").click();
         cy.contains(noteText);
@@ -56,13 +56,14 @@ describe("Person Profile", () => {
 
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
+        cy.focused().should("have.id", "noteWhyCameModal");
         cy.get("#whyJoin").should("be.enabled");
         cy.get("#whyJoin").clear().type("I love the lord ");
         cy.get("#whyCome").clear().type("the feeling of being included");
         cy.get("#whySuggest").clear().type("More Youth Meetings");
         cy.get("#whyHear").clear().type("The website ");
         cy.get("#noteWhyCameSave").click();
-        cy.get("#noteWhyCameModal").should("not.be.visible");
+        cy.get("#noteWhyCameModal").should("not.exist");
 
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
@@ -78,10 +79,11 @@ describe("Why Came editor for an Edit Records-only user", () => {
         cy.visit("/people/view/2");
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
+        cy.focused().should("have.id", "noteWhyCameModal");
         cy.get("#whyJoin").should("be.enabled");
         cy.get("#whyJoin").clear().type(note);
         cy.get("#noteWhyCameSave").click();
-        cy.get("#noteWhyCameModal").should("not.be.visible");
+        cy.get("#noteWhyCameModal").should("not.exist");
 
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();

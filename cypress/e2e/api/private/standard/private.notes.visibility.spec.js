@@ -7,7 +7,7 @@
  *  - GET  /api/person/{id}/notes     — Notes=1/Admin: 200; zero-perms: 403
  *  - GET  /api/family/{id}/notes     — same
  *  - GET  /api/note/{id}             — private note: 404 for non-admin/non-author
- *  - POST /api/person/{id}/note      — Notes=1/Admin: 201; zero-perms: 403
+ *  - POST /api/person/{id}/note      — Notes=1+EditRecords/Admin: 201; zero-perms: 403
  *  - POST /api/family/{id}/note      — Notes=1/Admin: 201; zero-perms: 403
  *  - GET  /api/timeline/person/{id}  — all auth: 200; note items stripped for zero-perms
  *  - GET  /api/timeline/family/{id}  — same
@@ -193,13 +193,9 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("john.plainauth (Notes=1, no EditRecords) can POST person note → 201", () => {
+        it("john.plainauth (Notes=1, no EditRecords) CANNOT POST person note → 403", () => {
             cy.makePrivatePlainAuthAPICall("POST", "/api/person/2/note",
-                { text: "<p>Notes-only write test</p>", private: false }, 201)
-                .then(resp => {
-                    const noteId = resp.body.note.id;
-                    cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
-                });
+                { text: "<p>Should fail</p>", private: false }, 403);
         });
 
         it("noperm.user (Notes=0) CANNOT POST person note → 403", () => {
