@@ -324,6 +324,9 @@
   "No — different donors; handle outside this feature": [
     "src/finance/views/reports/giving-statements.php:92"
   ],
+  "No family matches these filters for %s.": [
+    "src/finance/routes/pledge-reminders.php:49"
+  ],
   "No overlapping individual or cumulative receipt exists.": [
     "src/finance/views/reports/giving-statements.php:101"
   ],
