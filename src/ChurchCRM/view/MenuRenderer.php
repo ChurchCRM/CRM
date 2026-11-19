@@ -54,9 +54,7 @@ class MenuRenderer
                data-bs-auto-close="false"
                role="button"
                aria-expanded="<?= $isOpen ? 'true' : 'false' ?>">
-                <?php if (!$nested): ?>
                 <span class="nav-link-icon"><i class="fa <?= $menuItem->getIcon() ?>"></i></span>
-                <?php endif; ?>
                 <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
                 <?php if ($menuItem->hasCounters()): self::renderMenuCounters($menuItem); endif; ?>
             </a>
