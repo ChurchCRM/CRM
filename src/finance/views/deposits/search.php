@@ -41,7 +41,7 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
 
 <div class="row row-cards mb-3 g-2">
   <?php foreach ([
-      ['bg-warning', 'fa-folder-open', (string) count($openDeposits), gettext('Open deposits')],
+      ['bg-warning', 'fa-folder-open', (string) count($openDeposits), gettext('Open Deposits')],
       ['bg-warning', 'fa-hand-holding-dollar', CurrencyFormatter::formatHtml($openTotal), gettext('Open total')],
       ['bg-success', 'fa-sack-dollar', CurrencyFormatter::formatHtml($allTotal), gettext('Total deposited')],
       ['bg-primary', 'fa-receipt', (string) count($deposits), gettext('Deposits')],

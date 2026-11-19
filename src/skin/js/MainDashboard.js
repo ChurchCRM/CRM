@@ -281,7 +281,7 @@ export function initializeMainDashboard() {
             .closest(".card-body")
             .html(
               '<div class="text-body-secondary small p-3"><i class="fa-solid fa-cake-candles me-2"></i>' +
-                i18next.t("No birthdays in this time range") +
+                i18next.t("No Birthdays") +
                 "</div>",
             );
           return [];
@@ -408,7 +408,7 @@ export function initializeMainDashboard() {
             .closest(".card-body")
             .html(
               '<div class="text-body-secondary small p-3"><i class="fa-solid fa-heart me-2"></i>' +
-                i18next.t("No anniversaries in this time range") +
+                i18next.t("No Anniversaries") +
                 "</div>",
             );
           return [];

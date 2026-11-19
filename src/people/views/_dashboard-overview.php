@@ -174,7 +174,7 @@ use ChurchCRM\Utils\InputUtils;
 
 <div class="d-flex justify-content-end align-items-center gap-2 mb-2">
     <label for="people-range" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
-    <select id="people-range" class="form-select form-select-sm w-auto" aria-label="<?= InputUtils::escapeAttribute(gettext('Time range for the cards below')) ?>">
+    <select id="people-range" class="form-select form-select-sm w-auto" aria-label="<?= InputUtils::escapeAttribute(gettext('Time Range')) ?>">
         <?php foreach ([7 => gettext('7 days'), 14 => gettext('14 days'), 30 => gettext('30 days'), 60 => gettext('60 days'), 90 => gettext('90 days'), 180 => gettext('6 months')] as $value => $label) : ?>
             <option value="<?= $value ?>"<?= $peopleDays === $value ? ' selected' : '' ?>><?= $label ?></option>
         <?php endforeach; ?>

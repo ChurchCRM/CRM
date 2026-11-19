@@ -52,7 +52,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
-        'sPageSubtitle'      => gettext('People, families and what needs your attention today'),
+        'sPageSubtitle'      => gettext('Manage families, people, and demographic information'),
         'aBreadcrumbs'       => PageHeader::breadcrumbs([
             [gettext('People')],
         ]),

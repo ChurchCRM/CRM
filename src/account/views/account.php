@@ -283,7 +283,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
 
             <!-- Dashboards -->
-            <h4 class="mb-3"><?= gettext("Dashboards") ?></h4>
+            <h4 class="mb-3"><?= gettext("Dashboard") ?></h4>
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label" for="settingLanding"><?= gettext("Main dashboard") ?></label>
               <div class="col-sm-9">
@@ -296,22 +296,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="settingPeopleDays"><?= gettext("People time range") ?></label>
+              <label class="col-sm-3 col-form-label" for="settingPeopleDays"><?= gettext("People") ?></label>
               <div class="col-sm-9">
                 <select id="settingPeopleDays" class="form-select" data-user-setting="ui.dashboard.people.days">
                   <?php foreach (['7' => gettext('7 days'), '14' => gettext('14 days'), '30' => gettext('30 days'), '60' => gettext('60 days'), '90' => gettext('90 days'), '180' => gettext('6 months')] as $value => $label) : ?>
                     <option value="<?= $value ?>"<?= $_peopleDays === (string) $value ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                   <?php endforeach; ?>
                 </select>
-                <small class="form-text"><?= gettext("Time range for the People, Birthdays, Anniversaries and Notes cards") ?></small>
               </div>
             </div>
             <?php if ($user->isFinanceEnabled()) : ?>
             <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="settingFinanceRange"><?= gettext("Finance time range") ?></label>
+              <label class="col-sm-3 col-form-label" for="settingFinanceRange"><?= gettext("Finance") ?></label>
               <div class="col-sm-9">
                 <select id="settingFinanceRange" class="form-select" data-user-setting="ui.dashboard.finance.range">
-                  <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Current fiscal year'), 'all' => gettext('All Time')] as $value => $label) : ?>
+                  <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Current Fiscal Year'), 'all' => gettext('All Time')] as $value => $label) : ?>
                     <option value="<?= $value ?>"<?= $_financeRange === $value ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                   <?php endforeach; ?>
                 </select>
