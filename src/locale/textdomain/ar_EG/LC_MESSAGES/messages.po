@@ -1304,10 +1304,6 @@ msgid "People"
 msgstr "الاشخاص"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "الأحد مدرسة للأطفال"
-
-#: 
 msgid "Role / Gender"
 msgstr "دور / الجنس"
 
@@ -4471,10 +4467,6 @@ msgstr "الحقل حيث يتم تخزين اعتراف الماضي، يجب �
 #: 
 msgid "People Reports"
 msgstr "تقارير الناس"
-
-#: 
-msgid "People Dashboard"
-msgstr "الناس لوحة"
 
 #: 
 msgid "People Directory"
@@ -9046,10 +9038,6 @@ msgid "Password Recovery"
 msgstr "استعادة كلمة المرور"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "الأيام السابقة والـ 7 المقبلة"
-
-#: 
 msgid "People by Classification"
 msgstr "الأشخاص حسب التصنيف"
 
@@ -10945,10 +10933,6 @@ msgstr "داكن"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "قاعدة البيانات فقط (.sql) أو الأرشيف الكامل (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "العدد الافتراضي للصفوف المعروضة في جداول البيانات. يسري عند تحميل الصفحة التالية."
 
 #. Context: locales
 #: 
@@ -13510,14 +13494,6 @@ msgstr "لا توجد ودائع"
 #: 
 msgid "No Events Today"
 msgstr "لا توجد أحداث اليوم"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "لا توجد ذكريات سنوية في الماضي أو في الأيام الـ 7 المقبلة"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "لا توجد أعياد ميلاد في الماضي أو في الأيام الـ 7 المقبلة"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -17868,10 +17844,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "تسجيلات تنتظر المراجعة من نموذج التسجيل العام الخاص بك. تُميَّز المدخلات التي لا تحتوي على بريد إلكتروني أو هاتف — تحقق من بيانات الاتصال قبل المتابعة."
 
 #: 
-msgid "Review now"
-msgstr "راجع الآن"
-
-#: 
 msgid "Review self registrations"
 msgstr "مراجعة التسجيلات الذاتية"
 
@@ -17922,10 +17894,6 @@ msgstr "أمس"
 #: 
 msgid "days ago"
 msgstr "منذ أيام"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "تسجيلات ذاتية تنتظر المراجعة"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -27246,10 +27214,6 @@ msgid "Delete the login for"
 msgstr "حذف بيانات الدخول الخاصة بـ"
 
 #: 
-msgid "Deposit chart time range"
-msgstr "الفترة الزمنية لمخطط الإيداعات"
-
-#: 
 msgid "Disabled at"
 msgstr "تاريخ التعطيل"
 
@@ -27790,10 +27754,6 @@ msgid "Latest Notes"
 msgstr "أحدث الملاحظات"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "لم تتم إضافة أي ملاحظات بعد."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "ابدأ التسجيل للحصول على رمز QR."
 
@@ -27804,4 +27764,754 @@ msgstr "كلمة المرور أو الرمز هذا غير صحيح. المصا
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "المصادقة الثنائية مفعّلة بالفعل. يظهر سرّها فقط أثناء التسجيل."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d عطية بمجموع %2$s"
+msgstr[1] "%1$d عطية بمجموع %2$s"
+msgstr[2] "%1$d عطيتان بمجموع %2$s"
+msgstr[3] "%1$d عطايا بمجموع %2$s"
+msgstr[4] "%1$d عطيةً بمجموع %2$s"
+msgstr[5] "%1$d عطية بمجموع %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d أسرة لديها حاليًا خصائص من هذا النوع."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d أسرة لا يمكنها الحصول على إيصال بعد وتُستبعد. أصلح المشكلة المدرجة أسفلها، ثم اختر التحقق مرة أخرى."
+msgstr[1] "%d أسرة لا يمكنها الحصول على إيصال بعد وتُستبعد. أصلح المشكلة المدرجة أسفلها، ثم اختر التحقق مرة أخرى."
+msgstr[2] "%d أسرتان لا يمكنهما الحصول على إيصال بعد وتُستبعدان. أصلح المشكلة المدرجة أسفلهما، ثم اختر التحقق مرة أخرى."
+msgstr[3] "%d أسر لا يمكنها الحصول على إيصال بعد وتُستبعد. أصلح المشاكل المدرجة أسفلها، ثم اختر التحقق مرة أخرى."
+msgstr[4] "%d أسرةً لا يمكنها الحصول على إيصال بعد وتُستبعد. أصلح المشاكل المدرجة أسفلها، ثم اختر التحقق مرة أخرى."
+msgstr[5] "%d أسرة لا يمكنها الحصول على إيصال بعد وتُستبعد. أصلح المشاكل المدرجة أسفلها، ثم اختر التحقق مرة أخرى."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d مجموعة لديها حاليًا خصائص من هذا النوع."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d شخص لديهم حاليًا خصائص من هذا النوع."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d إصدار متاح منذ الإصدار المثبت لديك."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s لم يتم إنشاء إيصال."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: أدخل الاسم الكامل الموثّق للمتبرع (أو المتبرعين)، وأكّد المتبرعين، وأكّد مجموعة متبرعين واحدة. يجب التعامل مع مجموعات مدفوعات المتبرعين المختلطين خارج هذه الميزة."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: تغيّرت العطايا أو عنوان البريد منذ المراجعة. اختر التحقق مرة أخرى وأكّد المتبرع من جديد."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} قسط)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} أقساط)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "توجد مدفوعة ببطاقة ائتمان أو حوالة بنكية في إيداع لم يُغلق بعد. أغلق الإيداع بمجرد تسوية المدفوعة."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "توجد مدفوعة بها مبلغ غير قابل للخصم. الإيصالات الكندية هنا تدعم فقط العطايا دون أي ميزة."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "توجد مدفوعة بمبلغ مالي غير صالح."
+
+#: 
+msgid "A payment has no date."
+msgstr "توجد مدفوعة بدون تاريخ."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "توجد مدفوعة مؤرخة بعد تاريخ الإصدار."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "توجد مدفوعة موسومة كمشكلة."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "توجد مدفوعة صفرية أو سالبة."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "يلزم إرسال POST تمت مراجعته مع رمز CSRF صالح."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "أسرة محددة لم تعد موجودة."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "صورة التوقيع ليست توقيعًا رقميًا آمنًا."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "يتوفر تحديث للنظام. يرجى أن تطلب من المسؤول ترقية التثبيت الخاص بك."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "جميع الصفوف المضمنة هي عطايا مالية دون أي ميزة."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "تم ملء جميع إعدادات الإيصالات الكندية المطلوبة."
+
+#: 
+msgid "Also delete family members"
+msgstr "حذف أفراد الأسرة أيضًا"
+
+#: 
+msgid "Amount of advantages"
+msgstr "مبلغ المزايا"
+
+#: 
+msgid "Amount of gifts"
+msgstr "مبلغ العطايا"
+
+#: 
+msgid "Amount per installment"
+msgstr "المبلغ لكل قسط"
+
+#: 
+msgid "Amounts entered are"
+msgstr "المبالغ المدخلة هي"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "يقوم المسؤول بتحميله ضمن إعدادات التقرير."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "تمت الموافقة، ولكن لم يتم إرسال دعوة"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "اطلب من مسؤول النظام ترقية ChurchCRM إلى أحدث إصدار."
+
+#: 
+msgid "Authorized Signature"
+msgstr "التوقيع المعتمد"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "وكالة الإيرادات الكندية"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "إيصال رسمي كندي"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "تتطلب الإيصالات الرسمية الكندية أن تكون كندا هي بلد الكنيسة في معلومات الكنيسة."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "تتطلب الإيصالات الكندية السنة التقويمية بأكملها وجميع الصناديق، دون مرشحات أخرى."
+
+#: 
+msgid "Change Selection"
+msgstr "تغيير التحديد"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "الاسم القانوني للجمعية الخيرية"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "العنوان المسجل للجمعية الخيرية"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "رقم تسجيل الجمعية الخيرية"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "لم يتم ملء تفاصيل الجمعية الخيرية للإيصالات بعد. أضف الاسم القانوني والعنوان المسجل ورقم التسجيل ومحل الإصدار عندما تستطيع. تستمر الشؤون المالية في العمل حتى ذلك الحين."
+
+#: 
+msgid "Charity on receipts"
+msgstr "الجمعية الخيرية على الإيصالات"
+
+#: 
+msgid "Check Again"
+msgstr "التحقق مرة أخرى"
+
+#: 
+msgid "Check the year"
+msgstr "التحقق من السنة"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "تحقق من السنة، وأعدّ الكشف، ثم قم بالتنزيل."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "اختر أسبوعيًا أو شهريًا أو ربع سنوي لمبلغ القسط."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "اختر سنة تقويمية صالحة للتبرع."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "اختر الأصلي أو النسخة."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "اختر الالتزام الإجمالي أو مبلغ القسط."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "تتم إدارة ترجمات ChurchCRM في مستودع ChurchCRM على GitHub. يمكنك المساعدة من خلال"
+
+#: 
+msgid "Commitment amount"
+msgstr "مبلغ الالتزام"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "قارن النسخة مع الأصل المحفوظ وأكّد أن جميع معلومات الإيصال لم تتغير."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "أكمل كل إقرار بالإيصال قبل التنزيل."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "أكمل الاسم القانوني للجمعية الخيرية والعنوان المسجل ورقم التسجيل ومحل الإصدار والموقّع المطبوع."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "الموقّع المطبوع لخطاب التأكيد"
+
+#: 
+msgid "Copy Kind"
+msgstr "نوع النسخة"
+
+#: 
+msgid "Currency"
+msgstr "العملة"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "رمز العملة $ أو CAD"
+
+#: 
+msgid "Date received"
+msgstr "تاريخ الاستلام"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "سيؤدي حذف هذا أيضًا إلى إزالة %d خاصية وجميع تعييناتها حتى لا يبقى شيء معلقًا."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "هل تنتمي جميع عطايا السنة المحددة إلى المتبرع (أو المتبرعين) المذكورين معًا أعلاه؟"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "لا تعيد استخدام رقم لإيصال مختلف، ولا تصدر إيصالًا لنفس العطايا مرتين، ولا تعيد إنشاء معلومات متغيرة كأصل لم يتغير."
+
+#: 
+msgid "Duplicate"
+msgstr "نسخة"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "نسخة مكررة / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "المبلغ المؤهل من العطايا لأغراض ضريبة الدخل"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "أدخل الجدول وتواريخ الأقساط لمعاينة الالتزام."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "أدخل تواريخ صالحة للقسط الأول والأخير بالترتيب."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "أدخل مبالغ أقساط صالحة بحد أقصى منزلتين عشريتين."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "تحتفظ التعهدات الحالية بمجاميعها المسجلة. اختر المبلغ لكل قسط فقط عند إدخال كل عطية مجدولة."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "تم ملؤها من رؤساء الأسر والأزواج. عدّلها لتطابق المتبرعين تمامًا."
+
+#: 
+msgid "First installment"
+msgstr "القسط الأول"
+
+#: 
+msgid "Full commitment"
+msgstr "الالتزام الكامل"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "إنشاء كشوف الضرائب"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "السنة التقويمية للعطايا"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "كشف العطايا — ليس إيصال تبرع رسميًا"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "ساعد في الترجمة على GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "التغييرات التاريخية على الأظرف غير مدعومة."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "قارنت مع الأصل المحفوظ: المتبرع والمبلغ والرقم التسلسلي والنص لم تتغير. هذا ليس تصحيحًا أو استبدالًا."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "سأحتفظ بملف PDF الصادر وسجل إيصالات خارجي في موقع سجلات الجمعية الخيرية في كندا."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "إذا كان الأصل المحفوظ غير متاح أو مختلفًا، فاستخدم إجراءات الإلغاء/الاستبدال الخارجية المتوافقة مع CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "تضمين مذكرات الدفع: راجعتها على أنها مناسبة للمتبرع."
+
+#: 
+msgid "Include this family in the download"
+msgstr "تضمين هذه الأسرة في التنزيل"
+
+#: 
+msgid "Installed version: %s"
+msgstr "الإصدار المثبت: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "لا يمكن استخدام مبالغ الأقساط إلا للتعهدات."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "يجب أن تكون تواريخ الأقساط ضمن السنة المالية المحددة."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "رمز CSRF غير صالح أو مفقود"
+
+#: 
+msgid "Issue Date"
+msgstr "تاريخ الإصدار"
+
+#: 
+msgid "Issue Locality"
+msgstr "محل الإصدار"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "احتفظ بملف PDF الأصلي وسجل إيصالات خارجي في موقع سجلات الجمعية الخيرية في كندا."
+
+#: 
+msgid "Last installment on or before"
+msgstr "القسط الأخير في أو قبل"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "يتم تعيين صياغة الخطاب وتفاصيل الجمعية الخيرية ومعالجة PDF مرة واحدة في إعدادات الكشف."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "صياغة الخطاب وتفاصيل الجمعية الخيرية ومعالجة PDF لكشوف العطايا"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "بحد أقصى 2 MiB و2000 × 1000 بكسل. اختر صورة جديدة لاستبدال التوقيع المخزن. صورة التوقيع ليست توقيعًا رقميًا آمنًا."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "تسجيل دخول الأعضاء متوقف، لذا لا يمكن لأي فرد في أسرة %s تسجيل الدخول إلى بوابة الأعضاء. يمكن للمسؤول تشغيله ضمن «المسؤول» ← «بوابة الأعضاء»."
+
+#: 
+msgid "Memo"
+msgstr "مذكرة"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "لا يمكن تقسيم مجموعات مدفوعات الأسر ذات المتبرعين المختلطين هنا؛ تعامل معها خارج هذه الميزة."
+
+#: 
+msgid "Narrow the list"
+msgstr "تضييق القائمة"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "لا توجد أسرة تطابق هذه المرشحات لـ %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "لا يوجد إيصال فردي أو تراكمي متداخل."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "لا يمكن إنشاء إيصال لهذه الأسرة بعد"
+
+#: 
+msgid "No signature on file"
+msgstr "لا يوجد توقيع في الملف"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "لا — متبرعون مختلفون؛ تعامل مع ذلك خارج هذه الميزة"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "لا يمكن لأي فرد في أسرة %s تسجيل الدخول إلى بوابة الأعضاء بموجب قاعدة تسجيل الدخول الحالية."
+
+#: 
+msgid "None / Aucun"
+msgstr "لا شيء / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "غير جاهز لإصدار الإيصالات الكندية. ما زال ينقص"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "إيصال رسمي / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "إيصال رسمي لأغراض ضريبة الدخل / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "تتطلب الإيصالات الرسمية رقم تسجيل بالتنسيق 123456789RR0001 وصورة توقيع."
+
+#: 
+msgid "Original"
+msgstr "الأصلي"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "تاريخ الإصدار الأصلي (أدخله من الأصل المحفوظ)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "تعكس تواريخ الدفع تواريخ استلام العطايا، بما في ذلك معالجة ختم البريد الموثقة للشيكات المرسلة بالبريد."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "يُطبع على كشوف العطايا العادية، على سبيل المثال EIN في الولايات المتحدة. توجد نفس القيمة في معلومات الكنيسة."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "معرّف أصل التوقيع الخاص لكشف العطايا. يُدار عبر تحميل التوقيع."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "الخصائص / التعيينات"
+
+#: 
+msgid "Property deleted"
+msgstr "تم حذف الخاصية"
+
+#: 
+msgid "Property type deleted"
+msgstr "تم حذف نوع الخاصية"
+
+#: 
+msgid "Receipt Closing"
+msgstr "خاتمة الإيصال"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "محل إصدار الإيصال"
+
+#: 
+msgid "Receipt No."
+msgstr "رقم الإيصال"
+
+#: 
+msgid "Registration Number"
+msgstr "رقم التسجيل"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "رقم التسجيل بالتنسيق 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "ملاحظات الإصدار غير متاحة الآن."
+
+#: 
+msgid "Releases"
+msgstr "الإصدارات"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "الالتزام المتبقي لـ %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "إزالة متطلب 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "إزالة صورة التوقيع المخزنة؟ تتطلب الإيصالات الرسمية وجود واحدة في الملف."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "تقارن التقارير والتذكيرات هذا الالتزام لكامل الفترة مع العطاء. الرصيد المتبقي ليس حسابًا لقسط متأخر."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "تستخدم التقارير والتذكيرات الالتزام الكامل الموضح أعلاه. الرصيد المتبقي ليس حسابًا لقسط متأخر."
+
+#: 
+msgid "Require 2FA"
+msgstr "طلب 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "إعادة تعيين الخيارات"
+
+#: 
+msgid "Review Selected Families"
+msgstr "مراجعة الأسر المحددة"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "عينة — غير صالحة لأغراض الضريبة"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "عنصر نائب لعينة التوقيع"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "حدد ما إذا كان 2FA مطلوبًا."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "تتوفر تحديثات الأمان والدعم لأحدث إصدار فقط."
+
+#: 
+msgid "Select the families to review."
+msgstr "حدد الأسر للمراجعة."
+
+#: 
+msgid "Set up the statement"
+msgstr "إعداد الكشف"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "قم بإعداد المصادقة الثنائية للمتابعة."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "تعارض الظرف المشترك: توجد أسرة أخرى لديها حاليًا رقم الظرف هذا."
+
+#: 
+msgid "Signature Image"
+msgstr "صورة التوقيع"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "صورة التوقيع (المسؤول، إعدادات التقرير)"
+
+#: 
+msgid "Signature on file"
+msgstr "التوقيع في الملف"
+
+#: 
+msgid "Sincerely"
+msgstr "مع خالص التحية"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "حدد أساس المبلغ عند تحرير تعهد متكرر."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "كشف عطايا قياسي"
+
+#: 
+msgid "Statement Template"
+msgstr "قالب الكشف"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "قدم تاريخ إصدار لا يتجاوز اليوم."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "الرقم الضريبي على الكشوف"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "لا يوجد في أسرة %s أعضاء أحياء لدعوتهم إلى بوابة الأعضاء."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "يجب أن يكون رقم التسجيل الكندي بالتنسيق 123456789RR0001. هذا لا يتحقق من حالة التسجيل."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "يجب أن يكون رقم تسجيل الجمعية الخيرية نصًا."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "رقم تسجيل الجمعية الخيرية المطبوع على الإيصالات الرسمية. إذا كان فارغًا، يُستخدم الرقم الضريبي من معلومات الكنيسة."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "العنوان المسجل للجمعية الخيرية. إذا كان فارغًا، يُستخدم العنوان من معلومات الكنيسة."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "عبارة الختام فوق الموقّع، على سبيل المثال «مع خالص التحية»."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "يجب ألا يتجاوز الالتزام الكامل 999999.99 لكل صندوق، ويجب أن تستخدم المبالغ منزلتين عشريتين على الأكثر."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "تغيّرت العطايا أو عنوان البريد منذ آخر تحقق لك. راجعها وأكّد المتبرع من جديد."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "عنوان البريد غير مكتمل. يلزم وجود شارع ومدينة ومقاطعة ورمز بريدي."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "الاسم الذي تم تسجيل الجمعية الخيرية به. قد يختلف عن اسم الكنيسة."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "المكان الذي تُصدر فيه الإيصالات. إذا كان فارغًا، تُستخدم المدينة من معلومات الكنيسة."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "الموقّع المطبوع لكشف العطايا مخوّل بتوقيع هذه الإيصالات."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "يجب أن يكون رمز عملة النظام $ أو يحدد CAD للإيصالات الكندية."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "لا توجد مدفوعات في السنة التقويمية المحددة."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "هؤلاء هم المتبرعون الحقيقيون لكل عطية في سنة الأسرة/التقويم هذه، وعنوان البريد صحيح."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "تُطبع هذه الصورة فوق اسم الموقّع على كشوف العطايا والإيصالات. توجد تفاصيل الجمعية الخيرية واسم الموقّع المطبوع ضمن المالية، إعدادات الكشف."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "يقوم هذا الخيار بتنسيق إيصال كندي ولكنه لا يحتفظ بسجل إيصالات ولا يحتفظ بملفات PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "تنتظر هذه الأسرة المسجلة ذاتيًا الموافقة. الموافقة عليها ترسل بالبريد الإلكتروني لكل عضو يمكنه تسجيل الدخول إلى بوابة الأعضاء دعوة لمراجعة معلومات الأسرة."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "لا تحتوي هذه الأداة على سير عمل للإلغاء/الاستبدال؛ استخدم عمليتك الحالية المتوافقة مع CRA للتصحيحات/استبدالات الإيصالات المفقودة."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "يجب على هذا المستخدم إعداد 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "سيؤدي هذا إلى حذف سجل الأسرة وملاحظاتها نهائيًا. لا يمكن التراجع عن ذلك."
+
+#: 
+msgid "Total commitment"
+msgstr "الالتزام الإجمالي"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "تعذرت معاينة الالتزام."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "تحميل التوقيع أو استبداله"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "حمّل التوقيع الضريبي المعتمد في إعدادات التقرير."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "استخدم تواريخ ضمن السنة المالية المحددة. تستخدم العطايا الشهرية وربع السنوية يوم القسط الأول، أو اليوم الأخير من الأشهر الأقصر."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "الاسم (الأسماء) الكاملة الموثّقة للمتبرع"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "تحقق من الأسرة شخصيًا بدلًا من ذلك."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "تحقق من الاسم الكامل وعنوان كل أسرة للمتبرع. يجب التعامل مع مجموعات مدفوعات المتبرعين المختلطين خارج هذه الميزة."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "الإصدار %s متاح. يرجى أن تطلب من المسؤول ترقية التثبيت الخاص بك."
+
+#: 
+msgid "View all emails"
+msgstr "عرض جميع رسائل البريد الإلكتروني"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "نعم — مجموعة متبرعين واحدة موثّقة"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "بلد كنيستك هو كندا، لذا تتوفر الإيصالات الرسمية الكندية أيضًا عند إنشاء الكشوف."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "بلد كنيستك هو كندا، لذا تتوفر الإيصالات الرسمية الكندية على كشوف العطايا، وتُوسم الكشوف العادية على أنها ليست إيصال تبرع رسميًا."
+
+#: 
+msgid "groups"
+msgstr "مجموعات"
 
