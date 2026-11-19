@@ -425,11 +425,11 @@ test.describe('Volunteer Management v2', () => {
   test('volunteer-person-tab', personTabCapture, async ({ page }, testInfo) => {
     const { personIds } = await ensureVolunteerSeed(page);
     await page.goto(`/people/view/${personIds.sarah}`);
-    await humanClick(page.locator('#nav-item-volunteer-v2'));
-    await expect(page.locator('#volunteer-v2 #person-volunteer-v2-qualifications')).toBeVisible({ timeout: 30000 });
-    await expect(page.locator('#volunteer-v2 #person-volunteer-v2-assignments')).toBeVisible();
+    await humanClick(page.locator('#nav-item-volunteer'));
+    await expect(page.locator('#volunteer #person-volunteer-qualifications')).toBeVisible({ timeout: 30000 });
+    await expect(page.locator('#volunteer #person-volunteer-assignments')).toBeVisible();
     await waitForFloatingButtonsToTuck(page);
-    await page.locator('#nav-item-volunteer-v2').evaluate((el) => {
+    await page.locator('#nav-item-volunteer').evaluate((el) => {
       const bar = document.querySelector('header.navbar.sticky-top')?.getBoundingClientRect().height ?? 0;
       window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - bar - 24, behavior: 'instant' });
     });

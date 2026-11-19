@@ -260,7 +260,7 @@ describe("Admin → Member Portal → Sign-in", () => {
 
     it("lets an administrator disable and enable a person's sign-in from the person page", () => {
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${PERSON_ID}`);
+        cy.visit(`/people/view/${PERSON_ID}#portal-signin-card`);
         cy.get("#portal-signin-card").should("be.visible");
         cy.get("#portal-signin-disabled").should("not.exist");
 
@@ -283,7 +283,7 @@ describe("Admin → Member Portal → Sign-in", () => {
     it("shows staff with Edit Records the card without its controls", () => {
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${PERSON_ID}/sign-in/disable`, { reason: "Edit Records view" }, 200);
         cy.setupNoFinanceSession();
-        cy.visit(`/people/view/${PERSON_ID}`);
+        cy.visit(`/people/view/${PERSON_ID}#portal-signin-card`);
         cy.get("#portal-signin-disabled").should("contain.text", "Sign-in is disabled");
         cy.get("#portal-signin-disabled-reason").should("not.exist");
         cy.get("#portal-signin-disable").should("not.exist");

@@ -1729,10 +1729,6 @@
       "duration": 7000
     },
     {
-      "spec": "cypress/e2e/ui/people/standard.volunteer-opportunity.spec.js",
-      "duration": 9000
-    },
-    {
       "spec": "cypress/e2e/ui/people/volunteer-v2.member.spec.js",
       "duration": 34000
     },

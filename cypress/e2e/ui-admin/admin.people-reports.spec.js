@@ -39,6 +39,14 @@ function rows() {
 }
 
 describe("People Reports (#9914, #9915)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v1" }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
+    });
+
     beforeEach(() => cy.setupAdminSession());
 
     it("lists the ten people reports", () => {

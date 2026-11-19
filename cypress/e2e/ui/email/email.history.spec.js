@@ -13,6 +13,7 @@ describe("Email history on the person view", () => {
     it("shows email history in the timeline and links to the full history", () => {
         cy.visit("/people/view/2");
         cy.get("#email-history-card").should("not.exist");
+        cy.get("#nav-item-timeline").click();
         cy.get("#timeline .timeline-filter-chip[data-filter='email']").should("be.visible").click();
         cy.get("#timeline .timeline-event[data-timeline-category='email']")
             .should("have.length.at.least", 6)
@@ -43,6 +44,7 @@ describe("Email history on the person view", () => {
 
     it("Show all opens the full, paginated history newest first", () => {
         cy.visit("/people/view/2");
+        cy.get("#nav-item-timeline").click();
         cy.get("#timeline .timeline-filter-chip[data-filter='email']").click();
         cy.get("#timeline-email-history-link").click();
         // Base path may be a sub-directory in CI (/churchcrm/…), so match the tail only
@@ -88,6 +90,7 @@ describe("Email history on the person view", () => {
 
     it("the timeline lists emails under an Emails filter", () => {
         cy.visit("/people/view/2");
+        cy.get("#nav-item-timeline").click();
         cy.get("#timeline .timeline-filter-chip[data-filter='email']").should("be.visible").click();
         cy.get("#timeline .timeline-event[data-timeline-category='email']").should("be.visible").and("contain.text", "Welcome to the choir");
     });
