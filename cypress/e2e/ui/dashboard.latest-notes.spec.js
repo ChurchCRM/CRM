@@ -27,7 +27,7 @@ describe("Dashboard latest notes", () => {
 
     it("shows an admin every new note, newest first, as plain text", () => {
         cy.setupAdminSession();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get("#latestNotesList .list-group-item").should("have.length.at.most", 5);
         [text.userPrivate, text.adminPrivate, text.publicFamily, text.publicPerson].forEach((note, index) => {
             cy.get("#latestNotesList .list-group-item").eq(index).should("contain.text", note);
@@ -47,7 +47,7 @@ describe("Dashboard latest notes", () => {
 
     it("hides other users' private notes from staff with notes access", () => {
         cy.setupStandardSession();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get("#latestNotesList").should("contain.text", text.userPrivate);
         cy.get("#latestNotesList").should("contain.text", text.publicPerson);
         cy.get("#latestNotesList").should("contain.text", text.publicFamily);
@@ -61,7 +61,7 @@ describe("Dashboard latest notes", () => {
 
     it("shows only public notes to notes-only staff", () => {
         cy.setupPersonaSession("notes-only-staff");
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get("#latestNotesList").should("contain.text", text.publicPerson);
         cy.get("#latestNotesList").should("not.contain.text", text.adminPrivate);
         cy.get("#latestNotesList").should("not.contain.text", text.userPrivate);
@@ -69,9 +69,28 @@ describe("Dashboard latest notes", () => {
 
     it("is not shown to staff without notes access", () => {
         cy.setupPersonaSession("office-staff");
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get("#birthdayCard").should("exist");
         cy.get("#latestNotesCard").should("not.exist");
         cy.contains(text.publicPerson).should("not.exist");
+    });
+});
+
+describe("Dashboard latest notes time range", () => {
+    it("keeps the chosen range for the user", () => {
+        cy.setupAdminSession();
+        cy.intercept("POST", "**/setting/ui.dashboard.people.days").as("saveRange");
+        cy.visit("/people/dashboard");
+        cy.window().then((win) =>
+            cy.request({ method: "POST", url: `/api/user/${win.CRM.userId}/setting/ui.dashboard.people.days`, body: { value: "30" } }),
+        );
+        cy.visit("/people/dashboard");
+        cy.get("#people-range").should("have.value", "30");
+        cy.get("#people-range").select("7");
+        cy.wait("@saveRange");
+        cy.visit("/people/dashboard");
+        cy.get("#people-range").should("have.value", "7");
+        cy.get("#people-range").select("30");
+        cy.wait("@saveRange");
     });
 });

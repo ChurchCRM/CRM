@@ -142,7 +142,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // Without any FY filter, check we can see at least some deposit (current FY default)
       // Navigate to a FY with known seed deposits: FY 22 (2018)
       // This triggers a page reload with ?fyid=22
-      cy.get("#deposit-fyid").select(String(SEED_FYID_2018));
+      cy.get("#finance-range").select("fy:" + SEED_FYID_2018);
       // Use cy.location() — retries until the post-form-submit navigation settles
       cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
 
@@ -154,7 +154,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
 
     it("All Time option shows all deposits (no fyid in URL)", () => {
       cy.visit(`finance/?fyid=${SEED_FYID_2018}`);
-      cy.get("#deposit-fyid").select("0"); // triggers form submit → page reload
+      cy.get("#finance-range").select("all"); // triggers form submit → page reload
       // Use a retryable assertion: cy.url().then() reads the pre-navigation URL;
       // cy.location().should() retries until navigation completes.
       cy.location("search").should("satisfy", (s) => s === "" || s === "?fyid=0");

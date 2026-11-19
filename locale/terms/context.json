@@ -1,0 +1,87 @@
+{
+  "14 days": [
+    "src/account/views/account.php:302",
+    "src/people/views/_dashboard-overview.php:178"
+  ],
+  "6 months": [
+    "src/ChurchCRM/Service/DemoDataService.php:618",
+    "src/account/views/account.php:302",
+    "src/api/routes/people/people-persons.php:497"
+  ],
+  "60 days": [
+    "src/ChurchCRM/Service/AttendanceService.php:208",
+    "src/account/views/account.php:302",
+    "src/people/views/_dashboard-overview.php:178"
+  ],
+  "7 days": [
+    "src/ChurchCRM/Portal/PortalStatsService.php:51",
+    "src/ChurchCRM/Service/ClassAttendanceService.php:44",
+    "src/ChurchCRM/Service/DemoDataService.php:618"
+  ],
+  "Collapse the sidebar to icons": [
+    "src/account/views/account.php:330"
+  ],
+  "Could not save your main dashboard.": [
+    "webpack/common/landing-page.ts:33"
+  ],
+  "How the congregation is made up": [
+    "src/people/views/dashboard.php:17"
+  ],
+  "Insights": [
+    "src/people/views/dashboard.php:16"
+  ],
+  "Last %d days": [
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:304",
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:318",
+    "src/ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php:65"
+  ],
+  "Last 12 months": [
+    "src/ChurchCRM/Service/FinancialService.php:940"
+  ],
+  "Main dashboard": [
+    "src/account/views/account.php:288"
+  ],
+  "Navigation": [
+    "src/account/views/account.php:324",
+    "src/account/views/account.php:325",
+    "src/api/routes/people/people-family.php:89"
+  ],
+  "No notes in this time range.": [
+    "src/people/views/_dashboard-overview.php:244"
+  ],
+  "Open total": [
+    "src/finance/views/deposits/search.php:45"
+  ],
+  "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself.": [
+    "src/account/views/account.php:317"
+  ],
+  "Past 7 days and next %d days": [
+    "src/people/views/_dashboard-overview.php:274",
+    "src/people/views/_dashboard-overview.php:285"
+  ],
+  "Recent": [
+    "src/ChurchCRM/Portal/PortalStatsService.php:55",
+    "src/ChurchCRM/Portal/PortalStatsService.php:78",
+    "src/ChurchCRM/Service/AttendanceService.php:206"
+  ],
+  "Rows shown per page in every table and dashboard card. Takes effect on next page load.": [
+    "src/account/views/account.php:349"
+  ],
+  "Set as my main dashboard": [
+    "src/Include/partials/dashboard-switch.php:26",
+    "src/Include/partials/dashboard-switch.php:27"
+  ],
+  "The dashboard you open on after signing in": [
+    "src/account/views/account.php:295"
+  ],
+  "This dashboard is now your main dashboard.": [
+    "webpack/common/landing-page.ts:31"
+  ],
+  "Total deposited": [
+    "src/finance/views/deposits/search.php:46"
+  ],
+  "Your main dashboard": [
+    "src/Include/partials/dashboard-switch.php:27",
+    "webpack/common/landing-page.ts:29"
+  ]
+}

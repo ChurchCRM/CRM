@@ -16,6 +16,7 @@ use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Service\ReportCatalog;
 use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Service\DashboardLandingService;
 
 class Menu
 {
@@ -46,7 +47,7 @@ class Menu
         // the scope query on the User instance so the route gate reuses it.
         $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
         $menus = [
-            'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
+            'Dashboard'    => new MenuItem(gettext('Dashboard'), ltrim(DashboardLandingService::pathFor($currentUser), '/'), true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
             'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled(), $isVolunteerV1InUse),
             'Groups'       => self::getGroupMenu($isAdmin, $isManageGroups),

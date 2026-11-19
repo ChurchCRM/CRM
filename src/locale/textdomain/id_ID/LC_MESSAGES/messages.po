@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "Orang-orang"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Anak Sekolah Minggu"
-
-#: 
 msgid "Role / Gender"
 msgstr "Peran / Jender"
 
@@ -4473,10 +4469,6 @@ msgstr "Bidang tempat Pengakuan terakhir disimpan, harus berupa tipe tanggal"
 #: 
 msgid "People Reports"
 msgstr "Laporan Orang"
-
-#: 
-msgid "People Dashboard"
-msgstr "Dasbor Orang"
 
 #: 
 msgid "People Directory"
@@ -9003,10 +8995,6 @@ msgid "Password Recovery"
 msgstr "Pemulihan Kata Sandi"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "7 hari terakhir & mendatang"
-
-#: 
 msgid "People by Classification"
 msgstr "Orang berdasarkan Klasifikasi"
 
@@ -10902,10 +10890,6 @@ msgstr "Gelap"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
 
 #. Context: locales
 #: 
@@ -13462,14 +13446,6 @@ msgstr "Tidak Ada Setoran"
 #: 
 msgid "No Events Today"
 msgstr "Tidak Ada Acara Hari Ini"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Tidak ada hari peringatan dalam 7 hari terakhir atau mendatang"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Tidak ada ulang tahun dalam 7 hari terakhir atau mendatang"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -17795,10 +17771,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Pendaftaran yang menunggu peninjauan dari formulir pendaftaran publik Anda. Entri tanpa email atau telepon ditandai — verifikasi kontak sebelum menindaklanjuti."
 
 #: 
-msgid "Review now"
-msgstr "Tinjau sekarang"
-
-#: 
 msgid "Review self registrations"
 msgstr "Tinjau pendaftaran mandiri"
 
@@ -17849,10 +17821,6 @@ msgstr "Kemarin"
 #: 
 msgid "days ago"
 msgstr "hari yang lalu"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "pendaftaran mandiri menunggu peninjauan"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -27099,10 +27067,6 @@ msgid "Delete the login for"
 msgstr "Hapus login untuk"
 
 #: 
-msgid "Deposit chart time range"
-msgstr "Rentang waktu grafik setoran"
-
-#: 
 msgid "Disabled at"
 msgstr "Dinonaktifkan pada"
 
@@ -27627,10 +27591,6 @@ msgid "Latest Notes"
 msgstr "Catatan Terbaru"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Belum ada catatan yang ditambahkan."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Mulai pendaftaran untuk mendapatkan kode QR."
 
@@ -27641,4 +27601,744 @@ msgstr "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d pemberian dengan total %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d keluarga saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d keluarga belum dapat menerima kwitansi dan dikecualikan. Perbaiki masalah yang tercantum di bawahnya, lalu pilih Periksa Lagi."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d grup saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d orang saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d rilis tersedia sejak versi yang Anda instal."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Tidak ada kwitansi yang dibuat."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: masukkan nama lengkap penyumbang yang telah diverifikasi, konfirmasikan para penyumbang, dan konfirmasikan satu set penyumbang. Set pembayaran dengan penyumbang campuran harus ditangani di luar fitur ini."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: pemberian atau alamat surat telah berubah sejak peninjauan. Pilih Periksa Lagi dan konfirmasikan penyumbang kembali."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} angsuran)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} angsuran)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Pembayaran kartu kredit atau wesel bank berada dalam setoran yang belum ditutup. Tutup setoran setelah pembayaran selesai diproses."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Sebuah pembayaran memiliki jumlah yang tidak dapat dikurangkan. Kwitansi Kanada di sini hanya mendukung pemberian tanpa keuntungan."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Sebuah pembayaran memiliki jumlah uang yang tidak valid."
+
+#: 
+msgid "A payment has no date."
+msgstr "Sebuah pembayaran tidak memiliki tanggal."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Sebuah pembayaran bertanggal setelah tanggal penerbitan."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Sebuah pembayaran ditandai sebagai masalah."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Sebuah pembayaran bernilai nol atau negatif."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Diperlukan POST yang telah ditinjau dengan token CSRF yang valid."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Keluarga yang dipilih sudah tidak ada lagi."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Gambar tanda tangan bukanlah tanda tangan digital yang aman."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Pembaruan sistem tersedia. Mintalah administrator Anda untuk meningkatkan instalasi Anda."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Semua baris yang disertakan adalah pemberian uang tanpa keuntungan."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Semua pengaturan kwitansi Kanada yang diperlukan telah diisi."
+
+#: 
+msgid "Also delete family members"
+msgstr "Hapus juga anggota keluarga"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Jumlah keuntungan"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Jumlah pemberian"
+
+#: 
+msgid "Amount per installment"
+msgstr "Jumlah per angsuran"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Jumlah yang dimasukkan adalah"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Seorang administrator mengunggahnya di bawah Pengaturan Laporan."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Disetujui, tetapi tidak ada undangan yang dikirim"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Mintalah administrator sistem Anda untuk meningkatkan ChurchCRM ke versi terbaru."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Tanda Tangan Berwenang"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Badan Pendapatan Kanada"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kwitansi Resmi Kanada"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kwitansi resmi Kanada mengharuskan Kanada sebagai negara gereja pada Info Gereja."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kwitansi Kanada memerlukan seluruh tahun kalender dan semua dana, tanpa filter lain."
+
+#: 
+msgid "Change Selection"
+msgstr "Ubah Pilihan"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Nama Legal Badan Amal"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Alamat Terdaftar Badan Amal"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Nomor Registrasi Badan Amal"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Rincian badan amal untuk kwitansi belum diisi. Tambahkan nama legal, alamat terdaftar, nomor registrasi, dan lokasi penerbitan bila Anda bisa. Keuangan tetap berjalan hingga saat itu."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Badan amal pada kwitansi"
+
+#: 
+msgid "Check Again"
+msgstr "Periksa Lagi"
+
+#: 
+msgid "Check the year"
+msgstr "Periksa tahun"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Periksa tahun, siapkan laporan, lalu unduh."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Pilih Mingguan, Bulanan atau Triwulanan untuk jumlah angsuran."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Pilih tahun kalender donasi yang valid."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Pilih asli atau duplikat."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Pilih total komitmen atau jumlah angsuran."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Terjemahan ChurchCRM dikelola di repositori GitHub ChurchCRM. Anda dapat membantu dengan"
+
+#: 
+msgid "Commitment amount"
+msgstr "Jumlah komitmen"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Bandingkan duplikat dengan asli yang disimpan dan konfirmasikan bahwa semua informasi kwitansi tidak berubah."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Lengkapi setiap pengakuan kwitansi sebelum mengunduh."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Lengkapi nama legal badan amal, alamat terdaftar, nomor registrasi, lokasi penerbitan, dan penanda tangan tercetak."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Penanda Tangan Tercetak Surat Konfirmasi"
+
+#: 
+msgid "Copy Kind"
+msgstr "Jenis Salinan"
+
+#: 
+msgid "Currency"
+msgstr "Mata Uang"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Simbol mata uang $ atau CAD"
+
+#: 
+msgid "Date received"
+msgstr "Tanggal diterima"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Menghapusnya juga akan menghapus %d properti dan semua penugasannya sehingga tidak ada yang tertinggal menggantung."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Apakah semua pemberian tahun terpilih milik penyumbang yang disebutkan bersama di atas?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Jangan gunakan kembali nomor untuk kwitansi yang berbeda, jangan beri kwitansi untuk pemberian yang sama dua kali, atau buat ulang informasi yang berubah sebagai asli yang tidak berubah."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Salinan duplikat / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Jumlah pemberian yang memenuhi syarat untuk keperluan pajak penghasilan"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Masukkan jadwal dan tanggal angsuran untuk mempratinjau komitmen."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Masukkan tanggal angsuran pertama dan terakhir yang valid secara berurutan."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Masukkan jumlah angsuran yang valid dengan maksimal dua tempat desimal."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Janji yang ada mempertahankan total yang tercatat. Pilih jumlah per angsuran hanya saat memasukkan setiap pemberian terjadwal."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Diisi dari kepala keluarga dan pasangan. Edit agar sama persis dengan para penyumbang."
+
+#: 
+msgid "First installment"
+msgstr "Angsuran pertama"
+
+#: 
+msgid "Full commitment"
+msgstr "Komitmen penuh"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Buat Laporan Pajak"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Tahun Kalender Pemberian"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Laporan pemberian — bukan kwitansi donasi resmi"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Bantu Menerjemahkan di GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Perubahan amplop historis tidak didukung."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Saya telah membandingkan dengan asli yang disimpan: penyumbang, jumlah, nomor seri dan teks tidak berubah. Ini bukan koreksi atau penggantian."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Saya akan menyimpan PDF yang diterbitkan dan catatan kwitansi eksternal di lokasi catatan Kanada milik badan amal."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Jika asli yang disimpan tidak tersedia atau berbeda, gunakan prosedur pembatalan/penggantian CRA eksternal Anda."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Sertakan memo pembayaran: saya telah meninjaunya sebagai sesuai untuk penyumbang."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Sertakan keluarga ini dalam unduhan"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Versi terinstal: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Jumlah angsuran hanya dapat digunakan untuk janji."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Tanggal angsuran harus berada dalam tahun fiskal yang dipilih."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Token CSRF tidak valid atau hilang"
+
+#: 
+msgid "Issue Date"
+msgstr "Tanggal Penerbitan"
+
+#: 
+msgid "Issue Locality"
+msgstr "Lokasi Penerbitan"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Simpan PDF asli dan catatan kwitansi eksternal di lokasi catatan Kanada milik badan amal."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Angsuran terakhir pada atau sebelum"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Susunan kata surat, rincian badan amal, dan penanganan PDF diatur sekali pada Pengaturan Laporan."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Susunan kata surat, rincian badan amal, dan penanganan PDF untuk laporan pemberian"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maksimal 2 MiB dan 2000 × 1000 piksel. Pilih gambar baru untuk menggantikan tanda tangan yang disimpan. Gambar tanda tangan bukanlah tanda tangan digital yang aman."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Masuk anggota nonaktif, jadi tidak ada seorang pun dalam keluarga %s yang dapat masuk ke portal anggota. Administrator dapat mengaktifkannya di bawah Admin → Portal Anggota."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Set pembayaran keluarga dengan penyumbang campuran tidak dapat dipisahkan di sini; tangani di luar fitur ini."
+
+#: 
+msgid "Narrow the list"
+msgstr "Persempit daftar"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Tidak ada keluarga yang cocok dengan filter ini untuk %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Tidak ada kwitansi individu atau kumulatif yang tumpang tindih."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Belum ada kwitansi yang dapat dibuat untuk keluarga ini"
+
+#: 
+msgid "No signature on file"
+msgstr "Tidak ada tanda tangan dalam berkas"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Tidak — penyumbang berbeda; tangani di luar fitur ini"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Tidak ada seorang pun dalam keluarga %s yang dapat masuk ke portal anggota berdasarkan aturan masuk saat ini."
+
+#: 
+msgid "None / Aucun"
+msgstr "Tidak ada / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Belum siap menerbitkan kwitansi Kanada. Masih kurang"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Kwitansi Resmi / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Kwitansi resmi untuk keperluan pajak penghasilan / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Kwitansi resmi memerlukan nomor registrasi dalam format 123456789RR0001 dan gambar tanda tangan."
+
+#: 
+msgid "Original"
+msgstr "Asli"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Tanggal Penerbitan Asli (masukkan dari asli yang disimpan)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Tanggal pembayaran mencerminkan tanggal pemberian diterima, termasuk perlakuan cap pos cek yang dikirim melalui pos yang terdokumentasi."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Dicetak pada laporan pemberian biasa, misalnya EIN di Amerika Serikat. Nilai yang sama ada pada Info Gereja."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Pengidentifikasi aset tanda tangan laporan pemberian pribadi. Dikelola melalui unggahan tanda tangan."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Properti / Penugasan"
+
+#: 
+msgid "Property deleted"
+msgstr "Properti dihapus"
+
+#: 
+msgid "Property type deleted"
+msgstr "Jenis properti dihapus"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Penutup Kwitansi"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Lokasi Penerbitan Kwitansi"
+
+#: 
+msgid "Receipt No."
+msgstr "No. Kwitansi"
+
+#: 
+msgid "Registration Number"
+msgstr "Nomor Registrasi"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Nomor registrasi dalam format 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Catatan rilis tidak tersedia saat ini."
+
+#: 
+msgid "Releases"
+msgstr "Rilis"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Sisa komitmen untuk %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Hapus persyaratan 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Hapus gambar tanda tangan yang disimpan? Kwitansi resmi memerlukan satu dalam berkas."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Laporan dan pengingat membandingkan komitmen periode penuh ini dengan pemberian. Saldo yang tersisa bukan perhitungan angsuran yang terlambat."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Laporan dan pengingat menggunakan komitmen penuh yang ditampilkan di atas. Saldo yang tersisa bukan perhitungan angsuran yang terlambat."
+
+#: 
+msgid "Require 2FA"
+msgstr "Wajibkan 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Atur Ulang Opsi"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Tinjau Keluarga Terpilih"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "CONTOH — TIDAK SAH UNTUK KEPERLUAN PAJAK"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Placeholder tanda tangan contoh"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Nyatakan apakah 2FA diperlukan."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Pembaruan keamanan dan dukungan hanya disediakan untuk versi terbaru."
+
+#: 
+msgid "Select the families to review."
+msgstr "Pilih keluarga yang akan ditinjau."
+
+#: 
+msgid "Set up the statement"
+msgstr "Siapkan laporan"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Siapkan autentikasi dua faktor untuk melanjutkan."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Konflik amplop bersama: keluarga lain saat ini memiliki nomor amplop ini."
+
+#: 
+msgid "Signature Image"
+msgstr "Gambar Tanda Tangan"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Gambar tanda tangan (Admin, Pengaturan Laporan)"
+
+#: 
+msgid "Signature on file"
+msgstr "Tanda tangan dalam berkas"
+
+#: 
+msgid "Sincerely"
+msgstr "Hormat kami"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Tentukan dasar jumlah saat mengedit janji berulang."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Laporan Pemberian Standar"
+
+#: 
+msgid "Statement Template"
+msgstr "Templat Laporan"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Berikan tanggal penerbitan tidak lebih lambat dari hari ini."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "ID Pajak pada laporan"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Keluarga %s tidak memiliki anggota yang masih hidup untuk diundang ke portal anggota."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Nomor registrasi Kanada harus memiliki format 123456789RR0001. Ini tidak memverifikasi status registrasi."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Nomor registrasi badan amal harus berupa teks."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Nomor registrasi badan amal yang dicetak pada kwitansi resmi. Jika kosong menggunakan ID Pajak pada Info Gereja."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Alamat terdaftar badan amal. Jika kosong menggunakan alamat pada Info Gereja."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Frasa penutup di atas penanda tangan, misalnya Hormat kami."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Komitmen penuh tidak boleh melebihi 999999.99 per dana dan jumlah harus menggunakan maksimal dua tempat desimal."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Pemberian atau alamat surat telah berubah sejak terakhir Anda periksa. Tinjau dan konfirmasikan penyumbang kembali."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Alamat surat tidak lengkap. Jalan, kota, provinsi, dan kode pos diperlukan."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Nama badan amal terdaftar. Nama ini dapat berbeda dari nama gereja."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Tempat kwitansi diterbitkan. Jika kosong menggunakan kota pada Info Gereja."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Penanda tangan laporan pemberian yang tercetak berwenang menandatangani kwitansi ini."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Simbol mata uang sistem harus $ atau mengidentifikasi CAD untuk kwitansi Kanada."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Tidak ada pembayaran dalam tahun kalender yang dipilih."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Mereka adalah penyumbang yang sebenarnya untuk setiap pemberian dalam keluarga/tahun kalender ini, dan alamat surat sudah benar."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Gambar ini dicetak di atas nama penanda tangan pada laporan pemberian dan kwitansi. Rincian badan amal dan nama tercetak penanda tangan ada di bawah Keuangan, Pengaturan Laporan."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Opsi ini memformat kwitansi Kanada tetapi tidak menyimpan register kwitansi atau mempertahankan PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Keluarga yang mendaftar sendiri ini sedang menunggu persetujuan. Menyetujuinya akan mengirim email undangan kepada setiap anggota yang dapat masuk ke portal anggota untuk meninjau informasi keluarga."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Alat ini tidak memiliki alur kerja pembatalan/penggantian; gunakan proses Anda yang ada dan sesuai CRA untuk koreksi/penggantian kwitansi yang hilang."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Pengguna ini harus menyiapkan 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Ini akan menghapus catatan keluarga dan catatannya secara permanen. Ini tidak dapat dibatalkan."
+
+#: 
+msgid "Total commitment"
+msgstr "Total komitmen"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Tidak dapat mempratinjau komitmen."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Unggah atau ganti tanda tangan"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Unggah tanda tangan pajak yang berwenang di Pengaturan Laporan."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Gunakan tanggal dalam tahun fiskal yang dipilih. Pemberian bulanan dan triwulanan menggunakan hari angsuran pertama, atau hari terakhir dari bulan yang lebih pendek."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Nama Lengkap Penyumbang Terverifikasi"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Verifikasi keluarga secara langsung sebagai gantinya."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Verifikasi nama lengkap dan alamat penyumbang untuk setiap keluarga. Set pembayaran dengan penyumbang campuran harus ditangani di luar fitur ini."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Versi %s tersedia. Mintalah administrator Anda untuk meningkatkan instalasi Anda."
+
+#: 
+msgid "View all emails"
+msgstr "Lihat semua email"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ya — satu set penyumbang terverifikasi"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Negara gereja Anda adalah Kanada, jadi kwitansi resmi Kanada juga tersedia saat Anda membuat laporan."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Negara gereja Anda adalah Kanada, jadi kwitansi resmi Kanada tersedia pada Laporan Pemberian dan laporan biasa ditandai sebagai bukan kwitansi donasi resmi."
+
+#: 
+msgid "groups"
+msgstr "grup"
 

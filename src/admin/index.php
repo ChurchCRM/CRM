@@ -24,7 +24,7 @@ if (rtrim((string) strtok($_SERVER['REQUEST_URI'], '?'), '/') === rtrim(SystemUR
         exit;
     }
     if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::redirect('people/dashboard');
     }
 }
 

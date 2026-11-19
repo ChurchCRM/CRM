@@ -154,7 +154,7 @@ describe('02 - Demo Data Import', () => {
             
             // Should be on dashboard or some valid page
             cy.url().should('satisfy', (url) => {
-                return url.includes('/v2/dashboard') || 
+                return url.includes('/people/dashboard') || 
                        url.includes('/admin') || 
                        url.includes('/Menu.php') ||
                        !url.includes('/setup');

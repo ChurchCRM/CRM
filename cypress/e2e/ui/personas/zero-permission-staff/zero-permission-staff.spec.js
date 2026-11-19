@@ -32,13 +32,13 @@ describe("Zero-Permission User (all flags 0)", () => {
         beforeEach(login);
 
         it("Login lands in the admin shell, NOT in the Member Portal", () => {
-            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("include", "/people/dashboard");
             cy.url().should("not.include", "/portal");
         });
 
         it("Can view the main dashboard", () => {
-            cy.visit("v2/dashboard");
-            cy.url().should("include", "/v2/dashboard");
+            cy.visit("people/dashboard");
+            cy.url().should("include", "/people/dashboard");
             cy.url().should("not.include", "/portal");
         });
 
@@ -79,7 +79,7 @@ describe("Zero-Permission User (all flags 0)", () => {
         // FamilyEditor.php uses securityRedirect → access-denied (tested separately below).
         it("PersonEditor (add/edit person) is denied", () => {
             cy.visit("PersonEditor.php?PersonID=2", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("include", "/people/dashboard");
         });
 
         it("FamilyEditor (add/edit family) is denied", () => {
@@ -193,7 +193,7 @@ describe("Zero-Permission User (all flags 0)", () => {
         beforeEach(login);
 
         it("Shows People, hides write actions", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             // Read-default: the People menu is available.
             cy.contains("People").should("exist");
             // No write actions.
@@ -203,7 +203,7 @@ describe("Zero-Permission User (all flags 0)", () => {
 
         // A menu entry must not advertise a page the user is bounced out of.
         it("Hides Groups and Sunday School (ManageGroups=0)", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             // .navbar-nav matches multiple elements (main menu + header navs);
             // iterate each so cy.within() receives a single element at a time.
             cy.get(".navbar-nav").each(($nav) => {
@@ -215,7 +215,7 @@ describe("Zero-Permission User (all flags 0)", () => {
         });
 
         it("Hides Communication (EmailMailto=0)", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             cy.get(".navbar-nav").each(($nav) => {
                 cy.wrap($nav).within(() => {
                     cy.contains("Communication").should("not.exist");
@@ -224,7 +224,7 @@ describe("Zero-Permission User (all flags 0)", () => {
         });
 
         it("Reports nav lists only People Reports", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             cy.get('.navbar-nav a[href$="/people/reports"]').should("exist");
             cy.get('.navbar-nav a[href$="/finance/reports"]').should("not.exist");
             cy.get('.navbar-nav a[href$="/groups/reports"]').should("not.exist");
@@ -235,7 +235,7 @@ describe("Zero-Permission User (all flags 0)", () => {
         beforeEach(login);
 
         it("Log Out returns to the login page", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             // Open the user-menu dropdown, then click the 'Sign out' link
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains("Sign out").click();

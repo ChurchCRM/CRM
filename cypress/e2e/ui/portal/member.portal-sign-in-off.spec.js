@@ -133,6 +133,6 @@ describe("Member sign-in turned off", () => {
         setMemberSignIn(false);
         portal().its("status").should("eq", 200);
         cy.request("/api/portal/me").its("body.profile.id").should("eq", STAFF.personId);
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+        cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 200);
     });
 });

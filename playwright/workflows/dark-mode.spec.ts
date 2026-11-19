@@ -29,14 +29,14 @@ async function setThemeMode(page: import('@playwright/test').Page, mode: 'auto' 
 
 test.describe('Dark Mode', () => {
   test('dashboard-hero-dark', async ({ page }, testInfo) => {
-    await page.goto('/v2/dashboard');
-    await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
+    await page.goto('/people/dashboard');
+    await expect(page.locator('h2').first()).toBeVisible({ timeout: 15000 });
 
     try {
       await setThemeMode(page, 'dark');
       await page.reload();
       await expect(page.locator('html[data-bs-theme="dark"]')).toBeAttached({ timeout: 10000 });
-      await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
+      await expect(page.locator('h2').first()).toBeVisible({ timeout: 15000 });
       await settle(page, 800);
 
       await captureScreen(page, testInfo, {
@@ -82,7 +82,7 @@ test.describe('Dark Mode', () => {
       await expect(bakerRow).toBeVisible({ timeout: 15000 });
       await humanClick(bakerRow.locator('td').first().locator('a').first());
       await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
-      await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
+      await expect(page.locator('h2').first()).toBeVisible({ timeout: 10000 });
       await settle(page, 1000);
 
       await captureScreen(page, testInfo, {
