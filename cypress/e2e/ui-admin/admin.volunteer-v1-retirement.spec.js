@@ -131,7 +131,6 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
 
         it("hides every Volunteer Opportunities screen", () => {
             cy.visit(`/people/view/${people.mathew}`);
-            cy.get("#nav-item-volunteer").should("not.exist");
             cy.get("a[href$='VolunteerOpportunityEditor.php']").should("not.exist");
 
             cy.visit("/VolunteerOpportunityEditor.php");
@@ -177,8 +176,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                 .should("have.attr", "href", `${basePath()}/admin/volunteer-conversion`);
 
             cy.visit(`/people/view/${people.marion}`);
-            cy.get("#nav-item-volunteer").should("contain.text", "Volunteer (Legacy)").click();
-            cy.get("#volunteer #volunteer-v1-notice").should("be.visible");
+            cy.get("#nav-item-volunteer").should("contain.text", "Volunteer");
 
             cy.visit("/VolunteerOpportunityEditor.php");
             cy.location("pathname").should("eq", `${basePath()}/VolunteerOpportunityEditor.php`);

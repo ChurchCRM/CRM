@@ -525,10 +525,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows the person's qualification and upcoming assignment, linking into /volunteer", () => {
             cy.visit(`/people/view/${POOL_MEMBER_A}`);
 
-            cy.get("#nav-item-volunteer-v2").should("exist").click();
-            cy.get("#volunteer-v2").should("be.visible");
-            cy.get("#person-volunteer-v2-qualifications").should("contain", POSITION_ESPRESSO);
-            cy.get("#person-volunteer-v2-assignments")
+            cy.get("#nav-item-volunteer").should("exist").click();
+            cy.get("#volunteer").should("be.visible");
+            cy.get("#person-volunteer-qualifications").should("contain", POSITION_ESPRESSO);
+            cy.get("#person-volunteer-assignments")
                 .should("contain", POSITION_ESPRESSO)
                 .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
@@ -537,19 +537,8 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows a first-class empty state for a person with nothing (§5.8)", () => {
             // Person 5 is a seeded pool member this fixture never qualifies.
             cy.visit("/people/view/5");
-            cy.get("#nav-item-volunteer-v2").click();
-            cy.get("#person-volunteer-v2-empty").should("be.visible");
-        });
-
-        it("leaves the V1 pane and its ids untouched when both are on", () => {
-            setVersion("both");
-            freshAdminLogin();
-            cy.visit(`/people/view/${POOL_MEMBER_A}`);
-            cy.get("#nav-item-volunteer").should("exist");
-            cy.get("#nav-item-volunteer-v2").should("exist");
-            cy.get("#volunteer").should("exist");
-            cy.get("#volunteer-v2").should("exist");
-            setVersion("v2");
+            cy.get("#nav-item-volunteer").click();
+            cy.get("#person-volunteer-empty").should("be.visible");
         });
     });
 
