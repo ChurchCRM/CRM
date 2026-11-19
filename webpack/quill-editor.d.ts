@@ -21,10 +21,7 @@ export interface QuillEditorInstance {
  * it in `window.quillEditors` under the container's id. Returns null when
  * the container is missing or already hosts an editor.
  */
-export function initializeQuillEditor(
-  selector: string,
-  options?: Record<string, unknown>,
-): QuillEditorInstance | null;
+export function initializeQuillEditor(selector: string, options?: Record<string, unknown>): QuillEditorInstance | null;
 
 export function getEditorHtml(editor: QuillEditorInstance | null): string;
 export function setEditorHtml(editor: QuillEditorInstance | null, html: string): void;
