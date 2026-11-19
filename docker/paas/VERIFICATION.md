@@ -61,5 +61,5 @@ Run it against a built candidate image before releasing the image change.
    and website repositories, then apply to the Railway partner program.
 
 GitHub fork creation returned `403 Resource not accessible by integration`.
-The repository requires PRs from forks, and #11769 requires deployment verification
-before template PRs. The implementation is retained locally for those gates.
+The maintainer requested a draft PR while deployment verification remains open;
+the candidates remain pending the live checks above.
