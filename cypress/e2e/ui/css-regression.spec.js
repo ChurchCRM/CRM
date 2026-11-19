@@ -42,9 +42,9 @@ describe("CSS Regression — No Auth Style Leakage", () => {
         });
 
         it("Submit button should not have auth-page gradient", () => {
-            cy.get("#FinancialReportTypes").select("Pledge Reminders");
+            cy.get("#FinancialReportTypes").select("Pledge Family Summary");
             cy.get("#FinancialReports").submit();
-            cy.contains("Financial Reports: Pledge Reminders").should("be.visible");
+            cy.contains("Financial Reports: Pledge Family Summary").should("be.visible");
 
             cy.get("#createReport").should("be.visible")
                 .invoke("css", "background-image")
