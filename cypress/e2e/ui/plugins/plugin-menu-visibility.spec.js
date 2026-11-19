@@ -23,13 +23,13 @@ describe('Plugin menu visibility', () => {
 
     it('shows the plugin menu entry to an administrator', () => {
         cy.setupAdminSession();
-        cy.visit('/v2/dashboard');
+        cy.visit('/people/dashboard');
         cy.get(`a[href$="${MANAGE_LINKS_HREF}"]`).should('exist');
     });
 
     it('hides the admin-only plugin menu entry from a non-admin', () => {
         cy.setupStandardSession();
-        cy.visit('/v2/dashboard');
+        cy.visit('/people/dashboard');
         cy.contains('Families');
         cy.get(`a[href$="${MANAGE_LINKS_HREF}"]`).should('not.exist');
     });

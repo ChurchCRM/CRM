@@ -46,7 +46,7 @@ if ($iFamilyID > 0) {
 
     $family = FamilyQuery::create()->findOneById($iFamilyID);
     if ($family === null) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::redirect('people/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::securityRedirect('AddRecords');

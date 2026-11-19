@@ -6,7 +6,7 @@ use ChurchCRM\Slim\MvcAppFactory;
 
 // The signed-in staff user's own account.
 $app = MvcAppFactory::create('/account', [
-    'dashboardUrl' => '/v2/dashboard',
+    'dashboardUrl' => '/people/dashboard',
     'dashboardText' => gettext('Return to Dashboard'),
 ]);
 

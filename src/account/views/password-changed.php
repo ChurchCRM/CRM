@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <p><?= InputUtils::escapeHTML(sprintf(gettext('The password for %s has been updated.'), $user->getFullName())) ?></p>
                 <a href="<?= SystemURLs::getRootPath() ?>/account" class="btn btn-outline-secondary me-2"><?= gettext('My Account') ?></a>
-                <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-success"><?= gettext('Go to Dashboard') ?></a>
+                <a href="<?= SystemURLs::getRootPath() ?>/people/dashboard" class="btn btn-success"><?= gettext('Go to Dashboard') ?></a>
             </div>
         </div>
     </div>
