@@ -74,6 +74,50 @@ if (inspect.status !== 0) {
     process.exit(inspect.status || 1);
 }
 
+if (flavor === 'apache') {
+    const volume = `churchcrm-persistence-${process.pid}-${Date.now()}`;
+    const created = docker(['volume', 'create', volume]);
+    if (created.status !== 0) {
+        process.stderr.write(created.stderr || '');
+        process.exit(created.status || 1);
+    }
+    let result;
+    try {
+        const options = ['run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+            '-e', 'CHURCHCRM_PERSISTENT_DATA=1', '-v', `${volume}:/var/lib/churchcrm`, image, 'sh', '-ec'];
+        result = docker([...options, `
+test ! -e Include/Config.php
+test -L Include/Config.php
+php -r 'file_put_contents("Include/Config.php", "<?php // persistent config");'
+printf person > Images/Person/photo.jpg
+printf family > Images/Family/photo.jpg
+`]);
+        if (result.status === 0) {
+            result = docker([...options, `
+test "$(cat Include/Config.php)" = '<?php // persistent config'
+test "$(cat Images/Person/photo.jpg)" = person
+test "$(cat Images/Family/photo.jpg)" = family
+test -f Include/LoadConfigs.php
+test ! -L Include/LoadConfigs.php
+test "$(readlink /var/lib/churchcrm/LoadConfigs.php)" = /var/www/html/Include/LoadConfigs.php
+grep -q 'Require all denied' Images/Person/.htaccess
+grep -q 'Require all denied' Images/Family/.htaccess
+test "$(stat -c %a /var/lib/churchcrm/Config.php)" = 600
+`]);
+        }
+    } finally {
+        const removed = docker(['volume', 'rm', volume]);
+        if (removed.status !== 0) {
+            process.stderr.write(removed.stderr || '');
+            process.exit(removed.status || 1);
+        }
+    }
+    if (result.status !== 0) {
+        process.stderr.write(result.stderr || '');
+        process.exit(result.status || 1);
+    }
+}
+
 const started = docker([
     'run', '-d', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image,
 ]);
