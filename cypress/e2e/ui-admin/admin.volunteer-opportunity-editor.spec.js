@@ -29,7 +29,7 @@ describe("Volunteer Opportunity Editor", () => {
         }).then(({ body }) => {
             cy.visit("/VolunteerOpportunityEditor.php");
             cy.contains("a.btn", "Exit").click();
-            cy.location("pathname").should("eq", `${installPath}/v2/dashboard`);
+            cy.location("pathname").should("eq", `${installPath}/people/dashboard`);
             cy.request({
                 method: "DELETE",
                 url: `/admin/api/volunteer-opportunities/${body.volunteerOpportunity.id}`,

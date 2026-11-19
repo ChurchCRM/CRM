@@ -11,6 +11,7 @@ use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\Service\DashboardLandingService;
 
 $app->get('', 'viewOwnAccount');
 $app->get('/', 'viewOwnAccount');
@@ -56,7 +57,7 @@ function changeOwnPassword(Request $request, Response $response): Response
             if ($isForced) {
                 // The dashboard runs ChurchInfoRequiredMiddleware, which sends an
                 // administrator of a fresh install to church-info first.
-                return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
+                return $response->withStatus(302)->withHeader('Location', DashboardLandingService::urlFor($user));
             }
 
             return $renderer->render($response, 'password-changed.php', $pageArgs);

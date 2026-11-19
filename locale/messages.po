@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 23:22+0000\n"
+"POT-Creation-Date: 2026-11-19 14:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -506,6 +506,9 @@ msgstr ""
 msgid "12 months"
 msgstr ""
 
+msgid "14 days"
+msgstr ""
+
 msgid "1st"
 msgstr ""
 
@@ -543,6 +546,15 @@ msgid "4th"
 msgstr ""
 
 msgid "5th"
+msgstr ""
+
+msgid "6 months"
+msgstr ""
+
+msgid "60 days"
+msgstr ""
+
+msgid "7 days"
 msgstr ""
 
 msgid "90 days"
@@ -3919,6 +3931,9 @@ msgstr ""
 msgid "Collapse sidebar"
 msgstr ""
 
+msgid "Collapse the sidebar to icons"
+msgstr ""
+
 msgid "Collation"
 msgstr ""
 
@@ -4405,6 +4420,9 @@ msgid "Could not parse the CSV file. Check that it is a valid comma-separated fi
 msgstr ""
 
 msgid "Could not revoke the scope"
+msgstr ""
+
+msgid "Could not save your main dashboard."
 msgstr ""
 
 msgid "Count"
@@ -4985,9 +5003,6 @@ msgstr ""
 msgid "Default event type for ministry events"
 msgstr ""
 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr ""
-
 msgid "Default role updated."
 msgstr ""
 
@@ -5278,9 +5293,6 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit Value"
-msgstr ""
-
-msgid "Deposit chart time range"
 msgstr ""
 
 msgid "Deposit not found"
@@ -8769,6 +8781,9 @@ msgstr ""
 msgid "How the CSV Import Works"
 msgstr ""
 
+msgid "How the congregation is made up"
+msgstr ""
+
 msgid "How to Accept This Kiosk"
 msgstr ""
 
@@ -9135,6 +9150,9 @@ msgid "Information to Include"
 msgstr ""
 
 msgid "Initial zoom level when opening the map"
+msgstr ""
+
+msgid "Insights"
 msgstr ""
 
 msgid "Install"
@@ -9670,6 +9688,13 @@ msgid "Laos (ລາວ)"
 msgstr ""
 
 msgid "Last"
+msgstr ""
+
+#, php-format
+msgid "Last %d days"
+msgstr ""
+
+msgid "Last 12 months"
 msgstr ""
 
 msgid "Last 24 hours"
@@ -10244,6 +10269,9 @@ msgid "Mailing labels for the people in this report. A person with no address of
 msgstr ""
 
 msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr ""
+
+msgid "Main dashboard"
 msgstr ""
 
 msgid "Major"
@@ -11142,6 +11170,9 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
+msgid "Navigation"
+msgstr ""
+
 msgid "Near"
 msgstr ""
 
@@ -11414,9 +11445,6 @@ msgstr ""
 msgid "No address on file"
 msgstr ""
 
-msgid "No anniversaries in the past or next 7 days"
-msgstr ""
-
 msgid "No attendance records found."
 msgstr ""
 
@@ -11424,9 +11452,6 @@ msgid "No backups recorded"
 msgstr ""
 
 msgid "No birth date, and not a head of household or spouse"
-msgstr ""
-
-msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
 msgid "No calendar has been shared with members yet."
@@ -11666,7 +11691,7 @@ msgctxt "other"
 msgid "No new occurrences. All {{count}} events through {{through}} already have one."
 msgstr ""
 
-msgid "No notes have been added yet."
+msgid "No notes in this time range."
 msgstr ""
 
 msgid "No one checked in yet"
@@ -12612,6 +12637,9 @@ msgstr ""
 msgid "Open this team"
 msgstr ""
 
+msgid "Open total"
+msgstr ""
+
 msgid "Open user menu"
 msgstr ""
 
@@ -12644,6 +12672,9 @@ msgid "Opening a calendar to ministries requires Add Events permission"
 msgstr ""
 
 msgid "Opens a 2-minute window for devices to register at"
+msgstr ""
+
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
 msgstr ""
 
 msgid "Opportunities"
@@ -13022,7 +13053,8 @@ msgid_plural "Passwords must be at least %s characters long."
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Past & next 7 days"
+#, php-format
+msgid "Past 7 days and next %d days"
 msgstr ""
 
 msgid "Payment"
@@ -13074,9 +13106,6 @@ msgid "People &amp; Families"
 msgstr ""
 
 msgid "People Checked In"
-msgstr ""
-
-msgid "People Dashboard"
 msgstr ""
 
 msgid "People Directory"
@@ -14158,6 +14187,9 @@ msgstr ""
 msgid "Receives Mail"
 msgstr ""
 
+msgid "Recent"
+msgstr ""
+
 msgid "Recent Deposits"
 msgstr ""
 
@@ -14748,9 +14780,6 @@ msgstr ""
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr ""
 
-msgid "Review now"
-msgstr ""
-
 msgid "Review payments for a period, or prepare one deposit for the bank."
 msgstr ""
 
@@ -14826,6 +14855,9 @@ msgid "Root Path"
 msgstr ""
 
 msgid "Rows per page"
+msgstr ""
+
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
 msgstr ""
 
 msgid "Run"
@@ -15702,6 +15734,9 @@ msgstr ""
 msgid "Set as Accepted"
 msgstr ""
 
+msgid "Set as my main dashboard"
+msgstr ""
+
 msgid "Set staffing needs"
 msgstr ""
 
@@ -16558,9 +16593,6 @@ msgstr ""
 msgid "Sunday School Dashboard"
 msgstr ""
 
-msgid "Sunday School Kids"
-msgstr ""
-
 msgid "Sunday School Module"
 msgstr ""
 
@@ -17214,6 +17246,9 @@ msgid "The coordinator could not be added"
 msgstr ""
 
 msgid "The coordinator list could not be loaded"
+msgstr ""
+
+msgid "The dashboard you open on after signing in"
 msgstr ""
 
 msgid "The database has been cleared."
@@ -18004,6 +18039,9 @@ msgstr ""
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
+msgid "This dashboard is now your main dashboard."
+msgstr ""
+
 msgid "This date was canceled. Nothing more is needed from you."
 msgstr ""
 
@@ -18669,6 +18707,9 @@ msgid "Total commitment"
 msgstr ""
 
 msgid "Total contributions"
+msgstr ""
+
+msgid "Total deposited"
 msgstr ""
 
 #, php-format
@@ -20788,6 +20829,9 @@ msgstr ""
 msgid "Your fiscal year starts in %s."
 msgstr ""
 
+msgid "Your main dashboard"
+msgstr ""
+
 msgid "Your new password is too similar to your old one."
 msgstr ""
 
@@ -21315,9 +21359,6 @@ msgid "select an option"
 msgstr ""
 
 msgid "selected family has no coordinates"
-msgstr ""
-
-msgid "self-registrations are waiting for review"
 msgstr ""
 
 msgid "single event"

@@ -12,7 +12,7 @@ describe("People Reports for staff users (#10570)", () => {
         beforeEach(noPermSession);
 
         it("lists People Reports in the Reports menu", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.get('a[href$="/people/reports"]').should("contain", "People Reports");
         });
 

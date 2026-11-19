@@ -63,12 +63,12 @@ describe("Blocked sign-in for deceased and inactive people", () => {
         it("browser session is sent back to the login page", () => {
             login("deactivate.target");
             cy.location("pathname", { timeout: 10000 }).should("not.match", /\/admin\/$/);
-            cy.visit("/v2/dashboard");
-            cy.url().should("include", "/v2/dashboard");
+            cy.visit("/people/dashboard");
+            cy.url().should("include", "/people/dashboard");
 
             setActive(false);
 
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.location("pathname").should("match", /\/admin\/$/);
         });
 

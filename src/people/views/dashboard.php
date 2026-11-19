@@ -6,112 +6,17 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+$dashboardSwitchActive = 'people';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+require __DIR__ . '/_dashboard-overview.php';
+
 ?>
 
-<div class="container-fluid">
-
-    <!-- Stat Cards Row -->
-    <div class="row mb-3">
-        <div class="col-6 col-lg-3">
-            <a href="<?= $sRootPath ?>/people/family" class="card card-sm text-decoration-none">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-secondary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-people-roof icon"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="fw-medium text-body"><?= $familyCount['familyCount'] ?></div>
-                            <div class="text-body-secondary"><?= gettext('Families') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-lg-3">
-            <a href="<?= $sRootPath ?>/people/list" class="card card-sm text-decoration-none">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-people-group icon"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="fw-medium text-body"><?= $personCount ?></div>
-                            <div class="text-body-secondary"><?= gettext('People') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <?php if (SystemConfig::getValue('bEnabledSundaySchool')) { ?>
-        <div class="col-6 col-lg-3">
-            <a href="<?= $sRootPath ?>/groups/sundayschool" class="card card-sm text-decoration-none">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-warning text-white avatar rounded-circle">
-                                <i class="fa-solid fa-children icon"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="fw-medium text-body"><?= $groupStats['sundaySchoolkids'] ?></div>
-                            <div class="text-body-secondary"><?= gettext('Sunday School Kids') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <?php } ?>
-        <div class="col-6 col-lg-3">
-            <a href="<?= $sRootPath ?>/groups/dashboard" class="card card-sm text-decoration-none">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-primary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-users icon"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="fw-medium text-body"><?= $groupStats['groups'] ?></div>
-                            <div class="text-body-secondary"><?= gettext('Groups') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="card mb-3">
-        <div class="card-header">
-            <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
-        </div>
-        <div class="card-body">
-            <div class="d-flex flex-wrap gap-2">
-                <?php if ($canEdit) : ?>
-                <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
-                    <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
-                </a>
-                <?php endif; ?>
-                <?php if (!empty($canFixSignInEmail)) : ?>
-                    <a href="<?= $sRootPath ?>/people/sign-in-email" class="btn btn-outline-warning" id="signInEmailAttentionLink">
-                        <i class="fa-solid fa-envelope-circle-check me-1"></i><?= gettext('Email needs attention') ?>
-                    </a>
-                <?php endif; ?>
-                <?php if ($canEmail): ?>
-                    <button type="button" class="btn btn-outline-primary"
-                            data-email-composer
-                            data-email-endpoint="people/emails"
-                            data-email-title="<?= InputUtils::escapeAttribute(gettext('Email All Members')) ?>">
-                        <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
-                    </button>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
+<div class="d-flex align-items-baseline gap-2 mt-4 mb-2">
+    <h2 class="h3 mb-0"><?= gettext('Insights') ?></h2>
+    <span class="text-body-secondary small"><?= gettext('How the congregation is made up') ?></span>
+</div>
+<div>
 
     <!-- Main Content Row -->
     <div class="row">
@@ -209,33 +114,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         </div>
 
-        <!-- Right column: Reports + Gender Demographics + Age Histogram -->
+        <!-- Right column: Gender Demographics + Age Histogram -->
         <div class="col-lg-6">
-
-            <!-- Reports -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
-                </div>
-                <div class="list-group list-group-flush">
-                    <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-address-book fa-fw text-body-secondary me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('People Directory') ?></div>
-                            <div class="text-body-secondary small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
-                    </a>
-                    <a href="<?= $sRootPath ?>/people/reports/letters-and-labels" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Letters & Mailing Labels') ?></div>
-                            <div class="text-body-secondary small"><?= gettext('Generate letters and mailing labels') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
-                    </a>
-                </div>
-            </div>
 
             <!-- Gender Demographics -->
             <div class="card mb-3">
@@ -316,6 +196,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 </script>
 
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-dashboard.min.js') ?>"></script>
 <?php if ($canEmail): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>

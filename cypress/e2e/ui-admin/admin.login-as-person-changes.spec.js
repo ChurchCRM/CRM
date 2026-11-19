@@ -212,7 +212,7 @@ describe("Login as Person: changes and endings", () => {
                 expect(response.headers.location).to.match(/\/admin\/$/);
             });
             cy.restoreSystemConfig("iSessionTimeout", saved.iSessionTimeout);
-            cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
+            cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 302);
 
             auditSince(auditBefore).should("deep.equal", [
                 { event: "login_as_started", reason: null, actorId: ADMIN },

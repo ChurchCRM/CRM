@@ -64,11 +64,11 @@ describe("Self Registrations review page", () => {
     describe("Navigation", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("shows a review action on the home dashboard when registrations are waiting", () => {
+        it("shows a pending-registrations card on the home dashboard when registrations are waiting", () => {
             registerPerson();
-            cy.visit("v2/dashboard");
-            cy.get("#selfRegisterDashboardAlert", { timeout: 10000 }).should("be.visible").and("contain", "waiting for review");
-            cy.get("#selfRegisterDashboardAlert a").should("have.attr", "href").and("include", "/people/self-register");
+            cy.visit("people/dashboard");
+            cy.get("#selfRegisterDashboardCard").should("be.visible").and("have.attr", "href").and("include", "/people/self-register");
+            cy.get("#selfRegisterDashboardCount", { timeout: 10000 }).should("not.have.text", "0");
         });
 
         it("shows a pending badge in the menu when registrations are waiting", () => {
@@ -264,7 +264,7 @@ describe("Self Registrations review page without EditRecords", () => {
     });
 
     it("does not show the review action on the home dashboard", () => {
-        cy.visit("v2/dashboard");
-        cy.get("#selfRegisterDashboardAlert").should("not.exist");
+        cy.visit("people/dashboard");
+        cy.get("#selfRegisterDashboardCard").should("not.exist");
     });
 });
