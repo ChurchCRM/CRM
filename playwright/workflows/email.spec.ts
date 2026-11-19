@@ -54,11 +54,11 @@ async function openAndrew(page: Page): Promise<void> {
   await humanClick(row.locator('a[href*="/people/family/"]').first());
   await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
   await humanClick(page.getByRole('link', { name: 'Andrew Baker' }).first());
-  await expect(page.locator('.card:has(h6 .fa-envelope) [data-email-composer]')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#person-contact [data-email-composer]')).toBeVisible({ timeout: 15000 });
 }
 
 async function openComposerForm(page: Page): Promise<void> {
-  await humanClick(page.locator('.card:has(h6 .fa-envelope) [data-email-composer]'));
+  await humanClick(page.locator('#person-contact [data-email-composer]'));
   await expect(page.locator('#crm-email-composer-modal')).toBeVisible();
   await humanClick(page.locator('#crm-email-send-btn'));
   const body = page.locator('#crm-email-body');
