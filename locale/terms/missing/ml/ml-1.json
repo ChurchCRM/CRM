@@ -105,6 +105,7 @@
   "Memo": "",
   "Mixed-donor family payment sets cannot be split here; handle them outside this feature.": "",
   "Narrow the list": "",
+  "No family matches these filters for %s.": "",
   "No overlapping individual or cumulative receipt exists.": "",
   "No receipt can be generated for this family yet": "",
   "No signature on file": "",
@@ -156,6 +157,5 @@
   "Supply an issue date no later than today.": "",
   "Tax ID on statements": "",
   "The %s family has no living members to invite to the member portal.": "",
-  "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.": "",
-  "The charity registration number must be text.": ""
+  "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.": ""
 }
