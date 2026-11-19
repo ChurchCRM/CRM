@@ -56,4 +56,23 @@ describe("API Private Admin — CSV Export", () => {
             expect(response.body).to.not.include("Parse error");
         });
     });
+
+    it("names rollup rows last name first so they sort by surname", () => {
+        // Seed: Jon & Sandra Olson head family 12; Paul Smith is alone in family 5.
+        cy.request({
+            method: "POST",
+            url: "/admin/export/csv",
+            form: true,
+            body: {
+                output: "csv",
+                Format: "Rollup",
+                Source: "filters",
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body).to.include('"Olson, Jon & Sandra"');
+            expect(response.body).to.include('"Smith, Paul"');
+            expect(response.body).to.not.include("Jon & Sandra Olson");
+        });
+    });
 });
