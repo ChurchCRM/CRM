@@ -31,7 +31,7 @@ describe("API Private Admin - Background Timer Jobs release the session", () => 
             }
         });
         cy.setupAdminSession();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
 
         inOwnCookieJar(() => {
             writeConfig("bEnabledEmail", "1");

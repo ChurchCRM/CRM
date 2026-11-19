@@ -1,5 +1,5 @@
 /**
- * Root Dashboard — webpack entry
+ * People Dashboard — webpack entry
  * Initializes dashboard tables and ApexCharts deposit tracker
  */
 

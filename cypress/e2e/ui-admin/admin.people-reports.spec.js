@@ -61,7 +61,7 @@ describe("People Reports (#9914, #9915)", () => {
     });
 
     it("is reachable from the Data/Reports menu next to Queries", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('a[href$="/people/reports"]').should("exist");
         cy.get('a[href$="QueryList.php"]').should("not.exist");
     });

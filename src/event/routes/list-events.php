@@ -228,10 +228,11 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'sPageTitle'             => gettext('Events Dashboard'),
         'sPageSubtitle'          => gettext('Overview of church events, attendance, and activity'),
         'aBreadcrumbs'           => PageHeader::breadcrumbs([[gettext('Events')]]),
-        'sPageHeaderButtons'     => $canEditEvents ? PageHeader::buttons([
-            ['label' => gettext('Manage Event Types'), 'url' => '/event/types', 'icon' => 'fa-tags', 'adminOnly' => false],
-            ['label' => gettext('Audit Events'), 'url' => '/event/audit', 'icon' => 'fa-triangle-exclamation', 'adminOnly' => false],
-        ]) : '',
+        'sPageHeaderButtons'     => PageHeader::buttons(array_values(array_filter([
+            AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() ? ['label' => gettext('Kiosk Manager'), 'url' => '/kiosk/admin', 'icon' => 'fa-desktop', 'adminOnly' => false] : null,
+            $canEditEvents ? ['label' => gettext('Manage Event Types'), 'url' => '/event/types', 'icon' => 'fa-tags', 'adminOnly' => false] : null,
+            $canEditEvents ? ['label' => gettext('Audit Events'), 'url' => '/event/audit', 'icon' => 'fa-triangle-exclamation', 'adminOnly' => false] : null,
+        ]))),
         'canEditEvents'          => $canEditEvents,
         'eType'                  => $eType,
         'EventYear'              => $EventYear,

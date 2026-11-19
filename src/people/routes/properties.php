@@ -46,7 +46,7 @@ function listProperties(Request $request, Response $response, array $args): Resp
             $sTypeIcon = 'fa-user-group';
             break;
         default:
-            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/dashboard');
     }
 
     // ORM query instead of raw SQL

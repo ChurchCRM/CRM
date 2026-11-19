@@ -221,7 +221,7 @@ describe("Admin → Member Portal page", () => {
         });
 
         it("Is reachable from the Admin menu", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.get('a[href$="/admin/member-portal"]').should("exist");
         });
 

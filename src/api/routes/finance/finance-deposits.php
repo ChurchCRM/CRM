@@ -58,6 +58,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="days", in="query", required=false, description="Days window: 30|90|365 (default 90)", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="from", in="query", required=false, description="ISO start date; with to, replaces days", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="to", in="query", required=false, description="ISO end date", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="all", in="query", required=false, description="Any value returns the whole history", @OA\Schema(type="string")),
      *     @OA\Response(response=200, description="Array of deposits within the requested time range"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
@@ -70,10 +73,17 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             $days = 90;
         }
 
-        $list = DepositQuery::create()
-            ->filterByDate(['min' => DateTimeUtils::getRelativeDate("-{$days} days")])
-            ->orderByDate()
-            ->find();
+        $from = DateTimeUtils::parseIsoDate($queryParams['from'] ?? null);
+        $to = DateTimeUtils::parseIsoDate($queryParams['to'] ?? null);
+        $query = DepositQuery::create();
+        if (isset($queryParams['all'])) {
+            // whole history
+        } elseif ($from !== '' || $to !== '') {
+            $query->filterByDate(array_filter(['min' => $from, 'max' => $to]));
+        } else {
+            $query->filterByDate(['min' => DateTimeUtils::getRelativeDate("-{$days} days")]);
+        }
+        $list = $query->orderByDate()->find();
 
         return SlimUtils::renderJSON($response, $list->toArray());
     });
