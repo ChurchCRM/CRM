@@ -18,7 +18,7 @@ $dashboardLanding = DashboardLandingService::keyFor($dashboardUser);
         <?php foreach ($dashboardTabs as $key => [$path, $label, $icon]) : ?>
             <li class="nav-item flex-shrink-0">
                 <a class="nav-link<?= $dashboardSwitchActive === $key ? ' active' : '' ?>" href="<?= $dashboardRoot . $path ?>"<?= $dashboardSwitchActive === $key ? ' aria-current="page"' : '' ?>>
-                    <i class="fa-solid <?= $icon ?> me-2"></i><?= $label ?>
+                    <i class="fa-solid <?= $icon ?> me-2"></i><?= InputUtils::escapeHTML($label) ?>
                 </a>
             </li>
         <?php endforeach; ?>

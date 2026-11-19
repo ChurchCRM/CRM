@@ -289,7 +289,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="settingLanding" class="form-select" data-user-setting="ui.landing">
                   <?php foreach ($_dashboardTabs as $key => [$path, $label]) : ?>
-                    <option value="<?= $key ?>"<?= $_userLanding === $key ? ' selected' : '' ?>><?= $label ?></option>
+                    <option value="<?= $key ?>"<?= $_userLanding === $key ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                   <?php endforeach; ?>
                 </select>
                 <small class="form-text"><?= gettext("The dashboard you open on after signing in") ?></small>
@@ -300,7 +300,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="settingPeopleDays" class="form-select" data-user-setting="ui.dashboard.people.days">
                   <?php foreach (['7' => gettext('7 days'), '14' => gettext('14 days'), '30' => gettext('30 days'), '60' => gettext('60 days'), '90' => gettext('90 days'), '180' => gettext('6 months')] as $value => $label) : ?>
-                    <option value="<?= $value ?>"<?= $_peopleDays === (string) $value ? ' selected' : '' ?>><?= $label ?></option>
+                    <option value="<?= $value ?>"<?= $_peopleDays === (string) $value ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                   <?php endforeach; ?>
                 </select>
                 <small class="form-text"><?= gettext("Time range for the People, Birthdays, Anniversaries and Notes cards") ?></small>
@@ -312,7 +312,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="settingFinanceRange" class="form-select" data-user-setting="ui.dashboard.finance.range">
                   <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Current fiscal year'), 'all' => gettext('All Time')] as $value => $label) : ?>
-                    <option value="<?= $value ?>"<?= $_financeRange === $value ? ' selected' : '' ?>><?= $label ?></option>
+                    <option value="<?= $value ?>"<?= $_financeRange === $value ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                   <?php endforeach; ?>
                 </select>
                 <small class="form-text"><?= gettext("Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself.") ?></small>
