@@ -11,6 +11,7 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
+use ChurchCRM\Service\DashboardLandingService;
 
 // Derive install prefix from SCRIPT_NAME — works for root and nested subdir installs.
 // Computed before any redirect so the config-error, PHP-version, and setup
@@ -85,7 +86,7 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
 }
 
 if ($_idx_isWebRoot) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::redirect(ltrim(DashboardLandingService::pathFor(AuthenticationManager::getCurrentUser()), '/'));
 } elseif ($_idx_safeShortPath !== null) {
     require $_idx_safeShortPath;
 } elseif (in_array(strtolower(pathinfo($shortName, PATHINFO_EXTENSION)), ['js', 'css'], true)) {

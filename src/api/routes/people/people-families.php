@@ -321,10 +321,12 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
 {
     // Get anniversaries for 14-day range: 7 days before to 7 days after today
     // Use start of today (midnight) for consistent day-boundary calculations
+    $span = (int) ($request->getQueryParams()['days'] ?? 7);
+    $span = in_array($span, [7, 14, 30, 60, 90, 180], true) ? $span : 7;
     $today = DateTimeUtils::getStartOfToday();
     $conditions = [];
 
-    for ($i = -7; $i <= 7; $i++) {
+    for ($i = -7; $i <= $span; $i++) {
         $date = (clone $today)->modify("{$i} days");
         $month = (int)$date->format('m');
         $day = (int)$date->format('d');
@@ -364,10 +366,9 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
  */
 function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
-    $families = FamilyQuery::create()
-        ->orderByDateEntered('DESC')
-        ->limit(10)
-        ->find();
+    $days = (int) ($request->getQueryParams()['days'] ?? 0);
+    $query = FamilyQuery::create()->orderByDateEntered('DESC');
+    $families = ($days > 0 ? $query->filterByDateEntered(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
@@ -391,10 +392,9 @@ function getLatestFamilies(Request $request, Response $response, array $args): R
  */
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
-    $families = FamilyQuery::create()
-        ->orderByDateLastEdited('DESC')
-        ->limit(10)
-        ->find();
+    $days = (int) ($request->getQueryParams()['days'] ?? 0);
+    $query = FamilyQuery::create()->orderByDateLastEdited('DESC');
+    $families = ($days > 0 ? $query->filterByDateLastEdited(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }

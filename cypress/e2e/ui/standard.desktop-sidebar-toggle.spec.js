@@ -65,7 +65,7 @@ describe("Staff folded sidebar preference", () => {
         cy.intercept("GET", "**/api/calendar/events-counters?*", {
             Birthdays: 1, Anniversaries: 0, Events: 2,
         }).as("menuCounts");
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.wait("@menuCounts");
         cy.get("#sidebar").then(($sidebar) => {
             if ($sidebar.hasClass(FOLDED)) {

@@ -2,6 +2,7 @@
 import { pdfText } from "../../../support/pdf-text";
 
 const created = [];
+const createdFamilies = [];
 const pledge = (overrides = {}) => ({
     type: "Pledge", iMethod: "CASH", FamilyID: "1", Date: "2026-01-01", FYID: 30,
     DepositID: null, schedule: "Monthly", amountBasis: "installment",
@@ -16,6 +17,9 @@ const create = (payload) => cy.request("POST", "/api/payments/pledges", payload)
 
 describe("Recurring pledge commitment", () => {
     beforeEach(() => cy.setupAdminSession());
+    after(() => {
+        cy.cleanupFamilies(createdFamilies);
+    });
     afterEach(() => {
         created.splice(0).forEach((key) => cy.request("DELETE", `/api/payments/${encodeURIComponent(key)}`));
     });
@@ -51,18 +55,34 @@ describe("Recurring pledge commitment", () => {
     });
 
     it("uses the full commitment in family summaries and reminder letters", () => {
-        create(pledge());
-        create(pledge({ type: "Payment", amountBasis: "total", FundSplit: JSON.stringify([{ FundID: "1", Amount: 200, NonDeductible: 0 }]) }));
-        cy.visit("/finance/pledge/dashboard?fyid=30");
-        cy.get("body").should("contain", "1,200.00").and("contain", "200.00");
-        ["family-pledge-summary", "pledge-reminders"].forEach((report) => {
-            cy.request({ url: `/finance/reports/${report}/download?FYID=30&family[]=1&funds[]=1`, encoding: "binary" }).then((response) => {
-                expect(response.headers["content-type"]).to.include("application/pdf");
-                return pdfText(response.body).then((lines) => {
-                    const text = lines.join(" ");
-                    expect(text).to.include("1,200.00");
-                    expect(text).to.include("200.00");
-                    expect(text).to.include("1,000.00");
+        // The reports total every payment recorded for the family in the
+        // fiscal year, and the shard database is shared across specs:
+        // finance.deposits leaves two $1,000 payments on family 1, which
+        // inflated its Paid total to $2,200 and its Owe to $0. Run this
+        // test against a family created here so the summary and reminder
+        // figures are exactly this test's pledge and payment.
+        const familyName = "RecurringSummary" + Cypress._.random(0, 1e6);
+        cy.visit("/FamilyEditor.php");
+        cy.contains("Family Info");
+        cy.get("#FamilyName").type(familyName);
+        cy.get('button[name="FamilySubmit"]').click();
+        cy.location("pathname").should("include", "/people/family/");
+        cy.location("pathname").then((pathname) => {
+            const familyId = Number(pathname.split("/").pop());
+            createdFamilies.push(familyId);
+            create(pledge({ FamilyID: String(familyId) }));
+            create(pledge({ type: "Payment", amountBasis: "total", FamilyID: String(familyId), FundSplit: JSON.stringify([{ FundID: "1", Amount: 200, NonDeductible: 0 }]) }));
+            cy.visit("/finance/pledge/dashboard?fyid=30");
+            cy.get("body").should("contain", "1,200.00").and("contain", "200.00");
+            ["family-pledge-summary", "pledge-reminders"].forEach((report) => {
+                cy.request({ url: `/finance/reports/${report}/download?FYID=30&family[]=${familyId}&funds[]=1`, encoding: "binary" }).then((response) => {
+                    expect(response.headers["content-type"]).to.include("application/pdf");
+                    return pdfText(response.body).then((lines) => {
+                        const text = lines.join(" ");
+                        expect(text).to.include("1,200.00");
+                        expect(text).to.include("200.00");
+                        expect(text).to.include("1,000.00");
+                    });
                 });
             });
         });

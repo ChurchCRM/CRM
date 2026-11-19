@@ -4,7 +4,7 @@
  * Member Portal (MP2, #9863) — staff in the portal.
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §2.3 / P10.
- *   - a staff login still lands on /v2/dashboard
+ *   - a staff login still lands on /people/dashboard
  *   - the admin user menu offers "Member Portal"
  *   - inside the portal a staff session gets back to the admin area through the
  *     account menu's "Admin Console" entry
@@ -24,7 +24,7 @@ describe("Member Portal — staff access", () => {
 
     it("An administrator still lands on the admin dashboard", () => {
         cy.visit("/");
-        cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
+        cy.url({ timeout: 10000 }).should("include", "/people/dashboard");
         cy.url().should("not.include", "/portal");
     });
 
@@ -34,13 +34,13 @@ describe("Member Portal — staff access", () => {
     const userMenuPortalLink = () => cy.get('.dropdown-menu a.dropdown-item[href$="/portal/"]');
 
     it("The user menu offers a Member Portal entry", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('[aria-label="Open user menu"]').click();
         userMenuPortalLink().should("be.visible").and("contain.text", "Member Portal");
     });
 
     it("The Member Portal entry opens the portal", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('[aria-label="Open user menu"]').click();
         userMenuPortalLink().click();
         cy.url({ timeout: 10000 }).should("include", "/portal");
@@ -61,10 +61,10 @@ describe("Member Portal — staff access", () => {
         cy.get("#portal-account-menu")
             .contains('[role="menuitem"]', "Admin Console")
             .should("have.attr", "href")
-            .and("include", "/v2/dashboard");
+            .and("include", "/people/dashboard");
 
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Admin Console").click();
-        cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
+        cy.url({ timeout: 10000 }).should("include", "/people/dashboard");
     });
 
     it("The account menu offers staff Email History, Sign-in and devices, Change Password, Admin Console and Sign out", () => {
