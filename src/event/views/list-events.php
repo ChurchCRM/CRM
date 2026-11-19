@@ -7,6 +7,9 @@ use ChurchCRM\Utils\InputUtils;
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+$dashboardSwitchActive = 'events';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
 ?>
 
 <!-- Stat Cards -->

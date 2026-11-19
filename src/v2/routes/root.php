@@ -111,6 +111,8 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
 
     $currentUser = AuthenticationManager::getCurrentUser();
+    $notesDays = in_array((int) $currentUser->getSettingValue('ui.dashboard.notes.days'), [7, 30, 90], true)
+        ? (int) $currentUser->getSettingValue('ui.dashboard.notes.days') : 90;
 
     $pageArgs = [
         'sRootPath'                       => SystemURLs::getRootPath(),
@@ -123,14 +125,15 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ]),
         'dashboardCounts'                 => $dashboardCounts,
         'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
-        'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
         'canReviewSelfRegistrations'      => AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
         'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
         'genderDataCheckCount'            => $genderDataCheckCount,
         'roleDataCheckCount'              => $roleDataCheckCount,
         'classificationDataCheckCount'    => $classificationDataCheckCount,
+        'canViewEvents'                   => $currentUser->canViewEvents(),
         'notesEnabled'                    => $currentUser->canReadNotes(),
-        'latestNotes'                     => (new NoteService())->latestNotesFor($currentUser, 5),
+        'notesDays'                       => $notesDays,
+        'latestNotes'                     => (new NoteService())->latestNotesFor($currentUser, 10, $notesDays),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

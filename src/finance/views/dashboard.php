@@ -10,6 +10,9 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 require __DIR__ . '/_charity-details-banner.php';
 
+$dashboardSwitchActive = 'finance';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+
 // $dashboardData is injected by the route controller (finance/routes/dashboard.php)
 // It includes FY-scoped data for the selectedFyid passed in the GET ?fyid param.
 $fyLabel = $dashboardData['fiscalYear']['label'];
@@ -157,6 +160,23 @@ $sRootPath = SystemURLs::getRootPath();
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="card mb-3" id="depositChartRow">
+        <div class="card-header d-flex flex-wrap align-items-center gap-2">
+            <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
+            <div class="ms-auto d-inline-flex align-items-center gap-2">
+                <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
+                <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
+                    <?php foreach ([30 => gettext('30 days'), 90 => gettext('90 days'), 365 => gettext('12 months')] as $value => $label) : ?>
+                        <option value="<?= $value ?>"<?= $depositDays === $value ? ' selected' : '' ?>><?= $label ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="deposit-lineGraph" class="deposit-line-graph"></div>
         </div>
     </div>
 

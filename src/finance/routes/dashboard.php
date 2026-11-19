@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\YearEndGivingService;
@@ -34,6 +35,9 @@ $app->get('/', function (Request $request, Response $response) {
         'openDeposits' => YearEndGivingService::openDeposits($statementYear),
     ];
 
+    $savedDays = (int) AuthenticationManager::getCurrentUser()->getSettingValue('ui.dashboard.deposit.days');
+    $depositDays = in_array($savedDays, [30, 90, 365], true) ? $savedDays : 90;
+
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Finance Dashboard'),
@@ -52,6 +56,7 @@ $app->get('/', function (Request $request, Response $response) {
             ['label' => gettext('Manage Envelopes'), 'url' => '/finance/envelopes', 'icon' => 'fa-envelope', 'adminOnly' => false],
         ]),
         'dashboardData' => $dashboardData,
+        'depositDays' => $depositDays,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

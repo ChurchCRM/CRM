@@ -57,6 +57,8 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
             'ui.locale' => '/^([a-z]{2,3}(_[A-Za-z0-9]{2,8})*)?$/',
             'ui.table.size' => '/^-?\d{1,4}$/',
             'ui.sidebar.folded' => '/^[01]$/',
+            'ui.dashboard.notes.days' => '/^(7|30|90)$/',
+            'ui.dashboard.deposit.days' => '/^(30|90|365)$/',
         ];
         if (
             !preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $settingName)

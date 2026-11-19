@@ -7,21 +7,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<?php if ($canReviewSelfRegistrations) { ?>
-<div class="alert alert-warning d-none flex-wrap gap-2 align-items-center justify-content-between" id="selfRegisterDashboardAlert" role="status">
-    <div>
-        <i class="fa-solid fa-user-clock me-2"></i>
-        <strong id="selfRegisterDashboardCount">0</strong>
-        <?= gettext('self-registrations are waiting for review') ?>
-    </div>
-    <a href="<?= $sRootPath ?>/people/self-register" class="btn btn-sm btn-warning">
-        <?= gettext('Review now') ?>
-    </a>
-</div>
-<?php } ?>
+<?php
+$dashboardSwitchActive = 'people';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+?>
 
 <!-- Stat Cards Row -->
 <div class="row row-cards mb-3 g-2">
+    <?php if ($canReviewSelfRegistrations) { ?>
+    <div class="col-6 col-md-4 col-lg">
+        <a href="<?= $sRootPath ?>/people/self-register" class="card card-sm text-decoration-none" id="selfRegisterDashboardCard">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-warning text-white avatar rounded-circle">
+                            <i class="fa-solid fa-user-clock icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium text-body" id="selfRegisterDashboardCount">0</div>
+                        <div class="text-body-secondary"><?= gettext('Self-Registration') ?></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <?php } ?>
     <div class="col-6 col-md-4 col-lg">
         <a href="<?= $sRootPath ?>/people/family" class="card card-sm text-decoration-none">
             <div class="card-body">
@@ -145,21 +156,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<?php if ($eventsEnabled) { ?>
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="card" id="todayEventsCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?></h3>
-                <div class="ms-auto">
-                    <a href="<?= SystemURLs::getRootPath() ?>/event/checkin" class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
-                    </a>
-                </div>
-            </div>
-            <div class="card-body p-0">
-                <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
-            </div>
+<?php if ($eventsEnabled && $canViewEvents) { ?>
+<div class="card mb-3" id="todayEventsCard">
+    <div class="card-header py-2">
+        <h3 class="card-title">
+            <i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?>
+            <span class="ms-2 text-body-secondary fw-normal" id="todayEventsCount"></span>
+        </h3>
+        <div class="card-actions d-flex gap-2">
+            <a href="<?= $sRootPath ?>/event/checkin" id="todayEventsCheckin" class="btn btn-sm btn-outline-primary d-none">
+                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+            </a>
+            <button type="button" id="todayEventsToggle" class="btn btn-sm btn-ghost-secondary d-none" data-bs-toggle="collapse" data-bs-target="#todayEventsBody" aria-expanded="false" aria-controls="todayEventsBody" aria-label="<?= InputUtils::escapeAttribute(gettext("Today's Events")) ?>">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+    <div class="collapse" id="todayEventsBody">
+        <div class="card-body p-0">
+            <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
         </div>
     </div>
 </div>
@@ -241,13 +256,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
         </div>
-        <?php if ($notesEnabled) : ?>
+    </div>
+</div>
+
+<?php if ($notesEnabled) : ?>
+<div class="row">
+    <div class="col-12">
         <div class="card mb-3" id="latestNotesCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext('Latest Notes') ?></h3>
+            <div class="card-header d-flex flex-wrap align-items-center gap-2">
+                <h3 class="card-title mb-0"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext('Latest Notes') ?></h3>
+                <div class="ms-auto d-inline-flex align-items-center gap-2">
+                    <label for="notes-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
+                    <select id="notes-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Latest notes time range') ?>">
+                        <?php foreach ([7 => gettext('7 days'), 30 => gettext('30 days'), 90 => gettext('90 days')] as $value => $label) : ?>
+                            <option value="<?= $value ?>"<?= $notesDays === $value ? ' selected' : '' ?>><?= $label ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
             <?php if ($latestNotes === []) : ?>
-                <div class="card-body text-body-secondary small" id="latestNotesEmpty"><?= gettext('No notes have been added yet.') ?></div>
+                <div class="card-body text-body-secondary small" id="latestNotesEmpty"><?= gettext('No notes in this time range.') ?></div>
             <?php else : ?>
                 <div class="list-group list-group-flush" id="latestNotesList">
                     <?php foreach ($latestNotes as $note) : ?>
@@ -267,32 +295,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             <?php endif; ?>
         </div>
-        <?php endif; ?>
     </div>
 </div>
-
-<?php if ($depositEnabled) { ?>
-<div class="row">
-    <div class="col-12">
-        <div class="card mb-3" id="depositChartRow">
-            <div class="card-header d-flex flex-wrap align-items-center gap-2">
-                <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
-                <div class="ms-auto d-inline-flex align-items-center gap-2">
-                    <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
-                    <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
-                        <option value="30"><?= gettext('30 days') ?></option>
-                        <option value="90" selected><?= gettext('90 days') ?></option>
-                        <option value="365"><?= gettext('12 months') ?></option>
-                    </select>
-                </div>
-            </div>
-            <div class="card-body">
-                <div id="deposit-lineGraph" class="deposit-line-graph"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
+<?php endif; ?>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
 <?php

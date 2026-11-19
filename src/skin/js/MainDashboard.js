@@ -102,6 +102,15 @@ export function initializeMainDashboard() {
     return `<img class="avatar avatar-sm rounded-circle ${viewClass} cursor-pointer object-fit-cover" src="${photoUrl}" ${dataIdAttr} alt="" title="${i18next.t("View Photo")}" />`;
   }
 
+  const saveDashboardSetting = (name, value) =>
+    window.CRM.APIRequest({
+      method: "POST",
+      path: `user/${window.CRM.userId}/setting/${name}`,
+      dataType: "json",
+      data: JSON.stringify({ value: String(value) }),
+      suppressErrorDialog: true,
+    });
+
   const dataTableDashboardDefaults = {
     paging: false,
     ordering: false,
@@ -666,20 +675,18 @@ export function initializeMainDashboard() {
       ajax: {
         url: window.CRM.root + "/api/events/today",
         dataSrc: (json) => {
-          if (!json.events || json.events.length === 0) {
-            $("#todayEventsDashboardItem")
-              .closest(".card-body")
-              .html(
-                '<div class="text-center py-1">' +
-                  '<i class="fa-solid fa-calendar-day dashboard-empty-icon"></i>' +
-                  '<span class="fs-7 text-muted">' +
-                  i18next.t("No Events Today") +
-                  "</span>" +
-                  "</div>",
-              );
+          const events = json.events || [];
+          if (events.length === 0) {
+            $("#todayEventsCount").text(i18next.t("No Events Today"));
+            $("#todayEventsCard .card-header").addClass("border-bottom-0");
             return [];
           }
-          return json.events;
+          $("#todayEventsCount").text("(" + events.length + ")");
+          $("#todayEventsToggle").removeClass("d-none");
+          $("#todayEventsCheckin")
+            .attr("href", window.CRM.root + "/event/checkin" + (events.length === 1 ? "/" + events[0].id : ""))
+            .removeClass("d-none");
+          return events;
         },
       },
       columns: [
@@ -743,123 +750,14 @@ export function initializeMainDashboard() {
     $.extend(todayEventsConfig, window.CRM.plugin.dataTable);
     $.extend(todayEventsConfig, dataTableDashboardDefaults);
     $("#todayEventsDashboardItem").DataTable(todayEventsConfig);
-  }
-
-  // Guard on #deposit-lineGraph (not #depositChartRow) so a stale finance
-  // UI never triggers the finance API for non-finance users.
-  if ($("#deposit-lineGraph").length > 0) {
-    const allowedDepositDays = [30, 90, 365];
-    const defaultDepositDays = 90;
-    let depositChartRequestId = 0;
-
-    const resolveDepositDays = (rawDays) => {
-      const days = parseInt(rawDays, 10);
-      return allowedDepositDays.includes(days) ? days : defaultDepositDays;
-    };
-
-    const loadDepositChart = (rawDays) => {
-      const days = resolveDepositDays(rawDays);
-      const requestId = ++depositChartRequestId;
-
-      if (window.depositChart) {
-        window.depositChart.destroy();
-        window.depositChart = null;
-      }
-
-      $("#depositChartRow .card-body").html('<div id="deposit-lineGraph" class="deposit-line-graph"></div>');
-
-      window.CRM.APIRequest({
-        method: "GET",
-        path: "deposits/dashboard?days=" + days,
-      }).done((data) => {
-        // Ignore stale responses when the user changed the range mid-flight.
-        if (requestId !== depositChartRequestId) {
-          return;
-        }
-
-        const lineDataRaw = data;
-
-        if (!lineDataRaw || lineDataRaw.length === 0) {
-          $("#depositChartRow .card-body").html(
-            '<div class="empty py-4">' +
-              '<div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
-              '<p class="empty-title">' +
-              i18next.t("No Deposits") +
-              "</p>" +
-              '<p class="empty-subtitle text-muted">' +
-              i18next.t("No deposit data available yet") +
-              "</p>" +
-              "</div>",
-          );
-          return;
-        }
-
-        const labels = [];
-        const values = [];
-        $.each(lineDataRaw, (i, val) => {
-          labels.push(moment(val.Date).format("MM-DD-YY"));
-          values.push(val.totalAmount);
-        });
-
-        const depositChartOptions = {
-          chart: {
-            type: "line",
-            height: 250,
-            sparkline: {
-              enabled: false,
-            },
-            toolbar: {
-              show: true,
-              tools: {
-                download: true,
-                selection: true,
-                zoom: true,
-                zoomin: true,
-                zoomout: true,
-                reset: true,
-              },
-            },
-          },
-          series: [
-            {
-              name: i18next.t("Deposit Value"),
-              data: values,
-            },
-          ],
-          xaxis: {
-            categories: labels,
-          },
-          yaxis: {
-            title: {
-              text: i18next.t("Amount"),
-            },
-          },
-          stroke: {
-            curve: "smooth",
-            width: 2,
-          },
-          grid: {
-            show: true,
-            borderColor: "#e0e0e0",
-          },
-        };
-
-        const depositChartElement = document.getElementById("deposit-lineGraph");
-        if (depositChartElement) {
-          const depositChart = new window.ApexCharts(depositChartElement, depositChartOptions);
-          depositChart.render();
-          window.depositChart = depositChart;
-        }
-      });
-    };
-
-    const initialDays = resolveDepositDays($("#deposit-days").val());
-    loadDepositChart(initialDays);
-
-    $("#deposit-days").on("change", function () {
-      loadDepositChart($(this).val());
+    $("#todayEventsBody").on("shown.bs.collapse", () => {
+      $("#todayEventsDashboardItem").DataTable().columns.adjust();
     });
   }
+
+  $("#notes-days").on("change", function () {
+    saveDashboardSetting("ui.dashboard.notes.days", $(this).val()).always(() => window.location.reload());
+  });
 
   // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
 }

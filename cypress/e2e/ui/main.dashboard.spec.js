@@ -43,7 +43,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
     describe("Finance-enabled user (admin)", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("renders the deposit chart and calls the deposits API", () => {
+        it("renders the deposit chart on the finance dashboard, not on the home dashboard", () => {
             // Deposit #1 is the only fixture deposit with pledges attached, so
             // it's the only one with real chart data (the others sum to
             // null). The fixture ships a static date that inevitably ages
@@ -64,6 +64,10 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
             cy.visit("v2/dashboard");
+            cy.contains("Families");
+            cy.get("#depositChartRow").should("not.exist");
+
+            cy.visit("finance/");
 
             // The finance-only row must exist for finance users.
             cy.get("#depositChartRow").should("exist");
@@ -80,6 +84,17 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             // alone would miss.
             cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
             cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
+        });
+
+        it("keeps the chosen deposit range for the user", () => {
+            cy.intercept("POST", "**/setting/ui.dashboard.deposit.days").as("saveRange");
+            cy.visit("finance/");
+            cy.get("#deposit-days").select("30");
+            cy.wait("@saveRange");
+            cy.visit("finance/");
+            cy.get("#deposit-days").should("have.value", "30");
+            cy.get("#deposit-days").select("90");
+            cy.wait("@saveRange");
         });
     });
 
@@ -195,5 +210,47 @@ describe("Report Issue (Admin)", () => {
             .contains("a", "system logs")
             .should("have.attr", "href")
             .and("include", "/admin/system/logs");
+    });
+});
+
+describe("Main Dashboard - People and Finance switch", () => {
+    it("lets a finance user move between the two dashboards", () => {
+        cy.setupAdminSession();
+        cy.visit("v2/dashboard");
+        cy.get("#dashboardSwitch .nav-link.active").should("contain", "People");
+        cy.get("#dashboardSwitch").contains("a", "Finance").click();
+        cy.location("pathname").should("match", /\/finance\/?$/);
+        cy.get("#dashboardSwitch .nav-link.active").should("contain", "Finance");
+    });
+
+    it("hides the Finance tab from a user without finance permission", () => {
+        cy.setupNoFinanceSession();
+        cy.visit("v2/dashboard");
+        cy.contains("Families");
+        cy.get("#dashboardSwitch").should("contain", "Events").and("not.contain", "Finance");
+    });
+});
+
+describe("Main Dashboard - Today's Events card", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("offers no check-in and nothing to expand when there are no events today", () => {
+        cy.intercept("GET", "**/api/events/today*", { body: { events: [] } }).as("today");
+        cy.visit("v2/dashboard");
+        cy.wait("@today");
+        cy.get("#todayEventsCount").should("contain", "No Events Today");
+        cy.get("#todayEventsCheckin").should("not.be.visible");
+        cy.get("#todayEventsToggle").should("not.be.visible");
+    });
+
+    it("expands to the event list and checks in to a single event directly", () => {
+        const events = [{ id: 7, title: "Sunday Service", typeName: "Church Service", start: new Date().toISOString(), checkedIn: 0, totalAttendees: 0 }];
+        cy.intercept("GET", "**/api/events/today*", { body: { events } }).as("today");
+        cy.visit("v2/dashboard");
+        cy.wait("@today");
+        cy.get("#todayEventsBody").should("not.be.visible");
+        cy.get("#todayEventsCheckin").should("be.visible").and("have.attr", "href").and("match", /\/event\/checkin\/7$/);
+        cy.get("#todayEventsToggle").click();
+        cy.get("#todayEventsBody").should("be.visible").and("contain", "Sunday Service");
     });
 });

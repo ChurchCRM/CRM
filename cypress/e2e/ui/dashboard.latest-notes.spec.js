@@ -75,3 +75,18 @@ describe("Dashboard latest notes", () => {
         cy.contains(text.publicPerson).should("not.exist");
     });
 });
+
+describe("Dashboard latest notes time range", () => {
+    it("keeps the chosen range for the user", () => {
+        cy.setupAdminSession();
+        cy.intercept("POST", "**/setting/ui.dashboard.notes.days").as("saveRange");
+        cy.visit("/v2/dashboard");
+        cy.get("#notes-days").should("have.value", "90");
+        cy.get("#notes-days").select("7");
+        cy.wait("@saveRange");
+        cy.visit("/v2/dashboard");
+        cy.get("#notes-days").should("have.value", "7");
+        cy.get("#notes-days").select("90");
+        cy.wait("@saveRange");
+    });
+});

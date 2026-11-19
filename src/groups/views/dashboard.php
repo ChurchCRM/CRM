@@ -7,6 +7,9 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+$dashboardSwitchActive = 'groups';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+
 // Dashboard metrics — 2 queries: total+active at DB level; inactive = total - active
 $totalGroups      = GroupQuery::create()->count();
 $activeGroups     = GroupQuery::create()->filterByActive(true)->count();
