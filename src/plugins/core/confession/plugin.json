@@ -1,0 +1,33 @@
+{
+  "id": "confession",
+  "name": "Confession",
+  "description": "Show a person's confessor and most recent confession date on their profile.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\Confession\\ConfessionPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "settings": [
+    {
+      "key": "fatherFieldId",
+      "label": "Field where Father Of Confession is listed, must be a people of group type",
+      "type": "select",
+      "optionsSource": "person-custom-fields",
+      "optionsTypeId": 9,
+      "required": false
+    },
+    {
+      "key": "dateFieldId",
+      "label": "Field where last Confession is stored, must be a date type",
+      "type": "select",
+      "optionsSource": "person-custom-fields",
+      "optionsTypeId": 2,
+      "required": false
+    }
+  ],
+  "menuItems": [],
+  "hooks": ["person.view.content"]
+}

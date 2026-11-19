@@ -175,6 +175,32 @@ describe('Plugin Management UI', () => {
 
             cy.waitForNotification('Settings reset');
         });
+
+        it('loads the Confession custom-field settings from the admin API', () => {
+            cy.intercept({
+                method: 'GET',
+                pathname: '**/admin/api/system/custom-fields/person/',
+                query: { typeId: '9' },
+            }, { body: [{ id: 21, value: 'Confessor' }] }).as('confessorOptions');
+            cy.intercept({
+                method: 'GET',
+                pathname: '**/admin/api/system/custom-fields/person/',
+                query: { typeId: '2' },
+            }, { body: [{ id: 22, value: 'Last confession' }] }).as('dateOptions');
+
+            cy.visit('/plugins/management');
+            cy.get('.card[data-plugin-id="confession"]').within(() => {
+                cy.get('.btn-expand-plugin').click();
+                cy.get('#confession-fatherFieldId')
+                    .find('option[value="21"]')
+                    .should('have.text', 'Confessor');
+                cy.get('#confession-dateFieldId')
+                    .find('option[value="22"]')
+                    .should('have.text', 'Last confession');
+            });
+            cy.wait('@confessorOptions');
+            cy.wait('@dateOptions');
+        });
     });
 
     describe('Plugin Help', () => {

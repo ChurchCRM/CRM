@@ -312,6 +312,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     </ul>
                 </div>
                 <?php endif; ?>
+                <?= $personViewPluginContent ?>
             </div>
         </div>
 
