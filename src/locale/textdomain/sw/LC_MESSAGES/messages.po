@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "Watu"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Watoto wa Shule ya Jumapili"
-
-#: 
 msgid "Role / Gender"
 msgstr "Wajibu / Jinsia"
 
@@ -4471,10 +4467,6 @@ msgstr "Sehemu ambayo Kuungama mara ya mwisho imehifadhiwa, lazima iwe aina ya t
 #: 
 msgid "People Reports"
 msgstr "Ripoti za Watu"
-
-#: 
-msgid "People Dashboard"
-msgstr "Dashibodi ya Watu"
 
 #: 
 msgid "People Directory"
@@ -9010,10 +9002,6 @@ msgid "Password Recovery"
 msgstr "Kurejesha Nenosiri"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "Siku 7 zilizopita na zijazo"
-
-#: 
 msgid "People by Classification"
 msgstr "Watu kwa Uainishaji"
 
@@ -10909,10 +10897,6 @@ msgstr "Giza"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Hifadhidata peke yake (.sql) au kumbukumbu kamili (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Idadi ya kawaida ya safu zinazoonyeshwa kwenye jedwali la data. Itafanya kazi ukurasa ujao unapopakiwa."
 
 #. Context: locales
 #: 
@@ -13470,14 +13454,6 @@ msgstr "Hakuna Amana"
 #: 
 msgid "No Events Today"
 msgstr "Hakuna Matukio Leo"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Hakuna sikukuu za kumbukumbu katika siku 7 zilizopita au zijazo"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Hakuna siku za kuzaliwa katika siku 7 zilizopita au zijazo"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -17808,10 +17784,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Usajili unaosubiri ukaguzi kutoka fomu yako ya usajili ya umma. Maingizo yasiyo na barua pepe wala simu yamewekewa alama — thibitisha mawasiliano kabla ya kufuatilia."
 
 #: 
-msgid "Review now"
-msgstr "Kagua sasa"
-
-#: 
 msgid "Review self registrations"
 msgstr "Kagua usajili binafsi"
 
@@ -17862,10 +17834,6 @@ msgstr "Jana"
 #: 
 msgid "days ago"
 msgstr "siku zilizopita"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "usajili binafsi unasubiri ukaguzi"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -27130,10 +27098,6 @@ msgid "Delete the login for"
 msgstr "Futa akaunti ya kuingia ya"
 
 #: 
-msgid "Deposit chart time range"
-msgstr "Kipindi cha chati ya amana"
-
-#: 
 msgid "Disabled at"
 msgstr "Ilizimwa mnamo"
 
@@ -27658,10 +27622,6 @@ msgid "Latest Notes"
 msgstr "Vidokezo vya Hivi Karibuni"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Hakuna vidokezo vilivyoongezwa bado."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Anza kujiandikisha ili kupata nambari ya QR."
 
@@ -27672,4 +27632,746 @@ msgstr "Nenosiri au nambari hiyo si sahihi. Uthibitishaji wa hatua mbili bado um
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Uthibitishaji wa hatua mbili tayari umewekwa. Siri yake huonyeshwa tu wakati wa kujiandikisha."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "Zawadi %1$d yenye jumla ya %2$s"
+msgstr[1] "Zawadi %1$d zenye jumla ya %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "Familia %d kwa sasa zina mali za aina hii."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "Familia %d bado haiwezi kupata risiti na imeachwa nje. Rekebisha tatizo lililoorodheshwa chini yake, kisha chagua Angalia Tena."
+msgstr[1] "Familia %d bado haziwezi kupata risiti na zimeachwa nje. Rekebisha matatizo yaliyoorodheshwa chini yao, kisha chagua Angalia Tena."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "Vikundi %d kwa sasa vina mali za aina hii."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "Watu %d kwa sasa wana mali za aina hii."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "Matoleo %d yanapatikana tangu toleo lako lililosakinishwa."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Hakuna risiti iliyotengenezwa."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: ingiza jina kamili la mfadhili lililothibitishwa, thibitisha wafadhili, na thibitisha seti moja ya wafadhili. Seti za malipo za wafadhili mchanganyiko lazima zishughulikiwe nje ya kipengele hiki."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: zawadi au anwani ya barua imebadilika tangu ukaguzi. Chagua Angalia Tena na uthibitishe mfadhili tena."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "(awamu {{count}})"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "(awamu {{count}})"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Malipo ya kadi ya mkopo au hawala ya benki yako katika amana ambayo bado haijafungwa. Funga amana hiyo mara malipo yatakapokamilika."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Malipo yana kiasi kisichokatwa kodi. Risiti za Kanada hapa zinaunga mkono zawadi zisizo na faida tu."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Malipo yana kiasi cha fedha kisicho sahihi."
+
+#: 
+msgid "A payment has no date."
+msgstr "Malipo hayana tarehe."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Malipo yana tarehe ya baada ya tarehe ya kutolewa."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Malipo yametiwa alama kama tatizo."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Malipo ni sifuri au hasi."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "POST iliyokaguliwa yenye tokeni halali ya CSRF inahitajika."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Familia iliyochaguliwa haipo tena."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Picha ya saini si saini salama ya kidijitali."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Sasisho la mfumo linapatikana. Tafadhali mwombe msimamizi wako aboreshe usakinishaji wako."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Safu zote zilizojumuishwa ni zawadi za fedha zisizo na faida."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Mipangilio yote inayohitajika ya risiti za Kanada imejazwa."
+
+#: 
+msgid "Also delete family members"
+msgstr "Futa pia wanafamilia"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Kiasi cha faida"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Kiasi cha zawadi"
+
+#: 
+msgid "Amount per installment"
+msgstr "Kiasi kwa kila awamu"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Kiasi kilichoingizwa ni"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Msimamizi huipakia chini ya Mipangilio ya Ripoti."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Imeidhinishwa, lakini hakuna mwaliko uliotumwa"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Mwombe msimamizi wa mfumo wako aboreshe ChurchCRM hadi toleo la hivi karibuni."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Saini Iliyoidhinishwa"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Wakala wa Mapato wa Kanada"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Risiti Rasmi ya Kanada"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Risiti rasmi za Kanada zinahitaji Kanada iwe nchi ya kanisa katika Taarifa za Kanisa."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Risiti za Kanada zinahitaji mwaka mzima wa kalenda na mifuko yote, bila vichujio vingine."
+
+#: 
+msgid "Change Selection"
+msgstr "Badilisha Uchaguzi"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Jina la Kisheria la Shirika la Hisani"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Anwani Iliyosajiliwa ya Shirika la Hisani"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Nambari ya Usajili wa Shirika la Hisani"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Maelezo ya shirika la hisani kwa ajili ya risiti bado hayajajazwa. Ongeza jina la kisheria, anwani iliyosajiliwa, nambari ya usajili, na eneo la kutolea unapoweza. Fedha huendelea kufanya kazi hadi wakati huo."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Shirika la hisani kwenye risiti"
+
+#: 
+msgid "Check Again"
+msgstr "Angalia Tena"
+
+#: 
+msgid "Check the year"
+msgstr "Angalia mwaka"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Angalia mwaka, andaa taarifa, kisha pakua."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Chagua Kila Wiki, Kila Mwezi au Kila Robo kwa kiasi cha awamu."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Chagua mwaka halali wa kalenda wa michango."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Chagua asili au rudufu."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Chagua ahadi kamili au kiasi cha awamu."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Tafsiri za ChurchCRM zinasimamiwa katika hazina ya GitHub ya ChurchCRM. Unaweza kusaidia kwa"
+
+#: 
+msgid "Commitment amount"
+msgstr "Kiasi cha ahadi"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Linganisha rudufu na asili iliyohifadhiwa na uthibitishe kuwa taarifa zote za risiti hazijabadilika."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Kamilisha kila uthibitisho wa risiti kabla ya kupakua."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Kamilisha jina la kisheria la shirika la hisani, anwani iliyosajiliwa, nambari ya usajili, eneo la kutolea, na mwekaji saini aliyechapishwa."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Mwekaji Saini Aliyechapishwa wa Barua ya Uthibitisho"
+
+#: 
+msgid "Copy Kind"
+msgstr "Aina ya Nakala"
+
+#: 
+msgid "Currency"
+msgstr "Sarafu"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Alama ya sarafu $ au CAD"
+
+#: 
+msgid "Date received"
+msgstr "Tarehe ya kupokelewa"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Kuifuta kutaondoa pia mali %d na upangaji wake wote ili kisibaki kitu kinachoning'inia."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Je, zawadi zote za mwaka uliochaguliwa ni za mfadhili (wafadhili) waliotajwa pamoja hapo juu?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Usitumie tena nambari kwa risiti tofauti, usitoe risiti kwa zawadi zilezile mara mbili, wala usitengeneze upya taarifa iliyobadilika kama asili isiyobadilika."
+
+#: 
+msgid "Duplicate"
+msgstr "Rudufu"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Nakala rudufu / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Kiasi cha zawadi kinachostahili kwa madhumuni ya kodi ya mapato"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Ingiza ratiba na tarehe za awamu ili kuhakiki ahadi."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Ingiza tarehe halali za awamu ya kwanza na ya mwisho kwa mpangilio."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Ingiza kiasi halali cha awamu chenye sehemu za desimali zisizozidi mbili."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Ahadi zilizopo huhifadhi jumla zake zilizorekodiwa. Chagua kiasi kwa kila awamu tu unapoingiza kila zawadi iliyoratibiwa."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Imejazwa kutoka kwa wakuu wa kaya na wenzi wao. Ihariri ili ilingane na wafadhili hasa."
+
+#: 
+msgid "First installment"
+msgstr "Awamu ya kwanza"
+
+#: 
+msgid "Full commitment"
+msgstr "Ahadi kamili"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Tengeneza Taarifa za Kodi"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Mwaka wa Kalenda wa Zawadi"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Taarifa ya utoaji — si risiti rasmi ya mchango"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Saidia Kutafsiri kwenye GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Mabadiliko ya kihistoria ya bahasha hayaungwi mkono."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Nimelinganisha na asili iliyohifadhiwa: mfadhili, kiasi, nambari ya mfululizo na maandishi havijabadilika. Hii si sahihisho wala mbadala."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Nitahifadhi PDF iliyotolewa na kumbukumbu ya nje ya risiti katika eneo la kumbukumbu la Kanada la shirika la hisani."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Ikiwa asili iliyohifadhiwa haipatikani au ni tofauti, tumia taratibu zako za nje za CRA za kufuta/kubadilisha."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Jumuisha memo za malipo: nimezikagua kama zinafaa kwa mfadhili."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Jumuisha familia hii katika upakuaji"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Toleo lililosakinishwa: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Kiasi cha awamu kinaweza kutumika kwa ahadi tu."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Tarehe za awamu lazima ziwe ndani ya mwaka wa fedha uliochaguliwa."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Tokeni ya CSRF isiyo sahihi au inayokosekana"
+
+#: 
+msgid "Issue Date"
+msgstr "Tarehe ya Kutolewa"
+
+#: 
+msgid "Issue Locality"
+msgstr "Eneo la Kutolea"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Hifadhi PDF asili na kumbukumbu ya nje ya risiti katika eneo la kumbukumbu la Kanada la shirika la hisani."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Awamu ya mwisho ifikapo au kabla ya"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Maneno ya barua, maelezo ya shirika la hisani na ushughulikiaji wa PDF huwekwa mara moja katika Mipangilio ya Taarifa."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Maneno ya barua, maelezo ya shirika la hisani, na ushughulikiaji wa PDF kwa taarifa za utoaji"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Upeo wa MiB 2 na pikseli 2000 × 1000. Chagua picha mpya kuchukua nafasi ya saini iliyohifadhiwa. Picha ya saini si saini salama ya kidijitali."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Kuingia kwa wanachama kumezimwa, kwa hivyo hakuna mtu katika familia ya %s anayeweza kuingia katika lango la wanachama. Msimamizi anaweza kuiwasha chini ya Msimamizi → Lango la Wanachama."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Seti za malipo za familia za wafadhili mchanganyiko haziwezi kugawanywa hapa; zishughulikie nje ya kipengele hiki."
+
+#: 
+msgid "Narrow the list"
+msgstr "Punguza orodha"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Hakuna familia inayolingana na vichujio hivi kwa %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Hakuna risiti ya mtu binafsi au ya jumla inayoingiliana iliyopo."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Bado hakuna risiti inayoweza kutengenezwa kwa familia hii"
+
+#: 
+msgid "No signature on file"
+msgstr "Hakuna saini kwenye faili"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Hapana — wafadhili tofauti; shughulikia nje ya kipengele hiki"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Hakuna mtu katika familia ya %s anayeweza kuingia katika lango la wanachama chini ya kanuni ya sasa ya kuingia."
+
+#: 
+msgid "None / Aucun"
+msgstr "Hakuna / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Bado haijawa tayari kutoa risiti za Kanada. Bado vinakosekana"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Risiti Rasmi / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Risiti rasmi kwa madhumuni ya kodi ya mapato / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Risiti rasmi zinahitaji nambari ya usajili katika muundo 123456789RR0001 na picha ya saini."
+
+#: 
+msgid "Original"
+msgstr "Asili"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Tarehe ya Kutolewa ya Asili (ingiza kutoka kwa asili iliyohifadhiwa)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Tarehe za malipo huonyesha tarehe za kupokelewa kwa zawadi, ikiwa ni pamoja na ushughulikiaji uliothibitishwa wa stempu ya posta ya hundi zilizotumwa kwa posta."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Huchapishwa kwenye taarifa za kawaida za utoaji, kwa mfano EIN nchini Marekani. Thamani ileile iko kwenye Taarifa za Kanisa."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Kitambulisho cha mali ya saini ya taarifa ya utoaji ya faragha. Husimamiwa kwa upakiaji wa saini."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Mali / Upangaji"
+
+#: 
+msgid "Property deleted"
+msgstr "Mali imefutwa"
+
+#: 
+msgid "Property type deleted"
+msgstr "Aina ya mali imefutwa"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Kufunga kwa Risiti"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Eneo la Kutolea Risiti"
+
+#: 
+msgid "Receipt No."
+msgstr "Nambari ya Risiti"
+
+#: 
+msgid "Registration Number"
+msgstr "Nambari ya Usajili"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Nambari ya usajili katika muundo 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Maelezo ya toleo hayapatikani kwa sasa."
+
+#: 
+msgid "Releases"
+msgstr "Matoleo"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Ahadi iliyobaki kwa %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Ondoa hitaji la 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Ondoa picha ya saini iliyohifadhiwa? Risiti rasmi zinahitaji moja iwe kwenye faili."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Ripoti na vikumbusho hulinganisha ahadi hii ya kipindi chote na utoaji. Salio lililobaki si hesabu ya awamu iliyochelewa."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Ripoti na vikumbusho hutumia ahadi kamili inayoonyeshwa hapo juu. Salio lililobaki si hesabu ya awamu iliyochelewa."
+
+#: 
+msgid "Require 2FA"
+msgstr "Hitaji 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Weka Upya Chaguo"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Kagua Familia Zilizochaguliwa"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "SAMPULI — SI HALALI KWA MADHUMUNI YA KODI"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Kishikilia nafasi cha saini ya sampuli"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Sema ikiwa 2FA inahitajika."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Masasisho ya usalama na usaidizi hutolewa kwa toleo la hivi karibuni pekee."
+
+#: 
+msgid "Select the families to review."
+msgstr "Chagua familia za kukagua."
+
+#: 
+msgid "Set up the statement"
+msgstr "Andaa taarifa"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Weka uthibitishaji wa hatua mbili ili kuendelea."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Migongano wa bahasha ya pamoja: familia nyingine kwa sasa ina nambari hii ya bahasha."
+
+#: 
+msgid "Signature Image"
+msgstr "Picha ya Saini"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Picha ya saini (Msimamizi, Mipangilio ya Ripoti)"
+
+#: 
+msgid "Signature on file"
+msgstr "Saini kwenye faili"
+
+#: 
+msgid "Sincerely"
+msgstr "Kwa dhati"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Bainisha msingi wa kiasi unapohariri ahadi inayojirudia."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Taarifa ya Kawaida ya Utoaji"
+
+#: 
+msgid "Statement Template"
+msgstr "Kiolezo cha Taarifa"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Toa tarehe ya kutolewa isiyochelewa zaidi ya leo."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Kitambulisho cha Kodi kwenye taarifa"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Familia ya %s haina wanachama walio hai wa kualika kwenye lango la wanachama."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Nambari ya usajili ya Kanada lazima iwe na muundo 123456789RR0001. Hii haihakiki hali ya usajili."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Nambari ya usajili wa shirika la hisani lazima iwe maandishi."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Nambari ya usajili wa shirika la hisani iliyochapishwa kwenye risiti rasmi. Ikiwa tupu hutumia Kitambulisho cha Kodi kwenye Taarifa za Kanisa."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Anwani iliyosajiliwa ya shirika la hisani. Ikiwa tupu hutumia anwani kwenye Taarifa za Kanisa."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Kifungu cha kufunga kilicho juu ya mwekaji saini, kwa mfano Kwa dhati."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Ahadi kamili haipaswi kuzidi 999999.99 kwa kila mfuko na kiasi lazima kitumie sehemu za desimali zisizozidi mbili."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Zawadi au anwani ya barua imebadilika tangu ulipokagua mara ya mwisho. Zikague na uthibitishe mfadhili tena."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Anwani ya barua haijakamilika. Mtaa, jiji, mkoa, na msimbo wa posta vinahitajika."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Jina ambalo shirika la hisani limesajiliwa nalo. Linaweza kutofautiana na jina la kanisa."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Mahali ambapo risiti hutolewa. Ikiwa tupu hutumia jiji kwenye Taarifa za Kanisa."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Mwekaji saini aliyechapishwa wa taarifa ya utoaji ameidhinishwa kutia saini risiti hizi."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Alama ya sarafu ya mfumo lazima iwe $ au itambue CAD kwa risiti za Kanada."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Hakuna malipo katika mwaka wa kalenda uliochaguliwa."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Hawa ndio wafadhili wa kweli kwa kila zawadi katika familia hii/mwaka wa kalenda, na anwani ya barua ni sahihi."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Picha hii huchapishwa juu ya jina la mwekaji saini kwenye taarifa za utoaji na risiti. Maelezo ya shirika la hisani na jina lililochapishwa la mwekaji saini yako chini ya Fedha, Mipangilio ya Taarifa."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Chaguo hili huandaa risiti ya Kanada lakini haliweki rejista ya risiti wala kuhifadhi PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Familia hii iliyojisajili yenyewe inasubiri idhini. Kuidhinisha humtumia kila mwanachama anayeweza kuingia katika lango la wanachama mwaliko kwa barua pepe wa kukagua taarifa za familia."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Zana hii haina mtiririko wa kufuta/kubadilisha; tumia mchakato wako uliopo unaotii CRA kwa masahihisho/ubadilishaji wa risiti zilizopotea."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Mtumiaji huyu lazima aweke 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Hii itafuta kabisa rekodi ya familia na maelezo yake. Hii haiwezi kutenduliwa."
+
+#: 
+msgid "Total commitment"
+msgstr "Ahadi kamili yote"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Imeshindwa kuhakiki ahadi."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Pakia au badilisha saini"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Pakia saini ya kodi iliyoidhinishwa katika Mipangilio ya Ripoti."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Tumia tarehe ndani ya mwaka wa fedha uliochaguliwa. Zawadi za kila mwezi na kila robo hutumia siku ya awamu ya kwanza, au siku ya mwisho ya miezi mifupi."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Jina Kamili la Mfadhili Lililothibitishwa"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Thibitisha familia ana kwa ana badala yake."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Thibitisha jina kamili la mfadhili na anwani kwa kila familia. Seti za malipo za wafadhili mchanganyiko lazima zishughulikiwe nje ya kipengele hiki."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Toleo %s linapatikana. Tafadhali mwombe msimamizi wako aboreshe usakinishaji wako."
+
+#: 
+msgid "View all emails"
+msgstr "Tazama barua pepe zote"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ndiyo — seti moja ya wafadhili iliyothibitishwa"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Nchi ya kanisa lako ni Kanada, kwa hivyo risiti rasmi za Kanada zinapatikana pia unapotengeneza taarifa."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Nchi ya kanisa lako ni Kanada, kwa hivyo risiti rasmi za Kanada zinapatikana kwenye Taarifa za Utoaji na taarifa za kawaida zimetiwa alama kuwa si risiti rasmi za michango."
+
+#: 
+msgid "groups"
+msgstr "vikundi"
 
