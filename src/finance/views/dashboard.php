@@ -21,8 +21,11 @@ $selectedFyid  = $dashboardData['selectedFyid'];
 $availableYears = $dashboardData['availableYears'];
 $currentFyid   = $dashboardData['currentFyid'];
 
-$periodPayments = $selectedFyid === $currentFyid ? gettext('YTD Payments') : gettext('Payments');
-$periodPledges = $selectedFyid === $currentFyid ? gettext('YTD Pledges') : gettext('Pledges');
+$days = $dashboardData['days'];
+$isCurrentFy = $days === null && $selectedFyid === $currentFyid;
+$periodPayments = $isCurrentFy ? gettext('YTD Payments') : gettext('Payments');
+$periodPledges = $isCurrentFy ? gettext('YTD Pledges') : gettext('Pledges');
+$rangeValue = $days !== null ? 'days:' . $days : ($selectedFyid === 0 ? 'all' : 'fy:' . $selectedFyid);
 $yearEnd = $dashboardData['yearEnd'];
 $activeFunds = $dashboardData['activeFunds'];
 $recentDeposits = $dashboardData['recentDeposits'];
@@ -42,7 +45,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 $sRootPath = SystemURLs::getRootPath();
 ?>
 
-<div class="container-fluid">
 
     <!-- The weekly task: keep working on the open deposit, or start one -->
     <div class="card mb-3" id="current-work">
@@ -77,22 +79,28 @@ $sRootPath = SystemURLs::getRootPath();
         </div>
     </div>
 
-    <!-- The fiscal year scopes the totals and the fund breakdown below -->
-    <form method="GET" class="d-flex align-items-center justify-content-end gap-2 mb-2">
-        <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
-        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm w-auto" onchange="this.form.submit();">
-            <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
-            <?php foreach ($availableYears as $year): ?>
-            <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
-                <?= InputUtils::escapeHTML($year['label']) ?>
-                <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
-            </option>
-            <?php endforeach; ?>
+    <!-- One time range scopes the totals, the fund breakdown and the deposit chart -->
+    <div class="d-flex align-items-center justify-content-end gap-2 mb-2">
+        <label for="finance-range" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
+        <select id="finance-range" class="form-select form-select-sm w-auto">
+            <optgroup label="<?= InputUtils::escapeAttribute(gettext('Recent')) ?>">
+                <?php foreach ([30 => gettext('30 days'), 90 => gettext('90 days'), 365 => gettext('12 months')] as $value => $label) : ?>
+                    <option value="days:<?= $value ?>"<?= $rangeValue === 'days:' . $value ? ' selected' : '' ?>><?= $label ?></option>
+                <?php endforeach; ?>
+            </optgroup>
+            <optgroup label="<?= InputUtils::escapeAttribute(gettext('Fiscal Year')) ?>">
+                <?php foreach ($availableYears as $year): ?>
+                <option value="fy:<?= (int) $year['id'] ?>"<?= $rangeValue === 'fy:' . (int) $year['id'] ? ' selected' : '' ?>>
+                    <?= InputUtils::escapeHTML($year['label']) ?><?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+                </option>
+                <?php endforeach; ?>
+            </optgroup>
+            <option value="all"<?= $rangeValue === 'all' ? ' selected' : '' ?>><?= gettext('All Time') ?></option>
         </select>
-    </form>
+    </div>
 
     <!-- Stat Cards Row -->
-    <div class="row mb-3">
+    <div class="row row-cards mb-3 g-2">
         <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
@@ -166,14 +174,7 @@ $sRootPath = SystemURLs::getRootPath();
     <div class="card mb-3" id="depositChartRow">
         <div class="card-header d-flex flex-wrap align-items-center gap-2">
             <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
-            <div class="ms-auto d-inline-flex align-items-center gap-2">
-                <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
-                <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
-                    <?php foreach ([30 => gettext('30 days'), 90 => gettext('90 days'), 365 => gettext('12 months')] as $value => $label) : ?>
-                        <option value="<?= $value ?>"<?= $depositDays === $value ? ' selected' : '' ?>><?= $label ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+            <span class="ms-auto text-body-secondary small"><?= InputUtils::escapeHTML($fyLabel) ?></span>
         </div>
         <div class="card-body">
             <div id="deposit-lineGraph" class="deposit-line-graph"></div>
@@ -343,7 +344,6 @@ $sRootPath = SystemURLs::getRootPath();
         </div>
     </div>
 
-</div>
 
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
@@ -352,6 +352,7 @@ $sRootPath = SystemURLs::getRootPath();
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">window.financeDashboardConfig = <?= InputUtils::jsonEncodeForScript([
     'funds' => $paymentsByFund,
+    'depositRange' => ['from' => $dashboardData['fiscalYear']['startDate'], 'to' => $days === null ? $dashboardData['fiscalYear']['endDate'] : null],
     'isAdmin' => $isAdmin,
     'fiscalYearMonths' => $isAdmin ? SystemConfig::getChoices('iFYMonth') : [],
     'depositSlipTooltip' => $isAdmin ? SystemConfig::getTooltip('sDepositSlipType') : '',

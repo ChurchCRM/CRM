@@ -85,6 +85,13 @@ $("#tablePageLength").on("change", function () {
   saveUserSetting("ui.table.size", value).done(notifySuccess).fail(notifyError);
 });
 
+// ── Remaining per-user settings (dashboards, sidebar) ───────────────
+$("[data-user-setting]").on("change", function () {
+  const input = $(this);
+  const value = input.is(":checkbox") ? (this.checked ? input.data("on") : input.data("off")) : input.val();
+  saveUserSetting(input.data("user-setting"), String(value)).done(notifySuccess).fail(notifyError);
+});
+
 // ── Locale ───────────────────────────────────────────────────────
 // Handled separately because it populates from JSON and triggers reload.
 // The change handler is bound AFTER initial value is set to avoid reload loop.

@@ -16,6 +16,7 @@ use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Service\ReportCatalog;
 use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Service\DashboardLandingService;
 
 class Menu
 {
@@ -46,7 +47,7 @@ class Menu
         // the scope query on the User instance so the route gate reuses it.
         $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
         $menus = [
-            'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
+            'Dashboard'    => new MenuItem(gettext('Dashboard'), ltrim(DashboardLandingService::pathFor($currentUser), '/'), true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
             'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled(), $isVolunteerV1InUse),
             'Groups'       => self::getGroupMenu($isAdmin, $isManageGroups),
@@ -109,7 +110,6 @@ class Menu
     private static function getPeopleMenu(bool $isAdmin, bool $isAddRecordsEnabled, bool $isVolunteerV1InUse): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'people/list', true, 'fa-person-half-dress'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'people/photos', true, 'fa-images'));
@@ -148,7 +148,6 @@ class Menu
             return $groupMenu;
         }
 
-        $groupMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/dashboard', true, 'fa-gauge'));
         // fetch list options lightweight (only name/id)
         $listOptions = ListOptionQuery::create()
             ->filterById(3)
@@ -217,7 +216,6 @@ class Menu
             return $sundaySchoolMenu;
         }
 
-        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
             foreach ($classes as $group) {
@@ -457,7 +455,6 @@ class Menu
             gettext('Open Deposits')
         ));
 
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Financial Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice-dollar'));

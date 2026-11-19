@@ -5,6 +5,7 @@ use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -34,6 +35,11 @@ $viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $use
 $_userThemeMode = $user->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_userPrimary = $user->getSettingValue('ui.theme.primary');
 $_userTableSize = $user->getSettingValue('ui.table.size');
+$_dashboardTabs = DashboardLandingService::tabsFor($user);
+$_userLanding = DashboardLandingService::keyFor($user);
+$_peopleDays = (string) $user->getSettingValue('ui.dashboard.people.days') ?: '30';
+$_financeRange = (string) $user->getSettingValue('ui.dashboard.finance.range') ?: 'fy';
+$_sidebarFolded = (string) $user->getSettingValue('ui.sidebar.folded') === '1';
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -271,6 +277,59 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <?php endforeach; ?>
                 </div>
                 <small class="form-text"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Dashboards -->
+            <h4 class="mb-3"><?= gettext("Dashboards") ?></h4>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="settingLanding"><?= gettext("Main dashboard") ?></label>
+              <div class="col-sm-9">
+                <select id="settingLanding" class="form-select" data-user-setting="ui.landing">
+                  <?php foreach ($_dashboardTabs as $key => [$path, $label]) : ?>
+                    <option value="<?= $key ?>"<?= $_userLanding === $key ? ' selected' : '' ?>><?= $label ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <small class="form-text"><?= gettext("The dashboard you open on after signing in") ?></small>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="settingPeopleDays"><?= gettext("People time range") ?></label>
+              <div class="col-sm-9">
+                <select id="settingPeopleDays" class="form-select" data-user-setting="ui.dashboard.people.days">
+                  <?php foreach (['7' => gettext('7 days'), '14' => gettext('14 days'), '30' => gettext('30 days'), '60' => gettext('60 days'), '90' => gettext('90 days'), '180' => gettext('6 months')] as $value => $label) : ?>
+                    <option value="<?= $value ?>"<?= $_peopleDays === (string) $value ? ' selected' : '' ?>><?= $label ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <small class="form-text"><?= gettext("Time range for the People, Birthdays, Anniversaries and Notes cards") ?></small>
+              </div>
+            </div>
+            <?php if ($user->isFinanceEnabled()) : ?>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="settingFinanceRange"><?= gettext("Finance time range") ?></label>
+              <div class="col-sm-9">
+                <select id="settingFinanceRange" class="form-select" data-user-setting="ui.dashboard.finance.range">
+                  <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Fiscal Year'), 'all' => gettext('All Time')] as $value => $label) : ?>
+                    <option value="<?= $value ?>"<?= $_financeRange === $value ? ' selected' : '' ?>><?= $label ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <small class="form-text"><?= gettext("Time range shown on the Finance dashboard") ?></small>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <hr>
+
+            <!-- Navigation -->
+            <h4 class="mb-3"><?= gettext("Navigation") ?></h4>
+            <div class="row mb-3">
+              <div class="col-sm-9 offset-sm-3">
+                <label class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="settingSidebarFolded" data-user-setting="ui.sidebar.folded" data-on="1" data-off="0"<?= $_sidebarFolded ? ' checked' : '' ?>>
+                  <span class="form-check-label"><?= gettext("Collapse the sidebar to icons") ?></span>
+                </label>
               </div>
             </div>
 

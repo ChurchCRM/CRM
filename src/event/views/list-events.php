@@ -13,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php'
 ?>
 
 <!-- Stat Cards -->
-<div class="row mb-3">
+<div class="row row-cards mb-3 g-2">
   <div class="col-6 col-lg-3">
     <div class="card card-sm">
       <div class="card-body">
@@ -301,15 +301,6 @@ foreach ($monthlyData as $monthData):
   </div>
 </div>
 <?php endforeach; ?>
-
-<?php if ($hasEvents && $EventMonth === null && $EventYear === (int) date('Y')): ?>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  document.addEventListener('DOMContentLoaded', function () {
-    var m = document.getElementById('month-<?= (int) date('n') ?>');
-    if (m) m.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-</script>
-<?php endif; ?>
 
 <?php if (!$hasEvents): ?>
 <div class="card">

@@ -1,4 +1,4 @@
-const initDepositChart = () => {
+const initDepositChart = (range) => {
   const container = document.getElementById("deposit-lineGraph");
   if (!container) return;
   const $ = window.$;
@@ -6,7 +6,7 @@ const initDepositChart = () => {
   let chart = null;
   const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-  const load = (days) => {
+  const load = () => {
     const current = ++requestId;
     if (chart) {
       chart.destroy();
@@ -14,13 +14,23 @@ const initDepositChart = () => {
     }
     $("#depositChartRow .card-body").html('<div id="deposit-lineGraph" class="deposit-line-graph"></div>');
 
-    window.CRM.APIRequest({ method: "GET", path: "deposits/dashboard?days=" + days }).done((data) => {
+    window.CRM.APIRequest({
+      method: "GET",
+      path:
+        range.from || range.to
+          ? `deposits/dashboard?from=${range.from ?? ""}&to=${range.to ?? ""}`
+          : "deposits/dashboard?all=1",
+    }).done((data) => {
       if (current !== requestId) return;
       if (!data || data.length === 0) {
         $("#depositChartRow .card-body").html(
           '<div class="empty py-4"><div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
-            '<p class="empty-title">' + i18next.t("No Deposits") + "</p>" +
-            '<p class="empty-subtitle text-muted">' + i18next.t("No deposit data available yet") + "</p></div>",
+            '<p class="empty-title">' +
+            i18next.t("No Deposits") +
+            "</p>" +
+            '<p class="empty-subtitle text-muted">' +
+            i18next.t("No deposit data available yet") +
+            "</p></div>",
         );
         return;
       }
@@ -37,23 +47,30 @@ const initDepositChart = () => {
     });
   };
 
-  load($("#deposit-days").val());
-  $("#deposit-days").on("change", function () {
-    window.CRM.APIRequest({
-      method: "POST",
-      path: `user/${window.CRM.userId}/setting/ui.dashboard.deposit.days`,
-      dataType: "json",
-      data: JSON.stringify({ value: String(this.value) }),
-      suppressErrorDialog: true,
-    });
-    load(this.value);
-  });
+  load();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   window.CRM.onLocalesReady(() => {
     const config = window.financeDashboardConfig;
-    initDepositChart();
+    initDepositChart(config.depositRange);
+
+    const rangeSelect = document.getElementById("finance-range");
+    rangeSelect?.addEventListener("change", () => {
+      const [kind, value] = rangeSelect.value.split(":");
+      const query = kind === "days" ? `?days=${value}` : `?fyid=${kind === "all" ? 0 : value}`;
+      const saved = kind === "days" ? rangeSelect.value : kind;
+      const go = () => {
+        window.location.search = query;
+      };
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/ui.dashboard.finance.range`,
+        dataType: "json",
+        data: JSON.stringify({ value: saved }),
+        suppressErrorDialog: true,
+      }).always(go);
+    });
     const element = document.getElementById("payments-by-fund-chart");
     if (element && config.funds.length > 0) {
       const chart = new window.ApexCharts(element, {

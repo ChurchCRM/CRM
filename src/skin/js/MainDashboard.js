@@ -111,6 +111,22 @@ export function initializeMainDashboard() {
       suppressErrorDialog: true,
     });
 
+  function hideSinglePagePager() {
+    const api = this.api();
+    $(api.table().container())
+      .find(".dt-paging")
+      .toggleClass("d-none", api.page.info().pages <= 1);
+  }
+
+  const peopleDays = $("#people-range").val() || "30";
+
+  const pagedDefaults = {
+    paging: true,
+    pageLength: 5,
+    drawCallback: hideSinglePagePager,
+    dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>",
+  };
+
   const dataTableDashboardDefaults = {
     paging: false,
     ordering: false,
@@ -217,13 +233,13 @@ export function initializeMainDashboard() {
 
   let dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/families/latest",
+      url: window.CRM.root + "/api/families/latest?days=" + peopleDays,
       dataSrc: "families",
     },
     columns: latestFamilyColumns,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-  $.extend(dataTableConfig, dataTableDashboardDefaults);
+  $.extend(dataTableConfig, dataTableDashboardDefaults, pagedDefaults);
   const latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
   latestFamiliesTable.on("draw", () => {
     syncCartButtons();
@@ -245,13 +261,13 @@ export function initializeMainDashboard() {
 
   dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/families/updated",
+      url: window.CRM.root + "/api/families/updated?days=" + peopleDays,
       dataSrc: "families",
     },
     columns: updatedFamilyColumns,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-  $.extend(dataTableConfig, dataTableDashboardDefaults);
+  $.extend(dataTableConfig, dataTableDashboardDefaults, pagedDefaults);
   const updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
   updatedFamiliesTable.on("draw", () => {
     syncCartButtons();
@@ -259,20 +275,14 @@ export function initializeMainDashboard() {
 
   dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/persons/birthday",
+      url: window.CRM.root + "/api/persons/birthday?days=" + peopleDays,
       dataSrc: (json) => {
         if (!json.people || json.people.length === 0) {
           $("#PersonBirthdayDashboardItem")
             .closest(".card-body")
             .html(
-              '<div class="empty py-4">' +
-                '<div class="empty-icon"><i class="fa-solid fa-cake-candles fa-2x text-muted"></i></div>' +
-                '<p class="empty-title">' +
-                i18next.t("No Birthdays") +
-                "</p>" +
-                '<p class="empty-subtitle text-muted">' +
-                i18next.t("No birthdays in the past or next 7 days") +
-                "</p>" +
+              '<div class="text-body-secondary small p-3"><i class="fa-solid fa-cake-candles me-2"></i>' +
+                i18next.t("No birthdays in this time range") +
                 "</div>",
             );
           return [];
@@ -380,6 +390,7 @@ export function initializeMainDashboard() {
   $.extend(dataTableConfig, dataTableDashboardDefaults);
   // Ensure paging settings aren't overridden by dashboard defaults
   dataTableConfig.paging = true;
+  dataTableConfig.drawCallback = hideSinglePagePager;
   dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
@@ -394,20 +405,14 @@ export function initializeMainDashboard() {
 
   dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/families/anniversaries",
+      url: window.CRM.root + "/api/families/anniversaries?days=" + peopleDays,
       dataSrc: (json) => {
         if (!json.families || json.families.length === 0) {
           $("#FamiliesWithAnniversariesDashboardItem")
             .closest(".card-body")
             .html(
-              '<div class="empty py-4">' +
-                '<div class="empty-icon"><i class="fa-solid fa-heart fa-2x text-muted"></i></div>' +
-                '<p class="empty-title">' +
-                i18next.t("No Anniversaries") +
-                "</p>" +
-                '<p class="empty-subtitle text-muted">' +
-                i18next.t("No anniversaries in the past or next 7 days") +
-                "</p>" +
+              '<div class="text-body-secondary small p-3"><i class="fa-solid fa-heart me-2"></i>' +
+                i18next.t("No anniversaries in this time range") +
                 "</div>",
             );
           return [];
@@ -494,6 +499,7 @@ export function initializeMainDashboard() {
   $.extend(dataTableConfig, dataTableDashboardDefaults);
   // Ensure paging settings aren't overridden by dashboard defaults
   dataTableConfig.paging = true;
+  dataTableConfig.drawCallback = hideSinglePagePager;
   dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
@@ -593,13 +599,13 @@ export function initializeMainDashboard() {
 
   dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/persons/updated",
+      url: window.CRM.root + "/api/persons/updated?days=" + peopleDays,
       dataSrc: "people",
     },
     columns: updatedPersonColumns,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-  $.extend(dataTableConfig, dataTableDashboardDefaults);
+  $.extend(dataTableConfig, dataTableDashboardDefaults, pagedDefaults);
   const updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
   updatedPersonTable.on("draw", () => {
     syncCartButtons();
@@ -622,13 +628,13 @@ export function initializeMainDashboard() {
 
   dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/persons/latest",
+      url: window.CRM.root + "/api/persons/latest?days=" + peopleDays,
       dataSrc: "people",
     },
     columns: latestPersonColumns,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-  $.extend(dataTableConfig, dataTableDashboardDefaults);
+  $.extend(dataTableConfig, dataTableDashboardDefaults, pagedDefaults);
   const latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
   latestPersonTable.on("draw", () => {
     syncCartButtons();
@@ -755,9 +761,30 @@ export function initializeMainDashboard() {
     });
   }
 
-  $("#notes-days").on("change", function () {
-    saveDashboardSetting("ui.dashboard.notes.days", $(this).val()).always(() => window.location.reload());
+  $("#people-range").on("change", function () {
+    saveDashboardSetting("ui.dashboard.people.days", $(this).val()).always(() => window.location.reload());
   });
+
+  const noteRows = $("#latestNotesList > a");
+  if (noteRows.length > 5) {
+    let page = 0;
+    const pages = Math.ceil(noteRows.length / 5);
+    const render = () => {
+      noteRows.each((i, el) => $(el).toggleClass("d-none", Math.floor(i / 5) !== page));
+      $("#notesPage").text(page + 1 + " / " + pages);
+      $("#notesPrev").prop("disabled", page === 0);
+      $("#notesNext").prop("disabled", page === pages - 1);
+    };
+    $("#notesPrev").on("click", () => {
+      page -= 1;
+      render();
+    });
+    $("#notesNext").on("click", () => {
+      page += 1;
+      render();
+    });
+    render();
+  }
 
   // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
 }

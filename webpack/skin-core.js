@@ -57,6 +57,7 @@ import { escapeHtml } from "./utils/escape-html";
 
 // Row/dropdown menus escape overflow-clipping containers
 import "./common/dropdown-overflow";
+import "./common/landing-page";
 
 // Import issue reporter (GitHub issue modal)
 import "../src/skin/js/IssueReporter.js";

@@ -1,32 +1,29 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
+use ChurchCRM\Utils\InputUtils;
 
 $dashboardUser = AuthenticationManager::getCurrentUser();
-$dashboardRoot = SystemURLs::getRootPath();
-$dashboardTabs = ['people' => ['/v2/dashboard', gettext('People'), 'fa-users']];
-$dashboardTabs['groups'] = ['/groups/dashboard', gettext('Groups'), 'fa-user-group'];
-if (SystemConfig::getBooleanValue('bEnabledSundaySchool')) {
-    $dashboardTabs['sundayschool'] = ['/groups/sundayschool', gettext('Sunday School'), 'fa-children'];
-}
-if ($dashboardUser->canViewEvents() && $dashboardUser::isEventsEnabled()) {
-    $dashboardTabs['events'] = ['/event/dashboard', gettext('Events'), 'fa-calendar-days'];
-}
-if ($dashboardUser->isFinanceEnabled()) {
-    $dashboardTabs['finance'] = ['/finance', gettext('Finance'), 'fa-circle-dollar-to-slot'];
-}
+$dashboardTabs = DashboardLandingService::tabsFor($dashboardUser);
 if (count($dashboardTabs) < 2) {
     return;
 }
+$dashboardRoot = SystemURLs::getRootPath();
+$dashboardLanding = DashboardLandingService::keyFor($dashboardUser);
 ?>
-<ul class="nav nav-pills flex-nowrap overflow-auto mb-3" id="dashboardSwitch" aria-label="<?= gettext('Dashboard') ?>">
-    <?php foreach ($dashboardTabs as $key => [$path, $label, $icon]) : ?>
-        <li class="nav-item flex-shrink-0">
-            <a class="nav-link<?= $dashboardSwitchActive === $key ? ' active' : '' ?>" href="<?= $dashboardRoot . $path ?>"<?= $dashboardSwitchActive === $key ? ' aria-current="page"' : '' ?>>
-                <i class="fa-solid <?= $icon ?> me-2"></i><?= $label ?>
-            </a>
-        </li>
-    <?php endforeach; ?>
-</ul>
+<div class="d-flex align-items-start gap-2 mb-3">
+    <ul class="nav nav-pills flex-nowrap overflow-auto flex-grow-1" id="dashboardSwitch" aria-label="<?= gettext('Dashboard') ?>">
+        <?php foreach ($dashboardTabs as $key => [$path, $label, $icon]) : ?>
+            <li class="nav-item flex-shrink-0">
+                <a class="nav-link<?= $dashboardSwitchActive === $key ? ' active' : '' ?>" href="<?= $dashboardRoot . $path ?>"<?= $dashboardSwitchActive === $key ? ' aria-current="page"' : '' ?>>
+                    <i class="fa-solid <?= $icon ?> me-2"></i><?= $label ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <button type="button" class="btn btn-sm btn-outline-secondary flex-shrink-0" id="setLandingPage" data-landing="<?= $dashboardSwitchActive ?>" title="<?= InputUtils::escapeAttribute(gettext('Set as my main dashboard')) ?>" aria-label="<?= InputUtils::escapeAttribute(gettext('Set as my main dashboard')) ?>"<?= $dashboardLanding === $dashboardSwitchActive ? ' disabled' : '' ?>>
+        <i class="fa-solid fa-thumbtack me-1"></i><span class="landing-label d-none d-md-inline"><?= $dashboardLanding === $dashboardSwitchActive ? gettext('Your main dashboard') : gettext('Set as my main dashboard') ?></span>
+    </button>
+</div>

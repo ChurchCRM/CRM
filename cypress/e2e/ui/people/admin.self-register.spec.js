@@ -66,7 +66,7 @@ describe("Self Registrations review page", () => {
 
         it("shows a pending-registrations card on the home dashboard when registrations are waiting", () => {
             registerPerson();
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
             cy.get("#selfRegisterDashboardCard").should("be.visible").and("have.attr", "href").and("include", "/people/self-register");
             cy.get("#selfRegisterDashboardCount", { timeout: 10000 }).should("not.have.text", "0");
         });
@@ -264,7 +264,7 @@ describe("Self Registrations review page without EditRecords", () => {
     });
 
     it("does not show the review action on the home dashboard", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.get("#selfRegisterDashboardCard").should("not.exist");
     });
 });

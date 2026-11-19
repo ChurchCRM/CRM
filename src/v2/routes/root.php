@@ -1,26 +1,14 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\EventAttendQuery;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Service\ClassificationService;
-use ChurchCRM\Service\NoteService;
-use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-$app->get('/dashboard', 'viewDashboard');
 $app->get('/community-feedback', 'viewCommunityFeedback');
 $app->get('/access-denied', 'viewAccessDenied');
 $app->get('/releases', 'viewReleases');
@@ -60,83 +48,6 @@ function viewAccessDenied(Request $request, Response $response, array $args): Re
     ];
 
     return $renderer->render($response, 'access-denied.php', $pageArgs);
-}
-
-function viewDashboard(Request $request, Response $response, array $args): Response
-{
-    $renderer = new PhpRenderer('templates/root/');
-
-    $dashboardCounts = [];
-
-    $dashboardCounts['families'] = FamilyQuery::create()
-        ->filterByDateDeactivated()
-        ->count();
-
-    $dashboardCounts['People'] = (new ClassificationService())->excludeInactive(PersonQuery::create())
-        ->leftJoinWithFamily()
-        ->where('Family.DateDeactivated is null')
-        ->filterByLiving()
-        ->count();
-
-    // Redirect admin users with no people to the setup dashboard
-    if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts['People'] === 1) {
-        return $response
-            ->withStatus(302)
-            ->withHeader('Location', SystemURLs::getRootPath() . '/admin');
-    }
-
-    $dashboardCounts['SundaySchool'] = GroupQuery::create()
-        ->filterByType(4)
-        ->count();
-
-    $dashboardCounts['Groups'] = GroupQuery::create()
-        ->count();
-
-    // Count only attendances that are checked-in and not checked-out
-    // and that are linked to an existing, active event. This prevents
-    // orphaned or invalid event_attend rows (for example event_id=0)
-    // from inflating the dashboard number.
-    $dashboardCounts['events'] = EventAttendQuery::create()
-        ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
-        ->filterByCheckoutDate(null, Criteria::EQUAL)
-        ->useEventQuery()
-            ->filterByInActive(0)
-        ->endUse()
-        ->count();
-
-    // Data quality checks for people
-    $personService = new PersonService();
-    $genderDataCheckCount = $personService->getMissingGenderDataCount();
-    $roleDataCheckCount = $personService->getMissingRoleDataCount();
-    $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
-
-    $currentUser = AuthenticationManager::getCurrentUser();
-    $notesDays = in_array((int) $currentUser->getSettingValue('ui.dashboard.notes.days'), [7, 30, 90], true)
-        ? (int) $currentUser->getSettingValue('ui.dashboard.notes.days') : 90;
-
-    $pageArgs = [
-        'sRootPath'                       => SystemURLs::getRootPath(),
-        'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
-        'aBreadcrumbs'                    => PageHeader::breadcrumbs([
-            [gettext('Dashboard')],
-        ]),
-        'sPageHeaderButtons'              => PageHeader::buttons([
-            ['label' => gettext('Admin Dashboard'), 'url' => '/admin/', 'icon' => 'fa-screwdriver-wrench'],
-        ]),
-        'dashboardCounts'                 => $dashboardCounts,
-        'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
-        'canReviewSelfRegistrations'      => AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
-        'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
-        'genderDataCheckCount'            => $genderDataCheckCount,
-        'roleDataCheckCount'              => $roleDataCheckCount,
-        'classificationDataCheckCount'    => $classificationDataCheckCount,
-        'canViewEvents'                   => $currentUser->canViewEvents(),
-        'notesEnabled'                    => $currentUser->canReadNotes(),
-        'notesDays'                       => $notesDays,
-        'latestNotes'                     => (new NoteService())->latestNotesFor($currentUser, 10, $notesDays),
-    ];
-
-    return $renderer->render($response, 'dashboard.php', $pageArgs);
 }
 
 function viewCommunityFeedback(Request $request, Response $response, array $args): Response

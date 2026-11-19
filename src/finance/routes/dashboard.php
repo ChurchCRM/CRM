@@ -14,19 +14,38 @@ use Slim\Views\PhpRenderer;
 $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
+    $currentUser  = AuthenticationManager::getCurrentUser();
     $queryParams  = $request->getQueryParams();
     $currentFyid  = FiscalYearUtils::getCurrentFiscalYearId();
-    // 0 = All Time sentinel; positive int = specific FY; default = current FY
+    $saved        = (string) $currentUser->getSettingValue('ui.dashboard.finance.range');
+    $explicit     = isset($queryParams['days']) || isset($queryParams['fyid']);
+
+    $days = null;
+    if (isset($queryParams['days'])) {
+        $days = in_array((int) $queryParams['days'], [30, 90, 365], true) ? (int) $queryParams['days'] : null;
+    } elseif (!$explicit && preg_match('/^days:(30|90|365)$/', $saved, $matches) === 1) {
+        $days = (int) $matches[1];
+    }
+
+    // 0 = All Time sentinel; positive int = specific FY; default = remembered or current FY
     $remembered   = FiscalYearUtils::rememberedEndYear();
-    $selectedFyid = isset($queryParams['fyid'])
-        ? (int) $queryParams['fyid']
-        : ($remembered !== null ? FiscalYearUtils::getFiscalYearIdForCalendarYear($remembered) : $currentFyid);
+    if (isset($queryParams['fyid'])) {
+        $selectedFyid = (int) $queryParams['fyid'];
+    } elseif (!$explicit && $saved === 'all') {
+        $selectedFyid = 0;
+    } else {
+        $selectedFyid = $remembered !== null ? FiscalYearUtils::getFiscalYearIdForCalendarYear($remembered) : $currentFyid;
+    }
     if (isset($queryParams['fyid']) && $selectedFyid > 0) {
         FiscalYearUtils::rememberEndYear(FiscalYearUtils::endYearForId($selectedFyid));
     }
 
+    if ($explicit) {
+        $currentUser->setSetting('ui.dashboard.finance.range', $days !== null ? 'days:' . $days : ($selectedFyid === 0 ? 'all' : 'fy'));
+    }
+
     $financialService = new FinancialService();
-    $dashboardData    = $financialService->getDashboardData($selectedFyid);
+    $dashboardData    = $financialService->getDashboardData($selectedFyid, $days);
 
     $statementYear = YearEndGivingService::selectedYear();
     $dashboardData['yearEnd'] = [
@@ -34,9 +53,6 @@ $app->get('/', function (Request $request, Response $response) {
         'label' => FiscalYearUtils::getFiscalYearDatesForCalendarYear($statementYear)['label'],
         'openDeposits' => YearEndGivingService::openDeposits($statementYear),
     ];
-
-    $savedDays = (int) AuthenticationManager::getCurrentUser()->getSettingValue('ui.dashboard.deposit.days');
-    $depositDays = in_array($savedDays, [30, 90, 365], true) ? $savedDays : 90;
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
@@ -56,7 +72,6 @@ $app->get('/', function (Request $request, Response $response) {
             ['label' => gettext('Manage Envelopes'), 'url' => '/finance/envelopes', 'icon' => 'fa-envelope', 'adminOnly' => false],
         ]),
         'dashboardData' => $dashboardData,
-        'depositDays' => $depositDays,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

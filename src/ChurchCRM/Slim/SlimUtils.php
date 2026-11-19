@@ -317,7 +317,7 @@ class SlimUtils
                     default => gettext('Not Found'),
                 };
                 $message = $statusCode === 404 ? self::notFoundMessage() : $sanitizedMessage;
-                $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+                $returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
                 $returnText = gettext('Return to Dashboard');
                 $extraHtml = '';
                 // This handler never requires Header.php/Footer.php (it serves

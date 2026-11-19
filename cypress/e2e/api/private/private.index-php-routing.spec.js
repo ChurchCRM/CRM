@@ -5,7 +5,7 @@
  *
  * Covers the dispatch logic in src/index.php: the removed legacy filename
  * shims (UserEditor.php / SettingsUser.php, migrated to Admin MVC in #9173),
- * the /index.php -> /v2/dashboard redirect, and the 404 flow for paths that
+ * the /index.php -> /people/dashboard redirect, and the 404 flow for paths that
  * don't resolve to a real .php file under the doc root (bare 404 for
  * js/css-looking paths, the in-app 404 for a signed-in user; a signed-out
  * visitor gets the standalone errors/not-found.php page).
@@ -19,7 +19,7 @@ describe("API Private - index.php Routing", () => {
         cy.request({ url: "/index.php", followRedirect: false, failOnStatusCode: false })
             .then((response) => {
                 expect(response.status).to.equal(302);
-                expect(response.headers.location).to.include("/v2/dashboard");
+                expect(response.headers.location).to.include("/people/dashboard");
             });
     });
 

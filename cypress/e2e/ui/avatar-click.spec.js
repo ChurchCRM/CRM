@@ -24,7 +24,7 @@ describe("Avatar Click Behavior", () => {
      * Helper: navigate to Latest People tab, wait for rows with photos.
      */
     function openLatestPeopleTab() {
-      cy.visit("v2/dashboard");
+      cy.visit("people/dashboard");
       cy.get("#latest-ppl-tab").click();
       cy.get("#latest-ppl-pane").should("have.class", "show");
       cy.get("#latestPersonDashboardItem tbody tr", { timeout: 15000 })
@@ -35,7 +35,7 @@ describe("Avatar Click Behavior", () => {
     }
 
     it("photo avatar in Latest Families opens lightbox", () => {
-      cy.visit("v2/dashboard");
+      cy.visit("people/dashboard");
       cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
         .should("have.length.at.least", 1);
 
@@ -67,7 +67,7 @@ describe("Avatar Click Behavior", () => {
     });
 
     it("initials avatar is NOT clickable", () => {
-      cy.visit("v2/dashboard");
+      cy.visit("people/dashboard");
       cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
         .should("have.length.at.least", 1);
 
@@ -218,7 +218,7 @@ describe("Avatar Click Behavior", () => {
 
   describe("Lightbox styling", () => {
     it("lightbox has correct overlay and centering CSS", () => {
-      cy.visit("v2/dashboard");
+      cy.visit("people/dashboard");
       cy.get("#latest-ppl-tab").click();
       cy.get("#latest-ppl-pane").should("have.class", "show");
       cy.get("#latestPersonDashboardItem tbody tr", { timeout: 15000 })

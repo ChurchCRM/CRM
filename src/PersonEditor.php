@@ -58,16 +58,16 @@ $person = null;
 if (!$isNewPerson) {
     $person = PersonQuery::create()->findOneById($iPersonID);
     if ($person === null) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::redirect('people/dashboard');
     }
 
     $per_fam_ID = $person->getFamId();
 
     if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::redirect('people/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::redirect('people/dashboard');
 }
 
 $customFieldService = new CustomFieldService();

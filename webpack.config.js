@@ -95,7 +95,7 @@ module.exports = {
     'sidebar-toggle': './webpack/sidebar-toggle.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
-    'root-dashboard': './webpack/root-dashboard',
+    'people-dashboard': './webpack/people-dashboard',
     setup: './webpack/setup',
     'upgrade-wizard': './webpack/upgrade-wizard',
     'locale-loader': './webpack/locale-loader',
