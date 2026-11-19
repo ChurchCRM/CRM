@@ -256,6 +256,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-scope-label").should("have.text", "Team");
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
         cy.get(".ts-dropdown .option").contains(`${PREFIX} Hospitality`).click();
+        cy.get("#portal-grant-modal .modal-title").click();
         const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
         cy.get("#portal-grant-form").should("have.attr", "method", "post");
         cy.get("#portal-grant-ends").should("have.attr", "min").and("match", /^\d{4}-\d{2}-\d{2}$/);
