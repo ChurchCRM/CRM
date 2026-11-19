@@ -29,6 +29,13 @@ function notifyError() {
   });
 }
 
+// Appearance settings change what every page looks like, so reload on the Appearance tab.
+function savedAndReload() {
+  notifySuccess();
+  window.location.hash = "tab-appearance";
+  setTimeout(() => window.location.reload(), 800);
+}
+
 // ── API Key Regeneration ──────────────────────────────────────────
 $("#regenApiKey").on("click", () => {
   $.ajax({
@@ -53,7 +60,7 @@ $('input[name="themeMode"]').on("change", function () {
       if (window.CRM.viewIsOwnProfile && window.CRM.theme) {
         window.CRM.theme.setMode(value);
       }
-      notifySuccess();
+      savedAndReload();
     })
     .fail(notifyError);
 });
@@ -74,7 +81,7 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
           document.documentElement.removeAttribute("data-bs-theme-primary");
         }
       }
-      notifySuccess();
+      savedAndReload();
     })
     .fail(notifyError);
 });
@@ -82,14 +89,14 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
 // ── Table Page Length ─────────────────────────────────────────────
 $("#tablePageLength").on("change", function () {
   const value = $(this).val();
-  saveUserSetting("ui.table.size", value).done(notifySuccess).fail(notifyError);
+  saveUserSetting("ui.table.size", value).done(savedAndReload).fail(notifyError);
 });
 
 // ── Remaining per-user settings (dashboards, sidebar) ───────────────
 $("[data-user-setting]").on("change", function () {
   const input = $(this);
   const value = input.is(":checkbox") ? (this.checked ? input.data("on") : input.data("off")) : input.val();
-  saveUserSetting(input.data("user-setting"), String(value)).done(notifySuccess).fail(notifyError);
+  saveUserSetting(input.data("user-setting"), String(value)).done(savedAndReload).fail(notifyError);
 });
 
 // ── Locale ───────────────────────────────────────────────────────

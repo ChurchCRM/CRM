@@ -311,11 +311,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <label class="col-sm-3 col-form-label" for="settingFinanceRange"><?= gettext("Finance time range") ?></label>
               <div class="col-sm-9">
                 <select id="settingFinanceRange" class="form-select" data-user-setting="ui.dashboard.finance.range">
-                  <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Fiscal Year'), 'all' => gettext('All Time')] as $value => $label) : ?>
+                  <?php foreach (['days:30' => gettext('30 days'), 'days:90' => gettext('90 days'), 'days:365' => gettext('12 months'), 'fy' => gettext('Current fiscal year'), 'all' => gettext('All Time')] as $value => $label) : ?>
                     <option value="<?= $value ?>"<?= $_financeRange === $value ? ' selected' : '' ?>><?= $label ?></option>
                   <?php endforeach; ?>
                 </select>
-                <small class="form-text"><?= gettext("Time range shown on the Finance dashboard") ?></small>
+                <small class="form-text"><?= gettext("Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself.") ?></small>
               </div>
             </div>
             <?php endif; ?>
@@ -342,13 +342,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <?php $tableVal = $_userTableSize !== '' ? $_userTableSize : '10'; ?>
                 <select id="tablePageLength" class="form-select">
-                  <option value="10"<?= $tableVal === '10' ? ' selected' : '' ?>>10</option>
-                  <option value="25"<?= $tableVal === '25' ? ' selected' : '' ?>>25</option>
-                  <option value="50"<?= $tableVal === '50' ? ' selected' : '' ?>>50</option>
-                  <option value="100"<?= $tableVal === '100' ? ' selected' : '' ?>>100</option>
+                  <?php foreach (['5', '10', '15', '25', '50', '100', '250'] as $size) : ?>
+                  <option value="<?= $size ?>"<?= $tableVal === $size ? ' selected' : '' ?>><?= $size ?></option>
+                  <?php endforeach; ?>
                   <option value="-1"<?= $tableVal === '-1' ? ' selected' : '' ?>><?= gettext("All") ?></option>
                 </select>
-                <small class="form-text"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
+                <small class="form-text"><?= gettext("Rows shown per page in every table and dashboard card. Takes effect on next page load.") ?></small>
               </div>
             </div>
           </div>

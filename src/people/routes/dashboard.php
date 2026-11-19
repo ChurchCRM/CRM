@@ -71,7 +71,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'canReviewSelfRegistrations' => $currentUser->isEditRecordsEnabled(),
         'notesEnabled'       => $currentUser->canReadNotes(),
         'peopleDays'         => $peopleDays,
-        'latestNotes'        => (new NoteService())->latestNotesFor($currentUser, 25, $peopleDays),
+        'latestNotes'        => (new NoteService())->latestNotesFor($currentUser, 200, $peopleDays),
         'familyCount'        => $familyCount,
         'groupStats'         => $groupStats,
         'personCount'        => $personCount,

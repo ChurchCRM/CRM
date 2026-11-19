@@ -33,6 +33,7 @@ class DashboardLandingService
         }
         if ($user->isFinanceEnabled()) {
             $tabs['finance'] = ['/finance', gettext('Finance'), 'fa-circle-dollar-to-slot'];
+            $tabs['deposits'] = ['/finance/deposit/search', gettext('Deposits'), 'fa-vault'];
         }
 
         return $tabs;

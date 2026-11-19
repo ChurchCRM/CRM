@@ -234,7 +234,7 @@ use ChurchCRM\Utils\InputUtils;
         <div class="card mb-3" id="latestNotesCard">
             <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext('Latest Notes') ?></h3>
-                <div class="card-actions d-flex align-items-center gap-1<?= count($latestNotes) > 5 ? '' : ' d-none' ?>">
+                <div class="card-actions d-flex align-items-center gap-1 d-none">
                     <button type="button" class="btn btn-sm btn-ghost-secondary" id="notesPrev" aria-label="<?= InputUtils::escapeAttribute(gettext('Previous')) ?>"><i class="fa-solid fa-chevron-left"></i></button>
                     <span class="small text-body-secondary" id="notesPage"></span>
                     <button type="button" class="btn btn-sm btn-ghost-secondary" id="notesNext" aria-label="<?= InputUtils::escapeAttribute(gettext('Next')) ?>"><i class="fa-solid fa-chevron-right"></i></button>

@@ -241,7 +241,7 @@ describe("Main Dashboard - People and Finance switch", () => {
         cy.setupNoFinanceSession();
         cy.visit("people/dashboard");
         cy.contains("Families");
-        cy.get("#dashboardSwitch").should("contain", "Events").and("not.contain", "Finance");
+        cy.get("#dashboardSwitch").should("contain", "Events").and("not.contain", "Finance").and("not.contain", "Deposits");
     });
 });
 

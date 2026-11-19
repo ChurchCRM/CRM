@@ -122,7 +122,6 @@ export function initializeMainDashboard() {
 
   const pagedDefaults = {
     paging: true,
-    pageLength: 5,
     drawCallback: hideSinglePagePager,
     dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>",
   };
@@ -382,16 +381,13 @@ export function initializeMainDashboard() {
         },
       },
     ],
-    // Paginate birthdays after 5 items
     paging: true,
-    pageLength: 5,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
   // Ensure paging settings aren't overridden by dashboard defaults
   dataTableConfig.paging = true;
   dataTableConfig.drawCallback = hideSinglePagePager;
-  dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
   const birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
@@ -493,14 +489,12 @@ export function initializeMainDashboard() {
     ],
     // Paginate anniversaries after 5 items
     paging: true,
-    pageLength: 5,
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
   // Ensure paging settings aren't overridden by dashboard defaults
   dataTableConfig.paging = true;
   dataTableConfig.drawCallback = hideSinglePagePager;
-  dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
   const anniversaryFamiliesTable = $("#FamiliesWithAnniversariesDashboardItem").DataTable(dataTableConfig);
@@ -766,11 +760,13 @@ export function initializeMainDashboard() {
   });
 
   const noteRows = $("#latestNotesList > a");
-  if (noteRows.length > 5) {
+  const noteSize = Number(window.CRM.plugin.dataTable.pageLength) || 10;
+  if (noteSize > 0 && noteRows.length > noteSize) {
+    $("#latestNotesCard .card-actions").removeClass("d-none");
     let page = 0;
-    const pages = Math.ceil(noteRows.length / 5);
+    const pages = Math.ceil(noteRows.length / noteSize);
     const render = () => {
-      noteRows.each((i, el) => $(el).toggleClass("d-none", Math.floor(i / 5) !== page));
+      noteRows.each((i, el) => $(el).toggleClass("d-none", Math.floor(i / noteSize) !== page));
       $("#notesPage").text(page + 1 + " / " + pages);
       $("#notesPrev").prop("disabled", page === 0);
       $("#notesNext").prop("disabled", page === pages - 1);

@@ -215,7 +215,7 @@ foreach ($monthlyData as $monthData):
 
         <?php if (!empty($currentEvents)): ?>
         <!-- ============ CURRENT EVENTS ============ -->
-        <tbody>
+        <tbody data-row-pager>
           <?php foreach ($currentEvents as $event): ?>
             <?php include __DIR__ . '/partials/event-row.php'; ?>
           <?php endforeach; ?>
