@@ -2,10 +2,8 @@
 
 import { restoreSettings, setConfig, useMemberSignIn } from "../../../support/member-sign-in";
 
-// The family page re-renders the actions dropdown as its async pieces
-// land; a click issued the moment the element appears can hit a detached
-// node (master run 44228216478). Wait for visibility first — the same
-// settle pattern as the coordinator spec logins (#11742).
+// Settle before clicking: wait until the dropdown is visible, then click
+// (a bare click raced the page load on master run 44228216478).
 const openActionsDropdown = () => {
     cy.get("#family-actions-dropdown").should("be.visible").click();
 };
@@ -88,6 +86,13 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
 
     it("says why nobody can be invited when the sign-in rule leaves the whole family out", () => {
         setConfig("sMemberSignInClassifications", "3");
+        // setConfig runs through an API-key cookie-jar swap that drops the
+        // browser's staff session; without a fresh login the family page's
+        // XHRs 401 and the app redirects to the login page mid-test, which
+        // is what detached the actions dropdown (runs 44228216478,
+        // 44416437007, 44422455996). Sign back in first, same as the
+        // member-sign-in-off test below.
+        cy.setupAdminSession();
         cy.visit("/people/family/1");
         openVerifyModal();
         cy.get("#verify-nobody-can-sign-in")
