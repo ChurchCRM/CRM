@@ -4,6 +4,7 @@
 > ChurchCRM tracks money in — giving, pledges, deposits — and has no way at all to track money out. There is no expense register, no category or budget for spending, and nowhere to attach a receipt; churches run their outgoings in spreadsheets and lose the connection between a fund's income and what it was spent on. This RFC proposes expense management as a **core** finance feature: an expense register (payee, date, amount, category, fund), receipts attached to each expense (external links first, per the link-system direction in RFC 0013), budget-vs-actual reporting per category and fund, and a simple reimbursement path for staff and volunteers who spend on the church's behalf — so the finance module tells the whole money story, in and out.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-05
 **Owner:** @dawoudio
 **Proposal issue:** [#4658](https://github.com/ChurchCRM/CRM/issues/4658) (reopened Nov 5, 2026) · **Related:** [RFC 0013](0013-external-resource-links.md) (external resource links — the receipt-attachment mechanism), [RFC 0004](0004-portal-giving-pledges.md) / epic [#9313](https://github.com/ChurchCRM/CRM/issues/9313) (giving side), [#1761](https://github.com/ChurchCRM/CRM/issues/1761) (deposit dashboard)

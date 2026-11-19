@@ -1,28 +1,21 @@
 /// <reference types="cypress" />
 
 /**
- * Tests for a zero-permission user (all flags = 0, including usr_EditSelf=0).
+ * Tests for a zero-permission user (all flags = 0).
  *
  * Seed data: user "noperm.user" (person ID 901, family 1 — Campbell) has every
  * permission flag set to 0: AddRecords=0, EditRecords=0, DeleteRecords=0,
- * ManageGroups=0, Finance=0, Notes=0, Admin=0, EditSelf=0.
+ * ManageGroups=0, Finance=0, Notes=0, Admin=0.
  * Password: "changeme".
  *
  * Business rule under test (read-default policy, #9003):
  *  - A zero-permission user CAN log in and READ people and family records.
- *    They are NOT redirected to the Member Portal — that confinement is
- *    reserved for EditSelf-only accounts (the safety net in limited-access.spec.js).
+ *    They are NOT redirected to the Member Portal. Staff accounts never are;
+ *    portal members sign in through the Member Portal with no user account.
  *  - They CANNOT write anything: no add/edit/delete of person or family, and no
  *    access to finance, notes, admin, or menu-option pages.
- *
- * The entry gate in PageInit.php and AuthMiddleware.php is now
- * User::isEditSelfExclusive(), replacing the removed hasNoAdminPermissions().
- * Zero-permission users fall through it; EditSelf-only users do not.
- *
- * Contrast: an EditSelf-only account IS confined to the Member Portal at
- * /portal — see limited-access.spec.js.
  */
-describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
+describe("Zero-Permission User (all flags 0)", () => {
     const noPermUser = "noperm.user";
     const noPermPassword = "changeme";
     const noPermApiKey = "noPermUserApiKeyForTesting123456789012345678";
@@ -110,9 +103,14 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        it("WhyCameEditor is denied (EditRecords)", () => {
-            cy.visit("WhyCameEditor.php?PersonID=2", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+        it("Why Came API is denied (EditRecords)", () => {
+            cy.request({
+                method: "GET",
+                url: "/api/person/2/why-came",
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(403);
+            });
         });
 
         // Finance=0 — the finance module stays closed.

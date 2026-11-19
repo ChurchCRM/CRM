@@ -12,7 +12,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
@@ -54,25 +53,11 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function getPasswordChangeURL(): string
     {
-        $user = $this->getCurrentUser();
-
-        return SystemURLs::getRootPath() . ($user instanceof User ? self::passwordChangePath($user) : self::STAFF_PASSWORD_PATH);
+        return SystemURLs::getRootPath() . self::STAFF_PASSWORD_PATH;
     }
 
     public const STAFF_PASSWORD_PATH = '/account/password';
     public const STAFF_TWO_FACTOR_PATH = '/account/2fa';
-
-    /** A self-service login changes its password in the Member Portal; staff on their account page. */
-    public static function passwordChangePath(User $user): string
-    {
-        return $user->isEditSelfExclusive() ? PortalAccountPages::PASSWORD_PATH : self::STAFF_PASSWORD_PATH;
-    }
-
-    public static function twoFactorEnrollmentPath(User $user): string
-    {
-        return $user->isEditSelfExclusive() ? PortalAccountPages::TWO_FACTOR_PATH : self::STAFF_TWO_FACTOR_PATH;
-    }
-
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
@@ -204,7 +189,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = true;
                 $this->tPendingTwoFactorStarted = time();
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
-            } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled()) {
+            } elseif ($user->isTwoFactorAuthMandated() && !$user->is2FactorAuthEnabled()) {
                 // Mandate is active but user has not enrolled. Stamp the grace period start (if not already
                 // set) as a side-effect of getTwoFactorGraceStatus(), then let the user log in.
                 // validateUserSessionIsActive() handles blocking once the window has expired.
@@ -332,12 +317,12 @@ class LocalAuthentication implements IAuthenticationProvider
             }
         }
 
-        // The forced pages themselves must pass, or the redirect loops. REQUEST_URI is
-        // matched with str_contains because web servers differ on trailing slashes and
-        // query strings (#8405).
-        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
-        $passwordChangePath = self::passwordChangePath($user);
-        if ($user->getNeedPasswordChange() && !str_contains($requestUri, $passwordChangePath)) {
+        // The forced pages themselves must pass, or the redirect loops. Only the path is
+        // compared, without the query string or a trailing slash (#8405), so a query
+        // that names a forced page cannot skip the step.
+        $requestPath = rtrim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+        $passwordChangePath = self::STAFF_PASSWORD_PATH;
+        if ($user->getNeedPasswordChange() && $requestPath !== SystemURLs::getRootPath() . $passwordChangePath) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = SystemURLs::getRootPath() . $passwordChangePath;
@@ -345,20 +330,14 @@ class LocalAuthentication implements IAuthenticationProvider
 
         // If 2FA is required and user hasn't enrolled, check grace period status.
         // block only when the grace window has expired or no grace period is configured.
-        $enrollmentPath = self::twoFactorEnrollmentPath($user);
+        $enrollmentPath = self::STAFF_TWO_FACTOR_PATH;
         $enrollmentURL = SystemURLs::getRootPath() . $enrollmentPath;
-        $isOnEnrollmentPage = str_contains($requestUri, $enrollmentPath);
-        if (!$user->getNeedPasswordChange() && SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+        $isOnEnrollmentPage = $requestPath === $enrollmentURL;
+        if (!$user->getNeedPasswordChange() && $user->isTwoFactorAuthMandated() && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
             $graceStatus = $user->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);
                 $authenticationResult->nextStepURL = $enrollmentURL;
-                // NOTE (pre-existing limitation): setting nextStepURL here does NOT block API or
-                // API-key-authenticated requests.  AuthMiddleware only enforces nextStepURL for
-                // browser requests (inside the `isBrowserRequest` branch); session-based API
-                // calls see isAuthenticated=true and are passed straight to the handler.
-                // A follow-up issue should add 403 enforcement in AuthMiddleware for non-browser
-                // requests when nextStepURL signals mandatory 2FA enrollment.
             }
             // 'within-grace' → allow through; the banner in Header.php handles the warning.
         }

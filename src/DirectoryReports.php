@@ -10,13 +10,17 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\CustomFieldService;
+use ChurchCRM\Service\DirectoryReportPreferences;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// The directory lists contact details of the whole congregation: staff users only.
-if (AuthenticationManager::getCurrentUser()->isEditSelfExclusive()) {
-    RedirectUtils::securityRedirect('Staff');
+// Last-used Directory Report Options for this user (issue #11465).
+$currentUser = AuthenticationManager::getCurrentUser();
+$directoryPrefs = new DirectoryReportPreferences();
+if (isset($_GET['resetDirectoryOptions'])) {
+    $directoryPrefs->clear($currentUser);
+    RedirectUtils::redirect(array_key_exists('cartdir', $_GET) ? 'DirectoryReports.php?cartdir=M' : 'DirectoryReports.php');
 }
 
 $sPageTitle = gettext('Directory reports');
@@ -39,16 +43,46 @@ $groups = GroupQuery::create()->orderByName()->find();
 // Only the person custom fields this user may see are offered.
 $customFields = (new CustomFieldService())->getVisiblePersonFields();
 
-$aDefaultClasses = (new ClassificationService())->getDirectoryIds();
-$aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
-$aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
+$savedOptions = $directoryPrefs->load($currentUser);
+$aDefaultClasses = $savedOptions !== null
+    ? $savedOptions['classifications']
+    : (new ClassificationService())->getDirectoryIds();
+$aSelectedGroups = $savedOptions['groups'] ?? [];
+$bExcludeInactiveChecked = $savedOptions !== null ? $savedOptions['excludeInactive'] : true;
+$aDirRoleHead = $savedOptions !== null
+    ? $savedOptions['headRoles']
+    : explode(',', SystemConfig::getValue('sDirRoleHead'));
+$aDirRoleSpouse = $savedOptions !== null
+    ? $savedOptions['spouseRoles']
+    : explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
+$savedShow = $savedOptions['show'] ?? null;
+$savedCustomOrders = $savedOptions !== null ? $savedOptions['customFieldOrders'] : null;
+
+$showFieldMap = [
+    'bDirAddress' => 'address',
+    'bDirMailingAddress' => 'mailing',
+    'bDirWedding' => 'wedding',
+    'bDirBirthday' => 'birthday',
+    'bDirFamilyPhone' => 'familyPhone',
+    'bDirFamilyWork' => 'familyWork',
+    'bDirFamilyCell' => 'familyCell',
+    'bDirPersonalPhone' => 'personalPhone',
+    'bDirPersonalWork' => 'personalWork',
+    'bDirPersonalCell' => 'personalCell',
+    'bDirPersonalEmail' => 'personalEmail',
+    'bDirPersonalWorkEmail' => 'personalWorkEmail',
+    'bDirPhoto' => 'photo',
+];
+
+$resetOptionsHref = SystemURLs::getRootPath() . '/DirectoryReports.php?resetDirectoryOptions=1'
+    . (array_key_exists('cartdir', $_GET) ? '&cartdir=M' : '');
 
 ?>
 <?php if (!array_key_exists('cartdir', $_GET)) : ?>
       <div class="mb-3">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="bExcludeInactive" value="1" id="bExcludeInactive" checked>
+          <input class="form-check-input" type="checkbox" name="bExcludeInactive" value="1" id="bExcludeInactive"<?= $bExcludeInactiveChecked ? ' checked' : '' ?>>
           <label class="form-check-label" for="bExcludeInactive"><?= gettext('Exclude Inactive Families') ?></label>
         </div>
       </div>
@@ -57,7 +91,7 @@ $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
         <label class="form-label"><?= gettext('Select classifications to include') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="sDirClassifications[]" size="5" multiple required>
-          <option value="0"><?= gettext('Unassigned') ?></option>
+          <option value="0"<?= $savedOptions !== null && in_array(0, $aDefaultClasses, false) ? ' selected' : '' ?>><?= gettext('Unassigned') ?></option>
           <?php foreach ($classifications as $classification) : ?>
             <option value="<?= (int) $classification->getOptionId() ?>"<?= in_array($classification->getOptionId(), $aDefaultClasses) ? ' selected' : '' ?>><?= InputUtils::escapeHTML(gettext($classification->getOptionName())) ?></option>
           <?php endforeach; ?>
@@ -69,7 +103,7 @@ $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="GroupID[]" size="5" multiple>
           <?php foreach ($groups as $group) : ?>
-            <option value="<?= (int) $group->getId() ?>"><?= InputUtils::escapeHTML($group->getName()) ?></option>
+            <option value="<?= (int) $group->getId() ?>"<?= in_array($group->getId(), $aSelectedGroups) ? ' selected' : '' ?>><?= InputUtils::escapeHTML($group->getName()) ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -128,19 +162,25 @@ $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
               'bDirPersonalWorkEmail' => ['label' => gettext('Personal Work/Other Email'), 'checked' => true],
               'bDirPhoto'          => ['label' => gettext('Photos'), 'checked' => true],
           ];
-          foreach ($checkFields as $name => $field) : ?>
+          foreach ($checkFields as $name => $field) :
+              $showKey = $showFieldMap[$name];
+              $isChecked = $savedShow !== null ? !empty($savedShow[$showKey]) : $field['checked'];
+              ?>
             <div class="col">
               <div class="form-check<?= !empty($field['indent']) ? ' ms-4' : '' ?>">
-                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" <?= $field['checked'] ? 'checked' : '' ?>>
+                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" <?= $isChecked ? 'checked' : '' ?>>
                 <label class="form-check-label" for="<?= $name ?>"><?= $field['label'] ?></label>
               </div>
             </div>
           <?php endforeach; ?>
           <?php foreach ($customFields as $customField) :
-              $customName = 'bCustom' . (int) $customField->getOrder(); ?>
+              $customOrder = (int) $customField->getOrder();
+              $customName = 'bCustom' . $customOrder;
+              $customChecked = $savedCustomOrders === null || in_array($customOrder, $savedCustomOrders, true);
+              ?>
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
+                <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>"<?= $customChecked ? ' checked' : '' ?>>
                 <label class="form-check-label" for="<?= $customName ?>"><?= InputUtils::escapeHTML($customField->getName()) ?></label>
               </div>
             </div>
@@ -237,6 +277,7 @@ $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
 
       <div class="d-flex gap-2 mt-3">
         <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
+        <a class="btn btn-outline-secondary" id="resetDirectoryOptions" href="<?= InputUtils::escapeAttribute($resetOptionsHref) ?>"><?= gettext('Reset Options') ?></a>
         <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
       </div>
     </form>

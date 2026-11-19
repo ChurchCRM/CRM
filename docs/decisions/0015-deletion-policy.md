@@ -4,6 +4,7 @@
 > Deleting records in ChurchCRM is inconsistent today. Some deletes refuse when related data exists, others silently cascade and destroy records the user never saw, most leave no audit trace of what happened, and there is no admin override anywhere — every guard is absolute, so a legitimate cleanup can simply be impossible. An inventory of every delete action in the current code (people, families, groups, events, calendars, finance, users, notes, fundraisers, kiosks, properties, volunteers) confirms the spread: gating is entirely the legacy per-user permission flags, guard posture is inverted between sibling features, and bulk delete barely exists. This RFC proposes **one deletion policy for every main record type**: a known delete-effects map per entity, one default safeguard path (impact summary, data-integrity check, explicit confirmation), and an admin force-delete override that is always audit-trailed.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-11-06
 **Owner:** @dawoudio
 **Proposal issues:** [#3761](https://github.com/ChurchCRM/CRM/issues/3761) (bulk people delete) · [#8659](https://github.com/ChurchCRM/CRM/issues/8659) (bulk event delete) · [#8794](https://github.com/ChurchCRM/CRM/issues/8794) (recurring-series delete — follows this policy) · [#8672](https://github.com/ChurchCRM/CRM/issues/8672) (audit-trail shape on user delete) · [#10485](https://github.com/ChurchCRM/CRM/issues/10485) (login / last-admin delete guard)

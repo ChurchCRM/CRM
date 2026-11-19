@@ -274,10 +274,13 @@ function getMembersByRole(roleId) {
     .filter((d) => roleId === "" || roleId === undefined || String(d.RoleId) === String(roleId));
 }
 
+function unlockedRoles() {
+  return (window.CRM.groupRoles || []).filter((r) => !isLockedRole(r.OptionId));
+}
+
 /** Ticking members is offered when there is another role to move them to. */
 function canSelectMembers() {
-  const roles = (window.CRM.groupRoles || []).filter((r) => !isLockedRole(r.OptionId));
-  return document.getElementById("bulkRoleBar") !== null && roles.length > 1;
+  return document.getElementById("bulkRoleBar") !== null && unlockedRoles().length > 1;
 }
 
 /** Ids of the members the current search and role filter show whose role may be changed here. */
@@ -518,16 +521,40 @@ function initDataTable() {
         },
       },
       {
+        title: i18next.t("Home Phone"),
+        data: "Person.HomePhone",
+        defaultContent: "",
+        render: (data, type) => {
+          if (type !== "display") return data || "";
+          if (!data) return '<span class="text-muted">—</span>';
+          return '<a href="tel:' + window.CRM.escapeAttribute(data) + '">' + window.CRM.escapeHtml(data) + "</a>";
+        },
+      },
+      {
+        title: i18next.t("Address"),
+        data: "Person.Address",
+        defaultContent: "",
+        render: (data, type) => {
+          if (type !== "display") return data || "";
+          return data ? window.CRM.escapeHtml(data) : '<span class="text-muted">—</span>';
+        },
+      },
+      {
         width: "1",
         title: "",
         data: null,
         orderable: false,
         searchable: false,
         className: "text-end w-1 no-export",
+        // The row actions must never be collapsed away by the responsive
+        // table: without a priority they are the rightmost column and the
+        // first hidden when wider columns (Address, Home Phone) overflow.
+        responsivePriority: 1,
         render: (_data, _type, full) => {
           // GHSA-m649-24q9-q6r4: escapeAttribute for the data-name attribute context (encodes quotes)
           const escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
           const locked = isLockedRole(full.RoleId);
+          const showChangeRole = !locked && unlockedRoles().length > 1;
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
@@ -540,13 +567,13 @@ function initDataTable() {
             '"><i class="fa-solid fa-eye me-2"></i>' +
             i18next.t("View") +
             "</a>" +
-            (locked
-              ? ""
-              : '<button class="dropdown-item changeMembership" data-personid="' +
+            (showChangeRole
+              ? '<button class="dropdown-item changeMembership" data-personid="' +
                 full.PersonId +
                 '"><i class="fa-solid fa-users me-2"></i>' +
                 i18next.t("Change Role") +
-                "</button>") +
+                "</button>"
+              : "") +
             '<button class="dropdown-item AddToCart" data-cart-id="' +
             full.PersonId +
             '" data-cart-type="person" data-label-add="' +

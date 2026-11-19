@@ -73,6 +73,20 @@ function escapeHtml(text: string | null | undefined): string {
   return div.innerHTML;
 }
 
+/** Render configured church branding for kiosk status screens. */
+function renderChurchBrand(): string {
+  const brand = document.getElementById("kioskChurchBrand");
+  const churchName = brand?.getAttribute("data-church-name")?.trim() || "ChurchCRM";
+  const logoPath = brand?.getAttribute("data-church-logo") || "";
+  if (!logoPath) return `<div class="kiosk-status-brand"><strong>${escapeHtml(churchName)}</strong></div>`;
+  return (
+    '<div class="kiosk-status-brand">' +
+    `<img class="kiosk-status-brand-logo" src="${escapeHtml(logoPath)}" alt="">` +
+    `<strong>${escapeHtml(churchName)}</strong>` +
+    "</div>"
+  );
+}
+
 /**
  * Make API request to kiosk device endpoints
  */
@@ -534,6 +548,7 @@ function renderNoMembersMessage(): string {
     "</h3>" +
     "</div>" +
     '<div class="card-body">' +
+    renderChurchBrand() +
     '<div class="kiosk-status-icon text-warning">' +
     '<i class="fa-solid fa-users-slash"></i>' +
     "</div>" +
@@ -784,6 +799,7 @@ function renderCountdown(eventStart: moment.Moment, eventTitle: string, kioskNam
     "</h3>" +
     "</div>" +
     '<div class="card-body text-center">' +
+    renderChurchBrand() +
     '<div class="kiosk-status-icon text-primary">' +
     '<i class="fa-solid fa-clock"></i>' +
     "</div>" +
@@ -844,6 +860,7 @@ function renderEventEnded(eventTitle: string): string {
     "</h3>" +
     "</div>" +
     '<div class="card-body text-center">' +
+    renderChurchBrand() +
     '<div class="kiosk-status-icon text-success">' +
     '<i class="fa-solid fa-calendar-check"></i>' +
     "</div>" +
@@ -931,6 +948,7 @@ function renderStatusCard(
     "</h3>" +
     "</div>" +
     '<div class="card-body text-center">' +
+    renderChurchBrand() +
     '<div class="kiosk-status-icon ' +
     iconColorClass +
     '">' +

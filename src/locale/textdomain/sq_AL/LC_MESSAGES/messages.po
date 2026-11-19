@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "Caktoj"
 
 #: 
-msgid "Date Updated"
-msgstr "Data përditësua"
-
-#: 
-msgid "Updated By"
-msgstr "Përditësuar By"
-
-#: 
 msgid "Since"
 msgstr "Që nga"
 
@@ -1362,10 +1354,6 @@ msgid "Updated"
 msgstr "Përditësuar"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Ky veprim nuk mund të zhbëhet)"
-
-#: 
 msgid "Note Editor"
 msgstr "Shënim i redaktorit"
 
@@ -1498,10 +1486,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Cakto një re Vullnetare Opportunity"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Details elektronike Transaksionit"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Shuma pazbritshme nuk mund të jetë më i madh se shuma e përgjithshme."
 
@@ -1595,10 +1579,6 @@ msgid "Warning"
 msgstr "Paralajmërim"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Ky lloj pronë është ende duke u përdorur së paku nga një pronë."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Ju lutem konfirmoni fshirjen e këtij Tipi i patundshmërisë"
 
@@ -1624,44 +1604,8 @@ msgid "Please confirm deletion of"
 msgstr "Ju lutemi konfirmoni fshirjen e"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Na vjen keq, ka të dhënat e donacioneve nga kjo familje. Kjo familje nuk mund të fshihen."
-
-#: 
-msgid "Return to Family View"
-msgstr "Kthehu tek Family View"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "KUJDES: Kjo familje ka të dhënat e donacioneve dhe nuk mund të fshihen deri sa këto donacione janë të lidhur me një familje tjetër."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "KUJDES: Ky veprim nuk mund të zhbëhet dhe mund të ketë pasoja ligjore!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FAMILJA AKTUALE ME DONACIONET"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Shënim: Kjo do të fshijë të gjitha shënimet që lidhen me këtë rekord të Familjes."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Fshij Record Family VETEM"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Fshij Record familjare dhe anëtarët e familjes"
-
-#: 
 msgid "Listing"
 msgstr "Listimi"
-
-#: 
-msgid "My User Settings"
-msgstr "Mia User Settings"
 
 #: 
 msgid "Variable name"
@@ -2159,10 +2103,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Kjo do të mbishkruajë numrat e zarfeve të familjes në bazën e të dhënave me ato të përzgjedhura në këtë faqe. Vazhdoni?"
 
 #: 
-msgid "Family Select"
-msgstr "Zgjidh familjen"
-
-#: 
 msgid "Welcome to"
 msgstr "Mirë se vini në"
 
@@ -2457,10 +2397,6 @@ msgstr "Shih të gjitha depozitat"
 #: 
 msgid "Deposit Reports"
 msgstr "Raportet e depozitave"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Ndrysho fletë-depozitën"
 
 #: 
 msgid "Create New Fundraiser"
@@ -4985,10 +4921,6 @@ msgid "View Person Page"
 msgstr "Shiko faqjen e personit"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familja nuk ka email për t'u përdorur"
-
-#: 
 msgid "Deleted"
 msgstr "Fshirë"
 
@@ -5129,10 +5061,6 @@ msgstr "Zbato politikën e sigurisë së përmbajtjes (CSP) për të ndihmuar n�
 #: 
 msgid "Enter event description..."
 msgstr "Vendosni përshkrimin e ngjarjes..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Vendosni tekstin e shënimit këtu..."
 
 #: 
 msgid "Note"
@@ -6056,14 +5984,6 @@ msgid "Close All Deposits"
 msgstr "Mbyll të gjitha depozitat"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Të mbyllura vs Totali"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Përfundoni këto detyra për të siguruar raportimin e saktë të taksave në fund të vitit për dhuruesit tuaj."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfiguro email-in"
 
@@ -6080,28 +6000,12 @@ msgid "Create First Deposit"
 msgstr "Krijo depozitën e parë"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Krijoni ose hapni një depozitë fillimisht"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Krijoni ose zgjidhni një depozitë për të filluar."
-
-#: 
-msgid "Current Deposit"
-msgstr "Depozita aktuale"
-
-#: 
 msgid "Day"
 msgstr "Ditë"
 
 #: 
 msgid "Dec"
 msgstr "Dhj"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistikat e depozitave"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6130,10 +6034,6 @@ msgstr "Redakto pagesën"
 #: 
 msgid "Edit Person"
 msgstr "Redakto personin"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Sigurohuni që të gjitha depozitat për vitin tatimor janë mbyllur para se të gjeneroni deklaratat."
 
 #: 
 msgid "F"
@@ -6240,10 +6140,6 @@ msgid "New Pledge"
 msgstr "Zotim i ri"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Pa depozitë aktive"
-
-#: 
 msgid "No active funds configured."
 msgstr "Asnjë fond aktiv nuk është konfiguruar."
 
@@ -6276,10 +6172,6 @@ msgid "Pledge Reports"
 msgstr "Raportet e zotimeve"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Printoni ose dërgoni me email deklaratat vjetore të dhurimit për të gjithë dhuruesit."
-
-#: 
 msgid "Quick Actions"
 msgstr "Veprime të shpejta"
 
@@ -6310,10 +6202,6 @@ msgstr "Rikthe"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Rikthe nga një skedar kopjeje rezervë. Fshin të dhënat ekzistuese."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Rishiko fondet e dhurimit"
 
 #: 
 msgid "Save and Add New Family"
@@ -6352,14 +6240,6 @@ msgid "System Info"
 msgstr "Informacioni i sistemit"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Gjuha e raportit të taksave"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Lista kontrolli e raportimit të vitit tatimor"
-
-#: 
 msgid "Total"
 msgstr "Totali"
 
@@ -6380,10 +6260,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Përdoruesi duhet të jetë administrator ose të ketë lejen e financës"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifikoni që emrat dhe përshkrimet e fondeve janë të sakta për deklaratat."
-
-#: 
 msgid "YTD Payments"
 msgstr "Pagesat që nga fillimi i vitit"
 
@@ -6400,20 +6276,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Zgjerimi ZipArchive kërkohet për përmirësimet"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "u gjet"
 
 #: 
 msgid "issues"
 msgstr "probleme"
-
-#: 
-msgid "open"
-msgstr "hap"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -6804,10 +6672,6 @@ msgid "Add Property Type"
 msgstr "Shto llojin e vetisë"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Shtoni llojin tuaj të parë të vetisë"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Duke fshirë këtë fushë, do të humbni të pakthyeshëm të gjitha të dhënat e anëtarëve të grupit të caktuara për këtë fushë!"
 
@@ -6826,10 +6690,6 @@ msgstr "Çregjistruar"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Viti fiskal aktual"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Fshi (do të fshijë të gjitha rekordet e lidhura)"
 
 #: 
 msgid "Edit Property Type"
@@ -6880,10 +6740,6 @@ msgid "No property types found"
 msgstr "Nuk u gjetën lloje vetish"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Numri i rekordeve që përdorin këtë lloj vetie"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Përshkrimi opsional i detajuar i këtij lloji vetie"
 
@@ -6914,10 +6770,6 @@ msgstr "Zgjidhni llojin e rekordit që kjo veti aplikon"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Gjurmoni dhe menaxhoni angazhimet e zotimeve sipas familjes dhe fondit"
-
-#: 
-msgid "View Properties"
-msgstr "Shiko vetitë"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7897,18 +7749,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Jeni i sigurt që dëshironi të fshini përgjithmonë këtë rekord zotimi?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Kansello dhe Kthehu te Pamja e Familjes"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Nëse e fshini këtë lloj, do të hiqni gjithashtu të gjitha vetitë që e përdorin dhe do të humbni të gjitha caktimet përkatëse të vetive."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Zhvendos Ofertat te Familja e Zgjedhur"
-
-#: 
 msgid "Calendar not found"
 msgstr "Kalendari nuk u gjet"
 
@@ -8181,10 +8021,6 @@ msgid "or later to continue."
 msgstr "ose më vonë për të vazhduar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Shënime \"Pse Erdhe\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat për \"%s\""
@@ -8293,10 +8129,6 @@ msgstr "Shto ose redakto skedarët e personave individualë"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Shto ose redakto artikujt e dhuruar për ngjarjet e mbledhjes së fondeve"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Shto ose redakto shënime për njerëzit dhe familjet"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9011,10 +8843,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Administro mundësitë e vullnetarëve dhe cakto anëtarëve"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Administro preferencat tuaja personale dhe cilësimet e llogarisë"
-
-#: 
 msgid "Map cart items"
 msgstr "Hartuese artikujt e listës"
 
@@ -9049,10 +8877,6 @@ msgstr "Zhvendos në Grupmesion"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Po zhvendoseni nga një instalim ekzistues i ChurchCRM ose ChurchInfo? Ngarko skedarin e rezervës tuaj dhe ne do të rivendosim të dhënat tuaja automatikisht."
-
-#: 
-msgid "My Settings"
-msgstr "Cilësimet Tuaja"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9269,10 +9093,6 @@ msgid "Record new pledges and payments"
 msgstr "Regjistroj premtimet dhe pagesa të reja"
 
 #: 
-msgid "Record why attendees visited your church"
-msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hiq nga Klasa"
 
@@ -9481,10 +9301,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Ndiqni premtimet e familjeve dhe kontributet e fondeve sipas vitit fiskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detajet e Transaksionit"
-
-#: 
 msgid "Unmapped"
 msgstr "E pahartuar"
 
@@ -9567,10 +9383,6 @@ msgstr "Shiko përmbledhjet e premtimeve të familjeve dhe shpërndarjet e fonde
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Shiko anëtarët e grupit, rolet, dhe vetitë"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Shiko detajet e transaksionit për një pagesë premtimi"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11131,10 +10943,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Vlerë JSON e pavlefshme — cilësimi nuk u ruajt. Ju lutemi korrigjoni dhe provoni përsëri."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bashkohuni me Projektin e Përkthimit në POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Cilësimet e gjuhës dhe rajonit"
 
@@ -11154,10 +10962,6 @@ msgstr "Malajalam - Indi"
 #: 
 msgid "Manage 2FA"
 msgstr "Menaxho 2FA"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Menaxhoni preferencat shtesë si ndarësit e emailit dhe opsionet e shfaqjes"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11274,10 +11078,6 @@ msgstr "Konfigurimi i Përdoruesit"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versioni %s është i disponueshëm. Ju lutemi përditësoni instalimin tuaj."
-
-#: 
-msgid "View All"
-msgstr "Shiko Të Gjitha"
 
 #: 
 msgid "Yellow"
@@ -11420,14 +11220,6 @@ msgstr "Regjistruar Nga"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Regjistrimi është i çaktivizuar për ngjarjet joaktive. Aktivizoni ngjarjen nga Paneli i Ngjarjeve për të mundësuar regjistrimin."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Regjistruar në ngjarje: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Çregjistruar nga ngjarje: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11838,14 +11630,6 @@ msgid "e.g., 40.7128"
 msgstr "p.sh., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Ndodhi një gabim gjatë fshirjes së familjes."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Ndodhi një gabim gjatë transferimit të donacioneve."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Kërkohet të paktën një anëtar familje"
 
@@ -11864,10 +11648,6 @@ msgstr "Fshirja dështoi"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Drejtimi duhet të jetë \"lart\" ose \"poshtë\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Dështoi transferimi i donacioneve."
 
 #: 
 msgid "Finance permission required"
@@ -11904,10 +11684,6 @@ msgstr "Anëtarësia nuk u gjet"
 #: 
 msgid "Password successfully changed for"
 msgstr "Fjalëkalimi u ndryshua me sukses për"
-
-#: 
-msgid "Please select a target family."
-msgstr "Ju lutemi zgjidhni një familje cak."
 
 #: 
 msgid "Target family not found"
@@ -13109,14 +12885,6 @@ msgstr "Çregjistrimi dështoi. Ju lutemi provoni përsëri."
 #: 
 msgid "Click Save to apply."
 msgstr "Kliko Ruaj për të zbatuar."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API e Clipboard nuk është në dispozicion. Ju lutemi kopjojeni URL-in manualisht."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Kllipbordi nuk është i disponueshëm. Ju lutemi përdorni butonin e Shkarkimit për të ruajtur kodet tuaja."
 
 #: 
 msgid "Code incomplete"
@@ -14651,24 +14419,12 @@ msgid "People &amp; Families"
 msgstr "Njerëz &amp; Familje"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
-
-#: 
 msgid "User List"
 msgstr "Lista e Përdoruesve"
 
 #: 
 msgid "View Person"
 msgstr "Shiko Personin"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
 
 #: 
 msgid "Account locked"
@@ -15371,10 +15127,6 @@ msgid "thru %s"
 msgstr "deri %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Shënime Pse erdhi për %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s i familjes %2$s"
 
@@ -15393,14 +15145,6 @@ msgstr "Blerësit për këtë mbledhje fondesh"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Origjina e integrimit të kalendarit"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Përkthimet e ChurchCRM menaxhohen nga komuniteti në POEditor. Mund të ndihmoni duke"
-
-#: 
-msgid "Closed Deposits"
-msgstr "Depozita të mbyllura"
 
 #: 
 msgid "Current $URL[0] value"
@@ -15487,14 +15231,6 @@ msgid "Output Method"
 msgstr "Metoda e daljes"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Ju lutem konfirmoni fshirjen e këtij rekordii familjes"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Ju lutem zgjidhni një familje tjetër me të cilën të lidhni këto dhurime"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Fletë dërgese"
 
@@ -15543,10 +15279,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'i heqë caktimet"
 
 #: 
-msgid "Total Deposits"
-msgstr "Depozita totale"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Përditësojeni me një URL të vlefshme që"
 
@@ -15573,10 +15305,6 @@ msgstr "për fondet"
 #: 
 msgid "user"
 msgstr "përdorues"
-
-#: 
-msgid "with at least one"
-msgstr "me të paktën një"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -15805,18 +15533,6 @@ msgstr "Shto Klasë të Shkollës së Dielës"
 #: 
 msgid "Delete this family?"
 msgstr "Fshi këtë familje?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Dëshironi të fshini këtë familje? Do të çoheni në një faqe për të zgjedhur çfarë të fshini. Kjo nuk mund të zhbëhet."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Konfirmim i fshirjes së familjes"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Konfirmim i fshirjes së llojit të pronësisë"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -17349,10 +17065,6 @@ msgstr "Mbledhur Këtë Vit Fiskal"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s duhet të jetë një adresë e plotë web https://, për shembull https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Llogaria ka leje të kufizuara. Kontaktoni një administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20427,10 +20139,6 @@ msgid "Read the theme authoring guide"
 msgstr "Lexoni udhëzuesin e krijimit të temave"
 
 #: 
-msgid "Recent Emails"
-msgstr "Email-et e fundit"
-
-#: 
 msgid "Recipient"
 msgstr "Marrësi"
 
@@ -22575,10 +22283,6 @@ msgid "Register walk-in guest"
 msgstr "regjistroni mysafirin"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Regjistruar si mysafir në kiosk gjatë ngjarjes: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Po regjistrohet..."
 
@@ -22605,10 +22309,6 @@ msgstr "Kërko sipas emrit të familjes"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Kërko sipas emrit të familjes ose nr. të zarfit"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nuk mund të fshihet një familje që ka zotime ose pagesa. Zhvendosni ose hiqni më parë regjistrimet financiare."
 
 #: 
 msgid "You cannot delete your own account."
@@ -23989,10 +23689,6 @@ msgid "%s Giving Statement"
 msgstr "Deklarata e dhurimeve %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Përshtatni tekstin që shfaqet në deklaratat e dhurimeve (sTaxReport1, sTaxReport2, etj.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24015,10 +23711,6 @@ msgstr "Dërgoni me email deklaratën e dhurimeve %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Numrat e zarfeve"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Gjeneroni deklaratat e dhurimeve"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24059,10 +23751,6 @@ msgstr "Nuk mund të dërgohet me email deklarata e dhurimeve: kjo familje nuk k
 #: 
 msgid "Undesignated"
 msgstr "E pacaktuar"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat e dhurimeve."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24277,14 +23965,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagesa nuk janë ende në asnjë depozitë."
 
 #: 
-msgid "Can be emailed"
-msgstr "Mund të dërgohet me email"
-
-#: 
-msgid "Closing line"
-msgstr "Rreshti i mbylljes"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Çdo depozitë e datuar në këtë vit është mbyllur."
 
@@ -24297,40 +23977,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Çdo pagesë në këtë vit është në një depozitë."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gjeneroni deklaratat tatimore"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raporti i dhurimeve (deklaratat tatimore)"
-
-#: 
-msgid "Opening line"
-msgstr "Rreshti i hapjes"
-
-#: 
-msgid "Print and mail"
-msgstr "Shtypni dhe dërgoni me postë"
-
-#: 
 msgid "Qty"
 msgstr "Sasia"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Shqyrtoni vitin, pastaj shtypni ose dërgoni me email deklaratat e dhurimeve."
-
-#: 
-msgid "Signed by"
-msgstr "Nënshkruar nga"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rreshti i falënderimit"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat tatimore."
 
 #: 
 msgid "Year-End Giving"
@@ -24461,10 +24109,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Zero çaktivizon një kërkesë opsionale. Mosha kërkon një datë të plotë lindjeje; kohëzgjatja e anëtarësisë kërkon një datë anëtarësie. Personat pa datat e kërkuara lihen jashtë dhe numërohen veçmas. Personat e ndjerë, personat dhe klasifikimet joaktive, si dhe familjet dhe personat joaktivë ose në pritje të shqyrtimit përjashtohen gjithmonë; përdoret klasifikimi dhe statusi aktual, jo statusi historik."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Shuma e detyruar për %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Nuk mund të krijohet ruajtja e përkohshme private e PDF në drejtorinë e zgjedhur."
 
@@ -24491,10 +24135,6 @@ msgstr "Drejtoria e përkohshme e PDF nuk ekziston ose nuk është e qasshme."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Drejtoria e përkohshme e PDF duhet të jetë një shteg absolut drejtorie."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Numri tatimor i kishës (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24539,10 +24179,6 @@ msgstr "Cilësimet e deklaratës"
 #: 
 msgid "Statement Wording"
 msgstr "Formulimi i deklaratës"
-
-#: 
-msgid "Tax Information"
-msgstr "Informacioni tatimor"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24591,10 +24227,6 @@ msgstr "Duke përdorur emrin dhe adresën e kishës"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Duke përdorur shtegun e kokës së letrës të vendosur te Cilësimet e sistemit"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formulimi, numri tatimor dhe trajtimi i PDF për deklaratat e dhurimeve"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27135,10 +26767,6 @@ msgid "Last verified"
 msgstr "Verifikuar së fundi"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Asnjë anëtar aktiv dhe i miratuar i kësaj familjeje nuk ka adresë emaili. Verifikojini të dhënat personalisht."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Nuk u gjetën premtime për këto vite fiskale."
 
@@ -27161,10 +26789,6 @@ msgstr "Hyni në portalin e anëtarëve me këtë adresë emaili për të shqyrt
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Kjo familje është joaktive, prandaj nuk i dërgohen emaile verifikimi."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Kjo familje e vetëregjistruar pret miratimin. Miratimi i dërgon familjes me email një ftesë për të hyrë në portalin e anëtarëve dhe për të shqyrtuar të dhënat e saj."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27349,4 +26973,698 @@ msgstr "Të dhënat tuaja janë tuajat. Këto raporte kanë të bëjnë me softu
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Të dhënat tuaja janë tuajat. Për të numëruar instalimet, ChurchCRM raporton që u instalua ose u përmirësua dhe nëse funksionoi, një sinjal një herë në ditë gjatë përdorimit, si dhe numrin e versionit, shtetin tuaj, llojin e bazës së të dhënave dhe një ID të rastësishme instalimi. Nuk raporton kurrë të dhënat e anëtarëve, të dhurimeve apo të tjera të kishës, emrin e kishës suaj, adresën tuaj të internetit ose emrin e serverit, apo adresat e emailit. Mund ta çaktivizoni në çdo kohë te Administrimi → Telemetria; një instalim ose përmirësim i dështuar raportohet sërish. Paralajmërimet, hollësitë e gabimeve dhe shikimet e faqeve ndahen vetëm nëse e zgjidhni."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: Depozita të hapura: %2$d. Mbyllni ato në mënyrë që çdo donacion të finalizohet përpara se të dërgohen deklaratat."
+msgstr[1] "%1$s: Depozita të hapura: %2$d. Mbyllni ato në mënyrë që çdo donacion të finalizohet përpara se të dërgohen deklaratat."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Numrat e zarfit të ruajtur: %d."
+msgstr[1] "Numrat e zarfit të ruajtur: %d."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "Familjet: %d"
+msgstr[1] "Familjet: %d"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: çdo depozitë është e mbyllur. Deklaratat janë gati për t'u përgatitur."
+
+#: 
+msgid "12 months"
+msgstr "12 muaj"
+
+#: 
+msgid "30 days"
+msgstr "30 ditë"
+
+#: 
+msgid "90 days"
+msgstr "90 ditë"
+
+#: 
+msgid "Add Property"
+msgstr "Shto atribut të personalizuar"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Shto disa karaktere të tjera ose një simbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Shtoni dhe modifikoni ngjarjet"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Shtoni më shumë karaktere ose përzieni në numra dhe simbole."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Shtoni më shumë karaktere dhe përzieni shkronjat e mëdha dhe të vogla, numrat dhe simbolet."
+
+#: 
+msgid "Add people and families"
+msgstr "Shtoni njerëz dhe familje"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratorët kanë të gjitha lejet për çdo veçori të aktivizuar."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Gjithashtu çaktivizoni identifikimin, në mënyrë që ata të mos mund të përdorin Portalin e Anëtarëve"
+
+#: 
+msgid "Birthday today"
+msgstr "Sot ditelindjen"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Nuk mund të krijohet skedari i nënshkrimit të kuponit tatimor privat. Kontrolloni që dosja e ruajtjes të jetë e shkruajtshme."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Nuk mund të krijohet dosja e ruajtjes së nënshkrimit të faturës tatimore %s. Sigurohuni që serveri i uebit mund t'i shkruajë ose të vendosë një dosje të shkrueshme në cilësimin e shtegut të ruajtjes së nënshkrimit të faturës tatimore."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Nuk mund të kodojë nënshkrimin e kuponit tatimor privat."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Nuk mund të lëvizet fusha në atë drejtim"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Nuk mund të lexohet nënshkrimi i kuponit tatimor privat."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Nuk mund të hiqet nënshkrimi privat."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Nuk mund të hiqet skedari i nënshkrimit të kuponit tatimor privat."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Nuk mund të zgjidhet dosja e aplikacionit për ruajtjen e nënshkrimit të faturës tatimore."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Nuk mund të ruhet nënshkrimi privat."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Nuk mund të shkruhet mbrojtësi i hyrjes %s në dosjen e ruajtjes së nënshkrimit të faturës tatimore."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Ndrysho rolin e anëtarëve të përzgjedhur: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Viti fiskal i Kishës"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM Kontrolli i sistemit"
+
+#: 
+msgid "Custom field not found"
+msgstr "Fusha e personalizuar nuk u gjet"
+
+#: 
+msgid "Delete people and families"
+msgstr "Fshi njerëzit dhe familjet"
+
+#: 
+msgid "Delete the login for"
+msgstr "Fshini hyrjen për"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Gama kohore e grafikut të depozitave"
+
+#: 
+msgid "Disabled at"
+msgstr "çaktivizuar"
+
+#: 
+msgid "Disabled by"
+msgstr "çaktivizuar nga"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Shkarkimi përfshin të gjithë donatorët për vitin. Rishikimi dhe filtri shfaq totalet në fillim dhe ju lejon të filtroni sipas familjes, fondit, kategorisë ose datës."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Numri i zarfit dublikatë"
+
+#: 
+msgid "Edit people and families"
+msgstr "Redakto njerëzit dhe familjet"
+
+#: 
+msgid "Email people and groups"
+msgstr "Dërgo email njerëzve dhe grupeve"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Aktivizo shtesat PHP që mungojnë në konfigurimin e serverit të uebit, rinisni serverin e uebit dhe më pas ringarkoni këtë faqe. Nëse përdorni një ofrues pritës, kërkoni që ata të aktivizojnë shtesat e listuara."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Futni manualisht një çelës konfigurimi"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Futni një numër fillestar nga 0 në %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Hyni në ekran të plotë"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Fusni këtë çelës në vërtetuesin tuaj ose menaxherin e fjalëkalimit duke përdorur kode të bazuara në kohë (TOTP), kode 6-shifrore dhe një interval prej 30 sekondash. Mbaje privat këtë çelës."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Futni emrin e përdoruesit ose emailin tuaj"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Numrat e zarfit duhet të jenë numra të plotë nga 0 deri në %d. Asnjë ndryshim nuk u ruajt."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Ngjarjet janë çaktivizuar për këtë kishë"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Dilni nga ekrani i plotë"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Fshirja e fushës së personalizuar dështoi"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Zhvendosja e fushës së personalizuar dështoi"
+
+#: 
+msgid "Fair"
+msgstr "Mesatare"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Familjet që kanë premtuar një donacion për %1$s dhe nuk kanë asnjë premtim dhurimi për %2$s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Familjet me të paktën një anëtar brenda"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Financat janë fikur për këtë kishë"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Gjeni familje që kanë premtuar një donacion në një vit fiskal dhe jo në një vit tjetër."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Dosja ku ruhet nënshkrimi i deklaratës së dhurimit privat. Lëreni bosh për të përdorur dosjen private të integruar, Images/TaxSignatures, e cila bllokon hyrjen e drejtpërdrejtë në ueb. Për të përdorur një dosje tjetër, futni një shteg absolut jashtë dosjes ChurchCRM në të cilën serveri i uebit mund të shkruajë."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Mbledhja e fondeve është çaktivizuar për këtë kishë"
+
+#: 
+msgid "Good"
+msgstr "Mirë"
+
+#: 
+msgid "Have an email"
+msgstr "Me një adresë emaili"
+
+#: 
+msgid "Hide setup key"
+msgstr "Fshih çelësin e konfigurimit"
+
+#: 
+msgid "How to respond"
+msgstr "Si të përgjigjeni"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ide që presin për rishikimin tuaj"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Familjet joaktive janë lënë jashtë. Pagesat nuk llogariten si premtime dhurimi."
+
+#: 
+msgid "Invalid request."
+msgstr "Kërkesë e pavlefshme."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Të dhëna të pavlefshme imazhi të nënshkrimit."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Identifikues i pavlefshëm i nënshkrimit të kuponit tatimor të ruajtur."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Ruajtja e nënshkrimit të kuponit tatimor të pavlefshëm."
+
+#: 
+msgid "Last successful login"
+msgstr "Hyrja e fundit e suksesshme"
+
+#: 
+msgid "Lockout state"
+msgstr "Gjendja e bllokimit"
+
+#: 
+msgid "Login deleted"
+msgstr "Identifikimi u fshi"
+
+#: 
+msgid "Mail only"
+msgstr "Vetëm postë"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Menaxhoni të gjitha shërbesat e kishës"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Anëtarët u zhvendosën në {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Anëtarët nuk u ndryshuan sepse u larguan nga grupi ose një shërbim i kishës menaxhon rolin e tyre: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordinator i shërbesës"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuta deri në zhbllokimin automatik"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Zotime dhurimi të munguara"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Nuk ka llogari GitHub? Na tregoni në Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Asnjë familje aktive nuk ka premtuar një donacion për %1$s pa një zotim dhurimi për %2$s."
+
+#: 
+msgid "No families found."
+msgstr "Nuk u gjet asnjë familje."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Nuk është caktuar asnjë shërbim në kishë"
+
+#: 
+msgid "No open deposit"
+msgstr "Nuk ka depozitë të hapur"
+
+#: 
+msgid "No pledge for"
+msgstr "Asnjë zotim dhurimi për"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Nuk i është dhënë kësaj llogarie"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Nuk drejton një ekip vullnetar"
+
+#: 
+msgid "Not locked"
+msgstr "Nuk është i kyçur"
+
+#: 
+msgid "Number of Payments"
+msgstr "Numri i pagesave"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Një minutë. Ne nuk ndajmë atë që dërgoni."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Hap një ide. Votoni me 👍 nëse kisha juaj ka nevojë për të dhe shtoni një koment të shkurtër se si punoni sot."
+
+#: 
+msgid "Open deposit"
+msgstr "Depozitë e hapur"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Kërkohet ndryshimi i fjalëkalimit në hyrjen tjetër"
+
+#: 
+msgid "Password strength"
+msgstr "Fuqia e fjalëkalimit"
+
+#: 
+msgid "People & Families"
+msgstr "Njerëzit dhe Familjet"
+
+#: 
+msgid "Pledged for"
+msgstr "premtoi një donacion për"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Përgatitni deklaratat e dhurimit"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Shiko paraprakisht Letër Shembull"
+
+#: 
+msgid "Property Type"
+msgstr "Lloji i atributit të personalizuar"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Jep vetëm të dhëna imazhi të nënshkrimit PNG ose JPEG."
+
+#: 
+msgid "Report Issue"
+msgstr "Raporto Çështjen"
+
+#: 
+msgid "Requirement"
+msgstr "Kërkesa"
+
+#: 
+msgid "Return Home"
+msgstr "Kthehu në faqen kryesore"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Rishikoni një vit fiskal, më pas shkarkoni deklaratat e donacioneve."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Rishikoni dhe mbyllni depozitën"
+
+#: 
+msgid "Review and Filter"
+msgstr "Rishikoni dhe filtro"
+
+#: 
+msgid "Review and vote"
+msgstr "Rishikoni dhe votoni"
+
+#: 
+msgid "Review what we are considering"
+msgstr "Rishikoni atë që po shqyrtojmë"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Rolet dhe lejet"
+
+#: 
+msgid "Select at least one member."
+msgstr "Zgjidh të paktën një anëtar."
+
+#: 
+msgid "Setup key"
+msgstr "Tasti i konfigurimit"
+
+#: 
+msgid "Sign-in status"
+msgstr "Statusi i hyrjes"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Dosja e ruajtjes së nënshkrimit"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Nënshkrimi u përditësua por skedari i mëparshëm i nënshkrimit privat nuk mund të hiqej."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Disa kërkesa PHP mungojnë. ChurchCRM ka nevojë për këto përpara se të mund të vazhdojë."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Filloni një depozitë, më pas shtoni çdo pagesë në të."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Numri i zarfit fillestar"
+
+#: 
+msgid "Strong"
+msgstr "I fortë"
+
+#: 
+msgid "Support"
+msgstr "Mbështetje"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Lista nuk mund të ngarkohej. Ju ende mund t'i hapni idetë në GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Emri mund të ketë më së shumti karaktere %d"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Faqja që kërkuat nuk mund të gjendej. Mund të jetë zhvendosur, riemërtuar ose nuk ekziston më."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Etiketa e fushës mund të ketë më së shumti karaktere %d"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Anëtarët e përzgjedhur tashmë e kanë atë rol."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Imazhi i nënshkrimit nuk mund të dekodohej."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Imazhi i nënshkrimit nuk duhet të jetë më i madh se 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Imazhi i nënshkrimit duhet të përshtatet brenda 2000 × 1000 piksele."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Dosja e ruajtjes së nënshkrimit të faturës tatimore %s nuk mund të shkruhet nga serveri i uebit."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Dosja e ruajtjes së nënshkrimit të kuponit tatimor nuk mund të jetë një lidhje simbolike."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Shtegu i ruajtjes së nënshkrimit të faturës tatimore duhet të jetë jashtë dosjes ChurchCRM. Lëreni cilësimin bosh për të përdorur dosjen private të integruar."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Cilësimi i shtegut të ruajtjes së nënshkrimit të faturës tatimore duhet të jetë një shteg absolut i dosjes."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Këta numra zarfesh nuk ruhen derisa të zgjidhni Përditëso të dhënat familjare."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Ata nuk mund të identifikohen si staf ose në Portalin e Anëtarëve dhe seancat, pajisjet dhe çelësat e tyre të vërtetimit pa fjalëkalim hiqen."
+
+#: 
+msgid "This password looks strong."
+msgstr "Ky fjalëkalim duket i fortë."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Kjo heq vetëm hyrjen. Personi dhe shënimet e tij qëndrojnë."
+
+#: 
+msgid "Time Range"
+msgstr "Gama kohore"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "U regjistrua vërtetimi me dy faktorë"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Nuk mund të kopjohet automatikisht. Zgjidhni dhe kopjoni manualisht çelësin e konfigurimit."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Ngarko një imazh nënshkrimi PNG ose JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Përdor ngarkimin ose heqjen e nënshkrimit për të ndryshuar këtë cilësim."
+
+#: 
+msgid "User Details"
+msgstr "Detajet e përdoruesit"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Emri i përdoruesit ose adresa e emailit"
+
+#: 
+msgid "View all ideas"
+msgstr "Shiko të gjitha idetë"
+
+#: 
+msgid "View events"
+msgstr "Shiko ngjarjet"
+
+#: 
+msgid "View people and families"
+msgstr "Shiko njerëzit dhe familjet"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Menaxhimi i vullnetarëve është i çaktivizuar për këtë kishë"
+
+#: 
+msgid "Weak"
+msgstr "I dobët"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Çfarë mund të bëjë kjo llogari për momentin (vetëm për lexim)"
+
+#: 
+msgid "You must select a class"
+msgstr "Duhet të zgjidhni një kategori"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Viti juaj fiskal i kishës nuk fillon më 1 janar. Autoritetet tatimore shpesh duan fatura për vitin kalendarik: zgjidhni Rishikim dhe Filtro dhe caktoni datat nga 1 janari deri në 31 dhjetor."
+
+#: 
+msgid "system user API key regenerated"
+msgstr "Çelësi API i përdoruesit të sistemit  u rigjenerua"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "Përdoruesi i sistemit  rivendos fjalëkalimin e tij nga një lidhje e dërguar me email"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "Përdoruesi i sistemit  çaktivizoi vërtetimin me dy faktorë"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "Përdoruesi i sistemit  aktivizoi vërtetimin me dy faktorë"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "Vërtetimi me dy faktorë i përdoruesit të sistemit është çaktivizuar nga administratori"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Një familje me premtime ose pagesa nuk mund të fshihet. Çaktivizoni familjen në vend të kësaj për të ruajtur historikun financiar. Zhvendosni regjistrimet financiare vetëm nëse është e përshtatshme."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Çaktivizo familjen në vend të kësaj"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Çaktivizoni familjen në vend që ta fshini."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Çaktivizoni personin në vend që ta fshini."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Historiku i regjistruar: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Kjo familje nuk mund të fshihet sepse ka shënime. Çaktivizoni familjen për të ruajtur historikun e saj."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Ky person nuk mund të fshihet sepse ka aktivitete të regjistruara. Çaktivizoni personin për të ruajtur historikun e tij."
+
+#: 
+msgid "attendance"
+msgstr "pjesëmarrja"
+
+#: 
+msgid "financial history"
+msgstr "historiku financiar"
+
+#: 
+msgid "notes"
+msgstr "shënime"
+
+#: 
+msgid "recorded activities"
+msgstr "aktivitete të regjistruara"
+
+#: 
+msgid "volunteer service history"
+msgstr "historiku i shërbimit vullnetar"
+
+#: 
+msgid "%s by %s"
+msgstr "%s nga %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Vendosni fjalëkalimin tuaj ose një kod nga aplikacioni juaj i vërtetimit për të ndryshuar vërtetimin dyfaktorësh."
+
+#: 
+msgid "Latest Notes"
+msgstr "Shënimet më të fundit"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Ende nuk janë shtuar shënime."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Filloni regjistrimin për të marrë një kod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ai fjalëkalim ose kod nuk është i saktë. Vërtetimi dyfaktorësh është ende aktiv."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Vërtetimi dyfaktorësh është konfiguruar tashmë. Sekreti i tij shfaqet vetëm gjatë regjistrimit."
 

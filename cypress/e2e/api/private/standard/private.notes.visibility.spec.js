@@ -15,7 +15,7 @@
  * Users used in this spec:
  *  - Admin             (makePrivateAdminAPICall)   — usr_Admin=1
  *  - tony.wade         (makePrivateUserAPICall)    — Notes=1 + EditRecords
- *  - john.plainauth    (makePrivatePlainAuthAPICall) — Notes=1, no EditRecords/EditSelf
+ *  - john.plainauth    (makePrivatePlainAuthAPICall) — Notes=1, no EditRecords
  *      NOTE: john.plainauth HAS Notes=1. Endpoints that only require the Notes flag
  *      should return 200 for this user. Endpoints that also require EditRecords (e.g.
  *      POST person note with canEditPerson()) should still return 403.
@@ -194,10 +194,6 @@ describe("Notes Visibility Policy (#9036)", () => {
         });
 
         it("john.plainauth (Notes=1, no EditRecords) CANNOT POST person note → 403", () => {
-            // john.plainauth has Notes=1 but no EditRecords/EditSelf.
-            // POST /person/{id}/note requires Notes=1 (middleware) AND canEditPerson()
-            // (inline check). canEditPerson() returns false (no EditRecords/EditSelf)
-            // so the request is blocked with 403 at the object-level scope check.
             cy.makePrivatePlainAuthAPICall("POST", "/api/person/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });

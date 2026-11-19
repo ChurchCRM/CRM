@@ -183,10 +183,13 @@ class FinancialService
      *   depositId: int|null,
      *   pledgeOrPayment: string,
      *   schedule: string|null,
+     *   amountBasis: string,
+     *   firstInstallment: string|null,
+     *   lastInstallment: string|null,
      *   total: float,
      *   funds: list<array{
      *     fundId: int, fundName: string, amount: float,
-     *     nonDeductible: float, comment: string
+     *     inputAmount: float, inputNonDeductible: float, nonDeductible: float, comment: string
      *   }>
      * }
      * @throws \InvalidArgumentException when the group key does not exist
@@ -223,6 +226,9 @@ class FinancialService
                     'depositId'       => $pledge->getDepId() ? (int) $pledge->getDepId() : null,
                     'pledgeOrPayment' => $pledge->getPledgeOrPayment() ?? '',
                     'schedule'        => $pledge->getSchedule(),
+                    'amountBasis'     => $pledge->getInstallmentAmount() === null ? 'total' : 'installment',
+                    'firstInstallment' => $pledge->getFirstInstallment('Y-m-d'),
+                    'lastInstallment' => $pledge->getLastInstallment('Y-m-d'),
                 ];
             }
 
@@ -234,6 +240,10 @@ class FinancialService
                 'fundId'               => (int) $pledge->getFundId(),
                 'fundName'             => $fund ? $fund->getName() : '',
                 'amount'               => $amount,
+                'inputAmount'          => (float) ($pledge->getInstallmentAmount() ?? $amount),
+                'inputNonDeductible'   => $pledge->getInstallmentAmount() !== null && $amount > 0
+                    ? round((float) $pledge->getNondeductible() * (float) $pledge->getInstallmentAmount() / $amount, 2)
+                    : (float) $pledge->getNondeductible(),
                 'amount_formatted'     => CurrencyFormatter::format($amount),
                 'nonDeductible'        => (float) $pledge->getNondeductible(),
                 'nonDeductible_formatted' => CurrencyFormatter::format($pledge->getNondeductible()),
@@ -388,6 +398,8 @@ class FinancialService
             ? json_decode($payment->FundSplit, false, 512)
             : $payment->FundSplit;
 
+        $FundSplit = PledgeCommitmentService::allocations($payment, $FundSplit);
+
         // $presetGroupKey reuses the caller's GroupKey (updatePledgeOrPayment) instead of
         // generating a new one — the loop below only auto-generates when this is null.
         $sGroupKey = $presetGroupKey;
@@ -424,6 +436,11 @@ class FinancialService
                     ->setFundId($Fund->FundID)
                     ->setDepId($payment->DepositID)
                     ->setGroupKey($sGroupKey);
+                if (($payment->amountBasis ?? 'total') === 'installment') {
+                    $pledge->setInstallmentAmount($Fund->InstallmentAmount)
+                        ->setFirstInstallment($payment->firstInstallment)
+                        ->setLastInstallment($payment->lastInstallment);
+                }
                 if (!empty($payment->schedule)) {
                     $pledge->setSchedule($payment->schedule);
                 }
@@ -534,6 +551,10 @@ class FinancialService
                 // causing a second rollBack() on an inactive transaction (PDOException).
                 throw new \InvalidArgumentException('Pledge group not found');
             }
+            if (!isset($payment->amountBasis) && PledgeQuery::create()->filterByGroupKey($groupKey)->filterByInstallmentAmount(null, Criteria::ISNOTNULL)->exists($con)) {
+                throw new \DomainException(gettext('Specify the amount basis when editing a recurring pledge.'));
+            }
+            PledgeCommitmentService::allocations($payment, $payment->FundSplit);
             // Guard: refuse edits when any row of the group is in a closed deposit.
             // This check runs inside the transaction so it is safe against concurrent
             // deposit-close operations (no TOCTOU gap).
@@ -689,6 +710,7 @@ class FinancialService
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
+            ->orderById(Criteria::DESC)
             ->limit($limit);
 
         if ($fyid !== null && $fyid > 0) {
@@ -866,17 +888,21 @@ class FinancialService
     }
 
     /**
-     * Get current deposit from session.
+     * The deposit in hand: the session's open deposit, else the newest open deposit.
+     * A closed session deposit is returned only when no deposit is open.
      *
      * @return Deposit|null
      */
     public function getCurrentDeposit(): ?Deposit
     {
         $currentDepositId = $_SESSION['iCurrentDeposit'] ?? null;
-        if ($currentDepositId) {
-            return DepositQuery::create()->findOneById((int) $currentDepositId);
+        $deposit = $currentDepositId ? DepositQuery::create()->findOneById((int) $currentDepositId) : null;
+        if ($deposit !== null && !$deposit->getClosed()) {
+            return $deposit;
         }
-        return null;
+
+        // A treasurer with no deposit in hand continues the newest open one.
+        return DepositQuery::create()->filterByClosed(false)->orderByDate(Criteria::DESC)->orderById(Criteria::DESC)->findOne() ?? $deposit;
     }
 
     /**
@@ -886,7 +912,7 @@ class FinancialService
      */
     public function getCurrentDepositId(): ?int
     {
-        return $_SESSION['iCurrentDeposit'] ?? null;
+        return $this->getCurrentDeposit()?->getId();
     }
 
     /**
@@ -921,7 +947,7 @@ class FinancialService
             'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,
-            'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),
+            'recentDeposits'   => $this->getRecentDeposits(5),
             'activeFunds'      => $activeFunds,
             'activeFundCount'  => $activeFunds->count(),
             'totalFundCount'   => $donationFundService->getCount(),
@@ -931,7 +957,7 @@ class FinancialService
             'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'currentDeposit'   => $currentDeposit,
-            'currentDepositId' => $this->getCurrentDepositId(),
+            'currentDepositId' => $currentDeposit?->getId(),
         ];
     }
 

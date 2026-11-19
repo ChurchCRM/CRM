@@ -135,11 +135,11 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'gradePromotion' => gradePromotionSummary(),
         'listLinks'     => array_values(array_filter([
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
-            [gettext('Person Properties'), '/PropertyList.php?Type=p', 'fa-person-half-dress'],
+            [gettext('Person Properties'), '/people/properties/p', 'fa-person-half-dress'],
             [gettext('Person Custom Fields'), '/PersonCustomFieldsEditor.php', 'fa-sliders'],
             [gettext('Grades'), '/admin/system/options?mode=grades', 'fa-graduation-cap'],
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
-            [gettext('Family Properties'), '/PropertyList.php?Type=f', 'fa-people-roof'],
+            [gettext('Family Properties'), '/people/properties/f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
             VolunteerV1Service::isInUse() ? [gettext('Volunteer Opportunities'), '/VolunteerOpportunityEditor.php', 'fa-handshake-angle'] : null,
             [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],

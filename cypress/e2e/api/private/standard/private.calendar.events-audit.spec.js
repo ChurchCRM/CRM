@@ -14,10 +14,9 @@ describe("API Event Audit Endpoints", () => {
     // (#9769). Deleting the event also removes its event_attend rows.
     const createdEventIds = [];
 
-    // Checking a person in writes a timeline note on that person
-    // (Event::addTimelineNote()) and nothing removes it when the event goes —
-    // that note is the person's attendance history. note_nte is therefore only
-    // reported by the row-count guard, not failed on (#9769).
+    // Check-in writes no timeline note (#11696): the person's timeline
+    // renders attendance from the event_attend rows, and deleting the event
+    // removes those rows, so this spec leaves no note_nte rows behind.
 
     after(() => {
         cy.cleanupEvents(createdEventIds);

@@ -4,6 +4,7 @@
 > When someone creates an event, they pick a place from the shared list in [RFC 0006](0006-places.md). Worship at North can start in the Sanctuary while the potluck at North starts in the Hall. Members see the place name. The street address follows the flag on that place. A link stays inside ChurchCRM. This RFC starts after the place list exists. It does not build that list.
 
 **Status:** Proposed, open for review; no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-10-23
 **Owner:** George Dawoud
 **Depends on:** [RFC 0006](0006-places.md)

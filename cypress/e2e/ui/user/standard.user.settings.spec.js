@@ -26,9 +26,6 @@ describe("Standard User Settings Page", () => {
             cy.contains("Name");
             cy.contains("Email");
             cy.contains("Security");
-            cy.get("#editSettings")
-                .should("have.attr", "href")
-                .and("contain", "SettingsIndividual.php");
         });
     });
 
@@ -94,7 +91,7 @@ describe("Standard User Settings Page", () => {
         cy.get("#user-locale-setting").should("exist");
         cy.get("#tab-localization").contains("Help Improve Translations");
         cy.get("#tab-localization")
-            .find('a[href*="poeditor.com"]')
+            .find('a[href*="github.com/ChurchCRM/CRM"]')
             .should("exist");
     });
 

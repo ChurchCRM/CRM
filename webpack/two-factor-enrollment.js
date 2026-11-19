@@ -1,4 +1,5 @@
-import { alertAction, confirmAction } from "./common/confirm-action";
+import { alertAction, promptAction } from "./common/confirm-action";
+import { copyText } from "./common/copy-to-clipboard";
 import { notifyError } from "./common/notify";
 /**
  * Two-Factor Authentication Enrollment
@@ -237,7 +238,7 @@ function renderSuccess() {
                   <i class="fa-solid fa-download me-1"></i>${t("Download")}
                 </button>
               </div>
-              <a href="${window.location.pathname}" class="btn btn-primary">
+              <a href="${CRMRoot}/v2/user/current/manage2fa" class="btn btn-primary">
                 <i class="fa-solid fa-check me-1"></i>${t("Done")}
               </a>
             </div>
@@ -346,12 +347,12 @@ function bindEvents() {
   if (copyManualKeyBtn) {
     copyManualKeyBtn.addEventListener("click", async () => {
       if (!state.TwoFASecret) return;
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
-        await navigator.clipboard.writeText(state.TwoFASecret);
+      // Shared helper (#11458): Clipboard API with the execCommand fallback.
+      if (await copyText(state.TwoFASecret)) {
         copyManualKeyBtn.textContent = t("Copied!");
-      } catch (_error) {
-        // The readonly field remains selectable for manual copying on HTTP or denied permissions.
+      } else {
+        // The readonly field remains selectable for manual copying when every
+        // copy mechanism failed.
         manualKey.focus();
         manualKey.select();
         notifyError(t("Unable to copy automatically. Select and copy the setup key manually."));
@@ -391,7 +392,7 @@ function bindEvents() {
   // Success: copy button
   const copyBtn = document.getElementById("copyCodesBtn");
   if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
+    copyBtn.addEventListener("click", async () => {
       const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${c}`).join("\n");
       const showCopied = () => {
         copyBtn.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Copied!")}`;
@@ -399,31 +400,11 @@ function bindEvents() {
           copyBtn.innerHTML = `<i class="fa-solid fa-copy me-1"></i>${t("Copy")}`;
         }, 2000);
       };
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-        navigator.clipboard
-          .writeText(text)
-          .then(showCopied)
-          .catch(() => {
-            // Fallback for permission denied
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.setAttribute("readonly", "");
-            ta.style.position = "absolute";
-            ta.style.left = "-9999px";
-            document.body.appendChild(ta);
-            try {
-              ta.select();
-              document.execCommand("copy");
-              document.body.removeChild(ta);
-              showCopied();
-            } catch (_e) {
-              document.body.removeChild(ta);
-              alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
-            }
-          });
+      // Shared helper (#11458): Clipboard API with the execCommand fallback.
+      if (await copyText(text)) {
+        showCopied();
       } else {
-        // Non-secure context — clipboard API unavailable
-        alertAction("", t("Clipboard not available. Please use the Download button to save your codes."));
+        alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
       }
     });
   }
@@ -447,11 +428,11 @@ function bindEvents() {
   const disableBtn = document.getElementById("disable2FABtn");
   if (disableBtn) {
     disableBtn.addEventListener("click", () => {
-      confirmAction(
-        t("Disable Two-Factor Authentication"),
-        t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
-        disable2FA,
-      );
+      promptAction(t("Disable Two-Factor Authentication"), confirmThenDisable2FA, {
+        message: `<p>${escapeHtml(t("Are you sure you want to disable two-factor authentication? Your account will be less secure."))}</p><p>${escapeHtml(t("Enter your password or a code from your authenticator app to change two-factor authentication."))}</p>`,
+        inputType: "password",
+        confirmLabel: t("Disable Two-Factor Authentication"),
+      });
     });
   }
 }
@@ -527,6 +508,18 @@ function remove2FA() {
       render();
     })
     .catch(() => notifyError(t("Failed to cancel enrollment. Please try again.")));
+}
+
+// Changing existing 2FA needs the password or a current code (#10200). The
+// server remembers the confirmation for a few minutes of this session.
+function confirmThenDisable2FA(confirmation) {
+  fetchJSON(`${CRMRoot}/api/user/current/2fa/confirm`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({ confirmation }),
+  })
+    .then(disable2FA)
+    .catch(() => notifyError(t("That password or code is not right. Two-factor authentication is still on.")));
 }
 
 function disable2FA() {

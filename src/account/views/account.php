@@ -124,7 +124,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
               </div>
               <div class="col-sm-9">
-                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($viewedPersonId, $user->getPerson()?->getFamId() ?? 0); ?>
+                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(); ?>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
                   <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
@@ -209,17 +209,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
             <?php endif; ?>
-
-            <hr>
-
-            <div class="row mb-3">
-              <div class="col-sm-9 offset-sm-3">
-                <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
-                  <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
-                </a>
-                <small class="form-text mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
-              </div>
-            </div>
           </div>
 
           <!-- =============== APPEARANCE =============== -->
@@ -346,14 +335,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div><i class="fa-solid fa-circle-info me-2 mt-1"></i></div>
                 <div>
                   <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
-                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by") ?>:</p>
+                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by") ?>:</p>
                   <ul class="mb-2">
                     <li><?= gettext("Fixing incorrect or awkward translations in your language") ?></li>
                     <li><?= gettext("Translating missing strings to improve coverage") ?></li>
                     <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
                   </ul>
-                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
-                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                  <a href="https://github.com/ChurchCRM/CRM" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Help Translate on GitHub") ?>
                   </a>
                 </div>
               </div>

@@ -81,6 +81,10 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderErrorJSON($response, gettext('Configuration item not found'), [], 404, null, $request);
     }
 
+    if ($configName === 'sTaxSignatureAsset') {
+        return SlimUtils::renderErrorJSON($response, gettext('Use signature upload or removal to change this setting.'), [], 400, null, $request);
+    }
+
     $input = $request->getParsedBody();
     $value = $input['value'] ?? '';
     $isPassword = $configItem->getType() === 'password';
@@ -101,6 +105,10 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
         }
+    }
+
+    if ($configName === 'sCharityRegistrationNumber' && !is_string($value)) {
+        return SlimUtils::renderErrorJSON($response, gettext('The charity registration number must be text.'), [], 400, null, $request);
     }
 
     if ($configName === 'sPDFTempDir') {

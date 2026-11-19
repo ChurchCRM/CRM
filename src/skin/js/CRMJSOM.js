@@ -587,6 +587,93 @@ window.CRM.dashboard = {
    * Load active fundraiser count once on page load for menu badge.
    * Replaces session-cached count, ensuring always fresh data.
    */
+  /**
+   * Topic count for the Support menu, and the topic cards on the feedback page.
+   * Any signed-in staff user. Hidden when the count is zero.
+   */
+  loadCommunityFeedback: () => {
+    const badge = document.getElementById("communityFeedbackCount");
+    const list = document.getElementById("communityFeedbackList");
+    if (!badge && !list) return;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "community-feedback",
+      suppressErrorDialog: true,
+    })
+      .done((data) => {
+        const items = Array.isArray(data.items) ? data.items : [];
+        const count = Number(data.count) || items.length;
+        if (badge) {
+          badge.innerText = String(count);
+          badge.classList.toggle("d-none", count === 0);
+        }
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, items);
+        }
+      })
+      .fail(() => {
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, []);
+        }
+      });
+  },
+
+  renderCommunityFeedback: (list, items) => {
+    list.replaceChildren();
+    if (items.length === 0) {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card";
+      const body = document.createElement("div");
+      body.className = "card-body";
+      const empty = document.createElement("p");
+      empty.textContent = list.dataset.empty || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-outline-primary";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = list.dataset.discussionsUrl || "https://github.com/ChurchCRM/CRM/discussions";
+      link.textContent = list.dataset.viewAll || "";
+      body.append(empty, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+      return;
+    }
+
+    items.forEach((item) => {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card h-100";
+      const body = document.createElement("div");
+      body.className = "card-body d-flex flex-column";
+      if (item.category) {
+        const badge = document.createElement("span");
+        badge.className = "badge bg-primary align-self-start mb-2";
+        badge.textContent = item.category;
+        body.append(badge);
+      }
+      const title = document.createElement("h3");
+      title.className = "card-title";
+      title.textContent = item.title || "";
+      const summary = document.createElement("p");
+      summary.className = "text-body-secondary flex-fill";
+      summary.textContent = item.summary || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-primary mt-auto";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = item.discussionUrl || "#";
+      link.textContent = list.dataset.voteLabel || "";
+      body.append(title, summary, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+    });
+  },
+
   loadFundraiserCount: () => {
     const el = document.getElementById("activeFundraisers");
     if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)
@@ -812,12 +899,12 @@ window.CRM.dashboard = {
    * Render a standard family action dropdown menu.
    * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
    * @param {number} familyId
-   * @param {string} _familyName - Unused; kept for parity with the person renderer
+   * @param {string} familyName - Used in delete confirmation
    * @param {Object} [options]
    * @param {boolean} [options.inCart=false] - Whether family is already in cart
    * @returns {string} HTML string
    */
-  window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
+  window.CRM.renderFamilyActionMenu = (familyId, familyName, options) => {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
@@ -851,7 +938,7 @@ window.CRM.dashboard = {
         className: "delete-family",
         icon: "fa-solid fa-trash",
         label: i18next.t("Delete"),
-        data: { family_id: familyId },
+        data: { family_id: familyId, family_name: familyName || "" },
       },
     ]);
   };
@@ -1031,13 +1118,22 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       const familyId = $btn.data("family_id");
+      const familyName = $btn.data("family_name");
       window.CRM.confirmAction(
         i18next.t("Delete this family?"),
-        i18next.t(
-          "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
-        ),
+        "<p class='fw-bold'>" +
+          window.CRM.escapeHtml(String(familyName || "")) +
+          "</p>" +
+          i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
+          "<br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
+          i18next.t("Also delete family members") +
+          "</label>",
         () => {
-          window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
+          const deleteMembers = document.getElementById("deleteFamilyMembersToo")?.checked === true;
+          const path = "family/" + familyId + (deleteMembers ? "?deleteMembers=true" : "");
+          window.CRM.APIRequest({ method: "DELETE", path: path }).done(() => {
+            window.location.href = window.CRM.root + "/people/family";
+          });
         },
         {
           confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
@@ -1053,37 +1149,7 @@ window.CRM.dashboard = {
   }
 })();
 
-/**
- * Copy text to the clipboard with a success toast, falling back to a prompt dialog.
- * @param {string} text - The text to copy
- * @param {string} [successMsg] - Optional toast message on success
- */
-const showManualCopy = (text) => {
-  window.CRM.alertAction(
-    "",
-    `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
-    {
-      onShown: (modal) => {
-        const field = modal.querySelector("textarea");
-        field.focus();
-        field.select();
-      },
-    },
-  );
-};
-
-window.CRM.copyToClipboard = (text, successMsg) => {
-  const msg = successMsg || i18next.t("Copied to clipboard");
-  if (navigator.clipboard) {
-    return navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        window.CRM.notify(msg, { type: "success", delay: 3000 });
-      })
-      .catch(() => {
-        showManualCopy(text);
-      });
-  }
-  showManualCopy(text);
-  return Promise.resolve();
-};
+// window.CRM.copyToClipboard is installed by the skin bundle
+// (webpack/skin-core.js), which loads before this file
+// (src/Include/partials/head-assets.php); its transport is the shared helper
+// in webpack/common/copy-to-clipboard.ts.

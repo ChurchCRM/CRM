@@ -2,9 +2,10 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\PersonDeletionService;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'note_nte' table.
@@ -17,6 +18,19 @@ use ChurchCRM\model\ChurchCRM\User;
  */
 class Note extends BaseNote
 {
+    /**
+     * Locks the people this note points at, so a deletion that is checking
+     * their history (PersonDeletionService::assertCanDelete) finishes first
+     * instead of deleting a note it never saw (#10485).
+     */
+    public function preSave(?ConnectionInterface $con = null): bool
+    {
+        PersonDeletionService::lockFamily((int) $this->getFamId(), $con);
+        PersonDeletionService::lockPeople([(int) $this->getPerId(), (int) $this->getEnteredBy(), (int) $this->getEditedBy()], $con);
+
+        return parent::preSave($con);
+    }
+
     public function setEntered($enteredBy): void
     {
         $this->setDateEntered(new \DateTimeImmutable());
@@ -25,15 +39,7 @@ class Note extends BaseNote
 
     public function getEditLink(): string
     {
-        $url = SystemURLs::getRootPath() . '/NoteEditor.php?NoteID=' . $this->getId() . '&';
-
-        if ($this->getPerId() !== 0) {
-            $url = $url . 'PersonID=' . $this->getPerId();
-        } else {
-            $url = $url . 'FamilyID=' . $this->getFamId();
-        }
-
-        return $url;
+        return '#note-' . $this->getId();
     }
 
     public function getDeleteLink(): string

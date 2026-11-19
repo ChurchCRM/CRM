@@ -526,7 +526,8 @@
     "SMTP test",
     "Kiosk Settings",
     "{{team}}: {{staffing}}",
-    "HTTP Status: {{status}}"
+    "HTTP Status: {{status}}",
+    "Setup key"
   ],
   "fr": [
     "AM / PM",
@@ -563,7 +564,8 @@
     "Occurrences",
     "Position",
     "Positions",
-    "Validation"
+    "Validation",
+    "notes"
   ],
   "hi": [
     "HTML URL",
@@ -855,7 +857,8 @@
     "Max",
     "Min",
     "Team",
-    "{{team}}: {{staffing}}"
+    "{{team}}: {{staffing}}",
+    "Support"
   ],
   "sw": [
     "AM / PM",

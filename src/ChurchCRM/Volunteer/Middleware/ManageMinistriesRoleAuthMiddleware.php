@@ -4,21 +4,6 @@ namespace ChurchCRM\Volunteer\Middleware;
 
 use ChurchCRM\Slim\Middleware\Request\Auth\BaseAuthRoleMiddleware;
 
-/**
- * Volunteer Management v2 (#9706): the global-manager gate.
- *
- * Guards the routes that create or destroy volunteer structure across the whole
- * installation — today that is all of `/api/ministries/scopes`, i.e. deciding who
- * coordinates what (design §3.2, §4.6). Later issues add ministry create/delete.
- *
- * Coarse only. It runs before route arguments become domain objects, so it can never
- * answer "may this user touch ministry 7" — that is the entity middlewares' job
- * (AbstractEntityMiddleware::postEntityLoad(), §4.5).
- *
- * User::isManageMinistriesEnabled() already carries the administrator bypass, the
- * EditSelf-exclusive short-circuit and the `sVolunteerVersion` rollout gate, so this
- * class deliberately adds nothing to it.
- */
 class ManageMinistriesRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool

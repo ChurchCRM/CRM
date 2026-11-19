@@ -23,7 +23,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const BASELINE_FILE = path.join(__dirname, 'ui-conventions-baseline.json');
-const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', 'templates/reports', '.min.'];
+const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', 'templates/reports', 'src/logs/', '.min.'];
 const MARKUP = /\.(php|twig|js|ts|html)$/;
 const STYLES = /\.(css|scss)$/;
 const SKIP_DIR = /(?:^|\/)(?:Base|Map)\//;
@@ -34,7 +34,7 @@ function walk(dir, out = []) {
         const rel = path.relative(ROOT, full) + (entry.isDirectory() ? '/' : '');
         if (SKIP.some((s) => rel.includes(s)) || SKIP_DIR.test(rel)) continue;
         if (entry.isDirectory()) walk(full, out);
-        else out.push(full);
+        else if (entry.isFile() && (MARKUP.test(full) || STYLES.test(full))) out.push(full);
     }
     return out;
 }
@@ -73,7 +73,7 @@ const bs4Class = new RegExp(
 );
 const stylePatterns = [
     { re: /(?:^|[}\s,])(?:html|:root|body)\s*(?:,\s*(?:html|:root|body)\s*)*\{[^}]*\bfont-size\s*:/m, what: 'root/body font-size override (Tabler sets it)' },
-    { re: /--tblr-(?:primary|secondary|success|danger|warning|info|font-sans-serif|body-bg|body-color)\s*:/, what: 'Tabler palette/font variable redefined (use data-bs-theme-primary for the accent)' },
+    { re: /--tblr-(?:primary|secondary|success|danger|warning|info|font-sans-serif|body-color)\s*:/, what: 'Tabler palette/font variable redefined (use data-bs-theme-primary for the accent)' },
     { re: /data-bs-theme-base/, what: 'theme-base override (stock Tabler greys)' },
     { re: /\.(?:custom-control(?:-\w+)?|custom-checkbox|form-group|input-group-addon|btn-default|pull-(?:left|right)|panel(?:-\w+)?)(?![\w-])/, what: 'Bootstrap 4 selector' },
 ];

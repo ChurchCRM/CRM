@@ -866,14 +866,6 @@ msgid "Assign"
 msgstr "Ange"
 
 #: 
-msgid "Date Updated"
-msgstr "Datumet updaterad"
-
-#: 
-msgid "Updated By"
-msgstr "Ändrades av"
-
-#: 
 msgid "Since"
 msgstr "Eftersom"
 
@@ -1412,10 +1404,6 @@ msgid "Updated"
 msgstr "Uppdaterad"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Detta kan inte bli ogjort)"
-
-#: 
 msgid "Note Editor"
 msgstr "Anteckning redigeringsverktyg"
 
@@ -1557,10 +1545,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tilldela en ny frivillig möjlighet"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronisk överföring detaljer"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ej avdragsgiltig summa kan inte vara störer än slutsumman"
 
@@ -1656,10 +1640,6 @@ msgid "Warning"
 msgstr "Varning"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Denna egenskapstyp"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Var snäll och bekräfta att du vill radera egenskapstypen"
@@ -1687,44 +1667,8 @@ msgid "Please confirm deletion of"
 msgstr "Bekräfta att du vill radera"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Det finns poster av bidrag från denna familj.  Därför får man inte raderafamiljen."
-
-#: 
-msgid "Return to Family View"
-msgstr "Återgå till familj vy"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "VARNING:  Det finns poster av bidrag från denna familj och familjen får inte raderas fören dessa bidrag tilldelas en annan familj."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "VARNING:  Denna får inte bli ogjort och kan ha juridiska följder!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FÖR NÄRVARANDE FAMILJ MED BIDRAG TILL KYRKAN"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "OBS: Detta ska också radera alla anteckningar med denna familj post."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Radera familj post ONLY"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Radera familj post och familj medlemmar"
-
-#: 
 msgid "Listing"
 msgstr "Lista"
-
-#: 
-msgid "My User Settings"
-msgstr "Mina användare inställningar"
 
 #: 
 msgid "Variable name"
@@ -2243,10 +2187,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Detta kommer att skriva över familjens kuvertnummer i databasen med de valda på denna sida. Fortsätta?"
 
 #: 
-msgid "Family Select"
-msgstr "Familj Välj"
-
-#: 
 msgid "Welcome to"
 msgstr "Välkommen till"
 
@@ -2545,10 +2485,6 @@ msgstr "Visa alla insättningar"
 #: 
 msgid "Deposit Reports"
 msgstr "Insättningsrapporter"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Redigera insättningsslip"
 
 #: 
 msgid "Create New Fundraiser"
@@ -5081,10 +5017,6 @@ msgid "View Person Page"
 msgstr "Visa personsida"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Familjen har inga e-postadresser att använda"
-
-#: 
 msgid "Deleted"
 msgstr "Raderad"
 
@@ -5225,10 +5157,6 @@ msgstr "Framtvinga Content Security Policy (CSP) för att skydda mot cross-site 
 #: 
 msgid "Enter event description..."
 msgstr "Ange händelsebeskrivning..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Ange anteckningstext här..."
 
 #: 
 msgid "Note"
@@ -6152,14 +6080,6 @@ msgid "Close All Deposits"
 msgstr "Stäng alla insättningar"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Stängda mot totalt"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Slutför dessa uppgifter för att säkerställa korrekt skatterapportering vid årsskiftet för dina donatorer."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurera e-post"
 
@@ -6176,28 +6096,12 @@ msgid "Create First Deposit"
 msgstr "Skapa första insättningen"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Skapa eller öppna en insättning först"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Skapa eller välj en insättning för att komma igång."
-
-#: 
-msgid "Current Deposit"
-msgstr "Aktuell insättning"
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistik för insättningar"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6226,10 +6130,6 @@ msgstr "Redigera betalning"
 #: 
 msgid "Edit Person"
 msgstr "Redigera person"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Se till att alla insättningar för skatteåret är stängda innan besked genereras."
 
 #: 
 msgid "F"
@@ -6336,10 +6236,6 @@ msgid "New Pledge"
 msgstr "Nytt löfte"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Ingen aktiv insättning"
-
-#: 
 msgid "No active funds configured."
 msgstr "Inga aktiva fonder konfigurerade."
 
@@ -6372,10 +6268,6 @@ msgid "Pledge Reports"
 msgstr "Löftesrapporter"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Skriv ut eller skicka årliga gåvobesked via e-post till alla donatorer."
-
-#: 
 msgid "Quick Actions"
 msgstr "Snabbåtgärder"
 
@@ -6406,10 +6298,6 @@ msgstr "Återställ"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Återställ från en säkerhetskopia. Raderar befintlig data."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Granska donationsfonder"
 
 #: 
 msgid "Save and Add New Family"
@@ -6448,14 +6336,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Text för skatterapport"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Checklista för rapportering av skatteår"
-
-#: 
 msgid "Total"
 msgstr "Totalt"
 
@@ -6476,10 +6356,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Användaren måste vara administratör eller ha ekonomibehörighet"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifiera att fondnamn och beskrivningar är korrekta för besked."
-
-#: 
 msgid "YTD Payments"
 msgstr "Betalningar sedan årets början"
 
@@ -6496,20 +6372,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-tillägget krävs för uppgraderingar"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "hittades"
 
 #: 
 msgid "issues"
 msgstr "problem"
-
-#: 
-msgid "open"
-msgstr "öppen"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -6900,10 +6768,6 @@ msgid "Add Property Type"
 msgstr "Lägg till Egenskapstyp"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Lägg till Din Första Egenskapstyp"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!"
 
@@ -6922,10 +6786,6 @@ msgstr "Utcheckad"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Nuvarande Räkenskapsår"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Ta bort (tar bort alla associerade poster)"
 
 #: 
 msgid "Edit Property Type"
@@ -6976,10 +6836,6 @@ msgid "No property types found"
 msgstr "Inga egenskapstyper hittades"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Antal poster som använder denna egenskapstyp"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Valfri detaljerad beskrivning av denna egenskapstyp"
 
@@ -7010,10 +6866,6 @@ msgstr "Välj den posttyp som denna egenskap gäller för"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Spåra och hantera löftesåtaganden efter familj och fond"
-
-#: 
-msgid "View Properties"
-msgstr "Visa Egenskaper"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7993,18 +7845,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Är du säker på att du permanent vill ta bort detta löftesrekord?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Avbryt och återgå till familjevy"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Om du tar bort den här typen tar du också bort alla egenskaper som använder den och förlorar motsvarande egenskapstilldelningar."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Flytta Gåvor till vald familj"
-
-#: 
 msgid "Calendar not found"
 msgstr "Kalender hittades inte"
 
@@ -8277,10 +8117,6 @@ msgid "or later to continue."
 msgstr "eller senare för att fortsätta."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Anteckningar om \"Besöksorsak\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d resultat för \"%s\""
@@ -8389,10 +8225,6 @@ msgstr "Lägg till eller redigera enskilda personposter"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Lägg till eller redigera föremål donerade till insamlingsevenemang"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Lägg till eller redigera anteckningar för personer och familjer"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9107,10 +8939,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "Hantera frivilliguppdrag och tilldela medlemmar"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Hantera dina personliga inställningar och kontoinställningar"
-
-#: 
 msgid "Map cart items"
 msgstr "Visa urvalets poster på kartan"
 
@@ -9145,10 +8973,6 @@ msgstr "Flytta till grupp"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Flyttar du från en befintlig ChurchCRM- eller ChurchInfo-installation? Ladda upp din säkerhetskopia så återställer vi dina data automatiskt."
-
-#: 
-msgid "My Settings"
-msgstr "Mina inställningar"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9365,10 +9189,6 @@ msgid "Record new pledges and payments"
 msgstr "Registrera nya givarlöften och betalningar"
 
 #: 
-msgid "Record why attendees visited your church"
-msgstr "Registrera varför besökare kom till din kyrka"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ta bort från klass"
 
@@ -9577,10 +9397,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Spåra familjens givarlöften och fondinsatser per räkenskapsår"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaktionsdetaljer"
-
-#: 
 msgid "Unmapped"
 msgstr "Omappad"
 
@@ -9663,10 +9479,6 @@ msgstr "Visa familjens givarlöftessammanfattningar och fondfördelningar"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Visa gruppmedlemmar, roller och egenskaper"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Visa transaktionsdetaljer för en givarlöftesbetalning"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11227,10 +11039,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Gå med i översättningsprojektet på POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Språk- och regioninställningar"
 
@@ -11250,10 +11058,6 @@ msgstr "Malayalam - Indien"
 #: 
 msgid "Manage 2FA"
 msgstr "Hantera 2FA"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Hantera ytterligare inställningar som e-postavgränsare och visningsalternativ"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11370,10 +11174,6 @@ msgstr "Användarkonfiguration"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Version %s är tillgänglig. Vänligen uppgradera din installation."
-
-#: 
-msgid "View All"
-msgstr "Visa alla"
 
 #: 
 msgid "Yellow"
@@ -11516,14 +11316,6 @@ msgstr "Incheckad av"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Incheckning är inaktiverad för inaktiva händelser. Aktivera händelsen från händelseöversikten för att aktivera incheckning."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Incheckad till händelse: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Utcheckad från händelse: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11934,14 +11726,6 @@ msgid "e.g., 40.7128"
 msgstr "t.ex. 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Ett fel uppstod när familjen skulle tas bort."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Ett fel uppstod när gåvorna skulle flyttas."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Minst en familjemedlem krävs"
 
@@ -11960,10 +11744,6 @@ msgstr "Borttagning misslyckades"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Riktningen måste vara \"upp\" eller \"ned\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Det gick inte att flytta gåvorna."
 
 #: 
 msgid "Finance permission required"
@@ -12000,10 +11780,6 @@ msgstr "Medlemskapet hittades inte"
 #: 
 msgid "Password successfully changed for"
 msgstr "Lösenordet har ändrats för"
-
-#: 
-msgid "Please select a target family."
-msgstr "Välj en målfamilj."
 
 #: 
 msgid "Target family not found"
@@ -13205,14 +12981,6 @@ msgstr "Utcheckning misslyckades. Försök igen."
 #: 
 msgid "Click Save to apply."
 msgstr "Klicka på Spara för att tillämpa."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Clipboard API ii leat geasuheapmi. Maŋŋe vahkke URL almmusin."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Urklipp är inte tillgängligt. Använd knappen Ladda ned för att spara dina koder."
 
 #: 
 msgid "Code incomplete"
@@ -14747,24 +14515,12 @@ msgid "People &amp; Families"
 msgstr "Personer &amp; familjer"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Anteckningen du försöker redigera finns inte längre."
-
-#: 
 msgid "User List"
 msgstr "Användarlista"
 
 #: 
 msgid "View Person"
 msgstr "Visa person"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Du har inte behörighet att lägga till en anteckning för denna familj."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Du har inte behörighet att lägga till en anteckning för denna person."
 
 #: 
 msgid "Account locked"
@@ -15467,10 +15223,6 @@ msgid "thru %s"
 msgstr "t.o.m. %s"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Varför kom\"-anteckningar för %1$s %2$s"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%1$s av familjen %2$s"
 
@@ -15489,14 +15241,6 @@ msgstr "Köpare för denna insamling"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalender-inbäddningsursprung"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att"
-
-#: 
-msgid "Closed Deposits"
-msgstr "Stängda insättningar"
 
 #: 
 msgid "Current $URL[0] value"
@@ -15583,14 +15327,6 @@ msgid "Output Method"
 msgstr "Utmatningsmetod"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Bekräfta borttagning av detta familjeregister"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Välj en annan familj att koppla dessa gåvor till"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Inbetalningskort"
 
@@ -15639,10 +15375,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Det finns personer tilldelade till detta frivilligtillfälle. Borttagning kommer att ta bort tilldelningen"
 
 #: 
-msgid "Total Deposits"
-msgstr "Totala insättningar"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Uppdatera det till en giltig URL som"
 
@@ -15669,10 +15401,6 @@ msgstr "för fonder"
 #: 
 msgid "user"
 msgstr "användare"
-
-#: 
-msgid "with at least one"
-msgstr "med minst en"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -15901,18 +15629,6 @@ msgstr "Lägg till söndagsskolklass"
 #: 
 msgid "Delete this family?"
 msgstr "Ta bort den här familjen?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Vill du ta bort den här familjen? Du kommer att föras till en sida där du kan välja vad som ska tas bort. Detta kan inte ångras."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Bekräftelse på borttagning av familj"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Bekräftelse på borttagning av egenskapstyp"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -17445,10 +17161,6 @@ msgstr "Insamlat detta räkenskapsår"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s måste vara en fullständig https://-webbadress, till exempel https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Kontot har begränsade behörigheter. Kontakta en administratör."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20523,10 +20235,6 @@ msgid "Read the theme authoring guide"
 msgstr "Läs guiden för att skapa teman"
 
 #: 
-msgid "Recent Emails"
-msgstr "Senaste e-postmeddelanden"
-
-#: 
 msgid "Recipient"
 msgstr "Mottagare"
 
@@ -22671,10 +22379,6 @@ msgid "Register walk-in guest"
 msgstr "Registrera ankomstgäst"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Registrerad som ankomstgäst vid kiosken under evenemang: %s"
-
-#: 
 msgid "Registering..."
 msgstr "Registrering..."
 
@@ -22701,10 +22405,6 @@ msgstr "Sök på familjenamn"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "Sök på familjenamn eller kuvertnr"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Det går inte att ta bort en familj som har löften eller betalningar. Flytta eller ta bort de ekonomiska posterna först."
 
 #: 
 msgid "You cannot delete your own account."
@@ -24085,10 +23785,6 @@ msgid "%s Giving Statement"
 msgstr "%s Gåvobesked"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Anpassa texten som visas på gåvobesked (sTaxReport1, sTaxReport2 osv.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24111,10 +23807,6 @@ msgstr "E-posta %s Gåvobesked"
 #: 
 msgid "Envelope Numbers"
 msgstr "Kuvertnummer"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generera gåvobesked"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24155,10 +23847,6 @@ msgstr "Kan inte e-posta gåvobesked: denna familj har ingen e-postadress regist
 #: 
 msgid "Undesignated"
 msgstr "Ej betecknad"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifiera att kyrkans namn, adress och kontaktinformation visas på gåvobesked."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24373,14 +24061,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalningar ligger ännu inte på någon insättning."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kan skickas med e-post"
-
-#: 
-msgid "Closing line"
-msgstr "Avslutningsrad"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Alla insättningar daterade i år är stängda."
 
@@ -24393,40 +24073,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Varje betalning i år ligger på en insättning."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Skapa skatteintyg"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Gåvorapport (skatteintyg)"
-
-#: 
-msgid "Opening line"
-msgstr "Inledningsrad"
-
-#: 
-msgid "Print and mail"
-msgstr "Skriv ut och posta"
-
-#: 
 msgid "Qty"
 msgstr "Antal"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Granska året, och skriv sedan ut eller skicka gåvointygen med e-post."
-
-#: 
-msgid "Signed by"
-msgstr "Undertecknat av"
-
-#: 
-msgid "Thank-you line"
-msgstr "Tackrad"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kontrollera att församlingens namn, adress och kontaktuppgifter visas på skatteintygen."
 
 #: 
 msgid "Year-End Giving"
@@ -24557,10 +24205,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Noll stänger av ett valfritt krav. Ålder kräver ett fullständigt födelsedatum, och medlemskapets längd kräver ett medlemsdatum. Personer som saknar obligatoriska datum utelämnas och räknas för sig. Avlidna personer, inaktiva personer och klassificeringar samt inaktiva familjer och personer, eller sådana som väntar på granskning, utesluts alltid. Aktuell klassificering och status används, inte historisk status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Belopp att betala för %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Kan inte skapa privat tillfällig lagring för PDF i den valda katalogen."
 
@@ -24587,10 +24231,6 @@ msgstr "Den tillfälliga katalogen för PDF finns inte eller går inte att nå."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Den tillfälliga katalogen för PDF måste vara en absolut sökväg."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Församlingens skatte-ID (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24635,10 +24275,6 @@ msgstr "Intygsinställningar"
 #: 
 msgid "Statement Wording"
 msgstr "Intygets lydelse"
-
-#: 
-msgid "Tax Information"
-msgstr "Skatteuppgifter"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24687,10 +24323,6 @@ msgstr "Använder församlingens namn och adress"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Använder sökvägen till brevhuvudet som angetts i systeminställningarna"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lydelse, skatte-ID och PDF-hantering för gåvointyg"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27231,10 +26863,6 @@ msgid "Last verified"
 msgstr "Senast verifierad"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Ingen aktiv, godkänd medlem i den här familjen har en e-postadress. Verifiera uppgifterna personligen i stället."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Inga givarlöften hittades för dessa bokföringsår."
 
@@ -27257,10 +26885,6 @@ msgstr "Logga in i medlemsportalen med den här e-postadressen för att granska 
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Den här familjen är inaktiv och får därför inga verifieringsmejl."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Den här självregistrerade familjen väntar på godkännande. När den godkänns får familjen ett mejl med en inbjudan att logga in i medlemsportalen och granska sina uppgifter."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27445,4 +27069,698 @@ msgstr "Dina data är dina. Det här rapporterar om programvaran, aldrig om din 
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Dina data är dina. För att räkna installationer rapporterar ChurchCRM att det har installerats eller uppgraderats och om det fungerade, en incheckning en gång om dagen under användning, samt versionsnumret, ditt land, typen av databas och ett slumpmässigt installations-ID. Det rapporterar aldrig medlems-, gåvo- eller andra församlingsuppgifter, församlingens namn, din webbadress eller ditt servernamn eller e-postadresser. Du kan stänga av detta när som helst under Admin → Telemetri; en misslyckad installation eller uppgradering rapporteras ändå. Varningar, felinformation och sidvisningar delas bara om du väljer det."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d insättning är fortfarande öppen. Stäng den så att varje gåva är slutgiltig innan sammanställningarna skickas ut."
+msgstr[1] "%1$s: %2$d insättningar är fortfarande öppna. Stäng dem så att varje gåva är slutgiltig innan sammanställningarna skickas ut."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d kuvertnummer sparat."
+msgstr[1] "%d kuvertnummer sparade."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d familj"
+msgstr[1] "%d familjer"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: alla insättningar är stängda. Sammanställningarna är redo att förberedas."
+
+#: 
+msgid "12 months"
+msgstr "12 månader"
+
+#: 
+msgid "30 days"
+msgstr "30 dagar"
+
+#: 
+msgid "90 days"
+msgstr "90 dagar"
+
+#: 
+msgid "Add Property"
+msgstr "Lägg till egenskap"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Lägg till några fler tecken eller en symbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Lägga till och redigera evenemang"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Lägg till fler tecken eller blanda in siffror och symboler."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Lägg till fler tecken och blanda stora och små bokstäver, siffror och symboler."
+
+#: 
+msgid "Add people and families"
+msgstr "Lägga till personer och familjer"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratörer har alla behörigheter så länge funktionen är aktiverad."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Inaktivera även inloggning, så att de inte kan använda medlemsportalen"
+
+#: 
+msgid "Birthday today"
+msgstr "Fyller år idag"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Det går inte att skapa den privata skattesignaturfilen. Kontrollera att lagringsmappen är skrivbar."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Det går inte att skapa lagringsmappen %s för skattesignaturen. Se till att webbservern kan skriva där, eller ange en skrivbar mapp i inställningen för sökväg till skattesignaturens lagring."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "En familj med löften eller betalningar kan inte tas bort. Inaktivera familjen i stället för att bevara den ekonomiska historiken. Flytta de ekonomiska posterna endast om det är lämpligt."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Det går inte att koda den privata skattesignaturen."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Fältet kan inte flyttas i den riktningen"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Det går inte att läsa den privata skattesignaturen."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Det går inte att ta bort den privata signaturen."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Det går inte att ta bort den privata skattesignaturfilen."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Det går inte att fastställa programmappen för lagring av skattesignaturen."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Det går inte att spara den privata signaturen."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Det går inte att skriva åtkomstskyddet %s i lagringsmappen för skattesignaturen."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Ändra roll för markerade medlemmar: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Kyrkans räkenskapsår"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM systemkontroll"
+
+#: 
+msgid "Custom field not found"
+msgstr "Det anpassade fältet hittades inte"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Inaktivera familjen i stället"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Inaktivera familjen i stället för att ta bort den."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Inaktivera personen i stället för att ta bort den."
+
+#: 
+msgid "Delete people and families"
+msgstr "Ta bort personer och familjer"
+
+#: 
+msgid "Delete the login for"
+msgstr "Ta bort inloggningen för"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Tidsintervall för insättningsdiagram"
+
+#: 
+msgid "Disabled at"
+msgstr "Inaktiverad den"
+
+#: 
+msgid "Disabled by"
+msgstr "Inaktiverad av"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Nedladdning skickar alla givare under året. Granska och filtrera visar summorna först och låter dig begränsa efter familj, fond, klass eller datum."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Dubblerat kuvertnummer"
+
+#: 
+msgid "Edit people and families"
+msgstr "Redigera personer och familjer"
+
+#: 
+msgid "Email people and groups"
+msgstr "Skicka e-post till personer och grupper"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Aktivera de PHP-tillägg som saknas i webbserverns konfiguration, starta om webbservern och ladda sedan om sidan. Om du använder en webbhotellsleverantör, be dem aktivera de listade tilläggen."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Ange en installationsnyckel manuellt"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Ange ett startnummer från 0 till %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Visa i helskärm"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Ange den här nyckeln i din autentiseringsapp eller lösenordshanterare med tidsbaserade koder (TOTP), 6 siffror och 30 sekunders intervall. Håll nyckeln privat."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Ange ditt användarnamn eller din e-postadress"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Kuvertnummer måste vara heltal från 0 till %d. Inget sparades."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Evenemang är avstängda för den här kyrkan"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Avsluta helskärm"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Det gick inte att ta bort det anpassade fältet"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Det gick inte att flytta det anpassade fältet"
+
+#: 
+msgid "Fair"
+msgstr "Okej"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Familjer som har lovat för %s och saknar löfte för %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Familjer med minst en medlem i"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Ekonomi är avstängd för den här kyrkan"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Hitta familjer som lovat under ett räkenskapsår men inte under ett annat."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Mapp där den privata signaturen för gåvosammanställningar lagras. Lämna tomt för att använda den inbyggda privata mappen Images/TaxSignatures, som blockerar direkt webbåtkomst. För att använda en annan mapp anger du en absolut sökväg utanför ChurchCRM-mappen som webbservern kan skriva till."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Insamlingar är avstängda för den här kyrkan"
+
+#: 
+msgid "Good"
+msgstr "Bra"
+
+#: 
+msgid "Have an email"
+msgstr "Har en e-postadress"
+
+#: 
+msgid "Hide setup key"
+msgstr "Dölj installationsnyckel"
+
+#: 
+msgid "How to respond"
+msgstr "Hur du svarar"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Idéer som väntar på din granskning"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Inaktiva familjer utelämnas. Betalningar räknas inte som löften."
+
+#: 
+msgid "Invalid request."
+msgstr "Ogiltig begäran."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Ogiltiga data för signaturbilden."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Ogiltig lagrad identifierare för skattesignaturen."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Ogiltig lagring av skattesignaturen."
+
+#: 
+msgid "Last successful login"
+msgstr "Senaste lyckade inloggning"
+
+#: 
+msgid "Lockout state"
+msgstr "Spärrstatus"
+
+#: 
+msgid "Login deleted"
+msgstr "Inloggningen har tagits bort"
+
+#: 
+msgid "Mail only"
+msgstr "Endast post"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Hantera alla verksamheter"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Medlemmar flyttade till {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Medlemmar som inte ändrades eftersom de lämnat gruppen eller en verksamhet hanterar deras roll: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Verksamhetskoordinator"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuter till automatisk upplåsning"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Saknade löften"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Inget GitHub-konto? Berätta för oss på Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Ingen aktiv familj lovade för %s utan att ha ett löfte för %s."
+
+#: 
+msgid "No families found."
+msgstr "Inga familjer hittades."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Ingen verksamhet tilldelad"
+
+#: 
+msgid "No open deposit"
+msgstr "Ingen öppen insättning"
+
+#: 
+msgid "No pledge for"
+msgstr "Inget löfte för"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Inte beviljad för det här kontot"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Leder inget volontärteam"
+
+#: 
+msgid "Not locked"
+msgstr "Inte spärrad"
+
+#: 
+msgid "Number of Payments"
+msgstr "Antal betalningar"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "En minut. Vi delar inte det du skickar."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Öppna en idé. Rösta med 👍 om din kyrka behöver den och lägg till en kort kommentar om hur ni arbetar i dag."
+
+#: 
+msgid "Open deposit"
+msgstr "Öppen insättning"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Lösenordsbyte krävs vid nästa inloggning"
+
+#: 
+msgid "Password strength"
+msgstr "Lösenordsstyrka"
+
+#: 
+msgid "People & Families"
+msgstr "Personer och familjer"
+
+#: 
+msgid "Pledged for"
+msgstr "Lovat för"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Förbered gåvosammanställningar"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Förhandsgranska exempelbrev"
+
+#: 
+msgid "Property Type"
+msgstr "Egenskapstyp"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Ange endast bilddata för signaturen i PNG- eller JPEG-format."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Registrerad historik: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Rapportera problem"
+
+#: 
+msgid "Requirement"
+msgstr "Krav"
+
+#: 
+msgid "Return Home"
+msgstr "Tillbaka till startsidan"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Granska ett räkenskapsår och ladda sedan ned gåvosammanställningar."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Granska och stäng insättning"
+
+#: 
+msgid "Review and Filter"
+msgstr "Granska och filtrera"
+
+#: 
+msgid "Review and vote"
+msgstr "Granska och rösta"
+
+#: 
+msgid "Review what we are considering"
+msgstr "Granska vad vi överväger"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Roller och behörigheter"
+
+#: 
+msgid "Select at least one member."
+msgstr "Välj minst en medlem."
+
+#: 
+msgid "Setup key"
+msgstr "Installationsnyckel"
+
+#: 
+msgid "Sign-in status"
+msgstr "Inloggningsstatus"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Lagringsmapp för signatur"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Signaturen uppdaterades men den tidigare privata signaturfilen kunde inte tas bort."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Vissa PHP-krav saknas. ChurchCRM behöver dem innan det kan fortsätta."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Starta en insättning och lägg sedan till varje betalning i den."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Startnummer för kuvert"
+
+#: 
+msgid "Strong"
+msgstr "Stark"
+
+#: 
+msgid "Support"
+msgstr "Support"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Listan kunde inte läsas in. Du kan fortfarande öppna idéerna på GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Namnet får vara högst %d tecken"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Sidan du begärde hittades inte. Den kan ha flyttats, bytt namn eller inte längre finnas."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Prompten får vara högst %d tecken"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "De markerade medlemmarna har redan den rollen."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Signaturbilden kunde inte avkodas."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Signaturbilden får inte vara större än 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Signaturbilden måste rymmas inom 2000 × 1000 pixlar."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Lagringsmappen %s för skattesignaturen är inte skrivbar för webbservern."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Lagringsmappen för skattesignaturen får inte vara en symbolisk länk."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Sökvägen till skattesignaturens lagring måste ligga utanför ChurchCRM-mappen. Lämna inställningen tom för att använda den inbyggda privata mappen."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Inställningen för sökväg till skattesignaturens lagring måste vara en absolut mappsökväg."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "De här kuvertnumren sparas inte förrän du väljer Uppdatera familjeposter."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "De kan inte logga in som personal eller i medlemsportalen, och deras sessioner, enheter och nyckelkoder tas bort."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Den här familjen kan inte tas bort eftersom den har anteckningar. Inaktivera familjen i stället för att bevara dess historik."
+
+#: 
+msgid "This password looks strong."
+msgstr "Det här lösenordet ser starkt ut."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Den här personen kan inte tas bort eftersom den har registrerade aktiviteter. Inaktivera personen i stället för att bevara dess historik."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Det här tar bara bort inloggningen. Personen och anteckningarna finns kvar."
+
+#: 
+msgid "Time Range"
+msgstr "Tidsintervall"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Tvåstegsverifiering aktiverad"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Det går inte att kopiera automatiskt. Markera och kopiera installationsnyckeln manuellt."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Ladda upp en signaturbild i PNG- eller JPEG-format."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Använd uppladdning eller borttagning av signatur för att ändra den här inställningen."
+
+#: 
+msgid "User Details"
+msgstr "Användaruppgifter"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Användarnamn eller e-postadress"
+
+#: 
+msgid "View all ideas"
+msgstr "Visa alla idéer"
+
+#: 
+msgid "View events"
+msgstr "Visa evenemang"
+
+#: 
+msgid "View people and families"
+msgstr "Visa personer och familjer"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Volontärhantering är avstängd för den här kyrkan"
+
+#: 
+msgid "Weak"
+msgstr "Svagt"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Vad det här kontot kan göra just nu (skrivskyddat)"
+
+#: 
+msgid "You must select a class"
+msgstr "Du måste välja en klass"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Din kyrkas räkenskapsår börjar inte den 1 januari. Skattemyndigheter vill ofta ha kvitton för kalenderåret: välj Granska och filtrera och ange datumen 1 januari – 31 december."
+
+#: 
+msgid "attendance"
+msgstr "närvaro"
+
+#: 
+msgid "financial history"
+msgstr "ekonomisk historik"
+
+#: 
+msgid "notes"
+msgstr "anteckningar"
+
+#: 
+msgid "recorded activities"
+msgstr "registrerade aktiviteter"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "systemanvändarens API-nyckel har skapats på nytt"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "systemanvändaren återställde sitt lösenord via en länk i ett e-postmeddelande"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "systemanvändaren stängde av tvåstegsverifiering"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "systemanvändaren aktiverade tvåstegsverifiering"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "systemanvändarens tvåstegsverifiering inaktiverades av administratör"
+
+#: 
+msgid "volunteer service history"
+msgstr "historik över volontärtjänst"
+
+#: 
+msgid "%s by %s"
+msgstr "%s av %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ange ditt lösenord eller en kod från din autentiseringsapp för att ändra tvåfaktorsautentiseringen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Senaste anteckningarna"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Inga anteckningar har lagts till ännu."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Starta registreringen för att få en QR-kod."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Lösenordet eller koden är inte korrekt. Tvåfaktorsautentisering är fortfarande på."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Tvåfaktorsautentisering är redan konfigurerad. Hemligheten visas bara under registreringen."
 

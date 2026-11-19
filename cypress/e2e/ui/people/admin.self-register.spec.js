@@ -54,13 +54,11 @@ describe("Self Registrations review page", () => {
 
     const row = (text) => cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).contains("tr", text);
 
+    // The cleanup helpers clear any history the guard would refuse (#10485)
+    // and check each record is gone.
     after(() => {
-        created.persons.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/person/${id}`, null, [200, 404]);
-        });
-        created.families.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, [200, 404]);
-        });
+        cy.cleanupPeople(created.persons);
+        cy.cleanupFamilies(created.families);
     });
 
     describe("Navigation", () => {
@@ -183,6 +181,27 @@ describe("Self Registrations review page", () => {
                     });
                 });
             });
+        });
+
+        it("warns when nobody in an approved family can sign in to the member portal", () => {
+            let savedMemberSignIn;
+            cy.getSystemConfig("bMemberSignIn").then((value) => {
+                savedMemberSignIn = value;
+            });
+            cy.setSystemConfig("bMemberSignIn", "0");
+            registerFamily().then(({ name }) => {
+                cy.intercept("POST", "**/approve-review").as("approveFamily");
+                cy.visit("people/self-register");
+                row(name).find('[data-bs-toggle="dropdown"]').click();
+                cy.get(".dropdown-menu.show .approve-review").click();
+                cy.wait("@approveFamily").its("response.body.invited").should("eq", false);
+                cy.get(".bootbox")
+                    .should("contain", "no invitation was sent")
+                    .and("contain", "Member sign-in is off")
+                    .and("contain", "Admin → Member Portal");
+                cy.get("#selfRegistrations tbody").should("not.contain", name);
+            });
+            cy.then(() => cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn));
         });
     });
 

@@ -18,6 +18,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -39,7 +40,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!( AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())) {
+    if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         RedirectUtils::securityRedirect('EditRecords');
     }
 
@@ -73,6 +74,10 @@ $aperFlags = [];
 
 //Is this the second pass?
 if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        exit;
+    }
     //Assign everything locally
     $sName = InputUtils::legacyFilterInput($_POST['Name']);
     // Strip commas out of address fields because they are problematic when
@@ -87,7 +92,25 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount'], 'int');
+    $iFamilyMemberRows = filter_var($_POST['FamCount'] ?? null, FILTER_VALIDATE_INT);
+    if ($iFamilyMemberRows === false || $iFamilyMemberRows < 0 || $iFamilyMemberRows > 500) {
+        http_response_code(400);
+        exit;
+    }
+
+    $members = [];
+    if ($iFamilyID > 0) {
+        $personIds = [];
+        for ($row = 1; $row <= $iFamilyMemberRows; $row++) {
+            $personIds[] = (int) ($_POST['PersonID' . $row] ?? 0);
+        }
+        try {
+            $members = (new FamilyService())->getMembersForUpdate((int) $iFamilyID, $personIds);
+        } catch (InvalidArgumentException) {
+            http_response_code(400);
+            exit;
+        }
+    }
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
@@ -142,15 +165,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nLongitude = null;
     }
 
-    $nEnvelope = 0;
+    $nEnvelope = (int) ($family?->getEnvelope() ?? 0);
     if (array_key_exists('Envelope', $_POST)) {
-        $nEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
+        $nEnvelope = (int) InputUtils::filterInt($_POST['Envelope']);
     }
-
-    // Only integers are allowed as Envelope Numbers
-    $nEnvelope = is_numeric($nEnvelope) && intval($nEnvelope) == floatval($nEnvelope)
-        ? "'" . intval($nEnvelope) . "'"
-        : "'0'";
 
     $iPropertyID = 0;
     if (array_key_exists('PropertyID', $_POST)) {
@@ -276,7 +294,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setSecondIsMailing($bSecondIsMailing)
             ->setHomePhone($sHomePhone)
             ->setSendNewsletter($bSendNewsLetterString)
-            ->setEnvelope($nEnvelope)
+            ->setEnvelope(AuthenticationManager::getCurrentUser()->isFinanceEnabled() ? $nEnvelope : ($family->getEnvelope() ?? 0))
             ->setWeddingdate($dWeddingDate)
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
@@ -356,7 +374,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $sLastNameToEnter = strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName
                         ? $aLastNames[$iCount]
                         : $sName;
-                    $person = PersonQuery::create()->findOneById($aPersonIDs[$iCount]);
+                    $person = $members[(int) $aPersonIDs[$iCount]];
                     $person
                         ->setFirstName($aFirstNames[$iCount])
                         ->setMiddleName($aMiddleNames[$iCount])
@@ -431,8 +449,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
 
-        $rsCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [$iFamilyID]);
-        $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
+        $aCustomData = $customFieldService->getFamilyValues((int) $iFamilyID);
 
         $aCustomErrors = [];
 
@@ -549,6 +566,7 @@ $sCountry = Countries::toISO($sCountry);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo InputUtils::escapeAttribute($iFamilyID) ?>" id="familyEditor">
+                    <?= CSRFUtils::getTokenInputField() ?>
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">

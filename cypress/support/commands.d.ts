@@ -132,7 +132,7 @@ declare namespace Cypress {
      * an authenticated browser session for that user.
      *
      * localeValue must be the locale field from src/locale/locales.json
-     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the locale code).
      *
      * Designed for locale smoke tests only; never touches system-wide sLanguage config.
      * @param localeValue - The locale field value from locales.json
@@ -213,6 +213,13 @@ declare namespace Cypress {
      */
     shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
 
+    /**
+     * Clear the directory report "saved" user setting so DirectoryReports.php form defaults
+     * are not overridden by a prior people/reports/directory POST (#11465).
+     * @param userId - Person/user id (admin is 1)
+     */
+    clearDirectoryReportPrefs(userId?: number): Chainable<any>;
+
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
 
@@ -287,7 +294,7 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
-     * Make API request as a plain authenticated user (john.plainauth, no EditSelf/EditRecords/Admin)
+     * Make API request as a plain authenticated user (john.plainauth, no EditRecords/Admin)
      * Used for testing that read access is available to all authenticated users by default.
      * User has Notes=1 (passes AuthMiddleware) but no edit or admin capabilities.
      * @param method - HTTP method
@@ -342,7 +349,7 @@ declare namespace Cypress {
 
     /**
      * Zero-permission user (noperm.user, id=901): every permission flag 0,
-     * usr_EditSelf=0, non-admin. Passes AuthMiddleware under the read-default
+     * Non-admin. Passes AuthMiddleware under the read-default
      * policy (#9003) with read-only access, so every write route must answer
      * 403 for it. Use to prove a write route carries a role gate at all.
      */
@@ -388,10 +395,14 @@ declare namespace Cypress {
      */
     createPersonWithBirthday(personData: {
       name: string;
-      month: number;
-      day: number;
+      month?: number;
+      day?: number;
       year?: number | null;
       lastName?: string;
+      email?: string;
+      createFamily?: boolean;
+      familyId?: number;
+      familyRole?: number;
     }): Chainable<number>;
 
     /**
@@ -399,6 +410,13 @@ declare namespace Cypress {
      * @param name - The name of the person to delete
      */
     deletePersonByName(name: string): Chainable<void>;
+
+    /**
+     * Store a family's envelope number through the Envelope Manager as the admin, then sign out
+     * @param familyId - The family to number
+     * @param envelope - The envelope number; 0 clears it
+     */
+    setFamilyEnvelope(familyId: number, envelope: number): Chainable<void>;
 
     /**
      * Create multiple people via CSV import to bypass UI validation

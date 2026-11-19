@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "배정"
 
 #: 
-msgid "Date Updated"
-msgstr "수정 날짜"
-
-#: 
-msgid "Updated By"
-msgstr "수정자"
-
-#: 
 msgid "Since"
 msgstr "기준"
 
@@ -1362,10 +1354,6 @@ msgid "Updated"
 msgstr "수정일"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(되돌릴 수 없습니다)"
-
-#: 
 msgid "Note Editor"
 msgstr "메모 편집"
 
@@ -1498,10 +1486,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "새 사역 배정"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "전자 거래 상세"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
 
@@ -1594,10 +1578,6 @@ msgid "Warning"
 msgstr "경고"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "이 속성 유형은 아직 사용 중입니다."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "이 속성 유형을 삭제할지 확인하세요."
 
@@ -1623,44 +1603,8 @@ msgid "Please confirm deletion of"
 msgstr "삭제할지 확인하세요:"
 
 #: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "이 가족의 헌금 기록이 있어 삭제할 수 없습니다."
-
-#: 
-msgid "Return to Family View"
-msgstr "가족 화면으로 돌아가기"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "경고: 이 가족은 헌금 기록이 있어 다른 가족에 이관하기 전까지 삭제할 수 없습니다."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "경고: 이 작업은 되돌릴 수 없으며 법적 문제가 발생할 수 있습니다!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "현재 헌금 기록이 있는 가족"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "참고: 이 가족에 달린 모든 메모도 함께 삭제됩니다."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "가족 기록만 삭제"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "가족 기록과 구성원 모두 삭제"
-
-#: 
 msgid "Listing"
 msgstr "목록"
-
-#: 
-msgid "My User Settings"
-msgstr "내 사용자 설정"
 
 #: 
 msgid "Variable name"
@@ -2156,10 +2100,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "데이터베이스의 헌금봉투 번호가 이 페이지에서 선택한 값으로 덮어쓰여집니다. 계속할까요?"
 
 #: 
-msgid "Family Select"
-msgstr "가족 선택"
-
-#: 
 msgid "Welcome to"
 msgstr "환영합니다:"
 
@@ -2456,10 +2396,6 @@ msgstr "전체 입금 내역서 보기"
 #: 
 msgid "Deposit Reports"
 msgstr "입금 보고서"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "입금 내역서 편집"
 
 #: 
 msgid "Create New Fundraiser"
@@ -4987,10 +4923,6 @@ msgid "View Person Page"
 msgstr "개인 페이지 보기"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
 msgid "Deleted"
 msgstr "삭제됨"
 
@@ -5131,10 +5063,6 @@ msgstr "크로스 사이트 스크립팅으로부터 보호하기 위해 콘텐�
 #: 
 msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "여기에 메모를 입력하세요..."
 
 #: 
 msgid "Note"
@@ -6056,14 +5984,6 @@ msgid "Close All Deposits"
 msgstr "모든 입금 닫기"
 
 #: 
-msgid "Closed vs Total"
-msgstr "닫힌 것 대 전체"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "기부자를 위한 정확한 연말 세금 보고를 위해 다음 작업을 완료하세요."
-
-#: 
 msgid "Configure Email"
 msgstr "이메일 구성"
 
@@ -6080,28 +6000,12 @@ msgid "Create First Deposit"
 msgstr "첫 입금 생성"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "먼저 입금을 생성하거나 열기"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "시작하려면 입금을 생성하거나 선택하세요."
-
-#: 
-msgid "Current Deposit"
-msgstr "현재 입금"
-
-#: 
 msgid "Day"
 msgstr "일"
 
 #: 
 msgid "Dec"
 msgstr "12월"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "입금 통계"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6130,10 +6034,6 @@ msgstr "결제 편집"
 #: 
 msgid "Edit Person"
 msgstr "사람 편집"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "명세서를 생성하기 전에 해당 세금 연도의 모든 입금이 닫혀 있는지 확인하세요."
 
 #: 
 msgid "F"
@@ -6240,10 +6140,6 @@ msgid "New Pledge"
 msgstr "새 서약"
 
 #: 
-msgid "No Active Deposit"
-msgstr "활성 입금 없음"
-
-#: 
 msgid "No active funds configured."
 msgstr "구성된 활성 기금이 없습니다."
 
@@ -6276,10 +6172,6 @@ msgid "Pledge Reports"
 msgstr "서약 보고서"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "모든 기부자에게 연간 헌금 명세서를 인쇄하거나 이메일로 보냅니다."
-
-#: 
 msgid "Quick Actions"
 msgstr "빠른 작업"
 
@@ -6310,10 +6202,6 @@ msgstr "복원"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "백업 파일에서 복원합니다. 기존 데이터가 지워집니다."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "헌금 기금 검토"
 
 #: 
 msgid "Save and Add New Family"
@@ -6352,14 +6240,6 @@ msgid "System Info"
 msgstr "시스템 정보"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "세금 보고서 문구"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "세금 연도 보고 체크리스트"
-
-#: 
 msgid "Total"
 msgstr "전체"
 
@@ -6380,10 +6260,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "사용자는 관리자이거나 재정 권한이 있어야 합니다"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "명세서에 대한 기금 이름 및 설명이 정확한지 확인하세요."
-
-#: 
 msgid "YTD Payments"
 msgstr "연초 이후 결제"
 
@@ -6400,20 +6276,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "업그레이드에 ZipArchive 확장이 필요합니다"
 
 #: 
-msgid "active"
-msgstr "활성"
-
-#: 
 msgid "found"
 msgstr "발견됨"
 
 #: 
 msgid "issues"
 msgstr "문제"
-
-#: 
-msgid "open"
-msgstr "열림"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -6802,10 +6670,6 @@ msgid "Add Property Type"
 msgstr "속성 유형 추가"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "첫 번째 속성 유형 추가"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
@@ -6824,10 +6688,6 @@ msgstr "체크아웃 완료"
 #: 
 msgid "Current Fiscal Year"
 msgstr "현재 회계연도"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "삭제 (모든 관련 레코드가 삭제됩니다)"
 
 #: 
 msgid "Edit Property Type"
@@ -6878,10 +6738,6 @@ msgid "No property types found"
 msgstr "속성 유형을 찾을 수 없습니다"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "이 속성 유형을 사용하는 레코드 수"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "이 속성 유형에 대한 선택적 상세 설명"
 
@@ -6912,10 +6768,6 @@ msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "가족 및 기금별 서약 약정 추적 및 관리"
-
-#: 
-msgid "View Properties"
-msgstr "속성 보기"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7893,18 +7745,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "이 헌금 서약 기록을 영구적으로 삭제하시겠습니까?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "취소하고 가족 보기로 돌아가기"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성도 제거되고 해당 속성 배정도 모두 삭제됩니다."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "헌금을 선택한 가족으로 이동"
-
-#: 
 msgid "Calendar not found"
 msgstr "캘린더를 찾을 수 없습니다"
 
@@ -8177,10 +8017,6 @@ msgid "or later to continue."
 msgstr "이상 버전이 계속하려면 필요합니다."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"방문 이유\" 메모"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"에 대한 %d개의 결과"
@@ -8288,10 +8124,6 @@ msgstr "개인 기록 추가 또는 편집"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "모금 행사를 위해 기부된 물품 추가 또는 편집"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "사람과 가족에 대한 메모 추가 또는 편집"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9006,10 +8838,6 @@ msgid "Manage volunteer opportunities and assign members"
 msgstr "봉사 기회 관리 및 교인 배정"
 
 #: 
-msgid "Manage your personal preferences and account settings"
-msgstr "개인 환경설정 및 계정 설정 관리"
-
-#: 
 msgid "Map cart items"
 msgstr "목록 항목 지도에 표시"
 
@@ -9044,10 +8872,6 @@ msgstr "그룹으로 이동"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "기존 ChurchCRM 또는 ChurchInfo에서 이전하시나요? 백업 파일을 업로드하면 데이터를 자동으로 복원해 드립니다."
-
-#: 
-msgid "My Settings"
-msgstr "내 설정"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9264,10 +9088,6 @@ msgid "Record new pledges and payments"
 msgstr "새 서약 및 납부 기록"
 
 #: 
-msgid "Record why attendees visited your church"
-msgstr "참석자가 교회를 방문한 이유 기록"
-
-#: 
 msgid "Remove from Class"
 msgstr "반에서 제거"
 
@@ -9476,10 +9296,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "회계연도별 가족 서약 및 기금 기부 추적"
 
 #: 
-msgid "Transaction Details"
-msgstr "거래 세부 정보"
-
-#: 
 msgid "Unmapped"
 msgstr "매핑 안 됨"
 
@@ -9562,10 +9378,6 @@ msgstr "가족 서약 요약 및 기금 배분 보기"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "그룹 교인, 역할 및 속성 보기"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "서약 납부의 거래 세부 정보 보기"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11126,10 +10938,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "유효하지 않은 JSON 값입니다 — 설정이 저장되지 않았습니다. 수정 후 다시 시도해 주세요."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor에서 번역 프로젝트에 참여하세요"
-
-#: 
 msgid "Language and regional settings"
 msgstr "언어 및 지역 설정"
 
@@ -11149,10 +10957,6 @@ msgstr "말라얄람어 - 인도"
 #: 
 msgid "Manage 2FA"
 msgstr "이중 인증 관리"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "이메일 구분자 및 표시 옵션과 같은 추가 환경 설정 관리"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11269,10 +11073,6 @@ msgstr "사용자 설정"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "버전 %s을(를) 사용할 수 있습니다. 설치를 업그레이드해 주세요."
-
-#: 
-msgid "View All"
-msgstr "모두 보기"
 
 #: 
 msgid "Yellow"
@@ -11414,14 +11214,6 @@ msgstr "체크인 담당자"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "비활성 이벤트에서는 체크인이 비활성화됩니다. 이벤트 대시보드에서 이벤트를 활성화하여 체크인을 활성화하세요."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "이벤트 체크인: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "이벤트 체크아웃: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11832,14 +11624,6 @@ msgid "e.g., 40.7128"
 msgstr "예: 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "가족을 삭제하는 중 오류가 발생했습니다."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "헌금을 이동하는 중 오류가 발생했습니다."
-
-#: 
 msgid "At least one family member is required"
 msgstr "최소 한 명의 가족 구성원이 필요합니다"
 
@@ -11858,10 +11642,6 @@ msgstr "삭제 실패"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "방향은 \"위\" 또는 \"아래\"여야 합니다"
-
-#: 
-msgid "Failed to move donations."
-msgstr "헌금 이동에 실패했습니다."
 
 #: 
 msgid "Finance permission required"
@@ -11898,10 +11678,6 @@ msgstr "회원 정보를 찾을 수 없습니다"
 #: 
 msgid "Password successfully changed for"
 msgstr "비밀번호가 성공적으로 변경되었습니다:"
-
-#: 
-msgid "Please select a target family."
-msgstr "대상 가족을 선택하세요."
 
 #: 
 msgid "Target family not found"
@@ -13103,14 +12879,6 @@ msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
 #: 
 msgid "Click Save to apply."
 msgstr "적용하려면 저장을 클릭하세요."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "클립보드 API를 사용할 수 없습니다. URL을 수동으로 복사하십시오."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요."
 
 #: 
 msgid "Code incomplete"
@@ -14644,24 +14412,12 @@ msgid "People &amp; Families"
 msgstr "교인 및 가족"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
-
-#: 
 msgid "User List"
 msgstr "사용자 목록"
 
 #: 
 msgid "View Person"
 msgstr "교인 보기"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
 
 #: 
 msgid "Account locked"
@@ -15362,10 +15118,6 @@ msgid "thru %s"
 msgstr "%s까지"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s의 \"방문 이유\" 메모"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s 가정의 %1$s"
 
@@ -15384,14 +15136,6 @@ msgstr "이 모금 행사의 구매자"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "캘린더 임베드 출처"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 번역은 POEditor의 커뮤니티에서 관리됩니다."
-
-#: 
-msgid "Closed Deposits"
-msgstr "마감된 헌금"
 
 #: 
 msgid "Current $URL[0] value"
@@ -15478,14 +15222,6 @@ msgid "Output Method"
 msgstr "출력 방법"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "이 가족 기록 삭제를 확인해 주세요"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
-
-#: 
 msgid "Remittance Slip"
 msgstr "헌금 영수증"
 
@@ -15534,10 +15270,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
 
 #: 
-msgid "Total Deposits"
-msgstr "총 헌금"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "유효한 URL로 업데이트하세요"
 
@@ -15564,10 +15296,6 @@ msgstr "기금들에 대해"
 #: 
 msgid "user"
 msgstr "사용자"
-
-#: 
-msgid "with at least one"
-msgstr "최소 하나 이상의"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -15796,18 +15524,6 @@ msgstr "주일학교 반 추가"
 #: 
 msgid "Delete this family?"
 msgstr "이 가정을 삭제하시겠습니까?"
-
-#: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "이 가정을 삭제하시겠습니까? 삭제할 항목을 선택하는 페이지로 이동합니다. 이 작업은 취소할 수 없습니다."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "가정 삭제 확인"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "속성 유형 삭제 확인"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -17338,10 +17054,6 @@ msgstr "이번 회계연도 모금액"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s은(는) https://example.org/yourchurch 와 같은 전체 https:// 웹 주소여야 합니다."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "계정 권한이 제한되어 있습니다. 관리자에게 문의하세요."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20407,10 +20119,6 @@ msgid "Read the theme authoring guide"
 msgstr "테마 제작 안내서 읽기"
 
 #: 
-msgid "Recent Emails"
-msgstr "최근 이메일"
-
-#: 
 msgid "Recipient"
 msgstr "수신자"
 
@@ -22551,10 +22259,6 @@ msgid "Register walk-in guest"
 msgstr "방문객 등록"
 
 #: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "행사 중 키오스크에서 방문객으로 등록됨: %s"
-
-#: 
 msgid "Registering..."
 msgstr "등록 중..."
 
@@ -22581,10 +22285,6 @@ msgstr "가족 이름으로 검색"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "가족 이름 또는 봉투 번호로 검색"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "서약이나 결제 내역이 있는 가족은 삭제할 수 없습니다. 먼저 재정 기록을 이동하거나 삭제하세요."
 
 #: 
 msgid "You cannot delete your own account."
@@ -23965,10 +23665,6 @@ msgid "%s Giving Statement"
 msgstr "%s 헌금 명세서"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "헌금 명세서에 표시되는 텍스트를 사용자 지정합니다 (sTaxReport1, sTaxReport2 등)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23991,10 +23687,6 @@ msgstr "%s 헌금 명세서 이메일 전송"
 #: 
 msgid "Envelope Numbers"
 msgstr "봉투 번호"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "헌금 명세서 생성"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24035,10 +23727,6 @@ msgstr "헌금 명세서를 이메일로 보낼 수 없습니다: 이 가족에�
 #: 
 msgid "Undesignated"
 msgstr "지정되지 않음"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "교회 이름, 주소 및 연락처 정보가 헌금 명세서에 표시되는지 확인하세요."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24253,14 +23941,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
 
 #: 
-msgid "Can be emailed"
-msgstr "이메일로 보낼 수 있음"
-
-#: 
-msgid "Closing line"
-msgstr "맺음말"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "올해 날짜의 입금은 모두 마감되었습니다."
 
@@ -24273,40 +23953,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "올해의 모든 납부가 입금에 포함되어 있습니다."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "세금 명세서 생성"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "헌금 보고서(세금 명세서)"
-
-#: 
-msgid "Opening line"
-msgstr "인사말"
-
-#: 
-msgid "Print and mail"
-msgstr "인쇄 후 우편 발송"
-
-#: 
 msgid "Qty"
 msgstr "수량"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "해당 연도를 검토한 다음 헌금 명세서를 인쇄하거나 이메일로 보내십시오."
-
-#: 
-msgid "Signed by"
-msgstr "서명한 사람"
-
-#: 
-msgid "Thank-you line"
-msgstr "감사 문구"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "교회 이름, 주소, 연락처가 세금 명세서에 표시되는지 확인하십시오."
 
 #: 
 msgid "Year-End Giving"
@@ -24437,10 +24085,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "0은 선택 요건을 끕니다. 연령에는 완전한 출생일이 필요하고, 교인 기간에는 교인 등록일이 필요합니다. 필요한 날짜가 없는 사람은 제외되며 따로 집계됩니다. 사망한 사람, 비활성 사람과 분류, 비활성이거나 검토 대기 중인 가정과 사람은 항상 제외됩니다. 과거 상태가 아니라 현재 분류와 상태를 사용합니다."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s 미납액: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "선택한 디렉터리에 비공개 PDF 임시 저장소를 만들 수 없습니다."
 
@@ -24467,10 +24111,6 @@ msgstr "PDF 임시 디렉터리가 없거나 접근할 수 없습니다."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 임시 디렉터리는 절대 경로여야 합니다."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "교회 납세자 번호(EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24515,10 +24155,6 @@ msgstr "명세서 설정"
 #: 
 msgid "Statement Wording"
 msgstr "명세서 문구"
-
-#: 
-msgid "Tax Information"
-msgstr "세금 정보"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24567,10 +24203,6 @@ msgstr "교회 이름과 주소 사용"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "헌금 명세서의 문구, 납세자 번호, PDF 처리"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27111,10 +26743,6 @@ msgid "Last verified"
 msgstr "마지막 확인"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "이 가족의 활성 승인 교인 중 이메일 주소가 있는 사람이 없습니다. 대신 직접 만나 확인하세요."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "이 회계 연도들에 대한 서약을 찾을 수 없습니다."
 
@@ -27137,10 +26765,6 @@ msgstr "이 이메일 주소로 교인 포털에 로그인하여 가족 정보�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "이 가족은 비활성 상태이므로 확인 이메일이 발송되지 않습니다."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "이 자가 등록 가족은 승인을 기다리고 있습니다. 승인하면 교인 포털에 로그인하여 정보를 검토하라는 초대 이메일이 가족에게 발송됩니다."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27323,4 +26947,695 @@ msgstr "데이터는 귀하의 것입니다. 보고 내용은 소프트웨어에
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "데이터는 귀하의 것입니다. 설치 수를 집계하기 위해 ChurchCRM은 설치 또는 업그레이드되었는지와 성공 여부, 사용 중 하루 한 번의 상태 확인, 그리고 버전 번호, 국가, 데이터베이스 종류, 임의의 설치 ID를 보고합니다. 교인, 헌금 또는 기타 교회 기록, 교회 이름, 웹 주소나 서버 이름, 이메일 주소는 절대 보고하지 않습니다. 관리 → 원격 측정에서 언제든지 끌 수 있으며, 실패한 설치나 업그레이드는 계속 보고됩니다. 경고, 오류 세부 정보, 페이지 조회는 선택한 경우에만 공유됩니다."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: 입금 %2$d건이 아직 열려 있습니다. 명세서를 보내기 전에 모든 헌금이 확정되도록 닫아 주세요."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "봉투 번호 %d개를 저장했습니다."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "가정 %d곳"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: 모든 입금이 닫혔습니다. 명세서를 준비할 수 있습니다."
+
+#: 
+msgid "12 months"
+msgstr "12개월"
+
+#: 
+msgid "30 days"
+msgstr "30일"
+
+#: 
+msgid "90 days"
+msgstr "90일"
+
+#: 
+msgid "Add Property"
+msgstr "속성 추가"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "문자를 몇 개 더 추가하거나 기호를 추가하세요."
+
+#: 
+msgid "Add and edit events"
+msgstr "행사 추가 및 편집"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "문자를 더 추가하거나 숫자와 기호를 섞어 주세요."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "문자를 더 추가하고 대소문자, 숫자, 기호를 섞어 주세요."
+
+#: 
+msgid "Add people and families"
+msgstr "사람 및 가정 추가"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "기능이 켜져 있는 동안 관리자는 모든 권한을 가집니다."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "로그인도 비활성화하여 회원 포털을 사용하지 못하게 하기"
+
+#: 
+msgid "Birthday today"
+msgstr "오늘 생일"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "비공개 세금 서명 파일을 만들 수 없습니다. 저장 폴더에 쓰기 권한이 있는지 확인하세요."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "세금 서명 저장 폴더 %s을(를) 만들 수 없습니다. 웹 서버가 쓸 수 있는지 확인하거나, 세금 서명 저장 경로 설정에서 쓰기 가능한 폴더를 지정하세요."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "약정이나 납부 내역이 있는 가정은 삭제할 수 없습니다. 재정 기록을 보존하려면 대신 가정을 비활성화하세요. 재정 기록은 적절한 경우에만 이동하세요."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "비공개 세금 서명을 인코딩할 수 없습니다."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "필드를 해당 방향으로 이동할 수 없습니다"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "비공개 세금 서명을 읽을 수 없습니다."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "비공개 서명을 제거할 수 없습니다."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "비공개 세금 서명 파일을 제거할 수 없습니다."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "세금 서명 저장용 애플리케이션 폴더를 확인할 수 없습니다."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "비공개 서명을 저장할 수 없습니다."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "세금 서명 저장 폴더에 접근 보호 파일 %s을(를) 쓸 수 없습니다."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "선택한 회원의 역할 변경: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "교회 회계연도"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM 시스템 점검"
+
+#: 
+msgid "Custom field not found"
+msgstr "사용자 지정 필드를 찾을 수 없습니다"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "대신 가정 비활성화"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "삭제하는 대신 가정을 비활성화하세요."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "삭제하는 대신 해당 사람을 비활성화하세요."
+
+#: 
+msgid "Delete people and families"
+msgstr "사람 및 가정 삭제"
+
+#: 
+msgid "Delete the login for"
+msgstr "다음 로그인 삭제:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "입금 차트 기간"
+
+#: 
+msgid "Disabled at"
+msgstr "비활성화 일시"
+
+#: 
+msgid "Disabled by"
+msgstr "비활성화한 사용자"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "다운로드하면 해당 연도의 모든 헌금자가 전송됩니다. '검토 및 필터'는 먼저 합계를 보여 주며 가정, 기금, 학급 또는 날짜로 좁힐 수 있습니다."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "봉투 번호 중복"
+
+#: 
+msgid "Edit people and families"
+msgstr "사람 및 가정 편집"
+
+#: 
+msgid "Email people and groups"
+msgstr "사람 및 그룹에 이메일 보내기"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "웹 서버 설정에서 누락된 PHP 확장을 활성화하고 웹 서버를 다시 시작한 뒤 이 페이지를 새로 고치세요. 호스팅 업체를 이용 중이라면 나열된 확장을 활성화해 달라고 요청하세요."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "설정 키 직접 입력"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "0부터 %d까지의 시작 번호를 입력하세요."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "전체 화면"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "이 키를 인증 앱이나 비밀번호 관리자에 시간 기반(TOTP) 6자리 코드와 30초 간격으로 입력하세요. 이 키는 비공개로 유지하세요."
+
+#: 
+msgid "Enter your username or email"
+msgstr "사용자 이름 또는 이메일을 입력하세요"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "봉투 번호는 0부터 %d까지의 정수여야 합니다. 아무것도 저장되지 않았습니다."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "이 교회에서는 행사가 꺼져 있습니다"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "전체 화면 종료"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "사용자 지정 필드를 삭제하지 못했습니다"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "사용자 지정 필드를 이동하지 못했습니다"
+
+#: 
+msgid "Fair"
+msgstr "보통"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "%s에 약정했지만 %s에는 약정이 없는 가정."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "다음에 회원이 한 명 이상 있는 가정:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "이 교회에서는 재정이 꺼져 있습니다"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "한 회계연도에는 약정했지만 다른 연도에는 약정하지 않은 가정을 찾습니다."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "헌금 명세서의 비공개 서명을 저장하는 폴더입니다. 비워 두면 웹 직접 접근을 차단하는 기본 제공 비공개 폴더 Images/TaxSignatures를 사용합니다. 다른 폴더를 사용하려면 ChurchCRM 폴더 밖에 있고 웹 서버가 쓸 수 있는 절대 경로를 입력하세요."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "이 교회에서는 모금 활동이 꺼져 있습니다"
+
+#: 
+msgid "Good"
+msgstr "좋음"
+
+#: 
+msgid "Have an email"
+msgstr "이메일 있음"
+
+#: 
+msgid "Hide setup key"
+msgstr "설정 키 숨기기"
+
+#: 
+msgid "How to respond"
+msgstr "응답 방법"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "검토를 기다리는 아이디어"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "비활성 가정은 제외됩니다. 납부는 약정으로 계산되지 않습니다."
+
+#: 
+msgid "Invalid request."
+msgstr "잘못된 요청입니다."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "서명 이미지 데이터가 잘못되었습니다."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "저장된 세금 서명 식별자가 잘못되었습니다."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "세금 서명 저장소가 잘못되었습니다."
+
+#: 
+msgid "Last successful login"
+msgstr "마지막 로그인 성공"
+
+#: 
+msgid "Lockout state"
+msgstr "잠금 상태"
+
+#: 
+msgid "Login deleted"
+msgstr "로그인을 삭제했습니다"
+
+#: 
+msgid "Mail only"
+msgstr "우편만"
+
+#: 
+msgid "Manage all ministries"
+msgstr "모든 사역 관리"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "회원을 {{role}}(으)로 이동했습니다: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "그룹을 떠났거나 사역이 역할을 관리하여 변경되지 않은 회원: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "사역 코디네이터"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "자동 잠금 해제까지 남은 분"
+
+#: 
+msgid "Missing Pledges"
+msgstr "누락된 약정"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "GitHub 계정이 없나요? Discord에서 알려 주세요"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "%s에 약정했지만 %s에는 약정이 없는 활성 가정이 없습니다."
+
+#: 
+msgid "No families found."
+msgstr "가정을 찾을 수 없습니다."
+
+#: 
+msgid "No ministry assigned"
+msgstr "배정된 사역 없음"
+
+#: 
+msgid "No open deposit"
+msgstr "열려 있는 입금 없음"
+
+#: 
+msgid "No pledge for"
+msgstr "약정 없음:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "이 계정에 부여되지 않음"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "봉사자 팀을 이끌지 않음"
+
+#: 
+msgid "Not locked"
+msgstr "잠기지 않음"
+
+#: 
+msgid "Number of Payments"
+msgstr "납부 건수"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "1분이면 됩니다. 보내 주신 내용은 공유하지 않습니다."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "아이디어를 여세요. 교회에 필요하면 👍로 투표하고, 현재 어떻게 일하는지 짧게 댓글을 남겨 주세요."
+
+#: 
+msgid "Open deposit"
+msgstr "열려 있는 입금"
+
+#: 
+msgid "Password change required at next login"
+msgstr "다음 로그인 시 비밀번호 변경 필요"
+
+#: 
+msgid "Password strength"
+msgstr "비밀번호 강도"
+
+#: 
+msgid "People & Families"
+msgstr "사람 및 가정"
+
+#: 
+msgid "Pledged for"
+msgstr "약정 대상:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "헌금 명세서 준비"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "샘플 편지 미리 보기"
+
+#: 
+msgid "Property Type"
+msgstr "속성 유형"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "PNG 또는 JPEG 서명 이미지 데이터만 제공하세요."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "기록된 이력: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "문제 신고"
+
+#: 
+msgid "Requirement"
+msgstr "요구 사항"
+
+#: 
+msgid "Return Home"
+msgstr "홈으로 돌아가기"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "회계연도를 검토한 다음 헌금 명세서를 다운로드하세요."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "입금 검토 및 닫기"
+
+#: 
+msgid "Review and Filter"
+msgstr "검토 및 필터"
+
+#: 
+msgid "Review and vote"
+msgstr "검토 및 투표"
+
+#: 
+msgid "Review what we are considering"
+msgstr "검토 중인 내용 보기"
+
+#: 
+msgid "Roles & permissions"
+msgstr "역할 및 권한"
+
+#: 
+msgid "Select at least one member."
+msgstr "회원을 한 명 이상 선택하세요."
+
+#: 
+msgid "Setup key"
+msgstr "설정 키"
+
+#: 
+msgid "Sign-in status"
+msgstr "로그인 상태"
+
+#: 
+msgid "Signature storage folder"
+msgstr "서명 저장 폴더"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "서명이 업데이트되었지만 이전 비공개 서명 파일을 제거하지 못했습니다."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "일부 PHP 요구 사항이 없습니다. ChurchCRM이 계속하려면 이 요구 사항이 필요합니다."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "입금을 시작한 다음 각 납부를 추가하세요."
+
+#: 
+msgid "Starting envelope number"
+msgstr "봉투 시작 번호"
+
+#: 
+msgid "Strong"
+msgstr "강함"
+
+#: 
+msgid "Support"
+msgstr "지원"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "목록을 불러오지 못했습니다. GitHub에서 아이디어를 여전히 열 수 있습니다."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "이름은 최대 %d자까지 입력할 수 있습니다"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "요청한 페이지를 찾을 수 없습니다. 이동, 이름 변경 또는 삭제되었을 수 있습니다."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "프롬프트는 최대 %d자까지 입력할 수 있습니다"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "선택한 회원은 이미 해당 역할을 가지고 있습니다."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "서명 이미지를 디코딩하지 못했습니다."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "서명 이미지는 2 MiB를 넘을 수 없습니다."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "서명 이미지는 2000 × 1000픽셀 이내여야 합니다."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "웹 서버가 세금 서명 저장 폴더 %s에 쓸 수 없습니다."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "세금 서명 저장 폴더는 심볼릭 링크일 수 없습니다."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "세금 서명 저장 경로는 ChurchCRM 폴더 밖에 있어야 합니다. 기본 제공 비공개 폴더를 사용하려면 설정을 비워 두세요."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "세금 서명 저장 경로 설정은 절대 폴더 경로여야 합니다."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "이 봉투 번호는 가정 기록 업데이트를 선택할 때까지 저장되지 않습니다."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "직원으로 또는 회원 포털에 로그인할 수 없으며, 세션, 기기, 패스키가 제거됩니다."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "이 가정은 메모가 있어 삭제할 수 없습니다. 이력을 보존하려면 대신 가정을 비활성화하세요."
+
+#: 
+msgid "This password looks strong."
+msgstr "이 비밀번호는 안전해 보입니다."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "이 사람은 기록된 활동이 있어 삭제할 수 없습니다. 이력을 보존하려면 대신 해당 사람을 비활성화하세요."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "로그인만 제거됩니다. 해당 사람과 메모는 그대로 유지됩니다."
+
+#: 
+msgid "Time Range"
+msgstr "기간"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "2단계 인증 등록됨"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "자동으로 복사할 수 없습니다. 설정 키를 선택하여 직접 복사하세요."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "PNG 또는 JPEG 서명 이미지를 업로드하세요."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "이 설정을 변경하려면 서명 업로드 또는 제거를 사용하세요."
+
+#: 
+msgid "User Details"
+msgstr "사용자 세부 정보"
+
+#: 
+msgid "Username or Email Address"
+msgstr "사용자 이름 또는 이메일 주소"
+
+#: 
+msgid "View all ideas"
+msgstr "모든 아이디어 보기"
+
+#: 
+msgid "View events"
+msgstr "행사 보기"
+
+#: 
+msgid "View people and families"
+msgstr "사람 및 가정 보기"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "이 교회에서는 봉사자 관리가 꺼져 있습니다"
+
+#: 
+msgid "Weak"
+msgstr "약함"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "이 계정이 지금 할 수 있는 일(읽기 전용)"
+
+#: 
+msgid "You must select a class"
+msgstr "학급을 선택해야 합니다"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "교회 회계연도가 1월 1일에 시작하지 않습니다. 세무 당국은 흔히 역년 기준 영수증을 요구합니다. '검토 및 필터'를 선택하고 날짜를 1월 1일 – 12월 31일로 설정하세요."
+
+#: 
+msgid "attendance"
+msgstr "출석"
+
+#: 
+msgid "financial history"
+msgstr "재정 이력"
+
+#: 
+msgid "notes"
+msgstr "메모"
+
+#: 
+msgid "recorded activities"
+msgstr "기록된 활동"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "시스템 사용자의 API 키를 다시 생성했습니다"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "시스템 사용자가 이메일 링크로 비밀번호를 재설정했습니다"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "시스템 사용자가 2단계 인증을 껐습니다"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "시스템 사용자가 2단계 인증을 켰습니다"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "관리자가 시스템 사용자의 2단계 인증을 비활성화했습니다"
+
+#: 
+msgid "volunteer service history"
+msgstr "봉사 활동 이력"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, %s 작성"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "이중 인증을 변경하려면 비밀번호 또는 인증 앱의 코드를 입력하세요."
+
+#: 
+msgid "Latest Notes"
+msgstr "최신 메모"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "아직 추가된 메모가 없습니다."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR 코드를 받으려면 등록을 시작하세요."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "해당 비밀번호나 코드가 올바르지 않습니다. 이중 인증이 계속 켜져 있습니다."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "이중 인증이 이미 설정되어 있습니다. 비밀 키는 등록 중에만 표시됩니다."
 

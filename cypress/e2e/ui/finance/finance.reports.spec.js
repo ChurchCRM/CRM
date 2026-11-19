@@ -11,8 +11,7 @@ describe("Financial Reports", () => {
         cy.visit("/finance/");
         cy.contains("Finance Dashboard");
 
-        // Click Reports from action buttons
-        cy.get('.card a.btn[href$="/finance/reports"]').first().click();
+        cy.get('a[href$="/finance/reports"]').first().click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
@@ -50,28 +49,16 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Reminders", () => {
-        cy.visit("FinancialReports.php");
-        cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Pledge Reminders");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Pledge Reminders");
-        cy.window().then(function (win) {
-            win.document
-                .getElementById("createReport")
-                .addEventListener("click", () => {
-                    setTimeout(function () {
-                        win.location.reload();
-                    }, 10_000);
-                });
+        cy.visit("/finance/reports");
+        cy.get('#financeReports a[href$="/finance/reports/pledge-reminders"]').first().click();
+        cy.location("pathname").should("match", /\/finance\/reports\/pledge-reminders$/);
 
-            /* Make sure the file exists */
-            cy.intercept("/", (req) => {
-                req.reply((res) => {
-                    expect(res.statusCode).to.equal(200);
-                });
-            });
-
-            cy.get("#createReport").click();
+        cy.intercept("POST", "**/finance/reports/pledge-reminders/download").as("pledgeReminders");
+        cy.get("#FYID").select("23");
+        cy.get("#downloadPledgeReminders").click();
+        cy.wait("@pledgeReminders").then(({ response }) => {
+            expect(response.statusCode).to.equal(200);
+            expect(response.headers["content-type"]).to.include("application/pdf");
         });
     });
 

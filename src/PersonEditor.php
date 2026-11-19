@@ -21,6 +21,7 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -62,13 +63,7 @@ if (!$isNewPerson) {
 
     $per_fam_ID = $person->getFamId();
 
-    if (
-        !(
-            AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
-            (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID === AuthenticationManager::getCurrentUser()->getId()) ||
-            (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID === AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
-        )
-    ) {
+    if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         RedirectUtils::redirect('v2/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
@@ -163,6 +158,10 @@ $aCustomData = [];
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        exit;
+    }
     //Get all the variables from the request object and assign them locally
     $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
     $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
@@ -226,7 +225,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $dDateDeceased = trim((string) ($_POST['DateDeceased'] ?? ''));
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $iGrade = GradeService::resolve($_POST['Grade'] ?? null);
-    $iEnvelope = 0;
+    $iEnvelope = (int) ($person?->getEnvelope() ?? 0);
     if (array_key_exists('EnvID', $_POST)) {
         $iEnvelope = InputUtils::legacyFilterInput($_POST['EnvID'], 'int');
     }
@@ -591,11 +590,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bTwitter = strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
-        $rsCustomData = RunPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [$iPersonID]);
-        $aCustomData = [];
-        if (mysqli_num_rows($rsCustomData) >= 1) {
-            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
-        }
+        $aCustomData = $customFieldService->getPersonValues((int) $iPersonID);
     }
 }
 
@@ -633,6 +628,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor" id="personEditor">
+    <?= CSRFUtils::getTokenInputField() ?>
     <?php if ($bErrorFlag) {
         ?>
         <div class="alert alert-danger alert-dismissable">
@@ -1196,7 +1192,7 @@ require_once __DIR__ . '/Include/Header.php';
 
         // Apply inputmask to non-phone fields (fields with data-mask but no"No format" checkbox)
         $("[data-mask]").inputmask();
-        
+
         var famEl = document.getElementById("familyId");
         if (famEl && !famEl.tomselect) new TomSelect(famEl);
     });

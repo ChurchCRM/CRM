@@ -33,7 +33,8 @@ class NotificationService
         $currentUser = AuthenticationManager::getCurrentUser();
 
         $dismissKey = $notification->getDismissSettingKey();
-        if ($dismissKey !== '' && $currentUser->getSettingValue($dismissKey) === 'true') {
+        if ($notification->getId() !== 'system-update-available'
+            && $dismissKey !== '' && $currentUser->getSettingValue($dismissKey) === 'true') {
             return;
         }
 
@@ -55,6 +56,18 @@ class NotificationService
         return count(self::$notifications) > 0;
     }
 
+    public static function dismissalSettingKey(string $id): string
+    {
+        if ($id === '') {
+            return '';
+        }
+
+        $prefix = 'notification.dismissed.';
+        $key = $prefix . $id;
+        // Keep existing dismissals; long remote IDs must fit user_settings.setting_name.
+        return strlen($key) <= 50 ? $key : $prefix . substr(hash('sha256', $id), 0, 50 - strlen($prefix));
+    }
+
     /**
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
@@ -68,32 +81,36 @@ class NotificationService
     // ─── Source 1: System upgrade (session set at login) ────────────────
 
     /**
-     * If a system upgrade is available, push the admin notification.
+     * Show the system upgrade notification to every logged-in user.
+     * Only this notice is dismissed per session, not through user settings.
      */
     private static function loadUpgradeNotification(): void
     {
-        $currentUser = AuthenticationManager::getCurrentUser();
-        if (
-            !$currentUser->isAdmin()
-            || !isset($_SESSION['systemUpdateAvailable'])
-            || $_SESSION['systemUpdateAvailable'] !== true
-        ) {
+        if (($_SESSION['systemUpdateAvailable'] ?? false) !== true
+            || ($_SESSION['systemUpdateNoticeDismissed'] ?? false) === true) {
             return;
         }
 
-        $version = (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null)
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $version = isset($_SESSION['systemUpdateVersion'])
             ? (string) $_SESSION['systemUpdateVersion']
             : '';
+        $isAdmin = $currentUser->isAdmin();
+        $message = $isAdmin
+            ? ($version !== ''
+                ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $version)
+                : gettext('A system update is available. Please upgrade your installation.'))
+            : ($version !== ''
+                ? sprintf(gettext('Version %s is available. Please ask your administrator to upgrade your installation.'), $version)
+                : gettext('A system update is available. Please ask your administrator to upgrade your installation.'));
 
         $id = 'system-update-available';
         self::add(new UiNotification(
             $id,
-            'notification.dismissed.' . $id,
+            self::dismissalSettingKey($id),
             gettext('System Update Available'),
-            $version !== ''
-                ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $version)
-                : gettext('A system update is available. Please upgrade your installation.'),
-            SystemURLs::getRootPath() . '/admin/system/upgrade',
+            $message . ' ' . gettext('Security updates and support are provided for the latest version only.'),
+            SystemURLs::getRootPath() . ($isAdmin ? '/admin/system/upgrade' : '/v2/releases'),
             'warning',
             'refresh',
         ));
@@ -149,7 +166,7 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
-            $dismissKey = $id !== '' ? 'notification.dismissed.' . $id : '';
+            $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
                 $id,

@@ -371,6 +371,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {boolean} options.reloadOnSave - Reload an auto-save panel once writes and editing finish
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
+     * @param {string} options.csrfToken - Session CSRF token sent as X-CSRF-Token with each save (APIs behind CSRFMiddleware need it)
      * @param {number} options.columns - Fields per row from the lg breakpoint up: 3 (default), 2, or 1 (one full-width setting per row)
      */
     init(options) {
@@ -387,6 +388,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           reloadOnSave: false,
           allSettingsUrl: "/SystemSettings.php",
           configApiPath: "/admin/api/system/config",
+          csrfToken: "",
           headerClass: "bg-primary-lt",
           columns: 3,
         },
@@ -806,6 +808,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(this.options.csrfToken ? { "X-CSRF-Token": this.options.csrfToken } : {}),
         },
         body: JSON.stringify({ value: value }),
       }).then((response) => {

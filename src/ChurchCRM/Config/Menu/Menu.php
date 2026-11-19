@@ -61,7 +61,7 @@ class Menu
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin, $currentUser->isFinanceEnabled()),
         ];
-        
+
         // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
         if (isset($menus['Communication'])) {
             $menus['Email'] = $menus['Communication'];
@@ -78,7 +78,7 @@ class Menu
 
         // Remove the backward-compat alias so it doesn't appear as a duplicate menu
         unset($menus['Email']);
-        
+
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
 
@@ -122,18 +122,18 @@ class Menu
         $peopleMenu->addSubMenu($selfRegisterItem);
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('People Settings'), 'admin/people', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'admin/system/options?mode=famroles', $isAdmin, 'fa-people-roof'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isAdmin, 'fa-people-roof'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), '/people/properties/f', $isAdmin, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'admin/system/options?mode=classes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isAdmin, 'fa-person-half-dress'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), '/people/properties/p', $isAdmin, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Grades'), 'admin/system/options?mode=grades', $isAdmin, 'fa-graduation-cap'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1InUse, 'fa-handshake-angle'));
-    
+
             $peopleMenu->addSubMenu($adminMenu);
         }
 
@@ -199,8 +199,8 @@ class Menu
 
         // Each entry mirrors its route's permission: group properties and group types
         // require Admin, the kiosk manager requires ManageGroups.
-        $adminMenu = new MenuItem(gettext('Admin'), '', true);
-        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin, 'fa-users'));
+        $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), '/people/properties/g', $isAdmin, 'fa-users'));
         $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
         $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
         $groupMenu->addSubMenu($adminMenu);
@@ -235,7 +235,7 @@ class Menu
         $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Log'), 'admin/email/log', true, 'fa-envelope-open-text'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Debug'), 'admin/email/debug', true, 'fa-stethoscope'));
@@ -274,12 +274,12 @@ class Menu
                         break;
                     }
                 }
-                
+
                 if ($parentMenu === null) {
                     // Parent menu not found, skip these items
                     continue;
                 }
-                
+
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
                     $permission = $item['permission'] ?? '';
@@ -290,7 +290,7 @@ class Menu
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';
-                    
+
                     if (!empty($label) && !empty($url)) {
                         $parentMenu->addSubMenu(new MenuItem($label, $url, true, $icon));
                     }
@@ -319,7 +319,7 @@ class Menu
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
 
         if ($isAddEventEnabled) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Event Types'), 'event/types', true, 'fa-tags'));
             $eventsMenu->addSubMenu($adminMenu);
         }
@@ -342,34 +342,6 @@ class Menu
     // The legacy "Volunteer Opportunities" item under People → Admin shows while
     // V1 is in use (VolunteerV1Service::isInUse()).
 
-    /**
-     * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
-     *
-     * A heading of its own, built the way the Groups block builds its per-group
-     * entries: a Dashboard entry and then one entry per ministry, by name, each
-     * linking straight to `/ministries/{id}`. It replaces the retired
-     * "My ministries and teams" list page — a list of the same links, one click
-     * further away.
-     *
-     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
-     * VolunteerCoordinatorRoleAuthMiddleware calls — so nothing here advertises a
-     * page that 302s away and nothing openable is hidden (§3.5, A11). It already
-     * carries the rollout state, the administrator bypass, the global-manager flag,
-     * the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
-     *
-     * A pure **team leader** passes that predicate. `getManageableMinistries()`
-     * returns nothing for them, because leading a team is not administering the
-     * ministry above it (§4.6), so their entries come from `getTeamLedMinistries()`
-     * and open the ministry page's team-only view. A manager who
-     * has not created a ministry yet sees the same Dashboard-only heading, and the
-     * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
-     * listed here; deactivated ones move to the Deactivated Ministries heading.
-     *
-     * One query per request, ids and names only — see
-     * `VolunteerAuthorizationService::getManageableMinistries()` for the memo and
-     * the reason it is static. The early return keeps even that query off every
-     * page load for the overwhelming majority of users, who coordinate nothing.
-     */
     private static function getMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
     {
         $ministriesMenu = new MenuItem(gettext('Ministries'), '', $isCoordinator, 'fa-sitemap');
@@ -389,7 +361,7 @@ class Menu
         $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
 
         if ($currentUser->isAdmin()) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', true, 'fa-sliders'));
             $ministriesMenu->addSubMenu($adminMenu);
         }
@@ -488,14 +460,12 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'finance/deposit/' . (int) ($_SESSION['iCurrentDeposit'] ?? 0), $isFinanceEnabled, 'fa-pen-to-square'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Financial Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice-dollar'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Year-End Giving'), 'finance/reports/year-end', $isFinanceEnabled, 'fa-calendar-check'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Giving Statements'), 'finance/reports/giving-statements', $isFinanceEnabled, 'fa-envelope-open-text'));
 
         if ($isFinanceEnabled) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled, 'fa-screwdriver-wrench');
+            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'finance/envelopes', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
 
@@ -533,7 +503,7 @@ class Menu
         }
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Report Settings'), 'admin/system/report-settings', $isAdmin, 'fa-file-lines'));
             $reportsMenu->addSubMenu($adminMenu);
         }

@@ -440,25 +440,28 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
     </div>
     <div class="col-lg-8">
         <!-- Toolbar -->
-        <div class="d-flex align-items-center mb-3 gap-2 d-print-none">
+        <div class="d-flex flex-wrap align-items-center mb-3 gap-2 d-print-none">
             <?php if ($bOkToEdit) { ?>
             <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
             <?php } ?>
             <button class="btn btn-ghost-secondary" id="printPerson" title="<?= gettext("Print") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></button>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-            <a class="btn btn-ghost-info" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>">
+            <button type="button" class="btn btn-ghost-info" data-open-note-person="<?= (int) $iPersonID ?>">
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext("Add Note") ?>
-            </a>
+            </button>
+            <?php } ?>
+            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+            <button type="button" class="btn btn-ghost-info" id="editWhyCame" data-open-why-came="<?= (int) $iPersonID ?>">
+                <i class="fa-solid fa-circle-question me-1"></i><?= gettext("Why Came") ?>
+            </button>
             <?php } ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" id="person-actions-dropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                        <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
-                    <?php } ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $iPersonID ?>/emails"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Email History') ?></a>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
                         <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
@@ -692,31 +695,6 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
         <?php if ($canSendEmail) : ?>
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
         <?php endif; ?>
-
-        <!-- Email history: 5 most recent, full list on its own page -->
-        <?php $emailHistory = $emailHistory ?? ['rows' => [], 'total' => 0]; ?>
-        <div class="card mb-3" id="email-history-card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-1"></i> <?= gettext('Recent Emails') ?>
-                    <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $emailHistory['total'] ?></span>
-                </h3>
-            </div>
-            <div class="card-body p-0">
-                <?php
-                $emailHistoryRows = $emailHistory['rows'];
-                $emailHistoryShowTo = false;
-                include __DIR__ . '/partials/email-history-table.php';
-                ?>
-            </div>
-            <?php if ((int) $emailHistory['total'] > 0) : ?>
-            <div class="card-footer text-end py-2">
-                <a href="<?= $sRootPath ?>/people/view/<?= (int) $iPersonID ?>/emails" id="email-history-show-all">
-                    <?= gettext('Show all') ?> (<?= (int) $emailHistory['total'] ?>) <i class="fa-solid fa-chevron-right fa-xs ms-1"></i>
-                </a>
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php include __DIR__ . '/partials/email-history-modal.php'; ?>
 
         <!-- Tabbed Content -->
         <div class="card">
@@ -1170,4 +1148,5 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
 <?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/note-why-came-modal.min.js') . '"></script>';
 require_once SystemURLs::getDocumentRoot() . '/Include/Footer.php';

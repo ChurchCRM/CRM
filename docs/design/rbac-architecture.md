@@ -1,7 +1,7 @@
 # RBAC architecture
 
-**Status:** Draft for maintainer review ([#10923](https://github.com/ChurchCRM/CRM/issues/10923)). Nothing here is implemented. Decisions marked **Decided** were answered by George on 2026-10-29; everything else is a recommendation.
-**Inputs:** [RFC 0002](../decisions/0002-rbac-redesign.md), audits [#10515](https://github.com/ChurchCRM/CRM/issues/10515), [#10516](https://github.com/ChurchCRM/CRM/issues/10516), [#10519](https://github.com/ChurchCRM/CRM/issues/10519), and the code on `master`.
+**Status:** Phase 1 design, refreshed for maintainer approval ([#10923](https://github.com/ChurchCRM/CRM/issues/10923)). Nothing here is implemented. Decisions A1–A13 were answered by George on 2026-10-29; everything else is a recommendation. Checked against `master` at 7.8.6.
+**Inputs:** [RFC 0002](../decisions/0002-rbac-redesign.md), audits [#10515](https://github.com/ChurchCRM/CRM/issues/10515), [#10516](https://github.com/ChurchCRM/CRM/issues/10516), [#10519](https://github.com/ChurchCRM/CRM/issues/10519) (all closed), and the code on `master`. Since the first draft, 7.8.3 shipped member sign-in with its portal permission model and Login as Person, and 7.8.5 removed Edit Self (#11454).
 
 ## 1. Decisions
 
@@ -14,7 +14,7 @@
 | A5 | **New Administrator template is core system administration only** (users, roles, settings, system). Finance, people, groups and the rest are separate roles a church adds. | Settles the D2 wildcard question for new admins: no wildcard. |
 | A6 | **Assigning roles:** a holder of `roles.assign` may give another user only a role whose grants (permission and scope) all fall within the assigner's own effective grants, never to themselves; the Owner may give any role. Roles holding a sensitive permission need a second approver. Every change is audited and the person is notified. | Settles the D2 grant ceiling and self-escalation rule. |
 | A7 | **Rebuilt setup wizard with an Owner account ("admin 0").** The wizard asks for the real password (no shipped default) and which roles to create. Every install has exactly one Owner. | New. Replaces the seeded `admin`/`changeme` account. |
-| A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**: the RFC's P6 row needs an amendment naming the Owner. Mitigation in §6. |
+| A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**, named in the RFC's P6 row. Mitigation in §6. |
 | A9 | **Admin-only split.** CSV export and the People Report CSV move to `export.people`; the email log and text messages to `communication.log.read`; other users' private notes to `notes.private.read` (sensitive). The rest of today's admin-only features stay with Administrator (§4.3). | New permissions; the bulk export gate of #10516 starts from `export.people`. |
 | A10 | **Sensitive at cutover:** `notes.private.read`, every `finance.*` permission and `export.people`. Assigning a role that holds one needs a second approver; the Owner's use of one is audited. | Applies P6-style controls to giving data and bulk export. |
 | A11 | **Second approver:** when the Owner assigns a sensitive role, no approver is needed; it is audited. When anyone else assigns one, the Owner or another holder of `roles.assign` (neither the assigner nor the recipient) approves before it takes effect. | Refines A6 so a one-person church can work. |
@@ -23,50 +23,63 @@
 
 ## 2. V1 permission table (what exists today)
 
-V1 authorization is 13 switches plus three implicit rules. Almost every check goes through a predicate on `User` (`src/ChurchCRM/model/ChurchCRM/User.php`), which is the seam the cutover uses (§5).
+V1 authorization is 12 switches, the predicates derived from them, and four implicit rules. Every check goes through a method on `User` (`src/ChurchCRM/model/ChurchCRM/User.php`), which is the seam the cutover uses (§5). Every switch predicate starts with `isAdmin() ||`, so `usr_Admin` implies every switch.
 
 ### 2.1 Switches
 
 | # | Switch | Stored in | Predicate | What it gates (callers on `master`) |
 |---|---|---|---|---|
-| 1 | Admin | `user_usr.usr_Admin` | `isAdmin()` | The whole `/admin` app (`AdminRoleAuthMiddleware`), users, settings, plugins, imports, logs, email log, text messages, CSV export, kiosk admin, property types, other users' private notes (`canReadPrivateNotes()`); and implies every switch below |
-| 2 | Add Records | `usr_AddRecords` | `isAddRecordsEnabled()` | New person and family, cart-to-family, donated items and paddle numbers (tracked in #10684) |
-| 3 | Edit Records | `usr_EditRecords` | `isEditRecordsEnabled()` | Person/family editors, properties on people, Why Came, verify report, group member properties, Sunday School edits |
-| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family (`DeleteRecordRoleAuthMiddleware`, `SelectDelete.php`) |
+| 1 | Admin | `user_usr.usr_Admin` | `isAdmin()` | The whole `/admin` app (`AdminRoleAuthMiddleware`), users, settings, plugins, imports, logs, every user's email log (others see their own), text messages, CSV export, kiosk admin, property types, Login as Person, other users' private notes (`canReadPrivateNotes()`); and implies every switch below. About 95 direct `isAdmin()` calls |
+| 2 | Add Records | `usr_AddRecords` | `isAddRecordsEnabled()` | New person and family, cart-to-family, donated items and paddle numbers |
+| 3 | Edit Records | `usr_EditRecords` | `isEditRecordsEnabled()`, `canReadAttendance()` | Person/family editors, properties on people, Why Came, verify report, group member properties, Sunday School edits, another person's attendance |
+| 4 | Delete Records | `usr_DeleteRecords` | `isDeleteRecordsEnabled()` | Delete person and family only (`DeleteRecordRoleAuthMiddleware` on the people API) |
 | 5 | Manage Groups | `usr_ManageGroups` | `isManageGroupsEnabled()` | Groups, group properties, group cart, Sunday School admin, events tied to groups |
 | 6 | Finance | `usr_Finance` | `isFinanceEnabled()` | Deposits, pledges, envelopes, all finance reports, finance search, giving on person and family pages. Also needs `bEnabledFinance` |
-| 7 | Manage Fundraisers | `usr_ManageFundraisers` | `isManageFundraisersEnabled()` | Fundraisers. Also needs `bEnabledFundraiser` |
-| 8 | Manage Ministries | `usr_ManageMinistries` | `isManageMinistriesEnabled()` | Every ministry and team (volunteer v2). Also needs the volunteer v2 flag |
-| 9 | Manage My Ministries | `usr_ManageMyMinistries` | `isManageMyMinistriesEnabled()` | Ministries listed for the login in `volunteer_scope_vscp` |
-| 10 | Notes | `usr_Notes` | `isNotesEnabled()`, `canReadNotes()` | Notes on person and family pages and timeline (non-private) |
-| 11 | Edit Self | `usr_EditSelf` | `isEditSelfEnabled()`, `isEditSelfExclusive()` | Own record and own family. **For a non-admin it shuts off every other switch** (portal-only), whatever else is set |
-| 12 | Add Events | `userconfig_ucfg` `bAddEvent` | `isAddEventEnabled()` | Create events and calendars (`AddEventsRoleAuthMiddleware`) |
-| 13 | Email (mailto) | `userconfig_ucfg` `bEmailMailto` | `isEmailEnabled()` | Email-all and mailto links (`EmailRoleAuthMiddleware`) |
+| 7 | Manage Fundraisers | `usr_ManageFundraisers` | `isManageFundraisersEnabled()` | Fundraisers, including their deletes. Also needs `bEnabledFundraiser` |
+| 8 | Manage Ministries | `usr_ManageMinistries` | `isManageMinistriesEnabled()` | Every ministry and team (volunteer v2). Also needs `sVolunteerVersion` `v2` or `both` |
+| 9 | Manage My Ministries | `usr_ManageMyMinistries` | `isManageMyMinistriesEnabled()`, `isVolunteerCoordinatorEnabled()` | Opens the coordinator area; the ministries in it are the login's `volunteer_scope_vscp` rows. Coordinator also needs at least one row |
+| 10 | Notes | `usr_Notes` | `isNotesEnabled()`, `canReadNotes()`, `canWriteNoteOnFamily()` | Read and write non-private notes on any person and family |
+| 11 | Add Events | `userconfig_ucfg` `bAddEvent` | `canManageEvents()`, `isAddEventEnabled()` | Create events and calendars (`AddEventsRoleAuthMiddleware`, `CalendarWriteRoleAuthMiddleware`). `canManageEvents()` also needs `bEnabledEvents`; `isAddEventEnabled()` (2 callers) does not, and the cutover aligns it |
+| 12 | Email (mailto) | `userconfig_ucfg` `bEmailMailto` | `isEmailEnabled()` | Email-all and mailto links (`EmailRoleAuthMiddleware`) |
+
+Derived predicates that combine a switch with data, and keep their bodies at cutover:
+
+| Predicate | Answer today |
+|---|---|
+| `canViewEvents()` | Every staff user when `bEnabledEvents` is on |
+| `canWriteEvents()` | `canManageEvents()`, or a ministry coordinator for their ministry's events |
+| `isVolunteerTeamLeaderEnabled()` | Holds a team scope in `volunteer_scope_vscp`; no switch |
+| `canReadAttendance($personId)` | The person themselves, or Edit Records |
+
+`isEnabledSecurity('bXxx')` maps the same switches by name for the menu (`Menu.php`) and custom field security (`CustomFieldService`). It is part of the seam.
 
 ### 2.2 Implicit rules
 
 | Rule | Where | Parity requirement |
 |---|---|---|
 | Any signed-in staff account reads every person and family | `canReadPerson()`, `canReadFamily()` return `true` | Every role, including a role with no permissions, keeps directory read |
-| Edit Self means portal-only for a non-admin | `isEditSelfExclusive()` | The mirrored Edit Self role must override every other role exactly as today |
-| Module flags gate on top of permissions | `bEnabledFinance`, `bEnabledFundraiser`, volunteer v2 | A flag still turns the module off for everyone, including Owner |
+| A portal session is never staff | `PortalMemberUser` returns `false` from every switch predicate; `StaffRoleAuthMiddleware` | The service denies every staff permission to a portal principal, whatever data it carries |
+| Module flags gate on top of permissions | `bEnabledFinance`, `bEnabledFundraiser`, `bEnabledEvents`, `sVolunteerVersion` | A flag still turns the module off for everyone, including Owner |
+| Own private notes | `Note::isVisibleTo()` | An author always reads their own private notes; `notes.private.read` covers only other authors' notes |
 
 ### 2.3 Gaps the inventory already shows
 
 Recorded so the cutover does not copy them by accident; each is fixed in its own issue, not in the cutover.
 
-- `isAdmin()` gates features that are not system administration: CSV export, the email log, text messages, other users' private notes. Under A5 these need their own permissions (§4.3).
-- `usr_DeleteRecords` is checked by fundraiser and volunteer deletes (#10684, #10688).
-- Custom field security now goes through `CustomFieldService` ([#10952](https://github.com/ChurchCRM/CRM/pull/10952)); the service maps the 13 switches by name, so it moves to the registry unchanged.
+- `isAdmin()` gates features that are not system administration: CSV export, every user's email log, text messages, other users' private notes. Under A5 these need their own permissions (§4.3).
+- The `isAdmin() ||` bypass inside each predicate is what makes an admin hold every switch. A core-only Administrator (A5) works only if that bypass moves into the Legacy Administrator role's grants (§5.2).
+- Custom field security goes through `CustomFieldService` ([#10952](https://github.com/ChurchCRM/CRM/pull/10952)); the service maps the switches by name, so it moves to the registry unchanged.
 
 ## 3. Target model
 
 ### 3.1 Permission registry
 
-One code-owned registry (`src/ChurchCRM/Authorization/PermissionRegistry.php`) lists every permission key. Keys are lowercase and dot-separated (`people.update`, `finance.deposits.manage`). Each entry declares:
+The Member Portal already ships this pattern for members (`src/ChurchCRM/Portal/Permissions/`): `PortalCapabilityRegistry`, `PortalAuthorizationService::decide()`, `Decision` with a reason code, `EffectiveGrant`, `PortalScope` (`none`, `family`, `team`, `ministry`, `group`) and a `plugin.<id>.` key pattern for plugin capabilities. Staff RBAC reuses it: move the value types (`Decision`, `EffectiveGrant`, the scope class) to `src/ChurchCRM/Authorization/` and share them between the portal and staff services, and copy the plugin key rule. Staff and portal registries stay separate, because a portal capability must never be granted to staff by key collision or the reverse.
+
+One code-owned staff registry (`src/ChurchCRM/Authorization/PermissionRegistry.php`) lists every permission key. Keys are lowercase and dot-separated (`people.update`, `finance.deposits.manage`), as portal keys are (`volunteer.team.manage`). Each entry declares:
 
 - `key`, a stable string never reused
-- `module`, the feature flag that must be on, if any
+- `module`, the feature flag that must be on, if any (the portal's `featureSwitch`)
 - `sensitivity`: `ordinary` or `sensitive`; `sensitive` permissions need a second approver to assign (A6)
 - `since`, the release that added it; used for the frozen Legacy Administrator (A4)
 
@@ -76,11 +89,11 @@ Unknown keys deny. Routes do not invent keys.
 
 | Kind | Who edits it | Examples |
 |---|---|---|
-| Built-in role | ChurchCRM, versioned in code, immutable | the 13 mirror roles, Administrator, Legacy Administrator |
+| Built-in role | ChurchCRM, versioned in code, immutable | the 12 mirror roles, Administrator, Legacy Administrator |
 | Church template | ChurchCRM ships it; a church copies it to change it | Office Staff, Finance Manager, Pastor (RFC §3 catalog) |
 | Church role | The church | copies of templates, or built from built-in roles |
 
-A user may hold several roles. The effective permission set is the **union** of their roles' grants, then **intersected** with module flags, Edit Self exclusivity, scope and field rules (RFC D2 baseline).
+A user may hold several roles. The effective permission set is the **union** of their roles' grants, then **intersected** with module flags, the staff boundary, scope and field rules (RFC D2 baseline).
 
 ### 3.3 Grants
 
@@ -88,6 +101,8 @@ A grant is one indivisible unit: `permission` + `scope`. Phase 1 has two scopes:
 
 - `all`: the whole church
 - `my-ministries`: the rows in `volunteer_scope_vscp` for the user, answered by `VolunteerAuthorizationService` as today
+
+`my-ministries` is resolved per user at decision time, so one built-in role serves every coordinator. The portal's fixed scopes (`ministry` 12, `team` 4) are for grants given to one person; staff gains them only when a feature needs a grant on a named record.
 
 Roles combine whole grants; a scope from one role never attaches to an action from another. New scope types arrive only with a policy implementation and negative tests (RFC §9 F0 contract).
 
@@ -97,7 +112,7 @@ Roles combine whole grants; a scope from one role never attaches to an action fr
 |---|---|
 | Owner | Exactly one per install. Superuser (A8). Cannot be deleted or demoted; ownership transfers only by the Owner to another active account, with re-authentication |
 | Staff user | `user_usr` row with roles |
-| Portal member | No `user_usr` row under member sign-in (#10464); not part of this model |
+| Portal member | No `user_usr` row (member sign-in, 7.8.3). The session is a `PortalPrincipal`; volunteer services see it as the in-memory `PortalMemberUser`. Authorized by `PortalAuthorizationService` and `portal_grant_pgr`, not by this model |
 | Kiosk, API token | Device and service principals with their own scopes (RFC §8); unchanged in phase 1 |
 
 ## 4. Built-in roles at cutover
@@ -117,8 +132,7 @@ One built-in role per V1 switch, holding exactly what that switch allows today:
 | Ministries: Manage All | `ministries.manage` (module volunteer v2) |
 | Ministries: Manage Mine | `ministries.manage` scope `my-ministries` |
 | Notes | `notes.read`, `notes.create` |
-| Self Service | `self.update`, `self.family.update`; **exclusive** (§5.2) |
-| Events: Add | `events.create`, `calendars.manage` |
+| Events: Add | `events.create`, `calendars.manage` (module `bEnabledEvents`) |
 | Email | `email.mailto` |
 | Administrator | core administration, §4.3 |
 
@@ -135,10 +149,13 @@ Core administration only. Today's `isAdmin()`-only features are split as follows
 | Users, roles, settings, system, plugins install/configure, backups, upgrade, logs | Administrator |
 | CSV import | Administrator |
 | CSV export, People Report CSV | new `export.people` (bulk export gate, #10516) |
-| Email log, text messages | new `communication.log.read` |
+| Other users' email logs, text messages | new `communication.log.read`; every user keeps their own email log |
 | Other users' private notes | new `notes.private.read`, `sensitive` |
+| Login as Person (Member Portal as a member, audited in `login_as_person_session_lps`) | Administrator |
 | Kiosk device management | Administrator |
 | Property type definitions | Administrator |
+
+Every remaining `isAdmin()` call is classified as one of these rows before the cutover merges (roadmap item 10).
 
 ## 5. Authorization service and the cutover seam
 
@@ -164,9 +181,14 @@ public function isFinanceEnabled(): bool
 }
 ```
 
-This keeps the ~200 call sites and the 13 role middlewares untouched in phase 1. The service implements the implicit rules of §2.2 itself:
+This keeps the ~330 predicate calls and the 16 role middlewares untouched in phase 1. Two predicates change meaning and need care:
 
-- Self Service exclusive: a user who holds Self Service is denied every staff permission, whatever other roles they hold, unless they are the Owner or hold Legacy Administrator. This matches `isEditSelfExclusive()` today (`!isAdmin() && isEditSelf()`).
+- The `isAdmin() ||` bypass leaves every switch predicate. Legacy Administrator holds every grant (A4), so a migrated admin keeps the same answers; a new core-only Administrator (A5) does not gain finance or people rights by bypass.
+- `isAdmin()` becomes `can('system.admin')`, held by Administrator, Legacy Administrator and the Owner. Calls that guard non-administration features move to their A9 permission first (item 10), so the parity gate compares like with like.
+
+The service implements the implicit rules of §2.2 itself:
+
+- A portal principal is denied every staff permission.
 - Module flags are checked inside `can()`, so a disabled module denies even the Owner.
 - Directory read stays granted to every staff principal.
 
@@ -183,16 +205,20 @@ The Owner can read everything, so its use is visible instead of restricted:
 - Reads of `sensitive` resources by the Owner are written to the audit log (who, what record, when; never the content).
 - Ownership transfer and Owner password or 2FA changes require re-authentication and notify the Owner's email.
 - The admin dashboard shows the Owner account and its last sign-in to every Administrator.
-- When "Login as User" ships (member sign-in §6.5), it never opens or acts as the Owner.
+- Login as Person (shipped in 7.8.3) opens only a member's portal, never a staff session; it is refused when the target person is the Owner.
 
 ## 7. Data model (F0 schema, additive until cutover)
 
 | Table | Columns | Notes |
 |---|---|---|
-| `rbac_role` | `id`, `key` (unique), `name`, `kind` (`builtin`, `template`, `church`), `version`, `copied_from` | Built-in rows seeded idempotently by key |
-| `rbac_grant` | `id`, `role_id` FK, `permission_key`, `scope` | Unique (`role_id`, `permission_key`, `scope`) |
-| `rbac_user_role` | `user_id` FK, `role_id` FK, `assigned_by`, `approved_by`, `assigned_at` | Primary key (`user_id`, `role_id`) |
-| `rbac_audit` | `id`, `actor_id`, `subject_id`, `action`, `detail` JSON, `created_at` | Role changes, Owner sensitive reads, ownership transfer |
+Names follow the schema convention (`portal_grant_pgr`, `pgr_` column prefix).
+
+| Table | Columns | Notes |
+|---|---|---|
+| `role_rol` | `rol_ID`, `rol_Key` (unique), `rol_Name`, `rol_Kind` (`builtin`, `template`, `church`), `rol_Version`, `rol_CopiedFrom` | Built-in rows seeded idempotently by key |
+| `role_grant_rgr` | `rgr_ID`, `rgr_rol_ID` FK, `rgr_Permission`, `rgr_Scope` | Unique (`rgr_rol_ID`, `rgr_Permission`, `rgr_Scope`) |
+| `user_role_uro` | `uro_usr_ID` FK, `uro_rol_ID` FK, `uro_AssignedBy_usr_ID`, `uro_ApprovedBy_usr_ID`, `uro_AssignedAt` | Primary key (`uro_usr_ID`, `uro_rol_ID`); cascades on user delete |
+| `role_audit_rau` | `rau_ID`, `rau_Actor_usr_ID`, `rau_Subject_usr_ID`, `rau_Action`, `rau_Detail` JSON, `rau_Time` | Role changes, Owner sensitive reads, ownership transfer |
 | `user_usr.usr_IsOwner` | boolean, at most one true | Enforced in the service and by the setup wizard |
 
 All access goes through Propel models and the service; no page writes these tables directly (same rule and lint pattern as custom fields).
@@ -205,37 +231,77 @@ All access goes through Propel models and the service; no page writes these tabl
    3. For each user: one assignment per switch that is on (A2); `usr_Admin` users get Legacy Administrator (A4).
    4. Mark the Owner: the administrator running the upgrade wizard (A12, A13). The report names them to every administrator and says how to transfer ownership.
    5. Verify: for every user, the effective permission set computed from roles equals the set computed from the columns. If any user differs, abort and roll back the transaction.
-   6. Drop the `usr_*` permission columns and the two `userconfig_ucfg` permission rows (A3).
-2. **Parity gate before merge:** a fixture set covers every switch alone, every pair, Edit Self with each switch, admin, zero switches, and each module flag off. Each fixture runs the V1 predicates on `master` and the V2 predicates on the branch against the same database and must agree. Cypress specs run as one user per switch (RFC lesson 6).
+   6. Drop `usr_Admin`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`, `usr_ManageGroups`, `usr_Finance`, `usr_ManageFundraisers`, `usr_ManageMinistries`, `usr_ManageMyMinistries`, `usr_Notes`, and the `bAddEvent` and `bEmailMailto` rows of `userconfig_ucfg` (A3). Step 3 reads the effective `ucfg_permission` value, including the per-user row copied from the `ucfg_per_id = 0` default.
+2. **Parity gate before merge:** a fixture set covers every switch alone, every pair, admin, zero switches, a portal principal, a coordinator with and without scope rows, and each module flag off. Each fixture runs the V1 predicates on `master` and the V2 predicates on the branch against the same database and must agree. The Cypress side is the persona matrix of the [authorization test strategy](authz-test-strategy.md) (`cypress/support/personas-data.js`, `cypress/support/gates/coverage.js`): the cutover changes seed data, not specs.
 3. **Rollback:** restore the backup and reinstall the previous release. The release notes say so plainly.
 
 ## 9. Setup wizard (A7)
 
-The rebuilt wizard asks for church name, the Owner's name, email and password (no default), and which built-in roles or templates to create. It creates the Owner and nothing else; other accounts are created afterwards from the user editor. Existing installs are not re-run through the wizard; the upgrade marks an Owner (§8 step 1.4).
+Today the wizard still shows the seeded `admin` / `changeme` login (`src/setup/templates/setup-steps.php`). The rebuilt wizard asks for church name, the Owner's name, email and password (no default), and which built-in roles or templates to create. It creates the Owner and nothing else; other accounts are created afterwards from the user editor. Existing installs are not re-run through the wizard; the upgrade marks an Owner (§8 step 1.4).
 
-## 10. Roadmap
+## 10. Administrator workflow
+
+Phase 1 lets a church give people built-in roles. It does not let a church edit roles; copies and templates come after phase 1. The server enforces every rule below; the UI only explains it.
+
+### 10.1 Where it lives
+
+| Page | Today | Phase 1 |
+|---|---|---|
+| Users list `/admin/system/users` | Name, status, last sign-in | A Roles column, a filter by role, and a **Pending approvals** count |
+| User view `/admin/system/users/{id}` | "Roles & permissions" card from `UserPermissionsService` | Roles held, with who gave each and when. Effective access per permission with its `Decision` reason (not granted, module off, outside the user's ministries). Access history from `role_audit_rau` |
+| User editor `/admin/system/users/new`, `/{id}/edit` | Permission checkboxes | Role picker (§10.3) |
+| Roles `/admin/system/roles` (new) | — | Read-only list of built-in roles: what each grants, how many hold it, link to the holders |
+| Admin dashboard | Users tile | Owner card (§6) and pending approvals |
+
+### 10.2 Journeys
+
+| Job | What the administrator does | Rules the service applies |
+|---|---|---|
+| Morning after the upgrade | Nothing. The upgrade report lists each user with their new roles; access is unchanged | A2, A4, A12 |
+| Add a staff member | Users → Add User → pick the person → pick roles → check the effective-access preview → Save. The new user gets a welcome email | Ceiling and no-self (A6). A sensitive role is saved as pending; the other roles apply at once |
+| Change someone's roles | User view → Edit → add or remove roles → Save. The user is emailed the change | Takes effect on their next request (§5.1). Removal never needs approval |
+| Approve a sensitive role | Users list → Pending approvals → review who asked, for whom and what it grants → Approve or Decline | Approver is the Owner or another `roles.assign` holder, never the assigner or recipient (A11). Pending grants nothing. Owner assignments skip this step and are audited |
+| "Why can't Jane do X?" | User view → effective access shows the row and its reason | Reasons come from `Decision`, so the page and the 403 agree |
+| Move an admin off Legacy Administrator | User view → **Replace with Administrator** → the page lists what they would lose → tick the roles that keep what they still need → Save | Optional, never automatic. Sensitive roles in the selection follow the approval rule |
+| Staff member leaves | Disable the account (sign-in blocked, roles kept for re-enable) or delete the user (assignments removed by cascade) | The audit rows stay, keyed by user id |
+| Owner moves on | Owner's user view → Transfer ownership → pick an active account → re-authenticate | §3.4, §6. The Owner cannot be deleted, disabled or demoted |
+| One-person church | The Owner does everything | No approver needed (A11); every sensitive assignment is audited |
+
+### 10.3 Role picker
+
+- Roles appear as cards grouped like today's permission card (People & Families, Groups, Finance, Events, Email, Volunteers, Administration), each with one plain sentence of what it allows. No permission matrix (RFC R5).
+- A role the assigner may not give is shown disabled with the reason ("You do not hold Finance"), never hidden, so the assigner knows whom to ask.
+- Sensitive roles carry a badge and say that someone else must approve.
+- The preview is the effective-access list of §10.1 for the unsaved selection, computed by the same service.
+- Saving a change that removes the user's last role, or grants a sensitive one, asks first with `confirmAction()`.
+- Tabler cards, light and dark, usable on a phone; every string through `gettext()`.
+
+## 11. Roadmap
 
 Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` once, when the parity gate passes. Each item is one PR into that branch.
 
 | # | Issue (proposed) | Depends on | Exit evidence |
 |---|---|---|---|
 | 1 | Parity fixtures: V1 predicate answers for every switch combination | — | Fixture runner on `master` |
-| 2 | Permission registry and built-in role definitions (code only) | 1 | Unit tests: every V1 predicate maps to registry keys |
+| 2 | Move `Decision`, `EffectiveGrant` and the scope class to `ChurchCRM\Authorization`; permission registry and built-in role definitions (code only) | 1 | Portal specs unchanged; unit tests: every V1 predicate maps to registry keys |
 | 3 | Schema and Propel models (§7), install SQL and upgrade script skeleton | 2 | Fresh install and upgrade both produce the same tables |
-| 4 | `AuthorizationService` with union/intersection, Self Service exclusivity, module flags, request cache | 2, 3 | Unit tests with fake principals |
-| 5 | Predicate seam: `User` predicates ask the service | 4 | Parity fixtures green against the service |
+| 4 | `AuthorizationService` with union/intersection, portal-principal deny, module flags, request cache | 2, 3 | Unit tests with fake principals |
+| 5 | Predicate seam: `User` predicates and `isEnabledSecurity()` ask the service; admin bypass removed | 4, 10 | Parity fixtures green against the service |
 | 6 | Upgrade conversion, verification and column drop (§8) | 3, 5 | Upgrade tests from seeded V1 data, including abort on mismatch |
 | 6a | Hold the automatic upgrade for the cutover release; maintenance page; wizard runs backup, Owner, cutover (A13) | 6 | Auto-upgrade stops at the cutover; wizard path tested end to end |
-| 7 | User editor: role picker replaces the checkboxes; `roles.assign`, grant ceiling, no-self, second approver for sensitive, audit, notice | 4 | Cypress per rule |
+| 7 | User editor role picker and effective-access preview (§10.3); `roles.assign`, grant ceiling, no-self, audit, email notice | 4 | Cypress per rule |
+| 7a | Pending approvals: queue on the Users list and dashboard, approve and decline (§10.2) | 7 | Cypress: assigner and recipient cannot approve; pending grants nothing |
+| 7b | Users list Roles column and filter, user view roles and access history, read-only Roles page (§10.1) | 7 | Cypress; light, dark and phone pass |
+| 7c | Replace Legacy Administrator with Administrator plus chosen roles (§10.2) | 7, 10 | Cypress: the loss list matches the service |
 | 8 | Owner: flag, safeguards (§6), transfer flow | 3, 4 | Cypress and audit assertions |
 | 9 | Setup wizard rebuild (§9) | 8 | Fresh-install Cypress run |
-| 10 | Admin-only split (§4.3): new permissions for export, communication log, private notes | 2 | Callers moved; negative tests |
+| 10 | Admin-only split (§4.3): classify every `isAdmin()` call; new permissions for export, communication log, private notes | 2 | Callers moved; negative tests |
 | 11 | Lint check for the single source of truth (§5.3) | 5 | Check fails on a bad input |
 | 12 | Release notes, upgrade guide, docs tracking issue | 6–9 | Docs PR after release |
 
 After phase 1: church templates and role copies; then per-feature migration of call sites to `can()` with scopes and sensitivity (RFC F3), starting where the audits found the most exposure (exports, notes, custom fields).
 
-## 11. Still open
+## 12. Still open
 
 Asked one at a time as the design proceeds; recorded here until answered.
 

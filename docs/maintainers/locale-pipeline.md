@@ -6,7 +6,7 @@ All workflows, branches and the rules they follow: [github-actions.md](github-ac
 
 **Goal:** every locale in `src/locale/locales.json` is fully translated for every release. The marketing site's languages do not rank or exclude CRM locales.
 
-**Source of truth:** the repo. Translations live in `src/locale/i18n/<locale>.json`; each locale's `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` and `.mo` are generated from that JSON. There is no outside translation service ([#11416](https://github.com/ChurchCRM/CRM/issues/11416) retired POEditor).
+**Source of truth:** the repo. Translations live in `src/locale/i18n/<locale>.json`; each locale's `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` and `.mo` are generated from that JSON. Translations are reviewed through GitHub PRs.
 
 ## Two flows
 
@@ -25,8 +25,8 @@ The terms PR carries `locale/messages.po`, the refreshed queue `locale/terms/mis
 **Translate flow** fills what the repo is missing, as a normal PR.
 
 ```
-npm run locale:missing ─► locale/terms/missing/ ─► translation agent (/locale-translate) ─► npm run locale:apply ─► translate PR ─merge─► master
-(repo vs messages.po)     (checked-in queue)                                              (JSON, .po, .mo)       (person)
+npm run locale:missing ─► locale/terms/missing/ ─► translation agent (/locale-translate) ─► locale:apply --json-only ─► translate PR ─merge─► master ─► Locale: rebuild generated files ─► rebuild PR (.po/.mo)
+(repo vs messages.po)     (checked-in queue)                                                   (JSON + queue only)      (person)          (workflow)                          (person)
 ```
 
 Done for a release when `npm run locale:missing` reports nothing to translate on `master` (`npm run locale:release` checks it).
@@ -36,12 +36,13 @@ Done for a release when `npm run locale:missing` reports nothing to translate on
 | Command | Does |
 |---|---|
 | `npm run locale:build` | Extracts every string from the code into `locale/messages.po`, then runs `locale:apply --prune` and `locale:missing`, leaving the tree ready to commit (CI runs it; needs the Docker DB) |
-| `npm run locale:missing [-- --locale de,fr]` | Writes each locale's untranslated terms to `locale/terms/missing/<code>/<code>-<n>.json`. Filled values already in a batch are kept. `--term "<new msgid>"` also queues a string that is not in `messages.po` yet |
-| `node locale/scripts/locale-translate.js --list / --prefill / --export / --apply-bulk` | What the translation agent uses to read and fill the batches (validates placeholders, script, plural forms) |
-| `npm run locale:apply [-- --locale de]` | Moves every filled batch term into the locale JSON, rebuilds the locale `.po` and `.mo`, and empties the batch. Rejected values stay in the batch with the reason |
+| `npm run locale:missing [-- --locale de,fr]` | Writes each locale's untranslated terms to `locale/terms/missing/<code>/<code>-<n>.json`. Filled values already in a batch are kept. `--term "<new msgid>"` also queues a string that is not in `messages.po` yet. A full run also writes `locale/terms/context.json`, the code location of each queued term for the translator |
+| `node locale/scripts/locale-translate.js --list / --prefill / --export / --apply-bulk` | What the translation agent uses to read and fill the batches (validates placeholders, script, plural forms). `--export` includes each term's code location from `locale/terms/context.json` |
+| `npm run locale:apply [-- --locale de]` | Moves every filled batch term into the locale JSON, rebuilds the locale `.po` and `.mo`, and empties the batch. Rejected values stay in the batch with the reason. A batch is emptied only after the locale files are written, so a failed apply loses nothing |
+| `npm run locale:apply -- --json-only` | Writes only the locale JSON, no `.po`/`.mo`. The translate flow uses this; the generated files are rebuilt on `master` after merge (below) |
 | `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po` (`locale:build` runs this) |
 | `npm run locale:apply -- --check` | Writes nothing; fails when a locale `.po`/`.mo` does not match its JSON |
-| `npm run locale:audit` | Completeness per locale from the repo: `src/locale/poeditor.json` (read by the app for the translation %) and `locale/poeditor-audit.md` |
+| `npm run locale:audit` | Completeness per locale from the repo: `src/locale/locale-stats.json` (read by the app for the translation %) and `locale/locale-audit.md` |
 | `npm run locale:release [-- --go]` | Release check, below |
 | `npm run locale:test` | Unit tests for the locale scripts |
 
@@ -50,19 +51,19 @@ Done for a release when `npm run locale:missing` reports nothing to translate on
 | Branch | Holds | Made by | Merged? |
 |---|---|---|---|
 | `locale/terms/<version>` | New source strings in `locale/messages.po`, and the locale files without removed strings. One rolling branch: a later burst updates the open terms PR instead of opening another | `Locale: extract terms` (`locale-generate-terms.yml`) | Yes, after review |
-| `locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>` | Translations: `src/locale/i18n/<locale>.json` and the rebuilt `.po`/`.mo` | the translation agent (`/locale-translate`) | Yes, as a normal PR after review |
+| `locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>` | Translations: `src/locale/i18n/<locale>.json` and the queue (`locale/terms/`) only — no generated `.po`/`.mo` | the translation agent (`/locale-translate`) | Yes, as a normal PR after review |
+| `locale/rebuild/<version>` | The generated `.po`/`.mo` rebuilt from the JSON on `master`. One rolling branch, updated while its PR is open | `Locale: rebuild generated files` (`locale-rebuild.yml`) | Yes, after review |
 
-`locale/download/<version>` branches came from the retired POEditor download and are no longer made.
 
 ### Why it does not loop
 
-`Locale: extract terms` ignores `src/locale/i18n/**` and `src/locale/textdomain/**`, so merging a terms PR or a translate PR never starts another extraction.
+`Locale: extract terms` ignores `src/locale/i18n/**` and `src/locale/textdomain/**`, so merging a terms PR or a translate PR never starts another extraction. `Locale: rebuild generated files` triggers only on `src/locale/i18n/**` and `locale/messages.po`, and its PR touches only `src/locale/textdomain/**`, so merging a rebuild PR starts neither a rebuild nor an extraction.
 
 ### Rules for translation agents
 
-- Start every session on a new `locale/translate/**` branch (`node locale/scripts/locale-branch-manager.js --init`).
+- Start every session on a new `locale/translate/**` branch (`node locale/scripts/locale-branch-manager.js --init`). `--init` runs the run's one preflight (dependencies installed, git identity set) and fails before anything is created when the checkout is not ready; the same preflight runs once at `--commit-and-push`.
 - Run `npm run locale:missing` first. The queue is checked in, so this only refreshes it to match the checkout.
-- After every locale, `node locale/scripts/locale-branch-manager.js --commit-and-push --locale <code> …` writes it into the locale files (`locale:apply`) and commits and pushes that locale's JSON, `.po` and `.mo`, and its queue folder `locale/terms/missing/<code>/` (the applied terms leave it). The push is the backup; the PR is the delivery.
+- Commit the whole run in one pass, the same for 1 term or 1,000: `node locale/scripts/locale-branch-manager.js --commit-and-push --terms <total>` applies every locale's filled batches to the JSON (`locale:apply --json-only`) and makes a single commit and push of the JSON, `locale/terms/english-ok.json`, `locale/terms/context.json` and the queue folders (the applied terms leave them). `--locale <code[,code...]> --language "<name>"` scopes the same flow to one locale or family for a deliberately partial run.
 - Fill every key a plural entry has; never add, remove or `|`-join forms.
 
 ## Rewording a string
@@ -71,14 +72,16 @@ Translations are keyed by the English msgid, so rewording one drops its translat
 
 1. Change the string in the code.
 2. `npm run locale:missing -- --term "New wording"` queues it for every locale.
-3. Translate (`/locale-translate`), then `npm run locale:apply`. The JSON gets the new key at once (JS uses it); the `.po`/`.mo` pick it up in the next terms PR, which also drops the old key.
+3. Translate (`/locale-translate`), then `npm run locale:apply -- --json-only`. The JSON gets the new key at once (JS uses it); the `.po`/`.mo` pick it up in the rebuild PR after the translate PR merges, and the old key drops at the next extraction.
 
 ## Workflows
 
 | Workflow | Trigger | Does | Needs |
 |---|---|---|---|
 | `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**` (after the wait), manual (no wait) | runs `npm run locale:build`, writes the terms report (`locale-terms-diff.js`: PR body, run summary, `locale-terms-report` artifact), opens or updates the terms PR | repo variable `LOCALE_TERMS_WAIT_MINUTES` (optional, default 15) |
-| `locale-sync-poeditor.yml`, `locale-upload-missing.yml` | manual only | **Retired.** Kept until the follow-up PR deletes them. Do not run them: a POEditor download overwrites translations made in the repo | `POEDITOR_TOKEN` |
+| `locale-rebuild.yml` | push to `master` touching `src/locale/i18n/**` or `locale/messages.po`, manual | runs `npm run locale:apply`, verifies with `locale:apply --check`, opens or updates the rebuild PR (`src/locale/textdomain/**` only) | — |
+| `locale-check.yml` | pull request touching the locale files | merge gate for locale PRs: `npm run locale:test`, queue in sync (`locale:missing` leaves no diff), and `locale:apply --check` on PRs that carry generated files | — |
+| `locale-terms-guard.yml` | pull request touching `src/**` or `webpack/**` | the terms review at code-review time: `locale-terms-guard.js` checks the literals the PR adds against the base catalog and fails on flags (see below) | the `locale-terms-ok` label for intentional variants |
 
 ## Merge bursts
 
@@ -95,6 +98,10 @@ The body opens with the counts and the next step, then:
 - **New terms** with where each is in the code (`git grep`, since `messages.po` has no locations), and **Removed terms**, marking those merged into an existing near-duplicate.
 
 Fix an odd string in the code, not in the terms PR; the next extraction updates the PR. Bodies over GitHub's limit are truncated; the full list is in the run summary and the `locale-terms-report` artifact. Run it locally with `node locale/scripts/lib/locale-terms-diff.js --base HEAD` after `npm run locale:build`.
+
+## Terms guard on code PRs
+
+The same review runs before merge on every code PR: `Locale: terms guard` (`locale/scripts/lib/locale-terms-guard.js`) reads the PR diff, pulls the literals it adds to `gettext()` / `ngettext()` / `t()` calls, and flags the ones that are not in the base catalog when they near-duplicate a catalog term, near-duplicate another term added by the same PR (the casing pairs — neither is in the catalog yet), look like code, run over 200 characters, or reword a catalog term the PR removes. Flags fail the check and are posted as one PR comment, updated on each push. A wording that is intentional passes with the `locale-terms-ok` label and the reason in the PR description; the comment stands as the record. Terms-cleanup PRs trip the rewording flags by design — they carry the label. Run it locally with `node locale/scripts/lib/locale-terms-guard.js --base <rev>`.
 
 ## Release
 

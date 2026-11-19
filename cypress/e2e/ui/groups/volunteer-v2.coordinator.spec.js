@@ -60,8 +60,12 @@ let seriesEnd = "";
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
+    // Let the login page settle before typing: starting keyboard simulation
+    // while the document is still being replaced after cy.visit is the
+    // Cypress runner KeyboardEvent flake (nightly run 44217282398).
+    cy.url().should("include", "/session/begin");
+    cy.get("input[name=User]").should("be.visible").click().type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").should("be.visible").click().type(Cypress.testEnv("admin.password") + "{enter}");
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -69,8 +73,10 @@ function freshAdminLogin() {
 function freshCoordinatorLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
-    cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
+    // Same settle-before-typing guard as freshAdminLogin above.
+    cy.url().should("include", "/session/begin");
+    cy.get("input[name=User]").should("be.visible").click().type(Cypress.testEnv("standard.username"));
+    cy.get("input[name=Password]").should("be.visible").click().type(Cypress.testEnv("standard.password") + "{enter}");
     cy.url().should("not.include", "/session/begin");
 }
 

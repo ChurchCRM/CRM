@@ -3,7 +3,7 @@ import { type APIRequestContext, expect, type Locator, type Page, request, test 
 import { captureScreen, defineCapture } from '../support/capture';
 import { BASE_URL } from '../support/env';
 import { humanClick, humanPause, settle } from '../support/human';
-import { findDemoPerson } from '../support/member-sign-in';
+import { findDemoPerson, useMemberSignIn } from '../support/member-sign-in';
 
 const ANDREW_EMAIL = 'andrew.baker@demo.churchcrm.io';
 
@@ -212,7 +212,9 @@ async function dismissHeaderNotices(page: Page): Promise<void> {
 
 async function openEmailHistoryPage(page: Page): Promise<void> {
   await openAndrew(page);
-  await humanClick(page.locator('#email-history-show-all'));
+  const personId = page.url().match(/\/people\/view\/(\d+)/)?.[1];
+  expect(personId, 'person id from the open person view').toBeTruthy();
+  await page.goto(`/people/view/${personId}/emails`);
   await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
   await dismissHeaderNotices(page);
   await expect(page.locator('[data-email-history-table] [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
@@ -221,11 +223,13 @@ async function openEmailHistoryPage(page: Page): Promise<void> {
 
 test.describe('Email history', () => {
   let restoreMail: (() => Promise<void>) | undefined;
+  let restoreSignIn: (() => Promise<void>) | undefined;
 
   // Andrew gets three composer messages and a family verification email. The
   // verification email is one ChurchCRM writes itself, so its content is not stored.
   test.beforeAll(async ({ request }) => {
     restoreMail = await enableOutgoingMail(request);
+    restoreSignIn = await useMemberSignIn(request);
     const andrew = await findDemoPerson(request, ANDREW_EMAIL);
     expect((await request.post(`/api/family/${andrew.familyId}/verify`)).ok(), 'family verification email').toBeTruthy();
     await sendComposerEmail(
@@ -249,6 +253,7 @@ test.describe('Email history', () => {
   });
 
   test.afterAll(async () => {
+    await restoreSignIn?.();
     await restoreMail?.();
   });
 
@@ -261,8 +266,8 @@ test.describe('Email history', () => {
   });
 
   test('email-history-modal', modal, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    const row = page.locator('#email-history-card [data-email-log-row]').filter({ hasText: 'Volunteers needed for the fall festival' });
+    await openEmailHistoryPage(page);
+    const row = page.locator('[data-email-history-table] [data-email-log-row]').filter({ hasText: 'Volunteers needed for the fall festival' });
     await expect(row.first()).toBeVisible({ timeout: 15000 });
     await openEmailHistoryModal(page, row.first());
     await expect(page.locator('#email-history-modal-body')).toHaveAttribute('srcdoc', /.+/, { timeout: 15000 });

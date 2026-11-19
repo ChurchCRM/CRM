@@ -17,8 +17,9 @@ The terms PR body lists each new and removed msgid, where it is in the code, and
 
 1. Wrap PHP UI text in `gettext()`
 2. Wrap JS UI text in `i18next.t()`
-3. Reuse an existing msgid when the words are the same role (People not Persons in UI)
-4. Commit the source only; `messages.po` and `locale:build` run on merge to `master`
+3. Before introducing a msgid, compare it against `locale/messages.po` for case, punctuation, whitespace, and near-identical wording. Reuse the existing key for the same meaning; keep distinct wording when its context or meaning differs.
+4. Before committing, review each added or changed `gettext()` / `i18next.t()` term against the existing catalog. Fix accidental variants in source; check for removed terms that would discard translations. Explain any intentional near-duplicates or rewordings in the PR body. CI enforces this step: the `Locale: terms guard` check runs the comparison on the PR diff and fails on flags; an intentional variant passes with the `locale-terms-ok` label.
+5. Commit the source only; `messages.po` and `locale:build` run on merge to `master`
 
 ## Phrases
 

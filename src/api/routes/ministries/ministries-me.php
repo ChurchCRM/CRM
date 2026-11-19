@@ -26,38 +26,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
- * Volunteer Management V2 API — the member self-service surface (design §3.3.3).
- *
- * Four of the seven endpoints §3.3.3 lists shipped here with #9709, ahead of #9712:
- * every one of them is half of a workflow #9709 was accountable for ("volunteer can
- * accept or decline", "decline creates a gap", "coordinator can approve/reject proposed
- * substitutions"), and none could be proven without the surface the volunteer actually
- * answers on. **#9712 completes the surface** with the self-service *discovery* half —
- * `/me/opportunities`, `/me/signup`, `/me/qualifications` — plus one endpoint §3.3.3
- * does not list, `/me/assignments/{id}/substitutes`, which exists so §5.6's "Find a
- * sub" picker can only ever offer a name `propose-substitute` will accept.
- *
- * **This group carries NO role gate.** Only `VolunteerV2EnabledMiddleware`. That is the
- * whole design of §3.3.3 and §4.7: the acting person is
- * `AuthenticationManager::getCurrentUser()->getId()` — which IS the person id (F4) —
- * and **no endpoint here accepts a `personId` parameter identifying the actor**. #9712's
- * "unauthorized person IDs cannot be substituted into requests" is therefore satisfied
- * structurally rather than by a check that can be forgotten. (`propose-substitute` does
- * take a `personId`, but it names the *substitute*, never the actor, and the server
- * re-derives every eligibility rule for them.)
- *
- * A volunteer is an EditSelf-exclusive user (D14), so `AuthMiddleware` would normally
- * turn them away entirely; `isLimitedAccessAllowedPath()` (#9706, §4.7) exempts exactly
- * `/api/ministries/me/` behind the rollout flag. The exemption grants **reachability, not
- * authority**: every handler below still authorizes per record, and answers **403, never
- * 404**, for someone else's assignment — the record exists, and leaking its existence is
- * acceptable where leaking its content is not (§4.8).
- *
- * Authorization itself is not decided here. `VolunteerAssignmentService::respond()`,
- * `proposeSubstitute()` and `withdrawSwap()` each check the acting person against the
- * row, because they are also reachable from the coordinator surface.
- */
-/**
  * How far ahead `GET /me/opportunities` looks when the caller names no window.
  *
  * S6 is opened with no parameters at all by a volunteer on a phone, so "what is

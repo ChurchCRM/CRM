@@ -1,12 +1,12 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require __DIR__ . '/../_charity-details-banner.php';
 
 $year = $overview['year'];
 $root = SystemURLs::getRootPath();
@@ -16,20 +16,7 @@ $period = http_build_query([
     'datetype' => 'Payment',
 ]);
 $statementsUrl = $root . '/finance/reports/giving-statements?' . $period;
-$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 $hasStatements = $overview['statements']['gifts'] > 0;
-
-$wording = [
-    'sTaxReport1' => gettext('Opening line'),
-    'sTaxReport2' => gettext('Thank-you line'),
-    'sTaxReport3' => gettext('Closing line'),
-    'sTaxSigner' => gettext('Signed by'),
-];
-$panelSettings = array_map(
-    static fn (string $name, string $label): array => ['name' => $name, 'type' => 'text', 'label' => $label],
-    array_keys($wording),
-    array_values($wording)
-);
 
 // Each step: state is ok / warn / info; the link takes the team to where it is fixed.
 $steps = [
@@ -60,13 +47,6 @@ $steps = [
         'url' => $root . '/finance/reports',
         'label' => gettext('Financial Reports'),
     ],
-    [
-        'state' => !empty(SystemConfig::getValue('sChurchName')) && !empty(SystemConfig::getValue('sChurchAddress')) ? 'ok' : 'warn',
-        'title' => gettext('Church Information'),
-        'text' => gettext('Verify church name, address, and contact info appears on tax statements.'),
-        'url' => $isAdmin ? $root . '/admin/system/church-info' : '',
-        'label' => gettext('Settings'),
-    ],
 ];
 $badge = ['ok' => 'bg-green-lt text-green', 'warn' => 'bg-warning text-dark', 'info' => 'bg-blue-lt text-blue'];
 $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
@@ -76,7 +56,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
     <form method="GET" class="card mb-3" id="yearForm">
         <div class="card-body d-flex flex-wrap align-items-end gap-3">
             <div>
-                <label for="year" class="form-label fw-bold mb-1"><?= gettext('Year') ?></label>
+                <label for="year" class="form-label fw-bold mb-1"><?= gettext('Church Fiscal Year') ?></label>
                 <select name="year" id="year" class="form-select">
                     <?php foreach ($years as $option) : ?>
                         <option value="<?= (int) $option ?>" <?= $option === $year ? 'selected' : '' ?>><?= InputUtils::escapeHTML(FiscalYearUtils::getFiscalYearDatesForCalendarYear($option)['label']) ?></option>
@@ -85,6 +65,11 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
             </div>
             <button type="submit" class="btn btn-primary" id="showYear"><i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Show') ?></button>
             <span class="text-body-secondary small mb-2"><?= InputUtils::escapeHTML($overview['label']) ?> · <?= InputUtils::escapeHTML($overview['startDate']) ?> – <?= InputUtils::escapeHTML($overview['endDate']) ?></span>
+            <?php if (substr($overview['startDate'], 5) !== '01-01') : ?>
+                <div class="w-100 text-body-secondary small" id="fiscalYearNote">
+                    <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31.') ?>
+                </div>
+            <?php endif; ?>
         </div>
     </form>
 
@@ -93,8 +78,8 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
             [gettext('Families'), (string) $overview['statements']['families'], 'yearFamilies'],
             [gettext('Payments'), (string) $overview['statements']['gifts'], 'yearGifts'],
             [gettext('Total'), $overview['statements']['total'], 'yearTotal'],
-            [gettext('Can be emailed'), (string) $overview['emailable'], 'yearEmailable'],
-            [gettext('Print and mail'), (string) $overview['mailOnly'], 'yearMailOnly'],
+            [gettext('Have an email'), (string) $overview['emailable'], 'yearEmailable'],
+            [gettext('Mail only'), (string) $overview['mailOnly'], 'yearMailOnly'],
         ] as [$label, $value, $id]) : ?>
             <div class="col-6 col-lg">
                 <div class="card card-sm"><div class="card-body">
@@ -108,7 +93,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
     <div class="row row-cards">
         <div class="col-lg-7">
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Tax Year Reporting Checklist') ?></h3></div>
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i>1. <?= gettext('Check the year') ?></h3></div>
                 <div class="list-group list-group-flush" id="yearChecklist">
                     <?php foreach ($steps as $step) : ?>
                         <div class="list-group-item d-flex align-items-center">
@@ -125,55 +110,35 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                 </div>
             </div>
 
-            <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-pen-to-square me-2"></i><?= gettext('Giving Report (Tax Statements)') ?></h3></div>
-                <dl class="card-body mb-0 row" id="statementWordingView">
-                    <?php foreach ($wording as $name => $label) : ?>
-                        <dt class="col-sm-3"><?= InputUtils::escapeHTML($label) ?></dt>
-                        <dd class="col-sm-9"><?= InputUtils::escapeHTML((string) SystemConfig::getValue($name)) ?></dd>
-                    <?php endforeach; ?>
-                </dl>
-                <?php if ($isAdmin) : ?>
-                    <div class="card-footer">
-                        <div id="statementWording"
-                             data-title="<?= InputUtils::escapeAttribute(gettext('Edit')) ?>"
-                             data-settings="<?= InputUtils::escapeAttribute(json_encode($panelSettings, JSON_THROW_ON_ERROR)) ?>"></div>
-                    </div>
-                <?php endif; ?>
-            </div>
         </div>
 
         <div class="col-lg-5">
             <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-file-invoice-dollar me-2"></i><?= gettext('Generate Tax Statements') ?> <?= (int) $year ?></h3></div>
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-pen-to-square me-2"></i>2. <?= gettext('Set up the statement') ?></h3></div>
+                <div class="card-body d-grid gap-2">
+                    <?php if (GivingStatementService::isCanadianChurch()) : ?>
+                        <div class="alert alert-info mb-0" role="status" id="canadian-receipts-info"><?= gettext('Your church country is Canada, so Canadian official receipts are also available when you generate statements.') ?></div>
+                    <?php endif; ?>
+                    <a href="<?= $root ?>/finance/statements/settings" class="btn btn-outline-primary" id="statementSettingsLink"><i class="fa-solid fa-sliders me-1"></i><?= gettext('Statement Settings') ?></a>
+                    <a href="<?= $root ?>/finance/reports/giving-statements/sample" class="btn btn-outline-secondary" id="sampleLetter" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Preview Sample Letter') ?></a>
+                    <div class="form-text"><?= gettext('Letter wording, charity details and PDF handling are set once on Statement Settings.') ?></div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-file-invoice-dollar me-2"></i>3. <?= gettext('Generate Tax Statements') ?> <?= InputUtils::escapeHTML($overview['label']) ?></h3></div>
                 <div class="card-body d-grid gap-2">
                     <?php if ($hasStatements) : ?>
-                        <a class="btn btn-primary" id="previewStatements" href="<?= InputUtils::escapeAttribute($statementsUrl . '&preview=1') ?>"><i class="fa-solid fa-eye me-1"></i><?= gettext('Preview') ?></a>
-                        <a class="btn btn-outline-primary" id="yearPdf" href="<?= InputUtils::escapeAttribute($root . '/finance/reports/giving-statements/download?output=pdf&' . $period) ?>"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></a>
+                        <a class="btn btn-primary" id="yearPdf" href="<?= InputUtils::escapeAttribute($root . '/finance/reports/giving-statements/download?output=pdf&' . $period) ?>"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></a>
                         <a class="btn btn-outline-primary" id="yearCsv" href="<?= InputUtils::escapeAttribute($root . '/finance/reports/giving-statements/download?output=csv&' . $period) ?>"><i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?></a>
                     <?php else : ?>
                         <div class="alert alert-warning mb-0" id="yearEmpty"><strong><?= gettext('No Data Found') ?></strong></div>
                     <?php endif; ?>
-                    <a class="btn btn-outline-secondary" id="customStatements" href="<?= InputUtils::escapeAttribute($statementsUrl) ?>"><i class="fa-solid fa-sliders me-1"></i><?= gettext('Report Settings') ?></a>
-                </div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-chart-column me-2"></i><?= gettext('Financial Reports') ?></h3></div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action" href="<?= $root ?>/finance/reports"><?= gettext('Financial Reports') ?></a>
-                    <a class="list-group-item list-group-item-action" href="<?= $root ?>/finance/pledge/dashboard"><?= gettext('Pledge Dashboard') ?></a>
-                    <a class="list-group-item list-group-item-action" href="<?= $root ?>/finance/deposit/search"><?= gettext('View All Deposits') ?></a>
+                    <a class="btn btn-outline-secondary" id="customStatements" href="<?= InputUtils::escapeAttribute($statementsUrl . ($hasStatements ? '&preview=1' : '')) ?>"><i class="fa-solid fa-sliders me-1"></i><?= gettext('Review and Filter') ?></a>
+                    <div class="form-text"><?= gettext('Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date.') ?></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<?php if ($isAdmin) : ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-year-end.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
