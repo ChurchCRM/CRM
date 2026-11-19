@@ -310,7 +310,7 @@ CREATE TABLE `family_fam` (
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `family_fam`
@@ -591,7 +591,7 @@ CREATE TABLE `person_per` (
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
   INDEX `idx_per_fmr_ID` (`per_fmr_ID`),
   INDEX `idx_per_grd_ID` (`per_grd_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `person_per`
