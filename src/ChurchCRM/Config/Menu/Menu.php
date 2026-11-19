@@ -122,7 +122,7 @@ class Menu
         $peopleMenu->addSubMenu($selfRegisterItem);
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('People Settings'), 'admin/people', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'admin/system/options?mode=famroles', $isAdmin, 'fa-people-roof'));
@@ -199,7 +199,7 @@ class Menu
 
         // Each entry mirrors its route's permission: group properties and group types
         // require Admin, the kiosk manager requires ManageGroups.
-        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
         $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), '/people/properties/g', $isAdmin, 'fa-users'));
         $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
         $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
@@ -235,7 +235,7 @@ class Menu
         $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Log'), 'admin/email/log', true, 'fa-envelope-open-text'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Email Debug'), 'admin/email/debug', true, 'fa-stethoscope'));
@@ -319,7 +319,7 @@ class Menu
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
 
         if ($isAddEventEnabled) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Event Types'), 'event/types', true, 'fa-tags'));
             $eventsMenu->addSubMenu($adminMenu);
         }
@@ -361,7 +361,7 @@ class Menu
         $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
 
         if ($currentUser->isAdmin()) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', true, 'fa-sliders'));
             $ministriesMenu->addSubMenu($adminMenu);
         }
@@ -464,7 +464,7 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('Year-End Giving'), 'finance/reports/year-end', $isFinanceEnabled, 'fa-calendar-check'));
 
         if ($isFinanceEnabled) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'finance/envelopes', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
@@ -503,7 +503,7 @@ class Menu
         }
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
             $adminMenu->addSubMenu(new MenuItem(gettext('Report Settings'), 'admin/system/report-settings', $isAdmin, 'fa-file-lines'));
             $reportsMenu->addSubMenu($adminMenu);
         }
