@@ -1,6 +1,14 @@
 /// <reference types="cypress" />
 
 describe("Volunteer Opportunity Editor", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v1" }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
+    });
+
     beforeEach(() => cy.setupAdminSession());
 
     it("loads the editor page without errors", () => {

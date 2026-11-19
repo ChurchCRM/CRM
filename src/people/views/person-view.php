@@ -398,7 +398,7 @@ if ($person->isMale()) {
                     <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($fam_ID)) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-giving" href="#giving" data-bs-toggle="tab">
-                            <i class="fa-solid fa-circle-dollar-to-slot me-1"></i><?= gettext("Giving") ?>
+                            <i class="fa-solid fa-circle-dollar-to-slot me-1"></i><?= gettext("Giving History") ?>
                         </a>
                     </li>
                     <?php endif; ?>
