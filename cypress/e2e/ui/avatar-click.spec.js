@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { buildBlankPng } from "../../support/synthetic-png";
+
 /**
  * Avatar Click Behavior Tests
  *
@@ -18,6 +20,47 @@
 
 describe("Avatar Click Behavior", () => {
   beforeEach(() => cy.setupStandardSession());
+
+  // The unified People dashboard's Latest tables only list families and
+  // people entered within the selected Time Range (default 30 days), so
+  // the seeded photo family (42) and photo people — entered in 2021/2025 —
+  // no longer appear there. The Dashboard and Lightbox styling tests
+  // therefore create a family with a member today, the way a user gets a
+  // photo into Latest, and upload a photo to each.
+  const createdFamilyIds = [];
+
+  before(() => {
+    cy.setupStandardSession();
+    const familyName = "AvatarLatest" + Cypress._.random(0, 1e6);
+    cy.visit("/FamilyEditor.php");
+    cy.contains("Family Info");
+    cy.get("#FamilyName").type(familyName);
+    cy.get('input[name="FirstName1"]').type("Avatar");
+    cy.get('select[name="Classification1"]').select("1", { force: true });
+    cy.get('button[name="FamilySubmit"]').click();
+    cy.location("pathname").should("include", "/people/family/");
+    cy.location("pathname").then((pathname) => {
+      const familyId = Number(pathname.split("/").pop());
+      createdFamilyIds.push(familyId);
+      cy.wrap(buildBlankPng(200, 300)).then((imgBase64) => {
+        cy.request("POST", `/api/family/${familyId}/photo`, { imgBase64 });
+      });
+      // The member's person id is in their profile link on the family page.
+      cy.get("table a[href*='/people/view/']", { timeout: 10000 })
+        .first()
+        .invoke("attr", "href")
+        .then((href) => {
+          const personId = Number(href.split("/").pop());
+          cy.wrap(buildBlankPng(200, 300)).then((imgBase64) => {
+            cy.request("POST", `/api/person/${personId}/photo`, { imgBase64 });
+          });
+        });
+    });
+  });
+
+  after(() => {
+    cy.cleanupFamilies(createdFamilyIds);
+  });
 
   describe("Dashboard", () => {
     /**
@@ -39,7 +82,7 @@ describe("Avatar Click Behavior", () => {
       cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
         .should("have.length.at.least", 1);
 
-      // Family 42 has an uploaded photo and appears in Latest Families
+      // The family created above has an uploaded photo and is in Latest Families
       cy.get("#latestFamiliesDashboardItem .view-family-photo", { timeout: 10000 })
         .first()
         .click();
