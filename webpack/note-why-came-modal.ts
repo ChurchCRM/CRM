@@ -1,5 +1,6 @@
 /** Shared modal for notes and Why Came. Loaded on the person and family views. */
 import { notifyError } from "./common/notify";
+import { initializeQuillEditor, type QuillEditorInstance } from "./quill-editor.js";
 
 const MODAL_ID = "noteWhyCameModal";
 const SAVE_ID = "noteWhyCameSave";
@@ -60,18 +61,19 @@ const field = (id: string, label: string, rows: number): string =>
   `<div class="mb-3"><label class="form-label" for="${id}">${label}</label><textarea class="form-control" id="${id}" rows="${rows}"></textarea></div>`;
 
 function openNoteEditor(personId: string, familyId: string, noteId: string): void {
-  const fields = ["noteText", "notePrivate", SAVE_ID];
+  const fields = ["notePrivate", SAVE_ID];
+  let quill: QuillEditorInstance | null = null;
   open(
     noteId ? t("Note Editor") : t("Add Note"),
-    `${field("noteText", t("Note"), 6)}
+    `<div class="mb-3"><label class="form-label" for="noteText">${t("Note")}</label><div id="noteText" class="w-100 quill-editor-container" data-editor-size="tall"></div></div>
      <div class="form-check"><input class="form-check-input" type="checkbox" id="notePrivate">
      <label class="form-check-label" for="notePrivate">${t("Private")}</label></div>`,
     async () => {
-      const text = byId<HTMLTextAreaElement>("noteText").value;
-      if (!text) {
+      if (!quill || quill.getText().trim() === "") {
         notifyError(t("Note text is required"));
         return undefined as unknown as Response;
       }
+      const text = quill.root.innerHTML;
       const url = noteId
         ? `/api/note/${noteId}`
         : personId
@@ -84,17 +86,24 @@ function openNoteEditor(personId: string, familyId: string, noteId: string): voi
       });
     },
   );
+  // Rich text, as the old NoteEditor.php page had it: a Quill editor in the
+  // same container/init shape the event form uses (webpack/event-form.js).
+  // The stored note HTML is loaded into the editor and the editor's HTML is
+  // what gets saved — the API sanitizes it (InputUtils::sanitizeHTML).
+  quill = initializeQuillEditor("#noteText", { placeholder: t("Enter note text here...") });
   if (!noteId) return;
   setBusy(fields, true);
+  quill?.enable(false);
   fetch(api(`/api/note/${noteId}`), { headers: AJAX })
     .then((res) => {
       if (!res.ok) throw new Error("load");
       return res.json();
     })
     .then(({ note }) => {
-      byId<HTMLTextAreaElement>("noteText").value = note?.text ?? "";
+      if (quill && note?.text) quill.root.innerHTML = note.text;
       byId<HTMLInputElement>("notePrivate").checked = !!note?.private;
       setBusy(fields, false);
+      quill?.enable(true);
     })
     .catch(() => notifyError(t("Could not load note.")));
 }
