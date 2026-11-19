@@ -638,7 +638,7 @@ class DemoDataService
         foreach ([-4, -1, 2, 5, 9, 15, 24, 38, 55, 80] as $i => $offset) {
             if (isset($families[$i + 3])) {
                 $date = $day($offset)->modify('-' . (3 + $i) . ' years');
-                FamilyQuery::create()->filterById($families[$i + 3])->update(['WeddingDate' => $date->format('Y-m-d')]);
+                FamilyQuery::create()->filterById($families[$i + 3])->update(['Weddingdate' => $date->format('Y-m-d')]);
             }
         }
 
