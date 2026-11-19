@@ -83,6 +83,10 @@ describe("Standard User Password", () => {
         cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#PasswordStrengthHint").should("not.be.empty");
+        // 7 chars with all character classes: capped at Weak under default min length (8)
+        cy.get("#NewPassword1").clear().type("Aa1!567");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
         cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
@@ -260,6 +264,10 @@ describe("Forced Password Change Strength Meter", () => {
         cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#PasswordStrengthHint").should("not.be.empty");
+        // 7 chars with all character classes: capped at Weak under default min length (8)
+        cy.get("#NewPassword1").clear().type("Aa1!567");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
         cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
