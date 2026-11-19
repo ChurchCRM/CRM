@@ -2122,33 +2122,20 @@ class VolunteerAssignmentService
         ?\DateTimeInterface $to = null,
         bool $includePast = false
     ): array {
-        $occurrenceQuery = VolunteerOccurrenceQuery::create();
+        $query = VolunteerAssignmentQuery::create()
+            ->filterByPersonId($personId)
+            ->useOccurrenceQuery();
 
         if ($from !== null) {
-            $occurrenceQuery->filterByOccurrenceDate($from->format('Y-m-d'), Criteria::GREATER_EQUAL);
+            $query->filterByOccurrenceDate($from->format('Y-m-d'), Criteria::GREATER_EQUAL);
         } elseif (!$includePast) {
-            $occurrenceQuery->filterByOccurrenceDate(
-                DateTimeUtils::getTodayDate(),
-                Criteria::GREATER_EQUAL
-            );
+            $query->filterByOccurrenceDate(DateTimeUtils::getTodayDate(), Criteria::GREATER_EQUAL);
         }
         if ($to !== null) {
-            $occurrenceQuery->filterByOccurrenceDate($to->format('Y-m-d'), Criteria::LESS_EQUAL);
+            $query->filterByOccurrenceDate($to->format('Y-m-d'), Criteria::LESS_EQUAL);
         }
 
-        $occurrenceIds = array_map('intval', $occurrenceQuery->select(['Id'])->find()->toArray());
-        if ($occurrenceIds === []) {
-            return [];
-        }
-
-        return iterator_to_array(
-            VolunteerAssignmentQuery::create()
-                ->filterByPersonId($personId)
-                ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
-                ->orderById()
-                ->find(),
-            false
-        );
+        return iterator_to_array($query->endUse()->orderById()->find(), false);
     }
 
     /** Can this person still answer for this assignment? Drives the member UI's buttons. */

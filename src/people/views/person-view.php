@@ -300,6 +300,7 @@ if ($person->isMale()) {
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
                                             <a href="<?= $familyMember->getViewURI() ?>"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></a>
+                                            <?php if ($familyMember->isDeceased()) : ?><span class="badge bg-secondary-lt text-secondary ms-1"><?= gettext('Deceased') ?></span><?php endif; ?>
                                         <?php } ?>
                                     </div>
                                 </td>
