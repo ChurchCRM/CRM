@@ -96,12 +96,13 @@ describe('01 - Setup Wizard', () => {
             cy.get('#ROOT_PATH').should('be.visible');
         });
 
-        // The wizard checks the entered server with DatabaseVersionService; an old server is stubbed
-        // through the check response because CI only runs a supported database.
+        // POST /setup connects to the database before it writes Config.php. CI only runs a
+        // supported database, so an old server is stubbed through the response.
+        const setupPost = { method: 'POST', pathname: /\/setup\/$/ };
         const unsupportedDatabase = {
+            valid: true,
+            correct: true,
             supported: false,
-            engine: 'MySQL',
-            version: '8.0.36',
             message: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports (MySQL 8.4 or MariaDB 10.11 and later).',
         };
 
@@ -118,68 +119,82 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
         };
 
-        it('should warn about an unsupported database and gate the install on an acknowledgment', () => {
-            cy.intercept('POST', '**/setup/DatabaseVersionCheck', { body: unsupportedDatabase }).as('versionCheck');
-            cy.intercept({ method: 'POST', pathname: /\/setup\/$/ }, { statusCode: 200, body: {} }).as('install');
+        it('should reject invalid fields and bad credentials without writing the configuration', () => {
+            const form = {
+                DB_SERVER_NAME: dbConfig.host,
+                DB_SERVER_PORT: dbConfig.port,
+                DB_NAME: dbConfig.name,
+                DB_USER: dbConfig.user,
+                DB_PASSWORD: dbConfig.password,
+                ROOT_PATH: '',
+                URL: Cypress.config('baseUrl').replace(/\/?$/, '/'),
+            };
+
+            cy.request({ method: 'POST', url: '/setup/', body: { ...form, DB_SERVER_NAME: 'bad host!' }, failOnStatusCode: false })
+                .its('status')
+                .should('eq', 400);
+
+            cy.request({ method: 'POST', url: '/setup/', body: { ...form, DB_PASSWORD: 'not-the-password' } }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body.valid).to.eq(true);
+                expect(response.body.correct).to.eq(false);
+                expect(response.body.message).to.be.a('string').and.not.be.empty;
+            });
+
+            // Nothing was written, so the wizard is still there
+            cy.visit('/setup');
+            cy.get('.setup-logo').should('be.visible');
+        });
+
+        it('should show the connection error in the wizard when the database does not accept the settings', () => {
+            openConfigureStep();
+            cy.get('#DB_PASSWORD').clear().type('not-the-password');
+            cy.get('#DB_PASSWORD_CONFIRM').clear().type('not-the-password');
+            cy.get('#submit-setup').click();
+
+            cy.get('#setup-error', { timeout: 30000 }).should('be.visible');
+            cy.get('#setup-error-message').should('contain.text', 'Could not connect to the database');
+            cy.get('#continue-to-login').should('contain.text', 'Close').click();
+            cy.get('#db-version-warning').should('have.class', 'd-none');
+        });
+
+        it('should hold an unsupported database for an acknowledgment before installing', () => {
+            const posts = [];
+            cy.intercept(setupPost, (req) => {
+                posts.push(req.body);
+                req.reply(req.body.ACKNOWLEDGE_UNSUPPORTED_DB ? { valid: true, correct: true, supported: true } : unsupportedDatabase);
+            }).as('setup');
             openConfigureStep();
 
             cy.get('#db-version-warning').should('have.class', 'd-none');
             cy.get('#submit-setup').click();
-            cy.wait('@versionCheck');
+            cy.wait('@setup');
 
             cy.get('#db-version-warning').should('be.visible').and('have.class', 'alert-danger');
             cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36').and('contain.text', 'MySQL 8.4 or MariaDB 10.11');
             cy.get('#db-version-warning').should('contain.text', 'security fixes').and('contain.text', 'Upgrades will be blocked');
             cy.get('#db-version-ack').should('not.be.checked');
             cy.get('#submit-setup').should('be.disabled');
+            cy.get('#setup-success').should('not.be.visible');
 
-            // Changing the connection settings asks for a fresh check
+            // Changing the connection settings withdraws the warning
             cy.get('#DB_SERVER_NAME').type('x');
             cy.get('#db-version-warning').should('have.class', 'd-none');
             cy.get('#submit-setup').should('not.be.disabled');
             cy.get('#DB_SERVER_NAME').type('{backspace}');
             cy.get('#submit-setup').click();
+            cy.wait('@setup');
             cy.get('#db-version-warning').should('be.visible');
-            cy.get('#submit-setup').should('be.disabled');
 
-            // The acknowledgment unlocks the install, which is never blocked
+            // The acknowledgment unlocks the install, which posts the same form with it set
             cy.get('#db-version-ack').check();
             cy.get('#submit-setup').should('not.be.disabled').click();
-            cy.wait('@install');
-            cy.get('#setup-success').should('be.visible');
-        });
-
-        it('should not warn when the database is supported', () => {
-            cy.intercept('POST', '**/setup/DatabaseVersionCheck', {
-                body: { supported: true, engine: 'MariaDB', version: '11.4.2', message: null },
-            }).as('versionCheck');
-            cy.intercept({ method: 'POST', pathname: /\/setup\/$/ }, { statusCode: 200, body: {} }).as('install');
-            openConfigureStep();
-
-            cy.get('#submit-setup').click();
-            cy.wait('@versionCheck');
-            cy.wait('@install');
-            cy.get('#db-version-warning').should('have.class', 'd-none');
-            cy.get('#setup-success').should('be.visible');
-        });
-
-        it('should not warn when the database version cannot be read', () => {
-            cy.request({
-                method: 'POST',
-                url: '/setup/DatabaseVersionCheck',
-                body: { DB_SERVER_NAME: dbConfig.host, DB_SERVER_PORT: dbConfig.port, DB_USER: dbConfig.user, DB_PASSWORD: 'not-the-password' },
-            }).then((response) => {
-                expect(response.status).to.eq(200);
-                expect(response.body.supported).to.eq(true);
-                expect(response.body.message).to.eq(null);
+            cy.wait('@setup').then(() => {
+                const last = posts[posts.length - 1];
+                expect(last.ACKNOWLEDGE_UNSUPPORTED_DB).to.eq('1');
+                expect(last.DB_NAME).to.eq(dbConfig.name);
             });
-
-            cy.request({
-                method: 'POST',
-                url: '/setup/DatabaseVersionCheck',
-                body: { DB_SERVER_NAME: 'bad host!', DB_SERVER_PORT: dbConfig.port, DB_USER: dbConfig.user, DB_PASSWORD: dbConfig.password },
-                failOnStatusCode: false,
-            }).its('status').should('eq', 400);
+            cy.get('#setup-success').should('be.visible');
         });
 
         it('should complete full installation with database setup', () => {
@@ -200,7 +215,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
             cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
             
-            // Submit the setup form (the CI database is supported, so no version warning gates it)
+            // Submit the setup form (the CI database is supported, so POST /setup installs without an acknowledgment)
             cy.get('#submit-setup').click();
             
             // Wait for setup modal to appear
@@ -209,6 +224,8 @@ describe('01 - Setup Wizard', () => {
             // Wait for setup to complete successfully
             cy.get('#setup-success', { timeout: 120000 }).should('be.visible');
             
+            cy.get('#db-version-warning').should('have.class', 'd-none');
+
             // Should show installation complete message and admin credentials
             cy.contains('Installation Complete!').should('be.visible');
             cy.contains('admin').should('be.visible');

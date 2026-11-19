@@ -56,42 +56,6 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $localeInfo);
     });
 
-    $group->post('DatabaseVersionCheck', function (Request $request, Response $response, array $args): Response {
-        $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
-        if (file_exists($docRoot . '/Include/Config.php')) {
-            return $response->withStatus(403, 'Setup is already complete.');
-        }
-
-        $setupData = $request->getParsedBody();
-        if (
-            !isset($setupData['DB_SERVER_NAME'], $setupData['DB_SERVER_PORT'], $setupData['DB_USER'], $setupData['DB_PASSWORD'])
-            || !is_valid_hostname($setupData['DB_SERVER_NAME'])
-            || !is_valid_port($setupData['DB_SERVER_PORT'])
-            || !is_valid_db_user($setupData['DB_USER'])
-            || !is_valid_db_password($setupData['DB_PASSWORD'])
-        ) {
-            return SlimUtils::renderJSON($response, ['error' => 'Invalid database connection settings'], 400);
-        }
-
-        $serverVersion = read_db_server_version(
-            sanitize_db_field($setupData['DB_SERVER_NAME']),
-            preg_replace('/[^0-9]/', '', $setupData['DB_SERVER_PORT']),
-            sanitize_db_field($setupData['DB_USER']),
-            $setupData['DB_PASSWORD']
-        );
-
-        // A server that cannot be reached or read is not warned about, like DatabaseVersionService itself
-        $check = DatabaseVersionService::check($serverVersion);
-        $message = $check['supported'] ? null : DatabaseVersionService::getUnsupportedMessage($serverVersion);
-
-        return SlimUtils::renderJSON($response, [
-            'supported' => $check['supported'],
-            'engine'    => $check['engine'],
-            'version'   => $check['version'],
-            'message'   => $message,
-        ]);
-    });
-
     $postHandler = function (Request $request, Response $response, array $args): Response {
         // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
         $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
@@ -140,7 +104,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             $errors['URL'] = 'Invalid URL format';
         }
         if (!empty($errors)) {
-            return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
+            return SlimUtils::renderJSON($response, ['errors' => $errors], 400);
         }
 
         // Use sanitized values
@@ -151,6 +115,29 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $dbPassword  = $setupData['DB_PASSWORD'];
         $rootPath    = $setupData['ROOT_PATH'];
         $url         = $setupData['URL'];
+
+        // The database must be usable before Config.php locks the setup: a wrong host, name, user or
+        // password is reported here instead of after the file exists.
+        $connection = connect_to_database($dbServerName, $dbServerPort, $dbName, $dbUser, $dbPassword);
+        if ($connection['error'] !== null) {
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'message' => gettext('Could not connect to the database with these settings.') . ' ' . $connection['error'],
+            ]);
+        }
+
+        // An unreadable version counts as supported (DatabaseVersionService); only a version that is
+        // positively too old waits for the acknowledgment.
+        $acknowledged = filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN);
+        if (!DatabaseVersionService::check($connection['version'])['supported'] && !$acknowledged) {
+            return SlimUtils::renderJSON($response, [
+                'valid'     => true,
+                'correct'   => true,
+                'supported' => false,
+                'message'   => DatabaseVersionService::getUnsupportedMessage($connection['version']),
+            ]);
+        }
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
@@ -174,7 +161,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
         }
 
-        return $response->withStatus(200);
+        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true, 'supported' => true]);
     };
 
     $group->post('', $postHandler);
@@ -189,25 +176,24 @@ function escape_php_single_quoted($value)
     return addcslashes($value, "'\\");
 }
 
-// The server version reported on a connection made with the entered credentials, or null when it cannot be read.
-// No database name is used, so a database that does not exist yet does not hide the version.
+// Opens a connection with the entered settings and reads the server version.
 // PDO::ATTR_TIMEOUT only limits opening the socket; a server that accepts it and never sends its
 // handshake is cut off by the mysqlnd read timeout.
-function read_db_server_version(string $host, string $port, string $user, string $password): ?string
+function connect_to_database(string $host, string $port, string $name, string $user, string $password): array
 {
     $previousReadTimeout = ini_set('mysqlnd.net_read_timeout', '5');
 
     try {
         $pdo = new PDO(
-            sprintf('mysql:host=%s;port=%s', $host, $port),
+            sprintf('mysql:host=%s;port=%s;dbname=%s', $host, $port, $name),
             $user,
             $password,
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5]
         );
 
-        return (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
+        return ['version' => (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION), 'error' => null];
     } catch (\Throwable $e) {
-        return null;
+        return ['version' => null, 'error' => $e->getMessage()];
     } finally {
         if ($previousReadTimeout !== false) {
             ini_set('mysqlnd.net_read_timeout', $previousReadTimeout);

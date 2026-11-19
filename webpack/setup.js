@@ -714,70 +714,34 @@ window.Stepper = Stepper;
     return hasFields ? validator : null;
   }
 
-  // Credentials the server needs to read the database version
-  const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_USER", "DB_PASSWORD"];
+  // Credentials the unsupported-database acknowledgment belongs to
+  const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
 
-  // Bumped whenever a connection field changes, so a check that finishes afterwards is ignored
-  let databaseCheckId = 0;
-
-  function isDatabaseWarningShown() {
-    return !$("#db-version-warning").hasClass("d-none");
+  function resetSetupModal() {
+    bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
+    // Reset modal state for the next attempt
+    setTimeout(() => {
+      $("#setup-progress").removeClass("d-none");
+      $("#setup-success").addClass("d-none");
+      $("#setup-error").addClass("d-none");
+      $("#setup-footer").addClass("d-none");
+    }, 500);
   }
 
-  function hideDatabaseWarning() {
-    databaseCheckId += 1;
-    $("#db-version-warning").addClass("d-none");
-    $("#db-version-ack").prop("checked", false);
-    $("#submit-setup").prop("disabled", false);
-  }
-
-  function showDatabaseWarning(result) {
-    $("#db-version-message").text(result.message);
+  // The server connected but the version is unsupported: the install waits for the acknowledgment
+  function showDatabaseWarning(message) {
+    resetSetupModal();
+    $("#db-version-message").text(message);
     $("#db-version-ack").prop("checked", false);
     $("#db-version-warning").removeClass("d-none");
     $("#submit-setup").prop("disabled", true);
     document.getElementById("db-version-warning").scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  // Resolves with the server's verdict, or null when it could not be checked: only a positively read old version warns
-  function checkDatabaseVersion() {
-    const data = {};
-    for (const id of DB_CONNECTION_FIELDS) {
-      data[id] = document.getElementById(id).value;
-    }
-
-    return new Promise((resolve) => {
-      $.ajax({
-        url: `${rootPath}/setup/DatabaseVersionCheck`,
-        method: "POST",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-      })
-        .done((response) => resolve(response))
-        .fail(() => resolve(null));
-    });
-  }
-
-  // Warn about an unsupported database, but never block the install itself: the acknowledgment unlocks it
-  function checkDatabaseThenInstall() {
-    if (isDatabaseWarningShown() && $("#db-version-ack").prop("checked")) {
-      submitSetupData();
-      return;
-    }
-
-    $("#submit-setup").prop("disabled", true);
-    const checkId = databaseCheckId;
-    checkDatabaseVersion().then((result) => {
-      if (checkId !== databaseCheckId) {
-        return; // the connection settings changed while checking: the next click checks the new ones
-      }
-      if (result && result.supported === false) {
-        showDatabaseWarning(result);
-        return;
-      }
-      $("#submit-setup").prop("disabled", false);
-      submitSetupData();
-    });
+  function hideDatabaseWarning() {
+    $("#db-version-warning").addClass("d-none");
+    $("#db-version-ack").prop("checked", false);
+    $("#submit-setup").prop("disabled", false);
   }
 
   function submitSetupData() {
@@ -800,6 +764,21 @@ window.Stepper = Stepper;
       contentType: "application/json",
     })
       .done((response) => {
+        if (response?.correct === false) {
+          // The form is valid but the database did not accept it; nothing was written
+          $("#setup-progress").addClass("d-none");
+          $("#setup-error").removeClass("d-none");
+          $("#setup-footer").removeClass("d-none");
+          $("#setup-error-message").text(response.message);
+          $("#continue-to-login").text("Close").off("click").on("click", resetSetupModal);
+          return;
+        }
+
+        if (response?.supported === false) {
+          showDatabaseWarning(response.message);
+          return;
+        }
+
         // Check if response contains errors (backend bug workaround)
         if (response?.errors) {
           // Treat as failure
@@ -978,7 +957,7 @@ window.Stepper = Stepper;
       if (validators["step-database"]) {
         validators["step-database"].revalidate().then((isValid) => {
           if (isValid) {
-            checkDatabaseThenInstall();
+            submitSetupData();
           } else {
             window.CRM.notify("Please fill in all required fields correctly.", {
               type: "danger",
@@ -987,11 +966,12 @@ window.Stepper = Stepper;
           }
         });
       } else {
-        checkDatabaseThenInstall();
+        submitSetupData();
       }
     });
 
-    // The acknowledgment unlocks the install; changing the connection settings asks for a fresh check
+    // The acknowledgment unlocks the install, which posts the form again with it set.
+    // Changing the connection settings withdraws it: it was given for the server that answered.
     document.getElementById("db-version-ack").addEventListener("change", (event) => {
       $("#submit-setup").prop("disabled", !event.target.checked);
     });

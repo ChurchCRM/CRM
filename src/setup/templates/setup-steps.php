@@ -296,7 +296,7 @@ require_once __DIR__ . '/header.php';
                         </ul>
                         <p><?= gettext('We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target.') ?></p>
                         <div class="form-check mb-0">
-                            <input class="form-check-input" type="checkbox" id="db-version-ack">
+                            <input class="form-check-input" type="checkbox" id="db-version-ack" name="ACKNOWLEDGE_UNSUPPORTED_DB" value="1">
                             <label class="form-check-label" for="db-version-ack"><?= gettext('I understand this database is unsupported and upgrades will be blocked') ?></label>
                         </div>
                     </div>
