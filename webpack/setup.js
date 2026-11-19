@@ -717,15 +717,51 @@ window.Stepper = Stepper;
   // Credentials the unsupported-database acknowledgment belongs to
   const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
 
+  // Bootstrap ignores hide() while a modal is still opening, so track the setup modal's state
+  let setupModalState = "hidden";
+
+  function showSetupModal() {
+    const modalElement = document.getElementById("setupModal");
+    if (!modalElement.dataset.stateTracked) {
+      modalElement.dataset.stateTracked = "1";
+      modalElement.addEventListener("show.bs.modal", () => {
+        setupModalState = "opening";
+      });
+      modalElement.addEventListener("shown.bs.modal", () => {
+        setupModalState = "shown";
+      });
+      modalElement.addEventListener("hide.bs.modal", () => {
+        setupModalState = "closing";
+      });
+      modalElement.addEventListener("hidden.bs.modal", () => {
+        setupModalState = "hidden";
+      });
+    }
+    getModal("setupModal").show();
+  }
+
+  // Reset modal state for the next attempt
+  function resetSetupModalContent() {
+    $("#setup-progress").removeClass("d-none");
+    $("#setup-success").addClass("d-none");
+    $("#setup-error").addClass("d-none");
+    $("#setup-footer").addClass("d-none");
+  }
+
   function resetSetupModal() {
-    bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-    // Reset modal state for the next attempt
-    setTimeout(() => {
-      $("#setup-progress").removeClass("d-none");
-      $("#setup-success").addClass("d-none");
-      $("#setup-error").addClass("d-none");
-      $("#setup-footer").addClass("d-none");
-    }, 500);
+    const modalElement = document.getElementById("setupModal");
+    if (setupModalState === "hidden") {
+      resetSetupModalContent();
+      return;
+    }
+    // Reset the contents once the modal is gone, not on a fixed timer
+    modalElement.addEventListener("hidden.bs.modal", resetSetupModalContent, { once: true });
+    if (setupModalState === "opening") {
+      // A response that arrives during the opening transition: hide once it has finished opening
+      modalElement.addEventListener("shown.bs.modal", () => getModal("setupModal").hide(), { once: true });
+    } else if (setupModalState === "shown") {
+      getModal("setupModal").hide();
+    }
   }
 
   // The server connected but the version is unsupported: the install waits for the acknowledgment
@@ -755,7 +791,7 @@ window.Stepper = Stepper;
     }
 
     // Show the setup modal
-    getModal("setupModal").show();
+    showSetupModal();
 
     $.ajax({
       url: `${rootPath}/setup/`,
