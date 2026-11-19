@@ -65,7 +65,11 @@ describe("Directory report - uploaded letterhead (#11645)", () => {
                 return response.body;
             });
 
-    const imageCount = (pdf) => (pdf.match(/\/Subtype \/Image/g) || []).length;
+    // mPDF embeds a transparent PNG as an image plus a grayscale /SMask image,
+    // and the stored letterhead always carries an alpha channel (the upload
+    // pipeline re-encodes with one) — count placed images, not masks.
+    const imageCount = (pdf) =>
+        (pdf.match(/\/Subtype \/Image/g) || []).length - (pdf.match(/\/SMask \d+ 0 R/g) || []).length;
 
     afterEach(() => {
         removeStoredLetterhead();
