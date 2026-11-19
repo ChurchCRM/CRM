@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: churchcrm
+    runtime: image
+    image:
+      url: docker.io/churchcrm/crm:latest-php8-apache
+    plan: starter
+    region: oregon
+    numInstances: 1
+    envVars:
+      - key: PORT
+        value: '8080'
+      - key: CHURCHCRM_PERSISTENT_DATA
+        value: '1'
+    disk:
+      name: churchcrm-data
+      mountPath: /var/lib/churchcrm
+      sizeGB: 1
+  - type: pserv
+    name: churchcrm-db
+    runtime: image
+    image:
+      url: docker.io/library/mariadb:11.4.5
+    plan: starter
+    region: oregon
+    numInstances: 1
+    envVars:
+      - key: MARIADB_DATABASE
+        value: churchcrm
+      - key: MARIADB_USER
+        value: churchcrm
+      - key: MARIADB_PASSWORD
+        generateValue: true
+      - key: MARIADB_ROOT_PASSWORD
+        generateValue: true
+    disk:
+      name: churchcrm-db
+      mountPath: /var/lib/mysql
+      sizeGB: 1

@@ -15,6 +15,7 @@
     "node_modules",
     "src/vendor",
     "tests/vendor",
+    "docker/paas/easypanel",
     "cypress/configs/*",
     "cypress/e2e/**",
     "cypress/fixtures/**",
