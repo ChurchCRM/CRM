@@ -56,7 +56,7 @@ describe("2FA required for one user", () => {
         signInAsStandardUser();
         cy.url({ timeout: 15000 }).should("include", "/account/2fa");
 
-        cy.visit(`/v2/dashboard?next=${encodeURIComponent("/account/2fa")}`);
+        cy.visit(`/people/dashboard?next=${encodeURIComponent("/account/2fa")}`);
         cy.location("pathname").should("eq", `${basePath()}/account/2fa`);
     });
 

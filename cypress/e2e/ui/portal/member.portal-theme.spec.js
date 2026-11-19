@@ -39,7 +39,7 @@ const loginAsAdmin = () => {
     cy.visit("session/begin");
     cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
     cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
-    cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
+    cy.url({ timeout: 10000 }).should("include", "/people/dashboard");
 };
 
 before(() => {

@@ -18,6 +18,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -925,16 +926,25 @@ class FinancialService
      * @param int|null $fyid Fiscal year ID (null = current FY, 0 = All Time, >0 = specific FY)
      * @return array Dashboard data including fiscal year info, statistics, and deposits
      */
-    public function getDashboardData(?int $fyid = null): array
+    public function getDashboardData(?int $fyid = null, ?int $days = null): array
     {
-        $allTime    = ($fyid === 0);
+        $allTime    = ($fyid === 0 && $days === null);
         $actualFyid = $allTime
             ? null
             : (($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId());
 
-        $fiscalYear = $allTime
-            ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
-            : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+        if ($days !== null) {
+            $fiscalYear = [
+                'startDate' => DateTimeUtils::getRelativeDate("-{$days} days"),
+                'endDate' => DateTimeUtils::getRelativeDate('today'),
+                'label' => $days === 365 ? gettext('Last 12 months') : sprintf(gettext('Last %d days'), $days),
+                'month' => 1,
+            ];
+        } else {
+            $fiscalYear = $allTime
+                ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
+                : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+        }
 
         $depositStats        = $this->getDepositStatistics();
         $currentDeposit      = $this->getCurrentDeposit();
@@ -944,6 +954,7 @@ class FinancialService
         return [
             'fiscalYear'       => $fiscalYear,
             'selectedFyid'     => $allTime ? 0 : $actualFyid,
+            'days'             => $days,
             'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,

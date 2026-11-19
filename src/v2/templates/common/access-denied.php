@@ -27,7 +27,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
 $code = 403;
 $title = gettext('Permission Required');
 $message = gettext('The page you tried to visit requires special permissions that your account does not currently have.');
-$returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+$returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
 $returnText = gettext('Go to Dashboard');
 
 // Add role callout as extra HTML when a role is present

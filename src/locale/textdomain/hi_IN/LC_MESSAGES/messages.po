@@ -1292,10 +1292,6 @@ msgid "People"
 msgstr "लोग"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "संडे स्कूल के बच्चे"
-
-#: 
 msgid "Role / Gender"
 msgstr "भूमिका / लिंग"
 
@@ -4448,10 +4444,6 @@ msgstr "वह क्षेत्र जहाँ अंतिम स्वी�
 #: 
 msgid "People Reports"
 msgstr "लोग रिपोर्ट"
-
-#: 
-msgid "People Dashboard"
-msgstr "लोग डैशबोर्ड"
 
 #: 
 msgid "People Directory"
@@ -8983,10 +8975,6 @@ msgid "Password Recovery"
 msgstr "पासवर्ड पुनर्प्राप्ति"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "पिछले और अगले 7 दिन"
-
-#: 
 msgid "People by Classification"
 msgstr "वर्गीकरण के अनुसार लोग"
 
@@ -10882,10 +10870,6 @@ msgstr "गहरा"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "केवल डेटाबेस (.sql) या पूर्ण संग्रह (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "डेटा तालिकाओं में दिखाई जाने वाली पंक्तियों की डिफ़ॉल्ट संख्या। अगले पृष्ठ लोड पर प्रभावी होगी।"
 
 #. Context: locales
 #: 
@@ -13443,14 +13427,6 @@ msgstr "कोई चढ़ावा जमा नहीं"
 #: 
 msgid "No Events Today"
 msgstr "आज कोई कार्यक्रम नहीं"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "पिछले या अगले 7 दिनों में कोई वर्षगाँठ नहीं"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "पिछले या अगले 7 दिनों में कोई जन्मदिन नहीं"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -17781,10 +17757,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।"
 
 #: 
-msgid "Review now"
-msgstr "अभी समीक्षा करें"
-
-#: 
 msgid "Review self registrations"
 msgstr "स्वयं-पंजीकरण की समीक्षा करें"
 
@@ -17835,10 +17807,6 @@ msgstr "कल"
 #: 
 msgid "days ago"
 msgstr "दिन पहले"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "स्वयं-पंजीकरण समीक्षा की प्रतीक्षा में हैं"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -27103,10 +27071,6 @@ msgid "Delete the login for"
 msgstr "इसका लॉगिन हटाएँ:"
 
 #: 
-msgid "Deposit chart time range"
-msgstr "जमा चार्ट की समय सीमा"
-
-#: 
 msgid "Disabled at"
 msgstr "अक्षम किया गया"
 
@@ -27631,10 +27595,6 @@ msgid "Latest Notes"
 msgstr "नवीनतम नोट्स"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "अभी तक कोई नोट नहीं जोड़ा गया है।"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "QR कोड पाने के लिए नामांकन शुरू करें।"
 
@@ -27645,4 +27605,746 @@ msgstr "वह पासवर्ड या कोड सही नहीं ह
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "टू-फैक्टर ऑथेंटिकेशन पहले से सेट है। इसका सीक्रेट केवल नामांकन के दौरान दिखाया जाता है।"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d दान, कुल %2$s"
+msgstr[1] "%1$d दान, कुल %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d परिवारों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d परिवार को अभी रसीद नहीं मिल सकती और वह बाहर रह जाता है। उसके नीचे सूचीबद्ध समस्या को ठीक करें, फिर पुनः जांचें चुनें।"
+msgstr[1] "%d परिवारों को अभी रसीद नहीं मिल सकती और वे बाहर रह जाते हैं। उनके नीचे सूचीबद्ध समस्याओं को ठीक करें, फिर पुनः जांचें चुनें।"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d समूहों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d लोगों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "आपके इंस्टॉल किए गए संस्करण के बाद से %d रिलीज़ उपलब्ध हैं।"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s कोई रसीद नहीं बनाई गई।"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: सत्यापित पूरा दाता नाम दर्ज करें, दाताओं की पुष्टि करें, और एक दाता समूह की पुष्टि करें। मिश्रित-दाता भुगतान समूहों को इस सुविधा के बाहर संभालना होगा।"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: समीक्षा के बाद से दान या डाक पता बदल गया है। पुनः जांचें चुनें और दाता की फिर से पुष्टि करें।"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} किस्त)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} किस्तें)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "क्रेडिट कार्ड या बैंक ड्राफ़्ट भुगतान ऐसी जमा में है जो अभी बंद नहीं हुई है। भुगतान का निपटान हो जाने पर जमा बंद करें।"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "किसी भुगतान में गैर-कटौती योग्य राशि है। यहाँ कनाडाई रसीदें केवल बिना किसी लाभ वाले दान का समर्थन करती हैं।"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "किसी भुगतान की मौद्रिक राशि अमान्य है।"
+
+#: 
+msgid "A payment has no date."
+msgstr "किसी भुगतान की कोई तिथि नहीं है।"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "किसी भुगतान की तिथि जारी करने की तिथि के बाद की है।"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "किसी भुगतान को समस्या के रूप में चिह्नित किया गया है।"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "कोई भुगतान शून्य या ऋणात्मक है।"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "वैध CSRF टोकन के साथ समीक्षित POST आवश्यक है।"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "चयनित परिवार अब मौजूद नहीं है।"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "हस्ताक्षर छवि सुरक्षित डिजिटल हस्ताक्षर नहीं है।"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "सिस्टम अपडेट उपलब्ध है। कृपया अपने प्रशासक से अपनी स्थापना को अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "शामिल सभी पंक्तियाँ बिना किसी लाभ के मौद्रिक दान हैं।"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "सभी आवश्यक कनाडाई रसीद सेटिंग्स भरी हुई हैं।"
+
+#: 
+msgid "Also delete family members"
+msgstr "परिवार के सदस्यों को भी हटाएँ"
+
+#: 
+msgid "Amount of advantages"
+msgstr "लाभों की राशि"
+
+#: 
+msgid "Amount of gifts"
+msgstr "दान की राशि"
+
+#: 
+msgid "Amount per installment"
+msgstr "प्रति किस्त राशि"
+
+#: 
+msgid "Amounts entered are"
+msgstr "दर्ज की गई राशियाँ हैं"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "प्रशासक इसे रिपोर्ट सेटिंग्स के अंतर्गत अपलोड करता है।"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "स्वीकृत, लेकिन कोई निमंत्रण नहीं भेजा गया"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "अपने सिस्टम प्रशासक से ChurchCRM को नवीनतम संस्करण में अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "Authorized Signature"
+msgstr "अधिकृत हस्ताक्षर"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "कनाडा राजस्व एजेंसी"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "कनाडाई आधिकारिक रसीद"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "कनाडाई आधिकारिक रसीदों के लिए कलीसिया जानकारी पर कलीसिया देश के रूप में कनाडा आवश्यक है।"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "कनाडाई रसीदों के लिए अन्य फ़िल्टर के बिना पूरा कैलेंडर वर्ष और सभी निधियाँ आवश्यक हैं।"
+
+#: 
+msgid "Change Selection"
+msgstr "चयन बदलें"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "धर्मार्थ संगठन का कानूनी नाम"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "धर्मार्थ संगठन का पंजीकृत पता"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "धर्मार्थ संगठन पंजीकरण संख्या"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "रसीदों के लिए धर्मार्थ संगठन विवरण अभी नहीं भरे गए हैं। जब आप कर सकें तो कानूनी नाम, पंजीकृत पता, पंजीकरण संख्या और जारी करने का स्थान जोड़ें। वित्त तब तक काम करता रहेगा।"
+
+#: 
+msgid "Charity on receipts"
+msgstr "रसीदों पर धर्मार्थ संगठन"
+
+#: 
+msgid "Check Again"
+msgstr "पुनः जांचें"
+
+#: 
+msgid "Check the year"
+msgstr "वर्ष जांचें"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "वर्ष जांचें, विवरण सेट करें, फिर डाउनलोड करें।"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "किस्त राशि के लिए साप्ताहिक, मासिक या त्रैमासिक चुनें।"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "वैध दान कैलेंडर वर्ष चुनें।"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "मूल या डुप्लिकेट चुनें।"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "कुल प्रतिबद्धता या किस्त राशि चुनें।"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM अनुवाद ChurchCRM GitHub रिपॉज़िटरी में प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
+
+#: 
+msgid "Commitment amount"
+msgstr "प्रतिबद्धता राशि"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "डुप्लिकेट की तुलना रखे गए मूल से करें और पुष्टि करें कि सभी रसीद जानकारी अपरिवर्तित है।"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "डाउनलोड करने से पहले हर रसीद स्वीकृति पूरी करें।"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "धर्मार्थ संगठन का कानूनी नाम, पंजीकृत पता, पंजीकरण संख्या, जारी करने का स्थान और मुद्रित हस्ताक्षरकर्ता पूरा करें।"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "पुष्टि पत्र मुद्रित हस्ताक्षरकर्ता"
+
+#: 
+msgid "Copy Kind"
+msgstr "प्रति का प्रकार"
+
+#: 
+msgid "Currency"
+msgstr "मुद्रा"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "मुद्रा प्रतीक $ या CAD"
+
+#: 
+msgid "Date received"
+msgstr "प्राप्ति तिथि"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "इसे हटाने से %d गुण और उनके सभी असाइनमेंट भी हट जाएँगे ताकि कुछ भी लटका न रहे।"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "क्या चयनित वर्ष के सभी दान ऊपर एक साथ नामित दाता(ओं) के हैं?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "किसी संख्या का उपयोग किसी भिन्न रसीद के लिए फिर से न करें, एक ही दान के लिए दो बार रसीद न बनाएँ, या बदली हुई जानकारी को अपरिवर्तित मूल के रूप में फिर से न बनाएँ।"
+
+#: 
+msgid "Duplicate"
+msgstr "डुप्लिकेट"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "डुप्लिकेट प्रति / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "आयकर उद्देश्यों के लिए दान की पात्र राशि"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "प्रतिबद्धता का पूर्वावलोकन करने के लिए अनुसूची और किस्त तिथियाँ दर्ज करें।"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "पहली और अंतिम किस्त की वैध तिथियाँ क्रम में दर्ज करें।"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "अधिकतम दो दशमलव स्थानों के साथ वैध किस्त राशियाँ दर्ज करें।"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "मौजूदा प्रतिज्ञाएँ अपने दर्ज किए गए कुल बनाए रखती हैं। प्रति किस्त राशि केवल तभी चुनें जब आप प्रत्येक अनुसूचित दान दर्ज कर रहे हों।"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "परिवार के मुखियाओं और जीवनसाथियों से भरा गया। इसे दाताओं से ठीक-ठीक मिलान करने के लिए संपादित करें।"
+
+#: 
+msgid "First installment"
+msgstr "पहली किस्त"
+
+#: 
+msgid "Full commitment"
+msgstr "पूर्ण प्रतिबद्धता"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "कर विवरण बनाएँ"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "दान कैलेंडर वर्ष"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "दान विवरण — आधिकारिक दान रसीद नहीं है"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "GitHub पर अनुवाद में सहायता करें"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "ऐतिहासिक लिफ़ाफ़ा परिवर्तन समर्थित नहीं हैं।"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "मैंने रखे गए मूल से तुलना की: दाता, राशि, क्रम संख्या और पाठ अपरिवर्तित हैं। यह सुधार या प्रतिस्थापन नहीं है।"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "मैं जारी किए गए PDF और एक बाहरी रसीद लॉग को धर्मार्थ संगठन के कनाडाई रिकॉर्ड स्थान पर रखूँगा।"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "यदि रखा गया मूल उपलब्ध नहीं है या भिन्न है, तो अपनी बाहरी CRA-अनुरूप रद्दीकरण/प्रतिस्थापन प्रक्रियाओं का उपयोग करें।"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "भुगतान मेमो शामिल करें: मैंने उन्हें दाता के लिए उपयुक्त के रूप में समीक्षा की है।"
+
+#: 
+msgid "Include this family in the download"
+msgstr "इस परिवार को डाउनलोड में शामिल करें"
+
+#: 
+msgid "Installed version: %s"
+msgstr "इंस्टॉल किया गया संस्करण: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "किस्त राशियों का उपयोग केवल प्रतिज्ञाओं के लिए किया जा सकता है।"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "किस्त तिथियाँ चयनित वित्तीय वर्ष के भीतर होनी चाहिए।"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "अमान्य या गुम CSRF टोकन"
+
+#: 
+msgid "Issue Date"
+msgstr "जारी करने की तिथि"
+
+#: 
+msgid "Issue Locality"
+msgstr "जारी करने का स्थान"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "मूल PDF और एक बाहरी रसीद लॉग धर्मार्थ संगठन के कनाडाई रिकॉर्ड स्थान पर रखें।"
+
+#: 
+msgid "Last installment on or before"
+msgstr "अंतिम किस्त इस तिथि को या उससे पहले"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "पत्र शब्दावली, धर्मार्थ संगठन विवरण और PDF प्रबंधन विवरण सेटिंग्स पर एक बार सेट किए जाते हैं।"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "दान विवरणों के लिए पत्र शब्दावली, धर्मार्थ संगठन विवरण और PDF प्रबंधन"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "अधिकतम 2 MiB और 2000 × 1000 पिक्सेल। संग्रहीत हस्ताक्षर को बदलने के लिए एक नई छवि चुनें। हस्ताक्षर छवि सुरक्षित डिजिटल हस्ताक्षर नहीं है।"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "सदस्य साइन-इन बंद है, इसलिए %s परिवार का कोई भी व्यक्ति सदस्य पोर्टल में साइन इन नहीं कर सकता। प्रशासक इसे व्यवस्थापन → सदस्य पोर्टल के अंतर्गत चालू कर सकता है।"
+
+#: 
+msgid "Memo"
+msgstr "मेमो"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "मिश्रित-दाता परिवार भुगतान समूहों को यहाँ विभाजित नहीं किया जा सकता; उन्हें इस सुविधा के बाहर संभालें।"
+
+#: 
+msgid "Narrow the list"
+msgstr "सूची को सीमित करें"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "कोई परिवार %s के लिए इन फ़िल्टर से मेल नहीं खाता।"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "कोई अतिव्यापी व्यक्तिगत या संचयी रसीद मौजूद नहीं है।"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "इस परिवार के लिए अभी रसीद नहीं बनाई जा सकती"
+
+#: 
+msgid "No signature on file"
+msgstr "फ़ाइल पर कोई हस्ताक्षर नहीं"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "नहीं — भिन्न दाता; इसे इस सुविधा के बाहर संभालें"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "वर्तमान साइन-इन नियम के तहत %s परिवार का कोई भी व्यक्ति सदस्य पोर्टल में साइन इन नहीं कर सकता।"
+
+#: 
+msgid "None / Aucun"
+msgstr "कोई नहीं / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "कनाडाई रसीदें जारी करने के लिए तैयार नहीं। अभी भी गुम है"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "आधिकारिक रसीद / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "आयकर उद्देश्यों के लिए आधिकारिक रसीद / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "आधिकारिक रसीदों के लिए 123456789RR0001 के प्रारूप में पंजीकरण संख्या और एक हस्ताक्षर छवि आवश्यक है।"
+
+#: 
+msgid "Original"
+msgstr "मूल"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "मूल जारी करने की तिथि (रखे गए मूल से दर्ज करें)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "भुगतान तिथियाँ दान-प्राप्ति तिथियों को दर्शाती हैं, जिसमें प्रलेखित डाक-मुहर उपचार शामिल है।"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "साधारण दान विवरणों पर मुद्रित, उदाहरण के लिए संयुक्त राज्य अमेरिका में EIN। वही मान कलीसिया जानकारी पर है।"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "निजी दान-विवरण हस्ताक्षर संपत्ति पहचानकर्ता। हस्ताक्षर अपलोड द्वारा प्रबंधित।"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "गुण / असाइनमेंट"
+
+#: 
+msgid "Property deleted"
+msgstr "गुण हटाया गया"
+
+#: 
+msgid "Property type deleted"
+msgstr "गुण प्रकार हटाया गया"
+
+#: 
+msgid "Receipt Closing"
+msgstr "रसीद समापन"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "रसीद जारी करने का स्थान"
+
+#: 
+msgid "Receipt No."
+msgstr "रसीद संख्या"
+
+#: 
+msgid "Registration Number"
+msgstr "पंजीकरण संख्या"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "123456789RR0001 के प्रारूप में पंजीकरण संख्या"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "रिलीज़ नोट्स अभी उपलब्ध नहीं हैं।"
+
+#: 
+msgid "Releases"
+msgstr "रिलीज़"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s के लिए शेष प्रतिबद्धता: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA आवश्यकता हटाएँ"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "संग्रहीत हस्ताक्षर छवि हटाएँ? आधिकारिक रसीदों के लिए फ़ाइल पर एक होना आवश्यक है।"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "रिपोर्ट और अनुस्मारक इस पूर्ण-अवधि प्रतिबद्धता की तुलना दान से करते हैं। शेष राशि अतिदेय किस्त गणना नहीं है।"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "रिपोर्ट और अनुस्मारक ऊपर दिखाई गई पूर्ण प्रतिबद्धता का उपयोग करते हैं। शेष राशि अतिदेय किस्त गणना नहीं है।"
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA आवश्यक करें"
+
+#: 
+msgid "Reset Options"
+msgstr "विकल्प रीसेट करें"
+
+#: 
+msgid "Review Selected Families"
+msgstr "चयनित परिवारों की समीक्षा करें"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "नमूना — कर उद्देश्यों के लिए वैध नहीं"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "नमूना हस्ताक्षर प्लेसहोल्डर"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "बताएँ कि 2FA आवश्यक है या नहीं।"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "सुरक्षा अपडेट और समर्थन केवल नवीनतम संस्करण के लिए प्रदान किए जाते हैं।"
+
+#: 
+msgid "Select the families to review."
+msgstr "समीक्षा के लिए परिवारों का चयन करें।"
+
+#: 
+msgid "Set up the statement"
+msgstr "विवरण सेट करें"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "जारी रखने के लिए टू-फैक्टर ऑथेंटिकेशन सेट करें।"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "साझा-लिफ़ाफ़ा टकराव: किसी अन्य परिवार के पास वर्तमान में यह लिफ़ाफ़ा संख्या है।"
+
+#: 
+msgid "Signature Image"
+msgstr "हस्ताक्षर छवि"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "हस्ताक्षर छवि (व्यवस्थापन, रिपोर्ट सेटिंग्स)"
+
+#: 
+msgid "Signature on file"
+msgstr "फ़ाइल पर हस्ताक्षर"
+
+#: 
+msgid "Sincerely"
+msgstr "सादर"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "आवर्ती प्रतिज्ञा संपादित करते समय राशि का आधार निर्दिष्ट करें।"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "मानक दान विवरण"
+
+#: 
+msgid "Statement Template"
+msgstr "विवरण टेम्पलेट"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "आज से बाद की न हो ऐसी जारी करने की तिथि दें।"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "विवरणों पर कर पहचान"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s परिवार के पास सदस्य पोर्टल पर आमंत्रित करने के लिए कोई जीवित सदस्य नहीं है।"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "कनाडाई पंजीकरण संख्या का प्रारूप 123456789RR0001 होना चाहिए। यह पंजीकरण स्थिति को सत्यापित नहीं करता।"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "धर्मार्थ संगठन पंजीकरण संख्या पाठ होनी चाहिए।"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "आधिकारिक रसीदों पर मुद्रित धर्मार्थ संगठन पंजीकरण संख्या। खाली रहने पर कलीसिया जानकारी पर मौजूद कर पहचान का उपयोग होता है।"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "धर्मार्थ संगठन का पंजीकृत पता। खाली रहने पर कलीसिया जानकारी पर मौजूद पते का उपयोग होता है।"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "हस्ताक्षरकर्ता के ऊपर समापन वाक्यांश, उदाहरण के लिए सादर।"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "पूर्ण प्रतिबद्धता प्रति निधि 999999.99 से अधिक नहीं होनी चाहिए और राशियों में अधिकतम दो दशमलव स्थान होने चाहिए।"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "आपकी पिछली जांच के बाद से दान या डाक पता बदल गया है। उनकी समीक्षा करें और दाता की फिर से पुष्टि करें।"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "डाक पता अधूरा है। सड़क, शहर, प्रांत और डाक कोड आवश्यक हैं।"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "वह नाम जिससे धर्मार्थ संगठन पंजीकृत है। यह कलीसिया के नाम से भिन्न हो सकता है।"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "वह स्थान जहाँ रसीदें जारी की जाती हैं। खाली रहने पर कलीसिया जानकारी पर मौजूद शहर का उपयोग होता है।"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "मुद्रित दान-विवरण हस्ताक्षरकर्ता इन रसीदों पर हस्ताक्षर करने के लिए अधिकृत है।"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "कनाडाई रसीदों के लिए सिस्टम मुद्रा प्रतीक $ होना चाहिए या CAD की पहचान करनी चाहिए।"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "चयनित कैलेंडर वर्ष में कोई भुगतान नहीं है।"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "ये इस परिवार/कैलेंडर वर्ष में हर दान के लिए सच्चे दाता हैं, और डाक पता सही है।"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "यह छवि दान विवरणों और रसीदों पर हस्ताक्षरकर्ता के नाम के ऊपर मुद्रित होती है। धर्मार्थ संगठन विवरण और हस्ताक्षरकर्ता का मुद्रित नाम वित्त, विवरण सेटिंग्स के अंतर्गत हैं।"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "यह विकल्प कनाडाई रसीद को स्वरूपित करता है लेकिन रसीद रजिस्टर नहीं रखता और PDF नहीं रखता।"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "यह स्व-पंजीकृत परिवार स्वीकृति की प्रतीक्षा कर रहा है। इसे स्वीकृत करने से हर सदस्य को, जो सदस्य पोर्टल में साइन इन कर सकता है, परिवार की जानकारी की समीक्षा करने का निमंत्रण ईमेल किया जाता है।"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "इस टूल में कोई रद्दीकरण/प्रतिस्थापन कार्यप्रवाह नहीं है; सुधारों/खोई हुई रसीद प्रतिस्थापनों के लिए अपनी मौजूदा CRA-अनुरूप प्रक्रिया का उपयोग करें।"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "इस उपयोगकर्ता को 2FA सेट करना होगा"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "यह परिवार रिकॉर्ड और उसके नोट्स को स्थायी रूप से हटा देगा। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Total commitment"
+msgstr "कुल प्रतिबद्धता"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "प्रतिबद्धता का पूर्वावलोकन करने में असमर्थ।"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "हस्ताक्षर अपलोड करें या बदलें"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "अधिकृत कर हस्ताक्षर रिपोर्ट सेटिंग्स में अपलोड करें।"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "चयनित वित्तीय वर्ष के भीतर की तिथियों का उपयोग करें। मासिक और त्रैमासिक दान पहली किस्त के दिन, या छोटे महीनों के अंतिम दिन का उपयोग करते हैं।"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "सत्यापित पूरा दाता नाम"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "इसके बजाय परिवार को व्यक्तिगत रूप से सत्यापित करें।"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "हर परिवार के लिए पूरा दाता नाम और पता सत्यापित करें। मिश्रित-दाता भुगतान समूहों को इस सुविधा के बाहर संभालना होगा।"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "संस्करण %s उपलब्ध है। कृपया अपने प्रशासक से अपनी स्थापना को अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "View all emails"
+msgstr "सभी ईमेल देखें"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "हाँ — एक सत्यापित दाता समूह"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "आपका कलीसिया देश कनाडा है, इसलिए जब आप विवरण बनाते हैं तो कनाडाई आधिकारिक रसीदें भी उपलब्ध होती हैं।"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "आपका कलीसिया देश कनाडा है, इसलिए कनाडाई आधिकारिक रसीदें दान विवरणों पर उपलब्ध हैं और साधारण विवरणों को आधिकारिक दान रसीद नहीं के रूप में चिह्नित किया जाता है।"
+
+#: 
+msgid "groups"
+msgstr "समूह"
 

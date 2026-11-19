@@ -100,7 +100,7 @@ describe('04 - System Reset', () => {
             manualLogin();
 
             // Navigate to the reset page BEFORE firing the destructive API call.
-            // manualLogin() leaves the browser on /v2/dashboard (or church-info),
+            // manualLogin() leaves the browser on /people/dashboard (or church-info),
             // which fires async widget XHRs (cart, familiesInCart,
             // deposits/dashboard, calendar counters, ...). If any are still
             // in-flight when /admin/api/database/reset invalidates the session

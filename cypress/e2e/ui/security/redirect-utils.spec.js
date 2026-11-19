@@ -96,7 +96,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
     describe('Accepts valid relative URLs', () => {
         const validUrls = [
             '/people/view/1',
-            'v2/dashboard',
+            'people/dashboard',
             '/fundraiser/editor/1',
             'groups/view/5',
         ];

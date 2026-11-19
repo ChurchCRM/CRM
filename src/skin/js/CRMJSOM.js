@@ -560,11 +560,11 @@ window.CRM.dashboard = {
 
   /**
    * Show the number of self-registrations awaiting review on the People menu badge
-   * and on the home dashboard alert.
+   * and on the home dashboard card.
    */
   loadSelfRegisterPendingCount: () => {
     const badge = document.getElementById("selfRegisterPending");
-    const alert = document.getElementById("selfRegisterDashboardAlert");
+    const alert = document.getElementById("selfRegisterDashboardCard");
     if (!badge && !alert) return;
     window.CRM.APIRequest({
       method: "GET",
@@ -577,8 +577,6 @@ window.CRM.dashboard = {
       }
       if (alert) {
         document.getElementById("selfRegisterDashboardCount").innerText = data.count;
-        alert.classList.toggle("d-none", !data.count);
-        alert.classList.toggle("d-flex", Boolean(data.count));
       }
     });
   },
