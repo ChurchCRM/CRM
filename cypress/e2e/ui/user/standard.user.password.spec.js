@@ -333,6 +333,10 @@ describe("Password Strength Meter - configured minimum length", () => {
         cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
 
+        cy.get("#NewPassword1").clear().type("Abcdefghijk1");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Good");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "75");
+
         cy.get("#NewPassword1").clear().type("Abcdefghijk12345");
         cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");

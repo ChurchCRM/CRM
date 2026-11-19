@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
 $sPageTitle = gettext('Change Password') . ': ' . $user->getFullName();
@@ -46,7 +47,7 @@ if ($isForced) {
                     <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
                     <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" placeholder="<?= gettext('Enter your new password') ?>">
                 </div>
-                <div class="mb-3" id="PasswordStrengthContainer" data-min-length="<?= SystemConfig::getIntValue('iMinPasswordLength') ?>" hidden>
+                <div class="mb-3" id="PasswordStrengthContainer" data-min-length="<?= InputUtils::escapeAttribute((string) SystemConfig::getIntValue('iMinPasswordLength')) ?>" hidden>
                     <span><?= gettext('Password strength') ?>: <span id="PasswordStrengthLabel" aria-live="polite"></span></span>
                     <div class="progress mt-1">
                         <div class="progress-bar" id="PasswordStrengthBar" role="progressbar" aria-label="<?= gettext('Password strength') ?>" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -90,7 +91,7 @@ if ($isForced) {
                             <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
                         <input type="password" name="NewPassword1" id="NewPassword1" class="form-control">
                     </div>
-                    <div class="mb-3" id="PasswordStrengthContainer" data-min-length="<?= SystemConfig::getIntValue('iMinPasswordLength') ?>" hidden>
+                    <div class="mb-3" id="PasswordStrengthContainer" data-min-length="<?= InputUtils::escapeAttribute((string) SystemConfig::getIntValue('iMinPasswordLength')) ?>" hidden>
                         <span><?= gettext('Password strength') ?>: <span id="PasswordStrengthLabel" aria-live="polite"></span></span>
                         <div class="progress mt-1">
                             <div class="progress-bar" id="PasswordStrengthBar" role="progressbar" aria-label="<?= gettext('Password strength') ?>" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
