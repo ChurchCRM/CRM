@@ -6,22 +6,18 @@ const PUBLIC_CALENDAR = { type: "calendar", id: 1 };
 
 describe("Member without a family in the portal", () => {
     let sharedCalendars;
-    let volunteerVersion;
 
+    // No volunteer-version setup: #10606 removed the sVolunteerVersion setting
+    // (its API now answers 404), and Volunteering is always the Ministries experience.
     before(() => {
         cy.getMemberPortalCalendars().then((calendars) => {
             sharedCalendars = calendars;
         });
         cy.shareMemberPortalCalendars([PUBLIC_CALENDAR]);
-        cy.getSystemConfig("sVolunteerVersion").then((value) => {
-            volunteerVersion = value;
-        });
-        cy.setSystemConfig("sVolunteerVersion", "v2");
     });
 
     after(() => {
         cy.shareMemberPortalCalendars(sharedCalendars);
-        cy.restoreSystemConfig("sVolunteerVersion", volunteerVersion);
     });
 
     beforeEach(() => {
