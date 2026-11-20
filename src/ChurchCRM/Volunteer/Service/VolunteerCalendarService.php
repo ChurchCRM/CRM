@@ -46,7 +46,7 @@ class VolunteerCalendarService
      * May this user pin an event whose ministry is `$eventMinistryId` to `$calendar`?
      *
      *     allowed = canManageEvents()
-     *            || (rollout on && eventMinistry !== null && canManageMinistry(user, eventMinistry)
+     *            || (eventMinistry !== null && canManageMinistry(user, eventMinistry)
      *                && (calendar.ministry_id === eventMinistry
      *                    || (calendar.ministry_id === null && granted(calendar, eventMinistry))))
      *
@@ -59,7 +59,7 @@ class VolunteerCalendarService
             return true;
         }
 
-        if ($eventMinistryId === null || !User::isVolunteerV2Enabled()) {
+        if ($eventMinistryId === null) {
             return false;
         }
 
@@ -79,7 +79,7 @@ class VolunteerCalendarService
      * May this user administer `$calendar` (name, colours, public link, delete)?
      *
      *     allowed = canManageEvents()
-     *            || (rollout on && calendar.ministry_id !== null
+     *            || (calendar.ministry_id !== null
      *                           && canManageMinistry(user, calendar.ministry_id))
      */
     public function mayAdminister(User $user, Calendar $calendar): bool
@@ -89,7 +89,7 @@ class VolunteerCalendarService
         }
 
         $ministryId = $calendar->getMinistryId();
-        if ($ministryId === null || !User::isVolunteerV2Enabled()) {
+        if ($ministryId === null) {
             return false;
         }
 
@@ -115,13 +115,13 @@ class VolunteerCalendarService
 
     /**
      * Every ministry, ordered by name, for the admin calendar page's "Ministries that may add
-     * events" field. Empty unless the rollout is on and the user may manage the grants.
+     * events" field. Empty unless the user may manage the grants.
      *
      * @return array<int, array{id: int, name: string, active: bool}>
      */
     public function grantableMinistries(User $user): array
     {
-        if (!User::isVolunteerV2Enabled() || !$user->canManageEvents()) {
+        if (!$user->canManageEvents()) {
             return [];
         }
 

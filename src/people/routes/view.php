@@ -14,9 +14,7 @@ use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
-use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PersonSignInService;
-use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
@@ -35,34 +33,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-// ─── POST: assign volunteer opportunities (PRG pattern) ──────────────────────
-$app->post('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-    $iPersonID = (int) $args['personID'];
-    $currentUser = AuthenticationManager::getCurrentUser();
-
-    $person = PersonQuery::create()->findPk($iPersonID);
-    if (empty($person)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
-    }
-
-    if (!$currentUser->isEditRecordsEnabled()) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
-    }
-
-    if ($currentUser->isEditRecordsEnabled() && VolunteerV1Service::isInUse()) {
-        $personService = new PersonService();
-        $parsedBody    = $request->getParsedBody();
-        $volIDs        = is_array($parsedBody) ? ($parsedBody['VolunteerOpportunityIDs'] ?? []) : [];
-        if (!empty($volIDs)) {
-            foreach ($volIDs as $volID) {
-                $personService->addVolunteerOpportunity($iPersonID, (int) $volID);
-            }
-        }
-    }
-
-    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/' . $iPersonID);
-});
-
 // ─── GET: main person view ───────────────────────────────────────────────────
 $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
     $iPersonID   = (int) $args['personID'];
@@ -78,14 +48,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
-    // Handle volunteer-opportunity removal (RemoveVO query param)
-    $queryParams = $request->getQueryParams();
-    $iRemoveVO   = (int) ($queryParams['RemoveVO'] ?? 0);
-    if ($iRemoveVO > 0 && $currentUser->isEditRecordsEnabled() && VolunteerV1Service::isInUse()) {
-        $personService = new PersonService();
-        $personService->removeVolunteerOpportunity($iPersonID, $iRemoveVO);
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/' . $iPersonID);
-    }
     // ── Page header ─────────────────────────────────────────────────────────
     $sPageTitle    = InputUtils::escapeHTML($person->getFullName());
     $sPageSubtitle = gettext('Person Profile') . ' — ID: ' . $person->getId();

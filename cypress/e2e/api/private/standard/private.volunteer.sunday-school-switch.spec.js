@@ -9,7 +9,6 @@
  * Manage My Ministries, made coordinator of the ministry here.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const URL = "/api/ministries";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
@@ -18,7 +17,6 @@ const CHURCH_SERVICE_TYPE = 1;
 
 const PREFIX = "SSW29";
 
-let originalVersion = "v1";
 let ministryId = 0;
 let teamId = 0;
 let classA = 0;
@@ -101,10 +99,6 @@ after(() => {
 
 describe("Volunteer v2 D29 — \"Can this ministry provide teachers for Sunday School?\" (design §0.8, §2.3, §4.6)", () => {
     before(() => {
-        admin("GET", SETTING_URL, null).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         admin("POST", `${URL}/ministries`, { name: `${PREFIX} Adult Ministry` }, 201).then((resp) => {
@@ -130,7 +124,6 @@ describe("Volunteer v2 D29 — \"Can this ministry provide teachers for Sunday S
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: originalVersion });
     });
 
     describe("Volunteer v2 D29 — the Sunday School switch", () => {

@@ -27,7 +27,6 @@
  * mid-spec. Deletion order is FK-safe.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 /** The member team leader of P17, in a member session. */
 const LEADER_KEY = 99;
@@ -52,7 +51,6 @@ let posOtherDoor = 0;
 let leaderScopeId = 0;
 let scheduleLed = 0;
 let occurrenceLed = 0;
-let originalVersion = "v1";
 let windowStart = "";
 let windowEnd = "";
 /** The four Sunday-morning events the led team's schedule follows, soonest first. */
@@ -78,10 +76,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today. */
@@ -206,11 +200,6 @@ after(() => {
 
 describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epic #9701)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         windowStart = isoDate(daysToNext(0));
@@ -292,7 +281,6 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── the spec ───────────────────────────────────────────────────────────────

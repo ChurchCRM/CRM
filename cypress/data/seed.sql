@@ -195,8 +195,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('sSMTPUser',''),
 ('sTaxSigner','Elder Joe Smith'),
 ('sTimeZone','America/Detroit'),
-('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse'),
-('sVolunteerVersion','v2');
+('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse');
 
 INSERT INTO `deposit_dep` (`dep_ID`, `dep_Date`, `dep_Comment`, `dep_EnteredBy`, `dep_Closed`, `dep_Type`) VALUES (1,'2025-12-13','Updated Test Deposit',NULL,0,'Bank'),
 (2,'2018-02-18','',NULL,0,'Bank'),
