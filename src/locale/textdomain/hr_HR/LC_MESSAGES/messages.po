@@ -14913,10 +14913,6 @@ msgid "Target family"
 msgstr "Ciljna obitelj"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Skupina nije pronađena. Molimo pokušajte ponovo."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Odabrana obitelj više ne postoji. Molimo osvježite stranicu i pokušajte ponovo."
 

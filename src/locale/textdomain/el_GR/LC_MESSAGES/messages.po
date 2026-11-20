@@ -14935,10 +14935,6 @@ msgid "Target family"
 msgstr "Οικογένεια στόχος"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Η ομάδα δεν βρέθηκε. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Η επιλεγμένη οικογένεια δεν υπάρχει πλέον. Παρακαλώ ανανεώστε τη σελίδα και δοκιμάστε ξανά."
 

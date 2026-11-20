@@ -14905,10 +14905,6 @@ msgid "Target family"
 msgstr "Familia destinataria"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "No se pudo encontrar el grupo. Por favor intente de nuevo."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "La familia seleccionada ya no existe. Por favor actualice la página e intente de nuevo."
 

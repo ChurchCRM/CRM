@@ -14902,10 +14902,6 @@ msgid "Target family"
 msgstr "Target na pamilya"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Hindi mahanap ang grupo. Pakisubukan muli."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Ang napiling pamilya ay wala na. Pakirefresh ang pahina at subukan muli."
 

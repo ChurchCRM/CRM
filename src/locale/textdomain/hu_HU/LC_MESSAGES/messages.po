@@ -14958,10 +14958,6 @@ msgid "Target family"
 msgstr "Célcsalád"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "A csoport nem található. Kérjük, próbálja újra."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "A kiválasztott család már nem létezik. Kérjük, frissítse az oldalt, és próbálja újra."
 

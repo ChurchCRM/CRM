@@ -3610,7 +3610,6 @@
   "Symbol Position": "Позиция символа",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "Символ или код, отображаемый рядом с суммами (например, $, €, £, CHF, CAD $). По умолчанию: $",
   "Target family": "Целевая семья",
-  "The group could not be found. Please try again.": "Группа не найдена. Пожалуйста, попробуйте ещё раз.",
   "The selected family no longer exists. Please refresh the page and try again.": "Выбранная семья больше не существует. Пожалуйста, обновите страницу и попробуйте ещё раз.",
   "The selected group was not found. Please select a valid group.": "Выбранная группа не найдена. Пожалуйста, выберите допустимую группу.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "Так будут отображаться даты, денежные суммы и номера телефонов во всей системе. Ознакомьтесь с текущими форматами здесь, затем отредактируйте их в разделах ниже.",

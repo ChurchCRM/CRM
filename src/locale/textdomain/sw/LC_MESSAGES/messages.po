@@ -14931,10 +14931,6 @@ msgid "Target family"
 msgstr "Familia inayolengwa"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Kikundi hakikupatikana. Tafadhali jaribu tena."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Familia iliyochaguliwa haipo tena. Tafadhali onyesha upya ukurasa na ujaribu tena."
 

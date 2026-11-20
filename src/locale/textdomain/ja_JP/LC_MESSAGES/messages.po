@@ -14889,10 +14889,6 @@ msgid "Target family"
 msgstr "対象家族"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "グループが見つかりませんでした。もう一度お試しください。"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "選択した家族はもう存在しません。ページを更新してもう一度お試しください。"
 

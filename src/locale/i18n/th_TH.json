@@ -3571,7 +3571,6 @@
   "Symbol Position": "ตำแหน่งสัญลักษณ์",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "สัญลักษณ์หรือรหัสที่แสดงข้างจำนวนเงิน (เช่น $, €, £, CHF, CAD $) ค่าเริ่มต้น: $",
   "Target family": "ครอบครัวเป้าหมาย",
-  "The group could not be found. Please try again.": "ไม่พบกลุ่ม กรุณาลองใหม่อีกครั้ง",
   "The selected family no longer exists. Please refresh the page and try again.": "ครอบครัวที่เลือกไม่มีอยู่อีกต่อไป กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง",
   "The selected group was not found. Please select a valid group.": "ไม่พบกลุ่มที่เลือก กรุณาเลือกกลุ่มที่ถูกต้อง",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "นี่คือวิธีที่วันที่ จำนวนเงิน และหมายเลขโทรศัพท์จะปรากฏทั่วทั้งระบบ",

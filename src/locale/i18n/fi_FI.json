@@ -3584,7 +3584,6 @@
   "Symbol Position": "Symbolin sijainti",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "Summan vieressä näytettävä symboli tai koodi (esim. $, €, £, CHF, CAD $). Oletus: $",
   "Target family": "Kohdeperhe",
-  "The group could not be found. Please try again.": "Ryhmää ei löydy. Yritä uudelleen.",
   "The selected family no longer exists. Please refresh the page and try again.": "Valittu perhe ei ole enää olemassa. Päivitä sivu ja yritä uudelleen.",
   "The selected group was not found. Please select a valid group.": "Valittua ryhmää ei löydetty. Valitse kelvollinen ryhmä.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "Näin päivämäärät, rahasummat ja puhelinnumerot näkyvät koko järjestelmässä. Tarkista nykyiset muodot täällä ja muokkaa niitä alla olevissa osioissa.",

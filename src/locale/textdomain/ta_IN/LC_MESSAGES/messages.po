@@ -14947,10 +14947,6 @@ msgid "Target family"
 msgstr "இலக்கு குடும்பம்"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "குழுவை கண்டுபிடிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம் இனி இல்லை. பக்கத்தை புதுப்பித்து மீண்டும் முயற்சிக்கவும்."
 

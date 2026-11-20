@@ -15005,10 +15005,6 @@ msgid "Target family"
 msgstr "Familia destinatară"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Grupul nu a putut fi găsit. Vă rugăm să încercați din nou."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Familia selectată nu mai există. Vă rugăm să reîncărcați pagina și să încercați din nou."
 

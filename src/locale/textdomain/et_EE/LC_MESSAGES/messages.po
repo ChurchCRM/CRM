@@ -14934,10 +14934,6 @@ msgid "Target family"
 msgstr "Sihtperekond"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Gruppi ei leitud. Palun proovige uuesti."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Valitud perekond ei eksisteeri enam. Palun värskendage lehte ja proovige uuesti."
 

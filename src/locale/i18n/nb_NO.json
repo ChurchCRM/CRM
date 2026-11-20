@@ -3584,7 +3584,6 @@
   "Symbol Position": "Symbolposisjon",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "Symbol eller kode vist ved siden av beløp (f.eks. $, €, £, CHF, CAD $). Standard: $",
   "Target family": "Målfamilie",
-  "The group could not be found. Please try again.": "Gruppen ble ikke funnet. Vennligst prøv igjen.",
   "The selected family no longer exists. Please refresh the page and try again.": "Den valgte familien eksisterer ikke lenger. Vennligst oppdater siden og prøv igjen.",
   "The selected group was not found. Please select a valid group.": "Den valgte gruppen ble ikke funnet. Vennligst velg en gyldig gruppe.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "Slik vil datoer, valutabeløp og telefonnumre vises i hele systemet. Se gjennom gjeldende formater her, og rediger dem i avsnittene nedenfor.",
