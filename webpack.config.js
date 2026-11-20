@@ -95,7 +95,7 @@ module.exports = {
     'sidebar-toggle': './webpack/sidebar-toggle.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
-    'root-dashboard': './webpack/root-dashboard',
+    'people-dashboard': './webpack/people-dashboard',
     setup: './webpack/setup',
     'upgrade-wizard': './webpack/upgrade-wizard',
     'locale-loader': './webpack/locale-loader',
@@ -107,6 +107,8 @@ module.exports = {
     'admin-member-portal': './webpack/admin-member-portal.ts',
     // Admin → Convert Volunteer Opportunities (#10606).
     'admin-volunteer-conversion': './webpack/admin-volunteer-conversion.ts',
+    // Shared note / Why Came modal on the person and family views.
+    'note-why-came-modal': './webpack/note-why-came-modal.ts',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
     'report-settings': './webpack/report-settings',
@@ -134,7 +136,6 @@ module.exports = {
     'error': './webpack/error',
     'feature-toggles': './webpack/feature-toggles',
     'finance-report-options': './webpack/finance-report-options',
-    'finance-year-end': './webpack/finance-year-end',
     'groups-group-view': './webpack/groups/group-view',
     'groups-group-properties-form': './webpack/groups/group-properties-form',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',

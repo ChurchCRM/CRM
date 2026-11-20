@@ -8,9 +8,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
-use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
@@ -18,8 +15,8 @@ use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
 use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Service\PersonSignInService;
+use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
@@ -160,151 +157,117 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         $allGroupsData[] = $row;
     }
 
-    // ── Volunteer opportunities (V1, while in use) ────────────────────────────
-    // Get IDs of opportunities assigned to this person (no FK relation in
-    // schema.xml, so a join isn't auto-generated — use a two-step query).
-    $volunteerV1InUse = VolunteerV1Service::isInUse();
-    $assignedVolOppIds = [];
-    $assignedVolunteerOppsData = [];
-    $allVolunteerOppsData = [];
-    if ($volunteerV1InUse) {
-        foreach (PersonVolunteerOpportunityQuery::create()->filterByPersonId($iPersonID)->find() as $pvo) {
-            $assignedVolOppIds[] = $pvo->getVolunteerOpportunityId();
-        }
-        $assignedVolunteerOppsData = empty($assignedVolOppIds)
-            ? []
-            : VolunteerOpportunityQuery::create()
-                ->filterById($assignedVolOppIds)
-                ->orderByOrder()
-                ->find();
-
-        $allVolunteerOppsData = VolunteerOpportunityQuery::create()
-            ->orderByOrder()
-            ->find();
-    }
-
-    // ── Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2) ──────────────
-    //
+    // ── Volunteer pane ───────────────────────────────────────────────────────
     // What this person is qualified for and what they are committed to next,
-    // read-only, linking into /volunteer. Prepared here because views run no
-    // queries (groups-mvc-guidelines.md), and only when the V2 experience is
-    // actually shown — `v1` mode must cost nothing.
-    //
-    // This is a PERSON-page read, not a coordinator read: it is about the person
-    // whose record is open, gated by the same permission that opened the record,
-    // and it exposes nothing a coordinator screen would not. It is deliberately
-    // NOT scoped to the viewer's volunteer ministries — an administrator looking
-    // at a member's record is not acting as a coordinator of anything.
-    $volunteerV2Qualifications = [];
-    $volunteerV2Assignments = [];
+    // read-only, linking into /volunteer. Gated by the permission that opened
+    // the record, not scoped to the viewer's ministries.
+    $volunteerQualifications = [];
+    $volunteerAssignments = [];
+    $qualificationService = new VolunteerQualificationService();
+    $assignmentService = new VolunteerAssignmentService();
+    $scheduleService = new VolunteerScheduleService();
 
-    if (User::isVolunteerV2Enabled()) {
-        $qualificationService = new VolunteerQualificationService();
-        $assignmentService = new VolunteerAssignmentService();
-        $scheduleService = new VolunteerScheduleService();
+    $positionNames = [];
+    $positionMinistryIds = [];
+    $qualificationRows = array_values(array_filter(
+        $qualificationService->listQualificationsForPerson($iPersonID),
+        static fn (VolunteerQualification $row): bool => (bool) $row->getActive()
+    ));
 
-        $positionNames = [];
-        $positionMinistryIds = [];
-        $qualificationRows = array_values(array_filter(
-            $qualificationService->listQualificationsForPerson($iPersonID),
-            static fn (VolunteerQualification $row): bool => (bool) $row->getActive()
-        ));
-
-        $positionIds = array_values(array_unique(array_map(
-            static fn (VolunteerQualification $row): int => (int) $row->getPositionId(),
-            $qualificationRows
-        )));
-        if ($positionIds !== []) {
-            foreach (VolunteerPositionQuery::create()->filterById($positionIds, Criteria::IN)->find() as $position) {
-                $positionNames[(int) $position->getId()] = $position->getName();
-                $positionMinistryIds[(int) $position->getId()] = (int) $position->getMinistryId();
-            }
+    $positionIds = array_values(array_unique(array_map(
+        static fn (VolunteerQualification $row): int => (int) $row->getPositionId(),
+        $qualificationRows
+    )));
+    if ($positionIds !== []) {
+        foreach (VolunteerPositionQuery::create()->filterById($positionIds, Criteria::IN)->find() as $position) {
+            $positionNames[(int) $position->getId()] = $position->getName();
+            $positionMinistryIds[(int) $position->getId()] = (int) $position->getMinistryId();
         }
-
-        $upcoming = $assignmentService->listAssignmentsForPerson($iPersonID);
-        $occurrenceIds = array_values(array_unique(array_map(
-            static fn ($assignment): int => (int) $assignment->getOccurrenceId(),
-            $upcoming
-        )));
-
-        $occurrences = [];
-        $schedules = [];
-        if ($occurrenceIds !== []) {
-            foreach (VolunteerOccurrenceQuery::create()->filterById($occurrenceIds, Criteria::IN)->find() as $occurrence) {
-                $occurrences[(int) $occurrence->getId()] = $occurrence;
-            }
-            $scheduleIds = array_values(array_unique(array_map(
-                static fn ($occurrence): int => (int) $occurrence->getScheduleId(),
-                $occurrences
-            )));
-            if ($scheduleIds !== []) {
-                foreach (VolunteerScheduleQuery::create()->filterById($scheduleIds, Criteria::IN)->find() as $schedule) {
-                    $schedules[(int) $schedule->getId()] = $schedule;
-                }
-            }
-        }
-
-        $ministryIds = array_values(array_unique(array_merge(
-            array_values($positionMinistryIds),
-            array_map(static fn ($schedule): int => (int) $schedule->getMinistryId(), $schedules)
-        )));
-        $ministryNames = [];
-        if ($ministryIds !== []) {
-            foreach (VolunteerMinistryQuery::create()->filterById($ministryIds, Criteria::IN)->find() as $ministry) {
-                $ministryNames[(int) $ministry->getId()] = $ministry->getName();
-            }
-        }
-
-        foreach ($qualificationRows as $row) {
-            $positionId = (int) $row->getPositionId();
-            $volunteerV2Qualifications[] = [
-                'positionId' => $positionId,
-                'positionName' => $positionNames[$positionId] ?? null,
-                'ministryId' => $positionMinistryIds[$positionId] ?? null,
-                'ministryName' => $ministryNames[$positionMinistryIds[$positionId] ?? 0] ?? null,
-                'grantedDate' => $row->getGrantedDate('Y-m-d'),
-            ];
-        }
-
-        // Upcoming positions a person still holds. A cancelled or substituted-away
-        // row is history, not a commitment, so it is not a "what am I doing next"
-        // answer and is left out (§2.11.1).
-        foreach ($upcoming as $assignment) {
-            if (!in_array($assignment->getStatus(), ['pending', 'accepted'], true)) {
-                continue;
-            }
-
-            $occurrence = $occurrences[(int) $assignment->getOccurrenceId()] ?? null;
-            if ($occurrence === null) {
-                continue;
-            }
-
-            $schedule = $schedules[(int) $occurrence->getScheduleId()] ?? null;
-            // The one method allowed to decide an occurrence's time — for a linked
-            // occurrence it reads the event row (D4).
-            $window = $scheduleService->resolveOccurrenceWindow($occurrence);
-            $positionId = (int) $assignment->getPositionId();
-            $ministryId = $schedule === null ? null : (int) $schedule->getMinistryId();
-
-            $volunteerV2Assignments[] = [
-                'occurrenceId' => (int) $occurrence->getId(),
-                'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
-                'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
-                'positionId' => $positionId,
-                'positionName' => $positionNames[$positionId]
-                    ?? (VolunteerPositionQuery::create()->findPk($positionId)?->getName()),
-                'scheduleName' => $schedule === null ? null : $schedule->getName(),
-                'ministryId' => $ministryId,
-                'ministryName' => $ministryId === null ? null : ($ministryNames[$ministryId] ?? null),
-                'status' => $assignment->getStatus(),
-            ];
-        }
-
-        usort(
-            $volunteerV2Assignments,
-            static fn (array $a, array $b): int => ($a['occurrenceDate'] ?? '') <=> ($b['occurrenceDate'] ?? '')
-        );
     }
+
+    $upcoming = $assignmentService->listAssignmentsForPerson($iPersonID);
+    $occurrenceIds = array_values(array_unique(array_map(
+        static fn ($assignment): int => (int) $assignment->getOccurrenceId(),
+        $upcoming
+    )));
+
+    $occurrences = [];
+    $schedules = [];
+    if ($occurrenceIds !== []) {
+        foreach (VolunteerOccurrenceQuery::create()->filterById($occurrenceIds, Criteria::IN)->find() as $occurrence) {
+            $occurrences[(int) $occurrence->getId()] = $occurrence;
+        }
+        $scheduleIds = array_values(array_unique(array_map(
+            static fn ($occurrence): int => (int) $occurrence->getScheduleId(),
+            $occurrences
+        )));
+        if ($scheduleIds !== []) {
+            foreach (VolunteerScheduleQuery::create()->filterById($scheduleIds, Criteria::IN)->find() as $schedule) {
+                $schedules[(int) $schedule->getId()] = $schedule;
+            }
+        }
+    }
+
+    $ministryIds = array_values(array_unique(array_merge(
+        array_values($positionMinistryIds),
+        array_map(static fn ($schedule): int => (int) $schedule->getMinistryId(), $schedules)
+    )));
+    $ministryNames = [];
+    if ($ministryIds !== []) {
+        foreach (VolunteerMinistryQuery::create()->filterById($ministryIds, Criteria::IN)->find() as $ministry) {
+            $ministryNames[(int) $ministry->getId()] = $ministry->getName();
+        }
+    }
+
+    foreach ($qualificationRows as $row) {
+        $positionId = (int) $row->getPositionId();
+        $volunteerQualifications[] = [
+            'positionId' => $positionId,
+            'positionName' => $positionNames[$positionId] ?? null,
+            'ministryId' => $positionMinistryIds[$positionId] ?? null,
+            'ministryName' => $ministryNames[$positionMinistryIds[$positionId] ?? 0] ?? null,
+            'grantedDate' => $row->getGrantedDate('Y-m-d'),
+        ];
+    }
+
+    // Upcoming positions a person still holds. A cancelled or substituted-away
+    // row is history, not a commitment, so it is not a "what am I doing next"
+    // answer and is left out (§2.11.1).
+    foreach ($upcoming as $assignment) {
+        if (!in_array($assignment->getStatus(), ['pending', 'accepted'], true)) {
+            continue;
+        }
+
+        $occurrence = $occurrences[(int) $assignment->getOccurrenceId()] ?? null;
+        if ($occurrence === null) {
+            continue;
+        }
+
+        $schedule = $schedules[(int) $occurrence->getScheduleId()] ?? null;
+        // The one method allowed to decide an occurrence's time — for a linked
+        // occurrence it reads the event row (D4).
+        $window = $scheduleService->resolveOccurrenceWindow($occurrence);
+        $positionId = (int) $assignment->getPositionId();
+        $ministryId = $schedule === null ? null : (int) $schedule->getMinistryId();
+
+        $volunteerAssignments[] = [
+            'occurrenceId' => (int) $occurrence->getId(),
+            'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
+            'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
+            'positionId' => $positionId,
+            'positionName' => $positionNames[$positionId]
+                ?? (VolunteerPositionQuery::create()->findPk($positionId)?->getName()),
+            'scheduleName' => $schedule === null ? null : $schedule->getName(),
+            'ministryId' => $ministryId,
+            'ministryName' => $ministryId === null ? null : ($ministryNames[$ministryId] ?? null),
+            'status' => $assignment->getStatus(),
+        ];
+    }
+
+    usort(
+        $volunteerAssignments,
+        static fn (array $a, array $b): int => ($a['occurrenceDate'] ?? '') <=> ($b['occurrenceDate'] ?? '')
+    );
 
     // ── Properties (ORM via PropertyService) ─
     $assignedPersonProperties = PropertyService::getAssigned($person);
@@ -413,18 +376,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Groups
         'assignedGroupsData'     => $assignedGroupsData,
         'allGroupsData'          => $allGroupsData,
-        // Volunteer opps
-        'assignedVolunteerOppsData' => $assignedVolunteerOppsData,
-        'allVolunteerOppsData'      => $allVolunteerOppsData,
-        // Volunteer rollout state (#9704): 'v1' | 'v2' | 'both', and whether the
-        // legacy V1 tab shows (#10606: while V1 is in use).
-        'volunteerVersion'          => User::getVolunteerVersion(),
-        'volunteerV1InUse'          => $volunteerV1InUse,
-        'volunteerV1Notice'         => $volunteerV1InUse ? VolunteerV1Service::noticeFacts() : null,
-        // #9711: the V2 pane's data (design §3.5). Empty arrays in `v1` mode,
-        // where the pane is not rendered at all.
-        'volunteerV2Qualifications' => $volunteerV2Qualifications,
-        'volunteerV2Assignments'    => $volunteerV2Assignments,
+        // Volunteer pane: positions the person is qualified for and what they serve next
+        'volunteerQualifications'   => $volunteerQualifications,
+        'volunteerAssignments'      => $volunteerAssignments,
         // Properties (ORM)
         'assignedPersonProperties'  => $assignedPersonProperties,
         'allPersonProperties'       => $allPersonProperties,

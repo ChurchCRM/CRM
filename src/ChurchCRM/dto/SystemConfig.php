@@ -225,7 +225,12 @@ class   SystemConfig
             'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
             'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
-            'sCanadianTaxSignatureAsset'           => new ConfigItem('sCanadianTaxSignatureAsset', 'text', '', gettext('Private Canadian giving-statement signature asset identifier. Managed by signature upload.')),
+            'sCharityLegalName' => new ConfigItem('sCharityLegalName', 'text', '', gettext('Charity Legal Name')),
+            'sCharityRegisteredAddress' => new ConfigItem('sCharityRegisteredAddress', 'text', '', gettext('Charity Registered Address')),
+            'sCharityRegistrationNumber' => new ConfigItem('sCharityRegistrationNumber', 'text', '', gettext('Charity Registration Number')),
+            'sReceiptIssueLocality' => new ConfigItem('sReceiptIssueLocality', 'text', '', gettext('Receipt Issue Locality')),
+            'sReceiptClosing' => new ConfigItem('sReceiptClosing', 'text', 'Sincerely', gettext('Receipt Closing')),
+            'sTaxSignatureAsset'           => new ConfigItem('sTaxSignatureAsset', 'text', '', gettext('Private giving-statement signature asset identifier. Managed by signature upload.')),
             'sTaxSignatureStoragePath'             => new ConfigItem('sTaxSignatureStoragePath', 'text', '', gettext('Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to.')),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
             'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
@@ -612,7 +617,7 @@ class   SystemConfig
 
     public static function setValue(string $name, $value, bool $serverManaged = false): void
     {
-        if ($name === 'sCanadianTaxSignatureAsset' && !$serverManaged) {
+        if ($name === 'sTaxSignatureAsset' && !$serverManaged) {
             throw new \InvalidArgumentException(gettext('Use signature upload or removal to change this setting.'));
         }
 

@@ -60,8 +60,12 @@ let seriesEnd = "";
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
+    // Let the login page settle before typing: starting keyboard simulation
+    // while the document is still being replaced after cy.visit is the
+    // Cypress runner KeyboardEvent flake (nightly run 44217282398).
+    cy.url().should("include", "/session/begin");
+    cy.get("input[name=User]").should("be.visible").click().type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").should("be.visible").click().type(Cypress.testEnv("admin.password") + "{enter}");
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -69,8 +73,10 @@ function freshAdminLogin() {
 function freshCoordinatorLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
-    cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
+    // Same settle-before-typing guard as freshAdminLogin above.
+    cy.url().should("include", "/session/begin");
+    cy.get("input[name=User]").should("be.visible").click().type(Cypress.testEnv("standard.username"));
+    cy.get("input[name=Password]").should("be.visible").click().type(Cypress.testEnv("standard.password") + "{enter}");
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -519,10 +525,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows the person's qualification and upcoming assignment, linking into /volunteer", () => {
             cy.visit(`/people/view/${POOL_MEMBER_A}`);
 
-            cy.get("#nav-item-volunteer-v2").should("exist").click();
-            cy.get("#volunteer-v2").should("be.visible");
-            cy.get("#person-volunteer-v2-qualifications").should("contain", POSITION_ESPRESSO);
-            cy.get("#person-volunteer-v2-assignments")
+            cy.get("#nav-item-volunteer").should("exist").click();
+            cy.get("#volunteer").should("be.visible");
+            cy.get("#person-volunteer-qualifications").should("contain", POSITION_ESPRESSO);
+            cy.get("#person-volunteer-assignments")
                 .should("contain", POSITION_ESPRESSO)
                 .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
@@ -531,19 +537,8 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows a first-class empty state for a person with nothing (§5.8)", () => {
             // Person 5 is a seeded pool member this fixture never qualifies.
             cy.visit("/people/view/5");
-            cy.get("#nav-item-volunteer-v2").click();
-            cy.get("#person-volunteer-v2-empty").should("be.visible");
-        });
-
-        it("leaves the V1 pane and its ids untouched when both are on", () => {
-            setVersion("both");
-            freshAdminLogin();
-            cy.visit(`/people/view/${POOL_MEMBER_A}`);
-            cy.get("#nav-item-volunteer").should("exist");
-            cy.get("#nav-item-volunteer-v2").should("exist");
-            cy.get("#volunteer").should("exist");
-            cy.get("#volunteer-v2").should("exist");
-            setVersion("v2");
+            cy.get("#nav-item-volunteer").click();
+            cy.get("#person-volunteer-empty").should("be.visible");
         });
     });
 

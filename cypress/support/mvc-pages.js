@@ -4,7 +4,7 @@
 // /portal/email/confirm are public.
 
 export const MVC_PAGES = {
-    v2: ["/v2/dashboard", "/v2/search"],
+    v2: ["/v2/search"],
     account: ["/account", "/account/password", "/account/2fa"],
     people: [
         "/people/",
@@ -24,7 +24,7 @@ export const MVC_PAGES = {
         "/people/cart/to-family",
     ],
     groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
-    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
+    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/reports/pledge-reminders", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
     event: ["/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
     fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],

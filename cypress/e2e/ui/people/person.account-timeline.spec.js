@@ -98,11 +98,10 @@ describe("Account entries on the person timeline (#8672)", () => {
     it("filters the person timeline to Account entries with the Account chip", () => {
         cy.setupAdminSession();
         cy.visit(`/people/view/${PERSON}`);
-        cy.get('#timeline .timeline-filter-chip[data-filter="account"]').should("exist").and("have.class", "btn-outline-secondary");
-        cy.get('#timeline .timeline-event[data-timeline-category="account"]').should("not.be.visible");
+        cy.get("#nav-item-timeline").click();
+        cy.get('#timeline .timeline-filter-chip[data-filter="account"]').should("exist").and("have.class", "btn-primary");
 
         cy.get('#timeline .timeline-filter-chip[data-filter="account"]').click();
-        cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').click();
         cy.get('#timeline .timeline-filter-chip[data-filter="account"]').should("have.class", "btn-primary");
         cy.get('#timeline .timeline-event[data-timeline-category="account"]').should("have.length.at.least", 9).and("be.visible");
         cy.get("#timeline .timeline-event:visible").each(($event) => {

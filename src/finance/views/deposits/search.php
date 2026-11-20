@@ -30,9 +30,37 @@ $sPageHeaderButtons = ob_get_clean();
 $sPageHeaderButtons .= '<a class="btn btn-outline-primary" href="' . InputUtils::escapeAttribute($sRootPath . '/finance/reports/deposits') . '">' . gettext('Deposit Reports') . '</a>';
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+$dashboardSwitchActive = 'deposits';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+
+$openDeposits = array_filter($deposits, static fn (array $d): bool => !($d['Closed'] ?? false));
+$openTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['totalAmount'] ?? 0), $openDeposits));
+$allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['totalAmount'] ?? 0), $deposits));
 ?>
 
-<div class="container-xl">
+<div class="row row-cards mb-3 g-2">
+  <?php foreach ([
+      ['bg-warning', 'fa-folder-open', (string) count($openDeposits), gettext('Open Deposits')],
+      ['bg-warning', 'fa-hand-holding-dollar', CurrencyFormatter::formatHtml($openTotal), gettext('Open total')],
+      ['bg-success', 'fa-sack-dollar', CurrencyFormatter::formatHtml($allTotal), gettext('Total deposited')],
+      ['bg-primary', 'fa-receipt', (string) count($deposits), gettext('Deposits')],
+  ] as [$bg, $icon, $value, $label]) : ?>
+  <div class="col-6 col-lg-3">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto"><span class="<?= $bg ?> text-white avatar rounded-circle"><i class="fa-solid <?= $icon ?> icon"></i></span></div>
+          <div class="col">
+            <div class="fw-medium text-body"><?= $value ?></div>
+            <div class="text-body-secondary"><?= $label ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php endforeach; ?>
+</div>
 
   <!-- New Deposit Modal -->
   <div class="modal fade" id="newDepositModal" tabindex="-1" aria-labelledby="newDepositModalLabel" aria-hidden="true">
@@ -238,7 +266,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <input type="checkbox" class="form-check-input row-select"
                          data-deposit-id="<?= $depositId ?>">
                 </td>
-                <td><?= $depositId ?></td>
+                <td><a href="<?= $editUrl ?>"><?= $depositId ?></a></td>
                 <td><?= $depositDate ?></td>
                 <td><?= $depositType ?></td>
                 <td><?= $depositComm ?></td>
@@ -275,7 +303,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 
-</div><!-- /.container-xl -->
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-deposit-search.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php

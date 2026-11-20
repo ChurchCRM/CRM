@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
@@ -144,7 +143,7 @@ class DirectoryReportService
             'footer_date' => date(SystemConfig::getValue('sDateTimeFormat')),
             'title_page' => !empty($layout['titlePage']),
             'title' => $titleData,
-            'letterhead' => $this->letterhead(),
+            'letterhead' => MpdfRenderer::graphicLetterhead(),
         ], false, [
             'format' => $booklet ? [$pageWidth, $pageHeight] : $format,
             'margin_left' => 13,
@@ -156,19 +155,6 @@ class DirectoryReportService
         ]);
 
         return $booklet ? PdfBookletImposer::impose($pdf, $format . '-L', $pageWidth, $pageHeight) : $pdf;
-    }
-
-    /** The configured letterhead image when it is a file inside the installation. */
-    private function letterhead(): string
-    {
-        $configured = (string) SystemConfig::getValue('bDirLetterHead');
-        if ($configured === '') {
-            return '';
-        }
-        $root = realpath(SystemURLs::getDocumentRoot());
-        $path = realpath(str_starts_with($configured, '/') ? $configured : SystemURLs::getDocumentRoot() . '/' . $configured);
-
-        return $root !== false && $path !== false && str_starts_with($path, $root . DIRECTORY_SEPARATOR) && is_file($path) ? $path : '';
     }
 
     /**

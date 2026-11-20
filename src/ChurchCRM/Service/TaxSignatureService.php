@@ -92,7 +92,7 @@ HTACCESS;
 
     private static function storedPath(): ?string
     {
-        $identifier = (string) SystemConfig::getValue('sCanadianTaxSignatureAsset');
+        $identifier = (string) SystemConfig::getValue('sTaxSignatureAsset');
         if ($identifier === '') {
             return null;
         }
@@ -174,7 +174,7 @@ HTACCESS;
             }
             fclose($stream);
             $stream = null;
-            SystemConfig::setValue('sCanadianTaxSignatureAsset', $identifier, true);
+            SystemConfig::setValue('sTaxSignatureAsset', $identifier, true);
             $saved = true;
             if ($oldPath !== null && is_file($oldPath) && !@unlink($oldPath)) {
                 throw new ImageStorageException(gettext('Signature updated but the previous private signature file could not be removed.'));
@@ -196,6 +196,6 @@ HTACCESS;
         if ($path !== null && is_file($path) && !@unlink($path)) {
             throw new ImageStorageException(gettext('Cannot remove the private tax signature file.'));
         }
-        SystemConfig::setValue('sCanadianTaxSignatureAsset', '', true);
+        SystemConfig::setValue('sTaxSignatureAsset', '', true);
     }
 }

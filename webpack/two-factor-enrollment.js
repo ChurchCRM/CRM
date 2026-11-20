@@ -1,4 +1,5 @@
 import { alertAction, promptAction } from "./common/confirm-action";
+import { copyText } from "./common/copy-to-clipboard";
 import { notifyError } from "./common/notify";
 /**
  * Two-Factor Authentication Enrollment
@@ -346,12 +347,12 @@ function bindEvents() {
   if (copyManualKeyBtn) {
     copyManualKeyBtn.addEventListener("click", async () => {
       if (!state.TwoFASecret) return;
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
-        await navigator.clipboard.writeText(state.TwoFASecret);
+      // Shared helper (#11458): Clipboard API with the execCommand fallback.
+      if (await copyText(state.TwoFASecret)) {
         copyManualKeyBtn.textContent = t("Copied!");
-      } catch (_error) {
-        // The readonly field remains selectable for manual copying on HTTP or denied permissions.
+      } else {
+        // The readonly field remains selectable for manual copying when every
+        // copy mechanism failed.
         manualKey.focus();
         manualKey.select();
         notifyError(t("Unable to copy automatically. Select and copy the setup key manually."));
@@ -391,7 +392,7 @@ function bindEvents() {
   // Success: copy button
   const copyBtn = document.getElementById("copyCodesBtn");
   if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
+    copyBtn.addEventListener("click", async () => {
       const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${c}`).join("\n");
       const showCopied = () => {
         copyBtn.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Copied!")}`;
@@ -399,31 +400,11 @@ function bindEvents() {
           copyBtn.innerHTML = `<i class="fa-solid fa-copy me-1"></i>${t("Copy")}`;
         }, 2000);
       };
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-        navigator.clipboard
-          .writeText(text)
-          .then(showCopied)
-          .catch(() => {
-            // Fallback for permission denied
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.setAttribute("readonly", "");
-            ta.style.position = "absolute";
-            ta.style.left = "-9999px";
-            document.body.appendChild(ta);
-            try {
-              ta.select();
-              document.execCommand("copy");
-              document.body.removeChild(ta);
-              showCopied();
-            } catch (_e) {
-              document.body.removeChild(ta);
-              alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
-            }
-          });
+      // Shared helper (#11458): Clipboard API with the execCommand fallback.
+      if (await copyText(text)) {
+        showCopied();
       } else {
-        // Non-secure context — clipboard API unavailable
-        alertAction("", t("Clipboard not available. Please use the Download button to save your codes."));
+        alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
       }
     });
   }

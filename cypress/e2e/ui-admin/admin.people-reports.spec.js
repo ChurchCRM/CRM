@@ -39,6 +39,14 @@ function rows() {
 }
 
 describe("People Reports (#9914, #9915)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v1" }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
+    });
+
     beforeEach(() => cy.setupAdminSession());
 
     it("lists the ten people reports", () => {
@@ -53,7 +61,7 @@ describe("People Reports (#9914, #9915)", () => {
     });
 
     it("is reachable from the Data/Reports menu next to Queries", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('a[href$="/people/reports"]').should("exist");
         cy.get('a[href$="QueryList.php"]').should("not.exist");
     });

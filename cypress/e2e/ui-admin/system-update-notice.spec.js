@@ -104,7 +104,7 @@ describe("System update notice for all staff", () => {
                 body: {},
             }).its("status").should("eq", 204);
         });
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('[data-notification-id="system-update-available"]').should("not.exist");
         cy.reload();
         cy.get('[data-notification-id="system-update-available"]').should("not.exist");

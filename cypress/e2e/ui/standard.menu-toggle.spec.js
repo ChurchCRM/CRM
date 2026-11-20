@@ -12,7 +12,7 @@ describe("Menu button in the top bar", () => {
         describe(name, () => {
             beforeEach(() => {
                 cy.viewport(width, height);
-                cy.visit("/v2/dashboard");
+                cy.visit("/people/dashboard");
             });
 
             it("sits on the search row without the logo or a floating menu button", () => {

@@ -151,7 +151,9 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // dashboard, populated by the import, rather than leaving the video on
   // the get-started page.
   await page.goto('/people/dashboard');
-  await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
+  // The unified dashboard renders several h2s (page title, Insights, ...);
+  // a bare 'h2' locator is a strict-mode violation now. Wait on the title.
+  await page.locator('h2.page-title').waitFor({ state: 'visible', timeout: 15000 });
   await settle(page, 600);
 
   await captureScreen(page, testInfo, {

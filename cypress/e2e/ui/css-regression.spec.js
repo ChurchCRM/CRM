@@ -15,7 +15,7 @@ describe("CSS Regression — No Auth Style Leakage", () => {
 
     describe("Dashboard — buttons use Tabler defaults", () => {
         beforeEach(() => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
         });
 
         it("Should NOT have page-auth body class", () => {

@@ -26,6 +26,10 @@ if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
+if (!in_array($sReportType, ['Pledge Family Summary', 'Zero Givers'], true)) {
+    $sReportType = '';
+}
+
 $sPageTitle = gettext('Financial Reports');
 $sPageSubtitle = gettext('Generate financial statements and giving reports');
 if ($sReportType) {
@@ -82,12 +86,11 @@ if ($sReportType === '') {
         <select class="form-select" name="ReportType" id="FinancialReportTypes">
           <option selected disabled value="0"><?= gettext('Select Report Type') ?></option>
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
-          <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
         </select>
       </div>
       <div class="d-flex gap-2">
-        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/people/dashboard') ?>"><?= gettext('Cancel') ?></a>
         <input type="submit" class="btn btn-primary" name="Submit1" value="<?= gettext('Next') ?>">
       </div>
     </form>
@@ -99,7 +102,6 @@ if ($sReportType === '') {
     switch ($sReportType) {
         case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
         case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
-        case 'Pledge Reminders':        $action = 'finance/reports/pledge-reminders/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
@@ -109,7 +111,7 @@ if ($sReportType === '') {
 
     <?php
     // Filter by Classification and Families
-    if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) {
+    if ($sReportType === 'Pledge Family Summary') {
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -185,14 +187,14 @@ if ($sReportType === '') {
 
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) : ?>
+    <?php if ($sReportType === 'Pledge Family Summary') : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
         <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Pledge Reminders'])) :
+    <?php if ($sReportType === 'Pledge Family Summary') :
         $funds = DonationFundQuery::create()
             ->orderByActive()
             ->orderByName()
@@ -218,35 +220,6 @@ if ($sReportType === '') {
     <?php endif; ?>
 
       <h4 class="mt-4 mb-3"><?= gettext('Other Settings') ?></h4>
-
-    <?php if ($sReportType === 'Pledge Reminders') : ?>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Include') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="pledge_filter" value="pledge" id="pledgeFilterPledge" checked>
-            <label class="form-check-label" for="pledgeFilterPledge"><?= gettext('Only Payments with Pledges') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="pledge_filter" value="all" id="pledgeFilterAll">
-            <label class="form-check-label" for="pledgeFilterAll"><?= gettext('All Payments') ?></label>
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Generate') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="only_owe" value="yes" id="onlyOweYes" checked>
-            <label class="form-check-label" for="onlyOweYes"><?= gettext('Only Families with unpaid pledges') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="only_owe" value="no" id="onlyOweNo">
-            <label class="form-check-label" for="onlyOweNo"><?= gettext('All Families') ?></label>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
 
     <?php if ($sReportType === 'Zero Givers') : ?>
       <div class="mb-3">

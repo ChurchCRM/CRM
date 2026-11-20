@@ -684,13 +684,6 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             cy.visit(OPPORTUNITIES_URL, { failOnStatusCode: false });
             cy.get("#volunteer-opportunities").should("not.exist");
         });
-
-        it("leaves the legacy V1 person-view tab working for an administrator", () => {
-            freshAdminLogin();
-            cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-            cy.get("#nav-item-volunteer").should("exist");
-            cy.get("#nav-item-volunteer-v2").should("not.exist");
-        });
     });
 
     // ── 2. localization: no raw keys, no unsubstituted placeholders ───────────
@@ -935,10 +928,10 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             it(`the person view's Volunteer tab fits at ${at}`, () => {
                 cy.viewport(viewport.width, viewport.height);
                 cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-                cy.get("#nav-item-volunteer-v2", { timeout: 20000 })
+                cy.get("#nav-item-volunteer", { timeout: 20000 })
                     .should("exist")
                     .click();
-                cy.get("#volunteer-v2").should("be.visible");
+                cy.get("#volunteer").should("be.visible");
                 assertNoHorizontalOverflow(`person view Volunteer tab @ ${at}`);
             });
         });

@@ -1342,10 +1342,6 @@ msgid "People"
 msgstr "人"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "主日学校的孩子"
-
-#: 
 msgid "Role / Gender"
 msgstr "角式/性别"
 
@@ -4541,10 +4537,6 @@ msgid "People Reports"
 msgstr "人员报告"
 
 #: 
-msgid "People Dashboard"
-msgstr "人员仪表板"
-
-#: 
 msgid "People Directory"
 msgstr "人员目录"
 
@@ -5134,10 +5126,6 @@ msgstr "强制执行内容安全策略 (CSP) 以帮助防止跨站脚本攻击�
 #: 
 msgid "Enter event description..."
 msgstr "输入活动描述..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "在此处输入笔记文本..."
 
 #: 
 msgid "Note"
@@ -8092,10 +8080,6 @@ msgid "or later to continue."
 msgstr "或更高版本以继续。"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"为什么来\" 笔记"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d 个 \"%s\" 的结果"
@@ -8203,10 +8187,6 @@ msgstr "添加或编辑个人记录"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "添加或编辑为筹款活动捐赠的物品"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "为人员和家族添加或编辑笔记"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9083,10 +9063,6 @@ msgid "Password Recovery"
 msgstr "密码恢复"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "过去和未来7天"
-
-#: 
 msgid "People by Classification"
 msgstr "按分类查看人员"
 
@@ -9169,10 +9145,6 @@ msgstr "一次记录多个募捐抽奖获奖者"
 #: 
 msgid "Record new pledges and payments"
 msgstr "记录新的奉献承诺和奉献款"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "记录来访者来教会的原因"
 
 #: 
 msgid "Remove from Class"
@@ -10986,10 +10958,6 @@ msgstr "深色"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
 
 #. Context: locales
 #: 
@@ -12968,14 +12936,6 @@ msgid "Click Save to apply."
 msgstr "单击保存进行应用。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪贴板API不可用。请手动复制URL。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "剪贴板不可用。请使用下载按钮保存您的代码。"
-
-#: 
 msgid "Code incomplete"
 msgstr "验证码不完整"
 
@@ -13554,14 +13514,6 @@ msgstr "无存款"
 #: 
 msgid "No Events Today"
 msgstr "今日无活动"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "过去和未来7天内没有纪念日"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "过去和未来7天内没有生日"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14507,24 +14459,12 @@ msgid "People &amp; Families"
 msgstr "人员与家庭"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "您尝试编辑的备注已不存在。"
-
-#: 
 msgid "User List"
 msgstr "用户列表"
 
 #: 
 msgid "View Person"
 msgstr "查看人员"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "您没有权限为此家庭添加备注。"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "您没有权限为此人添加备注。"
 
 #: 
 msgid "Account locked"
@@ -15223,10 +15163,6 @@ msgstr "目标金额必须为非负数"
 #: 
 msgid "thru %s"
 msgstr "至 %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s 的“来访原因”备注"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -17903,10 +17839,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。"
 
 #: 
-msgid "Review now"
-msgstr "立即审核"
-
-#: 
 msgid "Review self registrations"
 msgstr "审核自助登记"
 
@@ -17957,10 +17889,6 @@ msgstr "昨天"
 #: 
 msgid "days ago"
 msgstr "天前"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "笔自助登记等待审核"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -24052,10 +23980,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 笔付款尚未记入任何存款。"
 
 #: 
-msgid "Closing line"
-msgstr "结束语"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "本年度所有存款均已结清。"
 
@@ -24068,28 +23992,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "本年度每笔付款都已记入存款。"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "生成税务报表"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "奉献报告（税务报表）"
-
-#: 
-msgid "Opening line"
-msgstr "开场语"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Signed by"
-msgstr "签署人"
-
-#: 
-msgid "Thank-you line"
-msgstr "致谢语"
 
 #: 
 msgid "Year-End Giving"
@@ -24248,10 +24152,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 临时目录必须是绝对目录路径。"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "教会税号（EIN）"
-
-#: 
 msgid "Closing Line"
 msgstr "结束语"
 
@@ -24294,10 +24194,6 @@ msgstr "报表设置"
 #: 
 msgid "Statement Wording"
 msgstr "报表用语"
-
-#: 
-msgid "Tax Information"
-msgstr "税务信息"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24346,10 +24242,6 @@ msgstr "使用教会名称和地址"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "使用系统设置中的信头路径"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "奉献报表的用语、税号和 PDF 处理"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27159,10 +27051,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "同时禁用登录,使其无法使用成员门户"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "发送对账单之前"
-
-#: 
 msgid "Birthday today"
 msgstr "今天生日"
 
@@ -27245,10 +27133,6 @@ msgstr "删除人员和家庭"
 #: 
 msgid "Delete the login for"
 msgstr "删除以下对象的登录:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "存款图表时间范围"
 
 #: 
 msgid "Disabled at"
@@ -27503,10 +27387,6 @@ msgid "Preview Sample Letter"
 msgstr "预览示例信函"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "加拿大奉献对账单私有签名的资源标识符。通过上传签名进行管理。"
-
-#: 
 msgid "Property Type"
 msgstr "属性类型"
 
@@ -27545,10 +27425,6 @@ msgstr "查看并筛选"
 #: 
 msgid "Review and vote"
 msgstr "查看并投票"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "查看该年度,然后下载奉献对账单。"
 
 #: 
 msgid "Review what we are considering"
@@ -27597,10 +27473,6 @@ msgstr "强"
 #: 
 msgid "Support"
 msgstr "支持"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "税号和 PDF 设置"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27787,10 +27659,6 @@ msgid "Latest Notes"
 msgstr "最新备注"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "尚未添加任何备注。"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "开始注册以获取二维码。"
 
@@ -27801,4 +27669,744 @@ msgstr "该密码或代码不正确。双重身份验证仍处于启用状态。
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "双重身份验证已设置。其密钥仅在注册期间显示。"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d 笔捐赠，总计 %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d 个家庭目前拥有此类型的属性。"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d 个家庭尚无法获得收据，将被排除在外。请修复其下方列出的问题，然后选择“重新检查”。"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d 个群组目前拥有此类型的属性。"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d 人目前拥有此类型的属性。"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "自您安装的版本以来有 %d 个新版本可用。"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s：%s 未生成收据。"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s：请输入经核实的捐赠者全名，确认捐赠者，并确认一组捐赠者。混合捐赠者的付款组合必须在此功能之外处理。"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s：自审核以来，捐赠或邮寄地址已更改。请选择“重新检查”并再次确认捐赠者。"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 期分期付款）"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 期分期付款）"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "一笔信用卡或银行汇票付款所在的存款尚未结清。请在付款清算后关闭该存款。"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "一笔付款包含不可抵扣金额。此处的加拿大收据仅支持无利益回报的捐赠。"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "一笔付款的金额无效。"
+
+#: 
+msgid "A payment has no date."
+msgstr "一笔付款没有日期。"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "一笔付款的日期晚于开具日期。"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "一笔付款被标记为有问题。"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "一笔付款为零或负数。"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "需要经过审核且带有有效 CSRF 令牌的 POST 请求。"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "所选家庭已不存在。"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "签名图像不是安全的数字签名。"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "有系统更新可用。请让您的管理员升级您的安装。"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "所有包含的行均为无利益回报的货币捐赠。"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "所有必需的加拿大收据设置均已填写。"
+
+#: 
+msgid "Also delete family members"
+msgstr "同时删除家庭成员"
+
+#: 
+msgid "Amount of advantages"
+msgstr "利益金额"
+
+#: 
+msgid "Amount of gifts"
+msgstr "捐赠金额"
+
+#: 
+msgid "Amount per installment"
+msgstr "每期金额"
+
+#: 
+msgid "Amounts entered are"
+msgstr "输入的金额为"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "由管理员在“报表设置”下上传。"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "已批准，但未发送邀请"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "请让您的系统管理员将 ChurchCRM 升级到最新版本。"
+
+#: 
+msgid "Authorized Signature"
+msgstr "授权签名"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "加拿大税务局"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "加拿大正式收据"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "加拿大正式收据要求在“教会信息”中将教会所在国家设为加拿大。"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "加拿大收据要求整个日历年度和所有基金，且不带其他筛选条件。"
+
+#: 
+msgid "Change Selection"
+msgstr "更改选择"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "慈善机构法定名称"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "慈善机构注册地址"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "慈善机构注册号"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "收据所需的慈善机构详情尚未填写。请在方便时添加法定名称、注册地址、注册号和开具地点。在此之前，财务功能将继续正常工作。"
+
+#: 
+msgid "Charity on receipts"
+msgstr "收据上的慈善机构"
+
+#: 
+msgid "Check Again"
+msgstr "重新检查"
+
+#: 
+msgid "Check the year"
+msgstr "检查年份"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "检查年份，设置报表，然后下载。"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "为分期金额选择每周、每月或每季度。"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "请选择有效的捐赠日历年度。"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "请选择原件或副本。"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "请选择总承诺金额或分期金额。"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM 翻译在 ChurchCRM GitHub 仓库中管理。您可以通过以下方式提供帮助"
+
+#: 
+msgid "Commitment amount"
+msgstr "承诺金额"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "将副本与保留的原件进行比较，并确认所有收据信息未更改。"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "下载前请完成每一份收据确认。"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "请填写慈善机构法定名称、注册地址、注册号、开具地点和打印的签署人。"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "确认信打印签署人"
+
+#: 
+msgid "Copy Kind"
+msgstr "副本类型"
+
+#: 
+msgid "Currency"
+msgstr "货币"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "货币符号 $ 或 CAD"
+
+#: 
+msgid "Date received"
+msgstr "收到日期"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "删除它还会移除 %d 个属性及其所有分配，以免留下任何悬空数据。"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "所选年度的所有捐赠是否都属于上面共同列出的捐赠者？"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "请勿将同一编号用于不同的收据、为同一笔捐赠开具两次收据，或将已更改的信息重新生成为未更改的原件。"
+
+#: 
+msgid "Duplicate"
+msgstr "副本"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "副本 / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "符合所得税用途资格的捐赠金额"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "输入计划和分期日期以预览承诺。"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "请按顺序输入有效的第一期和最后一期日期。"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "请输入有效的分期金额，最多两位小数。"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "现有的认捐保留其记录的总额。仅在输入每笔计划捐赠时选择每期金额。"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "根据户主和配偶自动填写。请编辑以与捐赠者完全一致。"
+
+#: 
+msgid "First installment"
+msgstr "第一期"
+
+#: 
+msgid "Full commitment"
+msgstr "全额承诺"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "生成税务报表"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "捐赠日历年度"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "奉献报表 — 并非正式捐赠收据"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "在 GitHub 上帮助翻译"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "不支持历史信封更改。"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "我已与保留的原件进行比较：捐赠者、金额、序列号和文本均未更改。这不是更正或替换。"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "我将把已开具的 PDF 和外部收据日志保留在该慈善机构的加拿大记录保存地点。"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "如果保留的原件不可用或不同，请使用您外部的 CRA 注销/替换程序。"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "包含付款备忘：我已审核它们，认为适合捐赠者。"
+
+#: 
+msgid "Include this family in the download"
+msgstr "将此家庭包含在下载中"
+
+#: 
+msgid "Installed version: %s"
+msgstr "已安装版本：%s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "分期金额只能用于认捐。"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "分期日期必须在所选财政年度内。"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "CSRF 令牌无效或缺失"
+
+#: 
+msgid "Issue Date"
+msgstr "开具日期"
+
+#: 
+msgid "Issue Locality"
+msgstr "开具地点"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "将原始 PDF 和外部收据日志保留在该慈善机构的加拿大记录保存地点。"
+
+#: 
+msgid "Last installment on or before"
+msgstr "最后一期不晚于"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "信件措辞、慈善机构详情和 PDF 处理在“报表设置”中一次性设置。"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "奉献报表的信件措辞、慈善机构详情和 PDF 处理"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "最大 2 MiB 和 2000 × 1000 像素。选择新图像以替换存储的签名。签名图像不是安全的数字签名。"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "成员登录已关闭，因此 %s 家庭中的任何人都无法登录成员门户。管理员可以在“管理 → 成员门户”下将其打开。"
+
+#: 
+msgid "Memo"
+msgstr "备忘"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "混合捐赠者的家庭付款组合无法在此拆分；请在此功能之外处理。"
+
+#: 
+msgid "Narrow the list"
+msgstr "缩小列表范围"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "没有家庭符合 %s 的这些筛选条件。"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "不存在重叠的个人或累计收据。"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "尚无法为此家庭生成收据"
+
+#: 
+msgid "No signature on file"
+msgstr "没有存档签名"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "否 — 捐赠者不同；请在此功能之外处理"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "根据当前的登录规则，%s 家庭中的任何人都无法登录成员门户。"
+
+#: 
+msgid "None / Aucun"
+msgstr "无 / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "尚未准备好开具加拿大收据。仍缺少"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "正式收据 / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "所得税用途正式收据 / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "正式收据需要格式为 123456789RR0001 的注册号和签名图像。"
+
+#: 
+msgid "Original"
+msgstr "原件"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "原始开具日期（从保留的原件中输入）"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "付款日期反映捐赠收到日期，包括有记录的邮寄支票邮戳处理。"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "打印在普通奉献报表上，例如美国的 EIN。相同的值位于“教会信息”中。"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "私人奉献报表签名资产标识符。由签名上传管理。"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "属性 / 分配"
+
+#: 
+msgid "Property deleted"
+msgstr "属性已删除"
+
+#: 
+msgid "Property type deleted"
+msgstr "属性类型已删除"
+
+#: 
+msgid "Receipt Closing"
+msgstr "收据结束语"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "收据开具地点"
+
+#: 
+msgid "Receipt No."
+msgstr "收据编号"
+
+#: 
+msgid "Registration Number"
+msgstr "注册号"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "格式为 123456789RR0001 的注册号"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "发行说明目前不可用。"
+
+#: 
+msgid "Releases"
+msgstr "发行版本"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s 的剩余承诺：%s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "移除 2FA 要求"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "移除已存储的签名图像？正式收据需要在文件中保存一个。"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "报表和提醒会将此整个期间的承诺与奉献进行比较。剩余余额不是逾期分期计算。"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "报表和提醒使用上面显示的全额承诺。剩余余额不是逾期分期计算。"
+
+#: 
+msgid "Require 2FA"
+msgstr "要求 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "重置选项"
+
+#: 
+msgid "Review Selected Families"
+msgstr "审核所选家庭"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "样本 — 对税务用途无效"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "示例签名占位符"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "说明是否需要 2FA。"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "仅为最新版本提供安全更新和支持。"
+
+#: 
+msgid "Select the families to review."
+msgstr "选择要审核的家庭。"
+
+#: 
+msgid "Set up the statement"
+msgstr "设置报表"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "设置双重身份验证以继续。"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "共享信封冲突：另一个家庭目前使用此信封编号。"
+
+#: 
+msgid "Signature Image"
+msgstr "签名图像"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "签名图像（管理、报表设置）"
+
+#: 
+msgid "Signature on file"
+msgstr "签名已存档"
+
+#: 
+msgid "Sincerely"
+msgstr "此致敬礼"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "编辑定期认捐时请指定金额依据。"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "标准奉献报表"
+
+#: 
+msgid "Statement Template"
+msgstr "报表模板"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "请提供不晚于今天的开具日期。"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "报表上的税号"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s 家庭没有在世成员可邀请加入成员门户。"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "加拿大注册号必须为 123456789RR0001 格式。这并不验证注册状态。"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "慈善机构注册号必须是文本。"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "打印在正式收据上的慈善机构注册号。留空则使用“教会信息”中的税号。"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "慈善机构的注册地址。留空则使用“教会信息”中的地址。"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "签署人上方的结束语，例如“此致敬礼”。"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "每个基金的全额承诺不得超过 999999.99，且金额最多使用两位小数。"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "自您上次检查以来，捐赠或邮寄地址已更改。请审核它们并再次确认捐赠者。"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "邮寄地址不完整。需要街道、城市、省份和邮政编码。"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "慈善机构注册所用的名称。它可以与教会名称不同。"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "开具收据的地点。留空则使用“教会信息”中的城市。"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "打印的奉献报表签署人有权签署这些收据。"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "对于加拿大收据，系统货币符号必须为 $ 或标明 CAD。"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "所选日历年度内没有付款。"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "这些是此家庭/日历年度每一笔捐赠的真实捐赠者，并且邮寄地址正确。"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "此图像打印在奉献报表和收据上签署人姓名的上方。慈善机构详情和签署人的打印姓名位于“财务、报表设置”下。"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "此选项将收据格式化为加拿大收据，但不保存收据登记册，也不保留 PDF。"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "这个自行注册的家庭正在等待批准。批准后，系统会通过电子邮件向每位可以登录成员门户的成员发送邀请，请其审核家庭信息。"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "此工具没有注销/替换工作流程；请使用您符合 CRA 要求的现有程序进行更正/丢失收据替换。"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "此用户必须设置 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "这将永久删除家庭记录及其备注。此操作无法撤销。"
+
+#: 
+msgid "Total commitment"
+msgstr "总承诺"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "无法预览承诺。"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "上传或替换签名"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "在“报表设置”中上传经授权的税务签名。"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "使用所选财政年度内的日期。每月的和每季度的捐赠使用第一期的日期，或较短月份的最后一天。"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "经核实的捐赠者全名"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "改为亲自核实该家庭。"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "核实每个家庭的完整捐赠者姓名和地址。混合捐赠者的付款组合必须在此功能之外处理。"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "版本 %s 可用。请让您的管理员升级您的安装。"
+
+#: 
+msgid "View all emails"
+msgstr "查看所有电子邮件"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "是 — 一组经核实的捐赠者"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "您的教会所在国家是加拿大，因此在生成报表时也可以使用加拿大正式收据。"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "您的教会所在国家是加拿大，因此可以在奉献报表上使用加拿大正式收据，普通报表会标记为非正式捐赠收据。"
+
+#: 
+msgid "groups"
+msgstr "组"
 

@@ -57,6 +57,64 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
         });
 
+        describe("Canadian church", () => {
+            let previousCountry;
+            before(() => {
+                cy.getSystemConfig("sChurchCountry").then((value) => { previousCountry = value; });
+                cy.setSystemConfig("sChurchCountry", "CA");
+            });
+            after(() => cy.restoreSystemConfig("sChurchCountry", previousCountry));
+
+            it("explains Canadian receipts on the settings page and offers settings in the statements header", () => {
+                cy.visit("/finance/statements/settings");
+                cy.get("#canadian-receipts-info").should("be.visible");
+                cy.get("#signature-upload-link").should("have.attr", "href").and("include", "/admin/system/report-settings");
+                cy.visit("/finance/reports/giving-statements");
+                cy.get(".btn-list a[href$='/finance/statements/settings']").should("be.visible");
+                cy.get(".btn-list a[href$='/admin/system/report-settings']").should("be.visible");
+            });
+
+        it("shows a charity-details notice until the receipt fields are set", () => {
+            const keys = ["sCharityLegalName", "sCharityRegisteredAddress", "sCharityRegistrationNumber", "sReceiptIssueLocality"];
+            keys.forEach((key) => cy.setSystemConfig(key, ""));
+            cy.visit("/finance/");
+            cy.get("#charity-details-banner").should("be.visible");
+            cy.get("#year-end-entry a.btn-primary").should("be.visible");
+            keys.forEach((key) => cy.setSystemConfig(key, "Sample charity"));
+            cy.reload();
+            cy.get("#charity-details-banner").should("not.exist");
+            cy.visit("/finance/statements/settings");
+            cy.get("#statementTax input[name='sCharityLegalName']").should("have.value", "Sample charity");
+            keys.forEach((key) => cy.setSystemConfig(key, ""));
+        });
+
+        it("lets each user dismiss the charity-details notice", () => {
+            const dismissKey = "notification.dismissed.charity-details";
+            cy.setSystemConfig("sCharityLegalName", "");
+            cy.visit("/finance/");
+            cy.window().its("CRM.userId").then((userId) => {
+                const resetDismissal = () => cy.request("POST", `/api/user/${userId}/setting/${dismissKey}`, { value: "" });
+                resetDismissal();
+                cy.reload();
+                cy.intercept("POST", `**/api/user/${userId}/setting/${dismissKey}`).as("dismiss");
+                cy.get("#charity-details-banner .js-dismiss-notification").click();
+                cy.wait("@dismiss").its("response.statusCode").should("eq", 200);
+                cy.reload();
+                cy.get("#year-end-entry a.btn-primary").should("be.visible");
+                cy.get("#charity-details-banner").should("not.exist");
+                resetDismissal();
+                cy.reload();
+                cy.get("#charity-details-banner").should("be.visible");
+            });
+        });
+        });
+
+        it("rejects a statement setting save without the session CSRF token", () => {
+            cy.request({ method: "POST", url: "/finance/api/config/sTaxSigner", body: { value: "No token" }, failOnStatusCode: false })
+                .its("status")
+                .should("eq", 403);
+        });
+
         it("keeps statement settings out of System Settings", () => {
             cy.visit("/SystemSettings.php");
             for (const key of ["sGivingStatementOpening", "sGivingStatementClosing", "sGivingStatementQuestions", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
@@ -72,6 +130,8 @@ describe("Finance Statement Settings", () => {
             cy.visit("/finance/statements/settings");
             cy.url().should("include", "/finance/statements/settings");
             cy.contains("Statement Settings");
+            cy.get("#statementTax textarea[name='sCharityRegisteredAddress']").should("be.visible");
+            cy.get("#statementTax input[name='sCharityLegalName']").should("be.visible");
         });
     });
 

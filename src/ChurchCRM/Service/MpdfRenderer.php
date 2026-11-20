@@ -108,8 +108,9 @@ class MpdfRenderer
     }
 
     /**
-     * The graphic letterhead PDF letters print: the uploaded image, else the readable
-     * `bDirLetterHead` path or https URL, else null (the church address block prints).
+     * The graphic letterhead PDF letters and the directory cover print: the uploaded image,
+     * else the readable `bDirLetterHead` path (a relative path is also tried against the
+     * document root) or https URL, else null (the church address block prints).
      */
     public static function graphicLetterhead(): ?string
     {
@@ -118,8 +119,15 @@ class MpdfRenderer
         }
 
         $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
-        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
+        if ($path === '') {
+            return null;
+        }
+        if (is_readable($path) || preg_match('#^https://#i', $path)) {
             return $path;
+        }
+        $relative = !str_starts_with($path, '/') && !str_starts_with($path, '\\') && !preg_match('~^[A-Za-z]:[\\\\/]~', $path);
+        if ($relative && is_readable(SystemURLs::getDocumentRoot() . '/' . $path)) {
+            return SystemURLs::getDocumentRoot() . '/' . $path;
         }
 
         return null;

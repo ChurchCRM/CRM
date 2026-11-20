@@ -110,7 +110,7 @@ describe("Mobile UX — Authenticated Pages", () => {
     });
 
     it("root dashboard fits mobile viewport without horizontal scroll", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get(".page-body").should("be.visible");
         // Wait for DataTables to finish initializing (async AJAX + render)
         // before checking overflow, otherwise columns may still be resizing.
@@ -124,7 +124,7 @@ describe("Mobile UX — Authenticated Pages", () => {
         // wrapper because they have row action dropdowns — .table-responsive sets
         // overflow:auto which clips dropdowns. See responsive-design-guidelines.md.
         // Birthday/Anniversary tables have no row actions, so they CAN be wrapped.
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get("#PersonBirthdayDashboardItem")
             .parents(".table-responsive")
             .should("exist");

@@ -27,7 +27,7 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $message = gettext('We could not find the group you were looking for.');
     $code = 404;
 } else {
-    $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+    $returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
     $returnText = gettext('Return to Dashboard');
     $title = gettext('Not Found');
     $message = gettext('We could not find the record you were looking for.');

@@ -1303,10 +1303,6 @@ msgid "People"
 msgstr "Personnes"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Les enfants de l'école du dimanche"
-
-#: 
 msgid "Role / Gender"
 msgstr "Rôle / sexe"
 
@@ -4472,10 +4468,6 @@ msgid "People Reports"
 msgstr "Rapports de la Personne"
 
 #: 
-msgid "People Dashboard"
-msgstr "Tableau de bord de la Personne"
-
-#: 
 msgid "People Directory"
 msgstr "Répertoire des personnes"
 
@@ -5067,10 +5059,6 @@ msgstr "Appliquez la politique de sécurité du contenu (CSP) pour vous protége
 #: 
 msgid "Enter event description..."
 msgstr "Entrez la description de l'événement..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Saisissez votre texte ici..."
 
 #: 
 msgid "Note"
@@ -8031,10 +8019,6 @@ msgid "or later to continue."
 msgstr "ou ultérieur pour continuer."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notes « Raison de la visite »"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d résultat pour « %s »"
@@ -8143,10 +8127,6 @@ msgstr "Ajouter ou modifier des fiches individuelles"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Ajouter ou modifier des articles donnés pour des collectes de fonds"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Ajouter ou modifier des notes pour les personnes et les familles"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9023,10 +9003,6 @@ msgid "Password Recovery"
 msgstr "Récupération de mot de passe"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "7 derniers et prochains jours"
-
-#: 
 msgid "People by Classification"
 msgstr "Personnes par classification"
 
@@ -9109,10 +9085,6 @@ msgstr "Enregistrer plusieurs gagnants du tirage de la collecte de fonds à la f
 #: 
 msgid "Record new pledges and payments"
 msgstr "Enregistrer de nouveaux engagements financiers et paiements"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Enregistrer la raison de la visite des participants à l'église"
 
 #: 
 msgid "Remove from Class"
@@ -10926,10 +10898,6 @@ msgstr "Sombre"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Base de données uniquement (.sql) ou archive complète (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Nombre de lignes affichées par défaut dans les tableaux. Prend effet au prochain chargement de page."
 
 #. Context: locales
 #: 
@@ -12909,14 +12877,6 @@ msgid "Click Save to apply."
 msgstr "Cliquez sur Enregistrer pour appliquer."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "L'API du presse-papiers n'est pas disponible. Veuillez copier l'URL manuellement."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Presse-papiers non disponible. Veuillez utiliser le bouton Télécharger pour enregistrer vos codes."
-
-#: 
 msgid "Code incomplete"
 msgstr "Code incomplet"
 
@@ -13495,14 +13455,6 @@ msgstr "Aucun dépôt"
 #: 
 msgid "No Events Today"
 msgstr "Aucun événement aujourd'hui"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Aucun anniversaire de mariage dans les 7 derniers ou prochains jours"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Aucun anniversaire dans les 7 derniers ou prochains jours"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14449,24 +14401,12 @@ msgid "People &amp; Families"
 msgstr "Personnes &amp; Familles"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "La note que vous essayez de modifier n'existe plus."
-
-#: 
 msgid "User List"
 msgstr "Liste des utilisateurs"
 
 #: 
 msgid "View Person"
 msgstr "Voir la personne"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Vous n'avez pas la permission d'ajouter une note pour cette famille."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Vous n'avez pas la permission d'ajouter une note pour cette personne."
 
 #: 
 msgid "Account locked"
@@ -15167,10 +15107,6 @@ msgstr "Le montant de l'objectif doit être non négatif"
 #: 
 msgid "thru %s"
 msgstr "jusqu'au %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Notes « Raison de la venue » pour %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -17849,10 +17785,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Inscriptions en attente d'examen à partir de votre formulaire d'inscription public. Les entrées sans e-mail ni téléphone sont marquées — vérifiez les coordonnées avant de faire suite."
 
 #: 
-msgid "Review now"
-msgstr "Examiner maintenant"
-
-#: 
 msgid "Review self registrations"
 msgstr "Examiner les auto-inscriptions"
 
@@ -17903,10 +17835,6 @@ msgstr "Hier"
 #: 
 msgid "days ago"
 msgstr "jours"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "auto-inscriptions attendent l'examen"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -24011,10 +23939,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d paiements ne figurent encore sur aucun dépôt."
 
 #: 
-msgid "Closing line"
-msgstr "Formule de clôture"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Tous les dépôts datés de cette année sont clôturés."
 
@@ -24027,28 +23951,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Chaque paiement de cette année figure sur un dépôt."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Générer les attestations fiscales"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Rapport des dons (attestations fiscales)"
-
-#: 
-msgid "Opening line"
-msgstr "Formule d'introduction"
-
-#: 
 msgid "Qty"
 msgstr "Qté"
-
-#: 
-msgid "Signed by"
-msgstr "Signé par"
-
-#: 
-msgid "Thank-you line"
-msgstr "Formule de remerciement"
 
 #: 
 msgid "Year-End Giving"
@@ -24207,10 +24111,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Le répertoire temporaire des PDF doit être un chemin de répertoire absolu."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Identifiant fiscal de l'église (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Formule de clôture"
 
@@ -24253,10 +24153,6 @@ msgstr "Paramètres des attestations"
 #: 
 msgid "Statement Wording"
 msgstr "Libellé des attestations"
-
-#: 
-msgid "Tax Information"
-msgstr "Informations fiscales"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24305,10 +24201,6 @@ msgstr "Avec le nom et l'adresse de l'église"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Avec le chemin d'en-tête défini dans les paramètres du système"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Libellé, identifiant fiscal et traitement des PDF pour les relevés de dons"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27123,10 +27015,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Désactiver aussi la connexion pour empêcher l'accès au portail des membres"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Avant l'envoi des relevés"
-
-#: 
 msgid "Birthday today"
 msgstr "Anniversaire aujourd'hui"
 
@@ -27193,10 +27081,6 @@ msgstr "Supprimer des personnes et des familles"
 #: 
 msgid "Delete the login for"
 msgstr "Supprimer l'accès de"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Période du graphique des dépôts"
 
 #: 
 msgid "Disabled at"
@@ -27451,10 +27335,6 @@ msgid "Preview Sample Letter"
 msgstr "Aperçu d'un modèle de lettre"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifiant du fichier privé de signature des relevés de dons canadiens. Géré par le téléversement de signature."
-
-#: 
 msgid "Property Type"
 msgstr "Type de propriété"
 
@@ -27489,10 +27369,6 @@ msgstr "Examiner et filtrer"
 #: 
 msgid "Review and vote"
 msgstr "Examiner et voter"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Examinez l'année, puis téléchargez les relevés de dons."
 
 #: 
 msgid "Review what we are considering"
@@ -27541,10 +27417,6 @@ msgstr "Fort"
 #: 
 msgid "Support"
 msgstr "Assistance"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Identifiant fiscal et paramètres PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27751,10 +27623,6 @@ msgid "Latest Notes"
 msgstr "Dernières notes"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Aucune note n'a encore été ajoutée."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Commencez l'inscription pour obtenir un code QR."
 
@@ -27765,4 +27633,746 @@ msgstr "Ce mot de passe ou ce code n'est pas correct. L'authentification à deux
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "L'authentification à deux facteurs est déjà configurée. Son secret n'est affiché que pendant l'inscription."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d don pour un total de %2$s"
+msgstr[1] "%1$d dons pour un total de %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d familles ont actuellement des propriétés de ce type."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d famille ne peut pas encore obtenir de reçu et est exclue. Corrigez le problème indiqué sous celle-ci, puis choisissez Vérifier à nouveau."
+msgstr[1] "%d familles ne peuvent pas encore obtenir de reçu et sont exclues. Corrigez les problèmes indiqués sous celles-ci, puis choisissez Vérifier à nouveau."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d groupes ont actuellement des propriétés de ce type."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d personnes ont actuellement des propriétés de ce type."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d nouvelles versions disponibles depuis votre version installée."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s : %s Aucun reçu n'a été généré."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s : saisissez le ou les noms complets vérifiés des donateurs, confirmez les donateurs et confirmez un seul ensemble de donateurs. Les ensembles de paiements de donateurs mixtes doivent être traités en dehors de cette fonctionnalité."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s : les dons ou l'adresse postale ont changé depuis la vérification. Choisissez Vérifier à nouveau et confirmez de nouveau le donateur."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} versement)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} versements)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Un paiement par carte de crédit ou par traite bancaire se trouve dans un dépôt qui n'est pas encore fermé. Fermez le dépôt une fois le paiement compensé."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Un paiement comporte un montant non déductible. Les reçus canadiens ici ne prennent en charge que les dons sans avantage."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Un paiement comporte un montant monétaire invalide."
+
+#: 
+msgid "A payment has no date."
+msgstr "Un paiement n'a pas de date."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Un paiement est daté après la date d'émission."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Un paiement est signalé comme un problème."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Un paiement est nul ou négatif."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Un POST vérifié avec un jeton CSRF valide est requis."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Une famille sélectionnée n'existe plus."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Une image de signature n'est pas une signature numérique sécurisée."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Une mise à jour du système est disponible. Veuillez demander à votre administrateur de mettre à niveau votre installation."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Toutes les lignes incluses sont des dons en argent sans avantage."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Tous les paramètres requis pour les reçus canadiens sont remplis."
+
+#: 
+msgid "Also delete family members"
+msgstr "Supprimer aussi les membres de la famille"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Montant des avantages"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Montant des dons"
+
+#: 
+msgid "Amount per installment"
+msgstr "Montant par versement"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Les montants saisis sont"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Un administrateur le téléverse dans les paramètres des rapports."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Approuvé, mais aucune invitation n'a été envoyée"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Demandez à votre administrateur système de mettre ChurchCRM à niveau vers la dernière version."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Signature autorisée"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Agence du revenu du Canada"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Reçu officiel canadien"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Les reçus officiels canadiens exigent que le Canada soit le pays de l'église dans les informations de l'église."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Les reçus canadiens exigent l'année civile entière et tous les fonds, sans autres filtres."
+
+#: 
+msgid "Change Selection"
+msgstr "Modifier la sélection"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Nom légal de l'organisme de bienfaisance"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Adresse enregistrée de l'organisme de bienfaisance"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Numéro d'enregistrement de l'organisme de bienfaisance"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Les coordonnées de l'organisme de bienfaisance pour les reçus ne sont pas encore remplies. Ajoutez le nom légal, l'adresse enregistrée, le numéro d'enregistrement et le lieu d'émission quand vous le pourrez. Le module Finances continue de fonctionner en attendant."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Organisme de bienfaisance sur les reçus"
+
+#: 
+msgid "Check Again"
+msgstr "Vérifier à nouveau"
+
+#: 
+msgid "Check the year"
+msgstr "Vérifiez l'année"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Vérifiez l'année, configurez le relevé, puis téléchargez."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Choisissez Hebdomadaire, Mensuel ou Trimestriel pour un montant de versement."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Choisissez une année civile de dons valide."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Choisissez l'original ou le duplicata."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Choisissez l'engagement total ou le montant par versement."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Les traductions de ChurchCRM sont gérées dans le dépôt GitHub de ChurchCRM. Vous pouvez aider en"
+
+#: 
+msgid "Commitment amount"
+msgstr "Montant de l'engagement"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Comparez le duplicata avec l'original conservé et confirmez que toutes les informations du reçu sont inchangées."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Remplissez chaque attestation de reçu avant de télécharger."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Remplissez le nom légal de l'organisme de bienfaisance, l'adresse enregistrée, le numéro d'enregistrement, le lieu d'émission et le signataire imprimé."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Signataire imprimé de la lettre de confirmation"
+
+#: 
+msgid "Copy Kind"
+msgstr "Type de copie"
+
+#: 
+msgid "Currency"
+msgstr "Devise"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Symbole monétaire $ ou CAD"
+
+#: 
+msgid "Date received"
+msgstr "Date de réception"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Sa suppression retirera aussi %d propriétés et toutes leurs affectations, afin que rien ne reste en suspens."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Tous les dons de l'année sélectionnée appartiennent-ils au(x) donateur(s) nommé(s) ensemble ci-dessus ?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Ne réutilisez pas un numéro pour un autre reçu, ne délivrez pas deux fois un reçu pour les mêmes dons et ne régénérez pas des informations modifiées comme un original inchangé."
+
+#: 
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Duplicate copy / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Montant admissible des dons aux fins de l'impôt sur le revenu"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Saisissez le calendrier et les dates des versements pour prévisualiser l'engagement."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Saisissez des dates de premier et de dernier versement valides, dans l'ordre."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Saisissez des montants de versement valides avec au plus deux décimales."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Les promesses de don existantes conservent leurs totaux enregistrés. Choisissez le montant par versement uniquement lors de la saisie de chaque don programmé."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Rempli à partir des chefs de famille et des conjoints. Modifiez-le pour qu'il corresponde exactement aux donateurs."
+
+#: 
+msgid "First installment"
+msgstr "Premier versement"
+
+#: 
+msgid "Full commitment"
+msgstr "Engagement total"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Générer les relevés fiscaux"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Année civile des dons"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Relevé de dons — ce n'est pas un reçu officiel de don"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "participant à la traduction sur GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Les modifications historiques d'enveloppes ne sont pas prises en charge."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "J'ai comparé avec l'original conservé : le donateur, le montant, le numéro de série et le texte sont inchangés. Il ne s'agit ni d'une correction ni d'un remplacement."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Je conserverai le PDF délivré et un registre de reçus externe au lieu de conservation canadien des documents de l'organisme de bienfaisance."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Si un original conservé est introuvable ou différent, utilisez vos procédures externes d'annulation et de remplacement conformes au CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Inclure les notes de paiement : je les ai vérifiées et jugées appropriées pour le donateur."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Inclure cette famille dans le téléchargement"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Version installée : %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Les montants par versement ne peuvent être utilisés que pour les promesses de don."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Les dates des versements doivent se situer dans l'année fiscale sélectionnée."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Jeton CSRF invalide ou manquant"
+
+#: 
+msgid "Issue Date"
+msgstr "Date d'émission"
+
+#: 
+msgid "Issue Locality"
+msgstr "Lieu d'émission"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Conservez le PDF original et un registre de reçus externe au lieu de conservation canadien des documents de l'organisme de bienfaisance."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Dernier versement au plus tard le"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Le libellé de la lettre, les coordonnées de l'organisme de bienfaisance et la gestion des PDF se définissent une seule fois dans les paramètres des relevés."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Libellé de la lettre, coordonnées de l'organisme de bienfaisance et gestion des PDF pour les relevés de dons"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maximum 2 Mio et 2000 × 1000 pixels. Choisissez une nouvelle image pour remplacer la signature enregistrée. Une image de signature n'est pas une signature numérique sécurisée."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "La connexion des membres est désactivée, donc personne dans la famille %s ne peut se connecter au portail des membres. Un administrateur peut l'activer dans Admin → Portail des membres."
+
+#: 
+msgid "Memo"
+msgstr "Mémo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Les ensembles de paiements familiaux de donateurs mixtes ne peuvent pas être divisés ici ; traitez-les en dehors de cette fonctionnalité."
+
+#: 
+msgid "Narrow the list"
+msgstr "Affiner la liste"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Aucune famille ne correspond à ces filtres pour %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Il n'existe aucun reçu individuel ou cumulatif qui se chevauche."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Aucun reçu ne peut encore être généré pour cette famille"
+
+#: 
+msgid "No signature on file"
+msgstr "Aucune signature au dossier"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Non — donateurs différents ; à traiter en dehors de cette fonctionnalité"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Personne dans la famille %s ne peut se connecter au portail des membres selon la règle de connexion actuelle."
+
+#: 
+msgid "None / Aucun"
+msgstr "None / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Pas prêt à délivrer des reçus canadiens. Il manque encore"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Official Receipt / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Les reçus officiels exigent un numéro d'enregistrement sous la forme 123456789RR0001 et une image de signature."
+
+#: 
+msgid "Original"
+msgstr "Original"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Date d'émission originale (à saisir depuis l'original conservé)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Les dates de paiement reflètent les dates de réception des dons, y compris le traitement documenté du cachet postal des chèques envoyés par la poste."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Imprimé sur les relevés de dons ordinaires, par exemple l'EIN aux États-Unis. La même valeur se trouve dans les informations de l'église."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identifiant privé de l'image de signature des relevés de dons. Géré par le téléversement de la signature."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Propriétés / Affectations"
+
+#: 
+msgid "Property deleted"
+msgstr "Propriété supprimée"
+
+#: 
+msgid "Property type deleted"
+msgstr "Type de propriété supprimé"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Formule de clôture du reçu"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Lieu d'émission du reçu"
+
+#: 
+msgid "Receipt No."
+msgstr "Nº de reçu"
+
+#: 
+msgid "Registration Number"
+msgstr "Numéro d'enregistrement"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Numéro d'enregistrement sous la forme 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Les notes de version ne sont pas disponibles pour le moment."
+
+#: 
+msgid "Releases"
+msgstr "Versions"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Engagement restant pour %s : %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Retirer l'exigence d'authentification à deux facteurs"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Supprimer l'image de signature enregistrée ? Les reçus officiels en exigent une au dossier."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Les rapports et les rappels comparent cet engagement pour toute la période avec les dons. Le solde restant n'est pas un calcul de versement en retard."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Les rapports et les rappels utilisent l'engagement total affiché ci-dessus. Le solde restant n'est pas un calcul de versement en retard."
+
+#: 
+msgid "Require 2FA"
+msgstr "Exiger l'authentification à deux facteurs"
+
+#: 
+msgid "Reset Options"
+msgstr "Réinitialiser les options"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Vérifier les familles sélectionnées"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "ÉCHANTILLON — NON VALIDE À DES FINS FISCALES"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Emplacement de signature d'exemple"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Indiquez si l'authentification à deux facteurs est requise."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Les mises à jour de sécurité et l'assistance ne sont fournies que pour la dernière version."
+
+#: 
+msgid "Select the families to review."
+msgstr "Sélectionnez les familles à vérifier."
+
+#: 
+msgid "Set up the statement"
+msgstr "Configurez le relevé"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Configurez l'authentification à deux facteurs pour continuer."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Conflit d'enveloppe partagée : une autre famille utilise actuellement ce numéro d'enveloppe."
+
+#: 
+msgid "Signature Image"
+msgstr "Image de signature"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Image de signature (Admin, Paramètres des rapports)"
+
+#: 
+msgid "Signature on file"
+msgstr "Signature au dossier"
+
+#: 
+msgid "Sincerely"
+msgstr "Cordialement"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Précisez la base du montant lors de la modification d'une promesse de don récurrente."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Relevé de dons standard"
+
+#: 
+msgid "Statement Template"
+msgstr "Modèle de relevé"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Fournissez une date d'émission au plus tard aujourd'hui."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Numéro d'identification fiscale sur les relevés"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "La famille %s n'a aucun membre vivant à inviter au portail des membres."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Le numéro d'enregistrement canadien doit être au format 123456789RR0001. Cela ne vérifie pas le statut d'enregistrement."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Le numéro d'enregistrement de l'organisme de bienfaisance doit être du texte."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Le numéro d'enregistrement de l'organisme de bienfaisance imprimé sur les reçus officiels. Si vide, le numéro d'identification fiscale des informations de l'église est utilisé."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "L'adresse enregistrée de l'organisme de bienfaisance. Si vide, l'adresse des informations de l'église est utilisée."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "La formule de clôture au-dessus du signataire, par exemple Cordialement."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "L'engagement total ne doit pas dépasser 999999.99 par fonds et les montants doivent comporter au plus deux décimales."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Les dons ou l'adresse postale ont changé depuis votre dernière vérification. Vérifiez-les et confirmez de nouveau le donateur."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "L'adresse postale est incomplète. Une rue, une ville, une province et un code postal sont requis."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Le nom sous lequel l'organisme de bienfaisance est enregistré. Il peut différer du nom de l'église."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Le lieu où les reçus sont délivrés. Si vide, la ville des informations de l'église est utilisée."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Le signataire imprimé des relevés de dons est autorisé à signer ces reçus."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Le symbole monétaire du système doit être $ ou identifier CAD pour les reçus canadiens."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Il n'y a aucun paiement dans l'année civile sélectionnée."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Ce sont les véritables donateurs de chaque don de cette famille/année civile, et l'adresse postale est correcte."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Cette image s'imprime au-dessus du nom du signataire sur les relevés de dons et les reçus. Les coordonnées de l'organisme de bienfaisance et le nom imprimé du signataire se trouvent dans Finances, Paramètres des relevés."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Cette option formate un reçu canadien, mais ne tient pas de registre de reçus et ne conserve pas les PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Cette famille inscrite par elle-même est en attente d'approbation. L'approuver enverra par courriel à chaque membre pouvant se connecter au portail des membres une invitation à vérifier les informations de la famille."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Cet outil n'a aucun processus d'annulation/de remplacement ; utilisez votre processus existant conforme au CRA pour les corrections et les remplacements de reçus perdus."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Cet utilisateur doit configurer l'authentification à deux facteurs"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Cela supprimera définitivement la fiche de la famille et ses notes. Cette action est irréversible."
+
+#: 
+msgid "Total commitment"
+msgstr "Engagement total"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Impossible de prévisualiser l'engagement."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Téléverser ou remplacer la signature"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Téléversez la signature fiscale autorisée dans les paramètres des rapports."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Utilisez des dates comprises dans l'année fiscale sélectionnée. Les dons mensuels et trimestriels utilisent le jour du premier versement, ou le dernier jour des mois plus courts."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Nom(s) complet(s) vérifié(s) du donateur"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Vérifiez plutôt la famille en personne."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Vérifiez le nom complet et l'adresse du donateur pour chaque famille. Les ensembles de paiements de donateurs mixtes doivent être traités en dehors de cette fonctionnalité."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "La version %s est disponible. Veuillez demander à votre administrateur de mettre à niveau votre installation."
+
+#: 
+msgid "View all emails"
+msgstr "Afficher tous les courriels"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Oui — un seul ensemble de donateurs vérifié"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Le pays de votre église est le Canada, donc les reçus officiels canadiens sont aussi disponibles lorsque vous générez des relevés."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Le pays de votre église est le Canada, donc les reçus officiels canadiens sont disponibles sur les relevés de dons et les relevés ordinaires sont marqués comme n'étant pas des reçus officiels de don."
+
+#: 
+msgid "groups"
+msgstr "groupes"
 

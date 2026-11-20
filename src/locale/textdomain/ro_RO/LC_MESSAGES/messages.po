@@ -1342,10 +1342,6 @@ msgid "People"
 msgstr "Oameni"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Copii școala duminicală"
-
-#: 
 msgid "Role / Gender"
 msgstr "Rol / Sex"
 
@@ -4535,10 +4531,6 @@ msgid "People Reports"
 msgstr "Rapoarte persoane"
 
 #: 
-msgid "People Dashboard"
-msgstr "Panou de bord persoane"
-
-#: 
 msgid "People Directory"
 msgstr "Director persoane"
 
@@ -5131,10 +5123,6 @@ msgstr "Impuneți Politica de Securitate a Conținutului (CSP) pentru a ajuta la
 #: 
 msgid "Enter event description..."
 msgstr "Introduceți descrierea evenimentului..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Introduceți textul notei aici..."
 
 #: 
 msgid "Note"
@@ -8101,10 +8089,6 @@ msgid "or later to continue."
 msgstr "sau o versiune mai nouă pentru a continua."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Note \"De ce au venit\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat pentru \"%s\""
@@ -8214,10 +8198,6 @@ msgstr "Adaugă sau editează înregistrări individuale"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adaugă sau editează obiecte donate pentru evenimente de strângere de fonduri"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Adaugă sau editează note pentru persoane și familii"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9094,10 +9074,6 @@ msgid "Password Recovery"
 msgstr "Recuperare parolă"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "Ultimele și următoarele 7 zile"
-
-#: 
 msgid "People by Classification"
 msgstr "Persoane după clasificare"
 
@@ -9180,10 +9156,6 @@ msgstr "Înregistrați mai mulți câștigători ai tombolei simultan"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Înregistrați angajamente și plăți noi"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
 msgid "Remove from Class"
@@ -10997,10 +10969,6 @@ msgstr "Întunecat"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Doar baza de date (.sql) sau arhivă completă (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în vigoare la următoarea încărcare a paginii."
 
 #. Context: locales
 #: 
@@ -12981,14 +12949,6 @@ msgid "Click Save to apply."
 msgstr "Faceți clic pe Salvare pentru a aplica."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
-
-#: 
 msgid "Code incomplete"
 msgstr "Cod incomplet"
 
@@ -13567,14 +13527,6 @@ msgstr "Fără oferte"
 #: 
 msgid "No Events Today"
 msgstr "Nu există evenimente astăzi"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Fără aniversări în ultimele sau următoarele 7 zile"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Fără zile de naștere în ultimele sau următoarele 7 zile"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14522,24 +14474,12 @@ msgid "People &amp; Families"
 msgstr "Persoane &amp; Familii"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Nota pe care încercați să o editați nu mai există."
-
-#: 
 msgid "User List"
 msgstr "Listă utilizatori"
 
 #: 
 msgid "View Person"
 msgstr "Vizualizare persoană"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această familie."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
 
 #: 
 msgid "Account locked"
@@ -15242,10 +15182,6 @@ msgstr "goalAmount trebuie să fie non-negativ"
 #: 
 msgid "thru %s"
 msgstr "până la %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Note de ce a venit pentru %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -17926,10 +17862,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Înregistrări din formularul public de înregistrare, în așteptarea verificării. Intrările fără e-mail sau telefon sunt marcate — verificați datele de contact înainte de a le contacta."
 
 #: 
-msgid "Review now"
-msgstr "Verifică acum"
-
-#: 
 msgid "Review self registrations"
 msgstr "Verifică autoînregistrările"
 
@@ -17980,10 +17912,6 @@ msgstr "Ieri"
 #: 
 msgid "days ago"
 msgstr "zile în urmă"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "autoînregistrări așteaptă verificarea"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -24101,10 +24029,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d plăți nu sunt încă pe niciun depozit."
 
 #: 
-msgid "Closing line"
-msgstr "Rând de încheiere"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Fiecare depozit datat în acest an este închis."
 
@@ -24117,28 +24041,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Fiecare plată din acest an este pe un depozit."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generați extrasele fiscale"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport de donații (extrase fiscale)"
-
-#: 
-msgid "Opening line"
-msgstr "Rând de deschidere"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Signed by"
-msgstr "Semnat de"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rând de mulțumire"
 
 #: 
 msgid "Year-End Giving"
@@ -24297,10 +24201,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Directorul temporar PDF trebuie să fie o cale absolută de director."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Cod fiscal al bisericii (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Rând de încheiere"
 
@@ -24343,10 +24243,6 @@ msgstr "Setări extras"
 #: 
 msgid "Statement Wording"
 msgstr "Formularea extrasului"
-
-#: 
-msgid "Tax Information"
-msgstr "Informații fiscale"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24395,10 +24291,6 @@ msgstr "Se folosesc numele și adresa bisericii"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Se folosește calea antetului setată în Setările de sistem"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formularea, codul fiscal și gestionarea PDF pentru extrasele de donații"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27218,10 +27110,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Dezactivează și autentificarea, ca să nu poată folosi Portalul membrilor"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Înainte de a trimite extrasele"
-
-#: 
 msgid "Birthday today"
 msgstr "Zi de naștere astăzi"
 
@@ -27304,10 +27192,6 @@ msgstr "Ștergere de persoane și familii"
 #: 
 msgid "Delete the login for"
 msgstr "Șterge contul pentru"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Interval de timp al graficului depunerilor"
 
 #: 
 msgid "Disabled at"
@@ -27562,10 +27446,6 @@ msgid "Preview Sample Letter"
 msgstr "Previzualizează scrisoarea exemplu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificatorul resursei semnăturii private canadiene de pe extrasele de donații. Gestionat prin încărcarea semnăturii."
-
-#: 
 msgid "Property Type"
 msgstr "Tip de proprietate"
 
@@ -27604,10 +27484,6 @@ msgstr "Revizuiește și filtrează"
 #: 
 msgid "Review and vote"
 msgstr "Revizuiește și votează"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Revizuiți anul, apoi descărcați extrasele de donații."
 
 #: 
 msgid "Review what we are considering"
@@ -27656,10 +27532,6 @@ msgstr "Puternică"
 #: 
 msgid "Support"
 msgstr "Asistență"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Setări pentru cod fiscal și PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27846,10 +27718,6 @@ msgid "Latest Notes"
 msgstr "Cele mai recente note"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Nu au fost adăugate note încă."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Începeți înscrierea pentru a obține un cod QR."
 
@@ -27860,4 +27728,748 @@ msgstr "Parola sau codul respectiv nu este corect. Autentificarea cu doi factori
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Autentificarea cu doi factori este deja configurată. Secretul acesteia este afișat doar în timpul înscrierii."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d donație în valoare totală de %2$s"
+msgstr[1] "%1$d donații în valoare totală de %2$s"
+msgstr[2] "%1$d de donații în valoare totală de %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d familii au în prezent proprietăți de acest tip."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d familie nu poate primi încă o chitanță și este exclusă. Remediați problema listată sub ea, apoi alegeți Verificați din nou."
+msgstr[1] "%d familii nu pot primi încă o chitanță și sunt excluse. Remediați problemele listate sub ele, apoi alegeți Verificați din nou."
+msgstr[2] "%d familii nu pot primi încă o chitanță și sunt excluse. Remediați problemele listate sub ele, apoi alegeți Verificați din nou."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d grupuri au în prezent proprietăți de acest tip."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d persoane au în prezent proprietăți de acest tip."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d versiuni noi disponibile de la versiunea instalată."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Nu a fost generată nicio chitanță."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: introduceți numele complet verificat al donatorului (donatorilor), confirmați donatorii și confirmați un singur set de donatori. Seturile de plăți cu donatori mixti trebuie gestionate în afara acestei funcții."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: donațiile sau adresa poștală s-au schimbat de la verificare. Alegeți Verificați din nou și confirmați din nou donatorul."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} rată)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} rate)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "O plată cu cardul de credit sau cu cec bancar se află într-un depozit care nu este încă închis. Închideți depozitul după ce plata a fost decontată."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "O plată are o sumă nedeductibilă. Chitanțele canadiene de aici acceptă doar donații fără niciun avantaj."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "O plată are o sumă monetară nevalidă."
+
+#: 
+msgid "A payment has no date."
+msgstr "O plată nu are dată."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "O plată este datată după data emiterii."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "O plată este marcată ca problemă."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "O plată este zero sau negativă."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Este necesar un POST revizuit cu un token CSRF valid."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "O familie selectată nu mai există."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "O imagine a semnăturii nu este o semnătură digitală securizată."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Este disponibilă o actualizare de sistem. Rugați administratorul să vă actualizeze instalarea."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Toate rândurile incluse sunt donații în bani fără niciun avantaj."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Toate setările necesare pentru chitanțele canadiene sunt completate."
+
+#: 
+msgid "Also delete family members"
+msgstr "Ștergeți și membrii familiei"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Suma avantajelor"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Suma donațiilor"
+
+#: 
+msgid "Amount per installment"
+msgstr "Suma per rată"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Sumele introduse sunt"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Un administrator o încarcă în Setări rapoarte."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Aprobată, dar nu a fost trimisă nicio invitație"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Rugați administratorul de sistem să actualizeze ChurchCRM la cea mai recentă versiune."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Semnătură autorizată"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Agenția fiscală a Canadei"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Chitanță oficială canadiană"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Chitanțele oficiale canadiene necesită Canada ca țară a bisericii în informațiile bisericii."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Chitanțele canadiene necesită întregul an calendaristic și toate fondurile, fără alte filtre."
+
+#: 
+msgid "Change Selection"
+msgstr "Modificați selecția"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Denumirea legală a organizației caritabile"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Adresa înregistrată a organizației caritabile"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Numărul de înregistrare al organizației caritabile"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Detaliile organizației caritabile pentru chitanțe nu sunt încă completate. Adăugați denumirea legală, adresa înregistrată, numărul de înregistrare și localitatea emiterii când puteți. Secțiunea Finanțe continuă să funcționeze între timp."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Organizația caritabilă pe chitanțe"
+
+#: 
+msgid "Check Again"
+msgstr "Verificați din nou"
+
+#: 
+msgid "Check the year"
+msgstr "Verificați anul"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Verificați anul, configurați extrasul, apoi descărcați."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Alegeți Săptămânal, Lunar sau Trimestrial pentru suma unei rate."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Alegeți un an calendaristic valid al donațiilor."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Alegeți originalul sau duplicatul."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Alegeți angajamentul total sau suma per rată."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Traducerile ChurchCRM sunt gestionate în depozitul GitHub ChurchCRM. Puteți ajuta"
+
+#: 
+msgid "Commitment amount"
+msgstr "Suma angajamentului"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Comparați duplicatul cu originalul păstrat și confirmați că toate informațiile chitanței sunt neschimbate."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Completați fiecare confirmare a chitanței înainte de descărcare."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Completați denumirea legală a organizației caritabile, adresa înregistrată, numărul de înregistrare, localitatea emiterii și semnatarul tipărit."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Semnatarul tipărit al scrisorii de confirmare"
+
+#: 
+msgid "Copy Kind"
+msgstr "Tipul copiei"
+
+#: 
+msgid "Currency"
+msgstr "Monedă"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Simbolul monedei $ sau CAD"
+
+#: 
+msgid "Date received"
+msgstr "Data primirii"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Ștergerea acesteia va elimina și %d proprietăți și toate atribuirile lor, astfel încât nimic să nu rămână în suspensie."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Toate donațiile din anul selectat aparțin donatorului (donatorilor) numiți împreună mai sus?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Nu reutilizați un număr pentru o altă chitanță, nu emiteți de două ori chitanța pentru aceleași donații și nu regenerați informații modificate ca original neschimbat."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplicați"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Duplicate copy / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Suma eligibilă a donațiilor în scopuri de impozit pe venit"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Introduceți programul și datele ratelor pentru a previzualiza angajamentul."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Introduceți date valide pentru prima și ultima rată, în ordine."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Introduceți sume de rată valide cu cel mult două zecimale."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Angajamentele existente își păstrează totalurile înregistrate. Alegeți suma per rată numai când introduceți fiecare donație programată."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Completat de la capii de familie și soți/soții. Editați-l astfel încât să corespundă exact donatorilor."
+
+#: 
+msgid "First installment"
+msgstr "Prima rată"
+
+#: 
+msgid "Full commitment"
+msgstr "Angajament total"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Generați declarații fiscale"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Anul calendaristic al donațiilor"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Extras de donații — nu este o chitanță oficială de donație"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "traducând pe GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Modificările istorice ale plicurilor nu sunt acceptate."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Am comparat cu originalul păstrat: donatorul, suma, numărul de serie și textul sunt neschimbate. Aceasta nu este o corecție sau o înlocuire."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Voi păstra PDF-ul emis și un registru extern al chitanțelor la locația canadiană de păstrare a documentelor organizației caritabile."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Dacă un original păstrat nu este disponibil sau este diferit, folosiți procedurile externe de anulare/înlocuire conforme cu CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Includeți notele de plată: le-am verificat ca fiind potrivite pentru donator."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Includeți această familie în descărcare"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Versiune instalată: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Sumele per rată pot fi folosite numai pentru angajamente."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Datele ratelor trebuie să fie în anul fiscal selectat."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Token CSRF nevalid sau lipsă"
+
+#: 
+msgid "Issue Date"
+msgstr "Data emiterii"
+
+#: 
+msgid "Issue Locality"
+msgstr "Localitatea emiterii"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Păstrați PDF-ul original și un registru extern al chitanțelor la locația canadiană de păstrare a documentelor organizației caritabile."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Ultima rată la sau înainte de"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Formularea scrisorii, detaliile organizației caritabile și gestionarea PDF-urilor se setează o singură dată în Setările extrasului."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Formularea scrisorii, detaliile organizației caritabile și gestionarea PDF-urilor pentru extrasele de donații"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maximum 2 MiB și 2000 × 1000 pixeli. Alegeți o imagine nouă pentru a înlocui semnătura stocată. O imagine a semnăturii nu este o semnătură digitală securizată."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Autentificarea membrilor este dezactivată, deci nimeni din familia %s nu se poate autentifica în portalul membrilor. Un administrator o poate activa în Admin → Portalul membrilor."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Seturile de plăți familiale cu donatori mixti nu pot fi împărțite aici; gestionați-le în afara acestei funcții."
+
+#: 
+msgid "Narrow the list"
+msgstr "Restrângeți lista"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Nicio familie nu corespunde acestor filtre pentru %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Nu există nicio chitanță individuală sau cumulativă care să se suprapună."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Nu poate fi generată încă nicio chitanță pentru această familie"
+
+#: 
+msgid "No signature on file"
+msgstr "Nicio semnătură în dosar"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Nu — donatori diferiți; gestionați în afara acestei funcții"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Nimeni din familia %s nu se poate autentifica în portalul membrilor conform regulii actuale de autentificare."
+
+#: 
+msgid "None / Aucun"
+msgstr "None / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nu este gata să emită chitanțe canadiene. Lipsesc încă"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Official Receipt / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Chitanțele oficiale necesită un număr de înregistrare în formatul 123456789RR0001 și o imagine a semnăturii."
+
+#: 
+msgid "Original"
+msgstr "Original"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Data emiterii originale (introduceți-o din originalul păstrat)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Datele plăților reflectă datele de primire a donațiilor, inclusiv tratamentul documentat al ștampilei poștale a cecurilor trimise prin poștă."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Tipărit pe extrasele obișnuite de donații, de exemplu EIN în Statele Unite. Aceeași valoare se află în informațiile bisericii."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identificator privat al imaginii semnăturii pentru extrasele de donații. Gestionat prin încărcarea semnăturii."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Proprietăți / Atribuiri"
+
+#: 
+msgid "Property deleted"
+msgstr "Proprietate ștearsă"
+
+#: 
+msgid "Property type deleted"
+msgstr "Tip de proprietate șters"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Formula de încheiere a chitanței"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Localitatea emiterii chitanței"
+
+#: 
+msgid "Receipt No."
+msgstr "Nr. chitanță"
+
+#: 
+msgid "Registration Number"
+msgstr "Număr de înregistrare"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Număr de înregistrare în formatul 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Notele de lansare nu sunt disponibile momentan."
+
+#: 
+msgid "Releases"
+msgstr "Versiuni"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Angajament rămas pentru %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Eliminați cerința de autentificare cu doi factori"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Eliminați imaginea semnăturii stocată? Chitanțele oficiale necesită una în dosar."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Rapoartele și mementourile compară acest angajament pe întreaga perioadă cu donațiile. Soldul rămas nu este un calcul al unei rate restante."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Rapoartele și mementourile folosesc angajamentul total afișat mai sus. Soldul rămas nu este un calcul al unei rate restante."
+
+#: 
+msgid "Require 2FA"
+msgstr "Cereți autentificarea cu doi factori"
+
+#: 
+msgid "Reset Options"
+msgstr "Resetați opțiunile"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Verificați familiile selectate"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "EȘANTION — NU ESTE VALABIL ÎN SCOPURI FISCALE"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Spațiu rezervat pentru semnătura de exemplu"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Indicați dacă este necesară autentificarea cu doi factori."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Actualizările de securitate și asistența sunt oferite numai pentru cea mai recentă versiune."
+
+#: 
+msgid "Select the families to review."
+msgstr "Selectați familiile de verificat."
+
+#: 
+msgid "Set up the statement"
+msgstr "Configurați extrasul"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Configurați autentificarea cu doi factori pentru a continua."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Conflict de plic partajat: o altă familie are în prezent acest număr de plic."
+
+#: 
+msgid "Signature Image"
+msgstr "Imaginea semnăturii"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Imaginea semnăturii (Admin, Setări rapoarte)"
+
+#: 
+msgid "Signature on file"
+msgstr "Semnătură în dosar"
+
+#: 
+msgid "Sincerely"
+msgstr "Cu stimă"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Specificați baza sumei când editați un angajament recurent."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Extras standard de donații"
+
+#: 
+msgid "Statement Template"
+msgstr "Șablon de extras"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Furnizați o dată de emitere nu mai târzie de astăzi."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "ID fiscal pe extrase"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Familia %s nu are membri în viață de invitat în portalul membrilor."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Numărul de înregistrare canadian trebuie să aibă formatul 123456789RR0001. Acesta nu verifică statutul înregistrării."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Numărul de înregistrare al organizației caritabile trebuie să fie text."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Numărul de înregistrare al organizației caritabile tipărit pe chitanțele oficiale. Dacă este gol, se folosește codul fiscal din informațiile bisericii."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Adresa înregistrată a organizației caritabile. Dacă este goală, se folosește adresa din informațiile bisericii."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Formula de încheiere deasupra semnatarului, de exemplu Cu stimă."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Angajamentul total nu trebuie să depășească 999999.99 per fond și sumele trebuie să aibă cel mult două zecimale."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Donațiile sau adresa poștală s-au schimbat de la ultima verificare. Verificați-le și confirmați din nou donatorul."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Adresa poștală este incompletă. Sunt necesare o stradă, un oraș, o provincie și un cod poștal."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Denumirea sub care este înregistrată organizația caritabilă. Poate diferi de numele bisericii."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Locul în care sunt emise chitanțele. Dacă este gol, se folosește orașul din informațiile bisericii."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Semnatarul tipărit al extraselor de donații este autorizat să semneze aceste chitanțe."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Simbolul monedei din sistem trebuie să fie $ sau să identifice CAD pentru chitanțele canadiene."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Nu există plăți în anul calendaristic selectat."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Aceștia sunt adevărații donatori pentru fiecare donație din această familie/an calendaristic, iar adresa poștală este corectă."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Această imagine se tipărește deasupra numelui semnatarului pe extrasele de donații și chitanțe. Detaliile organizației caritabile și numele tipărit al semnatarului se află în Finanțe, Setările extrasului."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Această opțiune formatează o chitanță canadiană, dar nu păstrează un registru al chitanțelor și nu reține PDF-uri."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Această familie înregistrată de sine așteaptă aprobarea. Aprobarea ei trimite prin e-mail fiecărui membru care se poate autentifica în portalul membrilor o invitație de a verifica informațiile familiei."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Acest instrument nu are un flux de anulare/înlocuire; folosiți procesul existent conform cu CRA pentru corecții și înlocuiri ale chitanțelor pierdute."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Acest utilizator trebuie să configureze autentificarea cu doi factori"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Aceasta va șterge definitiv fișa familiei și notele ei. Acțiunea nu poate fi anulată."
+
+#: 
+msgid "Total commitment"
+msgstr "Angajament total"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Nu se poate previzualiza angajamentul."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Încărcați sau înlocuiți semnătura"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Încărcați semnătura fiscală autorizată în Setări rapoarte."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Folosiți date din anul fiscal selectat. Donațiile lunare și trimestriale folosesc ziua primei rate sau ultima zi a lunilor mai scurte."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Nume complet verificat al donatorului (donatorilor)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Verificați familia personal în schimb."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Verificați numele complet și adresa donatorului pentru fiecare familie. Seturile de plăți cu donatori mixti trebuie gestionate în afara acestei funcții."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Versiunea %s este disponibilă. Rugați administratorul să vă actualizeze instalarea."
+
+#: 
+msgid "View all emails"
+msgstr "Vizualizați toate e-mailurile"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Da — un singur set de donatori verificat"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Țara bisericii dvs. este Canada, deci chitanțele oficiale canadiene sunt disponibile și când generați extrase."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Țara bisericii dvs. este Canada, deci chitanțele oficiale canadiene sunt disponibile în Extrasele de donații, iar extrasele obișnuite sunt marcate ca nefiind chitanțe oficiale de donație."
+
+#: 
+msgid "groups"
+msgstr "grupuri"
 

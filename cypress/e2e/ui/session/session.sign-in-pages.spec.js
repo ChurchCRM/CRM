@@ -157,7 +157,7 @@ describe("Sign-in pages", () => {
         it("signs in through a form still posting to /session/begin", () => {
             cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: standard.username, Password: standard.password } })
                 .its("redirects")
-                .should("satisfy", (redirects) => redirects.some((url) => url.includes("/v2/dashboard")));
+                .should("satisfy", (redirects) => redirects.some((url) => url.includes("/people/dashboard")));
             cy.request("/api/persons/latest").its("status").should("eq", 200);
         });
 
@@ -190,7 +190,7 @@ describe("Sign-in pages", () => {
             cy.visit("/admin/");
             signInAtAdmin(standard);
             cy.visit("/admin/");
-            cy.location("pathname").should("match", /\/v2\/dashboard$/);
+            cy.location("pathname").should("match", /\/people\/dashboard$/);
             cy.visit("/admin/system/users");
             cy.location("pathname").should("match", /\/v2\/access-denied$/);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 403);
@@ -204,8 +204,8 @@ describe("Sign-in pages", () => {
             cy.location("pathname").should("match", /\/portal\/$/);
             cy.get("#portalAccountChangePassword").should("exist");
             cy.get("#portal-account-toggle").click();
-            cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/v2\/dashboard$/)).click();
-            cy.location("pathname").should("match", /\/v2\/dashboard$/);
+            cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/people\/dashboard$/)).click();
+            cy.location("pathname").should("match", /\/people\/dashboard$/);
             cy.get("#UserBox").should("not.exist");
         });
 
@@ -217,7 +217,7 @@ describe("Sign-in pages", () => {
             cy.get("#portalAccountSignOut").click();
             cy.location("pathname").should("match", /\/admin\/$/);
             cy.request({ url: "/portal/", followRedirect: false }).its("redirectedToUrl").should("match", /\/portal\/login$/);
-            expectStaffSignInRedirect("/v2/dashboard");
+            expectStaffSignInRedirect("/people/dashboard");
         });
     });
 
@@ -226,7 +226,7 @@ describe("Sign-in pages", () => {
             emailSignIn(judith.email);
             cy.visit("/");
             cy.location("pathname").should("match", /\/portal\/$/);
-            ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/people/properties/p"].forEach(expectStaffSignInRedirect);
+            ["/people/dashboard", "/admin/system/users", "/people/view/2", "/people/properties/p"].forEach(expectStaffSignInRedirect);
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/admin/");
@@ -258,10 +258,10 @@ describe("Sign-in pages", () => {
                 cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/admin\/$/)).click();
                 cy.location("pathname").should("match", /\/admin\/$/);
                 signInAtAdmin(judith);
-                cy.location("pathname").should("match", /\/v2\/dashboard$/);
+                cy.location("pathname").should("match", /\/people\/dashboard$/);
 
                 cy.visit("/portal/");
-                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/v2\/dashboard$/));
+                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/people\/dashboard$/));
                 cy.get("#portalAccountChangePassword").should("exist");
                 auditSince(startId).then((rows) => {
                     const events = rows.map((row) => [row.psa_per_ID, row.psa_Event, row.psa_Method, row.psa_Reason]);
@@ -276,13 +276,13 @@ describe("Sign-in pages", () => {
         it("ends a staff session in the same browser when a member signs in by email", () => {
             cy.visit("/admin/");
             signInAtAdmin(standard);
-            cy.location("pathname").should("match", /\/v2\/dashboard$/);
+            cy.location("pathname").should("match", /\/people\/dashboard$/);
             cy.visit("/portal/login");
             cy.get("#portalSignInEmail").should("be.visible");
 
             emailSignIn(constance.email);
             cy.request("/api/portal/me").its("body.profile.id").should("eq", constance.personId);
-            expectStaffSignInRedirect("/v2/dashboard");
+            expectStaffSignInRedirect("/people/dashboard");
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/portal/");
             cy.get("#portalAccountAdminConsole").should("not.exist");

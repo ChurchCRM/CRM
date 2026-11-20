@@ -1,6 +1,14 @@
 /// <reference types="cypress" />
 
 describe("Volunteer Opportunity Editor", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v1" }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
+    });
+
     beforeEach(() => cy.setupAdminSession());
 
     it("loads the editor page without errors", () => {
@@ -29,7 +37,7 @@ describe("Volunteer Opportunity Editor", () => {
         }).then(({ body }) => {
             cy.visit("/VolunteerOpportunityEditor.php");
             cy.contains("a.btn", "Exit").click();
-            cy.location("pathname").should("eq", `${installPath}/v2/dashboard`);
+            cy.location("pathname").should("eq", `${installPath}/people/dashboard`);
             cy.request({
                 method: "DELETE",
                 url: `/admin/api/volunteer-opportunities/${body.volunteerOpportunity.id}`,

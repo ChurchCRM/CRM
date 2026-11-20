@@ -387,7 +387,7 @@ class User extends BaseUser
      * Returns true if the current user may read private notes authored by other users.
      *
      * Policy: admins may read any private note (full content visible in timeline,
-     * API, and NoteEditor). Non-admin users may only read their own private notes;
+     * API). Non-admin users may only read their own private notes;
      * that author-equality check is handled in Note::isVisibleTo(), so this method
      * governs only the "read someone else's private note" case.
      *

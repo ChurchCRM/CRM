@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "Μέλη"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Παιδιά Καθηχητικού"
-
-#: 
 msgid "Role / Gender"
 msgstr "Ρόλος / Φύλο"
 
@@ -4475,10 +4471,6 @@ msgid "People Reports"
 msgstr "Αναφορές ανθρώπων"
 
 #: 
-msgid "People Dashboard"
-msgstr "Πίνακας ελέγχου Μελών"
-
-#: 
 msgid "People Directory"
 msgstr "Κατάλογος ανθρώπων"
 
@@ -5070,10 +5062,6 @@ msgstr "Εφαρμόστε πολιτική ασφάλειας περιεχομ�
 #: 
 msgid "Enter event description..."
 msgstr "Εισαγάγετε περιγραφή εκδήλωσης..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Εισαγάγετε κείμενο σημείωσης εδώ..."
 
 #: 
 msgid "Note"
@@ -8034,10 +8022,6 @@ msgid "or later to continue."
 msgstr "ή μεταγενέστερη για να συνεχίσετε."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Σημειώσεις «Γιατί ήρθαν»"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d αποτέλεσμα για «%s»"
@@ -8146,10 +8130,6 @@ msgstr "Προσθήκη ή επεξεργασία ατομικών εγγραφ
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Προσθήκη ή επεξεργασία δωρεών για εκδηλώσεις ενίσχυσης"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Προσθήκη ή επεξεργασία σημειώσεων για άτομα και οικογένειες"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9026,10 +9006,6 @@ msgid "Password Recovery"
 msgstr "Ανάκτηση κωδικού πρόσβασης"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "Τελευταίες & επόμενες 7 ημέρες"
-
-#: 
 msgid "People by Classification"
 msgstr "Άτομα ανά κατηγοριοποίηση"
 
@@ -9112,10 +9088,6 @@ msgstr "Καταγραφή πολλαπλών νικητών κλήρωσης ε
 #: 
 msgid "Record new pledges and payments"
 msgstr "Καταγραφή νέων οικονομικών δεσμεύσεων και πληρωμών"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Καταγράψτε γιατί οι επισκέπτες ήρθαν στην ενορία σας"
 
 #: 
 msgid "Remove from Class"
@@ -10929,10 +10901,6 @@ msgstr "Σκούρο"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Μόνο βάση δεδομένων (.sql) ή πλήρες αρχείο (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Προεπιλεγμένος αριθμός γραμμών στους πίνακες δεδομένων. Εφαρμόζεται κατά την επόμενη φόρτωση σελίδας."
 
 #. Context: locales
 #: 
@@ -12912,14 +12880,6 @@ msgid "Click Save to apply."
 msgstr "Κάντε κλικ στο Αποθήκευση για εφαρμογή."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Το API του προχείρου δεν είναι διαθέσιμο. Αντιγράψτε το URL με το χέρι."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Το πρόχειρο δεν είναι διαθέσιμο. Χρησιμοποιήστε το κουμπί Λήψης για να αποθηκεύσετε τους κωδικούς σας."
-
-#: 
 msgid "Code incomplete"
 msgstr "Ο κώδικας είναι ελλιπής"
 
@@ -13498,14 +13458,6 @@ msgstr "Δεν υπάρχουν καταθέσεις προσφορών"
 #: 
 msgid "No Events Today"
 msgstr "Δεν υπάρχουν Εκδηλώσεις Σήμερα"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Δεν υπάρχουν επέτειοι τις τελευταίες ή επόμενες 7 ημέρες"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Δεν υπάρχουν γενέθλια τις τελευταίες ή επόμενες 7 ημέρες"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14452,24 +14404,12 @@ msgid "People &amp; Families"
 msgstr "Ενορίτες &amp; Οικογένειες"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Η σημείωση που προσπαθείτε να επεξεργαστείτε δεν υπάρχει πλέον."
-
-#: 
 msgid "User List"
 msgstr "Λίστα Χρηστών"
 
 #: 
 msgid "View Person"
 msgstr "Προβολή Μέλους"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτήν την οικογένεια."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
 
 #: 
 msgid "Account locked"
@@ -15170,10 +15110,6 @@ msgstr "Το ποσό στόχου πρέπει να είναι μη αρνητ�
 #: 
 msgid "thru %s"
 msgstr "έως %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Σημειώσεις «Λόγος Προσέλευσης» για %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -17852,10 +17788,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Εγγραφές που περιμένουν έλεγχο από τη δημόσια φόρμα εγγραφής. Οι καταχωρίσεις χωρίς email ή τηλέφωνο επισημαίνονται· επαληθεύστε τα στοιχεία επικοινωνίας πριν επικοινωνήσετε."
 
 #: 
-msgid "Review now"
-msgstr "Έλεγχος τώρα"
-
-#: 
 msgid "Review self registrations"
 msgstr "Έλεγχος αυτοεγγραφών"
 
@@ -17906,10 +17838,6 @@ msgstr "Χθες"
 #: 
 msgid "days ago"
 msgstr "ημέρες πριν"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "αυτοεγγραφές περιμένουν έλεγχο"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -24014,10 +23942,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d πληρωμές δεν ανήκουν ακόμη σε καμία κατάθεση."
 
 #: 
-msgid "Closing line"
-msgstr "Καταληκτική γραμμή"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Κάθε κατάθεση με ημερομηνία εντός αυτού του έτους είναι κλειστή."
 
@@ -24030,28 +23954,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Κάθε πληρωμή αυτού του έτους ανήκει σε κατάθεση."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Αναφορά προσφορών (Φορολογικές βεβαιώσεις)"
-
-#: 
-msgid "Opening line"
-msgstr "Εισαγωγική γραμμή"
-
-#: 
 msgid "Qty"
 msgstr "Ποσ."
-
-#: 
-msgid "Signed by"
-msgstr "Υπογραφή από"
-
-#: 
-msgid "Thank-you line"
-msgstr "Γραμμή ευχαριστίας"
 
 #: 
 msgid "Year-End Giving"
@@ -24210,10 +24114,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Ο προσωρινός κατάλογος PDF πρέπει να είναι απόλυτη διαδρομή καταλόγου."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Φορολογικός αριθμός εκκλησίας (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Καταληκτική γραμμή"
 
@@ -24256,10 +24156,6 @@ msgstr "Ρυθμίσεις βεβαίωσης"
 #: 
 msgid "Statement Wording"
 msgstr "Διατύπωση βεβαίωσης"
-
-#: 
-msgid "Tax Information"
-msgstr "Φορολογικές πληροφορίες"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24308,10 +24204,6 @@ msgstr "Χρήση του ονόματος και της διεύθυνσης τ
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Χρήση της διαδρομής επιστολόχαρτου που ορίστηκε στις Ρυθμίσεις συστήματος"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Διατύπωση, φορολογικός αριθμός και διαχείριση PDF για τις βεβαιώσεις προσφορών"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27126,10 +27018,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Απενεργοποίηση και της σύνδεσης, ώστε να μην μπορούν να χρησιμοποιούν την Πύλη μελών"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Πριν στείλετε καταστάσεις"
-
-#: 
 msgid "Birthday today"
 msgstr "Γενέθλια σήμερα"
 
@@ -27212,10 +27100,6 @@ msgstr "Διαγραφή ατόμων και οικογενειών"
 #: 
 msgid "Delete the login for"
 msgstr "Διαγραφή σύνδεσης για"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Χρονικό εύρος διαγράμματος καταθέσεων"
 
 #: 
 msgid "Disabled at"
@@ -27470,10 +27354,6 @@ msgid "Preview Sample Letter"
 msgstr "Προεπισκόπηση δείγματος επιστολής"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Ιδιωτικό αναγνωριστικό πόρου υπογραφής για καναδικές καταστάσεις προσφορών. Διαχειρίζεται μέσω της μεταφόρτωσης υπογραφής."
-
-#: 
 msgid "Property Type"
 msgstr "Τύπος ιδιότητας"
 
@@ -27512,10 +27392,6 @@ msgstr "Ανασκόπηση και φιλτράρισμα"
 #: 
 msgid "Review and vote"
 msgstr "Ανασκόπηση και ψηφοφορία"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Ανασκοπήστε το έτος και μετά κατεβάστε τις καταστάσεις προσφορών."
 
 #: 
 msgid "Review what we are considering"
@@ -27564,10 +27440,6 @@ msgstr "Ισχυρή"
 #: 
 msgid "Support"
 msgstr "Υποστήριξη"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Ρυθμίσεις ΑΦΜ και PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27754,10 +27626,6 @@ msgid "Latest Notes"
 msgstr "Τελευταίες σημειώσεις"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Δεν έχουν προστεθεί σημειώσεις ακόμη."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Ξεκινήστε την εγγραφή για να λάβετε έναν κωδικό QR."
 
@@ -27768,4 +27636,746 @@ msgstr "Αυτός ο κωδικός πρόσβασης ή κωδικός δεν
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Ο έλεγχος ταυτότητας δύο παραγόντων έχει ήδη ρυθμιστεί. Το μυστικό του εμφανίζεται μόνο κατά την εγγραφή."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d δώρο συνολικού ποσού %2$s"
+msgstr[1] "%1$d δώρα συνολικού ποσού %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d οικογένειες έχουν επί του παρόντος ιδιότητες αυτού του τύπου."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d οικογένεια δεν μπορεί ακόμη να λάβει βεβαίωση και εξαιρείται. Διορθώστε το πρόβλημα που αναφέρεται κάτω από αυτήν και, στη συνέχεια, επιλέξτε «Έλεγχος ξανά»."
+msgstr[1] "%d οικογένειες δεν μπορούν ακόμη να λάβουν βεβαίωση και εξαιρούνται. Διορθώστε τα προβλήματα που αναφέρονται κάτω από αυτές και, στη συνέχεια, επιλέξτε «Έλεγχος ξανά»."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d ομάδες έχουν επί του παρόντος ιδιότητες αυτού του τύπου."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d μέλη έχουν επί του παρόντος ιδιότητες αυτού του τύπου."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d εκδόσεις είναι διαθέσιμες από την έκδοση που έχετε εγκαταστήσει."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Δεν δημιουργήθηκε βεβαίωση."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: εισαγάγετε το επαληθευμένο πλήρες όνομα του δωρητή (ή των δωρητών), επιβεβαιώστε τους δωρητές και επιβεβαιώστε ένα σύνολο δωρητών. Τα σύνολα πληρωμών μεικτών δωρητών πρέπει να διεκπεραιώνονται εκτός αυτής της λειτουργίας."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: τα δώρα ή η ταχυδρομική διεύθυνση άλλαξαν από τον έλεγχο. Επιλέξτε «Έλεγχος ξανά» και επιβεβαιώστε ξανά τον δωρητή."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} δόση)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} δόσεις)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Μια πληρωμή με πιστωτική κάρτα ή τραπεζική εντολή βρίσκεται σε κατάθεση που δεν έχει κλείσει ακόμη. Κλείστε την κατάθεση μόλις εκκαθαριστεί η πληρωμή."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Μια πληρωμή έχει ποσό που δεν εκπίπτει. Οι καναδικές βεβαιώσεις εδώ υποστηρίζουν μόνο δώρα χωρίς κανένα πλεονέκτημα."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Μια πληρωμή έχει μη έγκυρο χρηματικό ποσό."
+
+#: 
+msgid "A payment has no date."
+msgstr "Μια πληρωμή δεν έχει ημερομηνία."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Μια πληρωμή φέρει ημερομηνία μεταγενέστερη της ημερομηνίας έκδοσης."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Μια πληρωμή έχει επισημανθεί ως πρόβλημα."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Μια πληρωμή είναι μηδενική ή αρνητική."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Απαιτείται ένα ελεγμένο POST με έγκυρο διακριτικό CSRF."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Μια επιλεγμένη οικογένεια δεν υπάρχει πλέον."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Μια εικόνα υπογραφής δεν είναι ασφαλής ψηφιακή υπογραφή."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Υπάρχει διαθέσιμη ενημέρωση συστήματος. Ζητήστε από τον διαχειριστή σας να αναβαθμίσει την εγκατάστασή σας."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Όλες οι περιλαμβανόμενες γραμμές είναι χρηματικά δώρα χωρίς πλεονέκτημα."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Όλες οι απαιτούμενες ρυθμίσεις καναδικών βεβαιώσεων έχουν συμπληρωθεί."
+
+#: 
+msgid "Also delete family members"
+msgstr "Διαγραφή και των μελών της οικογένειας"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Ποσό πλεονεκτημάτων"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Ποσό δώρων"
+
+#: 
+msgid "Amount per installment"
+msgstr "Ποσό ανά δόση"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Τα εισαγόμενα ποσά είναι"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Ο διαχειριστής το ανεβάζει στις Ρυθμίσεις αναφοράς."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Εγκρίθηκε, αλλά δεν στάλθηκε πρόσκληση"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Ζητήστε από τον διαχειριστή του συστήματός σας να αναβαθμίσει το ChurchCRM στην πιο πρόσφατη έκδοση."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Εξουσιοδοτημένη υπογραφή"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Υπηρεσία Εσόδων του Καναδά"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Καναδική επίσημη βεβαίωση"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Οι καναδικές επίσημες βεβαιώσεις απαιτούν τον Καναδά ως χώρα της εκκλησίας στις Πληροφορίες ενορίας."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Οι καναδικές βεβαιώσεις απαιτούν ολόκληρο το ημερολογιακό έτος και όλα τα ταμεία, χωρίς άλλα φίλτρα."
+
+#: 
+msgid "Change Selection"
+msgstr "Αλλαγή επιλογής"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Νομική επωνυμία φιλανθρωπικού οργανισμού"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Καταχωρημένη διεύθυνση φιλανθρωπικού οργανισμού"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Αριθμός καταχώρησης φιλανθρωπικού οργανισμού"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Τα στοιχεία του φιλανθρωπικού οργανισμού για τις βεβαιώσεις δεν έχουν συμπληρωθεί ακόμη. Προσθέστε τη νομική επωνυμία, την καταχωρημένη διεύθυνση, τον αριθμό καταχώρησης και τον τόπο έκδοσης όταν μπορείτε. Τα Οικονομικά συνεχίζουν να λειτουργούν μέχρι τότε."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Φιλανθρωπικός οργανισμός στις βεβαιώσεις"
+
+#: 
+msgid "Check Again"
+msgstr "Έλεγχος ξανά"
+
+#: 
+msgid "Check the year"
+msgstr "Ελέγξτε το έτος"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Ελέγξτε το έτος, ρυθμίστε τη βεβαίωση και, στη συνέχεια, κάντε λήψη."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Επιλέξτε Εβδομαδιαία, Μηνιαία ή Τριμηνιαία για ποσό δόσης."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Επιλέξτε ένα έγκυρο ημερολογιακό έτος δωρεάς."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Επιλέξτε πρωτότυπο ή διπλότυπο."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Επιλέξτε συνολική δέσμευση ή ποσό δόσης."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Οι μεταφράσεις του ChurchCRM διαχειρίζονται στο αποθετήριο του ChurchCRM στο GitHub. Μπορείτε να βοηθήσετε μέσω"
+
+#: 
+msgid "Commitment amount"
+msgstr "Ποσό δέσμευσης"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Συγκρίνετε το διπλότυπο με το διατηρημένο πρωτότυπο και επιβεβαιώστε ότι όλες οι πληροφορίες της βεβαίωσης παραμένουν αμετάβλητες."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Ολοκληρώστε κάθε επιβεβαίωση βεβαίωσης πριν από τη λήψη."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Συμπληρώστε τη νομική επωνυμία, την καταχωρημένη διεύθυνση, τον αριθμό καταχώρησης, τον τόπο έκδοσης και τον εκτυπωμένο υπογράφοντα του φιλανθρωπικού οργανισμού."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Εκτυπωμένος υπογράφων επιστολής επιβεβαίωσης"
+
+#: 
+msgid "Copy Kind"
+msgstr "Είδος αντιγράφου"
+
+#: 
+msgid "Currency"
+msgstr "Νόμισμα"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Σύμβολο νομίσματος $ ή CAD"
+
+#: 
+msgid "Date received"
+msgstr "Ημερομηνία παραλαβής"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Η διαγραφή του θα καταργήσει επίσης %d ιδιότητες και όλες τις αναθέσεις τους, ώστε να μην μείνει τίποτα εκκρεμές."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Όλα τα δώρα του επιλεγμένου έτους ανήκουν στον δωρητή (ή στους δωρητές) που αναφέρονται μαζί παραπάνω;"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Μην επαναχρησιμοποιείτε έναν αριθμό για διαφορετική βεβαίωση, μην εκδίδετε βεβαίωση για τα ίδια δώρα δύο φορές και μην αναπαράγετε αλλαγμένες πληροφορίες ως αμετάβλητο πρωτότυπο."
+
+#: 
+msgid "Duplicate"
+msgstr "Διπλότυπο"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Διπλότυπο αντίγραφο / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Επιλέξιμο ποσό δώρων για σκοπούς φόρου εισοδήματος"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Εισαγάγετε το χρονοδιάγραμμα και τις ημερομηνίες των δόσεων για προεπισκόπηση της δέσμευσης."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Εισαγάγετε έγκυρες ημερομηνίες πρώτης και τελευταίας δόσης με τη σωστή σειρά."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Εισαγάγετε έγκυρα ποσά δόσεων με το πολύ δύο δεκαδικά ψηφία."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Οι υπάρχουσες υποσχέσεις διατηρούν τα καταγεγραμμένα σύνολά τους. Επιλέξτε ποσό ανά δόση μόνο όταν εισάγετε κάθε προγραμματισμένο δώρο."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Συμπληρώνεται από τους επικεφαλής του νοικοκυριού και τους συζύγους. Επεξεργαστείτε το ώστε να ταιριάζει ακριβώς με τους δωρητές."
+
+#: 
+msgid "First installment"
+msgstr "Πρώτη δόση"
+
+#: 
+msgid "Full commitment"
+msgstr "Πλήρης δέσμευση"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Δημιουργία φορολογικών βεβαιώσεων"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Ημερολογιακό έτος δώρων"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Βεβαίωση προσφορών — δεν είναι επίσημη βεβαίωση δωρεάς"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Βοηθήστε στη μετάφραση στο GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Οι ιστορικές αλλαγές φακέλων δεν υποστηρίζονται."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Σύγκρινα με το διατηρημένο πρωτότυπο: ο δωρητής, το ποσό, ο αύξων αριθμός και το κείμενο παραμένουν αμετάβλητα. Δεν πρόκειται για διόρθωση ή αντικατάσταση."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Θα διατηρήσω το εκδομένο PDF και ένα εξωτερικό αρχείο καταγραφής βεβαιώσεων στον καναδικό τόπο αρχείων του φιλανθρωπικού οργανισμού."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Εάν ένα διατηρημένο πρωτότυπο δεν είναι διαθέσιμο ή διαφέρει, χρησιμοποιήστε τις εξωτερικές διαδικασίες ακύρωσης/αντικατάστασης που συμμορφώνονται με την CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Συμπερίληψη σημειωμάτων πληρωμών: τα εξέτασα ως κατάλληλα για τον δωρητή."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Συμπερίληψη αυτής της οικογένειας στη λήψη"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Εγκατεστημένη έκδοση: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Τα ποσά δόσεων μπορούν να χρησιμοποιηθούν μόνο για υποσχέσεις."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Οι ημερομηνίες δόσεων πρέπει να είναι εντός του επιλεγμένου οικονομικού έτους."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Μη έγκυρο ή ελλείπον διακριτικό CSRF"
+
+#: 
+msgid "Issue Date"
+msgstr "Ημερομηνία έκδοσης"
+
+#: 
+msgid "Issue Locality"
+msgstr "Τόπος έκδοσης"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Διατηρήστε το πρωτότυπο PDF και ένα εξωτερικό αρχείο καταγραφής βεβαιώσεων στον καναδικό τόπο αρχείων του φιλανθρωπικού οργανισμού."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Τελευταία δόση στις ή πριν από"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Η διατύπωση της επιστολής, τα στοιχεία του φιλανθρωπικού οργανισμού και ο χειρισμός PDF ορίζονται μία φορά στις Ρυθμίσεις βεβαίωσης."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Διατύπωση επιστολής, στοιχεία φιλανθρωπικού οργανισμού και χειρισμός PDF για βεβαιώσεις προσφορών"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Μέγιστο 2 MiB και 2000 × 1000 εικονοστοιχεία. Επιλέξτε μια νέα εικόνα για να αντικαταστήσετε την αποθηκευμένη υπογραφή. Μια εικόνα υπογραφής δεν είναι ασφαλής ψηφιακή υπογραφή."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Η σύνδεση μελών είναι απενεργοποιημένη, επομένως κανείς στην οικογένεια %s δεν μπορεί να συνδεθεί στην πύλη μελών. Ένας διαχειριστής μπορεί να την ενεργοποιήσει από Διαχείριση → Πύλη μελών."
+
+#: 
+msgid "Memo"
+msgstr "Σημείωμα"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Τα σύνολα πληρωμών οικογενειών μεικτών δωρητών δεν μπορούν να διαχωριστούν εδώ· διεκπεραιώστε τα εκτός αυτής της λειτουργίας."
+
+#: 
+msgid "Narrow the list"
+msgstr "Περιορισμός λίστας"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Καμία οικογένεια δεν ταιριάζει με αυτά τα φίλτρα για %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Δεν υπάρχει επικαλυπτόμενη ατομική ή σωρευτική βεβαίωση."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Δεν μπορεί ακόμη να δημιουργηθεί βεβαίωση για αυτήν την οικογένεια"
+
+#: 
+msgid "No signature on file"
+msgstr "Δεν υπάρχει υπογραφή στο αρχείο"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Όχι — διαφορετικοί δωρητές· διεκπεραιώστε το εκτός αυτής της λειτουργίας"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Κανείς στην οικογένεια %s δεν μπορεί να συνδεθεί στην πύλη μελών σύμφωνα με τον τρέχοντα κανόνα σύνδεσης."
+
+#: 
+msgid "None / Aucun"
+msgstr "Κανένα / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Δεν είναι έτοιμο για έκδοση καναδικών βεβαιώσεων. Λείπουν ακόμη"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Επίσημη βεβαίωση / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Επίσημη βεβαίωση για σκοπούς φόρου εισοδήματος / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Οι επίσημες βεβαιώσεις χρειάζονται αριθμό καταχώρησης στη μορφή 123456789RR0001 και εικόνα υπογραφής."
+
+#: 
+msgid "Original"
+msgstr "Πρωτότυπο"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Αρχική ημερομηνία έκδοσης (εισαγάγετε από το διατηρημένο πρωτότυπο)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Οι ημερομηνίες πληρωμών αντικατοπτρίζουν τις ημερομηνίες παραλαβής των δώρων, συμπεριλαμβανομένης της τεκμηριωμένης μεταχείρισης σφραγίδας ταχυδρομείου για επιταγές που εστάλησαν ταχυδρομικώς."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Εκτυπώνεται στις συνηθισμένες βεβαιώσεις προσφορών, για παράδειγμα το EIN στις Ηνωμένες Πολιτείες. Η ίδια τιμή βρίσκεται στις Πληροφορίες ενορίας."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Ιδιωτικό αναγνωριστικό πόρου υπογραφής βεβαίωσης προσφορών. Διαχειρίζεται μέσω μεταφόρτωσης υπογραφής."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Ιδιότητες / Αναθέσεις"
+
+#: 
+msgid "Property deleted"
+msgstr "Η ιδιότητα διαγράφηκε"
+
+#: 
+msgid "Property type deleted"
+msgstr "Ο τύπος ιδιότητας διαγράφηκε"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Κλείσιμο βεβαίωσης"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Τόπος έκδοσης βεβαίωσης"
+
+#: 
+msgid "Receipt No."
+msgstr "Αρ. βεβαίωσης"
+
+#: 
+msgid "Registration Number"
+msgstr "Αριθμός καταχώρησης"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Αριθμός καταχώρησης στη μορφή 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Οι σημειώσεις έκδοσης δεν είναι διαθέσιμες αυτή τη στιγμή."
+
+#: 
+msgid "Releases"
+msgstr "Εκδόσεις"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Υπολειπόμενη δέσμευση για %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Κατάργηση απαίτησης 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Να καταργηθεί η αποθηκευμένη εικόνα υπογραφής; Οι επίσημες βεβαιώσεις απαιτούν να υπάρχει μία στο αρχείο."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Οι αναφορές και οι υπενθυμίσεις συγκρίνουν αυτή τη δέσμευση πλήρους περιόδου με τις προσφορές. Το υπόλοιπο δεν αποτελεί υπολογισμό ληξιπρόθεσμης δόσης."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Οι αναφορές και οι υπενθυμίσεις χρησιμοποιούν την πλήρη δέσμευση που εμφανίζεται παραπάνω. Το υπόλοιπο δεν αποτελεί υπολογισμό ληξιπρόθεσμης δόσης."
+
+#: 
+msgid "Require 2FA"
+msgstr "Απαίτηση 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Επαναφορά επιλογών"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Έλεγχος επιλεγμένων οικογενειών"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "ΔΕΙΓΜΑ — ΜΗ ΕΓΚΥΡΟ ΓΙΑ ΦΟΡΟΛΟΓΙΚΟΥΣ ΣΚΟΠΟΥΣ"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Δείγμα θέσης υπογραφής"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Δηλώστε εάν απαιτείται 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Ενημερώσεις ασφαλείας και υποστήριξη παρέχονται μόνο για την πιο πρόσφατη έκδοση."
+
+#: 
+msgid "Select the families to review."
+msgstr "Επιλέξτε τις οικογένειες προς έλεγχο."
+
+#: 
+msgid "Set up the statement"
+msgstr "Ρύθμιση της βεβαίωσης"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Ρυθμίστε τον έλεγχο ταυτότητας δύο παραγόντων για να συνεχίσετε."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Σύγκρουση κοινού φακέλου: μια άλλη οικογένεια έχει επί του παρόντος αυτόν τον αριθμό φακέλου."
+
+#: 
+msgid "Signature Image"
+msgstr "Εικόνα υπογραφής"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Εικόνα υπογραφής (Διαχείριση, Ρυθμίσεις αναφοράς)"
+
+#: 
+msgid "Signature on file"
+msgstr "Υπογραφή στο αρχείο"
+
+#: 
+msgid "Sincerely"
+msgstr "Με εκτίμηση"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Καθορίστε τη βάση ποσού όταν επεξεργάζεστε μια επαναλαμβανόμενη υπόσχεση."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Τυπική βεβαίωση προσφορών"
+
+#: 
+msgid "Statement Template"
+msgstr "Πρότυπο βεβαίωσης"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Δώστε ημερομηνία έκδοσης όχι μεταγενέστερη από σήμερα."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Φορολογικός αριθμός στις βεβαιώσεις"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Η οικογένεια %s δεν έχει ζώντα μέλη για πρόσκληση στην πύλη μελών."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Ο καναδικός αριθμός καταχώρησης πρέπει να έχει τη μορφή 123456789RR0001. Αυτό δεν επαληθεύει την κατάσταση καταχώρησης."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Ο αριθμός καταχώρησης του φιλανθρωπικού οργανισμού πρέπει να είναι κείμενο."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Ο αριθμός καταχώρησης του φιλανθρωπικού οργανισμού που εκτυπώνεται στις επίσημες βεβαιώσεις. Αν μείνει κενό, χρησιμοποιείται ο φορολογικός αριθμός από τις Πληροφορίες ενορίας."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Η καταχωρημένη διεύθυνση του φιλανθρωπικού οργανισμού. Αν μείνει κενό, χρησιμοποιείται η διεύθυνση από τις Πληροφορίες ενορίας."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Η φράση κλεισίματος πάνω από τον υπογράφοντα, για παράδειγμα «Με εκτίμηση»."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Η πλήρης δέσμευση δεν πρέπει να υπερβαίνει το 999999.99 ανά ταμείο και τα ποσά πρέπει να χρησιμοποιούν το πολύ δύο δεκαδικά ψηφία."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Τα δώρα ή η ταχυδρομική διεύθυνση άλλαξαν από τον τελευταίο έλεγχό σας. Ελέγξτε τα και επιβεβαιώστε ξανά τον δωρητή."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Η ταχυδρομική διεύθυνση είναι ελλιπής. Απαιτούνται οδός, πόλη, επαρχία και ταχυδρομικός κώδικας."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Το όνομα με το οποίο είναι καταχωρημένος ο φιλανθρωπικός οργανισμός. Μπορεί να διαφέρει από το όνομα της εκκλησίας."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Ο τόπος όπου εκδίδονται οι βεβαιώσεις. Αν μείνει κενό, χρησιμοποιείται η πόλη από τις Πληροφορίες ενορίας."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Ο εκτυπωμένος υπογράφων της βεβαίωσης προσφορών είναι εξουσιοδοτημένος να υπογράφει αυτές τις βεβαιώσεις."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Το σύμβολο νομίσματος του συστήματος πρέπει να είναι $ ή να προσδιορίζει CAD για τις καναδικές βεβαιώσεις."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Δεν υπάρχουν πληρωμές στο επιλεγμένο ημερολογιακό έτος."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Αυτοί είναι οι πραγματικοί δωρητές για κάθε δώρο σε αυτό το οικογενειακό/ημερολογιακό έτος και η ταχυδρομική διεύθυνση είναι σωστή."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Αυτή η εικόνα εκτυπώνεται πάνω από το όνομα του υπογράφοντος στις βεβαιώσεις προσφορών και τις βεβαιώσεις. Τα στοιχεία του φιλανθρωπικού οργανισμού και το εκτυπωμένο όνομα του υπογράφοντος βρίσκονται στα Οικονομικά, Ρυθμίσεις βεβαίωσης."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Αυτή η επιλογή μορφοποιεί μια καναδική βεβαίωση, αλλά δεν τηρεί μητρώο βεβαιώσεων ούτε διατηρεί αρχεία PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Αυτή η αυτοεγγεγραμμένη οικογένεια αναμένει έγκριση. Η έγκρισή της στέλνει με email σε κάθε μέλος που μπορεί να συνδεθεί στην πύλη μελών μια πρόσκληση να ελέγξει τις πληροφορίες της οικογένειας."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Αυτό το εργαλείο δεν διαθέτει ροή εργασίας ακύρωσης/αντικατάστασης· χρησιμοποιήστε την υπάρχουσα διαδικασία σας που συμμορφώνεται με την CRA για διορθώσεις/αντικαταστάσεις απολεσθέντων βεβαιώσεων."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Αυτός ο χρήστης πρέπει να ρυθμίσει το 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Αυτό θα διαγράψει οριστικά το αρχείο της οικογένειας και τις σημειώσεις της. Αυτό δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Total commitment"
+msgstr "Συνολική δέσμευση"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Δεν είναι δυνατή η προεπισκόπηση της δέσμευσης."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Μεταφόρτωση ή αντικατάσταση της υπογραφής"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Μεταφορτώστε την εξουσιοδοτημένη φορολογική υπογραφή στις Ρυθμίσεις αναφοράς."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Χρησιμοποιήστε ημερομηνίες εντός του επιλεγμένου οικονομικού έτους. Τα μηνιαία και τριμηνιαία δώρα χρησιμοποιούν την ημέρα της πρώτης δόσης ή την τελευταία ημέρα των συντομότερων μηνών."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Επαληθευμένο πλήρες όνομα δωρητή (ή δωρητών)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Επαληθεύστε την οικογένεια αυτοπροσώπως αντ' αυτού."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Επαληθεύστε το πλήρες όνομα και τη διεύθυνση του δωρητή για κάθε οικογένεια. Τα σύνολα πληρωμών μεικτών δωρητών πρέπει να διεκπεραιώνονται εκτός αυτής της λειτουργίας."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Η έκδοση %s είναι διαθέσιμη. Ζητήστε από τον διαχειριστή σας να αναβαθμίσει την εγκατάστασή σας."
+
+#: 
+msgid "View all emails"
+msgstr "Προβολή όλων των email"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ναι — ένα επαληθευμένο σύνολο δωρητών"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Η χώρα της εκκλησίας σας είναι ο Καναδάς, επομένως οι καναδικές επίσημες βεβαιώσεις είναι επίσης διαθέσιμες όταν δημιουργείτε βεβαιώσεις."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Η χώρα της εκκλησίας σας είναι ο Καναδάς, επομένως οι καναδικές επίσημες βεβαιώσεις είναι διαθέσιμες στις Βεβαιώσεις προσφορών και οι συνηθισμένες βεβαιώσεις επισημαίνονται ως μη επίσημες βεβαιώσεις δωρεάς."
+
+#: 
+msgid "groups"
+msgstr "Ομάδες"
 

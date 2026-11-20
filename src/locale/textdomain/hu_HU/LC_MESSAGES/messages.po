@@ -1317,10 +1317,6 @@ msgid "People"
 msgstr "Emberek"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Vasárnapi iskolás gyerekek"
-
-#: 
 msgid "Role / Gender"
 msgstr "Szerep / Nem"
 
@@ -4505,10 +4501,6 @@ msgid "People Reports"
 msgstr "Emberek jelentései"
 
 #: 
-msgid "People Dashboard"
-msgstr "Emberek irányítópultja"
-
-#: 
 msgid "People Directory"
 msgstr "Emberek könyvtára"
 
@@ -5095,10 +5087,6 @@ msgstr "A tartalombiztonsági irányelv (CSP) betartatása a weboldali parancsf�
 #: 
 msgid "Enter event description..."
 msgstr "Adjon meg eseményleírást..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Adjon meg jegyzet szöveget itt..."
 
 #: 
 msgid "Note"
@@ -8059,10 +8047,6 @@ msgid "or later to continue."
 msgstr "vagy újabb a folytatáshoz."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Miért jött\" megjegyzések"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d találat erre: \"%s\""
@@ -8171,10 +8155,6 @@ msgstr "Személyi adatlapok hozzáadása vagy szerkesztése"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adománygyűjtő rendezvényekhez felajánlott tárgyak hozzáadása vagy szerkesztése"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Megjegyzések hozzáadása vagy szerkesztése személyekhez és családokhoz"
 
 #: 
 msgid "Add staff and volunteers"
@@ -9051,10 +9031,6 @@ msgid "Password Recovery"
 msgstr "Jelszó helyreállítás"
 
 #: 
-msgid "Past & next 7 days"
-msgstr "Elmúlt és következő 7 nap"
-
-#: 
 msgid "People by Classification"
 msgstr "Személyek besorolás szerint"
 
@@ -9137,10 +9113,6 @@ msgstr "Több adománygyűjtési sorsolási nyertes rögzítése egyszerre"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Új felajánlások és befizetések rögzítése"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
 msgid "Remove from Class"
@@ -10954,10 +10926,6 @@ msgstr "Sötét"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
 
 #. Context: locales
 #: 
@@ -12937,14 +12905,6 @@ msgid "Click Save to apply."
 msgstr "Kattintson a Mentés gombra az alkalmazáshoz."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A vágólap API nem elérhető. Kérjük, manuálisan másolja az URL-t."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot."
-
-#: 
 msgid "Code incomplete"
 msgstr "A kód hiányos"
 
@@ -13523,14 +13483,6 @@ msgstr "Nincsenek letétek"
 #: 
 msgid "No Events Today"
 msgstr "Nincs mai esemény"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Nincsenek évfordulók az elmúlt vagy következő 7 napban"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Nincsenek születésnapok az elmúlt vagy következő 7 napban"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14477,24 +14429,12 @@ msgid "People &amp; Families"
 msgstr "Személyek &amp; Családok"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
-
-#: 
 msgid "User List"
 msgstr "Felhasználók listája"
 
 #: 
 msgid "View Person"
 msgstr "Személy megtekintése"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
 
 #: 
 msgid "Account locked"
@@ -15195,10 +15135,6 @@ msgstr "A célösszeg nem lehet negatív"
 #: 
 msgid "thru %s"
 msgstr "%s-ig"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Miért jött jegyzetek %1$s %2$s számára"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -17877,10 +17813,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "A nyilvános regisztrációs űrlapon beérkezett regisztrációk áttekintésre várnak. Az e-mail vagy telefon nélküli bejegyzések meg vannak jelölve – a kapcsolatfelvétel előtt ellenőrizd az elérhetőségeket."
 
 #: 
-msgid "Review now"
-msgstr "Áttekintés most"
-
-#: 
 msgid "Review self registrations"
 msgstr "Önregisztrációk áttekintése"
 
@@ -17931,10 +17863,6 @@ msgstr "Tegnap"
 #: 
 msgid "days ago"
 msgstr "napja"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "önregisztráció vár áttekintésre"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -24039,10 +23967,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d befizetés még nincs egyetlen befizetési tételen sem."
 
 #: 
-msgid "Closing line"
-msgstr "Záró sor"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Az idei dátumú befizetések mindegyike le van zárva."
 
@@ -24055,28 +23979,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Az idei befizetések mindegyike szerepel egy befizetési tételen."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Adóigazolások készítése"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Adakozási jelentés (adóigazolások)"
-
-#: 
-msgid "Opening line"
-msgstr "Nyitó sor"
-
-#: 
 msgid "Qty"
 msgstr "Db"
-
-#: 
-msgid "Signed by"
-msgstr "Aláírta"
-
-#: 
-msgid "Thank-you line"
-msgstr "Köszönő sor"
 
 #: 
 msgid "Year-End Giving"
@@ -24235,10 +24139,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "A PDF ideiglenes mappa abszolút elérési út legyen."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Gyülekezeti adószám (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Záró sor"
 
@@ -24281,10 +24181,6 @@ msgstr "Igazolás beállításai"
 #: 
 msgid "Statement Wording"
 msgstr "Igazolás szövege"
-
-#: 
-msgid "Tax Information"
-msgstr "Adóadatok"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24333,10 +24229,6 @@ msgstr "A gyülekezet nevének és címének használata"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "A Rendszerbeállításokban megadott levélfej-útvonal használata"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Szöveg, adószám és PDF-kezelés az adományigazolásokhoz"
 
 #: 
 msgid "%1$s as %2$s"
@@ -27151,10 +27043,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "A bejelentkezés letiltása is, hogy ne használhassák a Tagi portált"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Mielőtt kimutatásokat küld"
-
-#: 
 msgid "Birthday today"
 msgstr "Ma van a születésnapja"
 
@@ -27237,10 +27125,6 @@ msgstr "Személyek és családok törlése"
 #: 
 msgid "Delete the login for"
 msgstr "Bejelentkezés törlése:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Befizetési diagram időtartománya"
 
 #: 
 msgid "Disabled at"
@@ -27495,10 +27379,6 @@ msgid "Preview Sample Letter"
 msgstr "Mintalevél előnézete"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "A kanadai adománykimutatások privát aláírásának azonosítója. Az aláírás feltöltésével kezelhető."
-
-#: 
 msgid "Property Type"
 msgstr "Tulajdonságtípus"
 
@@ -27537,10 +27417,6 @@ msgstr "Áttekintés és szűrés"
 #: 
 msgid "Review and vote"
 msgstr "Áttekintés és szavazás"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Tekintse át az évet, majd töltse le az adománykimutatásokat."
 
 #: 
 msgid "Review what we are considering"
@@ -27589,10 +27465,6 @@ msgstr "Erős"
 #: 
 msgid "Support"
 msgstr "Támogatás"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Adóazonosító és PDF-beállítások"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27779,10 +27651,6 @@ msgid "Latest Notes"
 msgstr "Legújabb jegyzetek"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Még nincsenek hozzáadott jegyzetek."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Kezdje el a regisztrációt a QR-kód megszerzéséhez."
 
@@ -27793,4 +27661,746 @@ msgstr "Ez a jelszó vagy kód nem helyes. A kétlépcsős azonosítás továbbr
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "A kétlépcsős azonosítás már be van állítva. A titka csak a regisztráció során jelenik meg."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d adomány, összesen %2$s"
+msgstr[1] "%1$d adomány, összesen %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "Jelenleg %d család rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d család még nem kaphat igazolást, és kimarad. Javítsa az alatta felsorolt problémát, majd válassza az Újraellenőrzés lehetőséget."
+msgstr[1] "%d család még nem kaphat igazolást, és kimarad. Javítsa az alatta felsorolt problémát, majd válassza az Újraellenőrzés lehetőséget."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "Jelenleg %d csoport rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "Jelenleg %d személy rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d kiadás érhető el a telepített verzió óta."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Nem készült igazolás."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: adja meg az ellenőrzött teljes adományozóneve(ke)t, erősítse meg az adományozókat, és erősítsen meg egy adományozói csoportot. A vegyes adományozójú fizetési csoportokat ezen a funkción kívül kell kezelni."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: az adományok vagy a postacím megváltozott az áttekintés óta. Válassza az Újraellenőrzés lehetőséget, és erősítse meg újra az adományozót."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} részlet)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} részlet)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Egy hitelkártyás vagy banki beszedési fizetés olyan befizetésben van, amely még nincs lezárva. Zárja le a befizetést, amint a fizetés teljesült."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Egy fizetésnek nem levonható összege van. Az itteni kanadai igazolások csak előny nélküli adományokat támogatnak."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Egy fizetésnek érvénytelen pénzösszege van."
+
+#: 
+msgid "A payment has no date."
+msgstr "Egy fizetésnek nincs dátuma."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Egy fizetés dátuma a kiállítás dátuma utáni."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Egy fizetés problémásként van megjelölve."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Egy fizetés nulla vagy negatív."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Érvényes CSRF tokennel ellátott, áttekintett POST szükséges."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "A kiválasztott család már nem létezik."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Az aláíráskép nem biztonságos digitális aláírás."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Rendszerfrissítés érhető el. Kérje meg az adminisztrátort, hogy frissítse a telepítést."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Minden szereplő sor előny nélküli pénzbeli adomány."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Minden szükséges kanadai igazolási beállítás ki van töltve."
+
+#: 
+msgid "Also delete family members"
+msgstr "Családtagok törlése is"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Előnyök összege"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Adományok összege"
+
+#: 
+msgid "Amount per installment"
+msgstr "Összeg részletenként"
+
+#: 
+msgid "Amounts entered are"
+msgstr "A megadott összegek alapja"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Egy adminisztrátor tölti fel a Jelentésbeállítások alatt."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Jóváhagyva, de nem lett meghívó küldve"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Kérje meg a rendszergazdát, hogy frissítse a ChurchCRM-et a legújabb verzióra."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Felhatalmazott aláírás"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Kanadai Adóhatóság"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadai hivatalos igazolás"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "A kanadai hivatalos igazolásokhoz a gyülekezet országának Kanadának kell lennie az Egyházi információkban."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "A kanadai igazolásokhoz a teljes naptári év és minden alap szükséges, egyéb szűrők nélkül."
+
+#: 
+msgid "Change Selection"
+msgstr "Kijelölés módosítása"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Jótékonysági szervezet hivatalos neve"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Jótékonysági szervezet bejegyzett címe"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Jótékonysági szervezet nyilvántartási száma"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Az igazolásokhoz szükséges jótékonysági adatok még nincsenek kitöltve. Adja meg a hivatalos nevet, a bejegyzett címet, a nyilvántartási számot és a kiállítás helyét, amikor tudja. A pénzügy addig is működik."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Jótékonysági szervezet az igazolásokon"
+
+#: 
+msgid "Check Again"
+msgstr "Újraellenőrzés"
+
+#: 
+msgid "Check the year"
+msgstr "Év ellenőrzése"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Ellenőrizze az évet, állítsa be a kimutatást, majd töltse le."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "A részletösszeghez válasszon Heti, Havi vagy Negyedéves lehetőséget."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Válasszon érvényes adományozási naptári évet."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Válasszon eredetit vagy másolatot."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Válasszon teljes vállalási összeget vagy részletösszeget."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "A ChurchCRM fordításait a ChurchCRM GitHub-tárházában kezelik. A következő módon segíthet"
+
+#: 
+msgid "Commitment amount"
+msgstr "Vállalási összeg"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Hasonlítsa össze a másolatot a megőrzött eredetivel, és erősítse meg, hogy minden igazolási adat változatlan."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "A letöltés előtt töltse ki minden igazolás visszaigazolását."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Töltse ki a jótékonysági szervezet hivatalos nevét, bejegyzett címét, nyilvántartási számát, a kiállítás helyét és a nyomtatott aláírót."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Visszaigazoló levél nyomtatott aláírója"
+
+#: 
+msgid "Copy Kind"
+msgstr "Másolat típusa"
+
+#: 
+msgid "Currency"
+msgstr "Pénznem"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Pénznem szimbóluma $ vagy CAD"
+
+#: 
+msgid "Date received"
+msgstr "Beérkezés dátuma"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "A törlésével %d tulajdonság és minden hozzárendelése is törlődik, így semmi sem marad függőben."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "A kiválasztott év minden adománya a fent együtt megnevezett adományozó(k)é?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Ne használja újra ugyanazt a számot egy másik igazoláshoz, ne állítson ki igazolást kétszer ugyanazokra az adományokra, és ne generálja újra a megváltozott adatokat változatlan eredetiként."
+
+#: 
+msgid "Duplicate"
+msgstr "Másolat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Másolat / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "A jövedelemadó szempontjából elszámolható adományok összege"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Adja meg az ütemezést és a részletdátumokat a vállalás előnézetéhez."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Adjon meg érvényes első és utolsó részletdátumot a megfelelő sorrendben."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Adjon meg érvényes részletösszegeket legfeljebb két tizedesjeggyel."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "A meglévő felajánlások megőrzik rögzített összegeiket. Csak minden ütemezett adomány megadásakor válasszon részletenkénti összeget."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "A családfők és házastársak alapján kitöltve. Szerkessze úgy, hogy pontosan egyezzen az adományozókkal."
+
+#: 
+msgid "First installment"
+msgstr "Első részlet"
+
+#: 
+msgid "Full commitment"
+msgstr "Teljes vállalás"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Adókimutatások létrehozása"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Adományozási naptári év"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Adománykimutatás — nem hivatalos adományigazolás"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Segítsen fordítani a GitHubon"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "A korábbi borítékváltozások nem támogatottak."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Összehasonlítottam a megőrzött eredetivel: az adományozó, az összeg, a sorszám és a szöveg változatlan. Ez nem javítás vagy csere."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "A kiállított PDF-et és egy külső igazolási naplót a jótékonysági szervezet kanadai irattárában őrzöm meg."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Ha a megőrzött eredeti nem érhető el vagy eltér, használja a külső CRA érvénytelenítési/csere eljárásait."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Fizetési megjegyzések belefoglalása: áttekintettem őket, mint az adományozó számára megfelelőket."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Ennek a családnak a belefoglalása a letöltésbe"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Telepített verzió: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "A részletösszegek csak felajánlásokhoz használhatók."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "A részletdátumoknak a kiválasztott költségvetési éven belül kell lenniük."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Érvénytelen vagy hiányzó CSRF token"
+
+#: 
+msgid "Issue Date"
+msgstr "Kiállítás dátuma"
+
+#: 
+msgid "Issue Locality"
+msgstr "Kiállítás helye"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Őrizze meg az eredeti PDF-et és egy külső igazolási naplót a jótékonysági szervezet kanadai irattárában."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Utolsó részlet legkésőbb"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "A levél szövege, a jótékonysági adatok és a PDF-kezelés egyszer kerül beállításra a Kimutatásbeállításokban."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "A levél szövege, a jótékonysági adatok és a PDF-kezelés az adománykimutatásokhoz"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Legfeljebb 2 MiB és 2000 × 1000 pixel. Válasszon új képet a tárolt aláírás cseréjéhez. Az aláíráskép nem biztonságos digitális aláírás."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "A tagi bejelentkezés ki van kapcsolva, így a(z) %s család senkije sem tud bejelentkezni a tagi portálra. Egy adminisztrátor bekapcsolhatja az Admin → Tagi portál alatt."
+
+#: 
+msgid "Memo"
+msgstr "Megjegyzés"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "A vegyes adományozójú családi fizetési csoportok itt nem bonthatók szét; kezelje őket ezen a funkción kívül."
+
+#: 
+msgid "Narrow the list"
+msgstr "Lista szűkítése"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Egyetlen család sem felel meg ezeknek a szűrőknek ehhez: %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Nincs átfedő egyéni vagy összesített igazolás."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Ehhez a családhoz még nem állítható ki igazolás"
+
+#: 
+msgid "No signature on file"
+msgstr "Nincs aláírás a fájlban"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Nem — eltérő adományozók; kezelje ezen a funkción kívül"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "A jelenlegi bejelentkezési szabály szerint a(z) %s család senkije sem tud bejelentkezni a tagi portálra."
+
+#: 
+msgid "None / Aucun"
+msgstr "Nincs / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nem áll készen kanadai igazolások kiállítására. Még hiányzik"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Hivatalos igazolás / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Hivatalos igazolás jövedelemadó céljára / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "A hivatalos igazolásokhoz 123456789RR0001 formátumú nyilvántartási szám és aláíráskép szükséges."
+
+#: 
+msgid "Original"
+msgstr "Eredeti"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Eredeti kiállítási dátum (adja meg a megőrzött eredetiből)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "A fizetési dátumok az adomány beérkezési dátumait tükrözik, beleértve a dokumentált postai csekk postabélyegző-kezelését is."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "A szokásos adománykimutatásokra nyomtatva, például az EIN az Egyesült Államokban. Ugyanez az érték az Egyházi információkban is szerepel."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Privát adománykimutatási aláírási eszköz azonosítója. Aláírásfeltöltéssel kezelve."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Tulajdonságok / Hozzárendelések"
+
+#: 
+msgid "Property deleted"
+msgstr "Tulajdonság törölve"
+
+#: 
+msgid "Property type deleted"
+msgstr "Tulajdonságtípus törölve"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Igazolás záró sora"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Igazolás kiállítási helye"
+
+#: 
+msgid "Receipt No."
+msgstr "Igazolás száma"
+
+#: 
+msgid "Registration Number"
+msgstr "Nyilvántartási szám"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Nyilvántartási szám 123456789RR0001 formátumban"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "A kiadási megjegyzések jelenleg nem érhetők el."
+
+#: 
+msgid "Releases"
+msgstr "Kiadások"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Hátralévő vállalás ehhez: %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA-követelmény eltávolítása"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Eltávolítja a tárolt aláírásképet? A hivatalos igazolásokhoz szükség van egyre a fájlban."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "A jelentések és emlékeztetők ezt a teljes időszaki vállalást hasonlítják össze az adományozással. A fennmaradó egyenleg nem lejárt részletszámítás."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "A jelentések és emlékeztetők a fent látható teljes vállalást használják. A fennmaradó egyenleg nem lejárt részletszámítás."
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA megkövetelése"
+
+#: 
+msgid "Reset Options"
+msgstr "Beállítások visszaállítása"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Kiválasztott családok áttekintése"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "MINTA — ADÓCÉLRA NEM ÉRVÉNYES"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Minta aláírás-helykitöltő"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Adja meg, hogy szükséges-e a 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "A biztonsági frissítések és a támogatás csak a legújabb verzióhoz érhetők el."
+
+#: 
+msgid "Select the families to review."
+msgstr "Válassza ki az áttekintendő családokat."
+
+#: 
+msgid "Set up the statement"
+msgstr "Kimutatás beállítása"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "A folytatáshoz állítsa be a kétfaktoros hitelesítést."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Megosztott boríték ütközése: egy másik család jelenleg ezt a borítékszámot használja."
+
+#: 
+msgid "Signature Image"
+msgstr "Aláíráskép"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Aláíráskép (Admin, Jelentésbeállítások)"
+
+#: 
+msgid "Signature on file"
+msgstr "Aláírás a fájlban"
+
+#: 
+msgid "Sincerely"
+msgstr "Üdvözlettel"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Ismétlődő felajánlás szerkesztésekor adja meg az összeg alapját."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Szokásos adománykimutatás"
+
+#: 
+msgid "Statement Template"
+msgstr "Kimutatássablon"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Adjon meg legkésőbb mai kiállítási dátumot."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Adószám a kimutatásokon"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "A(z) %s családnak nincsenek élő tagjai, akiket meg lehetne hívni a tagi portálra."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "A kanadai nyilvántartási szám formátuma 123456789RR0001 kell legyen. Ez nem ellenőrzi a nyilvántartási állapotot."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "A jótékonysági szervezet nyilvántartási számának szövegnek kell lennie."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "A hivatalos igazolásokra nyomtatott jótékonysági nyilvántartási szám. Üresen hagyva az Egyházi információk adószámát használja."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "A jótékonysági szervezet bejegyzett címe. Üresen hagyva az Egyházi információk címét használja."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "A záró kifejezés az aláíró felett, például Üdvözlettel."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "A teljes vállalás alaponként nem haladhatja meg a 999999.99 értéket, és az összegek legfeljebb két tizedesjegyet használhatnak."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Az adományok vagy a postacím megváltozott az utolsó ellenőrzés óta. Tekintse át őket, és erősítse meg újra az adományozót."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "A postacím hiányos. Utca, város, tartomány és irányítószám szükséges."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Az a név, amelyen a jótékonysági szervezet be van jegyezve. Eltérhet a gyülekezet nevétől."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Az a hely, ahol az igazolásokat kiállítják. Üresen hagyva az Egyházi információk városát használja."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "A nyomtatott adománykimutatási aláíró felhatalmazott ezeknek az igazolásoknak az aláírására."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "A rendszer pénznemszimbólumának $-nak kell lennie, vagy CAD-ot kell jelölnie a kanadai igazolásokhoz."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "A kiválasztott naptári évben nincsenek fizetések."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Ezek a valódi adományozók ennek a családnak/naptári évnek minden adományához, és a postacím helyes."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Ez a kép az aláíró neve fölé kerül nyomtatásra az adománykimutatásokon és igazolásokon. A jótékonysági adatok és az aláíró nyomtatott neve a Pénzügy, Kimutatásbeállítások alatt találhatók."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Ez a beállítás kanadai igazolásként formázza az igazolást, de nem vezet igazolási nyilvántartást és nem őrzi meg a PDF-eket."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Ez az önregisztrált család jóváhagyásra vár. A jóváhagyás e-mailben meghívót küld minden tagnak, aki be tud jelentkezni a tagi portálra, hogy tekintse át a család adatait."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Ennek az eszköznek nincs érvénytelenítési/csere munkafolyamata; a javításokhoz/elveszett igazolások cseréjéhez használja a meglévő, CRA-nak megfelelő eljárásait."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Ennek a felhasználónak be kell állítania a 2FA-t"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Ez véglegesen törli a család rekordját és megjegyzéseit. Ez nem vonható vissza."
+
+#: 
+msgid "Total commitment"
+msgstr "Teljes vállalás"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "A vállalás előnézete nem lehetséges."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Aláírás feltöltése vagy cseréje"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Töltse fel a felhatalmazott adózási aláírást a Jelentésbeállításokban."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Használjon a kiválasztott költségvetési éven belüli dátumokat. A havi és negyedéves adományok az első részlet napját, vagy a rövidebb hónapok utolsó napját használják."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Ellenőrzött teljes adományozónév (nevek)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Ehelyett személyesen ellenőrizze a családot."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Ellenőrizze minden család teljes adományozónevét és címét. A vegyes adományozójú fizetési csoportokat ezen a funkción kívül kell kezelni."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "%s verzió érhető el. Kérje meg az adminisztrátort, hogy frissítse a telepítést."
+
+#: 
+msgid "View all emails"
+msgstr "Minden e-mail megtekintése"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Igen — egy ellenőrzött adományozói csoport"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "A gyülekezet országa Kanada, így a kimutatások létrehozásakor kanadai hivatalos igazolások is elérhetők."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "A gyülekezet országa Kanada, így kanadai hivatalos igazolások érhetők el az Adománykimutatásokon, és a szokásos kimutatások meg vannak jelölve, hogy nem hivatalos adományigazolások."
+
+#: 
+msgid "groups"
+msgstr "Csoportok"
 

@@ -37,6 +37,67 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
+  const signatureFile = document.getElementById("tax-signature-file");
+  const signatureRemove = document.getElementById("tax-signature-remove");
+  const signatureError = document.getElementById("tax-signature-error");
+  const signatureStatus = document.getElementById("tax-signature-status");
+  const signatureState = (data) => {
+    signatureStatus.textContent = data.hasSignature ? t("Signature on file") : t("No signature on file");
+    signatureRemove.disabled = !data.hasSignature;
+  };
+  const signatureFailure = (xhr) => {
+    signatureError.textContent =
+      xhr.responseJSON?.message || xhr.responseJSON?.error || t("Upload failed. Please check the file and try again.");
+  };
+  const signatureCsrf = signatureFile?.closest("#tax-signature-card")?.dataset.csrfToken ?? "";
+  const signatureRequest = (options) =>
+    window.CRM.AdminAPIRequest({
+      ...options,
+      headers: { "X-CSRF-Token": signatureCsrf },
+    });
+  if (signatureFile) {
+    window.CRM.AdminAPIRequest({ method: "GET", path: "system/tax-signature" })
+      .done(signatureState)
+      .fail(signatureFailure);
+    signatureFile.addEventListener("change", () => {
+      const file = signatureFile.files[0];
+      if (!file) return;
+      signatureError.textContent = "";
+      const reader = new FileReader();
+      reader.onload = () => {
+        signatureFile.disabled = true;
+        signatureRequest({
+          method: "POST",
+          path: "system/tax-signature",
+          data: JSON.stringify({ imgBase64: reader.result }),
+        })
+          .done(signatureState)
+          .fail(signatureFailure)
+          .always(() => {
+            signatureFile.disabled = false;
+            signatureFile.value = "";
+          });
+      };
+      reader.onerror = () => {
+        signatureError.textContent = t("Upload failed. Please check the file and try again.");
+      };
+      reader.readAsDataURL(file);
+    });
+    signatureRemove.addEventListener("click", () => {
+      confirmAction(
+        t("Signature Image"),
+        t("Remove the stored signature image? Official receipts require one on file."),
+        () => {
+          signatureError.textContent = "";
+          signatureRequest({ method: "DELETE", path: "system/tax-signature" })
+            .done(signatureState)
+            .fail(signatureFailure);
+        },
+        { confirmLabel: t("Remove"), cancelLabel: t("Cancel") },
+      );
+    });
+  }
+
   const uploadBtn = document.getElementById("church-letterhead-upload-btn");
   if (!uploadBtn || typeof window._CRM_createPhotoUploader !== "function") {
     return;
