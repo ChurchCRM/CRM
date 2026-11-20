@@ -26,7 +26,6 @@ use ChurchCRM\Volunteer\Middleware\VolunteerScheduleMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -47,13 +46,12 @@ use Slim\Routing\RouteCollectorProxy;
  * every one of them comes from `VolunteerAssignmentService::getGaps()`, the single gap
  * implementation (§2.11.3). This file must never grow a second derivation.
  *
- * This group chains `VolunteerV2EnabledMiddleware` and the coordinator role gate itself:
- * Slim 4 scopes `->add()` to the single RouteCollectorProxy it is chained on, so nothing
- * propagates from the groups opened in ministries-status.php or ministries-scopes.php, and an
- * ungated group would be reachable in every rollout state.
+ * This group chains the coordinator role gate itself: Slim 4 scopes `->add()` to the single
+ * RouteCollectorProxy it is chained on, so nothing propagates from the other volunteer route
+ * files.
  *
  * Middleware order is LIFO — the last `->add()` runs first. On every route the order is
- * therefore: rollout gate → coarse role gate → entity load + per-record scope check →
+ * therefore: coarse role gate → entity load + per-record scope check →
  * input sanitizer → handler. The sanitizer runs last on purpose: there is no point
  * normalising a payload for a caller who is about to be refused.
  */
@@ -168,7 +166,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // its own, it inherits the scope of whichever parent it names, so the handler resolves
     // that parent and asks the authorization service directly.
     $group->delete('/requirements/{requirementId:[0-9]+}', 'deleteVolunteerRequirement');
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
 
 // ── Wire shaping ────────────────────────────────────────────────────────────
 

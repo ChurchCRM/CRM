@@ -12,7 +12,6 @@ import {
   memberPortalPage,
   removeVolunteerSeed,
   STORAGE_STATE_PATH,
-  setVolunteerVersion,
   waitForFloatingButtonsToTuck,
 } from '../support/volunteer';
 

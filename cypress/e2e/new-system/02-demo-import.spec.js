@@ -274,10 +274,6 @@ describe('02 - Demo Data Import', () => {
             loginAsAdmin();
         });
 
-        it('should turn on Volunteer Management V2', () => {
-            cy.request('/admin/api/system/config/sVolunteerVersion').its('body.value').should('eq', 'v2');
-        });
-
         it('should create ministries with teams, positions and schedules', () => {
             cy.request('/api/ministries/ministries').then(({ body }) => {
                 const ministries = body.ministries.filter((m) => DEMO_MINISTRIES.includes(m.name));

@@ -208,7 +208,7 @@ function renderTitleFieldInHeader(event) {
  * filters by the caller's explicit grants — so no `?manageable=1` filter is needed and the
  * options are exactly the values `POST /api/events` will accept from this caller.
  *
- * Any failure (rollout flag off, no coordinator rights, endpoint unavailable) simply leaves
+ * Any failure (no coordinator rights, endpoint unavailable) simply leaves
  * the field hidden. The control is an optional extra on an existing form: a broken fetch must
  * not stop somebody editing an event.
  */
@@ -334,7 +334,7 @@ function renderAdvancedSection(event, groups) {
             Volunteer v2 (#9713): the owning volunteer ministry. Rendered hidden and filled in
             asynchronously by loadVolunteerMinistries() below — the options are the ministries
             THIS caller may administer, which only the server knows. Stays hidden when the
-            Volunteer v2 rollout flag is off, when the caller coordinates nothing, or when no
+            caller coordinates nothing, or when no
             ministry exists yet, so nobody sees an empty control they cannot use.
           -->
           <div class="mb-3 d-none" id="eventMinistryField">

@@ -1364,10 +1364,6 @@ msgid "Default"
 msgstr "ఐతిహ్యక"
 
 #: 
-msgid "Exit"
-msgstr "నిష్క్రమించు"
-
-#: 
 msgid "Add New"
 msgstr "కొత్తది జోడించు"
 
@@ -1470,10 +1466,6 @@ msgstr "గుణాలను అప్‌డేట్ చేయండి"
 #: 
 msgid "Assign New Group"
 msgstr "కొత్త గ్రూప్‌ను కేటాయించండి"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "కొత్త వాలంటీర్ అవకాశాన్ని కేటాయించండి"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1589,10 +1581,6 @@ msgid "Restore Database"
 msgstr "డేటాబేస్ పునరుద్ధరించు"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "దయచేసి తొలగింపును నిర్ధారించండి"
-
-#: 
 msgid "Listing"
 msgstr "జాబితా"
 
@@ -1679,14 +1667,6 @@ msgstr "కొత్త పాస్‌వర్డ్"
 #: 
 msgid "Confirm New Password"
 msgstr "కొత్త పాస్‌వర్డ్‌ను ధృవీకరించు"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "వాలంటీర్ అవకాశ ఎడిటర్"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "ఇంకా వాలంటీర్ అవకాశాలు జోడించబడలేదు"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6359,20 +6339,8 @@ msgid "Additional Information"
 msgstr "అదనపు సమాచారం"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "అవకాశాలను కేటాయించండి"
-
-#: 
 msgid "Choose a property..."
 msgstr "ఒక ఆస్తిని ఎంచుకోండి..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "అవకాశాలను ఎంచుకోండి..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "సంప్రదింపు & వ్యక్తిగత సమాచారం"
 
 #: 
 msgid "Edited"
@@ -6381,14 +6349,6 @@ msgstr "సవరించబడిన"
 #: 
 msgid "Newsletter"
 msgstr "వార్తాలేఖ"
-
-#: 
-msgid "Personal"
-msgstr "వ్యక్తిగత"
-
-#: 
-msgid "Select Opportunities"
-msgstr "అవకాశాలను ఎంచుకోండి"
 
 #: 
 msgid "Volunteer"
@@ -6575,10 +6535,6 @@ msgid "Confirm Property Deletion"
 msgstr "ఆస్తి తొలగింపును నిర్ధారించండి"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "స్వచ్ఛంద అవకాశాన్ని తొలగించడాన్ని నిర్ధారించండి"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "తొలగింపు నిర్ధారణ"
 
@@ -6591,16 +6547,8 @@ msgid "Existing Custom Person Fields"
 msgstr "ఇప్పటికే ఉన్న కస్టమ్ వ్యక్తి ఫీల్డ్‌లు"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "ఇప్పటికే ఉన్న స్వచ్ఛంద అవకాశాలు"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "ఫీల్డ్ విజయవంతంగా తొలగించబడింది"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "చెల్లని CSRF టోకెన్"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8366,10 +8314,6 @@ msgid "Create or edit property type categories"
 msgstr "ప్రాపర్టీ టైప్ వర్గాలను సృష్టించండి లేదా సవరించండి"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "వాలంటీర్ పదవులను సృష్టించండి లేదా సవరించండి"
-
-#: 
 msgid "Current person"
 msgstr "ప్రస్తుత వ్యక్తి"
 
@@ -8818,10 +8762,6 @@ msgid "Manage user account details and permissions"
 msgstr "వినియోగదారు ఖాతా వివరాలు మరియు అనుమతులను నిర్వహించండి"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "వాలంటీర్ అవకాశాలను నిర్వహించి సభ్యులను కేటాయించండి"
-
-#: 
 msgid "Map cart items"
 msgstr "కార్ట్ అంశాలను మ్యాప్ చేయండి"
 
@@ -8940,10 +8880,6 @@ msgstr "ఫలితాలు కనుగొనబడలేదు"
 #: 
 msgid "No timeline events yet."
 msgstr "ఇంకా టైమ్‌లైన్ ఈవెంట్‌లు లేవు."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ఇంకా వాలంటీర్ అవకాశ కేటాయింపులు లేవు."
 
 #: 
 msgid "Not ready yet?"
@@ -9448,10 +9384,6 @@ msgid "funds"
 msgstr "నిధులు"
 
 #: 
-msgid "opportunities"
-msgstr "అవకాశాలు"
-
-#: 
 msgid "or connect an external service"
 msgstr "లేదా బాహ్య సేవను కనెక్ట్ చేయండి"
 
@@ -9751,11 +9683,6 @@ msgstr "ఇమెయిల్ చిరునామాలను పొందడ�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "ఫోన్ నంబర్‌లను పొందడంలో విఫలమయ్యాయి"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "నిర్దిష్ట సంస్థ కోసం స్వచ్ఛంద సేవకులను కనుగొనండి"
 
 #. Context: query_qry
 #: 
@@ -12522,10 +12449,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "ఆస్తి రకాన్ని తొలగించడం సాధ్యం కాదు: %d ఆస్తులు ఇంకా దీన్ని సూచిస్తున్నాయి. ముందుగా ఆ ఆస్తులను మళ్ళీ కేటాయించండి లేదా తొలగించండి."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "స్వచ్ఛంద సేవా అవకాశాన్ని తొలగించడం సాధ్యం కాదు: %d మంది వ్యక్తులు ఇంకా కేటాయించబడ్డారు. ముందుగా కేటాయింపులను తొలగించండి."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "తరగతి p, f, లేదా g లలో ఒకటి అయి ఉండాలి"
 
@@ -12536,10 +12459,6 @@ msgstr "దోష సందేశాన్ని కాపీ చేయి"
 #: 
 msgid "Could not load note."
 msgstr "నోట్‌ను లోడ్ చేయడం సాధ్యపడలేదు."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "వివరణ 100 అక్షరాలకు మించకూడదు"
 
 #: 
 msgid "Donation fund not found"
@@ -12562,10 +12481,6 @@ msgid "Failed to create property type"
 msgstr "ఆస్తి రకాన్ని సృష్టించడం విఫలమైంది"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "స్వచ్ఛంద సేవా అవకాశాన్ని సృష్టించడం విఫలమైంది"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "దాన నిధిని తొలగించడం విఫలమైంది"
 
@@ -12582,10 +12497,6 @@ msgid "Failed to delete property type"
 msgstr "ఆస్తి రకాన్ని తొలగించడం విఫలమైంది"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "స్వచ్ఛంద సేవా అవకాశాన్ని తొలగించడం విఫలమైంది"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "దాన నిధిని నవీకరించడం విఫలమైంది"
 
@@ -12598,10 +12509,6 @@ msgid "Failed to update property type"
 msgstr "ఆస్తి రకాన్ని నవీకరించడం విఫలమైంది"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "స్వచ్ఛంద సేవా అవకాశాన్ని నవీకరించడం విఫలమైంది"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "నిధుల సేకరణ కార్యక్రమం కనుగొనబడలేదు"
 
@@ -12612,10 +12519,6 @@ msgstr "ఇన్‌స్టాలేషన్ ID"
 #: 
 msgid "Invalid class"
 msgstr "చెల్లని తరగతి"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "పేరు 30 అక్షరాలకు మించకూడదు"
 
 #: 
 msgid "Note by %s deleted"
@@ -12638,16 +12541,8 @@ msgid "Read more"
 msgstr "మరింత చదవండి"
 
 #: 
-msgid "That name already exists."
-msgstr "ఆ పేరు ఇప్పటికే ఉంది."
-
-#: 
 msgid "Title is required"
 msgstr "శీర్షిక అవసరం"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "స్వచ్ఛంద సేవా అవకాశం కనుగొనబడలేదు"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15238,10 +15133,6 @@ msgid "System Configuration"
 msgstr "సిస్టమ్ కాన్ఫిగరేషన్"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "ఈ స్వయంసేవక అవకాశానికి కేటాయించిన వ్యక్తులు ఉన్నారు. తొలగించడం వారి కేటాయింపును రద్దు చేస్తుంది"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "దీన్ని చెల్లుబాటు అయ్యే URL కి అప్‌డేట్ చేయండి"
 
@@ -15470,10 +15361,6 @@ msgid "Add New Fund"
 msgstr "కొత్త నిధి జోడించు"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "కొత్త అవకాశం జోడించు"
-
-#: 
 msgid "Add New Person"
 msgstr "కొత్త వ్యక్తిని జోడించు"
 
@@ -15486,10 +15373,6 @@ msgid "Add New Role"
 msgstr "కొత్త పాత్రను జోడించు"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "కొత్త స్వయంసేవక అవకాశం జోడించు"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "ఆదివారం పాఠశాల తరగతిని జోడించు"
 
@@ -15500,10 +15383,6 @@ msgstr "ఈ కుటుంబాన్ని తొలగించాలా?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "మీ పబ్లిక్ నమోదు ఫార్మ్లో సైన్ అప్ చేసిన కొత్త కుటుంబాలు మరియు వ్యక్తులను సమీక్షించండి"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "స్వయంసేవక అవకాశం తొలగింపు నిర్ధారణ"
 
 #: 
 msgid "# Payments"
@@ -17170,14 +17049,6 @@ msgid "Find people who did not attend an event"
 msgstr "ఈవెంట్‌కు హాజరు కాని వ్యక్తులను కనుగొనండి"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "రెండు నిర్దిష్ట అవకాశ సంకేతాలకు సరిపోలిన స్వచ్ఛందసేవకులను కనుగొనండి"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "మొదటి స్వచ్ఛందసేవ అవకాశం"
-
-#: 
 msgid "Folded Booklet"
 msgstr "మడిపెట్టిన పుస్తకం"
 
@@ -17254,10 +17125,6 @@ msgid "Run Report"
 msgstr "నివేదనను అమలు చేయండి"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "రెండవ స్వచ్ఛందసేవ అవకాశం"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "సైడ్‌బార్‌లో, లాగిన్ పేజీలో మరియు ఈమెయిల్‌లలో చూపబడుతుంది. లోగోను అప్‌లోడ్ చేయడం ChurchCRM బ్రాండింగ్‌ను ఎక్కడ కనిపించినా భర్తీ చేస్తుంది."
 
@@ -17284,14 +17151,6 @@ msgstr "డిఫాల్ట్ ChurchCRM లోగోను ఉపయోగి
 #: 
 msgid "View Full Family Giving"
 msgstr "పూర్తి కుటుంబ దానం చూడండి"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "స్వచ్ఛందసేవ అవకాశం"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "రెండు అవకాశాల కోసం స్వచ్ఛందసేవకులు"
 
 #: 
 msgid "YTD"
@@ -18118,10 +17977,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "ఒక్క కార్యక్రమానికి సేవకులను ఏర్పాటు చేసే షెడ్యూల్ ఇతర కార్యక్రమాలను అనుసరించలేదు; దాన్ని తొలగించి బదులుగా ఒక షెడ్యూల్‌ను జోడించండి"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "\"నర్సరీ\" లేదా \"స్వాగతకర్త\" వంటి అవకాశాల ఒకే జాబితా, ప్రజలు → అడ్మిన్ క్రింద ఉంచబడుతుంది. ప్రతి వ్యక్తికి వారి రికార్డులోని స్వచ్ఛంద సేవ ట్యాబ్‌లో వారు సహాయం చేయడానికి సిద్ధంగా ఉన్న అవకాశాలతో ట్యాగ్ చేయబడుతుంది. ఇది మాత్రమే నమోదు చేస్తుంది: బృందాలు, షెడ్యూల్‌లు, తేదీకి నియామకాలు, రిమైండర్ ఇమెయిల్‌లు ఉండవు. ట్యాగ్‌లు నివేదికలలో మరియు వ్యక్తి రికార్డులో ఉపయోగించబడతాయి."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "మీ ముఖం యొక్క చతురస్ర చిత్రం ఉత్తమంగా ఉంటుంది."
 
@@ -18428,18 +18283,6 @@ msgstr "నేపథ్య పనులు నడిచాయి"
 #: 
 msgid "Birthday greeting"
 msgstr "పుట్టినరోజు శుభాకాంక్షలు"
-
-#: 
-msgid "Both"
-msgstr "రెండూ"
-
-#: 
-msgid "Both (transition)"
-msgstr "రెండూ (పరివర్తన)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "రెండూ — V1 మరియు V2 పక్కపక్కనే (పరివర్తన)"
 
 #: 
 msgid "Calendar address"
@@ -21526,22 +21369,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "వినియోగదారుకు కార్యక్రమాలను జోడించే అనుమతి ఉండాలి, లేదా ఈ క్యాలెండర్ చెందిన స్వచ్ఛంద సేవా పరిచర్యను సమన్వయం చేయాలి"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — స్వచ్ఛంద అవకాశాలు (పాతది)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — పాత స్వచ్ఛంద అవకాశాలు"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — పరిచర్యలు"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — స్వచ్ఛంద సేవా నిర్వహణ"
-
-#: 
 msgid "Valid"
 msgstr "చెల్లుబాటు అయ్యేది"
 
@@ -21560,14 +21387,6 @@ msgstr "కార్యక్రమాన్ని చూడండి"
 #: 
 msgid "View this email"
 msgstr "ఈ ఇమెయిల్‌ను చూడండి"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "స్వచ్ఛంద సేవ (పాతది)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "స్వచ్ఛంద సేవా నిర్వహణ V2 ప్రారంభించబడలేదు"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21674,10 +21493,6 @@ msgid "What the check found"
 msgstr "తనిఖీలో కనుగొన్నది"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "స్వచ్ఛంద సేవా విధానాలు ఏమిటి"
-
-#: 
 msgid "What you want to say"
 msgstr "మీరు చెప్పాలనుకున్నది"
 
@@ -21708,10 +21523,6 @@ msgstr "తేదీలు ఎక్కడి నుండి వస్తాయ
 #: 
 msgid "Where we reach you"
 msgstr "మిమ్మల్ని ఎలా సంప్రదించాలి"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "స్వచ్ఛంద సేవా నిర్వహణ యొక్క ఏ విధానం క్రియాశీలంగా ఉంది. V1 పాత స్వచ్ఛంద అవకాశాల ఫీచర్; V2 కొత్త షెడ్యూలింగ్ మరియు నియామక వర్క్‌ఫ్లో. \"రెండూ\" మార్పిడి సమయంలో ప్రతిదాన్ని పక్కపక్కనే చూపుతుంది."
 
 #: 
 msgid "Which events"
@@ -22120,10 +21931,6 @@ msgstr "ఈ కార్యక్రమం ప్రేక్షకుల సమ
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "పరిచర్యను ఎవరు సమన్వయం చేస్తారో మార్చగలిగేది స్వయంసేవకుల మేనేజర్ మాత్రమే"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 ఎంచుకుంటే V2 స్వయంసేవకుల ఇమెయిల్ నిలిపివేయబడుతుంది; క్యూలో ఉన్నవన్నీ V2 మళ్లీ ఆన్ అయినప్పుడు పంపబడతాయి, దాని సందర్భం ముగిసి ఉంటే తప్ప."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22968,10 +22775,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "ఖాళీ పదవి హెచ్చరిక ముందస్తు సమయం (గంటలు)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "స్వచ్ఛంద సేవక నిర్వహణ"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "స్వచ్ఛంద పరిచర్యలు, బృందాలు, సమయపట్టికలు మరియు కేటాయింపులు"
 
@@ -22982,14 +22785,6 @@ msgstr "రాబోయే రోజుల్లో నింపాల్సి�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "ఈ రాబోయే సందర్భాలకు ఇంకా స్వచ్ఛంద సేవకులు అవసరం: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "వీటి అర్థం ఏమిటి?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "ఈ సంఘం ఏ స్వచ్ఛంద అనుభవాన్ని వాడుతుంది"
 
 #: 
 msgid "You are on the schedule"
@@ -26360,248 +26155,8 @@ msgid "Review Family Information"
 msgstr "కుటుంబ సమాచారాన్ని సమీక్షించండి"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" అనే పరిచర్య ఇప్పటికే ఉంది. జాబితా నుండి దాన్ని ఎంచుకోండి, లేదా మరొక పేరు ఎంచుకోండి."
-
-#: 
-msgid "A new ministry"
-msgstr "కొత్త పరిచర్య"
-
-#: 
-msgid "A position"
-msgstr "ఒక స్థానం"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "ఇంతకు ముందు మార్చిన స్థానాలకు {{total}} మంది వాలంటీర్లను జోడించాలా?"
-
-#: 
-msgid "Already converted"
-msgstr "ఇప్పటికే మార్చబడింది"
-
-#: 
-msgid "An existing ministry"
-msgstr "ఇప్పటికే ఉన్న పరిచర్య"
-
-#: 
-msgid "Becomes"
-msgstr "ఇలా మారుతుంది"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRMలో వాలంటీర్లను నిర్వహించడానికి రెండు మార్గాలు ఉన్నాయి. ఒకేసారి ఒకటి మాత్రమే వాడుకలో ఉండాలి; ఈ సంఘం ఏది చూస్తుందో \"వాలంటీర్ అనుభవం\" సెట్టింగ్ నిర్ణయిస్తుంది. మార్చడం వల్ల పేజీలు, మెను అంశాలు దాచబడతాయి లేదా చూపబడతాయి; డేటా ఎప్పుడూ తొలగించబడదు. వాలంటీర్ అవకాశాలు వాడుకలో ఉన్నంత వరకు మాత్రమే V1, రెండూ అందుబాటులో ఉంటాయి: ప్రతి అవకాశం మార్చబడి సంఘం V2లో ఉన్నప్పుడు, అవి ఈ జాబితా నుండి తొలగిపోతాయి."
-
-#: 
-msgid "Convert"
-msgstr "మార్చు"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "వాలంటీర్ అవకాశాలను మార్చు"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "ఇప్పుడు {{total}} అవకాశాలను మార్చాలా? వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు V1 డేటా అలాగే ఉంచబడుతుంది."
-
-#: 
-msgid "Converted"
-msgstr "మార్చబడింది"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "మార్చబడింది: {{positions}} స్థానాలు, {{ministries}} పరిచర్యలు, {{qualifications}} మంది వాలంటీర్లు అర్హత పొందారు."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "ప్రతి అవకాశం ఒక పరిచర్యలోని మొదటి బృందంలో ఒక స్థానంగా మారుతుంది, దానికి లింక్ అయిన ప్రతి ఒక్కరూ ఆ స్థానానికి అర్హత పొందుతారు. ఈ స్థానాలపై స్వయంగా నమోదు మొదట ఆఫ్‌లో ఉంటుంది."
-
-#: 
-msgid "Everything is converted."
-msgstr "అన్నీ మార్చబడ్డాయి."
-
-#: 
-msgid "Existing ministry"
-msgstr "ఇప్పటికే ఉన్న పరిచర్య"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "కొత్త పరిచర్యకు గరిష్టంగా 100 అక్షరాల పేరు ఇవ్వండి."
-
-#: 
-msgid "Its own ministry"
-msgstr "దాని సొంత పరిచర్య"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "అప్పటి నుండి లింక్ అయినవారు: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "మార్చలేని లింక్‌లు"
-
-#: 
-msgid "New ministries of their own"
-msgstr "వాటి సొంత కొత్త పరిచర్యలు"
-
-#: 
-msgid "New ministry name"
-msgstr "కొత్త పరిచర్య పేరు"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "ఏ ఇమెయిల్ పంపబడదు, వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు అలాగే ఉంటాయి."
-
-#: 
-msgid "No name"
-msgstr "పేరు లేదు"
-
-#: 
-msgid "Not converted"
-msgstr "మార్చబడలేదు"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "ఫీచర్ టోగిల్‌లను తెరువు"
-
-#: 
-msgid "Open Ministries"
-msgstr "పరిచర్యలను తెరువు"
-
-#: 
-msgid "Opportunities"
-msgstr "అవకాశాలు"
-
-#: 
-msgid "Opportunity"
-msgstr "అవకాశం"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "అవకాశం #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "మార్పిడి తర్వాత మార్చబడిన వాలంటీర్ అవకాశాలకు లింక్ అయిన వ్యక్తులు: %d. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు వారిని వారి స్థానాలకు జోడించండి."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "ముందుగా మార్పిడిని ముందుచూపు చూసి, అది తిరిగి ఇచ్చిన సవరణను పంపండి."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "పేర్లు ప్రత్యేకంగా ఉండేందుకు పేరు మార్చబడింది"
-
-#: 
-msgid "Review the conversion"
-msgstr "మార్పిడిని సమీక్షించు"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "మార్పిడి ఎంపికను JSON ఆబ్జెక్ట్‌గా పంపండి."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "పరిచర్యలుగా మారే అవకాశాలను ID జాబితాగా పంపండి."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "ఆ పరిచర్య లేదు."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "వాలంటీర్ అవకాశాల నిలిపివేత నోటీసును నిర్వాహకుడు తీసివేసిన ChurchCRM వెర్షన్."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "ముందుచూపు తర్వాత వాలంటీర్ అవకాశాలు మారాయి. ముందుచూపును మళ్ళీ తనిఖీ చేసి, ఆపై మార్చండి."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "నిర్ధారణను తెరవడం సాధ్యపడలేదు. పేజీని మళ్ళీ లోడ్ చేసి మళ్ళీ ప్రయత్నించండి."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "మార్పిడిని ముందుచూపు చూపడం సాధ్యపడలేదు."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "మార్పిడి విఫలమైంది. ఏదీ మార్చబడలేదు."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" పరిచర్యలో స్థానాలను ఉంచడానికి బృందం లేదు."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "సర్వర్‌ను చేరుకోలేకపోయాము. మార్పిడి జరిగిందో లేదో చూడటానికి పేజీని మళ్ళీ లోడ్ చేయండి."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "మార్చడానికి వాలంటీర్ అవకాశాలు ఏవీ లేవు."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "కొత్త పరిచర్యలు వాలంటీర్ అవకాశాల పక్కనే కనిపించేలా, స్వచ్ఛంద సేవక నిర్వహణ రెండూకి మారుతుంది."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "వాలంటీర్ అవకాశాలు నిలిపివేయబడుతున్నాయి"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "వాలంటీర్ అవకాశాలు మార్చబడ్డాయి"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. ఎవరు దేనిలో సేవ చేస్తున్నారో నిలుపుకోవడానికి వాటిని పరిచర్యలుగా మార్చండి."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. మీ %1$d అవకాశాలను, %2$d మంది వాలంటీర్లను ఇప్పుడే పరిచర్యలుగా మార్చండి. ఏదైనా మారే ముందు ఫలితాన్ని ముందుచూపు చూడవచ్చు."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "అర్హత పొందిన వాలంటీర్లు"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "మార్చిన స్థానాలకు జోడించాల్సిన వాలంటీర్లు"
-
-#: 
-msgid "What it becomes"
-msgstr "ఇది ఏమవుతుంది"
-
-#: 
-msgid "What will happen"
-msgstr "ఏమి జరుగుతుంది"
-
-#: 
-msgid "Where they go"
-msgstr "వారు ఎక్కడికి వెళ్తారు"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "ఏ పాత వాలంటీర్ అవకాశాలు మార్చబడ్డాయి, ప్రతి ఒక్కటి ఏ స్థానంగా మారింది."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "ఈ సంఘం ఉపయోగించే వాలంటీర్ అనుభవం. వాలంటీర్ అవకాశాలు (V1) 2027 ప్రారంభంలో నిలిపివేయబడతాయి."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "మీ వాలంటీర్ అవకాశాలు పరిచర్యలుగా మార్చబడ్డాయి. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు స్వచ్ఛంద సేవక నిర్వహణను V2కి మార్చండి."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "కొత్త పరిచర్యలోకి, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "{{name}} పరిచర్యలోకి"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ఇకపై ChurchCRMలో లేదు"
 
 #: 
 msgid "Collapse sidebar"
@@ -26778,10 +26333,6 @@ msgstr[0] "%d డిఫాల్ట్ మరొక కారణంతో దా
 msgstr[1] "%d డిఫాల్ట్‌లు మరొక కారణంతో దాటవేయబడ్డాయి (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ఒక పరివర్తన సెట్టింగ్. పాత స్వచ్ఛంద అవకాశాల పేజీలు మరియు కొత్త పరిచర్యల పేజీలు రెండూ అందుబాటులో ఉంటాయి, మరియు వ్యక్తి రికార్డు రెండు స్వచ్ఛంద సేవ ట్యాబ్‌లను స్పష్టంగా లేబుల్ చేసి చూపుతుంది. చర్చిని V1 నుండి V2 కు మార్చేటప్పుడు దీన్ని ఉపయోగించండి, ఆ తరువాత V2 కు మాత్రమే మారండి."
-
-#: 
 msgid "Assignment canceled"
 msgstr "నియామకం రద్దు చేయబడింది"
 
@@ -26828,10 +26379,6 @@ msgstr "ఈ తేదీ రద్దు చేయబడింది. మీ న
 #: 
 msgid "This occurrence has been canceled"
 msgstr "ఈ సందర్భం రద్దు చేయబడింది"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "చర్చి నడిచే విధానంలో ఏర్పాటు చేసిన స్వచ్ఛంద సేవ. ప్రతి పరిచర్యకు బృందాలు మరియు స్థానాలు ఉంటాయి; ప్రజలు స్థానాలకు అర్హులవుతారు మరియు పరిచర్య యొక్క సమూహానికి చెందుతారు; షెడ్యూల్‌లు క్యాలెండర్‌లోని కార్యక్రమాలను అనుసరించి, సిబ్బంది అవసరాలతో తేదీలతో కూడిన సందర్భాలను తయారు చేస్తాయి; సమన్వయకర్తలు వ్యక్తులను నియమిస్తారు, వారు అంగీకరిస్తారు, తిరస్కరిస్తారు లేదా ప్రత్యామ్నాయాన్ని ప్రతిపాదిస్తారు; రిమైండర్‌లు మరియు హెచ్చరికలు ఇమెయిల్ ద్వారా వెళ్తాయి. నిర్వాహకులు మరియు పరిచర్యలను నిర్వహించే అనుమతి ఉన్న వినియోగదారులు ప్రతి పరిచర్యను చూసి, వాటిని సృష్టించవచ్చు, నిష్క్రియం చేయవచ్చు మరియు తొలగించవచ్చు. పరిచర్య సమన్వయకర్తకు బదులుగా నా పరిచర్యలను నిర్వహించే అనుమతి ఇవ్వబడుతుంది: అప్పుడు సైడ్‌బార్‌లోని పరిచర్యలు శీర్షిక వారు సమన్వయం చేసే పరిచర్యలను మాత్రమే చూపుతుంది. బృంద నాయకుడు సభ్య పోర్టల్ నుండి తన బృందాన్ని నడుపుతారు. సభ్యులు తమ షెడ్యూల్‌ను చూడటానికి, స్పందించడానికి, నమోదు చేసుకోవడానికి మరియు సహాయం అందించడానికి సభ్య పోర్టల్‌ను ఉపయోగిస్తారు."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27530,10 +27077,6 @@ msgstr "ఈవెంట్లను చూడటం"
 #: 
 msgid "View people and families"
 msgstr "వ్యక్తులను మరియు కుటుంబాలను చూడటం"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "ఈ చర్చికి స్వచ్ఛంద సేవకుల నిర్వహణ ఆఫ్ చేయబడింది"
 
 #: 
 msgid "Weak"

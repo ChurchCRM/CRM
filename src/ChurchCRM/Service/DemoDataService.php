@@ -130,10 +130,7 @@ class DemoDataService
             $this->importSystemConfig($force);
             SystemConfig::setValue('sInstallDataProfile', 'demo');
 
-            // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
-            if (User::isVolunteerV2Enabled()) {
-                VolunteerEventService::addOtherEventType();
-            }
+            VolunteerEventService::addOtherEventType();
 
             $emailMap = $this->importCongregation();
             $this->personEmailToId = $emailMap;
@@ -1287,10 +1284,6 @@ class DemoDataService
      */
     private function importVolunteers(array $emailMap): void
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return;
-        }
-
         $data = $this->loadJsonFile('volunteers.json');
         if ($data === null) {
             $this->addWarning('Volunteer import skipped: volunteers.json missing or invalid');

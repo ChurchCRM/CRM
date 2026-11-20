@@ -247,6 +247,43 @@ describe("Session Password Reset", () => {
             .should("not.be.visible");
         });
 
+        describe("with a raised iMinPasswordLength", () => {
+            let originalMinPasswordLength;
+
+            before(() => {
+                cy.getSystemConfig("iMinPasswordLength").then((value) => {
+                    originalMinPasswordLength = value;
+                });
+            });
+
+            after(() => {
+                cy.restoreSystemConfig("iMinPasswordLength", originalMinPasswordLength);
+            });
+
+            it("Should rate the reset page password against the configured minimum", () => {
+                cy.setSystemConfig("iMinPasswordLength", 12);
+                cy.then(() => seedToken());
+                cy.visit(url());
+
+                cy.get("#PasswordStrengthContainer").should("have.attr", "data-min-length", "12");
+
+                // 10 chars with all character classes: >= 8, but shorter than configured min (12) -> capped at Weak
+                cy.get("#password").type("P@ssw0rd!2", { log: false });
+                cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+                cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
+
+                // 12 chars (mixed case + digit, no symbol): hits first length point (12) but not second (16) -> Good
+                cy.get("#password").clear().type("Abcdefghijk1", { log: false });
+                cy.get("#PasswordStrengthLabel").should("have.text", "Good");
+                cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "75");
+
+                // 16 chars (12 + 4): hits both length points -> Strong
+                cy.get("#password").clear().type("Abcdefghijk12345", { log: false });
+                cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
+                cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
+            });
+        });
+
 
         for (const format of ["legacy plaintext", "SHA-256"]) {
             it(`GET preserves password and token; POST works once and rejects reuse (${format})`, () => {

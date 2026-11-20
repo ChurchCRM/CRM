@@ -1395,10 +1395,6 @@ msgid "Default"
 msgstr "Padrão"
 
 #: 
-msgid "Exit"
-msgstr "Sair"
-
-#: 
 msgid "Add New"
 msgstr "Criar novo"
 
@@ -1504,11 +1500,6 @@ msgstr "Atualizar propriedades"
 #: 
 msgid "Assign New Group"
 msgstr "Atribuir novo grupo"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Atribuir uma nova oportunidade de voluntariado"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1624,10 +1615,6 @@ msgid "Restore Database"
 msgstr "Recuperar base de dados"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Por favor, confirme a eliminação de"
-
-#: 
 msgid "Listing"
 msgstr "Listagem"
 
@@ -1717,14 +1704,6 @@ msgstr "Nova palavra-passe"
 #: 
 msgid "Confirm New Password"
 msgstr "Confirme a nova palavra-passe"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Voluntariado"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Nenhuma oportunidade foi adicionada ainda"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6443,20 +6422,8 @@ msgid "Additional Information"
 msgstr "Informações adicionais"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Atribuir oportunidades"
-
-#: 
 msgid "Choose a property..."
 msgstr "Escolha uma propriedade..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Escolha oportunidades..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Informações de contacto e pessoal"
 
 #: 
 msgid "Edited"
@@ -6465,14 +6432,6 @@ msgstr "Editado"
 #: 
 msgid "Newsletter"
 msgstr "Boletim informativo"
-
-#: 
-msgid "Personal"
-msgstr "Pessoal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Selecionar oportunidades"
 
 #: 
 msgid "Volunteer"
@@ -6659,10 +6618,6 @@ msgid "Confirm Property Deletion"
 msgstr "Confirmar eliminação de propriedade"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Confirmar eliminação de oportunidade de voluntariado"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Confirmação de eliminação"
 
@@ -6675,16 +6630,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Campos de pessoa personalizada existentes"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Oportunidades de voluntariado existentes"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Campo eliminado com sucesso"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF inválido"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8450,10 +8397,6 @@ msgid "Create or edit property type categories"
 msgstr "Criar ou editar categorias de tipos de propriedade"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Criar ou editar funções de voluntário"
-
-#: 
 msgid "Current person"
 msgstr "Pessoa atual"
 
@@ -8902,10 +8845,6 @@ msgid "Manage user account details and permissions"
 msgstr "Gerir detalhes e permissões de contas de utilizadores"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Gerir oportunidades de voluntariado e atribuir fiéis"
-
-#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
@@ -9024,10 +8963,6 @@ msgstr "Sem resultados encontrados"
 #: 
 msgid "No timeline events yet."
 msgstr "Sem eventos na linha do tempo ainda."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Sem atribuições de oportunidades de voluntariado ainda."
 
 #: 
 msgid "Not ready yet?"
@@ -9532,10 +9467,6 @@ msgid "funds"
 msgstr "fundos"
 
 #: 
-msgid "opportunities"
-msgstr "oportunidades"
-
-#: 
 msgid "or connect an external service"
 msgstr "ou ligar um serviço externo"
 
@@ -9835,11 +9766,6 @@ msgstr "Falha ao recuperar endereços de e-mail"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Falha ao recuperar números de telefone"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Encontre voluntários para uma oportunidade específica"
 
 #. Context: query_qry
 #: 
@@ -12606,10 +12532,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Não é possível eliminar o tipo de propriedade: %d propriedades ainda fazem referência ao mesmo. Reatribua ou elimine essas propriedades primeiro."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Não é possível eliminar a oportunidade de voluntariado: %d pessoas ainda estão atribuídas. Remova as atribuições primeiro."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "A classe deve ser p, f ou g"
 
@@ -12620,10 +12542,6 @@ msgstr "Copiar mensagem de erro"
 #: 
 msgid "Could not load note."
 msgstr "Não foi possível carregar a nota."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "A descrição não pode exceder 100 caracteres"
 
 #: 
 msgid "Donation fund not found"
@@ -12646,10 +12564,6 @@ msgid "Failed to create property type"
 msgstr "Falha ao criar o tipo de propriedade"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Falha ao criar a oportunidade de voluntariado"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Falha ao eliminar o fundo de doações"
 
@@ -12666,10 +12580,6 @@ msgid "Failed to delete property type"
 msgstr "Falha ao eliminar o tipo de propriedade"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Falha ao eliminar a oportunidade de voluntariado"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Falha ao atualizar o fundo de doações"
 
@@ -12682,10 +12592,6 @@ msgid "Failed to update property type"
 msgstr "Falha ao atualizar o tipo de propriedade"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Falha ao atualizar a oportunidade de voluntariado"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Angariação de fundos não encontrada"
 
@@ -12696,10 +12602,6 @@ msgstr "ID de instalação"
 #: 
 msgid "Invalid class"
 msgstr "Classe inválida"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "O nome não pode exceder 30 caracteres"
 
 #: 
 msgid "Note by %s deleted"
@@ -12722,16 +12624,8 @@ msgid "Read more"
 msgstr "Ler mais"
 
 #: 
-msgid "That name already exists."
-msgstr "Esse nome já existe."
-
-#: 
 msgid "Title is required"
 msgstr "O título é obrigatório"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Oportunidade de voluntariado não encontrada"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15322,10 +15216,6 @@ msgid "System Configuration"
 msgstr "Configuração do sistema"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Existem pessoas atribuídas a esta Oportunidade de Voluntariado. A eliminação irá remover a atribuição"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Atualize-o para um URL válido que"
 
@@ -15554,10 +15444,6 @@ msgid "Add New Fund"
 msgstr "Adicionar novo fundo"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Adicionar nova oportunidade"
-
-#: 
 msgid "Add New Person"
 msgstr "Adicionar nova pessoa"
 
@@ -15570,10 +15456,6 @@ msgid "Add New Role"
 msgstr "Adicionar nova função"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Adicionar nova oportunidade de voluntariado"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Adicionar turma de Escola Dominical"
 
@@ -15584,10 +15466,6 @@ msgstr "Eliminar esta família?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Reveja as novas famílias e indivíduos que se inscreveram no seu formulário de registo público"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Confirmação de eliminação de oportunidade de voluntariado"
 
 #: 
 msgid "# Payments"
@@ -17254,14 +17132,6 @@ msgid "Find people who did not attend an event"
 msgstr "Encontre pessoas que não compareceram a um evento"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Encontre voluntários que correspondam a dois códigos de oportunidade específicos"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Primeira oportunidade de voluntariado"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Livreto dobrado"
 
@@ -17338,10 +17208,6 @@ msgid "Run Report"
 msgstr "Executar relatório"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Segunda oportunidade de voluntariado"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Mostrado na barra lateral, na página de início de sessão e nos e-mails. Carregar um logótipo substitui a marca ChurchCRM em todos os sítios onde aparece."
 
@@ -17368,14 +17234,6 @@ msgstr "A usar logótipo ChurchCRM padrão"
 #: 
 msgid "View Full Family Giving"
 msgstr "Ver ofertas completas da família"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Oportunidade de voluntariado"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Voluntários para duas oportunidades"
 
 #: 
 msgid "YTD"
@@ -18202,10 +18060,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Uma escala que atende um único evento não pode acompanhar outros eventos; elimine-a e adicione uma escala"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Uma lista única de oportunidades, como \"Berçário\" ou \"Recepção\", mantida em Pessoas → Administração. Cada pessoa é marcada com as oportunidades em que aceita ajudar, na aba Voluntariado do seu registo. É só isso que ela regista: não há equipas, escalas, designações para uma data nem e-mails de lembrete. As marcações são usadas nos relatórios e no registo da pessoa."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Uma foto quadrada do seu rosto funciona melhor."
 
@@ -18512,18 +18366,6 @@ msgstr "Execução das tarefas em segundo plano"
 #: 
 msgid "Birthday greeting"
 msgstr "Felicitações de aniversário"
-
-#: 
-msgid "Both"
-msgstr "Ambos"
-
-#: 
-msgid "Both (transition)"
-msgstr "Ambos (transição)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Ambos — V1 e V2 lado a lado (transição)"
 
 #: 
 msgid "Calendar address"
@@ -21610,22 +21452,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "O utilizador deve ter a permissão Adicionar Evento, ou coordenar o ministério de voluntários a que este calendário pertence"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Oportunidades de Voluntariado (antigo)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Oportunidades de Voluntariado antigas"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Ministérios"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Gestão de voluntários"
-
-#: 
 msgid "Valid"
 msgstr "Válido"
 
@@ -21644,14 +21470,6 @@ msgstr "Ver o evento"
 #: 
 msgid "View this email"
 msgstr "Ver este e-mail"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Voluntariado (antigo)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "A Gestão de Voluntários V2 não está ativada"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21758,10 +21576,6 @@ msgid "What the check found"
 msgstr "O que a verificação encontrou"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "O que são as experiências de voluntariado"
-
-#: 
 msgid "What you want to say"
 msgstr "O que quer dizer"
 
@@ -21792,10 +21606,6 @@ msgstr "De onde vêm as datas"
 #: 
 msgid "Where we reach you"
 msgstr "Como falar consigo"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Qual experiência de Gestão de Voluntários está ativa. A V1 é o recurso antigo de Oportunidades de Voluntariado; a V2 é o novo fluxo de escalas e designações. \"Ambos\" mostra cada lado lado a lado durante a migração."
 
 #: 
 msgid "Which events"
@@ -22204,10 +22014,6 @@ msgstr "Não autorizado a alterar o grupo de audiência deste evento"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Apenas um gestor de voluntários pode alterar quem coordena um ministério"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Escolher V1 pausa o e-mail de voluntário V2; tudo enfileirado é enviado quando V2 volta, a menos que sua ocorrência tenha terminado."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23052,10 +22858,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Antecedência do alerta de funções por preencher (horas)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Gestão de voluntários"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Ministérios de voluntários, equipas, escalas e designações"
 
@@ -23066,14 +22868,6 @@ msgstr "Funções de voluntariado a preencher nos próximos dias"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Voluntários ainda necessários para estas próximas ocorrências: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "O que significam?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Qual experiência de voluntários esta igreja usa"
 
 #: 
 msgid "You are on the schedule"
@@ -26444,248 +26238,8 @@ msgid "Review Family Information"
 msgstr "Rever informações da família"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Já existe um ministério chamado \"%s\". Escolha-o na lista ou escolha outro nome."
-
-#: 
-msgid "A new ministry"
-msgstr "Um novo ministério"
-
-#: 
-msgid "A position"
-msgstr "Uma função"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Adicionar {{total}} voluntários às funções convertidas anteriormente?"
-
-#: 
-msgid "Already converted"
-msgstr "Já convertida"
-
-#: 
-msgid "An existing ministry"
-msgstr "Um ministério existente"
-
-#: 
-msgid "Becomes"
-msgstr "Torna-se"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "O ChurchCRM tem duas formas de gerir voluntários. Apenas uma deve ser usada de cada vez; a configuração \"Experiência de voluntariado\" decide qual delas esta igreja vê. Alternar oculta ou mostra páginas e itens de menu e nunca elimina dados. V1 e Ambos só são oferecidos enquanto as Oportunidades de voluntariado estiverem em uso: quando todas as oportunidades forem convertidas e a igreja estiver na V2, eles saem desta lista."
-
-#: 
-msgid "Convert"
-msgstr "Converter"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Converter oportunidades de voluntariado"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Converter {{total}} oportunidades agora? Os dados do V1 são mantidos como estão até que as Oportunidades de voluntariado sejam desativadas."
-
-#: 
-msgid "Converted"
-msgstr "Convertida"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Convertido: {{positions}} funções e {{ministries}} ministérios, {{qualifications}} voluntários habilitados."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Cada oportunidade torna-se uma função na primeira equipa de um ministério, e todas as pessoas vinculadas a ela ficam habilitadas para essa função. A autoinscrição começa desativada nessas funções."
-
-#: 
-msgid "Everything is converted."
-msgstr "Tudo foi convertido."
-
-#: 
-msgid "Existing ministry"
-msgstr "Ministério existente"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Dê ao novo ministério um nome com até 100 caracteres."
-
-#: 
-msgid "Its own ministry"
-msgstr "Um ministério próprio"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Vinculados desde então: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Vínculos que não podem ser convertidos"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Novos ministérios próprios"
-
-#: 
-msgid "New ministry name"
-msgstr "Nome do novo ministério"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Nenhum e-mail é enviado, e as Oportunidades de voluntariado permanecem como estão até serem desativadas."
-
-#: 
-msgid "No name"
-msgstr "Sem nome"
-
-#: 
-msgid "Not converted"
-msgstr "Não convertida"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Abrir alternadores de recursos"
-
-#: 
-msgid "Open Ministries"
-msgstr "Abrir ministérios"
-
-#: 
-msgid "Opportunities"
-msgstr "Oportunidades"
-
-#: 
-msgid "Opportunity"
-msgstr "Oportunidade"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Oportunidade nº %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Pessoas vinculadas a Oportunidades de voluntariado convertidas desde a conversão: %d. Adicione-as às suas funções antes que as Oportunidades de voluntariado sejam desativadas no início de 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Pré-visualize primeiro a conversão e envie a revisão que esta devolveu."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Renomeado para manter os nomes únicos"
-
-#: 
-msgid "Review the conversion"
-msgstr "Revisar a conversão"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Envie a escolha de conversão como um objeto JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Envie as oportunidades que se tornam ministérios como uma lista de IDs."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Esse ministério não existe."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "A versão do ChurchCRM em que um administrador dispensou o aviso de desativação das Oportunidades de voluntariado."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "As Oportunidades de voluntariado mudaram desde a pré-visualização. Verifique a pré-visualização novamente e depois converta."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Não foi possível abrir a confirmação. Recarregue a página e tente novamente."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Não foi possível pré-visualizar a conversão."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "A conversão falhou. Nada foi alterado."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "O ministério \"%s\" não tem uma equipa para as funções."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Não foi possível contactar o servidor. Recarregue a página para ver se a conversão foi executada."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Não há Oportunidades de voluntariado para converter."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "A Gestão de voluntários muda para Ambos, para que os novos ministérios fiquem visíveis ao lado das Oportunidades de voluntariado."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "As Oportunidades de voluntariado serão desativadas"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Oportunidades de voluntariado convertidas"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "As Oportunidades de voluntariado serão desativadas no início de 2027. Converta-as em Ministérios para manter quem serve em quê."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "As Oportunidades de voluntariado serão desativadas no início de 2027. Converta agora as suas %1$d oportunidades e %2$d voluntários em Ministérios. Pode pré-visualizar o resultado antes que algo mude."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Voluntários habilitados"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Voluntários a adicionar às funções convertidas"
-
-#: 
-msgid "What it becomes"
-msgstr "No que se torna"
-
-#: 
-msgid "What will happen"
-msgstr "O que vai acontecer"
-
-#: 
-msgid "Where they go"
-msgstr "Para onde vão"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Quais Oportunidades de voluntariado antigas foram convertidas e a função em que cada uma se tornou."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Qual experiência de voluntariado esta igreja usa. As Oportunidades de voluntariado (V1) serão desativadas no início de 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "As suas Oportunidades de voluntariado foram convertidas em Ministérios. Mude a Gestão de voluntários para V2 antes que as Oportunidades de voluntariado sejam desativadas no início de 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "num novo ministério, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "no ministério {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "já não está no ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26862,10 +26416,6 @@ msgstr[0] "%d voluntário padrão ignorado por outro motivo (a ocorrência termi
 msgstr[1] "%d voluntários padrão ignorados por outro motivo (a ocorrência terminou, foi cancelada ou está completa)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Uma configuração de transição. As páginas antigas de Oportunidades de Voluntariado e as novas páginas de Ministérios ficam disponíveis, e o registo de uma pessoa mostra as duas abas de Voluntariado, claramente identificadas. Use enquanto migra uma igreja da V1 para a V2; depois, passe só para a V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Designação cancelada"
 
@@ -26912,10 +26462,6 @@ msgstr "Esta data foi cancelada. Não precisa de fazer mais nada."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Esta ocorrência foi cancelada"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "O voluntariado organizado como uma igreja o realiza. Cada ministério tem equipas e funções; as pessoas são qualificadas para funções e pertencem ao grupo de banco de voluntários do ministério; as escalas acompanham os eventos do calendário e produzem ocorrências datadas com necessidades de pessoal; os coordenadores designam pessoas, que aceitam, recusam ou propõnum substituto; lembretes e alertas são enviados por e-mail. Administradores e utilizadores com a permissão Gerir Ministérios veem todos os ministérios e podem criá-los, desativá-los e eliminá-los. Um coordenador de ministério recebe, em vez disso, a permissão Gerir Meus Ministérios: o título Ministérios na barra lateral mostra então apenas os ministérios que coordena. Um líder de equipa dirige sua equipa pelo Portal do Membro. Os membros usam o Portal do Membro para ver sua escala, responder, se inscrever e oferecer ajuda."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27586,10 +27132,6 @@ msgstr "Ver eventos"
 #: 
 msgid "View people and families"
 msgstr "Ver pessoas e famílias"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "A gestão de voluntários está desativada para esta igreja"
 
 #: 
 msgid "Weak"

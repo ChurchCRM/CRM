@@ -13,7 +13,6 @@
  * a window that has ended. A new schedule's Save is itself a run (D33).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const CHURCH_SERVICE_TYPE = 1;
 const SUNDAY_SCHOOL_GROUP_TYPE = 4;
@@ -24,7 +23,6 @@ const PREFIX = "VGEN30";
 const URL = "/api/ministries";
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let originalVersion = "v1";
 let ministryId = 0;
 let ministryName = "";
 let teamA = 0;
@@ -43,10 +41,6 @@ function dbOk(sql, params = []) {
 
 function api(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(ADMIN_KEY), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function localDate(offsetDays) {
@@ -165,10 +159,6 @@ after(() => {
 
 describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         api("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, description: "D30 fixture", sundaySchool: true }, 201).then(
@@ -187,7 +177,6 @@ describe("Volunteer v2 D30 — a Generate run that finds no events says what it 
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── Generate explains an empty run ─────────────────────────────────────────

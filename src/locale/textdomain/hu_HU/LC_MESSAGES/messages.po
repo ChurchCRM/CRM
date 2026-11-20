@@ -1381,10 +1381,6 @@ msgid "Default"
 msgstr "Alapértelmezett"
 
 #: 
-msgid "Exit"
-msgstr "Kijárat"
-
-#: 
 msgid "Add New"
 msgstr "Új"
 
@@ -1489,11 +1485,6 @@ msgstr "Tulajdonságok frissítése"
 #: 
 msgid "Assign New Group"
 msgstr "Új csoport hozzárendelése"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Rendelni egy új Önkéntes lehetőség"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1611,11 +1602,6 @@ msgid "Restore Database"
 msgstr "Adatbázis visszaállítása"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Kérjük, erősítse meg törlését"
-
-#: 
 msgid "Listing"
 msgstr "Listázás"
 
@@ -1709,14 +1695,6 @@ msgstr "Új jelszó"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Új jelszó megerősítése"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Önkéntes Opportunity szerkesztő"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Nem önkéntes lehetőségeket adtak még"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6406,20 +6384,8 @@ msgid "Additional Information"
 msgstr "Kiegészítő Információ"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Lehetőségek Hozzárendelése"
-
-#: 
 msgid "Choose a property..."
 msgstr "Válasszon egy tulajdonságot..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Válasszon lehetőségeket..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kapcsolat és személyes információ"
 
 #: 
 msgid "Edited"
@@ -6428,14 +6394,6 @@ msgstr "Szerkesztve"
 #: 
 msgid "Newsletter"
 msgstr "Hírlevelezés"
-
-#: 
-msgid "Personal"
-msgstr "Személyes"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Válasszon lehetőségeket"
 
 #: 
 msgid "Volunteer"
@@ -6622,10 +6580,6 @@ msgid "Confirm Property Deletion"
 msgstr "Tulajdonság törlésének megerősítése"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Önkéntes lehetőség törlésének megerősítése"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Törlés megerősítése"
 
@@ -6638,16 +6592,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Létező egyéni személymezők"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Létező önkéntes lehetőségek"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Mező sikeresen törölve"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Érvénytelen CSRF token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8413,10 +8359,6 @@ msgid "Create or edit property type categories"
 msgstr "Tulajdonságtípus-kategóriák létrehozása vagy szerkesztése"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Önkéntes pozíciók létrehozása vagy szerkesztése"
-
-#: 
 msgid "Current person"
 msgstr "Aktuális személy"
 
@@ -8865,10 +8807,6 @@ msgid "Manage user account details and permissions"
 msgstr "Felhasználói fiók adatainak és jogosultságainak kezelése"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Önkéntes lehetőségek kezelése és tagok beosztása"
-
-#: 
 msgid "Map cart items"
 msgstr "Lista elemeinek megjelenítése térképen"
 
@@ -8987,10 +8925,6 @@ msgstr "Nincs találat"
 #: 
 msgid "No timeline events yet."
 msgstr "Még nincsenek idővonal-események."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Még nincsenek önkéntes-beosztások."
 
 #: 
 msgid "Not ready yet?"
@@ -9495,10 +9429,6 @@ msgid "funds"
 msgstr "alapok"
 
 #: 
-msgid "opportunities"
-msgstr "lehetőségek"
-
-#: 
 msgid "or connect an external service"
 msgstr "vagy csatlakozzon egy külső szolgáltatáshoz"
 
@@ -9798,11 +9728,6 @@ msgstr "Az e-mail címek lekérése sikertelen"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "A telefonszámok lekérése sikertelen"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Keresse meg az önkénteseket egy adott lehetőséghez"
 
 #. Context: query_qry
 #: 
@@ -12569,10 +12494,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "A tulajdonság típusa nem törölhető: %d tulajdonság még hivatkozik rá. Előbb rendelje hozzá újra, vagy törölje ezeket a tulajdonságokat."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Az önkéntességi lehetőség nem törölhető: %d személy még hozzá van rendelve. Előbb távolítsa el a hozzárendeléseket."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Az osztálynak p, f vagy g értékűnek kell lennie"
 
@@ -12583,10 +12504,6 @@ msgstr "Hibaüzenet másolása"
 #: 
 msgid "Could not load note."
 msgstr "A megjegyzés nem tölthető be."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "A leírás nem haladhatja meg a 100 karaktert"
 
 #: 
 msgid "Donation fund not found"
@@ -12609,10 +12526,6 @@ msgid "Failed to create property type"
 msgstr "A tulajdonság típusának létrehozása nem sikerült"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Az önkéntességi lehetőség létrehozása nem sikerült"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Az adományalap törlése nem sikerült"
 
@@ -12629,10 +12542,6 @@ msgid "Failed to delete property type"
 msgstr "A tulajdonság típusának törlése nem sikerült"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Az önkéntességi lehetőség törlése nem sikerült"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Az adományalap frissítése nem sikerült"
 
@@ -12645,10 +12554,6 @@ msgid "Failed to update property type"
 msgstr "A tulajdonság típusának frissítése nem sikerült"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Az önkéntességi lehetőség frissítése nem sikerült"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Az adománygyűjtés nem található"
 
@@ -12659,10 +12564,6 @@ msgstr "Telepítési azonosító"
 #: 
 msgid "Invalid class"
 msgstr "Érvénytelen osztály"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "A név nem haladhatja meg a 30 karaktert"
 
 #: 
 msgid "Note by %s deleted"
@@ -12685,16 +12586,8 @@ msgid "Read more"
 msgstr "Olvass tovább"
 
 #: 
-msgid "That name already exists."
-msgstr "Ez a név már létezik."
-
-#: 
 msgid "Title is required"
 msgstr "A cím megadása kötelező"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Az önkéntességi lehetőség nem található"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15285,10 +15178,6 @@ msgid "System Configuration"
 msgstr "Rendszerkonfiguráció"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Ehhez az önkéntes lehetőséghez személyek vannak hozzárendelve. A törlés megszünteti a hozzárendelést"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Frissítse érvényes URL-re, amely"
 
@@ -15517,10 +15406,6 @@ msgid "Add New Fund"
 msgstr "Új alap hozzáadása"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Új lehetőség hozzáadása"
-
-#: 
 msgid "Add New Person"
 msgstr "Új személy hozzáadása"
 
@@ -15533,10 +15418,6 @@ msgid "Add New Role"
 msgstr "Új szerepkör hozzáadása"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Új önkéntes lehetőség hozzáadása"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Vasárnapi iskola osztály hozzáadása"
 
@@ -15547,10 +15428,6 @@ msgstr "Törli ezt a családot?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tekintse át a nyilvános regisztrációs urlapon feliratkozott új családokat és egyéneket"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Önkéntes lehetőség törlésének megerősítése"
 
 #: 
 msgid "# Payments"
@@ -17217,14 +17094,6 @@ msgid "Find people who did not attend an event"
 msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Keresse meg azokat az önkénteseket, akik két meghatározott lehetőségkódnak felelnek meg"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Első önkéntes lehetőség"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Összehajtott füzet"
 
@@ -17301,10 +17170,6 @@ msgid "Run Report"
 msgstr "Jelentés futtatása"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Második önkéntes lehetőség"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Az oldalsávban, a bejelentkezési oldalon és az e-mailekben jelenik meg. A logó feltöltése helyettesíti a ChurchCRM márkákat mindenhol, ahol megjelenik."
 
@@ -17331,14 +17196,6 @@ msgstr "Az alapértelmezett ChurchCRM logó használata"
 #: 
 msgid "View Full Family Giving"
 msgstr "Teljes családi adományok megtekintése"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Önkéntes lehetőség"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Önkéntesek két lehetőséghez"
 
 #: 
 msgid "YTD"
@@ -18165,10 +18022,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Egyetlen eseményre létszámot adó ütemezés nem követhet más eseményeket; töröld, és adj hozzá inkább ütemezést"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "A lehetőségek egyetlen listája, például „Gyermekfelügyelet” vagy „Fogadó”, amelyet a Személyek → Adminisztráció alatt vezetnek. Minden személy meg van jelölve azokkal a lehetőségekkel, amelyekben segíteni hajlandó, a rekordja Önkéntes lapján. Ennyit rögzít: nincsenek csapatok, ütemezések, dátumhoz rendelt beosztások vagy emlékeztető e-mailek. A címkéket a jelentések és a személyrekord használja."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Egy négyzet alakú arcfotó működik a legjobban."
 
@@ -18475,18 +18328,6 @@ msgstr "A háttérfeladatok futottak"
 #: 
 msgid "Birthday greeting"
 msgstr "Születésnapi köszöntés"
-
-#: 
-msgid "Both"
-msgstr "Mindkettő"
-
-#: 
-msgid "Both (transition)"
-msgstr "Mindkettő (átmenet)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Mindkettő – V1 és V2 egymás mellett (átmenet)"
 
 #: 
 msgid "Calendar address"
@@ -21573,22 +21414,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "A felhasználónak Esemény hozzáadása jogosultsággal kell rendelkeznie, vagy annak az önkéntes szolgálati területnek a koordinátorának kell lennie, amelyhez ez a naptár tartozik"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Önkéntes lehetőségek (régi)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – régi Önkéntes lehetőségek"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Szolgálati területek"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Önkéntes-kezelés"
-
-#: 
 msgid "Valid"
 msgstr "Érvényes"
 
@@ -21607,14 +21432,6 @@ msgstr "Az esemény megtekintése"
 #: 
 msgid "View this email"
 msgstr "Az e-mail megtekintése"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Önkéntes (régi)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Az Önkéntes-kezelés V2 nincs engedélyezve"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21721,10 +21538,6 @@ msgid "What the check found"
 msgstr "Mit talált az ellenőrzés"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Mik az önkéntes-élmények"
-
-#: 
 msgid "What you want to say"
 msgstr "Mit szeretnél mondani"
 
@@ -21755,10 +21568,6 @@ msgstr "Honnan származnak a dátumok"
 #: 
 msgid "Where we reach you"
 msgstr "Hol érünk el"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Melyik Önkéntes-kezelési élmény aktív. A V1 a régi Önkéntes lehetőségek funkció; a V2 az új ütemezési és beosztási munkafolyamat. A „Mindkettő” az átállás alatt egymás mellett mutatja őket."
 
 #: 
 msgid "Which events"
@@ -22167,10 +21976,6 @@ msgstr "Nincs jogosultsága az esemény csoportjának módosítására"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Csak az önkéntes vezető módosíthatja a szolgálat koordinátorát"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "A V1 kiválasztása szünetelteti a V2 e-mailt; minden sorban álló küldésre kerül, amikor a V2 újra bekapcsol, hacsak az esemény még nem fejeződött be."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23015,10 +22820,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "A be nem töltött feladat figyelmeztetésének előideje (óra)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Önkéntesek kezelése"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Önkéntes szolgálatok, csapatok, ütemtervek és beosztások"
 
@@ -23029,14 +22830,6 @@ msgstr "A következő napokban betöltendő önkéntes feladatok"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Még szükséges önkéntesek ezekhez a közelgő előfordulásokhoz: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Mit jelentenek ezek?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Melyik önkéntes élményt használja ez a gyülekezet"
 
 #: 
 msgid "You are on the schedule"
@@ -26407,248 +26200,8 @@ msgid "Review Family Information"
 msgstr "Családi adatok ellenőrzése"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Már létezik „%s” nevű szolgálati terület. Válassza ki a listából, vagy adjon meg másik nevet."
-
-#: 
-msgid "A new ministry"
-msgstr "Új szolgálati terület"
-
-#: 
-msgid "A position"
-msgstr "Pozíció"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Hozzáadja az önkénteseket ({{total}}) a korábban átalakított pozíciókhoz?"
-
-#: 
-msgid "Already converted"
-msgstr "Már átalakítva"
-
-#: 
-msgid "An existing ministry"
-msgstr "Meglévő szolgálati terület"
-
-#: 
-msgid "Becomes"
-msgstr "Ebből lesz"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "A ChurchCRM kétféleképpen kezelheti az önkénteseket. Egyszerre csak az egyiket érdemes használni; az „Önkéntes mód” beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy jelenít meg, adatot soha nem töröl. A V1 és a Mindkettő csak addig választható, amíg az Önkéntes lehetőségek használatban vannak: ha minden lehetőség át van alakítva, és a gyülekezet a V2-t használja, eltűnnek a listából."
-
-#: 
-msgid "Convert"
-msgstr "Átalakítás"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Önkéntes lehetőségek átalakítása"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Most átalakítja a lehetőségeket ({{total}})? A V1 adatai változatlanok maradnak, amíg az Önkéntes lehetőségek megszűnnek."
-
-#: 
-msgid "Converted"
-msgstr "Átalakítva"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Átalakítva: pozíciók: {{positions}}, szolgálati területek: {{ministries}}, alkalmassá tett önkéntesek: {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Minden lehetőségből pozíció lesz egy szolgálati terület első csapatában, és mindenki, aki hozzá kapcsolódik, alkalmas lesz erre a pozícióra. Az önjelentkezés ezeknél a pozícióknál kezdetben ki van kapcsolva."
-
-#: 
-msgid "Everything is converted."
-msgstr "Minden át van alakítva."
-
-#: 
-msgid "Existing ministry"
-msgstr "Meglévő szolgálati terület"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Adjon az új szolgálati területnek legfeljebb 100 karakteres nevet."
-
-#: 
-msgid "Its own ministry"
-msgstr "Saját szolgálati terület"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Azóta kapcsolva: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Át nem alakítható kapcsolatok"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Saját új szolgálati területek"
-
-#: 
-msgid "New ministry name"
-msgstr "Új szolgálati terület neve"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Nem megy ki e-mail, és az Önkéntes lehetőségek változatlanok maradnak, amíg meg nem szűnnek."
-
-#: 
-msgid "No name"
-msgstr "Nincs név"
-
-#: 
-msgid "Not converted"
-msgstr "Nincs átalakítva"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Funkciók kapcsolóinak megnyitása"
-
-#: 
-msgid "Open Ministries"
-msgstr "Szolgálati területek megnyitása"
-
-#: 
-msgid "Opportunities"
-msgstr "Lehetőségek"
-
-#: 
-msgid "Opportunity"
-msgstr "Lehetőség"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "%d. lehetőség"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Az átalakítás óta átalakított Önkéntes lehetőségekhez kapcsolt személyek: %d. Adja hozzá őket a pozícióikhoz, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Először tekintse meg az átalakítás előnézetét, és küldje el az általa visszaadott revíziót."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Átnevezve, hogy a nevek egyediek maradjanak"
-
-#: 
-msgid "Review the conversion"
-msgstr "Átalakítás áttekintése"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Küldje el az átalakítási választást JSON-objektumként."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Küldje el a szolgálati területté váló lehetőségeket azonosítók listájaként."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Ez a szolgálati terület nem létezik."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Az a ChurchCRM-verzió, amelyben egy adminisztrátor elvetette az Önkéntes lehetőségek megszűnéséről szóló értesítést."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Az Önkéntes lehetőségek megváltoztak az előnézet óta. Ellenőrizze újra az előnézetet, majd alakítsa át."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "A megerősítést nem sikerült megnyitni. Töltse be újra az oldalt, és próbálja újra."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Az átalakítás előnézete nem készíthető el."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Az átalakítás nem sikerült. Semmi sem változott."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "A(z) „%s” szolgálati területnek nincs csapata a pozíciókhoz."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "A szerver nem érhető el. Töltse be újra az oldalt, hogy lássa, lefutott-e az átalakítás."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nincsenek átalakítható Önkéntes lehetőségek."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Az Önkéntesek kezelése Mindkettő módra vált, így az új szolgálati területek az Önkéntes lehetőségek mellett láthatók."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Az Önkéntes lehetőségek megszűnnek"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Önkéntes lehetőségek átalakítva"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át őket szolgálati területekké, hogy megmaradjon, ki miben szolgál."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át most szolgálati területekké a lehetőségeit (%1$d) és önkénteseit (%2$d). Az eredményt megtekintheti, mielőtt bármi megváltozna."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Alkalmassá tett önkéntesek"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Átalakított pozíciókhoz hozzáadandó önkéntesek"
-
-#: 
-msgid "What it becomes"
-msgstr "Mivé válik"
-
-#: 
-msgid "What will happen"
-msgstr "Mi fog történni"
-
-#: 
-msgid "Where they go"
-msgstr "Hová kerülnek"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Mely korábbi Önkéntes lehetőségek lettek átalakítva, és melyikből milyen pozíció lett."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Melyik önkéntes módot használja ez a gyülekezet. Az Önkéntes lehetőségek (V1) 2027 elején megszűnnek."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Az Önkéntes lehetőségei át lettek alakítva szolgálati területekké. Állítsa az Önkéntesek kezelését V2-re, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "új szolgálati területté: {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ebbe a szolgálati területbe: {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "már nincs a ChurchCRM-ben"
 
 #: 
 msgid "Collapse sidebar"
@@ -26825,10 +26378,6 @@ msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, tö
 msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Beosztás visszavonva"
 
@@ -26875,10 +26424,6 @@ msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges.
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Ez az alkalom törölve lett"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27577,10 +27122,6 @@ msgstr "Események megtekintése"
 #: 
 msgid "View people and families"
 msgstr "Személyek és családok megtekintése"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Az önkéntesek kezelése ki van kapcsolva ennél az egyháznál"
 
 #: 
 msgid "Weak"

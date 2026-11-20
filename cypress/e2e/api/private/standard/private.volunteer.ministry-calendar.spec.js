@@ -29,7 +29,6 @@
  * mid-spec, and a leftover calendar would survive as an unowned church calendar.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 
@@ -40,7 +39,6 @@ const PUBLIC_CALENDAR = 1; // seed.sql — a church calendar, owned by nobody
 
 const PREFIX = "MINCAL9869";
 
-let originalVersion = "v1";
 let ministryA = 0;
 let ministryB = 0;
 let calendarA = 0;
@@ -67,10 +65,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         body,
         expectedStatus,
     );
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -157,11 +151,6 @@ after(() => {
 
 describe("Volunteer v2 — the ministry's own calendar (#9869, deferred from #9866)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         createMinistryViaApi("Ministry A").then((body) => {
@@ -191,7 +180,6 @@ describe("Volunteer v2 — the ministry's own calendar (#9869, deferred from #98
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     describe("Volunteer v2 — the ministry calendar (#9869)", () => {
@@ -485,24 +473,6 @@ describe("Volunteer v2 — the ministry's own calendar (#9869, deferred from #98
                     null,
                     200,
                 );
-            });
-
-            it("loses the exception when the rollout flag goes back to v1", () => {
-                setVersion("v1");
-
-                api(
-                    COORDINATOR_KEY,
-                    "POST",
-                    "/api/events",
-                    eventBody({
-                        Title: `${PREFIX} V1 Pin`,
-                        MinistryId: ministryA,
-                        PinnedCalendars: [calendarA],
-                    }),
-                    403,
-                );
-
-                setVersion("v2");
             });
         });
 

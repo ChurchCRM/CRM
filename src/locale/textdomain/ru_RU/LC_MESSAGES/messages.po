@@ -1404,10 +1404,6 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: 
-msgid "Exit"
-msgstr "Выход"
-
-#: 
 msgid "Add New"
 msgstr "Создать"
 
@@ -1512,11 +1508,6 @@ msgstr "Обновить свойства"
 #: 
 msgid "Assign New Group"
 msgstr "Назначить новую группу"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Назначьте Возможность Нью-добровольцев"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1634,11 +1625,6 @@ msgid "Restore Database"
 msgstr "Восстановить базу данных"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Пожалуйста, подтвердите удаление"
-
-#: 
 msgid "Listing"
 msgstr "Составление списка"
 
@@ -1732,14 +1718,6 @@ msgstr "Новый пароль"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Подтвердите новый пароль"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Редактор служений"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Нет волонтеров не было добавлено еще"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6442,20 +6420,8 @@ msgid "Additional Information"
 msgstr "Дополнительная информация"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Установить служение"
-
-#: 
 msgid "Choose a property..."
 msgstr "Выберите свойство..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Выберите возможности..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Личная и конт. информация"
 
 #: 
 msgid "Edited"
@@ -6464,14 +6430,6 @@ msgstr "Изменено"
 #: 
 msgid "Newsletter"
 msgstr "Рассылка"
-
-#: 
-msgid "Personal"
-msgstr "Личное"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Выбрать служение"
 
 #: 
 msgid "Volunteer"
@@ -6662,10 +6620,6 @@ msgid "Confirm Property Deletion"
 msgstr "Подтвердите удаление свойства"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Подтвердите удаление волонтерской возможности"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
 
@@ -6678,16 +6632,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Существующие поля людей"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Существующие волонтерские возможности"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Поле успешно удалено"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Неверный токен CSRF"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8459,10 +8405,6 @@ msgid "Create or edit property type categories"
 msgstr "Создать или изменить категории типов свойств"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Создать или изменить должности добровольцев"
-
-#: 
 msgid "Current person"
 msgstr "Текущий человек"
 
@@ -8911,10 +8853,6 @@ msgid "Manage user account details and permissions"
 msgstr "Управление данными учётной записи и правами пользователя"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Управление волонтёрскими возможностями и назначением участников"
-
-#: 
 msgid "Map cart items"
 msgstr "Сопоставить элементы корзины"
 
@@ -9033,10 +8971,6 @@ msgstr "Результаты не найдены"
 #: 
 msgid "No timeline events yet."
 msgstr "События временной шкалы отсутствуют."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Назначения волонтёрских возможностей отсутствуют."
 
 #: 
 msgid "Not ready yet?"
@@ -9541,10 +9475,6 @@ msgid "funds"
 msgstr "фонды"
 
 #: 
-msgid "opportunities"
-msgstr "возможности"
-
-#: 
 msgid "or connect an external service"
 msgstr "или подключите внешний сервис"
 
@@ -9844,11 +9774,6 @@ msgstr "Не удалось получить адреса электронной
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Не удалось получить номера телефонов"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Найти волонтеров для конкретной возможности"
 
 #. Context: query_qry
 #: 
@@ -12617,10 +12542,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Невозможно удалить тип свойства: на него ссылаются %d свойства(-в). Сначала переназначьте или удалите эти свойства."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Невозможно удалить возможность волонтёрства: ей назначено %d человек(-а). Сначала снимите назначения."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Класс должен быть одним из: p, f или g"
 
@@ -12631,10 +12552,6 @@ msgstr "Копировать сообщение об ошибке"
 #: 
 msgid "Could not load note."
 msgstr "Не удалось загрузить заметку."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Описание не должно превышать 100 символов"
 
 #: 
 msgid "Donation fund not found"
@@ -12657,10 +12574,6 @@ msgid "Failed to create property type"
 msgstr "Не удалось создать тип свойства"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Не удалось создать возможность волонтёрства"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Не удалось удалить фонд пожертвований"
 
@@ -12677,10 +12590,6 @@ msgid "Failed to delete property type"
 msgstr "Не удалось удалить тип свойства"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Не удалось удалить возможность волонтёрства"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Не удалось обновить фонд пожертвований"
 
@@ -12693,10 +12602,6 @@ msgid "Failed to update property type"
 msgstr "Не удалось обновить тип свойства"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Не удалось обновить возможность волонтёрства"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Сбор средств не найден"
 
@@ -12707,10 +12612,6 @@ msgstr "Идентификатор установки"
 #: 
 msgid "Invalid class"
 msgstr "Недопустимый класс"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Имя не должно превышать 30 символов"
 
 #: 
 msgid "Note by %s deleted"
@@ -12733,16 +12634,8 @@ msgid "Read more"
 msgstr "Подробнее"
 
 #: 
-msgid "That name already exists."
-msgstr "Такое имя уже существует."
-
-#: 
 msgid "Title is required"
 msgstr "Заголовок обязателен"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Возможность волонтёрства не найдена"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15339,10 +15232,6 @@ msgid "System Configuration"
 msgstr "Конфигурация системы"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "К этому волонтёрскому служению прикреплены люди. Удаление отменит назначение"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Обновите до допустимого URL, который"
 
@@ -15571,10 +15460,6 @@ msgid "Add New Fund"
 msgstr "Добавить новый фонд"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Добавить новую возможность"
-
-#: 
 msgid "Add New Person"
 msgstr "Добавить нового прихожанина"
 
@@ -15587,10 +15472,6 @@ msgid "Add New Role"
 msgstr "Добавить новую роль"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Добавить новое волонтёрское служение"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Добавить класс воскресной школы"
 
@@ -15601,10 +15482,6 @@ msgstr "Удалить эту семью?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Просмотрите новые семьи и отдельных лиц, зарегистрировавшихся через публичную форму регистрации"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Подтверждение удаления волонтёрского служения"
 
 #: 
 msgid "# Payments"
@@ -17275,14 +17152,6 @@ msgid "Find people who did not attend an event"
 msgstr "Найти людей, которые не присутствовали на мероприятии"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Найти волонтеров, соответствующих двум конкретным кодам возможностей"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Первая возможность для волонтеров"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Сложенный буклет"
 
@@ -17359,10 +17228,6 @@ msgid "Run Report"
 msgstr "Запустить отчет"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Вторая возможность для волонтеров"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Отображается в боковой панели, на странице входа и в письмах. Загрузка логотипа заменяет логотип ChurchCRM везде, где он появляется."
 
@@ -17389,14 +17254,6 @@ msgstr "Использование логотипа ChurchCRM по умолча�
 #: 
 msgid "View Full Family Giving"
 msgstr "Просмотреть полные благотворительные взносы семьи"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Возможность для волонтеров"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Волонтеры для двух возможностей"
 
 #: 
 msgid "YTD"
@@ -18237,10 +18094,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Расписание, обслуживающее одно событие, не может следовать за другими событиями; удалите его и добавьте новое расписание"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Единый список возможностей служения, например «Детская комната» или «Встречающий», который ведётся в разделе «Люди» → «Администрирование». Каждому человеку присваиваются метки возможностей, в которых он готов помогать, на вкладке «Волонтёр» его карточки. Это всё, что записывается: нет команд, расписаний, назначений на дату и напоминаний по эл. почте. Метки используются в отчётах и в карточке человека."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Лучше всего подходит квадратное фото лица."
 
@@ -18547,18 +18400,6 @@ msgstr "Фоновые задания выполнены"
 #: 
 msgid "Birthday greeting"
 msgstr "Поздравление с днём рождения"
-
-#: 
-msgid "Both"
-msgstr "Оба"
-
-#: 
-msgid "Both (transition)"
-msgstr "Оба (переход)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Оба — V1 и V2 рядом (переход)"
 
 #: 
 msgid "Calendar address"
@@ -21653,22 +21494,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "У пользователя должно быть право добавлять события или он должен координировать волонтёрское служение, которому принадлежит этот календарь"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Возможности для волонтёров (прежняя версия)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — прежние Возможности для волонтёров"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Служения"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Управление волонтёрами"
-
-#: 
 msgid "Valid"
 msgstr "Действительно"
 
@@ -21687,14 +21512,6 @@ msgstr "Посмотреть событие"
 #: 
 msgid "View this email"
 msgstr "Посмотреть это письмо"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Волонтёр (прежняя версия)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Управление волонтёрами V2 не включено"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21805,10 +21622,6 @@ msgid "What the check found"
 msgstr "Что обнаружила проверка"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Что представляют собой режимы работы с волонтёрами"
-
-#: 
 msgid "What you want to say"
 msgstr "Что вы хотите сказать"
 
@@ -21839,10 +21652,6 @@ msgstr "Откуда берутся даты"
 #: 
 msgid "Where we reach you"
 msgstr "Как мы с вами связываемся"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Какой режим управления волонтёрами активен. V1 — прежняя функция «Возможности для волонтёров»; V2 — новый процесс планирования и назначений. «Оба» показывает их рядом на время перехода."
 
 #: 
 msgid "Which events"
@@ -22251,10 +22060,6 @@ msgstr "У вас нет прав для изменения группы это�
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Только руководитель добровольцев может изменить координатора служения"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Выбор V1 приостанавливает отправку писем V2; все отложенные письма будут отправлены при включении V2, если событие еще не завершилось."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23099,10 +22904,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Упреждение оповещения о незаполненной позиции (часы)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Управление добровольцами"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Служения добровольцев, команды, расписания и назначения"
 
@@ -23113,14 +22914,6 @@ msgstr "Позиции добровольцев на ближайшие дни"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Добровольцы ещё нужны для этих предстоящих проведений: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Что это значит?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Какой опыт добровольцев использует эта церковь"
 
 #: 
 msgid "You are on the schedule"
@@ -26491,248 +26284,8 @@ msgid "Review Family Information"
 msgstr "Проверить сведения о семье"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Служение с названием «%s» уже существует. Выберите его из списка или укажите другое название."
-
-#: 
-msgid "A new ministry"
-msgstr "Новое служение"
-
-#: 
-msgid "A position"
-msgstr "Позиция"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Добавить волонтеров ({{total}}) на ранее преобразованные позиции?"
-
-#: 
-msgid "Already converted"
-msgstr "Уже преобразовано"
-
-#: 
-msgid "An existing ministry"
-msgstr "Существующее служение"
-
-#: 
-msgid "Becomes"
-msgstr "Становится"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "В ChurchCRM есть два способа управления волонтерами. Одновременно должен использоваться только один; настройка «Режим волонтеров» определяет, какой из них видит эта церковь. Переключение скрывает или показывает страницы и пункты меню и никогда не удаляет данные. V1 и Оба доступны, только пока используются Возможности для волонтеров: когда все возможности преобразованы и церковь перешла на V2, они исчезают из этого списка."
-
-#: 
-msgid "Convert"
-msgstr "Преобразовать"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Преобразовать Возможности для волонтеров"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Преобразовать возможности ({{total}}) сейчас? Данные V1 сохраняются без изменений до вывода Возможностей для волонтеров из использования."
-
-#: 
-msgid "Converted"
-msgstr "Преобразовано"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Преобразовано: позиций — {{positions}}, служений — {{ministries}}, допущено волонтеров — {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Каждая возможность становится позицией в первой команде одного служения, а все связанные с ней люди получают допуск к этой позиции. Самозапись на эти позиции изначально отключена."
-
-#: 
-msgid "Everything is converted."
-msgstr "Все преобразовано."
-
-#: 
-msgid "Existing ministry"
-msgstr "Существующее служение"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Дайте новому служению название длиной до 100 символов."
-
-#: 
-msgid "Its own ministry"
-msgstr "Собственное служение"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Связаны с тех пор: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Связи, которые нельзя преобразовать"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Новые отдельные служения"
-
-#: 
-msgid "New ministry name"
-msgstr "Название нового служения"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Письма не отправляются, а Возможности для волонтеров остаются без изменений до вывода их из использования."
-
-#: 
-msgid "No name"
-msgstr "Без названия"
-
-#: 
-msgid "Not converted"
-msgstr "Не преобразовано"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Открыть Переключатели функций"
-
-#: 
-msgid "Open Ministries"
-msgstr "Открыть Служения"
-
-#: 
-msgid "Opportunities"
-msgstr "Возможности"
-
-#: 
-msgid "Opportunity"
-msgstr "Возможность"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Возможность № %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Люди, связанные с преобразованными Возможностями для волонтеров после преобразования: %d. Добавьте их на позиции до того, как Возможности для волонтеров будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Сначала выполните предпросмотр преобразования и отправьте полученную в ответ ревизию."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Переименовано, чтобы названия не повторялись"
-
-#: 
-msgid "Review the conversion"
-msgstr "Проверить преобразование"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Отправьте выбор преобразования в виде объекта JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Отправьте возможности, которые станут служениями, в виде списка идентификаторов."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Такого служения не существует."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Версия ChurchCRM, в которой администратор скрыл уведомление о выводе Возможностей для волонтеров из использования."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Возможности для волонтеров изменились после предпросмотра. Проверьте предпросмотр еще раз, затем выполните преобразование."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Не удалось открыть подтверждение. Перезагрузите страницу и повторите попытку."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Не удалось выполнить предпросмотр преобразования."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Преобразование не удалось. Ничего не изменено."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "У служения «%s» нет команды для этих позиций."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Не удалось связаться с сервером. Перезагрузите страницу, чтобы проверить, выполнено ли преобразование."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Нет Возможностей для волонтеров для преобразования."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Управление добровольцами переключается в режим «Оба», чтобы новые служения были видны рядом с Возможностями для волонтеров."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Возможности для волонтеров выводятся из использования"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Возможности для волонтеров преобразованы"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Возможности для волонтеров будут выведены из использования в начале 2027 года. Преобразуйте их в Служения, чтобы сохранить, кто где служит."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Возможности для волонтеров будут выведены из использования в начале 2027 года. Преобразуйте сейчас в Служения ваши возможности (%1$d) и волонтеров (%2$d). Вы можете просмотреть результат до того, как что-либо изменится."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Допущенные волонтеры"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Волонтеры для добавления на преобразованные позиции"
-
-#: 
-msgid "What it becomes"
-msgstr "Чем становится"
-
-#: 
-msgid "What will happen"
-msgstr "Что произойдет"
-
-#: 
-msgid "Where they go"
-msgstr "Куда они попадут"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Какие прежние Возможности для волонтеров преобразованы и какой позицией стала каждая из них."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Какой режим волонтеров использует эта церковь. Возможности для волонтеров (V1) будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Ваши Возможности для волонтеров преобразованы в Служения. Переключите Управление добровольцами на V2 до того, как Возможности для волонтеров будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "в новое служение, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "в служение {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "больше нет в ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26913,10 +26466,6 @@ msgstr[2] "%d назначений по умолчанию пропущено п
 msgstr[3] "%d назначения по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Переходная настройка. Доступны и прежние страницы «Возможности для волонтёров», и новые страницы «Служения», а в карточке человека показаны обе вкладки «Волонтёр» с понятными подписями. Используйте её на время перехода церкви с V1 на V2, затем переключитесь только на V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Назначение отменено"
 
@@ -26963,10 +26512,6 @@ msgstr "Эта дата отменена. Больше ничего от Вас 
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Это проведение отменено"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Волонтёрство, организованное так, как это принято в церкви. У каждого служения есть команды и позиции; люди получают квалификацию для позиций и входят в группу резерва служения; расписания следуют за событиями календаря и создают проведения с датами и потребностями в людях; координаторы назначают людей, которые принимают назначение, отказываются или предлагают замену; напоминания и оповещения отправляются по эл. почте. Администраторы и пользователи с правом «Управление служениями» видят все служения и могут создавать, деактивировать и удалять их. Координатору служения вместо этого даётся право «Управление моими служениями»: тогда раздел «Служения» на боковой панели показывает только те служения, которые он координирует. Руководитель команды управляет своей командой через портал общины. Члены общины используют портал общины, чтобы видеть своё расписание, отвечать, записываться и предлагать помощь."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27671,10 +27216,6 @@ msgstr "Просмотр событий"
 #: 
 msgid "View people and families"
 msgstr "Просмотр людей и семей"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Управление волонтёрами отключено для этой церкви"
 
 #: 
 msgid "Weak"

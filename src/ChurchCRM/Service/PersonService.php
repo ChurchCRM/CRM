@@ -10,8 +10,6 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
-use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -383,29 +381,6 @@ class PersonService
         }
 
         return ['emails' => $emails, 'byRole' => $byRole, 'recipients' => $recipients];
-    }
-
-    /**
-     * Assign a volunteer opportunity to a person.
-     */
-    public function addVolunteerOpportunity(int $personId, int $opportunityId): bool
-    {
-        $assignment = new PersonVolunteerOpportunity();
-        $assignment->setPersonId($personId);
-        $assignment->setVolunteerOpportunityId($opportunityId);
-
-        return (bool)$assignment->save();
-    }
-
-    /**
-     * Remove a volunteer opportunity assignment from a person.
-     */
-    public function removeVolunteerOpportunity(int $personId, int $opportunityId): void
-    {
-        PersonVolunteerOpportunityQuery::create()
-            ->filterByPersonId($personId)
-            ->filterByVolunteerOpportunityId($opportunityId)
-            ->delete();
     }
 
     /**
