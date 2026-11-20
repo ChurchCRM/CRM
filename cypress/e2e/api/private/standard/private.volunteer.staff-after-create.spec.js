@@ -12,7 +12,6 @@
  * switch on, so their events may have a class.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = 99;
@@ -30,7 +29,6 @@ const PREFIX = "VSTAFF33";
 const URL = "/api/ministries";
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let originalVersion = "v1";
 const ministry = {};
 const team = {};
 const classes = {};
@@ -54,10 +52,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function localDate(offsetDays) {
@@ -199,10 +193,6 @@ after(() => {
 
 describe("Volunteer v2 D33 — events, schedules and occurrences are created separately", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         for (const key of ["A", "B"]) {
@@ -241,7 +231,6 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── creating events never staffs them ──────────────────────────────────────
@@ -537,7 +526,7 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
             });
         });
 
-        it("is a coordinator's: a team leader, a member session and rollout v1 are refused", () => {
+        it("is a coordinator's: a team leader and a member session are refused", () => {
             createEvents(oneEvent("Team Leader Event", 6), "B").then((made) => {
                 staffThem([made.events[0].id], "B", COORDINATOR_KEY, 403);
             });
@@ -545,10 +534,6 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
                 grantScope(PERSON_SELFEDIT, "ministry", ministry.A);
                 staffThem([made.events[0].id], "A", SELFEDIT_KEY, 403);
                 dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_SELFEDIT]);
-
-                setVersion("v1");
-                staffThem([made.events[0].id], "A", ADMIN_KEY, 403);
-                setVersion("v2");
             });
         });
     });

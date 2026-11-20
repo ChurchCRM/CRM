@@ -40,7 +40,6 @@
  * inherit rows. Deletion order is FK-safe, children first.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const HORIZON_URL = "/admin/api/system/config/iVolunteerSchedulingHorizonWeeks";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
@@ -66,7 +65,6 @@ let teamB1 = 0;
 let positionOne = 0;
 let positionTwo = 0;
 let scopeIdCoordinator = 0;
-let originalVersion = "v1";
 
 /** The event ids created for the linked fixture, so they can be deleted again. */
 let seriesEventIds = [];
@@ -93,10 +91,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         body,
         expectedStatus,
     );
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */
@@ -277,13 +271,6 @@ after(() => {
 
 describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then(
-            (resp) => {
-                originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-            },
-        );
-        setVersion("v2");
-
         cleanupFixtures();
 
         const firstWednesday = daysToNext(3);
@@ -330,7 +317,6 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── §2.8 schedule CRUD and invariants ──────────────────────────────────
@@ -1465,32 +1451,6 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 PLAINAUTH_KEY,
                 "GET",
                 `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}`,
-                null,
-                403,
-            );
-        });
-    });
-
-    // ── rollout gate ───────────────────────────────────────────────────────
-
-    describe("rollout gate (#9704)", () => {
-        after(() => {
-            setVersion("v2");
-        });
-
-        it("403s the whole surface when V2 is not enabled", () => {
-            setVersion("v1");
-            api(
-                ADMIN_KEY,
-                "GET",
-                `/api/ministries/ministries/${ministryA}/schedules`,
-                null,
-                403,
-            );
-            api(
-                ADMIN_KEY,
-                "GET",
-                `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(7)}`,
                 null,
                 403,
             );

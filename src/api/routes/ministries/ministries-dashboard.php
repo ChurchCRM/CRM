@@ -18,7 +18,6 @@ use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -46,16 +45,10 @@ use Slim\Routing\RouteCollectorProxy;
  * which is why `isGlobalManager()` is asked first; an empty allow-list short-circuits to
  * empty panels rather than being handed to a filter whose behaviour on `[]` would have
  * to be trusted.
- *
- * **This group opens its own `$app->group('/ministries', …)` and chains
- * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
- * `RouteCollectorProxy` it is chained on; nothing propagates from the groups opened in
- * the other volunteer route files, and an ungated group would be reachable in every
- * rollout state (§3.3).
  */
 $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->get('/dashboard', 'getVolunteerDashboard');
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
 
 /** Default window, per §3.3.2's `?days=28`. */
 const VOLUNTEER_DASHBOARD_DEFAULT_DAYS = 28;

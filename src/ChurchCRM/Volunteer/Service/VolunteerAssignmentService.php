@@ -1318,7 +1318,7 @@ class VolunteerAssignmentService
     public function getEventStaffingSummary(array $eventIds, User $user): array
     {
         $eventIds = array_values(array_filter(array_unique(array_map('intval', $eventIds))));
-        if ($eventIds === [] || !User::isVolunteerV2Enabled()) {
+        if ($eventIds === []) {
             return [];
         }
 

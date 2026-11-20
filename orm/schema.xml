@@ -815,20 +815,6 @@
         </vendor>
     </table>
 
-    <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteerOpportunity" description="This contains the names and descriptions of volunteer opportunities">
-        <column name="vol_ID" phpName="Id" type="INTEGER" size="3" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="vol_Order" phpName="Order" type="INTEGER" size="3" required="true" defaultValue="0"/>
-        <column name="vol_Active" phpName="Active" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="true"/>
-        <column name="vol_Name" phpName="Name" type="VARCHAR" size="30"/>
-        <column name="vol_Description" phpName="Description" type="VARCHAR" size="100"/>
-        <unique name="vol_ID">
-            <unique-column name="vol_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-
 
      <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice" description="This contains a list of all (un)registered kiosk devices">
       <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
@@ -936,18 +922,6 @@
         </index>
         <unique name="prt_ID">
             <unique-column name="prt_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-
-    <table name="person2volunteeropp_p2vo" idMethod="native" phpName="PersonVolunteerOpportunity" description="This table indicates which people are tied to which volunteer opportunities">
-        <column name="p2vo_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="p2vo_per_ID" phpName="PersonId" type="SMALLINT" size="9"/>
-        <column name="p2vo_vol_ID" phpName="VolunteerOpportunityId" type="SMALLINT" size="9"/>
-        <unique name="p2vo_ID">
-            <unique-column name="p2vo_ID"/>
         </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
