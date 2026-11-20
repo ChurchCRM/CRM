@@ -6,16 +6,22 @@ const PUBLIC_CALENDAR = { type: "calendar", id: 1 };
 
 describe("Member without a family in the portal", () => {
     let sharedCalendars;
+    let volunteerVersion;
 
     before(() => {
         cy.getMemberPortalCalendars().then((calendars) => {
             sharedCalendars = calendars;
         });
         cy.shareMemberPortalCalendars([PUBLIC_CALENDAR]);
+        cy.getSystemConfig("sVolunteerVersion").then((value) => {
+            volunteerVersion = value;
+        });
+        cy.setSystemConfig("sVolunteerVersion", "v2");
     });
 
     after(() => {
         cy.shareMemberPortalCalendars(sharedCalendars);
+        cy.restoreSystemConfig("sVolunteerVersion", volunteerVersion);
     });
 
     beforeEach(() => {
