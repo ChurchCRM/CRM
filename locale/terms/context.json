@@ -49,6 +49,9 @@
   "No notes in this time range.": [
     "src/people/views/_dashboard-overview.php:244"
   ],
+  "No notes yet.": [
+    "src/people/views/timeline-events.php:27"
+  ],
   "Open total": [
     "src/finance/views/deposits/search.php:45"
   ],

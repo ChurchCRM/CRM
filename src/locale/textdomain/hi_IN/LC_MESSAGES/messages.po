@@ -1464,10 +1464,6 @@ msgid "Assign New Group"
 msgstr "नया समूह सौंपें"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "एक नया स्वयंसेवक अवसर सौंपें"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
 
@@ -6350,20 +6346,8 @@ msgid "Additional Information"
 msgstr "अतिरिक्त जानकारी"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "अवसर सौंपें"
-
-#: 
 msgid "Choose a property..."
 msgstr "एक विशेषता चुनें..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "अवसर चुनें..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "संपर्क और व्यक्तिगत जानकारी"
 
 #: 
 msgid "Edited"
@@ -6372,14 +6356,6 @@ msgstr "संपादित"
 #: 
 msgid "Newsletter"
 msgstr "न्यूज़लेटर"
-
-#: 
-msgid "Personal"
-msgstr "व्यक्तिगत"
-
-#: 
-msgid "Select Opportunities"
-msgstr "अवसर चुनें"
 
 #: 
 msgid "Volunteer"
@@ -8931,10 +8907,6 @@ msgstr "कोई परिणाम नहीं मिला"
 #: 
 msgid "No timeline events yet."
 msgstr "अभी तक कोई टाइमलाइन इवेंट नहीं।"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "अभी तक कोई स्वयंसेवा अवसर निर्धारण नहीं।"
 
 #: 
 msgid "Not ready yet?"
@@ -21551,10 +21523,6 @@ msgstr "आयोजन देखें"
 #: 
 msgid "View this email"
 msgstr "यह ईमेल देखें"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "स्वयंसेवक (पुराना)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

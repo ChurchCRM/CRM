@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "새 그룹 배정"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "새 사역 배정"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
 
@@ -6372,20 +6368,8 @@ msgid "Additional Information"
 msgstr "추가 정보"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "기회 할당"
-
-#: 
 msgid "Choose a property..."
 msgstr "속성을 선택하세요..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "기회를 선택하세요..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "연락처 및 개인 정보"
 
 #: 
 msgid "Edited"
@@ -6394,14 +6378,6 @@ msgstr "편집됨"
 #: 
 msgid "Newsletter"
 msgstr "뉴스레터"
-
-#: 
-msgid "Personal"
-msgstr "개인"
-
-#: 
-msgid "Select Opportunities"
-msgstr "기회 선택"
 
 #: 
 msgid "Volunteer"
@@ -8948,10 +8924,6 @@ msgstr "결과를 찾을 수 없음"
 #: 
 msgid "No timeline events yet."
 msgstr "아직 타임라인 이벤트가 없습니다."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "아직 봉사 기회 배정이 없습니다."
 
 #: 
 msgid "Not ready yet?"
@@ -21551,10 +21523,6 @@ msgstr "행사 보기"
 #: 
 msgid "View this email"
 msgstr "이 이메일 보기"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "봉사자(기존)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

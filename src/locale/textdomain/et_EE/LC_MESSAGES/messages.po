@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Määra uus rühm"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Määrake uus vabatahtliku võimalus"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Mahaarvatud summa ei saa olla suurem kui kogusumma."
 
@@ -6380,20 +6376,8 @@ msgid "Additional Information"
 msgstr "Täiendav teave"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Omista võimalused"
-
-#: 
 msgid "Choose a property..."
 msgstr "Valige vara..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Valige võimalused..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt ja isiklik teave"
 
 #: 
 msgid "Edited"
@@ -6402,14 +6386,6 @@ msgstr "Muudetud"
 #: 
 msgid "Newsletter"
 msgstr "Uudiskiri"
-
-#: 
-msgid "Personal"
-msgstr "Isiklik"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Valige võimalused"
 
 #: 
 msgid "Volunteer"
@@ -8961,10 +8937,6 @@ msgstr "Tulemusi ei leitud"
 #: 
 msgid "No timeline events yet."
 msgstr "Ajajoonel pole veel sündmusi."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Vabatahtlike võimaluste määranguid pole veel."
 
 #: 
 msgid "Not ready yet?"
@@ -21581,10 +21553,6 @@ msgstr "Vaata sündmust"
 #: 
 msgid "View this email"
 msgstr "Vaata seda e-kirja"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vabatahtlik (vana)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "שייך לקבוצה חדשה"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "הקצה הזדמנות התנדבות חדשה"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -6379,20 +6375,8 @@ msgid "Additional Information"
 msgstr "מידע נוסף"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "הקצה הזדמנויות"
-
-#: 
 msgid "Choose a property..."
 msgstr "בחר מאפיין..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "בחר הזדמנויות..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "פרטי קשר ומידע אישי"
 
 #: 
 msgid "Edited"
@@ -6401,14 +6385,6 @@ msgstr "נערך"
 #: 
 msgid "Newsletter"
 msgstr "ניוזלטר"
-
-#: 
-msgid "Personal"
-msgstr "אישי"
-
-#: 
-msgid "Select Opportunities"
-msgstr "בחר הזדמנויות"
 
 #: 
 msgid "Volunteer"
@@ -8960,10 +8936,6 @@ msgstr "לא נמצאו תוצאות"
 #: 
 msgid "No timeline events yet."
 msgstr "אין אירועי ציר זמן עדיין."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "אין שיוכי הזדמנויות התנדבות עדיין."
 
 #: 
 msgid "Not ready yet?"
@@ -21580,10 +21552,6 @@ msgstr "צפייה באירוע"
 #: 
 msgid "View this email"
 msgstr "צפייה בדוא\"ל זה"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "מתנדב (ישן)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

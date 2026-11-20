@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Εκχώρηση νέας ομάδας"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Αναθέστε μια Νέα Εθελοντική Ευκαιρία"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Το μη εκπιπτόμενο ποσό δεν μπορεί να είναι μεγαλύτερο από το συνολικό ποσό."
 
@@ -6381,20 +6377,8 @@ msgid "Additional Information"
 msgstr "Πρόσθετες Πληροφορίες"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Εκχώρηση Ευκαιριών"
-
-#: 
 msgid "Choose a property..."
 msgstr "Επιλέξτε μια περιουσία..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Επιλέξτε ευκαιρίες..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Στοιχεία επικοινωνίας & προσωπικά στοιχεία"
 
 #: 
 msgid "Edited"
@@ -6403,14 +6387,6 @@ msgstr "Επεξεργασμένο"
 #: 
 msgid "Newsletter"
 msgstr "Ενημέρωση"
-
-#: 
-msgid "Personal"
-msgstr "Προσωπικός"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Επιλέξτε Ευκαιρίες"
 
 #: 
 msgid "Volunteer"
@@ -8962,10 +8938,6 @@ msgstr "Δεν βρέθηκαν αποτελέσματα"
 #: 
 msgid "No timeline events yet."
 msgstr "Δεν υπάρχουν γεγονότα χρονολογίου ακόμα."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Δεν υπάρχουν αναθέσεις ευκαιριών εθελοντισμού ακόμα."
 
 #: 
 msgid "Not ready yet?"
@@ -21582,10 +21554,6 @@ msgstr "Προβολή της εκδήλωσης"
 #: 
 msgid "View this email"
 msgstr "Προβολή αυτού του email"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Εθελοντής (παλαιό)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

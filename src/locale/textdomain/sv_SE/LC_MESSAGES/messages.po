@@ -1536,11 +1536,6 @@ msgid "Assign New Group"
 msgstr "Tilldela ny grupp"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tilldela en ny frivillig möjlighet"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ej avdragsgiltig summa kan inte vara störer än slutsumman"
 
@@ -6468,20 +6463,8 @@ msgid "Additional Information"
 msgstr "Ytterligare information"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tilldela möjligheter"
-
-#: 
 msgid "Choose a property..."
 msgstr "Välj en egenskap..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Välj möjligheter..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt & Personlig info"
 
 #: 
 msgid "Edited"
@@ -6490,14 +6473,6 @@ msgstr "Redigerad"
 #: 
 msgid "Newsletter"
 msgstr "Nyhetsbrev"
-
-#: 
-msgid "Personal"
-msgstr "Personligt"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Välj möjligheter"
 
 #: 
 msgid "Volunteer"
@@ -9049,10 +9024,6 @@ msgstr "Inga resultat hittades"
 #: 
 msgid "No timeline events yet."
 msgstr "Inga tidslinjehändelser ännu."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Inga frivilliguppdrag tilldelade ännu."
 
 #: 
 msgid "Not ready yet?"
@@ -21669,10 +21640,6 @@ msgstr "Visa händelsen"
 #: 
 msgid "View this email"
 msgstr "Visa detta e-postmeddelande"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Volontär (äldre)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

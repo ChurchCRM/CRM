@@ -1489,10 +1489,6 @@ msgid "Assign New Group"
 msgstr "Thêm thành viên vào Ban/Mục vụ"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Thêm thành viên mới vào Mục vụ"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Số tiền không được khấu trừ không được lớn hơn tổng số tiền."
 
@@ -6386,20 +6382,8 @@ msgid "Additional Information"
 msgstr "Thông tin bổ sung"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Giao cơ hội (phụng vụ/công tác)"
-
-#: 
 msgid "Choose a property..."
 msgstr "Chọn một thuộc tính..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Chọn cơ hội..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Thông tin liên hệ & cá nhân"
 
 #: 
 msgid "Edited"
@@ -6408,14 +6392,6 @@ msgstr "Đã chỉnh sửa"
 #: 
 msgid "Newsletter"
 msgstr "Bản tin/Thông báo"
-
-#: 
-msgid "Personal"
-msgstr "Cá nhân"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Chọn các cơ hội"
 
 #: 
 msgid "Volunteer"
@@ -8962,10 +8938,6 @@ msgstr "Khong tim thay ket qua"
 #: 
 msgid "No timeline events yet."
 msgstr "Chua co su kien nao trong dong thoi gian."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Chua co gan co hoi tinh nguyen nao."
 
 #: 
 msgid "Not ready yet?"
@@ -21565,10 +21537,6 @@ msgstr "Xem sự kiện"
 #: 
 msgid "View this email"
 msgstr "Xem email này"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Tình nguyện viên (Cũ)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

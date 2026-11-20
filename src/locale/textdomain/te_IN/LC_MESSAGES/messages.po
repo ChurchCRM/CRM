@@ -1472,10 +1472,6 @@ msgid "Assign New Group"
 msgstr "కొత్త గ్రూప్‌ను కేటాయించండి"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "కొత్త వాలంటీర్ అవకాశాన్ని కేటాయించండి"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "తగ్గింపు పొందని మొత్తం మొత్తం మొత్తం కంటే ఎక్కువ ఉండకూడదు."
 
@@ -6359,20 +6355,8 @@ msgid "Additional Information"
 msgstr "అదనపు సమాచారం"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "అవకాశాలను కేటాయించండి"
-
-#: 
 msgid "Choose a property..."
 msgstr "ఒక ఆస్తిని ఎంచుకోండి..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "అవకాశాలను ఎంచుకోండి..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "సంప్రదింపు & వ్యక్తిగత సమాచారం"
 
 #: 
 msgid "Edited"
@@ -6381,14 +6365,6 @@ msgstr "సవరించబడిన"
 #: 
 msgid "Newsletter"
 msgstr "వార్తాలేఖ"
-
-#: 
-msgid "Personal"
-msgstr "వ్యక్తిగత"
-
-#: 
-msgid "Select Opportunities"
-msgstr "అవకాశాలను ఎంచుకోండి"
 
 #: 
 msgid "Volunteer"
@@ -8940,10 +8916,6 @@ msgstr "ఫలితాలు కనుగొనబడలేదు"
 #: 
 msgid "No timeline events yet."
 msgstr "ఇంకా టైమ్‌లైన్ ఈవెంట్‌లు లేవు."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ఇంకా వాలంటీర్ అవకాశ కేటాయింపులు లేవు."
 
 #: 
 msgid "Not ready yet?"
@@ -21560,10 +21532,6 @@ msgstr "కార్యక్రమాన్ని చూడండి"
 #: 
 msgid "View this email"
 msgstr "ఈ ఇమెయిల్‌ను చూడండి"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "స్వచ్ఛంద సేవ (పాతది)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

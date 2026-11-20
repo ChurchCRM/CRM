@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Přiřadit novou skupinu"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Přiřadit novou dobrovolnickou příležitost"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodečitatelná částka nesmí být vyšší než celková částka."
 
@@ -6374,20 +6370,8 @@ msgid "Additional Information"
 msgstr "Další informace"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Přiřadit přílĕitosti"
-
-#: 
 msgid "Choose a property..."
 msgstr "Vyberte vlastnost..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Vyberte příležitosti..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontaktní a osobní údaje"
 
 #: 
 msgid "Edited"
@@ -6396,14 +6380,6 @@ msgstr "Upraveno"
 #: 
 msgid "Newsletter"
 msgstr "Zprávy ze sboru"
-
-#: 
-msgid "Personal"
-msgstr "Osobní"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Vyberte přílĕitosti"
 
 #: 
 msgid "Volunteer"
@@ -8960,10 +8936,6 @@ msgstr "Nebyly nalezeny žádné výsledky"
 #: 
 msgid "No timeline events yet."
 msgstr "Zatím žádné události na časové ose."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Zatím žádná přiřazení k dobrovolnickým příležitostem."
 
 #: 
 msgid "Not ready yet?"
@@ -21597,10 +21569,6 @@ msgstr "Zobrazit událost"
 #: 
 msgid "View this email"
 msgstr "Zobrazit tento e-mail"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Dobrovolník (starší)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"
