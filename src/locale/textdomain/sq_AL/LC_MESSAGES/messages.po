@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Cakto grup të ri"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Cakto një re Vullnetare Opportunity"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Shuma pazbritshme nuk mund të jetë më i madh se shuma e përgjithshme."
 
@@ -6372,20 +6368,8 @@ msgid "Additional Information"
 msgstr "Informacion shtesë"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Cakto mundësitë"
-
-#: 
 msgid "Choose a property..."
 msgstr "Zgjidhni një pronë..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Zgjidhni mundësitë..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Informacioni i kontaktit dhe personal"
 
 #: 
 msgid "Edited"
@@ -6394,14 +6378,6 @@ msgstr "I ndryshuar"
 #: 
 msgid "Newsletter"
 msgstr "Buletini i lajmeve"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Zgjidhni mundësitë"
 
 #: 
 msgid "Volunteer"
@@ -8953,10 +8929,6 @@ msgstr "Nuk ka rezultate të gjetur"
 #: 
 msgid "No timeline events yet."
 msgstr "Ende nuk ka ngjarje në kronologji."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Ende nuk ka caktime të mundësive të vullnetarëve."
 
 #: 
 msgid "Not ready yet?"
@@ -21573,10 +21545,6 @@ msgstr "Shiko ngjarjen"
 #: 
 msgid "View this email"
 msgstr "Shiko këtë email"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vullnetar (e vjetër)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

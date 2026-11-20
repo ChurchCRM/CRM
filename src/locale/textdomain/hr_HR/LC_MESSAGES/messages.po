@@ -1461,10 +1461,6 @@ msgid "Assign New Group"
 msgstr "Dodijeli novu skupinu"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Dodijeli novu volontersku mogućnost"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodbatljivi iznos ne može biti veći od ukupnog iznosa."
 
@@ -6350,20 +6346,8 @@ msgid "Additional Information"
 msgstr "Dodatne informacije"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Dodijeli mogućnosti"
-
-#: 
 msgid "Choose a property..."
 msgstr "Odaberi svojstvo..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Odaberi mogućnosti..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontaktni i osobni podaci"
 
 #: 
 msgid "Edited"
@@ -6372,14 +6356,6 @@ msgstr "Uređeno"
 #: 
 msgid "Newsletter"
 msgstr "Bilten"
-
-#: 
-msgid "Personal"
-msgstr "Osobno"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Odaberi mogućnosti"
 
 #: 
 msgid "Volunteer"
@@ -8936,10 +8912,6 @@ msgstr "Nisu pronađeni rezultati"
 #: 
 msgid "No timeline events yet."
 msgstr "Još nema događaja u vremenskom traku."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Još nema dodjela volonterskih mogućnosti."
 
 #: 
 msgid "Not ready yet?"
@@ -21573,10 +21545,6 @@ msgstr "Prikaži događaj"
 #: 
 msgid "View this email"
 msgstr "Prikaži ovu e-poštu"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Volonter (staro)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

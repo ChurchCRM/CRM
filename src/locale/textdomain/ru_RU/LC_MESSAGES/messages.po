@@ -1514,11 +1514,6 @@ msgid "Assign New Group"
 msgstr "Назначить новую группу"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Назначьте Возможность Нью-добровольцев"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible сумма не может быть больше общей суммы."
 
@@ -6442,20 +6437,8 @@ msgid "Additional Information"
 msgstr "Дополнительная информация"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Установить служение"
-
-#: 
 msgid "Choose a property..."
 msgstr "Выберите свойство..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Выберите возможности..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Личная и конт. информация"
 
 #: 
 msgid "Edited"
@@ -6464,14 +6447,6 @@ msgstr "Изменено"
 #: 
 msgid "Newsletter"
 msgstr "Рассылка"
-
-#: 
-msgid "Personal"
-msgstr "Личное"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Выбрать служение"
 
 #: 
 msgid "Volunteer"
@@ -9033,10 +9008,6 @@ msgstr "Результаты не найдены"
 #: 
 msgid "No timeline events yet."
 msgstr "События временной шкалы отсутствуют."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Назначения волонтёрских возможностей отсутствуют."
 
 #: 
 msgid "Not ready yet?"
@@ -21687,10 +21658,6 @@ msgstr "Посмотреть событие"
 #: 
 msgid "View this email"
 msgstr "Посмотреть это письмо"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Волонтёр (прежняя версия)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

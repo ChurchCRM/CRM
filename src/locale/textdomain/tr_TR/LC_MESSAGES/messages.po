@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Yeni Grup atayın"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Yeni bir gönüllü fırsat atayın"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Azaltılamaz miktar toplam tutardan daha fazla olamaz."
 
@@ -6381,20 +6377,8 @@ msgid "Additional Information"
 msgstr "Ek Bilgiler"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Fırsatları Ata"
-
-#: 
 msgid "Choose a property..."
 msgstr "Bir özellik seçin..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Fırsatları seçin..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "İletişim ve Kişisel Bilgiler"
 
 #: 
 msgid "Edited"
@@ -6403,14 +6387,6 @@ msgstr "Düzenlendi"
 #: 
 msgid "Newsletter"
 msgstr "Bülten"
-
-#: 
-msgid "Personal"
-msgstr "Kişisel"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Fırsatları Seçin"
 
 #: 
 msgid "Volunteer"
@@ -8962,10 +8938,6 @@ msgstr "Sonuç bulunamadı"
 #: 
 msgid "No timeline events yet."
 msgstr "Henüz zaman çizelgesi olayı yok."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Henüz gönüllü fırsat ataması yok."
 
 #: 
 msgid "Not ready yet?"
@@ -21582,10 +21554,6 @@ msgstr "Etkinliği görüntüle"
 #: 
 msgid "View this email"
 msgstr "Bu e-postayı görüntüle"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Gönüllü (Eski)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

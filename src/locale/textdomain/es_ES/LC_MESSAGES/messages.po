@@ -1472,10 +1472,6 @@ msgid "Assign New Group"
 msgstr "Asignar nuevo grupo"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Asignar una nueva oportunidad de voluntariado"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "El monto no deducible no puede ser mayor que el monto total"
 
@@ -6393,20 +6389,8 @@ msgid "Additional Information"
 msgstr "Información adicional"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Asignar oportunidades"
-
-#: 
 msgid "Choose a property..."
 msgstr "Elija una propiedad..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Elija oportunidades..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Información de contacto y personal"
 
 #: 
 msgid "Edited"
@@ -6415,14 +6399,6 @@ msgstr "Editado"
 #: 
 msgid "Newsletter"
 msgstr "Boletín informativo"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Seleccionar oportunidades"
 
 #: 
 msgid "Volunteer"
@@ -8974,10 +8950,6 @@ msgstr "No se han encontrado resultados"
 #: 
 msgid "No timeline events yet."
 msgstr "Aún no hay eventos en la cronología."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Aún no hay asignaciones de oportunidades de voluntariado."
 
 #: 
 msgid "Not ready yet?"
@@ -21595,10 +21567,6 @@ msgstr "Ver el evento"
 #: 
 msgid "View this email"
 msgstr "Ver este correo electrónico"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Voluntario (heredado)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

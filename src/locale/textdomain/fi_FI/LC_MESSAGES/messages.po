@@ -1467,10 +1467,6 @@ msgid "Assign New Group"
 msgstr "Määritä uusi ryhmä"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Määritä uusi vapaaehtoistyömahdollisuus"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Vähennyskelvoton summa ei voi olla suurempi kuin kokonaissumma."
 
@@ -6352,20 +6348,8 @@ msgid "Additional Information"
 msgstr "Lisätiedot"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Määritä mahdollisuudet"
-
-#: 
 msgid "Choose a property..."
 msgstr "Valitse ominaisuus..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Valitse mahdollisuudet..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Yhteystiedot ja henkilötiedot"
 
 #: 
 msgid "Edited"
@@ -6374,14 +6358,6 @@ msgstr "Muokattu"
 #: 
 msgid "Newsletter"
 msgstr "Uutiskirje"
-
-#: 
-msgid "Personal"
-msgstr "Henkilökohtainen"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Valitse mahdollisuudet"
 
 #: 
 msgid "Volunteer"
@@ -8933,10 +8909,6 @@ msgstr "Tuloksia ei löytynyt"
 #: 
 msgid "No timeline events yet."
 msgstr "Ei vielä aikajanan tapahtumia."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Ei vielä vapaaehtoistehtävien osoituksia."
 
 #: 
 msgid "Not ready yet?"
@@ -21553,10 +21525,6 @@ msgstr "Näytä tapahtuma"
 #: 
 msgid "View this email"
 msgstr "Näytä tämä sähköposti"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vapaaehtoinen (vanha)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"
