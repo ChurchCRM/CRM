@@ -87,20 +87,23 @@ class DepositService {
         AuthService::requireUserGroupMembership('bFinance');
         if ($iDepositSlipID) {
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
-            $deposit
-                ->setDate($depositDate)
-                ->setComment($depositComment)
-                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
-                ->setClosed(intval($depositClosed));
-            $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
-                // Delete any failed transactions on this deposit slip now that it is closing
+                // Delete any failed transactions on this deposit slip before it
+                // is saved as closed, so the deposit only reads as closed once
+                // the purge has finished; if the delete fails, the deposit
+                // stays open and the close can be retried.
                 PledgeQuery::create()
                     ->filterByDepId($iDepositSlipID)
                     ->filterByPledgeOrPayment('Payment')
                     ->filterByAutCleared(0)
                     ->delete();
             }
+            $deposit
+                ->setDate($depositDate)
+                ->setComment($depositComment)
+                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+                ->setClosed(intval($depositClosed));
+            $deposit->save();
         } else {
             $deposit = new Deposit();
             $deposit

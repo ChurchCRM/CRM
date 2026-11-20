@@ -155,6 +155,97 @@ describe("Deposit editor: what a treasurer does", () => {
     });
 });
 
+describe("Deposit editor: closing a deposit with failed card payments", () => {
+    // Payments created through the API are uncleared (AutCleared = 0), which is
+    // exactly what a failed card charge looks like on a deposit slip.
+    const FAMILY_ID = "3";
+
+    const payment = (depositId, method, amount) => ({
+        type: "Payment",
+        iMethod: method,
+        Date: "2025-10-25",
+        FamilyID: FAMILY_ID,
+        FYID: 29,
+        tScanString: "",
+        DepositID: depositId,
+        FundSplit: JSON.stringify([{ FundID: "1", Amount: amount, NonDeductible: 0, Comment: "" }]),
+    });
+
+    const createdDeposits = [];
+
+    const createDeposit = (type, comment) =>
+        cy
+            .request("POST", "/api/deposits", {
+                depositType: type,
+                depositComment: comment,
+                depositDate: "2025-10-25",
+            })
+            .its("body.Id")
+            .then((id) => {
+                createdDeposits.push({ id, type });
+                return id;
+            });
+
+    const closeFromEditor = (id) => {
+        cy.visit(`/finance/deposit/${id}`);
+        cy.get("#Closed").check();
+        cy.get("#saveDeposit").click();
+        cy.contains(".badge", "Closed", { timeout: 10000 });
+        cy.get("#Closed").should("be.checked");
+    };
+
+    beforeEach(() => cy.setupAdminSession());
+
+    // A closed deposit refuses to delete its payments, so each deposit is
+    // reopened under its own type first, as in the spec above.
+    after(() => {
+        cy.setupAdminSession();
+        createdDeposits.forEach(({ id, type }) => {
+            cy.request("POST", `/api/deposits/${id}`, {
+                depositType: type,
+                depositComment: "cleanup",
+                depositDate: "2025-10-25",
+                depositClosed: false,
+            });
+            cy.request({ method: "DELETE", url: `/api/deposits/${id}`, failOnStatusCode: false })
+                .its("status")
+                .should("be.oneOf", [200, 404]);
+        });
+    });
+
+    it("closing a card deposit removes its failed payment", () => {
+        createDeposit("CreditCard", `Failed card ${Date.now()}`).then((id) => {
+            cy.request("POST", "/api/payments/pledges", payment(id, "CREDITCARD", 60));
+            cy.request(`/api/deposits/${id}/payments`).its("body").should("have.length", 1);
+
+            closeFromEditor(id);
+
+            cy.request(`/api/deposits/${id}`).its("body.Closed").should("be.oneOf", [true, 1, "1"]);
+            cy.request(`/api/deposits/${id}/payments`).its("body").should("have.length", 0);
+        });
+    });
+
+    it("closing a card deposit with no payments closes as before", () => {
+        createDeposit("CreditCard", `Empty card ${Date.now()}`).then((id) => {
+            closeFromEditor(id);
+
+            cy.request(`/api/deposits/${id}`).its("body.Closed").should("be.oneOf", [true, 1, "1"]);
+            cy.request(`/api/deposits/${id}/payments`).its("body").should("have.length", 0);
+        });
+    });
+
+    it("closing a bank deposit keeps its payments", () => {
+        createDeposit("Bank", `Bank keep ${Date.now()}`).then((id) => {
+            cy.request("POST", "/api/payments/pledges", payment(id, "CASH", 45));
+
+            closeFromEditor(id);
+
+            cy.request(`/api/deposits/${id}`).its("body.Closed").should("be.oneOf", [true, 1, "1"]);
+            cy.request(`/api/deposits/${id}/payments`).its("body").should("have.length", 1);
+        });
+    });
+});
+
 describe("Deposit search: deleting deposits", () => {
     beforeEach(() => cy.setupAdminSession());
 
@@ -172,6 +263,12 @@ describe("Deposit search: deleting deposits", () => {
         create("a").then((a) => {
             create("b").then((b) => {
                 cy.visit("/finance/deposit/search?fyid=0");
+                // Once DataTables initialises, the table pages in ID order
+                // and the two new deposits (the highest IDs, of 22) sit on
+                // the last page. Filter the table by their unique comment,
+                // as a treasurer finding them would.
+                cy.get("#depositsTable_wrapper").should("exist");
+                cy.get("#depositsTable_wrapper input[type='search']").type(tag);
                 cy.get(`#depositsTable .row-select[data-deposit-id="${a}"]`).check({ force: true });
                 cy.get(`#depositsTable .row-select[data-deposit-id="${b}"]`).check({ force: true });
                 cy.get("#btnDeleteSelected").should("not.be.disabled").click();
