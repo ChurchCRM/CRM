@@ -45,8 +45,7 @@ adds none. The rows with `portal` = `true` become the calendars the Member Porta
 
 `volunteers.json` turns into ministries, teams, positions, qualified volunteers, coordinators and
 team leaders, schedules and assignments, built through the volunteer services as the administrator
-running the import. It is imported only while Volunteer Management V2 is on, which `config.json`
-does (`sVolunteerVersion`).
+running the import.
 
 - People are named by their `people.json` email.
 - The first team of a ministry renames the team the ministry is created with.

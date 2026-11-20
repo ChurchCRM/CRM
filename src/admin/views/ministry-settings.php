@@ -205,8 +205,7 @@ $(document).ready(function () {
             }
         ],
         onSave: function () {
-            // The sidebar, the header button and the person record all follow the
-            // rollout state server-side, so a saved change needs a fresh page.
+            // The page reads these settings server-side, so a saved change needs a fresh page.
             setTimeout(function () { window.location.reload(); }, 1500);
         }
     });

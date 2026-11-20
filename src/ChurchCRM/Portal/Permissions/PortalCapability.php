@@ -9,8 +9,7 @@ use Closure;
  *
  * `owner` is `core` or a plugin id. `featureSwitch` is a boolean SystemConfig
  * key: while it is off the capability is denied for everyone. Core may add an
- * `available` check for a switch that is not a single setting, such as the
- * Volunteer v2 rollout state.
+ * `available` check for a switch that is not a single setting.
  */
 final class PortalCapability
 {
