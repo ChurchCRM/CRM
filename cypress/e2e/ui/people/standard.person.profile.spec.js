@@ -95,7 +95,7 @@ describe("Person Profile", () => {
         cy.get("#noteWhyCameModal").should("not.exist");
 
         // The timeline renders the stored HTML as formatting, not escaped tags.
-        cy.get("#nav-item-timeline").click();
+        cy.get("#nav-item-notes").click();
         cy.contains(".note-preview", `Rich note ${stamp}`).within(() => {
             cy.get("strong").should("contain", "bolded");
         });
