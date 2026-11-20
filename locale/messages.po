@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 14:58+0000\n"
+"POT-Creation-Date: 2026-11-20 04:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2111,12 +2111,6 @@ msgstr ""
 msgid "Assign New Group"
 msgstr ""
 
-msgid "Assign Opportunities"
-msgstr ""
-
-msgid "Assign a New Volunteer Opportunity"
-msgstr ""
-
 msgid "Assign a volunteer"
 msgstr ""
 
@@ -3540,9 +3534,6 @@ msgstr ""
 msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
 msgstr ""
 
-msgid "Choose opportunities..."
-msgstr ""
-
 msgid "Choose original or duplicate."
 msgstr ""
 
@@ -4201,9 +4192,6 @@ msgid "Connection test failed"
 msgstr ""
 
 msgid "Contact"
-msgstr ""
-
-msgid "Contact & Personal Info"
 msgstr ""
 
 msgid "Contact Information"
@@ -11694,6 +11682,9 @@ msgstr ""
 msgid "No notes in this time range."
 msgstr ""
 
+msgid "No notes yet."
+msgstr ""
+
 msgid "No one checked in yet"
 msgstr ""
 
@@ -11882,9 +11873,6 @@ msgid "No valid deposit IDs provided"
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
-msgstr ""
-
-msgid "No volunteer opportunity assignments yet."
 msgstr ""
 
 msgid "No {{type}} events between {{from}} and {{to}}."
@@ -13316,9 +13304,6 @@ msgid "Person/Family Integration"
 msgstr ""
 
 msgid "PersonID for Cart must be numeric"
-msgstr ""
-
-msgid "Personal"
 msgstr ""
 
 msgid "Personal Cell Phone"
@@ -15398,9 +15383,6 @@ msgid "Select Group"
 msgstr ""
 
 msgid "Select Group and Role"
-msgstr ""
-
-msgid "Select Opportunities"
 msgstr ""
 
 msgid "Select Property Type"
@@ -19788,9 +19770,6 @@ msgid "Visitors can sign up on your public registration form."
 msgstr ""
 
 msgid "Volunteer"
-msgstr ""
-
-msgid "Volunteer (Legacy)"
 msgstr ""
 
 msgid "Volunteer Management"

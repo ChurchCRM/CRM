@@ -1477,10 +1477,6 @@ msgid "Assign New Group"
 msgstr "አዲስ ቡድን መድብ"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "አዲስ የበጎ ፈቃደኞች እድል መድብ"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "ተቀናሽ ያልሆነ መጠን ከጠቅላላ መጠን መብለጥ አይችልም."
 
@@ -6386,20 +6382,8 @@ msgid "Additional Information"
 msgstr "ተጨማሪ መረጃ"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "ዕድሎችን መድብ"
-
-#: 
 msgid "Choose a property..."
 msgstr "ንብረት ይምረጡ..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "ዕድሎችን ይምረጡ..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "መገናኛ እና የግል መረጃ"
 
 #: 
 msgid "Edited"
@@ -6408,14 +6392,6 @@ msgstr "ተብትወ"
 #: 
 msgid "Newsletter"
 msgstr "ዜና መጽሔት"
-
-#: 
-msgid "Personal"
-msgstr "የግል"
-
-#: 
-msgid "Select Opportunities"
-msgstr "ዕድሎችን ይምረጡ"
 
 #: 
 msgid "Volunteer"
@@ -8967,10 +8943,6 @@ msgstr "ሪማ አለም"
 #: 
 msgid "No timeline events yet."
 msgstr "ጊዜ ሁነታ ገና አለም።"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ሌባ ስኞ ተመደብ ገና አለም።"
 
 #: 
 msgid "Not ready yet?"
@@ -21588,10 +21560,6 @@ msgstr "ዝግጅቱን ተመልከት"
 #: 
 msgid "View this email"
 msgstr "ይህን ኢሜይል ተመልከት"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "በጎ ፈቃደኛ (የቀደመ)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

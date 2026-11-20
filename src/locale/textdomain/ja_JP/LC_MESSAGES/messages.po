@@ -1461,10 +1461,6 @@ msgid "Assign New Group"
 msgstr "新しいグループを割り当て"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "新しいボランティア機会を割り当て"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "控除対象外金額を合計金額より大きくすることはできません。"
 
@@ -6344,20 +6340,8 @@ msgid "Additional Information"
 msgstr "追加情報"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "機会を割り当て"
-
-#: 
 msgid "Choose a property..."
 msgstr "プロパティを選択..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "機会を選択..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "連絡先と個人情報"
 
 #: 
 msgid "Edited"
@@ -6366,14 +6350,6 @@ msgstr "編集済み"
 #: 
 msgid "Newsletter"
 msgstr "ニュースレター"
-
-#: 
-msgid "Personal"
-msgstr "個人"
-
-#: 
-msgid "Select Opportunities"
-msgstr "機会を選択"
 
 #: 
 msgid "Volunteer"
@@ -8920,10 +8896,6 @@ msgstr "結果が見つかりません"
 #: 
 msgid "No timeline events yet."
 msgstr "タイムラインイベントはまだありません。"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ボランティア担当の割り当てはまだありません。"
 
 #: 
 msgid "Not ready yet?"
@@ -21523,10 +21495,6 @@ msgstr "行事を見る"
 #: 
 msgid "View this email"
 msgstr "このメールを見る"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "ボランティア（従来）"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

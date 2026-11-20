@@ -1461,10 +1461,6 @@ msgid "Assign New Group"
 msgstr "പുതിയ ഗ്രൂപ്പ് നൽകുക"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "പുതിയ സ്വമേധയാ അവസരം നൽകുക"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "കിഴിവ് ലഭിക്കാത്ത തുക ആകെ തുകയേക്കാൾ കൂടാൻ കഴിയില്ല."
 
@@ -6348,20 +6344,8 @@ msgid "Additional Information"
 msgstr "അധിക വിവരം"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "അവസരങ്ങൾ നൽകുക"
-
-#: 
 msgid "Choose a property..."
 msgstr "ഒരു സ്വഭാവം തിരഞ്ഞെടുക്കൂ..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "അവസരങ്ങൾ തിരഞ്ഞെടുക്കൂ..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "ബന്ധ & വ്യക്തിഗത വിവരം"
 
 #: 
 msgid "Edited"
@@ -6370,14 +6354,6 @@ msgstr "എഡിറ്റ് ചെയ്തു"
 #: 
 msgid "Newsletter"
 msgstr "ന്യൂസ്‌ലെറ്റർ"
-
-#: 
-msgid "Personal"
-msgstr "വ്യക്തിഗതം"
-
-#: 
-msgid "Select Opportunities"
-msgstr "അവസരങ്ങൾ തിരഞ്ഞെടുക്കൂ"
 
 #: 
 msgid "Volunteer"
@@ -8929,10 +8905,6 @@ msgstr "ഫലങ്ങളൊന്നും കണ്ടെത്തിയി�
 #: 
 msgid "No timeline events yet."
 msgstr "ഇതുവരെ ടൈംലൈൻ ഇവന്റുകളൊന്നുമില്ല."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ഇതുവരെ സ്വമേധാ അവസര നിയോഗങ്ങളൊന്നുമില്ല."
 
 #: 
 msgid "Not ready yet?"
@@ -21549,10 +21521,6 @@ msgstr "പരിപാടി കാണുക"
 #: 
 msgid "View this email"
 msgstr "ഈ ഇമെയിൽ കാണുക"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "സന്നദ്ധസേവനം (പഴയത്)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

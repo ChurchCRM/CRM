@@ -1473,10 +1473,6 @@ msgid "Assign New Group"
 msgstr "กำหนดกลุ่มใหม่"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "กำหนดโอกาสอาสาสมัครใหม่"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "จำนวนที่ไม่สามารถหักลดหย่อนได้ไม่สามารถมากกว่าจำนวนรวมได้"
 
@@ -6356,20 +6352,8 @@ msgid "Additional Information"
 msgstr "ข้อมูลเพิ่มเติม"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "มอบหมายโอกาส"
-
-#: 
 msgid "Choose a property..."
 msgstr "เลือกคุณสมบัติ..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "เลือกโอกาส..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "ติดต่อและข้อมูลส่วนตัว"
 
 #: 
 msgid "Edited"
@@ -6378,14 +6362,6 @@ msgstr "แก้ไขแล้ว"
 #: 
 msgid "Newsletter"
 msgstr "จดหมายข่าว"
-
-#: 
-msgid "Personal"
-msgstr "ส่วนตัว"
-
-#: 
-msgid "Select Opportunities"
-msgstr "เลือกโอกาส"
 
 #: 
 msgid "Volunteer"
@@ -8932,10 +8908,6 @@ msgstr "ไม่พบผลลัพธ์"
 #: 
 msgid "No timeline events yet."
 msgstr "ยังไม่มีเหตุการณ์ในไทม์ไลน์"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ยังไม่มีการกำหนดตำแหน่งอาสาสมัคร"
 
 #: 
 msgid "Not ready yet?"
@@ -21535,10 +21507,6 @@ msgstr "ดูกิจกรรม"
 #: 
 msgid "View this email"
 msgstr "ดูอีเมลนี้"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "อาสาสมัคร (แบบเดิม)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

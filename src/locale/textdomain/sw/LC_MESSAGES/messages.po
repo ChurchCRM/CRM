@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Agiza Kikundi Kipya"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Weka Fursa Mpya ya Kujitolea"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Kiasi kisichoweza kukatwa hakiwezi kuwa kikubwa kuliko jumla ya kiasi."
 
@@ -6377,20 +6373,8 @@ msgid "Additional Information"
 msgstr "Taarifa za Ziada"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Gawa Fursa"
-
-#: 
 msgid "Choose a property..."
 msgstr "Chagua sifa..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Chagua fursa..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Mawasiliano na Taarifa za Kibinafsi"
 
 #: 
 msgid "Edited"
@@ -6399,14 +6383,6 @@ msgstr "Imehaririwa"
 #: 
 msgid "Newsletter"
 msgstr "Jarida"
-
-#: 
-msgid "Personal"
-msgstr "Kibinafsi"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Chagua Fursa"
 
 #: 
 msgid "Volunteer"
@@ -8958,10 +8934,6 @@ msgstr "Hakuna matokeo yaliyopatikana"
 #: 
 msgid "No timeline events yet."
 msgstr "Hakuna matukio ya ratiba bado."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Hakuna ugawaji wa fursa za kujitolea bado."
 
 #: 
 msgid "Not ready yet?"
@@ -21578,10 +21550,6 @@ msgstr "Tazama tukio"
 #: 
 msgid "View this email"
 msgstr "Tazama barua pepe hii"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Mtu wa kujitolea (Ya zamani)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

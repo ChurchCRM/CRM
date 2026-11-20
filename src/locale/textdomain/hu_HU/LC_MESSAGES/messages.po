@@ -1491,11 +1491,6 @@ msgid "Assign New Group"
 msgstr "Új csoport hozzárendelése"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Rendelni egy új Önkéntes lehetőség"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible összeg nem lehet nagyobb, mint a teljes összeg."
 
@@ -6406,20 +6401,8 @@ msgid "Additional Information"
 msgstr "Kiegészítő Információ"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Lehetőségek Hozzárendelése"
-
-#: 
 msgid "Choose a property..."
 msgstr "Válasszon egy tulajdonságot..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Válasszon lehetőségeket..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kapcsolat és személyes információ"
 
 #: 
 msgid "Edited"
@@ -6428,14 +6411,6 @@ msgstr "Szerkesztve"
 #: 
 msgid "Newsletter"
 msgstr "Hírlevelezés"
-
-#: 
-msgid "Personal"
-msgstr "Személyes"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Válasszon lehetőségeket"
 
 #: 
 msgid "Volunteer"
@@ -8987,10 +8962,6 @@ msgstr "Nincs találat"
 #: 
 msgid "No timeline events yet."
 msgstr "Még nincsenek idővonal-események."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Még nincsenek önkéntes-beosztások."
 
 #: 
 msgid "Not ready yet?"
@@ -21607,10 +21578,6 @@ msgstr "Az esemény megtekintése"
 #: 
 msgid "View this email"
 msgstr "Az e-mail megtekintése"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Önkéntes (régi)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"
