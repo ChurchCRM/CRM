@@ -246,13 +246,10 @@ describe("Member Portal — a member with no family", () => {
         cy.contains("This page was not found").should("exist");
     });
 
-    it("tells the home page's family card to contact the church office, with no link", () => {
+    it("leaves the family card off the home page", () => {
         cy.visit("/portal/");
-        cy.get("#portal-home-family-card", { timeout: 10000 })
-            .should("contain.text", TITLE)
-            .and("contain.text", BODY)
-            .find("a")
-            .should("not.exist");
+        cy.get("#portal-home-profile-card", { timeout: 10000 }).should("be.visible");
+        cy.get("#portal-home-family-card").should("not.exist");
     });
 
     describe("when the church has configured neither an email nor a phone", () => {
