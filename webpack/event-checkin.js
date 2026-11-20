@@ -201,6 +201,13 @@ $(() => {
 });
 
 /**
+ * Roster state. Rows update in place so the list never reflows while tapping
+ * through it; only a full load (page open, bulk actions) rebuilds the left list.
+ */
+let rosterMembers = [];
+let attendanceTableTimer = null;
+
+/**
  * Load the event roster from the API and render the two-column UI
  * @param {number} eventId
  */
@@ -223,110 +230,116 @@ function loadRoster(eventId) {
       $container.removeClass("d-none");
       $("#walkinCardTitle").text(i18next.t("Add Walk-in / Visitor"));
 
-      // Update group name
       const groupNames = data.groups.map((g) => g.name);
       $("#rosterGroupName").text(groupNames.length > 0 ? `— ${groupNames.join(", ")}` : "");
 
-      // Update stats
-      const stats = data.stats;
-      $("#rosterStats").text(`${stats.checkedIn} / ${stats.total} ${i18next.t("checked in")}`);
+      rosterMembers = data.members;
+      renderRoster(eventId);
 
-      // Render member lists
-      const $notCheckedIn = $("#notCheckedInList").empty();
-      const $checkedIn = $("#checkedInList").empty();
-      let notCheckedInCount = 0;
-      let checkedInCount = 0;
-
-      data.members.forEach((member) => {
-        const card = buildMemberCard(member, eventId);
-        if (member.status === "checked_in") {
-          $checkedIn.append(card);
-          checkedInCount++;
-        } else {
-          $notCheckedIn.append(card);
-          notCheckedInCount++;
-        }
-      });
-
-      // Update counts
-      $("#notCheckedInCount").text(notCheckedInCount);
-      $("#checkedInCount").text(checkedInCount);
-
-      // Toggle empty states
-      $("#notCheckedInEmpty").toggleClass("d-none", notCheckedInCount > 0);
-      $("#checkedInEmpty").toggleClass("d-none", checkedInCount > 0);
-
-      // Show the grid, hide loading
       $("#rosterLoading").addClass("d-none");
       $("#rosterGrid").removeClass("d-none");
-
-      // avatar-loader's IntersectionObserver was wired up at DOMContentLoaded,
-      // so the <img data-image-entity-type> elements we just appended need to
-      // be re-observed. init() is idempotent (already-loaded images skip via
-      // the src-already-set guard) and does NOT clear the info cache, so it's
-      // cheaper than refresh() on repeat roster reloads.
-      window.CRM?.avatarLoader?.init();
     })
     .catch(() => {
       $("#rosterCheckin").addClass("d-none");
     });
 }
 
-/**
- * Build a member card element for the roster
- * @param {Object} member - Member data from the roster API
- * @param {number} eventId
- * @returns {string} HTML string
- */
-function buildMemberCard(member, eventId) {
-  const isCheckedIn = member.status === "checked_in";
-  const btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
-  const btnIcon = isCheckedIn ? "fa-right-from-bracket" : "fa-check";
-  const btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
-  const action = isCheckedIn ? "checkout" : "checkin";
+function renderRoster(eventId) {
+  const $everyone = $("#notCheckedInList").empty();
+  rosterMembers.forEach((member) => {
+    $everyone.append(buildMemberCard(member, eventId));
+  });
+  renderCheckedInColumn(eventId);
+  updateRosterCounts();
+  refreshAvatars();
+}
 
+function renderCheckedInColumn(eventId) {
+  const $checkedIn = $("#checkedInList").empty();
+  rosterMembers
+    .filter((member) => member.status === "checked_in")
+    .forEach((member) => {
+      $checkedIn.append(buildCheckedInCard(member, eventId));
+    });
+}
+
+function updateRosterCounts() {
+  const total = rosterMembers.length;
+  const checkedIn = rosterMembers.filter((m) => m.status === "checked_in").length;
+  const waiting = total - checkedIn;
+
+  $("#rosterStats").text(`${checkedIn} / ${total} ${i18next.t("checked in")}`);
+  $("#notCheckedInCount").text(waiting);
+  $("#checkedInCount").text(checkedIn);
+  $("#notCheckedInEmpty").toggleClass("d-none", waiting > 0);
+  $("#checkedInEmpty").toggleClass("d-none", checkedIn > 0);
+}
+
+// avatar-loader's IntersectionObserver was wired up at DOMContentLoaded, so
+// freshly appended <img data-image-entity-type> elements need re-observing.
+// init() is idempotent and keeps its info cache, so it is cheap to repeat.
+function refreshAvatars() {
+  window.CRM?.avatarLoader?.init();
+}
+
+/**
+ * Re-sync the "People Checked In" table below the roster from the server-rendered
+ * page, so its rows and action menus stay correct without a full reload.
+ */
+function scheduleAttendanceTableRefresh() {
+  if (!$.fn.dataTable?.isDataTable("#checkedinTable")) return;
+  clearTimeout(attendanceTableTimer);
+  attendanceTableTimer = setTimeout(() => {
+    fetch(window.location.href, { credentials: "same-origin" })
+      .then((res) => (res.ok ? res.text() : Promise.reject(new Error(`HTTP ${res.status}`))))
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const rows = Array.from(doc.querySelectorAll("#checkedinTable tbody tr")).map((row) =>
+          document.importNode(row, true),
+        );
+        const table = $("#checkedinTable").DataTable();
+        table.clear();
+        table.rows.add(rows);
+        table.draw(false);
+        refreshAvatars();
+      })
+      .catch(() => {});
+  }, 400);
+}
+
+function memberPhotoHtml(member) {
+  // Standard avatar-loader contract (data-image-entity-type/-id): the shared
+  // loader handles fallbacks (Gravatar, identicons, default placeholder).
+  return (
+    '<img data-image-entity-type="person" data-image-entity-id="' +
+    member.personId +
+    '" class="avatar avatar-sm rounded-circle me-2" alt="" />'
+  );
+}
+
+function memberNameHtml(member) {
   // bg-blue-lt with no companion text-blue fails WCAG AA contrast in Tabler.
-  // Pair the soft background with the matching text color for the same hue.
   const roleBadge = member.role
     ? `<span class="badge bg-blue-lt text-blue ms-2">${escapeHtml(member.role)}</span>`
     : "";
-
-  // Use the standard avatar-loader contract (data-image-entity-type/-id) so
-  // the shared loader handles fallbacks (Gravatar, identicons, default
-  // placeholder) consistently with the rest of the app. The previous direct
-  // background-image hack bypassed the loader and produced empty squares.
-  const photoHtml =
-    '<img data-image-entity-type="person" data-image-entity-id="' +
-    member.personId +
-    '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
-
-  let timeInfo = "";
-  if (isCheckedIn && member.checkinTime) {
-    timeInfo = `<small class="text-secondary ms-2">${escapeHtml(member.checkinTime)}</small>`;
-  }
-
-  // Make the name a link to PersonView, matching the bottom "People Checked In"
-  // table. text-reset + text-decoration-none keep the visual weight unchanged.
   const personUrl = `${window.CRM.root}/people/view/${member.personId}`;
-
-  const html =
-    '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member" data-person-id="' +
-    member.personId +
-    '">' +
-    '<div class="d-flex align-items-center">' +
-    photoHtml +
+  return (
     '<a class="fw-medium text-reset text-decoration-none" href="' +
     personUrl +
     '">' +
     escapeHtml(`${member.firstName} ${member.lastName}`) +
     "</a>" +
-    roleBadge +
-    timeInfo +
-    "</div>" +
+    roleBadge
+  );
+}
+
+function actionButtonHtml(member, eventId, action, btnClass, icon, label) {
+  return (
     '<button type="button" class="btn btn-sm ' +
     btnClass +
-    ' roster-action-btn" ' +
-    'data-action="' +
+    ' roster-action-btn"' +
+    (member.pending ? " disabled" : "") +
+    ' data-action="' +
     action +
     '" data-person-id="' +
     member.personId +
@@ -334,41 +347,159 @@ function buildMemberCard(member, eventId) {
     eventId +
     '">' +
     '<i class="fa-solid ' +
-    btnIcon +
+    icon +
     ' me-1"></i>' +
-    btnText +
-    "</button>" +
-    "</div>";
-
-  return html;
+    label +
+    "</button>"
+  );
 }
 
-// Delegate click handler for roster action buttons
-$(document).on("click", ".roster-action-btn", function () {
-  const $btn = $(this);
-  const action = $btn.data("action");
-  const personId = $btn.data("person-id");
-  const eventId = $btn.data("event-id");
+/**
+ * Build a row for the left list. Every member keeps their row for the whole
+ * session; a checked-in member is highlighted and offers Undo and Check Out.
+ * @param {Object} member - Member data from the roster API
+ * @param {number} eventId
+ * @returns {string} HTML string
+ */
+function buildMemberCard(member, eventId) {
+  const isCheckedIn = member.status === "checked_in";
+  const isCheckedOut = member.status === "checked_out";
 
-  $btn.prop("disabled", true);
+  let timeInfo = "";
+  if (isCheckedIn && member.checkinTime) {
+    timeInfo = `<small class="text-secondary ms-2">${escapeHtml(member.checkinTime)}</small>`;
+  }
+  const checkedOutBadge = isCheckedOut
+    ? `<span class="badge bg-secondary-lt text-secondary ms-2">${i18next.t("Checked out")}</span>`
+    : "";
 
-  fetch(`${window.CRM.root}/api/events/${eventId}/${action}`, {
+  let buttons;
+  if (isCheckedIn) {
+    buttons =
+      '<div class="btn-list flex-nowrap">' +
+      actionButtonHtml(member, eventId, "undo", "btn-outline-secondary", "fa-rotate-left", i18next.t("Undo")) +
+      actionButtonHtml(
+        member,
+        eventId,
+        "checkout",
+        "btn-outline-secondary",
+        "fa-right-from-bracket",
+        i18next.t("Check Out"),
+      ) +
+      "</div>";
+  } else {
+    buttons = actionButtonHtml(member, eventId, "checkin", "btn-success", "fa-check", i18next.t("Check In"));
+  }
+
+  const stateClass = isCheckedIn ? " border-success bg-success-subtle" : "";
+  const checkMark = isCheckedIn ? '<i class="fa-solid fa-circle-check text-success me-2"></i>' : "";
+
+  return (
+    '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member' +
+    stateClass +
+    '" data-person-id="' +
+    member.personId +
+    '">' +
+    '<div class="d-flex align-items-center">' +
+    checkMark +
+    memberPhotoHtml(member) +
+    memberNameHtml(member) +
+    timeInfo +
+    checkedOutBadge +
+    "</div>" +
+    buttons +
+    "</div>"
+  );
+}
+
+function buildCheckedInCard(member, eventId) {
+  const timeInfo = member.checkinTime
+    ? `<small class="text-secondary ms-2">${escapeHtml(member.checkinTime)}</small>`
+    : "";
+  return (
+    '<div class="d-flex align-items-center justify-content-between p-2 border rounded checked-in-member" data-person-id="' +
+    member.personId +
+    '">' +
+    '<div class="d-flex align-items-center">' +
+    memberPhotoHtml(member) +
+    memberNameHtml(member) +
+    timeInfo +
+    "</div>" +
+    actionButtonHtml(
+      member,
+      eventId,
+      "checkout",
+      "btn-outline-secondary",
+      "fa-right-from-bracket",
+      i18next.t("Check Out"),
+    ) +
+    "</div>"
+  );
+}
+
+function rerenderMember(member, eventId) {
+  $(`#notCheckedInList .roster-member[data-person-id="${member.personId}"]`).replaceWith(
+    buildMemberCard(member, eventId),
+  );
+  renderCheckedInColumn(eventId);
+  updateRosterCounts();
+  refreshAvatars();
+}
+
+function rosterRequest(action, eventId, personId) {
+  if (action === "undo") {
+    return fetch(`${window.CRM.root}/api/events/${eventId}/attendance/${personId}`, { method: "DELETE" });
+  }
+  return fetch(`${window.CRM.root}/api/events/${eventId}/${action}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ personId: personId }),
-  })
+  });
+}
+
+// Delegate click handler for roster action buttons. The row changes at once
+// (optimistic) and is restored if the request fails.
+$(document).on("click", ".roster-action-btn", function () {
+  const action = $(this).data("action");
+  const personId = Number($(this).data("person-id"));
+  const eventId = $(this).data("event-id");
+  const member = rosterMembers.find((m) => m.personId === personId);
+  if (!member || member.pending) return;
+
+  const previous = { status: member.status, checkinTime: member.checkinTime };
+  member.pending = true;
+  if (action === "checkin") {
+    member.status = "checked_in";
+    member.checkinTime = null;
+  } else if (action === "checkout") {
+    member.status = "checked_out";
+  } else {
+    member.status = "not_checked_in";
+    member.checkinTime = null;
+  }
+  rerenderMember(member, eventId);
+
+  rosterRequest(action, eventId, personId)
     .then(jsonUnlessFailed)
-    .then(() => {
-      // Reload roster to reflect changes
-      loadRoster(eventId);
+    .then((data) => {
+      if (action === "checkin" && data.checkinTime) {
+        member.checkinTime = data.checkinTime;
+      }
+      member.pending = false;
+      rerenderMember(member, eventId);
+      scheduleAttendanceTableRefresh();
     })
     .catch((err) => {
-      $btn.prop("disabled", false);
-      const fallback =
-        action === "checkout"
-          ? i18next.t("Check-out failed. Please try again.")
-          : i18next.t("Check-in failed. Please try again.");
-      window.CRM.notify(err.serverMessage || fallback, { type: "danger", delay: 5000 });
+      member.status = previous.status;
+      member.checkinTime = previous.checkinTime;
+      member.pending = false;
+      rerenderMember(member, eventId);
+      const fallbacks = {
+        checkin: i18next.t("Check-in failed. Please try again."),
+        checkout: i18next.t("Check-out failed. Please try again."),
+        undo: i18next.t("Undo failed. Please try again."),
+      };
+      window.CRM.notify(err.serverMessage || fallbacks[action], { type: "danger", delay: 5000 });
     });
 });
 
