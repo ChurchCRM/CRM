@@ -14941,10 +14941,6 @@ msgid "Target family"
 msgstr "ዒላማ ቤተሰብ"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "ቡድኑ ሊገኝ አልቻለም። እባክዎ እንደገና ይሞክሩ።"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "የተመረጠው ቤተሰብ አሁን የለም። እባክዎ ገጹን አድሱ እና እንደገና ይሞክሩ።"
 

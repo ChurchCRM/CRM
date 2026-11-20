@@ -14904,10 +14904,6 @@ msgid "Target family"
 msgstr "लक्षित परिवार"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "समूह नहीं मिला। कृपया पुनः प्रयास करें।"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "चुना गया परिवार अब मौजूद नहीं है। कृपया पृष्ठ रीफ्रेश करें और पुनः प्रयास करें।"
 

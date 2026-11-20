@@ -14933,10 +14933,6 @@ msgid "Target family"
 msgstr "משפחת יעד"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "לא ניתן למצוא את הקבוצה. אנא נסה שנית."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "המשפחה שנבחרה אינה קיימת עוד. אנא רענן את הדף ונסה שנית."
 

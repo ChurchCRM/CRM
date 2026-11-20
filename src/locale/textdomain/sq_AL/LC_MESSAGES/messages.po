@@ -14926,10 +14926,6 @@ msgid "Target family"
 msgstr "Familja e synuar"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Grupi nuk u gjet. Ju lutemi provoni përsëri."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Familja e zgjedhur nuk ekziston më. Ju lutemi rifreskoni faqen dhe provoni përsëri."
 

@@ -3584,7 +3584,6 @@
   "Symbol Position": "מיקום הסמל",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "סמל או קוד המוצג לצד הסכומים (למשל $, €, £, CHF, CAD $). ברירת מחדל: $",
   "Target family": "משפחת יעד",
-  "The group could not be found. Please try again.": "לא ניתן למצוא את הקבוצה. אנא נסה שנית.",
   "The selected family no longer exists. Please refresh the page and try again.": "המשפחה שנבחרה אינה קיימת עוד. אנא רענן את הדף ונסה שנית.",
   "The selected group was not found. Please select a valid group.": "הקבוצה שנבחרה לא נמצאה. אנא בחר קבוצה חוקית.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "כך יופיעו תאריכים, סכומים כספיים ומספרי טלפון בכל המערכת.",

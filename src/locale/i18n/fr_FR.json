@@ -3584,7 +3584,6 @@
   "Symbol Position": "Position du symbole",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "Symbole ou code affiché à côté des montants (ex. $, €, £, CHF, CAD $). Par défaut : $",
   "Target family": "Famille cible",
-  "The group could not be found. Please try again.": "Le groupe est introuvable. Veuillez réessayer.",
   "The selected family no longer exists. Please refresh the page and try again.": "La famille sélectionnée n'existe plus. Veuillez actualiser la page et réessayer.",
   "The selected group was not found. Please select a valid group.": "Le groupe sélectionné est introuvable. Veuillez sélectionner un groupe valide.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "Voici comment les dates, les montants monétaires et les numéros de téléphone apparaîtront dans tout le système. Consultez les formats actuels ici, puis modifiez-les dans les sections ci-dessous.",
