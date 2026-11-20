@@ -1945,6 +1945,10 @@
       "duration": 6000
     },
     {
+      "spec": "cypress/e2e/ui/reports/directory-letterhead.spec.js",
+      "duration": 6000
+    },
+    {
       "spec": "cypress/e2e/ui/reports/directory-pending-self-registrations.spec.js",
       "duration": 6000
     },
