@@ -1,0 +1,14 @@
+[variables]
+main_domain = "${domain}"
+db_password = "${password:32}"
+db_root_password = "${password:32}"
+
+[config]
+[[config.domains]]
+serviceName = "churchcrm"
+port = 8080
+host = "${main_domain}"
+
+[config.env]
+DB_PASSWORD = "${db_password}"
+DB_ROOT_PASSWORD = "${db_root_password}"

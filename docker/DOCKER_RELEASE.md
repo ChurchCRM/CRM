@@ -125,13 +125,32 @@ remain a compatible PHP 8.4+ image of the same server flavor and Debian suite.
 Pinning does not replace regular security updates. Debian packages are still
 resolved from live repositories, so builds are not bit-for-bit reproducible.
 
+## Apache persistent storage
+
+Set `CHURCHCRM_PERSISTENT_DATA=1` and mount a disk at `/var/lib/churchcrm` for
+platforms that provide a single persistent disk per service. The image runs as
+UID 33; the disk must be writable by that user. Docker named volumes inherit the
+mount point's ownership. Platforms that bootstrap as root initialize ownership
+in the entrypoint before Apache starts its workers as `www-data`.
+
+This mode links `Include/Config.php`, `Images/Person` and `Images/Family` to the
+disk. The configuration's bootstrap link points back into the current image.
+Application code stays in the image, and photo access rules refresh on container
+replacement. The entrypoint sets a private umask for configuration writes.
+
+Use a fresh installation, or restore a backup into `Config.php`, `Person/` and
+`Family/` on the disk with UID 33 ownership. Existing local configuration or
+photos cause startup to stop so migration cannot silently discard them. Back up
+this disk together with the database; it contains credentials and personal data.
+The production Compose mounts work independently of this opt-in.
+
 ## Validation
 
 ```bash
 node --test tests/docker/test-release-context.test.js
 node docker/prepare-release-context.js ChurchCRM-7.7.0.zip build-context
 mkdir -p build-context/apache
-cp docker/apache/default.conf build-context/apache/default.conf
+cp docker/apache/* build-context/apache/
 docker build --target prod -f docker/Dockerfile.churchcrm-apache-php8 -t churchcrm-check:apache build-context
 docker build --target prod -f docker/Dockerfile.churchcrm-fpm-php8 -t churchcrm-check:fpm build-context
 node tests/docker/test-production-image.js churchcrm-check:apache apache
