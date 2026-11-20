@@ -9,6 +9,28 @@ window.CRM.onLocalesReady(() => {
   const LINK_BACK_TARGET = window.CRM.pledgeEditor.linkBackTarget;
   const REQUIRE_CHECK_NO = window.CRM.pledgeEditor.requireCheckNumber;
 
+  function getDepositPaymentDefaults(depositId) {
+    if (!depositId) return null;
+
+    try {
+      const saved = window.sessionStorage.getItem("churchcrm_deposit_payment_defaults_" + depositId);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function setDepositPaymentDefaults(depositId, date, method) {
+    try {
+      window.sessionStorage.setItem(
+        "churchcrm_deposit_payment_defaults_" + depositId,
+        JSON.stringify({ date, method }),
+      );
+    } catch {
+      // Storage may be unavailable even after the payment has been saved.
+    }
+  }
+
   // ---- Family TomSelect ----
   const familyNameEl = document.getElementById("FamilyName");
   let latestQuery = "";
@@ -139,43 +161,70 @@ window.CRM.onLocalesReady(() => {
   const methodEl = document.getElementById("Method");
   const checkGroup = document.getElementById("checkNumberGroup");
   const checkEl = document.getElementById("CheckNo");
-  if (methodEl && checkGroup && checkEl) {
-    function toggleCheckGroup() {
-      if (methodEl.value === "CHECK") {
-        checkGroup.style.display = "";
-        if (REQUIRE_CHECK_NO) {
-          checkEl.required = true;
-        }
-      } else {
-        checkGroup.style.display = "none";
-        checkEl.value = "";
-        checkEl.required = false;
-      }
+  function toggleCheckGroup() {
+    if (!methodEl || !checkGroup || !checkEl) return;
+
+    if (methodEl.value === "CHECK") {
+      checkGroup.style.display = "";
+      checkEl.required = REQUIRE_CHECK_NO;
+    } else {
+      checkGroup.style.display = "none";
+      checkEl.value = "";
+      checkEl.required = false;
     }
-    methodEl.addEventListener("change", toggleCheckGroup);
-    toggleCheckGroup();
   }
+
+  methodEl?.addEventListener("change", toggleCheckGroup);
 
   // ---- Date → auto-resolve FYID via FiscalYearUtils (/api/fiscalyear) ----
   const dateEl = document.getElementById("Date");
   const fyEl = document.getElementById("FYID");
 
-  if (dateEl && fyEl) {
-    dateEl.addEventListener("change", async function () {
-      if (!this.value) {
-        return;
-      }
-      const res = await fetch(ROOT + "/api/fiscalyear?date=" + encodeURIComponent(this.value));
-      if (!res.ok) {
-        return;
-      }
+  async function syncFiscalYearForDate(dateValue) {
+    if (!dateValue || !fyEl) return;
+
+    try {
+      const res = await fetch(ROOT + "/api/fiscalyear?date=" + encodeURIComponent(dateValue));
+      if (!res.ok) return;
+
       const data = await res.json();
-      if (data.fyId) {
+      if (data.fyId && dateEl.value === dateValue) {
         fyEl.value = String(data.fyId);
         updateInstallments();
       }
-    });
+    } catch {
+      // Keep the current fiscal year when the lookup fails.
+    }
   }
+
+  dateEl?.addEventListener("change", () => {
+    void syncFiscalYearForDate(dateEl.value);
+  });
+
+  if (!GROUP_KEY && PLEDGE_TYPE === "Payment") {
+    const initialDepositId = document.getElementById("DepositID")?.value;
+    const savedDefaults = getDepositPaymentDefaults(initialDepositId);
+
+    if (dateEl && savedDefaults?.date) {
+      const originalDate = dateEl.value;
+      dateEl.value = savedDefaults.date;
+      if (dateEl.value) {
+        void syncFiscalYearForDate(savedDefaults.date);
+      } else {
+        dateEl.value = originalDate;
+      }
+    }
+
+    if (
+      methodEl &&
+      savedDefaults?.method &&
+      Array.from(methodEl.options).some((option) => option.value === savedDefaults.method)
+    ) {
+      methodEl.value = savedDefaults.method;
+    }
+  }
+
+  toggleCheckGroup();
 
   // ---- Collect form data for API submission ----
   function collectPayload() {
@@ -304,6 +353,10 @@ window.CRM.onLocalesReady(() => {
         window.CRM.notify(window.CRM.escapeHtml(msg), { type: "danger", delay: 4000 });
         setSaving(false);
         return;
+      }
+
+      if (!isEditMode && PLEDGE_TYPE === "Payment" && payload.DepositID) {
+        setDepositPaymentDefaults(payload.DepositID, payload.Date, payload.iMethod);
       }
 
       window.CRM.notify(window.CRM.escapeHtml(i18next.t("Saved successfully")), { type: "success", delay: 4000 });

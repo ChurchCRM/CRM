@@ -101,9 +101,12 @@ describe("Pledge Operations", () => {
             created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
+            cy.intercept("PUT", "**/api/payments/" + encodeURIComponent(groupKey)).as("updatePayment");
             cy.get("#savePledgeBtn").click();
 
-            cy.get("#crm-toasts .toast[data-type='success']").should("contain.text", "Saved successfully");
+            cy.wait("@updatePayment").its("response.statusCode").should("eq", 200);
+            cy.location("pathname").should("eq", "/finance/pledge/" + encodeURIComponent(groupKey));
+            cy.request("/api/payments/pledges/" + encodeURIComponent(groupKey)).its("status").should("eq", 200);
         });
     });
 
