@@ -3,6 +3,8 @@
  * Handles the database backup workflow
  */
 
+import { downloadBackupFile } from "./backup-download";
+
 $(document).ready(() => {
   // Bind backup button handlers
   $("#doBackup").on("click", (event) => {
@@ -89,7 +91,7 @@ function doBackup(isRemote) {
  * @param {string} filename - The backup filename to download
  */
 function downloadBackup(filename) {
-  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
+  downloadBackupFile(filename);
   $("#statusCompleteMessage").text(i18next.t("Backup downloaded. Server copy removed."));
   $("#downloadbutton").prop("disabled", true).removeClass("btn-success").addClass("btn-secondary");
 }

@@ -12411,7 +12411,7 @@ paths:
         -
           ApiKeyAuth: []
   /admin/api/upgrade/download-latest-release:
-    get:
+    post:
       tags:
         - Admin
       summary: 'Download the latest release from GitHub (or a specific version)'
@@ -12441,7 +12441,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
       security:
         -
           ApiKeyAuth: []
@@ -12470,7 +12470,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error applying upgrade'
       security:
@@ -12496,7 +12496,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error refreshing upgrade information'
       security:
