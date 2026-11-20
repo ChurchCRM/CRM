@@ -5,12 +5,14 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Propel;
 
 class FamilyService
 {
@@ -391,6 +393,85 @@ class FamilyService
         $family->save($con);
 
         return $family;
+    }
+
+    /**
+     * People who belong to no family, by last then first name.
+     */
+    public function unassignedPeopleQuery(): PersonQuery
+    {
+        return PersonQuery::create()
+            ->filterByFamId(0)
+            ->orderByLastName()
+            ->orderByFirstName();
+    }
+
+    /**
+     * Make a person who belongs to no family the only member of a new family. The family takes
+     * the person's last name, address and home phone, and those fields move off the person.
+     *
+     * @throws \InvalidArgumentException when the person already belongs to a family
+     */
+    public function convertPersonToFamily(Person $person, int $userId): Family
+    {
+        if ((int) $person->getFamId() !== 0) {
+            throw new \InvalidArgumentException(gettext('Already in a family'));
+        }
+
+        $connection = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $family = new Family();
+            $family
+                ->setName($person->getLastName())
+                ->setAddress1($person->getAddress1())
+                ->setAddress2($person->getAddress2())
+                ->setCity($person->getCity())
+                ->setState($person->getState())
+                ->setZip($person->getZip())
+                ->setCountry($person->getCountry())
+                ->setHomePhone($person->getHomePhone())
+                ->setDateEntered(new \DateTimeImmutable())
+                ->setEnteredBy($userId);
+            $family->save($connection);
+
+            $person
+                ->setFamId($family->getId())
+                ->setAddress1(null)
+                ->setAddress2(null)
+                ->setCity(null)
+                ->setState(null)
+                ->setZip(null)
+                ->setCountry(null)
+                ->setHomePhone(null)
+                ->setDateLastEdited(new \DateTimeImmutable())
+                ->setEditedBy($userId);
+            $person->save($connection);
+
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+            throw $e;
+        }
+
+        $this->logger->info('Person converted to a family', ['personId' => $person->getId(), 'familyId' => $family->getId()]);
+
+        return $family;
+    }
+
+    /**
+     * Convert every person who belongs to no family, each into a family of their own.
+     *
+     * @return Family[] the new families, in the order the people were converted
+     */
+    public function convertUnassignedPeople(int $userId): array
+    {
+        $families = [];
+        foreach ($this->unassignedPeopleQuery()->find() as $person) {
+            $families[] = $this->convertPersonToFamily($person, $userId);
+        }
+
+        return $families;
     }
 
     /**

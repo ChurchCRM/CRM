@@ -49,6 +49,7 @@ require __DIR__ . '/routes/api/person-sign-in.php';
 require __DIR__ . '/routes/api/member-portal-reports.php';
 require __DIR__ . '/routes/api/person-portal-access.php';
 require __DIR__ . '/routes/api/person-login-as-person.php';
+require __DIR__ . '/routes/api/family-conversion.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
 require __DIR__ . '/routes/api/system/letterhead.php';
 require __DIR__ . '/routes/api/system/tax-signature.php';
@@ -73,6 +74,7 @@ require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/member-portal.php';
 require __DIR__ . '/routes/ministry-settings.php';
 require __DIR__ . '/routes/volunteer-conversion.php';
+require __DIR__ . '/routes/family-conversion.php';
 require __DIR__ . '/routes/property-types.php';
 
 $app->run();
