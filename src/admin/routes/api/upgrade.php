@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\UpgradeAPIService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\PathUtils;
@@ -66,7 +67,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=400, description="Error downloading release"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required")
+     *     @OA\Response(response=403, description="Forbidden — Admin role required, or the CSRF token is missing")
      * )
      */
     $group->post('/download-latest-release', function (Request $request, Response $response, array $args): Response {
@@ -104,7 +105,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=200, description="Upgrade applied successfully"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required, or the CSRF token is missing"),
      *     @OA\Response(response=500, description="Error applying upgrade")
      * )
      */
@@ -171,7 +172,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required, or the CSRF token is missing"),
      *     @OA\Response(response=500, description="Error refreshing upgrade information")
      * )
      */
@@ -187,4 +188,4 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to refresh upgrade information'), [], 500, $e, $request);
         }
     });
-});
+})->add(new CSRFMiddleware());

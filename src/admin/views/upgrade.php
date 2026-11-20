@@ -400,7 +400,10 @@ $(document).ready(function() {
             window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
             window.CRM.AdminAPIRequest({
                 method: 'POST',
-                path: 'upgrade/refresh-upgrade-info'
+                path: 'upgrade/refresh-upgrade-info',
+                headers: {
+                    'X-CSRF-Token': document.querySelector('#backup-download-form input[name="csrf_token"]')?.value ?? ''
+                }
             }).always(function() {
                 setTimeout(function() { window.location.reload(); }, 1500);
             });

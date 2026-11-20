@@ -617,6 +617,14 @@ function autoDownloadUpdate() {
   performDownload();
 }
 
+function upgradePost(options) {
+  const token = document.querySelector('#backup-download-form input[name="csrf_token"]')?.value ?? "";
+  return window.CRM.AdminAPIRequest({
+    ...options,
+    headers: { "X-CSRF-Token": token, ...(options.headers || {}) },
+  });
+}
+
 /**
  * Perform the actual download operation, using selectedTargetVersion if set.
  */
@@ -627,7 +635,7 @@ function performDownload() {
     ? `upgrade/download-latest-release?version=${encodeURIComponent(selectedTargetVersion)}`
     : "upgrade/download-latest-release";
 
-  window.CRM.AdminAPIRequest({
+  upgradePost({
     method: "POST",
     path,
   })
@@ -698,7 +706,7 @@ function setupApplyStep() {
       .prop("disabled", true)
       .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Applying...")}`);
 
-    window.CRM.AdminAPIRequest({
+    upgradePost({
       method: "POST",
       path: "upgrade/do-upgrade",
       data: JSON.stringify({
@@ -789,7 +797,7 @@ function setupRefreshButton() {
     $icon.removeClass("fa-arrows-rotate").addClass("fa-circle-notch fa-spin");
     $spinner.addClass("active");
 
-    window.CRM.AdminAPIRequest({
+    upgradePost({
       method: "POST",
       path: "upgrade/refresh-upgrade-info",
     })
