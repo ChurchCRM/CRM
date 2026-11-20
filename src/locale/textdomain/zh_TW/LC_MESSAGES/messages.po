@@ -1409,10 +1409,6 @@ msgid "Default"
 msgstr "默認"
 
 #: 
-msgid "Exit"
-msgstr "出口"
-
-#: 
 msgid "Add New"
 msgstr "添加新"
 
@@ -1635,11 +1631,6 @@ msgid "Restore Database"
 msgstr "還原資料庫"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "請確認刪除"
-
-#: 
 msgid "Listing"
 msgstr "列表"
 
@@ -1733,14 +1724,6 @@ msgstr "新密碼"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "確認新密碼"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "義工機會編輯器"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "尚未添加任何志願服務機會"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6704,10 +6687,6 @@ msgid "Confirm Property Deletion"
 msgstr "確認屬性刪除"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "確認志願服務機會刪除"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "刪除確認"
 
@@ -6720,16 +6699,8 @@ msgid "Existing Custom Person Fields"
 msgstr "現有自定義個人欄位"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "現有志願服務機會"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "欄位刪除成功"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "無效的 CSRF 令牌"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8492,10 +8463,6 @@ msgid "Create or edit property type categories"
 msgstr "建立或編輯屬性類型分類"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "建立或編輯志工職位"
-
-#: 
 msgid "Current person"
 msgstr "目前人員"
 
@@ -8942,10 +8909,6 @@ msgstr "管理系統使用者、權限和兩步驟驗證設定"
 #: 
 msgid "Manage user account details and permissions"
 msgstr "管理使用者帳號詳情和權限"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "管理志工服務機會並分配成員"
 
 #: 
 msgid "Map cart items"
@@ -9570,10 +9533,6 @@ msgid "funds"
 msgstr "基金"
 
 #: 
-msgid "opportunities"
-msgstr "服務機會"
-
-#: 
 msgid "or connect an external service"
 msgstr "或連接外部服務"
 
@@ -9873,11 +9832,6 @@ msgstr "無法擷取電子郵件地址"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "無法擷取電話號碼"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "為特定機會尋找志願者"
 
 #. Context: query_qry
 #: 
@@ -12643,10 +12597,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "無法刪除屬性類型：仍有 %d 個屬性參照此類型，請先重新指派或刪除這些屬性。"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "無法刪除義工機會：仍有 %d 人已被指派，請先移除指派。"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "類別必須是 p、f 或 g 其中之一"
 
@@ -12657,10 +12607,6 @@ msgstr "複製錯誤訊息"
 #: 
 msgid "Could not load note."
 msgstr "無法載入備註。"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "說明不得超過 100 個字元"
 
 #: 
 msgid "Donation fund not found"
@@ -12683,10 +12629,6 @@ msgid "Failed to create property type"
 msgstr "建立屬性類型失敗"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "建立義工機會失敗"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "刪除捐款基金失敗"
 
@@ -12703,10 +12645,6 @@ msgid "Failed to delete property type"
 msgstr "刪除屬性類型失敗"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "刪除義工機會失敗"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "更新捐款基金失敗"
 
@@ -12719,10 +12657,6 @@ msgid "Failed to update property type"
 msgstr "更新屬性類型失敗"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "更新義工機會失敗"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "找不到籌款活動"
 
@@ -12733,10 +12667,6 @@ msgstr "安裝識別碼"
 #: 
 msgid "Invalid class"
 msgstr "無效的類別"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "名稱不得超過 30 個字元"
 
 #: 
 msgid "Note by %s deleted"
@@ -12759,16 +12689,8 @@ msgid "Read more"
 msgstr "閱讀更多"
 
 #: 
-msgid "That name already exists."
-msgstr "該名稱已存在。"
-
-#: 
 msgid "Title is required"
 msgstr "標題為必填項目"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "找不到義工機會"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15356,10 +15278,6 @@ msgid "System Configuration"
 msgstr "系統設定"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "此義工機會已有人員指派，刪除將取消指派"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "請將其更新為有效的 URL，"
 
@@ -15588,10 +15506,6 @@ msgid "Add New Fund"
 msgstr "新增基金"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "新增機會"
-
-#: 
 msgid "Add New Person"
 msgstr "新增成員"
 
@@ -15604,10 +15518,6 @@ msgid "Add New Role"
 msgstr "新增角色"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "新增義工機會"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "新增主日學班級"
 
@@ -15618,10 +15528,6 @@ msgstr "要刪除此家庭嗎？"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "審查透過公開登記表單新登記的家庭與個人"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "確認刪除義工機會"
 
 #: 
 msgid "# Payments"
@@ -17286,14 +17192,6 @@ msgid "Find people who did not attend an event"
 msgstr "查找未參加活動的人員"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "查找與兩個特定機會代碼相匹配的志願者"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "首個志願者機會"
-
-#: 
 msgid "Folded Booklet"
 msgstr "折疊小冊子"
 
@@ -17370,10 +17268,6 @@ msgid "Run Report"
 msgstr "運行報告"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "第二個志願者機會"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "顯示在側邊欄、登入頁面和電郵中。上傳標誌會在其出現的任何地方替換 ChurchCRM 品牌"
 
@@ -17400,14 +17294,6 @@ msgstr "使用默認的 ChurchCRM 標誌"
 #: 
 msgid "View Full Family Giving"
 msgstr "查看完整的家庭捐獻"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "志願者機會"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "兩個機會的志願者"
 
 #: 
 msgid "YTD"
@@ -18227,10 +18113,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "只負責一場活動的排班不能跟隨其他活動；請刪除它並改為新增一個排班"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "一份服事機會清單，例如“托兒”或“接待”，儲存在“人員 → 管理”下。每個人在其記錄的“志工”標籤頁中，會標記其願意協助的服事機會。僅此而已：沒有團隊、沒有排班、沒有按日期分配，也沒有提醒郵件。報告和人員記錄是使用這些標記的地方。"
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "最好使用正臉的方形照片。"
 
@@ -18537,18 +18419,6 @@ msgstr "後臺任務運行於"
 #: 
 msgid "Birthday greeting"
 msgstr "生日問候"
-
-#: 
-msgid "Both"
-msgstr "兩者"
-
-#: 
-msgid "Both (transition)"
-msgstr "兩者（過渡）"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "兩者：V1 與 V2 並行（過渡）"
 
 #: 
 msgid "Calendar address"
@@ -21631,22 +21501,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "使用者必須擁有“新增活動”許可權，或協調此日曆所屬的志工事工"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1：志工機會（舊版）"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1：舊版志工機會"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2：事工"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2：志工管理"
-
-#: 
 msgid "Valid"
 msgstr "有效"
 
@@ -21665,10 +21519,6 @@ msgstr "檢視活動"
 #: 
 msgid "View this email"
 msgstr "檢視此電子郵件"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "未啟用志工管理 V2"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21773,10 +21623,6 @@ msgid "What the check found"
 msgstr "檢查發現了什麼"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "志工體驗是什麼"
-
-#: 
 msgid "What you want to say"
 msgstr "您想說的話"
 
@@ -21807,10 +21653,6 @@ msgstr "日期的來源"
 #: 
 msgid "Where we reach you"
 msgstr "我們如何聯絡您"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "啟用哪種志工管理體驗。V1 是舊版志工機會功能；V2 是新的排班與分配工作流程。“兩者”會在遷移期間並排顯示兩邊。"
 
 #: 
 msgid "Which events"
@@ -22219,10 +22061,6 @@ msgstr "無權變更此事件的接收人群組"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "僅義工主管可以變更事工的協調人"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "選擇 V1 時，V2 義工電子郵件將暫停；任何排隊的郵件將在 V2 重新啟用時發送（除非其發生已結束）。"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23067,10 +22905,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "未滿崗位通知的提前時間（小時）"
 
 #: 
-msgid "Volunteer Management"
-msgstr "志工管理"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "志工事工、團隊、日程與指派"
 
@@ -23081,14 +22915,6 @@ msgstr "未來幾天要安排的志工崗位"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "這些即將到來的安排仍需要的志工：%d"
-
-#: 
-msgid "What do these mean?"
-msgstr "這些是什麼意思？"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "本教會使用哪種志工體驗"
 
 #: 
 msgid "You are on the schedule"
@@ -26459,248 +26285,8 @@ msgid "Review Family Information"
 msgstr "核對家庭資料"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "名為「%s」的事工已存在。請從清單中選擇，或改用其他名稱。"
-
-#: 
-msgid "A new ministry"
-msgstr "新事工"
-
-#: 
-msgid "A position"
-msgstr "一個職位"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "要將 {{total}} 位志工加入先前轉換的職位嗎？"
-
-#: 
-msgid "Already converted"
-msgstr "已轉換"
-
-#: 
-msgid "An existing ministry"
-msgstr "現有事工"
-
-#: 
-msgid "Becomes"
-msgstr "轉換為"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM 有兩種管理志工的方式。同一時間只應使用其中一種；「志工體驗」設定決定本教會看到哪一種。切換只會隱藏或顯示頁面和選單項目，絕不會刪除資料。只有在仍使用志願者機會時才提供 V1 和兩者：一旦所有機會都已轉換且教會使用 V2，這兩項就會從清單中消失。"
-
-#: 
-msgid "Convert"
-msgstr "轉換"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "轉換志願者機會"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "現在轉換 {{total}} 個機會嗎？在志願者機會停用之前，V1 資料會原樣保留。"
-
-#: 
-msgid "Converted"
-msgstr "已轉換"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "已轉換：{{positions}} 個職位和 {{ministries}} 個事工，{{qualifications}} 位志工取得資格。"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "每個機會都會成為某個事工第一個團隊中的職位，與其連結的每個人都會取得該職位的資格。這些職位的自助報名預設為關閉。"
-
-#: 
-msgid "Everything is converted."
-msgstr "全部已轉換。"
-
-#: 
-msgid "Existing ministry"
-msgstr "現有事工"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "為新事工取一個不超過 100 個字元的名稱。"
-
-#: 
-msgid "Its own ministry"
-msgstr "獨立事工"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "此後連結：{{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "無法轉換的連結"
-
-#: 
-msgid "New ministries of their own"
-msgstr "各自成為新事工"
-
-#: 
-msgid "New ministry name"
-msgstr "新事工名稱"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "不會寄出任何電子郵件，志願者機會在停用前維持不變。"
-
-#: 
-msgid "No name"
-msgstr "無名稱"
-
-#: 
-msgid "Not converted"
-msgstr "未轉換"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "開啟功能開關"
-
-#: 
-msgid "Open Ministries"
-msgstr "開啟事工"
-
-#: 
-msgid "Opportunities"
-msgstr "機會"
-
-#: 
-msgid "Opportunity"
-msgstr "機會"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "機會 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "轉換後連結到已轉換志願者機會的人員：%d。請在志願者機會於 2027 年初停用之前，將他們加入相應職位。"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "請先預覽轉換，並送出預覽傳回的修訂版本。"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "已重新命名以保持名稱唯一"
-
-#: 
-msgid "Review the conversion"
-msgstr "檢查轉換"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "請以 JSON 物件送出轉換選擇。"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "請以 ID 清單送出要轉換為事工的機會。"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "該事工不存在。"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "管理員關閉志願者機會停用通知時所使用的 ChurchCRM 版本。"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "自預覽以來志願者機會已有變更。請重新檢查預覽，然後再轉換。"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "無法開啟確認視窗。請重新載入頁面後再試一次。"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "無法預覽轉換。"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "轉換失敗。未做任何變更。"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "事工「%s」沒有可容納這些職位的團隊。"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "無法連線到伺服器。請重新載入頁面，查看轉換是否已執行。"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "沒有需要轉換的志願者機會。"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "志工管理將切換為「兩者」，讓新事工與志願者機會並列顯示。"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "志願者機會即將停用"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "志願者機會已轉換"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "志願者機會將於 2027 年初停用。請將其轉換為事工，以保留每個人的服事分工。"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "志願者機會將於 2027 年初停用。請立即將您的 %1$d 個機會和 %2$d 位志工轉換為事工。在任何變更之前，您都可以預覽結果。"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "已取得資格的志工"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "待加入已轉換職位的志工"
-
-#: 
-msgid "What it becomes"
-msgstr "轉換結果"
-
-#: 
-msgid "What will happen"
-msgstr "將會發生什麼"
-
-#: 
-msgid "Where they go"
-msgstr "去向"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "哪些舊版志願者機會已轉換，以及每個機會轉換成的職位。"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "本教會使用的志工體驗。志願者機會（V1）將於 2027 年初停用。"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "您的志願者機會已轉換為事工。請在志願者機會於 2027 年初停用之前，將志工管理切換到 V2。"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "到新事工 {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "到事工 {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "已不在 ChurchCRM 中"
 
 #: 
 msgid "Collapse sidebar"
@@ -26875,10 +26461,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d 個預設被略過，原因不同（發生已結束、已取消或已滿）"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "過渡設定。舊版志工機會頁面與新的事工頁面同時可用，人員記錄會顯示兩個志工標籤頁，並有清楚標示。用於教會從 V1 遷移到 V2 期間，之後再切換為僅 V2。"
-
-#: 
 msgid "Assignment canceled"
 msgstr "分配已取消"
 
@@ -26925,10 +26507,6 @@ msgstr "這個日期已取消，您不需要再做任何事。"
 #: 
 msgid "This occurrence has been canceled"
 msgstr "此活動場次已取消"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "按教會運作方式組織的志願服事。每個事工有團隊和職位；人員取得職位資格，並屬於該事工的庫小組；排班跟隨日曆上的活動，生成帶有人員需求的、有日期的活動場次；協調員分配人員，他們可以接受、拒絕或提議代替人選；提醒和警報通過電子郵件發出。管理員和擁有“管理事工”許可權的使用者可以看到所有事工，並可建立、停用和刪除。事工協調員則獲得“管理我的事工”許可權：側邊欄的“事工”標題下只顯示其協調的事工。團隊負責人通過會眾門戶管理其團隊。會眾使用會眾門戶檢視自己的排班、回應、報名和表示願意幫忙。"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27624,10 +27202,6 @@ msgstr "檢視活動"
 #: 
 msgid "View people and families"
 msgstr "檢視人員和家庭"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "本教會已關閉志工管理"
 
 #: 
 msgid "Weak"

@@ -4,7 +4,7 @@
     "src/people/views/_dashboard-overview.php:178"
   ],
   "6 months": [
-    "src/ChurchCRM/Service/DemoDataService.php:618",
+    "src/ChurchCRM/Service/DemoDataService.php:615",
     "src/account/views/account.php:302",
     "src/api/routes/people/people-persons.php:497"
   ],
@@ -16,7 +16,7 @@
   "7 days": [
     "src/ChurchCRM/Portal/PortalStatsService.php:51",
     "src/ChurchCRM/Service/ClassAttendanceService.php:44",
-    "src/ChurchCRM/Service/DemoDataService.php:618"
+    "src/ChurchCRM/Service/DemoDataService.php:615"
   ],
   "Collapse the sidebar to icons": [
     "src/account/views/account.php:330"
@@ -79,6 +79,9 @@
   ],
   "This dashboard is now your main dashboard.": [
     "webpack/common/landing-page.ts:31"
+  ],
+  "This is your church account. Everything you can do for yourself lives here.": [
+    "src/Include/themes/default/templates/home.html.twig:43"
   ],
   "Total deposited": [
     "src/finance/views/deposits/search.php:46"

@@ -1356,10 +1356,6 @@ msgid "Default"
 msgstr "डिफ़ॉल्ट"
 
 #: 
-msgid "Exit"
-msgstr "बाहर निकलें"
-
-#: 
 msgid "Add New"
 msgstr "नया जोड़ें"
 
@@ -1577,10 +1573,6 @@ msgid "Restore Database"
 msgstr "डेटाबेस पुनर्स्थापित करें"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "कृपया विलोपन की पुष्टि करें"
-
-#: 
 msgid "Listing"
 msgstr "सूची"
 
@@ -1667,14 +1659,6 @@ msgstr "नया पासवर्ड"
 #: 
 msgid "Confirm New Password"
 msgstr "नए पासवर्ड की पुष्टि करें"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "स्वयंसेवक अवसर संपादक"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "अभी तक कोई स्वयंसेवक अवसर नहीं जोड़ा गया है"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6542,10 +6526,6 @@ msgid "Confirm Property Deletion"
 msgstr "संपत्ति हटाने की पुष्टि करें"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "स्वयंसेवक अवसर हटाने की पुष्टि करें"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "हटाने की पुष्टि"
 
@@ -6558,16 +6538,8 @@ msgid "Existing Custom Person Fields"
 msgstr "मौजूदा कस्टम व्यक्ति फ़ील्ड"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "मौजूदा स्वयंसेवक अवसर"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "क्षेत्र सफलतापूर्वक हटा दिया गया"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "अमान्य CSRF टोकन"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8333,10 +8305,6 @@ msgid "Create or edit property type categories"
 msgstr "विशेषता प्रकार श्रेणियाँ बनाएँ या संपादित करें"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "स्वयंसेवक पद बनाएँ या संपादित करें"
-
-#: 
 msgid "Current person"
 msgstr "वर्तमान व्यक्ति"
 
@@ -8783,10 +8751,6 @@ msgstr "सिस्टम उपयोगकर्ता, अनुमतिय
 #: 
 msgid "Manage user account details and permissions"
 msgstr "उपयोगकर्ता खाता विवरण और अनुमतियाँ प्रबंधित करें"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "स्वयंसेवा के अवसर प्रबंधित करें और सदस्य निर्धारित करें"
 
 #: 
 msgid "Map cart items"
@@ -9411,10 +9375,6 @@ msgid "funds"
 msgstr "कोष"
 
 #: 
-msgid "opportunities"
-msgstr "अवसर"
-
-#: 
 msgid "or connect an external service"
 msgstr "या बाहरी सेवा कनेक्ट करें"
 
@@ -9714,11 +9674,6 @@ msgstr "ईमेल पते प्राप्त करने में व�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "फ़ोन नंबर प्राप्त करने में विफल"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "किसी विशेष अवसर के लिए स्वयंसेवकों को खोजें"
 
 #. Context: query_qry
 #: 
@@ -12485,10 +12440,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "संपत्ति प्रकार हटाया नहीं जा सकता: %d संपत्तियाँ अभी भी इसका संदर्भ देती हैं। पहले उन संपत्तियों को पुनः असाइन करें या हटाएँ।"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "स्वयंसेवक अवसर हटाया नहीं जा सकता: %d लोग अभी भी नियुक्त हैं। पहले नियुक्तियाँ हटाएँ।"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "वर्ग p, f, या g में से एक होना चाहिए"
 
@@ -12499,10 +12450,6 @@ msgstr "त्रुटि संदेश कॉपी करें"
 #: 
 msgid "Could not load note."
 msgstr "नोट लोड नहीं हो सका।"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "विवरण 100 वर्णों से अधिक नहीं हो सकता"
 
 #: 
 msgid "Donation fund not found"
@@ -12525,10 +12472,6 @@ msgid "Failed to create property type"
 msgstr "संपत्ति प्रकार बनाने में विफल"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "स्वयंसेवक अवसर बनाने में विफल"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "दान निधि हटाने में विफल"
 
@@ -12545,10 +12488,6 @@ msgid "Failed to delete property type"
 msgstr "संपत्ति प्रकार हटाने में विफल"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "स्वयंसेवक अवसर हटाने में विफल"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "दान निधि अपडेट करने में विफल"
 
@@ -12561,10 +12500,6 @@ msgid "Failed to update property type"
 msgstr "संपत्ति प्रकार अपडेट करने में विफल"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "स्वयंसेवक अवसर अपडेट करने में विफल"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "धन संग्रह अभियान नहीं मिला"
 
@@ -12575,10 +12510,6 @@ msgstr "इंस्टॉलेशन आईडी"
 #: 
 msgid "Invalid class"
 msgstr "अमान्य वर्ग"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "नाम 30 वर्णों से अधिक नहीं हो सकता"
 
 #: 
 msgid "Note by %s deleted"
@@ -12601,16 +12532,8 @@ msgid "Read more"
 msgstr "और पढ़ें"
 
 #: 
-msgid "That name already exists."
-msgstr "यह नाम पहले से मौजूद है।"
-
-#: 
 msgid "Title is required"
 msgstr "शीर्षक आवश्यक है"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "स्वयंसेवक अवसर नहीं मिला"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15201,10 +15124,6 @@ msgid "System Configuration"
 msgstr "सिस्टम कॉन्फ़िगरेशन"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "इसे एक वैध URL में अपडेट करें जो"
 
@@ -15433,10 +15352,6 @@ msgid "Add New Fund"
 msgstr "नई निधि जोड़ें"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "नया अवसर जोड़ें"
-
-#: 
 msgid "Add New Person"
 msgstr "नया व्यक्ति जोड़ें"
 
@@ -15449,10 +15364,6 @@ msgid "Add New Role"
 msgstr "नई भूमिका जोड़ें"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "नया स्वयंसेवी अवसर जोड़ें"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "संडे स्कूल कक्षा जोड़ें"
 
@@ -15463,10 +15374,6 @@ msgstr "इस परिवार को हटाएँ?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "उन नए परिवारों और व्यक्तियों की समीक्षा करें जिन्होंने आपके सार्वजनिक पंजीकरण फ़ॉर्म पर साइन अप किया"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "स्वयंसेवी अवसर हटाने की पुष्टि"
 
 #: 
 msgid "# Payments"
@@ -17133,14 +17040,6 @@ msgid "Find people who did not attend an event"
 msgstr "उन लोगों को खोजें जो किसी ईवेंट में नहीं आए"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "दो विशिष्ट अवसर कोड से मेल खाने वाले स्वयंसेवकों को खोजें"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "पहला स्वयंसेवक अवसर"
-
-#: 
 msgid "Folded Booklet"
 msgstr "तह की गई पुस्तिका"
 
@@ -17217,10 +17116,6 @@ msgid "Run Report"
 msgstr "रिपोर्ट चलाएं"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "दूसरा स्वयंसेवक अवसर"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "साइडबार में, लॉगिन पृष्ठ पर और ईमेल में दिखाया गया। एक लोगो अपलोड करना ChurchCRM ब्रांडिंग को हर जगह बदल देता है।"
 
@@ -17247,14 +17142,6 @@ msgstr "डिफ़ॉल्ट ChurchCRM लोगो का उपयोग �
 #: 
 msgid "View Full Family Giving"
 msgstr "पूर्ण परिवार दान देखें"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "स्वयंसेवक अवसर"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "दो अवसरों के लिए स्वयंसेवक"
 
 #: 
 msgid "YTD"
@@ -18081,10 +17968,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "जो अनुसूची एक आयोजन में नियुक्ति करती है वह अन्य आयोजनों का अनुसरण नहीं कर सकती; उसे हटाएँ और इसके बजाय अनुसूची जोड़ें"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "अवसरों की एक अकेली सूची, जैसे \"शिशु-कक्ष\" या \"स्वागतकर्ता\", जो लोग → व्यवस्थापन के अंतर्गत रखी जाती है। हर व्यक्ति को उन अवसरों से टैग किया जाता है जिनमें वह सहायता करने को तैयार है, उसके रिकॉर्ड के स्वयंसेवक टैब पर। बस इतना ही दर्ज होता है: कोई टीम, अनुसूची, तारीख़ पर नियुक्ति या अनुस्मारक ईमेल नहीं। टैग रिपोर्टों और व्यक्ति के रिकॉर्ड में उपयोग होते हैं।"
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "आपके चेहरे की चौकोर तस्वीर सबसे अच्छी रहती है।"
 
@@ -18391,18 +18274,6 @@ msgstr "पृष्ठभूमि कार्य चले"
 #: 
 msgid "Birthday greeting"
 msgstr "जन्मदिन की शुभकामना"
-
-#: 
-msgid "Both"
-msgstr "दोनों"
-
-#: 
-msgid "Both (transition)"
-msgstr "दोनों (संक्रमण)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "दोनों — V1 और V2 साथ-साथ (संक्रमण)"
 
 #: 
 msgid "Calendar address"
@@ -21489,22 +21360,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "उपयोगकर्ता के पास आयोजन जोड़ने की अनुमति होनी चाहिए, या वह उस स्वयंसेवक सेवकाई का समन्वयक हो जिसका यह कैलेंडर है"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — स्वयंसेवक अवसर (पुराना)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — पुराने स्वयंसेवक अवसर"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — सेवकाइयाँ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — स्वयंसेवक प्रबंधन"
-
-#: 
 msgid "Valid"
 msgstr "मान्य"
 
@@ -21523,10 +21378,6 @@ msgstr "आयोजन देखें"
 #: 
 msgid "View this email"
 msgstr "यह ईमेल देखें"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "स्वयंसेवक प्रबंधन V2 सक्षम नहीं है"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21633,10 +21484,6 @@ msgid "What the check found"
 msgstr "जाँच में क्या मिला"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "स्वयंसेवक अनुभव क्या हैं"
-
-#: 
 msgid "What you want to say"
 msgstr "आप क्या कहना चाहते हैं"
 
@@ -21667,10 +21514,6 @@ msgstr "तारीख़ें कहाँ से आती हैं"
 #: 
 msgid "Where we reach you"
 msgstr "हम आपसे कहाँ संपर्क करें"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "कौन-सा स्वयंसेवक प्रबंधन अनुभव सक्रिय है। V1 पुरानी स्वयंसेवक अवसर सुविधा है; V2 नया अनुसूचन और नियुक्ति कार्यप्रवाह है। \"दोनों\" माइग्रेशन के दौरान दोनों को साथ-साथ दिखाता है।"
 
 #: 
 msgid "Which events"
@@ -22079,10 +21922,6 @@ msgstr "इस इवेंट के दर्शकों की समूह 
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "केवल स्वयंसेवक प्रबंधक ही परिवर्तन कर सकते हैं कि कौन सेवकाई का समन्वय करता है"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 चुनने से V2 स्वयंसेवक ईमेल को रोका जाता है; कोई भी कतार में आया हुआ कुछ V2 के वापस आने पर भेज दिया जाता है, जब तक कि इसकी घटना समाप्त न हो।"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22927,10 +22766,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "खाली-पद चेतावनी का अग्रिम समय (घंटे)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "स्वयंसेवक प्रबंधन"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "स्वयंसेवक सेवकाइयाँ, दल, अनुसूचियाँ और नियुक्तियाँ"
 
@@ -22941,14 +22776,6 @@ msgstr "आने वाले दिनों में भरने वाल�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "इन आगामी अवसरों के लिए अभी भी स्वयंसेवक चाहिए: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "इनका अर्थ क्या है?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "यह कलीसिया कौन सा स्वयंसेवक अनुभव उपयोग करती है"
 
 #: 
 msgid "You are on the schedule"
@@ -26319,248 +26146,8 @@ msgid "Review Family Information"
 msgstr "परिवार की जानकारी की जाँच"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" नाम की सेवकाई पहले से मौजूद है। उसे सूची से चुनें, या कोई दूसरा नाम चुनें।"
-
-#: 
-msgid "A new ministry"
-msgstr "एक नई सेवकाई"
-
-#: 
-msgid "A position"
-msgstr "एक पद"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "पहले परिवर्तित किए गए पदों में {{total}} स्वयंसेवक जोड़ें?"
-
-#: 
-msgid "Already converted"
-msgstr "पहले से परिवर्तित"
-
-#: 
-msgid "An existing ministry"
-msgstr "एक मौजूदा सेवकाई"
-
-#: 
-msgid "Becomes"
-msgstr "बन जाता है"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM में स्वयंसेवकों को प्रबंधित करने के दो तरीके हैं। एक समय में केवल एक ही उपयोग में होना चाहिए; \"स्वयंसेवक अनुभव\" सेटिंग तय करती है कि यह चर्च कौन-सा देखे। बदलने से पेज और मेनू आइटम छिपते या दिखते हैं और कोई डेटा कभी नहीं हटता। V1 और दोनों केवल तब तक दिए जाते हैं जब तक स्वयंसेवी अवसर उपयोग में हों: जब हर अवसर परिवर्तित हो जाए और चर्च V2 पर हो, तो वे इस सूची से हट जाते हैं।"
-
-#: 
-msgid "Convert"
-msgstr "परिवर्तित करें"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "स्वयंसेवी अवसर परिवर्तित करें"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "अभी {{total}} अवसर परिवर्तित करें? स्वयंसेवी अवसर बंद होने तक V1 डेटा जैसा है वैसा ही रखा जाता है।"
-
-#: 
-msgid "Converted"
-msgstr "परिवर्तित"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "परिवर्तित: {{positions}} पद और {{ministries}} सेवकाइयाँ, {{qualifications}} स्वयंसेवक योग्य किए गए।"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "हर अवसर किसी एक सेवकाई की पहली टीम में एक पद बन जाता है, और उससे जुड़ा हर व्यक्ति उस पद के लिए योग्य हो जाता है। इन पदों पर स्वयं पंजीकरण शुरू में बंद रहता है।"
-
-#: 
-msgid "Everything is converted."
-msgstr "सब कुछ परिवर्तित हो गया है।"
-
-#: 
-msgid "Existing ministry"
-msgstr "मौजूदा सेवकाई"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "नई सेवकाई को अधिकतम 100 अक्षरों का नाम दें।"
-
-#: 
-msgid "Its own ministry"
-msgstr "अपनी अलग सेवकाई"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "तब से जुड़े: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "लिंक जो परिवर्तित नहीं हो सकते"
-
-#: 
-msgid "New ministries of their own"
-msgstr "अपनी अलग नई सेवकाइयाँ"
-
-#: 
-msgid "New ministry name"
-msgstr "नई सेवकाई का नाम"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "कोई ईमेल नहीं भेजा जाता, और स्वयंसेवी अवसर बंद होने तक जैसे हैं वैसे ही रहते हैं।"
-
-#: 
-msgid "No name"
-msgstr "कोई नाम नहीं"
-
-#: 
-msgid "Not converted"
-msgstr "परिवर्तित नहीं"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "सुविधा स्विच खोलें"
-
-#: 
-msgid "Open Ministries"
-msgstr "सेवकाइयाँ खोलें"
-
-#: 
-msgid "Opportunities"
-msgstr "अवसर"
-
-#: 
-msgid "Opportunity"
-msgstr "अवसर"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "अवसर #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "परिवर्तन के बाद से परिवर्तित स्वयंसेवी अवसरों से जुड़े लोग: %d। 2027 की शुरुआत में स्वयंसेवी अवसर बंद होने से पहले उन्हें उनके पदों में जोड़ें।"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "पहले परिवर्तन का पूर्वावलोकन करें, और उससे लौटाया गया संशोधन भेजें।"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "नाम अद्वितीय रखने के लिए नाम बदला गया"
-
-#: 
-msgid "Review the conversion"
-msgstr "परिवर्तन की समीक्षा करें"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "परिवर्तन का विकल्प JSON ऑब्जेक्ट के रूप में भेजें।"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "सेवकाई बनने वाले अवसरों को ID की सूची के रूप में भेजें।"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "वह सेवकाई मौजूद नहीं है।"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM का वह संस्करण जिसमें किसी व्यवस्थापक ने स्वयंसेवी अवसर बंद होने की सूचना खारिज की।"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "पूर्वावलोकन के बाद स्वयंसेवी अवसर बदल गए हैं। पूर्वावलोकन फिर से जाँचें, फिर परिवर्तित करें।"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "पुष्टि नहीं खुल सकी। पेज फिर से लोड करें और दोबारा प्रयास करें।"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "परिवर्तन का पूर्वावलोकन नहीं हो सका।"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "परिवर्तन विफल रहा। कुछ भी नहीं बदला गया।"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "सेवकाई \"%s\" में पदों को रखने के लिए कोई टीम नहीं है।"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "सर्वर तक नहीं पहुँचा जा सका। यह देखने के लिए पेज फिर से लोड करें कि परिवर्तन हुआ या नहीं।"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "परिवर्तित करने के लिए कोई स्वयंसेवी अवसर नहीं है।"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "स्वयंसेवक प्रबंधन दोनों पर बदल जाता है, ताकि नई सेवकाइयाँ स्वयंसेवी अवसरों के साथ दिखें।"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "स्वयंसेवी अवसर बंद किए जा रहे हैं"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "स्वयंसेवी अवसर परिवर्तित किए गए"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "स्वयंसेवी अवसर 2027 की शुरुआत में बंद कर दिए जाएँगे। कौन किस सेवा में है, यह बनाए रखने के लिए उन्हें सेवकाइयों में परिवर्तित करें।"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "स्वयंसेवी अवसर 2027 की शुरुआत में बंद कर दिए जाएँगे। अपने %1$d अवसरों और %2$d स्वयंसेवकों को अभी सेवकाइयों में परिवर्तित करें। कुछ भी बदलने से पहले आप परिणाम का पूर्वावलोकन कर सकते हैं।"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "योग्य स्वयंसेवक"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "परिवर्तित पदों में जोड़े जाने वाले स्वयंसेवक"
-
-#: 
-msgid "What it becomes"
-msgstr "यह क्या बनता है"
-
-#: 
-msgid "What will happen"
-msgstr "क्या होगा"
-
-#: 
-msgid "Where they go"
-msgstr "वे कहाँ जाते हैं"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "कौन-से पुराने स्वयंसेवी अवसर परिवर्तित किए गए हैं, और हर एक कौन-सा पद बना।"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "यह चर्च कौन-सा स्वयंसेवक अनुभव उपयोग करता है। स्वयंसेवी अवसर (V1) 2027 की शुरुआत में बंद कर दिए जाएँगे।"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "आपके स्वयंसेवी अवसर सेवकाइयों में परिवर्तित हो गए हैं। 2027 की शुरुआत में स्वयंसेवी अवसर बंद होने से पहले स्वयंसेवक प्रबंधन को V2 पर बदलें।"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "एक नई सेवकाई में, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "सेवकाई {{name}} में"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "अब ChurchCRM में नहीं"
 
 #: 
 msgid "Collapse sidebar"
@@ -26737,10 +26324,6 @@ msgstr[0] "%d डिफ़ॉल्ट किसी अन्य कारण �
 msgstr[1] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़े गए (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "एक संक्रमण सेटिंग। पुराने स्वयंसेवक अवसर पृष्ठ और नए सेवकाई पृष्ठ दोनों उपलब्ध हैं, और व्यक्ति के रिकॉर्ड में दोनों स्वयंसेवक टैब स्पष्ट लेबल के साथ दिखते हैं। कलीसिया को V1 से V2 पर ले जाते समय इसका उपयोग करें, फिर केवल V2 पर स्विच करें।"
-
-#: 
 msgid "Assignment canceled"
 msgstr "नियुक्ति रद्द की गई"
 
@@ -26787,10 +26370,6 @@ msgstr "यह तिथि रद्द कर दी गई थी। आप�
 #: 
 msgid "This occurrence has been canceled"
 msgstr "यह अवसर रद्द कर दिया गया है"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "स्वयंसेवा उसी तरह संगठित जैसे कलीसिया उसे चलाती है। हर सेवकाई की टीमें और पद होते हैं; लोग पदों के लिए योग्य बनाए जाते हैं और सेवकाई के पूल समूह के सदस्य होते हैं; अनुसूचियाँ कैलेंडर के आयोजनों का अनुसरण करती हैं और नियुक्ति आवश्यकताओं के साथ तारीख़ वाले अवसर बनाती हैं; समन्वयक लोगों को नियुक्त करते हैं, जो स्वीकार करते हैं, अस्वीकार करते हैं या विकल्प प्रस्तावित करते हैं; अनुस्मारक और अलर्ट ईमेल से जाते हैं। व्यवस्थापक और सेवकाइयाँ प्रबंधित करें अनुमति वाले उपयोगकर्ता हर सेवकाई देखते हैं और उन्हें बना, निष्क्रिय और हटा सकते हैं। सेवकाई के समन्वयक को इसके बजाय मेरी सेवकाइयाँ प्रबंधित करें अनुमति दी जाती है: तब साइडबार में सेवकाइयाँ शीर्षक केवल वही सेवकाइयाँ दिखाता है जिनका वे समन्वय करते हैं। टीम का अगुआ अपनी टीम सदस्य पोर्टल से चलाता है। सदस्य अपनी अनुसूची देखने, उत्तर देने, पंजीकरण करने और सहायता का प्रस्ताव देने के लिए सदस्य पोर्टल का उपयोग करते हैं।"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27489,10 +27068,6 @@ msgstr "कार्यक्रम देखें"
 #: 
 msgid "View people and families"
 msgstr "लोग और परिवार देखें"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "इस चर्च के लिए स्वयंसेवक प्रबंधन बंद है"
 
 #: 
 msgid "Weak"

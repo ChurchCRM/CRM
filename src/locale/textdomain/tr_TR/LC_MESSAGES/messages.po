@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Varsayılan"
 
 #: 
-msgid "Exit"
-msgstr "çıkış"
-
-#: 
 msgid "Add New"
 msgstr "Yeni ekle"
 
@@ -1591,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Veritabanını geri yükle"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Lütfen silinmesini onaylayın"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
 
@@ -1681,14 +1673,6 @@ msgstr "Yeni Şifre"
 #: 
 msgid "Confirm New Password"
 msgstr "Yeni şifreyi onayla"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Gönüllü Fırsat Editörü"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Henüz gönüllü fırsatı eklenmedi"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6573,10 +6557,6 @@ msgid "Confirm Property Deletion"
 msgstr "Özellik Silmeyi Onayla"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Gönüllü Fırsatı Silmeyi Onayla"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Silme Onayı"
 
@@ -6589,16 +6569,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Mevcut Özel Kişi Alanları"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Mevcut Gönüllü Fırsatları"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Alan başarıyla silindi"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Geçersiz CSRF belirteci"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8364,10 +8336,6 @@ msgid "Create or edit property type categories"
 msgstr "Özellik türü kategorilerini oluştur veya düzenle"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Gönüllü pozisyonlarını oluştur veya düzenle"
-
-#: 
 msgid "Current person"
 msgstr "Mevcut kişi"
 
@@ -8814,10 +8782,6 @@ msgstr "Sistem kullanıcılarını, izinleri ve iki faktörlü kimlik doğrulama
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Kullanıcı hesabı ayrıntılarını ve izinleri yönet"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Gönüllü fırsatlarını yönet ve üyeleri ata"
 
 #: 
 msgid "Map cart items"
@@ -9442,10 +9406,6 @@ msgid "funds"
 msgstr "fonlar"
 
 #: 
-msgid "opportunities"
-msgstr "fırsatlar"
-
-#: 
 msgid "or connect an external service"
 msgstr "veya harici bir hizmet bağlayın"
 
@@ -9745,11 +9705,6 @@ msgstr "E-posta adresleri alınamadı"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Telefon numaraları alınamadı"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Belirli bir fırsat için gönüllüler bulun"
 
 #. Context: query_qry
 #: 
@@ -12516,10 +12471,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Özellik türü silinemiyor: %d özellik hâlâ buna başvuruyor. Önce bu özellikleri yeniden atayın veya silin."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Gönüllü fırsatı silinemiyor: %d kişi hâlâ atanmış durumda. Önce atamaları kaldırın."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Sınıf p, f veya g değerlerinden biri olmalıdır"
 
@@ -12530,10 +12481,6 @@ msgstr "Hata mesajını kopyala"
 #: 
 msgid "Could not load note."
 msgstr "Not yüklenemedi."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Açıklama 100 karakteri aşamaz"
 
 #: 
 msgid "Donation fund not found"
@@ -12556,10 +12503,6 @@ msgid "Failed to create property type"
 msgstr "Özellik türü oluşturulamadı"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Gönüllü fırsatı oluşturulamadı"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Bağış fonu silinemedi"
 
@@ -12576,10 +12519,6 @@ msgid "Failed to delete property type"
 msgstr "Özellik türü silinemedi"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Gönüllü fırsatı silinemedi"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Bağış fonu güncellenemedi"
 
@@ -12592,10 +12531,6 @@ msgid "Failed to update property type"
 msgstr "Özellik türü güncellenemedi"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Gönüllü fırsatı güncellenemedi"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Bağış kampanyası bulunamadı"
 
@@ -12606,10 +12541,6 @@ msgstr "Kurulum Kimliği"
 #: 
 msgid "Invalid class"
 msgstr "Geçersiz sınıf"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Ad 30 karakteri aşamaz"
 
 #: 
 msgid "Note by %s deleted"
@@ -12632,16 +12563,8 @@ msgid "Read more"
 msgstr "Daha fazla oku"
 
 #: 
-msgid "That name already exists."
-msgstr "Bu ad zaten mevcut."
-
-#: 
 msgid "Title is required"
 msgstr "Başlık gereklidir"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Gönüllü fırsatı bulunamadı"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15232,10 +15155,6 @@ msgid "System Configuration"
 msgstr "Sistem Yapılandırması"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi atamaları kaldıracak"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Geçerli bir URL ile güncelleyin:"
 
@@ -15464,10 +15383,6 @@ msgid "Add New Fund"
 msgstr "Yeni Fon Ekle"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Yeni Fırsat Ekle"
-
-#: 
 msgid "Add New Person"
 msgstr "Yeni Kişi Ekle"
 
@@ -15480,10 +15395,6 @@ msgid "Add New Role"
 msgstr "Yeni Rol Ekle"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Yeni Gönüllü Fırsatı Ekle"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Pazar Okulu Sınıfı Ekle"
 
@@ -15494,10 +15405,6 @@ msgstr "Bu aile silinsin mi?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Genel kayıt formunuza kaydolan yeni aileleri ve bireyleri inceleyin"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Gönüllü Fırsatı Silme Onayı"
 
 #: 
 msgid "# Payments"
@@ -17164,14 +17071,6 @@ msgid "Find people who did not attend an event"
 msgstr "Etkinliğe katılmayan kişileri bulun"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "İki belirli fırsat kodunu eşleştiren gönüllüleri bulun"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "İlk Gönüllü Fırsat"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Katlanmış Kitapçık"
 
@@ -17248,10 +17147,6 @@ msgid "Run Report"
 msgstr "Rapor Çalıştır"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "İkinci Gönüllü Fırsat"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Yan çubukta, oturum açma sayfasında ve e-postaların gösterilir. Logo yüklemek, ChurchCRM markalamalarını her yerde göründüğü yerlerde değiştirir."
 
@@ -17278,14 +17173,6 @@ msgstr "Varsayılan ChurchCRM logosu kullanılıyor"
 #: 
 msgid "View Full Family Giving"
 msgstr "Tam Aile Bağışını Görüntüle"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Gönüllü Fırsat"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "İki Fırsat için Gönüllüler"
 
 #: 
 msgid "YTD"
@@ -18112,10 +17999,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Tek bir etkinliğe görev veren program başka etkinlikleri izleyemez; silin ve bunun yerine bir program ekleyin"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "\"Kreş\" veya \"Karşılama\" gibi fırsatların tek bir listesi; Kişiler → Yönetim altında tutulur. Her kişi, kaydının Gönüllü sekmesinde yardım etmeye istekli olduğu fırsatlarla etiketlenir. Kaydedilen tek şey budur: ekip, program, tarihe görevlendirme veya hatırlatma e-postası yoktur. Etiketler raporlarda ve kişi kaydında kullanılır."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Yüzünüzün kare bir fotoğrafı en iyi sonucu verir."
 
@@ -18422,18 +18305,6 @@ msgstr "Arka plan işleri çalıştı"
 #: 
 msgid "Birthday greeting"
 msgstr "Doğum günü tebriği"
-
-#: 
-msgid "Both"
-msgstr "Her ikisi"
-
-#: 
-msgid "Both (transition)"
-msgstr "Her ikisi (geçiş)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Her ikisi — V1 ve V2 yan yana (geçiş)"
 
 #: 
 msgid "Calendar address"
@@ -21520,22 +21391,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Kullanıcının Etkinlik Ekleme yetkisi olmalı veya bu takvimin ait olduğu gönüllü hizmetini koordine etmelidir"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Gönüllü Fırsatları (eski)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — eski Gönüllü Fırsatları"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Hizmetler"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Gönüllü Yönetimi"
-
-#: 
 msgid "Valid"
 msgstr "Geçerli"
 
@@ -21554,10 +21409,6 @@ msgstr "Etkinliği görüntüle"
 #: 
 msgid "View this email"
 msgstr "Bu e-postayı görüntüle"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Gönüllü Yönetimi V2 etkin değil"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21664,10 +21515,6 @@ msgid "What the check found"
 msgstr "Kontrolün bulduğu"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Gönüllülük deneyimleri nelerdir"
-
-#: 
 msgid "What you want to say"
 msgstr "Söylemek istedikleriniz"
 
@@ -21698,10 +21545,6 @@ msgstr "Tarihlerin geldiği yer"
 #: 
 msgid "Where we reach you"
 msgstr "Size nereden ulaşırız"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Hangi Gönüllü Yönetimi deneyiminin etkin olduğu. V1 eski Gönüllü Fırsatları özelliğidir; V2 yeni planlama ve görevlendirme iş akışıdır. \"Her ikisi\", geçiş sırasında ikisini yan yana gösterir."
 
 #: 
 msgid "Which events"
@@ -22110,10 +21953,6 @@ msgstr "Bu olayın kitlesini değiştirmek için yetkiniz yok"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Sadece bir gönüllü yöneticisi bir hizmeti koordine eden kişiyi değiştirebilir"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1'i seçmek V2 gönüllü e-postasını duraklatır; sırada olan her şey V2 tekrar açıldığında gönderilir, olay sona ermedikçe."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22958,10 +22797,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Doldurulmamış görev uyarısının ön süresi (saat)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Gönüllü yönetimi"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Gönüllü hizmetler, ekipler, programlar ve atamalar"
 
@@ -22972,14 +22807,6 @@ msgstr "Önümüzdeki günlerde doldurulacak gönüllü görevleri"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Bu yaklaşan oluşumlar için hâlâ gereken gönüllüler: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Bunlar ne anlama gelir?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Bu kilisenin kullandığı gönüllü deneyimi"
 
 #: 
 msgid "You are on the schedule"
@@ -26350,248 +26177,8 @@ msgid "Review Family Information"
 msgstr "Aile bilgilerini gözden geçir"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" adlı bir hizmet zaten var. Listeden seçin veya başka bir ad belirleyin."
-
-#: 
-msgid "A new ministry"
-msgstr "Yeni bir hizmet"
-
-#: 
-msgid "A position"
-msgstr "Bir pozisyon"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Daha önce dönüştürülen pozisyonlara {{total}} gönüllü eklensin mi?"
-
-#: 
-msgid "Already converted"
-msgstr "Zaten dönüştürüldü"
-
-#: 
-msgid "An existing ministry"
-msgstr "Mevcut bir hizmet"
-
-#: 
-msgid "Becomes"
-msgstr "Şuna dönüşür"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM'de gönüllüleri yönetmenin iki yolu vardır. Aynı anda yalnızca biri kullanılmalıdır; bu kilisenin hangisini göreceğine \"Gönüllü deneyimi\" ayarı karar verir. Geçiş yapmak sayfaları ve menü öğelerini gizler veya gösterir, verileri asla silmez. V1 ve Her ikisi yalnızca Gönüllü fırsatlar kullanıldığı sürece sunulur: tüm fırsatlar dönüştürülüp kilise V2'ye geçtiğinde bu listeden kalkarlar."
-
-#: 
-msgid "Convert"
-msgstr "Dönüştür"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Gönüllü Fırsatları Dönüştür"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "{{total}} fırsat şimdi dönüştürülsün mü? V1 verileri, Gönüllü fırsatlar kullanımdan kaldırılana kadar olduğu gibi korunur."
-
-#: 
-msgid "Converted"
-msgstr "Dönüştürüldü"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Dönüştürüldü: {{positions}} pozisyon ve {{ministries}} hizmet, {{qualifications}} gönüllü yetkilendirildi."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Her fırsat bir hizmetin ilk ekibinde bir pozisyon olur ve ona bağlı herkes bu pozisyon için yetkilendirilir. Bu pozisyonlarda kendi kendine kayıt başlangıçta kapalıdır."
-
-#: 
-msgid "Everything is converted."
-msgstr "Her şey dönüştürüldü."
-
-#: 
-msgid "Existing ministry"
-msgstr "Mevcut hizmet"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Yeni hizmete en fazla 100 karakterlik bir ad verin."
-
-#: 
-msgid "Its own ministry"
-msgstr "Kendi hizmeti"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "O zamandan beri bağlananlar: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Dönüştürülemeyen bağlantılar"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Kendilerine ait yeni hizmetler"
-
-#: 
-msgid "New ministry name"
-msgstr "Yeni hizmet adı"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "E-posta gönderilmez ve Gönüllü fırsatlar kullanımdan kaldırılana kadar olduğu gibi kalır."
-
-#: 
-msgid "No name"
-msgstr "Ad yok"
-
-#: 
-msgid "Not converted"
-msgstr "Dönüştürülmedi"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Özellik Değiştirgelerini Aç"
-
-#: 
-msgid "Open Ministries"
-msgstr "Hizmetleri Aç"
-
-#: 
-msgid "Opportunities"
-msgstr "Fırsatlar"
-
-#: 
-msgid "Opportunity"
-msgstr "Fırsat"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Fırsat #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Dönüştürmeden bu yana dönüştürülmüş Gönüllü fırsatlara bağlanan kişiler: %d. Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılmadan önce onları pozisyonlarına ekleyin."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Önce dönüştürmenin önizlemesini alın ve döndürdüğü revizyonu gönderin."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Adlar benzersiz kalsın diye yeniden adlandırıldı"
-
-#: 
-msgid "Review the conversion"
-msgstr "Dönüştürmeyi gözden geçir"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Dönüştürme seçimini bir JSON nesnesi olarak gönderin."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Hizmete dönüşecek fırsatları bir kimlik listesi olarak gönderin."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Bu hizmet mevcut değil."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Bir yöneticinin Gönüllü fırsatların kaldırılması bildirimini kapattığı ChurchCRM sürümü."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Gönüllü fırsatlar önizlemeden bu yana değişti. Önizlemeyi yeniden kontrol edin, ardından dönüştürün."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Onay açılamadı. Sayfayı yeniden yükleyip tekrar deneyin."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Dönüştürmenin önizlemesi oluşturulamadı."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Dönüştürme başarısız oldu. Hiçbir şey değiştirilmedi."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" hizmetinin pozisyonları barındıracak bir ekibi yok."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Sunucuya ulaşılamadı. Dönüştürmenin çalışıp çalışmadığını görmek için sayfayı yeniden yükleyin."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Dönüştürülecek Gönüllü fırsat yok."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Gönüllü yönetimi Her ikisi moduna geçer, böylece yeni hizmetler Gönüllü fırsatların yanında görünür."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Gönüllü fırsatlar kullanımdan kaldırılıyor"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Gönüllü fırsatlar dönüştürüldü"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılacak. Kimin nerede gönüllü olduğunu korumak için onları Hizmetlere dönüştürün."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılacak. %1$d fırsatınızı ve %2$d gönüllünüzü şimdi Hizmetlere dönüştürün. Herhangi bir değişiklikten önce sonucun önizlemesini görebilirsiniz."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Yetkilendirilen gönüllüler"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Dönüştürülen pozisyonlara eklenecek gönüllüler"
-
-#: 
-msgid "What it becomes"
-msgstr "Neye dönüşür"
-
-#: 
-msgid "What will happen"
-msgstr "Ne olacak"
-
-#: 
-msgid "Where they go"
-msgstr "Nereye gidecekler"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Hangi eski Gönüllü fırsatların dönüştürüldüğü ve her birinin hangi pozisyon olduğu."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Bu kilisenin kullandığı gönüllü deneyimi. Gönüllü fırsatlar (V1) 2027'nin başında kullanımdan kaldırılacak."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Gönüllü fırsatlarınız Hizmetlere dönüştürüldü. Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılmadan önce Gönüllü yönetimini V2'ye geçirin."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "yeni bir hizmete, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "{{name}} hizmetine"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "artık ChurchCRM'de değil"
 
 #: 
 msgid "Collapse sidebar"
@@ -26768,10 +26355,6 @@ msgstr[0] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edil
 msgstr[1] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Bir geçiş ayarı. Eski Gönüllü Fırsatları sayfaları ve yeni Hizmetler sayfaları birlikte kullanılabilir ve bir kişi kaydında her iki Gönüllü sekmesi de açıkça etiketlenmiş olarak görünür. Bir kiliseyi V1'den V2'ye taşırken kullanın, ardından yalnızca V2'ye geçin."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Görevlendirme iptal edildi"
 
@@ -26818,10 +26401,6 @@ msgstr "Bu tarih iptal edildi. Sizden başka bir şey gerekmiyor."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Bu oluşum iptal edildi"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Bir kilisenin işleyişine göre düzenlenmiş gönüllülük. Her hizmetin ekipleri ve pozisyonları vardır; kişiler pozisyonlar için yetkilendirilir ve hizmetin havuz grubuna aittir; programlar takvimdeki etkinlikleri izler ve kadro gereksinimleriyle tarihli oluşumlar üretir; koordinatörler kişileri atar, onlar da kabul eder, reddeder veya yedek önerir; hatırlatmalar ve uyarılar e-postayla gönderilir. Yöneticiler ve Hizmetleri Yönet yetkisine sahip kullanıcılar her hizmeti görür ve oluşturabilir, devre dışı bırakabilir ve silebilir. Bir hizmet koordinatörüne bunun yerine Hizmetlerimi Yönet yetkisi verilir: kenar çubuğundaki Hizmetler başlığı o zaman yalnızca koordine ettiği hizmetleri gösterir. Bir ekip lideri ekibini Üye Portalı'ndan yönetir. Üyeler programlarını görmek, yanıt vermek, kaydolmak ve yardım teklif etmek için Üye Portalı'nı kullanır."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27520,10 +27099,6 @@ msgstr "Etkinlikleri görüntüleme"
 #: 
 msgid "View people and families"
 msgstr "Kişi ve aileleri görüntüleme"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Bu kilisede Gönüllü Yönetimi kapalı"
 
 #: 
 msgid "Weak"
