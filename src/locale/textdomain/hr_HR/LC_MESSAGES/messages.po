@@ -1353,10 +1353,6 @@ msgid "Default"
 msgstr "Zadano"
 
 #: 
-msgid "Exit"
-msgstr "Izlaz"
-
-#: 
 msgid "Add New"
 msgstr "Dodaj novo"
 
@@ -1574,10 +1570,6 @@ msgid "Restore Database"
 msgstr "Obnovi bazu podataka"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Potvrdite brisanje"
-
-#: 
 msgid "Listing"
 msgstr "Popis"
 
@@ -1664,14 +1656,6 @@ msgstr "Nova lozinka"
 #: 
 msgid "Confirm New Password"
 msgstr "Potvrdi novu lozinku"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Urednik volonterskih mogućnosti"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Još nisu dodane volonterske mogućnosti"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6544,10 +6528,6 @@ msgid "Confirm Property Deletion"
 msgstr "Potvrdi brisanje svojstva"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Potvrdi brisanje volonterske mogućnosti"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Potvrda brisanja"
 
@@ -6560,16 +6540,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Postojeća prilagođena osobna polja"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Postojeće volonterske mogućnosti"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Polje uspješno obrisano"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Nevažeći CSRF token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8338,10 +8310,6 @@ msgid "Create or edit property type categories"
 msgstr "Kreirajte ili uredite kategorije vrsta svojstava"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Kreirajte ili uredite volonterske pozicije"
-
-#: 
 msgid "Current person"
 msgstr "Trenutna osoba"
 
@@ -8788,10 +8756,6 @@ msgstr "Upravljajte sistemskim korisnicima, dozvolama i postavkama dvofaktorske 
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Upravljajte detaljetima korisničkog računa i dozvolama"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Upravljajte volonterskim mogućnostima i dodjeljujte članove"
 
 #: 
 msgid "Map cart items"
@@ -9416,10 +9380,6 @@ msgid "funds"
 msgstr "fondovi"
 
 #: 
-msgid "opportunities"
-msgstr "mogućnosti"
-
-#: 
 msgid "or connect an external service"
 msgstr "ili povežite vanjsku uslugu"
 
@@ -9719,11 +9679,6 @@ msgstr "Nije uspjelo dohvaćanje adresa e-pošte"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Nije uspjelo dohvaćanje telefonskih brojeva"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Pronađi volontere za određenu mogućnost"
 
 #. Context: query_qry
 #: 
@@ -12491,10 +12446,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Nije moguće obrisati vrstu svojstva: %d svojstava je još uvijek referiraju. Prvo premjestite ili obrišite ta svojstva."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Nije moguće obrisati volontersku mogućnost: %d osoba je još uvijek dodijeljeno. Prvo uklonite dodjele."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klasa mora biti jedna od: p, f ili g"
 
@@ -12505,10 +12456,6 @@ msgstr "Kopiraj poruku greške"
 #: 
 msgid "Could not load note."
 msgstr "Nije moguće učitati bilješku."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Opis ne može prelaziti 100 znakova"
 
 #: 
 msgid "Donation fund not found"
@@ -12531,10 +12478,6 @@ msgid "Failed to create property type"
 msgstr "Kreiranje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Kreiranje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Brisanje fonda darivanja nije uspjelo"
 
@@ -12551,10 +12494,6 @@ msgid "Failed to delete property type"
 msgstr "Brisanje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Brisanje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Ažuriranje fonda darivanja nije uspjelo"
 
@@ -12567,10 +12506,6 @@ msgid "Failed to update property type"
 msgstr "Ažuriranje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Ažuriranje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Akcija prikupljanja nije pronađena"
 
@@ -12581,10 +12516,6 @@ msgstr "ID instalacije"
 #: 
 msgid "Invalid class"
 msgstr "Nevažeća klasa"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Naziv ne može prelaziti 30 znakova"
 
 #: 
 msgid "Note by %s deleted"
@@ -12607,16 +12538,8 @@ msgid "Read more"
 msgstr "Čitaj više"
 
 #: 
-msgid "That name already exists."
-msgstr "Taj naziv već postoji."
-
-#: 
 msgid "Title is required"
 msgstr "Naslov je obavezan"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Volonterska mogućnost nije pronađena"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15210,10 +15133,6 @@ msgid "System Configuration"
 msgstr "Konfiguracija sustava"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Postoje osobe dodijeljene ovoj volonterskoj prilici. Brisanjem će se ukloniti dodjela"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Ažurirajte ga na valjani URL koji"
 
@@ -15442,10 +15361,6 @@ msgid "Add New Fund"
 msgstr "Dodaj novi fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Dodaj novu priliku"
-
-#: 
 msgid "Add New Person"
 msgstr "Dodaj novu osobu"
 
@@ -15458,10 +15373,6 @@ msgid "Add New Role"
 msgstr "Dodaj novu ulogu"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Dodaj novu volontersku priliku"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Dodaj nedjeljnoškolsku skupinu"
 
@@ -15472,10 +15383,6 @@ msgstr "Obrisati ovu obitelj?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Pregledajte nove obitelji i pojedince koji su se prijavili putem javnog obrasca za registraciju"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Potvrda brisanja volonterske prilike"
 
 #: 
 msgid "# Payments"
@@ -17144,14 +17051,6 @@ msgid "Find people who did not attend an event"
 msgstr "Pronađite ljude koji nisu sudjelovali na događaju"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Pronađite volontere koji odgovaraju dvama specifičnim kodovima mogućnosti"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Prva mogućnost volontiranja"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Savijena brošura"
 
@@ -17228,10 +17127,6 @@ msgid "Run Report"
 msgstr "Pokreni izvještaj"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Druga mogućnost volontiranja"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Prikazano u bočnoj traci, na stranici za prijavu i u e-poštama. Učitavanje loga zamjenjuje branding ChurchCRM-a gdje god se pojavljuje."
 
@@ -17258,14 +17153,6 @@ msgstr "Korištenje standardnog loga ChurchCRM"
 #: 
 msgid "View Full Family Giving"
 msgstr "Pogledaj potpuno obiteljsko darivanje"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Mogućnost volontiranja"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Volonteri za dvije mogućnosti"
 
 #: 
 msgid "YTD"
@@ -18099,10 +17986,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Raspored koji popunjava jedan događaj ne može pratiti druge događaje; izbrišite ga i umjesto toga dodajte raspored"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Jedan popis prilika, poput „Jaslice“ ili „Dočekivač“, vodi se pod Osobe → Administracija. Svaka osoba označena je prilikama u kojima je spremna pomoći, na kartici Volonter u svom zapisu. To je sve što se bilježi: nema timova, rasporeda, dodjela na datum ni podsjetnika e-poštom. Oznake se koriste u izvještajima i u zapisu osobe."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Najbolje djeluje kvadratna slika vašeg lica."
 
@@ -18409,18 +18292,6 @@ msgstr "Pozadinski poslovi radili su"
 #: 
 msgid "Birthday greeting"
 msgstr "Rođendanska čestitka"
-
-#: 
-msgid "Both"
-msgstr "Oboje"
-
-#: 
-msgid "Both (transition)"
-msgstr "Oboje (prijelaz)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Oboje – V1 i V2 zajedno (prijelaz)"
 
 #: 
 msgid "Calendar address"
@@ -21511,22 +21382,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Korisnik mora imati ovlaštenje Dodavanje događaja ili koordinirati volontersku službu kojoj ovaj kalendar pripada"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Prilike za volontere (staro)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – stare Prilike za volontere"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Službe"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Upravljanje volonterima"
-
-#: 
 msgid "Valid"
 msgstr "Valjano"
 
@@ -21545,10 +21400,6 @@ msgstr "Prikaži događaj"
 #: 
 msgid "View this email"
 msgstr "Prikaži ovu e-poštu"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Upravljanje volonterima V2 nije omogućeno"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21657,10 +21508,6 @@ msgid "What the check found"
 msgstr "Što je provjera otkrila"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Koja su volonterska iskustva"
-
-#: 
 msgid "What you want to say"
 msgstr "Što želite reći"
 
@@ -21691,10 +21538,6 @@ msgstr "Odakle dolaze datumi"
 #: 
 msgid "Where we reach you"
 msgstr "Gdje vas možemo dobiti"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Koje je iskustvo upravljanja volonterima aktivno. V1 je stara značajka Prilike za volontere; V2 je novi tijek rada planiranja i dodjele. „Oboje“ prikazuje oboje zajedno tijekom migracije."
 
 #: 
 msgid "Which events"
@@ -22103,10 +21946,6 @@ msgstr "Nemate ovlasten za promenu grupe ovog dogadaja"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Samo upravitelj volontera moze promeniti koordinatora sluzbene"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Odabir V1 pauzira email V2; sve sto je u redu se salje kada se V2 ponovo ukljuci, osim ako se dogadaj nije zavrsio."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22951,10 +22790,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Vrijeme najave upozorenja o nepopunjenoj poziciji (sati)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Upravljanje volonterima"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Volonterske službe, timovi, rasporedi i dodjele"
 
@@ -22965,14 +22800,6 @@ msgstr "Volonterske pozicije za popuniti u nadolazećim danima"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Volonteri još potrebni za ove nadolazeće pojave: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Što to znači?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Koje iskustvo volontera ova crkva koristi"
 
 #: 
 msgid "You are on the schedule"
@@ -26343,248 +26170,8 @@ msgid "Review Family Information"
 msgstr "Pregled podataka o obitelji"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Služba s nazivom „%s” već postoji. Odaberite je s popisa ili odaberite drugi naziv."
-
-#: 
-msgid "A new ministry"
-msgstr "Nova služba"
-
-#: 
-msgid "A position"
-msgstr "Pozicija"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Dodati volontere ({{total}}) na prethodno pretvorene pozicije?"
-
-#: 
-msgid "Already converted"
-msgstr "Već pretvoreno"
-
-#: 
-msgid "An existing ministry"
-msgstr "Postojeća služba"
-
-#: 
-msgid "Becomes"
-msgstr "Postaje"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM ima dva načina upravljanja volonterima. Istodobno bi se trebao koristiti samo jedan; postavka „Način volontiranja” određuje koji ova crkva vidi. Promjena skriva ili prikazuje stranice i stavke izbornika i nikada ne briše podatke. V1 i Oboje nude se samo dok se koriste Volonterske mogućnosti: kad je svaka mogućnost pretvorena i crkva koristi V2, nestaju s ovog popisa."
-
-#: 
-msgid "Convert"
-msgstr "Pretvori"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Pretvori Volonterske mogućnosti"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Pretvoriti sada mogućnosti ({{total}})? Podaci V1 ostaju nepromijenjeni dok se Volonterske mogućnosti ne ukinu."
-
-#: 
-msgid "Converted"
-msgstr "Pretvoreno"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Pretvoreno: pozicije – {{positions}}, službe – {{ministries}}, osposobljeni volonteri – {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Svaka mogućnost postaje pozicija u prvom timu jedne službe, a svi povezani s njom postaju osposobljeni za tu poziciju. Samoprijava je za te pozicije u početku isključena."
-
-#: 
-msgid "Everything is converted."
-msgstr "Sve je pretvoreno."
-
-#: 
-msgid "Existing ministry"
-msgstr "Postojeća služba"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Dajte novoj službi naziv od najviše 100 znakova."
-
-#: 
-msgid "Its own ministry"
-msgstr "Vlastita služba"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Povezani od tada: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Veze koje se ne mogu pretvoriti"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Nove vlastite službe"
-
-#: 
-msgid "New ministry name"
-msgstr "Naziv nove službe"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Ne šalje se e-pošta, a Volonterske mogućnosti ostaju kakve jesu dok se ne ukinu."
-
-#: 
-msgid "No name"
-msgstr "Bez naziva"
-
-#: 
-msgid "Not converted"
-msgstr "Nije pretvoreno"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Otvori Sklopke značajki"
-
-#: 
-msgid "Open Ministries"
-msgstr "Otvori Službe"
-
-#: 
-msgid "Opportunities"
-msgstr "Mogućnosti"
-
-#: 
-msgid "Opportunity"
-msgstr "Mogućnost"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mogućnost br. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Osobe povezane s pretvorenim Volonterskim mogućnostima nakon pretvorbe: %d. Dodajte ih na njihove pozicije prije nego što se Volonterske mogućnosti ukinu početkom 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Najprije pregledajte pretvorbu i pošaljite reviziju koju je vratila."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Preimenovano kako bi nazivi bili jedinstveni"
-
-#: 
-msgid "Review the conversion"
-msgstr "Pregledaj pretvorbu"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Pošaljite odabir pretvorbe kao JSON objekt."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Pošaljite mogućnosti koje postaju službe kao popis ID-ova."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Ta služba ne postoji."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Verzija ChurchCRM-a u kojoj je administrator odbacio obavijest o ukidanju Volonterskih mogućnosti."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Volonterske mogućnosti promijenile su se od pregleda. Ponovno provjerite pregled, a zatim pretvorite."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Potvrda se nije mogla otvoriti. Ponovno učitajte stranicu i pokušajte opet."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Pregled pretvorbe nije bilo moguće prikazati."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Pretvorba nije uspjela. Ništa nije promijenjeno."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Služba „%s” nema tim za pozicije."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Poslužitelj nije dostupan. Ponovno učitajte stranicu da biste vidjeli je li pretvorba izvršena."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nema Volonterskih mogućnosti za pretvorbu."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Upravljanje volonterima prelazi na Oboje, tako da su nove službe vidljive uz Volonterske mogućnosti."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Volonterske mogućnosti se ukidaju"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Volonterske mogućnosti pretvorene"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite ih u Službe kako biste sačuvali tko gdje volontira."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite sada svoje mogućnosti (%1$d) i volontere (%2$d) u Službe. Rezultat možete pregledati prije nego što se išta promijeni."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Osposobljeni volonteri"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Volonteri koje treba dodati na pretvorene pozicije"
-
-#: 
-msgid "What it becomes"
-msgstr "Što postaje"
-
-#: 
-msgid "What will happen"
-msgstr "Što će se dogoditi"
-
-#: 
-msgid "Where they go"
-msgstr "Kamo idu"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Koje su prijašnje Volonterske mogućnosti pretvorene i koja je pozicija postala od svake."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Koji način volontiranja ova crkva koristi. Volonterske mogućnosti (V1) bit će ukinute početkom 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Vaše Volonterske mogućnosti pretvorene su u Službe. Prebacite Upravljanje volonterima na V2 prije nego što se Volonterske mogućnosti ukinu početkom 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "u novu službu, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "u službu {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "više nije u ChurchCRM-u"
 
 #: 
 msgid "Collapse sidebar"
@@ -26763,10 +26350,6 @@ msgstr[1] "%d zadana preskočena iz drugog razloga (termin je završen, otkazan 
 msgstr[2] "%d zadanih preskočeno iz drugog razloga (termin je završen, otkazan ili pun)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Prijelazna postavka. Stare stranice Prilika za volontere i nove stranice Službi obje su dostupne, a zapis osobe prikazuje obje kartice Volonter, jasno označene. Koristite je dok crkvu prebacujete s V1 na V2, a zatim prijeđite samo na V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Dodjela je otkazana"
 
@@ -26813,10 +26396,6 @@ msgstr "Ovaj termin je otkazan. Od vas više ništa nije potrebno."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Taj je termin otkazan"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Volontiranje organizirano onako kako ga crkva vodi. Svaka služba ima timove i pozicije; ljudi su kvalificirani za pozicije i pripadaju skupini volontera službe; rasporedi prate događaje u kalendaru i stvaraju datirane termine sa zahtjevima popune; koordinatori dodjeljuju ljude, koji prihvaćaju, odbijaju ili predlažu zamjenu; podsjetnici i obavijesti šalju se e-poštom. Administratori i korisnici s ovlaštenjem Upravljanje službama vide svaku službu i mogu ih stvarati, deaktivirati i brisati. Koordinator službe umjesto toga dobiva ovlaštenje Upravljanje mojim službama: naslov Službe na bočnoj traci tada prikazuje samo službe koje koordinira. Voditelj tima vodi svoj tim iz Portala članova. Članovi koriste Portal članova za pregled svog rasporeda, odgovaranje, prijavu i nuđenje pomoći."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27518,10 +27097,6 @@ msgstr "Pregledavanje događaja"
 #: 
 msgid "View people and families"
 msgstr "Pregledavanje osoba i obitelji"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Upravljanje volonterima isključeno je za ovu crkvu"
 
 #: 
 msgid "Weak"

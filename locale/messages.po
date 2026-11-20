@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 04:14+0000\n"
+"POT-Creation-Date: 2026-11-20 16:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -653,10 +653,6 @@ msgstr ""
 msgid "A ministry"
 msgstr ""
 
-#, php-format
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr ""
-
 msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
 msgstr ""
 
@@ -673,9 +669,6 @@ msgid "A ministry's own calendar cannot be opened to other ministries"
 msgstr ""
 
 msgid "A new address changes only after you use the link we send to it."
-msgstr ""
-
-msgid "A new ministry"
 msgstr ""
 
 #, php-format
@@ -733,9 +726,6 @@ msgid "A phone number or email address is required."
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
-msgstr ""
-
-msgid "A position"
 msgstr ""
 
 msgid "A position belongs to a team; choose one"
@@ -802,9 +792,6 @@ msgstr ""
 msgid "A signature image is not a secure digital signature."
 msgstr ""
 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr ""
-
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr ""
 
@@ -845,9 +832,6 @@ msgid "A team with that name already exists in this ministry"
 msgstr ""
 
 msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
-msgstr ""
-
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
 msgstr ""
 
 msgid "A valid person must be selected."
@@ -1109,9 +1093,6 @@ msgstr ""
 msgid "Add New Group"
 msgstr ""
 
-msgid "Add New Opportunity"
-msgstr ""
-
 msgid "Add New Person"
 msgstr ""
 
@@ -1119,9 +1100,6 @@ msgid "Add New Pledge"
 msgstr ""
 
 msgid "Add New Role"
-msgstr ""
-
-msgid "Add New Volunteer Opportunity"
 msgstr ""
 
 msgid "Add Note"
@@ -1329,9 +1307,6 @@ msgid "Add to Family"
 msgstr ""
 
 msgid "Add to Group"
-msgstr ""
-
-msgid "Add {{total}} volunteers to positions converted before?"
 msgstr ""
 
 msgid "Added"
@@ -1701,9 +1676,6 @@ msgstr ""
 msgid "Almost there — review your details"
 msgstr ""
 
-msgid "Already converted"
-msgstr ""
-
 msgid "Already held by a family member"
 msgstr ""
 
@@ -1821,9 +1793,6 @@ msgid "An event type or a ministry is required"
 msgstr ""
 
 msgid "An event type that no longer exists"
-msgstr ""
-
-msgid "An existing ministry"
 msgstr ""
 
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
@@ -2562,9 +2531,6 @@ msgstr ""
 msgid "Batch Winner Entry"
 msgstr ""
 
-msgid "Becomes"
-msgstr ""
-
 msgid "Before You Start"
 msgstr ""
 
@@ -2688,16 +2654,7 @@ msgstr ""
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr ""
 
-msgid "Both"
-msgstr ""
-
-msgid "Both (transition)"
-msgstr ""
-
 msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
-msgstr ""
-
-msgid "Both — V1 and V2 side by side (transition)"
 msgstr ""
 
 #. Context: countries
@@ -3009,10 +2966,6 @@ msgstr ""
 
 #, php-format
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
-msgstr ""
-
-#, php-format
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
 msgstr ""
 
 msgid "Cannot delete: fund has associated pledges"
@@ -3631,9 +3584,6 @@ msgstr ""
 msgid "Choose..."
 msgstr ""
 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr ""
-
 #. Context: countries
 msgid "Christmas Island"
 msgstr ""
@@ -3746,9 +3696,6 @@ msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is m
 msgstr ""
 
 msgid "ChurchCRM can send emails directly."
-msgstr ""
-
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -4099,9 +4046,6 @@ msgstr ""
 msgid "Confirm Property Deletion"
 msgstr ""
 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr ""
-
 msgid "Confirm data labels"
 msgstr ""
 
@@ -4224,9 +4168,6 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
-msgid "Convert"
-msgstr ""
-
 msgid "Convert All"
 msgstr ""
 
@@ -4236,22 +4177,10 @@ msgstr ""
 msgid "Convert Next"
 msgstr ""
 
-msgid "Convert Volunteer Opportunities"
-msgstr ""
-
 msgid "Convert individual records into family units"
 msgstr ""
 
 msgid "Convert to Family"
-msgstr ""
-
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr ""
-
-msgid "Converted"
-msgstr ""
-
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
 msgstr ""
 
 #. Context: countries
@@ -4534,9 +4463,6 @@ msgid "Create one now"
 msgstr ""
 
 msgid "Create or edit property type categories"
-msgstr ""
-
-msgid "Create or edit volunteer positions"
 msgstr ""
 
 msgid "Create today's class event and link it to this class for kiosk check-in"
@@ -5304,9 +5230,6 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-msgid "Description cannot exceed 100 characters"
-msgstr ""
-
 msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
 msgstr ""
 
@@ -5638,9 +5561,6 @@ msgid "Each message is recorded in the person's email history."
 msgstr ""
 
 msgid "Each of them also needs their own email that nobody else uses."
-msgstr ""
-
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
 msgstr ""
 
 msgid "Each person can have their own email and mobile number."
@@ -6625,9 +6545,6 @@ msgstr ""
 msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
 msgstr ""
 
-msgid "Everything is converted."
-msgstr ""
-
 msgid "Everything is correct"
 msgstr ""
 
@@ -6661,16 +6578,7 @@ msgstr ""
 msgid "Existing Options"
 msgstr ""
 
-msgid "Existing Volunteer Opportunities"
-msgstr ""
-
-msgid "Existing ministry"
-msgstr ""
-
 msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
-msgstr ""
-
-msgid "Exit"
 msgstr ""
 
 msgid "Exit fullscreen"
@@ -6848,9 +6756,6 @@ msgstr ""
 msgid "Failed to create property type"
 msgstr ""
 
-msgid "Failed to create volunteer opportunity"
-msgstr ""
-
 msgid "Failed to decode payment request"
 msgstr ""
 
@@ -6900,9 +6805,6 @@ msgid "Failed to delete role. Please try again."
 msgstr ""
 
 msgid "Failed to delete the email queue"
-msgstr ""
-
-msgid "Failed to delete volunteer opportunity"
 msgstr ""
 
 msgid "Failed to delete. Please try again."
@@ -7149,9 +7051,6 @@ msgid "Failed to update role name. Please try again."
 msgstr ""
 
 msgid "Failed to update role. Please try again."
-msgstr ""
-
-msgid "Failed to update volunteer opportunity"
 msgstr ""
 
 msgid "Failed to upload church logo"
@@ -7588,12 +7487,6 @@ msgstr ""
 msgid "Find this kiosk in the device list"
 msgstr ""
 
-msgid "Find volunteers for a particular opportunity"
-msgstr ""
-
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr ""
-
 #. plugin:openlp:section:3:title
 msgid "Finding Your Server URL"
 msgstr ""
@@ -7630,9 +7523,6 @@ msgid "First Name"
 msgstr ""
 
 msgid "First Sunday"
-msgstr ""
-
-msgid "First Volunteer Opportunity"
 msgstr ""
 
 msgid "First date"
@@ -8141,9 +8031,6 @@ msgid "Give permission"
 msgstr ""
 
 msgid "Give the ministry a name"
-msgstr ""
-
-msgid "Give the new ministry a name of up to 100 characters."
 msgstr ""
 
 msgid "Give the position a name"
@@ -9261,9 +9148,6 @@ msgstr ""
 msgid "Invalid Birth Date: Missing birth month or day."
 msgstr ""
 
-msgid "Invalid CSRF token"
-msgstr ""
-
 msgid "Invalid Editor ID!"
 msgstr ""
 
@@ -9471,9 +9355,6 @@ msgid "Items Sold"
 msgstr ""
 
 msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
-msgstr ""
-
-msgid "Its own ministry"
 msgstr ""
 
 msgid "Its plugin is not installed"
@@ -9987,13 +9868,7 @@ msgstr ""
 msgid "Linked Groups"
 msgstr ""
 
-msgid "Linked since: {{names}}"
-msgstr ""
-
 msgid "Links"
-msgstr ""
-
-msgid "Links that cannot convert"
 msgstr ""
 
 msgid "List not found"
@@ -10405,9 +10280,6 @@ msgid "Manage system users, permissions, and two-factor authentication settings"
 msgstr ""
 
 msgid "Manage user account details and permissions"
-msgstr ""
-
-msgid "Manage volunteer opportunities and assign members"
 msgstr ""
 
 msgid "Manage your API key for external integrations"
@@ -11135,9 +11007,6 @@ msgstr ""
 msgid "Name cannot be longer than %d characters"
 msgstr ""
 
-msgid "Name cannot exceed 30 characters"
-msgstr ""
-
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
 msgstr ""
 
@@ -11279,13 +11148,7 @@ msgstr ""
 msgid "New member notification emails"
 msgstr ""
 
-msgid "New ministries of their own"
-msgstr ""
-
 msgid "New ministry"
-msgstr ""
-
-msgid "New ministry name"
 msgstr ""
 
 msgid "New position: {{name}}"
@@ -11541,9 +11404,6 @@ msgstr ""
 msgid "No email addresses found."
 msgstr ""
 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr ""
-
 msgid "No email passed in"
 msgstr ""
 
@@ -11666,9 +11526,6 @@ msgid "No ministry"
 msgstr ""
 
 msgid "No ministry assigned"
-msgstr ""
-
-msgid "No name"
 msgstr ""
 
 msgctxt "one"
@@ -11870,9 +11727,6 @@ msgid "No upgrades are available for your current version."
 msgstr ""
 
 msgid "No valid deposit IDs provided"
-msgstr ""
-
-msgid "No volunteer opportunities have been added yet"
 msgstr ""
 
 msgid "No {{type}} events between {{from}} and {{to}}."
@@ -12098,9 +11952,6 @@ msgid "Not checked in"
 msgstr ""
 
 msgid "Not configured"
-msgstr ""
-
-msgid "Not converted"
 msgstr ""
 
 msgid "Not ended"
@@ -12553,16 +12404,10 @@ msgstr ""
 msgid "Open Deposits"
 msgstr ""
 
-msgid "Open Feature Toggles"
-msgstr ""
-
 msgid "Open GitHub Issue"
 msgstr ""
 
 msgid "Open MailChimp"
-msgstr ""
-
-msgid "Open Ministries"
 msgstr ""
 
 msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
@@ -12663,12 +12508,6 @@ msgid "Opens a 2-minute window for devices to register at"
 msgstr ""
 
 msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
-msgstr ""
-
-msgid "Opportunities"
-msgstr ""
-
-msgid "Opportunity"
 msgstr ""
 
 #, php-format
@@ -13126,10 +12965,6 @@ msgstr ""
 msgid "People in a range of school grades, such as Kindergarten through 5th"
 msgstr ""
 
-#, php-format
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr ""
-
 msgid "People matching filters"
 msgstr ""
 
@@ -13474,9 +13309,6 @@ msgid "Please confirm deactivation of family"
 msgstr ""
 
 msgid "Please confirm deactivation of person"
-msgstr ""
-
-msgid "Please confirm deletion of"
 msgstr ""
 
 msgid "Please confirm deletion of this Property Type"
@@ -13842,9 +13674,6 @@ msgid "Preview Sample Letter"
 msgstr ""
 
 msgid "Preview Totals"
-msgstr ""
-
-msgid "Preview the conversion first, and send the revision it returned."
 msgstr ""
 
 msgid "Previous"
@@ -14501,9 +14330,6 @@ msgstr ""
 msgid "Rename Kiosk"
 msgstr ""
 
-msgid "Renamed to keep names unique"
-msgstr ""
-
 msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
 msgstr ""
 
@@ -14775,9 +14601,6 @@ msgid "Review self registrations"
 msgstr ""
 
 msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
-msgstr ""
-
-msgid "Review the conversion"
 msgstr ""
 
 msgid "Review the files below and delete them to improve security."
@@ -15266,9 +15089,6 @@ msgstr ""
 msgid "Second Home"
 msgstr ""
 
-msgid "Second Volunteer Opportunity"
-msgstr ""
-
 msgid "Seconds"
 msgstr ""
 
@@ -15580,16 +15400,10 @@ msgstr ""
 msgid "Send the classifications as a list of ids."
 msgstr ""
 
-msgid "Send the conversion choice as a JSON object."
-msgstr ""
-
 msgid "Send the directory settings as a JSON object."
 msgstr ""
 
 msgid "Send the fields to show as an object of true and false values."
-msgstr ""
-
-msgid "Send the opportunities that become ministries as a list of ids."
 msgstr ""
 
 msgid "Send the settings as a JSON object."
@@ -16972,12 +16786,6 @@ msgstr ""
 msgid "That list could not be loaded."
 msgstr ""
 
-msgid "That ministry does not exist."
-msgstr ""
-
-msgid "That name already exists."
-msgstr ""
-
 msgid "That page had been open too long. Please try again."
 msgstr ""
 
@@ -17078,9 +16886,6 @@ msgstr ""
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr ""
-
 #. plugin:custom-links:section:0:content
 msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
 msgstr ""
@@ -17130,9 +16935,6 @@ msgstr ""
 
 #, php-format
 msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
-msgstr ""
-
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
 msgstr ""
 
 msgid "The active theme folder is missing"
@@ -17206,9 +17008,6 @@ msgstr ""
 msgid "The code or link went to an address that is no longer their email"
 msgstr ""
 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr ""
-
 msgid "The confirmation email could not be sent. Please try again later."
 msgstr ""
 
@@ -17216,12 +17015,6 @@ msgid "The content of this email is not stored. ChurchCRM keeps the text of mess
 msgstr ""
 
 msgid "The content of this email was not kept."
-msgstr ""
-
-msgid "The conversion could not be previewed."
-msgstr ""
-
-msgid "The conversion failed. Nothing was changed."
 msgstr ""
 
 msgid "The coordinator could not be added"
@@ -17396,10 +17189,6 @@ msgid "The message could not be queued"
 msgstr ""
 
 msgid "The minimum count cannot be negative"
-msgstr ""
-
-#, php-format
-msgid "The ministry \"%s\" has no team to hold the positions."
 msgstr ""
 
 msgid "The ministry could not be created"
@@ -17648,9 +17437,6 @@ msgstr ""
 msgid "The selected person was not found."
 msgstr ""
 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr ""
-
 msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
 msgstr ""
 
@@ -17814,13 +17600,7 @@ msgstr ""
 msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
 msgstr ""
 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr ""
-
 msgid "There are no payments in the selected calendar year."
-msgstr ""
-
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr ""
 
 #, php-format
@@ -18135,6 +17915,9 @@ msgid "This is where you decide about guests. The number is how many active peop
 msgstr ""
 
 msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr ""
+
+msgid "This is your church account. Everything you can do for yourself lives here."
 msgstr ""
 
 msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
@@ -19469,18 +19252,6 @@ msgstr ""
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr ""
-
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr ""
-
-msgid "V2 — Ministries"
-msgstr ""
-
-msgid "V2 — Volunteer Management"
-msgstr ""
-
 msgid "Valid"
 msgstr ""
 
@@ -19772,44 +19543,10 @@ msgstr ""
 msgid "Volunteer"
 msgstr ""
 
-msgid "Volunteer Management"
-msgstr ""
-
-msgid "Volunteer Management V2 is not enabled"
-msgstr ""
-
-msgid "Volunteer Management is turned off for this church"
-msgstr ""
-
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr ""
-
 msgid "Volunteer Ministry"
 msgstr ""
 
 msgid "Volunteer Opportunities"
-msgstr ""
-
-msgid "Volunteer Opportunities are being retired"
-msgstr ""
-
-msgid "Volunteer Opportunities converted"
-msgstr ""
-
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr ""
-
-#, php-format
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr ""
-
-msgid "Volunteer Opportunity"
-msgstr ""
-
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr ""
-
-msgid "Volunteer Opportunity Editor"
 msgstr ""
 
 msgid "Volunteer assignment"
@@ -19819,9 +19556,6 @@ msgid "Volunteer declined"
 msgstr ""
 
 msgid "Volunteer ministries, teams, schedules and assignments"
-msgstr ""
-
-msgid "Volunteer opportunity not found"
 msgstr ""
 
 msgid "Volunteer positions still need to be filled"
@@ -19848,9 +19582,6 @@ msgstr ""
 msgid "Volunteering"
 msgstr ""
 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr ""
-
 msgid "Volunteers"
 msgstr ""
 
@@ -19858,9 +19589,6 @@ msgid "Volunteers assigned: {{total}}"
 msgstr ""
 
 msgid "Volunteers finish"
-msgstr ""
-
-msgid "Volunteers for Two Opportunities"
 msgstr ""
 
 msgid "Volunteers needed"
@@ -19871,9 +19599,6 @@ msgid "Volunteers of %s are assigned to these events, so they cannot be deleted 
 msgstr ""
 
 msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
-msgstr ""
-
-msgid "Volunteers qualified"
 msgstr ""
 
 msgid "Volunteers start"
@@ -19917,9 +19642,6 @@ msgstr ""
 
 #, php-format
 msgid "Volunteers still needed for this position: %d"
-msgstr ""
-
-msgid "Volunteers to add to converted positions"
 msgstr ""
 
 msgid "Vonage API Key"
@@ -20149,9 +19871,6 @@ msgstr ""
 msgid "What do these codes mean?"
 msgstr ""
 
-msgid "What do these mean?"
-msgstr ""
-
 msgid "What does this find?"
 msgstr ""
 
@@ -20159,9 +19878,6 @@ msgid "What happens next?"
 msgstr ""
 
 msgid "What is sent"
-msgstr ""
-
-msgid "What it becomes"
 msgstr ""
 
 msgid "What it was given for no longer exists"
@@ -20182,9 +19898,6 @@ msgstr ""
 msgid "What the check found"
 msgstr ""
 
-msgid "What the volunteer experiences are"
-msgstr ""
-
 msgid "What this account can do right now (read-only)"
 msgstr ""
 
@@ -20195,9 +19908,6 @@ msgid "What to do"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
-msgstr ""
-
-msgid "What will happen"
 msgstr ""
 
 msgid "What you want to say"
@@ -20263,22 +19973,13 @@ msgstr ""
 msgid "Where the dates come from"
 msgstr ""
 
-msgid "Where they go"
-msgstr ""
-
 msgid "Where we reach you"
 msgstr ""
 
 msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
 msgstr ""
 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr ""
-
 msgid "Which events"
-msgstr ""
-
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
 msgstr ""
 
 msgid "Which role is a child?"
@@ -20288,12 +19989,6 @@ msgid "Which role is the head of household?"
 msgstr ""
 
 msgid "Which role is the spouse?"
-msgstr ""
-
-msgid "Which volunteer experience this church uses"
-msgstr ""
-
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
 msgstr ""
 
 msgid "Who can see it"
@@ -20692,9 +20387,6 @@ msgid "Your Member Portal sign-in code"
 msgstr ""
 
 msgid "Your New Account"
-msgstr ""
-
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
 msgstr ""
 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
@@ -21100,12 +20792,6 @@ msgstr ""
 msgid "inactive family"
 msgstr ""
 
-msgid "into a new ministry, {{name}}"
-msgstr ""
-
-msgid "into the ministry {{name}}"
-msgstr ""
-
 msgid "invalid calendar pinning"
 msgstr ""
 
@@ -21212,9 +20898,6 @@ msgstr ""
 msgid "no head of household or spouse has an email address"
 msgstr ""
 
-msgid "no longer in ChurchCRM"
-msgstr ""
-
 msgid "not found"
 msgstr ""
 
@@ -21228,9 +20911,6 @@ msgid "of pledges"
 msgstr ""
 
 msgid "open rate"
-msgstr ""
-
-msgid "opportunities"
 msgstr ""
 
 msgid "optional"

@@ -1353,10 +1353,6 @@ msgid "Default"
 msgstr "ഡിഫോൾട്ട്"
 
 #: 
-msgid "Exit"
-msgstr "പുറത്തിറങ്ങുക"
-
-#: 
 msgid "Add New"
 msgstr "പുതിയത് ചേർക്കുക"
 
@@ -1574,10 +1570,6 @@ msgid "Restore Database"
 msgstr "ഡേറ്റാബേസ് പുനഃസ്ഥാപിക്കുക"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Listing"
 msgstr "ലിസ്‌റ്റ്"
 
@@ -1664,14 +1656,6 @@ msgstr "പുതിയ പാസ്‌വേഡ്"
 #: 
 msgid "Confirm New Password"
 msgstr "പുതിയ പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "സ്വമേധയാ അവസര എഡിറ്റർ"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "ഇതുവരെ സ്വമേധയാ അവസരങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6540,10 +6524,6 @@ msgid "Confirm Property Deletion"
 msgstr "സ്വഭാവ ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "സ്വമേധയാ അവസര ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
 
@@ -6556,16 +6536,8 @@ msgid "Existing Custom Person Fields"
 msgstr "നിലവിലുള്ള ഇഷ്‌ടാനുസൃത വ്യക്തി ഫീൽഡുകൾ"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "നിലവിലുള്ള സ്വമേധയാ അവസരങ്ങൾ"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "ഫീൽഡ് വിജയകരമായി ഇല്ലാതാക്കി"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "അസാധുവായ CSRF ടോക്കൺ"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8331,10 +8303,6 @@ msgid "Create or edit property type categories"
 msgstr "സ്വഭാവ തരം വിഭാഗങ്ങൾ സൃഷ്ടിക്കുകയോ എഡിറ്റ് ചെയ്യുകയോ ചെയ്യുക"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "സ്വമേധാ സ്ഥാനങ്ങൾ സൃഷ്ടിക്കുകയോ എഡിറ്റ് ചെയ്യുകയോ ചെയ്യുക"
-
-#: 
 msgid "Current person"
 msgstr "നിലവിലെ വ്യക്തി"
 
@@ -8781,10 +8749,6 @@ msgstr "സിസ്റ്റം ഉപയോക്താക്കൾ, അനു
 #: 
 msgid "Manage user account details and permissions"
 msgstr "ഉപയോക്തൃ അക്കൗണ്ട് വിശദാംശങ്ങളും അനുമതികളും നിയന്ത്രിക്കുക"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "സ്വമേധാ അവസരങ്ങൾ നിയന്ത്രിക്കുകയും അംഗങ്ങളെ നിയോഗിക്കുകയും ചെയ്യുക"
 
 #: 
 msgid "Map cart items"
@@ -9409,10 +9373,6 @@ msgid "funds"
 msgstr "ഫണ്ടുകൾ"
 
 #: 
-msgid "opportunities"
-msgstr "അവസരങ്ങൾ"
-
-#: 
 msgid "or connect an external service"
 msgstr "അല്ലെങ്കിൽ ഒരു ബാഹ്യ സേവനം ബന്ധിപ്പിക്കുക"
 
@@ -9712,11 +9672,6 @@ msgstr "ഇമെയിൽ വിലാസങ്ങൾ ലഭ്യമാക്�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "ഫോൺ നമ്പറുകൾ ലഭ്യമാക്കൽ പരാജയപ്പെട്ടു"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "ഒരു പ്രത്യേക അവസരത്തിനായി സ്വമേധാ സേവകരെ കണ്ടെത്തുക"
 
 #. Context: query_qry
 #: 
@@ -12483,10 +12438,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "സ്വത്ത് തരം ഇല്ലാതാക്കാൻ കഴിയില്ല: %d സ്വത്തുക്കൾ ഇത് ഇപ്പോഴും ഉദ്ധരിക്കുന്നു. ആദ്യം ആ സ്വത്തുക്കൾ പുനർനിയമിക്കുക അല്ലെങ്കിൽ ഇല്ലാതാക്കുക."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "സ്വമേധാ സേവന അവസരം ഇല്ലാതാക്കാൻ കഴിയില്ല: %d ആളുകൾ ഇപ്പോഴും നിയോഗിക്കപ്പെട്ടിരിക്കുന്നു. ആദ്യം നിയോഗങ്ങൾ നീക്കം ചെയ്യുക."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "ക്ലാസ് p, f, അല്ലെങ്കിൽ g ആയിരിക്കണം"
 
@@ -12497,10 +12448,6 @@ msgstr "പിശക് സന്ദേശം പകർത്തുക"
 #: 
 msgid "Could not load note."
 msgstr "കുറിപ്പ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "വിവരണം 100 അക്ഷരങ്ങൾ കവിയരുത്"
 
 #: 
 msgid "Donation fund not found"
@@ -12523,10 +12470,6 @@ msgid "Failed to create property type"
 msgstr "സ്വത്ത് തരം സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "സ്വമേധാ സേവന അവസരം സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "സംഭാവന ഫണ്ട് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -12543,10 +12486,6 @@ msgid "Failed to delete property type"
 msgstr "സ്വത്ത് തരം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "സ്വമേധാ സേവന അവസരം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "സംഭാവന ഫണ്ട് അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -12559,10 +12498,6 @@ msgid "Failed to update property type"
 msgstr "സ്വത്ത് തരം അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "സ്വമേധാ സേവന അവസരം അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "ഫണ്ട് ശേഖരണ പ്രചാരണം കണ്ടെത്തിയില്ല"
 
@@ -12573,10 +12508,6 @@ msgstr "ഇൻസ്റ്റലേഷൻ ഐഡി"
 #: 
 msgid "Invalid class"
 msgstr "അസാധുവായ ക്ലാസ്"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "പേര് 30 അക്ഷരങ്ങൾ കവിയരുത്"
 
 #: 
 msgid "Note by %s deleted"
@@ -12599,16 +12530,8 @@ msgid "Read more"
 msgstr "കൂടുതൽ വായിക്കുക"
 
 #: 
-msgid "That name already exists."
-msgstr "ആ പേര് ഇതിനകം നിലവിലുണ്ട്."
-
-#: 
 msgid "Title is required"
 msgstr "തലക്കെട്ട് ആവശ്യമാണ്"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "സ്വമേധാ സേവന അവസരം കണ്ടെത്തിയില്ല"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15199,10 +15122,6 @@ msgid "System Configuration"
 msgstr "സിസ്റ്റം കോർണ്‍ഫിഗറേഷൻ"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "ഈ സന്നദ്ധ അവസരത്തിലേക്ക് ആളുകൾ നിയോഗിക്കപ്പെട്ടിരിക്കുന്നു. ഇല്ലാതാക്കൽ നിയോഗം റദ്ദാക്കും"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "ഒരു സാധുവായ URL-ലേക്ക് അപ്‌ഡേറ്റ് ചെയ്യുക"
 
@@ -15431,10 +15350,6 @@ msgid "Add New Fund"
 msgstr "പുതിയ ഫണ്ട് ചേർക്കുക"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "പുതിയ അവസരം ചേർക്കുക"
-
-#: 
 msgid "Add New Person"
 msgstr "പുതിയ വ്യക്തിയെ ചേർക്കുക"
 
@@ -15447,10 +15362,6 @@ msgid "Add New Role"
 msgstr "പുതിയ റോൾ ചേർക്കുക"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "പുതിയ സന്നദ്ധ അവസരം ചേർക്കുക"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "സണ്ഡേ സ്കൂൾ ക്ലാസ് ചേർക്കുക"
 
@@ -15461,10 +15372,6 @@ msgstr "ഈ കുടുംബം ഇല്ലാതാക്കണോ?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "പൊതു രജിസ്‌ട്രേഷൻ ഫോർമിൽ ചേർന്ന പുതിയ കുടുംബങ്ങളെയും വ്യക്തികളെയും പരിശോധിക്കുക"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "സന്നദ്ധ അവസരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
 
 #: 
 msgid "# Payments"
@@ -17131,14 +17038,6 @@ msgid "Find people who did not attend an event"
 msgstr "ഇവന്റിൽ പങ്കെടുത്തിട്ടില്ലാത്ത അംഗങ്ങൾ കണ്ടെത്തുക"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "രണ്ട് നിർദ്ദിഷ്ട അവസര കോഡുകൾ പൊരുത്തപ്പെടുന്ന സന്നദ്ധപരിചാരകർ കണ്ടെത്തുക"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "ആദ്യ സന്നദ്ധ സേവന അവസരം"
-
-#: 
 msgid "Folded Booklet"
 msgstr "മടക്കിയ പുസ്തകം"
 
@@ -17215,10 +17114,6 @@ msgid "Run Report"
 msgstr "റിപ്പോർട്ട് പ്രവർത്തിപ്പിക്കുക"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "രണ്ടാമത്തെ സന്നദ്ധ സേവന അവസരം"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "സൈഡ്ബാറിൽ, ലോഗിൻ പേജിൽ, ഇമെയിലുകളിൽ കാണിച്ചിരിക്കുന്നു. ലോഗോ അപ്‌ലോഡ് ചെയ്യുന്നത് ChurchCRM ബ്രാൻഡിംഗ് ഓരോ സ്ഥലത്തും മാറ്റിസ്ഥാപിക്കുന്നു."
 
@@ -17245,14 +17140,6 @@ msgstr "ഡിഫോൾട്ട് ChurchCRM ലോഗോ ഉപയോഗിച
 #: 
 msgid "View Full Family Giving"
 msgstr "പൂർണ്ണ കുടുംബ സദാചരണം കാണുക"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "സന്നദ്ധ സേവന അവസരം"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "രണ്ട് അവസരങ്ങൾക്കായി സന്നദ്ധപരിചാരകർ"
 
 #: 
 msgid "YTD"
@@ -18079,10 +17966,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "ഒരൊറ്റ പരിപാടിക്ക് ആൾബലം നൽകുന്ന ഷെഡ്യൂളിന് മറ്റ് പരിപാടികളെ പിന്തുടരാൻ കഴിയില്ല; അത് ഇല്ലാതാക്കി പകരം ഒരു ഷെഡ്യൂൾ ചേർക്കുക"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "\"Nursery\" അല്ലെങ്കിൽ \"Greeter\" പോലുള്ള അവസരങ്ങളുടെ ഒരൊറ്റ പട്ടിക, ആളുകൾ → അഡ്മിൻ എന്നതിന് കീഴിൽ സൂക്ഷിക്കുന്നു. ഓരോ വ്യക്തിയുടെയും രേഖയിലെ സന്നദ്ധസേവന ടാബിൽ, അവർ സഹായിക്കാൻ തയ്യാറുള്ള അവസരങ്ങൾ ടാഗ് ചെയ്യുന്നു. അത്രമാത്രമേ ഇത് രേഖപ്പെടുത്തുന്നുള്ളൂ: ടീമുകളില്ല, ഷെഡ്യൂളുകളില്ല, തീയതി പ്രകാരമുള്ള നിയമനങ്ങളില്ല, ഓർമ്മപ്പെടുത്തൽ ഇമെയിലുകളുമില്ല. റിപ്പോർട്ടുകളിലും വ്യക്തിയുടെ രേഖയിലുമാണ് ടാഗുകൾ ഉപയോഗിക്കുന്നത്."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "നിങ്ങളുടെ മുഖത്തിന്റെ ഒരു ചതുര ചിത്രമാണ് ഏറ്റവും നല്ലത്."
 
@@ -18389,18 +18272,6 @@ msgstr "പശ്ചാത്തല ജോലികൾ പ്രവർത്ത�
 #: 
 msgid "Birthday greeting"
 msgstr "ജന്മദിനാശംസ"
-
-#: 
-msgid "Both"
-msgstr "രണ്ടും"
-
-#: 
-msgid "Both (transition)"
-msgstr "രണ്ടും (പരിവർത്തനം)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "രണ്ടും — V1 ഉം V2 ഉം ഒരുമിച്ച് (പരിവർത്തനം)"
 
 #: 
 msgid "Calendar address"
@@ -21487,22 +21358,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "ഉപയോക്താവിന് പരിപാടി ചേർക്കാനുള്ള അനുമതി ഉണ്ടായിരിക്കണം, അല്ലെങ്കിൽ ഈ കലണ്ടർ ഉൾപ്പെടുന്ന സന്നദ്ധസേവക ശുശ്രൂഷ ഏകോപിപ്പിക്കണം"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — സന്നദ്ധസേവന അവസരങ്ങൾ (പഴയത്)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — പഴയ സന്നദ്ധസേവന അവസരങ്ങൾ"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — ശുശ്രൂഷകൾ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — സന്നദ്ധസേവന നിയന്ത്രണം"
-
-#: 
 msgid "Valid"
 msgstr "സാധുവാണ്"
 
@@ -21521,10 +21376,6 @@ msgstr "പരിപാടി കാണുക"
 #: 
 msgid "View this email"
 msgstr "ഈ ഇമെയിൽ കാണുക"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "സന്നദ്ധസേവന നിയന്ത്രണം V2 പ്രവർത്തനക്ഷമമല്ല"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21631,10 +21482,6 @@ msgid "What the check found"
 msgstr "പരിശോധനയിൽ കണ്ടെത്തിയത്"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "സന്നദ്ധസേവന രീതികൾ ഏതെല്ലാം"
-
-#: 
 msgid "What you want to say"
 msgstr "നിങ്ങൾക്ക് പറയാനുള്ളത്"
 
@@ -21665,10 +21512,6 @@ msgstr "തീയതികൾ എവിടെ നിന്ന് വരുന്
 #: 
 msgid "Where we reach you"
 msgstr "ഞങ്ങൾ നിങ്ങളെ എവിടെ ബന്ധപ്പെടും"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "ഏത് സന്നദ്ധസേവന നിയന്ത്രണ രീതിയാണ് സജീവം. V1 പഴയ സന്നദ്ധസേവന അവസരങ്ങളുടെ സവിശേഷതയാണ്; V2 പുതിയ ഷെഡ്യൂളിംഗ്, നിയമന പ്രവർത്തനക്രമമാണ്. \"രണ്ടും\" എന്നത് മാറ്റത്തിനിടയിൽ ഓരോന്നും ഒരുമിച്ച് കാണിക്കുന്നു."
 
 #: 
 msgid "Which events"
@@ -22077,10 +21920,6 @@ msgstr "ഈ പരിപാടിയുടെ പ്രേക്ഷക ഗ്ര
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "ഒരു ശുശ്രൂഷ ആരാണ് ഏകോപിപ്പിക്കുന്നതെന്ന് മാറ്റാൻ സന്നദ്ധസേവക മാനേജർക്ക് മാത്രമേ കഴിയൂ"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 തിരഞ്ഞെടുക്കുന്നത് V2 സന്നദ്ധസേവക ഇമെയിൽ താൽക്കാലികമായി നിർത്തും; ക്യൂവിലുള്ളതെല്ലാം V2 വീണ്ടും ഓണാകുമ്പോൾ അയയ്ക്കും, അതിന്റെ സംഭവം കഴിഞ്ഞിട്ടില്ലെങ്കിൽ."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22925,10 +22764,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "ഒഴിഞ്ഞ സ്ഥാന മുന്നറിയിപ്പ് മുൻകാലം (മണിക്കൂർ)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "സന്നദ്ധസേവക നിയന്ത്രണം"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "സന്നദ്ധ ശുശ്രൂഷകൾ, സംഘങ്ങൾ, സമയക്രമങ്ങൾ, നിയോഗങ്ങൾ"
 
@@ -22939,14 +22774,6 @@ msgstr "വരും ദിവസങ്ങളിൽ നിറയ്ക്കേ�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "ഈ വരാനിരിക്കുന്ന അവസരങ്ങൾക്ക് ഇനിയും സന്നദ്ധസേവകർ വേണം: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "ഇവയുടെ അർത്ഥമെന്ത്?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "ഈ സഭ ഏത് സന്നദ്ധ അനുഭവമാണ് ഉപയോഗിക്കുന്നത്"
 
 #: 
 msgid "You are on the schedule"
@@ -26317,248 +26144,8 @@ msgid "Review Family Information"
 msgstr "കുടുംബ വിവരം പരിശോധിക്കുക"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" എന്ന പേരിൽ ഒരു ശുശ്രൂഷ ഇതിനകം ഉണ്ട്. പട്ടികയിൽ നിന്ന് അത് തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ മറ്റൊരു പേര് തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "A new ministry"
-msgstr "ഒരു പുതിയ ശുശ്രൂഷ"
-
-#: 
-msgid "A position"
-msgstr "ഒരു സ്ഥാനം"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "മുമ്പ് പരിവർത്തനം ചെയ്ത സ്ഥാനങ്ങളിലേക്ക് {{total}} സ്വയംസേവകരെ ചേർക്കണോ?"
-
-#: 
-msgid "Already converted"
-msgstr "ഇതിനകം പരിവർത്തനം ചെയ്തു"
-
-#: 
-msgid "An existing ministry"
-msgstr "നിലവിലുള്ള ഒരു ശുശ്രൂഷ"
-
-#: 
-msgid "Becomes"
-msgstr "ഇതായി മാറുന്നു"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "സ്വയംസേവകരെ കൈകാര്യം ചെയ്യാൻ ChurchCRM-ൽ രണ്ട് വഴികളുണ്ട്. ഒരേ സമയം ഒന്ന് മാത്രമേ ഉപയോഗിക്കാവൂ; ഈ സഭ ഏതാണ് കാണുന്നതെന്ന് \"സ്വയംസേവക അനുഭവം\" ക്രമീകരണം തീരുമാനിക്കുന്നു. മാറ്റുന്നത് പേജുകളും മെനു ഇനങ്ങളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യും, ഡാറ്റ ഒരിക്കലും ഇല്ലാതാക്കില്ല. സ്വമേധയാ അവസരങ്ങൾ ഉപയോഗത്തിലുള്ളിടത്തോളം മാത്രമേ V1, രണ്ടും എന്നിവ ലഭ്യമാകൂ: എല്ലാ അവസരങ്ങളും പരിവർത്തനം ചെയ്യുകയും സഭ V2-ൽ ആകുകയും ചെയ്താൽ, അവ ഈ പട്ടികയിൽ നിന്ന് ഒഴിവാകും."
-
-#: 
-msgid "Convert"
-msgstr "പരിവർത്തനം ചെയ്യുക"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്യുക"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "ഇപ്പോൾ {{total}} അവസരങ്ങൾ പരിവർത്തനം ചെയ്യണോ? സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതുവരെ V1 ഡാറ്റ അതേപടി സൂക്ഷിക്കും."
-
-#: 
-msgid "Converted"
-msgstr "പരിവർത്തനം ചെയ്തു"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "പരിവർത്തനം ചെയ്തു: {{positions}} സ്ഥാനങ്ങൾ, {{ministries}} ശുശ്രൂഷകൾ, {{qualifications}} സ്വയംസേവകർ യോഗ്യത നേടി."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "ഓരോ അവസരവും ഒരു ശുശ്രൂഷയുടെ ആദ്യ ടീമിലെ ഒരു സ്ഥാനമായി മാറും, അതുമായി ബന്ധിപ്പിച്ച എല്ലാവരും ആ സ്ഥാനത്തിന് യോഗ്യത നേടും. ഈ സ്ഥാനങ്ങളിൽ സ്വയം സൈൻ അപ്പ് തുടക്കത്തിൽ ഓഫായിരിക്കും."
-
-#: 
-msgid "Everything is converted."
-msgstr "എല്ലാം പരിവർത്തനം ചെയ്തു."
-
-#: 
-msgid "Existing ministry"
-msgstr "നിലവിലുള്ള ശുശ്രൂഷ"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "പുതിയ ശുശ്രൂഷയ്ക്ക് പരമാവധി 100 അക്ഷരങ്ങളുള്ള ഒരു പേര് നൽകുക."
-
-#: 
-msgid "Its own ministry"
-msgstr "സ്വന്തം ശുശ്രൂഷ"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "അതിനുശേഷം ബന്ധിപ്പിച്ചവർ: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "പരിവർത്തനം ചെയ്യാൻ കഴിയാത്ത ബന്ധങ്ങൾ"
-
-#: 
-msgid "New ministries of their own"
-msgstr "സ്വന്തമായ പുതിയ ശുശ്രൂഷകൾ"
-
-#: 
-msgid "New ministry name"
-msgstr "പുതിയ ശുശ്രൂഷയുടെ പേര്"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "ഇമെയിൽ ഒന്നും അയയ്ക്കില്ല, സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതുവരെ അതേപടി തുടരും."
-
-#: 
-msgid "No name"
-msgstr "പേരില്ല"
-
-#: 
-msgid "Not converted"
-msgstr "പരിവർത്തനം ചെയ്തിട്ടില്ല"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "ഫീച്ചർ ടോഗിൾ തുറക്കുക"
-
-#: 
-msgid "Open Ministries"
-msgstr "ശുശ്രൂഷകൾ തുറക്കുക"
-
-#: 
-msgid "Opportunities"
-msgstr "അവസരങ്ങൾ"
-
-#: 
-msgid "Opportunity"
-msgstr "അവസരം"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "അവസരം #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "പരിവർത്തനത്തിനുശേഷം പരിവർത്തനം ചെയ്ത സ്വമേധയാ അവസരങ്ങളുമായി ബന്ധിപ്പിച്ച ആളുകൾ: %d. 2027-ന്റെ തുടക്കത്തിൽ സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിന് മുമ്പ് അവരെ അവരുടെ സ്ഥാനങ്ങളിലേക്ക് ചേർക്കുക."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "ആദ്യം പരിവർത്തനത്തിന്റെ പ്രിവ്യൂ കാണുക, അത് തിരികെ നൽകിയ പുനരവലോകനം അയയ്ക്കുക."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "പേരുകൾ അദ്വിതീയമായി നിലനിർത്താൻ പേരുമാറ്റി"
-
-#: 
-msgid "Review the conversion"
-msgstr "പരിവർത്തനം അവലോകനം ചെയ്യുക"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "പരിവർത്തന തിരഞ്ഞെടുപ്പ് ഒരു JSON ഒബ്ജക്റ്റായി അയയ്ക്കുക."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "ശുശ്രൂഷകളായി മാറുന്ന അവസരങ്ങൾ ID-കളുടെ പട്ടികയായി അയയ്ക്കുക."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "ആ ശുശ്രൂഷ നിലവിലില്ല."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിനെക്കുറിച്ചുള്ള അറിയിപ്പ് ഒരു അഡ്മിനിസ്‌ട്രേറ്റർ ഒഴിവാക്കിയ ChurchCRM പതിപ്പ്."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "പ്രിവ്യൂവിനുശേഷം സ്വമേധയാ അവസരങ്ങൾ മാറി. പ്രിവ്യൂ വീണ്ടും പരിശോധിച്ച ശേഷം പരിവർത്തനം ചെയ്യുക."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "സ്ഥിരീകരണം തുറക്കാനായില്ല. പേജ് വീണ്ടും ലോഡ് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "പരിവർത്തനത്തിന്റെ പ്രിവ്യൂ കാണിക്കാനായില്ല."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "പരിവർത്തനം പരാജയപ്പെട്ടു. ഒന്നും മാറ്റിയിട്ടില്ല."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" ശുശ്രൂഷയിൽ സ്ഥാനങ്ങൾ ഉൾക്കൊള്ളാൻ ടീമില്ല."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "സെർവറിൽ എത്താനായില്ല. പരിവർത്തനം നടന്നോ എന്ന് കാണാൻ പേജ് വീണ്ടും ലോഡ് ചെയ്യുക."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "പരിവർത്തനം ചെയ്യാൻ സ്വമേധയാ അവസരങ്ങളൊന്നുമില്ല."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "പുതിയ ശുശ്രൂഷകൾ സ്വമേധയാ അവസരങ്ങൾക്കരികിൽ കാണാൻ, സന്നദ്ധസേവക നിയന്ത്രണം രണ്ടും എന്നതിലേക്ക് മാറുന്നു."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നു"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്തു"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "സ്വമേധയാ അവസരങ്ങൾ 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും. ആര് എവിടെ സേവിക്കുന്നു എന്നത് നിലനിർത്താൻ അവയെ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്യുക."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "സ്വമേധയാ അവസരങ്ങൾ 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും. നിങ്ങളുടെ %1$d അവസരങ്ങളും %2$d സ്വയംസേവകരെയും ഇപ്പോൾ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്യുക. എന്തെങ്കിലും മാറുന്നതിന് മുമ്പ് ഫലത്തിന്റെ പ്രിവ്യൂ കാണാം."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "യോഗ്യത നേടിയ സ്വയംസേവകർ"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "പരിവർത്തനം ചെയ്ത സ്ഥാനങ്ങളിലേക്ക് ചേർക്കേണ്ട സ്വയംസേവകർ"
-
-#: 
-msgid "What it becomes"
-msgstr "ഇത് എന്തായി മാറുന്നു"
-
-#: 
-msgid "What will happen"
-msgstr "എന്ത് സംഭവിക്കും"
-
-#: 
-msgid "Where they go"
-msgstr "അവർ എവിടേക്ക് പോകുന്നു"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "ഏതൊക്കെ പഴയ സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്തു, ഓരോന്നും ഏത് സ്ഥാനമായി മാറി."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "ഈ സഭ ഉപയോഗിക്കുന്ന സ്വയംസേവക അനുഭവം. സ്വമേധയാ അവസരങ്ങൾ (V1) 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "നിങ്ങളുടെ സ്വമേധയാ അവസരങ്ങൾ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്തു. 2027-ന്റെ തുടക്കത്തിൽ സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിന് മുമ്പ് സന്നദ്ധസേവക നിയന്ത്രണം V2-ലേക്ക് മാറ്റുക."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "ഒരു പുതിയ ശുശ്രൂഷയിലേക്ക്, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "{{name}} ശുശ്രൂഷയിലേക്ക്"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ഇനി ChurchCRM-ൽ ഇല്ല"
 
 #: 
 msgid "Collapse sidebar"
@@ -26735,10 +26322,6 @@ msgstr[0] "%d സ്ഥിര നിയമനം മറ്റൊരു കാര
 msgstr[1] "%d സ്ഥിര നിയമനം മറ്റൊരു കാരണത്താൽ ഒഴിവാക്കി (തീയതി കഴിഞ്ഞു, റദ്ദാക്കി അല്ലെങ്കിൽ നിറഞ്ഞു)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ഒരു പരിവർത്തന ക്രമീകരണം. പഴയ സന്നദ്ധസേവന അവസരങ്ങളുടെ പേജുകളും പുതിയ ശുശ്രൂഷകളുടെ പേജുകളും ലഭ്യമാണ്, വ്യക്തിയുടെ രേഖയിൽ രണ്ട് സന്നദ്ധസേവന ടാബുകളും വ്യക്തമായി ലേബൽ ചെയ്ത് കാണിക്കുന്നു. ഒരു ചർച്ചിനെ V1 ൽ നിന്ന് V2 ലേക്ക് മാറ്റുമ്പോൾ ഇത് ഉപയോഗിക്കുക, പിന്നീട് V2 മാത്രമാക്കുക."
-
-#: 
 msgid "Assignment canceled"
 msgstr "നിയമനം റദ്ദാക്കി"
 
@@ -26785,10 +26368,6 @@ msgstr "ഈ തീയതി റദ്ദാക്കി. നിങ്ങളി�
 #: 
 msgid "This occurrence has been canceled"
 msgstr "ഈ തീയതി റദ്ദാക്കി"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "ഒരു ചർച്ച് നടത്തുന്ന രീതിയിൽ ക്രമീകരിച്ച സന്നദ്ധസേവനം. ഓരോ ശുശ്രൂഷയ്ക്കും ടീമുകളും സ്ഥാനങ്ങളും ഉണ്ട്; ആളുകൾ സ്ഥാനങ്ങൾക്ക് യോഗ്യരാകുകയും ശുശ്രൂഷയുടെ പൂൾ ഗ്രൂപ്പിൽ ഉൾപ്പെടുകയും ചെയ്യുന്നു; ഷെഡ്യൂളുകൾ കലണ്ടറിലെ പരിപാടികളെ പിന്തുടർന്ന് ആൾബലാവശ്യങ്ങളോടു കൂടിയ തീയതി അടിസ്ഥാനമാക്കിയ ഇനങ്ങൾ ഉണ്ടാക്കുന്നു; കോർഡിനേറ്റർമാർ ആളുകളെ നിയോഗിക്കുന്നു, അവർ സ്വീകരിക്കുകയോ നിരസിക്കുകയോ പകരക്കാരനെ നിർദ്ദേശിക്കുകയോ ചെയ്യുന്നു; ഓർമ്മപ്പെടുത്തലുകളും മുന്നറിയിപ്പുകളും ഇമെയിൽ വഴി പോകുന്നു. അഡ്മിനിസ്ട്രേറ്റർമാർക്കും ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതിയുള്ള ഉപയോക്താക്കൾക്കും എല്ലാ ശുശ്രൂഷകളും കാണാം, അവ സൃഷ്ടിക്കാനും പ്രവർത്തനരഹിതമാക്കാനും ഇല്ലാതാക്കാനും കഴിയും. ഒരു ശുശ്രൂഷാ കോർഡിനേറ്റർക്ക് പകരം എന്റെ ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതി നൽകുന്നു: അപ്പോൾ സൈഡ്ബാറിലെ ശുശ്രൂഷകൾ തലക്കെട്ട് അവർ ഏകോപിപ്പിക്കുന്ന ശുശ്രൂഷകൾ മാത്രം കാണിക്കുന്നു. ഒരു ടീം ലീഡർ അംഗ പോർട്ടലിൽ നിന്ന് തന്റെ ടീമിനെ നടത്തുന്നു. അംഗങ്ങൾ അംഗ പോർട്ടൽ ഉപയോഗിച്ച് അവരുടെ ഷെഡ്യൂൾ കാണുകയും പ്രതികരിക്കുകയും സൈൻ അപ്പ് ചെയ്യുകയും സഹായം വാഗ്ദാനം ചെയ്യുകയും ചെയ്യുന്നു."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27487,10 +27066,6 @@ msgstr "പരിപാടികൾ കാണുക"
 #: 
 msgid "View people and families"
 msgstr "ആളുകളെയും കുടുംബങ്ങളെയും കാണുക"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "ഈ സഭയ്ക്ക് സന്നദ്ധസേവക നിയന്ത്രണം ഓഫാക്കിയിരിക്കുന്നു"
 
 #: 
 msgid "Weak"
