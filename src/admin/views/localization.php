@@ -173,6 +173,68 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
         </div>
     </div>
 
+    <!-- Dates: birthdays, anniversaries, and how far ahead to look -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card admin-scroll-anchor" id="section-annual-dates">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Dates') ?></h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-body-secondary mb-3">
+                        <?= gettext('Choose how birthdays, wedding anniversaries, and other yearly dates are observed. Recorded dates never change; these settings only decide which day each one is called out.') ?>
+                    </p>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="sFeb29Observance"><?= gettext('In years without February 29, observe February 29 birthdays and anniversaries on:') ?></label>
+                            <select class="form-select" id="sFeb29Observance" name="sFeb29Observance">
+                                <option value="feb28" <?= ($localeSettings['sFeb29Observance'] === 'feb28') ? 'selected' : '' ?>><?= gettext('February 28') ?></option>
+                                <option value="mar1" <?= ($localeSettings['sFeb29Observance'] === 'mar1') ? 'selected' : '' ?>><?= gettext('March 1') ?></option>
+                                <option value="leap" <?= ($localeSettings['sFeb29Observance'] === 'leap') ? 'selected' : '' ?>><?= gettext('Leap years only (not observed in other years)') ?></option>
+                            </select>
+                            <small class="form-text text-body-secondary d-block">
+                                <?= gettext('Affects birthday badges and emails, dashboard lists, kiosk banners, and the birthday, anniversary, and death calendars. Ages are not affected.') ?>
+                            </small>
+                            <small class="form-text text-body-secondary d-block" id="feb29-affected-count">
+                                <?= sprintf(
+                                    gettext('%1$d people and %2$d families in this church have February 29 dates.'),
+                                    (int) $feb29Counts['people'],
+                                    (int) $feb29Counts['families']
+                                ) ?>
+                            </small>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="iDashboardAnnualDateWindowDays"><?= gettext('Dashboard look-around (days)') ?></label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="iDashboardAnnualDateWindowDays"
+                                   name="iDashboardAnnualDateWindowDays"
+                                   value="<?= (int) $localeSettings['iDashboardAnnualDateWindowDays'] ?>"
+                                   min="0"
+                                   max="90">
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Days before and after today that the dashboard lists birthdays and anniversaries. Default: 7') ?>
+                            </small>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="iKioskAnnualDateWindowDays"><?= gettext('Kiosk look-around (days)') ?></label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="iKioskAnnualDateWindowDays"
+                                   name="iKioskAnnualDateWindowDays"
+                                   value="<?= (int) $localeSettings['iKioskAnnualDateWindowDays'] ?>"
+                                   min="0"
+                                   max="90">
+                            <small class="form-text text-body-secondary">
+                                <?= gettext('Days before and after today that the kiosk calls out birthdays and anniversaries. Default: 14') ?>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Date & Time Formats -->
     <div class="row">
         <div class="col-12">

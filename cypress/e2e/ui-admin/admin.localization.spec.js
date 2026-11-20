@@ -29,6 +29,7 @@ describe("Admin - Localization & Formats Page", () => {
 
         cy.contains("Localization & Formats", { timeout: 5000 }).should("be.visible");
         cy.contains("Language & Region").should("be.visible");
+        cy.get("#section-annual-dates").should("be.visible");
         cy.contains("Date & Time Formats").should("be.visible");
         cy.contains("Currency & Finance Formats").should("be.visible");
         cy.contains("Phone Number Formats").should("be.visible");
@@ -353,5 +354,73 @@ describe("Admin - Language settings save round-trip (#9656)", () => {
         // es_ES proves the backend stored the locale code, not en_US.
         cy.visit("/admin/system/localization");
         cy.get("#sLanguage", { timeout: 8000 }).should("have.attr", "data-selected-locale", "es_ES");
+    });
+});
+
+// ── Dates block — defaults and save round-trip ──────────────────────────────
+const DATE_SETTING_DEFAULTS = [
+    ["sFeb29Observance", "mar1"],
+    ["iKioskAnnualDateWindowDays", "14"],
+    ["iDashboardAnnualDateWindowDays", "7"],
+];
+
+describe("Admin - Dates settings (Feb 29 observance and look-around windows)", () => {
+    const resetDefaults = () => {
+        cy.setupAdminSession();
+        for (const [name, value] of DATE_SETTING_DEFAULTS) {
+            cy.request({
+                method: "POST",
+                url: `/admin/api/system/config/${name}`,
+                body: { value },
+                headers: { "Content-Type": "application/json" },
+            });
+        }
+    };
+
+    before(resetDefaults);
+    after(resetDefaults);
+
+    it("renders the Dates block next to the time zone with the defaults", () => {
+        cy.setupAdminSession();
+        cy.visit("/admin/system/localization");
+
+        cy.get("#section-annual-dates").should("be.visible");
+        cy.contains("label", "In years without February 29, observe February 29 birthdays and anniversaries on:").should("be.visible");
+        cy.get("#sFeb29Observance").should("have.value", "mar1");
+        cy.get("#iKioskAnnualDateWindowDays").should("have.value", "14");
+        cy.get("#iDashboardAnnualDateWindowDays").should("have.value", "7");
+        cy.get("#feb29-affected-count").invoke("text").should("match", /\d+ people and \d+ families/);
+    });
+
+    it("persists all three settings after save and reload", () => {
+        cy.setupAdminSession();
+        cy.intercept("POST", "**/admin/system/localization").as("saveLocalization");
+        cy.visit("/admin/system/localization");
+
+        cy.get("#sFeb29Observance").select("leap");
+        cy.get("#iKioskAnnualDateWindowDays").clear().type("21");
+        cy.get("#iDashboardAnnualDateWindowDays").clear().type("3");
+        cy.get("#localization-form").submit();
+        cy.wait("@saveLocalization").its("response.statusCode").should("be.oneOf", [200, 302, 303]);
+
+        cy.visit("/admin/system/localization");
+        cy.get("#sFeb29Observance").should("have.value", "leap");
+        cy.get("#iKioskAnnualDateWindowDays").should("have.value", "21");
+        cy.get("#iDashboardAnnualDateWindowDays").should("have.value", "3");
+    });
+
+    it("falls back to the defaults for out-of-range windows", () => {
+        cy.setupAdminSession();
+        cy.intercept("POST", "**/admin/system/localization").as("saveLocalization");
+        cy.visit("/admin/system/localization");
+
+        cy.get("#iKioskAnnualDateWindowDays").invoke("val", "500");
+        cy.get("#iDashboardAnnualDateWindowDays").invoke("val", "-4");
+        cy.get("#localization-form").submit();
+        cy.wait("@saveLocalization");
+
+        cy.visit("/admin/system/localization");
+        cy.get("#iKioskAnnualDateWindowDays").should("have.value", "14");
+        cy.get("#iDashboardAnnualDateWindowDays").should("have.value", "7");
     });
 });

@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\BirthdayEmail;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Utils\DateTimeUtils;
 use Tester\Assert;
 
 require dirname(__DIR__, 3) . '/bootstrap.php';
@@ -20,7 +21,7 @@ $bodyFor = static function (Person $person): string {
     return (new BirthdayEmail(['ann@example.org'], $person))->getTokens()['body'];
 };
 
-$today = new DateTimeImmutable('today');
+$today = DateTimeImmutable::createFromMutable(DateTimeUtils::getStartOfToday());
 $bornToday = static function (?int $year) use ($today): Person {
     $person = new Person();
     $person->setBirthYear($year);
