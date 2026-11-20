@@ -40,7 +40,10 @@ function setBusy(ids: string[], busy: boolean): void {
   }
 }
 
+let openingId = 0;
+
 function open(title: string, bodyHtml: string, save: () => Promise<Response>): ReturnType<typeof showModal> {
+  openingId += 1;
   const modal = showModal();
   byId(`${MODAL_ID}Title`).textContent = title;
   byId(`${MODAL_ID}Body`).innerHTML = bodyHtml;
@@ -92,6 +95,7 @@ function openNoteEditor(personId: string, familyId: string, noteId: string): voi
   // what gets saved — the API sanitizes it (InputUtils::sanitizeHTML).
   quill = initializeQuillEditor("#noteText", { placeholder: t("Enter note text here...") });
   if (!noteId) return;
+  const thisOpening = openingId;
   setBusy(fields, true);
   quill?.enable(false);
   fetch(api(`/api/note/${noteId}`), { headers: AJAX })
@@ -100,12 +104,15 @@ function openNoteEditor(personId: string, familyId: string, noteId: string): voi
       return res.json();
     })
     .then(({ note }) => {
+      if (thisOpening !== openingId) return;
       if (quill && note?.text) quill.root.innerHTML = note.text;
       byId<HTMLInputElement>("notePrivate").checked = !!note?.private;
       setBusy(fields, false);
       quill?.enable(true);
     })
-    .catch(() => notifyError(t("Could not load note.")));
+    .catch(() => {
+      if (thisOpening === openingId) notifyError(t("Could not load note."));
+    });
 }
 
 function openWhyCameEditor(personId: string): void {
