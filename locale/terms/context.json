@@ -24,6 +24,10 @@
   "Could not save your main dashboard.": [
     "webpack/common/landing-page.ts:33"
   ],
+  "Enter note text here...": [
+    "src/Include/QuillEditorHelper.php:99",
+    "webpack/note-why-came-modal.ts:96"
+  ],
   "How the congregation is made up": [
     "src/people/views/dashboard.php:17"
   ],
