@@ -22,8 +22,16 @@ const readFamily = (id) => cy.makePrivateAdminAPICall("GET", `/api/family/${id}`
 
 describe("API — Convert a person without a family into a family", () => {
     const created = { people: [], families: [] };
+    let seed = null;
 
     after(() => {
+        // Runs even when an assertion failed, so the seed people Convert All took get their records back.
+        if (seed) {
+            seed.families.forEach((id) => {
+                cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}`, null, 200);
+            });
+            restoreUnassignedPeople(seed.snapshot, seed.personId);
+        }
         created.families.forEach((id) => {
             cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, [200, 404]);
         });
@@ -65,6 +73,25 @@ describe("API — Convert a person without a family into a family", () => {
         });
     });
 
+    it("refuses both conversions to users who are not administrators", () => {
+        createLoner("Cameron").then((personId) => {
+            created.people.push(personId);
+
+            ["makePrivateNoPermAPICall", "makePrivateUserAPICall"].forEach((command) => {
+                cy[command]("POST", `/admin/api/person/${personId}/convert-to-family`, {}, 403);
+                cy[command]("POST", "/admin/api/people/convert-unassigned-to-families", {}, 403);
+            });
+
+            readPerson(personId).then((person) => {
+                expect(Number(person.FamId)).to.equal(0);
+                expect(person.Address1).to.equal(ADDRESS.Address1);
+                expect(person.HomePhone).to.contain("555");
+            });
+            // Delete them now, or the batch test below would convert them too.
+            cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200);
+        });
+    });
+
     it("answers 404 for a person who does not exist", () => {
         cy.makePrivateAdminAPICall("POST", "/admin/api/person/999999/convert-to-family", {}, 404);
     });
@@ -76,14 +103,12 @@ describe("API — Convert a person without a family into a family", () => {
             snapshotUnassignedPeople().then((snapshot) => {
                 cy.makePrivateAdminAPICall("POST", "/admin/api/people/convert-unassigned-to-families", {}, 200).then(({ body }) => {
                     const ours = body.families.filter((family) => family.name === LAST_NAME);
-                    const seedFamilies = body.families.filter((family) => family.name !== LAST_NAME).map((family) => family.id);
-
-                    // Put the seed back first, so a failed assertion below leaves no converted seed people.
-                    seedFamilies.forEach((id) => {
-                        cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}`, null, 200);
-                    });
-                    restoreUnassignedPeople(snapshot, personId);
                     created.families.push(...ours.map((family) => family.id));
+                    seed = {
+                        snapshot,
+                        personId,
+                        families: body.families.filter((family) => family.name !== LAST_NAME).map((family) => family.id),
+                    };
 
                     expect(body.success).to.equal(true);
                     expect(body.count).to.equal(snapshot.people.length);

@@ -414,13 +414,21 @@ class FamilyService
      */
     public function convertPersonToFamily(Person $person, int $userId): Family
     {
-        if ((int) $person->getFamId() !== 0) {
-            throw new \InvalidArgumentException(gettext('Already in a family'));
-        }
-
         $connection = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
         $connection->beginTransaction();
         try {
+            // Lock the person row and read fam_ID from it, so two conversions of the same person
+            // can't both pass the check and leave an extra, empty family behind.
+            $famId = PersonQuery::create()
+                ->filterById($person->getId())
+                ->lockForUpdate()
+                ->select(['FamId'])
+                ->findOne($connection);
+            if ((int) $famId !== 0) {
+                throw new \InvalidArgumentException(gettext('Already in a family'));
+            }
+            $person->reload(false, $connection);
+
             $family = new Family();
             $family
                 ->setName($person->getLastName())
@@ -468,7 +476,11 @@ class FamilyService
     {
         $families = [];
         foreach ($this->unassignedPeopleQuery()->find() as $person) {
-            $families[] = $this->convertPersonToFamily($person, $userId);
+            try {
+                $families[] = $this->convertPersonToFamily($person, $userId);
+            } catch (\InvalidArgumentException) {
+                // Someone else gave this person a family after the list was read.
+            }
         }
 
         return $families;
