@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 19:21+0000\n"
+"POT-Creation-Date: 2026-11-20 22:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6170,6 +6170,9 @@ msgid "Enter group name"
 msgstr ""
 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr ""
+
+msgid "Enter note text here..."
 msgstr ""
 
 msgid "Enter one of your backup recovery codes to access your account"
