@@ -244,6 +244,7 @@ require_once __DIR__ . '/header.php';
                                 </div>
                             </div>
                         </div>
+                        <div id="db-connection-result" class="alert mt-3 d-none" role="status" aria-live="polite"></div>
                     </div>
 
                     <!-- Advanced Settings (collapsed) -->
@@ -286,7 +287,7 @@ require_once __DIR__ . '/header.php';
                     </div>
 
                     <div class="setup-actions">
-                        <button type="button" class="btn btn-success btn-lg" id="submit-setup">
+                        <button type="button" class="btn btn-success btn-lg" id="submit-setup" disabled aria-describedby="db-connection-result">
                             <i class="fa-solid fa-database me-2"></i>Install ChurchCRM
                         </button>
                         <button type="button" class="btn btn-outline-secondary" id="database-prev-btn">

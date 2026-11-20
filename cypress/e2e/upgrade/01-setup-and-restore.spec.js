@@ -112,7 +112,8 @@ describe('Upgrade via Restore', () => {
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
             cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
 
-            cy.get('#submit-setup').click();
+            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
+            cy.get('#submit-setup').should('not.be.disabled').click();
 
             // Wait for setup to complete
             cy.get('#setupModal', { timeout: 60000 }).should('be.visible');

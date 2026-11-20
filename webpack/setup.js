@@ -714,6 +714,95 @@ window.Stepper = Stepper;
     return hasFields ? validator : null;
   }
 
+  const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
+  let connectionTestToken = 0;
+  let connectionTestTimer = 0;
+  let passedConnectionFingerprint = null;
+
+  function connectionFingerprint() {
+    return JSON.stringify(DB_CONNECTION_FIELDS.map((id) => document.getElementById(id).value));
+  }
+
+  function connectionFieldsComplete() {
+    const password = document.getElementById("DB_PASSWORD").value;
+    const confirm = document.getElementById("DB_PASSWORD_CONFIRM").value;
+    if (password === "" || password !== confirm) {
+      return false;
+    }
+    return DB_CONNECTION_FIELDS.every((id) => document.getElementById(id).value !== "");
+  }
+
+  function showConnectionResult(kind, message) {
+    const box = document.getElementById("db-connection-result");
+    box.classList.remove("d-none", "alert-success", "alert-danger", "alert-info");
+    box.classList.add(kind === "ok" ? "alert-success" : kind === "pending" ? "alert-info" : "alert-danger");
+    box.textContent = message;
+  }
+
+  function hideConnectionResult() {
+    const box = document.getElementById("db-connection-result");
+    box.classList.add("d-none");
+    box.textContent = "";
+  }
+
+  function voidConnectionPass() {
+    passedConnectionFingerprint = null;
+    connectionTestToken += 1;
+    document.getElementById("submit-setup").disabled = true;
+  }
+
+  function scheduleConnectionTest() {
+    voidConnectionPass();
+    window.clearTimeout(connectionTestTimer);
+    if (!connectionFieldsComplete()) {
+      hideConnectionResult();
+      return;
+    }
+    const token = connectionTestToken;
+    const fingerprint = connectionFingerprint();
+    showConnectionResult("pending", i18next.t("Checking the database connection..."));
+    connectionTestTimer = window.setTimeout(() => testDatabaseConnection(token, fingerprint), 400);
+  }
+
+  function testDatabaseConnection(token, fingerprint) {
+    const formData = {};
+    const data = new FormData(document.getElementById("setup-form"));
+    for (const [key, value] of data.entries()) {
+      formData[key] = value || "";
+    }
+    formData.DB_CONNECTION_TEST = true;
+
+    $.ajax({
+      url: `${rootPath}/setup/`,
+      method: "POST",
+      data: JSON.stringify(formData),
+      contentType: "application/json",
+    })
+      .done((response) => {
+        if (token !== connectionTestToken || fingerprint !== connectionFingerprint()) {
+          return;
+        }
+        if (response?.tested === true && response?.correct === true) {
+          passedConnectionFingerprint = fingerprint;
+          document.getElementById("submit-setup").disabled = false;
+          showConnectionResult("ok", response.message);
+          return;
+        }
+        document.getElementById("submit-setup").disabled = true;
+        showConnectionResult(
+          "fail",
+          response?.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
+        );
+      })
+      .fail(() => {
+        if (token !== connectionTestToken) {
+          return;
+        }
+        document.getElementById("submit-setup").disabled = true;
+        showConnectionResult("fail", i18next.t("ChurchCRM could not connect to the database with these settings."));
+      });
+  }
+
   function submitSetupData() {
     const form = document.getElementById("setup-form");
     const formData = {};
@@ -734,6 +823,38 @@ window.Stepper = Stepper;
       contentType: "application/json",
     })
       .done((response) => {
+        // A connection probe answers on this URL too. It must not look like a finished install.
+        if (response?.tested === true) {
+          return;
+        }
+
+        if (response?.correct === false) {
+          $("#setup-progress").addClass("d-none");
+          $("#setup-error").removeClass("d-none");
+          $("#setup-footer").removeClass("d-none");
+          $("#setup-error-message").text(
+            response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
+          );
+          $("#continue-to-login")
+            .text("Close")
+            .off("click")
+            .on("click", () => {
+              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
+              setTimeout(() => {
+                $("#setup-progress").removeClass("d-none");
+                $("#setup-success").addClass("d-none");
+                $("#setup-error").addClass("d-none");
+                $("#setup-footer").addClass("d-none");
+              }, 500);
+            });
+          document.getElementById("submit-setup").disabled = true;
+          showConnectionResult(
+            "fail",
+            response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
+          );
+          return;
+        }
+
         // Check if response contains errors (backend bug workaround)
         if (response?.errors) {
           // Treat as failure
@@ -904,9 +1025,18 @@ window.Stepper = Stepper;
       }
     });
 
+    document.getElementById("submit-setup").disabled = true;
+    for (const id of [...DB_CONNECTION_FIELDS, "DB_PASSWORD_CONFIRM"]) {
+      document.getElementById(id).addEventListener("input", scheduleConnectionTest);
+    }
+
     // Handle finish button
     document.getElementById("submit-setup").addEventListener("click", (event) => {
       event.preventDefault(); // Prevent any default behavior
+
+      if (document.getElementById("submit-setup").disabled || passedConnectionFingerprint !== connectionFingerprint()) {
+        return;
+      }
 
       // Validate database step before submission
       if (validators["step-database"]) {

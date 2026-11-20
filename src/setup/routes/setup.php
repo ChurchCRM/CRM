@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\LocaleService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Utils\URLValidator;
 use ChurchCRM\Slim\SlimUtils;
@@ -115,6 +116,29 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $rootPath    = $setupData['ROOT_PATH'];
         $url         = $setupData['URL'];
 
+        // Prove these exact values before Config.php exists. A failure here leaves setup unlocked.
+        $connection = connect_to_database($dbServerName, $dbServerPort, $dbName, $dbUser, $dbPassword);
+        if ($connection['reason'] !== null) {
+            TelemetryService::captureInstallFailure($connection['reason']);
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => $connection['reason'],
+                'message' => $connection['message'],
+            ]);
+        }
+
+        // A connection probe. An unsupported server version is not a failed connection.
+        if (filter_var($setupData['DB_CONNECTION_TEST'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => true,
+                'tested'  => true,
+                'message' => gettext('Connected to the database.'),
+            ]);
+        }
+
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
             '||DB_SERVER_NAME||' => escape_php_single_quoted($dbServerName),
@@ -137,7 +161,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
         }
 
-        return $response->withStatus(200);
+        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true]);
     };
 
     $group->post('', $postHandler);
@@ -150,6 +174,67 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 function escape_php_single_quoted($value)
 {
     return addcslashes($value, "'\\");
+}
+
+// PDO::ATTR_TIMEOUT only limits opening the socket. A server that accepts it and never
+// finishes the handshake is cut off by the read timeout.
+function connect_to_database(string $host, string $port, string $name, string $user, string $password): array
+{
+    $previousReadTimeout = ini_set('mysqlnd.net_read_timeout', '5');
+
+    try {
+        $pdo = new PDO(
+            sprintf('mysql:host=%s;port=%s;dbname=%s', $host, $port, $name),
+            $user,
+            $password,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5]
+        );
+
+        return [
+            'version' => (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION),
+            'reason'  => null,
+            'message' => null,
+        ];
+    } catch (\Throwable $e) {
+        $failure = classify_database_connection_failure($e);
+
+        return ['version' => null, 'reason' => $failure['reason'], 'message' => $failure['message']];
+    } finally {
+        if ($previousReadTimeout !== false) {
+            ini_set('mysqlnd.net_read_timeout', $previousReadTimeout);
+        }
+    }
+}
+
+function classify_database_connection_failure(\Throwable $e): array
+{
+    $code = 0;
+    if ($e instanceof \PDOException && isset($e->errorInfo[1])) {
+        $code = (int) $e->errorInfo[1];
+    } elseif (preg_match('/\[(\d{3,4})\]/', $e->getMessage(), $matches) === 1) {
+        $code = (int) $matches[1];
+    }
+
+    // 1044 is access denied to that database after the password was accepted. A user granted
+    // only their own database gets 1044, not 1049, when the name is wrong.
+    $reason = match (true) {
+        $code === 1045 => 'database_login_rejected',
+        in_array($code, [1044, 1049], true) => 'database_not_found',
+        in_array($code, [2001, 2002, 2003, 2005, 2006, 2013], true) => 'database_host_unreachable',
+        default => 'database_unreachable',
+    };
+
+    return ['reason' => $reason, 'message' => database_connection_message($reason)];
+}
+
+function database_connection_message(string $reason): string
+{
+    return match ($reason) {
+        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. On shared hosting the database host is often not localhost. Ask your host which address to use.'),
+        'database_login_rejected' => gettext('The database server rejected that username or password.'),
+        'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
+        default => gettext('ChurchCRM could not connect to the database with these settings.'),
+    };
 }
 
 function sanitize_db_field($value)

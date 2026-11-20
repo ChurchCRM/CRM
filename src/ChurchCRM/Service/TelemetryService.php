@@ -228,6 +228,15 @@ class TelemetryService
         ]));
     }
 
+    /** Fixed codes only: a free-text reason could carry details of a church's installation. */
+    private const INSTALL_FAILURE_REASONS = [
+        'schema_import_failed',
+        'database_unreachable',
+        'database_host_unreachable',
+        'database_login_rejected',
+        'database_not_found',
+    ];
+
     /**
      * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
      * document root's device and inode, which hold no server name or path, so repeated attempts on one
@@ -240,7 +249,7 @@ class TelemetryService
             return;
         }
         self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
-            'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
+            'failure_reason' => in_array($reason, self::INSTALL_FAILURE_REASONS, true) ? $reason : 'other',
         ]), $installId);
     }
 
@@ -293,7 +302,13 @@ class TelemetryService
         if (self::installProfile() === 'test') {
             return null;
         }
-        $stat = @stat((string) SystemURLs::getDocumentRoot());
+        // Setup runs before SystemURLs::init. The fallback is the src directory, which is the
+        // document root Bootstrapper records, so a wizard failure and a later boot failure share an id.
+        $root = SystemURLs::getDocumentRoot();
+        if (!is_string($root) || $root === '') {
+            $root = dirname(__DIR__, 2);
+        }
+        $stat = @stat($root);
 
         return $stat === false ? null : 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
     }

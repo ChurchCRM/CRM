@@ -96,6 +96,90 @@ describe('01 - Setup Wizard', () => {
             cy.get('#ROOT_PATH').should('be.visible');
         });
 
+        const fillDatabase = (overrides = {}) => {
+            const values = { ...dbConfig, ...overrides };
+            cy.get('#DB_SERVER_NAME').clear().type(values.host);
+            cy.get('#DB_SERVER_PORT').clear().type(String(values.port));
+            cy.get('#DB_NAME').clear().type(values.name);
+            cy.get('#DB_USER').clear().type(values.user);
+            cy.get('#DB_PASSWORD').clear().type(values.password);
+            cy.get('#DB_PASSWORD_CONFIRM').clear().type(values.password);
+        };
+
+        const openConfigureStep = () => {
+            cy.visit('/setup');
+            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
+            cy.get('#prerequisites-next-btn').click();
+            cy.get('#step-database').should('have.class', 'active');
+        };
+
+        it('keeps Install disabled until this database connection is proven', () => {
+            cy.intercept('POST', /\/setup\/?$/).as('connectionTest');
+            openConfigureStep();
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('#db-connection-result').should('not.be.visible');
+
+            fillDatabase({ host: '127.0.0.1', port: '1' });
+            cy.get('#db-connection-result', { timeout: 20000 })
+                .should('be.visible')
+                .and('contain.text', 'cannot reach the database server')
+                .and('contain.text', 'often not localhost');
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('@connectionTest.all').should((calls) => {
+                const failed = calls.filter((call) => call.response?.body?.reason === 'database_host_unreachable');
+                expect(failed.length).to.be.greaterThan(0);
+                const body = failed[failed.length - 1].request.body;
+                const sent = typeof body === 'string' ? JSON.parse(body) : body;
+                expect(sent.DB_CONNECTION_TEST).to.eq(true);
+                expect(failed[failed.length - 1].response.body.correct).to.eq(false);
+            });
+
+            fillDatabase({ password: 'not-the-password' });
+            cy.get('#db-connection-result', { timeout: 20000 })
+                .should('contain.text', 'rejected that username or password');
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('@connectionTest.all').should((calls) => {
+                const failed = calls.filter((call) => call.response?.body?.reason === 'database_login_rejected');
+                expect(failed.length).to.be.greaterThan(0);
+                expect(failed[failed.length - 1].response.body.correct).to.eq(false);
+            });
+
+            fillDatabase({ name: 'churchcrm_missing_db' });
+            cy.get('#db-connection-result', { timeout: 20000 })
+                .should('contain.text', 'no database with that name');
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('@connectionTest.all').should((calls) => {
+                const failed = calls.filter((call) => call.response?.body?.reason === 'database_not_found');
+                expect(failed.length).to.be.greaterThan(0);
+                expect(failed[failed.length - 1].response.body.correct).to.eq(false);
+            });
+
+            fillDatabase();
+            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
+            cy.get('#submit-setup').should('not.be.disabled');
+            cy.get('@connectionTest.all').should((calls) => {
+                const passed = calls.filter((call) => call.response?.body?.tested === true);
+                expect(passed.length).to.be.greaterThan(0);
+                const last = passed[passed.length - 1];
+                const body = typeof last.request.body === 'string' ? JSON.parse(last.request.body) : last.request.body;
+                expect(last.response.body.correct).to.eq(true);
+                expect(body.DB_NAME).to.eq(dbConfig.name);
+                expect(body.DB_CONNECTION_TEST).to.eq(true);
+            });
+
+            cy.get('#DB_NAME').type('x');
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'no database with that name');
+            cy.get('#submit-setup').should('be.disabled');
+
+            cy.get('#DB_NAME').clear().type(dbConfig.name);
+            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
+            cy.get('#submit-setup').should('not.be.disabled');
+
+            cy.visit('/setup');
+            cy.get('.setup-logo').should('be.visible');
+        });
+
         it('should complete full installation with database setup', () => {
             cy.visit('/setup');
             
@@ -113,9 +197,9 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_USER').clear().type(dbConfig.user);
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
             cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
-            
-            // Submit the setup form
-            cy.get('#submit-setup').click();
+
+            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
+            cy.get('#submit-setup').should('not.be.disabled').click();
             
             // Wait for setup modal to appear
             cy.get('#setupModal', { timeout: 60000 }).should('be.visible');
