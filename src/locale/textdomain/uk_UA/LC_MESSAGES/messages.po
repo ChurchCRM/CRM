@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Призначити нову групу"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Призначте нову можливість для волонтерів"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Сума, що не підлягає відшкодуванню, не може бути більшою за загальну суму."
 
@@ -6389,20 +6385,8 @@ msgid "Additional Information"
 msgstr "Додаткова інформація"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Призначити можливості служіння"
-
-#: 
 msgid "Choose a property..."
 msgstr "Виберіть властивість..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Виберіть можливості..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Контакти та особиста інформація"
 
 #: 
 msgid "Edited"
@@ -6411,14 +6395,6 @@ msgstr "Відредаговано"
 #: 
 msgid "Newsletter"
 msgstr "Інформаційний бюлетень"
-
-#: 
-msgid "Personal"
-msgstr "Особисте"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Вибрати можливості служіння"
 
 #: 
 msgid "Volunteer"
@@ -8980,10 +8956,6 @@ msgstr "Результатів не знайдено"
 #: 
 msgid "No timeline events yet."
 msgstr "Немає подій часової шкали."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Немає призначень волонтерських можливостей."
 
 #: 
 msgid "Not ready yet?"
@@ -21634,10 +21606,6 @@ msgstr "Переглянути подію"
 #: 
 msgid "View this email"
 msgstr "Переглянути цей лист"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Волонтер (колишня версія)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

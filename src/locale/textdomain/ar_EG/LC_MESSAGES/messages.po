@@ -1476,10 +1476,6 @@ msgid "Assign New Group"
 msgstr "تعيين مجموعة جديدة"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "تعيين المتطوعين الفرص جديد"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "كمية NonDeductible لا يمكن أن يكون أكبر من المبلغ الإجمالي."
 
@@ -6393,20 +6389,8 @@ msgid "Additional Information"
 msgstr "معلومات إضافية"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "تعيين الفرص"
-
-#: 
 msgid "Choose a property..."
 msgstr "اختر ملكية..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "اختر فرصا..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "معلومات الاتصال والمعلومات الشخصية"
 
 #: 
 msgid "Edited"
@@ -6415,14 +6399,6 @@ msgstr "تم التعديل"
 #: 
 msgid "Newsletter"
 msgstr "النشرة الإخبارية"
-
-#: 
-msgid "Personal"
-msgstr "شخصي"
-
-#: 
-msgid "Select Opportunities"
-msgstr "حدد الفرص"
 
 #: 
 msgid "Volunteer"
@@ -8994,10 +8970,6 @@ msgstr "لم يتم العثور على نتائج"
 #: 
 msgid "No timeline events yet."
 msgstr "لم تكن هناك أحداث على الخط الزمني حتى الآن."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "لم يتم تعيين فرص التطوع بعد."
 
 #: 
 msgid "Not ready yet?"
@@ -21682,10 +21654,6 @@ msgstr "عرض الفعالية"
 #: 
 msgid "View this email"
 msgstr "عرض هذه الرسالة"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "المتطوع (قديم)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

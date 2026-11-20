@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Ken nuwe groep toe"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Ken 'n nuwe geleentheid vir vrywilligers toe"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nie-aftrekbare bedrag mag nie groter wees as die totale bedrag nie."
 
@@ -6381,20 +6377,8 @@ msgid "Additional Information"
 msgstr "Aanvullende Inligting"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Ken Geleenthede Toe"
-
-#: 
 msgid "Choose a property..."
 msgstr "Kies 'n eienskap..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Kies geleenthede..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontak & Persoonlike Info"
 
 #: 
 msgid "Edited"
@@ -6403,14 +6387,6 @@ msgstr "Geredigeer"
 #: 
 msgid "Newsletter"
 msgstr "Nuusbrief"
-
-#: 
-msgid "Personal"
-msgstr "Persoonlik"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Kies Geleenthede"
 
 #: 
 msgid "Volunteer"
@@ -8962,10 +8938,6 @@ msgstr "Geen resultate gevind"
 #: 
 msgid "No timeline events yet."
 msgstr "Nog geen tydslyn-gebeurtenisse."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Nog geen vrywilliger-geleentheid-toekennings."
 
 #: 
 msgid "Not ready yet?"
@@ -21582,10 +21554,6 @@ msgstr "Bekyk die geleentheid"
 #: 
 msgid "View this email"
 msgstr "Bekyk hierdie e-pos"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vrywilliger (ou)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

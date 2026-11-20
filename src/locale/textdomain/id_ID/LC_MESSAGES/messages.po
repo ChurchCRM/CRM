@@ -1478,10 +1478,6 @@ msgid "Assign New Group"
 msgstr "Tetapkan Grup Baru"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tetapkan Peluang Relawan Baru"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Jumlah yang tidak dapat dikurangi tidak boleh lebih besar dari jumlah total."
 
@@ -6375,20 +6371,8 @@ msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tugaskan Pelayanan"
-
-#: 
 msgid "Choose a property..."
 msgstr "Pilih properti..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Pilih bidang pelayanan..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontak & Info Pribadi"
 
 #: 
 msgid "Edited"
@@ -6397,14 +6381,6 @@ msgstr "Telah Diubah"
 #: 
 msgid "Newsletter"
 msgstr "Warta Jemaat"
-
-#: 
-msgid "Personal"
-msgstr "Pribadi"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Pilih Bidang Pelayanan"
 
 #: 
 msgid "Volunteer"
@@ -8951,10 +8927,6 @@ msgstr "Tidak ada hasil ditemukan"
 #: 
 msgid "No timeline events yet."
 msgstr "Belum ada peristiwa linimasa."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Belum ada penetapan peluang sukarelawan."
 
 #: 
 msgid "Not ready yet?"
@@ -21554,10 +21526,6 @@ msgstr "Lihat acara"
 #: 
 msgid "View this email"
 msgstr "Lihat email ini"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Relawan (Lama)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

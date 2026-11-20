@@ -1516,11 +1516,6 @@ msgid "Assign New Group"
 msgstr "指派新群组"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "分配一个新的义工机会"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金额不能大于总金额。"
 
@@ -6443,20 +6438,8 @@ msgid "Additional Information"
 msgstr "附加信息"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "分配机会"
-
-#: 
 msgid "Choose a property..."
 msgstr "选择一个属性..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "选择机会..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "联系与个人信息"
 
 #: 
 msgid "Edited"
@@ -6465,14 +6448,6 @@ msgstr "已编辑"
 #: 
 msgid "Newsletter"
 msgstr "通讯报"
-
-#: 
-msgid "Personal"
-msgstr "个人"
-
-#: 
-msgid "Select Opportunities"
-msgstr "选择机会"
 
 #: 
 msgid "Volunteer"
@@ -9019,10 +8994,6 @@ msgstr "未找到结果"
 #: 
 msgid "No timeline events yet."
 msgstr "暂无时间线事件。"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "尚无志愿服务分配。"
 
 #: 
 msgid "Not ready yet?"
@@ -21622,10 +21593,6 @@ msgstr "查看活动"
 #: 
 msgid "View this email"
 msgstr "查看此电子邮件"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "志愿者（旧版）"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"

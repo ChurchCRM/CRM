@@ -1516,11 +1516,6 @@ msgid "Assign New Group"
 msgstr "Alocă grup nou"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Atribui o oportunitate Voluntar nou"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Suma nedeductibile nu poate fi mai mare decât suma totală."
 
@@ -6444,20 +6439,8 @@ msgid "Additional Information"
 msgstr "Informații suplimentare"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Atribuire oportunități"
-
-#: 
 msgid "Choose a property..."
 msgstr "Alegeți o proprietate..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Alegeți oportunități..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Informații de contact și personale"
 
 #: 
 msgid "Edited"
@@ -6466,14 +6449,6 @@ msgstr "Editat"
 #: 
 msgid "Newsletter"
 msgstr "Buletin informativ"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Selectați oportunități"
 
 #: 
 msgid "Volunteer"
@@ -9030,10 +9005,6 @@ msgstr "Nu s-au găsit rezultate"
 #: 
 msgid "No timeline events yet."
 msgstr "Niciun eveniment pe cronologie încă."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Nicio atribuire de voluntariat încă."
 
 #: 
 msgid "Not ready yet?"
@@ -21667,10 +21638,6 @@ msgstr "Vezi evenimentul"
 #: 
 msgid "View this email"
 msgstr "Vezi acest e-mail"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Voluntar (vechi)"
 
 #: 
 msgid "Volunteer Management V2 is not enabled"
