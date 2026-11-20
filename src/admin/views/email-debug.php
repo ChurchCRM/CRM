@@ -4,6 +4,13 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+$sendTestEmailForm = static function (string $label, string $icon, string $buttonClass) use ($sRootPath, $csrfToken): string {
+    return '<form method="post" action="' . InputUtils::escapeAttribute($sRootPath . '/admin/email/debug') . '" class="ms-3">'
+        . '<input type="hidden" name="csrf_token" value="' . InputUtils::escapeAttribute($csrfToken) . '">'
+        . '<button type="submit" id="send-test-email" class="btn ' . $buttonClass . '"><i class="fa ' . $icon . ' me-1"></i>' . InputUtils::escapeHTML($label) . '</button>'
+        . '</form>';
+};
 ?>
 
 <?php if ($configError !== null): ?>
@@ -20,6 +27,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= InputUtils::escapeAttribute($configErrorFixUrl ?? $emailDashboardUrl) ?>" class="btn btn-warning ms-3">
                     <i class="fa fa-cog me-1"></i><?= gettext('Fix Settings') ?>
                 </a>
+            </div>
+        </div>
+    </div>
+<?php elseif (!$sendResult['attempted']): ?>
+    <div class="card border-primary mb-3">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+            <div class="d-flex align-items-start">
+                <div class="flex-grow-1">
+                    <h4 class="mb-1"><i class="fa fa-paper-plane text-primary me-2"></i><?= gettext('Send a test email') ?></h4>
+                    <p class="text-body-secondary mb-0"><?= gettext('The test message goes to the church email address and shows the SMTP debug log here.') ?></p>
+                </div>
+                <?= $sendTestEmailForm(gettext('Send Test Email'), 'fa-paper-plane', 'btn-primary') ?>
             </div>
         </div>
     </div>
@@ -42,9 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?= gettext('If the message doesn\'t arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.') ?>
                     </p>
                 </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/email/debug" class="btn btn-outline-primary ms-3">
-                    <i class="fa fa-rotate me-1"></i><?= gettext('Send Again') ?>
-                </a>
+                <?= $sendTestEmailForm(gettext('Send Again'), 'fa-rotate', 'btn-outline-primary') ?>
             </div>
         </div>
     </div>

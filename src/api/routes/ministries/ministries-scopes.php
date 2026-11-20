@@ -11,7 +11,6 @@ use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\ManageMinistriesRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -21,7 +20,7 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Volunteer Management V2 API — coordinator/team-leader scope (#9706).
  *
- * Two surfaces in one file because they share the rollout gate and nothing else:
+ * Two surfaces in one file:
  *
  *   /api/ministries/scopes           who coordinates what (design §3.2, §4.6). The
  *                                   listing and every ministry grant are manager-only:
@@ -35,13 +34,8 @@ use Slim\Routing\RouteCollectorProxy;
  *                                   and derives the acting person from the session — it
  *                                   accepts no personId parameter (§3.3.3).
  *
- * This group chains VolunteerV2EnabledMiddleware itself. Slim 4 scopes ->add() to the one
- * RouteCollectorProxy it is chained on, so nothing propagates from the group in
- * ministries-status.php; an ungated group would be reachable in every rollout state.
- *
- * Middleware order is LIFO — the last ->add() runs first — so the rollout gate answers
- * before the role gate, and the sanitizer runs last, once the caller is known to be
- * allowed in at all.
+ * Middleware order is LIFO — the last ->add() runs first — so the sanitizer runs last,
+ * once the caller is known to be allowed in at all.
  */
 $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->group('/scopes', function (RouteCollectorProxy $scopes): void {
@@ -61,7 +55,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/me/permissions', 'getMyVolunteerPermissions');
-})->add(new VolunteerV2EnabledMiddleware());
+});
 
 /**
  * Shape one scope row for the wire, resolving the polymorphic target's name so a client

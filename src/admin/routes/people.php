@@ -7,7 +7,6 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\view\PageHeader;
-use ChurchCRM\Service\VolunteerV1Service;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -142,7 +141,6 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Properties'), '/people/properties/f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
             [gettext('Convert Individuals to Families'), '/admin/people/convert-to-families', 'fa-people-arrows'],
-            VolunteerV1Service::isInUse() ? [gettext('Volunteer Opportunities'), '/VolunteerOpportunityEditor.php', 'fa-handshake-angle'] : null,
             [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
         ])),
     ];

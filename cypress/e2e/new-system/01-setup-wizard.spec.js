@@ -257,13 +257,12 @@ describe('01 - Setup Wizard', () => {
             });
         });
 
-        it('should start Volunteer Management on V2, with the "Other" event type (#10561)', () => {
+        it('should start with the "Other" event type (#10561)', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.expectStaffSignedIn({ timeout: 15000 });
 
-            cy.request('/admin/api/system/config/sVolunteerVersion').its('body.value').should('eq', 'v2');
             cy.request('/api/events/types').then((response) => {
                 expect(JSON.stringify(response.body)).to.contain('"Name":"Other"');
             });

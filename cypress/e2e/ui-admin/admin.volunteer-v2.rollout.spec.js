@@ -1,22 +1,14 @@
 /// <reference types="cypress" />
 
 /**
- * Volunteer v2 rollout — the browser-visible half of issue #9704.
- *
- * The API-only assertions live in
- * cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js. The three
- * surfaces below cannot be asserted there because both `/people/*` and the
- * legacy `VolunteerOpportunityEditor.php` load `Include/PageInit.php`, whose
- * `ensureAuthentication()` call runs at file-load time — before any Slim
- * middleware — so an x-api-key request to them 302s to the /admin/ sign-in.
+ * Ministries is the only volunteer experience (#10606) — the browser-visible half. The API
+ * half lives in cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(),
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const PERSON_VIEW_URL = "/people/view/1";
-const LEGACY_EDITOR_URL = "/VolunteerOpportunityEditor.php";
 
 // Local helper — NOT a cy.* command (cypress-testing.md).
 function freshAdminLogin() {
@@ -35,128 +27,47 @@ function freshAdminLogin() {
     cy.location("pathname").should("not.match", /\/admin\/$/);
 }
 
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
-}
-
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
 });
 
-describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
-    before(() => {
-        // Cleanup-before: restore the default in case an earlier run crashed.
-        setVersion("v2");
+describe("Volunteer Management with Ministries only — navigation (#10606)", () => {
+    beforeEach(() => {
+        freshAdminLogin();
     });
 
-    after(() => {
-        setVersion("v2");
+    it("shows one Volunteer tab on the person page", () => {
+        cy.visit(PERSON_VIEW_URL);
+        cy.get("#nav-item-volunteer").should("exist").and("contain", "Volunteer");
+        cy.get("#volunteer").should("exist");
     });
 
-    describe("v1 (legacy only)", () => {
-        beforeEach(() => {
-            setVersion("v1");
-            freshAdminLogin();
-        });
-
-        it("keeps the legacy Volunteer Opportunities admin menu item and hides the V2 menu", () => {
-            cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("exist");
-            cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
-        });
-
-        it("serves the legacy editor without redirecting", () => {
-            cy.visit(LEGACY_EDITOR_URL);
-            cy.url().should("include", "VolunteerOpportunityEditor.php");
-        });
+    it("shows the Ministries menu and no Volunteer Opportunities item", () => {
+        cy.visit(PERSON_VIEW_URL);
+        cy.get('a[href$="/ministries/dashboard"]').should("exist");
+        cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("not.exist");
+        cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
     });
 
-    describe("v2 (new experience only)", () => {
-        beforeEach(() => {
-            setVersion("v2");
-            freshAdminLogin();
-        });
-
-        it("shows one Volunteer tab", () => {
-            cy.visit(PERSON_VIEW_URL);
-            cy.get("#nav-item-volunteer").should("exist").and("contain", "Volunteer");
-            cy.get("#volunteer").should("exist");
-        });
-
-        it("shows the V2 menu entry and hides the legacy admin menu item", () => {
-            cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/ministries/dashboard"]').should("exist");
-            cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("not.exist");
-        });
-
-        it("redirects the legacy editor to the V2 dashboard", () => {
-            cy.visit(LEGACY_EDITOR_URL);
-            cy.url().should("include", "/ministries/dashboard");
-        });
-
-        // #9711 replaced #9704's placeholder with the real S1 dashboard, so this
-        // asserts the page is the coordinator dashboard rather than the old
-        // "Volunteer Management" placeholder heading.
-        it("renders the V2 coordinator dashboard", () => {
-            cy.visit("/ministries/dashboard");
-            cy.get("#volunteer-dashboard").should("exist");
-            cy.contains("Ministry Dashboard").should("be.visible");
-        });
+    it("has no Volunteer Opportunities editor", () => {
+        cy.request({ url: "/VolunteerOpportunityEditor.php", failOnStatusCode: false }).its("status").should("eq", 404);
     });
 
-    describe("switching to v2 in the middle of a session (#9706 memo)", () => {
-        // Carl's review path: log in while the setting is still v1, then change
-        // it on the System Settings page WITHOUT logging out. The logged-in User
-        // object lives in the PHP session; a memo of "not a coordinator" computed
-        // during the v1 page loads must not follow the session, or the admin sees
-        // no Ministries heading at all until the next login.
-        beforeEach(() => {
-            setVersion("v1");
-            freshAdminLogin();
-            cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
-        });
-
-        after(() => {
-            setVersion("v1");
-        });
-
-        it("shows the coordinator entries as soon as the setting is saved, without a new login", () => {
-            // The rollout switch lives on Admin → Feature Toggles.
-            cy.visit("/admin/system/feature-toggles");
-            cy.get("select.feature-choice[data-setting='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
-            cy.get('a[href$="/ministries/dashboard"]', { timeout: 10000 }).should("exist");
-
-            cy.visit(PERSON_VIEW_URL);
-            // "Setup" is gone from the menu: the guided wizard was removed and
-            // its one irreplaceable step is a "New ministry" button now.
-            cy.get('a[href$="/volunteer/setup"]').should("not.exist");
-            // The coordinator half is the Ministries heading now — the
-            // dashboard entry moved there out of the Volunteer heading, and
-            // the retired ministries list page has no entry at all.
-            cy.get('a[href$="/ministries"]').should("not.exist");
-            cy.get('a[href$="/ministries/dashboard"]').should("exist");
-            // The member entries are NOT in the sidebar in any state (#9867):
-            // they moved into the Member Portal with the pages themselves.
-            cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
-        });
+    it("renders the Ministry Dashboard", () => {
+        cy.visit("/ministries/dashboard");
+        cy.get("#volunteer-dashboard").should("exist");
+        cy.contains("Ministry Dashboard").should("be.visible");
     });
 
-    describe("both (side-by-side transition)", () => {
-        beforeEach(() => {
-            setVersion("both");
-            freshAdminLogin();
-        });
+    it("offers no volunteer experience choice on Feature Toggles", () => {
+        cy.visit("/admin/system/feature-toggles");
+        cy.get("#featureTogglesContainer .feature-toggle").should("have.length.greaterThan", 0);
+        cy.get("[data-setting='sVolunteerVersion']").should("not.exist");
+    });
 
-        it("shows both the legacy admin menu item and the V2 menu entry", () => {
-            cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("exist");
-            cy.get('a[href$="/ministries/dashboard"]').should("exist");
-        });
-
-        it("serves the legacy editor without redirecting", () => {
-            cy.visit(LEGACY_EDITOR_URL);
-            cy.url().should("include", "VolunteerOpportunityEditor.php");
-        });
+    it("lists no Volunteer Opportunities on People Settings", () => {
+        cy.visit("/admin/people");
+        cy.contains("a", "Member Portal").should("exist");
+        cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("not.exist");
     });
 });

@@ -4,7 +4,7 @@
     "src/people/views/_dashboard-overview.php:178"
   ],
   "6 months": [
-    "src/ChurchCRM/Service/DemoDataService.php:618",
+    "src/ChurchCRM/Service/DemoDataService.php:615",
     "src/account/views/account.php:302",
     "src/api/routes/people/people-persons.php:497"
   ],
@@ -16,7 +16,7 @@
   "7 days": [
     "src/ChurchCRM/Portal/PortalStatsService.php:51",
     "src/ChurchCRM/Service/ClassAttendanceService.php:44",
-    "src/ChurchCRM/Service/DemoDataService.php:618"
+    "src/ChurchCRM/Service/DemoDataService.php:615"
   ],
   "Collapse the sidebar to icons": [
     "src/account/views/account.php:330"
@@ -24,11 +24,18 @@
   "Could not save your main dashboard.": [
     "webpack/common/landing-page.ts:33"
   ],
+  "Enter note text here...": [
+    "src/Include/QuillEditorHelper.php:99",
+    "webpack/note-why-came-modal.ts:96"
+  ],
   "How the congregation is made up": [
     "src/people/views/dashboard.php:17"
   ],
   "Insights": [
     "src/people/views/dashboard.php:16"
+  ],
+  "Invalid CSRF token": [
+    "src/ConvertIndividualToFamily.php:19"
   ],
   "Last %d days": [
     "src/ChurchCRM/Authentication/AuthenticationManager.php:304",
@@ -62,6 +69,9 @@
     "src/people/views/_dashboard-overview.php:274",
     "src/people/views/_dashboard-overview.php:285"
   ],
+  "People without a family: %d": [
+    "src/ConvertIndividualToFamily.php:90"
+  ],
   "Recent": [
     "src/ChurchCRM/Portal/PortalStatsService.php:55",
     "src/ChurchCRM/Portal/PortalStatsService.php:78",
@@ -70,6 +80,12 @@
   "Rows shown per page in every table and dashboard card. Takes effect on next page load.": [
     "src/account/views/account.php:349"
   ],
+  "Send a test email": [
+    "src/admin/views/email-debug.php:39"
+  ],
+  "Send Test Email": [
+    "src/admin/views/email-debug.php:42"
+  ],
   "Set as my main dashboard": [
     "src/Include/partials/dashboard-switch.php:26",
     "src/Include/partials/dashboard-switch.php:27"
@@ -77,8 +93,14 @@
   "The dashboard you open on after signing in": [
     "src/account/views/account.php:295"
   ],
+  "The test message goes to the church email address and shows the SMTP debug log here.": [
+    "src/admin/views/email-debug.php:40"
+  ],
   "This dashboard is now your main dashboard.": [
     "webpack/common/landing-page.ts:31"
+  ],
+  "This is your church account. Everything you can do for yourself lives here.": [
+    "src/Include/themes/default/templates/home.html.twig:43"
   ],
   "Total deposited": [
     "src/finance/views/deposits/search.php:46"

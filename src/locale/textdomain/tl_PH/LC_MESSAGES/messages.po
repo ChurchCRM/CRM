@@ -1353,10 +1353,6 @@ msgid "Default"
 msgstr "Default"
 
 #: 
-msgid "Exit"
-msgstr "Lumabas"
-
-#: 
 msgid "Add New"
 msgstr "Magdagdag ng Bago"
 
@@ -1574,10 +1570,6 @@ msgid "Restore Database"
 msgstr "I-restore ang Database"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Pakikumpirma ang pagbubura ng"
-
-#: 
 msgid "Listing"
 msgstr "Listahan"
 
@@ -1664,14 +1656,6 @@ msgstr "Bagong Password"
 #: 
 msgid "Confirm New Password"
 msgstr "Kumpirmahin ang Bagong Password"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Editor ng Pagkakataon bilang Boluntaryo"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Wala pang mga pagkakataon bilang boluntaryo na naidagdag"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6540,10 +6524,6 @@ msgid "Confirm Property Deletion"
 msgstr "Kumpirmahin ang Pagbubura ng Katangian"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Kumpirmahin ang Pagbubura ng Pagkakataon bilang Boluntaryo"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura"
 
@@ -6556,16 +6536,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Mga Kasalukuyang Pasadyang Larangan ng Tao"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Mga Kasalukuyang Pagkakataon bilang Boluntaryo"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Matagumpay na nabura ang larangan"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Hindi wastong CSRF token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8331,10 +8303,6 @@ msgid "Create or edit property type categories"
 msgstr "Lumikha o mag-edit ng mga kategorya ng uri ng katangian"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Lumikha o mag-edit ng mga posisyon ng boluntaryo"
-
-#: 
 msgid "Current person"
 msgstr "Kasalukuyang tao"
 
@@ -8781,10 +8749,6 @@ msgstr "Pamahalaan ang mga user ng sistema, mga pahintulot, at mga setting ng tw
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Pamahalaan ang mga detalye ng user account at mga pahintulot"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Pamahalaan ang mga pagkakataon bilang boluntaryo at italaga ang mga miyembro"
 
 #: 
 msgid "Map cart items"
@@ -9409,10 +9373,6 @@ msgid "funds"
 msgstr "mga pondo"
 
 #: 
-msgid "opportunities"
-msgstr "mga pagkakataon"
-
-#: 
 msgid "or connect an external service"
 msgstr "o kumonekta ng external na serbisyo"
 
@@ -9712,11 +9672,6 @@ msgstr "Nabigo ang pagkuha ng mga email address"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Nabigo ang pagkuha ng mga numero ng telepono"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Hanapin ang mga boluntaryo para sa isang partikular na pagkakataon"
 
 #. Context: query_qry
 #: 
@@ -12483,10 +12438,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Hindi mabura ang uri ng katangian: %d katangian ay nagtutukoy pa rito. I-reassign o burahin muna ang mga katangiang iyon."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Hindi mabura ang pagkakataon sa boluntaryo: %d tao ay nakatalagang pa rin. Alisin muna ang mga takdang gawain."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Ang klase ay dapat na isa sa p, f, o g"
 
@@ -12497,10 +12448,6 @@ msgstr "Kopyahin ang mensahe ng error"
 #: 
 msgid "Could not load note."
 msgstr "Hindi ma-load ang tala."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Ang paglalarawan ay hindi maaaring lumampas sa 100 na karakter"
 
 #: 
 msgid "Donation fund not found"
@@ -12523,10 +12470,6 @@ msgid "Failed to create property type"
 msgstr "Nabigo sa paglikha ng uri ng katangian"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Nabigo sa paglikha ng pagkakataon sa boluntaryo"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Nabigo sa pagbura ng pondo ng donasyon"
 
@@ -12543,10 +12486,6 @@ msgid "Failed to delete property type"
 msgstr "Nabigo sa pagbura ng uri ng katangian"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Nabigo sa pagbura ng pagkakataon sa boluntaryo"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Nabigo sa pag-update ng pondo ng donasyon"
 
@@ -12559,10 +12498,6 @@ msgid "Failed to update property type"
 msgstr "Nabigo sa pag-update ng uri ng katangian"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Nabigo sa pag-update ng pagkakataon sa boluntaryo"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Hindi nahanap ang pangongolekta ng pondo"
 
@@ -12573,10 +12508,6 @@ msgstr "ID ng Pag-install"
 #: 
 msgid "Invalid class"
 msgstr "Hindi wastong klase"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Ang pangalan ay hindi maaaring lumampas sa 30 na karakter"
 
 #: 
 msgid "Note by %s deleted"
@@ -12599,16 +12530,8 @@ msgid "Read more"
 msgstr "Magbasa pa"
 
 #: 
-msgid "That name already exists."
-msgstr "Ang pangalang iyon ay mayroon na."
-
-#: 
 msgid "Title is required"
 msgstr "Kinakailangan ang pamagat"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Hindi nahanap ang pagkakataon sa boluntaryo"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -14979,10 +14902,6 @@ msgid "Target family"
 msgstr "Target na pamilya"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Hindi mahanap ang grupo. Pakisubukan muli."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Ang napiling pamilya ay wala na. Pakirefresh ang pahina at subukan muli."
 
@@ -15197,10 +15116,6 @@ msgstr "Mga sinusuportahang format"
 #: 
 msgid "System Configuration"
 msgstr "Pagsasaayos ng Sistema"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "May mga taong nakatalagang sa Pagkakataong ito para sa mga Boluntaryo. Ang pagbubura ay mag-aalis ng takdang-aralin"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15431,10 +15346,6 @@ msgid "Add New Fund"
 msgstr "Magdagdag ng Bagong Pondo"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Magdagdag ng Bagong Pagkakataon"
-
-#: 
 msgid "Add New Person"
 msgstr "Magdagdag ng Bagong Tao"
 
@@ -15447,10 +15358,6 @@ msgid "Add New Role"
 msgstr "Magdagdag ng Bagong Papel"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Magdagdag ng Bagong Pagkakataon para sa Boluntaryo"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Magdagdag ng Klase sa Sunday School"
 
@@ -15461,10 +15368,6 @@ msgstr "Burahin ang pamilyang ito?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Suriin ang mga bagong pamilya at indibidwal na nag-sign up sa iyong pampublikong form ng pagpaparehistro"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Kumpirmasyon ng Pagbubura ng Pagkakataon para sa Boluntaryo"
 
 #: 
 msgid "# Payments"
@@ -17131,14 +17034,6 @@ msgid "Find people who did not attend an event"
 msgstr "Maghanap ng mga taong hindi dumalo sa isang kaganapan"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Maghanap ng mga boluntaryo na tumutugma sa dalawang partikular na code ng pagkakataon"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Unang Pagkakataon ng Boluntaryo"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Nakabalubok na Buklet"
 
@@ -17215,10 +17110,6 @@ msgid "Run Report"
 msgstr "Patakbuhin ang Ulat"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Pangalawang Pagkakataon ng Boluntaryo"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Ipinapakita sa sidebar, sa pahina ng login at sa mga email. Ang pag-upload ng logo ay nagsasagawa ng ChurchCRM branding saanman ito lumilitaw."
 
@@ -17245,14 +17136,6 @@ msgstr "Gumagamit ng default na ChurchCRM logo"
 #: 
 msgid "View Full Family Giving"
 msgstr "Tingnan ang Buong Family Giving"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Pagkakataon ng Boluntaryo"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Mga Boluntaryo para sa Dalawang Pagkakataon"
 
 #: 
 msgid "YTD"
@@ -18079,10 +17962,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Hindi maaaring sumunod sa ibang mga kaganapan ang iskedyul na naglalagay ng boluntaryo sa isang kaganapan lamang; burahin ito at magdagdag na lang ng iskedyul"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Isang listahan ng mga oportunidad, tulad ng \"Nursery\" o \"Greeter\", na nasa ilalim ng Mga Tao → Admin. Ang bawat tao ay tinatagan ng mga oportunidad na handa niyang tulungan, sa tab na Boluntaryo ng kanyang talaan. Iyon lamang ang itinatala nito: walang mga pangkat, walang iskedyul, walang atas sa petsa, at walang email na paalala. Ang mga ulat at ang talaan ng tao ang gumagamit ng mga tag."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Pinakamainam ang parisukat na larawan ng iyong mukha."
 
@@ -18389,18 +18268,6 @@ msgstr "Tumakbo ang mga background job"
 #: 
 msgid "Birthday greeting"
 msgstr "Pagbati sa kaarawan"
-
-#: 
-msgid "Both"
-msgstr "Pareho"
-
-#: 
-msgid "Both (transition)"
-msgstr "Pareho (paglipat)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Pareho — magkatabi ang V1 at V2 (paglipat)"
 
 #: 
 msgid "Calendar address"
@@ -21487,22 +21354,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Dapat may pahintulot na Add Event ang user, o nagko-coordinate ng ministeryo ng boluntaryong kinabibilangan ng kalendaryong ito"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Mga Oportunidad ng Boluntaryo (luma)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — lumang Mga Oportunidad ng Boluntaryo"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Mga Ministeryo"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Pamamahala ng Boluntaryo"
-
-#: 
 msgid "Valid"
 msgstr "Wasto"
 
@@ -21521,10 +21372,6 @@ msgstr "Tingnan ang kaganapan"
 #: 
 msgid "View this email"
 msgstr "Tingnan ang email na ito"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Hindi naka-enable ang Pamamahala ng Boluntaryo V2"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21631,10 +21478,6 @@ msgid "What the check found"
 msgstr "Ang natuklasan ng pagsusuri"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Ano ang mga karanasan sa pagboboluntaryo"
-
-#: 
 msgid "What you want to say"
 msgstr "Ang gusto mong sabihin"
 
@@ -21665,10 +21508,6 @@ msgstr "Saan nanggagaling ang mga petsa"
 #: 
 msgid "Where we reach you"
 msgstr "Paano ka namin makokontak"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Aling karanasan sa Pamamahala ng Boluntaryo ang aktibo. Ang V1 ay ang lumang tampok na Mga Oportunidad ng Boluntaryo; ang V2 ay ang bagong daloy ng pag-iiskedyul at pagtatalaga. Ipinapakita ng \"Both\" ang dalawa nang magkatabi habang naglilipat."
 
 #: 
 msgid "Which events"
@@ -22077,10 +21916,6 @@ msgstr "Hindi authorized na baguhin ang audience group ng event na ito"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Ang volunteer manager lamang ang maaaring magbago ng kung sino ang nag-coordinate ng ministry"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Ang pagpili sa V1 ay nagsasantala sa V2 volunteer email; ang anumang nauuna ay ipinapadala kapag bumalik ang V2, maliban kung ang occurrence ay tapos na."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22925,10 +22760,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Oras ng paunang abiso sa posisyong hindi pa napupunan (oras)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Pamamahala ng Boluntaryo"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Mga ministeryo ng boluntaryo, pangkat, iskedyul, at pagtatalaga"
 
@@ -22939,14 +22770,6 @@ msgstr "Mga posisyon ng boluntaryong pupunan sa mga darating na araw"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Kailangan pa ng mga boluntaryo para sa mga paparating na sesyong ito: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Ano ang ibig sabihin ng mga ito?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Aling karanasan sa boluntaryo ang ginagamit ng simbahang ito"
 
 #: 
 msgid "You are on the schedule"
@@ -26317,248 +26140,8 @@ msgid "Review Family Information"
 msgstr "Suriin ang Impormasyon ng Pamilya"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "May ministeryo nang may pangalang \"%s\". Piliin ito sa listahan, o pumili ng ibang pangalan."
-
-#: 
-msgid "A new ministry"
-msgstr "Isang bagong ministeryo"
-
-#: 
-msgid "A position"
-msgstr "Isang posisyon"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Idagdag ang {{total}} boluntaryo sa mga posisyong na-convert dati?"
-
-#: 
-msgid "Already converted"
-msgstr "Na-convert na"
-
-#: 
-msgid "An existing ministry"
-msgstr "Isang kasalukuyang ministeryo"
-
-#: 
-msgid "Becomes"
-msgstr "Magiging"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "May dalawang paraan ang ChurchCRM sa pamamahala ng mga boluntaryo. Isa lang ang dapat gamitin sa isang pagkakataon; ang setting na \"Karanasan ng boluntaryo\" ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita lang ng mga pahina at item sa menu at hindi kailanman nagbubura ng data. Iniaalok lang ang V1 at Pareho habang ginagamit pa ang Mga Pagkakataon bilang Boluntaryo: kapag na-convert na ang bawat pagkakataon at nasa V2 na ang simbahan, mawawala na sila sa listahang ito."
-
-#: 
-msgid "Convert"
-msgstr "I-convert"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "I-convert ang Mga Pagkakataon bilang Boluntaryo"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "I-convert na ngayon ang {{total}} pagkakataon? Mananatili ang data ng V1 hanggang sa itigil ang Mga Pagkakataon bilang Boluntaryo."
-
-#: 
-msgid "Converted"
-msgstr "Na-convert"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Na-convert: {{positions}} posisyon at {{ministries}} ministeryo, {{qualifications}} boluntaryong kwalipikado."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Bawat pagkakataon ay nagiging posisyon sa unang pangkat ng isang ministeryo, at nagiging kwalipikado sa posisyong iyon ang lahat ng naka-link dito. Naka-off muna ang sariling pag-sign up sa mga posisyong ito."
-
-#: 
-msgid "Everything is converted."
-msgstr "Na-convert na ang lahat."
-
-#: 
-msgid "Existing ministry"
-msgstr "Kasalukuyang ministeryo"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Bigyan ang bagong ministeryo ng pangalang hanggang 100 character."
-
-#: 
-msgid "Its own ministry"
-msgstr "Sariling ministeryo"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Na-link mula noon: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Mga link na hindi ma-convert"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Mga bagong sariling ministeryo"
-
-#: 
-msgid "New ministry name"
-msgstr "Pangalan ng bagong ministeryo"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Walang email na ipapadala, at mananatili ang Mga Pagkakataon bilang Boluntaryo hanggang sa itigil ang mga ito."
-
-#: 
-msgid "No name"
-msgstr "Walang pangalan"
-
-#: 
-msgid "Not converted"
-msgstr "Hindi na-convert"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Buksan ang Mga Toggle ng Feature"
-
-#: 
-msgid "Open Ministries"
-msgstr "Buksan ang Mga Ministeryo"
-
-#: 
-msgid "Opportunities"
-msgstr "Mga Pagkakataon"
-
-#: 
-msgid "Opportunity"
-msgstr "Pagkakataon"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Pagkakataon #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Mga taong na-link sa na-convert na Mga Pagkakataon bilang Boluntaryo mula nang mag-convert: %d. Idagdag sila sa kanilang mga posisyon bago itigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "I-preview muna ang conversion, at ipadala ang revision na ibinalik nito."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Pinalitan ang pangalan para manatiling natatangi ang mga pangalan"
-
-#: 
-msgid "Review the conversion"
-msgstr "Suriin ang conversion"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Ipadala ang napiling conversion bilang JSON object."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Ipadala ang mga pagkakataong magiging ministeryo bilang listahan ng mga ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Hindi umiiral ang ministeryong iyon."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Ang bersyon ng ChurchCRM kung saan isinara ng isang administrator ang abiso tungkol sa pagtigil ng Mga Pagkakataon bilang Boluntaryo."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Nagbago ang Mga Pagkakataon bilang Boluntaryo mula nang i-preview. Suriin muli ang preview, saka i-convert."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Hindi mabuksan ang kumpirmasyon. I-reload ang pahina at subukang muli."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Hindi ma-preview ang conversion."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Nabigo ang conversion. Walang binago."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Walang pangkat ang ministeryong \"%s\" na paglalagyan ng mga posisyon."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Hindi maabot ang server. I-reload ang pahina para makita kung tumakbo ang conversion."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Walang Mga Pagkakataon bilang Boluntaryo na iko-convert."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Lilipat sa Pareho ang Pamamahala ng Boluntaryo, para makita ang mga bagong ministeryo katabi ng Mga Pagkakataon bilang Boluntaryo."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Ititigil na ang Mga Pagkakataon bilang Boluntaryo"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Na-convert ang Mga Pagkakataon bilang Boluntaryo"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Ititigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027. I-convert ang mga ito sa Mga Ministeryo para mapanatili kung sino ang naglilingkod saan."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Ititigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027. I-convert na ngayon ang iyong %1$d pagkakataon at %2$d boluntaryo sa Mga Ministeryo. Maaari mong i-preview ang resulta bago may magbago."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Mga kwalipikadong boluntaryo"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Mga boluntaryong idadagdag sa mga na-convert na posisyon"
-
-#: 
-msgid "What it becomes"
-msgstr "Ano ang magiging ito"
-
-#: 
-msgid "What will happen"
-msgstr "Ano ang mangyayari"
-
-#: 
-msgid "Where they go"
-msgstr "Saan sila mapupunta"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Aling lumang Mga Pagkakataon bilang Boluntaryo ang na-convert na, at ang posisyong naging bawat isa."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Aling karanasan ng boluntaryo ang ginagamit ng simbahang ito. Ititigil ang Mga Pagkakataon bilang Boluntaryo (V1) sa unang bahagi ng 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Na-convert na sa Mga Ministeryo ang iyong Mga Pagkakataon bilang Boluntaryo. Ilipat ang Pamamahala ng Boluntaryo sa V2 bago itigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "sa isang bagong ministeryo, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "sa ministeryong {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "wala na sa ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26735,10 +26318,6 @@ msgstr[0] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela
 msgstr[1] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela o puno na ang pagkakataon)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Isang setting para sa paglipat. Magagamit ang parehong lumang pahina ng Mga Oportunidad ng Boluntaryo at ang mga bagong pahina ng Mga Ministeryo, at nagpapakita ang talaan ng tao ng dalawang tab na Boluntaryo, na malinaw na may label. Gamitin ito habang inililipat ang simbahan mula V1 patungong V2, pagkatapos ay lumipat sa V2 lamang."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Kinansela ang atas"
 
@@ -26785,10 +26364,6 @@ msgstr "Kinansela ang petsang ito. Wala nang kailangan mula sa iyo."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Kinansela ang pagkakataong ito"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pagboboluntaryong isinaayos ayon sa pagpapatakbo ng isang simbahan. May mga pangkat at posisyon ang bawat ministeryo; ang mga tao ay kuwalipikado para sa mga posisyon at kabilang sa grupong pool ng ministeryo; sinusundan ng mga iskedyul ang mga kaganapan sa kalendaryo at gumagawa ng mga pagkakataong may petsa at kailangang tauhan; nagtatalaga ng mga tao ang mga koordineytor, na tumatanggap, tumatanggi o nagmumungkahi ng kapalit; ipinapadala sa email ang mga paalala at alerto. Nakikita ng mga administrator at mga user na may pahintulot na Pamahalaan ang Mga Ministeryo ang bawat ministeryo at maaari silang gumawa, mag-deactivate at magbura ng mga ito. Ang koordineytor ng ministeryo ay binibigyan na lamang ng pahintulot na Pamahalaan ang Aking Mga Ministeryo: ang heading na Mga Ministeryo sa sidebar ay magpapakita na lamang ng mga ministeryong kino-coordinate nila. Pinapatakbo ng pinuno ng pangkat ang kanyang pangkat mula sa Portal ng Miyembro. Ginagamit ng mga miyembro ang Portal ng Miyembro para makita ang iskedyul nila, tumugon, mag-sign up at mag-alok ng tulong."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27487,10 +27062,6 @@ msgstr "Tingnan ang mga kaganapan"
 #: 
 msgid "View people and families"
 msgstr "Tingnan ang mga tao at pamilya"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Naka-off ang Pamamahala ng Boluntaryo para sa simbahang ito"
 
 #: 
 msgid "Weak"

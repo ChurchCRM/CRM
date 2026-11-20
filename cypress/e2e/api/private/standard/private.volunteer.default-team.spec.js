@@ -30,7 +30,6 @@
  * the wording IS the decision (the 409 tells the coordinator to rename instead).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const TEAMS_URL = "/api/ministries/teams";
 const SCOPES_URL = "/api/ministries/scopes";
@@ -41,10 +40,6 @@ const EVENT_TYPE_CHURCH_SERVICE = 1; // "Church Service" in the seed
 const PREFIX = "DEFTEAM9701";
 /** A schedule follows events that already exist (D31): one upcoming service it can name. */
 const SERVICE_TITLE = `${PREFIX} Sunday Service`;
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
-}
 
 function dbOk(sql, params = []) {
     return cy.dbQuery(sql, params).then((result) => {
@@ -136,13 +131,11 @@ after(() => {
 
 describe("Volunteer v2 — every ministry has at least one team (#9701)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
     });
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // -----------------------------------------------------------------

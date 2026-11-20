@@ -1083,27 +1083,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/ministries/status:
-    get:
-      tags:
-        - Volunteer
-      summary: 'Report the Volunteer Management rollout state'
-      responses:
-        '403':
-          description: 'Volunteer Management V2 is not enabled'
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  version: { type: string, enum: [v1, v2, both] }
-                  v1Enabled: { type: boolean }
-                  v2Enabled: { type: boolean }
-                type: object
-      security:
-        -
-          ApiKeyAuth: []
   '/api/ministries/occurrences/{occurrenceId}/staffing':
     get:
       tags:
@@ -11275,150 +11254,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /admin/api/volunteer-opportunities:
-    get:
-      tags:
-        - Admin
-      summary: 'List all volunteer opportunities (Admin role required)'
-      parameters:
-        -
-          name: activeOnly
-          in: query
-          required: false
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: 'Array of volunteer opportunities'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    post:
-      tags:
-        - Admin
-      summary: 'Create a new volunteer opportunity (Admin role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - name
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '201':
-          description: 'Newly created volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/admin/api/volunteer-opportunities/{id}':
-    get:
-      tags:
-        - Admin
-      summary: 'Get a single volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Volunteer opportunity object'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    put:
-      tags:
-        - Admin
-      summary: 'Update a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '200':
-          description: 'Updated volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    delete:
-      tags:
-        - Admin
-      summary: 'Delete a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Deleted
-        '404':
-          description: 'Volunteer opportunity not found'
-        '409':
-          description: 'Volunteer opportunity is still assigned to one or more people'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
   /admin/api/system/tax-signature:
     get:
       tags:
@@ -12576,7 +12411,7 @@ paths:
         -
           ApiKeyAuth: []
   /admin/api/upgrade/download-latest-release:
-    get:
+    post:
       tags:
         - Admin
       summary: 'Download the latest release from GitHub (or a specific version)'
@@ -12606,7 +12441,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
       security:
         -
           ApiKeyAuth: []
@@ -12635,7 +12470,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error applying upgrade'
       security:
@@ -12661,7 +12496,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error refreshing upgrade information'
       security:
@@ -13952,7 +13787,7 @@ tags:
     description: 'Plugin management (Admin role required)'
   -
     name: Volunteer
-    description: 'Volunteer Management v2 (requires the sVolunteerVersion rollout state to include v2)'
+    description: 'Volunteer Management: ministries, teams, positions and schedules'
   -
     name: Email
     description: Email

@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "기본값"
 
 #: 
-msgid "Exit"
-msgstr "나가기"
-
-#: 
 msgid "Add New"
 msgstr "새로 추가"
 
@@ -1591,10 +1587,6 @@ msgid "Restore Database"
 msgstr "데이터베이스 복원"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "삭제할지 확인하세요:"
-
-#: 
 msgid "Listing"
 msgstr "목록"
 
@@ -1681,14 +1673,6 @@ msgstr "새 비밀번호"
 #: 
 msgid "Confirm New Password"
 msgstr "새 비밀번호 확인"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "사역 편집"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "등록된 사역이 없습니다."
 
 #: 
 msgid "Why did you come to the church?"
@@ -6562,10 +6546,6 @@ msgid "Confirm Property Deletion"
 msgstr "속성 삭제 확인"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "자원봉사 기회 삭제 확인"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "삭제 확인"
 
@@ -6578,16 +6558,8 @@ msgid "Existing Custom Person Fields"
 msgstr "기존 사용자 정의 사람 필드"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "기존 자원봉사 기회"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "필드가 성공적으로 삭제됨"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "유효하지 않은 CSRF 토큰"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8350,10 +8322,6 @@ msgid "Create or edit property type categories"
 msgstr "속성 유형 카테고리 생성 또는 편집"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "봉사 직분 생성 또는 편집"
-
-#: 
 msgid "Current person"
 msgstr "현재 사람"
 
@@ -8800,10 +8768,6 @@ msgstr "시스템 사용자, 권한 및 2단계 인증 설정 관리"
 #: 
 msgid "Manage user account details and permissions"
 msgstr "사용자 계정 세부 정보 및 권한 관리"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "봉사 기회 관리 및 교인 배정"
 
 #: 
 msgid "Map cart items"
@@ -9428,10 +9392,6 @@ msgid "funds"
 msgstr "기금"
 
 #: 
-msgid "opportunities"
-msgstr "봉사 기회"
-
-#: 
 msgid "or connect an external service"
 msgstr "또는 외부 서비스 연결"
 
@@ -9731,11 +9691,6 @@ msgstr "이메일 주소 검색 실패"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "전화번호 검색 실패"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "특정 기회를 위해 자원봉사자 찾기"
 
 #. Context: query_qry
 #: 
@@ -12501,10 +12456,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "속성 유형을 삭제할 수 없습니다: %d개의 속성이 아직 참조 중입니다. 먼저 해당 속성을 재할당하거나 삭제하십시오."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "봉사 기회를 삭제할 수 없습니다: %d명이 아직 배정되어 있습니다. 먼저 배정을 제거하십시오."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "클래스는 p, f, 또는 g 중 하나여야 합니다"
 
@@ -12515,10 +12466,6 @@ msgstr "오류 메시지 복사"
 #: 
 msgid "Could not load note."
 msgstr "메모를 불러올 수 없습니다."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "설명은 100자를 초과할 수 없습니다"
 
 #: 
 msgid "Donation fund not found"
@@ -12541,10 +12488,6 @@ msgid "Failed to create property type"
 msgstr "속성 유형 생성에 실패했습니다"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "봉사 기회 생성에 실패했습니다"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "헌금 기금 삭제에 실패했습니다"
 
@@ -12561,10 +12504,6 @@ msgid "Failed to delete property type"
 msgstr "속성 유형 삭제에 실패했습니다"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "봉사 기회 삭제에 실패했습니다"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "헌금 기금 업데이트에 실패했습니다"
 
@@ -12577,10 +12516,6 @@ msgid "Failed to update property type"
 msgstr "속성 유형 업데이트에 실패했습니다"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "봉사 기회 업데이트에 실패했습니다"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "모금 행사를 찾을 수 없습니다"
 
@@ -12591,10 +12526,6 @@ msgstr "설치 ID"
 #: 
 msgid "Invalid class"
 msgstr "유효하지 않은 클래스"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "이름은 30자를 초과할 수 없습니다"
 
 #: 
 msgid "Note by %s deleted"
@@ -12617,16 +12548,8 @@ msgid "Read more"
 msgstr "자세히 보기"
 
 #: 
-msgid "That name already exists."
-msgstr "이미 존재하는 이름입니다."
-
-#: 
 msgid "Title is required"
 msgstr "제목은 필수입니다"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "봉사 기회를 찾을 수 없습니다"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -14994,10 +14917,6 @@ msgid "Target family"
 msgstr "대상 가정"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "소그룹을 찾을 수 없습니다. 다시 시도해 주세요."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "선택한 가정이 더 이상 존재하지 않습니다. 페이지를 새로고침한 후 다시 시도해 주세요."
 
@@ -15212,10 +15131,6 @@ msgstr "지원되는 형식"
 #: 
 msgid "System Configuration"
 msgstr "시스템 구성"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15446,10 +15361,6 @@ msgid "Add New Fund"
 msgstr "새 기금 추가"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "새 기회 추가"
-
-#: 
 msgid "Add New Person"
 msgstr "새 교인 추가"
 
@@ -15462,10 +15373,6 @@ msgid "Add New Role"
 msgstr "새 역할 추가"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "새 봉사 기회 추가"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "주일학교 반 추가"
 
@@ -15476,10 +15383,6 @@ msgstr "이 가정을 삭제하시겠습니까?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "공개 등록 양식에서 등록한 새 가정 및 개인을 검토하세요"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "봉사 기회 삭제 확인"
 
 #: 
 msgid "# Payments"
@@ -17144,14 +17047,6 @@ msgid "Find people who did not attend an event"
 msgstr "이벤트에 참석하지 않은 사람 찾기"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "두 가지 특정 기회 코드와 일치하는 자원봉사자 찾기"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "첫 번째 자원봉사 기회"
-
-#: 
 msgid "Folded Booklet"
 msgstr "접힌 책자"
 
@@ -17228,10 +17123,6 @@ msgid "Run Report"
 msgstr "보고서 실행"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "두 번째 자원봉사 기회"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "사이드바, 로그인 페이지 및 이메일에 표시됩니다. 로고를 업로드하면 ChurchCRM 브랜딩이 나타나는 모든 곳에서 대체됩니다."
 
@@ -17258,14 +17149,6 @@ msgstr "기본 ChurchCRM 로고 사용"
 #: 
 msgid "View Full Family Giving"
 msgstr "전체 가족 기부금 보기"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "자원봉사 기회"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "두 가지 기회의 자원봉사자"
 
 #: 
 msgid "YTD"
@@ -18085,10 +17968,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "행사 하나를 맡는 일정은 다른 행사를 따를 수 없습니다. 삭제하고 대신 일정을 추가하세요"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "'영아부 돌봄'이나 '안내' 같은 봉사 기회를 모아 둔 하나의 목록으로, 인물 → 관리에서 관리합니다. 각 사람의 기록 중 봉사 탭에서 돕고 싶은 봉사 기회를 태그로 지정합니다. 기록되는 것은 이것뿐이며 팀, 일정, 날짜 배정, 알림 이메일은 없습니다. 태그는 보고서와 인물 기록에서 사용됩니다."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "정사각형 얼굴 사진이 가장 좋습니다."
 
@@ -18395,18 +18274,6 @@ msgstr "백그라운드 작업 실행"
 #: 
 msgid "Birthday greeting"
 msgstr "생일 축하"
-
-#: 
-msgid "Both"
-msgstr "둘 다"
-
-#: 
-msgid "Both (transition)"
-msgstr "둘 다 (전환)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "둘 다 — V1과 V2 나란히 (전환)"
 
 #: 
 msgid "Calendar address"
@@ -21489,22 +21356,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "사용자에게 행사 추가 권한이 있거나 이 캘린더가 속한 봉사 사역을 코디네이트해야 합니다"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — 봉사 기회(기존)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — 기존 봉사 기회"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — 사역"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — 봉사 관리"
-
-#: 
 msgid "Valid"
 msgstr "유효함"
 
@@ -21523,10 +21374,6 @@ msgstr "행사 보기"
 #: 
 msgid "View this email"
 msgstr "이 이메일 보기"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "봉사 관리 V2가 활성화되어 있지 않습니다"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21631,10 +21478,6 @@ msgid "What the check found"
 msgstr "점검에서 발견된 것"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "봉사 방식이란"
-
-#: 
 msgid "What you want to say"
 msgstr "전하고 싶은 말"
 
@@ -21665,10 +21508,6 @@ msgstr "날짜를 가져올 곳"
 #: 
 msgid "Where we reach you"
 msgstr "연락 방법"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "어떤 봉사 관리 방식을 사용할지 정합니다. V1은 기존 봉사 기회 기능이고, V2는 새로운 일정 및 배정 워크플로입니다. \"둘 다\"는 전환 기간 동안 두 방식을 나란히 보여 줍니다."
 
 #: 
 msgid "Which events"
@@ -22077,10 +21916,6 @@ msgstr "이 행사의 대상 그룹을 변경할 권한이 없습니다"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "사역 담당자만 사역을 조정하는 사람을 변경할 수 있습니다"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1을 선택하면 V2 자원자 이메일이 일시 중지됩니다. 발생이 종료되지 않은 한 V2가 다시 켜질 때 대기 중인 모든 항목이 전송됩니다."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22925,10 +22760,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "빈 역할 알림의 선행 시간(시간)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "봉사자 관리"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "봉사자 사역, 팀, 일정과 배정"
 
@@ -22939,14 +22770,6 @@ msgstr "앞으로 며칠 동안 채울 봉사자 역할"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "다가오는 이 회차들에 아직 필요한 봉사자: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "이것들은 무슨 뜻인가요?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "이 교회가 쓰는 봉사자 경험"
 
 #: 
 msgid "You are on the schedule"
@@ -26317,248 +26140,8 @@ msgid "Review Family Information"
 msgstr "가족 정보 검토"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\"(이)라는 사역이 이미 있습니다. 목록에서 선택하거나 다른 이름을 지정하세요."
-
-#: 
-msgid "A new ministry"
-msgstr "새 사역"
-
-#: 
-msgid "A position"
-msgstr "직책"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "이전에 변환된 직책에 자원봉사자 {{total}}명을 추가할까요?"
-
-#: 
-msgid "Already converted"
-msgstr "이미 변환됨"
-
-#: 
-msgid "An existing ministry"
-msgstr "기존 사역"
-
-#: 
-msgid "Becomes"
-msgstr "변환 결과"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM에는 자원봉사자를 관리하는 방식이 두 가지 있습니다. 한 번에 하나만 사용하도록 되어 있으며, 이 교회에 어느 쪽을 표시할지는 \"봉사 방식\" 설정이 정합니다. 전환하면 페이지와 메뉴 항목이 숨겨지거나 표시될 뿐 데이터는 삭제되지 않습니다. V1과 둘 다는 자원봉사 기회를 사용하는 동안에만 제공됩니다. 모든 기회가 변환되고 교회가 V2를 사용하면 이 목록에서 사라집니다."
-
-#: 
-msgid "Convert"
-msgstr "변환"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "자원봉사 기회 변환"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "지금 기회 {{total}}개를 변환할까요? V1 데이터는 자원봉사 기회가 폐지될 때까지 그대로 유지됩니다."
-
-#: 
-msgid "Converted"
-msgstr "변환됨"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "변환 완료: 직책 {{positions}}개, 사역 {{ministries}}개, 자격을 얻은 자원봉사자 {{qualifications}}명."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "각 기회는 한 사역의 첫 번째 팀에 속한 직책이 되며, 연결된 모든 사람이 그 직책의 자격을 얻습니다. 이 직책들의 직접 신청은 처음에는 꺼져 있습니다."
-
-#: 
-msgid "Everything is converted."
-msgstr "모두 변환되었습니다."
-
-#: 
-msgid "Existing ministry"
-msgstr "기존 사역"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "새 사역의 이름을 100자 이내로 지정하세요."
-
-#: 
-msgid "Its own ministry"
-msgstr "독립 사역"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "이후 연결됨: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "변환할 수 없는 연결"
-
-#: 
-msgid "New ministries of their own"
-msgstr "각각 새 사역으로"
-
-#: 
-msgid "New ministry name"
-msgstr "새 사역 이름"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "이메일은 발송되지 않으며, 자원봉사 기회는 폐지될 때까지 그대로 유지됩니다."
-
-#: 
-msgid "No name"
-msgstr "이름 없음"
-
-#: 
-msgid "Not converted"
-msgstr "변환 안 됨"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "기능 토글 열기"
-
-#: 
-msgid "Open Ministries"
-msgstr "사역 열기"
-
-#: 
-msgid "Opportunities"
-msgstr "기회"
-
-#: 
-msgid "Opportunity"
-msgstr "기회"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "기회 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "변환 이후 변환된 자원봉사 기회에 연결된 사람: %d명. 2027년 초 자원봉사 기회가 폐지되기 전에 해당 직책에 추가하세요."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "먼저 변환을 미리 보고, 반환된 리비전을 보내세요."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "이름이 중복되지 않도록 변경됨"
-
-#: 
-msgid "Review the conversion"
-msgstr "변환 검토"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "변환 선택을 JSON 객체로 보내세요."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "사역이 될 기회를 ID 목록으로 보내세요."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "해당 사역이 없습니다."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "관리자가 자원봉사 기회 폐지 알림을 닫은 ChurchCRM 버전입니다."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "미리 보기 이후 자원봉사 기회가 변경되었습니다. 미리 보기를 다시 확인한 다음 변환하세요."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "확인 창을 열 수 없습니다. 페이지를 새로 고친 후 다시 시도하세요."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "변환을 미리 볼 수 없습니다."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "변환에 실패했습니다. 아무것도 변경되지 않았습니다."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" 사역에는 직책을 둘 팀이 없습니다."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "서버에 연결할 수 없습니다. 페이지를 새로 고쳐 변환이 실행되었는지 확인하세요."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "변환할 자원봉사 기회가 없습니다."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "새 사역이 자원봉사 기회 옆에 표시되도록 봉사자 관리가 둘 다로 전환됩니다."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "자원봉사 기회가 폐지됩니다"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "자원봉사 기회 변환됨"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 누가 어디서 봉사하는지 유지하려면 사역으로 변환하세요."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 지금 기회 %1$d개와 자원봉사자 %2$d명을 사역으로 변환하세요. 변경하기 전에 결과를 미리 볼 수 있습니다."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "자격을 얻은 자원봉사자"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "변환된 직책에 추가할 자원봉사자"
-
-#: 
-msgid "What it becomes"
-msgstr "변환 결과"
-
-#: 
-msgid "What will happen"
-msgstr "진행 내용"
-
-#: 
-msgid "Where they go"
-msgstr "이동 위치"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "변환된 기존 자원봉사 기회와 각각이 변환된 직책입니다."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "이 교회가 사용하는 봉사 방식입니다. 자원봉사 기회(V1)는 2027년 초에 폐지됩니다."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "자원봉사 기회가 사역으로 변환되었습니다. 2027년 초 자원봉사 기회가 폐지되기 전에 봉사자 관리를 V2로 전환하세요."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "새 사역 {{name}}(으)로"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "사역 {{name}}(으)로"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "더 이상 ChurchCRM에 없음"
 
 #: 
 msgid "Collapse sidebar"
@@ -26733,10 +26316,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d 기본값이 다른 이유로 건너뛰어졌습니다(발생이 종료, 취소 또는 가득 찬 경우)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "전환용 설정입니다. 기존 봉사 기회 페이지와 새 사역 페이지를 모두 사용할 수 있으며, 인물 기록에 두 봉사 탭이 구분되어 표시됩니다. 교회를 V1에서 V2로 옮기는 동안 사용한 다음 V2만 사용하도록 전환하세요."
-
-#: 
 msgid "Assignment canceled"
 msgstr "배정이 취소되었습니다"
 
@@ -26783,10 +26362,6 @@ msgstr "이 날짜는 취소되었습니다. 더 하실 일은 없습니다."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "이 회차는 취소되었습니다"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "교회가 운영하는 방식대로 구성한 봉사 관리입니다. 각 사역에는 팀과 직책이 있고, 사람은 직책의 자격을 갖추고 사역의 풀 그룹에 속합니다. 일정은 캘린더의 행사를 따르며 필요 인원이 있는 날짜별 회차를 만듭니다. 코디네이터가 사람을 배정하면 그 사람이 수락, 거절하거나 대체자를 제안하고, 알림은 이메일로 발송됩니다. 관리자와 사역 관리 권한이 있는 사용자는 모든 사역을 보고 만들고 비활성화하고 삭제할 수 있습니다. 사역 코디네이터에게는 대신 '내 사역 관리' 권한이 부여되며, 사이드바의 사역 제목 아래에는 자신이 코디네이트하는 사역만 표시됩니다. 팀 리더는 교인 포털에서 자기 팀을 운영합니다. 교인은 교인 포털에서 자신의 일정을 보고, 응답하고, 신청하고, 도움을 제안합니다."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27482,10 +27057,6 @@ msgstr "행사 보기"
 #: 
 msgid "View people and families"
 msgstr "사람 및 가정 보기"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "이 교회에서는 봉사자 관리가 꺼져 있습니다"
 
 #: 
 msgid "Weak"

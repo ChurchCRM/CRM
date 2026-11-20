@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Verstek"
 
 #: 
-msgid "Exit"
-msgstr "Uitgang"
-
-#: 
 msgid "Add New"
 msgstr "Voeg nuwe"
 
@@ -1591,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Herstel databasis"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Bevestig die verwydering van"
-
-#: 
 msgid "Listing"
 msgstr "Lys"
 
@@ -1681,14 +1673,6 @@ msgstr "Nuwe Wagwoord"
 #: 
 msgid "Confirm New Password"
 msgstr "Bevestig nuwe wagwoord"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Vrywillige geleentheidsredakteur"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Geen vrywilligersgeleenthede is nog bygevoeg nie"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6573,10 +6557,6 @@ msgid "Confirm Property Deletion"
 msgstr "Bevestig Eienskap Uitvoeging"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Bevestig Vrywilliger Geleentheid Uitvoeging"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Uitvee Bevestiging"
 
@@ -6589,16 +6569,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Bestaande Pasgemaakte Persoon Velde"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Bestaande Volunteer Opportunities"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Veld suksesvol verwyder"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Ongeldig CSRF-teken"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8364,10 +8336,6 @@ msgid "Create or edit property type categories"
 msgstr "Skep of wysig eienskap-tipe kategorieë"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Skep of wysig vrywilliger-poste"
-
-#: 
 msgid "Current person"
 msgstr "Huidige persoon"
 
@@ -8814,10 +8782,6 @@ msgstr "Bestuur stelselgebruikers, toestemmings, en twee-faktor-verifikasie-inst
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Bestuur gebruiker-rekeningsbesonderhede en -toestemmings"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Bestuur vrywilliger-geleenthede en ken geloofsgenote toe"
 
 #: 
 msgid "Map cart items"
@@ -9442,10 +9406,6 @@ msgid "funds"
 msgstr "fondse"
 
 #: 
-msgid "opportunities"
-msgstr "geleenthede"
-
-#: 
 msgid "or connect an external service"
 msgstr "of verbind 'n eksterne diens"
 
@@ -9745,11 +9705,6 @@ msgstr "Kon nie e-pos adresse haal nie"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Kon nie telefoonnommers haal nie"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Soek dienswerkers vir 'n bepaalde geleentheid"
 
 #. Context: query_qry
 #: 
@@ -12516,10 +12471,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Kan nie eiendomstipe uitvee nie: %d eiendomme verwys nog daarna. Herassigneer of vee eers daardie eiendomme uit."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Kan nie vrywilligergeleentheid uitvee nie: %d persone is nog toegewys. Verwyder eers die toewysingings."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klas moet een van p, f, of g wees"
 
@@ -12530,10 +12481,6 @@ msgstr "Kopieer foutboodskap"
 #: 
 msgid "Could not load note."
 msgstr "Kon nie nota laai nie."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Beskrywing kan nie 100 karakters oorskry nie"
 
 #: 
 msgid "Donation fund not found"
@@ -12556,10 +12503,6 @@ msgid "Failed to create property type"
 msgstr "Kon nie eiendomstipe skep nie"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid skep nie"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Kon nie skenkingsfonds uitvee nie"
 
@@ -12576,10 +12519,6 @@ msgid "Failed to delete property type"
 msgstr "Kon nie eiendomstipe uitvee nie"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid uitvee nie"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Kon nie skenkingsfonds opdateer nie"
 
@@ -12592,10 +12531,6 @@ msgid "Failed to update property type"
 msgstr "Kon nie eiendomstipe opdateer nie"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid opdateer nie"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Fondsinsameling nie gevind nie"
 
@@ -12606,10 +12541,6 @@ msgstr "Installasie-ID"
 #: 
 msgid "Invalid class"
 msgstr "Ongeldige klas"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Naam kan nie 30 karakters oorskry nie"
 
 #: 
 msgid "Note by %s deleted"
@@ -12632,16 +12563,8 @@ msgid "Read more"
 msgstr "Lees meer"
 
 #: 
-msgid "That name already exists."
-msgstr "Daardie naam bestaan reeds."
-
-#: 
 msgid "Title is required"
 msgstr "Titel is verpligtend"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Vrywilligergeleentheid nie gevind nie"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15012,10 +14935,6 @@ msgid "Target family"
 msgstr "Teikengesin"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Die groep kon nie gevind word nie. Probeer asseblief weer."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Die geselekteerde gesin bestaan nie meer nie. Herlaai asseblief die bladsy en probeer weer."
 
@@ -15230,10 +15149,6 @@ msgstr "Ondersteunde formate"
 #: 
 msgid "System Configuration"
 msgstr "Stelselkonfigurasie"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Daar is mense aan hierdie Vrywilligersgeleentheid toegewys. Verwydering sal hulle onttoes"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15464,10 +15379,6 @@ msgid "Add New Fund"
 msgstr "Voeg Nuwe Fonds By"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Voeg Nuwe Geleentheid By"
-
-#: 
 msgid "Add New Person"
 msgstr "Voeg Nuwe Persoon By"
 
@@ -15480,10 +15391,6 @@ msgid "Add New Role"
 msgstr "Voeg Nuwe Rol By"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Voeg Nuwe Vrywilligersgeleentheid By"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Voeg Sondagskoolklas By"
 
@@ -15494,10 +15401,6 @@ msgstr "Verwyder hierdie gesin?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Hersien nuwe gesinne en individue wat op jou openbare registrasievorm aangemeld het"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vrywilligersgeleentheid-verwyderingsbevestiging"
 
 #: 
 msgid "# Payments"
@@ -17164,14 +17067,6 @@ msgid "Find people who did not attend an event"
 msgstr "Soek mense wat nie 'n gebeurtenis bygewoon het nie"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Soek vrywilligers wat twee spesifieke geleentheidskodes ooreenstem"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Eerste vrywilligersgeleentheid"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Gevouide boekjie"
 
@@ -17248,10 +17143,6 @@ msgid "Run Report"
 msgstr "Voer verslag uit"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Tweede vrywilligersgeleentheid"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Vertoon in die sybalk, op die aanmeldingsbladsy en in e-posse. Oplaai van 'n logo vervang die ChurchCRM-branding oral waar dit verskyn."
 
@@ -17278,14 +17169,6 @@ msgstr "Gebruik verstek ChurchCRM-logo"
 #: 
 msgid "View Full Family Giving"
 msgstr "Bekyk volle gesinsgawing"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vrywilligersgeleentheid"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vrywilligers vir twee geleenthede"
 
 #: 
 msgid "YTD"
@@ -18112,10 +17995,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "'n Rooster wat een geleentheid beman, kan nie ander geleenthede volg nie; vee dit uit en voeg eerder 'n rooster by"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "'n Enkele lys van geleenthede, soos \"Kleuterkamer\" of \"Verwelkomer\", gehou onder Mense → Admin. Elke persoon word gemerk met die geleenthede waarmee hulle bereid is om te help, op die Vrywilliger-oortjie van hul rekord. Dit is al wat dit aanteken: daar is geen spanne, geen roosters, geen toewysings aan 'n datum en geen herinnerings-e-posse nie. Verslae en die persoonrekord is waar die merkers gebruik word."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "'n Vierkantige foto van jou gesig werk die beste."
 
@@ -18422,18 +18301,6 @@ msgstr "Agtergrondtake het gehardloop"
 #: 
 msgid "Birthday greeting"
 msgstr "Verjaarsdagwens"
-
-#: 
-msgid "Both"
-msgstr "Albei"
-
-#: 
-msgid "Both (transition)"
-msgstr "Albei (oorgang)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Albei — V1 en V2 langs mekaar (oorgang)"
 
 #: 
 msgid "Calendar address"
@@ -21520,22 +21387,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Gebruiker moet die toestemming Voeg geleentheid by hê, of die vrywilligerbediening koördineer waaraan hierdie kalender behoort"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Vrywilligergeleenthede (ou)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — ou Vrywilligergeleenthede"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Bedieninge"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Vrywilligerbestuur"
-
-#: 
 msgid "Valid"
 msgstr "Geldig"
 
@@ -21554,10 +21405,6 @@ msgstr "Bekyk die geleentheid"
 #: 
 msgid "View this email"
 msgstr "Bekyk hierdie e-pos"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Vrywilligerbestuur V2 is nie geaktiveer nie"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21664,10 +21511,6 @@ msgid "What the check found"
 msgstr "Wat die kontrole gevind het"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Wat die vrywilligerervarings is"
-
-#: 
 msgid "What you want to say"
 msgstr "Wat jy wil sê"
 
@@ -21698,10 +21541,6 @@ msgstr "Waar die datums vandaan kom"
 #: 
 msgid "Where we reach you"
 msgstr "Waar ons jou bereik"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Watter Vrywilligerbestuur-ervaring aktief is. V1 is die ou Vrywilligergeleenthede-kenmerk; V2 is die nuwe skeduleer- en toewysingswerkvloei. \"Albei\" wys elkeen langs mekaar tydens migrasie."
 
 #: 
 msgid "Which events"
@@ -22110,10 +21949,6 @@ msgstr "Nie gemagtig om die teikengroep van hierdie gebeurtenis te verander"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Slegs 'n vrywilligerkoördineerder kan verander wie 'n bediening koördineer"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "As u V1 kies, word V2-vrywilligeree-pos onderbreek; enigiets in die ry word gestuur wanneer V2 weer aan is, tensy sy voorkoms verby is."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22958,10 +22793,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Voorlooptyd vir waarskuwing oor ongevulde posisies (ure)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Vrywilligerbestuur"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Vrywilligerbedieninge, spanne, skedules en toewysings"
 
@@ -22972,14 +22803,6 @@ msgstr "Vrywilligerposisies om in die komende dae te vul"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vrywilligers word nog benodig vir hierdie komende voorkomste: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Wat beteken hierdie?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Watter vrywilligerervaring hierdie kerk gebruik"
 
 #: 
 msgid "You are on the schedule"
@@ -26350,248 +26173,8 @@ msgid "Review Family Information"
 msgstr "Hersien gesinsinligting"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "'n Bediening met die naam \"%s\" bestaan reeds. Kies dit uit die lys, of kies 'n ander naam."
-
-#: 
-msgid "A new ministry"
-msgstr "'n Nuwe bediening"
-
-#: 
-msgid "A position"
-msgstr "'n Posisie"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Voeg {{total}} vrywilligers by posisies wat voorheen omgeskakel is?"
-
-#: 
-msgid "Already converted"
-msgstr "Reeds omgeskakel"
-
-#: 
-msgid "An existing ministry"
-msgstr "'n Bestaande bediening"
-
-#: 
-msgid "Becomes"
-msgstr "Word"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op 'n slag gebruik te word; die instelling \"Vrywilligerervaring\" bepaal watter een hierdie kerk sien. Om te wissel, versteek of wys bladsye en kieslysitems en skrap nooit data nie. V1 en Albei word net aangebied terwyl Vrywillige geleenthede gebruik word: sodra elke geleentheid omgeskakel is en die kerk op V2 is, verdwyn hulle uit hierdie lys."
-
-#: 
-msgid "Convert"
-msgstr "Skakel om"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Skakel Vrywillige geleenthede om"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Skakel nou {{total}} geleenthede om? Die V1-data bly soos dit is totdat Vrywillige geleenthede uitgefaseer word."
-
-#: 
-msgid "Converted"
-msgstr "Omgeskakel"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Omgeskakel: {{positions}} posisies en {{ministries}} bedieninge, {{qualifications}} vrywilligers gekwalifiseer."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Elke geleentheid word 'n posisie in die eerste span van een bediening, en almal wat daaraan gekoppel is, word vir daardie posisie gekwalifiseer. Selfinskrywing is aanvanklik af vir hierdie posisies."
-
-#: 
-msgid "Everything is converted."
-msgstr "Alles is omgeskakel."
-
-#: 
-msgid "Existing ministry"
-msgstr "Bestaande bediening"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Gee die nuwe bediening 'n naam van hoogstens 100 karakters."
-
-#: 
-msgid "Its own ministry"
-msgstr "Sy eie bediening"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Sedertdien gekoppel: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Skakels wat nie omgeskakel kan word nie"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Nuwe bedieninge van hul eie"
-
-#: 
-msgid "New ministry name"
-msgstr "Naam van nuwe bediening"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Geen e-pos word gestuur nie, en Vrywillige geleenthede bly soos dit is totdat dit uitgefaseer word."
-
-#: 
-msgid "No name"
-msgstr "Geen naam"
-
-#: 
-msgid "Not converted"
-msgstr "Nie omgeskakel nie"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Open Funksieskakelaars"
-
-#: 
-msgid "Open Ministries"
-msgstr "Open Bedieninge"
-
-#: 
-msgid "Opportunities"
-msgstr "Geleenthede"
-
-#: 
-msgid "Opportunity"
-msgstr "Geleentheid"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Geleentheid #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Mense wat sedert die omskakeling aan omgeskakelde Vrywillige geleenthede gekoppel is: %d. Voeg hulle by hul posisies voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Kyk eers na die voorskou van die omskakeling, en stuur die hersiening wat dit teruggegee het."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Hernoem om name uniek te hou"
-
-#: 
-msgid "Review the conversion"
-msgstr "Hersien die omskakeling"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Stuur die omskakelingskeuse as 'n JSON-objek."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Stuur die geleenthede wat bedieninge word as 'n lys ID's."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Daardie bediening bestaan nie."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Die ChurchCRM-weergawe waarop 'n beheerder die kennisgewing oor die uitfasering van Vrywillige geleenthede weggewys het."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Die Vrywillige geleenthede het sedert die voorskou verander. Gaan die voorskou weer na en skakel dan om."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Die bevestiging kon nie oopmaak nie. Herlaai die bladsy en probeer weer."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Die omskakeling kon nie voorskou word nie."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Die omskakeling het misluk. Niks is verander nie."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Die bediening \"%s\" het geen span om die posisies te hou nie."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Die bediener kon nie bereik word nie. Herlaai die bladsy om te sien of die omskakeling uitgevoer is."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Daar is geen Vrywillige geleenthede om om te skakel nie."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Vrywilligerbestuur skakel oor na Albei, sodat die nuwe bedieninge langs Vrywillige geleenthede sigbaar is."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Vrywillige geleenthede word uitgefaseer"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Vrywillige geleenthede omgeskakel"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel hulle om na Bedieninge om te behou wie waarvoor vrywillig dien."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel nou jou %1$d geleenthede en %2$d vrywilligers om na Bedieninge. Jy kan die resultaat voorskou voordat enigiets verander."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Vrywilligers gekwalifiseer"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Vrywilligers om by omgeskakelde posisies te voeg"
-
-#: 
-msgid "What it becomes"
-msgstr "Wat dit word"
-
-#: 
-msgid "What will happen"
-msgstr "Wat gaan gebeur"
-
-#: 
-msgid "Where they go"
-msgstr "Waarheen hulle gaan"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Watter ou Vrywillige geleenthede omgeskakel is, en die posisie wat elkeen geword het."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Watter vrywilligerervaring hierdie kerk gebruik. Vrywillige geleenthede (V1) word vroeg in 2027 uitgefaseer."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Jou Vrywillige geleenthede is na Bedieninge omgeskakel. Skakel Vrywilligerbestuur oor na V2 voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "na 'n nuwe bediening, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "na die bediening {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "nie meer in ChurchCRM nie"
 
 #: 
 msgid "Collapse sidebar"
@@ -26768,10 +26351,6 @@ msgstr[0] "%d verstek oorgeslaan om 'n ander rede (die geval is verby, gekansell
 msgstr[1] "%d verstekke oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "'n Oorgangsinstelling. Die ou Vrywilligergeleenthede-bladsye en die nuwe Bedieninge-bladsye is albei beskikbaar, en 'n persoonrekord toon albei Vrywilliger-oortjies, duidelik benoem. Gebruik dit terwyl jy 'n kerk van V1 na V2 skuif, en skakel dan oor na net V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Toewysing gekanselleer"
 
@@ -26818,10 +26397,6 @@ msgstr "Hierdie datum is gekanselleer. Niks meer word van jou verwag nie."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Hierdie geval is gekanselleer"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vrywilligerswerk soos 'n kerk dit bedryf. Elke bediening het spanne en posisies; mense word vir posisies gekwalifiseer en behoort aan die bediening se poelgroep; roosters volg die geleenthede op die kalender en lewer gedateerde gevalle met bemanningsvereistes; koördineerders wys mense toe, wat aanvaar, van die hand wys of 'n plaasvervanger voorstel; herinneringe en waarskuwings gaan per e-pos uit. Administrateurs en gebruikers met die toestemming Bestuur bedieninge sien elke bediening en mag hulle skep, deaktiveer en uitvee. 'n Bedieningkoördineerder kry eerder die toestemming Bestuur my bedieninge: die opskrif Bedieninge in die kantkolom wys dan net die bedieninge wat hulle koördineer. 'n Spanleier bestuur sy span vanuit die Lidmaatportaal. Lidmate gebruik die Lidmaatportaal om hul rooster te sien, te antwoord, in te skryf en hulp aan te bied."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27492,10 +27067,6 @@ msgstr "Bekyk geleenthede"
 #: 
 msgid "View people and families"
 msgstr "Bekyk mense en gesinne"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Vrywilligersbestuur is afgeskakel vir hierdie kerk"
 
 #: 
 msgid "Weak"

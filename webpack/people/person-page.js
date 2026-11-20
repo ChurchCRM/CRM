@@ -93,9 +93,6 @@ function initProperties(page) {
       });
     });
   });
-
-  const volunteerSelect = document.getElementById("input-volunteer-opportunities");
-  if (volunteerSelect && !volunteerSelect.tomselect) new TomSelect(volunteerSelect, { plugins: ["remove_button"] });
 }
 
 function initGivingSummary(page) {

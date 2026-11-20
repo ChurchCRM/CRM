@@ -1369,10 +1369,6 @@ msgid "Default"
 msgstr "ስለ ነገር"
 
 #: 
-msgid "Exit"
-msgstr "ውጣ"
-
-#: 
 msgid "Add New"
 msgstr "አዲስ አስገባ"
 
@@ -1590,10 +1586,6 @@ msgid "Restore Database"
 msgstr "መረጃውን ወደቀደመው መልስ"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "እባክዎ ስረዛውን ያረጋግጡ"
-
-#: 
 msgid "Listing"
 msgstr "መዘርዘር"
 
@@ -1680,14 +1672,6 @@ msgstr "አድሱ የይለፍ ቃል"
 #: 
 msgid "Confirm New Password"
 msgstr "አዲሱን የይለፍ ቃል አረጋግጥ"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "የበጎ ፈቃደኞች ዕድል አስተካካይ"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "እስካሁን ምንም የበጎ ፈቃድ እድሎች አልተጨመሩም"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6578,10 +6562,6 @@ msgid "Confirm Property Deletion"
 msgstr "የንብረት ስረዛን ያረጋግጡ"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "የበጎ ፈቃደኝነት ዕድል ስረዛን ያረጋግጡ"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "የስረዛ ማረጋገጫ"
 
@@ -6594,16 +6574,8 @@ msgid "Existing Custom Person Fields"
 msgstr "ነባር የሰው መረጃ ቦታዎች"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "ነባር የበጎ ፈቃደኝነት ዕድሎች"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "ቦታው በተሳካ ሁኔታ ተሰርዟል"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "ልክ ያልሆነ የCSRF ቶከን"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8369,10 +8341,6 @@ msgid "Create or edit property type categories"
 msgstr "ንብረት ዓይነ ምድር ገ ወ አርትዕ"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "ተስፋደር ሰሞ ገ ወ አርትዕ"
-
-#: 
 msgid "Current person"
 msgstr "አሁን ሰው"
 
@@ -8819,10 +8787,6 @@ msgstr "ስርዓት ተጠቃሚ ፍቃድ እና ሁለት-ደረጃ ማረጋ
 #: 
 msgid "Manage user account details and permissions"
 msgstr "ተጠቃሚ ሥርዓት ዝርዝር እና ፍቃድ ይሸፍኑ"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "ሌባ ስኞ እና አባላት ተመደቡ ይሸፍኑ"
 
 #: 
 msgid "Map cart items"
@@ -9447,10 +9411,6 @@ msgid "funds"
 msgstr "ገንዘብ"
 
 #: 
-msgid "opportunities"
-msgstr "ስኞ"
-
-#: 
 msgid "or connect an external service"
 msgstr "ወይም ውጪ ስርዓት ግንኙነት"
 
@@ -9750,11 +9710,6 @@ msgstr "ኢሜይል አድራሻዎች ያግኙ ወደ አልተሳካም"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "ስልክ ቁጥሮች ያግኙ ወደ አልተሳካም"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "ለአንድ ነጠላ ዕድሎት ሰዓቶች ያግኙ"
 
 #. Context: query_qry
 #: 
@@ -12521,10 +12476,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "የንብረት አይነቱን መሰረዝ አይቻልም፦ %d ንብረቶች አሁንም ያመለክቱታል። እነዚያን ንብረቶች መጀመሪያ እንደገና ይመድቡ ወይም ይሰርዙ።"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "የበጎ ፈቃደኛ አገልግሎት ዕድሉን መሰረዝ አይቻልም፦ %d ሰዎች አሁንም ተመድበዋል። ምደባዎቹን መጀመሪያ ያስወግዱ።"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "ክፍሉ p፣ f ወይም g ከሚሉት አንዱ መሆን አለበት"
 
@@ -12535,10 +12486,6 @@ msgstr "የስህተት መልዕክት ቅዳ"
 #: 
 msgid "Could not load note."
 msgstr "ማስታወሻውን መጫን አልተቻለም።"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "መግለጫው ከ100 ቁምፊዎች መብለጥ አይችልም"
 
 #: 
 msgid "Donation fund not found"
@@ -12561,10 +12508,6 @@ msgid "Failed to create property type"
 msgstr "የንብረት አይነት መፍጠር አልተሳካም"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "የበጎ ፈቃደኛ አገልግሎት ዕድል መፍጠር አልተሳካም"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "የልገሳ ፈንድ መሰረዝ አልተሳካም"
 
@@ -12581,10 +12524,6 @@ msgid "Failed to delete property type"
 msgstr "የንብረት አይነት መሰረዝ አልተሳካም"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "የበጎ ፈቃደኛ አገልግሎት ዕድል መሰረዝ አልተሳካም"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "የልገሳ ፈንድ ማዘመን አልተሳካም"
 
@@ -12597,10 +12536,6 @@ msgid "Failed to update property type"
 msgstr "የንብረት አይነት ማዘመን አልተሳካም"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "የበጎ ፈቃደኛ አገልግሎት ዕድል ማዘመን አልተሳካም"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "የገቢ ማሰባሰቢያ ዘመቻ አልተገኘም"
 
@@ -12611,10 +12546,6 @@ msgstr "የጭነት መለያ"
 #: 
 msgid "Invalid class"
 msgstr "ልክ ያልሆነ ክፍል"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "ስሙ ከ30 ቁምፊዎች መብለጥ አይችልም"
 
 #: 
 msgid "Note by %s deleted"
@@ -12637,16 +12568,8 @@ msgid "Read more"
 msgstr "ተጨማሪ ያንብቡ"
 
 #: 
-msgid "That name already exists."
-msgstr "ያ ስም አስቀድሞ አለ።"
-
-#: 
 msgid "Title is required"
 msgstr "ርዕስ ያስፈልጋል"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "የበጎ ፈቃደኛ አገልግሎት ዕድል አልተገኘም"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15018,10 +14941,6 @@ msgid "Target family"
 msgstr "ዒላማ ቤተሰብ"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "ቡድኑ ሊገኝ አልቻለም። እባክዎ እንደገና ይሞክሩ።"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "የተመረጠው ቤተሰብ አሁን የለም። እባክዎ ገጹን አድሱ እና እንደገና ይሞክሩ።"
 
@@ -15236,10 +15155,6 @@ msgstr "የሚደገፉ ቅርጸቶች"
 #: 
 msgid "System Configuration"
 msgstr "የሥርዓት ማዋቀሪያ"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "ለዚህ የበጎ ፈቃደኝነት እድል የተመደቡ ሰዎች አሉ። ሰርዛ ምደባ ይሰርዛል"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15470,10 +15385,6 @@ msgid "Add New Fund"
 msgstr "አዲስ ፈንድ ጨምር"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "አዲስ እድል ጨምር"
-
-#: 
 msgid "Add New Person"
 msgstr "አዲስ ሰው ጨምር"
 
@@ -15486,10 +15397,6 @@ msgid "Add New Role"
 msgstr "አዲስ ሚና ጨምር"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "አዲስ የበጎ ፈቃደኝነት እድል ጨምር"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "የሰንበት ትምህርት ቤት ክፍል ጨምር"
 
@@ -15500,10 +15407,6 @@ msgstr "ይህን ቤተሰብ ይሰርዙ?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "በህዝብ ምዝገባ ቅጽዎ ላይ የተመዘገቡ አዲስ ቤተሰቦችንና ግለሰቦችን ይገምግሙ"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "የበጎ ፈቃደኝነት እድል ሰርዛ ማረጋገጫ"
 
 #: 
 msgid "# Payments"
@@ -17170,14 +17073,6 @@ msgid "Find people who did not attend an event"
 msgstr "ክስተትን ያልተሳተፉ ሰዎችን ያግኙ"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "ሁለት ውስን ዕድል ኮዶች ተቆራኝተው በስ volunteers ታች ያግኙ"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "የመጀመሪያ በስ volunteers ታች ዕድል"
-
-#: 
 msgid "Folded Booklet"
 msgstr "ታጠፈ የመጽሐፍ"
 
@@ -17254,10 +17149,6 @@ msgid "Run Report"
 msgstr "ሪፖርት ማስኬድ"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "ሁለተኛ በስ volunteers ታች ዕድል"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "በጎን ዘሪ, በ ግብዓት ገጽ ላይ እና በ ኢሜሎች ውስጥ ሊሰጥ. ሎጎ መላክ ChurchCRM ማርክ በ ሁሉም ስፍራ መቀየር."
 
@@ -17284,14 +17175,6 @@ msgstr "ነባር ChurchCRM ሎጎ ማስተቀማት"
 #: 
 msgid "View Full Family Giving"
 msgstr "ሙሉ ቤተሰብ ለገና ተመልከት"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "በስ volunteers ታች ዕድል"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "ሁለት ዕድለ ለ በስ volunteers ታች"
 
 #: 
 msgid "YTD"
@@ -18118,10 +18001,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "አንድን ዝግጅት ብቻ የሚያስተናግድ መርሐ ግብር ሌሎች ዝግጅቶችን መከተል አይችልም፤ እሱን ያጥፉ እና በምትኩ መርሐ ግብር ያክሉ"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "እንደ \"የሕፃናት ክፍል\" ወይም \"አቀባበል\" ያሉ የአገልግሎት ዕድሎች አንድ ዝርዝር፣ በሰዎች → አስተዳዳሪ ስር የሚቀመጥ። እያንዳንዱ ሰው በመዝገቡ በበጎ ፈቃደኛ ትር ላይ ሊረዳባቸው ፈቃደኛ በሆነባቸው ዕድሎች ይመደባል። የሚመዘግበው ይህን ብቻ ነው፦ ቡድኖች የሉም፣ መርሐ ግብሮች የሉም፣ ለአንድ ቀን የሚደረጉ ምደባዎች የሉም፣ የማስታወሻ ኢሜይሎችም የሉም። መለያዎቹ የሚያገለግሉት በሪፖርቶች እና በሰው መዝገብ ውስጥ ነው።"
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "የፊትዎ ካሬ ምስል ተመራጭ ነው።"
 
@@ -18428,18 +18307,6 @@ msgstr "የጀርባ ሥራዎች የሠሩት"
 #: 
 msgid "Birthday greeting"
 msgstr "የልደት ሰላምታ"
-
-#: 
-msgid "Both"
-msgstr "ሁለቱም"
-
-#: 
-msgid "Both (transition)"
-msgstr "ሁለቱም (ሽግግር)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "ሁለቱም — V1 እና V2 ጎን ለጎን (ሽግግር)"
 
 #: 
 msgid "Calendar address"
@@ -21526,22 +21393,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "ተጠቃሚው ዝግጅት የመጨመር ፈቃድ ሊኖረው፣ ወይም ይህ የቀን መቁጠሪያ የሚገኝበትን የበጎ ፈቃድ አገልግሎት ማስተባበር አለበት"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — የበጎ ፈቃደኛ ዕድሎች (የቀደመ)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — የቀደመ የበጎ ፈቃደኛ ዕድሎች"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — አገልግሎቶች"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — የበጎ ፈቃደኞች አስተዳደር"
-
-#: 
 msgid "Valid"
 msgstr "ትክክለኛ"
 
@@ -21560,10 +21411,6 @@ msgstr "ዝግጅቱን ተመልከት"
 #: 
 msgid "View this email"
 msgstr "ይህን ኢሜይል ተመልከት"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "የበጎ ፈቃደኞች አስተዳደር V2 አልነቃም"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21670,10 +21517,6 @@ msgid "What the check found"
 msgstr "ፍተሻው ያገኘው"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "የበጎ ፈቃድ አገልግሎት ሥርዓቶች ምንድን ናቸው"
-
-#: 
 msgid "What you want to say"
 msgstr "ለመናገር የሚፈልጉት"
 
@@ -21704,10 +21547,6 @@ msgstr "ቀኖቹ ከየት እንደሚመጡ"
 #: 
 msgid "Where we reach you"
 msgstr "የምናገኝዎት መንገድ"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "የትኛው የበጎ ፈቃደኞች አስተዳደር ሥርዓት ንቁ እንደሆነ። V1 የቀደመው የበጎ ፈቃደኛ ዕድሎች ባህሪ ነው፤ V2 አዲሱ የመርሐ ግብር እና የምደባ የሥራ ሂደት ነው። \"Both\" በሽግግር ጊዜ ሁለቱንም ጎን ለጎን ያሳያል።"
 
 #: 
 msgid "Which events"
@@ -22116,10 +21955,6 @@ msgstr "የዚህን ክስተት የታዳሚ ቡድን ለመቀየር ፈቃ�
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "የአገልግሎት አስተባባሪን መቀየር የሚችለው የበጎ ፈቃደኞች አስተዳዳሪ ብቻ ነው"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1ን መምረጥ የV2 የበጎ ፈቃደኞች ኢሜይልን ያቆማል፤ በወረፋ ያለው ሁሉ V2 ሲበራ ይላካል፣ ቀጠሮው ካለፈ በስተቀር።"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22964,10 +22799,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "ያልተሞላ ቦታ የማንቂያ ቅድመ ጊዜ (ሰዓታት)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "የበጎ ፈቃደኞች አስተዳደር"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "የበጎ ፈቃደኛ አገልግሎቶች፣ ቡድኖች፣ መርሐግብሮች እና ምደባዎች"
 
@@ -22978,14 +22809,6 @@ msgstr "በሚመጡት ቀናት የሚሞሉ የበጎ ፈቃደኛ ቦታዎ�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "ለእነዚህ ለሚመጡ አጋጣሚዎች አሁንም በጎ ፈቃደኞች ያስፈልጋሉ፦ %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "እነዚህ ምን ማለት ናቸው?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "ይህች ቤተክርስቲያን የምትጠቀመው የበጎ ፈቃደኛ ተሞክሮ"
 
 #: 
 msgid "You are on the schedule"
@@ -26356,248 +26179,8 @@ msgid "Review Family Information"
 msgstr "የቤተሰብ መረጃን ገምግም"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" የሚባል አገልግሎት አስቀድሞ አለ። ከዝርዝሩ ይምረጡት ወይም ሌላ ስም ይምረጡ።"
-
-#: 
-msgid "A new ministry"
-msgstr "አዲስ አገልግሎት"
-
-#: 
-msgid "A position"
-msgstr "የአገልግሎት ቦታ"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "{{total}} በጎ ፈቃደኞችን ቀደም ብለው ወደተቀየሩ የአገልግሎት ቦታዎች ይጨመሩ?"
-
-#: 
-msgid "Already converted"
-msgstr "አስቀድሞ ተቀይሯል"
-
-#: 
-msgid "An existing ministry"
-msgstr "ነባር አገልግሎት"
-
-#: 
-msgid "Becomes"
-msgstr "ወደዚህ ይቀየራል"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM በጎ ፈቃደኞችን ለማስተዳደር ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ እንዲውል የታሰበ ነው፤ ይህ ቤተ ክርስቲያን የትኛውን እንደሚያይ \"የበጎ ፈቃደኞች ተሞክሮ\" ቅንብር ይወስናል። መቀየር ገጾችንና የምናሌ ንጥሎችን ይደብቃል ወይም ያሳያል፤ ውሂብ ግን በጭራሽ አይሰርዝም። V1 እና ሁለቱም የሚቀርቡት የበጎ ፈቃደኞች እድሎች ጥቅም ላይ እስካሉ ድረስ ብቻ ነው፤ እያንዳንዱ እድል ሲቀየርና ቤተ ክርስቲያኑ V2 ላይ ሲሆን ከዚህ ዝርዝር ይወጣሉ።"
-
-#: 
-msgid "Convert"
-msgstr "ቀይር"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "የበጎ ፈቃደኞች እድሎችን ቀይር"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "አሁን {{total}} እድሎችን ይቀይሩ? የበጎ ፈቃደኞች እድሎች እስኪቋረጡ ድረስ የV1 ውሂብ እንዳለ ይቆያል።"
-
-#: 
-msgid "Converted"
-msgstr "ተቀይሯል"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "ተቀይሯል፦ {{positions}} የአገልግሎት ቦታዎች እና {{ministries}} አገልግሎቶች፣ {{qualifications}} በጎ ፈቃደኞች ብቁ ሆነዋል።"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "እያንዳንዱ እድል በአንድ አገልግሎት የመጀመሪያ ቡድን ውስጥ የአገልግሎት ቦታ ይሆናል፤ ከእሱ ጋር የተገናኙ ሁሉም ለዚያ ቦታ ብቁ ይሆናሉ። በእነዚህ ቦታዎች ላይ ራስን ምዝገባ መጀመሪያ ጠፍቶ ይቆያል።"
-
-#: 
-msgid "Everything is converted."
-msgstr "ሁሉም ተቀይሯል።"
-
-#: 
-msgid "Existing ministry"
-msgstr "ነባር አገልግሎት"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "ለአዲሱ አገልግሎት እስከ 100 ቁምፊዎች ያለው ስም ይስጡት።"
-
-#: 
-msgid "Its own ministry"
-msgstr "የራሱ አገልግሎት"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "ከዚያ ወዲህ የተገናኙ፦ {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "ሊቀየሩ የማይችሉ ግንኙነቶች"
-
-#: 
-msgid "New ministries of their own"
-msgstr "የራሳቸው አዲስ አገልግሎቶች"
-
-#: 
-msgid "New ministry name"
-msgstr "የአዲሱ አገልግሎት ስም"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "ምንም ኢሜይል አይላክም፤ የበጎ ፈቃደኞች እድሎችም እስኪቋረጡ ድረስ እንዳሉ ይቆያሉ።"
-
-#: 
-msgid "No name"
-msgstr "ስም የለም"
-
-#: 
-msgid "Not converted"
-msgstr "አልተቀየረም"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "ባህሪ ተቀያይሮችን ክፈት"
-
-#: 
-msgid "Open Ministries"
-msgstr "አገልግሎቶችን ክፈት"
-
-#: 
-msgid "Opportunities"
-msgstr "እድሎች"
-
-#: 
-msgid "Opportunity"
-msgstr "እድል"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "እድል #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "ከቅየራው ወዲህ ከተቀየሩ የበጎ ፈቃደኞች እድሎች ጋር የተገናኙ ሰዎች፦ %d። የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ከመቋረጣቸው በፊት ወደ አገልግሎት ቦታዎቻቸው ይጨምሯቸው።"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "መጀመሪያ የቅየራውን ቅድመ ዕይታ ይመልከቱ፣ ከዚያ የመለሰውን ክለሳ ይላኩ።"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "ስሞች ልዩ ሆነው እንዲቆዩ ስሙ ተቀይሯል"
-
-#: 
-msgid "Review the conversion"
-msgstr "ቅየራውን ይገምግሙ"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "የቅየራ ምርጫውን እንደ JSON ነገር ይላኩ።"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "አገልግሎት የሚሆኑትን እድሎች እንደ የመታወቂያ ዝርዝር ይላኩ።"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "ያ አገልግሎት የለም።"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "አንድ አስተዳዳሪ የበጎ ፈቃደኞች እድሎች መቋረጥ ማሳወቂያን የዘጋበት የChurchCRM ስሪት።"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "ከቅድመ ዕይታው ወዲህ የበጎ ፈቃደኞች እድሎች ተለውጠዋል። ቅድመ ዕይታውን እንደገና ያረጋግጡ፣ ከዚያ ይቀይሩ።"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "ማረጋገጫው ሊከፈት አልቻለም። ገጹን እንደገና ይጫኑና እንደገና ይሞክሩ።"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "የቅየራው ቅድመ ዕይታ ሊታይ አልቻለም።"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "ቅየራው አልተሳካም። ምንም አልተለወጠም።"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" አገልግሎት የአገልግሎት ቦታዎችን የሚይዝ ቡድን የለውም።"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "አገልጋዩን ማግኘት አልተቻለም። ቅየራው መካሄዱን ለማየት ገጹን እንደገና ይጫኑ።"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "የሚቀየሩ የበጎ ፈቃደኞች እድሎች የሉም።"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "አዲሶቹ አገልግሎቶች ከበጎ ፈቃደኞች እድሎች አጠገብ እንዲታዩ የበጎ ፈቃደኞች አስተዳደር ወደ ሁለቱም ይቀየራል።"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "የበጎ ፈቃደኞች እድሎች እየተቋረጡ ነው"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "የበጎ ፈቃደኞች እድሎች ተቀይረዋል"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ይቋረጣሉ። ማን በምን እንደሚያገለግል ለማቆየት ወደ አገልግሎቶች ይቀይሯቸው።"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ይቋረጣሉ። %1$d እድሎችዎንና %2$d በጎ ፈቃደኞችዎን አሁን ወደ አገልግሎቶች ይቀይሩ። ማንኛውም ነገር ከመለወጡ በፊት ውጤቱን በቅድመ ዕይታ ማየት ይችላሉ።"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "ብቁ የሆኑ በጎ ፈቃደኞች"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "ወደተቀየሩ ቦታዎች የሚጨመሩ በጎ ፈቃደኞች"
-
-#: 
-msgid "What it becomes"
-msgstr "ምን ይሆናል"
-
-#: 
-msgid "What will happen"
-msgstr "ምን ይከሰታል"
-
-#: 
-msgid "Where they go"
-msgstr "ወዴት ይሄዳሉ"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "የትኞቹ የቀድሞ የበጎ ፈቃደኞች እድሎች እንደተቀየሩ እና እያንዳንዱ የሆነው የአገልግሎት ቦታ።"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "ይህ ቤተ ክርስቲያን የሚጠቀመው የበጎ ፈቃደኞች ተሞክሮ። የበጎ ፈቃደኞች እድሎች (V1) በ2027 መጀመሪያ ይቋረጣሉ።"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "የበጎ ፈቃደኞች እድሎችዎ ወደ አገልግሎቶች ተቀይረዋል። የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ከመቋረጣቸው በፊት የበጎ ፈቃደኞች አስተዳደርን ወደ V2 ይቀይሩ።"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "ወደ አዲስ አገልግሎት፣ {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ወደ {{name}} አገልግሎት"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ከአሁን በኋላ በChurchCRM ውስጥ የለም"
 
 #: 
 msgid "Collapse sidebar"
@@ -26774,10 +26357,6 @@ msgstr[0] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግ�
 msgstr[1] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "የሽግግር ቅንብር። የቀደመው የበጎ ፈቃደኛ ዕድሎች ገጾች እና አዲሶቹ የአገልግሎቶች ገጾች ሁለቱም ይገኛሉ፣ እና የሰው መዝገብ ሁለቱንም የበጎ ፈቃደኛ ትሮች በግልጽ ተሰይመው ያሳያል። ቤተ ክርስቲያንን ከV1 ወደ V2 ሲያሸጋግሩ ይጠቀሙበት፣ ከዚያ ወደ V2 ብቻ ይቀይሩ።"
-
-#: 
 msgid "Assignment canceled"
 msgstr "ምደባው ተሰርዟል"
 
@@ -26824,10 +26403,6 @@ msgstr "ይህ ቀን ተሰርዟል። ከእርስዎ ሌላ ነገር አያ
 #: 
 msgid "This occurrence has been canceled"
 msgstr "ይህ የአገልግሎት ቀን ተሰርዟል"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "ቤተ ክርስቲያን በምትሠራበት መንገድ የተደራጀ በጎ ፈቃድ አገልግሎት። እያንዳንዱ አገልግሎት ቡድኖች እና የአገልግሎት ቦታዎች አሉት፤ ሰዎች ለአገልግሎት ቦታዎች ብቁ ይደረጋሉ እና የአገልግሎቱ ስብስብ ቡድን አባል ይሆናሉ፤ መርሐ ግብሮች በቀን መቁጠሪያው ላይ ያሉ ዝግጅቶችን ይከተላሉ እና የሰው ኃይል መስፈርት ያላቸው ቀን የተቀመጠላቸው የአገልግሎት ቀናትን ያመነጫሉ፤ አስተባባሪዎች ሰዎችን ይመድባሉ፣ እነሱም ይቀበላሉ፣ አልቀበልም ይላሉ ወይም ተተኪ ያቀርባሉ፤ ማስታወሻዎች እና ማንቂያዎች በኢሜይል ይላካሉ። አስተዳዳሪዎች እና አገልግሎቶችን የማስተዳደር ፈቃድ ያላቸው ተጠቃሚዎች ሁሉንም አገልግሎቶች ያያሉ እና ሊፈጥሯቸው፣ ሊያቦዝኗቸው እና ሊያጠፏቸው ይችላሉ። የአገልግሎት አስተባባሪ በምትኩ አገልግሎቶቼን የማስተዳደር ፈቃድ ይሰጠዋል፦ በጎን አሞሌው ላይ ያለው የአገልግሎቶች ርዕስ የሚያስተባብራቸውን አገልግሎቶች ብቻ ያሳያል። የቡድን መሪ ቡድኑን ከአባላት ፖርታል ይመራል። አባላት መርሐ ግብራቸውን ለማየት፣ ምላሽ ለመስጠት፣ ለመመዝገብ እና ለመርዳት ለማቅረብ የአባላት ፖርታልን ይጠቀማሉ።"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27526,10 +27101,6 @@ msgstr "ዝግጅቶችን መመልከት"
 #: 
 msgid "View people and families"
 msgstr "ሰዎችንና ቤተሰቦችን መመልከት"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "ለዚህ ቤተ ክርስቲያን የበጎ ፈቃደኞች አስተዳደር ጠፍቷል"
 
 #: 
 msgid "Weak"

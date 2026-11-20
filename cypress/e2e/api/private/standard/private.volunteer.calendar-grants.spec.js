@@ -8,7 +8,6 @@
  * (tony.wade, no bAddEvent), made coordinator of ministries A and C here, never of B.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 
@@ -18,7 +17,6 @@ const PUBLIC_CALENDAR = 1;
 
 const PREFIX = "VCALGRANT";
 
-let originalVersion = "v1";
 const ministry = {};
 const ministryCalendar = {};
 let bibleClasses = 0;
@@ -34,10 +32,6 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -133,10 +127,6 @@ after(() => {
 
 describe("Volunteer v2 D25 — administrators open church calendars to ministries", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         for (const key of ["A", "B", "C"]) {
@@ -164,7 +154,6 @@ describe("Volunteer v2 D25 — administrators open church calendars to ministrie
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     describe("Volunteer v2 D25 — calendar grants", () => {
@@ -206,12 +195,6 @@ describe("Volunteer v2 D25 — administrators open church calendars to ministrie
 
             it("refuses to open a ministry's own calendar to other ministries", () => {
                 setGrants(ministryCalendar.A, [ministry.B], ADMIN_KEY, 409);
-            });
-
-            it("is closed while the rollout flag is v1", () => {
-                setVersion("v1");
-                api(ADMIN_KEY, "GET", `/api/calendars/${bibleClasses}/ministries`, null, 403);
-                setVersion("v2");
             });
         });
 

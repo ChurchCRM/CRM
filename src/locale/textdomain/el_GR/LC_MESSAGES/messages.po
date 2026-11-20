@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Προκαθορισμένο"
 
 #: 
-msgid "Exit"
-msgstr "Εξοδος"
-
-#: 
 msgid "Add New"
 msgstr "Προσθεσε νεο"
 
@@ -1591,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Επαναφορά βάσης δεδομένων"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Επιβεβαιώστε τη διαγραφή του"
-
-#: 
 msgid "Listing"
 msgstr "Καταχώρηση"
 
@@ -1681,14 +1673,6 @@ msgstr "νέος κωδικός πρόσβασης"
 #: 
 msgid "Confirm New Password"
 msgstr "Επιβεβαιώστε τον καινούριο σας κωδικό"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Εκδότης Ευκαιριών Εθελοντισμού"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Δεν έχουν προστεθεί ακόμη ευκαιρίες εθελοντισμού"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6573,10 +6557,6 @@ msgid "Confirm Property Deletion"
 msgstr "Επιβεβαίωση διαγραφής ιδιότητας"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Επιβεβαίωση διαγραφής ευκαιρίας εθελοντισμού"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής"
 
@@ -6589,16 +6569,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Υπάρχον Custom Person Fields"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Υπάρχον Volunteer Opportunities"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Το πεδίο διαγράφηκε επιτυχώς"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Μη έγκυρο διακριτικό CSRF"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8364,10 +8336,6 @@ msgid "Create or edit property type categories"
 msgstr "Δημιουργία ή επεξεργασία κατηγοριών τύπων ιδιοτήτων"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Δημιουργία ή επεξεργασία θέσεων εθελοντών"
-
-#: 
 msgid "Current person"
 msgstr "Τρέχον άτομο"
 
@@ -8814,10 +8782,6 @@ msgstr "Διαχείριση χρηστών συστήματος, δικαιωμ
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Διαχείριση στοιχείων λογαριασμού χρήστη και δικαιωμάτων"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Διαχείριση ευκαιριών εθελοντισμού και ανάθεση μελών"
 
 #: 
 msgid "Map cart items"
@@ -9442,10 +9406,6 @@ msgid "funds"
 msgstr "ταμεία"
 
 #: 
-msgid "opportunities"
-msgstr "ευκαιρίες"
-
-#: 
 msgid "or connect an external service"
 msgstr "ή συνδέστε εξωτερική υπηρεσία"
 
@@ -9745,11 +9705,6 @@ msgstr "Αποτυχία ανάκτησης διευθύνσεων ηλεκτρ�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Αποτυχία ανάκτησης αριθμών τηλεφώνου"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Βρείτε εθελοντές για μια συγκεκριμένη ευκαιρία"
 
 #. Context: query_qry
 #: 
@@ -12516,10 +12471,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Δεν είναι δυνατή η διαγραφή του τύπου ιδιότητας: %d ιδιότητες το αναφέρουν ακόμα. Αναθέστε εκ νέου ή διαγράψτε πρώτα αυτές τις ιδιότητες."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Δεν είναι δυνατή η διαγραφή της ευκαιρίας εθελοντισμού: %d άτομα είναι ακόμα ανατεθειμένα. Αφαιρέστε πρώτα τις αναθέσεις."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Η κλάση πρέπει να είναι p, f ή g"
 
@@ -12530,10 +12481,6 @@ msgstr "Αντιγραφή μηνύματος σφάλματος"
 #: 
 msgid "Could not load note."
 msgstr "Δεν ήταν δυνατή η φόρτωση της σημείωσης."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Η περιγραφή δεν μπορεί να υπερβαίνει τους 100 χαρακτήρες"
 
 #: 
 msgid "Donation fund not found"
@@ -12556,10 +12503,6 @@ msgid "Failed to create property type"
 msgstr "Αποτυχία δημιουργίας τύπου ιδιότητας"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Αποτυχία δημιουργίας ευκαιρίας εθελοντισμού"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Αποτυχία διαγραφής ταμείου δωρεών"
 
@@ -12576,10 +12519,6 @@ msgid "Failed to delete property type"
 msgstr "Αποτυχία διαγραφής τύπου ιδιότητας"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Αποτυχία διαγραφής ευκαιρίας εθελοντισμού"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Αποτυχία ενημέρωσης ταμείου δωρεών"
 
@@ -12592,10 +12531,6 @@ msgid "Failed to update property type"
 msgstr "Αποτυχία ενημέρωσης τύπου ιδιότητας"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Αποτυχία ενημέρωσης ευκαιρίας εθελοντισμού"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Η εκστρατεία συγκέντρωσης πόρων δεν βρέθηκε"
 
@@ -12606,10 +12541,6 @@ msgstr "Αναγνωριστικό εγκατάστασης"
 #: 
 msgid "Invalid class"
 msgstr "Μη έγκυρη κλάση"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Το όνομα δεν μπορεί να υπερβαίνει τους 30 χαρακτήρες"
 
 #: 
 msgid "Note by %s deleted"
@@ -12632,16 +12563,8 @@ msgid "Read more"
 msgstr "Διαβάστε περισσότερα"
 
 #: 
-msgid "That name already exists."
-msgstr "Αυτό το όνομα υπάρχει ήδη."
-
-#: 
 msgid "Title is required"
 msgstr "Ο τίτλος είναι υποχρεωτικός"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Η ευκαιρία εθελοντισμού δεν βρέθηκε"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15012,10 +14935,6 @@ msgid "Target family"
 msgstr "Οικογένεια στόχος"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Η ομάδα δεν βρέθηκε. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Η επιλεγμένη οικογένεια δεν υπάρχει πλέον. Παρακαλώ ανανεώστε τη σελίδα και δοκιμάστε ξανά."
 
@@ -15230,10 +15149,6 @@ msgstr "Υποστηριζόμενες μορφές"
 #: 
 msgid "System Configuration"
 msgstr "Διαμόρφωση Συστήματος"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Υπάρχουν άτομα ανατεθειμένα σε αυτή τη Θέση Εθελοντισμού. Η διαγραφή θα τα αποδεσμεύσει"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15464,10 +15379,6 @@ msgid "Add New Fund"
 msgstr "Προσθήκη Νέου Κονδυλίου"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Προσθήκη Νέας Ευκαιρίας"
-
-#: 
 msgid "Add New Person"
 msgstr "Προσθήκη Νέου Ατόμου"
 
@@ -15480,10 +15391,6 @@ msgid "Add New Role"
 msgstr "Προσθήκη Νέου Ρόλου"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Προσθήκη Νέας Θέσης Εθελοντισμού"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Προσθήκη Τάξης Κατηχητικού Σχολείου"
 
@@ -15494,10 +15401,6 @@ msgstr "Διαγραφή αυτής της οικογένειας;"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Ελέγξτε νέες οικογένειες και άτομα που εγγράφηκαν μέσω της δημόσιας φόρμας εγγραφής"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Επιβεβαίωση Διαγραφής Θέσης Εθελοντισμού"
 
 #: 
 msgid "# Payments"
@@ -17164,14 +17067,6 @@ msgid "Find people who did not attend an event"
 msgstr "Βρείτε ανθρώπους που δεν παρακολούθησαν ένα συμβάν"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Βρείτε εθελοντές που ταιριάζουν με δύο συγκεκριμένους κωδικούς ευκαιρίας"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Πρώτη Ευκαιρία Εθελοντή"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Διπλωμένο Έντυπο"
 
@@ -17248,10 +17143,6 @@ msgid "Run Report"
 msgstr "Εκτέλεση Αναφοράς"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Δεύτερη Ευκαιρία Εθελοντή"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Εμφανίζεται στη πλευρική γραμμή, στη σελίδα σύνδεσης και στα email. Η μεταφόρτωση ενός λογότυπου αντικαθιστά την εμπορική σήμανση ChurchCRM παντού που εμφανίζεται."
 
@@ -17278,14 +17169,6 @@ msgstr "Χρήση προεπιλεγμένου λογότυπου ChurchCRM"
 #: 
 msgid "View Full Family Giving"
 msgstr "Προβολή Πλήρους Παροχής Οικογένειας"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Ευκαιρία Εθελοντή"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Εθελοντές για Δύο Ευκαιρίες"
 
 #: 
 msgid "YTD"
@@ -18112,10 +17995,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Ένα πρόγραμμα που στελεχώνει μία εκδήλωση δεν μπορεί να ακολουθεί άλλες εκδηλώσεις· διαγράψτε το και προσθέστε πρόγραμμα"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Μία ενιαία λίστα ευκαιριών, όπως «Βρεφονηπιακός σταθμός» ή «Υποδοχή», που τηρείται στο Άτομα → Διαχείριση. Κάθε άτομο επισημαίνεται με τις ευκαιρίες στις οποίες θέλει να βοηθήσει, στην καρτέλα Εθελοντής της εγγραφής του. Αυτό είναι το μόνο που καταγράφει: δεν υπάρχουν ομάδες, προγράμματα, αναθέσεις σε ημερομηνία ούτε email υπενθύμισης. Οι ετικέτες χρησιμοποιούνται στις αναφορές και στην εγγραφή του ατόμου."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Μια τετράγωνη φωτογραφία του προσώπου σας λειτουργεί καλύτερα."
 
@@ -18422,18 +18301,6 @@ msgstr "Οι εργασίες παρασκηνίου εκτελέστηκαν"
 #: 
 msgid "Birthday greeting"
 msgstr "Ευχή γενεθλίων"
-
-#: 
-msgid "Both"
-msgstr "Και τα δύο"
-
-#: 
-msgid "Both (transition)"
-msgstr "Και τα δύο (μετάβαση)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Και τα δύο — V1 και V2 δίπλα-δίπλα (μετάβαση)"
 
 #: 
 msgid "Calendar address"
@@ -21520,22 +21387,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Προσθήκης εκδηλώσεων ή να συντονίζει τη διακονία εθελοντών στην οποία ανήκει αυτό το ημερολόγιο"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Ευκαιρίες εθελοντών (παλαιό)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — παλαιές Ευκαιρίες εθελοντών"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Διακονίες"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Διαχείριση εθελοντών"
-
-#: 
 msgid "Valid"
 msgstr "Έγκυρο"
 
@@ -21554,10 +21405,6 @@ msgstr "Προβολή της εκδήλωσης"
 #: 
 msgid "View this email"
 msgstr "Προβολή αυτού του email"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Η Διαχείριση εθελοντών V2 δεν είναι ενεργοποιημένη"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21664,10 +21511,6 @@ msgid "What the check found"
 msgstr "Τι βρήκε ο έλεγχος"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Ποιες είναι οι εμπειρίες εθελοντισμού"
-
-#: 
 msgid "What you want to say"
 msgstr "Τι θέλετε να πείτε"
 
@@ -21698,10 +21541,6 @@ msgstr "Από πού προέρχονται οι ημερομηνίες"
 #: 
 msgid "Where we reach you"
 msgstr "Πώς επικοινωνούμε μαζί σας"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Ποια εμπειρία Διαχείρισης εθελοντών είναι ενεργή. Το V1 είναι η παλαιά λειτουργία Ευκαιρίες εθελοντών· το V2 είναι η νέα ροή προγραμματισμού και ανάθεσης. Το «Και τα δύο» εμφανίζει τα δύο δίπλα-δίπλα κατά τη μετάβαση."
 
 #: 
 msgid "Which events"
@@ -22110,10 +21949,6 @@ msgstr "Δεν έχετε εξουσιοδότηση για να αλλάξετ�
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Μόνο ένας διευθυντής εθελοντών μπορεί να αλλάξει ποιος συντονίζει μια ποίμνιο"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Η επιλογή V1 αναστέλλει το email V2. τα πάντα στην ουρά αποστέλλονται όταν το V2 επανεμφανιστεί, εκτός εάν το γεγονός έχει τελειώσει."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22958,10 +22793,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Χρόνος προειδοποίησης για κενή θέση (ώρες)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Διαχείριση εθελοντών"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Εθελοντικές διακονίες, ομάδες, προγράμματα και αναθέσεις"
 
@@ -22972,14 +22803,6 @@ msgstr "Θέσεις εθελοντών προς συμπλήρωση τις ε�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Εθελοντές που χρειάζονται ακόμη για αυτές τις επερχόμενες εμφανίσεις: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Τι σημαίνουν αυτά;"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Ποια εμπειρία εθελοντή χρησιμοποιεί αυτή η εκκλησία"
 
 #: 
 msgid "You are on the schedule"
@@ -26350,248 +26173,8 @@ msgid "Review Family Information"
 msgstr "Έλεγχος στοιχείων οικογένειας"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Υπάρχει ήδη διακονία με το όνομα «%s». Επιλέξτε την από τη λίστα ή διαλέξτε άλλο όνομα."
-
-#: 
-msgid "A new ministry"
-msgstr "Μια νέα διακονία"
-
-#: 
-msgid "A position"
-msgstr "Μια θέση"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Προσθήκη εθελοντών ({{total}}) σε θέσεις που μετατράπηκαν νωρίτερα;"
-
-#: 
-msgid "Already converted"
-msgstr "Ήδη μετατράπηκε"
-
-#: 
-msgid "An existing ministry"
-msgstr "Μια υπάρχουσα διακονία"
-
-#: 
-msgid "Becomes"
-msgstr "Γίνεται"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Μόνο ένας προορίζεται να χρησιμοποιείται κάθε φορά· η ρύθμιση «Εμπειρία εθελοντών» καθορίζει ποιον βλέπει αυτή η εκκλησία. Η αλλαγή κρύβει ή εμφανίζει σελίδες και στοιχεία μενού και δεν διαγράφει ποτέ δεδομένα. Οι επιλογές V1 και Και τα δύο προσφέρονται μόνο όσο χρησιμοποιούνται οι Ευκαιρίες Εθελοντισμού: μόλις μετατραπεί κάθε ευκαιρία και η εκκλησία χρησιμοποιεί το V2, αφαιρούνται από αυτή τη λίστα."
-
-#: 
-msgid "Convert"
-msgstr "Μετατροπή"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Μετατροπή Ευκαιριών Εθελοντισμού"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Μετατροπή ευκαιριών ({{total}}) τώρα; Τα δεδομένα του V1 διατηρούνται ως έχουν μέχρι να καταργηθούν οι Ευκαιρίες Εθελοντισμού."
-
-#: 
-msgid "Converted"
-msgstr "Μετατράπηκε"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Μετατράπηκαν: θέσεις {{positions}} και διακονίες {{ministries}}, εθελοντές με δικαίωμα {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Κάθε ευκαιρία γίνεται θέση στην πρώτη ομάδα μιας διακονίας και όλοι όσοι συνδέονται με αυτήν αποκτούν δικαίωμα για τη θέση. Η αυτοεγγραφή είναι αρχικά απενεργοποιημένη σε αυτές τις θέσεις."
-
-#: 
-msgid "Everything is converted."
-msgstr "Όλα έχουν μετατραπεί."
-
-#: 
-msgid "Existing ministry"
-msgstr "Υπάρχουσα διακονία"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Δώστε στη νέα διακονία όνομα έως 100 χαρακτήρες."
-
-#: 
-msgid "Its own ministry"
-msgstr "Δική της διακονία"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Συνδέθηκαν από τότε: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Συνδέσεις που δεν μπορούν να μετατραπούν"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Νέες δικές τους διακονίες"
-
-#: 
-msgid "New ministry name"
-msgstr "Όνομα νέας διακονίας"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Δεν αποστέλλεται email, και οι Ευκαιρίες Εθελοντισμού παραμένουν ως έχουν μέχρι να καταργηθούν."
-
-#: 
-msgid "No name"
-msgstr "Χωρίς όνομα"
-
-#: 
-msgid "Not converted"
-msgstr "Δεν μετατράπηκε"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Άνοιγμα Διακοπτών δυνατοτήτων"
-
-#: 
-msgid "Open Ministries"
-msgstr "Άνοιγμα Διακονιών"
-
-#: 
-msgid "Opportunities"
-msgstr "Ευκαιρίες"
-
-#: 
-msgid "Opportunity"
-msgstr "Ευκαιρία"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Ευκαιρία #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Άτομα που συνδέθηκαν με μετατραπείσες Ευκαιρίες Εθελοντισμού μετά τη μετατροπή: %d. Προσθέστε τα στις θέσεις τους πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Κάντε πρώτα προεπισκόπηση της μετατροπής και στείλτε την αναθεώρηση που επέστρεψε."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Μετονομάστηκε ώστε τα ονόματα να είναι μοναδικά"
-
-#: 
-msgid "Review the conversion"
-msgstr "Έλεγχος της μετατροπής"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Στείλτε την επιλογή μετατροπής ως αντικείμενο JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Στείλτε τις ευκαιρίες που γίνονται διακονίες ως λίστα αναγνωριστικών."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Αυτή η διακονία δεν υπάρχει."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Η έκδοση του ChurchCRM στην οποία ένας διαχειριστής απέρριψε την ειδοποίηση κατάργησης των Ευκαιριών Εθελοντισμού."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Οι Ευκαιρίες Εθελοντισμού άλλαξαν μετά την προεπισκόπηση. Ελέγξτε ξανά την προεπισκόπηση και μετά κάντε τη μετατροπή."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Δεν ήταν δυνατό να ανοίξει η επιβεβαίωση. Φορτώστε ξανά τη σελίδα και δοκιμάστε πάλι."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Δεν ήταν δυνατή η προεπισκόπηση της μετατροπής."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Η μετατροπή απέτυχε. Δεν άλλαξε τίποτα."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Η διακονία «%s» δεν έχει ομάδα για τις θέσεις."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή. Φορτώστε ξανά τη σελίδα για να δείτε αν έγινε η μετατροπή."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Δεν υπάρχουν Ευκαιρίες Εθελοντισμού για μετατροπή."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Η Διαχείριση εθελοντών αλλάζει σε Και τα δύο, ώστε οι νέες διακονίες να φαίνονται δίπλα στις Ευκαιρίες Εθελοντισμού."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Οι Ευκαιρίες Εθελοντισμού καταργούνται"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Οι Ευκαιρίες Εθελοντισμού μετατράπηκαν"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τις σε Διακονίες για να διατηρήσετε ποιος υπηρετεί πού."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τώρα σε Διακονίες τις ευκαιρίες (%1$d) και τους εθελοντές σας (%2$d). Μπορείτε να δείτε προεπισκόπηση του αποτελέσματος πριν αλλάξει οτιδήποτε."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Εθελοντές με δικαίωμα"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Εθελοντές προς προσθήκη σε μετατραπείσες θέσεις"
-
-#: 
-msgid "What it becomes"
-msgstr "Τι γίνεται"
-
-#: 
-msgid "What will happen"
-msgstr "Τι θα συμβεί"
-
-#: 
-msgid "Where they go"
-msgstr "Πού πηγαίνουν"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Ποιες παλιές Ευκαιρίες Εθελοντισμού έχουν μετατραπεί και ποια θέση έγινε η καθεμία."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Ποια εμπειρία εθελοντών χρησιμοποιεί αυτή η εκκλησία. Οι Ευκαιρίες Εθελοντισμού (V1) θα καταργηθούν στις αρχές του 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Οι Ευκαιρίες Εθελοντισμού σας μετατράπηκαν σε Διακονίες. Αλλάξτε τη Διαχείριση εθελοντών σε V2 πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "σε νέα διακονία, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "στη διακονία {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "δεν υπάρχει πλέον στο ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26768,10 +26351,6 @@ msgstr[0] "%d προεπιλογή παραλείφθηκε για άλλο λό
 msgstr[1] "%d προεπιλογές παραλείφθηκαν για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Μια ρύθμιση μετάβασης. Οι παλιές σελίδες Ευκαιριών εθελοντών και οι νέες σελίδες Διακονιών είναι και οι δύο διαθέσιμες, και η εγγραφή ατόμου εμφανίζει και τις δύο καρτέλες Εθελοντής, με σαφή επισήμανση. Χρησιμοποιήστε την ενώ μεταφέρετε μια εκκλησία από το V1 στο V2 και μετά αλλάξτε μόνο σε V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Η ανάθεση ακυρώθηκε"
 
@@ -26818,10 +26397,6 @@ msgstr "Αυτή η ημερομηνία ακυρώθηκε. Δεν χρειάζ
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Αυτή η πραγματοποίηση ακυρώθηκε"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Εθελοντισμός οργανωμένος όπως τον τρέχει μια εκκλησία. Κάθε διακονία έχει ομάδες και θέσεις· τα άτομα είναι κατάλληλα για θέσεις και ανήκουν στην ομάδα δεξαμενής της διακονίας· τα προγράμματα ακολουθούν τις εκδηλώσεις του ημερολογίου και παράγουν πραγματοποιήσεις με ημερομηνία και απαιτήσεις στελέχωσης· οι συντονιστές αναθέτουν άτομα, τα οποία αποδέχονται, αρνούνται ή προτείνουν αντικαταστάτη· υπενθυμίσεις και ειδοποιήσεις αποστέλλονται με email. Οι διαχειριστές και οι χρήστες με το δικαίωμα Διαχείριση διακονιών βλέπουν κάθε διακονία και μπορούν να τις δημιουργούν, να τις απενεργοποιούν και να τις διαγράφουν. Ο συντονιστής μιας διακονίας λαμβάνει αντί γι' αυτό το δικαίωμα Διαχείριση των διακονιών μου: η επικεφαλίδα Διακονίες στην πλαϊνή στήλη δείχνει τότε μόνο τις διακονίες που συντονίζει. Ένας υπεύθυνος ομάδας διευθύνει την ομάδα του από την Πύλη μελών. Τα μέλη χρησιμοποιούν την Πύλη μελών για να βλέπουν το πρόγραμμά τους, να απαντούν, να γράφονται και να προσφέρουν βοήθεια."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27520,10 +27095,6 @@ msgstr "Προβολή εκδηλώσεων"
 #: 
 msgid "View people and families"
 msgstr "Προβολή ατόμων και οικογενειών"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Η διαχείριση εθελοντών είναι απενεργοποιημένη για αυτή την εκκλησία"
 
 #: 
 msgid "Weak"

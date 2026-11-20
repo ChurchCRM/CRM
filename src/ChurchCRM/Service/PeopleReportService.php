@@ -10,10 +10,8 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
-use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -71,30 +69,11 @@ class PeopleReportService
                 'params' => ['month' => $month, 'classification' => $classification],
                 'columns' => ['Day' => gettext('Day'), 'Date' => gettext('Date'), 'Name' => gettext('Name')],
             ],
-            'volunteers' => [
-                'name' => gettext('Volunteers'),
-                'description' => gettext('Find volunteers for a particular opportunity'),
-                'params' => [
-                    'opportunity' => ['type' => 'opportunity', 'label' => gettext('Volunteer Opportunity'), 'required' => true],
-                    'classification' => $classification,
-                ],
-                'columns' => ['Name' => gettext('Name')],
-            ],
             'recent-friends' => [
                 'name' => gettext('Recent Friends'),
                 'description' => gettext('Friends who signed up in previous months'),
                 'params' => [
                     'months' => ['type' => 'number', 'label' => gettext('Months'), 'help' => gettext('Number of months since becoming a friend'), 'default' => 1, 'min' => 1, 'max' => 24],
-                    'classification' => $classification,
-                ],
-                'columns' => ['Name' => gettext('Name')],
-            ],
-            'volunteers-two-opportunities' => [
-                'name' => gettext('Volunteers for Two Opportunities'),
-                'description' => gettext('Find volunteers who match two specific opportunity codes'),
-                'params' => [
-                    'opportunity1' => ['type' => 'opportunity', 'label' => gettext('First Volunteer Opportunity'), 'required' => true],
-                    'opportunity2' => ['type' => 'opportunity', 'label' => gettext('Second Volunteer Opportunity'), 'required' => true],
                     'classification' => $classification,
                 ],
                 'columns' => ['Name' => gettext('Name')],
@@ -136,9 +115,6 @@ class PeopleReportService
 
         if (!AuthenticationManager::getCurrentUser()->canViewEvents()) {
             unset($reports['missing-people']);
-        }
-        if (!VolunteerV1Service::isInUse()) {
-            unset($reports['volunteers'], $reports['volunteers-two-opportunities']);
         }
 
         return $reports;
@@ -197,19 +173,6 @@ class PeopleReportService
     /**
      * @return array<int, string>
      */
-    public function getVolunteerOpportunityOptions(): array
-    {
-        $options = [];
-        foreach (VolunteerOpportunityQuery::create()->orderByName()->find() as $opportunity) {
-            $options[(int) $opportunity->getId()] = (string) $opportunity->getName();
-        }
-
-        return $options;
-    }
-
-    /**
-     * @return array<int, string>
-     */
     public function getEventOptions(): array
     {
         $options = [];
@@ -231,7 +194,6 @@ class PeopleReportService
             'month' => $this->getMonthNames(),
             'classification' => $this->getClassificationOptions(),
             'property' => $this->getPropertyOptions(),
-            'opportunity' => $this->getVolunteerOpportunityOptions(),
             'events' => $this->getEventOptions(),
             'grade' => GradeService::names(),
             default => [],
@@ -297,9 +259,7 @@ class PeopleReportService
             'person-by-property' => $this->personByProperty((int) $values['property'], $classifications),
             'birthdays' => $this->birthdays((int) $values['month'], $classifications),
             'membership-anniversaries' => $this->membershipAnniversaries((int) $values['month'], $classifications),
-            'volunteers' => $this->volunteers([(int) $values['opportunity']], $classifications),
             'recent-friends' => $this->recentFriends((int) $values['months'], $classifications),
-            'volunteers-two-opportunities' => $this->volunteers([(int) $values['opportunity1'], (int) $values['opportunity2']], $classifications),
             'missing-people' => $this->missingPeople($values['events'], $classifications),
             'wedding-anniversaries' => $this->weddingAnniversaries((int) $values['month'], $classifications),
             'birthdays-anniversaries' => $this->birthdaysAndAnniversaries((int) $values['month'], $classifications),
@@ -431,32 +391,6 @@ class PeopleReportService
         }
 
         return $rows;
-    }
-
-    /**
-     * People signed up for every one of the given opportunities.
-     *
-     * @param int[] $opportunityIds
-     */
-    private function volunteers(array $opportunityIds, array $classifications): array
-    {
-        $personIds = null;
-        foreach ($opportunityIds as $opportunityId) {
-            $ids = PersonVolunteerOpportunityQuery::create()
-                ->filterByVolunteerOpportunityId($opportunityId)
-                ->select('PersonId')
-                ->find()
-                ->toArray();
-            $ids = array_map('intval', $ids);
-            $personIds = $personIds === null ? $ids : array_intersect($personIds, $ids);
-        }
-        if (empty($personIds)) {
-            return [];
-        }
-
-        $query = PersonQuery::create()->filterById(array_values($personIds))->orderByLastName()->orderByFirstName();
-
-        return $this->rows($this->applyClassification($query, $classifications)->find());
     }
 
     private function recentFriends(int $months, array $classifications): array

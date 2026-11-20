@@ -1359,10 +1359,6 @@ msgid "Default"
 msgstr "Oletus"
 
 #: 
-msgid "Exit"
-msgstr "Poistu"
-
-#: 
 msgid "Add New"
 msgstr "Lisää uusi"
 
@@ -1580,10 +1576,6 @@ msgid "Restore Database"
 msgstr "Palauta tietokanta"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Vahvista poisto"
-
-#: 
 msgid "Listing"
 msgstr "Luettelo"
 
@@ -1670,14 +1662,6 @@ msgstr "Uusi salasana"
 #: 
 msgid "Confirm New Password"
 msgstr "Vahvista uusi salasana"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Vapaaehtoistyömahdollisuuksien muokkaus"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Vapaaehtoistyömahdollisuuksia ei ole vielä lisätty"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6544,10 +6528,6 @@ msgid "Confirm Property Deletion"
 msgstr "Vahvista ominaisuuden poistaminen"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Vahvista vapaaehtoistyön mahdollisuuden poistaminen"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Poiston vahvistus"
 
@@ -6560,16 +6540,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Olemassa olevat mukautetut henkilön kentät"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Olemassa olevat vapaaehtoistyön mahdollisuudet"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Kenttä poistettu onnistuneesti"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Virheellinen CSRF-tunnus"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8335,10 +8307,6 @@ msgid "Create or edit property type categories"
 msgstr "Luo tai muokkaa ominaisuustyyppien kategorioita"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Luo tai muokkaa vapaaehtoisten tehtäviä"
-
-#: 
 msgid "Current person"
 msgstr "Nykyinen henkilö"
 
@@ -8785,10 +8753,6 @@ msgstr "Hallitse järjestelmän käyttäjiä, käyttöoikeuksia ja kaksivaiheise
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Hallitse käyttäjätilin tietoja ja käyttöoikeuksia"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Hallitse vapaaehtoismahdollisuuksia ja osoita jäseniä"
 
 #: 
 msgid "Map cart items"
@@ -9413,10 +9377,6 @@ msgid "funds"
 msgstr "rahastot"
 
 #: 
-msgid "opportunities"
-msgstr "mahdollisuudet"
-
-#: 
 msgid "or connect an external service"
 msgstr "tai yhdistä ulkoinen palvelu"
 
@@ -9716,11 +9676,6 @@ msgstr "Sähköpostiosoitteiden noutaminen epäonnistui"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Puhelinnumeroiden noutaminen epäonnistui"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Etsi vapaaehtoisia tietylle mahdollisuudelle"
 
 #. Context: query_qry
 #: 
@@ -12487,10 +12442,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Ominaisuustyyppiä ei voi poistaa: %d ominaisuutta viittaa siihen edelleen. Määritä uudelleen tai poista nämä ominaisuudet ensin."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Vapaaehtoistyömahdollisuutta ei voi poistaa: %d henkilöä on yhä määritetty. Poista määritykset ensin."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Luokan täytyy olla p, f tai g"
 
@@ -12501,10 +12452,6 @@ msgstr "Kopioi virheilmoitus"
 #: 
 msgid "Could not load note."
 msgstr "Muistiinpanoa ei voitu ladata."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Kuvaus ei voi ylittää 100 merkkiä"
 
 #: 
 msgid "Donation fund not found"
@@ -12527,10 +12474,6 @@ msgid "Failed to create property type"
 msgstr "Ominaisuustyypin luominen epäonnistui"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden luominen epäonnistui"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Lahjoitusrahaston poistaminen epäonnistui"
 
@@ -12547,10 +12490,6 @@ msgid "Failed to delete property type"
 msgstr "Ominaisuustyypin poistaminen epäonnistui"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden poistaminen epäonnistui"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Lahjoitusrahaston päivitys epäonnistui"
 
@@ -12563,10 +12502,6 @@ msgid "Failed to update property type"
 msgstr "Ominaisuustyypin päivitys epäonnistui"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden päivitys epäonnistui"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Varainhankintaa ei löydy"
 
@@ -12577,10 +12512,6 @@ msgstr "Asennustunnus"
 #: 
 msgid "Invalid class"
 msgstr "Virheellinen luokka"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Nimi ei voi ylittää 30 merkkiä"
 
 #: 
 msgid "Note by %s deleted"
@@ -12603,16 +12534,8 @@ msgid "Read more"
 msgstr "Lue lisää"
 
 #: 
-msgid "That name already exists."
-msgstr "Tämä nimi on jo olemassa."
-
-#: 
 msgid "Title is required"
 msgstr "Otsikko on pakollinen"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Vapaaehtoistyömahdollisuutta ei löydy"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -14983,10 +14906,6 @@ msgid "Target family"
 msgstr "Kohdeperhe"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Ryhmää ei löydy. Yritä uudelleen."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Valittu perhe ei ole enää olemassa. Päivitä sivu ja yritä uudelleen."
 
@@ -15201,10 +15120,6 @@ msgstr "Tuetut muodot"
 #: 
 msgid "System Configuration"
 msgstr "Järjestelmän asetukset"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Tähän vapaaehtoistehtävään on määritetty henkilöitä. Poistaminen poistaa heidän määrityksensä"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15435,10 +15350,6 @@ msgid "Add New Fund"
 msgstr "Lisää uusi rahasto"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Lisää uusi tilaisuus"
-
-#: 
 msgid "Add New Person"
 msgstr "Lisää uusi henkilö"
 
@@ -15451,10 +15362,6 @@ msgid "Add New Role"
 msgstr "Lisää uusi rooli"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Lisää uusi vapaaehtoistehtävä"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Lisää pyhäkouluryhmä"
 
@@ -15465,10 +15372,6 @@ msgstr "Poistetaanko tämä perhe?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tarkista uudet perheet ja henkilöt, jotka ovat rekisteröityneet julkisella rekisteröintilomakkeella"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vapaaehtoistehtävän poistamisen vahvistus"
 
 #: 
 msgid "# Payments"
@@ -17135,14 +17038,6 @@ msgid "Find people who did not attend an event"
 msgstr "Etsi ihmiset, jotka eivät osallistuneet tapahtumaan"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Etsi vapaaehtoiset, jotka vastaavat kahta tiettyä mahdollisuuskoodia"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Ensimmäinen vapaaehtoismahdollisuus"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Taitettu kirja"
 
@@ -17219,10 +17114,6 @@ msgid "Run Report"
 msgstr "Suorita raportti"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Toinen vapaaehtoismahdollisuus"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Näytetään sivupalkissa, kirjautumissivulla ja sähköposteissa. Logon lataaminen korvaa ChurchCRM-tuotemerkin kaikkialla, missä se esiintyy."
 
@@ -17249,14 +17140,6 @@ msgstr "Käytetään oletusarvoista ChurchCRM-logoa"
 #: 
 msgid "View Full Family Giving"
 msgstr "Näytä koko perheen lahjoitus"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vapaaehtoismahdollisuus"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vapaaehtoiset kahdelle mahdollisuudelle"
 
 #: 
 msgid "YTD"
@@ -18083,10 +17966,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Aikataulu, joka miehittää yhden tapahtuman, ei voi seurata muita tapahtumia; poista se ja lisää sen sijaan aikataulu"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Yksinkertainen luettelo tehtävistä, kuten ”Lastenhoito” tai ”Vastaanottaja”, ylläpidetään kohdassa Ihmiset → Ylläpito. Kullekin henkilölle merkitään tehtävät, joihin hän on valmis auttamaan, hänen tietueensa Vapaaehtoinen-välilehdellä. Se on kaikki, mitä tallennetaan: tiimejä, aikatauluja, päivämääriin määrityksiä tai muistutussähköposteja ei ole. Merkintöjä käytetään raporteissa ja henkilön tietueessa."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Neliönmuotoinen kasvokuva toimii parhaiten."
 
@@ -18393,18 +18272,6 @@ msgstr "Taustatyöt ajettiin"
 #: 
 msgid "Birthday greeting"
 msgstr "Syntymäpäivätervehdys"
-
-#: 
-msgid "Both"
-msgstr "Molemmat"
-
-#: 
-msgid "Both (transition)"
-msgstr "Molemmat (siirtymävaihe)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Molemmat – V1 ja V2 rinnakkain (siirtymävaihe)"
 
 #: 
 msgid "Calendar address"
@@ -21491,22 +21358,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Käyttäjällä on oltava Lisää tapahtumia -oikeus tai hänen on koordinoitava vapaaehtoistyöalaa, johon tämä kalenteri kuuluu"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Vapaaehtoistehtävät (vanha)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – vanhat Vapaaehtoistehtävät"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Työalat"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Vapaaehtoishallinta"
-
-#: 
 msgid "Valid"
 msgstr "Kelvollinen"
 
@@ -21525,10 +21376,6 @@ msgstr "Näytä tapahtuma"
 #: 
 msgid "View this email"
 msgstr "Näytä tämä sähköposti"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Vapaaehtoishallinta V2 ei ole käytössä"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21635,10 +21482,6 @@ msgid "What the check found"
 msgstr "Mitä tarkistus löysi"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Mitä vapaaehtoiskokemukset ovat"
-
-#: 
 msgid "What you want to say"
 msgstr "Mitä haluat sanoa"
 
@@ -21669,10 +21512,6 @@ msgstr "Mistä päivämäärät tulevat"
 #: 
 msgid "Where we reach you"
 msgstr "Mistä tavoitamme sinut"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Mikä Vapaaehtoishallinnan kokemus on käytössä. V1 on vanha Vapaaehtoistehtävät-toiminto; V2 on uusi aikataulutus- ja tehtävämääritystyönkulku. ”Molemmat” näyttää kummankin rinnakkain siirtymän aikana."
 
 #: 
 msgid "Which events"
@@ -22081,10 +21920,6 @@ msgstr "Sinulla ei ole oikeutta muuttaa tämän tapahtuman ryhmää"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Vain vapaaehtoistyön johtaja voi muuttaa palvelun koordinaattoria"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1:n valinta keskeyttää V2-sähköpostin; kaikki jonossa oleva lähetetään, kun V2 on jälleen käytössä, elleivät tapahtumat ole ohi."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22929,10 +22764,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Täyttämättömän tehtävän hälytyksen ennakkoaika (tuntia)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Vapaaehtoisten hallinta"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Vapaaehtoispalvelukset, tiimit, aikataulut ja määritykset"
 
@@ -22943,14 +22774,6 @@ msgstr "Vapaaehtoistehtävät täytettäväksi tulevina päivinä"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vapaaehtoisia tarvitaan yhä näihin tuleviin esiintymiin: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Mitä nämä tarkoittavat?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää"
 
 #: 
 msgid "You are on the schedule"
@@ -26321,248 +26144,8 @@ msgid "Review Family Information"
 msgstr "Tarkista perheen tiedot"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Työala nimeltä \"%s\" on jo olemassa. Valitse se luettelosta tai valitse toinen nimi."
-
-#: 
-msgid "A new ministry"
-msgstr "Uusi työala"
-
-#: 
-msgid "A position"
-msgstr "Tehtävä"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Lisätäänkö {{total}} vapaaehtoista aiemmin muunnettuihin tehtäviin?"
-
-#: 
-msgid "Already converted"
-msgstr "Jo muunnettu"
-
-#: 
-msgid "An existing ministry"
-msgstr "Olemassa oleva työala"
-
-#: 
-msgid "Becomes"
-msgstr "Muuttuu"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Vain yhden on tarkoitus olla käytössä kerrallaan; Vapaaehtoiskokemus-asetus ratkaisee, kumman tämä seurakunta näkee. Vaihtaminen piilottaa tai näyttää sivuja ja valikon kohtia eikä koskaan poista tietoja. V1 ja Molemmat ovat tarjolla vain niin kauan kuin vapaaehtoistyömahdollisuudet ovat käytössä: kun jokainen mahdollisuus on muunnettu ja seurakunta käyttää V2:ta, ne poistuvat tästä luettelosta."
-
-#: 
-msgid "Convert"
-msgstr "Muunna"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Muunna vapaaehtoistyömahdollisuudet"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Muunnetaanko {{total}} mahdollisuutta nyt? V1-tiedot säilyvät ennallaan, kunnes vapaaehtoistyömahdollisuudet poistetaan käytöstä."
-
-#: 
-msgid "Converted"
-msgstr "Muunnettu"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Muunnettu: {{positions}} tehtävää ja {{ministries}} työalaa, {{qualifications}} vapaaehtoista pätevöity."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Jokaisesta mahdollisuudesta tulee tehtävä yhden työalan ensimmäiseen tiimiin, ja kaikki siihen liitetyt saavat pätevyyden tähän tehtävään. Itseilmoittautuminen on aluksi pois päältä näissä tehtävissä."
-
-#: 
-msgid "Everything is converted."
-msgstr "Kaikki on muunnettu."
-
-#: 
-msgid "Existing ministry"
-msgstr "Olemassa oleva työala"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Anna uudelle työalalle enintään 100 merkin nimi."
-
-#: 
-msgid "Its own ministry"
-msgstr "Oma työala"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Liitetty sen jälkeen: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Linkit, joita ei voi muuntaa"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Omat uudet työalat"
-
-#: 
-msgid "New ministry name"
-msgstr "Uuden työalan nimi"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Sähköpostia ei lähetetä, ja vapaaehtoistyömahdollisuudet säilyvät ennallaan, kunnes ne poistetaan käytöstä."
-
-#: 
-msgid "No name"
-msgstr "Ei nimeä"
-
-#: 
-msgid "Not converted"
-msgstr "Ei muunnettu"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Avaa ominaisuuksien kytkimet"
-
-#: 
-msgid "Open Ministries"
-msgstr "Avaa työalat"
-
-#: 
-msgid "Opportunities"
-msgstr "Mahdollisuudet"
-
-#: 
-msgid "Opportunity"
-msgstr "Mahdollisuus"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mahdollisuus #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Muunnettuihin vapaaehtoistyömahdollisuuksiin muunnoksen jälkeen liitetyt henkilöt: %d. Lisää heidät tehtäviinsä ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Esikatsele muunnos ensin ja lähetä sen palauttama versio."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Nimetty uudelleen, jotta nimet pysyvät yksilöllisinä"
-
-#: 
-msgid "Review the conversion"
-msgstr "Tarkista muunnos"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Lähetä muunnosvalinta JSON-objektina."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Lähetä työaloiksi muuttuvat mahdollisuudet tunnisteluettelona."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Työalaa ei ole olemassa."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM-versio, jossa ylläpitäjä sulki ilmoituksen vapaaehtoistyömahdollisuuksien poistamisesta käytöstä."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Vapaaehtoistyömahdollisuudet ovat muuttuneet esikatselun jälkeen. Tarkista esikatselu uudelleen ja muunna sitten."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Vahvistusta ei voitu avata. Lataa sivu uudelleen ja yritä uudelleen."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Muunnosta ei voitu esikatsella."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Muunnos epäonnistui. Mitään ei muutettu."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Työalalla \"%s\" ei ole tiimiä tehtäviä varten."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Palvelimeen ei saatu yhteyttä. Lataa sivu uudelleen nähdäksesi, suoritettiinko muunnos."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Muunnettavia vapaaehtoistyömahdollisuuksia ei ole."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Vapaaehtoisten hallinta vaihtuu tilaan Molemmat, jotta uudet työalat näkyvät vapaaehtoistyömahdollisuuksien rinnalla."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Vapaaehtoistyömahdollisuudet muunnettu"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna ne työaloiksi, jotta tieto siitä, kuka palvelee missäkin, säilyy."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna nyt %1$d mahdollisuutta ja %2$d vapaaehtoista työaloiksi. Voit esikatsella tuloksen ennen kuin mitään muutetaan."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Pätevöidyt vapaaehtoiset"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Muunnettuihin tehtäviin lisättävät vapaaehtoiset"
-
-#: 
-msgid "What it becomes"
-msgstr "Miksi se muuttuu"
-
-#: 
-msgid "What will happen"
-msgstr "Mitä tapahtuu"
-
-#: 
-msgid "Where they go"
-msgstr "Minne ne menevät"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Mitkä vanhat vapaaehtoistyömahdollisuudet on muunnettu ja miksi tehtäväksi kukin muuttui."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää. Vapaaehtoistyömahdollisuudet (V1) poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Vapaaehtoistyömahdollisuutesi on muunnettu työaloiksi. Vaihda vapaaehtoisten hallinta tilaan V2 ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "uudeksi työalaksi, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "työalaan {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ei enää ChurchCRM:ssä"
 
 #: 
 msgid "Collapse sidebar"
@@ -26739,10 +26322,6 @@ msgstr[0] "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu t
 msgstr[1] "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Tehtävämääritys peruttu"
 
@@ -26789,10 +26368,6 @@ msgstr "Tämä päivä on peruttu. Sinulta ei tarvita enää mitään."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Tämä tapahtumakerta on peruttu"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vapaaehtoistyö seurakunnan tavalla järjestettynä. Jokaisella työalalla on tiimejä ja tehtäviä; ihmiset kelpuutetaan tehtäviin ja kuuluvat työalan joukkoryhmään; aikataulut seuraavat kalenterin tapahtumia ja tuottavat päivättyjä tapahtumakertoja miehitysvaatimuksineen; koordinaattorit määräävät ihmisiä, jotka hyväksyvät, kieltäytyvät tai ehdottavat sijaista; muistutukset ja hälytykset lähtevät sähköpostitse. Ylläpitäjät ja käyttäjät, joilla on Hallitse työaloja -oikeus, näkevät kaikki työalat ja voivat luoda, poistaa käytöstä ja poistaa niitä. Työalan koordinaattorille annetaan sen sijaan Hallitse omia työalojani -oikeus: sivupalkin Työalat-otsikon alla näkyvät silloin vain työalat, joita hän koordinoi. Tiimin vetäjä johtaa tiimiään Jäsenportaalista. Jäsenet käyttävät Jäsenportaalia nähdäkseen aikataulunsa, vastatakseen, ilmoittautuakseen ja tarjotakseen apua."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27491,10 +27066,6 @@ msgstr "Näytä tapahtumat"
 #: 
 msgid "View people and families"
 msgstr "Näytä henkilöt ja perheet"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Vapaaehtoistoiminnan hallinta on poistettu käytöstä tässä seurakunnassa"
 
 #: 
 msgid "Weak"

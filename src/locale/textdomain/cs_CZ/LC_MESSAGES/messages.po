@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Výchozí"
 
 #: 
-msgid "Exit"
-msgstr "Exit"
-
-#: 
 msgid "Add New"
 msgstr "Přidat nový"
 
@@ -1591,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Obnovit databázi"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Potvrďte smazání"
-
-#: 
 msgid "Listing"
 msgstr "Seznam"
 
@@ -1681,14 +1673,6 @@ msgstr "Nové heslo"
 #: 
 msgid "Confirm New Password"
 msgstr "Potvrďte nové heslo"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Editor dobrovolnických příležitostí"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Zatím nebyly přidány žádné dobrovolnické příležitosti"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6568,10 +6552,6 @@ msgid "Confirm Property Deletion"
 msgstr "Potvrďte odstranění vlastnosti"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Potvrdit smazaní dobrovolnícke přílĕitosti"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Potvrzení smazaní"
 
@@ -6584,16 +6564,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Existující vlastní pole osob"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Existující dobrovolnícké přílĕitosti"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Pole bylo úspěšně smazáno"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Neplatný token CSRF"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8362,10 +8334,6 @@ msgid "Create or edit property type categories"
 msgstr "Vytvořit nebo upravit kategorie typů vlastností"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Vytvořit nebo upravit pozice dobrovolníků"
-
-#: 
 msgid "Current person"
 msgstr "Aktuální osoba"
 
@@ -8812,10 +8780,6 @@ msgstr "Spravovat systémové uživatele, oprávnění a nastavení dvoufaktorov
 #: 
 msgid "Manage user account details and permissions"
 msgstr "Spravovat podrobnosti uživatelského účtu a oprávnění"
-
-#: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Spravovat příležitosti pro dobrovolníky a přiřazovat členy"
 
 #: 
 msgid "Map cart items"
@@ -9440,10 +9404,6 @@ msgid "funds"
 msgstr "fondy"
 
 #: 
-msgid "opportunities"
-msgstr "příležitosti"
-
-#: 
 msgid "or connect an external service"
 msgstr "nebo připojit externí službu"
 
@@ -9743,11 +9703,6 @@ msgstr "Nepodařilo se načíst e-mailové adresy"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Nepodařilo se načíst telefonní čísla"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Najděte dobrovolníky pro konkrétní příležitost"
 
 #. Context: query_qry
 #: 
@@ -12515,10 +12470,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Typ vlastnosti nelze smazat: %d vlastností na něj stále odkazuje. Nejprve přeřaďte nebo smažte tyto vlastnosti."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Dobrovolnickou příležitost nelze smazat: %d osob je stále přiřazeno. Nejprve odeberte přiřazení."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Třída musí být jedna z: p, f nebo g"
 
@@ -12529,10 +12480,6 @@ msgstr "Kopírovat chybovou zprávu"
 #: 
 msgid "Could not load note."
 msgstr "Poznámku se nepodařilo načíst."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Popis nesmí přesáhnout 100 znaků"
 
 #: 
 msgid "Donation fund not found"
@@ -12555,10 +12502,6 @@ msgid "Failed to create property type"
 msgstr "Nepodařilo se vytvořit typ vlastnosti"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Nepodařilo se vytvořit dobrovolnickou příležitost"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Nepodařilo se smazat fond darů"
 
@@ -12575,10 +12518,6 @@ msgid "Failed to delete property type"
 msgstr "Nepodařilo se smazat typ vlastnosti"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Nepodařilo se smazat dobrovolnickou příležitost"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Nepodařilo se aktualizovat fond darů"
 
@@ -12591,10 +12530,6 @@ msgid "Failed to update property type"
 msgstr "Nepodařilo se aktualizovat typ vlastnosti"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Nepodařilo se aktualizovat dobrovolnickou příležitost"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Fundraiser nenalezen"
 
@@ -12605,10 +12540,6 @@ msgstr "ID instalace"
 #: 
 msgid "Invalid class"
 msgstr "Neplatná třída"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Název nesmí přesáhnout 30 znaků"
 
 #: 
 msgid "Note by %s deleted"
@@ -12631,16 +12562,8 @@ msgid "Read more"
 msgstr "Číst více"
 
 #: 
-msgid "That name already exists."
-msgstr "Tento název již existuje."
-
-#: 
 msgid "Title is required"
 msgstr "Název je povinný"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Dobrovolnická příležitost nenalezena"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15014,10 +14937,6 @@ msgid "Target family"
 msgstr "Cílová rodina"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Skupinu se nepodařilo najít. Zkuste to prosím znovu."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Vybraná rodina již neexistuje. Obnovte prosím stránku a zkuste to znovu."
 
@@ -15232,10 +15151,6 @@ msgstr "Podporované formáty"
 #: 
 msgid "System Configuration"
 msgstr "Konfigurace systému"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "K této dobrovolnické příležitosti jsou přiřazeny osoby. Smazáním dojde k jejich odebrání"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15466,10 +15381,6 @@ msgid "Add New Fund"
 msgstr "Přidat nový fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Přidat novou příležitost"
-
-#: 
 msgid "Add New Person"
 msgstr "Přidat novou osobu"
 
@@ -15482,10 +15393,6 @@ msgid "Add New Role"
 msgstr "Přidat novou roli"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Přidat novou dobrovolnickou příležitost"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Přidat třídu nedělní školy"
 
@@ -15496,10 +15403,6 @@ msgstr "Smazat tuto rodinu?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Zkontrolujte nové rodiny a jednotlivce, kteří se zaregistrovali prostřednictvím veřejného registračního formuláře"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Potvrzení smazání dobrovolnické příležitosti"
 
 #: 
 msgid "# Payments"
@@ -17168,14 +17071,6 @@ msgid "Find people who did not attend an event"
 msgstr "Najděte lidi, kteří se neúčastnili akce"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Najděte dobrovolníky, kteří odpovídají dvěma specifickým kódům příležitostí"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "První příležitost pro dobrovolníka"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Složená brožura"
 
@@ -17252,10 +17147,6 @@ msgid "Run Report"
 msgstr "Spustit zprávu"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Druhá příležitost pro dobrovolníka"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Zobrazuje se v postranním panelu, na přihlašovací stránce a v e-mailech. Nahráním loga se značka ChurchCRM nahradí všude, kde se zobrazuje."
 
@@ -17282,14 +17173,6 @@ msgstr "Používá se výchozí logo ChurchCRM"
 #: 
 msgid "View Full Family Giving"
 msgstr "Zobrazit všechny dary rodiny"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Dobrovolnická příležitost"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Dobrovolníci pro dvě příležitosti"
 
 #: 
 msgid "YTD"
@@ -18123,10 +18006,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Rozvrh, který obsazuje jednu událost, nemůže sledovat další události; smažte jej a přidejte místo něj rozvrh"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Jediný seznam příležitostí, například „Jesle“ nebo „Uvaděč“, vedený v Lidé → Správa. Každá osoba je označena příležitostmi, ve kterých je ochotna pomáhat, na kartě Dobrovolník svého záznamu. To je vše, co se eviduje: žádné týmy, rozvrhy, přiřazení k datu ani připomínkové e-maily. Štítky se používají v přehledech a v záznamu osoby."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Nejlépe funguje čtvercová fotografie vaší tváře."
 
@@ -18433,18 +18312,6 @@ msgstr "Úlohy na pozadí proběhly"
 #: 
 msgid "Birthday greeting"
 msgstr "Blahopřání k narozeninám"
-
-#: 
-msgid "Both"
-msgstr "Obojí"
-
-#: 
-msgid "Both (transition)"
-msgstr "Obojí (přechod)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Obojí — V1 a V2 vedle sebe (přechod)"
 
 #: 
 msgid "Calendar address"
@@ -21535,22 +21402,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Uživatel musí mít oprávnění Přidávat události nebo koordinovat dobrovolnickou službu, ke které tento kalendář patří"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Dobrovolnické příležitosti (starší)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — starší Dobrovolnické příležitosti"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Služby"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Správa dobrovolníků"
-
-#: 
 msgid "Valid"
 msgstr "Platné"
 
@@ -21569,10 +21420,6 @@ msgstr "Zobrazit událost"
 #: 
 msgid "View this email"
 msgstr "Zobrazit tento e-mail"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Správa dobrovolníků V2 není zapnuta"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21681,10 +21528,6 @@ msgid "What the check found"
 msgstr "Co kontrola zjistila"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Jaké jsou dobrovolnické režimy"
-
-#: 
 msgid "What you want to say"
 msgstr "Co chcete říct"
 
@@ -21715,10 +21558,6 @@ msgstr "Odkud pocházejí data"
 #: 
 msgid "Where we reach you"
 msgstr "Kde vás zastihneme"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Který režim Správy dobrovolníků je aktivní. V1 je starší funkce Dobrovolnické příležitosti; V2 je nový postup plánování a přiřazování. „Obojí“ zobrazí oba vedle sebe během přechodu."
 
 #: 
 msgid "Which events"
@@ -22127,10 +21966,6 @@ msgstr "Nemáte oprávnění ke změně skupiny této akce"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Pouze správce dobrovolníků může změnit koordinátora služby"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Výběr V1 pozastaví e-mail V2; cokoli zařazené do fronty je odesláno, když je V2 znovu zapnuto, pokud akce neskončila."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22975,10 +22810,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Předstih upozornění na neobsazenou pozici (hodiny)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Dobrovolnické služby, týmy, rozvrhy a přiřazení"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Dobrovoľnické služby, týmy, rozvrhy a přiřazení"
 
@@ -22989,14 +22820,6 @@ msgstr "Pozice dobrovolníků k obsazení v nadcházejících dnech"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Stále potřební dobrovolníci pro tyto nadcházející výskyty: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Co to znamená?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Které prostředí dobrovolníků tento sbor používá"
 
 #: 
 msgid "You are on the schedule"
@@ -26367,248 +26190,8 @@ msgid "Review Family Information"
 msgstr "Zkontrolovat údaje o rodině"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Služba s názvem „%s“ už existuje. Vyberte ji ze seznamu, nebo zvolte jiný název."
-
-#: 
-msgid "A new ministry"
-msgstr "Nová služba"
-
-#: 
-msgid "A position"
-msgstr "Pozice"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Přidat dobrovolníky ({{total}}) k dříve převedeným pozicím?"
-
-#: 
-msgid "Already converted"
-msgstr "Již převedeno"
-
-#: 
-msgid "An existing ministry"
-msgstr "Existující služba"
-
-#: 
-msgid "Becomes"
-msgstr "Stane se"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM nabízí dva způsoby správy dobrovolníků. Najednou by měl být používán jen jeden; nastavení „Režim dobrovolníků“ určuje, který tento sbor vidí. Přepnutí skryje nebo zobrazí stránky a položky nabídky a nikdy nemaže data. V1 a Obojí se nabízejí jen tehdy, dokud se používají Dobrovolnické příležitosti: jakmile je každá příležitost převedena a sbor používá V2, z tohoto seznamu zmizí."
-
-#: 
-msgid "Convert"
-msgstr "Převést"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Převést Dobrovolnické příležitosti"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Převést nyní příležitosti ({{total}})? Data V1 zůstanou beze změny, dokud nebudou Dobrovolnické příležitosti ukončeny."
-
-#: 
-msgid "Converted"
-msgstr "Převedeno"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Převedeno: pozice – {{positions}}, služby – {{ministries}}, kvalifikovaní dobrovolníci – {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Každá příležitost se stane pozicí v prvním týmu jedné služby a každý, kdo je s ní propojen, získá kvalifikaci pro tuto pozici. Samostatné přihlášení je u těchto pozic zpočátku vypnuté."
-
-#: 
-msgid "Everything is converted."
-msgstr "Vše je převedeno."
-
-#: 
-msgid "Existing ministry"
-msgstr "Existující služba"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Pojmenujte novou službu názvem o délce nejvýše 100 znaků."
-
-#: 
-msgid "Its own ministry"
-msgstr "Vlastní služba"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Propojeni od té doby: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Propojení, která nelze převést"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Nové samostatné služby"
-
-#: 
-msgid "New ministry name"
-msgstr "Název nové služby"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Neodesílá se žádný e-mail a Dobrovolnické příležitosti zůstanou beze změny, dokud nebudou ukončeny."
-
-#: 
-msgid "No name"
-msgstr "Bez názvu"
-
-#: 
-msgid "Not converted"
-msgstr "Nepřevedeno"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Otevřít Přepínače funkcí"
-
-#: 
-msgid "Open Ministries"
-msgstr "Otevřít Služby"
-
-#: 
-msgid "Opportunities"
-msgstr "Příležitosti"
-
-#: 
-msgid "Opportunity"
-msgstr "Příležitost"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Příležitost č. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Lidé propojení s převedenými Dobrovolnickými příležitostmi od převodu: %d. Přidejte je k jejich pozicím dříve, než budou Dobrovolnické příležitosti začátkem roku 2027 ukončeny."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Nejprve zobrazte náhled převodu a odešlete revizi, kterou vrátil."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Přejmenováno, aby názvy zůstaly jedinečné"
-
-#: 
-msgid "Review the conversion"
-msgstr "Zkontrolovat převod"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Odešlete volbu převodu jako objekt JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Odešlete příležitosti, které se stanou službami, jako seznam ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Tato služba neexistuje."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Verze ChurchCRM, ve které správce zavřel upozornění na ukončení Dobrovolnických příležitostí."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Dobrovolnické příležitosti se od náhledu změnily. Znovu zkontrolujte náhled a poté převeďte."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Potvrzení se nepodařilo otevřít. Obnovte stránku a zkuste to znovu."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Náhled převodu se nepodařilo zobrazit."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Převod se nezdařil. Nic nebylo změněno."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Služba „%s“ nemá žádný tým, do kterého by pozice patřily."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Server není dostupný. Obnovte stránku a ověřte, zda převod proběhl."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nejsou žádné Dobrovolnické příležitosti k převodu."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Správa dobrovolníků se přepne na Obojí, aby byly nové služby vidět vedle Dobrovolnických příležitostí."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Dobrovolnické příležitosti budou ukončeny"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Dobrovolnické příležitosti převedeny"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Dobrovolnické příležitosti budou ukončeny začátkem roku 2027. Převeďte je na Služby, abyste zachovali, kdo kde slouží."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Dobrovolnické příležitosti budou ukončeny začátkem roku 2027. Převeďte nyní své příležitosti (%1$d) a dobrovolníky (%2$d) na Služby. Než se cokoli změní, můžete si výsledek prohlédnout v náhledu."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Kvalifikovaní dobrovolníci"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Dobrovolníci k přidání do převedených pozic"
-
-#: 
-msgid "What it becomes"
-msgstr "Čím se stane"
-
-#: 
-msgid "What will happen"
-msgstr "Co se stane"
-
-#: 
-msgid "Where they go"
-msgstr "Kam patří"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Které dřívější Dobrovolnické příležitosti byly převedeny a jakou pozicí se každá stala."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Jaký režim dobrovolníků tento sbor používá. Dobrovolnické příležitosti (V1) budou ukončeny začátkem roku 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Vaše Dobrovolnické příležitosti jsou převedeny na Služby. Přepněte Správu dobrovolníků na V2 dříve, než budou Dobrovolnické příležitosti začátkem roku 2027 ukončeny."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "do nové služby, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "do služby {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "již není v ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26787,10 +26370,6 @@ msgstr[1] "%d výchozí přeskočeni z jiného důvodu (výskyt skončil, byl zr
 msgstr[2] "%d výchozích přeskočeno z jiného důvodu (výskyt skončil, byl zrušen nebo je plný)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Přechodové nastavení. Starší stránky Dobrovolnické příležitosti i nové stránky Služby jsou dostupné a záznam osoby zobrazuje obě karty Dobrovolník, jasně označené. Použijte je při přechodu církve z V1 na V2 a poté přepněte pouze na V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Přiřazení bylo zrušeno"
 
@@ -26837,10 +26416,6 @@ msgstr "Tento termín byl zrušen. Od vás už nic není potřeba."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Tento výskyt byl zrušen"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Dobrovolnictví uspořádané tak, jak církev funguje. Každá služba má týmy a pozice; lidé jsou kvalifikováni pro pozice a patří do skupiny fondu služby; rozvrhy sledují události v kalendáři a vytvářejí datované výskyty s požadavky na obsazení; koordinátoři přiřazují lidi, kteří přijímají, odmítají nebo navrhují náhradu; připomínky a upozornění se posílají e-mailem. Administrátoři a uživatelé s oprávněním Spravovat služby vidí každou službu a mohou je vytvářet, deaktivovat a mazat. Koordinátor služby místo toho dostane oprávnění Spravovat mé služby: nadpis Služby v postranním panelu pak zobrazuje pouze služby, které koordinuje. Vedoucí týmu řídí svůj tým z Členského portálu. Členové používají Členský portál k zobrazení svého rozvrhu, odpovídání, přihlašování a nabízení pomoci."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27542,10 +27117,6 @@ msgstr "Zobrazovat události"
 #: 
 msgid "View people and families"
 msgstr "Zobrazovat osoby a rodiny"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Správa dobrovolníků je pro tuto církev vypnuta"
 
 #: 
 msgid "Weak"

@@ -36,7 +36,7 @@ V1 authorization is 12 switches, the predicates derived from them, and four impl
 | 5 | Manage Groups | `usr_ManageGroups` | `isManageGroupsEnabled()` | Groups, group properties, group cart, Sunday School admin, events tied to groups |
 | 6 | Finance | `usr_Finance` | `isFinanceEnabled()` | Deposits, pledges, envelopes, all finance reports, finance search, giving on person and family pages. Also needs `bEnabledFinance` |
 | 7 | Manage Fundraisers | `usr_ManageFundraisers` | `isManageFundraisersEnabled()` | Fundraisers, including their deletes. Also needs `bEnabledFundraiser` |
-| 8 | Manage Ministries | `usr_ManageMinistries` | `isManageMinistriesEnabled()` | Every ministry and team (volunteer v2). Also needs `sVolunteerVersion` `v2` or `both` |
+| 8 | Manage Ministries | `usr_ManageMinistries` | `isManageMinistriesEnabled()` | Every ministry and team (volunteer v2) |
 | 9 | Manage My Ministries | `usr_ManageMyMinistries` | `isManageMyMinistriesEnabled()`, `isVolunteerCoordinatorEnabled()` | Opens the coordinator area; the ministries in it are the login's `volunteer_scope_vscp` rows. Coordinator also needs at least one row |
 | 10 | Notes | `usr_Notes` | `isNotesEnabled()`, `canReadNotes()`, `canWriteNoteOnFamily()` | Read and write non-private notes on any person and family |
 | 11 | Add Events | `userconfig_ucfg` `bAddEvent` | `canManageEvents()`, `isAddEventEnabled()` | Create events and calendars (`AddEventsRoleAuthMiddleware`, `CalendarWriteRoleAuthMiddleware`). `canManageEvents()` also needs `bEnabledEvents`; `isAddEventEnabled()` (2 callers) does not, and the cutover aligns it |
@@ -59,7 +59,7 @@ Derived predicates that combine a switch with data, and keep their bodies at cut
 |---|---|---|
 | Any signed-in staff account reads every person and family | `canReadPerson()`, `canReadFamily()` return `true` | Every role, including a role with no permissions, keeps directory read |
 | A portal session is never staff | `PortalMemberUser` returns `false` from every switch predicate; `StaffRoleAuthMiddleware` | The service denies every staff permission to a portal principal, whatever data it carries |
-| Module flags gate on top of permissions | `bEnabledFinance`, `bEnabledFundraiser`, `bEnabledEvents`, `sVolunteerVersion` | A flag still turns the module off for everyone, including Owner |
+| Module flags gate on top of permissions | `bEnabledFinance`, `bEnabledFundraiser`, `bEnabledEvents` | A flag still turns the module off for everyone, including Owner |
 | Own private notes | `Note::isVisibleTo()` | An author always reads their own private notes; `notes.private.read` covers only other authors' notes |
 
 ### 2.3 Gaps the inventory already shows
