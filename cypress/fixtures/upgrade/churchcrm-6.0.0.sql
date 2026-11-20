@@ -1545,11 +1545,12 @@ CREATE TABLE `person2volunteeropp_p2vo` (
 LOCK TABLES `person2volunteeropp_p2vo` WRITE;
 /*!40000 ALTER TABLE `person2volunteeropp_p2vo` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `person2volunteeropp_p2vo` VALUES (1,2,1),(2,6,1),(3,2,1),(4,7,2),(5,99999,1);
 /*!40000 ALTER TABLE `person2volunteeropp_p2vo` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `person2volunteeropp_p2vo` with 0 row(s)
+-- Dumped table `person2volunteeropp_p2vo` with 5 row(s)
 --
 
 --
@@ -2274,11 +2275,12 @@ CREATE TABLE `volunteeropportunity_vol` (
 LOCK TABLES `volunteeropportunity_vol` WRITE;
 /*!40000 ALTER TABLE `volunteeropportunity_vol` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `volunteeropportunity_vol` VALUES (1,1,'true','Greeter','Welcome people at the door'),(2,2,'false','Nursery',NULL),(3,3,'true',NULL,NULL);
 /*!40000 ALTER TABLE `volunteeropportunity_vol` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `volunteeropportunity_vol` with 0 row(s)
+-- Dumped table `volunteeropportunity_vol` with 3 row(s)
 --
 
 --
