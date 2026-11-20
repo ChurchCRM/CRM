@@ -8,7 +8,6 @@
  * only through team-scoped endpoints; everything ministry-wide stays 403.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const LEADER_KEY = "user.api.key";
 const VOLUNTEER_URL = "/api/ministries";
@@ -27,7 +26,6 @@ let posLed = 0;
 let posOther = 0;
 let scheduleOther = 0;
 let occurrenceOther = 0;
-let originalVersion = "v1";
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
@@ -75,10 +73,6 @@ after(() => {
 
 describe("Volunteer v2 — a Manage My Ministries team leader through the API (#10530)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, { name: `${PREFIX} Hospitality` }, 201).then((resp) => {
@@ -148,7 +142,6 @@ describe("Volunteer v2 — a Manage My Ministries team leader through the API (#
 
     after(() => {
         cleanupFixtures();
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: originalVersion }, 200);
     });
 
     describe("Their own team", () => {

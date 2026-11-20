@@ -132,7 +132,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: {
                     ...downloadFixture,
@@ -180,7 +180,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 400,
                 body: { message: "Rate limit exceeded" },
             }).as("downloadFail");
@@ -329,7 +329,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: downloadFixture,
             }).as("downloadRelease");
@@ -376,7 +376,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: downloadFixture,
             }).as("downloadRelease");
@@ -626,7 +626,7 @@ describe("System Upgrade Page", () => {
                 body: multiReleaseFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
                 statusCode: 200,
                 body: {
                     fileName: "ChurchCRM-5.0.2.zip",

@@ -505,23 +505,6 @@ CREATE TABLE `person2group2role_p2g2r` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `person2volunteeropp_p2vo`
---
-
-CREATE TABLE `person2volunteeropp_p2vo` (
-  `p2vo_ID` mediumint(9) NOT NULL auto_increment,
-  `p2vo_per_ID` mediumint(9) default NULL,
-  `p2vo_vol_ID` mediumint(9) default NULL,
-  PRIMARY KEY  (`p2vo_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `person2volunteeropp_p2vo`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `person_custom`
 --
 
@@ -880,25 +863,6 @@ INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES
 ALTER TABLE `user_settings`
   ADD PRIMARY KEY (`user_id`,`setting_name`),
   ADD CONSTRAINT `fk_user_settings_user` FOREIGN KEY (`user_id`) REFERENCES `user_usr` (`usr_per_ID`) ON DELETE CASCADE;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `volunteeropportunity_vol`
---
-
-CREATE TABLE `volunteeropportunity_vol` (
-  `vol_ID` int(3) NOT NULL auto_increment,
-  `vol_Order` int(3) NOT NULL default '0',
-  `vol_Active` enum('true','false') NOT NULL default 'true',
-  `vol_Name` varchar(30) default NULL,
-  `vol_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`vol_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `volunteeropportunity_vol`
---
 
 -- --------------------------------------------------------
 

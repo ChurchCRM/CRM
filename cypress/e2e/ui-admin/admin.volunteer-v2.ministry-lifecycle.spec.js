@@ -30,7 +30,6 @@
  * removed in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -78,10 +77,6 @@ function freshCoordinatorLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function cleanupScopes() {
@@ -183,7 +178,6 @@ before(() => {
 
 describe("Volunteer v2 — ministry lifecycle (Deactivate, Reactivate, Delete)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
     });
 

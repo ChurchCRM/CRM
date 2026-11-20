@@ -96,7 +96,7 @@ function _renderManagedGroupConflict(Response $response, Group $group): ?Respons
 }
 
 /**
- * Volunteer v2 (D23): while V2 is on, the Teacher role of a Sunday School class linked
+ * Volunteer v2 (D23): the Teacher role of a Sunday School class linked
  * to a volunteer team is given and taken by that team's qualifications. Any write here
  * that would add, remove or change a role to or from Teacher answers 409 with the
  * ministry and team to go to; student writes are untouched.

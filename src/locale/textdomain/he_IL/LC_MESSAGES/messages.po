@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "ברירת מחדל"
 
 #: 
-msgid "Exit"
-msgstr "יציאה"
-
-#: 
 msgid "Add New"
 msgstr "הוסף חדש"
 
@@ -1476,10 +1472,6 @@ msgstr "עדכן מאפיינים"
 #: 
 msgid "Assign New Group"
 msgstr "שייך לקבוצה חדשה"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "הקצה הזדמנות התנדבות חדשה"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1595,10 +1587,6 @@ msgid "Restore Database"
 msgstr "שחזר מסד נתונים"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "אנא אשר את מחיקת"
-
-#: 
 msgid "Listing"
 msgstr "רשימה"
 
@@ -1685,14 +1673,6 @@ msgstr "סיסמה חדשה"
 #: 
 msgid "Confirm New Password"
 msgstr "אשר סיסמה חדשה"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "עורך הזדמנויות התנדבות"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "טרם נוספו הזדמנויות התנדבות"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6379,20 +6359,8 @@ msgid "Additional Information"
 msgstr "מידע נוסף"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "הקצה הזדמנויות"
-
-#: 
 msgid "Choose a property..."
 msgstr "בחר מאפיין..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "בחר הזדמנויות..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "פרטי קשר ומידע אישי"
 
 #: 
 msgid "Edited"
@@ -6401,14 +6369,6 @@ msgstr "נערך"
 #: 
 msgid "Newsletter"
 msgstr "ניוזלטר"
-
-#: 
-msgid "Personal"
-msgstr "אישי"
-
-#: 
-msgid "Select Opportunities"
-msgstr "בחר הזדמנויות"
 
 #: 
 msgid "Volunteer"
@@ -6595,10 +6555,6 @@ msgid "Confirm Property Deletion"
 msgstr "אשר מחיקת מאפיין"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "אשר מחיקת הזדמנות להתנדבות"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "אישור מחיקה"
 
@@ -6611,16 +6567,8 @@ msgid "Existing Custom Person Fields"
 msgstr "שדות אדם מותאמים קיימים"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "הזדמנויות התנדבות קיימות"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "השדה נמחק בהצלחה"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "אסימון CSRF לא תקין"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8386,10 +8334,6 @@ msgid "Create or edit property type categories"
 msgstr "יצירה או עריכה של קטגוריות סוגי מאפיינים"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "יצירה או עריכה של תפקידי מתנדבים"
-
-#: 
 msgid "Current person"
 msgstr "אדם נוכחי"
 
@@ -8838,10 +8782,6 @@ msgid "Manage user account details and permissions"
 msgstr "ניהול פרטי חשבון משתמש והרשאות"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "ניהול הזדמנויות התנדבות ושיוך חברים"
-
-#: 
 msgid "Map cart items"
 msgstr "הצגת פריטי רשימה על המפה"
 
@@ -8960,10 +8900,6 @@ msgstr "לא נמצאו תוצאות"
 #: 
 msgid "No timeline events yet."
 msgstr "אין אירועי ציר זמן עדיין."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "אין שיוכי הזדמנויות התנדבות עדיין."
 
 #: 
 msgid "Not ready yet?"
@@ -9468,10 +9404,6 @@ msgid "funds"
 msgstr "קרנות"
 
 #: 
-msgid "opportunities"
-msgstr "הזדמנויות"
-
-#: 
 msgid "or connect an external service"
 msgstr "או חברו שירות חיצוני"
 
@@ -9771,11 +9703,6 @@ msgstr "נכשל בשחזור כתובות דוא\"ל"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "נכשל בשחזור מספרי טלפון"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "מצא מתנדבים להזדמנות מסוימת"
 
 #. Context: query_qry
 #: 
@@ -12542,10 +12469,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "לא ניתן למחוק את סוג הנכס: %d נכסים עדיין מפנים אליו. הקצה מחדש או מחק נכסים אלה תחילה."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "לא ניתן למחוק את הזדמנות גיוס המתנדבים: %d אנשים עדיין מוקצים. הסר את ההקצאות תחילה."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "המחלקה חייבת להיות אחת מ-p, f, או g"
 
@@ -12556,10 +12479,6 @@ msgstr "העתק הודעת שגיאה"
 #: 
 msgid "Could not load note."
 msgstr "לא ניתן לטעון את הפתק."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "התיאור לא יכול לעלות על 100 תווים"
 
 #: 
 msgid "Donation fund not found"
@@ -12582,10 +12501,6 @@ msgid "Failed to create property type"
 msgstr "יצירת סוג הנכס נכשלה"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "יצירת הזדמנות גיוס המתנדבים נכשלה"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "מחיקת קרן התרומות נכשלה"
 
@@ -12602,10 +12517,6 @@ msgid "Failed to delete property type"
 msgstr "מחיקת סוג הנכס נכשלה"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "מחיקת הזדמנות גיוס המתנדבים נכשלה"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "עדכון קרן התרומות נכשל"
 
@@ -12618,10 +12529,6 @@ msgid "Failed to update property type"
 msgstr "עדכון סוג הנכס נכשל"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "עדכון הזדמנות גיוס המתנדבים נכשל"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "מסע גיוס התרומות לא נמצא"
 
@@ -12632,10 +12539,6 @@ msgstr "מזהה התקנה"
 #: 
 msgid "Invalid class"
 msgstr "מחלקה לא חוקית"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "השם לא יכול לעלות על 30 תווים"
 
 #: 
 msgid "Note by %s deleted"
@@ -12658,16 +12561,8 @@ msgid "Read more"
 msgstr "קרא עוד"
 
 #: 
-msgid "That name already exists."
-msgstr "שם זה כבר קיים."
-
-#: 
 msgid "Title is required"
 msgstr "הכותרת נדרשת"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "הזדמנות גיוס המתנדבים לא נמצאה"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15258,10 +15153,6 @@ msgid "System Configuration"
 msgstr "תצורת מערכת"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "יש אנשים שהוקצו להזדמנות ההתנדבות זו. המחיקה תבטל את הקצאתם"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "עדכן אותו לכתובת URL תקנית ש"
 
@@ -15490,10 +15381,6 @@ msgid "Add New Fund"
 msgstr "הוסף קרן חדש"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "הוסף הזדמנות חדשה"
-
-#: 
 msgid "Add New Person"
 msgstr "הוסף אדם חדש"
 
@@ -15506,10 +15393,6 @@ msgid "Add New Role"
 msgstr "הוסף תפקיד חדש"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "הוסף הזדמנות התנדבות חדשה"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "הוסף כיתה לבית ספר ראשון"
 
@@ -15520,10 +15403,6 @@ msgstr "למחוק משפחה זו?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "סקור משפחות ויחידים חדשים שנרשמו בטופס הרשומה הציבורי שלך"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "אישור מחיקת הזדמנות התנדבות"
 
 #: 
 msgid "# Payments"
@@ -17190,14 +17069,6 @@ msgid "Find people who did not attend an event"
 msgstr "מצא אנשים שלא השתתפו באירוע"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "מצא מתנדבים התואמים לשני קודי הזדמנות ספציפיים"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "הזדמנות מתנדב ראשונה"
-
-#: 
 msgid "Folded Booklet"
 msgstr "חוברת מקופלת"
 
@@ -17274,10 +17145,6 @@ msgid "Run Report"
 msgstr "הריץ דוח"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "הזדמנות מתנדב שנייה"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "מוצג בסרגל הצדדי, בדף ההתחברות ובדוא\"ל. העלאת לוגו מחליפה את הברנדינג של ChurchCRM בכל מקום שהיא מופיעה."
 
@@ -17304,14 +17171,6 @@ msgstr "שימוש בלוגו ChurchCRM ברירת המחדל"
 #: 
 msgid "View Full Family Giving"
 msgstr "צפה בתרומה משפחתית מלאה"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "הזדמנות מתנדב"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "מתנדבים לשתי הזדמנויות"
 
 #: 
 msgid "YTD"
@@ -18138,10 +17997,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "לוח זמנים המאייש אירוע אחד אינו יכול לעקוב אחר אירועים אחרים; יש למחוק אותו ולהוסיף לוח זמנים במקום זאת"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "רשימה אחת של הזדמנויות, כגון \"משתלה\" או \"קבלת פנים\", המנוהלת תחת אנשים ← ניהול. כל אדם מסומן בהזדמנויות שהוא מוכן לעזור בהן, בלשונית מתנדב ברשומתו. זה כל מה שנרשם: אין צוותים, לוחות זמנים, שיבוץ לתאריך או הודעות תזכורת. התגיות משמשות בדוחות וברשומת האדם."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "תמונה מרובעת של פניכם עובדת הכי טוב."
 
@@ -18448,18 +18303,6 @@ msgstr "משימות הרקע רצו ב"
 #: 
 msgid "Birthday greeting"
 msgstr "ברכת יום הולדת"
-
-#: 
-msgid "Both"
-msgstr "שניהם"
-
-#: 
-msgid "Both (transition)"
-msgstr "שניהם (מעבר)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "שניהם — V1 ו-V2 זה לצד זה (מעבר)"
 
 #: 
 msgid "Calendar address"
@@ -21546,22 +21389,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע, או שהוא מרכז את שירות המתנדבים שלוח שנה זה שייך לו"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — הזדמנויות התנדבות (ישן)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — הזדמנויות התנדבות ישנות"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — שירותים"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — ניהול מתנדבים"
-
-#: 
 msgid "Valid"
 msgstr "תקין"
 
@@ -21580,14 +21407,6 @@ msgstr "צפייה באירוע"
 #: 
 msgid "View this email"
 msgstr "צפייה בדוא\"ל זה"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "מתנדב (ישן)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "ניהול מתנדבים V2 אינו מופעל"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21694,10 +21513,6 @@ msgid "What the check found"
 msgstr "מה שהבדיקה מצאה"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "מהן חוויות ההתנדבות"
-
-#: 
 msgid "What you want to say"
 msgstr "מה שאתם רוצים לומר"
 
@@ -21728,10 +21543,6 @@ msgstr "מהיכן מגיעים התאריכים"
 #: 
 msgid "Where we reach you"
 msgstr "איך ניתן להשיג אתכם"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "באיזו חוויית ניהול מתנדבים משתמשים. V1 היא תכונת הזדמנויות ההתנדבות הישנה; V2 היא זרימת התזמון והשיבוץ החדשה. \"שניהם\" מציג את שתיהן זו לצד זו בזמן ההעברה."
 
 #: 
 msgid "Which events"
@@ -22140,10 +21951,6 @@ msgstr "אין הרשאה לשנות את קבוצת הקהל של אירוע ז
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "רק מנהל מתנדבים יכול לשנות מי מתאם שירות"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "בחירה ב-V1 משהה את דוא״ל המתנדבים של V2; כל מה שממתין בתור יישלח כש-V2 יופעל שוב, אלא אם המופע שלו הסתיים."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22988,10 +22795,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "זמן התראה מראש על תפקיד לא מאויש (שעות)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "ניהול מתנדבים"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "שירותי מתנדבים, צוותים, לוחות זמנים ושיבוצים"
 
@@ -23002,14 +22805,6 @@ msgstr "תפקידי מתנדבים לאיוש בימים הקרובים"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "עדיין דרושים מתנדבים למופעים הקרובים האלה: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "מה המשמעות של אלה?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת"
 
 #: 
 msgid "You are on the schedule"
@@ -26380,248 +26175,8 @@ msgid "Review Family Information"
 msgstr "בדיקת פרטי המשפחה"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "כבר קיים שירות בשם \"%s\". בחרו אותו מהרשימה או בחרו שם אחר."
-
-#: 
-msgid "A new ministry"
-msgstr "שירות חדש"
-
-#: 
-msgid "A position"
-msgstr "תפקיד"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "להוסיף מתנדבים ({{total}}) לתפקידים שהומרו קודם?"
-
-#: 
-msgid "Already converted"
-msgstr "כבר הומר"
-
-#: 
-msgid "An existing ministry"
-msgstr "שירות קיים"
-
-#: 
-msgid "Becomes"
-msgstr "הופך ל"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ל-ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת מהן אמורה להיות בשימוש בכל פעם; ההגדרה \"חוויית המתנדבים\" קובעת איזו מהן הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט ולעולם אינו מוחק נתונים. V1 ו\"שניהם\" מוצעים רק כל עוד הזדמנויות התנדבות בשימוש: ברגע שכל ההזדמנויות הומרו והקהילה עובדת עם V2, הם יוסרו מהרשימה."
-
-#: 
-msgid "Convert"
-msgstr "המרה"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "המרת הזדמנויות התנדבות"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "להמיר עכשיו הזדמנויות ({{total}})? נתוני V1 נשמרים כפי שהם עד שהזדמנויות התנדבות יופסקו."
-
-#: 
-msgid "Converted"
-msgstr "הומר"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "הומרו: תפקידים {{positions}}, שירותים {{ministries}}, מתנדבים שהוסמכו {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "כל הזדמנות הופכת לתפקיד בצוות הראשון של שירות אחד, וכל מי שמקושר אליה מוסמך לתפקיד זה. הרשמה עצמית כבויה בהתחלה בתפקידים אלה."
-
-#: 
-msgid "Everything is converted."
-msgstr "הכול הומר."
-
-#: 
-msgid "Existing ministry"
-msgstr "שירות קיים"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "תנו לשירות החדש שם של עד 100 תווים."
-
-#: 
-msgid "Its own ministry"
-msgstr "שירות משלה"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "מקושרים מאז: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "קישורים שלא ניתן להמיר"
-
-#: 
-msgid "New ministries of their own"
-msgstr "שירותים חדשים משלהן"
-
-#: 
-msgid "New ministry name"
-msgstr "שם השירות החדש"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "לא נשלח דוא\"ל, והזדמנויות התנדבות נשארות כפי שהן עד שיופסקו."
-
-#: 
-msgid "No name"
-msgstr "ללא שם"
-
-#: 
-msgid "Not converted"
-msgstr "לא הומר"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "פתיחת החלפות תכונות"
-
-#: 
-msgid "Open Ministries"
-msgstr "פתיחת שירותים"
-
-#: 
-msgid "Opportunities"
-msgstr "הזדמנויות"
-
-#: 
-msgid "Opportunity"
-msgstr "הזדמנות"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "הזדמנות מס' %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "אנשים שקושרו להזדמנויות התנדבות שהומרו מאז ההמרה: %d. הוסיפו אותם לתפקידים שלהם לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "הציגו קודם תצוגה מקדימה של ההמרה, ושלחו את הגרסה שהיא החזירה."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "שונה שם כדי לשמור על שמות ייחודיים"
-
-#: 
-msgid "Review the conversion"
-msgstr "סקירת ההמרה"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "שלחו את בחירת ההמרה כאובייקט JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "שלחו את ההזדמנויות שהופכות לשירותים כרשימת מזהים."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "השירות הזה לא קיים."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "גרסת ChurchCRM שבה מנהל סגר את ההודעה על הפסקת הזדמנויות התנדבות."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "הזדמנויות התנדבות השתנו מאז התצוגה המקדימה. בדקו שוב את התצוגה המקדימה ואז המירו."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "לא ניתן לפתוח את האישור. טענו מחדש את הדף ונסו שוב."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "לא ניתן להציג תצוגה מקדימה של ההמרה."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "ההמרה נכשלה. שום דבר לא שונה."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "לשירות \"%s\" אין צוות שיכיל את התפקידים."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "לא ניתן להגיע לשרת. טענו מחדש את הדף כדי לראות אם ההמרה בוצעה."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "אין הזדמנויות התנדבות להמרה."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "ניהול מתנדבים עובר ל\"שניהם\", כך שהשירותים החדשים יוצגו לצד הזדמנויות התנדבות."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "הזדמנויות התנדבות מופסקות"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "הזדמנויות התנדבות הומרו"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו אותן לשירותים כדי לשמור מי משרת איפה."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו עכשיו לשירותים את ההזדמנויות (%1$d) ואת המתנדבים (%2$d) שלכם. אפשר לראות תצוגה מקדימה של התוצאה לפני שמשהו משתנה."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "מתנדבים מוסמכים"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "מתנדבים להוספה לתפקידים שהומרו"
-
-#: 
-msgid "What it becomes"
-msgstr "למה זה הופך"
-
-#: 
-msgid "What will happen"
-msgstr "מה יקרה"
-
-#: 
-msgid "Where they go"
-msgstr "לאן הם הולכים"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "אילו הזדמנויות התנדבות ישנות הומרו, ולאיזה תפקיד הפכה כל אחת."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת. הזדמנויות התנדבות (V1) יופסקו בתחילת 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "הזדמנויות ההתנדבות שלכם הומרו לשירותים. העבירו את ניהול מתנדבים ל-V2 לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "לשירות חדש, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "לשירות {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "כבר לא ב-ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26798,10 +26353,6 @@ msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע ה�
 msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
-
-#: 
 msgid "Assignment canceled"
 msgstr "השיבוץ בוטל"
 
@@ -26848,10 +26399,6 @@ msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצי
 #: 
 msgid "This occurrence has been canceled"
 msgstr "מופע זה בוטל"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27550,10 +27097,6 @@ msgstr "הצגת אירועים"
 #: 
 msgid "View people and families"
 msgstr "הצגת אנשים ומשפחות"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "ניהול מתנדבים כבוי עבור הכנסייה הזו"
 
 #: 
 msgid "Weak"

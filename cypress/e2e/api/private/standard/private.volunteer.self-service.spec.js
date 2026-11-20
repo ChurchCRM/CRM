@@ -28,7 +28,6 @@
  * FK-safe.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const SELFEDIT_KEY = 99;
 const SELFEDIT_NOTES_KEY = 100;
@@ -61,7 +60,6 @@ let scheduleId = 0;
 let occurrenceOne = 0;
 let occurrenceTwo = 0;
 let occurrencePast = 0;
-let originalVersion = "v1";
 let seriesStart = "";
 let seriesEnd = "";
 
@@ -85,10 +83,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today. */
@@ -318,11 +312,6 @@ after(() => {
 
 describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         createMinistry("Hospitality").then((id) => {
@@ -454,7 +443,6 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── GET /me/qualifications (§3.3.3) ────────────────────────────────────────
@@ -920,21 +908,6 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
             }).then((resp) => {
                 expect(resp.status).to.be.oneOf([401, 403]);
             });
-        });
-
-        it("refuses every member route when the rollout flag is v1", () => {
-            // Without V2 there is no member API: a member session is not signed in to it.
-            setVersion("v1");
-            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/opportunities`, null, 401);
-            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/qualifications`, null, 401);
-            api(
-                SELFEDIT_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/me/signup`,
-                { occurrenceId: occurrenceOne, positionId: posDoor },
-                401,
-            );
-            setVersion("v2");
         });
     });
 

@@ -1381,10 +1381,6 @@ msgid "Default"
 msgstr "Mặc định"
 
 #: 
-msgid "Exit"
-msgstr "Thoát khỏi"
-
-#: 
 msgid "Add New"
 msgstr "Thêm mới"
 
@@ -1487,10 +1483,6 @@ msgstr "Cập nhật thuộc tính"
 #: 
 msgid "Assign New Group"
 msgstr "Thêm thành viên vào Ban/Mục vụ"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Thêm thành viên mới vào Mục vụ"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1606,10 +1598,6 @@ msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Vui lòng xác nhận xóa"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
 
@@ -1696,14 +1684,6 @@ msgstr "Mật khẩu mới"
 #: 
 msgid "Confirm New Password"
 msgstr "Nhập lại mật khẩu mới"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Mục vụ đã tham gia của Thành viên"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Không có Nhân sự nào được thêm vào đây"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6386,20 +6366,8 @@ msgid "Additional Information"
 msgstr "Thông tin bổ sung"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Giao cơ hội (phụng vụ/công tác)"
-
-#: 
 msgid "Choose a property..."
 msgstr "Chọn một thuộc tính..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Chọn cơ hội..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Thông tin liên hệ & cá nhân"
 
 #: 
 msgid "Edited"
@@ -6408,14 +6376,6 @@ msgstr "Đã chỉnh sửa"
 #: 
 msgid "Newsletter"
 msgstr "Bản tin/Thông báo"
-
-#: 
-msgid "Personal"
-msgstr "Cá nhân"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Chọn các cơ hội"
 
 #: 
 msgid "Volunteer"
@@ -6600,10 +6560,6 @@ msgid "Confirm Property Deletion"
 msgstr "Xác nhận xóa thuộc tính"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Xác nhận xóa cơ hội tình nguyện"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Xác nhận xóa"
 
@@ -6616,16 +6572,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Các trường cá nhân tùy chỉnh hiện có"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Các cơ hội tình nguyện hiện có"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Trường đã được xóa thành công"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Mã thông báo CSRF không hợp lệ"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8388,10 +8336,6 @@ msgid "Create or edit property type categories"
 msgstr "Tao hoac chinh sua danh muc loai thuoc tinh"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Tao hoac chinh sua vi tri tinh nguyen vien"
-
-#: 
 msgid "Current person"
 msgstr "Nguoi hien tai"
 
@@ -8840,10 +8784,6 @@ msgid "Manage user account details and permissions"
 msgstr "Quan ly chi tiet tai khoan nguoi dung va quyen han"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Quan ly co hoi tinh nguyen va gan thanh vien"
-
-#: 
 msgid "Map cart items"
 msgstr "Hien thi danh sach tren ban do"
 
@@ -8962,10 +8902,6 @@ msgstr "Khong tim thay ket qua"
 #: 
 msgid "No timeline events yet."
 msgstr "Chua co su kien nao trong dong thoi gian."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Chua co gan co hoi tinh nguyen nao."
 
 #: 
 msgid "Not ready yet?"
@@ -9470,10 +9406,6 @@ msgid "funds"
 msgstr "quy"
 
 #: 
-msgid "opportunities"
-msgstr "co hoi"
-
-#: 
 msgid "or connect an external service"
 msgstr "hoac ket noi dich vu ben ngoai"
 
@@ -9773,11 +9705,6 @@ msgstr "Không thể lấy địa chỉ email"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Không thể lấy số điện thoại"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Tìm tình nguyện viên cho một cơ hội cụ thể"
 
 #. Context: query_qry
 #: 
@@ -12543,10 +12470,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Không thể xóa loại thuộc tính: vẫn còn %d thuộc tính đang tham chiếu. Vui lòng gán lại hoặc xóa các thuộc tính đó trước."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Không thể xóa cơ hội tình nguyện: vẫn còn %d người được phân công. Vui lòng xóa các phân công đó trước."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Lớp phải là một trong: p, f, hoặc g"
 
@@ -12557,10 +12480,6 @@ msgstr "Sao chép thông báo lỗi"
 #: 
 msgid "Could not load note."
 msgstr "Không thể tải ghi chú."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Mô tả không được vượt quá 100 ký tự"
 
 #: 
 msgid "Donation fund not found"
@@ -12583,10 +12502,6 @@ msgid "Failed to create property type"
 msgstr "Không thể tạo loại thuộc tính"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Không thể tạo cơ hội tình nguyện"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Không thể xóa quỹ quyên góp"
 
@@ -12603,10 +12518,6 @@ msgid "Failed to delete property type"
 msgstr "Không thể xóa loại thuộc tính"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Không thể xóa cơ hội tình nguyện"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Không thể cập nhật quỹ quyên góp"
 
@@ -12619,10 +12530,6 @@ msgid "Failed to update property type"
 msgstr "Không thể cập nhật loại thuộc tính"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Không thể cập nhật cơ hội tình nguyện"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Không tìm thấy chiến dịch quyên góp"
 
@@ -12633,10 +12540,6 @@ msgstr "ID Cài Đặt"
 #: 
 msgid "Invalid class"
 msgstr "Lớp không hợp lệ"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Tên không được vượt quá 30 ký tự"
 
 #: 
 msgid "Note by %s deleted"
@@ -12659,16 +12562,8 @@ msgid "Read more"
 msgstr "Đọc thêm"
 
 #: 
-msgid "That name already exists."
-msgstr "Tên đó đã tồn tại."
-
-#: 
 msgid "Title is required"
 msgstr "Tiêu đề là bắt buộc"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Không tìm thấy cơ hội tình nguyện"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15256,10 +15151,6 @@ msgid "System Configuration"
 msgstr "Cấu hình hệ thống"
 
 #: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Có người được phân công cho Cơ hội Tình nguyện này. Xóa sẽ hủy phân công"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Cập nhật thành URL hợp lệ"
 
@@ -15488,10 +15379,6 @@ msgid "Add New Fund"
 msgstr "Thêm quỹ mới"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Thêm cơ hội mới"
-
-#: 
 msgid "Add New Person"
 msgstr "Thêm người mới"
 
@@ -15504,10 +15391,6 @@ msgid "Add New Role"
 msgstr "Thêm vai trò mới"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Thêm cơ hội tình nguyện mới"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Thêm lớp Trường Chúa nhật"
 
@@ -15518,10 +15401,6 @@ msgstr "Xóa gia đình này?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Xem xét các gia đình và cá nhân mới đã đăng ký qua biểu mẫu đăng ký công khai của bạn"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Xác nhận xóa cơ hội tình nguyện"
 
 #: 
 msgid "# Payments"
@@ -17186,14 +17065,6 @@ msgid "Find people who did not attend an event"
 msgstr "Tìm những người không tham dự sự kiện"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Tìm những tình nguyện viên khớp với hai mã cơ hội cụ thể"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện Đầu tiên"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Tờ rơi Gấp"
 
@@ -17270,10 +17141,6 @@ msgid "Run Report"
 msgstr "Chạy Báo Cáo"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện Thứ hai"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Được hiển thị ở thanh bên, trên trang đăng nhập và trong email. Tải lên logo thay thế thương hiệu ChurchCRM ở mọi nơi nó xuất hiện."
 
@@ -17300,14 +17167,6 @@ msgstr "Sử dụng logo ChurchCRM mặc định"
 #: 
 msgid "View Full Family Giving"
 msgstr "Xem Quy Đầy Đủ Gia Đình"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Tình nguyện viên cho Hai Cơ hội"
 
 #: 
 msgid "YTD"
@@ -18127,10 +17986,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Lịch phục vụ cho một sự kiện không thể theo các sự kiện khác; hãy xóa nó và thêm một lịch phục vụ mới"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Một danh sách duy nhất các cơ hội phục vụ, chẳng hạn \"Trông trẻ\" hoặc \"Đón tiếp\", lưu trong Hội thánh → Quản trị. Mỗi người được gắn thẻ các cơ hội họ sẵn lòng giúp, trong thẻ Tình nguyện viên của hồ sơ. Chỉ có vậy: không có đội, lịch phục vụ, phân công theo ngày hay email nhắc nhở. Báo cáo và hồ sơ cá nhân là nơi dùng các thẻ này."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Ảnh vuông chụp khuôn mặt của bạn là tốt nhất."
 
@@ -18437,18 +18292,6 @@ msgstr "Tác vụ nền đã chạy"
 #: 
 msgid "Birthday greeting"
 msgstr "Lời chúc sinh nhật"
-
-#: 
-msgid "Both"
-msgstr "Cả hai"
-
-#: 
-msgid "Both (transition)"
-msgstr "Cả hai (chuyển tiếp)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Cả hai — V1 và V2 song song (chuyển tiếp)"
 
 #: 
 msgid "Calendar address"
@@ -21531,22 +21374,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Người dùng phải có quyền Thêm sự kiện, hoặc điều phối mục vụ tình nguyện sở hữu lịch này"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Cơ hội Tình nguyện (cũ)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Cơ hội Tình nguyện cũ"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Mục vụ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Quản lý Tình nguyện viên"
-
-#: 
 msgid "Valid"
 msgstr "Hợp lệ"
 
@@ -21565,14 +21392,6 @@ msgstr "Xem sự kiện"
 #: 
 msgid "View this email"
 msgstr "Xem email này"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Tình nguyện viên (Cũ)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Quản lý Tình nguyện viên V2 chưa được bật"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21677,10 +21496,6 @@ msgid "What the check found"
 msgstr "Kết quả kiểm tra tìm thấy"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Các trải nghiệm tình nguyện là gì"
-
-#: 
 msgid "What you want to say"
 msgstr "Điều bạn muốn nói"
 
@@ -21711,10 +21526,6 @@ msgstr "Ngày lấy từ đâu"
 #: 
 msgid "Where we reach you"
 msgstr "Cách chúng tôi liên lạc với bạn"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Trải nghiệm Quản lý Tình nguyện viên nào đang hoạt động. V1 là tính năng Cơ hội Tình nguyện cũ; V2 là quy trình lập lịch và phân công mới. \"Cả hai\" hiển thị song song trong thời gian chuyển đổi."
 
 #: 
 msgid "Which events"
@@ -22123,10 +21934,6 @@ msgstr "Không được phép thay đổi nhóm đối tượng của sự kiệ
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Chỉ người quản lý tình nguyện mới có thể thay đổi người điều phối sự kiện"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Chọn V1 sẽ tạm dừng email tình nguyện V2; bất cứ thứ gì trong hàng đợi sẽ được gửi khi V2 trở lại bật, trừ khi sự kiện của nó kết thúc."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22971,10 +22778,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Thời gian báo trước vị trí còn trống (giờ)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Quản lý tình nguyện viên"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Mục vụ tình nguyện, đội, lịch và phân công"
 
@@ -22985,14 +22788,6 @@ msgstr "Các vị trí tình nguyện cần bố trí trong những ngày tới"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vẫn cần tình nguyện viên cho các buổi sắp tới này: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Những mục này nghĩa là gì?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Hội thánh này dùng trải nghiệm tình nguyện viên nào"
 
 #: 
 msgid "You are on the schedule"
@@ -26363,248 +26158,8 @@ msgid "Review Family Information"
 msgstr "Xem lại thông tin gia đình"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Đã có mục vụ tên \"%s\". Hãy chọn mục vụ đó trong danh sách hoặc đặt tên khác."
-
-#: 
-msgid "A new ministry"
-msgstr "Một mục vụ mới"
-
-#: 
-msgid "A position"
-msgstr "Một vị trí"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Thêm {{total}} tình nguyện viên vào các vị trí đã chuyển đổi trước đó?"
-
-#: 
-msgid "Already converted"
-msgstr "Đã chuyển đổi"
-
-#: 
-msgid "An existing ministry"
-msgstr "Một mục vụ hiện có"
-
-#: 
-msgid "Becomes"
-msgstr "Trở thành"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ nên dùng một cách; cài đặt \"Trải nghiệm tình nguyện\" quyết định hội thánh này thấy cách nào. Chuyển đổi chỉ ẩn hoặc hiện các trang và mục menu, không bao giờ xóa dữ liệu. V1 và Cả hai chỉ được cung cấp khi Cơ hội Tình nguyện còn được sử dụng: khi mọi cơ hội đã được chuyển đổi và hội thánh dùng V2, chúng sẽ biến mất khỏi danh sách này."
-
-#: 
-msgid "Convert"
-msgstr "Chuyển đổi"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Chuyển đổi Cơ hội Tình nguyện"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Chuyển đổi {{total}} cơ hội ngay bây giờ? Dữ liệu V1 được giữ nguyên cho đến khi Cơ hội Tình nguyện bị ngừng."
-
-#: 
-msgid "Converted"
-msgstr "Đã chuyển đổi"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Đã chuyển đổi: {{positions}} vị trí và {{ministries}} mục vụ, {{qualifications}} tình nguyện viên đủ điều kiện."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Mỗi cơ hội trở thành một vị trí trong đội đầu tiên của một mục vụ, và mọi người được liên kết với cơ hội đó đều đủ điều kiện cho vị trí ấy. Tự đăng ký ban đầu bị tắt ở các vị trí này."
-
-#: 
-msgid "Everything is converted."
-msgstr "Mọi thứ đã được chuyển đổi."
-
-#: 
-msgid "Existing ministry"
-msgstr "Mục vụ hiện có"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Đặt cho mục vụ mới một tên tối đa 100 ký tự."
-
-#: 
-msgid "Its own ministry"
-msgstr "Mục vụ riêng"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Được liên kết từ đó: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Các liên kết không thể chuyển đổi"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Các mục vụ mới riêng"
-
-#: 
-msgid "New ministry name"
-msgstr "Tên mục vụ mới"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Không có email nào được gửi, và Cơ hội Tình nguyện được giữ nguyên cho đến khi bị ngừng."
-
-#: 
-msgid "No name"
-msgstr "Không có tên"
-
-#: 
-msgid "Not converted"
-msgstr "Chưa chuyển đổi"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Mở Các Công tắc Tính năng"
-
-#: 
-msgid "Open Ministries"
-msgstr "Mở Mục vụ"
-
-#: 
-msgid "Opportunities"
-msgstr "Cơ hội"
-
-#: 
-msgid "Opportunity"
-msgstr "Cơ hội"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Cơ hội #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Số người được liên kết với Cơ hội Tình nguyện đã chuyển đổi kể từ khi chuyển đổi: %d. Hãy thêm họ vào vị trí của mình trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Hãy xem trước việc chuyển đổi, rồi gửi bản sửa đổi mà nó trả về."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Đã đổi tên để giữ tên không trùng lặp"
-
-#: 
-msgid "Review the conversion"
-msgstr "Xem lại việc chuyển đổi"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Gửi lựa chọn chuyển đổi dưới dạng đối tượng JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Gửi các cơ hội sẽ trở thành mục vụ dưới dạng danh sách ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Mục vụ đó không tồn tại."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Phiên bản ChurchCRM mà tại đó quản trị viên đã đóng thông báo ngừng Cơ hội Tình nguyện."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Cơ hội Tình nguyện đã thay đổi kể từ khi xem trước. Hãy kiểm tra lại bản xem trước, rồi chuyển đổi."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Không thể mở hộp xác nhận. Hãy tải lại trang và thử lại."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Không thể xem trước việc chuyển đổi."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Chuyển đổi thất bại. Không có gì bị thay đổi."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Mục vụ \"%s\" không có đội nào để chứa các vị trí."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Không thể kết nối máy chủ. Hãy tải lại trang để xem việc chuyển đổi đã chạy chưa."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Không có Cơ hội Tình nguyện nào để chuyển đổi."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Quản lý tình nguyện viên chuyển sang Cả hai, để các mục vụ mới hiển thị bên cạnh Cơ hội Tình nguyện."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Cơ hội Tình nguyện sắp bị ngừng"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Đã chuyển đổi Cơ hội Tình nguyện"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển chúng thành Mục vụ để giữ thông tin ai phục vụ ở đâu."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển ngay %1$d cơ hội và %2$d tình nguyện viên của bạn thành Mục vụ. Bạn có thể xem trước kết quả trước khi có bất kỳ thay đổi nào."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Tình nguyện viên đủ điều kiện"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Tình nguyện viên cần thêm vào các vị trí đã chuyển đổi"
-
-#: 
-msgid "What it becomes"
-msgstr "Trở thành gì"
-
-#: 
-msgid "What will happen"
-msgstr "Điều gì sẽ xảy ra"
-
-#: 
-msgid "Where they go"
-msgstr "Chuyển đến đâu"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Những Cơ hội Tình nguyện cũ nào đã được chuyển đổi, và mỗi cơ hội đã trở thành vị trí nào."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Trải nghiệm tình nguyện mà hội thánh này sử dụng. Cơ hội Tình nguyện (V1) sẽ bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Cơ hội Tình nguyện của bạn đã được chuyển thành Mục vụ. Hãy chuyển Quản lý tình nguyện viên sang V2 trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "vào một mục vụ mới, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "vào mục vụ {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "không còn trong ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26779,10 +26334,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d mặc định bị bỏ qua vì lý do khác (sự kiện đã kết thúc, bị hủy hoặc đã đầy)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Một cài đặt chuyển tiếp. Cả các trang Cơ hội Tình nguyện cũ và các trang Mục vụ mới đều có sẵn, và hồ sơ cá nhân hiển thị cả hai thẻ Tình nguyện viên, được ghi nhãn rõ ràng. Dùng khi chuyển Hội thánh từ V1 sang V2, rồi chỉ chuyển sang V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Đã hủy phân công"
 
@@ -26829,10 +26380,6 @@ msgstr "Ngày này đã được hủy. Bạn không cần làm gì thêm."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Lần diễn ra này đã bị hủy"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Phục vụ tình nguyện được tổ chức theo cách một Hội thánh vận hành. Mỗi mục vụ có các đội và vị trí; mọi người được cấp điều kiện cho các vị trí và thuộc nhóm của mục vụ; lịch phục vụ theo các sự kiện trên lịch và tạo ra các lần diễn ra có ngày với yêu cầu nhân sự; điều phối viên phân công người, họ chấp nhận, từ chối hoặc đề xuất người thay thế; nhắc nhở và cảnh báo được gửi qua email. Quản trị viên và người dùng có quyền Quản lý Mục vụ thấy mọi mục vụ và có thể tạo, ngừng hoạt động và xóa chúng. Điều phối viên mục vụ được cấp quyền Quản lý Mục vụ của tôi: khi đó tiêu đề Mục vụ ở thanh bên chỉ hiện các mục vụ họ điều phối. Trưởng đội điều hành đội của mình từ Cổng Hội thánh. Thành viên dùng Cổng Hội thánh để xem lịch phục vụ, phản hồi, đăng ký và đề nghị giúp đỡ."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27528,10 +27075,6 @@ msgstr "Xem sự kiện"
 #: 
 msgid "View people and families"
 msgstr "Xem người và gia đình"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Quản lý tình nguyện viên đã bị tắt cho hội thánh này"
 
 #: 
 msgid "Weak"

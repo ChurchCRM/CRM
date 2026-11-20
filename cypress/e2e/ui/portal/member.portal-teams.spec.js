@@ -26,7 +26,6 @@
  * the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
@@ -61,10 +60,6 @@ function login(username) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function dbOk(sql, params = []) {
@@ -187,7 +182,6 @@ after(() => {
 
 describe("Member Portal (MP7, #9868) — My Teams", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, {

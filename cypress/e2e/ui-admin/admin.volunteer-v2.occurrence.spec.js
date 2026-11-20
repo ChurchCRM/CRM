@@ -23,7 +23,6 @@
  * Fixtures are removed in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UI9709";
@@ -64,10 +63,6 @@ function freshAdminLogin() {
         }
     });
     cy.location("pathname").should("not.match", /\/admin\/$/);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function occurrenceUrl() {
@@ -188,8 +183,6 @@ after(() => {
 
 describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
     before(() => {
-        setVersion("v2");
-
         findOrCreateMinistry().then((id) => {
             ministryId = id;
         });
@@ -374,7 +367,6 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             [EVENT_TITLE],
         );
         cy.dbQuery("DELETE FROM events_event WHERE event_title = ?", [EVENT_TITLE]);
-        setVersion("v1");
     });
 
     describe("rendering (§5.5, §5.8)", () => {

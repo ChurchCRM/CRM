@@ -17,7 +17,6 @@ use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -79,7 +78,7 @@ $app->group('/ministries/me', function (RouteCollectorProxy $group): void {
 
     $group->post('/swaps/{swapId:[0-9]+}/withdraw', 'withdrawMyVolunteerSwap')
         ->add(new InputSanitizationMiddleware(['comment' => 'text']));
-})->add(new VolunteerV2EnabledMiddleware());
+});
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
 

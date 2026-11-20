@@ -30,7 +30,6 @@
  * (cypress-testing.md). Cleanup runs in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UINEEDS";
@@ -64,10 +63,6 @@ function freshAdminLogin() {
         }
     });
     cy.location("pathname").should("not.match", /\/admin\/$/);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -256,8 +251,6 @@ after(() => {
 
 describe("Volunteer v2 — staffing needs (§2.10)", () => {
     before(() => {
-        setVersion("v2");
-
         findOrCreateMinistry().then((id) => {
             ministryId = id;
         });
@@ -324,7 +317,6 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
     after(() => {
         clearSchedules();
         cy.dbQuery("DELETE FROM events_event WHERE event_title LIKE ?", [`${PREFIX}%`]);
-        setVersion("v1");
     });
 
     describe("the schedule form's staffing-needs section", () => {

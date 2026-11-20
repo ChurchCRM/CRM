@@ -95,6 +95,16 @@ class CustomFieldDefinitionService
         // jobs; the MariaDB jobs passed). Check information_schema first, then issue
         // a plain DROP COLUMN, which both servers accept. The table name is a class
         // constant and $column is validated against /^c\d+$/ above.
+        $tableExists = (int) $connection->query(
+            "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" . $tableMap::TABLE_NAME . "'" // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        )->fetchColumn();
+        if ($tableExists === 0) {
+            // A missing value table is a failure, not an already-dropped column:
+            // throwing here leaves the definition in place (the DROP-first ordering
+            // above), instead of silently deleting a definition whose values were
+            // never dropped. A missing column on an existing table stays a no-op.
+            throw new \RuntimeException('Custom field value table does not exist: ' . $tableMap::TABLE_NAME);
+        }
         $columnExists = (int) $connection->query(
             "SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" . $tableMap::TABLE_NAME . "' AND COLUMN_NAME = '" . $column . "'" // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
         )->fetchColumn();

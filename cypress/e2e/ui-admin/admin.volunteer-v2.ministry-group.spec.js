@@ -28,7 +28,6 @@
  * under docker-admin.config.ts.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 
 const PREFIX = "UIMINGRP";
@@ -58,10 +57,6 @@ function freshAdminLogin() {
     cy.location("pathname").should("not.match", /\/admin\/$/);
 }
 
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
-}
-
 /** Ministries take their pool Group with them, so this is the whole cleanup. */
 function cleanupFixtures() {
     cy.makePrivateAdminAPICall("GET", MINISTRIES_URL, null, 200).then((resp) => {
@@ -86,7 +81,6 @@ before(() => {
 
 describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         cy.makePrivateAdminAPICall(
@@ -108,7 +102,6 @@ describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", 
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     beforeEach(() => {
