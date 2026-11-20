@@ -17,7 +17,6 @@ import { markEmailUnconfirmed } from "../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
-const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const PREFIX = "ROW09UI";
 const MARK = "row09-ui";
@@ -67,7 +66,6 @@ const cleanupRows = () => {
 
 describe("Admin → Member Portal members, audit, permissions and the person card", () => {
     const saved = {};
-    let savedVersion = "v1";
     let ministryId = 0;
     let teamId = 0;
     let lastNoteId = 0;
@@ -78,11 +76,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
                 saved[key] = body.values[key];
             });
         });
-        cy.makePrivateAdminAPICall("GET", VERSION_URL, null, 200).then(({ body }) => {
-            savedVersion = body.value ?? "v1";
-        });
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, RULE, 200);
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: "v2" }, 200);
         cleanupRows();
         cleanupMinistries();
         db("UPDATE person_per SET per_Email = 'pair.row09@example.com' WHERE per_ID IN (6, 7)");
@@ -106,7 +100,6 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cleanupRows();
         cleanupMinistries();
         cy.then(() => db("DELETE FROM note_nte WHERE nte_ID > ? AND nte_Type = 'verify' AND nte_EnteredBy = -2", [lastNoteId]));
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: savedVersion }, 200);
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, saved, 200);
     });
 

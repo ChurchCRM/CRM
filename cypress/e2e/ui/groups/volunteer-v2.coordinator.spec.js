@@ -23,7 +23,6 @@
  * not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_SETTING_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
 const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -51,7 +50,6 @@ let posMilk = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
 let emptyMinistryId = 0;
-let originalVersion = "v1";
 let originalLeadHours = "48";
 let seriesStart = "";
 let seriesEnd = "";
@@ -93,10 +91,6 @@ function dbOk(sql, params = []) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -386,13 +380,9 @@ after(() => {
 
 describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     before(() => {
-        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
         adminApi("GET", LEAD_SETTING_URL, null, 200).then((resp) => {
             originalLeadHours = String(resp.body.value ?? resp.body.Value ?? "48");
         });
-        setVersion("v2");
         cleanupFixtures();
         buildFixture();
     });
@@ -400,7 +390,6 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     after(() => {
         cleanupFixtures();
         adminApi("POST", LEAD_SETTING_URL, { value: originalLeadHours }, 200);
-        setVersion(originalVersion);
     });
 
     beforeEach(() => {

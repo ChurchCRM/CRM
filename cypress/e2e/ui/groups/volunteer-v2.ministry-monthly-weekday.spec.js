@@ -1,19 +1,13 @@
 /// <reference types="cypress" />
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 
 describe("Ministry New recurring event: Nth weekday of the month (#10906)", () => {
     const title = `Nth weekday ministry ${Date.now()}`;
-    let originalVersion = "v1";
     let ministryId = 0;
     const createdEventIds = [];
 
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v2" }, 200);
         cy.makePrivateAdminAPICall("POST", MINISTRIES_URL, { name: title, description: "#10906 fixture" }, 201).then((resp) => {
             ministryId = resp.body.ministry.id;
         });
@@ -23,7 +17,6 @@ describe("Ministry New recurring event: Nth weekday of the month (#10906)", () =
         cy.cleanupEvents(createdEventIds);
         cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}`, { active: false }, 200);
         cy.makePrivateAdminAPICall("DELETE", `${MINISTRIES_URL}/${ministryId}`, null, 200);
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: originalVersion }, 200);
     });
 
     it("previews and creates the 2nd Tuesday of each month", () => {

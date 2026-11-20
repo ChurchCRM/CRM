@@ -241,10 +241,6 @@
       "duration": 2534
     },
     {
-      "spec": "cypress/e2e/api/private/admin/private.admin.volunteer-opportunities.spec.js",
-      "duration": 2922
-    },
-    {
       "spec": "cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js",
       "duration": 4000
     },
@@ -991,18 +987,6 @@
     {
       "spec": "cypress/e2e/ui-admin/admin.user.spec.js",
       "duration": 18000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-opportunity-delete-role.spec.js",
-      "duration": 6000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-opportunity-editor.spec.js",
-      "duration": 6000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-v1-retirement.spec.js",
-      "duration": 28000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.volunteer-v2.anchored.spec.js",
