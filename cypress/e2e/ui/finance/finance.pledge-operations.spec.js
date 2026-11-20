@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { absoluteUrl } from "../../../support/urls";
+
 describe("Pledge Operations", () => {
     const getPaymentPayload = (overrides = {}) => ({
         type: "Payment",
@@ -105,7 +107,8 @@ describe("Pledge Operations", () => {
             cy.get("#savePledgeBtn").click();
 
             cy.wait("@updatePayment").its("response.statusCode").should("eq", 200);
-            cy.location("pathname").should("eq", "/finance/pledge/" + encodeURIComponent(groupKey));
+            const expectedPath = new URL(absoluteUrl("/finance/pledge/" + encodeURIComponent(groupKey))).pathname;
+            cy.location("pathname").should("eq", expectedPath);
             cy.request("/api/payments/pledges/" + encodeURIComponent(groupKey)).its("status").should("eq", 200);
         });
     });

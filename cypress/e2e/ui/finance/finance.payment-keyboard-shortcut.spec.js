@@ -72,6 +72,70 @@ describe("Payment editor Ctrl+Enter shortcut (#8942)", { defaultCommandTimeout: 
         cy.get("@submitPayment.all").should("have.length", 1);
     });
 
+    it("Ctrl+Enter waits for the restored date's fiscal year before saving", () => {
+        let originalDate;
+        let originalFiscalYear;
+        cy.get("#Date").invoke("val").then((value) => { originalDate = value; });
+        cy.get("#FYID").invoke("val").then((value) => { originalFiscalYear = value; });
+        let releaseLookup;
+        const lookupReady = new Promise((resolve) => { releaseLookup = resolve; });
+        cy.intercept("GET", "**/api/fiscalyear?date=2025-02-12", (req) =>
+            lookupReady.then(() => req.reply({ body: { fyId: 29 } })),
+        ).as("restoredFiscalYear");
+        cy.get("@depositId").then((depositId) => {
+            cy.visit(`/finance/pledge/new?type=Payment&depositId=${depositId}`, {
+                onBeforeLoad(win) {
+                    win.sessionStorage.setItem(`churchcrm_deposit_payment_defaults_${depositId}`,
+                        JSON.stringify({ date: "2025-02-12", method: "CASH" }));
+                },
+            });
+        });
+        cy.get("#FamilyName-ts-control").should("exist");
+        cy.get("#Date").should(($date) => { expect($date.val()).to.eq(originalDate); });
+        cy.get("#FYID").should(($fy) => { expect($fy.val()).to.eq(originalFiscalYear); });
+        fillCashPayment("23");
+        cy.get(".fund-amount").first().type("{ctrl}{enter}");
+        cy.get("#saveAndAddBtn").should("be.disabled");
+        cy.get("@submitPayment.all").should("have.length", 0);
+        cy.then(() => releaseLookup());
+        cy.wait("@submitPayment").then(({ request, response }) => {
+            expect(response.statusCode).to.eq(200);
+            expect(request.body.Date).to.eq("2025-02-12");
+            expect(request.body.FYID).to.eq(29);
+        });
+        cy.location("pathname").should("include", "/finance/pledge/new");
+        cy.get(".fund-amount").first().should("have.value", "");
+    });
+
+    it("Save preserves the server date and fiscal year when restoration fails", () => {
+        let originalDate;
+        let originalFiscalYear;
+        cy.get("#Date").invoke("val").then((value) => { originalDate = value; });
+        cy.get("#FYID").invoke("val").then((value) => { originalFiscalYear = value; });
+        cy.intercept("GET", "**/api/fiscalyear?date=2025-02-12", { statusCode: 503 }).as("failedFiscalYear");
+        cy.get("@depositId").then((depositId) => {
+            cy.visit(`/finance/pledge/new?type=Payment&depositId=${depositId}`, {
+                onBeforeLoad(win) {
+                    win.sessionStorage.setItem(`churchcrm_deposit_payment_defaults_${depositId}`,
+                        JSON.stringify({ date: "2025-02-12", method: "CASH" }));
+                },
+            });
+        });
+        cy.get("#FamilyName-ts-control").should("exist");
+        cy.wait("@failedFiscalYear");
+        cy.get("#Date").should(($date) => { expect($date.val()).to.eq(originalDate); });
+        cy.get("#FYID").should(($fy) => { expect($fy.val()).to.eq(originalFiscalYear); });
+        cy.get("@submitPayment.all").should("have.length", 0);
+        fillCashPayment("24");
+        cy.get("#savePledgeBtn").click();
+        cy.wait("@submitPayment").then(({ request, response }) => {
+            expect(response.statusCode).to.eq(200);
+            expect(request.body.Date).to.eq(originalDate);
+            expect(request.body.FYID).to.eq(Number(originalFiscalYear));
+        });
+        cy.location("pathname").should("match", /\/finance\/pledge\/[^/]+$/);
+    });
+
     it("does nothing on plain Enter", () => {
         fillCashPayment("67");
         cy.get(".fund-amount").first().type("{enter}");

@@ -68,7 +68,7 @@ describe("Deposit editor: what a treasurer does", { defaultCommandTimeout: 30000
                     cy.intercept("GET", "**/api/fiscalyear?date=2025-10-25").as("paymentFiscalYear");
                     cy.intercept("POST", "**/api/payments/pledges").as("savePayment");
                     cy.get("#Date").clear().type("2025-10-25").trigger("change");
-                    cy.wait("@paymentFiscalYear");
+                    cy.wait("@paymentFiscalYear").its("response.body.fyId").as("paymentFiscalYearId");
                     cy.get("#Method").select("CASH");
                     cy.get("#FamilyID").invoke("val", FAMILY_ID);
                     cy.get(".fund-select").first().select(1);
@@ -77,6 +77,9 @@ describe("Deposit editor: what a treasurer does", { defaultCommandTimeout: 30000
                     cy.wait("@savePayment").its("response.statusCode").should("eq", 200);
                     cy.get(".fund-amount").first().should("have.value", "");
                     cy.get("#Date").should("have.value", "2025-10-25");
+                    cy.get("@paymentFiscalYearId").then((fyId) => {
+                        cy.get("#FYID").should("have.value", String(fyId));
+                    });
                     cy.get("#Method").should("have.value", "CASH");
 
                     cy.visit(`/finance/pledge/new?type=Payment&depositId=${secondId}`);
@@ -86,6 +89,9 @@ describe("Deposit editor: what a treasurer does", { defaultCommandTimeout: 30000
 
                     cy.visit(`/finance/pledge/new?type=Payment&depositId=${firstId}`);
                     cy.get("#Date").should("have.value", "2025-10-25");
+                    cy.get("@paymentFiscalYearId").then((fyId) => {
+                        cy.get("#FYID").should("have.value", String(fyId));
+                    });
                     cy.get("#Method").should("have.value", "CASH");
                     cy.get("#Method").select("CHECK");
                     cy.get("#checkNumberGroup").should("be.visible");

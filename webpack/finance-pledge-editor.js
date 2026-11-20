@@ -179,22 +179,41 @@ window.CRM.onLocalesReady(() => {
   // ---- Date → auto-resolve FYID via FiscalYearUtils (/api/fiscalyear) ----
   const dateEl = document.getElementById("Date");
   const fyEl = document.getElementById("FYID");
+  let resolvedFiscalYearDate = dateEl?.value;
+  let fiscalYearLookup;
 
-  async function syncFiscalYearForDate(dateValue) {
-    if (!dateValue || !fyEl) return;
+  function syncFiscalYearForDate(dateValue, restore = false) {
+    const lookup = { date: dateValue, restore, originalDate: dateEl?.value };
+    fiscalYearLookup = lookup;
+    resolvedFiscalYearDate = null;
+    lookup.promise = resolveFiscalYear(dateValue, lookup);
+    return lookup.promise;
+  }
+
+  async function resolveFiscalYear(dateValue, lookup) {
+    if (!dateValue || !fyEl) return false;
 
     try {
       const res = await fetch(ROOT + "/api/fiscalyear?date=" + encodeURIComponent(dateValue));
-      if (!res.ok) return;
+      if (!res.ok) return false;
 
       const data = await res.json();
-      if (data.fyId && dateEl.value === dateValue) {
+      const expectedDate = lookup.restore ? lookup.originalDate : dateValue;
+      if (data.fyId && dateEl.value === expectedDate && fiscalYearLookup === lookup) {
+        if (lookup.restore) dateEl.value = dateValue;
         fyEl.value = String(data.fyId);
+        resolvedFiscalYearDate = dateValue;
         updateInstallments();
+        return true;
       }
     } catch {
-      // Keep the current fiscal year when the lookup fails.
+      return false;
+    } finally {
+      if (lookup.restore && fiscalYearLookup === lookup && resolvedFiscalYearDate === null) {
+        resolvedFiscalYearDate = lookup.originalDate;
+      }
     }
+    return false;
   }
 
   dateEl?.addEventListener("change", () => {
@@ -206,12 +225,10 @@ window.CRM.onLocalesReady(() => {
     const savedDefaults = getDepositPaymentDefaults(initialDepositId);
 
     if (dateEl && savedDefaults?.date) {
-      const originalDate = dateEl.value;
-      dateEl.value = savedDefaults.date;
-      if (dateEl.value) {
-        void syncFiscalYearForDate(savedDefaults.date);
-      } else {
-        dateEl.value = originalDate;
+      const candidateDate = dateEl.cloneNode();
+      candidateDate.value = savedDefaults.date;
+      if (candidateDate.value) {
+        void syncFiscalYearForDate(candidateDate.value, true);
       }
     }
 
@@ -334,11 +351,28 @@ window.CRM.onLocalesReady(() => {
 
   async function savePledge(redirectAfter) {
     if (saving) return;
-    const payload = collectPayload();
-    if (!payload) return;
-
     setSaving(true);
     try {
+      while (dateEl?.value && resolvedFiscalYearDate !== dateEl.value) {
+        const dateValue = dateEl.value;
+        const pending =
+          fiscalYearLookup?.date === dateValue ||
+          (fiscalYearLookup?.restore && fiscalYearLookup.originalDate === dateValue)
+            ? fiscalYearLookup.promise
+            : syncFiscalYearForDate(dateValue);
+        const resolved = await pending;
+        if (!resolved && dateEl.value === dateValue) {
+          fiscalYearLookup = null;
+          throw new Error("Fiscal year lookup failed");
+        }
+      }
+
+      const payload = collectPayload();
+      if (!payload) {
+        setSaving(false);
+        return;
+      }
+
       const isEditMode = !!GROUP_KEY;
       const url = isEditMode ? ROOT + "/api/payments/" + encodeURIComponent(GROUP_KEY) : ROOT + "/api/payments/pledges";
       const res = await fetch(url, {
