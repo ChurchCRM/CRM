@@ -842,14 +842,6 @@ msgid "Assign"
 msgstr "Kijelöl"
 
 #: 
-msgid "Date Updated"
-msgstr "Módosítás dátuma"
-
-#: 
-msgid "Updated By"
-msgstr "Frissítve: By"
-
-#: 
 msgid "Since"
 msgstr "Mióta"
 
@@ -1325,10 +1317,6 @@ msgid "People"
 msgstr "Emberek"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Vasárnapi iskolás gyerekek"
-
-#: 
 msgid "Role / Gender"
 msgstr "Szerep / Nem"
 
@@ -1373,10 +1361,6 @@ msgid "Updated"
 msgstr "Frissítve"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Ez a művelet nem vonható vissza)"
-
-#: 
 msgid "Note Editor"
 msgstr "Megjegyzés szerkesztő"
 
@@ -1395,10 +1379,6 @@ msgstr "Csoport"
 #: 
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#: 
-msgid "Exit"
-msgstr "Kijárat"
 
 #: 
 msgid "Add New"
@@ -1507,11 +1487,6 @@ msgid "Assign New Group"
 msgstr "Új csoport hozzárendelése"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Rendelni egy új Önkéntes lehetőség"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible összeg nem lehet nagyobb, mint a teljes összeg."
 
@@ -1605,10 +1580,6 @@ msgid "Warning"
 msgstr "Figyelmeztetés"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Ez a tulajdonság a típus is használják legalább egy tulajdonság."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Kérjük, erősítse meg törlését ez az ingatlan típusa"
@@ -1631,49 +1602,8 @@ msgid "Restore Database"
 msgstr "Adatbázis visszaállítása"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Kérjük, erősítse meg törlését"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Sajnáljuk, de nyilvántartást adományok ennek a családnak. Ez a család nem lehet törölni."
-
-#: 
-msgid "Return to Family View"
-msgstr "Vissza a Family megnézése"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "FIGYELEM: A család nyilvántartást adományok és nem kell hagyni, amíg ezek adományt társítva van egy másik család."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "FIGYELEM: Ez a művelet nem vonható vissza, és jogi hatásai lehetnek!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "FOLYÓ család ADOMÁNYOK"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Megjegyzés: Ez is törli az összes Notes társított Család rekordot."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Törlés Family Record CSAK"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Törlés Family Record és a családtagok"
-
-#: 
 msgid "Listing"
 msgstr "Listázás"
-
-#: 
-msgid "My User Settings"
-msgstr "A Felhasználói beállítások"
 
 #: 
 msgid "Variable name"
@@ -1765,14 +1695,6 @@ msgstr "Új jelszó"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Új jelszó megerősítése"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Önkéntes Opportunity szerkesztő"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Nem önkéntes lehetőségeket adtak még"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4557,10 +4479,6 @@ msgid "People Reports"
 msgstr "Emberek jelentései"
 
 #: 
-msgid "People Dashboard"
-msgstr "Emberek irányítópultja"
-
-#: 
 msgid "People Directory"
 msgstr "Emberek könyvtára"
 
@@ -5007,10 +4925,6 @@ msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "A család nem rendelkezik e-mailekhez"
-
-#: 
 msgid "Deleted"
 msgstr "Törölve"
 
@@ -5151,10 +5065,6 @@ msgstr "A tartalombiztonsági irányelv (CSP) betartatása a weboldali parancsf�
 #: 
 msgid "Enter event description..."
 msgstr "Adjon meg eseményleírást..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Adjon meg jegyzet szöveget itt..."
 
 #: 
 msgid "Note"
@@ -6474,20 +6384,8 @@ msgid "Additional Information"
 msgstr "Kiegészítő Információ"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Lehetőségek Hozzárendelése"
-
-#: 
 msgid "Choose a property..."
 msgstr "Válasszon egy tulajdonságot..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Válasszon lehetőségeket..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kapcsolat és személyes információ"
 
 #: 
 msgid "Edited"
@@ -6496,14 +6394,6 @@ msgstr "Szerkesztve"
 #: 
 msgid "Newsletter"
 msgstr "Hírlevelezés"
-
-#: 
-msgid "Personal"
-msgstr "Személyes"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Válasszon lehetőségeket"
 
 #: 
 msgid "Volunteer"
@@ -6690,10 +6580,6 @@ msgid "Confirm Property Deletion"
 msgstr "Tulajdonság törlésének megerősítése"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Önkéntes lehetőség törlésének megerősítése"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Törlés megerősítése"
 
@@ -6706,16 +6592,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Létező egyéni személymezők"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Létező önkéntes lehetőségek"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Mező sikeresen törölve"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Érvénytelen CSRF token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6766,10 +6644,6 @@ msgid "Add Property Type"
 msgstr "Tulajdonságtípus Hozzáadása"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Adja Hozzá az Első Tulajdonságtípusát"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
 
@@ -6788,10 +6662,6 @@ msgstr "Kijelentkezett"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Aktuális Pénzügyi Év"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Törlés (törli az összes kapcsolódó rekordot)"
 
 #: 
 msgid "Edit Property Type"
@@ -6842,10 +6712,6 @@ msgid "No property types found"
 msgstr "Nem találhatók tulajdonságtípusok"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "A tulajdonságtípust használó rekordok száma"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "A tulajdonságtípus opcionális részletes leírása"
 
@@ -6876,10 +6742,6 @@ msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Kövesse és kezelje az ígéret vállalásokat család és alap szerint"
-
-#: 
-msgid "View Properties"
-msgstr "Tulajdonságok Megtekintése"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7859,18 +7721,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Biztosan véglegesen törli ezt a fogadalom-rekordot?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Mégse, és visszatérés a családnézetbe"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Ha törli ezt a típust, az összes azt használó tulajdonságot is eltávolítja, és elveszíti a kapcsolódó tulajdonság-hozzárendeléseket."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Adományok áthelyezése a kiválasztott családhoz"
-
-#: 
 msgid "Calendar not found"
 msgstr "A naptár nem található"
 
@@ -8143,10 +7993,6 @@ msgid "or later to continue."
 msgstr "vagy újabb a folytatáshoz."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Miért jött\" megjegyzések"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d találat erre: \"%s\""
@@ -8255,10 +8101,6 @@ msgstr "Személyi adatlapok hozzáadása vagy szerkesztése"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Adománygyűjtő rendezvényekhez felajánlott tárgyak hozzáadása vagy szerkesztése"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Megjegyzések hozzáadása vagy szerkesztése személyekhez és családokhoz"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8515,10 +8357,6 @@ msgstr "Gyülekezeti események és tevékenységek létrehozása és kezelése"
 #: 
 msgid "Create or edit property type categories"
 msgstr "Tulajdonságtípus-kategóriák létrehozása vagy szerkesztése"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "Önkéntes pozíciók létrehozása vagy szerkesztése"
 
 #: 
 msgid "Current person"
@@ -8969,14 +8807,6 @@ msgid "Manage user account details and permissions"
 msgstr "Felhasználói fiók adatainak és jogosultságainak kezelése"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Önkéntes lehetőségek kezelése és tagok beosztása"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Személyes beállítások és fiókbeállítások kezelése"
-
-#: 
 msgid "Map cart items"
 msgstr "Lista elemeinek megjelenítése térképen"
 
@@ -9011,10 +8841,6 @@ msgstr "Áthelyezés csoportba"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Meglévő ChurchCRM vagy ChurchInfo telepítésről költözik? Töltse fel a biztonsági mentését és automatikusan visszaállítjuk az adatait."
-
-#: 
-msgid "My Settings"
-msgstr "Saját beállítások"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9101,10 +8927,6 @@ msgid "No timeline events yet."
 msgstr "Még nincsenek idővonal-események."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Még nincsenek önkéntes-beosztások."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Még nem áll készen?"
 
@@ -9141,10 +8963,6 @@ msgstr "Áttekintés"
 #: 
 msgid "Password Recovery"
 msgstr "Jelszó helyreállítás"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Elmúlt és következő 7 nap"
 
 #: 
 msgid "People by Classification"
@@ -9229,10 +9047,6 @@ msgstr "Több adománygyűjtési sorsolási nyertes rögzítése egyszerre"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Új felajánlások és befizetések rögzítése"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
 msgid "Remove from Class"
@@ -9615,10 +9429,6 @@ msgid "funds"
 msgstr "alapok"
 
 #: 
-msgid "opportunities"
-msgstr "lehetőségek"
-
-#: 
 msgid "or connect an external service"
 msgstr "vagy csatlakozzon egy külső szolgáltatáshoz"
 
@@ -9918,11 +9728,6 @@ msgstr "Az e-mail címek lekérése sikertelen"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "A telefonszámok lekérése sikertelen"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Keresse meg az önkénteseket egy adott lehetőséghez"
 
 #. Context: query_qry
 #: 
@@ -11047,10 +10852,6 @@ msgstr "Sötét"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11104,10 +10905,6 @@ msgstr "Malajálam - India"
 #: 
 msgid "Manage 2FA"
 msgstr "Kétlépéses hitelesítés kezelése"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Kezelje a további beállításokat, például az e-mail elválasztókat és a megjelenítési opciókat"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11366,14 +11163,6 @@ msgstr "Bejelentkeztette"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Inaktív eseményeknél a bejelentkezés le van tiltva. Aktiválja az eseményt az Események irányítópultjáról a bejelentkezés engedélyezéséhez."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Bejelentkezve az eseményre: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Kijelentkezve az eseményről: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11784,14 +11573,6 @@ msgid "e.g., 40.7128"
 msgstr "pl. 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Hiba történt a család törlésekor."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Hiba történt az adományok áthelyezésekor."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Legalább egy családtag szükséges"
 
@@ -11810,10 +11591,6 @@ msgstr "Törlés sikertelen"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Az iránynak \"fel\" vagy \"le\" kell lennie"
-
-#: 
-msgid "Failed to move donations."
-msgstr "Az adományok áthelyezése sikertelen volt."
 
 #: 
 msgid "Finance permission required"
@@ -11850,10 +11627,6 @@ msgstr "A tagság nem található"
 #: 
 msgid "Password successfully changed for"
 msgstr "A jelszó sikeresen megváltozott a következő felhasználónál:"
-
-#: 
-msgid "Please select a target family."
-msgstr "Kérjük, válasszon célcsaládot."
 
 #: 
 msgid "Target family not found"
@@ -12721,10 +12494,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "A tulajdonság típusa nem törölhető: %d tulajdonság még hivatkozik rá. Előbb rendelje hozzá újra, vagy törölje ezeket a tulajdonságokat."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Az önkéntességi lehetőség nem törölhető: %d személy még hozzá van rendelve. Előbb távolítsa el a hozzárendeléseket."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Az osztálynak p, f vagy g értékűnek kell lennie"
 
@@ -12735,10 +12504,6 @@ msgstr "Hibaüzenet másolása"
 #: 
 msgid "Could not load note."
 msgstr "A megjegyzés nem tölthető be."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "A leírás nem haladhatja meg a 100 karaktert"
 
 #: 
 msgid "Donation fund not found"
@@ -12761,10 +12526,6 @@ msgid "Failed to create property type"
 msgstr "A tulajdonság típusának létrehozása nem sikerült"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Az önkéntességi lehetőség létrehozása nem sikerült"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Az adományalap törlése nem sikerült"
 
@@ -12781,10 +12542,6 @@ msgid "Failed to delete property type"
 msgstr "A tulajdonság típusának törlése nem sikerült"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Az önkéntességi lehetőség törlése nem sikerült"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Az adományalap frissítése nem sikerült"
 
@@ -12797,10 +12554,6 @@ msgid "Failed to update property type"
 msgstr "A tulajdonság típusának frissítése nem sikerült"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Az önkéntességi lehetőség frissítése nem sikerült"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Az adománygyűjtés nem található"
 
@@ -12811,10 +12564,6 @@ msgstr "Telepítési azonosító"
 #: 
 msgid "Invalid class"
 msgstr "Érvénytelen osztály"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "A név nem haladhatja meg a 30 karaktert"
 
 #: 
 msgid "Note by %s deleted"
@@ -12837,16 +12586,8 @@ msgid "Read more"
 msgstr "Olvass tovább"
 
 #: 
-msgid "That name already exists."
-msgstr "Ez a név már létezik."
-
-#: 
 msgid "Title is required"
 msgstr "A cím megadása kötelező"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Az önkéntességi lehetőség nem található"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13055,14 +12796,6 @@ msgstr "A kijelentkezés sikertelen. Kérjük, próbálja újra."
 #: 
 msgid "Click Save to apply."
 msgstr "Kattintson a Mentés gombra az alkalmazáshoz."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A vágólap API nem elérhető. Kérjük, manuálisan másolja az URL-t."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot."
 
 #: 
 msgid "Code incomplete"
@@ -13643,14 +13376,6 @@ msgstr "Nincsenek letétek"
 #: 
 msgid "No Events Today"
 msgstr "Nincs mai esemény"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Nincsenek évfordulók az elmúlt vagy következő 7 napban"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Nincsenek születésnapok az elmúlt vagy következő 7 napban"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14597,24 +14322,12 @@ msgid "People &amp; Families"
 msgstr "Személyek &amp; Családok"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
-
-#: 
 msgid "User List"
 msgstr "Felhasználók listája"
 
 #: 
 msgid "View Person"
 msgstr "Személy megtekintése"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
 
 #: 
 msgid "Account locked"
@@ -15317,10 +15030,6 @@ msgid "thru %s"
 msgstr "%s-ig"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Miért jött jegyzetek %1$s %2$s számára"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s család %1$s tagja"
 
@@ -15425,14 +15134,6 @@ msgid "Output Method"
 msgstr "Kimeneti módszer"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Kérjük, erősítse meg a családi rekord törlését"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Kérjük, válasszon másik családot, amelyhez ezeket az adományokat társítja"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Átutalási szelvény"
 
@@ -15475,10 +15176,6 @@ msgstr "Támogatott formátumok"
 #: 
 msgid "System Configuration"
 msgstr "Rendszerkonfiguráció"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Ehhez az önkéntes lehetőséghez személyek vannak hozzárendelve. A törlés megszünteti a hozzárendelést"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15709,10 +15406,6 @@ msgid "Add New Fund"
 msgstr "Új alap hozzáadása"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Új lehetőség hozzáadása"
-
-#: 
 msgid "Add New Person"
 msgstr "Új személy hozzáadása"
 
@@ -15725,10 +15418,6 @@ msgid "Add New Role"
 msgstr "Új szerepkör hozzáadása"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Új önkéntes lehetőség hozzáadása"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Vasárnapi iskola osztály hozzáadása"
 
@@ -15737,24 +15426,8 @@ msgid "Delete this family?"
 msgstr "Törli ezt a családot?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Törölni szeretné ezt a családot? Egy oldalra kerül, ahol kiválaszthatja, mit töröljön. Ez nem vonható vissza."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Család törlésének megerősítése"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Tulajdonságtípus törlésének megerősítése"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tekintse át a nyilvános regisztrációs urlapon feliratkozott új családokat és egyéneket"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Önkéntes lehetőség törlésének megerősítése"
 
 #: 
 msgid "# Payments"
@@ -17421,14 +17094,6 @@ msgid "Find people who did not attend an event"
 msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Keresse meg azokat az önkénteseket, akik két meghatározott lehetőségkódnak felelnek meg"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Első önkéntes lehetőség"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Összehajtott füzet"
 
@@ -17505,10 +17170,6 @@ msgid "Run Report"
 msgstr "Jelentés futtatása"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Második önkéntes lehetőség"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Az oldalsávban, a bejelentkezési oldalon és az e-mailekben jelenik meg. A logó feltöltése helyettesíti a ChurchCRM márkákat mindenhol, ahol megjelenik."
 
@@ -17535,14 +17196,6 @@ msgstr "Az alapértelmezett ChurchCRM logó használata"
 #: 
 msgid "View Full Family Giving"
 msgstr "Teljes családi adományok megtekintése"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Önkéntes lehetőség"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Önkéntesek két lehetőséghez"
 
 #: 
 msgid "YTD"
@@ -18017,10 +17670,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "A nyilvános regisztrációs űrlapon beérkezett regisztrációk áttekintésre várnak. Az e-mail vagy telefon nélküli bejegyzések meg vannak jelölve – a kapcsolatfelvétel előtt ellenőrizd az elérhetőségeket."
 
 #: 
-msgid "Review now"
-msgstr "Áttekintés most"
-
-#: 
 msgid "Review self registrations"
 msgstr "Önregisztrációk áttekintése"
 
@@ -18071,10 +17720,6 @@ msgstr "Tegnap"
 #: 
 msgid "days ago"
 msgstr "napja"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "önregisztráció vár áttekintésre"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18375,10 +18020,6 @@ msgstr "Eseménytípust követő ütemezésnek meg kell neveznie az eseménytíp
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Egyetlen eseményre létszámot adó ütemezés nem követhet más eseményeket; töröld, és adj hozzá inkább ütemezést"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "A lehetőségek egyetlen listája, például „Gyermekfelügyelet” vagy „Fogadó”, amelyet a Személyek → Adminisztráció alatt vezetnek. Minden személy meg van jelölve azokkal a lehetőségekkel, amelyekben segíteni hajlandó, a rekordja Önkéntes lapján. Ennyit rögzít: nincsenek csapatok, ütemezések, dátumhoz rendelt beosztások vagy emlékeztető e-mailek. A címkéket a jelentések és a személyrekord használja."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18687,18 +18328,6 @@ msgstr "A háttérfeladatok futottak"
 #: 
 msgid "Birthday greeting"
 msgstr "Születésnapi köszöntés"
-
-#: 
-msgid "Both"
-msgstr "Mindkettő"
-
-#: 
-msgid "Both (transition)"
-msgstr "Mindkettő (átmenet)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Mindkettő – V1 és V2 egymás mellett (átmenet)"
 
 #: 
 msgid "Calendar address"
@@ -21785,22 +21414,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "A felhasználónak Esemény hozzáadása jogosultsággal kell rendelkeznie, vagy annak az önkéntes szolgálati területnek a koordinátorának kell lennie, amelyhez ez a naptár tartozik"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Önkéntes lehetőségek (régi)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – régi Önkéntes lehetőségek"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Szolgálati területek"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Önkéntes-kezelés"
-
-#: 
 msgid "Valid"
 msgstr "Érvényes"
 
@@ -21819,14 +21432,6 @@ msgstr "Az esemény megtekintése"
 #: 
 msgid "View this email"
 msgstr "Az e-mail megtekintése"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Önkéntes (régi)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Az Önkéntes-kezelés V2 nincs engedélyezve"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21933,10 +21538,6 @@ msgid "What the check found"
 msgstr "Mit talált az ellenőrzés"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Mik az önkéntes-élmények"
-
-#: 
 msgid "What you want to say"
 msgstr "Mit szeretnél mondani"
 
@@ -21967,10 +21568,6 @@ msgstr "Honnan származnak a dátumok"
 #: 
 msgid "Where we reach you"
 msgstr "Hol érünk el"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Melyik Önkéntes-kezelési élmény aktív. A V1 a régi Önkéntes lehetőségek funkció; a V2 az új ütemezési és beosztási munkafolyamat. A „Mindkettő” az átállás alatt egymás mellett mutatja őket."
 
 #: 
 msgid "Which events"
@@ -22381,10 +21978,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Csak az önkéntes vezető módosíthatja a szolgálat koordinátorát"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "A V1 kiválasztása szünetelteti a V2 e-mailt; minden sorban álló küldésre kerül, amikor a V2 újra bekapcsol, hacsak az esemény még nem fejeződött be."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "Adja hozzá ennek a szolgálatnak az eseményeit itt: munkanap, vasárnap összeülő osztály. A templom naptárára kerülnek, és létrehozás után megkérdezik, szeretné-e őket személyzettel felszerelni."
 
@@ -22495,10 +22088,6 @@ msgstr "Vendég regisztrálása"
 #: 
 msgid "Register walk-in guest"
 msgstr "vendég regisztrálása"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Vendégként regisztrálva a kioskon az esemény során: %s"
 
 #: 
 msgid "Registering..."
@@ -23231,10 +22820,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "A be nem töltött feladat figyelmeztetésének előideje (óra)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Önkéntesek kezelése"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Önkéntes szolgálatok, csapatok, ütemtervek és beosztások"
 
@@ -23245,14 +22830,6 @@ msgstr "A következő napokban betöltendő önkéntes feladatok"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Még szükséges önkéntesek ezekhez a közelgő előfordulásokhoz: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Mit jelentenek ezek?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Melyik önkéntes élményt használja ez a gyülekezet"
 
 #: 
 msgid "You are on the schedule"
@@ -24183,10 +23760,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d befizetés még nincs egyetlen befizetési tételen sem."
 
 #: 
-msgid "Closing line"
-msgstr "Záró sor"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Az idei dátumú befizetések mindegyike le van zárva."
 
@@ -24199,28 +23772,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Az idei befizetések mindegyike szerepel egy befizetési tételen."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Adóigazolások készítése"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Adakozási jelentés (adóigazolások)"
-
-#: 
-msgid "Opening line"
-msgstr "Nyitó sor"
-
-#: 
 msgid "Qty"
 msgstr "Db"
-
-#: 
-msgid "Signed by"
-msgstr "Aláírta"
-
-#: 
-msgid "Thank-you line"
-msgstr "Köszönő sor"
 
 #: 
 msgid "Year-End Giving"
@@ -24351,10 +23904,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "A nulla kikapcsol egy választható feltételt. Az életkorhoz teljes születési dátum kell; a tagság időtartamához tagsági dátum. A szükséges dátum nélküli személyek kimaradnak, és külön vannak számolva. Az elhunyt személyek, az inaktív személyek és besorolások, valamint az inaktív vagy felülvizsgálatra váró családok és személyek mindig kimaradnak; a jelenlegi besorolás és állapot számít, nem a korábbi."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s esedékes összege: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "A kiválasztott mappában nem hozható létre privát ideiglenes PDF-tároló."
 
@@ -24381,10 +23930,6 @@ msgstr "A PDF ideiglenes mappa nem létezik, vagy nem érhető el."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "A PDF ideiglenes mappa abszolút elérési út legyen."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Gyülekezeti adószám (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24429,10 +23974,6 @@ msgstr "Igazolás beállításai"
 #: 
 msgid "Statement Wording"
 msgstr "Igazolás szövege"
-
-#: 
-msgid "Tax Information"
-msgstr "Adóadatok"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24481,10 +24022,6 @@ msgstr "A gyülekezet nevének és címének használata"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "A Rendszerbeállításokban megadott levélfej-útvonal használata"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Szöveg, adószám és PDF-kezelés az adományigazolásokhoz"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26663,248 +26200,8 @@ msgid "Review Family Information"
 msgstr "Családi adatok ellenőrzése"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Már létezik „%s” nevű szolgálati terület. Válassza ki a listából, vagy adjon meg másik nevet."
-
-#: 
-msgid "A new ministry"
-msgstr "Új szolgálati terület"
-
-#: 
-msgid "A position"
-msgstr "Pozíció"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Hozzáadja az önkénteseket ({{total}}) a korábban átalakított pozíciókhoz?"
-
-#: 
-msgid "Already converted"
-msgstr "Már átalakítva"
-
-#: 
-msgid "An existing ministry"
-msgstr "Meglévő szolgálati terület"
-
-#: 
-msgid "Becomes"
-msgstr "Ebből lesz"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "A ChurchCRM kétféleképpen kezelheti az önkénteseket. Egyszerre csak az egyiket érdemes használni; az „Önkéntes mód” beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy jelenít meg, adatot soha nem töröl. A V1 és a Mindkettő csak addig választható, amíg az Önkéntes lehetőségek használatban vannak: ha minden lehetőség át van alakítva, és a gyülekezet a V2-t használja, eltűnnek a listából."
-
-#: 
-msgid "Convert"
-msgstr "Átalakítás"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Önkéntes lehetőségek átalakítása"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Most átalakítja a lehetőségeket ({{total}})? A V1 adatai változatlanok maradnak, amíg az Önkéntes lehetőségek megszűnnek."
-
-#: 
-msgid "Converted"
-msgstr "Átalakítva"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Átalakítva: pozíciók: {{positions}}, szolgálati területek: {{ministries}}, alkalmassá tett önkéntesek: {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Minden lehetőségből pozíció lesz egy szolgálati terület első csapatában, és mindenki, aki hozzá kapcsolódik, alkalmas lesz erre a pozícióra. Az önjelentkezés ezeknél a pozícióknál kezdetben ki van kapcsolva."
-
-#: 
-msgid "Everything is converted."
-msgstr "Minden át van alakítva."
-
-#: 
-msgid "Existing ministry"
-msgstr "Meglévő szolgálati terület"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Adjon az új szolgálati területnek legfeljebb 100 karakteres nevet."
-
-#: 
-msgid "Its own ministry"
-msgstr "Saját szolgálati terület"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Azóta kapcsolva: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Át nem alakítható kapcsolatok"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Saját új szolgálati területek"
-
-#: 
-msgid "New ministry name"
-msgstr "Új szolgálati terület neve"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Nem megy ki e-mail, és az Önkéntes lehetőségek változatlanok maradnak, amíg meg nem szűnnek."
-
-#: 
-msgid "No name"
-msgstr "Nincs név"
-
-#: 
-msgid "Not converted"
-msgstr "Nincs átalakítva"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Funkciók kapcsolóinak megnyitása"
-
-#: 
-msgid "Open Ministries"
-msgstr "Szolgálati területek megnyitása"
-
-#: 
-msgid "Opportunities"
-msgstr "Lehetőségek"
-
-#: 
-msgid "Opportunity"
-msgstr "Lehetőség"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "%d. lehetőség"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Az átalakítás óta átalakított Önkéntes lehetőségekhez kapcsolt személyek: %d. Adja hozzá őket a pozícióikhoz, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Először tekintse meg az átalakítás előnézetét, és küldje el az általa visszaadott revíziót."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Átnevezve, hogy a nevek egyediek maradjanak"
-
-#: 
-msgid "Review the conversion"
-msgstr "Átalakítás áttekintése"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Küldje el az átalakítási választást JSON-objektumként."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Küldje el a szolgálati területté váló lehetőségeket azonosítók listájaként."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Ez a szolgálati terület nem létezik."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Az a ChurchCRM-verzió, amelyben egy adminisztrátor elvetette az Önkéntes lehetőségek megszűnéséről szóló értesítést."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Az Önkéntes lehetőségek megváltoztak az előnézet óta. Ellenőrizze újra az előnézetet, majd alakítsa át."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "A megerősítést nem sikerült megnyitni. Töltse be újra az oldalt, és próbálja újra."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Az átalakítás előnézete nem készíthető el."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Az átalakítás nem sikerült. Semmi sem változott."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "A(z) „%s” szolgálati területnek nincs csapata a pozíciókhoz."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "A szerver nem érhető el. Töltse be újra az oldalt, hogy lássa, lefutott-e az átalakítás."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nincsenek átalakítható Önkéntes lehetőségek."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Az Önkéntesek kezelése Mindkettő módra vált, így az új szolgálati területek az Önkéntes lehetőségek mellett láthatók."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Az Önkéntes lehetőségek megszűnnek"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Önkéntes lehetőségek átalakítva"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át őket szolgálati területekké, hogy megmaradjon, ki miben szolgál."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át most szolgálati területekké a lehetőségeit (%1$d) és önkénteseit (%2$d). Az eredményt megtekintheti, mielőtt bármi megváltozna."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Alkalmassá tett önkéntesek"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Átalakított pozíciókhoz hozzáadandó önkéntesek"
-
-#: 
-msgid "What it becomes"
-msgstr "Mivé válik"
-
-#: 
-msgid "What will happen"
-msgstr "Mi fog történni"
-
-#: 
-msgid "Where they go"
-msgstr "Hová kerülnek"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Mely korábbi Önkéntes lehetőségek lettek átalakítva, és melyikből milyen pozíció lett."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Melyik önkéntes módot használja ez a gyülekezet. Az Önkéntes lehetőségek (V1) 2027 elején megszűnnek."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Az Önkéntes lehetőségei át lettek alakítva szolgálati területekké. Állítsa az Önkéntesek kezelését V2-re, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "új szolgálati területté: {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ebbe a szolgálati területbe: {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "már nincs a ChurchCRM-ben"
 
 #: 
 msgid "Collapse sidebar"
@@ -27025,10 +26322,6 @@ msgid "Last verified"
 msgstr "Utolsó ellenőrzés"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "A család egyik aktív, jóváhagyott tagjának sincs e-mail-címe. Ehelyett ellenőrizze az adatokat személyesen."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Ezekre a költségvetési évekre nem található felajánlás."
 
@@ -27051,10 +26344,6 @@ msgstr "Jelentkezzen be a tagi portálra ezzel az e-mail-címmel, és tekintse �
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ez a család inaktív, ezért nem kap ellenőrző e-maileket."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ez az önregisztrált család jóváhagyásra vár. Jóváhagyáskor a család e-mailben meghívót kap, hogy jelentkezzen be a tagi portálra és tekintse át adatait."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27087,10 +26376,6 @@ msgid "%d default skipped for another reason (the occurrence is over, canceled o
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
 msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
 
 #: 
 msgid "Assignment canceled"
@@ -27139,10 +26424,6 @@ msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges.
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Ez az alkalom törölve lett"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27307,10 +26588,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "A bejelentkezés letiltása is, hogy ne használhassák a Tagi portált"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Mielőtt kimutatásokat küld"
-
-#: 
 msgid "Birthday today"
 msgstr "Ma van a születésnapja"
 
@@ -27393,10 +26670,6 @@ msgstr "Személyek és családok törlése"
 #: 
 msgid "Delete the login for"
 msgstr "Bejelentkezés törlése:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Befizetési diagram időtartománya"
 
 #: 
 msgid "Disabled at"
@@ -27651,10 +26924,6 @@ msgid "Preview Sample Letter"
 msgstr "Mintalevél előnézete"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "A kanadai adománykimutatások privát aláírásának azonosítója. Az aláírás feltöltésével kezelhető."
-
-#: 
 msgid "Property Type"
 msgstr "Tulajdonságtípus"
 
@@ -27693,10 +26962,6 @@ msgstr "Áttekintés és szűrés"
 #: 
 msgid "Review and vote"
 msgstr "Áttekintés és szavazás"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Tekintse át az évet, majd töltse le az adománykimutatásokat."
 
 #: 
 msgid "Review what we are considering"
@@ -27745,10 +27010,6 @@ msgstr "Erős"
 #: 
 msgid "Support"
 msgstr "Támogatás"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Adóazonosító és PDF-beállítások"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27863,10 +27124,6 @@ msgid "View people and families"
 msgstr "Személyek és családok megtekintése"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Az önkéntesek kezelése ki van kapcsolva ennél az egyháznál"
-
-#: 
 msgid "Weak"
 msgstr "Gyenge"
 
@@ -27935,10 +27192,6 @@ msgid "Latest Notes"
 msgstr "Legújabb jegyzetek"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Még nincsenek hozzáadott jegyzetek."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Kezdje el a regisztrációt a QR-kód megszerzéséhez."
 
@@ -27949,4 +27202,746 @@ msgstr "Ez a jelszó vagy kód nem helyes. A kétlépcsős azonosítás továbbr
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "A kétlépcsős azonosítás már be van állítva. A titka csak a regisztráció során jelenik meg."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d adomány, összesen %2$s"
+msgstr[1] "%1$d adomány, összesen %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "Jelenleg %d család rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d család még nem kaphat igazolást, és kimarad. Javítsa az alatta felsorolt problémát, majd válassza az Újraellenőrzés lehetőséget."
+msgstr[1] "%d család még nem kaphat igazolást, és kimarad. Javítsa az alatta felsorolt problémát, majd válassza az Újraellenőrzés lehetőséget."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "Jelenleg %d csoport rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "Jelenleg %d személy rendelkezik ilyen típusú tulajdonsággal."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d kiadás érhető el a telepített verzió óta."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Nem készült igazolás."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: adja meg az ellenőrzött teljes adományozóneve(ke)t, erősítse meg az adományozókat, és erősítsen meg egy adományozói csoportot. A vegyes adományozójú fizetési csoportokat ezen a funkción kívül kell kezelni."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: az adományok vagy a postacím megváltozott az áttekintés óta. Válassza az Újraellenőrzés lehetőséget, és erősítse meg újra az adományozót."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} részlet)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} részlet)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Egy hitelkártyás vagy banki beszedési fizetés olyan befizetésben van, amely még nincs lezárva. Zárja le a befizetést, amint a fizetés teljesült."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Egy fizetésnek nem levonható összege van. Az itteni kanadai igazolások csak előny nélküli adományokat támogatnak."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Egy fizetésnek érvénytelen pénzösszege van."
+
+#: 
+msgid "A payment has no date."
+msgstr "Egy fizetésnek nincs dátuma."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Egy fizetés dátuma a kiállítás dátuma utáni."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Egy fizetés problémásként van megjelölve."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Egy fizetés nulla vagy negatív."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Érvényes CSRF tokennel ellátott, áttekintett POST szükséges."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "A kiválasztott család már nem létezik."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Az aláíráskép nem biztonságos digitális aláírás."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Rendszerfrissítés érhető el. Kérje meg az adminisztrátort, hogy frissítse a telepítést."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Minden szereplő sor előny nélküli pénzbeli adomány."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Minden szükséges kanadai igazolási beállítás ki van töltve."
+
+#: 
+msgid "Also delete family members"
+msgstr "Családtagok törlése is"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Előnyök összege"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Adományok összege"
+
+#: 
+msgid "Amount per installment"
+msgstr "Összeg részletenként"
+
+#: 
+msgid "Amounts entered are"
+msgstr "A megadott összegek alapja"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Egy adminisztrátor tölti fel a Jelentésbeállítások alatt."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Jóváhagyva, de nem lett meghívó küldve"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Kérje meg a rendszergazdát, hogy frissítse a ChurchCRM-et a legújabb verzióra."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Felhatalmazott aláírás"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Kanadai Adóhatóság"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadai hivatalos igazolás"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "A kanadai hivatalos igazolásokhoz a gyülekezet országának Kanadának kell lennie az Egyházi információkban."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "A kanadai igazolásokhoz a teljes naptári év és minden alap szükséges, egyéb szűrők nélkül."
+
+#: 
+msgid "Change Selection"
+msgstr "Kijelölés módosítása"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Jótékonysági szervezet hivatalos neve"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Jótékonysági szervezet bejegyzett címe"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Jótékonysági szervezet nyilvántartási száma"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Az igazolásokhoz szükséges jótékonysági adatok még nincsenek kitöltve. Adja meg a hivatalos nevet, a bejegyzett címet, a nyilvántartási számot és a kiállítás helyét, amikor tudja. A pénzügy addig is működik."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Jótékonysági szervezet az igazolásokon"
+
+#: 
+msgid "Check Again"
+msgstr "Újraellenőrzés"
+
+#: 
+msgid "Check the year"
+msgstr "Év ellenőrzése"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Ellenőrizze az évet, állítsa be a kimutatást, majd töltse le."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "A részletösszeghez válasszon Heti, Havi vagy Negyedéves lehetőséget."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Válasszon érvényes adományozási naptári évet."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Válasszon eredetit vagy másolatot."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Válasszon teljes vállalási összeget vagy részletösszeget."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "A ChurchCRM fordításait a ChurchCRM GitHub-tárházában kezelik. A következő módon segíthet"
+
+#: 
+msgid "Commitment amount"
+msgstr "Vállalási összeg"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Hasonlítsa össze a másolatot a megőrzött eredetivel, és erősítse meg, hogy minden igazolási adat változatlan."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "A letöltés előtt töltse ki minden igazolás visszaigazolását."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Töltse ki a jótékonysági szervezet hivatalos nevét, bejegyzett címét, nyilvántartási számát, a kiállítás helyét és a nyomtatott aláírót."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Visszaigazoló levél nyomtatott aláírója"
+
+#: 
+msgid "Copy Kind"
+msgstr "Másolat típusa"
+
+#: 
+msgid "Currency"
+msgstr "Pénznem"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Pénznem szimbóluma $ vagy CAD"
+
+#: 
+msgid "Date received"
+msgstr "Beérkezés dátuma"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "A törlésével %d tulajdonság és minden hozzárendelése is törlődik, így semmi sem marad függőben."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "A kiválasztott év minden adománya a fent együtt megnevezett adományozó(k)é?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Ne használja újra ugyanazt a számot egy másik igazoláshoz, ne állítson ki igazolást kétszer ugyanazokra az adományokra, és ne generálja újra a megváltozott adatokat változatlan eredetiként."
+
+#: 
+msgid "Duplicate"
+msgstr "Másolat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Másolat / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "A jövedelemadó szempontjából elszámolható adományok összege"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Adja meg az ütemezést és a részletdátumokat a vállalás előnézetéhez."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Adjon meg érvényes első és utolsó részletdátumot a megfelelő sorrendben."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Adjon meg érvényes részletösszegeket legfeljebb két tizedesjeggyel."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "A meglévő felajánlások megőrzik rögzített összegeiket. Csak minden ütemezett adomány megadásakor válasszon részletenkénti összeget."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "A családfők és házastársak alapján kitöltve. Szerkessze úgy, hogy pontosan egyezzen az adományozókkal."
+
+#: 
+msgid "First installment"
+msgstr "Első részlet"
+
+#: 
+msgid "Full commitment"
+msgstr "Teljes vállalás"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Adókimutatások létrehozása"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Adományozási naptári év"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Adománykimutatás — nem hivatalos adományigazolás"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Segítsen fordítani a GitHubon"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "A korábbi borítékváltozások nem támogatottak."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Összehasonlítottam a megőrzött eredetivel: az adományozó, az összeg, a sorszám és a szöveg változatlan. Ez nem javítás vagy csere."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "A kiállított PDF-et és egy külső igazolási naplót a jótékonysági szervezet kanadai irattárában őrzöm meg."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Ha a megőrzött eredeti nem érhető el vagy eltér, használja a külső CRA érvénytelenítési/csere eljárásait."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Fizetési megjegyzések belefoglalása: áttekintettem őket, mint az adományozó számára megfelelőket."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Ennek a családnak a belefoglalása a letöltésbe"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Telepített verzió: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "A részletösszegek csak felajánlásokhoz használhatók."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "A részletdátumoknak a kiválasztott költségvetési éven belül kell lenniük."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Érvénytelen vagy hiányzó CSRF token"
+
+#: 
+msgid "Issue Date"
+msgstr "Kiállítás dátuma"
+
+#: 
+msgid "Issue Locality"
+msgstr "Kiállítás helye"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Őrizze meg az eredeti PDF-et és egy külső igazolási naplót a jótékonysági szervezet kanadai irattárában."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Utolsó részlet legkésőbb"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "A levél szövege, a jótékonysági adatok és a PDF-kezelés egyszer kerül beállításra a Kimutatásbeállításokban."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "A levél szövege, a jótékonysági adatok és a PDF-kezelés az adománykimutatásokhoz"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Legfeljebb 2 MiB és 2000 × 1000 pixel. Válasszon új képet a tárolt aláírás cseréjéhez. Az aláíráskép nem biztonságos digitális aláírás."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "A tagi bejelentkezés ki van kapcsolva, így a(z) %s család senkije sem tud bejelentkezni a tagi portálra. Egy adminisztrátor bekapcsolhatja az Admin → Tagi portál alatt."
+
+#: 
+msgid "Memo"
+msgstr "Megjegyzés"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "A vegyes adományozójú családi fizetési csoportok itt nem bonthatók szét; kezelje őket ezen a funkción kívül."
+
+#: 
+msgid "Narrow the list"
+msgstr "Lista szűkítése"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Egyetlen család sem felel meg ezeknek a szűrőknek ehhez: %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Nincs átfedő egyéni vagy összesített igazolás."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Ehhez a családhoz még nem állítható ki igazolás"
+
+#: 
+msgid "No signature on file"
+msgstr "Nincs aláírás a fájlban"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Nem — eltérő adományozók; kezelje ezen a funkción kívül"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "A jelenlegi bejelentkezési szabály szerint a(z) %s család senkije sem tud bejelentkezni a tagi portálra."
+
+#: 
+msgid "None / Aucun"
+msgstr "Nincs / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nem áll készen kanadai igazolások kiállítására. Még hiányzik"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Hivatalos igazolás / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Hivatalos igazolás jövedelemadó céljára / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "A hivatalos igazolásokhoz 123456789RR0001 formátumú nyilvántartási szám és aláíráskép szükséges."
+
+#: 
+msgid "Original"
+msgstr "Eredeti"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Eredeti kiállítási dátum (adja meg a megőrzött eredetiből)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "A fizetési dátumok az adomány beérkezési dátumait tükrözik, beleértve a dokumentált postai csekk postabélyegző-kezelését is."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "A szokásos adománykimutatásokra nyomtatva, például az EIN az Egyesült Államokban. Ugyanez az érték az Egyházi információkban is szerepel."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Privát adománykimutatási aláírási eszköz azonosítója. Aláírásfeltöltéssel kezelve."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Tulajdonságok / Hozzárendelések"
+
+#: 
+msgid "Property deleted"
+msgstr "Tulajdonság törölve"
+
+#: 
+msgid "Property type deleted"
+msgstr "Tulajdonságtípus törölve"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Igazolás záró sora"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Igazolás kiállítási helye"
+
+#: 
+msgid "Receipt No."
+msgstr "Igazolás száma"
+
+#: 
+msgid "Registration Number"
+msgstr "Nyilvántartási szám"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Nyilvántartási szám 123456789RR0001 formátumban"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "A kiadási megjegyzések jelenleg nem érhetők el."
+
+#: 
+msgid "Releases"
+msgstr "Kiadások"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Hátralévő vállalás ehhez: %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA-követelmény eltávolítása"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Eltávolítja a tárolt aláírásképet? A hivatalos igazolásokhoz szükség van egyre a fájlban."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "A jelentések és emlékeztetők ezt a teljes időszaki vállalást hasonlítják össze az adományozással. A fennmaradó egyenleg nem lejárt részletszámítás."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "A jelentések és emlékeztetők a fent látható teljes vállalást használják. A fennmaradó egyenleg nem lejárt részletszámítás."
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA megkövetelése"
+
+#: 
+msgid "Reset Options"
+msgstr "Beállítások visszaállítása"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Kiválasztott családok áttekintése"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "MINTA — ADÓCÉLRA NEM ÉRVÉNYES"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Minta aláírás-helykitöltő"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Adja meg, hogy szükséges-e a 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "A biztonsági frissítések és a támogatás csak a legújabb verzióhoz érhetők el."
+
+#: 
+msgid "Select the families to review."
+msgstr "Válassza ki az áttekintendő családokat."
+
+#: 
+msgid "Set up the statement"
+msgstr "Kimutatás beállítása"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "A folytatáshoz állítsa be a kétfaktoros hitelesítést."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Megosztott boríték ütközése: egy másik család jelenleg ezt a borítékszámot használja."
+
+#: 
+msgid "Signature Image"
+msgstr "Aláíráskép"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Aláíráskép (Admin, Jelentésbeállítások)"
+
+#: 
+msgid "Signature on file"
+msgstr "Aláírás a fájlban"
+
+#: 
+msgid "Sincerely"
+msgstr "Üdvözlettel"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Ismétlődő felajánlás szerkesztésekor adja meg az összeg alapját."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Szokásos adománykimutatás"
+
+#: 
+msgid "Statement Template"
+msgstr "Kimutatássablon"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Adjon meg legkésőbb mai kiállítási dátumot."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Adószám a kimutatásokon"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "A(z) %s családnak nincsenek élő tagjai, akiket meg lehetne hívni a tagi portálra."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "A kanadai nyilvántartási szám formátuma 123456789RR0001 kell legyen. Ez nem ellenőrzi a nyilvántartási állapotot."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "A jótékonysági szervezet nyilvántartási számának szövegnek kell lennie."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "A hivatalos igazolásokra nyomtatott jótékonysági nyilvántartási szám. Üresen hagyva az Egyházi információk adószámát használja."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "A jótékonysági szervezet bejegyzett címe. Üresen hagyva az Egyházi információk címét használja."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "A záró kifejezés az aláíró felett, például Üdvözlettel."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "A teljes vállalás alaponként nem haladhatja meg a 999999.99 értéket, és az összegek legfeljebb két tizedesjegyet használhatnak."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Az adományok vagy a postacím megváltozott az utolsó ellenőrzés óta. Tekintse át őket, és erősítse meg újra az adományozót."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "A postacím hiányos. Utca, város, tartomány és irányítószám szükséges."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Az a név, amelyen a jótékonysági szervezet be van jegyezve. Eltérhet a gyülekezet nevétől."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Az a hely, ahol az igazolásokat kiállítják. Üresen hagyva az Egyházi információk városát használja."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "A nyomtatott adománykimutatási aláíró felhatalmazott ezeknek az igazolásoknak az aláírására."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "A rendszer pénznemszimbólumának $-nak kell lennie, vagy CAD-ot kell jelölnie a kanadai igazolásokhoz."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "A kiválasztott naptári évben nincsenek fizetések."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Ezek a valódi adományozók ennek a családnak/naptári évnek minden adományához, és a postacím helyes."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Ez a kép az aláíró neve fölé kerül nyomtatásra az adománykimutatásokon és igazolásokon. A jótékonysági adatok és az aláíró nyomtatott neve a Pénzügy, Kimutatásbeállítások alatt találhatók."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Ez a beállítás kanadai igazolásként formázza az igazolást, de nem vezet igazolási nyilvántartást és nem őrzi meg a PDF-eket."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Ez az önregisztrált család jóváhagyásra vár. A jóváhagyás e-mailben meghívót küld minden tagnak, aki be tud jelentkezni a tagi portálra, hogy tekintse át a család adatait."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Ennek az eszköznek nincs érvénytelenítési/csere munkafolyamata; a javításokhoz/elveszett igazolások cseréjéhez használja a meglévő, CRA-nak megfelelő eljárásait."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Ennek a felhasználónak be kell állítania a 2FA-t"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Ez véglegesen törli a család rekordját és megjegyzéseit. Ez nem vonható vissza."
+
+#: 
+msgid "Total commitment"
+msgstr "Teljes vállalás"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "A vállalás előnézete nem lehetséges."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Aláírás feltöltése vagy cseréje"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Töltse fel a felhatalmazott adózási aláírást a Jelentésbeállításokban."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Használjon a kiválasztott költségvetési éven belüli dátumokat. A havi és negyedéves adományok az első részlet napját, vagy a rövidebb hónapok utolsó napját használják."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Ellenőrzött teljes adományozónév (nevek)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Ehelyett személyesen ellenőrizze a családot."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Ellenőrizze minden család teljes adományozónevét és címét. A vegyes adományozójú fizetési csoportokat ezen a funkción kívül kell kezelni."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "%s verzió érhető el. Kérje meg az adminisztrátort, hogy frissítse a telepítést."
+
+#: 
+msgid "View all emails"
+msgstr "Minden e-mail megtekintése"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Igen — egy ellenőrzött adományozói csoport"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "A gyülekezet országa Kanada, így a kimutatások létrehozásakor kanadai hivatalos igazolások is elérhetők."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "A gyülekezet országa Kanada, így kanadai hivatalos igazolások érhetők el az Adománykimutatásokon, és a szokásos kimutatások meg vannak jelölve, hogy nem hivatalos adományigazolások."
+
+#: 
+msgid "groups"
+msgstr "Csoportok"
 

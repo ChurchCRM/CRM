@@ -73,9 +73,9 @@ function updateUserConfig(Request $request, Response $response, array $args): Re
         ->findOne();
 
     if ($config === null) {
-        // SettingsIndividual.php clones a default when the per-user row does
-        // not exist. Follow that same rule, but authorize BEFORE cloning so
-        // a denied request cannot create a new security-sensitive setting.
+        // Clone the default when the per-user row does not exist, but
+        // authorize BEFORE cloning so a denied request cannot create a new
+        // security-sensitive setting.
         $default = UserConfigQuery::create()
             ->filterByPeronId(0)
             ->filterByName($name)

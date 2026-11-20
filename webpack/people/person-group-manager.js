@@ -7,7 +7,6 @@
  * - Remove person from a group
  *
  * Uses Bootstrap 5 Modal API (via Tabler) and TomSelect (from churchcrm bundle).
- * Replaces the legacy jQuery handlers in skin/js/PersonView.js.
  */
 
 import { confirmAction } from "../common/confirm-action";

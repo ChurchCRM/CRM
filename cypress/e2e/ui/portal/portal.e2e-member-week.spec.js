@@ -42,7 +42,6 @@
  * `after` — an `after` hook does not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const MEMBER_USERNAME = 100;
@@ -56,7 +55,6 @@ const PREFIX = "E2E9869MW";
 const EVENT_TITLE = `${PREFIX} Sunday Gathering`;
 const HELP_WANTED_TEXT = `${PREFIX} we could use another pair of hands on a Sunday`;
 
-let originalVersion = "v1";
 let ministryId = 0;
 let teamId = 0;
 let posDoor = 0; // the assignment the coordinator sends
@@ -81,10 +79,6 @@ function dbOk(sql, params = []) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function setConfig(name, value) {
@@ -248,10 +242,6 @@ after(() => {
 
 describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to-end run", () => {
     before(() => {
-        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         setConfig("bPortalShowVolunteer", "1");
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
 
@@ -415,7 +405,6 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
     after(() => {
         cleanupFixtures();
         setVisibleCalendars([]);
-        setVersion(originalVersion);
     });
 
     describe("Member Portal e2e — #9869 scenario 1, a member's week", () => {
@@ -629,7 +618,7 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
 
             // And the one URL that would take a staff login to the dashboard asks
             // this one to sign in as staff instead.
-            cy.visit("/v2/dashboard", { failOnStatusCode: false });
+            cy.visit("/people/dashboard", { failOnStatusCode: false });
             cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
         });
     });

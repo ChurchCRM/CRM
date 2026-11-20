@@ -833,14 +833,6 @@ msgid "Assign"
 msgstr "割り当て"
 
 #: 
-msgid "Date Updated"
-msgstr "更新日"
-
-#: 
-msgid "Updated By"
-msgstr "更新者"
-
-#: 
 msgid "Since"
 msgstr "以降"
 
@@ -1297,10 +1289,6 @@ msgid "People"
 msgstr "人物"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "日曜学校の子供たち"
-
-#: 
 msgid "Role / Gender"
 msgstr "役割 / 性別"
 
@@ -1345,10 +1333,6 @@ msgid "Updated"
 msgstr "更新日"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(この操作は取り消せません)"
-
-#: 
 msgid "Note Editor"
 msgstr "ノートエディター"
 
@@ -1367,10 +1351,6 @@ msgstr "グループ"
 #: 
 msgid "Default"
 msgstr "デフォルト"
-
-#: 
-msgid "Exit"
-msgstr "終了"
 
 #: 
 msgid "Add New"
@@ -1477,10 +1457,6 @@ msgid "Assign New Group"
 msgstr "新しいグループを割り当て"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "新しいボランティア機会を割り当て"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "控除対象外金額を合計金額より大きくすることはできません。"
 
@@ -1573,10 +1549,6 @@ msgid "Warning"
 msgstr "警告"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "このプロパティタイプはまだ少なくとも1つのプロパティで使用されています。"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "このプロパティタイプの削除を確認してください"
 
@@ -1598,48 +1570,8 @@ msgid "Restore Database"
 msgstr "データベースの復元"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "削除の確認:"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "申し訳ありませんが、この世帯には寄付の記録があります。この世帯は削除できません。"
-
-#: 
-msgid "Return to Family View"
-msgstr "世帯ビューに戻る"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "警告: この世帯には寄付の記録があります。これらの寄付を別の世帯に関連付けるまで、この世帯を削除することはできません。"
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "警告: この操作は取り消すことができず、法的影響が生じる可能性があります！"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "現在の寄付実績のある世帯"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "注意: これにより、この世帯レコードに関連付けられたすべてのノートも削除されます。"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "世帯レコードのみ削除"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "世帯レコードと世帯メンバーを削除"
-
-#: 
 msgid "Listing"
 msgstr "一覧"
-
-#: 
-msgid "My User Settings"
-msgstr "マイ・ユーザー設定"
 
 #: 
 msgid "Variable name"
@@ -1724,14 +1656,6 @@ msgstr "新パスワード"
 #: 
 msgid "Confirm New Password"
 msgstr "新パスワードの確認"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "ボランティア機会エディター"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "ボランティアの機会はまだ追加されていません"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4499,10 +4423,6 @@ msgid "People Reports"
 msgstr "人物レポート"
 
 #: 
-msgid "People Dashboard"
-msgstr "人物ダッシュボード"
-
-#: 
 msgid "People Directory"
 msgstr "人物ディレクトリ"
 
@@ -4947,10 +4867,6 @@ msgid "View Person Page"
 msgstr "人物ページを表示"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "家族には使用できるメールがありません"
-
-#: 
 msgid "Deleted"
 msgstr "削除"
 
@@ -5091,10 +5007,6 @@ msgstr "クロスサイトスクリプティングから保護するためにコ
 #: 
 msgid "Enter event description..."
 msgstr "イベントの説明を入力..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "ここにノートテキストを入力..."
 
 #: 
 msgid "Note"
@@ -6412,20 +6324,8 @@ msgid "Additional Information"
 msgstr "追加情報"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "機会を割り当て"
-
-#: 
 msgid "Choose a property..."
 msgstr "プロパティを選択..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "機会を選択..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "連絡先と個人情報"
 
 #: 
 msgid "Edited"
@@ -6434,14 +6334,6 @@ msgstr "編集済み"
 #: 
 msgid "Newsletter"
 msgstr "ニュースレター"
-
-#: 
-msgid "Personal"
-msgstr "個人"
-
-#: 
-msgid "Select Opportunities"
-msgstr "機会を選択"
 
 #: 
 msgid "Volunteer"
@@ -6626,10 +6518,6 @@ msgid "Confirm Property Deletion"
 msgstr "プロパティ削除の確認"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "ボランティア機会削除の確認"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "削除の確認"
 
@@ -6642,16 +6530,8 @@ msgid "Existing Custom Person Fields"
 msgstr "既存のカスタム個人フィールド"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "既存のボランティア機会"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "フィールドが正常に削除されました"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "無効な CSRF トークンです"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6702,10 +6582,6 @@ msgid "Add Property Type"
 msgstr "プロパティタイプを追加"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "最初のプロパティタイプを追加"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべてのグループメンバーデータが永久に失われます！"
 
@@ -6724,10 +6600,6 @@ msgstr "チェックアウト済み"
 #: 
 msgid "Current Fiscal Year"
 msgstr "現在の会計年度"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "削除（関連するすべてのレコードが削除されます）"
 
 #: 
 msgid "Edit Property Type"
@@ -6778,10 +6650,6 @@ msgid "No property types found"
 msgstr "プロパティタイプが見つかりません"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "このプロパティタイプを使用しているレコード数"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "このプロパティタイプのオプションの詳細説明"
 
@@ -6812,10 +6680,6 @@ msgstr "このプロパティが適用されるレコードタイプを選択"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "家族と基金別に誓約コミットメントを追跡および管理"
-
-#: 
-msgid "View Properties"
-msgstr "プロパティを表示"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7793,18 +7657,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "この誓約記録を完全に削除してもよいですか？"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "キャンセルして家族表示に戻る"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "このタイプを削除すると、それを使用するすべての属性も削除され、対応するすべての属性割り当てが失われます。"
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "献金を選択した家族に移動"
-
-#: 
 msgid "Calendar not found"
 msgstr "カレンダーが見つかりません"
 
@@ -8077,10 +7929,6 @@ msgid "or later to continue."
 msgstr "以降のバージョンが継続には必要です。"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "「来会理由」メモ"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "「%s」の検索結果 %d 件"
@@ -8188,10 +8036,6 @@ msgstr "個人記録の追加または編集"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "募金イベント用の寄贈品の追加または編集"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "個人と家族のメモの追加または編集"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8448,10 +8292,6 @@ msgstr "教会イベントと活動の作成・管理"
 #: 
 msgid "Create or edit property type categories"
 msgstr "プロパティタイプカテゴリの作成または編集"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "ボランティアポジションの作成または編集"
 
 #: 
 msgid "Current person"
@@ -8902,14 +8742,6 @@ msgid "Manage user account details and permissions"
 msgstr "ユーザーアカウントの詳細と権限を管理"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "ボランティア機会の管理とメンバーの割り当て"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "個人設定とアカウント設定を管理"
-
-#: 
 msgid "Map cart items"
 msgstr "リストの項目を地図に表示"
 
@@ -8944,10 +8776,6 @@ msgstr "グループに移動"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "既存のChurchCRMまたはChurchInfoからの移行ですか？バックアップファイルをアップロードすると、データを自動的に復元します。"
-
-#: 
-msgid "My Settings"
-msgstr "マイ設定"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9034,10 +8862,6 @@ msgid "No timeline events yet."
 msgstr "タイムラインイベントはまだありません。"
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ボランティア担当の割り当てはまだありません。"
-
-#: 
 msgid "Not ready yet?"
 msgstr "まだ準備ができていませんか？"
 
@@ -9074,10 +8898,6 @@ msgstr "概要"
 #: 
 msgid "Password Recovery"
 msgstr "パスワード復旧"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "過去および今後7日間"
 
 #: 
 msgid "People by Classification"
@@ -9162,10 +8982,6 @@ msgstr "複数の募金抽選当選者を一度に記録"
 #: 
 msgid "Record new pledges and payments"
 msgstr "新しい献金誓約と入金を記録"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "来会者が教会を訪問した理由を記録"
 
 #: 
 msgid "Remove from Class"
@@ -9548,10 +9364,6 @@ msgid "funds"
 msgstr "基金"
 
 #: 
-msgid "opportunities"
-msgstr "機会"
-
-#: 
 msgid "or connect an external service"
 msgstr "または外部サービスを接続"
 
@@ -9851,11 +9663,6 @@ msgstr "メールアドレスの取得に失敗しました"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "電話番号の取得に失敗しました"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "特定の機会のためにボランティアを見つける"
 
 #. Context: query_qry
 #: 
@@ -10980,10 +10787,6 @@ msgstr "ダーク"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "データベースのみ（.sql）またはフルアーカイブ（.tar.gz）"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "データテーブルに表示されるデフォルトの行数。次回のページ読み込み時に有効になります。"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11037,10 +10840,6 @@ msgstr "マラヤーラム語（インド）"
 #: 
 msgid "Manage 2FA"
 msgstr "二段階認証を管理"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "メール区切り文字や表示オプションなどの追加設定を管理"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11298,14 +11097,6 @@ msgstr "チェックイン担当者"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "非アクティブなイベントではチェックインが無効です。イベントダッシュボードからイベントをアクティブにしてチェックインを有効にしてください。"
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "イベント「%s」にチェックインしました"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "イベント「%s」からチェックアウトしました"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11716,14 +11507,6 @@ msgid "e.g., 40.7128"
 msgstr "例：40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "家族の削除中にエラーが発生しました。"
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "献金の移動中にエラーが発生しました。"
-
-#: 
 msgid "At least one family member is required"
 msgstr "少なくとも1人の家族メンバーが必要です"
 
@@ -11742,10 +11525,6 @@ msgstr "削除に失敗しました"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "方向は \"up\" または \"down\" でなければなりません"
-
-#: 
-msgid "Failed to move donations."
-msgstr "献金の移動に失敗しました。"
 
 #: 
 msgid "Finance permission required"
@@ -11782,10 +11561,6 @@ msgstr "メンバーシップが見つかりません"
 #: 
 msgid "Password successfully changed for"
 msgstr "パスワードが正常に変更されました："
-
-#: 
-msgid "Please select a target family."
-msgstr "ターゲット家族を選択してください。"
 
 #: 
 msgid "Target family not found"
@@ -12653,10 +12428,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "プロパティタイプを削除できません：%d件のプロパティがまだ参照しています。先にプロパティを再割り当てまたは削除してください。"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "ボランティア機会を削除できません：%d人がまだ割り当てられています。先に割り当てを削除してください。"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "クラスはp、f、またはgのいずれかである必要があります"
 
@@ -12667,10 +12438,6 @@ msgstr "エラーメッセージをコピー"
 #: 
 msgid "Could not load note."
 msgstr "メモを読み込めませんでした。"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "説明は100文字以内で入力してください"
 
 #: 
 msgid "Donation fund not found"
@@ -12693,10 +12460,6 @@ msgid "Failed to create property type"
 msgstr "プロパティタイプの作成に失敗しました"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "ボランティア機会の作成に失敗しました"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "寄付金基金の削除に失敗しました"
 
@@ -12713,10 +12476,6 @@ msgid "Failed to delete property type"
 msgstr "プロパティタイプの削除に失敗しました"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "ボランティア機会の削除に失敗しました"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "寄付金基金の更新に失敗しました"
 
@@ -12729,10 +12488,6 @@ msgid "Failed to update property type"
 msgstr "プロパティタイプの更新に失敗しました"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "ボランティア機会の更新に失敗しました"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "募金活動が見つかりません"
 
@@ -12743,10 +12498,6 @@ msgstr "インストールID"
 #: 
 msgid "Invalid class"
 msgstr "無効なクラス"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "名前は30文字以内で入力してください"
 
 #: 
 msgid "Note by %s deleted"
@@ -12769,16 +12520,8 @@ msgid "Read more"
 msgstr "続きを読む"
 
 #: 
-msgid "That name already exists."
-msgstr "その名前はすでに存在します。"
-
-#: 
 msgid "Title is required"
 msgstr "タイトルは必須です"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "ボランティア機会が見つかりません"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12987,14 +12730,6 @@ msgstr "チェックアウトに失敗しました。もう一度お試しくだ
 #: 
 msgid "Click Save to apply."
 msgstr "保存をクリックして適用します。"
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "クリップボードAPIは利用できません。URLを手動でコピーしてください。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "クリップボードが使用できません。ダウンロードボタンを使用してコードを保存してください。"
 
 #: 
 msgid "Code incomplete"
@@ -13575,14 +13310,6 @@ msgstr "献金預かりなし"
 #: 
 msgid "No Events Today"
 msgstr "本日のイベントはありません"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "過去および今後7日間に記念日はありません"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "過去および今後7日間に誕生日はありません"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14528,24 +14255,12 @@ msgid "People &amp; Families"
 msgstr "人々 &amp; 家族"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "編集しようとしているメモはすでに存在しません。"
-
-#: 
 msgid "User List"
 msgstr "ユーザー一覧"
 
 #: 
 msgid "View Person"
 msgstr "人物を表示"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "この家族へのメモを追加する権限がありません。"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "この人物へのメモを追加する権限がありません。"
 
 #: 
 msgid "Account locked"
@@ -15246,10 +14961,6 @@ msgid "thru %s"
 msgstr "%s まで"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s の「来た理由」メモ"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s 家族の %1$s"
 
@@ -15354,14 +15065,6 @@ msgid "Output Method"
 msgstr "出力方法"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "この家族のレコードを削除することを確認してください"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "これらの献金を関連付ける別の家族を選択してください"
-
-#: 
 msgid "Remittance Slip"
 msgstr "送金票"
 
@@ -15404,10 +15107,6 @@ msgstr "サポートされている形式"
 #: 
 msgid "System Configuration"
 msgstr "システム設定"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "このボランティア機会に割り当てられている人がいます。削除すると割り当てが解除されます"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15638,10 +15337,6 @@ msgid "Add New Fund"
 msgstr "新しい基金を追加"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "新しい奉仕機会を追加"
-
-#: 
 msgid "Add New Person"
 msgstr "新しい人物を追加"
 
@@ -15654,10 +15349,6 @@ msgid "Add New Role"
 msgstr "新しい役割を追加"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "新しいボランティア機会を追加"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "日曜学校クラスを追加"
 
@@ -15666,24 +15357,8 @@ msgid "Delete this family?"
 msgstr "この家族を削除しますか？"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "この家族を削除しますか？削除する内容を選択するページに移動します。この操作は元に戻せません。"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "家族削除の確認"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "プロパティ種別削除の確認"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "公開登録フォームから登録した新しい家族と個人を確認してください"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "ボランティア機会削除の確認"
 
 #: 
 msgid "# Payments"
@@ -17348,14 +17023,6 @@ msgid "Find people who did not attend an event"
 msgstr "イベントに参加しなかった人を検索"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "2つの特定のボランティア機会コードに一致するボランティアを検索"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "第1ボランティア機会"
-
-#: 
 msgid "Folded Booklet"
 msgstr "折り畳みパンフレット"
 
@@ -17432,10 +17099,6 @@ msgid "Run Report"
 msgstr "レポートを実行"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "第2ボランティア機会"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "サイドバー、ログインページ、メールに表示されます。ロゴをアップロードすると、表示されるすべての場所でChurchCRMブランディングが置き換わります。"
 
@@ -17462,14 +17125,6 @@ msgstr "デフォルトのChurchCRMロゴを使用"
 #: 
 msgid "View Full Family Giving"
 msgstr "完全な家族献金を表示"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "ボランティア機会"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "2つの機会のためのボランティア"
 
 #: 
 msgid "YTD"
@@ -17944,10 +17599,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "公開登録フォームから届いた、審査待ちの登録です。メールアドレスも電話番号もない登録にはフラグが付いています。連絡する前に連絡先を確認してください。"
 
 #: 
-msgid "Review now"
-msgstr "今すぐ審査"
-
-#: 
 msgid "Review self registrations"
 msgstr "自己登録を審査"
 
@@ -17998,10 +17649,6 @@ msgstr "昨日"
 #: 
 msgid "days ago"
 msgstr "日前"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "件の自己登録が審査待ちです"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18295,10 +17942,6 @@ msgstr "行事の種類に従うスケジュールには、行事の種類を指
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "1つの行事を担当するスケジュールは、他の行事に従うことができません。削除して、代わりにスケジュールを追加してください"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "「保育」や「受付係」のような奉仕の機会を1つにまとめた一覧で、人々 → 管理の下で管理されます。各人には、その人の記録のボランティアタブで、手伝ってもよい奉仕の機会がタグ付けされます。記録されるのはそれだけで、チーム、日付への割り当て、リマインダーメールはありません。タグはレポートと個人の記録で使われます。"
 
 #: 
 msgid "A square picture of your face works best."
@@ -18607,18 +18250,6 @@ msgstr "バックグラウンドジョブの実行"
 #: 
 msgid "Birthday greeting"
 msgstr "誕生日のあいさつ"
-
-#: 
-msgid "Both"
-msgstr "両方"
-
-#: 
-msgid "Both (transition)"
-msgstr "両方（移行用）"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "両方：V1 と V2 を並行（移行用）"
 
 #: 
 msgid "Calendar address"
@@ -21701,22 +21332,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "ユーザーには行事追加権限があるか、このカレンダーが属する奉仕ミニストリーのコーディネーターである必要があります"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1：ボランティア機会（従来）"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1：従来のボランティア機会"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2：ミニストリー"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2：ボランティア管理"
-
-#: 
 msgid "Valid"
 msgstr "有効"
 
@@ -21735,14 +21350,6 @@ msgstr "行事を見る"
 #: 
 msgid "View this email"
 msgstr "このメールを見る"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "ボランティア（従来）"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "ボランティア管理 V2 は有効になっていません"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21847,10 +21454,6 @@ msgid "What the check found"
 msgstr "チェックで見つかったこと"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "ボランティア体験とは"
-
-#: 
 msgid "What you want to say"
 msgstr "お伝えしたいこと"
 
@@ -21881,10 +21484,6 @@ msgstr "日付の基準"
 #: 
 msgid "Where we reach you"
 msgstr "連絡先"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "有効なボランティア管理の体験を選びます。V1 は従来のボランティア機会の機能、V2 は新しいスケジュールと割り当てのワークフローです。「両方」を選ぶと、移行中に両方が並んで表示されます。"
 
 #: 
 msgid "Which events"
@@ -22295,10 +21894,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "ボランティア マネージャーのみがミニストリーの調整者を変更できます"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 を選択すると、V2 ボランティア メールが一時停止されます。キューに入っているメールは、発生が終了していない限り、V2 が再度有効になった時点で送信されます。"
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "このミニストリーのイベントをここに追加してください：作業日、毎日曜日に開催されるクラス。教会のカレンダーに表示され、作成されたら人員配置を行うかどうか尋ねられます。"
 
@@ -22409,10 +22004,6 @@ msgstr "来客を登録"
 #: 
 msgid "Register walk-in guest"
 msgstr "来客を登録"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "イベント中にキオスクで来客として登録：%s"
 
 #: 
 msgid "Registering..."
@@ -23145,10 +22736,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "未充足の担当を知らせる先行時間（時間）"
 
 #: 
-msgid "Volunteer Management"
-msgstr "ボランティア管理"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "ボランティアのミニストリー、チーム、予定表、割り当て"
 
@@ -23159,14 +22746,6 @@ msgstr "これから数日で埋めるボランティア担当"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "これらの今後の各回でまだ必要なボランティア: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "これらはどういう意味ですか？"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "この教会が使うボランティア体験"
 
 #: 
 msgid "You are on the schedule"
@@ -24097,10 +23676,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d 件の支払いは、まだどの入金にも含まれていません。"
 
 #: 
-msgid "Closing line"
-msgstr "結びの文"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "今年の日付の入金はすべて締め切られています。"
 
@@ -24113,28 +23688,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "今年の支払いはすべて入金に含まれています。"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "税務明細書を作成"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "献金レポート（税務明細書）"
-
-#: 
-msgid "Opening line"
-msgstr "冒頭の文"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Signed by"
-msgstr "署名者"
-
-#: 
-msgid "Thank-you line"
-msgstr "感謝の文"
 
 #: 
 msgid "Year-End Giving"
@@ -24265,10 +23820,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "0にすると、任意の条件は無効になります。年齢には完全な生年月日が必要です。会員期間には入会日が必要です。必要な日付がない人は除外され、別に数えられます。逝去した人、無効な人と分類、および無効または確認待ちの家族と人は常に除外されます。過去の状態ではなく、現在の分類と状態が使われます。"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s の請求額: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "選択したディレクトリに、非公開のPDF一時保存領域を作成できません。"
 
@@ -24295,10 +23846,6 @@ msgstr "PDF一時ディレクトリが存在しないか、アクセスできま
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF一時ディレクトリは、絶対パスである必要があります。"
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "教会の納税者番号（EIN）"
 
 #: 
 msgid "Closing Line"
@@ -24343,10 +23890,6 @@ msgstr "明細書の設定"
 #: 
 msgid "Statement Wording"
 msgstr "明細書の文言"
-
-#: 
-msgid "Tax Information"
-msgstr "税務情報"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24395,10 +23938,6 @@ msgstr "教会名と住所を使用"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "システム設定で指定したレターヘッドのパスを使用"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "献金明細書の文言、納税者番号、PDFの扱い"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26577,248 +26116,8 @@ msgid "Review Family Information"
 msgstr "家族情報を確認"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "「%s」という名前のミニストリーは既に存在します。一覧から選ぶか、別の名前を指定してください。"
-
-#: 
-msgid "A new ministry"
-msgstr "新しいミニストリー"
-
-#: 
-msgid "A position"
-msgstr "役割"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "以前に変換した役割に {{total}} 人のボランティアを追加しますか？"
-
-#: 
-msgid "Already converted"
-msgstr "変換済み"
-
-#: 
-msgid "An existing ministry"
-msgstr "既存のミニストリー"
-
-#: 
-msgid "Becomes"
-msgstr "変換先"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM にはボランティアを管理する方法が 2 つあります。同時に使うのは 1 つだけです。どちらをこの教会に表示するかは「ボランティア方式」の設定で決まります。切り替えるとページやメニュー項目の表示・非表示が変わりますが、データが削除されることはありません。V1 と「両方」は、ボランティアの機会を使用している間だけ選択できます。すべての機会が変換され、教会が V2 を使うようになると、この一覧から消えます。"
-
-#: 
-msgid "Convert"
-msgstr "変換"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "ボランティアの機会を変換"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "今すぐ {{total}} 件の機会を変換しますか？V1 のデータは、ボランティアの機会が廃止されるまでそのまま残ります。"
-
-#: 
-msgid "Converted"
-msgstr "変換済み"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "変換完了：役割 {{positions}} 件、ミニストリー {{ministries}} 件、資格を得たボランティア {{qualifications}} 人。"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "各機会は 1 つのミニストリーの最初のチームの役割になり、その機会に紐付いていた全員がその役割の資格を得ます。これらの役割の自己申込は最初はオフになっています。"
-
-#: 
-msgid "Everything is converted."
-msgstr "すべて変換済みです。"
-
-#: 
-msgid "Existing ministry"
-msgstr "既存のミニストリー"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "新しいミニストリーに 100 文字以内の名前を付けてください。"
-
-#: 
-msgid "Its own ministry"
-msgstr "独自のミニストリー"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "その後に紐付け：{{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "変換できない紐付け"
-
-#: 
-msgid "New ministries of their own"
-msgstr "それぞれ独自の新しいミニストリー"
-
-#: 
-msgid "New ministry name"
-msgstr "新しいミニストリー名"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "メールは送信されません。ボランティアの機会は廃止されるまでそのまま残ります。"
-
-#: 
-msgid "No name"
-msgstr "名前なし"
-
-#: 
-msgid "Not converted"
-msgstr "未変換"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "機能トグルを開く"
-
-#: 
-msgid "Open Ministries"
-msgstr "ミニストリーを開く"
-
-#: 
-msgid "Opportunities"
-msgstr "機会"
-
-#: 
-msgid "Opportunity"
-msgstr "機会"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "機会 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "変換後に、変換済みのボランティアの機会に紐付けられた人：%d。2027 年初めにボランティアの機会が廃止される前に、各自の役割に追加してください。"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "まず変換をプレビューし、返されたリビジョンを送信してください。"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "名前が重複しないように変更しました"
-
-#: 
-msgid "Review the conversion"
-msgstr "変換を確認"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "変換の選択を JSON オブジェクトで送信してください。"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "ミニストリーになる機会を ID のリストで送信してください。"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "そのミニストリーは存在しません。"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "管理者がボランティアの機会の廃止通知を閉じたときの ChurchCRM のバージョン。"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "プレビュー後にボランティアの機会が変更されました。もう一度プレビューを確認してから変換してください。"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "確認画面を開けませんでした。ページを再読み込みしてもう一度お試しください。"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "変換をプレビューできませんでした。"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "変換に失敗しました。何も変更されていません。"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "ミニストリー「%s」には役割を置くチームがありません。"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "サーバーに接続できませんでした。ページを再読み込みして、変換が実行されたか確認してください。"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "変換するボランティアの機会はありません。"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "新しいミニストリーがボランティアの機会と並んで表示されるよう、ボランティア管理が「両方」に切り替わります。"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "ボランティアの機会は廃止予定です"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "ボランティアの機会を変換しました"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "ボランティアの機会は 2027 年初めに廃止されます。誰がどこで奉仕しているかを残すため、ミニストリーに変換してください。"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "ボランティアの機会は 2027 年初めに廃止されます。%1$d 件の機会と %2$d 人のボランティアを今すぐミニストリーに変換してください。変更前に結果をプレビューできます。"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "資格を得たボランティア"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "変換済みの役割に追加するボランティア"
-
-#: 
-msgid "What it becomes"
-msgstr "変換後"
-
-#: 
-msgid "What will happen"
-msgstr "実行される内容"
-
-#: 
-msgid "Where they go"
-msgstr "移動先"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "変換済みの旧ボランティアの機会と、それぞれが変換された役割。"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "この教会が使うボランティア方式。ボランティアの機会（V1）は 2027 年初めに廃止されます。"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "ボランティアの機会はミニストリーに変換されました。2027 年初めにボランティアの機会が廃止される前に、ボランティア管理を V2 に切り替えてください。"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "新しいミニストリー {{name}} へ"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ミニストリー {{name}} へ"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ChurchCRM にはもうありません"
 
 #: 
 msgid "Collapse sidebar"
@@ -26939,10 +26238,6 @@ msgid "Last verified"
 msgstr "最終確認日"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "この家族には、メールアドレスを持つアクティブで承認済みのメンバーがいません。代わりに対面で確認してください。"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "これらの会計年度の献金誓約は見つかりませんでした。"
 
@@ -26965,10 +26260,6 @@ msgstr "このメールアドレスでメンバーポータルにサインイン
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "この家族は非アクティブのため、確認メールは送信されません。"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "この自己登録した家族は承認待ちです。承認すると、メンバーポータルにサインインして情報を確認するよう招待するメールが家族に送信されます。"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -26999,10 +26290,6 @@ msgstr "スタッフが対面で"
 msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
 
 #: 
 msgid "Assignment canceled"
@@ -27051,10 +26338,6 @@ msgstr "この日付は取り消されました。これ以上ご対応いただ
 #: 
 msgid "This occurrence has been canceled"
 msgstr "この開催回はキャンセルされました"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27216,10 +26499,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "サインインも無効にして、メンバーポータルを使えないようにする"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "明細を送信する前に"
-
-#: 
 msgid "Birthday today"
 msgstr "今日が誕生日"
 
@@ -27302,10 +26581,6 @@ msgstr "人と家族の削除"
 #: 
 msgid "Delete the login for"
 msgstr "次のログインを削除:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "入金グラフの期間"
 
 #: 
 msgid "Disabled at"
@@ -27560,10 +26835,6 @@ msgid "Preview Sample Letter"
 msgstr "サンプルレターをプレビュー"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "カナダの献金明細用の非公開署名アセット識別子。署名のアップロードで管理されます。"
-
-#: 
 msgid "Property Type"
 msgstr "プロパティの種類"
 
@@ -27602,10 +26873,6 @@ msgstr "確認して絞り込む"
 #: 
 msgid "Review and vote"
 msgstr "確認して投票"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "年を確認してから、献金明細をダウンロードしてください。"
 
 #: 
 msgid "Review what we are considering"
@@ -27654,10 +26921,6 @@ msgstr "強い"
 #: 
 msgid "Support"
 msgstr "サポート"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "納税者番号とPDFの設定"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27772,10 +27035,6 @@ msgid "View people and families"
 msgstr "人と家族の表示"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "この教会ではボランティア管理がオフになっています"
-
-#: 
 msgid "Weak"
 msgstr "弱い"
 
@@ -27844,10 +27103,6 @@ msgid "Latest Notes"
 msgstr "最新のメモ"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "メモはまだ追加されていません。"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "QRコードを取得するには、登録を開始してください。"
 
@@ -27858,4 +27113,744 @@ msgstr "そのパスワードまたはコードが正しくありません。二
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "二要素認証はすでに設定されています。そのシークレットは登録時にのみ表示されます。"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d 件の献金、合計 %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "現在、%d 件の家族がこのタイプのプロパティを持っています。"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d 件の家族はまだ領収書を受け取れず、除外されます。その下に表示された問題を修正してから、「再確認」を選択してください。"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "現在、%d 件のグループがこのタイプのプロパティを持っています。"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "現在、%d 人がこのタイプのプロパティを持っています。"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "インストール済みのバージョン以降、%d 件のリリースが利用可能です。"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s 領収書は生成されませんでした。"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: 確認済みの献金者の氏名（全名）を入力し、献金者を確認し、1 組の献金者を確認してください。複数の献金者が混在する支払いの組み合わせは、この機能の外で処理する必要があります。"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: 確認後に献金または郵送先住所が変更されました。「再確認」を選択して、献金者を再度確認してください。"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 回の分割払い）"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 回の分割払い）"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "クレジットカードまたは銀行小切手による支払いが、まだ締められていない入金に含まれています。支払いが確定したら入金を締めてください。"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "支払いに控除対象外の金額が含まれています。ここでのカナダの領収書は、見返りのない献金のみに対応しています。"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "支払いの金額が無効です。"
+
+#: 
+msgid "A payment has no date."
+msgstr "支払いに日付がありません。"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "支払いの日付が発行日より後になっています。"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "支払いが問題としてマークされています。"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "支払いがゼロまたはマイナスです。"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "有効な CSRF トークンを伴う、確認済みの POST が必要です。"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "選択した家族はもう存在しません。"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "署名画像は安全な電子署名ではありません。"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "システムアップデートが利用可能です。管理者にインストールのアップグレードを依頼してください。"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "含まれるすべての行は、見返りのない金銭の献金です。"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "必要なカナダ領収書の設定はすべて入力されています。"
+
+#: 
+msgid "Also delete family members"
+msgstr "家族のメンバーも削除する"
+
+#: 
+msgid "Amount of advantages"
+msgstr "見返りの金額"
+
+#: 
+msgid "Amount of gifts"
+msgstr "献金の金額"
+
+#: 
+msgid "Amount per installment"
+msgstr "1 回あたりの分割金額"
+
+#: 
+msgid "Amounts entered are"
+msgstr "入力された金額は"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "管理者が「レポート設定」からアップロードします。"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "承認されましたが、招待は送信されませんでした"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "システム管理者に ChurchCRM を最新バージョンにアップグレードするよう依頼してください。"
+
+#: 
+msgid "Authorized Signature"
+msgstr "署名権限者"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "カナダ歳入庁"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "カナダ公式領収書"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "カナダの公式領収書には、「教会情報」で教会の国がカナダである必要があります。"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "カナダの領収書には、他のフィルターなしで、暦年全体とすべての基金が必要です。"
+
+#: 
+msgid "Change Selection"
+msgstr "選択を変更"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "慈善団体の正式名称"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "慈善団体の登録住所"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "慈善団体の登録番号"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "領収書用の慈善団体の詳細がまだ入力されていません。都合のよいときに、正式名称、登録住所、登録番号、発行地を追加してください。それまでは財務機能は引き続き動作します。"
+
+#: 
+msgid "Charity on receipts"
+msgstr "領収書に記載する慈善団体"
+
+#: 
+msgid "Check Again"
+msgstr "再確認"
+
+#: 
+msgid "Check the year"
+msgstr "年を確認"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "年を確認し、明細書を設定してから、ダウンロードしてください。"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "分割金額には毎週、毎月、または四半期を選択してください。"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "有効な寄付の暦年を選択してください。"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "原本または複写を選択してください。"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "献金の総額または分割金額を選択してください。"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM の翻訳は ChurchCRM の GitHub リポジトリで管理されています。次の方法で協力できます"
+
+#: 
+msgid "Commitment amount"
+msgstr "献金予定額"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "複写を保管されている原本と比較し、すべての領収書情報が変更されていないことを確認してください。"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "ダウンロードする前に、すべての領収書の確認を完了してください。"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "慈善団体の正式名称、登録住所、登録番号、発行地、印刷される署名者を入力してください。"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "確認書に印刷される署名者"
+
+#: 
+msgid "Copy Kind"
+msgstr "コピーの種類"
+
+#: 
+msgid "Currency"
+msgstr "通貨"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "通貨記号 $ または CAD"
+
+#: 
+msgid "Date received"
+msgstr "受領日"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "これを削除すると、%d 件のプロパティとそのすべての割り当ても削除され、何も宙に浮いた状態にはなりません。"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "選択した年のすべての献金は、上に一緒に名前が記載された献金者のものですか？"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "同じ番号を別の領収書に再利用したり、同じ献金に対して 2 回領収書を発行したり、変更された情報を変更されていない原本として再生成したりしないでください。"
+
+#: 
+msgid "Duplicate"
+msgstr "複写"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "複写 / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "所得税目的で対象となる献金の金額"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "予定と分割払いの日付を入力して、献金予定をプレビューしてください。"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "有効な初回と最終の分割払い日付を順番に入力してください。"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "小数点以下 2 桁までの有効な分割金額を入力してください。"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "既存の誓約は記録された合計を保持します。各予定献金を入力するときにのみ、1 回あたりの分割金額を選択してください。"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "世帯主と配偶者から自動入力されます。献金者と正確に一致するよう編集してください。"
+
+#: 
+msgid "First installment"
+msgstr "初回の分割払い"
+
+#: 
+msgid "Full commitment"
+msgstr "全額の献金予定"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "税務明細書を生成"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "献金の暦年"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "献金明細書 — 公式な寄付領収書ではありません"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "GitHub で翻訳を手伝う"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "過去の封筒の変更はサポートされていません。"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "保管されている原本と比較しました：献金者、金額、シリアル、テキストは変更されていません。これは訂正や差し替えではありません。"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "発行済みの PDF と外部の領収書ログを、慈善団体のカナダの記録保管場所に保管します。"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "保管されている原本が利用できない、または異なる場合は、外部の CRA 取り消し/差し替え手続きを使用してください。"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "支払いメモを含める：献金者に適していると確認しました。"
+
+#: 
+msgid "Include this family in the download"
+msgstr "この家族をダウンロードに含める"
+
+#: 
+msgid "Installed version: %s"
+msgstr "インストール済みバージョン: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "分割金額は誓約にのみ使用できます。"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "分割払いの日付は、選択した会計年度内である必要があります。"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "CSRF トークンが無効か、ありません"
+
+#: 
+msgid "Issue Date"
+msgstr "発行日"
+
+#: 
+msgid "Issue Locality"
+msgstr "発行地"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "元の PDF と外部の領収書ログを、慈善団体のカナダの記録保管場所に保管してください。"
+
+#: 
+msgid "Last installment on or before"
+msgstr "最終の分割払いは次の日付以前"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "手紙の文言、慈善団体の詳細、PDF の処理は、「明細書設定」で一度だけ設定します。"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "献金明細書の手紙の文言、慈善団体の詳細、PDF の処理"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "最大 2 MiB、2000 × 1000 ピクセル。保存されている署名を置き換えるには新しい画像を選択してください。署名画像は安全な電子署名ではありません。"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "メンバーサインインがオフになっているため、%s 家族の誰もメンバーポータルにサインインできません。管理者は「管理 → メンバーポータル」でオンにできます。"
+
+#: 
+msgid "Memo"
+msgstr "メモ"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "複数の献金者が混在する家族の支払いの組み合わせはここでは分割できません。この機能の外で処理してください。"
+
+#: 
+msgid "Narrow the list"
+msgstr "リストを絞り込む"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "%s に対してこれらのフィルターに一致する家族はありません。"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "重複する個人用または累計の領収書は存在しません。"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "この家族の領収書はまだ生成できません"
+
+#: 
+msgid "No signature on file"
+msgstr "署名がファイルにありません"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "いいえ — 献金者が異なります。この機能の外で処理してください"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "現在のサインインルールでは、%s 家族の誰もメンバーポータルにサインインできません。"
+
+#: 
+msgid "None / Aucun"
+msgstr "なし / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "カナダの領収書を発行する準備ができていません。まだ不足しているもの"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "公式領収書 / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "所得税目的の公式領収書 / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "公式領収書には、123456789RR0001 の形式の登録番号と署名画像が必要です。"
+
+#: 
+msgid "Original"
+msgstr "原本"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "元の発行日（保管されている原本から入力）"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "支払日は献金の受領日を反映し、記録された郵送小切手の消印の扱いを含みます。"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "通常の献金明細書に印刷されます。たとえば米国の EIN です。同じ値は「教会情報」にもあります。"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "個人の献金明細書の署名アセット識別子。署名のアップロードで管理されます。"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "プロパティ / 割り当て"
+
+#: 
+msgid "Property deleted"
+msgstr "プロパティを削除しました"
+
+#: 
+msgid "Property type deleted"
+msgstr "プロパティタイプを削除しました"
+
+#: 
+msgid "Receipt Closing"
+msgstr "領収書の結びの言葉"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "領収書の発行地"
+
+#: 
+msgid "Receipt No."
+msgstr "領収書番号"
+
+#: 
+msgid "Registration Number"
+msgstr "登録番号"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "123456789RR0001 の形式の登録番号"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "リリースノートは現在利用できません。"
+
+#: 
+msgid "Releases"
+msgstr "リリース"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s の残りの献金予定: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA 要件を削除"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "保存されている署名画像を削除しますか？公式領収書にはファイルに 1 つ必要です。"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "レポートとリマインダーは、この全期間の献金予定と献金を比較します。残高は延滞した分割払いの計算ではありません。"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "レポートとリマインダーは、上に表示された全額の献金予定を使用します。残高は延滞した分割払いの計算ではありません。"
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA を必須にする"
+
+#: 
+msgid "Reset Options"
+msgstr "オプションをリセット"
+
+#: 
+msgid "Review Selected Families"
+msgstr "選択した家族を確認"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "サンプル — 税務目的には無効です"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "署名のサンプルプレースホルダー"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "2FA が必要かどうかを指定します。"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "セキュリティ更新とサポートは最新バージョンに対してのみ提供されます。"
+
+#: 
+msgid "Select the families to review."
+msgstr "確認する家族を選択してください。"
+
+#: 
+msgid "Set up the statement"
+msgstr "明細書を設定"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "続行するには二要素認証を設定してください。"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "共有封筒の競合：別の家族が現在この封筒番号を持っています。"
+
+#: 
+msgid "Signature Image"
+msgstr "署名画像"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "署名画像（管理、レポート設定）"
+
+#: 
+msgid "Signature on file"
+msgstr "署名はファイルにあります"
+
+#: 
+msgid "Sincerely"
+msgstr "敬具"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "定期的な誓約を編集するときは、金額の基準を指定してください。"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "標準の献金明細書"
+
+#: 
+msgid "Statement Template"
+msgstr "明細書テンプレート"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "今日以前の発行日を指定してください。"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "明細書に記載する税務 ID"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s 家族には、メンバーポータルに招待できる存命のメンバーがいません。"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "カナダの登録番号は 123456789RR0001 の形式である必要があります。これは登録状況を確認するものではありません。"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "慈善団体の登録番号はテキストである必要があります。"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "公式領収書に印刷される慈善団体の登録番号。空白の場合は「教会情報」の税務 ID を使用します。"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "慈善団体の登録住所。空白の場合は「教会情報」の住所を使用します。"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "署名者の上に表示される結びの言葉。たとえば「敬具」です。"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "全額の献金予定は基金ごとに 999999.99 を超えてはならず、金額は小数点以下最大 2 桁までです。"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "前回の確認後に献金または郵送先住所が変更されました。それらを確認し、献金者を再度確認してください。"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "郵送先住所が不完全です。番地、市区町村、州、郵便番号が必要です。"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "慈善団体が登録されている名前。教会の名前と異なる場合があります。"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "領収書が発行される場所。空白の場合は「教会情報」の市区町村を使用します。"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "印刷される献金明細書の署名者は、これらの領収書に署名する権限を持っています。"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "カナダの領収書では、システムの通貨記号は $ であるか、CAD を示す必要があります。"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "選択した暦年に支払いはありません。"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "これらは、この家族/暦年のすべての献金の真の献金者であり、郵送先住所は正しいです。"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "この画像は、献金明細書と領収書の署名者の名前の上に印刷されます。慈善団体の詳細と署名者の印刷名は「財務、明細書設定」にあります。"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "このオプションは領収書をカナダ形式にしますが、領収書の台帳を保持したり、PDF を保管したりはしません。"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "この自己登録した家族は承認を待っています。承認すると、メンバーポータルにサインインできる各メンバーに、家族情報の確認を招待するメールが送信されます。"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "このツールには取り消し/差し替えのワークフローがありません。訂正や領収書の紛失時の差し替えには、既存の CRA 準拠の手続きを使用してください。"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "このユーザーは 2FA を設定する必要があります"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "これにより、家族の記録とそのメモが完全に削除されます。これは元に戻せません。"
+
+#: 
+msgid "Total commitment"
+msgstr "献金予定総額"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "献金予定をプレビューできません。"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "署名をアップロードまたは置き換える"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "「レポート設定」で、権限のある税務署名をアップロードしてください。"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "選択した会計年度内の日付を使用してください。毎月および四半期の献金は、初回の分割払いの日、または短い月の最終日を使用します。"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "確認済みの献金者氏名（全名）"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "代わりに家族を対面で確認してください。"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "すべての家族について、献金者の氏名（全名）と住所を確認してください。複数の献金者が混在する支払いの組み合わせは、この機能の外で処理する必要があります。"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "バージョン %s が利用可能です。管理者にインストールのアップグレードを依頼してください。"
+
+#: 
+msgid "View all emails"
+msgstr "すべてのメールを表示"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "はい — 確認済みの 1 組の献金者です"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "あなたの教会の国はカナダです。そのため、明細書を生成するときにカナダの公式領収書も利用できます。"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "あなたの教会の国はカナダです。そのため、カナダの公式領収書が献金明細書で利用でき、通常の明細書は公式な寄付領収書ではないとマークされます。"
+
+#: 
+msgid "groups"
+msgstr "グループ"
 

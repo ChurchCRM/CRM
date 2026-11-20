@@ -14,6 +14,9 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -127,10 +130,7 @@ class DemoDataService
             $this->importSystemConfig($force);
             SystemConfig::setValue('sInstallDataProfile', 'demo');
 
-            // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
-            if (User::isVolunteerV2Enabled()) {
-                VolunteerEventService::addOtherEventType();
-            }
+            VolunteerEventService::addOtherEventType();
 
             $emailMap = $this->importCongregation();
             $this->personEmailToId = $emailMap;
@@ -139,6 +139,7 @@ class DemoDataService
             $this->importEvents($this->importCalendars());
             $this->importVolunteers($emailMap);
             $this->importFinancial();
+            $this->spreadDashboardActivity();
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -610,6 +611,61 @@ class DemoDataService
      * A demo child's grade is the level for their age at the start of this school
      * year (taken as September 1), so the demo stays right as the years pass.
      */
+    /**
+     * Spreads dates around today so every People dashboard range (7 days to 6 months) has
+     * new and edited records, birthdays, anniversaries, notes and pending self-registrations.
+     */
+    private function spreadDashboardActivity(): void
+    {
+        $day = static fn (int $offset): DateTimeImmutable => (new DateTimeImmutable('today'))->modify(sprintf('%+d days', $offset));
+        $stamp = static fn (DateTimeImmutable $d): string => $d->format('Y-m-d') . ' ' . sprintf('%02d:%02d:00', 8 + ($d->format('j') % 9), ($d->format('n') * 7) % 60);
+
+        $families = FamilyQuery::create()->filterByDateDeactivated(null)->orderById()->find()->getPrimaryKeys(false);
+        foreach ([1, 2, 4, 6, 9, 13, 19, 26, 40, 70] as $i => $ago) {
+            if (isset($families[$i])) {
+                FamilyQuery::create()->filterById($families[$i])->update([
+                    'DateEntered' => $stamp($day(-$ago)),
+                    'DateLastEdited' => $stamp($day(-max(0, $ago - 1 - $i % 3))),
+                ]);
+            }
+        }
+        foreach (array_slice($families, 0, 3) as $familyId) {
+            FamilyQuery::create()->filterById($familyId)->update(['EnteredBy' => Person::SELF_REGISTER, 'NeedsReview' => true]);
+        }
+        foreach ([-4, -1, 2, 5, 9, 15, 24, 38, 55, 80] as $i => $offset) {
+            if (isset($families[$i + 3])) {
+                $date = $day($offset)->modify('-' . (3 + $i) . ' years');
+                FamilyQuery::create()->filterById($families[$i + 3])->update(['Weddingdate' => $date->format('Y-m-d')]);
+            }
+        }
+
+        $people = PersonQuery::create()->filterByDateDeactivated(null)->orderById()->find()->getPrimaryKeys(false);
+        foreach ([1, 3, 5, 8, 12, 16, 22, 29, 45, 75] as $i => $ago) {
+            if (isset($people[$i * 2])) {
+                PersonQuery::create()->filterById($people[$i * 2])->update([
+                    'DateEntered' => $stamp($day(-$ago)),
+                    'DateLastEdited' => $stamp($day(-max(0, $ago - 1 - $i % 3))),
+                ]);
+            }
+        }
+        foreach ([-5, -2, 1, 3, 6, 10, 13, 20, 27, 35, 50, 75, 100, 140] as $i => $offset) {
+            if (isset($people[$i * 3 + 1])) {
+                $date = $day($offset);
+                PersonQuery::create()->filterById($people[$i * 3 + 1])->update([
+                    'BirthMonth' => (int) $date->format('n'),
+                    'BirthDay' => (int) $date->format('j'),
+                ]);
+            }
+        }
+
+        $notes = NoteQuery::create()->filterByType('note')->orderById()->find()->getPrimaryKeys(false);
+        foreach ([0, 1, 2, 4, 6, 9, 13, 18, 25, 40, 60, 85] as $i => $ago) {
+            if (isset($notes[$i])) {
+                NoteQuery::create()->filterById($notes[$i])->update(['DateEntered' => $stamp($day(-$ago))]);
+            }
+        }
+    }
+
     private function applyDemoGrade(Person $person, DateTime $today): void
     {
         if (empty($person->getBirthYear()) || empty($person->getBirthMonth()) || empty($person->getBirthDay())) {
@@ -1228,10 +1284,6 @@ class DemoDataService
      */
     private function importVolunteers(array $emailMap): void
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return;
-        }
-
         $data = $this->loadJsonFile('volunteers.json');
         if ($data === null) {
             $this->addWarning('Volunteer import skipped: volunteers.json missing or invalid');

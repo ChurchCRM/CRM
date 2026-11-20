@@ -3,7 +3,6 @@
 namespace ChurchCRM\Portal\Permissions\Rules;
 
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Portal\Permissions\BulkPortalRule;
@@ -52,7 +51,7 @@ final class TeamLeaderRule implements BulkPortalRule
 
     public function grantsForPeople(array $personIds): iterable
     {
-        if ($personIds === [] || !User::isVolunteerV2Enabled()) {
+        if ($personIds === []) {
             return;
         }
 

@@ -23,14 +23,14 @@ describe("Pledge Reminder report - Finance access", () => {
         });
     });
 
-    it("finance-only gets a PDF with a letter and the amount due", () => {
+    it("finance-only gets a PDF with a letter and the remaining commitment", () => {
         cy.setupPersonaSession("finance-only");
         reminderRequest().then((response) => {
             expect(response.status).to.eq(200);
             expect(response.headers["content-type"]).to.include("application/pdf");
             expect(response.body.startsWith("%PDF-")).to.eq(true);
             return pdfText(response.body).then((lines) => {
-                expect(lines.join(" ")).to.include("Amount due for");
+                expect(lines.join(" ")).to.include("Remaining commitment for");
             });
         });
     });

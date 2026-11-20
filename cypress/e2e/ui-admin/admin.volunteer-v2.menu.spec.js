@@ -21,7 +21,7 @@
  *     and the dashboard go with it.
  *   - ~~**Volunteer**~~ — **gone** (#9867, Member Portal P16). The member
  *     surface lives only in the Member Portal now, so there is no "Volunteer"
- *     heading in the admin sidebar in ANY rollout state and for ANY user.
+ *     heading in the admin sidebar for ANY user.
  *     Everything below that used to assert its two entries asserts its absence
  *     instead; "Ministries" is unchanged in every case.
  *
@@ -35,7 +35,6 @@
  * when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 const MINISTRIES_URL = "/ministries";
@@ -102,10 +101,6 @@ function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
 }
 
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
-}
-
 function grantScope(personId, scopeType, scopeId) {
     return adminApi("POST", `${VOLUNTEER_URL}/scopes`, { personId, scopeType, scopeId }, [200, 201]);
 }
@@ -165,7 +160,6 @@ before(() => {
 
 describe("Volunteer v2 — the Ministries sidebar heading", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: MINISTRY_A }, 201).then((resp) => {
@@ -188,7 +182,6 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     describe("an administrator", () => {
@@ -437,24 +430,6 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
             cy.visit("/portal/volunteer/schedule");
             cy.get("#volunteer-my-schedule").should("exist");
             cy.get("#portal-nav").find('a[href$="/portal/volunteer/schedule"]').should("exist");
-        });
-    });
-
-    describe("with the rollout flag off (v1)", () => {
-        before(() => {
-            setVersion("v1");
-        });
-
-        after(() => {
-            setVersion("v2");
-        });
-
-        it("shows neither heading", () => {
-            freshAdminLogin();
-            cy.visit("/people/view/1");
-            menuSectionShouldNotExist("Ministries");
-            // "Volunteer" is absent in every state now (#9867), not just this one.
-            menuSectionShouldNotExist("Volunteer");
         });
     });
 });

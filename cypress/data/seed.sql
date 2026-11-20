@@ -195,8 +195,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('sSMTPUser',''),
 ('sTaxSigner','Elder Joe Smith'),
 ('sTimeZone','America/Detroit'),
-('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse'),
-('sVolunteerVersion','v1');
+('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse');
 
 INSERT INTO `deposit_dep` (`dep_ID`, `dep_Date`, `dep_Comment`, `dep_EnteredBy`, `dep_Closed`, `dep_Type`) VALUES (1,'2025-12-13','Updated Test Deposit',NULL,0,'Bank'),
 (2,'2018-02-18','',NULL,0,'Bank'),
@@ -2010,6 +2009,27 @@ ALTER TABLE `property_pro` AUTO_INCREMENT = 32;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+INSERT INTO `volunteer_ministry_vmin` (`vmin_ID`, `vmin_Name`, `vmin_Description`, `vmin_Active`, `vmin_CreatedDate`, `vmin_CreatedBy_per_ID`, `vmin_HelpWanted`, `vmin_HelpWantedText`, `vmin_SundaySchool`) VALUES
+(1,'Seeded Hospitality','Welcome and refreshments',1,'2026-01-01 00:00:00',NULL,0,NULL,0);
+
+INSERT INTO `volunteer_team_vtem` (`vtem_ID`, `vtem_vmin_ID`, `vtem_Name`, `vtem_Description`, `vtem_Active`, `vtem_grp_ID`) VALUES
+(1,1,'Seeded Greeters','Greets at the door',1,NULL);
+
+INSERT INTO `volunteer_position_vpos` (`vpos_ID`, `vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`, `vpos_Description`, `vpos_Active`, `vpos_Recruiting`, `vpos_SelfAssignable`, `vpos_Order`) VALUES
+(1,1,1,'Seeded Door Greeter','Welcomes people at the door',1,0,1,0);
+
+INSERT INTO `volunteer_qualification_vqal` (`vqal_ID`, `vqal_per_ID`, `vqal_vpos_ID`, `vqal_Active`, `vqal_GrantedDate`, `vqal_GrantedBy_per_ID`, `vqal_Notes`) VALUES
+(1,2,1,1,'2026-01-01 00:00:00',NULL,'Seeded qualification');
+
+INSERT INTO `volunteer_schedule_vsch` (`vsch_ID`, `vsch_vmin_ID`, `vsch_vtem_ID`, `vsch_Name`, `vsch_LinkMode`, `vsch_event_type_id`, `vsch_TitleFilter`, `vsch_grp_ID`, `vsch_event_id`, `vsch_StartOffsetMinutes`, `vsch_EndOffsetMinutes`, `vsch_WindowStart`, `vsch_WindowEnd`, `vsch_Active`, `vsch_OneOff`) VALUES
+(1,1,1,'Seeded Sunday service','ministry',NULL,NULL,NULL,NULL,0,0,'2026-01-01',NULL,1,0);
+
+INSERT INTO `volunteer_occurrence_vocc` (`vocc_ID`, `vocc_vsch_ID`, `vocc_event_id`, `vocc_OccurrenceDate`, `vocc_Status`, `vocc_Notes`, `vocc_GeneratedDate`) VALUES
+(1,1,NULL,'2099-01-04','scheduled','Seeded occurrence','2026-01-01 00:00:00');
+
+INSERT INTO `volunteer_assignment_vasg` (`vasg_ID`, `vasg_vocc_ID`, `vasg_vpos_ID`, `vasg_per_ID`, `vasg_vreq_ID`, `vasg_Status`, `vasg_Source`, `vasg_AssignedDate`, `vasg_AssignedBy_per_ID`, `vasg_RespondedDate`, `vasg_Replaces_vasg_ID`, `vasg_Notes`) VALUES
+(1,1,1,2,NULL,'accepted','coordinator','2026-01-01 00:00:00',NULL,NULL,NULL,'Seeded assignment');
+
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

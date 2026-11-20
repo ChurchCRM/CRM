@@ -7,8 +7,6 @@ use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
 use ChurchCRM\Volunteer\VolunteerException;
@@ -45,8 +43,8 @@ $app->group('/calendars', function (RouteCollectorProxy $group): void {
     // CalendarMiddleware has put the row it needs on the request.
     $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
     $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
-    $group->get('/{id}/ministries', 'getCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
-    $group->put('/{id}/ministries', 'putCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+    $group->get('/{id}/ministries', 'getCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
+    $group->put('/{id}/ministries', 'putCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
 });
 
 $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
@@ -292,7 +290,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
     }
 
     $staffing = [];
-    if (User::isVolunteerV2Enabled() && AuthenticationManager::isUserAuthenticated()) {
+    if (AuthenticationManager::isUserAuthenticated()) {
         $staffing = (new VolunteerAssignmentService())->getEventStaffingSummary(
             $eventIds,
             AuthenticationManager::getCurrentUser()

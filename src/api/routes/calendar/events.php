@@ -263,7 +263,7 @@ function getEvent(Request $request, Response $response, $args): Response
 // three functions are its entire implementation — nothing else may re-derive it.
 //
 //     allowed = canManageEvents()                                  // the global right, unchanged
-//            || (rollout on && event.MinistryId !== null
+//            || (event.MinistryId !== null
 //                           && canManageMinistry(user, event.MinistryId))
 //
 // `AddEventsOrMinistryRoleAuthMiddleware` has already let the caller in the door (§4.5 layer

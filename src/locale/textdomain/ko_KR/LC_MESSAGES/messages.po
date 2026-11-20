@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "배정"
 
 #: 
-msgid "Date Updated"
-msgstr "수정 날짜"
-
-#: 
-msgid "Updated By"
-msgstr "수정자"
-
-#: 
 msgid "Since"
 msgstr "기준"
 
@@ -1314,10 +1306,6 @@ msgid "People"
 msgstr "성도"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "주일학교 어린이"
-
-#: 
 msgid "Role / Gender"
 msgstr "역할 / 성별"
 
@@ -1362,10 +1350,6 @@ msgid "Updated"
 msgstr "수정일"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(되돌릴 수 없습니다)"
-
-#: 
 msgid "Note Editor"
 msgstr "메모 편집"
 
@@ -1384,10 +1368,6 @@ msgstr "그룹"
 #: 
 msgid "Default"
 msgstr "기본값"
-
-#: 
-msgid "Exit"
-msgstr "나가기"
 
 #: 
 msgid "Add New"
@@ -1494,10 +1474,6 @@ msgid "Assign New Group"
 msgstr "새 그룹 배정"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "새 사역 배정"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
 
@@ -1590,10 +1566,6 @@ msgid "Warning"
 msgstr "경고"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "이 속성 유형은 아직 사용 중입니다."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "이 속성 유형을 삭제할지 확인하세요."
 
@@ -1615,48 +1587,8 @@ msgid "Restore Database"
 msgstr "데이터베이스 복원"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "삭제할지 확인하세요:"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "이 가족의 헌금 기록이 있어 삭제할 수 없습니다."
-
-#: 
-msgid "Return to Family View"
-msgstr "가족 화면으로 돌아가기"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "경고: 이 가족은 헌금 기록이 있어 다른 가족에 이관하기 전까지 삭제할 수 없습니다."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "경고: 이 작업은 되돌릴 수 없으며 법적 문제가 발생할 수 있습니다!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "현재 헌금 기록이 있는 가족"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "참고: 이 가족에 달린 모든 메모도 함께 삭제됩니다."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "가족 기록만 삭제"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "가족 기록과 구성원 모두 삭제"
-
-#: 
 msgid "Listing"
 msgstr "목록"
-
-#: 
-msgid "My User Settings"
-msgstr "내 사용자 설정"
 
 #: 
 msgid "Variable name"
@@ -1741,14 +1673,6 @@ msgstr "새 비밀번호"
 #: 
 msgid "Confirm New Password"
 msgstr "새 비밀번호 확인"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "사역 편집"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "등록된 사역이 없습니다."
 
 #: 
 msgid "Why did you come to the church?"
@@ -4524,10 +4448,6 @@ msgid "People Reports"
 msgstr "개인 보고서"
 
 #: 
-msgid "People Dashboard"
-msgstr "개인 대시보드"
-
-#: 
 msgid "People Directory"
 msgstr "교인 명부"
 
@@ -4975,10 +4895,6 @@ msgid "View Person Page"
 msgstr "개인 페이지 보기"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
 msgid "Deleted"
 msgstr "삭제됨"
 
@@ -5119,10 +5035,6 @@ msgstr "크로스 사이트 스크립팅으로부터 보호하기 위해 콘텐�
 #: 
 msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "여기에 메모를 입력하세요..."
 
 #: 
 msgid "Note"
@@ -6440,20 +6352,8 @@ msgid "Additional Information"
 msgstr "추가 정보"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "기회 할당"
-
-#: 
 msgid "Choose a property..."
 msgstr "속성을 선택하세요..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "기회를 선택하세요..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "연락처 및 개인 정보"
 
 #: 
 msgid "Edited"
@@ -6462,14 +6362,6 @@ msgstr "편집됨"
 #: 
 msgid "Newsletter"
 msgstr "뉴스레터"
-
-#: 
-msgid "Personal"
-msgstr "개인"
-
-#: 
-msgid "Select Opportunities"
-msgstr "기회 선택"
 
 #: 
 msgid "Volunteer"
@@ -6654,10 +6546,6 @@ msgid "Confirm Property Deletion"
 msgstr "속성 삭제 확인"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "자원봉사 기회 삭제 확인"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "삭제 확인"
 
@@ -6670,16 +6558,8 @@ msgid "Existing Custom Person Fields"
 msgstr "기존 사용자 정의 사람 필드"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "기존 자원봉사 기회"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "필드가 성공적으로 삭제됨"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "유효하지 않은 CSRF 토큰"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6730,10 +6610,6 @@ msgid "Add Property Type"
 msgstr "속성 유형 추가"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "첫 번째 속성 유형 추가"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
@@ -6752,10 +6628,6 @@ msgstr "체크아웃 완료"
 #: 
 msgid "Current Fiscal Year"
 msgstr "현재 회계연도"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "삭제 (모든 관련 레코드가 삭제됩니다)"
 
 #: 
 msgid "Edit Property Type"
@@ -6806,10 +6678,6 @@ msgid "No property types found"
 msgstr "속성 유형을 찾을 수 없습니다"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "이 속성 유형을 사용하는 레코드 수"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "이 속성 유형에 대한 선택적 상세 설명"
 
@@ -6840,10 +6708,6 @@ msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "가족 및 기금별 서약 약정 추적 및 관리"
-
-#: 
-msgid "View Properties"
-msgstr "속성 보기"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7821,18 +7685,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "이 헌금 서약 기록을 영구적으로 삭제하시겠습니까?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "취소하고 가족 보기로 돌아가기"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성도 제거되고 해당 속성 배정도 모두 삭제됩니다."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "헌금을 선택한 가족으로 이동"
-
-#: 
 msgid "Calendar not found"
 msgstr "캘린더를 찾을 수 없습니다"
 
@@ -8105,10 +7957,6 @@ msgid "or later to continue."
 msgstr "이상 버전이 계속하려면 필요합니다."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"방문 이유\" 메모"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "\"%s\"에 대한 %d개의 결과"
@@ -8216,10 +8064,6 @@ msgstr "개인 기록 추가 또는 편집"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "모금 행사를 위해 기부된 물품 추가 또는 편집"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "사람과 가족에 대한 메모 추가 또는 편집"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8476,10 +8320,6 @@ msgstr "교회 행사 및 활동 생성 및 관리"
 #: 
 msgid "Create or edit property type categories"
 msgstr "속성 유형 카테고리 생성 또는 편집"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "봉사 직분 생성 또는 편집"
 
 #: 
 msgid "Current person"
@@ -8930,14 +8770,6 @@ msgid "Manage user account details and permissions"
 msgstr "사용자 계정 세부 정보 및 권한 관리"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "봉사 기회 관리 및 교인 배정"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "개인 환경설정 및 계정 설정 관리"
-
-#: 
 msgid "Map cart items"
 msgstr "목록 항목 지도에 표시"
 
@@ -8972,10 +8804,6 @@ msgstr "그룹으로 이동"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "기존 ChurchCRM 또는 ChurchInfo에서 이전하시나요? 백업 파일을 업로드하면 데이터를 자동으로 복원해 드립니다."
-
-#: 
-msgid "My Settings"
-msgstr "내 설정"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9062,10 +8890,6 @@ msgid "No timeline events yet."
 msgstr "아직 타임라인 이벤트가 없습니다."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "아직 봉사 기회 배정이 없습니다."
-
-#: 
 msgid "Not ready yet?"
 msgstr "아직 준비가 안 되셨나요?"
 
@@ -9102,10 +8926,6 @@ msgstr "개요"
 #: 
 msgid "Password Recovery"
 msgstr "비밀번호 복구"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "지난 7일 및 향후 7일"
 
 #: 
 msgid "People by Classification"
@@ -9190,10 +9010,6 @@ msgstr "여러 모금 추첨 당첨자를 한 번에 기록"
 #: 
 msgid "Record new pledges and payments"
 msgstr "새 서약 및 납부 기록"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "참석자가 교회를 방문한 이유 기록"
 
 #: 
 msgid "Remove from Class"
@@ -9576,10 +9392,6 @@ msgid "funds"
 msgstr "기금"
 
 #: 
-msgid "opportunities"
-msgstr "봉사 기회"
-
-#: 
 msgid "or connect an external service"
 msgstr "또는 외부 서비스 연결"
 
@@ -9879,11 +9691,6 @@ msgstr "이메일 주소 검색 실패"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "전화번호 검색 실패"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "특정 기회를 위해 자원봉사자 찾기"
 
 #. Context: query_qry
 #: 
@@ -11008,10 +10815,6 @@ msgstr "어두운"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "데이터베이스 전용 (.sql) 또는 전체 아카이브 (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "데이터 표에 표시되는 기본 행 수입니다. 다음 페이지 로드 시 적용됩니다."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11065,10 +10868,6 @@ msgstr "말라얄람어 - 인도"
 #: 
 msgid "Manage 2FA"
 msgstr "이중 인증 관리"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "이메일 구분자 및 표시 옵션과 같은 추가 환경 설정 관리"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11326,14 +11125,6 @@ msgstr "체크인 담당자"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "비활성 이벤트에서는 체크인이 비활성화됩니다. 이벤트 대시보드에서 이벤트를 활성화하여 체크인을 활성화하세요."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "이벤트 체크인: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "이벤트 체크아웃: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11744,14 +11535,6 @@ msgid "e.g., 40.7128"
 msgstr "예: 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "가족을 삭제하는 중 오류가 발생했습니다."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "헌금을 이동하는 중 오류가 발생했습니다."
-
-#: 
 msgid "At least one family member is required"
 msgstr "최소 한 명의 가족 구성원이 필요합니다"
 
@@ -11770,10 +11553,6 @@ msgstr "삭제 실패"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "방향은 \"위\" 또는 \"아래\"여야 합니다"
-
-#: 
-msgid "Failed to move donations."
-msgstr "헌금 이동에 실패했습니다."
 
 #: 
 msgid "Finance permission required"
@@ -11810,10 +11589,6 @@ msgstr "회원 정보를 찾을 수 없습니다"
 #: 
 msgid "Password successfully changed for"
 msgstr "비밀번호가 성공적으로 변경되었습니다:"
-
-#: 
-msgid "Please select a target family."
-msgstr "대상 가족을 선택하세요."
 
 #: 
 msgid "Target family not found"
@@ -12681,10 +12456,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "속성 유형을 삭제할 수 없습니다: %d개의 속성이 아직 참조 중입니다. 먼저 해당 속성을 재할당하거나 삭제하십시오."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "봉사 기회를 삭제할 수 없습니다: %d명이 아직 배정되어 있습니다. 먼저 배정을 제거하십시오."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "클래스는 p, f, 또는 g 중 하나여야 합니다"
 
@@ -12695,10 +12466,6 @@ msgstr "오류 메시지 복사"
 #: 
 msgid "Could not load note."
 msgstr "메모를 불러올 수 없습니다."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "설명은 100자를 초과할 수 없습니다"
 
 #: 
 msgid "Donation fund not found"
@@ -12721,10 +12488,6 @@ msgid "Failed to create property type"
 msgstr "속성 유형 생성에 실패했습니다"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "봉사 기회 생성에 실패했습니다"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "헌금 기금 삭제에 실패했습니다"
 
@@ -12741,10 +12504,6 @@ msgid "Failed to delete property type"
 msgstr "속성 유형 삭제에 실패했습니다"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "봉사 기회 삭제에 실패했습니다"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "헌금 기금 업데이트에 실패했습니다"
 
@@ -12757,10 +12516,6 @@ msgid "Failed to update property type"
 msgstr "속성 유형 업데이트에 실패했습니다"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "봉사 기회 업데이트에 실패했습니다"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "모금 행사를 찾을 수 없습니다"
 
@@ -12771,10 +12526,6 @@ msgstr "설치 ID"
 #: 
 msgid "Invalid class"
 msgstr "유효하지 않은 클래스"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "이름은 30자를 초과할 수 없습니다"
 
 #: 
 msgid "Note by %s deleted"
@@ -12797,16 +12548,8 @@ msgid "Read more"
 msgstr "자세히 보기"
 
 #: 
-msgid "That name already exists."
-msgstr "이미 존재하는 이름입니다."
-
-#: 
 msgid "Title is required"
 msgstr "제목은 필수입니다"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "봉사 기회를 찾을 수 없습니다"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13015,14 +12758,6 @@ msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
 #: 
 msgid "Click Save to apply."
 msgstr "적용하려면 저장을 클릭하세요."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "클립보드 API를 사용할 수 없습니다. URL을 수동으로 복사하십시오."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요."
 
 #: 
 msgid "Code incomplete"
@@ -13603,14 +13338,6 @@ msgstr "헌금 입금 없음"
 #: 
 msgid "No Events Today"
 msgstr "오늘 이벤트 없음"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "지난 7일 또는 향후 7일 이내에 기념일 없음"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "지난 7일 또는 향후 7일 이내에 생일 없음"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14556,24 +14283,12 @@ msgid "People &amp; Families"
 msgstr "교인 및 가족"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
-
-#: 
 msgid "User List"
 msgstr "사용자 목록"
 
 #: 
 msgid "View Person"
 msgstr "교인 보기"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
 
 #: 
 msgid "Account locked"
@@ -15274,10 +14989,6 @@ msgid "thru %s"
 msgstr "%s까지"
 
 #: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s의 \"방문 이유\" 메모"
-
-#: 
 msgid "%1$s of the %2$s family"
 msgstr "%2$s 가정의 %1$s"
 
@@ -15382,14 +15093,6 @@ msgid "Output Method"
 msgstr "출력 방법"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "이 가족 기록 삭제를 확인해 주세요"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
-
-#: 
 msgid "Remittance Slip"
 msgstr "헌금 영수증"
 
@@ -15432,10 +15135,6 @@ msgstr "지원되는 형식"
 #: 
 msgid "System Configuration"
 msgstr "시스템 구성"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15666,10 +15365,6 @@ msgid "Add New Fund"
 msgstr "새 기금 추가"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "새 기회 추가"
-
-#: 
 msgid "Add New Person"
 msgstr "새 교인 추가"
 
@@ -15682,10 +15377,6 @@ msgid "Add New Role"
 msgstr "새 역할 추가"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "새 봉사 기회 추가"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "주일학교 반 추가"
 
@@ -15694,24 +15385,8 @@ msgid "Delete this family?"
 msgstr "이 가정을 삭제하시겠습니까?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "이 가정을 삭제하시겠습니까? 삭제할 항목을 선택하는 페이지로 이동합니다. 이 작업은 취소할 수 없습니다."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "가정 삭제 확인"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "속성 유형 삭제 확인"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "공개 등록 양식에서 등록한 새 가정 및 개인을 검토하세요"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "봉사 기회 삭제 확인"
 
 #: 
 msgid "# Payments"
@@ -17376,14 +17051,6 @@ msgid "Find people who did not attend an event"
 msgstr "이벤트에 참석하지 않은 사람 찾기"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "두 가지 특정 기회 코드와 일치하는 자원봉사자 찾기"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "첫 번째 자원봉사 기회"
-
-#: 
 msgid "Folded Booklet"
 msgstr "접힌 책자"
 
@@ -17460,10 +17127,6 @@ msgid "Run Report"
 msgstr "보고서 실행"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "두 번째 자원봉사 기회"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "사이드바, 로그인 페이지 및 이메일에 표시됩니다. 로고를 업로드하면 ChurchCRM 브랜딩이 나타나는 모든 곳에서 대체됩니다."
 
@@ -17490,14 +17153,6 @@ msgstr "기본 ChurchCRM 로고 사용"
 #: 
 msgid "View Full Family Giving"
 msgstr "전체 가족 기부금 보기"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "자원봉사 기회"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "두 가지 기회의 자원봉사자"
 
 #: 
 msgid "YTD"
@@ -17972,10 +17627,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "공개 등록 양식으로 들어와 검토를 기다리는 등록입니다. 이메일이나 전화번호가 없는 항목에는 표시가 있습니다. 연락하기 전에 연락처를 확인하세요."
 
 #: 
-msgid "Review now"
-msgstr "지금 검토"
-
-#: 
 msgid "Review self registrations"
 msgstr "자기 등록 검토"
 
@@ -18026,10 +17677,6 @@ msgstr "어제"
 #: 
 msgid "days ago"
 msgstr "일 전"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "건의 자기 등록이 검토를 기다리고 있습니다"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18323,10 +17970,6 @@ msgstr "행사 종류를 따르는 일정에는 행사 종류를 지정해야 �
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "행사 하나를 맡는 일정은 다른 행사를 따를 수 없습니다. 삭제하고 대신 일정을 추가하세요"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "'영아부 돌봄'이나 '안내' 같은 봉사 기회를 모아 둔 하나의 목록으로, 인물 → 관리에서 관리합니다. 각 사람의 기록 중 봉사 탭에서 돕고 싶은 봉사 기회를 태그로 지정합니다. 기록되는 것은 이것뿐이며 팀, 일정, 날짜 배정, 알림 이메일은 없습니다. 태그는 보고서와 인물 기록에서 사용됩니다."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18635,18 +18278,6 @@ msgstr "백그라운드 작업 실행"
 #: 
 msgid "Birthday greeting"
 msgstr "생일 축하"
-
-#: 
-msgid "Both"
-msgstr "둘 다"
-
-#: 
-msgid "Both (transition)"
-msgstr "둘 다 (전환)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "둘 다 — V1과 V2 나란히 (전환)"
 
 #: 
 msgid "Calendar address"
@@ -21729,22 +21360,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "사용자에게 행사 추가 권한이 있거나 이 캘린더가 속한 봉사 사역을 코디네이트해야 합니다"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — 봉사 기회(기존)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — 기존 봉사 기회"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — 사역"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — 봉사 관리"
-
-#: 
 msgid "Valid"
 msgstr "유효함"
 
@@ -21763,14 +21378,6 @@ msgstr "행사 보기"
 #: 
 msgid "View this email"
 msgstr "이 이메일 보기"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "봉사자(기존)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "봉사 관리 V2가 활성화되어 있지 않습니다"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21875,10 +21482,6 @@ msgid "What the check found"
 msgstr "점검에서 발견된 것"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "봉사 방식이란"
-
-#: 
 msgid "What you want to say"
 msgstr "전하고 싶은 말"
 
@@ -21909,10 +21512,6 @@ msgstr "날짜를 가져올 곳"
 #: 
 msgid "Where we reach you"
 msgstr "연락 방법"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "어떤 봉사 관리 방식을 사용할지 정합니다. V1은 기존 봉사 기회 기능이고, V2는 새로운 일정 및 배정 워크플로입니다. \"둘 다\"는 전환 기간 동안 두 방식을 나란히 보여 줍니다."
 
 #: 
 msgid "Which events"
@@ -22323,10 +21922,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "사역 담당자만 사역을 조정하는 사람을 변경할 수 있습니다"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1을 선택하면 V2 자원자 이메일이 일시 중지됩니다. 발생이 종료되지 않은 한 V2가 다시 켜질 때 대기 중인 모든 항목이 전송됩니다."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "이 사역의 행사를 여기에 추가하세요: 작업일, 매주 일요일에 만나는 학급. 교회 일정에 표시되며, 생성된 후 인력 배치 여부를 묻습니다."
 
@@ -22437,10 +22032,6 @@ msgstr "방문객 등록"
 #: 
 msgid "Register walk-in guest"
 msgstr "방문객 등록"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "행사 중 키오스크에서 방문객으로 등록됨: %s"
 
 #: 
 msgid "Registering..."
@@ -23173,10 +22764,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "빈 역할 알림의 선행 시간(시간)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "봉사자 관리"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "봉사자 사역, 팀, 일정과 배정"
 
@@ -23187,14 +22774,6 @@ msgstr "앞으로 며칠 동안 채울 봉사자 역할"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "다가오는 이 회차들에 아직 필요한 봉사자: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "이것들은 무슨 뜻인가요?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "이 교회가 쓰는 봉사자 경험"
 
 #: 
 msgid "You are on the schedule"
@@ -24125,10 +23704,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
 
 #: 
-msgid "Closing line"
-msgstr "맺음말"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "올해 날짜의 입금은 모두 마감되었습니다."
 
@@ -24141,28 +23716,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "올해의 모든 납부가 입금에 포함되어 있습니다."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "세금 명세서 생성"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "헌금 보고서(세금 명세서)"
-
-#: 
-msgid "Opening line"
-msgstr "인사말"
-
-#: 
 msgid "Qty"
 msgstr "수량"
-
-#: 
-msgid "Signed by"
-msgstr "서명한 사람"
-
-#: 
-msgid "Thank-you line"
-msgstr "감사 문구"
 
 #: 
 msgid "Year-End Giving"
@@ -24293,10 +23848,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "0은 선택 요건을 끕니다. 연령에는 완전한 출생일이 필요하고, 교인 기간에는 교인 등록일이 필요합니다. 필요한 날짜가 없는 사람은 제외되며 따로 집계됩니다. 사망한 사람, 비활성 사람과 분류, 비활성이거나 검토 대기 중인 가정과 사람은 항상 제외됩니다. 과거 상태가 아니라 현재 분류와 상태를 사용합니다."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s 미납액: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "선택한 디렉터리에 비공개 PDF 임시 저장소를 만들 수 없습니다."
 
@@ -24323,10 +23874,6 @@ msgstr "PDF 임시 디렉터리가 없거나 접근할 수 없습니다."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 임시 디렉터리는 절대 경로여야 합니다."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "교회 납세자 번호(EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24371,10 +23918,6 @@ msgstr "명세서 설정"
 #: 
 msgid "Statement Wording"
 msgstr "명세서 문구"
-
-#: 
-msgid "Tax Information"
-msgstr "세금 정보"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24423,10 +23966,6 @@ msgstr "교회 이름과 주소 사용"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "헌금 명세서의 문구, 납세자 번호, PDF 처리"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26605,248 +26144,8 @@ msgid "Review Family Information"
 msgstr "가족 정보 검토"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\"(이)라는 사역이 이미 있습니다. 목록에서 선택하거나 다른 이름을 지정하세요."
-
-#: 
-msgid "A new ministry"
-msgstr "새 사역"
-
-#: 
-msgid "A position"
-msgstr "직책"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "이전에 변환된 직책에 자원봉사자 {{total}}명을 추가할까요?"
-
-#: 
-msgid "Already converted"
-msgstr "이미 변환됨"
-
-#: 
-msgid "An existing ministry"
-msgstr "기존 사역"
-
-#: 
-msgid "Becomes"
-msgstr "변환 결과"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM에는 자원봉사자를 관리하는 방식이 두 가지 있습니다. 한 번에 하나만 사용하도록 되어 있으며, 이 교회에 어느 쪽을 표시할지는 \"봉사 방식\" 설정이 정합니다. 전환하면 페이지와 메뉴 항목이 숨겨지거나 표시될 뿐 데이터는 삭제되지 않습니다. V1과 둘 다는 자원봉사 기회를 사용하는 동안에만 제공됩니다. 모든 기회가 변환되고 교회가 V2를 사용하면 이 목록에서 사라집니다."
-
-#: 
-msgid "Convert"
-msgstr "변환"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "자원봉사 기회 변환"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "지금 기회 {{total}}개를 변환할까요? V1 데이터는 자원봉사 기회가 폐지될 때까지 그대로 유지됩니다."
-
-#: 
-msgid "Converted"
-msgstr "변환됨"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "변환 완료: 직책 {{positions}}개, 사역 {{ministries}}개, 자격을 얻은 자원봉사자 {{qualifications}}명."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "각 기회는 한 사역의 첫 번째 팀에 속한 직책이 되며, 연결된 모든 사람이 그 직책의 자격을 얻습니다. 이 직책들의 직접 신청은 처음에는 꺼져 있습니다."
-
-#: 
-msgid "Everything is converted."
-msgstr "모두 변환되었습니다."
-
-#: 
-msgid "Existing ministry"
-msgstr "기존 사역"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "새 사역의 이름을 100자 이내로 지정하세요."
-
-#: 
-msgid "Its own ministry"
-msgstr "독립 사역"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "이후 연결됨: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "변환할 수 없는 연결"
-
-#: 
-msgid "New ministries of their own"
-msgstr "각각 새 사역으로"
-
-#: 
-msgid "New ministry name"
-msgstr "새 사역 이름"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "이메일은 발송되지 않으며, 자원봉사 기회는 폐지될 때까지 그대로 유지됩니다."
-
-#: 
-msgid "No name"
-msgstr "이름 없음"
-
-#: 
-msgid "Not converted"
-msgstr "변환 안 됨"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "기능 토글 열기"
-
-#: 
-msgid "Open Ministries"
-msgstr "사역 열기"
-
-#: 
-msgid "Opportunities"
-msgstr "기회"
-
-#: 
-msgid "Opportunity"
-msgstr "기회"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "기회 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "변환 이후 변환된 자원봉사 기회에 연결된 사람: %d명. 2027년 초 자원봉사 기회가 폐지되기 전에 해당 직책에 추가하세요."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "먼저 변환을 미리 보고, 반환된 리비전을 보내세요."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "이름이 중복되지 않도록 변경됨"
-
-#: 
-msgid "Review the conversion"
-msgstr "변환 검토"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "변환 선택을 JSON 객체로 보내세요."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "사역이 될 기회를 ID 목록으로 보내세요."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "해당 사역이 없습니다."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "관리자가 자원봉사 기회 폐지 알림을 닫은 ChurchCRM 버전입니다."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "미리 보기 이후 자원봉사 기회가 변경되었습니다. 미리 보기를 다시 확인한 다음 변환하세요."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "확인 창을 열 수 없습니다. 페이지를 새로 고친 후 다시 시도하세요."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "변환을 미리 볼 수 없습니다."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "변환에 실패했습니다. 아무것도 변경되지 않았습니다."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" 사역에는 직책을 둘 팀이 없습니다."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "서버에 연결할 수 없습니다. 페이지를 새로 고쳐 변환이 실행되었는지 확인하세요."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "변환할 자원봉사 기회가 없습니다."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "새 사역이 자원봉사 기회 옆에 표시되도록 봉사자 관리가 둘 다로 전환됩니다."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "자원봉사 기회가 폐지됩니다"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "자원봉사 기회 변환됨"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 누가 어디서 봉사하는지 유지하려면 사역으로 변환하세요."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 지금 기회 %1$d개와 자원봉사자 %2$d명을 사역으로 변환하세요. 변경하기 전에 결과를 미리 볼 수 있습니다."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "자격을 얻은 자원봉사자"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "변환된 직책에 추가할 자원봉사자"
-
-#: 
-msgid "What it becomes"
-msgstr "변환 결과"
-
-#: 
-msgid "What will happen"
-msgstr "진행 내용"
-
-#: 
-msgid "Where they go"
-msgstr "이동 위치"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "변환된 기존 자원봉사 기회와 각각이 변환된 직책입니다."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "이 교회가 사용하는 봉사 방식입니다. 자원봉사 기회(V1)는 2027년 초에 폐지됩니다."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "자원봉사 기회가 사역으로 변환되었습니다. 2027년 초 자원봉사 기회가 폐지되기 전에 봉사자 관리를 V2로 전환하세요."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "새 사역 {{name}}(으)로"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "사역 {{name}}(으)로"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "더 이상 ChurchCRM에 없음"
 
 #: 
 msgid "Collapse sidebar"
@@ -26967,10 +26266,6 @@ msgid "Last verified"
 msgstr "마지막 확인"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "이 가족의 활성 승인 교인 중 이메일 주소가 있는 사람이 없습니다. 대신 직접 만나 확인하세요."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "이 회계 연도들에 대한 서약을 찾을 수 없습니다."
 
@@ -26993,10 +26288,6 @@ msgstr "이 이메일 주소로 교인 포털에 로그인하여 가족 정보�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "이 가족은 비활성 상태이므로 확인 이메일이 발송되지 않습니다."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "이 자가 등록 가족은 승인을 기다리고 있습니다. 승인하면 교인 포털에 로그인하여 정보를 검토하라는 초대 이메일이 가족에게 발송됩니다."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27027,10 +26318,6 @@ msgstr "직원이 직접"
 msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d 기본값이 다른 이유로 건너뛰어졌습니다(발생이 종료, 취소 또는 가득 찬 경우)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "전환용 설정입니다. 기존 봉사 기회 페이지와 새 사역 페이지를 모두 사용할 수 있으며, 인물 기록에 두 봉사 탭이 구분되어 표시됩니다. 교회를 V1에서 V2로 옮기는 동안 사용한 다음 V2만 사용하도록 전환하세요."
 
 #: 
 msgid "Assignment canceled"
@@ -27079,10 +26366,6 @@ msgstr "이 날짜는 취소되었습니다. 더 하실 일은 없습니다."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "이 회차는 취소되었습니다"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "교회가 운영하는 방식대로 구성한 봉사 관리입니다. 각 사역에는 팀과 직책이 있고, 사람은 직책의 자격을 갖추고 사역의 풀 그룹에 속합니다. 일정은 캘린더의 행사를 따르며 필요 인원이 있는 날짜별 회차를 만듭니다. 코디네이터가 사람을 배정하면 그 사람이 수락, 거절하거나 대체자를 제안하고, 알림은 이메일로 발송됩니다. 관리자와 사역 관리 권한이 있는 사용자는 모든 사역을 보고 만들고 비활성화하고 삭제할 수 있습니다. 사역 코디네이터에게는 대신 '내 사역 관리' 권한이 부여되며, 사이드바의 사역 제목 아래에는 자신이 코디네이트하는 사역만 표시됩니다. 팀 리더는 교인 포털에서 자기 팀을 운영합니다. 교인은 교인 포털에서 자신의 일정을 보고, 응답하고, 신청하고, 도움을 제안합니다."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27244,10 +26527,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "로그인도 비활성화하여 회원 포털을 사용하지 못하게 하기"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "명세서를 보내기 전에"
-
-#: 
 msgid "Birthday today"
 msgstr "오늘 생일"
 
@@ -27330,10 +26609,6 @@ msgstr "사람 및 가정 삭제"
 #: 
 msgid "Delete the login for"
 msgstr "다음 로그인 삭제:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "입금 차트 기간"
 
 #: 
 msgid "Disabled at"
@@ -27588,10 +26863,6 @@ msgid "Preview Sample Letter"
 msgstr "샘플 편지 미리 보기"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "캐나다 헌금 명세서 비공개 서명 자산 식별자입니다. 서명 업로드로 관리됩니다."
-
-#: 
 msgid "Property Type"
 msgstr "속성 유형"
 
@@ -27630,10 +26901,6 @@ msgstr "검토 및 필터"
 #: 
 msgid "Review and vote"
 msgstr "검토 및 투표"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "해당 연도를 검토한 다음 헌금 명세서를 다운로드하세요."
 
 #: 
 msgid "Review what we are considering"
@@ -27682,10 +26949,6 @@ msgstr "강함"
 #: 
 msgid "Support"
 msgstr "지원"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "세금 ID 및 PDF 설정"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27800,10 +27063,6 @@ msgid "View people and families"
 msgstr "사람 및 가정 보기"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "이 교회에서는 봉사자 관리가 꺼져 있습니다"
-
-#: 
 msgid "Weak"
 msgstr "약함"
 
@@ -27872,10 +27131,6 @@ msgid "Latest Notes"
 msgstr "최신 메모"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "아직 추가된 메모가 없습니다."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "QR 코드를 받으려면 등록을 시작하세요."
 
@@ -27886,4 +27141,744 @@ msgstr "해당 비밀번호나 코드가 올바르지 않습니다. 이중 인�
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "이중 인증이 이미 설정되어 있습니다. 비밀 키는 등록 중에만 표시됩니다."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "헌금 %1$d건, 총 %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "현재 %d개 가족이 이 유형의 속성을 가지고 있습니다."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d개 가족은 아직 영수증을 받을 수 없어 제외됩니다. 그 아래에 나열된 문제를 해결한 다음 다시 확인을 선택하세요."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "현재 %d개 그룹이 이 유형의 속성을 가지고 있습니다."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "현재 %d명이 이 유형의 속성을 가지고 있습니다."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "설치된 버전 이후 %d개의 릴리스가 제공됩니다."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s 영수증이 생성되지 않았습니다."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: 확인된 기부자의 전체 이름을 입력하고, 기부자를 확인하고, 한 기부자 집합을 확인하세요. 혼합 기부자 결제 집합은 이 기능 외부에서 처리해야 합니다."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: 검토 이후 헌금 또는 우편 주소가 변경되었습니다. 다시 확인을 선택하고 기부자를 다시 확인하세요."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}}회 분할 납부)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}}회 분할 납부)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "신용카드 또는 은행 수표 결제가 아직 마감되지 않은 입금에 포함되어 있습니다. 결제가 정산되면 입금을 마감하세요."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "결제에 공제할 수 없는 금액이 있습니다. 여기의 캐나다 영수증은 이익이 없는 헌금만 지원합니다."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "결제의 금액이 잘못되었습니다."
+
+#: 
+msgid "A payment has no date."
+msgstr "결제에 날짜가 없습니다."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "결제 날짜가 발행일보다 뒤입니다."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "결제가 문제로 표시되어 있습니다."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "결제가 0이거나 음수입니다."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "유효한 CSRF 토큰이 있는 검토된 POST가 필요합니다."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "선택한 가족이 더 이상 존재하지 않습니다."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "서명 이미지는 안전한 디지털 서명이 아닙니다."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "시스템 업데이트가 있습니다. 관리자에게 설치를 업그레이드해 달라고 요청하세요."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "포함된 모든 행은 이익이 없는 금전 헌금입니다."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "필요한 캐나다 영수증 설정이 모두 입력되었습니다."
+
+#: 
+msgid "Also delete family members"
+msgstr "가족 구성원도 삭제"
+
+#: 
+msgid "Amount of advantages"
+msgstr "이익 금액"
+
+#: 
+msgid "Amount of gifts"
+msgstr "헌금 금액"
+
+#: 
+msgid "Amount per installment"
+msgstr "분할 회차당 금액"
+
+#: 
+msgid "Amounts entered are"
+msgstr "입력한 금액 기준은"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "관리자가 보고서 설정에서 업로드합니다."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "승인되었지만 초대장이 전송되지 않았습니다"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "시스템 관리자에게 ChurchCRM을 최신 버전으로 업그레이드해 달라고 요청하세요."
+
+#: 
+msgid "Authorized Signature"
+msgstr "승인된 서명"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "캐나다 국세청"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "캐나다 공식 영수증"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "캐나다 공식 영수증을 사용하려면 교회 정보에서 교회 국가가 캐나다여야 합니다."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "캐나다 영수증은 다른 필터 없이 전체 역년과 모든 기금이 필요합니다."
+
+#: 
+msgid "Change Selection"
+msgstr "선택 변경"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "자선단체 법적 이름"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "자선단체 등록 주소"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "자선단체 등록 번호"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "영수증용 자선단체 정보가 아직 입력되지 않았습니다. 가능할 때 법적 이름, 등록 주소, 등록 번호, 발행 지역을 추가하세요. 그때까지 재정은 계속 작동합니다."
+
+#: 
+msgid "Charity on receipts"
+msgstr "영수증의 자선단체"
+
+#: 
+msgid "Check Again"
+msgstr "다시 확인"
+
+#: 
+msgid "Check the year"
+msgstr "연도 확인"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "연도를 확인하고 명세서를 설정한 다음 다운로드하세요."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "분할 금액에 대해 매주, 매월 또는 분기를 선택하세요."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "유효한 기부 역년을 선택하세요."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "원본 또는 사본을 선택하세요."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "총 약정 금액 또는 분할 금액을 선택하세요."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM 번역은 ChurchCRM GitHub 저장소에서 관리됩니다. 다음 방법으로 도울 수 있습니다"
+
+#: 
+msgid "Commitment amount"
+msgstr "약정 금액"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "사본을 보관된 원본과 비교하고 모든 영수증 정보가 변경되지 않았는지 확인하세요."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "다운로드하기 전에 모든 영수증 확인을 완료하세요."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "자선단체 법적 이름, 등록 주소, 등록 번호, 발행 지역, 인쇄된 서명자를 완성하세요."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "확인 서신 인쇄 서명자"
+
+#: 
+msgid "Copy Kind"
+msgstr "사본 종류"
+
+#: 
+msgid "Currency"
+msgstr "통화"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "통화 기호 $ 또는 CAD"
+
+#: 
+msgid "Date received"
+msgstr "수령 날짜"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "이것을 삭제하면 %d개의 속성과 모든 할당도 함께 제거되어 아무것도 남지 않습니다."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "선택한 연도의 모든 헌금이 위에 함께 이름이 기재된 기부자들의 것입니까?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "같은 번호를 다른 영수증에 재사용하거나, 같은 헌금에 대해 두 번 영수증을 발급하거나, 변경된 정보를 변경되지 않은 원본으로 다시 생성하지 마세요."
+
+#: 
+msgid "Duplicate"
+msgstr "사본"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "사본 / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "소득세 목적상 적격한 헌금 금액"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "약정을 미리 보려면 일정과 분할 날짜를 입력하세요."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "유효한 첫 번째와 마지막 분할 날짜를 순서대로 입력하세요."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "소수점 이하 최대 두 자리까지 유효한 분할 금액을 입력하세요."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "기존 서약은 기록된 총액을 유지합니다. 각 예정 헌금을 입력할 때만 회차당 분할 금액을 선택하세요."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "세대주와 배우자를 기준으로 채워집니다. 기부자와 정확히 일치하도록 편집하세요."
+
+#: 
+msgid "First installment"
+msgstr "첫 번째 분할"
+
+#: 
+msgid "Full commitment"
+msgstr "전체 약정"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "세금 명세서 생성"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "헌금 역년"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "헌금 명세서 — 공식 기부 영수증이 아닙니다"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "GitHub에서 번역 돕기"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "과거 봉투 변경은 지원되지 않습니다."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "보관된 원본과 비교했습니다: 기부자, 금액, 일련번호, 텍스트가 변경되지 않았습니다. 이것은 수정이나 교체가 아닙니다."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "발행된 PDF와 외부 영수증 기록을 자선단체의 캐나다 기록 보관 장소에 보관하겠습니다."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "보관된 원본을 사용할 수 없거나 다르면 외부 CRA 취소/교체 절차를 사용하세요."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "결제 메모 포함: 기부자에게 적합한지 검토했습니다."
+
+#: 
+msgid "Include this family in the download"
+msgstr "이 가족을 다운로드에 포함"
+
+#: 
+msgid "Installed version: %s"
+msgstr "설치된 버전: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "분할 금액은 서약에만 사용할 수 있습니다."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "분할 날짜는 선택한 회계 연도 내에 있어야 합니다."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "CSRF 토큰이 잘못되었거나 없습니다"
+
+#: 
+msgid "Issue Date"
+msgstr "발행일"
+
+#: 
+msgid "Issue Locality"
+msgstr "발행 지역"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "원본 PDF와 외부 영수증 기록을 자선단체의 캐나다 기록 보관 장소에 보관하세요."
+
+#: 
+msgid "Last installment on or before"
+msgstr "마지막 분할 기한"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "서신 문구, 자선단체 정보, PDF 처리는 명세서 설정에서 한 번 설정합니다."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "헌금 명세서를 위한 서신 문구, 자선단체 정보, PDF 처리"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "최대 2 MiB 및 2000 × 1000 픽셀. 저장된 서명을 교체하려면 새 이미지를 선택하세요. 서명 이미지는 안전한 디지털 서명이 아닙니다."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "성도 로그인이 꺼져 있어 %s 가족 중 누구도 성도 포털에 로그인할 수 없습니다. 관리자가 관리 → 성도 포털에서 켤 수 있습니다."
+
+#: 
+msgid "Memo"
+msgstr "메모"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "혼합 기부자 가족 결제 집합은 여기에서 나눌 수 없습니다. 이 기능 외부에서 처리하세요."
+
+#: 
+msgid "Narrow the list"
+msgstr "목록 좁히기"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "%s에 대해 이 필터와 일치하는 가족이 없습니다."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "중복되는 개인 또는 누적 영수증이 없습니다."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "이 가족에 대한 영수증을 아직 생성할 수 없습니다"
+
+#: 
+msgid "No signature on file"
+msgstr "파일에 서명이 없습니다"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "아니요 — 기부자가 다릅니다. 이 기능 외부에서 처리하세요"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "현재 로그인 규칙에서는 %s 가족 중 누구도 성도 포털에 로그인할 수 없습니다."
+
+#: 
+msgid "None / Aucun"
+msgstr "없음 / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "캐나다 영수증을 발행할 준비가 되지 않았습니다. 아직 부족한 항목"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "공식 영수증 / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "소득세 목적 공식 영수증 / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "공식 영수증에는 123456789RR0001 형식의 등록 번호와 서명 이미지가 필요합니다."
+
+#: 
+msgid "Original"
+msgstr "원본"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "원본 발행일 (보관된 원본에서 입력)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "결제 날짜는 기록된 우편 수표 소인 처리를 포함하여 헌금을 받은 날짜를 반영합니다."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "일반 헌금 명세서에 인쇄됩니다. 예를 들어 미국의 EIN입니다. 같은 값이 교회 정보에도 있습니다."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "개인 헌금 명세서 서명 자산 식별자. 서명 업로드로 관리됩니다."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "속성 / 할당"
+
+#: 
+msgid "Property deleted"
+msgstr "속성이 삭제되었습니다"
+
+#: 
+msgid "Property type deleted"
+msgstr "속성 유형이 삭제되었습니다"
+
+#: 
+msgid "Receipt Closing"
+msgstr "영수증 맺음말"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "영수증 발행 지역"
+
+#: 
+msgid "Receipt No."
+msgstr "영수증 번호"
+
+#: 
+msgid "Registration Number"
+msgstr "등록 번호"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "123456789RR0001 형식의 등록 번호"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "릴리스 노트를 지금 사용할 수 없습니다."
+
+#: 
+msgid "Releases"
+msgstr "릴리스"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s의 남은 약정: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA 요구 사항 제거"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "저장된 서명 이미지를 제거하시겠습니까? 공식 영수증에는 파일에 서명이 하나 필요합니다."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "보고서와 알림은 이 전체 기간 약정을 헌금과 비교합니다. 남은 잔액은 연체된 분할 계산이 아닙니다."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "보고서와 알림은 위에 표시된 전체 약정을 사용합니다. 남은 잔액은 연체된 분할 계산이 아닙니다."
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA 요구"
+
+#: 
+msgid "Reset Options"
+msgstr "옵션 재설정"
+
+#: 
+msgid "Review Selected Families"
+msgstr "선택한 가족 검토"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "샘플 — 세금 목적으로 유효하지 않음"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "샘플 서명 자리 표시자"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "2FA가 필요한지 여부를 지정합니다."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "보안 업데이트와 지원은 최신 버전에 대해서만 제공됩니다."
+
+#: 
+msgid "Select the families to review."
+msgstr "검토할 가족을 선택하세요."
+
+#: 
+msgid "Set up the statement"
+msgstr "명세서 설정"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "계속하려면 2단계 인증을 설정하세요."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "공유 봉투 충돌: 다른 가족이 현재 이 봉투 번호를 가지고 있습니다."
+
+#: 
+msgid "Signature Image"
+msgstr "서명 이미지"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "서명 이미지 (관리, 보고서 설정)"
+
+#: 
+msgid "Signature on file"
+msgstr "파일에 서명이 있습니다"
+
+#: 
+msgid "Sincerely"
+msgstr "경의를 담아"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "반복 서약을 편집할 때 금액 기준을 지정하세요."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "표준 헌금 명세서"
+
+#: 
+msgid "Statement Template"
+msgstr "명세서 템플릿"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "오늘보다 늦지 않은 발행일을 입력하세요."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "명세서의 세금 ID"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s 가족에는 성도 포털에 초대할 살아 있는 구성원이 없습니다."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "캐나다 등록 번호는 123456789RR0001 형식이어야 합니다. 이것은 등록 상태를 확인하지 않습니다."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "자선단체 등록 번호는 텍스트여야 합니다."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "공식 영수증에 인쇄되는 자선단체 등록 번호. 비워 두면 교회 정보의 세금 ID를 사용합니다."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "자선단체의 등록 주소. 비워 두면 교회 정보의 주소를 사용합니다."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "서명자 위에 오는 맺음말. 예를 들어 \"경의를 담아\"입니다."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "전체 약정은 기금당 999999.99를 초과할 수 없으며 금액은 소수점 이하 최대 두 자리까지 사용해야 합니다."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "마지막으로 확인한 이후 헌금 또는 우편 주소가 변경되었습니다. 검토하고 기부자를 다시 확인하세요."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "우편 주소가 불완전합니다. 거리, 도시, 주, 우편번호가 필요합니다."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "자선단체가 등록된 이름. 교회 이름과 다를 수 있습니다."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "영수증이 발행되는 장소. 비워 두면 교회 정보의 도시를 사용합니다."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "인쇄된 헌금 명세서 서명자는 이 영수증들에 서명할 권한이 있습니다."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "캐나다 영수증의 경우 시스템 통화 기호는 $이거나 CAD를 나타내야 합니다."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "선택한 역년에 결제가 없습니다."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "이들은 이 가족/역년의 모든 헌금에 대한 실제 기부자이며, 우편 주소가 정확합니다."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "이 이미지는 헌금 명세서와 영수증에서 서명자 이름 위에 인쇄됩니다. 자선단체 정보와 서명자의 인쇄 이름은 재정, 명세서 설정에 있습니다."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "이 옵션은 영수증을 캐나다 영수증으로 형식화하지만 영수증 대장을 유지하거나 PDF를 보관하지 않습니다."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "이 자체 등록 가족은 승인을 기다리고 있습니다. 승인하면 성도 포털에 로그인할 수 있는 각 구성원에게 가족 정보를 검토하라는 초대 이메일이 전송됩니다."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "이 도구에는 취소/교체 워크플로가 없습니다. 수정이나 분실된 영수증 교체에는 기존의 CRA 준수 절차를 사용하세요."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "이 사용자는 2FA를 설정해야 합니다"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "이렇게 하면 가족 기록과 메모가 영구적으로 삭제됩니다. 되돌릴 수 없습니다."
+
+#: 
+msgid "Total commitment"
+msgstr "총 약정"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "약정을 미리 볼 수 없습니다."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "서명 업로드 또는 교체"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "보고서 설정에서 승인된 세금 서명을 업로드하세요."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "선택한 회계 연도 내의 날짜를 사용하세요. 매월 및 분기 헌금은 첫 분할 날짜 또는 더 짧은 달의 마지막 날을 사용합니다."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "확인된 기부자 전체 이름"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "대신 가족을 직접 확인하세요."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "모든 가족의 기부자 전체 이름과 주소를 확인하세요. 혼합 기부자 결제 집합은 이 기능 외부에서 처리해야 합니다."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "버전 %s를 사용할 수 있습니다. 관리자에게 설치를 업그레이드해 달라고 요청하세요."
+
+#: 
+msgid "View all emails"
+msgstr "모든 이메일 보기"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "예 — 확인된 한 기부자 집합입니다"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "교회 국가가 캐나다이므로 명세서를 생성할 때 캐나다 공식 영수증도 사용할 수 있습니다."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "교회 국가가 캐나다이므로 캐나다 공식 영수증을 헌금 명세서에서 사용할 수 있으며, 일반 명세서는 공식 기부 영수증이 아닌 것으로 표시됩니다."
+
+#: 
+msgid "groups"
+msgstr "그룹"
 

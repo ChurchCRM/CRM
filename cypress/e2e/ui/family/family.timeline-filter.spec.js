@@ -81,13 +81,14 @@ describe("Timeline filter chips", () => {
     });
 
     describe("Person profile", () => {
-        it("should default to Notes-only on the person timeline", () => {
-            // PersonView uses the same .timeline-container class so the shared
-            // init runs on the #timeline tab-pane. PersonID=2 is seeded in demo
-            // data and always has at least one system timeline event (postInsert hook).
+        it("should keep notes out of the person Timeline tab and show them on the Notes tab", () => {
+            // PersonID=2 is seeded in demo data and always has at least one system
+            // timeline event (postInsert hook).
             cy.visit("/people/view/2");
             cy.get("#timeline.timeline-container .timeline-filters").should("exist");
-            cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').should("have.class", "btn-primary");
+            cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').should("not.exist");
+            cy.get('#timeline .timeline-event[data-timeline-category="notes"]').should("not.exist");
+            cy.get("#notes.timeline-container .timeline-filters").should("not.exist");
         });
     });
 });

@@ -58,7 +58,7 @@ describe("Login as Person: the member's language", () => {
 
     it("opens the portal in the member's language, not the administrator's", () => {
         signInAsAdmin();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.window().its("CRM.locale").should("eq", "en_US");
 
         startLoginAsPerson();

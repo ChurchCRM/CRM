@@ -13,7 +13,6 @@
 const ADMIN_KEY = "admin.api.key";
 const URL = "/api/ministries";
 const configUrl = (name) => `/admin/api/system/config/${name}`;
-const VERSION = "sVolunteerVersion";
 const HORIZON = "iVolunteerSchedulingHorizonWeeks";
 const DEFAULT_TYPE = "iVolunteerDefaultEventTypeId";
 const RATE_LIMIT = "iTimerJobsMinIntervalMinutes";
@@ -207,7 +206,7 @@ after(() => {
 
 describe("Volunteer v2 D31 — schedules follow events that already exist, up to a church-wide scheduling horizon that a daily timer job keeps every schedule filled to; the \"Other\" event type and the default type of a ministry's new events", () => {
     before(() => {
-        for (const name of [VERSION, HORIZON, DEFAULT_TYPE, RATE_LIMIT]) {
+        for (const name of [HORIZON, DEFAULT_TYPE, RATE_LIMIT]) {
             cy.makePrivateAdminAPICall("GET", configUrl(name), null, 200).then((resp) => {
                 original[name] = String(resp.body.value ?? "");
             });
@@ -215,7 +214,6 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
         cy.makePrivateAdminAPICall("GET", configUrl("sTimeZone"), null, 200).then((resp) => {
             timezone = resp.body.value || "UTC";
         });
-        setConfig(VERSION, "v2");
         setConfig(HORIZON, "8");
         setConfig(DEFAULT_TYPE, "");
         dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
@@ -251,7 +249,7 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
     after(() => {
         cleanupFixtures();
         dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
-        for (const name of [HORIZON, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
+        for (const name of [HORIZON, DEFAULT_TYPE, RATE_LIMIT]) {
             setConfig(name, original[name]);
         }
     });
@@ -477,14 +475,6 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
                     expect(new Set(rows.map((row) => row.eventId)).size, "one occurrence per event").to.eq(rows.length);
                 });
             });
-        });
-
-        it("does nothing while Volunteer v2 is off", () => {
-            setConfig(VERSION, "v1");
-            dbOk("DELETE FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]);
-            runTimerJobs(true);
-            count("SELECT COUNT(*) AS n FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]).should("eq", 0);
-            setConfig(VERSION, "v2");
         });
     });
 

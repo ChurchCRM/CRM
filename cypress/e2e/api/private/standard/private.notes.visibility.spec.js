@@ -194,10 +194,6 @@ describe("Notes Visibility Policy (#9036)", () => {
         });
 
         it("john.plainauth (Notes=1, no EditRecords) CANNOT POST person note → 403", () => {
-            // john.plainauth has Notes=1 but no EditRecords.
-            // POST /person/{id}/note requires Notes=1 (middleware) AND canEditPerson()
-            // (inline check). canEditPerson() returns false (no EditRecords)
-            // so the request is blocked with 403 at the object-level scope check.
             cy.makePrivatePlainAuthAPICall("POST", "/api/person/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });

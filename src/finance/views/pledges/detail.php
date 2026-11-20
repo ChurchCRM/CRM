@@ -3,6 +3,8 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -124,12 +126,20 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                 <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Total Amount') ?></div>
                     <div class="fw-bold fs-3 text-success">
-                        $<?= number_format((float) $pledge['total'], 2) ?>
+                        <?= InputUtils::escapeHTML($pledge['total_formatted']) ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php if ($isPledge && $pledge['amountBasis'] === 'installment'): ?>
+    <div class="alert alert-info">
+        <strong><?= gettext('Amount per installment') ?>: <?= InputUtils::escapeHTML(CurrencyFormatter::format(array_sum(array_column($pledge['funds'], 'inputAmount')))) ?></strong>
+        <div><?= InputUtils::escapeHTML(DateTimeUtils::formatDate($pledge['firstInstallment'])) ?> – <?= InputUtils::escapeHTML(DateTimeUtils::formatDate($pledge['lastInstallment'])) ?></div>
+        <div><?= gettext('Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation.') ?></div>
+    </div>
+    <?php endif; ?>
 
     <!-- Fund Breakdown Card -->
     <div class="card mb-3">
@@ -160,7 +170,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                         ?>
                         <tr>
                             <td><?= InputUtils::escapeHTML($f['fundName']) ?></td>
-                            <td class="text-end fw-bold">$<?= number_format((float) $f['amount'], 2) ?></td>
+                            <td class="text-end fw-bold"><?= InputUtils::escapeHTML($f['amount_formatted']) ?></td>
                             <?php if ($hasNonDeductible): ?>
                             <td class="text-end text-muted">
                                 <?= (float) $f['nonDeductible'] > 0 ? '$' . number_format((float) $f['nonDeductible'], 2) : '—' ?>

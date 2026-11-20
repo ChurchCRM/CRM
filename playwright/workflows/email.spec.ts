@@ -3,7 +3,7 @@ import { type APIRequestContext, expect, type Locator, type Page, request, test 
 import { captureScreen, defineCapture } from '../support/capture';
 import { BASE_URL } from '../support/env';
 import { humanClick, humanPause, settle } from '../support/human';
-import { findDemoPerson } from '../support/member-sign-in';
+import { findDemoPerson, useMemberSignIn } from '../support/member-sign-in';
 
 const ANDREW_EMAIL = 'andrew.baker@demo.churchcrm.io';
 
@@ -54,11 +54,11 @@ async function openAndrew(page: Page): Promise<void> {
   await humanClick(row.locator('a[href*="/people/family/"]').first());
   await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
   await humanClick(page.getByRole('link', { name: 'Andrew Baker' }).first());
-  await expect(page.locator('.card:has(h6 .fa-envelope) [data-email-composer]')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#person-contact [data-email-composer]')).toBeVisible({ timeout: 15000 });
 }
 
 async function openComposerForm(page: Page): Promise<void> {
-  await humanClick(page.locator('.card:has(h6 .fa-envelope) [data-email-composer]'));
+  await humanClick(page.locator('#person-contact [data-email-composer]'));
   await expect(page.locator('#crm-email-composer-modal')).toBeVisible();
   await humanClick(page.locator('#crm-email-send-btn'));
   const body = page.locator('#crm-email-body');
@@ -104,6 +104,21 @@ test.describe('Email composer', () => {
 
   test.afterAll(async () => {
     await restoreMail?.();
+  });
+
+  const form = defineCapture({
+    name: 'email-composer-form',
+    title: 'Write an Email',
+    category: 'Communication',
+    purpose: 'Show the composer with a subject, the message and the pre-filled closing, for the email page of the user guide',
+    usedIn: ['docs'],
+  });
+
+  test('email-composer-form', form, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    await openComposerForm(page);
+    await settle(page, 800);
+    await captureScreen(page, testInfo, form);
   });
 
   const preview = defineCapture({
@@ -175,6 +190,42 @@ test.describe('Email composer', () => {
     }
   });
 
+  const personSendButton = defineCapture({
+    name: 'email-person-view-send-button',
+    title: 'Email a Person from Their Page',
+    category: 'Communication',
+    purpose: 'Show the paper-plane button next to the email address on the Person View, for the email page of the user guide',
+    usedIn: ['docs'],
+  });
+
+  test('email-person-view-send-button', personSendButton, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    const button = page.locator('#person-contact [data-email-composer]');
+    await button.scrollIntoViewIfNeeded();
+    await settle(page, 800);
+    await captureScreen(page, testInfo, personSendButton);
+  });
+
+  const familySendButtons = defineCapture({
+    name: 'email-person-view-family-send-buttons',
+    title: 'Email Family Members from the Person View',
+    category: 'Communication',
+    purpose: "Show the paper-plane buttons on the other family members' rows of the family card on the Person View, for the email page of the user guide",
+    usedIn: ['docs'],
+  });
+
+  test('email-person-view-family-send-buttons', familySendButtons, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    const personId = page.url().match(/\/people\/view\/(\d+)/)?.[1];
+    expect(personId, 'person id from the open person view').toBeTruthy();
+    // Every composer button that is not Andrew's own sits on a family member's row.
+    const buttons = page.locator(`[data-email-composer]:not([data-email-person-id="${personId}"])`);
+    await expect(buttons.first()).toBeVisible({ timeout: 15000 });
+    await buttons.first().scrollIntoViewIfNeeded();
+    await settle(page, 800);
+    await captureScreen(page, testInfo, familySendButtons);
+  });
+
 });
 
 /** Queues a composer message to one person and sends it now, as the composer does. */
@@ -223,11 +274,13 @@ async function openEmailHistoryPage(page: Page): Promise<void> {
 
 test.describe('Email history', () => {
   let restoreMail: (() => Promise<void>) | undefined;
+  let restoreSignIn: (() => Promise<void>) | undefined;
 
   // Andrew gets three composer messages and a family verification email. The
   // verification email is one ChurchCRM writes itself, so its content is not stored.
   test.beforeAll(async ({ request }) => {
     restoreMail = await enableOutgoingMail(request);
+    restoreSignIn = await useMemberSignIn(request);
     const andrew = await findDemoPerson(request, ANDREW_EMAIL);
     expect((await request.post(`/api/family/${andrew.familyId}/verify`)).ok(), 'family verification email').toBeTruthy();
     await sendComposerEmail(
@@ -251,6 +304,7 @@ test.describe('Email history', () => {
   });
 
   test.afterAll(async () => {
+    await restoreSignIn?.();
     await restoreMail?.();
   });
 
@@ -289,5 +343,24 @@ test.describe('Email history', () => {
     await expect(page.locator('#email-history-modal-nobody')).toBeVisible({ timeout: 15000 });
     await settle(page, 800);
     await captureScreen(page, testInfo, notStored);
+  });
+
+  const dashboard = defineCapture({
+    name: 'email-dashboard-recent-sends',
+    title: 'Email History on the Email Page',
+    category: 'Communication',
+    purpose: 'Show the Email History table on the Email page with the recent sends, for the email page of the user guide',
+    usedIn: ['docs'],
+  });
+
+  test('email-dashboard-recent-sends', dashboard, async ({ page }, testInfo) => {
+    await page.goto('/people/email');
+    await dismissHeaderNotices(page);
+    const row = page.locator('#email-log-table tbody tr').filter({ hasText: 'Volunteers needed for the fall festival' });
+    await expect(row.first()).toBeVisible({ timeout: 15000 });
+    await hideFloatingButtons(page);
+    await page.locator('#email-log-card').scrollIntoViewIfNeeded();
+    await settle(page, 800);
+    await captureScreen(page, testInfo, dashboard);
   });
 });

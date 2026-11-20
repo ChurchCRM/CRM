@@ -9,7 +9,6 @@
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UIANCHOR";
@@ -100,7 +99,6 @@ after(() => {
 
 describe("Volunteer v2 — where a schedule's dates come from, and Staff an event", () => {
     before(() => {
-        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: MINISTRY_NAME, description: "anchored UI fixture", sundaySchool: true }, 201).then(
@@ -141,7 +139,6 @@ describe("Volunteer v2 — where a schedule's dates come from, and Staff an even
 
     after(() => {
         cleanupFixtures();
-        adminApi("POST", SETTING_URL, { value: "v1" }, 200);
     });
 
     beforeEach(() => {

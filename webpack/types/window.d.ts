@@ -290,6 +290,10 @@ interface CRMNamespace {
       cancelLabel?: string;
     },
   ) => void;
+  showNoInvitationNotice?: (
+    cannotSignIn: { message: string; members: { name: string; reason: string }[] },
+    onClose?: () => void,
+  ) => void;
   alertAction?: (
     title: string,
     message: string,
@@ -337,6 +341,11 @@ interface CRMNamespace {
   peopleImageLoader?: unknown;
   APIRequest?: (options: CRMAPIRequestOptions) => JQuery.jqXHR;
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
+  /**
+   * Copy text to the clipboard: success toast, manual-copy dialog when every
+   * mechanism failed. Installed by webpack/skin-core.js (#11458).
+   */
+  copyToClipboard?: (text: string, successMsg?: string) => Promise<void>;
   /** Show the server's `message` from a failed fetch Response or jqXHR, or the fallback. */
   notifyAPIError?: (source: Response | JQuery.jqXHR | null | undefined, fallback: string) => Promise<void>;
   /** Member Portal only: show a toast in the portal's fixed top-right stack.

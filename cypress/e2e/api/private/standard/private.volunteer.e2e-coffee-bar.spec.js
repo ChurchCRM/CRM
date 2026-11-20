@@ -39,7 +39,6 @@
  * when the runner crashes mid-spec (`cypress-testing.md`).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = 99; // person 99 — signs up
@@ -84,7 +83,6 @@ let scheduleId = 0;
 let occurrenceId = 0;
 let scopeId = 0;
 const positions = {};
-let originalVersion = "v1";
 let seriesStart = "";
 let seriesEnd = "";
 let seriesEventIds = [];
@@ -108,10 +106,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today. */
@@ -284,10 +278,6 @@ after(() => {
 
 describe("Volunteer v2 — #9714 scenario 1, \"Coffee Bar\", as ONE end-to-end run", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         // Ministry creation is manager-only (§3.3.1), so the administrator makes
@@ -477,7 +467,6 @@ describe("Volunteer v2 — #9714 scenario 1, \"Coffee Bar\", as ONE end-to-end r
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── the run ────────────────────────────────────────────────────────────────

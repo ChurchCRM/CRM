@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard">
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/dashboard">
                         <i class="fa-solid fa-home"></i>
                     </a>
                 </li>

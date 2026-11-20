@@ -69,8 +69,7 @@ select {
 
   &.active {
     box-shadow: 0 0 0 3px var(--tblr-primary);
-    border-color: var(--tblr-primary);
-    transform: scale(1.15);
+    border-color: var(--tblr-bg-surface);
   }
 }
 
@@ -254,5 +253,37 @@ select {
         box-shadow: 0 0 0 2px var(--tblr-bg-surface);
       }
     }
+  }
+}
+
+// Light skin: Tabler 1.6+ puts a white surface on a 98.5% page with a 12% hairline,
+// so cards, sidebar and header merge. Step the page down and firm up edges and tints.
+// Tints derive from the live colour so a custom primary still works.
+:root:not([data-bs-theme="dark"]) {
+  --tblr-body-bg: oklch(94.5% 0.004 250);
+  --tblr-border-color: var(--tblr-gray-300);
+  --tblr-border-color-translucent: rgba(24, 36, 51, 0.16);
+  --tblr-shadow-card: 0 1px 3px rgba(24, 36, 51, 0.1);
+
+  --tblr-primary-lt: color-mix(in srgb, var(--tblr-primary) 14%, white);
+  --tblr-success-lt: color-mix(in srgb, var(--tblr-success) 16%, white);
+  --tblr-danger-lt: color-mix(in srgb, var(--tblr-danger) 14%, white);
+  --tblr-warning-lt: color-mix(in srgb, var(--tblr-warning) 18%, white);
+  --tblr-info-lt: color-mix(in srgb, var(--tblr-info) 16%, white);
+  --tblr-secondary-lt: color-mix(in srgb, var(--tblr-secondary) 14%, white);
+
+  .alert-primary { --tblr-alert-color: color-mix(in srgb, var(--tblr-primary) 70%, black); }
+  .alert-success { --tblr-alert-color: color-mix(in srgb, var(--tblr-success) 65%, black); }
+  .alert-danger { --tblr-alert-color: color-mix(in srgb, var(--tblr-danger) 70%, black); }
+  .alert-warning { --tblr-alert-color: color-mix(in srgb, var(--tblr-warning) 55%, black); }
+  .alert-info { --tblr-alert-color: color-mix(in srgb, var(--tblr-info) 55%, black); }
+
+  .card-header-tabs .nav-link:not(.active) {
+    color: var(--tblr-body-color);
+  }
+
+  .navbar-vertical .nav-item.active > .nav-link,
+  .navbar-vertical .nav-link.active {
+    background-color: var(--tblr-primary-lt);
   }
 }

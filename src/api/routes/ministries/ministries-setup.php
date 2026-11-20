@@ -28,7 +28,6 @@ use ChurchCRM\Volunteer\Middleware\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\ManageMinistriesRoleAuthMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -42,12 +41,6 @@ use Slim\Routing\RouteCollectorProxy;
  * Gating, from the outside in (Slim `->add()` is LIFO — the last one chained
  * runs first):
  *
- *   VolunteerV2EnabledMiddleware        on the /ministries group. Chained HERE and
- *                                       not inherited: Slim scopes ->add() to the
- *                                       single RouteCollectorProxy it is chained
- *                                       on, so nothing propagates from the group
- *                                       in ministries-status.php, and an ungated
- *                                       group would answer in every rollout state.
  *   VolunteerCoordinatorRoleAuthMiddleware  on the inner group — "do you coordinate
  *                                       anything at all".
  *   ManageMinistriesRoleAuthMiddleware  on the two manager-only routes, POST and
@@ -253,7 +246,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
 
         $setup->get('/people/{personId:[0-9]+}/qualifications', 'listVolunteerQualificationsForPerson');
     })->add(VolunteerCoordinatorRoleAuthMiddleware::class);
-})->add(new VolunteerV2EnabledMiddleware());
+});
 
 // ─── Wire shapes ─────────────────────────────────────────────────────────────
 //

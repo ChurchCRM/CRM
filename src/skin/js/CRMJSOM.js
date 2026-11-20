@@ -560,11 +560,11 @@ window.CRM.dashboard = {
 
   /**
    * Show the number of self-registrations awaiting review on the People menu badge
-   * and on the home dashboard alert.
+   * and on the home dashboard card.
    */
   loadSelfRegisterPendingCount: () => {
     const badge = document.getElementById("selfRegisterPending");
-    const alert = document.getElementById("selfRegisterDashboardAlert");
+    const alert = document.getElementById("selfRegisterDashboardCard");
     if (!badge && !alert) return;
     window.CRM.APIRequest({
       method: "GET",
@@ -577,8 +577,6 @@ window.CRM.dashboard = {
       }
       if (alert) {
         document.getElementById("selfRegisterDashboardCount").innerText = data.count;
-        alert.classList.toggle("d-none", !data.count);
-        alert.classList.toggle("d-flex", Boolean(data.count));
       }
     });
   },
@@ -899,12 +897,12 @@ window.CRM.dashboard = {
    * Render a standard family action dropdown menu.
    * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
    * @param {number} familyId
-   * @param {string} _familyName - Unused; kept for parity with the person renderer
+   * @param {string} familyName - Used in delete confirmation
    * @param {Object} [options]
    * @param {boolean} [options.inCart=false] - Whether family is already in cart
    * @returns {string} HTML string
    */
-  window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
+  window.CRM.renderFamilyActionMenu = (familyId, familyName, options) => {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
@@ -938,7 +936,7 @@ window.CRM.dashboard = {
         className: "delete-family",
         icon: "fa-solid fa-trash",
         label: i18next.t("Delete"),
-        data: { family_id: familyId },
+        data: { family_id: familyId, family_name: familyName || "" },
       },
     ]);
   };
@@ -1118,13 +1116,22 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       const familyId = $btn.data("family_id");
+      const familyName = $btn.data("family_name");
       window.CRM.confirmAction(
         i18next.t("Delete this family?"),
-        i18next.t(
-          "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
-        ),
+        "<p class='fw-bold'>" +
+          window.CRM.escapeHtml(String(familyName || "")) +
+          "</p>" +
+          i18next.t("This will permanently delete the family record and its notes. This cannot be undone.") +
+          "<br><br><label class='form-check'><input type='checkbox' class='form-check-input' id='deleteFamilyMembersToo'> " +
+          i18next.t("Also delete family members") +
+          "</label>",
         () => {
-          window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
+          const deleteMembers = document.getElementById("deleteFamilyMembersToo")?.checked === true;
+          const path = "family/" + familyId + (deleteMembers ? "?deleteMembers=true" : "");
+          window.CRM.APIRequest({ method: "DELETE", path: path }).done(() => {
+            window.location.href = window.CRM.root + "/people/family";
+          });
         },
         {
           confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
@@ -1140,37 +1147,7 @@ window.CRM.dashboard = {
   }
 })();
 
-/**
- * Copy text to the clipboard with a success toast, falling back to a prompt dialog.
- * @param {string} text - The text to copy
- * @param {string} [successMsg] - Optional toast message on success
- */
-const showManualCopy = (text) => {
-  window.CRM.alertAction(
-    "",
-    `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
-    {
-      onShown: (modal) => {
-        const field = modal.querySelector("textarea");
-        field.focus();
-        field.select();
-      },
-    },
-  );
-};
-
-window.CRM.copyToClipboard = (text, successMsg) => {
-  const msg = successMsg || i18next.t("Copied to clipboard");
-  if (navigator.clipboard) {
-    return navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        window.CRM.notify(msg, { type: "success", delay: 3000 });
-      })
-      .catch(() => {
-        showManualCopy(text);
-      });
-  }
-  showManualCopy(text);
-  return Promise.resolve();
-};
+// window.CRM.copyToClipboard is installed by the skin bundle
+// (webpack/skin-core.js), which loads before this file
+// (src/Include/partials/head-assets.php); its transport is the shared helper
+// in webpack/common/copy-to-clipboard.ts.
