@@ -21,9 +21,6 @@ window.JustValidate = JustValidate;
 const moment = require("moment");
 window.moment = moment;
 
-const Stepper = require("bs-stepper");
-window.Stepper = Stepper;
-
 (() => {
   // Get root path from global CRM config and ensure it's properly formatted
   let rootPath = window.CRM?.root ? window.CRM.root : "";
@@ -64,36 +61,18 @@ window.Stepper = Stepper;
       table: "#integrity-checks",
       status: "#integrity-status",
       collapse: "#integrity-collapse",
+      warning: true,
     },
     orphaned: {
       table: "#orphaned-checks",
       status: "#orphaned-status",
       collapse: "#orphaned-collapse",
       section: "#orphaned-files-section",
+      warning: true,
     },
   };
 
-  let setupStepper;
   const validators = {};
-
-  function skipCheck() {
-    $("#prerequisites-help").addClass("d-none");
-    $("#prerequisites-next-btn").prop("disabled", false);
-    $("#prerequisites-force-btn").addClass("d-none");
-    $("#prerequisites-force-help").addClass("d-none");
-    state.prerequisitesStatus = true;
-
-    updateStatusBanner(
-      "warning",
-      "Continuing with items still to fix",
-      "ChurchCRM will install. Ask your web host to fix the items above when you can.",
-    );
-
-    // Automatically advance to next step
-    if (setupStepper) {
-      setupStepper.next();
-    }
-  }
 
   function updateStatusBanner(status, title, detail) {
     const $banner = $("#status-banner");
@@ -135,73 +114,24 @@ window.Stepper = Stepper;
       state.prerequisitesStatus = allPassed;
     }
 
+    if (!state.checksComplete) {
+      return;
+    }
+    const blocking = Object.entries(state.prerequisites).some(
+      ([key, passed]) => passed !== true && (key.startsWith("php-") || key.startsWith("filesystem-")),
+    );
     if (state.prerequisitesStatus) {
-      $("#prerequisites-help").addClass("d-none");
-      $("#prerequisites-next-btn").prop("disabled", false);
-      $("#prerequisites-force-btn, #prerequisites-force-help").addClass("d-none");
-      if (state.checksComplete) {
-        updateStatusBanner("success", "System check passed", "Your server is ready. Continue to connect the database.");
-      }
-    } else if (state.checksComplete) {
-      $("#prerequisites-next-btn").prop("disabled", true);
-      $("#prerequisites-force-btn, #prerequisites-force-help").removeClass("d-none");
-      const help = volunteerHelp();
-      const $help = $("#prerequisites-help");
-      $help.empty();
-      help.forEach((line) => {
-        $help.append($("<li>").text(line));
-      });
-      $help.toggleClass("d-none", help.length === 0);
+      updateStatusBanner("success", "Ready", "");
+    } else if (blocking) {
+      updateStatusBanner("error", "Your web host needs to fix something", "Send them the list below.");
+      bootstrap.Collapse.getOrCreateInstance(document.getElementById("server-details"), { toggle: false }).show();
+    } else {
       updateStatusBanner(
         "warning",
-        "ChurchCRM can still be installed",
-        "Read the notes below, then continue. Ask your web host to fix what is listed.",
-      );
-    } else {
-      $("#prerequisites-help").addClass("d-none");
-      $("#prerequisites-next-btn").prop("disabled", true);
-      $("#prerequisites-force-btn, #prerequisites-force-help").addClass("d-none");
-    }
-  }
-
-  function volunteerHelp() {
-    const lines = [];
-    let needsPhp = false;
-    let needsFolders = false;
-    Object.entries(state.prerequisites).forEach(([key, passed]) => {
-      if (passed === true || key.startsWith("integrity-")) {
-        return;
-      }
-      if (key.startsWith("filesystem-")) {
-        needsFolders = true;
-      } else if (key.startsWith("php-")) {
-        needsPhp = true;
-      }
-    });
-    if (needsPhp) {
-      lines.push("Open PHP Extensions. Each row with an X is something to ask your web host to turn on.");
-    }
-    if (needsFolders) {
-      lines.push(
-        "Open File Permissions. Ask your web host to make those folders writable so ChurchCRM can save pictures.",
+        "Ready",
+        "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load.",
       );
     }
-    const missing = state.missingFiles || [];
-    const changed = state.changedFiles || [];
-    if (missing.length > 0) {
-      lines.push(
-        "Some ChurchCRM files were not uploaded. Upload the release again, or continue and fix this with your web host.",
-      );
-    }
-    if (changed.length > 0) {
-      lines.push(
-        "Some files on the server do not match the ChurchCRM release. Upload the release again if you did not change them on purpose.",
-      );
-    }
-    if (state.integrityMessage && missing.length === 0 && changed.length === 0) {
-      lines.push(state.integrityMessage);
-    }
-    return lines;
   }
 
   function renderPrerequisite(prerequisite, group = "php") {
@@ -401,7 +331,11 @@ window.Stepper = Stepper;
       $status.html('<i class="fa-solid fa-check-circle text-success"></i>');
       toggleCollapse(group, "hide");
     } else {
-      $status.html('<i class="fa-solid fa-exclamation-circle text-danger"></i>');
+      $status.html(
+        config.warning
+          ? '<i class="fa-solid fa-exclamation-triangle text-warning"></i>'
+          : '<i class="fa-solid fa-exclamation-circle text-danger"></i>',
+      );
       toggleCollapse(group, "show");
     }
   }
@@ -422,7 +356,7 @@ window.Stepper = Stepper;
 
     // Show pending state
     const pendingRow = $("<tr>", { id: rowId })
-      .append($("<td>", { text: "Signature Validation" }))
+      .append($("<td>", { text: "Release check" }))
       .append($("<td>", statusConfig.pending));
     $(`#${rowId}`).remove();
     $(config.table).append(pendingRow);
@@ -447,14 +381,11 @@ window.Stepper = Stepper;
         const resultRow = $("<tr>", {
           id: rowId,
         })
-          .append($("<td>", { text: "Signature Validation" }))
+          .append($("<td>", { text: "Release check" }))
           .append(buildStatusCell(statusInfo, message));
 
         $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = satisfied;
-        state.missingFiles = fileList(data?.missingFiles);
-        state.changedFiles = fileList(data?.changedFiles);
-        state.integrityMessage = satisfied ? "" : message;
 
         appendIntegrityDetails(config.table, rowId, data);
 
@@ -470,17 +401,13 @@ window.Stepper = Stepper;
         const resultRow = $("<tr>", {
           id: rowId,
         })
-          .append($("<td>", { text: "Signature Validation" }))
+          .append($("<td>", { text: "Release check" }))
           .append(
             buildStatusCell(statusConfig.false, "Unable to contact integrity endpoint. Check web server error logs."),
           );
 
         $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = false;
-        state.missingFiles = [];
-        state.changedFiles = [];
-        state.integrityMessage =
-          "ChurchCRM could not check its files. You can continue, then ask your web host if pages fail to open.";
         appendIntegrityDetails(config.table, rowId, null);
 
         // Mark checks as complete even on failure
@@ -553,96 +480,7 @@ window.Stepper = Stepper;
       url: `${rootPath}/setup/SystemLocaleCheck`,
       method: "GET",
       contentType: "application/json",
-    })
-      .done((data) => {
-        renderLocaleInfo(data);
-        checkIntegrity();
-      })
-      .fail(() => {
-        renderLocaleInfoError();
-        checkIntegrity();
-      });
-  }
-
-  function renderLocaleInfo(localeData) {
-    const $table = $("#locale-support-table");
-    const $summary = $("#locale-support-summary");
-    const $status = $("#locale-support-status");
-
-    $table.empty();
-
-    // Display summary
-    const summary = localeData.systemLocaleSupportSummary || "System locale support unknown";
-    const summaryClass =
-      localeData.systemLocaleDetected && localeData.supportedLocales ? "alert-success" : "alert-warning";
-
-    $summary.attr("class", `alert ${summaryClass} mb-2`);
-    $summary.html(`<i class="fa-solid fa-check-circle"></i> ${summary}`);
-
-    // Update status icon
-    $status.html(
-      localeData.systemLocaleDetected
-        ? '<i class="fa-solid fa-check text-success"></i>'
-        : '<i class="fa-solid fa-exclamation-triangle text-warning"></i>',
-    );
-
-    // Render locale table
-    if (localeData.supportedLocales && localeData.supportedLocales.length > 0) {
-      const locales = localeData.supportedLocales;
-
-      // Create table header
-      const $thead = $("<thead>").append(
-        $("<tr>")
-          .append($("<th>").text("ChurchCRM Supported Locales"))
-          .append($("<th style='text-align: center; width: 100px;'>").text("System Support")),
-      );
-      $table.append($thead);
-
-      // Create table body
-      const $tbody = $("<tbody>");
-      locales.forEach((locale) => {
-        const statusBadge = locale.systemAvailable
-          ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
-          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-xmark me-1"></i>Not Available</span>`;
-
-        const $row = $("<tr>")
-          .append(
-            $("<td>").html(
-              `<div style="font-weight: 500;">${locale.name}</div>` +
-                `<small class="text-muted" style="display: block; font-size: 0.85em; margin-top: 2px;">${locale.locale}</small>`,
-            ),
-          )
-          .append($("<td style='text-align: center; vertical-align: middle;'>").html(statusBadge));
-
-        $tbody.append($row);
-      });
-      $table.append($tbody);
-    } else {
-      const $row = $("<tr>").append(
-        $("<td colspan='2'>").html(
-          `<i class='fa-solid fa-exclamation-triangle text-warning me-2'></i>Unable to determine available locales`,
-        ),
-      );
-      $table.append($row);
-    }
-  }
-
-  function renderLocaleInfoError() {
-    const $table = $("#locale-support-table");
-    const $summary = $("#locale-support-summary");
-    const $status = $("#locale-support-status");
-
-    $table.empty();
-    $summary.attr("class", "alert alert-danger mb-2");
-    $summary.html(`<i class='fa-solid fa-circle-xmark'></i> Unable to detect system locales`);
-    $status.html('<i class="fa-solid fa-xmark text-danger"></i>');
-
-    const $errorRow = $("<tr>").append(
-      $("<td>").html(
-        `<i class='fa-solid fa-exclamation-circle text-danger me-2'></i>Unable to load locale information`,
-      ),
-    );
-    $table.append($errorRow);
+    }).always(checkIntegrity);
   }
 
   function initializeStepValidation(stepId) {
@@ -651,7 +489,7 @@ window.Stepper = Stepper;
 
     const validator = new window.JustValidate(`#${stepId}`, {
       errorFieldCssClass: "is-invalid",
-      successFieldCssClass: "is-valid",
+      successFieldCssClass: [],
       errorLabelCssClass: "invalid-feedback",
       focusInvalidField: true,
       lockForm: false,
@@ -770,136 +608,48 @@ window.Stepper = Stepper;
   }
 
   const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
-  let connectionTestToken = 0;
-  let connectionTestTimer = 0;
-  let passedConnectionFingerprint = null;
-  let connectionSupported = true;
+  const INSTALL_LABEL = "Install ChurchCRM";
 
-  function connectionFingerprint() {
-    return JSON.stringify(DB_CONNECTION_FIELDS.map((id) => document.getElementById(id).value));
+  function setInstalling(installing) {
+    const button = document.getElementById("submit-setup");
+    button.disabled = installing;
+    button.textContent = installing ? i18next.t("Connecting to your database...") : INSTALL_LABEL;
   }
 
-  function connectionFieldsComplete() {
-    return DB_CONNECTION_FIELDS.every((id) => document.getElementById(id).value !== "");
-  }
-
-  // Install needs a passed test for the values on the form, and an acknowledgment when the server is unsupported.
-  function updateInstallButton() {
-    const passed = passedConnectionFingerprint !== null && passedConnectionFingerprint === connectionFingerprint();
-    const acknowledged = connectionSupported || document.getElementById("db-version-ack").checked;
-    document.getElementById("submit-setup").disabled = !(passed && acknowledged);
+  function showSetupProblem(message) {
+    const box = document.getElementById("db-connection-result");
+    box.textContent = message;
+    box.classList.remove("d-none");
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function showVersionWarning(message) {
     document.getElementById("db-version-message").textContent = message;
     document.getElementById("db-version-warning").classList.remove("d-none");
+    document.getElementById("db-version-ack").checked = false;
+    document.getElementById("submit-setup").disabled = true;
+    document.getElementById("db-version-warning").scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  function hideVersionWarning() {
+  // The answer belonged to the values that were submitted; editing them clears it.
+  function clearSetupProblem() {
+    document.getElementById("db-connection-result").classList.add("d-none");
     document.getElementById("db-version-warning").classList.add("d-none");
     document.getElementById("db-version-ack").checked = false;
+    document.getElementById("submit-setup").disabled = false;
   }
 
-  function closeSetupModal() {
-    bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-    setTimeout(() => {
-      $("#setup-progress").removeClass("d-none");
-      $("#setup-success").addClass("d-none");
-      $("#setup-error").addClass("d-none");
-      $("#setup-footer").addClass("d-none");
-    }, 500);
-  }
-
-  function showConnectionResult(kind, message) {
-    const box = document.getElementById("db-connection-result");
-    box.classList.remove("d-none", "alert-success", "alert-danger", "alert-info");
-    box.classList.add(kind === "ok" ? "alert-success" : kind === "pending" ? "alert-info" : "alert-danger");
-    box.textContent = message;
-  }
-
-  function hideConnectionResult() {
-    const box = document.getElementById("db-connection-result");
-    box.classList.add("d-none");
-    box.textContent = "";
-  }
-
-  function voidConnectionPass() {
-    passedConnectionFingerprint = null;
-    connectionSupported = true;
-    connectionTestToken += 1;
-    hideVersionWarning();
-    updateInstallButton();
-  }
-
-  function scheduleConnectionTest() {
-    voidConnectionPass();
-    window.clearTimeout(connectionTestTimer);
-    if (!connectionFieldsComplete()) {
-      hideConnectionResult();
-      return;
-    }
-    const token = connectionTestToken;
-    const fingerprint = connectionFingerprint();
-    showConnectionResult("pending", i18next.t("Checking the database connection..."));
-    connectionTestTimer = window.setTimeout(() => testDatabaseConnection(token, fingerprint), 400);
-  }
-
-  function testDatabaseConnection(token, fingerprint) {
-    const formData = {};
-    const data = new FormData(document.getElementById("setup-form"));
-    for (const [key, value] of data.entries()) {
-      formData[key] = value || "";
-    }
-    formData.DB_CONNECTION_TEST = true;
-
-    $.ajax({
-      url: `${rootPath}/setup/`,
-      method: "POST",
-      data: JSON.stringify(formData),
-      contentType: "application/json",
-    })
-      .done((response) => {
-        if (token !== connectionTestToken || fingerprint !== connectionFingerprint()) {
-          return;
-        }
-        if (response?.tested === true && response?.correct === true) {
-          passedConnectionFingerprint = fingerprint;
-          connectionSupported = response.supported !== false;
-          showConnectionResult("ok", response.message);
-          if (!connectionSupported) {
-            showVersionWarning(response.versionMessage);
-          }
-          updateInstallButton();
-          return;
-        }
-        document.getElementById("submit-setup").disabled = true;
-        showConnectionResult(
-          "fail",
-          response?.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
-        );
-      })
-      .fail(() => {
-        if (token !== connectionTestToken) {
-          return;
-        }
-        document.getElementById("submit-setup").disabled = true;
-        showConnectionResult("fail", i18next.t("ChurchCRM could not connect to the database with these settings."));
-      });
+  function fieldErrors(errors) {
+    return Object.values(errors).join(" ");
   }
 
   function submitSetupData() {
-    const form = document.getElementById("setup-form");
     const formData = {};
-
-    // Use native FormData API
-    const data = new FormData(form);
-    for (const [key, value] of data.entries()) {
+    for (const [key, value] of new FormData(document.getElementById("setup-form")).entries()) {
       formData[key] = value || "";
     }
 
-    // Show the setup modal
-    getModal("setupModal").show();
-
+    setInstalling(true);
     $.ajax({
       url: `${rootPath}/setup/`,
       method: "POST",
@@ -907,90 +657,43 @@ window.Stepper = Stepper;
       contentType: "application/json",
     })
       .done((response) => {
-        // A connection probe answers on this URL too. It must not look like a finished install.
-        if (response?.tested === true) {
-          return;
-        }
-
-        if (response?.correct === false || response?.supported === false) {
-          $("#setup-progress").addClass("d-none");
-          $("#setup-error").removeClass("d-none");
-          $("#setup-footer").removeClass("d-none");
-          $("#setup-error-message").text(
-            response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
-          );
-          $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
-          document.getElementById("submit-setup").disabled = true;
-          showConnectionResult(
-            "fail",
+        setInstalling(false);
+        if (response?.correct === false) {
+          showSetupProblem(
             response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
           );
           return;
         }
-
-        // Check if response contains errors (backend bug workaround)
+        if (response?.supported === false) {
+          showVersionWarning(response.message);
+          return;
+        }
         if (response?.errors) {
-          // Treat as failure
-          $("#setup-progress").addClass("d-none");
-          $("#setup-error").removeClass("d-none");
-          $("#setup-footer").removeClass("d-none");
-
-          let errorMessage = "<ul class='mb-0'>";
-          for (const [field, error] of Object.entries(response.errors)) {
-            errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
-          }
-          errorMessage += "</ul>";
-          $("#setup-error-message").html(errorMessage);
-
-          $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
+          showSetupProblem(fieldErrors(response.errors));
           return;
         }
 
-        // Hide progress, show success
-        $("#setup-progress").addClass("d-none");
-        $("#setup-success").removeClass("d-none");
-        $("#setup-footer").removeClass("d-none");
-
-        // Handle Continue to Login button
         $("#continue-to-login")
           .off("click")
           .on("click", () => {
             location.replace(`${rootPath}/session/begin`);
           });
+        getModal("setupModal").show();
       })
       .fail((xhr) => {
-        // Hide progress, show error
-        $("#setup-progress").addClass("d-none");
-        $("#setup-error").removeClass("d-none");
-        $("#setup-footer").removeClass("d-none");
-
-        // Parse error message
-        let errorMessage = "An unknown error occurred.";
-        if (xhr.responseJSON?.errors) {
-          errorMessage = "<ul class='mb-0'>";
-          for (const [field, error] of Object.entries(xhr.responseJSON.errors)) {
-            errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
-          }
-          errorMessage += "</ul>";
-        } else if (xhr.responseText) {
-          errorMessage = xhr.responseText;
-        } else if (xhr.statusText) {
-          errorMessage = xhr.statusText;
-        }
-
-        $("#setup-error-message").html(errorMessage);
-
-        // Change button to "Try Again"
-        $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
+        setInstalling(false);
+        showSetupProblem(
+          xhr.responseJSON?.errors
+            ? fieldErrors(xhr.responseJSON.errors)
+            : i18next.t(
+                "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log.",
+              ),
+        );
       });
   }
 
-  // Note: skipCheck is intentionally NOT exposed globally to prevent accidental calls
-  // It should only be called via the Force Install confirmation flow
-
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("setup-form");
-    const stepperElement = document.getElementById("setup-stepper");
 
     // Prevent form submission (we handle it via AJAX)
     form.addEventListener("submit", (event) => {
@@ -998,126 +701,35 @@ window.Stepper = Stepper;
       return false;
     });
 
-    setupStepper = new Stepper(stepperElement, {
-      linear: true,
-      animation: true,
-      selectors: {
-        steps: ".step",
-        trigger: ".step-trigger",
-        stepper: ".bs-stepper",
-      },
+    validators["step-database"] = initializeStepValidation("setup-form");
+
+    for (const id of [...DB_CONNECTION_FIELDS, "URL", "ROOT_PATH"]) {
+      document.getElementById(id).addEventListener("input", clearSetupProblem);
+    }
+    document.getElementById("db-version-ack").addEventListener("change", (event) => {
+      document.getElementById("submit-setup").disabled = !event.target.checked;
     });
 
-    // Store globally for onclick handlers
-    window.setupStepper = setupStepper;
-
-    // Initialize validators for steps that need validation
-    validators["step-database"] = initializeStepValidation("step-database");
-
-    // Custom navigation logic with validation
-    stepperElement.addEventListener("show.bs-stepper", (event) => {
-      const currentStep = event.detail.from;
-      const nextStep = event.detail.to;
-
-      // Only validate when moving forward
-      if (nextStep <= currentStep) {
-        return; // Allow backward navigation
-      }
-
-      // Check prerequisites when leaving step 0
-      if (currentStep === 0 && !state.prerequisitesStatus) {
-        event.preventDefault();
-        window.CRM.notify("Please ensure all prerequisites are met before continuing.", {
-          type: "warning",
-          delay: 3000,
-        });
-        return;
-      }
+    document.getElementById("toggle-db-password").addEventListener("click", (event) => {
+      const field = document.getElementById("DB_PASSWORD");
+      const showing = field.type === "text";
+      field.type = showing ? "password" : "text";
+      event.currentTarget.textContent = showing ? "Show" : "Hide";
+      event.currentTarget.setAttribute("aria-pressed", String(!showing));
     });
 
-    // Update UI when steps are shown (after navigation completes)
-    stepperElement.addEventListener("shown.bs-stepper", (event) => {
-      const shownStep = event.detail.to;
-
-      // If returning to prerequisites step, update UI
-      if (shownStep === 0) {
-        updatePrerequisitesUI();
-        updateGroupStatus();
-      }
+    document.getElementById("URL").addEventListener("input", (event) => {
+      document.getElementById("setup-url-display").textContent = event.target.value;
     });
 
-    document.getElementById("submit-setup").disabled = true;
-    for (const id of DB_CONNECTION_FIELDS) {
-      document.getElementById(id).addEventListener("input", scheduleConnectionTest);
-      document.getElementById(id).addEventListener("change", () => {
-        if (passedConnectionFingerprint !== connectionFingerprint()) {
-          scheduleConnectionTest();
+    document.getElementById("submit-setup").addEventListener("click", (event) => {
+      event.preventDefault();
+      validators["step-database"].revalidate().then((isValid) => {
+        if (isValid) {
+          submitSetupData();
         }
       });
-    }
-    document.getElementById("db-version-ack").addEventListener("change", updateInstallButton);
-
-    // Handle finish button
-    document.getElementById("submit-setup").addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent any default behavior
-
-      if (document.getElementById("submit-setup").disabled || passedConnectionFingerprint !== connectionFingerprint()) {
-        return;
-      }
-
-      // Validate database step before submission
-      if (validators["step-database"]) {
-        validators["step-database"].revalidate().then((isValid) => {
-          if (isValid) {
-            submitSetupData();
-          } else {
-            window.CRM.notify("Please fill in all required fields correctly.", {
-              type: "danger",
-              delay: 3000,
-            });
-          }
-        });
-      } else {
-        submitSetupData();
-      }
     });
-
-    // Handle prerequisites Next button
-    document.getElementById("prerequisites-next-btn").addEventListener("click", () => {
-      if (setupStepper) {
-        setupStepper.next();
-      }
-    });
-
-    // Handle database step Previous button
-    document.getElementById("database-prev-btn").addEventListener("click", () => {
-      if (setupStepper) {
-        setupStepper.previous();
-      }
-    });
-
-    // Handle Force Install button click - show confirmation modal
-    const forceBtn = document.getElementById("prerequisites-force-btn");
-    if (forceBtn) {
-      forceBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        getModal("forceInstallModal").show();
-      });
-    }
-
-    // Handle Force Install confirmation
-    const confirmBtn = document.getElementById("confirm-force-install");
-    if (confirmBtn) {
-      confirmBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        bootstrap.Modal.getInstance(document.getElementById("forceInstallModal"))?.hide();
-        // Wait for modal to hide before proceeding
-        setTimeout(() => {
-          skipCheck();
-        }, 300);
-      });
-    }
 
     // Initialize prerequisite checks - integrity check will run after prerequisites load
     checkPrerequisites();

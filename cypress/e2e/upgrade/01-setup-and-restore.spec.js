@@ -99,20 +99,14 @@ describe('Upgrade via Restore', () => {
             cy.visit('/');
             cy.url().should('include', '/setup');
 
-            // Step 1: Prerequisites
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            cy.get('#prerequisites-next-btn').click();
-
-            // Step 2: Database configuration
-            cy.get('#step-database').should('have.class', 'active');
+            cy.get('#status-banner', { timeout: 30000 }).should('not.have.class', 'status-checking');
             cy.get('#DB_SERVER_NAME').clear().type(dbConfig.host);
             cy.get('#DB_SERVER_PORT').clear().type(dbConfig.port);
             cy.get('#DB_NAME').clear().type(dbConfig.name);
             cy.get('#DB_USER').clear().type(dbConfig.user);
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
 
-            cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
-            cy.get('#submit-setup').should('not.be.disabled').click();
+            cy.get('#submit-setup').click();
 
             // Wait for setup to complete
             cy.get('#setupModal', { timeout: 60000 }).should('be.visible');

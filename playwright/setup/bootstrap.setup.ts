@@ -38,19 +38,9 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   // "checking system requirements" with no chance to read it.
   await humanPause(page, 3000);
 
-  const prereqNext = page.locator('#prerequisites-next-btn');
-  await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
-  // Stays disabled until the page's own async system-check AJAX calls
-  // finish ("Checking system requirements...") — visible isn't enough, and
-  // that check can take well past the 15s action timeout under load.
-  // System checks may take 2+ minutes on slower systems, matching the
-  // database setup migration timeout.
-  await expect(prereqNext).toBeEnabled({ timeout: 120000 });
+  // The server check can take 2+ minutes on slower systems.
+  await expect(page.locator('#status-banner')).not.toHaveClass(/status-checking/, { timeout: 120000 });
   await humanPause(page, 600);
-  await humanClick(prereqNext);
-
-  await expect(page.locator('#step-database')).toHaveClass(/active/);
-  await humanPause(page, 400);
 
   await humanType(page.locator('#DB_SERVER_NAME'), DB.host);
   await humanType(page.locator('#DB_SERVER_PORT'), String(DB.port));
@@ -58,8 +48,6 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanType(page.locator('#DB_USER'), DB.user);
   await humanType(page.locator('#DB_PASSWORD'), DB.password);
 
-  await expect(page.locator('#db-connection-result')).toContainText('Connected to the database.', { timeout: 20000 });
-  await expect(page.locator('#submit-setup')).toBeEnabled();
   await humanPause(page, 500);
   await humanClick(page.locator('#submit-setup'));
 

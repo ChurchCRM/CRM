@@ -137,17 +137,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         // An unsupported server version is not a failed connection: it installs after an acknowledgment.
         $supported = DatabaseVersionService::check($connection['version'])['supported'];
-        if (filter_var($setupData['DB_CONNECTION_TEST'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
-            return SlimUtils::renderJSON($response, [
-                'valid'          => true,
-                'correct'        => true,
-                'tested'         => true,
-                'supported'      => $supported,
-                'message'        => gettext('Connected to the database.'),
-                'versionMessage' => $supported ? null : DatabaseVersionService::getUnsupportedMessage($connection['version']),
-            ]);
-        }
-        if (!$supported && !filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
+        if (!$supported &&!filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
             return SlimUtils::renderJSON($response, [
                 'valid'     => true,
                 'correct'   => true,
