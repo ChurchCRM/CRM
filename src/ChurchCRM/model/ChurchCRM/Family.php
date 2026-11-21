@@ -949,6 +949,54 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
+    /**
+     * The family name in formal form ("Mr & Mrs Smith"): each adult's title with the
+     * last name, mirroring getSalutation(). Titles are rendered exactly as stored, the
+     * convention Person::getFormattedName() uses, so the issue's "Mr. & Mrs." example
+     * gains no period here. When a named adult has no title the formal form cannot be
+     * built, so it falls back to the salutation.
+     */
+    public function getFormalName(): string
+    {
+        $adults = $this->getAdults();
+        $adultsCount = count($adults);
+
+        if ($adultsCount === 1) {
+            return $this->formalAdultName($adults[0]) ?? $adults[0]->getFullName();
+        }
+        if ($adultsCount === 2) {
+            $first = $this->formalAdultName($adults[0]);
+            $second = $this->formalAdultName($adults[1]);
+            if ($first !== null && $second !== null) {
+                $firstLastName = $adults[0]->getLastName();
+                $secondLastName = $adults[1]->getLastName();
+                if ($firstLastName === $secondLastName) {
+                    return $adults[0]->getTitle() . ' & ' . $adults[1]->getTitle() . ' ' . $firstLastName;
+                }
+
+                return $first . ' & ' . $second;
+            }
+
+            return $this->getSalutation();
+        }
+
+        return $this->getName() . ' Family';
+    }
+
+    /**
+     * "Title LastName" for one adult, or null when the adult has no title or no last name.
+     */
+    private function formalAdultName(Person $person): ?string
+    {
+        $title = trim((string) $person->getTitle());
+        $lastName = trim((string) $person->getLastName());
+        if ($title === '' || $lastName === '') {
+            return null;
+        }
+
+        return $title . ' ' . $lastName;
+    }
+
     public function getFirstNameSalutation(): string
     {
         $names = [];
