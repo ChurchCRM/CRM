@@ -155,13 +155,8 @@ function postPeopleDirectory(Request $request, Response $response): Response
     if (!$cartDirectory) {
         try {
             (new DirectoryReportPreferences())->save(AuthenticationManager::getCurrentUser(), $options);
-        } catch (\LengthException $exception) {
-            $response->getBody()->write(
-                gettext('The selected directory report options exceed the maximum supported size.')
-            );
-
-            return $response->withStatus(400)
-                ->withHeader('Content-Type', 'text/plain; charset=UTF-8');
+        } catch (\LengthException) {
+            // Keep the previously saved preferences, but still generate the directory.
         }
     }
 

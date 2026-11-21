@@ -45,9 +45,9 @@ class DirectoryReportPreferences
 
     /**
      * Hard cap on numbered chunks per list. Allows large directory option lists
-     * while bounding loops when the base count is attacker-controlled.
-    */
-    public const MAX_CHUNKS = 1000;
+     * while bounding storage writes and loops when the base count is attacker-controlled.
+     */
+    public const MAX_CHUNKS = 200;
 
     /**
      * Primary setting names (list bases hold a chunk count; data lives in {base}.N).
@@ -135,7 +135,7 @@ class DirectoryReportPreferences
      *     show: array<string, bool>,
      *     customFieldOrders: list<int>
      * }|null
-     */
+    */
     public function load(User $user): ?array
     {
         if (!$this->hasSaved($user)) {
@@ -174,11 +174,6 @@ class DirectoryReportPreferences
     {
         $chunks = $this->chunkIds($ids);
 
-        if (count($chunks) > self::MAX_CHUNKS) {
-            throw new \LengthException(
-                'Directory report option list exceeds the maximum supported size.'
-            );
-        }
         $count = max(count($chunks), 1);
         $previousCount = $this->boundedChunkCount($user->getSettingValue($base));
 

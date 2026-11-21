@@ -128,6 +128,35 @@ Assert::same(
     'long group lists must not be truncated'
 );
 
+// Oversized lists must be rejected without changing previously saved preferences.
+$previousPreferences = $prefs->load($longListUser);
+Assert::notNull($previousPreferences);
+
+// 804 ten-digit IDs require 201 chunks (4 IDs per 50-character chunk).
+$oversizedIds = range(1500000000, 1500000803);
+$oversizedSaveRejected = false;
+
+try {
+    $prefs->save($longListUser, [
+        'classifications' => [987654321],
+        'groups' => $oversizedIds,
+        'excludeInactive' => true,
+        'headRoles' => [3],
+        'spouseRoles' => [4],
+        'show' => ['address' => true],
+        'customFieldOrders' => [],
+    ]);
+} catch (\LengthException) {
+    $oversizedSaveRejected = true;
+}
+
+Assert::true($oversizedSaveRejected, 'oversized lists must be rejected');
+Assert::same(
+    $previousPreferences,
+    $prefs->load($longListUser),
+    'an oversized save must preserve all previously stored preferences'
+);
+
 $prefs->clear($user);
 Assert::null($prefs->load($user));
 Assert::same('', $user->getSettingValue(DirectoryReportPreferences::SAVED));

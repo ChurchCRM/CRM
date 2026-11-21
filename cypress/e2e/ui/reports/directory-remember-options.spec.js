@@ -37,7 +37,7 @@ const directoryPost = (extra = {}) => ({
 });
 
 // Use JSON to avoid PHP's max_input_vars limit for large regression-test payloads.
-const directoryJsonPost = (classifications) => ({
+const directoryJsonPost = (classifications, groups = []) => ({
     method: "POST",
     url: "people/reports/directory",
     headers: {
@@ -45,7 +45,7 @@ const directoryJsonPost = (classifications) => ({
     },
     body: {
         sDirClassifications: classifications,
-        GroupID: [],
+        GroupID: groups,
         sDirRoleHead: ["1"],
         sDirRoleSpouse: ["2"],
         sDirRoleChild: ["3"],
@@ -125,7 +125,7 @@ describe("Directory report - remember options (#11465)", () => {
     });
 
     it("restores long classification lists without truncation (#11587)", () => {
-    cy.visit("DirectoryReports.php");
+        cy.visit("DirectoryReports.php");
 
         getUnselectedOptionValue('select[name="sDirClassifications[]"]').then(
             (sentinelId) => {
@@ -156,23 +156,80 @@ describe("Directory report - remember options (#11465)", () => {
         );
     });
 
-    it("rejects classification lists exceeding 1000 chunks (#11587)", () => {
-        // Four ten-digit IDs fit in each 50-character chunk.
-        // 5004 IDs therefore exceed the 1000-chunk limit.
-        const oversizedClassifications = Array.from(
-            { length: 5004 },
-            (_, index) => String(1500000000 + index),
-        );
+    it("preserves saved options when an oversized group list is submitted (#11587)", () => {
+        cy.visit("DirectoryReports.php");
 
-        cy.request(directoryJsonPost(oversizedClassifications)).then(
-            (response) => {
-                expect(response.status).to.eq(400);
-                expect(response.headers["content-type"]).to.include("text/plain");
-                expect(response.body).to.eq(
-                    "The selected directory report options exceed the maximum supported size.",
+        cy.get('select[name="sDirClassifications[]"]').then(($select) => {
+            const availableClassifications = Array.from($select[0].options).filter(
+                (option) => !option.selected,
+            );
+
+            expect(availableClassifications.length).to.be.at.least(2);
+
+            const previousClassification = String(availableClassifications[0].value);
+            const changedClassification = String(availableClassifications[1].value);
+
+            return cy.get('select[name="GroupID[]"]').then(($groupSelect) => {
+                const previousGroupOption = Array.from($groupSelect[0].options).find(
+                    (option) => !option.selected,
                 );
-            },
-        );
+
+                expect(previousGroupOption, "an available group option").to.exist;
+
+                const previousGroup = String(previousGroupOption.value);
+
+                // Save valid preferences that must survive the oversized request.
+                return cy
+                    .request(
+                        directoryJsonPost(
+                            [previousClassification],
+                            [previousGroup],
+                        ),
+                    )
+                    .then((response) => {
+                        expect(response.status).to.eq(200);
+                        expect(response.headers["content-type"]).to.include(
+                            "application/pdf",
+                        );
+                    })
+                    .then(() => {
+                        // 804 ten-digit IDs require 201 chunks (four IDs per chunk).
+                        const oversizedGroups = Array.from(
+                            { length: 804 },
+                            (_, index) => String(1500000000 + index),
+                        );
+
+                        // Change classifications while submitting an oversized group list.
+                        return cy.request(
+                            directoryJsonPost(
+                                [changedClassification],
+                                oversizedGroups,
+                            ),
+                        );
+                    })
+                    .then((response) => {
+                        // Preference saving may fail, but directory generation must succeed.
+                        expect(response.status).to.eq(200);
+                        expect(response.headers["content-type"]).to.include(
+                            "application/pdf",
+                        );
+                    })
+                    .then(() => cy.visit("DirectoryReports.php"))
+                    .then(() => {
+                        // Neither the classification nor group preference may be partially saved.
+                        cy.get(
+                            `select[name="sDirClassifications[]"] option[value="${previousClassification}"]`,
+                        ).should("be.selected");
+
+                        cy.get(
+                            `select[name="GroupID[]"] option[value="${previousGroup}"]`,
+                        ).should("be.selected");
+
+                        cy.get("#bDirBirthday").should("not.be.checked");
+                        cy.get("#bExcludeInactive").should("not.be.checked");
+                    });
+            });
+        });
     });
 });
 
