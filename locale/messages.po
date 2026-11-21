@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:33+0000\n"
+"POT-Creation-Date: 2026-11-21 18:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6480,6 +6480,10 @@ msgid "Events to delete: {{total}}"
 msgstr ""
 
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr ""
+
+#, php-format
+msgid "Every active member family made a payment between %s and %s."
 msgstr ""
 
 msgid "Every deposit dated in this year is closed."
