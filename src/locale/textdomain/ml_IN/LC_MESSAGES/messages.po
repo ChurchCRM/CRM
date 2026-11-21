@@ -2147,14 +2147,6 @@ msgid "Deposit Comment"
 msgstr "ഡിപ്പോസിറ്റ് അഭിപ്രായം"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "സിഗ്നേച്ചർ ഡെഫിനിഷൻ ഫയൽ സ്ഥിരീകരണം പരാജയപ്പെട്ടു"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "ഒന്നോ അതിലധികമോ ഫയലുകൾ സിഗ്നേച്ചർ സ്ഥിരീകരണത്തിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "item"
 msgstr "ഇനം"
 
@@ -4662,10 +4654,6 @@ msgid "Estonian"
 msgstr "എസ്‌തോണിയൻ"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "സിഗ്നേച്ചർ ഡെഫിനിഷൻ ഫയൽ ഡീകോഡ് ചെയ്യുന്നതിൽ പിശക്"
-
-#: 
 msgid "Event not found"
 msgstr "ഇവന്റ് കണ്ടെത്തിയില്ല"
 
@@ -5245,14 +5233,6 @@ msgstr "http:// അല്ലെങ്കിൽ https:// ൽ ആരംഭിക�
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "എല്ലാ സിസ്റ്റം ഫയൽ സിഗ്നേച്ചറുകളും പ്രതീക്ഷിക്കുന്ന മൂല്യങ്ങളുമായി ഒത്തുചേരുന്നു."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "സിഗ്നേച്ചർ ഡെഫിനിഷൻ ഫയൽ ഉണ്ട്, പക്ഷേ വായിക്കാൻ കഴിയില്ല. ഫയൽ അനുമതി പരിശോധിക്കുക."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "സിഗ്നേച്ചർ ഡെഫിനിഷൻ ഫയൽ %s ൽ ഇല്ല. ഒഫീഷ്യൽ റിലീസ് വിന്യസിക്കുക."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12862,10 +12842,6 @@ msgid "Deposit ID"
 msgstr "ഡിപ്പോസിറ്റ് ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "നിക്ഷേപ മൂല്യം"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ഡിപ്പോസിറ്റ് വിജയകരമായി സംരക്ഷിച്ചു"
 
@@ -13282,22 +13258,6 @@ msgid "Move Members to Group"
 msgstr "അംഗങ്ങളെ ഗ്രൂപ്പിലേക്ക് നീക്കുക"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// അല്ലെങ്കിൽ https:// ൽ ആരംഭിക്കുന്ന സാധുവായ URL ആയിരിക്കണം"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// അല്ലെങ്കിൽ https:// ൽ ആരംഭിക്കുന്ന സാധുവായ URL ആയിരിക്കണം (ഉദാ., http://localhost അല്ലെങ്കിൽ https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "സാധുവായ പോർട്ട് നമ്പർ ആയിരിക്കണം (ഉദാ., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "ശൂന്യമല്ലെങ്കിൽ / ൽ ആരംഭിക്കണം; ട്രെയിലിംഗ് സ്ലാഷ് ഇല്ല. അക്ഷരങ്ങൾ, അക്കങ്ങൾ, അൺഡർസ്‌കോർ, ഡാഷ്, ഡോട്ട്, / മാത്രം."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "ഈ ഡേറ്റ പിന്നീട് നീക്കം ചെയ്യണോ?"
 
@@ -13448,10 +13408,6 @@ msgstr "സാധുവായ ഇമെയിൽ വിലാസം നൽകു
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "സാധുവായ ഇമെയിൽ വിലാസം നൽകുക (ഉദാ., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "സാധുവായ നമ്പർ നൽകുക"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24236,10 +24192,6 @@ msgid "Church default: %s"
 msgstr "പള്ളി സ്ഥിരം: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "പള്ളി നേതാവിന്റെ സൈൻ-ഇൻ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "അംഗങ്ങൾക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാമായ വർഗീകരണങ്ങൾ, കോമ കൊണ്ട് വേർതിരിച്ച വർഗീകരണ ഐഡികളുടെ പട്ടികയായി."
 
@@ -24882,10 +24834,6 @@ msgstr "അവസാനിച്ചിട്ടില്ല"
 #: 
 msgid "Not moved"
 msgstr "നീക്കിയില്ല"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "ഏത് ഇമെയിലാണ് ഞങ്ങളുടെ പക്കലുള്ളതെന്ന് ഉറപ്പില്ലേ? പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
 
 #: 
 msgid "Not yet"

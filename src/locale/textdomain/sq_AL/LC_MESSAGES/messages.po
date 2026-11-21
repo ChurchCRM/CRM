@@ -2171,14 +2171,6 @@ msgid "Deposit Comment"
 msgstr "Komenti i depozitës"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Nënshkrimi i skedarit të definicionit të nënshkrimit dështoi në validim"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Një ose më shumë skedarë dështuan në validimin e nënshkrimit"
-
-#: 
 msgid "item"
 msgstr "artikull"
 
@@ -4686,10 +4678,6 @@ msgid "Estonian"
 msgstr "Estonez"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Gabim gjatë dekodimit të skedarit të përkufizimit të nënshkrimit"
-
-#: 
 msgid "Event not found"
 msgstr "Ngjarja nuk u gjet"
 
@@ -5269,14 +5257,6 @@ msgstr "Ju lutem vendosni një URL të vlefshme që fillon me http:// ose https:
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Të gjitha nënshkrimet e skedarëve të sistemit përputhen me vlerat e pritura."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Skedari i përcaktimit të nënshkrimit ekziston por nuk është i lexueshëm. Kontrolloni lejet e skedarit."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Skedari i përcaktimit të nënshkrimit mungon në %s. Ekzekutoni detyrën e paketimit ose vendosni një version zyrtar për të rigjeneruar nënshkrimet."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12886,10 +12866,6 @@ msgid "Deposit ID"
 msgstr "ID e depozitës"
 
 #: 
-msgid "Deposit Value"
-msgstr "Vlera e Depozitimit"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depozita u ruajt me sukses"
 
@@ -13306,22 +13282,6 @@ msgid "Move Members to Group"
 msgstr "Zhvendos Besimtarët në Grupmesion"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Duhet të jetë një URL e vlefshme që fillon me http:// ose https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Duhet të jetë një URL e vlefshme (p.sh., http://localhost ose https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Duhet të jetë një numër porti i vlefshëm (p.sh., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Duhet të fillojë me / nëse nuk është bosh; pa slash në fund. Vetëm shkronja, numra, nënvizë, vizë, pikë dhe / janë të lejuara."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Duhet t'i hiqni këto të dhëna më vonë?"
 
@@ -13472,10 +13432,6 @@ msgstr "Ju lutemi shkruani një adresë email-i të vlefshme"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Ju lutemi shkruani një adresë email-i të vlefshme (p.sh., emer@shembull.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Ju lutemi shkruani një numër të vlefshëm"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24260,10 +24216,6 @@ msgid "Church default: %s"
 msgstr "Parazgjedhja e kishës: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Hyrja e udhëheqësit të kishës"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikimet anëtarët e të cilave mund të hyjnë në Portalin e anëtarëve, si një listë e ndarë me presje e identifikuesve të klasifikimit."
 
@@ -24906,10 +24858,6 @@ msgstr "Nuk ka përfunduar"
 #: 
 msgid "Not moved"
 msgstr "Nuk është zhvendosur"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nuk jeni të sigurt cilin email kemi? Kontaktoni zyrën e kishës."
 
 #: 
 msgid "Not yet"

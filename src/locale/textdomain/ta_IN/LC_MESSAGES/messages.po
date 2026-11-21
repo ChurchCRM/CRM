@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "டெபாசிட் கருத்து"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "கையொப்ப வரையறை கோப்பு கையொப்பம் சரிபார்ப்பு தோல்வியடைந்தது"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட கோப்புகள் கையொப்ப சரிபார்ப்பில் தோல்வியடைந்தன"
-
-#: 
 msgid "item"
 msgstr "பொருள்"
 
@@ -4690,10 +4682,6 @@ msgid "Estonian"
 msgstr "எஸ்டோனியன்"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "கையொப்ப வரையறை கோப்பை டிகோட் செய்வதில் பிழை"
-
-#: 
 msgid "Event not found"
 msgstr "நிகழ்வு கிடைக்கவில்லை"
 
@@ -5277,14 +5265,6 @@ msgstr "http:// அல்லது https:// உடன் தொடங்கு�
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "அனைத்து கணினி கோப்பு கையொப்பங்களும் எதிர்பார்க்கப்படும் மதிப்புகளுடன் பொருந்துகின்றன."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "கையொப்ப வரையறை கோப்பு உள்ளது ஆனால் படிக்க முடியாது. கோப்பு அனுமதிகளைச் சரிபார்க்கவும்."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "%s இல் கையொப்ப வரையறை கோப்பு இல்லை. கையொப்பங்களை மீண்டும் உருவாக்க பேக்கேஜிங் பணியை இயக்கவும் அல்லது அதிகாரப்பூர்வ வெளியீட்டைப் பயன்படுத்தவும்."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12905,10 +12885,6 @@ msgid "Deposit ID"
 msgstr "வைப்புத்தொகை ஐடி"
 
 #: 
-msgid "Deposit Value"
-msgstr "வைப்புத்தொகை மதிப்பு"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "வைப்புத்தொகை வெற்றிகரமாகச் சேமிக்கப்பட்டது"
 
@@ -13325,24 +13301,6 @@ msgid "Move Members to Group"
 msgstr "Move Members to Group"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Must be a valid URL starting with http:// or https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Must be a valid port number (e.g., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.\n"
-"\n"
-"Need to remove this data later?"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "இந்தத் தரவை பின்னர் நீக்க வேண்டுமா?"
 
@@ -13493,10 +13451,6 @@ msgstr "சரியான மின்னஞ்சல் முகவரிய�
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும் (எ.கா., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "சரியான எண்ணை உள்ளிடவும்"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24281,10 +24235,6 @@ msgid "Church default: %s"
 msgstr "திருச்சபை இயல்பு: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "திருச்சபை தலைவர் உள்நுழைவு"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "உறுப்பினர் வாயிலில் உள்நுழையக்கூடிய உறுப்பினர்களின் வகைப்பாடுகள், வகைப்பாடு அடையாளங்களின் காற்புள்ளியால் பிரிக்கப்பட்ட பட்டியல்."
 
@@ -24927,10 +24877,6 @@ msgstr "முடியவில்லை"
 #: 
 msgid "Not moved"
 msgstr "நகர்த்தப்படவில்லை"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "எங்களிடம் எந்த மின்னஞ்சல் உள்ளது என்று தெரியவில்லையா? திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
 
 #: 
 msgid "Not yet"

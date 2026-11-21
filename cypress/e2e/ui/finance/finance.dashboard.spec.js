@@ -131,3 +131,57 @@ describe("Treasurer continues the open deposit from the dashboard", () => {
         cy.contains(".card-title", "Recent Deposits").parents(".card").find(`a[href$='/finance/deposit/${depositId}']`).should("exist");
     });
 });
+
+describe("Deposit chart shows one line per fund (#11471)", () => {
+    const funds = [];
+    const depositIds = [];
+    const fundNames = [`Chart Fund A ${Date.now()}`, `Chart Fund B ${Date.now()}`];
+    const today = new Date().toISOString().slice(0, 10);
+    const threeDaysAgo = new Date(Date.now() - 3 * 86400000).toISOString().slice(0, 10);
+    // Seeded fiscal years are calendar years: 2025 is FY 29, 2026 is FY 30.
+    const fyid = new Date().getFullYear() - 1996;
+
+    before(() => {
+        cy.setupAdminSession();
+        fundNames.forEach((name) => {
+            cy.request("POST", "/finance/api/funds", { name, active: true }).then(({ body }) => funds.push(body.fund.id));
+        });
+        // Two deposits on different days: today holds A $10 + B $20, three days ago holds A $5.
+        const addDeposit = (date, splits) => cy.request("POST", "/api/deposits", {
+            depositType: "Bank", depositComment: "Per-fund chart", depositDate: date,
+        }).then(({ body }) => {
+            depositIds.push(body.Id);
+            cy.request("POST", "/api/payments/pledges", {
+                type: "Payment", iMethod: "CASH", Date: date, FamilyID: "3", FYID: fyid, tScanString: "", DepositID: body.Id,
+                FundSplit: JSON.stringify(splits.map(([index, amount]) => ({
+                    FundID: String(funds[index]), Amount: amount, NonDeductible: 0, Comment: "",
+                }))),
+            });
+        });
+        addDeposit(today, [[0, 10], [1, 20]]);
+        addDeposit(threeDaysAgo, [[0, 5]]);
+    });
+
+    after(() => {
+        cy.setupAdminSession();
+        depositIds.forEach((id) => cy.request("DELETE", `/api/deposits/${id}`));
+        funds.forEach((id) => cy.request("DELETE", `/finance/api/funds/${id}`));
+    });
+
+    it("returns one daily series per fund and draws both lines", () => {
+        cy.setupFinanceOnlySession();
+        cy.intercept("GET", "**/api/deposits/dashboard-by-fund*").as("byFund");
+        cy.visit("/finance/?days=90");
+        cy.wait("@byFund").then(({ response }) => {
+            expect(response.statusCode).to.eq(200);
+            expect(response.body.dates).to.deep.eq([threeDaysAgo, today]);
+            const fundA = response.body.funds.find((fund) => fund.name === fundNames[0]);
+            const fundB = response.body.funds.find((fund) => fund.name === fundNames[1]);
+            expect(fundA.data).to.deep.eq([5, 10]);
+            expect(fundB.data).to.deep.eq([0, 20]);
+        });
+        cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
+        cy.contains("#deposit-lineGraph .apexcharts-legend-text", fundNames[0]).should("exist");
+        cy.contains("#deposit-lineGraph .apexcharts-legend-text", fundNames[1]).should("exist");
+    });
+});

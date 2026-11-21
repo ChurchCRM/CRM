@@ -2235,14 +2235,6 @@ msgid "Deposit Comment"
 msgstr "存款注釋"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "簽名定義文件簽字驗證失敗"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "一個或多個文件簽名驗證失敗"
-
-#: 
 msgid "item"
 msgstr "項目"
 
@@ -4789,11 +4781,6 @@ msgstr "愛沙尼亞語"
 
 #: 
 #, fuzzy
-msgid "Error decoding signature definition file"
-msgstr "解碼簽名定義文件錯誤"
-
-#: 
-#, fuzzy
 msgid "Event not found"
 msgstr "事件未找到"
 
@@ -5412,14 +5399,6 @@ msgstr "請輸入以 http:// 或 https:// 開頭的有效 URL"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "所有系統檔案簽名均符合預期值。"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "簽名定義檔案存在但不可讀。檢查檔案權限。"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "位於 %s 的簽名定義檔案遺失。請執行打包任務或部署官方版本以重新生成簽名。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13021,10 +13000,6 @@ msgid "Deposit ID"
 msgstr "存款編號"
 
 #: 
-msgid "Deposit Value"
-msgstr "存款金額"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "存款儲存成功"
 
@@ -13441,22 +13416,6 @@ msgid "Move Members to Group"
 msgstr "移動成員到小組"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL（例如：http://localhost 或 https://domain.com）"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "必須是有效的連接埠號（例如：3306）"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "如果非空則必須以/開頭；末尾不能有斜線。只允許使用字母、數字、底線、短橫線、點和/。"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "以後需要刪除這些數據嗎？"
 
@@ -13607,10 +13566,6 @@ msgstr "請輸入有效的電子郵件地址"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "請輸入有效的電子郵件地址（例如：name@example.com）"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "請輸入有效的數字"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24377,10 +24332,6 @@ msgid "Church default: %s"
 msgstr "教會預設：%s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "教會領袖登入"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "其成員可登入會友入口的分類，以逗號分隔的分類 id 清單表示。"
 
@@ -25023,10 +24974,6 @@ msgstr "未結束"
 #: 
 msgid "Not moved"
 msgstr "未移轉"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "不確定我們留有哪一個電子郵件？請聯絡教會辦公室。"
 
 #: 
 msgid "Not yet"

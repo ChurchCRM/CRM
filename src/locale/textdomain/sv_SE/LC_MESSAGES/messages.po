@@ -2253,14 +2253,6 @@ msgid "Deposit Comment"
 msgstr "Sätt in kommentar"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Validering av signatur för filsignaturdefinition"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "En eller flera filer misslyckades signaturvalidering"
-
-#: 
 msgid "item"
 msgstr "Artikel"
 
@@ -4779,10 +4771,6 @@ msgid "Estonian"
 msgstr "estniska"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Fel vid avkodning av definitionsfil för signatur"
-
-#: 
 msgid "Event not found"
 msgstr "Händelsen hittade ej"
 
@@ -5363,14 +5351,6 @@ msgstr "Ange en giltig URL som börjar med http:// eller https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Alla systemfilssignaturer matchar de förväntade värdena."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Signaturdefinitionsfilen finns men är inte läsbar. Kontrollera filbehörigheter."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Signaturdefinitionsfilen saknas vid %s. Kör paketeringsuppgiften eller driftsätt en officiell utgåva för att återskapa signaturer."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12980,10 +12960,6 @@ msgid "Deposit ID"
 msgstr "Insättnings-ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Kollektinsamlingens värde"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Insättningen sparades"
 
@@ -13400,22 +13376,6 @@ msgid "Move Members to Group"
 msgstr "Flytta medlemmar till grupp"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Måste vara en giltig URL som börjar med http:// eller https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Måste vara en giltig URL som börjar med http:// eller https:// (t.ex. http://localhost eller https://doman.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Måste vara ett giltigt portnummer (t.ex. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Måste börja med / om inte tomt; ingen avslutande snedstreck. Endast bokstäver, siffror, understreck, bindestreck, punkt och / tillåtet."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Behöver du ta bort denna data senare?"
 
@@ -13566,10 +13526,6 @@ msgstr "Ange en giltig e-postadress"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Ange en giltig e-postadress (t.ex. namn@exempel.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Ange ett giltigt nummer"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24354,10 +24310,6 @@ msgid "Church default: %s"
 msgstr "Församlingens standard: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Inloggning för församlingsledare"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klassificeringar vars medlemmar får logga in i medlemsportalen, som en kommaseparerad lista med klassificerings-id."
 
@@ -25000,10 +24952,6 @@ msgstr "Inte avslutad"
 #: 
 msgid "Not moved"
 msgstr "Inte flyttad"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Osäker på vilken e-postadress vi har? Kontakta församlingsexpeditionen."
 
 #: 
 msgid "Not yet"
