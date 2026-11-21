@@ -239,7 +239,7 @@ describe("Zero-Permission User (all flags 0)", () => {
             // Open the user-menu dropdown, then click the 'Sign out' link
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains("Sign out").click();
-            cy.location("pathname").should("match", /\/session\/begin$/);
+            cy.location("pathname").should("match", /\/session\/?$/);
         });
     });
 });
