@@ -42,6 +42,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <select class="form-select" name="recipientnamingmethod" id="recipientnamingmethod">
             <option value="salutationutility"><?= gettext('Salutation Utility') ?></option>
             <option value="familyname"><?= gettext('Family Name') ?></option>
+            <option value="individual"><?= gettext('Individual Name') ?></option>
+            <option value="formal"><?= gettext('Formal Name') ?></option>
           </select>
         </div>
       </div>
