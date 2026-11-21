@@ -45,7 +45,6 @@
  * `after` — an `after` hook does not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
@@ -61,7 +60,6 @@ const PREFIX = "E2E9869TL";
 const POSITION_NAME = `${PREFIX} Welcome Desk`;
 const SCHEDULE_NAME = `${PREFIX} Greeters — Sunday`;
 
-let originalVersion = "v1";
 let ministryId = 0;
 let teamLed = 0;
 let teamOther = 0;
@@ -81,10 +79,6 @@ function dbOk(sql, params = []) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function login(username) {
@@ -216,11 +210,6 @@ after(() => {
 
 describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\", as ONE end-to-end run", () => {
     before(() => {
-        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         const firstSunday = (7 - new Date().getDay()) % 7 || 7;
@@ -286,7 +275,6 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     describe("Member Portal e2e — #9869 scenario 2, a team leader on a member login", () => {

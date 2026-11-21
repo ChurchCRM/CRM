@@ -78,7 +78,7 @@ describe("UI Private Notes Timeline", () => {
         it("Admin sees FULL CONTENT of another user's private note (no placeholder)", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
-            cy.get("#nav-item-timeline", { timeout: 10000 }).click();
+            cy.get("#nav-item-notes", { timeout: 10000 }).click();
 
             // Admin now sees actual note content (policy change from #9036)
             cy.contains("Secret user note content", { timeout: 5000 }).should("be.visible");
@@ -89,18 +89,18 @@ describe("UI Private Notes Timeline", () => {
         it("Admin sees full content of their own private note", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
-            cy.get("#nav-item-timeline", { timeout: 10000 }).click();
+            cy.get("#nav-item-notes", { timeout: 10000 }).click();
 
             cy.contains("Admin's full private note").should("be.visible");
             cy.contains("Admin's full private note").parent().parent().within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("exist");
+                cy.get("[data-open-note-id]").should("exist");
             });
         });
 
         it("Private badge displays on private notes", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
-            cy.get("#nav-item-timeline", { timeout: 10000 }).click();
+            cy.get("#nav-item-notes", { timeout: 10000 }).click();
 
             cy.contains("Another private note").closest(".card-body").within(() => {
                 cy.get(".badge").contains("Private").should("be.visible");
@@ -129,7 +129,7 @@ describe("UI Private Notes Timeline", () => {
             cy.contains("Admin's private family note with details").should("be.visible");
             cy.contains("Admin's private family note with details")
                 .parent().parent().within(() => {
-                    cy.get("a[href*='NoteEditor.php']").should("exist");
+                    cy.get("[data-open-note-id]").should("exist");
                 });
         });
 
@@ -150,11 +150,11 @@ describe("UI Private Notes Timeline", () => {
         it("Edit button IS visible when admin views non-owned private note (admins can edit any note)", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
-            cy.get("#nav-item-timeline", { timeout: 10000 }).click();
+            cy.get("#nav-item-notes", { timeout: 10000 }).click();
 
             // Admin can now edit private notes they don't own — edit link should exist.
             cy.contains("User private").closest(".card-body").within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("exist");
+                cy.get("[data-open-note-id]").should("exist");
                 cy.get("button[data-note-id]").should("exist");
             });
         });
@@ -162,10 +162,10 @@ describe("UI Private Notes Timeline", () => {
         it("Edit button visible when admin views own private note on person timeline", () => {
             cy.visit("/people/view/2");
             cy.get(".breadcrumb", { timeout: 10000 }).should("be.visible");
-            cy.get("#nav-item-timeline", { timeout: 10000 }).click();
+            cy.get("#nav-item-notes", { timeout: 10000 }).click();
 
             cy.contains("Admin private").closest(".card-body").within(() => {
-                cy.get("a[href*='NoteEditor.php']").should("be.visible");
+                cy.get("[data-open-note-id]").should("be.visible");
                 cy.get("button[data-note-id]").should("be.visible");
             });
         });

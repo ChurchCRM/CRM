@@ -8,7 +8,6 @@
  * ui-admin specs run under docker-admin.config.ts, which does not register it.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const GROUPS_URL = "/api/groups";
 
@@ -68,7 +67,6 @@ before(() => {
 
 describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D23)", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
         admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, sundaySchool: true }, 201).then((resp) => {
             ministryId = resp.body.ministry.id;
@@ -82,7 +80,6 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     it("links a class from the team dialog and imports its teachers", () => {

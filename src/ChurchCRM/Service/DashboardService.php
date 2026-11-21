@@ -3,9 +3,12 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\FunctionsUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 const GENDER_STATS_UNASSIGNED = 0;
 const GENDER_STATS_MAN = 1;
@@ -22,6 +25,31 @@ class DashboardService
             ->count();
 
         return ['familyCount' => $familyCount];
+    }
+
+    /**
+     * @return array{families: int, People: int, SundaySchool: int, Groups: int, events: int}
+     */
+    public function getOverviewCounts(): array
+    {
+        return [
+            'families' => $this->getFamilyCount()['familyCount'],
+            'People' => (new ClassificationService())->excludeInactive(PersonQuery::create())
+                ->leftJoinWithFamily()
+                ->where('Family.DateDeactivated is null')
+                ->filterByLiving()
+                ->count(),
+            'SundaySchool' => GroupQuery::create()->filterByType(4)->count(),
+            'Groups' => GroupQuery::create()->count(),
+            // Checked in, not checked out, on an active event; orphaned attendance rows would inflate it.
+            'events' => EventAttendQuery::create()
+                ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+                ->filterByCheckoutDate(null, Criteria::EQUAL)
+                ->useEventQuery()
+                    ->filterByInActive(0)
+                ->endUse()
+                ->count(),
+        ];
     }
 
     public function getDashboardStats(): array

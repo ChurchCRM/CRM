@@ -52,7 +52,6 @@
  * `ON DELETE SET NULL` constraint exist with the shape §2.16 specifies.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const ADDEVENT_KEY = "nofinance.api.key";
@@ -81,7 +80,6 @@ let positionOne = 0;
 let scheduleId = 0;
 let linkedOccurrenceId = 0;
 let linkedEventId = 0;
-let originalVersion = "v1";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
@@ -105,10 +103,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         body,
         expectedStatus,
     );
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */
@@ -312,13 +306,6 @@ after(() => {
 
 describe("Volunteer v2 — event ministry ownership and calendar integration (#9713)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then(
-            (resp) => {
-                originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-            },
-        );
-        setVersion("v2");
-
         cleanupFixtures();
 
         // Person 95 is the "global AddEvent, no volunteer scope" persona. The
@@ -448,7 +435,6 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
               WHERE ucfg_per_ID = ? AND ucfg_name = 'bAddEvent'`,
             [PERSON_ADDEVENT],
         );
-        setVersion(originalVersion);
     });
 
     // ── §2.16 the column itself ─────────────────────────────────────────────
@@ -912,21 +898,6 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 },
                 403,
             );
-        });
-
-        it("loses the widened gate when the rollout flag goes back to v1", () => {
-            setVersion("v1");
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${FIXTURE_PREFIX} Rolled Back`,
-                    MinistryId: ministryA,
-                }),
-                403,
-            );
-            setVersion("v2");
         });
     });
 

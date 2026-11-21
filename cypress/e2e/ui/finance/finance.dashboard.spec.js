@@ -70,11 +70,11 @@ describe("Treasurer reviews payments by fund", () => {
         };
         expectFund(0, 20);
         expectFund(1, 25);
-        cy.get("#deposit-fyid").select("28");
+        cy.get("#finance-range").select("fy:28");
         cy.location("search").should("include", "fyid=28");
         expectFund(1, 40);
         cy.get(`#payments-by-fund tr[data-fund-id="${funds[0]}"]`).should("not.exist");
-        cy.get("#deposit-fyid").select("0");
+        cy.get("#finance-range").select("all");
         expectFund(0, 80);
         expectFund(1, 65);
         cy.window().then((win) => {

@@ -3,25 +3,28 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
-require SystemURLs::getDocumentRoot() . '/Include/Header.php';
-
 ?>
-
-<?php if ($canReviewSelfRegistrations) { ?>
-<div class="alert alert-warning d-none flex-wrap gap-2 align-items-center justify-content-between" id="selfRegisterDashboardAlert" role="status">
-    <div>
-        <i class="fa-solid fa-user-clock me-2"></i>
-        <strong id="selfRegisterDashboardCount">0</strong>
-        <?= gettext('self-registrations are waiting for review') ?>
-    </div>
-    <a href="<?= $sRootPath ?>/people/self-register" class="btn btn-sm btn-warning">
-        <?= gettext('Review now') ?>
-    </a>
-</div>
-<?php } ?>
-
 <!-- Stat Cards Row -->
 <div class="row row-cards mb-3 g-2">
+    <?php if ($canReviewSelfRegistrations) { ?>
+    <div class="col-6 col-md-4 col-lg">
+        <a href="<?= $sRootPath ?>/people/self-register" class="card card-sm text-decoration-none" id="selfRegisterDashboardCard">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-warning text-white avatar rounded-circle">
+                            <i class="fa-solid fa-user-clock icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium text-body" id="selfRegisterDashboardCount">0</div>
+                        <div class="text-body-secondary"><?= gettext('Self-Registration') ?></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <?php } ?>
     <div class="col-6 col-md-4 col-lg">
         <a href="<?= $sRootPath ?>/people/family" class="card card-sm text-decoration-none">
             <div class="card-body">
@@ -145,26 +148,38 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<?php if ($eventsEnabled) { ?>
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="card" id="todayEventsCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?></h3>
-                <div class="ms-auto">
-                    <a href="<?= SystemURLs::getRootPath() ?>/event/checkin" class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
-                    </a>
-                </div>
-            </div>
-            <div class="card-body p-0">
-                <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
-            </div>
+<?php if ($eventsEnabled && $canViewEvents) { ?>
+<div class="card mb-3" id="todayEventsCard">
+    <div class="card-header py-2">
+        <h3 class="card-title">
+            <i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?>
+            <span class="ms-2 text-body-secondary fw-normal" id="todayEventsCount"></span>
+        </h3>
+        <div class="card-actions d-flex gap-2">
+            <a href="<?= $sRootPath ?>/event/checkin" id="todayEventsCheckin" class="btn btn-sm btn-outline-primary d-none">
+                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+            </a>
+            <button type="button" id="todayEventsToggle" class="btn btn-sm btn-ghost-secondary d-none" data-bs-toggle="collapse" data-bs-target="#todayEventsBody" aria-expanded="false" aria-controls="todayEventsBody" aria-label="<?= InputUtils::escapeAttribute(gettext("Today's Events")) ?>">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+    <div class="collapse" id="todayEventsBody">
+        <div class="card-body p-0">
+            <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
         </div>
     </div>
 </div>
 <?php } ?>
 
+<div class="d-flex justify-content-end align-items-center gap-2 mb-2">
+    <label for="people-range" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
+    <select id="people-range" class="form-select form-select-sm w-auto" aria-label="<?= InputUtils::escapeAttribute(gettext('Time Range')) ?>">
+        <?php foreach ([7 => gettext('7 days'), 14 => gettext('14 days'), 30 => gettext('30 days'), 60 => gettext('60 days'), 90 => gettext('90 days'), 180 => gettext('6 months')] as $value => $label) : ?>
+            <option value="<?= $value ?>"<?= $peopleDays === $value ? ' selected' : '' ?>><?= $label ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
 <div class="row">
     <!-- People card — primary content (2/3 width) -->
     <div class="col-lg-8">
@@ -215,39 +230,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Birthdays & Anniversaries — sidebar (1/3 width) -->
-    <div class="col-lg-4">
-        <div class="card mb-3" id="birthdayCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" id="anniversaryCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
-                </div>
-            </div>
-        </div>
-        <?php if ($notesEnabled) : ?>
+<?php if ($notesEnabled) : ?>
         <div class="card mb-3" id="latestNotesCard">
-            <div class="card-header d-flex align-items-center">
+            <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext('Latest Notes') ?></h3>
+                <div class="card-actions d-flex align-items-center gap-1 d-none">
+                    <button type="button" class="btn btn-sm btn-ghost-secondary" id="notesPrev" aria-label="<?= InputUtils::escapeAttribute(gettext('Previous')) ?>"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span class="small text-body-secondary" id="notesPage"></span>
+                    <button type="button" class="btn btn-sm btn-ghost-secondary" id="notesNext" aria-label="<?= InputUtils::escapeAttribute(gettext('Next')) ?>"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
             <?php if ($latestNotes === []) : ?>
-                <div class="card-body text-body-secondary small" id="latestNotesEmpty"><?= gettext('No notes have been added yet.') ?></div>
+                <div class="card-body text-body-secondary small" id="latestNotesEmpty"><?= gettext('No notes in this time range.') ?></div>
             <?php else : ?>
                 <div class="list-group list-group-flush" id="latestNotesList">
                     <?php foreach ($latestNotes as $note) : ?>
@@ -267,33 +261,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             <?php endif; ?>
         </div>
-        <?php endif; ?>
+<?php endif; ?>
     </div>
-</div>
 
-<?php if ($depositEnabled) { ?>
-<div class="row">
-    <div class="col-12">
-        <div class="card mb-3" id="depositChartRow">
-            <div class="card-header d-flex flex-wrap align-items-center gap-2">
-                <h3 class="card-title mb-0"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
-                <div class="ms-auto d-inline-flex align-items-center gap-2">
-                    <label for="deposit-days" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Time Range') ?>:</label>
-                    <select id="deposit-days" class="form-select form-select-sm w-auto" aria-label="<?= gettext('Deposit chart time range') ?>">
-                        <option value="30"><?= gettext('30 days') ?></option>
-                        <option value="90" selected><?= gettext('90 days') ?></option>
-                        <option value="365"><?= gettext('12 months') ?></option>
-                    </select>
+    <!-- Birthdays & Anniversaries — sidebar (1/3 width) -->
+    <div class="col-lg-4">
+        <div class="card mb-3" id="birthdayCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= sprintf(gettext('Past 7 days and next %d days'), $peopleDays) ?></p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
                 </div>
             </div>
-            <div class="card-body">
-                <div id="deposit-lineGraph" class="deposit-line-graph"></div>
+        </div>
+        <div class="card mb-3" id="anniversaryCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= sprintf(gettext('Past 7 days and next %d days'), $peopleDays) ?></p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<?php } ?>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
-<?php
-require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

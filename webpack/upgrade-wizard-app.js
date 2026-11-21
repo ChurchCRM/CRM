@@ -13,6 +13,7 @@
 import Stepper from "bs-stepper";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import { marked } from "marked";
+import { downloadBackupFile } from "./backup-download";
 import { escapeHtml } from "./utils/escape-html";
 
 // Configure marked: strip raw HTML to prevent XSS from release notes
@@ -616,6 +617,14 @@ function autoDownloadUpdate() {
   performDownload();
 }
 
+function upgradePost(options) {
+  const token = document.querySelector('#backup-download-form input[name="csrf_token"]')?.value ?? "";
+  return window.CRM.AdminAPIRequest({
+    ...options,
+    headers: { "X-CSRF-Token": token, ...(options.headers || {}) },
+  });
+}
+
 /**
  * Perform the actual download operation, using selectedTargetVersion if set.
  */
@@ -626,8 +635,8 @@ function performDownload() {
     ? `upgrade/download-latest-release?version=${encodeURIComponent(selectedTargetVersion)}`
     : "upgrade/download-latest-release";
 
-  window.CRM.AdminAPIRequest({
-    method: "GET",
+  upgradePost({
+    method: "POST",
     path,
   })
     .done((data) => {
@@ -697,7 +706,7 @@ function setupApplyStep() {
       .prop("disabled", true)
       .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Applying...")}`);
 
-    window.CRM.AdminAPIRequest({
+    upgradePost({
       method: "POST",
       path: "upgrade/do-upgrade",
       data: JSON.stringify({
@@ -769,7 +778,7 @@ function setupApplyStep() {
  * Download backup file.
  */
 function downloadBackup(filename) {
-  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
+  downloadBackupFile(filename);
   $("#backupStatus").html(`<div class="alert alert-info">
         <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Backup Downloaded, Copy on server removed")}
     </div>`);
@@ -788,7 +797,7 @@ function setupRefreshButton() {
     $icon.removeClass("fa-arrows-rotate").addClass("fa-circle-notch fa-spin");
     $spinner.addClass("active");
 
-    window.CRM.AdminAPIRequest({
+    upgradePost({
       method: "POST",
       path: "upgrade/refresh-upgrade-info",
     })

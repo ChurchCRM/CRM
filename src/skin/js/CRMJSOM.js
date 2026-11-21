@@ -560,11 +560,11 @@ window.CRM.dashboard = {
 
   /**
    * Show the number of self-registrations awaiting review on the People menu badge
-   * and on the home dashboard alert.
+   * and on the home dashboard card.
    */
   loadSelfRegisterPendingCount: () => {
     const badge = document.getElementById("selfRegisterPending");
-    const alert = document.getElementById("selfRegisterDashboardAlert");
+    const alert = document.getElementById("selfRegisterDashboardCard");
     if (!badge && !alert) return;
     window.CRM.APIRequest({
       method: "GET",
@@ -577,8 +577,6 @@ window.CRM.dashboard = {
       }
       if (alert) {
         document.getElementById("selfRegisterDashboardCount").innerText = data.count;
-        alert.classList.toggle("d-none", !data.count);
-        alert.classList.toggle("d-flex", Boolean(data.count));
       }
     });
   },
@@ -1149,37 +1147,7 @@ window.CRM.dashboard = {
   }
 })();
 
-/**
- * Copy text to the clipboard with a success toast, falling back to a prompt dialog.
- * @param {string} text - The text to copy
- * @param {string} [successMsg] - Optional toast message on success
- */
-const showManualCopy = (text) => {
-  window.CRM.alertAction(
-    "",
-    `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
-    {
-      onShown: (modal) => {
-        const field = modal.querySelector("textarea");
-        field.focus();
-        field.select();
-      },
-    },
-  );
-};
-
-window.CRM.copyToClipboard = (text, successMsg) => {
-  const msg = successMsg || i18next.t("Copied to clipboard");
-  if (navigator.clipboard) {
-    return navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        window.CRM.notify(msg, { type: "success", delay: 3000 });
-      })
-      .catch(() => {
-        showManualCopy(text);
-      });
-  }
-  showManualCopy(text);
-  return Promise.resolve();
-};
+// window.CRM.copyToClipboard is installed by the skin bundle
+// (webpack/skin-core.js), which loads before this file
+// (src/Include/partials/head-assets.php); its transport is the shared helper
+// in webpack/common/copy-to-clipboard.ts.

@@ -7,7 +7,7 @@ import { humanClick, humanPause, humanType, settle } from '../support/human';
  * Mark a member inactive via the profile's Actions menu and land on the
  * updated profile showing the "This Person is Inactive" banner. This is a
  * status toggle (per_DateDeactivated on the Person model), not an edit-form
- * field — see src/skin/js/PersonView.js's activateDeactivatePerson handler,
+ * field — see webpack/people/person-page.js's activateDeactivatePerson handler,
  * which POSTs to /person/{id}/activate/false behind a bootbox confirm.
  *
  * "Joseph Hall" (src/admin/demo/people.json's Hall family — Joseph, not

@@ -1295,10 +1295,6 @@ msgid "People"
 msgstr "Henkilöt"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Pyhäkoulun lapset"
-
-#: 
 msgid "Role / Gender"
 msgstr "Rooli / Sukupuoli"
 
@@ -1361,10 +1357,6 @@ msgstr "Ryhmä"
 #: 
 msgid "Default"
 msgstr "Oletus"
-
-#: 
-msgid "Exit"
-msgstr "Poistu"
 
 #: 
 msgid "Add New"
@@ -1469,10 +1461,6 @@ msgstr "Päivitä ominaisuudet"
 #: 
 msgid "Assign New Group"
 msgstr "Määritä uusi ryhmä"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Määritä uusi vapaaehtoistyömahdollisuus"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1588,10 +1576,6 @@ msgid "Restore Database"
 msgstr "Palauta tietokanta"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Vahvista poisto"
-
-#: 
 msgid "Listing"
 msgstr "Luettelo"
 
@@ -1678,14 +1662,6 @@ msgstr "Uusi salasana"
 #: 
 msgid "Confirm New Password"
 msgstr "Vahvista uusi salasana"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Vapaaehtoistyömahdollisuuksien muokkaus"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Vapaaehtoistyömahdollisuuksia ei ole vielä lisätty"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4453,10 +4429,6 @@ msgid "People Reports"
 msgstr "Henkilöraportit"
 
 #: 
-msgid "People Dashboard"
-msgstr "Henkilöiden ohjauspaneeli"
-
-#: 
 msgid "People Directory"
 msgstr "Henkilöhakemisto"
 
@@ -5041,10 +5013,6 @@ msgstr "Ota käyttöön Content Security Policy (CSP) suojautuaksesi cross-site 
 #: 
 msgid "Enter event description..."
 msgstr "Syötä tapahtuman kuvaus..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Kirjoita muistiinpano tähän..."
 
 #: 
 msgid "Note"
@@ -6364,20 +6332,8 @@ msgid "Additional Information"
 msgstr "Lisätiedot"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Määritä mahdollisuudet"
-
-#: 
 msgid "Choose a property..."
 msgstr "Valitse ominaisuus..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Valitse mahdollisuudet..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Yhteystiedot ja henkilötiedot"
 
 #: 
 msgid "Edited"
@@ -6386,14 +6342,6 @@ msgstr "Muokattu"
 #: 
 msgid "Newsletter"
 msgstr "Uutiskirje"
-
-#: 
-msgid "Personal"
-msgstr "Henkilökohtainen"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Valitse mahdollisuudet"
 
 #: 
 msgid "Volunteer"
@@ -6580,10 +6528,6 @@ msgid "Confirm Property Deletion"
 msgstr "Vahvista ominaisuuden poistaminen"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Vahvista vapaaehtoistyön mahdollisuuden poistaminen"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Poiston vahvistus"
 
@@ -6596,16 +6540,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Olemassa olevat mukautetut henkilön kentät"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Olemassa olevat vapaaehtoistyön mahdollisuudet"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Kenttä poistettu onnistuneesti"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Virheellinen CSRF-tunnus"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8005,10 +7941,6 @@ msgid "or later to continue."
 msgstr "tai uudempi jatkaaksesi."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"Tulosyy\" -muistiinpanot"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d tulos haulle \"%s\""
@@ -8117,10 +8049,6 @@ msgstr "Lisää tai muokkaa yksittäisten henkilöiden tietoja"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Lisää tai muokkaa varainkeruutapahtumiin lahjoitettuja esineitä"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Lisää tai muokkaa henkilöiden ja perheiden muistiinpanoja"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8377,10 +8305,6 @@ msgstr "Luo ja hallitse seurakunnan tapahtumia ja toimintoja"
 #: 
 msgid "Create or edit property type categories"
 msgstr "Luo tai muokkaa ominaisuustyyppien kategorioita"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "Luo tai muokkaa vapaaehtoisten tehtäviä"
 
 #: 
 msgid "Current person"
@@ -8831,10 +8755,6 @@ msgid "Manage user account details and permissions"
 msgstr "Hallitse käyttäjätilin tietoja ja käyttöoikeuksia"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Hallitse vapaaehtoismahdollisuuksia ja osoita jäseniä"
-
-#: 
 msgid "Map cart items"
 msgstr "Näytä valinnan kohteet kartalla"
 
@@ -8955,10 +8875,6 @@ msgid "No timeline events yet."
 msgstr "Ei vielä aikajanan tapahtumia."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Ei vielä vapaaehtoistehtävien osoituksia."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Etkö ole vielä valmis?"
 
@@ -8995,10 +8911,6 @@ msgstr "Yleiskatsaus"
 #: 
 msgid "Password Recovery"
 msgstr "Salasanan palautus"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Edelliset ja seuraavat 7 päivää"
 
 #: 
 msgid "People by Classification"
@@ -9083,10 +8995,6 @@ msgstr "Kirjaa useita varainkeruuarvonnan voittajia kerralla"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Kirjaa uusia lupauksia ja maksuja"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Kirjaa, miksi kävijät vierailivat seurakunnassasi"
 
 #: 
 msgid "Remove from Class"
@@ -9469,10 +9377,6 @@ msgid "funds"
 msgstr "rahastot"
 
 #: 
-msgid "opportunities"
-msgstr "mahdollisuudet"
-
-#: 
 msgid "or connect an external service"
 msgstr "tai yhdistä ulkoinen palvelu"
 
@@ -9772,11 +9676,6 @@ msgstr "Sähköpostiosoitteiden noutaminen epäonnistui"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Puhelinnumeroiden noutaminen epäonnistui"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Etsi vapaaehtoisia tietylle mahdollisuudelle"
 
 #. Context: query_qry
 #: 
@@ -10900,10 +10799,6 @@ msgstr "Tumma"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
 
 #. Context: locales
 #: 
@@ -12547,10 +12442,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Ominaisuustyyppiä ei voi poistaa: %d ominaisuutta viittaa siihen edelleen. Määritä uudelleen tai poista nämä ominaisuudet ensin."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Vapaaehtoistyömahdollisuutta ei voi poistaa: %d henkilöä on yhä määritetty. Poista määritykset ensin."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Luokan täytyy olla p, f tai g"
 
@@ -12561,10 +12452,6 @@ msgstr "Kopioi virheilmoitus"
 #: 
 msgid "Could not load note."
 msgstr "Muistiinpanoa ei voitu ladata."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Kuvaus ei voi ylittää 100 merkkiä"
 
 #: 
 msgid "Donation fund not found"
@@ -12587,10 +12474,6 @@ msgid "Failed to create property type"
 msgstr "Ominaisuustyypin luominen epäonnistui"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden luominen epäonnistui"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Lahjoitusrahaston poistaminen epäonnistui"
 
@@ -12607,10 +12490,6 @@ msgid "Failed to delete property type"
 msgstr "Ominaisuustyypin poistaminen epäonnistui"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden poistaminen epäonnistui"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Lahjoitusrahaston päivitys epäonnistui"
 
@@ -12623,10 +12502,6 @@ msgid "Failed to update property type"
 msgstr "Ominaisuustyypin päivitys epäonnistui"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Vapaaehtoistyömahdollisuuden päivitys epäonnistui"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Varainhankintaa ei löydy"
 
@@ -12637,10 +12512,6 @@ msgstr "Asennustunnus"
 #: 
 msgid "Invalid class"
 msgstr "Virheellinen luokka"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Nimi ei voi ylittää 30 merkkiä"
 
 #: 
 msgid "Note by %s deleted"
@@ -12663,16 +12534,8 @@ msgid "Read more"
 msgstr "Lue lisää"
 
 #: 
-msgid "That name already exists."
-msgstr "Tämä nimi on jo olemassa."
-
-#: 
 msgid "Title is required"
 msgstr "Otsikko on pakollinen"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Vapaaehtoistyömahdollisuutta ei löydy"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12881,14 +12744,6 @@ msgstr "Uloskirjaus epäonnistui. Yritä uudelleen."
 #: 
 msgid "Click Save to apply."
 msgstr "Napsauta Tallenna ottaaksesi käyttöön."
-
-#: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Leikepöydän API ei ole saatavilla. Kopioi URL manuaalisesti."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Leikepöytä ei ole käytettävissä. Käytä Lataa-painiketta tallentaaksesi koodisi."
 
 #: 
 msgid "Code incomplete"
@@ -13469,14 +13324,6 @@ msgstr "Ei kolehtikeräyksiä"
 #: 
 msgid "No Events Today"
 msgstr "Ei tapahtumia tänään"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Ei vuosipäiviä edellisen tai seuraavan 7 päivän aikana"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Ei syntymäpäiviä edellisen tai seuraavan 7 päivän aikana"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14423,24 +14270,12 @@ msgid "People &amp; Families"
 msgstr "Henkilöt &amp; Perheet"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Muokattavaksi yritettävää muistiinpanoa ei enää ole olemassa."
-
-#: 
 msgid "User List"
 msgstr "Käyttäjäluettelo"
 
 #: 
 msgid "View Person"
 msgstr "Tarkastele henkilöä"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
 
 #: 
 msgid "Account locked"
@@ -15071,10 +14906,6 @@ msgid "Target family"
 msgstr "Kohdeperhe"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Ryhmää ei löydy. Yritä uudelleen."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Valittu perhe ei ole enää olemassa. Päivitä sivu ja yritä uudelleen."
 
@@ -15141,10 +14972,6 @@ msgstr "goalAmount ei saa olla negatiivinen"
 #: 
 msgid "thru %s"
 msgstr "%s asti"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "\"Miksi tuli\" -muistiinpanot henkilölle %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15293,10 +15120,6 @@ msgstr "Tuetut muodot"
 #: 
 msgid "System Configuration"
 msgstr "Järjestelmän asetukset"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Tähän vapaaehtoistehtävään on määritetty henkilöitä. Poistaminen poistaa heidän määrityksensä"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15527,10 +15350,6 @@ msgid "Add New Fund"
 msgstr "Lisää uusi rahasto"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Lisää uusi tilaisuus"
-
-#: 
 msgid "Add New Person"
 msgstr "Lisää uusi henkilö"
 
@@ -15543,10 +15362,6 @@ msgid "Add New Role"
 msgstr "Lisää uusi rooli"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Lisää uusi vapaaehtoistehtävä"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Lisää pyhäkouluryhmä"
 
@@ -15557,10 +15372,6 @@ msgstr "Poistetaanko tämä perhe?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tarkista uudet perheet ja henkilöt, jotka ovat rekisteröityneet julkisella rekisteröintilomakkeella"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vapaaehtoistehtävän poistamisen vahvistus"
 
 #: 
 msgid "# Payments"
@@ -17227,14 +17038,6 @@ msgid "Find people who did not attend an event"
 msgstr "Etsi ihmiset, jotka eivät osallistuneet tapahtumaan"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Etsi vapaaehtoiset, jotka vastaavat kahta tiettyä mahdollisuuskoodia"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Ensimmäinen vapaaehtoismahdollisuus"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Taitettu kirja"
 
@@ -17311,10 +17114,6 @@ msgid "Run Report"
 msgstr "Suorita raportti"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Toinen vapaaehtoismahdollisuus"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Näytetään sivupalkissa, kirjautumissivulla ja sähköposteissa. Logon lataaminen korvaa ChurchCRM-tuotemerkin kaikkialla, missä se esiintyy."
 
@@ -17341,14 +17140,6 @@ msgstr "Käytetään oletusarvoista ChurchCRM-logoa"
 #: 
 msgid "View Full Family Giving"
 msgstr "Näytä koko perheen lahjoitus"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vapaaehtoismahdollisuus"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vapaaehtoiset kahdelle mahdollisuudelle"
 
 #: 
 msgid "YTD"
@@ -17823,10 +17614,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Julkisen ilmoittautumislomakkeen kautta tulleet ilmoittautumiset odottavat tarkistusta. Merkinnät, joilla ei ole sähköpostia tai puhelinnumeroa, on merkitty – tarkista yhteystiedot ennen yhteydenottoa."
 
 #: 
-msgid "Review now"
-msgstr "Tarkista nyt"
-
-#: 
 msgid "Review self registrations"
 msgstr "Tarkista itseilmoittautumiset"
 
@@ -17877,10 +17664,6 @@ msgstr "Eilen"
 #: 
 msgid "days ago"
 msgstr "päivää sitten"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "itseilmoittautumista odottaa tarkistusta"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18181,10 +17964,6 @@ msgstr "Tapahtumatyyppiä seuraavalle aikataululle on annettava tapahtumatyyppi"
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Aikataulu, joka miehittää yhden tapahtuman, ei voi seurata muita tapahtumia; poista se ja lisää sen sijaan aikataulu"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Yksinkertainen luettelo tehtävistä, kuten ”Lastenhoito” tai ”Vastaanottaja”, ylläpidetään kohdassa Ihmiset → Ylläpito. Kullekin henkilölle merkitään tehtävät, joihin hän on valmis auttamaan, hänen tietueensa Vapaaehtoinen-välilehdellä. Se on kaikki, mitä tallennetaan: tiimejä, aikatauluja, päivämääriin määrityksiä tai muistutussähköposteja ei ole. Merkintöjä käytetään raporteissa ja henkilön tietueessa."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18493,18 +18272,6 @@ msgstr "Taustatyöt ajettiin"
 #: 
 msgid "Birthday greeting"
 msgstr "Syntymäpäivätervehdys"
-
-#: 
-msgid "Both"
-msgstr "Molemmat"
-
-#: 
-msgid "Both (transition)"
-msgstr "Molemmat (siirtymävaihe)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Molemmat – V1 ja V2 rinnakkain (siirtymävaihe)"
 
 #: 
 msgid "Calendar address"
@@ -21591,22 +21358,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Käyttäjällä on oltava Lisää tapahtumia -oikeus tai hänen on koordinoitava vapaaehtoistyöalaa, johon tämä kalenteri kuuluu"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Vapaaehtoistehtävät (vanha)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – vanhat Vapaaehtoistehtävät"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Työalat"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Vapaaehtoishallinta"
-
-#: 
 msgid "Valid"
 msgstr "Kelvollinen"
 
@@ -21625,14 +21376,6 @@ msgstr "Näytä tapahtuma"
 #: 
 msgid "View this email"
 msgstr "Näytä tämä sähköposti"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vapaaehtoinen (vanha)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Vapaaehtoishallinta V2 ei ole käytössä"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21739,10 +21482,6 @@ msgid "What the check found"
 msgstr "Mitä tarkistus löysi"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Mitä vapaaehtoiskokemukset ovat"
-
-#: 
 msgid "What you want to say"
 msgstr "Mitä haluat sanoa"
 
@@ -21773,10 +21512,6 @@ msgstr "Mistä päivämäärät tulevat"
 #: 
 msgid "Where we reach you"
 msgstr "Mistä tavoitamme sinut"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Mikä Vapaaehtoishallinnan kokemus on käytössä. V1 on vanha Vapaaehtoistehtävät-toiminto; V2 on uusi aikataulutus- ja tehtävämääritystyönkulku. ”Molemmat” näyttää kummankin rinnakkain siirtymän aikana."
 
 #: 
 msgid "Which events"
@@ -22185,10 +21920,6 @@ msgstr "Sinulla ei ole oikeutta muuttaa tämän tapahtuman ryhmää"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Vain vapaaehtoistyön johtaja voi muuttaa palvelun koordinaattoria"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1:n valinta keskeyttää V2-sähköpostin; kaikki jonossa oleva lähetetään, kun V2 on jälleen käytössä, elleivät tapahtumat ole ohi."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23033,10 +22764,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Täyttämättömän tehtävän hälytyksen ennakkoaika (tuntia)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Vapaaehtoisten hallinta"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Vapaaehtoispalvelukset, tiimit, aikataulut ja määritykset"
 
@@ -23047,14 +22774,6 @@ msgstr "Vapaaehtoistehtävät täytettäväksi tulevina päivinä"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vapaaehtoisia tarvitaan yhä näihin tuleviin esiintymiin: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Mitä nämä tarkoittavat?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää"
 
 #: 
 msgid "You are on the schedule"
@@ -23985,10 +23704,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d maksua ei ole vielä millään talletuksella."
 
 #: 
-msgid "Closing line"
-msgstr "Loppulause"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Jokainen tälle vuodelle päivätty talletus on suljettu."
 
@@ -24001,28 +23716,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Jokainen tämän vuoden maksu on talletuksella."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Luo verotodistukset"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Lahjoitusraportti (verotodistukset)"
-
-#: 
-msgid "Opening line"
-msgstr "Alkulause"
-
-#: 
 msgid "Qty"
 msgstr "Kpl"
-
-#: 
-msgid "Signed by"
-msgstr "Allekirjoittaja"
-
-#: 
-msgid "Thank-you line"
-msgstr "Kiitoslause"
 
 #: 
 msgid "Year-End Giving"
@@ -24181,10 +23876,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF-tiedostojen väliaikaisen kansion on oltava absoluuttinen kansiopolku."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Seurakunnan verotunnus (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Loppurivi"
 
@@ -24227,10 +23918,6 @@ msgstr "Todistusten asetukset"
 #: 
 msgid "Statement Wording"
 msgstr "Todistuksen sanamuoto"
-
-#: 
-msgid "Tax Information"
-msgstr "Verotiedot"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24279,10 +23966,6 @@ msgstr "Käytetään seurakunnan nimeä ja osoitetta"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Käytetään järjestelmäasetuksissa määritettyä kirjelomakkeen polkua"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lahjoitustodistusten sanamuoto, verotunnus ja PDF-käsittely"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26461,248 +26144,8 @@ msgid "Review Family Information"
 msgstr "Tarkista perheen tiedot"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Työala nimeltä \"%s\" on jo olemassa. Valitse se luettelosta tai valitse toinen nimi."
-
-#: 
-msgid "A new ministry"
-msgstr "Uusi työala"
-
-#: 
-msgid "A position"
-msgstr "Tehtävä"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Lisätäänkö {{total}} vapaaehtoista aiemmin muunnettuihin tehtäviin?"
-
-#: 
-msgid "Already converted"
-msgstr "Jo muunnettu"
-
-#: 
-msgid "An existing ministry"
-msgstr "Olemassa oleva työala"
-
-#: 
-msgid "Becomes"
-msgstr "Muuttuu"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Vain yhden on tarkoitus olla käytössä kerrallaan; Vapaaehtoiskokemus-asetus ratkaisee, kumman tämä seurakunta näkee. Vaihtaminen piilottaa tai näyttää sivuja ja valikon kohtia eikä koskaan poista tietoja. V1 ja Molemmat ovat tarjolla vain niin kauan kuin vapaaehtoistyömahdollisuudet ovat käytössä: kun jokainen mahdollisuus on muunnettu ja seurakunta käyttää V2:ta, ne poistuvat tästä luettelosta."
-
-#: 
-msgid "Convert"
-msgstr "Muunna"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Muunna vapaaehtoistyömahdollisuudet"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Muunnetaanko {{total}} mahdollisuutta nyt? V1-tiedot säilyvät ennallaan, kunnes vapaaehtoistyömahdollisuudet poistetaan käytöstä."
-
-#: 
-msgid "Converted"
-msgstr "Muunnettu"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Muunnettu: {{positions}} tehtävää ja {{ministries}} työalaa, {{qualifications}} vapaaehtoista pätevöity."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Jokaisesta mahdollisuudesta tulee tehtävä yhden työalan ensimmäiseen tiimiin, ja kaikki siihen liitetyt saavat pätevyyden tähän tehtävään. Itseilmoittautuminen on aluksi pois päältä näissä tehtävissä."
-
-#: 
-msgid "Everything is converted."
-msgstr "Kaikki on muunnettu."
-
-#: 
-msgid "Existing ministry"
-msgstr "Olemassa oleva työala"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Anna uudelle työalalle enintään 100 merkin nimi."
-
-#: 
-msgid "Its own ministry"
-msgstr "Oma työala"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Liitetty sen jälkeen: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Linkit, joita ei voi muuntaa"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Omat uudet työalat"
-
-#: 
-msgid "New ministry name"
-msgstr "Uuden työalan nimi"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Sähköpostia ei lähetetä, ja vapaaehtoistyömahdollisuudet säilyvät ennallaan, kunnes ne poistetaan käytöstä."
-
-#: 
-msgid "No name"
-msgstr "Ei nimeä"
-
-#: 
-msgid "Not converted"
-msgstr "Ei muunnettu"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Avaa ominaisuuksien kytkimet"
-
-#: 
-msgid "Open Ministries"
-msgstr "Avaa työalat"
-
-#: 
-msgid "Opportunities"
-msgstr "Mahdollisuudet"
-
-#: 
-msgid "Opportunity"
-msgstr "Mahdollisuus"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mahdollisuus #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Muunnettuihin vapaaehtoistyömahdollisuuksiin muunnoksen jälkeen liitetyt henkilöt: %d. Lisää heidät tehtäviinsä ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Esikatsele muunnos ensin ja lähetä sen palauttama versio."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Nimetty uudelleen, jotta nimet pysyvät yksilöllisinä"
-
-#: 
-msgid "Review the conversion"
-msgstr "Tarkista muunnos"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Lähetä muunnosvalinta JSON-objektina."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Lähetä työaloiksi muuttuvat mahdollisuudet tunnisteluettelona."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Työalaa ei ole olemassa."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM-versio, jossa ylläpitäjä sulki ilmoituksen vapaaehtoistyömahdollisuuksien poistamisesta käytöstä."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Vapaaehtoistyömahdollisuudet ovat muuttuneet esikatselun jälkeen. Tarkista esikatselu uudelleen ja muunna sitten."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Vahvistusta ei voitu avata. Lataa sivu uudelleen ja yritä uudelleen."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Muunnosta ei voitu esikatsella."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Muunnos epäonnistui. Mitään ei muutettu."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Työalalla \"%s\" ei ole tiimiä tehtäviä varten."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Palvelimeen ei saatu yhteyttä. Lataa sivu uudelleen nähdäksesi, suoritettiinko muunnos."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Muunnettavia vapaaehtoistyömahdollisuuksia ei ole."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Vapaaehtoisten hallinta vaihtuu tilaan Molemmat, jotta uudet työalat näkyvät vapaaehtoistyömahdollisuuksien rinnalla."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Vapaaehtoistyömahdollisuudet muunnettu"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna ne työaloiksi, jotta tieto siitä, kuka palvelee missäkin, säilyy."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna nyt %1$d mahdollisuutta ja %2$d vapaaehtoista työaloiksi. Voit esikatsella tuloksen ennen kuin mitään muutetaan."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Pätevöidyt vapaaehtoiset"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Muunnettuihin tehtäviin lisättävät vapaaehtoiset"
-
-#: 
-msgid "What it becomes"
-msgstr "Miksi se muuttuu"
-
-#: 
-msgid "What will happen"
-msgstr "Mitä tapahtuu"
-
-#: 
-msgid "Where they go"
-msgstr "Minne ne menevät"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Mitkä vanhat vapaaehtoistyömahdollisuudet on muunnettu ja miksi tehtäväksi kukin muuttui."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää. Vapaaehtoistyömahdollisuudet (V1) poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Vapaaehtoistyömahdollisuutesi on muunnettu työaloiksi. Vaihda vapaaehtoisten hallinta tilaan V2 ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "uudeksi työalaksi, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "työalaan {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ei enää ChurchCRM:ssä"
 
 #: 
 msgid "Collapse sidebar"
@@ -26879,10 +26322,6 @@ msgstr[0] "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu t
 msgstr[1] "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Tehtävämääritys peruttu"
 
@@ -26929,10 +26368,6 @@ msgstr "Tämä päivä on peruttu. Sinulta ei tarvita enää mitään."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Tämä tapahtumakerta on peruttu"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vapaaehtoistyö seurakunnan tavalla järjestettynä. Jokaisella työalalla on tiimejä ja tehtäviä; ihmiset kelpuutetaan tehtäviin ja kuuluvat työalan joukkoryhmään; aikataulut seuraavat kalenterin tapahtumia ja tuottavat päivättyjä tapahtumakertoja miehitysvaatimuksineen; koordinaattorit määräävät ihmisiä, jotka hyväksyvät, kieltäytyvät tai ehdottavat sijaista; muistutukset ja hälytykset lähtevät sähköpostitse. Ylläpitäjät ja käyttäjät, joilla on Hallitse työaloja -oikeus, näkevät kaikki työalat ja voivat luoda, poistaa käytöstä ja poistaa niitä. Työalan koordinaattorille annetaan sen sijaan Hallitse omia työalojani -oikeus: sivupalkin Työalat-otsikon alla näkyvät silloin vain työalat, joita hän koordinoi. Tiimin vetäjä johtaa tiimiään Jäsenportaalista. Jäsenet käyttävät Jäsenportaalia nähdäkseen aikataulunsa, vastatakseen, ilmoittautuakseen ja tarjotakseen apua."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27097,10 +26532,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Poista myös kirjautuminen käytöstä, jotta he eivät voi käyttää jäsenportaalia"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Ennen yhteenvetojen lähettämistä"
-
-#: 
 msgid "Birthday today"
 msgstr "Syntymäpäivä tänään"
 
@@ -27183,10 +26614,6 @@ msgstr "Henkilöiden ja perheiden poistaminen"
 #: 
 msgid "Delete the login for"
 msgstr "Poista käyttäjätunnus:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Talletuskaavion aikaväli"
 
 #: 
 msgid "Disabled at"
@@ -27441,10 +26868,6 @@ msgid "Preview Sample Letter"
 msgstr "Esikatsele esimerkkikirje"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kanadalaisen lahjoitusyhteenvedon yksityisen allekirjoituksen tunniste. Hallitaan allekirjoituksen latauksella."
-
-#: 
 msgid "Property Type"
 msgstr "Ominaisuuden tyyppi"
 
@@ -27483,10 +26906,6 @@ msgstr "Tarkista ja suodata"
 #: 
 msgid "Review and vote"
 msgstr "Tarkista ja äänestä"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Tarkista vuosi ja lataa sitten lahjoitusyhteenvedot."
 
 #: 
 msgid "Review what we are considering"
@@ -27535,10 +26954,6 @@ msgstr "Vahva"
 #: 
 msgid "Support"
 msgstr "Tuki"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Veronumero- ja PDF-asetukset"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27653,10 +27068,6 @@ msgid "View people and families"
 msgstr "Näytä henkilöt ja perheet"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Vapaaehtoistoiminnan hallinta on poistettu käytöstä tässä seurakunnassa"
-
-#: 
 msgid "Weak"
 msgstr "Heikko"
 
@@ -27725,10 +27136,6 @@ msgid "Latest Notes"
 msgstr "Uusimmat muistiinpanot"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Muistiinpanoja ei ole vielä lisätty."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Aloita rekisteröinti saadaksesi QR-koodin."
 
@@ -27739,4 +27146,746 @@ msgstr "Tuo salasana tai koodi ei ole oikein. Kaksivaiheinen todentaminen on ede
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Kaksivaiheinen todentaminen on jo määritetty. Sen salaisuus näytetään vain rekisteröinnin aikana."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d lahja, yhteensä %2$s"
+msgstr[1] "%1$d lahjaa, yhteensä %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d perheellä on tällä hetkellä tämäntyyppisiä ominaisuuksia."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d perhe ei voi vielä saada kuittia, ja se jätetään pois. Korjaa sen alla lueteltu ongelma ja valitse sitten Tarkista uudelleen."
+msgstr[1] "%d perhettä ei voi vielä saada kuittia, ja ne jätetään pois. Korjaa niiden alla luetellut ongelmat ja valitse sitten Tarkista uudelleen."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d ryhmällä on tällä hetkellä tämäntyyppisiä ominaisuuksia."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d henkilöllä on tällä hetkellä tämäntyyppisiä ominaisuuksia."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d julkaisua saatavilla asennetun versiosi jälkeen."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Kuittia ei luotu."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: syötä vahvistettu lahjoittajan koko nimi (tai nimet), vahvista lahjoittajat ja vahvista yksi lahjoittajajoukko. Usean lahjoittajan maksujoukot on käsiteltävä tämän toiminnon ulkopuolella."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: lahjat tai postiosoite ovat muuttuneet tarkistuksen jälkeen. Valitse Tarkista uudelleen ja vahvista lahjoittaja uudelleen."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} erä)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} erää)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Luottokortti- tai pankkivekselimaksu on talletuksessa, jota ei ole vielä suljettu. Sulje talletus, kun maksu on selvitetty."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Maksussa on vähennyskelvoton määrä. Kanadalaiset kuitit tukevat tässä vain lahjoja, joihin ei liity etua."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Maksun rahamäärä on virheellinen."
+
+#: 
+msgid "A payment has no date."
+msgstr "Maksulla ei ole päivämäärää."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Maksu on päivätty myöntämispäivän jälkeen."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Maksu on merkitty ongelmaksi."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Maksu on nolla tai negatiivinen."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Vaaditaan tarkistettu POST-pyyntö ja kelvollinen CSRF-tunnus."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Valittua perhettä ei enää ole olemassa."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Allekirjoituskuva ei ole suojattu digitaalinen allekirjoitus."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Järjestelmäpäivitys on saatavilla. Pyydä ylläpitäjää päivittämään asennuksesi."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Kaikki mukana olevat rivit ovat rahalahjoja, joihin ei liity etua."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Kaikki vaaditut kanadalaisten kuittien asetukset on täytetty."
+
+#: 
+msgid "Also delete family members"
+msgstr "Poista myös perheenjäsenet"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Etujen määrä"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Lahjojen määrä"
+
+#: 
+msgid "Amount per installment"
+msgstr "Määrä erää kohti"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Syötetyt määrät ovat"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Ylläpitäjä lataa sen kohdassa Raporttiasetukset."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Hyväksytty, mutta kutsua ei lähetetty"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Pyydä järjestelmän ylläpitäjää päivittämään ChurchCRM uusimpaan versioon."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Valtuutettu allekirjoitus"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Canada Revenue Agency"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadalainen virallinen kuitti"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kanadalaiset viralliset kuitit edellyttävät, että seurakunnan maana kohdassa Seurakunnan tiedot on Kanada."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kanadalaiset kuitit edellyttävät koko kalenterivuotta ja kaikkia rahastoja ilman muita suodattimia."
+
+#: 
+msgid "Change Selection"
+msgstr "Muuta valintaa"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Hyväntekeväisyysjärjestön virallinen nimi"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Hyväntekeväisyysjärjestön rekisteröity osoite"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Hyväntekeväisyysjärjestön rekisterinumero"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Kuittien hyväntekeväisyystietoja ei ole vielä täytetty. Lisää virallinen nimi, rekisteröity osoite, rekisterinumero ja myöntämispaikkakunta, kun voit. Talous toimii siihen asti."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Hyväntekeväisyysjärjestö kuiteissa"
+
+#: 
+msgid "Check Again"
+msgstr "Tarkista uudelleen"
+
+#: 
+msgid "Check the year"
+msgstr "Tarkista vuosi"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Tarkista vuosi, valmistele tiedote ja lataa sitten."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Valitse erän tiheydeksi Viikoittain, Kuukausittain tai Neljännesvuosittain."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Valitse kelvollinen lahjoitusten kalenterivuosi."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Valitse alkuperäinen tai kaksoiskappale."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Valitse kokonaissitoumus tai erän määrä."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM-käännöksiä hallitaan ChurchCRM:n GitHub-repositoriossa. Voit auttaa"
+
+#: 
+msgid "Commitment amount"
+msgstr "Sitoumuksen määrä"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Vertaa kaksoiskappaletta säilytettyyn alkuperäiseen ja vahvista, että kaikki kuitin tiedot ovat ennallaan."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Täytä jokainen kuitin vahvistus ennen lataamista."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Täytä hyväntekeväisyysjärjestön virallinen nimi, rekisteröity osoite, rekisterinumero, myöntämispaikkakunta ja painettu allekirjoittaja."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Vahvistuskirjeen painettu allekirjoittaja"
+
+#: 
+msgid "Copy Kind"
+msgstr "Kopion laji"
+
+#: 
+msgid "Currency"
+msgstr "Valuutta"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Valuuttasymboli $ tai CAD"
+
+#: 
+msgid "Date received"
+msgstr "Vastaanottopäivä"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Sen poistaminen poistaa myös %d ominaisuutta ja kaikki niiden kohdistukset, joten mitään ei jää roikkumaan."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Kuuluvatko kaikki valitun vuoden lahjat yllä yhdessä nimetylle lahjoittajalle (tai lahjoittajille)?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Älä käytä numeroa uudelleen toiselle kuitille, älä kuittaa samoja lahjoja kahdesti äläkä luo muuttuneita tietoja uudelleen muuttumattomana alkuperäisenä."
+
+#: 
+msgid "Duplicate"
+msgstr "Monista"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Kaksoiskappale / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Lahjojen vähennyskelpoinen määrä tuloverotusta varten"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Syötä aikataulu ja eräpäivät esikatsellaksesi sitoumusta."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Syötä kelvolliset ensimmäisen ja viimeisen erän päivämäärät järjestyksessä."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Syötä kelvolliset erien määrät, joissa on enintään kaksi desimaalia."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Olemassa olevat lupaukset säilyttävät kirjatut kokonaissummansa. Valitse määrä erää kohti vain syöttäessäsi kunkin aikataulutetun lahjan."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Täytetty perheenpäistä ja puolisoista. Muokkaa sitä vastaamaan lahjoittajia tarkalleen."
+
+#: 
+msgid "First installment"
+msgstr "Ensimmäinen erä"
+
+#: 
+msgid "Full commitment"
+msgstr "Koko sitoumus"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Luo verotiedotteet"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Lahjojen kalenterivuosi"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Lahjoitustiedote — ei virallinen lahjoituskuitti"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Auta kääntämään GitHubissa"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Kirjekuorien historiallisia muutoksia ei tueta."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Verrasin säilytettyyn alkuperäiseen: lahjoittaja, määrä, sarjanumero ja teksti ovat ennallaan. Tämä ei ole korjaus eikä korvaava kuitti."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Säilytän myönnetyn PDF:n ja ulkoisen kuittilokin hyväntekeväisyysjärjestön kanadalaisessa arkistointipaikassa."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Jos säilytetty alkuperäinen ei ole saatavilla tai se on erilainen, käytä ulkoisia CRA:n mukaisia peruutus-/korvausmenettelyjäsi."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Sisällytä maksujen muistiot: tarkistin ne lahjoittajalle sopiviksi."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Sisällytä tämä perhe lataukseen"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Asennettu versio: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Erien määriä voi käyttää vain lupauksiin."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Eräpäivien on oltava valitun tilivuoden sisällä."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Virheellinen tai puuttuva CSRF-tunnus"
+
+#: 
+msgid "Issue Date"
+msgstr "Myöntämispäivä"
+
+#: 
+msgid "Issue Locality"
+msgstr "Myöntämispaikkakunta"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Säilytä alkuperäinen PDF ja ulkoinen kuittiloki hyväntekeväisyysjärjestön kanadalaisessa arkistointipaikassa."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Viimeinen erä viimeistään"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Kirjeen sanamuoto, hyväntekeväisyystiedot ja PDF-käsittely määritetään kerran kohdassa Todistusten asetukset."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Kirjeen sanamuoto, hyväntekeväisyystiedot ja PDF-käsittely lahjoitustiedotteita varten"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Enintään 2 MiB ja 2000 × 1000 pikseliä. Valitse uusi kuva korvaamaan tallennettu allekirjoitus. Allekirjoituskuva ei ole suojattu digitaalinen allekirjoitus."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Jäsenten kirjautuminen on pois päältä, joten kukaan perheestä %s ei voi kirjautua jäsenportaaliin. Ylläpitäjä voi ottaa sen käyttöön kohdassa Ylläpitäjä → Jäsenportaali."
+
+#: 
+msgid "Memo"
+msgstr "Muistio"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Usean lahjoittajan perhemaksujoukkoja ei voi jakaa tässä; käsittele ne tämän toiminnon ulkopuolella."
+
+#: 
+msgid "Narrow the list"
+msgstr "Rajaa luetteloa"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Mikään perhe ei vastaa näitä suodattimia haulla %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Päällekkäistä yksittäistä tai kumulatiivista kuittia ei ole."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Tälle perheelle ei voi vielä luoda kuittia"
+
+#: 
+msgid "No signature on file"
+msgstr "Allekirjoitusta ei ole tallennettu"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Ei — eri lahjoittajat; käsittele tämän toiminnon ulkopuolella"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Kukaan perheestä %s ei voi kirjautua jäsenportaaliin nykyisen kirjautumissäännön mukaisesti."
+
+#: 
+msgid "None / Aucun"
+msgstr "Ei mitään / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Ei valmis myöntämään kanadalaisia kuitteja. Puuttuu vielä"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Virallinen kuitti / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Virallinen kuitti tuloverotusta varten / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Viralliset kuitit vaativat rekisterinumeron muodossa 123456789RR0001 ja allekirjoituskuvan."
+
+#: 
+msgid "Original"
+msgstr "Alkuperäinen"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Alkuperäinen myöntämispäivä (syötä säilytetystä alkuperäisestä)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Maksupäivät vastaavat lahjojen vastaanottopäiviä, mukaan lukien dokumentoitu postileimakäsittely postitetuille sekeille."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Tulostetaan tavallisiin lahjoitustiedotteisiin, esimerkiksi EIN Yhdysvalloissa. Sama arvo on kohdassa Seurakunnan tiedot."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Yksityinen lahjoitustiedotteen allekirjoitusresurssin tunniste. Hallitaan allekirjoituksen latauksella."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Ominaisuudet / Kohdistukset"
+
+#: 
+msgid "Property deleted"
+msgstr "Ominaisuus poistettu"
+
+#: 
+msgid "Property type deleted"
+msgstr "Ominaisuustyyppi poistettu"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Kuitin lopputervehdys"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Kuitin myöntämispaikkakunta"
+
+#: 
+msgid "Receipt No."
+msgstr "Kuitti nro"
+
+#: 
+msgid "Registration Number"
+msgstr "Rekisterinumero"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Rekisterinumero muodossa 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Julkaisutiedot eivät ole juuri nyt saatavilla."
+
+#: 
+msgid "Releases"
+msgstr "Julkaisut"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Jäljellä oleva sitoumus haulle %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Poista 2FA-vaatimus"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Poistetaanko tallennettu allekirjoituskuva? Viralliset kuitit vaativat tallennetun allekirjoituksen."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Raportit ja muistutukset vertaavat tätä koko kauden sitoumusta lahjoituksiin. Jäljellä oleva saldo ei ole erääntyneiden erien laskelma."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Raportit ja muistutukset käyttävät yllä näkyvää koko sitoumusta. Jäljellä oleva saldo ei ole erääntyneiden erien laskelma."
+
+#: 
+msgid "Require 2FA"
+msgstr "Vaadi 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Palauta asetukset"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Tarkista valitut perheet"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "NÄYTE — EI KELVOLLINEN VEROTUKSEEN"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Esimerkkiallekirjoituksen paikkamerkki"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Määritä, vaaditaanko 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Tietoturvapäivityksiä ja tukea tarjotaan vain uusimmalle versiolle."
+
+#: 
+msgid "Select the families to review."
+msgstr "Valitse tarkistettavat perheet."
+
+#: 
+msgid "Set up the statement"
+msgstr "Valmistele tiedote"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Ota kaksivaiheinen todentaminen käyttöön jatkaaksesi."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Jaetun kirjekuoren ristiriita: toisella perheellä on tällä hetkellä tämä kirjekuoren numero."
+
+#: 
+msgid "Signature Image"
+msgstr "Allekirjoituskuva"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Allekirjoituskuva (Ylläpitäjä, Raporttiasetukset)"
+
+#: 
+msgid "Signature on file"
+msgstr "Allekirjoitus on tallennettu"
+
+#: 
+msgid "Sincerely"
+msgstr "Ystävällisin terveisin"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Määritä määrän peruste muokatessasi toistuvaa lupausta."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Vakiomuotoinen lahjoitustiedote"
+
+#: 
+msgid "Statement Template"
+msgstr "Tiedotepohja"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Anna myöntämispäivä viimeistään tälle päivälle."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Verotunnus tiedotteissa"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Perheessä %s ei ole elossa olevia jäseniä kutsuttavaksi jäsenportaaliin."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Kanadalaisen rekisterinumeron muodon on oltava 123456789RR0001. Tämä ei vahvista rekisteröinnin tilaa."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Hyväntekeväisyysjärjestön rekisterinumeron on oltava tekstiä."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Hyväntekeväisyysjärjestön rekisterinumero, joka tulostetaan virallisiin kuitteihin. Tyhjä käyttää kohdan Seurakunnan tiedot verotunnusta."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Hyväntekeväisyysjärjestön rekisteröity osoite. Tyhjä käyttää kohdan Seurakunnan tiedot osoitetta."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Loppulause allekirjoittajan yläpuolella, esimerkiksi Ystävällisin terveisin."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Koko sitoumus saa olla enintään 999999.99 rahastoa kohti, ja määrissä saa olla enintään kaksi desimaalia."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Lahjat tai postiosoite ovat muuttuneet viime tarkistuksesi jälkeen. Tarkista ne ja vahvista lahjoittaja uudelleen."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Postiosoite on puutteellinen. Katuosoite, kaupunki, provinssi ja postinumero vaaditaan."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Nimi, jolla hyväntekeväisyysjärjestö on rekisteröity. Se voi poiketa seurakunnan nimestä."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Paikka, jossa kuitit myönnetään. Tyhjä käyttää kohdan Seurakunnan tiedot kaupunkia."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Lahjoitustiedotteen painettu allekirjoittaja on valtuutettu allekirjoittamaan nämä kuitit."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Järjestelmän valuuttasymbolin on oltava $ tai sen on ilmaistava CAD kanadalaisia kuitteja varten."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Valitulla kalenterivuodella ei ole maksuja."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Nämä ovat todelliset lahjoittajat jokaiselle lahjalle tässä perheessä/kalenterivuodessa, ja postiosoite on oikein."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Tämä kuva tulostuu allekirjoittajan nimen yläpuolelle lahjoitustiedotteisiin ja kuitteihin. Hyväntekeväisyystiedot ja allekirjoittajan painettu nimi ovat kohdassa Talous, Todistusten asetukset."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Tämä vaihtoehto muotoilee kanadalaisen kuitin, mutta ei ylläpidä kuittirekisteriä eikä säilytä PDF-tiedostoja."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Tämä itse rekisteröitynyt perhe odottaa hyväksyntää. Hyväksyminen lähettää sähköpostitse jokaiselle jäsenelle, joka voi kirjautua jäsenportaaliin, kutsun tarkistaa perheen tiedot."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Tässä työkalussa ei ole peruutus-/korvaustyönkulkua; käytä olemassa olevaa CRA:n mukaista menettelyäsi korjauksiin / kadonneiden kuittien korvaamiseen."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Tämän käyttäjän on otettava 2FA käyttöön"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Tämä poistaa perheen tietueen ja sen muistiinpanot pysyvästi. Tätä ei voi kumota."
+
+#: 
+msgid "Total commitment"
+msgstr "Kokonaissitoumus"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Sitoumusta ei voi esikatsella."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Lataa tai korvaa allekirjoitus"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Lataa valtuutettu veroallekirjoitus kohdassa Raporttiasetukset."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Käytä valitun tilivuoden sisällä olevia päivämääriä. Kuukausittaiset ja neljännesvuosittaiset lahjat käyttävät ensimmäistä eräpäivää tai lyhyempien kuukausien viimeistä päivää."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Vahvistettu lahjoittajan koko nimi (nimet)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Vahvista perhe sen sijaan henkilökohtaisesti."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Vahvista jokaisen perheen lahjoittajan koko nimi ja osoite. Usean lahjoittajan maksujoukot on käsiteltävä tämän toiminnon ulkopuolella."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Versio %s on saatavilla. Pyydä ylläpitäjää päivittämään asennuksesi."
+
+#: 
+msgid "View all emails"
+msgstr "Näytä kaikki sähköpostit"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Kyllä — yksi vahvistettu lahjoittajajoukko"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Seurakuntasi maa on Kanada, joten kanadalaiset viralliset kuitit ovat saatavilla myös, kun luot tiedotteita."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Seurakuntasi maa on Kanada, joten kanadalaiset viralliset kuitit ovat saatavilla lahjoitustiedotteissa ja tavalliset tiedotteet merkitään ei-virallisiksi lahjoituskuiteiksi."
+
+#: 
+msgid "groups"
+msgstr "ryhmät"
 
