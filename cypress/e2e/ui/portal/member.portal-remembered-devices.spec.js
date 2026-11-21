@@ -379,7 +379,7 @@ describe("Member Portal remembered devices", () => {
         lastAuditId().then((startId) => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountSignOut").click();
-            cy.location("pathname").should("match", /\/portal\/login$/);
+            cy.location("pathname").should("match", /\/session\/?$/);
             cy.getCookie(DEVICE_COOKIE).should("be.null");
             devicesOf(member.personId).its("0.pdv_RevokedAt").should("not.be.null");
             auditSince(startId).then((rows) => {
