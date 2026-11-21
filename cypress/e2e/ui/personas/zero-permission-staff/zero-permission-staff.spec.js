@@ -239,7 +239,14 @@ describe("Zero-Permission User (all flags 0)", () => {
             // Open the user-menu dropdown, then click the 'Sign out' link
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains("Sign out").click();
-            cy.location("pathname").should("match", /\/session\/?$/);
+            // Sign-out lands on the /session/ chooser, which redirects straight
+            // to /session/begin when the install offers only the staff door
+            // (bMemberSignIn and bEnableSelfRegistration both off — #11844).
+            // Which doors are on depends on shared shard config other specs
+            // toggle, so accept either login landing; the chooser's door
+            // behaviour itself is covered by session.landing.spec.js, which
+            // sets the config explicitly for each case.
+            cy.location("pathname").should("match", /\/session(\/begin)?\/?$/);
         });
     });
 });
