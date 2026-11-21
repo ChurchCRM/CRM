@@ -2149,14 +2149,6 @@ msgid "Deposit Comment"
 msgstr "Comentario de depósito"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "El archivo de definición de firma falló la validación de firma"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Uno o más archivos fallaron la validación de firma"
-
-#: 
 msgid "item"
 msgstr "item"
 
@@ -4664,10 +4656,6 @@ msgid "Estonian"
 msgstr "Estonio"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Error al decodificar el archivo de definición de firma"
-
-#: 
 msgid "Event not found"
 msgstr "Evento no encontrado"
 
@@ -5249,14 +5237,6 @@ msgstr "Ingrese una URL válida que comience con http:// o https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Todas las firmas de archivos del sistema coinciden con los valores esperados."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "El archivo de definición de firma existe, pero no es legible. Verifique los permisos del archivo."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Falta el archivo de definición de firmas en %s. Ejecute la tarea de empaquetado o implemente una versión oficial para regenerar las firmas."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13291,22 +13271,6 @@ msgid "Move Members to Group"
 msgstr "Mover fieles al grupo"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Debe ser una URL válida que comience con http:// o https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Debe ser una URL válida que comience con http:// o https:// (por ejemplo, http://localhost o https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Debe ser un número de puerto válido (por ejemplo, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Debe comenzar con / si no está vacío; sin barra final. Solo se permiten letras, números, guión bajo, guión, punto y /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "¿Necesita eliminar estos datos más tarde?"
 
@@ -13457,10 +13421,6 @@ msgstr "Por favor, introduce una dirección de correo electrónico válida"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Ingrese una dirección de correo electrónico válida (por ejemplo, nombre@ejemplo.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Por favor, introduzca un número válido"
 
 #: 
 msgid "Please enter a valid phone number"

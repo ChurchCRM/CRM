@@ -2166,14 +2166,6 @@ msgid "Deposit Comment"
 msgstr "إيداع تعليق"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "التحقق من صحة التوقيع ملف تعريف توقيع فشل"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "فشل واحد أو أكثر من الملفات التحقق من صحة التوقيع"
-
-#: 
 msgid "item"
 msgstr "بند"
 
@@ -4692,10 +4684,6 @@ msgid "Estonian"
 msgstr "الإستونية"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "خطأ في ملف تعريف فك توقيع"
-
-#: 
 msgid "Event not found"
 msgstr "لم يتم العثور على الحدث"
 
@@ -5282,14 +5270,6 @@ msgstr "يرجى إدخال عنوان URL صحيح يبدأ بـ http:// أو h
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "جميع توقيعات ملفات النظام تطابق القيم المتوقعة."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "ملف تعريف التوقيع موجود ولكنه غير قابل للقراءة. تحقق من أذونات الملف."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "ملف تعريف التوقيع مفقود في %s. قم بتشغيل مهمة التعبئة أو نشر إصدار رسمي لإعادة إنشاء التوقيعات."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13347,22 +13327,6 @@ msgid "Move Members to Group"
 msgstr "نقل الأعضاء إلى الجماعة"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "يجب أن يكون عنوان URL صحيحا يبدأ بـ http:// أو https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "يجب أن يكون عنوان URL صحيحا يبدأ بـ http:// أو https:// (على سبيل المثال، http://localhost أو https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "يجب أن يكون رقم المنفذ صحيحا (على سبيل المثال، 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "يجب أن يبدأ بـ / إذا لم يكن فارغاً؛ بدون شرطة مائلة في النهاية. يُسمح فقط بالأحرف والأرقام والشرطة السفلية والشرطة والنقطة و /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "هل تحتاج إلى إزالة هذه البيانات لاحقا؟"
 
@@ -13513,10 +13477,6 @@ msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح (على سبيل المثال، name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "يرجى إدخال رقم صحيح"
 
 #: 
 msgid "Please enter a valid phone number"

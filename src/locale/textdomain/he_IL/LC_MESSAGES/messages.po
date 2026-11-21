@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "הערת הפקדה"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "אימות חתימת קובץ הגדרות החתימה נכשל"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
-
-#: 
 msgid "item"
 msgstr "פריט"
 
@@ -4693,10 +4685,6 @@ msgid "Estonian"
 msgstr "אסטונית"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "שגיאה בפענוח קובץ הגדרות חתימה"
-
-#: 
 msgid "Event not found"
 msgstr "לא נמצא אירוע"
 
@@ -5276,14 +5264,6 @@ msgstr "אנא הזן כתובת URL תקינה המתחילה ב-http:// או h
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "כל חתימות קבצי המערכת תואמות לערכים הצפויים."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "קובץ הגדרת החתימה קיים אך אינו קריא. בדוק הרשאות קבצים."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "קובץ הגדרת החתימה חסר ב-%s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13309,22 +13289,6 @@ msgid "Move Members to Group"
 msgstr "העברת חברים לקבוצה"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "חייב להיות כתובת URL תקינה המתחילה ב-http:// או https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "חייב להיות כתובת URL תקינה (למשל, http://localhost)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "חייב להיות מספר פורט תקין (למשל, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "צריך להסיר את הנתונים האלו מאוחר יותר?"
 
@@ -13475,10 +13439,6 @@ msgstr "אנא הזן כתובת אימייל תקינה"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "אנא הזן כתובת אימייל תקינה (למשל name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "אנא הזן מספר תקין"
 
 #: 
 msgid "Please enter a valid phone number"

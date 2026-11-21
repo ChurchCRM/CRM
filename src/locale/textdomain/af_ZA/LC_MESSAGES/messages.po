@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Deposito kommentaar"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Validasie van handtekeningdefinisie-lêerhandtekening het misluk"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
-
-#: 
 msgid "item"
 msgstr "item"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Esties"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Kon nie die definisie-lêer van handtekeninge dekodeer nie"
-
-#: 
 msgid "Event not found"
 msgstr "Gebeurtenis nie gevind nie"
 
@@ -5278,14 +5266,6 @@ msgstr "Voer asseblief 'n geldige URL in wat begin met http:// of https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Al die stelsellêertekens stem ooreen met die verwagte waardes."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Tekendefinisielêer bestaan, maar kan nie gelees word nie. Kontroleer lêertoestemmings."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Tekendefinisielêer ontbreek by %s. Voer die verpakkingstaak uit of stel 'n amptelike vrylasing in om tekens opnieuw te genereer."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13311,22 +13291,6 @@ msgid "Move Members to Group"
 msgstr "Beweeg Geloofsgenote na Ministerie"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Moet 'n geldige URL wees wat begin met http:// of https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Moet 'n geldige URL wees wat begin met http:// of https:// (bv. http://localhost of https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Moet 'n geldige poortnommer wees (bv. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Wil u hierdie data later verwyder?"
 
@@ -13477,10 +13441,6 @@ msgstr "Voer asseblief 'n geldige e-posadres in"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Voer asseblief 'n geldige e-posadres in (bv. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Voer asseblief 'n geldige getal in"
 
 #: 
 msgid "Please enter a valid phone number"
