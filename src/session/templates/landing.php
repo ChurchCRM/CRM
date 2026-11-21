@@ -24,15 +24,15 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     </div>
 
     <div class="login-card-body">
-      <nav class="login-doors" aria-label="<?= htmlspecialchars(gettext('Sign in')) ?>">
+      <nav class="login-doors" aria-label="<?= InputUtils::escapeAttribute(gettext('Sign in')) ?>">
         <?php foreach ($doors as $door): ?>
           <a
-            id="<?= htmlspecialchars($door['id']) ?>"
+            id="<?= InputUtils::escapeAttribute($door['id']) ?>"
             class="login-door<?= $door['primary'] ? ' login-door-primary' : '' ?>"
-            href="<?= htmlspecialchars($door['href']) ?>"
+            href="<?= InputUtils::escapeAttribute($door['href']) ?>"
           >
-            <i class="fa-solid <?= htmlspecialchars($door['icon']) ?>" aria-hidden="true"></i>
-            <span><?= htmlspecialchars($door['label']) ?></span>
+            <i class="fa-solid <?= InputUtils::escapeAttribute($door['icon']) ?>" aria-hidden="true"></i>
+            <span><?= InputUtils::escapeHTML($door['label']) ?></span>
           </a>
         <?php endforeach; ?>
       </nav>

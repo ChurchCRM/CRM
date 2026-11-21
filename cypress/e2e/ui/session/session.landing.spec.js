@@ -76,6 +76,16 @@ describe("Session landing", () => {
         cy.get("#UserBox").should("be.visible");
     });
 
+    it("sends a signed-out visit to /v2/ and /account/ to staff sign-in", () => {
+        setConfig("bMemberSignIn", "0");
+        setConfig("bEnableSelfRegistration", "0");
+        for (const path of ["/v2/", "/account/"]) {
+            cy.visit(path);
+            cy.location("pathname").should("match", /\/session\/begin$/);
+            cy.get("#UserBox").should("be.visible");
+        }
+    });
+
     it("sends a signed-in staff member to their dashboard", () => {
         setConfig("bMemberSignIn", "1");
         setConfig("bEnableSelfRegistration", "1");

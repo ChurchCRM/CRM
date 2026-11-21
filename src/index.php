@@ -64,10 +64,7 @@ if ($_idx_isWebRoot && !AuthenticationManager::validateUserSessionIsActive(false
     if (PortalSessionStore::has()) {
         RedirectUtils::redirect('portal/');
     }
-    $doorCount = 1
-        + (SystemConfig::getBooleanValue('bMemberSignIn') ? 1 : 0)
-        + (SystemConfig::getBooleanValue('bEnableSelfRegistration') ? 1 : 0);
-    RedirectUtils::redirect($doorCount > 1 ? 'session/' : AuthenticationManager::getStaffSignInURL());
+    RedirectUtils::redirect('session/');
 }
 
 // Only a real page is remembered for after sign-in.

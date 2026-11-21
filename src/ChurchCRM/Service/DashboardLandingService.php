@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Utils\RedirectUtils;
 
 /**
  * Which dashboards a staff user may open, and which one they land on after sign-in.
@@ -58,10 +59,17 @@ class DashboardLandingService
         return SystemURLs::getRootPath() . self::pathFor($user);
     }
 
+    /** The signed-in user's dashboard path, or the default when nobody is signed in. */
+    public static function currentPath(): string
+    {
+        return AuthenticationManager::isUserAuthenticated()
+            ? self::pathFor(AuthenticationManager::getCurrentUser())
+            : self::DEFAULT_PATH;
+    }
+
     /** Send the signed-in user to the dashboard they chose. */
     public static function redirect(?User $user = null): never
     {
-        header('Location: ' . self::urlFor($user ?? AuthenticationManager::getCurrentUser()));
-        exit;
+        RedirectUtils::redirect($user ? self::pathFor($user) : self::currentPath());
     }
 }
