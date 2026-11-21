@@ -39,7 +39,6 @@ class Bootstrapper
     private const DEFAULT_CHARSET = 'utf8mb4';
     private const PROPEL_CONFIG_VERSION = 2; // Perpl ORM configuration version
     private const LOCALHOST_IDENTIFIER = 'localhost';
-    private const LOGGING_DOCS_URL = 'https://docs.churchcrm.io/administration/logging-and-diagnostics';
     
     private static ?ConnectionManagerSingle $manager = null;
     private static ?string $dbClassName = null;
@@ -648,12 +647,10 @@ class Bootstrapper
                 $rootPath = standaloneRootPath();
             }
             $title = gettext($header);
-            $content = '<div class="alert alert-danger" role="alert">' . $message . '</div>'
-                . '<p class="text-secondary small mb-0">' . InputUtils::escapeHTML(gettext('The ChurchCRM log records the specific reason. Remove names before you share it.'))
-                . ' <a href="' . self::LOGGING_DOCS_URL . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML(gettext('How to find the log')) . '</a></p>';
+            $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';
             // Added after buildGitHubIssueBody(), which replaces every URL in the body.
             $issueBody = buildGitHubIssueBody($header, '### ' . $header . "\n\nThe message is left out because it names this server and database.")
-                . "\n### Log\n\nThe ChurchCRM log records the specific reason. Paste the matching lines here, with names removed: " . self::LOGGING_DOCS_URL . "\n";
+                . "\n### Log\n\nThe ChurchCRM log records the specific reason. Paste the matching lines here, with names removed: " . standaloneLoggingDocsUrl() . "\n";
             renderErrorPage($rootPath, $title, '❌', 'danger', $content, $issueBody);
         } catch (\Throwable) {
             echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM Error</title></head><body><h1>ChurchCRM Error</h1><p>' . $message . '</p></body></html>';
