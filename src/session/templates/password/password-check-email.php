@@ -27,6 +27,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext("Go to Login") ?>
       </a>
     </div>
+    <?php require __DIR__ . '/../partials/back-to-chooser.php'; ?>
   </div>
 </main>
 <?php

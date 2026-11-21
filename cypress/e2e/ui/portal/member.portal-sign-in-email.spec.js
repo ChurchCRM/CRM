@@ -276,13 +276,13 @@ describe("Member Portal sign-in by email", () => {
         cy.request({ url: "/people/properties/p", followRedirect: false }).its("status").should("eq", 302);
     });
 
-    it("signs out a portal-only session completely and lands on /portal/login", () => {
+    it("signs out a portal-only session completely and lands on the sign-in chooser", () => {
         lastAuditId().then((startId) => {
             signInWithLink();
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountSignOut").click();
-            cy.location("pathname").should("match", /\/portal\/login$/);
-            cy.get("#portalSignInEmail").should("be.visible");
+            cy.location("pathname").should("match", /\/session\/$/);
+            cy.get("#sessionDoorMember").should("be.visible");
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {

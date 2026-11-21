@@ -119,6 +119,8 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
         </div>
       <?php endif; ?>
 
+      <?php require __DIR__ . '/partials/back-to-chooser.php'; ?>
+
     </div><!-- .login-card-body -->
   </div><!-- .login-card -->
 </div><!-- .login-container -->

@@ -57,7 +57,7 @@ function sessionLandingDoors(): array
         $doors[] = [
             'id' => 'sessionDoorMember',
             'href' => $root . '/portal/login',
-            'label' => gettext('Member Portal'),
+            'label' => gettext('Congregation login'),
             'primary' => true,
             'icon' => 'fa-users',
         ];
@@ -66,7 +66,7 @@ function sessionLandingDoors(): array
         $doors[] = [
             'id' => 'sessionDoorRegister',
             'href' => $root . '/portal/register',
-            'label' => gettext('Create an account'),
+            'label' => gettext('Register your family to our church'),
             'primary' => !$member,
             'icon' => 'fa-user-plus',
         ];
@@ -74,7 +74,7 @@ function sessionLandingDoors(): array
     $doors[] = [
         'id' => 'sessionDoorStaff',
         'href' => AuthenticationManager::getStaffSignInURL(),
-        'label' => gettext('Staff sign in'),
+        'label' => gettext('Staff login'),
         'primary' => false,
         'icon' => 'fa-right-to-bracket',
     ];

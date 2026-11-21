@@ -64,6 +64,8 @@
     </form>
     {% endif %}
 
+    {% include 'partials/back-to-session.html.twig' %}
+
     {% if church.email or church.phone %}
     <p class="portal-signin-help">
         {{ gettext('Not sure which email we have? Contact the church office.') }}

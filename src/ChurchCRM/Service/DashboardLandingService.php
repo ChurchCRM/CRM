@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
@@ -55,5 +56,12 @@ class DashboardLandingService
     public static function urlFor(User $user): string
     {
         return SystemURLs::getRootPath() . self::pathFor($user);
+    }
+
+    /** Send the signed-in user to the dashboard they chose. */
+    public static function redirect(?User $user = null): never
+    {
+        header('Location: ' . self::urlFor($user ?? AuthenticationManager::getCurrentUser()));
+        exit;
     }
 }

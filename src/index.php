@@ -87,7 +87,7 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
 }
 
 if ($_idx_isWebRoot) {
-    RedirectUtils::redirect(ltrim(DashboardLandingService::pathFor(AuthenticationManager::getCurrentUser()), '/'));
+    DashboardLandingService::redirect();
 } elseif ($_idx_safeShortPath !== null) {
     require $_idx_safeShortPath;
 } elseif (in_array(strtolower(pathinfo($shortName, PATHINFO_EXTENSION)), ['js', 'css'], true)) {

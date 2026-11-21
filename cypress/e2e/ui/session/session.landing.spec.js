@@ -34,11 +34,11 @@ describe("Session landing", () => {
         setConfig("bEnableSelfRegistration", "1");
         cy.visit("/session/");
         cy.get("#sessionDoorMember").should("have.class", "btn-sign-in").and("have.attr", "href").and("include", "/portal/login");
-        cy.get("#sessionDoorMember").should("contain", "Member Portal");
+        cy.get("#sessionDoorMember").should("contain", "Congregation login");
         cy.get("#sessionDoorRegister").should("have.class", "login-door-quiet").and("have.attr", "href").and("include", "/portal/register");
-        cy.get("#sessionDoorRegister").should("contain", "Create an account");
+        cy.get("#sessionDoorRegister").should("contain", "Register your family to our church");
         cy.get("#sessionDoorStaff").should("have.class", "login-door-quiet").and("have.attr", "href").and("match", /\/session\/begin$/);
-        cy.get("#sessionDoorStaff").should("contain", "Staff sign in");
+        cy.get("#sessionDoorStaff").should("contain", "Staff login");
         doors().should("have.length", 3);
 
         cy.visit("/");
@@ -55,7 +55,7 @@ describe("Session landing", () => {
         doors().should("have.length", 2);
     });
 
-    it("makes Create an account the primary door when member sign-in is off", () => {
+    it("makes family registration the primary door when member sign-in is off", () => {
         setConfig("bMemberSignIn", "0");
         setConfig("bEnableSelfRegistration", "1");
         cy.visit("/session/");

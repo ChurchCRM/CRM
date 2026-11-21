@@ -236,7 +236,7 @@ describe("Login as Person: changes and endings", () => {
 
     it("ends with the sign-out reason on Sign out", () => {
         startLoginAsPerson();
-        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/session\/begin$/);
+        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/session\/$/);
         signInAsAdmin();
         newestSession().should("contain", "Signed out");
     });
