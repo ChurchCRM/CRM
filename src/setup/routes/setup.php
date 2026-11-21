@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\VersionUtils;
@@ -134,13 +135,24 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             ]);
         }
 
-        // A connection probe. An unsupported server version is not a failed connection.
+        // An unsupported server version is not a failed connection: it installs after an acknowledgment.
+        $supported = DatabaseVersionService::check($connection['version'])['supported'];
         if (filter_var($setupData['DB_CONNECTION_TEST'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
             return SlimUtils::renderJSON($response, [
-                'valid'   => true,
-                'correct' => true,
-                'tested'  => true,
-                'message' => gettext('Connected to the database.'),
+                'valid'          => true,
+                'correct'        => true,
+                'tested'         => true,
+                'supported'      => $supported,
+                'message'        => gettext('Connected to the database.'),
+                'versionMessage' => $supported ? null : DatabaseVersionService::getUnsupportedMessage($connection['version']),
+            ]);
+        }
+        if (!$supported && !filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
+            return SlimUtils::renderJSON($response, [
+                'valid'     => true,
+                'correct'   => true,
+                'supported' => false,
+                'message'   => DatabaseVersionService::getUnsupportedMessage($connection['version']),
             ]);
         }
 
@@ -155,7 +167,16 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             '||URL||'            => escape_php_single_quoted($url),
         ]);
 
-        file_put_contents($configFile, $template);
+        if (file_put_contents($configFile, $template) === false) {
+            TelemetryService::captureInstallFailure('config_not_writable');
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => 'config_not_writable',
+                'message' => gettext('ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable.'),
+            ]);
+        }
 
         // Generate correct RewriteBase in all routing .htaccess files
         // now that $sRootPath is known. See #10563.

@@ -57,7 +57,6 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanType(page.locator('#DB_NAME'), DB.name);
   await humanType(page.locator('#DB_USER'), DB.user);
   await humanType(page.locator('#DB_PASSWORD'), DB.password);
-  await humanType(page.locator('#DB_PASSWORD_CONFIRM'), DB.password);
 
   await expect(page.locator('#db-connection-result')).toContainText('Connected to the database.', { timeout: 20000 });
   await expect(page.locator('#submit-setup')).toBeEnabled();

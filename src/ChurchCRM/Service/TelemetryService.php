@@ -235,6 +235,7 @@ class TelemetryService
         'database_host_unreachable',
         'database_login_rejected',
         'database_not_found',
+        'config_not_writable',
     ];
 
     /**

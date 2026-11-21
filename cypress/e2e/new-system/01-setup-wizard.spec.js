@@ -103,7 +103,6 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').clear().type(values.name);
             cy.get('#DB_USER').clear().type(values.user);
             cy.get('#DB_PASSWORD').clear().type(values.password);
-            cy.get('#DB_PASSWORD_CONFIRM').clear().type(values.password);
         };
 
         const openConfigureStep = () => {
@@ -180,6 +179,34 @@ describe('01 - Setup Wizard', () => {
             cy.get('.setup-logo').should('be.visible');
         });
 
+        it('holds an unsupported database server for an acknowledgment', () => {
+            cy.intercept('POST', /\/setup\/?$/, (req) => {
+                const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+                if (body.DB_CONNECTION_TEST) {
+                    req.reply({
+                        valid: true,
+                        correct: true,
+                        tested: true,
+                        supported: false,
+                        message: 'Connected to the database.',
+                        versionMessage: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports.',
+                    });
+                }
+            });
+            openConfigureStep();
+            fillDatabase();
+
+            cy.get('#db-version-warning', { timeout: 20000 }).should('be.visible');
+            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36');
+            cy.get('#submit-setup').should('be.disabled');
+            cy.get('#db-version-ack').check();
+            cy.get('#submit-setup').should('not.be.disabled');
+
+            cy.get('#DB_NAME').type('x');
+            cy.get('#db-version-ack').should('not.be.checked');
+            cy.get('#submit-setup').should('be.disabled');
+        });
+
         it('should complete full installation with database setup', () => {
             cy.visit('/setup');
             
@@ -196,7 +223,6 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').clear().type(dbConfig.name);
             cy.get('#DB_USER').clear().type(dbConfig.user);
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
-            cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
 
             cy.get('#db-connection-result', { timeout: 20000 }).should('contain.text', 'Connected to the database.');
             cy.get('#submit-setup').should('not.be.disabled').click();

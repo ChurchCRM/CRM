@@ -730,20 +730,6 @@ window.Stepper = Stepper;
         });
       }
 
-      // Add password matching validation for DB_PASSWORD_CONFIRM
-      if (field.name === "DB_PASSWORD_CONFIRM") {
-        const matchField = field.getAttribute("data-match");
-        if (matchField) {
-          rules.push({
-            validator: (value) => {
-              const password = document.querySelector(matchField);
-              return value === password?.value;
-            },
-            errorMessage: i18next.t("Passwords do not match"),
-          });
-        }
-      }
-
       // Add URL validation for Base URL field
       if (field.name === "URL") {
         rules.push({
@@ -787,18 +773,41 @@ window.Stepper = Stepper;
   let connectionTestToken = 0;
   let connectionTestTimer = 0;
   let passedConnectionFingerprint = null;
+  let connectionSupported = true;
 
   function connectionFingerprint() {
     return JSON.stringify(DB_CONNECTION_FIELDS.map((id) => document.getElementById(id).value));
   }
 
   function connectionFieldsComplete() {
-    const password = document.getElementById("DB_PASSWORD").value;
-    const confirm = document.getElementById("DB_PASSWORD_CONFIRM").value;
-    if (password === "" || password !== confirm) {
-      return false;
-    }
     return DB_CONNECTION_FIELDS.every((id) => document.getElementById(id).value !== "");
+  }
+
+  // Install needs a passed test for the values on the form, and an acknowledgment when the server is unsupported.
+  function updateInstallButton() {
+    const passed = passedConnectionFingerprint !== null && passedConnectionFingerprint === connectionFingerprint();
+    const acknowledged = connectionSupported || document.getElementById("db-version-ack").checked;
+    document.getElementById("submit-setup").disabled = !(passed && acknowledged);
+  }
+
+  function showVersionWarning(message) {
+    document.getElementById("db-version-message").textContent = message;
+    document.getElementById("db-version-warning").classList.remove("d-none");
+  }
+
+  function hideVersionWarning() {
+    document.getElementById("db-version-warning").classList.add("d-none");
+    document.getElementById("db-version-ack").checked = false;
+  }
+
+  function closeSetupModal() {
+    bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
+    setTimeout(() => {
+      $("#setup-progress").removeClass("d-none");
+      $("#setup-success").addClass("d-none");
+      $("#setup-error").addClass("d-none");
+      $("#setup-footer").addClass("d-none");
+    }, 500);
   }
 
   function showConnectionResult(kind, message) {
@@ -816,8 +825,10 @@ window.Stepper = Stepper;
 
   function voidConnectionPass() {
     passedConnectionFingerprint = null;
+    connectionSupported = true;
     connectionTestToken += 1;
-    document.getElementById("submit-setup").disabled = true;
+    hideVersionWarning();
+    updateInstallButton();
   }
 
   function scheduleConnectionTest() {
@@ -853,8 +864,12 @@ window.Stepper = Stepper;
         }
         if (response?.tested === true && response?.correct === true) {
           passedConnectionFingerprint = fingerprint;
-          document.getElementById("submit-setup").disabled = false;
+          connectionSupported = response.supported !== false;
           showConnectionResult("ok", response.message);
+          if (!connectionSupported) {
+            showVersionWarning(response.versionMessage);
+          }
+          updateInstallButton();
           return;
         }
         document.getElementById("submit-setup").disabled = true;
@@ -897,25 +912,14 @@ window.Stepper = Stepper;
           return;
         }
 
-        if (response?.correct === false) {
+        if (response?.correct === false || response?.supported === false) {
           $("#setup-progress").addClass("d-none");
           $("#setup-error").removeClass("d-none");
           $("#setup-footer").removeClass("d-none");
           $("#setup-error-message").text(
             response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
           );
-          $("#continue-to-login")
-            .text("Close")
-            .off("click")
-            .on("click", () => {
-              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-              setTimeout(() => {
-                $("#setup-progress").removeClass("d-none");
-                $("#setup-success").addClass("d-none");
-                $("#setup-error").addClass("d-none");
-                $("#setup-footer").addClass("d-none");
-              }, 500);
-            });
+          $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
           document.getElementById("submit-setup").disabled = true;
           showConnectionResult(
             "fail",
@@ -938,18 +942,7 @@ window.Stepper = Stepper;
           errorMessage += "</ul>";
           $("#setup-error-message").html(errorMessage);
 
-          $("#continue-to-login")
-            .text("Close")
-            .off("click")
-            .on("click", () => {
-              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-              setTimeout(() => {
-                $("#setup-progress").removeClass("d-none");
-                $("#setup-success").addClass("d-none");
-                $("#setup-error").addClass("d-none");
-                $("#setup-footer").addClass("d-none");
-              }, 500);
-            });
+          $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
           return;
         }
 
@@ -988,19 +981,7 @@ window.Stepper = Stepper;
         $("#setup-error-message").html(errorMessage);
 
         // Change button to "Try Again"
-        $("#continue-to-login")
-          .text("Close")
-          .off("click")
-          .on("click", () => {
-            bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
-            // Reset modal state for next attempt
-            setTimeout(() => {
-              $("#setup-progress").removeClass("d-none");
-              $("#setup-success").addClass("d-none");
-              $("#setup-error").addClass("d-none");
-              $("#setup-footer").addClass("d-none");
-            }, 500);
-          });
+        $("#continue-to-login").text("Close").off("click").on("click", closeSetupModal);
       });
   }
 
@@ -1016,35 +997,6 @@ window.Stepper = Stepper;
       event.preventDefault();
       return false;
     });
-
-    // Real-time password matching validation
-    const passwordField = document.getElementById("DB_PASSWORD");
-    const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
-
-    function validatePasswordMatch() {
-      const password = passwordField.value;
-      const confirmPassword = confirmPasswordField.value;
-      const mismatch = password && confirmPassword && password !== confirmPassword;
-
-      // Update visual feedback on confirm password field
-      if (mismatch) {
-        confirmPasswordField.classList.add("is-invalid");
-        confirmPasswordField.classList.remove("is-valid");
-      } else if (confirmPassword) {
-        confirmPasswordField.classList.remove("is-invalid");
-        confirmPasswordField.classList.add("is-valid");
-      } else {
-        confirmPasswordField.classList.remove("is-invalid", "is-valid");
-      }
-
-      return !mismatch;
-    }
-
-    // Add listeners for real-time validation
-    if (passwordField && confirmPasswordField) {
-      passwordField.addEventListener("input", validatePasswordMatch);
-      confirmPasswordField.addEventListener("input", validatePasswordMatch);
-    }
 
     setupStepper = new Stepper(stepperElement, {
       linear: true,
@@ -1095,9 +1047,15 @@ window.Stepper = Stepper;
     });
 
     document.getElementById("submit-setup").disabled = true;
-    for (const id of [...DB_CONNECTION_FIELDS, "DB_PASSWORD_CONFIRM"]) {
+    for (const id of DB_CONNECTION_FIELDS) {
       document.getElementById(id).addEventListener("input", scheduleConnectionTest);
+      document.getElementById(id).addEventListener("change", () => {
+        if (passedConnectionFingerprint !== connectionFingerprint()) {
+          scheduleConnectionTest();
+        }
+      });
     }
+    document.getElementById("db-version-ack").addEventListener("change", updateInstallButton);
 
     // Handle finish button
     document.getElementById("submit-setup").addEventListener("click", (event) => {
