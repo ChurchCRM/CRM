@@ -66,13 +66,7 @@
 
     {% include 'partials/back-to-session.html.twig' %}
 
-    {% if church.email or church.phone %}
-    <p class="portal-signin-help">
-        {{ gettext('Not sure which email we have? Contact the church office.') }}
-        {% if church.phone %}<a href="tel:{{ church.phone }}">{{ church.phone }}</a>{% endif %}
-        {% if church.email %}<a href="mailto:{{ church.email }}">{{ church.email|email_wrap }}</a>{% endif %}
-    </p>
-    {% endif %}
+    {% include 'partials/church-contact.html.twig' %}
 </div>
 {% endblock %}
 

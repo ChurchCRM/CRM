@@ -14,15 +14,9 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 
 <?php
-$hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
-
 if (isset($_GET['Timeout'])) {
     $loginPageMsg = gettext('Your previous session timed out. Please login again.');
 }
-
-$contactPhone   = ChurchMetaData::getChurchPhone();
-$contactEmail   = ChurchMetaData::getChurchEmail();
-$contactWebsite = ChurchMetaData::getChurchWebSite();
 ?>
 
 <div class="login-container">
@@ -95,29 +89,7 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
         <button type="submit" class="btn-sign-in"><?= gettext('Sign in') ?></button>
       </form>
 
-      <?php if (!$hasSelfReg && ($contactPhone || $contactEmail || $contactWebsite)): ?>
-        <!-- Compact church contact links — only when self-reg is off -->
-        <div class="login-contact-footer">
-          <?php if ($contactPhone): ?>
-            <a href="tel:<?= htmlspecialchars($contactPhone) ?>">
-              <i class="fa-solid fa-phone" aria-hidden="true"></i>
-              <?= htmlspecialchars($contactPhone) ?>
-            </a>
-          <?php endif; ?>
-          <?php if ($contactEmail): ?>
-            <a href="mailto:<?= htmlspecialchars($contactEmail) ?>">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <?= htmlspecialchars($contactEmail) ?>
-            </a>
-          <?php endif; ?>
-          <?php if ($contactWebsite): ?>
-            <a href="<?= htmlspecialchars($contactWebsite) ?>" target="_blank" rel="noopener noreferrer">
-              <i class="fa-solid fa-globe" aria-hidden="true"></i>
-              <?= htmlspecialchars($contactWebsite) ?>
-            </a>
-          <?php endif; ?>
-        </div>
-      <?php endif; ?>
+      <?php require __DIR__ . '/partials/church-contact.php'; ?>
 
       <?php require __DIR__ . '/partials/back-to-chooser.php'; ?>
 

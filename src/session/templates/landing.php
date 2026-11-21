@@ -36,6 +36,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           </a>
         <?php endforeach; ?>
       </nav>
+      <?php require __DIR__ . '/partials/church-contact.php'; ?>
     </div>
   </div>
 </div>
