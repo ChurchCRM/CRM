@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -14,9 +15,11 @@ use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 
 class DepositService {
     /**
@@ -87,23 +90,39 @@ class DepositService {
         AuthService::requireUserGroupMembership('bFinance');
         if ($iDepositSlipID) {
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
-            if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
-                // Delete any failed transactions on this deposit slip before it
-                // is saved as closed, so the deposit only reads as closed once
-                // the purge has finished; if the delete fails, the deposit
-                // stays open and the close can be retried.
-                PledgeQuery::create()
-                    ->filterByDepId($iDepositSlipID)
-                    ->filterByPledgeOrPayment('Payment')
-                    ->filterByAutCleared(0)
-                    ->delete();
+            // Validate the date before deleting anything: setDate() throws on
+            // an invalid date, so a rejected date must stop the request before
+            // the purge, not after it has already deleted payments.
+            if (DateTimeUtils::parseIsoDate($depositDate) === '') {
+                throw new \InvalidArgumentException('Invalid deposit date.');
             }
-            $deposit
-                ->setDate($depositDate)
-                ->setComment($depositComment)
-                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
-                ->setClosed(intval($depositClosed));
-            $deposit->save();
+            // Purge and close in one transaction: a failed save rolls the purge
+            // back instead of leaving the payments deleted on an open deposit.
+            $connection = Propel::getWriteConnection(DepositTableMap::DATABASE_NAME);
+            $connection->beginTransaction();
+            try {
+                if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
+                    // Delete any failed transactions on this deposit slip before it
+                    // is saved as closed, so the deposit only reads as closed once
+                    // the purge has finished; if the delete fails, the deposit
+                    // stays open and the close can be retried.
+                    PledgeQuery::create()
+                        ->filterByDepId($iDepositSlipID)
+                        ->filterByPledgeOrPayment('Payment')
+                        ->filterByAutCleared(0)
+                        ->delete($connection);
+                }
+                $deposit
+                    ->setDate($depositDate)
+                    ->setComment($depositComment)
+                    ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+                    ->setClosed(intval($depositClosed));
+                $deposit->save($connection);
+                $connection->commit();
+            } catch (\Throwable $e) {
+                $connection->rollBack();
+                throw $e;
+            }
         } else {
             $deposit = new Deposit();
             $deposit
