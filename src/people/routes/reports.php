@@ -153,7 +153,16 @@ function postPeopleDirectory(Request $request, Response $response): Response
     // Remember DirectoryReportService option keys only (issue #11465); layout/title stay
     // session-ephemeral. Cart directory omits classifications, so it must not overwrite prefs.
     if (!$cartDirectory) {
-        (new DirectoryReportPreferences())->save(AuthenticationManager::getCurrentUser(), $options);
+        try {
+            (new DirectoryReportPreferences())->save(AuthenticationManager::getCurrentUser(), $options);
+        } catch (\LengthException $exception) {
+            $response->getBody()->write(
+                gettext('The selected directory report options exceed the maximum supported size.')
+            );
+
+            return $response->withStatus(400)
+                ->withHeader('Content-Type', 'text/plain; charset=UTF-8');
+        }
     }
 
     $pdf = (new DirectoryReportService())->pdf($options, [

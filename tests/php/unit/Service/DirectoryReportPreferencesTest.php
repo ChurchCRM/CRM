@@ -100,6 +100,34 @@ Assert::true($loaded['excludeInactive']);
 Assert::true($loaded['show']['address']);
 Assert::false($loaded['show']['mailing']);
 
+// Regression test for #11587: long classification and group lists
+// must not be silently truncated after 40 chunks.
+$longListUser = new DirectoryReportPreferencesMemoryUser();
+$longIds = range(0, 999);
+
+$prefs->save($longListUser, [
+    'classifications' => $longIds,
+    'groups' => $longIds,
+    'excludeInactive' => false,
+    'headRoles' => [],
+    'spouseRoles' => [],
+    'show' => [],
+    'customFieldOrders' => [],
+]);
+
+$longListLoaded = $prefs->load($longListUser);
+Assert::notNull($longListLoaded);
+Assert::same(
+    $longIds,
+    $longListLoaded['classifications'],
+    'long classification lists must not be truncated'
+);
+Assert::same(
+    $longIds,
+    $longListLoaded['groups'],
+    'long group lists must not be truncated'
+);
+
 $prefs->clear($user);
 Assert::null($prefs->load($user));
 Assert::same('', $user->getSettingValue(DirectoryReportPreferences::SAVED));
