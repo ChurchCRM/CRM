@@ -77,13 +77,17 @@ window.Stepper = Stepper;
   const validators = {};
 
   function skipCheck() {
-    $("#prerequisites-war").hide();
+    $("#prerequisites-help").addClass("d-none");
     $("#prerequisites-next-btn").prop("disabled", false);
-    $("#prerequisites-force-btn").hide();
+    $("#prerequisites-force-btn").addClass("d-none");
+    $("#prerequisites-force-help").addClass("d-none");
     state.prerequisitesStatus = true;
 
-    // Update status banner
-    updateStatusBanner("success", "All checks passed", "Your server meets all requirements.");
+    updateStatusBanner(
+      "warning",
+      "Continuing with items still to fix",
+      "ChurchCRM will install. Ask your web host to fix the items above when you can.",
+    );
 
     // Automatically advance to next step
     if (setupStepper) {
@@ -132,32 +136,72 @@ window.Stepper = Stepper;
     }
 
     if (state.prerequisitesStatus) {
-      $("#prerequisites-war").hide();
+      $("#prerequisites-help").addClass("d-none");
       $("#prerequisites-next-btn").prop("disabled", false);
-      $("#prerequisites-force-btn").hide();
+      $("#prerequisites-force-btn, #prerequisites-force-help").addClass("d-none");
       if (state.checksComplete) {
-        updateStatusBanner(
-          "success",
-          "System check passed!",
-          "Your server meets all requirements. Click Continue to proceed.",
-        );
+        updateStatusBanner("success", "System check passed", "Your server is ready. Continue to connect the database.");
       }
     } else if (state.checksComplete) {
-      // All checks are done but some failed
-      $("#prerequisites-war").show();
       $("#prerequisites-next-btn").prop("disabled", true);
-      $("#prerequisites-force-btn").show();
+      $("#prerequisites-force-btn, #prerequisites-force-help").removeClass("d-none");
+      const help = volunteerHelp();
+      const $help = $("#prerequisites-help");
+      $help.empty();
+      help.forEach((line) => {
+        $help.append($("<li>").text(line));
+      });
+      $help.toggleClass("d-none", help.length === 0);
       updateStatusBanner(
         "warning",
-        "Some requirements not met",
-        "Review the issues below. You can force install, but some features may not work.",
+        "ChurchCRM can still be installed",
+        "Read the notes below, then continue. Ask your web host to fix what is listed.",
       );
     } else {
-      // Checks still running
-      $("#prerequisites-war").hide();
+      $("#prerequisites-help").addClass("d-none");
       $("#prerequisites-next-btn").prop("disabled", true);
-      $("#prerequisites-force-btn").hide();
+      $("#prerequisites-force-btn, #prerequisites-force-help").addClass("d-none");
     }
+  }
+
+  function volunteerHelp() {
+    const lines = [];
+    let needsPhp = false;
+    let needsFolders = false;
+    Object.entries(state.prerequisites).forEach(([key, passed]) => {
+      if (passed === true || key.startsWith("integrity-")) {
+        return;
+      }
+      if (key.startsWith("filesystem-")) {
+        needsFolders = true;
+      } else if (key.startsWith("php-")) {
+        needsPhp = true;
+      }
+    });
+    if (needsPhp) {
+      lines.push("Open PHP Extensions. Each row with an X is something to ask your web host to turn on.");
+    }
+    if (needsFolders) {
+      lines.push(
+        "Open File Permissions. Ask your web host to make those folders writable so ChurchCRM can save pictures.",
+      );
+    }
+    const missing = state.missingFiles || [];
+    const changed = state.changedFiles || [];
+    if (missing.length > 0) {
+      lines.push(
+        "Some ChurchCRM files were not uploaded. Upload the release again, or continue and fix this with your web host.",
+      );
+    }
+    if (changed.length > 0) {
+      lines.push(
+        "Some files on the server do not match the ChurchCRM release. Upload the release again if you did not change them on purpose.",
+      );
+    }
+    if (state.integrityMessage && missing.length === 0 && changed.length === 0) {
+      lines.push(state.integrityMessage);
+    }
+    return lines;
   }
 
   function renderPrerequisite(prerequisite, group = "php") {
@@ -241,28 +285,46 @@ window.Stepper = Stepper;
       return;
     }
 
-    const items = payload.files
-      .filter((file) => typeof file === "string" && file.trim().length > 0)
-      .map((file) => file.trim());
-
-    if (items.length === 0) {
+    const missing = fileList(payload.missingFiles);
+    const changed = fileList(payload.changedFiles);
+    const combined = missing.length + changed.length > 0 ? [] : fileList(payload.files);
+    if (missing.length + changed.length + combined.length === 0) {
       return;
     }
 
     const detailRow = $("<tr>", { id: detailRowId, class: "integrity-details-row" });
     const detailCell = $("<td>", { colspan: 2 });
-    const heading = $("<div>")
-      .addClass("integrity-details-header")
-      .html('<i class="fa-solid fa-file-circle-exclamation me-2"></i>Files with issues');
-    const list = $("<ul>").addClass("integrity-files-list");
-
-    items.forEach((fileName) => {
-      list.append($("<li>").text(fileName));
-    });
-
-    detailCell.append(heading).append(list);
+    const maxFiles = 8;
+    const addList = (heading, items) => {
+      if (items.length === 0) {
+        return;
+      }
+      detailCell.append($("<div>").addClass("integrity-details-header").text(`${heading} (${items.length})`));
+      const list = $("<ul>").addClass("integrity-files-list");
+      items.slice(0, maxFiles).forEach((fileName) => {
+        list.append($("<li>").text(fileName));
+      });
+      if (items.length > maxFiles) {
+        list.append(
+          $("<li>")
+            .addClass("integrity-files-more")
+            .text(`and ${items.length - maxFiles} more`),
+        );
+      }
+      detailCell.append(list);
+    };
+    addList("These files were not uploaded", missing);
+    addList("These files do not match the release", changed);
+    addList("Files to review", combined);
     detailRow.append(detailCell);
     $(tableSelector).append(detailRow);
+  }
+
+  function fileList(files) {
+    if (!Array.isArray(files)) {
+      return [];
+    }
+    return files.filter((file) => typeof file === "string" && file.trim().length > 0).map((file) => file.trim());
   }
 
   function renderOrphanedFiles(payload) {
@@ -390,6 +452,9 @@ window.Stepper = Stepper;
 
         $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = satisfied;
+        state.missingFiles = fileList(data?.missingFiles);
+        state.changedFiles = fileList(data?.changedFiles);
+        state.integrityMessage = satisfied ? "" : message;
 
         appendIntegrityDetails(config.table, rowId, data);
 
@@ -412,6 +477,10 @@ window.Stepper = Stepper;
 
         $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = false;
+        state.missingFiles = [];
+        state.changedFiles = [];
+        state.integrityMessage =
+          "ChurchCRM could not check its files. You can continue, then ask your web host if pages fail to open.";
         appendIntegrityDetails(config.table, rowId, null);
 
         // Mark checks as complete even on failure

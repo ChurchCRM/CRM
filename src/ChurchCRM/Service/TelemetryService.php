@@ -273,6 +273,71 @@ class TelemetryService
         ]), $installId);
     }
 
+    /**
+     * What an install is missing: release files that were not uploaded, files that do not match the
+     * release, and named checks (PHP extensions, writable folders, locale). Sent at every level, once
+     * per distinct list per UTC day. Paths stay repo-relative. No hashes and no install path.
+     *
+     * @param string[] $missingFiles
+     * @param string[] $changedFiles
+     * @param string[] $unmetChecks
+     */
+    public static function captureInstallGaps(array $missingFiles, array $changedFiles, array $unmetChecks): void
+    {
+        $missingFiles = self::relativeReportPaths($missingFiles);
+        $changedFiles = self::relativeReportPaths($changedFiles);
+        $unmetChecks = array_values(array_unique(array_filter(array_map(
+            static fn ($name): string => is_string($name) ? mb_substr(trim($name), 0, 80) : '',
+            $unmetChecks
+        ))));
+        sort($missingFiles);
+        sort($changedFiles);
+        sort($unmetChecks);
+        if ($missingFiles === [] && $changedFiles === [] && $unmetChecks === []) {
+            return;
+        }
+        $installId = '';
+        try {
+            if (SystemConfig::isInitialized()) {
+                $installId = (string) SystemConfig::getValue('sSystemID');
+            }
+        } catch (\Throwable) {
+            $installId = '';
+        }
+        if ($installId === '') {
+            $installId = self::unconfiguredInstallId() ?? '';
+        }
+        $key = 'install_gaps|' . implode('|', $missingFiles) . '|' . implode('|', $changedFiles) . '|' . implode('|', $unmetChecks);
+        if ($installId === '' || !self::firstLogToday($key)) {
+            return;
+        }
+        self::capture('install_gaps', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'missing_files' => $missingFiles,
+            'changed_files' => $changedFiles,
+            'unmet_checks' => $unmetChecks,
+        ]), $installId);
+    }
+
+    /** @param string[] $paths
+     *  @return string[]
+     */
+    private static function relativeReportPaths(array $paths): array
+    {
+        $safe = [];
+        foreach ($paths as $path) {
+            if (!is_string($path)) {
+                continue;
+            }
+            $path = str_replace('\\', '/', trim($path));
+            if ($path === '' || str_contains($path, '..') || str_starts_with($path, '/') || strlen($path) > 180) {
+                continue;
+            }
+            $safe[] = $path;
+        }
+
+        return array_values(array_unique($safe));
+    }
+
     /** Fixed states for version_mismatch: the failed upgrade page and the database-newer-than-software page. */
     public const VERSION_MISMATCH_STATES = ['upgrade_failed', 'database_newer'];
 

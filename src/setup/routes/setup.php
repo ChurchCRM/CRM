@@ -40,18 +40,23 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
+        AppIntegrityService::reportUnmet($required);
 
         return SlimUtils::renderJSON($response, $required);
     });
 
     $group->get('SystemFilesystemCheck', function (Request $request, Response $response, array $args): Response {
         $filesystem = AppIntegrityService::getFilesystemPrerequisites();
+        AppIntegrityService::reportUnmet($filesystem);
 
         return SlimUtils::renderJSON($response, $filesystem);
     });
 
     $group->get('SystemLocaleCheck', function (Request $request, Response $response, array $args): Response {
         $localeInfo = LocaleService::getLocaleSetupInfo();
+        if (empty($localeInfo['systemLocaleDetected'])) {
+            TelemetryService::captureInstallGaps([], [], ['Server locale']);
+        }
 
         return SlimUtils::renderJSON($response, $localeInfo);
     });
@@ -230,7 +235,7 @@ function classify_database_connection_failure(\Throwable $e): array
 function database_connection_message(string $reason): string
 {
     return match ($reason) {
-        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. On shared hosting the database host is often not localhost. Ask your host which address to use.'),
+        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost.'),
         'database_login_rejected' => gettext('The database server rejected that username or password.'),
         'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
         default => gettext('ChurchCRM could not connect to the database with these settings.'),

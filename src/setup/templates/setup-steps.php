@@ -66,6 +66,20 @@ require_once __DIR__ . '/header.php';
                         </div>
                     </div>
 
+                    <ul id="prerequisites-help" class="d-none mt-3 mb-0"></ul>
+
+                    <div class="setup-actions">
+                        <button type="button" class="btn btn-primary btn-lg" id="prerequisites-next-btn" disabled>
+                            Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </button>
+                        <button type="button" class="btn btn-warning d-none" id="prerequisites-force-btn">
+                            Continue anyway
+                        </button>
+                        <p id="prerequisites-force-help" class="d-none text-secondary mt-2 mb-0">
+                            ChurchCRM can still be installed. Ask your web host to fix the items below when you can.
+                        </p>
+                    </div>
+
                     <!-- Server Environment (Always visible) -->
                     <div class="check-card">
                         <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#server-env-details">
@@ -174,18 +188,6 @@ require_once __DIR__ . '/header.php';
                         </div>
                     </div>
 
-                    <!-- Hidden warning alert for status text -->
-                    <div class="alert alert-warning d-none" id="prerequisites-war"></div>
-
-                    <!-- Action Buttons -->
-                    <div class="setup-actions">
-                        <button type="button" class="btn btn-primary btn-lg" id="prerequisites-next-btn" disabled>
-                            Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-warning d-none" id="prerequisites-force-btn">
-                            <i class="fa-solid fa-triangle-exclamation me-2"></i>Continue Anyway
-                        </button>
-                    </div>
                 </div>
 
                 <!-- STEP 2: Database Setup -->
@@ -303,7 +305,7 @@ require_once __DIR__ . '/header.php';
 
 <!-- Setup Progress Modal -->
 <div class="modal fade" id="setupModal" tabindex="-1" role="dialog" aria-labelledby="setupModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-body text-center py-5">
                 <div id="setup-progress">
@@ -356,27 +358,22 @@ require_once __DIR__ . '/header.php';
 
 <!-- Force Install Confirmation Modal -->
 <div class="modal fade" id="forceInstallModal" tabindex="-1" role="dialog" aria-labelledby="forceInstallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning text-dark">
                 <h5 class="modal-title" id="forceInstallModalLabel">
-                    <i class="fa-solid fa-triangle-exclamation me-2"></i>Proceed Anyway?
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>Continue anyway?
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Some system requirements were not met. Proceeding may cause:</p>
-                <ul>
-                    <li>Missing or broken functionality</li>
-                    <li>Security vulnerabilities</li>
-                    <li>Unpredictable behavior</li>
-                </ul>
-                <p class="mb-0 fw-bold">We recommend fixing the issues before continuing.</p>
+                <p>ChurchCRM can still be installed. A few features may not work until the items on the system check are fixed with your web host.</p>
+                <p class="mb-0">You can come back to them after you sign in.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
                 <button type="button" class="btn btn-warning" id="confirm-force-install">
-                    Continue Anyway
+                    Continue anyway
                 </button>
             </div>
         </div>
