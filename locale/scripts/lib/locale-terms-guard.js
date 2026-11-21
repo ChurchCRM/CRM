@@ -14,6 +14,7 @@
  *     the existing translations).
  *
  * Usage: node locale/scripts/lib/locale-terms-guard.js [--base <rev>] [--head <rev>] [--report <file>]
+ *        node locale/scripts/lib/locale-terms-guard.js --staged   (pre-commit: the staged diff against HEAD's catalog)
  * Exit 1 when anything is flagged, 0 when the PR adds no questionable new terms.
  * The escape hatch for intentional variants is the `locale-terms-ok` PR label (the workflow
  * still posts the report as a comment; it just does not fail the check).
@@ -183,15 +184,18 @@ if (require.main === module) {
         return i >= 0 ? args[i + 1] : fallback;
     };
     const git = (...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] });
-    const base = opt('base', process.env.BASE_SHA || 'origin/master');
+    const staged = args.includes('--staged');
+    const base = staged ? 'HEAD' : opt('base', process.env.BASE_SHA || 'origin/master');
     const head = opt('head', 'HEAD');
-    const diff = git('diff', '-U0', '--no-color', `${base}...${head}`, '--', ...DIFF_PATHS);
+    const diff = staged
+        ? git('diff', '-U0', '--no-color', '--cached', '--', ...DIFF_PATHS)
+        : git('diff', '-U0', '--no-color', `${base}...${head}`, '--', ...DIFF_PATHS);
     const basePo = git('show', `${base}:${PO_FILE}`);
     const { added, removed } = extractLiterals(diff);
     const flagged = guardTerms({ added, removed, catalog: catalogTerms(basePo) });
     const report = renderGuardReport(flagged);
     if (opt('report')) fs.writeFileSync(opt('report'), report);
-    else process.stdout.write(report);
+    else if (!staged || flagged.length) process.stdout.write(report);
     if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `flagged=${flagged.length}\n`);
     console.error(`terms guard: ${added.size} added literals, ${flagged.length} flagged`);
     process.exit(flagged.length ? 1 : 0);

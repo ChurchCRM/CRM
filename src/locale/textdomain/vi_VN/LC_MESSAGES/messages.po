@@ -12894,10 +12894,6 @@ msgid "Deposit ID"
 msgstr "ID tiền gửi"
 
 #: 
-msgid "Deposit Value"
-msgstr "Giá trị đợt thu hiến"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Đã lưu khoản đóng góp thành công"
 
@@ -24250,10 +24246,6 @@ msgid "Church default: %s"
 msgstr "Mặc định của nhà thờ: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Đăng nhập của lãnh đạo nhà thờ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Các phân loại có thành viên được đăng nhập Cổng hội viên, viết thành danh sách mã phân loại cách nhau bằng dấu phẩy."
 
@@ -24896,10 +24888,6 @@ msgstr "Chưa kết thúc"
 #: 
 msgid "Not moved"
 msgstr "Chưa chuyển"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Không chắc chúng tôi đang có email nào? Hãy liên hệ văn phòng nhà thờ."
 
 #: 
 msgid "Not yet"

@@ -12966,10 +12966,6 @@ msgid "Deposit ID"
 msgstr "Kaution ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Einlagebetrag"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Einzahlung erfolgreich gespeichert"
 
@@ -24340,10 +24336,6 @@ msgid "Church default: %s"
 msgstr "Vorgabe der Gemeinde: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Anmeldung für die Gemeindeleitung"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klassifikationen, deren Mitglieder sich im Mitgliederportal anmelden dürfen, als kommagetrennte Liste von Klassifikations-IDs."
 
@@ -24986,10 +24978,6 @@ msgstr "Nicht beendet"
 #: 
 msgid "Not moved"
 msgstr "Nicht verschoben"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Unsicher, welche E-Mail wir haben? Wenden Sie sich an das Gemeindebüro."
 
 #: 
 msgid "Not yet"

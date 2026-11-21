@@ -12864,10 +12864,6 @@ msgid "Deposit ID"
 msgstr "ID การฝาก"
 
 #: 
-msgid "Deposit Value"
-msgstr "มูลค่ารับถวาย"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "บันทึกการฝากสำเร็จ"
 
@@ -24220,10 +24216,6 @@ msgid "Church default: %s"
 msgstr "ค่าเริ่มต้นของคริสตจักร: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "การลงชื่อเข้าใช้ของผู้นำคริสตจักร"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "ประเภทสมาชิกที่สมาชิกของประเภทนั้นลงชื่อเข้าพอร์ทัลสมาชิกได้ เป็นรายการรหัสประเภทคั่นด้วยจุลภาค"
 
@@ -24866,10 +24858,6 @@ msgstr "ยังไม่สิ้นสุด"
 #: 
 msgid "Not moved"
 msgstr "ยังไม่ถูกย้าย"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "ไม่แน่ใจว่าเรามีอีเมลใด ติดต่อสำนักงานคริสตจักรครับ"
 
 #: 
 msgid "Not yet"

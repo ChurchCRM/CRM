@@ -12883,10 +12883,6 @@ msgid "Deposit ID"
 msgstr "ID Deposit"
 
 #: 
-msgid "Deposit Value"
-msgstr "Nilai Setoran"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Setoran berhasil disimpan"
 
@@ -24239,10 +24235,6 @@ msgid "Church default: %s"
 msgstr "Bawaan gereja: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Masuk pimpinan gereja"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikasi yang anggotanya boleh masuk ke Portal Anggota, sebagai daftar id klasifikasi yang dipisahkan koma."
 
@@ -24885,10 +24877,6 @@ msgstr "Belum berakhir"
 #: 
 msgid "Not moved"
 msgstr "Tidak dipindahkan"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Tidak yakin surel mana yang kami miliki? Hubungi kantor gereja."
 
 #: 
 msgid "Not yet"

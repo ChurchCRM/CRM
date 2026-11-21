@@ -12864,10 +12864,6 @@ msgid "Deposit ID"
 msgstr "जमा आईडी"
 
 #: 
-msgid "Deposit Value"
-msgstr "चढ़ावा जमा मूल्य"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "जमा सफलतापूर्वक सहेजा गया"
 
@@ -24238,10 +24234,6 @@ msgid "Church default: %s"
 msgstr "चर्च डिफ़ॉल्ट: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "चर्च नेता साइन-इन"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "वे वर्गीकरण जिनके सदस्य सदस्य पोर्टल में साइन इन कर सकते हैं, वर्गीकरण id की अल्पविराम-पृथक सूची के रूप में।"
 
@@ -24884,10 +24876,6 @@ msgstr "समाप्त नहीं"
 #: 
 msgid "Not moved"
 msgstr "स्थानांतरित नहीं"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "पक्का नहीं कि हमारे पास कौन सा ईमेल है? चर्च कार्यालय से संपर्क करें।"
 
 #: 
 msgid "Not yet"

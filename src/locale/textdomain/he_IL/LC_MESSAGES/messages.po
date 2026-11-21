@@ -12893,10 +12893,6 @@ msgid "Deposit ID"
 msgstr "מזהה ההפקדה"
 
 #: 
-msgid "Deposit Value"
-msgstr "ערך הפקדת תרומות"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ההפקדה נשמרה בהצלחה"
 
@@ -24267,10 +24263,6 @@ msgid "Church default: %s"
 msgstr "ברירת המחדל של הקהילה: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "התחברות מנהיג קהילה"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "סיווגים שחבריהם רשאים להתחבר לפורטל החברים, כרשימת מזהי סיווג מופרדת בפסיקים."
 
@@ -24913,10 +24905,6 @@ msgstr "לא הסתיים"
 #: 
 msgid "Not moved"
 msgstr "לא הועבר"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "לא בטוחים איזה דוא״ל יש לנו? פנו למשרד הקהילה."
 
 #: 
 msgid "Not yet"

@@ -18,8 +18,15 @@
     "src/ChurchCRM/Service/ClassAttendanceService.php:44",
     "src/ChurchCRM/Service/DemoDataService.php:615"
   ],
+  "Choose a different way to sign in": [
+    "src/Include/themes/default/templates/partials/back-to-session.html.twig:2",
+    "src/session/templates/partials/back-to-chooser.php:8"
+  ],
   "Collapse the sidebar to icons": [
     "src/account/views/account.php:330"
+  ],
+  "Congregation login": [
+    "src/session/index.php:60"
   ],
   "Could not save your main dashboard.": [
     "webpack/common/landing-page.ts:33"
@@ -27,6 +34,14 @@
   "Enter note text here...": [
     "src/Include/QuillEditorHelper.php:99",
     "webpack/note-why-came-modal.ts:96"
+  ],
+  "Every active member family made a payment between %s and %s.": [
+    "src/finance/routes/zero-givers.php:40"
+  ],
+  "Exclude": [
+    "src/ChurchCRM/Service/AppIntegrityService.php:487",
+    "src/ChurchCRM/Service/AppIntegrityService.php:544",
+    "src/ChurchCRM/Service/AppIntegrityService.php:570"
   ],
   "How the congregation is made up": [
     "src/people/views/dashboard.php:17"
@@ -38,12 +53,12 @@
     "src/ConvertIndividualToFamily.php:19"
   ],
   "Last %d days": [
-    "src/ChurchCRM/Authentication/AuthenticationManager.php:304",
-    "src/ChurchCRM/Authentication/AuthenticationManager.php:318",
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:301",
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:315",
     "src/ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php:65"
   ],
   "Last 12 months": [
-    "src/ChurchCRM/Service/FinancialService.php:940"
+    "src/ChurchCRM/Service/FinancialService.php:1016"
   ],
   "Main dashboard": [
     "src/account/views/account.php:288"
@@ -77,6 +92,9 @@
     "src/ChurchCRM/Portal/PortalStatsService.php:78",
     "src/ChurchCRM/Service/AttendanceService.php:206"
   ],
+  "Register your family to our church": [
+    "src/session/index.php:69"
+  ],
   "Rows shown per page in every table and dashboard card. Takes effect on next page load.": [
     "src/account/views/account.php:349"
   ],
@@ -89,6 +107,10 @@
   "Set as my main dashboard": [
     "src/Include/partials/dashboard-switch.php:26",
     "src/Include/partials/dashboard-switch.php:27"
+  ],
+  "Staff login": [
+    "src/Include/themes/default/templates/login/unavailable.html.twig:21",
+    "src/session/index.php:77"
   ],
   "The dashboard you open on after signing in": [
     "src/account/views/account.php:295"

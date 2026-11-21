@@ -12895,10 +12895,6 @@ msgid "Deposit ID"
 msgstr "Αναγνωριστικό Κατάθεσης"
 
 #: 
-msgid "Deposit Value"
-msgstr "Αξία κατάθεσης προσφορών"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Η κατάθεση αποθηκεύτηκε επιτυχώς"
 
@@ -24269,10 +24265,6 @@ msgid "Church default: %s"
 msgstr "Προεπιλογή εκκλησίας: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Σύνδεση ηγεσίας εκκλησίας"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Ταξινομήσεις των οποίων τα μέλη μπορούν να συνδεθούν στην Πύλη μελών, ως λίστα αναγνωριστικών ταξινόμησης χωρισμένων με κόμμα."
 
@@ -24915,10 +24907,6 @@ msgstr "Δεν έληξε"
 #: 
 msgid "Not moved"
 msgstr "Δεν μεταφέρθηκε"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Δεν είστε βέβαιοι ποιο ηλεκτρονικό ταχυδρομείο έχουμε; Επικοινωνήστε με το γραφείο της εκκλησίας."
 
 #: 
 msgid "Not yet"

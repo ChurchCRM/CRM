@@ -12962,10 +12962,6 @@ msgid "Deposit ID"
 msgstr "Innskudds-ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Kollektinnskuddsverdi"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Innskudd lagret"
 
@@ -24336,10 +24332,6 @@ msgid "Church default: %s"
 msgstr "Kirkens standard: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Innlogging for kirkeleder"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klassifiseringer hvis medlemmer kan logge inn på Medlemsportalen, som en kommaseparert liste over klassifiserings-ID-er."
 
@@ -24982,10 +24974,6 @@ msgstr "Ikke avsluttet"
 #: 
 msgid "Not moved"
 msgstr "Ikke flyttet"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Usikker på hvilken e-post vi har? Kontakt kirkekontoret."
 
 #: 
 msgid "Not yet"

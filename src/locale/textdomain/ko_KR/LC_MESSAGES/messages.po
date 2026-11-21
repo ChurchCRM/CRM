@@ -12880,10 +12880,6 @@ msgid "Deposit ID"
 msgstr "입금 ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "헌금 입금 금액"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "입금이 저장되었습니다"
 
@@ -24236,10 +24232,6 @@ msgid "Church default: %s"
 msgstr "교회 기본값: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "교회 지도자 로그인"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "교인 포털에 로그인할 수 있는 구성원의 분류입니다. 분류 ID를 쉼표로 구분해 적습니다."
 
@@ -24882,10 +24874,6 @@ msgstr "종료되지 않음"
 #: 
 msgid "Not moved"
 msgstr "이동되지 않음"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "등록된 이메일이 무엇인지 모르시겠습니까? 교회 사무실에 연락하십시오."
 
 #: 
 msgid "Not yet"
