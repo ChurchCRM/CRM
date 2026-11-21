@@ -17,6 +17,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Emails\notifications\DepositPostedEmail;
 
 class DepositService {
     /**
@@ -100,6 +101,12 @@ class DepositService {
                     ->filterByPledgeOrPayment('Payment')
                     ->filterByAutCleared(0)
                     ->delete();
+            }
+            if ($depositClosed && SystemConfig::getBooleanValue('bEnableDepositPostedNotification')) {
+                $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
+                $toAddresses = [SystemConfig::getValue('sToEmailAddress')];
+                $email = new DepositPostedEmail($toAddresses, $deposit);
+                $email->send();
             }
         } else {
             $deposit = new Deposit();

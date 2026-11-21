@@ -316,8 +316,76 @@ describe("GET /api/groups/:id/emails", () => {
     });
 
     context("user without email permission", () => {
+        let testDepositIds = [];
+
         it("returns 403 for plainauth user", () => {
             cy.makePrivatePlainAuthAPICall("GET", `/api/groups/${GROUP_WITH_MEMBERS}/emails`, "", 403);
+        });
+
+        it("skips deposit posted notification when disabled in settings", () => {
+            cy.setSystemConfig('bEnableDepositPostedNotification', "false");
+            cy.task("mail:clear");
+            cy.makePrivateAdminAPICall("POST", "/api/deposits", {
+                depositType: "Bank",
+                depositComment: `disabled test ${Date.now()}`,
+                depositDate: "2025-10-25",
+            }, 200).its("body.Id").then((id) => {
+                testDepositIds.push(id);
+                cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
+                    depositClosed: true,
+                    depositType: "Bank",
+                    depositComment: "disabled test",
+                    depositDate: "2025-10-25",
+                }, 200);
+                cy.task("mail:list").its("body.messages").should("have.length", 0);
+            });
+        });
+
+        it("sends deposit posted notification when enabled in settings", () => {
+            const comment = `enabled test ${Date.now()}`;
+            cy.setSystemConfig('bEnableDepositPostedNotification', "true");
+            cy.setSystemConfig('sToEmailAddress', "churchcrm@example.com");
+            cy.task("mail:clear");
+            cy.makePrivateAdminAPICall("POST", "/api/deposits", {
+                depositType: "Bank",
+                depositComment: comment,
+                depositDate: "2025-10-25",
+            }, 200).its("body.Id").then((id) => {
+                testDepositIds.push(id);
+                cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
+                    depositClosed: true,
+                    depositType: "Bank",
+                    depositComment: comment,
+                    depositDate: "2025-10-25",
+                }, 200);
+                cy.task("mail:list").its("body.messages").then((messages) => {
+                    expect(messages).to.have.length(1);
+                    const message = messages[0];
+                    cy.task("mail:get", { id: message.id }).then((result) => {
+                        expect(result.success).to.be.true;
+                        const email = result.body;
+                        expect(email.To[0].Address).to.include("churchcrm@example.com");
+                        expect(email.Text).to.contain("October 25 2025");
+                        expect(email.Text).to.contain("Total");
+                        expect(email.HTML).to.contain(`/finance/deposit/${id}`);
+                    });
+                });
+            });
+        });
+
+        after(() => {
+            cy.setupAdminSession();
+            testDepositIds.forEach((id) => {
+                cy.request("POST", `/api/deposits/${id}`, {
+                    depositType: "Bank",
+                    depositComment: "cleanup",
+                    depositDate: "2025-10-25",
+                    depositClosed: false,
+                });
+                cy.request({ method: "DELETE", url: `/api/deposits/${id}`, failOnStatusCode: false })
+                    .its("status")
+                    .should("be.oneOf", [200, 404]);
+            });
         });
     });
 });
