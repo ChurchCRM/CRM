@@ -222,15 +222,14 @@ select {
   flex: 1;
 }
 
-// The sidebar is a long scan list. Tabler sets 0.75rem link padding on
-// .navbar-nav inside each expand breakpoint, so the override has to land
-// on that same element. Nested rows use the dropdown-item padding.
-.navbar-vertical[class*="navbar-expand"] .navbar-nav {
-  --tblr-sidebar-nav-padding-y: 0.375rem;
+// Tabler starts a submenu icon under the parent title. Pull the first level
+// in so the icon sits just to the right of the parent icon.
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu > .dropdown-item {
+  padding-inline-start: 1.75rem;
 }
 
-.navbar-vertical .dropdown-menu .dropdown-item {
-  --tblr-dropdown-item-padding-y: 0.25rem;
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu .dropdown-menu > .dropdown-item {
+  padding-inline-start: 2.75rem;
 }
 
 .navbar-vertical .badge {
