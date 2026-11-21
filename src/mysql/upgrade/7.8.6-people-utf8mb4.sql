@@ -1,19 +1,7 @@
--- ChurchCRM 7.8.6: convert family_fam and person_per to utf8mb4
--- Closes #10465: a 4-byte character (an emoji) in a name, address, city or
--- country made the CSV family import return HTTP 500.
---
--- Both tables were created with MySQL's 3-byte `utf8` (utf8mb3), so the
--- INSERT failed with SQLSTATE[22007] "Incorrect string value". The import
--- writes these fields to the family and to each person, so both convert
--- together. This follows the events_event conversion in 7.7.0.sql.
---
--- Both tables are keyed only on their integer primary key, and every foreign
--- key touching them is an integer column. The guards check that on the live
--- schema first: a site that added a long index or a character-column foreign
--- key stops the upgrade with a named error instead of a half-converted schema.
+-- Store 4-byte characters (emoji) in family and person fields (#10465).
+-- Aborts before altering if an index or foreign key would break under utf8mb4.
 
--- Guard 1: no index may exceed InnoDB's 3072-byte key limit once every
--- character column is charged 4 bytes per character.
+-- No index may exceed InnoDB's 3072-byte key limit at 4 bytes per character.
 SET @people_max_key_bytes := (
     SELECT IFNULL(MAX(k.key_bytes), 0)
     FROM (
@@ -44,8 +32,7 @@ PREPARE people_guard FROM @people_guard_sql;
 EXECUTE people_guard;
 DEALLOCATE PREPARE people_guard;
 
--- Guard 2: no foreign key may join these tables on a character column; the
--- charset of both sides would have to change together.
+-- No foreign key may join these tables on a character column.
 SET @people_char_fk_count := (
     SELECT COUNT(*)
     FROM information_schema.KEY_COLUMN_USAGE u
