@@ -110,6 +110,8 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             $errors['URL'] = 'Invalid URL format';
         }
         if (!empty($errors)) {
+            TelemetryService::captureInstallFailure('config_invalid');
+
             return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
         }
 
