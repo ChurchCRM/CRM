@@ -222,6 +222,16 @@ select {
   flex: 1;
 }
 
+// Tabler starts a submenu icon under the parent title. Pull the first level
+// in so the icon sits just to the right of the parent icon.
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu > .dropdown-item {
+  padding-inline-start: 1.75rem;
+}
+
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu .dropdown-menu > .dropdown-item {
+  padding-inline-start: 2.75rem;
+}
+
 .navbar-vertical .badge {
   flex: none;
 }
