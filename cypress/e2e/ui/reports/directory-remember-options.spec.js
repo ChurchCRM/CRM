@@ -36,6 +36,46 @@ const directoryPost = (extra = {}) => ({
     },
 });
 
+// Use JSON to avoid PHP's max_input_vars limit for large regression-test payloads.
+const directoryJsonPost = (classifications) => ({
+    method: "POST",
+    url: "people/reports/directory",
+    headers: {
+        "content-type": "application/json",
+    },
+    body: {
+        sDirClassifications: classifications,
+        GroupID: [],
+        sDirRoleHead: ["1"],
+        sDirRoleSpouse: ["2"],
+        sDirRoleChild: ["3"],
+        bDirAddress: "1",
+        bDirWedding: "1",
+        bDirFamilyPhone: "1",
+        bDirPersonalPhone: "1",
+        bDirPersonalEmail: "1",
+        sDirLayout: "booklet",
+        NumCols: "3",
+        PageSize: "legal",
+        FSize: "14",
+        bDirUseTitlePage: "1",
+        Submit: "Create Directory",
+    },
+    encoding: "binary",
+    failOnStatusCode: false,
+});
+
+const getUnselectedOptionValue = (selector) =>
+    cy.get(selector).then(($select) => {
+        const option = Array.from($select[0].options).find(
+            (item) => !item.selected,
+        );
+
+        expect(option, "an unselected option").to.exist;
+
+        return option.value;
+    });
+
 describe("Directory report - remember options (#11465)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
@@ -82,6 +122,57 @@ describe("Directory report - remember options (#11465)", () => {
         cy.get("#bExcludeInactive").should("be.checked");
         cy.get("#bDirBirthday").should("be.checked");
         cy.get("#sDirLayoutPages").should("be.checked");
+    });
+
+    it("restores long classification lists without truncation (#11587)", () => {
+    cy.visit("DirectoryReports.php");
+
+        getUnselectedOptionValue('select[name="sDirClassifications[]"]').then(
+            (sentinelId) => {
+                // 164 ten-digit IDs create 41 chunks.
+                // The valid option is appended at the end to detect truncation.
+                const classificationIds = [
+                    ...Array.from({ length: 164 }, (_, index) =>
+                        String(1000000000 + index),
+                    ),
+                    String(sentinelId),
+                ];
+
+                return cy
+                    .request(directoryJsonPost(classificationIds))
+                    .then((response) => {
+                        expect(response.status).to.eq(200);
+                        expect(response.headers["content-type"]).to.include(
+                            "application/pdf",
+                        );
+                    })
+                    .then(() => cy.visit("DirectoryReports.php"))
+                    .then(() => {
+                        cy.get(
+                            `select[name="sDirClassifications[]"] option[value="${sentinelId}"]`,
+                        ).should("be.selected");
+                    });
+            },
+        );
+    });
+
+    it("rejects classification lists exceeding 1000 chunks (#11587)", () => {
+        // Four ten-digit IDs fit in each 50-character chunk.
+        // 5004 IDs therefore exceed the 1000-chunk limit.
+        const oversizedClassifications = Array.from(
+            { length: 5004 },
+            (_, index) => String(1500000000 + index),
+        );
+
+        cy.request(directoryJsonPost(oversizedClassifications)).then(
+            (response) => {
+                expect(response.status).to.eq(400);
+                expect(response.headers["content-type"]).to.include("text/plain");
+                expect(response.body).to.eq(
+                    "The selected directory report options exceed the maximum supported size.",
+                );
+            },
+        );
     });
 });
 
