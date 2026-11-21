@@ -3,7 +3,7 @@
 > **TL;DR / BLUF**
 > Maintainers make work ready; contributors report the problem. Before coding, check existing work, agree on the outcome and acceptance checks, resolve blocking design/security decisions, and claim the issue visibly. Split by independently reviewable user outcomes when that reduces risk. Humans own decisions and approval; agents execute.
 
-**Use this page for issue readiness and decomposition.** For merge requirements, follow the [PR review gates](./pr-review.md). See [How to Contribute](../../CONTRIBUTING.md) for onboarding.
+**Use this page for issue readiness and decomposition.** For how work moves from report to release — and what approved, ready, and scheduled each mean — see the [feature lifecycle](./feature-lifecycle.md). For merge requirements, follow the [PR review gates](./pr-review.md). See [How to Contribute](../../CONTRIBUTING.md) for onboarding.
 
 ## The fast path
 

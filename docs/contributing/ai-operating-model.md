@@ -3,6 +3,8 @@
 Use one accountable owner per task and one compact evidence packet across handoffs.
 This role contract does not grant repository, mailbox, Discord, or publishing permissions.
 
+How work moves from intake to release, and the states it passes through, is defined in the [feature lifecycle](./feature-lifecycle.md); this page defines the agent roles inside that lifecycle.
+
 | Work | Owner | Handoff |
 |---|---|---|
 | Development / CI escalations | Grok Bot | Investigate new technical failures and prepare a scoped implementation or release decision. Do not repeat Muse intake. |
