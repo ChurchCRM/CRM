@@ -213,8 +213,19 @@ describe('Upgrade via Restore', () => {
             // Success modal — may take a while for ChurchInfo (30+ migrations)
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
-            // Wait for page to redirect to login after restore completes
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
+            // Wait for page to redirect to login after restore completes.
+            // Restore ends the session and lands on the sign-in chooser at
+            // /session/ (#11844): a restored database that offers more than
+            // one door (the ChurchCRM 6.0.0 database has member sign-in on)
+            // stays on the chooser, while a single-door install (ChurchInfo
+            // 1.3.1) redirects straight through to staff sign-in.
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session(\/begin)?\/?$/);
+            cy.get('body').then(($body) => {
+                if ($body.find('#sessionDoorStaff').length > 0) {
+                    cy.get('#sessionDoorStaff').click();
+                    cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
+                }
+            });
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
