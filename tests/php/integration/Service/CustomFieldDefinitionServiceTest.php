@@ -255,6 +255,36 @@ try {
         'Invalid custom field column: xx',
     );
 
+    // Regression test for #11602: a definition object fetched before another
+    // move must not drive the swap from its stale order. The service re-reads
+    // the row under a write lock inside the transaction, so the move below
+    // uses the current order (2), not the stale one (1). On the old code the
+    // stale lookup finds the definition itself as its own neighbour and the
+    // move is a no-op that still reports success.
+    $staleDb = $newDatabase();
+    $addPersonField($staleDb, 'c1', 1, 3, 'Person Text');
+    $addPersonField($staleDb, 'c2', 2, 3, 'Person Middle');
+    $addPersonField($staleDb, 'c3', 3, 3, 'Person Last');
+    $addFamilyField($staleDb, 'c1', 1, 3, 'Family Text');
+    $addFamilyField($staleDb, 'c2', 2, 3, 'Family Middle');
+    $addFamilyField($staleDb, 'c3', 3, 3, 'Family Last');
+
+    $stalePerson = $service->find('person', 'c1');
+    Assert::same(1, (int) $stalePerson->getOrder(), 'stale person definition starts at order 1');
+    Assert::true($service->move($service->find('person', 'c2'), 'up'), 'person c2 moves up first');
+    Assert::same([2, 1, 3], [$personOrder($staleDb, 'c1'), $personOrder($staleDb, 'c2'), $personOrder($staleDb, 'c3')], 'person orders after c2 moves up');
+    Assert::true($service->move($stalePerson, 'down'), 'a stale person definition still moves down');
+    Assert::same(3, $personOrder($staleDb, 'c1'), 'stale person definition lands at order 3, not 2');
+    Assert::same([1, 2, 3], [$personOrder($staleDb, 'c2'), $personOrder($staleDb, 'c3'), $personOrder($staleDb, 'c1')], 'person orders stay a unique contiguous sequence');
+
+    $staleFamily = $service->find('family', 'c1');
+    Assert::same(1, (int) $staleFamily->getOrder(), 'stale family definition starts at order 1');
+    Assert::true($service->move($service->find('family', 'c2'), 'up'), 'family c2 moves up first');
+    Assert::same([2, 1, 3], [$familyOrder($staleDb, 'c1'), $familyOrder($staleDb, 'c2'), $familyOrder($staleDb, 'c3')], 'family orders after c2 moves up');
+    Assert::true($service->move($staleFamily, 'down'), 'a stale family definition still moves down');
+    Assert::same(3, $familyOrder($staleDb, 'c1'), 'stale family definition lands at order 3, not 2');
+    Assert::same([1, 2, 3], [$familyOrder($staleDb, 'c2'), $familyOrder($staleDb, 'c3'), $familyOrder($staleDb, 'c1')], 'family orders stay a unique contiguous sequence');
+
     // The value table is gone, so the ALTER TABLE in delete() fails after the
     // drop-down options were already removed. The definition must survive.
     $failedDb = $newDatabase();
