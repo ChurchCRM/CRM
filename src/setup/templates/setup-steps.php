@@ -1,4 +1,8 @@
 <?php
+
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
+
 // Setup wizard - standalone, no Config.php dependency
 $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
 $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '80') === '443');
@@ -176,6 +180,19 @@ require_once __DIR__ . '/header.php';
             </div>
         </section>
     </form>
+
+    <footer class="setup-help">
+        <p class="mb-2"><strong>Need help?</strong></p>
+        <p class="setup-help-links mb-3">
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation', 'setup_installation_guide')) ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-book me-1"></i>Installation guide</a>
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/administration/troubleshooting', 'setup_troubleshooting')) ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-life-ring me-1"></i>Troubleshooting</a>
+            <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord me-1"></i>Ask on Discord</a>
+            <a href="https://github.com/ChurchCRM/CRM/issues" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github me-1"></i>Report a problem</a>
+        </p>
+        <p class="setup-help-social mb-0">
+            <?php $socialLinkSeparator = ''; require __DIR__ . '/../../Include/partials/social-links.php'; ?>
+        </p>
+    </footer>
 </div>
 
 <!-- Setup Progress Modal -->
