@@ -10,6 +10,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
@@ -19,6 +20,7 @@ use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -72,6 +74,18 @@ if (!$isNewPerson) {
 }
 
 $customFieldService = new CustomFieldService();
+$canManageGroups = AuthenticationManager::getCurrentUser()->isManageGroupsEnabled();
+
+$availableGroups = ($isNewPerson && $canManageGroups)
+    ? GroupQuery::create()->orderByName()->find()
+    : [];
+
+$availableGroupIds = [];
+foreach ($availableGroups as $group) {
+    $availableGroupIds[] = (int) $group->getId();
+}
+
+$selectedGroupIds = [];
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -163,6 +177,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         http_response_code(403);
         exit;
     }
+    if ($isNewPerson && $canManageGroups && isset($_POST['GroupIds']) && is_array($_POST['GroupIds'])) {
+        $selectedGroupIds = array_values(array_unique(array_intersect(
+            array_map('intval', $_POST['GroupIds']),
+            $availableGroupIds
+        )));
+    }
+
     //Get all the variables from the request object and assign them locally
     $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
     $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
@@ -484,7 +505,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         if (!$personAlreadyExist) {
             $iPersonID = $person->getId();
+            if ($canManageGroups) {
+                $groupService = new GroupService();
 
+                foreach ($selectedGroupIds as $groupId) {
+                    $groupService->addUserToGroup($groupId, $iPersonID, 0);
+                }
+            }
             $personCustom = new PersonCustom();
             $personCustom->setPerId($iPersonID);
             $personCustom->save();
@@ -1116,8 +1143,26 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <?php if ($numCustomFields > 0) { ?>
+    <?php if ($isNewPerson && $canManageGroups && count($availableGroups) > 0) { ?>
         <div class="card clearfix">
+            <div class="card-header">
+                <h3 class="card-title"><?= gettext('Groups') ?></h3>
+            </div>
+            <div class="card-body">
+                <label for="GroupIds"><?= gettext('Select Groups') ?></label>
+                <select name="GroupIds[]" id="GroupIds" class="form-select" multiple>
+                    <?php foreach ($availableGroups as $group) { ?>
+                        <option value="<?= $group->getId() ?>"
+                            <?= in_array((int) $group->getId(), $selectedGroupIds, true) ? 'selected' : '' ?>>
+                            <?= InputUtils::escapeHTML($group->getName()) ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+    <?php } ?>
+    <?php if ($numCustomFields > 0) { ?>
+    <div class="card clearfix">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div>
