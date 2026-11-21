@@ -129,11 +129,17 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         if ($connection['reason'] !== null) {
             TelemetryService::captureInstallFailure($connection['reason']);
 
+            // PHP reaches "localhost" through a socket file; when that file is elsewhere, the TCP address still works.
+            $message = $connection['message'];
+            if ($connection['reason'] === 'database_host_unreachable' && strtolower($dbServerName) === 'localhost') {
+                $message = gettext('ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name.');
+            }
+
             return SlimUtils::renderJSON($response, [
                 'valid'   => true,
                 'correct' => false,
                 'reason'  => $connection['reason'],
-                'message' => $connection['message'],
+                'message' => $message,
             ]);
         }
 
