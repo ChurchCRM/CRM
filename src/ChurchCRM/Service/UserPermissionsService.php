@@ -17,7 +17,6 @@ class UserPermissionsService
     public function getEffectivePermissions(User $user): array
     {
         $eventsOff = !User::isEventsEnabled();
-        $volunteerOff = !User::isVolunteerV2Enabled();
         $notGranted = gettext('Not granted to this account');
 
         $row = function (string $label, bool $granted, ?string $moduleOff = null, ?string $denied = null) use ($notGranted): array {
@@ -27,8 +26,6 @@ class UserPermissionsService
                 'reason' => $granted ? null : $moduleOff ?? $denied ?? $notGranted,
             ];
         };
-
-        $volunteerOffReason = $volunteerOff ? gettext('Volunteer Management is turned off for this church') : null;
 
         return [
             [
@@ -85,18 +82,18 @@ class UserPermissionsService
             [
                 'group' => gettext('Volunteers'),
                 'rows' => [
-                    $row(gettext('Manage all ministries'), $user->isManageMinistriesEnabled(), $volunteerOffReason),
-                    $row(gettext('Manage My Ministries'), $user->isManageMyMinistriesEnabled(), $volunteerOffReason),
+                    $row(gettext('Manage all ministries'), $user->isManageMinistriesEnabled()),
+                    $row(gettext('Manage My Ministries'), $user->isManageMyMinistriesEnabled()),
                     $row(
                         gettext('Ministry coordinator'),
                         $user->isVolunteerCoordinatorEnabled(),
-                        $volunteerOffReason,
+                        null,
                         $user->isManageMyMinistriesEnabled() ? gettext('No ministry assigned') : null
                     ),
                     $row(
                         gettext('Team leader'),
                         $user->isVolunteerTeamLeaderEnabled(),
-                        $volunteerOffReason,
+                        null,
                         gettext('Not leading a volunteer team')
                     ),
                 ],

@@ -14,14 +14,16 @@
  *    loads the CSS bundle itself, since nothing else will.
  */
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 $code = $code ?? 500;
 $title = $title ?? gettext('Error');
 $message = $message ?? gettext('An unexpected error occurred.');
-$returnUrl = $returnUrl ?? (SystemURLs::getRootPath() . '/v2/dashboard');
+$returnUrl = $returnUrl ?? DashboardLandingService::urlFor(AuthenticationManager::getCurrentUser());
 $returnText = $returnText ?? gettext('Return to Dashboard');
 // Optional raw HTML block to render after the message (internal use only)
 $extraHtml = $extraHtml ?? '';

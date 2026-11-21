@@ -81,6 +81,7 @@ Translations are keyed by the English msgid, so rewording one drops its translat
 | `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**` (after the wait), manual (no wait) | runs `npm run locale:build`, writes the terms report (`locale-terms-diff.js`: PR body, run summary, `locale-terms-report` artifact), opens or updates the terms PR | repo variable `LOCALE_TERMS_WAIT_MINUTES` (optional, default 15) |
 | `locale-rebuild.yml` | push to `master` touching `src/locale/i18n/**` or `locale/messages.po`, manual | runs `npm run locale:apply`, verifies with `locale:apply --check`, opens or updates the rebuild PR (`src/locale/textdomain/**` only) | — |
 | `locale-check.yml` | pull request touching the locale files | merge gate for locale PRs: `npm run locale:test`, queue in sync (`locale:missing` leaves no diff), and `locale:apply --check` on PRs that carry generated files | — |
+| `locale-terms-guard.yml` | pull request touching `src/**` or `webpack/**` | the terms review at code-review time: `locale-terms-guard.js` checks the literals the PR adds against the base catalog and fails on flags (see below) | the `locale-terms-ok` label for intentional variants |
 
 ## Merge bursts
 
@@ -97,6 +98,10 @@ The body opens with the counts and the next step, then:
 - **New terms** with where each is in the code (`git grep`, since `messages.po` has no locations), and **Removed terms**, marking those merged into an existing near-duplicate.
 
 Fix an odd string in the code, not in the terms PR; the next extraction updates the PR. Bodies over GitHub's limit are truncated; the full list is in the run summary and the `locale-terms-report` artifact. Run it locally with `node locale/scripts/lib/locale-terms-diff.js --base HEAD` after `npm run locale:build`.
+
+## Terms guard on code PRs
+
+The same review runs before merge on every code PR: `Locale: terms guard` (`locale/scripts/lib/locale-terms-guard.js`) reads the PR diff, pulls the literals it adds to `gettext()` / `ngettext()` / `t()` calls, and flags the ones that are not in the base catalog when they near-duplicate a catalog term, near-duplicate another term added by the same PR (the casing pairs — neither is in the catalog yet), look like code, run over 200 characters, or reword a catalog term the PR removes. Flags fail the check and are posted as one PR comment, updated on each push. A wording that is intentional passes with the `locale-terms-ok` label and the reason in the PR description; the comment stands as the record. Terms-cleanup PRs trip the rewording flags by design — they carry the label. The pre-commit hook runs the same checks on the staged diff (`--staged`, against `HEAD`'s catalog), so a flagged string fails before it is committed. Run the PR version locally with `node locale/scripts/lib/locale-terms-guard.js --base <rev>`.
 
 ## Release
 

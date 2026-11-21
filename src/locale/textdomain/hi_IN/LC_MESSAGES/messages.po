@@ -836,14 +836,6 @@ msgid "Assign"
 msgstr "सौंपें"
 
 #: 
-msgid "Date Updated"
-msgstr "तिथि अपडेट की गई"
-
-#: 
-msgid "Updated By"
-msgstr "इनके द्वारा अपडेट किया गया"
-
-#: 
 msgid "Since"
 msgstr "से"
 
@@ -1300,10 +1292,6 @@ msgid "People"
 msgstr "लोग"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "संडे स्कूल के बच्चे"
-
-#: 
 msgid "Role / Gender"
 msgstr "भूमिका / लिंग"
 
@@ -1348,10 +1336,6 @@ msgid "Updated"
 msgstr "अपडेट किया गया"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(यह कार्रवाई वापस नहीं ली जा सकती)"
-
-#: 
 msgid "Note Editor"
 msgstr "नोट संपादक"
 
@@ -1370,10 +1354,6 @@ msgstr "समूह"
 #: 
 msgid "Default"
 msgstr "डिफ़ॉल्ट"
-
-#: 
-msgid "Exit"
-msgstr "बाहर निकलें"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1460,6 @@ msgid "Assign New Group"
 msgstr "नया समूह सौंपें"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "एक नया स्वयंसेवक अवसर सौंपें"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
 
@@ -1576,10 +1552,6 @@ msgid "Warning"
 msgstr "चेतावनी"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "यह विशेषता प्रकार अभी भी कम से कम एक विशेषता द्वारा उपयोग किया जा रहा है।"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "कृपया इस विशेषता प्रकार के विलोपन की पुष्टि करें"
 
@@ -1601,48 +1573,8 @@ msgid "Restore Database"
 msgstr "डेटाबेस पुनर्स्थापित करें"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "कृपया विलोपन की पुष्टि करें"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "क्षमा करें, इस परिवार के दान के रिकॉर्ड हैं। इस परिवार को हटाया नहीं जा सकता।"
-
-#: 
-msgid "Return to Family View"
-msgstr "परिवार दृश्य पर लौटें"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "चेतावनी: इस परिवार के पास दान का रिकॉर्ड है और जब तक ये दान किसी अन्य परिवार से नहीं जुड़ जाते, तब तक इसे हटाया नहीं जा सकता।"
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "चेतावनी: यह क्रिया पूर्ववत नहीं की जा सकती और इसके कानूनी निहितार्थ हो सकते हैं!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "दान के साथ वर्तमान परिवार"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "नोट: यह इस परिवार के रिकॉर्ड से जुड़े सभी नोट्स को भी हटा देगा।"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "केवल परिवार रिकॉर्ड हटाएँ"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "परिवार रिकॉर्ड और परिवार के सदस्यों को हटाएँ"
-
-#: 
 msgid "Listing"
 msgstr "सूची"
-
-#: 
-msgid "My User Settings"
-msgstr "मेरी उपयोगकर्ता सेटिंग्स"
 
 #: 
 msgid "Variable name"
@@ -1727,14 +1659,6 @@ msgstr "नया पासवर्ड"
 #: 
 msgid "Confirm New Password"
 msgstr "नए पासवर्ड की पुष्टि करें"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "स्वयंसेवक अवसर संपादक"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "अभी तक कोई स्वयंसेवक अवसर नहीं जोड़ा गया है"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2224,14 +2148,6 @@ msgstr "सभी फंड साफ करें"
 #: 
 msgid "Deposit Comment"
 msgstr "जमा टिप्पणी"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "हस्ताक्षर परिभाषा फ़ाइल हस्ताक्षर सत्यापन विफल रहा"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "एक या अधिक फ़ाइलें हस्ताक्षर सत्यापन में विफल रहीं"
 
 #: 
 msgid "item"
@@ -4502,10 +4418,6 @@ msgid "People Reports"
 msgstr "लोग रिपोर्ट"
 
 #: 
-msgid "People Dashboard"
-msgstr "लोग डैशबोर्ड"
-
-#: 
 msgid "People Directory"
 msgstr "व्यक्ति निर्देशिका"
 
@@ -4745,10 +4657,6 @@ msgid "Estonian"
 msgstr "एस्टोनियाई"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "हस्ताक्षर परिभाषा फ़ाइल को डिकोड करने में त्रुटि"
-
-#: 
 msgid "Event not found"
 msgstr "कार्यक्रम नहीं मिला"
 
@@ -4951,10 +4859,6 @@ msgid "View Person Page"
 msgstr "व्यक्ति पृष्ठ देखें"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
-
-#: 
 msgid "Deleted"
 msgstr "हटा दिया गया"
 
@@ -5095,10 +4999,6 @@ msgstr "क्रॉस-साइट स्क्रिप्टिंग से
 #: 
 msgid "Enter event description..."
 msgstr "इवेंट विवरण दर्ज करें..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "यहाँ नोट टेक्स्ट दर्ज करें..."
 
 #: 
 msgid "Note"
@@ -5335,14 +5235,6 @@ msgstr "कृपया http:// या https:// से शुरू होने
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "सभी सिस्टम फ़ाइल हस्ताक्षर अपेक्षित मानों से मेल खाते हैं।"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "हस्ताक्षर परिभाषा फ़ाइल मौजूद है लेकिन पढ़ी जाने योग्य नहीं है। फ़ाइल अनुमतियाँ जांचें।"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "हस्ताक्षर परिभाषा फ़ाइल %s पर गायब है। हस्ताक्षर पुनर्जनन के लिए पैकेजिंग कार्य चलाएं या आधिकारिक रिलीज़ डिप्लॉय करें।"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6418,20 +6310,8 @@ msgid "Additional Information"
 msgstr "अतिरिक्त जानकारी"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "अवसर सौंपें"
-
-#: 
 msgid "Choose a property..."
 msgstr "एक विशेषता चुनें..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "अवसर चुनें..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "संपर्क और व्यक्तिगत जानकारी"
 
 #: 
 msgid "Edited"
@@ -6440,14 +6320,6 @@ msgstr "संपादित"
 #: 
 msgid "Newsletter"
 msgstr "न्यूज़लेटर"
-
-#: 
-msgid "Personal"
-msgstr "व्यक्तिगत"
-
-#: 
-msgid "Select Opportunities"
-msgstr "अवसर चुनें"
 
 #: 
 msgid "Volunteer"
@@ -6634,10 +6506,6 @@ msgid "Confirm Property Deletion"
 msgstr "संपत्ति हटाने की पुष्टि करें"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "स्वयंसेवक अवसर हटाने की पुष्टि करें"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "हटाने की पुष्टि"
 
@@ -6650,16 +6518,8 @@ msgid "Existing Custom Person Fields"
 msgstr "मौजूदा कस्टम व्यक्ति फ़ील्ड"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "मौजूदा स्वयंसेवक अवसर"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "क्षेत्र सफलतापूर्वक हटा दिया गया"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "अमान्य CSRF टोकन"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6710,10 +6570,6 @@ msgid "Add Property Type"
 msgstr "संपत्ति प्रकार जोड़ें"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "अपना पहला संपत्ति प्रकार जोड़ें"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "इस फ़ील्ड को हटाकर, आप इस फ़ील्ड के लिए असाइन किए गए सभी ग्रुप सदस्य डेटा को अपरिवर्तनीय रूप से खो देंगे!"
 
@@ -6732,10 +6588,6 @@ msgstr "चेक-आउट किया"
 #: 
 msgid "Current Fiscal Year"
 msgstr "वर्तमान वित्तीय वर्ष"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "हटाएं (सभी संबंधित रिकॉर्ड हटा दिए जाएंगे)"
 
 #: 
 msgid "Edit Property Type"
@@ -6786,10 +6638,6 @@ msgid "No property types found"
 msgstr "कोई संपत्ति प्रकार नहीं मिला"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "इस संपत्ति प्रकार का उपयोग करने वाले रिकॉर्ड की संख्या"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "इस संपत्ति प्रकार का वैकल्पिक विस्तृत विवरण"
 
@@ -6820,10 +6668,6 @@ msgstr "इस संपत्ति पर लागू होने वाल�
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "परिवार और फंड द्वारा प्रतिज्ञा प्रतिबद्धताओं को ट्रैक और प्रबंधित करें"
-
-#: 
-msgid "View Properties"
-msgstr "गुण देखें"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7803,18 +7647,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "क्या आप वाकई इस प्रतिज्ञा रिकॉर्ड को स्थायी रूप से हटाना चाहते हैं?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "रद्द करें और परिवार दृश्य पर वापस जाएं"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "यदि आप इस प्रकार को हटाते हैं, तो इसका उपयोग करने वाली सभी विशेषताएं भी हट जाएंगी और सभी संबंधित विशेषता नियुक्तियां खो जाएंगी।"
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "चुने गए परिवार में चंदा स्थानांतरित करें"
-
-#: 
 msgid "Calendar not found"
 msgstr "कैलेंडर नहीं मिला"
 
@@ -8087,10 +7919,6 @@ msgid "or later to continue."
 msgstr "या बाद में जारी रखने के लिए।"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "\"आने का कारण\" नोट्स"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d परिणाम \"%s\" के लिए"
@@ -8199,10 +8027,6 @@ msgstr "व्यक्तिगत रिकॉर्ड जोड़ें य
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "धन संग्रह कार्यक्रमों के लिए दान की गई वस्तुएँ जोड़ें या संपादित करें"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "लोगों और परिवारों के लिए नोट्स जोड़ें या संपादित करें"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8459,10 +8283,6 @@ msgstr "कलीसिया के कार्यक्रम और गत�
 #: 
 msgid "Create or edit property type categories"
 msgstr "विशेषता प्रकार श्रेणियाँ बनाएँ या संपादित करें"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "स्वयंसेवक पद बनाएँ या संपादित करें"
 
 #: 
 msgid "Current person"
@@ -8913,14 +8733,6 @@ msgid "Manage user account details and permissions"
 msgstr "उपयोगकर्ता खाता विवरण और अनुमतियाँ प्रबंधित करें"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "स्वयंसेवा के अवसर प्रबंधित करें और सदस्य निर्धारित करें"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "अपनी व्यक्तिगत प्राथमिकताएँ और खाता सेटिंग्स प्रबंधित करें"
-
-#: 
 msgid "Map cart items"
 msgstr "सूची की वस्तुओं को मानचित्र पर देखें"
 
@@ -8955,10 +8767,6 @@ msgstr "समूह में स्थानांतरित करें"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "मौजूदा ChurchCRM या ChurchInfo इंस्टॉलेशन से आ रहे हैं? अपनी बैकअप फ़ाइल अपलोड करें और हम आपका डेटा स्वचालित रूप से पुनर्स्थापित कर देंगे।"
-
-#: 
-msgid "My Settings"
-msgstr "मेरी सेटिंग्स"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9045,10 +8853,6 @@ msgid "No timeline events yet."
 msgstr "अभी तक कोई टाइमलाइन इवेंट नहीं।"
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "अभी तक कोई स्वयंसेवा अवसर निर्धारण नहीं।"
-
-#: 
 msgid "Not ready yet?"
 msgstr "अभी तैयार नहीं?"
 
@@ -9085,10 +8889,6 @@ msgstr "अवलोकन"
 #: 
 msgid "Password Recovery"
 msgstr "पासवर्ड पुनर्प्राप्ति"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "पिछले और अगले 7 दिन"
 
 #: 
 msgid "People by Classification"
@@ -9173,10 +8973,6 @@ msgstr "एक साथ कई धन संग्रह ड्राइंग 
 #: 
 msgid "Record new pledges and payments"
 msgstr "नई प्रतिज्ञाएँ और भुगतान रिकॉर्ड करें"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "रिकॉर्ड करें कि उपस्थित लोग आपकी कलीसिया में क्यों आए"
 
 #: 
 msgid "Remove from Class"
@@ -9559,10 +9355,6 @@ msgid "funds"
 msgstr "कोष"
 
 #: 
-msgid "opportunities"
-msgstr "अवसर"
-
-#: 
 msgid "or connect an external service"
 msgstr "या बाहरी सेवा कनेक्ट करें"
 
@@ -9862,11 +9654,6 @@ msgstr "ईमेल पते प्राप्त करने में व�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "फ़ोन नंबर प्राप्त करने में विफल"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "किसी विशेष अवसर के लिए स्वयंसेवकों को खोजें"
 
 #. Context: query_qry
 #: 
@@ -10991,10 +10778,6 @@ msgstr "गहरा"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "केवल डेटाबेस (.sql) या पूर्ण संग्रह (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "डेटा तालिकाओं में दिखाई जाने वाली पंक्तियों की डिफ़ॉल्ट संख्या। अगले पृष्ठ लोड पर प्रभावी होगी।"
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11048,10 +10831,6 @@ msgstr "मलयालम - भारत"
 #: 
 msgid "Manage 2FA"
 msgstr "2FA प्रबंधित करें"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "ईमेल सीमांकक और प्रदर्शन विकल्पों जैसी अतिरिक्त प्राथमिकताएं प्रबंधित करें"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11310,14 +11089,6 @@ msgstr "चेक-इन किसके द्वारा"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "निष्क्रिय कार्यक्रमों के लिए चेक-इन अक्षम है। चेक-इन सक्षम करने के लिए कार्यक्रम डैशबोर्ड से कार्यक्रम सक्रिय करें।"
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "कार्यक्रम में चेक इन किया: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "कार्यक्रम से चेक आउट किया: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11728,14 +11499,6 @@ msgid "e.g., 40.7128"
 msgstr "उदा., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "परिवार को हटाते समय एक त्रुटि हुई।"
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "दान स्थानांतरित करते समय एक त्रुटि हुई।"
-
-#: 
 msgid "At least one family member is required"
 msgstr "कम से कम एक परिवार के सदस्य की आवश्यकता है"
 
@@ -11754,10 +11517,6 @@ msgstr "हटाना विफल रहा"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "दिशा \"ऊपर\" या \"नीचे\" होनी चाहिए"
-
-#: 
-msgid "Failed to move donations."
-msgstr "दान स्थानांतरित करने में विफल रहा।"
 
 #: 
 msgid "Finance permission required"
@@ -11794,10 +11553,6 @@ msgstr "सदस्यता नहीं मिली"
 #: 
 msgid "Password successfully changed for"
 msgstr "के लिए पासवर्ड सफलतापूर्वक बदल दिया गया"
-
-#: 
-msgid "Please select a target family."
-msgstr "कृपया एक लक्षित परिवार चुनें।"
 
 #: 
 msgid "Target family not found"
@@ -12665,10 +12420,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "संपत्ति प्रकार हटाया नहीं जा सकता: %d संपत्तियाँ अभी भी इसका संदर्भ देती हैं। पहले उन संपत्तियों को पुनः असाइन करें या हटाएँ।"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "स्वयंसेवक अवसर हटाया नहीं जा सकता: %d लोग अभी भी नियुक्त हैं। पहले नियुक्तियाँ हटाएँ।"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "वर्ग p, f, या g में से एक होना चाहिए"
 
@@ -12679,10 +12430,6 @@ msgstr "त्रुटि संदेश कॉपी करें"
 #: 
 msgid "Could not load note."
 msgstr "नोट लोड नहीं हो सका।"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "विवरण 100 वर्णों से अधिक नहीं हो सकता"
 
 #: 
 msgid "Donation fund not found"
@@ -12705,10 +12452,6 @@ msgid "Failed to create property type"
 msgstr "संपत्ति प्रकार बनाने में विफल"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "स्वयंसेवक अवसर बनाने में विफल"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "दान निधि हटाने में विफल"
 
@@ -12725,10 +12468,6 @@ msgid "Failed to delete property type"
 msgstr "संपत्ति प्रकार हटाने में विफल"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "स्वयंसेवक अवसर हटाने में विफल"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "दान निधि अपडेट करने में विफल"
 
@@ -12741,10 +12480,6 @@ msgid "Failed to update property type"
 msgstr "संपत्ति प्रकार अपडेट करने में विफल"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "स्वयंसेवक अवसर अपडेट करने में विफल"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "धन संग्रह अभियान नहीं मिला"
 
@@ -12755,10 +12490,6 @@ msgstr "इंस्टॉलेशन आईडी"
 #: 
 msgid "Invalid class"
 msgstr "अमान्य वर्ग"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "नाम 30 वर्णों से अधिक नहीं हो सकता"
 
 #: 
 msgid "Note by %s deleted"
@@ -12781,16 +12512,8 @@ msgid "Read more"
 msgstr "और पढ़ें"
 
 #: 
-msgid "That name already exists."
-msgstr "यह नाम पहले से मौजूद है।"
-
-#: 
 msgid "Title is required"
 msgstr "शीर्षक आवश्यक है"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "स्वयंसेवक अवसर नहीं मिला"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13001,14 +12724,6 @@ msgid "Click Save to apply."
 msgstr "लागू करने के लिए सहेजें पर क्लिक करें।"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "क्लिपबोर्ड API उपलब्ध नहीं है। कृपया URL को मैनुअली कॉपी करें।"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "क्लिपबोर्ड उपलब्ध नहीं है। अपने कोड सहेजने के लिए डाउनलोड बटन का उपयोग करें।"
-
-#: 
 msgid "Code incomplete"
 msgstr "कोड अधूरा है"
 
@@ -13127,10 +12842,6 @@ msgstr "डेमो डेटा सामान्यतः केवल न�
 #: 
 msgid "Deposit ID"
 msgstr "जमा आईडी"
-
-#: 
-msgid "Deposit Value"
-msgstr "चढ़ावा जमा मूल्य"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13549,22 +13260,6 @@ msgid "Move Members to Group"
 msgstr "सदस्यों को समूह में स्थानांतरित करें"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए (जैसे, http://localhost या https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "वैध पोर्ट नंबर होना चाहिए (जैसे, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "खाली नहीं होने पर / से शुरू होना चाहिए; अंत में स्लैश नहीं। केवल अक्षर, संख्याएं, अंडरस्कोर, डैश, डॉट और / की अनुमति है।"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "बाद में इस डेटा को हटाने की आवश्यकता है?"
 
@@ -13587,14 +13282,6 @@ msgstr "कोई चढ़ावा जमा नहीं"
 #: 
 msgid "No Events Today"
 msgstr "आज कोई कार्यक्रम नहीं"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "पिछले या अगले 7 दिनों में कोई वर्षगाँठ नहीं"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "पिछले या अगले 7 दिनों में कोई जन्मदिन नहीं"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13723,10 +13410,6 @@ msgstr "कृपया एक मान्य ईमेल पता दर्�
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "कृपया वैध ईमेल पता दर्ज करें (जैसे, name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "कृपया वैध संख्या दर्ज करें"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14541,24 +14224,12 @@ msgid "People &amp; Families"
 msgstr "लोग &amp; परिवार"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "जिस नोट को आप संपादित करने का प्रयास कर रहे हैं वह अब मौजूद नहीं है।"
-
-#: 
 msgid "User List"
 msgstr "उपयोगकर्ता सूची"
 
 #: 
 msgid "View Person"
 msgstr "व्यक्ति देखें"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "आपको इस परिवार के लिए नोट जोड़ने की अनुमति नहीं है।"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "आपको इस व्यक्ति के लिए नोट जोड़ने की अनुमति नहीं है।"
 
 #: 
 msgid "Account locked"
@@ -15189,10 +14860,6 @@ msgid "Target family"
 msgstr "लक्षित परिवार"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "समूह नहीं मिला। कृपया पुनः प्रयास करें।"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "चुना गया परिवार अब मौजूद नहीं है। कृपया पृष्ठ रीफ्रेश करें और पुनः प्रयास करें।"
 
@@ -15259,10 +14926,6 @@ msgstr "goalAmount गैर-ऋणात्मक होनी चाहिए"
 #: 
 msgid "thru %s"
 msgstr "%s तक"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "%1$s %2$s के लिए \"क्यों आए\" नोट्स"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15369,14 +15032,6 @@ msgid "Output Method"
 msgstr "आउटपुट विधि"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "कृपया इस परिवार रिकॉर्ड के विलोपन की पुष्टि करें"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "कृपया कोई अन्य परिवार चुनें जिनसे इन दानों को जोड़ा जाए"
-
-#: 
 msgid "Remittance Slip"
 msgstr "प्रेषण पर्ची"
 
@@ -15419,10 +15074,6 @@ msgstr "समर्थित स्वरूप"
 #: 
 msgid "System Configuration"
 msgstr "सिस्टम कॉन्फ़िगरेशन"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15653,10 +15304,6 @@ msgid "Add New Fund"
 msgstr "नई निधि जोड़ें"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "नया अवसर जोड़ें"
-
-#: 
 msgid "Add New Person"
 msgstr "नया व्यक्ति जोड़ें"
 
@@ -15669,10 +15316,6 @@ msgid "Add New Role"
 msgstr "नई भूमिका जोड़ें"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "नया स्वयंसेवी अवसर जोड़ें"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "संडे स्कूल कक्षा जोड़ें"
 
@@ -15681,24 +15324,8 @@ msgid "Delete this family?"
 msgstr "इस परिवार को हटाएँ?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "क्या आप इस परिवार को हटाना चाहते हैं? आपको एक पृष्ठ पर ले जाया जाएगा जहाँ आप चुन सकते हैं कि क्या हटाना है। इसे पूर्ववत नहीं किया जा सकता।"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "परिवार हटाने की पुष्टि"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "संपत्ति प्रकार हटाने की पुष्टि"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "उन नए परिवारों और व्यक्तियों की समीक्षा करें जिन्होंने आपके सार्वजनिक पंजीकरण फ़ॉर्म पर साइन अप किया"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "स्वयंसेवी अवसर हटाने की पुष्टि"
 
 #: 
 msgid "# Payments"
@@ -17365,14 +16992,6 @@ msgid "Find people who did not attend an event"
 msgstr "उन लोगों को खोजें जो किसी ईवेंट में नहीं आए"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "दो विशिष्ट अवसर कोड से मेल खाने वाले स्वयंसेवकों को खोजें"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "पहला स्वयंसेवक अवसर"
-
-#: 
 msgid "Folded Booklet"
 msgstr "तह की गई पुस्तिका"
 
@@ -17449,10 +17068,6 @@ msgid "Run Report"
 msgstr "रिपोर्ट चलाएं"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "दूसरा स्वयंसेवक अवसर"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "साइडबार में, लॉगिन पृष्ठ पर और ईमेल में दिखाया गया। एक लोगो अपलोड करना ChurchCRM ब्रांडिंग को हर जगह बदल देता है।"
 
@@ -17479,14 +17094,6 @@ msgstr "डिफ़ॉल्ट ChurchCRM लोगो का उपयोग �
 #: 
 msgid "View Full Family Giving"
 msgstr "पूर्ण परिवार दान देखें"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "स्वयंसेवक अवसर"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "दो अवसरों के लिए स्वयंसेवक"
 
 #: 
 msgid "YTD"
@@ -17961,10 +17568,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।"
 
 #: 
-msgid "Review now"
-msgstr "अभी समीक्षा करें"
-
-#: 
 msgid "Review self registrations"
 msgstr "स्वयं-पंजीकरण की समीक्षा करें"
 
@@ -18015,10 +17618,6 @@ msgstr "कल"
 #: 
 msgid "days ago"
 msgstr "दिन पहले"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "स्वयं-पंजीकरण समीक्षा की प्रतीक्षा में हैं"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18319,10 +17918,6 @@ msgstr "जो अनुसूची किसी आयोजन-प्रक�
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "जो अनुसूची एक आयोजन में नियुक्ति करती है वह अन्य आयोजनों का अनुसरण नहीं कर सकती; उसे हटाएँ और इसके बजाय अनुसूची जोड़ें"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "अवसरों की एक अकेली सूची, जैसे \"शिशु-कक्ष\" या \"स्वागतकर्ता\", जो लोग → व्यवस्थापन के अंतर्गत रखी जाती है। हर व्यक्ति को उन अवसरों से टैग किया जाता है जिनमें वह सहायता करने को तैयार है, उसके रिकॉर्ड के स्वयंसेवक टैब पर। बस इतना ही दर्ज होता है: कोई टीम, अनुसूची, तारीख़ पर नियुक्ति या अनुस्मारक ईमेल नहीं। टैग रिपोर्टों और व्यक्ति के रिकॉर्ड में उपयोग होते हैं।"
 
 #: 
 msgid "A square picture of your face works best."
@@ -18631,18 +18226,6 @@ msgstr "पृष्ठभूमि कार्य चले"
 #: 
 msgid "Birthday greeting"
 msgstr "जन्मदिन की शुभकामना"
-
-#: 
-msgid "Both"
-msgstr "दोनों"
-
-#: 
-msgid "Both (transition)"
-msgstr "दोनों (संक्रमण)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "दोनों — V1 और V2 साथ-साथ (संक्रमण)"
 
 #: 
 msgid "Calendar address"
@@ -21729,22 +21312,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "उपयोगकर्ता के पास आयोजन जोड़ने की अनुमति होनी चाहिए, या वह उस स्वयंसेवक सेवकाई का समन्वयक हो जिसका यह कैलेंडर है"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — स्वयंसेवक अवसर (पुराना)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — पुराने स्वयंसेवक अवसर"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — सेवकाइयाँ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — स्वयंसेवक प्रबंधन"
-
-#: 
 msgid "Valid"
 msgstr "मान्य"
 
@@ -21763,14 +21330,6 @@ msgstr "आयोजन देखें"
 #: 
 msgid "View this email"
 msgstr "यह ईमेल देखें"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "स्वयंसेवक (पुराना)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "स्वयंसेवक प्रबंधन V2 सक्षम नहीं है"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21877,10 +21436,6 @@ msgid "What the check found"
 msgstr "जाँच में क्या मिला"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "स्वयंसेवक अनुभव क्या हैं"
-
-#: 
 msgid "What you want to say"
 msgstr "आप क्या कहना चाहते हैं"
 
@@ -21911,10 +21466,6 @@ msgstr "तारीख़ें कहाँ से आती हैं"
 #: 
 msgid "Where we reach you"
 msgstr "हम आपसे कहाँ संपर्क करें"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "कौन-सा स्वयंसेवक प्रबंधन अनुभव सक्रिय है। V1 पुरानी स्वयंसेवक अवसर सुविधा है; V2 नया अनुसूचन और नियुक्ति कार्यप्रवाह है। \"दोनों\" माइग्रेशन के दौरान दोनों को साथ-साथ दिखाता है।"
 
 #: 
 msgid "Which events"
@@ -22325,10 +21876,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "केवल स्वयंसेवक प्रबंधक ही परिवर्तन कर सकते हैं कि कौन सेवकाई का समन्वय करता है"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 चुनने से V2 स्वयंसेवक ईमेल को रोका जाता है; कोई भी कतार में आया हुआ कुछ V2 के वापस आने पर भेज दिया जाता है, जब तक कि इसकी घटना समाप्त न हो।"
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "इस सेवकाई के इवेंट यहां जोड़ें: एक कार्य दिवस, एक कक्षा जो हर रविवार को मिलती है। वे चर्च कैलेंडर पर जाते हैं, और एक बार बनाने के बाद आपसे पूछा जाता है कि क्या उन्हें कर्मचारी देना है।"
 
@@ -22439,10 +21986,6 @@ msgstr "आने वाले अतिथि को पंजीकृत क�
 #: 
 msgid "Register walk-in guest"
 msgstr "आने वाले अतिथि को पंजीकृत करें"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "इवेंट के दौरान कियोस्क पर आने वाले अतिथि के रूप में पंजीकृत: %s"
 
 #: 
 msgid "Registering..."
@@ -23175,10 +22718,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "खाली-पद चेतावनी का अग्रिम समय (घंटे)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "स्वयंसेवक प्रबंधन"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "स्वयंसेवक सेवकाइयाँ, दल, अनुसूचियाँ और नियुक्तियाँ"
 
@@ -23189,14 +22728,6 @@ msgstr "आने वाले दिनों में भरने वाल�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "इन आगामी अवसरों के लिए अभी भी स्वयंसेवक चाहिए: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "इनका अर्थ क्या है?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "यह कलीसिया कौन सा स्वयंसेवक अनुभव उपयोग करती है"
 
 #: 
 msgid "You are on the schedule"
@@ -24127,10 +23658,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d भुगतान अभी किसी जमा पर नहीं हैं।"
 
 #: 
-msgid "Closing line"
-msgstr "समापन पंक्ति"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "इस वर्ष का हर जमा बंद है।"
 
@@ -24143,28 +23670,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "इस वर्ष का हर भुगतान किसी जमा पर है।"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "कर विवरण बनाएँ"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "दान रिपोर्ट (कर विवरण)"
-
-#: 
-msgid "Opening line"
-msgstr "आरंभिक पंक्ति"
-
-#: 
 msgid "Qty"
 msgstr "मात्रा"
-
-#: 
-msgid "Signed by"
-msgstr "हस्ताक्षरकर्ता"
-
-#: 
-msgid "Thank-you line"
-msgstr "धन्यवाद पंक्ति"
 
 #: 
 msgid "Year-End Giving"
@@ -24295,10 +23802,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "शून्य किसी वैकल्पिक शर्त को बंद करता है। आयु के लिए पूरी जन्म तिथि चाहिए; सदस्यता अवधि के लिए सदस्यता तिथि चाहिए। आवश्यक तिथि न रखने वाले लोग छोड़ दिए जाते हैं और अलग गिने जाते हैं। दिवंगत लोग, निष्क्रिय लोग और वर्गीकरण, तथा निष्क्रिय या समीक्षा-लंबित परिवार और लोग हमेशा बाहर रहते हैं; वर्तमान वर्गीकरण और स्थिति का उपयोग होता है, ऐतिहासिक स्थिति का नहीं।"
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "%s के लिए देय राशि: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "चुनी निर्देशिका में निजी PDF अस्थायी संग्रहण नहीं बनाया जा सकता।"
 
@@ -24325,10 +23828,6 @@ msgstr "PDF अस्थायी निर्देशिका मौजूद
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF अस्थायी निर्देशिका एक निरपेक्ष निर्देशिका पथ होनी चाहिए।"
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "चर्च कर पहचान (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24373,10 +23872,6 @@ msgstr "विवरण सेटिंग"
 #: 
 msgid "Statement Wording"
 msgstr "विवरण की शब्दावली"
-
-#: 
-msgid "Tax Information"
-msgstr "कर जानकारी"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24425,10 +23920,6 @@ msgstr "चर्च का नाम और पता उपयोग हो �
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "सिस्टम सेटिंग में सेट पत्रशीर्ष पथ उपयोग हो रहा है"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "दान विवरणों के लिए शब्दावली, कर पहचान और PDF प्रबंधन"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24701,10 +24192,6 @@ msgstr "चर्च का देश"
 #: 
 msgid "Church default: %s"
 msgstr "चर्च डिफ़ॉल्ट: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "चर्च नेता साइन-इन"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25349,10 +24836,6 @@ msgstr "समाप्त नहीं"
 #: 
 msgid "Not moved"
 msgstr "स्थानांतरित नहीं"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "पक्का नहीं कि हमारे पास कौन सा ईमेल है? चर्च कार्यालय से संपर्क करें।"
 
 #: 
 msgid "Not yet"
@@ -26607,248 +26090,8 @@ msgid "Review Family Information"
 msgstr "परिवार की जानकारी की जाँच"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" नाम की सेवकाई पहले से मौजूद है। उसे सूची से चुनें, या कोई दूसरा नाम चुनें।"
-
-#: 
-msgid "A new ministry"
-msgstr "एक नई सेवकाई"
-
-#: 
-msgid "A position"
-msgstr "एक पद"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "पहले परिवर्तित किए गए पदों में {{total}} स्वयंसेवक जोड़ें?"
-
-#: 
-msgid "Already converted"
-msgstr "पहले से परिवर्तित"
-
-#: 
-msgid "An existing ministry"
-msgstr "एक मौजूदा सेवकाई"
-
-#: 
-msgid "Becomes"
-msgstr "बन जाता है"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM में स्वयंसेवकों को प्रबंधित करने के दो तरीके हैं। एक समय में केवल एक ही उपयोग में होना चाहिए; \"स्वयंसेवक अनुभव\" सेटिंग तय करती है कि यह चर्च कौन-सा देखे। बदलने से पेज और मेनू आइटम छिपते या दिखते हैं और कोई डेटा कभी नहीं हटता। V1 और दोनों केवल तब तक दिए जाते हैं जब तक स्वयंसेवी अवसर उपयोग में हों: जब हर अवसर परिवर्तित हो जाए और चर्च V2 पर हो, तो वे इस सूची से हट जाते हैं।"
-
-#: 
-msgid "Convert"
-msgstr "परिवर्तित करें"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "स्वयंसेवी अवसर परिवर्तित करें"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "अभी {{total}} अवसर परिवर्तित करें? स्वयंसेवी अवसर बंद होने तक V1 डेटा जैसा है वैसा ही रखा जाता है।"
-
-#: 
-msgid "Converted"
-msgstr "परिवर्तित"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "परिवर्तित: {{positions}} पद और {{ministries}} सेवकाइयाँ, {{qualifications}} स्वयंसेवक योग्य किए गए।"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "हर अवसर किसी एक सेवकाई की पहली टीम में एक पद बन जाता है, और उससे जुड़ा हर व्यक्ति उस पद के लिए योग्य हो जाता है। इन पदों पर स्वयं पंजीकरण शुरू में बंद रहता है।"
-
-#: 
-msgid "Everything is converted."
-msgstr "सब कुछ परिवर्तित हो गया है।"
-
-#: 
-msgid "Existing ministry"
-msgstr "मौजूदा सेवकाई"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "नई सेवकाई को अधिकतम 100 अक्षरों का नाम दें।"
-
-#: 
-msgid "Its own ministry"
-msgstr "अपनी अलग सेवकाई"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "तब से जुड़े: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "लिंक जो परिवर्तित नहीं हो सकते"
-
-#: 
-msgid "New ministries of their own"
-msgstr "अपनी अलग नई सेवकाइयाँ"
-
-#: 
-msgid "New ministry name"
-msgstr "नई सेवकाई का नाम"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "कोई ईमेल नहीं भेजा जाता, और स्वयंसेवी अवसर बंद होने तक जैसे हैं वैसे ही रहते हैं।"
-
-#: 
-msgid "No name"
-msgstr "कोई नाम नहीं"
-
-#: 
-msgid "Not converted"
-msgstr "परिवर्तित नहीं"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "सुविधा स्विच खोलें"
-
-#: 
-msgid "Open Ministries"
-msgstr "सेवकाइयाँ खोलें"
-
-#: 
-msgid "Opportunities"
-msgstr "अवसर"
-
-#: 
-msgid "Opportunity"
-msgstr "अवसर"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "अवसर #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "परिवर्तन के बाद से परिवर्तित स्वयंसेवी अवसरों से जुड़े लोग: %d। 2027 की शुरुआत में स्वयंसेवी अवसर बंद होने से पहले उन्हें उनके पदों में जोड़ें।"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "पहले परिवर्तन का पूर्वावलोकन करें, और उससे लौटाया गया संशोधन भेजें।"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "नाम अद्वितीय रखने के लिए नाम बदला गया"
-
-#: 
-msgid "Review the conversion"
-msgstr "परिवर्तन की समीक्षा करें"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "परिवर्तन का विकल्प JSON ऑब्जेक्ट के रूप में भेजें।"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "सेवकाई बनने वाले अवसरों को ID की सूची के रूप में भेजें।"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "वह सेवकाई मौजूद नहीं है।"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM का वह संस्करण जिसमें किसी व्यवस्थापक ने स्वयंसेवी अवसर बंद होने की सूचना खारिज की।"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "पूर्वावलोकन के बाद स्वयंसेवी अवसर बदल गए हैं। पूर्वावलोकन फिर से जाँचें, फिर परिवर्तित करें।"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "पुष्टि नहीं खुल सकी। पेज फिर से लोड करें और दोबारा प्रयास करें।"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "परिवर्तन का पूर्वावलोकन नहीं हो सका।"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "परिवर्तन विफल रहा। कुछ भी नहीं बदला गया।"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "सेवकाई \"%s\" में पदों को रखने के लिए कोई टीम नहीं है।"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "सर्वर तक नहीं पहुँचा जा सका। यह देखने के लिए पेज फिर से लोड करें कि परिवर्तन हुआ या नहीं।"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "परिवर्तित करने के लिए कोई स्वयंसेवी अवसर नहीं है।"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "स्वयंसेवक प्रबंधन दोनों पर बदल जाता है, ताकि नई सेवकाइयाँ स्वयंसेवी अवसरों के साथ दिखें।"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "स्वयंसेवी अवसर बंद किए जा रहे हैं"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "स्वयंसेवी अवसर परिवर्तित किए गए"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "स्वयंसेवी अवसर 2027 की शुरुआत में बंद कर दिए जाएँगे। कौन किस सेवा में है, यह बनाए रखने के लिए उन्हें सेवकाइयों में परिवर्तित करें।"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "स्वयंसेवी अवसर 2027 की शुरुआत में बंद कर दिए जाएँगे। अपने %1$d अवसरों और %2$d स्वयंसेवकों को अभी सेवकाइयों में परिवर्तित करें। कुछ भी बदलने से पहले आप परिणाम का पूर्वावलोकन कर सकते हैं।"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "योग्य स्वयंसेवक"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "परिवर्तित पदों में जोड़े जाने वाले स्वयंसेवक"
-
-#: 
-msgid "What it becomes"
-msgstr "यह क्या बनता है"
-
-#: 
-msgid "What will happen"
-msgstr "क्या होगा"
-
-#: 
-msgid "Where they go"
-msgstr "वे कहाँ जाते हैं"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "कौन-से पुराने स्वयंसेवी अवसर परिवर्तित किए गए हैं, और हर एक कौन-सा पद बना।"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "यह चर्च कौन-सा स्वयंसेवक अनुभव उपयोग करता है। स्वयंसेवी अवसर (V1) 2027 की शुरुआत में बंद कर दिए जाएँगे।"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "आपके स्वयंसेवी अवसर सेवकाइयों में परिवर्तित हो गए हैं। 2027 की शुरुआत में स्वयंसेवी अवसर बंद होने से पहले स्वयंसेवक प्रबंधन को V2 पर बदलें।"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "एक नई सेवकाई में, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "सेवकाई {{name}} में"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "अब ChurchCRM में नहीं"
 
 #: 
 msgid "Collapse sidebar"
@@ -26969,10 +26212,6 @@ msgid "Last verified"
 msgstr "पिछला सत्यापन"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "इस परिवार के किसी भी सक्रिय, स्वीकृत सदस्य का ईमेल पता नहीं है। इसके बजाय व्यक्तिगत रूप से सत्यापित करें।"
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "इन वित्तीय वर्षों के लिए कोई प्रतिज्ञा नहीं मिली।"
 
@@ -26995,10 +26234,6 @@ msgstr "अपने परिवार की जानकारी देख�
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "यह परिवार निष्क्रिय है, इसलिए इसे सत्यापन ईमेल नहीं भेजे जाते।"
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "यह स्व-पंजीकृत परिवार स्वीकृति की प्रतीक्षा में है। स्वीकृत करने पर परिवार को सदस्य पोर्टल में साइन इन करके अपनी जानकारी देखने का आमंत्रण ईमेल किया जाता है।"
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27031,10 +26266,6 @@ msgid "%d default skipped for another reason (the occurrence is over, canceled o
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़ा गया (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
 msgstr[1] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़े गए (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "एक संक्रमण सेटिंग। पुराने स्वयंसेवक अवसर पृष्ठ और नए सेवकाई पृष्ठ दोनों उपलब्ध हैं, और व्यक्ति के रिकॉर्ड में दोनों स्वयंसेवक टैब स्पष्ट लेबल के साथ दिखते हैं। कलीसिया को V1 से V2 पर ले जाते समय इसका उपयोग करें, फिर केवल V2 पर स्विच करें।"
 
 #: 
 msgid "Assignment canceled"
@@ -27083,10 +26314,6 @@ msgstr "यह तिथि रद्द कर दी गई थी। आप�
 #: 
 msgid "This occurrence has been canceled"
 msgstr "यह अवसर रद्द कर दिया गया है"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "स्वयंसेवा उसी तरह संगठित जैसे कलीसिया उसे चलाती है। हर सेवकाई की टीमें और पद होते हैं; लोग पदों के लिए योग्य बनाए जाते हैं और सेवकाई के पूल समूह के सदस्य होते हैं; अनुसूचियाँ कैलेंडर के आयोजनों का अनुसरण करती हैं और नियुक्ति आवश्यकताओं के साथ तारीख़ वाले अवसर बनाती हैं; समन्वयक लोगों को नियुक्त करते हैं, जो स्वीकार करते हैं, अस्वीकार करते हैं या विकल्प प्रस्तावित करते हैं; अनुस्मारक और अलर्ट ईमेल से जाते हैं। व्यवस्थापक और सेवकाइयाँ प्रबंधित करें अनुमति वाले उपयोगकर्ता हर सेवकाई देखते हैं और उन्हें बना, निष्क्रिय और हटा सकते हैं। सेवकाई के समन्वयक को इसके बजाय मेरी सेवकाइयाँ प्रबंधित करें अनुमति दी जाती है: तब साइडबार में सेवकाइयाँ शीर्षक केवल वही सेवकाइयाँ दिखाता है जिनका वे समन्वय करते हैं। टीम का अगुआ अपनी टीम सदस्य पोर्टल से चलाता है। सदस्य अपनी अनुसूची देखने, उत्तर देने, पंजीकरण करने और सहायता का प्रस्ताव देने के लिए सदस्य पोर्टल का उपयोग करते हैं।"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27251,10 +26478,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "साइन-इन भी अक्षम करें, ताकि वे सदस्य पोर्टल का उपयोग न कर सकें"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "विवरण भेजने से पहले"
-
-#: 
 msgid "Birthday today"
 msgstr "आज जन्मदिन"
 
@@ -27337,10 +26560,6 @@ msgstr "लोग और परिवार हटाएँ"
 #: 
 msgid "Delete the login for"
 msgstr "इसका लॉगिन हटाएँ:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "जमा चार्ट की समय सीमा"
 
 #: 
 msgid "Disabled at"
@@ -27595,10 +26814,6 @@ msgid "Preview Sample Letter"
 msgstr "नमूना पत्र का पूर्वावलोकन"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "कनाडाई दान विवरण के निजी हस्ताक्षर की एसेट पहचानकर्ता। हस्ताक्षर अपलोड द्वारा प्रबंधित।"
-
-#: 
 msgid "Property Type"
 msgstr "गुण का प्रकार"
 
@@ -27637,10 +26852,6 @@ msgstr "समीक्षा और फ़िल्टर"
 #: 
 msgid "Review and vote"
 msgstr "समीक्षा करें और वोट दें"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "वर्ष की समीक्षा करें, फिर दान विवरण डाउनलोड करें।"
 
 #: 
 msgid "Review what we are considering"
@@ -27689,10 +26900,6 @@ msgstr "मज़बूत"
 #: 
 msgid "Support"
 msgstr "सहायता"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "कर पहचान और PDF सेटिंग"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27807,10 +27014,6 @@ msgid "View people and families"
 msgstr "लोग और परिवार देखें"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "इस चर्च के लिए स्वयंसेवक प्रबंधन बंद है"
-
-#: 
 msgid "Weak"
 msgstr "कमज़ोर"
 
@@ -27879,10 +27082,6 @@ msgid "Latest Notes"
 msgstr "नवीनतम नोट्स"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "अभी तक कोई नोट नहीं जोड़ा गया है।"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "QR कोड पाने के लिए नामांकन शुरू करें।"
 
@@ -27893,4 +27092,746 @@ msgstr "वह पासवर्ड या कोड सही नहीं ह
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "टू-फैक्टर ऑथेंटिकेशन पहले से सेट है। इसका सीक्रेट केवल नामांकन के दौरान दिखाया जाता है।"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d दान, कुल %2$s"
+msgstr[1] "%1$d दान, कुल %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d परिवारों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d परिवार को अभी रसीद नहीं मिल सकती और वह बाहर रह जाता है। उसके नीचे सूचीबद्ध समस्या को ठीक करें, फिर पुनः जांचें चुनें।"
+msgstr[1] "%d परिवारों को अभी रसीद नहीं मिल सकती और वे बाहर रह जाते हैं। उनके नीचे सूचीबद्ध समस्याओं को ठीक करें, फिर पुनः जांचें चुनें।"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d समूहों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d लोगों के पास वर्तमान में इस प्रकार के गुण हैं।"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "आपके इंस्टॉल किए गए संस्करण के बाद से %d रिलीज़ उपलब्ध हैं।"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s कोई रसीद नहीं बनाई गई।"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: सत्यापित पूरा दाता नाम दर्ज करें, दाताओं की पुष्टि करें, और एक दाता समूह की पुष्टि करें। मिश्रित-दाता भुगतान समूहों को इस सुविधा के बाहर संभालना होगा।"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: समीक्षा के बाद से दान या डाक पता बदल गया है। पुनः जांचें चुनें और दाता की फिर से पुष्टि करें।"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} किस्त)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} किस्तें)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "क्रेडिट कार्ड या बैंक ड्राफ़्ट भुगतान ऐसी जमा में है जो अभी बंद नहीं हुई है। भुगतान का निपटान हो जाने पर जमा बंद करें।"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "किसी भुगतान में गैर-कटौती योग्य राशि है। यहाँ कनाडाई रसीदें केवल बिना किसी लाभ वाले दान का समर्थन करती हैं।"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "किसी भुगतान की मौद्रिक राशि अमान्य है।"
+
+#: 
+msgid "A payment has no date."
+msgstr "किसी भुगतान की कोई तिथि नहीं है।"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "किसी भुगतान की तिथि जारी करने की तिथि के बाद की है।"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "किसी भुगतान को समस्या के रूप में चिह्नित किया गया है।"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "कोई भुगतान शून्य या ऋणात्मक है।"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "वैध CSRF टोकन के साथ समीक्षित POST आवश्यक है।"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "चयनित परिवार अब मौजूद नहीं है।"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "हस्ताक्षर छवि सुरक्षित डिजिटल हस्ताक्षर नहीं है।"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "सिस्टम अपडेट उपलब्ध है। कृपया अपने प्रशासक से अपनी स्थापना को अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "शामिल सभी पंक्तियाँ बिना किसी लाभ के मौद्रिक दान हैं।"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "सभी आवश्यक कनाडाई रसीद सेटिंग्स भरी हुई हैं।"
+
+#: 
+msgid "Also delete family members"
+msgstr "परिवार के सदस्यों को भी हटाएँ"
+
+#: 
+msgid "Amount of advantages"
+msgstr "लाभों की राशि"
+
+#: 
+msgid "Amount of gifts"
+msgstr "दान की राशि"
+
+#: 
+msgid "Amount per installment"
+msgstr "प्रति किस्त राशि"
+
+#: 
+msgid "Amounts entered are"
+msgstr "दर्ज की गई राशियाँ हैं"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "प्रशासक इसे रिपोर्ट सेटिंग्स के अंतर्गत अपलोड करता है।"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "स्वीकृत, लेकिन कोई निमंत्रण नहीं भेजा गया"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "अपने सिस्टम प्रशासक से ChurchCRM को नवीनतम संस्करण में अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "Authorized Signature"
+msgstr "अधिकृत हस्ताक्षर"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "कनाडा राजस्व एजेंसी"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "कनाडाई आधिकारिक रसीद"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "कनाडाई आधिकारिक रसीदों के लिए कलीसिया जानकारी पर कलीसिया देश के रूप में कनाडा आवश्यक है।"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "कनाडाई रसीदों के लिए अन्य फ़िल्टर के बिना पूरा कैलेंडर वर्ष और सभी निधियाँ आवश्यक हैं।"
+
+#: 
+msgid "Change Selection"
+msgstr "चयन बदलें"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "धर्मार्थ संगठन का कानूनी नाम"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "धर्मार्थ संगठन का पंजीकृत पता"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "धर्मार्थ संगठन पंजीकरण संख्या"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "रसीदों के लिए धर्मार्थ संगठन विवरण अभी नहीं भरे गए हैं। जब आप कर सकें तो कानूनी नाम, पंजीकृत पता, पंजीकरण संख्या और जारी करने का स्थान जोड़ें। वित्त तब तक काम करता रहेगा।"
+
+#: 
+msgid "Charity on receipts"
+msgstr "रसीदों पर धर्मार्थ संगठन"
+
+#: 
+msgid "Check Again"
+msgstr "पुनः जांचें"
+
+#: 
+msgid "Check the year"
+msgstr "वर्ष जांचें"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "वर्ष जांचें, विवरण सेट करें, फिर डाउनलोड करें।"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "किस्त राशि के लिए साप्ताहिक, मासिक या त्रैमासिक चुनें।"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "वैध दान कैलेंडर वर्ष चुनें।"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "मूल या डुप्लिकेट चुनें।"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "कुल प्रतिबद्धता या किस्त राशि चुनें।"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM अनुवाद ChurchCRM GitHub रिपॉज़िटरी में प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
+
+#: 
+msgid "Commitment amount"
+msgstr "प्रतिबद्धता राशि"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "डुप्लिकेट की तुलना रखे गए मूल से करें और पुष्टि करें कि सभी रसीद जानकारी अपरिवर्तित है।"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "डाउनलोड करने से पहले हर रसीद स्वीकृति पूरी करें।"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "धर्मार्थ संगठन का कानूनी नाम, पंजीकृत पता, पंजीकरण संख्या, जारी करने का स्थान और मुद्रित हस्ताक्षरकर्ता पूरा करें।"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "पुष्टि पत्र मुद्रित हस्ताक्षरकर्ता"
+
+#: 
+msgid "Copy Kind"
+msgstr "प्रति का प्रकार"
+
+#: 
+msgid "Currency"
+msgstr "मुद्रा"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "मुद्रा प्रतीक $ या CAD"
+
+#: 
+msgid "Date received"
+msgstr "प्राप्ति तिथि"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "इसे हटाने से %d गुण और उनके सभी असाइनमेंट भी हट जाएँगे ताकि कुछ भी लटका न रहे।"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "क्या चयनित वर्ष के सभी दान ऊपर एक साथ नामित दाता(ओं) के हैं?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "किसी संख्या का उपयोग किसी भिन्न रसीद के लिए फिर से न करें, एक ही दान के लिए दो बार रसीद न बनाएँ, या बदली हुई जानकारी को अपरिवर्तित मूल के रूप में फिर से न बनाएँ।"
+
+#: 
+msgid "Duplicate"
+msgstr "डुप्लिकेट"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "डुप्लिकेट प्रति / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "आयकर उद्देश्यों के लिए दान की पात्र राशि"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "प्रतिबद्धता का पूर्वावलोकन करने के लिए अनुसूची और किस्त तिथियाँ दर्ज करें।"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "पहली और अंतिम किस्त की वैध तिथियाँ क्रम में दर्ज करें।"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "अधिकतम दो दशमलव स्थानों के साथ वैध किस्त राशियाँ दर्ज करें।"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "मौजूदा प्रतिज्ञाएँ अपने दर्ज किए गए कुल बनाए रखती हैं। प्रति किस्त राशि केवल तभी चुनें जब आप प्रत्येक अनुसूचित दान दर्ज कर रहे हों।"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "परिवार के मुखियाओं और जीवनसाथियों से भरा गया। इसे दाताओं से ठीक-ठीक मिलान करने के लिए संपादित करें।"
+
+#: 
+msgid "First installment"
+msgstr "पहली किस्त"
+
+#: 
+msgid "Full commitment"
+msgstr "पूर्ण प्रतिबद्धता"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "कर विवरण बनाएँ"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "दान कैलेंडर वर्ष"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "दान विवरण — आधिकारिक दान रसीद नहीं है"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "GitHub पर अनुवाद में सहायता करें"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "ऐतिहासिक लिफ़ाफ़ा परिवर्तन समर्थित नहीं हैं।"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "मैंने रखे गए मूल से तुलना की: दाता, राशि, क्रम संख्या और पाठ अपरिवर्तित हैं। यह सुधार या प्रतिस्थापन नहीं है।"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "मैं जारी किए गए PDF और एक बाहरी रसीद लॉग को धर्मार्थ संगठन के कनाडाई रिकॉर्ड स्थान पर रखूँगा।"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "यदि रखा गया मूल उपलब्ध नहीं है या भिन्न है, तो अपनी बाहरी CRA-अनुरूप रद्दीकरण/प्रतिस्थापन प्रक्रियाओं का उपयोग करें।"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "भुगतान मेमो शामिल करें: मैंने उन्हें दाता के लिए उपयुक्त के रूप में समीक्षा की है।"
+
+#: 
+msgid "Include this family in the download"
+msgstr "इस परिवार को डाउनलोड में शामिल करें"
+
+#: 
+msgid "Installed version: %s"
+msgstr "इंस्टॉल किया गया संस्करण: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "किस्त राशियों का उपयोग केवल प्रतिज्ञाओं के लिए किया जा सकता है।"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "किस्त तिथियाँ चयनित वित्तीय वर्ष के भीतर होनी चाहिए।"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "अमान्य या गुम CSRF टोकन"
+
+#: 
+msgid "Issue Date"
+msgstr "जारी करने की तिथि"
+
+#: 
+msgid "Issue Locality"
+msgstr "जारी करने का स्थान"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "मूल PDF और एक बाहरी रसीद लॉग धर्मार्थ संगठन के कनाडाई रिकॉर्ड स्थान पर रखें।"
+
+#: 
+msgid "Last installment on or before"
+msgstr "अंतिम किस्त इस तिथि को या उससे पहले"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "पत्र शब्दावली, धर्मार्थ संगठन विवरण और PDF प्रबंधन विवरण सेटिंग्स पर एक बार सेट किए जाते हैं।"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "दान विवरणों के लिए पत्र शब्दावली, धर्मार्थ संगठन विवरण और PDF प्रबंधन"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "अधिकतम 2 MiB और 2000 × 1000 पिक्सेल। संग्रहीत हस्ताक्षर को बदलने के लिए एक नई छवि चुनें। हस्ताक्षर छवि सुरक्षित डिजिटल हस्ताक्षर नहीं है।"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "सदस्य साइन-इन बंद है, इसलिए %s परिवार का कोई भी व्यक्ति सदस्य पोर्टल में साइन इन नहीं कर सकता। प्रशासक इसे व्यवस्थापन → सदस्य पोर्टल के अंतर्गत चालू कर सकता है।"
+
+#: 
+msgid "Memo"
+msgstr "मेमो"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "मिश्रित-दाता परिवार भुगतान समूहों को यहाँ विभाजित नहीं किया जा सकता; उन्हें इस सुविधा के बाहर संभालें।"
+
+#: 
+msgid "Narrow the list"
+msgstr "सूची को सीमित करें"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "कोई परिवार %s के लिए इन फ़िल्टर से मेल नहीं खाता।"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "कोई अतिव्यापी व्यक्तिगत या संचयी रसीद मौजूद नहीं है।"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "इस परिवार के लिए अभी रसीद नहीं बनाई जा सकती"
+
+#: 
+msgid "No signature on file"
+msgstr "फ़ाइल पर कोई हस्ताक्षर नहीं"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "नहीं — भिन्न दाता; इसे इस सुविधा के बाहर संभालें"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "वर्तमान साइन-इन नियम के तहत %s परिवार का कोई भी व्यक्ति सदस्य पोर्टल में साइन इन नहीं कर सकता।"
+
+#: 
+msgid "None / Aucun"
+msgstr "कोई नहीं / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "कनाडाई रसीदें जारी करने के लिए तैयार नहीं। अभी भी गुम है"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "आधिकारिक रसीद / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "आयकर उद्देश्यों के लिए आधिकारिक रसीद / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "आधिकारिक रसीदों के लिए 123456789RR0001 के प्रारूप में पंजीकरण संख्या और एक हस्ताक्षर छवि आवश्यक है।"
+
+#: 
+msgid "Original"
+msgstr "मूल"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "मूल जारी करने की तिथि (रखे गए मूल से दर्ज करें)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "भुगतान तिथियाँ दान-प्राप्ति तिथियों को दर्शाती हैं, जिसमें प्रलेखित डाक-मुहर उपचार शामिल है।"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "साधारण दान विवरणों पर मुद्रित, उदाहरण के लिए संयुक्त राज्य अमेरिका में EIN। वही मान कलीसिया जानकारी पर है।"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "निजी दान-विवरण हस्ताक्षर संपत्ति पहचानकर्ता। हस्ताक्षर अपलोड द्वारा प्रबंधित।"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "गुण / असाइनमेंट"
+
+#: 
+msgid "Property deleted"
+msgstr "गुण हटाया गया"
+
+#: 
+msgid "Property type deleted"
+msgstr "गुण प्रकार हटाया गया"
+
+#: 
+msgid "Receipt Closing"
+msgstr "रसीद समापन"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "रसीद जारी करने का स्थान"
+
+#: 
+msgid "Receipt No."
+msgstr "रसीद संख्या"
+
+#: 
+msgid "Registration Number"
+msgstr "पंजीकरण संख्या"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "123456789RR0001 के प्रारूप में पंजीकरण संख्या"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "रिलीज़ नोट्स अभी उपलब्ध नहीं हैं।"
+
+#: 
+msgid "Releases"
+msgstr "रिलीज़"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s के लिए शेष प्रतिबद्धता: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA आवश्यकता हटाएँ"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "संग्रहीत हस्ताक्षर छवि हटाएँ? आधिकारिक रसीदों के लिए फ़ाइल पर एक होना आवश्यक है।"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "रिपोर्ट और अनुस्मारक इस पूर्ण-अवधि प्रतिबद्धता की तुलना दान से करते हैं। शेष राशि अतिदेय किस्त गणना नहीं है।"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "रिपोर्ट और अनुस्मारक ऊपर दिखाई गई पूर्ण प्रतिबद्धता का उपयोग करते हैं। शेष राशि अतिदेय किस्त गणना नहीं है।"
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA आवश्यक करें"
+
+#: 
+msgid "Reset Options"
+msgstr "विकल्प रीसेट करें"
+
+#: 
+msgid "Review Selected Families"
+msgstr "चयनित परिवारों की समीक्षा करें"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "नमूना — कर उद्देश्यों के लिए वैध नहीं"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "नमूना हस्ताक्षर प्लेसहोल्डर"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "बताएँ कि 2FA आवश्यक है या नहीं।"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "सुरक्षा अपडेट और समर्थन केवल नवीनतम संस्करण के लिए प्रदान किए जाते हैं।"
+
+#: 
+msgid "Select the families to review."
+msgstr "समीक्षा के लिए परिवारों का चयन करें।"
+
+#: 
+msgid "Set up the statement"
+msgstr "विवरण सेट करें"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "जारी रखने के लिए टू-फैक्टर ऑथेंटिकेशन सेट करें।"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "साझा-लिफ़ाफ़ा टकराव: किसी अन्य परिवार के पास वर्तमान में यह लिफ़ाफ़ा संख्या है।"
+
+#: 
+msgid "Signature Image"
+msgstr "हस्ताक्षर छवि"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "हस्ताक्षर छवि (व्यवस्थापन, रिपोर्ट सेटिंग्स)"
+
+#: 
+msgid "Signature on file"
+msgstr "फ़ाइल पर हस्ताक्षर"
+
+#: 
+msgid "Sincerely"
+msgstr "सादर"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "आवर्ती प्रतिज्ञा संपादित करते समय राशि का आधार निर्दिष्ट करें।"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "मानक दान विवरण"
+
+#: 
+msgid "Statement Template"
+msgstr "विवरण टेम्पलेट"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "आज से बाद की न हो ऐसी जारी करने की तिथि दें।"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "विवरणों पर कर पहचान"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s परिवार के पास सदस्य पोर्टल पर आमंत्रित करने के लिए कोई जीवित सदस्य नहीं है।"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "कनाडाई पंजीकरण संख्या का प्रारूप 123456789RR0001 होना चाहिए। यह पंजीकरण स्थिति को सत्यापित नहीं करता।"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "धर्मार्थ संगठन पंजीकरण संख्या पाठ होनी चाहिए।"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "आधिकारिक रसीदों पर मुद्रित धर्मार्थ संगठन पंजीकरण संख्या। खाली रहने पर कलीसिया जानकारी पर मौजूद कर पहचान का उपयोग होता है।"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "धर्मार्थ संगठन का पंजीकृत पता। खाली रहने पर कलीसिया जानकारी पर मौजूद पते का उपयोग होता है।"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "हस्ताक्षरकर्ता के ऊपर समापन वाक्यांश, उदाहरण के लिए सादर।"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "पूर्ण प्रतिबद्धता प्रति निधि 999999.99 से अधिक नहीं होनी चाहिए और राशियों में अधिकतम दो दशमलव स्थान होने चाहिए।"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "आपकी पिछली जांच के बाद से दान या डाक पता बदल गया है। उनकी समीक्षा करें और दाता की फिर से पुष्टि करें।"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "डाक पता अधूरा है। सड़क, शहर, प्रांत और डाक कोड आवश्यक हैं।"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "वह नाम जिससे धर्मार्थ संगठन पंजीकृत है। यह कलीसिया के नाम से भिन्न हो सकता है।"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "वह स्थान जहाँ रसीदें जारी की जाती हैं। खाली रहने पर कलीसिया जानकारी पर मौजूद शहर का उपयोग होता है।"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "मुद्रित दान-विवरण हस्ताक्षरकर्ता इन रसीदों पर हस्ताक्षर करने के लिए अधिकृत है।"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "कनाडाई रसीदों के लिए सिस्टम मुद्रा प्रतीक $ होना चाहिए या CAD की पहचान करनी चाहिए।"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "चयनित कैलेंडर वर्ष में कोई भुगतान नहीं है।"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "ये इस परिवार/कैलेंडर वर्ष में हर दान के लिए सच्चे दाता हैं, और डाक पता सही है।"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "यह छवि दान विवरणों और रसीदों पर हस्ताक्षरकर्ता के नाम के ऊपर मुद्रित होती है। धर्मार्थ संगठन विवरण और हस्ताक्षरकर्ता का मुद्रित नाम वित्त, विवरण सेटिंग्स के अंतर्गत हैं।"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "यह विकल्प कनाडाई रसीद को स्वरूपित करता है लेकिन रसीद रजिस्टर नहीं रखता और PDF नहीं रखता।"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "यह स्व-पंजीकृत परिवार स्वीकृति की प्रतीक्षा कर रहा है। इसे स्वीकृत करने से हर सदस्य को, जो सदस्य पोर्टल में साइन इन कर सकता है, परिवार की जानकारी की समीक्षा करने का निमंत्रण ईमेल किया जाता है।"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "इस टूल में कोई रद्दीकरण/प्रतिस्थापन कार्यप्रवाह नहीं है; सुधारों/खोई हुई रसीद प्रतिस्थापनों के लिए अपनी मौजूदा CRA-अनुरूप प्रक्रिया का उपयोग करें।"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "इस उपयोगकर्ता को 2FA सेट करना होगा"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "यह परिवार रिकॉर्ड और उसके नोट्स को स्थायी रूप से हटा देगा। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Total commitment"
+msgstr "कुल प्रतिबद्धता"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "प्रतिबद्धता का पूर्वावलोकन करने में असमर्थ।"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "हस्ताक्षर अपलोड करें या बदलें"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "अधिकृत कर हस्ताक्षर रिपोर्ट सेटिंग्स में अपलोड करें।"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "चयनित वित्तीय वर्ष के भीतर की तिथियों का उपयोग करें। मासिक और त्रैमासिक दान पहली किस्त के दिन, या छोटे महीनों के अंतिम दिन का उपयोग करते हैं।"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "सत्यापित पूरा दाता नाम"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "इसके बजाय परिवार को व्यक्तिगत रूप से सत्यापित करें।"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "हर परिवार के लिए पूरा दाता नाम और पता सत्यापित करें। मिश्रित-दाता भुगतान समूहों को इस सुविधा के बाहर संभालना होगा।"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "संस्करण %s उपलब्ध है। कृपया अपने प्रशासक से अपनी स्थापना को अपग्रेड करने के लिए कहें।"
+
+#: 
+msgid "View all emails"
+msgstr "सभी ईमेल देखें"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "हाँ — एक सत्यापित दाता समूह"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "आपका कलीसिया देश कनाडा है, इसलिए जब आप विवरण बनाते हैं तो कनाडाई आधिकारिक रसीदें भी उपलब्ध होती हैं।"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "आपका कलीसिया देश कनाडा है, इसलिए कनाडाई आधिकारिक रसीदें दान विवरणों पर उपलब्ध हैं और साधारण विवरणों को आधिकारिक दान रसीद नहीं के रूप में चिह्नित किया जाता है।"
+
+#: 
+msgid "groups"
+msgstr "समूह"
 

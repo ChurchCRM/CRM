@@ -7,6 +7,7 @@ import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
 import { alertAction, confirmAction } from "./common/confirm-action";
+import { copyText } from "./common/copy-to-clipboard";
 import { applyFcLocale } from "./common/fc-locale";
 import { escapeHtml } from "./utils/escape-html";
 
@@ -148,7 +149,7 @@ function deleteCalendar() {
 
 /**
  * Volunteer v2 D25: the church calendar's "Ministries that may add events". The server sends
- * the ministries only when the rollout is on and this user may change the grants, so an empty
+ * the ministries only when this user may change the grants, so an empty
  * list means the field is not shown at all.
  */
 function grantMinistries() {
@@ -210,39 +211,17 @@ function calendarTakesMinistryGrants(calendar) {
 
 window.calendarPropertiesModal = {
   _copyToClipboard: (text) => {
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          // brief visual feedback handled by btn animation
-        })
-        .catch(() => {
-          // Fallback to old method if clipboard API fails
-          const fallbackTextarea = document.createElement("textarea");
-          fallbackTextarea.value = text;
-          fallbackTextarea.setAttribute("readonly", "");
-          fallbackTextarea.style.position = "absolute";
-          fallbackTextarea.style.left = "-9999px";
-          document.body.appendChild(fallbackTextarea);
-          try {
-            fallbackTextarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(fallbackTextarea);
-          } catch (_e) {
-            document.body.removeChild(fallbackTextarea);
-            window.CRM.notify(i18next.t("Unable to copy to clipboard. Please copy the URL manually."), {
-              type: "danger",
-              delay: 6000,
-            });
-          }
+    // Shared helper (#11458): Clipboard API with the execCommand fallback for
+    // plain-HTTP contexts. Success feedback is the button's own check-icon
+    // animation at the call site; only a total failure gets a toast.
+    copyText(text).then((copied) => {
+      if (!copied) {
+        window.CRM.notify(i18next.t("Unable to copy to clipboard. Please copy the URL manually."), {
+          type: "danger",
+          delay: 6000,
         });
-    } else {
-      // Fallback for non-secure contexts
-      window.CRM.notify(i18next.t("Clipboard API not available. Please copy the URL manually."), {
-        type: "warning",
-        delay: 6000,
-      });
-    }
+      }
+    });
   },
   getBootboxContent: (calendar) => {
     let HTMLURL = "";

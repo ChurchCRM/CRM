@@ -24,9 +24,9 @@ describe("Unfinished logins are not sessions", () => {
         });
 
     const expectSignedOut = () => {
-        cy.request({ url: "/v2/dashboard", followRedirect: false, failOnStatusCode: false }).then((resp) => {
+        cy.request({ url: "/people/dashboard", followRedirect: false, failOnStatusCode: false }).then((resp) => {
             expect(resp.status, "dashboard must redirect, not render").to.eq(302);
-            expect(resp.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(resp.redirectedToUrl).to.match(/\/session\/begin$/);
         });
         cy.request({ url: "/api/persons/latest", failOnStatusCode: false })
             .its("status")
@@ -68,9 +68,9 @@ describe("Unfinished logins are not sessions", () => {
     it("a completed login still works", () => {
         postLogin(Cypress.testEnv("standard.username"), Cypress.testEnv("standard.password")).then((resp) => {
             expect(resp.status).to.eq(302);
-            expect(resp.redirectedToUrl).to.include("/v2/dashboard");
+            expect(resp.redirectedToUrl).to.include("/people/dashboard");
         });
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+        cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 200);
         cy.request("/api/persons/latest").its("status").should("eq", 200);
     });
 });

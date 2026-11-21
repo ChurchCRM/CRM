@@ -17,12 +17,12 @@ test('register-first-time-visitor', async ({ page }, testInfo) => {
   await expect(page.locator('#person-deactivated')).toBeHidden();
   await humanPause(page, 1500);
 
-  await humanClick(page.locator('a.btn[href*="NoteEditor.php?PersonID="]'));
+  await humanClick(page.getByRole('button', { name: 'Add Note' }));
   const followUp = 'Welcome team: call Avery this week to thank them for visiting and invite them to Sunday coffee.';
-  await humanType(page.locator('.ql-editor'), followUp);
-  await humanClick(page.locator('input[name="Submit"]'));
-  await page.waitForURL(/\/people\/view\/\d+/);
-  const savedNote = page.locator('#timeline .note-preview').filter({ hasText: followUp });
+  await humanType(page.locator('#noteText .ql-editor'), followUp);
+  await humanClick(page.locator('#noteWhyCameSave'));
+  await humanClick(page.locator('#nav-item-notes'));
+  const savedNote = page.locator('#notes .note-preview').filter({ hasText: followUp });
   await expect(savedNote).toBeVisible();
   await savedNote.scrollIntoViewIfNeeded();
   await settle(page, 2500);

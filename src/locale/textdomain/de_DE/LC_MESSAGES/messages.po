@@ -866,14 +866,6 @@ msgid "Assign"
 msgstr "Festlegen"
 
 #: 
-msgid "Date Updated"
-msgstr "Aktualisiert am"
-
-#: 
-msgid "Updated By"
-msgstr "Aktualisiert durch"
-
-#: 
 msgid "Since"
 msgstr "Seit"
 
@@ -1358,10 +1350,6 @@ msgid "People"
 msgstr "Personen"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Kinder der Sonntagsschule"
-
-#: 
 msgid "Role / Gender"
 msgstr "Rolle / Geschlecht"
 
@@ -1406,10 +1394,6 @@ msgid "Updated"
 msgstr "Aktualisiert"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Diese Aktion kann nicht rückgängig gemacht werden)"
-
-#: 
 msgid "Note Editor"
 msgstr "Notiz Editor"
 
@@ -1428,10 +1412,6 @@ msgstr "Gruppe"
 #: 
 msgid "Default"
 msgstr "Standart"
-
-#: 
-msgid "Exit"
-msgstr "Ausgang"
 
 #: 
 msgid "Add New"
@@ -1541,11 +1521,6 @@ msgid "Assign New Group"
 msgstr "Neue Gruppe zuweisen"
 
 #: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Neue ehrenamtliche Aufgabe festlegen"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nicht abzugsfähiger Betrag kann nicht größer als der Gesamtbetrag sein."
 
@@ -1639,10 +1614,6 @@ msgid "Warning"
 msgstr "Warnung"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Dieser Eigenschaftstyp wird von mindestens einer Eigenschaft benutzt."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Bitte bestätige die Löschung dieses Eigenschaftstyps"
@@ -1665,49 +1636,8 @@ msgid "Restore Database"
 msgstr "Datenbank wiederherstellen"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Bestätige das Löschen von"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Achtung, dieser Familie sind Spenden zugeordnet. Diese Familie darf nicht gelöscht werden."
-
-#: 
-msgid "Return to Family View"
-msgstr "Zurück zur Familienansicht"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ACHTUNG: Dieser Familie wurden Spenden zugewiesen und darf erst gelöscht werden wenn diese Spenden einer anderen Familie zugwiesen werden."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "ACHTUNG: Diese Aktion kann nicht zurückgenommen werden und könnte rechtliche Konsequenzen haben!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "AKTUELLE FAMILIEN MIT SPENDEN"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Hinweis: Dies wird auch alle Notizen löschen, die mit dem Familieneintrag verknüpft sind."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Nur den Familieneintrag löschen"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Lösche Familieneinträge und Familienmitglieder"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
-
-#: 
-msgid "My User Settings"
-msgstr "Meine Benutzereinstellungen"
 
 #: 
 msgid "Variable name"
@@ -1799,14 +1729,6 @@ msgstr "Neues Passwort"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Passwort bestätigen"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Editor zu den ehrenamtlichen Fähigkeiten"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Bisher wurden keine ehrenamtlichen Fähigkeiten erfasst"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2314,14 +2236,6 @@ msgstr "Alle Gelder löschen"
 #: 
 msgid "Deposit Comment"
 msgstr "Kommentar zur Einzahlung"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Unterschriftendatei Verifizierung fehlgeschlagen"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Eine oder mehrere Dateien haben die Signaturprüfung nicht bestanden"
 
 #: 
 msgid "item"
@@ -4600,10 +4514,6 @@ msgid "People Reports"
 msgstr "Personen-Berichte"
 
 #: 
-msgid "People Dashboard"
-msgstr "Personen-Dashboard"
-
-#: 
 msgid "People Directory"
 msgstr "Personen-Verzeichnis"
 
@@ -4847,10 +4757,6 @@ msgid "Estonian"
 msgstr "Estnisch"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Fehler bei der Entschlüsselung der Signatur-Definitionsdatei"
-
-#: 
 msgid "Event not found"
 msgstr "Ereignis nicht gefunden"
 
@@ -5055,10 +4961,6 @@ msgid "View Person Page"
 msgstr "Personenseite anzeigen"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
 msgid "Deleted"
 msgstr "Gelöscht"
 
@@ -5199,10 +5101,6 @@ msgstr "Content Security Policy (CSP) erzwingen, um vor böswilligen Skripten zu
 #: 
 msgid "Enter event description..."
 msgstr "Ereignisbeschreibung eingeben..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Notiztext hier eingeben..."
 
 #: 
 msgid "Note"
@@ -5439,14 +5337,6 @@ msgstr "Bitte geben Sie eine gültige URL ein, die mit http:// oder https:// beg
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Alle Systemdateisignaturen stimmen mit den erwarteten Werten überein."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Signaturdefinitionsdatei existiert, ist aber nicht lesbar. Überprüfen Sie die Dateiberechtigungen."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Signaturdefinitionsdatei fehlt bei %s. Führen Sie die Verpackungsaufgabe aus oder stellen Sie eine offizielle Version bereit, um die Signaturen neu zu generieren."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6522,20 +6412,8 @@ msgid "Additional Information"
 msgstr "Zusätzliche Informationen"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Chancen zuweisen"
-
-#: 
 msgid "Choose a property..."
 msgstr "Wählen Sie eine Eigenschaft..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Wählen Sie Chancen..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt- & Personalinfo"
 
 #: 
 msgid "Edited"
@@ -6544,14 +6422,6 @@ msgstr "Bearbeitet"
 #: 
 msgid "Newsletter"
 msgstr "Newsletter"
-
-#: 
-msgid "Personal"
-msgstr "Persönlich"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Chancen auswählen"
 
 #: 
 msgid "Volunteer"
@@ -6738,10 +6608,6 @@ msgid "Confirm Property Deletion"
 msgstr "Löschung der Eigenschaft bestätigen"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Löschen der Freiwilligenchance bestätigen"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Löschen bestätigen"
 
@@ -6754,16 +6620,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Vorhandene benutzerdefinierte Personenfelder"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Vorhandene Freiwilligenchancen"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Feld erfolgreich gelöscht"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Ungültiges CSRF-Token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6814,10 +6672,6 @@ msgid "Add Property Type"
 msgstr "Eigenschaftstyp hinzufügen"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Fügen Sie Ihren ersten Eigenschaftstyp hinzu"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Durch das Löschen dieses Feldes verlieren Sie unwiderruflich alle Gruppenmitgliedsdaten, die diesem Feld zugewiesen sind!"
 
@@ -6836,10 +6690,6 @@ msgstr "Ausgecheckt"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Aktuelles Geschäftsjahr"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Löschen (löscht alle zugehörigen Datensätze)"
 
 #: 
 msgid "Edit Property Type"
@@ -6890,10 +6740,6 @@ msgid "No property types found"
 msgstr "Keine Eigenschaftstypen gefunden"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Anzahl der Datensätze, die diesen Eigenschaftstyp verwenden"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Optionale detaillierte Beschreibung dieses Eigenschaftstyps"
 
@@ -6924,10 +6770,6 @@ msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Verfolgen und verwalten Sie Zusagenverpflichtungen nach Familie und Fonds"
-
-#: 
-msgid "View Properties"
-msgstr "Eigenschaften anzeigen"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7907,18 +7749,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Möchten Sie diesen Spendenversprechen-Eintrag wirklich dauerhaft löschen?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Abbrechen und zur Familienansicht zurückkehren"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Wenn Sie diesen Typ löschen, entfernen Sie auch alle Eigenschaften, die ihn verwenden, und verlieren alle entsprechenden Eigenschaftszuweisungen."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Spenden zur ausgewählten Familie verschieben"
-
-#: 
 msgid "Calendar not found"
 msgstr "Kalender nicht gefunden"
 
@@ -8191,10 +8021,6 @@ msgid "or later to continue."
 msgstr "oder höher, um fortzufahren."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Notizen \"Wie Sie kamen\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d Ergebnis für \"%s\""
@@ -8303,10 +8129,6 @@ msgstr "Einzelne Personendatensätze hinzufügen oder bearbeiten"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Gespendete Gegenstände für Spendenaktionen hinzufügen oder bearbeiten"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Notizen für Personen und Familien hinzufügen oder bearbeiten"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8563,10 +8385,6 @@ msgstr "Gemeindeveranstaltungen und Aktivitäten erstellen und verwalten"
 #: 
 msgid "Create or edit property type categories"
 msgstr "Eigenschaftstyp-Kategorien erstellen oder bearbeiten"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "Ehrenamtliche Stellen erstellen oder bearbeiten"
 
 #: 
 msgid "Current person"
@@ -9017,14 +8835,6 @@ msgid "Manage user account details and permissions"
 msgstr "Benutzerkonto-Details und Berechtigungen verwalten"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Ehrenamtliche Möglichkeiten verwalten und Mitglieder zuweisen"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Persönliche Präferenzen und Kontoeinstellungen verwalten"
-
-#: 
 msgid "Map cart items"
 msgstr "Warenkorbelemente zuordnen"
 
@@ -9059,10 +8869,6 @@ msgstr "In Gruppe verschieben"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Wechseln Sie von einer bestehenden ChurchCRM- oder ChurchInfo-Installation? Laden Sie Ihre Sicherungsdatei hoch, und wir stellen Ihre Daten automatisch wieder her."
-
-#: 
-msgid "My Settings"
-msgstr "Meine Einstellungen"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9149,10 +8955,6 @@ msgid "No timeline events yet."
 msgstr "Noch keine Zeitleistenereignisse."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Noch keine Zuweisungen für ehrenamtliche Möglichkeiten."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Noch nicht bereit?"
 
@@ -9189,10 +8991,6 @@ msgstr "Übersicht"
 #: 
 msgid "Password Recovery"
 msgstr "Passwort-Wiederherstellung"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Vergangene & nächste 7 Tage"
 
 #: 
 msgid "People by Classification"
@@ -9277,10 +9075,6 @@ msgstr "Mehrere Gewinner einer Spendenverlosung auf einmal erfassen"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Neue Spendenversprechen und Zahlungen erfassen"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Grund des Besuchs der Gemeinde erfassen"
 
 #: 
 msgid "Remove from Class"
@@ -9663,10 +9457,6 @@ msgid "funds"
 msgstr "Fonds"
 
 #: 
-msgid "opportunities"
-msgstr "Möglichkeiten"
-
-#: 
 msgid "or connect an external service"
 msgstr "oder einen externen Dienst verbinden"
 
@@ -9966,11 +9756,6 @@ msgstr "Fehler beim Abrufen von E-Mail-Adressen"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Fehler beim Abrufen von Telefonnummern"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Freiwillige für eine bestimmte Gelegenheit suchen"
 
 #. Context: query_qry
 #: 
@@ -11095,10 +10880,6 @@ msgstr "Dunkel"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Nur Datenbank (.sql) oder vollständiges Archiv (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Standardanzahl der angezeigten Zeilen in Datentabellen. Wird beim nächsten Seitenaufruf wirksam."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11152,10 +10933,6 @@ msgstr "Malayalam – Indien"
 #: 
 msgid "Manage 2FA"
 msgstr "Zwei-Faktor-Authentifizierung verwalten"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Zusätzliche Einstellungen wie E-Mail-Trennzeichen und Anzeigeoptionen verwalten"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11414,14 +11191,6 @@ msgstr "Eingecheckt von"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Das Einchecken ist für inaktive Veranstaltungen deaktiviert. Aktivieren Sie die Veranstaltung im Veranstaltungs-Dashboard, um das Einchecken zu ermöglichen."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Eingecheckt für Veranstaltung: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Ausgecheckt von Veranstaltung: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11832,14 +11601,6 @@ msgid "e.g., 40.7128"
 msgstr "z.B. 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Beim Löschen der Familie ist ein Fehler aufgetreten."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Beim Verschieben der Spenden ist ein Fehler aufgetreten."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Mindestens ein Familienmitglied ist erforderlich"
 
@@ -11858,10 +11619,6 @@ msgstr "Löschen fehlgeschlagen"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Die Richtung muss \"oben\" oder \"unten\" sein"
-
-#: 
-msgid "Failed to move donations."
-msgstr "Spenden konnten nicht verschoben werden."
 
 #: 
 msgid "Finance permission required"
@@ -11898,10 +11655,6 @@ msgstr "Mitgliedschaft nicht gefunden"
 #: 
 msgid "Password successfully changed for"
 msgstr "Passwort erfolgreich geändert für"
-
-#: 
-msgid "Please select a target family."
-msgstr "Bitte wählen Sie eine Zielfamilie aus."
 
 #: 
 msgid "Target family not found"
@@ -12769,10 +12522,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Eigenschaftstyp kann nicht gelöscht werden: %d Eigenschaften referenzieren ihn noch. Ordnen Sie diese Eigenschaften zuerst neu zu oder löschen Sie sie."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Freiwilligenstelle kann nicht gelöscht werden: %d Personen sind noch zugewiesen. Entfernen Sie zuerst die Zuweisungen."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klasse muss p, f oder g sein"
 
@@ -12783,10 +12532,6 @@ msgstr "Fehlermeldung kopieren"
 #: 
 msgid "Could not load note."
 msgstr "Notiz konnte nicht geladen werden."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Beschreibung darf 100 Zeichen nicht überschreiten"
 
 #: 
 msgid "Donation fund not found"
@@ -12809,10 +12554,6 @@ msgid "Failed to create property type"
 msgstr "Eigenschaftstyp konnte nicht erstellt werden"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Freiwilligenstelle konnte nicht erstellt werden"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Spendenfonds konnte nicht gelöscht werden"
 
@@ -12829,10 +12570,6 @@ msgid "Failed to delete property type"
 msgstr "Eigenschaftstyp konnte nicht gelöscht werden"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Freiwilligenstelle konnte nicht gelöscht werden"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Spendenfonds konnte nicht aktualisiert werden"
 
@@ -12845,10 +12582,6 @@ msgid "Failed to update property type"
 msgstr "Eigenschaftstyp konnte nicht aktualisiert werden"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Freiwilligenstelle konnte nicht aktualisiert werden"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Spendensammlung nicht gefunden"
 
@@ -12859,10 +12592,6 @@ msgstr "Installations-ID"
 #: 
 msgid "Invalid class"
 msgstr "Ungültige Klasse"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Name darf 30 Zeichen nicht überschreiten"
 
 #: 
 msgid "Note by %s deleted"
@@ -12885,16 +12614,8 @@ msgid "Read more"
 msgstr "Mehr lesen"
 
 #: 
-msgid "That name already exists."
-msgstr "Dieser Name existiert bereits."
-
-#: 
 msgid "Title is required"
 msgstr "Titel ist erforderlich"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Freiwilligenstelle nicht gefunden"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13105,14 +12826,6 @@ msgid "Click Save to apply."
 msgstr "Klicken Sie auf Speichern, um die Änderungen anzuwenden."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Zwischenablage-API nicht verfügbar. Bitte kopieren Sie die URL manuell."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Zwischenablage nicht verfügbar. Bitte verwenden Sie die Schaltfläche Herunterladen, um Ihre Codes zu speichern."
-
-#: 
 msgid "Code incomplete"
 msgstr "Code unvollständig"
 
@@ -13231,10 +12944,6 @@ msgstr "Demodaten werden normalerweise nur bei Neuinstallationen geladen. Ein Im
 #: 
 msgid "Deposit ID"
 msgstr "Kaution ID"
-
-#: 
-msgid "Deposit Value"
-msgstr "Einlagebetrag"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13653,22 +13362,6 @@ msgid "Move Members to Group"
 msgstr "Mitglieder in Gruppe verschieben"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt (z.B. http://localhost oder https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Muss eine gültige Portnummer sein (z.B. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Muss mit / beginnen, wenn nicht leer; kein abschließender Schrägstrich. Nur Buchstaben, Zahlen, Unterstrich, Bindestrich, Punkt und / erlaubt."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Müssen Sie diese Daten später entfernen?"
 
@@ -13691,14 +13384,6 @@ msgstr "Keine Einlagen"
 #: 
 msgid "No Events Today"
 msgstr "Heute keine Veranstaltungen"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Keine Jahrestage in den letzten oder nächsten 7 Tagen"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Keine Geburtstage in den letzten oder nächsten 7 Tagen"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13827,10 +13512,6 @@ msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Bitte geben Sie eine gültige Nummer ein"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14645,24 +14326,12 @@ msgid "People &amp; Families"
 msgstr "Personen &amp; Familien"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Die Notiz, die Sie bearbeiten möchten, existiert nicht mehr."
-
-#: 
 msgid "User List"
 msgstr "Benutzerliste"
 
 #: 
 msgid "View Person"
 msgstr "Person anzeigen"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Sie haben keine Berechtigung, eine Notiz für diese Familie hinzuzufügen."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Sie haben keine Berechtigung, eine Notiz für diese Person hinzuzufügen."
 
 #: 
 msgid "Account locked"
@@ -15293,10 +14962,6 @@ msgid "Target family"
 msgstr "Zielfamilie"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Die Gruppe konnte nicht gefunden werden. Bitte versuchen Sie es erneut."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Die ausgewählte Familie existiert nicht mehr. Bitte laden Sie die Seite neu und versuchen Sie es erneut."
 
@@ -15363,10 +15028,6 @@ msgstr "goalAmount darf nicht negativ sein"
 #: 
 msgid "thru %s"
 msgstr "bis %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "„Warum gekommen“-Notizen für %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15473,14 +15134,6 @@ msgid "Output Method"
 msgstr "Ausgabemethode"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Bitte bestätigen Sie das Löschen dieses Familiendatensatzes"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Bitte wählen Sie eine andere Familie aus, der diese Spenden zugeordnet werden sollen"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Überweisungsträger"
 
@@ -15523,10 +15176,6 @@ msgstr "Unterstützte Formate"
 #: 
 msgid "System Configuration"
 msgstr "Systemkonfiguration"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Dieser Freiwilligenaufgabe sind Personen zugewiesen. Das Löschen hebt die Zuweisung auf"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15757,10 +15406,6 @@ msgid "Add New Fund"
 msgstr "Neuen Fonds hinzufügen"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Neue Möglichkeit hinzufügen"
-
-#: 
 msgid "Add New Person"
 msgstr "Neue Person hinzufügen"
 
@@ -15773,10 +15418,6 @@ msgid "Add New Role"
 msgstr "Neue Rolle hinzufügen"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Neue Freiwilligenaufgabe hinzufügen"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Sonntagsschulklasse hinzufügen"
 
@@ -15785,24 +15426,8 @@ msgid "Delete this family?"
 msgstr "Diese Familie löschen?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Möchten Sie diese Familie löschen? Sie werden zu einer Seite weitergeleitet, auf der Sie auswählen können, was gelöscht werden soll. Dieser Vorgang kann nicht rükgängig gemacht werden."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Löschen der Familie bestätigen"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Löschen des Eigenschaftstyps bestätigen"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Neue Familien und Einzelpersonen überprüfen, die sich über Ihr öffentliches Anmeldeformular registriert haben"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Löschen der Freiwilligenaufgabe bestätigen"
 
 #: 
 msgid "# Payments"
@@ -17469,14 +17094,6 @@ msgid "Find people who did not attend an event"
 msgstr "Personen suchen, die an einem Ereignis nicht teilgenommen haben"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Freiwillige suchen, die zwei spezifische Gelegenheitscodes erfüllen"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Erste Freiwilligengelegenheit"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Gefaltetes Heftchen"
 
@@ -17553,10 +17170,6 @@ msgid "Run Report"
 msgstr "Bericht ausführen"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Zweite Freiwilligengelegenheit"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Angezeigt in der Seitenleiste, auf der Anmeldeseite und in E-Mails. Durch das Hochladen eines Logos wird das ChurchCRM-Branding überall ersetzt."
 
@@ -17583,14 +17196,6 @@ msgstr "Verwendet Standard-ChurchCRM-Logo"
 #: 
 msgid "View Full Family Giving"
 msgstr "Vollständige Familienspenden anzeigen"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Freiwilligengelegenheit"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Freiwillige für zwei Gelegenheiten"
 
 #: 
 msgid "YTD"
@@ -18065,10 +17670,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrierungen aus Ihrem öffentlichen Registrierungsformular, die auf Prüfung warten. Einträge ohne E-Mail-Adresse oder Telefonnummer sind markiert — prüfen Sie die Kontaktdaten, bevor Sie nachfassen."
 
 #: 
-msgid "Review now"
-msgstr "Jetzt prüfen"
-
-#: 
 msgid "Review self registrations"
 msgstr "Selbstregistrierungen prüfen"
 
@@ -18119,10 +17720,6 @@ msgstr "Gestern"
 #: 
 msgid "days ago"
 msgstr "Tage her"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "Selbstregistrierungen warten auf Prüfung"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18423,10 +18020,6 @@ msgstr "Ein Plan, der einer Veranstaltungsart folgt, muss die Veranstaltungsart 
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Ein Plan, der eine einzelne Veranstaltung besetzt, kann keinen anderen Veranstaltungen folgen; löschen Sie ihn und fügen Sie stattdessen einen Plan hinzu"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Eine einfache Liste von Möglichkeiten, etwa „Kinderbetreuung“ oder „Begrüßungsdienst“, geführt unter Personen → Verwaltung. Jede Person wird auf dem Reiter Ehrenamt ihres Datensatzes mit den Möglichkeiten markiert, bei denen sie helfen möchte. Mehr wird nicht erfasst: keine Teams, keine Pläne, keine Einsätze an einem Datum und keine Erinnerungs-E-Mails. Die Markierungen werden in Berichten und im Personendatensatz verwendet."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18735,18 +18328,6 @@ msgstr "Hintergrundaufgaben ausgeführt"
 #: 
 msgid "Birthday greeting"
 msgstr "Geburtstagsgruß"
-
-#: 
-msgid "Both"
-msgstr "Beide"
-
-#: 
-msgid "Both (transition)"
-msgstr "Beide (Übergang)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Beide — V1 und V2 nebeneinander (Übergang)"
 
 #: 
 msgid "Calendar address"
@@ -21833,22 +21414,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Der Benutzer muss die Berechtigung Veranstaltungen hinzufügen haben oder den Ehrenamtsdienst koordinieren, zu dem dieser Kalender gehört"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Ehrenamtsmöglichkeiten (alt)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — alte Ehrenamtsmöglichkeiten"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Dienste"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Ehrenamtsverwaltung"
-
-#: 
 msgid "Valid"
 msgstr "Gültig"
 
@@ -21867,14 +21432,6 @@ msgstr "Veranstaltung ansehen"
 #: 
 msgid "View this email"
 msgstr "Diese E-Mail ansehen"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Ehrenamt (alt)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Ehrenamtsverwaltung V2 ist nicht aktiviert"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21981,10 +21538,6 @@ msgid "What the check found"
 msgstr "Was die Prüfung ergeben hat"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Was die Ehrenamtsverwaltungen sind"
-
-#: 
 msgid "What you want to say"
 msgstr "Was Sie sagen möchten"
 
@@ -22015,10 +21568,6 @@ msgstr "Woher die Termine stammen"
 #: 
 msgid "Where we reach you"
 msgstr "Wie wir Sie erreichen"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Welche Ehrenamtsverwaltung aktiv ist. V1 ist die alte Funktion Ehrenamtsmöglichkeiten; V2 ist der neue Ablauf für Planung und Einteilung. „Beide“ zeigt beide Seiten während der Umstellung nebeneinander."
 
 #: 
 msgid "Which events"
@@ -22429,10 +21978,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Nur ein Freiwilligenkoordinator kann ändern, wer einen Dienst koordiniert"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Die Wahl von V1 pausiert V2-E-Mails von Freiwilligen; alles, was in der Warteschlange ist, wird gesendet, wenn V2 wieder aktiviert ist, es sei denn, sein Ereignis ist vorbei."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "Fügen Sie hier die Ereignisse dieses Dienstes hinzu: ein Arbeitstag, ein Kurs, der sich jeden Sonntag trifft. Sie erscheinen im Kirchenkalender, und wenn sie sind gemacht, wird u gefragt, ob Sie sie mit Personal besetzten möchten."
 
@@ -22543,10 +22088,6 @@ msgstr "Walk-in-Gast registrieren"
 #: 
 msgid "Register walk-in guest"
 msgstr "Walk-in-Gast registrieren"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Als Walk-in-Gast am Kiosk während des Ereignisses registriert: %s"
 
 #: 
 msgid "Registering..."
@@ -23279,10 +22820,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Vorlaufzeit für Hinweise zu unbesetzten Aufgaben (Stunden)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Freiwilligenverwaltung"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Freiwilligendienste, Teams, Pläne und Zuweisungen"
 
@@ -23293,14 +22830,6 @@ msgstr "Freiwilligenaufgaben für die kommenden Tage"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Für diese anstehenden Termine werden noch Freiwillige gebraucht: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Was bedeuten diese Angaben?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Welche Freiwilligenansicht diese Gemeinde nutzt"
 
 #: 
 msgid "You are on the schedule"
@@ -24231,10 +23760,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d Zahlungen sind noch keiner Einzahlung zugeordnet."
 
 #: 
-msgid "Closing line"
-msgstr "Schlusstext"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Jede Einzahlung mit Datum in diesem Jahr ist geschlossen."
 
@@ -24247,28 +23772,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Jede Zahlung in diesem Jahr ist einer Einzahlung zugeordnet."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Steuerbescheinigungen erstellen"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Spendenbericht (Steuerbescheinigungen)"
-
-#: 
-msgid "Opening line"
-msgstr "Einleitungstext"
-
-#: 
 msgid "Qty"
 msgstr "Anz."
-
-#: 
-msgid "Signed by"
-msgstr "Unterzeichnet von"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dankeszeile"
 
 #: 
 msgid "Year-End Giving"
@@ -24399,10 +23904,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Null schaltet eine optionale Voraussetzung aus. Für das Alter ist ein vollständiges Geburtsdatum nötig, für die Mitgliedsdauer ein Mitgliedschaftsdatum. Personen ohne die erforderlichen Daten werden ausgelassen und getrennt gezählt. Verstorbene Personen, inaktive Personen und Klassifikationen sowie inaktive oder noch zu prüfende Familien und Personen sind immer ausgeschlossen; es gelten die aktuelle Klassifikation und der aktuelle Status, nicht ein früherer Status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Fälliger Betrag für %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Im gewählten Verzeichnis kann kein privater temporärer PDF-Speicher angelegt werden."
 
@@ -24429,10 +23930,6 @@ msgstr "Das temporäre PDF-Verzeichnis ist nicht vorhanden oder nicht erreichbar
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Das temporäre PDF-Verzeichnis muss ein absoluter Verzeichnispfad sein."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Steuernummer der Gemeinde (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24477,10 +23974,6 @@ msgstr "Einstellungen für Bescheinigungen"
 #: 
 msgid "Statement Wording"
 msgstr "Formulierung der Bescheinigung"
-
-#: 
-msgid "Tax Information"
-msgstr "Steuerangaben"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24529,10 +24022,6 @@ msgstr "Name und Anschrift der Gemeinde werden verwendet"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Der in den Systemeinstellungen hinterlegte Briefkopfpfad wird verwendet"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formulierung, Steuer-ID und PDF-Verarbeitung für Spendenbescheinigungen"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24805,10 +24294,6 @@ msgstr "Land der Gemeinde"
 #: 
 msgid "Church default: %s"
 msgstr "Vorgabe der Gemeinde: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Anmeldung für die Gemeindeleitung"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25453,10 +24938,6 @@ msgstr "Nicht beendet"
 #: 
 msgid "Not moved"
 msgstr "Nicht verschoben"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Unsicher, welche E-Mail wir haben? Wenden Sie sich an das Gemeindebüro."
 
 #: 
 msgid "Not yet"
@@ -26711,248 +26192,8 @@ msgid "Review Family Information"
 msgstr "Familienangaben prüfen"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Ein Dienst namens „%s“ existiert bereits. Wählen Sie ihn aus der Liste oder einen anderen Namen."
-
-#: 
-msgid "A new ministry"
-msgstr "Ein neuer Dienst"
-
-#: 
-msgid "A position"
-msgstr "Eine Aufgabe"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "{{total}} Freiwillige zu früher umgewandelten Aufgaben hinzufügen?"
-
-#: 
-msgid "Already converted"
-msgstr "Bereits umgewandelt"
-
-#: 
-msgid "An existing ministry"
-msgstr "Ein bestehender Dienst"
-
-#: 
-msgid "Becomes"
-msgstr "Wird zu"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM bietet zwei Arten, Freiwillige zu verwalten. Es soll jeweils nur eine genutzt werden; die Einstellung „Freiwilligen-Erfahrung“ legt fest, welche diese Gemeinde sieht. Ein Wechsel blendet Seiten und Menüeinträge ein oder aus und löscht nie Daten. V1 und Beide werden nur angeboten, solange Möglichkeiten zur Freiwilligenarbeit genutzt werden: Sobald jede Möglichkeit umgewandelt ist und die Gemeinde V2 nutzt, verschwinden sie aus dieser Liste."
-
-#: 
-msgid "Convert"
-msgstr "Umwandeln"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Möglichkeiten zur Freiwilligenarbeit umwandeln"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Jetzt {{total}} Möglichkeiten umwandeln? Die V1-Daten bleiben unverändert, bis die Möglichkeiten zur Freiwilligenarbeit eingestellt werden."
-
-#: 
-msgid "Converted"
-msgstr "Umgewandelt"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Umgewandelt: {{positions}} Aufgaben und {{ministries}} Dienste, {{qualifications}} Freiwillige qualifiziert."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Jede Möglichkeit wird zu einer Aufgabe im ersten Team eines Dienstes, und alle damit verknüpften Personen werden für diese Aufgabe qualifiziert. Die Selbsteintragung ist für diese Aufgaben zunächst ausgeschaltet."
-
-#: 
-msgid "Everything is converted."
-msgstr "Alles ist umgewandelt."
-
-#: 
-msgid "Existing ministry"
-msgstr "Bestehender Dienst"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Geben Sie dem neuen Dienst einen Namen mit bis zu 100 Zeichen."
-
-#: 
-msgid "Its own ministry"
-msgstr "Ein eigener Dienst"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Seitdem verknüpft: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Verknüpfungen, die nicht umgewandelt werden können"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Jeweils ein eigener neuer Dienst"
-
-#: 
-msgid "New ministry name"
-msgstr "Name des neuen Dienstes"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Es wird keine E-Mail gesendet, und die Möglichkeiten zur Freiwilligenarbeit bleiben unverändert, bis sie eingestellt werden."
-
-#: 
-msgid "No name"
-msgstr "Kein Name"
-
-#: 
-msgid "Not converted"
-msgstr "Nicht umgewandelt"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Funktionsschalter öffnen"
-
-#: 
-msgid "Open Ministries"
-msgstr "Dienste öffnen"
-
-#: 
-msgid "Opportunities"
-msgstr "Möglichkeiten"
-
-#: 
-msgid "Opportunity"
-msgstr "Möglichkeit"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Möglichkeit Nr. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Seit der Umwandlung mit umgewandelten Möglichkeiten zur Freiwilligenarbeit verknüpfte Personen: %d. Fügen Sie sie ihren Aufgaben hinzu, bevor die Möglichkeiten zur Freiwilligenarbeit Anfang 2027 eingestellt werden."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Zeigen Sie zuerst die Vorschau der Umwandlung an und senden Sie die zurückgegebene Revision."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Umbenannt, damit Namen eindeutig bleiben"
-
-#: 
-msgid "Review the conversion"
-msgstr "Umwandlung prüfen"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Senden Sie die Umwandlungsauswahl als JSON-Objekt."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Senden Sie die Möglichkeiten, die zu Diensten werden, als Liste von IDs."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Dieser Dienst existiert nicht."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Die ChurchCRM-Version, in der ein Administrator den Hinweis zur Einstellung der Möglichkeiten zur Freiwilligenarbeit ausgeblendet hat."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Die Möglichkeiten zur Freiwilligenarbeit haben sich seit der Vorschau geändert. Prüfen Sie die Vorschau erneut und wandeln Sie dann um."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Die Bestätigung konnte nicht geöffnet werden. Laden Sie die Seite neu und versuchen Sie es erneut."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Die Vorschau der Umwandlung konnte nicht erstellt werden."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Die Umwandlung ist fehlgeschlagen. Es wurde nichts geändert."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Der Dienst „%s“ hat kein Team für die Aufgaben."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Der Server war nicht erreichbar. Laden Sie die Seite neu, um zu sehen, ob die Umwandlung ausgeführt wurde."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Es gibt keine Möglichkeiten zur Freiwilligenarbeit zum Umwandeln."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Die Freiwilligenverwaltung wechselt zu „Beide“, sodass die neuen Dienste neben den Möglichkeiten zur Freiwilligenarbeit sichtbar sind."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Möglichkeiten zur Freiwilligenarbeit werden eingestellt"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Möglichkeiten zur Freiwilligenarbeit umgewandelt"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Möglichkeiten zur Freiwilligenarbeit werden Anfang 2027 eingestellt. Wandeln Sie sie in Dienste um, damit erhalten bleibt, wer sich wofür engagiert."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Möglichkeiten zur Freiwilligenarbeit werden Anfang 2027 eingestellt. Wandeln Sie jetzt Ihre %1$d Möglichkeiten und %2$d Freiwilligen in Dienste um. Sie können das Ergebnis in einer Vorschau ansehen, bevor sich etwas ändert."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Qualifizierte Freiwillige"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Freiwillige, die umgewandelten Aufgaben hinzugefügt werden sollen"
-
-#: 
-msgid "What it becomes"
-msgstr "Was daraus wird"
-
-#: 
-msgid "What will happen"
-msgstr "Was passiert"
-
-#: 
-msgid "Where they go"
-msgstr "Wohin sie kommen"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Welche bisherigen Möglichkeiten zur Freiwilligenarbeit umgewandelt wurden und zu welcher Aufgabe jede wurde."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Welche Freiwilligen-Erfahrung diese Gemeinde nutzt. Möglichkeiten zur Freiwilligenarbeit (V1) werden Anfang 2027 eingestellt."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Ihre Möglichkeiten zur Freiwilligenarbeit sind in Dienste umgewandelt. Stellen Sie die Freiwilligenverwaltung auf V2 um, bevor die Möglichkeiten zur Freiwilligenarbeit Anfang 2027 eingestellt werden."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "in einen neuen Dienst, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "in den Dienst {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "nicht mehr in ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -27073,10 +26314,6 @@ msgid "Last verified"
 msgstr "Zuletzt bestätigt"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Kein aktives, genehmigtes Mitglied dieser Familie hat eine E-Mail-Adresse. Bestätigen Sie die Angaben stattdessen persönlich."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Für diese Steuerjahre wurden keine Spendenversprechen gefunden."
 
@@ -27099,10 +26336,6 @@ msgstr "Melden Sie sich mit dieser E-Mail-Adresse im Gemeindeportal an, um die A
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Diese Familie ist inaktiv und erhält daher keine Bestätigungs-E-Mails."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Diese selbst registrierte Familie wartet auf Genehmigung. Mit der Genehmigung erhält die Familie per E-Mail eine Einladung, sich im Gemeindeportal anzumelden und ihre Angaben zu prüfen."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27135,10 +26368,6 @@ msgid "%d default skipped for another reason (the occurrence is over, canceled o
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d Standardeinteilung aus einem anderen Grund übersprungen (der Termin ist vorbei, abgesagt oder voll)"
 msgstr[1] "%d Standardeinteilungen aus einem anderen Grund übersprungen (der Termin ist vorbei, abgesagt oder voll)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Eine Übergangseinstellung. Die alten Seiten für Ehrenamtsmöglichkeiten und die neuen Dienste-Seiten sind beide verfügbar, und ein Personendatensatz zeigt beide Reiter Ehrenamt, deutlich beschriftet. Nutzen Sie sie, während Sie eine Gemeinde von V1 auf V2 umstellen, und wechseln Sie dann nur auf V2."
 
 #: 
 msgid "Assignment canceled"
@@ -27187,10 +26416,6 @@ msgstr "Dieser Termin wurde abgesagt. Von Ihnen ist nichts weiter nötig."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Dieser Termin wurde abgesagt"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Ehrenamt, so organisiert, wie eine Gemeinde es betreibt. Jeder Dienst hat Teams und Aufgaben; Personen sind für Aufgaben qualifiziert und gehören zur Poolgruppe des Dienstes; Pläne folgen den Veranstaltungen im Kalender und erzeugen datierte Termine mit Personalanforderungen; Koordinationen teilen Personen ein, die zusagen, absagen oder eine Vertretung vorschlagen; Erinnerungen und Hinweise gehen per E-Mail hinaus. Administratoren und Benutzer mit der Berechtigung Dienste verwalten sehen jeden Dienst und können ihn anlegen, deaktivieren und löschen. Die Koordination eines Dienstes erhält stattdessen die Berechtigung Meine Dienste verwalten: Die Überschrift Dienste in der Seitenleiste zeigt dann nur die Dienste, die sie koordiniert. Eine Teamleitung führt ihr Team über das Gemeindeportal. Mitglieder nutzen das Gemeindeportal, um ihren Plan zu sehen, zu antworten, sich einzutragen und Hilfe anzubieten."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27355,10 +26580,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Auch die Anmeldung deaktivieren, um den Zugang zum Mitgliederportal zu verhindern"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Vor dem Versand der Bescheinigungen"
-
-#: 
 msgid "Birthday today"
 msgstr "Heute Geburtstag"
 
@@ -27425,10 +26646,6 @@ msgstr "Personen und Familien löschen"
 #: 
 msgid "Delete the login for"
 msgstr "Anmeldung löschen für"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Zeitraum des Einzahlungsdiagramms"
 
 #: 
 msgid "Disabled at"
@@ -27683,10 +26900,6 @@ msgid "Preview Sample Letter"
 msgstr "Musterbrief anzeigen"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Kennung der privaten Unterschriftsdatei für kanadische Spendenbescheinigungen. Wird über den Upload der Unterschrift verwaltet."
-
-#: 
 msgid "Property Type"
 msgstr "Eigenschaftstyp"
 
@@ -27721,10 +26934,6 @@ msgstr "Prüfen und filtern"
 #: 
 msgid "Review and vote"
 msgstr "Prüfen und abstimmen"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Prüfen Sie das Jahr und laden Sie anschließend die Spendenbescheinigungen herunter."
 
 #: 
 msgid "Review what we are considering"
@@ -27773,10 +26982,6 @@ msgstr "Stark"
 #: 
 msgid "Support"
 msgstr "Hilfe"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Steuerkennung und PDF-Einstellungen"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27883,10 +27088,6 @@ msgid "View people and families"
 msgstr "Personen und Familien anzeigen"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Die Freiwilligenverwaltung ist für diese Gemeinde deaktiviert"
-
-#: 
 msgid "Weak"
 msgstr "Schwach"
 
@@ -27983,10 +27184,6 @@ msgid "Latest Notes"
 msgstr "Neueste Notizen"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Es wurden noch keine Notizen hinzugefügt."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Starten Sie die Anmeldung, um einen QR-Code zu erhalten."
 
@@ -27997,4 +27194,746 @@ msgstr "Dieses Passwort oder dieser Code ist nicht richtig. Die Zwei-Faktor-Auth
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Die Zwei-Faktor-Authentifizierung ist bereits eingerichtet. Ihr Geheimnis wird nur während der Anmeldung angezeigt."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d Spende mit einem Gesamtbetrag von %2$s"
+msgstr[1] "%1$d Spenden mit einem Gesamtbetrag von %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d Familien haben derzeit Eigenschaften dieses Typs."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d Familie kann noch keine Bescheinigung erhalten und wird ausgelassen. Beheben Sie das darunter aufgeführte Problem und wählen Sie dann Erneut prüfen."
+msgstr[1] "%d Familien können noch keine Bescheinigung erhalten und werden ausgelassen. Beheben Sie die darunter aufgeführten Probleme und wählen Sie dann Erneut prüfen."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d Gruppen haben derzeit Eigenschaften dieses Typs."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d Personen haben derzeit Eigenschaften dieses Typs."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d neue Versionen seit Ihrer installierten Version verfügbar."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Es wurde keine Bescheinigung erstellt."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: Geben Sie den/die verifizierten vollständigen Spendernamen ein, bestätigen Sie die Spender und bestätigen Sie einen Spendersatz. Zahlungssätze mit gemischten Spendern müssen außerhalb dieser Funktion behandelt werden."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: Die Spenden oder die Postanschrift haben sich seit der Prüfung geändert. Wählen Sie Erneut prüfen und bestätigen Sie den Spender erneut."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} Rate)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} Raten)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Eine Zahlung per Kreditkarte oder Bankeinzug befindet sich in einer Einzahlung, die noch nicht abgeschlossen ist. Schließen Sie die Einzahlung, sobald die Zahlung verrechnet wurde."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Eine Zahlung hat einen nicht abziehbaren Betrag. Kanadische Bescheinigungen unterstützen hier nur Spenden ohne Vorteil."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Eine Zahlung hat einen ungültigen Geldbetrag."
+
+#: 
+msgid "A payment has no date."
+msgstr "Eine Zahlung hat kein Datum."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Eine Zahlung ist nach dem Ausstellungsdatum datiert."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Eine Zahlung ist als Problem markiert."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Eine Zahlung ist null oder negativ."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Ein geprüfter POST mit einem gültigen CSRF-Token ist erforderlich."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Eine ausgewählte Familie existiert nicht mehr."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Ein Unterschriftsbild ist keine sichere digitale Signatur."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Ein Systemupdate ist verfügbar. Bitten Sie Ihren Administrator, Ihre Installation zu aktualisieren."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Alle enthaltenen Zeilen sind Geldspenden ohne Vorteil."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Alle erforderlichen Einstellungen für kanadische Bescheinigungen sind ausgefüllt."
+
+#: 
+msgid "Also delete family members"
+msgstr "Auch Familienmitglieder löschen"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Betrag der Vorteile"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Betrag der Spenden"
+
+#: 
+msgid "Amount per installment"
+msgstr "Betrag pro Rate"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Eingegebene Beträge sind"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Ein Administrator lädt es unter Berichtseinstellungen hoch."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Genehmigt, aber es wurde keine Einladung gesendet"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Bitten Sie Ihren Systemadministrator, ChurchCRM auf die neueste Version zu aktualisieren."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Autorisierte Unterschrift"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Kanadische Steuerbehörde"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadische offizielle Spendenbescheinigung"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kanadische offizielle Bescheinigungen erfordern Kanada als Kirchenland in den Kircheninformationen."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kanadische Bescheinigungen erfordern das gesamte Kalenderjahr und alle Fonds, ohne weitere Filter."
+
+#: 
+msgid "Change Selection"
+msgstr "Auswahl ändern"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Rechtlicher Name der Wohltätigkeitsorganisation"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Registrierte Adresse der Wohltätigkeitsorganisation"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Registrierungsnummer der Wohltätigkeitsorganisation"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Die Angaben zur Wohltätigkeitsorganisation für Bescheinigungen sind noch nicht ausgefüllt. Fügen Sie den rechtlichen Namen, die registrierte Adresse, die Registrierungsnummer und den Ausstellungsort hinzu, sobald Sie können. Der Finanzbereich funktioniert bis dahin weiter."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Wohltätigkeitsorganisation auf Bescheinigungen"
+
+#: 
+msgid "Check Again"
+msgstr "Erneut prüfen"
+
+#: 
+msgid "Check the year"
+msgstr "Prüfen Sie das Jahr"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Prüfen Sie das Jahr, richten Sie die Aufstellung ein und laden Sie dann herunter."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Wählen Sie Wöchentlich, Monatlich oder Vierteljährlich für einen Ratenbetrag."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Wählen Sie ein gültiges Spenden-Kalenderjahr."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Wählen Sie Original oder Duplikat."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Wählen Sie Gesamtzusage oder Ratenbetrag."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Die Übersetzungen von ChurchCRM werden im GitHub-Repository von ChurchCRM verwaltet. Sie können helfen, indem Sie"
+
+#: 
+msgid "Commitment amount"
+msgstr "Zusagenbetrag"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Vergleichen Sie das Duplikat mit dem aufbewahrten Original und bestätigen Sie, dass alle Bescheinigungsangaben unverändert sind."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Füllen Sie jede Bescheinigungsbestätigung vor dem Herunterladen aus."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Füllen Sie den rechtlichen Namen der Wohltätigkeitsorganisation, die registrierte Adresse, die Registrierungsnummer, den Ausstellungsort und den gedruckten Unterzeichner aus."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Gedruckter Unterzeichner des Bestätigungsschreibens"
+
+#: 
+msgid "Copy Kind"
+msgstr "Art der Kopie"
+
+#: 
+msgid "Currency"
+msgstr "Währung"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Währungssymbol $ oder CAD"
+
+#: 
+msgid "Date received"
+msgstr "Empfangsdatum"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Beim Löschen werden auch %d Eigenschaften und alle ihre Zuweisungen entfernt, sodass nichts offen bleibt."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Gehören alle Spenden des ausgewählten Jahres zu dem/den oben gemeinsam genannten Spender(n)?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Verwenden Sie eine Nummer nicht erneut für eine andere Bescheinigung, stellen Sie keine zwei Bescheinigungen für dieselben Spenden aus und generieren Sie geänderte Informationen nicht erneut als unverändertes Original."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplizieren"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Duplicate copy / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Anrechenbarer Betrag der Spenden für Einkommensteuerzwecke"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Geben Sie den Zeitplan und die Ratendaten ein, um die Zusage in der Vorschau anzuzeigen."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Geben Sie gültige Daten für die erste und letzte Rate in der richtigen Reihenfolge ein."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Geben Sie gültige Ratenbeträge mit höchstens zwei Dezimalstellen ein."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Bestehende Spendenversprechen behalten ihre erfassten Gesamtbeträge. Wählen Sie Betrag pro Rate nur bei der Eingabe jeder geplanten Spende."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Ausgefüllt aus den Haushaltsvorständen und Ehepartnern. Bearbeiten Sie es so, dass es genau mit den Spendern übereinstimmt."
+
+#: 
+msgid "First installment"
+msgstr "Erste Rate"
+
+#: 
+msgid "Full commitment"
+msgstr "Volle Zusage"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Steueraufstellungen erstellen"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Spenden-Kalenderjahr"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Spendenaufstellung — keine offizielle Spendenbescheinigung"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "auf GitHub übersetzen"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Historische Umschlagänderungen werden nicht unterstützt."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Ich habe mit dem aufbewahrten Original verglichen: Spender, Betrag, Seriennummer und Text sind unverändert. Dies ist keine Korrektur oder Ersetzung."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Ich werde die ausgestellte PDF und ein externes Bescheinigungsprotokoll am kanadischen Aufbewahrungsort der Wohltätigkeitsorganisation aufbewahren."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Wenn ein aufbewahrtes Original nicht verfügbar oder abweichend ist, verwenden Sie Ihre externen, CRA-konformen Verfahren zur Stornierung/Ersetzung."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Zahlungsvermerke einbeziehen: Ich habe sie als für den Spender geeignet geprüft."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Diese Familie in den Download einbeziehen"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Installierte Version: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Ratenbeträge können nur für Spendenversprechen verwendet werden."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Ratendaten müssen innerhalb des ausgewählten Steuerjahres liegen."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Ungültiges oder fehlendes CSRF-Token"
+
+#: 
+msgid "Issue Date"
+msgstr "Ausstellungsdatum"
+
+#: 
+msgid "Issue Locality"
+msgstr "Ausstellungsort"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Bewahren Sie die originale PDF und ein externes Bescheinigungsprotokoll am kanadischen Aufbewahrungsort der Wohltätigkeitsorganisation auf."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Letzte Rate am oder vor dem"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Brieftext, Angaben zur Wohltätigkeitsorganisation und PDF-Handhabung werden einmal in den Aufstellungseinstellungen festgelegt."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Brieftext, Angaben zur Wohltätigkeitsorganisation und PDF-Handhabung für Spendenaufstellungen"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maximal 2 MiB und 2000 × 1000 Pixel. Wählen Sie ein neues Bild, um die gespeicherte Unterschrift zu ersetzen. Ein Unterschriftsbild ist keine sichere digitale Signatur."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Die Mitgliederanmeldung ist deaktiviert, sodass sich niemand in der Familie %s am Mitgliederportal anmelden kann. Ein Administrator kann sie unter Admin → Mitgliederportal aktivieren."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Familien-Zahlungssätze mit gemischten Spendern können hier nicht aufgeteilt werden; behandeln Sie sie außerhalb dieser Funktion."
+
+#: 
+msgid "Narrow the list"
+msgstr "Die Liste eingrenzen"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Keine Familie entspricht diesen Filtern für %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Es existiert keine sich überschneidende Einzel- oder Sammelbescheinigung."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Für diese Familie kann noch keine Bescheinigung erstellt werden"
+
+#: 
+msgid "No signature on file"
+msgstr "Keine Unterschrift hinterlegt"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Nein — andere Spender; außerhalb dieser Funktion behandeln"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Niemand in der Familie %s kann sich nach der aktuellen Anmelderegel am Mitgliederportal anmelden."
+
+#: 
+msgid "None / Aucun"
+msgstr "None / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nicht bereit, kanadische Bescheinigungen auszustellen. Es fehlt noch"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Official Receipt / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Offizielle Bescheinigungen erfordern eine Registrierungsnummer in der Form 123456789RR0001 und ein Unterschriftsbild."
+
+#: 
+msgid "Original"
+msgstr "Original"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Ursprüngliches Ausstellungsdatum (aus dem aufbewahrten Original eingeben)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Zahlungsdaten spiegeln die Empfangsdaten der Spenden wider, einschließlich der dokumentierten Behandlung des Poststempels per Post gesendeter Schecks."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Gedruckt auf gewöhnlichen Spendenaufstellungen, zum Beispiel die EIN in den Vereinigten Staaten. Derselbe Wert befindet sich in den Kircheninformationen."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Private Kennung des Unterschriftsbildes für Spendenaufstellungen. Verwaltet über den Unterschrifts-Upload."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Eigenschaften / Zuweisungen"
+
+#: 
+msgid "Property deleted"
+msgstr "Eigenschaft gelöscht"
+
+#: 
+msgid "Property type deleted"
+msgstr "Eigenschaftstyp gelöscht"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Abschlussformel der Bescheinigung"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Ausstellungsort der Bescheinigung"
+
+#: 
+msgid "Receipt No."
+msgstr "Bescheinigungs-Nr."
+
+#: 
+msgid "Registration Number"
+msgstr "Registrierungsnummer"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Registrierungsnummer in der Form 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Versionshinweise sind derzeit nicht verfügbar."
+
+#: 
+msgid "Releases"
+msgstr "Versionen"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Verbleibende Zusage für %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Anforderung der Zwei-Faktor-Authentifizierung entfernen"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Das gespeicherte Unterschriftsbild entfernen? Offizielle Bescheinigungen erfordern eines in den Unterlagen."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Berichte und Erinnerungen vergleichen diese Zusage für den gesamten Zeitraum mit den Spenden. Der verbleibende Saldo ist keine Berechnung einer überfälligen Rate."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Berichte und Erinnerungen verwenden die oben gezeigte volle Zusage. Der verbleibende Saldo ist keine Berechnung einer überfälligen Rate."
+
+#: 
+msgid "Require 2FA"
+msgstr "Zwei-Faktor-Authentifizierung erfordern"
+
+#: 
+msgid "Reset Options"
+msgstr "Optionen zurücksetzen"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Ausgewählte Familien prüfen"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "MUSTER — NICHT FÜR STEUERZWECKE GÜLTIG"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Platzhalter für Beispielunterschrift"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Geben Sie an, ob eine Zwei-Faktor-Authentifizierung erforderlich ist."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Sicherheitsupdates und Support werden nur für die neueste Version bereitgestellt."
+
+#: 
+msgid "Select the families to review."
+msgstr "Wählen Sie die zu prüfenden Familien aus."
+
+#: 
+msgid "Set up the statement"
+msgstr "Die Aufstellung einrichten"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Richten Sie die Zwei-Faktor-Authentifizierung ein, um fortzufahren."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Konflikt mit gemeinsamem Umschlag: Eine andere Familie hat derzeit diese Umschlagnummer."
+
+#: 
+msgid "Signature Image"
+msgstr "Unterschriftsbild"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Unterschriftsbild (Admin, Berichtseinstellungen)"
+
+#: 
+msgid "Signature on file"
+msgstr "Unterschrift hinterlegt"
+
+#: 
+msgid "Sincerely"
+msgstr "Mit freundlichen Grüßen"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Geben Sie die Betragsbasis an, wenn Sie ein wiederkehrendes Spendenversprechen bearbeiten."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Standard-Spendenaufstellung"
+
+#: 
+msgid "Statement Template"
+msgstr "Aufstellungsvorlage"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Geben Sie ein Ausstellungsdatum an, das nicht später als heute ist."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Steuer-ID auf Aufstellungen"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Die Familie %s hat keine lebenden Mitglieder, die zum Mitgliederportal eingeladen werden könnten."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Die kanadische Registrierungsnummer muss das Format 123456789RR0001 haben. Dies überprüft den Registrierungsstatus nicht."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Die Registrierungsnummer der Wohltätigkeitsorganisation muss Text sein."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Die Registrierungsnummer der Wohltätigkeitsorganisation, die auf offiziellen Bescheinigungen gedruckt wird. Wenn leer, wird die Steuer-ID aus den Kircheninformationen verwendet."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Die registrierte Adresse der Wohltätigkeitsorganisation. Wenn leer, wird die Adresse aus den Kircheninformationen verwendet."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Die Abschlussformel über dem Unterzeichner, zum Beispiel Mit freundlichen Grüßen."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Die volle Zusage darf 999999.99 pro Fonds nicht überschreiten und Beträge dürfen höchstens zwei Dezimalstellen haben."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Die Spenden oder die Postanschrift haben sich seit Ihrer letzten Prüfung geändert. Prüfen Sie sie und bestätigen Sie den Spender erneut."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Die Postanschrift ist unvollständig. Straße, Stadt, Provinz und Postleitzahl sind erforderlich."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Der Name, unter dem die Wohltätigkeitsorganisation registriert ist. Er kann vom Namen der Kirche abweichen."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Der Ort, an dem Bescheinigungen ausgestellt werden. Wenn leer, wird die Stadt aus den Kircheninformationen verwendet."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Der gedruckte Unterzeichner der Spendenaufstellung ist berechtigt, diese Bescheinigungen zu unterschreiben."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Das System-Währungssymbol muss $ sein oder CAD für kanadische Bescheinigungen kennzeichnen."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Es gibt keine Zahlungen im ausgewählten Kalenderjahr."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Dies sind die wahren Spender für jede Spende in dieser Familie/diesem Kalenderjahr, und die Postanschrift ist korrekt."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Dieses Bild wird über dem Namen des Unterzeichners auf Spendenaufstellungen und Bescheinigungen gedruckt. Die Angaben zur Wohltätigkeitsorganisation und der gedruckte Name des Unterzeichners befinden sich unter Finanzen, Aufstellungseinstellungen."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Diese Option formatiert eine kanadische Bescheinigung, führt aber kein Bescheinigungsregister und behält keine PDFs."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Diese selbst registrierte Familie wartet auf Genehmigung. Durch die Genehmigung erhält jedes Mitglied, das sich am Mitgliederportal anmelden kann, per E-Mail eine Einladung, die Informationen der Familie zu prüfen."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Dieses Tool hat keinen Workflow für Stornierung/Ersetzung; verwenden Sie Ihren bestehenden CRA-konformen Prozess für Korrekturen und Ersetzungen verlorener Bescheinigungen."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Dieser Benutzer muss die Zwei-Faktor-Authentifizierung einrichten"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Dadurch wird der Familiendatensatz und seine Notizen dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden."
+
+#: 
+msgid "Total commitment"
+msgstr "Gesamtzusage"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Die Zusage kann nicht in der Vorschau angezeigt werden."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Die Unterschrift hochladen oder ersetzen"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Laden Sie die autorisierte Steuerunterschrift in den Berichtseinstellungen hoch."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Verwenden Sie Daten innerhalb des ausgewählten Steuerjahres. Monatliche und vierteljährliche Spenden verwenden den Tag der ersten Rate oder den letzten Tag kürzerer Monate."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Verifizierte(r) vollständige(r) Spendername(n)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Überprüfen Sie die Familie stattdessen persönlich."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Überprüfen Sie den vollständigen Spendernamen und die Adresse für jede Familie. Zahlungssätze mit gemischten Spendern müssen außerhalb dieser Funktion behandelt werden."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Version %s ist verfügbar. Bitten Sie Ihren Administrator, Ihre Installation zu aktualisieren."
+
+#: 
+msgid "View all emails"
+msgstr "Alle E-Mails anzeigen"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ja — ein verifizierter Spendersatz"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Ihr Kirchenland ist Kanada, daher sind kanadische offizielle Bescheinigungen auch verfügbar, wenn Sie Aufstellungen erstellen."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Ihr Kirchenland ist Kanada, daher sind kanadische offizielle Bescheinigungen in den Spendenaufstellungen verfügbar und gewöhnliche Aufstellungen sind als keine offizielle Spendenbescheinigung gekennzeichnet."
+
+#: 
+msgid "groups"
+msgstr "Gruppen"
 

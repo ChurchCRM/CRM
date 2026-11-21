@@ -8,7 +8,6 @@
  * pinned in private.volunteer.team-leader-admin.spec.js.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 
@@ -82,7 +81,6 @@ after(() => {
 
 describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
     before(() => {
-        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: MINISTRY_NAME }, 201).then((resp) => {
@@ -146,7 +144,6 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
 
     after(() => {
         cleanupFixtures();
-        adminApi("POST", SETTING_URL, { value: "v1" }, 200);
     });
 
     it("Links the ministry and the team from the dashboard instead of 'View only'", () => {

@@ -850,14 +850,6 @@ msgid "Assign"
 msgstr "Thêm vào"
 
 #: 
-msgid "Date Updated"
-msgstr "Ngày cập nhật"
-
-#: 
-msgid "Updated By"
-msgstr "Cập nhật bởi"
-
-#: 
 msgid "Since"
 msgstr "Từ"
 
@@ -1325,10 +1317,6 @@ msgid "People"
 msgstr "Thành viên"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Trường Chúa Nhật thiếu nhi"
-
-#: 
 msgid "Role / Gender"
 msgstr "Vai trò / Giới tính"
 
@@ -1373,10 +1361,6 @@ msgid "Updated"
 msgstr "Đã cập nhật"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(Hành động này không thể được hoàn tác)"
-
-#: 
 msgid "Note Editor"
 msgstr "Chỉnh sửa ghi chú"
 
@@ -1395,10 +1379,6 @@ msgstr "Ban/Mục vụ"
 #: 
 msgid "Default"
 msgstr "Mặc định"
-
-#: 
-msgid "Exit"
-msgstr "Thoát khỏi"
 
 #: 
 msgid "Add New"
@@ -1505,10 +1485,6 @@ msgid "Assign New Group"
 msgstr "Thêm thành viên vào Ban/Mục vụ"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Thêm thành viên mới vào Mục vụ"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Số tiền không được khấu trừ không được lớn hơn tổng số tiền."
 
@@ -1601,10 +1577,6 @@ msgid "Warning"
 msgstr "Cảnh báo"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Loại thuộc tính này được sử dụng bởi một thuộc tính khác"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vui lòng xác nhận việc xóa Loại Thuộc tính này"
 
@@ -1626,48 +1598,8 @@ msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Vui lòng xác nhận xóa"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Xin lỗi, có hồ sơ đóng góp từ gia đình này. Gia đình này có thể không bị xóa."
-
-#: 
-msgid "Return to Family View"
-msgstr "Quay lại Chế độ xem gia đình"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "CẢNH BÁO: Gia đình này có hồ sơ về các khoản đóng góp và KHÔNG thể bị xóa cho đến khi các khoản đóng góp này được liên kết với một gia đình khác."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "CẢNH BÁO: Không thể hoàn tác hành động này và có thể có ý nghĩa pháp lý!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "GIA ĐÌNH HIỆN TẠI VỚI TẶNG KÈM"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Ghi chú: Điều này sẽ xóa tất cả các Ghi chú liên kết với bản ghi của gia đình này"
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "CHỈ xóa bỏ bản ghi gia đình"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
-
-#: 
-msgid "My User Settings"
-msgstr "Cài đặt thành viên"
 
 #: 
 msgid "Variable name"
@@ -1752,14 +1684,6 @@ msgstr "Mật khẩu mới"
 #: 
 msgid "Confirm New Password"
 msgstr "Nhập lại mật khẩu mới"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Mục vụ đã tham gia của Thành viên"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Không có Nhân sự nào được thêm vào đây"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2253,14 +2177,6 @@ msgstr "Xóa tất cả quỹ"
 #: 
 msgid "Deposit Comment"
 msgstr "Gửi bình luận"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 
 #: 
 msgid "item"
@@ -4538,10 +4454,6 @@ msgid "People Reports"
 msgstr "Báo cáo mọi người"
 
 #: 
-msgid "People Dashboard"
-msgstr "Bảng điều khiển thành viên"
-
-#: 
 msgid "People Directory"
 msgstr "Thư mục mọi người"
 
@@ -4785,10 +4697,6 @@ msgid "Estonian"
 msgstr "Người Estonia"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Lỗi giải mã tệp định nghĩa chữ ký"
-
-#: 
 msgid "Event not found"
 msgstr "Không tìm thấy sự kiện"
 
@@ -4989,10 +4897,6 @@ msgid "View Person Page"
 msgstr "Xem trang cá nhân"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Gia đình không có email nào để sử dụng"
-
-#: 
 msgid "Deleted"
 msgstr "Đã xóa"
 
@@ -5133,10 +5037,6 @@ msgstr "Áp dụng Chính sách Bảo mật Nội dung (CSP) để bảo vệ kh
 #: 
 msgid "Enter event description..."
 msgstr "Nhập mô tả sự kiện..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Nhập nội dung ghi chú tại đây..."
 
 #: 
 msgid "Note"
@@ -5373,14 +5273,6 @@ msgstr "Vui lòng nhập URL hợp lệ bắt đầu bằng http:// hoặc https
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Tất cả chữ ký tệp hệ thống đều khớp với giá trị dự kiến."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Tệp định nghĩa chữ ký tồn tại nhưng không thể đọc. Kiểm tra quyền của tệp."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Thiếu tệp định nghĩa chữ ký tại %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6454,20 +6346,8 @@ msgid "Additional Information"
 msgstr "Thông tin bổ sung"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Giao cơ hội (phụng vụ/công tác)"
-
-#: 
 msgid "Choose a property..."
 msgstr "Chọn một thuộc tính..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Chọn cơ hội..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Thông tin liên hệ & cá nhân"
 
 #: 
 msgid "Edited"
@@ -6476,14 +6356,6 @@ msgstr "Đã chỉnh sửa"
 #: 
 msgid "Newsletter"
 msgstr "Bản tin/Thông báo"
-
-#: 
-msgid "Personal"
-msgstr "Cá nhân"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Chọn các cơ hội"
 
 #: 
 msgid "Volunteer"
@@ -6668,10 +6540,6 @@ msgid "Confirm Property Deletion"
 msgstr "Xác nhận xóa thuộc tính"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Xác nhận xóa cơ hội tình nguyện"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Xác nhận xóa"
 
@@ -6684,16 +6552,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Các trường cá nhân tùy chỉnh hiện có"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Các cơ hội tình nguyện hiện có"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Trường đã được xóa thành công"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Mã thông báo CSRF không hợp lệ"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6744,10 +6604,6 @@ msgid "Add Property Type"
 msgstr "Thêm Loại Thuộc tính"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Thêm Loại Thuộc tính Đầu tiên của Bạn"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
 
@@ -6766,10 +6622,6 @@ msgstr "Đã điểm danh ra"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Năm Tài chính Hiện tại"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Xóa (sẽ xóa tất cả các bản ghi liên quan)"
 
 #: 
 msgid "Edit Property Type"
@@ -6820,10 +6672,6 @@ msgid "No property types found"
 msgstr "Không tìm thấy loại thuộc tính"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Số bản ghi sử dụng loại thuộc tính này"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Mô tả chi tiết tùy chọn của loại thuộc tính này"
 
@@ -6854,10 +6702,6 @@ msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Theo dõi và quản lý các cam kết theo gia đình và quỹ"
-
-#: 
-msgid "View Properties"
-msgstr "Xem Thuộc tính"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7835,18 +7679,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Bạn có chắc muốn xóa vĩnh viễn bản ghi cam kết này không?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Hủy và quay lại chế độ xem gia đình"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Nếu bạn xóa loại này, bạn cũng sẽ xóa tất cả thuộc tính sử dụng nó và mất mọi phân công thuộc tính tương ứng."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Di Chuyển Đóng Góp đến gia đình đã chọn"
-
-#: 
 msgid "Calendar not found"
 msgstr "Không tìm thấy lịch"
 
@@ -8119,10 +7951,6 @@ msgid "or later to continue."
 msgstr "hoặc mới hơn để tiếp tục."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Ghi chu \"Ly do den\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d kết quả cho \"%s\""
@@ -8230,10 +8058,6 @@ msgstr "Them hoac chinh sua ho so ca nhan"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Them hoac chinh sua cac mon qua tang cho su kien gay quy"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Them hoac chinh sua ghi chu cho ca nhan va gia dinh"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8490,10 +8314,6 @@ msgstr "Tao va quan ly cac su kien va hoat dong giao hoi"
 #: 
 msgid "Create or edit property type categories"
 msgstr "Tao hoac chinh sua danh muc loai thuoc tinh"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "Tao hoac chinh sua vi tri tinh nguyen vien"
 
 #: 
 msgid "Current person"
@@ -8944,14 +8764,6 @@ msgid "Manage user account details and permissions"
 msgstr "Quan ly chi tiet tai khoan nguoi dung va quyen han"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Quan ly co hoi tinh nguyen va gan thanh vien"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Quan ly tuy chon ca nhan va cai dat tai khoan cua ban"
-
-#: 
 msgid "Map cart items"
 msgstr "Hien thi danh sach tren ban do"
 
@@ -8986,10 +8798,6 @@ msgstr "Di chuyen den nhom"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Chuyen tu ban cai dat ChurchCRM hoac ChurchInfo hien co? Tai len tep sao luu va chung toi se khoi phuc du lieu cua ban tu dong."
-
-#: 
-msgid "My Settings"
-msgstr "Cai dat cua toi"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9076,10 +8884,6 @@ msgid "No timeline events yet."
 msgstr "Chua co su kien nao trong dong thoi gian."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Chua co gan co hoi tinh nguyen nao."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Chua san sang?"
 
@@ -9116,10 +8920,6 @@ msgstr "Tong quan"
 #: 
 msgid "Password Recovery"
 msgstr "Khoi phuc mat khau"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "7 ngay qua va toi"
 
 #: 
 msgid "People by Classification"
@@ -9204,10 +9004,6 @@ msgstr "Ghi nhan nhieu nguoi trung thuong gay quy cung luc"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Ghi nhận cam kết dâng hiến và các khoản dâng hiến mới"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 
 #: 
 msgid "Remove from Class"
@@ -9590,10 +9386,6 @@ msgid "funds"
 msgstr "quy"
 
 #: 
-msgid "opportunities"
-msgstr "co hoi"
-
-#: 
 msgid "or connect an external service"
 msgstr "hoac ket noi dich vu ben ngoai"
 
@@ -9893,11 +9685,6 @@ msgstr "Không thể lấy địa chỉ email"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Không thể lấy số điện thoại"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Tìm tình nguyện viên cho một cơ hội cụ thể"
 
 #. Context: query_qry
 #: 
@@ -11022,10 +10809,6 @@ msgstr "Tối"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Chỉ cơ sở dữ liệu (.sql) hoặc lưu trữ đầy đủ (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hiệu lực khi tải trang tiếp theo."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11079,10 +10862,6 @@ msgstr "Tiếng Malayalam - Ấn Độ"
 #: 
 msgid "Manage 2FA"
 msgstr "Quản lý xác thực 2 yếu tố"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Quản lý các tùy chọn bổ sung như dấu phân cách email và tùy chọn hiển thị"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11340,14 +11119,6 @@ msgstr "Đăng ký bởi"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Đăng ký bị tắt cho sự kiện không hoạt động. Kích hoạt sự kiện từ Bảng điều khiển Sự kiện để bật đăng ký."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Đã đăng ký tham dự sự kiện: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Đã đăng xuất khỏi sự kiện: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11758,14 +11529,6 @@ msgid "e.g., 40.7128"
 msgstr "vd., 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Đã xảy ra lỗi khi xóa gia đình."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Đã xảy ra lỗi khi di chuyển các khoản dâng hiến."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Cần có ít nhất một thành viên gia đình"
 
@@ -11784,10 +11547,6 @@ msgstr "Xóa thất bại"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Hướng phải là \"lên\" hoặc \"xuống\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Không thể di chuyển các khoản dâng hiến."
 
 #: 
 msgid "Finance permission required"
@@ -11824,10 +11583,6 @@ msgstr "Không tìm thấy tư cách thành viên"
 #: 
 msgid "Password successfully changed for"
 msgstr "Mật khẩu đã được thay đổi thành công cho"
-
-#: 
-msgid "Please select a target family."
-msgstr "Vui lòng chọn một gia đình đích."
 
 #: 
 msgid "Target family not found"
@@ -12695,10 +12450,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Không thể xóa loại thuộc tính: vẫn còn %d thuộc tính đang tham chiếu. Vui lòng gán lại hoặc xóa các thuộc tính đó trước."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Không thể xóa cơ hội tình nguyện: vẫn còn %d người được phân công. Vui lòng xóa các phân công đó trước."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Lớp phải là một trong: p, f, hoặc g"
 
@@ -12709,10 +12460,6 @@ msgstr "Sao chép thông báo lỗi"
 #: 
 msgid "Could not load note."
 msgstr "Không thể tải ghi chú."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Mô tả không được vượt quá 100 ký tự"
 
 #: 
 msgid "Donation fund not found"
@@ -12735,10 +12482,6 @@ msgid "Failed to create property type"
 msgstr "Không thể tạo loại thuộc tính"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Không thể tạo cơ hội tình nguyện"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Không thể xóa quỹ quyên góp"
 
@@ -12755,10 +12498,6 @@ msgid "Failed to delete property type"
 msgstr "Không thể xóa loại thuộc tính"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Không thể xóa cơ hội tình nguyện"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Không thể cập nhật quỹ quyên góp"
 
@@ -12771,10 +12510,6 @@ msgid "Failed to update property type"
 msgstr "Không thể cập nhật loại thuộc tính"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Không thể cập nhật cơ hội tình nguyện"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Không tìm thấy chiến dịch quyên góp"
 
@@ -12785,10 +12520,6 @@ msgstr "ID Cài Đặt"
 #: 
 msgid "Invalid class"
 msgstr "Lớp không hợp lệ"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Tên không được vượt quá 30 ký tự"
 
 #: 
 msgid "Note by %s deleted"
@@ -12811,16 +12542,8 @@ msgid "Read more"
 msgstr "Đọc thêm"
 
 #: 
-msgid "That name already exists."
-msgstr "Tên đó đã tồn tại."
-
-#: 
 msgid "Title is required"
 msgstr "Tiêu đề là bắt buộc"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Không tìm thấy cơ hội tình nguyện"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13031,14 +12754,6 @@ msgid "Click Save to apply."
 msgstr "Nhan Luu de ap dung."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard không có sẵn. Vui lòng sao chép URL theo cách thủ công."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
-
-#: 
 msgid "Code incomplete"
 msgstr "Mã chưa đầy đủ"
 
@@ -13157,10 +12872,6 @@ msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt 
 #: 
 msgid "Deposit ID"
 msgstr "ID tiền gửi"
-
-#: 
-msgid "Deposit Value"
-msgstr "Giá trị đợt thu hiến"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13579,22 +13290,6 @@ msgid "Move Members to Group"
 msgstr "Di chuyen thanh vien den nhom"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Phải là URL hợp lệ bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Phải là URL hợp lệ (ví dụ: http://localhost hoặc https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Phải là số cổng hợp lệ (ví dụ: 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Phải bắt đầu bằng / nếu không trống; không có dấu gạch chéo ở cuối. Chỉ cho phép chữ cái, số, gạch dưới, gạch ngang, dấu chấm và /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Cần xóa dữ liệu này sau?"
 
@@ -13617,14 +13312,6 @@ msgstr "Không có đợt thu hiến"
 #: 
 msgid "No Events Today"
 msgstr "Không có sự kiện hôm nay"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Khong co ngay ky niem trong 7 ngay qua hoac toi"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Khong co ngay sinh nhat trong 7 ngay qua hoac toi"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13753,10 +13440,6 @@ msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vui lòng nhập một số hợp lệ"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14570,24 +14253,12 @@ msgid "People &amp; Families"
 msgstr "Cá nhân &amp; Gia đình"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
-
-#: 
 msgid "User List"
 msgstr "Danh sách người dùng"
 
 #: 
 msgid "View Person"
 msgstr "Xem thông tin cá nhân"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Bạn không có quyền thêm ghi chú cho người này."
 
 #: 
 msgid "Account locked"
@@ -15216,10 +14887,6 @@ msgid "Target family"
 msgstr "Gia đình mục tiêu"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Không tìm thấy nhóm. Vui lòng thử lại."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Gia đình đã chọn không còn tồn tại. Vui lòng làm mới trang và thử lại."
 
@@ -15286,10 +14953,6 @@ msgstr "goalAmount phải không âm"
 #: 
 msgid "thru %s"
 msgstr "đến %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Ghi chú \"Lý do đến\" cho %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15396,14 +15059,6 @@ msgid "Output Method"
 msgstr "Phương thức xuất"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Vui lòng xác nhận xóa hồ sơ gia đình này"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản dâng hiến này"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Phiếu chuyển tiền"
 
@@ -15446,10 +15101,6 @@ msgstr "Định dạng được hỗ trợ"
 #: 
 msgid "System Configuration"
 msgstr "Cấu hình hệ thống"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Có người được phân công cho Cơ hội Tình nguyện này. Xóa sẽ hủy phân công"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15680,10 +15331,6 @@ msgid "Add New Fund"
 msgstr "Thêm quỹ mới"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Thêm cơ hội mới"
-
-#: 
 msgid "Add New Person"
 msgstr "Thêm người mới"
 
@@ -15696,10 +15343,6 @@ msgid "Add New Role"
 msgstr "Thêm vai trò mới"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Thêm cơ hội tình nguyện mới"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Thêm lớp Trường Chúa nhật"
 
@@ -15708,24 +15351,8 @@ msgid "Delete this family?"
 msgstr "Xóa gia đình này?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Bạn có muốn xóa gia đình này không? Bạn sẽ được chuyển đến trang để chọn những gì cần xóa. Thao tác này không thể hoàn tác."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Xác nhận xóa gia đình"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Xác nhận xóa loại thuộc tính"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Xem xét các gia đình và cá nhân mới đã đăng ký qua biểu mẫu đăng ký công khai của bạn"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Xác nhận xóa cơ hội tình nguyện"
 
 #: 
 msgid "# Payments"
@@ -17390,14 +17017,6 @@ msgid "Find people who did not attend an event"
 msgstr "Tìm những người không tham dự sự kiện"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Tìm những tình nguyện viên khớp với hai mã cơ hội cụ thể"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện Đầu tiên"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Tờ rơi Gấp"
 
@@ -17474,10 +17093,6 @@ msgid "Run Report"
 msgstr "Chạy Báo Cáo"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện Thứ hai"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Được hiển thị ở thanh bên, trên trang đăng nhập và trong email. Tải lên logo thay thế thương hiệu ChurchCRM ở mọi nơi nó xuất hiện."
 
@@ -17504,14 +17119,6 @@ msgstr "Sử dụng logo ChurchCRM mặc định"
 #: 
 msgid "View Full Family Giving"
 msgstr "Xem Quy Đầy Đủ Gia Đình"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Cơ hội Tình nguyện"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Tình nguyện viên cho Hai Cơ hội"
 
 #: 
 msgid "YTD"
@@ -17986,10 +17593,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Các đăng ký đang chờ xem xét từ biểu mẫu đăng ký công khai của bạn. Những mục không có email hoặc điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi liên hệ."
 
 #: 
-msgid "Review now"
-msgstr "Xem xét ngay"
-
-#: 
 msgid "Review self registrations"
 msgstr "Xem xét các đăng ký tự phục vụ"
 
@@ -18040,10 +17643,6 @@ msgstr "Hôm qua"
 #: 
 msgid "days ago"
 msgstr "ngày trước"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "đăng ký tự phục vụ đang chờ xem xét"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18337,10 +17936,6 @@ msgstr "Lịch phục vụ theo một loại sự kiện phải nêu loại sự
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Lịch phục vụ cho một sự kiện không thể theo các sự kiện khác; hãy xóa nó và thêm một lịch phục vụ mới"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Một danh sách duy nhất các cơ hội phục vụ, chẳng hạn \"Trông trẻ\" hoặc \"Đón tiếp\", lưu trong Hội thánh → Quản trị. Mỗi người được gắn thẻ các cơ hội họ sẵn lòng giúp, trong thẻ Tình nguyện viên của hồ sơ. Chỉ có vậy: không có đội, lịch phục vụ, phân công theo ngày hay email nhắc nhở. Báo cáo và hồ sơ cá nhân là nơi dùng các thẻ này."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18649,18 +18244,6 @@ msgstr "Tác vụ nền đã chạy"
 #: 
 msgid "Birthday greeting"
 msgstr "Lời chúc sinh nhật"
-
-#: 
-msgid "Both"
-msgstr "Cả hai"
-
-#: 
-msgid "Both (transition)"
-msgstr "Cả hai (chuyển tiếp)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Cả hai — V1 và V2 song song (chuyển tiếp)"
 
 #: 
 msgid "Calendar address"
@@ -21743,22 +21326,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Người dùng phải có quyền Thêm sự kiện, hoặc điều phối mục vụ tình nguyện sở hữu lịch này"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Cơ hội Tình nguyện (cũ)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Cơ hội Tình nguyện cũ"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Mục vụ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Quản lý Tình nguyện viên"
-
-#: 
 msgid "Valid"
 msgstr "Hợp lệ"
 
@@ -21777,14 +21344,6 @@ msgstr "Xem sự kiện"
 #: 
 msgid "View this email"
 msgstr "Xem email này"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Tình nguyện viên (Cũ)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Quản lý Tình nguyện viên V2 chưa được bật"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21889,10 +21448,6 @@ msgid "What the check found"
 msgstr "Kết quả kiểm tra tìm thấy"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Các trải nghiệm tình nguyện là gì"
-
-#: 
 msgid "What you want to say"
 msgstr "Điều bạn muốn nói"
 
@@ -21923,10 +21478,6 @@ msgstr "Ngày lấy từ đâu"
 #: 
 msgid "Where we reach you"
 msgstr "Cách chúng tôi liên lạc với bạn"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Trải nghiệm Quản lý Tình nguyện viên nào đang hoạt động. V1 là tính năng Cơ hội Tình nguyện cũ; V2 là quy trình lập lịch và phân công mới. \"Cả hai\" hiển thị song song trong thời gian chuyển đổi."
 
 #: 
 msgid "Which events"
@@ -22337,10 +21888,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Chỉ người quản lý tình nguyện mới có thể thay đổi người điều phối sự kiện"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Chọn V1 sẽ tạm dừng email tình nguyện V2; bất cứ thứ gì trong hàng đợi sẽ được gửi khi V2 trở lại bật, trừ khi sự kiện của nó kết thúc."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "Thêm các sự kiện của bộ phận này tại đây: một ngày làm việc, một lớp học gặp nhau vào thứ Bảy hàng tuần. Chúng được đưa vào lịch của nhà thờ, và khi chúng được tạo ra, bạn sẽ được hỏi có muốn điều phối nhân sự cho chúng không."
 
@@ -22451,10 +21998,6 @@ msgstr "Đăng ký khách đi bộ"
 #: 
 msgid "Register walk-in guest"
 msgstr "Đăng ký khách đi bộ"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Được đăng ký làm khách đi bộ tại máy kiosk trong sự kiện: %s"
 
 #: 
 msgid "Registering..."
@@ -23187,10 +22730,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Thời gian báo trước vị trí còn trống (giờ)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Quản lý tình nguyện viên"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Mục vụ tình nguyện, đội, lịch và phân công"
 
@@ -23201,14 +22740,6 @@ msgstr "Các vị trí tình nguyện cần bố trí trong những ngày tới"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vẫn cần tình nguyện viên cho các buổi sắp tới này: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Những mục này nghĩa là gì?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Hội thánh này dùng trải nghiệm tình nguyện viên nào"
 
 #: 
 msgid "You are on the schedule"
@@ -24139,10 +23670,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d khoản thanh toán chưa thuộc đợt nộp nào."
 
 #: 
-msgid "Closing line"
-msgstr "Dòng kết"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Mọi đợt nộp có ngày trong năm nay đã được đóng."
 
@@ -24155,28 +23682,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Mọi khoản thanh toán trong năm nay đều thuộc một đợt nộp."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tạo bản kê thuế"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Báo cáo dâng hiến (bản kê thuế)"
-
-#: 
-msgid "Opening line"
-msgstr "Dòng mở đầu"
-
-#: 
 msgid "Qty"
 msgstr "SL"
-
-#: 
-msgid "Signed by"
-msgstr "Ký bởi"
-
-#: 
-msgid "Thank-you line"
-msgstr "Dòng cảm ơn"
 
 #: 
 msgid "Year-End Giving"
@@ -24307,10 +23814,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Số 0 tắt một yêu cầu không bắt buộc. Tuổi cần ngày sinh đầy đủ; thời gian hội viên cần ngày gia nhập. Người thiếu ngày bắt buộc bị bỏ qua và được đếm riêng. Người đã qua đời, người và phân loại không hoạt động, cùng gia đình và người không hoạt động hoặc đang chờ duyệt luôn bị loại; hệ thống dùng phân loại và trạng thái hiện tại, không dùng trạng thái cũ."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Số phải nộp cho %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Không thể tạo nơi lưu PDF tạm riêng tư trong thư mục đã chọn."
 
@@ -24337,10 +23840,6 @@ msgstr "Thư mục tạm PDF không tồn tại hoặc không truy cập đượ
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Thư mục tạm PDF phải là đường dẫn thư mục tuyệt đối."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Mã số thuế nhà thờ (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24385,10 +23884,6 @@ msgstr "Cài đặt bản kê"
 #: 
 msgid "Statement Wording"
 msgstr "Lời văn bản kê"
-
-#: 
-msgid "Tax Information"
-msgstr "Thông tin thuế"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24437,10 +23932,6 @@ msgstr "Đang dùng tên và địa chỉ nhà thờ"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Đang dùng đường dẫn phần đầu thư đã đặt trong Cài đặt hệ thống"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Lời văn, mã số thuế và cách xử lý PDF cho bản kê dâng hiến"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24713,10 +24204,6 @@ msgstr "Quốc gia của nhà thờ"
 #: 
 msgid "Church default: %s"
 msgstr "Mặc định của nhà thờ: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Đăng nhập của lãnh đạo nhà thờ"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25361,10 +24848,6 @@ msgstr "Chưa kết thúc"
 #: 
 msgid "Not moved"
 msgstr "Chưa chuyển"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Không chắc chúng tôi đang có email nào? Hãy liên hệ văn phòng nhà thờ."
 
 #: 
 msgid "Not yet"
@@ -26619,248 +26102,8 @@ msgid "Review Family Information"
 msgstr "Xem lại thông tin gia đình"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Đã có mục vụ tên \"%s\". Hãy chọn mục vụ đó trong danh sách hoặc đặt tên khác."
-
-#: 
-msgid "A new ministry"
-msgstr "Một mục vụ mới"
-
-#: 
-msgid "A position"
-msgstr "Một vị trí"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Thêm {{total}} tình nguyện viên vào các vị trí đã chuyển đổi trước đó?"
-
-#: 
-msgid "Already converted"
-msgstr "Đã chuyển đổi"
-
-#: 
-msgid "An existing ministry"
-msgstr "Một mục vụ hiện có"
-
-#: 
-msgid "Becomes"
-msgstr "Trở thành"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ nên dùng một cách; cài đặt \"Trải nghiệm tình nguyện\" quyết định hội thánh này thấy cách nào. Chuyển đổi chỉ ẩn hoặc hiện các trang và mục menu, không bao giờ xóa dữ liệu. V1 và Cả hai chỉ được cung cấp khi Cơ hội Tình nguyện còn được sử dụng: khi mọi cơ hội đã được chuyển đổi và hội thánh dùng V2, chúng sẽ biến mất khỏi danh sách này."
-
-#: 
-msgid "Convert"
-msgstr "Chuyển đổi"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Chuyển đổi Cơ hội Tình nguyện"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Chuyển đổi {{total}} cơ hội ngay bây giờ? Dữ liệu V1 được giữ nguyên cho đến khi Cơ hội Tình nguyện bị ngừng."
-
-#: 
-msgid "Converted"
-msgstr "Đã chuyển đổi"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Đã chuyển đổi: {{positions}} vị trí và {{ministries}} mục vụ, {{qualifications}} tình nguyện viên đủ điều kiện."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Mỗi cơ hội trở thành một vị trí trong đội đầu tiên của một mục vụ, và mọi người được liên kết với cơ hội đó đều đủ điều kiện cho vị trí ấy. Tự đăng ký ban đầu bị tắt ở các vị trí này."
-
-#: 
-msgid "Everything is converted."
-msgstr "Mọi thứ đã được chuyển đổi."
-
-#: 
-msgid "Existing ministry"
-msgstr "Mục vụ hiện có"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Đặt cho mục vụ mới một tên tối đa 100 ký tự."
-
-#: 
-msgid "Its own ministry"
-msgstr "Mục vụ riêng"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Được liên kết từ đó: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Các liên kết không thể chuyển đổi"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Các mục vụ mới riêng"
-
-#: 
-msgid "New ministry name"
-msgstr "Tên mục vụ mới"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Không có email nào được gửi, và Cơ hội Tình nguyện được giữ nguyên cho đến khi bị ngừng."
-
-#: 
-msgid "No name"
-msgstr "Không có tên"
-
-#: 
-msgid "Not converted"
-msgstr "Chưa chuyển đổi"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Mở Các Công tắc Tính năng"
-
-#: 
-msgid "Open Ministries"
-msgstr "Mở Mục vụ"
-
-#: 
-msgid "Opportunities"
-msgstr "Cơ hội"
-
-#: 
-msgid "Opportunity"
-msgstr "Cơ hội"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Cơ hội #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Số người được liên kết với Cơ hội Tình nguyện đã chuyển đổi kể từ khi chuyển đổi: %d. Hãy thêm họ vào vị trí của mình trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Hãy xem trước việc chuyển đổi, rồi gửi bản sửa đổi mà nó trả về."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Đã đổi tên để giữ tên không trùng lặp"
-
-#: 
-msgid "Review the conversion"
-msgstr "Xem lại việc chuyển đổi"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Gửi lựa chọn chuyển đổi dưới dạng đối tượng JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Gửi các cơ hội sẽ trở thành mục vụ dưới dạng danh sách ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Mục vụ đó không tồn tại."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Phiên bản ChurchCRM mà tại đó quản trị viên đã đóng thông báo ngừng Cơ hội Tình nguyện."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Cơ hội Tình nguyện đã thay đổi kể từ khi xem trước. Hãy kiểm tra lại bản xem trước, rồi chuyển đổi."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Không thể mở hộp xác nhận. Hãy tải lại trang và thử lại."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Không thể xem trước việc chuyển đổi."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Chuyển đổi thất bại. Không có gì bị thay đổi."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Mục vụ \"%s\" không có đội nào để chứa các vị trí."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Không thể kết nối máy chủ. Hãy tải lại trang để xem việc chuyển đổi đã chạy chưa."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Không có Cơ hội Tình nguyện nào để chuyển đổi."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Quản lý tình nguyện viên chuyển sang Cả hai, để các mục vụ mới hiển thị bên cạnh Cơ hội Tình nguyện."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Cơ hội Tình nguyện sắp bị ngừng"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Đã chuyển đổi Cơ hội Tình nguyện"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển chúng thành Mục vụ để giữ thông tin ai phục vụ ở đâu."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển ngay %1$d cơ hội và %2$d tình nguyện viên của bạn thành Mục vụ. Bạn có thể xem trước kết quả trước khi có bất kỳ thay đổi nào."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Tình nguyện viên đủ điều kiện"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Tình nguyện viên cần thêm vào các vị trí đã chuyển đổi"
-
-#: 
-msgid "What it becomes"
-msgstr "Trở thành gì"
-
-#: 
-msgid "What will happen"
-msgstr "Điều gì sẽ xảy ra"
-
-#: 
-msgid "Where they go"
-msgstr "Chuyển đến đâu"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Những Cơ hội Tình nguyện cũ nào đã được chuyển đổi, và mỗi cơ hội đã trở thành vị trí nào."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Trải nghiệm tình nguyện mà hội thánh này sử dụng. Cơ hội Tình nguyện (V1) sẽ bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Cơ hội Tình nguyện của bạn đã được chuyển thành Mục vụ. Hãy chuyển Quản lý tình nguyện viên sang V2 trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "vào một mục vụ mới, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "vào mục vụ {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "không còn trong ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26981,10 +26224,6 @@ msgid "Last verified"
 msgstr "Xác minh lần cuối"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Không có thành viên nào đang hoạt động và đã được phê duyệt của gia đình này có địa chỉ email. Hãy xác minh trực tiếp thay thế."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Không tìm thấy cam kết dâng hiến nào cho các năm tài chính này."
 
@@ -27007,10 +26246,6 @@ msgstr "Đăng nhập vào cổng Hội thánh bằng địa chỉ email này đ
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Gia đình này không hoạt động nên không được gửi email xác minh."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Gia đình tự đăng ký này đang chờ phê duyệt. Khi được phê duyệt, gia đình sẽ nhận email mời đăng nhập vào cổng Hội thánh và xem lại thông tin của mình."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27041,10 +26276,6 @@ msgstr "trực tiếp bởi nhân viên"
 msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d mặc định bị bỏ qua vì lý do khác (sự kiện đã kết thúc, bị hủy hoặc đã đầy)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Một cài đặt chuyển tiếp. Cả các trang Cơ hội Tình nguyện cũ và các trang Mục vụ mới đều có sẵn, và hồ sơ cá nhân hiển thị cả hai thẻ Tình nguyện viên, được ghi nhãn rõ ràng. Dùng khi chuyển Hội thánh từ V1 sang V2, rồi chỉ chuyển sang V2."
 
 #: 
 msgid "Assignment canceled"
@@ -27093,10 +26324,6 @@ msgstr "Ngày này đã được hủy. Bạn không cần làm gì thêm."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Lần diễn ra này đã bị hủy"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Phục vụ tình nguyện được tổ chức theo cách một Hội thánh vận hành. Mỗi mục vụ có các đội và vị trí; mọi người được cấp điều kiện cho các vị trí và thuộc nhóm của mục vụ; lịch phục vụ theo các sự kiện trên lịch và tạo ra các lần diễn ra có ngày với yêu cầu nhân sự; điều phối viên phân công người, họ chấp nhận, từ chối hoặc đề xuất người thay thế; nhắc nhở và cảnh báo được gửi qua email. Quản trị viên và người dùng có quyền Quản lý Mục vụ thấy mọi mục vụ và có thể tạo, ngừng hoạt động và xóa chúng. Điều phối viên mục vụ được cấp quyền Quản lý Mục vụ của tôi: khi đó tiêu đề Mục vụ ở thanh bên chỉ hiện các mục vụ họ điều phối. Trưởng đội điều hành đội của mình từ Cổng Hội thánh. Thành viên dùng Cổng Hội thánh để xem lịch phục vụ, phản hồi, đăng ký và đề nghị giúp đỡ."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27258,10 +26485,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Đồng thời vô hiệu hóa đăng nhập để họ không thể dùng Cổng thành viên"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Trước khi gửi bảng kê"
-
-#: 
 msgid "Birthday today"
 msgstr "Hôm nay sinh nhật"
 
@@ -27344,10 +26567,6 @@ msgstr "Xóa người và gia đình"
 #: 
 msgid "Delete the login for"
 msgstr "Xóa tài khoản đăng nhập của"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Khoảng thời gian của biểu đồ khoản nộp"
 
 #: 
 msgid "Disabled at"
@@ -27602,10 +26821,6 @@ msgid "Preview Sample Letter"
 msgstr "Xem trước thư mẫu"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Mã định danh tài nguyên chữ ký riêng tư của bảng kê dâng hiến Canada. Được quản lý bằng cách tải chữ ký lên."
-
-#: 
 msgid "Property Type"
 msgstr "Loại thuộc tính"
 
@@ -27644,10 +26859,6 @@ msgstr "Xem lại và lọc"
 #: 
 msgid "Review and vote"
 msgstr "Xem lại và bình chọn"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Xem lại năm đó, rồi tải xuống bảng kê dâng hiến."
 
 #: 
 msgid "Review what we are considering"
@@ -27696,10 +26907,6 @@ msgstr "Mạnh"
 #: 
 msgid "Support"
 msgstr "Hỗ trợ"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Cài đặt mã số thuế và PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27814,10 +27021,6 @@ msgid "View people and families"
 msgstr "Xem người và gia đình"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Quản lý tình nguyện viên đã bị tắt cho hội thánh này"
-
-#: 
 msgid "Weak"
 msgstr "Yếu"
 
@@ -27886,10 +27089,6 @@ msgid "Latest Notes"
 msgstr "Ghi chú mới nhất"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Chưa có ghi chú nào được thêm."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Bắt đầu đăng ký để nhận mã QR."
 
@@ -27900,4 +27099,744 @@ msgstr "Mật khẩu hoặc mã đó không đúng. Xác thực hai yếu tố v
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Xác thực hai yếu tố đã được thiết lập. Bí mật của nó chỉ hiển thị trong quá trình đăng ký."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d khoản dâng hiến với tổng số %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "Hiện có %d gia đình có thuộc tính thuộc loại này."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d gia đình chưa thể nhận biên lai và bị loại ra. Hãy sửa các vấn đề được liệt kê bên dưới, rồi chọn Kiểm Tra Lại."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "Hiện có %d nhóm có thuộc tính thuộc loại này."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "Hiện có %d người có thuộc tính thuộc loại này."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "Có %d bản phát hành kể từ phiên bản bạn đã cài đặt."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Không có biên lai nào được tạo."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: nhập họ tên đầy đủ đã xác minh của (các) nhà tài trợ, xác nhận các nhà tài trợ, và xác nhận một bộ nhà tài trợ. Các bộ thanh toán có nhiều nhà tài trợ khác nhau phải được xử lý ngoài tính năng này."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: các khoản dâng hiến hoặc địa chỉ gửi thư đã thay đổi kể từ lần xét duyệt. Chọn Kiểm Tra Lại và xác nhận lại nhà tài trợ."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} kỳ trả)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} kỳ trả)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Một khoản thanh toán bằng thẻ tín dụng hoặc hối phiếu ngân hàng đang nằm trong một khoản tiền gửi chưa đóng. Hãy đóng khoản tiền gửi khi khoản thanh toán đã được xử lý xong."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Một khoản thanh toán có số tiền không được khấu trừ. Biên lai Canada ở đây chỉ hỗ trợ các khoản dâng hiến không có lợi ích đổi lại."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Một khoản thanh toán có số tiền không hợp lệ."
+
+#: 
+msgid "A payment has no date."
+msgstr "Một khoản thanh toán không có ngày."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Một khoản thanh toán có ngày sau ngày phát hành."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Một khoản thanh toán bị đánh dấu là có vấn đề."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Một khoản thanh toán bằng 0 hoặc âm."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Cần một POST đã được xét duyệt với mã CSRF hợp lệ."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Một gia đình đã chọn không còn tồn tại."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Hình ảnh chữ ký không phải là chữ ký số an toàn."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Có bản cập nhật hệ thống. Vui lòng yêu cầu quản trị viên nâng cấp bản cài đặt của bạn."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Tất cả các hàng được bao gồm đều là khoản dâng hiến bằng tiền không có lợi ích đổi lại."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Tất cả các cài đặt biên lai Canada bắt buộc đã được điền."
+
+#: 
+msgid "Also delete family members"
+msgstr "Xóa cả các thành viên gia đình"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Số tiền lợi ích"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Số tiền dâng hiến"
+
+#: 
+msgid "Amount per installment"
+msgstr "Số tiền mỗi kỳ"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Số tiền đã nhập là"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Quản trị viên tải nó lên trong Cài Đặt Báo Cáo."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Đã phê duyệt, nhưng không có thư mời nào được gửi"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Hãy yêu cầu quản trị viên hệ thống nâng cấp ChurchCRM lên phiên bản mới nhất."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Chữ Ký Được Ủy Quyền"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Cơ Quan Doanh Thu Canada"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Biên Lai Chính Thức Của Canada"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Biên lai chính thức của Canada yêu cầu Canada là quốc gia của hội thánh trong Thông Tin Hội Thánh."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Biên lai Canada yêu cầu toàn bộ năm dương lịch và tất cả các quỹ, không có bộ lọc khác."
+
+#: 
+msgid "Change Selection"
+msgstr "Thay Đổi Lựa Chọn"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Tên Pháp Lý Của Tổ Chức Từ Thiện"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Địa Chỉ Đăng Ký Của Tổ Chức Từ Thiện"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Số Đăng Ký Của Tổ Chức Từ Thiện"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Chi tiết tổ chức từ thiện cho biên lai chưa được điền. Hãy thêm tên pháp lý, địa chỉ đăng ký, số đăng ký và địa phương phát hành khi bạn có thể. Tài chính vẫn tiếp tục hoạt động cho đến lúc đó."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Tổ chức từ thiện trên biên lai"
+
+#: 
+msgid "Check Again"
+msgstr "Kiểm Tra Lại"
+
+#: 
+msgid "Check the year"
+msgstr "Kiểm tra năm"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Kiểm tra năm, thiết lập bản kê, rồi tải xuống."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Chọn Hàng Tuần, Hàng Tháng hoặc Hàng Quý cho số tiền mỗi kỳ."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Chọn một năm dương lịch hiến tặng hợp lệ."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Chọn bản gốc hoặc bản sao."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Chọn tổng cam kết hoặc số tiền mỗi kỳ."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Các bản dịch của ChurchCRM được quản lý trong kho GitHub của ChurchCRM. Bạn có thể giúp bằng cách"
+
+#: 
+msgid "Commitment amount"
+msgstr "Số tiền cam kết"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "So sánh bản sao với bản gốc đã lưu giữ và xác nhận mọi thông tin biên lai không thay đổi."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Hoàn thành mọi xác nhận biên lai trước khi tải xuống."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Hoàn thành tên pháp lý của tổ chức từ thiện, địa chỉ đăng ký, số đăng ký, địa phương phát hành và người ký đã in."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Người Ký Đã In Của Thư Xác Nhận"
+
+#: 
+msgid "Copy Kind"
+msgstr "Loại Bản Sao"
+
+#: 
+msgid "Currency"
+msgstr "Tiền Tệ"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Ký hiệu tiền tệ $ hoặc CAD"
+
+#: 
+msgid "Date received"
+msgstr "Ngày nhận"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Xóa nó cũng sẽ xóa %d thuộc tính và mọi phân công của chúng để không còn gì bị treo lơ lửng."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Tất cả các khoản dâng hiến của năm đã chọn có thuộc về (các) nhà tài trợ được nêu cùng nhau ở trên không?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Không sử dụng lại một số cho biên lai khác, không cấp biên lai cho cùng các khoản dâng hiến hai lần, và không tạo lại thông tin đã thay đổi như một bản gốc không thay đổi."
+
+#: 
+msgid "Duplicate"
+msgstr "Bản sao"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Bản sao trùng lặp / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Số tiền dâng hiến đủ điều kiện cho mục đích thuế thu nhập"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Nhập lịch trình và các ngày trả góp để xem trước cam kết."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Nhập ngày kỳ đầu tiên và kỳ cuối cùng hợp lệ theo thứ tự."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Nhập số tiền các kỳ hợp lệ với tối đa hai chữ số thập phân."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Các cam kết hiện có giữ nguyên tổng số đã ghi. Chỉ chọn số tiền mỗi kỳ khi nhập từng khoản dâng hiến đã lên lịch."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Được điền từ các chủ hộ và vợ/chồng. Hãy chỉnh sửa để khớp chính xác với các nhà tài trợ."
+
+#: 
+msgid "First installment"
+msgstr "Kỳ đầu tiên"
+
+#: 
+msgid "Full commitment"
+msgstr "Cam kết đầy đủ"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Tạo Bản Kê Thuế"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Năm Dương Lịch Dâng Hiến"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Bản kê dâng hiến — không phải biên lai hiến tặng chính thức"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Giúp Dịch Trên GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Các thay đổi phong bì trong quá khứ không được hỗ trợ."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Tôi đã so sánh với bản gốc đã lưu giữ: nhà tài trợ, số tiền, số sê-ri và nội dung không thay đổi. Đây không phải là bản sửa chữa hay thay thế."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Tôi sẽ lưu giữ PDF đã phát hành và một nhật ký biên lai bên ngoài tại địa điểm lưu trữ hồ sơ Canada của tổ chức từ thiện."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Nếu bản gốc đã lưu giữ không có sẵn hoặc khác, hãy sử dụng các thủ tục hủy/thay thế CRA bên ngoài của bạn."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Bao gồm ghi chú thanh toán: tôi đã xem xét chúng là phù hợp cho nhà tài trợ."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Bao gồm gia đình này trong bản tải xuống"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Phiên bản đã cài đặt: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Số tiền các kỳ chỉ có thể dùng cho các cam kết."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Các ngày trả góp phải nằm trong năm tài chính đã chọn."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Mã CSRF không hợp lệ hoặc bị thiếu"
+
+#: 
+msgid "Issue Date"
+msgstr "Ngày Phát Hành"
+
+#: 
+msgid "Issue Locality"
+msgstr "Địa Phương Phát Hành"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Hãy lưu giữ PDF gốc và một nhật ký biên lai bên ngoài tại địa điểm lưu trữ hồ sơ Canada của tổ chức từ thiện."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Kỳ cuối cùng vào hoặc trước ngày"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Nội dung thư, chi tiết tổ chức từ thiện và cách xử lý PDF được thiết lập một lần trong Cài Đặt Bản Kê."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Nội dung thư, chi tiết tổ chức từ thiện và cách xử lý PDF cho các bản kê dâng hiến"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Tối đa 2 MiB và 2000 × 1000 điểm ảnh. Chọn một hình ảnh mới để thay thế chữ ký đã lưu. Hình ảnh chữ ký không phải là chữ ký số an toàn."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Đăng nhập thành viên đang tắt, vì vậy không ai trong gia đình %s có thể đăng nhập vào cổng thành viên. Quản trị viên có thể bật nó trong Quản Trị → Cổng Thành Viên."
+
+#: 
+msgid "Memo"
+msgstr "Ghi chú"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Các bộ thanh toán gia đình có nhiều nhà tài trợ khác nhau không thể tách ở đây; hãy xử lý chúng ngoài tính năng này."
+
+#: 
+msgid "Narrow the list"
+msgstr "Thu hẹp danh sách"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Không có gia đình nào khớp với các bộ lọc này cho %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Không tồn tại biên lai cá nhân hoặc tích lũy nào chồng chéo."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Chưa thể tạo biên lai cho gia đình này"
+
+#: 
+msgid "No signature on file"
+msgstr "Không có chữ ký trong hồ sơ"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Không — các nhà tài trợ khác nhau; hãy xử lý ngoài tính năng này"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Không ai trong gia đình %s có thể đăng nhập vào cổng thành viên theo quy tắc đăng nhập hiện tại."
+
+#: 
+msgid "None / Aucun"
+msgstr "Không có / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Chưa sẵn sàng phát hành biên lai Canada. Còn thiếu"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Biên Lai Chính Thức / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Biên lai chính thức cho mục đích thuế thu nhập / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Biên lai chính thức cần một số đăng ký theo mẫu 123456789RR0001 và một hình ảnh chữ ký."
+
+#: 
+msgid "Original"
+msgstr "Bản gốc"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Ngày Phát Hành Gốc (nhập từ bản gốc đã lưu giữ)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Ngày thanh toán phản ánh ngày nhận khoản dâng hiến, bao gồm cả cách xử lý dấu bưu điện của séc gửi qua thư đã được ghi nhận."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Được in trên các bản kê dâng hiến thông thường, ví dụ EIN ở Hoa Kỳ. Giá trị tương tự có trong Thông Tin Hội Thánh."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Mã định danh tài sản chữ ký của bản kê dâng hiến riêng tư. Được quản lý bằng tải lên chữ ký."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Thuộc Tính / Phân Công"
+
+#: 
+msgid "Property deleted"
+msgstr "Đã xóa thuộc tính"
+
+#: 
+msgid "Property type deleted"
+msgstr "Đã xóa loại thuộc tính"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Lời Kết Biên Lai"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Địa Phương Phát Hành Biên Lai"
+
+#: 
+msgid "Receipt No."
+msgstr "Số Biên Lai"
+
+#: 
+msgid "Registration Number"
+msgstr "Số Đăng Ký"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Số đăng ký theo mẫu 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Ghi chú phát hành hiện không có sẵn."
+
+#: 
+msgid "Releases"
+msgstr "Các bản phát hành"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Cam kết còn lại cho %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Xóa yêu cầu 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Xóa hình ảnh chữ ký đã lưu? Biên lai chính thức yêu cầu có một hình trong hồ sơ."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Các báo cáo và lời nhắc so sánh cam kết toàn kỳ này với việc dâng hiến. Số dư còn lại không phải là phép tính kỳ quá hạn."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Các báo cáo và lời nhắc sử dụng toàn bộ cam kết hiển thị ở trên. Số dư còn lại không phải là phép tính kỳ quá hạn."
+
+#: 
+msgid "Require 2FA"
+msgstr "Yêu cầu 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Đặt Lại Tùy Chọn"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Xem Xét Các Gia Đình Đã Chọn"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "BẢN MẪU — KHÔNG CÓ GIÁ TRỊ CHO MỤC ĐÍCH THUẾ"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Trình giữ chỗ chữ ký mẫu"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Cho biết 2FA có bắt buộc hay không."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Các bản cập nhật bảo mật và hỗ trợ chỉ được cung cấp cho phiên bản mới nhất."
+
+#: 
+msgid "Select the families to review."
+msgstr "Chọn các gia đình để xem xét."
+
+#: 
+msgid "Set up the statement"
+msgstr "Thiết lập bản kê"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Thiết lập xác thực hai yếu tố để tiếp tục."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Xung đột phong bì dùng chung: một gia đình khác hiện đang có số phong bì này."
+
+#: 
+msgid "Signature Image"
+msgstr "Hình Ảnh Chữ Ký"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Hình ảnh chữ ký (Quản Trị, Cài Đặt Báo Cáo)"
+
+#: 
+msgid "Signature on file"
+msgstr "Chữ ký trong hồ sơ"
+
+#: 
+msgid "Sincerely"
+msgstr "Trân trọng"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Chỉ định cơ sở số tiền khi chỉnh sửa một cam kết định kỳ."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Bản Kê Dâng Hiến Chuẩn"
+
+#: 
+msgid "Statement Template"
+msgstr "Mẫu Bản Kê"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Cung cấp ngày phát hành không muộn hơn hôm nay."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Mã Số Thuế trên bản kê"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Gia đình %s không có thành viên còn sống nào để mời vào cổng thành viên."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Số đăng ký Canada phải có định dạng 123456789RR0001. Điều này không xác minh tình trạng đăng ký."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Số đăng ký của tổ chức từ thiện phải là văn bản."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Số đăng ký của tổ chức từ thiện được in trên biên lai chính thức. Nếu để trống sẽ dùng Mã Số Thuế trong Thông Tin Hội Thánh."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Địa chỉ đăng ký của tổ chức từ thiện. Nếu để trống sẽ dùng địa chỉ trong Thông Tin Hội Thánh."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Cụm từ kết ở trên người ký, ví dụ Trân trọng."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Tổng cam kết không được vượt quá 999999.99 cho mỗi quỹ và các số tiền phải dùng tối đa hai chữ số thập phân."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Các khoản dâng hiến hoặc địa chỉ gửi thư đã thay đổi kể từ lần kiểm tra cuối của bạn. Hãy xem xét chúng và xác nhận lại nhà tài trợ."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Địa chỉ gửi thư chưa đầy đủ. Cần có đường, thành phố, tỉnh và mã bưu chính."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Tên mà tổ chức từ thiện đăng ký. Nó có thể khác với tên hội thánh."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Nơi biên lai được phát hành. Nếu để trống sẽ dùng thành phố trong Thông Tin Hội Thánh."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Người ký bản kê dâng hiến đã in được ủy quyền ký các biên lai này."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Ký hiệu tiền tệ của hệ thống phải là $ hoặc xác định CAD cho biên lai Canada."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Không có khoản thanh toán nào trong năm dương lịch đã chọn."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Đây là các nhà tài trợ thật sự cho mọi khoản dâng hiến trong gia đình/năm dương lịch này, và địa chỉ gửi thư là chính xác."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Hình ảnh này in phía trên tên người ký trên các bản kê dâng hiến và biên lai. Chi tiết tổ chức từ thiện và tên in của người ký nằm trong Tài Chính, Cài Đặt Bản Kê."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Tùy chọn này định dạng một biên lai Canada nhưng không lưu sổ đăng ký biên lai hay giữ lại các PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Gia đình tự đăng ký này đang chờ phê duyệt. Phê duyệt nó sẽ gửi email cho mỗi thành viên có thể đăng nhập vào cổng thành viên một thư mời xem xét thông tin của gia đình."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Công cụ này không có quy trình hủy/thay thế; hãy sử dụng quy trình tuân thủ CRA hiện có của bạn cho các sửa chữa/thay thế biên lai bị mất."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Người dùng này phải thiết lập 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Thao tác này sẽ xóa vĩnh viễn hồ sơ gia đình và các ghi chú của nó. Không thể hoàn tác."
+
+#: 
+msgid "Total commitment"
+msgstr "Tổng cam kết"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Không thể xem trước cam kết."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Tải lên hoặc thay thế chữ ký"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Tải lên chữ ký thuế được ủy quyền trong Cài Đặt Báo Cáo."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Sử dụng các ngày trong năm tài chính đã chọn. Các khoản dâng hiến hàng tháng và hàng quý dùng ngày kỳ đầu tiên, hoặc ngày cuối cùng của các tháng ngắn hơn."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Họ Tên Đầy Đủ Đã Xác Minh Của (Các) Nhà Tài Trợ"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Thay vào đó hãy xác minh gia đình trực tiếp."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Xác minh họ tên đầy đủ và địa chỉ của nhà tài trợ cho mọi gia đình. Các bộ thanh toán có nhiều nhà tài trợ khác nhau phải được xử lý ngoài tính năng này."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Phiên bản %s đã có sẵn. Vui lòng yêu cầu quản trị viên nâng cấp bản cài đặt của bạn."
+
+#: 
+msgid "View all emails"
+msgstr "Xem tất cả email"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Có — một bộ nhà tài trợ đã xác minh"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Quốc gia của hội thánh bạn là Canada, vì vậy biên lai chính thức của Canada cũng có sẵn khi bạn tạo các bản kê."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Quốc gia của hội thánh bạn là Canada, vì vậy biên lai chính thức của Canada có sẵn trên các Bản Kê Dâng Hiến và các bản kê thông thường được đánh dấu là không phải biên lai hiến tặng chính thức."
+
+#: 
+msgid "groups"
+msgstr "các nhóm"
 

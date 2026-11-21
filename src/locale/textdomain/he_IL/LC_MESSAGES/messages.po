@@ -839,14 +839,6 @@ msgid "Assign"
 msgstr "הקצה"
 
 #: 
-msgid "Date Updated"
-msgstr "תאריך עדכון"
-
-#: 
-msgid "Updated By"
-msgstr "עודכן על ידי"
-
-#: 
 msgid "Since"
 msgstr "מאז"
 
@@ -1314,10 +1306,6 @@ msgid "People"
 msgstr "אנשים"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "ילדי בית הספר של יום ראשון"
-
-#: 
 msgid "Role / Gender"
 msgstr "תפקיד / מגדר"
 
@@ -1362,10 +1350,6 @@ msgid "Updated"
 msgstr "עודכן"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(פעולה זו אינה ניתנת לביטול)"
-
-#: 
 msgid "Note Editor"
 msgstr "עורך הערות"
 
@@ -1384,10 +1368,6 @@ msgstr "קבוצה"
 #: 
 msgid "Default"
 msgstr "ברירת מחדל"
-
-#: 
-msgid "Exit"
-msgstr "יציאה"
 
 #: 
 msgid "Add New"
@@ -1494,10 +1474,6 @@ msgid "Assign New Group"
 msgstr "שייך לקבוצה חדשה"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "הקצה הזדמנות התנדבות חדשה"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -1590,10 +1566,6 @@ msgid "Warning"
 msgstr "אזהרה"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "סוג מאפיין זה עדיין בשימוש על ידי לפחות מאפיין אחד."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "אנא אשר את מחיקת סוג המאפיין הזה"
 
@@ -1615,48 +1587,8 @@ msgid "Restore Database"
 msgstr "שחזר מסד נתונים"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "אנא אשר את מחיקת"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "מצטערים, יש רשומות של תרומות ממשפחה זו. לא ניתן למחוק משפחה זו."
-
-#: 
-msgid "Return to Family View"
-msgstr "חזור לתצוגת משפחה"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "אזהרה: למשפחה זו יש רשומות של תרומות ולא ניתן למחוק אותה עד שתרומות אלו ישויכו למשפחה אחרת."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "אזהרה: לא ניתן לבטל פעולה זו וייתכנו לה השלכות משפטיות!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "משפחה נוכחית עם תרומות"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "הערה: זה ימחק גם את כל ההערות הקשורות לרשומת משפחה זו."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "מחק רשומת משפחה בלבד"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "מחק רשומת משפחה ובני משפחה"
-
-#: 
 msgid "Listing"
 msgstr "רשימה"
-
-#: 
-msgid "My User Settings"
-msgstr "הגדרות המשתמש שלי"
 
 #: 
 msgid "Variable name"
@@ -1741,14 +1673,6 @@ msgstr "סיסמה חדשה"
 #: 
 msgid "Confirm New Password"
 msgstr "אשר סיסמה חדשה"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "עורך הזדמנויות התנדבות"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "טרם נוספו הזדמנויות התנדבות"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2242,14 +2166,6 @@ msgstr "נקה את כל הקרנות"
 #: 
 msgid "Deposit Comment"
 msgstr "הערת הפקדה"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "אימות חתימת קובץ הגדרות החתימה נכשל"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 
 #: 
 msgid "item"
@@ -4527,10 +4443,6 @@ msgid "People Reports"
 msgstr "דוחות של אנשים"
 
 #: 
-msgid "People Dashboard"
-msgstr "לוח מחוונים של אנשים"
-
-#: 
 msgid "People Directory"
 msgstr "ספריית אנשים"
 
@@ -4773,10 +4685,6 @@ msgid "Estonian"
 msgstr "אסטונית"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "שגיאה בפענוח קובץ הגדרות חתימה"
-
-#: 
 msgid "Event not found"
 msgstr "לא נמצא אירוע"
 
@@ -4980,10 +4888,6 @@ msgid "View Person Page"
 msgstr "צפה בדף אדם"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
 msgid "Deleted"
 msgstr "נמחק"
 
@@ -5124,10 +5028,6 @@ msgstr "אכיפת מדיניות אבטחת תוכן (CSP) כדי לסייע ב
 #: 
 msgid "Enter event description..."
 msgstr "הזן תיאור אירוע..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "הזן את הטקסט להערה כאן..."
 
 #: 
 msgid "Note"
@@ -5364,14 +5264,6 @@ msgstr "אנא הזן כתובת URL תקינה המתחילה ב-http:// או h
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "כל חתימות קבצי המערכת תואמות לערכים הצפויים."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "קובץ הגדרת החתימה קיים אך אינו קריא. בדוק הרשאות קבצים."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "קובץ הגדרת החתימה חסר ב-%s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6447,20 +6339,8 @@ msgid "Additional Information"
 msgstr "מידע נוסף"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "הקצה הזדמנויות"
-
-#: 
 msgid "Choose a property..."
 msgstr "בחר מאפיין..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "בחר הזדמנויות..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "פרטי קשר ומידע אישי"
 
 #: 
 msgid "Edited"
@@ -6469,14 +6349,6 @@ msgstr "נערך"
 #: 
 msgid "Newsletter"
 msgstr "ניוזלטר"
-
-#: 
-msgid "Personal"
-msgstr "אישי"
-
-#: 
-msgid "Select Opportunities"
-msgstr "בחר הזדמנויות"
 
 #: 
 msgid "Volunteer"
@@ -6663,10 +6535,6 @@ msgid "Confirm Property Deletion"
 msgstr "אשר מחיקת מאפיין"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "אשר מחיקת הזדמנות להתנדבות"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "אישור מחיקה"
 
@@ -6679,16 +6547,8 @@ msgid "Existing Custom Person Fields"
 msgstr "שדות אדם מותאמים קיימים"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "הזדמנויות התנדבות קיימות"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "השדה נמחק בהצלחה"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "אסימון CSRF לא תקין"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6739,10 +6599,6 @@ msgid "Add Property Type"
 msgstr "הוסף סוג מאפיין"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "הוסף את סוג המאפיין הראשון שלך"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
 
@@ -6761,10 +6617,6 @@ msgstr "נרשם כיוצא"
 #: 
 msgid "Current Fiscal Year"
 msgstr "שנת הכספים הנוכחית"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "מחק (ימחק את כל הרשומות המשויכות)"
 
 #: 
 msgid "Edit Property Type"
@@ -6815,10 +6667,6 @@ msgid "No property types found"
 msgstr "לא נמצאו סוגי מאפיינים"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "מספר הרשומות המשתמשות בסוג מאפיין זה"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "תיאור מפורט אופציונלי של סוג מאפיין זה"
 
@@ -6849,10 +6697,6 @@ msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "עקוב ונהל התחייבויות לפי משפחה וקרן"
-
-#: 
-msgid "View Properties"
-msgstr "הצג מאפיינים"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7832,18 +7676,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "האם אתה בטוח שברצונך למחוק לצמיתות את רשומת ההתחייבות הזו?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "בטל וחזור לתצוגת המשפחה"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "אם תמחק סוג זה, תסיר גם את כל המאפיינים המשתמשים בו ותאבד את כל הקצאות המאפיינים המתאימות."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "העבר תרומות למשפחה הנבחרת"
-
-#: 
 msgid "Calendar not found"
 msgstr "לוח השנה לא נמצא"
 
@@ -8116,10 +7948,6 @@ msgid "or later to continue."
 msgstr "או גרסה מאוחרת יותר להמשיך."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "הערות «למה הגיעו»"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "תוצאה %d עבור «%s»"
@@ -8228,10 +8056,6 @@ msgstr "הוספה או עריכה של רשומות אישיות"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "הוספה או עריכה של פריטים שנתרמו לאירועי גיוס כספים"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "הוספה או עריכה של הערות עבור אנשים ומשפחות"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8488,10 +8312,6 @@ msgstr "יצירה וניהול אירועים ופעילויות הקהילה"
 #: 
 msgid "Create or edit property type categories"
 msgstr "יצירה או עריכה של קטגוריות סוגי מאפיינים"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "יצירה או עריכה של תפקידי מתנדבים"
 
 #: 
 msgid "Current person"
@@ -8942,14 +8762,6 @@ msgid "Manage user account details and permissions"
 msgstr "ניהול פרטי חשבון משתמש והרשאות"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "ניהול הזדמנויות התנדבות ושיוך חברים"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "ניהול ההעדפות האישיות והגדרות החשבון שלכם"
-
-#: 
 msgid "Map cart items"
 msgstr "הצגת פריטי רשימה על המפה"
 
@@ -8984,10 +8796,6 @@ msgstr "העברה לקבוצה"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "עוברים מהתקנה קיימת של ChurchCRM או ChurchInfo? העלו את קובץ הגיבוי שלכם ונשחזר את הנתונים באופן אוטומטי."
-
-#: 
-msgid "My Settings"
-msgstr "ההגדרות שלי"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9074,10 +8882,6 @@ msgid "No timeline events yet."
 msgstr "אין אירועי ציר זמן עדיין."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "אין שיוכי הזדמנויות התנדבות עדיין."
-
-#: 
 msgid "Not ready yet?"
 msgstr "עדיין לא מוכנים?"
 
@@ -9114,10 +8918,6 @@ msgstr "סקירה כללית"
 #: 
 msgid "Password Recovery"
 msgstr "שחזור סיסמה"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "7 ימים אחרונים והבאים"
 
 #: 
 msgid "People by Classification"
@@ -9202,10 +9002,6 @@ msgstr "רישום מספר זוכי הגרלת גיוס כספים בבת אח�
 #: 
 msgid "Record new pledges and payments"
 msgstr "רישום התחייבויות כספיות ותשלומים חדשים"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "תעדו מדוע משתתפים ביקרו בקהילה שלכם"
 
 #: 
 msgid "Remove from Class"
@@ -9588,10 +9384,6 @@ msgid "funds"
 msgstr "קרנות"
 
 #: 
-msgid "opportunities"
-msgstr "הזדמנויות"
-
-#: 
 msgid "or connect an external service"
 msgstr "או חברו שירות חיצוני"
 
@@ -9891,11 +9683,6 @@ msgstr "נכשל בשחזור כתובות דוא\"ל"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "נכשל בשחזור מספרי טלפון"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "מצא מתנדבים להזדמנות מסוימת"
 
 #. Context: query_qry
 #: 
@@ -11020,10 +10807,6 @@ msgstr "כהה"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "בסיס נתונים בלבד (.sql) או ארכיון מלא (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "מספר השורות המוצגות כברירת מחדל בטבלאות נתונים. ייכנס לתוקף בטעינת הדף הבאה."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11077,10 +10860,6 @@ msgstr "מלאיאלאם - הודו"
 #: 
 msgid "Manage 2FA"
 msgstr "נהל אימות דו-שלבי"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "נהל העדפות נוספות כגון מפרידי דואר אלקטרוני ואפשרויות תצוגה"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11339,14 +11118,6 @@ msgstr "כניסה על ידי"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "הצ׳ק-אין מושבת עבור אירועים לא פעילים. הפעל את האירוע מלוח האירועים כדי לאפשר צ׳ק-אין."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "בוצע צ׳ק-אין לאירוע: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "בוצע צ׳ק-אאוט מאירוע: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11757,14 +11528,6 @@ msgid "e.g., 40.7128"
 msgstr "לדוגמה, 40.7128"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "אירעה שגיאה בעת מחיקת המשפחה."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "אירעה שגיאה בעת העברת התרומות."
-
-#: 
 msgid "At least one family member is required"
 msgstr "נדרש לפחות חבר משפחה אחד"
 
@@ -11783,10 +11546,6 @@ msgstr "המחיקה נכשלה"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "הכיוון חייב להיות \"למעלה\" או \"למטה\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "העברת התרומות נכשלה."
 
 #: 
 msgid "Finance permission required"
@@ -11823,10 +11582,6 @@ msgstr "חברות לא נמצאה"
 #: 
 msgid "Password successfully changed for"
 msgstr "הסיסמה שונתה בהצלחה עבור"
-
-#: 
-msgid "Please select a target family."
-msgstr "אנא בחר משפחת יעד."
 
 #: 
 msgid "Target family not found"
@@ -12694,10 +12449,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "לא ניתן למחוק את סוג הנכס: %d נכסים עדיין מפנים אליו. הקצה מחדש או מחק נכסים אלה תחילה."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "לא ניתן למחוק את הזדמנות גיוס המתנדבים: %d אנשים עדיין מוקצים. הסר את ההקצאות תחילה."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "המחלקה חייבת להיות אחת מ-p, f, או g"
 
@@ -12708,10 +12459,6 @@ msgstr "העתק הודעת שגיאה"
 #: 
 msgid "Could not load note."
 msgstr "לא ניתן לטעון את הפתק."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "התיאור לא יכול לעלות על 100 תווים"
 
 #: 
 msgid "Donation fund not found"
@@ -12734,10 +12481,6 @@ msgid "Failed to create property type"
 msgstr "יצירת סוג הנכס נכשלה"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "יצירת הזדמנות גיוס המתנדבים נכשלה"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "מחיקת קרן התרומות נכשלה"
 
@@ -12754,10 +12497,6 @@ msgid "Failed to delete property type"
 msgstr "מחיקת סוג הנכס נכשלה"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "מחיקת הזדמנות גיוס המתנדבים נכשלה"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "עדכון קרן התרומות נכשל"
 
@@ -12770,10 +12509,6 @@ msgid "Failed to update property type"
 msgstr "עדכון סוג הנכס נכשל"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "עדכון הזדמנות גיוס המתנדבים נכשל"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "מסע גיוס התרומות לא נמצא"
 
@@ -12784,10 +12519,6 @@ msgstr "מזהה התקנה"
 #: 
 msgid "Invalid class"
 msgstr "מחלקה לא חוקית"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "השם לא יכול לעלות על 30 תווים"
 
 #: 
 msgid "Note by %s deleted"
@@ -12810,16 +12541,8 @@ msgid "Read more"
 msgstr "קרא עוד"
 
 #: 
-msgid "That name already exists."
-msgstr "שם זה כבר קיים."
-
-#: 
 msgid "Title is required"
 msgstr "הכותרת נדרשת"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "הזדמנות גיוס המתנדבים לא נמצאה"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13030,14 +12753,6 @@ msgid "Click Save to apply."
 msgstr "לחצו על שמירה להחלה."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API לוח הגזירים אינו זמין. אנא העתק את כתובת ה- URL באופן ידני."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "הלוח אינו זמין. אנא השתמשו בלחצן ההורדה לשמירת הקודים שלכם."
-
-#: 
 msgid "Code incomplete"
 msgstr "קוד לא מלא"
 
@@ -13156,10 +12871,6 @@ msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות �
 #: 
 msgid "Deposit ID"
 msgstr "מזהה ההפקדה"
-
-#: 
-msgid "Deposit Value"
-msgstr "ערך הפקדת תרומות"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13578,22 +13289,6 @@ msgid "Move Members to Group"
 msgstr "העברת חברים לקבוצה"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "חייב להיות כתובת URL תקינה המתחילה ב-http:// או https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "חייב להיות כתובת URL תקינה (למשל, http://localhost)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "חייב להיות מספר פורט תקין (למשל, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "צריך להסיר את הנתונים האלו מאוחר יותר?"
 
@@ -13616,14 +13311,6 @@ msgstr "אין הפקדות תרומות"
 #: 
 msgid "No Events Today"
 msgstr "אין אירועים היום"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "אין ימי נישואין ב-7 הימים האחרונים או הבאים"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "אין ימי הולדת ב-7 הימים האחרונים או הבאים"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13752,10 +13439,6 @@ msgstr "אנא הזן כתובת אימייל תקינה"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "אנא הזן כתובת אימייל תקינה (למשל name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "אנא הזן מספר תקין"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14570,24 +14253,12 @@ msgid "People &amp; Families"
 msgstr "אנשים &amp; משפחות"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "ההערה שאתה מנסה לערוך כבר אינה קיימת."
-
-#: 
 msgid "User List"
 msgstr "רשימת משתמשים"
 
 #: 
 msgid "View Person"
 msgstr "הצג אדם"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "אין לך הרשאה להוסיף הערה עבור משפחה זו."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "אין לך הרשאה להוסיף הערה עבור אדם זה."
 
 #: 
 msgid "Account locked"
@@ -15218,10 +14889,6 @@ msgid "Target family"
 msgstr "משפחת יעד"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "לא ניתן למצוא את הקבוצה. אנא נסה שנית."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "המשפחה שנבחרה אינה קיימת עוד. אנא רענן את הדף ונסה שנית."
 
@@ -15288,10 +14955,6 @@ msgstr "סכום היעד חייב להיות לא שלילי"
 #: 
 msgid "thru %s"
 msgstr "עד %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "הערות \"מדוע הגיע\" עבור %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15398,14 +15061,6 @@ msgid "Output Method"
 msgstr "שיטת פלט"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "אנא אשר מחיקה של רשומת משפחה זו"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "אנא בחר משפחה אחרת לשיוך תרומות אלו"
-
-#: 
 msgid "Remittance Slip"
 msgstr "שובר העברה"
 
@@ -15448,10 +15103,6 @@ msgstr "פורמטים נתמכים"
 #: 
 msgid "System Configuration"
 msgstr "תצורת מערכת"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "יש אנשים שהוקצו להזדמנות ההתנדבות זו. המחיקה תבטל את הקצאתם"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15682,10 +15333,6 @@ msgid "Add New Fund"
 msgstr "הוסף קרן חדש"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "הוסף הזדמנות חדשה"
-
-#: 
 msgid "Add New Person"
 msgstr "הוסף אדם חדש"
 
@@ -15698,10 +15345,6 @@ msgid "Add New Role"
 msgstr "הוסף תפקיד חדש"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "הוסף הזדמנות התנדבות חדשה"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "הוסף כיתה לבית ספר ראשון"
 
@@ -15710,24 +15353,8 @@ msgid "Delete this family?"
 msgstr "למחוק משפחה זו?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "האם ברצונך למחוק משפחה זו? תועבר לדף לבחירת מה למחוק. פעולה זו אינה הפיכה."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "אישור מחיקת משפחה"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "אישור מחיקת סוג נכס"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "סקור משפחות ויחידים חדשים שנרשמו בטופס הרשומה הציבורי שלך"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "אישור מחיקת הזדמנות התנדבות"
 
 #: 
 msgid "# Payments"
@@ -17394,14 +17021,6 @@ msgid "Find people who did not attend an event"
 msgstr "מצא אנשים שלא השתתפו באירוע"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "מצא מתנדבים התואמים לשני קודי הזדמנות ספציפיים"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "הזדמנות מתנדב ראשונה"
-
-#: 
 msgid "Folded Booklet"
 msgstr "חוברת מקופלת"
 
@@ -17478,10 +17097,6 @@ msgid "Run Report"
 msgstr "הריץ דוח"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "הזדמנות מתנדב שנייה"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "מוצג בסרגל הצדדי, בדף ההתחברות ובדוא\"ל. העלאת לוגו מחליפה את הברנדינג של ChurchCRM בכל מקום שהיא מופיעה."
 
@@ -17508,14 +17123,6 @@ msgstr "שימוש בלוגו ChurchCRM ברירת המחדל"
 #: 
 msgid "View Full Family Giving"
 msgstr "צפה בתרומה משפחתית מלאה"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "הזדמנות מתנדב"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "מתנדבים לשתי הזדמנויות"
 
 #: 
 msgid "YTD"
@@ -17990,10 +17597,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "הרשמות הממתינות לבדיקה מטופס ההרשמה הציבורי שלכם. רשומות ללא דוא\"ל או טלפון מסומנות — יש לוודא את פרטי הקשר לפני יצירת קשר."
 
 #: 
-msgid "Review now"
-msgstr "לבדיקה עכשיו"
-
-#: 
 msgid "Review self registrations"
 msgstr "בדיקת הרשמות עצמיות"
 
@@ -18044,10 +17647,6 @@ msgstr "אתמול"
 #: 
 msgid "days ago"
 msgstr "ימים לפני כן"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "הרשמות עצמיות ממתינות לבדיקה"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18348,10 +17947,6 @@ msgstr "לוח זמנים העוקב אחר סוג אירוע חייב לציי�
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "לוח זמנים המאייש אירוע אחד אינו יכול לעקוב אחר אירועים אחרים; יש למחוק אותו ולהוסיף לוח זמנים במקום זאת"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "רשימה אחת של הזדמנויות, כגון \"משתלה\" או \"קבלת פנים\", המנוהלת תחת אנשים ← ניהול. כל אדם מסומן בהזדמנויות שהוא מוכן לעזור בהן, בלשונית מתנדב ברשומתו. זה כל מה שנרשם: אין צוותים, לוחות זמנים, שיבוץ לתאריך או הודעות תזכורת. התגיות משמשות בדוחות וברשומת האדם."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18660,18 +18255,6 @@ msgstr "משימות הרקע רצו ב"
 #: 
 msgid "Birthday greeting"
 msgstr "ברכת יום הולדת"
-
-#: 
-msgid "Both"
-msgstr "שניהם"
-
-#: 
-msgid "Both (transition)"
-msgstr "שניהם (מעבר)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "שניהם — V1 ו-V2 זה לצד זה (מעבר)"
 
 #: 
 msgid "Calendar address"
@@ -21758,22 +21341,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע, או שהוא מרכז את שירות המתנדבים שלוח שנה זה שייך לו"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — הזדמנויות התנדבות (ישן)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — הזדמנויות התנדבות ישנות"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — שירותים"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — ניהול מתנדבים"
-
-#: 
 msgid "Valid"
 msgstr "תקין"
 
@@ -21792,14 +21359,6 @@ msgstr "צפייה באירוע"
 #: 
 msgid "View this email"
 msgstr "צפייה בדוא\"ל זה"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "מתנדב (ישן)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "ניהול מתנדבים V2 אינו מופעל"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21906,10 +21465,6 @@ msgid "What the check found"
 msgstr "מה שהבדיקה מצאה"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "מהן חוויות ההתנדבות"
-
-#: 
 msgid "What you want to say"
 msgstr "מה שאתם רוצים לומר"
 
@@ -21940,10 +21495,6 @@ msgstr "מהיכן מגיעים התאריכים"
 #: 
 msgid "Where we reach you"
 msgstr "איך ניתן להשיג אתכם"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "באיזו חוויית ניהול מתנדבים משתמשים. V1 היא תכונת הזדמנויות ההתנדבות הישנה; V2 היא זרימת התזמון והשיבוץ החדשה. \"שניהם\" מציג את שתיהן זו לצד זו בזמן ההעברה."
 
 #: 
 msgid "Which events"
@@ -22354,10 +21905,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "רק מנהל מתנדבים יכול לשנות מי מתאם שירות"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "בחירה ב-V1 משהה את דוא״ל המתנדבים של V2; כל מה שממתין בתור יישלח כש-V2 יופעל שוב, אלא אם המופע שלו הסתיים."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "הוסיפו כאן את אירועי השירות: יום עבודה, שיעור שנפגש בכל יום ראשון. הם נכנסים ללוח השנה של הכנסייה, ולאחר יצירתם תישאלו אם לאייש אותם."
 
@@ -22468,10 +22015,6 @@ msgstr "רישום אורח ללא הרשמה מראש"
 #: 
 msgid "Register walk-in guest"
 msgstr "רישום אורח ללא הרשמה מראש"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "נרשם כאורח ללא הרשמה מראש בקיוסק במהלך האירוע: %s"
 
 #: 
 msgid "Registering..."
@@ -23204,10 +22747,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "זמן התראה מראש על תפקיד לא מאויש (שעות)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "ניהול מתנדבים"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "שירותי מתנדבים, צוותים, לוחות זמנים ושיבוצים"
 
@@ -23218,14 +22757,6 @@ msgstr "תפקידי מתנדבים לאיוש בימים הקרובים"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "עדיין דרושים מתנדבים למופעים הקרובים האלה: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "מה המשמעות של אלה?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת"
 
 #: 
 msgid "You are on the schedule"
@@ -24156,10 +23687,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d תשלומים עדיין אינם על שום הפקדה."
 
 #: 
-msgid "Closing line"
-msgstr "שורת סיום"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "כל הפקדה שתאריכה בשנה זו סגורה."
 
@@ -24172,28 +23699,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "כל תשלום בשנה זו נמצא על הפקדה."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "הפקת דוחות מס"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "דוח תרומות (דוחות מס)"
-
-#: 
-msgid "Opening line"
-msgstr "שורת פתיחה"
-
-#: 
 msgid "Qty"
 msgstr "כמות"
-
-#: 
-msgid "Signed by"
-msgstr "חתום על ידי"
-
-#: 
-msgid "Thank-you line"
-msgstr "שורת תודה"
 
 #: 
 msgid "Year-End Giving"
@@ -24324,10 +23831,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "אפס מבטל דרישה רשות. גיל דורש תאריך לידה מלא; משך חברות דורש תאריך חברות. אנשים שחסרים להם תאריכים נדרשים מושמטים ונספרים בנפרד. אנשים שנפטרו, אנשים וסיווגים לא פעילים, ומשפחות ואנשים לא פעילים או הממתינים לסקירה תמיד אינם נכללים; נעשה שימוש בסיווג ובסטטוס הנוכחיים, לא בסטטוס היסטורי."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "סכום לתשלום עבור %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "לא ניתן ליצור אחסון זמני פרטי ל-PDF בתיקייה שנבחרה."
 
@@ -24354,10 +23857,6 @@ msgstr "התיקייה הזמנית ל-PDF אינה קיימת או שאינה �
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "התיקייה הזמנית ל-PDF חייבת להיות נתיב תיקייה מוחלט."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "מספר זיהוי מס של הקהילה (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24402,10 +23901,6 @@ msgstr "הגדרות דוח"
 #: 
 msgid "Statement Wording"
 msgstr "נוסח הדוח"
-
-#: 
-msgid "Tax Information"
-msgstr "פרטי מס"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24454,10 +23949,6 @@ msgstr "בשימוש בשם הקהילה ובכתובת"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "בשימוש בנתיב כותרת המכתב שהוגדר בהגדרות המערכת"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "נוסח, מספר זיהוי מס וטיפול ב-PDF לדוחות תרומות"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24730,10 +24221,6 @@ msgstr "מדינת הקהילה"
 #: 
 msgid "Church default: %s"
 msgstr "ברירת המחדל של הקהילה: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "התחברות מנהיג קהילה"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25378,10 +24865,6 @@ msgstr "לא הסתיים"
 #: 
 msgid "Not moved"
 msgstr "לא הועבר"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "לא בטוחים איזה דוא״ל יש לנו? פנו למשרד הקהילה."
 
 #: 
 msgid "Not yet"
@@ -26636,248 +26119,8 @@ msgid "Review Family Information"
 msgstr "בדיקת פרטי המשפחה"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "כבר קיים שירות בשם \"%s\". בחרו אותו מהרשימה או בחרו שם אחר."
-
-#: 
-msgid "A new ministry"
-msgstr "שירות חדש"
-
-#: 
-msgid "A position"
-msgstr "תפקיד"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "להוסיף מתנדבים ({{total}}) לתפקידים שהומרו קודם?"
-
-#: 
-msgid "Already converted"
-msgstr "כבר הומר"
-
-#: 
-msgid "An existing ministry"
-msgstr "שירות קיים"
-
-#: 
-msgid "Becomes"
-msgstr "הופך ל"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ל-ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת מהן אמורה להיות בשימוש בכל פעם; ההגדרה \"חוויית המתנדבים\" קובעת איזו מהן הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט ולעולם אינו מוחק נתונים. V1 ו\"שניהם\" מוצעים רק כל עוד הזדמנויות התנדבות בשימוש: ברגע שכל ההזדמנויות הומרו והקהילה עובדת עם V2, הם יוסרו מהרשימה."
-
-#: 
-msgid "Convert"
-msgstr "המרה"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "המרת הזדמנויות התנדבות"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "להמיר עכשיו הזדמנויות ({{total}})? נתוני V1 נשמרים כפי שהם עד שהזדמנויות התנדבות יופסקו."
-
-#: 
-msgid "Converted"
-msgstr "הומר"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "הומרו: תפקידים {{positions}}, שירותים {{ministries}}, מתנדבים שהוסמכו {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "כל הזדמנות הופכת לתפקיד בצוות הראשון של שירות אחד, וכל מי שמקושר אליה מוסמך לתפקיד זה. הרשמה עצמית כבויה בהתחלה בתפקידים אלה."
-
-#: 
-msgid "Everything is converted."
-msgstr "הכול הומר."
-
-#: 
-msgid "Existing ministry"
-msgstr "שירות קיים"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "תנו לשירות החדש שם של עד 100 תווים."
-
-#: 
-msgid "Its own ministry"
-msgstr "שירות משלה"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "מקושרים מאז: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "קישורים שלא ניתן להמיר"
-
-#: 
-msgid "New ministries of their own"
-msgstr "שירותים חדשים משלהן"
-
-#: 
-msgid "New ministry name"
-msgstr "שם השירות החדש"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "לא נשלח דוא\"ל, והזדמנויות התנדבות נשארות כפי שהן עד שיופסקו."
-
-#: 
-msgid "No name"
-msgstr "ללא שם"
-
-#: 
-msgid "Not converted"
-msgstr "לא הומר"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "פתיחת החלפות תכונות"
-
-#: 
-msgid "Open Ministries"
-msgstr "פתיחת שירותים"
-
-#: 
-msgid "Opportunities"
-msgstr "הזדמנויות"
-
-#: 
-msgid "Opportunity"
-msgstr "הזדמנות"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "הזדמנות מס' %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "אנשים שקושרו להזדמנויות התנדבות שהומרו מאז ההמרה: %d. הוסיפו אותם לתפקידים שלהם לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "הציגו קודם תצוגה מקדימה של ההמרה, ושלחו את הגרסה שהיא החזירה."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "שונה שם כדי לשמור על שמות ייחודיים"
-
-#: 
-msgid "Review the conversion"
-msgstr "סקירת ההמרה"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "שלחו את בחירת ההמרה כאובייקט JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "שלחו את ההזדמנויות שהופכות לשירותים כרשימת מזהים."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "השירות הזה לא קיים."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "גרסת ChurchCRM שבה מנהל סגר את ההודעה על הפסקת הזדמנויות התנדבות."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "הזדמנויות התנדבות השתנו מאז התצוגה המקדימה. בדקו שוב את התצוגה המקדימה ואז המירו."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "לא ניתן לפתוח את האישור. טענו מחדש את הדף ונסו שוב."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "לא ניתן להציג תצוגה מקדימה של ההמרה."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "ההמרה נכשלה. שום דבר לא שונה."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "לשירות \"%s\" אין צוות שיכיל את התפקידים."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "לא ניתן להגיע לשרת. טענו מחדש את הדף כדי לראות אם ההמרה בוצעה."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "אין הזדמנויות התנדבות להמרה."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "ניהול מתנדבים עובר ל\"שניהם\", כך שהשירותים החדשים יוצגו לצד הזדמנויות התנדבות."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "הזדמנויות התנדבות מופסקות"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "הזדמנויות התנדבות הומרו"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו אותן לשירותים כדי לשמור מי משרת איפה."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו עכשיו לשירותים את ההזדמנויות (%1$d) ואת המתנדבים (%2$d) שלכם. אפשר לראות תצוגה מקדימה של התוצאה לפני שמשהו משתנה."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "מתנדבים מוסמכים"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "מתנדבים להוספה לתפקידים שהומרו"
-
-#: 
-msgid "What it becomes"
-msgstr "למה זה הופך"
-
-#: 
-msgid "What will happen"
-msgstr "מה יקרה"
-
-#: 
-msgid "Where they go"
-msgstr "לאן הם הולכים"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "אילו הזדמנויות התנדבות ישנות הומרו, ולאיזה תפקיד הפכה כל אחת."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת. הזדמנויות התנדבות (V1) יופסקו בתחילת 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "הזדמנויות ההתנדבות שלכם הומרו לשירותים. העבירו את ניהול מתנדבים ל-V2 לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "לשירות חדש, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "לשירות {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "כבר לא ב-ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26998,10 +26241,6 @@ msgid "Last verified"
 msgstr "אומתה לאחרונה"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "לאף חבר פעיל ומאושר במשפחה זו אין כתובת דוא\"ל. אמתו את הפרטים באופן אישי במקום זאת."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "לא נמצאו התחייבויות לשנות כספים אלה."
 
@@ -27024,10 +26263,6 @@ msgstr "היכנסו לפורטל החברים עם כתובת דוא\"ל זו �
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "משפחה זו אינה פעילה, ולכן לא נשלחות אליה הודעות אימות בדוא\"ל."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "משפחה זו שנרשמה בעצמה ממתינה לאישור. לאחר האישור תישלח למשפחה בדוא\"ל הזמנה להיכנס לפורטל החברים ולעיין בפרטיה."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27060,10 +26295,6 @@ msgid "%d default skipped for another reason (the occurrence is over, canceled o
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
 msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
 
 #: 
 msgid "Assignment canceled"
@@ -27112,10 +26343,6 @@ msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצי
 #: 
 msgid "This occurrence has been canceled"
 msgstr "מופע זה בוטל"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27280,10 +26507,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "השבת גם את הכניסה, כדי שלא יוכלו להשתמש בפורטל החברים"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "לפני שליחת דוחות"
-
-#: 
 msgid "Birthday today"
 msgstr "יום הולדת היום"
 
@@ -27366,10 +26589,6 @@ msgstr "מחיקת אנשים ומשפחות"
 #: 
 msgid "Delete the login for"
 msgstr "מחיקת הכניסה של"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "טווח זמן של תרשים ההפקדות"
 
 #: 
 msgid "Disabled at"
@@ -27624,10 +26843,6 @@ msgid "Preview Sample Letter"
 msgstr "תצוגה מקדימה של מכתב לדוגמה"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "מזהה נכס החתימה הפרטית של דוחות התרומות הקנדיים. מנוהל באמצעות העלאת חתימה."
-
-#: 
 msgid "Property Type"
 msgstr "סוג מאפיין"
 
@@ -27666,10 +26881,6 @@ msgstr "סקירה וסינון"
 #: 
 msgid "Review and vote"
 msgstr "סקירה והצבעה"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "סקרו את השנה, ואז הורידו דוחות תרומות."
 
 #: 
 msgid "Review what we are considering"
@@ -27718,10 +26929,6 @@ msgstr "חזק"
 #: 
 msgid "Support"
 msgstr "תמיכה"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "הגדרות מספר מזהה למס ו-PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27836,10 +27043,6 @@ msgid "View people and families"
 msgstr "הצגת אנשים ומשפחות"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "ניהול מתנדבים כבוי עבור הכנסייה הזו"
-
-#: 
 msgid "Weak"
 msgstr "חלש"
 
@@ -27908,10 +27111,6 @@ msgid "Latest Notes"
 msgstr "ההערות האחרונות"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "עדיין לא נוספו הערות."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "התחל את ההרשמה כדי לקבל קוד QR."
 
@@ -27922,4 +27121,746 @@ msgstr "הסיסמה או הקוד הזה אינם נכונים. האימות ה
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "האימות הדו-שלבי כבר מוגדר. הסוד שלו מוצג רק במהלך ההרשמה."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d מתנה בסכום כולל של %2$s"
+msgstr[1] "%1$d מתנות בסכום כולל של %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "ל-%d משפחות יש כעת מאפיינים מסוג זה."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d משפחה עדיין לא יכולה לקבל קבלה והיא נשארת בחוץ. תקנו את הבעיה הרשומה מתחתיה, ולאחר מכן בחרו בבדיקה חוזרת."
+msgstr[1] "%d משפחות עדיין לא יכולות לקבל קבלה והן נשארות בחוץ. תקנו את הבעיות הרשומות מתחתיהן, ולאחר מכן בחרו בבדיקה חוזרת."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "ל-%d קבוצות יש כעת מאפיינים מסוג זה."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "ל-%d אנשים יש כעת מאפיינים מסוג זה."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d גרסאות זמינות מאז הגרסה המותקנת שלכם."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s לא נוצרה קבלה."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: הזינו את השם המלא המאומת של התורם/ים, אשרו את התורמים ואשרו קבוצת תורמים אחת. יש לטפל בקבוצות תשלומים של תורמים מעורבים מחוץ לתכונה זו."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: התרומות או כתובת הדואר השתנו מאז הסקירה. בחרו בבדיקה חוזרת ואשרו את התורם שוב."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} תשלום)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} תשלומים)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "תשלום בכרטיס אשראי או בהוראת קבע בנקאית נמצא בהפקדה שעדיין לא נסגרה. סגרו את ההפקדה לאחר שהתשלום יאושר."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "לתשלום יש סכום שאינו ניתן לניכוי. קבלות קנדיות כאן תומכות רק במתנות ללא כל יתרון."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "לתשלום יש סכום כספי לא תקין."
+
+#: 
+msgid "A payment has no date."
+msgstr "לתשלום אין תאריך."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "תשלום מתוארך לאחר תאריך ההנפקה."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "תשלום מסומן כבעיה."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "תשלום הוא אפס או שלילי."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "נדרש POST שנבדק עם אסימון CSRF תקין."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "משפחה שנבחרה כבר אינה קיימת."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "תמונת חתימה אינה חתימה דיגיטלית מאובטחת."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "עדכון מערכת זמין. בקשו ממנהל המערכת לשדרג את ההתקנה שלכם."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "כל השורות הכלולות הן מתנות כספיות ללא יתרון."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "כל הגדרות הקבלות הקנדיות הנדרשות מולאו."
+
+#: 
+msgid "Also delete family members"
+msgstr "מחקו גם את בני המשפחה"
+
+#: 
+msgid "Amount of advantages"
+msgstr "סכום היתרונות"
+
+#: 
+msgid "Amount of gifts"
+msgstr "סכום המתנות"
+
+#: 
+msgid "Amount per installment"
+msgstr "סכום לכל תשלום"
+
+#: 
+msgid "Amounts entered are"
+msgstr "הסכומים שהוזנו הם"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "מנהל מערכת מעלה אותו תחת הגדרות דוח."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "אושר, אך לא נשלחה הזמנה"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "בקשו ממנהל המערכת שלכם לשדרג את ChurchCRM לגרסה האחרונה."
+
+#: 
+msgid "Authorized Signature"
+msgstr "חתימה מורשית"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "סוכנות ההכנסות של קנדה"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "קבלה רשמית קנדית"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "קבלות רשמיות קנדיות דורשות את קנדה כמדינת הקהילה בפרטי הקהילה."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "קבלות קנדיות דורשות את כל שנת הלוח ואת כל הקרנות, ללא מסננים אחרים."
+
+#: 
+msgid "Change Selection"
+msgstr "שינוי הבחירה"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "השם המשפטי של העמותה"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "הכתובת הרשומה של העמותה"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "מספר הרישום של העמותה"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "פרטי העמותה לקבלות טרם מולאו. הוסיפו את השם המשפטי, הכתובת הרשומה, מספר הרישום ומקום ההנפקה כשתוכלו. הכספים ממשיכים לעבוד עד אז."
+
+#: 
+msgid "Charity on receipts"
+msgstr "עמותה בקבלות"
+
+#: 
+msgid "Check Again"
+msgstr "בדיקה חוזרת"
+
+#: 
+msgid "Check the year"
+msgstr "בדקו את השנה"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "בדקו את השנה, הגדירו את הדוח, ולאחר מכן הורידו."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "בחרו שבועי, חודשי או רבעוני לסכום תשלום."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "בחרו שנת לוח תקפה לתרומות."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "בחרו מקור או עותק."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "בחרו התחייבות כוללת או סכום תשלום."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "התרגומים של ChurchCRM מנוהלים במאגר GitHub של ChurchCRM. תוכלו לעזור באמצעות"
+
+#: 
+msgid "Commitment amount"
+msgstr "סכום ההתחייבות"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "השוו את העותק למקור השמור ואשרו שכל פרטי הקבלה לא השתנו."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "השלימו כל אישור קבלה לפני ההורדה."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "השלימו את השם המשפטי של העמותה, הכתובת הרשומה, מספר הרישום, מקום ההנפקה והחותם המודפס."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "החותם המודפס של מכתב האישור"
+
+#: 
+msgid "Copy Kind"
+msgstr "סוג העותק"
+
+#: 
+msgid "Currency"
+msgstr "מטבע"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "סמל מטבע $ או CAD"
+
+#: 
+msgid "Date received"
+msgstr "תאריך קבלה"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "מחיקתו תסיר גם %d מאפיינים ואת כל ההקצאות שלהם, כך שלא יישאר דבר תלוי."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "האם כל התרומות של השנה שנבחרה שייכות לתורם/ים שצוינו יחד למעלה?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "אל תשתמשו שוב במספר לקבלה אחרת, אל תנפיקו קבלה על אותן מתנות פעמיים, ואל תיצרו מחדש מידע שהשתנה כמקור שלא השתנה."
+
+#: 
+msgid "Duplicate"
+msgstr "עותק"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "עותק כפול / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "הסכום הזכאי של מתנות לצורכי מס הכנסה"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "הזינו את לוח הזמנים ואת תאריכי התשלומים כדי לצפות בתצוגה מקדימה של ההתחייבות."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "הזינו תאריכי תשלום ראשון ואחרון תקפים לפי הסדר."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "הזינו סכומי תשלומים תקפים עם שני מקומות עשרוניים לכל היותר."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "התחייבויות קיימות שומרות על הסכומים הכוללים הרשומים שלהן. בחרו סכום לכל תשלום רק בעת הזנת כל מתנה מתוזמנת."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "ממולא מראשי משק הבית ובני הזוג. ערכו אותו כך שיתאים לתורמים בדיוק."
+
+#: 
+msgid "First installment"
+msgstr "תשלום ראשון"
+
+#: 
+msgid "Full commitment"
+msgstr "התחייבות מלאה"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "יצירת דוחות מס"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "שנת לוח של מתנות"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "דוח תרומות — אינו קבלה רשמית על תרומה"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "עזרו בתרגום ב-GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "שינויים היסטוריים במעטפות אינם נתמכים."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "השוויתי למקור השמור: התורם, הסכום, המספר הסידורי והטקסט לא השתנו. זו אינה תיקון או החלפה."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "אשמור את ה-PDF שהונפק ויומן קבלות חיצוני במיקום הרשומות הקנדי של העמותה."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "אם מקור שמור אינו זמין או שונה, השתמשו בהליכי הביטול/ההחלפה החיצוניים שלכם התואמים ל-CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "כללו תזכירי תשלום: סקרתי אותם כמתאימים לתורם."
+
+#: 
+msgid "Include this family in the download"
+msgstr "כללו משפחה זו בהורדה"
+
+#: 
+msgid "Installed version: %s"
+msgstr "גרסה מותקנת: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "ניתן להשתמש בסכומי תשלומים רק עבור התחייבויות."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "תאריכי התשלומים חייבים להיות בתוך שנת הכספים שנבחרה."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "אסימון CSRF לא תקין או חסר"
+
+#: 
+msgid "Issue Date"
+msgstr "תאריך הנפקה"
+
+#: 
+msgid "Issue Locality"
+msgstr "מקום הנפקה"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "שמרו את ה-PDF המקורי ויומן קבלות חיצוני במיקום הרשומות הקנדי של העמותה."
+
+#: 
+msgid "Last installment on or before"
+msgstr "תשלום אחרון בתאריך או לפניו"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "ניסוח המכתב, פרטי העמותה וטיפול ב-PDF מוגדרים פעם אחת בהגדרות הדוח."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "ניסוח מכתב, פרטי עמותה וטיפול ב-PDF עבור דוחות תרומות"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "לכל היותר 2 MiB ו-2000 × 1000 פיקסלים. בחרו תמונה חדשה כדי להחליף את החתימה השמורה. תמונת חתימה אינה חתימה דיגיטלית מאובטחת."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "כניסת חברים כבויה, כך שאף אחד במשפחת %s לא יכול להתחבר לפורטל החברים. מנהל מערכת יכול להפעיל אותה תחת ניהול → פורטל חברים."
+
+#: 
+msgid "Memo"
+msgstr "תזכיר"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "לא ניתן לפצל כאן קבוצות תשלומים של משפחות עם תורמים מעורבים; טפלו בהן מחוץ לתכונה זו."
+
+#: 
+msgid "Narrow the list"
+msgstr "צמצום הרשימה"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "אין משפחה התואמת מסננים אלה עבור %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "לא קיימת קבלה בודדת או מצטברת חופפת."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "עדיין לא ניתן ליצור קבלה עבור משפחה זו"
+
+#: 
+msgid "No signature on file"
+msgstr "אין חתימה בקובץ"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "לא — תורמים שונים; טפלו בכך מחוץ לתכונה זו"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "אף אחד במשפחת %s לא יכול להתחבר לפורטל החברים לפי כלל הכניסה הנוכחי."
+
+#: 
+msgid "None / Aucun"
+msgstr "ללא / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "לא מוכן להנפקת קבלות קנדיות. עדיין חסר"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "קבלה רשמית / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "קבלה רשמית לצורכי מס הכנסה / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "קבלות רשמיות דורשות מספר רישום בפורמט 123456789RR0001 ותמונת חתימה."
+
+#: 
+msgid "Original"
+msgstr "מקור"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "תאריך הנפקה מקורי (הזינו מהמקור השמור)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "תאריכי התשלומים משקפים את תאריכי קבלת המתנות, כולל טיפול מתועד בחותמת דואר של המחאות שנשלחו בדואר."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "מודפס על דוחות תרומות רגילים, לדוגמה ה-EIN בארצות הברית. אותו ערך נמצא בפרטי הקהילה."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "מזהה נכס חתימה פרטי של דוח תרומות. מנוהל באמצעות העלאת חתימה."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "מאפיינים / הקצאות"
+
+#: 
+msgid "Property deleted"
+msgstr "המאפיין נמחק"
+
+#: 
+msgid "Property type deleted"
+msgstr "סוג המאפיין נמחק"
+
+#: 
+msgid "Receipt Closing"
+msgstr "סגירת קבלה"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "מקום הנפקת הקבלה"
+
+#: 
+msgid "Receipt No."
+msgstr "מס' קבלה"
+
+#: 
+msgid "Registration Number"
+msgstr "מספר רישום"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "מספר רישום בפורמט 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "הערות הגרסה אינן זמינות כרגע."
+
+#: 
+msgid "Releases"
+msgstr "גרסאות"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "התחייבות נותרת עבור %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "הסרת דרישת 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "להסיר את תמונת החתימה השמורה? קבלות רשמיות דורשות אחת בקובץ."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "דוחות ותזכורות משווים התחייבות זו לכל התקופה מול התרומות. היתרה הנותרת אינה חישוב של תשלום באיחור."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "דוחות ותזכורות משתמשים בהתחייבות המלאה המוצגת למעלה. היתרה הנותרת אינה חישוב של תשלום באיחור."
+
+#: 
+msgid "Require 2FA"
+msgstr "דרישת 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "איפוס אפשרויות"
+
+#: 
+msgid "Review Selected Families"
+msgstr "סקירת המשפחות שנבחרו"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "דוגמה — אינו תקף לצורכי מס"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "מציין מיקום לדוגמת חתימה"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "ציינו האם נדרש 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "עדכוני אבטחה ותמיכה ניתנים לגרסה האחרונה בלבד."
+
+#: 
+msgid "Select the families to review."
+msgstr "בחרו את המשפחות לסקירה."
+
+#: 
+msgid "Set up the statement"
+msgstr "הגדרת הדוח"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "הגדירו אימות דו-שלבי כדי להמשיך."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "התנגשות מעטפה משותפת: למשפחה אחרת יש כעת את מספר המעטפה הזה."
+
+#: 
+msgid "Signature Image"
+msgstr "תמונת חתימה"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "תמונת חתימה (מנהל מערכת, הגדרות דוח)"
+
+#: 
+msgid "Signature on file"
+msgstr "חתימה בקובץ"
+
+#: 
+msgid "Sincerely"
+msgstr "בכבוד רב"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "ציינו את בסיס הסכום בעת עריכת התחייבות חוזרת."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "דוח תרומות רגיל"
+
+#: 
+msgid "Statement Template"
+msgstr "תבנית דוח"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "ספקו תאריך הנפקה לא יאוחר מהיום."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "מספר זיהוי מס בדוחות"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "למשפחת %s אין חברים חיים להזמין לפורטל החברים."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "מספר הרישום הקנדי חייב להיות בפורמט 123456789RR0001. זה אינו מאמת את סטטוס הרישום."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "מספר הרישום של העמותה חייב להיות טקסט."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "מספר הרישום של העמותה המודפס על קבלות רשמיות. אם ריק, נעשה שימוש במספר זיהוי המס שבפרטי הקהילה."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "הכתובת הרשומה של העמותה. אם ריק, נעשה שימוש בכתובת שבפרטי הקהילה."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "משפט הסגירה שמעל החותם, לדוגמה «בכבוד רב»."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "ההתחייבות המלאה לא תעלה על 999999.99 לקרן, והסכומים חייבים להשתמש בשני מקומות עשרוניים לכל היותר."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "התרומות או כתובת הדואר השתנו מאז הבדיקה האחרונה שלכם. סקרו אותן ואשרו את התורם שוב."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "כתובת הדואר אינה מלאה. נדרשים רחוב, עיר, מחוז ומיקוד."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "השם שבו העמותה רשומה. הוא עשוי להיות שונה משם הקהילה."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "המקום שבו מונפקות הקבלות. אם ריק, נעשה שימוש בעיר שבפרטי הקהילה."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "החותם המודפס של דוח התרומות מורשה לחתום על קבלות אלה."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "סמל המטבע של המערכת חייב להיות $ או לזהות CAD עבור קבלות קנדיות."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "אין תשלומים בשנת הלוח שנבחרה."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "אלה הם התורמים האמיתיים עבור כל מתנה בשנת משפחה/לוח זו, וכתובת הדואר נכונה."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "תמונה זו מודפסת מעל שם החותם בדוחות תרומות ובקבלות. פרטי העמותה ושם החותם המודפס נמצאים תחת כספים, הגדרות דוח."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "אפשרות זו מעצבת קבלה קנדית אך אינה שומרת מרשם קבלות ואינה שומרת קובצי PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "משפחה זו שנרשמה בעצמה ממתינה לאישור. אישורה שולח בדוא\"ל לכל חבר שיכול להתחבר לפורטל החברים הזמנה לסקור את פרטי המשפחה."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "לכלי זה אין תהליך ביטול/החלפה; השתמשו בתהליך הקיים שלכם התואם ל-CRA עבור תיקונים/החלפות של קבלות שאבדו."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "משתמש זה חייב להגדיר 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "פעולה זו תמחק לצמיתות את רשומת המשפחה ואת הערותיה. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Total commitment"
+msgstr "סך ההתחייבות"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "לא ניתן לצפות בתצוגה מקדימה של ההתחייבות."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "העלאה או החלפה של החתימה"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "העלו את חתימת המס המורשית בהגדרות הדוח."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "השתמשו בתאריכים בתוך שנת הכספים שנבחרה. מתנות חודשיות ורבעוניות משתמשות ביום התשלום הראשון, או ביום האחרון של חודשים קצרים יותר."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "שם/ות מלא/ים מאומת/ים של התורם"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "אמתו את המשפחה באופן אישי במקום זאת."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "אמתו את השם המלא והכתובת של התורם עבור כל משפחה. יש לטפל בקבוצות תשלומים של תורמים מעורבים מחוץ לתכונה זו."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "גרסה %s זמינה. בקשו ממנהל המערכת לשדרג את ההתקנה שלכם."
+
+#: 
+msgid "View all emails"
+msgstr "הצגת כל הודעות הדוא\"ל"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "כן — קבוצת תורמים אחת מאומתת"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "מדינת הקהילה שלכם היא קנדה, ולכן קבלות רשמיות קנדיות זמינות גם כאשר אתם יוצרים דוחות."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "מדינת הקהילה שלכם היא קנדה, ולכן קבלות רשמיות קנדיות זמינות בדוחות התרומות ודוחות רגילים מסומנים ככאלה שאינם קבלה רשמית על תרומה."
+
+#: 
+msgid "groups"
+msgstr "קבוצות"
 

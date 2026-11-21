@@ -15,11 +15,13 @@ use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
+use ChurchCRM\Service\DashboardLandingService;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -186,7 +188,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
+      <a href="<?= DashboardLandingService::urlFor($currentUser) ?>" class="navbar-brand py-2">
         <?php if (ChurchLogoService::hasCustomLogo()): ?>
         <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
         <?php else: ?>
@@ -450,7 +452,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if (!empty($aBreadcrumbs)) : ?>
             <ol class="breadcrumb mb-0" aria-label="breadcrumbs">
               <li class="breadcrumb-item">
-                <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><?= gettext('Home') ?></a>
+                <a href="<?= DashboardLandingService::urlFor($currentUser) ?>"><?= gettext('Home') ?></a>
               </li>
               <?php foreach ($aBreadcrumbs as $crumb) : ?>
                 <?php if (!empty($crumb['active'])) : ?>
@@ -512,7 +514,7 @@ foreach (NotificationService::getNotifications() as $notification) {
           </div>
         </div>
         <?php if ($notification->getDismissSettingKey()): ?>
-          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" aria-label="<?= gettext('Dismiss') ?>"></button>
+          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
         <?php endif; ?>
       </div>
 <?php } ?>

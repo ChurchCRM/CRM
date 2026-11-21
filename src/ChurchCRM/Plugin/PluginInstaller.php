@@ -678,6 +678,18 @@ HTACCESS;
         if (!preg_match('/^https:\/\//i', $url)) {
             throw new \RuntimeException('Plugin downloads must use HTTPS.');
         }
+        // Block private, loopback, and link-local addresses (SSRF protection)
+        $host = parse_url($url, PHP_URL_HOST);
+        if ($host === null || $host === false) {
+            throw new \RuntimeException('Plugin download URL is invalid.');
+        }
+        $ip = gethostbyname($host);
+        if ($ip === $host && !filter_var($host, FILTER_VALIDATE_IP)) {
+            // Could not resolve; still reject obviously private hostnames
+        }
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+            throw new \RuntimeException('Plugin downloads from private or reserved addresses are not allowed.');
+        }
         if (!function_exists('curl_init')) {
             throw new \RuntimeException('cURL is required to install plugins by URL.');
         }
@@ -731,11 +743,11 @@ HTACCESS;
         }
         if ($ok === false || $errno !== 0) {
             @unlink($tmp);
-            throw new \RuntimeException('Plugin download failed: ' . ($error ?: 'unknown cURL error'));
+            throw new \RuntimeException('Plugin download failed.');
         }
         if ($httpCode < 200 || $httpCode >= 300) {
             @unlink($tmp);
-            throw new \RuntimeException('Plugin download failed: HTTP ' . $httpCode);
+            throw new \RuntimeException('Plugin download failed.');
         }
 
         return $tmp;

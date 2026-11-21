@@ -46,7 +46,6 @@
  * hook does not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const EMAIL_ENABLED_URL = "/admin/api/system/config/bEnabledEmail";
 const SMTP_HOST_URL = "/admin/api/system/config/sSMTPHost";
 const LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
@@ -109,7 +108,6 @@ let occurrenceTwoStart = "";
 // setting — SystemConfig::setValue() DELETES the row when the value equals the
 // item's default, so a bogus restore of sSMTPHost silently disables email for
 // every spec that runs afterwards.
-let originalVersion = null;
 let originalSmtpHost = null;
 let originalLeadHours = null;
 let originalGapLeadHours = null;
@@ -569,9 +567,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             );
         });
 
-        readConfig(SETTING_URL).then((value) => {
-            originalVersion = value || "v1";
-        });
         readConfig(SMTP_HOST_URL).then((value) => {
             originalSmtpHost = value;
         });
@@ -591,7 +586,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             churchName = value || "";
         });
 
-        setConfig(SETTING_URL, "v2");
         setConfig(EMAIL_ENABLED_URL, "1");
         // Reminders and gap alerts are opt-in per test: a lead of 0 means "schedule
         // none", so a fixture occurrence that happens to fall inside the default 48
@@ -732,7 +726,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
     after(() => {
         cleanupFixtures();
         setConfig(EMAIL_ENABLED_URL, "1");
-        restoreConfig(SETTING_URL, originalVersion);
         restoreConfig(SMTP_HOST_URL, originalSmtpHost);
         restoreConfig(LEAD_HOURS_URL, originalLeadHours);
         restoreConfig(GAP_LEAD_HOURS_URL, originalGapLeadHours);
@@ -1582,13 +1575,12 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
     });
 
-    describe("Volunteer v2 — V1 pauses the volunteer background jobs (#10373)", () => {
+    describe("Volunteer v2 — a queued message outlived by its occurrence (#10373)", () => {
         let anchoredEventId = null;
 
         beforeEach(resetWorkflow);
 
         afterEach(() => {
-            setConfig(SETTING_URL, "v2");
             setConfig(LEAD_HOURS_URL, "0");
             if (anchoredEventId !== null) {
                 dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [anchoredEventId, occurrenceTwo]);
@@ -1603,46 +1595,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             );
         }
 
-        it("keeps the queue and schedules no reminder while V1 is on", () => {
-            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then((assignment) => {
-                setConfig(SETTING_URL, "v1");
-                setConfig(LEAD_HOURS_URL, String(21 * 24));
-                drain();
-
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
-                    expect(row.vntf_Status).to.eq("pending");
-                    expect(row.vntf_Attempts).to.eq(0);
-                });
-                outboxRowsOfType("reminder").then((rows) => {
-                    expect(rows).to.have.length(0);
-                });
-            });
-        });
-
-        it("emails nobody while V1 is on, and sends the queue once V2 is back", function () {
-            requireMailpit(this);
-
-            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((assignment) => {
-                setConfig(SETTING_URL, "v1");
-                drain();
-                listMail().then((messages) => {
-                    const toMember = messages.filter((message) =>
-                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === MEMBER_A_EMAIL),
-                    );
-                    expect(toMember, "no mail while V1 is on").to.have.length(0);
-                });
-
-                setConfig(SETTING_URL, "v2");
-                drain();
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
-                    expect(row.vntf_Status).to.eq("sent");
-                });
-                mailTo(MEMBER_A_EMAIL).then((message) => {
-                    expect(message.Subject.toLowerCase()).to.contain("serve");
-                });
-            });
-        });
-
         it("does not send a queued message late once its occurrence is over", () => {
             dbOk(`SELECT vocc_event_id FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [occurrenceTwo]).then((rows) => {
                 anchoredEventId = rows[0].vocc_event_id;
@@ -1651,7 +1603,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then((assignment) => {
                 const key = `assignment:${assignment.id}:${POOL_MEMBER_B}`;
 
-                setConfig(SETTING_URL, "v1");
                 dbOk(
                     `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
                      VALUES (?, ?, '', '', DATE_SUB(NOW(), INTERVAL 3 DAY), DATE_SUB(NOW(), INTERVAL 3 DAY), 0)`,
@@ -1659,15 +1610,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 ).then((result) => {
                     dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [result.insertId, occurrenceTwo]);
                 });
-                drain();
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("pending");
-                });
-                assignmentStatus(assignment.id).then((status) => {
-                    expect(status, "not closed out while V1 is on").to.eq("pending");
-                });
-
-                setConfig(SETTING_URL, "v2");
                 drain();
                 outboxRow(key).then((row) => {
                     expect(row.vntf_Status).to.eq("skipped");
@@ -1688,7 +1630,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
 
         afterEach(() => {
-            setConfig(SETTING_URL, "v2");
             setConfig(EMAIL_ENABLED_URL, "1");
             setConfig(LEAD_HOURS_URL, "0");
             setConfig(GAP_LEAD_HOURS_URL, "0");
@@ -1838,15 +1779,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 expect(rows[0].dedupeKey).to.match(
                     new RegExp(`^gap_alert:${occurrenceOne}:${PERSON_COORDINATOR}:\\d{4}-\\d{2}-\\d{2}$`),
                 );
-            });
-        });
-
-        it("queues nothing while V1 is on", () => {
-            setConfig(SETTING_URL, "v1");
-            leadToOccurrenceOne();
-            runJobsNow();
-            gapAlerts(occurrenceOne).then((rows) => {
-                expect(rows).to.have.length(0);
             });
         });
 

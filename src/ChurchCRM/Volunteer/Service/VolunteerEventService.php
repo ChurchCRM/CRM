@@ -57,7 +57,7 @@ class VolunteerEventService
     /** Hard cap on one Calendar tab listing, the occurrence list's number (design M9). */
     public const MAX_EVENT_LIST = VolunteerScheduleService::MAX_OCCURRENCE_LIST;
 
-    /** The event type added for a ministry's own events when V2 is turned on (D31, #10357). */
+    /** The event type a ministry's own events start on (D31, #10357). */
     public const OTHER_EVENT_TYPE_NAME = 'Other';
 
     /** D28: what happens to a ministry's own events of a class its team stops staffing. */
@@ -105,9 +105,8 @@ class VolunteerEventService
     }
 
     /**
-     * Add the "Other" type when V2 is turned on (#10357), unless the church already has a type
-     * of that name, active or not. Never on an upgrade, so a church that stays on V1 does not
-     * see a new type.
+     * Add the "Other" type (#10357), unless the church already has a type of that name, active or
+     * not.
      */
     public static function addOtherEventType(): void
     {

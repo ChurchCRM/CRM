@@ -64,11 +64,11 @@ describe("Self Registrations review page", () => {
     describe("Navigation", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("shows a review action on the home dashboard when registrations are waiting", () => {
+        it("shows a pending-registrations card on the home dashboard when registrations are waiting", () => {
             registerPerson();
-            cy.visit("v2/dashboard");
-            cy.get("#selfRegisterDashboardAlert", { timeout: 10000 }).should("be.visible").and("contain", "waiting for review");
-            cy.get("#selfRegisterDashboardAlert a").should("have.attr", "href").and("include", "/people/self-register");
+            cy.visit("people/dashboard");
+            cy.get("#selfRegisterDashboardCard").should("be.visible").and("have.attr", "href").and("include", "/people/self-register");
+            cy.get("#selfRegisterDashboardCount", { timeout: 10000 }).should("not.have.text", "0");
         });
 
         it("shows a pending badge in the menu when registrations are waiting", () => {
@@ -182,6 +182,27 @@ describe("Self Registrations review page", () => {
                 });
             });
         });
+
+        it("warns when nobody in an approved family can sign in to the member portal", () => {
+            let savedMemberSignIn;
+            cy.getSystemConfig("bMemberSignIn").then((value) => {
+                savedMemberSignIn = value;
+            });
+            cy.setSystemConfig("bMemberSignIn", "0");
+            registerFamily().then(({ name }) => {
+                cy.intercept("POST", "**/approve-review").as("approveFamily");
+                cy.visit("people/self-register");
+                row(name).find('[data-bs-toggle="dropdown"]').click();
+                cy.get(".dropdown-menu.show .approve-review").click();
+                cy.wait("@approveFamily").its("response.body.invited").should("eq", false);
+                cy.get(".bootbox")
+                    .should("contain", "no invitation was sent")
+                    .and("contain", "Member sign-in is off")
+                    .and("contain", "Admin → Member Portal");
+                cy.get("#selfRegistrations tbody").should("not.contain", name);
+            });
+            cy.then(() => cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn));
+        });
     });
 
     describe("Pending badges elsewhere", () => {
@@ -243,7 +264,7 @@ describe("Self Registrations review page without EditRecords", () => {
     });
 
     it("does not show the review action on the home dashboard", () => {
-        cy.visit("v2/dashboard");
-        cy.get("#selfRegisterDashboardAlert").should("not.exist");
+        cy.visit("people/dashboard");
+        cy.get("#selfRegisterDashboardCard").should("not.exist");
     });
 });

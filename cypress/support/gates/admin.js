@@ -11,4 +11,12 @@ export const ADMIN_GATES = [
         allow: ["church-admin"],
         deny: except(STAFF, "church-admin"),
     },
+    {
+        id: "people-property-lists",
+        audience: "admin",
+        classification: "configuration",
+        page: "/people/properties/p",
+        allow: ["church-admin"],
+        deny: except(STAFF, "church-admin"),
+    },
 ];

@@ -172,6 +172,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<?php require __DIR__ . '/partials/backup-download-form.php'; ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/backup.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

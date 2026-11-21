@@ -30,7 +30,6 @@
  * removed in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -52,7 +51,7 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
@@ -68,7 +67,7 @@ function freshCoordinatorLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("standard.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("standard.password") + "{enter}");
         }
@@ -78,10 +77,6 @@ function freshCoordinatorLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function cleanupScopes() {
@@ -183,7 +178,6 @@ before(() => {
 
 describe("Volunteer v2 — ministry lifecycle (Deactivate, Reactivate, Delete)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
     });
 

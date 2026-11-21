@@ -99,18 +99,12 @@ describe('Upgrade via Restore', () => {
             cy.visit('/');
             cy.url().should('include', '/setup');
 
-            // Step 1: Prerequisites
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            cy.get('#prerequisites-next-btn').click();
-
-            // Step 2: Database configuration
-            cy.get('#step-database').should('have.class', 'active');
+            cy.get('#status-banner', { timeout: 30000 }).should('not.have.class', 'status-checking');
             cy.get('#DB_SERVER_NAME').clear().type(dbConfig.host);
             cy.get('#DB_SERVER_PORT').clear().type(dbConfig.port);
             cy.get('#DB_NAME').clear().type(dbConfig.name);
             cy.get('#DB_USER').clear().type(dbConfig.user);
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
-            cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
 
             cy.get('#submit-setup').click();
 
@@ -122,7 +116,7 @@ describe('Upgrade via Restore', () => {
             // Continue to login
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
-            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
 
@@ -213,8 +207,19 @@ describe('Upgrade via Restore', () => {
             // Success modal — may take a while for ChurchInfo (30+ migrations)
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
-            // Wait for page to redirect to login after restore completes
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            // Wait for page to redirect to login after restore completes.
+            // Restore ends the session and lands on the sign-in chooser at
+            // /session/ (#11844): a restored database that offers more than
+            // one door (the ChurchCRM 6.0.0 database has member sign-in on)
+            // stays on the chooser, while a single-door install (ChurchInfo
+            // 1.3.1) redirects straight through to staff sign-in.
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session(\/begin)?\/?$/);
+            cy.get('body').then(($body) => {
+                if ($body.find('#sessionDoorStaff').length > 0) {
+                    cy.get('#sessionDoorStaff').click();
+                    cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
+                }
+            });
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
@@ -339,6 +344,36 @@ describe('Upgrade via Restore', () => {
                 expect(body.depositId).to.equal(5);
                 expect(body.total).to.be.closeTo(25, 0.01);
             });
+        });
+
+        // churchcrm-6.0.0.sql has three Volunteer Opportunities: Greeter (people 2 and 6, twice
+        // for person 2, and a person who no longer exists), the inactive Nursery (person 7) and
+        // one with no name.
+        it('should turn the Volunteer Opportunities into positions and qualifications (#10606)', function () {
+            if (!upgradeSqlFile.includes('churchcrm-6.0.0')) {
+                this.skip();
+            }
+            cy.request('/api/ministries/ministries').then(({ body }) => {
+                const ministry = body.ministries.find((row) => row.name === 'Volunteer Opportunities');
+                expect(ministry, 'the ministry the opportunities became').to.exist;
+                cy.request(`/api/ministries/ministries/${ministry.id}/positions`).then(({ body: { positions } }) => {
+                    const byName = Object.fromEntries(positions.map((position) => [position.name, position]));
+                    expect(Object.keys(byName)).to.have.members(['Greeter', 'Nursery', 'Opportunity #3']);
+                    expect(byName.Greeter).to.include({ description: 'Welcome people at the door', active: true, selfAssignable: false });
+                    expect(byName.Nursery.active).to.equal(false);
+                    cy.request(`/api/ministries/positions/${byName.Greeter.id}/qualifications`)
+                        .its('body.qualifications')
+                        .then((rows) => expect(rows.map((row) => Number(row.personId)).sort()).to.deep.equal([2, 6]));
+                    cy.request(`/api/ministries/positions/${byName.Nursery.id}/qualifications`)
+                        .its('body.qualifications')
+                        .then((rows) => expect(rows.map((row) => Number(row.personId))).to.deep.equal([7]));
+                });
+            });
+        });
+
+        it('should leave no Volunteer Opportunities page or rollout setting (#10606)', () => {
+            cy.request({ url: '/VolunteerOpportunityEditor.php', failOnStatusCode: false }).its('status').should('equal', 404);
+            cy.request({ url: '/admin/api/system/config/sVolunteerVersion', failOnStatusCode: false }).its('status').should('equal', 404);
         });
     });
 });

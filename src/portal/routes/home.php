@@ -39,7 +39,9 @@ $homeHandler = function (Request $request, Response $response): Response {
             // than a sentence describing them, so it reads the same view-model
             // the Profile page renders — never a second copy of the logic.
             'profile' => $actor instanceof Person ? PortalSelfService::getProfile($actor) : null,
-            'familySummary' => $family === null ? null : [
+            // The My Family card asks the My Family nav entry's capability, so a
+            // member without a family gets neither.
+            'familySummary' => $family === null || !portalHomeMay(CorePortalCapabilities::FAMILY_VIEW) ? null : [
                 'name' => (string) $family->getName(),
                 'memberCount' => count($family->getPeople()),
             ],

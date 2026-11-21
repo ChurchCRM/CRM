@@ -12,7 +12,7 @@ describe("People Reports for staff users (#10570)", () => {
         beforeEach(noPermSession);
 
         it("lists People Reports in the Reports menu", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.get('a[href$="/people/reports"]').should("contain", "People Reports");
         });
 
@@ -88,7 +88,7 @@ describe("People Reports for staff users (#10570)", () => {
 
         it("is sent to the staff sign-in", () => {
             cy.visit("/people/reports");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.get("#peopleReports").should("not.exist");
             cy.get('a[href$="/people/reports"]').should("not.exist");
         });

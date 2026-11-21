@@ -833,14 +833,6 @@ msgid "Assign"
 msgstr "Dodijeli"
 
 #: 
-msgid "Date Updated"
-msgstr "Datum ažuriranja"
-
-#: 
-msgid "Updated By"
-msgstr "Ažurirao"
-
-#: 
 msgid "Since"
 msgstr "Od"
 
@@ -1297,10 +1289,6 @@ msgid "People"
 msgstr "Vjerni"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Djeca nedjeljne škole"
-
-#: 
 msgid "Role / Gender"
 msgstr "Uloga / Spol"
 
@@ -1345,10 +1333,6 @@ msgid "Updated"
 msgstr "Ažurirano"
 
 #: 
-msgid "(this action cannot be undone)"
-msgstr "(ova radnja se ne može poništiti)"
-
-#: 
 msgid "Note Editor"
 msgstr "Urednik bilješki"
 
@@ -1367,10 +1351,6 @@ msgstr "Skupina"
 #: 
 msgid "Default"
 msgstr "Zadano"
-
-#: 
-msgid "Exit"
-msgstr "Izlaz"
 
 #: 
 msgid "Add New"
@@ -1477,10 +1457,6 @@ msgid "Assign New Group"
 msgstr "Dodijeli novu skupinu"
 
 #: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Dodijeli novu volontersku mogućnost"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodbatljivi iznos ne može biti veći od ukupnog iznosa."
 
@@ -1573,10 +1549,6 @@ msgid "Warning"
 msgstr "Upozorenje"
 
 #: 
-msgid "This property type is still being used by at least one property."
-msgstr "Ova vrsta svojstva još uvijek se koristi u najmanje jednom svojstvu."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Potvrdite brisanje ove vrste svojstva"
 
@@ -1598,48 +1570,8 @@ msgid "Restore Database"
 msgstr "Obnovi bazu podataka"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Potvrdite brisanje"
-
-#: 
-msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Žao nam je, postoje zapisi o darovima ove obitelji. Ova obitelj se ne može obrisati."
-
-#: 
-msgid "Return to Family View"
-msgstr "Povratak na prikaz obitelji"
-
-#: 
-msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "UPOZORENJE: Ova obitelj ima zapise o darovima i NE MOŽE biti obrisana dok ti darovi nisu pridruženi drugoj obitelji."
-
-#: 
-msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "UPOZORENJE: Ova radnja se ne može poništiti i može imati pravne posljedice!"
-
-#: 
-msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "TRENUTNA OBITELJ S DAROVIMA"
-
-#: 
-msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Napomena: Ovo će također obrisati sve bilješke pridružene ovom obiteljskom zapisu."
-
-#: 
-msgid "Delete Family Record ONLY"
-msgstr "Obriši SAMO obiteljski zapis"
-
-#: 
-msgid "Delete Family Record AND Family Members"
-msgstr "Obriši obiteljski zapis I članove obitelji"
-
-#: 
 msgid "Listing"
 msgstr "Popis"
-
-#: 
-msgid "My User Settings"
-msgstr "Moje korisničke postavke"
 
 #: 
 msgid "Variable name"
@@ -1724,14 +1656,6 @@ msgstr "Nova lozinka"
 #: 
 msgid "Confirm New Password"
 msgstr "Potvrdi novu lozinku"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Urednik volonterskih mogućnosti"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Još nisu dodane volonterske mogućnosti"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2221,14 +2145,6 @@ msgstr "Očisti sve fondove"
 #: 
 msgid "Deposit Comment"
 msgstr "Komentar uplate"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Provjera valjanosti potpisa definicijske datoteke nije uspjela"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Jedna ili više datoteka nije prošla provjeru valjanosti potpisa"
 
 #: 
 msgid "item"
@@ -4498,10 +4414,6 @@ msgid "People Reports"
 msgstr "Izvještaji o vjernicima"
 
 #: 
-msgid "People Dashboard"
-msgstr "Nadzorna ploča vjernika"
-
-#: 
 msgid "People Directory"
 msgstr "Imenik vjernika"
 
@@ -4740,10 +4652,6 @@ msgid "Estonian"
 msgstr "Estonski"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Greška pri dekodiranju datoteke definicije potpisa"
-
-#: 
 msgid "Event not found"
 msgstr "Događaj nije pronađen"
 
@@ -4949,10 +4857,6 @@ msgid "View Person Page"
 msgstr "Prikaži stranicu osobe"
 
 #: 
-msgid "Family has no emails to use"
-msgstr "Obitelj nema e-pošta za korištenje"
-
-#: 
 msgid "Deleted"
 msgstr "Obrisano"
 
@@ -5093,10 +4997,6 @@ msgstr "Primijenite Politiku sigurnosti sadržaja (CSP) za zaštitu od cross-sit
 #: 
 msgid "Enter event description..."
 msgstr "Unesite opis događaja..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "Unesite tekst bilješke ovdje..."
 
 #: 
 msgid "Note"
@@ -5333,14 +5233,6 @@ msgstr "Molim unesite valjanu URL adresu koja počinje s http:// ili https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Sve hash vrijednosti sistemskih datoteka odgovaraju očekivanim vrijednostima."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Datoteka definicije potpisa postoji, ali nije čitljiva. Provjerite dozvole datoteke."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Datoteka definicije potpisa nedostaje na %s. Pokrenite zadatak pakiranja ili implementirajte službeno izdanje za regeneriranje potpisa."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6418,20 +6310,8 @@ msgid "Additional Information"
 msgstr "Dodatne informacije"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Dodijeli mogućnosti"
-
-#: 
 msgid "Choose a property..."
 msgstr "Odaberi svojstvo..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Odaberi mogućnosti..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontaktni i osobni podaci"
 
 #: 
 msgid "Edited"
@@ -6440,14 +6320,6 @@ msgstr "Uređeno"
 #: 
 msgid "Newsletter"
 msgstr "Bilten"
-
-#: 
-msgid "Personal"
-msgstr "Osobno"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Odaberi mogućnosti"
 
 #: 
 msgid "Volunteer"
@@ -6636,10 +6508,6 @@ msgid "Confirm Property Deletion"
 msgstr "Potvrdi brisanje svojstva"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Potvrdi brisanje volonterske mogućnosti"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Potvrda brisanja"
 
@@ -6652,16 +6520,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Postojeća prilagođena osobna polja"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Postojeće volonterske mogućnosti"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Polje uspješno obrisano"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Nevažeći CSRF token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -6712,10 +6572,6 @@ msgid "Add Property Type"
 msgstr "Dodaj vrstu svojstva"
 
 #: 
-msgid "Add Your First Property Type"
-msgstr "Dodaj svoju prvu vrstu svojstva"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Brisanjem ovog polja nepovratno ćete izgubiti sve podatke članova skupini dodijeljene za ovo polje!"
 
@@ -6734,10 +6590,6 @@ msgstr "Odjavljen"
 #: 
 msgid "Current Fiscal Year"
 msgstr "Trenutna fiskalna godina"
-
-#: 
-msgid "Delete (will delete all associated records)"
-msgstr "Obriši (briše sve pridružene zapise)"
 
 #: 
 msgid "Edit Property Type"
@@ -6788,10 +6640,6 @@ msgid "No property types found"
 msgstr "Nisu pronađene vrste svojstava"
 
 #: 
-msgid "Number of records using this property type"
-msgstr "Broj zapisa koji koriste ovu vrstu svojstva"
-
-#: 
 msgid "Optional detailed description of this property type"
 msgstr "Neobavezni detaljni opis ove vrste svojstva"
 
@@ -6822,10 +6670,6 @@ msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
 #: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Pratite i upravljajte obvezama zavjeta prema obitelji i fondu"
-
-#: 
-msgid "View Properties"
-msgstr "Prikaži svojstva"
 
 #: 
 msgid "e.g., Visitors, Children"
@@ -7807,18 +7651,6 @@ msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr "Jeste li sigurni da želite trajno obrisati ovaj zapis zavjeta?"
 
 #: 
-msgid "Cancel and Return to Family View"
-msgstr "Odustani i povratak na prikaz obitelji"
-
-#: 
-msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
-msgstr "Ako obrišete ovu vrstu, uklonit ćete i sva svojstva koja je koriste i izgubiti sve odgovarajuće dodjele svojstava."
-
-#: 
-msgid "Move Donations to Selected Family"
-msgstr "Premjesti darove u odabranu obitelj"
-
-#: 
 msgid "Calendar not found"
 msgstr "Kalendar nije pronađen"
 
@@ -8091,10 +7923,6 @@ msgid "or later to continue."
 msgstr "ili noviju za nastavak."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Bilješke „Zašto sam došao“"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat za \"%s\""
@@ -8204,10 +8032,6 @@ msgstr "Dodaj ili uredi pojedinačne zapise osoba"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Dodaj ili uredi stavke donirane za akcije prikupljanja sredstava"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Dodaj ili uredi bilješke za vjernike i obitelji"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8464,10 +8288,6 @@ msgstr "Kreirajte i upravljajte župnim događajima i aktivnostima"
 #: 
 msgid "Create or edit property type categories"
 msgstr "Kreirajte ili uredite kategorije vrsta svojstava"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "Kreirajte ili uredite volonterske pozicije"
 
 #: 
 msgid "Current person"
@@ -8918,14 +8738,6 @@ msgid "Manage user account details and permissions"
 msgstr "Upravljajte detaljetima korisničkog računa i dozvolama"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Upravljajte volonterskim mogućnostima i dodjeljujte članove"
-
-#: 
-msgid "Manage your personal preferences and account settings"
-msgstr "Upravljajte vašim osobnim preferencijama i postavkama računa"
-
-#: 
 msgid "Map cart items"
 msgstr "Mapiraj stavke košarice"
 
@@ -8960,10 +8772,6 @@ msgstr "Premjesti u skupinu"
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
 msgstr "Prelazite s postojeće ChurchCRM ili ChurchInfo instalacije? Učitajte vašu datoteku sigurnosne kopije i automatski ćemo obnoviti vaše podatke."
-
-#: 
-msgid "My Settings"
-msgstr "Moje postavke"
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -9050,10 +8858,6 @@ msgid "No timeline events yet."
 msgstr "Još nema događaja u vremenskom traku."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Još nema dodjela volonterskih mogućnosti."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Još niste spremni?"
 
@@ -9090,10 +8894,6 @@ msgstr "Pregled"
 #: 
 msgid "Password Recovery"
 msgstr "Oporavak lozinke"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Prošlih i sljedećih 7 dana"
 
 #: 
 msgid "People by Classification"
@@ -9178,10 +8978,6 @@ msgstr "Bilježite više dobitnika akcije prikupljanja odjednom"
 #: 
 msgid "Record new pledges and payments"
 msgstr "Bilježite nove zavjete i uplate"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Bilježite zašto su posjetitelji došli u vašu župu"
 
 #: 
 msgid "Remove from Class"
@@ -9564,10 +9360,6 @@ msgid "funds"
 msgstr "fondovi"
 
 #: 
-msgid "opportunities"
-msgstr "mogućnosti"
-
-#: 
 msgid "or connect an external service"
 msgstr "ili povežite vanjsku uslugu"
 
@@ -9867,11 +9659,6 @@ msgstr "Nije uspjelo dohvaćanje adresa e-pošte"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Nije uspjelo dohvaćanje telefonskih brojeva"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Pronađi volontere za određenu mogućnost"
 
 #. Context: query_qry
 #: 
@@ -10996,10 +10783,6 @@ msgstr "Tamno"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Samo baza podataka (.sql) ili potpuna arhiva (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Zadani broj redaka prikazanih u tablicama podataka. Stupa na snagu pri sljedećem učitavanju stranice."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11053,10 +10836,6 @@ msgstr "Malajalamski - Indija"
 #: 
 msgid "Manage 2FA"
 msgstr "Upravljaj 2FA"
-
-#: 
-msgid "Manage additional preferences like email delimiters and display options"
-msgstr "Upravljajte dodatnim preferencijama poput razdjelnika e-pošte i opcija prikaza"
 
 #: 
 msgid "Manage your API key for external integrations"
@@ -11316,14 +11095,6 @@ msgstr "Prijavio"
 #: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Prijava je onemogućena za neaktivne događaje. Aktivirajte događaj iz nadzorne ploče događaja za omogućavanje prijave."
-
-#: 
-msgid "Checked in to event: %s"
-msgstr "Prijavljen na događaj: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Odjavljen s događaja: %s"
 
 #: 
 msgid "Close All Stuck Events"
@@ -11734,14 +11505,6 @@ msgid "e.g., 40.7128"
 msgstr "npr. 45.8150"
 
 #: 
-msgid "An error occurred while deleting the family."
-msgstr "Greška pri brisanju obitelji."
-
-#: 
-msgid "An error occurred while moving donations."
-msgstr "Greška pri premještanju darova."
-
-#: 
 msgid "At least one family member is required"
 msgstr "Potreban je najmanje jedan član obitelji"
 
@@ -11760,10 +11523,6 @@ msgstr "Brisanje nije uspjelo"
 #: 
 msgid "Direction must be \"up\" or \"down\""
 msgstr "Smjer mora biti \"gore\" ili \"dolje\""
-
-#: 
-msgid "Failed to move donations."
-msgstr "Premještanje darova nije uspjelo."
 
 #: 
 msgid "Finance permission required"
@@ -11800,10 +11559,6 @@ msgstr "Članstvo nije pronađeno"
 #: 
 msgid "Password successfully changed for"
 msgstr "Lozinka je uspješno promijenjena za"
-
-#: 
-msgid "Please select a target family."
-msgstr "Molim odaberite ciljnu obitelj."
 
 #: 
 msgid "Target family not found"
@@ -12671,10 +12426,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Nije moguće obrisati vrstu svojstva: %d svojstava je još uvijek referiraju. Prvo premjestite ili obrišite ta svojstva."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Nije moguće obrisati volontersku mogućnost: %d osoba je još uvijek dodijeljeno. Prvo uklonite dodjele."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klasa mora biti jedna od: p, f ili g"
 
@@ -12685,10 +12436,6 @@ msgstr "Kopiraj poruku greške"
 #: 
 msgid "Could not load note."
 msgstr "Nije moguće učitati bilješku."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Opis ne može prelaziti 100 znakova"
 
 #: 
 msgid "Donation fund not found"
@@ -12711,10 +12458,6 @@ msgid "Failed to create property type"
 msgstr "Kreiranje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Kreiranje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Brisanje fonda darivanja nije uspjelo"
 
@@ -12731,10 +12474,6 @@ msgid "Failed to delete property type"
 msgstr "Brisanje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Brisanje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Ažuriranje fonda darivanja nije uspjelo"
 
@@ -12747,10 +12486,6 @@ msgid "Failed to update property type"
 msgstr "Ažuriranje vrste svojstva nije uspjelo"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Ažuriranje volonterske mogućnosti nije uspjelo"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Akcija prikupljanja nije pronađena"
 
@@ -12761,10 +12496,6 @@ msgstr "ID instalacije"
 #: 
 msgid "Invalid class"
 msgstr "Nevažeća klasa"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Naziv ne može prelaziti 30 znakova"
 
 #: 
 msgid "Note by %s deleted"
@@ -12787,16 +12518,8 @@ msgid "Read more"
 msgstr "Čitaj više"
 
 #: 
-msgid "That name already exists."
-msgstr "Taj naziv već postoji."
-
-#: 
 msgid "Title is required"
 msgstr "Naslov je obavezan"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Volonterska mogućnost nije pronađena"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13007,14 +12730,6 @@ msgid "Click Save to apply."
 msgstr "Kliknite Spremi za primjenu."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API međuspremnika nije dostupan. Molim ručno kopirajte URL."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Međuspremnik nije dostupan. Molim koristite gumb Preuzmi za spremanje kodova."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kod je nepotpun"
 
@@ -13133,10 +12848,6 @@ msgstr "Demo podaci se normalno učitavaju samo na svježim instalacijama. Uvoz 
 #: 
 msgid "Deposit ID"
 msgstr "ID uplate"
-
-#: 
-msgid "Deposit Value"
-msgstr "Vrijednost uplate"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13555,22 +13266,6 @@ msgid "Move Members to Group"
 msgstr "Premjesti članove u skupinu"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Mora biti valjani URL koji počinje s http:// ili https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Mora biti valjani URL koji počinje s http:// ili https:// (npr. http://localhost ili https://domena.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Mora biti valjani broj porta (npr. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Mora počinjati s / ako nije prazno; bez završne kose crte. Dozvoljeni su samo slova, brojevi, podvlaka, crtica, točka i /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Trebate ukloniti ove podatke kasnije?"
 
@@ -13593,14 +13288,6 @@ msgstr "Nema uplata"
 #: 
 msgid "No Events Today"
 msgstr "Nema današnjih događaja"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Nema godišnjica u proteklih ili sljedećih 7 dana"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Nema rođendana u proteklih ili sljedećih 7 dana"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13729,10 +13416,6 @@ msgstr "Molim unesite valjanu adresu e-pošte"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Molim unesite valjanu adresu e-pošte (npr. ime@primjer.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Molim unesite valjani broj"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14548,24 +14231,12 @@ msgid "People &amp; Families"
 msgstr "Osobe i obitelji"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Bilješka koju pokušavate urediti više ne postoji."
-
-#: 
 msgid "User List"
 msgstr "Popis korisnika"
 
 #: 
 msgid "View Person"
 msgstr "Pregled osobe"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nemate dozvolu za dodavanje bilješke za ovu obitelj."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
 
 #: 
 msgid "Account locked"
@@ -15198,10 +14869,6 @@ msgid "Target family"
 msgstr "Ciljna obitelj"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Skupina nije pronađena. Molimo pokušajte ponovo."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Odabrana obitelj više ne postoji. Molimo osvježite stranicu i pokušajte ponovo."
 
@@ -15268,10 +14935,6 @@ msgstr "goalAmount mora biti nenegativan"
 #: 
 msgid "thru %s"
 msgstr "do %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Bilješke Zašto je došao za %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15378,14 +15041,6 @@ msgid "Output Method"
 msgstr "Metoda izlaza"
 
 #: 
-msgid "Please confirm deletion of this family record"
-msgstr "Molimo potvrdite brisanje ovog zapisa obitelji"
-
-#: 
-msgid "Please select another family with whom to associate these donations"
-msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
-
-#: 
 msgid "Remittance Slip"
 msgstr "Uplatnica"
 
@@ -15428,10 +15083,6 @@ msgstr "Podržani formati"
 #: 
 msgid "System Configuration"
 msgstr "Konfiguracija sustava"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Postoje osobe dodijeljene ovoj volonterskoj prilici. Brisanjem će se ukloniti dodjela"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15662,10 +15313,6 @@ msgid "Add New Fund"
 msgstr "Dodaj novi fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Dodaj novu priliku"
-
-#: 
 msgid "Add New Person"
 msgstr "Dodaj novu osobu"
 
@@ -15678,10 +15325,6 @@ msgid "Add New Role"
 msgstr "Dodaj novu ulogu"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Dodaj novu volontersku priliku"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Dodaj nedjeljnoškolsku skupinu"
 
@@ -15690,24 +15333,8 @@ msgid "Delete this family?"
 msgstr "Obrisati ovu obitelj?"
 
 #: 
-msgid "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone."
-msgstr "Želite li obrisati ovu obitelj? Bit ćete preusmjereni na stranicu za odabir što obrisati. Ova radnja se ne može poništiti."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Potvrda brisanja obitelji"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Potvrda brisanja vrste svojstva"
-
-#: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Pregledajte nove obitelji i pojedince koji su se prijavili putem javnog obrasca za registraciju"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Potvrda brisanja volonterske prilike"
 
 #: 
 msgid "# Payments"
@@ -17376,14 +17003,6 @@ msgid "Find people who did not attend an event"
 msgstr "Pronađite ljude koji nisu sudjelovali na događaju"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Pronađite volontere koji odgovaraju dvama specifičnim kodovima mogućnosti"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Prva mogućnost volontiranja"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Savijena brošura"
 
@@ -17460,10 +17079,6 @@ msgid "Run Report"
 msgstr "Pokreni izvještaj"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Druga mogućnost volontiranja"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Prikazano u bočnoj traci, na stranici za prijavu i u e-poštama. Učitavanje loga zamjenjuje branding ChurchCRM-a gdje god se pojavljuje."
 
@@ -17490,14 +17105,6 @@ msgstr "Korištenje standardnog loga ChurchCRM"
 #: 
 msgid "View Full Family Giving"
 msgstr "Pogledaj potpuno obiteljsko darivanje"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Mogućnost volontiranja"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Volonteri za dvije mogućnosti"
 
 #: 
 msgid "YTD"
@@ -17972,10 +17579,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registracije koje čekaju pregled s vašeg javnog registracijskog obrasca. Unosi bez e-pošte ili telefona označeni su – prije kontaktiranja provjerite kontaktne podatke."
 
 #: 
-msgid "Review now"
-msgstr "Pregledaj sada"
-
-#: 
 msgid "Review self registrations"
 msgstr "Pregledaj samoregistracije"
 
@@ -18026,10 +17629,6 @@ msgstr "Jučer"
 #: 
 msgid "days ago"
 msgstr "dana prije"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "samoregistracija čeka pregled"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18339,10 +17938,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Raspored koji popunjava jedan događaj ne može pratiti druge događaje; izbrišite ga i umjesto toga dodajte raspored"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Jedan popis prilika, poput „Jaslice“ ili „Dočekivač“, vodi se pod Osobe → Administracija. Svaka osoba označena je prilikama u kojima je spremna pomoći, na kartici Volonter u svom zapisu. To je sve što se bilježi: nema timova, rasporeda, dodjela na datum ni podsjetnika e-poštom. Oznake se koriste u izvještajima i u zapisu osobe."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Najbolje djeluje kvadratna slika vašeg lica."
 
@@ -18649,18 +18244,6 @@ msgstr "Pozadinski poslovi radili su"
 #: 
 msgid "Birthday greeting"
 msgstr "Rođendanska čestitka"
-
-#: 
-msgid "Both"
-msgstr "Oboje"
-
-#: 
-msgid "Both (transition)"
-msgstr "Oboje (prijelaz)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Oboje – V1 i V2 zajedno (prijelaz)"
 
 #: 
 msgid "Calendar address"
@@ -21751,22 +21334,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Korisnik mora imati ovlaštenje Dodavanje događaja ili koordinirati volontersku službu kojoj ovaj kalendar pripada"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Prilike za volontere (staro)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – stare Prilike za volontere"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Službe"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Upravljanje volonterima"
-
-#: 
 msgid "Valid"
 msgstr "Valjano"
 
@@ -21785,14 +21352,6 @@ msgstr "Prikaži događaj"
 #: 
 msgid "View this email"
 msgstr "Prikaži ovu e-poštu"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Volonter (staro)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Upravljanje volonterima V2 nije omogućeno"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21901,10 +21460,6 @@ msgid "What the check found"
 msgstr "Što je provjera otkrila"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Koja su volonterska iskustva"
-
-#: 
 msgid "What you want to say"
 msgstr "Što želite reći"
 
@@ -21935,10 +21490,6 @@ msgstr "Odakle dolaze datumi"
 #: 
 msgid "Where we reach you"
 msgstr "Gdje vas možemo dobiti"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Koje je iskustvo upravljanja volonterima aktivno. V1 je stara značajka Prilike za volontere; V2 je novi tijek rada planiranja i dodjele. „Oboje“ prikazuje oboje zajedno tijekom migracije."
 
 #: 
 msgid "Which events"
@@ -22349,10 +21900,6 @@ msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Samo upravitelj volontera moze promeniti koordinatora sluzbene"
 
 #: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Odabir V1 pauzira email V2; sve sto je u redu se salje kada se V2 ponovo ukljuci, osim ako se dogadaj nije zavrsio."
-
-#: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr "Dodajte ovdje dogadaje ove sluzbene: radni dan, klasu koja se srutka svaku nedjelju. Idu na crkvenski kalendar, a nakon kreiranja od vas se trazi da li zelite popuniti radne snage."
 
@@ -22463,10 +22010,6 @@ msgstr "Registrirajte gosta"
 #: 
 msgid "Register walk-in guest"
 msgstr "registrirajte gosta"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Registriran kao gost na kiosku tijekom dogadaja: %s"
 
 #: 
 msgid "Registering..."
@@ -23199,10 +22742,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Vrijeme najave upozorenja o nepopunjenoj poziciji (sati)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Upravljanje volonterima"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Volonterske službe, timovi, rasporedi i dodjele"
 
@@ -23213,14 +22752,6 @@ msgstr "Volonterske pozicije za popuniti u nadolazećim danima"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Volonteri još potrebni za ove nadolazeće pojave: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Što to znači?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Koje iskustvo volontera ova crkva koristi"
 
 #: 
 msgid "You are on the schedule"
@@ -24151,10 +23682,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d uplata još nije ni na jednom pologu."
 
 #: 
-msgid "Closing line"
-msgstr "Završni redak"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Svaki polog s datumom u ovoj godini je zatvoren."
 
@@ -24167,28 +23694,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Svaka uplata u ovoj godini je na pologu."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Izradi porezne potvrde"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Izvještaj o darovima (porezne potvrde)"
-
-#: 
-msgid "Opening line"
-msgstr "Uvodni redak"
-
-#: 
 msgid "Qty"
 msgstr "Kol."
-
-#: 
-msgid "Signed by"
-msgstr "Potpisao"
-
-#: 
-msgid "Thank-you line"
-msgstr "Redak zahvale"
 
 #: 
 msgid "Year-End Giving"
@@ -24319,10 +23826,6 @@ msgid "Zero disables an optional requirement. Age requires a complete birth date
 msgstr "Nula isključuje neobavezan uvjet. Za dob je potreban potpun datum rođenja, a za trajanje članstva datum članstva. Osobe kojima nedostaju obavezni datumi izostavljaju se i broje zasebno. Preminule osobe, neaktivne osobe i klasifikacije te neaktivne obitelji i osobe ili one koje čekaju pregled uvijek su isključene. Koriste se trenutačna klasifikacija i status, a ne povijesni status."
 
 #: 
-msgid "Amount due for %s: %s"
-msgstr "Dospjeli iznos za %s: %s"
-
-#: 
 msgid "Cannot create private PDF temporary storage in the selected directory."
 msgstr "Nije moguće stvoriti privatnu privremenu pohranu PDF-a u odabranom direktoriju."
 
@@ -24349,10 +23852,6 @@ msgstr "Privremeni direktorij za PDF ne postoji ili mu se ne može pristupiti."
 #: 
 msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Privremeni direktorij za PDF mora biti apsolutna putanja direktorija."
-
-#: 
-msgid "Church Tax ID (EIN)"
-msgstr "Porezni broj crkve (EIN)"
 
 #: 
 msgid "Closing Line"
@@ -24397,10 +23896,6 @@ msgstr "Postavke potvrde"
 #: 
 msgid "Statement Wording"
 msgstr "Tekst potvrde"
-
-#: 
-msgid "Tax Information"
-msgstr "Porezni podaci"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24449,10 +23944,6 @@ msgstr "Koristi se naziv i adresa crkve"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "Koristi se putanja zaglavlja postavljena u postavkama sustava"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Tekst, porezni broj i rukovanje PDF-om za potvrde o darovima"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24725,10 +24216,6 @@ msgstr "Država crkve"
 #: 
 msgid "Church default: %s"
 msgstr "Zadano za crkvu: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Prijava crkvenog voditelja"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25373,10 +24860,6 @@ msgstr "Nije završeno"
 #: 
 msgid "Not moved"
 msgstr "Nije premješteno"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Niste sigurni koju e-poštu imamo? Obratite se crkvenom uredu."
 
 #: 
 msgid "Not yet"
@@ -26631,248 +26114,8 @@ msgid "Review Family Information"
 msgstr "Pregled podataka o obitelji"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Služba s nazivom „%s” već postoji. Odaberite je s popisa ili odaberite drugi naziv."
-
-#: 
-msgid "A new ministry"
-msgstr "Nova služba"
-
-#: 
-msgid "A position"
-msgstr "Pozicija"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Dodati volontere ({{total}}) na prethodno pretvorene pozicije?"
-
-#: 
-msgid "Already converted"
-msgstr "Već pretvoreno"
-
-#: 
-msgid "An existing ministry"
-msgstr "Postojeća služba"
-
-#: 
-msgid "Becomes"
-msgstr "Postaje"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM ima dva načina upravljanja volonterima. Istodobno bi se trebao koristiti samo jedan; postavka „Način volontiranja” određuje koji ova crkva vidi. Promjena skriva ili prikazuje stranice i stavke izbornika i nikada ne briše podatke. V1 i Oboje nude se samo dok se koriste Volonterske mogućnosti: kad je svaka mogućnost pretvorena i crkva koristi V2, nestaju s ovog popisa."
-
-#: 
-msgid "Convert"
-msgstr "Pretvori"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Pretvori Volonterske mogućnosti"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Pretvoriti sada mogućnosti ({{total}})? Podaci V1 ostaju nepromijenjeni dok se Volonterske mogućnosti ne ukinu."
-
-#: 
-msgid "Converted"
-msgstr "Pretvoreno"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Pretvoreno: pozicije – {{positions}}, službe – {{ministries}}, osposobljeni volonteri – {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Svaka mogućnost postaje pozicija u prvom timu jedne službe, a svi povezani s njom postaju osposobljeni za tu poziciju. Samoprijava je za te pozicije u početku isključena."
-
-#: 
-msgid "Everything is converted."
-msgstr "Sve je pretvoreno."
-
-#: 
-msgid "Existing ministry"
-msgstr "Postojeća služba"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Dajte novoj službi naziv od najviše 100 znakova."
-
-#: 
-msgid "Its own ministry"
-msgstr "Vlastita služba"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Povezani od tada: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Veze koje se ne mogu pretvoriti"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Nove vlastite službe"
-
-#: 
-msgid "New ministry name"
-msgstr "Naziv nove službe"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Ne šalje se e-pošta, a Volonterske mogućnosti ostaju kakve jesu dok se ne ukinu."
-
-#: 
-msgid "No name"
-msgstr "Bez naziva"
-
-#: 
-msgid "Not converted"
-msgstr "Nije pretvoreno"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Otvori Sklopke značajki"
-
-#: 
-msgid "Open Ministries"
-msgstr "Otvori Službe"
-
-#: 
-msgid "Opportunities"
-msgstr "Mogućnosti"
-
-#: 
-msgid "Opportunity"
-msgstr "Mogućnost"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mogućnost br. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Osobe povezane s pretvorenim Volonterskim mogućnostima nakon pretvorbe: %d. Dodajte ih na njihove pozicije prije nego što se Volonterske mogućnosti ukinu početkom 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Najprije pregledajte pretvorbu i pošaljite reviziju koju je vratila."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Preimenovano kako bi nazivi bili jedinstveni"
-
-#: 
-msgid "Review the conversion"
-msgstr "Pregledaj pretvorbu"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Pošaljite odabir pretvorbe kao JSON objekt."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Pošaljite mogućnosti koje postaju službe kao popis ID-ova."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Ta služba ne postoji."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Verzija ChurchCRM-a u kojoj je administrator odbacio obavijest o ukidanju Volonterskih mogućnosti."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Volonterske mogućnosti promijenile su se od pregleda. Ponovno provjerite pregled, a zatim pretvorite."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Potvrda se nije mogla otvoriti. Ponovno učitajte stranicu i pokušajte opet."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Pregled pretvorbe nije bilo moguće prikazati."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Pretvorba nije uspjela. Ništa nije promijenjeno."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Služba „%s” nema tim za pozicije."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Poslužitelj nije dostupan. Ponovno učitajte stranicu da biste vidjeli je li pretvorba izvršena."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nema Volonterskih mogućnosti za pretvorbu."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Upravljanje volonterima prelazi na Oboje, tako da su nove službe vidljive uz Volonterske mogućnosti."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Volonterske mogućnosti se ukidaju"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Volonterske mogućnosti pretvorene"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite ih u Službe kako biste sačuvali tko gdje volontira."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite sada svoje mogućnosti (%1$d) i volontere (%2$d) u Službe. Rezultat možete pregledati prije nego što se išta promijeni."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Osposobljeni volonteri"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Volonteri koje treba dodati na pretvorene pozicije"
-
-#: 
-msgid "What it becomes"
-msgstr "Što postaje"
-
-#: 
-msgid "What will happen"
-msgstr "Što će se dogoditi"
-
-#: 
-msgid "Where they go"
-msgstr "Kamo idu"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Koje su prijašnje Volonterske mogućnosti pretvorene i koja je pozicija postala od svake."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Koji način volontiranja ova crkva koristi. Volonterske mogućnosti (V1) bit će ukinute početkom 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Vaše Volonterske mogućnosti pretvorene su u Službe. Prebacite Upravljanje volonterima na V2 prije nego što se Volonterske mogućnosti ukinu početkom 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "u novu službu, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "u službu {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "više nije u ChurchCRM-u"
 
 #: 
 msgid "Collapse sidebar"
@@ -26993,10 +26236,6 @@ msgid "Last verified"
 msgstr "Posljednja provjera"
 
 #: 
-msgid "No active, approved member of this family has an email address. Verify it in person instead."
-msgstr "Nijedan aktivni, odobreni član ove obitelji nema adresu e-pošte. Umjesto toga provjerite podatke osobno."
-
-#: 
 msgid "No pledges were found for these fiscal years."
 msgstr "Za ove fiskalne godine nisu pronađeni zavjeti."
 
@@ -27019,10 +26258,6 @@ msgstr "Prijavite se na portal članova ovom adresom e-pošte kako biste pregled
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr "Ova je obitelj neaktivna, pa joj se ne šalje e-pošta za provjeru."
-
-#: 
-msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
-msgstr "Ova samostalno registrirana obitelj čeka odobrenje. Odobrenjem obitelj e-poštom dobiva pozivnicu za prijavu na portal članova i pregled svojih podataka."
 
 #: 
 msgid "Uses saved settings and fictional sample gifts only."
@@ -27057,10 +26292,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d zadani preskočen iz drugog razloga (termin je završen, otkazan ili pun)"
 msgstr[1] "%d zadana preskočena iz drugog razloga (termin je završen, otkazan ili pun)"
 msgstr[2] "%d zadanih preskočeno iz drugog razloga (termin je završen, otkazan ili pun)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Prijelazna postavka. Stare stranice Prilika za volontere i nove stranice Službi obje su dostupne, a zapis osobe prikazuje obje kartice Volonter, jasno označene. Koristite je dok crkvu prebacujete s V1 na V2, a zatim prijeđite samo na V2."
 
 #: 
 msgid "Assignment canceled"
@@ -27109,10 +26340,6 @@ msgstr "Ovaj termin je otkazan. Od vas više ništa nije potrebno."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Taj je termin otkazan"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Volontiranje organizirano onako kako ga crkva vodi. Svaka služba ima timove i pozicije; ljudi su kvalificirani za pozicije i pripadaju skupini volontera službe; rasporedi prate događaje u kalendaru i stvaraju datirane termine sa zahtjevima popune; koordinatori dodjeljuju ljude, koji prihvaćaju, odbijaju ili predlažu zamjenu; podsjetnici i obavijesti šalju se e-poštom. Administratori i korisnici s ovlaštenjem Upravljanje službama vide svaku službu i mogu ih stvarati, deaktivirati i brisati. Koordinator službe umjesto toga dobiva ovlaštenje Upravljanje mojim službama: naslov Službe na bočnoj traci tada prikazuje samo službe koje koordinira. Voditelj tima vodi svoj tim iz Portala članova. Članovi koriste Portal članova za pregled svog rasporeda, odgovaranje, prijavu i nuđenje pomoći."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27280,10 +26507,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Onemogući i prijavu kako ne bi mogli koristiti portal za članove"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Prije slanja izvještaja"
-
-#: 
 msgid "Birthday today"
 msgstr "Danas ima rođendan"
 
@@ -27366,10 +26589,6 @@ msgstr "Brisanje osoba i obitelji"
 #: 
 msgid "Delete the login for"
 msgstr "Izbriši prijavu za"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Vremenski raspon grafikona uplata"
 
 #: 
 msgid "Disabled at"
@@ -27624,10 +26843,6 @@ msgid "Preview Sample Letter"
 msgstr "Pregled primjera pisma"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Privatni identifikator potpisa na kanadskim izvještajima o darovima. Upravlja se prijenosom potpisa."
-
-#: 
 msgid "Property Type"
 msgstr "Vrsta svojstva"
 
@@ -27666,10 +26881,6 @@ msgstr "Pregled i filtar"
 #: 
 msgid "Review and vote"
 msgstr "Pregledaj i glasaj"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Pregledajte godinu, a zatim preuzmite izvještaje o darovima."
 
 #: 
 msgid "Review what we are considering"
@@ -27718,10 +26929,6 @@ msgstr "Jaka"
 #: 
 msgid "Support"
 msgstr "Podrška"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Postavke poreznog ID-a i PDF-a"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27836,10 +27043,6 @@ msgid "View people and families"
 msgstr "Pregledavanje osoba i obitelji"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Upravljanje volonterima isključeno je za ovu crkvu"
-
-#: 
 msgid "Weak"
 msgstr "Slaba"
 
@@ -27908,10 +27111,6 @@ msgid "Latest Notes"
 msgstr "Najnovije bilješke"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Još nisu dodane bilješke."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Započnite upis da biste dobili QR kod."
 
@@ -27922,4 +27121,748 @@ msgstr "Ta lozinka ili kod nije točan. Dvofaktorska autentifikacija i dalje je 
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Dvofaktorska autentifikacija već je postavljena. Njezina se tajna prikazuje samo tijekom upisa."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d dar u ukupnom iznosu od %2$s"
+msgstr[1] "%1$d dara u ukupnom iznosu od %2$s"
+msgstr[2] "%1$d darova u ukupnom iznosu od %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d obitelji trenutno ima svojstva ove vrste."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d obitelj još ne može dobiti potvrdu i izostavljena je. Ispravite problem naveden ispod nje, zatim odaberite „Provjeri ponovno“."
+msgstr[1] "%d obitelji još ne mogu dobiti potvrdu i izostavljene su. Ispravite probleme navedene ispod njih, zatim odaberite „Provjeri ponovno“."
+msgstr[2] "%d obitelji još ne može dobiti potvrdu i izostavljeno je. Ispravite probleme navedene ispod njih, zatim odaberite „Provjeri ponovno“."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d skupina trenutno ima svojstva ove vrste."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d osoba trenutno ima svojstva ove vrste."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d izdanja dostupnih od vaše instalirane verzije."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Potvrda nije generirana."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: unesite provjereno puno ime darivatelja, potvrdite darivatelje i potvrdite jedan skup darivatelja. Skupove uplata različitih darivatelja potrebno je obraditi izvan ove značajke."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: darovi ili poštanska adresa promijenili su se od pregleda. Odaberite „Provjeri ponovno“ i ponovno potvrdite darivatelja."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} rata)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} rata)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Plaćanje kreditnom karticom ili bankovnim nalogom nalazi se u depozitu koji još nije zatvoren. Zatvorite depozit kada plaćanje bude provedeno."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Uplata ima iznos koji se ne može odbiti. Kanadske potvrde ovdje podržavaju samo darove bez koristi."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Uplata ima nevažeći novčani iznos."
+
+#: 
+msgid "A payment has no date."
+msgstr "Uplata nema datum."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Uplata je datirana nakon datuma izdavanja."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Uplata je označena kao problem."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Uplata je nula ili negativna."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Potreban je pregledani POST zahtjev s važećim CSRF tokenom."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Odabrana obitelj više ne postoji."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Slika potpisa nije siguran digitalni potpis."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Dostupno je ažuriranje sustava. Zamolite administratora da nadogradi vašu instalaciju."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Svi uključeni reci su novčani darovi bez koristi."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Sve potrebne postavke kanadskih potvrda su ispunjene."
+
+#: 
+msgid "Also delete family members"
+msgstr "Izbriši i članove obitelji"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Iznos koristi"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Iznos darova"
+
+#: 
+msgid "Amount per installment"
+msgstr "Iznos po rati"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Uneseni iznosi su"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Administrator ga prenosi u Postavkama izvješća."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Odobreno, ali pozivnica nije poslana"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Zamolite administratora sustava da nadogradi ChurchCRM na najnoviju verziju."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Potpis ovlaštene osobe"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Kanadska porezna uprava"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadska službena potvrda"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kanadske službene potvrde zahtijevaju Kanadu kao zemlju crkve u Podacima o crkvi."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kanadske potvrde zahtijevaju cijelu kalendarsku godinu i sve fondove, bez drugih filtara."
+
+#: 
+msgid "Change Selection"
+msgstr "Promijeni odabir"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Pravni naziv dobrotvorne organizacije"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Registrirana adresa dobrotvorne organizacije"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Registracijski broj dobrotvorne organizacije"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Podaci dobrotvorne organizacije za potvrde još nisu ispunjeni. Dodajte pravni naziv, registriranu adresu, registracijski broj i mjesto izdavanja kad budete mogli. Financije do tada rade i dalje."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Dobrotvorna organizacija na potvrdama"
+
+#: 
+msgid "Check Again"
+msgstr "Provjeri ponovno"
+
+#: 
+msgid "Check the year"
+msgstr "Provjerite godinu"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Provjerite godinu, postavite izvadak, zatim preuzmite."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Za iznos rate odaberite Tjedno, Mjesečno ili Kvartalno."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Odaberite važeću kalendarsku godinu darova."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Odaberite izvornik ili duplikat."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Odaberite ukupni zavjet ili iznos rate."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Prijevodi ChurchCRM-a održavaju se u ChurchCRM repozitoriju na GitHubu. Možete pomoći tako da"
+
+#: 
+msgid "Commitment amount"
+msgstr "Iznos zavjeta"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Usporedite duplikat sa zadržanim izvornikom i potvrdite da su svi podaci na potvrdi nepromijenjeni."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Ispunite svaku potvrdu primitka prije preuzimanja."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Ispunite pravni naziv dobrotvorne organizacije, registriranu adresu, registracijski broj, mjesto izdavanja i tiskano ime potpisnika."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Tiskano ime potpisnika potvrdnog pisma"
+
+#: 
+msgid "Copy Kind"
+msgstr "Vrsta kopije"
+
+#: 
+msgid "Currency"
+msgstr "Valuta"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Simbol valute $ ili CAD"
+
+#: 
+msgid "Date received"
+msgstr "Datum primitka"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Brisanjem ćete također ukloniti %d svojstava i sve njihove dodjele, tako da ništa ne ostane visjeti."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Pripadaju li svi darovi odabrane godine darivatelju (darivateljima) zajedno navedenim iznad?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Nemojte ponovno koristiti broj za drugu potvrdu, nemojte dvaput izdati potvrdu za iste darove i nemojte ponovno generirati izmijenjene podatke kao nepromijenjeni izvornik."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Duplikat / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Prihvatljivi iznos darova za potrebe poreza na dohodak"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Unesite raspored i datume rata za pregled zavjeta."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Unesite važeće datume prve i zadnje rate redom."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Unesite važeće iznose rata s najviše dvije decimale."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Postojeći zavjeti zadržavaju zabilježene ukupne iznose. Iznos po rati birajte samo pri unosu svakog zakazanog dara."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Ispunjeno prema glavama kućanstava i supružnicima. Uredite da točno odgovara darivateljima."
+
+#: 
+msgid "First installment"
+msgstr "Prva rata"
+
+#: 
+msgid "Full commitment"
+msgstr "Cijeli zavjet"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Generiraj porezne izvatke"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Kalendarska godina darova"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Izvadak darova — nije službena potvrda o donaciji"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Pomozite prevesti na GitHubu"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Povijesne promjene kuverti nisu podržane."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Usporedio sam sa zadržanim izvornikom: darivatelj, iznos, serijski broj i tekst su nepromijenjeni. Ovo nije ispravak ni zamjena."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Zadržat ću izdani PDF i vanjski dnevnik potvrda na kanadskoj lokaciji evidencije dobrotvorne organizacije."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Ako je zadržani izvornik nedostupan ili različit, koristite svoje vanjske CRA postupke poništenja/zamjene."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Uključi napomene uz uplate: pregledao sam ih kao prikladne za darivatelja."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Uključi ovu obitelj u preuzimanje"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Instalirana verzija: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Iznosi rata mogu se koristiti samo za zavjete."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Datumi rata moraju biti unutar odabrane fiskalne godine."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Nevažeći ili nedostajući CSRF token"
+
+#: 
+msgid "Issue Date"
+msgstr "Datum izdavanja"
+
+#: 
+msgid "Issue Locality"
+msgstr "Mjesto izdavanja"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Zadržite izvorni PDF i vanjski dnevnik potvrda na kanadskoj lokaciji evidencije dobrotvorne organizacije."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Zadnja rata na dan ili prije"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Tekst pisma, podaci dobrotvorne organizacije i obrada PDF-a postavljaju se jednom u Postavkama izvatka."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Tekst pisma, podaci dobrotvorne organizacije i obrada PDF-a za izvatke darova"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Najviše 2 MiB i 2000 × 1000 piksela. Odaberite novu sliku za zamjenu pohranjenog potpisa. Slika potpisa nije siguran digitalni potpis."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Prijava članova je isključena, pa se nitko iz obitelji %s ne može prijaviti na portal za članove. Administrator je može uključiti u Administracija → Portal za članove."
+
+#: 
+msgid "Memo"
+msgstr "Napomena"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Skupove uplata obitelji različitih darivatelja ovdje nije moguće podijeliti; obradite ih izvan ove značajke."
+
+#: 
+msgid "Narrow the list"
+msgstr "Suzi popis"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Nijedna obitelj ne odgovara ovim filtrima za %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Ne postoji preklapajuća pojedinačna ni zbirna potvrda."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Za ovu obitelj još se ne može generirati potvrda"
+
+#: 
+msgid "No signature on file"
+msgstr "Nema potpisa u evidenciji"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Ne — različiti darivatelji; obraditi izvan ove značajke"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Nitko iz obitelji %s ne može se prijaviti na portal za članove prema trenutnom pravilu prijave."
+
+#: 
+msgid "None / Aucun"
+msgstr "Nema / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nije spremno za izdavanje kanadskih potvrda. Još nedostaje"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Službena potvrda / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Službena potvrda za potrebe poreza na dohodak / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Službene potvrde zahtijevaju registracijski broj u obliku 123456789RR0001 i sliku potpisa."
+
+#: 
+msgid "Original"
+msgstr "Izvornik"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Datum izvornog izdavanja (prepišite sa zadržanog izvornika)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Datumi uplata odražavaju datume primitka darova, uključujući dokumentirano postupanje s čekovima poslanim poštom prema poštanskom žigu."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Tiska se na običnim izvacima darova, na primjer EIN u Sjedinjenim Državama. Ista vrijednost nalazi se u Podacima o crkvi."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Privatni identifikator resursa potpisa izvatka darova. Upravlja se prijenosom potpisa."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Svojstva / Dodjele"
+
+#: 
+msgid "Property deleted"
+msgstr "Svojstvo izbrisano"
+
+#: 
+msgid "Property type deleted"
+msgstr "Vrsta svojstva izbrisana"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Završetak potvrde"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Mjesto izdavanja potvrde"
+
+#: 
+msgid "Receipt No."
+msgstr "Br. potvrde"
+
+#: 
+msgid "Registration Number"
+msgstr "Registracijski broj"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Registracijski broj u obliku 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Napomene o izdanju trenutno nisu dostupne."
+
+#: 
+msgid "Releases"
+msgstr "Izdanja"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Preostali zavjet za %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Ukloni zahtjev za 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Ukloniti pohranjenu sliku potpisa? Službene potvrde zahtijevaju jednu u evidenciji."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Izvješća i podsjetnici uspoređuju ovaj zavjet za cijelo razdoblje s darovima. Preostali saldo nije izračun dospjele rate."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Izvješća i podsjetnici koriste cijeli zavjet prikazan iznad. Preostali saldo nije izračun dospjele rate."
+
+#: 
+msgid "Require 2FA"
+msgstr "Zahtijevaj 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Poništi opcije"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Pregledaj odabrane obitelji"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "UZORAK — NIJE VAŽEĆE U POREZNE SVRHE"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Zamjenski ogledni potpis"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Navedite je li potreban 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Sigurnosna ažuriranja i podrška pružaju se samo za najnoviju verziju."
+
+#: 
+msgid "Select the families to review."
+msgstr "Odaberite obitelji za pregled."
+
+#: 
+msgid "Set up the statement"
+msgstr "Postavi izvadak"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Za nastavak postavite dvofaktorsku autentifikaciju."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Sukob zajedničke kuverte: druga obitelj trenutno ima ovaj broj kuverte."
+
+#: 
+msgid "Signature Image"
+msgstr "Slika potpisa"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Slika potpisa (Administracija, Postavke izvješća)"
+
+#: 
+msgid "Signature on file"
+msgstr "Potpis u evidenciji"
+
+#: 
+msgid "Sincerely"
+msgstr "S poštovanjem"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Pri uređivanju ponavljajućeg zavjeta navedite osnovu iznosa."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Standardni izvadak darova"
+
+#: 
+msgid "Statement Template"
+msgstr "Predložak izvatka"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Navedite datum izdavanja ne kasniji od današnjeg."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Porezni ID na izvacima"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Obitelj %s nema živih članova koje bi se moglo pozvati na portal za članove."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Kanadski registracijski broj mora imati oblik 123456789RR0001. Time se ne provjerava status registracije."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Registracijski broj dobrotvorne organizacije mora biti tekst."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Registracijski broj dobrotvorne organizacije ispisan na službenim potvrdama. Prazno koristi porezni ID iz Podataka o crkvi."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Registrirana adresa dobrotvorne organizacije. Prazno koristi adresu iz Podataka o crkvi."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Završna fraza iznad potpisnika, na primjer „S poštovanjem“."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Cijeli zavjet ne smije prelaziti 999999.99 po fondu, a iznosi smiju imati najviše dvije decimale."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Darovi ili poštanska adresa promijenili su se od vaše zadnje provjere. Pregledajte ih i ponovno potvrdite darivatelja."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Poštanska adresa je nepotpuna. Potrebni su ulica, grad, pokrajina i poštanski broj."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Naziv pod kojim je dobrotvorna organizacija registrirana. Može se razlikovati od naziva crkve."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Mjesto gdje se izdaju potvrde. Prazno koristi grad iz Podataka o crkvi."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Tiskani potpisnik izvatka darova ovlašten je potpisivati ove potvrde."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Simbol valute sustava mora biti $ ili označavati CAD za kanadske potvrde."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "U odabranoj kalendarskoj godini nema uplata."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Ovo su pravi darivatelji svakog dara u ovoj obitelji/kalendarskoj godini, a poštanska adresa je točna."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Ova slika tiska se iznad imena potpisnika na izvacima darova i potvrdama. Podaci dobrotvorne organizacije i tiskano ime potpisnika nalaze se u Financije, Postavke izvatka."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Ova opcija oblikuje kanadsku potvrdu, ali ne vodi registar potvrda niti zadržava PDF-ove."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Ova samostalno registrirana obitelj čeka odobrenje. Njezinim odobrenjem svakom članu koji se može prijaviti na portal za članove šalje se e-poštom poziv na pregled podataka o obitelji."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Ovaj alat nema postupak poništenja/zamjene; za ispravke/zamjene izgubljenih potvrda koristite svoj postojeći postupak usklađen s CRA."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Ovaj korisnik mora postaviti 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Time ćete trajno izbrisati zapis obitelji i njezine bilješke. To se ne može poništiti."
+
+#: 
+msgid "Total commitment"
+msgstr "Ukupni zavjet"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Nije moguće pregledati zavjet."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Prenesi ili zamijeni potpis"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Prenesite ovlašteni porezni potpis u Postavkama izvješća."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Koristite datume unutar odabrane fiskalne godine. Mjesečni i kvartalni darovi koriste dan prve rate ili zadnji dan kraćih mjeseci."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Provjereno puno ime darivatelja"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Umjesto toga provjerite obitelj osobno."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Provjerite puno ime i adresu darivatelja za svaku obitelj. Skupove uplata različitih darivatelja potrebno je obraditi izvan ove značajke."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Dostupna je verzija %s. Zamolite administratora da nadogradi vašu instalaciju."
+
+#: 
+msgid "View all emails"
+msgstr "Prikaži sve e-poruke"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Da — jedan provjereni skup darivatelja"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Zemlja vaše crkve je Kanada, pa su kanadske službene potvrde dostupne i pri generiranju izvadaka."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Zemlja vaše crkve je Kanada, pa su kanadske službene potvrde dostupne u Izvacima darova, a obični izvaci označeni su kao neslužbene potvrde o donaciji."
+
+#: 
+msgid "groups"
+msgstr "skupine"
 

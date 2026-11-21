@@ -10,7 +10,6 @@
  * every hook is fixture → login → visit, because cy.request() rotates the PHP session cookie.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const GROUPS_URL = "/api/groups";
 
@@ -185,7 +184,6 @@ after(() => {
 
 describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount card (D26)", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, description: "Calendar tab fixture", sundaySchool: true }, 201).then((resp) => {
@@ -215,7 +213,6 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     beforeEach(() => {

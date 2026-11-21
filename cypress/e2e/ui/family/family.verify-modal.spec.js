@@ -1,22 +1,46 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, setConfig, useMemberSignIn } from "../../../support/member-sign-in";
+
+// Settle before clicking: wait until the dropdown is visible, then click
+// (a bare click raced the page load on master run 44228216478).
+const openActionsDropdown = () => {
+    cy.get("#family-actions-dropdown").should("be.visible").click();
+};
+
+const openVerifyModal = () => {
+    openActionsDropdown();
+    cy.contains(".dropdown-item", "Verify Info").click();
+    cy.get("#confirm-verify").should("be.visible");
+};
+
 describe("Family Verification Modal (Admin/Staff View)", () => {
+    const saved = {};
+
+    before(() => {
+        useMemberSignIn(saved);
+    });
+
+    after(() => {
+        restoreSettings(saved);
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
         // Navigate to a family view with verification modal
-        cy.visit("people/family/1");
+        cy.visit("/people/family/1");
     });
 
     it("should display verify option in Actions dropdown", () => {
         // Open the Actions dropdown
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         // Verify Info should be in the dropdown
         cy.contains(".dropdown-item", "Verify Info").should("be.visible");
     });
 
     it("should open confirmation modal when verify clicked from Actions menu", () => {
         // Open Actions dropdown and click Verify Info
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
 
         // Modal should be visible
@@ -25,7 +49,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display email list in modal body", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
@@ -34,7 +58,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display all verification action buttons", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
@@ -45,13 +69,51 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should offer one email button, with no URL or PDF email, when SMTP is configured and emails are present", () => {
-        cy.get("#family-actions-dropdown").click();
+        openActionsDropdown();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
         // Email buttons should be visible for families with emails
         cy.get("#onlineVerify").should("be.visible").should("contain", "Portal Link");
         cy.get("#verifyEmailPDF").should("not.exist");
+    });
+
+    it("lists only the personal emails of members who can sign in to the member portal", () => {
+        openVerifyModal();
+        cy.get("#confirm-verify .modal-body li").should("have.length", 1).and("contain", "mathew.campbell@example.com");
+        cy.get("#verify-nobody-can-sign-in").should("not.exist");
+    });
+
+    it("says why nobody can be invited when the sign-in rule leaves the whole family out", () => {
+        setConfig("sMemberSignInClassifications", "3");
+        // setConfig runs through an API-key cookie-jar swap that drops the
+        // browser's staff session; without a fresh login the family page's
+        // XHRs 401 and the app redirects to the login page mid-test, which
+        // is what detached the actions dropdown (runs 44228216478,
+        // 44416437007, 44422455996). Sign back in first, same as the
+        // member-sign-in-off test below.
+        cy.setupAdminSession();
+        cy.visit("/people/family/1");
+        openVerifyModal();
+        cy.get("#verify-nobody-can-sign-in")
+            .should("contain", "Nobody in the Campbell family can sign in to the member portal under the current sign-in rule")
+            .and("contain", "Mathew Campbell: Their classification may not sign in")
+            .and("contain", "Verify the family in person instead");
+        cy.get("#onlineVerify").should("not.exist");
+        cy.get("#verifyNow").should("be.visible");
+        setConfig("sMemberSignInClassifications", "1,2");
+    });
+
+    it("says nobody can be invited while member sign-in is off", () => {
+        setConfig("bMemberSignIn", "0");
+        // Toggling the master switch drops the browser's staff session
+        // (the visit lands on the login page), so sign back in first.
+        cy.setupAdminSession();
+        cy.visit("/people/family/1");
+        openVerifyModal();
+        cy.get("#verify-nobody-can-sign-in").should("contain", "Member sign-in is off, so nobody in the Campbell family can sign in");
+        cy.get("#onlineVerify").should("not.exist");
+        setConfig("bMemberSignIn", "1");
     });
 
     it("shows when the family was last verified, invited and signed in", () => {
