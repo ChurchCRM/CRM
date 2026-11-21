@@ -228,6 +228,17 @@ class TelemetryService
         ]));
     }
 
+    /** Fixed codes only: a free-text reason could carry details of a church's installation. */
+    private const INSTALL_FAILURE_REASONS = [
+        'schema_import_failed',
+        'database_unreachable',
+        'database_host_unreachable',
+        'database_login_rejected',
+        'database_not_found',
+        'config_not_writable',
+        'config_invalid',
+    ];
+
     /**
      * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
      * document root's device and inode, which hold no server name or path, so repeated attempts on one
@@ -240,7 +251,7 @@ class TelemetryService
             return;
         }
         self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
-            'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
+            'failure_reason' => in_array($reason, self::INSTALL_FAILURE_REASONS, true) ? $reason : 'other',
         ]), $installId);
     }
 
@@ -262,6 +273,75 @@ class TelemetryService
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'failed_requirements' => $failedRequirements,
         ]), $installId);
+    }
+
+    /**
+     * What an install is missing: release files that were not uploaded, files that do not match the
+     * release, and named checks (PHP extensions, writable folders, locale). Sent at every level, once
+     * per distinct list per UTC day. Paths stay repo-relative. No hashes and no install path.
+     *
+     * @param string[] $missingFiles
+     * @param string[] $changedFiles
+     * @param string[] $unmetChecks
+     */
+    public static function captureInstallGaps(array $missingFiles, array $changedFiles, array $unmetChecks): void
+    {
+        $missingFiles = self::relativeReportPaths($missingFiles);
+        $changedFiles = self::relativeReportPaths($changedFiles);
+        $unmetChecks = array_values(array_unique(array_filter(array_map(
+            static fn ($name): string => is_string($name) ? mb_substr(trim($name), 0, 80) : '',
+            $unmetChecks
+        ))));
+        sort($missingFiles);
+        sort($changedFiles);
+        sort($unmetChecks);
+        if ($missingFiles === [] && $changedFiles === [] && $unmetChecks === []) {
+            return;
+        }
+        $installId = '';
+        try {
+            // Once installed, these are diagnostics, not a failed install: the admin's telemetry level applies.
+            if (SystemConfig::isInitialized()) {
+                if (self::getLevel() === self::LEVEL_NONE) {
+                    return;
+                }
+                $installId = (string) SystemConfig::getValue('sSystemID');
+            }
+        } catch (\Throwable) {
+            $installId = '';
+        }
+        if ($installId === '') {
+            $installId = self::unconfiguredInstallId() ?? '';
+        }
+        $key = 'install_gaps|' . implode('|', $missingFiles) . '|' . implode('|', $changedFiles) . '|' . implode('|', $unmetChecks);
+        if ($installId === '' || !self::firstLogToday($key)) {
+            return;
+        }
+        self::capture('install_gaps', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'missing_files' => $missingFiles,
+            'changed_files' => $changedFiles,
+            'unmet_checks' => $unmetChecks,
+        ]), $installId);
+    }
+
+    /** @param string[] $paths
+     *  @return string[]
+     */
+    private static function relativeReportPaths(array $paths): array
+    {
+        $safe = [];
+        foreach ($paths as $path) {
+            if (!is_string($path)) {
+                continue;
+            }
+            $path = str_replace('\\', '/', trim($path));
+            if ($path === '' || str_contains($path, '..') || str_starts_with($path, '/') || strlen($path) > 180) {
+                continue;
+            }
+            $safe[] = $path;
+        }
+
+        return array_values(array_unique($safe));
     }
 
     /** Fixed states for version_mismatch: the failed upgrade page and the database-newer-than-software page. */
@@ -293,7 +373,13 @@ class TelemetryService
         if (self::installProfile() === 'test') {
             return null;
         }
-        $stat = @stat((string) SystemURLs::getDocumentRoot());
+        // Setup runs before SystemURLs::init. The fallback is the src directory, which is the
+        // document root Bootstrapper records, so a wizard failure and a later boot failure share an id.
+        $root = SystemURLs::getDocumentRoot();
+        if (!is_string($root) || $root === '') {
+            $root = dirname(__DIR__, 2);
+        }
+        $stat = @stat($root);
 
         return $stat === false ? null : 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
     }
