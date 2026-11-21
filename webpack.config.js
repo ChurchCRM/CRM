@@ -148,6 +148,7 @@ module.exports = {
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
     'event-attendees-cart': './webpack/event-attendees-cart',
+    'cart-csv-export': './webpack/cart-csv-export',
     'ministries-dashboard': './webpack/ministries/dashboard',
     'ministries-ministry': './webpack/ministries/ministry',
     'ministries-team-view': './webpack/ministries/team-view',
