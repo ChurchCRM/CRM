@@ -34,7 +34,7 @@ require_once __DIR__ . '/header.php';
                     <span class="status-icon"><i class="fa-solid fa-spinner fa-spin"></i></span>
                     <span class="setup-row-label"><?= gettext('Server') ?></span>
                     <span class="status-text">
-                        <strong><?= gettext('Checking...') ?></strong>
+                        <strong><?= gettext('Checking…') ?></strong>
                         <span class="status-detail"></span>
                     </span>
                     <button type="button" class="btn btn-link setup-row-action" data-bs-toggle="collapse" data-bs-target="#server-details" aria-expanded="false" aria-controls="server-details"><?= gettext('Details') ?></button>

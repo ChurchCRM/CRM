@@ -507,7 +507,7 @@ window.moment = moment;
     installInFlight = installing;
     const button = document.getElementById("submit-setup");
     button.disabled = installing;
-    button.textContent = installing ? i18next.t("Connecting to your database...") : INSTALL_LABEL();
+    button.textContent = installing ? i18next.t("Connecting to your database…") : INSTALL_LABEL();
   }
 
   function showSetupProblem(message) {
