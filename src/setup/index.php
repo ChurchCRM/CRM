@@ -59,6 +59,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
 $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 
+// A missing PHP extension (gettext, PDO MySQL) would fatal inside the wizard; show the requirements page instead.
+$requirementsRootPath = $rootPath;
+require __DIR__ . '/../Include/CheckRequirements.php';
+
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 

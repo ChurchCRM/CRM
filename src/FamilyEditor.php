@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
@@ -46,7 +47,7 @@ if ($iFamilyID > 0) {
 
     $family = FamilyQuery::create()->findOneById($iFamilyID);
     if ($family === null) {
-        RedirectUtils::redirect('v2/dashboard');
+        DashboardLandingService::redirect();
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::securityRedirect('AddRecords');

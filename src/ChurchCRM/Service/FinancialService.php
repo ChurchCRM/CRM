@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\Pledge;
@@ -18,6 +19,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -831,6 +833,81 @@ class FinancialService
     }
 
     /**
+     * Payment totals per fund per day, for the deposit chart (#11471).
+     *
+     * The day is the DEPOSIT date the payment was banked on, not the payment date:
+     * the chart's day axis is the deposit date, so for each day the per-fund values
+     * sum to the old per-deposit totals. Payments with no deposit have no deposit
+     * date and are left out, as the old chart never showed them either. Funds with
+     * no payments in the window are omitted.
+     *
+     * @return array{dates: list<string>, funds: list<array{fundId: int, name: string, data: list<float>}>}
+     */
+    public function getPaymentsByFundPerDay(?string $fromDate = null, ?string $toDate = null): array
+    {
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        // One deposit join, filtered by deposit date — see PledgeQuery::filterByDateRange():
+        // opening a second useDepositQuery() (or an innerJoinWithDeposit() first) leaves
+        // conditions pointing at a stale alias and the query returns no rows.
+        $depositQuery = $query->useDepositQuery(null, Criteria::INNER_JOIN);
+        if ($fromDate !== null) {
+            $depositQuery->filterByDate($fromDate, Criteria::GREATER_EQUAL);
+        }
+        if ($toDate !== null) {
+            $depositQuery->filterByDate($toDate, Criteria::LESS_EQUAL);
+        }
+        $depositQuery->endUse();
+        $rows = $query
+            ->leftJoinDonationFund()
+            ->addAsColumn('FundName', DonationFundTableMap::COL_FUN_NAME)
+            ->addAsColumn('DepositDate', DepositTableMap::COL_DEP_DATE)
+            ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
+            ->groupByFundId()
+            ->groupBy(DonationFundTableMap::COL_FUN_NAME)
+            ->groupBy(DepositTableMap::COL_DEP_DATE)
+            ->select(['FundId', 'FundName', 'DepositDate', 'TotalAmount'])
+            ->find();
+
+        $dates = [];
+        $funds = [];
+        foreach ($rows as $row) {
+            $date = (string) $row['DepositDate'];
+            if (!in_array($date, $dates, true)) {
+                $dates[] = $date;
+            }
+            $fundId = (int) $row['FundId'];
+            if (!isset($funds[$fundId])) {
+                $funds[$fundId] = [
+                    'fundId' => $fundId,
+                    'name'   => $row['FundName'] ?? gettext('Unknown Fund'),
+                    'total'  => 0.0,
+                    'byDate' => [],
+                ];
+            }
+            $amount = (float) $row['TotalAmount'];
+            $funds[$fundId]['byDate'][$date] = $amount;
+            $funds[$fundId]['total'] += $amount;
+        }
+        sort($dates);
+
+        // Most money first, as in getYtdByFund, so the legend order matches the
+        // payments-by-fund table.
+        uasort($funds, static fn (array $a, array $b): int => $b['total'] <=> $a['total'] ?: $a['fundId'] <=> $b['fundId']);
+
+        $series = [];
+        foreach ($funds as $fund) {
+            $series[] = [
+                'fundId' => $fund['fundId'],
+                'name'   => $fund['name'],
+                'data'   => array_map(static fn (string $date): float => $fund['byDate'][$date] ?? 0.0, $dates),
+            ];
+        }
+
+        return ['dates' => $dates, 'funds' => $series];
+    }
+
+    /**
      * Get Year-to-Date pledge total for a fiscal year (or all time when dates are null).
      *
      * @param string|null $fyStartDate Fiscal year start date; null = all time
@@ -925,16 +1002,25 @@ class FinancialService
      * @param int|null $fyid Fiscal year ID (null = current FY, 0 = All Time, >0 = specific FY)
      * @return array Dashboard data including fiscal year info, statistics, and deposits
      */
-    public function getDashboardData(?int $fyid = null): array
+    public function getDashboardData(?int $fyid = null, ?int $days = null): array
     {
-        $allTime    = ($fyid === 0);
+        $allTime    = ($fyid === 0 && $days === null);
         $actualFyid = $allTime
             ? null
             : (($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId());
 
-        $fiscalYear = $allTime
-            ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
-            : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+        if ($days !== null) {
+            $fiscalYear = [
+                'startDate' => DateTimeUtils::getRelativeDate("-{$days} days"),
+                'endDate' => DateTimeUtils::getRelativeDate('today'),
+                'label' => $days === 365 ? gettext('Last 12 months') : sprintf(gettext('Last %d days'), $days),
+                'month' => 1,
+            ];
+        } else {
+            $fiscalYear = $allTime
+                ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
+                : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+        }
 
         $depositStats        = $this->getDepositStatistics();
         $currentDeposit      = $this->getCurrentDeposit();
@@ -944,6 +1030,7 @@ class FinancialService
         return [
             'fiscalYear'       => $fiscalYear,
             'selectedFyid'     => $allTime ? 0 : $actualFyid,
+            'days'             => $days,
             'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,

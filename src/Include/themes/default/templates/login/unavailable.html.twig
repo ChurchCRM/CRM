@@ -18,7 +18,8 @@
             <a class="portal-button portal-button-large" id="portalRegisterFamily" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>
         </div>
         <p class="portal-card-text">{{ gettext("Member sign-in isn't available yet. Please contact the church office.") }}</p>
-        <p class="portal-card-text"><a id="portalStaffSignIn" href="{{ url('/admin/') }}">{{ gettext('Church leader sign-in') }}</a></p>
+        <p class="portal-card-text"><a id="portalStaffSignIn" href="{{ url('/session/begin') }}">{{ gettext('Staff login') }}</a></p>
+        {% include 'partials/back-to-session.html.twig' %}
     </section>
 </div>
 {% endblock %}

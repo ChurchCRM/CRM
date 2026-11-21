@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
@@ -58,16 +59,16 @@ $person = null;
 if (!$isNewPerson) {
     $person = PersonQuery::create()->findOneById($iPersonID);
     if ($person === null) {
-        RedirectUtils::redirect('v2/dashboard');
+        DashboardLandingService::redirect();
     }
 
     $per_fam_ID = $person->getFamId();
 
     if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-        RedirectUtils::redirect('v2/dashboard');
+        DashboardLandingService::redirect();
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
+    DashboardLandingService::redirect();
 }
 
 $customFieldService = new CustomFieldService();

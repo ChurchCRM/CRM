@@ -19,7 +19,6 @@
  * the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const SCHEDULE_URL = "/portal/volunteer/schedule";
@@ -52,10 +51,6 @@ function freshMemberLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function dbOk(sql, params = []) {
@@ -236,7 +231,6 @@ after(() => {
 
 describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
@@ -363,7 +357,6 @@ describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => 
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // ── getting there ──────────────────────────────────────────────────────────

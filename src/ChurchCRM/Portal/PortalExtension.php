@@ -27,6 +27,7 @@ use Twig\Extension\GlobalsInterface;
 use Twig\Markup;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use ChurchCRM\Service\DashboardLandingService;
 
 /**
  * Everything a Member Portal template — core or church-supplied — is allowed to
@@ -363,7 +364,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
         }
 
         return $staffUser !== null
-            ? SystemURLs::getRootPath() . '/v2/dashboard'
+            ? DashboardLandingService::urlFor($staffUser)
             : AuthenticationManager::getStaffSignInURL();
     }
 

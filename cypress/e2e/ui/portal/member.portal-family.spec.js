@@ -39,7 +39,7 @@ describe("Member Portal — My Family", () => {
         cy.visit("/admin/");
         cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
         cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
-        cy.location("pathname").should("not.match", /\/admin\/?$/);
+        cy.location("pathname").should("not.match", /\/session\/begin$/);
     };
 
     /** The members the portal proposed, found again on the pending list by first name. */

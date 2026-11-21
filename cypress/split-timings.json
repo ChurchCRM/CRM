@@ -241,10 +241,6 @@
       "duration": 2534
     },
     {
-      "spec": "cypress/e2e/api/private/admin/private.admin.volunteer-opportunities.spec.js",
-      "duration": 2922
-    },
-    {
       "spec": "cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js",
       "duration": 4000
     },
@@ -993,18 +989,6 @@
       "duration": 18000
     },
     {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-opportunity-delete-role.spec.js",
-      "duration": 6000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-opportunity-editor.spec.js",
-      "duration": 6000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.volunteer-v1-retirement.spec.js",
-      "duration": 28000
-    },
-    {
       "spec": "cypress/e2e/ui-admin/admin.volunteer-v2.anchored.spec.js",
       "duration": 22000
     },
@@ -1729,10 +1713,6 @@
       "duration": 7000
     },
     {
-      "spec": "cypress/e2e/ui/people/standard.volunteer-opportunity.spec.js",
-      "duration": 9000
-    },
-    {
       "spec": "cypress/e2e/ui/people/volunteer-v2.member.spec.js",
       "duration": 34000
     },
@@ -1946,6 +1926,10 @@
     },
     {
       "spec": "cypress/e2e/ui/reports/directory-letter-headings.spec.js",
+      "duration": 6000
+    },
+    {
+      "spec": "cypress/e2e/ui/reports/directory-letterhead.spec.js",
       "duration": 6000
     },
     {

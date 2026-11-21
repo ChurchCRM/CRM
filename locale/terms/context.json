@@ -1,181 +1,134 @@
 {
-  "({{count}} installments)": [
-    "webpack/finance-pledge-editor.js:56"
+  "14 days": [
+    "src/account/views/account.php:302",
+    "src/people/views/_dashboard-overview.php:178"
   ],
-  "%d families currently have properties of this type.": [
-    "src/people/views/property-type-list.php:148"
+  "6 months": [
+    "src/ChurchCRM/Service/DemoDataService.php:615",
+    "src/account/views/account.php:302",
+    "src/api/routes/people/people-persons.php:497"
   ],
-  "%d groups currently have properties of this type.": [
-    "src/people/views/property-type-list.php:149"
+  "60 days": [
+    "src/ChurchCRM/Service/AttendanceService.php:208",
+    "src/account/views/account.php:302",
+    "src/people/views/_dashboard-overview.php:178"
   ],
-  "%d people currently have properties of this type.": [
-    "src/people/views/property-type-list.php:146"
+  "7 days": [
+    "src/ChurchCRM/Portal/PortalStatsService.php:51",
+    "src/ChurchCRM/Service/ClassAttendanceService.php:44",
+    "src/ChurchCRM/Service/DemoDataService.php:615"
   ],
-  "%d releases available since your installed version.": [
-    "src/v2/templates/root/releases.php:27"
+  "Choose a different way to sign in": [
+    "src/Include/themes/default/templates/partials/back-to-session.html.twig:2",
+    "src/session/templates/partials/back-to-chooser.php:8"
   ],
-  "A system update is available. Please ask your administrator to upgrade your installation.": [
-    "src/ChurchCRM/Service/NotificationService.php:105"
+  "Collapse the sidebar to icons": [
+    "src/account/views/account.php:330"
   ],
-  "Also delete family members": [
-    "src/skin/js/CRMJSOM.js:1129"
+  "Congregation login": [
+    "src/session/index.php:60"
   ],
-  "Amount per installment": [
-    "src/finance/views/pledges/detail.php:138",
-    "src/finance/views/pledges/editor.php:150",
-    "webpack/finance-pledge-editor.js:66"
+  "Could not save your main dashboard.": [
+    "webpack/common/landing-page.ts:33"
   ],
-  "Amounts entered are": [
-    "src/finance/views/pledges/editor.php:147"
+  "Enter note text here...": [
+    "src/Include/QuillEditorHelper.php:99",
+    "webpack/note-why-came-modal.ts:96"
   ],
-  "Approved, but no invitation was sent": [
-    "webpack/common/no-invitation-notice.ts:15"
+  "Every active member family made a payment between %s and %s.": [
+    "src/finance/routes/zero-givers.php:40"
   ],
-  "Ask your system administrator to upgrade ChurchCRM to the latest version.": [
-    "src/v2/templates/root/releases.php:46"
+  "Exclude": [
+    "src/ChurchCRM/Service/AppIntegrityService.php:487",
+    "src/ChurchCRM/Service/AppIntegrityService.php:544",
+    "src/ChurchCRM/Service/AppIntegrityService.php:570"
   ],
-  "Choose total commitment or installment amount.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:48"
+  "How the congregation is made up": [
+    "src/people/views/dashboard.php:17"
   ],
-  "Choose Weekly, Monthly or Quarterly for an installment amount.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:22"
+  "Insights": [
+    "src/people/views/dashboard.php:16"
   ],
-  "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by": [
-    "src/account/views/account.php:338"
+  "Invalid CSRF token": [
+    "src/ConvertIndividualToFamily.php:19"
   ],
-  "Commitment amount": [
-    "src/finance/views/pledges/editor.php:203",
-    "webpack/finance-pledge-editor.js:67"
+  "Last %d days": [
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:301",
+    "src/ChurchCRM/Authentication/AuthenticationManager.php:315",
+    "src/ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php:65"
   ],
-  "Deleting it will also remove %d properties and all their assignments so nothing is left hanging.": [
-    "src/people/views/property-type-list.php:157"
+  "Last 12 months": [
+    "src/ChurchCRM/Service/FinancialService.php:1016"
   ],
-  "Enter the schedule and installment dates to preview the commitment.": [
-    "webpack/finance-pledge-editor.js:70"
+  "Main dashboard": [
+    "src/account/views/account.php:288"
   ],
-  "Enter valid first and last installment dates in order.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:15"
+  "Navigation": [
+    "src/account/views/account.php:324",
+    "src/account/views/account.php:325",
+    "src/api/routes/people/people-family.php:89"
   ],
-  "Enter valid installment amounts with at most two decimal places.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:62"
+  "No notes in this time range.": [
+    "src/people/views/_dashboard-overview.php:244"
   ],
-  "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift.": [
-    "src/finance/views/pledges/editor.php:152"
+  "No notes yet.": [
+    "src/people/views/timeline-events.php:27"
   ],
-  "First installment": [
-    "src/finance/views/pledges/editor.php:166"
+  "Open total": [
+    "src/finance/views/deposits/search.php:45"
   ],
-  "Full commitment": [
-    "src/finance/views/pledges/editor.php:178"
+  "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself.": [
+    "src/account/views/account.php:317"
   ],
-  "groups": [
-    "src/ChurchCRM/Config/Menu/Menu.php:147",
-    "src/ChurchCRM/Config/Menu/Menu.php:151",
-    "src/ChurchCRM/Config/Menu/Menu.php:160"
+  "Past 7 days and next %d days": [
+    "src/people/views/_dashboard-overview.php:274",
+    "src/people/views/_dashboard-overview.php:285"
   ],
-  "Help Translate on GitHub": [
-    "src/account/views/account.php:345"
+  "People without a family: %d": [
+    "src/ConvertIndividualToFamily.php:90"
   ],
-  "Installed version: %s": [
-    "src/v2/templates/root/releases.php:16"
+  "Recent": [
+    "src/ChurchCRM/Portal/PortalStatsService.php:55",
+    "src/ChurchCRM/Portal/PortalStatsService.php:78",
+    "src/ChurchCRM/Service/AttendanceService.php:206"
   ],
-  "Installment amounts can only be used for pledges.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:54"
+  "Register your family to our church": [
+    "src/session/index.php:69"
   ],
-  "Installment dates must be within the selected fiscal year.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:19"
+  "Rows shown per page in every table and dashboard card. Takes effect on next page load.": [
+    "src/account/views/account.php:349"
   ],
-  "Last installment on or before": [
-    "src/finance/views/pledges/editor.php:168"
+  "Send a test email": [
+    "src/admin/views/email-debug.php:39"
   ],
-  "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal.": [
-    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:52"
+  "Send Test Email": [
+    "src/admin/views/email-debug.php:42"
   ],
-  "Nobody in the %s family can sign in to the member portal under the current sign-in rule.": [
-    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:56"
+  "Set as my main dashboard": [
+    "src/Include/partials/dashboard-switch.php:26",
+    "src/Include/partials/dashboard-switch.php:27"
   ],
-  "Properties / Assignments": [
-    "src/people/views/property-type-list.php:46"
+  "Staff login": [
+    "src/Include/themes/default/templates/login/unavailable.html.twig:21",
+    "src/session/index.php:77"
   ],
-  "Property deleted": [
-    "src/admin/routes/api/system/property-definitions.php:38",
-    "src/api/routes/people/groups-form-props.php:111",
-    "src/people/views/property-list.php:128"
+  "The dashboard you open on after signing in": [
+    "src/account/views/account.php:295"
   ],
-  "Property type deleted": [
-    "src/people/views/property-type-list.php:172"
+  "The test message goes to the church email address and shows the SMTP debug log here.": [
+    "src/admin/views/email-debug.php:40"
   ],
-  "Release notes are unavailable right now.": [
-    "src/v2/templates/root/releases.php:20"
+  "This dashboard is now your main dashboard.": [
+    "webpack/common/landing-page.ts:31"
   ],
-  "Releases": [
-    "src/ChurchCRM/Service/UpgradeService.php:216",
-    "src/ChurchCRM/Service/UpgradeService.php:217",
-    "src/ChurchCRM/Utils/ChurchCRMReleaseManager.php:27"
+  "This is your church account. Everything you can do for yourself lives here.": [
+    "src/Include/themes/default/templates/home.html.twig:43"
   ],
-  "Remaining commitment for %s: %s": [
-    "src/ChurchCRM/Service/PledgeReminderService.php:176"
+  "Total deposited": [
+    "src/finance/views/deposits/search.php:46"
   ],
-  "Remove 2FA requirement": [
-    "src/admin/views/users.php:226"
-  ],
-  "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation.": [
-    "src/finance/views/pledges/editor.php:180"
-  ],
-  "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation.": [
-    "src/finance/views/pledges/detail.php:140"
-  ],
-  "Require 2FA": [
-    "src/admin/views/users.php:230",
-    "src/mysql/upgrade/7.8.6-per-user-2fa.sql:1"
-  ],
-  "Reset Options": [
-    "src/DirectoryReports.php:280"
-  ],
-  "Say whether 2FA is required.": [
-    "src/admin/routes/api/user-admin.php:117"
-  ],
-  "Security updates and support are provided for the latest version only.": [
-    "src/ChurchCRM/Service/NotificationService.php:112"
-  ],
-  "Set up two-factor authentication to continue.": [
-    "src/ChurchCRM/Slim/Middleware/AuthMiddleware.php:84"
-  ],
-  "Specify the amount basis when editing a recurring pledge.": [
-    "src/ChurchCRM/Service/FinancialService.php:555"
-  ],
-  "The %s family has no living members to invite to the member portal.": [
-    "src/ChurchCRM/Service/FamilyPortalInvitationService.php:54"
-  ],
-  "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places.": [
-    "src/ChurchCRM/Service/PledgeCommitmentService.php:67"
-  ],
-  "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information.": [
-    "src/people/views/family-view.php:1039"
-  ],
-  "This user must set up 2FA": [
-    "src/admin/views/users.php:183"
-  ],
-  "This will permanently delete the family record and its notes. This cannot be undone.": [
-    "src/skin/js/CRMJSOM.js:1127"
-  ],
-  "Total commitment": [
-    "src/finance/views/pledges/editor.php:149"
-  ],
-  "Unable to preview the commitment.": [
-    "webpack/finance-pledge-editor.js:84"
-  ],
-  "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months.": [
-    "src/finance/views/pledges/editor.php:170"
-  ],
-  "Verify the family in person instead.": [
-    "src/people/views/family-view.php:1052"
-  ],
-  "Version %s is available. Please ask your administrator to upgrade your installation.": [
-    "src/ChurchCRM/Service/NotificationService.php:104",
-    "src/ChurchCRM/Service/NotificationService.php:105"
-  ],
-  "View all emails": [
-    "src/people/views/timeline-events.php:58"
+  "Your main dashboard": [
+    "src/Include/partials/dashboard-switch.php:27",
+    "webpack/common/landing-page.ts:29"
   ]
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # ChurchCRM pre-commit hook — fast checks scoped to what is staged:
-#   1. Translatable-string rules (.agents/skills/churchcrm/i18n-localization.md)
+#   1. Translatable-string rules (.agents/skills/churchcrm/i18n-localization.md), and the
+#      terms guard: staged strings that near-duplicate a catalog term, look like code, or run long
 #   2. PHP syntax, namespace/use-statement case, and Propel base classes
 # Whole-repo checks run in the pre-push hook (`npm run lint`) and in CI.
 #
@@ -43,6 +44,8 @@ run_check "staged Composer files" "Composer configuration and lock file validati
 
 run_check "staged translatable strings" "locale-check found issues in the strings you staged." \
     node scripts/lint/locale-check.js --staged
+run_check "staged terms against the catalog" "the terms guard flagged staged strings. Reuse the catalog term in locale/messages.po." \
+    node locale/scripts/lib/locale-terms-guard.js --staged
 run_check "changed PHP files" "PHP validation failed in a changed file." \
     npm run --silent build:php:validate
 

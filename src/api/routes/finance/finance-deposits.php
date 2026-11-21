@@ -6,6 +6,7 @@ use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Slim\Middleware\Api\DepositMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -58,6 +59,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="days", in="query", required=false, description="Days window: 30|90|365 (default 90)", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="from", in="query", required=false, description="ISO start date; with to, replaces days", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="to", in="query", required=false, description="ISO end date", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="all", in="query", required=false, description="Any value returns the whole history", @OA\Schema(type="string")),
      *     @OA\Response(response=200, description="Array of deposits within the requested time range"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
@@ -70,12 +74,59 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             $days = 90;
         }
 
-        $list = DepositQuery::create()
-            ->filterByDate(['min' => DateTimeUtils::getRelativeDate("-{$days} days")])
-            ->orderByDate()
-            ->find();
+        $from = DateTimeUtils::parseIsoDate($queryParams['from'] ?? null);
+        $to = DateTimeUtils::parseIsoDate($queryParams['to'] ?? null);
+        $query = DepositQuery::create();
+        if (isset($queryParams['all'])) {
+            // whole history
+        } elseif ($from !== '' || $to !== '') {
+            $query->filterByDate(array_filter(['min' => $from, 'max' => $to]));
+        } else {
+            $query->filterByDate(['min' => DateTimeUtils::getRelativeDate("-{$days} days")]);
+        }
+        $list = $query->orderByDate()->find();
 
         return SlimUtils::renderJSON($response, $list->toArray());
+    });
+
+    /**
+     * @OA\Get(
+     *     path="/deposits/dashboard-by-fund",
+     *     summary="Get payment totals per fund per day for a time range (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="days", in="query", required=false, description="Days window: 30|90|365 (default 90)", @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="from", in="query", required=false, description="ISO start date; with to, replaces days", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="to", in="query", required=false, description="ISO end date", @OA\Schema(type="string")),
+     *     @OA\Parameter(name="all", in="query", required=false, description="Any value returns the whole history", @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Per-fund daily totals: {dates: string[], funds: [{fundId, name, data}]}; funds with no payments in the window are omitted"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/dashboard-by-fund', function (Request $request, Response $response, array $args): Response {
+        $queryParams = $request->getQueryParams();
+        $days = isset($queryParams['days']) ? (int) $queryParams['days'] : 90;
+        if (!in_array($days, [30, 90, 365], true)) {
+            $days = 90;
+        }
+
+        // Same window as /deposits/dashboard: an explicit from/to pair wins, then
+        // the days window, and ?all=1 means the whole history.
+        $from = DateTimeUtils::parseIsoDate($queryParams['from'] ?? null);
+        $to = DateTimeUtils::parseIsoDate($queryParams['to'] ?? null);
+        if (isset($queryParams['all'])) {
+            $fromDate = null;
+            $toDate = null;
+        } elseif ($from !== '' || $to !== '') {
+            $fromDate = $from !== '' ? $from : null;
+            $toDate = $to !== '' ? $to : null;
+        } else {
+            $fromDate = DateTimeUtils::getRelativeDate("-{$days} days");
+            $toDate = null;
+        }
+
+        return SlimUtils::renderJSON($response, (new FinancialService())->getPaymentsByFundPerDay($fromDate, $toDate));
     });
 
     /**

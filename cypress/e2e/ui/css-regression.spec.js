@@ -15,7 +15,7 @@ describe("CSS Regression — No Auth Style Leakage", () => {
 
     describe("Dashboard — buttons use Tabler defaults", () => {
         beforeEach(() => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
         });
 
         it("Should NOT have page-auth body class", () => {
@@ -50,12 +50,22 @@ describe("CSS Regression — No Auth Style Leakage", () => {
                 .invoke("css", "background-image")
                 .should("not.include", "667eea");
         });
+    });
+
+    describe("Zero Givers report — buttons render without auth styles", () => {
+        beforeEach(() => {
+            cy.visit("/finance/reports/zero-givers");
+        });
+
+        it("Download button should not have auth-page gradient", () => {
+            cy.get(".page-title").contains("Zero Givers").should("be.visible");
+
+            cy.get("#downloadZeroGivers").should("be.visible")
+                .invoke("css", "background-image")
+                .should("not.include", "667eea");
+        });
 
         it("Report form labels should be properly styled", () => {
-            cy.get("#FinancialReportTypes").select("Zero Givers");
-            cy.get("#FinancialReports").submit();
-
-            // Form labels should exist and be visible on the Zero Givers filter page
             cy.get("label.form-label").should("have.length.at.least", 1)
                 .first().should("be.visible");
         });

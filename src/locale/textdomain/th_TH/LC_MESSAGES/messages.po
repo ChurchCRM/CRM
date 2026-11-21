@@ -1301,10 +1301,6 @@ msgid "People"
 msgstr "คน"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "เด็กโรงเรียนวันอาทิตย์"
-
-#: 
 msgid "Role / Gender"
 msgstr "บทบาท / เพศ"
 
@@ -1367,10 +1363,6 @@ msgstr "กลุ่ม"
 #: 
 msgid "Default"
 msgstr "ค่าเริ่มต้น"
-
-#: 
-msgid "Exit"
-msgstr "ออก"
 
 #: 
 msgid "Add New"
@@ -1475,10 +1467,6 @@ msgstr "อัปเดตคุณสมบัติ"
 #: 
 msgid "Assign New Group"
 msgstr "กำหนดกลุ่มใหม่"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "กำหนดโอกาสอาสาสมัครใหม่"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1594,10 +1582,6 @@ msgid "Restore Database"
 msgstr "กู้คืนฐานข้อมูล"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "กรุณายืนยันการลบ"
-
-#: 
 msgid "Listing"
 msgstr "รายการ"
 
@@ -1684,14 +1668,6 @@ msgstr "รหัสผ่านใหม่"
 #: 
 msgid "Confirm New Password"
 msgstr "ยืนยันรหัสผ่านใหม่"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "ตัวแก้ไขโอกาสอาสาสมัคร"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "ยังไม่มีโอกาสอาสาสมัครที่เพิ่ม"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4459,10 +4435,6 @@ msgid "People Reports"
 msgstr "รายงานคน"
 
 #: 
-msgid "People Dashboard"
-msgstr "แดชบอร์ดคน"
-
-#: 
 msgid "People Directory"
 msgstr "ไดเรกทอรีคน"
 
@@ -5047,10 +5019,6 @@ msgstr "บังคับใช้นโยบายความปลอดภ
 #: 
 msgid "Enter event description..."
 msgstr "ป้อนคำอธิบายกิจกรรม..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "ป้อนข้อความบันทึกที่นี่..."
 
 #: 
 msgid "Note"
@@ -6368,20 +6336,8 @@ msgid "Additional Information"
 msgstr "ข้อมูลเพิ่มเติม"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "มอบหมายโอกาส"
-
-#: 
 msgid "Choose a property..."
 msgstr "เลือกคุณสมบัติ..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "เลือกโอกาส..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "ติดต่อและข้อมูลส่วนตัว"
 
 #: 
 msgid "Edited"
@@ -6390,14 +6346,6 @@ msgstr "แก้ไขแล้ว"
 #: 
 msgid "Newsletter"
 msgstr "จดหมายข่าว"
-
-#: 
-msgid "Personal"
-msgstr "ส่วนตัว"
-
-#: 
-msgid "Select Opportunities"
-msgstr "เลือกโอกาส"
 
 #: 
 msgid "Volunteer"
@@ -6582,10 +6530,6 @@ msgid "Confirm Property Deletion"
 msgstr "ยืนยันการลบคุณสมบัติ"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "ยืนยันการลบโอกาสอาสาสมัคร"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "ยืนยันการลบ"
 
@@ -6598,16 +6542,8 @@ msgid "Existing Custom Person Fields"
 msgstr "ฟิลด์บุคคลกำหนดเองที่มีอยู่"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "โอกาสอาสาสมัครที่มีอยู่"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "ลบฟิลด์สำเร็จ"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "โทเค็น CSRF ไม่ถูกต้อง"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8005,10 +7941,6 @@ msgid "or later to continue."
 msgstr "หรือใหม่กว่าเพื่อดำเนินการต่อ"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "บันทึก \"เหตุผลที่มา\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "ผลการค้นหา %d สำหรับ \"%s\""
@@ -8116,10 +8048,6 @@ msgstr "เพิ่มหรือแก้ไขข้อมูลบุคค
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "เพิ่มหรือแก้ไขสิ่งของบริจาคสำหรับกิจกรรมระดมทุน"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "เพิ่มหรือแก้ไขบันทึกสำหรับบุคคลและครอบครัว"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8376,10 +8304,6 @@ msgstr "สร้างและจัดการกิจกรรมของ
 #: 
 msgid "Create or edit property type categories"
 msgstr "สร้างหรือแก้ไขหมวดหมู่ประเภทคุณสมบัติ"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "สร้างหรือแก้ไขตำแหน่งอาสาสมัคร"
 
 #: 
 msgid "Current person"
@@ -8830,10 +8754,6 @@ msgid "Manage user account details and permissions"
 msgstr "จัดการรายละเอียดบัญชีผู้ใช้และสิทธิ์"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "จัดการโอกาสอาสาสมัครและกำหนดสมาชิก"
-
-#: 
 msgid "Map cart items"
 msgstr "แสดงรายการบนแผนที่"
 
@@ -8954,10 +8874,6 @@ msgid "No timeline events yet."
 msgstr "ยังไม่มีเหตุการณ์ในไทม์ไลน์"
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ยังไม่มีการกำหนดตำแหน่งอาสาสมัคร"
-
-#: 
 msgid "Not ready yet?"
 msgstr "ยังไม่พร้อม?"
 
@@ -8994,10 +8910,6 @@ msgstr "ภาพรวม"
 #: 
 msgid "Password Recovery"
 msgstr "กู้คืนรหัสผ่าน"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "7 วันที่ผ่านมาและถัดไป"
 
 #: 
 msgid "People by Classification"
@@ -9082,10 +8994,6 @@ msgstr "บันทึกผู้ชนะการจับรางวัล
 #: 
 msgid "Record new pledges and payments"
 msgstr "บันทึกคำปฏิญาณถวายและการถวายใหม่"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
 
 #: 
 msgid "Remove from Class"
@@ -9468,10 +9376,6 @@ msgid "funds"
 msgstr "กองทุน"
 
 #: 
-msgid "opportunities"
-msgstr "โอกาส"
-
-#: 
 msgid "or connect an external service"
 msgstr "หรือเชื่อมต่อบริการภายนอก"
 
@@ -9771,11 +9675,6 @@ msgstr "ไม่สามารถดึงที่อยู่อีเมล
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "ไม่สามารถดึงหมายเลขโทรศัพท์"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "ค้นหาอาสาสมัครสำหรับโอกาสเฉพาะ"
 
 #. Context: query_qry
 #: 
@@ -10899,10 +10798,6 @@ msgstr "โทนสีเข้ม"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "ฐานข้อมูลเท่านั้น (.sql) หรือไฟล์เก็บถาวรทั้งหมด (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "จำนวนแถวเริ่มต้นที่แสดงในตารางข้อมูล มีผลเมื่อโหลดหน้าถัดไป"
 
 #. Context: locales
 #: 
@@ -12545,10 +12440,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "ไม่สามารถลบประเภทคุณสมบัติได้: ยังมีคุณสมบัติ %d รายการอ้างอิงอยู่ กรุณามอบหมายใหม่หรือลบคุณสมบัติเหล่านั้นก่อน"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "ไม่สามารถลบโอกาสอาสาสมัครได้: ยังมีผู้ได้รับมอบหมาย %d คน กรุณาลบการมอบหมายก่อน"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "ประเภทต้องเป็นหนึ่งในนี้: p, f หรือ g"
 
@@ -12559,10 +12450,6 @@ msgstr "คัดลอกข้อความแสดงข้อผิดพ
 #: 
 msgid "Could not load note."
 msgstr "ไม่สามารถโหลดบันทึกได้"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "คำอธิบายต้องไม่เกิน 100 ตัวอักษร"
 
 #: 
 msgid "Donation fund not found"
@@ -12585,10 +12472,6 @@ msgid "Failed to create property type"
 msgstr "ไม่สามารถสร้างประเภทคุณสมบัติได้"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "ไม่สามารถสร้างโอกาสอาสาสมัครได้"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "ไม่สามารถลบกองทุนเพื่อการบริจาคได้"
 
@@ -12605,10 +12488,6 @@ msgid "Failed to delete property type"
 msgstr "ไม่สามารถลบประเภทคุณสมบัติได้"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "ไม่สามารถลบโอกาสอาสาสมัครได้"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "ไม่สามารถอัปเดตกองทุนเพื่อการบริจาคได้"
 
@@ -12621,10 +12500,6 @@ msgid "Failed to update property type"
 msgstr "ไม่สามารถอัปเดตประเภทคุณสมบัติได้"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "ไม่สามารถอัปเดตโอกาสอาสาสมัครได้"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "ไม่พบกิจกรรมระดมทุน"
 
@@ -12635,10 +12510,6 @@ msgstr "รหัสการติดตั้ง"
 #: 
 msgid "Invalid class"
 msgstr "ประเภทไม่ถูกต้อง"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "ชื่อต้องไม่เกิน 30 ตัวอักษร"
 
 #: 
 msgid "Note by %s deleted"
@@ -12661,16 +12532,8 @@ msgid "Read more"
 msgstr "อ่านเพิ่มเติม"
 
 #: 
-msgid "That name already exists."
-msgstr "ชื่อนี้มีอยู่แล้ว"
-
-#: 
 msgid "Title is required"
 msgstr "จำเป็นต้องระบุหัวเรื่อง"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "ไม่พบโอกาสอาสาสมัคร"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12881,14 +12744,6 @@ msgid "Click Save to apply."
 msgstr "คลิกบันทึกเพื่อใช้งาน"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API คลิปบอร์ดไม่พร้อมใช้งาน โปรดคัดลอก URL ด้วยตนเอง"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "ไม่สามารถใช้คลิปบอร์ดได้ โปรดใช้ปุ่มดาวน์โหลดเพื่อบันทึกรหัสของคุณ"
-
-#: 
 msgid "Code incomplete"
 msgstr "รหัสไม่สมบูรณ์"
 
@@ -13007,10 +12862,6 @@ msgstr "โดยปกติข้อมูลตัวอย่างจะโ
 #: 
 msgid "Deposit ID"
 msgstr "ID การฝาก"
-
-#: 
-msgid "Deposit Value"
-msgstr "มูลค่ารับถวาย"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13467,14 +13318,6 @@ msgstr "ไม่มีรายการรับถวาย"
 #: 
 msgid "No Events Today"
 msgstr "ไม่มีกิจกรรมวันนี้"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "ไม่มีวันครบรอบในช่วง 7 วันที่ผ่านมาหรือถัดไป"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "ไม่มีวันเกิดในช่วง 7 วันที่ผ่านมาหรือถัดไป"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14420,24 +14263,12 @@ msgid "People &amp; Families"
 msgstr "ผู้คน &amp; ครอบครัว"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "บันทึกที่คุณพยายามแก้ไขไม่มีอยู่อีกต่อไปแล้ว"
-
-#: 
 msgid "User List"
 msgstr "รายชื่อผู้ใช้"
 
 #: 
 msgid "View Person"
 msgstr "ดูข้อมูลบุคคล"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับครอบครัวนี้"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
 
 #: 
 msgid "Account locked"
@@ -15066,10 +14897,6 @@ msgid "Target family"
 msgstr "ครอบครัวเป้าหมาย"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "ไม่พบกลุ่ม กรุณาลองใหม่อีกครั้ง"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "ครอบครัวที่เลือกไม่มีอยู่อีกต่อไป กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง"
 
@@ -15136,10 +14963,6 @@ msgstr "goalAmount ต้องไม่ติดลบ"
 #: 
 msgid "thru %s"
 msgstr "ถึง %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "บันทึก \"เหตุผลที่มา\" สำหรับ %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15288,10 +15111,6 @@ msgstr "รูปแบบที่รองรับ"
 #: 
 msgid "System Configuration"
 msgstr "การตั้งค่าระบบ"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "มีคนถูกกำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15522,10 +15341,6 @@ msgid "Add New Fund"
 msgstr "เพิ่มกองทุนใหม่"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "เพิ่มโอกาสใหม่"
-
-#: 
 msgid "Add New Person"
 msgstr "เพิ่มบุคคลใหม่"
 
@@ -15538,10 +15353,6 @@ msgid "Add New Role"
 msgstr "เพิ่มบทบาทใหม่"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "เพิ่มโอกาสอาสาสมัครใหม่"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "เพิ่มชั้นเรียนโรงเรียนวันอาทิตย์"
 
@@ -15552,10 +15363,6 @@ msgstr "ลบครอบครัวนี้?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "ตรวจสอบครอบครัวและบุคคลใหม่ที่ลงทะเบียนในแบบฟอร์มการลงทะเบียนสาธารณของคุณ"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "ยืนยันการลบโอกาสอาสาสมัคร"
 
 #: 
 msgid "# Payments"
@@ -17220,14 +17027,6 @@ msgid "Find people who did not attend an event"
 msgstr "ค้นหาคนที่ไม่ได้เข้าร่วมกิจกรรม"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "ค้นหาอาสาสมัครที่ตรงกับรหัสโอกาสเฉพาะสองรหัส"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "โอกาสการเป็นอาสาสมัครครั้งแรก"
-
-#: 
 msgid "Folded Booklet"
 msgstr "小冊子แบบพับ"
 
@@ -17304,10 +17103,6 @@ msgid "Run Report"
 msgstr "รันรายงาน"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "โอกาสการเป็นอาสาสมัครครั้งที่สอง"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "แสดงในแถบด้านข้าง บนหน้าลงชื่อเข้า และในอีเมล การอัปโหลดโลโก้จะแทนที่แบรนด์ ChurchCRM ทุกที่ที่ปรากฏ"
 
@@ -17334,14 +17129,6 @@ msgstr "ใช้โลโก้ ChurchCRM เริ่มต้น"
 #: 
 msgid "View Full Family Giving"
 msgstr "ดูการบริจาคของครอบครัวทั้งหมด"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "โอกาสการเป็นอาสาสมัคร"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "อาสาสมัครสำหรับโอกาสสองประการ"
 
 #: 
 msgid "YTD"
@@ -17816,10 +17603,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "การลงทะเบียนที่รอการตรวจสอบจากแบบฟอร์มลงทะเบียนสาธารณะของคุณ รายการที่ไม่มีอีเมลหรือโทรศัพท์จะมีเครื่องหมายแจ้งไว้ ควรตรวจสอบข้อมูลติดต่อก่อนติดต่อกลับ"
 
 #: 
-msgid "Review now"
-msgstr "ตรวจสอบตอนนี้"
-
-#: 
 msgid "Review self registrations"
 msgstr "ตรวจสอบการลงทะเบียนด้วยตนเอง"
 
@@ -17870,10 +17653,6 @@ msgstr "เมื่อวานนี้"
 #: 
 msgid "days ago"
 msgstr "วันที่แล้ว"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "การลงทะเบียนด้วยตนเองกำลังรอการตรวจสอบ"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18167,10 +17946,6 @@ msgstr "ตารางเวลาที่ติดตามประเภท
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "ตารางเวลาที่จัดกำลังคนให้กิจกรรมเดียวไม่สามารถติดตามกิจกรรมอื่นได้ ให้ลบตารางนั้นแล้วเพิ่มตารางเวลาใหม่แทน"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "รายการโอกาสรับใช้เดียว เช่น \"ดูแลเนอสเซอรี\" หรือ \"ต้อนรับ\" เก็บไว้ใต้ บุคคล → ผู้ดูแลระบบ แต่ละคนจะถูกติดแท็กโอกาสที่เต็มใจช่วย ในแท็บอาสาสมัครของระเบียนบุคคล นั่นคือทั้งหมดที่บันทึก ไม่มีทีม ตารางเวลา การมอบหมายตามวันที่ หรืออีเมลเตือน แท็กถูกใช้ในรายงานและระเบียนบุคคล"
 
 #: 
 msgid "A square picture of your face works best."
@@ -18479,18 +18254,6 @@ msgstr "งานเบื้องหลังทำงานเมื่อ"
 #: 
 msgid "Birthday greeting"
 msgstr "คำอวยพรวันเกิด"
-
-#: 
-msgid "Both"
-msgstr "ทั้งสอง"
-
-#: 
-msgid "Both (transition)"
-msgstr "ทั้งสอง (ช่วงเปลี่ยนผ่าน)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "ทั้งสอง — V1 และ V2 ควบคู่กัน (ช่วงเปลี่ยนผ่าน)"
 
 #: 
 msgid "Calendar address"
@@ -21573,22 +21336,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "ผู้ใช้ต้องมีสิทธิ์เพิ่มกิจกรรม หรือประสานงานพันธกิจอาสาสมัครที่ปฏิทินนี้เป็นของ"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — โอกาสรับใช้ (แบบเดิม)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — โอกาสรับใช้แบบเดิม"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — พันธกิจ"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — การจัดการอาสาสมัคร"
-
-#: 
 msgid "Valid"
 msgstr "ถูกต้อง"
 
@@ -21607,14 +21354,6 @@ msgstr "ดูกิจกรรม"
 #: 
 msgid "View this email"
 msgstr "ดูอีเมลนี้"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "อาสาสมัคร (แบบเดิม)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "ไม่ได้เปิดใช้การจัดการอาสาสมัคร V2"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21719,10 +21458,6 @@ msgid "What the check found"
 msgstr "สิ่งที่การตรวจสอบพบ"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "ระบบอาสาสมัครมีอะไรบ้าง"
-
-#: 
 msgid "What you want to say"
 msgstr "สิ่งที่คุณต้องการบอก"
 
@@ -21753,10 +21488,6 @@ msgstr "วันที่มาจากที่ใด"
 #: 
 msgid "Where we reach you"
 msgstr "ช่องทางที่เราติดต่อคุณ"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "ระบบการจัดการอาสาสมัครใดที่ใช้งานอยู่ V1 คือฟีเจอร์โอกาสรับใช้แบบเดิม V2 คือขั้นตอนจัดตารางและมอบหมายแบบใหม่ \"ทั้งสอง\" แสดงทั้งสองควบคู่กันระหว่างการย้าย"
 
 #: 
 msgid "Which events"
@@ -22165,10 +21896,6 @@ msgstr "ไม่ได้รับอนุญาตให้เปลี่ย
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "เฉพาะผู้จัดการอาสาสมัครเท่านั้นที่สามารถเปลี่ยนผู้ประสานงานของหน่วยงาน"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "การเลือก V1 หยุดชั่วคราวอีเมลอาสาสมัครของ V2 สิ่งใดก็ตามที่อยู่ในคิว จะถูกส่งเมื่อ V2 เปิดใช้งานอีกครั้ง เว้นแต่ว่าการเกิดขึ้นของมันจะสิ้นสุดลง"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23013,10 +22740,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "เวลานำของการแจ้งเตือนตำแหน่งที่ยังว่าง (ชั่วโมง)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "การจัดการอาสาสมัคร"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "พันธกิจอาสาสมัคร ทีม กำหนดการ และการมอบหมาย"
 
@@ -23027,14 +22750,6 @@ msgstr "ตำแหน่งอาสาสมัครที่ต้องจ
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "ยังต้องการอาสาสมัครสำหรับรอบที่กำลังจะมาถึงเหล่านี้: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "สิ่งเหล่านี้หมายความว่าอะไร"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "คริสตจักรนี้ใช้ประสบการณ์อาสาสมัครแบบใด"
 
 #: 
 msgid "You are on the schedule"
@@ -23965,10 +23680,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
 
 #: 
-msgid "Closing line"
-msgstr "บรรทัดปิด"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "รายการนำฝากทุกรายการที่ลงวันที่ในปีนี้ปิดแล้ว"
 
@@ -23981,28 +23692,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "การชำระเงินทุกรายการในปีนี้อยู่ในรายการนำฝาก"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "สร้างใบแจ้งภาษี"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "รายงานการถวาย (ใบแจ้งภาษี)"
-
-#: 
-msgid "Opening line"
-msgstr "บรรทัดเปิด"
-
-#: 
 msgid "Qty"
 msgstr "จำนวน"
-
-#: 
-msgid "Signed by"
-msgstr "ลงนามโดย"
-
-#: 
-msgid "Thank-you line"
-msgstr "บรรทัดขอบคุณ"
 
 #: 
 msgid "Year-End Giving"
@@ -24161,10 +23852,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "ไดเรกทอรีชั่วคราวของ PDF ต้องเป็นเส้นทางไดเรกทอรีแบบเต็ม"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "เลขผู้เสียภาษีของคริสตจักร (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "บรรทัดปิด"
 
@@ -24207,10 +23894,6 @@ msgstr "การตั้งค่าใบแจ้ง"
 #: 
 msgid "Statement Wording"
 msgstr "ถ้อยคำในใบแจ้ง"
-
-#: 
-msgid "Tax Information"
-msgstr "ข้อมูลภาษี"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24259,10 +23942,6 @@ msgstr "ใช้ชื่อและที่อยู่ของคริส
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "ถ้อยคำ เลขผู้เสียภาษี และการจัดการ PDF สำหรับใบแจ้งการถวาย"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24535,10 +24214,6 @@ msgstr "ประเทศของคริสตจักร"
 #: 
 msgid "Church default: %s"
 msgstr "ค่าเริ่มต้นของคริสตจักร: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "การลงชื่อเข้าใช้ของผู้นำคริสตจักร"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25183,10 +24858,6 @@ msgstr "ยังไม่สิ้นสุด"
 #: 
 msgid "Not moved"
 msgstr "ยังไม่ถูกย้าย"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "ไม่แน่ใจว่าเรามีอีเมลใด ติดต่อสำนักงานคริสตจักรครับ"
 
 #: 
 msgid "Not yet"
@@ -26441,248 +26112,8 @@ msgid "Review Family Information"
 msgstr "ตรวจสอบข้อมูลครอบครัว"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "มีพันธกิจชื่อ \"%s\" อยู่แล้ว เลือกจากรายการ หรือเลือกชื่ออื่น"
-
-#: 
-msgid "A new ministry"
-msgstr "พันธกิจใหม่"
-
-#: 
-msgid "A position"
-msgstr "ตำแหน่ง"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "เพิ่มอาสาสมัคร {{total}} คนในตำแหน่งที่แปลงไว้ก่อนหน้านี้หรือไม่"
-
-#: 
-msgid "Already converted"
-msgstr "แปลงแล้ว"
-
-#: 
-msgid "An existing ministry"
-msgstr "พันธกิจที่มีอยู่"
-
-#: 
-msgid "Becomes"
-msgstr "กลายเป็น"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM มีวิธีจัดการอาสาสมัครสองแบบ ควรใช้เพียงแบบเดียวในแต่ละครั้ง โดยการตั้งค่า \"รูปแบบอาสาสมัคร\" จะกำหนดว่าคริสตจักรนี้เห็นแบบใด การสลับจะซ่อนหรือแสดงหน้าและเมนูเท่านั้น และไม่ลบข้อมูลใดๆ ตัวเลือก V1 และทั้งสองจะมีให้เฉพาะเมื่อยังใช้โอกาสอาสาสมัครอยู่ เมื่อแปลงโอกาสทั้งหมดแล้วและคริสตจักรใช้ V2 ตัวเลือกเหล่านี้จะหายไปจากรายการ"
-
-#: 
-msgid "Convert"
-msgstr "แปลง"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "แปลงโอกาสอาสาสมัคร"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "แปลงโอกาส {{total}} รายการตอนนี้หรือไม่ ข้อมูล V1 จะถูกเก็บไว้ตามเดิมจนกว่าโอกาสอาสาสมัครจะถูกยกเลิก"
-
-#: 
-msgid "Converted"
-msgstr "แปลงแล้ว"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "แปลงแล้ว: {{positions}} ตำแหน่งและ {{ministries}} พันธกิจ อาสาสมัครได้รับสิทธิ์ {{qualifications}} คน"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "แต่ละโอกาสจะกลายเป็นตำแหน่งในทีมแรกของพันธกิจหนึ่ง และทุกคนที่เชื่อมโยงอยู่จะได้รับสิทธิ์ในตำแหน่งนั้น การสมัครด้วยตนเองจะปิดอยู่ในตอนแรกสำหรับตำแหน่งเหล่านี้"
-
-#: 
-msgid "Everything is converted."
-msgstr "แปลงทั้งหมดแล้ว"
-
-#: 
-msgid "Existing ministry"
-msgstr "พันธกิจที่มีอยู่"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "ตั้งชื่อพันธกิจใหม่ไม่เกิน 100 ตัวอักษร"
-
-#: 
-msgid "Its own ministry"
-msgstr "พันธกิจของตัวเอง"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "เชื่อมโยงหลังจากนั้น: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "การเชื่อมโยงที่แปลงไม่ได้"
-
-#: 
-msgid "New ministries of their own"
-msgstr "พันธกิจใหม่ของแต่ละรายการ"
-
-#: 
-msgid "New ministry name"
-msgstr "ชื่อพันธกิจใหม่"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "จะไม่มีการส่งอีเมล และโอกาสอาสาสมัครจะคงอยู่ตามเดิมจนกว่าจะถูกยกเลิก"
-
-#: 
-msgid "No name"
-msgstr "ไม่มีชื่อ"
-
-#: 
-msgid "Not converted"
-msgstr "ยังไม่แปลง"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "เปิดสวิตช์คุณลักษณะ"
-
-#: 
-msgid "Open Ministries"
-msgstr "เปิดพันธกิจ"
-
-#: 
-msgid "Opportunities"
-msgstr "โอกาส"
-
-#: 
-msgid "Opportunity"
-msgstr "โอกาส"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "โอกาส #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "ผู้ที่เชื่อมโยงกับโอกาสอาสาสมัครที่แปลงแล้วหลังการแปลง: %d คน เพิ่มพวกเขาในตำแหน่งของตนก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "ดูตัวอย่างการแปลงก่อน แล้วส่งรุ่นแก้ไขที่ได้รับกลับมา"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "เปลี่ยนชื่อเพื่อไม่ให้ชื่อซ้ำกัน"
-
-#: 
-msgid "Review the conversion"
-msgstr "ตรวจสอบการแปลง"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "ส่งตัวเลือกการแปลงเป็นออบเจ็กต์ JSON"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "ส่งโอกาสที่จะกลายเป็นพันธกิจเป็นรายการ ID"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "ไม่มีพันธกิจนั้น"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "เวอร์ชัน ChurchCRM ที่ผู้ดูแลระบบปิดประกาศการยกเลิกโอกาสอาสาสมัคร"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "โอกาสอาสาสมัครมีการเปลี่ยนแปลงตั้งแต่ดูตัวอย่าง ตรวจสอบตัวอย่างอีกครั้ง แล้วจึงแปลง"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "ไม่สามารถเปิดการยืนยันได้ โหลดหน้าใหม่แล้วลองอีกครั้ง"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "ไม่สามารถดูตัวอย่างการแปลงได้"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงใดๆ"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "พันธกิจ \"%s\" ไม่มีทีมสำหรับตำแหน่งเหล่านี้"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้ โหลดหน้าใหม่เพื่อดูว่าการแปลงทำงานแล้วหรือไม่"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "ไม่มีโอกาสอาสาสมัครให้แปลง"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "การจัดการอาสาสมัครจะสลับเป็นทั้งสอง เพื่อให้พันธกิจใหม่แสดงข้างโอกาสอาสาสมัคร"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "โอกาสอาสาสมัครกำลังจะถูกยกเลิก"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "แปลงโอกาสอาสาสมัครแล้ว"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงเป็นพันธกิจเพื่อเก็บข้อมูลว่าใครรับใช้ในส่วนใด"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงโอกาส %1$d รายการและอาสาสมัคร %2$d คนของคุณเป็นพันธกิจตอนนี้ คุณดูตัวอย่างผลลัพธ์ได้ก่อนที่จะมีการเปลี่ยนแปลง"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "อาสาสมัครที่ได้รับสิทธิ์"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "อาสาสมัครที่ต้องเพิ่มในตำแหน่งที่แปลงแล้ว"
-
-#: 
-msgid "What it becomes"
-msgstr "จะกลายเป็นอะไร"
-
-#: 
-msgid "What will happen"
-msgstr "จะเกิดอะไรขึ้น"
-
-#: 
-msgid "Where they go"
-msgstr "จะไปที่ใด"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "โอกาสอาสาสมัครเดิมรายการใดที่แปลงแล้ว และแต่ละรายการกลายเป็นตำแหน่งใด"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "รูปแบบอาสาสมัครที่คริสตจักรนี้ใช้ โอกาสอาสาสมัคร (V1) จะถูกยกเลิกในต้นปี 2027"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "โอกาสอาสาสมัครของคุณถูกแปลงเป็นพันธกิจแล้ว สลับการจัดการอาสาสมัครเป็น V2 ก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "เป็นพันธกิจใหม่ {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "เข้าพันธกิจ {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ไม่อยู่ใน ChurchCRM แล้ว"
 
 #: 
 msgid "Collapse sidebar"
@@ -26857,10 +26288,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d ค่าเริ่มต้นถูกข้ามไปด้วยเหตุผลอื่น (การเกิดขึ้นหมดสิ้น ถูกยกเลิก หรือเต็ม)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "การตั้งค่าช่วงเปลี่ยนผ่าน หน้าโอกาสรับใช้แบบเดิมและหน้าพันธกิจแบบใหม่ใช้งานได้ทั้งคู่ และระเบียนบุคคลจะแสดงแท็บอาสาสมัครทั้งสองพร้อมป้ายกำกับชัดเจน ใช้ระหว่างย้ายคริสตจักรจาก V1 ไป V2 แล้วเปลี่ยนเป็น V2 อย่างเดียว"
-
-#: 
 msgid "Assignment canceled"
 msgstr "ยกเลิกการมอบหมายแล้ว"
 
@@ -26907,10 +26334,6 @@ msgstr "วันที่ยกเลิกแล้ว คุณไม่ต�
 #: 
 msgid "This occurrence has been canceled"
 msgstr "รอบนี้ถูกยกเลิกแล้ว"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "การอาสาที่จัดตามแบบที่คริสตจักรทำงาน แต่ละพันธกิจมีทีมและตำแหน่ง บุคคลมีคุณสมบัติสำหรับตำแหน่งและอยู่ในกลุ่มอาสาสมัครของพันธกิจ ตารางเวลาติดตามกิจกรรมในปฏิทินและสร้างรอบที่มีวันที่พร้อมความต้องการกำลังคน ผู้ประสานงานมอบหมายบุคคล ซึ่งตอบรับ ปฏิเสธ หรือเสนอผู้แทน การเตือนและการแจ้งเตือนส่งทางอีเมล ผู้ดูแลระบบและผู้ใช้ที่มีสิทธิ์จัดการพันธกิจเห็นทุกพันธกิจและสร้าง ปิดใช้งาน และลบได้ ผู้ประสานงานพันธกิจจะได้รับสิทธิ์จัดการพันธกิจของฉันแทน หัวข้อพันธกิจในแถบด้านข้างจึงแสดงเฉพาะพันธกิจที่เขาประสานงาน หัวหน้าทีมดูแลทีมของตนจากพอร์ทัลสมาชิก สมาชิกใช้พอร์ทัลสมาชิกเพื่อดูตารางของตน ตอบกลับ สมัคร และเสนอความช่วยเหลือ"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27072,10 +26495,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "ปิดใช้งานการลงชื่อเข้าใช้ด้วย เพื่อให้ไม่สามารถใช้พอร์ทัลสมาชิกได้"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "ก่อนส่งใบสรุป"
-
-#: 
 msgid "Birthday today"
 msgstr "วันเกิดวันนี้"
 
@@ -27158,10 +26577,6 @@ msgstr "ลบบุคคลและครอบครัว"
 #: 
 msgid "Delete the login for"
 msgstr "ลบการเข้าสู่ระบบของ"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "ช่วงเวลาของแผนภูมิการนำฝาก"
 
 #: 
 msgid "Disabled at"
@@ -27416,10 +26831,6 @@ msgid "Preview Sample Letter"
 msgstr "ดูตัวอย่างจดหมาย"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "ตัวระบุแอสเซ็ตลายเซ็นส่วนตัวของใบสรุปเงินถวายแคนาดา จัดการโดยการอัปโหลดลายเซ็น"
-
-#: 
 msgid "Property Type"
 msgstr "ประเภทคุณสมบัติ"
 
@@ -27458,10 +26869,6 @@ msgstr "ตรวจสอบและกรอง"
 #: 
 msgid "Review and vote"
 msgstr "ตรวจสอบและโหวต"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "ตรวจสอบปีนั้น แล้วดาวน์โหลดใบสรุปเงินถวาย"
 
 #: 
 msgid "Review what we are considering"
@@ -27510,10 +26917,6 @@ msgstr "แข็งแรง"
 #: 
 msgid "Support"
 msgstr "การสนับสนุน"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "การตั้งค่าเลขประจำตัวผู้เสียภาษีและ PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27628,10 +27031,6 @@ msgid "View people and families"
 msgstr "ดูบุคคลและครอบครัว"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "การจัดการอาสาสมัครถูกปิดสำหรับคริสตจักรนี้"
-
-#: 
 msgid "Weak"
 msgstr "อ่อน"
 
@@ -27700,10 +27099,6 @@ msgid "Latest Notes"
 msgstr "บันทึกย่อล่าสุด"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "ยังไม่มีการเพิ่มบันทึกย่อ"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "เริ่มการลงทะเบียนเพื่อรับรหัส QR"
 
@@ -27714,4 +27109,744 @@ msgstr "รหัสผ่านหรือรหัสนั้นไม่ถ
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "การยืนยันตัวตนแบบสองปัจจัยได้รับการตั้งค่าแล้ว ความลับของมันจะแสดงเฉพาะระหว่างการลงทะเบียนเท่านั้น"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "ของถวาย %1$d รายการ รวม %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "ขณะนี้มี %d ครอบครัวที่มีคุณสมบัติประเภทนี้"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d ครอบครัวยังไม่สามารถรับใบเสร็จได้และถูกตัดออก แก้ไขปัญหาที่แสดงอยู่ด้านล่าง จากนั้นเลือก ตรวจสอบอีกครั้ง"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "ขณะนี้มี %d กลุ่มที่มีคุณสมบัติประเภทนี้"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "ขณะนี้มี %d คนที่มีคุณสมบัติประเภทนี้"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "มี %d รุ่นที่พร้อมใช้งานนับตั้งแต่เวอร์ชันที่คุณติดตั้ง"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s ไม่มีการสร้างใบเสร็จ"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: ป้อนชื่อเต็มของผู้บริจาคที่ยืนยันแล้ว ยืนยันผู้บริจาค และยืนยันชุดผู้บริจาคหนึ่งชุด ชุดการชำระเงินที่มีผู้บริจาคหลายรายต้องจัดการนอกคุณสมบัตินี้"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: ของถวายหรือที่อยู่ทางไปรษณีย์เปลี่ยนแปลงไปตั้งแต่การตรวจสอบ เลือก ตรวจสอบอีกครั้ง และยืนยันผู้บริจาคอีกครั้ง"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} งวด)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} งวด)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "การชำระเงินด้วยบัตรเครดิตหรือดราฟต์ธนาคารอยู่ในการฝากที่ยังไม่ปิด ปิดการฝากเมื่อการชำระเงินเสร็จสมบูรณ์แล้ว"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "การชำระเงินมีจำนวนที่หักลดหย่อนไม่ได้ ใบเสร็จของแคนาดาที่นี่รองรับเฉพาะของถวายที่ไม่มีผลประโยชน์ตอบแทนเท่านั้น"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "การชำระเงินมีจำนวนเงินที่ไม่ถูกต้อง"
+
+#: 
+msgid "A payment has no date."
+msgstr "การชำระเงินไม่มีวันที่"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "การชำระเงินมีวันที่ภายหลังวันที่ออกใบเสร็จ"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "การชำระเงินถูกทำเครื่องหมายว่าเป็นปัญหา"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "การชำระเงินเป็นศูนย์หรือติดลบ"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "จำเป็นต้องมี POST ที่ตรวจสอบแล้วพร้อมโทเค็น CSRF ที่ถูกต้อง"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "ครอบครัวที่เลือกไม่มีอยู่อีกต่อไป"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "รูปภาพลายเซ็นไม่ใช่ลายเซ็นดิจิทัลที่ปลอดภัย"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "มีการอัปเดตระบบ โปรดขอให้ผู้ดูแลระบบของคุณอัปเกรดการติดตั้งของคุณ"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "แถวที่รวมทั้งหมดเป็นของถวายที่เป็นเงินโดยไม่มีผลประโยชน์ตอบแทน"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "การตั้งค่าใบเสร็จของแคนาดาที่จำเป็นทั้งหมดได้รับการกรอกแล้ว"
+
+#: 
+msgid "Also delete family members"
+msgstr "ลบสมาชิกครอบครัวด้วย"
+
+#: 
+msgid "Amount of advantages"
+msgstr "จำนวนผลประโยชน์"
+
+#: 
+msgid "Amount of gifts"
+msgstr "จำนวนของถวาย"
+
+#: 
+msgid "Amount per installment"
+msgstr "จำนวนต่องวด"
+
+#: 
+msgid "Amounts entered are"
+msgstr "จำนวนที่ป้อนคือ"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "ผู้ดูแลระบบอัปโหลดไว้ภายใต้การตั้งค่ารายงาน"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "อนุมัติแล้ว แต่ไม่มีการส่งคำเชิญ"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "ขอให้ผู้ดูแลระบบของคุณอัปเกรด ChurchCRM เป็นเวอร์ชันล่าสุด"
+
+#: 
+msgid "Authorized Signature"
+msgstr "ลายเซ็นผู้มีอำนาจ"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "สำนักงานสรรพากรแคนาดา"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "ใบเสร็จอย่างเป็นทางการของแคนาดา"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "ใบเสร็จอย่างเป็นทางการของแคนาดากำหนดให้แคนาดาเป็นประเทศของคริสตจักรในข้อมูลคริสตจักร"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "ใบเสร็จของแคนาดาต้องการทั้งปีปฏิทินและกองทุนทั้งหมด โดยไม่มีตัวกรองอื่น"
+
+#: 
+msgid "Change Selection"
+msgstr "เปลี่ยนการเลือก"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "ชื่อตามกฎหมายขององค์กรการกุศล"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "ที่อยู่จดทะเบียนขององค์กรการกุศล"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "หมายเลขทะเบียนขององค์กรการกุศล"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "รายละเอียดองค์กรการกุศลสำหรับใบเสร็จยังไม่ได้กรอก เพิ่มชื่อตามกฎหมาย ที่อยู่จดทะเบียน หมายเลขทะเบียน และท้องที่ที่ออกใบเสร็จเมื่อคุณสามารถทำได้ การเงินจะยังคงทำงานต่อไปจนถึงตอนนั้น"
+
+#: 
+msgid "Charity on receipts"
+msgstr "องค์กรการกุศลบนใบเสร็จ"
+
+#: 
+msgid "Check Again"
+msgstr "ตรวจสอบอีกครั้ง"
+
+#: 
+msgid "Check the year"
+msgstr "ตรวจสอบปี"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "ตรวจสอบปี ตั้งค่าใบแจ้ง จากนั้นดาวน์โหลด"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "เลือกรายสัปดาห์ รายเดือน หรือรายไตรมาส สำหรับจำนวนเงินต่องวด"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "เลือกปีปฏิทินการบริจาคที่ถูกต้อง"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "เลือกต้นฉบับหรือสำเนา"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "เลือกคำมั่นสัญญาทั้งหมดหรือจำนวนเงินต่องวด"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "การแปล ChurchCRM ได้รับการจัดการในที่เก็บ GitHub ของ ChurchCRM คุณสามารถช่วยได้โดย"
+
+#: 
+msgid "Commitment amount"
+msgstr "จำนวนคำมั่นสัญญา"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "เปรียบเทียบสำเนากับต้นฉบับที่เก็บไว้ และยืนยันว่าข้อมูลใบเสร็จทั้งหมดไม่เปลี่ยนแปลง"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "ทำการรับทราบใบเสร็จทุกใบให้เสร็จก่อนดาวน์โหลด"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "กรอกชื่อตามกฎหมายขององค์กรการกุศล ที่อยู่จดทะเบียน หมายเลขทะเบียน ท้องที่ที่ออกใบเสร็จ และผู้ลงนามที่พิมพ์ให้ครบ"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "ผู้ลงนามที่พิมพ์ในจดหมายยืนยัน"
+
+#: 
+msgid "Copy Kind"
+msgstr "ประเภทสำเนา"
+
+#: 
+msgid "Currency"
+msgstr "สกุลเงิน"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "สัญลักษณ์สกุลเงิน $ หรือ CAD"
+
+#: 
+msgid "Date received"
+msgstr "วันที่ได้รับ"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "การลบสิ่งนี้จะลบคุณสมบัติ %d รายการและการมอบหมายทั้งหมดของพวกมันด้วย เพื่อไม่ให้มีอะไรค้างอยู่"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "ของถวายทั้งหมดของปีที่เลือกเป็นของผู้บริจาคที่ระบุชื่อร่วมกันข้างต้นหรือไม่?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "อย่านำหมายเลขเดิมไปใช้กับใบเสร็จอื่น อย่าออกใบเสร็จให้ของถวายเดียวกันสองครั้ง และอย่าสร้างข้อมูลที่เปลี่ยนแปลงแล้วขึ้นใหม่เสมือนเป็นต้นฉบับที่ไม่เปลี่ยนแปลง"
+
+#: 
+msgid "Duplicate"
+msgstr "สำเนา"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "สำเนาซ้ำ / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "จำนวนของถวายที่มีสิทธิ์สำหรับวัตถุประสงค์ทางภาษีเงินได้"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "ป้อนตารางเวลาและวันที่ของงวดต่าง ๆ เพื่อดูตัวอย่างคำมั่นสัญญา"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "ป้อนวันที่งวดแรกและงวดสุดท้ายที่ถูกต้องตามลำดับ"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "ป้อนจำนวนเงินของงวดที่ถูกต้องโดยมีทศนิยมไม่เกินสองตำแหน่ง"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "คำมั่นสัญญาที่มีอยู่จะคงยอดรวมที่บันทึกไว้ เลือกจำนวนต่องวดเฉพาะเมื่อป้อนของถวายตามกำหนดแต่ละรายการเท่านั้น"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "กรอกจากหัวหน้าครัวเรือนและคู่สมรส แก้ไขให้ตรงกับผู้บริจาคอย่างถูกต้อง"
+
+#: 
+msgid "First installment"
+msgstr "งวดแรก"
+
+#: 
+msgid "Full commitment"
+msgstr "คำมั่นสัญญาเต็มจำนวน"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "สร้างใบแจ้งภาษี"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "ปีปฏิทินของถวาย"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "ใบแจ้งการถวาย — ไม่ใช่ใบเสร็จการบริจาคอย่างเป็นทางการ"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "ช่วยแปลบน GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "ไม่รองรับการเปลี่ยนแปลงซองในอดีต"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "ฉันได้เปรียบเทียบกับต้นฉบับที่เก็บไว้แล้ว: ผู้บริจาค จำนวน หมายเลขลำดับ และข้อความไม่เปลี่ยนแปลง นี่ไม่ใช่การแก้ไขหรือการทดแทน"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "ฉันจะเก็บ PDF ที่ออกไว้และบันทึกใบเสร็จภายนอกไว้ที่สถานที่จัดเก็บบันทึกในแคนาดาขององค์กรการกุศล"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "หากต้นฉบับที่เก็บไว้ไม่มีหรือแตกต่างออกไป ให้ใช้ขั้นตอนการยกเลิก/ทดแทนของ CRA ภายนอกของคุณ"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "รวมบันทึกการชำระเงิน: ฉันได้ตรวจสอบแล้วว่าเหมาะสมสำหรับผู้บริจาค"
+
+#: 
+msgid "Include this family in the download"
+msgstr "รวมครอบครัวนี้ในการดาวน์โหลด"
+
+#: 
+msgid "Installed version: %s"
+msgstr "เวอร์ชันที่ติดตั้ง: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "จำนวนเงินของงวดสามารถใช้ได้กับคำมั่นสัญญาเท่านั้น"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "วันที่ของงวดต้องอยู่ภายในปีงบประมาณที่เลือก"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "โทเค็น CSRF ไม่ถูกต้องหรือขาดหาย"
+
+#: 
+msgid "Issue Date"
+msgstr "วันที่ออก"
+
+#: 
+msgid "Issue Locality"
+msgstr "ท้องที่ที่ออก"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "เก็บ PDF ต้นฉบับและบันทึกใบเสร็จภายนอกไว้ที่สถานที่จัดเก็บบันทึกในแคนาดาขององค์กรการกุศล"
+
+#: 
+msgid "Last installment on or before"
+msgstr "งวดสุดท้ายในหรือก่อนวันที่"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "ข้อความในจดหมาย รายละเอียดองค์กรการกุศล และการจัดการ PDF ตั้งค่าเพียงครั้งเดียวในการตั้งค่าใบแจ้ง"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "ข้อความในจดหมาย รายละเอียดองค์กรการกุศล และการจัดการ PDF สำหรับใบแจ้งการถวาย"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "สูงสุด 2 MiB และ 2000 × 1000 พิกเซล เลือกรูปภาพใหม่เพื่อแทนที่ลายเซ็นที่เก็บไว้ รูปภาพลายเซ็นไม่ใช่ลายเซ็นดิจิทัลที่ปลอดภัย"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "การเข้าสู่ระบบของสมาชิกปิดอยู่ ดังนั้นไม่มีใครในครอบครัว %s สามารถเข้าสู่พอร์ทัลสมาชิกได้ ผู้ดูแลระบบสามารถเปิดได้ภายใต้ ผู้ดูแลระบบ → พอร์ทัลสมาชิก"
+
+#: 
+msgid "Memo"
+msgstr "บันทึก"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "ชุดการชำระเงินของครอบครัวที่มีผู้บริจาคหลายรายไม่สามารถแยกได้ที่นี่ จัดการนอกคุณสมบัตินี้"
+
+#: 
+msgid "Narrow the list"
+msgstr "จำกัดรายการให้แคบลง"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "ไม่มีครอบครัวที่ตรงกับตัวกรองเหล่านี้สำหรับ %s"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "ไม่มีใบเสร็จรายบุคคลหรือใบเสร็จสะสมที่ซ้อนทับกัน"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "ยังไม่สามารถสร้างใบเสร็จสำหรับครอบครัวนี้ได้"
+
+#: 
+msgid "No signature on file"
+msgstr "ไม่มีลายเซ็นในไฟล์"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "ไม่ — ผู้บริจาคต่างกัน จัดการนอกคุณสมบัตินี้"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "ไม่มีใครในครอบครัว %s สามารถเข้าสู่พอร์ทัลสมาชิกได้ภายใต้กฎการเข้าสู่ระบบปัจจุบัน"
+
+#: 
+msgid "None / Aucun"
+msgstr "ไม่มี / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "ยังไม่พร้อมออกใบเสร็จของแคนาดา ยังขาด"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "ใบเสร็จอย่างเป็นทางการ / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "ใบเสร็จอย่างเป็นทางการสำหรับวัตถุประสงค์ทางภาษีเงินได้ / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "ใบเสร็จอย่างเป็นทางการต้องการหมายเลขทะเบียนในรูปแบบ 123456789RR0001 และรูปภาพลายเซ็น"
+
+#: 
+msgid "Original"
+msgstr "ต้นฉบับ"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "วันที่ออกต้นฉบับ (ป้อนจากต้นฉบับที่เก็บไว้)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "วันที่ชำระเงินสะท้อนถึงวันที่ได้รับของถวาย รวมถึงการจัดการตราประทับไปรษณีย์ของเช็คที่ส่งทางไปรษณีย์ที่มีเอกสารประกอบ"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "พิมพ์บนใบแจ้งการถวายทั่วไป ตัวอย่างเช่น EIN ในสหรัฐอเมริกา ค่าเดียวกันอยู่ในข้อมูลคริสตจักร"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "ตัวระบุสินทรัพย์ลายเซ็นของใบแจ้งการถวายส่วนตัว จัดการโดยการอัปโหลดลายเซ็น"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "คุณสมบัติ / การมอบหมาย"
+
+#: 
+msgid "Property deleted"
+msgstr "ลบคุณสมบัติแล้ว"
+
+#: 
+msgid "Property type deleted"
+msgstr "ลบประเภทคุณสมบัติแล้ว"
+
+#: 
+msgid "Receipt Closing"
+msgstr "คำลงท้ายใบเสร็จ"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "ท้องที่ที่ออกใบเสร็จ"
+
+#: 
+msgid "Receipt No."
+msgstr "เลขที่ใบเสร็จ"
+
+#: 
+msgid "Registration Number"
+msgstr "หมายเลขทะเบียน"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "หมายเลขทะเบียนในรูปแบบ 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "บันทึกประจำรุ่นไม่พร้อมใช้งานในขณะนี้"
+
+#: 
+msgid "Releases"
+msgstr "รุ่น"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "คำมั่นสัญญาที่เหลือสำหรับ %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "ลบข้อกำหนด 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "ลบรูปภาพลายเซ็นที่เก็บไว้หรือไม่? ใบเสร็จอย่างเป็นทางการต้องการให้มีอยู่ในไฟล์"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "รายงานและการแจ้งเตือนเปรียบเทียบคำมั่นสัญญาเต็มช่วงเวลานี้กับการถวาย ยอดคงเหลือไม่ใช่การคำนวณงวดที่ค้างชำระ"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "รายงานและการแจ้งเตือนใช้คำมั่นสัญญาเต็มจำนวนที่แสดงข้างต้น ยอดคงเหลือไม่ใช่การคำนวณงวดที่ค้างชำระ"
+
+#: 
+msgid "Require 2FA"
+msgstr "กำหนดให้ใช้ 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "รีเซ็ตตัวเลือก"
+
+#: 
+msgid "Review Selected Families"
+msgstr "ตรวจสอบครอบครัวที่เลือก"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "ตัวอย่าง — ไม่สามารถใช้เพื่อวัตถุประสงค์ทางภาษีได้"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "ตัวยึดตำแหน่งลายเซ็นตัวอย่าง"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "ระบุว่าจำเป็นต้องใช้ 2FA หรือไม่"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "การอัปเดตความปลอดภัยและการสนับสนุนมีให้สำหรับเวอร์ชันล่าสุดเท่านั้น"
+
+#: 
+msgid "Select the families to review."
+msgstr "เลือกครอบครัวที่จะตรวจสอบ"
+
+#: 
+msgid "Set up the statement"
+msgstr "ตั้งค่าใบแจ้ง"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "ตั้งค่าการยืนยันตัวตนสองขั้นตอนเพื่อดำเนินการต่อ"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "ความขัดแย้งของซองที่ใช้ร่วมกัน: อีกครอบครัวหนึ่งมีหมายเลขซองนี้อยู่ในขณะนี้"
+
+#: 
+msgid "Signature Image"
+msgstr "รูปภาพลายเซ็น"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "รูปภาพลายเซ็น (ผู้ดูแลระบบ, การตั้งค่ารายงาน)"
+
+#: 
+msgid "Signature on file"
+msgstr "ลายเซ็นในไฟล์"
+
+#: 
+msgid "Sincerely"
+msgstr "ด้วยความเคารพ"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "ระบุเกณฑ์จำนวนเงินเมื่อแก้ไขคำมั่นสัญญาที่เกิดซ้ำ"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "ใบแจ้งการถวายมาตรฐาน"
+
+#: 
+msgid "Statement Template"
+msgstr "แม่แบบใบแจ้ง"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "ระบุวันที่ออกไม่ช้ากว่าวันนี้"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "เลขผู้เสียภาษีบนใบแจ้ง"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "ครอบครัว %s ไม่มีสมาชิกที่ยังมีชีวิตอยู่ที่จะเชิญไปยังพอร์ทัลสมาชิก"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "หมายเลขทะเบียนของแคนาดาต้องอยู่ในรูปแบบ 123456789RR0001 การนี้ไม่ได้ยืนยันสถานะการจดทะเบียน"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "หมายเลขทะเบียนขององค์กรการกุศลต้องเป็นข้อความ"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "หมายเลขทะเบียนขององค์กรการกุศลที่พิมพ์บนใบเสร็จอย่างเป็นทางการ หากว่างเปล่าจะใช้เลขผู้เสียภาษีในข้อมูลคริสตจักร"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "ที่อยู่จดทะเบียนขององค์กรการกุศล หากว่างเปล่าจะใช้ที่อยู่ในข้อมูลคริสตจักร"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "วลีลงท้ายที่อยู่เหนือผู้ลงนาม ตัวอย่างเช่น ด้วยความเคารพ"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "คำมั่นสัญญาเต็มจำนวนต้องไม่เกิน 999999.99 ต่อกองทุน และจำนวนเงินต้องใช้ทศนิยมไม่เกินสองตำแหน่ง"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "ของถวายหรือที่อยู่ทางไปรษณีย์เปลี่ยนแปลงไปตั้งแต่คุณตรวจสอบครั้งล่าสุด ตรวจสอบและยืนยันผู้บริจาคอีกครั้ง"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "ที่อยู่ทางไปรษณีย์ไม่สมบูรณ์ จำเป็นต้องมีถนน เมือง จังหวัด และรหัสไปรษณีย์"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "ชื่อที่องค์กรการกุศลจดทะเบียนไว้ อาจแตกต่างจากชื่อคริสตจักร"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "สถานที่ที่ออกใบเสร็จ หากว่างเปล่าจะใช้เมืองในข้อมูลคริสตจักร"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "ผู้ลงนามในใบแจ้งการถวายที่พิมพ์ได้รับอนุญาตให้ลงนามใบเสร็จเหล่านี้"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "สัญลักษณ์สกุลเงินของระบบต้องเป็น $ หรือระบุ CAD สำหรับใบเสร็จของแคนาดา"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "ไม่มีการชำระเงินในปีปฏิทินที่เลือก"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "บุคคลเหล่านี้คือผู้บริจาคที่แท้จริงสำหรับของถวายทุกชิ้นในครอบครัว/ปีปฏิทินนี้ และที่อยู่ทางไปรษณีย์ถูกต้อง"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "รูปภาพนี้พิมพ์อยู่เหนือชื่อผู้ลงนามบนใบแจ้งการถวายและใบเสร็จ รายละเอียดองค์กรการกุศลและชื่อที่พิมพ์ของผู้ลงนามอยู่ภายใต้ การเงิน, การตั้งค่าใบแจ้ง"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "ตัวเลือกนี้จัดรูปแบบใบเสร็จของแคนาดาแต่ไม่เก็บทะเบียนใบเสร็จหรือเก็บ PDF ไว้"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "ครอบครัวที่ลงทะเบียนด้วยตนเองนี้กำลังรอการอนุมัติ การอนุมัติจะส่งอีเมลคำเชิญไปยังสมาชิกแต่ละคนที่สามารถเข้าสู่พอร์ทัลสมาชิกเพื่อตรวจสอบข้อมูลของครอบครัว"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "เครื่องมือนี้ไม่มีขั้นตอนการยกเลิก/ทดแทน ใช้กระบวนการที่สอดคล้องกับ CRA ที่มีอยู่ของคุณสำหรับการแก้ไข/การทดแทนใบเสร็จที่สูญหาย"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "ผู้ใช้รายนี้ต้องตั้งค่า 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "การนี้จะลบบันทึกครอบครัวและบันทึกย่ออย่างถาวร ไม่สามารถยกเลิกได้"
+
+#: 
+msgid "Total commitment"
+msgstr "คำมั่นสัญญาทั้งหมด"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "ไม่สามารถดูตัวอย่างคำมั่นสัญญาได้"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "อัปโหลดหรือแทนที่ลายเซ็น"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "อัปโหลดลายเซ็นภาษีที่ได้รับอนุญาตในการตั้งค่ารายงาน"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "ใช้วันที่ภายในปีงบประมาณที่เลือก ของถวายรายเดือนและรายไตรมาสใช้วันงวดแรก หรือวันสุดท้ายของเดือนที่สั้นกว่า"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "ชื่อเต็มของผู้บริจาคที่ยืนยันแล้ว"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "ยืนยันครอบครัวด้วยตนเองแทน"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "ยืนยันชื่อเต็มและที่อยู่ของผู้บริจาคสำหรับทุกครอบครัว ชุดการชำระเงินที่มีผู้บริจาคหลายรายต้องจัดการนอกคุณสมบัตินี้"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "เวอร์ชัน %s พร้อมใช้งาน โปรดขอให้ผู้ดูแลระบบของคุณอัปเกรดการติดตั้งของคุณ"
+
+#: 
+msgid "View all emails"
+msgstr "ดูอีเมลทั้งหมด"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "ใช่ — ชุดผู้บริจาคที่ยืนยันแล้วหนึ่งชุด"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "ประเทศของคริสตจักรของคุณคือแคนาดา ดังนั้นใบเสร็จอย่างเป็นทางการของแคนาดาจึงพร้อมใช้งานเช่นกันเมื่อคุณสร้างใบแจ้ง"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "ประเทศของคริสตจักรของคุณคือแคนาดา ดังนั้นใบเสร็จอย่างเป็นทางการของแคนาดาจึงพร้อมใช้งานบนใบแจ้งการถวาย และใบแจ้งทั่วไปจะถูกทำเครื่องหมายว่าไม่ใช่ใบเสร็จการบริจาคอย่างเป็นทางการ"
+
+#: 
+msgid "groups"
+msgstr "กลุ่ม"
 

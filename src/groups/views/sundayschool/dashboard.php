@@ -10,6 +10,9 @@ use ChurchCRM\Utils\MiscUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+$dashboardSwitchActive = 'sundayschool';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+
 ?>
 
 <!-- Stat Cards Row -->

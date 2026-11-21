@@ -1344,10 +1344,6 @@ msgid "People"
 msgstr "人"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "主日學校的孩子"
-
-#: 
 #, fuzzy
 msgid "Role / Gender"
 msgstr "角色/性別"
@@ -1411,10 +1407,6 @@ msgstr "組"
 #: 
 msgid "Default"
 msgstr "默認"
-
-#: 
-msgid "Exit"
-msgstr "出口"
 
 #: 
 msgid "Add New"
@@ -1521,11 +1513,6 @@ msgstr "更新屬性"
 #: 
 msgid "Assign New Group"
 msgstr "指派新群組"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "分配一個新的義工機會"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1644,11 +1631,6 @@ msgid "Restore Database"
 msgstr "還原資料庫"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "請確認刪除"
-
-#: 
 msgid "Listing"
 msgstr "列表"
 
@@ -1742,14 +1724,6 @@ msgstr "新密碼"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "確認新密碼"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "義工機會編輯器"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "尚未添加任何志願服務機會"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4563,10 +4537,6 @@ msgid "People Reports"
 msgstr "人員報告"
 
 #: 
-msgid "People Dashboard"
-msgstr "人員儀錶板"
-
-#: 
 msgid "People Directory"
 msgstr "人員目錄"
 
@@ -5206,10 +5176,6 @@ msgstr "強制執行內容安全策略 (CSP) 以幫助防止跨站腳本攻擊�
 #: 
 msgid "Enter event description..."
 msgstr "輸入活動描述..."
-
-#: 
-msgid "Enter note text here..."
-msgstr "在此處輸入筆記文字..."
 
 #: 
 msgid "Note"
@@ -6527,20 +6493,8 @@ msgid "Additional Information"
 msgstr "附加資訊"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "分配機會"
-
-#: 
 msgid "Choose a property..."
 msgstr "選擇一個屬性..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "選擇機會..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "聯絡與個人資訊"
 
 #: 
 msgid "Edited"
@@ -6549,14 +6503,6 @@ msgstr "已編輯"
 #: 
 msgid "Newsletter"
 msgstr "通訊報"
-
-#: 
-msgid "Personal"
-msgstr "個人"
-
-#: 
-msgid "Select Opportunities"
-msgstr "選擇機會"
 
 #: 
 msgid "Volunteer"
@@ -6741,10 +6687,6 @@ msgid "Confirm Property Deletion"
 msgstr "確認屬性刪除"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "確認志願服務機會刪除"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "刪除確認"
 
@@ -6757,16 +6699,8 @@ msgid "Existing Custom Person Fields"
 msgstr "現有自定義個人欄位"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "現有志願服務機會"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "欄位刪除成功"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "無效的 CSRF 令牌"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8164,10 +8098,6 @@ msgid "or later to continue."
 msgstr "或更高版本以繼續。"
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "「來訪原因」備註"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%s 的 %d 個結果"
@@ -8275,10 +8205,6 @@ msgstr "新增或編輯個人記錄"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "新增或編輯募款活動的捐贈物品"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "新增或編輯個人和家庭備註"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8535,10 +8461,6 @@ msgstr "建立和管理教會活動"
 #: 
 msgid "Create or edit property type categories"
 msgstr "建立或編輯屬性類型分類"
-
-#: 
-msgid "Create or edit volunteer positions"
-msgstr "建立或編輯志工職位"
 
 #: 
 msgid "Current person"
@@ -8989,10 +8911,6 @@ msgid "Manage user account details and permissions"
 msgstr "管理使用者帳號詳情和權限"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "管理志工服務機會並分配成員"
-
-#: 
 msgid "Map cart items"
 msgstr "在地圖上顯示名單中的人員"
 
@@ -9113,10 +9031,6 @@ msgid "No timeline events yet."
 msgstr "尚無時間軸事件。"
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "尚無志工服務分配。"
-
-#: 
 msgid "Not ready yet?"
 msgstr "還沒準備好？"
 
@@ -9153,10 +9067,6 @@ msgstr "總覽"
 #: 
 msgid "Password Recovery"
 msgstr "密碼恢復"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "過去與未來7天"
 
 #: 
 msgid "People by Classification"
@@ -9241,10 +9151,6 @@ msgstr "一次記錄多位募款抽獎得獎者"
 #: 
 msgid "Record new pledges and payments"
 msgstr "記錄新的奉獻承諾和奉獻款項"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "記錄來訪者造訪教會的原因"
 
 #: 
 msgid "Remove from Class"
@@ -9627,10 +9533,6 @@ msgid "funds"
 msgstr "基金"
 
 #: 
-msgid "opportunities"
-msgstr "服務機會"
-
-#: 
 msgid "or connect an external service"
 msgstr "或連接外部服務"
 
@@ -9930,11 +9832,6 @@ msgstr "無法擷取電子郵件地址"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "無法擷取電話號碼"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "為特定機會尋找志願者"
 
 #. Context: query_qry
 #: 
@@ -11058,10 +10955,6 @@ msgstr "深色"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "僅資料庫 (.sql) 或完整備份 (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "資料表格預設顯示的列數，下次載入頁面後生效。"
 
 #. Context: locales
 #: 
@@ -12704,10 +12597,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "無法刪除屬性類型：仍有 %d 個屬性參照此類型，請先重新指派或刪除這些屬性。"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "無法刪除義工機會：仍有 %d 人已被指派，請先移除指派。"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "類別必須是 p、f 或 g 其中之一"
 
@@ -12718,10 +12607,6 @@ msgstr "複製錯誤訊息"
 #: 
 msgid "Could not load note."
 msgstr "無法載入備註。"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "說明不得超過 100 個字元"
 
 #: 
 msgid "Donation fund not found"
@@ -12744,10 +12629,6 @@ msgid "Failed to create property type"
 msgstr "建立屬性類型失敗"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "建立義工機會失敗"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "刪除捐款基金失敗"
 
@@ -12764,10 +12645,6 @@ msgid "Failed to delete property type"
 msgstr "刪除屬性類型失敗"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "刪除義工機會失敗"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "更新捐款基金失敗"
 
@@ -12780,10 +12657,6 @@ msgid "Failed to update property type"
 msgstr "更新屬性類型失敗"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "更新義工機會失敗"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "找不到籌款活動"
 
@@ -12794,10 +12667,6 @@ msgstr "安裝識別碼"
 #: 
 msgid "Invalid class"
 msgstr "無效的類別"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "名稱不得超過 30 個字元"
 
 #: 
 msgid "Note by %s deleted"
@@ -12820,16 +12689,8 @@ msgid "Read more"
 msgstr "閱讀更多"
 
 #: 
-msgid "That name already exists."
-msgstr "該名稱已存在。"
-
-#: 
 msgid "Title is required"
 msgstr "標題為必填項目"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "找不到義工機會"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13040,14 +12901,6 @@ msgid "Click Save to apply."
 msgstr "點擊儲存以套用。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪貼簿API不可用。請手動複製URL。"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "剪貼簿不可用。請使用下載按鈕儲存您的驗證碼。"
-
-#: 
 msgid "Code incomplete"
 msgstr "驗證碼不完整"
 
@@ -13166,10 +13019,6 @@ msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有
 #: 
 msgid "Deposit ID"
 msgstr "存款編號"
-
-#: 
-msgid "Deposit Value"
-msgstr "存款金額"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13626,14 +13475,6 @@ msgstr "無存款"
 #: 
 msgid "No Events Today"
 msgstr "今日無活動"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "過去和未來7天內沒有紀念日"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "過去和未來7天內沒有生日"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -14579,24 +14420,12 @@ msgid "People &amp; Families"
 msgstr "會眾與家庭"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "您嘗試編輯的備註已不存在。"
-
-#: 
 msgid "User List"
 msgstr "使用者清單"
 
 #: 
 msgid "View Person"
 msgstr "檢視成員"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "您沒有為此家庭新增備註的權限。"
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "您沒有為此成員新增備註的權限。"
 
 #: 
 msgid "Account locked"
@@ -15225,10 +15054,6 @@ msgid "Target family"
 msgstr "目標家庭"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "找不到該小組，請再試一次。"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "所選家庭已不存在，請重新整理頁面後再試。"
 
@@ -15295,10 +15120,6 @@ msgstr "目標金額必須為非負數"
 #: 
 msgid "thru %s"
 msgstr "至 %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "「來訪原因」備註（%1$s %2$s）"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15447,10 +15268,6 @@ msgstr "支援的格式"
 #: 
 msgid "System Configuration"
 msgstr "系統設定"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "此義工機會已有人員指派，刪除將取消指派"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15681,10 +15498,6 @@ msgid "Add New Fund"
 msgstr "新增基金"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "新增機會"
-
-#: 
 msgid "Add New Person"
 msgstr "新增成員"
 
@@ -15697,10 +15510,6 @@ msgid "Add New Role"
 msgstr "新增角色"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "新增義工機會"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "新增主日學班級"
 
@@ -15711,10 +15520,6 @@ msgstr "要刪除此家庭嗎？"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "審查透過公開登記表單新登記的家庭與個人"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "確認刪除義工機會"
 
 #: 
 msgid "# Payments"
@@ -17379,14 +17184,6 @@ msgid "Find people who did not attend an event"
 msgstr "查找未參加活動的人員"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "查找與兩個特定機會代碼相匹配的志願者"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "首個志願者機會"
-
-#: 
 msgid "Folded Booklet"
 msgstr "折疊小冊子"
 
@@ -17463,10 +17260,6 @@ msgid "Run Report"
 msgstr "運行報告"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "第二個志願者機會"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "顯示在側邊欄、登入頁面和電郵中。上傳標誌會在其出現的任何地方替換 ChurchCRM 品牌"
 
@@ -17493,14 +17286,6 @@ msgstr "使用默認的 ChurchCRM 標誌"
 #: 
 msgid "View Full Family Giving"
 msgstr "查看完整的家庭捐獻"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "志願者機會"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "兩個機會的志願者"
 
 #: 
 msgid "YTD"
@@ -17975,10 +17760,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "來自您公開登記表單的登記正等待稽核。沒有電子郵件或電話的條目已被標記，請在跟進前核實聯絡方式。"
 
 #: 
-msgid "Review now"
-msgstr "立即稽核"
-
-#: 
 msgid "Review self registrations"
 msgstr "稽核自助登記"
 
@@ -18029,10 +17810,6 @@ msgstr "昨天"
 #: 
 msgid "days ago"
 msgstr "天前"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "筆自助登記等待稽核"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18326,10 +18103,6 @@ msgstr "跟隨活動型別的排班必須指定活動型別"
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "只負責一場活動的排班不能跟隨其他活動；請刪除它並改為新增一個排班"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "一份服事機會清單，例如“托兒”或“接待”，儲存在“人員 → 管理”下。每個人在其記錄的“志工”標籤頁中，會標記其願意協助的服事機會。僅此而已：沒有團隊、沒有排班、沒有按日期分配，也沒有提醒郵件。報告和人員記錄是使用這些標記的地方。"
 
 #: 
 msgid "A square picture of your face works best."
@@ -18638,18 +18411,6 @@ msgstr "後臺任務運行於"
 #: 
 msgid "Birthday greeting"
 msgstr "生日問候"
-
-#: 
-msgid "Both"
-msgstr "兩者"
-
-#: 
-msgid "Both (transition)"
-msgstr "兩者（過渡）"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "兩者：V1 與 V2 並行（過渡）"
 
 #: 
 msgid "Calendar address"
@@ -21732,22 +21493,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "使用者必須擁有“新增活動”許可權，或協調此日曆所屬的志工事工"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1：志工機會（舊版）"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1：舊版志工機會"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2：事工"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2：志工管理"
-
-#: 
 msgid "Valid"
 msgstr "有效"
 
@@ -21766,14 +21511,6 @@ msgstr "檢視活動"
 #: 
 msgid "View this email"
 msgstr "檢視此電子郵件"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "志工（舊版）"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "未啟用志工管理 V2"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21878,10 +21615,6 @@ msgid "What the check found"
 msgstr "檢查發現了什麼"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "志工體驗是什麼"
-
-#: 
 msgid "What you want to say"
 msgstr "您想說的話"
 
@@ -21912,10 +21645,6 @@ msgstr "日期的來源"
 #: 
 msgid "Where we reach you"
 msgstr "我們如何聯絡您"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "啟用哪種志工管理體驗。V1 是舊版志工機會功能；V2 是新的排班與分配工作流程。“兩者”會在遷移期間並排顯示兩邊。"
 
 #: 
 msgid "Which events"
@@ -22324,10 +22053,6 @@ msgstr "無權變更此事件的接收人群組"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "僅義工主管可以變更事工的協調人"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "選擇 V1 時，V2 義工電子郵件將暫停；任何排隊的郵件將在 V2 重新啟用時發送（除非其發生已結束）。"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23172,10 +22897,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "未滿崗位通知的提前時間（小時）"
 
 #: 
-msgid "Volunteer Management"
-msgstr "志工管理"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "志工事工、團隊、日程與指派"
 
@@ -23186,14 +22907,6 @@ msgstr "未來幾天要安排的志工崗位"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "這些即將到來的安排仍需要的志工：%d"
-
-#: 
-msgid "What do these mean?"
-msgstr "這些是什麼意思？"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "本教會使用哪種志工體驗"
 
 #: 
 msgid "You are on the schedule"
@@ -24124,10 +23837,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 筆付款尚未列入任何存款。"
 
 #: 
-msgid "Closing line"
-msgstr "結尾語"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "本年度日期的每筆存款都已結案。"
 
@@ -24140,28 +23849,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "本年度的每筆付款都已列入存款。"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "產生稅務證明"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "奉獻報表（稅務證明）"
-
-#: 
-msgid "Opening line"
-msgstr "開頭語"
-
-#: 
 msgid "Qty"
 msgstr "數量"
-
-#: 
-msgid "Signed by"
-msgstr "簽署人"
-
-#: 
-msgid "Thank-you line"
-msgstr "感謝語"
 
 #: 
 msgid "Year-End Giving"
@@ -24320,10 +24009,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "PDF 暫存目錄必須是絕對目錄路徑。"
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "教會稅務編號（EIN）"
-
-#: 
 msgid "Closing Line"
 msgstr "結尾語"
 
@@ -24366,10 +24051,6 @@ msgstr "證明設定"
 #: 
 msgid "Statement Wording"
 msgstr "證明用語"
-
-#: 
-msgid "Tax Information"
-msgstr "稅務資訊"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -24418,10 +24099,6 @@ msgstr "使用教會名稱與地址"
 #: 
 msgid "Using the letterhead path set in System Settings"
 msgstr "使用系統設定中的信頭路徑"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "奉獻證明的用語、稅務編號與 PDF 處理"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24694,10 +24371,6 @@ msgstr "教會所在國家"
 #: 
 msgid "Church default: %s"
 msgstr "教會預設：%s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "教會領袖登入"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25342,10 +25015,6 @@ msgstr "未結束"
 #: 
 msgid "Not moved"
 msgstr "未移轉"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "不確定我們留有哪一個電子郵件？請聯絡教會辦公室。"
 
 #: 
 msgid "Not yet"
@@ -26600,248 +26269,8 @@ msgid "Review Family Information"
 msgstr "核對家庭資料"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "名為「%s」的事工已存在。請從清單中選擇，或改用其他名稱。"
-
-#: 
-msgid "A new ministry"
-msgstr "新事工"
-
-#: 
-msgid "A position"
-msgstr "一個職位"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "要將 {{total}} 位志工加入先前轉換的職位嗎？"
-
-#: 
-msgid "Already converted"
-msgstr "已轉換"
-
-#: 
-msgid "An existing ministry"
-msgstr "現有事工"
-
-#: 
-msgid "Becomes"
-msgstr "轉換為"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM 有兩種管理志工的方式。同一時間只應使用其中一種；「志工體驗」設定決定本教會看到哪一種。切換只會隱藏或顯示頁面和選單項目，絕不會刪除資料。只有在仍使用志願者機會時才提供 V1 和兩者：一旦所有機會都已轉換且教會使用 V2，這兩項就會從清單中消失。"
-
-#: 
-msgid "Convert"
-msgstr "轉換"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "轉換志願者機會"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "現在轉換 {{total}} 個機會嗎？在志願者機會停用之前，V1 資料會原樣保留。"
-
-#: 
-msgid "Converted"
-msgstr "已轉換"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "已轉換：{{positions}} 個職位和 {{ministries}} 個事工，{{qualifications}} 位志工取得資格。"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "每個機會都會成為某個事工第一個團隊中的職位，與其連結的每個人都會取得該職位的資格。這些職位的自助報名預設為關閉。"
-
-#: 
-msgid "Everything is converted."
-msgstr "全部已轉換。"
-
-#: 
-msgid "Existing ministry"
-msgstr "現有事工"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "為新事工取一個不超過 100 個字元的名稱。"
-
-#: 
-msgid "Its own ministry"
-msgstr "獨立事工"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "此後連結：{{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "無法轉換的連結"
-
-#: 
-msgid "New ministries of their own"
-msgstr "各自成為新事工"
-
-#: 
-msgid "New ministry name"
-msgstr "新事工名稱"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "不會寄出任何電子郵件，志願者機會在停用前維持不變。"
-
-#: 
-msgid "No name"
-msgstr "無名稱"
-
-#: 
-msgid "Not converted"
-msgstr "未轉換"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "開啟功能開關"
-
-#: 
-msgid "Open Ministries"
-msgstr "開啟事工"
-
-#: 
-msgid "Opportunities"
-msgstr "機會"
-
-#: 
-msgid "Opportunity"
-msgstr "機會"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "機會 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "轉換後連結到已轉換志願者機會的人員：%d。請在志願者機會於 2027 年初停用之前，將他們加入相應職位。"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "請先預覽轉換，並送出預覽傳回的修訂版本。"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "已重新命名以保持名稱唯一"
-
-#: 
-msgid "Review the conversion"
-msgstr "檢查轉換"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "請以 JSON 物件送出轉換選擇。"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "請以 ID 清單送出要轉換為事工的機會。"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "該事工不存在。"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "管理員關閉志願者機會停用通知時所使用的 ChurchCRM 版本。"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "自預覽以來志願者機會已有變更。請重新檢查預覽，然後再轉換。"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "無法開啟確認視窗。請重新載入頁面後再試一次。"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "無法預覽轉換。"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "轉換失敗。未做任何變更。"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "事工「%s」沒有可容納這些職位的團隊。"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "無法連線到伺服器。請重新載入頁面，查看轉換是否已執行。"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "沒有需要轉換的志願者機會。"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "志工管理將切換為「兩者」，讓新事工與志願者機會並列顯示。"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "志願者機會即將停用"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "志願者機會已轉換"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "志願者機會將於 2027 年初停用。請將其轉換為事工，以保留每個人的服事分工。"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "志願者機會將於 2027 年初停用。請立即將您的 %1$d 個機會和 %2$d 位志工轉換為事工。在任何變更之前，您都可以預覽結果。"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "已取得資格的志工"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "待加入已轉換職位的志工"
-
-#: 
-msgid "What it becomes"
-msgstr "轉換結果"
-
-#: 
-msgid "What will happen"
-msgstr "將會發生什麼"
-
-#: 
-msgid "Where they go"
-msgstr "去向"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "哪些舊版志願者機會已轉換，以及每個機會轉換成的職位。"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "本教會使用的志工體驗。志願者機會（V1）將於 2027 年初停用。"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "您的志願者機會已轉換為事工。請在志願者機會於 2027 年初停用之前，將志工管理切換到 V2。"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "到新事工 {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "到事工 {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "已不在 ChurchCRM 中"
 
 #: 
 msgid "Collapse sidebar"
@@ -27016,10 +26445,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d 個預設被略過，原因不同（發生已結束、已取消或已滿）"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "過渡設定。舊版志工機會頁面與新的事工頁面同時可用，人員記錄會顯示兩個志工標籤頁，並有清楚標示。用於教會從 V1 遷移到 V2 期間，之後再切換為僅 V2。"
-
-#: 
 msgid "Assignment canceled"
 msgstr "分配已取消"
 
@@ -27066,10 +26491,6 @@ msgstr "這個日期已取消，您不需要再做任何事。"
 #: 
 msgid "This occurrence has been canceled"
 msgstr "此活動場次已取消"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "按教會運作方式組織的志願服事。每個事工有團隊和職位；人員取得職位資格，並屬於該事工的庫小組；排班跟隨日曆上的活動，生成帶有人員需求的、有日期的活動場次；協調員分配人員，他們可以接受、拒絕或提議代替人選；提醒和警報通過電子郵件發出。管理員和擁有“管理事工”許可權的使用者可以看到所有事工，並可建立、停用和刪除。事工協調員則獲得“管理我的事工”許可權：側邊欄的“事工”標題下只顯示其協調的事工。團隊負責人通過會眾門戶管理其團隊。會眾使用會眾門戶檢視自己的排班、回應、報名和表示願意幫忙。"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27231,10 +26652,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "同時停用登入,讓他們無法使用成員入口網站"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "寄出對帳單之前"
-
-#: 
 msgid "Birthday today"
 msgstr "今天生日"
 
@@ -27317,10 +26734,6 @@ msgstr "刪除人員和家庭"
 #: 
 msgid "Delete the login for"
 msgstr "刪除以下對象的登入:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "存款圖表時間範圍"
 
 #: 
 msgid "Disabled at"
@@ -27575,10 +26988,6 @@ msgid "Preview Sample Letter"
 msgstr "預覽範例信函"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "加拿大奉獻對帳單私有簽名的資產識別碼。透過上傳簽名來管理。"
-
-#: 
 msgid "Property Type"
 msgstr "屬性類型"
 
@@ -27617,10 +27026,6 @@ msgstr "檢視並篩選"
 #: 
 msgid "Review and vote"
 msgstr "檢視並投票"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "檢視該年度,然後下載奉獻對帳單。"
 
 #: 
 msgid "Review what we are considering"
@@ -27669,10 +27074,6 @@ msgstr "強"
 #: 
 msgid "Support"
 msgstr "支援"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "稅號和 PDF 設定"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27787,10 +27188,6 @@ msgid "View people and families"
 msgstr "檢視人員和家庭"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "本教會已關閉志工管理"
-
-#: 
 msgid "Weak"
 msgstr "弱"
 
@@ -27859,10 +27256,6 @@ msgid "Latest Notes"
 msgstr "最新備註"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "尚未新增任何備註。"
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "開始註冊以取得 QR 碼。"
 
@@ -27873,4 +27266,744 @@ msgstr "該密碼或代碼不正確。二階段驗證仍處於啟用狀態。"
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "二階段驗證已設定。其密鑰僅在註冊期間顯示。"
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d 筆捐贈，總計 %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d 個家庭目前擁有此類型的屬性。"
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d 個家庭尚無法獲得收據，將被排除在外。請修復其下方列出的問題，然後選擇「重新檢查」。"
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d 個群組目前擁有此類型的屬性。"
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d 人目前擁有此類型的屬性。"
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "自您安裝的版本以來有 %d 個新版本可用。"
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s：%s 未產生收據。"
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s：請輸入經核實的捐贈者全名，確認捐贈者，並確認一組捐贈者。混合捐贈者的付款組合必須在此功能之外處理。"
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s：自審核以來，捐贈或郵寄地址已變更。請選擇「重新檢查」並再次確認捐贈者。"
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 期分期付款）"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "（{{count}} 期分期付款）"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "一筆信用卡或銀行匯票付款所在的存款尚未結清。請在付款清算後關閉該存款。"
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "一筆付款包含不可抵扣金額。此處的加拿大收據僅支援無利益回報的捐贈。"
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "一筆付款的金額無效。"
+
+#: 
+msgid "A payment has no date."
+msgstr "一筆付款沒有日期。"
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "一筆付款的日期晚於開具日期。"
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "一筆付款被標記為有問題。"
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "一筆付款為零或負數。"
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "需要經過審核且帶有有效 CSRF 權杖的 POST 請求。"
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "所選家庭已不存在。"
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "簽名圖像不是安全的數位簽名。"
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "有系統更新可用。請讓您的管理員升級您的安裝。"
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "所有包含的列均為無利益回報的貨幣捐贈。"
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "所有必需的加拿大收據設定均已填寫。"
+
+#: 
+msgid "Also delete family members"
+msgstr "同時刪除家庭成員"
+
+#: 
+msgid "Amount of advantages"
+msgstr "利益金額"
+
+#: 
+msgid "Amount of gifts"
+msgstr "捐贈金額"
+
+#: 
+msgid "Amount per installment"
+msgstr "每期金額"
+
+#: 
+msgid "Amounts entered are"
+msgstr "輸入的金額為"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "由管理員在「報表設定」下上傳。"
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "已批准，但未發送邀請"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "請讓您的系統管理員將 ChurchCRM 升級到最新版本。"
+
+#: 
+msgid "Authorized Signature"
+msgstr "授權簽名"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "加拿大稅務局"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "加拿大正式收據"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "加拿大正式收據要求在「教會資訊」中將教會所在國家設為加拿大。"
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "加拿大收據要求整個曆年和所有基金，且不帶其他篩選條件。"
+
+#: 
+msgid "Change Selection"
+msgstr "更改選擇"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "慈善機構法定名稱"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "慈善機構註冊地址"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "慈善機構註冊號"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "收據所需的慈善機構詳細資訊尚未填寫。請在方便時加入法定名稱、註冊地址、註冊號和開具地點。在此之前，財務功能將繼續正常運作。"
+
+#: 
+msgid "Charity on receipts"
+msgstr "收據上的慈善機構"
+
+#: 
+msgid "Check Again"
+msgstr "重新檢查"
+
+#: 
+msgid "Check the year"
+msgstr "檢查年份"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "檢查年份，設定報表，然後下載。"
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "為分期金額選擇每週、每月或每季。"
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "請選擇有效的捐贈曆年。"
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "請選擇正本或副本。"
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "請選擇總承諾金額或分期金額。"
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM 翻譯在 ChurchCRM GitHub 儲存庫中管理。您可以透過以下方式提供協助"
+
+#: 
+msgid "Commitment amount"
+msgstr "承諾金額"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "將副本與保留的正本進行比較，並確認所有收據資訊未變更。"
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "下載前請完成每一份收據確認。"
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "請填寫慈善機構法定名稱、註冊地址、註冊號、開具地點和列印的簽署人。"
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "確認信列印簽署人"
+
+#: 
+msgid "Copy Kind"
+msgstr "副本類型"
+
+#: 
+msgid "Currency"
+msgstr "貨幣"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "貨幣符號 $ 或 CAD"
+
+#: 
+msgid "Date received"
+msgstr "收到日期"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "刪除它還會移除 %d 個屬性及其所有分配，以免留下任何懸空資料。"
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "所選年度的所有捐贈是否都屬於上面共同列出的捐贈者？"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "請勿將同一編號用於不同的收據、為同一筆捐贈開具兩次收據，或將已變更的資訊重新產生為未變更的正本。"
+
+#: 
+msgid "Duplicate"
+msgstr "副本"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "副本 / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "符合所得稅用途資格的捐贈金額"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "輸入排程和分期日期以預覽承諾。"
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "請依序輸入有效的第一期和最後一期日期。"
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "請輸入有效的分期金額，最多兩位小數。"
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "現有的認捐保留其記錄的總額。僅在輸入每筆排程捐贈時選擇每期金額。"
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "根據戶主和配偶自動填寫。請編輯以與捐贈者完全一致。"
+
+#: 
+msgid "First installment"
+msgstr "第一期"
+
+#: 
+msgid "Full commitment"
+msgstr "全額承諾"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "產生稅務報表"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "捐贈曆年"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "奉獻報表 — 並非正式捐贈收據"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "在 GitHub 上協助翻譯"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "不支援歷史信封變更。"
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "我已與保留的正本進行比較：捐贈者、金額、序號和文字均未變更。這不是更正或替換。"
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "我將把已開具的 PDF 和外部收據日誌保留在該慈善機構的加拿大紀錄保存地點。"
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "如果保留的正本不可用或不同，請使用您外部的 CRA 註銷/替換程序。"
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "包含付款備忘：我已審核它們，認為適合捐贈者。"
+
+#: 
+msgid "Include this family in the download"
+msgstr "將此家庭包含在下載中"
+
+#: 
+msgid "Installed version: %s"
+msgstr "已安裝版本：%s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "分期金額只能用於認捐。"
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "分期日期必須在所選會計年度內。"
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "CSRF 權杖無效或缺失"
+
+#: 
+msgid "Issue Date"
+msgstr "開具日期"
+
+#: 
+msgid "Issue Locality"
+msgstr "開具地點"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "將原始 PDF 和外部收據日誌保留在該慈善機構的加拿大紀錄保存地點。"
+
+#: 
+msgid "Last installment on or before"
+msgstr "最後一期不晚於"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "信件措辭、慈善機構詳細資訊和 PDF 處理在「報表設定」中一次性設定。"
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "奉獻報表的信件措辭、慈善機構詳細資訊和 PDF 處理"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "最大 2 MiB 和 2000 × 1000 像素。選擇新圖像以替換儲存的簽名。簽名圖像不是安全的數位簽名。"
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "會員登入已關閉，因此 %s 家庭中的任何人都無法登入會員入口網站。管理員可以在「管理 → 會員入口網站」下將其開啟。"
+
+#: 
+msgid "Memo"
+msgstr "備忘"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "混合捐贈者的家庭付款組合無法在此拆分；請在此功能之外處理。"
+
+#: 
+msgid "Narrow the list"
+msgstr "縮小清單範圍"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "沒有家庭符合 %s 的這些篩選條件。"
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "不存在重疊的個人或累計收據。"
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "尚無法為此家庭產生收據"
+
+#: 
+msgid "No signature on file"
+msgstr "沒有存檔簽名"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "否 — 捐贈者不同；請在此功能之外處理"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "根據目前的登入規則，%s 家庭中的任何人都無法登入會員入口網站。"
+
+#: 
+msgid "None / Aucun"
+msgstr "無 / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "尚未準備好開具加拿大收據。仍缺少"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "正式收據 / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "所得稅用途正式收據 / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "正式收據需要格式為 123456789RR0001 的註冊號和簽名圖像。"
+
+#: 
+msgid "Original"
+msgstr "正本"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "原始開具日期（從保留的正本中輸入）"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "付款日期反映捐贈收到日期，包括有紀錄的郵寄支票郵戳處理。"
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "列印在一般奉獻報表上，例如美國的 EIN。相同的值位於「教會資訊」中。"
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "私人奉獻報表簽名資產識別碼。由簽名上傳管理。"
+
+#: 
+msgid "Properties / Assignments"
+msgstr "屬性 / 分配"
+
+#: 
+msgid "Property deleted"
+msgstr "屬性已刪除"
+
+#: 
+msgid "Property type deleted"
+msgstr "屬性類型已刪除"
+
+#: 
+msgid "Receipt Closing"
+msgstr "收據結尾語"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "收據開具地點"
+
+#: 
+msgid "Receipt No."
+msgstr "收據編號"
+
+#: 
+msgid "Registration Number"
+msgstr "註冊號"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "格式為 123456789RR0001 的註冊號"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "發行說明目前不可用。"
+
+#: 
+msgid "Releases"
+msgstr "發行版本"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s 的剩餘承諾：%s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "移除 2FA 要求"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "移除已儲存的簽名圖像？正式收據需要在檔案中保存一個。"
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "報表和提醒會將此整段期間的承諾與奉獻進行比較。剩餘餘額不是逾期分期計算。"
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "報表和提醒使用上面顯示的全額承諾。剩餘餘額不是逾期分期計算。"
+
+#: 
+msgid "Require 2FA"
+msgstr "要求 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "重設選項"
+
+#: 
+msgid "Review Selected Families"
+msgstr "審核所選家庭"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "樣本 — 對稅務用途無效"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "範例簽名佔位符"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "說明是否需要 2FA。"
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "僅為最新版本提供安全性更新和支援。"
+
+#: 
+msgid "Select the families to review."
+msgstr "選擇要審核的家庭。"
+
+#: 
+msgid "Set up the statement"
+msgstr "設定報表"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "設定雙重身分驗證以繼續。"
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "共用信封衝突：另一個家庭目前使用此信封編號。"
+
+#: 
+msgid "Signature Image"
+msgstr "簽名圖像"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "簽名圖像（管理、報表設定）"
+
+#: 
+msgid "Signature on file"
+msgstr "簽名已存檔"
+
+#: 
+msgid "Sincerely"
+msgstr "此致敬禮"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "編輯定期認捐時請指定金額依據。"
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "標準奉獻報表"
+
+#: 
+msgid "Statement Template"
+msgstr "報表範本"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "請提供不晚於今天的開具日期。"
+
+#: 
+msgid "Tax ID on statements"
+msgstr "報表上的稅號"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s 家庭沒有在世會員可邀請加入會員入口網站。"
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "加拿大註冊號必須為 123456789RR0001 格式。這並不驗證註冊狀態。"
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "慈善機構註冊號必須是文字。"
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "列印在正式收據上的慈善機構註冊號。留空則使用「教會資訊」中的稅號。"
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "慈善機構的註冊地址。留空則使用「教會資訊」中的地址。"
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "簽署人上方的結尾語，例如「此致敬禮」。"
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "每個基金的全額承諾不得超過 999999.99，且金額最多使用兩位小數。"
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "自您上次檢查以來，捐贈或郵寄地址已變更。請審核它們並再次確認捐贈者。"
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "郵寄地址不完整。需要街道、城市、省份和郵遞區號。"
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "慈善機構註冊所用的名稱。它可以與教會名稱不同。"
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "開具收據的地點。留空則使用「教會資訊」中的城市。"
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "列印的奉獻報表簽署人有權簽署這些收據。"
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "對於加拿大收據，系統貨幣符號必須為 $ 或標明 CAD。"
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "所選曆年內沒有付款。"
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "這些是此家庭/曆年每一筆捐贈的真實捐贈者，並且郵寄地址正確。"
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "此圖像列印在奉獻報表和收據上簽署人姓名的上方。慈善機構詳細資訊和簽署人的列印姓名位於「財務、報表設定」下。"
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "此選項將收據格式化為加拿大收據，但不保存收據登錄冊，也不保留 PDF。"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "這個自行註冊的家庭正在等待批准。批准後，系統會透過電子郵件向每位可以登入會員入口網站的會員發送邀請，請其審核家庭資訊。"
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "此工具沒有註銷/替換工作流程；請使用您符合 CRA 要求的現有程序進行更正/遺失收據替換。"
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "此使用者必須設定 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "這將永久刪除家庭紀錄及其備註。此操作無法復原。"
+
+#: 
+msgid "Total commitment"
+msgstr "總承諾"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "無法預覽承諾。"
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "上傳或替換簽名"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "在「報表設定」中上傳經授權的稅務簽名。"
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "使用所選會計年度內的日期。每月的和每季的捐贈使用第一期的日期，或較短月份的最後一天。"
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "經核實的捐贈者全名"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "改為親自核實該家庭。"
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "核實每個家庭的完整捐贈者姓名和地址。混合捐贈者的付款組合必須在此功能之外處理。"
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "版本 %s 可用。請讓您的管理員升級您的安裝。"
+
+#: 
+msgid "View all emails"
+msgstr "檢視所有電子郵件"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "是 — 一組經核實的捐贈者"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "您的教會所在國家是加拿大，因此在產生報表時也可以使用加拿大正式收據。"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "您的教會所在國家是加拿大，因此可以在奉獻報表上使用加拿大正式收據，一般報表會標記為非正式捐贈收據。"
+
+#: 
+msgid "groups"
+msgstr "組"
 

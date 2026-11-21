@@ -91,7 +91,7 @@ describe("Member sign-in turned off", () => {
 
         // Sign-in and self-registration both off: the staff sign-in is the way in.
         cy.visit("/portal/profile");
-        cy.location("pathname").should("match", /\/admin\/$/);
+        cy.location("pathname").should("match", /\/session\/begin$/);
     });
 
     it("offers a Register your family button when only self-registration is on", () => {
@@ -133,6 +133,6 @@ describe("Member sign-in turned off", () => {
         setMemberSignIn(false);
         portal().its("status").should("eq", 200);
         cy.request("/api/portal/me").its("body.profile.id").should("eq", STAFF.personId);
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+        cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 200);
     });
 });
