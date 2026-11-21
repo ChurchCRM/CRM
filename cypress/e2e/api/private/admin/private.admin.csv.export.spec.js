@@ -58,7 +58,6 @@ describe("API Private Admin — CSV Export", () => {
     });
 
     it("names rollup rows last name first so they sort by surname", () => {
-        // Seed: Jon & Sandra Olson head family 12; Paul Smith is alone in family 5.
         cy.request({
             method: "POST",
             url: "/admin/export/csv",
