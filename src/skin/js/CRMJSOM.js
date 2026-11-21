@@ -500,7 +500,7 @@ window.CRM.system = {
   },
   handlejQAJAXError: (jqXHR, textStatus, errorThrown, suppressErrorDialog) => {
     if (jqXHR.status === 401) {
-      window.location = window.CRM.root + "/admin/";
+      window.location = window.CRM.root + "/session/begin";
     }
     if (textStatus === "abort" || suppressErrorDialog) {
       return;
