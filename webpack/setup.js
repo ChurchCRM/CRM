@@ -15,9 +15,6 @@ function getModal(id) {
 const i18next = require("i18next");
 window.i18next = i18next;
 
-const JustValidate = require("just-validate");
-window.JustValidate = JustValidate;
-
 const moment = require("moment");
 window.moment = moment;
 
@@ -71,8 +68,6 @@ window.moment = moment;
       warning: true,
     },
   };
-
-  const validators = {};
 
   function updateStatusBanner(status, title, detail) {
     const $banner = $("#status-banner");
@@ -483,130 +478,6 @@ window.moment = moment;
     }).always(checkIntegrity);
   }
 
-  function initializeStepValidation(stepId) {
-    const stepElement = document.getElementById(stepId);
-    if (!stepElement) return null;
-
-    const validator = new window.JustValidate(`#${stepId}`, {
-      errorFieldCssClass: "is-invalid",
-      successFieldCssClass: [],
-      errorLabelCssClass: "invalid-feedback",
-      focusInvalidField: true,
-      lockForm: false,
-      errorFieldStyle: {
-        border: "1px solid #dc3545",
-      },
-    });
-
-    let hasFields = false;
-
-    // Process all input fields and build validation rules
-    stepElement.querySelectorAll("input, select, textarea").forEach((field) => {
-      if (!field.id || !field.name) return;
-
-      const errorContainer = field.parentElement.querySelector(".invalid-feedback");
-      const rules = [];
-
-      // Add required rule
-      if (field.hasAttribute("required")) {
-        let errorMessage;
-        switch (field.name) {
-          case "DB_SERVER_NAME":
-            errorMessage = "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)";
-            break;
-          case "DB_SERVER_PORT":
-            errorMessage = "Database server port is required (e.g., 3306)";
-            break;
-          case "DB_NAME":
-            errorMessage = "Database name is required";
-            break;
-          case "DB_USER":
-            errorMessage = "Database username is required";
-            break;
-          case "URL":
-            errorMessage = "Base URL is required";
-            break;
-          default:
-            errorMessage = "This field is required";
-        }
-
-        rules.push({
-          rule: "required",
-          errorMessage: errorMessage,
-        });
-      }
-
-      // Add URL validation for name="URL"
-      if (field.name === "URL") {
-        // Simple URL validation that requires http:// or https:// and a host
-        rules.push({
-          rule: "customRegexp",
-          value: /^https?:\/\/.+/,
-          errorMessage: i18next.t(
-            "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)",
-          ),
-        });
-      }
-
-      // Add pattern validation
-      if (field.getAttribute("pattern")) {
-        let errorMessage;
-        if (field.name === "ROOT_PATH") {
-          errorMessage = i18next.t(
-            "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.",
-          );
-        } else if (field.name === "DB_SERVER_PORT") {
-          errorMessage = i18next.t("Must be a valid port number (e.g., 3306)");
-        } else {
-          errorMessage = field.getAttribute("title") || i18next.t("Invalid format");
-        }
-
-        rules.push({
-          rule: "customRegexp",
-          value: new RegExp(field.getAttribute("pattern")),
-          errorMessage: errorMessage,
-        });
-      }
-
-      // Add URL validation for Base URL field
-      if (field.name === "URL") {
-        rules.push({
-          validator: (value) => {
-            try {
-              const url = new URL(value);
-              return url.protocol === "http:" || url.protocol === "https:";
-            } catch (_e) {
-              return false;
-            }
-          },
-          errorMessage: i18next.t("Must be a valid URL starting with http:// or https://"),
-        });
-      }
-
-      // Add number pattern validation for numeric fields
-      if (field.getAttribute("pattern") === "[0-9]+") {
-        rules.push({
-          rule: "number",
-          errorMessage: i18next.t("Please enter a valid number"),
-        });
-      }
-
-      // If we have any rules, add the field to validation
-      if (rules.length > 0) {
-        if (errorContainer) {
-          validator.addField(`#${field.id}`, rules, {
-            errorsContainer: errorContainer,
-          });
-        } else {
-          validator.addField(`#${field.id}`, rules);
-        }
-        hasFields = true;
-      }
-    });
-
-    return hasFields ? validator : null;
-  }
-
   const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
   const INSTALL_LABEL = "Install ChurchCRM";
 
@@ -637,10 +508,31 @@ window.moment = moment;
     document.getElementById("db-version-warning").classList.add("d-none");
     document.getElementById("db-version-ack").checked = false;
     document.getElementById("submit-setup").disabled = false;
+    for (const field of document.querySelectorAll("#setup-form .is-invalid")) {
+      field.classList.remove("is-invalid");
+    }
+    for (const feedback of document.querySelectorAll("#setup-form .invalid-feedback.d-block")) {
+      feedback.classList.remove("d-block");
+    }
   }
 
-  function fieldErrors(errors) {
-    return Object.values(errors).join(" ");
+  // Outline each field the server rejected, open the web address fields if one is there, and list the fixes.
+  function showFieldErrors(errors) {
+    for (const [id, message] of Object.entries(errors)) {
+      const field = document.getElementById(id);
+      const feedback = field?.closest(".mb-3, .mb-0")?.querySelector(".invalid-feedback");
+      field?.classList.add("is-invalid");
+      if (feedback) {
+        feedback.textContent = message;
+        feedback.classList.add("d-block");
+      }
+    }
+    if (errors.URL || errors.ROOT_PATH) {
+      bootstrap.Collapse.getOrCreateInstance(document.getElementById("advanced-settings-collapse"), {
+        toggle: false,
+      }).show();
+    }
+    document.getElementById(Object.keys(errors)[0])?.focus();
   }
 
   function submitSetupData() {
@@ -669,7 +561,7 @@ window.moment = moment;
           return;
         }
         if (response?.errors) {
-          showSetupProblem(fieldErrors(response.errors));
+          showFieldErrors(response.errors);
           return;
         }
 
@@ -682,12 +574,14 @@ window.moment = moment;
       })
       .fail((xhr) => {
         setInstalling(false);
+        if (xhr.responseJSON?.errors) {
+          showFieldErrors(xhr.responseJSON.errors);
+          return;
+        }
         showSetupProblem(
-          xhr.responseJSON?.errors
-            ? fieldErrors(xhr.responseJSON.errors)
-            : i18next.t(
-                "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log.",
-              ),
+          i18next.t(
+            "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log.",
+          ),
         );
       });
   }
@@ -700,8 +594,6 @@ window.moment = moment;
       event.preventDefault();
       return false;
     });
-
-    validators["step-database"] = initializeStepValidation("setup-form");
 
     for (const id of [...DB_CONNECTION_FIELDS, "URL", "ROOT_PATH"]) {
       document.getElementById(id).addEventListener("input", clearSetupProblem);
@@ -724,11 +616,7 @@ window.moment = moment;
 
     document.getElementById("submit-setup").addEventListener("click", (event) => {
       event.preventDefault();
-      validators["step-database"].revalidate().then((isValid) => {
-        if (isValid) {
-          submitSetupData();
-        }
-      });
+      submitSetupData();
     });
 
     // Initialize prerequisite checks - integrity check will run after prerequisites load

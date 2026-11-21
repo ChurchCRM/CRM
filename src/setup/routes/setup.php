@@ -72,47 +72,27 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         $setupData = $request->getParsedBody();
 
-        // Validate each field and collect errors
+        // One plain sentence per field the installer has to fix.
+        $checks = [
+            'DB_SERVER_NAME' => [fn ($v): bool => (bool) is_valid_hostname($v), gettext('Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes.')],
+            'DB_SERVER_PORT' => [fn ($v): bool => (bool) is_valid_port($v), gettext('Enter the database port as a number. It is usually 3306.')],
+            'DB_NAME'        => [fn ($v): bool => (bool) is_valid_db_name($v), gettext('Enter the database name. Use only letters, numbers, underscores, dashes and dots.')],
+            'DB_USER'        => [fn ($v): bool => (bool) is_valid_db_user($v), gettext('Enter the database user. Use only letters, numbers, underscores, dashes, dots and @.')],
+            'DB_PASSWORD'    => [fn ($v): bool => is_valid_db_password($v), gettext('Enter the password for the database user.')],
+            'URL'            => [fn ($v): bool => URLValidator::isValidConfigURL($v), gettext('Enter the web address, starting with http:// or https://.')],
+            'ROOT_PATH'      => [fn ($v): bool => (bool) is_valid_root_path($v), gettext('Enter the folder starting with /, like /churchcrm, or leave it empty.')],
+        ];
         $errors = [];
-        if (!isset($setupData['DB_SERVER_NAME'])) {
-            $errors['DB_SERVER_NAME'] = 'Missing DB_SERVER_NAME';
-        } elseif (!is_valid_hostname($setupData['DB_SERVER_NAME'])) {
-            $errors['DB_SERVER_NAME'] = 'Invalid DB_SERVER_NAME';
-        }
-        if (!isset($setupData['DB_SERVER_PORT'])) {
-            $errors['DB_SERVER_PORT'] = 'Missing DB_SERVER_PORT';
-        } elseif (!is_valid_port($setupData['DB_SERVER_PORT'])) {
-            $errors['DB_SERVER_PORT'] = 'Invalid DB_SERVER_PORT';
-        }
-        if (!isset($setupData['DB_NAME'])) {
-            $errors['DB_NAME'] = 'Missing DB_NAME';
-        } elseif (!is_valid_db_name($setupData['DB_NAME'])) {
-            $errors['DB_NAME'] = 'Invalid DB_NAME';
-        }
-        if (!isset($setupData['DB_USER'])) {
-            $errors['DB_USER'] = 'Missing DB_USER';
-        } elseif (!is_valid_db_user($setupData['DB_USER'])) {
-            $errors['DB_USER'] = 'Invalid DB_USER';
-        }
-        if (!isset($setupData['DB_PASSWORD'])) {
-            $errors['DB_PASSWORD'] = 'Missing DB_PASSWORD';
-        } elseif (!is_valid_db_password($setupData['DB_PASSWORD'])) {
-            $errors['DB_PASSWORD'] = 'Invalid DB_PASSWORD';
-        }
-        if (!isset($setupData['ROOT_PATH'])) {
-            $errors['ROOT_PATH'] = 'Missing ROOT_PATH';
-        } elseif (!is_valid_root_path($setupData['ROOT_PATH'])) {
-            $errors['ROOT_PATH'] = 'Invalid ROOT_PATH';
-        }
-        if (!isset($setupData['URL'])) {
-            $errors['URL'] = 'Missing URL';
-        } elseif (!URLValidator::isValidConfigURL($setupData['URL'])) {
-            $errors['URL'] = 'Invalid URL format';
+        foreach ($checks as $field => [$isValid, $message]) {
+            $value = $setupData[$field] ?? null;
+            if (!is_string($value) || !$isValid($value)) {
+                $errors[$field] = $message;
+            }
         }
         if (!empty($errors)) {
             TelemetryService::captureInstallFailure('config_invalid');
 
-            return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
+            return SlimUtils::renderJSON($response, ['errors' => $errors], 400);
         }
 
         // Use sanitized values

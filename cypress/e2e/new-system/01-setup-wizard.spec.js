@@ -114,6 +114,17 @@ describe('01 - Setup Wizard', () => {
             cy.get('.setup-logo').should('be.visible');
         });
 
+        it('names the field to fix when a value is missing', () => {
+            openConfigureStep();
+            fillDatabase();
+            cy.get('#DB_NAME').clear();
+            cy.get('#submit-setup').click();
+            cy.get('#DB_NAME').should('have.class', 'is-invalid');
+            cy.contains('.invalid-feedback', 'Enter the database name').should('be.visible');
+            cy.get('#DB_NAME').type('x');
+            cy.get('#DB_NAME').should('not.have.class', 'is-invalid');
+        });
+
         it('holds an unsupported database server for an acknowledgment', () => {
             const posts = [];
             cy.intercept('POST', /\/setup\/?$/, (req) => {
