@@ -45,39 +45,6 @@ function initializeFamilyView() {
     }
   });
 
-  // Family properties: inline form (matches Person page UX).
-  $("#input-family-properties").on("change", () => {
-    const promptBox = $("#family-property-prompt-box").removeClass("mb-3").html("");
-    const selected = $("#input-family-properties :selected");
-    const proPrompt = selected.data("pro_prompt");
-    const proValue = selected.data("pro_value");
-    if (proPrompt) {
-      promptBox
-        .addClass("mb-3")
-        .append($("<label></label>").text(proPrompt))
-        .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(proValue || ""));
-    }
-  });
-
-  $("#assign-family-property-btn").on("click", () => {
-    let propertyId = "";
-    let value = "";
-    $("#assign-family-property-form")
-      .serializeArray()
-      .forEach((field) => {
-        if (field.name === "PropertyId") propertyId = field.value;
-        else if (field.name === "PropertyValue") value = field.value;
-      });
-    if (!propertyId) return;
-    window.CRM.APIRequest({
-      method: "POST",
-      path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
-      data: JSON.stringify({ value: value }),
-    }).done(() => {
-      location.reload();
-    });
-  });
-
   $(".remove-family-property-btn").on("click", function () {
     const propertyId = $(this).data("property_id");
     window.CRM.confirmAction("", i18next.t("Are you sure you want to unassign this property?"), () => {
