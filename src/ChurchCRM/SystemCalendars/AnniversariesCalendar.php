@@ -44,7 +44,7 @@ class AnniversariesCalendar implements SystemCalendar
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate(null, Criteria::ISNOTNULL)
-            ->filterByDateDeactivated(null)
+            ->filterByActive()
             ->find();
 
         return $this->familyCollectionToEvents($families, $start, $end);
@@ -54,7 +54,7 @@ class AnniversariesCalendar implements SystemCalendar
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate(null, Criteria::ISNOTNULL)
-            ->filterByDateDeactivated(null)
+            ->filterByActive()
             ->filterById($Id)
             ->find();
 
