@@ -2238,14 +2238,6 @@ msgid "Deposit Comment"
 msgstr "Kommentar zur Einzahlung"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Unterschriftendatei Verifizierung fehlgeschlagen"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Eine oder mehrere Dateien haben die Signaturprüfung nicht bestanden"
-
-#: 
 msgid "item"
 msgstr "Eintrag"
 
@@ -4765,10 +4757,6 @@ msgid "Estonian"
 msgstr "Estnisch"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Fehler bei der Entschlüsselung der Signatur-Definitionsdatei"
-
-#: 
 msgid "Event not found"
 msgstr "Ereignis nicht gefunden"
 
@@ -5349,14 +5337,6 @@ msgstr "Bitte geben Sie eine gültige URL ein, die mit http:// oder https:// beg
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Alle Systemdateisignaturen stimmen mit den erwarteten Werten überein."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Signaturdefinitionsdatei existiert, ist aber nicht lesbar. Überprüfen Sie die Dateiberechtigungen."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Signaturdefinitionsdatei fehlt bei %s. Führen Sie die Verpackungsaufgabe aus oder stellen Sie eine offizielle Version bereit, um die Signaturen neu zu generieren."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13382,22 +13362,6 @@ msgid "Move Members to Group"
 msgstr "Mitglieder in Gruppe verschieben"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt (z.B. http://localhost oder https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Muss eine gültige Portnummer sein (z.B. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Muss mit / beginnen, wenn nicht leer; kein abschließender Schrägstrich. Nur Buchstaben, Zahlen, Unterstrich, Bindestrich, Punkt und / erlaubt."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Müssen Sie diese Daten später entfernen?"
 
@@ -13548,10 +13512,6 @@ msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Bitte geben Sie eine gültige Nummer ein"
 
 #: 
 msgid "Please enter a valid phone number"

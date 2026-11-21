@@ -2147,14 +2147,6 @@ msgid "Deposit Comment"
 msgstr "入金コメント"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "署名定義ファイルの署名検証に失敗しました"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "1つ以上のファイルの署名検証に失敗しました"
-
-#: 
 msgid "item"
 msgstr "アイテム"
 
@@ -4662,10 +4654,6 @@ msgid "Estonian"
 msgstr "エストニア語"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "署名定義ファイルのデコードエラー"
-
-#: 
 msgid "Event not found"
 msgstr "イベントが見つかりません"
 
@@ -5243,14 +5231,6 @@ msgstr "http://またはhttps://で始まる有効なURLを入力してくださ
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "すべてのシステムファイル署名が期待値と一致しています。"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "署名定義ファイルは存在しますが、読み取りできません。ファイル権限を確認してください。"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "署名定義ファイルが%sにありません。パッケージングタスクを実行するか、公式リリースをデプロイして署名を再生成してください。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13268,22 +13248,6 @@ msgid "Move Members to Group"
 msgstr "メンバーをグループに移動"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http://またはhttps://で始まる有効なURLである必要があります"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http://またはhttps://で始まる有効なURLである必要があります（例：http://localhostまたはhttps://domain.com）"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "有効なポート番号である必要があります（例：3306）"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "空でない場合は/で始まる必要があります。末尾のスラッシュは不可。文字、数字、アンダースコア、ダッシュ、ドット、/のみ使用可能。"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "後でこのデータを削除する必要がありますか？"
 
@@ -13434,10 +13398,6 @@ msgstr "有効なメールアドレスを入力してください"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "有効なメールアドレスを入力してください（例：name@example.com）"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "有効な数字を入力してください"
 
 #: 
 msgid "Please enter a valid phone number"

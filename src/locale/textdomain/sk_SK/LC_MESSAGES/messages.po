@@ -2147,14 +2147,6 @@ msgid "Deposit Comment"
 msgstr "Komentár k vkladu"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Overenie súboru s definíciou podpisu zlyhalo"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Jeden alebo viac súborov neprešlo overením podpisu"
-
-#: 
 msgid "item"
 msgstr "položka"
 
@@ -4660,10 +4652,6 @@ msgid "Estonian"
 msgstr "Estónčina"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Chyba pri dekódovaní definičného súboru podpisu"
-
-#: 
 msgid "Event not found"
 msgstr "Udalosť nenájdená"
 
@@ -5249,14 +5237,6 @@ msgstr "Zadajte platnú URL začínajúcu http:// alebo https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Všetky signatúry systémových súborov zodpovedajú očakávaným hodnotám."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Definičný súbor signatúry existuje, ale nie je čitateľný. Skontrolujte oprávnenia súboru."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Definičný súbor signatúry chýba na adrese %s. Spustite úlohu balíkovania alebo nasaďte oficiálne vydanie."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13298,22 +13278,6 @@ msgid "Move Members to Group"
 msgstr "Presunúť členov do skupiny"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Musí byť platná URL začínajúca http:// alebo https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Musí byť platná URL začínajúca http:// alebo https:// (napr. http://localhost alebo https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Musí byť platné číslo portu (napr. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Musí začínať /, ak nie je prázdne; žiadna koncová lomka. Povolené sú iba písmená, číslice, podčiarkovník, pomlčka, bodka a /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Potrebujete neskôr odstrániť tieto dáta?"
 
@@ -13464,10 +13428,6 @@ msgstr "Zadajte platnú e-mailovú adresu"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Zadajte platnú e-mailovú adresu (napr. meno@priklad.sk)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Zadajte platné číslo"
 
 #: 
 msgid "Please enter a valid phone number"

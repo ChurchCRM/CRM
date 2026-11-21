@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Коментар на депозит"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Підпис файлу визначення підпису не вдалося перевірити"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Один або кілька файлів не вдалося перевірити підпис"
-
-#: 
 msgid "item"
 msgstr "пункт"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Естонська"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Помилка декодування файлу визначення підпису"
-
-#: 
 msgid "Event not found"
 msgstr "Подія не знайдена"
 
@@ -5282,14 +5270,6 @@ msgstr "Будь ласка, введіть дійсну URL-адресу, що 
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Усі підписи системних файлів відповідають очікуваним значенням."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Файл визначення підписів існує, але недоступний для читання. Перевірте права доступу до файлу."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Файл визначення підписів відсутній за шляхом %s. Запустіть завдання пакування або розгорніть офіційний реліз, щоб повторно створити підписи."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13331,22 +13311,6 @@ msgid "Move Members to Group"
 msgstr "Перемістити членів у групу"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Має бути дійсною URL-адресою, що починається з http:// або https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Має бути дійсною URL-адресою, що починається з http:// або https:// (наприклад, http://localhost або https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Має бути дійсним номером порту (наприклад, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Повинно починатися з / якщо не порожнє; без завершальної косої риски. Дозволено лише букви, цифри, підкреслення, дефіс, крапка та /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Потрібно буде видалити ці дані пізніше?"
 
@@ -13497,10 +13461,6 @@ msgstr "Будь ласка, введіть дійсну адресу елект
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Будь ласка, введіть дійсну адресу електронної пошти (наприклад, name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Будь ласка, введіть дійсне число"
 
 #: 
 msgid "Please enter a valid phone number"

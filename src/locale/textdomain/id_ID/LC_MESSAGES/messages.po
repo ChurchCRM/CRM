@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Komentar Setoran"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "File definisi tanda tangan tanda tangan gagal validasi"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Satu atau lebih file gagal validasi tanda tangan"
-
-#: 
 msgid "item"
 msgstr "barang"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Estonia"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Terjadi kesalahan saat mendekode file definisi tanda tangan"
-
-#: 
 msgid "Event not found"
 msgstr "Acara tidak ditemukan"
 
@@ -5274,14 +5262,6 @@ msgstr "Harap masukkan URL valid yang diawali http:// atau https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Semua tanda tangan file sistem sesuai."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "File definisi tanda tangan ada namun tidak dapat dibaca. Cek izin file."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "File definisi tanda tangan hilang di %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13299,22 +13279,6 @@ msgid "Move Members to Group"
 msgstr "Pindahkan Anggota ke Grup"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Harus URL valid (diawali http:// atau https://)"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Harus URL valid (misal: https://gereja.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Harus nomor port yang valid"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Harus dimulai dengan / jika tidak kosong; tanpa garis miring di akhir. Hanya huruf, angka, garis bawah, tanda hubung, titik dan / yang diizinkan."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Perlu menghapus data ini nanti?"
 
@@ -13465,10 +13429,6 @@ msgstr "Harap masukkan alamat email yang valid"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Harap masukkan email yang valid (contoh: nama@email.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Harap masukkan angka yang valid"
 
 #: 
 msgid "Please enter a valid phone number"

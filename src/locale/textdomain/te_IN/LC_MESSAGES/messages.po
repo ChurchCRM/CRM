@@ -2158,14 +2158,6 @@ msgid "Deposit Comment"
 msgstr "డిపాజిట్ వ్యాఖ్య"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "సిగ్నేచర్ డెఫినిషన్ ఫైల్ సిగ్నేచర్ ధృవీకరణ విఫలమైంది"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "ఒకటి లేదా అంతకంటే ఎక్కువ ఫైల్‌లు సిగ్నేచర్ ధృవీకరణలో విఫలమయ్యాయి"
-
-#: 
 msgid "item"
 msgstr "వస్తువు"
 
@@ -4673,10 +4665,6 @@ msgid "Estonian"
 msgstr "ఎస్టోనియన్"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "సంతకం నిర్వచన ఫైల్‌ను డీకోడ్ చేయడంలో లోపం"
-
-#: 
 msgid "Event not found"
 msgstr "ఈవెంట్ కనుగొనబడలేదు"
 
@@ -5256,14 +5244,6 @@ msgstr "దయచేసి http:// లేదా https:// తో ప్రార�
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "అన్ని సిస్టమ్ ఫైల్ సంతకాలు ఊహించిన విలువలతో సరిపోలుతాయి."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "సంతకం నిర్వచన ఫైల్ ఉంది కానీ చదవడానికి వీలు లేదు. ఫైల్ అనుమతులను తనిఖీ చేయండి."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "సంతకం నిర్వచన ఫైల్ %s వద్ద లేదు. సంతకాలను పునరుత్పత్తి చేయడానికి ప్యాకేజింగ్ టాస్క్‌ను అమలు చేయండి లేదా అధికారిక విడుదలను అమలు చేయండి."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13289,22 +13269,6 @@ msgid "Move Members to Group"
 msgstr "సభ్యులను గ్రూప్‌కి తరలించండి"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి (ఉదా., http://localhost లేదా https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "చెల్లుబాటు అయ్యే పోర్ట్ నంబర్ అయి ఉండాలి (ఉదా., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "ఖాళీగా లేకపోతే '/' తో ప్రారంభం కావాలి; చివరిలో '/' ఉండకూడదు. అక్షరాలు, సంఖ్యలు, అండర్‌స్కోర్, డాష్, డాట్ మరియు '/' మాత్రమే అనుమతించబడతాయి."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "ఈ డేటాను తరువాత తొలగించాలా?"
 
@@ -13455,10 +13419,6 @@ msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమ
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి (ఉదా., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "దయచేసి చెల్లుబాటు అయ్యే సంఖ్యను నమోదు చేయండి"
 
 #: 
 msgid "Please enter a valid phone number"

@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Σχόλιο κατάθεσης"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Η επικύρωση της υπογραφής του αρχείου ορισμού υπογραφής απέτυχε"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής"
-
-#: 
 msgid "item"
 msgstr "είδος"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Εσθονική"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Σφάλμα κατά την αποκωδικοποίηση του αρχείου ορισμού υπογραφής"
-
-#: 
 msgid "Event not found"
 msgstr "Το συμβάν δεν βρέθηκε"
 
@@ -5278,14 +5266,6 @@ msgstr "Παρακαλούμε εισάγετε ένα έγκυρο URL που �
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Όλες οι υπογραφές αρχείων συστήματος ταιριάζουν με τις αναμενόμενες τιμές."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Το αρχείο ορισμού υπογραφής υπάρχει αλλά δεν είναι αναγνώσιμο. Ελέγξτε τα δικαιώματα αρχείων."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Το αρχείο ορισμού υπογραφής λείπει από το %s. Εκτελέστε την εργασία συσκευασίας για αναδημιουργία υπογραφών."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13311,22 +13291,6 @@ msgid "Move Members to Group"
 msgstr "Μετακίνηση μελών σε ομάδα"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https:// (π.χ. http://localhost ή https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Πρέπει να είναι έγκυρος αριθμός θύρας (π.χ. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Πρέπει να αρχίζει με / αν δεν είναι κενό· χωρίς κάθετο στο τέλος. Επιτρέπονται μόνο γράμματα, αριθμοί, κάτω παύλα, παύλα, τελεία και /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Χρειάζεται να αφαιρέσετε αυτά τα δεδομένα αργότερα;"
 
@@ -13477,10 +13441,6 @@ msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email (π.χ. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Παρακαλώ εισάγετε έγκυρο αριθμό"
 
 #: 
 msgid "Please enter a valid phone number"

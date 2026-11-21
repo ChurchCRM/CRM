@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "입금 비고"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "서명 정의 파일 검증에 실패했습니다"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
-
-#: 
 msgid "item"
 msgstr "항목"
 
@@ -4690,10 +4682,6 @@ msgid "Estonian"
 msgstr "에스토니아어"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "서명 정의 파일을 해석하는 중 오류"
-
-#: 
 msgid "Event not found"
 msgstr "행사를 찾을 수 없습니다"
 
@@ -5271,14 +5259,6 @@ msgstr "http:// 또는 https://로 시작하는 유효한 URL을 입력해 주�
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "모든 시스템 파일 서명이 예상 값과 일치합니다."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "서명 정의 파일이 존재하지만 읽을 수 없습니다. 파일 권한을 확인하세요."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "%s에 서명 정의 파일이 없습니다. 패키징 작업을 실행하거나 공식 릴리스를 배포하여 서명을 재생성하세요."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13296,22 +13276,6 @@ msgid "Move Members to Group"
 msgstr "교인을 그룹으로 이동"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// 또는 https://로 시작하는 유효한 URL이어야 합니다"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// 또는 https://로 시작하는 유효한 URL이어야 합니다 (예: http://localhost 또는 https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "유효한 포트 번호여야 합니다 (예: 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "비어 있지 않으면 /로 시작해야 합니다. 끝에 슬래시 없음. 문자, 숫자, 밑줄, 대시, 점 및 /만 허용됩니다."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "나중에 이 데이터를 제거해야 하나요?"
 
@@ -13462,10 +13426,6 @@ msgstr "유효한 이메일 주소를 입력해 주세요"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "유효한 이메일 주소를 입력해 주세요 (예: name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "유효한 숫자를 입력해 주세요"
 
 #: 
 msgid "Please enter a valid phone number"

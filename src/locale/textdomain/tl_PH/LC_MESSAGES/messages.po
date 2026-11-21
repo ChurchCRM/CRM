@@ -2147,14 +2147,6 @@ msgid "Deposit Comment"
 msgstr "Komento sa Deposito"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Nabigo ang validation ng pirma ng signature definition file"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Isa o higit pang mga file ay nabigong ma-validate ang pirma"
-
-#: 
 msgid "item"
 msgstr "aytem"
 
@@ -4662,10 +4654,6 @@ msgid "Estonian"
 msgstr "Estoniyano"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Error sa pag-decode ng signature definition file"
-
-#: 
 msgid "Event not found"
 msgstr "Hindi nahanap ang kaganapan"
 
@@ -5245,14 +5233,6 @@ msgstr "Pakipasok ng wastong URL na nagsisimula sa http:// o https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Lahat ng mga pirma ng file ng sistema ay tumutugma sa mga inaasahang halaga."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Ang signature definition file ay mayroon ngunit hindi mabasa. Suriin ang mga pahintulot ng file."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Ang signature definition file ay nawawala sa %s. Patakbuhin ang gawain ng packaging o mag-deploy ng opisyal na release para muling makabuo ng mga pirma."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13278,22 +13258,6 @@ msgid "Move Members to Group"
 msgstr "Ilipat ang mga Miyembro sa Grupo"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Dapat isang wastong URL na nagsisimula sa http:// o https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Dapat isang wastong URL na nagsisimula sa http:// o https:// (hal., http://localhost o https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Dapat isang wastong numero ng port (hal., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Dapat magsimula sa / kung hindi blangko; walang trailing slash. Mga letra, numero, underscore, dash, dot at / lamang ang pinapayagan."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Kailangan mong alisin ang datos na ito sa ibang pagkakataon?"
 
@@ -13444,10 +13408,6 @@ msgstr "Pakipasok ng wastong email address"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Pakipasok ng wastong email address (hal., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Pakipasok ng wastong numero"
 
 #: 
 msgid "Please enter a valid phone number"
