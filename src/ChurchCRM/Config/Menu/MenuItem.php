@@ -42,7 +42,9 @@ class MenuItem
         //Review SessionVar stuff
         if (!empty($this->uri)) {
             if (filter_var($this->uri, FILTER_VALIDATE_URL) === false) {
-                return SystemURLs::getRootPath() . '/' . $this->uri;
+                // A stored path may already start with /. A second slash makes
+                // "//people/..." which the browser reads as a host name.
+                return SystemURLs::getRootPath() . '/' . ltrim($this->uri, '/');
             }
             $this->external = true;
 
