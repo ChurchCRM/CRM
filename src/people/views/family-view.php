@@ -810,7 +810,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </li>
                 </ul>
             </div>
-            <div class="card-body">
+            <div class="card-body table-clip-x">
                 <div class="tab-content">
                     <div class="tab-pane active timeline-container" id="notes">
                         <?php $timeline = $familyTimeline; $timelineScope = 'notes'; include __DIR__ . '/timeline-events.php'; ?>
