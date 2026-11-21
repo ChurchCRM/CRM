@@ -37,6 +37,10 @@
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
         },
+        "cypress/support/family-conversion-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Convert All (#11583) gives every seed person without a family a family of their own, and no route moves an address back off a family. The fixture snapshots those people and restores them after the spec deletes the families it created."
+        },
         "cypress/support/member-sign-in.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
