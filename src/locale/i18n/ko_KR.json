@@ -3571,7 +3571,6 @@
   "Symbol Position": "기호 위치",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "금액 옆에 표시되는 기호 또는 코드 (예: $, €, £, CHF, CAD $). 기본값: $",
   "Target family": "대상 가정",
-  "The group could not be found. Please try again.": "소그룹을 찾을 수 없습니다. 다시 시도해 주세요.",
   "The selected family no longer exists. Please refresh the page and try again.": "선택한 가정이 더 이상 존재하지 않습니다. 페이지를 새로고침한 후 다시 시도해 주세요.",
   "The selected group was not found. Please select a valid group.": "선택한 소그룹을 찾을 수 없습니다. 유효한 소그룹을 선택해 주세요.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "날짜, 금액, 전화번호가 시스템 전반에 걸쳐 표시되는 방식입니다. 현재 형식을 여기서 확인한 후 아래 섹션에서 편집하세요.",

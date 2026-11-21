@@ -3636,7 +3636,6 @@
   "Symbol Position": "موضع الرمز",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "الرمز أو الكود المعروض بجانب المبالغ (مثل $، €، £، CHF، CAD $). الافتراضي: $",
   "Target family": "العائلة المستهدفة",
-  "The group could not be found. Please try again.": "تعذر العثور على المجموعة. يرجى المحاولة مرة أخرى.",
   "The selected family no longer exists. Please refresh the page and try again.": "العائلة المحددة لم تعد موجودة. يرجى تحديث الصفحة والمحاولة مرة أخرى.",
   "The selected group was not found. Please select a valid group.": "لم يتم العثور على المجموعة المحددة. يرجى تحديد مجموعة صالحة.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "هكذا ستظهر التواريخ والمبالغ المالية وأرقام الهواتف في جميع أنحاء النظام.",

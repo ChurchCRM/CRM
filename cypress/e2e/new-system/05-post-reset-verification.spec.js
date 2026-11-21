@@ -78,7 +78,7 @@ describe('05 - Post-Reset Verification', () => {
             // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
 
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
 
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });

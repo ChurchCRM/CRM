@@ -18,11 +18,11 @@ const initDepositChart = (range) => {
       method: "GET",
       path:
         range.from || range.to
-          ? `deposits/dashboard?from=${range.from ?? ""}&to=${range.to ?? ""}`
-          : "deposits/dashboard?all=1",
+          ? `deposits/dashboard-by-fund?from=${range.from ?? ""}&to=${range.to ?? ""}`
+          : "deposits/dashboard-by-fund?all=1",
     }).done((data) => {
       if (current !== requestId) return;
-      if (!data || data.length === 0) {
+      if (!data || !data.funds || data.funds.length === 0) {
         $("#depositChartRow .card-body").html(
           '<div class="empty py-4"><div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
             '<p class="empty-title">' +
@@ -36,10 +36,10 @@ const initDepositChart = (range) => {
       }
       chart = new window.ApexCharts(document.getElementById("deposit-lineGraph"), {
         chart: { type: "line", height: 250, toolbar: { show: true } },
-        series: [{ name: i18next.t("Deposit Value"), data: data.map((row) => row.totalAmount) }],
-        xaxis: { categories: data.map((row) => window.moment(row.Date).format("MM-DD-YY")) },
+        series: data.funds.map((fund) => ({ name: fund.name, data: fund.data })),
+        xaxis: { categories: data.dates.map((date) => window.moment(date).format("MM-DD-YY")) },
         yaxis: { title: { text: i18next.t("Amount") } },
-        colors: [cssVar("--tblr-primary")],
+        legend: { show: true },
         stroke: { curve: "smooth", width: 2 },
         grid: { show: true, borderColor: cssVar("--tblr-border-color") },
       });

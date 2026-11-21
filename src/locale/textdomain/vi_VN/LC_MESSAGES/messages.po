@@ -14931,10 +14931,6 @@ msgid "Target family"
 msgstr "Gia đình mục tiêu"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Không tìm thấy nhóm. Vui lòng thử lại."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Gia đình đã chọn không còn tồn tại. Vui lòng làm mới trang và thử lại."
 

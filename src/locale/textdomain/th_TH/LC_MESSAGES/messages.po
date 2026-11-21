@@ -14901,10 +14901,6 @@ msgid "Target family"
 msgstr "ครอบครัวเป้าหมาย"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "ไม่พบกลุ่ม กรุณาลองใหม่อีกครั้ง"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "ครอบครัวที่เลือกไม่มีอยู่อีกต่อไป กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง"
 

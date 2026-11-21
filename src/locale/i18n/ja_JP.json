@@ -3571,7 +3571,6 @@
   "Symbol Position": "記号の位置",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "金額の横に表示する記号またはコード（例：$、€、£、CHF、CAD $）。デフォルト：$",
   "Target family": "対象家族",
-  "The group could not be found. Please try again.": "グループが見つかりませんでした。もう一度お試しください。",
   "The selected family no longer exists. Please refresh the page and try again.": "選択した家族はもう存在しません。ページを更新してもう一度お試しください。",
   "The selected group was not found. Please select a valid group.": "選択したグループが見つかりませんでした。有効なグループを選択してください。",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "日付、金額、電話番号がシステム全体でどのように表示されるかを示します。現在のフォーマットをここで確認し、以下のセクションで編集してください。",

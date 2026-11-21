@@ -14935,10 +14935,6 @@ msgid "Target family"
 msgstr "Teikengesin"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Die groep kon nie gevind word nie. Probeer asseblief weer."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Die geselekteerde gesin bestaan nie meer nie. Herlaai asseblief die bladsy en probeer weer."
 

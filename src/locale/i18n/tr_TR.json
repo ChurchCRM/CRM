@@ -3584,7 +3584,6 @@
   "Symbol Position": "Sembol Konumu",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "Tutarların yanında gösterilen sembol veya kod (örn. $, €, £, CHF, CAD $). Varsayılan: $",
   "Target family": "Hedef aile",
-  "The group could not be found. Please try again.": "Grup bulunamadı. Lütfen tekrar deneyin.",
   "The selected family no longer exists. Please refresh the page and try again.": "Seçilen aile artık mevcut değil. Lütfen sayfayı yenileyin ve tekrar deneyin.",
   "The selected group was not found. Please select a valid group.": "Seçilen grup bulunamadı. Lütfen geçerli bir grup seçin.",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "Tarihler, para tutarları ve telefon numaraları sistem genelinde bu şekilde görünecektir.",

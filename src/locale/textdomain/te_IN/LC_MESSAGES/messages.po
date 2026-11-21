@@ -14913,10 +14913,6 @@ msgid "Target family"
 msgstr "లక్ష్య కుటుంబం"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "సమూహం కనుగొనబడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "ఎంచుకున్న కుటుంబం ఇకపై ఉనికిలో లేదు. దయచేసి పేజీని రిఫ్రెష్ చేసి మళ్ళీ ప్రయత్నించండి."
 

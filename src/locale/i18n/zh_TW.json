@@ -3571,7 +3571,6 @@
   "Symbol Position": "符號位置",
   "Symbol or code shown next to amounts (e.g. $, €, £, CHF, CAD $). Default: $": "顯示於金額旁的符號或代碼（例如 $、€、£、CHF、CAD $）。預設值：$",
   "Target family": "目標家庭",
-  "The group could not be found. Please try again.": "找不到該小組，請再試一次。",
   "The selected family no longer exists. Please refresh the page and try again.": "所選家庭已不存在，請重新整理頁面後再試。",
   "The selected group was not found. Please select a valid group.": "找不到所選小組，請選擇有效的小組。",
   "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below.": "這是日期、金額及電話號碼在整個系統中的顯示方式。請在此檢視目前的格式，然後在下方各節進行編輯。",

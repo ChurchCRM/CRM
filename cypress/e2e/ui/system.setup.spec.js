@@ -20,6 +20,6 @@ describe("Test Post Setup block", () => {
         cy.clearCookies();
         cy.clearLocalStorage();
         cy.visit("/setup");
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
     });
 });
