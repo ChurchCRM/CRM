@@ -82,5 +82,11 @@ describe("People list exclude filters", () => {
         cy.get("#ClearFilter").click();
         cy.get("#filter-exclude-Classification").should("not.be.checked");
         columnTexts("Classification").should("include", "Member");
+
+        cy.tomSelectByText(".filter-Classification", "Member");
+        columnTexts("Classification").should((names) => {
+            expect(names).to.have.length.greaterThan(0);
+            expect(names.every((name) => name === "Member")).to.eq(true);
+        });
     });
 });
