@@ -2153,14 +2153,6 @@ msgid "Deposit Comment"
 msgstr "Talletuksen kommentti"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Allekirjoitusmääritystiedoston allekirjoituksen varmennus epäonnistui"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Yhden tai useamman tiedoston allekirjoituksen varmennus epäonnistui"
-
-#: 
 msgid "item"
 msgstr "kohde"
 
@@ -4668,10 +4660,6 @@ msgid "Estonian"
 msgstr "Viro"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Virhe allekirjoituksen määritystiedoston purkamisessa"
-
-#: 
 msgid "Event not found"
 msgstr "Tapahtumaa ei löytynyt"
 
@@ -5249,14 +5237,6 @@ msgstr "Syötä kelvollinen URL-osoite, joka alkaa http:// tai https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Kaikki järjestelmätiedostojen allekirjoitukset vastaavat odotettuja arvoja."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Allekirjoitusten määritystiedosto on olemassa, mutta se ei ole luettavissa. Tarkista oikeudet."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Allekirjoitusten määritystiedosto puuttuu polusta %s. Aja paketointi tai asenna virallinen julkaisu luodaksesi allekirjoitukset uudelleen."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13282,22 +13262,6 @@ msgid "Move Members to Group"
 msgstr "Siirrä jäsenet ryhmään"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "On oltava kelvollinen URL-osoite, joka alkaa http:// tai https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "On oltava kelvollinen URL-osoite (esim. http://localhost tai https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "On oltava kelvollinen porttinumero (esim. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Täytyy alkaa /-merkillä jos ei tyhjä; ei loppu-kauttaviivaa. Vain kirjaimet, numerot, alaviiva, viiva, piste ja / sallittu."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Pitääkö nämä tiedot poistaa myöhemmin?"
 
@@ -13448,10 +13412,6 @@ msgstr "Syötä kelvollinen sähköpostiosoite"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Syötä kelvollinen sähköpostiosoite (esim. nimi@esimerkki.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Syötä kelvollinen numero"
 
 #: 
 msgid "Please enter a valid phone number"

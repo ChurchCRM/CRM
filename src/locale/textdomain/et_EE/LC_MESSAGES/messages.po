@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Sissemakse kommentaar"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Allkirja määratlusfaili allkirja valideerimine nurjus"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Ühe või mitme faili allkirja valideerimine nurjus"
-
-#: 
 msgid "item"
 msgstr "kirje"
 
@@ -4693,10 +4685,6 @@ msgid "Estonian"
 msgstr "Eesti"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Viga allkirja määratlusfaili dekodeerimisel"
-
-#: 
 msgid "Event not found"
 msgstr "Sündmust ei leitud"
 
@@ -5277,14 +5265,6 @@ msgstr "Palun sisestage kehtiv URL, mis algab http:// või https:// -ga"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Kõik süsteemifailide allkirjad vastavad oodatud väärtustele."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Allkirja määratluse fail on olemas, kuid pole loetav. Kontrollige faili õigusi."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Allkirja määratluse fail puudub %s kohast. Käivitage pakkimisülesanne või juurutage ametlik väljalaske allkirjade uuesti loomiseks."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13310,22 +13290,6 @@ msgid "Move Members to Group"
 msgstr "Liiguta liikmed gruppi"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Peab olema kehtiv URL, mis algab http:// või https:// -ga"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Peab olema kehtiv URL, mis algab http:// või https:// -ga (nt http://localhost või https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Peab olema kehtiv pordi number (nt 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Peab algama /-ga, kui pole tühi; ilma lõpukaldkriipsuta. Lubatud on ainult tähed, numbrid, allkriips, sidekriips, punkt ja /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Kas peate need andmed hiljem eemaldama?"
 
@@ -13476,10 +13440,6 @@ msgstr "Palun sisestage kehtiv e-posti aadress"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Palun sisestage kehtiv e-posti aadress (nt nimi@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Palun sisestage kehtiv number"
 
 #: 
 msgid "Please enter a valid phone number"

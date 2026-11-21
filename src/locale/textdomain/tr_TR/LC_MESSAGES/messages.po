@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Depozito Yorumu"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "İmza Tanım Dosyası İmza Başarısız Doğrulama"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
-
-#: 
 msgid "item"
 msgstr "öğe"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Estonya"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
-
-#: 
 msgid "Event not found"
 msgstr "Olay bulunamadı"
 
@@ -5278,14 +5266,6 @@ msgstr "Lütfen http:// veya https:// ile başlayan geçerli bir URL girin"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Tüm sistem dosyası imzaları beklenen değerlerle eşleşiyor."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "İmza tanımlama dosyası mevcut ancak okunabilir değil. Dosya izinlerini kontrol edin."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "İmza tanımlama dosyası %s konumunda eksik. İmzaları yeniden oluşturmak için paketleme görevini çalıştırın veya resmi bir sürüm yayınlayın."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13311,22 +13291,6 @@ msgid "Move Members to Group"
 msgstr "Üyeleri Gruba Taşı"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// veya https:// ile başlayan geçerli bir URL olmalıdır"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// veya https:// ile başlayan geçerli bir URL olmalıdır (örn. http://localhost veya https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Geçerli bir port numarası olmalıdır (örn. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Boş değilse / ile başlamalı; sonda eğik çizgi yok. Yalnızca harfler, sayılar, alt çizgi, tire, nokta ve / izin verilir."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Bu veriyi daha sonra kaldırmanız mı gerekiyor?"
 
@@ -13477,10 +13441,6 @@ msgstr "Lütfen geçerli bir e-posta adresi girin"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Lütfen geçerli bir e-posta adresi girin (örn. ad@ornek.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Lütfen geçerli bir sayı girin"
 
 #: 
 msgid "Please enter a valid phone number"
