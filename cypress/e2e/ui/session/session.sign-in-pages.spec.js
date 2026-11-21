@@ -133,7 +133,7 @@ describe("Sign-in pages", () => {
             setConfig("bEnableSelfRegistration", "1");
             cy.visit("/");
             cy.location("pathname").should("match", /\/session\/$/);
-            cy.get("#sessionDoorRegister").should("have.class", "btn-sign-in").and("have.attr", "href").and("include", "/portal/register");
+            cy.get("#sessionDoorRegister").should("have.class", "login-door-primary").and("have.attr", "href").and("include", "/portal/register");
             cy.get("#sessionDoorStaff").should("have.attr", "href").and("match", /\/session\/begin$/);
             cy.get("#sessionDoorStaff").click();
             cy.location("pathname").should("match", /\/session\/begin$/);

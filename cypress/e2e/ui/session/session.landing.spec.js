@@ -33,11 +33,11 @@ describe("Session landing", () => {
         setConfig("bMemberSignIn", "1");
         setConfig("bEnableSelfRegistration", "1");
         cy.visit("/session/");
-        cy.get("#sessionDoorMember").should("have.class", "btn-sign-in").and("have.attr", "href").and("include", "/portal/login");
+        cy.get("#sessionDoorMember").should("have.class", "login-door-primary").and("have.attr", "href").and("include", "/portal/login");
         cy.get("#sessionDoorMember").should("contain", "Congregation login");
-        cy.get("#sessionDoorRegister").should("have.class", "login-door-quiet").and("have.attr", "href").and("include", "/portal/register");
+        cy.get("#sessionDoorRegister").should("have.class", "login-door").and("not.have.class", "login-door-primary").and("have.attr", "href").and("include", "/portal/register");
         cy.get("#sessionDoorRegister").should("contain", "Register your family to our church");
-        cy.get("#sessionDoorStaff").should("have.class", "login-door-quiet").and("have.attr", "href").and("match", /\/session\/begin$/);
+        cy.get("#sessionDoorStaff").should("have.class", "login-door").and("not.have.class", "login-door-primary").and("have.attr", "href").and("match", /\/session\/begin$/);
         cy.get("#sessionDoorStaff").should("contain", "Staff login");
         doors().should("have.length", 3);
 
@@ -49,7 +49,7 @@ describe("Session landing", () => {
         setConfig("bMemberSignIn", "1");
         setConfig("bEnableSelfRegistration", "0");
         cy.visit("/session/");
-        cy.get("#sessionDoorMember").should("have.class", "btn-sign-in");
+        cy.get("#sessionDoorMember").should("have.class", "login-door-primary");
         cy.get("#sessionDoorRegister").should("not.exist");
         cy.get("#sessionDoorStaff").should("exist");
         doors().should("have.length", 2);
@@ -60,8 +60,8 @@ describe("Session landing", () => {
         setConfig("bEnableSelfRegistration", "1");
         cy.visit("/session/");
         cy.get("#sessionDoorMember").should("not.exist");
-        cy.get("#sessionDoorRegister").should("have.class", "btn-sign-in");
-        cy.get("#sessionDoorStaff").should("have.class", "login-door-quiet");
+        cy.get("#sessionDoorRegister").should("have.class", "login-door-primary");
+        cy.get("#sessionDoorStaff").should("not.have.class", "login-door-primary");
         doors().should("have.length", 2);
     });
 

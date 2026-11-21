@@ -21,24 +21,21 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       <?php if (!ChurchLogoService::hasCustomLogo()): ?>
       <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
       <?php endif; ?>
-      <p class="login-header-tagline"><?= gettext('Community Management Platform') ?></p>
     </div>
 
     <div class="login-card-body">
-      <div class="login-form-title">
-        <h1><?= gettext('Sign in') ?></h1>
-      </div>
-
-      <?php foreach ($doors as $door): ?>
-        <a
-          id="<?= htmlspecialchars($door['id']) ?>"
-          class="<?= $door['primary'] ? 'btn-sign-in' : 'login-door-quiet' ?>"
-          href="<?= htmlspecialchars($door['href']) ?>"
-        >
-          <i class="fa-solid <?= htmlspecialchars($door['icon']) ?>" aria-hidden="true"></i>
-          <?= htmlspecialchars($door['label']) ?>
-        </a>
-      <?php endforeach; ?>
+      <nav class="login-doors" aria-label="<?= htmlspecialchars(gettext('Sign in')) ?>">
+        <?php foreach ($doors as $door): ?>
+          <a
+            id="<?= htmlspecialchars($door['id']) ?>"
+            class="login-door<?= $door['primary'] ? ' login-door-primary' : '' ?>"
+            href="<?= htmlspecialchars($door['href']) ?>"
+          >
+            <i class="fa-solid <?= htmlspecialchars($door['icon']) ?>" aria-hidden="true"></i>
+            <span><?= htmlspecialchars($door['label']) ?></span>
+          </a>
+        <?php endforeach; ?>
+      </nav>
     </div>
   </div>
 </div>
