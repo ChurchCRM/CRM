@@ -17,7 +17,6 @@ import { markEmailUnconfirmed } from "../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
-const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const PREFIX = "ROW09UI";
 const MARK = "row09-ui";
@@ -67,7 +66,6 @@ const cleanupRows = () => {
 
 describe("Admin → Member Portal members, audit, permissions and the person card", () => {
     const saved = {};
-    let savedVersion = "v1";
     let ministryId = 0;
     let teamId = 0;
     let lastNoteId = 0;
@@ -78,11 +76,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
                 saved[key] = body.values[key];
             });
         });
-        cy.makePrivateAdminAPICall("GET", VERSION_URL, null, 200).then(({ body }) => {
-            savedVersion = body.value ?? "v1";
-        });
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, RULE, 200);
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: "v2" }, 200);
         cleanupRows();
         cleanupMinistries();
         db("UPDATE person_per SET per_Email = 'pair.row09@example.com' WHERE per_ID IN (6, 7)");
@@ -106,7 +100,6 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cleanupRows();
         cleanupMinistries();
         cy.then(() => db("DELETE FROM note_nte WHERE nte_ID > ? AND nte_Type = 'verify' AND nte_EnteredBy = -2", [lastNoteId]));
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: savedVersion }, 200);
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, saved, 200);
     });
 
@@ -237,7 +230,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         portalNavLabels().should("not.include", "My Teams");
 
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
         cy.get("#portal-signin-permissions-section").should("not.be.visible");
         cy.get("#portal-signin-disable").should("be.visible");
         cy.get("#portal-signin-sign-out").should("be.visible");
@@ -256,6 +249,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-scope-label").should("have.text", "Team");
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
         cy.get(".ts-dropdown .option").contains(`${PREFIX} Hospitality`).click();
+        cy.get("#portal-grant-modal .modal-title").click();
         const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
         cy.get("#portal-grant-form").should("have.attr", "method", "post");
         cy.get("#portal-grant-ends").should("have.attr", "min").and("match", /^\d{4}-\d{2}-\d{2}$/);
@@ -292,7 +286,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get(".portal-team-card").should("contain.text", `${PREFIX} Hospitality`);
 
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
         cy.get("#portal-signin-permissions-section").should("not.be.visible");
         cy.get("#portal-signin-permissions-toggle").click();
         cy.get('#portal-signin-permissions [data-source="given"] .portal-signin-remove-grant').click();
@@ -317,7 +311,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
                 cy.makePrivateAdminAPICall("DELETE", `/api/ministries/teams/${created.team.id}`, null, [200, 204]);
 
                 cy.freshAdminFormLogin();
-                cy.visit(`/people/view/${PORTAL_PERSON}`);
+                cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
                 cy.get("#portal-signin-permissions-toggle").click();
                 cy.get(`#portal-signin-permissions [data-grant-id="${grant.grantId}"]`).should("not.exist");
                 cy.get(`#portal-signin-ended-grants [data-grant-id="${grant.grantId}"]`)
@@ -344,7 +338,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         });
 
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
         cy.get("#portal-signin-permissions-toggle").click();
         cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Manage a team");
         cy.get("#portal-grant-none-left").should("not.exist");
@@ -366,7 +360,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .and("not.contain.text", `${PREFIX} Hospitality (${PREFIX} Hospitality)`);
 
         // Mathew Campbell is an adult of the Campbell family (1) and a Member, which the directory rule lets in.
-        cy.visit("/people/view/2");
+        cy.visit("/people/view/2#portal-signin-card");
         cy.get("#portal-signin-permissions-toggle").click();
         cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Change family details");
         cy.get("#portal-grant-add").click();
@@ -393,7 +387,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         addRememberedDevice(PORTAL_PERSON, { label: `${MARK} laptop`, expiresInDays: 20 });
         addRememberedDevice(PORTAL_PERSON, { label: `${MARK} signed out`, expiresInDays: 20, signedOut: true });
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
         cy.get("#portal-signin-device-list [data-cy=portal-device]").should("have.length", 1).and("be.visible").and("contain.text", `${MARK} laptop`);
         cy.get("#portal-signin-device-list").should("not.contain.text", `${MARK} signed out`);
         cy.get("#portal-signin-device-list .portal-signin-remove-device").click();
@@ -411,7 +405,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         }, 201);
         addRememberedDevice(PORTAL_PERSON, { label: `${MARK} tablet`, expiresInDays: 20 });
         cy.setupStandardSession({ forceLogin: true });
-        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
         cy.get("#portal-signin-status").should("exist");
         cy.get("#portal-signin-devices").should("contain.text", "1");
         cy.get("#portal-signin-passkeys").should("contain.text", "0");
@@ -438,7 +432,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             // Each row unrolls into a card, so the event is shown rather than folded away.
             cy.get("#portalAuditTable tbody tr:first-child > td").eq(2).should("be.visible").and("have.attr", "data-label", "Event");
             noHorizontalScroll();
-            cy.visit(`/people/view/${PORTAL_PERSON}`);
+            cy.visit(`/people/view/${PORTAL_PERSON}#portal-signin-card`);
             cy.get("#portal-signin-permissions-toggle").click();
             cy.get("#portal-signin-permissions").should("be.visible");
             noHorizontalScroll();

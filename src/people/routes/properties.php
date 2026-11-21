@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
@@ -46,7 +47,7 @@ function listProperties(Request $request, Response $response, array $args): Resp
             $sTypeIcon = 'fa-user-group';
             break;
         default:
-            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');
+            return SlimUtils::renderRedirect($response, DashboardLandingService::urlFor(AuthenticationManager::getCurrentUser()));
     }
 
     // ORM query instead of raw SQL

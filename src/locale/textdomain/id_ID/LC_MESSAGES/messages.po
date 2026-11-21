@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "Orang-orang"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Anak Sekolah Minggu"
-
-#: 
 msgid "Role / Gender"
 msgstr "Peran / Jender"
 
@@ -1372,10 +1368,6 @@ msgstr "Kelompok"
 #: 
 msgid "Default"
 msgstr "Default"
-
-#: 
-msgid "Exit"
-msgstr "Keluar"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1472,6 @@ msgstr "Perbarui Properti"
 #: 
 msgid "Assign New Group"
 msgstr "Tetapkan Grup Baru"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tetapkan Peluang Relawan Baru"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1599,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Pulihkan Database"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Harap konfirmasi penghapusan"
-
-#: 
 msgid "Listing"
 msgstr "Daftar"
 
@@ -1689,14 +1673,6 @@ msgstr "kata sandi baru"
 #: 
 msgid "Confirm New Password"
 msgstr "Konfirmasi password baru"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Editor Peluang Sukarelawan"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Belum ada peluang sukarela yang ditambahkan"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4475,10 +4451,6 @@ msgid "People Reports"
 msgstr "Laporan Orang"
 
 #: 
-msgid "People Dashboard"
-msgstr "Dasbor Orang"
-
-#: 
 msgid "People Directory"
 msgstr "Direktori Orang"
 
@@ -6383,20 +6355,8 @@ msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tugaskan Pelayanan"
-
-#: 
 msgid "Choose a property..."
 msgstr "Pilih properti..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Pilih bidang pelayanan..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontak & Info Pribadi"
 
 #: 
 msgid "Edited"
@@ -6405,14 +6365,6 @@ msgstr "Telah Diubah"
 #: 
 msgid "Newsletter"
 msgstr "Warta Jemaat"
-
-#: 
-msgid "Personal"
-msgstr "Pribadi"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Pilih Bidang Pelayanan"
 
 #: 
 msgid "Volunteer"
@@ -6597,10 +6549,6 @@ msgid "Confirm Property Deletion"
 msgstr "Konfirmasi Penghapusan Properti"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Konfirmasi Penghapusan Pelayanan"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Konfirmasi Penghapusan"
 
@@ -6613,16 +6561,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Kolom Kustom Jemaat Saat Ini"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Daftar Bidang Pelayanan"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Kolom berhasil dihapus"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF tidak valid"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8385,10 +8325,6 @@ msgid "Create or edit property type categories"
 msgstr "Buat atau edit kategori tipe properti"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Buat atau edit posisi sukarelawan"
-
-#: 
 msgid "Current person"
 msgstr "Orang saat ini"
 
@@ -8837,10 +8773,6 @@ msgid "Manage user account details and permissions"
 msgstr "Kelola detail akun pengguna dan izin"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Kelola peluang sukarelawan dan tetapkan anggota"
-
-#: 
 msgid "Map cart items"
 msgstr "Petakan item daftar"
 
@@ -8961,10 +8893,6 @@ msgid "No timeline events yet."
 msgstr "Belum ada peristiwa linimasa."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Belum ada penetapan peluang sukarelawan."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Belum siap?"
 
@@ -9001,10 +8929,6 @@ msgstr "Ringkasan"
 #: 
 msgid "Password Recovery"
 msgstr "Pemulihan Kata Sandi"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "7 hari terakhir & mendatang"
 
 #: 
 msgid "People by Classification"
@@ -9471,10 +9395,6 @@ msgid "funds"
 msgstr "dana"
 
 #: 
-msgid "opportunities"
-msgstr "peluang"
-
-#: 
 msgid "or connect an external service"
 msgstr "atau hubungkan layanan eksternal"
 
@@ -9774,11 +9694,6 @@ msgstr "Gagal mengambil alamat email"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Gagal mengambil nomor telepon"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Temukan sukarelawan untuk peluang tertentu"
 
 #. Context: query_qry
 #: 
@@ -10902,10 +10817,6 @@ msgstr "Gelap"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
 
 #. Context: locales
 #: 
@@ -12548,10 +12459,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Tidak dapat menghapus jenis properti: %d properti masih mereferensikannya. Tetapkan ulang atau hapus properti tersebut terlebih dahulu."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Tidak dapat menghapus kesempatan sukarela: %d orang masih ditugaskan. Hapus penugasan tersebut terlebih dahulu."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Kelas harus salah satu dari p, f, atau g"
 
@@ -12562,10 +12469,6 @@ msgstr "Salin pesan kesalahan"
 #: 
 msgid "Could not load note."
 msgstr "Tidak dapat memuat catatan."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Deskripsi tidak boleh melebihi 100 karakter"
 
 #: 
 msgid "Donation fund not found"
@@ -12588,10 +12491,6 @@ msgid "Failed to create property type"
 msgstr "Gagal membuat jenis properti"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Gagal membuat kesempatan sukarela"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Gagal menghapus dana donasi"
 
@@ -12608,10 +12507,6 @@ msgid "Failed to delete property type"
 msgstr "Gagal menghapus jenis properti"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Gagal menghapus kesempatan sukarela"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Gagal memperbarui dana donasi"
 
@@ -12624,10 +12519,6 @@ msgid "Failed to update property type"
 msgstr "Gagal memperbarui jenis properti"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Gagal memperbarui kesempatan sukarela"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Penggalangan dana tidak ditemukan"
 
@@ -12638,10 +12529,6 @@ msgstr "ID Instalasi"
 #: 
 msgid "Invalid class"
 msgstr "Kelas tidak valid"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Nama tidak boleh melebihi 30 karakter"
 
 #: 
 msgid "Note by %s deleted"
@@ -12664,16 +12551,8 @@ msgid "Read more"
 msgstr "Baca selengkapnya"
 
 #: 
-msgid "That name already exists."
-msgstr "Nama tersebut sudah ada."
-
-#: 
 msgid "Title is required"
 msgstr "Judul wajib diisi"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Kesempatan sukarela tidak ditemukan"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13462,14 +13341,6 @@ msgstr "Tidak Ada Setoran"
 #: 
 msgid "No Events Today"
 msgstr "Tidak Ada Acara Hari Ini"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Tidak ada hari peringatan dalam 7 hari terakhir atau mendatang"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Tidak ada ulang tahun dalam 7 hari terakhir atau mendatang"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -15049,10 +14920,6 @@ msgid "Target family"
 msgstr "Keluarga tujuan"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Kelompok tidak dapat ditemukan. Silakan coba lagi."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Keluarga yang dipilih sudah tidak ada. Silakan muat ulang halaman dan coba lagi."
 
@@ -15267,10 +15134,6 @@ msgstr "Format yang didukung"
 #: 
 msgid "System Configuration"
 msgstr "Konfigurasi Sistem"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15501,10 +15364,6 @@ msgid "Add New Fund"
 msgstr "Tambah Dana Baru"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Tambah Kesempatan Baru"
-
-#: 
 msgid "Add New Person"
 msgstr "Tambah Orang Baru"
 
@@ -15517,10 +15376,6 @@ msgid "Add New Role"
 msgstr "Tambah Peran Baru"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Tambah Kesempatan Sukarela Baru"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Tambah Kelas Sekolah Minggu"
 
@@ -15531,10 +15386,6 @@ msgstr "Hapus keluarga ini?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tinjau keluarga dan individu baru yang mendaftar melalui formulir pendaftaran publik Anda"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Konfirmasi Penghapusan Kesempatan Sukarela"
 
 #: 
 msgid "# Payments"
@@ -17199,14 +17050,6 @@ msgid "Find people who did not attend an event"
 msgstr "Temukan orang-orang yang tidak menghadiri acara"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Temukan relawan yang sesuai dengan dua kode peluang spesifik"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Peluang Relawan Pertama"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Brosur Terlipat"
 
@@ -17283,10 +17126,6 @@ msgid "Run Report"
 msgstr "Jalankan Laporan"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Peluang Relawan Kedua"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Ditampilkan di bilah sisi, di halaman login, dan di email. Mengunggah logo menggantikan branding ChurchCRM di mana pun logo tersebut muncul."
 
@@ -17313,14 +17152,6 @@ msgstr "Menggunakan logo ChurchCRM default"
 #: 
 msgid "View Full Family Giving"
 msgstr "Lihat Pemberian Keluarga Lengkap"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Peluang Relawan"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Relawan untuk Dua Peluang"
 
 #: 
 msgid "YTD"
@@ -17795,10 +17626,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Pendaftaran yang menunggu peninjauan dari formulir pendaftaran publik Anda. Entri tanpa email atau telepon ditandai — verifikasi kontak sebelum menindaklanjuti."
 
 #: 
-msgid "Review now"
-msgstr "Tinjau sekarang"
-
-#: 
 msgid "Review self registrations"
 msgstr "Tinjau pendaftaran mandiri"
 
@@ -17849,10 +17676,6 @@ msgstr "Kemarin"
 #: 
 msgid "days ago"
 msgstr "hari yang lalu"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "pendaftaran mandiri menunggu peninjauan"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18146,10 +17969,6 @@ msgstr "Jadwal yang mengikuti jenis acara harus menyebutkan jenis acaranya"
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Jadwal yang melayani satu acara tidak dapat mengikuti acara lain; hapus dan tambahkan jadwal baru"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Satu daftar peluang pelayanan, seperti \"Pembibitan\" atau \"Penyambut\", disimpan di Jemaat → Admin. Setiap orang diberi tag peluang yang bersedia ia bantu, di tab Relawan pada datanya. Hanya itu yang dicatat: tidak ada tim, jadwal, penugasan pada tanggal tertentu, maupun email pengingat. Laporan dan data orang adalah tempat tag itu digunakan."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18458,18 +18277,6 @@ msgstr "Tugas latar belakang berjalan"
 #: 
 msgid "Birthday greeting"
 msgstr "Ucapan ulang tahun"
-
-#: 
-msgid "Both"
-msgstr "Keduanya"
-
-#: 
-msgid "Both (transition)"
-msgstr "Keduanya (transisi)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Keduanya — V1 dan V2 berdampingan (transisi)"
 
 #: 
 msgid "Calendar address"
@@ -21552,22 +21359,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Pengguna harus memiliki izin Tambah Acara, atau mengoordinasikan pelayanan relawan yang memiliki kalender ini"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Peluang Relawan (lama)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Peluang Relawan lama"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Pelayanan"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Manajemen Relawan"
-
-#: 
 msgid "Valid"
 msgstr "Valid"
 
@@ -21586,14 +21377,6 @@ msgstr "Lihat acara"
 #: 
 msgid "View this email"
 msgstr "Lihat email ini"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Relawan (Lama)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Manajemen Relawan V2 tidak diaktifkan"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21698,10 +21481,6 @@ msgid "What the check found"
 msgstr "Hasil pemeriksaan"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Apa saja pengalaman relawan itu"
-
-#: 
 msgid "What you want to say"
 msgstr "Apa yang ingin Anda sampaikan"
 
@@ -21732,10 +21511,6 @@ msgstr "Dari mana tanggal berasal"
 #: 
 msgid "Where we reach you"
 msgstr "Cara kami menghubungi Anda"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Pengalaman Manajemen Relawan mana yang aktif. V1 adalah fitur Peluang Relawan lama; V2 adalah alur penjadwalan dan penugasan baru. \"Keduanya\" menampilkan keduanya berdampingan selama migrasi."
 
 #: 
 msgid "Which events"
@@ -22144,10 +21919,6 @@ msgstr "Tidak diizinkan mengubah kelompok penonton acara ini"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Hanya manajer relawan yang dapat mengubah siapa yang mengoordinasi pelayanan"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Memilih V1 menghentikan sementara email relawan V2; apa pun yang antri akan dikirim ketika V2 kembali aktif, kecuali jika kejadiannya sudah berakhir."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22992,10 +22763,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Waktu tenggang peringatan posisi kosong (jam)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Pengelolaan Relawan"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Pelayanan relawan, tim, jadwal, dan penugasan"
 
@@ -23006,14 +22773,6 @@ msgstr "Posisi relawan yang perlu diisi pada hari-hari mendatang"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Relawan masih dibutuhkan untuk sesi mendatang ini: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Apa arti ini?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Pengalaman relawan mana yang dipakai gereja ini"
 
 #: 
 msgid "You are on the schedule"
@@ -26384,248 +26143,8 @@ msgid "Review Family Information"
 msgstr "Tinjau Informasi Keluarga"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Pelayanan bernama \"%s\" sudah ada. Pilih dari daftar, atau gunakan nama lain."
-
-#: 
-msgid "A new ministry"
-msgstr "Pelayanan baru"
-
-#: 
-msgid "A position"
-msgstr "Sebuah posisi"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Tambahkan {{total}} relawan ke posisi yang sebelumnya dikonversi?"
-
-#: 
-msgid "Already converted"
-msgstr "Sudah dikonversi"
-
-#: 
-msgid "An existing ministry"
-msgstr "Pelayanan yang sudah ada"
-
-#: 
-msgid "Becomes"
-msgstr "Menjadi"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang semestinya digunakan pada satu waktu; pengaturan \"Pengalaman relawan\" menentukan mana yang dilihat gereja ini. Beralih hanya menyembunyikan atau menampilkan halaman dan item menu, dan tidak pernah menghapus data. V1 dan Keduanya hanya ditawarkan selama Peluang Relawan masih digunakan: setelah semua peluang dikonversi dan gereja memakai V2, keduanya hilang dari daftar ini."
-
-#: 
-msgid "Convert"
-msgstr "Konversi"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Konversi Peluang Relawan"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Konversi {{total}} peluang sekarang? Data V1 tetap seperti apa adanya hingga Peluang Relawan dihentikan."
-
-#: 
-msgid "Converted"
-msgstr "Dikonversi"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Dikonversi: {{positions}} posisi dan {{ministries}} pelayanan, {{qualifications}} relawan memenuhi syarat."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Setiap peluang menjadi posisi di tim pertama dari satu pelayanan, dan semua orang yang terhubung dengannya memenuhi syarat untuk posisi tersebut. Daftar mandiri awalnya nonaktif pada posisi-posisi ini."
-
-#: 
-msgid "Everything is converted."
-msgstr "Semuanya sudah dikonversi."
-
-#: 
-msgid "Existing ministry"
-msgstr "Pelayanan yang sudah ada"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Beri nama pelayanan baru maksimal 100 karakter."
-
-#: 
-msgid "Its own ministry"
-msgstr "Pelayanan tersendiri"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Terhubung sejak itu: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Tautan yang tidak dapat dikonversi"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Pelayanan baru tersendiri"
-
-#: 
-msgid "New ministry name"
-msgstr "Nama pelayanan baru"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Tidak ada email yang dikirim, dan Peluang Relawan tetap seperti apa adanya hingga dihentikan."
-
-#: 
-msgid "No name"
-msgstr "Tanpa nama"
-
-#: 
-msgid "Not converted"
-msgstr "Belum dikonversi"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Buka Pengalih Fitur"
-
-#: 
-msgid "Open Ministries"
-msgstr "Buka Pelayanan"
-
-#: 
-msgid "Opportunities"
-msgstr "Peluang"
-
-#: 
-msgid "Opportunity"
-msgstr "Peluang"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Peluang #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Orang yang terhubung ke Peluang Relawan yang sudah dikonversi sejak konversi: %d. Tambahkan mereka ke posisinya sebelum Peluang Relawan dihentikan pada awal 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Pratinjau konversi terlebih dahulu, lalu kirim revisi yang dikembalikannya."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Diganti namanya agar nama tetap unik"
-
-#: 
-msgid "Review the conversion"
-msgstr "Tinjau konversi"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Kirim pilihan konversi sebagai objek JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Kirim peluang yang menjadi pelayanan sebagai daftar ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Pelayanan itu tidak ada."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Versi ChurchCRM tempat administrator menutup pemberitahuan penghentian Peluang Relawan."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Peluang Relawan telah berubah sejak pratinjau. Periksa pratinjau lagi, lalu konversi."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Konfirmasi tidak dapat dibuka. Muat ulang halaman dan coba lagi."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Konversi tidak dapat dipratinjau."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Konversi gagal. Tidak ada yang diubah."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Pelayanan \"%s\" tidak memiliki tim untuk menampung posisi."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Server tidak dapat dihubungi. Muat ulang halaman untuk melihat apakah konversi sudah berjalan."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Tidak ada Peluang Relawan untuk dikonversi."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Pengelolaan Relawan beralih ke Keduanya, sehingga pelayanan baru terlihat di samping Peluang Relawan."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Peluang Relawan akan dihentikan"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Peluang Relawan dikonversi"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan menjadi Pelayanan agar data siapa melayani di mana tetap tersimpan."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan %1$d peluang dan %2$d relawan Anda menjadi Pelayanan sekarang. Anda dapat melihat pratinjau hasilnya sebelum ada yang berubah."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Relawan memenuhi syarat"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Relawan yang perlu ditambahkan ke posisi hasil konversi"
-
-#: 
-msgid "What it becomes"
-msgstr "Menjadi apa"
-
-#: 
-msgid "What will happen"
-msgstr "Apa yang akan terjadi"
-
-#: 
-msgid "Where they go"
-msgstr "Ke mana mereka pergi"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Peluang Relawan lama mana yang telah dikonversi, dan posisi yang menjadi hasil masing-masing."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Pengalaman relawan yang digunakan gereja ini. Peluang Relawan (V1) akan dihentikan pada awal 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Peluang Relawan Anda telah dikonversi menjadi Pelayanan. Ubah Pengelolaan Relawan ke V2 sebelum Peluang Relawan dihentikan pada awal 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "ke pelayanan baru, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ke pelayanan {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "sudah tidak ada di ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26800,10 +26319,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Penugasan dibatalkan"
 
@@ -26850,10 +26365,6 @@ msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Kejadian ini dibatalkan"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27097,10 +26608,6 @@ msgstr "Menghapus orang dan keluarga"
 #: 
 msgid "Delete the login for"
 msgstr "Hapus login untuk"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Rentang waktu grafik setoran"
 
 #: 
 msgid "Disabled at"
@@ -27555,10 +27062,6 @@ msgid "View people and families"
 msgstr "Melihat orang dan keluarga"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Manajemen Relawan dimatikan untuk gereja ini"
-
-#: 
 msgid "Weak"
 msgstr "Lemah"
 
@@ -27627,10 +27130,6 @@ msgid "Latest Notes"
 msgstr "Catatan Terbaru"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Belum ada catatan yang ditambahkan."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Mulai pendaftaran untuk mendapatkan kode QR."
 
@@ -27641,4 +27140,744 @@ msgstr "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d pemberian dengan total %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d keluarga saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d keluarga belum dapat menerima kwitansi dan dikecualikan. Perbaiki masalah yang tercantum di bawahnya, lalu pilih Periksa Lagi."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d grup saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d orang saat ini memiliki properti jenis ini."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d rilis tersedia sejak versi yang Anda instal."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Tidak ada kwitansi yang dibuat."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: masukkan nama lengkap penyumbang yang telah diverifikasi, konfirmasikan para penyumbang, dan konfirmasikan satu set penyumbang. Set pembayaran dengan penyumbang campuran harus ditangani di luar fitur ini."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: pemberian atau alamat surat telah berubah sejak peninjauan. Pilih Periksa Lagi dan konfirmasikan penyumbang kembali."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} angsuran)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} angsuran)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Pembayaran kartu kredit atau wesel bank berada dalam setoran yang belum ditutup. Tutup setoran setelah pembayaran selesai diproses."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Sebuah pembayaran memiliki jumlah yang tidak dapat dikurangkan. Kwitansi Kanada di sini hanya mendukung pemberian tanpa keuntungan."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Sebuah pembayaran memiliki jumlah uang yang tidak valid."
+
+#: 
+msgid "A payment has no date."
+msgstr "Sebuah pembayaran tidak memiliki tanggal."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Sebuah pembayaran bertanggal setelah tanggal penerbitan."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Sebuah pembayaran ditandai sebagai masalah."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Sebuah pembayaran bernilai nol atau negatif."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Diperlukan POST yang telah ditinjau dengan token CSRF yang valid."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Keluarga yang dipilih sudah tidak ada lagi."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Gambar tanda tangan bukanlah tanda tangan digital yang aman."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Pembaruan sistem tersedia. Mintalah administrator Anda untuk meningkatkan instalasi Anda."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Semua baris yang disertakan adalah pemberian uang tanpa keuntungan."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Semua pengaturan kwitansi Kanada yang diperlukan telah diisi."
+
+#: 
+msgid "Also delete family members"
+msgstr "Hapus juga anggota keluarga"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Jumlah keuntungan"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Jumlah pemberian"
+
+#: 
+msgid "Amount per installment"
+msgstr "Jumlah per angsuran"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Jumlah yang dimasukkan adalah"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Seorang administrator mengunggahnya di bawah Pengaturan Laporan."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Disetujui, tetapi tidak ada undangan yang dikirim"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Mintalah administrator sistem Anda untuk meningkatkan ChurchCRM ke versi terbaru."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Tanda Tangan Berwenang"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Badan Pendapatan Kanada"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kwitansi Resmi Kanada"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kwitansi resmi Kanada mengharuskan Kanada sebagai negara gereja pada Info Gereja."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kwitansi Kanada memerlukan seluruh tahun kalender dan semua dana, tanpa filter lain."
+
+#: 
+msgid "Change Selection"
+msgstr "Ubah Pilihan"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Nama Legal Badan Amal"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Alamat Terdaftar Badan Amal"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Nomor Registrasi Badan Amal"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Rincian badan amal untuk kwitansi belum diisi. Tambahkan nama legal, alamat terdaftar, nomor registrasi, dan lokasi penerbitan bila Anda bisa. Keuangan tetap berjalan hingga saat itu."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Badan amal pada kwitansi"
+
+#: 
+msgid "Check Again"
+msgstr "Periksa Lagi"
+
+#: 
+msgid "Check the year"
+msgstr "Periksa tahun"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Periksa tahun, siapkan laporan, lalu unduh."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Pilih Mingguan, Bulanan atau Triwulanan untuk jumlah angsuran."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Pilih tahun kalender donasi yang valid."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Pilih asli atau duplikat."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Pilih total komitmen atau jumlah angsuran."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Terjemahan ChurchCRM dikelola di repositori GitHub ChurchCRM. Anda dapat membantu dengan"
+
+#: 
+msgid "Commitment amount"
+msgstr "Jumlah komitmen"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Bandingkan duplikat dengan asli yang disimpan dan konfirmasikan bahwa semua informasi kwitansi tidak berubah."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Lengkapi setiap pengakuan kwitansi sebelum mengunduh."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Lengkapi nama legal badan amal, alamat terdaftar, nomor registrasi, lokasi penerbitan, dan penanda tangan tercetak."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Penanda Tangan Tercetak Surat Konfirmasi"
+
+#: 
+msgid "Copy Kind"
+msgstr "Jenis Salinan"
+
+#: 
+msgid "Currency"
+msgstr "Mata Uang"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Simbol mata uang $ atau CAD"
+
+#: 
+msgid "Date received"
+msgstr "Tanggal diterima"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Menghapusnya juga akan menghapus %d properti dan semua penugasannya sehingga tidak ada yang tertinggal menggantung."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Apakah semua pemberian tahun terpilih milik penyumbang yang disebutkan bersama di atas?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Jangan gunakan kembali nomor untuk kwitansi yang berbeda, jangan beri kwitansi untuk pemberian yang sama dua kali, atau buat ulang informasi yang berubah sebagai asli yang tidak berubah."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Salinan duplikat / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Jumlah pemberian yang memenuhi syarat untuk keperluan pajak penghasilan"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Masukkan jadwal dan tanggal angsuran untuk mempratinjau komitmen."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Masukkan tanggal angsuran pertama dan terakhir yang valid secara berurutan."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Masukkan jumlah angsuran yang valid dengan maksimal dua tempat desimal."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Janji yang ada mempertahankan total yang tercatat. Pilih jumlah per angsuran hanya saat memasukkan setiap pemberian terjadwal."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Diisi dari kepala keluarga dan pasangan. Edit agar sama persis dengan para penyumbang."
+
+#: 
+msgid "First installment"
+msgstr "Angsuran pertama"
+
+#: 
+msgid "Full commitment"
+msgstr "Komitmen penuh"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Buat Laporan Pajak"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Tahun Kalender Pemberian"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Laporan pemberian — bukan kwitansi donasi resmi"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Bantu Menerjemahkan di GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Perubahan amplop historis tidak didukung."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Saya telah membandingkan dengan asli yang disimpan: penyumbang, jumlah, nomor seri dan teks tidak berubah. Ini bukan koreksi atau penggantian."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Saya akan menyimpan PDF yang diterbitkan dan catatan kwitansi eksternal di lokasi catatan Kanada milik badan amal."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Jika asli yang disimpan tidak tersedia atau berbeda, gunakan prosedur pembatalan/penggantian CRA eksternal Anda."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Sertakan memo pembayaran: saya telah meninjaunya sebagai sesuai untuk penyumbang."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Sertakan keluarga ini dalam unduhan"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Versi terinstal: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Jumlah angsuran hanya dapat digunakan untuk janji."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Tanggal angsuran harus berada dalam tahun fiskal yang dipilih."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Token CSRF tidak valid atau hilang"
+
+#: 
+msgid "Issue Date"
+msgstr "Tanggal Penerbitan"
+
+#: 
+msgid "Issue Locality"
+msgstr "Lokasi Penerbitan"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Simpan PDF asli dan catatan kwitansi eksternal di lokasi catatan Kanada milik badan amal."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Angsuran terakhir pada atau sebelum"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Susunan kata surat, rincian badan amal, dan penanganan PDF diatur sekali pada Pengaturan Laporan."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Susunan kata surat, rincian badan amal, dan penanganan PDF untuk laporan pemberian"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maksimal 2 MiB dan 2000 × 1000 piksel. Pilih gambar baru untuk menggantikan tanda tangan yang disimpan. Gambar tanda tangan bukanlah tanda tangan digital yang aman."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Masuk anggota nonaktif, jadi tidak ada seorang pun dalam keluarga %s yang dapat masuk ke portal anggota. Administrator dapat mengaktifkannya di bawah Admin → Portal Anggota."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Set pembayaran keluarga dengan penyumbang campuran tidak dapat dipisahkan di sini; tangani di luar fitur ini."
+
+#: 
+msgid "Narrow the list"
+msgstr "Persempit daftar"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Tidak ada keluarga yang cocok dengan filter ini untuk %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Tidak ada kwitansi individu atau kumulatif yang tumpang tindih."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Belum ada kwitansi yang dapat dibuat untuk keluarga ini"
+
+#: 
+msgid "No signature on file"
+msgstr "Tidak ada tanda tangan dalam berkas"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Tidak — penyumbang berbeda; tangani di luar fitur ini"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Tidak ada seorang pun dalam keluarga %s yang dapat masuk ke portal anggota berdasarkan aturan masuk saat ini."
+
+#: 
+msgid "None / Aucun"
+msgstr "Tidak ada / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Belum siap menerbitkan kwitansi Kanada. Masih kurang"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Kwitansi Resmi / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Kwitansi resmi untuk keperluan pajak penghasilan / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Kwitansi resmi memerlukan nomor registrasi dalam format 123456789RR0001 dan gambar tanda tangan."
+
+#: 
+msgid "Original"
+msgstr "Asli"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Tanggal Penerbitan Asli (masukkan dari asli yang disimpan)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Tanggal pembayaran mencerminkan tanggal pemberian diterima, termasuk perlakuan cap pos cek yang dikirim melalui pos yang terdokumentasi."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Dicetak pada laporan pemberian biasa, misalnya EIN di Amerika Serikat. Nilai yang sama ada pada Info Gereja."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Pengidentifikasi aset tanda tangan laporan pemberian pribadi. Dikelola melalui unggahan tanda tangan."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Properti / Penugasan"
+
+#: 
+msgid "Property deleted"
+msgstr "Properti dihapus"
+
+#: 
+msgid "Property type deleted"
+msgstr "Jenis properti dihapus"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Penutup Kwitansi"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Lokasi Penerbitan Kwitansi"
+
+#: 
+msgid "Receipt No."
+msgstr "No. Kwitansi"
+
+#: 
+msgid "Registration Number"
+msgstr "Nomor Registrasi"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Nomor registrasi dalam format 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Catatan rilis tidak tersedia saat ini."
+
+#: 
+msgid "Releases"
+msgstr "Rilis"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Sisa komitmen untuk %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Hapus persyaratan 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Hapus gambar tanda tangan yang disimpan? Kwitansi resmi memerlukan satu dalam berkas."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Laporan dan pengingat membandingkan komitmen periode penuh ini dengan pemberian. Saldo yang tersisa bukan perhitungan angsuran yang terlambat."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Laporan dan pengingat menggunakan komitmen penuh yang ditampilkan di atas. Saldo yang tersisa bukan perhitungan angsuran yang terlambat."
+
+#: 
+msgid "Require 2FA"
+msgstr "Wajibkan 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Atur Ulang Opsi"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Tinjau Keluarga Terpilih"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "CONTOH — TIDAK SAH UNTUK KEPERLUAN PAJAK"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Placeholder tanda tangan contoh"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Nyatakan apakah 2FA diperlukan."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Pembaruan keamanan dan dukungan hanya disediakan untuk versi terbaru."
+
+#: 
+msgid "Select the families to review."
+msgstr "Pilih keluarga yang akan ditinjau."
+
+#: 
+msgid "Set up the statement"
+msgstr "Siapkan laporan"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Siapkan autentikasi dua faktor untuk melanjutkan."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Konflik amplop bersama: keluarga lain saat ini memiliki nomor amplop ini."
+
+#: 
+msgid "Signature Image"
+msgstr "Gambar Tanda Tangan"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Gambar tanda tangan (Admin, Pengaturan Laporan)"
+
+#: 
+msgid "Signature on file"
+msgstr "Tanda tangan dalam berkas"
+
+#: 
+msgid "Sincerely"
+msgstr "Hormat kami"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Tentukan dasar jumlah saat mengedit janji berulang."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Laporan Pemberian Standar"
+
+#: 
+msgid "Statement Template"
+msgstr "Templat Laporan"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Berikan tanggal penerbitan tidak lebih lambat dari hari ini."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "ID Pajak pada laporan"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Keluarga %s tidak memiliki anggota yang masih hidup untuk diundang ke portal anggota."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Nomor registrasi Kanada harus memiliki format 123456789RR0001. Ini tidak memverifikasi status registrasi."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Nomor registrasi badan amal harus berupa teks."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Nomor registrasi badan amal yang dicetak pada kwitansi resmi. Jika kosong menggunakan ID Pajak pada Info Gereja."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Alamat terdaftar badan amal. Jika kosong menggunakan alamat pada Info Gereja."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Frasa penutup di atas penanda tangan, misalnya Hormat kami."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Komitmen penuh tidak boleh melebihi 999999.99 per dana dan jumlah harus menggunakan maksimal dua tempat desimal."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Pemberian atau alamat surat telah berubah sejak terakhir Anda periksa. Tinjau dan konfirmasikan penyumbang kembali."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Alamat surat tidak lengkap. Jalan, kota, provinsi, dan kode pos diperlukan."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Nama badan amal terdaftar. Nama ini dapat berbeda dari nama gereja."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Tempat kwitansi diterbitkan. Jika kosong menggunakan kota pada Info Gereja."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Penanda tangan laporan pemberian yang tercetak berwenang menandatangani kwitansi ini."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Simbol mata uang sistem harus $ atau mengidentifikasi CAD untuk kwitansi Kanada."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Tidak ada pembayaran dalam tahun kalender yang dipilih."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Mereka adalah penyumbang yang sebenarnya untuk setiap pemberian dalam keluarga/tahun kalender ini, dan alamat surat sudah benar."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Gambar ini dicetak di atas nama penanda tangan pada laporan pemberian dan kwitansi. Rincian badan amal dan nama tercetak penanda tangan ada di bawah Keuangan, Pengaturan Laporan."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Opsi ini memformat kwitansi Kanada tetapi tidak menyimpan register kwitansi atau mempertahankan PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Keluarga yang mendaftar sendiri ini sedang menunggu persetujuan. Menyetujuinya akan mengirim email undangan kepada setiap anggota yang dapat masuk ke portal anggota untuk meninjau informasi keluarga."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Alat ini tidak memiliki alur kerja pembatalan/penggantian; gunakan proses Anda yang ada dan sesuai CRA untuk koreksi/penggantian kwitansi yang hilang."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Pengguna ini harus menyiapkan 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Ini akan menghapus catatan keluarga dan catatannya secara permanen. Ini tidak dapat dibatalkan."
+
+#: 
+msgid "Total commitment"
+msgstr "Total komitmen"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Tidak dapat mempratinjau komitmen."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Unggah atau ganti tanda tangan"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Unggah tanda tangan pajak yang berwenang di Pengaturan Laporan."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Gunakan tanggal dalam tahun fiskal yang dipilih. Pemberian bulanan dan triwulanan menggunakan hari angsuran pertama, atau hari terakhir dari bulan yang lebih pendek."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Nama Lengkap Penyumbang Terverifikasi"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Verifikasi keluarga secara langsung sebagai gantinya."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Verifikasi nama lengkap dan alamat penyumbang untuk setiap keluarga. Set pembayaran dengan penyumbang campuran harus ditangani di luar fitur ini."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Versi %s tersedia. Mintalah administrator Anda untuk meningkatkan instalasi Anda."
+
+#: 
+msgid "View all emails"
+msgstr "Lihat semua email"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ya — satu set penyumbang terverifikasi"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Negara gereja Anda adalah Kanada, jadi kwitansi resmi Kanada juga tersedia saat Anda membuat laporan."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Negara gereja Anda adalah Kanada, jadi kwitansi resmi Kanada tersedia pada Laporan Pemberian dan laporan biasa ditandai sebagai bukan kwitansi donasi resmi."
+
+#: 
+msgid "groups"
+msgstr "grup"
 

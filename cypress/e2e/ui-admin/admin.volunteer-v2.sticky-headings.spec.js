@@ -25,7 +25,6 @@ const PERSON_LEADER = 100;
 let ministryId = 0;
 let teamId = 0;
 const positionIds = [];
-let originalVersion;
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
@@ -106,10 +105,6 @@ function scrollGridSideways() {
 
 describe("Volunteer v2: the Volunteers grid keeps its headings in view (#10527)", () => {
     before(() => {
-        cy.getSystemConfig("sVolunteerVersion").then((value) => {
-            originalVersion = value;
-        });
-        adminApi("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: `${PREFIX} Worship`, description: "" }, 201).then(
@@ -143,7 +138,6 @@ describe("Volunteer v2: the Volunteers grid keeps its headings in view (#10527)"
 
     after(() => {
         cleanupFixtures();
-        cy.restoreSystemConfig("sVolunteerVersion", originalVersion);
     });
 
     afterEach(() => {

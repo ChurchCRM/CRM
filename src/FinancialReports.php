@@ -5,12 +5,8 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\DonationFundQuery;
-use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
@@ -26,7 +22,7 @@ if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
-if (!in_array($sReportType, ['Pledge Family Summary', 'Zero Givers'], true)) {
+if (!in_array($sReportType, ['Zero Givers'], true)) {
     $sReportType = '';
 }
 
@@ -85,89 +81,25 @@ if ($sReportType === '') {
         <label class="form-label" for="FinancialReportTypes"><?= gettext('Report Type') ?>:</label>
         <select class="form-select" name="ReportType" id="FinancialReportTypes">
           <option selected disabled value="0"><?= gettext('Select Report Type') ?></option>
-          <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
         </select>
       </div>
       <div class="d-flex gap-2">
-        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/people/dashboard') ?>"><?= gettext('Cancel') ?></a>
         <input type="submit" class="btn btn-primary" name="Submit1" value="<?= gettext('Next') ?>">
       </div>
     </form>
     <?php
 } else {
-    $iFYID = $_SESSION['idefaultFY'];
-    $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
         case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
-        case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
       <input type="hidden" name="ReportType" value="<?= InputUtils::escapeAttribute($sReportType) ?>">
 
       <h4 class="mb-3"><?= gettext('Filters') ?></h4>
-
-    <?php
-    // Filter by Classification and Families
-    if ($sReportType === 'Pledge Family Summary') {
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-        $rsClassifications = RunQuery($sSQL); ?>
-      <div class="mb-3">
-        <label class="form-label" for="classList"><?= gettext('Classification') ?>:</label>
-        <select name="classList[]" class="form-select" multiple id="classList">
-          <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
-              extract($aRow);
-              echo '<option value="' . (int)$lst_OptionID . '">' . InputUtils::escapeHTML($lst_OptionName) . '</option>';
-          } ?>
-        </select>
-        <div class="d-flex gap-2 mt-2">
-          <button type="button" id="addAllClasses" class="btn btn-sm btn-secondary"><?= gettext('Add All Classes') ?></button>
-          <button type="button" id="clearAllClasses" class="btn btn-sm btn-secondary"><?= gettext('Clear All Classes') ?></button>
-        </div>
-      </div>
-
-      <?php
-        $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
-        $rsFamilies = RunQuery($sSQL);
-        if (!$sDirRoleHead) {
-            $sDirRoleHead = '1';
-        }
-        $head_criteria = ' per_fmr_ID = ' . $sDirRoleHead;
-        $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-        if (intval($sDirRoleSpouse) > 0) {
-            $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
-        }
-        $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
-        $rs_head = RunQuery($sSQL);
-        $aHead = [];
-        while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
-            if ($head_firstname && array_key_exists($head_famid, $aHead)) {
-                $aHead[$head_famid] .= ' & ' . $head_firstname;
-            } elseif ($head_firstname) {
-                $aHead[$head_famid] = $head_firstname;
-            }
-        }
-        ?>
-      <div class="mb-3">
-        <label class="form-label" for="family"><?= gettext('Filter by Family') ?>:</label>
-        <select name="family[]" id="family" multiple class="form-select">
-          <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
-              extract($aRow);
-              echo '<option value="' . (int)$fam_ID . '">' . InputUtils::escapeHTML($fam_Name);
-              if (array_key_exists($fam_ID, $aHead)) {
-                  echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
-              }
-              echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
-          } ?>
-        </select>
-        <div class="d-flex gap-2 mt-2">
-          <button type="button" id="addAllFamilies" class="btn btn-sm btn-secondary"><?= gettext('Add All Families') ?></button>
-          <button type="button" id="clearAllFamilies" class="btn btn-sm btn-secondary"><?= gettext('Clear All Families') ?></button>
-        </div>
-      </div>
-    <?php } ?>
 
     <?php if ($sReportType === 'Zero Givers') :
         $today = date('Y-m-d');
@@ -185,38 +117,6 @@ if ($sReportType === '') {
         </div>
       </div>
 
-    <?php endif; ?>
-
-    <?php if ($sReportType === 'Pledge Family Summary') : ?>
-      <div class="mb-3">
-        <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
-        <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($sReportType === 'Pledge Family Summary') :
-        $funds = DonationFundQuery::create()
-            ->orderByActive()
-            ->orderByName()
-            ->find();
-        $fundGroups = (new DonationFundService())->groupByCategory($funds);
-        $hasCategories = array_keys($fundGroups) !== ['']; ?>
-      <div class="mb-3">
-        <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
-        <select name="funds[]" multiple id="fundsList" class="form-select">
-          <?php foreach ($fundGroups as $catLabel => $catFunds) : ?>
-            <?php if ($hasCategories) : ?><optgroup label="<?= InputUtils::escapeAttribute($catLabel !== '' ? $catLabel : gettext('Uncategorized')) ?>"><?php endif; ?>
-              <?php foreach ($catFunds as $fund) : ?>
-                <option value="<?= (int) $fund->getId() ?>"><?= InputUtils::escapeHTML($fund->getName()) ?><?= $fund->getActive() === 'false' ? ' — ' . gettext('INACTIVE') : '' ?></option>
-              <?php endforeach; ?>
-            <?php if ($hasCategories) : ?></optgroup><?php endif; ?>
-          <?php endforeach; ?>
-        </select>
-        <div class="d-flex gap-2 mt-2">
-          <button type="button" id="addAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Add All Funds') ?></button>
-          <button type="button" id="clearAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Clear All Funds') ?></button>
-        </div>
-      </div>
     <?php endif; ?>
 
       <h4 class="mt-4 mb-3"><?= gettext('Other Settings') ?></h4>
@@ -263,39 +163,6 @@ if ($sReportType === '') {
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
-  var familyEl = document.getElementById("family");
-  if (familyEl && !familyEl.tomselect) new TomSelect(familyEl, { plugins: ["remove_button"] });
-  $("#addAllFamilies").click(function () {
-      var all = [];
-      $("#family > option").each(function () { all.push(this.value); });
-      if (familyEl && familyEl.tomselect) { familyEl.tomselect.setValue(all); }
-  });
-  $("#clearAllFamilies").click(function () {
-      if (familyEl && familyEl.tomselect) { familyEl.tomselect.clear(); }
-  });
-
-  var classListEl = document.getElementById("classList");
-  if (classListEl && !classListEl.tomselect) new TomSelect(classListEl, { plugins: ["remove_button"] });
-  $("#addAllClasses").click(function () {
-      var all = [];
-      $("#classList > option").each(function () { all.push(this.value); });
-      if (classListEl && classListEl.tomselect) { classListEl.tomselect.setValue(all); }
-  });
-  $("#clearAllClasses").click(function () {
-      if (classListEl && classListEl.tomselect) { classListEl.tomselect.clear(); }
-  });
-
-  var fundsListEl = document.getElementById("fundsList");
-  if (fundsListEl && !fundsListEl.tomselect) new TomSelect(fundsListEl, { plugins: ["remove_button"] });
-  $("#addAllFunds").click(function () {
-      var all = [];
-      $("#fundsList option").each(function () { all.push(this.value); });
-      if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.setValue(all); }
-  });
-  $("#clearAllFunds").click(function () {
-      if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.clear(); }
-  });
-
   // Handle report download - clear"No Data Found" banner when exporting
   $(document).on("click","button[type='submit'], input[type='submit']", function() {
     // Simply hide the No Data Found alert banner when any submit button is clicked

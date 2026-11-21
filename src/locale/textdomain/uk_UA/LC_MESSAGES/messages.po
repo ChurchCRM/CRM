@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "Люди"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Діти недільної школи"
-
-#: 
 msgid "Role / Gender"
 msgstr "Роль / стать"
 
@@ -1372,10 +1368,6 @@ msgstr "Група"
 #: 
 msgid "Default"
 msgstr "За замовчуванням"
-
-#: 
-msgid "Exit"
-msgstr "Вихід"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1472,6 @@ msgstr "Властивості оновлення"
 #: 
 msgid "Assign New Group"
 msgstr "Призначити нову групу"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Призначте нову можливість для волонтерів"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1599,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Відновити базу даних"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Будь ласка, підтвердьте видалення"
-
-#: 
 msgid "Listing"
 msgstr "Перелік"
 
@@ -1689,14 +1673,6 @@ msgstr "Новий пароль"
 #: 
 msgid "Confirm New Password"
 msgstr "Підтвердити новий пароль"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Редактор волонтерських можливостей"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Жодних можливостей для волонтерів ще не додано"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4475,10 +4451,6 @@ msgid "People Reports"
 msgstr "Люди Звіти"
 
 #: 
-msgid "People Dashboard"
-msgstr "Інформаційна панель людей"
-
-#: 
 msgid "People Directory"
 msgstr "Каталог людей"
 
@@ -6397,20 +6369,8 @@ msgid "Additional Information"
 msgstr "Додаткова інформація"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Призначити можливості служіння"
-
-#: 
 msgid "Choose a property..."
 msgstr "Виберіть властивість..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Виберіть можливості..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Контакти та особиста інформація"
 
 #: 
 msgid "Edited"
@@ -6419,14 +6379,6 @@ msgstr "Відредаговано"
 #: 
 msgid "Newsletter"
 msgstr "Інформаційний бюлетень"
-
-#: 
-msgid "Personal"
-msgstr "Особисте"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Вибрати можливості служіння"
 
 #: 
 msgid "Volunteer"
@@ -6617,10 +6569,6 @@ msgid "Confirm Property Deletion"
 msgstr "Підтвердити видалення властивості"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Підтвердити видалення можливості служіння"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Підтвердження видалення"
 
@@ -6633,16 +6581,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Існуючі спеціальні поля осіб"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Існуючі можливості служіння"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Поле успішно видалено"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Недійсний токен CSRF"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8414,10 +8354,6 @@ msgid "Create or edit property type categories"
 msgstr "Створити або змінити категорії типів властивостей"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Створити або змінити посади волонтерів"
-
-#: 
 msgid "Current person"
 msgstr "Поточна людина"
 
@@ -8866,10 +8802,6 @@ msgid "Manage user account details and permissions"
 msgstr "Керуйте деталями та дозволами облікового запису користувача"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Керуйте волонтерськими можливостями та призначайте членів"
-
-#: 
 msgid "Map cart items"
 msgstr "Карта вибраних елементів"
 
@@ -8990,10 +8922,6 @@ msgid "No timeline events yet."
 msgstr "Немає подій часової шкали."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Немає призначень волонтерських можливостей."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Ще не готові?"
 
@@ -9030,10 +8958,6 @@ msgstr "Огляд"
 #: 
 msgid "Password Recovery"
 msgstr "Відновлення пароля"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Минулі та наступні 7 днів"
 
 #: 
 msgid "People by Classification"
@@ -9500,10 +9424,6 @@ msgid "funds"
 msgstr "фонди"
 
 #: 
-msgid "opportunities"
-msgstr "можливості"
-
-#: 
 msgid "or connect an external service"
 msgstr "або підключіть зовнішній сервіс"
 
@@ -9803,11 +9723,6 @@ msgstr "Не вдалося отримати адреси електронної
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Не вдалося отримати номери телефонів"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Знайдіть волонтерів для певної можливості"
 
 #. Context: query_qry
 #: 
@@ -10931,10 +10846,6 @@ msgstr "Темна"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Лише база даних (.sql) або повний архів (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Кількість рядків за замовчуванням у таблицях даних. Набуває чинності при наступному завантаженні сторінки."
 
 #. Context: locales
 #: 
@@ -12580,10 +12491,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Неможливо видалити тип властивості: %d властивостей ще посилаються на нього. Спочатку перепризначте або видаліть ці властивості."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Неможливо видалити можливість для волонтерства: %d осіб ще призначені. Спочатку видаліть призначення."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Клас має бути одним із: p, f або g"
 
@@ -12594,10 +12501,6 @@ msgstr "Копіювати повідомлення про помилку"
 #: 
 msgid "Could not load note."
 msgstr "Не вдалося завантажити нотатку."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Опис не може перевищувати 100 символів"
 
 #: 
 msgid "Donation fund not found"
@@ -12620,10 +12523,6 @@ msgid "Failed to create property type"
 msgstr "Не вдалося створити тип властивості"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Не вдалося створити можливість для волонтерства"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Не вдалося видалити фонд пожертвувань"
 
@@ -12640,10 +12539,6 @@ msgid "Failed to delete property type"
 msgstr "Не вдалося видалити тип властивості"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Не вдалося видалити можливість для волонтерства"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Не вдалося оновити фонд пожертвувань"
 
@@ -12656,10 +12551,6 @@ msgid "Failed to update property type"
 msgstr "Не вдалося оновити тип властивості"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Не вдалося оновити можливість для волонтерства"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Збір коштів не знайдено"
 
@@ -12670,10 +12561,6 @@ msgstr "Ідентифікатор встановлення"
 #: 
 msgid "Invalid class"
 msgstr "Недійсний клас"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Назва не може перевищувати 30 символів"
 
 #: 
 msgid "Note by %s deleted"
@@ -12696,16 +12583,8 @@ msgid "Read more"
 msgstr "Читати далі"
 
 #: 
-msgid "That name already exists."
-msgstr "Таке ім'я вже існує."
-
-#: 
 msgid "Title is required"
 msgstr "Назва є обов'язковою"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Можливість для волонтерства не знайдено"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13494,14 +13373,6 @@ msgstr "Немає депозитів"
 #: 
 msgid "No Events Today"
 msgstr "Сьогодні немає подій"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Немає роковин в минулому або наступні 7 днів"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Немає днів народження в минулому або наступні 7 днів"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -15090,10 +14961,6 @@ msgid "Target family"
 msgstr "Цільова родина"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Групу не вдалося знайти. Будь ласка, спробуйте ще раз."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Обрана родина більше не існує. Будь ласка, оновіть сторінку і спробуйте ще раз."
 
@@ -15308,10 +15175,6 @@ msgstr "Підтримувані формати"
 #: 
 msgid "System Configuration"
 msgstr "Системна конфігурація"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "До цієї волонтерської можливості призначені люди. Видалення скасує призначення"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15542,10 +15405,6 @@ msgid "Add New Fund"
 msgstr "Додати новий фонд"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Додати нову можливість"
-
-#: 
 msgid "Add New Person"
 msgstr "Додати нову особу"
 
@@ -15558,10 +15417,6 @@ msgid "Add New Role"
 msgstr "Додати нову роль"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Додати нову волонтерську можливість"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Додати клас недільної школи"
 
@@ -15572,10 +15427,6 @@ msgstr "Видалити цю сімʼю?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Перегляньте нові сімʼї та осіб, які зареєструвалися через вашу публічну форму реєстрації"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Підтвердження видалення волонтерської можливості"
 
 #: 
 msgid "# Payments"
@@ -17246,14 +17097,6 @@ msgid "Find people who did not attend an event"
 msgstr "Знайти людей, які не відвідали подію"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Знайти волонтерів, які відповідають двом конкретним кодам можливостей"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Перша можливість для волонтера"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Складена брошура"
 
@@ -17330,10 +17173,6 @@ msgid "Run Report"
 msgstr "Запустити звіт"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Друга можливість для волонтера"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Відображається на бічній панелі, на сторінці входу та в електронних листах. Завантаження логотипа замінює брендинг ChurchCRM скрізь, де він з’являється."
 
@@ -17360,14 +17199,6 @@ msgstr "Використовується стандартний логотип C
 #: 
 msgid "View Full Family Giving"
 msgstr "Переглянути всі пожертви родини"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Можливість служіння"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Волонтери для двох можливостей служіння"
 
 #: 
 msgid "YTD"
@@ -17842,10 +17673,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Реєстрації з вашої загальнодоступної форми, що очікують перевірки. Записи без ел. пошти чи телефону позначено — перевірте контактні дані, перш ніж зв’язуватися."
 
 #: 
-msgid "Review now"
-msgstr "Перевірити зараз"
-
-#: 
 msgid "Review self registrations"
 msgstr "Перевірити саморєстрації"
 
@@ -17896,10 +17723,6 @@ msgstr "Учора"
 #: 
 msgid "days ago"
 msgstr "дн. тому"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "саморєстрацій очікують перевірки"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18216,10 +18039,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Розклад, що обслуговує одну подію, не може слідувати за іншими подіями; видаліть його та додайте новий розклад"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Єдиний список можливостей служіння, наприклад «Дитяча кімната» або «Той, хто зустрічає», який ведеться в розділі «Люди» → «Адміністрування». Кожній особі присвоюються мітки можливостей, у яких вона готова допомагати, на вкладці «Волонтер» її картки. Це все, що записується: немає команд, розкладів, призначень на дату та нагадувань ел. поштою. Мітки використовуються у звітах і в картці особи."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Найкраще підходить квадратне фото обличчя."
 
@@ -18526,18 +18345,6 @@ msgstr "Фонові завдання виконано"
 #: 
 msgid "Birthday greeting"
 msgstr "Вітання з днем народження"
-
-#: 
-msgid "Both"
-msgstr "Обидва"
-
-#: 
-msgid "Both (transition)"
-msgstr "Обидва (перехід)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Обидва — V1 і V2 поряд (перехід)"
 
 #: 
 msgid "Calendar address"
@@ -21632,22 +21439,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Користувач має мати право додавати події або координувати волонтерське служіння, якому належить цей календар"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Можливості для волонтерів (колишня версія)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — колишні Можливості для волонтерів"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Служіння"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Керування волонтерами"
-
-#: 
 msgid "Valid"
 msgstr "Дійсно"
 
@@ -21666,14 +21457,6 @@ msgstr "Переглянути подію"
 #: 
 msgid "View this email"
 msgstr "Переглянути цей лист"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Волонтер (колишня версія)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Керування волонтерами V2 не ввімкнено"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21784,10 +21567,6 @@ msgid "What the check found"
 msgstr "Що виявила перевірка"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Що являють собою режими роботи з волонтерами"
-
-#: 
 msgid "What you want to say"
 msgstr "Що ви хочете сказати"
 
@@ -21818,10 +21597,6 @@ msgstr "Звідки беруться дати"
 #: 
 msgid "Where we reach you"
 msgstr "Як ми з вами зв’язуємося"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Який режим керування волонтерами активний. V1 — колишня функція «Можливості для волонтерів»; V2 — новий процес планування та призначень. «Обидва» показує їх поряд на час переходу."
 
 #: 
 msgid "Which events"
@@ -22230,10 +22005,6 @@ msgstr "Ви не маєте прав для зміни групи цієї по
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Тільки керівник добровольців може змінити координатора служіння"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Вибір V1 призупиняє надсилання електронної пошти V2; усі черговості будуть надіслані при включенні V2, якщо подія ще не закінчилась."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23078,10 +22849,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Випередження сповіщення про незаповнену позицію (години)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Керування добровольцями"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Служіння добровольців, команди, розклади та призначення"
 
@@ -23092,14 +22859,6 @@ msgstr "Позиції добровольців на найближчі дні"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Добровольці ще потрібні для цих майбутніх проведень: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Що це означає?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Який досвід добровольців використовує ця церква"
 
 #: 
 msgid "You are on the schedule"
@@ -26470,248 +26229,8 @@ msgid "Review Family Information"
 msgstr "Перевірити відомості про родину"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Служіння з назвою «%s» уже існує. Виберіть його зі списку або вкажіть іншу назву."
-
-#: 
-msgid "A new ministry"
-msgstr "Нове служіння"
-
-#: 
-msgid "A position"
-msgstr "Позиція"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Додати волонтерів ({{total}}) на раніше перетворені позиції?"
-
-#: 
-msgid "Already converted"
-msgstr "Уже перетворено"
-
-#: 
-msgid "An existing ministry"
-msgstr "Наявне служіння"
-
-#: 
-msgid "Becomes"
-msgstr "Стає"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM має два способи керування волонтерами. Одночасно має використовуватися лише один; налаштування «Режим волонтерів» визначає, який із них бачить ця церква. Перемикання приховує або показує сторінки й пункти меню і ніколи не видаляє даних. V1 та Обидва доступні лише доки використовуються Волонтерські можливості: коли всі можливості перетворено і церква перейшла на V2, вони зникають із цього списку."
-
-#: 
-msgid "Convert"
-msgstr "Перетворити"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Перетворити Волонтерські можливості"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Перетворити можливості ({{total}}) зараз? Дані V1 зберігаються без змін, доки Волонтерські можливості не буде виведено з ужитку."
-
-#: 
-msgid "Converted"
-msgstr "Перетворено"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Перетворено: позицій — {{positions}}, служінь — {{ministries}}, допущено волонтерів — {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Кожна можливість стає позицією в першій команді одного служіння, а всі пов’язані з нею люди отримують допуск до цієї позиції. Самозапис на ці позиції спочатку вимкнено."
-
-#: 
-msgid "Everything is converted."
-msgstr "Усе перетворено."
-
-#: 
-msgid "Existing ministry"
-msgstr "Наявне служіння"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Дайте новому служінню назву довжиною до 100 символів."
-
-#: 
-msgid "Its own ministry"
-msgstr "Власне служіння"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Пов’язані відтоді: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Зв’язки, які не можна перетворити"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Нові окремі служіння"
-
-#: 
-msgid "New ministry name"
-msgstr "Назва нового служіння"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Листи не надсилаються, а Волонтерські можливості залишаються без змін, доки їх не буде виведено з ужитку."
-
-#: 
-msgid "No name"
-msgstr "Без назви"
-
-#: 
-msgid "Not converted"
-msgstr "Не перетворено"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Відкрити Перемикачі функцій"
-
-#: 
-msgid "Open Ministries"
-msgstr "Відкрити Служіння"
-
-#: 
-msgid "Opportunities"
-msgstr "Можливості"
-
-#: 
-msgid "Opportunity"
-msgstr "Можливість"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Можливість № %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Люди, пов’язані з перетвореними Волонтерськими можливостями після перетворення: %d. Додайте їх на їхні позиції, перш ніж Волонтерські можливості буде виведено з ужитку на початку 2027 року."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Спершу перегляньте попередній результат перетворення й надішліть отриману ревізію."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Перейменовано, щоб назви не повторювалися"
-
-#: 
-msgid "Review the conversion"
-msgstr "Перевірити перетворення"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Надішліть вибір перетворення як об’єкт JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Надішліть можливості, які стануть служіннями, як список ідентифікаторів."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Такого служіння не існує."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Версія ChurchCRM, у якій адміністратор приховав сповіщення про виведення Волонтерських можливостей з ужитку."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Волонтерські можливості змінилися після попереднього перегляду. Перевірте попередній перегляд ще раз, потім виконайте перетворення."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Не вдалося відкрити підтвердження. Перезавантажте сторінку й спробуйте ще раз."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Не вдалося виконати попередній перегляд перетворення."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Перетворення не вдалося. Нічого не змінено."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Служіння «%s» не має команди для цих позицій."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Не вдалося зв’язатися із сервером. Перезавантажте сторінку, щоб перевірити, чи виконано перетворення."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Немає Волонтерських можливостей для перетворення."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Керування добровольцями перемикається на «Обидва», щоб нові служіння було видно поруч із Волонтерськими можливостями."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Волонтерські можливості виводяться з ужитку"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Волонтерські можливості перетворено"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Волонтерські можливості буде виведено з ужитку на початку 2027 року. Перетворіть їх на Служіння, щоб зберегти, хто де служить."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Волонтерські можливості буде виведено з ужитку на початку 2027 року. Перетворіть зараз на Служіння ваші можливості (%1$d) і волонтерів (%2$d). Ви можете переглянути результат, перш ніж щось зміниться."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Допущені волонтери"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Волонтери, яких треба додати на перетворені позиції"
-
-#: 
-msgid "What it becomes"
-msgstr "Чим стає"
-
-#: 
-msgid "What will happen"
-msgstr "Що станеться"
-
-#: 
-msgid "Where they go"
-msgstr "Куди вони потраплять"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Які колишні Волонтерські можливості перетворено і якою позицією стала кожна з них."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Який режим волонтерів використовує ця церква. Волонтерські можливості (V1) буде виведено з ужитку на початку 2027 року."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Ваші Волонтерські можливості перетворено на Служіння. Перемкніть Керування добровольцями на V2, перш ніж Волонтерські можливості буде виведено з ужитку на початку 2027 року."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "у нове служіння, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "у служіння {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "більше немає в ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26892,10 +26411,6 @@ msgstr[2] "%d призначень за замовчуванням пропущ�
 msgstr[3] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Перехідне налаштування. Доступні і колишні сторінки «Можливості для волонтерів», і нові сторінки «Служіння», а в картці особи показано обидві вкладки «Волонтер» зі зрозумілими підписами. Використовуйте його на час переходу церкви з V1 на V2, потім перемкніться лише на V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Призначення скасовано"
 
@@ -26942,10 +26457,6 @@ msgstr "Цю дату скасовано. Від вас більше нічог�
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Це проведення скасовано"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Волонтерство, організоване так, як це заведено в церкві. Кожне служіння має команди та позиції; люди отримують кваліфікацію для позицій і входять до групи резерву служіння; розклади слідують за подіями календаря та створюють проведення з датами й потребами в людях; координатори призначають людей, які приймають призначення, відмовляються або пропонують заміну; нагадування та сповіщення надсилаються ел. поштою. Адміністратори та користувачі з правом «Керування служіннями» бачать усі служіння та можуть створювати, деактивувати й видаляти їх. Координатору служіння натомість надається право «Керування моїми служіннями»: тоді розділ «Служіння» на бічній панелі показує лише ті служіння, які він координує. Керівник команди керує своєю командою через портал парафії. Члени парафії користуються порталом парафії, щоб бачити свій розклад, відповідати, записуватися та пропонувати допомогу."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27198,10 +26709,6 @@ msgstr "Видалення людей і родин"
 #: 
 msgid "Delete the login for"
 msgstr "Видалити обліковий запис для"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Часовий діапазон діаграми внесків"
 
 #: 
 msgid "Disabled at"
@@ -27656,10 +27163,6 @@ msgid "View people and families"
 msgstr "Перегляд людей і родин"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Керування волонтерами вимкнено для цієї церкви"
-
-#: 
 msgid "Weak"
 msgstr "Слабкий"
 
@@ -27728,10 +27231,6 @@ msgid "Latest Notes"
 msgstr "Останні нотатки"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Нотаток ще не додано."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Почніть реєстрацію, щоб отримати QR-код."
 
@@ -27742,4 +27241,750 @@ msgstr "Цей пароль або код неправильний. Двофак
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Двофакторну автентифікацію вже налаштовано. Її секрет показується лише під час реєстрації."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d подарунок на загальну суму %2$s"
+msgstr[1] "%1$d подарунки на загальну суму %2$s"
+msgstr[2] "%1$d подарунків на загальну суму %2$s"
+msgstr[3] "%1$d подарунків на загальну суму %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d сімей наразі мають властивості цього типу."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d сім’я ще не може отримати квитанцію і пропускається. Виправте проблему, зазначену під нею, а потім виберіть «Перевірити ще раз»."
+msgstr[1] "%d сім’ї ще не можуть отримати квитанцію і пропускаються. Виправте проблеми, зазначені під ними, а потім виберіть «Перевірити ще раз»."
+msgstr[2] "%d сімей ще не можуть отримати квитанцію і пропускаються. Виправте проблеми, зазначені під ними, а потім виберіть «Перевірити ще раз»."
+msgstr[3] "%d сімей ще не можуть отримати квитанцію і пропускаються. Виправте проблеми, зазначені під ними, а потім виберіть «Перевірити ще раз»."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d груп наразі мають властивості цього типу."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d осіб наразі мають властивості цього типу."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d випусків доступно від вашої встановленої версії."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Квитанцію не було створено."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: введіть перевірене повне ім’я донора (донорів), підтвердьте донорів і підтвердьте один набір донорів. Набори платежів від різних донорів необхідно обробляти поза цією функцією."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: подарунки або поштова адреса змінилися після перевірки. Виберіть «Перевірити ще раз» і знову підтвердьте донора."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} внесків)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} внесків)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Платіж кредитною карткою або банківським переказом перебуває в депозиті, який ще не закрито. Закрийте депозит, коли платіж буде проведено."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Платіж містить суму, що не підлягає вирахуванню. Канадські квитанції тут підтримують лише подарунки без вигоди."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Платіж має недійсну грошову суму."
+
+#: 
+msgid "A payment has no date."
+msgstr "Платіж не має дати."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Платіж датовано після дати видачі."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Платіж позначено як проблемний."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Платіж дорівнює нулю або є від’ємним."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Потрібен перевірений POST-запит із дійсним токеном CSRF."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Вибраної сім’ї більше не існує."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Зображення підпису не є безпечним цифровим підписом."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Доступне оновлення системи. Попросіть адміністратора оновити вашу інсталяцію."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Усі включені рядки — це грошові подарунки без вигоди."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Усі необхідні налаштування канадських квитанцій заповнено."
+
+#: 
+msgid "Also delete family members"
+msgstr "Також видалити членів сім’ї"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Сума вигод"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Сума подарунків"
+
+#: 
+msgid "Amount per installment"
+msgstr "Сума за внесок"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Введені суми є"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Адміністратор завантажує його в розділі «Налаштування звітів»."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Схвалено, але запрошення не надіслано"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Попросіть системного адміністратора оновити ChurchCRM до останньої версії."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Підпис уповноваженої особи"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Канадське податкове агентство"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Канадська офіційна квитанція"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Для канадських офіційних квитанцій у розділі «Інформація про церкву» країною церкви має бути Канада."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Канадські квитанції вимагають увесь календарний рік і всі фонди, без інших фільтрів."
+
+#: 
+msgid "Change Selection"
+msgstr "Змінити вибір"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Юридична назва благодійної організації"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Юридична адреса благодійної організації"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Реєстраційний номер благодійної організації"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Дані благодійної організації для квитанцій ще не заповнено. Додайте юридичну назву, юридичну адресу, реєстраційний номер і місце видачі, коли зможете. Фінанси доти працюватимуть далі."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Благодійна організація на квитанціях"
+
+#: 
+msgid "Check Again"
+msgstr "Перевірити ще раз"
+
+#: 
+msgid "Check the year"
+msgstr "Перевірте рік"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Перевірте рік, налаштуйте виписку, а потім завантажте."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Для суми внеску виберіть Щотижня, Щомісяця або Щокварталу."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Виберіть дійсний календарний рік пожертв."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Виберіть оригінал або дублікат."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Виберіть загальну обіцянку або суму внеску."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Переклади ChurchCRM ведуться в репозиторії ChurchCRM на GitHub. Ви можете допомогти,"
+
+#: 
+msgid "Commitment amount"
+msgstr "Сума обіцянки"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Порівняйте дублікат із збереженим оригіналом і підтвердьте, що всі дані квитанції незмінні."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Заповніть кожне підтвердження квитанції перед завантаженням."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Заповніть юридичну назву благодійної організації, юридичну адресу, реєстраційний номер, місце видачі та друковане ім’я підписанта."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Друковане ім’я підписанта листа-підтвердження"
+
+#: 
+msgid "Copy Kind"
+msgstr "Тип копії"
+
+#: 
+msgid "Currency"
+msgstr "Валюта"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Символ валюти $ або CAD"
+
+#: 
+msgid "Date received"
+msgstr "Дата отримання"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Видалення також видалить %d властивостей і всі їхні призначення, щоб нічого не залишилося висіти."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Чи всі подарунки за вибраний рік належать донору (донорам), зазначеним разом вище?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Не використовуйте номер повторно для іншої квитанції, не видавайте квитанцію за ті самі подарунки двічі та не створюйте змінені дані повторно як незмінний оригінал."
+
+#: 
+msgid "Duplicate"
+msgstr "Дублікат"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Дублікат / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Допустима сума подарунків для цілей податку на прибуток"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Введіть графік і дати внесків, щоб переглянути обіцянку."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Введіть дійсні дати першого й останнього внесків у правильному порядку."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Введіть дійсні суми внесків щонайбільше з двома знаками після коми."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Існуючі обіцянки зберігають записані підсумки. Вибирайте суму за внесок лише під час введення кожного запланованого подарунка."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Заповнюється за головами домогосподарств і подружжям. Відредагуйте, щоб точно відповідало донорам."
+
+#: 
+msgid "First installment"
+msgstr "Перший внесок"
+
+#: 
+msgid "Full commitment"
+msgstr "Повна обіцянка"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Створити податкові виписки"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Календарний рік подарунків"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Виписка про пожертви — не є офіційною квитанцією про пожертву"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Допоможіть із перекладом на GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Історичні зміни конвертів не підтримуються."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Я порівняв зі збереженим оригіналом: донор, сума, серійний номер і текст незмінні. Це не виправлення і не заміна."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Я зберігатиму виданий PDF і зовнішній журнал квитанцій у канадському місці зберігання документів благодійної організації."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Якщо збережений оригінал недоступний або відрізняється, скористайтеся зовнішніми процедурами скасування/заміни CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Включити примітки до платежів: я переглянув їх як придатні для донора."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Включити цю сім’ю до завантаження"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Встановлена версія: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Суми внесків можна використовувати лише для обіцянок."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Дати внесків мають бути в межах вибраного фінансового року."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Недійсний або відсутній токен CSRF"
+
+#: 
+msgid "Issue Date"
+msgstr "Дата видачі"
+
+#: 
+msgid "Issue Locality"
+msgstr "Місце видачі"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Зберігайте оригінальний PDF і зовнішній журнал квитанцій у канадському місці зберігання документів благодійної організації."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Останній внесок у день або до"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Текст листа, дані благодійної організації та обробка PDF налаштовуються один раз у Налаштуваннях виписки."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Текст листа, дані благодійної організації та обробка PDF для виписок про пожертви"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Максимум 2 МіБ і 2000 × 1000 пікселів. Виберіть нове зображення, щоб замінити збережений підпис. Зображення підпису не є безпечним цифровим підписом."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Вхід для учасників вимкнено, тому ніхто із сім’ї %s не може увійти на портал учасників. Адміністратор може ввімкнути його в розділі Адміністрування → Портал учасників."
+
+#: 
+msgid "Memo"
+msgstr "Примітка"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Набори сімейних платежів від різних донорів тут не можна розділити; обробляйте їх поза цією функцією."
+
+#: 
+msgid "Narrow the list"
+msgstr "Звузити список"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Жодна сім’я не відповідає цим фільтрам для %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Не існує жодної індивідуальної чи сукупної квитанції, що перекривається."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Для цієї сім’ї ще не можна створити квитанцію"
+
+#: 
+msgid "No signature on file"
+msgstr "Підпис відсутній"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Ні — різні донори; обробити поза цією функцією"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Ніхто із сім’ї %s не може увійти на портал учасників за поточним правилом входу."
+
+#: 
+msgid "None / Aucun"
+msgstr "Немає / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Не готово до видачі канадських квитанцій. Все ще бракує"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Офіційна квитанція / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Офіційна квитанція для цілей податку на прибуток / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Офіційні квитанції потребують реєстраційного номера у форматі 123456789RR0001 і зображення підпису."
+
+#: 
+msgid "Original"
+msgstr "Оригінал"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Дата первинної видачі (введіть зі збереженого оригіналу)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Дати платежів відображають дати отримання подарунків, включно з документованим урахуванням поштового штемпеля чеків, надісланих поштою."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Друкується на звичайних виписках про пожертви, наприклад EIN у Сполучених Штатах. Те саме значення є в розділі «Інформація про церкву»."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Приватний ідентифікатор ресурсу підпису виписки про пожертви. Керується завантаженням підпису."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Властивості / Призначення"
+
+#: 
+msgid "Property deleted"
+msgstr "Властивість видалено"
+
+#: 
+msgid "Property type deleted"
+msgstr "Тип властивості видалено"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Завершення квитанції"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Місце видачі квитанції"
+
+#: 
+msgid "Receipt No."
+msgstr "№ квитанції"
+
+#: 
+msgid "Registration Number"
+msgstr "Реєстраційний номер"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Реєстраційний номер у форматі 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Примітки до випуску наразі недоступні."
+
+#: 
+msgid "Releases"
+msgstr "Випуски"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Залишкова обіцянка для %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Вилучити вимогу 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Вилучити збережене зображення підпису? Офіційні квитанції потребують наявного підпису."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Звіти й нагадування порівнюють цю обіцянку за весь період із пожертвами. Залишковий баланс не є розрахунком простроченого внеску."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Звіти й нагадування використовують повну обіцянку, показану вище. Залишковий баланс не є розрахунком простроченого внеску."
+
+#: 
+msgid "Require 2FA"
+msgstr "Вимагати 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Скинути параметри"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Переглянути вибрані сім’ї"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "ЗРАЗОК — НЕДІЙСНО ДЛЯ ПОДАТКОВИХ ЦІЛЕЙ"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Заповнювач зразка підпису"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Вкажіть, чи потрібна 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Оновлення безпеки та підтримка надаються лише для останньої версії."
+
+#: 
+msgid "Select the families to review."
+msgstr "Виберіть сім’ї для перегляду."
+
+#: 
+msgid "Set up the statement"
+msgstr "Налаштувати виписку"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Щоб продовжити, налаштуйте двофакторну автентифікацію."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Конфлікт спільного конверта: інша сім’я наразі має цей номер конверта."
+
+#: 
+msgid "Signature Image"
+msgstr "Зображення підпису"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Зображення підпису (Адміністрування, Налаштування звітів)"
+
+#: 
+msgid "Signature on file"
+msgstr "Підпис у наявності"
+
+#: 
+msgid "Sincerely"
+msgstr "З повагою"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Під час редагування повторюваної обіцянки вкажіть основу суми."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Стандартна виписка про пожертви"
+
+#: 
+msgid "Statement Template"
+msgstr "Шаблон виписки"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Вкажіть дату видачі не пізніше сьогоднішньої."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Податковий ідентифікатор на виписках"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Сім’я %s не має живих членів, яких можна запросити на портал учасників."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Канадський реєстраційний номер повинен мати формат 123456789RR0001. Це не перевіряє статус реєстрації."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Реєстраційний номер благодійної організації має бути текстом."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Реєстраційний номер благодійної організації, що друкується на офіційних квитанціях. Якщо порожньо, використовується податковий ідентифікатор з розділу «Інформація про церкву»."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Юридична адреса благодійної організації. Якщо порожньо, використовується адреса з розділу «Інформація про церкву»."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Завершальна фраза над підписантом, наприклад «З повагою»."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Повна обіцянка не повинна перевищувати 999999.99 на фонд, а суми мають містити щонайбільше два знаки після коми."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Подарунки або поштова адреса змінилися після вашої останньої перевірки. Перегляньте їх і знову підтвердьте донора."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Поштова адреса неповна. Потрібні вулиця, місто, провінція та поштовий індекс."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Назва, під якою зареєстровано благодійну організацію. Вона може відрізнятися від назви церкви."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Місце видачі квитанцій. Якщо порожньо, використовується місто з розділу «Інформація про церкву»."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Друкований підписант виписки про пожертви уповноважений підписувати ці квитанції."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Символ валюти системи має бути $ або позначати CAD для канадських квитанцій."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "У вибраному календарному році немає платежів."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Це справжні донори кожного подарунка в цій сім’ї/календарному році, а поштова адреса правильна."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Це зображення друкується над ім’ям підписанта на виписках про пожертви та квитанціях. Дані благодійної організації та друковане ім’я підписанта — у розділі Фінанси, Налаштування виписки."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Ця опція форматує канадську квитанцію, але не веде реєстр квитанцій і не зберігає PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Ця самозареєстрована сім’я очікує на схвалення. Її схвалення надсилає кожному члену, який може увійти на портал учасників, запрошення електронною поштою переглянути інформацію про сім’ю."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Цей інструмент не має процесу скасування/заміни; для виправлень/заміни втрачених квитанцій використовуйте наявний процес, що відповідає вимогам CRA."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Цей користувач має налаштувати 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Це назавжди видалить запис сім’ї та її примітки. Цю дію не можна скасувати."
+
+#: 
+msgid "Total commitment"
+msgstr "Загальна обіцянка"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Не вдалося переглянути обіцянку."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Завантажити або замінити підпис"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Завантажте уповноважений податковий підпис у розділі «Налаштування звітів»."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Використовуйте дати в межах вибраного фінансового року. Щомісячні та щоквартальні подарунки використовують день першого внеску або останній день коротших місяців."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Перевірене повне ім’я донора (донорів)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Натомість перевірте сім’ю особисто."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Перевірте повне ім’я та адресу донора для кожної сім’ї. Набори платежів від різних донорів необхідно обробляти поза цією функцією."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Доступна версія %s. Попросіть адміністратора оновити вашу інсталяцію."
+
+#: 
+msgid "View all emails"
+msgstr "Переглянути всі електронні листи"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Так — один перевірений набір донорів"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Країною вашої церкви є Канада, тому канадські офіційні квитанції також доступні під час створення виписок."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Країною вашої церкви є Канада, тому канадські офіційні квитанції доступні у Виписках про пожертви, а звичайні виписки позначені як неофіційні квитанції про пожертву."
+
+#: 
+msgid "groups"
+msgstr "групи"
 

@@ -23,8 +23,6 @@ export const readDeletionRelationships = (personId) => {
         .then((rows) => { snapshot.custom = rows; })
         .then(() => query("SELECT * FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ?", [personId]))
         .then((rows) => { snapshot.groups = rows; })
-        .then(() => query("SELECT * FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ?", [personId]))
-        .then((rows) => { snapshot.opportunities = rows; })
         .then(() => query("SELECT * FROM record2property_r2p WHERE r2p_record_ID = ?", [personId]))
         .then((rows) => { snapshot.properties = rows; })
         .then(() => query("SELECT * FROM note_nte WHERE nte_per_ID = ?", [personId]))
@@ -33,7 +31,6 @@ export const readDeletionRelationships = (personId) => {
 
 export const prepareDeletionRelationships = (personId, propertyId) =>
     query("INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (?, 9, 1)", [personId])
-        .then(() => query("INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (?, NULL)", [personId]))
         .then(() => query("INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID, r2p_Value) VALUES (?, ?, 'preserve')", [propertyId, personId]))
         .then(() => readDeletionRelationships(personId));
 
@@ -153,7 +150,6 @@ export const cleanupDeletionFixture = (personId, propertyId) =>
         .then(() => query("DELETE FROM volunteer_assignment_vasg WHERE vasg_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM volunteer_notification_vntf WHERE vntf_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ?", [personId]))
-        .then(() => query("DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID = ?", [propertyId, personId]))
         .then(() => query("DELETE FROM property_pro WHERE pro_ID = ?", [propertyId]))
         .then(() => query("DELETE FROM volunteer_ministry_vmin WHERE vmin_Name = ?", [FIXTURE_MINISTRY]));

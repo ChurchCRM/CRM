@@ -347,7 +347,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.visit("/admin/export/csv", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
-        cy.location("pathname").should("match", /\/admin\/$/);
+        cy.location("pathname").should("match", /\/session\/begin$/);
     });
 
     it("should deny unauthenticated POST to the CSV export endpoint", () => {

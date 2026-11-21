@@ -4,7 +4,7 @@ describe("Main Dashboard", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Loads all", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.contains("Families");
         cy.contains("People");
         cy.contains("Sunday School");
@@ -13,9 +13,9 @@ describe("Main Dashboard", () => {
 
 /**
  * Regression tests for the deposits widget authorization fix on
- * /v2/dashboard.
+ * /people/dashboard.
  *
- * The bug: non-finance users visiting /v2/dashboard received an "Admin or
+ * The bug: non-finance users visiting /people/dashboard received an "Admin or
  * Finance permission required" bootbox popup because the JS unconditionally
  * called /api/deposits/dashboard whenever #depositChartRow was visible —
  * which it always was, even when the card only showed a "no permissions"
@@ -43,7 +43,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
     describe("Finance-enabled user (admin)", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("renders the deposit chart and calls the deposits API", () => {
+        it("renders the deposit chart on the finance dashboard, not on the home dashboard", () => {
             // Deposit #1 is the only fixture deposit with pledges attached, so
             // it's the only one with real chart data (the others sum to
             // null). The fixture ships a static date that inevitably ages
@@ -63,7 +63,11 @@ describe("Main Dashboard - Deposits widget authorization", () => {
 
             cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
+            cy.contains("Families");
+            cy.get("#depositChartRow").should("not.exist");
+
+            cy.visit("finance/?days=90");
 
             // The finance-only row must exist for finance users.
             cy.get("#depositChartRow").should("exist");
@@ -72,7 +76,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
 
             // The JS guard should trigger the deposits API call.
             cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
-            cy.get("@depositsApi").its("request.url").should("include", "days=90");
+            cy.get("@depositsApi").its("request.url").should("match", /from=\d{4}-\d{2}-\d{2}/);
 
             // ApexCharts must actually render into the container, not just
             // leave an empty div — catches chart-library regressions
@@ -81,13 +85,38 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
             cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
         });
+
+        it("keeps a range chosen in the address as the default from then on", () => {
+            cy.visit("finance/?days=90");
+            cy.visit("finance/");
+            cy.get("#finance-range").should("have.value", "days:90");
+        });
+
+        it("applies one saved Time Range to the whole finance dashboard", () => {
+            cy.intercept("POST", "**/setting/ui.dashboard.finance.range").as("saveRange");
+            cy.visit("finance/");
+            cy.get("#finance-range").select("days:30");
+            cy.wait("@saveRange").its("response.statusCode").should("eq", 200);
+            cy.location("search").should("eq", "?days=30");
+            cy.get("#payments-by-fund").should("contain", "Last 30 days");
+            cy.get("#depositChartRow").should("contain", "Last 30 days");
+
+            cy.visit("finance/");
+            cy.get("#finance-range").should("have.value", "days:30");
+
+            cy.get('#finance-range option:contains("(Current)")').then(($option) => {
+                cy.get("#finance-range").select($option.val());
+            });
+            cy.wait("@saveRange");
+            cy.get("#finance-range").should("not.have.value", "days:30");
+        });
     });
 
     describe("User without finance permission", () => {
         beforeEach(() => cy.setupNoFinanceSession());
 
         it("hides the entire deposit tracking card from non-finance users", () => {
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
 
             // Wait for the dashboard to fully render before asserting
             // absence — page content loads incrementally.
@@ -113,7 +142,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
             // request gets captured against the alias.
             cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
-            cy.visit("v2/dashboard");
+            cy.visit("people/dashboard");
 
             // Wait for the dashboard to fully render before asserting the
             // API was NOT hit — widgets fire requests during page load.
@@ -143,7 +172,7 @@ describe("Report Issue", () => {
             body: { issueBody: "## System Info\nVersion: test\n" },
         }).as("postIssue");
 
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
 
         cy.window().then((win) => {
             cy.stub(win, "open").as("windowOpen");
@@ -173,7 +202,7 @@ describe("Report Issue", () => {
     });
 
     it("does not show the admin log-review hint to standard users", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.get("#supportMenu").click();
         cy.get("#reportIssue").click();
 
@@ -186,7 +215,7 @@ describe("Report Issue (Admin)", () => {
     beforeEach(() => cy.setupAdminSession());
 
     it("shows a hint to review and attach system logs, linking to the log viewer", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.get("#supportMenu").click();
         cy.get("#reportIssue").click();
 
@@ -195,5 +224,47 @@ describe("Report Issue (Admin)", () => {
             .contains("a", "system logs")
             .should("have.attr", "href")
             .and("include", "/admin/system/logs");
+    });
+});
+
+describe("Main Dashboard - People and Finance switch", () => {
+    it("lets a finance user move between the two dashboards", () => {
+        cy.setupAdminSession();
+        cy.visit("people/dashboard");
+        cy.get("#dashboardSwitch .nav-link.active").should("contain", "People");
+        cy.get("#dashboardSwitch").contains("a", "Finance").click();
+        cy.location("pathname").should("match", /\/finance\/?$/);
+        cy.get("#dashboardSwitch .nav-link.active").should("contain", "Finance");
+    });
+
+    it("hides the Finance tab from a user without finance permission", () => {
+        cy.setupNoFinanceSession();
+        cy.visit("people/dashboard");
+        cy.contains("Families");
+        cy.get("#dashboardSwitch").should("contain", "Events").and("not.contain", "Finance").and("not.contain", "Deposits");
+    });
+});
+
+describe("Main Dashboard - Today's Events card", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("offers no check-in and nothing to expand when there are no events today", () => {
+        cy.intercept("GET", "**/api/events/today*", { body: { events: [] } }).as("today");
+        cy.visit("people/dashboard");
+        cy.wait("@today");
+        cy.get("#todayEventsCount").should("contain", "No Events Today");
+        cy.get("#todayEventsCheckin").should("not.be.visible");
+        cy.get("#todayEventsToggle").should("not.be.visible");
+    });
+
+    it("expands to the event list and checks in to a single event directly", () => {
+        const events = [{ id: 7, title: "Sunday Service", typeName: "Church Service", start: new Date().toISOString(), checkedIn: 0, totalAttendees: 0 }];
+        cy.intercept("GET", "**/api/events/today*", { body: { events } }).as("today");
+        cy.visit("people/dashboard");
+        cy.wait("@today");
+        cy.get("#todayEventsBody").should("not.be.visible");
+        cy.get("#todayEventsCheckin").should("be.visible").and("have.attr", "href").and("match", /\/event\/checkin\/7$/);
+        cy.get("#todayEventsToggle").click();
+        cy.get("#todayEventsBody").should("be.visible").and("contain", "Sunday Service");
     });
 });

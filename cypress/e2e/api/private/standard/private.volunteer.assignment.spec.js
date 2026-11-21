@@ -38,7 +38,6 @@
  * hook does not run when the runner crashes mid-spec. Deletion order is FK-safe.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
@@ -91,7 +90,6 @@ let occurrenceOne = 0;
 let occurrenceTwo = 0;
 let occurrenceB = 0;
 let reqEspresso = 0;
-let originalVersion = "v1";
 let seriesEventIds = [];
 let seriesStart = "";
 let seriesEnd = "";
@@ -116,10 +114,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today. */
@@ -364,11 +358,6 @@ after(() => {
 
 describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9701)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         // UC1 §2.17 — Coffee Bar: one ministry, one team, three positions.
@@ -538,7 +527,6 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ───────────────────────────────────────────────────────────────────────────

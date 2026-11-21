@@ -16,6 +16,7 @@ import { initAttendanceHistory } from "./attendance-history";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
 import { initLoginAsPerson } from "./person-login-as-person";
+import { initPersonPage } from "./person-page";
 import { initPortalAccess } from "./person-portal-access";
 import { initPortalSignInCard } from "./person-signin-card";
 import { initTimelineFilter } from "./timeline-filter";
@@ -25,8 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initPortalSignInCard();
   initPortalAccess();
   initLoginAsPerson();
+  initPersonPage();
   // The Volunteer v2 pane's dates (#9711), in ChurchCRM's locale.
   formatTimeElements();
+  const hashPane = document.getElementById(location.hash.slice(1))?.closest(".tab-pane");
+  if (hashPane) {
+    document.querySelector(`[data-bs-toggle="tab"][href="#${hashPane.id}"]`)?.click();
+  }
   // Map initialisation
   const config = window.CRM?.personMapConfig;
   if (config) {

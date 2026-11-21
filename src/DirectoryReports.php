@@ -278,7 +278,7 @@ $resetOptionsHref = SystemURLs::getRootPath() . '/DirectoryReports.php?resetDire
       <div class="d-flex gap-2 mt-3">
         <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
         <a class="btn btn-outline-secondary" id="resetDirectoryOptions" href="<?= InputUtils::escapeAttribute($resetOptionsHref) ?>"><?= gettext('Reset Options') ?></a>
-        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/people/dashboard') ?>"><?= gettext('Cancel') ?></a>
       </div>
     </form>
   </div>

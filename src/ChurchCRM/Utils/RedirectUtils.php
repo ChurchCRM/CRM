@@ -46,11 +46,11 @@ class RedirectUtils
      * - Validating for open redirect attacks
      * - Returning a fallback if empty/invalid
      *
-     * @param string $fallback The fallback URL if validation fails (default: 'v2/dashboard')
+     * @param string $fallback The fallback URL if validation fails (default: 'people/dashboard')
      *
      * @return string A safe URL for redirection
      */
-    public static function getLinkBackFromRequest(string $fallback = 'v2/dashboard'): string
+    public static function getLinkBackFromRequest(string $fallback = 'people/dashboard'): string
     {
         // Get the raw value first to check for control characters before strip_tags removes them
         $rawLinkBack = $_GET['linkBack'] ?? '';
@@ -107,11 +107,11 @@ class RedirectUtils
      * - Returning a fallback URL if the input is invalid
      *
      * @param string $url The URL to validate
-     * @param string $fallback The fallback URL if validation fails (default: 'v2/dashboard')
+     * @param string $fallback The fallback URL if validation fails (default: 'people/dashboard')
      *
      * @return string A safe URL for redirection
      */
-    public static function validateRedirectUrl(string $url, string $fallback = 'v2/dashboard'): string
+    public static function validateRedirectUrl(string $url, string $fallback = 'people/dashboard'): string
     {
         // Trim whitespace
         $url = trim($url);
@@ -171,7 +171,7 @@ class RedirectUtils
      *
      * @return string An escaped, safe URL for HTML/JavaScript output
      */
-    public static function escapeRedirectUrl(string $url, string $fallback = 'v2/dashboard'): string
+    public static function escapeRedirectUrl(string $url, string $fallback = 'people/dashboard'): string
     {
         $safeUrl = self::validateRedirectUrl($url, $fallback);
 

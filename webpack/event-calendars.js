@@ -149,7 +149,7 @@ function deleteCalendar() {
 
 /**
  * Volunteer v2 D25: the church calendar's "Ministries that may add events". The server sends
- * the ministries only when the rollout is on and this user may change the grants, so an empty
+ * the ministries only when this user may change the grants, so an empty
  * list means the field is not shown at all.
  */
 function grantMinistries() {

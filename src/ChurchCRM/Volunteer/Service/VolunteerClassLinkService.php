@@ -30,7 +30,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  *
  * Membership writes here run inside `VolunteerPoolWriter::run()`, D19's
  * managed-write context, and only after the calling service has authorized the
- * qualification change. While V2 is on, the model hooks refuse the same
+ * qualification change. The model hooks refuse the same
  * Teacher-role write from anywhere else (`findTeacherWriteConflict()`).
  */
 final class VolunteerClassLinkService
@@ -96,13 +96,10 @@ final class VolunteerClassLinkService
      * D23 (c): the refusal for a membership write that would add, remove, or change
      * a role to or from Teacher on a linked class, when it does not come from V2.
      * `null` role means "not a member". Returns null when the write is allowed.
-     *
-     * Free for every installation with the rollout at `v1`: no query runs before
-     * the rollout check.
      */
     public static function findTeacherWriteConflict(int $groupId, ?int $fromRoleId, ?int $toRoleId): ?VolunteerException
     {
-        if ($fromRoleId === $toRoleId || VolunteerPoolWriter::isManagedWriteOpen() || !User::isVolunteerV2Enabled()) {
+        if ($fromRoleId === $toRoleId || VolunteerPoolWriter::isManagedWriteOpen()) {
             return null;
         }
 
@@ -130,10 +127,6 @@ final class VolunteerClassLinkService
      */
     public static function findTeacherRoleLock(int $groupId, int $roleId): ?VolunteerException
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return null;
-        }
-
         $team = self::findLinkedTeam($groupId);
         $group = $team?->getClassGroup();
         if ($team === null || $group === null || self::teacherRoleId($group) !== $roleId) {
@@ -150,10 +143,6 @@ final class VolunteerClassLinkService
     /** A linked class must stay a Sunday School class; unlinking comes first. */
     public static function findClassTypeLock(int $groupId): ?VolunteerException
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return null;
-        }
-
         $team = self::findLinkedTeam($groupId);
         $group = $team?->getClassGroup();
         if ($team === null || $group === null) {
@@ -183,17 +172,13 @@ final class VolunteerClassLinkService
 
     /**
      * What the class page and the group view say about a link (D23): null unless
-     * V2 is on and a team is linked. `canOpenMinistry` decides whether the ministry
+     * a team is linked. `canOpenMinistry` decides whether the ministry
      * is offered as a link or named as plain text.
      *
      * @return array{ministryId: int, ministryName: string, teamId: int, teamName: string, teacherRoleId: int|null, canOpenMinistry: bool}|null
      */
     public static function describeLink(int $groupId, User $viewer): ?array
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return null;
-        }
-
         $team = self::findLinkedTeam($groupId);
         $group = $team?->getClassGroup();
         if ($team === null || $group === null) {

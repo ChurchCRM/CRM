@@ -24,6 +24,7 @@ use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Service\DashboardLandingService;
 
 class AuthenticationManager
 {
@@ -171,7 +172,7 @@ class AuthenticationManager
             );
         } finally {
             if (!$preventRedirect) {
-                RedirectUtils::redirect(self::getStaffSignInURL());
+                RedirectUtils::redirect(self::getSignInChooserURL());
             }
         }
     }
@@ -218,13 +219,12 @@ class AuthenticationManager
 
     /**
      * Signs out whatever this browser holds, staff or portal session (design §7),
-     * and returns where to send it: a member goes back to the member sign-in page.
-     * A remembered device is forgotten too (§6.2); the caller drops its cookie.
+     * and returns the sign-in chooser. A remembered device is forgotten too (§6.2);
+     * the caller drops its cookie.
      */
     public static function signOut(): string
     {
         $principal = PortalSessionStore::load();
-        $staffSignedIn = self::validateUserSessionIsActive(false);
 
         if ($principal instanceof PortalPrincipal) {
             SignInAudit::record(
@@ -239,9 +239,7 @@ class AuthenticationManager
 
         self::endSession(true);
 
-        return $principal instanceof PortalPrincipal && !$staffSignedIn && !$principal->isAssisted()
-            ? self::getPortalLoginURL()
-            : self::getStaffSignInURL();
+        return self::getSignInChooserURL();
     }
 
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
@@ -285,7 +283,7 @@ class AuthenticationManager
         if ($result->isAuthenticated && !$result->preventRedirect) {
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
-            $redirectLocation ??= 'v2/dashboard';
+            $redirectLocation ??= DashboardLandingService::pathFor(self::getCurrentUser());
 
             // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
@@ -408,10 +406,16 @@ class AuthenticationManager
         return false;
     }
 
-    /** The staff sign-in address: the /admin root signs staff in. /session/begin serves the same form. */
+    /** The staff sign-in page. A signed-out visit to /admin/ comes here, then returns to /admin. */
     public static function getStaffSignInURL(): string
     {
-        return SystemURLs::getRootPath() . '/admin/';
+        return SystemURLs::getRootPath() . '/session/begin';
+    }
+
+    /** The signed-out chooser. One door sends the visitor straight on. */
+    public static function getSignInChooserURL(): string
+    {
+        return SystemURLs::getRootPath() . '/session/';
     }
 
     public static function getPortalLoginURL(): string
@@ -435,7 +439,7 @@ class AuthenticationManager
             if ($missingRole !== '') {
                 RedirectUtils::securityRedirect($missingRole);
             } else {
-                RedirectUtils::redirect('v2/dashboard');
+                DashboardLandingService::redirect();
             }
         }
     }

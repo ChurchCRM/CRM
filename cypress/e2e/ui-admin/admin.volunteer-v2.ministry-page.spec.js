@@ -34,7 +34,6 @@
  * through a real endpoint, which is a feature.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -70,7 +69,7 @@ function freshAdminLogin() {
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
@@ -87,7 +86,7 @@ function freshLeaderLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("nofinance.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("nofinance.password") + "{enter}");
         }
@@ -97,10 +96,6 @@ function freshLeaderLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** Teams, positions and the pool Group all cascade from the ministry row. */
@@ -136,7 +131,6 @@ before(() => {
 
 describe("Volunteer v2 ministry page (#9701)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi(
@@ -191,7 +185,6 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     describe("the tab strip", () => {
@@ -605,10 +598,6 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 const CREATE_PREFIX = "UIMINNEW";
 
 describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
-    before(() => {
-        setVersion("v2");
-    });
-
     after(() => {
         cy.makePrivateAdminAPICall("GET", `${VOLUNTEER_URL}/ministries`, null, 200).then(
             (resp) => {
@@ -626,7 +615,6 @@ describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
                 }
             },
         );
-        setVersion("v1");
     });
 
     beforeEach(() => {

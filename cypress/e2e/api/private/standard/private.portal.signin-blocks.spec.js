@@ -88,9 +88,9 @@ describe("Sign-in blocks for everyone", () => {
                     apply(staff);
 
                     cy.request("/api/portal/me").its("body.profile.id").should("eq", staff.personId);
-                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+                    cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 200);
                     signIn().its("status").should("eq", 302);
-                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+                    cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 200);
                     cy.makePrivateNoPermAPICall("GET", "/api/person/2", null, 200);
                     signInStatus(staff.personId).then((status) => {
                         expect(status.maySignIn).to.eq(false);
@@ -107,7 +107,7 @@ describe("Sign-in blocks for everyone", () => {
                         expect(response.status).to.eq(200);
                         expect(response.body).to.contain(GENERIC_MESSAGE);
                     });
-                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
+                    cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 302);
                 });
 
                 it("refuses the person's API key and the public login API", () => {
@@ -155,10 +155,10 @@ describe("Sign-in blocks for everyone", () => {
         cy.request({ method: "POST", url: "/session/two-factor", form: true, body: { TwoFACode: "000000" } }).then(
             (response) => {
                 expect(response.redirects.some((url) => url.includes("/session/two-factor"))).to.eq(false);
-                expect(response.redirects.some((url) => url.endsWith("/admin/"))).to.eq(true);
+                expect(response.redirects.some((url) => url.endsWith("/session/begin"))).to.eq(true);
             },
         );
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
+        cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 302);
     });
 
     it("Disable sign-in removes devices and passkeys and is audited with the administrator", () => {

@@ -16,7 +16,6 @@
  * because cy.request() rotates the PHP session cookie.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 
@@ -100,7 +99,6 @@ after(() => {
 
 describe("Volunteer v2 — staffing counts read as status words (D34)", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, description: "D34 fixture" }, 201).then((resp) => {
@@ -155,7 +153,6 @@ describe("Volunteer v2 — staffing counts read as status words (D34)", () => {
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     describe("one position, on the occurrence page", () => {

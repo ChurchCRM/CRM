@@ -44,7 +44,6 @@
  * endpoints the page calls.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
@@ -82,7 +81,7 @@ function freshAdminLogin() {
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
@@ -92,10 +91,6 @@ function freshAdminLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -193,7 +188,6 @@ after(() => {
 
 describe("Volunteer v2 ministry page, round two (#9701)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi(
@@ -269,7 +263,6 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // ═════════════════════════════════════════════════════════════════════════

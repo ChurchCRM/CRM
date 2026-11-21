@@ -1306,10 +1306,6 @@ msgid "People"
 msgstr "மக்கள்"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "ஞாயிறு பள்ளி குழந்தைகள்"
-
-#: 
 msgid "Role / Gender"
 msgstr "பங்கு / பாலினம்"
 
@@ -1372,10 +1368,6 @@ msgstr "குழு"
 #: 
 msgid "Default"
 msgstr "இயல்புநிலை"
-
-#: 
-msgid "Exit"
-msgstr "வெளியேறு"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1472,6 @@ msgstr "பண்புகளை புதுப்பிக்கவும்"
 #: 
 msgid "Assign New Group"
 msgstr "புதிய குழுவை ஒதுக்கவும்"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "ஒரு புதிய தன்னார்வ வாய்ப்பை வழங்கவும்"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1599,10 +1587,6 @@ msgid "Restore Database"
 msgstr "தகவல்/தரவுத்தளத்தை மீட்டமை"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "நீக்குவதை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Listing"
 msgstr "பட்டியல்"
 
@@ -1689,14 +1673,6 @@ msgstr "புதிய கடவுச்சொல்"
 #: 
 msgid "Confirm New Password"
 msgstr "புதிய கடவு சொல்லை உறுதி செய்"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "தன்னார்வ வாய்ப்பு ஆசிரியர்"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "தன்னார்வ வாய்ப்புகள் எதுவும் இதுவரை சேர்க்கப்படவில்லை"
 
 #: 
 msgid "Why did you come to the church?"
@@ -4472,10 +4448,6 @@ msgid "People Reports"
 msgstr "மக்கள் அறிக்கைகள்"
 
 #: 
-msgid "People Dashboard"
-msgstr "மக்கள் டாஷ்போர்டு"
-
-#: 
 msgid "People Directory"
 msgstr "மக்கள் அடைவு"
 
@@ -6392,20 +6364,8 @@ msgid "Additional Information"
 msgstr "கூடுதல் தகவல்"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "வாய்ப்புகளை ஒதுக்குங்கள்"
-
-#: 
 msgid "Choose a property..."
 msgstr "ஒரு சொத்தைத் தேர்ந்தெடுக்கவும்..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "வாய்ப்புகளைத் தேர்ந்தெடுக்கவும்..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "தொடர்பு மற்றும் தனிப்பட்ட தகவல்கள்"
 
 #: 
 msgid "Edited"
@@ -6414,14 +6374,6 @@ msgstr "திருத்தப்பட்டது"
 #: 
 msgid "Newsletter"
 msgstr "செய்திமடல்"
-
-#: 
-msgid "Personal"
-msgstr "தனிப்பட்ட"
-
-#: 
-msgid "Select Opportunities"
-msgstr "வாய்ப்புகளைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Volunteer"
@@ -6608,10 +6560,6 @@ msgid "Confirm Property Deletion"
 msgstr "சொத்து நீக்குதலை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "தன்னார்வ வாய்ப்புக்கு நீக்குதலை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "நீக்குவதற்கான உறுதிப்பாடு"
 
@@ -6624,16 +6572,8 @@ msgid "Existing Custom Person Fields"
 msgstr "உள்ள தனிப்பயன் நபர் புலங்கள்"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "உள்ள தன்னார்வ வாய்ப்புக்கள்"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "புலம் வெற்றிகரமாக நீக்கப்பட்டுவிட்டது"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "செல்லாத CSRF டோகன்"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8402,10 +8342,6 @@ msgid "Create or edit property type categories"
 msgstr "சொத்து வகை வகைகளை உருவாக்க அல்லது திருத்த"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "தொண்டர் பதவிகளை உருவாக்க அல்லது திருத்த"
-
-#: 
 msgid "Current person"
 msgstr "தற்போதைய நபர்"
 
@@ -8854,10 +8790,6 @@ msgid "Manage user account details and permissions"
 msgstr "பயனர் கணக்கு விவரங்கள் மற்றும் அனுமதிகளை நிர்வகிக்கவும்"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "தொண்டர் வாய்ப்புகளை நிர்வகித்து உறுப்பினர்களை ஒதுக்கவும்"
-
-#: 
 msgid "Map cart items"
 msgstr "பட்டியலில் உள்ளவர்களை வரைபடத்தில் காட்டு"
 
@@ -8978,10 +8910,6 @@ msgid "No timeline events yet."
 msgstr "இன்னும் கால வரிசை நிகழ்வுகள் இல்லை."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "இன்னும் தொண்டர் வாய்ப்பு ஒதுக்கீடுகள் இல்லை."
-
-#: 
 msgid "Not ready yet?"
 msgstr "இன்னும் தயாராகவில்லையா?"
 
@@ -9018,10 +8946,6 @@ msgstr "மேலோட்டம்"
 #: 
 msgid "Password Recovery"
 msgstr "கடவுச்சொல் மீட்பு"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "கடந்த & அடுத்த 7 நாட்கள்"
 
 #: 
 msgid "People by Classification"
@@ -9488,10 +9412,6 @@ msgid "funds"
 msgstr "நிதிகள்"
 
 #: 
-msgid "opportunities"
-msgstr "வாய்ப்புகள்"
-
-#: 
 msgid "or connect an external service"
 msgstr "அல்லது வெளிப்புற சேவையை இணைக்கவும்"
 
@@ -9791,11 +9711,6 @@ msgstr "மின்னஞ்சல் முகவரிகளைப் பெ�
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "தொலைபேசி எண்களைப் பெற முடியவில்லை"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "ஒரு குறிப்பிட்ட வாய்ப்பிற்கான தன்னார்வலர்களைக் கண்டுபிடிக்கவும்"
 
 #. Context: query_qry
 #: 
@@ -10923,10 +10838,6 @@ msgstr "இருண்ட"
 #: 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "தரவுத்தளம் மட்டும் (.sql) அல்லது முழு காப்பகம் (.tar.gz)"
-
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "தரவு அட்டவணைகளில் காட்டப்படும் இயல்பு வரிசைகளின் எண்ணிக்கை. அடுத்த பக்க ஏற்றத்தில் செயல்படும்."
 
 #. Context: locales
 #: 
@@ -12570,10 +12481,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "சொத்து வகையை நீக்க முடியாது: %d சொத்துகள் இன்னும் இதை குறிப்பிடுகின்றன. முதலில் அந்த சொத்துகளை மறுவழங்கவும் அல்லது நீக்கவும்."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "தன்னார்வ வாய்ப்பை நீக்க முடியாது: %d பேர் இன்னும் ஒதுக்கப்பட்டுள்ளனர். முதலில் அந்த ஒதுக்கீடுகளை நீக்கவும்."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "வகுப்பு p, f அல்லது g ஆகியவற்றில் ஒன்றாக இருக்க வேண்டும்"
 
@@ -12584,10 +12491,6 @@ msgstr "பிழைச் செய்தியை நகலெடு"
 #: 
 msgid "Could not load note."
 msgstr "குறிப்பை ஏற்ற முடியவில்லை."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "விளக்கம் 100 எழுத்துகளை மீறக்கூடாது"
 
 #: 
 msgid "Donation fund not found"
@@ -12610,10 +12513,6 @@ msgid "Failed to create property type"
 msgstr "சொத்து வகையை உருவாக்க முடியவில்லை"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "தன்னார்வ வாய்ப்பை உருவாக்க முடியவில்லை"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "நன்கொடை நிதியை நீக்க முடியவில்லை"
 
@@ -12630,10 +12529,6 @@ msgid "Failed to delete property type"
 msgstr "சொத்து வகையை நீக்க முடியவில்லை"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "தன்னார்வ வாய்ப்பை நீக்க முடியவில்லை"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "நன்கொடை நிதியை புதுப்பிக்க முடியவில்லை"
 
@@ -12646,10 +12541,6 @@ msgid "Failed to update property type"
 msgstr "சொத்து வகையை புதுப்பிக்க முடியவில்லை"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "தன்னார்வ வாய்ப்பை புதுப்பிக்க முடியவில்லை"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "நிதி திரட்டல் கிடைக்கவில்லை"
 
@@ -12660,10 +12551,6 @@ msgstr "நிறுவல் ஐடி"
 #: 
 msgid "Invalid class"
 msgstr "தவறான வகுப்பு"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "பெயர் 30 எழுத்துகளை விட அதிகமாக இருக்க முடியாது"
 
 #: 
 msgid "Note by %s deleted"
@@ -12686,16 +12573,8 @@ msgid "Read more"
 msgstr "மேலும் படிக்க"
 
 #: 
-msgid "That name already exists."
-msgstr "அந்த பெயர் ஏற்கனவே உள்ளது."
-
-#: 
 msgid "Title is required"
 msgstr "தலைப்பு அவசியம்"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "தன்னார்வ வாய்ப்பு கிடைக்கவில்லை"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -13486,14 +13365,6 @@ msgstr "வைப்புகள் இல்லை"
 #: 
 msgid "No Events Today"
 msgstr "இன்று நிகழ்வுகள் இல்லை"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "கடந்த அல்லது அடுத்த 7 நாட்களில் திருமண நாள் இல்லை"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "கடந்த அல்லது அடுத்த 7 நாட்களில் பிறந்தநாள் இல்லை"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -15076,10 +14947,6 @@ msgid "Target family"
 msgstr "இலக்கு குடும்பம்"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "குழுவை கண்டுபிடிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம் இனி இல்லை. பக்கத்தை புதுப்பித்து மீண்டும் முயற்சிக்கவும்."
 
@@ -15294,10 +15161,6 @@ msgstr "ஆதரிக்கப்படும் வடிவங்கள்"
 #: 
 msgid "System Configuration"
 msgstr "கணினி கட்டமைப்பு"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "இந்த தன்னார்வ வாய்ப்பிற்கு நியமிக்கப்பட்டவர்கள் உள்ளனர். நீக்குதல் நியமனத்தை நீக்கும்"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15528,10 +15391,6 @@ msgid "Add New Fund"
 msgstr "புதிய நிதி சேர்"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "புதிய வாய்ப்பு சேர்"
-
-#: 
 msgid "Add New Person"
 msgstr "புதிய நபரை சேர்"
 
@@ -15544,10 +15403,6 @@ msgid "Add New Role"
 msgstr "புதிய பாத்திரம் சேர்"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "புதிய தன்னார்வ வாய்ப்பு சேர்"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "ஞாயிற்றுக்கிழமை பள்ளி வகுப்பு சேர்"
 
@@ -15558,10 +15413,6 @@ msgstr "இந்த குடும்பத்தை நீக்கவா?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "உங்கள் பொது பதிவு படிவத்தில் பதிவு செய்த புதிய குடும்பங்கள் மற்றும் தனியாட்களை மதிப்பாய்வு செய்யுங்கள்"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "தன்னார்வ வாய்ப்பு நீக்கும் உறுதிப்படுத்தல்"
 
 #: 
 msgid "# Payments"
@@ -17228,14 +17079,6 @@ msgid "Find people who did not attend an event"
 msgstr "ஒரு நிகழ்வுக்கு கலந்துகொள்ளாத மக்களைக் கண்டறியவும்"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "இரண்டு குறிப்பிட்ட வாய்ப்பு குறியீடுகளுடன் பொருந்தும் தன்னார்வலர்களைக் கண்டறியவும்"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "முதல் தன்னார்வல வாய்ப்பு"
-
-#: 
 msgid "Folded Booklet"
 msgstr "மடிந்த புத்தகம்"
 
@@ -17312,10 +17155,6 @@ msgid "Run Report"
 msgstr "அறிக்கையை இயக்கவும்"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "இரண்டாவது தன்னார்வல வாய்ப்பு"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "பக்க பட்டியில், உள்நுழைவு பக்கத்தில் மற்றும் மின்னஞ்சல்களில் காட்டப்படுகிறது. ஒரு சின்னத்தை அப்லோட் செய்வது ChurchCRM பிராண்டிங்கை அது தோன்றும் எல்லா இடங்களிலும் மாற்றுகிறது."
 
@@ -17342,14 +17181,6 @@ msgstr "இயல்பான ChurchCRM சின்னத்தைப் பய
 #: 
 msgid "View Full Family Giving"
 msgstr "முழு குடும்ப வழங்குதல் பார்க்கவும்"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "தன்னார்வல வாய்ப்பு"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "இரண்டு வாய்ப்புகளுக்கான தன்னார்வலர்கள்"
 
 #: 
 msgid "YTD"
@@ -17824,10 +17655,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "உங்கள் பொதுப் பதிவுப் படிவத்திலிருந்து மதிப்பாய்வுக்காகக் காத்திருக்கும் பதிவுகள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத உள்ளீடுகள் குறிக்கப்பட்டுள்ளன — பின்தொடர்வதற்கு முன் தொடர்புத் தகவலைச் சரிபார்க்கவும்."
 
 #: 
-msgid "Review now"
-msgstr "இப்போதே மதிப்பாய்வு செய்"
-
-#: 
 msgid "Review self registrations"
 msgstr "சுயபதிவுகளை மதிப்பாய்வு செய்"
 
@@ -17878,10 +17705,6 @@ msgstr "நேற்று"
 #: 
 msgid "days ago"
 msgstr "நாட்களுக்கு முன்"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "சுயபதிவுகள் மதிப்பாய்வுக்காகக் காத்திருக்கின்றன"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18182,10 +18005,6 @@ msgstr "ஒரு நிகழ்ச்சி வகையைப் பின்
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "ஒரே நிகழ்ச்சிக்கு ஆட்களை அமர்த்தும் அட்டவணை மற்ற நிகழ்ச்சிகளைப் பின்தொடர முடியாது; அதை நீக்கிவிட்டு அதற்குப் பதிலாக ஒரு அட்டவணையைச் சேர்க்கவும்"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "\"நர்சரி\" அல்லது \"வரவேற்பாளர்\" போன்ற வாய்ப்புகளின் ஒரே பட்டியல், நபர்கள் → நிர்வாகம் என்பதன் கீழ் வைக்கப்படுகிறது. ஒவ்வொரு நபரின் பதிவின் தன்னார்வப் பணி தாவலில் அவர் உதவ விரும்பும் வாய்ப்புகளால் குறிக்கப்படுகிறார். இது மட்டுமே பதிவு செய்யப்படுகிறது: குழுக்கள், அட்டவணைகள், தேதிக்கான நியமனங்கள், நினைவூட்டல் மின்னஞ்சல்கள் இல்லை. குறிச்சொற்கள் அறிக்கைகளிலும் நபர் பதிவிலும் பயன்படுத்தப்படுகின்றன."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18494,18 +18313,6 @@ msgstr "பின்னணிப் பணிகள் இயங்கின"
 #: 
 msgid "Birthday greeting"
 msgstr "பிறந்தநாள் வாழ்த்து"
-
-#: 
-msgid "Both"
-msgstr "இரண்டும்"
-
-#: 
-msgid "Both (transition)"
-msgstr "இரண்டும் (மாற்றநிலை)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "இரண்டும் — V1 மற்றும் V2 அருகருகே (மாற்றநிலை)"
 
 #: 
 msgid "Calendar address"
@@ -21592,22 +21399,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "பயனருக்கு நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி இருக்க வேண்டும், அல்லது இந்த நாட்காட்டி சேர்ந்த தன்னார்வ ஊழியத்தை ஒருங்கிணைக்க வேண்டும்"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — தன்னார்வ வாய்ப்புகள் (பழையது)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — பழைய தன்னார்வ வாய்ப்புகள்"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — ஊழியங்கள்"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — தன்னார்வப் பணி மேலாண்மை"
-
-#: 
 msgid "Valid"
 msgstr "செல்லுபடியாகும்"
 
@@ -21626,14 +21417,6 @@ msgstr "நிகழ்ச்சியைக் காண்க"
 #: 
 msgid "View this email"
 msgstr "இந்த மின்னஞ்சலைக் காண்க"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "தன்னார்வப் பணி (பழையது)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "தன்னார்வப் பணி மேலாண்மை V2 இயக்கப்படவில்லை"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21740,10 +21523,6 @@ msgid "What the check found"
 msgstr "சோதனையில் கண்டறிந்தவை"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "தன்னார்வப் பணி முறைகள் என்னென்ன"
-
-#: 
 msgid "What you want to say"
 msgstr "நீங்கள் சொல்ல விரும்புவது"
 
@@ -21774,10 +21553,6 @@ msgstr "தேதிகள் எங்கிருந்து வருகி�
 #: 
 msgid "Where we reach you"
 msgstr "உங்களை எப்படித் தொடர்புகொள்வது"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "தன்னார்வப் பணி மேலாண்மையின் எந்த முறை செயலில் உள்ளது. V1 என்பது பழைய தன்னார்வ வாய்ப்புகள் அம்சம்; V2 என்பது புதிய அட்டவணையிடல் மற்றும் நியமன பணிப்பாய்வு. \"இரண்டும்\" இடமாற்றத்தின்போது ஒவ்வொன்றையும் அருகருகே காட்டும்."
 
 #: 
 msgid "Which events"
@@ -22186,10 +21961,6 @@ msgstr "இந்த நிகழ்ச்சியின் பார்வை�
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "ஒரு ஊழியத்தை யார் ஒருங்கிணைக்கிறார் என்பதை தன்னார்வலர் மேலாளர் மட்டுமே மாற்ற முடியும்"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 ஐத் தேர்ந்தெடுப்பது V2 தன்னார்வலர் மின்னஞ்சலை இடைநிறுத்தும்; வரிசையில் உள்ளவை அனைத்தும் V2 மீண்டும் இயக்கப்படும்போது அனுப்பப்படும், அதன் நிகழ்வு முடிந்திருந்தால் தவிர."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23034,10 +22805,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "நிரப்பப்படாத பொறுப்பு எச்சரிக்கை முன்னணி நேரம் (மணி நேரம்)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "தன்னார்வலர் மேலாண்மை"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "தன்னார்வலர் ஊழியங்கள், அணிகள், அட்டவணைகள் மற்றும் ஒதுக்கீடுகள்"
 
@@ -23048,14 +22815,6 @@ msgstr "வரவிருக்கும் நாட்களில் நி�
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "இந்த வரவிருக்கும் நடைபெறுகைகளுக்கு இன்னும் தன்னார்வலர்கள் தேவை: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "இவற்றின் பொருள் என்ன?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "இந்தச் சபை எந்தத் தன்னார்வலர் அனுபவத்தைப் பயன்படுத்துகிறது"
 
 #: 
 msgid "You are on the schedule"
@@ -26426,248 +26185,8 @@ msgid "Review Family Information"
 msgstr "குடும்பத் தகவலைச் சரிபார்"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "\"%s\" என்ற பெயரில் ஓர் ஊழியம் ஏற்கெனவே உள்ளது. பட்டியலிலிருந்து அதைத் தேர்ந்தெடுக்கவும், அல்லது வேறு பெயரைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-msgid "A new ministry"
-msgstr "புதிய ஊழியம்"
-
-#: 
-msgid "A position"
-msgstr "ஒரு பொறுப்பு"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "முன்பு மாற்றப்பட்ட பொறுப்புகளில் {{total}} தன்னார்வலர்களைச் சேர்க்கவா?"
-
-#: 
-msgid "Already converted"
-msgstr "ஏற்கெனவே மாற்றப்பட்டது"
-
-#: 
-msgid "An existing ministry"
-msgstr "ஏற்கெனவே உள்ள ஊழியம்"
-
-#: 
-msgid "Becomes"
-msgstr "இவ்வாறு மாறும்"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM-இல் தன்னார்வலர்களை நிர்வகிக்க இரண்டு வழிகள் உள்ளன. ஒரே நேரத்தில் ஒன்று மட்டுமே பயன்பாட்டில் இருக்க வேண்டும்; இந்தச் சபை எதைப் பார்க்கும் என்பதை \"தன்னார்வ அனுபவம்\" அமைப்பு தீர்மானிக்கிறது. மாற்றுவது பக்கங்களையும் பட்டி உருப்படிகளையும் மறைக்கும் அல்லது காட்டும்; தரவை ஒருபோதும் நீக்காது. தன்னார்வ வாய்ப்புகள் பயன்பாட்டில் இருக்கும் வரை மட்டுமே V1 மற்றும் இரண்டும் வழங்கப்படும்: எல்லா வாய்ப்புகளும் மாற்றப்பட்டு சபை V2-இல் இருக்கும்போது, அவை இந்தப் பட்டியலிலிருந்து நீங்கும்."
-
-#: 
-msgid "Convert"
-msgstr "மாற்று"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "தன்னார்வ வாய்ப்புகளை மாற்று"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "இப்போது {{total}} வாய்ப்புகளை மாற்றவா? தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை V1 தரவு அப்படியே வைக்கப்படும்."
-
-#: 
-msgid "Converted"
-msgstr "மாற்றப்பட்டது"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "மாற்றப்பட்டது: {{positions}} பொறுப்புகள், {{ministries}} ஊழியங்கள், {{qualifications}} தன்னார்வலர்கள் தகுதி பெற்றனர்."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "ஒவ்வொரு வாய்ப்பும் ஓர் ஊழியத்தின் முதல் குழுவில் ஒரு பொறுப்பாக மாறும், அதனுடன் இணைக்கப்பட்ட அனைவரும் அந்தப் பொறுப்புக்குத் தகுதி பெறுவர். இந்தப் பொறுப்புகளில் சுயப் பதிவு தொடக்கத்தில் முடக்கப்பட்டிருக்கும்."
-
-#: 
-msgid "Everything is converted."
-msgstr "அனைத்தும் மாற்றப்பட்டுவிட்டன."
-
-#: 
-msgid "Existing ministry"
-msgstr "ஏற்கெனவே உள்ள ஊழியம்"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "புதிய ஊழியத்திற்கு அதிகபட்சம் 100 எழுத்துகளில் ஒரு பெயரைக் கொடுக்கவும்."
-
-#: 
-msgid "Its own ministry"
-msgstr "அதற்கென தனி ஊழியம்"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "அதன் பின் இணைக்கப்பட்டவர்கள்: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "மாற்ற முடியாத இணைப்புகள்"
-
-#: 
-msgid "New ministries of their own"
-msgstr "தனித்தனி புதிய ஊழியங்கள்"
-
-#: 
-msgid "New ministry name"
-msgstr "புதிய ஊழியத்தின் பெயர்"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "மின்னஞ்சல் எதுவும் அனுப்பப்படாது, தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை அப்படியே இருக்கும்."
-
-#: 
-msgid "No name"
-msgstr "பெயர் இல்லை"
-
-#: 
-msgid "Not converted"
-msgstr "மாற்றப்படவில்லை"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "சிறப்பு வசதி தலைப்புகளைத் திற"
-
-#: 
-msgid "Open Ministries"
-msgstr "ஊழியங்களைத் திற"
-
-#: 
-msgid "Opportunities"
-msgstr "வாய்ப்புகள்"
-
-#: 
-msgid "Opportunity"
-msgstr "வாய்ப்பு"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "வாய்ப்பு #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "மாற்றத்திற்குப் பின் மாற்றப்பட்ட தன்னார்வ வாய்ப்புகளுடன் இணைக்கப்பட்டவர்கள்: %d. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் அவர்களை அவர்களின் பொறுப்புகளில் சேர்க்கவும்."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "முதலில் மாற்றத்தை முன்னோட்டமிட்டு, அது திருப்பி அளித்த திருத்தத்தை அனுப்பவும்."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "பெயர்கள் தனித்துவமாக இருக்க மறுபெயரிடப்பட்டது"
-
-#: 
-msgid "Review the conversion"
-msgstr "மாற்றத்தை மதிப்பாய்வு செய்"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "மாற்றத் தேர்வை JSON பொருளாக அனுப்பவும்."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "ஊழியங்களாக மாறும் வாய்ப்புகளை ID பட்டியலாக அனுப்பவும்."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "அந்த ஊழியம் இல்லை."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தம் குறித்த அறிவிப்பை நிர்வாகி மூடிய ChurchCRM பதிப்பு."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "முன்னோட்டத்திற்குப் பின் தன்னார்வ வாய்ப்புகள் மாறியுள்ளன. முன்னோட்டத்தை மீண்டும் சரிபார்த்து, பின்னர் மாற்றவும்."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "உறுதிப்படுத்தலைத் திறக்க முடியவில்லை. பக்கத்தை மீண்டும் ஏற்றி மீண்டும் முயலவும்."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "மாற்றத்தை முன்னோட்டமிட முடியவில்லை."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "\"%s\" ஊழியத்தில் பொறுப்புகளை வைக்க எந்தக் குழுவும் இல்லை."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "சேவையகத்தை அடைய முடியவில்லை. மாற்றம் நடந்ததா என்பதைப் பார்க்க பக்கத்தை மீண்டும் ஏற்றவும்."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "மாற்றுவதற்குத் தன்னார்வ வாய்ப்புகள் எதுவும் இல்லை."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "புதிய ஊழியங்கள் தன்னார்வ வாய்ப்புகளுக்கு அருகில் தெரியும்படி, தன்னார்வலர் மேலாண்மை இரண்டும் என்பதற்கு மாறும்."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தப்படுகின்றன"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். யார் எதில் சேவை செய்கிறார்கள் என்பதைத் தக்கவைக்க அவற்றை ஊழியங்களாக மாற்றவும்."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். உங்கள் %1$d வாய்ப்புகளையும் %2$d தன்னார்வலர்களையும் இப்போதே ஊழியங்களாக மாற்றவும். எதுவும் மாறும் முன் முடிவை முன்னோட்டமிடலாம்."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "தகுதி பெற்ற தன்னார்வலர்கள்"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "மாற்றப்பட்ட பொறுப்புகளில் சேர்க்க வேண்டிய தன்னார்வலர்கள்"
-
-#: 
-msgid "What it becomes"
-msgstr "இது என்னவாக மாறும்"
-
-#: 
-msgid "What will happen"
-msgstr "என்ன நடக்கும்"
-
-#: 
-msgid "Where they go"
-msgstr "அவர்கள் எங்கு செல்கின்றனர்"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "எந்தப் பழைய தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன, ஒவ்வொன்றும் எந்தப் பொறுப்பாக மாறியது."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "இந்தச் சபை பயன்படுத்தும் தன்னார்வ அனுபவம். தன்னார்வ வாய்ப்புகள் (V1) 2027 தொடக்கத்தில் நிறுத்தப்படும்."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "உங்கள் தன்னார்வ வாய்ப்புகள் ஊழியங்களாக மாற்றப்பட்டுள்ளன. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் தன்னார்வலர் மேலாண்மையை V2-க்கு மாற்றவும்."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "புதிய ஊழியமாக, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "{{name}} ஊழியத்திற்கு"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "இனி ChurchCRM-இல் இல்லை"
 
 #: 
 msgid "Collapse sidebar"
@@ -26844,10 +26363,6 @@ msgstr[0] "%d இயல்புநிலை வேறொரு காரணத�
 msgstr[1] "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்."
-
-#: 
 msgid "Assignment canceled"
 msgstr "நியமனம் ரத்து செய்யப்பட்டது"
 
@@ -26894,10 +26409,6 @@ msgstr "இந்தத் தேதி ரத்து செய்யப்ப
 #: 
 msgid "This occurrence has been canceled"
 msgstr "இந்த நிகழ்வு ரத்து செய்யப்பட்டுள்ளது"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "ஒரு திருச்சபை நடத்தும் விதத்தில் ஒழுங்கமைக்கப்பட்ட தன்னார்வப் பணி. ஒவ்வொரு ஊழியத்துக்கும் குழுக்களும் பொறுப்புகளும் உண்டு; நபர்கள் பொறுப்புகளுக்குத் தகுதி பெற்று ஊழியத்தின் தொகுப்புக் குழுவைச் சேர்கிறார்கள்; அட்டவணைகள் நாட்காட்டியிலுள்ள நிகழ்ச்சிகளைப் பின்தொடர்ந்து ஆட்கள் தேவைகளுடன் தேதியிட்ட நிகழ்வுகளை உருவாக்குகின்றன; ஒருங்கிணைப்பாளர்கள் நபர்களை நியமிக்கிறார்கள், அவர்கள் ஏற்கிறார்கள், நிராகரிக்கிறார்கள் அல்லது மாற்று நபரை முன்மொழிகிறார்கள்; நினைவூட்டல்களும் எச்சரிக்கைகளும் மின்னஞ்சல் மூலம் செல்கின்றன. நிர்வாகிகளும் ஊழியங்களை நிர்வகிக்கும் அனுமதி உள்ள பயனர்களும் ஒவ்வொரு ஊழியத்தையும் பார்த்து அவற்றை உருவாக்கலாம், செயலிழக்கச் செய்யலாம், நீக்கலாம். ஊழிய ஒருங்கிணைப்பாளருக்கு அதற்குப் பதிலாக எனது ஊழியங்களை நிர்வகிக்கும் அனுமதி வழங்கப்படுகிறது: அப்போது பக்கப்பட்டியிலுள்ள ஊழியங்கள் தலைப்பு அவர் ஒருங்கிணைக்கும் ஊழியங்களை மட்டுமே காட்டும். குழுத் தலைவர் உறுப்பினர் போர்ட்டலிலிருந்து தனது குழுவை நடத்துகிறார். உறுப்பினர்கள் தங்கள் அட்டவணையைக் காணவும், பதிலளிக்கவும், பதிவு செய்யவும், உதவ முன்வரவும் உறுப்பினர் போர்ட்டலைப் பயன்படுத்துகிறார்கள்."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27144,10 +26655,6 @@ msgstr "நபர்கள் மற்றும் குடும்பங்�
 #: 
 msgid "Delete the login for"
 msgstr "இவருக்கான உள்நுழைவை நீக்கு:"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "வைப்பு விளக்கப்பட நேர வரம்பு"
 
 #: 
 msgid "Disabled at"
@@ -27602,10 +27109,6 @@ msgid "View people and families"
 msgstr "நபர்கள் மற்றும் குடும்பங்களைப் பார்த்தல்"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "இந்தத் திருச்சபைக்கு தன்னார்வலர் மேலாண்மை அணைக்கப்பட்டுள்ளது"
-
-#: 
 msgid "Weak"
 msgstr "பலவீனமானது"
 
@@ -27674,10 +27177,6 @@ msgid "Latest Notes"
 msgstr "சமீபத்திய குறிப்புகள்"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "இன்னும் குறிப்புகள் எதுவும் சேர்க்கப்படவில்லை."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "QR குறியீட்டைப் பெற பதிவைத் தொடங்கவும்."
 
@@ -27688,4 +27187,746 @@ msgstr "அந்தக் கடவுச்சொல் அல்லது க
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "இரண்டு-காரணி அங்கீகாரம் ஏற்கனவே அமைக்கப்பட்டுள்ளது. அதன் ரகசியம் பதிவின் போது மட்டுமே காட்டப்படும்."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d நன்கொடை, மொத்தம் %2$s"
+msgstr[1] "%1$d நன்கொடை, மொத்தம் %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "தற்போது %d குடும்பங்கள் இந்த வகை பண்புகளைக் கொண்டுள்ளன."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d குடும்பம் இன்னும் ரசீதைப் பெற முடியாது, அது விடுபடும். அதன் கீழே பட்டியலிடப்பட்டுள்ள சிக்கலைச் சரிசெய்து, பின்னர் மீண்டும் சரிபார் என்பதைத் தேர்ந்தெடுக்கவும்."
+msgstr[1] "%d குடும்பம் இன்னும் ரசீதைப் பெற முடியாது, அது விடுபடும். அதன் கீழே பட்டியலிடப்பட்டுள்ள சிக்கலைச் சரிசெய்து, பின்னர் மீண்டும் சரிபார் என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "தற்போது %d குழுக்கள் இந்த வகை பண்புகளைக் கொண்டுள்ளன."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "தற்போது %d நபர்கள் இந்த வகை பண்புகளைக் கொண்டுள்ளனர்."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "நீங்கள் நிறுவிய பதிப்பிலிருந்து %d வெளியீடுகள் கிடைக்கின்றன."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s ரசீது உருவாக்கப்படவில்லை."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: சரிபார்க்கப்பட்ட நன்கொடையாளரின் முழுப் பெயரை(களை) உள்ளிடவும், நன்கொடையாளர்களை உறுதிப்படுத்தவும், ஒரு நன்கொடையாளர் தொகுப்பை உறுதிப்படுத்தவும். கலப்பு நன்கொடையாளர் கட்டணத் தொகுப்புகள் இந்த அம்சத்திற்கு வெளியே கையாளப்பட வேண்டும்."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: மதிப்பாய்விற்குப் பிறகு நன்கொடைகள் அல்லது அஞ்சல் முகவரி மாறிவிட்டது. மீண்டும் சரிபார் என்பதைத் தேர்ந்தெடுத்து நன்கொடையாளரை மீண்டும் உறுதிப்படுத்தவும்."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} தவணைகள்)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} தவணைகள்)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "ஒரு கிரெடிட் கார்டு அல்லது வங்கி வரைவு கட்டணம் இன்னும் மூடப்படாத ஒரு வைப்பில் உள்ளது. கட்டணம் தீர்ந்ததும் வைப்பை மூடவும்."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "ஒரு கட்டணத்தில் விலக்கு பெற முடியாத தொகை உள்ளது. இங்குள்ள கனடிய ரசீதுகள் எந்த நன்மையும் இல்லாத நன்கொடைகளை மட்டுமே ஆதரிக்கின்றன."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "ஒரு கட்டணத்தில் தவறான பணத் தொகை உள்ளது."
+
+#: 
+msgid "A payment has no date."
+msgstr "ஒரு கட்டணத்திற்கு தேதி இல்லை."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "ஒரு கட்டணம் வழங்கிய தேதிக்குப் பிறகு தேதியிடப்பட்டுள்ளது."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "ஒரு கட்டணம் சிக்கலாகக் குறிக்கப்பட்டுள்ளது."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "ஒரு கட்டணம் பூஜ்ஜியம் அல்லது எதிர்மறையாக உள்ளது."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "செல்லுபடியாகும் CSRF டோக்கனுடன் மதிப்பாய்வு செய்யப்பட்ட POST தேவை."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம் இனி இல்லை."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "ஒரு கையொப்பப் படம் பாதுகாப்பான டிஜிட்டல் கையொப்பம் அல்ல."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "ஒரு கணினி புதுப்பிப்பு கிடைக்கிறது. உங்கள் நிறுவலை மேம்படுத்த உங்கள் நிர்வாகியிடம் கேட்கவும்."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "சேர்க்கப்பட்ட அனைத்து வரிசைகளும் எந்த நன்மையும் இல்லாத பண நன்கொடைகள்."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "தேவையான அனைத்து கனடிய ரசீது அமைப்புகளும் நிரப்பப்பட்டுள்ளன."
+
+#: 
+msgid "Also delete family members"
+msgstr "குடும்ப உறுப்பினர்களையும் நீக்கு"
+
+#: 
+msgid "Amount of advantages"
+msgstr "நன்மைகளின் தொகை"
+
+#: 
+msgid "Amount of gifts"
+msgstr "நன்கொடைகளின் தொகை"
+
+#: 
+msgid "Amount per installment"
+msgstr "ஒரு தவணைக்கான தொகை"
+
+#: 
+msgid "Amounts entered are"
+msgstr "உள்ளிட்ட தொகைகள்"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "ஒரு நிர்வாகி அதை அறிக்கை அமைப்புகளின் கீழ் பதிவேற்றுகிறார்."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "அங்கீகரிக்கப்பட்டது, ஆனால் அழைப்பு அனுப்பப்படவில்லை"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "ChurchCRM ஐ சமீபத்திய பதிப்பிற்கு மேம்படுத்த உங்கள் கணினி நிர்வாகியிடம் கேட்கவும்."
+
+#: 
+msgid "Authorized Signature"
+msgstr "அங்கீகரிக்கப்பட்ட கையொப்பம்"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "கனடா வருவாய் நிறுவனம்"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "கனடிய அதிகாரப்பூர்வ ரசீது"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "கனடிய அதிகாரப்பூர்வ ரசீதுகளுக்கு தேவாலய தகவலில் தேவாலய நாடு கனடாவாக இருக்க வேண்டும்."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "கனடிய ரசீதுகளுக்கு பிற வடிப்பான்கள் இல்லாமல் முழு நாட்காட்டி ஆண்டும் அனைத்து நிதிகளும் தேவை."
+
+#: 
+msgid "Change Selection"
+msgstr "தேர்வை மாற்று"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "தொண்டு நிறுவன சட்டப் பெயர்"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "தொண்டு நிறுவன பதிவு முகவரி"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "தொண்டு நிறுவன பதிவு எண்"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "ரசீதுகளுக்கான தொண்டு நிறுவன விவரங்கள் இன்னும் நிரப்பப்படவில்லை. உங்களால் முடிந்தபோது சட்டப் பெயர், பதிவு முகவரி, பதிவு எண் மற்றும் வழங்கும் இடத்தைச் சேர்க்கவும். அதுவரை நிதி தொடர்ந்து செயல்படும்."
+
+#: 
+msgid "Charity on receipts"
+msgstr "ரசீதுகளில் தொண்டு நிறுவனம்"
+
+#: 
+msgid "Check Again"
+msgstr "மீண்டும் சரிபார்"
+
+#: 
+msgid "Check the year"
+msgstr "ஆண்டைச் சரிபார்"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "ஆண்டைச் சரிபார்க்கவும், அறிக்கையை அமைக்கவும், பின்னர் பதிவிறக்கவும்."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "ஒரு தவணைத் தொகைக்கு வாராந்திர, மாதாந்திர அல்லது காலாண்டு என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "செல்லுபடியாகும் நன்கொடை நாட்காட்டி ஆண்டைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "அசல் அல்லது நகலைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "மொத்த உறுதிப்பாடு அல்லது தவணைத் தொகையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM மொழிபெயர்ப்புகள் ChurchCRM GitHub களஞ்சியத்தில் நிர்வகிக்கப்படுகின்றன. நீங்கள் இவ்வாறு உதவலாம்"
+
+#: 
+msgid "Commitment amount"
+msgstr "உறுதிப்பாட்டுத் தொகை"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "நகலை தக்கவைக்கப்பட்ட அசலுடன் ஒப்பிட்டு, அனைத்து ரசீது தகவல்களும் மாறாமல் இருப்பதை உறுதிப்படுத்தவும்."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "பதிவிறக்குவதற்கு முன் ஒவ்வொரு ரசீது ஒப்புதலையும் நிறைவு செய்யவும்."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "தொண்டு நிறுவன சட்டப் பெயர், பதிவு முகவரி, பதிவு எண், வழங்கும் இடம் மற்றும் அச்சிடப்பட்ட கையொப்பமிடுபவரை நிறைவு செய்யவும்."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "உறுதிப்படுத்தல் கடிதம் அச்சிடப்பட்ட கையொப்பமிடுபவர்"
+
+#: 
+msgid "Copy Kind"
+msgstr "நகல் வகை"
+
+#: 
+msgid "Currency"
+msgstr "நாணயம்"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "நாணய சின்னம் $ அல்லது CAD"
+
+#: 
+msgid "Date received"
+msgstr "பெற்ற தேதி"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "இதை நீக்குவது %d பண்புகளையும் அவற்றின் அனைத்து ஒதுக்கீடுகளையும் நீக்கும், எனவே எதுவும் தொங்கிக் கிடக்காது."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "தேர்ந்தெடுக்கப்பட்ட ஆண்டின் அனைத்து நன்கொடைகளும் மேலே ஒன்றாகப் பெயரிடப்பட்ட நன்கொடையாளர்(களு)க்குச் சொந்தமானவையா?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "ஒரே எண்ணை வேறு ரசீதுக்கு மீண்டும் பயன்படுத்த வேண்டாம், ஒரே நன்கொடைகளுக்கு இரண்டு முறை ரசீது வழங்க வேண்டாம், அல்லது மாற்றப்பட்ட தகவலை மாறாத அசலாக மீண்டும் உருவாக்க வேண்டாம்."
+
+#: 
+msgid "Duplicate"
+msgstr "நகல்"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "நகல் பிரதி / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "வருமான வரி நோக்கங்களுக்குத் தகுதியான நன்கொடைகளின் தொகை"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "உறுதிப்பாட்டை முன்னோட்டமிட அட்டவணை மற்றும் தவணை தேதிகளை உள்ளிடவும்."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "செல்லுபடியாகும் முதல் மற்றும் கடைசி தவணை தேதிகளை வரிசையில் உள்ளிடவும்."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "அதிகபட்சம் இரண்டு தசம இடங்களுடன் செல்லுபடியாகும் தவணைத் தொகைகளை உள்ளிடவும்."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "ஏற்கனவே உள்ள உறுதிமொழிகள் அவற்றின் பதிவு செய்யப்பட்ட மொத்தங்களைத் தக்கவைக்கின்றன. ஒவ்வொரு திட்டமிடப்பட்ட நன்கொடையையும் உள்ளிடும்போது மட்டும் ஒரு தவணைக்கான தொகையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "குடும்பத் தலைவர்கள் மற்றும் வாழ்க்கைத் துணைகளிடமிருந்து நிரப்பப்பட்டது. நன்கொடையாளர்களுடன் சரியாகப் பொருந்துமாறு திருத்தவும்."
+
+#: 
+msgid "First installment"
+msgstr "முதல் தவணை"
+
+#: 
+msgid "Full commitment"
+msgstr "முழு உறுதிப்பாடு"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "வரி அறிக்கைகளை உருவாக்கு"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "நன்கொடை நாட்காட்டி ஆண்டு"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "கொடை அறிக்கை — அதிகாரப்பூர்வ நன்கொடை ரசீது அல்ல"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "GitHub இல் மொழிபெயர்க்க உதவுங்கள்"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "வரலாற்று உறை மாற்றங்கள் ஆதரிக்கப்படவில்லை."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "நான் தக்கவைக்கப்பட்ட அசலுடன் ஒப்பிட்டேன்: நன்கொடையாளர், தொகை, வரிசை எண் மற்றும் உரை மாறாமல் உள்ளன. இது ஒரு திருத்தம் அல்லது மாற்றீடு அல்ல."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "வழங்கப்பட்ட PDF ஐயும் வெளிப்புற ரசீது பதிவையும் தொண்டு நிறுவனத்தின் கனடிய பதிவுகள் இடத்தில் தக்கவைப்பேன்."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "தக்கவைக்கப்பட்ட அசல் கிடைக்கவில்லை அல்லது வேறுபட்டிருந்தால், உங்கள் வெளிப்புற CRA ரத்து/மாற்றீட்டு நடைமுறைகளைப் பயன்படுத்தவும்."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "கட்டணக் குறிப்புகளைச் சேர்க்கவும்: அவை நன்கொடையாளருக்குப் பொருத்தமானவை என நான் மதிப்பாய்வு செய்தேன்."
+
+#: 
+msgid "Include this family in the download"
+msgstr "இந்தக் குடும்பத்தைப் பதிவிறக்கத்தில் சேர்க்கவும்"
+
+#: 
+msgid "Installed version: %s"
+msgstr "நிறுவப்பட்ட பதிப்பு: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "தவணைத் தொகைகளை உறுதிமொழிகளுக்கு மட்டுமே பயன்படுத்த முடியும்."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "தவணை தேதிகள் தேர்ந்தெடுக்கப்பட்ட நிதியாண்டுக்குள் இருக்க வேண்டும்."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "தவறான அல்லது காணாமல் போன CSRF டோக்கன்"
+
+#: 
+msgid "Issue Date"
+msgstr "வழங்கிய தேதி"
+
+#: 
+msgid "Issue Locality"
+msgstr "வழங்கும் இடம்"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "அசல் PDF ஐயும் வெளிப்புற ரசீது பதிவையும் தொண்டு நிறுவனத்தின் கனடிய பதிவுகள் இடத்தில் வைத்திருக்கவும்."
+
+#: 
+msgid "Last installment on or before"
+msgstr "கடைசி தவணை இதற்குள் அல்லது அதற்கு முன்"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "கடித வாசகம், தொண்டு நிறுவன விவரங்கள் மற்றும் PDF கையாளுதல் அறிக்கை அமைப்புகளில் ஒரு முறை அமைக்கப்படும்."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "கொடை அறிக்கைகளுக்கான கடித வாசகம், தொண்டு நிறுவன விவரங்கள் மற்றும் PDF கையாளுதல்"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "அதிகபட்சம் 2 MiB மற்றும் 2000 × 1000 பிக்சல்கள். சேமிக்கப்பட்ட கையொப்பத்தை மாற்ற புதிய படத்தைத் தேர்ந்தெடுக்கவும். ஒரு கையொப்பப் படம் பாதுகாப்பான டிஜிட்டல் கையொப்பம் அல்ல."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "உறுப்பினர் உள்நுழைவு முடக்கப்பட்டுள்ளது, எனவே %s குடும்பத்தில் யாரும் உறுப்பினர் போர்ட்டலில் உள்நுழைய முடியாது. ஒரு நிர்வாகி அதை நிர்வாகம் → உறுப்பினர் போர்ட்டல் என்பதன் கீழ் இயக்கலாம்."
+
+#: 
+msgid "Memo"
+msgstr "குறிப்பு"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "கலப்பு நன்கொடையாளர் குடும்பக் கட்டணத் தொகுப்புகளை இங்கே பிரிக்க முடியாது; அவற்றை இந்த அம்சத்திற்கு வெளியே கையாளவும்."
+
+#: 
+msgid "Narrow the list"
+msgstr "பட்டியலைக் குறுக்கவும்"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "%s க்கு இந்த வடிப்பான்களுடன் எந்தக் குடும்பமும் பொருந்தவில்லை."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "ஒன்றுடன் ஒன்று சேரும் தனிப்பட்ட அல்லது ஒட்டுமொத்த ரசீது எதுவும் இல்லை."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "இந்தக் குடும்பத்திற்கு இன்னும் ரசீது உருவாக்க முடியாது"
+
+#: 
+msgid "No signature on file"
+msgstr "கோப்பில் கையொப்பம் இல்லை"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "இல்லை — வெவ்வேறு நன்கொடையாளர்கள்; இந்த அம்சத்திற்கு வெளியே கையாளவும்"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "தற்போதைய உள்நுழைவு விதியின் கீழ் %s குடும்பத்தில் யாரும் உறுப்பினர் போர்ட்டலில் உள்நுழைய முடியாது."
+
+#: 
+msgid "None / Aucun"
+msgstr "எதுவும் இல்லை / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "கனடிய ரசீதுகளை வழங்கத் தயாராக இல்லை. இன்னும் விடுபட்டவை"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "அதிகாரப்பூர்வ ரசீது / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "வருமான வரி நோக்கங்களுக்கான அதிகாரப்பூர்வ ரசீது / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "அதிகாரப்பூர்வ ரசீதுகளுக்கு 123456789RR0001 வடிவத்தில் ஒரு பதிவு எண் மற்றும் ஒரு கையொப்பப் படம் தேவை."
+
+#: 
+msgid "Original"
+msgstr "அசல்"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "அசல் வழங்கிய தேதி (தக்கவைக்கப்பட்ட அசலிலிருந்து உள்ளிடவும்)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "கட்டண தேதிகள் நன்கொடை பெற்ற தேதிகளைப் பிரதிபலிக்கின்றன, ஆவணப்படுத்தப்பட்ட அஞ்சல் காசோலை அஞ்சல் முத்திரை கையாளுதல் உட்பட."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "சாதாரண கொடை அறிக்கைகளில் அச்சிடப்படும், எடுத்துக்காட்டாக ஐக்கிய அமெரிக்காவில் EIN. அதே மதிப்பு தேவாலய தகவலிலும் உள்ளது."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "தனிப்பட்ட கொடை அறிக்கை கையொப்ப சொத்து அடையாளங்காட்டி. கையொப்பப் பதிவேற்றத்தால் நிர்வகிக்கப்படுகிறது."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "பண்புகள் / ஒதுக்கீடுகள்"
+
+#: 
+msgid "Property deleted"
+msgstr "பண்பு நீக்கப்பட்டது"
+
+#: 
+msgid "Property type deleted"
+msgstr "பண்பு வகை நீக்கப்பட்டது"
+
+#: 
+msgid "Receipt Closing"
+msgstr "ரசீது முடிவு வாசகம்"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "ரசீது வழங்கும் இடம்"
+
+#: 
+msgid "Receipt No."
+msgstr "ரசீது எண்"
+
+#: 
+msgid "Registration Number"
+msgstr "பதிவு எண்"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "123456789RR0001 வடிவத்தில் பதிவு எண்"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "வெளியீட்டுக் குறிப்புகள் இப்போது கிடைக்கவில்லை."
+
+#: 
+msgid "Releases"
+msgstr "வெளியீடுகள்"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "%s க்கான மீதமுள்ள உறுதிப்பாடு: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "2FA தேவையை நீக்கு"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "சேமிக்கப்பட்ட கையொப்பப் படத்தை நீக்கவா? அதிகாரப்பூர்வ ரசீதுகளுக்கு கோப்பில் ஒன்று தேவை."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "அறிக்கைகளும் நினைவூட்டல்களும் இந்த முழு கால உறுதிப்பாட்டை நன்கொடையுடன் ஒப்பிடுகின்றன. மீதமுள்ள இருப்பு நிலுவையில் உள்ள தவணைக் கணக்கீடு அல்ல."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "அறிக்கைகளும் நினைவூட்டல்களும் மேலே காட்டப்பட்டுள்ள முழு உறுதிப்பாட்டைப் பயன்படுத்துகின்றன. மீதமுள்ள இருப்பு நிலுவையில் உள்ள தவணைக் கணக்கீடு அல்ல."
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA ஐக் கோரு"
+
+#: 
+msgid "Reset Options"
+msgstr "விருப்பங்களை மீட்டமை"
+
+#: 
+msgid "Review Selected Families"
+msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பங்களை மதிப்பாய்வு செய்"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "மாதிரி — வரி நோக்கங்களுக்குச் செல்லுபடியாகாது"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "மாதிரி கையொப்ப இடஒதுக்கீடு"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "2FA தேவையா என்பதைச் சொல்லவும்."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "பாதுகாப்புப் புதுப்பிப்புகளும் ஆதரவும் சமீபத்திய பதிப்பிற்கு மட்டுமே வழங்கப்படுகின்றன."
+
+#: 
+msgid "Select the families to review."
+msgstr "மதிப்பாய்வு செய்ய வேண்டிய குடும்பங்களைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Set up the statement"
+msgstr "அறிக்கையை அமைக்கவும்"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "தொடர இரு காரணி அங்கீகாரத்தை அமைக்கவும்."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "பகிரப்பட்ட உறை முரண்பாடு: மற்றொரு குடும்பம் தற்போது இந்த உறை எண்ணைக் கொண்டுள்ளது."
+
+#: 
+msgid "Signature Image"
+msgstr "கையொப்பப் படம்"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "கையொப்பப் படம் (நிர்வாகம், அறிக்கை அமைப்புகள்)"
+
+#: 
+msgid "Signature on file"
+msgstr "கோப்பில் கையொப்பம் உள்ளது"
+
+#: 
+msgid "Sincerely"
+msgstr "மரியாதையுடன்"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "தொடர்ச்சியான உறுதிமொழியைத் திருத்தும்போது தொகை அடிப்படையைக் குறிப்பிடவும்."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "நிலையான கொடை அறிக்கை"
+
+#: 
+msgid "Statement Template"
+msgstr "அறிக்கை வார்ப்புரு"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "இன்றைக்குப் பிந்தையதல்லாத வழங்கிய தேதியை வழங்கவும்."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "அறிக்கைகளில் வரி அடையாளம்"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "%s குடும்பத்தில் உறுப்பினர் போர்ட்டலுக்கு அழைக்க உயிருடன் உள்ள உறுப்பினர்கள் யாரும் இல்லை."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "கனடிய பதிவு எண் 123456789RR0001 வடிவத்தில் இருக்க வேண்டும். இது பதிவு நிலையைச் சரிபார்க்காது."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "தொண்டு நிறுவன பதிவு எண் உரையாக இருக்க வேண்டும்."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "அதிகாரப்பூர்வ ரசீதுகளில் அச்சிடப்படும் தொண்டு நிறுவன பதிவு எண். காலியாக விட்டால் தேவாலய தகவலில் உள்ள வரி அடையாளத்தைப் பயன்படுத்தும்."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "தொண்டு நிறுவனத்தின் பதிவு முகவரி. காலியாக விட்டால் தேவாலய தகவலில் உள்ள முகவரியைப் பயன்படுத்தும்."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "கையொப்பமிடுபவருக்கு மேலே உள்ள முடிவு வாசகம், எடுத்துக்காட்டாக மரியாதையுடன்."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "முழு உறுதிப்பாடு ஒரு நிதிக்கு 999999.99 ஐ விட அதிகமாக இருக்கக்கூடாது, தொகைகள் அதிகபட்சம் இரண்டு தசம இடங்களைப் பயன்படுத்த வேண்டும்."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "நீங்கள் கடைசியாகச் சரிபார்த்ததிலிருந்து நன்கொடைகள் அல்லது அஞ்சல் முகவரி மாறிவிட்டது. அவற்றை மதிப்பாய்வு செய்து நன்கொடையாளரை மீண்டும் உறுதிப்படுத்தவும்."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "அஞ்சல் முகவரி முழுமையடையவில்லை. ஒரு தெரு, நகரம், மாகாணம் மற்றும் அஞ்சல் குறியீடு தேவை."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "தொண்டு நிறுவனம் பதிவு செய்யப்பட்ட பெயர். இது தேவாலயப் பெயரிலிருந்து வேறுபடலாம்."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "ரசீதுகள் வழங்கப்படும் இடம். காலியாக விட்டால் தேவாலய தகவலில் உள்ள நகரத்தைப் பயன்படுத்தும்."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "அச்சிடப்பட்ட கொடை அறிக்கை கையொப்பமிடுபவர் இந்த ரசீதுகளில் கையொப்பமிட அங்கீகரிக்கப்பட்டவர்."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "கனடிய ரசீதுகளுக்கு கணினி நாணய சின்னம் $ ஆக இருக்க வேண்டும் அல்லது CAD ஐ அடையாளம் காண வேண்டும்."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "தேர்ந்தெடுக்கப்பட்ட நாட்காட்டி ஆண்டில் கட்டணங்கள் எதுவும் இல்லை."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "இவர்களே இந்தக் குடும்பம்/நாட்காட்டி ஆண்டின் ஒவ்வொரு நன்கொடைக்கும் உண்மையான நன்கொடையாளர்கள், மற்றும் அஞ்சல் முகவரி சரியானது."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "இந்தப் படம் கொடை அறிக்கைகளிலும் ரசீதுகளிலும் கையொப்பமிடுபவரின் பெயருக்கு மேலே அச்சிடப்படும். தொண்டு நிறுவன விவரங்களும் கையொப்பமிடுபவரின் அச்சிடப்பட்ட பெயரும் நிதி, அறிக்கை அமைப்புகளின் கீழ் உள்ளன."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "இந்த விருப்பம் ஒரு ரசீதை கனடிய ரசீதாக வடிவமைக்கிறது, ஆனால் ரசீது பதிவேட்டை வைத்திருக்காது அல்லது PDF களைத் தக்கவைக்காது."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "இந்த சுயமாகப் பதிவு செய்த குடும்பம் அங்கீகாரத்திற்காகக் காத்திருக்கிறது. அதை அங்கீகரிப்பது உறுப்பினர் போர்ட்டலில் உள்நுழையக்கூடிய ஒவ்வொரு உறுப்பினருக்கும் குடும்பத்தின் தகவலை மதிப்பாய்வு செய்ய அழைப்பை மின்னஞ்சல் செய்யும்."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "இந்தக் கருவிக்கு ரத்து/மாற்றீட்டு பணிப்பாய்வு இல்லை; திருத்தங்கள்/இழந்த ரசீது மாற்றீடுகளுக்கு உங்கள் தற்போதைய CRA-இணக்கமான நடைமுறைகளைப் பயன்படுத்தவும்."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "இந்தப் பயனர் 2FA ஐ அமைக்க வேண்டும்"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "இது குடும்பப் பதிவையும் அதன் குறிப்புகளையும் நிரந்தரமாக நீக்கும். இதைச் செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Total commitment"
+msgstr "மொத்த உறுதிப்பாடு"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "உறுதிப்பாட்டை முன்னோட்டமிட முடியவில்லை."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "கையொப்பத்தைப் பதிவேற்றவும் அல்லது மாற்றவும்"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "அறிக்கை அமைப்புகளில் அங்கீகரிக்கப்பட்ட வரி கையொப்பத்தைப் பதிவேற்றவும்."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டுக்குள் உள்ள தேதிகளைப் பயன்படுத்தவும். மாதாந்திர மற்றும் காலாண்டு நன்கொடைகள் முதல் தவணை நாளை, அல்லது குறுகிய மாதங்களின் கடைசி நாளைப் பயன்படுத்துகின்றன."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "சரிபார்க்கப்பட்ட நன்கொடையாளர் முழுப் பெயர்(கள்)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "அதற்குப் பதிலாக குடும்பத்தை நேரில் சரிபார்க்கவும்."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "ஒவ்வொரு குடும்பத்திற்கும் நன்கொடையாளரின் முழுப் பெயரையும் முகவரியையும் சரிபார்க்கவும். கலப்பு நன்கொடையாளர் கட்டணத் தொகுப்புகள் இந்த அம்சத்திற்கு வெளியே கையாளப்பட வேண்டும்."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "பதிப்பு %s கிடைக்கிறது. உங்கள் நிறுவலை மேம்படுத்த உங்கள் நிர்வாகியிடம் கேட்கவும்."
+
+#: 
+msgid "View all emails"
+msgstr "அனைத்து மின்னஞ்சல்களையும் காண்க"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "ஆம் — ஒரு சரிபார்க்கப்பட்ட நன்கொடையாளர் தொகுப்பு"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "உங்கள் தேவாலய நாடு கனடா, எனவே நீங்கள் அறிக்கைகளை உருவாக்கும்போது கனடிய அதிகாரப்பூர்வ ரசீதுகளும் கிடைக்கின்றன."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "உங்கள் தேவாலய நாடு கனடா, எனவே கனடிய அதிகாரப்பூர்வ ரசீதுகள் கொடை அறிக்கைகளில் கிடைக்கின்றன மற்றும் சாதாரண அறிக்கைகள் அதிகாரப்பூர்வ நன்கொடை ரசீது அல்ல எனக் குறிக்கப்பட்டுள்ளன."
+
+#: 
+msgid "groups"
+msgstr "குழுக்கள்"
 

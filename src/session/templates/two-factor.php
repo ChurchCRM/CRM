@@ -59,6 +59,7 @@ $rootPath = SystemURLs::getRootPath();
     <div class="form-footer justify-content-center">
       <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Use a different account') ?></a>
     </div>
+    <?php require __DIR__ . '/partials/back-to-chooser.php'; ?>
   </div>
 </main>
 <?php

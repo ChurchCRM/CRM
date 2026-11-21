@@ -13,7 +13,7 @@ describe("API response headers (#10211)", () => {
 
     it("signed-in pages are nosniff and uncached", () => {
         cy.setupAdminSession();
-        ["/v2/dashboard", "/people/list"].forEach((url) => {
+        ["/people/dashboard", "/people/list"].forEach((url) => {
             cy.request(url).then((response) => {
                 expect(response.headers["x-content-type-options"]).to.eq("nosniff");
                 expect(response.headers["cache-control"]).to.include("no-store");

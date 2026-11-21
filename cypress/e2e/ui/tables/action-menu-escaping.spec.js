@@ -229,7 +229,7 @@ describe("Row action menus — markup and attribute escaping (#9820)", () => {
             // created fresh after this spec's `before` hook has finished its API
             // calls, so there is no stale PHP session to inherit.
             cy.setupAdminSession();
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.waitForLocales();
         });
 
@@ -323,11 +323,11 @@ describe("Row action menus — markup and attribute escaping (#9820)", () => {
         });
 
         it("main dashboard renders the person menu for a person with a hostile name", () => {
-            // A successful login already lands on /v2/dashboard, and cy.visit() to the
+            // A successful login already lands on /people/dashboard, and cy.visit() to the
             // page you are already on does not reload — so the dashboard's DataTables
             // AJAX has usually fired before the test body runs. Wait on the rendered
             // rows rather than on an intercept that would arrive too late to register.
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.get("#latest-ppl-tab").click();
 
             cy.get(`button.delete-person[data-person_id="${created.personId}"]`, { timeout: 15000 })
@@ -348,7 +348,7 @@ describe("Row action menus — markup and attribute escaping (#9820)", () => {
         });
 
         it("main dashboard renders the family menu for a family with a hostile name", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
 
             cy.get(`button.delete-family[data-family_id="${created.familyId}"]`, { timeout: 15000 })
                 .should("exist")

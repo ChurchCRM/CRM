@@ -149,10 +149,10 @@ class AuthMiddleware implements MiddlewareInterface
         return false;
     }
 
-    /** `/api/ministries/…` while Volunteer v2 is on: the volunteer API the portal pages call. */
+    /** `/api/ministries/…`: the volunteer API the portal pages call. */
     private function isPortalVolunteerApiPath(ServerRequestInterface $request): bool
     {
-        return User::isVolunteerV2Enabled() && VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
+        return VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
     }
 
     /** `/portal` and `/api/portal`, anchored at the root path and matched by whole segments. */
@@ -225,6 +225,10 @@ class AuthMiddleware implements MiddlewareInterface
         $redirectUrl = $this->isPortalPath($request)
             ? AuthenticationManager::getPortalLoginURL()
             : AuthenticationManager::getStaffSignInURL();
+        $username = $request->getQueryParams()['username'] ?? '';
+        if (!$this->isPortalPath($request) && is_string($username) && $username !== '') {
+            $redirectUrl .= '?username=' . rawurlencode($username);
+        }
 
         return (new Response())->withStatus(302)->withHeader('Location', $redirectUrl);
     }
