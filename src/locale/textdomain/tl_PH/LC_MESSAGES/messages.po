@@ -12862,10 +12862,6 @@ msgid "Deposit ID"
 msgstr "ID ng Deposito"
 
 #: 
-msgid "Deposit Value"
-msgstr "Halaga ng Deposito"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Matagumpay na na-save ang deposito"
 
@@ -24236,10 +24232,6 @@ msgid "Church default: %s"
 msgstr "Default ng simbahan: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Pag-sign in ng pinuno ng simbahan"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Mga klasipikasyon na ang mga miyembro ay maaaring mag-sign in sa Member Portal, bilang listahan ng mga classification id na pinaghihiwalay ng kuwit."
 
@@ -24882,10 +24874,6 @@ msgstr "Hindi natapos"
 #: 
 msgid "Not moved"
 msgstr "Hindi nailipat"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Hindi sigurado kung aling email ang nasa amin? Makipag-ugnayan sa opisina ng simbahan."
 
 #: 
 msgid "Not yet"

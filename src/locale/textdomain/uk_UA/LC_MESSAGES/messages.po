@@ -12915,10 +12915,6 @@ msgid "Deposit ID"
 msgstr "ID депозиту"
 
 #: 
-msgid "Deposit Value"
-msgstr "Сума депозиту"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Депозит успішно збережено"
 
@@ -24325,10 +24321,6 @@ msgid "Church default: %s"
 msgstr "Типове для церкви: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Вхід керівника церкви"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Класифікації, члени яких можуть входити до порталу членів, як список ідентифікаторів класифікацій через кому."
 
@@ -24971,10 +24963,6 @@ msgstr "Не завершено"
 #: 
 msgid "Not moved"
 msgstr "Не перенесено"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Не впевнені, яка електронна пошта в нас є? Зверніться до церковної канцелярії."
 
 #: 
 msgid "Not yet"

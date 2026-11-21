@@ -12870,10 +12870,6 @@ msgid "Deposit ID"
 msgstr "ID uplate"
 
 #: 
-msgid "Deposit Value"
-msgstr "Vrijednost uplate"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Uplata uspješno spremljena"
 
@@ -24262,10 +24258,6 @@ msgid "Church default: %s"
 msgstr "Zadano za crkvu: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Prijava crkvenog voditelja"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikacije čiji se članovi smiju prijaviti u Članski portal, kao popis identifikatora klasifikacija odvojenih zarezom."
 
@@ -24908,10 +24900,6 @@ msgstr "Nije završeno"
 #: 
 msgid "Not moved"
 msgstr "Nije premješteno"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Niste sigurni koju e-poštu imamo? Obratite se crkvenom uredu."
 
 #: 
 msgid "Not yet"

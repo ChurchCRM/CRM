@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 22:11+0000\n"
+"POT-Creation-Date: 2026-11-21 17:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3405,6 +3405,9 @@ msgstr ""
 msgid "Choose a deposit or enter both report dates."
 msgstr ""
 
+msgid "Choose a different way to sign in"
+msgstr ""
+
 msgid "Choose a group..."
 msgstr ""
 
@@ -3663,9 +3666,6 @@ msgid "Church information saved successfully"
 msgstr ""
 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
-msgstr ""
-
-msgid "Church leader sign-in"
 msgstr ""
 
 msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
@@ -4091,6 +4091,9 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Congregation Map"
+msgstr ""
+
+msgid "Congregation login"
 msgstr ""
 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
@@ -5204,9 +5207,6 @@ msgid "Deposit Tracking"
 msgstr ""
 
 msgid "Deposit Type"
-msgstr ""
-
-msgid "Deposit Value"
 msgstr ""
 
 msgid "Deposit not found"
@@ -6555,6 +6555,9 @@ msgid "Everywhere"
 msgstr ""
 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr ""
+
+msgid "Exclude"
 msgstr ""
 
 msgid "Exclude Inactive Families"
@@ -12021,9 +12024,6 @@ msgstr ""
 msgid "Not staffed"
 msgstr ""
 
-msgid "Not sure which email we have? Contact the church office."
-msgstr ""
-
 msgid "Not volunteering yet"
 msgstr ""
 
@@ -14176,6 +14176,9 @@ msgstr ""
 msgid "Register your family"
 msgstr ""
 
+msgid "Register your family to our church"
+msgstr ""
+
 msgid "Registered"
 msgstr ""
 
@@ -16150,6 +16153,9 @@ msgid "St. Vincent & Grenadines"
 msgstr ""
 
 msgid "Staff an event"
+msgstr ""
+
+msgid "Staff login"
 msgstr ""
 
 msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."

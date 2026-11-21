@@ -12862,10 +12862,6 @@ msgid "Deposit ID"
 msgstr "ഡിപ്പോസിറ്റ് ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "നിക്ഷേപ മൂല്യം"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ഡിപ്പോസിറ്റ് വിജയകരമായി സംരക്ഷിച്ചു"
 
@@ -24236,10 +24232,6 @@ msgid "Church default: %s"
 msgstr "പള്ളി സ്ഥിരം: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "പള്ളി നേതാവിന്റെ സൈൻ-ഇൻ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "അംഗങ്ങൾക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാമായ വർഗീകരണങ്ങൾ, കോമ കൊണ്ട് വേർതിരിച്ച വർഗീകരണ ഐഡികളുടെ പട്ടികയായി."
 
@@ -24882,10 +24874,6 @@ msgstr "അവസാനിച്ചിട്ടില്ല"
 #: 
 msgid "Not moved"
 msgstr "നീക്കിയില്ല"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "ഏത് ഇമെയിലാണ് ഞങ്ങളുടെ പക്കലുള്ളതെന്ന് ഉറപ്പില്ലേ? പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
 
 #: 
 msgid "Not yet"

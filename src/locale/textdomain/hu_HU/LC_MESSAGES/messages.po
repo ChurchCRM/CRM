@@ -12918,10 +12918,6 @@ msgid "Deposit ID"
 msgstr "Betét azonosítója"
 
 #: 
-msgid "Deposit Value"
-msgstr "Letét értéke"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "A betét sikeresen mentve"
 
@@ -24292,10 +24288,6 @@ msgid "Church default: %s"
 msgstr "Gyülekezeti alapértelmezés: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Gyülekezeti vezető bejelentkezése"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Azok a besorolások, amelyek tagjai bejelentkezhetnek a tagportálra, besorolásazonosítók vesszővel elválasztott listájaként."
 
@@ -24938,10 +24930,6 @@ msgstr "Nem ért véget"
 #: 
 msgid "Not moved"
 msgstr "Nincs áthelyezve"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nem biztos benne, melyik e-mailünk van meg? Forduljon a gyülekezeti irodához."
 
 #: 
 msgid "Not yet"

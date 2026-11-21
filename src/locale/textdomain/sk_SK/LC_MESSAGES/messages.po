@@ -12882,10 +12882,6 @@ msgid "Deposit ID"
 msgstr "ID vkladu"
 
 #: 
-msgid "Deposit Value"
-msgstr "Hodnota vkladu"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Vklad úspešne uložený"
 
@@ -24292,10 +24288,6 @@ msgid "Church default: %s"
 msgstr "Predvolené cirkvi: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Prihlásenie vedúceho cirkvi"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikácie, ktorých členovia sa môžu prihlásiť do členského portálu, ako zoznam identifikátorov klasifikácií oddelených čiarkou."
 
@@ -24938,10 +24930,6 @@ msgstr "Neukončené"
 #: 
 msgid "Not moved"
 msgstr "Nepresunuté"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nie ste si istí, ktorý e-mail máme? Obráťte sa na kanceláriu cirkvi."
 
 #: 
 msgid "Not yet"

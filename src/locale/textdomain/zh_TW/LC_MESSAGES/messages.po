@@ -13021,10 +13021,6 @@ msgid "Deposit ID"
 msgstr "存款編號"
 
 #: 
-msgid "Deposit Value"
-msgstr "存款金額"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "存款儲存成功"
 
@@ -24377,10 +24373,6 @@ msgid "Church default: %s"
 msgstr "教會預設：%s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "教會領袖登入"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "其成員可登入會友入口的分類，以逗號分隔的分類 id 清單表示。"
 
@@ -25023,10 +25015,6 @@ msgstr "未結束"
 #: 
 msgid "Not moved"
 msgstr "未移轉"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "不確定我們留有哪一個電子郵件？請聯絡教會辦公室。"
 
 #: 
 msgid "Not yet"

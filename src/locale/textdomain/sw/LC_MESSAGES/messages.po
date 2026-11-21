@@ -12891,10 +12891,6 @@ msgid "Deposit ID"
 msgstr "Kitambulisho cha amana"
 
 #: 
-msgid "Deposit Value"
-msgstr "Thamani ya Amana"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Amana imehifadhiwa kwa mafanikio"
 
@@ -24265,10 +24261,6 @@ msgid "Church default: %s"
 msgstr "Chaguo-msingi la kanisa: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Kuingia kwa kiongozi wa kanisa"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Uainishaji ambao wanachama wake wanaweza kuingia kwenye Lango la Wanachama, kama orodha ya vitambulisho vya uainishaji vilivyotenganishwa kwa koma."
 
@@ -24911,10 +24903,6 @@ msgstr "Haijaisha"
 #: 
 msgid "Not moved"
 msgstr "Haijahamishwa"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Huna uhakika barua pepe ipi tunayo? Wasiliana na ofisi ya kanisa."
 
 #: 
 msgid "Not yet"

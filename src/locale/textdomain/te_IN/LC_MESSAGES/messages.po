@@ -12873,10 +12873,6 @@ msgid "Deposit ID"
 msgstr "డిపాజిట్ ఐడి"
 
 #: 
-msgid "Deposit Value"
-msgstr "డిపాజిట్ విలువ"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "డిపాజిట్ విజయవంతంగా సేవ్ చేయబడింది"
 
@@ -24247,10 +24243,6 @@ msgid "Church default: %s"
 msgstr "చర్చి అప్రమేయం: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "చర్చి నాయకుడి సైన్-ఇన్"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయగల సభ్యుల వర్గీకరణలు, కామాతో వేరు చేసిన వర్గీకరణ id ల జాబితాగా."
 
@@ -24893,10 +24885,6 @@ msgstr "ముగియలేదు"
 #: 
 msgid "Not moved"
 msgstr "తరలించబడలేదు"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "మా వద్ద ఏ ఇమెయిల్ ఉందో ఖచ్చితంగా తెలియదా? చర్చి కార్యాలయాన్ని సంప్రదించండి."
 
 #: 
 msgid "Not yet"
