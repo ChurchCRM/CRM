@@ -4016,10 +4016,6 @@ msgid "Legend"
 msgstr "범례"
 
 #: 
-msgid "assigned"
-msgstr "배정됨"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "생일이 있는 학생 표시:"
 
@@ -17579,10 +17575,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "공개 등록 양식으로 들어와 검토를 기다리는 등록입니다. 이메일이나 전화번호가 없는 항목에는 표시가 있습니다. 연락하기 전에 연락처를 확인하세요."
 
 #: 
-msgid "Review self registrations"
-msgstr "자기 등록 검토"
-
-#: 
 msgid "Select month"
 msgstr "월 선택"
 
@@ -17609,10 +17601,6 @@ msgstr "이 사람은 가정에 속해 있습니다. 대신 가정을 승인하�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "이 사람은 대기 중인 자기 등록이 아닙니다"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "이 자기 등록 가정은 검토를 기다리고 있습니다"
 
 #: 
 msgid "Total registrations"

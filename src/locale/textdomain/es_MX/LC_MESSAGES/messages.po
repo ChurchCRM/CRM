@@ -3993,10 +3993,6 @@ msgid "Legend"
 msgstr "Leyenda"
 
 #: 
-msgid "assigned"
-msgstr "asignado"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Mostrando estudiantes con cumpleaños en"
 
@@ -17569,10 +17565,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registros pendientes de revisión de tu formulario de registro público. Los registros sin correo electrónico o teléfono están marcados, verifica la información de contacto antes de hacer seguimiento."
 
 #: 
-msgid "Review self registrations"
-msgstr "Revisar registros de auto-inscripción"
-
-#: 
 msgid "Select month"
 msgstr "Selecciona un mes"
 
@@ -17599,10 +17591,6 @@ msgstr "Esta persona pertenece a una familia, aprueba la familia en su lugar"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Esta persona no es un auto-registro pendiente"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Esta familia auto-registrada está pendiente de revisión"
 
 #: 
 msgid "Total registrations"

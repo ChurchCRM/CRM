@@ -4016,10 +4016,6 @@ msgid "Legend"
 msgstr "عنوان تفسيري"
 
 #: 
-msgid "assigned"
-msgstr "تعيين"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "عرض تلاميذ أعياد ميلادهم فى"
 
@@ -17655,10 +17651,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "تسجيلات تنتظر المراجعة من نموذج التسجيل العام الخاص بك. تُميَّز المدخلات التي لا تحتوي على بريد إلكتروني أو هاتف — تحقق من بيانات الاتصال قبل المتابعة."
 
 #: 
-msgid "Review self registrations"
-msgstr "مراجعة التسجيلات الذاتية"
-
-#: 
 msgid "Select month"
 msgstr "اختر الشهر"
 
@@ -17685,10 +17677,6 @@ msgstr "ينتمي هذا الشخص إلى أسرة — اعتمد الأسرة
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "هذا الشخص ليس تسجيلًا ذاتيًا معلقًا"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "هذه الأسرة المسجّلة ذاتيًا قيد المراجعة"
 
 #: 
 msgid "Total registrations"

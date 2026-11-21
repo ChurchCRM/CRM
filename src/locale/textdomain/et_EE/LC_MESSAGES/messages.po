@@ -4017,10 +4017,6 @@ msgid "Legend"
 msgstr "Legend"
 
 #: 
-msgid "assigned"
-msgstr "määratud"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Näidatakse õpilasi, kellel on sünnipäevad"
 
@@ -17598,10 +17594,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Avaliku registreerimisvormi kaudu saabunud registreeringud ootavad ülevaatamist. E-posti ja telefonita kirjed on märgitud – kontrolli kontaktandmeid enne ühenduse võtmist."
 
 #: 
-msgid "Review self registrations"
-msgstr "Vaata üle eneseregistreeringud"
-
-#: 
 msgid "Select month"
 msgstr "Vali kuu"
 
@@ -17628,10 +17620,6 @@ msgstr "See isik kuulub perekonda – kinnita hoopis perekond"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "See isik ei ole ootel eneseregistreering"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "See ise registreerunud perekond ootab ülevaatamist"
 
 #: 
 msgid "Total registrations"

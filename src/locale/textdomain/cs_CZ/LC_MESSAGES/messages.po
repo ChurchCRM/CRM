@@ -4013,10 +4013,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "přiřazený"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Zobrazuji žáky s narozeninami v"
 
@@ -17603,10 +17599,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrace z vašeho veřejného registračního formuláře čekající na kontrolu. Záznamy bez e-mailu nebo telefonu jsou označeny — před kontaktováním ověřte kontaktní údaje."
 
 #: 
-msgid "Review self registrations"
-msgstr "Zkontrolovat samoregistrace"
-
-#: 
 msgid "Select month"
 msgstr "Vyberte měsíc"
 
@@ -17633,10 +17625,6 @@ msgstr "Tato osoba patří do rodiny — schvalte místo toho rodinu"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Tato osoba není čekající samoregistrace"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Tato samoregistrovaná rodina čeká na kontrolu"
 
 #: 
 msgid "Total registrations"

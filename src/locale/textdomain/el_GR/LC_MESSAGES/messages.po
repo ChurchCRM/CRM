@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Θρύλος"
 
 #: 
-msgid "assigned"
-msgstr "ανατεθεί"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Εμφάνιση μαθητών με γενέθλια μέσα"
 
@@ -17599,10 +17595,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Εγγραφές που περιμένουν έλεγχο από τη δημόσια φόρμα εγγραφής. Οι καταχωρίσεις χωρίς email ή τηλέφωνο επισημαίνονται· επαληθεύστε τα στοιχεία επικοινωνίας πριν επικοινωνήσετε."
 
 #: 
-msgid "Review self registrations"
-msgstr "Έλεγχος αυτοεγγραφών"
-
-#: 
 msgid "Select month"
 msgstr "Επιλέξτε μήνα"
 
@@ -17629,10 +17621,6 @@ msgstr "Αυτό το άτομο ανήκει σε οικογένεια — εγ
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Αυτό το άτομο δεν είναι εκκρεμής αυτοεγγραφή"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Αυτή η οικογένεια που αυτοεγγράφηκε περιμένει έλεγχο"
 
 #: 
 msgid "Total registrations"

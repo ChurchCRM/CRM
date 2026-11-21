@@ -4,7 +4,7 @@
     "src/people/views/_dashboard-overview.php:178"
   ],
   "6 months": [
-    "src/ChurchCRM/Service/DemoDataService.php:615",
+    "src/ChurchCRM/Service/DemoDataService.php:626",
     "src/account/views/account.php:302",
     "src/api/routes/people/people-persons.php:497"
   ],
@@ -16,12 +16,12 @@
   "7 days": [
     "src/ChurchCRM/Portal/PortalStatsService.php:51",
     "src/ChurchCRM/Service/ClassAttendanceService.php:44",
-    "src/ChurchCRM/Service/DemoDataService.php:615"
+    "src/ChurchCRM/Service/DemoDataService.php:626"
   ],
   "and {{count}} more": [
     "src/.htaccess:21",
-    "src/ChurchCRM/Backup/BackupDownloader.php:50",
-    "src/ChurchCRM/Backup/BackupJob.php:197"
+    "src/ChurchCRM/Backup/BackupDownloader.php:60",
+    "src/ChurchCRM/Backup/BackupJob.php:205"
   ],
   "Ask on Discord": [
     "src/setup/templates/setup-steps.php:189"
@@ -99,6 +99,11 @@
     "src/ChurchCRM/Bootstrapper.php:64",
     "src/ChurchCRM/Bootstrapper.php:232",
     "src/Include/Config.php.example:32"
+  ],
+  "Deactivated": [
+    "src/ChurchCRM/Config/Menu/Menu.php:354",
+    "src/ChurchCRM/Config/Menu/Menu.php:356",
+    "src/ChurchCRM/Config/Menu/Menu.php:368"
   ],
   "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s.": [
     "src/setup/templates/setup-steps.php:107"
@@ -186,6 +191,9 @@
   ],
   "Last 12 months": [
     "src/ChurchCRM/Service/FinancialService.php:1016"
+  ],
+  "Last edited": [
+    "src/people/views/family-view.php:785"
   ],
   "Main dashboard": [
     "src/account/views/account.php:288"
@@ -347,6 +355,12 @@
   ],
   "Usually 3306.": [
     "src/setup/templates/setup-steps.php:132"
+  ],
+  "Verify now": [
+    "src/people/views/family-view.php:755"
+  ],
+  "View Giving History": [
+    "src/people/views/family-view.php:256"
   ],
   "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target.": [
     "src/setup/templates/setup-steps.php:169"
