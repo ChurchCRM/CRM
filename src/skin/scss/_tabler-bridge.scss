@@ -222,6 +222,17 @@ select {
   flex: 1;
 }
 
+// The sidebar is a long scan list. Tabler's 0.75rem link padding and 0.5rem
+// dropdown-item padding make each row about 44px; a church menu then scrolls
+// before the fold. Keep the same inset so folded icons do not shift.
+.navbar-vertical {
+  --sidebar-nav-padding-y: 0.375rem;
+
+  .dropdown-menu .dropdown-item {
+    --dropdown-item-padding-y: 0.25rem;
+  }
+}
+
 .navbar-vertical .badge {
   flex: none;
 }
