@@ -7,8 +7,8 @@ import { pdfDrawing, pdfText } from "../../../support/pdf-text";
 const STOCKS = ["5160", "5161", "5162", "5163", "5164", "8600", "L7163", "Tractor"];
 const mailing = (labelType, extra = "") =>
     `/people/labels?report=birthdays&month=7&labeltype=${labelType}&labelfont=Helvetica&labelfontsize=default&startrow=1&startcol=1&filetype=PDF${extra}`;
-const familyLabels = (kind) =>
-    `/people/labels/${kind}?labeltype=5160&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=familyname`;
+const familyLabels = (kind, method = "familyname") =>
+    `/people/labels/${kind}?labeltype=5160&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=${method}`;
 const NAME_TAGS = "/people/labels/name-tags?labeltype=74536&labelfont=Times&labelfontsize=36";
 
 const MM = 72 / 25.4;
@@ -67,6 +67,31 @@ describe("Label sheets", () => {
         cy.setupAdminSession();
         fetchPdf(familyLabels("newsletter"));
         fetchPdf(familyLabels("confirm"));
+    });
+
+    it("prints one label per living person with the individual naming method (#11466)", () => {
+        cy.setupAdminSession();
+        // Seed family 20 (Black): Amanda, Lena, Samantha and Serenity are all living.
+        // The default name style (4) prints "FirstName LastName", so each member's own
+        // name is the first line of their own label, where the salutation would read
+        // "Amanda & Lena Black" on a single label.
+        fetchPdf(familyLabels("confirm", "individual"))
+            .then((body) => pdfText(body))
+            .then((lines) => {
+                expect(lines).to.include.members(["Amanda Black", "Lena Black", "Samantha Black", "Serenity Black"]);
+                expect(lines).to.not.include("Amanda & Lena Black");
+            });
+    });
+
+    it("prints formal names with the formal naming method (#11466)", () => {
+        cy.setupAdminSession();
+        // Seed family 20 (Black): Amanda (Miss) and Lena (Miss) are the adults, so the
+        // formal name is their titles with the shared last name.
+        fetchPdf(familyLabels("confirm", "formal"))
+            .then((body) => pdfText(body))
+            .then((lines) => {
+                expect(lines).to.include("Miss & Miss Black");
+            });
     });
 
     it("omits a deactivated family from confirmation labels", () => {
