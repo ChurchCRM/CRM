@@ -619,7 +619,7 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
             // And the one URL that would take a staff login to the dashboard asks
             // this one to sign in as staff instead.
             cy.visit("/people/dashboard", { failOnStatusCode: false });
-            cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
         });
     });
 });

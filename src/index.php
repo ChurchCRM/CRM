@@ -57,16 +57,17 @@ $shortName = str_starts_with($_idx_requestPath, $_idx_rootPrefix)
 $_idx_isWebRoot = $shortName === '' || strtolower($shortName) === 'index.php';
 $_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName);
 
-// The web root (member sign-in design §7): a member session goes to the portal.
-// Signed out, it goes to the portal page while member sign-in or self-registration is on,
-// and to the staff sign-in while both member sign-in and self-registration are off.
+// The web root: a member session goes to the portal. Signed out, more than one
+// door (member sign-in, self-registration, staff) goes to the chooser at /session/.
+// A single door goes straight there.
 if ($_idx_isWebRoot && !AuthenticationManager::validateUserSessionIsActive(false)) {
     if (PortalSessionStore::has()) {
         RedirectUtils::redirect('portal/');
     }
-    $portalEntryEnabled = SystemConfig::getBooleanValue('bMemberSignIn')
-        || SystemConfig::getBooleanValue('bEnableSelfRegistration');
-    RedirectUtils::redirect($portalEntryEnabled ? 'portal/login' : AuthenticationManager::getStaffSignInURL());
+    $doorCount = 1
+        + (SystemConfig::getBooleanValue('bMemberSignIn') ? 1 : 0)
+        + (SystemConfig::getBooleanValue('bEnableSelfRegistration') ? 1 : 0);
+    RedirectUtils::redirect($doorCount > 1 ? 'session/' : AuthenticationManager::getStaffSignInURL());
 }
 
 // Only a real page is remembered for after sign-in.

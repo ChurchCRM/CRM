@@ -409,10 +409,10 @@ class AuthenticationManager
         return false;
     }
 
-    /** The staff sign-in address: the /admin root signs staff in. /session/begin serves the same form. */
+    /** The staff sign-in page. A direct visit to /admin/ still shows this form to a signed-out visitor. */
     public static function getStaffSignInURL(): string
     {
-        return SystemURLs::getRootPath() . '/admin/';
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getPortalLoginURL(): string

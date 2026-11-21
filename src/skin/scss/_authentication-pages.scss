@@ -264,6 +264,34 @@ body.page-auth .mb-3 {
 }
 
 // Sign in button
+a.btn-sign-in,
+a.btn-sign-in:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-door-quiet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px solid var(--tblr-border-color);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tblr-body-color);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--tblr-bg-surface-secondary);
+    color: var(--tblr-body-color);
+    text-decoration: none;
+  }
+}
+
 .btn-sign-in {
   width: 100%;
   padding: 14px 16px;

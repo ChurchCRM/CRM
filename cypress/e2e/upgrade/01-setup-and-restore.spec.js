@@ -122,7 +122,7 @@ describe('Upgrade via Restore', () => {
             // Continue to login
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
-            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
 

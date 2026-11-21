@@ -44,7 +44,7 @@ describe("Member Portal — member landing", () => {
         login();
         ["people/dashboard", "people/dashboard", "SystemSettings.php"].forEach((path) => {
             cy.visit(path, { failOnStatusCode: false });
-            cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
         });
     });
 });
