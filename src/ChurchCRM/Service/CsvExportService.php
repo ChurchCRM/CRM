@@ -866,10 +866,6 @@ class CsvExportService
         return ['headers' => $headers, 'rows' => $rows];
     }
 
-    /**
-     * Rollup names lead with the last name so the export sorts by surname:
-     * "Smith, John" or "Smith, Lawrence & Patty".
-     */
     private static function sortableName(string $lastName, string $firstNames): string
     {
         return $firstNames === '' ? $lastName : $lastName . ', ' . $firstNames;
