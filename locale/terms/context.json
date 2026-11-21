@@ -35,6 +35,9 @@
     "src/Include/QuillEditorHelper.php:99",
     "webpack/note-why-came-modal.ts:96"
   ],
+  "Every active member family made a payment between %s and %s.": [
+    "src/finance/routes/zero-givers.php:40"
+  ],
   "Exclude": [
     "src/ChurchCRM/Service/AppIntegrityService.php:487",
     "src/ChurchCRM/Service/AppIntegrityService.php:544",
