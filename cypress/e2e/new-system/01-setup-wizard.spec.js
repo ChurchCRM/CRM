@@ -47,74 +47,126 @@ describe('01 - Setup Wizard', () => {
     describe('Fresh Installation', () => {
         it('should display the setup wizard on first visit', () => {
             cy.visit('/');
-            
-            // Should redirect to setup page
             cy.url().should('include', '/setup');
-            
-            // Should show the setup wizard with logo and tagline
+
             cy.get('.setup-logo').should('be.visible');
-            cy.contains("Let's get your church management system up and running").should('be.visible');
-            
-            // Should show the stepper with 2 steps (System Check, Configure)
-            cy.get('.bs-stepper-header .step').should('have.length', 2);
-            cy.contains('.bs-stepper-label', 'System Check').should('be.visible');
-            cy.contains('.bs-stepper-label', 'Configure').should('be.visible');
+            cy.contains('h1', 'Install ChurchCRM').should('be.visible');
+            cy.contains('#step-prerequisites', 'Server').should('be.visible');
+            cy.contains('#step-website', 'Web address').should('be.visible');
+            cy.contains('#step-database', 'Connect your database').should('be.visible');
         });
 
-        it('should complete prerequisites check step', () => {
+        it('shows the server check result on the same page as the database form', () => {
             cy.visit('/setup');
-            
-            // Wait for prerequisite checks to complete
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            
-            // Click Continue to proceed to Configure step
-            cy.get('#prerequisites-next-btn').click();
-            
-            // Should now be on step 2 (Configure/Database)
-            cy.get('#step-database').should('have.class', 'active');
+            cy.get('#status-banner', { timeout: 30000 }).should('not.have.class', 'status-checking');
+            cy.get('#DB_NAME').should('be.visible');
         });
 
         it('should show advanced settings collapsed by default on configure step', () => {
             cy.visit('/setup');
-            
-            // Complete step 1
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            cy.get('#prerequisites-next-btn').click();
-            
-            // Step 2: Configure (Database)
-            cy.get('#step-database').should('have.class', 'active');
-            
-            // Advanced settings should be collapsed by default
             cy.get('#advanced-settings-collapse').should('not.have.class', 'show');
-            
-            // Click to expand advanced settings
             cy.get('[data-bs-target="#advanced-settings-collapse"]').click();
-            
-            // URL and Root Path fields should be visible after expanding
             cy.get('#advanced-settings-collapse').should('have.class', 'show');
             cy.get('#URL').should('be.visible');
             cy.get('#ROOT_PATH').should('be.visible');
         });
 
+        const fillDatabase = (overrides = {}) => {
+            const values = { ...dbConfig, ...overrides };
+            cy.get('#DB_SERVER_NAME').clear().type(values.host);
+            cy.get('#DB_SERVER_PORT').clear().type(String(values.port));
+            cy.get('#DB_NAME').clear().type(values.name);
+            cy.get('#DB_USER').clear().type(values.user);
+            cy.get('#DB_PASSWORD').clear().type(values.password);
+        };
+
+        const openConfigureStep = () => {
+            cy.visit('/setup');
+            cy.get('#DB_NAME').should('be.visible');
+        };
+
+        const clickInstallExpecting = (reason, text) => {
+            cy.get('#submit-setup').click();
+            cy.wait('@setupPost').its('response.body').should((body) => {
+                expect(body.correct).to.eq(false);
+                expect(body.reason).to.eq(reason);
+            });
+            cy.get('#db-connection-result').should('be.visible').and('contain.text', text);
+            cy.get('#setupModal').should('not.be.visible');
+        };
+
+        it('explains each database failure on Install without saving anything', () => {
+            cy.intercept('POST', /\/setup\/?$/).as('setupPost');
+            openConfigureStep();
+            cy.get('#db-connection-result').should('not.be.visible');
+
+            fillDatabase({ host: '127.0.0.1', port: '1' });
+            clickInstallExpecting('database_host_unreachable', 'often not localhost');
+
+            fillDatabase({ password: 'not-the-password' });
+            cy.get('#db-connection-result').should('not.be.visible');
+            clickInstallExpecting('database_login_rejected', 'rejected that username or password');
+
+            fillDatabase({ name: 'churchcrm_missing_db' });
+            clickInstallExpecting('database_not_found', 'no database with that name');
+
+            cy.visit('/setup');
+            cy.get('.setup-logo').should('be.visible');
+        });
+
+        it('names the field to fix when a value is missing', () => {
+            openConfigureStep();
+            fillDatabase();
+            cy.get('#DB_NAME').clear();
+            cy.get('#submit-setup').click();
+            cy.get('#DB_NAME').should('have.class', 'is-invalid');
+            cy.contains('.invalid-feedback', 'Enter the database name').should('be.visible');
+            cy.get('#DB_NAME').type('x');
+            cy.get('#DB_NAME').should('not.have.class', 'is-invalid');
+        });
+
+        it('holds an unsupported database server for an acknowledgment', () => {
+            const posts = [];
+            cy.intercept('POST', /\/setup\/?$/, (req) => {
+                const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+                posts.push(body);
+                req.reply(
+                    body.ACKNOWLEDGE_UNSUPPORTED_DB
+                        ? { valid: true, correct: false, reason: 'database_unreachable', message: 'stubbed stop' }
+                        : {
+                              valid: true,
+                              correct: true,
+                              supported: false,
+                              message: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports.',
+                          },
+                );
+            }).as('setupPost');
+            openConfigureStep();
+            fillDatabase();
+
+            cy.get('#submit-setup').click();
+            cy.wait('@setupPost');
+            cy.get('#db-version-warning').should('be.visible');
+            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36');
+            cy.get('#submit-setup').should('be.disabled');
+
+            cy.get('#db-version-ack').check();
+            cy.get('#submit-setup').should('not.be.disabled').click();
+            cy.wait('@setupPost').then(() => {
+                expect(posts[posts.length - 1].ACKNOWLEDGE_UNSUPPORTED_DB).to.eq('1');
+            });
+
+            cy.get('#DB_NAME').type('x');
+            cy.get('#db-version-warning').should('not.be.visible');
+            cy.get('#db-version-ack').should('not.be.checked');
+            cy.get('#submit-setup').should('not.be.disabled');
+        });
+
         it('should complete full installation with database setup', () => {
             cy.visit('/setup');
-            
-            // Step 1: System Check (Prerequisites)
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            cy.get('#prerequisites-next-btn').click();
-            
-            // Step 2: Configure (Database)
-            cy.get('#step-database').should('have.class', 'active');
-            
-            // Clear and fill database fields with environment credentials
-            cy.get('#DB_SERVER_NAME').clear().type(dbConfig.host);
-            cy.get('#DB_SERVER_PORT').clear().type(dbConfig.port);
-            cy.get('#DB_NAME').clear().type(dbConfig.name);
-            cy.get('#DB_USER').clear().type(dbConfig.user);
-            cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
-            cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
-            
-            // Submit the setup form
+            cy.get('#status-banner', { timeout: 30000 }).should('not.have.class', 'status-checking');
+
+            fillDatabase();
             cy.get('#submit-setup').click();
             
             // Wait for setup modal to appear
@@ -133,7 +185,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#continue-to-login').should('be.visible').click();
             
             // Should redirect to login page
-            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
     });

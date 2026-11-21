@@ -54,6 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       </div>
       <button id="setPassword" type="submit" class="btn-reset"><?= gettext('Reset Password') ?></button>
       <div class="form-footer justify-content-center"><a href="<?= $sRootPath ?>/session/begin"><?= gettext('Back to Login') ?></a></div>
+      <?php require __DIR__ . '/../partials/back-to-chooser.php'; ?>
     </form>
   </div>
 </main>

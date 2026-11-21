@@ -2213,14 +2213,6 @@ msgid "Deposit Comment"
 msgstr "Comentário do depósito"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Falha na validação da assinatura do ficheiro de definição de assinaturas"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Um ou mais ficheiros falharam na validação da assinatura"
-
-#: 
 msgid "item"
 msgstr "item"
 
@@ -4756,10 +4748,6 @@ msgid "Estonian"
 msgstr "Estoniano"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Erro ao decodificar o ficheiro de definição de assinatura"
-
-#: 
 msgid "Event not found"
 msgstr "Evento não existe"
 
@@ -5339,14 +5327,6 @@ msgstr "Por favor, insira uma URL válida começando com http:// ou https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Todas as assinaturas de ficheiro do sistema correspondem aos valores esperados."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "O ficheiro de definição de assinatura existe, mas não é legível. Verifique as permissões do ficheiro."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "O ficheiro de definição de assinaturas não existe em %s. Execute a tarefa de empacotamento ou instale uma versão oficial para regenerar as assinaturas."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12956,10 +12936,6 @@ msgid "Deposit ID"
 msgstr "ID de depósito"
 
 #: 
-msgid "Deposit Value"
-msgstr "Valor do depósito"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depósito guardado com sucesso"
 
@@ -13376,22 +13352,6 @@ msgid "Move Members to Group"
 msgstr "Mover fiéis para grupo"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Deve ser uma URL válida começando com http:// ou https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Deve ser uma URL válida começando com http:// ou https:// (por exemplo, http://localhost ou https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Deve ser um número de porta válido (por exemplo, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Deve começar com / se não estiver vazio; sem barra final. Apenas letras, números, sublinhado, hífen, ponto e / são permitidos."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Precisa remover esses dados depois?"
 
@@ -13542,10 +13502,6 @@ msgstr "Por favor, introduza um endereço de e-mail válido"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Por favor, introduza um endereço de e-mail válido (por exemplo, name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Por favor, introduza um número válido"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24330,10 +24286,6 @@ msgid "Church default: %s"
 msgstr "Predefinição da igreja: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Início de sessão da liderança da igreja"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Classificações cujos membros podem iniciar sessão no Portal do Membro, como lista de identificadores de classificação separados por vírgulas."
 
@@ -24976,10 +24928,6 @@ msgstr "Não terminado"
 #: 
 msgid "Not moved"
 msgstr "Não transferido"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Não tem a certeza de qual é o e-mail que temos? Contacte a secretaria da igreja."
 
 #: 
 msgid "Not yet"

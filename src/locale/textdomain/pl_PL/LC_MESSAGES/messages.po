@@ -2227,14 +2227,6 @@ msgid "Deposit Comment"
 msgstr "Komentarz do wpłaty"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Walidacja podpisu pliku definicji podpisu nie powiodła się"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Walidacja podpisu jednego lub większej liczby plików nie powiodła się"
-
-#: 
 msgid "item"
 msgstr "element"
 
@@ -4746,10 +4738,6 @@ msgid "Estonian"
 msgstr "Estoński"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Błąd odczytu pliku podpisów"
-
-#: 
 msgid "Event not found"
 msgstr "Nie znaleziono wydarzenia."
 
@@ -5333,14 +5321,6 @@ msgstr "Wpisz poprawny URL (http/https)"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Wszystkie sygnatury plików są poprawne."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Plik sygnatur istnieje, ale brak do niego uprawnień odczytu."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Brak pliku sygnatur w %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12958,10 +12938,6 @@ msgid "Deposit ID"
 msgstr "ID wpłaty"
 
 #: 
-msgid "Deposit Value"
-msgstr "Wartość ofiary"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Wpłata zapisana pomyślnie"
 
@@ -13378,22 +13354,6 @@ msgid "Move Members to Group"
 msgstr "Przenieś członków do grupy"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Musi być poprawnym URL (http/https)"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Musi być poprawnym adresem URL"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Musi być poprawnym numerem portu"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Musi zaczynać się od / jeśli nie jest puste; bez końcowego ukośnika. Dozwolone są tylko litery, cyfry, podkreślenie, myślnik, kropka i /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Chcesz usunąć te dane później?"
 
@@ -13544,10 +13504,6 @@ msgstr "Wpisz poprawny e-mail"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Wpisz poprawny e-mail (np. nazwa@domena.pl)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Wpisz poprawną liczbę"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24350,10 +24306,6 @@ msgid "Church default: %s"
 msgstr "Domyślne dla kościoła: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Logowanie kierownictwa kościoła"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasyfikacje, których członkowie mogą logować się do Portalu wspólnoty, jako lista identyfikatorów klasyfikacji rozdzielonych przecinkami."
 
@@ -24996,10 +24948,6 @@ msgstr "Nie zakończono"
 #: 
 msgid "Not moved"
 msgstr "Nie przeniesiono"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nie wiesz, jaki adres e-mail mamy? Skontaktuj się z kancelarią kościoła."
 
 #: 
 msgid "Not yet"

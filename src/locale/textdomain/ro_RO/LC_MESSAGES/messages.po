@@ -2225,14 +2225,6 @@ msgid "Deposit Comment"
 msgstr "Comentarii depozit"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Semnarea fișierului cu definiția semnăturii a eșuat"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Unul sau mai multe fișiere au semnătura invalidă"
-
-#: 
 msgid "item"
 msgstr "element"
 
@@ -4752,10 +4744,6 @@ msgid "Estonian"
 msgstr "Estonă"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Eroare la decodarea fișierului de definire a semnăturii"
-
-#: 
 msgid "Event not found"
 msgstr "Evenimentul nu a fost gasit"
 
@@ -5337,14 +5325,6 @@ msgstr "Vă rugăm să introduceți un URL valid care începe cu http:// sau htt
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Toate semnăturile fișierelor de sistem corespund valorilor așteptate."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Fișierul de definire a semnăturii există, dar nu poate fi citit. Verificați permisiunile fișierului."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Fișierul de definire a semnăturii lipsește la %s. Rulați sarcina de împachetare sau implementați o lansare oficială pentru a regenera semnăturile."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12962,10 +12942,6 @@ msgid "Deposit ID"
 msgstr "Depozit ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Valoarea ofertei"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depozit salvat cu succes"
 
@@ -13382,22 +13358,6 @@ msgid "Move Members to Group"
 msgstr "Mută membrii în grup"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https:// (ex: http://localhost sau https://domeniu.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Trebuie să fie un număr de port valid (ex: 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Trebuie să eliminați aceste date mai târziu?"
 
@@ -13548,10 +13508,6 @@ msgstr "Vă rugăm să introduceți o adresă de e-mail validă"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Vă rugăm să introduceți o adresă de e-mail validă (ex: nume@exemplu.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vă rugăm să introduceți un număr valid"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24354,10 +24310,6 @@ msgid "Church default: %s"
 msgstr "Implicit pentru biserică: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Autentificare conducere a bisericii"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Clasificările ai căror membri se pot autentifica în Portalul membrilor, ca listă de ID-uri de clasificare separate prin virgulă."
 
@@ -25000,10 +24952,6 @@ msgstr "Neîncheiat"
 #: 
 msgid "Not moved"
 msgstr "Nemutat"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nu sunteți sigur ce e-mail avem? Contactați biroul bisericii."
 
 #: 
 msgid "Not yet"

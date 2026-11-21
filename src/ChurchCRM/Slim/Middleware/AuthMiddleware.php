@@ -225,6 +225,10 @@ class AuthMiddleware implements MiddlewareInterface
         $redirectUrl = $this->isPortalPath($request)
             ? AuthenticationManager::getPortalLoginURL()
             : AuthenticationManager::getStaffSignInURL();
+        $username = $request->getQueryParams()['username'] ?? '';
+        if (!$this->isPortalPath($request) && is_string($username) && $username !== '') {
+            $redirectUrl .= '?username=' . rawurlencode($username);
+        }
 
         return (new Response())->withStatus(302)->withHeader('Location', $redirectUrl);
     }

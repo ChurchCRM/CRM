@@ -2226,14 +2226,6 @@ msgid "Deposit Comment"
 msgstr "Комментарий к депозиту"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Ошибка проверки подписи файла определения подписи"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Один или несколько файлов не прошли проверку подписи"
-
-#: 
 msgid "item"
 msgstr "Пункт"
 
@@ -4745,10 +4737,6 @@ msgid "Estonian"
 msgstr "Эстонский"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Ошибка декодирования файла определений подписей"
-
-#: 
 msgid "Event not found"
 msgstr "Событие не найдено"
 
@@ -5333,14 +5321,6 @@ msgstr "Введите корректный URL (напр. https://)"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Все подписи системных файлов верны."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Файл подписей существует, но недоступен для чтения."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Файл подписей отсутствует по пути %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12966,10 +12946,6 @@ msgid "Deposit ID"
 msgstr "ID депозита"
 
 #: 
-msgid "Deposit Value"
-msgstr "Сумма депозита"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Депозит сохранен"
 
@@ -13386,22 +13362,6 @@ msgid "Move Members to Group"
 msgstr "Переместить участников в группу"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Должен быть валидный URL, начинающийся с http:// или https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Должен быть валидный URL (например, https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Должен быть валидный номер порта (например, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Должно начинаться с / если не пусто; без завершающей косой черты. Разрешены только буквы, цифры, подчёркивание, дефис, точка и /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Нужно будет удалить эти данные позже?"
 
@@ -13552,10 +13512,6 @@ msgstr "Введите корректный адрес эл. почты"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Введите корректный адрес эл. почты (напр., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Введите корректное число"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24376,10 +24332,6 @@ msgid "Church default: %s"
 msgstr "Значение церкви по умолчанию: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Вход руководителя церкви"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Классификации, члены которых могут входить в Портал члена, в виде списка идентификаторов классификаций через запятую."
 
@@ -25022,10 +24974,6 @@ msgstr "Не завершено"
 #: 
 msgid "Not moved"
 msgstr "Не перенесено"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Не уверены, какой адрес у нас есть? Обратитесь в церковную канцелярию."
 
 #: 
 msgid "Not yet"

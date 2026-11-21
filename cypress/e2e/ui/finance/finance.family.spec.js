@@ -7,8 +7,8 @@ describe("Finance Family", () => {
 
     it("View a Family with Giving History section", () => {
         // Intercept the pledge API so we can wait for the initial load
-        cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeLoad");
-        cy.visit("people/family/1");
+        cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeLoad");
+        cy.visit("people/family/1#giving-history");
         // Page title is family name, subtitle has "Family Profile"
         cy.contains("Campbell");
         cy.contains("Family Profile");
@@ -28,7 +28,7 @@ describe("Finance Family", () => {
         cy.contains("Music Ministry").should("not.exist");
 
         // Click "All Time" pill to reveal all records (server-side reload)
-        cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeAllTime");
+        cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeAllTime");
         cy.get(".pledge-fy-pill[data-fy='0']").click();
         cy.wait("@pledgeAllTime");
         cy.get(".pledge-fy-pill.active").should("contain", "All Time");
@@ -43,8 +43,8 @@ describe("Finance Family", () => {
     });
 
     it("View another Family with finance data", () => {
-        cy.intercept("GET", "**/api/payments/family/20/list*").as("pledgeLoad");
-        cy.visit("people/family/20");
+        cy.intercept("GET", "**/api/payments/family/20/list*fyid=*").as("pledgeLoad");
+        cy.visit("people/family/20#giving-history");
         cy.contains("Black");
         cy.contains("Family Profile");
 
@@ -57,7 +57,7 @@ describe("Finance Family", () => {
         cy.contains("New Building Fund").should("not.exist");
 
         // Click "All Time" to reveal all records (server-side reload)
-        cy.intercept("GET", "**/api/payments/family/20/list*").as("pledgeAllTime");
+        cy.intercept("GET", "**/api/payments/family/20/list*fyid=*").as("pledgeAllTime");
         cy.get(".pledge-fy-pill[data-fy='0']").click();
         cy.wait("@pledgeAllTime");
         cy.get(".pledge-fy-pill.active").should("contain", "All Time");

@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Maoni ya Amana"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Saini ya faili ya ufafanuzi wa saini imeshindwa kuthibitishwa"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Faili moja au zaidi imeshindwa kuthibitishwa kwa saini"
-
-#: 
 msgid "item"
 msgstr "kipengee"
 
@@ -4691,10 +4683,6 @@ msgid "Estonian"
 msgstr "Kiestonia"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Hitilafu katika kusimbua faili ya ufafanuzi wa sahihi"
-
-#: 
 msgid "Event not found"
 msgstr "Tukio halijapatikana"
 
@@ -5274,14 +5262,6 @@ msgstr "Tafadhali ingiza URL sahihi inayoanza na http:// au https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Sahihi zote za faili za mfumo zinalingana na thamani zinazotarajiwa."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Faili la ufafanuzi wa sahihi lipo lakini haliwezi kusomwa. Kagua ruhusa za faili."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Faili la ufafanuzi wa sahihi linakosekana katika %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12891,10 +12871,6 @@ msgid "Deposit ID"
 msgstr "Kitambulisho cha amana"
 
 #: 
-msgid "Deposit Value"
-msgstr "Thamani ya Amana"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Amana imehifadhiwa kwa mafanikio"
 
@@ -13311,22 +13287,6 @@ msgid "Move Members to Group"
 msgstr "Hamisha Washiriki kwenye Kikundi"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Lazima iwe URL sahihi inayoanza na http:// au https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Lazima iwe URL sahihi (mfano: https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Lazima iwe namba sahihi ya mlango (port)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Lazima ianze na / ikiwa si tupu; hakuna mkwaju wa mwisho. Herufi, nambari, mstari wa chini, dashi, nukta na / pekee zinaruhusiwa."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Unahitaji kuondoa data hizi baadaye?"
 
@@ -13477,10 +13437,6 @@ msgstr "Tafadhali ingiza anwani sahihi ya barua pepe"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Tafadhali ingiza barua pepe sahihi (mfano: jina@mfano.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Tafadhali ingiza namba sahihi"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24265,10 +24221,6 @@ msgid "Church default: %s"
 msgstr "Chaguo-msingi la kanisa: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Kuingia kwa kiongozi wa kanisa"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Uainishaji ambao wanachama wake wanaweza kuingia kwenye Lango la Wanachama, kama orodha ya vitambulisho vya uainishaji vilivyotenganishwa kwa koma."
 
@@ -24911,10 +24863,6 @@ msgstr "Haijaisha"
 #: 
 msgid "Not moved"
 msgstr "Haijahamishwa"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Huna uhakika barua pepe ipi tunayo? Wasiliana na ofisi ya kanisa."
 
 #: 
 msgid "Not yet"

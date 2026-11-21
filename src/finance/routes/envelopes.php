@@ -116,7 +116,7 @@ function financeEnvelopeManager(Request $request, Response $response): Response
             [gettext('Envelope Manager')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
-            ['label' => gettext('Envelope Numbers'), 'url' => '/finance/reports/envelope-numbers', 'icon' => 'fa-print', 'adminOnly' => false],
+            ['label' => gettext('Envelope Numbers'), 'url' => '/finance/reports/envelope-numbers?' . http_build_query(['classification' => $classificationId, 'sortBy' => $sortBy]), 'icon' => 'fa-print', 'adminOnly' => false],
         ]),
         'sGlobalMessage' => $sGlobalMessage,
         'sGlobalMessageClass' => $sGlobalMessageClass,

@@ -20,10 +20,18 @@ class BackupJob extends JobBase
     private ?\SplFileInfo $BackupFile = null;
     public string $BackupDownloadFileName;
 
+    private string $tempDir;
+
     public function __construct(string $BaseName, string $BackupType)
     {
         $this->BackupType = $BackupType;
-        $this->BackupFileBaseName = sys_get_temp_dir() . '/' . $BaseName;
+        // Private per-job temp directory (0700) with random name
+        $this->tempDir = sys_get_temp_dir() . '/churchcrm_backup_' . bin2hex(random_bytes(8));
+        if (!mkdir($this->tempDir, 0700, true) && !is_dir($this->tempDir)) {
+            throw new Exception('Failed to create private temp directory for backup');
+        }
+        $this->BackupFileBaseName = $this->tempDir . '/' . $BaseName;
+        $_SESSION['backup_job_temp_dir'] = $this->tempDir;
         LoggerUtils::getAppLogger()->debug(
             "Backup job created; ready to execute: Type: '" .
                 $this->BackupType .
@@ -134,7 +142,7 @@ class BackupJob extends JobBase
         $phar = new PharData($this->BackupFile->getPathname());
         LoggerUtils::getAppLogger()->debug('Archive opened at: ' . $this->BackupFile->getPathname());
 
-        $SqlFile = new \SplFileInfo(sys_get_temp_dir() . '/ChurchCRM-Database.sql');
+        $SqlFile = new \SplFileInfo($this->tempDir . '/ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
         $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
         LoggerUtils::getAppLogger()->debug('Database added to archive');
@@ -169,7 +177,7 @@ class BackupJob extends JobBase
 
     private function createGZSql(): void
     {
-        $SqlFile = new \SplFileInfo(sys_get_temp_dir() . '/ChurchCRM-Database.sql');
+        $SqlFile = new \SplFileInfo($this->tempDir . '/ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.sql.gz');
         $gzf = gzopen($this->BackupFile->getPathname(), 'w6');
@@ -198,6 +206,10 @@ class BackupJob extends JobBase
             LoggerUtils::getAppLogger()->warning('Backup task took more than 80% of max_execution_time (' . ini_get('max_execution_time') . ').  Consider increasing this time to avoid a failure');
         }
         $this->BackupDownloadFileName = $this->BackupFile->getFilename();
+        if (!isset($_SESSION['backup_job_files']) || !is_array($_SESSION['backup_job_files'])) {
+            $_SESSION['backup_job_files'] = [];
+        }
+        $_SESSION['backup_job_files'][] = $this->BackupDownloadFileName;
 
         return true;
     }

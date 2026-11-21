@@ -2167,14 +2167,6 @@ msgid "Deposit Comment"
 msgstr "የተቀማጭ አስተያየት"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "የፊርማ ፍቺ ፋይል ፊርማ ማረጋገጥ አልተሳካም"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም"
-
-#: 
 msgid "item"
 msgstr "ንጥል "
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "ኢስቶኒያን"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "የፊርማ ፊቺ ፋይልን የመግለጽ ስህተት "
-
-#: 
 msgid "Event not found"
 msgstr "ክስተት አልተገኘም"
 
@@ -5283,14 +5271,6 @@ msgstr "እባክዎን በ http:// ወይም https:// የሚጀምር ትክክ
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "ሁሉም የሥርዓት ፋይል ፊርማዎች ከሚጠበቁት እሴቶች ጋር ይዛመዳሉ።"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "የፊርማ መግለጫ ፋይሉ አለ ነገር ግን ሊነበብ አይችልም። የፋይል ፈቃዶችን ያረጋግጡ።"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "የፊርማ መግለጫ ፋይሉ በ %s ላይ ይጎድላል። ፊርማዎችን እንደገና ለማመንጨት የማሸጊያ ስራውን ያሂዱ ወይም ኦፊሴላዊ ልቀት ይጫኑ።"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12900,10 +12880,6 @@ msgid "Deposit ID"
 msgstr "የተቀማጭ መለያ (ID)"
 
 #: 
-msgid "Deposit Value"
-msgstr "ተቀማጭ ገንዘብ ዋጋ"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ተቀማጭ በተሳካ ሁኔታ ተቀምጧል"
 
@@ -13321,22 +13297,6 @@ msgid "Move Members to Group"
 msgstr "አባላት ወደ ቡድን ዘዋወር"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "በ http:// ወይም https:// የሚጀምር ትክክለኛ URL መሆን አለበት"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "በ http:// ወይም https:// የሚጀምር ትክክለኛ URL መሆን አለበት (ለምሳሌ http://localhost ወይም https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "ትክክለኛ የፖርት ቁጥር መሆን አለበት (ለምሳሌ 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "ባዶ ካልሆነ በ / መጀመር አለበት፤ የመጨረሻ ስላሽ የለም። ፊደሎች፣ ቁጥሮች፣ የታችኛው መስመር፣ ሰረዝ፣ ነጥብ እና / ብቻ ይፈቀዳሉ።"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "ይህንን መረጃ ቆይተው ማስወገድ ይፈልጋሉ?"
 
@@ -13487,10 +13447,6 @@ msgstr "እባክዎን ትክክለኛ የኢሜይል አድራሻ ያስገ�
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "እባክዎን ትክክለኛ የኢሜይል አድራሻ ያስገቡ (ለምሳሌ name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "እባክዎን ትክክለኛ ቁጥር ያስገቡ"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24275,10 +24231,6 @@ msgid "Church default: %s"
 msgstr "የቤተ ክርስቲያን ነባሪ፦ %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "የቤተ ክርስቲያን መሪ መግቢያ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "አባሎቻቸው ወደ የአባላት መግቢያ ሊገቡ የሚችሉ ምደባዎች፣ በነጠላ ሰረዝ የተለዩ የምደባ መታወቂያዎች።"
 
@@ -24921,10 +24873,6 @@ msgstr "አላበቃም"
 #: 
 msgid "Not moved"
 msgstr "አልተዘዋወረም"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "የትኛው ኢሜይል እንዳለን እርግጠኛ አይደሉም? የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
 
 #: 
 msgid "Not yet"

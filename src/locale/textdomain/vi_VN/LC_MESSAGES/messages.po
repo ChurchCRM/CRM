@@ -2179,14 +2179,6 @@ msgid "Deposit Comment"
 msgstr "Gửi bình luận"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
-
-#: 
 msgid "item"
 msgstr "mục"
 
@@ -4705,10 +4697,6 @@ msgid "Estonian"
 msgstr "Người Estonia"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Lỗi giải mã tệp định nghĩa chữ ký"
-
-#: 
 msgid "Event not found"
 msgstr "Không tìm thấy sự kiện"
 
@@ -5285,14 +5273,6 @@ msgstr "Vui lòng nhập URL hợp lệ bắt đầu bằng http:// hoặc https
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Tất cả chữ ký tệp hệ thống đều khớp với giá trị dự kiến."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Tệp định nghĩa chữ ký tồn tại nhưng không thể đọc. Kiểm tra quyền của tệp."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Thiếu tệp định nghĩa chữ ký tại %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12894,10 +12874,6 @@ msgid "Deposit ID"
 msgstr "ID tiền gửi"
 
 #: 
-msgid "Deposit Value"
-msgstr "Giá trị đợt thu hiến"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Đã lưu khoản đóng góp thành công"
 
@@ -13314,22 +13290,6 @@ msgid "Move Members to Group"
 msgstr "Di chuyen thanh vien den nhom"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Phải là URL hợp lệ bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Phải là URL hợp lệ (ví dụ: http://localhost hoặc https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Phải là số cổng hợp lệ (ví dụ: 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Phải bắt đầu bằng / nếu không trống; không có dấu gạch chéo ở cuối. Chỉ cho phép chữ cái, số, gạch dưới, gạch ngang, dấu chấm và /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Cần xóa dữ liệu này sau?"
 
@@ -13480,10 +13440,6 @@ msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vui lòng nhập một số hợp lệ"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24250,10 +24206,6 @@ msgid "Church default: %s"
 msgstr "Mặc định của nhà thờ: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Đăng nhập của lãnh đạo nhà thờ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Các phân loại có thành viên được đăng nhập Cổng hội viên, viết thành danh sách mã phân loại cách nhau bằng dấu phẩy."
 
@@ -24896,10 +24848,6 @@ msgstr "Chưa kết thúc"
 #: 
 msgid "Not moved"
 msgstr "Chưa chuyển"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Không chắc chúng tôi đang có email nào? Hãy liên hệ văn phòng nhà thờ."
 
 #: 
 msgid "Not yet"

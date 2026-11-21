@@ -22,51 +22,48 @@ const ADMIN_PERSON_ID = 1;
 const ADMIN_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'andrew.adams.jpg');
 
 /**
- * These two tests are real, recorded workflows — not plumbing — because
- * they're the videos this pipeline exists to produce first: how setup and
- * church info work, and how to load the sample data. They run once (the
- * "setup" project in playwright.config.ts), before the desktop/tablet/mobile
- * projects, which declare a dependency on this project and reuse the
- * storage state saved at the end of the second test.
+ * These tests are real, recorded workflows — not plumbing — because they're
+ * the videos this pipeline exists to produce first: installing ChurchCRM,
+ * the first sign-in with church info, and loading the sample data. They run
+ * once (the "setup" project in playwright.config.ts), in order, before the
+ * desktop/tablet/mobile projects, which declare a dependency on this project
+ * and reuse the storage state saved at the end of the last test.
  */
-setup('setup-church-info', async ({ page }, testInfo) => {
+setup('install-churchcrm', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/setup/);
   await expect(page.locator('.setup-logo')).toBeVisible();
-  // Let the viewer actually see the welcome screen before the system-check
-  // busy-state takes over — otherwise the video jumps straight into
-  // "checking system requirements" with no chance to read it.
-  await humanPause(page, 3000);
+  await humanPause(page, 1500);
 
-  const prereqNext = page.locator('#prerequisites-next-btn');
-  await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
-  // Stays disabled until the page's own async system-check AJAX calls
-  // finish ("Checking system requirements...") — visible isn't enough, and
-  // that check can take well past the 15s action timeout under load.
-  // System checks may take 2+ minutes on slower systems, matching the
-  // database setup migration timeout.
-  await expect(prereqNext).toBeEnabled({ timeout: 120000 });
+  // The server check can take 2+ minutes on slower systems.
+  await expect(page.locator('#status-banner')).not.toHaveClass(/status-checking/, { timeout: 120000 });
   await humanPause(page, 600);
-  await humanClick(prereqNext);
-
-  await expect(page.locator('#step-database')).toHaveClass(/active/);
-  await humanPause(page, 400);
 
   await humanType(page.locator('#DB_SERVER_NAME'), DB.host);
   await humanType(page.locator('#DB_SERVER_PORT'), String(DB.port));
   await humanType(page.locator('#DB_NAME'), DB.name);
   await humanType(page.locator('#DB_USER'), DB.user);
   await humanType(page.locator('#DB_PASSWORD'), DB.password);
-  await humanType(page.locator('#DB_PASSWORD_CONFIRM'), DB.password);
 
-  await humanPause(page, 500);
+  await humanPause(page, 1200);
   await humanClick(page.locator('#submit-setup'));
 
   await page.locator('#setup-success').waitFor({ state: 'visible', timeout: 120000 });
   await humanPause(page, 800);
   await humanClick(page.locator('#continue-to-login'));
-  await page.waitForURL(/\/admin\/$/, { timeout: 30000 });
+  await expect(page.locator('input[name=User]')).toBeVisible({ timeout: 30000 });
+  await settle(page, 1500);
 
+  await captureScreen(page, testInfo, {
+    name: 'install-churchcrm',
+    title: 'Install ChurchCRM',
+    category: 'Setup',
+    purpose: 'Show installing ChurchCRM on one page, from the setup screen to the sign-in screen',
+    usedIn: ['website'],
+  });
+});
+
+setup('setup-church-info', async ({ page }, testInfo) => {
   // First admin login — forced password change.
   await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
@@ -114,7 +111,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
     name: 'setup-church-info',
     title: 'Setup - Church Info',
     category: 'Setup',
-    purpose: 'Show first-run setup: prerequisites, database configuration, and church info',
+    purpose: 'Show the first sign-in: the forced password change and the church info form',
     usedIn: ['website'],
   });
 });

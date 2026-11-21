@@ -1,51 +1,98 @@
 /// <reference types="cypress" />
 
-describe("API Private Admin Birthday Calendar", () => {
-    it("Birthday calendar individual event retrieval works", () => {
-        // Search for any person in the system to test birthday calendar functionality
-        cy.makePrivateAdminAPICall(
-            "GET",
-            '/api/search/demo', // Look for demo users that should exist
-            null,
-            200
-        ).then((searchResponse) => {
-            const results = searchResponse.body;
-            
-            if (results && results.length > 0) {
-                const personId = results[0].children[0].id;
-                
-                // Test getting individual birthday event by person ID
-                // This verifies that the birthday calendar filtering logic works
-                cy.makePrivateAdminAPICall(
-                    "GET",
-                    `/api/systemcalendars/0/events/${personId}`,
-                    null,
-                    200
-                ).then((eventResponse) => {
-                    // The response should be valid (even if empty for persons without valid birthdays)
-                    // This confirms the API endpoint works and the filtering logic is applied
-                    expect(eventResponse.body).to.exist;
-                    
-                    // If the person has a valid birthday (month > 0 and day > 0), 
-                    // there should be birthday events
-                    const events = eventResponse.body;
-                    if (events.length > 0) {
-                        // Verify the event structure is correct
-                        expect(events[0]).to.have.property('title');
-                        expect(events[0]).to.have.property('start');
-                        cy.log(`✅ Found ${events.length} birthday event(s) for person ${personId}`);
-                        cy.log(`✅ Birthday calendar filtering logic is working correctly`);
-                    } else {
-                        cy.log(`✅ Person ${personId} has no birthday events (correctly filtered due to invalid birth date)`);
-                    }
-                    
-                    // This test validates that PR #7429's birthday calendar filtering improvements are working
-                    cy.log('✅ Birthday calendar API endpoint responding correctly');
-                });
-            } else {
-                // If no demo users found, the test still passes as it shows the API is working
-                cy.log('✅ No demo users found, but birthday calendar API is accessible');
-            }
+describe("API Private Admin Annual Calendar Activity Filters", () => {
+    let familyId;
+    const personIds = [];
+
+    const createFromEditor = (url, fields, pattern) => {
+        cy.freshAdminFormLogin();
+        return cy.request(url).then(({ body }) => {
+            const form = Cypress.$(new DOMParser().parseFromString(body, "text/html")).find("form");
+            const values = {};
+            form.serializeArray().forEach(({ name, value }) => {
+                values[name] = value;
+            });
+            return cy.request({ method: "POST", url, form: true, body: { ...values, ...fields }, followRedirect: false });
+        }).then(({ status, headers }) => {
+            expect(status).to.eq(302);
+            expect(headers.location).to.match(pattern);
+            return Number(pattern.exec(headers.location)[1]);
         });
+    };
+
+    const expectCalendarEvent = (calendarId, entityId, visible) => {
+        const year = new Date().getFullYear();
+        ["events", "fullcalendar"].forEach((feed) => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/systemcalendars/${calendarId}/${feed}?start=${year}-01-01&end=${year}-12-31`,
+                null,
+                200,
+            ).then(({ body }) => {
+                const events = body.filter((event) => Number(event.Id ?? event.id) === entityId);
+                expect(events, `${feed} calendar ${calendarId} event for ${entityId}`).to.have.length(visible ? 1 : 0);
+                if (visible) {
+                    expect(events[0].Start ?? events[0].start).to.include(`${year}-07-15`);
+                }
+            });
+        });
+        cy.makePrivateAdminAPICall("GET", `/api/systemcalendars/${calendarId}/events/${entityId}`, null, 200).then(({ body }) => {
+            expect(body, "individual annual event lookup").to.have.length(visible ? 2 : 0);
+        });
+    };
+
+    const expectBirthday = (personId, visible) => expectCalendarEvent(0, personId, visible);
+    const expectAnniversary = (visible) => expectCalendarEvent(1, familyId, visible);
+
+    before(() => {
+        createFromEditor("/FamilyEditor.php", { Name: "Birthday Calendar Test", WeddingDate: "2000-07-15", FamilySubmit: "" }, /\/people\/family\/(\d+)/)
+            .then((id) => { familyId = id; });
+        [true, false].forEach((inFamily) => {
+            cy.then(() => createFromEditor("/PersonEditor.php", {
+                FirstName: `Birthday${inFamily ? "Family" : "Standalone"}`,
+                LastName: "CalendarTest",
+                Gender: "1",
+                Classification: "1",
+                Family: inFamily ? familyId : "0",
+                FamilyRole: "1",
+                BirthMonth: "07",
+                BirthDay: "15",
+                BirthYear: "1990",
+                PersonSubmit: "",
+            }, /\/people\/view\/(\d+)/)).then((id) => {
+                personIds.push(id);
+            });
+        });
+    });
+
+    after(() => {
+        personIds.forEach((id) => {
+            cy.makePrivateAdminAPICall("DELETE", `/api/person/${id}`, null, 200);
+        });
+        if (familyId) {
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}`, null, 200);
+        }
+    });
+
+    it("hides birthdays and anniversaries in an inactive family and restores them when reactivated", () => {
+        const [memberId, standaloneId] = personIds;
+        expectBirthday(memberId, true);
+        expectAnniversary(true);
+        expectBirthday(standaloneId, true);
+        cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/activate/false`, null, 200);
+        expectBirthday(memberId, false);
+        expectAnniversary(false);
+        expectBirthday(standaloneId, true);
+        cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/activate/true`, null, 200);
+        expectBirthday(memberId, true);
+        expectAnniversary(true);
+    });
+
+    it("hides an inactive person's birthday and restores it when reactivated", () => {
+        const [, standaloneId] = personIds;
+        cy.makePrivateAdminAPICall("POST", `/api/person/${standaloneId}/activate/false`, null, 200);
+        expectBirthday(standaloneId, false);
+        cy.makePrivateAdminAPICall("POST", `/api/person/${standaloneId}/activate/true`, null, 200);
+        expectBirthday(standaloneId, true);
     });
 });
