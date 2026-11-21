@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Vaikimisi"
 
 #: 
-msgid "Exit"
-msgstr "Välju"
-
-#: 
 msgid "Add New"
 msgstr "Lisa uus"
 
@@ -1476,10 +1472,6 @@ msgstr "Värskenda atribuute"
 #: 
 msgid "Assign New Group"
 msgstr "Määra uus rühm"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Määrake uus vabatahtliku võimalus"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1595,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Taasta andmebaas"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Kinnitage saidi kustutamine"
-
-#: 
 msgid "Listing"
 msgstr "Nimekiri"
 
@@ -1685,14 +1673,6 @@ msgstr "Uus parool"
 #: 
 msgid "Confirm New Password"
 msgstr "Kinnita uus parool"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Vabatahtlike võimaluste muutija"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Vabatahtlike võimalusi pole veel lisatud"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6380,20 +6360,8 @@ msgid "Additional Information"
 msgstr "Täiendav teave"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Omista võimalused"
-
-#: 
 msgid "Choose a property..."
 msgstr "Valige vara..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Valige võimalused..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt ja isiklik teave"
 
 #: 
 msgid "Edited"
@@ -6402,14 +6370,6 @@ msgstr "Muudetud"
 #: 
 msgid "Newsletter"
 msgstr "Uudiskiri"
-
-#: 
-msgid "Personal"
-msgstr "Isiklik"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Valige võimalused"
 
 #: 
 msgid "Volunteer"
@@ -6596,10 +6556,6 @@ msgid "Confirm Property Deletion"
 msgstr "Kinnita vara kustutamine"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Kinnita vabatahtliku võimaluse kustutamine"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Kustutamise kinnitus"
 
@@ -6612,16 +6568,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Olemasolevad kohandatud inimese väljad"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Olemasolevad vabatahtliku võimalused"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Väli on edukalt kustutatud"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Sobimatu CSRF märk"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8387,10 +8335,6 @@ msgid "Create or edit property type categories"
 msgstr "Looge või muutke omaduste tüüpide kategooriaid"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Looge või muutke vabatahtlike positsioone"
-
-#: 
 msgid "Current person"
 msgstr "Praegune isik"
 
@@ -8839,10 +8783,6 @@ msgid "Manage user account details and permissions"
 msgstr "Hallake kasutajakonto üksikasju ja õigusi"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Hallake vabatahtlike võimalusi ja määrake liikmeid"
-
-#: 
 msgid "Map cart items"
 msgstr "Kuva valiku üksused kaardil"
 
@@ -8961,10 +8901,6 @@ msgstr "Tulemusi ei leitud"
 #: 
 msgid "No timeline events yet."
 msgstr "Ajajoonel pole veel sündmusi."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Vabatahtlike võimaluste määranguid pole veel."
 
 #: 
 msgid "Not ready yet?"
@@ -9469,10 +9405,6 @@ msgid "funds"
 msgstr "fondid"
 
 #: 
-msgid "opportunities"
-msgstr "võimalused"
-
-#: 
 msgid "or connect an external service"
 msgstr "või ühendage väline teenus"
 
@@ -9772,11 +9704,6 @@ msgstr "E-posti aadresside toomine ebaõnnestus"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Telefoninumbrite toomine ebaõnnestus"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Leia vabatahtlikud konkreetsele võimalusele"
 
 #. Context: query_qry
 #: 
@@ -12543,10 +12470,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Omaduse tüüpi ei saa kustutada: sellele viitab veel %d omadust. Määrake need omadused ümber või kustutage need esmalt."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Vabatahtliku töö võimalust ei saa kustutada: sellele on määratud %d inimest. Eemaldage esmalt määrangud."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klass peab olema üks järgmistest: p, f või g"
 
@@ -12557,10 +12480,6 @@ msgstr "Kopeeri veateade"
 #: 
 msgid "Could not load note."
 msgstr "Märkuse laadimine ebaõnnestus."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Kirjeldus ei tohi ületada 100 tähemärki"
 
 #: 
 msgid "Donation fund not found"
@@ -12583,10 +12502,6 @@ msgid "Failed to create property type"
 msgstr "Omaduse tüübi loomine ebaõnnestus"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Vabatahtliku töö võimaluse loomine ebaõnnestus"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Annetusfondi kustutamine ebaõnnestus"
 
@@ -12603,10 +12518,6 @@ msgid "Failed to delete property type"
 msgstr "Omaduse tüübi kustutamine ebaõnnestus"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Vabatahtliku töö võimaluse kustutamine ebaõnnestus"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Annetusfondi uuendamine ebaõnnestus"
 
@@ -12619,10 +12530,6 @@ msgid "Failed to update property type"
 msgstr "Omaduse tüübi uuendamine ebaõnnestus"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Vabatahtliku töö võimaluse uuendamine ebaõnnestus"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Heategevusüritust ei leitud"
 
@@ -12633,10 +12540,6 @@ msgstr "Installi ID"
 #: 
 msgid "Invalid class"
 msgstr "Vigane klass"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Nimi ei tohi ületada 30 tähemärki"
 
 #: 
 msgid "Note by %s deleted"
@@ -12659,16 +12562,8 @@ msgid "Read more"
 msgstr "Loe rohkem"
 
 #: 
-msgid "That name already exists."
-msgstr "See nimi on juba olemas."
-
-#: 
 msgid "Title is required"
 msgstr "Pealkiri on kohustuslik"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Vabatahtliku töö võimalust ei leitud"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15039,10 +14934,6 @@ msgid "Target family"
 msgstr "Sihtperekond"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Gruppi ei leitud. Palun proovige uuesti."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Valitud perekond ei eksisteeri enam. Palun värskendage lehte ja proovige uuesti."
 
@@ -15257,10 +15148,6 @@ msgstr "Toetatud vormingud"
 #: 
 msgid "System Configuration"
 msgstr "Süsteemi konfiguratsioon"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Sellele vabatahtliku võimalusele on määratud inimesi. Kustutamine tühistab määramise"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15491,10 +15378,6 @@ msgid "Add New Fund"
 msgstr "Lisa uus fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Lisa uus võimalus"
-
-#: 
 msgid "Add New Person"
 msgstr "Lisa uus isik"
 
@@ -15507,10 +15390,6 @@ msgid "Add New Role"
 msgstr "Lisa uus roll"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Lisa uus vabatahtliku võimalus"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Lisa pühapäevakooli klass"
 
@@ -15521,10 +15400,6 @@ msgstr "Kustuta see pere?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Vaata üle uued pered ja isikud, kes registreerusid avaliku registreerimisvormiga"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vabatahtliku võimaluse kustutamise kinnitus"
 
 #: 
 msgid "# Payments"
@@ -17191,14 +17066,6 @@ msgid "Find people who did not attend an event"
 msgstr "Leidke inimesed, kes ei osallenud sündmusel"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Leidke vabatahtlikud, kes vastavad kahele spetsiifilisele võimalusekoodile"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Esimene vabatahtliku võimalus"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Voltitud brošüür"
 
@@ -17275,10 +17142,6 @@ msgid "Run Report"
 msgstr "Käivita aruanne"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Teine vabatahtliku võimalus"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Näidatakse külgribal, sisselogimislehel ja e-kirjades. Pilt üles laadides asendatakse ChurchCRM kaubamärk kõikjal, kus see esineb."
 
@@ -17305,14 +17168,6 @@ msgstr "Kasutab vaikeseadistust ChurchCRM logot"
 #: 
 msgid "View Full Family Giving"
 msgstr "Vaata kõiki pere annetusi"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Vabatahtliku võimalus"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vabatahtlikud kahe võimaluse jaoks"
 
 #: 
 msgid "YTD"
@@ -18139,10 +17994,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Ühte sündmust komplekteeriv ajakava ei saa teisi sündmusi järgida; kustuta see ja lisa hoopis ajakava"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Üks nimekiri võimalustest, nagu „Lastehoid” või „Vastuvõtja”, mida hoitakse jaotises Inimesed → Haldus. Iga isik märgitakse võimalustega, millega ta on valmis aitama, tema kirje Vabatahtlik-sakil. See on kõik, mida salvestatakse: meeskondi, ajakavasid, kuupäevadele määramisi ega meeldetuletuskirju pole. Märgendeid kasutatakse aruannetes ja isiku kirjel."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Ruudukujuline pilt su näost sobib kõige paremini."
 
@@ -18449,18 +18300,6 @@ msgstr "Taustatööd käisid"
 #: 
 msgid "Birthday greeting"
 msgstr "Sünnipäevatervitus"
-
-#: 
-msgid "Both"
-msgstr "Mõlemad"
-
-#: 
-msgid "Both (transition)"
-msgstr "Mõlemad (üleminek)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Mõlemad – V1 ja V2 kõrvuti (üleminek)"
 
 #: 
 msgid "Calendar address"
@@ -21547,22 +21386,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Kasutajal peab olema Lisa sündmus -õigus või ta peab koordineerima vabatahtlike valdkonda, kuhu see kalender kuulub"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Vabatahtlike võimalused (vana)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – vanad Vabatahtlike võimalused"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Valdkonnad"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Vabatahtlike haldus"
-
-#: 
 msgid "Valid"
 msgstr "Kehtiv"
 
@@ -21581,14 +21404,6 @@ msgstr "Vaata sündmust"
 #: 
 msgid "View this email"
 msgstr "Vaata seda e-kirja"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vabatahtlik (vana)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Vabatahtlike haldus V2 ei ole lubatud"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21695,10 +21510,6 @@ msgid "What the check found"
 msgstr "Mida kontroll leidis"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Millised on vabatahtlike kogemused"
-
-#: 
 msgid "What you want to say"
 msgstr "Mida tahad öelda"
 
@@ -21729,10 +21540,6 @@ msgstr "Kust kuupäevad tulevad"
 #: 
 msgid "Where we reach you"
 msgstr "Kust sind kätte saame"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Milline Vabatahtlike halduse kogemus on aktiivne. V1 on vana Vabatahtlike võimaluste funktsioon; V2 on uus ajastamise ja määramise töövoog. „Mõlemad” näitab neid ülemineku ajal kõrvuti."
 
 #: 
 msgid "Which events"
@@ -22141,10 +21948,6 @@ msgstr "Teil puudub luba selle ürituse rühma muutmiseks"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Ainult vabatahtliku juht saab teenistuse koordinaatorit muuta"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 valik peatab V2 e-kirja; kõik järjekorras olevad saadetakse, kui V2 on jälleen sisse lülitatud, kui vaid üritus pole lõppenud."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22989,10 +22792,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Täitmata ülesande teate etteteatamisaeg (tunnid)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Vabatahtlike haldus"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Vabatahtlike teenistused, meeskonnad, ajakavad ja määramised"
 
@@ -23003,14 +22802,6 @@ msgstr "Vabatahtlike ülesanded, mis tuleb täita lähiajal"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vabatahtlikke on veel vaja nende eelseisvate esinemiste jaoks: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Mida need tähendavad?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Millist vabatahtliku kogemust see kogudus kasutab"
 
 #: 
 msgid "You are on the schedule"
@@ -26381,248 +26172,8 @@ msgid "Review Family Information"
 msgstr "Vaata pere andmed üle"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Valdkond nimega „%s“ on juba olemas. Vali see loendist või vali muu nimi."
-
-#: 
-msgid "A new ministry"
-msgstr "Uus valdkond"
-
-#: 
-msgid "A position"
-msgstr "Ülesanne"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Kas lisada {{total}} vabatahtlikku varem teisendatud ülesannetele?"
-
-#: 
-msgid "Already converted"
-msgstr "Juba teisendatud"
-
-#: 
-msgid "An existing ministry"
-msgstr "Olemasolev valdkond"
-
-#: 
-msgid "Becomes"
-msgstr "Muutub"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM-il on kaks viisi vabatahtlike haldamiseks. Korraga peaks kasutusel olema ainult üks; säte „Vabatahtlike kogemus“ määrab, kumba see kogudus näeb. Vahetamine peidab või kuvab lehti ja menüükirjeid ega kustuta kunagi andmeid. V1 ja Mõlemad on saadaval ainult seni, kuni vabatahtlike võimalused on kasutusel: kui kõik võimalused on teisendatud ja kogudus kasutab V2-te, kaovad need loendist."
-
-#: 
-msgid "Convert"
-msgstr "Teisenda"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Teisenda vabatahtlike võimalused"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Kas teisendada nüüd {{total}} võimalust? V1 andmed jäävad muutmata, kuni vabatahtlike võimalused kasutuselt eemaldatakse."
-
-#: 
-msgid "Converted"
-msgstr "Teisendatud"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Teisendatud: {{positions}} ülesannet ja {{ministries}} valdkonda, {{qualifications}} vabatahtlikku kvalifitseeritud."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Igast võimalusest saab ülesanne ühe valdkonna esimeses meeskonnas ja kõik sellega seotud inimesed saavad selle ülesande jaoks kvalifikatsiooni. Ise registreerumine on nende ülesannete puhul algul välja lülitatud."
-
-#: 
-msgid "Everything is converted."
-msgstr "Kõik on teisendatud."
-
-#: 
-msgid "Existing ministry"
-msgstr "Olemasolev valdkond"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Anna uuele valdkonnale kuni 100 märgi pikkune nimi."
-
-#: 
-msgid "Its own ministry"
-msgstr "Oma valdkond"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Seotud pärast seda: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Lingid, mida ei saa teisendada"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Uued omaette valdkonnad"
-
-#: 
-msgid "New ministry name"
-msgstr "Uue valdkonna nimi"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "E-kirja ei saadeta ja vabatahtlike võimalused jäävad muutmata, kuni need kasutuselt eemaldatakse."
-
-#: 
-msgid "No name"
-msgstr "Nimi puudub"
-
-#: 
-msgid "Not converted"
-msgstr "Teisendamata"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Ava funktsioonide lülitid"
-
-#: 
-msgid "Open Ministries"
-msgstr "Ava valdkonnad"
-
-#: 
-msgid "Opportunities"
-msgstr "Võimalused"
-
-#: 
-msgid "Opportunity"
-msgstr "Võimalus"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Võimalus nr %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Teisendatud vabatahtlike võimalustega pärast teisendamist seotud inimesed: %d. Lisa nad nende ülesannetele enne, kui vabatahtlike võimalused 2027. aasta alguses kasutuselt eemaldatakse."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Vaata esmalt teisenduse eelvaadet ja saada selle tagastatud versioon."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Ümber nimetatud, et nimed oleksid unikaalsed"
-
-#: 
-msgid "Review the conversion"
-msgstr "Vaata teisendus üle"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Saada teisenduse valik JSON-objektina."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Saada valdkondadeks muutuvad võimalused ID-de loendina."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Seda valdkonda pole olemas."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM-i versioon, milles administraator sulges vabatahtlike võimaluste kasutuselt eemaldamise teate."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Vabatahtlike võimalused on pärast eelvaadet muutunud. Kontrolli eelvaadet uuesti ja seejärel teisenda."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Kinnitust ei õnnestunud avada. Laadi leht uuesti ja proovi uuesti."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Teisenduse eelvaadet ei õnnestunud kuvada."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Teisendamine ebaõnnestus. Midagi ei muudetud."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Valdkonnal „%s“ pole meeskonda, kuhu ülesanded paigutada."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Serveriga ei saadud ühendust. Laadi leht uuesti, et näha, kas teisendamine toimus."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Teisendatavaid vabatahtlike võimalusi pole."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Vabatahtlike haldus lülitub režiimile Mõlemad, et uued valdkonnad oleksid nähtavad vabatahtlike võimaluste kõrval."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Vabatahtlike võimalused teisendatud"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt 2027. aasta alguses. Teisenda need valdkondadeks, et säiliks teave, kes mida vabatahtlikult teeb."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt 2027. aasta alguses. Teisenda nüüd oma %1$d võimalust ja %2$d vabatahtlikku valdkondadeks. Saad tulemust enne muudatusi eelvaates vaadata."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Kvalifitseeritud vabatahtlikud"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Teisendatud ülesannetele lisatavad vabatahtlikud"
-
-#: 
-msgid "What it becomes"
-msgstr "Milleks see muutub"
-
-#: 
-msgid "What will happen"
-msgstr "Mis juhtub"
-
-#: 
-msgid "Where they go"
-msgstr "Kuhu nad lähevad"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Millised varasemad vabatahtlike võimalused on teisendatud ja milliseks ülesandeks igaüks muutus."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Millist vabatahtlike kogemust see kogudus kasutab. Vabatahtlike võimalused (V1) eemaldatakse kasutuselt 2027. aasta alguses."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Sinu vabatahtlike võimalused on teisendatud valdkondadeks. Lülita vabatahtlike haldus V2-le enne, kui vabatahtlike võimalused 2027. aasta alguses kasutuselt eemaldatakse."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "uueks valdkonnaks, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "valdkonda {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "pole enam ChurchCRM-is"
 
 #: 
 msgid "Collapse sidebar"
@@ -26799,10 +26350,6 @@ msgstr[0] "%d vaikeväärtus jäeti muul põhjusel vahele (toimumiskord on läbi
 msgstr[1] "%d vaikeväärtust jäeti muul põhjusel vahele (toimumiskord on läbi, tühistatud või täis)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Üleminekuseade. Vanad Vabatahtlike võimaluste lehed ja uued Valdkondade lehed on mõlemad saadaval ning isiku kirjel on näha mõlemad Vabatahtlik-saki selgelt tähistatuna. Kasuta seda, kui viid kogudust üle V1-lt V2-le, ja lülitu siis ainult V2-le."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Määramine tühistatud"
 
@@ -26849,10 +26396,6 @@ msgstr "See kuupäev tühistati. Teilt ei ole rohkem midagi vaja."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "See toimumiskord on tühistatud"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vabatahtlikutöö korraldatud nii, nagu kogudus seda peab. Igal valdkonnal on meeskonnad ja ülesanded; inimesed kvalifitseeritakse ülesannetele ja kuuluvad valdkonna kogumirühma; ajakavad järgivad kalendri sündmusi ja loovad kuupäevastatud toimumiskorrad koos komplekteerimisnõuetega; koordinaatorid määravad inimesi, kes nõustuvad, keelduvad või pakuvad asendajat; meeldetuletused ja hoiatused saadetakse e-kirjaga. Administraatorid ja kasutajad, kellel on Halda valdkondi -õigus, näevad kõiki valdkondi ning võivad neid luua, deaktiveerida ja kustutada. Valdkonna koordinaatorile antakse selle asemel õigus Halda minu valdkondi: külgriba pealkirja Valdkonnad all on siis näha ainult valdkonnad, mida ta koordineerib. Meeskonnajuht juhib oma meeskonda Liikmeportaalist. Liikmed kasutavad Liikmeportaali oma ajakava nägemiseks, vastamiseks, registreerumiseks ja abi pakkumiseks."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27551,10 +27094,6 @@ msgstr "Sündmuste vaatamine"
 #: 
 msgid "View people and families"
 msgstr "Inimeste ja perekondade vaatamine"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Vabatahtlike haldus on selle koguduse jaoks välja lülitatud"
 
 #: 
 msgid "Weak"

@@ -28,7 +28,6 @@
  * under docker-admin.config.ts.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 
 const PREFIX = "UIDEFTEAM";
@@ -56,10 +55,6 @@ function freshAdminLogin() {
     cy.location("pathname").should("not.match", /\/admin\/$/);
 }
 
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
-}
-
 function cleanupFixtures() {
     cy.makePrivateAdminAPICall("GET", MINISTRIES_URL, null, 200).then((resp) => {
         for (const ministry of resp.body.ministries) {
@@ -83,13 +78,11 @@ before(() => {
 
 describe("Volunteer v2 — every ministry has at least one team, on screen (#9701)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
     });
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     describe("The ministry page's editors", () => {

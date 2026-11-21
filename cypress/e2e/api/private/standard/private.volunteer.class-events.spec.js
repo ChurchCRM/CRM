@@ -13,7 +13,6 @@
  * session (cy.makeMemberAPICall), made leader of the ministry's first team.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const URL = "/api/ministries";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
@@ -26,7 +25,6 @@ const CHURCH_SERVICE_TYPE = 1;
 
 const PREFIX = "CLEV28";
 
-let originalVersion = "v1";
 let ministryId = 0;
 let firstTeamId = 0;
 let otherMinistryId = 0;
@@ -182,10 +180,6 @@ after(() => {
 
 describe("Volunteer v2 D28 — a class's events when its team's class changes or the team is deleted, and the Calendar tab's Delete events (design §0.8, §2.4, §3.3, §4.6)", () => {
     before(() => {
-        admin("GET", SETTING_URL, null).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         admin("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, sundaySchool: true }, 201).then((resp) => {
@@ -243,7 +237,6 @@ describe("Volunteer v2 D28 — a class's events when its team's class changes or
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: originalVersion });
     });
 
     describe("Volunteer v2 D28 — what the team dialog is told", () => {

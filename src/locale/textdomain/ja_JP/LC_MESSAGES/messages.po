@@ -1353,10 +1353,6 @@ msgid "Default"
 msgstr "デフォルト"
 
 #: 
-msgid "Exit"
-msgstr "終了"
-
-#: 
 msgid "Add New"
 msgstr "新規追加"
 
@@ -1459,10 +1455,6 @@ msgstr "プロパティを更新"
 #: 
 msgid "Assign New Group"
 msgstr "新しいグループを割り当て"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "新しいボランティア機会を割り当て"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1578,10 +1570,6 @@ msgid "Restore Database"
 msgstr "データベースの復元"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "削除の確認:"
-
-#: 
 msgid "Listing"
 msgstr "一覧"
 
@@ -1668,14 +1656,6 @@ msgstr "新パスワード"
 #: 
 msgid "Confirm New Password"
 msgstr "新パスワードの確認"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "ボランティア機会エディター"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "ボランティアの機会はまだ追加されていません"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6344,20 +6324,8 @@ msgid "Additional Information"
 msgstr "追加情報"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "機会を割り当て"
-
-#: 
 msgid "Choose a property..."
 msgstr "プロパティを選択..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "機会を選択..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "連絡先と個人情報"
 
 #: 
 msgid "Edited"
@@ -6366,14 +6334,6 @@ msgstr "編集済み"
 #: 
 msgid "Newsletter"
 msgstr "ニュースレター"
-
-#: 
-msgid "Personal"
-msgstr "個人"
-
-#: 
-msgid "Select Opportunities"
-msgstr "機会を選択"
 
 #: 
 msgid "Volunteer"
@@ -6558,10 +6518,6 @@ msgid "Confirm Property Deletion"
 msgstr "プロパティ削除の確認"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "ボランティア機会削除の確認"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "削除の確認"
 
@@ -6574,16 +6530,8 @@ msgid "Existing Custom Person Fields"
 msgstr "既存のカスタム個人フィールド"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "既存のボランティア機会"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "フィールドが正常に削除されました"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "無効な CSRF トークンです"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8346,10 +8294,6 @@ msgid "Create or edit property type categories"
 msgstr "プロパティタイプカテゴリの作成または編集"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "ボランティアポジションの作成または編集"
-
-#: 
 msgid "Current person"
 msgstr "現在の人"
 
@@ -8798,10 +8742,6 @@ msgid "Manage user account details and permissions"
 msgstr "ユーザーアカウントの詳細と権限を管理"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "ボランティア機会の管理とメンバーの割り当て"
-
-#: 
 msgid "Map cart items"
 msgstr "リストの項目を地図に表示"
 
@@ -8920,10 +8860,6 @@ msgstr "結果が見つかりません"
 #: 
 msgid "No timeline events yet."
 msgstr "タイムラインイベントはまだありません。"
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "ボランティア担当の割り当てはまだありません。"
 
 #: 
 msgid "Not ready yet?"
@@ -9428,10 +9364,6 @@ msgid "funds"
 msgstr "基金"
 
 #: 
-msgid "opportunities"
-msgstr "機会"
-
-#: 
 msgid "or connect an external service"
 msgstr "または外部サービスを接続"
 
@@ -9731,11 +9663,6 @@ msgstr "メールアドレスの取得に失敗しました"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "電話番号の取得に失敗しました"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "特定の機会のためにボランティアを見つける"
 
 #. Context: query_qry
 #: 
@@ -12501,10 +12428,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "プロパティタイプを削除できません：%d件のプロパティがまだ参照しています。先にプロパティを再割り当てまたは削除してください。"
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "ボランティア機会を削除できません：%d人がまだ割り当てられています。先に割り当てを削除してください。"
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "クラスはp、f、またはgのいずれかである必要があります"
 
@@ -12515,10 +12438,6 @@ msgstr "エラーメッセージをコピー"
 #: 
 msgid "Could not load note."
 msgstr "メモを読み込めませんでした。"
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "説明は100文字以内で入力してください"
 
 #: 
 msgid "Donation fund not found"
@@ -12541,10 +12460,6 @@ msgid "Failed to create property type"
 msgstr "プロパティタイプの作成に失敗しました"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "ボランティア機会の作成に失敗しました"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "寄付金基金の削除に失敗しました"
 
@@ -12561,10 +12476,6 @@ msgid "Failed to delete property type"
 msgstr "プロパティタイプの削除に失敗しました"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "ボランティア機会の削除に失敗しました"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "寄付金基金の更新に失敗しました"
 
@@ -12577,10 +12488,6 @@ msgid "Failed to update property type"
 msgstr "プロパティタイプの更新に失敗しました"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "ボランティア機会の更新に失敗しました"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "募金活動が見つかりません"
 
@@ -12591,10 +12498,6 @@ msgstr "インストールID"
 #: 
 msgid "Invalid class"
 msgstr "無効なクラス"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "名前は30文字以内で入力してください"
 
 #: 
 msgid "Note by %s deleted"
@@ -12617,16 +12520,8 @@ msgid "Read more"
 msgstr "続きを読む"
 
 #: 
-msgid "That name already exists."
-msgstr "その名前はすでに存在します。"
-
-#: 
 msgid "Title is required"
 msgstr "タイトルは必須です"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "ボランティア機会が見つかりません"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -14994,10 +14889,6 @@ msgid "Target family"
 msgstr "対象家族"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "グループが見つかりませんでした。もう一度お試しください。"
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "選択した家族はもう存在しません。ページを更新してもう一度お試しください。"
 
@@ -15212,10 +15103,6 @@ msgstr "サポートされている形式"
 #: 
 msgid "System Configuration"
 msgstr "システム設定"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "このボランティア機会に割り当てられている人がいます。削除すると割り当てが解除されます"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15446,10 +15333,6 @@ msgid "Add New Fund"
 msgstr "新しい基金を追加"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "新しい奉仕機会を追加"
-
-#: 
 msgid "Add New Person"
 msgstr "新しい人物を追加"
 
@@ -15462,10 +15345,6 @@ msgid "Add New Role"
 msgstr "新しい役割を追加"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "新しいボランティア機会を追加"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "日曜学校クラスを追加"
 
@@ -15476,10 +15355,6 @@ msgstr "この家族を削除しますか？"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "公開登録フォームから登録した新しい家族と個人を確認してください"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "ボランティア機会削除の確認"
 
 #: 
 msgid "# Payments"
@@ -17144,14 +17019,6 @@ msgid "Find people who did not attend an event"
 msgstr "イベントに参加しなかった人を検索"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "2つの特定のボランティア機会コードに一致するボランティアを検索"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "第1ボランティア機会"
-
-#: 
 msgid "Folded Booklet"
 msgstr "折り畳みパンフレット"
 
@@ -17228,10 +17095,6 @@ msgid "Run Report"
 msgstr "レポートを実行"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "第2ボランティア機会"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "サイドバー、ログインページ、メールに表示されます。ロゴをアップロードすると、表示されるすべての場所でChurchCRMブランディングが置き換わります。"
 
@@ -17258,14 +17121,6 @@ msgstr "デフォルトのChurchCRMロゴを使用"
 #: 
 msgid "View Full Family Giving"
 msgstr "完全な家族献金を表示"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "ボランティア機会"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "2つの機会のためのボランティア"
 
 #: 
 msgid "YTD"
@@ -18085,10 +17940,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "1つの行事を担当するスケジュールは、他の行事に従うことができません。削除して、代わりにスケジュールを追加してください"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "「保育」や「受付係」のような奉仕の機会を1つにまとめた一覧で、人々 → 管理の下で管理されます。各人には、その人の記録のボランティアタブで、手伝ってもよい奉仕の機会がタグ付けされます。記録されるのはそれだけで、チーム、日付への割り当て、リマインダーメールはありません。タグはレポートと個人の記録で使われます。"
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "正方形の顔写真が最適です。"
 
@@ -18395,18 +18246,6 @@ msgstr "バックグラウンドジョブの実行"
 #: 
 msgid "Birthday greeting"
 msgstr "誕生日のあいさつ"
-
-#: 
-msgid "Both"
-msgstr "両方"
-
-#: 
-msgid "Both (transition)"
-msgstr "両方（移行用）"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "両方：V1 と V2 を並行（移行用）"
 
 #: 
 msgid "Calendar address"
@@ -21489,22 +21328,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "ユーザーには行事追加権限があるか、このカレンダーが属する奉仕ミニストリーのコーディネーターである必要があります"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1：ボランティア機会（従来）"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1：従来のボランティア機会"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2：ミニストリー"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2：ボランティア管理"
-
-#: 
 msgid "Valid"
 msgstr "有効"
 
@@ -21523,14 +21346,6 @@ msgstr "行事を見る"
 #: 
 msgid "View this email"
 msgstr "このメールを見る"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "ボランティア（従来）"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "ボランティア管理 V2 は有効になっていません"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21635,10 +21450,6 @@ msgid "What the check found"
 msgstr "チェックで見つかったこと"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "ボランティア体験とは"
-
-#: 
 msgid "What you want to say"
 msgstr "お伝えしたいこと"
 
@@ -21669,10 +21480,6 @@ msgstr "日付の基準"
 #: 
 msgid "Where we reach you"
 msgstr "連絡先"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "有効なボランティア管理の体験を選びます。V1 は従来のボランティア機会の機能、V2 は新しいスケジュールと割り当てのワークフローです。「両方」を選ぶと、移行中に両方が並んで表示されます。"
 
 #: 
 msgid "Which events"
@@ -22081,10 +21888,6 @@ msgstr "このイベントの対象グループを変更する権限がありま
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "ボランティア マネージャーのみがミニストリーの調整者を変更できます"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "V1 を選択すると、V2 ボランティア メールが一時停止されます。キューに入っているメールは、発生が終了していない限り、V2 が再度有効になった時点で送信されます。"
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22929,10 +22732,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "未充足の担当を知らせる先行時間（時間）"
 
 #: 
-msgid "Volunteer Management"
-msgstr "ボランティア管理"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "ボランティアのミニストリー、チーム、予定表、割り当て"
 
@@ -22943,14 +22742,6 @@ msgstr "これから数日で埋めるボランティア担当"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "これらの今後の各回でまだ必要なボランティア: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "これらはどういう意味ですか？"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "この教会が使うボランティア体験"
 
 #: 
 msgid "You are on the schedule"
@@ -26321,248 +26112,8 @@ msgid "Review Family Information"
 msgstr "家族情報を確認"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "「%s」という名前のミニストリーは既に存在します。一覧から選ぶか、別の名前を指定してください。"
-
-#: 
-msgid "A new ministry"
-msgstr "新しいミニストリー"
-
-#: 
-msgid "A position"
-msgstr "役割"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "以前に変換した役割に {{total}} 人のボランティアを追加しますか？"
-
-#: 
-msgid "Already converted"
-msgstr "変換済み"
-
-#: 
-msgid "An existing ministry"
-msgstr "既存のミニストリー"
-
-#: 
-msgid "Becomes"
-msgstr "変換先"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM にはボランティアを管理する方法が 2 つあります。同時に使うのは 1 つだけです。どちらをこの教会に表示するかは「ボランティア方式」の設定で決まります。切り替えるとページやメニュー項目の表示・非表示が変わりますが、データが削除されることはありません。V1 と「両方」は、ボランティアの機会を使用している間だけ選択できます。すべての機会が変換され、教会が V2 を使うようになると、この一覧から消えます。"
-
-#: 
-msgid "Convert"
-msgstr "変換"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "ボランティアの機会を変換"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "今すぐ {{total}} 件の機会を変換しますか？V1 のデータは、ボランティアの機会が廃止されるまでそのまま残ります。"
-
-#: 
-msgid "Converted"
-msgstr "変換済み"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "変換完了：役割 {{positions}} 件、ミニストリー {{ministries}} 件、資格を得たボランティア {{qualifications}} 人。"
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "各機会は 1 つのミニストリーの最初のチームの役割になり、その機会に紐付いていた全員がその役割の資格を得ます。これらの役割の自己申込は最初はオフになっています。"
-
-#: 
-msgid "Everything is converted."
-msgstr "すべて変換済みです。"
-
-#: 
-msgid "Existing ministry"
-msgstr "既存のミニストリー"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "新しいミニストリーに 100 文字以内の名前を付けてください。"
-
-#: 
-msgid "Its own ministry"
-msgstr "独自のミニストリー"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "その後に紐付け：{{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "変換できない紐付け"
-
-#: 
-msgid "New ministries of their own"
-msgstr "それぞれ独自の新しいミニストリー"
-
-#: 
-msgid "New ministry name"
-msgstr "新しいミニストリー名"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "メールは送信されません。ボランティアの機会は廃止されるまでそのまま残ります。"
-
-#: 
-msgid "No name"
-msgstr "名前なし"
-
-#: 
-msgid "Not converted"
-msgstr "未変換"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "機能トグルを開く"
-
-#: 
-msgid "Open Ministries"
-msgstr "ミニストリーを開く"
-
-#: 
-msgid "Opportunities"
-msgstr "機会"
-
-#: 
-msgid "Opportunity"
-msgstr "機会"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "機会 #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "変換後に、変換済みのボランティアの機会に紐付けられた人：%d。2027 年初めにボランティアの機会が廃止される前に、各自の役割に追加してください。"
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "まず変換をプレビューし、返されたリビジョンを送信してください。"
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "名前が重複しないように変更しました"
-
-#: 
-msgid "Review the conversion"
-msgstr "変換を確認"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "変換の選択を JSON オブジェクトで送信してください。"
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "ミニストリーになる機会を ID のリストで送信してください。"
-
-#: 
-msgid "That ministry does not exist."
-msgstr "そのミニストリーは存在しません。"
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "管理者がボランティアの機会の廃止通知を閉じたときの ChurchCRM のバージョン。"
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "プレビュー後にボランティアの機会が変更されました。もう一度プレビューを確認してから変換してください。"
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "確認画面を開けませんでした。ページを再読み込みしてもう一度お試しください。"
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "変換をプレビューできませんでした。"
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "変換に失敗しました。何も変更されていません。"
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "ミニストリー「%s」には役割を置くチームがありません。"
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "サーバーに接続できませんでした。ページを再読み込みして、変換が実行されたか確認してください。"
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "変換するボランティアの機会はありません。"
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "新しいミニストリーがボランティアの機会と並んで表示されるよう、ボランティア管理が「両方」に切り替わります。"
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "ボランティアの機会は廃止予定です"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "ボランティアの機会を変換しました"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "ボランティアの機会は 2027 年初めに廃止されます。誰がどこで奉仕しているかを残すため、ミニストリーに変換してください。"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "ボランティアの機会は 2027 年初めに廃止されます。%1$d 件の機会と %2$d 人のボランティアを今すぐミニストリーに変換してください。変更前に結果をプレビューできます。"
-
-#: 
-msgid "Volunteers qualified"
-msgstr "資格を得たボランティア"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "変換済みの役割に追加するボランティア"
-
-#: 
-msgid "What it becomes"
-msgstr "変換後"
-
-#: 
-msgid "What will happen"
-msgstr "実行される内容"
-
-#: 
-msgid "Where they go"
-msgstr "移動先"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "変換済みの旧ボランティアの機会と、それぞれが変換された役割。"
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "この教会が使うボランティア方式。ボランティアの機会（V1）は 2027 年初めに廃止されます。"
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "ボランティアの機会はミニストリーに変換されました。2027 年初めにボランティアの機会が廃止される前に、ボランティア管理を V2 に切り替えてください。"
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "新しいミニストリー {{name}} へ"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ミニストリー {{name}} へ"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ChurchCRM にはもうありません"
 
 #: 
 msgid "Collapse sidebar"
@@ -26737,10 +26288,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
-
-#: 
 msgid "Assignment canceled"
 msgstr "割り当てをキャンセルしました"
 
@@ -26787,10 +26334,6 @@ msgstr "この日付は取り消されました。これ以上ご対応いただ
 #: 
 msgid "This occurrence has been canceled"
 msgstr "この開催回はキャンセルされました"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27486,10 +27029,6 @@ msgstr "イベントの表示"
 #: 
 msgid "View people and families"
 msgstr "人と家族の表示"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "この教会ではボランティア管理がオフになっています"
 
 #: 
 msgid "Weak"

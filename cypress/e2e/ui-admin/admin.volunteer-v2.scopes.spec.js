@@ -39,7 +39,6 @@
  * real endpoints, scope rows included.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
@@ -93,10 +92,6 @@ function freshCoordinatorLogin() {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 /** Every scope row this spec could have granted, through the API it is testing. */
@@ -189,14 +184,12 @@ before(() => {
 
 describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
         createFixtures();
     });
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     describe("the ministry page card", () => {

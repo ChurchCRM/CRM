@@ -15,7 +15,6 @@
  * ministry; the classes, role lists and scope rows are removed explicitly.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const TEAMS_URL = "/api/ministries/teams";
 const POSITIONS_URL = "/api/ministries/positions";
@@ -34,7 +33,6 @@ const PERSON_CORE = 24; // written through the core groups API
 const PERSON_LEADER = 99;
 const LEADER_KEY = 99;
 
-let originalVersion = "v1";
 let ministryId = 0;
 let poolGroupId = 0;
 let teamId = 0;
@@ -58,10 +56,6 @@ function dbOk(sql, params = []) {
 
 function admin(method, url, body, status = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, status);
-}
-
-function setVersion(value) {
-    admin("POST", SETTING_URL, { value });
 }
 
 /** The person's role in the group, or null when they are not a member. */
@@ -133,10 +127,6 @@ before(() => {
 
 describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => {
     before(() => {
-        admin("GET", SETTING_URL, null).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         admin("POST", MINISTRIES_URL, { name: `${PREFIX} Children`, sundaySchool: true }, 201).then((resp) => {
@@ -191,7 +181,6 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     describe("linking", () => {
@@ -363,18 +352,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
         });
     });
 
-    describe("rollout and unlinking", () => {
-        it("with the rollout at v1 nothing is refused and nothing is projected", () => {
-            setVersion("v1");
-            admin("POST", `${GROUPS_URL}/${classA}/addperson/${PERSON_CORE}`, { RoleID: TEACHER });
-            roleOf(classA, PERSON_CORE).should("eq", TEACHER);
-            admin("DELETE", `${GROUPS_URL}/${classA}/removeperson/${PERSON_CORE}`, null);
-            roleOf(classA, PERSON_CORE).should("eq", null);
-            grant(positionLead, PERSON_NEW, 403);
-            roleOf(classA, PERSON_NEW).should("eq", null);
-            setVersion("v2");
-        });
-
+    describe("unlinking", () => {
         it("unlinking leaves the class's membership as it is and ends the lock", () => {
             admin("POST", `${TEAMS_URL}/${teamId}`, { classGroupId: null }).then((resp) => {
                 expect(resp.body.team.classGroupId).to.eq(null);

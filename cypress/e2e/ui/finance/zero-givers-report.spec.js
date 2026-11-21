@@ -107,13 +107,6 @@ describe("Zero Givers report", () => {
         });
     });
 
-    it("is no longer offered on the legacy report picker", () => {
-        cy.setupPersonaSession("finance-only");
-        cy.visit("/FinancialReports.php?ReportType=Zero%20Givers");
-        cy.get("#FinancialReportTypes").should("exist");
-        cy.get('#FinancialReportTypes option[value="Zero Givers"]').should("not.exist");
-    });
-
     it("downloads the CSV for the dates a treasurer picks on the form", () => {
         cy.setupPersonaSession("finance-only");
         cy.visit("/finance/reports/zero-givers");

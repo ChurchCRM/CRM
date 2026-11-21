@@ -952,7 +952,6 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/MemberView.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyView.js') ?>"></script>
 
 <!-- Photos start -->

@@ -256,37 +256,10 @@ describe("Member Portal — the home page's Profile card", () => {
 });
 
 /**
- * The nav is feature-gated, one entry at a time (design §5). MP6 (#9867) added
- * the first gated entry: Volunteering, shown only while the Volunteer v2 rollout
- * flag includes V2.
+ * The nav is feature-gated, one entry at a time (design §5).
  */
 describe("Member Portal — the navigation follows the enabled features", () => {
-    const setVersion = (value) =>
-        cy.makePrivateAdminAPICall(
-            "POST",
-            "/admin/api/system/config/sVolunteerVersion",
-            { value },
-            200,
-        );
-
-    after(() => {
-        setVersion("v1");
-    });
-
-    it("hides Volunteering while the volunteer rollout flag is v1", () => {
-        setVersion("v1");
-        login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-
-        cy.get("#portal-nav").should("exist");
-        cy.get("#portal-nav").find("a[href$='/portal/volunteer/schedule']").should("not.exist");
-        // …and the page itself is not there to be reached by URL either.
-        cy.visit("portal/volunteer/schedule", { failOnStatusCode: false });
-        cy.get("#volunteer-my-schedule").should("not.exist");
-    });
-
-    it("shows Volunteering once the volunteer rollout flag is v2", () => {
-        setVersion("v2");
+    it("shows Volunteering and its home-page card", () => {
         login();
         cy.url({ timeout: 10000 }).should("include", "/portal");
 

@@ -1420,10 +1420,6 @@ msgid "Default"
 msgstr "Standard"
 
 #: 
-msgid "Exit"
-msgstr "Avsluta"
-
-#: 
 msgid "Add New"
 msgstr "Lägg till ny"
 
@@ -1534,11 +1530,6 @@ msgstr "Uppdatera egenskaper"
 #: 
 msgid "Assign New Group"
 msgstr "Tilldela ny grupp"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tilldela en ny frivillig möjlighet"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1658,11 +1649,6 @@ msgid "Restore Database"
 msgstr "Återställ databasen"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Bekräfta att du vill radera"
-
-#: 
 msgid "Listing"
 msgstr "Lista"
 
@@ -1758,14 +1744,6 @@ msgstr "Det nya lösenordet"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Bekräfta det nya lösenordet"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Frivilliga möjligheter redigeringsverktyg"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Inga frivilliga möjligheter tillagd än"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6468,20 +6446,8 @@ msgid "Additional Information"
 msgstr "Ytterligare information"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tilldela möjligheter"
-
-#: 
 msgid "Choose a property..."
 msgstr "Välj en egenskap..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Välj möjligheter..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt & Personlig info"
 
 #: 
 msgid "Edited"
@@ -6490,14 +6456,6 @@ msgstr "Redigerad"
 #: 
 msgid "Newsletter"
 msgstr "Nyhetsbrev"
-
-#: 
-msgid "Personal"
-msgstr "Personligt"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Välj möjligheter"
 
 #: 
 msgid "Volunteer"
@@ -6684,10 +6642,6 @@ msgid "Confirm Property Deletion"
 msgstr "Bekräfta radering av egenskap"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Bekräfta radering av volontärmöjlighet"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Bekräfta radering"
 
@@ -6700,16 +6654,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Befintliga anpassade personfält"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Befintliga volontärmöjligheter"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Fältet raderades"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Ogiltig CSRF-token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8475,10 +8421,6 @@ msgid "Create or edit property type categories"
 msgstr "Skapa eller redigera kategorier för egenskapstyper"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Skapa eller redigera frivilliguppdrag"
-
-#: 
 msgid "Current person"
 msgstr "Aktuell person"
 
@@ -8927,10 +8869,6 @@ msgid "Manage user account details and permissions"
 msgstr "Hantera användarkontouppgifter och behörigheter"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Hantera frivilliguppdrag och tilldela medlemmar"
-
-#: 
 msgid "Map cart items"
 msgstr "Visa urvalets poster på kartan"
 
@@ -9049,10 +8987,6 @@ msgstr "Inga resultat hittades"
 #: 
 msgid "No timeline events yet."
 msgstr "Inga tidslinjehändelser ännu."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Inga frivilliguppdrag tilldelade ännu."
 
 #: 
 msgid "Not ready yet?"
@@ -9557,10 +9491,6 @@ msgid "funds"
 msgstr "fonder"
 
 #: 
-msgid "opportunities"
-msgstr "möjligheter"
-
-#: 
 msgid "or connect an external service"
 msgstr "eller anslut en extern tjänst"
 
@@ -9860,11 +9790,6 @@ msgstr "Eai sáhte oažžut poastas čujuhusat"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Eai sáhte oažžut telefona lohkut"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Hitta volontärer för en viss möjlighet"
 
 #. Context: query_qry
 #: 
@@ -12631,10 +12556,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Kan inte ta bort egenskapstypen: %d egenskaper refererar fortfarande till den. Tilldela om eller ta bort dessa egenskaper först."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Kan inte ta bort frivilligmöjligheten: %d personer är fortfarande tilldelade. Ta bort tilldelningarna först."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klass måste vara en av p, f eller g"
 
@@ -12645,10 +12566,6 @@ msgstr "Kopiera felmeddelande"
 #: 
 msgid "Could not load note."
 msgstr "Kunde inte läsa in anteckningen."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Beskrivningen får inte överstiga 100 tecken"
 
 #: 
 msgid "Donation fund not found"
@@ -12671,10 +12588,6 @@ msgid "Failed to create property type"
 msgstr "Det gick inte att skapa egenskapstypen"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Det gick inte att skapa frivilligmöjligheten"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Det gick inte att ta bort donationsfonden"
 
@@ -12691,10 +12604,6 @@ msgid "Failed to delete property type"
 msgstr "Det gick inte att ta bort egenskapstypen"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Det gick inte att ta bort frivilligmöjligheten"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Det gick inte att uppdatera donationsfonden"
 
@@ -12707,10 +12616,6 @@ msgid "Failed to update property type"
 msgstr "Det gick inte att uppdatera egenskapstypen"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Det gick inte att uppdatera frivilligmöjligheten"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Insamlingen hittades inte"
 
@@ -12721,10 +12626,6 @@ msgstr "Installations-ID"
 #: 
 msgid "Invalid class"
 msgstr "Ogiltig klass"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Namnet får inte överstiga 30 tecken"
 
 #: 
 msgid "Note by %s deleted"
@@ -12747,16 +12648,8 @@ msgid "Read more"
 msgstr "Läs mer"
 
 #: 
-msgid "That name already exists."
-msgstr "Det namnet finns redan."
-
-#: 
 msgid "Title is required"
 msgstr "Titel krävs"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Frivilligmöjligheten hittades inte"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15127,10 +15020,6 @@ msgid "Target family"
 msgstr "Målfamilj"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Gruppen kunde inte hittas. Försök igen."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Den valda familjen finns inte längre. Uppdatera sidan och försök igen."
 
@@ -15345,10 +15234,6 @@ msgstr "Format som stöds"
 #: 
 msgid "System Configuration"
 msgstr "Systemkonfiguration"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Det finns personer tilldelade till detta frivilligtillfälle. Borttagning kommer att ta bort tilldelningen"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15579,10 +15464,6 @@ msgid "Add New Fund"
 msgstr "Lägg till ny fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Lägg till nytt tillfälle"
-
-#: 
 msgid "Add New Person"
 msgstr "Lägg till ny person"
 
@@ -15595,10 +15476,6 @@ msgid "Add New Role"
 msgstr "Lägg till ny roll"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Lägg till nytt frivilligtillfälle"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Lägg till söndagsskolklass"
 
@@ -15609,10 +15486,6 @@ msgstr "Ta bort den här familjen?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Granska nya familjer och enskilda personer som registrerade sig via ditt offentliga registreringsformulär"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Bekräftelse på borttagning av frivilligtillfälle"
 
 #: 
 msgid "# Payments"
@@ -17279,14 +17152,6 @@ msgid "Find people who did not attend an event"
 msgstr "Hitta personer som inte deltog i ett evenemang"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Hitta volontärer som matchar två specifika möjlighetskoder"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Första volontärmöjlighet"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Vikt broschyr"
 
@@ -17363,10 +17228,6 @@ msgid "Run Report"
 msgstr "Kör rapport"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Andra volontärmöjlighet"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Visas i sidlisten, på inloggningssidan och i e-post. Att ladda upp en logotyp ersätter ChurchCRM-varumärkningen överallt den visas."
 
@@ -17393,14 +17254,6 @@ msgstr "Använder standard ChurchCRM-logotyp"
 #: 
 msgid "View Full Family Giving"
 msgstr "Visa fullständig familj-givning"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Volontärmöjlighet"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Volontärer för två möjligheter"
 
 #: 
 msgid "YTD"
@@ -18227,10 +18080,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Ett schema som bemannar en enda aktivitet kan inte följa andra aktiviteter; ta bort det och lägg i stället till ett schema"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "En enda lista över möjligheter, till exempel \"Barnpassning\" eller \"Värd\", som underhålls under Personer → Admin. Varje person märks med de möjligheter hen vill hjälpa till med, på fliken Volontär i personens post. Det är allt som registreras: det finns inga team, inga scheman, inga tilldelningar till ett datum och inga påminnelsemejl. Rapporter och personposten är de ställen där märkningen används."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "En kvadratisk bild på ditt ansikte fungerar bäst."
 
@@ -18537,18 +18386,6 @@ msgstr "Bakgrundsjobben kördes"
 #: 
 msgid "Birthday greeting"
 msgstr "Födelsedagshälsning"
-
-#: 
-msgid "Both"
-msgstr "Båda"
-
-#: 
-msgid "Both (transition)"
-msgstr "Båda (övergång)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Båda: V1 och V2 sida vid sida (övergång)"
 
 #: 
 msgid "Calendar address"
@@ -21635,22 +21472,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Användaren måste ha behörigheten Lägg till händelse, eller samordna den volontärverksamhet som denna kalender tillhör"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Volontärmöjligheter (äldre)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — äldre Volontärmöjligheter"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Verksamheter"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Volontärhantering"
-
-#: 
 msgid "Valid"
 msgstr "Giltig"
 
@@ -21669,14 +21490,6 @@ msgstr "Visa händelsen"
 #: 
 msgid "View this email"
 msgstr "Visa detta e-postmeddelande"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Volontär (äldre)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Volontärhantering V2 är inte aktiverad"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21783,10 +21596,6 @@ msgid "What the check found"
 msgstr "Vad kontrollen hittade"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Vilka volontärupplevelserna är"
-
-#: 
 msgid "What you want to say"
 msgstr "Vad du vill säga"
 
@@ -21817,10 +21626,6 @@ msgstr "Varifrån datumen kommer"
 #: 
 msgid "Where we reach you"
 msgstr "Hur vi når dig"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Vilken upplevelse av Volontärhantering som är aktiv. V1 är den äldre funktionen Volontärmöjligheter; V2 är det nya arbetsflödet för schemaläggning och tilldelning. \"Båda\" visar dem sida vid sida under migreringen."
 
 #: 
 msgid "Which events"
@@ -22229,10 +22034,6 @@ msgstr "Inte auktoriserad att ändra detta events målgrupp"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Endast en volontärkoordinator kan ändra vem som koordinerar ett ministerium"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Att välja V1 pausar V2-volontäre-post; allt som är i kö skickas när V2 är tillbaka, om inte dess förekomst är över."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23077,10 +22878,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Förvarningstid för otillsatta uppgifter (timmar)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Volontärhantering"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Volontärtjänster, team, scheman och tilldelningar"
 
@@ -23091,14 +22888,6 @@ msgstr "Volontäruppgifter att fylla de kommande dagarna"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Volontärer behövs fortfarande för dessa kommande tillfällen: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Vad betyder de här?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Vilken volontärupplevelse den här församlingen använder"
 
 #: 
 msgid "You are on the schedule"
@@ -26469,248 +26258,8 @@ msgid "Review Family Information"
 msgstr "Granska familjeuppgifter"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Ett tjänsteområde som heter \"%s\" finns redan. Välj det i listan eller välj ett annat namn."
-
-#: 
-msgid "A new ministry"
-msgstr "Ett nytt tjänsteområde"
-
-#: 
-msgid "A position"
-msgstr "En uppgift"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Lägga till {{total}} volontärer i uppgifter som konverterats tidigare?"
-
-#: 
-msgid "Already converted"
-msgstr "Redan konverterad"
-
-#: 
-msgid "An existing ministry"
-msgstr "Ett befintligt tjänsteområde"
-
-#: 
-msgid "Becomes"
-msgstr "Blir"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen \"Volontärupplevelse\" avgör vilket den här församlingen ser. Ett byte döljer eller visar sidor och menyval och raderar aldrig data. V1 och Båda erbjuds bara medan Volontärmöjligheter används: när alla möjligheter har konverterats och församlingen använder V2 försvinner de från listan."
-
-#: 
-msgid "Convert"
-msgstr "Konvertera"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Konvertera Volontärmöjligheter"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Konvertera {{total}} möjligheter nu? V1-data behålls som de är tills Volontärmöjligheter fasas ut."
-
-#: 
-msgid "Converted"
-msgstr "Konverterad"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Konverterat: {{positions}} uppgifter och {{ministries}} tjänsteområden, {{qualifications}} volontärer behöriga."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Varje möjlighet blir en uppgift i det första teamet i ett tjänsteområde, och alla som är kopplade till den blir behöriga för uppgiften. Egen anmälan är först avstängd för dessa uppgifter."
-
-#: 
-msgid "Everything is converted."
-msgstr "Allt är konverterat."
-
-#: 
-msgid "Existing ministry"
-msgstr "Befintligt tjänsteområde"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Ge det nya tjänsteområdet ett namn på högst 100 tecken."
-
-#: 
-msgid "Its own ministry"
-msgstr "Ett eget tjänsteområde"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Kopplade sedan dess: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Kopplingar som inte kan konverteras"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Egna nya tjänsteområden"
-
-#: 
-msgid "New ministry name"
-msgstr "Namn på nytt tjänsteområde"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Inget e-postmeddelande skickas, och Volontärmöjligheter förblir som de är tills de fasas ut."
-
-#: 
-msgid "No name"
-msgstr "Inget namn"
-
-#: 
-msgid "Not converted"
-msgstr "Inte konverterad"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Öppna Funktionsväxlar"
-
-#: 
-msgid "Open Ministries"
-msgstr "Öppna Tjänsteområden"
-
-#: 
-msgid "Opportunities"
-msgstr "Möjligheter"
-
-#: 
-msgid "Opportunity"
-msgstr "Möjlighet"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Möjlighet nr %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Personer som kopplats till konverterade Volontärmöjligheter sedan konverteringen: %d. Lägg till dem i deras uppgifter innan Volontärmöjligheter fasas ut i början av 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Förhandsgranska konverteringen först och skicka den revision som returnerades."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Bytte namn för att hålla namnen unika"
-
-#: 
-msgid "Review the conversion"
-msgstr "Granska konverteringen"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Skicka konverteringsvalet som ett JSON-objekt."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Skicka de möjligheter som blir tjänsteområden som en lista med ID:n."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Det tjänsteområdet finns inte."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM-versionen där en administratör stängde meddelandet om att Volontärmöjligheter fasas ut."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Volontärmöjligheterna har ändrats sedan förhandsgranskningen. Kontrollera förhandsgranskningen igen och konvertera sedan."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Bekräftelsen kunde inte öppnas. Ladda om sidan och försök igen."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Konverteringen kunde inte förhandsgranskas."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Konverteringen misslyckades. Inget ändrades."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Tjänsteområdet \"%s\" har inget team för uppgifterna."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Servern kunde inte nås. Ladda om sidan för att se om konverteringen kördes."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Det finns inga Volontärmöjligheter att konvertera."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Volontärhantering byter till Båda, så att de nya tjänsteområdena syns bredvid Volontärmöjligheter."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Volontärmöjligheter fasas ut"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Volontärmöjligheter konverterade"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Volontärmöjligheter fasas ut i början av 2027. Konvertera dem till Tjänsteområden för att behålla vem som tjänar var."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Volontärmöjligheter fasas ut i början av 2027. Konvertera dina %1$d möjligheter och %2$d volontärer till Tjänsteområden nu. Du kan förhandsgranska resultatet innan något ändras."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Behöriga volontärer"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Volontärer att lägga till i konverterade uppgifter"
-
-#: 
-msgid "What it becomes"
-msgstr "Vad den blir"
-
-#: 
-msgid "What will happen"
-msgstr "Vad som händer"
-
-#: 
-msgid "Where they go"
-msgstr "Vart de hamnar"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Vilka äldre Volontärmöjligheter som har konverterats och vilken uppgift var och en blev."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Vilken volontärupplevelse den här församlingen använder. Volontärmöjligheter (V1) fasas ut i början av 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Dina Volontärmöjligheter har konverterats till Tjänsteområden. Byt Volontärhantering till V2 innan Volontärmöjligheter fasas ut i början av 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "till ett nytt tjänsteområde, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "till tjänsteområdet {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "finns inte längre i ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26887,10 +26436,6 @@ msgstr[0] "%d standardvolontär hoppades över av annan anledning (tillfället �
 msgstr[1] "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "En övergångsinställning. De äldre sidorna för Volontärmöjligheter och de nya sidorna för Tjänsteområden är båda tillgängliga, och en personpost visar båda flikarna Volontär, tydligt märkta. Använd den medan du flyttar en kyrka från V1 till V2, och byt sedan till enbart V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Tilldelningen avbröts"
 
@@ -26937,10 +26482,6 @@ msgstr "Det här tillfället har ställts in. Du behöver inte göra något mer.
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Detta tillfälle har ställts in"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Volontärarbete organiserat så som en församling driver det. Varje verksamhet har team och funktioner; människor är kvalificerade för funktioner och tillhör verksamhetens poolgrupp; scheman följer händelserna i kalendern och skapar daterade tillfällen med bemanningskrav; samordnare tilldelar personer, som tackar ja, tackar nej eller föreslår en ersättare; påminnelser och aviseringar skickas via e-post. Administratörer och användare med behörigheten Hantera verksamheter ser alla verksamheter och kan skapa, inaktivera och ta bort dem. En verksamhetssamordnare får i stället behörigheten Hantera mina verksamheter: rubriken Verksamheter i sidomenyn visar då bara de verksamheter som personen samordnar. En teamledare leder sitt team från Medlemsportalen. Medlemmar använder Medlemsportalen för att se sitt schema, svara, anmäla sig och erbjuda hjälp."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27639,10 +27180,6 @@ msgstr "Visa evenemang"
 #: 
 msgid "View people and families"
 msgstr "Visa personer och familjer"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Volontärhantering är avstängd för den här kyrkan"
 
 #: 
 msgid "Weak"

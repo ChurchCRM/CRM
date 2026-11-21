@@ -1416,10 +1416,6 @@ msgid "Default"
 msgstr "Standard"
 
 #: 
-msgid "Exit"
-msgstr "Utgang"
-
-#: 
 msgid "Add New"
 msgstr "Legg til ny"
 
@@ -1530,11 +1526,6 @@ msgstr "Oppdater Egenskaper"
 #: 
 msgid "Assign New Group"
 msgstr "Angi Ny Gruppe"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tildele en ny frivillig Opportunity"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1654,11 +1645,6 @@ msgid "Restore Database"
 msgstr "Gjenopprett Database"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Vennligst bekreft sletting av"
-
-#: 
 msgid "Listing"
 msgstr "Oppføringer"
 
@@ -1754,14 +1740,6 @@ msgstr "Nytt passord"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Bekreft nytt passord"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Frivillig Opportunity Editor"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Ingen frivillige muligheter er lagt til ennå"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6450,20 +6428,8 @@ msgid "Additional Information"
 msgstr "Tilleggsinformasjon"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tildel muligheter"
-
-#: 
 msgid "Choose a property..."
 msgstr "Velg en egenskap..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Velg muligheter..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontakt- og personinfo"
 
 #: 
 msgid "Edited"
@@ -6472,14 +6438,6 @@ msgstr "Redigert"
 #: 
 msgid "Newsletter"
 msgstr "Nyhetsbrev"
-
-#: 
-msgid "Personal"
-msgstr "Personlig"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Velg muligheter"
 
 #: 
 msgid "Volunteer"
@@ -6666,10 +6624,6 @@ msgid "Confirm Property Deletion"
 msgstr "Bekreft sletting av egenskap"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Bekreft sletting av frivillig-mulighet"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Bekreftelse på sletting"
 
@@ -6682,16 +6636,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Eksisterende egendefinerte personfelt"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Eksisterende frivillig-muligheter"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Feltet ble slettet"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Ugyldig CSRF-token"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8457,10 +8403,6 @@ msgid "Create or edit property type categories"
 msgstr "Opprett eller rediger egenskapstypekategorier"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Opprett eller rediger frivilligstillinger"
-
-#: 
 msgid "Current person"
 msgstr "Gjeldende person"
 
@@ -8909,10 +8851,6 @@ msgid "Manage user account details and permissions"
 msgstr "Administrer brukerkontoopplysninger og tillatelser"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Administrer frivilligmuligheter og tildel medlemmer"
-
-#: 
 msgid "Map cart items"
 msgstr "Vis utvalget på kart"
 
@@ -9031,10 +8969,6 @@ msgstr "Ingen resultater funnet"
 #: 
 msgid "No timeline events yet."
 msgstr "Ingen tidslinjehendelser ennå."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Ingen frivilligoppdrag tildelt ennå."
 
 #: 
 msgid "Not ready yet?"
@@ -9539,10 +9473,6 @@ msgid "funds"
 msgstr "fond"
 
 #: 
-msgid "opportunities"
-msgstr "muligheter"
-
-#: 
 msgid "or connect an external service"
 msgstr "eller koble til en ekstern tjeneste"
 
@@ -9842,11 +9772,6 @@ msgstr "Kunne ikke hente e-postadresser"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Kunne ikke hente telefonnumre"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Finn frivillige for en bestemt mulighet"
 
 #. Context: query_qry
 #: 
@@ -12613,10 +12538,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Kan ikke slette egenskapstypen: %d egenskaper refererer fortsatt til den. Tilordne på nytt eller slett disse egenskapene først."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Kan ikke slette frivillighetsmulighetene: %d personer er fortsatt tilordnet. Fjern tilordningene først."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klasse må være en av p, f eller g"
 
@@ -12627,10 +12548,6 @@ msgstr "Kopier feilmelding"
 #: 
 msgid "Could not load note."
 msgstr "Kunne ikke laste notatet."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Beskrivelse kan ikke overstige 100 tegn"
 
 #: 
 msgid "Donation fund not found"
@@ -12653,10 +12570,6 @@ msgid "Failed to create property type"
 msgstr "Kunne ikke opprette egenskapstype"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Kunne ikke opprette frivillighetsmulighet"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Kunne ikke slette donasjonsfond"
 
@@ -12673,10 +12586,6 @@ msgid "Failed to delete property type"
 msgstr "Kunne ikke slette egenskapstype"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Kunne ikke slette frivillighetsmulighet"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Kunne ikke oppdatere donasjonsfond"
 
@@ -12689,10 +12598,6 @@ msgid "Failed to update property type"
 msgstr "Kunne ikke oppdatere egenskapstype"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Kunne ikke oppdatere frivillighetsmulighet"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Innsamling ikke funnet"
 
@@ -12703,10 +12608,6 @@ msgstr "Installasjons-ID"
 #: 
 msgid "Invalid class"
 msgstr "Ugyldig klasse"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Navn kan ikke overstige 30 tegn"
 
 #: 
 msgid "Note by %s deleted"
@@ -12729,16 +12630,8 @@ msgid "Read more"
 msgstr "Les mer"
 
 #: 
-msgid "That name already exists."
-msgstr "Det navnet eksisterer allerede."
-
-#: 
 msgid "Title is required"
 msgstr "Tittel er påkrevd"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Frivillighetsmulighet ikke funnet"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15109,10 +15002,6 @@ msgid "Target family"
 msgstr "Målfamilie"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Gruppen ble ikke funnet. Vennligst prøv igjen."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Den valgte familien eksisterer ikke lenger. Vennligst oppdater siden og prøv igjen."
 
@@ -15327,10 +15216,6 @@ msgstr "Støttede formater"
 #: 
 msgid "System Configuration"
 msgstr "Systemkonfigurasjon"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Det er personer tilknyttet denne frivilligoppgaven. Sletting vil fjerne tilknytningen"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15561,10 +15446,6 @@ msgid "Add New Fund"
 msgstr "Legg til nytt fond"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Legg til ny mulighet"
-
-#: 
 msgid "Add New Person"
 msgstr "Legg til ny person"
 
@@ -15577,10 +15458,6 @@ msgid "Add New Role"
 msgstr "Legg til ny rolle"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Legg til ny frivilligoppgave"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Legg til søndagsskoleklasse"
 
@@ -15591,10 +15468,6 @@ msgstr "Slette denne familien?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Gjennomgå nye familier og enkeltpersoner som registrerte seg på det offentlige registreringsskjemaet"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Bekreft sletting av frivilligoppgave"
 
 #: 
 msgid "# Payments"
@@ -17261,14 +17134,6 @@ msgid "Find people who did not attend an event"
 msgstr "Finn personer som ikke deltok på et arrangement"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Finn frivillige som samsvarer med to spesifikke mulighetskoder"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Første frivillig mulighet"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Foldet brosjyre"
 
@@ -17345,10 +17210,6 @@ msgid "Run Report"
 msgstr "Kjør rapport"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Andre frivillig mulighet"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Vist i sidelinjen, på påloggingssiden og i e-poster. Opplasting av en logo erstatter ChurchCRM-merkevaren overalt den vises."
 
@@ -17375,14 +17236,6 @@ msgstr "Bruker standard ChurchCRM-logo"
 #: 
 msgid "View Full Family Giving"
 msgstr "Vis fullstendig familie-gaver"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Frivillig mulighet"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Frivillige for to muligheter"
 
 #: 
 msgid "YTD"
@@ -18209,10 +18062,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "En plan som bemanner ett arrangement kan ikke følge andre arrangementer; slett den og legg heller til en plan"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Én enkelt liste over muligheter, for eksempel \"Barnepass\" eller \"Vert\", som ligger under Personer → Admin. Hver person merkes med mulighetene de er villige til å hjelpe til med, på fanen Frivillig i personposten. Det er alt som registreres: det finnes ingen team, ingen planer, ingen tildelinger til en dato og ingen påminnelser på e-post. Merkene brukes i rapporter og i personposten."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Et kvadratisk bilde av ansiktet ditt fungerer best."
 
@@ -18519,18 +18368,6 @@ msgstr "Bakgrunnsjobbene kjørte"
 #: 
 msgid "Birthday greeting"
 msgstr "Bursdagshilsen"
-
-#: 
-msgid "Both"
-msgstr "Begge"
-
-#: 
-msgid "Both (transition)"
-msgstr "Begge (overgang)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Begge — V1 og V2 side om side (overgang)"
 
 #: 
 msgid "Calendar address"
@@ -21617,22 +21454,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Brukeren må ha tilgangen Legg til arrangement, eller koordinere frivilligtjenesten denne kalenderen tilhører"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Frivillige muligheter (eldre)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — eldre Frivillige muligheter"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Tjenester"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Frivilligadministrasjon"
-
-#: 
 msgid "Valid"
 msgstr "Gyldig"
 
@@ -21651,14 +21472,6 @@ msgstr "Se arrangementet"
 #: 
 msgid "View this email"
 msgstr "Se denne e-posten"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Frivillig (eldre)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Frivilligadministrasjon V2 er ikke aktivert"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21765,10 +21578,6 @@ msgid "What the check found"
 msgstr "Hva kontrollen fant"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Hva frivilligopplevelsene er"
-
-#: 
 msgid "What you want to say"
 msgstr "Hva du vil si"
 
@@ -21799,10 +21608,6 @@ msgstr "Hvor datoene kommer fra"
 #: 
 msgid "Where we reach you"
 msgstr "Hvor vi når deg"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Hvilken frivilligadministrasjonsopplevelse som er aktiv. V1 er den eldre funksjonen Frivillige muligheter; V2 er den nye arbeidsflyten for planlegging og tildeling. \"Begge\" viser dem side om side under overgangen."
 
 #: 
 msgid "Which events"
@@ -22211,10 +22016,6 @@ msgstr "Ikke autorisert til å endre denne events målgruppe"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Bare en frivilligkoordinator kan endre hvem som koordinerer et ministerium"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Valg av V1 pauser V2-frivillig-e-post; alt som er i kø sendes når V2 er tilbake, med mindre dets forekomst er over."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23059,10 +22860,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Forvarslingstid for ledige oppgaver (timer)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Frivillighetsstyring"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Frivilligtjenester, team, planer og tildelinger"
 
@@ -23073,14 +22870,6 @@ msgstr "Frivilligoppgaver som skal fylles de kommende dagene"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Frivillige trengs fortsatt for disse kommende forekomstene: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Hva betyr disse?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Hvilken frivilligopplevelse denne menigheten bruker"
 
 #: 
 msgid "You are on the schedule"
@@ -26451,248 +26240,8 @@ msgid "Review Family Information"
 msgstr "Gå gjennom familieopplysninger"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "En tjeneste med navnet «%s» finnes allerede. Velg den fra listen, eller velg et annet navn."
-
-#: 
-msgid "A new ministry"
-msgstr "En ny tjeneste"
-
-#: 
-msgid "A position"
-msgstr "En oppgave"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Legge til {{total}} frivillige i oppgaver som er konvertert tidligere?"
-
-#: 
-msgid "Already converted"
-msgstr "Allerede konvertert"
-
-#: 
-msgid "An existing ministry"
-msgstr "En eksisterende tjeneste"
-
-#: 
-msgid "Becomes"
-msgstr "Blir"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM har to måter å administrere frivillige på. Bare én er ment å være i bruk om gangen; innstillingen «Frivilligopplevelse» avgjør hvilken denne menigheten ser. Et bytte skjuler eller viser sider og menyvalg og sletter aldri data. V1 og Begge tilbys bare mens Muligheter for frivillige er i bruk: når alle mulighetene er konvertert og menigheten bruker V2, forsvinner de fra listen."
-
-#: 
-msgid "Convert"
-msgstr "Konverter"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Konverter Muligheter for frivillige"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Konvertere {{total}} muligheter nå? V1-dataene beholdes som de er til Muligheter for frivillige fases ut."
-
-#: 
-msgid "Converted"
-msgstr "Konvertert"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Konvertert: {{positions}} oppgaver og {{ministries}} tjenester, {{qualifications}} frivillige kvalifisert."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Hver mulighet blir en oppgave i det første teamet i én tjeneste, og alle som er knyttet til den, blir kvalifisert for oppgaven. Selvpåmelding er først slått av for disse oppgavene."
-
-#: 
-msgid "Everything is converted."
-msgstr "Alt er konvertert."
-
-#: 
-msgid "Existing ministry"
-msgstr "Eksisterende tjeneste"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Gi den nye tjenesten et navn på opptil 100 tegn."
-
-#: 
-msgid "Its own ministry"
-msgstr "En egen tjeneste"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Knyttet til siden: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Koblinger som ikke kan konverteres"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Egne nye tjenester"
-
-#: 
-msgid "New ministry name"
-msgstr "Navn på ny tjeneste"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Ingen e-post sendes, og Muligheter for frivillige forblir som de er til de fases ut."
-
-#: 
-msgid "No name"
-msgstr "Uten navn"
-
-#: 
-msgid "Not converted"
-msgstr "Ikke konvertert"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Åpne Funksjonsbrytere"
-
-#: 
-msgid "Open Ministries"
-msgstr "Åpne Tjenester"
-
-#: 
-msgid "Opportunities"
-msgstr "Muligheter"
-
-#: 
-msgid "Opportunity"
-msgstr "Mulighet"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mulighet nr. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Personer knyttet til konverterte Muligheter for frivillige siden konverteringen: %d. Legg dem til i oppgavene deres før Muligheter for frivillige fases ut tidlig i 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Forhåndsvis konverteringen først, og send revisjonen den returnerte."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Gitt nytt navn for å holde navnene unike"
-
-#: 
-msgid "Review the conversion"
-msgstr "Gjennomgå konverteringen"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Send konverteringsvalget som et JSON-objekt."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Send mulighetene som blir tjenester, som en liste med ID-er."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Den tjenesten finnes ikke."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "ChurchCRM-versjonen der en administrator lukket varselet om at Muligheter for frivillige fases ut."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Muligheter for frivillige er endret siden forhåndsvisningen. Sjekk forhåndsvisningen på nytt, og konverter deretter."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Bekreftelsen kunne ikke åpnes. Last inn siden på nytt og prøv igjen."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Konverteringen kunne ikke forhåndsvises."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Konverteringen mislyktes. Ingenting ble endret."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Tjenesten «%s» har ikke noe team for oppgavene."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Serveren kunne ikke nås. Last inn siden på nytt for å se om konverteringen ble kjørt."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Det finnes ingen Muligheter for frivillige å konvertere."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Frivillighetsstyring bytter til Begge, slik at de nye tjenestene vises ved siden av Muligheter for frivillige."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Muligheter for frivillige fases ut"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Muligheter for frivillige konvertert"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Muligheter for frivillige fases ut tidlig i 2027. Konverter dem til Tjenester for å beholde hvem som er frivillig hvor."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Muligheter for frivillige fases ut tidlig i 2027. Konverter dine %1$d muligheter og %2$d frivillige til Tjenester nå. Du kan forhåndsvise resultatet før noe endres."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Kvalifiserte frivillige"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Frivillige som skal legges til i konverterte oppgaver"
-
-#: 
-msgid "What it becomes"
-msgstr "Hva den blir"
-
-#: 
-msgid "What will happen"
-msgstr "Hva som vil skje"
-
-#: 
-msgid "Where they go"
-msgstr "Hvor de havner"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Hvilke eldre Muligheter for frivillige som er konvertert, og hvilken oppgave hver av dem ble."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Hvilken frivilligopplevelse denne menigheten bruker. Muligheter for frivillige (V1) fases ut tidlig i 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Mulighetene for frivillige er konvertert til Tjenester. Bytt Frivillighetsstyring til V2 før Muligheter for frivillige fases ut tidlig i 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "til en ny tjeneste, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "til tjenesten {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "ikke lenger i ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26869,10 +26418,6 @@ msgstr[0] "%d standardvalg hoppet over av en annen grunn (gjennomføringen er ov
 msgstr[1] "%d standardvalg hoppet over av en annen grunn (gjennomføringen er over, avlyst eller full)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "En overgangsinnstilling. Både de gamle sidene for frivillige muligheter og de nye sidene for tjenester er tilgjengelige, og en personpost viser begge frivillig-fanene, tydelig merket. Bruk den mens du flytter en menighet fra V1 til V2, og bytt deretter til bare V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Tildeling avbrutt"
 
@@ -26919,10 +26464,6 @@ msgstr "Denne datoen ble avlyst. Du trenger ikke gjøre noe mer."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Denne gjennomføringen er avlyst"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Frivillig arbeid organisert slik en menighet driver det. Hver tjeneste har team og oppgaver; personer er kvalifisert for oppgaver og tilhører tjenestens poolgruppe; planer følger arrangementene i kalenderen og lager daterte gjennomføringer med bemanningskrav; koordinatorer tildeler personer, som takker ja, takker nei eller foreslår en vikar; påminnelser og varsler sendes på e-post. Administratorer og brukere med tilgangen Administrer tjenester ser alle tjenester og kan opprette, deaktivere og slette dem. En tjenestekoordinator får i stedet tilgangen Administrer mine tjenester: overskriften Tjenester i sidemenyen viser da bare tjenestene vedkommende koordinerer. En teamleder leder teamet sitt fra Medlemsportalen. Medlemmer bruker Medlemsportalen til å se planen sin, svare, melde seg på og tilby hjelp."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27621,10 +27162,6 @@ msgstr "Vis arrangementer"
 #: 
 msgid "View people and families"
 msgstr "Vis personer og familier"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Frivilligadministrasjon er slått av for denne kirken"
 
 #: 
 msgid "Weak"

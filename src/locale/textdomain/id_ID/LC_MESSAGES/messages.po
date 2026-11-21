@@ -1370,10 +1370,6 @@ msgid "Default"
 msgstr "Default"
 
 #: 
-msgid "Exit"
-msgstr "Keluar"
-
-#: 
 msgid "Add New"
 msgstr "Tambah baru"
 
@@ -1476,10 +1472,6 @@ msgstr "Perbarui Properti"
 #: 
 msgid "Assign New Group"
 msgstr "Tetapkan Grup Baru"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Tetapkan Peluang Relawan Baru"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1595,10 +1587,6 @@ msgid "Restore Database"
 msgstr "Pulihkan Database"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Harap konfirmasi penghapusan"
-
-#: 
 msgid "Listing"
 msgstr "Daftar"
 
@@ -1685,14 +1673,6 @@ msgstr "kata sandi baru"
 #: 
 msgid "Confirm New Password"
 msgstr "Konfirmasi password baru"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Editor Peluang Sukarelawan"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Belum ada peluang sukarela yang ditambahkan"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6375,20 +6355,8 @@ msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Tugaskan Pelayanan"
-
-#: 
 msgid "Choose a property..."
 msgstr "Pilih properti..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Pilih bidang pelayanan..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontak & Info Pribadi"
 
 #: 
 msgid "Edited"
@@ -6397,14 +6365,6 @@ msgstr "Telah Diubah"
 #: 
 msgid "Newsletter"
 msgstr "Warta Jemaat"
-
-#: 
-msgid "Personal"
-msgstr "Pribadi"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Pilih Bidang Pelayanan"
 
 #: 
 msgid "Volunteer"
@@ -6589,10 +6549,6 @@ msgid "Confirm Property Deletion"
 msgstr "Konfirmasi Penghapusan Properti"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Konfirmasi Penghapusan Pelayanan"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Konfirmasi Penghapusan"
 
@@ -6605,16 +6561,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Kolom Kustom Jemaat Saat Ini"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Daftar Bidang Pelayanan"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Kolom berhasil dihapus"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF tidak valid"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8377,10 +8325,6 @@ msgid "Create or edit property type categories"
 msgstr "Buat atau edit kategori tipe properti"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Buat atau edit posisi sukarelawan"
-
-#: 
 msgid "Current person"
 msgstr "Orang saat ini"
 
@@ -8829,10 +8773,6 @@ msgid "Manage user account details and permissions"
 msgstr "Kelola detail akun pengguna dan izin"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Kelola peluang sukarelawan dan tetapkan anggota"
-
-#: 
 msgid "Map cart items"
 msgstr "Petakan item daftar"
 
@@ -8951,10 +8891,6 @@ msgstr "Tidak ada hasil ditemukan"
 #: 
 msgid "No timeline events yet."
 msgstr "Belum ada peristiwa linimasa."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Belum ada penetapan peluang sukarelawan."
 
 #: 
 msgid "Not ready yet?"
@@ -9459,10 +9395,6 @@ msgid "funds"
 msgstr "dana"
 
 #: 
-msgid "opportunities"
-msgstr "peluang"
-
-#: 
 msgid "or connect an external service"
 msgstr "atau hubungkan layanan eksternal"
 
@@ -9762,11 +9694,6 @@ msgstr "Gagal mengambil alamat email"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Gagal mengambil nomor telepon"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Temukan sukarelawan untuk peluang tertentu"
 
 #. Context: query_qry
 #: 
@@ -12532,10 +12459,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Tidak dapat menghapus jenis properti: %d properti masih mereferensikannya. Tetapkan ulang atau hapus properti tersebut terlebih dahulu."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Tidak dapat menghapus kesempatan sukarela: %d orang masih ditugaskan. Hapus penugasan tersebut terlebih dahulu."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Kelas harus salah satu dari p, f, atau g"
 
@@ -12546,10 +12469,6 @@ msgstr "Salin pesan kesalahan"
 #: 
 msgid "Could not load note."
 msgstr "Tidak dapat memuat catatan."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Deskripsi tidak boleh melebihi 100 karakter"
 
 #: 
 msgid "Donation fund not found"
@@ -12572,10 +12491,6 @@ msgid "Failed to create property type"
 msgstr "Gagal membuat jenis properti"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Gagal membuat kesempatan sukarela"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Gagal menghapus dana donasi"
 
@@ -12592,10 +12507,6 @@ msgid "Failed to delete property type"
 msgstr "Gagal menghapus jenis properti"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Gagal menghapus kesempatan sukarela"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Gagal memperbarui dana donasi"
 
@@ -12608,10 +12519,6 @@ msgid "Failed to update property type"
 msgstr "Gagal memperbarui jenis properti"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Gagal memperbarui kesempatan sukarela"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Penggalangan dana tidak ditemukan"
 
@@ -12622,10 +12529,6 @@ msgstr "ID Instalasi"
 #: 
 msgid "Invalid class"
 msgstr "Kelas tidak valid"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Nama tidak boleh melebihi 30 karakter"
 
 #: 
 msgid "Note by %s deleted"
@@ -12648,16 +12551,8 @@ msgid "Read more"
 msgstr "Baca selengkapnya"
 
 #: 
-msgid "That name already exists."
-msgstr "Nama tersebut sudah ada."
-
-#: 
 msgid "Title is required"
 msgstr "Judul wajib diisi"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Kesempatan sukarela tidak ditemukan"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15025,10 +14920,6 @@ msgid "Target family"
 msgstr "Keluarga tujuan"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Kelompok tidak dapat ditemukan. Silakan coba lagi."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Keluarga yang dipilih sudah tidak ada. Silakan muat ulang halaman dan coba lagi."
 
@@ -15243,10 +15134,6 @@ msgstr "Format yang didukung"
 #: 
 msgid "System Configuration"
 msgstr "Konfigurasi Sistem"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15477,10 +15364,6 @@ msgid "Add New Fund"
 msgstr "Tambah Dana Baru"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Tambah Kesempatan Baru"
-
-#: 
 msgid "Add New Person"
 msgstr "Tambah Orang Baru"
 
@@ -15493,10 +15376,6 @@ msgid "Add New Role"
 msgstr "Tambah Peran Baru"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Tambah Kesempatan Sukarela Baru"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Tambah Kelas Sekolah Minggu"
 
@@ -15507,10 +15386,6 @@ msgstr "Hapus keluarga ini?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tinjau keluarga dan individu baru yang mendaftar melalui formulir pendaftaran publik Anda"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Konfirmasi Penghapusan Kesempatan Sukarela"
 
 #: 
 msgid "# Payments"
@@ -17175,14 +17050,6 @@ msgid "Find people who did not attend an event"
 msgstr "Temukan orang-orang yang tidak menghadiri acara"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Temukan relawan yang sesuai dengan dua kode peluang spesifik"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Peluang Relawan Pertama"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Brosur Terlipat"
 
@@ -17259,10 +17126,6 @@ msgid "Run Report"
 msgstr "Jalankan Laporan"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Peluang Relawan Kedua"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Ditampilkan di bilah sisi, di halaman login, dan di email. Mengunggah logo menggantikan branding ChurchCRM di mana pun logo tersebut muncul."
 
@@ -17289,14 +17152,6 @@ msgstr "Menggunakan logo ChurchCRM default"
 #: 
 msgid "View Full Family Giving"
 msgstr "Lihat Pemberian Keluarga Lengkap"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Peluang Relawan"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Relawan untuk Dua Peluang"
 
 #: 
 msgid "YTD"
@@ -18116,10 +17971,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Jadwal yang melayani satu acara tidak dapat mengikuti acara lain; hapus dan tambahkan jadwal baru"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Satu daftar peluang pelayanan, seperti \"Pembibitan\" atau \"Penyambut\", disimpan di Jemaat → Admin. Setiap orang diberi tag peluang yang bersedia ia bantu, di tab Relawan pada datanya. Hanya itu yang dicatat: tidak ada tim, jadwal, penugasan pada tanggal tertentu, maupun email pengingat. Laporan dan data orang adalah tempat tag itu digunakan."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Foto wajah berbentuk persegi paling baik."
 
@@ -18426,18 +18277,6 @@ msgstr "Tugas latar belakang berjalan"
 #: 
 msgid "Birthday greeting"
 msgstr "Ucapan ulang tahun"
-
-#: 
-msgid "Both"
-msgstr "Keduanya"
-
-#: 
-msgid "Both (transition)"
-msgstr "Keduanya (transisi)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Keduanya — V1 dan V2 berdampingan (transisi)"
 
 #: 
 msgid "Calendar address"
@@ -21520,22 +21359,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Pengguna harus memiliki izin Tambah Acara, atau mengoordinasikan pelayanan relawan yang memiliki kalender ini"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Peluang Relawan (lama)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Peluang Relawan lama"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Pelayanan"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Manajemen Relawan"
-
-#: 
 msgid "Valid"
 msgstr "Valid"
 
@@ -21554,14 +21377,6 @@ msgstr "Lihat acara"
 #: 
 msgid "View this email"
 msgstr "Lihat email ini"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Relawan (Lama)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Manajemen Relawan V2 tidak diaktifkan"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21666,10 +21481,6 @@ msgid "What the check found"
 msgstr "Hasil pemeriksaan"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Apa saja pengalaman relawan itu"
-
-#: 
 msgid "What you want to say"
 msgstr "Apa yang ingin Anda sampaikan"
 
@@ -21700,10 +21511,6 @@ msgstr "Dari mana tanggal berasal"
 #: 
 msgid "Where we reach you"
 msgstr "Cara kami menghubungi Anda"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Pengalaman Manajemen Relawan mana yang aktif. V1 adalah fitur Peluang Relawan lama; V2 adalah alur penjadwalan dan penugasan baru. \"Keduanya\" menampilkan keduanya berdampingan selama migrasi."
 
 #: 
 msgid "Which events"
@@ -22112,10 +21919,6 @@ msgstr "Tidak diizinkan mengubah kelompok penonton acara ini"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Hanya manajer relawan yang dapat mengubah siapa yang mengoordinasi pelayanan"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Memilih V1 menghentikan sementara email relawan V2; apa pun yang antri akan dikirim ketika V2 kembali aktif, kecuali jika kejadiannya sudah berakhir."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22960,10 +22763,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Waktu tenggang peringatan posisi kosong (jam)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Pengelolaan Relawan"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Pelayanan relawan, tim, jadwal, dan penugasan"
 
@@ -22974,14 +22773,6 @@ msgstr "Posisi relawan yang perlu diisi pada hari-hari mendatang"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Relawan masih dibutuhkan untuk sesi mendatang ini: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Apa arti ini?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Pengalaman relawan mana yang dipakai gereja ini"
 
 #: 
 msgid "You are on the schedule"
@@ -26352,248 +26143,8 @@ msgid "Review Family Information"
 msgstr "Tinjau Informasi Keluarga"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Pelayanan bernama \"%s\" sudah ada. Pilih dari daftar, atau gunakan nama lain."
-
-#: 
-msgid "A new ministry"
-msgstr "Pelayanan baru"
-
-#: 
-msgid "A position"
-msgstr "Sebuah posisi"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Tambahkan {{total}} relawan ke posisi yang sebelumnya dikonversi?"
-
-#: 
-msgid "Already converted"
-msgstr "Sudah dikonversi"
-
-#: 
-msgid "An existing ministry"
-msgstr "Pelayanan yang sudah ada"
-
-#: 
-msgid "Becomes"
-msgstr "Menjadi"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang semestinya digunakan pada satu waktu; pengaturan \"Pengalaman relawan\" menentukan mana yang dilihat gereja ini. Beralih hanya menyembunyikan atau menampilkan halaman dan item menu, dan tidak pernah menghapus data. V1 dan Keduanya hanya ditawarkan selama Peluang Relawan masih digunakan: setelah semua peluang dikonversi dan gereja memakai V2, keduanya hilang dari daftar ini."
-
-#: 
-msgid "Convert"
-msgstr "Konversi"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Konversi Peluang Relawan"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Konversi {{total}} peluang sekarang? Data V1 tetap seperti apa adanya hingga Peluang Relawan dihentikan."
-
-#: 
-msgid "Converted"
-msgstr "Dikonversi"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Dikonversi: {{positions}} posisi dan {{ministries}} pelayanan, {{qualifications}} relawan memenuhi syarat."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Setiap peluang menjadi posisi di tim pertama dari satu pelayanan, dan semua orang yang terhubung dengannya memenuhi syarat untuk posisi tersebut. Daftar mandiri awalnya nonaktif pada posisi-posisi ini."
-
-#: 
-msgid "Everything is converted."
-msgstr "Semuanya sudah dikonversi."
-
-#: 
-msgid "Existing ministry"
-msgstr "Pelayanan yang sudah ada"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Beri nama pelayanan baru maksimal 100 karakter."
-
-#: 
-msgid "Its own ministry"
-msgstr "Pelayanan tersendiri"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Terhubung sejak itu: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Tautan yang tidak dapat dikonversi"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Pelayanan baru tersendiri"
-
-#: 
-msgid "New ministry name"
-msgstr "Nama pelayanan baru"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Tidak ada email yang dikirim, dan Peluang Relawan tetap seperti apa adanya hingga dihentikan."
-
-#: 
-msgid "No name"
-msgstr "Tanpa nama"
-
-#: 
-msgid "Not converted"
-msgstr "Belum dikonversi"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Buka Pengalih Fitur"
-
-#: 
-msgid "Open Ministries"
-msgstr "Buka Pelayanan"
-
-#: 
-msgid "Opportunities"
-msgstr "Peluang"
-
-#: 
-msgid "Opportunity"
-msgstr "Peluang"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Peluang #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Orang yang terhubung ke Peluang Relawan yang sudah dikonversi sejak konversi: %d. Tambahkan mereka ke posisinya sebelum Peluang Relawan dihentikan pada awal 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Pratinjau konversi terlebih dahulu, lalu kirim revisi yang dikembalikannya."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Diganti namanya agar nama tetap unik"
-
-#: 
-msgid "Review the conversion"
-msgstr "Tinjau konversi"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Kirim pilihan konversi sebagai objek JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Kirim peluang yang menjadi pelayanan sebagai daftar ID."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Pelayanan itu tidak ada."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Versi ChurchCRM tempat administrator menutup pemberitahuan penghentian Peluang Relawan."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Peluang Relawan telah berubah sejak pratinjau. Periksa pratinjau lagi, lalu konversi."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Konfirmasi tidak dapat dibuka. Muat ulang halaman dan coba lagi."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Konversi tidak dapat dipratinjau."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Konversi gagal. Tidak ada yang diubah."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Pelayanan \"%s\" tidak memiliki tim untuk menampung posisi."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Server tidak dapat dihubungi. Muat ulang halaman untuk melihat apakah konversi sudah berjalan."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Tidak ada Peluang Relawan untuk dikonversi."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Pengelolaan Relawan beralih ke Keduanya, sehingga pelayanan baru terlihat di samping Peluang Relawan."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Peluang Relawan akan dihentikan"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Peluang Relawan dikonversi"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan menjadi Pelayanan agar data siapa melayani di mana tetap tersimpan."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan %1$d peluang dan %2$d relawan Anda menjadi Pelayanan sekarang. Anda dapat melihat pratinjau hasilnya sebelum ada yang berubah."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Relawan memenuhi syarat"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Relawan yang perlu ditambahkan ke posisi hasil konversi"
-
-#: 
-msgid "What it becomes"
-msgstr "Menjadi apa"
-
-#: 
-msgid "What will happen"
-msgstr "Apa yang akan terjadi"
-
-#: 
-msgid "Where they go"
-msgstr "Ke mana mereka pergi"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Peluang Relawan lama mana yang telah dikonversi, dan posisi yang menjadi hasil masing-masing."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Pengalaman relawan yang digunakan gereja ini. Peluang Relawan (V1) akan dihentikan pada awal 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Peluang Relawan Anda telah dikonversi menjadi Pelayanan. Ubah Pengelolaan Relawan ke V2 sebelum Peluang Relawan dihentikan pada awal 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "ke pelayanan baru, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "ke pelayanan {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "sudah tidak ada di ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26768,10 +26319,6 @@ msgid_plural "%d defaults skipped for another reason (the occurrence is over, ca
 msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Penugasan dibatalkan"
 
@@ -26818,10 +26365,6 @@ msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Kejadian ini dibatalkan"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27517,10 +27060,6 @@ msgstr "Melihat acara"
 #: 
 msgid "View people and families"
 msgstr "Melihat orang dan keluarga"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Manajemen Relawan dimatikan untuk gereja ini"
 
 #: 
 msgid "Weak"

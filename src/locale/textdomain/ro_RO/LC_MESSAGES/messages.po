@@ -1406,10 +1406,6 @@ msgid "Default"
 msgstr "Lipsă"
 
 #: 
-msgid "Exit"
-msgstr "Ieșire"
-
-#: 
 msgid "Add New"
 msgstr "Adăugați noi"
 
@@ -1514,11 +1510,6 @@ msgstr "Actualizează proprietăți"
 #: 
 msgid "Assign New Group"
 msgstr "Alocă grup nou"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Atribui o oportunitate Voluntar nou"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1636,11 +1627,6 @@ msgid "Restore Database"
 msgstr "Restaurează bază de date"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Vă rugăm să confirmați ștergerea"
-
-#: 
 msgid "Listing"
 msgstr "Listare"
 
@@ -1732,14 +1718,6 @@ msgstr "Parolă nouă"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Confirmați noua parolă"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Voluntari oportunitate Editor"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Nu oportunitățile de voluntariat au fost încă adăugate"
 
 #: 
 msgid "Why did you come to the church?"
@@ -6444,20 +6422,8 @@ msgid "Additional Information"
 msgstr "Informații suplimentare"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Atribuire oportunități"
-
-#: 
 msgid "Choose a property..."
 msgstr "Alegeți o proprietate..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Alegeți oportunități..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Informații de contact și personale"
 
 #: 
 msgid "Edited"
@@ -6466,14 +6432,6 @@ msgstr "Editat"
 #: 
 msgid "Newsletter"
 msgstr "Buletin informativ"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Selectați oportunități"
 
 #: 
 msgid "Volunteer"
@@ -6662,10 +6620,6 @@ msgid "Confirm Property Deletion"
 msgstr "Confirmă ștergerea proprietății"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Confirmă ștergerea oportunității de voluntariat"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Confirmare ștergere"
 
@@ -6678,16 +6632,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Câmpuri personalizate de persoană existente"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Oportunități de voluntariat existente"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Câmp șters cu succes"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF nevalid"
 
 #: 
 msgid "Invalid fields or selections."
@@ -8456,10 +8402,6 @@ msgid "Create or edit property type categories"
 msgstr "Creați sau editați categorii de tipuri de proprietăți"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Creați sau editați poziții de voluntariat"
-
-#: 
 msgid "Current person"
 msgstr "Persoana curentă"
 
@@ -8908,10 +8850,6 @@ msgid "Manage user account details and permissions"
 msgstr "Gestionează detaliile contului de utilizator și permisiunile"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Gestionează oportunitățile de voluntariat și atribuiți membri"
-
-#: 
 msgid "Map cart items"
 msgstr "Afișează selecția pe hartă"
 
@@ -9030,10 +8968,6 @@ msgstr "Nu s-au găsit rezultate"
 #: 
 msgid "No timeline events yet."
 msgstr "Niciun eveniment pe cronologie încă."
-
-#: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Nicio atribuire de voluntariat încă."
 
 #: 
 msgid "Not ready yet?"
@@ -9538,10 +9472,6 @@ msgid "funds"
 msgstr "fonduri"
 
 #: 
-msgid "opportunities"
-msgstr "oportunități"
-
-#: 
 msgid "or connect an external service"
 msgstr "sau conectați un serviciu extern"
 
@@ -9841,11 +9771,6 @@ msgstr "Eșec la preluarea adreselor de e-mail"
 #: 
 msgid "Failed to retrieve phone numbers"
 msgstr "Eșec la preluarea numerelor de telefon"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Gasiti voluntari pentru o anumita oportunitate"
 
 #. Context: query_qry
 #: 
@@ -12613,10 +12538,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Nu se poate șterge tipul de proprietate: %d proprietăți îl referă încă. Reasignați sau ștergeți mai întâi acele proprietăți."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Nu se poate șterge oportunitatea de voluntariat: %d persoane sunt încă atribuite. Eliminați mai întâi atribuirile."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Clasa trebuie să fie p, f sau g"
 
@@ -12627,10 +12548,6 @@ msgstr "Copiați mesajul de eroare"
 #: 
 msgid "Could not load note."
 msgstr "Nu s-a putut încărca nota."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Descrierea nu poate depăși 100 de caractere"
 
 #: 
 msgid "Donation fund not found"
@@ -12653,10 +12570,6 @@ msgid "Failed to create property type"
 msgstr "Crearea tipului de proprietate a eșuat"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Crearea oportunității de voluntariat a eșuat"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Ștergerea fondului de donații a eșuat"
 
@@ -12673,10 +12586,6 @@ msgid "Failed to delete property type"
 msgstr "Ștergerea tipului de proprietate a eșuat"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Ștergerea oportunității de voluntariat a eșuat"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Actualizarea fondului de donații a eșuat"
 
@@ -12689,10 +12598,6 @@ msgid "Failed to update property type"
 msgstr "Actualizarea tipului de proprietate a eșuat"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Actualizarea oportunității de voluntariat a eșuat"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Campania de strângere de fonduri nu a fost găsită"
 
@@ -12703,10 +12608,6 @@ msgstr "ID instalare"
 #: 
 msgid "Invalid class"
 msgstr "Clasă invalidă"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Numele nu poate depăși 30 de caractere"
 
 #: 
 msgid "Note by %s deleted"
@@ -12729,16 +12630,8 @@ msgid "Read more"
 msgstr "Citiți mai mult"
 
 #: 
-msgid "That name already exists."
-msgstr "Acel nume există deja."
-
-#: 
 msgid "Title is required"
 msgstr "Titlul este obligatoriu"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Oportunitatea de voluntariat nu a fost găsită"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -15112,10 +15005,6 @@ msgid "Target family"
 msgstr "Familia destinatară"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Grupul nu a putut fi găsit. Vă rugăm să încercați din nou."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Familia selectată nu mai există. Vă rugăm să reîncărcați pagina și să încercați din nou."
 
@@ -15330,10 +15219,6 @@ msgstr "Formate acceptate"
 #: 
 msgid "System Configuration"
 msgstr "Configurare sistem"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Exista persoane atribuite acestei oportunitati de voluntariat. Stergerea va deatribui"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15564,10 +15449,6 @@ msgid "Add New Fund"
 msgstr "Adaugati un fond nou"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Adaugati o oportunitate noua"
-
-#: 
 msgid "Add New Person"
 msgstr "Adaugati o persoana noua"
 
@@ -15580,10 +15461,6 @@ msgid "Add New Role"
 msgstr "Adaugati un rol nou"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Adaugati o oportunitate de voluntariat noua"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Adaugati o clasa de Scoala Duminicala"
 
@@ -15594,10 +15471,6 @@ msgstr "Stergeti aceasta familie?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Examinati familiile si persoanele noi care s-au inregistrat prin formularul public de inregistrare"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Confirmare stergere oportunitate de voluntariat"
 
 #: 
 msgid "# Payments"
@@ -17266,14 +17139,6 @@ msgid "Find people who did not attend an event"
 msgstr "Găsiți persoane care nu au participat la un eveniment"
 
 #: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Găsiți voluntari care corespund cu două coduri de oportunitate specifice"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Prima oportunitate de voluntariat"
-
-#: 
 msgid "Folded Booklet"
 msgstr "Bro șură pliantă"
 
@@ -17350,10 +17215,6 @@ msgid "Run Report"
 msgstr "Executați raportul"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "A doua oportunitate de voluntariat"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Afișat în bara laterală, pe pagina de login și în email-uri. Încărcarea unui logo înlocuiește branding-ul ChurchCRM peste tot unde apare."
 
@@ -17380,14 +17241,6 @@ msgstr "Utilizarea logo-ului implicit al ChurchCRM"
 #: 
 msgid "View Full Family Giving"
 msgstr "Vizualizați donațiile complete ale familiei"
-
-#: 
-msgid "Volunteer Opportunity"
-msgstr "Oportunitate de voluntariat"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Voluntari pentru două oportunități"
 
 #: 
 msgid "YTD"
@@ -18221,10 +18074,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Un program care asigură personal pentru un singur eveniment nu poate urma alte evenimente; ștergeți-l și adăugați un program"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "O listă simplă de oportunități, cum ar fi „Creșă” sau „Primire”, păstrată la Persoane → Administrare. Fiecare persoană este etichetată cu oportunitățile la care este dispusă să ajute, în fila Voluntar din fișa sa. Atât se înregistrează: nu există echipe, programe, repartizări la o dată și nici e-mailuri de reamintire. Etichetele sunt folosite în rapoarte și în fișa persoanei."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "O fotografie pătrată a chipului dumneavoastră funcționează cel mai bine."
 
@@ -18531,18 +18380,6 @@ msgstr "Procesele de fundal au rulat"
 #: 
 msgid "Birthday greeting"
 msgstr "Felicitare de zi de naștere"
-
-#: 
-msgid "Both"
-msgstr "Ambele"
-
-#: 
-msgid "Both (transition)"
-msgstr "Ambele (tranziție)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Ambele — V1 și V2 alături (tranziție)"
 
 #: 
 msgid "Calendar address"
@@ -21633,22 +21470,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Utilizatorul trebuie să aibă permisiunea Adăugare eveniment sau să coordoneze slujirea de voluntari căreia îi aparține acest calendar"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Oportunități de voluntariat (vechi)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — Oportunități de voluntariat vechi"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Slujiri"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Gestionarea voluntarilor"
-
-#: 
 msgid "Valid"
 msgstr "Valid"
 
@@ -21667,14 +21488,6 @@ msgstr "Vezi evenimentul"
 #: 
 msgid "View this email"
 msgstr "Vezi acest e-mail"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Voluntar (vechi)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Gestionarea voluntarilor V2 nu este activată"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21783,10 +21596,6 @@ msgid "What the check found"
 msgstr "Ce a găsit verificarea"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Care sunt experiențele de voluntariat"
-
-#: 
 msgid "What you want to say"
 msgstr "Ce doriți să spuneți"
 
@@ -21817,10 +21626,6 @@ msgstr "De unde provin datele"
 #: 
 msgid "Where we reach you"
 msgstr "Unde vă putem contacta"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Care experiență de gestionare a voluntarilor este activă. V1 este vechea funcție Oportunități de voluntariat; V2 este noul flux de programare și repartizare. „Ambele” le arată alături în timpul migrării."
 
 #: 
 msgid "Which events"
@@ -22229,10 +22034,6 @@ msgstr "Nu este autorizat să modifice grupul de public al acestui eveniment"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Doar un coordonator de voluntari poate modifica cine coordonează un ministeriu"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Alegerea V1 suspendă emailul de voluntar V2; orice este în coadă este trimis când V2 se reactivează, cu excepția cazului în care apariția sa s-a încheiat."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -23077,10 +22878,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Timp de anticipare al alertei pentru posturi neocupate (ore)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Gestionarea voluntarilor"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Slujiri de voluntari, echipe, programe și repartizări"
 
@@ -23091,14 +22888,6 @@ msgstr "Posturi de voluntariat de ocupat în zilele următoare"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Voluntari încă necesari pentru aceste ocurențe viitoare: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Ce înseamnă acestea?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Ce experiență de voluntari folosește această parohie"
 
 #: 
 msgid "You are on the schedule"
@@ -26469,248 +26258,8 @@ msgid "Review Family Information"
 msgstr "Verifică informațiile familiei"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Există deja o slujire numită „%s”. Alegeți-o din listă sau alegeți alt nume."
-
-#: 
-msgid "A new ministry"
-msgstr "O slujire nouă"
-
-#: 
-msgid "A position"
-msgstr "Un post"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Adăugați voluntarii ({{total}}) la posturile convertite anterior?"
-
-#: 
-msgid "Already converted"
-msgstr "Deja convertită"
-
-#: 
-msgid "An existing ministry"
-msgstr "O slujire existentă"
-
-#: 
-msgid "Becomes"
-msgstr "Devine"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul ar trebui folosit la un moment dat; setarea „Experiența voluntarilor” decide pe care îl vede această biserică. Comutarea ascunde sau afișează pagini și elemente de meniu și nu șterge niciodată date. V1 și Ambele sunt oferite doar cât timp sunt folosite Oportunitățile de voluntariat: după ce fiecare oportunitate este convertită și biserica folosește V2, ele dispar din această listă."
-
-#: 
-msgid "Convert"
-msgstr "Convertește"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Convertește Oportunitățile de voluntariat"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Convertiți acum oportunitățile ({{total}})? Datele V1 rămân neschimbate până la retragerea Oportunităților de voluntariat."
-
-#: 
-msgid "Converted"
-msgstr "Convertită"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Convertit: posturi – {{positions}}, slujiri – {{ministries}}, voluntari calificați – {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Fiecare oportunitate devine un post în prima echipă a unei slujiri, iar toți cei legați de ea devin calificați pentru acel post. Autoînscrierea este inițial dezactivată pentru aceste posturi."
-
-#: 
-msgid "Everything is converted."
-msgstr "Totul este convertit."
-
-#: 
-msgid "Existing ministry"
-msgstr "Slujire existentă"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Dați noii slujiri un nume de cel mult 100 de caractere."
-
-#: 
-msgid "Its own ministry"
-msgstr "Propria slujire"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Legați de atunci: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Legături care nu pot fi convertite"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Slujiri noi proprii"
-
-#: 
-msgid "New ministry name"
-msgstr "Numele noii slujiri"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Nu se trimite niciun e-mail, iar Oportunitățile de voluntariat rămân neschimbate până la retragerea lor."
-
-#: 
-msgid "No name"
-msgstr "Fără nume"
-
-#: 
-msgid "Not converted"
-msgstr "Neconvertită"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Deschide Comutatoare de caracteristici"
-
-#: 
-msgid "Open Ministries"
-msgstr "Deschide Slujiri"
-
-#: 
-msgid "Opportunities"
-msgstr "Oportunități"
-
-#: 
-msgid "Opportunity"
-msgstr "Oportunitate"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Oportunitatea nr. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Persoane legate de Oportunități de voluntariat convertite de la conversie încoace: %d. Adăugați-le la posturile lor înainte ca Oportunitățile de voluntariat să fie retrase la începutul lui 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Previzualizați mai întâi conversia și trimiteți revizia returnată."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Redenumit pentru ca numele să fie unice"
-
-#: 
-msgid "Review the conversion"
-msgstr "Verifică conversia"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Trimiteți alegerea de conversie ca obiect JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Trimiteți oportunitățile care devin slujiri ca listă de ID-uri."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Slujirea respectivă nu există."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Versiunea ChurchCRM în care un administrator a închis notificarea despre retragerea Oportunităților de voluntariat."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Oportunitățile de voluntariat s-au schimbat de la previzualizare. Verificați din nou previzualizarea, apoi convertiți."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Confirmarea nu a putut fi deschisă. Reîncărcați pagina și încercați din nou."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Conversia nu a putut fi previzualizată."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Conversia a eșuat. Nu s-a modificat nimic."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Slujirea „%s” nu are nicio echipă pentru posturi."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Serverul nu a putut fi contactat. Reîncărcați pagina pentru a vedea dacă s-a efectuat conversia."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nu există Oportunități de voluntariat de convertit."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Gestionarea voluntarilor trece la Ambele, astfel încât noile slujiri să fie vizibile lângă Oportunitățile de voluntariat."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Oportunitățile de voluntariat sunt retrase"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Oportunități de voluntariat convertite"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Oportunitățile de voluntariat vor fi retrase la începutul lui 2027. Convertiți-le în Slujiri pentru a păstra cine unde slujește."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Oportunitățile de voluntariat vor fi retrase la începutul lui 2027. Convertiți acum în Slujiri oportunitățile (%1$d) și voluntarii (%2$d). Puteți previzualiza rezultatul înainte să se schimbe ceva."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Voluntari calificați"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Voluntari de adăugat la posturile convertite"
-
-#: 
-msgid "What it becomes"
-msgstr "Ce devine"
-
-#: 
-msgid "What will happen"
-msgstr "Ce se va întâmpla"
-
-#: 
-msgid "Where they go"
-msgstr "Unde ajung"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Ce Oportunități de voluntariat vechi au fost convertite și postul în care s-a transformat fiecare."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Ce experiență de voluntariat folosește această biserică. Oportunitățile de voluntariat (V1) vor fi retrase la începutul lui 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Oportunitățile dvs. de voluntariat au fost convertite în Slujiri. Treceți Gestionarea voluntarilor la V2 înainte ca Oportunitățile de voluntariat să fie retrase la începutul lui 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "într-o slujire nouă, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "în slujirea {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "nu mai este în ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26889,10 +26438,6 @@ msgstr[1] "%d implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fos
 msgstr[2] "%d de implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Un parametru de tranziție. Atât paginile vechi Oportunități de voluntariat, cât și noile pagini Slujiri sunt disponibile, iar fișa unei persoane arată ambele file Voluntar, clar etichetate. Folosiți-l cât mutați o biserică de la V1 la V2, apoi treceți numai la V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Repartizare anulată"
 
@@ -26939,10 +26484,6 @@ msgstr "Această dată a fost anulată. Nu mai este nevoie de nimic din partea d
 #: 
 msgid "This occurrence has been canceled"
 msgstr "Această ocurență a fost anulată"
-
-#: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Voluntariat organizat așa cum funcționează o biserică. Fiecare slujire are echipe și posturi; persoanele sunt calificate pentru posturi și aparțin grupului de voluntari al slujirii; programele urmează evenimentele din calendar și produc ocurențe datate cu cerințe de personal; coordonatorii repartizează persoane, care acceptă, refuză sau propun un înlocuitor; reamintirile și alertele se trimit prin e-mail. Administratorii și utilizatorii cu permisiunea Gestionează slujirile văd toate slujirile și le pot crea, dezactiva și șterge. Unui coordonator de slujire i se dă în schimb permisiunea Gestionează slujirile mele: titlul Slujiri din bara laterală arată atunci doar slujirile pe care le coordonează. Un lider de echipă își conduce echipa din Portalul comunității. Credincioșii folosesc Portalul comunității pentru a-și vedea programul, a răspunde, a se înscrie și a se oferi să ajute."
 
 #: 
 msgid "Count active installations and upgrade outcomes"
@@ -27644,10 +27185,6 @@ msgstr "Vizualizare de evenimente"
 #: 
 msgid "View people and families"
 msgstr "Vizualizare de persoane și familii"
-
-#: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Gestionarea voluntarilor este dezactivată pentru această biserică"
 
 #: 
 msgid "Weak"

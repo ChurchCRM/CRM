@@ -37,7 +37,7 @@ $app->group('/reports/zero-givers', function (RouteCollectorProxy $group): void 
         $families = ZeroGiversService::families($criteria['dateStart'], $criteria['dateEnd']);
         if ($families === []) {
             return $page($response, $criteria, sprintf(
-                gettext('Every member family made a payment between %s and %s.'),
+                gettext('Every active member family made a payment between %s and %s.'),
                 DateTimeUtils::formatDate($criteria['dateStart']),
                 DateTimeUtils::formatDate($criteria['dateEnd'])
             ));
