@@ -12905,10 +12905,6 @@ msgid "Deposit ID"
 msgstr "வைப்புத்தொகை ஐடி"
 
 #: 
-msgid "Deposit Value"
-msgstr "வைப்புத்தொகை மதிப்பு"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "வைப்புத்தொகை வெற்றிகரமாகச் சேமிக்கப்பட்டது"
 
@@ -24281,10 +24277,6 @@ msgid "Church default: %s"
 msgstr "திருச்சபை இயல்பு: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "திருச்சபை தலைவர் உள்நுழைவு"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "உறுப்பினர் வாயிலில் உள்நுழையக்கூடிய உறுப்பினர்களின் வகைப்பாடுகள், வகைப்பாடு அடையாளங்களின் காற்புள்ளியால் பிரிக்கப்பட்ட பட்டியல்."
 
@@ -24927,10 +24919,6 @@ msgstr "முடியவில்லை"
 #: 
 msgid "Not moved"
 msgstr "நகர்த்தப்படவில்லை"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "எங்களிடம் எந்த மின்னஞ்சல் உள்ளது என்று தெரியவில்லையா? திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
 
 #: 
 msgid "Not yet"

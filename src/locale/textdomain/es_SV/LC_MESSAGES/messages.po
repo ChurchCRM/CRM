@@ -12863,10 +12863,6 @@ msgid "Deposit ID"
 msgstr "ID de depósito"
 
 #: 
-msgid "Deposit Value"
-msgstr "Valor del depósito"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depósito guardado exitosamente"
 
@@ -24237,10 +24233,6 @@ msgid "Church default: %s"
 msgstr "Predeterminado de la iglesia: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Inicio de sesión de líderes de la iglesia"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Clasificaciones cuyos miembros pueden iniciar sesión en el Portal de miembros, como una lista de id de clasificación separados por comas."
 
@@ -24883,10 +24875,6 @@ msgstr "No terminado"
 #: 
 msgid "Not moved"
 msgstr "No trasladado"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "¿No está seguro de qué correo tenemos? Comuníquese con la oficina de la iglesia."
 
 #: 
 msgid "Not yet"

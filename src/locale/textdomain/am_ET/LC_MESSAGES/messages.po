@@ -12900,10 +12900,6 @@ msgid "Deposit ID"
 msgstr "የተቀማጭ መለያ (ID)"
 
 #: 
-msgid "Deposit Value"
-msgstr "ተቀማጭ ገንዘብ ዋጋ"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ተቀማጭ በተሳካ ሁኔታ ተቀምጧል"
 
@@ -24275,10 +24271,6 @@ msgid "Church default: %s"
 msgstr "የቤተ ክርስቲያን ነባሪ፦ %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "የቤተ ክርስቲያን መሪ መግቢያ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "አባሎቻቸው ወደ የአባላት መግቢያ ሊገቡ የሚችሉ ምደባዎች፣ በነጠላ ሰረዝ የተለዩ የምደባ መታወቂያዎች።"
 
@@ -24921,10 +24913,6 @@ msgstr "አላበቃም"
 #: 
 msgid "Not moved"
 msgstr "አልተዘዋወረም"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "የትኛው ኢሜይል እንዳለን እርግጠኛ አይደሉም? የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
 
 #: 
 msgid "Not yet"

@@ -12894,10 +12894,6 @@ msgid "Deposit ID"
 msgstr "Sissemakse ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Korjanduse väärtus"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Deposiit on edukalt salvestatud"
 
@@ -24268,10 +24264,6 @@ msgid "Church default: %s"
 msgstr "Koguduse vaikeväärtus: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Koguduse juhi sisselogimine"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klassifikatsioonid, mille liikmed võivad liikmeportaali sisse logida, klassifikatsiooni ID-de komadega eraldatud loendina."
 
@@ -24914,10 +24906,6 @@ msgstr "Ei ole lõpetatud"
 #: 
 msgid "Not moved"
 msgstr "Ei ole teisaldatud"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Ei ole kindel, milline e-posti aadress meil on? Võtke ühendust koguduse kantseleiga."
 
 #: 
 msgid "Not yet"

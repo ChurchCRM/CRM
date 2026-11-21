@@ -12852,10 +12852,6 @@ msgid "Deposit ID"
 msgstr "入金ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "献金預かり額"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "入金情報が正常に保存されました"
 
@@ -24208,10 +24204,6 @@ msgid "Church default: %s"
 msgstr "教会の既定: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "教会指導者のサインイン"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "会員ポータルにサインインできる分類です。分類IDをカンマ区切りで指定します。"
 
@@ -24854,10 +24846,6 @@ msgstr "終了していません"
 #: 
 msgid "Not moved"
 msgstr "移動していません"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "どのメールが登録されているか分からない場合は、教会事務所にご連絡ください。"
 
 #: 
 msgid "Not yet"

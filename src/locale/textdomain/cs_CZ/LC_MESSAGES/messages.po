@@ -12894,10 +12894,6 @@ msgid "Deposit ID"
 msgstr "ID vkladu"
 
 #: 
-msgid "Deposit Value"
-msgstr "Hodnota sbírky"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Vklad úspěšně uložen"
 
@@ -24286,10 +24282,6 @@ msgid "Church default: %s"
 msgstr "Výchozí nastavení sboru: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Přihlášení vedoucího sboru"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikace, jejichž členové se smějí přihlásit do členského portálu, jako seznam ID klasifikací oddělených čárkami."
 
@@ -24932,10 +24924,6 @@ msgstr "Neukončeno"
 #: 
 msgid "Not moved"
 msgstr "Nepřesunuto"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nejste si jisti, který e-mail máme? Obraťte se na kancelář sboru."
 
 #: 
 msgid "Not yet"

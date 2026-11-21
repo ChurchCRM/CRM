@@ -12866,10 +12866,6 @@ msgid "Deposit ID"
 msgstr "Talletustunnus"
 
 #: 
-msgid "Deposit Value"
-msgstr "Kolehtikeräyksen arvo"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Talletus tallennettu onnistuneesti"
 
@@ -24240,10 +24236,6 @@ msgid "Church default: %s"
 msgstr "Seurakunnan oletus: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Seurakunnan johtajan kirjautuminen"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Luokitukset, joiden jäsenet saavat kirjautua jäsenportaaliin, pilkuilla erotettuna luokitustunnusten listana."
 
@@ -24886,10 +24878,6 @@ msgstr "Ei päättynyt"
 #: 
 msgid "Not moved"
 msgstr "Ei siirretty"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Etkö ole varma, mikä sähköpostiosoite meillä on? Ota yhteyttä seurakunnan toimistoon."
 
 #: 
 msgid "Not yet"

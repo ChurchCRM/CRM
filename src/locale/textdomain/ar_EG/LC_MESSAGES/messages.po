@@ -12931,10 +12931,6 @@ msgid "Deposit ID"
 msgstr "معرف الإيداع"
 
 #: 
-msgid "Deposit Value"
-msgstr "قيمة الإيداع"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "تم حفظ الإيداع بنجاح"
 
@@ -24377,10 +24373,6 @@ msgid "Church default: %s"
 msgstr "الافتراضي للكنيسة: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "تسجيل دخول قيادة الكنيسة"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "التصنيفات التي يجوز لأعضائها تسجيل الدخول إلى بوابة الأعضاء، في قائمة معرّفات تصنيف مفصولة بفواصل."
 
@@ -25023,10 +25015,6 @@ msgstr "لم ينتهِ"
 #: 
 msgid "Not moved"
 msgstr "لم يُنقَل"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "غير متأكدين من البريد الذي لدينا؟ اتصلوا بمكتب الكنيسة."
 
 #: 
 msgid "Not yet"

@@ -12895,10 +12895,6 @@ msgid "Deposit ID"
 msgstr "Deposito ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Insamelings-Waarde"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Deposito suksesvol gestoor"
 
@@ -24269,10 +24265,6 @@ msgid "Church default: %s"
 msgstr "Kerkverstek: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Kerkeleier-aanmelding"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klassifikasies waarvan lede by die Lidportaal mag aanmeld, as 'n kommageskeide lys van klassifikasie-ID's."
 
@@ -24915,10 +24907,6 @@ msgstr "Nie geëindig nie"
 #: 
 msgid "Not moved"
 msgstr "Nie geskuif nie"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nie seker watter e-pos ons het nie? Kontak die kerkkantoor."
 
 #: 
 msgid "Not yet"

@@ -12895,10 +12895,6 @@ msgid "Deposit ID"
 msgstr "Para Yatırma Kimliği (ID)"
 
 #: 
-msgid "Deposit Value"
-msgstr "Bağış Kayıt Değeri"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Para yatırma işlemi başarıyla kaydedildi"
 
@@ -24269,10 +24265,6 @@ msgid "Church default: %s"
 msgstr "Kilise varsayılanı: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Kilise lideri oturumu"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Üyeleri Üye Portalı’nda oturum açabilen sınıflandırmalar; virgülle ayrılmış sınıflandırma kimlikleri listesi."
 
@@ -24915,10 +24907,6 @@ msgstr "Sona ermedi"
 #: 
 msgid "Not moved"
 msgstr "Taşınmadı"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Hangi e-postaya sahip olduğumuzdan emin değil misiniz? Kilise ofisiyle iletişime geçin."
 
 #: 
 msgid "Not yet"

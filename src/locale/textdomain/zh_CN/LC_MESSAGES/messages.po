@@ -12949,10 +12949,6 @@ msgid "Deposit ID"
 msgstr "存款 ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "存款价值"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "存款保存成功"
 
@@ -24305,10 +24301,6 @@ msgid "Church default: %s"
 msgstr "教会默认：%s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "教会负责人登录"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "其成员可以登录会友门户的分类，为逗号分隔的分类 id 列表。"
 
@@ -24951,10 +24943,6 @@ msgstr "未结束"
 #: 
 msgid "Not moved"
 msgstr "未转移"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "不确定我们存有哪个电子邮箱？请联系教会办公室。"
 
 #: 
 msgid "Not yet"

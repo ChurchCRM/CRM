@@ -12886,10 +12886,6 @@ msgid "Deposit ID"
 msgstr "ID e depozitës"
 
 #: 
-msgid "Deposit Value"
-msgstr "Vlera e Depozitimit"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depozita u ruajt me sukses"
 
@@ -24260,10 +24256,6 @@ msgid "Church default: %s"
 msgstr "Parazgjedhja e kishës: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Hyrja e udhëheqësit të kishës"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikimet anëtarët e të cilave mund të hyjnë në Portalin e anëtarëve, si një listë e ndarë me presje e identifikuesve të klasifikimit."
 
@@ -24906,10 +24898,6 @@ msgstr "Nuk ka përfunduar"
 #: 
 msgid "Not moved"
 msgstr "Nuk është zhvendosur"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nuk jeni të sigurt cilin email kemi? Kontaktoni zyrën e kishës."
 
 #: 
 msgid "Not yet"

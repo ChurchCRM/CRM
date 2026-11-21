@@ -12962,10 +12962,6 @@ msgid "Deposit ID"
 msgstr "Depozit ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Valoarea ofertei"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depozit salvat cu succes"
 
@@ -24354,10 +24350,6 @@ msgid "Church default: %s"
 msgstr "Implicit pentru biserică: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Autentificare conducere a bisericii"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Clasificările ai căror membri se pot autentifica în Portalul membrilor, ca listă de ID-uri de clasificare separate prin virgulă."
 
@@ -25000,10 +24992,6 @@ msgstr "Neîncheiat"
 #: 
 msgid "Not moved"
 msgstr "Nemutat"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nu sunteți sigur ce e-mail avem? Contactați biroul bisericii."
 
 #: 
 msgid "Not yet"
