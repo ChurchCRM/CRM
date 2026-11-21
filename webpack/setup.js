@@ -14,6 +14,18 @@ function getModal(id) {
 
 const i18next = require("i18next");
 window.i18next = i18next;
+// Setup has no locale files yet; with no resources each key renders as its English text.
+i18next.init({
+  lng: "en",
+  resources: {},
+  nsSeparator: false,
+  keySeparator: false,
+  pluralSeparator: false,
+  contextSeparator: false,
+  fallbackLng: false,
+  interpolation: { escapeValue: false },
+  initAsync: false,
+});
 
 const moment = require("moment");
 window.moment = moment;
@@ -116,15 +128,19 @@ window.moment = moment;
       ([key, passed]) => passed !== true && (key.startsWith("php-") || key.startsWith("filesystem-")),
     );
     if (state.prerequisitesStatus) {
-      updateStatusBanner("success", "Ready", "");
+      updateStatusBanner("success", i18next.t("Ready"), "");
     } else if (blocking) {
-      updateStatusBanner("error", "Your web host needs to fix something", "Send them the list below.");
+      updateStatusBanner(
+        "error",
+        i18next.t("Your web host needs to fix something"),
+        i18next.t("Send them the list below."),
+      );
       bootstrap.Collapse.getOrCreateInstance(document.getElementById("server-details"), { toggle: false }).show();
     } else {
       updateStatusBanner(
         "warning",
-        "Ready",
-        "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load.",
+        i18next.t("Ready"),
+        i18next.t("Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."),
       );
     }
   }
@@ -233,14 +249,14 @@ window.moment = moment;
         list.append(
           $("<li>")
             .addClass("integrity-files-more")
-            .text(`and ${items.length - maxFiles} more`),
+            .text(i18next.t("and {{count}} more", { count: items.length - maxFiles })),
         );
       }
       detailCell.append(list);
     };
-    addList("These files were not uploaded", missing);
-    addList("These files do not match the release", changed);
-    addList("Files to review", combined);
+    addList(i18next.t("These files were not uploaded"), missing);
+    addList(i18next.t("These files do not match the release"), changed);
+    addList(i18next.t("Files to review"), combined);
     detailRow.append(detailCell);
     $(tableSelector).append(detailRow);
   }
@@ -351,7 +367,7 @@ window.moment = moment;
 
     // Show pending state
     const pendingRow = $("<tr>", { id: rowId })
-      .append($("<td>", { text: "Release check" }))
+      .append($("<td>", { text: i18next.t("Release check") }))
       .append($("<td>", statusConfig.pending));
     $(`#${rowId}`).remove();
     $(config.table).append(pendingRow);
@@ -370,13 +386,13 @@ window.moment = moment;
           data && typeof data === "object" && data.message
             ? data.message
             : satisfied
-              ? "Integrity check passed"
-              : "Integrity check failed";
+              ? i18next.t("Integrity check passed")
+              : i18next.t("Integrity check failed");
 
         const resultRow = $("<tr>", {
           id: rowId,
         })
-          .append($("<td>", { text: "Release check" }))
+          .append($("<td>", { text: i18next.t("Release check") }))
           .append(buildStatusCell(statusInfo, message));
 
         $(`#${rowId}`).replaceWith(resultRow);
@@ -396,9 +412,12 @@ window.moment = moment;
         const resultRow = $("<tr>", {
           id: rowId,
         })
-          .append($("<td>", { text: "Release check" }))
+          .append($("<td>", { text: i18next.t("Release check") }))
           .append(
-            buildStatusCell(statusConfig.false, "Unable to contact integrity endpoint. Check web server error logs."),
+            buildStatusCell(
+              statusConfig.false,
+              i18next.t("ChurchCRM could not check its files. Ask your web host to look at the server error log."),
+            ),
           );
 
         $(`#${rowId}`).replaceWith(resultRow);
@@ -437,7 +456,7 @@ window.moment = moment;
       .fail(() => {
         renderPrerequisite(
           {
-            Name: "Unable to load PHP prerequisite checks",
+            Name: i18next.t("ChurchCRM could not check the server software"),
             Satisfied: false,
           },
           "php",
@@ -461,7 +480,7 @@ window.moment = moment;
       .fail(() => {
         renderPrerequisite(
           {
-            Name: "Unable to verify filesystem permissions",
+            Name: i18next.t("ChurchCRM could not check folder permissions"),
             Satisfied: false,
           },
           "filesystem",
@@ -479,12 +498,16 @@ window.moment = moment;
   }
 
   const DB_CONNECTION_FIELDS = ["DB_SERVER_NAME", "DB_SERVER_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"];
-  const INSTALL_LABEL = "Install ChurchCRM";
+  const INSTALL_LABEL = () => i18next.t("Install ChurchCRM");
+
+  // One install request at a time: field edits cannot re-enable Install while one is in flight.
+  let installInFlight = false;
 
   function setInstalling(installing) {
+    installInFlight = installing;
     const button = document.getElementById("submit-setup");
     button.disabled = installing;
-    button.textContent = installing ? i18next.t("Connecting to your database...") : INSTALL_LABEL;
+    button.textContent = installing ? i18next.t("Connecting to your database...") : INSTALL_LABEL();
   }
 
   function showSetupProblem(message) {
@@ -507,7 +530,7 @@ window.moment = moment;
     document.getElementById("db-connection-result").classList.add("d-none");
     document.getElementById("db-version-warning").classList.add("d-none");
     document.getElementById("db-version-ack").checked = false;
-    document.getElementById("submit-setup").disabled = false;
+    document.getElementById("submit-setup").disabled = installInFlight;
     for (const field of document.querySelectorAll("#setup-form .is-invalid")) {
       field.classList.remove("is-invalid");
     }
@@ -565,6 +588,8 @@ window.moment = moment;
           return;
         }
 
+        installInFlight = true;
+        document.getElementById("submit-setup").disabled = true;
         $("#continue-to-login")
           .off("click")
           .on("click", () => {
@@ -606,7 +631,7 @@ window.moment = moment;
       const field = document.getElementById("DB_PASSWORD");
       const showing = field.type === "text";
       field.type = showing ? "password" : "text";
-      event.currentTarget.textContent = showing ? "Show" : "Hide";
+      event.currentTarget.textContent = showing ? i18next.t("Show") : i18next.t("Hide");
       event.currentTarget.setAttribute("aria-pressed", String(!showing));
     });
 
@@ -616,7 +641,9 @@ window.moment = moment;
 
     document.getElementById("submit-setup").addEventListener("click", (event) => {
       event.preventDefault();
-      submitSetupData();
+      if (!installInFlight) {
+        submitSetupData();
+      }
     });
 
     // Initialize prerequisite checks - integrity check will run after prerequisites load

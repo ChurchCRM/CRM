@@ -300,7 +300,11 @@ class TelemetryService
         }
         $installId = '';
         try {
+            // Once installed, these are diagnostics, not a failed install: the admin's telemetry level applies.
             if (SystemConfig::isInitialized()) {
+                if (self::getLevel() === self::LEVEL_NONE) {
+                    return;
+                }
                 $installId = (string) SystemConfig::getValue('sSystemID');
             }
         } catch (\Throwable) {

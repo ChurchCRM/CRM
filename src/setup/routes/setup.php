@@ -145,7 +145,19 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             '||URL||'            => escape_php_single_quoted($url),
         ]);
 
-        if (file_put_contents($configFile, $template) === false) {
+        // Mode 'x' creates the file only if it does not exist, so a second install request racing this one cannot overwrite it.
+        $handle = @fopen($configFile, 'x');
+        if ($handle === false && file_exists($configFile)) {
+            return $response->withStatus(403, 'Setup is already complete.');
+        }
+        $written = $handle !== false && fwrite($handle, $template) === strlen($template);
+        if ($handle !== false) {
+            fclose($handle);
+        }
+        if (!$written) {
+            if ($handle !== false) {
+                unlink($configFile);
+            }
             TelemetryService::captureInstallFailure('config_not_writable');
 
             return SlimUtils::renderJSON($response, [
