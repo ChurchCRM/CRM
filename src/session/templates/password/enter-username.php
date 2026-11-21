@@ -43,6 +43,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
       <div class="form-footer">
         <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Back to Login') ?></a>
       </div>
+      <?php require __DIR__ . '/../partials/back-to-chooser.php'; ?>
     </form>
   </div>
 </div>

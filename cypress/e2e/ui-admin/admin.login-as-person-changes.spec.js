@@ -208,7 +208,7 @@ describe("Login as Person: changes and endings", () => {
             cy.wait(2500);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.headers.location).to.match(/\/admin\/$/);
+                expect(response.headers.location).to.match(/\/session\/begin$/);
             });
             cy.restoreSystemConfig("iSessionTimeout", saved.iSessionTimeout);
             cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 302);
@@ -236,7 +236,7 @@ describe("Login as Person: changes and endings", () => {
 
     it("ends with the sign-out reason on Sign out", () => {
         startLoginAsPerson();
-        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/admin\/$/);
+        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/session\/$/);
         signInAsAdmin();
         newestSession().should("contain", "Signed out");
     });

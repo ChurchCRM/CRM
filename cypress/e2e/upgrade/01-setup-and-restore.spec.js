@@ -122,7 +122,7 @@ describe('Upgrade via Restore', () => {
             // Continue to login
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
-            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
 
@@ -214,7 +214,7 @@ describe('Upgrade via Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
             // Wait for page to redirect to login after restore completes
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
