@@ -1190,24 +1190,6 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <?php if ($isNewPerson && $canManageGroups && count($availableGroups) > 0) { ?>
-        <div class="card clearfix">
-            <div class="card-header">
-                <h3 class="card-title"><?= gettext('Groups') ?></h3>
-            </div>
-            <div class="card-body">
-                <label for="GroupIds"><?= gettext('Select Groups') ?></label>
-                <select name="GroupIds[]" id="GroupIds" class="form-select" multiple>
-                    <?php foreach ($availableGroups as $group) { ?>
-                        <option value="<?= $group->getId() ?>"
-                            <?= in_array((int) $group->getId(), $selectedGroupIds, true) ? 'selected' : '' ?>>
-                            <?= InputUtils::escapeHTML($group->getName()) ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
-    <?php } ?>
     <?php if ($numCustomFields > 0) { ?>
     <div class="card clearfix">
             <div class="card-header d-flex align-items-center">
