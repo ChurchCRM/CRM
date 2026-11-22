@@ -27826,3 +27826,441 @@ msgstr "교회 국가가 캐나다이므로 캐나다 공식 영수증을 헌금
 msgid "groups"
 msgstr "그룹"
 
+#: 
+msgid "14 days"
+msgstr "14일"
+
+#: 
+msgid "6 months"
+msgstr "6개월"
+
+#: 
+msgid "60 days"
+msgstr "60일"
+
+#: 
+msgid "7 days"
+msgstr "7일"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discord에서 질문하기"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "로그인한 직후 비밀번호를 변경하세요."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "다른 로그인 방법 선택"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM이 localhost의 데이터베이스에 연결할 수 없습니다. 대신 127.0.0.1을 시도하거나 웹 호스트에게 데이터베이스 호스트 이름을 문의하세요."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM이 해당 주소와 포트의 데이터베이스 서버에 연결할 수 없습니다. 호스트 이름과 포트를 확인하세요. 공유 호스팅에서는 호스트가 localhost가 아닌 경우가 많습니다."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM이 릴리스 검사를 읽을 수 없습니다. 웹 호스트에게 ChurchCRM 폴더를 읽을 수 있게 해달라고 요청하거나 계속 진행하세요."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM이 폴더 권한을 확인할 수 없습니다"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM이 파일을 확인할 수 없습니다. 웹 호스트에게 서버 오류 로그를 확인해 달라고 요청하세요."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM이 서버 소프트웨어를 확인할 수 없습니다"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM이 이 설정으로 데이터베이스에 연결할 수 없습니다."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM이 설치를 완료할 수 없습니다. 다시 시도하거나 웹 호스트에게 서버 오류 로그를 확인해 달라고 요청하세요."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM이 Include/Config.php를 저장할 수 없습니다. 웹 호스트에게 Include 폴더를 쓸 수 있게 해달라고 요청하세요."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM 파일이 릴리스와 일치합니다"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "사이드바를 아이콘으로 접기"
+
+#: 
+msgid "Congregation login"
+msgstr "회중 로그인"
+
+#: 
+msgid "Connect your database"
+msgstr "데이터베이스 연결"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "데이터베이스에 연결 중…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "메인 대시보드를 저장할 수 없습니다."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "먼저 호스팅 제어판에서 MySQL 또는 MariaDB 데이터베이스를 만드세요(cPanel의 경우: %s). 그런 다음 그 세부 정보를 여기에 복사하세요. ChurchCRM은 MySQL 8.4+ 및 MariaDB 10.11+(LTS 릴리스)를 지원합니다."
+
+#: 
+msgid "Database host"
+msgstr "데이터베이스 호스트"
+
+#: 
+msgid "Database name"
+msgstr "데이터베이스 이름"
+
+#: 
+msgid "Database password"
+msgstr "데이터베이스 비밀번호"
+
+#: 
+msgid "Database user"
+msgstr "데이터베이스 사용자"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRM이 사이트 최상위에 있을 때는 비워 두세요. 그렇지 않으면 %s와 같은 폴더를 입력하세요."
+
+#: 
+msgid "Enter note text here..."
+msgstr "여기에 메모 텍스트를 입력하세요..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "localhost 또는 mysql.example.com과 같은 데이터베이스 호스트를 입력하세요. 문자, 숫자, 점, 대시만 사용할 수 있습니다."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "데이터베이스 이름을 입력하세요. 문자, 숫자, 밑줄, 대시, 점만 사용할 수 있습니다."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "데이터베이스 포트를 숫자로 입력하세요. 보통 3306입니다."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "데이터베이스 사용자를 입력하세요. 문자, 숫자, 밑줄, 대시, 점, @만 사용할 수 있습니다."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "/churchcrm과 같이 /로 시작하는 폴더를 입력하거나 비워 두세요."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "데이터베이스 사용자의 비밀번호를 입력하세요."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "http:// 또는 https://로 시작하는 웹 주소를 입력하세요."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "%s부터 %s 사이에 모든 활성 교인 가족이 납부했습니다."
+
+#: 
+msgid "Exclude"
+msgstr "제외"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "이전 버전에서 남은 파일"
+
+#: 
+msgid "Files to review"
+msgstr "검토할 파일"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "웹 호스트가 제공한 데이터베이스 세부 정보를 준비하세요. 약 2분 정도 걸립니다."
+
+#: 
+msgid "Hide"
+msgstr "숨기기"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "회중 구성"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "이 데이터베이스가 지원되지 않으며 업그레이드가 차단된다는 것을 이해합니다"
+
+#: 
+msgid "Insights"
+msgstr "인사이트"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRM 설치"
+
+#: 
+msgid "Installation Complete!"
+msgstr "설치 완료!"
+
+#: 
+msgid "Installation guide"
+msgstr "설치 안내"
+
+#: 
+msgid "Integrity check failed"
+msgstr "무결성 검사 실패"
+
+#: 
+msgid "Integrity check passed"
+msgstr "무결성 검사 통과"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "잘못된 CSRF 토큰"
+
+#: 
+msgid "Last %d days"
+msgstr "최근 %d일"
+
+#: 
+msgid "Last 12 months"
+msgstr "최근 12개월"
+
+#: 
+msgid "Main dashboard"
+msgstr "메인 대시보드"
+
+#: 
+msgid "Navigation"
+msgstr "내비게이션"
+
+#: 
+msgid "Need help?"
+msgstr "도움이 필요하신가요?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "이 기간에는 메모가 없습니다."
+
+#: 
+msgid "No notes yet."
+msgstr "아직 메모가 없습니다."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "보통 %1$s입니다. 일부 호스트는 %2$s와 같은 주소를 제공합니다."
+
+#: 
+msgid "Open total"
+msgstr "마감되지 않은 총액"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "이 범위에 대한 재정 대시보드를 엽니다. 지난 회계 연도는 대시보드 자체에서 선택하세요."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "지난 7일 및 향후 %d일"
+
+#: 
+msgid "People without a family: %d"
+msgstr "가족이 없는 사람: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "설정 및 사진 저장 권한"
+
+#: 
+msgid "Port"
+msgstr "포트"
+
+#: 
+msgid "Ready"
+msgstr "준비됨"
+
+#: 
+msgid "Recent"
+msgstr "최근"
+
+#: 
+msgid "Register your family to our church"
+msgstr "가족을 우리 교회에 등록하세요"
+
+#: 
+msgid "Release check"
+msgstr "릴리스 검사"
+
+#: 
+msgid "Report a problem"
+msgstr "문제 신고"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "모든 표와 대시보드 카드에서 페이지당 표시되는 행 수입니다. 다음 페이지 로드 시 적용됩니다."
+
+#: 
+msgid "Send Test Email"
+msgstr "테스트 이메일 보내기"
+
+#: 
+msgid "Send a test email"
+msgstr "테스트 이메일 한 통 보내기"
+
+#: 
+msgid "Send them the list below."
+msgstr "아래 목록을 그들에게 보내세요."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM에 필요한 서버 소프트웨어"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "내 메인 대시보드로 설정"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "관리자 계정으로 로그인"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "일부 ChurchCRM 파일이 없거나 변경되었습니다. 페이지가 로드되지 않으면 ChurchCRM을 다시 업로드하세요."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "일부 ChurchCRM 파일이 업로드되지 않았습니다."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "서버의 일부 파일이 ChurchCRM 릴리스와 일치하지 않습니다."
+
+#: 
+msgid "Staff login"
+msgstr "직원 로그인"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s 또는 %2$s로 시작하고 %3$s로 끝납니다."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "로그인 후 열리는 대시보드"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "데이터베이스 서버가 로그인을 수락했지만 해당 이름의 데이터베이스가 없습니다."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "데이터베이스 서버가 해당 사용자 이름 또는 비밀번호를 거부했습니다."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "데이터베이스에 지정한 이름입니다. 공유 호스트는 종종 앞에 계정 이름을 붙입니다. 예: %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "해당 데이터베이스 사용자의 비밀번호입니다. 설치를 클릭하면 ChurchCRM이 이 세부 정보를 확인합니다."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "이 서버의 릴리스 검사 파일이 ChurchCRM과 일치하지 않습니다. 릴리스를 다시 업로드하거나 계속 진행하고 웹 호스트에게 도움을 요청하세요."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "테스트 메시지는 교회 이메일 주소로 전송되며 SMTP 디버그 로그가 여기에 표시됩니다."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "해당 데이터베이스에 추가한 사용자입니다. 호스팅 로그인이 아닙니다."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "이 파일들은 ChurchCRM 릴리스의 일부가 아닙니다. 웹 호스트가 제거할 수 있습니다."
+
+#: 
+msgid "These files do not match the release"
+msgstr "이 파일들이 릴리스와 일치하지 않습니다"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "이 파일들이 업로드되지 않았습니다"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "이 ChurchCRM 복사본에는 릴리스 파일 검사가 포함되어 있지 않습니다. 계속 진행할 수 있습니다."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "이제 이 대시보드가 메인 대시보드입니다."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "이 데이터베이스는 더 이상 공급업체로부터 보안 수정 사항을 받지 않습니다."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "사람들이 ChurchCRM을 여는 곳입니다. 이 페이지와 다른 주소를 사용할 경우에만 변경하세요."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "이것은 귀하의 교회 계정입니다. 자신을 위해 할 수 있는 모든 것이 여기에 있습니다."
+
+#: 
+msgid "Total deposited"
+msgstr "입금 총액"
+
+#: 
+msgid "Unsupported database server"
+msgstr "지원되지 않는 데이터베이스 서버"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "데이터베이스가 지원되는 버전으로 이동될 때까지 업그레이드가 차단됩니다."
+
+#: 
+msgid "Usually 3306."
+msgstr "보통 3306입니다."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "이동할 데이터가 없는 설치 전에 호스트에게 전환을 요청하는 것이 좋습니다. MariaDB 10.11이 좋은 목표입니다."
+
+#: 
+msgid "Web address"
+msgstr "웹 주소"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "지금 설치할 수 있습니다: ChurchCRM이 설치되고 실행됩니다."
+
+#: 
+msgid "Your main dashboard"
+msgstr "귀하의 메인 대시보드"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "웹 호스트가 무언가를 수정해야 합니다"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "{{count}}개 더"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "{{count}}개 더"
+

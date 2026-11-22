@@ -27829,3 +27829,441 @@ msgstr "Negara gereja Anda adalah Kanada, jadi kwitansi resmi Kanada tersedia pa
 msgid "groups"
 msgstr "grup"
 
+#: 
+msgid "14 days"
+msgstr "14 hari"
+
+#: 
+msgid "6 months"
+msgstr "6 bulan"
+
+#: 
+msgid "60 days"
+msgstr "60 hari"
+
+#: 
+msgid "7 days"
+msgstr "7 hari"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Tanya di Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Ubah kata sandi Anda segera setelah Anda masuk."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Pilih cara masuk yang lain"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM tidak dapat menjangkau basis data di localhost. Coba 127.0.0.1 sebagai gantinya, atau tanyakan nama host basis data kepada host web Anda."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM tidak dapat menjangkau server basis data di alamat dan port tersebut. Periksa nama host dan port-nya. Pada hosting bersama, host sering kali bukan localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM tidak dapat membaca pemeriksaan rilisnya. Minta host web Anda untuk membuat folder ChurchCRM dapat dibaca, atau lanjutkan."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM tidak dapat memeriksa izin folder"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM tidak dapat memeriksa berkasnya. Minta host web Anda untuk melihat log kesalahan server."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM tidak dapat memeriksa perangkat lunak server"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM tidak dapat terhubung ke basis data dengan pengaturan ini."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM tidak dapat menyelesaikan instalasi. Coba lagi, atau minta host web Anda untuk memeriksa log kesalahan server."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM tidak dapat menyimpan Include/Config.php. Minta host web Anda untuk membuat folder Include dapat ditulis."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Berkas ChurchCRM cocok dengan rilis"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Ciutkan bilah sisi menjadi ikon"
+
+#: 
+msgid "Congregation login"
+msgstr "Login jemaat"
+
+#: 
+msgid "Connect your database"
+msgstr "Hubungkan basis data Anda"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Menghubungkan ke basis data Anda…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Tidak dapat menyimpan dasbor utama Anda."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Buat basis data MySQL atau MariaDB terlebih dahulu di panel kontrol hosting Anda (di cPanel: %s), lalu salin detailnya ke sini. ChurchCRM mendukung MySQL 8.4+ dan MariaDB 10.11+ (rilis LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Host basis data"
+
+#: 
+msgid "Database name"
+msgstr "Nama basis data"
+
+#: 
+msgid "Database password"
+msgstr "Kata sandi basis data"
+
+#: 
+msgid "Database user"
+msgstr "Pengguna basis data"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Kosongkan bila ChurchCRM berada di bagian atas situs. Jika tidak, folder-nya, seperti %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Masukkan teks catatan di sini..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Masukkan host basis data, seperti localhost atau mysql.example.com. Gunakan hanya huruf, angka, titik, dan tanda hubung."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Masukkan nama basis data. Gunakan hanya huruf, angka, garis bawah, tanda hubung, dan titik."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Masukkan port basis data sebagai angka. Biasanya 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Masukkan pengguna basis data. Gunakan hanya huruf, angka, garis bawah, tanda hubung, titik, dan @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Masukkan folder yang diawali /, seperti /churchcrm, atau biarkan kosong."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Masukkan kata sandi untuk pengguna basis data."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Masukkan alamat web, diawali dengan http:// atau https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Setiap keluarga anggota yang aktif melakukan pembayaran antara %s dan %s."
+
+#: 
+msgid "Exclude"
+msgstr "Kecualikan"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Berkas sisa dari versi lama"
+
+#: 
+msgid "Files to review"
+msgstr "Berkas untuk ditinjau"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Siapkan detail basis data dari host web Anda. Prosesnya memakan waktu sekitar dua menit."
+
+#: 
+msgid "Hide"
+msgstr "Sembunyikan"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Bagaimana susunan jemaat"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Saya mengerti basis data ini tidak didukung dan pemutakhiran akan diblokir"
+
+#: 
+msgid "Insights"
+msgstr "Wawasan"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Instal ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalasi Selesai!"
+
+#: 
+msgid "Installation guide"
+msgstr "Panduan instalasi"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Pemeriksaan integritas gagal"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Pemeriksaan integritas berhasil"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Token CSRF tidak valid"
+
+#: 
+msgid "Last %d days"
+msgstr "%d hari terakhir"
+
+#: 
+msgid "Last 12 months"
+msgstr "12 bulan terakhir"
+
+#: 
+msgid "Main dashboard"
+msgstr "Dasbor utama"
+
+#: 
+msgid "Navigation"
+msgstr "Navigasi"
+
+#: 
+msgid "Need help?"
+msgstr "Butuh bantuan?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Tidak ada catatan dalam rentang waktu ini."
+
+#: 
+msgid "No notes yet."
+msgstr "Belum ada catatan."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Sering kali %1$s. Beberapa host memberikan alamat seperti %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Total terbuka"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Membuka dasbor Keuangan pada rentang ini. Pilih tahun fiskal yang lalu di dasbor itu sendiri."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "7 hari terakhir dan %d hari berikutnya"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Orang tanpa keluarga: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Izin untuk menyimpan pengaturan dan foto"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Siap"
+
+#: 
+msgid "Recent"
+msgstr "Terbaru"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Daftarkan keluarga Anda ke gereja kami"
+
+#: 
+msgid "Release check"
+msgstr "Pemeriksaan rilis"
+
+#: 
+msgid "Report a problem"
+msgstr "Laporkan masalah"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Baris yang ditampilkan per halaman di setiap tabel dan kartu dasbor. Berlaku pada pemuatan halaman berikutnya."
+
+#: 
+msgid "Send Test Email"
+msgstr "Kirim Email Uji"
+
+#: 
+msgid "Send a test email"
+msgstr "Kirim email uji"
+
+#: 
+msgid "Send them the list below."
+msgstr "Kirimkan daftar di bawah ini kepada mereka."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Perangkat lunak server yang dibutuhkan ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Jadikan dasbor utama saya"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Masuk dengan akun admin Anda"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Beberapa berkas ChurchCRM hilang atau berubah. Unggah ChurchCRM lagi jika halaman tidak dimuat."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Beberapa berkas ChurchCRM tidak terunggah."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Beberapa berkas di server tidak cocok dengan rilis ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Login staf"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Diawali dengan %1$s atau %2$s dan diakhiri dengan %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Dasbor yang Anda buka setelah masuk"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Server basis data menerima login, tetapi tidak ada basis data dengan nama tersebut."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Server basis data menolak nama pengguna atau kata sandi tersebut."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Nama yang Anda berikan untuk basis data. Host bersama sering menambahkan nama akun Anda di depan, seperti %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Kata sandi untuk pengguna basis data tersebut. ChurchCRM memeriksa detail ini saat Anda mengeklik Instal."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Berkas pemeriksaan rilis di server ini tidak cocok dengan ChurchCRM. Unggah rilis lagi, atau lanjutkan dan minta bantuan host web Anda."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Pesan uji dikirim ke alamat email gereja dan menampilkan log debug SMTP di sini."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Pengguna yang Anda tambahkan ke basis data tersebut. Bukan login hosting Anda."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Berkas-berkas ini bukan bagian dari rilis ChurchCRM. Host web Anda dapat menghapusnya."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Berkas-berkas ini tidak cocok dengan rilis"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Berkas-berkas ini tidak terunggah"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Salinan ChurchCRM ini tidak menyertakan pemeriksaan berkas rilis. Anda dapat melanjutkan."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Dasbor ini sekarang adalah dasbor utama Anda."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Basis data ini tidak lagi menerima perbaikan keamanan dari vendornya."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Di sinilah orang akan membuka ChurchCRM. Ubah hanya jika mereka akan menggunakan alamat yang berbeda dari halaman ini."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Ini adalah akun gereja Anda. Semua yang dapat Anda lakukan untuk diri sendiri ada di sini."
+
+#: 
+msgid "Total deposited"
+msgstr "Total disetorkan"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Server basis data tidak didukung"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Pemutakhiran akan diblokir sampai basis data dipindahkan ke versi yang didukung."
+
+#: 
+msgid "Usually 3306."
+msgstr "Biasanya 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Kami menyarankan untuk meminta host Anda beralih sebelum Anda menginstal, selagi belum ada data yang dipindahkan. MariaDB 10.11 adalah target yang baik."
+
+#: 
+msgid "Web address"
+msgstr "Alamat web"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Anda dapat menginstal sekarang: ChurchCRM akan terinstal dan berjalan."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Dasbor utama Anda"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Host web Anda perlu memperbaiki sesuatu"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "dan {{count}} lainnya"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "dan {{count}} lainnya"
+

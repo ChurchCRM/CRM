@@ -27798,3 +27798,441 @@ msgstr "あなたの教会の国はカナダです。そのため、カナダの
 msgid "groups"
 msgstr "グループ"
 
+#: 
+msgid "14 days"
+msgstr "14日間"
+
+#: 
+msgid "6 months"
+msgstr "6か月"
+
+#: 
+msgid "60 days"
+msgstr "60日間"
+
+#: 
+msgid "7 days"
+msgstr "7日間"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discordで質問する"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "サインインしたらすぐにパスワードを変更してください。"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "別のサインイン方法を選択"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRMはlocalhostのデータベースに接続できません。代わりに127.0.0.1を試すか、ウェブホストにデータベースのホスト名をお問い合わせください。"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRMはそのアドレスとポートのデータベースサーバーに接続できません。ホスト名とポートを確認してください。共有ホスティングでは、ホストがlocalhostでないことがよくあります。"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRMはリリースチェックを読み取れません。ウェブホストにChurchCRMフォルダを読み取り可能にしてもらうか、続行してください。"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRMはフォルダの権限を確認できませんでした"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRMはファイルを確認できませんでした。ウェブホストにサーバーのエラーログを確認してもらってください。"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRMはサーバーソフトウェアを確認できませんでした"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRMはこれらの設定でデータベースに接続できませんでした。"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRMはインストールを完了できませんでした。再試行するか、ウェブホストにサーバーのエラーログを確認してもらってください。"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRMはInclude/Config.phpを保存できませんでした。ウェブホストにIncludeフォルダを書き込み可能にしてもらってください。"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRMファイルはリリースと一致しています"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "サイドバーをアイコン表示に折りたたむ"
+
+#: 
+msgid "Congregation login"
+msgstr "会衆ログイン"
+
+#: 
+msgid "Connect your database"
+msgstr "データベースを接続"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "データベースに接続しています…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "メインダッシュボードを保存できませんでした。"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "まずホスティングのコントロールパネルでMySQLまたはMariaDBデータベースを作成し（cPanelの場合：%s）、その詳細をここにコピーしてください。ChurchCRMはMySQL 8.4以降とMariaDB 10.11以降（LTSリリース）をサポートします。"
+
+#: 
+msgid "Database host"
+msgstr "データベースホスト"
+
+#: 
+msgid "Database name"
+msgstr "データベース名"
+
+#: 
+msgid "Database password"
+msgstr "データベースパスワード"
+
+#: 
+msgid "Database user"
+msgstr "データベースユーザー"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRMがサイトのトップにある場合は空欄にします。それ以外の場合は、%s のようなフォルダ名を入力します。"
+
+#: 
+msgid "Enter note text here..."
+msgstr "ここにメモのテキストを入力..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "localhost や mysql.example.com のようなデータベースホストを入力してください。文字、数字、ドット、ダッシュのみ使用できます。"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "データベース名を入力してください。文字、数字、アンダースコア、ダッシュ、ドットのみ使用できます。"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "データベースポートを数字で入力してください。通常は3306です。"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "データベースユーザーを入力してください。文字、数字、アンダースコア、ダッシュ、ドット、@のみ使用できます。"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "/churchcrm のように / で始まるフォルダを入力するか、空欄にしてください。"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "データベースユーザーのパスワードを入力してください。"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "http:// または https:// で始まるウェブアドレスを入力してください。"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "%s から %s の間に、すべてのアクティブな会員家族が支払いを行いました。"
+
+#: 
+msgid "Exclude"
+msgstr "除外"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "古いバージョンから残ったファイル"
+
+#: 
+msgid "Files to review"
+msgstr "確認が必要なファイル"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "ウェブホストから提供されたデータベースの詳細をご用意ください。約2分かかります。"
+
+#: 
+msgid "Hide"
+msgstr "非表示"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "会衆の構成"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "このデータベースがサポート対象外であり、アップグレードがブロックされることを理解しています"
+
+#: 
+msgid "Insights"
+msgstr "インサイト"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRMをインストール"
+
+#: 
+msgid "Installation Complete!"
+msgstr "インストール完了！"
+
+#: 
+msgid "Installation guide"
+msgstr "インストールガイド"
+
+#: 
+msgid "Integrity check failed"
+msgstr "整合性チェックに失敗しました"
+
+#: 
+msgid "Integrity check passed"
+msgstr "整合性チェックに合格しました"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "無効なCSRFトークン"
+
+#: 
+msgid "Last %d days"
+msgstr "過去 %d 日"
+
+#: 
+msgid "Last 12 months"
+msgstr "過去12か月"
+
+#: 
+msgid "Main dashboard"
+msgstr "メインダッシュボード"
+
+#: 
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+#: 
+msgid "Need help?"
+msgstr "お困りですか？"
+
+#: 
+msgid "No notes in this time range."
+msgstr "この期間にはメモがありません。"
+
+#: 
+msgid "No notes yet."
+msgstr "メモはまだありません。"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "多くの場合 %1$s です。ホストによっては %2$s のようなアドレスが提供されます。"
+
+#: 
+msgid "Open total"
+msgstr "オープン中の合計"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "この範囲で財務ダッシュボードを開きます。過去の会計年度はダッシュボード自体で選択してください。"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "過去7日間と今後 %d 日間"
+
+#: 
+msgid "People without a family: %d"
+msgstr "家族のない人：%d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "設定と写真を保存する権限"
+
+#: 
+msgid "Port"
+msgstr "ポート"
+
+#: 
+msgid "Ready"
+msgstr "準備完了"
+
+#: 
+msgid "Recent"
+msgstr "最近"
+
+#: 
+msgid "Register your family to our church"
+msgstr "あなたの家族を私たちの教会に登録する"
+
+#: 
+msgid "Release check"
+msgstr "リリースチェック"
+
+#: 
+msgid "Report a problem"
+msgstr "問題を報告"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "すべてのテーブルとダッシュボードカードで1ページに表示される行数。次回のページ読み込み時に有効になります。"
+
+#: 
+msgid "Send Test Email"
+msgstr "テストメールを送信"
+
+#: 
+msgid "Send a test email"
+msgstr "テストメールを1通送信"
+
+#: 
+msgid "Send them the list below."
+msgstr "下のリストを彼らに送信してください。"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRMが必要とするサーバーソフトウェア"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "自分のメインダッシュボードに設定"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "管理者アカウントでサインイン"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "一部のChurchCRMファイルが不足しているか変更されています。ページが読み込めない場合は、ChurchCRMを再アップロードしてください。"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "一部のChurchCRMファイルがアップロードされていませんでした。"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "サーバー上の一部のファイルがChurchCRMリリースと一致しません。"
+
+#: 
+msgid "Staff login"
+msgstr "スタッフログイン"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s または %2$s で始まり、%3$s で終わります。"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "サインイン後に開くダッシュボード"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "データベースサーバーはログインを受け付けましたが、その名前のデータベースがありません。"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "データベースサーバーがそのユーザー名またはパスワードを拒否しました。"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "データベースに付けた名前。共有ホストでは、多くの場合、アカウント名が前に付きます（例：%s）。"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "そのデータベースユーザーのパスワード。「インストール」をクリックすると、ChurchCRMがこれらの詳細を確認します。"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "このサーバーのリリースチェックファイルがChurchCRMと一致しません。リリースを再アップロードするか、続行してウェブホストに助けを求めてください。"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "テストメッセージは教会のメールアドレスに送信され、SMTPデバッグログがここに表示されます。"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "そのデータベースに追加したユーザー。ホスティングのログインではありません。"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "これらのファイルはChurchCRMリリースの一部ではありません。ウェブホストが削除できます。"
+
+#: 
+msgid "These files do not match the release"
+msgstr "これらのファイルはリリースと一致しません"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "これらのファイルはアップロードされていません"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "このChurchCRMのコピーにはリリースファイルチェックが含まれていません。続行できます。"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "このダッシュボードがあなたのメインダッシュボードになりました。"
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "このデータベースは、ベンダーからセキュリティ修正を受け取らなくなりました。"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "ここは人々がChurchCRMを開く場所です。このページとは異なるアドレスを使用する場合にのみ変更してください。"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "これはあなたの教会アカウントです。自分のためにできることはすべてここにあります。"
+
+#: 
+msgid "Total deposited"
+msgstr "入金合計"
+
+#: 
+msgid "Unsupported database server"
+msgstr "サポートされていないデータベースサーバー"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "データベースがサポートされているバージョンに移行されるまで、アップグレードはブロックされます。"
+
+#: 
+msgid "Usually 3306."
+msgstr "通常は3306です。"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "データを移行する必要がないインストール前に、ホストに切り替えを依頼することをお勧めします。MariaDB 10.11が適切な目標です。"
+
+#: 
+msgid "Web address"
+msgstr "ウェブアドレス"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "今すぐインストールできます：ChurchCRMがインストールされ、実行されます。"
+
+#: 
+msgid "Your main dashboard"
+msgstr "あなたのメインダッシュボード"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "ウェブホストが何かを修正する必要があります"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "あと {{count}} 件"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "あと {{count}} 件"
+

@@ -28002,3 +28002,441 @@ msgstr "بلد كنيستك هو كندا، لذا تتوفر الإيصالات
 msgid "groups"
 msgstr "مجموعات"
 
+#: 
+msgid "14 days"
+msgstr "14 يومًا"
+
+#: 
+msgid "6 months"
+msgstr "6 أشهر"
+
+#: 
+msgid "60 days"
+msgstr "60 يومًا"
+
+#: 
+msgid "7 days"
+msgstr "7 أيام"
+
+#: 
+msgid "Ask on Discord"
+msgstr "اسأل على Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "غيّر كلمة السر فور تسجيل الدخول."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "اختر طريقة أخرى لتسجيل الدخول"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "لا يستطيع ChurchCRM الوصول إلى قاعدة بيانات على localhost. جرّب 127.0.0.1 بدلاً من ذلك، أو اسأل مضيف الويب عن اسم مضيف قاعدة البيانات."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "لا يستطيع ChurchCRM الوصول إلى خادم قاعدة البيانات على هذا العنوان والمنفذ. تحقق من اسم المضيف والمنفذ. في الاستضافة المشتركة غالبًا لا يكون المضيف هو localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "لا يستطيع ChurchCRM قراءة فحص الإصدار الخاص به. اطلب من مضيف الويب جعل مجلد ChurchCRM قابلاً للقراءة، أو تابع."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "تعذّر على ChurchCRM التحقق من أذونات المجلد"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "تعذّر على ChurchCRM التحقق من ملفاته. اطلب من مضيف الويب مراجعة سجل أخطاء الخادم."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "تعذّر على ChurchCRM التحقق من برنامج الخادم"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "تعذّر على ChurchCRM الاتصال بقاعدة البيانات بهذه الإعدادات."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "تعذّر على ChurchCRM إنهاء التثبيت. حاول مرة أخرى، أو اطلب من مضيف الويب التحقق من سجل أخطاء الخادم."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "تعذّر على ChurchCRM حفظ Include/Config.php. اطلب من مضيف الويب جعل مجلد Include قابلاً للكتابة."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ملفات ChurchCRM تطابق الإصدار"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "طيّ الشريط الجانبي إلى أيقونات"
+
+#: 
+msgid "Congregation login"
+msgstr "تسجيل دخول الجماعة"
+
+#: 
+msgid "Connect your database"
+msgstr "صِل قاعدة بياناتك"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "جارٍ الاتصال بقاعدة بياناتك…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "تعذّر حفظ لوحة المعلومات الرئيسية الخاصة بك."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "أنشئ أولاً قاعدة بيانات MySQL أو MariaDB في لوحة تحكم الاستضافة (في cPanel: %s)، ثم انسخ تفاصيلها هنا. يدعم ChurchCRM ‏MySQL 8.4+ وMariaDB 10.11+ (إصدارات LTS)."
+
+#: 
+msgid "Database host"
+msgstr "مضيف قاعدة البيانات"
+
+#: 
+msgid "Database name"
+msgstr "اسم قاعدة البيانات"
+
+#: 
+msgid "Database password"
+msgstr "كلمة سر قاعدة البيانات"
+
+#: 
+msgid "Database user"
+msgstr "مستخدم قاعدة البيانات"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "فارغ عندما يكون ChurchCRM في أعلى الموقع. وإلا فهو المجلد، مثل %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "أدخل نص الملاحظة هنا..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "أدخل مضيف قاعدة البيانات، مثل localhost أو mysql.example.com. استخدم الحروف والأرقام والنقاط والشرطات فقط."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "أدخل اسم قاعدة البيانات. استخدم الحروف والأرقام والشرطات السفلية والشرطات والنقاط فقط."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "أدخل منفذ قاعدة البيانات كرقم. عادة ما يكون 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "أدخل مستخدم قاعدة البيانات. استخدم الحروف والأرقام والشرطات السفلية والشرطات والنقاط و@ فقط."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "أدخل المجلد بدءًا من /، مثل /churchcrm، أو اتركه فارغًا."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "أدخل كلمة السر لمستخدم قاعدة البيانات."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "أدخل عنوان الويب، بدءًا من http:// أو https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "قامت كل أسرة عضو نشطة بدفعة بين %s و%s."
+
+#: 
+msgid "Exclude"
+msgstr "استبعاد"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "ملفات متبقية من إصدار أقدم"
+
+#: 
+msgid "Files to review"
+msgstr "ملفات للمراجعة"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "جهّز تفاصيل قاعدة البيانات من مضيف الويب. يستغرق الأمر حوالي دقيقتين."
+
+#: 
+msgid "Hide"
+msgstr "إخفاء"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "كيف تتكوّن الجماعة"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "أفهم أن قاعدة البيانات هذه غير مدعومة وسيتم حظر الترقيات"
+
+#: 
+msgid "Insights"
+msgstr "رؤى"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "تثبيت ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "اكتمل التثبيت!"
+
+#: 
+msgid "Installation guide"
+msgstr "دليل التثبيت"
+
+#: 
+msgid "Integrity check failed"
+msgstr "فشل فحص السلامة"
+
+#: 
+msgid "Integrity check passed"
+msgstr "نجح فحص السلامة"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "رمز CSRF غير صالح"
+
+#: 
+msgid "Last %d days"
+msgstr "آخر %d أيام"
+
+#: 
+msgid "Last 12 months"
+msgstr "آخر 12 شهرًا"
+
+#: 
+msgid "Main dashboard"
+msgstr "لوحة المعلومات الرئيسية"
+
+#: 
+msgid "Navigation"
+msgstr "التنقل"
+
+#: 
+msgid "Need help?"
+msgstr "تحتاج إلى مساعدة؟"
+
+#: 
+msgid "No notes in this time range."
+msgstr "لا توجد ملاحظات في هذا النطاق الزمني."
+
+#: 
+msgid "No notes yet."
+msgstr "لا توجد ملاحظات بعد."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "غالبًا %1$s. بعض المضيفين يعطون عنوانًا مثل %2$s."
+
+#: 
+msgid "Open total"
+msgstr "إجمالي المفتوح"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "يفتح لوحة معلومات المالية على هذا النطاق. اختر سنة مالية سابقة من لوحة المعلومات نفسها."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "الأيام السبعة الماضية والأيام %d القادمة"
+
+#: 
+msgid "People without a family: %d"
+msgstr "أشخاص بدون أسرة: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "إذن حفظ الإعدادات والصور"
+
+#: 
+msgid "Port"
+msgstr "المنفذ"
+
+#: 
+msgid "Ready"
+msgstr "جاهز"
+
+#: 
+msgid "Recent"
+msgstr "الأحدث"
+
+#: 
+msgid "Register your family to our church"
+msgstr "سجّل أسرتك في كنيستنا"
+
+#: 
+msgid "Release check"
+msgstr "فحص الإصدار"
+
+#: 
+msgid "Report a problem"
+msgstr "الإبلاغ عن مشكلة"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "الصفوف المعروضة في كل صفحة في كل جدول وبطاقة لوحة معلومات. يسري عند تحميل الصفحة التالية."
+
+#: 
+msgid "Send Test Email"
+msgstr "إرسال بريد إلكتروني تجريبي"
+
+#: 
+msgid "Send a test email"
+msgstr "إرسال بريد إلكتروني تجريبي"
+
+#: 
+msgid "Send them the list below."
+msgstr "أرسل إليهم القائمة أدناه."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "برنامج الخادم الذي يحتاجه ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "تعيين كلوحة المعلومات الرئيسية لي"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "سجّل الدخول بحساب المسؤول الخاص بك"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "بعض ملفات ChurchCRM مفقودة أو معدّلة. أعد رفع ChurchCRM إذا لم تُحمَّل صفحة."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "لم يتم رفع بعض ملفات ChurchCRM."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "بعض الملفات على الخادم لا تطابق إصدار ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "تسجيل دخول الموظفين"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "يبدأ بـ %1$s أو %2$s وينتهي بـ %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "لوحة المعلومات التي تفتحها بعد تسجيل الدخول"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "قبل خادم قاعدة البيانات تسجيل الدخول، ولكن لا توجد قاعدة بيانات بهذا الاسم."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "رفض خادم قاعدة البيانات اسم المستخدم أو كلمة السر هذه."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "الاسم الذي أعطيته لقاعدة البيانات. غالبًا ما يضيف المضيفون المشتركون اسم حسابك في المقدمة، مثل %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "كلمة السر لمستخدم قاعدة البيانات هذا. يتحقق ChurchCRM من هذه التفاصيل عند النقر على تثبيت."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "ملف فحص الإصدار على هذا الخادم لا يطابق ChurchCRM. أعد رفع الإصدار، أو تابع واطلب المساعدة من مضيف الويب."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "تذهب الرسالة التجريبية إلى عنوان البريد الإلكتروني للكنيسة وتُظهر سجل تصحيح SMTP هنا."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "المستخدم الذي أضفته إلى قاعدة البيانات هذه. ليس تسجيل دخول الاستضافة الخاص بك."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "هذه الملفات ليست جزءًا من إصدار ChurchCRM. يمكن لمضيف الويب إزالتها."
+
+#: 
+msgid "These files do not match the release"
+msgstr "هذه الملفات لا تطابق الإصدار"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "لم يتم رفع هذه الملفات"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "لا تتضمن نسخة ChurchCRM هذه فحص ملف الإصدار. يمكنك المتابعة."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "لوحة المعلومات هذه هي الآن لوحة المعلومات الرئيسية الخاصة بك."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "لم تعد قاعدة البيانات هذه تتلقى إصلاحات أمنية من مورّدها."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "هذا هو المكان الذي سيفتح فيه الأشخاص ChurchCRM. غيّره فقط إذا كانوا سيستخدمون عنوانًا مختلفًا عن هذه الصفحة."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "هذا هو حساب كنيستك. كل ما يمكنك فعله لنفسك موجود هنا."
+
+#: 
+msgid "Total deposited"
+msgstr "إجمالي المودَع"
+
+#: 
+msgid "Unsupported database server"
+msgstr "خادم قاعدة بيانات غير مدعوم"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "سيتم حظر الترقيات حتى يتم نقل قاعدة البيانات إلى إصدار مدعوم."
+
+#: 
+msgid "Usually 3306."
+msgstr "عادة 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "نوصي بأن تطلب من مضيفك التبديل قبل التثبيت، بينما لا توجد بيانات لنقلها. MariaDB 10.11 هدف جيد."
+
+#: 
+msgid "Web address"
+msgstr "عنوان الويب"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "يمكنك التثبيت الآن: سيتم تثبيت ChurchCRM وتشغيله."
+
+#: 
+msgid "Your main dashboard"
+msgstr "لوحة المعلومات الرئيسية الخاصة بك"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "يحتاج مضيف الويب إلى إصلاح شيء ما"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "و{{count}} آخر"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "و{{count}} أخرى"
+

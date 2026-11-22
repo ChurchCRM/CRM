@@ -27810,3 +27810,441 @@ msgstr "ประเทศของคริสตจักรของคุณ
 msgid "groups"
 msgstr "กลุ่ม"
 
+#: 
+msgid "14 days"
+msgstr "14 วัน"
+
+#: 
+msgid "6 months"
+msgstr "6 เดือน"
+
+#: 
+msgid "60 days"
+msgstr "60 วัน"
+
+#: 
+msgid "7 days"
+msgstr "7 วัน"
+
+#: 
+msgid "Ask on Discord"
+msgstr "ถามใน Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "เปลี่ยนรหัสผ่านของคุณทันทีหลังจากเข้าสู่ระบบ"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "เลือกวิธีเข้าสู่ระบบอื่น"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM ไม่สามารถเข้าถึงฐานข้อมูลที่ localhost ได้ ลองใช้ 127.0.0.1 แทน หรือสอบถามชื่อโฮสต์ฐานข้อมูลจากผู้ให้บริการเว็บโฮสติ้งของคุณ"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM ไม่สามารถเข้าถึงเซิร์ฟเวอร์ฐานข้อมูลที่ที่อยู่และพอร์ตนั้นได้ ตรวจสอบชื่อโฮสต์และพอร์ต บนโฮสติ้งแบบแชร์ โฮสต์มักจะไม่ใช่ localhost"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM ไม่สามารถอ่านการตรวจสอบเวอร์ชันของตนได้ โปรดขอให้ผู้ให้บริการเว็บโฮสติ้งของคุณทำให้โฟลเดอร์ ChurchCRM อ่านได้ หรือดำเนินการต่อ"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM ไม่สามารถตรวจสอบสิทธิ์ของโฟลเดอร์ได้"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM ไม่สามารถตรวจสอบไฟล์ของตนได้ โปรดขอให้ผู้ให้บริการเว็บโฮสติ้งของคุณตรวจสอบบันทึกข้อผิดพลาดของเซิร์ฟเวอร์"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM ไม่สามารถตรวจสอบซอฟต์แวร์ของเซิร์ฟเวอร์ได้"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM ไม่สามารถเชื่อมต่อกับฐานข้อมูลด้วยการตั้งค่าเหล่านี้ได้"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM ไม่สามารถติดตั้งให้เสร็จสมบูรณ์ได้ ลองอีกครั้ง หรือขอให้ผู้ให้บริการเว็บโฮสติ้งของคุณตรวจสอบบันทึกข้อผิดพลาดของเซิร์ฟเวอร์"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM ไม่สามารถบันทึก Include/Config.php ได้ โปรดขอให้ผู้ให้บริการเว็บโฮสติ้งของคุณทำให้โฟลเดอร์ Include สามารถเขียนได้"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ไฟล์ ChurchCRM ตรงกับเวอร์ชันที่เผยแพร่"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "ย่อแถบด้านข้างให้เป็นไอคอน"
+
+#: 
+msgid "Congregation login"
+msgstr "เข้าสู่ระบบสำหรับสมาชิกคริสตจักร"
+
+#: 
+msgid "Connect your database"
+msgstr "เชื่อมต่อฐานข้อมูลของคุณ"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "กำลังเชื่อมต่อกับฐานข้อมูลของคุณ…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "ไม่สามารถบันทึกแดชบอร์ดหลักของคุณได้"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "สร้างฐานข้อมูล MySQL หรือ MariaDB ในแผงควบคุมโฮสติ้งของคุณก่อน (ใน cPanel: %s) จากนั้นคัดลอกรายละเอียดมาที่นี่ ChurchCRM รองรับ MySQL 8.4+ และ MariaDB 10.11+ (เวอร์ชัน LTS)"
+
+#: 
+msgid "Database host"
+msgstr "โฮสต์ฐานข้อมูล"
+
+#: 
+msgid "Database name"
+msgstr "ชื่อฐานข้อมูล"
+
+#: 
+msgid "Database password"
+msgstr "รหัสผ่านฐานข้อมูล"
+
+#: 
+msgid "Database user"
+msgstr "ผู้ใช้ฐานข้อมูล"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "เว้นว่างไว้เมื่อ ChurchCRM อยู่ที่ระดับบนสุดของเว็บไซต์ มิฉะนั้นให้ใส่โฟลเดอร์ เช่น %s"
+
+#: 
+msgid "Enter note text here..."
+msgstr "ป้อนข้อความบันทึกที่นี่..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "ป้อนโฮสต์ฐานข้อมูล เช่น localhost หรือ mysql.example.com ใช้เฉพาะตัวอักษร ตัวเลข จุด และขีดกลางเท่านั้น"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "ป้อนชื่อฐานข้อมูล ใช้เฉพาะตัวอักษร ตัวเลข ขีดล่าง ขีดกลาง และจุดเท่านั้น"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "ป้อนพอร์ตฐานข้อมูลเป็นตัวเลข โดยปกติคือ 3306"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "ป้อนผู้ใช้ฐานข้อมูล ใช้เฉพาะตัวอักษร ตัวเลข ขีดล่าง ขีดกลาง จุด และ @ เท่านั้น"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "ป้อนโฟลเดอร์ที่ขึ้นต้นด้วย / เช่น /churchcrm หรือเว้นว่างไว้"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "ป้อนรหัสผ่านสำหรับผู้ใช้ฐานข้อมูล"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "ป้อนที่อยู่เว็บ โดยขึ้นต้นด้วย http:// หรือ https://"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "ทุกครอบครัวสมาชิกที่ยังใช้งานอยู่ได้ชำระเงินระหว่าง %s ถึง %s"
+
+#: 
+msgid "Exclude"
+msgstr "ยกเว้น"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "ไฟล์ที่เหลือจากเวอร์ชันเก่า"
+
+#: 
+msgid "Files to review"
+msgstr "ไฟล์ที่ต้องตรวจสอบ"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "เตรียมรายละเอียดฐานข้อมูลจากผู้ให้บริการเว็บโฮสติ้งของคุณให้พร้อม ใช้เวลาประมาณสองนาที"
+
+#: 
+msgid "Hide"
+msgstr "ซ่อน"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "องค์ประกอบของสมาชิกคริสตจักร"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "ฉันเข้าใจว่าฐานข้อมูลนี้ไม่ได้รับการสนับสนุน และการอัปเกรดจะถูกบล็อก"
+
+#: 
+msgid "Insights"
+msgstr "ข้อมูลเชิงลึก"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ติดตั้ง ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "ติดตั้งเสร็จสมบูรณ์!"
+
+#: 
+msgid "Installation guide"
+msgstr "คู่มือการติดตั้ง"
+
+#: 
+msgid "Integrity check failed"
+msgstr "การตรวจสอบความสมบูรณ์ล้มเหลว"
+
+#: 
+msgid "Integrity check passed"
+msgstr "การตรวจสอบความสมบูรณ์ผ่าน"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "โทเค็น CSRF ไม่ถูกต้อง"
+
+#: 
+msgid "Last %d days"
+msgstr "%d วันที่ผ่านมา"
+
+#: 
+msgid "Last 12 months"
+msgstr "12 เดือนที่ผ่านมา"
+
+#: 
+msgid "Main dashboard"
+msgstr "แดชบอร์ดหลัก"
+
+#: 
+msgid "Navigation"
+msgstr "การนำทาง"
+
+#: 
+msgid "Need help?"
+msgstr "ต้องการความช่วยเหลือ?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "ไม่มีบันทึกในช่วงเวลานี้"
+
+#: 
+msgid "No notes yet."
+msgstr "ยังไม่มีบันทึก"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "บ่อยครั้งคือ %1$s โฮสต์บางรายให้ที่อยู่เช่น %2$s"
+
+#: 
+msgid "Open total"
+msgstr "ยอดรวมที่เปิดอยู่"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "เปิดแดชบอร์ดการเงินในช่วงนี้ เลือกปีงบประมาณที่ผ่านมาได้บนแดชบอร์ดเอง"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "7 วันที่ผ่านมาและ %d วันถัดไป"
+
+#: 
+msgid "People without a family: %d"
+msgstr "ผู้ที่ไม่มีครอบครัว: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "สิทธิ์ในการบันทึกการตั้งค่าและรูปภาพ"
+
+#: 
+msgid "Port"
+msgstr "พอร์ต"
+
+#: 
+msgid "Ready"
+msgstr "พร้อม"
+
+#: 
+msgid "Recent"
+msgstr "ล่าสุด"
+
+#: 
+msgid "Register your family to our church"
+msgstr "ลงทะเบียนครอบครัวของคุณกับคริสตจักรของเรา"
+
+#: 
+msgid "Release check"
+msgstr "การตรวจสอบเวอร์ชัน"
+
+#: 
+msgid "Report a problem"
+msgstr "รายงานปัญหา"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "จำนวนแถวที่แสดงต่อหน้าในทุกตารางและการ์ดแดชบอร์ด มีผลเมื่อโหลดหน้าถัดไป"
+
+#: 
+msgid "Send Test Email"
+msgstr "ส่งอีเมลทดสอบ"
+
+#: 
+msgid "Send a test email"
+msgstr "ส่งอีเมลทดสอบ"
+
+#: 
+msgid "Send them the list below."
+msgstr "ส่งรายการด้านล่างนี้ให้พวกเขา"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ซอฟต์แวร์เซิร์ฟเวอร์ที่ ChurchCRM ต้องการ"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "ตั้งเป็นแดชบอร์ดหลักของฉัน"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "เข้าสู่ระบบด้วยบัญชีผู้ดูแลระบบของคุณ"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "ไฟล์ ChurchCRM บางไฟล์หายไปหรือถูกเปลี่ยนแปลง อัปโหลด ChurchCRM อีกครั้งหากหน้าเว็บไม่โหลด"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "ไฟล์ ChurchCRM บางไฟล์ไม่ได้ถูกอัปโหลด"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "ไฟล์บางไฟล์บนเซิร์ฟเวอร์ไม่ตรงกับเวอร์ชัน ChurchCRM ที่เผยแพร่"
+
+#: 
+msgid "Staff login"
+msgstr "เข้าสู่ระบบสำหรับเจ้าหน้าที่"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "ขึ้นต้นด้วย %1$s หรือ %2$s และลงท้ายด้วย %3$s"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "แดชบอร์ดที่คุณเปิดหลังจากเข้าสู่ระบบ"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "เซิร์ฟเวอร์ฐานข้อมูลยอมรับการเข้าสู่ระบบ แต่ไม่มีฐานข้อมูลชื่อนั้น"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "เซิร์ฟเวอร์ฐานข้อมูลปฏิเสธชื่อผู้ใช้หรือรหัสผ่านนั้น"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "ชื่อที่คุณตั้งให้กับฐานข้อมูล โฮสต์แบบแชร์มักจะเพิ่มชื่อบัญชีของคุณไว้ด้านหน้า เช่น %s"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "รหัสผ่านสำหรับผู้ใช้ฐานข้อมูลนั้น ChurchCRM จะตรวจสอบรายละเอียดเหล่านี้เมื่อคุณคลิกติดตั้ง"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "ไฟล์ตรวจสอบเวอร์ชันบนเซิร์ฟเวอร์นี้ไม่ตรงกับ ChurchCRM อัปโหลดเวอร์ชันอีกครั้ง หรือดำเนินการต่อและขอความช่วยเหลือจากผู้ให้บริการเว็บโฮสติ้งของคุณ"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "ข้อความทดสอบจะถูกส่งไปยังที่อยู่อีเมลของคริสตจักรและแสดงบันทึกการแก้ไขข้อบกพร่อง SMTP ที่นี่"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "ผู้ใช้ที่คุณเพิ่มลงในฐานข้อมูลนั้น ไม่ใช่ข้อมูลเข้าสู่ระบบโฮสติ้งของคุณ"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "ไฟล์เหล่านี้ไม่ได้เป็นส่วนหนึ่งของเวอร์ชัน ChurchCRM ผู้ให้บริการเว็บโฮสติ้งของคุณสามารถลบออกได้"
+
+#: 
+msgid "These files do not match the release"
+msgstr "ไฟล์เหล่านี้ไม่ตรงกับเวอร์ชันที่เผยแพร่"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "ไฟล์เหล่านี้ไม่ได้ถูกอัปโหลด"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "สำเนา ChurchCRM นี้ไม่มีการตรวจสอบไฟล์เวอร์ชัน คุณสามารถดำเนินการต่อได้"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "แดชบอร์ดนี้เป็นแดชบอร์ดหลักของคุณแล้ว"
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "ฐานข้อมูลนี้ไม่ได้รับการแก้ไขด้านความปลอดภัยจากผู้จำหน่ายอีกต่อไป"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "นี่คือที่ที่ผู้คนจะเปิด ChurchCRM เปลี่ยนเฉพาะเมื่อพวกเขาจะใช้ที่อยู่อื่นที่ไม่ใช่หน้านี้เท่านั้น"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "นี่คือบัญชีคริสตจักรของคุณ ทุกสิ่งที่คุณสามารถทำได้ด้วยตัวเองอยู่ที่นี่"
+
+#: 
+msgid "Total deposited"
+msgstr "ยอดรวมที่ฝาก"
+
+#: 
+msgid "Unsupported database server"
+msgstr "เซิร์ฟเวอร์ฐานข้อมูลที่ไม่ได้รับการสนับสนุน"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "การอัปเกรดจะถูกบล็อกจนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่ได้รับการสนับสนุน"
+
+#: 
+msgid "Usually 3306."
+msgstr "โดยปกติคือ 3306"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "เราแนะนำให้ขอให้โฮสต์ของคุณเปลี่ยนก่อนที่คุณจะติดตั้ง ในขณะที่ยังไม่มีข้อมูลให้ย้าย MariaDB 10.11 เป็นเป้าหมายที่ดี"
+
+#: 
+msgid "Web address"
+msgstr "ที่อยู่เว็บ"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "คุณสามารถติดตั้งได้ตอนนี้: ChurchCRM จะติดตั้งและทำงาน"
+
+#: 
+msgid "Your main dashboard"
+msgstr "แดชบอร์ดหลักของคุณ"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "ผู้ให้บริการเว็บโฮสติ้งของคุณต้องแก้ไขบางอย่าง"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "และอีก {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "และอีก {{count}}"
+
