@@ -143,7 +143,7 @@
     ],
     "dbVersion": "7.8.5"
   },
-  "current": {
+  "pre-7.8.6": {
     "versions": ["7.8.5"],
     "scripts": [
       "/mysql/upgrade/7.8.6-remove-event-notes.sql",
@@ -152,5 +152,10 @@
       "/mysql/upgrade/7.8.6-people-utf8mb4.sql"
     ],
     "dbVersion": "7.8.6"
+  },
+  "current": {
+    "versions": ["7.8.6"],
+    "scripts": [],
+    "dbVersion": "7.8.7"
   }
 }
