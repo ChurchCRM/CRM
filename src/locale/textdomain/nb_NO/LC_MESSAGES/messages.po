@@ -4093,10 +4093,6 @@ msgid "Legend"
 msgstr "Tegnforklaring"
 
 #: 
-msgid "assigned"
-msgstr "tildelt"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Viser elever med bursdag i"
 
@@ -17666,10 +17662,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registreringer fra det offentlige registreringsskjemaet som venter på gjennomgang. Oppføringer uten e-post eller telefon er merket — kontroller kontaktinformasjonen før du følger opp."
 
 #: 
-msgid "Review self registrations"
-msgstr "Gå gjennom selvregistreringer"
-
-#: 
 msgid "Select month"
 msgstr "Velg måned"
 
@@ -17696,10 +17688,6 @@ msgstr "Denne personen tilhører en familie — godkjenn heller familien"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Denne personen er ikke en ventende selvregistrering"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Denne selvregistrerte familien venter på gjennomgang"
 
 #: 
 msgid "Total registrations"

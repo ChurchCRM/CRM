@@ -3991,10 +3991,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "dodijeljeno"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Prikazujem učenike s rođendanima u"
 
@@ -17579,10 +17575,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registracije koje čekaju pregled s vašeg javnog registracijskog obrasca. Unosi bez e-pošte ili telefona označeni su – prije kontaktiranja provjerite kontaktne podatke."
 
 #: 
-msgid "Review self registrations"
-msgstr "Pregledaj samoregistracije"
-
-#: 
 msgid "Select month"
 msgstr "Odaberite mjesec"
 
@@ -17609,10 +17601,6 @@ msgstr "Ova osoba pripada obitelji – umjesto toga odobrite obitelj"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ova osoba nije samoregistracija na čekanju"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Ova samoregistrirana obitelj čeka pregled"
 
 #: 
 msgid "Total registrations"

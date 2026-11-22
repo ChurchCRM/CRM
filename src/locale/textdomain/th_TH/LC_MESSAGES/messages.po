@@ -4003,10 +4003,6 @@ msgid "Legend"
 msgstr "คำอธิบาย"
 
 #: 
-msgid "assigned"
-msgstr "กำหนดแล้ว"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "แสดงนักเรียนที่มีวันเกิดใน"
 
@@ -17563,10 +17559,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "การลงทะเบียนที่รอการตรวจสอบจากแบบฟอร์มลงทะเบียนสาธารณะของคุณ รายการที่ไม่มีอีเมลหรือโทรศัพท์จะมีเครื่องหมายแจ้งไว้ ควรตรวจสอบข้อมูลติดต่อก่อนติดต่อกลับ"
 
 #: 
-msgid "Review self registrations"
-msgstr "ตรวจสอบการลงทะเบียนด้วยตนเอง"
-
-#: 
 msgid "Select month"
 msgstr "เลือกเดือน"
 
@@ -17593,10 +17585,6 @@ msgstr "บุคคลนี้เป็นสมาชิกของครอ
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "บุคคลนี้ไม่ใช่การลงทะเบียนด้วยตนเองที่รอดำเนินการ"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "ครอบครัวที่ลงทะเบียนด้วยตนเองนี้กำลังรอการตรวจสอบ"
 
 #: 
 msgid "Total registrations"
