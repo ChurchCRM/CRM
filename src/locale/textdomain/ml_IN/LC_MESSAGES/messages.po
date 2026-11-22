@@ -3991,10 +3991,6 @@ msgid "Legend"
 msgstr "ഐതിഹ്യം"
 
 #: 
-msgid "assigned"
-msgstr "നൽകിയ"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "ജന്മദിനമുള്ള വിദ്യാർത്ഥികൾ കാണിക്കുന്നു"
 
@@ -17566,10 +17562,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "നിങ്ങളുടെ പൊതു രജിസ്ട്രേഷൻ ഫോമിൽ നിന്നുള്ള അവലോകനം കാത്തിരിക്കുന്ന രജിസ്ട്രേഷനുകൾ. ഇമെയിലോ ഫോണോ ഇല്ലാത്ത എൻട്രികൾ അടയാളപ്പെടുത്തിയിരിക്കുന്നു — ബന്ധപ്പെടുന്നതിന് മുമ്പ് ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ പരിശോധിക്കുക."
 
 #: 
-msgid "Review self registrations"
-msgstr "സ്വയം രജിസ്ട്രേഷനുകൾ അവലോകനം ചെയ്യുക"
-
-#: 
 msgid "Select month"
 msgstr "മാസം തിരഞ്ഞെടുക്കുക"
 
@@ -17596,10 +17588,6 @@ msgstr "ഈ വ്യക്തി ഒരു കുടുംബത്തിന്
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "ഈ വ്യക്തി തീർപ്പാക്കാത്ത സ്വയം രജിസ്ട്രേഷൻ അല്ല"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "സ്വയം രജിസ്റ്റർ ചെയ്ത ഈ കുടുംബം അവലോകനം കാത്തിരിക്കുന്നു"
 
 #: 
 msgid "Total registrations"

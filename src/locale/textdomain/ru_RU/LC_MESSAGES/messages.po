@@ -4074,10 +4074,6 @@ msgid "Legend"
 msgstr "Легенда"
 
 #: 
-msgid "assigned"
-msgstr "назначено"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Показ студентов с днями рождения в"
 
@@ -17680,10 +17676,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Регистрации из вашей общедоступной формы, ожидающие проверки. Записи без эл. почты или телефона помечены — проверьте контактные данные, прежде чем связываться."
 
 #: 
-msgid "Review self registrations"
-msgstr "Проверить саморегистрации"
-
-#: 
 msgid "Select month"
 msgstr "Выберите месяц"
 
@@ -17710,10 +17702,6 @@ msgstr "Этот человек относится к семье — одобр�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Этот человек не ожидает проверки саморегистрации"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Эта саморегистрированная семья ожидает проверки"
 
 #: 
 msgid "Total registrations"

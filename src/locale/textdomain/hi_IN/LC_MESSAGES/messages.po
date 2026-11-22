@@ -3994,10 +3994,6 @@ msgid "Legend"
 msgstr "संकेत-चिह्न (लीजेंड)"
 
 #: 
-msgid "assigned"
-msgstr "सौंपा गया"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "उन छात्रों को दिखाया जा रहा है जिनका जन्मदिन इसमें है:"
 
@@ -17568,10 +17564,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।"
 
 #: 
-msgid "Review self registrations"
-msgstr "स्वयं-पंजीकरण की समीक्षा करें"
-
-#: 
 msgid "Select month"
 msgstr "माह चुनें"
 
@@ -17598,10 +17590,6 @@ msgstr "यह व्यक्ति एक परिवार का सदस�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "यह व्यक्ति लंबित स्वयं-पंजीकरण नहीं है"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "यह स्वयं-पंजीकृत परिवार समीक्षा के लिए लंबित है"
 
 #: 
 msgid "Total registrations"

@@ -4015,10 +4015,6 @@ msgid "Legend"
 msgstr "Legjenda"
 
 #: 
-msgid "assigned"
-msgstr "caktuar"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Duke shfaqur studentët me ditëlindje në"
 
@@ -17590,10 +17586,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Regjistrime që presin shqyrtim nga formulari juaj publik i regjistrimit. Hyrjet pa email ose telefon janë shënuar – verifikoni të dhënat e kontaktit përpara se t'i kontaktoni."
 
 #: 
-msgid "Review self registrations"
-msgstr "Shqyrto vetëregjistrimet"
-
-#: 
 msgid "Select month"
 msgstr "Zgjidhni muajin"
 
@@ -17620,10 +17612,6 @@ msgstr "Ky person i përket një familjeje – miratoni familjen në vend të ti
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ky person nuk është vetëregjistrim në pritje"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Kjo familje e vetëregjistruar është në pritje të shqyrtimit"
 
 #: 
 msgid "Total registrations"

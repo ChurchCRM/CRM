@@ -4079,10 +4079,6 @@ msgid "Legend"
 msgstr "图例"
 
 #: 
-msgid "assigned"
-msgstr "已指派"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "展示学员生日于"
 
@@ -17648,10 +17644,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。"
 
 #: 
-msgid "Review self registrations"
-msgstr "审核自助登记"
-
-#: 
 msgid "Select month"
 msgstr "选择月份"
 
@@ -17678,10 +17670,6 @@ msgstr "此人属于某个家庭，请改为批准该家庭"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "此人不是待处理的自助登记"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "此自助登记的家庭正等待审核"
 
 #: 
 msgid "Total registrations"
