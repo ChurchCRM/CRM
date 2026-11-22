@@ -8,6 +8,13 @@ $(document).ready(function () {
     stateTextboxId: "StateTextbox",
   });
 
+  // Initialize Group multi-select
+  var groupElement = document.getElementById("groupIds");
+
+  if (groupElement && !groupElement.tomselect) {
+    new TomSelect(groupElement);
+  }
+
   // Toggle date-of-death picker visibility when the Deceased checkbox is changed
   $("#IsDeceased").on("change", function () {
     if ($(this).is(":checked")) {

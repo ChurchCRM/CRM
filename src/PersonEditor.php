@@ -821,6 +821,53 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
     </div>
 
+    <!-- Group Assignment -->
+    <?php if ($isNewPerson && $canManageGroups) { ?>
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">
+                <?= gettext('Group Assignment') ?>
+            </h3>
+        </div>
+
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="groupIds">
+                    <?= gettext('Groups') ?>:
+                </label>
+
+                <select
+                    name="GroupIds[]"
+                    id="groupIds"
+                    class="form-select"
+                    multiple
+                >
+                    <?php foreach ($availableGroups as $group) { ?>
+                        <?php $groupId = (int) $group->getId(); ?>
+
+                        <option
+                            value="<?= $groupId ?>"
+                            <?= in_array(
+                                $groupId,
+                                $selectedGroupIds,
+                                true
+                            ) ? 'selected' : '' ?>
+                        >
+                            <?= InputUtils::escapeHTML($group->getName()) ?>
+                        </option>
+                    <?php } ?>
+                </select>
+
+                <div class="form-text">
+                    <?= gettext(
+                        'Select one or more groups for this person.'
+                    ) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+
     <!-- Card 2: Address -->
     <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card clearfix">
