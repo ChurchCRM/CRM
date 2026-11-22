@@ -26,13 +26,15 @@ class GroupService
      * @param int $personID Person ID to add to group properties
      * @return void
      */
-    private function addPersonToGroupProperties(int $groupID, int $personID): void
+    private function addPersonToGroupProperties(int $groupID, int $personID, $connection = null): void
     {
-        $connection = Propel::getConnection();
+        $connection ??= Propel::getConnection();
         $sql = 'INSERT IGNORE INTO groupprop_' . (int)$groupID . ' (per_ID) VALUES (:personId)';
         $stmt = $connection->prepare($sql);
         $stmt->bindValue(':personId', $personID, \PDO::PARAM_INT);
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            throw new \RuntimeException('Failed to add person to group properties');
+        }
     }
 
     /**
@@ -77,27 +79,32 @@ class GroupService
         if ($group === null) {
             return false;
         }
-        //
-        // Adds a person to a group with specified role.
-        // Returns false if the operation fails. (such as person already in group)
-        //
 
         // Was a RoleID passed in?
         if ($iRoleID === 0) {
-            // No, get the Default Role for this Group
             $iRoleID = $group->getDefaultRole();
         }
 
-        $result = false;
+        $connection = Propel::getWriteConnection(GroupTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
         try {
             $person2group2role = new Person2group2roleP2g2r();
             $person2group2role
                 ->setPersonId($iPersonID)
                 ->setGroupId($iGroupID)
                 ->setRoleId($iRoleID);
-            $person2group2role->save();
-            $result = true;
+            $person2group2role->save($connection);
+
+            // Check if this group has special properties.
+            if ($group->getHasSpecialProps()) {
+                $this->addPersonToGroupProperties($iGroupID, $iPersonID, $connection);
+            }
+
+            $connection->commit();
         } catch (\Throwable $t) {
+            $connection->rollBack();
+
             $logger = LoggerUtils::getAppLogger();
             $logger->warning('Failed to add person to group', [
                 'groupId' => $iGroupID,
@@ -105,15 +112,8 @@ class GroupService
                 'roleId' => $iRoleID,
                 'error' => $t->getMessage(),
             ]);
-        }
 
-        if (!$result) {
             return false;
-        }
-
-        // Check if this group has special properties
-        if ($group->getHasSpecialProps()) {
-            $this->addPersonToGroupProperties($iGroupID, $iPersonID);
         }
 
         return $this->getGroupMembers($iGroupID, $iPersonID);
