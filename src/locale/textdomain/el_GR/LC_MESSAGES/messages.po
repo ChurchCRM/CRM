@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Σχόλιο κατάθεσης"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Η επικύρωση της υπογραφής του αρχείου ορισμού υπογραφής απέτυχε"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής"
-
-#: 
 msgid "item"
 msgstr "είδος"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Εσθονική"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Σφάλμα κατά την αποκωδικοποίηση του αρχείου ορισμού υπογραφής"
-
-#: 
 msgid "Event not found"
 msgstr "Το συμβάν δεν βρέθηκε"
 
@@ -5278,14 +5266,6 @@ msgstr "Παρακαλούμε εισάγετε ένα έγκυρο URL που �
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Όλες οι υπογραφές αρχείων συστήματος ταιριάζουν με τις αναμενόμενες τιμές."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Το αρχείο ορισμού υπογραφής υπάρχει αλλά δεν είναι αναγνώσιμο. Ελέγξτε τα δικαιώματα αρχείων."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Το αρχείο ορισμού υπογραφής λείπει από το %s. Εκτελέστε την εργασία συσκευασίας για αναδημιουργία υπογραφών."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12895,10 +12875,6 @@ msgid "Deposit ID"
 msgstr "Αναγνωριστικό Κατάθεσης"
 
 #: 
-msgid "Deposit Value"
-msgstr "Αξία κατάθεσης προσφορών"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Η κατάθεση αποθηκεύτηκε επιτυχώς"
 
@@ -13315,22 +13291,6 @@ msgid "Move Members to Group"
 msgstr "Μετακίνηση μελών σε ομάδα"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https:// (π.χ. http://localhost ή https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Πρέπει να είναι έγκυρος αριθμός θύρας (π.χ. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Πρέπει να αρχίζει με / αν δεν είναι κενό· χωρίς κάθετο στο τέλος. Επιτρέπονται μόνο γράμματα, αριθμοί, κάτω παύλα, παύλα, τελεία και /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Χρειάζεται να αφαιρέσετε αυτά τα δεδομένα αργότερα;"
 
@@ -13481,10 +13441,6 @@ msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email (π.χ. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Παρακαλώ εισάγετε έγκυρο αριθμό"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24269,10 +24225,6 @@ msgid "Church default: %s"
 msgstr "Προεπιλογή εκκλησίας: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Σύνδεση ηγεσίας εκκλησίας"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Ταξινομήσεις των οποίων τα μέλη μπορούν να συνδεθούν στην Πύλη μελών, ως λίστα αναγνωριστικών ταξινόμησης χωρισμένων με κόμμα."
 
@@ -24915,10 +24867,6 @@ msgstr "Δεν έληξε"
 #: 
 msgid "Not moved"
 msgstr "Δεν μεταφέρθηκε"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Δεν είστε βέβαιοι ποιο ηλεκτρονικό ταχυδρομείο έχουμε; Επικοινωνήστε με το γραφείο της εκκλησίας."
 
 #: 
 msgid "Not yet"
@@ -27917,4 +27865,442 @@ msgstr "Η χώρα της εκκλησίας σας είναι ο Καναδά�
 #: 
 msgid "groups"
 msgstr "Ομάδες"
+
+#: 
+msgid "14 days"
+msgstr "14 ημέρες"
+
+#: 
+msgid "6 months"
+msgstr "6 μήνες"
+
+#: 
+msgid "60 days"
+msgstr "60 ημέρες"
+
+#: 
+msgid "7 days"
+msgstr "7 ημέρες"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Ρωτήστε στο Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Αλλάξτε τον κωδικό πρόσβασής σας αμέσως μετά τη σύνδεση."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Επιλέξτε διαφορετικό τρόπο σύνδεσης"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "Το ChurchCRM δεν μπορεί να συνδεθεί σε βάση δεδομένων στο localhost. Δοκιμάστε αντ' αυτού το 127.0.0.1 ή ζητήστε από τον πάροχο φιλοξενίας σας το όνομα του διακομιστή της βάσης δεδομένων."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "Το ChurchCRM δεν μπορεί να φτάσει τον διακομιστή βάσης δεδομένων σε αυτή τη διεύθυνση και θύρα. Ελέγξτε το όνομα του διακομιστή και τη θύρα. Στην κοινόχρηστη φιλοξενία ο διακομιστής συχνά δεν είναι localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "Το ChurchCRM δεν μπορεί να διαβάσει τον έλεγχο έκδοσής του. Ζητήστε από τον πάροχο φιλοξενίας σας να κάνει τον φάκελο του ChurchCRM αναγνώσιμο, ή συνεχίστε."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "Το ChurchCRM δεν μπόρεσε να ελέγξει τα δικαιώματα του φακέλου"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "Το ChurchCRM δεν μπόρεσε να ελέγξει τα αρχεία του. Ζητήστε από τον πάροχο φιλοξενίας σας να δει το αρχείο καταγραφής σφαλμάτων του διακομιστή."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "Το ChurchCRM δεν μπόρεσε να ελέγξει το λογισμικό του διακομιστή"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "Το ChurchCRM δεν μπόρεσε να συνδεθεί στη βάση δεδομένων με αυτές τις ρυθμίσεις."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "Το ChurchCRM δεν μπόρεσε να ολοκληρώσει την εγκατάσταση. Δοκιμάστε ξανά, ή ζητήστε από τον πάροχο φιλοξενίας σας να ελέγξει το αρχείο καταγραφής σφαλμάτων του διακομιστή."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "Το ChurchCRM δεν μπόρεσε να αποθηκεύσει το Include/Config.php. Ζητήστε από τον πάροχο φιλοξενίας σας να κάνει τον φάκελο Include εγγράψιμο."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Τα αρχεία του ChurchCRM ταιριάζουν με την έκδοση"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Σύμπτυξη της πλευρικής γραμμής σε εικονίδια"
+
+#: 
+msgid "Congregation login"
+msgstr "Σύνδεση ενοριτών"
+
+#: 
+msgid "Connect your database"
+msgstr "Συνδέστε τη βάση δεδομένων σας"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Σύνδεση στη βάση δεδομένων σας…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Δεν ήταν δυνατή η αποθήκευση του κύριου πίνακα ελέγχου σας."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Δημιουργήστε πρώτα μια βάση δεδομένων MySQL ή MariaDB στον πίνακα ελέγχου της φιλοξενίας σας (στο cPanel: %s), και μετά αντιγράψτε τα στοιχεία της εδώ. Το ChurchCRM υποστηρίζει MySQL 8.4+ και MariaDB 10.11+ (τις εκδόσεις LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Διακομιστής βάσης δεδομένων"
+
+#: 
+msgid "Database name"
+msgstr "Όνομα βάσης δεδομένων"
+
+#: 
+msgid "Database password"
+msgstr "Κωδικός πρόσβασης βάσης δεδομένων"
+
+#: 
+msgid "Database user"
+msgstr "Χρήστης βάσης δεδομένων"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Κενό όταν το ChurchCRM βρίσκεται στην κορυφή του ιστότοπου. Διαφορετικά ο φάκελος, όπως %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Εισαγάγετε κείμενο σημείωσης εδώ..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Εισαγάγετε τον διακομιστή της βάσης δεδομένων, όπως localhost ή mysql.example.com. Χρησιμοποιήστε μόνο γράμματα, αριθμούς, τελείες και παύλες."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Εισαγάγετε το όνομα της βάσης δεδομένων. Χρησιμοποιήστε μόνο γράμματα, αριθμούς, κάτω παύλες, παύλες και τελείες."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Εισαγάγετε τη θύρα της βάσης δεδομένων ως αριθμό. Συνήθως είναι 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Εισαγάγετε τον χρήστη της βάσης δεδομένων. Χρησιμοποιήστε μόνο γράμματα, αριθμούς, κάτω παύλες, παύλες, τελείες και @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Εισαγάγετε τον φάκελο ξεκινώντας με /, όπως /churchcrm, ή αφήστε τον κενό."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Εισαγάγετε τον κωδικό πρόσβασης για τον χρήστη της βάσης δεδομένων."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Εισαγάγετε τη διεύθυνση web, ξεκινώντας με http:// ή https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Κάθε ενεργή οικογένεια μέλους έκανε μια πληρωμή μεταξύ %s και %s."
+
+#: 
+msgid "Exclude"
+msgstr "Εξαίρεση"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Αρχεία που απέμειναν από παλαιότερη έκδοση"
+
+#: 
+msgid "Files to review"
+msgstr "Αρχεία προς έλεγχο"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Να έχετε έτοιμα τα στοιχεία της βάσης δεδομένων από τον πάροχο φιλοξενίας σας. Χρειάζονται περίπου δύο λεπτά."
+
+#: 
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Πώς αποτελείται το εκκλησίασμα"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Κατανοώ ότι αυτή η βάση δεδομένων δεν υποστηρίζεται και οι αναβαθμίσεις θα αποκλειστούν"
+
+#: 
+msgid "Insights"
+msgstr "Στατιστικά"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Εγκατάσταση του ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Η εγκατάσταση ολοκληρώθηκε!"
+
+#: 
+msgid "Installation guide"
+msgstr "Οδηγός εγκατάστασης"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Ο έλεγχος ακεραιότητας απέτυχε"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Ο έλεγχος ακεραιότητας πέτυχε"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Μη έγκυρο διακριτικό CSRF"
+
+#: 
+msgid "Last %d days"
+msgstr "Τελευταίες %d ημέρες"
+
+#: 
+msgid "Last 12 months"
+msgstr "Τελευταίοι 12 μήνες"
+
+#: 
+msgid "Main dashboard"
+msgstr "Κύριος πίνακας ελέγχου"
+
+#: 
+msgid "Navigation"
+msgstr "Πλοήγηση"
+
+#: 
+msgid "Need help?"
+msgstr "Χρειάζεστε βοήθεια;"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Δεν υπάρχουν σημειώσεις σε αυτό το χρονικό διάστημα."
+
+#: 
+msgid "No notes yet."
+msgstr "Δεν υπάρχουν σημειώσεις ακόμη."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Συχνά %1$s. Ορισμένοι πάροχοι δίνουν μια διεύθυνση όπως %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Σύνολο ανοιχτών"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Ανοίγει τον πίνακα ελέγχου Οικονομικών σε αυτό το διάστημα. Επιλέξτε ένα παρελθόν οικονομικό έτος στον ίδιο τον πίνακα ελέγχου."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Προηγούμενες 7 ημέρες και επόμενες %d ημέρες"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Άτομα χωρίς οικογένεια: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Άδεια αποθήκευσης ρυθμίσεων και φωτογραφιών"
+
+#: 
+msgid "Port"
+msgstr "Θύρα"
+
+#: 
+msgid "Ready"
+msgstr "Έτοιμο"
+
+#: 
+msgid "Recent"
+msgstr "Πρόσφατα"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Εγγράψτε την οικογένειά σας στην εκκλησία μας"
+
+#: 
+msgid "Release check"
+msgstr "Έλεγχος έκδοσης"
+
+#: 
+msgid "Report a problem"
+msgstr "Αναφορά προβλήματος"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Γραμμές που εμφανίζονται ανά σελίδα σε κάθε πίνακα και κάρτα πίνακα ελέγχου. Ισχύει στην επόμενη φόρτωση σελίδας."
+
+#: 
+msgid "Send Test Email"
+msgstr "Αποστολή δοκιμαστικού email"
+
+#: 
+msgid "Send a test email"
+msgstr "Αποστολή δοκιμαστικού email"
+
+#: 
+msgid "Send them the list below."
+msgstr "Στείλτε τους τη λίστα παρακάτω."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Λογισμικό διακομιστή που χρειάζεται το ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Ορισμός ως κύριου πίνακα ελέγχου μου"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Συνδεθείτε με τον λογαριασμό διαχειριστή σας"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Ορισμένα αρχεία του ChurchCRM λείπουν ή έχουν αλλάξει. Ανεβάστε ξανά το ChurchCRM αν μια σελίδα δεν φορτώνει."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Ορισμένα αρχεία του ChurchCRM δεν ανεβάστηκαν."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Ορισμένα αρχεία στον διακομιστή δεν ταιριάζουν με την έκδοση του ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Σύνδεση προσωπικού"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Ξεκινά με %1$s ή %2$s και τελειώνει με %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Ο πίνακας ελέγχου που ανοίγει μετά τη σύνδεσή σας"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Ο διακομιστής βάσης δεδομένων αποδέχτηκε τη σύνδεση, αλλά δεν υπάρχει βάση δεδομένων με αυτό το όνομα."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Ο διακομιστής βάσης δεδομένων απέρριψε αυτό το όνομα χρήστη ή τον κωδικό πρόσβασης."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Το όνομα που δώσατε στη βάση δεδομένων. Οι κοινόχρηστοι πάροχοι συχνά προσθέτουν το όνομα του λογαριασμού σας μπροστά, όπως %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Ο κωδικός πρόσβασης για αυτόν τον χρήστη βάσης δεδομένων. Το ChurchCRM ελέγχει αυτά τα στοιχεία όταν κάνετε κλικ στην Εγκατάσταση."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Το αρχείο ελέγχου έκδοσης σε αυτόν τον διακομιστή δεν ταιριάζει με το ChurchCRM. Ανεβάστε ξανά την έκδοση, ή συνεχίστε και ζητήστε βοήθεια από τον πάροχο φιλοξενίας σας."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Το δοκιμαστικό μήνυμα πηγαίνει στη διεύθυνση email της εκκλησίας και εμφανίζει εδώ το αρχείο καταγραφής εντοπισμού σφαλμάτων SMTP."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Ο χρήστης που προσθέσατε σε αυτή τη βάση δεδομένων. Όχι τα στοιχεία σύνδεσης της φιλοξενίας σας."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Αυτά τα αρχεία δεν αποτελούν μέρος της έκδοσης του ChurchCRM. Ο πάροχος φιλοξενίας σας μπορεί να τα αφαιρέσει."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Αυτά τα αρχεία δεν ταιριάζουν με την έκδοση"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Αυτά τα αρχεία δεν ανεβάστηκαν"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Αυτό το αντίγραφο του ChurchCRM δεν περιλαμβάνει τον έλεγχο αρχείου έκδοσης. Μπορείτε να συνεχίσετε."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Αυτός ο πίνακας ελέγχου είναι τώρα ο κύριος πίνακας ελέγχου σας."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Αυτή η βάση δεδομένων δεν λαμβάνει πλέον διορθώσεις ασφαλείας από τον προμηθευτή της."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Εδώ θα ανοίγουν οι άνθρωποι το ChurchCRM. Αλλάξτε το μόνο αν θα χρησιμοποιούν διαφορετική διεύθυνση από αυτή τη σελίδα."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Αυτός είναι ο λογαριασμός της εκκλησίας σας. Ό,τι μπορείτε να κάνετε για τον εαυτό σας βρίσκεται εδώ."
+
+#: 
+msgid "Total deposited"
+msgstr "Συνολικό ποσό καταθέσεων"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Μη υποστηριζόμενος διακομιστής βάσης δεδομένων"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Οι αναβαθμίσεις θα αποκλειστούν μέχρι η βάση δεδομένων να μεταφερθεί σε υποστηριζόμενη έκδοση."
+
+#: 
+msgid "Usually 3306."
+msgstr "Συνήθως 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Συνιστούμε να ζητήσετε από τον πάροχό σας να αλλάξει πριν εγκαταστήσετε, όσο δεν υπάρχουν δεδομένα για μεταφορά. Η MariaDB 10.11 είναι ένας καλός στόχος."
+
+#: 
+msgid "Web address"
+msgstr "Διεύθυνση web"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Μπορείτε να εγκαταστήσετε τώρα: το ChurchCRM θα εγκατασταθεί και θα λειτουργήσει."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Ο κύριος πίνακας ελέγχου σας"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Ο πάροχος φιλοξενίας σας πρέπει να διορθώσει κάτι"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "και {{count}} ακόμη"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "και {{count}} ακόμη"
 

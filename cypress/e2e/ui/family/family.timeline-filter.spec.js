@@ -22,60 +22,19 @@ describe("Timeline filter chips", () => {
             cy.visit("people/family/1");
         });
 
-        it("should render filter chips and default to Notes only", () => {
-            cy.get("#family-timeline-container .timeline-filters").should("be.visible");
-            cy.get('#family-timeline-container .timeline-filter-chip[data-filter="notes"]').should(
-                "have.class",
-                "btn-primary",
-            );
-            cy.get('#family-timeline-container .timeline-filter-chip[data-filter="events"]').should(
-                "have.class",
-                "btn-outline-secondary",
-            );
-            cy.get('#family-timeline-container .timeline-filter-chip[data-filter="system"]').should(
-                "have.class",
-                "btn-outline-secondary",
-            );
+        it("should keep notes out of the family Timeline tab and show them on the Notes tab", () => {
+            cy.get("#nav-item-timeline").click();
+            cy.get("#timeline.timeline-container .timeline-filters").should("be.visible");
+            cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').should("not.exist");
+            cy.get('#timeline .timeline-event[data-timeline-category="notes"]').should("not.exist");
+            cy.get("#notes.timeline-container .timeline-filters").should("not.exist");
         });
 
-        it("should hide non-note timeline events by default", () => {
-            // All non-notes events must be hidden after filter init.
-            // Uses .then() to avoid a cy.get() timeout when the family has no notes events.
-            cy.get("#family-timeline-container").then(($container) => {
-                $container.find(".timeline-event").each(function () {
-                    const cat = Cypress.$(this).attr("data-timeline-category");
-                    if (cat !== "notes") {
-                        expect(
-                            Cypress.$(this).is(":visible"),
-                            `event[data-timeline-category="${cat}"] should be hidden`,
-                        ).to.be.false;
-                    }
-                });
-            });
-        });
-
-        it('should reveal every category when "Show all" is clicked', () => {
-            cy.get("#family-timeline-container .timeline-filter-all").click();
-            // If system/events rows exist, they should now be visible.
-            cy.get("#family-timeline-container .timeline-event").each(($el) => {
+        it('should reveal every activity category when "Show all" is clicked', () => {
+            cy.get("#nav-item-timeline").click();
+            cy.get("#timeline .timeline-filter-all").click();
+            cy.get("#timeline .timeline-event").each(($el) => {
                 cy.wrap($el).should("be.visible");
-            });
-        });
-
-        it("should hide the year divider when its events are filtered out", () => {
-            // Toggle Notes off (no default categories active → JS falls back
-            // to Notes) then toggle System on via click to compare visible
-            // categories.
-            cy.get('#family-timeline-container .timeline-filter-chip[data-filter="notes"]').click();
-            cy.get('#family-timeline-container .timeline-filter-chip[data-filter="system"]').click();
-            // Any visible timeline-year block must still have at least one
-            // visible .timeline-event with a matching data-timeline-year.
-            cy.get("#family-timeline-container .timeline-year:visible").each(($year) => {
-                const yr = $year.attr("data-timeline-year");
-                cy.get(`#family-timeline-container .timeline-event[data-timeline-year="${yr}"]:visible`).should(
-                    "have.length.at.least",
-                    1,
-                );
             });
         });
     });

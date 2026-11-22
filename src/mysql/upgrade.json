@@ -148,7 +148,8 @@
     "scripts": [
       "/mysql/upgrade/7.8.6-remove-event-notes.sql",
       "/mysql/upgrade/7.8.6-per-user-2fa.sql",
-      "/mysql/upgrade/7.8.6-volunteer-v1-removal.php"
+      "/mysql/upgrade/7.8.6-volunteer-v1-removal.php",
+      "/mysql/upgrade/7.8.6-people-utf8mb4.sql"
     ],
     "dbVersion": "7.8.6"
   }

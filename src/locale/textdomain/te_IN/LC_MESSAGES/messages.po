@@ -2158,14 +2158,6 @@ msgid "Deposit Comment"
 msgstr "డిపాజిట్ వ్యాఖ్య"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "సిగ్నేచర్ డెఫినిషన్ ఫైల్ సిగ్నేచర్ ధృవీకరణ విఫలమైంది"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "ఒకటి లేదా అంతకంటే ఎక్కువ ఫైల్‌లు సిగ్నేచర్ ధృవీకరణలో విఫలమయ్యాయి"
-
-#: 
 msgid "item"
 msgstr "వస్తువు"
 
@@ -4673,10 +4665,6 @@ msgid "Estonian"
 msgstr "ఎస్టోనియన్"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "సంతకం నిర్వచన ఫైల్‌ను డీకోడ్ చేయడంలో లోపం"
-
-#: 
 msgid "Event not found"
 msgstr "ఈవెంట్ కనుగొనబడలేదు"
 
@@ -5256,14 +5244,6 @@ msgstr "దయచేసి http:// లేదా https:// తో ప్రార�
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "అన్ని సిస్టమ్ ఫైల్ సంతకాలు ఊహించిన విలువలతో సరిపోలుతాయి."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "సంతకం నిర్వచన ఫైల్ ఉంది కానీ చదవడానికి వీలు లేదు. ఫైల్ అనుమతులను తనిఖీ చేయండి."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "సంతకం నిర్వచన ఫైల్ %s వద్ద లేదు. సంతకాలను పునరుత్పత్తి చేయడానికి ప్యాకేజింగ్ టాస్క్‌ను అమలు చేయండి లేదా అధికారిక విడుదలను అమలు చేయండి."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12873,10 +12853,6 @@ msgid "Deposit ID"
 msgstr "డిపాజిట్ ఐడి"
 
 #: 
-msgid "Deposit Value"
-msgstr "డిపాజిట్ విలువ"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "డిపాజిట్ విజయవంతంగా సేవ్ చేయబడింది"
 
@@ -13293,22 +13269,6 @@ msgid "Move Members to Group"
 msgstr "సభ్యులను గ్రూప్‌కి తరలించండి"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి (ఉదా., http://localhost లేదా https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "చెల్లుబాటు అయ్యే పోర్ట్ నంబర్ అయి ఉండాలి (ఉదా., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "ఖాళీగా లేకపోతే '/' తో ప్రారంభం కావాలి; చివరిలో '/' ఉండకూడదు. అక్షరాలు, సంఖ్యలు, అండర్‌స్కోర్, డాష్, డాట్ మరియు '/' మాత్రమే అనుమతించబడతాయి."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "ఈ డేటాను తరువాత తొలగించాలా?"
 
@@ -13459,10 +13419,6 @@ msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమ
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి (ఉదా., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "దయచేసి చెల్లుబాటు అయ్యే సంఖ్యను నమోదు చేయండి"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24247,10 +24203,6 @@ msgid "Church default: %s"
 msgstr "చర్చి అప్రమేయం: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "చర్చి నాయకుడి సైన్-ఇన్"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయగల సభ్యుల వర్గీకరణలు, కామాతో వేరు చేసిన వర్గీకరణ id ల జాబితాగా."
 
@@ -24893,10 +24845,6 @@ msgstr "ముగియలేదు"
 #: 
 msgid "Not moved"
 msgstr "తరలించబడలేదు"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "మా వద్ద ఏ ఇమెయిల్ ఉందో ఖచ్చితంగా తెలియదా? చర్చి కార్యాలయాన్ని సంప్రదించండి."
 
 #: 
 msgid "Not yet"
@@ -27895,4 +27843,442 @@ msgstr "మీ చర్చి దేశం కెనడా, కాబట్ట�
 #: 
 msgid "groups"
 msgstr "సమూహాలు"
+
+#: 
+msgid "14 days"
+msgstr "14 రోజులు"
+
+#: 
+msgid "6 months"
+msgstr "6 నెలలు"
+
+#: 
+msgid "60 days"
+msgstr "60 రోజులు"
+
+#: 
+msgid "7 days"
+msgstr "7 రోజులు"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discordలో అడగండి"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "సైన్ ఇన్ చేసిన వెంటనే మీ పాస్‌వర్డ్‌ను మార్చండి."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "సైన్ ఇన్ చేయడానికి వేరే మార్గాన్ని ఎంచుకోండి"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM localhost వద్ద ఉన్న డేటాబేస్‌ను చేరుకోలేకపోతోంది. బదులుగా 127.0.0.1ని ప్రయత్నించండి, లేదా డేటాబేస్ హోస్ట్ పేరు కోసం మీ వెబ్ హోస్ట్‌ను అడగండి."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM ఆ చిరునామా మరియు పోర్ట్ వద్ద ఉన్న డేటాబేస్ సర్వర్‌ను చేరుకోలేకపోతోంది. హోస్ట్ పేరు మరియు పోర్ట్‌ను తనిఖీ చేయండి. షేర్డ్ హోస్టింగ్‌లో హోస్ట్ తరచుగా localhost కాదు."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM దాని విడుదల తనిఖీని చదవలేకపోతోంది. ChurchCRM ఫోల్డర్‌ను చదవగలిగేలా చేయమని మీ వెబ్ హోస్ట్‌ను అడగండి, లేదా కొనసాగించండి."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM ఫోల్డర్ అనుమతులను తనిఖీ చేయలేకపోయింది"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM దాని ఫైళ్ళను తనిఖీ చేయలేకపోయింది. సర్వర్ దోష లాగ్‌ను చూడమని మీ వెబ్ హోస్ట్‌ను అడగండి."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM సర్వర్ సాఫ్ట్‌వేర్‌ను తనిఖీ చేయలేకపోయింది"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM ఈ సెట్టింగ్‌లతో డేటాబేస్‌కు కనెక్ట్ కాలేకపోయింది."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM ఇన్‌స్టాల్‌ను పూర్తి చేయలేకపోయింది. మళ్లీ ప్రయత్నించండి, లేదా సర్వర్ దోష లాగ్‌ను తనిఖీ చేయమని మీ వెబ్ హోస్ట్‌ను అడగండి."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM Include/Config.phpను సేవ్ చేయలేకపోయింది. Include ఫోల్డర్‌ను వ్రాయగలిగేలా చేయమని మీ వెబ్ హోస్ట్‌ను అడగండి."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM ఫైళ్ళు విడుదలతో సరిపోలుతున్నాయి"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "సైడ్‌బార్‌ను చిహ్నాలకు కుదించండి"
+
+#: 
+msgid "Congregation login"
+msgstr "సంఘ లాగిన్"
+
+#: 
+msgid "Connect your database"
+msgstr "మీ డేటాబేస్‌ను కనెక్ట్ చేయండి"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "మీ డేటాబేస్‌కు కనెక్ట్ అవుతోంది…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "మీ ప్రధాన డ్యాష్‌బోర్డ్‌ను సేవ్ చేయలేకపోయింది."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "ముందుగా మీ హోస్టింగ్ నియంత్రణ ప్యానెల్‌లో MySQL లేదా MariaDB డేటాబేస్‌ను సృష్టించండి (cPanelలో: %s), ఆపై దాని వివరాలను ఇక్కడ కాపీ చేయండి. ChurchCRM MySQL 8.4+ మరియు MariaDB 10.11+ (LTS విడుదలలు)లకు మద్దతు ఇస్తుంది."
+
+#: 
+msgid "Database host"
+msgstr "డేటాబేస్ హోస్ట్"
+
+#: 
+msgid "Database name"
+msgstr "డేటాబేస్ పేరు"
+
+#: 
+msgid "Database password"
+msgstr "డేటాబేస్ పాస్‌వర్డ్"
+
+#: 
+msgid "Database user"
+msgstr "డేటాబేస్ వినియోగదారు"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRM సైట్ పైభాగంలో ఉన్నప్పుడు ఖాళీగా ఉంచండి. లేకపోతే ఫోల్డర్, ఉదాహరణకు %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "ఇక్కడ గమనిక వచనాన్ని నమోదు చేయండి..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "localhost లేదా mysql.example.com వంటి డేటాబేస్ హోస్ట్‌ను నమోదు చేయండి. అక్షరాలు, సంఖ్యలు, చుక్కలు మరియు డాష్‌లను మాత్రమే ఉపయోగించండి."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "డేటాబేస్ పేరును నమోదు చేయండి. అక్షరాలు, సంఖ్యలు, అండర్‌స్కోర్‌లు, డాష్‌లు మరియు చుక్కలను మాత్రమే ఉపయోగించండి."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "డేటాబేస్ పోర్ట్‌ను సంఖ్యగా నమోదు చేయండి. ఇది సాధారణంగా 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "డేటాబేస్ వినియోగదారుని నమోదు చేయండి. అక్షరాలు, సంఖ్యలు, అండర్‌స్కోర్‌లు, డాష్‌లు, చుక్కలు మరియు @ మాత్రమే ఉపయోగించండి."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "/churchcrm వలె /తో ప్రారంభమయ్యే ఫోల్డర్‌ను నమోదు చేయండి, లేదా ఖాళీగా ఉంచండి."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "డేటాబేస్ వినియోగదారు కోసం పాస్‌వర్డ్‌ను నమోదు చేయండి."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "http:// లేదా https://తో ప్రారంభమయ్యే వెబ్ చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "%s మరియు %s మధ్య క్రియాశీల సభ్య కుటుంబాలన్నీ చెల్లింపు చేశాయి."
+
+#: 
+msgid "Exclude"
+msgstr "మినహాయించు"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "పాత సంస్కరణ నుండి మిగిలిపోయిన ఫైళ్ళు"
+
+#: 
+msgid "Files to review"
+msgstr "సమీక్షించాల్సిన ఫైళ్ళు"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "మీ వెబ్ హోస్ట్ నుండి డేటాబేస్ వివరాలను సిద్ధంగా ఉంచండి. దీనికి సుమారు రెండు నిమిషాలు పడుతుంది."
+
+#: 
+msgid "Hide"
+msgstr "దాచు"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "సంఘం ఎలా ఏర్పడింది"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "ఈ డేటాబేస్ మద్దతు లేనిదని మరియు నవీకరణలు నిరోధించబడతాయని నేను అర్థం చేసుకున్నాను"
+
+#: 
+msgid "Insights"
+msgstr "అంతర్దృష్టులు"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRMను ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "Installation Complete!"
+msgstr "ఇన్‌స్టాలేషన్ పూర్తయింది!"
+
+#: 
+msgid "Installation guide"
+msgstr "ఇన్‌స్టాలేషన్ మార్గదర్శి"
+
+#: 
+msgid "Integrity check failed"
+msgstr "సమగ్రత తనిఖీ విఫలమైంది"
+
+#: 
+msgid "Integrity check passed"
+msgstr "సమగ్రత తనిఖీ విజయవంతమైంది"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "చెల్లని CSRF టోకెన్"
+
+#: 
+msgid "Last %d days"
+msgstr "గత %d రోజులు"
+
+#: 
+msgid "Last 12 months"
+msgstr "గత 12 నెలలు"
+
+#: 
+msgid "Main dashboard"
+msgstr "ప్రధాన డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Navigation"
+msgstr "నావిగేషన్"
+
+#: 
+msgid "Need help?"
+msgstr "సహాయం కావాలా?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "ఈ సమయ పరిధిలో గమనికలు లేవు."
+
+#: 
+msgid "No notes yet."
+msgstr "ఇంకా గమనికలు లేవు."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "తరచుగా %1$s. కొన్ని హోస్ట్‌లు %2$s వంటి చిరునామాను ఇస్తాయి."
+
+#: 
+msgid "Open total"
+msgstr "మూసివేయని మొత్తం"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "ఈ పరిధిలో ఫైనాన్స్ డ్యాష్‌బోర్డ్‌ను తెరుస్తుంది. గత ఆర్థిక సంవత్సరాన్ని డ్యాష్‌బోర్డ్‌లోనే ఎంచుకోండి."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "గత 7 రోజులు మరియు తదుపరి %d రోజులు"
+
+#: 
+msgid "People without a family: %d"
+msgstr "కుటుంబం లేని వ్యక్తులు: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "సెట్టింగ్‌లు మరియు ఫోటోలను సేవ్ చేయడానికి అనుమతి"
+
+#: 
+msgid "Port"
+msgstr "పోర్ట్"
+
+#: 
+msgid "Ready"
+msgstr "సిద్ధంగా ఉంది"
+
+#: 
+msgid "Recent"
+msgstr "ఇటీవలి"
+
+#: 
+msgid "Register your family to our church"
+msgstr "మీ కుటుంబాన్ని మా చర్చిలో నమోదు చేయండి"
+
+#: 
+msgid "Release check"
+msgstr "విడుదల తనిఖీ"
+
+#: 
+msgid "Report a problem"
+msgstr "సమస్యను నివేదించండి"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "ప్రతి పట్టిక మరియు డ్యాష్‌బోర్డ్ కార్డ్‌లో పేజీకి చూపించే వరుసలు. తదుపరి పేజీ లోడ్‌లో అమలులోకి వస్తుంది."
+
+#: 
+msgid "Send Test Email"
+msgstr "పరీక్ష ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Send a test email"
+msgstr "ఒక పరీక్ష ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Send them the list below."
+msgstr "దిగువ జాబితాను వారికి పంపండి."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRMకు అవసరమైన సర్వర్ సాఫ్ట్‌వేర్"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "నా ప్రధాన డ్యాష్‌బోర్డ్‌గా సెట్ చేయండి"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "మీ నిర్వాహక ఖాతాతో సైన్ ఇన్ చేయండి"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "కొన్ని ChurchCRM ఫైళ్ళు లేవు లేదా మార్చబడ్డాయి. పేజీ లోడ్ కాకపోతే ChurchCRMను మళ్లీ అప్‌లోడ్ చేయండి."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "కొన్ని ChurchCRM ఫైళ్ళు అప్‌లోడ్ చేయబడలేదు."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "సర్వర్‌లోని కొన్ని ఫైళ్ళు ChurchCRM విడుదలతో సరిపోలడం లేదు."
+
+#: 
+msgid "Staff login"
+msgstr "సిబ్బంది లాగిన్"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s లేదా %2$sతో ప్రారంభమై %3$sతో ముగుస్తుంది."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "సైన్ ఇన్ చేసిన తర్వాత మీరు తెరిచే డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "డేటాబేస్ సర్వర్ లాగిన్‌ను అంగీకరించింది, కానీ ఆ పేరుతో డేటాబేస్ లేదు."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "డేటాబేస్ సర్వర్ ఆ వినియోగదారు పేరు లేదా పాస్‌వర్డ్‌ను తిరస్కరించింది."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "మీరు డేటాబేస్‌కు ఇచ్చిన పేరు. షేర్డ్ హోస్ట్‌లు తరచుగా మీ ఖాతా పేరును ముందు చేరుస్తాయి, ఉదాహరణకు %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "ఆ డేటాబేస్ వినియోగదారు కోసం పాస్‌వర్డ్. మీరు ఇన్‌స్టాల్ క్లిక్ చేసినప్పుడు ChurchCRM ఈ వివరాలను తనిఖీ చేస్తుంది."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "ఈ సర్వర్‌లోని విడుదల తనిఖీ ఫైల్ ChurchCRMతో సరిపోలడం లేదు. విడుదలను మళ్లీ అప్‌లోడ్ చేయండి, లేదా కొనసాగించి సహాయం కోసం మీ వెబ్ హోస్ట్‌ను అడగండి."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "పరీక్ష సందేశం చర్చి ఇమెయిల్ చిరునామాకు వెళుతుంది మరియు SMTP డీబగ్ లాగ్‌ను ఇక్కడ చూపిస్తుంది."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "మీరు ఆ డేటాబేస్‌కు జోడించిన వినియోగదారు. మీ హోస్టింగ్ లాగిన్ కాదు."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "ఈ ఫైళ్ళు ChurchCRM విడుదలలో భాగం కావు. మీ వెబ్ హోస్ట్ వాటిని తీసివేయవచ్చు."
+
+#: 
+msgid "These files do not match the release"
+msgstr "ఈ ఫైళ్ళు విడుదలతో సరిపోలడం లేదు"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "ఈ ఫైళ్ళు అప్‌లోడ్ చేయబడలేదు"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "ChurchCRM యొక్క ఈ కాపీలో విడుదల ఫైల్ తనిఖీ లేదు. మీరు కొనసాగించవచ్చు."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "ఈ డ్యాష్‌బోర్డ్ ఇప్పుడు మీ ప్రధాన డ్యాష్‌బోర్డ్."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "ఈ డేటాబేస్ ఇకపై దాని విక్రేత నుండి భద్రతా పరిష్కారాలను పొందదు."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "ప్రజలు ChurchCRMను తెరిచేది ఇక్కడే. వారు ఈ పేజీకి భిన్నమైన చిరునామాను ఉపయోగిస్తే మాత్రమే దీన్ని మార్చండి."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "ఇది మీ చర్చి ఖాతా. మీ కోసం మీరు చేయగలిగినదంతా ఇక్కడ ఉంది."
+
+#: 
+msgid "Total deposited"
+msgstr "మొత్తం డిపాజిట్ చేసినది"
+
+#: 
+msgid "Unsupported database server"
+msgstr "మద్దతు లేని డేటాబేస్ సర్వర్"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "డేటాబేస్ మద్దతు ఉన్న సంస్కరణకు మార్చబడే వరకు నవీకరణలు నిరోధించబడతాయి."
+
+#: 
+msgid "Usually 3306."
+msgstr "సాధారణంగా 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "తరలించడానికి డేటా లేనందున, ఇన్‌స్టాల్ చేయడానికి ముందు మారమని మీ హోస్ట్‌ను అడగమని మేము సిఫార్సు చేస్తున్నాము. MariaDB 10.11 మంచి లక్ష్యం."
+
+#: 
+msgid "Web address"
+msgstr "వెబ్ చిరునామా"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "మీరు ఇప్పుడు ఇన్‌స్టాల్ చేయవచ్చు: ChurchCRM ఇన్‌స్టాల్ అయి నడుస్తుంది."
+
+#: 
+msgid "Your main dashboard"
+msgstr "మీ ప్రధాన డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "మీ వెబ్ హోస్ట్ ఏదో ఒకటి సరిచేయాలి"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "ఇంకా {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "ఇంకా {{count}}"
 

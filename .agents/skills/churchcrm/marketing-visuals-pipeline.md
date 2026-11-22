@@ -89,7 +89,7 @@ A broken locator fails the same test in every locale, and serial specs skip the 
 
 Three Playwright projects run in this order (`playwright/playwright.config.ts`):
 
-1. `setup` (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, forced admin password change, church info and demo data import as recorded tests (`setup-church-info`, `demo-data-import`), then saves a Playwright `storageState`
+1. `setup` (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, forced admin password change, church info and demo data import as recorded tests (`install-churchcrm`, `setup-church-info`, `demo-data-import`), then saves a Playwright `storageState`
 2. `recordings` (`playwright/videos/*.video.ts`) holds click-through videos
 3. `screenshots` (`playwright/workflows/*.spec.ts`): each test captures desktop 1440x900, tablet 1024x768 and mobile 430x932 in one page load (`VIEWPORTS` in `playwright/support/capture.ts`)
 

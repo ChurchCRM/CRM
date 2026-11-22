@@ -2150,14 +2150,6 @@ msgid "Deposit Comment"
 msgstr "जमा टिप्पणी"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "हस्ताक्षर परिभाषा फ़ाइल हस्ताक्षर सत्यापन विफल रहा"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "एक या अधिक फ़ाइलें हस्ताक्षर सत्यापन में विफल रहीं"
-
-#: 
 msgid "item"
 msgstr "वस्तु"
 
@@ -4665,10 +4657,6 @@ msgid "Estonian"
 msgstr "एस्टोनियाई"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "हस्ताक्षर परिभाषा फ़ाइल को डिकोड करने में त्रुटि"
-
-#: 
 msgid "Event not found"
 msgstr "कार्यक्रम नहीं मिला"
 
@@ -5247,14 +5235,6 @@ msgstr "कृपया http:// या https:// से शुरू होने
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "सभी सिस्टम फ़ाइल हस्ताक्षर अपेक्षित मानों से मेल खाते हैं।"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "हस्ताक्षर परिभाषा फ़ाइल मौजूद है लेकिन पढ़ी जाने योग्य नहीं है। फ़ाइल अनुमतियाँ जांचें।"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "हस्ताक्षर परिभाषा फ़ाइल %s पर गायब है। हस्ताक्षर पुनर्जनन के लिए पैकेजिंग कार्य चलाएं या आधिकारिक रिलीज़ डिप्लॉय करें।"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12864,10 +12844,6 @@ msgid "Deposit ID"
 msgstr "जमा आईडी"
 
 #: 
-msgid "Deposit Value"
-msgstr "चढ़ावा जमा मूल्य"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "जमा सफलतापूर्वक सहेजा गया"
 
@@ -13284,22 +13260,6 @@ msgid "Move Members to Group"
 msgstr "सदस्यों को समूह में स्थानांतरित करें"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए (जैसे, http://localhost या https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "वैध पोर्ट नंबर होना चाहिए (जैसे, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "खाली नहीं होने पर / से शुरू होना चाहिए; अंत में स्लैश नहीं। केवल अक्षर, संख्याएं, अंडरस्कोर, डैश, डॉट और / की अनुमति है।"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "बाद में इस डेटा को हटाने की आवश्यकता है?"
 
@@ -13450,10 +13410,6 @@ msgstr "कृपया एक मान्य ईमेल पता दर्�
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "कृपया वैध ईमेल पता दर्ज करें (जैसे, name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "कृपया वैध संख्या दर्ज करें"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24238,10 +24194,6 @@ msgid "Church default: %s"
 msgstr "चर्च डिफ़ॉल्ट: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "चर्च नेता साइन-इन"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "वे वर्गीकरण जिनके सदस्य सदस्य पोर्टल में साइन इन कर सकते हैं, वर्गीकरण id की अल्पविराम-पृथक सूची के रूप में।"
 
@@ -24884,10 +24836,6 @@ msgstr "समाप्त नहीं"
 #: 
 msgid "Not moved"
 msgstr "स्थानांतरित नहीं"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "पक्का नहीं कि हमारे पास कौन सा ईमेल है? चर्च कार्यालय से संपर्क करें।"
 
 #: 
 msgid "Not yet"
@@ -27886,4 +27834,442 @@ msgstr "आपका कलीसिया देश कनाडा है, इ
 #: 
 msgid "groups"
 msgstr "समूह"
+
+#: 
+msgid "14 days"
+msgstr "14 दिन"
+
+#: 
+msgid "6 months"
+msgstr "6 महीने"
+
+#: 
+msgid "60 days"
+msgstr "60 दिन"
+
+#: 
+msgid "7 days"
+msgstr "7 दिन"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discord पर पूछें"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "साइन इन करने के तुरंत बाद अपना पासवर्ड बदलें।"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "साइन इन करने का कोई दूसरा तरीका चुनें"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM localhost पर डेटाबेस तक नहीं पहुँच सकता। इसके बजाय 127.0.0.1 आज़माएँ, या अपने वेब होस्ट से डेटाबेस होस्ट नाम पूछें।"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM उस पते और पोर्ट पर डेटाबेस सर्वर तक नहीं पहुँच सकता। होस्ट नाम और पोर्ट जाँचें। साझा होस्टिंग पर होस्ट अक्सर localhost नहीं होता।"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM अपनी रिलीज़ जाँच नहीं पढ़ सकता। अपने वेब होस्ट से ChurchCRM फ़ोल्डर को पठनीय बनाने को कहें, या जारी रखें।"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM फ़ोल्डर अनुमतियाँ नहीं जाँच सका"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM अपनी फ़ाइलें नहीं जाँच सका। अपने वेब होस्ट से सर्वर त्रुटि लॉग देखने को कहें।"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM सर्वर सॉफ़्टवेयर नहीं जाँच सका"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM इन सेटिंग्स के साथ डेटाबेस से कनेक्ट नहीं हो सका।"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM इंस्टॉल पूरा नहीं कर सका। फिर से कोशिश करें, या अपने वेब होस्ट से सर्वर त्रुटि लॉग जाँचने को कहें।"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM Include/Config.php सहेज नहीं सका। अपने वेब होस्ट से Include फ़ोल्डर को लिखने योग्य बनाने को कहें।"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM फ़ाइलें रिलीज़ से मेल खाती हैं"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "साइडबार को आइकन में सिकोड़ें"
+
+#: 
+msgid "Congregation login"
+msgstr "मण्डली लॉगिन"
+
+#: 
+msgid "Connect your database"
+msgstr "अपना डेटाबेस कनेक्ट करें"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "आपके डेटाबेस से कनेक्ट हो रहा है…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "आपका मुख्य डैशबोर्ड सहेजा नहीं जा सका।"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "पहले अपने होस्टिंग कंट्रोल पैनल में MySQL या MariaDB डेटाबेस बनाएँ (cPanel में: %s), फिर इसके विवरण यहाँ कॉपी करें। ChurchCRM MySQL 8.4+ और MariaDB 10.11+ (LTS रिलीज़) का समर्थन करता है।"
+
+#: 
+msgid "Database host"
+msgstr "डेटाबेस होस्ट"
+
+#: 
+msgid "Database name"
+msgstr "डेटाबेस नाम"
+
+#: 
+msgid "Database password"
+msgstr "डेटाबेस पासवर्ड"
+
+#: 
+msgid "Database user"
+msgstr "डेटाबेस उपयोगकर्ता"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "खाली जब ChurchCRM साइट के शीर्ष पर हो। अन्यथा फ़ोल्डर, जैसे %s।"
+
+#: 
+msgid "Enter note text here..."
+msgstr "यहाँ नोट टेक्स्ट दर्ज करें..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "डेटाबेस होस्ट दर्ज करें, जैसे localhost या mysql.example.com। केवल अक्षर, संख्याएँ, बिंदु और डैश का उपयोग करें।"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "डेटाबेस नाम दर्ज करें। केवल अक्षर, संख्याएँ, अंडरस्कोर, डैश और बिंदु का उपयोग करें।"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "डेटाबेस पोर्ट संख्या के रूप में दर्ज करें। यह आमतौर पर 3306 होता है।"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "डेटाबेस उपयोगकर्ता दर्ज करें। केवल अक्षर, संख्याएँ, अंडरस्कोर, डैश, बिंदु और @ का उपयोग करें।"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "फ़ोल्डर / से शुरू करके दर्ज करें, जैसे /churchcrm, या खाली छोड़ दें।"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "डेटाबेस उपयोगकर्ता के लिए पासवर्ड दर्ज करें।"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "वेब पता दर्ज करें, http:// या https:// से शुरू करके।"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "प्रत्येक सक्रिय सदस्य परिवार ने %s और %s के बीच भुगतान किया।"
+
+#: 
+msgid "Exclude"
+msgstr "बहिष्कृत करें"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "पुराने संस्करण से बची हुई फ़ाइलें"
+
+#: 
+msgid "Files to review"
+msgstr "समीक्षा के लिए फ़ाइलें"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "अपने वेब होस्ट से डेटाबेस विवरण तैयार रखें। इसमें लगभग दो मिनट लगते हैं।"
+
+#: 
+msgid "Hide"
+msgstr "छिपाएँ"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "मण्डली की संरचना कैसी है"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "मैं समझता हूँ कि यह डेटाबेस असमर्थित है और अपग्रेड अवरुद्ध होंगे"
+
+#: 
+msgid "Insights"
+msgstr "अंतर्दृष्टि"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRM इंस्टॉल करें"
+
+#: 
+msgid "Installation Complete!"
+msgstr "इंस्टॉल पूर्ण!"
+
+#: 
+msgid "Installation guide"
+msgstr "इंस्टॉल गाइड"
+
+#: 
+msgid "Integrity check failed"
+msgstr "अखंडता जाँच विफल"
+
+#: 
+msgid "Integrity check passed"
+msgstr "अखंडता जाँच सफल"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "अमान्य CSRF टोकन"
+
+#: 
+msgid "Last %d days"
+msgstr "पिछले %d दिन"
+
+#: 
+msgid "Last 12 months"
+msgstr "पिछले 12 महीने"
+
+#: 
+msgid "Main dashboard"
+msgstr "मुख्य डैशबोर्ड"
+
+#: 
+msgid "Navigation"
+msgstr "नेविगेशन"
+
+#: 
+msgid "Need help?"
+msgstr "मदद चाहिए?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "इस समय सीमा में कोई नोट नहीं है।"
+
+#: 
+msgid "No notes yet."
+msgstr "अभी कोई नोट नहीं है।"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "अक्सर %1$s। कुछ होस्ट %2$s जैसा पता देते हैं।"
+
+#: 
+msgid "Open total"
+msgstr "खुला कुल"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "इस सीमा पर वित्त डैशबोर्ड खोलता है। पिछले वित्तीय वर्ष को डैशबोर्ड पर ही चुनें।"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "पिछले 7 दिन और अगले %d दिन"
+
+#: 
+msgid "People without a family: %d"
+msgstr "परिवार के बिना लोग: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "सेटिंग्स और फ़ोटो सहेजने की अनुमति"
+
+#: 
+msgid "Port"
+msgstr "पोर्ट"
+
+#: 
+msgid "Ready"
+msgstr "तैयार"
+
+#: 
+msgid "Recent"
+msgstr "हाल ही का"
+
+#: 
+msgid "Register your family to our church"
+msgstr "अपने परिवार को हमारे चर्च में पंजीकृत करें"
+
+#: 
+msgid "Release check"
+msgstr "रिलीज़ जाँच"
+
+#: 
+msgid "Report a problem"
+msgstr "समस्या की रिपोर्ट करें"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "प्रत्येक तालिका और डैशबोर्ड कार्ड में प्रति पृष्ठ दिखाई गई पंक्तियाँ। अगले पृष्ठ लोड पर प्रभावी होता है।"
+
+#: 
+msgid "Send Test Email"
+msgstr "परीक्षण ईमेल भेजें"
+
+#: 
+msgid "Send a test email"
+msgstr "परीक्षण ईमेल भेजें"
+
+#: 
+msgid "Send them the list below."
+msgstr "उन्हें नीचे दी गई सूची भेजें।"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "सर्वर सॉफ़्टवेयर जो ChurchCRM को चाहिए"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "मेरे मुख्य डैशबोर्ड के रूप में सेट करें"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "अपने व्यवस्थापक खाते से साइन इन करें"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "कुछ ChurchCRM फ़ाइलें गायब हैं या बदली गई हैं। यदि कोई पृष्ठ लोड न हो तो ChurchCRM फिर से अपलोड करें।"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "कुछ ChurchCRM फ़ाइलें अपलोड नहीं हुईं।"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "सर्वर पर कुछ फ़ाइलें ChurchCRM रिलीज़ से मेल नहीं खातीं।"
+
+#: 
+msgid "Staff login"
+msgstr "कर्मचारी लॉगिन"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s या %2$s से शुरू होता है और %3$s पर समाप्त होता है।"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "साइन इन करने के बाद आप जो डैशबोर्ड खोलते हैं"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "डेटाबेस सर्वर ने लॉगिन स्वीकार किया, लेकिन उस नाम का कोई डेटाबेस नहीं है।"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "डेटाबेस सर्वर ने वह उपयोगकर्ता नाम या पासवर्ड अस्वीकार कर दिया।"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "वह नाम जो आपने डेटाबेस को दिया। साझा होस्ट अक्सर आपके खाता नाम को आगे जोड़ते हैं, जैसे %s।"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "उस डेटाबेस उपयोगकर्ता के लिए पासवर्ड। जब आप इंस्टॉल पर क्लिक करते हैं तो ChurchCRM इन विवरणों की जाँच करता है।"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "इस सर्वर पर रिलीज़ जाँच फ़ाइल ChurchCRM से मेल नहीं खाती। रिलीज़ फिर से अपलोड करें, या जारी रखें और अपने वेब होस्ट से मदद माँगें।"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "परीक्षण संदेश चर्च के ईमेल पते पर जाता है और SMTP डीबग लॉग यहाँ दिखाता है।"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "वह उपयोगकर्ता जिसे आपने उस डेटाबेस में जोड़ा। आपका होस्टिंग लॉगिन नहीं।"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "ये फ़ाइलें ChurchCRM रिलीज़ का हिस्सा नहीं हैं। आपका वेब होस्ट इन्हें हटा सकता है।"
+
+#: 
+msgid "These files do not match the release"
+msgstr "ये फ़ाइलें रिलीज़ से मेल नहीं खातीं"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "ये फ़ाइलें अपलोड नहीं हुईं"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "ChurchCRM की इस प्रति में रिलीज़ फ़ाइल जाँच शामिल नहीं है। आप जारी रख सकते हैं।"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "यह डैशबोर्ड अब आपका मुख्य डैशबोर्ड है।"
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "यह डेटाबेस अब अपने विक्रेता से सुरक्षा सुधार प्राप्त नहीं करता।"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "यहीं लोग ChurchCRM खोलेंगे। इसे केवल तभी बदलें जब वे इस पृष्ठ से अलग पता उपयोग करेंगे।"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "यह आपका चर्च खाता है। जो कुछ भी आप अपने लिए कर सकते हैं वह सब यहाँ है।"
+
+#: 
+msgid "Total deposited"
+msgstr "कुल जमा किया गया"
+
+#: 
+msgid "Unsupported database server"
+msgstr "असमर्थित डेटाबेस सर्वर"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "डेटाबेस को समर्थित संस्करण में ले जाने तक अपग्रेड अवरुद्ध रहेंगे।"
+
+#: 
+msgid "Usually 3306."
+msgstr "आमतौर पर 3306।"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "हम सलाह देते हैं कि इंस्टॉल करने से पहले, जब स्थानांतरित करने के लिए कोई डेटा नहीं है, अपने होस्ट से स्विच करने को कहें। MariaDB 10.11 एक अच्छा लक्ष्य है।"
+
+#: 
+msgid "Web address"
+msgstr "वेब पता"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "आप अभी इंस्टॉल कर सकते हैं: ChurchCRM इंस्टॉल होगा और चलेगा।"
+
+#: 
+msgid "Your main dashboard"
+msgstr "आपका मुख्य डैशबोर्ड"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "आपके वेब होस्ट को कुछ ठीक करना होगा"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "और {{count}} अधिक"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "और {{count}} अधिक"
 
