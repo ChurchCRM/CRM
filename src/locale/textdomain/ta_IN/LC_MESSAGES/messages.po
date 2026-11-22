@@ -27876,3 +27876,441 @@ msgstr "உங்கள் தேவாலய நாடு கனடா, என�
 msgid "groups"
 msgstr "குழுக்கள்"
 
+#: 
+msgid "14 days"
+msgstr "14 நாட்கள்"
+
+#: 
+msgid "6 months"
+msgstr "6 மாதங்கள்"
+
+#: 
+msgid "60 days"
+msgstr "60 நாட்கள்"
+
+#: 
+msgid "7 days"
+msgstr "7 நாட்கள்"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discord இல் கேளுங்கள்"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "உள்நுழைந்த உடனேயே உங்கள் கடவுச்சொல்லை மாற்றவும்."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "உள்நுழைய வேறு வழியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM ஆல் localhost இல் உள்ள தரவுத்தளத்தை அணுக முடியவில்லை. அதற்குப் பதிலாக 127.0.0.1 ஐ முயற்சிக்கவும், அல்லது தரவுத்தள ஹோஸ்ட் பெயருக்காக உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "அந்த முகவரி மற்றும் போர்ட்டில் உள்ள தரவுத்தள சேவையகத்தை ChurchCRM ஆல் அணுக முடியவில்லை. ஹோஸ்ட் பெயரையும் போர்ட்டையும் சரிபார்க்கவும். பகிரப்பட்ட ஹோஸ்டிங்கில் ஹோஸ்ட் பெரும்பாலும் localhost ஆக இருக்காது."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM ஆல் அதன் வெளியீட்டுச் சரிபார்ப்பைப் படிக்க முடியவில்லை. ChurchCRM கோப்புறையைப் படிக்கக்கூடியதாக மாற்ற உங்கள் வலை ஹோஸ்டிடம் கேட்கவும், அல்லது தொடரவும்."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM ஆல் கோப்புறை அனுமதிகளைச் சரிபார்க்க முடியவில்லை"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM ஆல் அதன் கோப்புகளைச் சரிபார்க்க முடியவில்லை. சேவையகப் பிழைப் பதிவைப் பார்க்க உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM ஆல் சேவையக மென்பொருளைச் சரிபார்க்க முடியவில்லை"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "இந்த அமைப்புகளுடன் ChurchCRM ஆல் தரவுத்தளத்துடன் இணைக்க முடியவில்லை."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM ஆல் நிறுவலை முடிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும், அல்லது சேவையகப் பிழைப் பதிவைச் சரிபார்க்க உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM ஆல் Include/Config.php ஐச் சேமிக்க முடியவில்லை. Include கோப்புறையை எழுதக்கூடியதாக மாற்ற உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM கோப்புகள் வெளியீட்டுடன் பொருந்துகின்றன"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "பக்கப்பட்டியை ஐகான்களாகச் சுருக்கவும்"
+
+#: 
+msgid "Congregation login"
+msgstr "சபை உள்நுழைவு"
+
+#: 
+msgid "Connect your database"
+msgstr "உங்கள் தரவுத்தளத்தை இணைக்கவும்"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "உங்கள் தரவுத்தளத்துடன் இணைக்கிறது…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "உங்கள் பிரதான டாஷ்போர்டைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "முதலில் உங்கள் ஹோஸ்டிங் கட்டுப்பாட்டுப் பலகத்தில் ஒரு MySQL அல்லது MariaDB தரவுத்தளத்தை உருவாக்கவும் (cPanel இல்: %s), பின்னர் அதன் விவரங்களை இங்கே நகலெடுக்கவும். ChurchCRM MySQL 8.4+ மற்றும் MariaDB 10.11+ (LTS வெளியீடுகள்) ஐ ஆதரிக்கிறது."
+
+#: 
+msgid "Database host"
+msgstr "தரவுத்தள ஹோஸ்ட்"
+
+#: 
+msgid "Database name"
+msgstr "தரவுத்தளப் பெயர்"
+
+#: 
+msgid "Database password"
+msgstr "தரவுத்தளக் கடவுச்சொல்"
+
+#: 
+msgid "Database user"
+msgstr "தரவுத்தளப் பயனர்"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRM தளத்தின் மேலே இருக்கும்போது காலியாக விடவும். இல்லையெனில் கோப்புறை, எடுத்துக்காட்டாக %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "இங்கே குறிப்பு உரையை உள்ளிடவும்..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "localhost அல்லது mysql.example.com போன்ற தரவுத்தள ஹோஸ்டை உள்ளிடவும். எழுத்துகள், எண்கள், புள்ளிகள் மற்றும் கோடுகளை மட்டும் பயன்படுத்தவும்."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "தரவுத்தளப் பெயரை உள்ளிடவும். எழுத்துகள், எண்கள், அடிக்கோடுகள், கோடுகள் மற்றும் புள்ளிகளை மட்டும் பயன்படுத்தவும்."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "தரவுத்தள போர்ட்டை எண்ணாக உள்ளிடவும். இது பொதுவாக 3306 ஆகும்."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "தரவுத்தளப் பயனரை உள்ளிடவும். எழுத்துகள், எண்கள், அடிக்கோடுகள், கோடுகள், புள்ளிகள் மற்றும் @ ஐ மட்டும் பயன்படுத்தவும்."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "/churchcrm போல / உடன் தொடங்கும் கோப்புறையை உள்ளிடவும், அல்லது காலியாக விடவும்."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "தரவுத்தளப் பயனருக்கான கடவுச்சொல்லை உள்ளிடவும்."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "http:// அல்லது https:// உடன் தொடங்கும் வலை முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "%s முதல் %s வரை செயலில் உள்ள ஒவ்வொரு உறுப்பினர் குடும்பமும் பணம் செலுத்தியது."
+
+#: 
+msgid "Exclude"
+msgstr "விலக்கு"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "பழைய பதிப்பிலிருந்து எஞ்சிய கோப்புகள்"
+
+#: 
+msgid "Files to review"
+msgstr "மதிப்பாய்வு செய்ய வேண்டிய கோப்புகள்"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "உங்கள் வலை ஹோஸ்டிடமிருந்து தரவுத்தள விவரங்களைத் தயாராக வைத்திருக்கவும். இது சுமார் இரண்டு நிமிடங்கள் எடுக்கும்."
+
+#: 
+msgid "Hide"
+msgstr "மறை"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "சபை எவ்வாறு அமைந்துள்ளது"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "இந்தத் தரவுத்தளம் ஆதரிக்கப்படவில்லை என்பதையும் மேம்படுத்தல்கள் தடுக்கப்படும் என்பதையும் நான் புரிந்துகொள்கிறேன்"
+
+#: 
+msgid "Insights"
+msgstr "நுண்ணறிவுகள்"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRM ஐ நிறுவவும்"
+
+#: 
+msgid "Installation Complete!"
+msgstr "நிறுவல் முடிந்தது!"
+
+#: 
+msgid "Installation guide"
+msgstr "நிறுவல் வழிகாட்டி"
+
+#: 
+msgid "Integrity check failed"
+msgstr "ஒருமைப்பாட்டுச் சரிபார்ப்பு தோல்வியடைந்தது"
+
+#: 
+msgid "Integrity check passed"
+msgstr "ஒருமைப்பாட்டுச் சரிபார்ப்பு வெற்றி பெற்றது"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "தவறான CSRF டோக்கன்"
+
+#: 
+msgid "Last %d days"
+msgstr "கடந்த %d நாட்கள்"
+
+#: 
+msgid "Last 12 months"
+msgstr "கடந்த 12 மாதங்கள்"
+
+#: 
+msgid "Main dashboard"
+msgstr "பிரதான டாஷ்போர்டு"
+
+#: 
+msgid "Navigation"
+msgstr "வழிசெலுத்தல்"
+
+#: 
+msgid "Need help?"
+msgstr "உதவி தேவையா?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "இந்தக் கால அளவில் குறிப்புகள் இல்லை."
+
+#: 
+msgid "No notes yet."
+msgstr "இன்னும் குறிப்புகள் இல்லை."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "பெரும்பாலும் %1$s. சில ஹோஸ்ட்கள் %2$s போன்ற முகவரியை வழங்குகின்றன."
+
+#: 
+msgid "Open total"
+msgstr "மூடப்படாத மொத்தம்"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "இந்த வரம்பில் நிதி டாஷ்போர்டைத் திறக்கிறது. கடந்த நிதியாண்டை டாஷ்போர்டிலேயே தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "கடந்த 7 நாட்கள் மற்றும் அடுத்த %d நாட்கள்"
+
+#: 
+msgid "People without a family: %d"
+msgstr "குடும்பம் இல்லாதவர்கள்: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "அமைப்புகளையும் புகைப்படங்களையும் சேமிக்க அனுமதி"
+
+#: 
+msgid "Port"
+msgstr "போர்ட்"
+
+#: 
+msgid "Ready"
+msgstr "தயார்"
+
+#: 
+msgid "Recent"
+msgstr "சமீபத்திய"
+
+#: 
+msgid "Register your family to our church"
+msgstr "உங்கள் குடும்பத்தை எங்கள் தேவாலயத்தில் பதிவு செய்யவும்"
+
+#: 
+msgid "Release check"
+msgstr "வெளியீட்டுச் சரிபார்ப்பு"
+
+#: 
+msgid "Report a problem"
+msgstr "சிக்கலைப் புகாரளிக்கவும்"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "ஒவ்வொரு அட்டவணை மற்றும் டாஷ்போர்டு அட்டையிலும் ஒரு பக்கத்திற்குக் காட்டப்படும் வரிசைகள். அடுத்த பக்க ஏற்றத்தில் நடைமுறைக்கு வரும்."
+
+#: 
+msgid "Send Test Email"
+msgstr "சோதனை மின்னஞ்சலை அனுப்பவும்"
+
+#: 
+msgid "Send a test email"
+msgstr "ஒரு சோதனை மின்னஞ்சலை அனுப்பவும்"
+
+#: 
+msgid "Send them the list below."
+msgstr "கீழே உள்ள பட்டியலை அவர்களுக்கு அனுப்பவும்."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM க்குத் தேவையான சேவையக மென்பொருள்"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "எனது பிரதான டாஷ்போர்டாக அமைக்கவும்"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "உங்கள் நிர்வாகக் கணக்கில் உள்நுழையவும்"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "சில ChurchCRM கோப்புகள் காணவில்லை அல்லது மாற்றப்பட்டுள்ளன. ஒரு பக்கம் ஏற்றப்படாவிட்டால் ChurchCRM ஐ மீண்டும் பதிவேற்றவும்."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "சில ChurchCRM கோப்புகள் பதிவேற்றப்படவில்லை."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "சேவையகத்தில் உள்ள சில கோப்புகள் ChurchCRM வெளியீட்டுடன் பொருந்தவில்லை."
+
+#: 
+msgid "Staff login"
+msgstr "பணியாளர் உள்நுழைவு"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s அல்லது %2$s உடன் தொடங்கி %3$s உடன் முடிகிறது."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "உள்நுழைந்த பிறகு நீங்கள் திறக்கும் டாஷ்போர்டு"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "தரவுத்தள சேவையகம் உள்நுழைவை ஏற்றுக்கொண்டது, ஆனால் அந்தப் பெயரில் தரவுத்தளம் இல்லை."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "தரவுத்தள சேவையகம் அந்தப் பயனர் பெயரையோ கடவுச்சொல்லையோ நிராகரித்தது."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "நீங்கள் தரவுத்தளத்திற்குக் கொடுத்த பெயர். பகிரப்பட்ட ஹோஸ்ட்கள் பெரும்பாலும் உங்கள் கணக்குப் பெயரை முன்னால் சேர்க்கின்றன, எடுத்துக்காட்டாக %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "அந்தத் தரவுத்தளப் பயனருக்கான கடவுச்சொல். நீங்கள் நிறுவு என்பதைக் கிளிக் செய்யும்போது ChurchCRM இந்த விவரங்களைச் சரிபார்க்கிறது."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "இந்தச் சேவையகத்தில் உள்ள வெளியீட்டுச் சரிபார்ப்புக் கோப்பு ChurchCRM உடன் பொருந்தவில்லை. வெளியீட்டை மீண்டும் பதிவேற்றவும், அல்லது தொடர்ந்து உதவிக்காக உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "சோதனைச் செய்தி தேவாலய மின்னஞ்சல் முகவரிக்குச் செல்கிறது மற்றும் SMTP பிழைத்திருத்தப் பதிவை இங்கே காட்டுகிறது."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "நீங்கள் அந்தத் தரவுத்தளத்தில் சேர்த்த பயனர். உங்கள் ஹோஸ்டிங் உள்நுழைவு அல்ல."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "இந்தக் கோப்புகள் ChurchCRM வெளியீட்டின் பகுதி அல்ல. உங்கள் வலை ஹோஸ்ட் அவற்றை அகற்றலாம்."
+
+#: 
+msgid "These files do not match the release"
+msgstr "இந்தக் கோப்புகள் வெளியீட்டுடன் பொருந்தவில்லை"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "இந்தக் கோப்புகள் பதிவேற்றப்படவில்லை"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "ChurchCRM இன் இந்த நகலில் வெளியீட்டுக் கோப்புச் சரிபார்ப்பு இல்லை. நீங்கள் தொடரலாம்."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "இந்த டாஷ்போர்டு இப்போது உங்கள் பிரதான டாஷ்போர்டு."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "இந்தத் தரவுத்தளம் இனி அதன் விற்பனையாளரிடமிருந்து பாதுகாப்புச் சரிசெய்தல்களைப் பெறாது."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "மக்கள் ChurchCRM ஐத் திறப்பது இங்கேதான். இந்தப் பக்கத்திலிருந்து வேறுபட்ட முகவரியை அவர்கள் பயன்படுத்துவார்களானால் மட்டுமே இதை மாற்றவும்."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "இது உங்கள் தேவாலயக் கணக்கு. உங்களுக்காக நீங்கள் செய்யக்கூடிய அனைத்தும் இங்கே உள்ளன."
+
+#: 
+msgid "Total deposited"
+msgstr "மொத்தம் டெபாசிட் செய்யப்பட்டது"
+
+#: 
+msgid "Unsupported database server"
+msgstr "ஆதரிக்கப்படாத தரவுத்தள சேவையகம்"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "தரவுத்தளம் ஆதரிக்கப்படும் பதிப்பிற்கு மாற்றப்படும் வரை மேம்படுத்தல்கள் தடுக்கப்படும்."
+
+#: 
+msgid "Usually 3306."
+msgstr "பொதுவாக 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "நகர்த்த தரவு எதுவும் இல்லாத நிலையில், நிறுவுவதற்கு முன் மாறுமாறு உங்கள் ஹோஸ்டிடம் கேட்க பரிந்துரைக்கிறோம். MariaDB 10.11 ஒரு நல்ல இலக்கு."
+
+#: 
+msgid "Web address"
+msgstr "வலை முகவரி"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "நீங்கள் இப்போது நிறுவலாம்: ChurchCRM நிறுவப்பட்டு இயங்கும்."
+
+#: 
+msgid "Your main dashboard"
+msgstr "உங்கள் பிரதான டாஷ்போர்டு"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "உங்கள் வலை ஹோஸ்ட் ஏதாவது ஒன்றைச் சரிசெய்ய வேண்டும்"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "மேலும் {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "மேலும் {{count}}"
+

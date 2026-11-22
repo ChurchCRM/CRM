@@ -27862,3 +27862,441 @@ msgstr "Nchi ya kanisa lako ni Kanada, kwa hivyo risiti rasmi za Kanada zinapati
 msgid "groups"
 msgstr "vikundi"
 
+#: 
+msgid "14 days"
+msgstr "Siku 14"
+
+#: 
+msgid "6 months"
+msgstr "Miezi 6"
+
+#: 
+msgid "60 days"
+msgstr "Siku 60"
+
+#: 
+msgid "7 days"
+msgstr "Siku 7"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Uliza kwenye Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Badilisha nenosiri lako mara tu baada ya kuingia."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Chagua njia nyingine ya kuingia"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM haiwezi kufikia hifadhidata iliyo localhost. Jaribu 127.0.0.1 badala yake, au mwulize mwenyeji wako wa wavuti jina la seva mwenyeji ya hifadhidata."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM haiwezi kufikia seva ya hifadhidata kwenye anuani na bandari hiyo. Angalia jina la seva mwenyeji na bandari. Kwenye upangishaji wa pamoja, seva mwenyeji mara nyingi si localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM haiwezi kusoma ukaguzi wake wa toleo. Mwulize mwenyeji wako wa wavuti afanye folda ya ChurchCRM isomeke, au endelea."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM haikuweza kuangalia ruhusa za folda"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM haikuweza kuangalia faili zake. Mwulize mwenyeji wako wa wavuti aangalie kumbukumbu ya makosa ya seva."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM haikuweza kuangalia programu ya seva"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM haikuweza kuunganika kwenye hifadhidata kwa mipangilio hii."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM haikuweza kumaliza usakinishaji. Jaribu tena, au mwulize mwenyeji wako wa wavuti aangalie kumbukumbu ya makosa ya seva."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM haikuweza kuhifadhi Include/Config.php. Mwulize mwenyeji wako wa wavuti afanye folda ya Include iandikike."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Faili za ChurchCRM zinalingana na toleo"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Kunja upau wa kando kuwa aikoni"
+
+#: 
+msgid "Congregation login"
+msgstr "Kuingia kwa washirika"
+
+#: 
+msgid "Connect your database"
+msgstr "Unganisha hifadhidata yako"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Inaunganisha kwenye hifadhidata yako…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Haikuweza kuhifadhi dashibodi yako kuu."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Kwanza tengeneza hifadhidata ya MySQL au MariaDB kwenye paneli yako ya udhibiti wa upangishaji (katika cPanel: %s), kisha nakili maelezo yake hapa. ChurchCRM inasaidia MySQL 8.4+ na MariaDB 10.11+ (matoleo ya LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Seva mwenyeji ya hifadhidata"
+
+#: 
+msgid "Database name"
+msgstr "Jina la hifadhidata"
+
+#: 
+msgid "Database password"
+msgstr "Nenosiri la hifadhidata"
+
+#: 
+msgid "Database user"
+msgstr "Mtumiaji wa hifadhidata"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Acha tupu ChurchCRM ikiwa juu ya tovuti. Vinginevyo ni folda, kama %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Weka maandishi ya kidokezo hapa..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Weka seva mwenyeji ya hifadhidata, kama localhost au mysql.example.com. Tumia herufi, nambari, nukta na vistari tu."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Weka jina la hifadhidata. Tumia herufi, nambari, mistari ya chini, vistari na nukta tu."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Weka bandari ya hifadhidata kama nambari. Kawaida ni 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Weka mtumiaji wa hifadhidata. Tumia herufi, nambari, mistari ya chini, vistari, nukta na @ tu."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Weka folda inayoanza na /, kama /churchcrm, au iache tupu."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Weka nenosiri la mtumiaji wa hifadhidata."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Weka anuani ya wavuti, inayoanza na http:// au https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Kila familia ya mwanachama iliyo hai ilifanya malipo kati ya %s na %s."
+
+#: 
+msgid "Exclude"
+msgstr "Tenga"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Faili zilizobaki kutoka toleo la zamani"
+
+#: 
+msgid "Files to review"
+msgstr "Faili za kukagua"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Kuwa na maelezo ya hifadhidata kutoka kwa mwenyeji wako wa wavuti tayari. Inachukua takribani dakika mbili."
+
+#: 
+msgid "Hide"
+msgstr "Ficha"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Jinsi washirika walivyo"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Ninaelewa kuwa hifadhidata hii haiungwi mkono na masasisho yatazuiwa"
+
+#: 
+msgid "Insights"
+msgstr "Maarifa"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Sakinisha ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Usakinishaji Umekamilika!"
+
+#: 
+msgid "Installation guide"
+msgstr "Mwongozo wa usakinishaji"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Ukaguzi wa uadilifu umeshindwa"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Ukaguzi wa uadilifu umefaulu"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Tokeni ya CSRF isiyo sahihi"
+
+#: 
+msgid "Last %d days"
+msgstr "Siku %d zilizopita"
+
+#: 
+msgid "Last 12 months"
+msgstr "Miezi 12 iliyopita"
+
+#: 
+msgid "Main dashboard"
+msgstr "Dashibodi kuu"
+
+#: 
+msgid "Navigation"
+msgstr "Urambazaji"
+
+#: 
+msgid "Need help?"
+msgstr "Unahitaji msaada?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Hakuna vidokezo katika kipindi hiki cha muda."
+
+#: 
+msgid "No notes yet."
+msgstr "Hakuna vidokezo bado."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Mara nyingi %1$s. Baadhi ya wenyeji hutoa anuani kama %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Jumla iliyo wazi"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Hufungua dashibodi ya Fedha kwenye kipindi hiki. Chagua mwaka wa fedha uliopita kwenye dashibodi yenyewe."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Siku 7 zilizopita na siku %d zinazofuata"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Watu wasio na familia: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Ruhusa ya kuhifadhi mipangilio na picha"
+
+#: 
+msgid "Port"
+msgstr "Bandari"
+
+#: 
+msgid "Ready"
+msgstr "Tayari"
+
+#: 
+msgid "Recent"
+msgstr "Za hivi karibuni"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Sajili familia yako kwenye kanisa letu"
+
+#: 
+msgid "Release check"
+msgstr "Ukaguzi wa toleo"
+
+#: 
+msgid "Report a problem"
+msgstr "Ripoti tatizo"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Safu zinazoonyeshwa kwa kila ukurasa katika kila jedwali na kadi ya dashibodi. Hutumika ukurasa unaofuata unapopakiwa."
+
+#: 
+msgid "Send Test Email"
+msgstr "Tuma Barua Pepe ya Majaribio"
+
+#: 
+msgid "Send a test email"
+msgstr "Tuma barua pepe ya majaribio"
+
+#: 
+msgid "Send them the list below."
+msgstr "Watumie orodha iliyo hapa chini."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Programu ya seva ambayo ChurchCRM inahitaji"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Weka kama dashibodi yangu kuu"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Ingia kwa akaunti yako ya msimamizi"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Baadhi ya faili za ChurchCRM hazipo au zimebadilika. Pakia ChurchCRM tena ikiwa ukurasa haupakii."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Baadhi ya faili za ChurchCRM hazikupakiwa."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Baadhi ya faili kwenye seva hazilingani na toleo la ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Kuingia kwa wafanyakazi"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Huanza na %1$s au %2$s na huishia na %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Dashibodi unayofungua baada ya kuingia"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Seva ya hifadhidata imekubali kuingia, lakini hakuna hifadhidata yenye jina hilo."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Seva ya hifadhidata imekataa jina hilo la mtumiaji au nenosiri."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Jina uliloipa hifadhidata. Wenyeji wa pamoja mara nyingi huongeza jina la akaunti yako mbele, kama %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Nenosiri la mtumiaji huyo wa hifadhidata. ChurchCRM huangalia maelezo haya unapobofya Sakinisha."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Faili ya ukaguzi wa toleo kwenye seva hii hailingani na ChurchCRM. Pakia toleo tena, au endelea na mwulize mwenyeji wako wa wavuti kwa msaada."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Ujumbe wa majaribio huenda kwenye anuani ya barua pepe ya kanisa na huonyesha kumbukumbu ya utatuzi ya SMTP hapa."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Mtumiaji uliyemwongeza kwenye hifadhidata hiyo. Si kuingia kwako kwa upangishaji."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Faili hizi si sehemu ya toleo la ChurchCRM. Mwenyeji wako wa wavuti anaweza kuziondoa."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Faili hizi hazilingani na toleo"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Faili hizi hazikupakiwa"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Nakala hii ya ChurchCRM haijumuishi ukaguzi wa faili ya toleo. Unaweza kuendelea."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Dashibodi hii sasa ni dashibodi yako kuu."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Hifadhidata hii haipokei tena marekebisho ya usalama kutoka kwa muuzaji wake."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Hapa ndipo watu watafungua ChurchCRM. Ibaddilishe tu ikiwa watatumia anuani tofauti na ukurasa huu."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Hii ni akaunti yako ya kanisa. Kila kitu unachoweza kujifanyia kiko hapa."
+
+#: 
+msgid "Total deposited"
+msgstr "Jumla iliyowekwa"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Seva ya hifadhidata isiyoungwa mkono"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Masasisho yatazuiwa hadi hifadhidata ihamishwe kwenye toleo linaloungwa mkono."
+
+#: 
+msgid "Usually 3306."
+msgstr "Kawaida 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Tunapendekeza kumwomba mwenyeji wako abaddilishe kabla ya kusakinisha, wakati hakuna data ya kuhamisha. MariaDB 10.11 ni lengo zuri."
+
+#: 
+msgid "Web address"
+msgstr "Anuani ya wavuti"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Unaweza kusakinisha sasa: ChurchCRM itasakinisha na kufanya kazi."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Dashibodi yako kuu"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Mwenyeji wako wa wavuti anahitaji kurekebisha kitu"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "na {{count}} zaidi"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "na {{count}} zaidi"
+

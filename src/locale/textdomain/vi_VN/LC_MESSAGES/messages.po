@@ -27840,3 +27840,441 @@ msgstr "Quốc gia của hội thánh bạn là Canada, vì vậy biên lai chí
 msgid "groups"
 msgstr "các nhóm"
 
+#: 
+msgid "14 days"
+msgstr "14 ngày"
+
+#: 
+msgid "6 months"
+msgstr "6 tháng"
+
+#: 
+msgid "60 days"
+msgstr "60 ngày"
+
+#: 
+msgid "7 days"
+msgstr "7 ngày"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Hỏi trên Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Hãy đổi mật khẩu ngay sau khi đăng nhập."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Chọn cách đăng nhập khác"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM không thể kết nối tới cơ sở dữ liệu tại localhost. Hãy thử 127.0.0.1 thay vào đó, hoặc hỏi nhà cung cấp dịch vụ lưu trữ web của bạn về tên máy chủ cơ sở dữ liệu."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM không thể kết nối tới máy chủ cơ sở dữ liệu tại địa chỉ và cổng đó. Hãy kiểm tra tên máy chủ và cổng. Trên dịch vụ lưu trữ chia sẻ, máy chủ thường không phải là localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM không thể đọc tệp kiểm tra phiên bản của nó. Hãy yêu cầu nhà cung cấp dịch vụ lưu trữ web làm cho thư mục ChurchCRM có thể đọc được, hoặc tiếp tục."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM không thể kiểm tra quyền của thư mục"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM không thể kiểm tra các tệp của nó. Hãy yêu cầu nhà cung cấp dịch vụ lưu trữ web xem nhật ký lỗi của máy chủ."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM không thể kiểm tra phần mềm máy chủ"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM không thể kết nối tới cơ sở dữ liệu với các cài đặt này."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM không thể hoàn tất quá trình cài đặt. Hãy thử lại, hoặc yêu cầu nhà cung cấp dịch vụ lưu trữ web kiểm tra nhật ký lỗi của máy chủ."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM không thể lưu Include/Config.php. Hãy yêu cầu nhà cung cấp dịch vụ lưu trữ web làm cho thư mục Include có thể ghi được."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Các tệp ChurchCRM khớp với phiên bản phát hành"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Thu gọn thanh bên thành các biểu tượng"
+
+#: 
+msgid "Congregation login"
+msgstr "Đăng nhập cho hội thánh"
+
+#: 
+msgid "Connect your database"
+msgstr "Kết nối cơ sở dữ liệu của bạn"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Đang kết nối tới cơ sở dữ liệu của bạn…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Không thể lưu bảng điều khiển chính của bạn."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Trước tiên hãy tạo cơ sở dữ liệu MySQL hoặc MariaDB trong bảng điều khiển lưu trữ của bạn (trong cPanel: %s), sau đó sao chép thông tin của nó vào đây. ChurchCRM hỗ trợ MySQL 8.4+ và MariaDB 10.11+ (các phiên bản LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Máy chủ cơ sở dữ liệu"
+
+#: 
+msgid "Database name"
+msgstr "Tên cơ sở dữ liệu"
+
+#: 
+msgid "Database password"
+msgstr "Mật khẩu cơ sở dữ liệu"
+
+#: 
+msgid "Database user"
+msgstr "Người dùng cơ sở dữ liệu"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Để trống khi ChurchCRM nằm ở thư mục gốc của trang web. Nếu không, là thư mục, ví dụ %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Nhập nội dung ghi chú tại đây..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Nhập máy chủ cơ sở dữ liệu, ví dụ localhost hoặc mysql.example.com. Chỉ dùng chữ cái, chữ số, dấu chấm và dấu gạch ngang."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Nhập tên cơ sở dữ liệu. Chỉ dùng chữ cái, chữ số, dấu gạch dưới, dấu gạch ngang và dấu chấm."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Nhập cổng cơ sở dữ liệu dưới dạng số. Thường là 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Nhập người dùng cơ sở dữ liệu. Chỉ dùng chữ cái, chữ số, dấu gạch dưới, dấu gạch ngang, dấu chấm và @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Nhập thư mục bắt đầu bằng /, ví dụ /churchcrm, hoặc để trống."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Nhập mật khẩu cho người dùng cơ sở dữ liệu."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Nhập địa chỉ web, bắt đầu bằng http:// hoặc https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Mọi gia đình thành viên đang hoạt động đều đã thanh toán trong khoảng từ %s đến %s."
+
+#: 
+msgid "Exclude"
+msgstr "Loại trừ"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Các tệp còn sót lại từ phiên bản cũ"
+
+#: 
+msgid "Files to review"
+msgstr "Các tệp cần xem xét"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Hãy chuẩn bị sẵn thông tin cơ sở dữ liệu từ nhà cung cấp dịch vụ lưu trữ web của bạn. Quá trình này mất khoảng hai phút."
+
+#: 
+msgid "Hide"
+msgstr "Ẩn"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Cơ cấu của hội thánh"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Tôi hiểu cơ sở dữ liệu này không được hỗ trợ và việc nâng cấp sẽ bị chặn"
+
+#: 
+msgid "Insights"
+msgstr "Thông tin chi tiết"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Cài đặt ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Cài đặt hoàn tất!"
+
+#: 
+msgid "Installation guide"
+msgstr "Hướng dẫn cài đặt"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Kiểm tra tính toàn vẹn thất bại"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Kiểm tra tính toàn vẹn thành công"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Mã thông báo CSRF không hợp lệ"
+
+#: 
+msgid "Last %d days"
+msgstr "%d ngày qua"
+
+#: 
+msgid "Last 12 months"
+msgstr "12 tháng qua"
+
+#: 
+msgid "Main dashboard"
+msgstr "Bảng điều khiển chính"
+
+#: 
+msgid "Navigation"
+msgstr "Điều hướng"
+
+#: 
+msgid "Need help?"
+msgstr "Cần trợ giúp?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Không có ghi chú nào trong khoảng thời gian này."
+
+#: 
+msgid "No notes yet."
+msgstr "Chưa có ghi chú nào."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Thường là %1$s. Một số nhà cung cấp đưa ra địa chỉ như %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Tổng số đang mở"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Mở bảng điều khiển Tài chính theo khoảng này. Hãy chọn một năm tài chính đã qua ngay trên bảng điều khiển."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "7 ngày qua và %d ngày tới"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Người không có gia đình: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Quyền lưu cài đặt và ảnh"
+
+#: 
+msgid "Port"
+msgstr "Cổng"
+
+#: 
+msgid "Ready"
+msgstr "Sẵn sàng"
+
+#: 
+msgid "Recent"
+msgstr "Gần đây"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Đăng ký gia đình của bạn với nhà thờ của chúng tôi"
+
+#: 
+msgid "Release check"
+msgstr "Kiểm tra phiên bản phát hành"
+
+#: 
+msgid "Report a problem"
+msgstr "Báo cáo sự cố"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Số hàng hiển thị trên mỗi trang trong mọi bảng và thẻ bảng điều khiển. Có hiệu lực khi tải trang tiếp theo."
+
+#: 
+msgid "Send Test Email"
+msgstr "Gửi Email Kiểm Tra"
+
+#: 
+msgid "Send a test email"
+msgstr "Gửi một email kiểm tra"
+
+#: 
+msgid "Send them the list below."
+msgstr "Gửi cho họ danh sách bên dưới."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Phần mềm máy chủ mà ChurchCRM cần"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Đặt làm bảng điều khiển chính của tôi"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Đăng nhập bằng tài khoản quản trị của bạn"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Một số tệp ChurchCRM bị thiếu hoặc đã thay đổi. Hãy tải ChurchCRM lên lại nếu một trang không tải được."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Một số tệp ChurchCRM chưa được tải lên."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Một số tệp trên máy chủ không khớp với phiên bản phát hành ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Đăng nhập cho nhân viên"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Bắt đầu bằng %1$s hoặc %2$s và kết thúc bằng %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Bảng điều khiển bạn mở sau khi đăng nhập"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Máy chủ cơ sở dữ liệu đã chấp nhận thông tin đăng nhập, nhưng không có cơ sở dữ liệu nào có tên đó."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Máy chủ cơ sở dữ liệu đã từ chối tên người dùng hoặc mật khẩu đó."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Tên bạn đã đặt cho cơ sở dữ liệu. Các nhà cung cấp lưu trữ chia sẻ thường thêm tên tài khoản của bạn vào phía trước, ví dụ %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Mật khẩu cho người dùng cơ sở dữ liệu đó. ChurchCRM sẽ kiểm tra các thông tin này khi bạn nhấp vào Cài đặt."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Tệp kiểm tra phiên bản phát hành trên máy chủ này không khớp với ChurchCRM. Hãy tải phiên bản phát hành lên lại, hoặc tiếp tục và yêu cầu nhà cung cấp dịch vụ lưu trữ web trợ giúp."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Thư kiểm tra sẽ được gửi đến địa chỉ email của nhà thờ và hiển thị nhật ký gỡ lỗi SMTP tại đây."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Người dùng bạn đã thêm vào cơ sở dữ liệu đó. Không phải thông tin đăng nhập lưu trữ của bạn."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Các tệp này không thuộc phiên bản phát hành ChurchCRM. Nhà cung cấp dịch vụ lưu trữ web của bạn có thể xóa chúng."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Các tệp này không khớp với phiên bản phát hành"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Các tệp này chưa được tải lên"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Bản sao ChurchCRM này không bao gồm kiểm tra tệp phiên bản phát hành. Bạn có thể tiếp tục."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Bảng điều khiển này hiện là bảng điều khiển chính của bạn."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Cơ sở dữ liệu này không còn nhận được các bản vá bảo mật từ nhà cung cấp của nó."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Đây là nơi mọi người sẽ mở ChurchCRM. Chỉ thay đổi nếu họ sẽ dùng một địa chỉ khác với trang này."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Đây là tài khoản nhà thờ của bạn. Mọi thứ bạn có thể tự làm đều ở đây."
+
+#: 
+msgid "Total deposited"
+msgstr "Tổng số đã nộp"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Máy chủ cơ sở dữ liệu không được hỗ trợ"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Việc nâng cấp sẽ bị chặn cho đến khi cơ sở dữ liệu được chuyển sang phiên bản được hỗ trợ."
+
+#: 
+msgid "Usually 3306."
+msgstr "Thường là 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Chúng tôi khuyên bạn nên yêu cầu nhà cung cấp dịch vụ lưu trữ chuyển đổi trước khi cài đặt, khi chưa có dữ liệu nào cần di chuyển. MariaDB 10.11 là một lựa chọn tốt."
+
+#: 
+msgid "Web address"
+msgstr "Địa chỉ web"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Bạn có thể cài đặt ngay bây giờ: ChurchCRM sẽ cài đặt và chạy."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Bảng điều khiển chính của bạn"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Nhà cung cấp dịch vụ lưu trữ web của bạn cần sửa một số thứ"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "và thêm {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "và thêm {{count}}"
+

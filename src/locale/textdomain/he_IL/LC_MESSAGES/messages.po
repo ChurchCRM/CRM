@@ -27864,3 +27864,441 @@ msgstr "מדינת הקהילה שלכם היא קנדה, ולכן קבלות ר
 msgid "groups"
 msgstr "קבוצות"
 
+#: 
+msgid "14 days"
+msgstr "14 ימים"
+
+#: 
+msgid "6 months"
+msgstr "6 חודשים"
+
+#: 
+msgid "60 days"
+msgstr "60 ימים"
+
+#: 
+msgid "7 days"
+msgstr "7 ימים"
+
+#: 
+msgid "Ask on Discord"
+msgstr "שאלו ב-Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "שנו את הסיסמה שלכם מיד לאחר ההתחברות."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "בחרו דרך אחרת להתחבר"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM אינו יכול להגיע למסד נתונים ב-localhost. נסו את 127.0.0.1 במקום זאת, או בקשו מספק האחסון שלכם את שם שרת מסד הנתונים."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM אינו יכול להגיע לשרת מסד הנתונים בכתובת וביציאה האלה. בדקו את שם השרת ואת היציאה. באחסון משותף השרת לרוב אינו localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM אינו יכול לקרוא את בדיקת הגרסה שלו. בקשו מספק האחסון שלכם להפוך את תיקיית ChurchCRM לקריאה, או המשיכו."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM לא הצליח לבדוק את הרשאות התיקייה"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM לא הצליח לבדוק את הקבצים שלו. בקשו מספק האחסון שלכם לבדוק את יומן השגיאות של השרת."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM לא הצליח לבדוק את תוכנת השרת"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM לא הצליח להתחבר למסד הנתונים עם ההגדרות האלה."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM לא הצליח לסיים את ההתקנה. נסו שוב, או בקשו מספק האחסון שלכם לבדוק את יומן השגיאות של השרת."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM לא הצליח לשמור את Include/Config.php. בקשו מספק האחסון שלכם להפוך את תיקיית Include לניתנת לכתיבה."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "קובצי ChurchCRM תואמים לגרסה"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "כווצו את סרגל הצד לסמלים"
+
+#: 
+msgid "Congregation login"
+msgstr "כניסת הקהילה"
+
+#: 
+msgid "Connect your database"
+msgstr "חברו את מסד הנתונים שלכם"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "מתחבר למסד הנתונים שלכם…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "לא ניתן היה לשמור את לוח הבקרה הראשי שלכם."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "צרו תחילה מסד נתונים של MySQL או MariaDB בלוח הבקרה של האחסון שלכם (ב-cPanel: %s), ואז העתיקו את פרטיו לכאן. ChurchCRM תומך ב-MySQL 8.4+ וב-MariaDB 10.11+ (גרסאות ה-LTS)."
+
+#: 
+msgid "Database host"
+msgstr "שרת מסד הנתונים"
+
+#: 
+msgid "Database name"
+msgstr "שם מסד הנתונים"
+
+#: 
+msgid "Database password"
+msgstr "סיסמת מסד הנתונים"
+
+#: 
+msgid "Database user"
+msgstr "משתמש מסד הנתונים"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ריק כאשר ChurchCRM נמצא בראש האתר. אחרת התיקייה, כמו %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "הזינו כאן את טקסט ההערה..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "הזינו את שרת מסד הנתונים, כמו localhost או mysql.example.com. השתמשו רק באותיות, מספרים, נקודות ומקפים."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "הזינו את שם מסד הנתונים. השתמשו רק באותיות, מספרים, קווים תחתונים, מקפים ונקודות."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "הזינו את יציאת מסד הנתונים כמספר. בדרך כלל 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "הזינו את משתמש מסד הנתונים. השתמשו רק באותיות, מספרים, קווים תחתונים, מקפים, נקודות ו-@."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "הזינו את התיקייה המתחילה ב-/, כמו /churchcrm, או השאירו ריק."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "הזינו את הסיסמה של משתמש מסד הנתונים."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "הזינו את כתובת האינטרנט, המתחילה ב-http:// או https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "כל משפחת חברים פעילה ביצעה תשלום בין %s ל-%s."
+
+#: 
+msgid "Exclude"
+msgstr "החרגה"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "קבצים שנותרו מגרסה ישנה יותר"
+
+#: 
+msgid "Files to review"
+msgstr "קבצים לבדיקה"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "הכינו את פרטי מסד הנתונים מספק האחסון שלכם. זה לוקח כשתי דקות."
+
+#: 
+msgid "Hide"
+msgstr "הסתר"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "כיצד מורכבת הקהילה"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "אני מבין שמסד נתונים זה אינו נתמך ושדרוגים ייחסמו"
+
+#: 
+msgid "Insights"
+msgstr "תובנות"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "התקינו את ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "ההתקנה הושלמה!"
+
+#: 
+msgid "Installation guide"
+msgstr "מדריך התקנה"
+
+#: 
+msgid "Integrity check failed"
+msgstr "בדיקת השלמות נכשלה"
+
+#: 
+msgid "Integrity check passed"
+msgstr "בדיקת השלמות עברה"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "אסימון CSRF לא חוקי"
+
+#: 
+msgid "Last %d days"
+msgstr "%d הימים האחרונים"
+
+#: 
+msgid "Last 12 months"
+msgstr "12 החודשים האחרונים"
+
+#: 
+msgid "Main dashboard"
+msgstr "לוח הבקרה הראשי"
+
+#: 
+msgid "Navigation"
+msgstr "ניווט"
+
+#: 
+msgid "Need help?"
+msgstr "צריכים עזרה?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "אין הערות בטווח זמן זה."
+
+#: 
+msgid "No notes yet."
+msgstr "אין עדיין הערות."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "לרוב %1$s. חלק מהשרתים נותנים כתובת כמו %2$s."
+
+#: 
+msgid "Open total"
+msgstr "סך פתוח"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "פותח את לוח הבקרה של הכספים לטווח זה. בחרו שנת כספים קודמת בלוח הבקרה עצמו."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "7 הימים האחרונים ו-%d הימים הבאים"
+
+#: 
+msgid "People without a family: %d"
+msgstr "אנשים ללא משפחה: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "הרשאה לשמירת הגדרות ותמונות"
+
+#: 
+msgid "Port"
+msgstr "יציאה"
+
+#: 
+msgid "Ready"
+msgstr "מוכן"
+
+#: 
+msgid "Recent"
+msgstr "אחרונים"
+
+#: 
+msgid "Register your family to our church"
+msgstr "רשמו את משפחתכם לכנסייה שלנו"
+
+#: 
+msgid "Release check"
+msgstr "בדיקת גרסה"
+
+#: 
+msgid "Report a problem"
+msgstr "דווחו על בעיה"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "שורות המוצגות בכל עמוד בכל טבלה וכרטיס לוח בקרה. נכנס לתוקף בטעינת העמוד הבאה."
+
+#: 
+msgid "Send Test Email"
+msgstr "שלחו דוא\"ל בדיקה"
+
+#: 
+msgid "Send a test email"
+msgstr "שליחת דוא\"ל בדיקה"
+
+#: 
+msgid "Send them the list below."
+msgstr "שלחו להם את הרשימה שלהלן."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "תוכנת שרת ש-ChurchCRM צריך"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "הגדירו כלוח הבקרה הראשי שלי"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "התחברו עם חשבון המנהל שלכם"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "חלק מקובצי ChurchCRM חסרים או שונו. העלו שוב את ChurchCRM אם עמוד אינו נטען."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "חלק מקובצי ChurchCRM לא הועלו."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "חלק מהקבצים בשרת אינם תואמים לגרסת ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "כניסת צוות"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "מתחיל ב-%1$s או %2$s ומסתיים ב-%3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "לוח הבקרה שנפתח לאחר ההתחברות"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "שרת מסד הנתונים קיבל את ההתחברות, אך אין מסד נתונים בשם זה."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "שרת מסד הנתונים דחה את שם המשתמש או הסיסמה הזו."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "השם שנתתם למסד הנתונים. שרתים משותפים לרוב מוסיפים את שם החשבון שלכם בהתחלה, כמו %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "הסיסמה של משתמש מסד הנתונים הזה. ChurchCRM בודק את הפרטים האלה כאשר לוחצים על התקנה."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "קובץ בדיקת הגרסה בשרת זה אינו תואם ל-ChurchCRM. העלו שוב את הגרסה, או המשיכו ובקשו עזרה מספק האחסון שלכם."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "הודעת הבדיקה נשלחת לכתובת הדוא\"ל של הכנסייה ומציגה כאן את יומן ניפוי השגיאות של SMTP."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "המשתמש שהוספתם למסד הנתונים הזה. לא פרטי ההתחברות לאחסון שלכם."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "קבצים אלה אינם חלק מגרסת ChurchCRM. ספק האחסון שלכם יכול להסיר אותם."
+
+#: 
+msgid "These files do not match the release"
+msgstr "קבצים אלה אינם תואמים לגרסה"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "קבצים אלה לא הועלו"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "עותק זה של ChurchCRM אינו כולל את בדיקת קובץ הגרסה. ניתן להמשיך."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "לוח הבקרה הזה הוא כעת לוח הבקרה הראשי שלכם."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "מסד נתונים זה אינו מקבל עוד תיקוני אבטחה מהספק שלו."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "כאן אנשים יפתחו את ChurchCRM. שנו זאת רק אם ישתמשו בכתובת שונה מעמוד זה."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "זהו חשבון הכנסייה שלכם. כל מה שאתם יכולים לעשות עבור עצמכם נמצא כאן."
+
+#: 
+msgid "Total deposited"
+msgstr "סך שהופקד"
+
+#: 
+msgid "Unsupported database server"
+msgstr "שרת מסד נתונים לא נתמך"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "שדרוגים ייחסמו עד שמסד הנתונים יועבר לגרסה נתמכת."
+
+#: 
+msgid "Usually 3306."
+msgstr "בדרך כלל 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "אנו ממליצים לבקש מהמארח שלכם לעבור לפני ההתקנה, כשאין עדיין נתונים להעביר. MariaDB 10.11 היא יעד מתאים."
+
+#: 
+msgid "Web address"
+msgstr "כתובת אינטרנט"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "ניתן להתקין כעת: ChurchCRM יותקן ויפעל."
+
+#: 
+msgid "Your main dashboard"
+msgstr "לוח הבקרה הראשי שלכם"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "ספק האחסון שלכם צריך לתקן משהו"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "ועוד {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "ועוד {{count}}"
+

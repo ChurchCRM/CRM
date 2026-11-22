@@ -27833,3 +27833,441 @@ msgstr "Ang bansa ng iyong simbahan ay Canada, kaya available ang mga opisyal na
 msgid "groups"
 msgstr "mga grupo"
 
+#: 
+msgid "14 days"
+msgstr "14 na araw"
+
+#: 
+msgid "6 months"
+msgstr "6 na buwan"
+
+#: 
+msgid "60 days"
+msgstr "60 araw"
+
+#: 
+msgid "7 days"
+msgstr "7 araw"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Magtanong sa Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Palitan ang iyong password kaagad pagkatapos mong mag-sign in."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Pumili ng ibang paraan ng pag-sign in"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "Hindi maabot ng ChurchCRM ang database sa localhost. Subukan ang 127.0.0.1 sa halip, o tanungin ang iyong web host para sa pangalan ng database host."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "Hindi maabot ng ChurchCRM ang database server sa address at port na iyon. Suriin ang pangalan ng host at ang port. Sa shared hosting, ang host ay madalas na hindi localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "Hindi mabasa ng ChurchCRM ang release check nito. Hilingin sa iyong web host na gawing nababasa ang folder ng ChurchCRM, o magpatuloy."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "Hindi masuri ng ChurchCRM ang mga pahintulot sa folder"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "Hindi masuri ng ChurchCRM ang mga file nito. Hilingin sa iyong web host na tingnan ang server error log."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "Hindi masuri ng ChurchCRM ang software ng server"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "Hindi makakonekta ang ChurchCRM sa database gamit ang mga setting na ito."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "Hindi matapos ng ChurchCRM ang pag-install. Subukang muli, o hilingin sa iyong web host na suriin ang server error log."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "Hindi mai-save ng ChurchCRM ang Include/Config.php. Hilingin sa iyong web host na gawing nasusulatan ang folder na Include."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Tumutugma ang mga file ng ChurchCRM sa release"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "I-collapse ang sidebar sa mga icon"
+
+#: 
+msgid "Congregation login"
+msgstr "Login ng kongregasyon"
+
+#: 
+msgid "Connect your database"
+msgstr "Ikonekta ang iyong database"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Kumokonekta sa iyong database…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Hindi mai-save ang iyong pangunahing dashboard."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Gumawa muna ng MySQL o MariaDB database sa iyong hosting control panel (sa cPanel: %s), pagkatapos ay kopyahin ang mga detalye nito dito. Sinusuportahan ng ChurchCRM ang MySQL 8.4+ at MariaDB 10.11+ (ang mga LTS release)."
+
+#: 
+msgid "Database host"
+msgstr "Database host"
+
+#: 
+msgid "Database name"
+msgstr "Pangalan ng database"
+
+#: 
+msgid "Database password"
+msgstr "Password ng database"
+
+#: 
+msgid "Database user"
+msgstr "Database user"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Iwanang walang laman kapag ang ChurchCRM ay nasa tuktok ng site. Kung hindi, ang folder, tulad ng %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Ilagay ang teksto ng tala dito..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Ilagay ang database host, tulad ng localhost o mysql.example.com. Gumamit lamang ng mga letra, numero, tuldok at gitling."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Ilagay ang pangalan ng database. Gumamit lamang ng mga letra, numero, underscore, gitling at tuldok."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Ilagay ang database port bilang numero. Karaniwan itong 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Ilagay ang database user. Gumamit lamang ng mga letra, numero, underscore, gitling, tuldok at @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Ilagay ang folder na nagsisimula sa /, tulad ng /churchcrm, o iwan itong walang laman."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Ilagay ang password para sa database user."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Ilagay ang web address, na nagsisimula sa http:// o https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Bawat aktibong pamilya ng miyembro ay nagbayad sa pagitan ng %s at %s."
+
+#: 
+msgid "Exclude"
+msgstr "Ibukod"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Mga file na natira mula sa mas lumang bersyon"
+
+#: 
+msgid "Files to review"
+msgstr "Mga file na susuriin"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Ihanda ang mga detalye ng database mula sa iyong web host. Tumatagal ito ng mga dalawang minuto."
+
+#: 
+msgid "Hide"
+msgstr "Itago"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Paano binubuo ang kongregasyon"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Nauunawaan kong hindi suportado ang database na ito at mahaharang ang mga upgrade"
+
+#: 
+msgid "Insights"
+msgstr "Mga Insight"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "I-install ang ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Kumpleto na ang Pag-install!"
+
+#: 
+msgid "Installation guide"
+msgstr "Gabay sa pag-install"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Nabigo ang integrity check"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Pumasa ang integrity check"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Di-wastong CSRF token"
+
+#: 
+msgid "Last %d days"
+msgstr "Nakaraang %d araw"
+
+#: 
+msgid "Last 12 months"
+msgstr "Nakaraang 12 buwan"
+
+#: 
+msgid "Main dashboard"
+msgstr "Pangunahing dashboard"
+
+#: 
+msgid "Navigation"
+msgstr "Nabigasyon"
+
+#: 
+msgid "Need help?"
+msgstr "Kailangan ng tulong?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Walang mga tala sa saklaw ng oras na ito."
+
+#: 
+msgid "No notes yet."
+msgstr "Wala pang mga tala."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Madalas ay %1$s. Ang ilang host ay nagbibigay ng address tulad ng %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Kabuuang bukas"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Binubuksan ang Finance dashboard sa saklaw na ito. Pumili ng nakaraang taong piskal sa mismong dashboard."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Nakaraang 7 araw at susunod na %d araw"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Mga taong walang pamilya: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Pahintulot na i-save ang mga setting at larawan"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Handa na"
+
+#: 
+msgid "Recent"
+msgstr "Kamakailan"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Irehistro ang iyong pamilya sa aming simbahan"
+
+#: 
+msgid "Release check"
+msgstr "Release check"
+
+#: 
+msgid "Report a problem"
+msgstr "Mag-ulat ng problema"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Mga row na ipinapakita bawat pahina sa bawat table at dashboard card. Magkakabisa sa susunod na pag-load ng pahina."
+
+#: 
+msgid "Send Test Email"
+msgstr "Magpadala ng Test Email"
+
+#: 
+msgid "Send a test email"
+msgstr "Magpadala ng test email"
+
+#: 
+msgid "Send them the list below."
+msgstr "Ipadala sa kanila ang listahan sa ibaba."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Software ng server na kailangan ng ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Itakda bilang aking pangunahing dashboard"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Mag-sign in gamit ang iyong admin account"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Ang ilang file ng ChurchCRM ay nawawala o nabago. I-upload muli ang ChurchCRM kung hindi mag-load ang isang pahina."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Ang ilang file ng ChurchCRM ay hindi na-upload."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Ang ilang file sa server ay hindi tumutugma sa release ng ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Login ng staff"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Nagsisimula sa %1$s o %2$s at nagtatapos sa %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Ang dashboard na bubuksan mo pagkatapos mag-sign in"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Tinanggap ng database server ang login, ngunit walang database na may ganoong pangalan."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Tinanggihan ng database server ang username o password na iyon."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Ang pangalang ibinigay mo sa database. Ang mga shared host ay madalas na nagdadagdag ng pangalan ng iyong account sa unahan, tulad ng %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Ang password para sa database user na iyon. Sinusuri ng ChurchCRM ang mga detalyeng ito kapag na-click mo ang Install."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Ang release check file sa server na ito ay hindi tumutugma sa ChurchCRM. I-upload muli ang release, o magpatuloy at humingi ng tulong sa iyong web host."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Ang test message ay mapupunta sa email address ng simbahan at ipinapakita ang SMTP debug log dito."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Ang user na idinagdag mo sa database na iyon. Hindi ito ang iyong hosting login."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Ang mga file na ito ay hindi bahagi ng release ng ChurchCRM. Maaaring alisin ang mga ito ng iyong web host."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Ang mga file na ito ay hindi tumutugma sa release"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Ang mga file na ito ay hindi na-upload"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Ang kopyang ito ng ChurchCRM ay hindi kasama ang release file check. Maaari kang magpatuloy."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Ang dashboard na ito ay ang iyong pangunahing dashboard na ngayon."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Ang database na ito ay hindi na nakakatanggap ng mga security fix mula sa vendor nito."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Dito bubuksan ng mga tao ang ChurchCRM. Baguhin lamang ito kung gagamit sila ng ibang address kaysa sa pahinang ito."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Ito ang iyong church account. Lahat ng magagawa mo para sa iyong sarili ay nandito."
+
+#: 
+msgid "Total deposited"
+msgstr "Kabuuang naideposito"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Hindi suportadong database server"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Mahaharang ang mga upgrade hanggang mailipat ang database sa isang suportadong bersyon."
+
+#: 
+msgid "Usually 3306."
+msgstr "Karaniwan ay 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Inirerekomenda naming hilingin sa iyong host na magpalit bago ka mag-install, habang wala pang data na ililipat. Ang MariaDB 10.11 ay isang magandang target."
+
+#: 
+msgid "Web address"
+msgstr "Web address"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Maaari ka nang mag-install: mai-install at tatakbo ang ChurchCRM."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Ang iyong pangunahing dashboard"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Kailangang may ayusin ang iyong web host"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "at {{count}} pa"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "at {{count}} pa"
+
