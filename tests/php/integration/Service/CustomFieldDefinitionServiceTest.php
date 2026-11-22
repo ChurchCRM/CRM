@@ -256,11 +256,12 @@ try {
     );
 
     // Regression test for #11602: a definition object fetched before another
-    // move must not drive the swap from its stale order. The service re-reads
-    // the row under a write lock inside the transaction, so the move below
-    // uses the current order (2), not the stale one (1). On the old code the
-    // stale lookup finds the definition itself as its own neighbour and the
-    // move is a no-op that still reports success.
+    // move must not drive the swap from its stale order. The order is changed
+    // with SQL, as a concurrent move would, so the object in hand still says
+    // 1 while the database says 2. The service re-reads the row under a write
+    // lock inside the transaction, so the move below uses the current order
+    // (2), not the stale one (1). On the old code the stale lookup swaps with
+    // the wrong neighbour and the definition lands at order 2, not 3.
     $staleDb = $newDatabase();
     $addPersonField($staleDb, 'c1', 1, 3, 'Person Text');
     $addPersonField($staleDb, 'c2', 2, 3, 'Person Middle');
@@ -271,16 +272,20 @@ try {
 
     $stalePerson = $service->find('person', 'c1');
     Assert::same(1, (int) $stalePerson->getOrder(), 'stale person definition starts at order 1');
-    Assert::true($service->move($service->find('person', 'c2'), 'up'), 'person c2 moves up first');
-    Assert::same([2, 1, 3], [$personOrder($staleDb, 'c1'), $personOrder($staleDb, 'c2'), $personOrder($staleDb, 'c3')], 'person orders after c2 moves up');
+    // A concurrent move swaps c1 and c2 in the database only, so the pooled
+    // object still says order 1 while the row says 2.
+    $staleDb->exec("UPDATE `person_custom_master` SET `custom_Order` = 2 WHERE `custom_Field` = 'c1'");
+    $staleDb->exec("UPDATE `person_custom_master` SET `custom_Order` = 1 WHERE `custom_Field` = 'c2'");
+    Assert::same(1, (int) $stalePerson->getOrder(), 'the pooled object still says order 1');
     Assert::true($service->move($stalePerson, 'down'), 'a stale person definition still moves down');
     Assert::same(3, $personOrder($staleDb, 'c1'), 'stale person definition lands at order 3, not 2');
     Assert::same([1, 2, 3], [$personOrder($staleDb, 'c2'), $personOrder($staleDb, 'c3'), $personOrder($staleDb, 'c1')], 'person orders stay a unique contiguous sequence');
 
     $staleFamily = $service->find('family', 'c1');
     Assert::same(1, (int) $staleFamily->getOrder(), 'stale family definition starts at order 1');
-    Assert::true($service->move($service->find('family', 'c2'), 'up'), 'family c2 moves up first');
-    Assert::same([2, 1, 3], [$familyOrder($staleDb, 'c1'), $familyOrder($staleDb, 'c2'), $familyOrder($staleDb, 'c3')], 'family orders after c2 moves up');
+    $staleDb->exec("UPDATE `family_custom_master` SET `fam_custom_Order` = 2 WHERE `fam_custom_Field` = 'c1'");
+    $staleDb->exec("UPDATE `family_custom_master` SET `fam_custom_Order` = 1 WHERE `fam_custom_Field` = 'c2'");
+    Assert::same(1, (int) $staleFamily->getOrder(), 'the pooled object still says order 1');
     Assert::true($service->move($staleFamily, 'down'), 'a stale family definition still moves down');
     Assert::same(3, $familyOrder($staleDb, 'c1'), 'stale family definition lands at order 3, not 2');
     Assert::same([1, 2, 3], [$familyOrder($staleDb, 'c2'), $familyOrder($staleDb, 'c3'), $familyOrder($staleDb, 'c1')], 'family orders stay a unique contiguous sequence');
