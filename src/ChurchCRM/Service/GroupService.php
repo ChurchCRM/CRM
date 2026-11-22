@@ -62,15 +62,21 @@ class GroupService
     }
 
     /**
-     *  addUserToGroup.
+     * addUserToGroup.
      *
-     * @param int $groupID  Group ID from which  to remove the user
-     * @param int $personID UserID to remove from the group
-     * @param int $roleID   Role ID to set to the person
+     * @param int $iGroupID Group ID to add the user to
+     * @param int $iPersonID User ID to add to the group
+     * @param int $iRoleID Role ID to set for the person
+     * @return array|false
      */
-    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array
+    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array|false
     {
         AuthService::requireUserGroupMembership('bManageGroups');
+
+        $group = GroupQuery::create()->findOneById($iGroupID);
+        if ($group === null) {
+            return false;
+        }
         //
         // Adds a person to a group with specified role.
         // Returns false if the operation fails. (such as person already in group)
@@ -79,7 +85,6 @@ class GroupService
         // Was a RoleID passed in?
         if ($iRoleID === 0) {
             // No, get the Default Role for this Group
-            $group = GroupQuery::create()->findOneById($iGroupID);
             $iRoleID = $group->getDefaultRole();
         }
 
@@ -102,12 +107,13 @@ class GroupService
             ]);
         }
 
-        if ($result) {
-            // Check if this group has special properties
-            $group = GroupQuery::create()->findOneById($iGroupID);
-            if ($group->getHasSpecialProps()) {
-                $this->addPersonToGroupProperties($iGroupID, $iPersonID);
-            }
+        if (!$result) {
+            return false;
+        }
+
+        // Check if this group has special properties
+        if ($group->getHasSpecialProps()) {
+            $this->addPersonToGroupProperties($iGroupID, $iPersonID);
         }
 
         return $this->getGroupMembers($iGroupID, $iPersonID);

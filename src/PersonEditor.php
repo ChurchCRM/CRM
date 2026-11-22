@@ -76,7 +76,15 @@ if (!$isNewPerson) {
 $customFieldService = new CustomFieldService();
 $canManageGroups = AuthenticationManager::getCurrentUser()->isManageGroupsEnabled();
 
-$availableGroups = ($isNewPerson && $canManageGroups)
+$isGroupAssignmentRetry = isset($_GET['GroupAssignmentRetry'])
+    && $_GET['GroupAssignmentRetry'] === '1';
+
+$retryGroupIds = [];
+if ($isGroupAssignmentRetry && isset($_GET['GroupIds'])) {
+    $retryGroupIds = array_map('intval', explode(',', (string) $_GET['GroupIds']));
+}
+
+$availableGroups = (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups)
     ? GroupQuery::create()->orderByName()->find()
     : [];
 
@@ -85,7 +93,7 @@ foreach ($availableGroups as $group) {
     $availableGroupIds[] = (int) $group->getId();
 }
 
-$selectedGroupIds = [];
+$selectedGroupIds = array_values(array_intersect($retryGroupIds, $availableGroupIds));
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -177,11 +185,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         http_response_code(403);
         exit;
     }
-    if ($isNewPerson && $canManageGroups && isset($_POST['GroupIds']) && is_array($_POST['GroupIds'])) {
-        $selectedGroupIds = array_values(array_unique(array_intersect(
-            array_map('intval', $_POST['GroupIds']),
-            $availableGroupIds
-        )));
+    if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) {
+        $selectedGroupIds = (isset($_POST['GroupIds']) && is_array($_POST['GroupIds']))
+            ? array_values(array_unique(array_intersect(
+                array_map('intval', $_POST['GroupIds']),
+                $availableGroupIds
+            )))
+            : [];
     }
 
     //Get all the variables from the request object and assign them locally
@@ -503,15 +513,20 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             (new FamilyService())->autoGeocodePerson($person);
         }
 
-        if (!$personAlreadyExist) {
-            $iPersonID = $person->getId();
-            if ($canManageGroups) {
-                $groupService = new GroupService();
+        $iPersonID = $person->getId();
+        $failedGroupIds = [];
 
-                foreach ($selectedGroupIds as $groupId) {
-                    $groupService->addUserToGroup($groupId, $iPersonID, 0);
+        if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) {
+            $groupService = new GroupService();
+
+            foreach ($selectedGroupIds as $groupId) {
+                if ($groupService->addUserToGroup($groupId, $iPersonID, 0) === false) {
+                    $failedGroupIds[] = $groupId;
                 }
             }
+        }
+
+        if (!$personAlreadyExist) {
             $personCustom = new PersonCustom();
             $personCustom->setPerId($iPersonID);
             $personCustom->save();
@@ -523,6 +538,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Update the custom person fields.
         if ($numCustomFields > 0) {
             $customFieldService->savePersonValues((int) $iPersonID, $aCustomData);
+        }
+
+        if ($failedGroupIds !== []) {
+            RedirectUtils::redirect(
+                'PersonEditor.php?PersonID=' . $iPersonID
+                . '&GroupAssignmentRetry=1&GroupIds=' . implode(',', $failedGroupIds)
+            );
         }
 
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
@@ -655,7 +677,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor" id="personEditor">
+<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?><?= $isGroupAssignmentRetry ? '&GroupAssignmentRetry=1' : '' ?>" name="PersonEditor" id="personEditor">
     <?= CSRFUtils::getTokenInputField() ?>
     <?php if ($bErrorFlag) {
         ?>
@@ -666,6 +688,12 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <?php
     } ?>
+    <?php if ($isGroupAssignmentRetry) { ?>
+        <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <?= gettext('The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.') ?>
+        </div>
+    <?php } ?>
     <!-- Card 1: Name & Identity -->
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
@@ -822,7 +850,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 
     <!-- Group Assignment -->
-    <?php if ($isNewPerson && $canManageGroups) { ?>
+    <?php if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) { ?>
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title">
