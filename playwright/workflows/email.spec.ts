@@ -168,7 +168,7 @@ test.describe('Email composer', () => {
     // The new-family form has no email field. Give her one, then open the composer.
     await setPersonEmail(page, personId, 'lena.ellison@demo.churchcrm.io');
     await page.reload();
-    const sendButton = page.locator('#family-email-card [data-email-person-id]');
+    const sendButton = page.locator('table [data-email-person-id]').first();
     await expect(sendButton).toBeVisible({ timeout: 15000 });
 
     try {

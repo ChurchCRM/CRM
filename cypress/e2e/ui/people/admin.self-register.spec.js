@@ -230,13 +230,13 @@ describe("Self Registrations review page", () => {
                 cy.get("#families tbody", { timeout: 15000 }).should("contain", name).and("contain", "Pending review");
 
                 cy.visit(`people/family/${id}`);
-                cy.contains(".alert", "pending review");
+                cy.get("#family-profile-header").contains(".badge", "Pending review");
             });
         });
 
         it("does not mark staff-created people as pending", () => {
             cy.visit("people/family/1");
-            cy.contains(".alert", "pending review").should("not.exist");
+            cy.get("#family-profile-header").contains(".badge", "Pending review").should("not.exist");
         });
     });
 });

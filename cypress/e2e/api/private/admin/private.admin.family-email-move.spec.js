@@ -298,7 +298,7 @@ describe("7.8.3 upgrade: family email moves to people", () => {
 
                 cy.setupAdminSession();
                 cy.visit(`/people/family/${fam.Both}`);
-                cy.get("#family-email-card").should("contain.text", addr("both-head")).and("not.contain.text", strayBoth);
+                cy.get("#family-profile-header").parent().should("contain.text", addr("both-head")).and("not.contain.text", strayBoth);
 
                 cart("DELETE", {});
                 cart("POST", { Family: fam.Both });

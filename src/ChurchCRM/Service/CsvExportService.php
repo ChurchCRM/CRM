@@ -677,10 +677,10 @@ class CsvExportService
                         } elseif ($sFormat === 'rollup') {
                             $family = FamilyQuery::create()->findPk($fam_ID);
                             if ($memberCount > 1) {
-                                $row[] = $family->getSalutation();
+                                $row[] = self::sortableFamilyName($family);
                                 $row[] = $family->getFirstNameSalutation();
                             } else {
-                                $row[] = $per_FirstName . ' ' . $per_LastName;
+                                $row[] = self::sortableName((string) $per_LastName, (string) $per_FirstName);
                                 $row[] = $per_FirstName;
                             }
                         }
@@ -864,5 +864,29 @@ class CsvExportService
             }
 
         return ['headers' => $headers, 'rows' => $rows];
+    }
+
+    private static function sortableName(string $lastName, string $firstNames): string
+    {
+        return $firstNames === '' ? $lastName : $lastName . ', ' . $firstNames;
+    }
+
+    private static function sortableFamilyName(Family $family): string
+    {
+        $adults = $family->getAdults();
+        if (count($adults) === 1) {
+            return self::sortableName((string) $adults[0]->getLastName(), (string) $adults[0]->getFirstName());
+        }
+        if (count($adults) === 2) {
+            [$first, $second] = $adults;
+            if ($first->getLastName() === $second->getLastName()) {
+                return self::sortableName((string) $first->getLastName(), $first->getFirstName() . ' & ' . $second->getFirstName());
+            }
+
+            return self::sortableName((string) $first->getLastName(), (string) $first->getFirstName())
+                . ' & ' . self::sortableName((string) $second->getLastName(), (string) $second->getFirstName());
+        }
+
+        return $family->getSalutation();
     }
 }

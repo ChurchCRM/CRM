@@ -304,6 +304,17 @@ class DemoDataService
                 $family->setZip($addr['zip'] ?? null);
                 $family->setCountry($addr['country'] ?? null);
 
+                $second = $famData['secondAddress'] ?? [];
+                if (!empty($second['line1'])) {
+                    $family->setSecondAddress1($second['line1']);
+                    $family->setSecondAddress2($second['line2'] ?? null);
+                    $family->setSecondCity($second['city'] ?? null);
+                    $family->setSecondState($second['state'] ?? null);
+                    $family->setSecondZip($second['zip'] ?? null);
+                    $family->setSecondCountry($second['country'] ?? null);
+                    $family->setSecondIsMailing(!empty($second['isMailing']));
+                }
+
                 // If demo JSON provides lat/lng, use them to set family's location
                 if (isset($addr['latitude']) || isset($addr['lat']) || isset($addr['longitude']) || isset($addr['lng'])) {
                     $lat = $addr['latitude'] ?? $addr['lat'] ?? null;

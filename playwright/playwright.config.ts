@@ -20,7 +20,7 @@ const browserChannel = process.env.BROWSER_CHANNEL || undefined;
 // to use the system installation instead.
 export default defineConfig({
   testDir: '.',
-  // Playwright's default (30s) is far shorter than setup-church-info's own
+  // Playwright's default (30s) is far shorter than install-churchcrm's own
   // sequential waits can add up to: up to 120s for the prerequisites check,
   // up to 120s for the #setup-success DB migration wait, plus several
   // shorter waitForURL calls after — worst case sum comfortably exceeds

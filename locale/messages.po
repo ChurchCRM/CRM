@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 22:11+0000\n"
+"POT-Creation-Date: 2026-11-21 21:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2056,6 +2056,9 @@ msgstr ""
 msgid "Ask for a new email"
 msgstr ""
 
+msgid "Ask on Discord"
+msgstr ""
+
 msgid "Ask someone to cover for you"
 msgstr ""
 
@@ -3152,6 +3155,9 @@ msgstr ""
 msgid "Change your password"
 msgstr ""
 
+msgid "Change your password right after you sign in."
+msgstr ""
+
 msgid "Changed"
 msgstr ""
 
@@ -3403,6 +3409,9 @@ msgid "Choose a day of the month from 1 to 31"
 msgstr ""
 
 msgid "Choose a deposit or enter both report dates."
+msgstr ""
+
+msgid "Choose a different way to sign in"
 msgstr ""
 
 msgid "Choose a group..."
@@ -3665,9 +3674,6 @@ msgstr ""
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr ""
 
-msgid "Church leader sign-in"
-msgstr ""
-
 msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
 msgstr ""
 
@@ -3696,6 +3702,36 @@ msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is m
 msgstr ""
 
 msgid "ChurchCRM can send emails directly."
+msgstr ""
+
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr ""
+
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr ""
+
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr ""
+
+msgid "ChurchCRM could not check folder permissions"
+msgstr ""
+
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr ""
+
+msgid "ChurchCRM could not check the server software"
+msgstr ""
+
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr ""
+
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr ""
+
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr ""
+
+msgid "ChurchCRM files match the release"
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -4093,6 +4129,9 @@ msgstr ""
 msgid "Congregation Map"
 msgstr ""
 
+msgid "Congregation login"
+msgstr ""
+
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr ""
 
@@ -4100,6 +4139,9 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr ""
 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr ""
+
+msgid "Connect your database"
 msgstr ""
 
 msgid "Connected"
@@ -4118,6 +4160,9 @@ msgstr ""
 
 #, php-format
 msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr ""
+
+msgid "Connecting to your database…"
 msgstr ""
 
 msgid "Connection"
@@ -4409,6 +4454,10 @@ msgid "Create Report"
 msgstr ""
 
 msgid "Create Today's Event"
+msgstr ""
+
+#, php-format
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
 msgstr ""
 
 msgid "Create a backup now and upload it to your WebDAV server."
@@ -4704,7 +4753,16 @@ msgstr ""
 msgid "Database engine and major/minor version"
 msgstr ""
 
+msgid "Database host"
+msgstr ""
+
 msgid "Database information confirmation and correction report signer"
+msgstr ""
+
+msgid "Database name"
+msgstr ""
+
+msgid "Database password"
 msgstr ""
 
 msgid "Database reset failed"
@@ -4714,6 +4772,9 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database user"
 msgstr ""
 
 msgid "Database-only (.sql) or full archive (.tar.gz)"
@@ -5204,9 +5265,6 @@ msgid "Deposit Tracking"
 msgstr ""
 
 msgid "Deposit Type"
-msgstr ""
-
-msgid "Deposit Value"
 msgstr ""
 
 msgid "Deposit not found"
@@ -5929,6 +5987,10 @@ msgstr ""
 msgid "Empty Cart to Group"
 msgstr ""
 
+#, php-format
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr ""
+
 msgid "Empty your entire cart?"
 msgstr ""
 
@@ -6196,7 +6258,28 @@ msgstr ""
 msgid "Enter the 6-digit code from your authenticator app to complete login"
 msgstr ""
 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr ""
+
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr ""
+
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr ""
+
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr ""
+
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr ""
+
+msgid "Enter the password for the database user."
+msgstr ""
+
 msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr ""
+
+msgid "Enter the web address, starting with http:// or https://."
 msgstr ""
 
 msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
@@ -6293,9 +6376,6 @@ msgid "Error Log"
 msgstr ""
 
 msgid "Error Reporting"
-msgstr ""
-
-msgid "Error decoding signature definition file"
 msgstr ""
 
 msgid "Error deleting log file."
@@ -6482,6 +6562,10 @@ msgstr ""
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
 msgstr ""
 
+#, php-format
+msgid "Every active member family made a payment between %s and %s."
+msgstr ""
+
 msgid "Every deposit dated in this year is closed."
 msgstr ""
 
@@ -6555,6 +6639,9 @@ msgid "Everywhere"
 msgstr ""
 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr ""
+
+msgid "Exclude"
 msgstr ""
 
 msgid "Exclude Inactive Families"
@@ -7341,10 +7428,16 @@ msgstr ""
 msgid "Filename Date Format"
 msgstr ""
 
+msgid "Files left over from an older version"
+msgstr ""
+
 msgid "Files may be modified or missing. Consider re-deploying from an official release."
 msgstr ""
 
 msgid "Files not part of the official release were found on your server."
+msgstr ""
+
+msgid "Files to review"
 msgstr ""
 
 msgid "Filesystem Permissions"
@@ -8431,6 +8524,9 @@ msgstr ""
 msgid "Have an email"
 msgstr ""
 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr ""
+
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr ""
 
@@ -8489,6 +8585,9 @@ msgid "Here"
 msgstr ""
 
 msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr ""
+
+msgid "Hide"
 msgstr ""
 
 msgid "Hide Address Without Family"
@@ -8683,6 +8782,9 @@ msgid "I can't"
 msgstr ""
 
 msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr ""
+
+msgid "I understand this database is unsupported and upgrades will be blocked"
 msgstr ""
 
 msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
@@ -9036,6 +9138,9 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
+msgid "Install ChurchCRM"
+msgstr ""
+
 msgid "Install Plugin from URL (Unverified)"
 msgstr ""
 
@@ -9060,6 +9165,9 @@ msgstr ""
 msgid "Install — installation and upgrade statistics (default)"
 msgstr ""
 
+msgid "Installation Complete!"
+msgstr ""
+
 msgid "Installation ID"
 msgstr ""
 
@@ -9067,6 +9175,9 @@ msgid "Installation UUID"
 msgstr ""
 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr ""
+
+msgid "Installation guide"
 msgstr ""
 
 msgid "Installation profile"
@@ -9095,6 +9206,12 @@ msgid "Installment dates must be within the selected fiscal year."
 msgstr ""
 
 msgid "Integrity"
+msgstr ""
+
+msgid "Integrity check failed"
+msgstr ""
+
+msgid "Integrity check passed"
 msgstr ""
 
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
@@ -10933,15 +11050,6 @@ msgstr ""
 msgid "Multiple items"
 msgstr ""
 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr ""
-
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr ""
-
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr ""
-
 msgid "Must be an immutable release URL served over HTTPS."
 msgstr ""
 
@@ -10949,9 +11057,6 @@ msgid "Must change password"
 msgstr ""
 
 msgid "Must specify non-zero check number"
-msgstr ""
-
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr ""
 
 msgid "Must start with http:// or https://"
@@ -11037,6 +11142,9 @@ msgid "Navigation"
 msgstr ""
 
 msgid "Near"
+msgstr ""
+
+msgid "Need help?"
 msgstr ""
 
 msgid "Need to remove this data later?"
@@ -12021,9 +12129,6 @@ msgstr ""
 msgid "Not staffed"
 msgstr ""
 
-msgid "Not sure which email we have? Contact the church office."
-msgstr ""
-
 msgid "Not volunteering yet"
 msgstr ""
 
@@ -12223,6 +12328,10 @@ msgstr ""
 msgid "Offline"
 msgstr ""
 
+#, php-format
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr ""
+
 msgid "Old Password"
 msgstr ""
 
@@ -12285,9 +12394,6 @@ msgid "One of the events does not exist"
 msgstr ""
 
 msgid "One of those calendars is not shared with members."
-msgstr ""
-
-msgid "One or more files failed signature validation"
 msgstr ""
 
 msgid "One-Time Code"
@@ -13050,6 +13156,9 @@ msgstr ""
 msgid "Permission Required"
 msgstr ""
 
+msgid "Permission to save settings and photos"
+msgstr ""
+
 msgid "Permissions"
 msgstr ""
 
@@ -13378,9 +13487,6 @@ msgstr ""
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr ""
 
-msgid "Please enter a valid number"
-msgstr ""
-
 msgid "Please enter a valid phone number"
 msgstr ""
 
@@ -13591,6 +13697,9 @@ msgid "Polish"
 msgstr ""
 
 msgid "Populates the fields below without saving. Click Save to apply."
+msgstr ""
+
+msgid "Port"
 msgstr ""
 
 msgid "Portal permission given"
@@ -13986,6 +14095,9 @@ msgstr ""
 msgid "Read the theme authoring guide"
 msgstr ""
 
+msgid "Ready"
+msgstr ""
+
 msgid "Ready to back up"
 msgstr ""
 
@@ -14176,6 +14288,9 @@ msgstr ""
 msgid "Register your family"
 msgstr ""
 
+msgid "Register your family to our church"
+msgstr ""
+
 msgid "Registered"
 msgstr ""
 
@@ -14207,6 +14322,9 @@ msgid "Reject this substitute"
 msgstr ""
 
 msgid "Release Notes"
+msgstr ""
+
+msgid "Release check"
 msgstr ""
 
 msgid "Release notes are unavailable right now."
@@ -14377,6 +14495,9 @@ msgid "Report Start Date"
 msgstr ""
 
 msgid "Report Type"
+msgstr ""
+
+msgid "Report a problem"
 msgstr ""
 
 msgid "Report an Issue"
@@ -15425,6 +15546,9 @@ msgstr ""
 msgid "Send the settings as a JSON object."
 msgstr ""
 
+msgid "Send them the list below."
+msgstr ""
+
 msgid "Send to the church office"
 msgstr ""
 
@@ -15506,6 +15630,9 @@ msgid "Server locale support could not be checked (exec is disabled)."
 msgstr ""
 
 msgid "Server returned an unexpected response. Please try again."
+msgstr ""
+
+msgid "Server software ChurchCRM needs"
 msgstr ""
 
 msgid "Serving next"
@@ -15826,6 +15953,9 @@ msgstr ""
 msgid "Sign in with a passkey"
 msgstr ""
 
+msgid "Sign in with your admin account"
+msgstr ""
+
 msgid "Sign out"
 msgstr ""
 
@@ -15902,16 +16032,6 @@ msgid "Signature Image"
 msgstr ""
 
 msgid "Signature Mismatch"
-msgstr ""
-
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr ""
-
-#, php-format
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr ""
-
-msgid "Signature definition file signature failed validation"
 msgstr ""
 
 msgid "Signature image (Admin, Report Settings)"
@@ -16029,6 +16149,12 @@ msgstr ""
 msgid "Somalia (Soomaaliya)"
 msgstr ""
 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr ""
+
+msgid "Some ChurchCRM files were not uploaded."
+msgstr ""
+
 msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
 msgstr ""
 
@@ -16036,6 +16162,9 @@ msgid "Some application prerequisites are not met"
 msgstr ""
 
 msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr ""
+
+msgid "Some files on the server do not match the ChurchCRM release."
 msgstr ""
 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -16152,6 +16281,9 @@ msgstr ""
 msgid "Staff an event"
 msgstr ""
 
+msgid "Staff login"
+msgstr ""
+
 msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
 msgstr ""
 
@@ -16219,6 +16351,10 @@ msgid "Starting envelope number"
 msgstr ""
 
 msgid "Starts"
+msgstr ""
+
+#, php-format
+msgid "Starts with %1$s or %2$s and ends with %3$s."
 msgstr ""
 
 msgid "Starts with http:// or https://"
@@ -17048,6 +17184,12 @@ msgstr ""
 msgid "The database has been cleared. The system is ready for a fresh start."
 msgstr ""
 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr ""
+
+msgid "The database server rejected that username or password."
+msgstr ""
+
 msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
 msgstr ""
 
@@ -17232,6 +17374,10 @@ msgstr ""
 msgid "The name the charity is registered under. It can differ from the church name."
 msgstr ""
 
+#, php-format
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr ""
+
 msgid "The occurrence could not be canceled"
 msgstr ""
 
@@ -17280,6 +17426,9 @@ msgstr ""
 
 #, php-format
 msgid "The password for %s has been updated."
+msgstr ""
+
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
 msgstr ""
 
 msgid "The people sharing it are in different families, or not in a family"
@@ -17386,6 +17535,9 @@ msgid "The record could not be found."
 msgstr ""
 
 msgid "The recurrence must say how the events repeat"
+msgstr ""
+
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr ""
 
 msgid "The report end date must be on or after the start date."
@@ -17554,6 +17706,9 @@ msgstr ""
 msgid "The upgrade was not started, so nothing changed."
 msgstr ""
 
+msgid "The user you added to that database. Not your hosting login."
+msgstr ""
+
 msgid "The volunteer assignment could not be saved"
 msgstr ""
 
@@ -17682,10 +17837,19 @@ msgstr ""
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
 msgstr ""
 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr ""
+
 msgid "These files are not part of the official release and may pose security risks."
 msgstr ""
 
+msgid "These files do not match the release"
+msgstr ""
+
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr ""
+
+msgid "These files were not uploaded"
 msgstr ""
 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
@@ -17817,7 +17981,13 @@ msgstr ""
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr ""
+
 msgid "This dashboard is now your main dashboard."
+msgstr ""
+
+msgid "This database no longer receives security fixes from its vendor."
 msgstr ""
 
 msgid "This date was canceled. Nothing more is needed from you."
@@ -17922,6 +18092,9 @@ msgid "This is the mailing address"
 msgstr ""
 
 msgid "This is the only role in this group."
+msgstr ""
+
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr ""
 
 msgid "This is where the church sends post and who it calls about your household."
@@ -18911,6 +19084,9 @@ msgstr ""
 msgid "Unsuccessful API Key authentication attempt"
 msgstr ""
 
+msgid "Unsupported database server"
+msgstr ""
+
 msgid "Until"
 msgstr ""
 
@@ -19020,6 +19196,9 @@ msgid "Upgrade information refreshed successfully"
 msgstr ""
 
 msgid "Upgrade information refreshed. Reloading page..."
+msgstr ""
+
+msgid "Upgrades will be blocked until the database is moved to a supported version."
 msgstr ""
 
 msgid "Upload"
@@ -19262,6 +19441,9 @@ msgid "Using the church name and address"
 msgstr ""
 
 msgid "Using the letterhead path set in System Settings"
+msgstr ""
+
+msgid "Usually 3306."
 msgstr ""
 
 #. Context: countries
@@ -19767,6 +19949,9 @@ msgstr ""
 msgid "We emailed a link to %s. Use it to confirm your new email address."
 msgstr ""
 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr ""
+
 msgid "We sent a link to {{email}}. Your email changes when you use it."
 msgstr ""
 
@@ -19795,6 +19980,9 @@ msgid "Weak"
 msgstr ""
 
 msgid "Web Server"
+msgstr ""
+
+msgid "Web address"
 msgstr ""
 
 msgid "WebDAV Configuration"
@@ -20238,6 +20426,9 @@ msgstr ""
 msgid "You can create/delete sunday school group."
 msgstr ""
 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr ""
+
 msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
 msgstr ""
 
@@ -20568,6 +20759,9 @@ msgstr ""
 msgid "Your teams: %s"
 msgstr ""
 
+msgid "Your web host needs to fix something"
+msgstr ""
+
 msgid "ZIP code is required."
 msgstr ""
 
@@ -20628,6 +20822,14 @@ msgid "an administrator"
 msgstr ""
 
 msgid "and"
+msgstr ""
+
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr ""
+
+msgctxt "other"
+msgid "and {{count}} more"
 msgstr ""
 
 msgid "assigned"

@@ -33,8 +33,8 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("shows current-FY pill active by default, data is FY-filtered", () => {
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
-      cy.visit("people/family/1");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeInit");
+      cy.visit("people/family/1#giving-history");
       cy.wait("@pledgeInit").its("response.statusCode").should("eq", 200);
 
       // Current-FY pill is the default active pill
@@ -53,12 +53,12 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("All-Time pill triggers server-side reload and shows historical rows", () => {
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
-      cy.visit("people/family/1");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeInit");
+      cy.visit("people/family/1#giving-history");
       cy.wait("@pledgeInit");
 
       // Click All Time (data-fy="0")
-      cy.intercept("GET", "**/api/payments/family/1/list*").as(
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as(
         "pledgeAllTime"
       );
       cy.get(".pledge-fy-pill[data-fy='0']").click();
@@ -77,12 +77,12 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("clicking a specific FY pill filters to that FY", () => {
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
-      cy.visit("people/family/1");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeInit");
+      cy.visit("people/family/1#giving-history");
       cy.wait("@pledgeInit");
 
       // Switch to All Time first to confirm there are rows
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("allTime");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("allTime");
       cy.get(".pledge-fy-pill[data-fy='0']").click();
       cy.wait("@allTime");
       cy.get("#pledge-payment-v2-table tbody tr").should(
@@ -92,7 +92,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
 
       // Click FY22 pill (2018) — should still show the same rows
       cy.get(`.pledge-fy-pill[data-fy='${SEED_FYID_2018}']`).should("exist").as("fy22Pill");
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("fy22");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("fy22");
       cy.get("@fy22Pill").click();
       cy.wait("@fy22").then((interception) => {
         expect(interception.request.url).to.include(`fyid=${SEED_FYID_2018}`);
@@ -103,11 +103,11 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
     });
 
     it("persists FY selection in URL params", () => {
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
-      cy.visit("people/family/1");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeInit");
+      cy.visit("people/family/1#giving-history");
       cy.wait("@pledgeInit");
 
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("allTime");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("allTime");
       cy.get(".pledge-fy-pill[data-fy='0']").click();
       cy.wait("@allTime");
 
@@ -118,7 +118,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
 
       // Refreshing the page must keep the All-Time selection — the AJAX
       // request must still send fyid=0 explicitly, not omit the param.
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("afterReload");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("afterReload");
       cy.reload();
       cy.wait("@afterReload").then((interception) => {
         expect(interception.request.url).to.include("fyid=0");
