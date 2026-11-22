@@ -5,7 +5,9 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyCustomMasterTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyCustomTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PersonCustomMasterTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PersonCustomTableMap;
 use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
@@ -44,9 +46,11 @@ class CustomFieldDefinitionService
      * The definition row is re-read under a write lock inside the transaction:
      * the object passed in may have been fetched before a concurrent move
      * changed its order, and the neighbour lookup must use the current order,
-     * not the stale in-memory one. Locking both rows serializes concurrent
-     * moves on the same pair, so two swaps cannot interleave and duplicate
-     * an order (#11602).
+     * not the stale in-memory one. Propel's instance pool would hand the
+     * locked re-read back as the object already in memory without hydrating
+     * it, so the definition is dropped from the pool first. Locking both
+     * rows serializes concurrent moves on the same pair, so two swaps cannot
+     * interleave and duplicate an order (#11602).
      *
      * @return bool false when no field sits in that direction
      */
@@ -59,6 +63,10 @@ class CustomFieldDefinitionService
         $connection = Propel::getWriteConnection($this->valuesTableMap($definition)::DATABASE_NAME);
         $connection->beginTransaction();
         try {
+            // Drop the definition from Propel's instance pool first: without
+            // this, the locked re-read below returns the pooled object as-is
+            // and getOrder() still reports the order from before the lock.
+            $this->definitionTableMap($definition)::removeInstanceFromPool($definition);
             $current = $this->createQuery($definition)
                 ->filterByPrimaryKey($definition->getPrimaryKey())
                 ->lockForUpdate()
@@ -155,6 +163,14 @@ class CustomFieldDefinitionService
         return $definition instanceof PersonCustomMaster
             ? PersonCustomMasterQuery::create()
             : FamilyCustomMasterQuery::create();
+    }
+
+    /**
+     * @return class-string<PersonCustomMasterTableMap|FamilyCustomMasterTableMap>
+     */
+    private function definitionTableMap(PersonCustomMaster|FamilyCustomMaster $definition): string
+    {
+        return $definition instanceof PersonCustomMaster ? PersonCustomMasterTableMap::class : FamilyCustomMasterTableMap::class;
     }
 
     /**
