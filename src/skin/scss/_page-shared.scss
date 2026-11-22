@@ -55,7 +55,8 @@
 
 // Table wrapper that contains horizontal overflow while letting row dropdown
 // menus escape vertically. `clip` (unlike auto/scroll) keeps overflow-y visible.
-.table-clip-x {
+.table-clip-x,
+.card-body.table-clip-x {
   overflow-x: clip;
   overflow-y: visible;
 }

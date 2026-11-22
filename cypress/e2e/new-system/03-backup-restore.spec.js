@@ -153,7 +153,7 @@ describe('03 - Backup and Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 120000 }).should('be.visible');
 
             // Should eventually redirect to login page
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
@@ -228,14 +228,12 @@ describe('03 - Backup and Restore', () => {
     });
 
     describe('Step 9: Verify Backup API Functionality', () => {
-        let backupFilename = '';
-
         beforeEach(() => {
             loginAsAdmin();
         });
 
-        it('should create a new backup before testing restore cycle', () => {
-            // Create a fresh backup to test restore
+        it('should create a backup and download it in the same session', () => {
+            // Download is limited to files this session's backup job recorded.
             cy.request({
                 method: 'POST',
                 url: '/admin/api/database/backup',
@@ -244,31 +242,19 @@ describe('03 - Backup and Restore', () => {
             }).then((response) => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.have.property('BackupDownloadFileName');
-                
-                backupFilename = response.body.BackupDownloadFileName.replace(/^.*[\\\/]/, '');
-                cy.log('Created backup for restore test: ' + backupFilename);
-            });
-        });
 
-        it('should verify backup download works', () => {
-            const savedBackup = backupFilename;
-            if (!savedBackup) {
-                cy.log('No backup filename saved, skipping download test');
-                return;
-            }
-            
-            // Verify we can download the backup we created
-            cy.sessionCsrfToken().then((csrfToken) => cy.request({
-                method: 'POST',
-                url: '/admin/api/database/download/' + savedBackup,
-                form: true,
-                body: { csrf_token: csrfToken },
-                encoding: 'binary',
-            }).then((downloadResponse) => {
-                expect(downloadResponse.status).to.equal(200);
-                expect(downloadResponse.body.length).to.be.greaterThan(1000);
-                cy.log('Backup download verified: ' + savedBackup);
-            }));
+                const backupFilename = response.body.BackupDownloadFileName.replace(/^.*[\\\/]/, '');
+                cy.sessionCsrfToken().then((csrfToken) => cy.request({
+                    method: 'POST',
+                    url: '/admin/api/database/download/' + backupFilename,
+                    form: true,
+                    body: { csrf_token: csrfToken },
+                    encoding: 'binary',
+                }).then((downloadResponse) => {
+                    expect(downloadResponse.status).to.equal(200);
+                    expect(downloadResponse.body.length).to.be.greaterThan(1000);
+                }));
+            });
         });
 
         it('should verify system still has data after backup operations', () => {

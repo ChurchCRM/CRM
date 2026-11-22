@@ -2225,14 +2225,6 @@ msgid "Deposit Comment"
 msgstr "Comentarii depozit"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Semnarea fișierului cu definiția semnăturii a eșuat"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Unul sau mai multe fișiere au semnătura invalidă"
-
-#: 
 msgid "item"
 msgstr "element"
 
@@ -4752,10 +4744,6 @@ msgid "Estonian"
 msgstr "Estonă"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Eroare la decodarea fișierului de definire a semnăturii"
-
-#: 
 msgid "Event not found"
 msgstr "Evenimentul nu a fost gasit"
 
@@ -5337,14 +5325,6 @@ msgstr "Vă rugăm să introduceți un URL valid care începe cu http:// sau htt
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Toate semnăturile fișierelor de sistem corespund valorilor așteptate."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Fișierul de definire a semnăturii există, dar nu poate fi citit. Verificați permisiunile fișierului."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Fișierul de definire a semnăturii lipsește la %s. Rulați sarcina de împachetare sau implementați o lansare oficială pentru a regenera semnăturile."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12962,10 +12942,6 @@ msgid "Deposit ID"
 msgstr "Depozit ID"
 
 #: 
-msgid "Deposit Value"
-msgstr "Valoarea ofertei"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Depozit salvat cu succes"
 
@@ -13382,22 +13358,6 @@ msgid "Move Members to Group"
 msgstr "Mută membrii în grup"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https:// (ex: http://localhost sau https://domeniu.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Trebuie să fie un număr de port valid (ex: 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Trebuie să eliminați aceste date mai târziu?"
 
@@ -13548,10 +13508,6 @@ msgstr "Vă rugăm să introduceți o adresă de e-mail validă"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Vă rugăm să introduceți o adresă de e-mail validă (ex: nume@exemplu.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vă rugăm să introduceți un număr valid"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24354,10 +24310,6 @@ msgid "Church default: %s"
 msgstr "Implicit pentru biserică: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Autentificare conducere a bisericii"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Clasificările ai căror membri se pot autentifica în Portalul membrilor, ca listă de ID-uri de clasificare separate prin virgulă."
 
@@ -25000,10 +24952,6 @@ msgstr "Neîncheiat"
 #: 
 msgid "Not moved"
 msgstr "Nemutat"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nu sunteți sigur ce e-mail avem? Contactați biroul bisericii."
 
 #: 
 msgid "Not yet"
@@ -28009,4 +27957,442 @@ msgstr "Țara bisericii dvs. este Canada, deci chitanțele oficiale canadiene su
 #: 
 msgid "groups"
 msgstr "grupuri"
+
+#: 
+msgid "14 days"
+msgstr "14 zile"
+
+#: 
+msgid "6 months"
+msgstr "6 luni"
+
+#: 
+msgid "60 days"
+msgstr "60 de zile"
+
+#: 
+msgid "7 days"
+msgstr "7 zile"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Întrebați pe Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Schimbați parola imediat după autentificare."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Alegeți alt mod de autentificare"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM nu poate accesa o bază de date la localhost. Încercați în schimb 127.0.0.1 sau cereți furnizorului de găzduire numele gazdei bazei de date."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM nu poate accesa serverul de baze de date la acea adresă și acel port. Verificați numele gazdei și portul. Pe găzduirea partajată, gazda adesea nu este localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM nu poate citi verificarea versiunii. Cereți furnizorului de găzduire să facă dosarul ChurchCRM lizibil sau continuați."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM nu a putut verifica permisiunile dosarelor"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM nu a putut verifica fișierele sale. Cereți furnizorului de găzduire să verifice jurnalul de erori al serverului."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM nu a putut verifica software-ul serverului"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM nu s-a putut conecta la baza de date cu aceste setări."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM nu a putut finaliza instalarea. Încercați din nou sau cereți furnizorului de găzduire să verifice jurnalul de erori al serverului."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM nu a putut salva Include/Config.php. Cereți furnizorului de găzduire să facă dosarul Include inscriptibil."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Fișierele ChurchCRM corespund versiunii"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Restrângeți bara laterală la pictograme"
+
+#: 
+msgid "Congregation login"
+msgstr "Autentificare congregație"
+
+#: 
+msgid "Connect your database"
+msgstr "Conectați baza de date"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Se conectează la baza de date…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Nu s-a putut salva panoul de bord principal."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Creați mai întâi o bază de date MySQL sau MariaDB în panoul de control al găzduirii (în cPanel: %s), apoi copiați detaliile ei aici. ChurchCRM acceptă MySQL 8.4+ și MariaDB 10.11+ (versiunile LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Gazda bazei de date"
+
+#: 
+msgid "Database name"
+msgstr "Numele bazei de date"
+
+#: 
+msgid "Database password"
+msgstr "Parola bazei de date"
+
+#: 
+msgid "Database user"
+msgstr "Utilizatorul bazei de date"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Gol când ChurchCRM este la nivelul principal al site-ului. Altfel, dosarul, de exemplu %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Introduceți textul notei aici..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Introduceți gazda bazei de date, de exemplu localhost sau mysql.example.com. Folosiți numai litere, cifre, puncte și cratime."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Introduceți numele bazei de date. Folosiți numai litere, cifre, liniuțe de subliniere, cratime și puncte."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Introduceți portul bazei de date ca număr. De obicei este 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Introduceți utilizatorul bazei de date. Folosiți numai litere, cifre, liniuțe de subliniere, cratime, puncte și @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Introduceți dosarul începând cu /, de exemplu /churchcrm, sau lăsați-l gol."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Introduceți parola utilizatorului bazei de date."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Introduceți adresa web, începând cu http:// sau https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Fiecare familie de membri activă a făcut o plată între %s și %s."
+
+#: 
+msgid "Exclude"
+msgstr "Excludeți"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Fișiere rămase de la o versiune mai veche"
+
+#: 
+msgid "Files to review"
+msgstr "Fișiere de verificat"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Aveți la îndemână detaliile bazei de date de la furnizorul de găzduire. Durează aproximativ două minute."
+
+#: 
+msgid "Hide"
+msgstr "Ascundeți"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Componența congregației"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Înțeleg că această bază de date nu este acceptată și că actualizările vor fi blocate"
+
+#: 
+msgid "Insights"
+msgstr "Perspective"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Instalați ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalare finalizată!"
+
+#: 
+msgid "Installation guide"
+msgstr "Ghid de instalare"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Verificarea integrității a eșuat"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Verificarea integrității a trecut"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Jeton CSRF nevalid"
+
+#: 
+msgid "Last %d days"
+msgstr "Ultimele %d zile"
+
+#: 
+msgid "Last 12 months"
+msgstr "Ultimele 12 luni"
+
+#: 
+msgid "Main dashboard"
+msgstr "Panou de bord principal"
+
+#: 
+msgid "Navigation"
+msgstr "Navigare"
+
+#: 
+msgid "Need help?"
+msgstr "Aveți nevoie de ajutor?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Nicio notă în acest interval de timp."
+
+#: 
+msgid "No notes yet."
+msgstr "Nicio notă încă."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Adesea %1$s. Unele gazde oferă o adresă precum %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Total deschis"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Deschide panoul de bord Finanțe pe acest interval. Alegeți un an fiscal trecut chiar pe panoul de bord."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Ultimele 7 zile și următoarele %d zile"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Persoane fără familie: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Permisiune de a salva setările și fotografiile"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Gata"
+
+#: 
+msgid "Recent"
+msgstr "Recent"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Înregistrați-vă familia la biserica noastră"
+
+#: 
+msgid "Release check"
+msgstr "Verificarea versiunii"
+
+#: 
+msgid "Report a problem"
+msgstr "Raportați o problemă"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Rânduri afișate pe pagină în fiecare tabel și card al panoului de bord. Se aplică la următoarea încărcare a paginii."
+
+#: 
+msgid "Send Test Email"
+msgstr "Trimiteți e-mail de test"
+
+#: 
+msgid "Send a test email"
+msgstr "Trimiteți un e-mail de test"
+
+#: 
+msgid "Send them the list below."
+msgstr "Trimiteți-le lista de mai jos."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Software-ul de server de care are nevoie ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Setați ca panou de bord principal"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Autentificați-vă cu contul de administrator"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Unele fișiere ChurchCRM lipsesc sau au fost modificate. Încărcați din nou ChurchCRM dacă o pagină nu se încarcă."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Unele fișiere ChurchCRM nu au fost încărcate."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Unele fișiere de pe server nu corespund versiunii ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Autentificare personal"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Începe cu %1$s sau %2$s și se termină cu %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Panoul de bord care se deschide după autentificare"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Serverul de baze de date a acceptat autentificarea, dar nu există o bază de date cu acel nume."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Serverul de baze de date a respins acel nume de utilizator sau acea parolă."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Numele pe care l-ați dat bazei de date. Gazdele partajate adaugă adesea numele contului în față, de exemplu %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Parola acelui utilizator al bazei de date. ChurchCRM verifică aceste detalii când faceți clic pe Instalați."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Fișierul de verificare a versiunii de pe acest server nu corespunde ChurchCRM. Încărcați din nou versiunea sau continuați și cereți ajutorul furnizorului de găzduire."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Mesajul de test este trimis la adresa de e-mail a bisericii și afișează aici jurnalul de depanare SMTP."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Utilizatorul pe care l-ați adăugat la acea bază de date. Nu autentificarea de găzduire."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Aceste fișiere nu fac parte din versiunea ChurchCRM. Furnizorul de găzduire le poate șterge."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Aceste fișiere nu corespund versiunii"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Aceste fișiere nu au fost încărcate"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Această copie ChurchCRM nu include verificarea fișierului versiunii. Puteți continua."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Acest panou de bord este acum panoul de bord principal."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Această bază de date nu mai primește remedieri de securitate de la furnizorul său."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Aici vor deschide oamenii ChurchCRM. Modificați-l numai dacă vor folosi o adresă diferită de cea a acestei pagini."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Acesta este contul bisericii dumneavoastră. Tot ce puteți face pentru dumneavoastră se află aici."
+
+#: 
+msgid "Total deposited"
+msgstr "Total depus"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Server de baze de date neacceptat"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Actualizările vor fi blocate până când baza de date va fi mutată la o versiune acceptată."
+
+#: 
+msgid "Usually 3306."
+msgstr "De obicei 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Vă recomandăm să cereți gazdei să facă trecerea înainte de instalare, cât timp nu există date de mutat. MariaDB 10.11 este o țintă potrivită."
+
+#: 
+msgid "Web address"
+msgstr "Adresă web"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Puteți instala acum: ChurchCRM se va instala și va funcționa."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Panoul de bord principal"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Furnizorul de găzduire trebuie să repare ceva"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "și încă {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "și încă {{count}}"
 

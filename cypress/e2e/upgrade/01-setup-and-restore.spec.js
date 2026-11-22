@@ -99,18 +99,12 @@ describe('Upgrade via Restore', () => {
             cy.visit('/');
             cy.url().should('include', '/setup');
 
-            // Step 1: Prerequisites
-            cy.get('#prerequisites-next-btn', { timeout: 30000 }).should('not.be.disabled');
-            cy.get('#prerequisites-next-btn').click();
-
-            // Step 2: Database configuration
-            cy.get('#step-database').should('have.class', 'active');
+            cy.get('#status-banner', { timeout: 30000 }).should('not.have.class', 'status-checking');
             cy.get('#DB_SERVER_NAME').clear().type(dbConfig.host);
             cy.get('#DB_SERVER_PORT').clear().type(dbConfig.port);
             cy.get('#DB_NAME').clear().type(dbConfig.name);
             cy.get('#DB_USER').clear().type(dbConfig.user);
             cy.get('#DB_PASSWORD').clear().type(dbConfig.password);
-            cy.get('#DB_PASSWORD_CONFIRM').clear().type(dbConfig.password);
 
             cy.get('#submit-setup').click();
 
@@ -122,7 +116,7 @@ describe('Upgrade via Restore', () => {
             // Continue to login
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
-            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/session\/begin$/);
             cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
 
@@ -213,8 +207,19 @@ describe('Upgrade via Restore', () => {
             // Success modal — may take a while for ChurchInfo (30+ migrations)
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
-            // Wait for page to redirect to login after restore completes
-            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            // Wait for page to redirect to login after restore completes.
+            // Restore ends the session and lands on the sign-in chooser at
+            // /session/ (#11844): a restored database that offers more than
+            // one door (the ChurchCRM 6.0.0 database has member sign-in on)
+            // stays on the chooser, while a single-door install (ChurchInfo
+            // 1.3.1) redirects straight through to staff sign-in.
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/session(\/begin)?\/?$/);
+            cy.get('body').then(($body) => {
+                if ($body.find('#sessionDoorStaff').length > 0) {
+                    cy.get('#sessionDoorStaff').click();
+                    cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
+                }
+            });
             cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });

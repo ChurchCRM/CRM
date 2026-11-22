@@ -1,0 +1,13 @@
+{% if church.phone or church.email or church.website %}
+<div class="login-contact-footer">
+    {% if church.phone %}
+    <a href="tel:{{ church.phone }}"><i class="fa-solid fa-phone" aria-hidden="true"></i> {{ church.phone }}</a>
+    {% endif %}
+    {% if church.email %}
+    <a href="mailto:{{ church.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ church.email|email_wrap }}</a>
+    {% endif %}
+    {% if church.website %}
+    <a href="{{ church.website }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe" aria-hidden="true"></i> {{ church.website }}</a>
+    {% endif %}
+</div>
+{% endif %}

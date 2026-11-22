@@ -4,28 +4,18 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\StaffSignInPage;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
-use ChurchCRM\Utils\RedirectUtils;
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\ServerRequestFactory;
-
-// The exact /admin root is the staff sign-in address. It is decided here, before the
-// admin app exists, so AuthMiddleware and AdminRoleAuthMiddleware keep no path exception.
+// A signed-in person who is not an administrator has no Admin Dashboard.
+// A signed-out visit is a normal protected page: the app sends them to staff
+// sign-in and brings them back to /admin after that sign-in.
 if (rtrim((string) strtok($_SERVER['REQUEST_URI'], '?'), '/') === rtrim(SystemURLs::getRootPath(), '/') . '/admin'
-    && !LoginAsPerson::isActive()) {
-    if (!AuthenticationManager::validateUserSessionIsActive(false)) {
-        $request = ServerRequestFactory::fromGlobals();
-        $response = StaffSignInPage::handle($request, new Response());
-        http_response_code($response->getStatusCode());
-        echo $response->getBody();
-        exit;
-    }
-    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-        RedirectUtils::redirect('people/dashboard');
-    }
+    && !LoginAsPerson::isActive()
+    && AuthenticationManager::validateUserSessionIsActive(false)
+    && !AuthenticationManager::getCurrentUser()->isAdmin()) {
+    DashboardLandingService::redirect();
 }
 
 $app = MvcAppFactory::create('/admin', [

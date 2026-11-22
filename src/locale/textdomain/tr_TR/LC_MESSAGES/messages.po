@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Depozito Yorumu"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "İmza Tanım Dosyası İmza Başarısız Doğrulama"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
-
-#: 
 msgid "item"
 msgstr "öğe"
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "Estonya"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
-
-#: 
 msgid "Event not found"
 msgstr "Olay bulunamadı"
 
@@ -5278,14 +5266,6 @@ msgstr "Lütfen http:// veya https:// ile başlayan geçerli bir URL girin"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Tüm sistem dosyası imzaları beklenen değerlerle eşleşiyor."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "İmza tanımlama dosyası mevcut ancak okunabilir değil. Dosya izinlerini kontrol edin."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "İmza tanımlama dosyası %s konumunda eksik. İmzaları yeniden oluşturmak için paketleme görevini çalıştırın veya resmi bir sürüm yayınlayın."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12895,10 +12875,6 @@ msgid "Deposit ID"
 msgstr "Para Yatırma Kimliği (ID)"
 
 #: 
-msgid "Deposit Value"
-msgstr "Bağış Kayıt Değeri"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Para yatırma işlemi başarıyla kaydedildi"
 
@@ -13315,22 +13291,6 @@ msgid "Move Members to Group"
 msgstr "Üyeleri Gruba Taşı"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "http:// veya https:// ile başlayan geçerli bir URL olmalıdır"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "http:// veya https:// ile başlayan geçerli bir URL olmalıdır (örn. http://localhost veya https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Geçerli bir port numarası olmalıdır (örn. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Boş değilse / ile başlamalı; sonda eğik çizgi yok. Yalnızca harfler, sayılar, alt çizgi, tire, nokta ve / izin verilir."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Bu veriyi daha sonra kaldırmanız mı gerekiyor?"
 
@@ -13481,10 +13441,6 @@ msgstr "Lütfen geçerli bir e-posta adresi girin"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Lütfen geçerli bir e-posta adresi girin (örn. ad@ornek.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Lütfen geçerli bir sayı girin"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24269,10 +24225,6 @@ msgid "Church default: %s"
 msgstr "Kilise varsayılanı: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Kilise lideri oturumu"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Üyeleri Üye Portalı’nda oturum açabilen sınıflandırmalar; virgülle ayrılmış sınıflandırma kimlikleri listesi."
 
@@ -24915,10 +24867,6 @@ msgstr "Sona ermedi"
 #: 
 msgid "Not moved"
 msgstr "Taşınmadı"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Hangi e-postaya sahip olduğumuzdan emin değil misiniz? Kilise ofisiyle iletişime geçin."
 
 #: 
 msgid "Not yet"
@@ -27917,4 +27865,442 @@ msgstr "Kilisenizin ülkesi Kanada, bu nedenle Kanada resmi makbuzları Bağış
 #: 
 msgid "groups"
 msgstr "Gruplar"
+
+#: 
+msgid "14 days"
+msgstr "14 gün"
+
+#: 
+msgid "6 months"
+msgstr "6 ay"
+
+#: 
+msgid "60 days"
+msgstr "60 gün"
+
+#: 
+msgid "7 days"
+msgstr "7 gün"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Discord'da Sor"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Giriş yaptıktan hemen sonra şifrenizi değiştirin."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Giriş yapmak için farklı bir yol seçin"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM, localhost'ta bir veritabanına ulaşamıyor. Bunun yerine 127.0.0.1'i deneyin veya web barındırıcınızdan veritabanı sunucu adını isteyin."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM, o adres ve bağlantı noktasındaki veritabanı sunucusuna ulaşamıyor. Sunucu adını ve bağlantı noktasını kontrol edin. Paylaşımlı barındırmada sunucu genellikle localhost olmaz."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM, sürüm denetimini okuyamıyor. Web barındırıcınızdan ChurchCRM klasörünü okunabilir yapmasını isteyin veya devam edin."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM klasör izinlerini denetleyemedi"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM dosyalarını denetleyemedi. Web barındırıcınızdan sunucu hata günlüğüne bakmasını isteyin."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM sunucu yazılımını denetleyemedi"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM bu ayarlarla veritabanına bağlanamadı."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM kurulumu tamamlayamadı. Tekrar deneyin veya web barındırıcınızdan sunucu hata günlüğünü kontrol etmesini isteyin."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM, Include/Config.php dosyasını kaydedemedi. Web barındırıcınızdan Include klasörünü yazılabilir yapmasını isteyin."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM dosyaları sürümle eşleşiyor"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Kenar çubuğunu simgelere daralt"
+
+#: 
+msgid "Congregation login"
+msgstr "Cemaat girişi"
+
+#: 
+msgid "Connect your database"
+msgstr "Veritabanınızı bağlayın"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Veritabanınıza bağlanılıyor…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Ana gösterge paneliniz kaydedilemedi."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Önce barındırma kontrol panelinizde bir MySQL veya MariaDB veritabanı oluşturun (cPanel'de: %s), sonra ayrıntılarını buraya kopyalayın. ChurchCRM, MySQL 8.4+ ve MariaDB 10.11+ (LTS sürümleri) destekler."
+
+#: 
+msgid "Database host"
+msgstr "Veritabanı sunucusu"
+
+#: 
+msgid "Database name"
+msgstr "Veritabanı adı"
+
+#: 
+msgid "Database password"
+msgstr "Veritabanı şifresi"
+
+#: 
+msgid "Database user"
+msgstr "Veritabanı kullanıcısı"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRM sitenin en üstündeyse boş. Aksi takdirde klasör, örneğin %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Buraya not metni girin..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Veritabanı sunucusunu girin, örneğin localhost veya mysql.example.com. Yalnızca harf, rakam, nokta ve tire kullanın."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Veritabanı adını girin. Yalnızca harf, rakam, alt çizgi, tire ve nokta kullanın."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Veritabanı bağlantı noktasını sayı olarak girin. Genellikle 3306 olur."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Veritabanı kullanıcısını girin. Yalnızca harf, rakam, alt çizgi, tire, nokta ve @ kullanın."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Klasörü / ile başlayarak girin, örneğin /churchcrm, veya boş bırakın."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Veritabanı kullanıcısının şifresini girin."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Web adresini http:// veya https:// ile başlayarak girin."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Her aktif üye ailesi %s ile %s arasında bir ödeme yaptı."
+
+#: 
+msgid "Exclude"
+msgstr "Hariç Tut"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Eski bir sürümden kalan dosyalar"
+
+#: 
+msgid "Files to review"
+msgstr "İncelenecek dosyalar"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Web barındırıcınızdan aldığınız veritabanı ayrıntılarını hazır bulundurun. Yaklaşık iki dakika sürer."
+
+#: 
+msgid "Hide"
+msgstr "Gizle"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Cemaatin yapısı nasıldır"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Bu veritabanının desteklenmediğini ve yükseltmelerin engelleneceğini anlıyorum"
+
+#: 
+msgid "Insights"
+msgstr "İçgörüler"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRM'i Kur"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Kurulum Tamamlandı!"
+
+#: 
+msgid "Installation guide"
+msgstr "Kurulum kılavuzu"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Bütünlük denetimi başarısız oldu"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Bütünlük denetimi başarılı oldu"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Geçersiz CSRF belirteci"
+
+#: 
+msgid "Last %d days"
+msgstr "Son %d gün"
+
+#: 
+msgid "Last 12 months"
+msgstr "Son 12 ay"
+
+#: 
+msgid "Main dashboard"
+msgstr "Ana gösterge paneli"
+
+#: 
+msgid "Navigation"
+msgstr "Gezinme"
+
+#: 
+msgid "Need help?"
+msgstr "Yardıma mı ihtiyacınız var?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Bu zaman aralığında not yok."
+
+#: 
+msgid "No notes yet."
+msgstr "Henüz not yok."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Genellikle %1$s. Bazı sunucular %2$s gibi bir adres verir."
+
+#: 
+msgid "Open total"
+msgstr "Açık toplam"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Bu aralık için Finans gösterge panelini açar. Geçmiş bir mali yılı panelin kendisinden seçin."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Geçen 7 gün ve sonraki %d gün"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Ailesi olmayan kişiler: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Ayarları ve fotoğrafları kaydetme izni"
+
+#: 
+msgid "Port"
+msgstr "Bağlantı noktası"
+
+#: 
+msgid "Ready"
+msgstr "Hazır"
+
+#: 
+msgid "Recent"
+msgstr "Son"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Ailenizi kilisemize kaydedin"
+
+#: 
+msgid "Release check"
+msgstr "Sürüm denetimi"
+
+#: 
+msgid "Report a problem"
+msgstr "Sorun bildir"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Her tabloda ve gösterge paneli kartında sayfa başına gösterilen satırlar. Sonraki sayfa yüklemesinde geçerli olur."
+
+#: 
+msgid "Send Test Email"
+msgstr "Test E-postası Gönder"
+
+#: 
+msgid "Send a test email"
+msgstr "Test e-postası gönder"
+
+#: 
+msgid "Send them the list below."
+msgstr "Onlara aşağıdaki listeyi gönderin."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM'in ihtiyaç duyduğu sunucu yazılımı"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Ana gösterge panelim olarak ayarla"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Yönetici hesabınızla giriş yapın"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Bazı ChurchCRM dosyaları eksik veya değişmiş. Bir sayfa yüklenmezse ChurchCRM'i yeniden yükleyin."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Bazı ChurchCRM dosyaları yüklenmedi."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Sunucudaki bazı dosyalar ChurchCRM sürümüyle eşleşmiyor."
+
+#: 
+msgid "Staff login"
+msgstr "Personel girişi"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "%1$s veya %2$s ile başlar ve %3$s ile biter."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Giriş yaptıktan sonra açtığınız gösterge paneli"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Veritabanı sunucusu girişi kabul etti, ancak o adda bir veritabanı yok."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Veritabanı sunucusu o kullanıcı adını veya şifreyi reddetti."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Veritabanına verdiğiniz ad. Paylaşımlı sunucular genellikle önüne hesap adınızı ekler, örneğin %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "O veritabanı kullanıcısının şifresi. Yükle düğmesine tıkladığınızda ChurchCRM bu ayrıntıları kontrol eder."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Bu sunucudaki sürüm denetim dosyası ChurchCRM ile eşleşmiyor. Sürümü yeniden yükleyin veya devam edip web barındırıcınızdan yardım isteyin."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Test mesajı kilise e-posta adresine gider ve SMTP hata ayıklama günlüğünü burada gösterir."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "O veritabanına eklediğiniz kullanıcı. Barındırma girişiniz değildir."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Bu dosyalar ChurchCRM sürümünün parçası değildir. Web barındırıcınız bunları kaldırabilir."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Bu dosyalar sürümle eşleşmiyor"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Bu dosyalar yüklenmedi"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Bu ChurchCRM kopyası sürüm dosyası denetimini içermiyor. Devam edebilirsiniz."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Bu gösterge paneli artık ana gösterge paneliniz."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Bu veritabanı artık tedarikçisinden güvenlik düzeltmeleri almıyor."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "İnsanların ChurchCRM'i açacağı yer burasıdır. Yalnızca bu sayfadan farklı bir adres kullanacaklarsa değiştirin."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Bu, kilise hesabınızdır. Kendiniz için yapabileceğiniz her şey burada bulunur."
+
+#: 
+msgid "Total deposited"
+msgstr "Toplam yatırılan"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Desteklenmeyen veritabanı sunucusu"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Veritabanı desteklenen bir sürüme taşınana kadar yükseltmeler engellenecek."
+
+#: 
+msgid "Usually 3306."
+msgstr "Genellikle 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Veri taşınması gerekmeden önce, kurulumdan önce barındırıcınızdan geçiş yapmasını istemenizi öneririz. MariaDB 10.11 iyi bir hedeftir."
+
+#: 
+msgid "Web address"
+msgstr "Web adresi"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Şimdi kurabilirsiniz: ChurchCRM kurulacak ve çalışacak."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Ana gösterge paneliniz"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Web barındırıcınızın bir şeyi düzeltmesi gerekiyor"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "ve {{count}} tane daha"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "ve {{count}} tane daha"
 

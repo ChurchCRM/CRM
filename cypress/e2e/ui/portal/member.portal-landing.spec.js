@@ -29,7 +29,7 @@ describe("Member Portal — member landing", () => {
         cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.get("#portal-account-toggle").click();
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/login$/);
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/?$/);
     });
 
     it("The retired /external/limited-access URL redirects to /portal", () => {
@@ -44,7 +44,7 @@ describe("Member Portal — member landing", () => {
         login();
         ["people/dashboard", "people/dashboard", "SystemSettings.php"].forEach((path) => {
             cy.visit(path, { failOnStatusCode: false });
-            cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
         });
     });
 });

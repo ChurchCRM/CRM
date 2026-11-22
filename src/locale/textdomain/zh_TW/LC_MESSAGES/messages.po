@@ -2235,14 +2235,6 @@ msgid "Deposit Comment"
 msgstr "存款注釋"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "簽名定義文件簽字驗證失敗"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "一個或多個文件簽名驗證失敗"
-
-#: 
 msgid "item"
 msgstr "項目"
 
@@ -4789,11 +4781,6 @@ msgstr "愛沙尼亞語"
 
 #: 
 #, fuzzy
-msgid "Error decoding signature definition file"
-msgstr "解碼簽名定義文件錯誤"
-
-#: 
-#, fuzzy
 msgid "Event not found"
 msgstr "事件未找到"
 
@@ -5412,14 +5399,6 @@ msgstr "請輸入以 http:// 或 https:// 開頭的有效 URL"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "所有系統檔案簽名均符合預期值。"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "簽名定義檔案存在但不可讀。檢查檔案權限。"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "位於 %s 的簽名定義檔案遺失。請執行打包任務或部署官方版本以重新生成簽名。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13021,10 +13000,6 @@ msgid "Deposit ID"
 msgstr "存款編號"
 
 #: 
-msgid "Deposit Value"
-msgstr "存款金額"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "存款儲存成功"
 
@@ -13441,22 +13416,6 @@ msgid "Move Members to Group"
 msgstr "移動成員到小組"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL（例如：http://localhost 或 https://domain.com）"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "必須是有效的連接埠號（例如：3306）"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "如果非空則必須以/開頭；末尾不能有斜線。只允許使用字母、數字、底線、短橫線、點和/。"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "以後需要刪除這些數據嗎？"
 
@@ -13607,10 +13566,6 @@ msgstr "請輸入有效的電子郵件地址"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "請輸入有效的電子郵件地址（例如：name@example.com）"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "請輸入有效的數字"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24377,10 +24332,6 @@ msgid "Church default: %s"
 msgstr "教會預設：%s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "教會領袖登入"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "其成員可登入會友入口的分類，以逗號分隔的分類 id 清單表示。"
 
@@ -25023,10 +24974,6 @@ msgstr "未結束"
 #: 
 msgid "Not moved"
 msgstr "未移轉"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "不確定我們留有哪一個電子郵件？請聯絡教會辦公室。"
 
 #: 
 msgid "Not yet"
@@ -28018,4 +27965,442 @@ msgstr "您的教會所在國家是加拿大，因此可以在奉獻報表上使
 #: 
 msgid "groups"
 msgstr "組"
+
+#: 
+msgid "14 days"
+msgstr "14 天"
+
+#: 
+msgid "6 months"
+msgstr "6 個月"
+
+#: 
+msgid "60 days"
+msgstr "60 天"
+
+#: 
+msgid "7 days"
+msgstr "7 天"
+
+#: 
+msgid "Ask on Discord"
+msgstr "在 Discord 上提問"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "登入後請立即更改您的密碼。"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "選擇其他登入方式"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM 無法連接到 localhost 上的資料庫。請改用 127.0.0.1，或向您的網路主機商詢問資料庫主機名稱。"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM 無法連接到該位址和連接埠上的資料庫伺服器。請檢查主機名稱和連接埠。在共用主機上，主機通常不是 localhost。"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM 無法讀取其發行檢查檔案。請讓您的網路主機商使 ChurchCRM 資料夾可讀，或繼續。"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM 無法檢查資料夾權限"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM 無法檢查其檔案。請讓您的網路主機商查看伺服器錯誤日誌。"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM 無法檢查伺服器軟體"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM 無法使用這些設定連接到資料庫。"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM 無法完成安裝。請重試，或讓您的網路主機商檢查伺服器錯誤日誌。"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM 無法儲存 Include/Config.php。請讓您的網路主機商使 Include 資料夾可寫入。"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM 檔案與發行版一致"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "將側邊欄摺疊為圖示"
+
+#: 
+msgid "Congregation login"
+msgstr "會眾登入"
+
+#: 
+msgid "Connect your database"
+msgstr "連接您的資料庫"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "正在連接您的資料庫…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "無法儲存您的主儀錶板。"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "請先在您的主機控制面板中建立一個 MySQL 或 MariaDB 資料庫（在 cPanel 中：%s），然後將詳細資訊複製到此處。ChurchCRM 支援 MySQL 8.4+ 和 MariaDB 10.11+（LTS 版本）。"
+
+#: 
+msgid "Database host"
+msgstr "資料庫主機"
+
+#: 
+msgid "Database name"
+msgstr "資料庫名稱"
+
+#: 
+msgid "Database password"
+msgstr "資料庫密碼"
+
+#: 
+msgid "Database user"
+msgstr "資料庫使用者"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "當 ChurchCRM 位於網站頂部時留空。否則填寫資料夾，例如 %s。"
+
+#: 
+msgid "Enter note text here..."
+msgstr "在此輸入注釋文字..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "輸入資料庫主機，例如 localhost 或 mysql.example.com。只能使用字母、數字、點和連字號。"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "輸入資料庫名稱。只能使用字母、數字、底線、連字號和點。"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "以數字形式輸入資料庫連接埠。通常是 3306。"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "輸入資料庫使用者。只能使用字母、數字、底線、連字號、點和 @。"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "輸入以 / 開頭的資料夾，例如 /churchcrm，或留空。"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "輸入資料庫使用者的密碼。"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "輸入網址，以 http:// 或 https:// 開頭。"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "在 %s 至 %s 期間，每個活躍成員家庭都有付款。"
+
+#: 
+msgid "Exclude"
+msgstr "排除"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "舊版本遺留的檔案"
+
+#: 
+msgid "Files to review"
+msgstr "需要檢查的檔案"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "請準備好網路主機商提供的資料庫詳細資訊。大約需要兩分鐘。"
+
+#: 
+msgid "Hide"
+msgstr "隱藏"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "會眾的構成情況"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "我了解此資料庫不受支援，升級將被阻止"
+
+#: 
+msgid "Insights"
+msgstr "洞察"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "安裝 ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "安裝完成！"
+
+#: 
+msgid "Installation guide"
+msgstr "安裝指南"
+
+#: 
+msgid "Integrity check failed"
+msgstr "完整性檢查失敗"
+
+#: 
+msgid "Integrity check passed"
+msgstr "完整性檢查通過"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "CSRF 權杖無效"
+
+#: 
+msgid "Last %d days"
+msgstr "最近 %d 天"
+
+#: 
+msgid "Last 12 months"
+msgstr "最近 12 個月"
+
+#: 
+msgid "Main dashboard"
+msgstr "主儀錶板"
+
+#: 
+msgid "Navigation"
+msgstr "導覽"
+
+#: 
+msgid "Need help?"
+msgstr "需要幫助？"
+
+#: 
+msgid "No notes in this time range."
+msgstr "此時間範圍內沒有注釋。"
+
+#: 
+msgid "No notes yet."
+msgstr "尚無注釋。"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "通常是 %1$s。某些主機商會提供類似 %2$s 的位址。"
+
+#: 
+msgid "Open total"
+msgstr "未結清總額"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "在此範圍內開啟財務儀錶板。在儀錶板本身上選擇過去的會計年度。"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "過去 7 天和未來 %d 天"
+
+#: 
+msgid "People without a family: %d"
+msgstr "沒有家庭的人數：%d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "儲存設定和照片的權限"
+
+#: 
+msgid "Port"
+msgstr "連接埠"
+
+#: 
+msgid "Ready"
+msgstr "就緒"
+
+#: 
+msgid "Recent"
+msgstr "最近"
+
+#: 
+msgid "Register your family to our church"
+msgstr "將您的家庭登記到我們的教會"
+
+#: 
+msgid "Release check"
+msgstr "發行檢查"
+
+#: 
+msgid "Report a problem"
+msgstr "回報問題"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "每個表格和儀錶板卡片每頁顯示的列數。在下次頁面載入時生效。"
+
+#: 
+msgid "Send Test Email"
+msgstr "傳送測試電子郵件"
+
+#: 
+msgid "Send a test email"
+msgstr "傳送一封測試電子郵件"
+
+#: 
+msgid "Send them the list below."
+msgstr "將下面的清單傳送給他們。"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM 需要的伺服器軟體"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "設為我的主儀錶板"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "使用您的管理員帳戶登入"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "某些 ChurchCRM 檔案缺失或已被更改。如果頁面無法載入，請重新上傳 ChurchCRM。"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "某些 ChurchCRM 檔案尚未上傳。"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "伺服器上的某些檔案與 ChurchCRM 發行版不一致。"
+
+#: 
+msgid "Staff login"
+msgstr "員工登入"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "以 %1$s 或 %2$s 開頭，以 %3$s 結尾。"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "您登入後開啟的儀錶板"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "資料庫伺服器接受了登入，但沒有使用該名稱的資料庫。"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "資料庫伺服器拒絕了該使用者名稱或密碼。"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "您為資料庫指定的名稱。共用主機通常會在前面加上您的帳戶名稱，例如 %s。"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "該資料庫使用者的密碼。當您點擊「安裝」時，ChurchCRM 會檢查這些詳細資訊。"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "此伺服器上的發行檢查檔案與 ChurchCRM 不符。請重新上傳發行版，或繼續並向您的網路主機商尋求協助。"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "測試郵件將傳送到教會電子郵件地址，並在此處顯示 SMTP 除錯日誌。"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "您新增到該資料庫的使用者。不是您的主機登入帳戶。"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "這些檔案不屬於 ChurchCRM 發行版。您的網路主機商可以刪除它們。"
+
+#: 
+msgid "These files do not match the release"
+msgstr "這些檔案與發行版不一致"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "這些檔案尚未上傳"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "此 ChurchCRM 副本不包含發行檔案檢查。您可以繼續。"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "此儀錶板現在是您的主儀錶板。"
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "此資料庫不再從其供應商處獲得安全修復。"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "人們將在此處開啟 ChurchCRM。僅當他們將使用與此頁面不同的位址時才更改它。"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "這是您的教會帳戶。您可以為自己做的一切都在這裡。"
+
+#: 
+msgid "Total deposited"
+msgstr "存款總額"
+
+#: 
+msgid "Unsupported database server"
+msgstr "不受支援的資料庫伺服器"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "在資料庫遷移到受支援的版本之前，升級將被阻止。"
+
+#: 
+msgid "Usually 3306."
+msgstr "通常是 3306。"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "我們建議您在安裝前請主機商切換，此時還沒有資料需要遷移。MariaDB 10.11 是一個很好的目標。"
+
+#: 
+msgid "Web address"
+msgstr "網址"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "您現在可以安裝：ChurchCRM 將會安裝並執行。"
+
+#: 
+msgid "Your main dashboard"
+msgstr "您的主儀錶板"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "您的網路主機商需要修復某些問題"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "還有 {{count}} 個"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "還有 {{count}} 個"
 

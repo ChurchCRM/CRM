@@ -4,6 +4,7 @@
  * PHP hands over window.CRM.personView = { id, name, active, famId, canEdit, photoWidth, photoHeight }.
  */
 import { confirmAction, promptAction } from "../common/confirm-action";
+import { initPropertyPopup } from "./property-popup";
 
 const reload = () => window.location.reload();
 
@@ -52,35 +53,18 @@ function initToolbar(page) {
 }
 
 function initProperties(page) {
-  const select = document.getElementById("input-person-properties");
-  if (select) {
-    if (!select.tomselect) new TomSelect(select);
-    select.addEventListener("change", () => {
-      const promptBox = document.getElementById("prompt-box");
-      promptBox.replaceChildren();
-      const option = select.selectedOptions[0];
-      const prompt = option?.dataset.pro_prompt;
-      if (!prompt) return;
-      const label = document.createElement("label");
-      label.textContent = prompt;
-      const textarea = document.createElement("textarea");
-      textarea.rows = 3;
-      textarea.className = "form-control";
-      textarea.name = "PropertyValue";
-      textarea.value = option.dataset.pro_value || "";
-      promptBox.append(label, textarea);
-    });
-  }
-
-  document.getElementById("assign-property-btn")?.addEventListener("click", () => {
-    const form = new FormData(document.getElementById("assign-property-form"));
-    const propertyId = form.get("PropertyId");
-    if (!propertyId) return;
-    window.CRM.APIRequest({
-      method: "POST",
-      path: `people/properties/person/${page.id}/${propertyId}`,
-      data: JSON.stringify({ value: form.get("PropertyValue") || "" }),
-    }).then(reload);
+  initPropertyPopup({
+    modalId: "add-person-property-modal",
+    selectId: "input-person-properties",
+    promptBoxId: "prompt-box",
+    assignBtnId: "assign-property-btn",
+    onSave: (propertyId, value) => {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `people/properties/person/${page.id}/${propertyId}`,
+        data: JSON.stringify({ value }),
+      }).then(reload);
+    },
   });
 
   document.querySelectorAll(".remove-property-btn").forEach((btn) => {

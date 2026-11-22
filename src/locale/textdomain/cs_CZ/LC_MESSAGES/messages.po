@@ -2168,14 +2168,6 @@ msgid "Deposit Comment"
 msgstr "Komentář ke vkladu"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Podpis souboru s definicí podpisu se nepodařilo ověřit"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
-
-#: 
 msgid "item"
 msgstr "položka"
 
@@ -4684,10 +4676,6 @@ msgid "Estonian"
 msgstr "Estonština"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Chyba při dekódování souboru s definicí podpisu"
-
-#: 
 msgid "Event not found"
 msgstr "Událost nebyla nalezena"
 
@@ -5269,14 +5257,6 @@ msgstr "Zadejte platnou adresu URL začínající http:// nebo https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Všechny podpisy systémových souborů odpovídají očekávaným hodnotám."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Soubor s definicí podpisu existuje, ale není čitelný. Zkontrolujte oprávnění k souboru."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Soubor s definicí podpisu chybí v %s. Spusťte balíčkovací úlohu nebo nahrajte oficiální verzi, aby se podpisy znovu vygenerovaly."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12894,10 +12874,6 @@ msgid "Deposit ID"
 msgstr "ID vkladu"
 
 #: 
-msgid "Deposit Value"
-msgstr "Hodnota sbírky"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "Vklad úspěšně uložen"
 
@@ -13314,22 +13290,6 @@ msgid "Move Members to Group"
 msgstr "Přesunout členy do skupiny"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Musí se jednat o platnou adresu URL začínající http:// nebo https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Musí se jednat o platnou adresu URL začínající http:// nebo https:// (např. http://localhost nebo https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Musí být platné číslo portu (např. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Potřebujete tyto údaje později odstranit?"
 
@@ -13480,10 +13440,6 @@ msgstr "Prosím zadejte platný e-mail"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Prosím zadejte platný e-mail (např. jmeno@priklad.cz)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Prosím zadejte platné číslo"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24286,10 +24242,6 @@ msgid "Church default: %s"
 msgstr "Výchozí nastavení sboru: %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "Přihlášení vedoucího sboru"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "Klasifikace, jejichž členové se smějí přihlásit do členského portálu, jako seznam ID klasifikací oddělených čárkami."
 
@@ -24932,10 +24884,6 @@ msgstr "Neukončeno"
 #: 
 msgid "Not moved"
 msgstr "Nepřesunuto"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nejste si jisti, který e-mail máme? Obraťte se na kancelář sboru."
 
 #: 
 msgid "Not yet"
@@ -27941,4 +27889,442 @@ msgstr "Zemí vaší církve je Kanada, takže kanadská oficiální potvrzení 
 #: 
 msgid "groups"
 msgstr "skupiny"
+
+#: 
+msgid "14 days"
+msgstr "14 dní"
+
+#: 
+msgid "6 months"
+msgstr "6 měsíců"
+
+#: 
+msgid "60 days"
+msgstr "60 dní"
+
+#: 
+msgid "7 days"
+msgstr "7 dní"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Zeptejte se na Discordu"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Změňte si heslo hned po přihlášení."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Vyberte jiný způsob přihlášení"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM se nemůže připojit k databázi na adrese localhost. Zkuste místo toho 127.0.0.1, nebo se zeptejte svého webového hostitele na název hostitele databáze."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM se nemůže připojit k databázovému serveru na této adrese a portu. Zkontrolujte název hostitele a port. U sdíleného hostingu hostitel často není localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM nemůže přečíst svou kontrolu vydání. Požádejte webového hostitele, aby složku ChurchCRM zpřístupnil pro čtení, nebo pokračujte."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM nemohl zkontrolovat oprávnění složek"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM nemohl zkontrolovat své soubory. Požádejte webového hostitele, aby se podíval do protokolu chyb serveru."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM nemohl zkontrolovat software serveru"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM se s těmito údaji nemohl připojit k databázi."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM nemohl dokončit instalaci. Zkuste to znovu, nebo požádejte webového hostitele, aby zkontroloval protokol chyb serveru."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM nemohl uložit Include/Config.php. Požádejte webového hostitele, aby složku Include učinil zapisovatelnou."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Soubory ChurchCRM odpovídají vydání"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Sbalit postranní panel na ikony"
+
+#: 
+msgid "Congregation login"
+msgstr "Přihlášení pro sbor"
+
+#: 
+msgid "Connect your database"
+msgstr "Připojte svou databázi"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Připojování k vaší databázi…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Hlavní nástěnku se nepodařilo uložit."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Nejprve vytvořte databázi MySQL nebo MariaDB v ovládacím panelu hostingu (v cPanelu: %s) a pak sem zkopírujte její údaje. ChurchCRM podporuje MySQL 8.4+ a MariaDB 10.11+ (vydání LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Hostitel databáze"
+
+#: 
+msgid "Database name"
+msgstr "Název databáze"
+
+#: 
+msgid "Database password"
+msgstr "Heslo databáze"
+
+#: 
+msgid "Database user"
+msgstr "Uživatel databáze"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Prázdné, když je ChurchCRM na nejvyšší úrovni webu. Jinak složka, například %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Sem zadejte text poznámky..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Zadejte hostitele databáze, například localhost nebo mysql.example.com. Používejte pouze písmena, číslice, tečky a pomlčky."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Zadejte název databáze. Používejte pouze písmena, číslice, podtržítka, pomlčky a tečky."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Zadejte port databáze jako číslo. Obvykle je to 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Zadejte uživatele databáze. Používejte pouze písmena, číslice, podtržítka, pomlčky, tečky a @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Zadejte složku začínající /, například /churchcrm, nebo ji nechte prázdnou."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Zadejte heslo uživatele databáze."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Zadejte webovou adresu začínající http:// nebo https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Každá aktivní členská rodina provedla platbu mezi %s a %s."
+
+#: 
+msgid "Exclude"
+msgstr "Vyloučit"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Soubory zbylé po starší verzi"
+
+#: 
+msgid "Files to review"
+msgstr "Soubory ke kontrole"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Mějte připravené údaje o databázi od svého webového hostitele. Trvá to asi dvě minuty."
+
+#: 
+msgid "Hide"
+msgstr "Skrýt"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Složení sboru"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "Rozumím, že tato databáze není podporována a aktualizace budou zablokovány"
+
+#: 
+msgid "Insights"
+msgstr "Přehledy"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Instalovat ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalace dokončena!"
+
+#: 
+msgid "Installation guide"
+msgstr "Průvodce instalací"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Kontrola integrity selhala"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Kontrola integrity proběhla úspěšně"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Neplatný token CSRF"
+
+#: 
+msgid "Last %d days"
+msgstr "Posledních %d dní"
+
+#: 
+msgid "Last 12 months"
+msgstr "Posledních 12 měsíců"
+
+#: 
+msgid "Main dashboard"
+msgstr "Hlavní nástěnka"
+
+#: 
+msgid "Navigation"
+msgstr "Navigace"
+
+#: 
+msgid "Need help?"
+msgstr "Potřebujete pomoc?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "V tomto časovém rozmezí nejsou žádné poznámky."
+
+#: 
+msgid "No notes yet."
+msgstr "Zatím žádné poznámky."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Často %1$s. Někteří hostitelé uvádějí adresu jako %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Součet otevřených"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Otevře finanční nástěnku pro tento rozsah. Minulý fiskální rok vyberete přímo na nástěnce."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Posledních 7 dní a příštích %d dní"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Lidé bez rodiny: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Oprávnění ukládat nastavení a fotografie"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Připraveno"
+
+#: 
+msgid "Recent"
+msgstr "Nedávné"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Zaregistrujte svou rodinu do našeho sboru"
+
+#: 
+msgid "Release check"
+msgstr "Kontrola vydání"
+
+#: 
+msgid "Report a problem"
+msgstr "Nahlásit problém"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Počet řádků na stránku v každé tabulce a kartě nástěnky. Projeví se při příštím načtení stránky."
+
+#: 
+msgid "Send Test Email"
+msgstr "Odeslat testovací e-mail"
+
+#: 
+msgid "Send a test email"
+msgstr "Odeslat testovací e-mail"
+
+#: 
+msgid "Send them the list below."
+msgstr "Pošlete jim níže uvedený seznam."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Serverový software, který ChurchCRM potřebuje"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Nastavit jako mou hlavní nástěnku"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Přihlaste se svým administrátorským účtem"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Některé soubory ChurchCRM chybí nebo byly změněny. Pokud se stránka nenačte, nahrajte ChurchCRM znovu."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Některé soubory ChurchCRM nebyly nahrány."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Některé soubory na serveru neodpovídají vydání ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Přihlášení pro zaměstnance"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Začíná na %1$s nebo %2$s a končí na %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Nástěnka, která se vám otevře po přihlášení"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Databázový server přijal přihlášení, ale databáze s tímto názvem neexistuje."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Databázový server odmítl toto uživatelské jméno nebo heslo."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Název, který jste databázi dali. Sdílení hostitelé často přidávají na začátek název vašeho účtu, například %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Heslo tohoto uživatele databáze. ChurchCRM tyto údaje zkontroluje, když kliknete na Instalovat."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Soubor kontroly vydání na tomto serveru neodpovídá ChurchCRM. Nahrajte vydání znovu, nebo pokračujte a požádejte webového hostitele o pomoc."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Testovací zpráva jde na e-mailovou adresu sboru a zde se zobrazí ladicí protokol SMTP."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Uživatel, kterého jste přidali do této databáze. Ne vaše přihlášení k hostingu."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Tyto soubory nejsou součástí vydání ChurchCRM. Váš webový hostitel je může odebrat."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Tyto soubory neodpovídají vydání"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Tyto soubory nebyly nahrány"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Tato kopie ChurchCRM neobsahuje kontrolu souboru vydání. Můžete pokračovat."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Tato nástěnka je nyní vaší hlavní nástěnkou."
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "Tato databáze již nedostává bezpečnostní opravy od svého dodavatele."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Zde budou lidé ChurchCRM otevírat. Změňte to pouze tehdy, pokud budou používat jinou adresu než tuto stránku."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Toto je váš sborový účet. Vše, co můžete udělat sami, najdete zde."
+
+#: 
+msgid "Total deposited"
+msgstr "Celkem vloženo"
+
+#: 
+msgid "Unsupported database server"
+msgstr "Nepodporovaný databázový server"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "Aktualizace budou zablokovány, dokud databáze nebude přesunuta na podporovanou verzi."
+
+#: 
+msgid "Usually 3306."
+msgstr "Obvykle 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Doporučujeme požádat hostitele o přepnutí ještě před instalací, dokud nejsou žádná data k přesunu. MariaDB 10.11 je vhodný cíl."
+
+#: 
+msgid "Web address"
+msgstr "Webová adresa"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Nyní můžete instalovat: ChurchCRM se nainstaluje a poběží."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Vaše hlavní nástěnka"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Váš webový hostitel musí něco opravit"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "a další {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "a další {{count}}"
 

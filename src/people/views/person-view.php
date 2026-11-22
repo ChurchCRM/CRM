@@ -354,6 +354,82 @@ if ($person->isMale()) {
         <?php } ?>
 
 
+        <?php
+        // The #person-map element must exist whenever $personMapConfig is set, or
+        // person-view.js's L.map() call throws.
+        $personDirectionsUrl = $person->getDirectionsUrl();
+        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+        $personFamily = $person->getFamily();
+        $familyMailingAddress = $personFamily !== null && $personFamily->hasDistinctMailingAddress()
+            ? $personFamily->getSecondaryAddress()
+            : '';
+        ?>
+        <?php if (!empty($formattedMailingAddress) || $familyMailingAddress !== '' || $personMapConfig !== null) : ?>
+        <div class="card mb-3" id="person-address-card">
+            <div class="card-header">
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
+                    <?php if ($familyHasCoords) : ?>
+                    <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>"><i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?></span>
+                    <?php elseif (!empty($formattedMailingAddress)) : ?>
+                    <span class="badge bg-warning-lt text-warning ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>"><i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?></span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-12 <?= $personMapConfig !== null ? 'col-lg-5' : '' ?>">
+                        <?php if (!empty($formattedMailingAddress)) : ?>
+                        <a class="fs-3 d-block lh-sm" href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                        <div class="mt-3 d-flex flex-wrap gap-2 d-print-none">
+                            <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
+                            <div class="btn-group directions-btn-group">
+                                <?php if (!empty($personDirectionsUrl)) : ?>
+                                <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?></a>
+                                <?php endif; ?>
+                                <?php if (!empty($personAppleDirectionsUrl)) : ?>
+                                <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                                </button>
+                                <div class="dropdown-menu directions-provider-menu d-none">
+                                    <?php if (!empty($personDirectionsUrl)) : ?>
+                                    <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?></a>
+                                    <?php endif; ?>
+                                    <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?></a>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php if (!empty($fam_ID) && $familyHasCoords) : ?>
+                            <a href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>" class="btn btn-outline-primary"><i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?></a>
+                            <?php endif; ?>
+                            <?php if (!empty($fam_ID) && !$familyHasCoords && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
+                            <button type="button" class="btn btn-outline-success" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Automatically detect coordinates using address') ?>">
+                                <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
+                            </button>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if ($familyMailingAddress !== '') : ?>
+                        <div class="<?= !empty($formattedMailingAddress) ? 'mt-4 pt-3 border-top' : '' ?>" id="person-family-mailing-address">
+                            <div class="text-body-secondary small mb-1"><i class="fa-solid fa-envelope me-1"></i><strong><?= gettext('Mailing Address') ?></strong></div>
+                            <?= InputUtils::escapeHTML($familyMailingAddress) ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($personMapConfig !== null) : ?>
+                    <div class="col-12 col-lg-7">
+                        <div class="rounded overflow-hidden"><div id="person-map" class="map-canvas-md"></div></div>
+                        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                            window.CRM = window.CRM || {};
+                            window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
+                        </script>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+
         <!--
             person-view.js bundle (map, refresh-coordinates, group manager, timeline
             filter, attendance history) — loaded unconditionally. It must NOT be
@@ -362,6 +438,48 @@ if ($person->isMale()) {
             are all needed regardless of whether the person has a family or address
             (e.g. the admin's own "Church Admin" placeholder person has neither).
         -->
+
+<?php if ($bOkToEdit && count($allPersonProperties) !== 0) : ?>
+<div class="modal fade" id="add-person-property-modal" data-edit-title="<?= InputUtils::escapeAttribute(gettext('Edit Property')) ?>" data-save-label="<?= InputUtils::escapeAttribute(gettext('Save')) ?>" tabindex="-1" aria-labelledby="add-person-property-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-person-property-title"><i class="fa-solid fa-hashtag me-2"></i><?= gettext('Add Property') ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
+                    <div class="mb-3">
+                        <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                    <option value=""></option>
+                                    <?php
+                                    $assignedPropertyIds = [];
+                                    foreach ($assignedPersonProperties as $rp) {
+                                        $assignedPropertyIds[] = $rp->getPropertyId();
+                                    }
+                                    foreach ($allPersonProperties as $prop) {
+                                        $pro_ID = $prop->getProId();
+                                        if (in_array($pro_ID, $assignedPropertyIds)) { continue; }
+                                        $attributes = "value=\"{$pro_ID}\"";
+                                        $pro_Prompt = $prop->getProPrompt() ?? '';
+                                        if (!empty($pro_Prompt)) {
+                                            $attributes .= " data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\"";
+                                        }
+                                        echo "<option {$attributes}>" . InputUtils::escapeHTML($prop->getProName()) . "</option>";
+                                    } ?>
+                                </select>
+                    </div>
+                    <div id="prompt-box"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link link-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <button id="assign-property-btn" type="button" class="btn btn-primary ms-auto"><i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
         <?php if ($canSendEmail) : ?>
@@ -431,7 +549,7 @@ if ($person->isMale()) {
 
                     <div class="tab-pane active" id="overview">
                         <div class="row g-4">
-                            <div class="col-12 col-lg-7">
+                            <div class="col-12">
                                 <?php if ($hasCustomFields) : ?>
                                 <div class="mb-4" id="person-custom-fields-card">
                                     <h4 class="mb-3"><i class="fa-solid fa-circle-info me-1"></i> <?= gettext('Additional Information') ?></h4>
@@ -442,6 +560,9 @@ if ($person->isMale()) {
         <div class="mb-4">
             <div class="d-flex align-items-center mb-2">
                 <h4 class="m-0"><i class="fa-solid fa-hashtag me-1"></i> <?= gettext('Properties') ?></h4>
+                <?php if ($bOkToEdit && count($allPersonProperties) > count($assignedPersonProperties)) : ?>
+                <button type="button" class="btn btn-sm btn-outline-primary ms-auto d-print-none" id="add-person-property-btn" data-bs-toggle="modal" data-bs-target="#add-person-property-modal"><i class="fa-solid fa-plus me-1"></i><?= gettext('Add Property') ?></button>
+                <?php endif; ?>
             </div>
             <div>
                 <?php if (count($assignedPersonProperties) === 0) : ?>
@@ -462,6 +583,11 @@ if ($person->isMale()) {
                                         <small class="text-body-secondary d-block"><?= InputUtils::escapeHTML($value) ?></small>
                                     <?php } ?>
                                 </div>
+                                <?php if ($bOkToEdit && !empty($prop->getProPrompt())) { ?>
+                                    <button type="button" class="btn btn-sm btn-ghost-secondary edit-property-btn" data-property_id="<?= (int) $rp->getPropertyId() ?>" data-property_name="<?= InputUtils::escapeAttribute($prop->getProName()) ?>" data-prompt="<?= InputUtils::escapeAttribute($prop->getProPrompt()) ?>" data-value="<?= InputUtils::escapeAttribute((string) $value) ?>" title="<?= gettext('Edit') ?>">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                <?php } ?>
                                 <?php if ($bOkToEdit) { ?>
                                     <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= $rp->getPropertyId() ?>" title="<?= gettext('Remove') ?>">
                                         <i class="fa-solid fa-trash"></i>
@@ -472,143 +598,8 @@ if ($person->isMale()) {
                     </div>
                 <?php endif; ?>
 
-                <?php if ($bOkToEdit && count($allPersonProperties) !== 0) : ?>
-                    <div class="mt-3 d-print-none">
-                        <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
-                            <div class="d-flex gap-2 align-items-start">
-                            <div class="flex-grow-1 min-w-0">
-                                <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
-                                    <option value=""></option>
-                                    <?php
-                                    $assignedPropertyIds = [];
-                                    foreach ($assignedPersonProperties as $rp) {
-                                        $assignedPropertyIds[] = $rp->getPropertyId();
-                                    }
-                                    foreach ($allPersonProperties as $prop) {
-                                        $pro_ID     = $prop->getProId();
-                                        $pro_Name   = $prop->getProName();
-                                        $pro_Prompt = $prop->getProPrompt() ?? '';
-                                        $attributes = "value=\"{$pro_ID}\"";
-                                        if (!empty($pro_Prompt)) {
-                                            $pro_Value = '';
-                                            foreach ($assignedPersonProperties as $rp) {
-                                                if ($rp->getPropertyId() === (int)$pro_ID) {
-                                                    $pro_Value = $rp->getPropertyValue();
-                                                }
-                                            }
-                                            $attributes .= " data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\"";
-                                        }
-                                        $optionText = InputUtils::escapeHTML($pro_Name);
-                                        if (in_array($pro_ID, $assignedPropertyIds)) {
-                                            $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
-                                        }
-                                        echo "<option {$attributes}>{$optionText}</option>";
-                                    } ?>
-                                </select>
-                            </div>
-                            <button id="assign-property-btn" type="button" class="btn btn-primary">
-                                <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
-                            </button>
-                            </div>
-                            <div id="prompt-box" class="mt-2"></div>
-                        </form>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
-
-                            </div>
-                            <div class="col-12 col-lg-5">
-        <?php
-        // Address card — mirrors the family-view Address card. Renders when the
-        // person has a mailing address, the family has a distinct mailing address
-        // (#9743), OR a map config (family-less person with their own address).
-        // The #person-map element must exist whenever $personMapConfig is set, or
-        // person-view.js's L.map() call throws.
-        $personDirectionsUrl = $person->getDirectionsUrl();
-        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
-        $personFamily = $person->getFamily();
-        $familyMailingAddress = $personFamily !== null && $personFamily->hasDistinctMailingAddress()
-            ? $personFamily->getSecondaryAddress()
-            : '';
-        ?>
-        <?php if (!empty($formattedMailingAddress) || $familyMailingAddress !== '' || $personMapConfig !== null) : ?>
-        <div class="mb-4">
-            <div class="d-flex align-items-center mb-2">
-                <h4 class="m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
-                    <?php if ($familyHasCoords) : ?>
-                    <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
-                        <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
-                    </span>
-                    <?php elseif (!empty($formattedMailingAddress)) : ?>
-                    <span class="badge bg-warning text-dark ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
-                        <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
-                    </span>
-                    <?php endif; ?>
-                </h4>
-            </div>
-            <div>
-                <?php if (!empty($formattedMailingAddress)) : ?>
-                <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
-                <?php endif; ?>
-                <?php
-                // The address above stays the person's own / inherited primary
-                // address. The family's distinct mailing address goes underneath,
-                // even when there is no primary address, so it is clear where mail goes.
-                if ($familyMailingAddress !== '') : ?>
-                <div class="mt-2 text-body-secondary small" id="person-family-mailing-address">
-                    <i class="fa-solid fa-envelope me-1"></i><strong><?= gettext('Mailing Address') ?></strong>:
-                    <?= InputUtils::escapeHTML($familyMailingAddress) ?>
-                </div>
-                <?php endif; ?>
-                <?php if (!empty($formattedMailingAddress)) : ?>
-                <div class="mt-2 d-flex flex-wrap gap-1">
-                    <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
-                    <div class="btn-group directions-btn-group">
-                        <?php if (!empty($personDirectionsUrl)) : ?>
-                        <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?></a>
-                        <?php endif; ?>
-                        <?php if (!empty($personAppleDirectionsUrl)) : ?>
-                        <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
-                        </button>
-                        <div class="dropdown-menu directions-provider-menu d-none">
-                            <?php if (!empty($personDirectionsUrl)) : ?>
-                            <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
-                            </a>
-                            <?php endif; ?>
-                            <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
-                            </a>
-                        </div>
-                        <?php endif; ?>
-                    </div>
-                    <?php endif; ?>
-                    <?php if (!empty($fam_ID) && $familyHasCoords) : ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>" class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($fam_ID) && !$familyHasCoords && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
-                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Automatically detect coordinates using address') ?>">
-                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
-                    </button>
-                    <?php endif; ?>
-                </div>
-                <?php endif; ?>
-                <?php if ($personMapConfig !== null) : ?>
-                <div class="mt-2 rounded overflow-hidden">
-                    <div id="person-map" class="map-canvas-sm"></div>
-                </div>
-                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                    window.CRM = window.CRM || {};
-                    window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
-                </script>
-                <?php endif; ?>
-            </div>
-        </div>
-        <?php endif; ?>
 
                             </div>
                         </div>

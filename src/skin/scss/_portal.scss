@@ -1642,6 +1642,39 @@ textarea.portal-input {
     background-color: #ffffff;
 }
 
+// Password strength meter ----------------------------------------------------
+//
+// PasswordChange.js sets the bar's inline width and adds one of Bootstrap's
+// bg-* colour classes. The portal bundle does not include Bootstrap utilities,
+// so the colours are mapped here from the portal tokens. The track (.portal-progress)
+// uses a fixed height so the bar is always visible once the container is shown.
+
+.portal-progress {
+    block-size: 0.5rem;
+    border-radius: 999px;
+    background-color: var(--portal-border);
+    overflow: hidden;
+    margin-block: 0.35rem 0;
+}
+
+.portal-progress-bar {
+    block-size: 100%;
+    border-radius: 999px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    background-color: var(--portal-muted);
+
+    &.bg-danger  { background-color: var(--portal-danger); }
+    &.bg-warning { background-color: var(--portal-warning); }
+    &.bg-info    { background-color: var(--portal-info); }
+    &.bg-success { background-color: var(--portal-success); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portal-progress-bar {
+        transition: none;
+    }
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {

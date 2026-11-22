@@ -79,47 +79,37 @@ describe("csv export", () => {
 
     describe("zero givers report", () => {
         it("should export zero givers report as CSV", () => {
-            cy.visit("/FinancialReports.php");
-            cy.contains("Financial Reports");
-            cy.get("#FinancialReportTypes").select("Zero Givers");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/zero-givers");
             cy.contains("Zero Givers");
-            cy.get("input[name='output'][value='csv']").check({ force: true });
-            
+
             const startOfYear = new Date().getFullYear() + "-01-01";
-            cy.get("input[name='DateStart']").type(startOfYear, { force: true });
-            cy.get("input[name='DateEnd']").type(getTodayDate(), { force: true });
-            
-            // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/finance/reports/zero-givers/download").as("csvDownload");
-            
-            cy.get("#createReport").click({ force: true });
-            
-            // Verify the download was successful with CSV content type
+            cy.get("input[name='DateStart']").clear({ force: true }).type(startOfYear, { force: true });
+            cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
+
+            cy.intercept("GET", "**/finance/reports/zero-givers/download*").as("csvDownload");
+
+            cy.get("#downloadZeroGiversCsv").click({ force: true });
+
             cy.get("@csvDownload").then((interception) => {
+                expect(interception.request.url).to.include("output=csv");
                 expect(interception.response.statusCode).to.equal(200);
                 expect(interception.response.headers["content-type"]).to.include("text/csv");
             });
         });
 
         it("should handle zero givers report with custom date range", () => {
-            cy.visit("/FinancialReports.php");
-            cy.contains("Financial Reports");
-            cy.get("#FinancialReportTypes").select("Zero Givers");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/zero-givers");
             cy.contains("Zero Givers");
-            cy.get("input[name='output'][value='csv']").check({ force: true });
-            
+
             cy.get("input[name='DateStart']").clear({ force: true }).type("2024-10-28", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
-            
-            // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/finance/reports/zero-givers/download").as("csvDownload");
-            
-            cy.get("#createReport").click({ force: true });
-            
-            // Verify the download was successful with CSV content type
+
+            cy.intercept("GET", "**/finance/reports/zero-givers/download*").as("csvDownload");
+
+            cy.get("#downloadZeroGiversCsv").click({ force: true });
+
             cy.get("@csvDownload").then((interception) => {
+                expect(interception.request.url).to.include("DateStart=2024-10-28");
                 expect(interception.response.statusCode).to.equal(200);
                 expect(interception.response.headers["content-type"]).to.include("text/csv");
             });

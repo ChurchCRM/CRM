@@ -10,11 +10,6 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-.profile-photo-square {
-  aspect-ratio: 1 / 1;
-  max-height: 400px;
-}
-
 .profile-photo-thumb {
   width: 120px;
   height: 120px;
@@ -25,6 +20,50 @@
     max-height: none;
     object-fit: cover;
   }
+}
+
+#family-profile-header .profile-photo-thumb {
+  @media (max-width: 575.98px) {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+// Phones: each family member becomes a stacked row (name, role and birthday, then email).
+.member-table {
+  @media (max-width: 767.98px) {
+    thead {
+      display: none;
+    }
+
+    tbody tr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      border-bottom: 1px solid var(--tblr-border-color);
+    }
+
+    td {
+      border: 0;
+      min-width: 0;
+    }
+
+    .member-email-cell {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      padding-top: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .member-actions-cell {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+}
+
+.map-canvas-md {
+  height: 240px;
 }
 
 .map-canvas-sm {

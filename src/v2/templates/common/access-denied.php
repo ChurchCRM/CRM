@@ -1,5 +1,7 @@
 <?php
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -27,7 +29,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
 $code = 403;
 $title = gettext('Permission Required');
 $message = gettext('The page you tried to visit requires special permissions that your account does not currently have.');
-$returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
+$returnUrl = DashboardLandingService::urlFor(AuthenticationManager::getCurrentUser());
 $returnText = gettext('Go to Dashboard');
 
 // Add role callout as extra HTML when a role is present

@@ -16,24 +16,20 @@ describe("Family email belongs to the adults", () => {
         cy.makePrivateAdminAPICall("POST", `/api/person/${constanceId}/activate/true`, null, 200);
     });
 
-    it("shows each adult's own email on the family page", () => {
+    it("shows each adult's own email in the member rows", () => {
         cy.visit(`/people/family/${hartFamilyId}`);
-        cy.get("#family-email-card [data-family-adult-email]").should("have.length", 2);
-        cy.get("#family-email-card")
-            .should("contain.text", "constance.hart@example.com")
-            .and("contain.text", "Constance Hart")
-            .and("contain.text", "marion.sutton@example.com")
-            .and("contain.text", "Marion Hart");
+        cy.get("#family-email-card").should("not.exist");
+        cy.get(".copy-email-btn[data-email]").should("have.length.at.least", 2);
+        cy.contains("table a", "constance.hart@example.com").should("be.visible");
+        cy.contains("table a", "marion.sutton@example.com").should("be.visible");
         cy.get("#family-email-composer")
             .should("have.attr", "data-email-family-id", String(hartFamilyId))
             .and("have.attr", "data-email-address", "constance.hart@example.com");
     });
 
-    it("leaves an inactive adult out of the card and the family email", () => {
+    it("leaves an inactive adult out of the family email", () => {
         cy.makePrivateAdminAPICall("POST", `/api/person/${constanceId}/activate/false`, null, 200);
         cy.visit(`/people/family/${hartFamilyId}`);
-        cy.get("#family-email-card [data-family-adult-email]").should("have.length", 1);
-        cy.get("#family-email-card").should("not.contain.text", "constance.hart@example.com");
         cy.get("#family-email-composer").should("have.attr", "data-email-address", "marion.sutton@example.com");
     });
 

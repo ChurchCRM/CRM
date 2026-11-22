@@ -5480,6 +5480,50 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /api/deposits/dashboard-by-fund:
+    get:
+      tags:
+        - Finance
+      summary: 'Get payment totals per fund per day for a time range (Finance role required)'
+      parameters:
+        -
+          name: days
+          in: query
+          description: 'Days window: 30|90|365 (default 90)'
+          required: false
+          schema:
+            type: integer
+        -
+          name: from
+          in: query
+          description: 'ISO start date; with to, replaces days'
+          required: false
+          schema:
+            type: string
+        -
+          name: to
+          in: query
+          description: 'ISO end date'
+          required: false
+          schema:
+            type: string
+        -
+          name: all
+          in: query
+          description: 'Any value returns the whole history'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Per-fund daily totals: {dates: string[], funds: [{fundId, name, data}]}; funds with no payments in the window are omitted'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/api/deposits/{id}':
     get:
       tags:

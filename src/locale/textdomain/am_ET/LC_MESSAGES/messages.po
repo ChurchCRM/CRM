@@ -2167,14 +2167,6 @@ msgid "Deposit Comment"
 msgstr "የተቀማጭ አስተያየት"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "የፊርማ ፍቺ ፋይል ፊርማ ማረጋገጥ አልተሳካም"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም"
-
-#: 
 msgid "item"
 msgstr "ንጥል "
 
@@ -4694,10 +4686,6 @@ msgid "Estonian"
 msgstr "ኢስቶኒያን"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "የፊርማ ፊቺ ፋይልን የመግለጽ ስህተት "
-
-#: 
 msgid "Event not found"
 msgstr "ክስተት አልተገኘም"
 
@@ -5283,14 +5271,6 @@ msgstr "እባክዎን በ http:// ወይም https:// የሚጀምር ትክክ
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "ሁሉም የሥርዓት ፋይል ፊርማዎች ከሚጠበቁት እሴቶች ጋር ይዛመዳሉ።"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "የፊርማ መግለጫ ፋይሉ አለ ነገር ግን ሊነበብ አይችልም። የፋይል ፈቃዶችን ያረጋግጡ።"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "የፊርማ መግለጫ ፋይሉ በ %s ላይ ይጎድላል። ፊርማዎችን እንደገና ለማመንጨት የማሸጊያ ስራውን ያሂዱ ወይም ኦፊሴላዊ ልቀት ይጫኑ።"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -12900,10 +12880,6 @@ msgid "Deposit ID"
 msgstr "የተቀማጭ መለያ (ID)"
 
 #: 
-msgid "Deposit Value"
-msgstr "ተቀማጭ ገንዘብ ዋጋ"
-
-#: 
 msgid "Deposit saved successfully"
 msgstr "ተቀማጭ በተሳካ ሁኔታ ተቀምጧል"
 
@@ -13321,22 +13297,6 @@ msgid "Move Members to Group"
 msgstr "አባላት ወደ ቡድን ዘዋወር"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "በ http:// ወይም https:// የሚጀምር ትክክለኛ URL መሆን አለበት"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "በ http:// ወይም https:// የሚጀምር ትክክለኛ URL መሆን አለበት (ለምሳሌ http://localhost ወይም https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "ትክክለኛ የፖርት ቁጥር መሆን አለበት (ለምሳሌ 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "ባዶ ካልሆነ በ / መጀመር አለበት፤ የመጨረሻ ስላሽ የለም። ፊደሎች፣ ቁጥሮች፣ የታችኛው መስመር፣ ሰረዝ፣ ነጥብ እና / ብቻ ይፈቀዳሉ።"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "ይህንን መረጃ ቆይተው ማስወገድ ይፈልጋሉ?"
 
@@ -13487,10 +13447,6 @@ msgstr "እባክዎን ትክክለኛ የኢሜይል አድራሻ ያስገ�
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "እባክዎን ትክክለኛ የኢሜይል አድራሻ ያስገቡ (ለምሳሌ name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "እባክዎን ትክክለኛ ቁጥር ያስገቡ"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -24275,10 +24231,6 @@ msgid "Church default: %s"
 msgstr "የቤተ ክርስቲያን ነባሪ፦ %s"
 
 #: 
-msgid "Church leader sign-in"
-msgstr "የቤተ ክርስቲያን መሪ መግቢያ"
-
-#: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
 msgstr "አባሎቻቸው ወደ የአባላት መግቢያ ሊገቡ የሚችሉ ምደባዎች፣ በነጠላ ሰረዝ የተለዩ የምደባ መታወቂያዎች።"
 
@@ -24921,10 +24873,6 @@ msgstr "አላበቃም"
 #: 
 msgid "Not moved"
 msgstr "አልተዘዋወረም"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "የትኛው ኢሜይል እንዳለን እርግጠኛ አይደሉም? የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
 
 #: 
 msgid "Not yet"
@@ -27923,4 +27871,442 @@ msgstr "የቤተክርስቲያኖ አገር ካናዳ ስለሆነ፣ የካ�
 #: 
 msgid "groups"
 msgstr "ቡድኖች"
+
+#: 
+msgid "14 days"
+msgstr "14 ቀናት"
+
+#: 
+msgid "6 months"
+msgstr "6 ወራት"
+
+#: 
+msgid "60 days"
+msgstr "60 ቀናት"
+
+#: 
+msgid "7 days"
+msgstr "7 ቀናት"
+
+#: 
+msgid "Ask on Discord"
+msgstr "በDiscord ላይ ይጠይቁ"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "ከገቡ በኋላ ወዲያው የይለፍ ቃልዎን ይቀይሩ።"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "ሌላ የመግቢያ መንገድ ይምረጡ"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM በlocalhost ላይ ወዳለ ዳታቤዝ መድረስ አልቻለም። በምትኩ 127.0.0.1ን ይሞክሩ፣ ወይም የዳታቤዝ አስተናጋጅ ስም ለማግኘት የድረ ገጽ አስተናጋጅዎን ይጠይቁ።"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM በዚያ አድራሻ እና ወደብ ወዳለው የዳታቤዝ ሰርቨር መድረስ አልቻለም። የአስተናጋጁን ስም እና ወደቡን ይፈትሹ። በተጋራ አስተናጋጅነት ላይ አስተናጋጁ አብዛኛውን ጊዜ localhost አይደለም።"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM የሥሪት ፍተሻውን ማንበብ አልቻለም። የድረ ገጽ አስተናጋጅዎ የChurchCRM አቃፊ እንዲነበብ እንዲያደርግ ይጠይቁ፣ ወይም ይቀጥሉ።"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM የአቃፊ ፈቃዶችን መፈተሽ አልቻለም"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM ፋይሎቹን መፈተሽ አልቻለም። የድረ ገጽ አስተናጋጅዎ የሰርቨሩን የስህተት ምዝገባ እንዲመለከት ይጠይቁ።"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM የሰርቨሩን ሶፍትዌር መፈተሽ አልቻለም"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM በእነዚህ ቅንብሮች ወደ ዳታቤዙ መገናኘት አልቻለም።"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM መጫኑን ማጠናቀቅ አልቻለም። እንደገና ይሞክሩ፣ ወይም የድረ ገጽ አስተናጋጅዎ የሰርቨሩን የስህተት ምዝገባ እንዲፈትሽ ይጠይቁ።"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM Include/Config.phpን ማስቀመጥ አልቻለም። የድረ ገጽ አስተናጋጅዎ የInclude አቃፊ እንዲጻፍበት እንዲያደርግ ይጠይቁ።"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "የChurchCRM ፋይሎች ከሥሪቱ ጋር ይዛመዳሉ"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "የጎን አሞሌውን ወደ አዶዎች ያጥቡ"
+
+#: 
+msgid "Congregation login"
+msgstr "የምእመናን መግቢያ"
+
+#: 
+msgid "Connect your database"
+msgstr "ዳታቤዝዎን ያገናኙ"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "ወደ ዳታቤዝዎ በመገናኘት ላይ…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "ዋና ዳሸቦርድዎን ማስቀመጥ አልተቻለም።"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "በመጀመሪያ በሆስቲንግ መቆጣጠሪያ ፓነልዎ ውስጥ የMySQL ወይም የMariaDB ዳታቤዝ ይፍጠሩ (በcPanel ውስጥ: %s)፣ ከዚያ ዝርዝሮቹን እዚህ ይቅዱ። ChurchCRM MySQL 8.4+ እና MariaDB 10.11+ (የLTS ሥሪቶችን) ይደግፋል።"
+
+#: 
+msgid "Database host"
+msgstr "የዳታቤዝ አስተናጋጅ"
+
+#: 
+msgid "Database name"
+msgstr "የዳታቤዝ ስም"
+
+#: 
+msgid "Database password"
+msgstr "የዳታቤዝ የይለፍ ቃል"
+
+#: 
+msgid "Database user"
+msgstr "የዳታቤዝ ተጠቃሚ"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "ChurchCRM በጣቢያው ላይኛው ክፍል ላይ ሲሆን ባዶ ይሁን። አለበለዚያ አቃፊውን፣ እንደ %s።"
+
+#: 
+msgid "Enter note text here..."
+msgstr "የማስታወሻ ጽሑፍ እዚህ ያስገቡ..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "የዳታቤዝ አስተናጋጁን ያስገቡ፣ እንደ localhost ወይም mysql.example.com። ፊደላትን፣ ቁጥሮችን፣ ነጥቦችን እና ሰረዞችን ብቻ ይጠቀሙ።"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "የዳታቤዝ ስም ያስገቡ። ፊደላትን፣ ቁጥሮችን፣ የታች ሰረዞችን፣ ሰረዞችን እና ነጥቦችን ብቻ ይጠቀሙ።"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "የዳታቤዝ ወደቡን እንደ ቁጥር ያስገቡ። አብዛኛውን ጊዜ 3306 ነው።"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "የዳታቤዝ ተጠቃሚውን ያስገቡ። ፊደላትን፣ ቁጥሮችን፣ የታች ሰረዞችን፣ ሰረዞችን፣ ነጥቦችን እና @ ብቻ ይጠቀሙ።"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "አቃፊውን በ/ ጀምሮ ያስገቡ፣ እንደ /churchcrm፣ ወይም ባዶ ይተዉት።"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "ለዳታቤዝ ተጠቃሚው የይለፍ ቃሉን ያስገቡ።"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "የድረ ገጽ አድራሻውን በhttp:// ወይም በhttps:// ጀምሮ ያስገቡ።"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "እያንዳንዱ ንቁ የአባላት ቤተሰብ በ%s እና በ%s መካከል ክፍያ ፈጽሟል።"
+
+#: 
+msgid "Exclude"
+msgstr "አግልል"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "ከአሮጌ ሥሪት የቀሩ ፋይሎች"
+
+#: 
+msgid "Files to review"
+msgstr "የሚገመገሙ ፋይሎች"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "ከድረ ገጽ አስተናጋጅዎ የዳታቤዝ ዝርዝሮችን ዝግጁ ያድርጉ። ወደ ሁለት ደቂቃ ይወስዳል።"
+
+#: 
+msgid "Hide"
+msgstr "ደብቅ"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "ምእመናኑ እንዴት እንደተዋቀሩ"
+
+#: 
+msgid "I understand this database is unsupported and upgrades will be blocked"
+msgstr "ይህ ዳታቤዝ እንደማይደገፍ እና ማሻሻያዎች እንደሚታገዱ ተረድቻለሁ"
+
+#: 
+msgid "Insights"
+msgstr "ግንዛቤዎች"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRMን ይጫኑ"
+
+#: 
+msgid "Installation Complete!"
+msgstr "መጫኑ ተጠናቋል!"
+
+#: 
+msgid "Installation guide"
+msgstr "የመጫኛ መመሪያ"
+
+#: 
+msgid "Integrity check failed"
+msgstr "የታማኝነት ፍተሻ አልተሳካም"
+
+#: 
+msgid "Integrity check passed"
+msgstr "የታማኝነት ፍተሻ አልፏል"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "ልክ ያልሆነ የCSRF ቶከን"
+
+#: 
+msgid "Last %d days"
+msgstr "ያለፉት %d ቀናት"
+
+#: 
+msgid "Last 12 months"
+msgstr "ያለፉት 12 ወራት"
+
+#: 
+msgid "Main dashboard"
+msgstr "ዋና ዳሸቦርድ"
+
+#: 
+msgid "Navigation"
+msgstr "አሰሳ"
+
+#: 
+msgid "Need help?"
+msgstr "እርዳታ ይፈልጋሉ?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "በዚህ የጊዜ ክልል ውስጥ ምንም ማስታወሻዎች የሉም።"
+
+#: 
+msgid "No notes yet."
+msgstr "ገና ምንም ማስታወሻዎች የሉም።"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "አብዛኛውን ጊዜ %1$s። አንዳንድ አስተናጋጆች እንደ %2$s ያለ አድራሻ ይሰጣሉ።"
+
+#: 
+msgid "Open total"
+msgstr "ክፍት ጠቅላላ"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "የፋይናንስ ዳሸቦርዱን በዚህ ክልል ላይ ይከፍታል። ያለፈ የበጀት ዓመት በዳሸቦርዱ ራሱ ላይ ይምረጡ።"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "ያለፉት 7 ቀናት እና የሚቀጥሉት %d ቀናት"
+
+#: 
+msgid "People without a family: %d"
+msgstr "ቤተሰብ የሌላቸው ሰዎች: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "ቅንብሮችን እና ፎቶዎችን ለማስቀመጥ ፈቃድ"
+
+#: 
+msgid "Port"
+msgstr "ወደብ"
+
+#: 
+msgid "Ready"
+msgstr "ዝግጁ"
+
+#: 
+msgid "Recent"
+msgstr "የቅርብ ጊዜ"
+
+#: 
+msgid "Register your family to our church"
+msgstr "ቤተሰብዎን ወደ ቤተ ክርስቲያናችን ያስመዝግቡ"
+
+#: 
+msgid "Release check"
+msgstr "የሥሪት ፍተሻ"
+
+#: 
+msgid "Report a problem"
+msgstr "ችግር ሪፖርት ያድርጉ"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "በእያንዳንዱ ሰንጠረዥ እና ዳሸቦርድ ካርድ ውስጥ በገጽ የሚታዩ ረድፎች። በሚቀጥለው ገጽ ጭነት ላይ ተግባራዊ ይሆናል።"
+
+#: 
+msgid "Send Test Email"
+msgstr "የሙከራ ኢሜይል ይላኩ"
+
+#: 
+msgid "Send a test email"
+msgstr "የሙከራ ኢሜይል ይላኩ"
+
+#: 
+msgid "Send them the list below."
+msgstr "ከታች ያለውን ዝርዝር ይላኩላቸው።"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM የሚፈልገው የሰርቨር ሶፍትዌር"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "እንደ ዋና ዳሸቦርዴ አዋቅር"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "በአስተዳዳሪ መለያዎ ይግቡ"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "አንዳንድ የChurchCRM ፋይሎች ጠፍተዋል ወይም ተቀይረዋል። ገጽ ካልተጫነ ChurchCRMን እንደገና ይላኩ።"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "አንዳንድ የChurchCRM ፋይሎች አልተላኩም።"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "በሰርቨሩ ላይ ያሉ አንዳንድ ፋይሎች ከChurchCRM ሥሪት ጋር አይዛመዱም።"
+
+#: 
+msgid "Staff login"
+msgstr "የሰራተኞች መግቢያ"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "በ%1$s ወይም በ%2$s ይጀምራል እና በ%3$s ያልቃል።"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "ከገቡ በኋላ የሚከፍቱት ዳሸቦርድ"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "የዳታቤዝ ሰርቨሩ መግቢያውን ተቀብሏል፣ ነገር ግን በዚያ ስም ዳታቤዝ የለም።"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "የዳታቤዝ ሰርቨሩ ያንን የተጠቃሚ ስም ወይም የይለፍ ቃል አልተቀበለም።"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "ለዳታቤዙ የሰጡት ስም። የተጋሩ አስተናጋጆች አብዛኛውን ጊዜ የመለያ ስምዎን ከፊት ይጨምራሉ፣ እንደ %s።"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "ለዚያ የዳታቤዝ ተጠቃሚ የይለፍ ቃል። Installን ሲጫኑ ChurchCRM እነዚህን ዝርዝሮች ይፈትሻል።"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "በዚህ ሰርቨር ላይ ያለው የሥሪት ፍተሻ ፋይል ከChurchCRM ጋር አይዛመድም። ሥሪቱን እንደገና ይላኩ፣ ወይም ይቀጥሉ እና ለእርዳታ የድረ ገጽ አስተናጋጅዎን ይጠይቁ።"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "የሙከራ መልእክቱ ወደ ቤተ ክርስቲያኑ ኢሜይል አድራሻ ይሄዳል እና የSMTP ስህተት ማስተካከያ ምዝገባን እዚህ ያሳያል።"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "ወደዚያ ዳታቤዝ ያከሉት ተጠቃሚ። የሆስቲንግ መግቢያዎ አይደለም።"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "እነዚህ ፋይሎች የChurchCRM ሥሪት አካል አይደሉም። የድረ ገጽ አስተናጋጅዎ ሊያስወግዳቸው ይችላል።"
+
+#: 
+msgid "These files do not match the release"
+msgstr "እነዚህ ፋይሎች ከሥሪቱ ጋር አይዛመዱም"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "እነዚህ ፋይሎች አልተላኩም"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "ይህ የChurchCRM ቅጂ የሥሪት ፋይል ፍተሻን አያካትትም። መቀጠል ይችላሉ።"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "ይህ ዳሸቦርድ አሁን ዋና ዳሸቦርድዎ ነው።"
+
+#: 
+msgid "This database no longer receives security fixes from its vendor."
+msgstr "ይህ ዳታቤዝ ከአቅራቢው የደህንነት ጥገናዎችን ከእንግዲህ አያገኝም።"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "ሰዎች ChurchCRMን የሚከፍቱት እዚህ ነው። ከዚህ ገጽ የተለየ አድራሻ የሚጠቀሙ ከሆነ ብቻ ይቀይሩት።"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "ይህ የቤተ ክርስቲያን መለያዎ ነው። ለራስዎ ማድረግ የሚችሉት ሁሉ እዚህ አለ።"
+
+#: 
+msgid "Total deposited"
+msgstr "ጠቅላላ የተቀመጠ"
+
+#: 
+msgid "Unsupported database server"
+msgstr "የማይደገፍ የዳታቤዝ ሰርቨር"
+
+#: 
+msgid "Upgrades will be blocked until the database is moved to a supported version."
+msgstr "ዳታቤዙ ወደሚደገፍ ሥሪት እስኪዘዋወር ድረስ ማሻሻያዎች ይታገዳሉ።"
+
+#: 
+msgid "Usually 3306."
+msgstr "አብዛኛውን ጊዜ 3306።"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "ከመጫንዎ በፊት፣ ለማዛወር ውሂብ በሌለበት ጊዜ፣ አስተናጋጅዎ እንዲቀይር መጠየቅን እንመክራለን። MariaDB 10.11 ጥሩ ኢላማ ነው።"
+
+#: 
+msgid "Web address"
+msgstr "የድረ ገጽ አድራሻ"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "አሁን መጫን ይችላሉ: ChurchCRM ይጫናል እና ይሰራል።"
+
+#: 
+msgid "Your main dashboard"
+msgstr "ዋና ዳሸቦርድዎ"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "የድረ ገጽ አስተናጋጅዎ አንድ ነገር ማስተካከል አለበት"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "እና {{count}} ተጨማሪ"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "እና {{count}} ተጨማሪ"
 
