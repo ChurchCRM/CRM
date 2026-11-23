@@ -4,7 +4,10 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\model\ChurchCRM\VersionQuery;
 use Composer\InstalledVersions;
+use Propel\Runtime\Exception\ExceptionInterface as PropelExceptionInterface;
 use Propel\Runtime\Propel;
 
 class VersionUtils
@@ -12,6 +15,8 @@ class VersionUtils
     private const COMPOSER_NAME = 'churchcrm/crm';
     private static ?string $cachedVersion = null;
     private static bool $forceReload = false;
+    private static ?Version $firstInstall = null;
+    private static bool $firstInstallLoaded = false;
 
     /**
      * Reset the in-process static version cache and force the next
@@ -98,6 +103,47 @@ class VersionUtils
         rsort($results);
 
         return $results[0]['ver_version'];
+    }
+
+    /**
+     * When this install began: the earliest version_ver row's start time. The
+     * installer writes that row; each upgrade adds one after it.
+     *
+     * The answer is what the table holds. A restored backup brings its own
+     * history, so the date follows the data. Installs upgraded through the
+     * pre-6.0.0 consolidation may keep their earliest row from that point, not
+     * from the literal first install.
+     *
+     * Null while the table is empty or missing (mid-setup), or when that row
+     * has no start time.
+     */
+    public static function getFirstInstallDate(): ?\DateTime
+    {
+        return self::firstInstallRow()?->getUpdateStart();
+    }
+
+    /**
+     * The version this install began on, from the same row as getFirstInstallDate()
+     * and with the same caveats. Null while the table is empty or missing.
+     */
+    public static function getFirstInstalledVersion(): ?string
+    {
+        return self::firstInstallRow()?->getVersion();
+    }
+
+    private static function firstInstallRow(): ?Version
+    {
+        if (!self::$firstInstallLoaded) {
+            try {
+                self::$firstInstall = VersionQuery::create()->orderById()->findOne();
+            } catch (PropelExceptionInterface | \PDOException $e) {
+                LoggerUtils::getAppLogger()->debug('version_ver is not readable yet: ' . $e->getMessage());
+                self::$firstInstall = null;
+            }
+            self::$firstInstallLoaded = true;
+        }
+
+        return self::$firstInstall;
     }
 
     /**
