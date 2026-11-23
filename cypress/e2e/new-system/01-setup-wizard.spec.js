@@ -254,13 +254,18 @@ describe('01 - Setup Wizard', () => {
             cy.get('#sChurchState').should('have.value', 'IL');
 
             cy.get('#sChurchZip').clear().type('62701');
+            cy.get('#sChurchZip').should('have.value', '62701');
 
-            // Submit the form
-            cy.get('#church-info-form').submit();
+            // Submit via the real button, settled first - a programmatic
+            // .submit() raced the page on master run 45204267654 and the
+            // success toast never landed inside the 10s window. The save
+            // posts and reloads the page, so give the toast the same 30s
+            // the other heavy setup steps in this spec use.
+            cy.get('#church-info-form button[type=submit]').should('be.visible').click();
 
             // Should remain on church-info and show success notification
             cy.url({ timeout: 10000 }).should('include', 'church-info');
-            cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
+            cy.contains('Church information saved successfully', { timeout: 30000 }).should('be.visible');
         });
     });
 
