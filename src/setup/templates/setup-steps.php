@@ -159,17 +159,16 @@ require_once __DIR__ . '/header.php';
 
                 <div id="db-connection-result" class="alert alert-danger d-none" role="status" aria-live="polite"></div>
                 <div class="alert alert-danger d-none" id="db-version-warning" role="alert">
-                    <h4 class="alert-title"><?= gettext('Unsupported database server') ?></h4>
+                    <h4 class="alert-title"><?= gettext('Database out of support') ?></h4>
                     <p id="db-version-message"></p>
                     <ul>
-                        <li><?= gettext('This database no longer receives security fixes from its vendor.') ?></li>
                         <li><?= gettext('You can install now: ChurchCRM will install and run.') ?></li>
-                        <li><?= gettext('Upgrades will be blocked until the database is moved to a supported version.') ?></li>
+                        <li><?= gettext('Administrators will see a warning on every page until the database is moved to a supported version.') ?></li>
                     </ul>
                     <p><?= gettext('We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target.') ?></p>
                     <label class="form-check mb-0">
                         <input class="form-check-input" type="checkbox" id="db-version-ack" name="ACKNOWLEDGE_UNSUPPORTED_DB" value="1">
-                        <span class="form-check-label"><?= gettext('I understand this database is unsupported and upgrades will be blocked') ?></span>
+                        <span class="form-check-label"><?= gettext('I understand this database is out of support') ?></span>
                     </label>
                 </div>
             </div>

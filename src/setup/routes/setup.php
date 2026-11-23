@@ -123,9 +123,20 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             ]);
         }
 
-        // An unsupported server version is not a failed connection: it installs after an acknowledgment.
-        $supported = DatabaseVersionService::check($connection['version'])['supported'];
-        if (!$supported &&!filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
+        $versionCheck = DatabaseVersionService::check($connection['version']);
+        if (!$versionCheck['installable']) {
+            TelemetryService::captureInstallFailure('database_too_old');
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => 'database_too_old',
+                'message' => DatabaseVersionService::getBlockMessage($connection['version']),
+            ]);
+        }
+
+        // A server below the supported floor is not a failed connection: it installs after an acknowledgment.
+        if (!$versionCheck['supported'] && !filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
             return SlimUtils::renderJSON($response, [
                 'valid'     => true,
                 'correct'   => true,
