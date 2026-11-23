@@ -170,6 +170,15 @@ TelemetryService::captureInstallFailure('schema_import_failed');
 Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 
 // With the fake connection live, base properties carry its database identity.
+// baseProperties() reads sLanguage, so give it a complete config map first.
+$configs->setValue(null, [
+    'sTelemetryLevel' => $value('install'),
+    'sInstallDataProfile' => $value('production'),
+    'sSystemID' => $value('church-guid'),
+    'sTelemetryLifecycleVersion' => $value('7.8.2'),
+    'sChurchCountry' => $value('US'),
+    'sLanguage' => $value('en_US'),
+]);
 $baseProperties = new \ReflectionMethod(TelemetryService::class, 'baseProperties');
 $base = $baseProperties->invoke(null);
 Assert::same('mariadb', $base['database_engine']);
