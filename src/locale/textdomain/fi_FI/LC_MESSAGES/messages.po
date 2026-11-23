@@ -26119,10 +26119,6 @@ msgstr "Maksut rahastoittain"
 msgid "Unknown Fund"
 msgstr "Tuntematon rahasto"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Pyydä palveluntarjoajaasi siirtämään tietokanta tuettuun versioon ja yritä sitten uudelleen."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26140,14 +26136,6 @@ msgstr "Vaadi shekin numero, kun shekkimaksuja kirjataan talletuksiin. Kun asetu
 #: 
 msgid "Require check number on check payments"
 msgstr "Vaadi shekin numero shekkimaksuissa"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Päivitystä ei aloitettu, joten mitään ei muutettu."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Tätä päivitystä ei voi suorittaa tietokannassasi."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28210,16 +28198,8 @@ msgid "Usually 3306."
 msgstr "Yleensä 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Suosittelemme pyytämään palveluntarjoajaasi vaihtamaan ennen asennusta, kun siirrettävää dataa ei vielä ole. MariaDB 10.11 on hyvä kohde."
-
-#: 
 msgid "Web address"
 msgstr "Verkko-osoite"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Voit asentaa nyt: ChurchCRM asentuu ja toimii."
 
 #: 
 msgid "Your main dashboard"
@@ -28240,10 +28220,6 @@ msgid "and {{count}} more"
 msgstr "ja {{count}} lisää"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Ylläpitäjät näkevät varoituksen jokaisella sivulla, kunnes tietokanta siirretään tuettuun versioon."
-
-#: 
 msgid "Database out of support"
 msgstr "Tietokanta ei ole tuettu"
 
@@ -28258,10 +28234,6 @@ msgstr "Miten löydät lokin"
 #: 
 msgid "How to install server locales"
 msgstr "Palvelimen kieliasetusten asentaminen"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Ymmärrän, että tätä tietokantaa ei tueta"
 
 #: 
 msgid "Last edited"
@@ -28282,12 +28254,4 @@ msgstr "Vahvista nyt"
 #: 
 msgid "View Giving History"
 msgstr "Näytä lahjoitushistoria"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Tietokantasi (%1$s %2$s) ei ole tuettu ja se voi olla vaarallinen. ChurchCRM toimii, mutta suosittelemme vahvasti isäntää, jossa on MariaDB %3$s+ tai MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Tietokantapalvelimesi (%1$s %2$s) on liian vanha ChurchCRM:lle, joka tarvitsee MySQL %3$s tai MariaDB %4$s tai uudemman."
 

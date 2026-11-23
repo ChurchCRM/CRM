@@ -26146,10 +26146,6 @@ msgstr "Pagos por fondo"
 msgid "Unknown Fund"
 msgstr "Fondo desconocido"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Pida a su proveedor de hosting que actualice la base de datos a una versión compatible y vuelva a intentarlo."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26167,14 +26163,6 @@ msgstr "Exigir un número de cheque al registrar pagos con cheque en los depósi
 #: 
 msgid "Require check number on check payments"
 msgstr "Exigir número de cheque en los pagos con cheque"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "La actualización no se inició, así que no se cambió nada."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Esta actualización no se puede ejecutar en su base de datos."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28244,16 +28232,8 @@ msgid "Usually 3306."
 msgstr "Normalmente 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Te recomendamos pedir a tu proveedor de alojamiento que haga el cambio antes de instalar, cuando aún no hay datos que trasladar. MariaDB 10.11 es una buena opción."
-
-#: 
 msgid "Web address"
 msgstr "Dirección web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Puedes instalar ahora: ChurchCRM se instalará y funcionará."
 
 #: 
 msgid "Your main dashboard"
@@ -28274,10 +28254,6 @@ msgid "and {{count}} more"
 msgstr "y {{count}} más"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Los administradores verán una advertencia en cada página hasta que la base de datos se mueva a una versión compatible."
-
-#: 
 msgid "Database out of support"
 msgstr "Base de datos sin soporte"
 
@@ -28292,10 +28268,6 @@ msgstr "Cómo encontrar el registro"
 #: 
 msgid "How to install server locales"
 msgstr "Cómo instalar las configuraciones regionales del servidor"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Entiendo que esta base de datos no tiene soporte"
 
 #: 
 msgid "Last edited"
@@ -28316,12 +28288,4 @@ msgstr "Verificar ahora"
 #: 
 msgid "View Giving History"
 msgstr "Ver historial de donativo"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Su base de datos (%1$s %2$s) no tiene soporte y podría ser insegura. ChurchCRM funcionará, pero recomendamos encarecidamente un proveedor con MariaDB %3$s+ o MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Su servidor de base de datos (%1$s %2$s) es demasiado antiguo para ChurchCRM, que necesita MySQL %3$s o MariaDB %4$s o posterior."
 

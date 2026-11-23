@@ -26215,10 +26215,6 @@ msgstr "Betalinger per fond"
 msgid "Unknown Fund"
 msgstr "Ukjent fond"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Be leverandøren av nettstedet ditt om å flytte databasen til en støttet versjon, og prøv deretter på nytt."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26236,14 +26232,6 @@ msgstr "Krev sjekknummer når sjekkbetalinger registreres på innskudd. Når det
 #: 
 msgid "Require check number on check payments"
 msgstr "Krev sjekknummer for sjekkbetalinger"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Oppgraderingen ble ikke startet, så ingenting ble endret."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Denne oppgraderingen kan ikke kjøres på databasen din."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28306,16 +28294,8 @@ msgid "Usually 3306."
 msgstr "Vanligvis 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Vi anbefaler at du ber verten din bytte før du installerer, mens det ikke finnes data å flytte. MariaDB 10.11 er et godt mål."
-
-#: 
 msgid "Web address"
 msgstr "Nettadresse"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Du kan installere nå: ChurchCRM vil installeres og kjøre."
 
 #: 
 msgid "Your main dashboard"
@@ -28336,10 +28316,6 @@ msgid "and {{count}} more"
 msgstr "og {{count}} til"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Administratorer vil se en advarsel på hver side til databasen er flyttet til en støttet versjon."
-
-#: 
 msgid "Database out of support"
 msgstr "Databasen støttes ikke"
 
@@ -28354,10 +28330,6 @@ msgstr "Slik finner du loggen"
 #: 
 msgid "How to install server locales"
 msgstr "Slik installerer du serverlokaler"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Jeg forstår at denne databasen ikke støttes"
 
 #: 
 msgid "Last edited"
@@ -28378,12 +28350,4 @@ msgstr "Bekreft nå"
 #: 
 msgid "View Giving History"
 msgstr "Vis gave-historie"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Databasen din (%1$s %2$s) støttes ikke og kan være usikker. ChurchCRM vil kjøre, men vi anbefaler sterkt en vert med MariaDB %3$s+ eller MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Databaseserveren din (%1$s %2$s) er for gammel for ChurchCRM, som trenger MySQL %3$s eller MariaDB %4$s og nyere."
 

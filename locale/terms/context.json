@@ -5,6 +5,12 @@
   "%d people could not be added and remain in your cart.": [
     "src/groups/routes/cart.php:113"
   ],
+  "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.": [
+    "src/setup/templates/setup-steps.php:197"
+  ],
+  "Database security risk": [
+    "src/setup/templates/setup-steps.php:195"
+  ],
   "Failed to add person to group": [
     "src/ChurchCRM/Service/GroupService.php:36",
     "src/ChurchCRM/Service/GroupService.php:117",
@@ -33,5 +39,8 @@
   ],
   "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": [
     "src/PersonEditor.php:830"
+  ],
+  "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+.": [
+    "src/ChurchCRM/Service/DatabaseVersionService.php:62"
   ]
 }

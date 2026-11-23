@@ -26154,10 +26154,6 @@ msgstr "ክፍያዎች በፈንድ"
 msgid "Unknown Fund"
 msgstr "ያልታወቀ ፈንድ"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "ዳታቤዙን ወደሚደገፍ ስሪት እንዲያዛውር አስተናጋጅዎን ይጠይቁ፣ ከዚያ እንደገና ይሞክሩ።"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26175,14 +26171,6 @@ msgstr "በተቀማጭ ገንዘብ መዝገቦች ላይ የቼክ ክፍያ�
 #: 
 msgid "Require check number on check payments"
 msgstr "ለቼክ ክፍያዎች የቼክ ቁጥር ያስገድዱ"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "ማሻሻያው አልተጀመረም፣ ስለዚህ ምንም አልተለወጠም።"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "ይህ ማሻሻያ በዳታቤዝዎ ላይ ሊሰራ አይችልም።"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28245,16 +28233,8 @@ msgid "Usually 3306."
 msgstr "አብዛኛውን ጊዜ 3306።"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "ከመጫንዎ በፊት፣ ለማዛወር ውሂብ በሌለበት ጊዜ፣ አስተናጋጅዎ እንዲቀይር መጠየቅን እንመክራለን። MariaDB 10.11 ጥሩ ኢላማ ነው።"
-
-#: 
 msgid "Web address"
 msgstr "የድረ ገጽ አድራሻ"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "አሁን መጫን ይችላሉ: ChurchCRM ይጫናል እና ይሰራል።"
 
 #: 
 msgid "Your main dashboard"
@@ -28275,10 +28255,6 @@ msgid "and {{count}} more"
 msgstr "እና {{count}} ተጨማሪ"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "አስተዳዳሪዎች ዳታቤዙ ወደሚደገፍ ሥሪት እስኪዘዋወር ድረስ በእያንዳንዱ ገጽ ላይ ማስጠንቀቂያ ያያሉ።"
-
-#: 
 msgid "Database out of support"
 msgstr "ዳታቤዝ ከድጋፍ ውጭ"
 
@@ -28293,10 +28269,6 @@ msgstr "ምዝገባ ማስታወሻውን እንዴት ማግኘት እንደ�
 #: 
 msgid "How to install server locales"
 msgstr "የሰርቨር ቦታ ቅምጦችን እንዴት መጫን እንደሚቻል"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "ይህ ዳታቤዝ ከድጋፍ ውጭ መሆኑን ተረድቻለሁ"
 
 #: 
 msgid "Last edited"
@@ -28317,12 +28289,4 @@ msgstr "አሁን ያረጋግጡ"
 #: 
 msgid "View Giving History"
 msgstr "የለገና ታሪክን ይመልከቱ"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "የእርስዎ ዳታቤዝ (%1$s %2$s) ከድጋፍ ውጭ ሲሆን ደህንነቱም ላይኖረው ይችላል። ChurchCRM ይሰራል፣ ግን MariaDB %3$s+ ወይም MySQL %4$s+ ያለው አስተናጋጅ በጥብቅ እንመክራለን።"
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "የእርስዎ የዳታቤዝ ሰርቨር (%1$s %2$s) ለChurchCRM በጣም ያረጀ ነው፤ MySQL %3$s ወይም MariaDB %4$s እና ከዚያ በኋላ ያስፈልገዋል።"
 

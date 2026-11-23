@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 15:41+0000\n"
+"POT-Creation-Date: 2026-11-23 17:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1405,7 +1405,7 @@ msgstr ""
 msgid "Administrators have every permission while its feature is turned on."
 msgstr ""
 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
 msgstr ""
 
 #, php-format
@@ -2074,9 +2074,6 @@ msgid "Ask someone to cover for you"
 msgstr ""
 
 msgid "Ask them"
-msgstr ""
-
-msgid "Ask your host to move the database to a supported version, then try again."
 msgstr ""
 
 msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
@@ -4783,6 +4780,9 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database security risk"
 msgstr ""
 
 msgid "Database user"
@@ -8808,9 +8808,6 @@ msgid "I can't"
 msgstr ""
 
 msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
-msgstr ""
-
-msgid "I understand this database is out of support"
 msgstr ""
 
 msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
@@ -17753,9 +17750,6 @@ msgstr ""
 msgid "The unconfirmed email has changed. Reload the page and try again."
 msgstr ""
 
-msgid "The upgrade was not started, so nothing changed."
-msgstr ""
-
 msgid "The user you added to that database. Not your hosting login."
 msgstr ""
 
@@ -18388,9 +18382,6 @@ msgid "This tool has no cancellation/replacement workflow; use your existing CRA
 msgstr ""
 
 msgid "This tool never changes these. Give each person their own email on their record."
-msgstr ""
-
-msgid "This upgrade cannot run on your database."
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
@@ -19993,9 +19984,6 @@ msgstr ""
 msgid "We emailed a link to %s. Use it to confirm your new email address."
 msgstr ""
 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr ""
-
 msgid "We sent a link to {{email}}. Your email changes when you use it."
 msgstr ""
 
@@ -20470,9 +20458,6 @@ msgstr ""
 msgid "You can create/delete sunday school group."
 msgstr ""
 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr ""
-
 msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
 msgstr ""
 
@@ -20713,17 +20698,13 @@ msgid "Your data is yours. To count installs, ChurchCRM reports that it was inst
 msgstr ""
 
 #, php-format
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr ""
 
 msgid "Your database already contains data"
 msgstr ""
 
 msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
-msgstr ""
-
-#, php-format
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."

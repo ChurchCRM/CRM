@@ -26255,10 +26255,6 @@ msgstr "依基金分類的付款"
 msgid "Unknown Fund"
 msgstr "未知基金"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "請聯絡您的主機服務商將資料庫遷移到受支援的版本，然後再試一次。"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26276,14 +26272,6 @@ msgstr "在存款記錄中登錄支票付款時要求填寫支票號碼。關閉
 #: 
 msgid "Require check number on check payments"
 msgstr "支票付款須填寫支票號碼"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "升級未開始，因此未做任何變更。"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "此升級無法在您的資料庫上執行。"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28339,16 +28327,8 @@ msgid "Usually 3306."
 msgstr "通常是 3306。"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "我們建議您在安裝前請主機商切換，此時還沒有資料需要遷移。MariaDB 10.11 是一個很好的目標。"
-
-#: 
 msgid "Web address"
 msgstr "網址"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "您現在可以安裝：ChurchCRM 將會安裝並執行。"
 
 #: 
 msgid "Your main dashboard"
@@ -28369,10 +28349,6 @@ msgid "and {{count}} more"
 msgstr "還有 {{count}} 個"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "在資料庫遷移到受支援的版本之前，管理員將在每個頁面上看到警告。"
-
-#: 
 msgid "Database out of support"
 msgstr "資料庫不受支援"
 
@@ -28387,10 +28363,6 @@ msgstr "如何查找日誌"
 #: 
 msgid "How to install server locales"
 msgstr "如何安裝伺服器地區設定"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "我了解此資料庫不受支援"
 
 #: 
 msgid "Last edited"
@@ -28411,12 +28383,4 @@ msgstr "立即驗證"
 #: 
 msgid "View Giving History"
 msgstr "檢視捐獻歷史"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "您的資料庫（%1$s %2$s）不受支援，可能不安全。ChurchCRM 仍可運行，但我們強烈推薦使用帶有 MariaDB %3$s+ 或 MySQL %4$s+ 的主機。"
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "您的資料庫伺服器（%1$s %2$s）對 ChurchCRM 來說太舊了，需要 MySQL %3$s 或 MariaDB %4$s 及更高版本。"
 

@@ -26129,10 +26129,6 @@ msgstr "Các khoản đóng góp theo Quỹ"
 msgid "Unknown Fund"
 msgstr "Quỹ không xác định"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Hãy yêu cầu nhà cung cấp hosting chuyển cơ sở dữ liệu sang phiên bản được hỗ trợ, rồi thử lại."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26150,14 +26146,6 @@ msgstr "Bắt buộc nhập số séc khi ghi nhận khoản thanh toán bằng 
 #: 
 msgid "Require check number on check payments"
 msgstr "Bắt buộc số séc khi thanh toán bằng séc"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Quá trình nâng cấp chưa được bắt đầu nên không có gì thay đổi."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Không thể chạy bản nâng cấp này trên cơ sở dữ liệu của bạn."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28213,16 +28201,8 @@ msgid "Usually 3306."
 msgstr "Thường là 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Chúng tôi khuyên bạn nên yêu cầu nhà cung cấp dịch vụ lưu trữ chuyển đổi trước khi cài đặt, khi chưa có dữ liệu nào cần di chuyển. MariaDB 10.11 là một lựa chọn tốt."
-
-#: 
 msgid "Web address"
 msgstr "Địa chỉ web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Bạn có thể cài đặt ngay bây giờ: ChurchCRM sẽ cài đặt và chạy."
 
 #: 
 msgid "Your main dashboard"
@@ -28243,10 +28223,6 @@ msgid "and {{count}} more"
 msgstr "và thêm {{count}}"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Quản trị viên sẽ thấy cảnh báo trên mọi trang cho đến khi cơ sở dữ liệu được chuyển sang phiên bản được hỗ trợ."
-
-#: 
 msgid "Database out of support"
 msgstr "Cơ sở dữ liệu không được hỗ trợ"
 
@@ -28261,10 +28237,6 @@ msgstr "Cách tìm nhật ký"
 #: 
 msgid "How to install server locales"
 msgstr "Cách cài đặt locale của máy chủ"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Tôi hiểu cơ sở dữ liệu này không được hỗ trợ"
 
 #: 
 msgid "Last edited"
@@ -28285,12 +28257,4 @@ msgstr "Xác minh ngay"
 #: 
 msgid "View Giving History"
 msgstr "Xem Lịch sử Quyên góp"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Cơ sở dữ liệu của bạn (%1$s %2$s) không được hỗ trợ và có thể không an toàn. ChurchCRM sẽ chạy, nhưng chúng tôi đặc biệt khuyên dùng máy chủ có MariaDB %3$s+ hoặc MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Máy chủ cơ sở dữ liệu của bạn (%1$s %2$s) quá cũ đối với ChurchCRM, vốn cần MySQL %3$s hoặc MariaDB %4$s trở lên."
 

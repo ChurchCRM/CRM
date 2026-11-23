@@ -26141,10 +26141,6 @@ msgstr "Uplate po fondu"
 msgid "Unknown Fund"
 msgstr "Nepoznati fond"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Zamolite svog pružatelja hostinga da bazu podataka prebaci na podržanu verziju, a zatim pokušajte ponovno."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26162,14 +26158,6 @@ msgstr "Zahtijevaj broj čeka pri bilježenju plaćanja čekom u uplatama. Kada 
 #: 
 msgid "Require check number on check payments"
 msgstr "Zahtijevaj broj čeka pri plaćanju čekom"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Nadogradnja nije pokrenuta, pa ništa nije promijenjeno."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Ova se nadogradnja ne može pokrenuti na vašoj bazi podataka."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28239,16 +28227,8 @@ msgid "Usually 3306."
 msgstr "Obično 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Preporučujemo da zamolite domaćina da se prebaci prije instalacije, dok još nema podataka za premještanje. MariaDB 10.11 dobar je cilj."
-
-#: 
 msgid "Web address"
 msgstr "Web-adresa"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Sada možete instalirati: ChurchCRM će se instalirati i raditi."
 
 #: 
 msgid "Your main dashboard"
@@ -28269,10 +28249,6 @@ msgid "and {{count}} more"
 msgstr "i još {{count}}"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Administratori će vidjeti upozorenje na svakoj stranici dok se baza podataka ne premjesti na podržanu verziju."
-
-#: 
 msgid "Database out of support"
 msgstr "Baza podataka nije podržana"
 
@@ -28287,10 +28263,6 @@ msgstr "Kako pronaći zapisnik"
 #: 
 msgid "How to install server locales"
 msgstr "Kako instalirati jezične postavke poslužitelja"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Razumijem da ova baza podataka nije podržana"
 
 #: 
 msgid "Last edited"
@@ -28311,12 +28283,4 @@ msgstr "Potvrdi sada"
 #: 
 msgid "View Giving History"
 msgstr "Prikaži povijest darivanja"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Vaša baza podataka (%1$s %2$s) nije podržana i možda nije sigurna. ChurchCRM će raditi, ali toplo preporučujemo pružatelja s MariaDB %3$s+ ili MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Vaš poslužitelj baze podataka (%1$s %2$s) prestar je za ChurchCRM, koji treba MySQL %3$s ili MariaDB %4$s i novije."
 

@@ -1,6 +1,8 @@
 {
   "%d people added successfully; %d people could not be added and remain in the cart.": "",
   "%d people could not be added and remain in your cart.": "",
+  "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.": "",
+  "Database security risk": "",
   "Failed to add person to group": "",
   "Group Assignment": "",
   "Retry Group Assignment": "",
@@ -8,5 +10,6 @@
   "Select one or more groups for this person.": "",
   "Select the groups you want to retry.": "",
   "The person was saved, but one or more group assignments failed. Select the groups below and retry.": "",
-  "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": ""
+  "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": "",
+  "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+.": ""
 }

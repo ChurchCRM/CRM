@@ -26115,10 +26115,6 @@ msgstr "Mga Pagbabayad ayon sa Pondo"
 msgid "Unknown Fund"
 msgstr "Hindi Kilalang Pondo"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Hilingin sa iyong host na ilipat ang database sa isang sinusuportahang bersyon, pagkatapos ay subukang muli."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26136,14 +26132,6 @@ msgstr "Mag-require ng numero ng tseke kapag nagtatala ng mga bayad na tseke sa 
 #: 
 msgid "Require check number on check payments"
 msgstr "Mag-require ng numero ng tseke sa mga bayad na tseke"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Hindi sinimulan ang upgrade, kaya walang nabago."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Hindi maaaring tumakbo ang upgrade na ito sa iyong database."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28206,16 +28194,8 @@ msgid "Usually 3306."
 msgstr "Karaniwan ay 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Inirerekomenda naming hilingin sa iyong host na magpalit bago ka mag-install, habang wala pang data na ililipat. Ang MariaDB 10.11 ay isang magandang target."
-
-#: 
 msgid "Web address"
 msgstr "Web address"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Maaari ka nang mag-install: mai-install at tatakbo ang ChurchCRM."
 
 #: 
 msgid "Your main dashboard"
@@ -28236,10 +28216,6 @@ msgid "and {{count}} more"
 msgstr "at {{count}} pa"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Makakakita ang mga administrator ng babala sa bawat pahina hanggang mailipat ang database sa isang sinusuportahang bersyon."
-
-#: 
 msgid "Database out of support"
 msgstr "Hindi na suportado ang database"
 
@@ -28254,10 +28230,6 @@ msgstr "Paano hanapin ang log"
 #: 
 msgid "How to install server locales"
 msgstr "Paano mag-install ng mga locale ng server"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Naiintindihan kong hindi suportado ang database na ito"
 
 #: 
 msgid "Last edited"
@@ -28278,12 +28250,4 @@ msgstr "I-verify ngayon"
 #: 
 msgid "View Giving History"
 msgstr "Tingnan ang Kasaysayan ng Pagbibigay"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Ang iyong database (%1$s %2$s) ay hindi suportado at maaaring hindi ligtas. Gagana ang ChurchCRM, ngunit mahigpit naming inirerekomenda ang host na may MariaDB %3$s+ o MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Ang iyong database server (%1$s %2$s) ay masyadong luma para sa ChurchCRM, na nangangailangan ng MySQL %3$s o MariaDB %4$s at mas bago."
 

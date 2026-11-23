@@ -26115,10 +26115,6 @@ msgstr "헌금 항목별 결제"
 msgid "Unknown Fund"
 msgstr "알 수 없는 헌금 항목"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "호스팅 업체에 데이터베이스를 지원되는 버전으로 옮겨 달라고 요청한 후 다시 시도하세요."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26136,14 +26132,6 @@ msgstr "입금 항목에 수표 결제를 기록할 때 수표 번호를 필수�
 #: 
 msgid "Require check number on check payments"
 msgstr "수표 결제 시 수표 번호 필수"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "업그레이드가 시작되지 않아 아무것도 변경되지 않았습니다."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "이 업그레이드는 사용 중인 데이터베이스에서 실행할 수 없습니다."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28199,16 +28187,8 @@ msgid "Usually 3306."
 msgstr "보통 3306입니다."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "이동할 데이터가 없는 설치 전에 호스트에게 전환을 요청하는 것이 좋습니다. MariaDB 10.11이 좋은 목표입니다."
-
-#: 
 msgid "Web address"
 msgstr "웹 주소"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "지금 설치할 수 있습니다: ChurchCRM이 설치되고 실행됩니다."
 
 #: 
 msgid "Your main dashboard"
@@ -28229,10 +28209,6 @@ msgid "and {{count}} more"
 msgstr "{{count}}개 더"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "데이터베이스가 지원되는 버전으로 이동될 때까지 관리자는 모든 페이지에서 경고를 보게 됩니다."
-
-#: 
 msgid "Database out of support"
 msgstr "데이터베이스가 지원되지 않음"
 
@@ -28247,10 +28223,6 @@ msgstr "로그를 찾는 방법"
 #: 
 msgid "How to install server locales"
 msgstr "서버 로케일 설치 방법"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "이 데이터베이스가 지원되지 않음을 이해합니다"
 
 #: 
 msgid "Last edited"
@@ -28271,12 +28243,4 @@ msgstr "지금 확인"
 #: 
 msgid "View Giving History"
 msgstr "기부 내역 보기"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "사용 중인 데이터베이스(%1$s %2$s)는 지원되지 않으며 안전하지 않을 수 있습니다. ChurchCRM은 실행되지만 MariaDB %3$s+ 또는 MySQL %4$s+를 제공하는 호스트를 강력히 권장합니다."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "사용 중인 데이터베이스 서버(%1$s %2$s)는 ChurchCRM에 너무 오래되었습니다. MySQL %3$s 또는 MariaDB %4$s 이상이 필요합니다."
 
