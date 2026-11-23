@@ -28264,3 +28264,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "na {{count}} zaidi"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Wasimamizi wataona onyo kwenye kila ukurasa hadi hifadhidata ihamishwe kwenye toleo linalotumika."
+
+#: 
+msgid "Database out of support"
+msgstr "Hifadhidata haitumiki"
+
+#: 
+msgid "Deactivated"
+msgstr "Imezimwa"
+
+#: 
+msgid "How to find the log"
+msgstr "Jinsi ya kupata kumbukumbu"
+
+#: 
+msgid "How to install server locales"
+msgstr "Jinsi ya kusakinisha lugha za seva"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Naelewa hifadhidata hii haitumiki"
+
+#: 
+msgid "Last edited"
+msgstr "Imehaririwa mwisho"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Haikusakinishwa kwenye seva, na hakuna lugha mbadala ya Kiingereza iliyosakinishwa pia, kwa hivyo kiolesura kitaonyeshwa kwa Kiingereza."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Kumbukumbu ya ChurchCRM inarekodi sababu maalum. Ondoa majina kabla ya kuishiriki."
+
+#: 
+msgid "Verify now"
+msgstr "Thibitisha sasa"
+
+#: 
+msgid "View Giving History"
+msgstr "Angalia historia ya utoaji"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Hifadhidata yako (%1$s %2$s) haitumiki na inaweza kuwa si salama. ChurchCRM itafanya kazi, lakini tunapendekeza sana mwenyeji aliye na MariaDB %3$s+ au MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Seva yako ya hifadhidata (%1$s %2$s) ni ya zamani mno kwa ChurchCRM, inayohitaji MySQL %3$s au MariaDB %4$s na mpya zaidi."
+

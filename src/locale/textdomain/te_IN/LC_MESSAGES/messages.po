@@ -28246,3 +28246,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ఇంకా {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "డేటాబేస్ మద్దతు ఉన్న వెర్షన్‌కు తరలించబడే వరకు నిర్వాహకులు ప్రతి పేజీలో హెచ్చరికను చూస్తారు."
+
+#: 
+msgid "Database out of support"
+msgstr "డేటాబేస్ మద్దతు లేదు"
+
+#: 
+msgid "Deactivated"
+msgstr "నిష్క్రియం చేయబడింది"
+
+#: 
+msgid "How to find the log"
+msgstr "లాగ్‌ను ఎలా కనుగొనాలి"
+
+#: 
+msgid "How to install server locales"
+msgstr "సర్వర్ లోకేళ్లను ఎలా ఇన్‌స్టాల్ చేయాలి"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "ఈ డేటాబేస్‌కు మద్దతు లేదని నేను అర్థం చేసుకున్నాను"
+
+#: 
+msgid "Last edited"
+msgstr "చివరిగా సవరించబడిన"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "సర్వర్‌లో ఇన్‌స్టాల్ చేయబడలేదు, ఆంగ్ల ఫాల్‌బ్యాక్ లోకేల్ కూడా ఇన్‌స్టాల్ చేయబడలేదు, కాబట్టి ఇంటర్‌ఫేస్ ఆంగ్లంలో చూపబడుతుంది."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM లాగ్ నిర్దిష్ట కారణాన్ని నమోదు చేస్తుంది. పంచుకునే ముందు పేర్లను తొలగించండి."
+
+#: 
+msgid "Verify now"
+msgstr "ఇప్పుడు ధృవీకరించండి"
+
+#: 
+msgid "View Giving History"
+msgstr "దానం చరిత్రను వీక్షించండి"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "మీ డేటాబేస్ (%1$s %2$s) మద్దతు లేదు మరియు అసురక్షితంగా ఉండవచ్చు. ChurchCRM నడుస్తుంది, కానీ MariaDB %3$s+ లేదా MySQL %4$s+ ఉన్న హోస్ట్‌ను మేము గట్టిగా సిఫార్సు చేస్తున్నాము."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "మీ డేటాబేస్ సర్వర్ (%1$s %2$s) ChurchCRM కోసం చాలా పాతది, దీనికి MySQL %3$s లేదా MariaDB %4$s మరియు తర్వాతివి అవసరం."
+

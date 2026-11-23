@@ -28291,3 +28291,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "és még {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "A rendszergazdák minden oldalon figyelmeztetést fognak látni, amíg az adatbázis át nem kerül egy támogatott verzióra."
+
+#: 
+msgid "Database out of support"
+msgstr "Az adatbázis nem támogatott"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktiválva"
+
+#: 
+msgid "How to find the log"
+msgstr "Hogyan találja meg a naplót"
+
+#: 
+msgid "How to install server locales"
+msgstr "A kiszolgáló területi beállításainak telepítése"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Megértem, hogy ez az adatbázis nem támogatott"
+
+#: 
+msgid "Last edited"
+msgstr "Utoljára szerkesztve"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nincs telepítve a szerveren, és angol tartalék területi beállítás sincs telepítve, így a felület angolul jelenik meg."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "A ChurchCRM napló rögzíti a konkrét okot. Megosztás előtt távolítsa el a neveket."
+
+#: 
+msgid "Verify now"
+msgstr "Ellenőrzés most"
+
+#: 
+msgid "View Giving History"
+msgstr "Adományi előzmények megtekintése"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Az adatbázisa (%1$s %2$s) nem támogatott, és nem biztonságos lehet. A ChurchCRM működni fog, de erősen ajánlunk egy MariaDB %3$s+ vagy MySQL %4$s+ verziót kínáló tárhelyet."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Az adatbázis-kiszolgálója (%1$s %2$s) túl régi a ChurchCRM számára, amelynek MySQL %3$s vagy MariaDB %4$s és újabb szükséges."
+

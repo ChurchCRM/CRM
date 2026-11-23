@@ -28268,3 +28268,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "en {{count}} meer"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Beheerders sal op elke bladsy 'n waarskuwing sien totdat die databasis na 'n ondersteunde weergawe geskuif is."
+
+#: 
+msgid "Database out of support"
+msgstr "Databasis word nie ondersteun nie"
+
+#: 
+msgid "Deactivated"
+msgstr "Gedeaktiveer"
+
+#: 
+msgid "How to find the log"
+msgstr "Hoe om die log te vind"
+
+#: 
+msgid "How to install server locales"
+msgstr "Hoe om bediener-lokale te installeer"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ek verstaan hierdie databasis word nie ondersteun nie"
+
+#: 
+msgid "Last edited"
+msgstr "Laas geredigeer"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nie op die bediener geïnstalleer nie, en geen Engelse terugval-lokaal is ook geïnstalleer nie, dus sal die koppelvlak in Engels vertoon."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Die ChurchCRM-log teken die spesifieke rede aan. Verwyder name voordat jy dit deel."
+
+#: 
+msgid "Verify now"
+msgstr "Verifieer nou"
+
+#: 
+msgid "View Giving History"
+msgstr "Bekyk Gawinggeschiedenis"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Jou databasis (%1$s %2$s) word nie ondersteun nie en is dalk onveilig. ChurchCRM sal werk, maar ons beveel 'n gasheer met MariaDB %3$s+ of MySQL %4$s+ sterk aan."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Jou databasisbediener (%1$s %2$s) is te oud vir ChurchCRM, wat MySQL %3$s of MariaDB %4$s en later benodig."
+

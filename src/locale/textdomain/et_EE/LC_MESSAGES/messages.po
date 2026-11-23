@@ -28267,3 +28267,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ja veel {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administraatorid näevad igal lehel hoiatust, kuni andmebaas viiakse üle toetatud versioonile."
+
+#: 
+msgid "Database out of support"
+msgstr "Andmebaas ei ole toetatud"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktiveeritud"
+
+#: 
+msgid "How to find the log"
+msgstr "Kuidas logi leida"
+
+#: 
+msgid "How to install server locales"
+msgstr "Kuidas installida serveri lokaate"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Saan aru, et seda andmebaasi ei toetata"
+
+#: 
+msgid "Last edited"
+msgstr "Viimati muudetud"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Pole serverile installitud ja installitud pole ka ingliskeelset varulokaati, nii et liides kuvatakse inglise keeles."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM logi salvestab konkreetse põhjuse. Eemaldage enne jagamist nimed."
+
+#: 
+msgid "Verify now"
+msgstr "Kinnita kohe"
+
+#: 
+msgid "View Giving History"
+msgstr "Vaata annetuste ajalugu"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Teie andmebaas (%1$s %2$s) ei ole toetatud ja võib olla ohtlik. ChurchCRM töötab, kuid soovitame tungivalt majutust MariaDB %3$s+ või MySQL %4$s+ versiooniga."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Teie andmebaasiserver (%1$s %2$s) on ChurchCRM jaoks liiga vana, mis vajab MySQL %3$s või MariaDB %4$s ja uuemat."
+

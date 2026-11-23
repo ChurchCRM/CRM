@@ -28268,3 +28268,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "και {{count}} ακόμη"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Οι διαχειριστές θα βλέπουν μια προειδοποίηση σε κάθε σελίδα μέχρι η βάση δεδομένων να μεταφερθεί σε μια υποστηριζόμενη έκδοση."
+
+#: 
+msgid "Database out of support"
+msgstr "Η βάση δεδομένων δεν υποστηρίζεται"
+
+#: 
+msgid "Deactivated"
+msgstr "Απενεργοποιήθηκε"
+
+#: 
+msgid "How to find the log"
+msgstr "Πώς να βρείτε το αρχείο καταγραφής"
+
+#: 
+msgid "How to install server locales"
+msgstr "Πώς να εγκαταστήσετε τις τοπικές ρυθμίσεις του διακομιστή"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Κατανοώ ότι αυτή η βάση δεδομένων δεν υποστηρίζεται"
+
+#: 
+msgid "Last edited"
+msgstr "Τελευταία επεξεργασία"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Δεν είναι εγκατεστημένο στον διακομιστή, και δεν είναι εγκατεστημένη ούτε εφεδρική τοπική ρύθμιση στα Αγγλικά, οπότε η διεπαφή θα εμφανίζεται στα Αγγλικά."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Το αρχείο καταγραφής του ChurchCRM καταγράφει τον συγκεκριμένο λόγο. Αφαιρέστε τα ονόματα πριν το κοινοποιήσετε."
+
+#: 
+msgid "Verify now"
+msgstr "Επαλήθευση τώρα"
+
+#: 
+msgid "View Giving History"
+msgstr "Προβολή Ιστορίας Παροχής"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Η βάση δεδομένων σας (%1$s %2$s) δεν υποστηρίζεται και ενδέχεται να μην είναι ασφαλής. Το ChurchCRM θα λειτουργήσει, αλλά συνιστούμε ανεπιφύλακτα έναν πάροχο με MariaDB %3$s+ ή MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Ο διακομιστής βάσης δεδομένων σας (%1$s %2$s) είναι πολύ παλιός για το ChurchCRM, το οποίο χρειάζεται MySQL %3$s ή MariaDB %4$s και νεότερη έκδοση."
+

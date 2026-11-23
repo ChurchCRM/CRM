@@ -28353,3 +28353,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "och {{count}} till"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratörer kommer att se en varning på varje sida tills databasen flyttas till en version som stöds."
+
+#: 
+msgid "Database out of support"
+msgstr "Databasen stöds inte"
+
+#: 
+msgid "Deactivated"
+msgstr "Inaktiverad"
+
+#: 
+msgid "How to find the log"
+msgstr "Så här hittar du loggen"
+
+#: 
+msgid "How to install server locales"
+msgstr "Så här installerar du serverlokaler"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Jag förstår att den här databasen inte stöds"
+
+#: 
+msgid "Last edited"
+msgstr "Senast redigerad"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Inte installerat på servern, och ingen engelsk reservlokal är installerad heller, så gränssnittet visas på engelska."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM-loggen registrerar den specifika orsaken. Ta bort namn innan du delar den."
+
+#: 
+msgid "Verify now"
+msgstr "Verifiera nu"
+
+#: 
+msgid "View Giving History"
+msgstr "Visa givningshistorik"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Din databas (%1$s %2$s) stöds inte och kan vara osäker. ChurchCRM kommer att köras, men vi rekommenderar starkt en värd med MariaDB %3$s+ eller MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Din databasserver (%1$s %2$s) är för gammal för ChurchCRM, som behöver MySQL %3$s eller MariaDB %4$s och senare."
+
