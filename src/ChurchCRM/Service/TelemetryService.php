@@ -6,6 +6,7 @@ use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
 use Propel\Runtime\Propel;
@@ -92,7 +93,7 @@ class TelemetryService
             return;
         }
 
-        $systemId = SystemConfig::getValue('sSystemID');
+        $systemId = self::installId() ?? '';
         if ($systemId === '') {
             return;
         }
@@ -240,13 +241,12 @@ class TelemetryService
     ];
 
     /**
-     * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
-     * document root's device and inode, which hold no server name or path, so repeated attempts on one
-     * server count as one installation. Sent at every level.
+     * A failed first install has no configuration yet, but it has the system ID file, so its attempts and the
+     * install that finally succeeds share one ID. Sent at every level.
      */
     public static function captureInstallFailure(string $reason): void
     {
-        $installId = self::unconfiguredInstallId();
+        $installId = self::installId();
         if ($installId === null) {
             return;
         }
@@ -264,7 +264,7 @@ class TelemetryService
      */
     public static function captureRequirementsFailure(array $failedRequirements): void
     {
-        $installId = self::unconfiguredInstallId();
+        $installId = self::installId();
         sort($failedRequirements);
         if ($installId === null || !self::firstLogToday('requirements|' . implode('|', $failedRequirements))) {
             return;
@@ -357,16 +357,34 @@ class TelemetryService
             || !self::firstLogToday('version_mismatch|' . $state . '|' . $dbVersion)) {
             return;
         }
-        $systemId = SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        $installId = self::installId();
+        if ($installId === null) {
+            return;
+        }
         self::capture('version_mismatch', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'db_version' => $dbVersion,
             'mismatch_state' => $state,
-        ]), $systemId !== '' ? $systemId : self::unconfiguredInstallId());
+        ]), $installId);
+    }
+
+    /** The system ID file, written from sSystemID when lost; the document root hash only when the file cannot be kept. */
+    private static function installId(): ?string
+    {
+        if (self::installProfile() === 'test') {
+            return null;
+        }
+        try {
+            $storedId = SystemConfig::isInitialized() ? (string) SystemConfig::getValue('sSystemID') : '';
+        } catch (\Throwable) {
+            $storedId = '';
+        }
+
+        return SystemIdentity::ensure($storedId) ?? self::unconfiguredInstallId();
     }
 
     /**
-     * An installation ID for events sent before configuration exists: hashed from the document root's device
-     * and inode, which hold no server name or path, so repeated attempts on one server count as one installation.
+     * Hashed from the document root's device and inode, which hold no server name or path, so repeated
+     * attempts on a server that cannot write the system ID file still count as one installation.
      */
     private static function unconfiguredInstallId(): ?string
     {
@@ -621,7 +639,7 @@ class TelemetryService
             return true;
         }
 
-        $distinctId ??= SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        $distinctId ??= self::installId() ?? '';
         if ($distinctId === '') {
             return false;
         }

@@ -20,6 +20,7 @@ src/vendor/
 # docker/Config.php, but excluding it here prevents any host DB credentials from
 # appearing in an intermediate build layer.
 src/Include/Config.php
+src/Include/SystemID.php
 
 # Application runtime state
 src/logs/
