@@ -126,6 +126,8 @@ class Bootstrapper
                 TelemetryService::captureInstallFailure($e instanceof SQLImportException ? 'schema_import_failed' : 'other');
                 throw $e;
             }
+        } else {
+            self::waitForSchemaInstall();
         }
         self::initSession();
         
@@ -491,17 +493,46 @@ class Bootstrapper
             return true; // This line won't be reached due to systemFailure() calling exit()
         }
     }
+    private static function installLockName(): string
+    {
+        return 'churchcrm-install-' . self::$databaseName;
+    }
+
+    /** A request that arrives mid-install sees a partial schema with no version row; let the install finish first. */
+    private static function waitForSchemaInstall(): void
+    {
+        $connection = Propel::getConnection();
+        $inUse = $connection->prepare('SELECT IS_USED_LOCK(?)');
+        $inUse->execute([self::installLockName()]);
+        if ($inUse->fetchColumn() === null) {
+            return;
+        }
+        $connection->prepare('SELECT GET_LOCK(?, 60)')->execute([self::installLockName()]);
+        $connection->prepare('SELECT RELEASE_LOCK(?)')->execute([self::installLockName()]);
+    }
+
     private static function installChurchCRMSchema(): void
     {
-        self::$bootStrapLogger->info("Installing ChurchCRM Schema");
         $connection = Propel::getConnection();
-        $version = new Version();
-        $version->setVersion(VersionUtils::getInstalledVersion());
-        $version->setUpdateStart(new \DateTime());
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/install/Install.sql', $connection);
-        $version->setUpdateEnd(new \DateTime());
-        $version->save();
-        self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . VersionUtils::getInstalledVersion());
+        // Requests that find the database empty at the same moment (a page's background
+        // calls right after a reset) must not import the schema twice.
+        $lockName = self::installLockName();
+        $connection->prepare('SELECT GET_LOCK(?, 60)')->execute([$lockName]);
+        try {
+            if (!self::isDatabaseEmpty()) {
+                return;
+            }
+            self::$bootStrapLogger->info("Installing ChurchCRM Schema");
+            $version = new Version();
+            $version->setVersion(VersionUtils::getInstalledVersion());
+            $version->setUpdateStart(new \DateTime());
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/install/Install.sql', $connection);
+            $version->setUpdateEnd(new \DateTime());
+            $version->save();
+            self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . VersionUtils::getInstalledVersion());
+        } finally {
+            $connection->prepare('SELECT RELEASE_LOCK(?)')->execute([$lockName]);
+        }
     }
     /**
      * Initialize PHP session with secure settings

@@ -24,6 +24,19 @@ class MenuRenderer
         }
     }
 
+    /** The Setup Dashboard and its three paths, while the church has no name yet. */
+    public static function renderSetupMenu(): void
+    {
+        foreach ([
+            new MenuItem(gettext('Setup Dashboard'), 'admin/setup', true, 'fa-house'),
+            new MenuItem(gettext('Explore with Demo Data'), 'admin/setup?explore=1', true, 'fa-flask'),
+            new MenuItem(gettext('Set Up Your Church'), 'admin/system/church-info', true, 'fa-church'),
+            new MenuItem(gettext('Restore a Backup'), 'admin/system/restore', true, 'fa-upload'),
+        ] as $menuItem) {
+            self::renderMenuItem($menuItem);
+        }
+    }
+
     private static function renderMenuItem(MenuItem $menuItem, bool $nested = false): void
     {
         $isActive = $menuItem->isActive();

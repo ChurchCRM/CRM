@@ -221,14 +221,14 @@ Assert::same(0, $sent);
 putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1');
 $demoConfig = json_decode(file_get_contents(APP_ROOT . '/admin/demo/config.json'), true, 512, JSON_THROW_ON_ERROR);
 $demoSettings = [];
-foreach (array_unique(array_merge(array_keys($demoConfig), ['sInstallDataProfile', 'sTelemetryLevel', 'bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowVolunteer', 'sLogLevel'])) as $key) {
+foreach (array_unique(array_merge(array_keys($demoConfig), ['sInstallDataProfile', 'sTelemetryLevel', 'bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bEnabledFundraiser', 'bPortalShowVolunteer', 'sLogLevel'])) as $key) {
     $demoSettings[$key] = $value('');
 }
 $configs->setValue(null, $demoSettings);
 $demoImport = new \ReflectionMethod(DemoDataService::class, 'importSystemConfig');
 $demoService = new DemoDataService();
 $demoImport->invoke($demoService);
-Assert::same('', SystemConfig::getValue('sTelemetryLevel'));
+Assert::same('full', SystemConfig::getValue('sTelemetryLevel'));
 SystemConfig::setValue('sInstallDataProfile', 'demo');
 Assert::same('test', TelemetryService::installProfile());
 putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');

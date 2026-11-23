@@ -7,6 +7,7 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\EmailLogService;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -115,6 +116,7 @@ $app->post('/email', function (Request $request, Response $response): Response {
         );
     }
 
+    $emailWorkedBefore = SystemConfig::isEmailEnabled();
     foreach (['bEnabledEmail', 'bPHPMailerAutoTLS', 'bSMTPAuth'] as $name) {
         SystemConfig::setValue($name, $settings[$name] ? '1' : '0');
     }
@@ -127,7 +129,9 @@ $app->post('/email', function (Request $request, Response $response): Response {
         SystemConfig::setValue('sSMTPPass', $password);
     }
 
-    FlashService::set(gettext('Email settings saved successfully'));
+    FlashService::set(InstallSetupService::turnOnMemberSignInWhenEmailStarts($emailWorkedBefore)
+        ? gettext('Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email.')
+        : gettext('Email settings saved successfully'));
 
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/admin/email')

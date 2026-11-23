@@ -24,5 +24,8 @@
   "plugin.holidays.countries": "USA",
   "plugin.holidays.categories": "official,religious",
   "bEnabledEmail": "0",
-  "sTelemetryLevel": "full"
+  "sTelemetryLevel": "full",
+  "bMemberSignIn": "1",
+  "bAllowLoginAsPerson": "1",
+  "bPortalShowDirectory": "1"
 }
