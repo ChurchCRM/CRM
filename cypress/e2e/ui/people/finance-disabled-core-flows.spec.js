@@ -54,9 +54,7 @@ const walkCoreFlows = (familyName, street, updatedStreet) => {
         cy.get("#family-address-card").should("contain.text", street);
         cy.get("#nav-item-giving").should("not.exist");
         cy.get("#family-giving-summary").should("not.exist");
-        cy.contains("Nora").should("be.visible");
-
-        cy.get('a[href*="/people/view/"]').first().click();
+        cy.contains("a", "Nora").click();
         cy.location("pathname").should("match", /\/people\/view\/\d+$/);
         cy.get("h2.page-title").should("contain.text", "Nora");
         cy.get("#nav-item-giving").should("not.exist");
@@ -69,7 +67,8 @@ const walkCoreFlows = (familyName, street, updatedStreet) => {
 
         cy.visit("/people/dashboard");
         cy.location("pathname").should("include", "/people/dashboard");
-        cy.contains("Families");
+        cy.get("#familyCountDashboard").should("be.visible");
+        cy.get("#peopleStatsDashboard").should("be.visible");
         cy.get("#depositChartRow").should("not.exist");
 
         cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
