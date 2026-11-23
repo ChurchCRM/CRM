@@ -22533,10 +22533,6 @@ msgid "This email batch was queued by another user"
 msgstr "Hierdie e-posbondel is deur ’n ander gebruiker in die waglys geplaas"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Ná die invoer kan u Stel die databasis terug op die admin-dashboard gebruik om alle data te wis en oor te begin. U toepassingsopstelling bly behoue."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demodata word ingevoer..."
 

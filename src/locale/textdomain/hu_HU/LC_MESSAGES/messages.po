@@ -22556,10 +22556,6 @@ msgid "This email batch was queued by another user"
 msgstr "Ezt az e-mail-köteget egy másik felhasználó állította sorba"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Importálás után az adminisztrátori irányítópulton az Adatbázis visszaállítása segítségével törölheti az összes adatot, és újrakezdheti. Az alkalmazás beállításai megmaradnak."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Bemutatóadatok importálása..."
 

@@ -22503,10 +22503,6 @@ msgid "This email batch was queued by another user"
 msgstr "Kelompok surel ini dimasukkan antrean oleh pengguna lain"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Setelah mengimpor, Anda dapat memakai Atur Ulang Basis Data di Dasbor Admin untuk menghapus semua data dan mulai dari awal. Konfigurasi aplikasi Anda tetap disimpan."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Mengimpor data contoh..."
 

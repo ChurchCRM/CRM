@@ -22529,10 +22529,6 @@ msgid "This email batch was queued by another user"
 msgstr "Kundi hili la barua pepe liliwekwa kwenye foleni na mtumiaji mwingine"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Baada ya kuingiza, unaweza kutumia Weka upya Hifadhidata kwenye Dashibodi ya Msimamizi kufuta data yote na kuanza upya. Usanidi wa programu yako utahifadhiwa."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Inaingiza data ya onyesho..."
 

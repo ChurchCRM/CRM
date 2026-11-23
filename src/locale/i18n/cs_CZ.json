@@ -5488,7 +5488,6 @@
   "Still queued, to be sent automatically: {{total}}": "Stále ve frontě, k automatickému odeslání: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Fronta byla vymazána. Zprávy, které nebudou odeslány: {{total}}",
   "This email batch was queued by another user": "Tuto dávku e-mailů zařadil do fronty jiný uživatel",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Po importu můžete na řídicím panelu správce použít Obnovit databázi, vymazat všechna data a začít znovu. Konfigurace aplikace zůstane zachována.",
   "Importing demo data...": "Importují se ukázková data...",
   "Please do not refresh or navigate away": "Neobnovujte stránku ani neodcházejte jinam",
   "Skip to main content": "Přeskočit na hlavní obsah",

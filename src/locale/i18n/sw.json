@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Bado kwenye foleni, itatumwa kiotomatiki: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Foleni imefutwa. Ujumbe usiotumwa: {{total}}",
   "This email batch was queued by another user": "Kundi hili la barua pepe liliwekwa kwenye foleni na mtumiaji mwingine",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Baada ya kuingiza, unaweza kutumia Weka upya Hifadhidata kwenye Dashibodi ya Msimamizi kufuta data yote na kuanza upya. Usanidi wa programu yako utahifadhiwa.",
   "Importing demo data...": "Inaingiza data ya onyesho...",
   "Please do not refresh or navigate away": "Tafadhali usionyeshe upya wala usiondoke ukurasa",
   "Skip to main content": "Ruka hadi maudhui makuu",

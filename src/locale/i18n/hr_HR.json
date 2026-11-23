@@ -5488,7 +5488,6 @@
   "Still queued, to be sent automatically: {{total}}": "Još u redu, za automatsko slanje: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Red je očišćen. Poruke koje neće biti poslane: {{total}}",
   "This email batch was queued by another user": "Ovu skupinu e-pošte stavio je u red drugi korisnik",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Nakon uvoza možete na nadzornoj ploči administratora upotrijebiti Ponovno postavljanje baze podataka da obrišete sve podatke i počnete ispočetka. Konfiguracija aplikacije bit će sačuvana.",
   "Importing demo data...": "Uvoz demonstracijskih podataka...",
   "Please do not refresh or navigate away": "Nemojte osvježavati stranicu ni odlaziti drugamo",
   "Skip to main content": "Preskoči na glavni sadržaj",

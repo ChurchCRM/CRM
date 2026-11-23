@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Yhä jonossa, lähetetään automaattisesti: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Jono tyhjennettiin. Viestejä, joita ei lähetetä: {{total}}",
   "This email batch was queued by another user": "Tämän sähköpostierän jonoon lisäsi toinen käyttäjä",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Tuonnin jälkeen voit tyhjentää kaikki tiedot ja aloittaa alusta järjestelmänvalvojan koontinäytön Palauta tietokanta -toiminnolla. Sovelluksen asetukset säilyvät.",
   "Importing demo data...": "Demotietoja tuodaan...",
   "Please do not refresh or navigate away": "Älä päivitä sivua äläkä siirry muualle",
   "Skip to main content": "Siirry pääsisältöön",

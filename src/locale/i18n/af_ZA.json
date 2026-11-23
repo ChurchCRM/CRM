@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Nog in die waglys, word outomaties gestuur: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Die waglys is leeggemaak. Boodskappe wat nie gestuur sal word nie: {{total}}",
   "This email batch was queued by another user": "Hierdie e-posbondel is deur ’n ander gebruiker in die waglys geplaas",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Ná die invoer kan u Stel die databasis terug op die admin-dashboard gebruik om alle data te wis en oor te begin. U toepassingsopstelling bly behoue.",
   "Importing demo data...": "Demodata word ingevoer...",
   "Please do not refresh or navigate away": "Moet asseblief nie verfris of weggaan nie",
   "Skip to main content": "Spring na hoofinhoud",

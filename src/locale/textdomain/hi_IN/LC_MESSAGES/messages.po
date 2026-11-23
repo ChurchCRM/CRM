@@ -22502,10 +22502,6 @@ msgid "This email batch was queued by another user"
 msgstr "यह ईमेल समूह किसी अन्य उपयोगकर्ता ने कतार में रखा"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "आयात के बाद, सारा आँकड़ा मिटाकर नए सिरे से शुरू करने के लिए प्रशासक पटल पर आँकड़ाकोष साफ़ करें का उपयोग कर सकते हैं। आपके अनुप्रयोग का विन्यास बना रहेगा।"
-
-#: 
 msgid "Importing demo data..."
 msgstr "नमूना आँकड़ा आयात हो रहा है..."
 

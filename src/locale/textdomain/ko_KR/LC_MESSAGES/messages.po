@@ -22500,10 +22500,6 @@ msgid "This email batch was queued by another user"
 msgstr "이 이메일 일괄 발송은 다른 사용자가 대기열에 넣었습니다"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "가져온 뒤 관리 대시보드의 데이터베이스 초기화로 모든 데이터를 지우고 새로 시작할 수 있습니다. 응용 프로그램 설정은 유지됩니다."
-
-#: 
 msgid "Importing demo data..."
 msgstr "예시 데이터를 가져오는 중..."
 

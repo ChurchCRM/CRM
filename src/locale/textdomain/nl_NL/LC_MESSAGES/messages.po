@@ -22503,10 +22503,6 @@ msgid "This email batch was queued by another user"
 msgstr "Deze e-mailreeks is door een andere gebruiker in de wachtrij geplaatst"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Na het importeren kunt u Database resetten op het beheerdashboard gebruiken om alle gegevens te wissen en opnieuw te beginnen. De configuratie van de toepassing blijft behouden."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demogegevens importeren..."
 

@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "仍在排队、将自动发送：{{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "队列已清空。将不会发送的邮件：{{total}}",
   "This email batch was queued by another user": "这批邮件是由另一位用户加入队列的",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "导入之后，可以在管理仪表板上使用「重置数据库」清除全部数据并重新开始。应用程序配置会保留。",
   "Importing demo data...": "正在导入示例数据...",
   "Please do not refresh or navigate away": "请不要刷新或离开此页",
   "Skip to main content": "跳到主要内容",

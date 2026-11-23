@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Nasa pila pa, ipapadala nang awtomatiko: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Na-clear ang pila. Mga mensaheng hindi ipapadala: {{total}}",
   "This email batch was queued by another user": "Ang pangkat ng email na ito ay inilagay sa pila ng ibang gumagamit",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Pagkatapos mag-import, maaari mong gamitin ang I-reset ang imbakan ng datos sa Dasbord ng Admin upang burahin ang lahat ng datos at magsimulang muli. Mananatili ang konfigurasyon ng aplikasyon.",
   "Importing demo data...": "Ini-import ang datos na panturo...",
   "Please do not refresh or navigate away": "Huwag mag-refresh o umalis sa pahina",
   "Skip to main content": "Laktawan papunta sa pangunahing nilalaman",

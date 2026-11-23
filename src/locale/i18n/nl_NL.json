@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Nog in de wachtrij, wordt automatisch verzonden: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "De wachtrij is geleegd. Berichten die niet worden verzonden: {{total}}",
   "This email batch was queued by another user": "Deze e-mailreeks is door een andere gebruiker in de wachtrij geplaatst",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Na het importeren kunt u Database resetten op het beheerdashboard gebruiken om alle gegevens te wissen en opnieuw te beginnen. De configuratie van de toepassing blijft behouden.",
   "Importing demo data...": "Demogegevens importeren...",
   "Please do not refresh or navigate away": "Vernieuw de pagina niet en ga niet weg",
   "Skip to main content": "Naar hoofdinhoud springen",

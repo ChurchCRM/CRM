@@ -22472,10 +22472,6 @@ msgid "This email batch was queued by another user"
 msgstr "このメール一括送信は別のユーザーが送信待ちにしました"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "取り込み後、管理画面の「データベースを初期化」ですべてのデータを消去してやり直せます。アプリケーションの設定は残ります。"
-
-#: 
 msgid "Importing demo data..."
 msgstr "サンプルデータを取り込んでいます..."
 

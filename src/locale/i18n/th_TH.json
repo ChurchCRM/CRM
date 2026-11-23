@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "ยังอยู่ในคิว จะส่งโดยอัตโนมัติ: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "ล้างคิวแล้ว ข้อความที่จะไม่ถูกส่ง: {{total}}",
   "This email batch was queued by another user": "ชุดอีเมลนี้ถูกใส่คิวโดยผู้ใช้อื่น",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "หลังจากนำเข้า คุณใช้รีเซ็ตฐานข้อมูลบนแดชบอร์ดผู้ดูแลระบบเพื่อล้างข้อมูลทั้งหมดและเริ่มใหม่ได้ การกำหนดค่าแอปพลิเคชันจะยังคงอยู่",
   "Importing demo data...": "กำลังนำเข้าข้อมูลตัวอย่าง...",
   "Please do not refresh or navigate away": "โปรดอย่ารีเฟรชหรือออกจากหน้านี้",
   "Skip to main content": "ข้ามไปยังเนื้อหาหลัก",

@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "अभी कतार में, अपने आप भेजे जाएँगे: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "कतार खाली कर दी गई। न भेजे जाने वाले संदेश: {{total}}",
   "This email batch was queued by another user": "यह ईमेल समूह किसी अन्य उपयोगकर्ता ने कतार में रखा",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "आयात के बाद, सारा आँकड़ा मिटाकर नए सिरे से शुरू करने के लिए प्रशासक पटल पर आँकड़ाकोष साफ़ करें का उपयोग कर सकते हैं। आपके अनुप्रयोग का विन्यास बना रहेगा।",
   "Importing demo data...": "नमूना आँकड़ा आयात हो रहा है...",
   "Please do not refresh or navigate away": "कृपया पृष्ठ नया न करें और कहीं और न जाएँ",
   "Skip to main content": "मुख्य सामग्री पर जाएँ",

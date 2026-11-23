@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 17:15+0000\n"
+"POT-Creation-Date: 2026-11-23 23:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1408,6 +1408,9 @@ msgstr ""
 msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
 msgstr ""
 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr ""
+
 #, php-format
 msgid "Adult of the %s family"
 msgstr ""
@@ -1445,9 +1448,6 @@ msgid "Afrikaans"
 msgstr ""
 
 msgid "After amount (100.00 ¤)"
-msgstr ""
-
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
 msgstr ""
 
 msgid "Age"
@@ -5237,6 +5237,9 @@ msgstr ""
 msgid "Demo data loaded successfully"
 msgstr ""
 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog) and Google Analytics, so we can see how people explore ChurchCRM. Start Fresh turns them off."
+msgstr ""
+
 #. Context: countries
 msgid "Denmark (Danmark)"
 msgstr ""
@@ -5968,6 +5971,9 @@ msgstr ""
 msgid "Email settings saved successfully"
 msgstr ""
 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr ""
+
 msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
 msgstr ""
 
@@ -6311,6 +6317,9 @@ msgstr ""
 msgid "Enter whole numbers within the displayed limits."
 msgstr ""
 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr ""
+
 msgid "Enter your current password"
 msgstr ""
 
@@ -6646,6 +6655,12 @@ msgstr ""
 msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
 msgstr ""
 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr ""
+
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr ""
+
 msgid "Everything is correct"
 msgstr ""
 
@@ -6699,6 +6714,9 @@ msgstr ""
 
 #, php-format
 msgid "Expected interval between runs (hours): %d."
+msgstr ""
+
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
 msgstr ""
 
 msgid "Explore with Demo Data"
@@ -7607,6 +7625,9 @@ msgstr ""
 msgid "Findings"
 msgstr ""
 
+msgid "Finish setup"
+msgstr ""
+
 #, php-format
 msgid "Finished %s, so the yearly promotion cleared the grade"
 msgstr ""
@@ -7733,6 +7754,9 @@ msgid ""
 "- Links must use http:// or https:// protocols\n"
 "- HTML tags are not allowed in names or URLs\n"
 "- All input is validated and sanitized"
+msgstr ""
+
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
 msgstr ""
 
 msgid "Force Import"
@@ -9240,6 +9264,9 @@ msgstr ""
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
 msgstr ""
 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr ""
+
 msgid "Internal: date and time of the last grade promotion. Do not edit manually."
 msgstr ""
 
@@ -9567,6 +9594,9 @@ msgid "Kazakhstan (Казахстан)"
 msgstr ""
 
 msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr ""
+
+msgid "Keep exploring"
 msgstr ""
 
 msgid "Keep me signed in (days)"
@@ -11049,6 +11079,9 @@ msgid "Moved up: %d"
 msgstr ""
 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr ""
+
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
 msgstr ""
 
 msgid "Moving up: {{total}}"
@@ -14127,6 +14160,9 @@ msgstr ""
 msgid "Ready"
 msgstr ""
 
+msgid "Ready for your church"
+msgstr ""
+
 msgid "Ready to back up"
 msgstr ""
 
@@ -15705,6 +15741,9 @@ msgstr ""
 msgid "Set Up Authenticator"
 msgstr ""
 
+msgid "Set Up Your Church"
+msgstr ""
+
 msgid "Set an admin user email so you can reset passwords and receive notifications"
 msgstr ""
 
@@ -15802,6 +15841,12 @@ msgid "Setup"
 msgstr ""
 
 msgid "Setup Complete"
+msgstr ""
+
+msgid "Setup Dashboard"
+msgstr ""
+
+msgid "Setup Dashboard Days"
 msgstr ""
 
 msgid "Setup Progress"
@@ -16364,6 +16409,9 @@ msgstr ""
 msgid "Start Fresh"
 msgstr ""
 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr ""
+
 msgid "Start Over"
 msgstr ""
 
@@ -16380,6 +16428,12 @@ msgid "Start by creating a ministry, then add the teams and positions that serve
 msgstr ""
 
 msgid "Start enrollment to get a QR code."
+msgstr ""
+
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr ""
+
+msgid "Start setup"
 msgstr ""
 
 msgid "Start typing a name"
@@ -17253,6 +17307,9 @@ msgstr ""
 msgid "The default volunteers must be a list"
 msgstr ""
 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr ""
+
 msgid "The description is too long"
 msgstr ""
 
@@ -18047,6 +18104,9 @@ msgid "This email batch was queued by another user"
 msgstr ""
 
 msgid "This email is not in your history."
+msgstr ""
+
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
 msgstr ""
 
 msgid "This event has already happened"
@@ -20569,7 +20629,16 @@ msgstr ""
 msgid "You will be logged out and redirected to the login page."
 msgstr ""
 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr ""
+
 msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr ""
+
+msgid "You're exploring ChurchCRM with demo data."
+msgstr ""
+
+msgid "You're exploring demo data"
 msgstr ""
 
 #, php-format
@@ -20677,6 +20746,9 @@ msgid "Your church country is Canada, so Canadian official receipts are availabl
 msgstr ""
 
 msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr ""
+
+msgid "Your church information is saved. Work through the steps below."
 msgstr ""
 
 msgid "Your code"

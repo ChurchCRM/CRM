@@ -5516,7 +5516,6 @@
   "Still queued, to be sent automatically: {{total}}": "Stále vo fronte, na automatické odoslanie: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Front bol vymazaný. Správy, ktoré nebudú odoslané: {{total}}",
   "This email batch was queued by another user": "Túto dávku e-mailov zaradil do frontu iný používateľ",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Po importe môžete na paneli správcu použiť Obnoviť databázu, vymazať všetky údaje a začať odznova. Konfigurácia aplikácie zostane zachovaná.",
   "Importing demo data...": "Importujú sa ukážkové údaje...",
   "Please do not refresh or navigate away": "Neobnovujte stránku ani neprechádzajte inam",
   "Skip to main content": "Preskočiť na hlavný obsah",

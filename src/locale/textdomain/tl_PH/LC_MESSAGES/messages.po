@@ -22500,10 +22500,6 @@ msgid "This email batch was queued by another user"
 msgstr "Ang pangkat ng email na ito ay inilagay sa pila ng ibang gumagamit"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Pagkatapos mag-import, maaari mong gamitin ang I-reset ang imbakan ng datos sa Dasbord ng Admin upang burahin ang lahat ng datos at magsimulang muli. Mananatili ang konfigurasyon ng aplikasyon."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Ini-import ang datos na panturo..."
 

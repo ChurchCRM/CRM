@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "Vẫn trong hàng đợi, sẽ được gửi tự động: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Hàng đợi đã được xóa. Thư sẽ không được gửi: {{total}}",
   "This email batch was queued by another user": "Lô email này được người dùng khác đưa vào hàng đợi",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Sau khi nhập, bạn có thể dùng Đặt lại cơ sở dữ liệu trên Bảng điều khiển quản trị để xóa mọi dữ liệu và bắt đầu lại. Cấu hình ứng dụng của bạn được giữ nguyên.",
   "Importing demo data...": "Đang nhập dữ liệu mẫu...",
   "Please do not refresh or navigate away": "Vui lòng không tải lại hoặc rời khỏi trang",
   "Skip to main content": "Chuyển tới nội dung chính",

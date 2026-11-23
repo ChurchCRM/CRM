@@ -22533,10 +22533,6 @@ msgid "This email batch was queued by another user"
 msgstr "Αυτή τη δέσμη ηλ. ταχυδρομείου την έβαλε στην ουρά άλλος χρήστης"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Μετά την εισαγωγή μπορείτε να χρησιμοποιήσετε την Επαναφορά βάσης δεδομένων στον Πίνακα διαχείρισης για να διαγράψετε όλα τα δεδομένα και να ξεκινήσετε από την αρχή. Η ρύθμιση της εφαρμογής θα διατηρηθεί."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Εισαγωγή δεδομένων επίδειξης..."
 

@@ -22600,10 +22600,6 @@ msgid "This email batch was queued by another user"
 msgstr "Denne e-postgruppen ble lagt i kø av en annen bruker"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Etter importen kan du bruke Tilbakestill database på administratoroversikten for å tømme alle data og starte på nytt. Programkonfigurasjonen beholdes."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Importerer demodata..."
 

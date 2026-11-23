@@ -22500,10 +22500,6 @@ msgid "This email batch was queued by another user"
 msgstr "ഈ ഇമെയിൽ കൂട്ടം മറ്റൊരു ഉപയോക്താവ് വരിയിൽ ചേർത്തു"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "ഇറക്കുമതിക്ക് ശേഷം, എല്ലാ ദത്തവും മായ്ച്ച് പുതുതായി തുടങ്ങാൻ നിർവാഹക പലകയിലെ ദത്തകോശം വൃത്തിയാക്കൽ ഉപയോഗിക്കാം. നിങ്ങളുടെ പ്രയോഗ ക്രമീകരണം നിലനിൽക്കും."
-
-#: 
 msgid "Importing demo data..."
 msgstr "മാതൃകാ ദത്തം ഇറക്കുമതി ചെയ്യുന്നു..."
 

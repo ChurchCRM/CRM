@@ -5572,7 +5572,6 @@
   "Still queued, to be sent automatically: {{total}}": "لسه في الانتظار، وهتتبعت لوحدها: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "قائمة الانتظار اتمسحت. الرسايل اللي مش هتتبعت: {{total}}",
   "This email batch was queued by another user": "دفعة البريد دي حطها مستخدم تاني في الانتظار",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "بعد الاستيراد تقدر تستخدم إعادة ضبط قاعدة البيانات من لوحة المسؤول عشان تمسح كل البيانات وتبدأ من جديد. إعدادات التطبيق هتفضل محفوظة.",
   "Importing demo data...": "جاري استيراد بيانات التجربة...",
   "Please do not refresh or navigate away": "من فضلك متعملش تحديث ومتسيبهاش",
   "Skip to main content": "انتقل إلى المحتوى الرئيسي",

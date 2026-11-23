@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Ακόμη στην ουρά, για αυτόματη αποστολή: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Η ουρά εκκαθαρίστηκε. Μηνύματα που δεν θα σταλούν: {{total}}",
   "This email batch was queued by another user": "Αυτή τη δέσμη ηλ. ταχυδρομείου την έβαλε στην ουρά άλλος χρήστης",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Μετά την εισαγωγή μπορείτε να χρησιμοποιήσετε την Επαναφορά βάσης δεδομένων στον Πίνακα διαχείρισης για να διαγράψετε όλα τα δεδομένα και να ξεκινήσετε από την αρχή. Η ρύθμιση της εφαρμογής θα διατηρηθεί.",
   "Importing demo data...": "Εισαγωγή δεδομένων επίδειξης...",
   "Please do not refresh or navigate away": "Μην ανανεώσετε τη σελίδα και μην απομακρυνθείτε",
   "Skip to main content": "Μετάβαση στο κύριο περιεχόμενο",

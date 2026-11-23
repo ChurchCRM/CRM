@@ -22532,10 +22532,6 @@ msgid "This email batch was queued by another user"
 msgstr "Selle e-kirjade hulga pani järjekorda teine kasutaja"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Pärast importimist saad halduri töölaual kasutada käsku Lähtesta andmebaas, et kustutada kõik andmed ja alustada puhtalt lehelt. Rakenduse seadistus säilib."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demoadmete importimine..."
 

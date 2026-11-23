@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "Masih dalam antrean, akan dikirim otomatis: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Antrean telah dikosongkan. Pesan yang tidak akan dikirim: {{total}}",
   "This email batch was queued by another user": "Kelompok surel ini dimasukkan antrean oleh pengguna lain",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Setelah mengimpor, Anda dapat memakai Atur Ulang Basis Data di Dasbor Admin untuk menghapus semua data dan mulai dari awal. Konfigurasi aplikasi Anda tetap disimpan.",
   "Importing demo data...": "Mengimpor data contoh...",
   "Please do not refresh or navigate away": "Jangan segarkan atau tinggalkan halaman",
   "Skip to main content": "Loncat ke konten utama",

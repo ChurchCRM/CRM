@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "仍在排隊、將自動傳送：{{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "佇列已清空。將不會傳送的郵件：{{total}}",
   "This email batch was queued by another user": "這批郵件是由另一位使用者加入佇列的",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "匯入之後，可以在管理儀表板上使用「重設資料庫」清除全部資料並重新開始。應用程式設定會保留。",
   "Importing demo data...": "正在匯入範例資料...",
   "Please do not refresh or navigate away": "請不要重新整理或離開此頁",
   "Skip to main content": "跳至主要內容",

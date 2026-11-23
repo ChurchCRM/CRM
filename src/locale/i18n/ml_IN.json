@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "ഇനിയും വരിയിൽ, സ്വയമേവ അയയ്ക്കും: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "വരി മായ്ച്ചു. അയയ്ക്കാത്ത സന്ദേശങ്ങൾ: {{total}}",
   "This email batch was queued by another user": "ഈ ഇമെയിൽ കൂട്ടം മറ്റൊരു ഉപയോക്താവ് വരിയിൽ ചേർത്തു",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "ഇറക്കുമതിക്ക് ശേഷം, എല്ലാ ദത്തവും മായ്ച്ച് പുതുതായി തുടങ്ങാൻ നിർവാഹക പലകയിലെ ദത്തകോശം വൃത്തിയാക്കൽ ഉപയോഗിക്കാം. നിങ്ങളുടെ പ്രയോഗ ക്രമീകരണം നിലനിൽക്കും.",
   "Importing demo data...": "മാതൃകാ ദത്തം ഇറക്കുമതി ചെയ്യുന്നു...",
   "Please do not refresh or navigate away": "ദയവായി താൾ പുതുക്കരുത് അല്ലെങ്കിൽ മറ്റെവിടേക്കും പോകരുത്",
   "Skip to main content": "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക",

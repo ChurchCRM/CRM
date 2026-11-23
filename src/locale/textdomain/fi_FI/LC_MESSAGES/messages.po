@@ -22504,10 +22504,6 @@ msgid "This email batch was queued by another user"
 msgstr "Tämän sähköpostierän jonoon lisäsi toinen käyttäjä"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Tuonnin jälkeen voit tyhjentää kaikki tiedot ja aloittaa alusta järjestelmänvalvojan koontinäytön Palauta tietokanta -toiminnolla. Sovelluksen asetukset säilyvät."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demotietoja tuodaan..."
 

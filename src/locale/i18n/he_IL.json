@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "עדיין בתור, יישלחו אוטומטית: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "התור נוקה. הודעות שלא יישלחו: {{total}}",
   "This email batch was queued by another user": "אצוות הדוא״ל הזו הוכנסה לתור על ידי משתמש אחר",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "אחרי הייבוא אפשר להשתמש באיפוס מסד הנתונים בלוח הניהול כדי לנקות את כל הנתונים ולהתחיל מחדש. תצורת היישום תישמר.",
   "Importing demo data...": "מייבא נתוני הדגמה...",
   "Please do not refresh or navigate away": "נא לא לרענן ולא לנווט החוצה",
   "Skip to main content": "דלג לתוכן הראשי",

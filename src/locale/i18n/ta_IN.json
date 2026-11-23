@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "இன்னும் வரிசையில், தானாக அனுப்பப்படும்: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "வரிசை அழிக்கப்பட்டது. அனுப்பப்படாத செய்திகள்: {{total}}",
   "This email batch was queued by another user": "இந்த மின்னஞ்சல் தொகுதியை வேறொரு பயனர் வரிசையில் சேர்த்தார்",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "இறக்கிய பிறகு, எல்லாத் தரவையும் அழித்துப் புதிதாகத் தொடங்க நிர்வாகப் பலகையில் தரவுத்தளத்தைச் சுத்தம் செய்யலாம். உங்கள் பயன்பாட்டு அமைப்பு பாதுகாக்கப்படும்.",
   "Importing demo data...": "மாதிரித் தரவு இறக்கப்படுகிறது...",
   "Please do not refresh or navigate away": "புதுப்பிக்கவோ வேறு இடத்துக்குச் செல்லவோ வேண்டாம்",
   "Skip to main content": "முதன்மை உள்ளடக்கத்துக்குச் செல்",

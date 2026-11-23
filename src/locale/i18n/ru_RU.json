@@ -5516,7 +5516,6 @@
   "Still queued, to be sent automatically: {{total}}": "Всё ещё в очереди, будут отправлены автоматически: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Очередь очищена. Сообщения, которые не будут отправлены: {{total}}",
   "This email batch was queued by another user": "Этот пакет писем поставил в очередь другой пользователь",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "После импорта можно сбросить базу данных на панели администратора, чтобы очистить все данные и начать заново. Настройки приложения сохранятся.",
   "Importing demo data...": "Импорт демонстрационных данных...",
   "Please do not refresh or navigate away": "Не обновляйте страницу и не уходите с неё",
   "Skip to main content": "Перейти к основному содержанию",
