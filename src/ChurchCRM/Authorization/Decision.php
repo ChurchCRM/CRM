@@ -18,6 +18,7 @@ class Decision
     public const SCOPE_MISMATCH = 'scope_mismatch';
     public const NO_PERSON = 'no_person';
     public const NO_GRANT = 'no_grant';
+    public const STAFF_BOUNDARY = 'staff_boundary';
 
     // Protected so Portal\Permissions\Decision can be built by allow() and deny().
     protected function __construct(
