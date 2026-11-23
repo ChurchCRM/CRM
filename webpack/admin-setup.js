@@ -1,6 +1,5 @@
 /**
- * Setup Dashboard: Finish setup ends the setup window for good. The sidebar's
- * Explore with Demo Data link (?explore=1) opens the import dialog.
+ * Setup Dashboard: Finish setup ends the setup window for good.
  */
 
 import { buildAdminAPIUrl } from "./api-utils";
@@ -33,10 +32,4 @@ document.addEventListener("click", (e) => {
     },
     { tone: "primary", confirmLabel: i18next.t("Finish setup"), cancelLabel: i18next.t("Cancel") },
   );
-});
-
-// jQuery runs ready handlers in order, after importDemoData.js has queued the one that wires the button.
-window.jQuery(() => {
-  if (!new URLSearchParams(window.location.search).has("explore")) return;
-  window.CRM.onLocalesReady(() => document.getElementById("importDemoDataSetup")?.click());
 });

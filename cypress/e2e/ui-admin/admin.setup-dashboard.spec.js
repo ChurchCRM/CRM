@@ -54,17 +54,20 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.setSystemConfig(CHURCH, "");
         cy.freshAdminFormLogin();
         cy.location("pathname").should("match", SETUP);
-        cy.get("#sidebar-menu .nav-item").should("have.length", 4);
+        cy.get("#sidebar").should("not.exist");
         cy.get("#globalSearch").should("not.exist");
         cy.get("#finishSetup").should("not.exist");
         cy.get("#setupSteps").should("not.exist");
 
         cy.visit("/people/dashboard");
         cy.location("pathname").should("match", SETUP);
+        cy.visit("/PersonEditor.php");
+        cy.location("pathname").should("match", SETUP);
         cy.visit("/admin/system/restore");
         cy.location("pathname").should("match", /\/admin\/system\/restore$/);
 
-        cy.visit("/admin/setup?explore=1");
+        cy.visit("/admin/setup");
+        cy.get("#importDemoDataSetup").click();
         cy.get("#demoImportModal").should("be.visible").and("contain.text", "PostHog");
         cy.get("#demoImportCancelBtn").should("be.focused").click();
         cy.get("#demoImportModal").should("not.be.visible");
@@ -79,16 +82,19 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.get("#globalSearch").should("exist");
     });
 
-    it("switches the language from the setup top bar", () => {
+    it("starts in the browser's language, and the top bar picker changes it", () => {
         cy.setSystemConfig(CHURCH, "");
         cy.freshAdminFormLogin();
-        cy.window()
-            .its("CRM.userId")
-            .then((userId) => {
-                cy.get("#setupLanguage").select("es_ES");
-                cy.window().its("CRM.locale").should("eq", "es_ES");
-                cy.makePrivateAdminAPICall("POST", `/api/user/${userId}/setting/ui.locale`, { value: "en_US" }, 200);
-            });
+        cy.visit("/admin/setup", {
+            onBeforeLoad(win) {
+                win.localStorage.removeItem("churchcrm.setupLanguageDetected");
+                Object.defineProperty(win.navigator, "languages", { value: ["es-MX", "es"] });
+            },
+        });
+        cy.window().its("CRM.locale").should("match", /^es_/);
+
+        cy.get("#setupLanguage").select("en_US");
+        cy.window().its("CRM.locale").should("eq", "en_US");
     });
 
     it("lists the next steps once the church is set up, and finishes setup for good", () => {

@@ -207,7 +207,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
             cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
-            cy.get('#sidebar-menu .nav-item').should('have.length', 4);
+            cy.get('#sidebar').should('not.exist');
             cy.get('#globalSearch').should('not.exist');
             cy.get('#setupLanguage').should('exist');
 

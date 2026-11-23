@@ -48,24 +48,58 @@ document.addEventListener("click", (e) => {
 });
 
 // The church's language, and the signed-in administrator's own.
-document.addEventListener("change", (e) => {
-  if (e.target.id !== "setupLanguage") return;
+function applyLanguage(select) {
   const save = (url) =>
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ value: e.target.value }),
+      body: JSON.stringify({ value: select.value }),
     }).then((response) => {
       if (!response.ok) throw new Error(String(response.status));
     });
-  e.target.disabled = true;
+  select.disabled = true;
   Promise.all([
     save(buildAdminAPIUrl("system/config/sLanguage")),
     save(buildAPIUrl(`user/${window.CRM.userId}/setting/ui.locale`)),
   ])
     .then(() => window.location.assign(window.location.pathname))
     .catch(() => {
-      e.target.disabled = false;
+      select.disabled = false;
       window.CRM.notify(i18next.t("Error"), { type: "danger" });
     });
+}
+
+/** The supported locale closest to the browser's languages: exact, then the language's own country, then any. */
+function browserLocale(supported) {
+  for (const tag of navigator.languages ?? [navigator.language]) {
+    const [language, country = language] = tag.toLowerCase().split("-");
+    const match =
+      supported.find((locale) => locale.toLowerCase() === `${language}_${country}`) ??
+      supported.find((locale) => locale.toLowerCase() === `${language}_${language}`) ??
+      supported.find((locale) => locale.toLowerCase().startsWith(`${language}_`));
+    if (match) return match;
+  }
+  return null;
+}
+
+document.addEventListener("change", (e) => {
+  if (e.target.id === "setupLanguage") applyLanguage(e.target);
+});
+
+// Once per browser, a new install starts in the visitor's own language.
+document.addEventListener("DOMContentLoaded", () => {
+  const select = document.getElementById("setupLanguage");
+  if (!select) return;
+  const key = "churchcrm.setupLanguageDetected";
+  try {
+    if (localStorage.getItem(key)) return;
+    localStorage.setItem(key, "1");
+  } catch {
+    return;
+  }
+  const locale = browserLocale([...select.options].map((option) => option.value));
+  if (locale && locale !== select.value) {
+    select.value = locale;
+    applyLanguage(select);
+  }
 });
