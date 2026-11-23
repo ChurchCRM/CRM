@@ -61,7 +61,6 @@ require __DIR__ . '/routes/properties.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/member-portal.php';
 require __DIR__ . '/routes/ministry-settings.php';
-require __DIR__ . '/routes/family-conversion.php';
 require __DIR__ . '/routes/property-types.php';
 
 $app->run();

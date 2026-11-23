@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -13,21 +12,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->post('/api/person/{personId:[0-9]+}/convert-to-family', 'convertPersonToFamilyAPI')
     ->add(new PersonMiddleware())
     ->add(new CSRFMiddleware());
-
-$app->post('/api/people/convert-unassigned-to-families', 'convertUnassignedPeopleAPI')
-    ->add(new CSRFMiddleware());
-
-/**
- * @return array{id: int, name: string, url: string}
- */
-function familyConversionSummary(Family $family): array
-{
-    return [
-        'id' => (int) $family->getId(),
-        'name' => (string) $family->getName(),
-        'url' => $family->getViewURI(),
-    ];
-}
 
 /**
  * @OA\Post(
@@ -62,38 +46,12 @@ function convertPersonToFamilyAPI(Request $request, Response $response): Respons
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, ['success' => true, 'family' => familyConversionSummary($family)]);
-}
-
-/**
- * @OA\Post(
- *     path="/api/people/convert-unassigned-to-families",
- *     operationId="convertUnassignedPeopleToFamilies",
- *     summary="Convert every person with no family into a family of their own (Admin role)",
- *     tags={"Admin"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Response(response=200, description="Converted",
- *         @OA\JsonContent(
- *             @OA\Property(property="success", type="boolean", example=true),
- *             @OA\Property(property="count", type="integer", example=3),
- *             @OA\Property(property="families", type="array", @OA\Items(type="object",
- *                 @OA\Property(property="id", type="integer", example=12),
- *                 @OA\Property(property="name", type="string", example="Smith"),
- *                 @OA\Property(property="url", type="string", example="/people/family/12")
- *             ))
- *         )
- *     ),
- *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="Admin role required, or an invalid CSRF token")
- * )
- */
-function convertUnassignedPeopleAPI(Request $request, Response $response): Response
-{
-    $families = (new FamilyService())->convertUnassignedPeople((int) AuthenticationManager::getCurrentUser()->getId());
-
     return SlimUtils::renderJSON($response, [
         'success' => true,
-        'count' => count($families),
-        'families' => array_map('familyConversionSummary', $families),
+        'family' => [
+            'id' => (int) $family->getId(),
+            'name' => (string) $family->getName(),
+            'url' => $family->getViewURI(),
+        ],
     ]);
 }

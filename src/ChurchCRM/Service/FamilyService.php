@@ -396,17 +396,6 @@ class FamilyService
     }
 
     /**
-     * People who belong to no family, by last then first name.
-     */
-    public function unassignedPeopleQuery(): PersonQuery
-    {
-        return PersonQuery::create()
-            ->filterByFamId(0)
-            ->orderByLastName()
-            ->orderByFirstName();
-    }
-
-    /**
      * Make a person who belongs to no family the only member of a new family. The family takes
      * the person's last name, address and home phone, and those fields move off the person.
      *
@@ -465,25 +454,6 @@ class FamilyService
         $this->logger->info('Person converted to a family', ['personId' => $person->getId(), 'familyId' => $family->getId()]);
 
         return $family;
-    }
-
-    /**
-     * Convert every person who belongs to no family, each into a family of their own.
-     *
-     * @return Family[] the new families, in the order the people were converted
-     */
-    public function convertUnassignedPeople(int $userId): array
-    {
-        $families = [];
-        foreach ($this->unassignedPeopleQuery()->find() as $person) {
-            try {
-                $families[] = $this->convertPersonToFamily($person, $userId);
-            } catch (\InvalidArgumentException) {
-                // Someone else gave this person a family after the list was read.
-            }
-        }
-
-        return $families;
     }
 
     /**

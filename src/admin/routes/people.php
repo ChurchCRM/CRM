@@ -140,7 +140,6 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/people/properties/f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
-            [gettext('Convert Individuals to Families'), '/admin/people/convert-to-families', 'fa-people-arrows'],
             [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
         ])),
     ];

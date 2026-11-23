@@ -57,20 +57,14 @@ describe("State-changing actions need a POST with a CSRF token", () => {
         );
     });
 
-    it("convert individuals to families runs only on a POST with a token", () => {
-        const convertAll = "/admin/api/people/convert-unassigned-to-families";
+    it("convert to family runs only on a POST with a token", () => {
+        const convert = `/admin/api/person/${PERSON_ID}/convert-to-family`;
+        const familyId = () => cy.request(`/api/person/${PERSON_ID}`).its("body.FamId");
 
-        cy.visit("/admin/people/convert-to-families");
-        cy.get("#familyConversionCount")
-            .invoke("text")
-            .then((before) => {
-                cy.request({ url: convertAll, failOnStatusCode: false }).its("status").should("eq", 405);
-                postForm(convertAll, {}).its("status").should("eq", 403);
-                postForm(`/admin/api/person/${PERSON_ID}/convert-to-family`, {}).its("status").should("eq", 403);
-
-                cy.reload();
-                cy.get("#familyConversionCount").should("have.text", before);
-            });
+        familyId().should("eq", 0);
+        cy.request({ url: convert, failOnStatusCode: false }).its("status").should("eq", 405);
+        postForm(convert, {}).its("status").should("eq", 403);
+        familyId().should("eq", 0);
     });
 
     it("upgrade release download refuses GET and a POST without a token", () => {
