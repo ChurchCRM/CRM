@@ -348,3 +348,46 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
         cy.get(".alert-danger:not(.crm-system-notification)").should("not.exist");
     });
 });
+
+describe("Group manager saves Unicode member properties", () => {
+    let groupId;
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+        cy.request("POST", "/api/groups/", { groupName: `Unicode properties ${Date.now()}` }).then(({ body }) => {
+            groupId = body.Id;
+            cy.request("POST", `/api/groups/${groupId}/addperson/2`, { RoleID: 1 });
+        });
+    });
+
+    afterEach(() => {
+        cy.setupAdminSession();
+        cy.request("POST", `/api/groups/${groupId}/setGroupSpecificPropertyStatus`, { GroupSpecificPropertyStatus: false });
+        cy.request("DELETE", `/api/groups/${groupId}`);
+    });
+
+    ["enabling properties", "opening the member editor"].forEach((creationPath) => {
+        it(`preserves four-byte text in a table created by ${creationPath}`, () => {
+            const value = "Café 日本 🌍";
+            if (creationPath === "opening the member editor") {
+                cy.visit(`/groups/${groupId}/members/2/properties`);
+            }
+            cy.request("POST", `/api/groups/${groupId}/setGroupSpecificPropertyStatus`, { GroupSpecificPropertyStatus: true });
+            cy.visit(`/groups/${groupId}/properties/form`);
+            cy.get("#newFieldType").select("3");
+            cy.get("#newFieldName").type("Member greeting");
+            cy.intercept("POST", `**/groups/${groupId}/properties/form`).as("addField");
+            cy.get('button[name="AddField"]').click();
+            cy.wait("@addField");
+
+            cy.visit(`/groups/${groupId}/members/2/properties`);
+            cy.get('[name="c1"]').type(value);
+            cy.intercept("POST", `**/groups/${groupId}/members/2/properties`).as("saveProperties");
+            cy.get('[name="GroupPropSubmit"]').click();
+            cy.wait("@saveProperties");
+            cy.location("pathname").should("include", "/people/view/2");
+            cy.visit(`/groups/${groupId}/members/2/properties`);
+            cy.get('[name="c1"]').should("have.value", value);
+        });
+    });
+});
