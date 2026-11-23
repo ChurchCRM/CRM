@@ -32,7 +32,16 @@ describe("Standard Sunday School", () => {
             .then((text) => {
                 expect(Number(text.trim())).to.be.at.least(0);
             });
-        cy.contains("Classes").should("exist");
+        cy.get(".text-body-secondary")
+            .contains(/^Classes$/)
+            .prev(".fw-medium")
+            .invoke("text")
+            .then((text) => {
+                cy.window()
+                    .its("$")
+                    .then(($) => $("#sundayschoolClasses").DataTable().rows().count())
+                    .should("eq", Number(text.trim()));
+            });
         cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
         cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");
         cy.get('a[href$="/groups/reports"]').should("be.visible");

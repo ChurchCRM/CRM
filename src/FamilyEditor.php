@@ -937,7 +937,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                             if ($aRoles[$iCount] === $aFamilyRoleIDs[$c]) {
                                                                 echo ' selected';
                                                             }
-                                                            echo '>' . $aFamilyRoleNames[$c] . '</option>';
+                                                            echo '>' . InputUtils::escapeHTML($aFamilyRoleNames[$c]) . '</option>';
                                                         } ?>
                                                     </select>
                                                 </td>
