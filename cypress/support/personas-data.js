@@ -16,11 +16,26 @@ export const PERSONAS = {
         login: { usernameKey: "admin.username", passwordKey: "admin.password" },
         flags: "Admin",
     },
+    // Admin flag, Finance flag off. isFinanceEnabled() stays true while
+    // bEnabledFinance is on (admin bypass). The core-flow spec turns the
+    // finance module off so this login takes the no-finance path.
+    "admin-finance-disabled": {
+        principal: "staff",
+        apiKey: "adminnofinance.api.key",
+        login: { usernameKey: "adminnofinance.username", passwordKey: "adminnofinance.password" },
+        flags: "Admin; Finance flag off",
+    },
     "staff-all-but-admin": {
         principal: "staff",
         apiKey: "user.api.key",
         login: { usernameKey: "standard.username", passwordKey: "standard.password" },
         flags: "every record, group, finance, fundraiser and notes flag; not Admin",
+    },
+    "staff-all-but-finance": {
+        principal: "staff",
+        apiKey: "allbutfinance.api.key",
+        login: { usernameKey: "allbutfinance.username", passwordKey: "allbutfinance.password" },
+        flags: "Add, Edit, Delete, Manage Groups, Manage My Ministries, Notes; not Finance, not Manage Fundraisers, not Admin",
     },
     "office-staff": {
         principal: "staff",
