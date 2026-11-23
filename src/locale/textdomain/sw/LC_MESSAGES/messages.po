@@ -4016,10 +4016,6 @@ msgid "Legend"
 msgstr "Hadithi"
 
 #: 
-msgid "assigned"
-msgstr "kupewa"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Inaonyesha wanafunzi walio na siku za kuzaliwa ndani"
 
@@ -17595,10 +17591,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Usajili unaosubiri ukaguzi kutoka fomu yako ya usajili ya umma. Maingizo yasiyo na barua pepe wala simu yamewekewa alama — thibitisha mawasiliano kabla ya kufuatilia."
 
 #: 
-msgid "Review self registrations"
-msgstr "Kagua usajili binafsi"
-
-#: 
 msgid "Select month"
 msgstr "Chagua mwezi"
 
@@ -17625,10 +17617,6 @@ msgstr "Mtu huyu ni wa familia — idhinisha familia badala yake"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Mtu huyu si usajili binafsi unaosubiri"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Familia hii iliyojisajili inasubiri ukaguzi"
 
 #: 
 msgid "Total registrations"

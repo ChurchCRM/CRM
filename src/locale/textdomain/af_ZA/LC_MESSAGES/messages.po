@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Legende"
 
 #: 
-msgid "assigned"
-msgstr "toegewys"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Vertoon studente met verjaarsdae in"
 
@@ -17599,10 +17595,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrasies wat op hersiening wag vanaf jou openbare registrasievorm. Inskrywings sonder e-pos of foon is gemerk — verifieer kontakbesonderhede voordat jy opvolg."
 
 #: 
-msgid "Review self registrations"
-msgstr "Hersien selfregistrasies"
-
-#: 
 msgid "Select month"
 msgstr "Kies maand"
 
@@ -17629,10 +17621,6 @@ msgstr "Hierdie persoon behoort aan 'n gesin — keur eerder die gesin goed"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Hierdie persoon is nie 'n hangende selfregistrasie nie"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Hierdie selfgeregistreerde gesin wag op hersiening"
 
 #: 
 msgid "Total registrations"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 21:02+0000\n"
+"POT-Creation-Date: 2026-11-22 15:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4876,6 +4876,9 @@ msgstr ""
 msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
 msgstr ""
 
+msgid "Deactivated"
+msgstr ""
+
 msgid "Deactivated Ministries"
 msgstr ""
 
@@ -9738,6 +9741,9 @@ msgid "Last date"
 msgstr ""
 
 msgid "Last day"
+msgstr ""
+
+msgid "Last edited"
 msgstr ""
 
 msgid "Last fiscal year to include"
@@ -14728,9 +14734,6 @@ msgstr ""
 msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
 msgstr ""
 
-msgid "Review self registrations"
-msgstr ""
-
 msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
 msgstr ""
 
@@ -18303,9 +18306,6 @@ msgstr ""
 msgid "This schedule is inactive. Reactivate it to generate its occurrences."
 msgstr ""
 
-msgid "This self-registered family is pending review"
-msgstr ""
-
 msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
 msgstr ""
 
@@ -19562,6 +19562,9 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
+msgid "Verify now"
+msgstr ""
+
 msgid "Verify the family in person instead."
 msgstr ""
 
@@ -19628,6 +19631,9 @@ msgid "View Family Page"
 msgstr ""
 
 msgid "View Full Family Giving"
+msgstr ""
+
+msgid "View Giving History"
 msgstr ""
 
 msgid "View Group"
@@ -20830,9 +20836,6 @@ msgstr ""
 
 msgctxt "other"
 msgid "and {{count}} more"
-msgstr ""
-
-msgid "assigned"
 msgstr ""
 
 msgid "attendance"

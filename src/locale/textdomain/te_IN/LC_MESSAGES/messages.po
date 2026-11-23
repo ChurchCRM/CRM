@@ -4002,10 +4002,6 @@ msgid "Legend"
 msgstr "శీర్షిక వివరణ"
 
 #: 
-msgid "assigned"
-msgstr "కేటాయించబడింది"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "పుట్టినరోజులు ఉన్న విద్యార్థులను చూపిస్తున్నారు"
 
@@ -17577,10 +17573,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "మీ పబ్లిక్ నమోదు ఫారమ్ నుండి సమీక్ష కోసం వేచి ఉన్న నమోదులు. ఇమెయిల్ లేదా ఫోన్ లేని ఎంట్రీలకు గుర్తు పెట్టబడింది — తదుపరి సంప్రదింపుకు ముందు సంప్రదింపు వివరాలను నిర్ధారించుకోండి."
 
 #: 
-msgid "Review self registrations"
-msgstr "స్వీయ నమోదులను సమీక్షించండి"
-
-#: 
 msgid "Select month"
 msgstr "నెలను ఎంచుకోండి"
 
@@ -17607,10 +17599,6 @@ msgstr "ఈ వ్యక్తి ఒక కుటుంబానికి చ�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "ఈ వ్యక్తి పెండింగ్‌లో ఉన్న స్వీయ నమోదు కాదు"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "స్వీయ నమోదు చేసుకున్న ఈ కుటుంబం సమీక్ష కోసం పెండింగ్‌లో ఉంది"
 
 #: 
 msgid "Total registrations"
