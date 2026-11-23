@@ -142,6 +142,7 @@ INSERT INTO `calendars` (`calendar_id`, `name`, `accesstoken`, `foregroundColor`
 
 INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgrade',''),
 ('sInstallDataProfile','test'),
+('sSystemID','dev-churchcrm-testing'),
 ('bEnableExternalCalendarAPI',''),
 ('bEnableNonDeductible',''),
 ('bEnableSelfRegistration','1'),
