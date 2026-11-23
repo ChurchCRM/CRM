@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 15:59+0000\n"
+"POT-Creation-Date: 2026-11-23 02:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8770,6 +8770,9 @@ msgstr ""
 msgid "How to Fix"
 msgstr ""
 
+msgid "How to find the log"
+msgstr ""
+
 msgid "How to respond"
 msgstr ""
 
@@ -17036,6 +17039,9 @@ msgid "The 7.8.3 upgrade gave each family email to a person. These it could not,
 msgstr ""
 
 msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr ""
+
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
 msgstr ""
 
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
