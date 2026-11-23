@@ -24,6 +24,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\LogRecord;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\Exception\ConnectionException;
 use Propel\Runtime\Connection\ConnectionWrapper;
@@ -507,8 +508,20 @@ class Bootstrapper
         if ($inUse->fetchColumn() === null) {
             return;
         }
-        $connection->prepare('SELECT GET_LOCK(?, 60)')->execute([self::installLockName()]);
+        if (!self::acquireInstallLock($connection)) {
+            self::systemFailure('ChurchCRM is still being installed. Reload this page in a minute.', 'Installation in progress');
+            return;
+        }
         $connection->prepare('SELECT RELEASE_LOCK(?)')->execute([self::installLockName()]);
+    }
+
+    /** GET_LOCK returns 1 when taken, 0 on timeout, NULL on error; only 1 means the install is ours or finished. */
+    private static function acquireInstallLock(ConnectionInterface $connection): bool
+    {
+        $lock = $connection->prepare('SELECT GET_LOCK(?, 60)');
+        $lock->execute([self::installLockName()]);
+
+        return (int) $lock->fetchColumn() === 1;
     }
 
     private static function installChurchCRMSchema(): void
@@ -517,7 +530,9 @@ class Bootstrapper
         // Requests that find the database empty at the same moment (a page's background
         // calls right after a reset) must not import the schema twice.
         $lockName = self::installLockName();
-        $connection->prepare('SELECT GET_LOCK(?, 60)')->execute([$lockName]);
+        if (!self::acquireInstallLock($connection)) {
+            throw new \RuntimeException('Another request is still installing the ChurchCRM schema. Try again shortly.');
+        }
         try {
             if (!self::isDatabaseEmpty()) {
                 return;
