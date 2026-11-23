@@ -39,6 +39,7 @@ describe("Person editor custom field values", () => {
         { name: "quotes and a backslash", typed: `O'Brien "quoted" back\\slash`, expected: `O'Brien "quoted" back\\slash` },
         { name: "SQL text", typed: `x'; DROP TABLE person_custom; --`, expected: `x'; DROP TABLE person_custom; --` },
         { name: "HTML tags", typed: "<b>bold</b> text", expected: "bold text" },
+        { name: "four-byte characters", typed: "Café 日本 🌍", expected: "Café 日本 🌍" },
     ].forEach(({ name, typed, expected }) => {
         it(`stores ${name} as typed`, () => {
             save(typed);
