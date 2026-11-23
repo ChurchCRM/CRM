@@ -26119,10 +26119,6 @@ msgstr "알 수 없는 헌금 항목"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "호스팅 업체에 데이터베이스를 지원되는 버전으로 옮겨 달라고 요청한 후 다시 시도하세요."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "호스팅 업체에 데이터베이스를 지원되는 버전으로 옮겨 달라고 요청하세요."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26148,10 +26144,6 @@ msgstr "업그레이드가 시작되지 않아 아무것도 변경되지 않았�
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "이 업그레이드는 사용 중인 데이터베이스에서 실행할 수 없습니다."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "데이터베이스 서버(%1$s %2$s)가 ChurchCRM이 지원하는 버전(MySQL %3$s 또는 MariaDB %4$s 이상)보다 오래되었습니다."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27987,10 +27979,6 @@ msgid "How the congregation is made up"
 msgstr "회중 구성"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "이 데이터베이스가 지원되지 않으며 업그레이드가 차단된다는 것을 이해합니다"
-
-#: 
 msgid "Insights"
 msgstr "인사이트"
 
@@ -28195,10 +28183,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "이제 이 대시보드가 메인 대시보드입니다."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "이 데이터베이스는 더 이상 공급업체로부터 보안 수정 사항을 받지 않습니다."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "사람들이 ChurchCRM을 여는 곳입니다. 이 페이지와 다른 주소를 사용할 경우에만 변경하세요."
 
@@ -28209,14 +28193,6 @@ msgstr "이것은 귀하의 교회 계정입니다. 자신을 위해 할 수 있
 #: 
 msgid "Total deposited"
 msgstr "입금 총액"
-
-#: 
-msgid "Unsupported database server"
-msgstr "지원되지 않는 데이터베이스 서버"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "데이터베이스가 지원되는 버전으로 이동될 때까지 업그레이드가 차단됩니다."
 
 #: 
 msgid "Usually 3306."

@@ -26150,10 +26150,6 @@ msgstr "Fondo desconocido"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Pida a su proveedor de hosting que actualice la base de datos a una versión compatible y vuelva a intentarlo."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Pida a su proveedor de hosting que actualice la base de datos a una versión compatible."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26179,10 +26175,6 @@ msgstr "La actualización no se inició, así que no se cambió nada."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Esta actualización no se puede ejecutar en su base de datos."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Su servidor de base de datos (%1$s %2$s) es más antiguo de lo que admite ChurchCRM (MySQL %3$s o MariaDB %4$s y posteriores)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28032,10 +28024,6 @@ msgid "How the congregation is made up"
 msgstr "Cómo está compuesta la congregación"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Entiendo que esta base de datos no es compatible y que las actualizaciones se bloquearán"
-
-#: 
 msgid "Insights"
 msgstr "Estadísticas"
 
@@ -28240,10 +28228,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Este escritorio es ahora tu escritorio principal."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Esta base de datos ya no recibe correcciones de seguridad de su proveedor."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Aquí es donde las personas abrirán ChurchCRM. Cámbiala solo si usarán una dirección distinta a la de esta página."
 
@@ -28254,14 +28238,6 @@ msgstr "Esta es tu cuenta de la iglesia. Todo lo que puedes hacer por ti mismo e
 #: 
 msgid "Total deposited"
 msgstr "Total depositado"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Servidor de base de datos no compatible"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Las actualizaciones se bloquearán hasta que la base de datos se traslade a una versión compatible."
 
 #: 
 msgid "Usually 3306."

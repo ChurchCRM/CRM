@@ -1,10 +1,15 @@
 {
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "",
+  "Database out of support": "",
   "Deactivated": "",
   "How to find the log": "",
   "How to install server locales": "",
+  "I understand this database is out of support": "",
   "Last edited": "",
   "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "",
   "The ChurchCRM log records the specific reason. Remove names before you share it.": "",
   "Verify now": "",
-  "View Giving History": ""
+  "View Giving History": "",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": ""
 }

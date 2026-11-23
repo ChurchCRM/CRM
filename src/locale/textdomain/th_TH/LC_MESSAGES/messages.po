@@ -26103,10 +26103,6 @@ msgstr "กองทุนที่ไม่รู้จัก"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ แล้วลองอีกครั้ง"
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26132,10 +26128,6 @@ msgstr "ยังไม่ได้เริ่มการอัปเกรด
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "ไม่สามารถเรียกใช้การอัปเกรดนี้กับฐานข้อมูลของคุณได้"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลของคุณ (%1$s %2$s) เก่ากว่าที่ ChurchCRM รองรับ (MySQL %3$s หรือ MariaDB %4$s ขึ้นไป)"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27971,10 +27963,6 @@ msgid "How the congregation is made up"
 msgstr "องค์ประกอบของสมาชิกคริสตจักร"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "ฉันเข้าใจว่าฐานข้อมูลนี้ไม่ได้รับการสนับสนุน และการอัปเกรดจะถูกบล็อก"
-
-#: 
 msgid "Insights"
 msgstr "ข้อมูลเชิงลึก"
 
@@ -28179,10 +28167,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "แดชบอร์ดนี้เป็นแดชบอร์ดหลักของคุณแล้ว"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "ฐานข้อมูลนี้ไม่ได้รับการแก้ไขด้านความปลอดภัยจากผู้จำหน่ายอีกต่อไป"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "นี่คือที่ที่ผู้คนจะเปิด ChurchCRM เปลี่ยนเฉพาะเมื่อพวกเขาจะใช้ที่อยู่อื่นที่ไม่ใช่หน้านี้เท่านั้น"
 
@@ -28193,14 +28177,6 @@ msgstr "นี่คือบัญชีคริสตจักรของค
 #: 
 msgid "Total deposited"
 msgstr "ยอดรวมที่ฝาก"
-
-#: 
-msgid "Unsupported database server"
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลที่ไม่ได้รับการสนับสนุน"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "การอัปเกรดจะถูกบล็อกจนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่ได้รับการสนับสนุน"
 
 #: 
 msgid "Usually 3306."
