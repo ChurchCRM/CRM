@@ -499,7 +499,7 @@ window.CRM.system = {
     });
   },
   handlejQAJAXError: (jqXHR, textStatus, errorThrown, suppressErrorDialog) => {
-    if (jqXHR.status === 401) {
+    if (jqXHR.status === 401 && !window.CRM.keepPageOnSignOut) {
       window.location = window.CRM.root + "/session/begin";
     }
     if (textStatus === "abort" || suppressErrorDialog) {

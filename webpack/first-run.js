@@ -18,6 +18,9 @@ document.addEventListener("click", (e) => {
       document.querySelectorAll(".js-start-fresh").forEach((el) => {
         el.disabled = true;
       });
+      // The reset ends this session; the page's background calls then get 401 and would
+      // send the page to sign-in before the administrator reads the default credentials.
+      window.CRM.keepPageOnSignOut = true;
       fetch(buildAdminAPIUrl("database/reset"), { method: "DELETE" })
         .then((response) => {
           if (!response.ok) throw new Error(String(response.status));
@@ -37,6 +40,7 @@ document.addEventListener("click", (e) => {
           );
         })
         .catch(() => {
+          window.CRM.keepPageOnSignOut = false;
           document.querySelectorAll(".js-start-fresh").forEach((el) => {
             el.disabled = false;
           });
