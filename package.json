@@ -137,7 +137,7 @@
         "cypress-split": "^1.25.0",
         "cypress-terminal-report": "^7.5.0",
         "datatables.net-plugins": "^3.1.5",
-        "dotenv": "^17.4.2",
+        "dotenv": "^18.0.10",
         "gettext-parser": "^9.1.1",
         "i18next-cli": "^1.91.3",
         "i18next-conv": "^17.0.0",
