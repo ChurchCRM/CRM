@@ -26256,10 +26256,6 @@ msgstr "المدفوعات حسب الصندوق"
 msgid "Unknown Fund"
 msgstr "صندوق غير معروف"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "اطلب من مزوّد الاستضافة نقل قاعدة البيانات إلى إصدار مدعوم، ثم حاول مرة أخرى."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26277,14 +26273,6 @@ msgstr "اشتراط رقم الشيك عند تسجيل مدفوعات الشي
 #: 
 msgid "Require check number on check payments"
 msgstr "اشتراط رقم الشيك في مدفوعات الشيكات"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "لم تبدأ الترقية، لذا لم يتغير شيء."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "لا يمكن تشغيل هذه الترقية على قاعدة بياناتك."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28375,16 +28363,8 @@ msgid "Usually 3306."
 msgstr "عادة 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "نوصي بأن تطلب من مضيفك التبديل قبل التثبيت، بينما لا توجد بيانات لنقلها. MariaDB 10.11 هدف جيد."
-
-#: 
 msgid "Web address"
 msgstr "عنوان الويب"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "يمكنك التثبيت الآن: سيتم تثبيت ChurchCRM وتشغيله."
 
 #: 
 msgid "Your main dashboard"
@@ -28405,10 +28385,6 @@ msgid "and {{count}} more"
 msgstr "و{{count}} أخرى"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "سيرى المسؤولون تحذيرًا في كل صفحة حتى يتم نقل قاعدة البيانات إلى إصدار مدعوم."
-
-#: 
 msgid "Database out of support"
 msgstr "قاعدة البيانات غير مدعومة"
 
@@ -28423,10 +28399,6 @@ msgstr "كيفية العثور على السجل"
 #: 
 msgid "How to install server locales"
 msgstr "كيفية تثبيت إعدادات اللغة على الخادم"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "أفهم أن قاعدة البيانات هذه غير مدعومة"
 
 #: 
 msgid "Last edited"
@@ -28447,12 +28419,4 @@ msgstr "تحقق الآن"
 #: 
 msgid "View Giving History"
 msgstr "عرض سجل التبرعات"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "قاعدة البيانات الخاصة بك (%1$s %2$s) غير مدعومة وقد تكون غير آمنة. سيعمل ChurchCRM، لكننا نوصي بشدة بمستضيف يوفر MariaDB %3$s+ أو MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "خادم قاعدة البيانات الخاص بك (%1$s %2$s) قديم جدًا بالنسبة لـ ChurchCRM، الذي يحتاج إلى MySQL %3$s أو MariaDB %4$s أو أحدث."
 

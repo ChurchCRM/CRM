@@ -26148,10 +26148,6 @@ msgstr "Πληρωμές ανά κεφάλαιο"
 msgid "Unknown Fund"
 msgstr "Άγνωστο κεφάλαιο"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Ζητήστε από τον πάροχο φιλοξενίας να μεταφέρει τη βάση δεδομένων σε υποστηριζόμενη έκδοση και, στη συνέχεια, δοκιμάστε ξανά."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26169,14 +26165,6 @@ msgstr "Απαίτηση αριθμού επιταγής κατά την κατ�
 #: 
 msgid "Require check number on check payments"
 msgstr "Απαίτηση αριθμού επιταγής στις πληρωμές με επιταγή"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Η αναβάθμιση δεν ξεκίνησε, οπότε δεν άλλαξε τίποτα."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Αυτή η αναβάθμιση δεν μπορεί να εκτελεστεί στη βάση δεδομένων σας."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28239,16 +28227,8 @@ msgid "Usually 3306."
 msgstr "Συνήθως 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Συνιστούμε να ζητήσετε από τον πάροχό σας να αλλάξει πριν εγκαταστήσετε, όσο δεν υπάρχουν δεδομένα για μεταφορά. Η MariaDB 10.11 είναι ένας καλός στόχος."
-
-#: 
 msgid "Web address"
 msgstr "Διεύθυνση web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Μπορείτε να εγκαταστήσετε τώρα: το ChurchCRM θα εγκατασταθεί και θα λειτουργήσει."
 
 #: 
 msgid "Your main dashboard"
@@ -28269,10 +28249,6 @@ msgid "and {{count}} more"
 msgstr "και {{count}} ακόμη"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Οι διαχειριστές θα βλέπουν μια προειδοποίηση σε κάθε σελίδα μέχρι η βάση δεδομένων να μεταφερθεί σε μια υποστηριζόμενη έκδοση."
-
-#: 
 msgid "Database out of support"
 msgstr "Η βάση δεδομένων δεν υποστηρίζεται"
 
@@ -28287,10 +28263,6 @@ msgstr "Πώς να βρείτε το αρχείο καταγραφής"
 #: 
 msgid "How to install server locales"
 msgstr "Πώς να εγκαταστήσετε τις τοπικές ρυθμίσεις του διακομιστή"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Κατανοώ ότι αυτή η βάση δεδομένων δεν υποστηρίζεται"
 
 #: 
 msgid "Last edited"
@@ -28311,12 +28283,4 @@ msgstr "Επαλήθευση τώρα"
 #: 
 msgid "View Giving History"
 msgstr "Προβολή Ιστορίας Παροχής"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Η βάση δεδομένων σας (%1$s %2$s) δεν υποστηρίζεται και ενδέχεται να μην είναι ασφαλής. Το ChurchCRM θα λειτουργήσει, αλλά συνιστούμε ανεπιφύλακτα έναν πάροχο με MariaDB %3$s+ ή MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Ο διακομιστής βάσης δεδομένων σας (%1$s %2$s) είναι πολύ παλιός για το ChurchCRM, το οποίο χρειάζεται MySQL %3$s ή MariaDB %4$s και νεότερη έκδοση."
 

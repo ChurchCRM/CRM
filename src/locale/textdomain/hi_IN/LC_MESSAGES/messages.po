@@ -26117,10 +26117,6 @@ msgstr "निधि के अनुसार भुगतान"
 msgid "Unknown Fund"
 msgstr "अज्ञात निधि"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "अपने होस्ट से डेटाबेस को किसी समर्थित संस्करण पर ले जाने के लिए कहें, फिर दोबारा प्रयास करें।"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26138,14 +26134,6 @@ msgstr "जमा प्रविष्टियों में चेक भ�
 #: 
 msgid "Require check number on check payments"
 msgstr "चेक भुगतानों पर चेक नंबर अनिवार्य करें"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "अपग्रेड शुरू नहीं हुआ, इसलिए कुछ भी नहीं बदला।"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "यह अपग्रेड आपके डेटाबेस पर नहीं चल सकता।"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28208,16 +28196,8 @@ msgid "Usually 3306."
 msgstr "आमतौर पर 3306।"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "हम सलाह देते हैं कि इंस्टॉल करने से पहले, जब स्थानांतरित करने के लिए कोई डेटा नहीं है, अपने होस्ट से स्विच करने को कहें। MariaDB 10.11 एक अच्छा लक्ष्य है।"
-
-#: 
 msgid "Web address"
 msgstr "वेब पता"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "आप अभी इंस्टॉल कर सकते हैं: ChurchCRM इंस्टॉल होगा और चलेगा।"
 
 #: 
 msgid "Your main dashboard"
@@ -28238,10 +28218,6 @@ msgid "and {{count}} more"
 msgstr "और {{count}} अधिक"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "प्रशासकों को हर पेज पर चेतावनी दिखेगी जब तक डेटाबेस को समर्थित संस्करण पर नहीं ले जाया जाता।"
-
-#: 
 msgid "Database out of support"
 msgstr "डेटाबेस समर्थित नहीं है"
 
@@ -28256,10 +28232,6 @@ msgstr "लॉग कैसे खोजें"
 #: 
 msgid "How to install server locales"
 msgstr "सर्वर लोकेल कैसे इंस्टॉल करें"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "मैं समझता हूँ कि यह डेटाबेस समर्थित नहीं है"
 
 #: 
 msgid "Last edited"
@@ -28280,12 +28252,4 @@ msgstr "अभी सत्यापित करें"
 #: 
 msgid "View Giving History"
 msgstr "दान का इतिहास देखें"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "आपका डेटाबेस (%1$s %2$s) समर्थित नहीं है और असुरक्षित हो सकता है। ChurchCRM चलेगा, लेकिन हम MariaDB %3$s+ या MySQL %4$s+ वाले होस्ट की दृढ़ता से अनुशंसा करते हैं।"
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "आपका डेटाबेस सर्वर (%1$s %2$s) ChurchCRM के लिए बहुत पुराना है, जिसे MySQL %3$s या MariaDB %4$s और बाद के संस्करण की आवश्यकता है।"
 

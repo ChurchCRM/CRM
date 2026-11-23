@@ -26118,10 +26118,6 @@ msgstr "Pembayaran per Dana"
 msgid "Unknown Fund"
 msgstr "Dana Tidak Dikenal"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung, lalu coba lagi."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26139,14 +26135,6 @@ msgstr "Wajibkan nomor cek saat mencatat pembayaran dengan cek pada entri setora
 #: 
 msgid "Require check number on check payments"
 msgstr "Wajibkan nomor cek pada pembayaran dengan cek"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Pembaruan tidak dimulai, jadi tidak ada yang berubah."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Pembaruan ini tidak dapat dijalankan pada basis data Anda."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28202,16 +28190,8 @@ msgid "Usually 3306."
 msgstr "Biasanya 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Kami menyarankan untuk meminta host Anda beralih sebelum Anda menginstal, selagi belum ada data yang dipindahkan. MariaDB 10.11 adalah target yang baik."
-
-#: 
 msgid "Web address"
 msgstr "Alamat web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Anda dapat menginstal sekarang: ChurchCRM akan terinstal dan berjalan."
 
 #: 
 msgid "Your main dashboard"
@@ -28232,10 +28212,6 @@ msgid "and {{count}} more"
 msgstr "dan {{count}} lainnya"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Administrator akan melihat peringatan di setiap halaman hingga basis data dipindahkan ke versi yang didukung."
-
-#: 
 msgid "Database out of support"
 msgstr "Basis data tidak didukung"
 
@@ -28250,10 +28226,6 @@ msgstr "Cara menemukan log"
 #: 
 msgid "How to install server locales"
 msgstr "Cara menginstal lokal server"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Saya mengerti basis data ini tidak didukung"
 
 #: 
 msgid "Last edited"
@@ -28274,12 +28246,4 @@ msgstr "Verifikasi sekarang"
 #: 
 msgid "View Giving History"
 msgstr "Lihat Riwayat Pemberian"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Basis data Anda (%1$s %2$s) tidak didukung dan mungkin tidak aman. ChurchCRM akan berjalan, tetapi kami sangat menyarankan host dengan MariaDB %3$s+ atau MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Server basis data Anda (%1$s %2$s) terlalu lama untuk ChurchCRM, yang memerlukan MySQL %3$s atau MariaDB %4$s dan yang lebih baru."
 

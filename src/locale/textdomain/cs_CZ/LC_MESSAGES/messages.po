@@ -26165,10 +26165,6 @@ msgstr "Platby podle fondu"
 msgid "Unknown Fund"
 msgstr "Neznámý fond"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Požádejte poskytovatele hostingu o převedení databáze na podporovanou verzi a poté to zkuste znovu."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26186,14 +26182,6 @@ msgstr "Vyžadovat číslo šeku při zaznamenávání plateb šekem ve vkladech
 #: 
 msgid "Require check number on check payments"
 msgstr "Vyžadovat číslo šeku u plateb šekem"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Aktualizace nebyla spuštěna, takže se nic nezměnilo."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Tuto aktualizaci nelze ve vaší databázi spustit."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28263,16 +28251,8 @@ msgid "Usually 3306."
 msgstr "Obvykle 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Doporučujeme požádat hostitele o přepnutí ještě před instalací, dokud nejsou žádná data k přesunu. MariaDB 10.11 je vhodný cíl."
-
-#: 
 msgid "Web address"
 msgstr "Webová adresa"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Nyní můžete instalovat: ChurchCRM se nainstaluje a poběží."
 
 #: 
 msgid "Your main dashboard"
@@ -28293,10 +28273,6 @@ msgid "and {{count}} more"
 msgstr "a další {{count}}"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Administrátoři uvidí varování na každé stránce, dokud nebude databáze převedena na podporovanou verzi."
-
-#: 
 msgid "Database out of support"
 msgstr "Databáze není podporována"
 
@@ -28311,10 +28287,6 @@ msgstr "Jak najít protokol"
 #: 
 msgid "How to install server locales"
 msgstr "Jak nainstalovat národní prostředí serveru"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Rozumím, že tato databáze není podporována"
 
 #: 
 msgid "Last edited"
@@ -28335,12 +28307,4 @@ msgstr "Ověřit nyní"
 #: 
 msgid "View Giving History"
 msgstr "Zobrazit historii darů"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Vaše databáze (%1$s %2$s) není podporována a nemusí být bezpečná. ChurchCRM poběží, ale důrazně doporučujeme hostitele s MariaDB %3$s+ nebo MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Váš databázový server (%1$s %2$s) je pro ChurchCRM příliš starý, který potřebuje MySQL %3$s nebo MariaDB %4$s a novější."
 

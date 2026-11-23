@@ -26148,10 +26148,6 @@ msgstr "Fona göre ödemeler"
 msgid "Unknown Fund"
 msgstr "Bilinmeyen fon"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Barındırma sağlayıcınızdan veritabanını desteklenen bir sürüme taşımasını isteyin ve ardından yeniden deneyin."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26169,14 +26165,6 @@ msgstr "Yatırma kayıtlarında çekle yapılan ödemeler kaydedilirken çek num
 #: 
 msgid "Require check number on check payments"
 msgstr "Çekle ödemelerde çek numarası zorunlu olsun"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Yükseltme başlatılmadı, bu nedenle hiçbir şey değişmedi."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Bu yükseltme veritabanınızda çalıştırılamaz."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28239,16 +28227,8 @@ msgid "Usually 3306."
 msgstr "Genellikle 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Veri taşınması gerekmeden önce, kurulumdan önce barındırıcınızdan geçiş yapmasını istemenizi öneririz. MariaDB 10.11 iyi bir hedeftir."
-
-#: 
 msgid "Web address"
 msgstr "Web adresi"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Şimdi kurabilirsiniz: ChurchCRM kurulacak ve çalışacak."
 
 #: 
 msgid "Your main dashboard"
@@ -28269,10 +28249,6 @@ msgid "and {{count}} more"
 msgstr "ve {{count}} tane daha"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Veritabanı desteklenen bir sürüme taşınana kadar yöneticiler her sayfada bir uyarı görecek."
-
-#: 
 msgid "Database out of support"
 msgstr "Veritabanı desteklenmiyor"
 
@@ -28287,10 +28263,6 @@ msgstr "Günlük nasıl bulunur"
 #: 
 msgid "How to install server locales"
 msgstr "Sunucu yerel ayarları nasıl yüklenir"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "Bu veritabanının desteklenmediğini anlıyorum"
 
 #: 
 msgid "Last edited"
@@ -28311,12 +28283,4 @@ msgstr "Şimdi doğrula"
 #: 
 msgid "View Giving History"
 msgstr "Bağış Tarihini Görüntüle"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Veritabanınız (%1$s %2$s) desteklenmiyor ve güvenli olmayabilir. ChurchCRM çalışacaktır, ancak MariaDB %3$s+ veya MySQL %4$s+ içeren bir barındırıcı şiddetle önerilir."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Veritabanı sunucunuz (%1$s %2$s) ChurchCRM için çok eski; MySQL %3$s veya MariaDB %4$s ve sonrasına ihtiyaç duyar."
 

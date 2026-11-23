@@ -26139,10 +26139,6 @@ msgstr "Pagesat sipas fondit"
 msgid "Unknown Fund"
 msgstr "Fond i panjohur"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Kërkojini ofruesit të hostimit ta kalojë bazën e të dhënave në një version të mbështetur dhe më pas provoni përsëri."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26160,14 +26156,6 @@ msgstr "Kërko numrin e çekut kur regjistrohen pagesa me çek në depozita. Kur
 #: 
 msgid "Require check number on check payments"
 msgstr "Kërko numrin e çekut për pagesat me çek"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Përmirësimi nuk filloi, prandaj nuk ndryshoi asgjë."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Ky përmirësim nuk mund të ekzekutohet në bazën tuaj të të dhënave."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28230,16 +28218,8 @@ msgid "Usually 3306."
 msgstr "Zakonisht 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Ne rekomandojmë t'i kërkoni hostit tuaj të ndryshojë para se të instaloni, ndërsa nuk ka të dhëna për të zhvendosur. MariaDB 10.11 është një objektiv i mirë."
-
-#: 
 msgid "Web address"
 msgstr "Adresa e uebit"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Mund të instaloni tani: ChurchCRM do të instalohet dhe do të funksionojë."
 
 #: 
 msgid "Your main dashboard"
@@ -28260,10 +28240,6 @@ msgid "and {{count}} more"
 msgstr "dhe {{count}} të tjerë"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "Administratorët do të shohin një paralajmërim në çdo faqe derisa baza e të dhënave të zhvendoset në një version të mbështetur."
-
-#: 
 msgid "Database out of support"
 msgstr "Baza e të dhënave nuk mbështetet"
 
@@ -28278,10 +28254,6 @@ msgstr "Si të gjeni regjistrin"
 #: 
 msgid "How to install server locales"
 msgstr "Si të instaloni lokalet e serverit"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "E kuptoj që kjo bazë të dhënash nuk mbështetet"
 
 #: 
 msgid "Last edited"
@@ -28302,12 +28274,4 @@ msgstr "Verifiko tani"
 #: 
 msgid "View Giving History"
 msgstr "Shiko historikun e dhurimit"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "Baza juaj e të dhënave (%1$s %2$s) nuk mbështetet dhe mund të jetë e pasigurt. ChurchCRM do të funksionojë, por ne rekomandojmë fuqimisht një host me MariaDB %3$s+ ose MySQL %4$s+."
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "Serveri juaj i bazës së të dhënave (%1$s %2$s) është shumë i vjetër për ChurchCRM, i cili ka nevojë për MySQL %3$s ose MariaDB %4$s dhe më të ri."
 

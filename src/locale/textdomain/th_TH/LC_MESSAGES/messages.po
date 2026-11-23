@@ -26099,10 +26099,6 @@ msgstr "การชำระเงินตามกองทุน"
 msgid "Unknown Fund"
 msgstr "กองทุนที่ไม่รู้จัก"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ แล้วลองอีกครั้ง"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26120,14 +26116,6 @@ msgstr "กำหนดให้ต้องระบุหมายเลขเ
 #: 
 msgid "Require check number on check payments"
 msgstr "ต้องระบุหมายเลขเช็คสำหรับการชำระด้วยเช็ค"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "ยังไม่ได้เริ่มการอัปเกรด จึงไม่มีอะไรเปลี่ยนแปลง"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "ไม่สามารถเรียกใช้การอัปเกรดนี้กับฐานข้อมูลของคุณได้"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28183,16 +28171,8 @@ msgid "Usually 3306."
 msgstr "โดยปกติคือ 3306"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "เราแนะนำให้ขอให้โฮสต์ของคุณเปลี่ยนก่อนที่คุณจะติดตั้ง ในขณะที่ยังไม่มีข้อมูลให้ย้าย MariaDB 10.11 เป็นเป้าหมายที่ดี"
-
-#: 
 msgid "Web address"
 msgstr "ที่อยู่เว็บ"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "คุณสามารถติดตั้งได้ตอนนี้: ChurchCRM จะติดตั้งและทำงาน"
 
 #: 
 msgid "Your main dashboard"
@@ -28213,10 +28193,6 @@ msgid "and {{count}} more"
 msgstr "และอีก {{count}}"
 
 #: 
-msgid "Administrators will see a warning on every page until the database is moved to a supported version."
-msgstr "ผู้ดูแลระบบจะเห็นคำเตือนในทุกหน้า จนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่รองรับ"
-
-#: 
 msgid "Database out of support"
 msgstr "ฐานข้อมูลไม่รองรับ"
 
@@ -28231,10 +28207,6 @@ msgstr "วิธีค้นหาบันทึก"
 #: 
 msgid "How to install server locales"
 msgstr "วิธีติดตั้งโลแคลของเซิร์ฟเวอร์"
-
-#: 
-msgid "I understand this database is out of support"
-msgstr "ฉันเข้าใจว่าฐานข้อมูลนี้ไม่รองรับ"
 
 #: 
 msgid "Last edited"
@@ -28255,12 +28227,4 @@ msgstr "ยืนยันตอนนี้"
 #: 
 msgid "View Giving History"
 msgstr "ดูประวัติการบริจาค"
-
-#: 
-msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
-msgstr "ฐานข้อมูลของคุณ (%1$s %2$s) ไม่รองรับและอาจไม่ปลอดภัย ChurchCRM จะทำงานได้ แต่เราขอแนะนำอย่างยิ่งให้ใช้โฮสต์ที่มี MariaDB %3$s+ หรือ MySQL %4$s+"
-
-#: 
-msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลของคุณ (%1$s %2$s) เก่าเกินไปสำหรับ ChurchCRM ซึ่งต้องการ MySQL %3$s หรือ MariaDB %4$s ขึ้นไป"
 
