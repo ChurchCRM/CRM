@@ -154,7 +154,7 @@
   },
   "current": {
     "versions": ["7.8.6"],
-    "scripts": ["/mysql/upgrade/7.8.7-recurring-pledges.sql"],
+    "scripts": ["/mysql/upgrade/7.8.7-recurring-pledges.sql", "/mysql/upgrade/7.8.7-remaining-utf8mb4.sql"],
     "dbVersion": "7.8.7"
   }
 }
