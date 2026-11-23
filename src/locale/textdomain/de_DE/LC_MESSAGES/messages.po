@@ -26223,10 +26223,6 @@ msgstr "Unbekannter Fonds"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Bitten Sie Ihren Hoster, die Datenbank auf eine unterstützte Version umzustellen, und versuchen Sie es dann erneut."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Bitten Sie Ihren Hoster, die Datenbank auf eine unterstützte Version umzustellen."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26252,10 +26248,6 @@ msgstr "Das Upgrade wurde nicht gestartet, daher wurde nichts geändert."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Dieses Upgrade kann auf Ihrer Datenbank nicht ausgeführt werden."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Ihr Datenbankserver (%1$s %2$s) ist älter als die von ChurchCRM unterstützten Versionen (MySQL %3$s bzw. MariaDB %4$s oder neuer)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28098,10 +28090,6 @@ msgid "How the congregation is made up"
 msgstr "Wie sich die Gemeinde zusammensetzt"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Ich verstehe, dass diese Datenbank nicht unterstützt wird und Upgrades blockiert werden"
-
-#: 
 msgid "Insights"
 msgstr "Einblicke"
 
@@ -28306,10 +28294,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Dieses Dashboard ist jetzt Ihr Haupt-Dashboard."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Diese Datenbank erhält keine Sicherheitskorrekturen mehr von ihrem Anbieter."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Hier werden die Leute ChurchCRM öffnen. Ändern Sie dies nur, wenn sie eine andere Adresse als diese Seite verwenden werden."
 
@@ -28320,14 +28304,6 @@ msgstr "Dies ist Ihr Gemeindekonto. Alles, was Sie für sich selbst tun können,
 #: 
 msgid "Total deposited"
 msgstr "Gesamt eingezahlt"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Nicht unterstützter Datenbankserver"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Upgrades werden blockiert, bis die Datenbank auf eine unterstützte Version umgestellt wurde."
 
 #: 
 msgid "Usually 3306."

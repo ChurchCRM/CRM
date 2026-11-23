@@ -26237,10 +26237,6 @@ msgstr "Fond necunoscut"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată, apoi încercați din nou."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26266,10 +26262,6 @@ msgstr "Actualizarea nu a fost pornită, deci nu s-a schimbat nimic."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Această actualizare nu poate rula pe baza dvs. de date."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Serverul dvs. de baze de date (%1$s %2$s) este mai vechi decât acceptă ChurchCRM (MySQL %3$s sau MariaDB %4$s și versiunile ulterioare)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28119,10 +28111,6 @@ msgid "How the congregation is made up"
 msgstr "Componența congregației"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Înțeleg că această bază de date nu este acceptată și că actualizările vor fi blocate"
-
-#: 
 msgid "Insights"
 msgstr "Perspective"
 
@@ -28327,10 +28315,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Acest panou de bord este acum panoul de bord principal."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Această bază de date nu mai primește remedieri de securitate de la furnizorul său."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Aici vor deschide oamenii ChurchCRM. Modificați-l numai dacă vor folosi o adresă diferită de cea a acestei pagini."
 
@@ -28341,14 +28325,6 @@ msgstr "Acesta este contul bisericii dumneavoastră. Tot ce puteți face pentru 
 #: 
 msgid "Total deposited"
 msgstr "Total depus"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Server de baze de date neacceptat"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Actualizările vor fi blocate până când baza de date va fi mutată la o versiune acceptată."
 
 #: 
 msgid "Usually 3306."

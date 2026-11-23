@@ -26237,10 +26237,6 @@ msgstr "Okänd fond"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds och försök sedan igen."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26266,10 +26262,6 @@ msgstr "Uppgraderingen startades inte, så ingenting ändrades."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Den här uppgraderingen kan inte köras på din databas."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Din databasserver (%1$s %2$s) är äldre än vad ChurchCRM stöder (MySQL %3$s eller MariaDB %4$s och senare)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28112,10 +28104,6 @@ msgid "How the congregation is made up"
 msgstr "Hur församlingen är sammansatt"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Jag förstår att den här databasen inte stöds och att uppgraderingar kommer att blockeras"
-
-#: 
 msgid "Insights"
 msgstr "Insikter"
 
@@ -28320,10 +28308,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Den här instrumentbrädan är nu din huvudinstrumentbräda."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Den här databasen får inte längre säkerhetskorrigeringar från sin leverantör."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Det är här människor kommer att öppna ChurchCRM. Ändra det bara om de kommer att använda en annan adress än den här sidan."
 
@@ -28334,14 +28318,6 @@ msgstr "Det här är ditt församlingskonto. Allt du kan göra för dig själv f
 #: 
 msgid "Total deposited"
 msgstr "Totalt insatt"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Databasserver som inte stöds"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Uppgraderingar blockeras tills databasen har flyttats till en version som stöds."
 
 #: 
 msgid "Usually 3306."

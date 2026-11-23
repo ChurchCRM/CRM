@@ -26158,10 +26158,6 @@ msgstr "ያልታወቀ ፈንድ"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "ዳታቤዙን ወደሚደገፍ ስሪት እንዲያዛውር አስተናጋጅዎን ይጠይቁ፣ ከዚያ እንደገና ይሞክሩ።"
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "ዳታቤዙን ወደሚደገፍ ስሪት እንዲያዛውር አስተናጋጅዎን ይጠይቁ።"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26187,10 +26183,6 @@ msgstr "ማሻሻያው አልተጀመረም፣ ስለዚህ ምንም አል�
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "ይህ ማሻሻያ በዳታቤዝዎ ላይ ሊሰራ አይችልም።"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "የዳታቤዝ አገልጋይዎ (%1$s %2$s) ChurchCRM ከሚደግፈው የቆየ ነው (MySQL %3$s ወይም MariaDB %4$s እና ከዚያ በኋላ ያሉ)።"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28033,10 +28025,6 @@ msgid "How the congregation is made up"
 msgstr "ምእመናኑ እንዴት እንደተዋቀሩ"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "ይህ ዳታቤዝ እንደማይደገፍ እና ማሻሻያዎች እንደሚታገዱ ተረድቻለሁ"
-
-#: 
 msgid "Insights"
 msgstr "ግንዛቤዎች"
 
@@ -28241,10 +28229,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "ይህ ዳሸቦርድ አሁን ዋና ዳሸቦርድዎ ነው።"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "ይህ ዳታቤዝ ከአቅራቢው የደህንነት ጥገናዎችን ከእንግዲህ አያገኝም።"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "ሰዎች ChurchCRMን የሚከፍቱት እዚህ ነው። ከዚህ ገጽ የተለየ አድራሻ የሚጠቀሙ ከሆነ ብቻ ይቀይሩት።"
 
@@ -28255,14 +28239,6 @@ msgstr "ይህ የቤተ ክርስቲያን መለያዎ ነው። ለራስዎ 
 #: 
 msgid "Total deposited"
 msgstr "ጠቅላላ የተቀመጠ"
-
-#: 
-msgid "Unsupported database server"
-msgstr "የማይደገፍ የዳታቤዝ ሰርቨር"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "ዳታቤዙ ወደሚደገፍ ሥሪት እስኪዘዋወር ድረስ ማሻሻያዎች ይታገዳሉ።"
 
 #: 
 msgid "Usually 3306."

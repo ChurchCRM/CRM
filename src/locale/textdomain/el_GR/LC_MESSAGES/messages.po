@@ -26152,10 +26152,6 @@ msgstr "Άγνωστο κεφάλαιο"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Ζητήστε από τον πάροχο φιλοξενίας να μεταφέρει τη βάση δεδομένων σε υποστηριζόμενη έκδοση και, στη συνέχεια, δοκιμάστε ξανά."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Ζητήστε από τον πάροχο φιλοξενίας να μεταφέρει τη βάση δεδομένων σε υποστηριζόμενη έκδοση."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26181,10 +26177,6 @@ msgstr "Η αναβάθμιση δεν ξεκίνησε, οπότε δεν άλ�
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Αυτή η αναβάθμιση δεν μπορεί να εκτελεστεί στη βάση δεδομένων σας."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Ο διακομιστής βάσης δεδομένων σας (%1$s %2$s) είναι παλαιότερος από όσο υποστηρίζει το ChurchCRM (MySQL %3$s ή MariaDB %4$s και νεότερες)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28027,10 +28019,6 @@ msgid "How the congregation is made up"
 msgstr "Πώς αποτελείται το εκκλησίασμα"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Κατανοώ ότι αυτή η βάση δεδομένων δεν υποστηρίζεται και οι αναβαθμίσεις θα αποκλειστούν"
-
-#: 
 msgid "Insights"
 msgstr "Στατιστικά"
 
@@ -28235,10 +28223,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Αυτός ο πίνακας ελέγχου είναι τώρα ο κύριος πίνακας ελέγχου σας."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Αυτή η βάση δεδομένων δεν λαμβάνει πλέον διορθώσεις ασφαλείας από τον προμηθευτή της."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Εδώ θα ανοίγουν οι άνθρωποι το ChurchCRM. Αλλάξτε το μόνο αν θα χρησιμοποιούν διαφορετική διεύθυνση από αυτή τη σελίδα."
 
@@ -28249,14 +28233,6 @@ msgstr "Αυτός είναι ο λογαριασμός της εκκλησία�
 #: 
 msgid "Total deposited"
 msgstr "Συνολικό ποσό καταθέσεων"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Μη υποστηριζόμενος διακομιστής βάσης δεδομένων"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Οι αναβαθμίσεις θα αποκλειστούν μέχρι η βάση δεδομένων να μεταφερθεί σε υποστηριζόμενη έκδοση."
 
 #: 
 msgid "Usually 3306."
