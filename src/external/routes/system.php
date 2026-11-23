@@ -65,7 +65,7 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
             'dbVersion' => $dbVersion,
             'softwareVersion' => $softwareVersion,
             'errorMessage' => $errorMessage,
-            'databaseNotice' => $errorMessage ? DatabaseVersionService::getUpgradeWarningMessage() : null,
+            'databaseNotice' => $errorMessage ? DatabaseVersionService::getSecurityRiskMessage() : null,
         ];
         return $renderer->render($response, 'system-db-update.php', $pageArgs);
     });

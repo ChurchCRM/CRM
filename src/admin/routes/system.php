@@ -15,7 +15,6 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
-use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
@@ -363,7 +362,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
             'isAheadOfStable'       => $isAheadOfStable,
-            'databaseBlockMessage'  => DatabaseVersionService::getUpgradeBlockMessage(),
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);

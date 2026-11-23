@@ -50,12 +50,6 @@ describe("System Upgrade Page", () => {
         cy.get("#refreshFromGitHub").should("be.visible");
     });
 
-    it("should not warn about the database on a supported server", () => {
-        cy.visit("/admin/system/upgrade");
-
-        cy.contains("This upgrade cannot run on your database.").should("not.exist");
-    });
-
     it("should display the upgrade wizard with all steps", () => {
         cy.visit("/admin/system/upgrade");
 

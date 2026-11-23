@@ -125,7 +125,7 @@ class NotificationService
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             return;
         }
-        $message = DatabaseVersionService::getUnsupportedMessage();
+        $message = DatabaseVersionService::getSecurityRiskMessage();
         if ($message === null) {
             return;
         }
