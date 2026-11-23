@@ -495,7 +495,7 @@ class Bootstrapper
     }
     private static function installLockName(): string
     {
-        return 'churchcrm-install-' . self::$databaseName;
+        return 'churchcrm-install-' . sha1(self::$databaseName);
     }
 
     /** A request that arrives mid-install sees a partial schema with no version row; let the install finish first. */
