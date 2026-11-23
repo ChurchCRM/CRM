@@ -177,16 +177,6 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             $failedCount = count($failedPeople);
             $successCount = $totalPeople - $failedCount;
 
-            if ($failedCount === $totalPeople && $totalPeople > 0) {
-                return SlimUtils::renderJSON($response, [
-                    'status' => 'error',
-                    'message' => gettext('Failed to add people to the selected group.'),
-                    'successCount' => 0,
-                    'failedCount' => $failedCount,
-                    'failedPeople' => $failedPeople,
-                ])->withStatus(500);
-            }
-
             if ($failedCount > 0) {
                 return SlimUtils::renderJSON($response, [
                     'status' => 'partial_success',
