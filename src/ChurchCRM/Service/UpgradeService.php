@@ -68,9 +68,9 @@ class UpgradeService
             return true;
         }
 
-        $databaseNotice = DatabaseVersionService::getUpgradeWarningMessage();
+        $databaseNotice = DatabaseVersionService::getSecurityRiskMessage();
         if ($databaseNotice !== null) {
-            $logger->warning('Upgrading a database below the supported minimum: ' . $databaseNotice);
+            $logger->warning('Upgrading a database without vendor security fixes: ' . $databaseNotice);
         }
 
         // An older release manager may still be loaded during deployment. Its

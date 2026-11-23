@@ -4079,10 +4079,6 @@ msgid "Legend"
 msgstr "图例"
 
 #: 
-msgid "assigned"
-msgstr "已指派"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "展示学员生日于"
 
@@ -17648,10 +17644,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。"
 
 #: 
-msgid "Review self registrations"
-msgstr "审核自助登记"
-
-#: 
 msgid "Select month"
 msgstr "选择月份"
 
@@ -17678,10 +17670,6 @@ msgstr "此人属于某个家庭，请改为批准该家庭"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "此人不是待处理的自助登记"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "此自助登记的家庭正等待审核"
 
 #: 
 msgid "Total registrations"
@@ -26200,10 +26188,6 @@ msgstr "未知基金"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "请联系您的主机服务商将数据库迁移到受支持的版本，然后重试。"
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "请联系您的主机服务商将数据库迁移到受支持的版本。"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26229,10 +26213,6 @@ msgstr "升级未开始，因此未做任何更改。"
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "此升级无法在您的数据库上运行。"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "您的数据库服务器（%1$s %2$s）版本低于 ChurchCRM 支持的版本（MySQL %3$s 或 MariaDB %4$s 及更高版本）。"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28068,10 +28048,6 @@ msgid "How the congregation is made up"
 msgstr "会众的构成情况"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "我了解此数据库不受支持，升级将被阻止"
-
-#: 
 msgid "Insights"
 msgstr "洞察"
 
@@ -28276,10 +28252,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "此仪表板现在是您的主仪表板。"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "此数据库不再从其供应商处获得安全修复。"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "人们将在此处打开 ChurchCRM。仅当他们将使用与此页面不同的地址时才更改它。"
 
@@ -28290,14 +28262,6 @@ msgstr "这是您的教会账户。您可以为自己做的一切都在这里。
 #: 
 msgid "Total deposited"
 msgstr "存款总额"
-
-#: 
-msgid "Unsupported database server"
-msgstr "不受支持的数据库服务器"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "在数据库迁移到受支持的版本之前，升级将被阻止。"
 
 #: 
 msgid "Usually 3306."
@@ -28332,4 +28296,56 @@ msgstr "还有 {{count}} 个"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "还有 {{count}} 个"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "在数据库迁移到受支持的版本之前，管理员将在每个页面上看到警告。"
+
+#: 
+msgid "Database out of support"
+msgstr "数据库不受支持"
+
+#: 
+msgid "Deactivated"
+msgstr "已停用"
+
+#: 
+msgid "How to find the log"
+msgstr "如何查找日志"
+
+#: 
+msgid "How to install server locales"
+msgstr "如何安装服务器区域设置"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "我了解此数据库不受支持"
+
+#: 
+msgid "Last edited"
+msgstr "最后编辑"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "未安装在服务器上，并且也没有安装英语后备区域设置，因此界面将以英文显示。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM 日志会记录具体原因。分享前请删除姓名。"
+
+#: 
+msgid "Verify now"
+msgstr "立即验证"
+
+#: 
+msgid "View Giving History"
+msgstr "查看捐献历史"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "您的数据库（%1$s %2$s）不受支持，可能不安全。ChurchCRM 仍可运行，但我们强烈推荐使用带有 MariaDB %3$s+ 或 MySQL %4$s+ 的主机。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "您的数据库服务器（%1$s %2$s）对 ChurchCRM 来说太旧了，需要 MySQL %3$s 或 MariaDB %4$s 及更高版本。"
 

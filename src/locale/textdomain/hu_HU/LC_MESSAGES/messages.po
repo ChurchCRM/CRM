@@ -4047,10 +4047,6 @@ msgid "Legend"
 msgstr "Jelmagyarázat"
 
 #: 
-msgid "assigned"
-msgstr "hozzárendelve"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Születésnapos diákok mutatása ebben a hónapban:"
 
@@ -17622,10 +17618,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "A nyilvános regisztrációs űrlapon beérkezett regisztrációk áttekintésre várnak. Az e-mail vagy telefon nélküli bejegyzések meg vannak jelölve – a kapcsolatfelvétel előtt ellenőrizd az elérhetőségeket."
 
 #: 
-msgid "Review self registrations"
-msgstr "Önregisztrációk áttekintése"
-
-#: 
 msgid "Select month"
 msgstr "Hónap kiválasztása"
 
@@ -17652,10 +17644,6 @@ msgstr "Ez a személy családhoz tartozik – inkább a családot hagyd jóvá"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ez a személy nem függőben lévő önregisztráció"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Ez az önregisztrált család áttekintésre vár"
 
 #: 
 msgid "Total registrations"
@@ -26187,10 +26175,6 @@ msgstr "Ismeretlen alap"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra, majd próbálja újra."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26216,10 +26200,6 @@ msgstr "A frissítés nem indult el, így semmi sem változott."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Ez a frissítés nem futtatható az Ön adatbázisán."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Az adatbázisszerver (%1$s %2$s) régebbi, mint amit a ChurchCRM támogat (MySQL %3$s vagy MariaDB %4$s és újabb)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28062,10 +28042,6 @@ msgid "How the congregation is made up"
 msgstr "Hogyan épül fel a gyülekezet"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Megértem, hogy ez az adatbázis nem támogatott, és a frissítések le lesznek tiltva"
-
-#: 
 msgid "Insights"
 msgstr "Betekintések"
 
@@ -28270,10 +28246,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Ez a vezérlőpult mostantól az Ön fő vezérlőpultja."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Ez az adatbázis már nem kap biztonsági javításokat a gyártójától."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Itt fogják az emberek megnyitni a ChurchCRM-et. Csak akkor változtassa meg, ha ettől az oldaltól eltérő címet fognak használni."
 
@@ -28284,14 +28256,6 @@ msgstr "Ez az Ön gyülekezeti fiókja. Minden, amit saját magáért tehet, itt
 #: 
 msgid "Total deposited"
 msgstr "Összes befizetett"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Nem támogatott adatbázis-kiszolgáló"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "A frissítések le lesznek tiltva, amíg az adatbázist támogatott verzióra nem helyezik át."
 
 #: 
 msgid "Usually 3306."
@@ -28326,4 +28290,56 @@ msgstr "és még {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "és még {{count}}"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "A rendszergazdák minden oldalon figyelmeztetést fognak látni, amíg az adatbázis át nem kerül egy támogatott verzióra."
+
+#: 
+msgid "Database out of support"
+msgstr "Az adatbázis nem támogatott"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktiválva"
+
+#: 
+msgid "How to find the log"
+msgstr "Hogyan találja meg a naplót"
+
+#: 
+msgid "How to install server locales"
+msgstr "A kiszolgáló területi beállításainak telepítése"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Megértem, hogy ez az adatbázis nem támogatott"
+
+#: 
+msgid "Last edited"
+msgstr "Utoljára szerkesztve"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nincs telepítve a szerveren, és angol tartalék területi beállítás sincs telepítve, így a felület angolul jelenik meg."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "A ChurchCRM napló rögzíti a konkrét okot. Megosztás előtt távolítsa el a neveket."
+
+#: 
+msgid "Verify now"
+msgstr "Ellenőrzés most"
+
+#: 
+msgid "View Giving History"
+msgstr "Adományi előzmények megtekintése"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Az adatbázisa (%1$s %2$s) nem támogatott, és nem biztonságos lehet. A ChurchCRM működni fog, de erősen ajánlunk egy MariaDB %3$s+ vagy MySQL %4$s+ verziót kínáló tárhelyet."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Az adatbázis-kiszolgálója (%1$s %2$s) túl régi a ChurchCRM számára, amelynek MySQL %3$s vagy MariaDB %4$s és újabb szükséges."
 

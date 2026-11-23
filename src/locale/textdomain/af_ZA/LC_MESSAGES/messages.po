@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Legende"
 
 #: 
-msgid "assigned"
-msgstr "toegewys"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Vertoon studente met verjaarsdae in"
 
@@ -17599,10 +17595,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrasies wat op hersiening wag vanaf jou openbare registrasievorm. Inskrywings sonder e-pos of foon is gemerk — verifieer kontakbesonderhede voordat jy opvolg."
 
 #: 
-msgid "Review self registrations"
-msgstr "Hersien selfregistrasies"
-
-#: 
 msgid "Select month"
 msgstr "Kies maand"
 
@@ -17629,10 +17621,6 @@ msgstr "Hierdie persoon behoort aan 'n gesin — keur eerder die gesin goed"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Hierdie persoon is nie 'n hangende selfregistrasie nie"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Hierdie selfgeregistreerde gesin wag op hersiening"
 
 #: 
 msgid "Total registrations"
@@ -26164,10 +26152,6 @@ msgstr "Onbekende fonds"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif, en probeer dan weer."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26193,10 +26177,6 @@ msgstr "Die opgradering is nie begin nie, dus het niks verander nie."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Hierdie opgradering kan nie op jou databasis loop nie."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Jou databasisbediener (%1$s %2$s) is ouer as wat ChurchCRM ondersteun (MySQL %3$s of MariaDB %4$s en later)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28039,10 +28019,6 @@ msgid "How the congregation is made up"
 msgstr "Hoe die gemeente saamgestel is"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Ek verstaan dat hierdie databasis nie ondersteun word nie en dat opgraderings geblokkeer sal word"
-
-#: 
 msgid "Insights"
 msgstr "Insigte"
 
@@ -28247,10 +28223,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Hierdie dashboard is nou jou hoofdashboard."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Hierdie databasis ontvang nie meer sekuriteitsregstellings van sy verskaffer nie."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Dit is waar mense ChurchCRM sal oopmaak. Verander dit slegs as hulle 'n ander adres as hierdie bladsy sal gebruik."
 
@@ -28261,14 +28233,6 @@ msgstr "Dit is jou kerkrekening. Alles wat jy vir jouself kan doen, is hier."
 #: 
 msgid "Total deposited"
 msgstr "Totaal gedeponeer"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Nie-ondersteunde databasisbediener"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Opgraderings sal geblokkeer word totdat die databasis na 'n ondersteunde weergawe geskuif is."
 
 #: 
 msgid "Usually 3306."
@@ -28303,4 +28267,56 @@ msgstr "en {{count}} meer"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "en {{count}} meer"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Beheerders sal op elke bladsy 'n waarskuwing sien totdat die databasis na 'n ondersteunde weergawe geskuif is."
+
+#: 
+msgid "Database out of support"
+msgstr "Databasis word nie ondersteun nie"
+
+#: 
+msgid "Deactivated"
+msgstr "Gedeaktiveer"
+
+#: 
+msgid "How to find the log"
+msgstr "Hoe om die log te vind"
+
+#: 
+msgid "How to install server locales"
+msgstr "Hoe om bediener-lokale te installeer"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ek verstaan hierdie databasis word nie ondersteun nie"
+
+#: 
+msgid "Last edited"
+msgstr "Laas geredigeer"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nie op die bediener geïnstalleer nie, en geen Engelse terugval-lokaal is ook geïnstalleer nie, dus sal die koppelvlak in Engels vertoon."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Die ChurchCRM-log teken die spesifieke rede aan. Verwyder name voordat jy dit deel."
+
+#: 
+msgid "Verify now"
+msgstr "Verifieer nou"
+
+#: 
+msgid "View Giving History"
+msgstr "Bekyk Gawinggeschiedenis"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Jou databasis (%1$s %2$s) word nie ondersteun nie en is dalk onveilig. ChurchCRM sal werk, maar ons beveel 'n gasheer met MariaDB %3$s+ of MySQL %4$s+ sterk aan."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Jou databasisbediener (%1$s %2$s) is te oud vir ChurchCRM, wat MySQL %3$s of MariaDB %4$s en later benodig."
 

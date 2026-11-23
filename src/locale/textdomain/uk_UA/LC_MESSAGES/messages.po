@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Легенда"
 
 #: 
-msgid "assigned"
-msgstr "призначений"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Показ студентів з днями народження в"
 
@@ -17629,10 +17625,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Реєстрації з вашої загальнодоступної форми, що очікують перевірки. Записи без ел. пошти чи телефону позначено — перевірте контактні дані, перш ніж зв’язуватися."
 
 #: 
-msgid "Review self registrations"
-msgstr "Перевірити саморєстрації"
-
-#: 
 msgid "Select month"
 msgstr "Виберіть місяць"
 
@@ -17659,10 +17651,6 @@ msgstr "Ця особа належить до родини — схваліть 
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ця особа не очікує перевірки саморєстрації"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Ця саморєстрована родина очікує перевірки"
 
 #: 
 msgid "Total registrations"
@@ -26220,10 +26208,6 @@ msgstr "Невідомий фонд"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Попросіть хостинг-провайдера перевести базу даних на підтримувану версію, а потім спробуйте ще раз."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Попросіть хостинг-провайдера перевести базу даних на підтримувану версію."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26249,10 +26233,6 @@ msgstr "Оновлення не було запущено, тому нічого
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Це оновлення неможливо виконати на вашій базі даних."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Ваш сервер бази даних (%1$s %2$s) старіший, ніж підтримує ChurchCRM (MySQL %3$s або MariaDB %4$s і новіші)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28109,10 +28089,6 @@ msgid "How the congregation is made up"
 msgstr "Склад громади"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Я розумію, що ця база даних не підтримується і оновлення буде заблоковано"
-
-#: 
 msgid "Insights"
 msgstr "Аналітика"
 
@@ -28317,10 +28293,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Ця панель тепер є вашою головною панеллю."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Ця база даних більше не отримує виправлень безпеки від свого постачальника."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Тут люди відкриватимуть ChurchCRM. Змінюйте це лише тоді, якщо вони використовуватимуть іншу адресу, ніж ця сторінка."
 
@@ -28331,14 +28303,6 @@ msgstr "Це ваш церковний обліковий запис. Усе, щ
 #: 
 msgid "Total deposited"
 msgstr "Усього внесено"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Непідтримуваний сервер бази даних"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Оновлення буде заблоковано, доки базу даних не буде переміщено на підтримувану версію."
 
 #: 
 msgid "Usually 3306."
@@ -28373,4 +28337,56 @@ msgstr "і ще {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "і ще {{count}}"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Адміністратори бачитимуть попередження на кожній сторінці, доки базу даних не буде переведено на підтримувану версію."
+
+#: 
+msgid "Database out of support"
+msgstr "База даних не підтримується"
+
+#: 
+msgid "Deactivated"
+msgstr "Деактивовано"
+
+#: 
+msgid "How to find the log"
+msgstr "Як знайти журнал"
+
+#: 
+msgid "How to install server locales"
+msgstr "Як встановити локалі сервера"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Я розумію, що ця база даних не підтримується"
+
+#: 
+msgid "Last edited"
+msgstr "Востаннє відредаговано"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Не встановлено на сервері, і англійську резервну локаль також не встановлено, тому інтерфейс відображатиметься англійською мовою."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Журнал ChurchCRM записує конкретну причину. Видаліть імена, перш ніж ділитися ним."
+
+#: 
+msgid "Verify now"
+msgstr "Перевірити зараз"
+
+#: 
+msgid "View Giving History"
+msgstr "Переглянути історію пожертв"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ваша база даних (%1$s %2$s) не підтримується і може бути небезпечною. ChurchCRM працюватиме, але ми наполегливо рекомендуємо хостинг із MariaDB %3$s+ або MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Ваш сервер бази даних (%1$s %2$s) занадто старий для ChurchCRM, якому потрібен MySQL %3$s або MariaDB %4$s і новіший."
 

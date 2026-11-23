@@ -19,6 +19,7 @@ use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\DashboardLandingService;
@@ -165,7 +166,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               'install_profile' => TelemetryService::installProfile(),
               'key' => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint' => TelemetryService::POSTHOG_ENDPOINT,
-              'distinctID' => SystemConfig::getValue('sSystemID'),
+              'distinctID' => SystemIdentity::current(),
           ],
           'currency' => CurrencyFormatter::toArray(),
           'dataTablePageLength' => (int) $tableSize,

@@ -4103,10 +4103,6 @@ msgid "Legend"
 msgstr "Legend"
 
 #: 
-msgid "assigned"
-msgstr "delad"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Visar elever med födelsedagar i"
 
@@ -17684,10 +17680,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registreringar från ditt offentliga registreringsformulär som väntar på granskning. Poster utan e-post eller telefon är markerade; kontrollera kontaktuppgifterna innan du hör av dig."
 
 #: 
-msgid "Review self registrations"
-msgstr "Granska självregistreringar"
-
-#: 
 msgid "Select month"
 msgstr "Välj månad"
 
@@ -17714,10 +17706,6 @@ msgstr "Den här personen tillhör en familj; godkänn familjen i stället"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Den här personen är ingen väntande självregistrering"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Den här självregistrerade familjen väntar på granskning"
 
 #: 
 msgid "Total registrations"
@@ -26249,10 +26237,6 @@ msgstr "Okänd fond"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds och försök sedan igen."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26278,10 +26262,6 @@ msgstr "Uppgraderingen startades inte, så ingenting ändrades."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Den här uppgraderingen kan inte köras på din databas."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Din databasserver (%1$s %2$s) är äldre än vad ChurchCRM stöder (MySQL %3$s eller MariaDB %4$s och senare)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28124,10 +28104,6 @@ msgid "How the congregation is made up"
 msgstr "Hur församlingen är sammansatt"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Jag förstår att den här databasen inte stöds och att uppgraderingar kommer att blockeras"
-
-#: 
 msgid "Insights"
 msgstr "Insikter"
 
@@ -28332,10 +28308,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Den här instrumentbrädan är nu din huvudinstrumentbräda."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Den här databasen får inte längre säkerhetskorrigeringar från sin leverantör."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Det är här människor kommer att öppna ChurchCRM. Ändra det bara om de kommer att använda en annan adress än den här sidan."
 
@@ -28346,14 +28318,6 @@ msgstr "Det här är ditt församlingskonto. Allt du kan göra för dig själv f
 #: 
 msgid "Total deposited"
 msgstr "Totalt insatt"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Databasserver som inte stöds"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Uppgraderingar blockeras tills databasen har flyttats till en version som stöds."
 
 #: 
 msgid "Usually 3306."
@@ -28388,4 +28352,56 @@ msgstr "och {{count}} till"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "och {{count}} till"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratörer kommer att se en varning på varje sida tills databasen flyttas till en version som stöds."
+
+#: 
+msgid "Database out of support"
+msgstr "Databasen stöds inte"
+
+#: 
+msgid "Deactivated"
+msgstr "Inaktiverad"
+
+#: 
+msgid "How to find the log"
+msgstr "Så här hittar du loggen"
+
+#: 
+msgid "How to install server locales"
+msgstr "Så här installerar du serverlokaler"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Jag förstår att den här databasen inte stöds"
+
+#: 
+msgid "Last edited"
+msgstr "Senast redigerad"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Inte installerat på servern, och ingen engelsk reservlokal är installerad heller, så gränssnittet visas på engelska."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM-loggen registrerar den specifika orsaken. Ta bort namn innan du delar den."
+
+#: 
+msgid "Verify now"
+msgstr "Verifiera nu"
+
+#: 
+msgid "View Giving History"
+msgstr "Visa givningshistorik"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Din databas (%1$s %2$s) stöds inte och kan vara osäker. ChurchCRM kommer att köras, men vi rekommenderar starkt en värd med MariaDB %3$s+ eller MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Din databasserver (%1$s %2$s) är för gammal för ChurchCRM, som behöver MySQL %3$s eller MariaDB %4$s och senare."
 

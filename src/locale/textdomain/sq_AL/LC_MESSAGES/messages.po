@@ -4015,10 +4015,6 @@ msgid "Legend"
 msgstr "Legjenda"
 
 #: 
-msgid "assigned"
-msgstr "caktuar"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Duke shfaqur studentët me ditëlindje në"
 
@@ -17590,10 +17586,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Regjistrime që presin shqyrtim nga formulari juaj publik i regjistrimit. Hyrjet pa email ose telefon janë shënuar – verifikoni të dhënat e kontaktit përpara se t'i kontaktoni."
 
 #: 
-msgid "Review self registrations"
-msgstr "Shqyrto vetëregjistrimet"
-
-#: 
 msgid "Select month"
 msgstr "Zgjidhni muajin"
 
@@ -17620,10 +17612,6 @@ msgstr "Ky person i përket një familjeje – miratoni familjen në vend të ti
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ky person nuk është vetëregjistrim në pritje"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Kjo familje e vetëregjistruar është në pritje të shqyrtimit"
 
 #: 
 msgid "Total registrations"
@@ -26155,10 +26143,6 @@ msgstr "Fond i panjohur"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Kërkojini ofruesit të hostimit ta kalojë bazën e të dhënave në një version të mbështetur dhe më pas provoni përsëri."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Kërkojini ofruesit të hostimit ta kalojë bazën e të dhënave në një version të mbështetur."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26184,10 +26168,6 @@ msgstr "Përmirësimi nuk filloi, prandaj nuk ndryshoi asgjë."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Ky përmirësim nuk mund të ekzekutohet në bazën tuaj të të dhënave."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Serveri juaj i bazës së të dhënave (%1$s %2$s) është më i vjetër se sa mbështet ChurchCRM (MySQL %3$s ose MariaDB %4$s e më të reja)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28030,10 +28010,6 @@ msgid "How the congregation is made up"
 msgstr "Si përbëhet kongregacioni"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "E kuptoj që kjo bazë të dhënash nuk mbështetet dhe përmirësimet do të bllokohen"
-
-#: 
 msgid "Insights"
 msgstr "Vështrime"
 
@@ -28238,10 +28214,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Ky panel tani është paneli juaj kryesor i kontrollit."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Kjo bazë të dhënash nuk merr më rregullime sigurie nga shitësi i saj."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Këtu do ta hapin njerëzit ChurchCRM. Ndryshojeni vetëm nëse do të përdorin një adresë të ndryshme nga kjo faqe."
 
@@ -28252,14 +28224,6 @@ msgstr "Kjo është llogaria juaj e kishës. Gjithçka që mund të bëni për v
 #: 
 msgid "Total deposited"
 msgstr "Totali i depozituar"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Server i bazës së të dhënave i pambështetur"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Përmirësimet do të bllokohen derisa baza e të dhënave të zhvendoset në një version të mbështetur."
 
 #: 
 msgid "Usually 3306."
@@ -28294,4 +28258,56 @@ msgstr "dhe {{count}} tjetër"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "dhe {{count}} të tjerë"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratorët do të shohin një paralajmërim në çdo faqe derisa baza e të dhënave të zhvendoset në një version të mbështetur."
+
+#: 
+msgid "Database out of support"
+msgstr "Baza e të dhënave nuk mbështetet"
+
+#: 
+msgid "Deactivated"
+msgstr "I çaktivizuar"
+
+#: 
+msgid "How to find the log"
+msgstr "Si të gjeni regjistrin"
+
+#: 
+msgid "How to install server locales"
+msgstr "Si të instaloni lokalet e serverit"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "E kuptoj që kjo bazë të dhënash nuk mbështetet"
+
+#: 
+msgid "Last edited"
+msgstr "Ndryshuar së fundmi"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nuk është instaluar në server, dhe nuk është instaluar as një lokale rezervë në anglisht, kështu që ndërfaqja do të shfaqet në anglisht."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Regjistri i ChurchCRM shënon arsyen specifike. Hiqni emrat para se ta ndani."
+
+#: 
+msgid "Verify now"
+msgstr "Verifiko tani"
+
+#: 
+msgid "View Giving History"
+msgstr "Shiko historikun e dhurimit"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Baza juaj e të dhënave (%1$s %2$s) nuk mbështetet dhe mund të jetë e pasigurt. ChurchCRM do të funksionojë, por ne rekomandojmë fuqimisht një host me MariaDB %3$s+ ose MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Serveri juaj i bazës së të dhënave (%1$s %2$s) është shumë i vjetër për ChurchCRM, i cili ka nevojë për MySQL %3$s ose MariaDB %4$s dhe më të ri."
 

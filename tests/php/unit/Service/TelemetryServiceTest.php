@@ -32,7 +32,8 @@ $configs->setValue(null, [
 $firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
 Assert::same('install_observed', $firstSync['event']);
 Assert::same('production', $firstSync['properties']['install_profile']);
-Assert::same(['crm_version', 'install_profile', 'church_country'], array_keys($firstSync['properties']));
+Assert::same(['crm_version', 'install_profile', 'church_country', 'php_version'], array_keys($firstSync['properties']));
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $firstSync['properties']['php_version']);
 $normalizeRoute = new ReflectionMethod(TelemetryService::class, 'normalizePageRoute');
 Assert::same('/people/person', $normalizeRoute->invoke(null, '/churchcrm/people/person?personId=42#tab', '/churchcrm'));
 Assert::same('/people/person', $normalizeRoute->invoke(null, '/people/person?personId=42#tab', ''));
@@ -43,6 +44,14 @@ SystemURLs::init('', [], APP_ROOT);
 $rootEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
 Assert::false(array_key_exists('install_path_type', $rootEvent['properties']));
 
+// No Propel connection is configured in this process: base properties must
+// still carry the PHP version and omit the database properties cleanly.
+$baseProperties = new ReflectionMethod(TelemetryService::class, 'baseProperties');
+$base = $baseProperties->invoke(null);
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $base['php_version']);
+Assert::false(array_key_exists('database_engine', $base));
+Assert::false(array_key_exists('database_version', $base));
+
 Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '7.8.3', '7.8.3'));
 Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_NONE, 'install-id', '', '7.8.3'));
 Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, '', '', '7.8.3'));
@@ -51,7 +60,7 @@ $upgrade = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS,
 Assert::same('upgrade_completed', $upgrade['event']);
 Assert::same('7.8.2', $upgrade['properties']['from_version']);
 Assert::same('7.8.3', $upgrade['properties']['crm_version']);
-Assert::same(['crm_version', 'install_profile', 'church_country', 'from_version'], array_keys($upgrade['properties']));
+Assert::same(['crm_version', 'install_profile', 'church_country', 'php_version', 'from_version'], array_keys($upgrade['properties']));
 
 $configValue = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}

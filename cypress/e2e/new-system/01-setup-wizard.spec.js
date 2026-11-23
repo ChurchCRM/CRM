@@ -125,41 +125,23 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').should('not.have.class', 'is-invalid');
         });
 
-        it('holds an unsupported database server for an acknowledgment', () => {
-            const posts = [];
-            cy.intercept('POST', /\/setup\/?$/, (req) => {
-                const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-                posts.push(body);
-                req.reply(
-                    body.ACKNOWLEDGE_UNSUPPORTED_DB
-                        ? { valid: true, correct: false, reason: 'database_unreachable', message: 'stubbed stop' }
-                        : {
-                              valid: true,
-                              correct: true,
-                              supported: false,
-                              message: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports.',
-                          },
-                );
+        it('installs on an out-of-support database with a security warning and no prompt', () => {
+            cy.intercept('POST', /\/setup\/?$/, {
+                valid: true,
+                correct: true,
+                databaseWarning: 'Your database (MySQL 8.0.36) is a security risk: its vendor no longer ships security fixes for that version.',
             }).as('setupPost');
             openConfigureStep();
             fillDatabase();
 
             cy.get('#submit-setup').click();
             cy.wait('@setupPost');
+            cy.get('#setupModal').should('be.visible');
+            cy.contains('#setupModal', 'Installation Complete!').should('be.visible');
             cy.get('#db-version-warning').should('be.visible');
-            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36');
-            cy.get('#submit-setup').should('be.disabled');
-
-            cy.get('#db-version-ack').check();
-            cy.get('#submit-setup').should('not.be.disabled').click();
-            cy.wait('@setupPost').then(() => {
-                expect(posts[posts.length - 1].ACKNOWLEDGE_UNSUPPORTED_DB).to.eq('1');
-            });
-
-            cy.get('#DB_NAME').type('x');
-            cy.get('#db-version-warning').should('not.be.visible');
-            cy.get('#db-version-ack').should('not.be.checked');
-            cy.get('#submit-setup').should('not.be.disabled');
+            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36').and('contain.text', 'security risk');
+            cy.get('#setupModal input[type="checkbox"]').should('not.exist');
+            cy.get('@setupPost.all').should('have.length', 1);
         });
 
         it('should complete full installation with database setup', () => {
@@ -254,13 +236,18 @@ describe('01 - Setup Wizard', () => {
             cy.get('#sChurchState').should('have.value', 'IL');
 
             cy.get('#sChurchZip').clear().type('62701');
+            cy.get('#sChurchZip').should('have.value', '62701');
 
-            // Submit the form
-            cy.get('#church-info-form').submit();
+            // Submit via the real button, settled first - a programmatic
+            // .submit() raced the page on master run 45204267654 and the
+            // success toast never landed inside the 10s window. The save
+            // posts and reloads the page, so give the toast the same 30s
+            // the other heavy setup steps in this spec use.
+            cy.get('#church-info-form button[type=submit]').should('be.visible').click();
 
             // Should remain on church-info and show success notification
             cy.url({ timeout: 10000 }).should('include', 'church-info');
-            cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
+            cy.contains('Church information saved successfully', { timeout: 30000 }).should('be.visible');
         });
     });
 

@@ -174,7 +174,11 @@ function initLocalePreview() {
     } else if (s.systemAvailable) {
       supportEl.innerHTML = `<span class="text-success"><i class="fa-solid fa-circle-check me-1"></i>${esc(i18n.supported || "")}</span>`;
     } else {
-      supportEl.innerHTML = `<span class="text-warning"><i class="fa-solid fa-triangle-exclamation me-1"></i>${esc(i18n.notSupported || "")}</span>`;
+      const [tone, message] = window.CRM.localeMessagesFallback
+        ? ["text-warning", i18n.notSupported]
+        : ["text-danger", i18n.notSupportedNoFallback];
+      supportEl.innerHTML = `<span class="${tone}"><i class="fa-solid fa-triangle-exclamation me-1"></i>${esc(message || "")}</span>
+        <a href="${esc(window.CRM.localeDocsUrl || "")}" target="_blank" rel="noopener" class="d-block mt-1">${esc(i18n.installLocales || "")}</a>`;
     }
   }
 

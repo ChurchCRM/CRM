@@ -1,0 +1,37 @@
+{
+  "%d people added successfully; %d people could not be added and remain in the cart.": [
+    "src/api/routes/cart.php:184"
+  ],
+  "%d people could not be added and remain in your cart.": [
+    "src/groups/routes/cart.php:113"
+  ],
+  "Failed to add person to group": [
+    "src/ChurchCRM/Service/GroupService.php:36",
+    "src/ChurchCRM/Service/GroupService.php:117",
+    "src/ChurchCRM/Service/GroupService.php:152"
+  ],
+  "Group Assignment": [
+    "src/PersonEditor.php:760",
+    "src/PersonEditor.php:986",
+    "src/PersonEditor.php:991"
+  ],
+  "Retry Group Assignment": [
+    "src/PersonEditor.php:760"
+  ],
+  "Retry group assignments": [
+    "src/PersonEditor.php:193",
+    "src/PersonEditor.php:800"
+  ],
+  "Select one or more groups for this person.": [
+    "src/PersonEditor.php:1023"
+  ],
+  "Select the groups you want to retry.": [
+    "src/PersonEditor.php:789"
+  ],
+  "The person was saved, but one or more group assignments failed. Select the groups below and retry.": [
+    "src/PersonEditor.php:754"
+  ],
+  "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": [
+    "src/PersonEditor.php:830"
+  ]
+}

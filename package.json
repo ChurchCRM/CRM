@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.8.6",
+    "version": "7.8.8",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -127,19 +127,19 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.6.7",
-        "@playwright/test": "^1.65.0",
+        "@biomejs/biome": "^2.6.8",
+        "@playwright/test": "^1.65.1",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.5",
         "cy-verify-downloads": "^0.3.0",
         "cypress": "^15.21.2",
         "cypress-split": "^1.25.0",
-        "cypress-terminal-report": "^7.4.0",
+        "cypress-terminal-report": "^7.5.0",
         "datatables.net-plugins": "^3.1.5",
         "dotenv": "^17.4.2",
         "gettext-parser": "^9.1.1",
-        "i18next-cli": "^1.87.0",
+        "i18next-cli": "^1.91.3",
         "i18next-conv": "^17.0.0",
         "mini-css-extract-plugin": "^2.10.2",
         "minimatch": "11.0.1",
@@ -150,7 +150,7 @@
         "sass-loader": "^17.1.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.112.2",
+        "webpack": "^5.113.0",
         "webpack-cli": "^7.3.1"
     },
     "overrides": {

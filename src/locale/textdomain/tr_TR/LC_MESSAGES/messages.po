@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Efsane"
 
 #: 
-msgid "assigned"
-msgstr "atanmış"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Öğrencileri doğum günleri göstererek göstermek"
 
@@ -17599,10 +17595,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Herkese açık kayıt formunuzdan gelen, inceleme bekleyen kayıtlar. E-postası veya telefonu olmayan kayıtlar işaretlenir; iletişime geçmeden önce iletişim bilgilerini doğrulayın."
 
 #: 
-msgid "Review self registrations"
-msgstr "Kendi kendine kayıtları incele"
-
-#: 
 msgid "Select month"
 msgstr "Ay seçin"
 
@@ -17629,10 +17621,6 @@ msgstr "Bu kişi bir aileye ait — bunun yerine aileyi onaylayın"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Bu kişi bekleyen bir kendi kendine kayıt değil"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Kendi kendine kayıt olan bu aile inceleme bekliyor"
 
 #: 
 msgid "Total registrations"
@@ -26164,10 +26152,6 @@ msgstr "Bilinmeyen fon"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Barındırma sağlayıcınızdan veritabanını desteklenen bir sürüme taşımasını isteyin ve ardından yeniden deneyin."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Barındırma sağlayıcınızdan veritabanını desteklenen bir sürüme taşımasını isteyin."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26193,10 +26177,6 @@ msgstr "Yükseltme başlatılmadı, bu nedenle hiçbir şey değişmedi."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Bu yükseltme veritabanınızda çalıştırılamaz."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Veritabanı sunucunuz (%1$s %2$s), ChurchCRM'in desteklediği sürümlerden daha eski (MySQL %3$s veya MariaDB %4$s ve üzeri)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28039,10 +28019,6 @@ msgid "How the congregation is made up"
 msgstr "Cemaatin yapısı nasıldır"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Bu veritabanının desteklenmediğini ve yükseltmelerin engelleneceğini anlıyorum"
-
-#: 
 msgid "Insights"
 msgstr "İçgörüler"
 
@@ -28247,10 +28223,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Bu gösterge paneli artık ana gösterge paneliniz."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Bu veritabanı artık tedarikçisinden güvenlik düzeltmeleri almıyor."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "İnsanların ChurchCRM'i açacağı yer burasıdır. Yalnızca bu sayfadan farklı bir adres kullanacaklarsa değiştirin."
 
@@ -28261,14 +28233,6 @@ msgstr "Bu, kilise hesabınızdır. Kendiniz için yapabileceğiniz her şey bur
 #: 
 msgid "Total deposited"
 msgstr "Toplam yatırılan"
-
-#: 
-msgid "Unsupported database server"
-msgstr "Desteklenmeyen veritabanı sunucusu"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Veritabanı desteklenen bir sürüme taşınana kadar yükseltmeler engellenecek."
 
 #: 
 msgid "Usually 3306."
@@ -28303,4 +28267,56 @@ msgstr "ve {{count}} tane daha"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ve {{count}} tane daha"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Veritabanı desteklenen bir sürüme taşınana kadar yöneticiler her sayfada bir uyarı görecek."
+
+#: 
+msgid "Database out of support"
+msgstr "Veritabanı desteklenmiyor"
+
+#: 
+msgid "Deactivated"
+msgstr "Devre dışı bırakıldı"
+
+#: 
+msgid "How to find the log"
+msgstr "Günlük nasıl bulunur"
+
+#: 
+msgid "How to install server locales"
+msgstr "Sunucu yerel ayarları nasıl yüklenir"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Bu veritabanının desteklenmediğini anlıyorum"
+
+#: 
+msgid "Last edited"
+msgstr "Son düzenleme"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Sunucuya yüklü değil ve İngilizce yedek yerel ayarı da yüklü değil, bu yüzden arayüz İngilizce gösterilecek."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM günlüğü belirli nedeni kaydeder. Paylaşmadan önce isimleri kaldırın."
+
+#: 
+msgid "Verify now"
+msgstr "Şimdi doğrula"
+
+#: 
+msgid "View Giving History"
+msgstr "Bağış Tarihini Görüntüle"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Veritabanınız (%1$s %2$s) desteklenmiyor ve güvenli olmayabilir. ChurchCRM çalışacaktır, ancak MariaDB %3$s+ veya MySQL %4$s+ içeren bir barındırıcı şiddetle önerilir."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Veritabanı sunucunuz (%1$s %2$s) ChurchCRM için çok eski; MySQL %3$s veya MariaDB %4$s ve sonrasına ihtiyaç duyar."
 

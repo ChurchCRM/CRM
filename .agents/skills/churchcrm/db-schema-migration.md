@@ -53,6 +53,8 @@ At release, the shipped `current` becomes `pre-X.Y.Z` (no scripts, `dbVersion` s
 
 A 7.2.x install matches `pre-7.3.1` (DB set to 7.3.0), then `current` (runs the SQL, DB set to 7.3.1). An install on 7.3.0 goes straight to `current`. Use full paths: `/mysql/upgrade/7.3.1-<description>.sql`.
 
+New scripts always belong to the next release: name the file for the `current` block's `dbVersion` and register it in `current` only. Never add a script to a shipped `pre-*` block — installs that already passed that block never run it, so the schema change silently never happens (the 7.8.6 family-page 500s, #11874). `scripts/lint/validate-upgrade-script-version.js` enforces this in the pre-commit hook (`--staged`) and in `npm run lint` (CI), reading the next version from `upgrade.json` at check time.
+
 ## Files to Change Together
 
 | File | Change |

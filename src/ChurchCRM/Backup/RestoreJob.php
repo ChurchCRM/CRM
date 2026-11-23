@@ -4,9 +4,11 @@ namespace ChurchCRM\Backup;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\SQLUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ImageSupportUtils;
 use Exception;
@@ -254,7 +256,15 @@ class RestoreJob extends JobBase
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         LoggerUtils::getAppLogger()->debug('Starting post-restore cleanup');
-        
+
+        // SystemConfig still caches the replaced database, so read the restored ID from the table. A dump
+        // without one (ChurchInfo 1.x, an old schema) keeps this server's identity.
+        try {
+            SystemIdentity::adopt((string) ConfigQuery::create()->findOneByName('sSystemID')?->getValue());
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->debug('Restored database has no system ID: ' . $e->getMessage());
+        }
+
         // Disable the external backup plugin if it was enabled
         try {
             SystemConfig::setValue('plugin.external-backup.enabled', '0');
