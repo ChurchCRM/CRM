@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "ve {{count}} tane daha",
     "other": "ve {{count}} tane daha"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Veritabanı desteklenen bir sürüme taşınana kadar yöneticiler her sayfada bir uyarı görecek.",
+  "Database out of support": "Veritabanı desteklenmiyor",
+  "Deactivated": "Devre dışı bırakıldı",
+  "How to find the log": "Günlük nasıl bulunur",
+  "How to install server locales": "Sunucu yerel ayarları nasıl yüklenir",
+  "I understand this database is out of support": "Bu veritabanının desteklenmediğini anlıyorum",
+  "Last edited": "Son düzenleme",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Sunucuya yüklü değil ve İngilizce yedek yerel ayarı da yüklü değil, bu yüzden arayüz İngilizce gösterilecek.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM günlüğü belirli nedeni kaydeder. Paylaşmadan önce isimleri kaldırın.",
+  "Verify now": "Şimdi doğrula",
+  "View Giving History": "Bağış Tarihini Görüntüle",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Veritabanınız (%1$s %2$s) desteklenmiyor ve güvenli olmayabilir. ChurchCRM çalışacaktır, ancak MariaDB %3$s+ veya MySQL %4$s+ içeren bir barındırıcı şiddetle önerilir.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Veritabanı sunucunuz (%1$s %2$s) ChurchCRM için çok eski; MySQL %3$s veya MariaDB %4$s ve sonrasına ihtiyaç duyar."
 }

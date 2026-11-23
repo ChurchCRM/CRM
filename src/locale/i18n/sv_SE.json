@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "och {{count}} till",
     "other": "och {{count}} till"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Administratörer kommer att se en varning på varje sida tills databasen flyttas till en version som stöds.",
+  "Database out of support": "Databasen stöds inte",
+  "Deactivated": "Inaktiverad",
+  "How to find the log": "Så här hittar du loggen",
+  "How to install server locales": "Så här installerar du serverlokaler",
+  "I understand this database is out of support": "Jag förstår att den här databasen inte stöds",
+  "Last edited": "Senast redigerad",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Inte installerat på servern, och ingen engelsk reservlokal är installerad heller, så gränssnittet visas på engelska.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM-loggen registrerar den specifika orsaken. Ta bort namn innan du delar den.",
+  "Verify now": "Verifiera nu",
+  "View Giving History": "Visa givningshistorik",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Din databas (%1$s %2$s) stöds inte och kan vara osäker. ChurchCRM kommer att köras, men vi rekommenderar starkt en värd med MariaDB %3$s+ eller MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Din databasserver (%1$s %2$s) är för gammal för ChurchCRM, som behöver MySQL %3$s eller MariaDB %4$s och senare."
 }

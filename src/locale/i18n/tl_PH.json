@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "at {{count}} pa",
     "other": "at {{count}} pa"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Makakakita ang mga administrator ng babala sa bawat pahina hanggang mailipat ang database sa isang sinusuportahang bersyon.",
+  "Database out of support": "Hindi na suportado ang database",
+  "Deactivated": "Na-deactivate",
+  "How to find the log": "Paano hanapin ang log",
+  "How to install server locales": "Paano mag-install ng mga locale ng server",
+  "I understand this database is out of support": "Naiintindihan kong hindi suportado ang database na ito",
+  "Last edited": "Huling na-edit",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Hindi naka-install sa server, at wala ring naka-install na English fallback locale, kaya ipapakita ang interface sa English.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Naitatala ng ChurchCRM log ang partikular na dahilan. Alisin ang mga pangalan bago ito ibahagi.",
+  "Verify now": "I-verify ngayon",
+  "View Giving History": "Tingnan ang Kasaysayan ng Pagbibigay",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Ang iyong database (%1$s %2$s) ay hindi suportado at maaaring hindi ligtas. Gagana ang ChurchCRM, ngunit mahigpit naming inirerekomenda ang host na may MariaDB %3$s+ o MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Ang iyong database server (%1$s %2$s) ay masyadong luma para sa ChurchCRM, na nangangailangan ng MySQL %3$s o MariaDB %4$s at mas bago."
 }

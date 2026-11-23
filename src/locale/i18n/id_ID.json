@@ -6968,5 +6968,18 @@
   "and {{count}} more": {
     "one": "dan {{count}} lainnya",
     "other": "dan {{count}} lainnya"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Administrator akan melihat peringatan di setiap halaman hingga basis data dipindahkan ke versi yang didukung.",
+  "Database out of support": "Basis data tidak didukung",
+  "Deactivated": "Dinonaktifkan",
+  "How to find the log": "Cara menemukan log",
+  "How to install server locales": "Cara menginstal lokal server",
+  "I understand this database is out of support": "Saya mengerti basis data ini tidak didukung",
+  "Last edited": "Terakhir diubah",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Tidak diinstal di server, dan lokal cadangan bahasa Inggris juga tidak diinstal, jadi antarmuka akan ditampilkan dalam bahasa Inggris.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Log ChurchCRM mencatat alasan spesifiknya. Hapus nama sebelum membagikannya.",
+  "Verify now": "Verifikasi sekarang",
+  "View Giving History": "Lihat Riwayat Pemberian",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Basis data Anda (%1$s %2$s) tidak didukung dan mungkin tidak aman. ChurchCRM akan berjalan, tetapi kami sangat menyarankan host dengan MariaDB %3$s+ atau MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Server basis data Anda (%1$s %2$s) terlalu lama untuk ChurchCRM, yang memerlukan MySQL %3$s atau MariaDB %4$s dan yang lebih baru."
 }

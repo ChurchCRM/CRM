@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "dhe {{count}} tjetër",
     "other": "dhe {{count}} të tjerë"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Administratorët do të shohin një paralajmërim në çdo faqe derisa baza e të dhënave të zhvendoset në një version të mbështetur.",
+  "Database out of support": "Baza e të dhënave nuk mbështetet",
+  "Deactivated": "I çaktivizuar",
+  "How to find the log": "Si të gjeni regjistrin",
+  "How to install server locales": "Si të instaloni lokalet e serverit",
+  "I understand this database is out of support": "E kuptoj që kjo bazë të dhënash nuk mbështetet",
+  "Last edited": "Ndryshuar së fundmi",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Nuk është instaluar në server, dhe nuk është instaluar as një lokale rezervë në anglisht, kështu që ndërfaqja do të shfaqet në anglisht.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Regjistri i ChurchCRM shënon arsyen specifike. Hiqni emrat para se ta ndani.",
+  "Verify now": "Verifiko tani",
+  "View Giving History": "Shiko historikun e dhurimit",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Baza juaj e të dhënave (%1$s %2$s) nuk mbështetet dhe mund të jetë e pasigurt. ChurchCRM do të funksionojë, por ne rekomandojmë fuqimisht një host me MariaDB %3$s+ ose MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Serveri juaj i bazës së të dhënave (%1$s %2$s) është shumë i vjetër për ChurchCRM, i cili ka nevojë për MySQL %3$s ose MariaDB %4$s dhe më të ri."
 }

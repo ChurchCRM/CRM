@@ -6968,5 +6968,18 @@
   "and {{count}} more": {
     "one": "あと {{count}} 件",
     "other": "あと {{count}} 件"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "データベースがサポート対象のバージョンに移行されるまで、管理者にはすべてのページで警告が表示されます。",
+  "Database out of support": "データベースはサポート対象外です",
+  "Deactivated": "無効化済み",
+  "How to find the log": "ログの見つけ方",
+  "How to install server locales": "サーバーロケールのインストール方法",
+  "I understand this database is out of support": "このデータベースがサポート対象外であることを理解しました",
+  "Last edited": "最終編集",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "サーバーにインストールされておらず、英語のフォールバックロケールもインストールされていないため、インターフェースは英語で表示されます。",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM のログには具体的な理由が記録されています。共有する前に名前を削除してください。",
+  "Verify now": "今すぐ確認",
+  "View Giving History": "献金履歴を表示",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "お使いのデータベース（%1$s %2$s）はサポート対象外で、安全でない可能性があります。ChurchCRM は動作しますが、MariaDB %3$s+ または MySQL %4$s+ を備えたホストを強くお勧めします。",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "お使いのデータベースサーバー（%1$s %2$s）は ChurchCRM には古すぎます。MySQL %3$s または MariaDB %4$s 以降が必要です。"
 }

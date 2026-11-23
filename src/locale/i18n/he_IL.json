@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "ועוד {{count}}",
     "other": "ועוד {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "מנהלי המערכת יראו אזהרה בכל עמוד עד שמסד הנתונים יועבר לגרסה נתמכת.",
+  "Database out of support": "מסד הנתונים אינו נתמך",
+  "Deactivated": "הושבת",
+  "How to find the log": "כיצד למצוא את היומן",
+  "How to install server locales": "כיצד להתקין את הגדרות האזור של השרת",
+  "I understand this database is out of support": "אני מבין שמסד הנתונים הזה אינו נתמך",
+  "Last edited": "נערך לאחרונה",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "לא מותקן בשרת, וגם לא מותקנת הגדרת אזור חלופית באנגלית, לכן הממשק יוצג באנגלית.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "יומן ChurchCRM מתעד את הסיבה הספציפית. הסר שמות לפני השיתוף.",
+  "Verify now": "אמת עכשיו",
+  "View Giving History": "הצג היסטוריית תרומה",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "מסד הנתונים שלך (%1$s %2$s) אינו נתמך ועלול להיות לא בטוח. ChurchCRM יעבוד, אך אנו ממליצים בחום על מארח עם MariaDB %3$s+ או MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "שרת מסד הנתונים שלך (%1$s %2$s) ישן מדי עבור ChurchCRM, שדורש MySQL %3$s או MariaDB %4$s ואילך."
 }

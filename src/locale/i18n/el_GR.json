@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "και {{count}} ακόμη",
     "other": "και {{count}} ακόμη"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Οι διαχειριστές θα βλέπουν μια προειδοποίηση σε κάθε σελίδα μέχρι η βάση δεδομένων να μεταφερθεί σε μια υποστηριζόμενη έκδοση.",
+  "Database out of support": "Η βάση δεδομένων δεν υποστηρίζεται",
+  "Deactivated": "Απενεργοποιήθηκε",
+  "How to find the log": "Πώς να βρείτε το αρχείο καταγραφής",
+  "How to install server locales": "Πώς να εγκαταστήσετε τις τοπικές ρυθμίσεις του διακομιστή",
+  "I understand this database is out of support": "Κατανοώ ότι αυτή η βάση δεδομένων δεν υποστηρίζεται",
+  "Last edited": "Τελευταία επεξεργασία",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Δεν είναι εγκατεστημένο στον διακομιστή, και δεν είναι εγκατεστημένη ούτε εφεδρική τοπική ρύθμιση στα Αγγλικά, οπότε η διεπαφή θα εμφανίζεται στα Αγγλικά.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Το αρχείο καταγραφής του ChurchCRM καταγράφει τον συγκεκριμένο λόγο. Αφαιρέστε τα ονόματα πριν το κοινοποιήσετε.",
+  "Verify now": "Επαλήθευση τώρα",
+  "View Giving History": "Προβολή Ιστορίας Παροχής",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Η βάση δεδομένων σας (%1$s %2$s) δεν υποστηρίζεται και ενδέχεται να μην είναι ασφαλής. Το ChurchCRM θα λειτουργήσει, αλλά συνιστούμε ανεπιφύλακτα έναν πάροχο με MariaDB %3$s+ ή MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Ο διακομιστής βάσης δεδομένων σας (%1$s %2$s) είναι πολύ παλιός για το ChurchCRM, το οποίο χρειάζεται MySQL %3$s ή MariaDB %4$s και νεότερη έκδοση."
 }

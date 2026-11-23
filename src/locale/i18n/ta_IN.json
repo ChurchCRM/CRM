@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "மேலும் {{count}}",
     "other": "மேலும் {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "தரவுத்தளம் ஆதரிக்கப்படும் பதிப்பிற்கு மாற்றப்படும் வரை நிர்வாகிகள் ஒவ்வொரு பக்கத்திலும் எச்சரிக்கையைக் காண்பார்கள்.",
+  "Database out of support": "தரவுத்தளம் ஆதரிக்கப்படவில்லை",
+  "Deactivated": "செயலிழக்கப்பட்டது",
+  "How to find the log": "பதிவை எவ்வாறு கண்டுபிடிப்பது",
+  "How to install server locales": "சர்வர் லொகேல்களை எவ்வாறு நிறுவுவது",
+  "I understand this database is out of support": "இந்தத் தரவுத்தளம் ஆதரிக்கப்படவில்லை என்பதை நான் புரிந்துகொள்கிறேன்",
+  "Last edited": "கடைசியாகத் திருத்தப்பட்டது",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "சர்வரில் நிறுவப்படவில்லை, ஆங்கில மாற்று லொகேலும் நிறுவப்படவில்லை, எனவே இடைமுகம் ஆங்கிலத்தில் காண்பிக்கப்படும்.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM பதிவு குறிப்பிட்ட காரணத்தைப் பதிவு செய்கிறது. பகிர்வதற்கு முன் பெயர்களை நீக்கவும்.",
+  "Verify now": "இப்போது சரிபார்க்கவும்",
+  "View Giving History": "வழங்குதல் வரலாற்றைக் காண்க",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "உங்கள் தரவுத்தளம் (%1$s %2$s) ஆதரிக்கப்படவில்லை மற்றும் பாதுகாப்பற்றதாக இருக்கலாம். ChurchCRM இயங்கும், ஆனால் MariaDB %3$s+ அல்லது MySQL %4$s+ உள்ள ஹோஸ்டை நாங்கள் வலுவாகப் பரிந்துரைக்கிறோம்.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "உங்கள் தரவுத்தள சர்வர் (%1$s %2$s) ChurchCRM-க்கு மிகவும் பழையது; அதற்கு MySQL %3$s அல்லது MariaDB %4$s மற்றும் அதற்குப் பிந்தையவை தேவை."
 }

@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "e mais {{count}}",
     "other": "e mais {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Os administradores verão um aviso em cada página até que o banco de dados seja movido para uma versão com suporte.",
+  "Database out of support": "Banco de dados sem suporte",
+  "Deactivated": "Desativado",
+  "How to find the log": "Como encontrar o log",
+  "How to install server locales": "Como instalar os locales do servidor",
+  "I understand this database is out of support": "Entendo que este banco de dados não tem suporte",
+  "Last edited": "Última edição",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Não instalado no servidor, e nenhum locale de fallback em inglês também está instalado, então a interface será exibida em inglês.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "O log do ChurchCRM registra o motivo específico. Remova os nomes antes de compartilhá-lo.",
+  "Verify now": "Verificar agora",
+  "View Giving History": "Visualizar histórico de doações",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Seu banco de dados (%1$s %2$s) não tem suporte e pode ser inseguro. O ChurchCRM funcionará, mas recomendamos fortemente uma hospedagem com MariaDB %3$s+ ou MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Seu servidor de banco de dados (%1$s %2$s) é muito antigo para o ChurchCRM, que precisa do MySQL %3$s ou MariaDB %4$s e posteriores."
 }

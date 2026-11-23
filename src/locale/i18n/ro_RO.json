@@ -7038,5 +7038,18 @@
   "and {{count}} more": {
     "one": "și încă {{count}}",
     "other": "și încă {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Administratorii vor vedea o atenționare pe fiecare pagină până când baza de date este mutată la o versiune acceptată.",
+  "Database out of support": "Baza de date nu este suportată",
+  "Deactivated": "Dezactivat",
+  "How to find the log": "Cum să găsiți jurnalul",
+  "How to install server locales": "Cum să instalați setările regionale ale serverului",
+  "I understand this database is out of support": "Înțeleg că această bază de date nu este suportată",
+  "Last edited": "Ultima editare",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Nu este instalat pe server și nu este instalată nici o setare regională de rezervă în engleză, așa că interfața se va afișa în engleză.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Jurnalul ChurchCRM înregistrează motivul specific. Eliminați numele înainte de a-l partaja.",
+  "Verify now": "Verificați acum",
+  "View Giving History": "Vizualizați istoricul donațiilor",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Baza dvs. de date (%1$s %2$s) nu este suportată și poate fi nesigură. ChurchCRM va funcționa, dar recomandăm insistent o găzduire cu MariaDB %3$s+ sau MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Serverul dvs. de baze de date (%1$s %2$s) este prea vechi pentru ChurchCRM, care are nevoie de MySQL %3$s sau MariaDB %4$s și mai nou."
 }
