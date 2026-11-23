@@ -4018,10 +4018,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "ditugaskan"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Menampilkan siswa yang berulang tahun di"
 
@@ -17582,10 +17578,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Pendaftaran yang menunggu peninjauan dari formulir pendaftaran publik Anda. Entri tanpa email atau telepon ditandai — verifikasi kontak sebelum menindaklanjuti."
 
 #: 
-msgid "Review self registrations"
-msgstr "Tinjau pendaftaran mandiri"
-
-#: 
 msgid "Select month"
 msgstr "Pilih bulan"
 
@@ -17612,10 +17604,6 @@ msgstr "Orang ini termasuk dalam sebuah keluarga — setujui keluarganya"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Orang ini bukan pendaftaran mandiri yang tertunda"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Keluarga yang mendaftar sendiri ini menunggu peninjauan"
 
 #: 
 msgid "Total registrations"
@@ -26130,14 +26118,6 @@ msgstr "Pembayaran per Dana"
 msgid "Unknown Fund"
 msgstr "Dana Tidak Dikenal"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung, lalu coba lagi."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26155,18 +26135,6 @@ msgstr "Wajibkan nomor cek saat mencatat pembayaran dengan cek pada entri setora
 #: 
 msgid "Require check number on check payments"
 msgstr "Wajibkan nomor cek pada pembayaran dengan cek"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Pembaruan tidak dimulai, jadi tidak ada yang berubah."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Pembaruan ini tidak dapat dijalankan pada basis data Anda."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Server basis data Anda (%1$s %2$s) lebih lama daripada yang didukung ChurchCRM (MySQL %3$s atau MariaDB %4$s ke atas)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28002,10 +27970,6 @@ msgid "How the congregation is made up"
 msgstr "Bagaimana susunan jemaat"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Saya mengerti basis data ini tidak didukung dan pemutakhiran akan diblokir"
-
-#: 
 msgid "Insights"
 msgstr "Wawasan"
 
@@ -28210,10 +28174,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Dasbor ini sekarang adalah dasbor utama Anda."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Basis data ini tidak lagi menerima perbaikan keamanan dari vendornya."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Di sinilah orang akan membuka ChurchCRM. Ubah hanya jika mereka akan menggunakan alamat yang berbeda dari halaman ini."
 
@@ -28226,28 +28186,12 @@ msgid "Total deposited"
 msgstr "Total disetorkan"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Server basis data tidak didukung"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Pemutakhiran akan diblokir sampai basis data dipindahkan ke versi yang didukung."
-
-#: 
 msgid "Usually 3306."
 msgstr "Biasanya 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Kami menyarankan untuk meminta host Anda beralih sebelum Anda menginstal, selagi belum ada data yang dipindahkan. MariaDB 10.11 adalah target yang baik."
-
-#: 
 msgid "Web address"
 msgstr "Alamat web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Anda dapat menginstal sekarang: ChurchCRM akan terinstal dan berjalan."
 
 #: 
 msgid "Your main dashboard"
@@ -28266,4 +28210,40 @@ msgstr "dan {{count}} lainnya"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "dan {{count}} lainnya"
+
+#: 
+msgid "Database out of support"
+msgstr "Basis data tidak didukung"
+
+#: 
+msgid "Deactivated"
+msgstr "Dinonaktifkan"
+
+#: 
+msgid "How to find the log"
+msgstr "Cara menemukan log"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cara menginstal lokal server"
+
+#: 
+msgid "Last edited"
+msgstr "Terakhir diubah"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Tidak diinstal di server, dan lokal cadangan bahasa Inggris juga tidak diinstal, jadi antarmuka akan ditampilkan dalam bahasa Inggris."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Log ChurchCRM mencatat alasan spesifiknya. Hapus nama sebelum membagikannya."
+
+#: 
+msgid "Verify now"
+msgstr "Verifikasi sekarang"
+
+#: 
+msgid "View Giving History"
+msgstr "Lihat Riwayat Pemberian"
 

@@ -4,9 +4,8 @@ namespace ChurchCRM\Service;
 
 class DatabaseVersionService
 {
-    // The documented minimums, kept in step with supported-databases.json by
-    // scripts/ci/sync-supported-databases.js. An older server can stop an upgrade
-    // part-way through (SQLSTATE 1071), so the wizard does not start one.
+    // The oldest versions their vendors still patch, kept in step with supported-databases.json by
+    // scripts/ci/sync-supported-databases.js. Below them ChurchCRM runs with a security warning.
     public const MIN_MYSQL = '8.4';
     public const MIN_MARIADB = '10.11';
 
@@ -33,7 +32,7 @@ class DatabaseVersionService
     }
 
     /**
-     * An unreadable version counts as supported: only a version we can read blocks an upgrade.
+     * An unreadable version counts as supported: only a version we can read warns.
      *
      * @return array{supported: bool, engine: string, version: string}
      */
@@ -44,15 +43,15 @@ class DatabaseVersionService
             return ['supported' => true, 'engine' => '', 'version' => ''];
         }
 
-        $minimum = $parsed['engine'] === 'MariaDB' ? self::MIN_MARIADB : self::MIN_MYSQL;
-
-        return $parsed + ['supported' => version_compare($parsed['version'], $minimum, '>=')];
+        return $parsed + [
+            'supported' => version_compare($parsed['version'], $parsed['engine'] === 'MariaDB' ? self::MIN_MARIADB : self::MIN_MYSQL, '>='),
+        ];
     }
 
     /**
-     * What is wrong with the database server, or null when it is supported.
+     * The security warning for a database its vendor no longer patches, or null when it is supported.
      */
-    public static function getUnsupportedMessage(?string $serverVersion = null): ?string
+    public static function getSecurityRiskMessage(?string $serverVersion = null): ?string
     {
         $result = self::check($serverVersion ?? SystemService::getDBServerVersion());
         if ($result['supported']) {
@@ -60,34 +59,11 @@ class DatabaseVersionService
         }
 
         return sprintf(
-            gettext('Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later).'),
+            gettext('Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+.'),
             $result['engine'],
             $result['version'],
-            self::MIN_MYSQL,
-            self::MIN_MARIADB
+            self::MIN_MARIADB,
+            self::MIN_MYSQL
         );
-    }
-
-    /**
-     * The message that stops an upgrade on an unsupported database, or null when it may go on.
-     */
-    public static function getUpgradeBlockMessage(?string $serverVersion = null): ?string
-    {
-        $unsupported = self::getUnsupportedMessage($serverVersion);
-
-        return $unsupported === null ? null : $unsupported . ' '
-            . gettext('The upgrade was not started, so nothing changed.') . ' '
-            . gettext('Ask your host to move the database to a supported version, then try again.');
-    }
-
-    /**
-     * The warning for an upgrade that runs anyway, such as after a manual file upload.
-     */
-    public static function getUpgradeWarningMessage(?string $serverVersion = null): ?string
-    {
-        $unsupported = self::getUnsupportedMessage($serverVersion);
-
-        return $unsupported === null ? null : $unsupported . ' '
-            . gettext('Ask your host to move the database to a supported version.');
     }
 }

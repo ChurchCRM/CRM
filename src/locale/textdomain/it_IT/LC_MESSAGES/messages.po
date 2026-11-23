@@ -4037,10 +4037,6 @@ msgid "Legend"
 msgstr "Leggenda"
 
 #: 
-msgid "assigned"
-msgstr "assegnato"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Mostra studenti con compleanni in"
 
@@ -17619,10 +17615,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrazioni in attesa di revisione dal tuo modulo di registrazione pubblico. Le voci senza email o telefono sono contrassegnate: verifica i contatti prima di procedere."
 
 #: 
-msgid "Review self registrations"
-msgstr "Rivedi le autoregistrazioni"
-
-#: 
 msgid "Select month"
 msgstr "Seleziona mese"
 
@@ -17649,10 +17641,6 @@ msgstr "Questa persona appartiene a una famiglia: approva invece la famiglia"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Questa persona non è un'autoregistrazione in attesa"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Questa famiglia autoregistrata è in attesa di revisione"
 
 #: 
 msgid "Total registrations"
@@ -26180,14 +26168,6 @@ msgstr "Pagamenti per fondo"
 msgid "Unknown Fund"
 msgstr "Fondo sconosciuto"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Chiedi al tuo provider di hosting di portare il database a una versione supportata, quindi riprova."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Chiedi al tuo provider di hosting di portare il database a una versione supportata."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26205,18 +26185,6 @@ msgstr "Richiedi un numero di assegno quando registri pagamenti con assegno nei 
 #: 
 msgid "Require check number on check payments"
 msgstr "Richiedi il numero di assegno per i pagamenti con assegno"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "L'aggiornamento non è stato avviato, quindi non è cambiato nulla."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Questo aggiornamento non può essere eseguito sul tuo database."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Il tuo server di database (%1$s %2$s) è più vecchio delle versioni supportate da ChurchCRM (MySQL %3$s o MariaDB %4$s e successive)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28059,10 +28027,6 @@ msgid "How the congregation is made up"
 msgstr "Composizione della congregazione"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Capisco che questo database non è supportato e che gli aggiornamenti saranno bloccati"
-
-#: 
 msgid "Insights"
 msgstr "Approfondimenti"
 
@@ -28267,10 +28231,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Questa dashboard è ora la tua dashboard principale."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Questo database non riceve più correzioni di sicurezza dal suo fornitore."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "È qui che le persone apriranno ChurchCRM. Modificalo solo se useranno un indirizzo diverso da questa pagina."
 
@@ -28283,28 +28243,12 @@ msgid "Total deposited"
 msgstr "Totale depositato"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Server di database non supportato"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Gli aggiornamenti saranno bloccati finché il database non sarà spostato su una versione supportata."
-
-#: 
 msgid "Usually 3306."
 msgstr "Di solito 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Consigliamo di chiedere al tuo host di effettuare il passaggio prima dell'installazione, finché non ci sono dati da spostare. MariaDB 10.11 è un'ottima scelta."
-
-#: 
 msgid "Web address"
 msgstr "Indirizzo web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Puoi installare ora: ChurchCRM si installerà e funzionerà."
 
 #: 
 msgid "Your main dashboard"
@@ -28323,4 +28267,40 @@ msgstr "e {{count}} altro"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "e {{count}} altri"
+
+#: 
+msgid "Database out of support"
+msgstr "Database non supportato"
+
+#: 
+msgid "Deactivated"
+msgstr "Disattivato"
+
+#: 
+msgid "How to find the log"
+msgstr "Come trovare il registro"
+
+#: 
+msgid "How to install server locales"
+msgstr "Come installare le impostazioni locali del server"
+
+#: 
+msgid "Last edited"
+msgstr "Ultima modifica"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Non installato sul server, e non è installata nemmeno una lingua inglese di riserva, quindi l'interfaccia verrà mostrata in inglese."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Il registro di ChurchCRM riporta il motivo specifico. Rimuovi i nomi prima di condividerlo."
+
+#: 
+msgid "Verify now"
+msgstr "Verifica ora"
+
+#: 
+msgid "View Giving History"
+msgstr "Visualizza cronologia donazioni"
 

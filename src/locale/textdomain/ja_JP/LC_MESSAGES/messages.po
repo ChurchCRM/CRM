@@ -3991,10 +3991,6 @@ msgid "Legend"
 msgstr "凡例"
 
 #: 
-msgid "assigned"
-msgstr "割り当て済み"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "誕生日のある学生を表示"
 
@@ -17551,10 +17547,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "公開登録フォームから届いた、審査待ちの登録です。メールアドレスも電話番号もない登録にはフラグが付いています。連絡する前に連絡先を確認してください。"
 
 #: 
-msgid "Review self registrations"
-msgstr "自己登録を審査"
-
-#: 
 msgid "Select month"
 msgstr "月を選択"
 
@@ -17581,10 +17573,6 @@ msgstr "この人は家族に所属しています。代わりに家族を承認
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "この人は保留中の自己登録ではありません"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "この自己登録の家族は審査待ちです"
 
 #: 
 msgid "Total registrations"
@@ -26099,14 +26087,6 @@ msgstr "基金別の支払い"
 msgid "Unknown Fund"
 msgstr "不明な基金"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "ホスティング事業者に、データベースをサポートされているバージョンへ移行するよう依頼してから、もう一度お試しください。"
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "ホスティング事業者に、データベースをサポートされているバージョンへ移行するよう依頼してください。"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26124,18 +26104,6 @@ msgstr "入金記録で小切手による支払いを記録するときに小切
 #: 
 msgid "Require check number on check payments"
 msgstr "小切手による支払いで小切手番号を必須にする"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "アップグレードは開始されなかったため、何も変更されていません。"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "このアップグレードはお使いのデータベースでは実行できません。"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "お使いのデータベース サーバー（%1$s %2$s）は、ChurchCRM がサポートするバージョン（MySQL %3$s または MariaDB %4$s 以降）より古いです。"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27971,10 +27939,6 @@ msgid "How the congregation is made up"
 msgstr "会衆の構成"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "このデータベースがサポート対象外であり、アップグレードがブロックされることを理解しています"
-
-#: 
 msgid "Insights"
 msgstr "インサイト"
 
@@ -28179,10 +28143,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "このダッシュボードがあなたのメインダッシュボードになりました。"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "このデータベースは、ベンダーからセキュリティ修正を受け取らなくなりました。"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "ここは人々がChurchCRMを開く場所です。このページとは異なるアドレスを使用する場合にのみ変更してください。"
 
@@ -28195,28 +28155,12 @@ msgid "Total deposited"
 msgstr "入金合計"
 
 #: 
-msgid "Unsupported database server"
-msgstr "サポートされていないデータベースサーバー"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "データベースがサポートされているバージョンに移行されるまで、アップグレードはブロックされます。"
-
-#: 
 msgid "Usually 3306."
 msgstr "通常は3306です。"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "データを移行する必要がないインストール前に、ホストに切り替えを依頼することをお勧めします。MariaDB 10.11が適切な目標です。"
-
-#: 
 msgid "Web address"
 msgstr "ウェブアドレス"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "今すぐインストールできます：ChurchCRMがインストールされ、実行されます。"
 
 #: 
 msgid "Your main dashboard"
@@ -28235,4 +28179,40 @@ msgstr "あと {{count}} 件"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "あと {{count}} 件"
+
+#: 
+msgid "Database out of support"
+msgstr "データベースはサポート対象外です"
+
+#: 
+msgid "Deactivated"
+msgstr "無効化済み"
+
+#: 
+msgid "How to find the log"
+msgstr "ログの見つけ方"
+
+#: 
+msgid "How to install server locales"
+msgstr "サーバーロケールのインストール方法"
+
+#: 
+msgid "Last edited"
+msgstr "最終編集"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "サーバーにインストールされておらず、英語のフォールバックロケールもインストールされていないため、インターフェースは英語で表示されます。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM のログには具体的な理由が記録されています。共有する前に名前を削除してください。"
+
+#: 
+msgid "Verify now"
+msgstr "今すぐ確認"
+
+#: 
+msgid "View Giving History"
+msgstr "献金履歴を表示"
 

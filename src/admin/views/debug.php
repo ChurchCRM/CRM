@@ -8,6 +8,7 @@ use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\VersionUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -116,7 +117,7 @@ $hasAnyIssue = $integrityPassed === false
 <?php
 // Environment data — paths (with copy chips), PHP runtime, extensions.
 $envPaths = [
-    gettext('Installation ID') => SystemConfig::getValue('sSystemID'),
+    gettext('Installation ID') => SystemIdentity::current(),
     gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
     gettext('Document Root') => SystemURLs::getDocumentRoot(),
     gettext('Base URL')     => SystemURLs::getURL(),

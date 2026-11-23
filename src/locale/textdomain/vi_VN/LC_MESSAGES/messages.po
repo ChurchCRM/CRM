@@ -4029,10 +4029,6 @@ msgid "Legend"
 msgstr "Huyền thoại"
 
 #: 
-msgid "assigned"
-msgstr "giao"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Hiển thị sinh viên có sinh nhật trong"
 
@@ -17593,10 +17589,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Các đăng ký đang chờ xem xét từ biểu mẫu đăng ký công khai của bạn. Những mục không có email hoặc điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi liên hệ."
 
 #: 
-msgid "Review self registrations"
-msgstr "Xem xét các đăng ký tự phục vụ"
-
-#: 
 msgid "Select month"
 msgstr "Chọn tháng"
 
@@ -17623,10 +17615,6 @@ msgstr "Người này thuộc một gia đình — hãy phê duyệt gia đình"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Người này không phải là đăng ký tự phục vụ đang chờ"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Gia đình tự đăng ký này đang chờ xem xét"
 
 #: 
 msgid "Total registrations"
@@ -26141,14 +26129,6 @@ msgstr "Các khoản đóng góp theo Quỹ"
 msgid "Unknown Fund"
 msgstr "Quỹ không xác định"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Hãy yêu cầu nhà cung cấp hosting chuyển cơ sở dữ liệu sang phiên bản được hỗ trợ, rồi thử lại."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Hãy yêu cầu nhà cung cấp hosting chuyển cơ sở dữ liệu sang phiên bản được hỗ trợ."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26166,18 +26146,6 @@ msgstr "Bắt buộc nhập số séc khi ghi nhận khoản thanh toán bằng 
 #: 
 msgid "Require check number on check payments"
 msgstr "Bắt buộc số séc khi thanh toán bằng séc"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Quá trình nâng cấp chưa được bắt đầu nên không có gì thay đổi."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Không thể chạy bản nâng cấp này trên cơ sở dữ liệu của bạn."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Máy chủ cơ sở dữ liệu của bạn (%1$s %2$s) cũ hơn phiên bản ChurchCRM hỗ trợ (MySQL %3$s hoặc MariaDB %4$s trở lên)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28013,10 +27981,6 @@ msgid "How the congregation is made up"
 msgstr "Cơ cấu của hội thánh"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Tôi hiểu cơ sở dữ liệu này không được hỗ trợ và việc nâng cấp sẽ bị chặn"
-
-#: 
 msgid "Insights"
 msgstr "Thông tin chi tiết"
 
@@ -28221,10 +28185,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Bảng điều khiển này hiện là bảng điều khiển chính của bạn."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Cơ sở dữ liệu này không còn nhận được các bản vá bảo mật từ nhà cung cấp của nó."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Đây là nơi mọi người sẽ mở ChurchCRM. Chỉ thay đổi nếu họ sẽ dùng một địa chỉ khác với trang này."
 
@@ -28237,28 +28197,12 @@ msgid "Total deposited"
 msgstr "Tổng số đã nộp"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Máy chủ cơ sở dữ liệu không được hỗ trợ"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Việc nâng cấp sẽ bị chặn cho đến khi cơ sở dữ liệu được chuyển sang phiên bản được hỗ trợ."
-
-#: 
 msgid "Usually 3306."
 msgstr "Thường là 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Chúng tôi khuyên bạn nên yêu cầu nhà cung cấp dịch vụ lưu trữ chuyển đổi trước khi cài đặt, khi chưa có dữ liệu nào cần di chuyển. MariaDB 10.11 là một lựa chọn tốt."
-
-#: 
 msgid "Web address"
 msgstr "Địa chỉ web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Bạn có thể cài đặt ngay bây giờ: ChurchCRM sẽ cài đặt và chạy."
 
 #: 
 msgid "Your main dashboard"
@@ -28277,4 +28221,40 @@ msgstr "và thêm {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "và thêm {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "Cơ sở dữ liệu không được hỗ trợ"
+
+#: 
+msgid "Deactivated"
+msgstr "Đã hủy kích hoạt"
+
+#: 
+msgid "How to find the log"
+msgstr "Cách tìm nhật ký"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cách cài đặt locale của máy chủ"
+
+#: 
+msgid "Last edited"
+msgstr "Chỉnh sửa lần cuối"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Chưa được cài đặt trên máy chủ, và cũng không có locale dự phòng tiếng Anh nào được cài đặt, vì vậy giao diện sẽ hiển thị bằng tiếng Anh."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Nhật ký ChurchCRM ghi lại lý do cụ thể. Hãy xóa tên trước khi chia sẻ."
+
+#: 
+msgid "Verify now"
+msgstr "Xác minh ngay"
+
+#: 
+msgid "View Giving History"
+msgstr "Xem Lịch sử Quyên góp"
 

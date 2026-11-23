@@ -158,20 +158,6 @@ require_once __DIR__ . '/header.php';
                 </div>
 
                 <div id="db-connection-result" class="alert alert-danger d-none" role="status" aria-live="polite"></div>
-                <div class="alert alert-danger d-none" id="db-version-warning" role="alert">
-                    <h4 class="alert-title"><?= gettext('Unsupported database server') ?></h4>
-                    <p id="db-version-message"></p>
-                    <ul>
-                        <li><?= gettext('This database no longer receives security fixes from its vendor.') ?></li>
-                        <li><?= gettext('You can install now: ChurchCRM will install and run.') ?></li>
-                        <li><?= gettext('Upgrades will be blocked until the database is moved to a supported version.') ?></li>
-                    </ul>
-                    <p><?= gettext('We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target.') ?></p>
-                    <label class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" id="db-version-ack" name="ACKNOWLEDGE_UNSUPPORTED_DB" value="1">
-                        <span class="form-check-label"><?= gettext('I understand this database is unsupported and upgrades will be blocked') ?></span>
-                    </label>
-                </div>
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-primary btn-lg w-100" id="submit-setup" aria-describedby="db-connection-result">
@@ -205,6 +191,11 @@ require_once __DIR__ . '/header.php';
                         <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
                     </div>
                     <h3 class="mb-4"><?= gettext('Installation Complete!') ?></h3>
+                    <div class="alert alert-danger text-start d-none" id="db-version-warning" role="alert">
+                        <h4 class="alert-title"><?= gettext('Database security risk') ?></h4>
+                        <p id="db-version-message"></p>
+                        <p class="mb-0"><?= gettext('Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.') ?></p>
+                    </div>
                     <p class="text-body-secondary small"><?= gettext('Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose.') ?></p>
                     <div class="card bg-light mb-4">
                         <div class="card-body">

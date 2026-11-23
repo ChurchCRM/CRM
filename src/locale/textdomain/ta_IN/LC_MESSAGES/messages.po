@@ -4016,10 +4016,6 @@ msgid "Legend"
 msgstr "பழம்பெரும்க்கதை"
 
 #: 
-msgid "assigned"
-msgstr "ஒதுக்கப்பட்டது"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "பிறந்தநாள் கொண்ட மாணவர்களைக் காட்டுகிறது"
 
@@ -17609,10 +17605,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "உங்கள் பொதுப் பதிவுப் படிவத்திலிருந்து மதிப்பாய்வுக்காகக் காத்திருக்கும் பதிவுகள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத உள்ளீடுகள் குறிக்கப்பட்டுள்ளன — பின்தொடர்வதற்கு முன் தொடர்புத் தகவலைச் சரிபார்க்கவும்."
 
 #: 
-msgid "Review self registrations"
-msgstr "சுயபதிவுகளை மதிப்பாய்வு செய்"
-
-#: 
 msgid "Select month"
 msgstr "மாதத்தைத் தேர்ந்தெடுக்கவும்"
 
@@ -17639,10 +17631,6 @@ msgstr "இந்த நபர் ஒரு குடும்பத்தைச
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "இந்த நபர் நிலுவையிலுள்ள சுயபதிவு அல்ல"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "சுயமாகப் பதிவு செய்த இந்தக் குடும்பம் மதிப்பாய்வுக்காக நிலுவையில் உள்ளது"
 
 #: 
 msgid "Total registrations"
@@ -26170,14 +26158,6 @@ msgstr "நிதி வாரியான கொடுப்பனவுகள�
 msgid "Unknown Fund"
 msgstr "தெரியாத நிதி"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள், பின்னர் மீண்டும் முயலுங்கள்."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள்."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26195,18 +26175,6 @@ msgstr "வைப்புப் பதிவுகளில் காசோல�
 #: 
 msgid "Require check number on check payments"
 msgstr "காசோலைக் கட்டணங்களில் காசோலை எண்ணைக் கட்டாயமாக்கு"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "மேம்படுத்தல் தொடங்கப்படவில்லை, எனவே எதுவும் மாறவில்லை."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "இந்த மேம்படுத்தலை உங்கள் தரவுத்தளத்தில் இயக்க முடியாது."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "உங்கள் தரவுத்தள சேவையகம் (%1$s %2$s) ChurchCRM ஆதரிப்பதை விடப் பழையது (MySQL %3$s அல்லது MariaDB %4$s மற்றும் அதற்குப் பிந்தையவை)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28049,10 +28017,6 @@ msgid "How the congregation is made up"
 msgstr "சபை எவ்வாறு அமைந்துள்ளது"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "இந்தத் தரவுத்தளம் ஆதரிக்கப்படவில்லை என்பதையும் மேம்படுத்தல்கள் தடுக்கப்படும் என்பதையும் நான் புரிந்துகொள்கிறேன்"
-
-#: 
 msgid "Insights"
 msgstr "நுண்ணறிவுகள்"
 
@@ -28257,10 +28221,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "இந்த டாஷ்போர்டு இப்போது உங்கள் பிரதான டாஷ்போர்டு."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "இந்தத் தரவுத்தளம் இனி அதன் விற்பனையாளரிடமிருந்து பாதுகாப்புச் சரிசெய்தல்களைப் பெறாது."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "மக்கள் ChurchCRM ஐத் திறப்பது இங்கேதான். இந்தப் பக்கத்திலிருந்து வேறுபட்ட முகவரியை அவர்கள் பயன்படுத்துவார்களானால் மட்டுமே இதை மாற்றவும்."
 
@@ -28273,28 +28233,12 @@ msgid "Total deposited"
 msgstr "மொத்தம் டெபாசிட் செய்யப்பட்டது"
 
 #: 
-msgid "Unsupported database server"
-msgstr "ஆதரிக்கப்படாத தரவுத்தள சேவையகம்"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "தரவுத்தளம் ஆதரிக்கப்படும் பதிப்பிற்கு மாற்றப்படும் வரை மேம்படுத்தல்கள் தடுக்கப்படும்."
-
-#: 
 msgid "Usually 3306."
 msgstr "பொதுவாக 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "நகர்த்த தரவு எதுவும் இல்லாத நிலையில், நிறுவுவதற்கு முன் மாறுமாறு உங்கள் ஹோஸ்டிடம் கேட்க பரிந்துரைக்கிறோம். MariaDB 10.11 ஒரு நல்ல இலக்கு."
-
-#: 
 msgid "Web address"
 msgstr "வலை முகவரி"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "நீங்கள் இப்போது நிறுவலாம்: ChurchCRM நிறுவப்பட்டு இயங்கும்."
 
 #: 
 msgid "Your main dashboard"
@@ -28313,4 +28257,40 @@ msgstr "மேலும் {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "மேலும் {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "தரவுத்தளம் ஆதரிக்கப்படவில்லை"
+
+#: 
+msgid "Deactivated"
+msgstr "செயலிழக்கப்பட்டது"
+
+#: 
+msgid "How to find the log"
+msgstr "பதிவை எவ்வாறு கண்டுபிடிப்பது"
+
+#: 
+msgid "How to install server locales"
+msgstr "சர்வர் லொகேல்களை எவ்வாறு நிறுவுவது"
+
+#: 
+msgid "Last edited"
+msgstr "கடைசியாகத் திருத்தப்பட்டது"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "சர்வரில் நிறுவப்படவில்லை, ஆங்கில மாற்று லொகேலும் நிறுவப்படவில்லை, எனவே இடைமுகம் ஆங்கிலத்தில் காண்பிக்கப்படும்."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM பதிவு குறிப்பிட்ட காரணத்தைப் பதிவு செய்கிறது. பகிர்வதற்கு முன் பெயர்களை நீக்கவும்."
+
+#: 
+msgid "Verify now"
+msgstr "இப்போது சரிபார்க்கவும்"
+
+#: 
+msgid "View Giving History"
+msgstr "வழங்குதல் வரலாற்றைக் காண்க"
 

@@ -4019,10 +4019,6 @@ msgid "Legend"
 msgstr "מקרא"
 
 #: 
-msgid "assigned"
-msgstr "משויך"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "מציג תלמידים שיום הולדתם ב-"
 
@@ -17597,10 +17593,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "הרשמות הממתינות לבדיקה מטופס ההרשמה הציבורי שלכם. רשומות ללא דוא\"ל או טלפון מסומנות — יש לוודא את פרטי הקשר לפני יצירת קשר."
 
 #: 
-msgid "Review self registrations"
-msgstr "בדיקת הרשמות עצמיות"
-
-#: 
 msgid "Select month"
 msgstr "בחירת חודש"
 
@@ -17627,10 +17619,6 @@ msgstr "אדם זה שייך למשפחה — יש לאשר את המשפחה ב
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "אדם זה אינו הרשמה עצמית ממתינה"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "משפחה זו, שנרשמה בעצמה, ממתינה לבדיקה"
 
 #: 
 msgid "Total registrations"
@@ -26158,14 +26146,6 @@ msgstr "תשלומים לפי קרן"
 msgid "Unknown Fund"
 msgstr "קרן לא ידועה"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת, ולאחר מכן נסו שוב."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26183,18 +26163,6 @@ msgstr "דרישת מספר צ'ק בעת רישום תשלומים בצ'ק בר�
 #: 
 msgid "Require check number on check payments"
 msgstr "דרישת מספר צ'ק בתשלומים בצ'ק"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "השדרוג לא התחיל, ולכן דבר לא השתנה."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "לא ניתן להריץ שדרוג זה על מסד הנתונים שלך."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "שרת מסד הנתונים שלך (%1$s %2$s) ישן יותר ממה ש-ChurchCRM תומך בו (MySQL %3$s או MariaDB %4$s ואילך)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28037,10 +28005,6 @@ msgid "How the congregation is made up"
 msgstr "כיצד מורכבת הקהילה"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "אני מבין שמסד נתונים זה אינו נתמך ושדרוגים ייחסמו"
-
-#: 
 msgid "Insights"
 msgstr "תובנות"
 
@@ -28245,10 +28209,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "לוח הבקרה הזה הוא כעת לוח הבקרה הראשי שלכם."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "מסד נתונים זה אינו מקבל עוד תיקוני אבטחה מהספק שלו."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "כאן אנשים יפתחו את ChurchCRM. שנו זאת רק אם ישתמשו בכתובת שונה מעמוד זה."
 
@@ -28261,28 +28221,12 @@ msgid "Total deposited"
 msgstr "סך שהופקד"
 
 #: 
-msgid "Unsupported database server"
-msgstr "שרת מסד נתונים לא נתמך"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "שדרוגים ייחסמו עד שמסד הנתונים יועבר לגרסה נתמכת."
-
-#: 
 msgid "Usually 3306."
 msgstr "בדרך כלל 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "אנו ממליצים לבקש מהמארח שלכם לעבור לפני ההתקנה, כשאין עדיין נתונים להעביר. MariaDB 10.11 היא יעד מתאים."
-
-#: 
 msgid "Web address"
 msgstr "כתובת אינטרנט"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "ניתן להתקין כעת: ChurchCRM יותקן ויפעל."
 
 #: 
 msgid "Your main dashboard"
@@ -28301,4 +28245,40 @@ msgstr "ועוד {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ועוד {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "מסד הנתונים אינו נתמך"
+
+#: 
+msgid "Deactivated"
+msgstr "הושבת"
+
+#: 
+msgid "How to find the log"
+msgstr "כיצד למצוא את היומן"
+
+#: 
+msgid "How to install server locales"
+msgstr "כיצד להתקין את הגדרות האזור של השרת"
+
+#: 
+msgid "Last edited"
+msgstr "נערך לאחרונה"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "לא מותקן בשרת, וגם לא מותקנת הגדרת אזור חלופית באנגלית, לכן הממשק יוצג באנגלית."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "יומן ChurchCRM מתעד את הסיבה הספציפית. הסר שמות לפני השיתוף."
+
+#: 
+msgid "Verify now"
+msgstr "אמת עכשיו"
+
+#: 
+msgid "View Giving History"
+msgstr "הצג היסטוריית תרומה"
 

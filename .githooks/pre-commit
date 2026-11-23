@@ -4,6 +4,7 @@
 #   1. Translatable-string rules (.agents/skills/churchcrm/i18n-localization.md), and the
 #      terms guard: staged strings that near-duplicate a catalog term, look like code, or run long
 #   2. PHP syntax, namespace/use-statement case, and Propel base classes
+#   3. Upgrade scripts named for the next release and registered in the `current` step
 # Whole-repo checks run in the pre-push hook (`npm run lint`) and in CI.
 #
 # Enabled automatically by `npm install` (the `prepare` script in
@@ -48,5 +49,7 @@ run_check "staged terms against the catalog" "the terms guard flagged staged str
     node locale/scripts/lib/locale-terms-guard.js --staged
 run_check "changed PHP files" "PHP validation failed in a changed file." \
     npm run --silent build:php:validate
+run_check "staged upgrade scripts" "an upgrade script is named for the wrong version or registered in a shipped upgrade.json step." \
+    node scripts/lint/validate-upgrade-script-version.js --staged
 
 exit 0

@@ -3994,10 +3994,6 @@ msgid "Legend"
 msgstr "संकेत-चिह्न (लीजेंड)"
 
 #: 
-msgid "assigned"
-msgstr "सौंपा गया"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "उन छात्रों को दिखाया जा रहा है जिनका जन्मदिन इसमें है:"
 
@@ -17568,10 +17564,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।"
 
 #: 
-msgid "Review self registrations"
-msgstr "स्वयं-पंजीकरण की समीक्षा करें"
-
-#: 
 msgid "Select month"
 msgstr "माह चुनें"
 
@@ -17598,10 +17590,6 @@ msgstr "यह व्यक्ति एक परिवार का सदस�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "यह व्यक्ति लंबित स्वयं-पंजीकरण नहीं है"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "यह स्वयं-पंजीकृत परिवार समीक्षा के लिए लंबित है"
 
 #: 
 msgid "Total registrations"
@@ -26129,14 +26117,6 @@ msgstr "निधि के अनुसार भुगतान"
 msgid "Unknown Fund"
 msgstr "अज्ञात निधि"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "अपने होस्ट से डेटाबेस को किसी समर्थित संस्करण पर ले जाने के लिए कहें, फिर दोबारा प्रयास करें।"
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "अपने होस्ट से डेटाबेस को किसी समर्थित संस्करण पर ले जाने के लिए कहें।"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26154,18 +26134,6 @@ msgstr "जमा प्रविष्टियों में चेक भ�
 #: 
 msgid "Require check number on check payments"
 msgstr "चेक भुगतानों पर चेक नंबर अनिवार्य करें"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "अपग्रेड शुरू नहीं हुआ, इसलिए कुछ भी नहीं बदला।"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "यह अपग्रेड आपके डेटाबेस पर नहीं चल सकता।"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "आपका डेटाबेस सर्वर (%1$s %2$s) ChurchCRM द्वारा समर्थित संस्करणों से पुराना है (MySQL %3$s या MariaDB %4$s और बाद के)।"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28008,10 +27976,6 @@ msgid "How the congregation is made up"
 msgstr "मण्डली की संरचना कैसी है"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "मैं समझता हूँ कि यह डेटाबेस असमर्थित है और अपग्रेड अवरुद्ध होंगे"
-
-#: 
 msgid "Insights"
 msgstr "अंतर्दृष्टि"
 
@@ -28216,10 +28180,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "यह डैशबोर्ड अब आपका मुख्य डैशबोर्ड है।"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "यह डेटाबेस अब अपने विक्रेता से सुरक्षा सुधार प्राप्त नहीं करता।"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "यहीं लोग ChurchCRM खोलेंगे। इसे केवल तभी बदलें जब वे इस पृष्ठ से अलग पता उपयोग करेंगे।"
 
@@ -28232,28 +28192,12 @@ msgid "Total deposited"
 msgstr "कुल जमा किया गया"
 
 #: 
-msgid "Unsupported database server"
-msgstr "असमर्थित डेटाबेस सर्वर"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "डेटाबेस को समर्थित संस्करण में ले जाने तक अपग्रेड अवरुद्ध रहेंगे।"
-
-#: 
 msgid "Usually 3306."
 msgstr "आमतौर पर 3306।"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "हम सलाह देते हैं कि इंस्टॉल करने से पहले, जब स्थानांतरित करने के लिए कोई डेटा नहीं है, अपने होस्ट से स्विच करने को कहें। MariaDB 10.11 एक अच्छा लक्ष्य है।"
-
-#: 
 msgid "Web address"
 msgstr "वेब पता"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "आप अभी इंस्टॉल कर सकते हैं: ChurchCRM इंस्टॉल होगा और चलेगा।"
 
 #: 
 msgid "Your main dashboard"
@@ -28272,4 +28216,40 @@ msgstr "और {{count}} अधिक"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "और {{count}} अधिक"
+
+#: 
+msgid "Database out of support"
+msgstr "डेटाबेस समर्थित नहीं है"
+
+#: 
+msgid "Deactivated"
+msgstr "निष्क्रिय किया गया"
+
+#: 
+msgid "How to find the log"
+msgstr "लॉग कैसे खोजें"
+
+#: 
+msgid "How to install server locales"
+msgstr "सर्वर लोकेल कैसे इंस्टॉल करें"
+
+#: 
+msgid "Last edited"
+msgstr "अंतिम संपादन"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "सर्वर पर स्थापित नहीं है, और कोई अंग्रेज़ी फ़ॉलबैक लोकेल भी स्थापित नहीं है, इसलिए इंटरफ़ेस अंग्रेज़ी में दिखेगा।"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM लॉग विशिष्ट कारण दर्ज करता है। साझा करने से पहले नाम हटा दें।"
+
+#: 
+msgid "Verify now"
+msgstr "अभी सत्यापित करें"
+
+#: 
+msgid "View Giving History"
+msgstr "दान का इतिहास देखें"
 

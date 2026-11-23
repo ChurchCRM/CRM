@@ -21,7 +21,7 @@ CREATE TABLE `config_cfg` (
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
   PRIMARY KEY (`cfg_name`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.
 
@@ -37,7 +37,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL default '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `deposit_dep`
@@ -58,7 +58,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Category` varchar(50) default NULL,
   PRIMARY KEY  (`fun_ID`),
   UNIQUE KEY `fun_Name_unique` (`fun_Name`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `donationfund_fun`
@@ -79,7 +79,7 @@ CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_countname` varchar(20) NOT NULL default '',
   UNIQUE KEY `evctnm_countid` (`evctnm_countid`),
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `eventcountnames_evctnm`
@@ -104,7 +104,7 @@ CREATE TABLE `eventcounts_evtcnt` (
   `evtcnt_countcount` int(6) default NULL,
   `evtcnt_notes` varchar(20) default NULL,
   PRIMARY KEY  (`evtcnt_eventid`,`evtcnt_countid`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `eventcounts_evtcnt`
@@ -218,7 +218,7 @@ CREATE TABLE `calendars` (
   PRIMARY KEY (`calendar_id`),
   UNIQUE KEY `accesstoken` (`accesstoken`),
   KEY `calendars_ministry_idx` (`ministry_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
  (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
@@ -246,7 +246,7 @@ CREATE TABLE `calendar_events` (
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `family_custom`
@@ -265,7 +265,7 @@ CREATE TABLE `family_custom_master` (
   `fam_custom_Special` mediumint(8) unsigned default NULL,
   `fam_custom_FieldSec` tinyint(4) NOT NULL default '1',
   `type_ID` tinyint(4) NOT NULL default '0'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `family_custom_master`
@@ -353,7 +353,7 @@ CREATE TABLE `groupprop_master` (
   `type_ID` smallint(5) unsigned NOT NULL default '0',
   `prop_Special` mediumint(9) unsigned default NULL,
   `prop_PersonDisplay` enum('false','true') NOT NULL default 'false'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='Group-specific properties order, name, description, type';
 
 --
 -- Dumping data for table `groupprop_master`
@@ -378,7 +378,7 @@ CREATE TABLE `group_grp` (
   `grp_ministry_id` int(11) default NULL,
   PRIMARY KEY  (`grp_ID`),
   KEY `grp_ministry_idx` (`grp_ministry_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `group_grp`
@@ -397,7 +397,7 @@ CREATE TABLE `list_lst` (
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
   `lst_OptionName` varchar(50) NOT NULL default '',
   PRIMARY KEY (`lst_ID`, `lst_OptionID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `list_lst`
@@ -511,7 +511,7 @@ CREATE TABLE `person2group2role_p2g2r` (
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `person_custom`
@@ -531,7 +531,7 @@ CREATE TABLE `person_custom_master` (
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL default '0',
   PRIMARY KEY (`custom_Field`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `person_custom_master`
@@ -637,7 +637,7 @@ CREATE TABLE `pledge_plg` (
   INDEX `idx_plg_fundID` (`plg_fundID`),
   INDEX `idx_plg_depID` (`plg_depID`),
   INDEX `idx_plg_GroupKey` (`plg_GroupKey`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `pledge_plg`
@@ -655,7 +655,7 @@ CREATE TABLE `propertytype_prt` (
   `prt_Name` varchar(50) NOT NULL default '',
   `prt_Description` text NOT NULL,
   PRIMARY KEY  (`prt_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `propertytype_prt`
@@ -680,7 +680,7 @@ CREATE TABLE `property_pro` (
   `pro_Description` text NOT NULL,
   `pro_Prompt` varchar(255) default NULL,
   PRIMARY KEY  (`pro_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `property_pro`
@@ -701,7 +701,7 @@ CREATE TABLE `record2property_r2p` (
   `r2p_pro_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_record_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_Value` text NOT NULL
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `record2property_r2p`
@@ -753,7 +753,7 @@ CREATE TABLE `userconfig_ucfg` (
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   `ucfg_cat` varchar(20) NOT NULL,
   PRIMARY KEY  (`ucfg_per_id`,`ucfg_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `userconfig_ucfg`
@@ -821,7 +821,7 @@ CREATE TABLE `user_usr` (
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
   UNIQUE KEY `usr_PortalCalendarToken` (`usr_PortalCalendarToken`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_usr`
@@ -845,7 +845,7 @@ CREATE TABLE `user_settings` (
   `user_id` mediumint(9) unsigned NOT NULL,
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_settings`
@@ -879,7 +879,7 @@ CREATE TABLE `whycame_why` (
   `why_suggest` text NOT NULL,
   `why_hearOfUs` text NOT NULL,
   PRIMARY KEY  (`why_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Fundraiser support added 4/11/2009 Michael Wilt
@@ -907,7 +907,7 @@ CREATE TABLE `fundraiser_fr` (
   `fr_fund_ID` mediumint(8) unsigned NULL,
   PRIMARY KEY  (`fr_ID`),
   UNIQUE KEY `fr_ID` (`fr_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `donateditem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -926,7 +926,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredDate` date NOT NULL,
   `di_picture` text,
   PRIMARY KEY  (`di_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `multibuy_mb` (
   `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -946,7 +946,7 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_PendingCommands` varchar(50),
 
   PRIMARY KEY  (`kdev_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE `kioskassginment_kasm` (
   `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
@@ -991,7 +991,7 @@ CREATE TABLE `locations` (
   `location_email` VARCHAR(45) NULL,
   `location_timzezone` VARCHAR(45) NULL,
   PRIMARY KEY (`location_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `menu_links`
@@ -999,11 +999,11 @@ CREATE TABLE `locations` (
 
 CREATE TABLE `menu_links` (
   `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `pledge_denominations_pdem`

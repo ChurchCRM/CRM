@@ -3,7 +3,6 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MICRUtils;
@@ -21,7 +20,6 @@ use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\DonationFundService;
@@ -370,24 +368,6 @@ class FinancialService
         }
     }
 
-    public function processCurrencyDenominations(object $payment, string $groupKey): void
-    {
-        if (empty($payment->cashDenominations)) {
-            return;
-        }
-        $connection = Bootstrapper::getMysqliConnection();
-        $currencyDenoms = json_decode($payment->cashDenominations, null, 512);
-        foreach ($currencyDenoms as $cdom) {
-            if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
-                continue;
-            }
-            $escapedGroupKey = mysqli_real_escape_string($connection, $groupKey);
-            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
-      VALUES ('" . $escapedGroupKey . "','" . (int) $payment->DepositID . "','" . (int) $cdom->currencyID . "','" . (int) $cdom->Count . "')";
-            FunctionsUtils::runQuery($sSQL);
-        }
-    }
-
     public function insertPledgeorPayment(object $payment, ?string $presetGroupKey = null)
     {
         AuthService::requireUserGroupMembership('bFinance');
@@ -637,39 +617,6 @@ class FinancialService
 
     public function getDepositPDF($depID): void
     {
-    }
-
-    public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)
-    {
-        // Get the list of Currency denominations
-        $sSQL = 'SELECT SUM(pdem_denominationQuantity) FROM pledge_denominations_pdem
-                 WHERE plg_depID = ' . (int) $depositID . '
-                 AND pdem_denominationID = ' . (int) $currencyID;
-        $rscurrencyDenomination = FunctionsUtils::runQuery($sSQL);
-
-        return mysqli_fetch_array($rscurrencyDenomination)[0];
-    }
-
-    /**
-     * @return \stdClass[]
-     */
-    public function getCurrency(): array
-    {
-        $currencies = [];
-        // Get the list of Currency denominations
-        $sSQL = 'SELECT * FROM currency_denominations_cdem';
-        $rscurrencyDenomination = FunctionsUtils::runQuery($sSQL);
-        mysqli_data_seek($rscurrencyDenomination, 0);
-        while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
-            $currency = new \stdClass();
-            $currency->id = $row['cdem_denominationID'];
-            $currency->Name = $row['cdem_denominationName'];
-            $currency->Value = $row['cdem_denominationValue'];
-            $currency->cClass = $row['cdem_denominationClass'];
-            $currencies[] = $currency;
-        } // end while
-
-        return $currencies;
     }
 
     /**

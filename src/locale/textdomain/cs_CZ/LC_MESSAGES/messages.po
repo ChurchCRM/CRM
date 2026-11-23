@@ -4013,10 +4013,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "přiřazený"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Zobrazuji žáky s narozeninami v"
 
@@ -17603,10 +17599,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrace z vašeho veřejného registračního formuláře čekající na kontrolu. Záznamy bez e-mailu nebo telefonu jsou označeny — před kontaktováním ověřte kontaktní údaje."
 
 #: 
-msgid "Review self registrations"
-msgstr "Zkontrolovat samoregistrace"
-
-#: 
 msgid "Select month"
 msgstr "Vyberte měsíc"
 
@@ -17633,10 +17625,6 @@ msgstr "Tato osoba patří do rodiny — schvalte místo toho rodinu"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Tato osoba není čekající samoregistrace"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Tato samoregistrovaná rodina čeká na kontrolu"
 
 #: 
 msgid "Total registrations"
@@ -26177,14 +26165,6 @@ msgstr "Platby podle fondu"
 msgid "Unknown Fund"
 msgstr "Neznámý fond"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Požádejte poskytovatele hostingu o převedení databáze na podporovanou verzi a poté to zkuste znovu."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Požádejte poskytovatele hostingu o převedení databáze na podporovanou verzi."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26202,18 +26182,6 @@ msgstr "Vyžadovat číslo šeku při zaznamenávání plateb šekem ve vkladech
 #: 
 msgid "Require check number on check payments"
 msgstr "Vyžadovat číslo šeku u plateb šekem"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Aktualizace nebyla spuštěna, takže se nic nezměnilo."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Tuto aktualizaci nelze ve vaší databázi spustit."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Váš databázový server (%1$s %2$s) je starší, než ChurchCRM podporuje (MySQL %3$s nebo MariaDB %4$s a novější)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28063,10 +28031,6 @@ msgid "How the congregation is made up"
 msgstr "Složení sboru"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Rozumím, že tato databáze není podporována a aktualizace budou zablokovány"
-
-#: 
 msgid "Insights"
 msgstr "Přehledy"
 
@@ -28271,10 +28235,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Tato nástěnka je nyní vaší hlavní nástěnkou."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Tato databáze již nedostává bezpečnostní opravy od svého dodavatele."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Zde budou lidé ChurchCRM otevírat. Změňte to pouze tehdy, pokud budou používat jinou adresu než tuto stránku."
 
@@ -28287,28 +28247,12 @@ msgid "Total deposited"
 msgstr "Celkem vloženo"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Nepodporovaný databázový server"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Aktualizace budou zablokovány, dokud databáze nebude přesunuta na podporovanou verzi."
-
-#: 
 msgid "Usually 3306."
 msgstr "Obvykle 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Doporučujeme požádat hostitele o přepnutí ještě před instalací, dokud nejsou žádná data k přesunu. MariaDB 10.11 je vhodný cíl."
-
-#: 
 msgid "Web address"
 msgstr "Webová adresa"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Nyní můžete instalovat: ChurchCRM se nainstaluje a poběží."
 
 #: 
 msgid "Your main dashboard"
@@ -28327,4 +28271,40 @@ msgstr "a další {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "a další {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "Databáze není podporována"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivováno"
+
+#: 
+msgid "How to find the log"
+msgstr "Jak najít protokol"
+
+#: 
+msgid "How to install server locales"
+msgstr "Jak nainstalovat národní prostředí serveru"
+
+#: 
+msgid "Last edited"
+msgstr "Naposledy upraveno"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nenainstalováno na serveru a není nainstalováno ani anglické záložní národní prostředí, takže se rozhraní zobrazí v angličtině."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Protokol ChurchCRM zaznamenává konkrétní důvod. Před sdílením odstraňte jména."
+
+#: 
+msgid "Verify now"
+msgstr "Ověřit nyní"
+
+#: 
+msgid "View Giving History"
+msgstr "Zobrazit historii darů"
 

@@ -4002,10 +4002,6 @@ msgid "Legend"
 msgstr "శీర్షిక వివరణ"
 
 #: 
-msgid "assigned"
-msgstr "కేటాయించబడింది"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "పుట్టినరోజులు ఉన్న విద్యార్థులను చూపిస్తున్నారు"
 
@@ -17577,10 +17573,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "మీ పబ్లిక్ నమోదు ఫారమ్ నుండి సమీక్ష కోసం వేచి ఉన్న నమోదులు. ఇమెయిల్ లేదా ఫోన్ లేని ఎంట్రీలకు గుర్తు పెట్టబడింది — తదుపరి సంప్రదింపుకు ముందు సంప్రదింపు వివరాలను నిర్ధారించుకోండి."
 
 #: 
-msgid "Review self registrations"
-msgstr "స్వీయ నమోదులను సమీక్షించండి"
-
-#: 
 msgid "Select month"
 msgstr "నెలను ఎంచుకోండి"
 
@@ -17607,10 +17599,6 @@ msgstr "ఈ వ్యక్తి ఒక కుటుంబానికి చ�
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "ఈ వ్యక్తి పెండింగ్‌లో ఉన్న స్వీయ నమోదు కాదు"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "స్వీయ నమోదు చేసుకున్న ఈ కుటుంబం సమీక్ష కోసం పెండింగ్‌లో ఉంది"
 
 #: 
 msgid "Total registrations"
@@ -26138,14 +26126,6 @@ msgstr "నిధి వారీగా చెల్లింపులు"
 msgid "Unknown Fund"
 msgstr "తెలియని నిధి"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "డేటాబేస్‌ను మద్దతు ఉన్న వెర్షన్‌కు మార్చమని మీ హోస్ట్‌ను అడగండి, ఆపై మళ్లీ ప్రయత్నించండి."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "డేటాబేస్‌ను మద్దతు ఉన్న వెర్షన్‌కు మార్చమని మీ హోస్ట్‌ను అడగండి."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26163,18 +26143,6 @@ msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చె
 #: 
 msgid "Require check number on check payments"
 msgstr "చెక్ చెల్లింపులకు చెక్ నంబర్ తప్పనిసరి"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "అప్‌గ్రేడ్ ప్రారంభం కాలేదు, కాబట్టి ఏదీ మారలేదు."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "ఈ అప్‌గ్రేడ్ మీ డేటాబేస్‌లో రన్ కాదు."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "మీ డేటాబేస్ సర్వర్ (%1$s %2$s) ChurchCRM మద్దతు ఇచ్చే దానికంటే పాతది (MySQL %3$s లేదా MariaDB %4$s మరియు తరువాతివి)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28017,10 +27985,6 @@ msgid "How the congregation is made up"
 msgstr "సంఘం ఎలా ఏర్పడింది"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "ఈ డేటాబేస్ మద్దతు లేనిదని మరియు నవీకరణలు నిరోధించబడతాయని నేను అర్థం చేసుకున్నాను"
-
-#: 
 msgid "Insights"
 msgstr "అంతర్దృష్టులు"
 
@@ -28225,10 +28189,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "ఈ డ్యాష్‌బోర్డ్ ఇప్పుడు మీ ప్రధాన డ్యాష్‌బోర్డ్."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "ఈ డేటాబేస్ ఇకపై దాని విక్రేత నుండి భద్రతా పరిష్కారాలను పొందదు."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "ప్రజలు ChurchCRMను తెరిచేది ఇక్కడే. వారు ఈ పేజీకి భిన్నమైన చిరునామాను ఉపయోగిస్తే మాత్రమే దీన్ని మార్చండి."
 
@@ -28241,28 +28201,12 @@ msgid "Total deposited"
 msgstr "మొత్తం డిపాజిట్ చేసినది"
 
 #: 
-msgid "Unsupported database server"
-msgstr "మద్దతు లేని డేటాబేస్ సర్వర్"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "డేటాబేస్ మద్దతు ఉన్న సంస్కరణకు మార్చబడే వరకు నవీకరణలు నిరోధించబడతాయి."
-
-#: 
 msgid "Usually 3306."
 msgstr "సాధారణంగా 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "తరలించడానికి డేటా లేనందున, ఇన్‌స్టాల్ చేయడానికి ముందు మారమని మీ హోస్ట్‌ను అడగమని మేము సిఫార్సు చేస్తున్నాము. MariaDB 10.11 మంచి లక్ష్యం."
-
-#: 
 msgid "Web address"
 msgstr "వెబ్ చిరునామా"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "మీరు ఇప్పుడు ఇన్‌స్టాల్ చేయవచ్చు: ChurchCRM ఇన్‌స్టాల్ అయి నడుస్తుంది."
 
 #: 
 msgid "Your main dashboard"
@@ -28281,4 +28225,40 @@ msgstr "ఇంకా {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ఇంకా {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "డేటాబేస్ మద్దతు లేదు"
+
+#: 
+msgid "Deactivated"
+msgstr "నిష్క్రియం చేయబడింది"
+
+#: 
+msgid "How to find the log"
+msgstr "లాగ్‌ను ఎలా కనుగొనాలి"
+
+#: 
+msgid "How to install server locales"
+msgstr "సర్వర్ లోకేళ్లను ఎలా ఇన్‌స్టాల్ చేయాలి"
+
+#: 
+msgid "Last edited"
+msgstr "చివరిగా సవరించబడిన"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "సర్వర్‌లో ఇన్‌స్టాల్ చేయబడలేదు, ఆంగ్ల ఫాల్‌బ్యాక్ లోకేల్ కూడా ఇన్‌స్టాల్ చేయబడలేదు, కాబట్టి ఇంటర్‌ఫేస్ ఆంగ్లంలో చూపబడుతుంది."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM లాగ్ నిర్దిష్ట కారణాన్ని నమోదు చేస్తుంది. పంచుకునే ముందు పేర్లను తొలగించండి."
+
+#: 
+msgid "Verify now"
+msgstr "ఇప్పుడు ధృవీకరించండి"
+
+#: 
+msgid "View Giving History"
+msgstr "దానం చరిత్రను వీక్షించండి"
 

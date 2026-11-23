@@ -4016,10 +4016,6 @@ msgid "Legend"
 msgstr "Hadithi"
 
 #: 
-msgid "assigned"
-msgstr "kupewa"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Inaonyesha wanafunzi walio na siku za kuzaliwa ndani"
 
@@ -17595,10 +17591,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Usajili unaosubiri ukaguzi kutoka fomu yako ya usajili ya umma. Maingizo yasiyo na barua pepe wala simu yamewekewa alama — thibitisha mawasiliano kabla ya kufuatilia."
 
 #: 
-msgid "Review self registrations"
-msgstr "Kagua usajili binafsi"
-
-#: 
 msgid "Select month"
 msgstr "Chagua mwezi"
 
@@ -17625,10 +17617,6 @@ msgstr "Mtu huyu ni wa familia — idhinisha familia badala yake"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Mtu huyu si usajili binafsi unaosubiri"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Familia hii iliyojisajili inasubiri ukaguzi"
 
 #: 
 msgid "Total registrations"
@@ -26156,14 +26144,6 @@ msgstr "Malipo kwa Mfuko"
 msgid "Unknown Fund"
 msgstr "Mfuko Usiojulikana"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Muombe mtoa huduma wako wa hosting ahamishe hifadhidata kwenye toleo linalotumika, kisha ujaribu tena."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Muombe mtoa huduma wako wa hosting ahamishe hifadhidata kwenye toleo linalotumika."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26181,18 +26161,6 @@ msgstr "Lazimisha nambari ya cheki wakati wa kurekodi malipo ya cheki kwenye mai
 #: 
 msgid "Require check number on check payments"
 msgstr "Lazimisha nambari ya cheki kwa malipo ya cheki"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Usasishaji haukuanzishwa, kwa hivyo hakuna kilichobadilika."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Usasishaji huu hauwezi kuendeshwa kwenye hifadhidata yako."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Seva yako ya hifadhidata (%1$s %2$s) ni ya zamani kuliko inavyotumika na ChurchCRM (MySQL %3$s au MariaDB %4$s na matoleo mapya zaidi)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28035,10 +28003,6 @@ msgid "How the congregation is made up"
 msgstr "Jinsi washirika walivyo"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Ninaelewa kuwa hifadhidata hii haiungwi mkono na masasisho yatazuiwa"
-
-#: 
 msgid "Insights"
 msgstr "Maarifa"
 
@@ -28243,10 +28207,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Dashibodi hii sasa ni dashibodi yako kuu."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Hifadhidata hii haipokei tena marekebisho ya usalama kutoka kwa muuzaji wake."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Hapa ndipo watu watafungua ChurchCRM. Ibaddilishe tu ikiwa watatumia anuani tofauti na ukurasa huu."
 
@@ -28259,28 +28219,12 @@ msgid "Total deposited"
 msgstr "Jumla iliyowekwa"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Seva ya hifadhidata isiyoungwa mkono"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Masasisho yatazuiwa hadi hifadhidata ihamishwe kwenye toleo linaloungwa mkono."
-
-#: 
 msgid "Usually 3306."
 msgstr "Kawaida 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Tunapendekeza kumwomba mwenyeji wako abaddilishe kabla ya kusakinisha, wakati hakuna data ya kuhamisha. MariaDB 10.11 ni lengo zuri."
-
-#: 
 msgid "Web address"
 msgstr "Anuani ya wavuti"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Unaweza kusakinisha sasa: ChurchCRM itasakinisha na kufanya kazi."
 
 #: 
 msgid "Your main dashboard"
@@ -28299,4 +28243,40 @@ msgstr "na {{count}} zaidi"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "na {{count}} zaidi"
+
+#: 
+msgid "Database out of support"
+msgstr "Hifadhidata haitumiki"
+
+#: 
+msgid "Deactivated"
+msgstr "Imezimwa"
+
+#: 
+msgid "How to find the log"
+msgstr "Jinsi ya kupata kumbukumbu"
+
+#: 
+msgid "How to install server locales"
+msgstr "Jinsi ya kusakinisha lugha za seva"
+
+#: 
+msgid "Last edited"
+msgstr "Imehaririwa mwisho"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Haikusakinishwa kwenye seva, na hakuna lugha mbadala ya Kiingereza iliyosakinishwa pia, kwa hivyo kiolesura kitaonyeshwa kwa Kiingereza."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Kumbukumbu ya ChurchCRM inarekodi sababu maalum. Ondoa majina kabla ya kuishiriki."
+
+#: 
+msgid "Verify now"
+msgstr "Thibitisha sasa"
+
+#: 
+msgid "View Giving History"
+msgstr "Angalia historia ya utoaji"
 

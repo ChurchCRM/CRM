@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 21:02+0000\n"
+"POT-Creation-Date: 2026-11-23 17:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,6 +259,14 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d payments are not on any deposit yet."
+msgstr ""
+
+#, php-format
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr ""
+
+#, php-format
+msgid "%d people could not be added and remain in your cart."
 msgstr ""
 
 #, php-format
@@ -1397,6 +1405,9 @@ msgstr ""
 msgid "Administrators have every permission while its feature is turned on."
 msgstr ""
 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr ""
+
 #, php-format
 msgid "Adult of the %s family"
 msgstr ""
@@ -2063,12 +2074,6 @@ msgid "Ask someone to cover for you"
 msgstr ""
 
 msgid "Ask them"
-msgstr ""
-
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr ""
-
-msgid "Ask your host to move the database to a supported version."
 msgstr ""
 
 msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
@@ -4762,6 +4767,9 @@ msgstr ""
 msgid "Database name"
 msgstr ""
 
+msgid "Database out of support"
+msgstr ""
+
 msgid "Database password"
 msgstr ""
 
@@ -4772,6 +4780,9 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database security risk"
 msgstr ""
 
 msgid "Database user"
@@ -4874,6 +4885,9 @@ msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, w
 msgstr ""
 
 msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr ""
+
+msgid "Deactivated"
 msgstr ""
 
 msgid "Deactivated Ministries"
@@ -6783,6 +6797,9 @@ msgstr ""
 msgid "Failed to add option"
 msgstr ""
 
+msgid "Failed to add person to group"
+msgstr ""
+
 msgid "Failed to add role. Please try again."
 msgstr ""
 
@@ -8339,6 +8356,9 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
+msgid "Group Assignment"
+msgstr ""
+
 msgid "Group Directory"
 msgstr ""
 
@@ -8767,6 +8787,12 @@ msgstr ""
 msgid "How to Fix"
 msgstr ""
 
+msgid "How to find the log"
+msgstr ""
+
+msgid "How to install server locales"
+msgstr ""
+
 msgid "How to respond"
 msgstr ""
 
@@ -8782,9 +8808,6 @@ msgid "I can't"
 msgstr ""
 
 msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
-msgstr ""
-
-msgid "I understand this database is unsupported and upgrades will be blocked"
 msgstr ""
 
 msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
@@ -9738,6 +9761,9 @@ msgid "Last date"
 msgstr ""
 
 msgid "Last day"
+msgstr ""
+
+msgid "Last edited"
 msgstr ""
 
 msgid "Last fiscal year to include"
@@ -12087,6 +12113,9 @@ msgid "Not included"
 msgstr ""
 
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr ""
+
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
 msgstr ""
 
 msgid "Not leading a volunteer team"
@@ -14659,6 +14688,12 @@ msgstr ""
 msgid "Retry Download"
 msgstr ""
 
+msgid "Retry Group Assignment"
+msgstr ""
+
+msgid "Retry group assignments"
+msgstr ""
+
 msgid "Return Home"
 msgstr ""
 
@@ -14726,9 +14761,6 @@ msgid "Review payments for a period, or prepare one deposit for the bank."
 msgstr ""
 
 msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
-msgstr ""
-
-msgid "Review self registrations"
 msgstr ""
 
 msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
@@ -15411,7 +15443,13 @@ msgstr ""
 msgid "Select one deposit to print a bank slip."
 msgstr ""
 
+msgid "Select one or more groups for this person."
+msgstr ""
+
 msgid "Select the families to review."
+msgstr ""
+
+msgid "Select the groups you want to retry."
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -17035,6 +17073,9 @@ msgstr ""
 msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
 msgstr ""
 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr ""
+
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
@@ -17455,6 +17496,12 @@ msgstr ""
 msgid "The person loses this permission in the Member Portal at once."
 msgstr ""
 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr ""
+
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr ""
+
 msgid "The place where receipts are issued. Blank uses the city on Church Info."
 msgstr ""
 
@@ -17701,9 +17748,6 @@ msgid "The type a new event on a ministry's Calendar tab starts with. It can sti
 msgstr ""
 
 msgid "The unconfirmed email has changed. Reload the page and try again."
-msgstr ""
-
-msgid "The upgrade was not started, so nothing changed."
 msgstr ""
 
 msgid "The user you added to that database. Not your hosting login."
@@ -17985,9 +18029,6 @@ msgid "This copy of ChurchCRM does not include the release file check. You can c
 msgstr ""
 
 msgid "This dashboard is now your main dashboard."
-msgstr ""
-
-msgid "This database no longer receives security fixes from its vendor."
 msgstr ""
 
 msgid "This date was canceled. Nothing more is needed from you."
@@ -18303,9 +18344,6 @@ msgstr ""
 msgid "This schedule is inactive. Reactivate it to generate its occurrences."
 msgstr ""
 
-msgid "This self-registered family is pending review"
-msgstr ""
-
 msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
 msgstr ""
 
@@ -18344,9 +18382,6 @@ msgid "This tool has no cancellation/replacement workflow; use your existing CRA
 msgstr ""
 
 msgid "This tool never changes these. Give each person their own email on their record."
-msgstr ""
-
-msgid "This upgrade cannot run on your database."
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
@@ -19084,9 +19119,6 @@ msgstr ""
 msgid "Unsuccessful API Key authentication attempt"
 msgstr ""
 
-msgid "Unsupported database server"
-msgstr ""
-
 msgid "Until"
 msgstr ""
 
@@ -19196,9 +19228,6 @@ msgid "Upgrade information refreshed successfully"
 msgstr ""
 
 msgid "Upgrade information refreshed. Reloading page..."
-msgstr ""
-
-msgid "Upgrades will be blocked until the database is moved to a supported version."
 msgstr ""
 
 msgid "Upload"
@@ -19562,6 +19591,9 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
+msgid "Verify now"
+msgstr ""
+
 msgid "Verify the family in person instead."
 msgstr ""
 
@@ -19628,6 +19660,9 @@ msgid "View Family Page"
 msgstr ""
 
 msgid "View Full Family Giving"
+msgstr ""
+
+msgid "View Giving History"
 msgstr ""
 
 msgid "View Group"
@@ -19947,9 +19982,6 @@ msgstr ""
 
 #, php-format
 msgid "We emailed a link to %s. Use it to confirm your new email address."
-msgstr ""
-
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
 msgstr ""
 
 msgid "We sent a link to {{email}}. Your email changes when you use it."
@@ -20426,9 +20458,6 @@ msgstr ""
 msgid "You can create/delete sunday school group."
 msgstr ""
 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr ""
-
 msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
 msgstr ""
 
@@ -20668,14 +20697,14 @@ msgstr ""
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr ""
 
+#, php-format
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr ""
+
 msgid "Your database already contains data"
 msgstr ""
 
 msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
-msgstr ""
-
-#, php-format
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
@@ -20830,9 +20859,6 @@ msgstr ""
 
 msgctxt "other"
 msgid "and {{count}} more"
-msgstr ""
-
-msgid "assigned"
 msgstr ""
 
 msgid "attendance"

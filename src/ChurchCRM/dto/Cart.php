@@ -177,15 +177,20 @@ class Cart
         return $persons->count();
     }
 
-    public static function emptyToGroup($GroupID, $RoleID): void
+    public static function emptyToGroup($GroupID, $RoleID): array
     {
         $groupService = new GroupService();
+        $failedPeople = [];
 
         foreach ($_SESSION['aPeopleCart'] as $element) {
-            $groupService->addUserToGroup($GroupID, $element, $RoleID);
+            if ($groupService->addUserToGroup($GroupID, (int) $element, (int) $RoleID) === false) {
+                $failedPeople[] = $element;
+            }
         }
 
-        $_SESSION['aPeopleCart'] = [];
+        $_SESSION['aPeopleCart'] = $failedPeople;
+
+        return $failedPeople;
     }
 
     /**

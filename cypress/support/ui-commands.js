@@ -30,7 +30,7 @@ Cypress.Commands.add('dismissSystemNotifications', () => {
         }
         cy.wrap($buttons).click({ multiple: true });
         cy.wait(aliases);
-        cy.get('.crm-system-notification').should('not.exist');
+        cy.get('.crm-system-notification .js-dismiss-notification').should('not.exist');
     });
 });
 

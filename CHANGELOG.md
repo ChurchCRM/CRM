@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.8.7](./changelog/7.8.7.md) | November 2026 | Database support for the hosting churches actually have |
 | [7.8.6](./changelog/7.8.6.md) | November 2026 | An installer that explains itself, Canadian giving receipts, redesigned record pages, and a proper front door for sign-in |
 | [7.8.5](./changelog/7.8.5.md) | November 2026 | Staff accounts and sign-in, protection against accidental deletion, Missing Pledges report, finance and group workflow improvements |
 | [7.8.4](./changelog/7.8.4.md) | November 2026 | ⚠️ Important Guidance Before You Upgrade, Finance, Giving & Stewardship Workflows, Navigation, Mobile & Everyday Usability |

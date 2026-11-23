@@ -2,6 +2,7 @@
 
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Utils\SystemIdentity;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
@@ -54,6 +55,9 @@ if (file_exists(__DIR__ . '/../Include/Config.php')) {
 }
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+// The identity exists before any configuration or database, so every install attempt reports as one system.
+SystemIdentity::ensure();
 
 // Store paths in global for template access (no SystemURLs available)
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;

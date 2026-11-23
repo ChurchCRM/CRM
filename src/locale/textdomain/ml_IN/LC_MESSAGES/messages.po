@@ -3991,10 +3991,6 @@ msgid "Legend"
 msgstr "ഐതിഹ്യം"
 
 #: 
-msgid "assigned"
-msgstr "നൽകിയ"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "ജന്മദിനമുള്ള വിദ്യാർത്ഥികൾ കാണിക്കുന്നു"
 
@@ -17566,10 +17562,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "നിങ്ങളുടെ പൊതു രജിസ്ട്രേഷൻ ഫോമിൽ നിന്നുള്ള അവലോകനം കാത്തിരിക്കുന്ന രജിസ്ട്രേഷനുകൾ. ഇമെയിലോ ഫോണോ ഇല്ലാത്ത എൻട്രികൾ അടയാളപ്പെടുത്തിയിരിക്കുന്നു — ബന്ധപ്പെടുന്നതിന് മുമ്പ് ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ പരിശോധിക്കുക."
 
 #: 
-msgid "Review self registrations"
-msgstr "സ്വയം രജിസ്ട്രേഷനുകൾ അവലോകനം ചെയ്യുക"
-
-#: 
 msgid "Select month"
 msgstr "മാസം തിരഞ്ഞെടുക്കുക"
 
@@ -17596,10 +17588,6 @@ msgstr "ഈ വ്യക്തി ഒരു കുടുംബത്തിന്
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "ഈ വ്യക്തി തീർപ്പാക്കാത്ത സ്വയം രജിസ്ട്രേഷൻ അല്ല"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "സ്വയം രജിസ്റ്റർ ചെയ്ത ഈ കുടുംബം അവലോകനം കാത്തിരിക്കുന്നു"
 
 #: 
 msgid "Total registrations"
@@ -26127,14 +26115,6 @@ msgstr "ഫണ്ട് തിരിച്ചുള്ള പേമെന്റ�
 msgid "Unknown Fund"
 msgstr "അജ്ഞാത ഫണ്ട്"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "ഡാറ്റാബേസ് പിന്തുണയുള്ള ഒരു പതിപ്പിലേക്ക് മാറ്റാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടുക, തുടർന്ന് വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "ഡാറ്റാബേസ് പിന്തുണയുള്ള ഒരു പതിപ്പിലേക്ക് മാറ്റാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടുക."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26152,18 +26132,6 @@ msgstr "ഡിപ്പോസിറ്റ് എൻട്രികളിൽ ച�
 #: 
 msgid "Require check number on check payments"
 msgstr "ചെക്ക് പേയ്‌മെന്റുകളിൽ ചെക്ക് നമ്പർ നിർബന്ധമാക്കുക"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "അപ്‌ഗ്രേഡ് ആരംഭിച്ചില്ല, അതിനാൽ ഒന്നും മാറിയിട്ടില്ല."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "ഈ അപ്‌ഗ്രേഡ് നിങ്ങളുടെ ഡാറ്റാബേസിൽ പ്രവർത്തിപ്പിക്കാൻ കഴിയില്ല."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "നിങ്ങളുടെ ഡാറ്റാബേസ് സെർവർ (%1$s %2$s) ChurchCRM പിന്തുണയ്ക്കുന്നതിനേക്കാൾ പഴയതാണ് (MySQL %3$s അല്ലെങ്കിൽ MariaDB %4$s മുതലുള്ളവ)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -28006,10 +27974,6 @@ msgid "How the congregation is made up"
 msgstr "സഭ എങ്ങനെ രൂപപ്പെട്ടിരിക്കുന്നു"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "ഈ ഡാറ്റാബേസ് പിന്തുണയ്ക്കുന്നില്ലെന്നും നവീകരണങ്ങൾ തടയപ്പെടുമെന്നും ഞാൻ മനസ്സിലാക്കുന്നു"
-
-#: 
 msgid "Insights"
 msgstr "ഉൾക്കാഴ്ചകൾ"
 
@@ -28214,10 +28178,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "ഈ ഡാഷ്‌ബോർഡ് ഇപ്പോൾ നിങ്ങളുടെ പ്രധാന ഡാഷ്‌ബോർഡാണ്."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "ഈ ഡാറ്റാബേസിന് ഇനി അതിന്റെ വെണ്ടറിൽ നിന്ന് സുരക്ഷാ പരിഹാരങ്ങൾ ലഭിക്കില്ല."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "ആളുകൾ ChurchCRM തുറക്കുന്നത് ഇവിടെയാണ്. ഈ പേജിൽ നിന്ന് വ്യത്യസ്തമായ ഒരു വിലാസമാണ് അവർ ഉപയോഗിക്കുന്നതെങ്കിൽ മാത്രം ഇത് മാറ്റുക."
 
@@ -28230,28 +28190,12 @@ msgid "Total deposited"
 msgstr "ആകെ നിക്ഷേപിച്ചത്"
 
 #: 
-msgid "Unsupported database server"
-msgstr "പിന്തുണയ്ക്കാത്ത ഡാറ്റാബേസ് സെർവർ"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "ഡാറ്റാബേസ് പിന്തുണയ്ക്കുന്ന ഒരു പതിപ്പിലേക്ക് മാറ്റുന്നതുവരെ നവീകരണങ്ങൾ തടയപ്പെടും."
-
-#: 
 msgid "Usually 3306."
 msgstr "സാധാരണയായി 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "നീക്കാൻ ഡാറ്റയൊന്നുമില്ലാത്തതിനാൽ, ഇൻസ്റ്റാൾ ചെയ്യുന്നതിന് മുമ്പ് മാറാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടാൻ ഞങ്ങൾ ശുപാർശ ചെയ്യുന്നു. MariaDB 10.11 നല്ലൊരു ലക്ഷ്യമാണ്."
-
-#: 
 msgid "Web address"
 msgstr "വെബ് വിലാസം"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "നിങ്ങൾക്ക് ഇപ്പോൾ ഇൻസ്റ്റാൾ ചെയ്യാം: ChurchCRM ഇൻസ്റ്റാൾ ചെയ്ത് പ്രവർത്തിക്കും."
 
 #: 
 msgid "Your main dashboard"
@@ -28270,4 +28214,40 @@ msgstr "കൂടാതെ {{count}} എണ്ണം കൂടി"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "കൂടാതെ {{count}} എണ്ണം കൂടി"
+
+#: 
+msgid "Database out of support"
+msgstr "ഡാറ്റാബേസ് പിന്തുണയ്ക്കുന്നില്ല"
+
+#: 
+msgid "Deactivated"
+msgstr "നിർജ്ജീവമാക്കി"
+
+#: 
+msgid "How to find the log"
+msgstr "ലോഗ് എങ്ങനെ കണ്ടെത്താം"
+
+#: 
+msgid "How to install server locales"
+msgstr "സെർവർ ലൊക്കേലുകൾ എങ്ങനെ ഇൻസ്‌റ്റോൾ ചെയ്യാം"
+
+#: 
+msgid "Last edited"
+msgstr "അവസാനം എഡിറ്റ് ചെയ്തത്"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "സെർവറിൽ ഇൻസ്‌റ്റോൾ ചെയ്തിട്ടില്ല, ഇംഗ്ലീഷ് ഫോൾബാക്ക് ലൊക്കേലും ഇൻസ്‌റ്റോൾ ചെയ്തിട്ടില്ല, അതിനാൽ ഇന്റർഫേസ് ഇംഗ്ലീഷിൽ കാണിക്കും."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM ലോഗ് നിർദ്ദിഷ്ട കാരണം രേഖപ്പെടുത്തുന്നു. പങ്കിടുന്നതിന് മുമ്പ് പേരുകൾ നീക്കം ചെയ്യുക."
+
+#: 
+msgid "Verify now"
+msgstr "ഇപ്പോൾ പരിശോധിക്കുക"
+
+#: 
+msgid "View Giving History"
+msgstr "സദാചരണ ചരിത്രം കാണുക"
 
