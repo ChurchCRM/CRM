@@ -28339,3 +28339,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "und {{count}} weitere"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratoren sehen auf jeder Seite eine Warnung, bis die Datenbank auf eine unterstützte Version umgestellt wurde."
+
+#: 
+msgid "Database out of support"
+msgstr "Datenbank wird nicht mehr unterstützt"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktiviert"
+
+#: 
+msgid "How to find the log"
+msgstr "So finden Sie das Protokoll"
+
+#: 
+msgid "How to install server locales"
+msgstr "So installieren Sie Server-Gebietsschema"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ich verstehe, dass diese Datenbank nicht mehr unterstützt wird"
+
+#: 
+msgid "Last edited"
+msgstr "Zuletzt bearbeitet"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nicht auf dem Server installiert, und es ist auch kein englisches Fallback-Gebietsschema installiert, sodass die Oberfläche auf Englisch angezeigt wird."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Das ChurchCRM-Protokoll enthält den genauen Grund. Entfernen Sie Namen, bevor Sie es weitergeben."
+
+#: 
+msgid "Verify now"
+msgstr "Jetzt überprüfen"
+
+#: 
+msgid "View Giving History"
+msgstr "Spendenverlauf anzeigen"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ihre Datenbank (%1$s %2$s) wird nicht mehr unterstützt und ist möglicherweise unsicher. ChurchCRM wird laufen, aber wir empfehlen dringend einen Hoster mit MariaDB %3$s+ oder MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Ihr Datenbankserver (%1$s %2$s) ist zu alt für ChurchCRM, das MySQL %3$s oder MariaDB %4$s und neuer benötigt."
+

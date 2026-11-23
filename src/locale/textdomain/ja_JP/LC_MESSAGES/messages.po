@@ -28200,3 +28200,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "あと {{count}} 件"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "データベースがサポート対象のバージョンに移行されるまで、管理者にはすべてのページで警告が表示されます。"
+
+#: 
+msgid "Database out of support"
+msgstr "データベースはサポート対象外です"
+
+#: 
+msgid "Deactivated"
+msgstr "無効化済み"
+
+#: 
+msgid "How to find the log"
+msgstr "ログの見つけ方"
+
+#: 
+msgid "How to install server locales"
+msgstr "サーバーロケールのインストール方法"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "このデータベースがサポート対象外であることを理解しました"
+
+#: 
+msgid "Last edited"
+msgstr "最終編集"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "サーバーにインストールされておらず、英語のフォールバックロケールもインストールされていないため、インターフェースは英語で表示されます。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM のログには具体的な理由が記録されています。共有する前に名前を削除してください。"
+
+#: 
+msgid "Verify now"
+msgstr "今すぐ確認"
+
+#: 
+msgid "View Giving History"
+msgstr "献金履歴を表示"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "お使いのデータベース（%1$s %2$s）はサポート対象外で、安全でない可能性があります。ChurchCRM は動作しますが、MariaDB %3$s+ または MySQL %4$s+ を備えたホストを強くお勧めします。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "お使いのデータベースサーバー（%1$s %2$s）は ChurchCRM には古すぎます。MySQL %3$s または MariaDB %4$s 以降が必要です。"
+

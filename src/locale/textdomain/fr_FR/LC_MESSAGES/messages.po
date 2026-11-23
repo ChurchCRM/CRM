@@ -28265,3 +28265,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "et {{count}} autres"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Les administrateurs verront un avertissement sur chaque page jusqu'à ce que la base de données soit déplacée vers une version prise en charge."
+
+#: 
+msgid "Database out of support"
+msgstr "Base de données non prise en charge"
+
+#: 
+msgid "Deactivated"
+msgstr "Désactivé"
+
+#: 
+msgid "How to find the log"
+msgstr "Comment trouver le journal"
+
+#: 
+msgid "How to install server locales"
+msgstr "Comment installer les locales du serveur"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Je comprends que cette base de données n'est pas prise en charge"
+
+#: 
+msgid "Last edited"
+msgstr "Dernière modification"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Non installé sur le serveur, et aucune locale anglaise de secours n'est installée non plus, donc l'interface s'affichera en anglais."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Le journal de ChurchCRM enregistre la raison précise. Supprimez les noms avant de le partager."
+
+#: 
+msgid "Verify now"
+msgstr "Vérifier maintenant"
+
+#: 
+msgid "View Giving History"
+msgstr "Voir l'historique des dons"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Votre base de données (%1$s %2$s) n'est pas prise en charge et peut être dangereuse. ChurchCRM fonctionnera, mais nous recommandons vivement un hébergeur avec MariaDB %3$s+ ou MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Votre serveur de base de données (%1$s %2$s) est trop ancien pour ChurchCRM, qui nécessite MySQL %3$s ou MariaDB %4$s et versions ultérieures."
+

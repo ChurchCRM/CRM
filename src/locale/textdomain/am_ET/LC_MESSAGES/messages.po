@@ -28274,3 +28274,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "እና {{count}} ተጨማሪ"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "አስተዳዳሪዎች ዳታቤዙ ወደሚደገፍ ሥሪት እስኪዘዋወር ድረስ በእያንዳንዱ ገጽ ላይ ማስጠንቀቂያ ያያሉ።"
+
+#: 
+msgid "Database out of support"
+msgstr "ዳታቤዝ ከድጋፍ ውጭ"
+
+#: 
+msgid "Deactivated"
+msgstr "ተቋርጧል"
+
+#: 
+msgid "How to find the log"
+msgstr "ምዝገባ ማስታወሻውን እንዴት ማግኘት እንደሚቻል"
+
+#: 
+msgid "How to install server locales"
+msgstr "የሰርቨር ቦታ ቅምጦችን እንዴት መጫን እንደሚቻል"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "ይህ ዳታቤዝ ከድጋፍ ውጭ መሆኑን ተረድቻለሁ"
+
+#: 
+msgid "Last edited"
+msgstr "በመጨረሻ የተስተካከለ"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "በሰርቨር ላይ አልተጫነም፣ የእንግሊዝኛ አማራጭ ቦታ ቅምጥም አልተጫነም፣ ስለዚህ በይነገጹ በእንግሊዝኛ ይታያል።"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "የChurchCRM ምዝገባ ማስታወሻ ትክክለኛውን ምክንያት ይመዘግባል። ከማጋራትዎ በፊት ስሞችን ያስወግዱ።"
+
+#: 
+msgid "Verify now"
+msgstr "አሁን ያረጋግጡ"
+
+#: 
+msgid "View Giving History"
+msgstr "የለገና ታሪክን ይመልከቱ"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "የእርስዎ ዳታቤዝ (%1$s %2$s) ከድጋፍ ውጭ ሲሆን ደህንነቱም ላይኖረው ይችላል። ChurchCRM ይሰራል፣ ግን MariaDB %3$s+ ወይም MySQL %4$s+ ያለው አስተናጋጅ በጥብቅ እንመክራለን።"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "የእርስዎ የዳታቤዝ ሰርቨር (%1$s %2$s) ለChurchCRM በጣም ያረጀ ነው፤ MySQL %3$s ወይም MariaDB %4$s እና ከዚያ በኋላ ያስፈልገዋል።"
+

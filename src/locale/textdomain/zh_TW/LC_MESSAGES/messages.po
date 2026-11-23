@@ -28368,3 +28368,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "還有 {{count}} 個"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "在資料庫遷移到受支援的版本之前，管理員將在每個頁面上看到警告。"
+
+#: 
+msgid "Database out of support"
+msgstr "資料庫不受支援"
+
+#: 
+msgid "Deactivated"
+msgstr "已停用"
+
+#: 
+msgid "How to find the log"
+msgstr "如何查找日誌"
+
+#: 
+msgid "How to install server locales"
+msgstr "如何安裝伺服器地區設定"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "我了解此資料庫不受支援"
+
+#: 
+msgid "Last edited"
+msgstr "最後編輯"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "未安裝在伺服器上，並且也沒有安裝英語備用地區設定，因此介面將以英文顯示。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM 日誌會記錄具體原因。分享前請刪除姓名。"
+
+#: 
+msgid "Verify now"
+msgstr "立即驗證"
+
+#: 
+msgid "View Giving History"
+msgstr "檢視捐獻歷史"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "您的資料庫（%1$s %2$s）不受支援，可能不安全。ChurchCRM 仍可運行，但我們強烈推薦使用帶有 MariaDB %3$s+ 或 MySQL %4$s+ 的主機。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "您的資料庫伺服器（%1$s %2$s）對 ChurchCRM 來說太舊了，需要 MySQL %3$s 或 MariaDB %4$s 及更高版本。"
+

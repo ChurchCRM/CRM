@@ -28259,3 +28259,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "dhe {{count}} të tjerë"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratorët do të shohin një paralajmërim në çdo faqe derisa baza e të dhënave të zhvendoset në një version të mbështetur."
+
+#: 
+msgid "Database out of support"
+msgstr "Baza e të dhënave nuk mbështetet"
+
+#: 
+msgid "Deactivated"
+msgstr "I çaktivizuar"
+
+#: 
+msgid "How to find the log"
+msgstr "Si të gjeni regjistrin"
+
+#: 
+msgid "How to install server locales"
+msgstr "Si të instaloni lokalet e serverit"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "E kuptoj që kjo bazë të dhënash nuk mbështetet"
+
+#: 
+msgid "Last edited"
+msgstr "Ndryshuar së fundmi"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nuk është instaluar në server, dhe nuk është instaluar as një lokale rezervë në anglisht, kështu që ndërfaqja do të shfaqet në anglisht."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Regjistri i ChurchCRM shënon arsyen specifike. Hiqni emrat para se ta ndani."
+
+#: 
+msgid "Verify now"
+msgstr "Verifiko tani"
+
+#: 
+msgid "View Giving History"
+msgstr "Shiko historikun e dhurimit"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Baza juaj e të dhënave (%1$s %2$s) nuk mbështetet dhe mund të jetë e pasigurt. ChurchCRM do të funksionojë, por ne rekomandojmë fuqimisht një host me MariaDB %3$s+ ose MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Serveri juaj i bazës së të dhënave (%1$s %2$s) është shumë i vjetër për ChurchCRM, i cili ka nevojë për MySQL %3$s ose MariaDB %4$s dhe më të ri."
+

@@ -28305,3 +28305,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "a ďalšie {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Správcovia uvidia varovanie na každej stránke, kým sa databáza nepresunie na podporovanú verziu."
+
+#: 
+msgid "Database out of support"
+msgstr "Databáza nie je podporovaná"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivované"
+
+#: 
+msgid "How to find the log"
+msgstr "Ako nájsť denník"
+
+#: 
+msgid "How to install server locales"
+msgstr "Ako nainštalovať miestne nastavenia servera"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Rozumiem, že táto databáza nie je podporovaná"
+
+#: 
+msgid "Last edited"
+msgstr "Naposledy upravené"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nie je nainštalované na serveri a nie je nainštalované ani anglické záložné miestne nastavenie, takže rozhranie sa zobrazí v angličtine."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Denník ChurchCRM zaznamenáva konkrétny dôvod. Pred zdieľaním odstráňte mená."
+
+#: 
+msgid "Verify now"
+msgstr "Overiť teraz"
+
+#: 
+msgid "View Giving History"
+msgstr "Zobraziť históriu darov"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaša databáza (%1$s %2$s) nie je podporovaná a nemusí byť bezpečná. ChurchCRM bude fungovať, ale dôrazne odporúčame poskytovateľa s MariaDB %3$s+ alebo MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Váš databázový server (%1$s %2$s) je pre ChurchCRM príliš starý, ktorý potrebuje MySQL %3$s alebo MariaDB %4$s a novší."
+

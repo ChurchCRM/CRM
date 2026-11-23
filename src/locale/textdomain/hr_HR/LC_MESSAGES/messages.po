@@ -28268,3 +28268,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "i još {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratori će vidjeti upozorenje na svakoj stranici dok se baza podataka ne premjesti na podržanu verziju."
+
+#: 
+msgid "Database out of support"
+msgstr "Baza podataka nije podržana"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivirano"
+
+#: 
+msgid "How to find the log"
+msgstr "Kako pronaći zapisnik"
+
+#: 
+msgid "How to install server locales"
+msgstr "Kako instalirati jezične postavke poslužitelja"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Razumijem da ova baza podataka nije podržana"
+
+#: 
+msgid "Last edited"
+msgstr "Zadnje uređeno"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nije instalirano na poslužitelju, a nije instalirana ni engleska rezervna jezična postavka, pa će se sučelje prikazivati na engleskom."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Zapisnik ChurchCRM bilježi konkretan razlog. Uklonite imena prije dijeljenja."
+
+#: 
+msgid "Verify now"
+msgstr "Potvrdi sada"
+
+#: 
+msgid "View Giving History"
+msgstr "Prikaži povijest darivanja"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaša baza podataka (%1$s %2$s) nije podržana i možda nije sigurna. ChurchCRM će raditi, ali toplo preporučujemo pružatelja s MariaDB %3$s+ ili MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Vaš poslužitelj baze podataka (%1$s %2$s) prestar je za ChurchCRM, koji treba MySQL %3$s ili MariaDB %4$s i novije."
+

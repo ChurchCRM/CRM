@@ -28238,3 +28238,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "y {{count}} más"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Los administradores verán una advertencia en cada página hasta que la base de datos se mueva a una versión compatible."
+
+#: 
+msgid "Database out of support"
+msgstr "Base de datos sin soporte"
+
+#: 
+msgid "Deactivated"
+msgstr "Desactivado"
+
+#: 
+msgid "How to find the log"
+msgstr "Cómo encontrar el registro"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cómo instalar las configuraciones regionales del servidor"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Entiendo que esta base de datos no tiene soporte"
+
+#: 
+msgid "Last edited"
+msgstr "Última edición"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "No está instalado en el servidor, y tampoco hay instalada una configuración regional de respaldo en inglés, por lo que la interfaz se mostrará en inglés."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "El registro de ChurchCRM anota el motivo específico. Elimine los nombres antes de compartirlo."
+
+#: 
+msgid "Verify now"
+msgstr "Verificar ahora"
+
+#: 
+msgid "View Giving History"
+msgstr "Ver historial de aportes"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Su base de datos (%1$s %2$s) no tiene soporte y podría ser insegura. ChurchCRM funcionará, pero recomendamos encarecidamente un proveedor con MariaDB %3$s+ o MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Su servidor de base de datos (%1$s %2$s) es demasiado antiguo para ChurchCRM, que necesita MySQL %3$s o MariaDB %4$s o posterior."
+
