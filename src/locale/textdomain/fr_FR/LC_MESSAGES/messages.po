@@ -4015,10 +4015,6 @@ msgid "Legend"
 msgstr "Légende"
 
 #: 
-msgid "assigned"
-msgstr "Assigné"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Afficher les étudiants dont l'anniversaire est en"
 
@@ -17596,10 +17592,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Inscriptions en attente d'examen à partir de votre formulaire d'inscription public. Les entrées sans e-mail ni téléphone sont marquées — vérifiez les coordonnées avant de faire suite."
 
 #: 
-msgid "Review self registrations"
-msgstr "Examiner les auto-inscriptions"
-
-#: 
 msgid "Select month"
 msgstr "Sélectionner le mois"
 
@@ -17626,10 +17618,6 @@ msgstr "Cette personne appartient à une famille — approuvez plutôt la famill
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Cette personne n'est pas une auto-inscription en attente"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Cette famille auto-inscrite est en attente d'examen"
 
 #: 
 msgid "Total registrations"

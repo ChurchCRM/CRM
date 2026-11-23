@@ -1,0 +1,16 @@
+{
+  "Deactivated": [
+    "src/ChurchCRM/Config/Menu/Menu.php:354",
+    "src/ChurchCRM/Config/Menu/Menu.php:356",
+    "src/ChurchCRM/Config/Menu/Menu.php:368"
+  ],
+  "Last edited": [
+    "src/people/views/family-view.php:785"
+  ],
+  "Verify now": [
+    "src/people/views/family-view.php:755"
+  ],
+  "View Giving History": [
+    "src/people/views/family-view.php:256"
+  ]
+}

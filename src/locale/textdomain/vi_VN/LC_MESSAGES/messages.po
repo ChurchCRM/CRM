@@ -4029,10 +4029,6 @@ msgid "Legend"
 msgstr "Huyền thoại"
 
 #: 
-msgid "assigned"
-msgstr "giao"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Hiển thị sinh viên có sinh nhật trong"
 
@@ -17593,10 +17589,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Các đăng ký đang chờ xem xét từ biểu mẫu đăng ký công khai của bạn. Những mục không có email hoặc điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi liên hệ."
 
 #: 
-msgid "Review self registrations"
-msgstr "Xem xét các đăng ký tự phục vụ"
-
-#: 
 msgid "Select month"
 msgstr "Chọn tháng"
 
@@ -17623,10 +17615,6 @@ msgstr "Người này thuộc một gia đình — hãy phê duyệt gia đình"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Người này không phải là đăng ký tự phục vụ đang chờ"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Gia đình tự đăng ký này đang chờ xem xét"
 
 #: 
 msgid "Total registrations"

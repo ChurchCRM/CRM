@@ -138,12 +138,11 @@
       "/mysql/upgrade/7.8.5-user-settings-cascade.sql",
       "/mysql/upgrade/7.8.5-giving-statement-wording.sql",
       "/mysql/upgrade/7.8.5-drop-editself.sql",
-      "/mysql/upgrade/7.8.5-email-log-cascade.sql",
-      "/mysql/upgrade/7.8.5-recurring-pledges.sql"
+      "/mysql/upgrade/7.8.5-email-log-cascade.sql"
     ],
     "dbVersion": "7.8.5"
   },
-  "current": {
+  "pre-7.8.6": {
     "versions": ["7.8.5"],
     "scripts": [
       "/mysql/upgrade/7.8.6-remove-event-notes.sql",
@@ -153,5 +152,10 @@
       "/mysql/upgrade/7.8.6-remaining-utf8mb4.sql"
     ],
     "dbVersion": "7.8.6"
+  },
+  "current": {
+    "versions": ["7.8.6"],
+    "scripts": ["/mysql/upgrade/7.8.7-recurring-pledges.sql"],
+    "dbVersion": "7.8.7"
   }
 }
