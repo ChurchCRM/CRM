@@ -102,7 +102,7 @@ class VersionUtils
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         rsort($results);
 
-        return $results[0]['ver_version'];
+        return $results[0]['ver_version'] ?? '';
     }
 
     /**
