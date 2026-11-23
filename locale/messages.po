@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 02:08+0000\n"
+"POT-Creation-Date: 2026-11-23 04:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8773,6 +8773,9 @@ msgstr ""
 msgid "How to find the log"
 msgstr ""
 
+msgid "How to install server locales"
+msgstr ""
+
 msgid "How to respond"
 msgstr ""
 
@@ -12096,6 +12099,9 @@ msgid "Not included"
 msgstr ""
 
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr ""
+
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
 msgstr ""
 
 msgid "Not leading a volunteer team"

@@ -5,13 +5,19 @@
     "src/ChurchCRM/Config/Menu/Menu.php:368"
   ],
   "How to find the log": [
-    "src/errors/template.php:266"
+    "src/errors/template.php:276"
+  ],
+  "How to install server locales": [
+    "src/admin/views/localization.php:72"
   ],
   "Last edited": [
     "src/people/views/family-view.php:785"
   ],
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": [
+    "src/admin/views/localization.php:71"
+  ],
   "The ChurchCRM log records the specific reason. Remove names before you share it.": [
-    "src/errors/template.php:265"
+    "src/errors/template.php:275"
   ],
   "Verify now": [
     "src/people/views/family-view.php:755"
