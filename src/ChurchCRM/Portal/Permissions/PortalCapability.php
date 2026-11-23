@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Scope;
 use Closure;
 
 /**
@@ -23,7 +24,7 @@ final class PortalCapability
         public readonly string $label,
         public readonly string $description,
         public readonly string $owner,
-        public readonly string $scopeType = PortalScope::NONE,
+        public readonly string $scopeType = Scope::NONE,
         public readonly ?string $featureSwitch = null,
         private readonly ?Closure $available = null,
     ) {
@@ -36,7 +37,7 @@ final class PortalCapability
 
     public function isScoped(): bool
     {
-        return $this->scopeType !== PortalScope::NONE;
+        return $this->scopeType !== Scope::NONE;
     }
 
     /** @internal PortalAuthorizationService */

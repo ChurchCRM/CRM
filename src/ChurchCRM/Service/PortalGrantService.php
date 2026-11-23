@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authorization\Decision;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -15,11 +17,9 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Portal\Auth\SignInAudit;
 use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
-use ChurchCRM\Portal\Permissions\Decision;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapability;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Utils\DateTimeUtils;
 use DateTimeImmutable;
 use DomainException;
@@ -43,11 +43,11 @@ final class PortalGrantService
 
     /** Scope types the person page can pick a scope for. */
     public const GIVABLE_SCOPE_TYPES = [
-        PortalScope::NONE,
-        PortalScope::FAMILY,
-        PortalScope::TEAM,
-        PortalScope::MINISTRY,
-        PortalScope::GROUP,
+        Scope::NONE,
+        Scope::FAMILY,
+        Scope::TEAM,
+        Scope::MINISTRY,
+        Scope::GROUP,
     ];
 
     /**
@@ -64,7 +64,7 @@ final class PortalGrantService
             throw new InvalidArgumentException(gettext('This permission cannot be given on the person page.'));
         }
 
-        $scope = $definition->isScoped() ? new PortalScope($definition->scopeType, (int) $scopeId) : PortalScope::none();
+        $scope = $definition->isScoped() ? new Scope($definition->scopeType, (int) $scopeId) : Scope::none();
         if ($definition->isScoped() && ($scope->id <= 0 || self::scopeNames([$scope]) === [])) {
             throw new InvalidArgumentException(gettext('Choose what the permission is for.'));
         }
@@ -150,10 +150,10 @@ final class PortalGrantService
                     'statusLabel' => self::statusLabel($capability['status'], PortalCapabilityRegistry::get($capability['key'])),
                     'scopeLabel' => self::scopeTypeLabel($capability['scopeType']),
                     'scopeFieldLabel' => match ($capability['scopeType']) {
-                        PortalScope::FAMILY => gettext('Family'),
-                        PortalScope::TEAM => gettext('Team'),
-                        PortalScope::MINISTRY => gettext('Ministry'),
-                        PortalScope::GROUP => gettext('Group'),
+                        Scope::FAMILY => gettext('Family'),
+                        Scope::TEAM => gettext('Team'),
+                        Scope::MINISTRY => gettext('Ministry'),
+                        Scope::GROUP => gettext('Group'),
                         default => '',
                     },
                 ];
@@ -181,7 +181,7 @@ final class PortalGrantService
         $choices = [];
         foreach (self::givableCapabilities() as $choice) {
             $heldIds = array_values($held[$choice['key']] ?? []);
-            if ($heldIds !== [] && ($choice['scopeType'] === PortalScope::NONE || self::holdsEveryScope($choice['scopeType'], $heldIds, $offeredCounts))) {
+            if ($heldIds !== [] && ($choice['scopeType'] === Scope::NONE || self::holdsEveryScope($choice['scopeType'], $heldIds, $offeredCounts))) {
                 continue;
             }
             $choices[] = $choice + ['heldScopeIds' => $heldIds];
@@ -200,7 +200,7 @@ final class PortalGrantService
         $rows = PortalGrantQuery::create()->filterByPersonId($personId)->orderByGrantedAt(Criteria::DESC)->orderById(Criteria::DESC)->find();
         $scopes = [];
         foreach ($rows as $row) {
-            $scopes[] = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
+            $scopes[] = new Scope((string) $row->getScopeType(), (int) $row->getScopeId());
         }
         $names = self::scopeNames($scopes);
         $now = self::now();
@@ -208,7 +208,7 @@ final class PortalGrantService
         $grants = [];
         foreach ($rows as $row) {
             $definition = PortalCapabilityRegistry::get((string) $row->getCapability());
-            $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
+            $scope = new Scope((string) $row->getScopeType(), (int) $row->getScopeId());
             $endsAt = $row->getEndsAt();
             $grants[] = [
                 'grantId' => (int) $row->getId(),
@@ -245,17 +245,17 @@ final class PortalGrantService
         if ($excludeIds !== []) {
             $scopes->filterById($excludeIds, Criteria::NOT_IN);
         }
-        if ($type === PortalScope::TEAM) {
+        if ($type === Scope::TEAM) {
             $scopes->withColumn('Ministry.Name', 'MinistryName')->orderBy('MinistryName');
         }
 
         $choices = [];
         foreach ($scopes->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find() as $scope) {
             $text = (string) $scope->getName();
-            if ($type === PortalScope::FAMILY) {
+            if ($type === Scope::FAMILY) {
                 $city = trim((string) $scope->getCity());
                 $text .= $city === '' ? '' : ' (' . $city . ')';
-            } elseif ($type === PortalScope::TEAM) {
+            } elseif ($type === Scope::TEAM) {
                 $text = sprintf('%s (%s)', $text, $scope->getVirtualColumn('MinistryName'));
             }
             $choices[] = ['id' => (int) $scope->getId(), 'text' => $text];
@@ -272,10 +272,10 @@ final class PortalGrantService
     private static function offeredScopes(string $type): FamilyQuery|VolunteerTeamQuery|VolunteerMinistryQuery|GroupQuery
     {
         return match ($type) {
-            PortalScope::FAMILY => FamilyQuery::create()->filterByDateDeactivated(null, Criteria::ISNULL),
-            PortalScope::TEAM => VolunteerTeamQuery::create()->joinMinistry(),
-            PortalScope::MINISTRY => VolunteerMinistryQuery::create(),
-            PortalScope::GROUP => GroupQuery::create(),
+            Scope::FAMILY => FamilyQuery::create()->filterByDateDeactivated(null, Criteria::ISNULL),
+            Scope::TEAM => VolunteerTeamQuery::create()->joinMinistry(),
+            Scope::MINISTRY => VolunteerMinistryQuery::create(),
+            Scope::GROUP => GroupQuery::create(),
             default => throw new InvalidArgumentException(gettext('There is no picker for this kind of scope.')),
         };
     }
@@ -299,11 +299,11 @@ final class PortalGrantService
     }
 
     /**
-     * The name of each scope that still exists, by `PortalScope::key()`. A
+     * The name of each scope that still exists, by `Scope::key()`. A
      * scope of type `none` has no name; one of a type core does not know is
      * left out.
      *
-     * @param PortalScope[] $scopes
+     * @param Scope[] $scopes
      *
      * @return array<string, string>
      */
@@ -311,7 +311,7 @@ final class PortalGrantService
     {
         $ids = [];
         foreach ($scopes as $scope) {
-            if ($scope->type !== PortalScope::NONE && $scope->id > 0) {
+            if ($scope->type !== Scope::NONE && $scope->id > 0) {
                 $ids[$scope->type][$scope->id] = $scope->id;
             }
         }
@@ -319,10 +319,10 @@ final class PortalGrantService
         $names = [];
         foreach ($ids as $type => $typeIds) {
             $query = match ($type) {
-                PortalScope::FAMILY => FamilyQuery::create(),
-                PortalScope::TEAM => VolunteerTeamQuery::create(),
-                PortalScope::MINISTRY => VolunteerMinistryQuery::create(),
-                PortalScope::GROUP => GroupQuery::create(),
+                Scope::FAMILY => FamilyQuery::create(),
+                Scope::TEAM => VolunteerTeamQuery::create(),
+                Scope::MINISTRY => VolunteerMinistryQuery::create(),
+                Scope::GROUP => GroupQuery::create(),
                 default => null,
             };
             if ($query === null) {
@@ -409,11 +409,11 @@ final class PortalGrantService
     public static function scopeTypeLabel(string $type): string
     {
         return match ($type) {
-            PortalScope::NONE => gettext('Everywhere'),
-            PortalScope::FAMILY => gettext('A family'),
-            PortalScope::TEAM => gettext('A team'),
-            PortalScope::MINISTRY => gettext('A ministry'),
-            PortalScope::GROUP => gettext('A group'),
+            Scope::NONE => gettext('Everywhere'),
+            Scope::FAMILY => gettext('A family'),
+            Scope::TEAM => gettext('A team'),
+            Scope::MINISTRY => gettext('A ministry'),
+            Scope::GROUP => gettext('A group'),
             default => $type,
         };
     }

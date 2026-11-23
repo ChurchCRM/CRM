@@ -3,6 +3,7 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
@@ -18,7 +19,6 @@ use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Service\PasskeyService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -156,13 +156,13 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             return $authz->scopesFor($principal, $capability) !== [];
         }
 
-        if (!$scope instanceof PortalScope) {
+        if (!$scope instanceof Scope) {
             $id = is_array($scope) ? ($scope['id'] ?? null) : $scope;
             if (!is_int($id) && !(is_string($id) && ctype_digit($id))) {
                 return false;
             }
-            $type = PortalCapabilityRegistry::get($capability)?->scopeType ?? PortalScope::NONE;
-            $scope = new PortalScope($type, (int) $id);
+            $type = PortalCapabilityRegistry::get($capability)?->scopeType ?? Scope::NONE;
+            $scope = new Scope($type, (int) $id);
         }
 
         return $authz->decide($principal, $capability, $scope)->allowed;
