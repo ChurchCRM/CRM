@@ -89,12 +89,20 @@ class GroupService
         $connection->beginTransaction();
 
         try {
-            $person2group2role = new Person2group2roleP2g2r();
-            $person2group2role
-                ->setPersonId($iPersonID)
-                ->setGroupId($iGroupID)
-                ->setRoleId($iRoleID);
-            $person2group2role->save($connection);
+            // Check whether the person is already a member of this group.
+            $membership = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($iGroupID)
+                ->filterByPersonId($iPersonID)
+                ->findOne($connection);
+
+            if ($membership === null) {
+                $person2group2role = new Person2group2roleP2g2r();
+                $person2group2role
+                    ->setPersonId($iPersonID)
+                    ->setGroupId($iGroupID)
+                    ->setRoleId($iRoleID);
+                $person2group2role->save($connection);
+            }
 
             // Check if this group has special properties.
             if ($group->getHasSpecialProps()) {
@@ -118,7 +126,6 @@ class GroupService
 
         return $this->getGroupMembers($iGroupID, $iPersonID);
     }
-
 
     /**
      * Add a user to a group without performing Auth checks. Intended for trusted imports.

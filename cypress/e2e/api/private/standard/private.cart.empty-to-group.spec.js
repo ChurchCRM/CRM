@@ -97,6 +97,117 @@ describe("API Private Cart - emptyToGroup", () => {
         );
     });
 
+    it("treats an existing group membership as a successful assignment", () => {
+        const personId = TEST_PERSON_IDS[0];
+
+        // Add the person to the group for the first time.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/",
+            JSON.stringify({ Persons: [personId] }),
+            200,
+        );
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/emptyToGroup",
+            JSON.stringify({
+                groupID: TARGET_GROUP_ID,
+                groupRoleID: TARGET_ROLE_ID,
+            }),
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.have.property("status", "success");
+        });
+
+        // Put the same person back into the cart and assign them again.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/",
+            JSON.stringify({ Persons: [personId] }),
+            200,
+        );
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/emptyToGroup",
+            JSON.stringify({
+                groupID: TARGET_GROUP_ID,
+                groupRoleID: TARGET_ROLE_ID,
+            }),
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.include({
+                status: "success",
+                successCount: 1,
+                failedCount: 0,
+            });
+            expect(resp.body.failedPeople).to.deep.equal([]);
+        });
+
+        cy.makePrivateAdminAPICall("GET", "/api/cart/", null, 200).then((resp) => {
+            expect(resp.body.PeopleCart).to.be.an("array").that.is.empty;
+        });
+
+        cy.makePrivateAdminAPICall(
+            "GET",
+            `/api/groups/${TARGET_GROUP_ID}/members`,
+            null,
+            200,
+        ).then((resp) => {
+            const memberships = resp.body.Person2group2roleP2g2rs.filter(
+                (member) => Number(member.PersonId) === personId,
+            );
+            expect(memberships).to.have.length(1);
+        });
+    });
+
+    it("returns partial success and keeps failed people in the cart", () => {
+        const validPersonId = TEST_PERSON_IDS[0];
+        const invalidPersonId = 2147483647;
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/",
+            JSON.stringify({ Persons: [validPersonId, invalidPersonId] }),
+            200,
+        );
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/cart/emptyToGroup",
+            JSON.stringify({
+                groupID: TARGET_GROUP_ID,
+                groupRoleID: TARGET_ROLE_ID,
+            }),
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.include({
+                status: "partial_success",
+                successCount: 1,
+                failedCount: 1,
+            });
+            expect(resp.body.failedPeople).to.deep.equal([invalidPersonId]);
+        });
+
+        cy.makePrivateAdminAPICall("GET", "/api/cart/", null, 200).then((resp) => {
+            expect(resp.body.PeopleCart).to.deep.equal([invalidPersonId]);
+        });
+
+        cy.makePrivateAdminAPICall(
+            "GET",
+            `/api/groups/${TARGET_GROUP_ID}/members`,
+            null,
+            200,
+        ).then((resp) => {
+            const memberIds = resp.body.Person2group2roleP2g2rs.map(
+                (member) => Number(member.PersonId),
+            );
+            expect(memberIds).to.include(validPersonId);
+            expect(memberIds).not.to.include(invalidPersonId);
+        });
+    });
+
     it("moves cart contents into the target group and empties the cart", () => {
         // Seed the cart with two people.
         cy.makePrivateAdminAPICall(
