@@ -647,7 +647,10 @@ class Bootstrapper
             }
             $title = gettext($header);
             $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';
-            renderErrorPage($rootPath, $title, '❌', 'danger', $content, buildGitHubIssueBody($header, '### ' . $header . "\n\nThe message is left out because it names this server and database."));
+            // Added after buildGitHubIssueBody(), which replaces every URL in the body.
+            $issueBody = buildGitHubIssueBody($header, '### ' . $header . "\n\nThe message is left out because it names this server and database.")
+                . "\n### Log\n\nThe ChurchCRM log records the specific reason. Paste the matching lines here, with names removed: " . standaloneLoggingDocsUrl() . "\n";
+            renderErrorPage($rootPath, $title, '❌', 'danger', $content, $issueBody);
         } catch (\Throwable) {
             echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM Error</title></head><body><h1>ChurchCRM Error</h1><p>' . $message . '</p></body></html>';
         }
