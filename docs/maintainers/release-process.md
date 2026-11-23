@@ -13,7 +13,8 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 5. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`. Publish does not wait for the marketing capture or the `Start <next> release` PR.
 6. **After Publish:** let the marketing capture finish, then merge the `Start <next> release` PR (3.3).
 7. **After Publish** (Phase 4): verify `manage-milestones` automatically dates and closes the milestone, then confirm bookkeeping `sync`, `docs-release` and the release nightly are green.
-8. **Marketing** (Phase 6).
+8. **After Publish:** move every still-open issue or PR on the shipped milestone to the next milestone — the next patch, or where the maintainer directed during the milestone review (2.3) — so the shipped milestone can close. Bookkeeping dates and closes it but never moves items (4.5).
+9. **Marketing** (Phase 6).
 
 To repair a release stuck on a placeholder `untagged-<hash>` tag: create the real tag on the release commit, move the release with `gh release edit untagged-… --tag <version>`, verify with `gh release view <version> --json tagName,isDraft`, then delete the stray tag. Re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
 
@@ -139,7 +140,7 @@ Starts after Publish (3.4) and runs about a week.
 |---|------|-----|--------|
 | 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../../.github/workflows/marketing-capture-assets.yml) starts in 3.1 on `master` and never gates the release. Capture and publish are one run: English first, the other locales after it, then a last job starts `Publish visuals` in `ChurchCRM/visuals` with that run (`DOCS_RELEASE_TOKEN` needs Actions: write there). The publish step only runs on `master`. If the capture failed, fix it and re-run the workflow on `master` | 🤖 / ✋ fix and re-run |
 | 6.2 | Release the docs. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (command in the docs repo `DOCS_GUIDE.md`), (4) check the docs milestones: only `Current` merges into `main`; each upcoming version keeps its own version milestone, whose PRs merge only into `release-docs/<version>`. Publishing rotates the released version's open items to `Current` and closes its milestone; if one is still open, ask the maintainer where its items go | Docs PRs for the release were merged into `release-docs/<version>` as approved, and their CRM tracking issues closed then | ✋ |
-| 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [Release Announcement skill](../../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
+| 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts. The "shipped" comments to outside reporters on issues fixed in the release are posted in the publish session, right after Publish, as part of the release run — no later job posts them | [Release Announcement skill](../../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
 | 6.4 | For a release with new features, write a blog post | Blog PR in `ChurchCRM.io` | ✋ |
 | 6.5 | A few days later, share the blog post on social media | | ✋ |
 | 6.6 | Week-long marketing push | | ✋ |
