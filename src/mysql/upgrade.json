@@ -152,7 +152,7 @@
     ],
     "dbVersion": "7.8.6"
   },
-  "current": {
+  "pre-7.8.7": {
     "versions": ["7.8.6"],
     "scripts": [
       "/mysql/upgrade/7.8.7-recurring-pledges.sql",
@@ -160,5 +160,10 @@
       "/mysql/upgrade/7.8.7-custom-tables-utf8mb4.php"
     ],
     "dbVersion": "7.8.7"
+  },
+  "current": {
+    "versions": ["7.8.7"],
+    "scripts": [],
+    "dbVersion": "7.8.8"
   }
 }
