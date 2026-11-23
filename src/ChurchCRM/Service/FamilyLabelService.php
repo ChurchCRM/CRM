@@ -13,13 +13,14 @@ class FamilyLabelService
 {
     /**
      * One label per family, in the order of the ZIP the mail is addressed to: the family's
-     * name or salutation, then its mailing address.
+     * name or salutation, then its mailing address. The individual method instead gives
+     * every living member of the family their own label with their own name.
      *
      * @param bool $newsletterOnly only the families flagged to receive the newsletter by mail
-     * @param bool $familyNames the family name rather than the salutation ("John & Mary Smith")
+     * @param string $namingMethod salutationutility, familyname, individual or formal; anything else reads as the salutation
      * @return array<int, array{text: string}>
      */
-    public static function familyCells(bool $newsletterOnly, bool $familyNames): array
+    public static function familyCells(bool $newsletterOnly, string $namingMethod = 'salutationutility'): array
     {
         $query = FamilyQuery::create()->filterByActive();
         if ($newsletterOnly) {
@@ -30,8 +31,22 @@ class FamilyLabelService
         // The SQL sort is on the primary ZIP; sortByMailingZip() re-sorts on the ZIP actually
         // printed, which only differs for families whose second address is the mailing address.
         foreach (Family::sortByMailingZip($query->orderByZip()->find()) as $family) {
-            $text = $familyNames ? (string) $family->getName() : (string) $family->getSalutation();
             $address = $family->getMailingAddressLines();
+            if ($namingMethod === 'individual') {
+                foreach ($family->getLivingPeople() as $person) {
+                    $text = $person->getFullName();
+                    if ($address !== '') {
+                        $text .= "\n" . $address;
+                    }
+                    $cells[] = ['text' => $text];
+                }
+                continue;
+            }
+            $text = match ($namingMethod) {
+                'familyname' => (string) $family->getName(),
+                'formal' => $family->getFormalName(),
+                default => (string) $family->getSalutation(),
+            };
             if ($address !== '') {
                 $text .= "\n" . $address;
             }

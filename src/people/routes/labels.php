@@ -147,7 +147,7 @@ $app->group('/labels', function (RouteCollectorProxy $group): void {
 
     $familyLabels = static fn (bool $newsletterOnly, string $baseName): callable => static function (Request $request, Response $response) use ($newsletterOnly, $baseName): Response {
         ['type' => $labelType, 'font' => $fontName, 'size' => $fontSize] = readLabelSheetOptions($request);
-        $cells = FamilyLabelService::familyCells($newsletterOnly, labelQueryText($request, 'recipientnamingmethod') === 'familyname');
+        $cells = FamilyLabelService::familyCells($newsletterOnly, labelQueryText($request, 'recipientnamingmethod'));
 
         return respondWithLabelPdf($response, (new LabelSheetService())->renderPdf($labelType, $cells, 1, 1, $fontName, $fontSize), $baseName);
     };
