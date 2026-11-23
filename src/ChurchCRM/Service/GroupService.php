@@ -329,7 +329,7 @@ class GroupService
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
-                        ) ENGINE=InnoDB;";
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
         FunctionsUtils::runQuery($sSQLp);
 
         $groupMembers = $this->getGroupMembers($groupID);

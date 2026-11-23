@@ -40,6 +40,7 @@ src/skin/external
 
 # Configuration files with passwords
 src/Include/Config.php
+src/Include/SystemID.php
 src/Include/Config.php.*.bak
 orm/propel.php
 

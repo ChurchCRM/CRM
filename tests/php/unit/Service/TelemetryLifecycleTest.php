@@ -159,14 +159,14 @@ TelemetryService::captureInstallFailure('schema_import_failed');
 TelemetryService::captureInstallFailure('SQLSTATE[42000] church data');
 Assert::same(['install_failed', 'install_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
 Assert::same(['schema_import_failed', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
-Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 Assert::same($GLOBALS['lifecyclePayloads'][0]['distinct_id'], $GLOBALS['lifecyclePayloads'][1]['distinct_id']);
 Assert::false(array_key_exists('database_error', $GLOBALS['lifecyclePayloads'][0]['properties']));
 
 $configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProfile' => $value('production')]);
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');
-Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 
 $_SERVER['HTTP_HOST'] = 'stmarys.example.org:8080';
 Assert::same(
