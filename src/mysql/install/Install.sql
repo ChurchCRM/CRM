@@ -246,7 +246,7 @@ CREATE TABLE `calendar_events` (
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `family_custom`
@@ -511,7 +511,7 @@ CREATE TABLE `person2group2role_p2g2r` (
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `person_custom`
