@@ -28266,3 +28266,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ועוד {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "מנהלי המערכת יראו אזהרה בכל עמוד עד שמסד הנתונים יועבר לגרסה נתמכת."
+
+#: 
+msgid "Database out of support"
+msgstr "מסד הנתונים אינו נתמך"
+
+#: 
+msgid "Deactivated"
+msgstr "הושבת"
+
+#: 
+msgid "How to find the log"
+msgstr "כיצד למצוא את היומן"
+
+#: 
+msgid "How to install server locales"
+msgstr "כיצד להתקין את הגדרות האזור של השרת"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "אני מבין שמסד הנתונים הזה אינו נתמך"
+
+#: 
+msgid "Last edited"
+msgstr "נערך לאחרונה"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "לא מותקן בשרת, וגם לא מותקנת הגדרת אזור חלופית באנגלית, לכן הממשק יוצג באנגלית."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "יומן ChurchCRM מתעד את הסיבה הספציפית. הסר שמות לפני השיתוף."
+
+#: 
+msgid "Verify now"
+msgstr "אמת עכשיו"
+
+#: 
+msgid "View Giving History"
+msgstr "הצג היסטוריית תרומה"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "מסד הנתונים שלך (%1$s %2$s) אינו נתמך ועלול להיות לא בטוח. ChurchCRM יעבוד, אך אנו ממליצים בחום על מארח עם MariaDB %3$s+ או MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "שרת מסד הנתונים שלך (%1$s %2$s) ישן מדי עבור ChurchCRM, שדורש MySQL %3$s או MariaDB %4$s ואילך."
+

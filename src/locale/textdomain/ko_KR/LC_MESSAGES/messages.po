@@ -28228,3 +28228,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "{{count}}개 더"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "데이터베이스가 지원되는 버전으로 이동될 때까지 관리자는 모든 페이지에서 경고를 보게 됩니다."
+
+#: 
+msgid "Database out of support"
+msgstr "데이터베이스가 지원되지 않음"
+
+#: 
+msgid "Deactivated"
+msgstr "비활성화됨"
+
+#: 
+msgid "How to find the log"
+msgstr "로그를 찾는 방법"
+
+#: 
+msgid "How to install server locales"
+msgstr "서버 로케일 설치 방법"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "이 데이터베이스가 지원되지 않음을 이해합니다"
+
+#: 
+msgid "Last edited"
+msgstr "마지막 편집"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "서버에 설치되지 않았고 영어 대체 로케일도 설치되지 않아 인터페이스가 영어로 표시됩니다."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM 로그에는 구체적인 이유가 기록됩니다. 공유하기 전에 이름을 제거하세요."
+
+#: 
+msgid "Verify now"
+msgstr "지금 확인"
+
+#: 
+msgid "View Giving History"
+msgstr "기부 내역 보기"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "사용 중인 데이터베이스(%1$s %2$s)는 지원되지 않으며 안전하지 않을 수 있습니다. ChurchCRM은 실행되지만 MariaDB %3$s+ 또는 MySQL %4$s+를 제공하는 호스트를 강력히 권장합니다."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "사용 중인 데이터베이스 서버(%1$s %2$s)는 ChurchCRM에 너무 오래되었습니다. MySQL %3$s 또는 MariaDB %4$s 이상이 필요합니다."
+

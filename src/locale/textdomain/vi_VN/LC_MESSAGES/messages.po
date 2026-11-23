@@ -28242,3 +28242,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "và thêm {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Quản trị viên sẽ thấy cảnh báo trên mọi trang cho đến khi cơ sở dữ liệu được chuyển sang phiên bản được hỗ trợ."
+
+#: 
+msgid "Database out of support"
+msgstr "Cơ sở dữ liệu không được hỗ trợ"
+
+#: 
+msgid "Deactivated"
+msgstr "Đã hủy kích hoạt"
+
+#: 
+msgid "How to find the log"
+msgstr "Cách tìm nhật ký"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cách cài đặt locale của máy chủ"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Tôi hiểu cơ sở dữ liệu này không được hỗ trợ"
+
+#: 
+msgid "Last edited"
+msgstr "Chỉnh sửa lần cuối"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Chưa được cài đặt trên máy chủ, và cũng không có locale dự phòng tiếng Anh nào được cài đặt, vì vậy giao diện sẽ hiển thị bằng tiếng Anh."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Nhật ký ChurchCRM ghi lại lý do cụ thể. Hãy xóa tên trước khi chia sẻ."
+
+#: 
+msgid "Verify now"
+msgstr "Xác minh ngay"
+
+#: 
+msgid "View Giving History"
+msgstr "Xem Lịch sử Quyên góp"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Cơ sở dữ liệu của bạn (%1$s %2$s) không được hỗ trợ và có thể không an toàn. ChurchCRM sẽ chạy, nhưng chúng tôi đặc biệt khuyên dùng máy chủ có MariaDB %3$s+ hoặc MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Máy chủ cơ sở dữ liệu của bạn (%1$s %2$s) quá cũ đối với ChurchCRM, vốn cần MySQL %3$s hoặc MariaDB %4$s trở lên."
+

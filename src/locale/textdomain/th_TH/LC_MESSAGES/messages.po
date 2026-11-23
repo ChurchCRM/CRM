@@ -28212,3 +28212,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "และอีก {{count}}"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "ผู้ดูแลระบบจะเห็นคำเตือนในทุกหน้า จนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่รองรับ"
+
+#: 
+msgid "Database out of support"
+msgstr "ฐานข้อมูลไม่รองรับ"
+
+#: 
+msgid "Deactivated"
+msgstr "ปิดใช้งานแล้ว"
+
+#: 
+msgid "How to find the log"
+msgstr "วิธีค้นหาบันทึก"
+
+#: 
+msgid "How to install server locales"
+msgstr "วิธีติดตั้งโลแคลของเซิร์ฟเวอร์"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "ฉันเข้าใจว่าฐานข้อมูลนี้ไม่รองรับ"
+
+#: 
+msgid "Last edited"
+msgstr "แก้ไขล่าสุด"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "ไม่ได้ติดตั้งบนเซิร์ฟเวอร์ และไม่ได้ติดตั้งโลแคลสำรองภาษาอังกฤษไว้ด้วย ดังนั้นอินเทอร์เฟซจะแสดงเป็นภาษาอังกฤษ"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "บันทึกของ ChurchCRM จะบันทึกเหตุผลเฉพาะไว้ โปรดลบชื่อออกก่อนแชร์"
+
+#: 
+msgid "Verify now"
+msgstr "ยืนยันตอนนี้"
+
+#: 
+msgid "View Giving History"
+msgstr "ดูประวัติการบริจาค"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "ฐานข้อมูลของคุณ (%1$s %2$s) ไม่รองรับและอาจไม่ปลอดภัย ChurchCRM จะทำงานได้ แต่เราขอแนะนำอย่างยิ่งให้ใช้โฮสต์ที่มี MariaDB %3$s+ หรือ MySQL %4$s+"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "เซิร์ฟเวอร์ฐานข้อมูลของคุณ (%1$s %2$s) เก่าเกินไปสำหรับ ChurchCRM ซึ่งต้องการ MySQL %3$s หรือ MariaDB %4$s ขึ้นไป"
+

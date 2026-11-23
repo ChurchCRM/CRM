@@ -28268,3 +28268,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ve {{count}} tane daha"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Veritabanı desteklenen bir sürüme taşınana kadar yöneticiler her sayfada bir uyarı görecek."
+
+#: 
+msgid "Database out of support"
+msgstr "Veritabanı desteklenmiyor"
+
+#: 
+msgid "Deactivated"
+msgstr "Devre dışı bırakıldı"
+
+#: 
+msgid "How to find the log"
+msgstr "Günlük nasıl bulunur"
+
+#: 
+msgid "How to install server locales"
+msgstr "Sunucu yerel ayarları nasıl yüklenir"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Bu veritabanının desteklenmediğini anlıyorum"
+
+#: 
+msgid "Last edited"
+msgstr "Son düzenleme"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Sunucuya yüklü değil ve İngilizce yedek yerel ayarı da yüklü değil, bu yüzden arayüz İngilizce gösterilecek."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM günlüğü belirli nedeni kaydeder. Paylaşmadan önce isimleri kaldırın."
+
+#: 
+msgid "Verify now"
+msgstr "Şimdi doğrula"
+
+#: 
+msgid "View Giving History"
+msgstr "Bağış Tarihini Görüntüle"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Veritabanınız (%1$s %2$s) desteklenmiyor ve güvenli olmayabilir. ChurchCRM çalışacaktır, ancak MariaDB %3$s+ veya MySQL %4$s+ içeren bir barındırıcı şiddetle önerilir."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Veritabanı sunucunuz (%1$s %2$s) ChurchCRM için çok eski; MySQL %3$s veya MariaDB %4$s ve sonrasına ihtiyaç duyar."
+

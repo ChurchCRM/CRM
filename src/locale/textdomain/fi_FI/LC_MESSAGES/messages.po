@@ -28239,3 +28239,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ja {{count}} lisää"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Ylläpitäjät näkevät varoituksen jokaisella sivulla, kunnes tietokanta siirretään tuettuun versioon."
+
+#: 
+msgid "Database out of support"
+msgstr "Tietokanta ei ole tuettu"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivoitu"
+
+#: 
+msgid "How to find the log"
+msgstr "Miten löydät lokin"
+
+#: 
+msgid "How to install server locales"
+msgstr "Palvelimen kieliasetusten asentaminen"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ymmärrän, että tätä tietokantaa ei tueta"
+
+#: 
+msgid "Last edited"
+msgstr "Viimeksi muokattu"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Ei asennettu palvelimelle, eikä myöskään englanninkielistä varalokaalia ole asennettu, joten käyttöliittymä näytetään englanniksi."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM-loki tallentaa tarkan syyn. Poista nimet ennen jakamista."
+
+#: 
+msgid "Verify now"
+msgstr "Vahvista nyt"
+
+#: 
+msgid "View Giving History"
+msgstr "Näytä lahjoitushistoria"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Tietokantasi (%1$s %2$s) ei ole tuettu ja se voi olla vaarallinen. ChurchCRM toimii, mutta suosittelemme vahvasti isäntää, jossa on MariaDB %3$s+ tai MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Tietokantapalvelimesi (%1$s %2$s) on liian vanha ChurchCRM:lle, joka tarvitsee MySQL %3$s tai MariaDB %4$s tai uudemman."
+

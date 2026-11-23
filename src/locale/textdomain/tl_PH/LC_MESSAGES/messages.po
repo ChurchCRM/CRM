@@ -28235,3 +28235,55 @@ msgctxt "other"
 msgid "and {{count}} more"
 msgstr "at {{count}} pa"
 
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Makakakita ang mga administrator ng babala sa bawat pahina hanggang mailipat ang database sa isang sinusuportahang bersyon."
+
+#: 
+msgid "Database out of support"
+msgstr "Hindi na suportado ang database"
+
+#: 
+msgid "Deactivated"
+msgstr "Na-deactivate"
+
+#: 
+msgid "How to find the log"
+msgstr "Paano hanapin ang log"
+
+#: 
+msgid "How to install server locales"
+msgstr "Paano mag-install ng mga locale ng server"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Naiintindihan kong hindi suportado ang database na ito"
+
+#: 
+msgid "Last edited"
+msgstr "Huling na-edit"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Hindi naka-install sa server, at wala ring naka-install na English fallback locale, kaya ipapakita ang interface sa English."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Naitatala ng ChurchCRM log ang partikular na dahilan. Alisin ang mga pangalan bago ito ibahagi."
+
+#: 
+msgid "Verify now"
+msgstr "I-verify ngayon"
+
+#: 
+msgid "View Giving History"
+msgstr "Tingnan ang Kasaysayan ng Pagbibigay"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ang iyong database (%1$s %2$s) ay hindi suportado at maaaring hindi ligtas. Gagana ang ChurchCRM, ngunit mahigpit naming inirerekomenda ang host na may MariaDB %3$s+ o MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Ang iyong database server (%1$s %2$s) ay masyadong luma para sa ChurchCRM, na nangangailangan ng MySQL %3$s o MariaDB %4$s at mas bago."
+
