@@ -752,7 +752,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'localeSettings'     => $localeSettings,
             'localeStats'        => $localeStats,
             'systemCheckEnabled' => $systemCheckEnabled,
-            'timezones'          => timezone_identifiers_list(),
+            'messagesFallback'   => LocaleInfo::hasMessagesFallback(),
+            'timezones'         => timezone_identifiers_list(),
             'sGlobalMessage'     => $sGlobalMessage,
             'sGlobalMessageClass' => $sGlobalMessageClass,
         ];
