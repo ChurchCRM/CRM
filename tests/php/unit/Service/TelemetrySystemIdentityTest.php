@@ -55,6 +55,18 @@ unlink($directory . '/upgrade.php');
 Assert::same('existing-system-id', SystemIdentity::ensure('existing-system-id'));
 Assert::same('existing-system-id', SystemIdentity::read());
 
+// Restore: the file takes the restored database's ID; a dump without a valid ID keeps this server's.
+$usePath($directory . '/restore.php');
+SystemIdentity::ensure('new-server-id');
+SystemIdentity::adopt('restored-church-id');
+Assert::same('restored-church-id', SystemIdentity::read());
+foreach (['', "x'; phpinfo(); '"] as $invalid) {
+    SystemIdentity::adopt($invalid);
+    Assert::same('restored-church-id', SystemIdentity::read());
+}
+$usePath($directory . '/upgrade.php');
+SystemIdentity::ensure('existing-system-id');
+
 // Database down: no configuration at all, install failures still carry the file ID.
 $configs = new \ReflectionProperty(SystemConfig::class, 'configs');
 $configs->setValue(null, null);

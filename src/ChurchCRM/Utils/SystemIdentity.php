@@ -41,11 +41,24 @@ final class SystemIdentity
         // Mode 'x': when two first requests race, the one that created the file decides the identity.
         $handle = @fopen(self::path(), 'x');
         if ($handle !== false) {
-            fwrite($handle, "<?php\n\nreturn '" . ($isKnown ? $knownId : Uuid::uuid4()->toString()) . "';\n");
+            fwrite($handle, self::contents($isKnown ? $knownId : Uuid::uuid4()->toString()));
             fclose($handle);
         }
 
         return self::read() ?? ($isKnown ? $knownId : null);
+    }
+
+    /** A restored database brings back its installation, so the file takes that installation's ID. */
+    public static function adopt(string $id): void
+    {
+        if (preg_match('/^' . self::ID_PATTERN . '$/', $id) === 1 && $id !== self::read()) {
+            @file_put_contents(self::path(), self::contents($id), LOCK_EX);
+        }
+    }
+
+    private static function contents(string $id): string
+    {
+        return "<?php\n\nreturn '" . $id . "';\n";
     }
 
     /** The identity to show or hand to the browser: the file, else the database copy. */
