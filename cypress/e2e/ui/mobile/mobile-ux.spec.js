@@ -163,11 +163,11 @@ describe("Mobile UX — Authenticated Pages", () => {
             .and("have.css", "overflow-y", "visible");
     });
 
-    it("family view stacks columns on mobile", () => {
+    it("family view stacks its cards on mobile", () => {
         cy.visit("/people/family/1");
-        // Both main and sidebar columns should be visible (stacked on mobile)
-        cy.get(".col-12.col-lg-8").should("be.visible");
-        cy.get(".col-12.col-lg-4").should("be.visible");
+        cy.get("#family-profile-header").should("be.visible");
+        cy.get(".member-table").first().should("be.visible");
+        cy.get("#family-address-card").scrollIntoView().should("be.visible");
         assertNoHorizontalOverflow();
     });
 

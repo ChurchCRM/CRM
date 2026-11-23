@@ -2227,14 +2227,6 @@ msgid "Deposit Comment"
 msgstr "Komentarz do wpłaty"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Walidacja podpisu pliku definicji podpisu nie powiodła się"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Walidacja podpisu jednego lub większej liczby plików nie powiodła się"
-
-#: 
 msgid "item"
 msgstr "element"
 
@@ -4080,10 +4072,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "przypisano"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Pokaż uczniów z datami urodzin"
 
@@ -4746,10 +4734,6 @@ msgid "Estonian"
 msgstr "Estoński"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Błąd odczytu pliku podpisów"
-
-#: 
 msgid "Event not found"
 msgstr "Nie znaleziono wydarzenia."
 
@@ -5333,14 +5317,6 @@ msgstr "Wpisz poprawny URL (http/https)"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Wszystkie sygnatury plików są poprawne."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Plik sygnatur istnieje, ale brak do niego uprawnień odczytu."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Brak pliku sygnatur w %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13374,22 +13350,6 @@ msgid "Move Members to Group"
 msgstr "Przenieś członków do grupy"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Musi być poprawnym URL (http/https)"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Musi być poprawnym adresem URL"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Musi być poprawnym numerem portu"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Musi zaczynać się od / jeśli nie jest puste; bez końcowego ukośnika. Dozwolone są tylko litery, cyfry, podkreślenie, myślnik, kropka i /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Chcesz usunąć te dane później?"
 
@@ -13540,10 +13500,6 @@ msgstr "Wpisz poprawny e-mail"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Wpisz poprawny e-mail (np. nazwa@domena.pl)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Wpisz poprawną liczbę"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -17707,10 +17663,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Rejestracje z publicznego formularza rejestracyjnego oczekujące na przegląd. Wpisy bez adresu e-mail i telefonu są oznaczone — sprawdź dane kontaktowe, zanim się z nimi skontaktujesz."
 
 #: 
-msgid "Review self registrations"
-msgstr "Przejrzyj samodzielne rejestracje"
-
-#: 
 msgid "Select month"
 msgstr "Wybierz miesiąc"
 
@@ -17737,10 +17689,6 @@ msgstr "Ta osoba należy do rodziny — zatwierdź zamiast tego rodzinę"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ta osoba nie jest oczekującą samodzielną rejestracją"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Ta samodzielnie zarejestrowana rodzina oczekuje na przegląd"
 
 #: 
 msgid "Total registrations"
@@ -26285,10 +26233,6 @@ msgstr "Nieznany cel"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Poproś dostawcę hostingu o przeniesienie bazy danych na obsługiwaną wersję, a następnie spróbuj ponownie."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Poproś dostawcę hostingu o przeniesienie bazy danych na obsługiwaną wersję."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26314,10 +26258,6 @@ msgstr "Aktualizacja nie została rozpoczęta, więc nic się nie zmieniło."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Tej aktualizacji nie można uruchomić w Twojej bazie danych."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Twój serwer bazy danych (%1$s %2$s) jest starszy niż wersje obsługiwane przez ChurchCRM (MySQL %3$s lub MariaDB %4$s i nowsze)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27993,4 +27933,478 @@ msgstr "Krajem Twojego kościoła jest Kanada, więc kanadyjskie oficjalne pokwi
 #: 
 msgid "groups"
 msgstr "grupy"
+
+#: 
+msgid "14 days"
+msgstr "14 dni"
+
+#: 
+msgid "6 months"
+msgstr "6 miesięcy"
+
+#: 
+msgid "60 days"
+msgstr "60 dni"
+
+#: 
+msgid "7 days"
+msgstr "7 dni"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Zapytaj na Discordzie"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Zmień hasło od razu po zalogowaniu."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Wybierz inny sposób logowania"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM nie może połączyć się z bazą danych pod adresem localhost. Spróbuj użyć 127.0.0.1 lub zapytaj swojego dostawcę hostingu o nazwę hosta bazy danych."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM nie może połączyć się z serwerem bazy danych pod tym adresem i portem. Sprawdź nazwę hosta i port. Przy hostingu współdzielonym host często nie jest localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM nie może odczytać pliku kontroli wersji. Poproś dostawcę hostingu, aby udostępnił folder ChurchCRM do odczytu, lub kontynuuj."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM nie mógł sprawdzić uprawnień do folderów"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM nie mógł sprawdzić swoich plików. Poproś dostawcę hostingu o sprawdzenie dziennika błędów serwera."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM nie mógł sprawdzić oprogramowania serwera"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM nie mógł połączyć się z bazą danych przy tych ustawieniach."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM nie mógł dokończyć instalacji. Spróbuj ponownie lub poproś dostawcę hostingu o sprawdzenie dziennika błędów serwera."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM nie mógł zapisać pliku Include/Config.php. Poproś dostawcę hostingu, aby folder Include był zapisywalny."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Pliki ChurchCRM są zgodne z wydaniem"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Zwiń pasek boczny do ikon"
+
+#: 
+msgid "Congregation login"
+msgstr "Logowanie zgromadzenia"
+
+#: 
+msgid "Connect your database"
+msgstr "Połącz swoją bazę danych"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Łączenie z bazą danych…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Nie udało się zapisać głównego pulpitu."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Najpierw utwórz bazę danych MySQL lub MariaDB w panelu sterowania hostingu (w cPanel: %s), a potem wpisz tutaj jej dane. ChurchCRM obsługuje MySQL 8.4+ i MariaDB 10.11+ (wydania LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Host bazy danych"
+
+#: 
+msgid "Database name"
+msgstr "Nazwa bazy danych"
+
+#: 
+msgid "Database password"
+msgstr "Hasło bazy danych"
+
+#: 
+msgid "Database user"
+msgstr "Użytkownik bazy danych"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Puste, gdy ChurchCRM znajduje się na najwyższym poziomie witryny. W przeciwnym razie folder, na przykład %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Wpisz tutaj treść notatki..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Wpisz hosta bazy danych, na przykład localhost lub mysql.example.com. Używaj tylko liter, cyfr, kropek i myślników."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Wpisz nazwę bazy danych. Używaj tylko liter, cyfr, podkreśleń, myślników i kropek."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Wpisz port bazy danych jako liczbę. Zwykle jest to 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Wpisz użytkownika bazy danych. Używaj tylko liter, cyfr, podkreśleń, myślników, kropek i znaku @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Wpisz folder zaczynający się od /, na przykład /churchcrm, lub zostaw puste."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Wpisz hasło użytkownika bazy danych."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Wpisz adres internetowy, zaczynający się od http:// lub https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Każda aktywna rodzina członków dokonała płatności między %s a %s."
+
+#: 
+msgid "Exclude"
+msgstr "Wyklucz"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Pliki pozostałe po starszej wersji"
+
+#: 
+msgid "Files to review"
+msgstr "Pliki do sprawdzenia"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Przygotuj dane bazy danych od dostawcy hostingu. Zajmie to około dwóch minut."
+
+#: 
+msgid "Hide"
+msgstr "Ukryj"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Skład zgromadzenia"
+
+#: 
+msgid "Insights"
+msgstr "Statystyki"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Zainstaluj ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalacja zakończona!"
+
+#: 
+msgid "Installation guide"
+msgstr "Przewodnik instalacji"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Kontrola integralności nie powiodła się"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Kontrola integralności powiodła się"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Nieprawidłowy token CSRF"
+
+#: 
+msgid "Last %d days"
+msgstr "Ostatnie %d dni"
+
+#: 
+msgid "Last 12 months"
+msgstr "Ostatnie 12 miesięcy"
+
+#: 
+msgid "Main dashboard"
+msgstr "Główny pulpit"
+
+#: 
+msgid "Navigation"
+msgstr "Nawigacja"
+
+#: 
+msgid "Need help?"
+msgstr "Potrzebujesz pomocy?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Brak notatek w tym przedziale czasu."
+
+#: 
+msgid "No notes yet."
+msgstr "Brak notatek."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Często %1$s. Niektórzy dostawcy podają adres taki jak %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Suma otwartych"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Otwiera pulpit finansowy dla tego zakresu. Wcześniejszy rok obrotowy wybierz na samym pulpicie."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Ostatnie 7 dni i następne %d dni"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Osoby bez rodziny: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Uprawnienia do zapisywania ustawień i zdjęć"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Gotowe"
+
+#: 
+msgid "Recent"
+msgstr "Ostatnie"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Zarejestruj swoją rodzinę w naszym kościele"
+
+#: 
+msgid "Release check"
+msgstr "Kontrola wydania"
+
+#: 
+msgid "Report a problem"
+msgstr "Zgłoś problem"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Liczba wierszy na stronę w każdej tabeli i karcie pulpitu. Zmiana zacznie obowiązywać po następnym wczytaniu strony."
+
+#: 
+msgid "Send Test Email"
+msgstr "Wyślij wiadomość testową"
+
+#: 
+msgid "Send a test email"
+msgstr "Wyślij testową wiadomość e-mail"
+
+#: 
+msgid "Send them the list below."
+msgstr "Wyślij im poniższą listę."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Oprogramowanie serwera wymagane przez ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Ustaw jako mój główny pulpit"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Zaloguj się kontem administratora"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Brakuje niektórych plików ChurchCRM lub zostały zmienione. Prześlij ChurchCRM ponownie, jeśli strona się nie wczytuje."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Niektóre pliki ChurchCRM nie zostały przesłane."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Niektóre pliki na serwerze nie są zgodne z wydaniem ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Logowanie personelu"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Zaczyna się od %1$s lub %2$s i kończy się na %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Pulpit, który otwiera się po zalogowaniu"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Serwer bazy danych zaakceptował logowanie, ale nie ma bazy danych o tej nazwie."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Serwer bazy danych odrzucił tę nazwę użytkownika lub hasło."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Nazwa, którą nadałeś bazie danych. Dostawcy hostingu współdzielonego często dodają z przodu nazwę Twojego konta, na przykład %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Hasło tego użytkownika bazy danych. ChurchCRM sprawdzi te dane po kliknięciu Zainstaluj."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Plik kontroli wydania na tym serwerze nie jest zgodny z ChurchCRM. Prześlij wydanie ponownie lub kontynuuj i poproś dostawcę hostingu o pomoc."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Wiadomość testowa trafia na adres e-mail kościoła, a dziennik debugowania SMTP pokazuje się tutaj."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Użytkownik, którego dodałeś do tej bazy danych. Nie jest to Twój login do hostingu."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Te pliki nie są częścią wydania ChurchCRM. Twój dostawca hostingu może je usunąć."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Te pliki nie są zgodne z wydaniem"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Te pliki nie zostały przesłane"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Ta kopia ChurchCRM nie zawiera kontroli pliku wydania. Możesz kontynuować."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Ten pulpit jest teraz Twoim głównym pulpitem."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Tutaj ludzie będą otwierać ChurchCRM. Zmień to tylko wtedy, gdy będą używać innego adresu niż ta strona."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "To jest Twoje konto kościelne. Wszystko, co możesz zrobić samodzielnie, znajduje się tutaj."
+
+#: 
+msgid "Total deposited"
+msgstr "Łącznie wpłacono"
+
+#: 
+msgid "Usually 3306."
+msgstr "Zwykle 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Zalecamy poprosić dostawcę o zmianę przed instalacją, gdy nie ma jeszcze danych do przeniesienia. MariaDB 10.11 to dobry wybór."
+
+#: 
+msgid "Web address"
+msgstr "Adres internetowy"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Możesz instalować teraz: ChurchCRM zainstaluje się i będzie działać."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Twój główny pulpit"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Twój dostawca hostingu musi coś naprawić"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "i jeszcze {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "i jeszcze {{count}}"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratorzy będą widzieć ostrzeżenie na każdej stronie, dopóki baza danych nie zostanie przeniesiona do obsługiwanej wersji."
+
+#: 
+msgid "Database out of support"
+msgstr "Baza danych nie jest obsługiwana"
+
+#: 
+msgid "Deactivated"
+msgstr "Dezaktywowano"
+
+#: 
+msgid "How to find the log"
+msgstr "Jak znaleźć dziennik"
+
+#: 
+msgid "How to install server locales"
+msgstr "Jak zainstalować ustawienia regionalne serwera"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Rozumiem, że ta baza danych nie jest obsługiwana"
+
+#: 
+msgid "Last edited"
+msgstr "Ostatnio edytowano"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nie zainstalowano na serwerze i nie zainstalowano też angielskich ustawień zapasowych, więc interfejs będzie wyświetlany po angielsku."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Dziennik ChurchCRM zapisuje konkretny powód. Usuń nazwiska przed udostępnieniem."
+
+#: 
+msgid "Verify now"
+msgstr "Zweryfikuj teraz"
+
+#: 
+msgid "View Giving History"
+msgstr "Zobacz historię darowizn"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Twoja baza danych (%1$s %2$s) nie jest obsługiwana i może być niebezpieczna. ChurchCRM będzie działać, ale zdecydowanie zalecamy hosta z MariaDB %3$s+ lub MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Twój serwer bazy danych (%1$s %2$s) jest za stary dla ChurchCRM, który wymaga MySQL %3$s lub MariaDB %4$s i nowszych."
 

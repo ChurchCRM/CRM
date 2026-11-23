@@ -2148,14 +2148,6 @@ msgid "Deposit Comment"
 msgstr "Opmerking bij de borg"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Mislukte validatie van de \"handtekening definition file\""
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Handtekeningsvalidatie van één of meer bestanden is mislukt "
-
-#: 
 msgid "item"
 msgstr "object"
 
@@ -4001,10 +3993,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "Gekoppeld"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Weergave van de leerling met de geboortedatum"
 
@@ -4664,10 +4652,6 @@ msgid "Estonian"
 msgstr "Estland"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Fout decoderen handtekening definitie bestand"
-
-#: 
 msgid "Event not found"
 msgstr "Evenement niet gevonden"
 
@@ -5248,14 +5232,6 @@ msgstr "Voer een geldige URL in die begint met http:// of https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Alle systeembestandshandtekeningen komen overeen met de verwachte waarden."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Handtekeningdefinitiebestand bestaat maar is niet leesbaar. Controleer bestandsmachtigingen."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Handtekeningdefinitiebestand ontbreekt op %s. Voer de verpakkingstaak uit of implementeer een officiële release om handtekeningen opnieuw te genereren."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13281,22 +13257,6 @@ msgid "Move Members to Group"
 msgstr "Leden naar groep verplaatsen"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Dit moet een geldige URL zijn, beginnend met http:// of https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Dit moet een geldige URL zijn, beginnend met http:// of https:// (bijv. http://localhost of https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Dit moet een geldig poortnummer zijn (bijv. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Moet beginnen met / indien niet leeg; geen afsluitende schuine streep. Alleen letters, cijfers, onderstrepingsteken, streepje, punt en / zijn toegestaan."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Moet u deze gegevens later verwijderen?"
 
@@ -13447,10 +13407,6 @@ msgstr "Vul een geldig e-mailadres in"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Vul een geldig e-mailadres in (bij naam@voorbeeld.nl)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vul een geldig nummer in"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -17609,10 +17565,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registraties van uw openbare registratieformulier die op beoordeling wachten. Inzendingen zonder e-mailadres of telefoonnummer zijn gemarkeerd; controleer de contactgegevens voordat u contact opneemt."
 
 #: 
-msgid "Review self registrations"
-msgstr "Zelfregistraties beoordelen"
-
-#: 
 msgid "Select month"
 msgstr "Selecteer maand"
 
@@ -17639,10 +17591,6 @@ msgstr "Deze persoon hoort bij een familie; keur in plaats daarvan de familie go
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Deze persoon is geen openstaande zelfregistratie"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Deze zelfgeregistreerde familie wacht op beoordeling"
 
 #: 
 msgid "Total registrations"
@@ -26174,10 +26122,6 @@ msgstr "Onbekend fonds"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Vraag uw hostingprovider de database naar een ondersteunde versie te brengen en probeer het daarna opnieuw."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Vraag uw hostingprovider de database naar een ondersteunde versie te brengen."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26203,10 +26147,6 @@ msgstr "De upgrade is niet gestart, dus er is niets gewijzigd."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Deze upgrade kan niet op uw database worden uitgevoerd."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Uw databaseserver (%1$s %2$s) is ouder dan ChurchCRM ondersteunt (MySQL %3$s of MariaDB %4$s en hoger)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27875,4 +27815,478 @@ msgstr "Het land van uw kerk is Canada, dus Canadese officiële kwitanties zijn 
 #: 
 msgid "groups"
 msgstr "groepen"
+
+#: 
+msgid "14 days"
+msgstr "14 dagen"
+
+#: 
+msgid "6 months"
+msgstr "6 maanden"
+
+#: 
+msgid "60 days"
+msgstr "60 dagen"
+
+#: 
+msgid "7 days"
+msgstr "7 dagen"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Vraag het op Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Wijzig uw wachtwoord direct nadat u zich hebt aangemeld."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Kies een andere manier om aan te melden"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM kan geen database bereiken op localhost. Probeer in plaats daarvan 127.0.0.1, of vraag uw webhost om de hostnaam van de database."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM kan de databaseserver op dat adres en die poort niet bereiken. Controleer de hostnaam en de poort. Bij gedeelde hosting is de host vaak niet localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM kan de releasecontrole niet lezen. Vraag uw webhost om de map ChurchCRM leesbaar te maken, of ga door."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM kon de maprechten niet controleren"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM kon zijn bestanden niet controleren. Vraag uw webhost om het foutenlogboek van de server te bekijken."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM kon de serversoftware niet controleren"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM kon met deze instellingen geen verbinding maken met de database."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM kon de installatie niet voltooien. Probeer het opnieuw, of vraag uw webhost om het foutenlogboek van de server te controleren."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM kon Include/Config.php niet opslaan. Vraag uw webhost om de map Include beschrijfbaar te maken."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "De ChurchCRM-bestanden komen overeen met de release"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "De zijbalk inklappen tot pictogrammen"
+
+#: 
+msgid "Congregation login"
+msgstr "Aanmelden als gemeentelid"
+
+#: 
+msgid "Connect your database"
+msgstr "Verbind uw database"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Verbinding maken met uw database…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Uw hoofdoverzicht kon niet worden opgeslagen."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Maak eerst een MySQL- of MariaDB-database aan in het configuratiescherm van uw hosting (in cPanel: %s) en kopieer daarna de gegevens hier. ChurchCRM ondersteunt MySQL 8.4+ en MariaDB 10.11+ (de LTS-releases)."
+
+#: 
+msgid "Database host"
+msgstr "Databasehost"
+
+#: 
+msgid "Database name"
+msgstr "Databasenaam"
+
+#: 
+msgid "Database password"
+msgstr "Databasewachtwoord"
+
+#: 
+msgid "Database user"
+msgstr "Databasegebruiker"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Leeg als ChurchCRM bovenaan de site staat. Anders de map, zoals %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Voer hier de notitietekst in..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Voer de databasehost in, zoals localhost of mysql.example.com. Gebruik alleen letters, cijfers, punten en streepjes."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Voer de databasenaam in. Gebruik alleen letters, cijfers, onderstrepingstekens, streepjes en punten."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Voer de databasepoort in als getal. Dit is meestal 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Voer de databasegebruiker in. Gebruik alleen letters, cijfers, onderstrepingstekens, streepjes, punten en @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Voer de map in beginnend met /, zoals /churchcrm, of laat deze leeg."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Voer het wachtwoord voor de databasegebruiker in."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Voer het webadres in, beginnend met http:// of https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Elk actief gezin van leden heeft een betaling gedaan tussen %s en %s."
+
+#: 
+msgid "Exclude"
+msgstr "Uitsluiten"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Bestanden die zijn overgebleven van een oudere versie"
+
+#: 
+msgid "Files to review"
+msgstr "Te controleren bestanden"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Houd de databasegegevens van uw webhost bij de hand. Het duurt ongeveer twee minuten."
+
+#: 
+msgid "Hide"
+msgstr "Verbergen"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Hoe de gemeente is samengesteld"
+
+#: 
+msgid "Insights"
+msgstr "Inzichten"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "ChurchCRM installeren"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Installatie voltooid!"
+
+#: 
+msgid "Installation guide"
+msgstr "Installatiehandleiding"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Integriteitscontrole mislukt"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Integriteitscontrole geslaagd"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Ongeldig CSRF-token"
+
+#: 
+msgid "Last %d days"
+msgstr "Laatste %d dagen"
+
+#: 
+msgid "Last 12 months"
+msgstr "Laatste 12 maanden"
+
+#: 
+msgid "Main dashboard"
+msgstr "Hoofdoverzicht"
+
+#: 
+msgid "Navigation"
+msgstr "Navigatie"
+
+#: 
+msgid "Need help?"
+msgstr "Hulp nodig?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Geen notities in deze periode."
+
+#: 
+msgid "No notes yet."
+msgstr "Nog geen notities."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Vaak %1$s. Sommige hosts geven een adres zoals %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Openstaand totaal"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Opent het Financiën-overzicht voor deze periode. Kies een vorig fiscaal jaar op het overzicht zelf."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Afgelopen 7 dagen en volgende %d dagen"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Personen zonder gezin: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Toestemming om instellingen en foto's op te slaan"
+
+#: 
+msgid "Port"
+msgstr "Poort"
+
+#: 
+msgid "Ready"
+msgstr "Klaar"
+
+#: 
+msgid "Recent"
+msgstr "Recent"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Registreer uw gezin bij onze kerk"
+
+#: 
+msgid "Release check"
+msgstr "Releasecontrole"
+
+#: 
+msgid "Report a problem"
+msgstr "Een probleem melden"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Rijen per pagina in elke tabel en overzichtskaart. Wordt van kracht bij de volgende keer dat de pagina wordt geladen."
+
+#: 
+msgid "Send Test Email"
+msgstr "Test-e-mail verzenden"
+
+#: 
+msgid "Send a test email"
+msgstr "Een test-e-mail verzenden"
+
+#: 
+msgid "Send them the list below."
+msgstr "Stuur hun de onderstaande lijst."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Serversoftware die ChurchCRM nodig heeft"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Instellen als mijn hoofdoverzicht"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Meld u aan met uw beheerdersaccount"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Sommige ChurchCRM-bestanden ontbreken of zijn gewijzigd. Upload ChurchCRM opnieuw als een pagina niet laadt."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Sommige ChurchCRM-bestanden zijn niet geüpload."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Sommige bestanden op de server komen niet overeen met de ChurchCRM-release."
+
+#: 
+msgid "Staff login"
+msgstr "Inloggen voor medewerkers"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Begint met %1$s of %2$s en eindigt met %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Het overzicht dat wordt geopend nadat u zich hebt aangemeld"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "De databaseserver accepteerde de aanmelding, maar er is geen database met die naam."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "De databaseserver heeft die gebruikersnaam of dat wachtwoord geweigerd."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "De naam die u aan de database hebt gegeven. Gedeelde hosts zetten vaak uw accountnaam ervoor, zoals %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Het wachtwoord voor die databasegebruiker. ChurchCRM controleert deze gegevens wanneer u op Installeren klikt."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Het releasecontrolebestand op deze server komt niet overeen met ChurchCRM. Upload de release opnieuw, of ga door en vraag uw webhost om hulp."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Het testbericht gaat naar het e-mailadres van de kerk en toont hier het SMTP-foutopsporingslogboek."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "De gebruiker die u aan die database hebt toegevoegd. Niet uw hosting-login."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Deze bestanden maken geen deel uit van de ChurchCRM-release. Uw webhost kan ze verwijderen."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Deze bestanden komen niet overeen met de release"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Deze bestanden zijn niet geüpload"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Deze kopie van ChurchCRM bevat de releasebestandscontrole niet. U kunt doorgaan."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Dit overzicht is nu uw hoofdoverzicht."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Hier openen mensen ChurchCRM. Wijzig dit alleen als zij een ander adres gebruiken dan deze pagina."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Dit is uw kerkaccount. Alles wat u voor uzelf kunt doen, vindt u hier."
+
+#: 
+msgid "Total deposited"
+msgstr "Totaal gestort"
+
+#: 
+msgid "Usually 3306."
+msgstr "Meestal 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Wij raden aan uw host te vragen over te schakelen voordat u installeert, nu er nog geen gegevens verplaatst hoeven te worden. MariaDB 10.11 is een prima keuze."
+
+#: 
+msgid "Web address"
+msgstr "Webadres"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "U kunt nu installeren: ChurchCRM wordt geïnstalleerd en werkt."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Uw hoofdoverzicht"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Uw webhost moet iets oplossen"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "en nog {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "en nog {{count}}"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Beheerders zien op elke pagina een waarschuwing totdat de database is verplaatst naar een ondersteunde versie."
+
+#: 
+msgid "Database out of support"
+msgstr "Database wordt niet ondersteund"
+
+#: 
+msgid "Deactivated"
+msgstr "Gedeactiveerd"
+
+#: 
+msgid "How to find the log"
+msgstr "Hoe u het logboek vindt"
+
+#: 
+msgid "How to install server locales"
+msgstr "Hoe u serverlocales installeert"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ik begrijp dat deze database niet wordt ondersteund"
+
+#: 
+msgid "Last edited"
+msgstr "Laatst bewerkt"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Niet geïnstalleerd op de server, en er is ook geen Engelse terugval-locale geïnstalleerd, dus de interface wordt in het Engels weergegeven."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Het ChurchCRM-logboek vermeldt de specifieke reden. Verwijder namen voordat u het deelt."
+
+#: 
+msgid "Verify now"
+msgstr "Nu verifiëren"
+
+#: 
+msgid "View Giving History"
+msgstr "Givinggeschiedenis bekijken"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Uw database (%1$s %2$s) wordt niet ondersteund en is mogelijk onveilig. ChurchCRM zal werken, maar we raden een host met MariaDB %3$s+ of MySQL %4$s+ sterk aan."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Uw databaseserver (%1$s %2$s) is te oud voor ChurchCRM, dat MySQL %3$s of MariaDB %4$s en nieuwer nodig heeft."
 

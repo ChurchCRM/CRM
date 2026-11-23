@@ -2229,14 +2229,6 @@ msgid "Deposit Comment"
 msgstr "存款注释"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "签名定义文件签字验证失败"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "一个或多个文件签名验证失败"
-
-#: 
 msgid "item"
 msgstr "项目"
 
@@ -4087,10 +4079,6 @@ msgid "Legend"
 msgstr "图例"
 
 #: 
-msgid "assigned"
-msgstr "已指派"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "展示学员生日于"
 
@@ -4758,10 +4746,6 @@ msgid "Estonian"
 msgstr "爱沙尼亚语"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "解码签名定义文件时出错"
-
-#: 
 msgid "Event not found"
 msgstr "找不到活动"
 
@@ -5340,14 +5324,6 @@ msgstr "请输入以 http:// 或 https:// 开头的有效 URL"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "所有系统文件签名均符合预期值。"
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "签名定义文件存在但不可读。检查文件权限。"
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "位于 %s 的签名定义文件丢失。请运行打包任务或部署官方版本以重新生成签名。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13365,22 +13341,6 @@ msgid "Move Members to Group"
 msgstr "移动成员到小组"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "必须是以 http:// 或 https:// 开头的有效 URL"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "必须是以 http:// 或 https:// 开头的有效 URL（例如：http://localhost 或 https://domain.com）"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "必须是有效的端口号（例如：3306）"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "如果非空则必须以/开头；末尾不能有斜杠。只允许使用字母、数字、下划线、短横线、点和/。"
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "以后需要删除这些数据吗？"
 
@@ -13531,10 +13491,6 @@ msgstr "请输入有效的电子邮件地址"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "请输入有效的电子邮件地址（例如：name@example.com）"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "请输入有效的数字"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -17688,10 +17644,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。"
 
 #: 
-msgid "Review self registrations"
-msgstr "审核自助登记"
-
-#: 
 msgid "Select month"
 msgstr "选择月份"
 
@@ -17718,10 +17670,6 @@ msgstr "此人属于某个家庭，请改为批准该家庭"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "此人不是待处理的自助登记"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "此自助登记的家庭正等待审核"
 
 #: 
 msgid "Total registrations"
@@ -26240,10 +26188,6 @@ msgstr "未知基金"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "请联系您的主机服务商将数据库迁移到受支持的版本，然后重试。"
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "请联系您的主机服务商将数据库迁移到受支持的版本。"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26269,10 +26213,6 @@ msgstr "升级未开始，因此未做任何更改。"
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "此升级无法在您的数据库上运行。"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "您的数据库服务器（%1$s %2$s）版本低于 ChurchCRM 支持的版本（MySQL %3$s 或 MariaDB %4$s 及更高版本）。"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27934,4 +27874,478 @@ msgstr "您的教会所在国家是加拿大，因此可以在奉献报表上使
 #: 
 msgid "groups"
 msgstr "组"
+
+#: 
+msgid "14 days"
+msgstr "14 天"
+
+#: 
+msgid "6 months"
+msgstr "6 个月"
+
+#: 
+msgid "60 days"
+msgstr "60 天"
+
+#: 
+msgid "7 days"
+msgstr "7 天"
+
+#: 
+msgid "Ask on Discord"
+msgstr "在 Discord 上提问"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "登录后请立即更改您的密码。"
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "选择其他登录方式"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM 无法连接到 localhost 上的数据库。请改用 127.0.0.1，或向您的网络主机商询问数据库主机名。"
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM 无法连接到该地址和端口上的数据库服务器。请检查主机名和端口。在共享主机上，主机通常不是 localhost。"
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM 无法读取其发行检查文件。请让您的网络主机商使 ChurchCRM 文件夹可读，或继续。"
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM 无法检查文件夹权限"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM 无法检查其文件。请让您的网络主机商查看服务器错误日志。"
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM 无法检查服务器软件"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM 无法使用这些设置连接到数据库。"
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM 无法完成安装。请重试，或让您的网络主机商检查服务器错误日志。"
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM 无法保存 Include/Config.php。请让您的网络主机商使 Include 文件夹可写。"
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM 文件与发行版一致"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "将侧边栏折叠为图标"
+
+#: 
+msgid "Congregation login"
+msgstr "会众登录"
+
+#: 
+msgid "Connect your database"
+msgstr "连接您的数据库"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "正在连接您的数据库…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "无法保存您的主仪表板。"
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "请先在您的主机控制面板中创建一个 MySQL 或 MariaDB 数据库（在 cPanel 中：%s），然后将详细信息复制到此处。ChurchCRM 支持 MySQL 8.4+ 和 MariaDB 10.11+（LTS 版本）。"
+
+#: 
+msgid "Database host"
+msgstr "数据库主机"
+
+#: 
+msgid "Database name"
+msgstr "数据库名称"
+
+#: 
+msgid "Database password"
+msgstr "数据库密码"
+
+#: 
+msgid "Database user"
+msgstr "数据库用户"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "当 ChurchCRM 位于网站顶部时留空。否则填写文件夹，例如 %s。"
+
+#: 
+msgid "Enter note text here..."
+msgstr "在此输入注释文本..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "输入数据库主机，例如 localhost 或 mysql.example.com。只能使用字母、数字、点和连字符。"
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "输入数据库名称。只能使用字母、数字、下划线、连字符和点。"
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "以数字形式输入数据库端口。通常是 3306。"
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "输入数据库用户。只能使用字母、数字、下划线、连字符、点和 @。"
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "输入以 / 开头的文件夹，例如 /churchcrm，或留空。"
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "输入数据库用户的密码。"
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "输入网址，以 http:// 或 https:// 开头。"
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "在 %s 至 %s 期间，每个活跃成员家庭都有付款。"
+
+#: 
+msgid "Exclude"
+msgstr "排除"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "旧版本遗留的文件"
+
+#: 
+msgid "Files to review"
+msgstr "需要检查的文件"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "请准备好网络主机商提供的数据库详细信息。大约需要两分钟。"
+
+#: 
+msgid "Hide"
+msgstr "隐藏"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "会众的构成情况"
+
+#: 
+msgid "Insights"
+msgstr "洞察"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "安装 ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "安装完成！"
+
+#: 
+msgid "Installation guide"
+msgstr "安装指南"
+
+#: 
+msgid "Integrity check failed"
+msgstr "完整性检查失败"
+
+#: 
+msgid "Integrity check passed"
+msgstr "完整性检查通过"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "CSRF 令牌无效"
+
+#: 
+msgid "Last %d days"
+msgstr "最近 %d 天"
+
+#: 
+msgid "Last 12 months"
+msgstr "最近 12 个月"
+
+#: 
+msgid "Main dashboard"
+msgstr "主仪表板"
+
+#: 
+msgid "Navigation"
+msgstr "导航"
+
+#: 
+msgid "Need help?"
+msgstr "需要帮助？"
+
+#: 
+msgid "No notes in this time range."
+msgstr "此时间范围内没有注释。"
+
+#: 
+msgid "No notes yet."
+msgstr "尚无注释。"
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "通常是 %1$s。某些主机商会提供类似 %2$s 的地址。"
+
+#: 
+msgid "Open total"
+msgstr "未结清总额"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "在此范围内打开财务仪表板。在仪表板本身上选择过去的财政年度。"
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "过去 7 天和未来 %d 天"
+
+#: 
+msgid "People without a family: %d"
+msgstr "没有家庭的人数：%d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "保存设置和照片的权限"
+
+#: 
+msgid "Port"
+msgstr "端口"
+
+#: 
+msgid "Ready"
+msgstr "就绪"
+
+#: 
+msgid "Recent"
+msgstr "最近"
+
+#: 
+msgid "Register your family to our church"
+msgstr "将您的家庭登记到我们的教会"
+
+#: 
+msgid "Release check"
+msgstr "发行检查"
+
+#: 
+msgid "Report a problem"
+msgstr "报告问题"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "每个表格和仪表板卡片每页显示的行数。在下次页面加载时生效。"
+
+#: 
+msgid "Send Test Email"
+msgstr "发送测试电子邮件"
+
+#: 
+msgid "Send a test email"
+msgstr "发送一封测试电子邮件"
+
+#: 
+msgid "Send them the list below."
+msgstr "将下面的列表发送给他们。"
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "ChurchCRM 需要的服务器软件"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "设为我的主仪表板"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "使用您的管理员账户登录"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "某些 ChurchCRM 文件缺失或已被更改。如果页面无法加载，请重新上传 ChurchCRM。"
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "某些 ChurchCRM 文件尚未上传。"
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "服务器上的某些文件与 ChurchCRM 发行版不一致。"
+
+#: 
+msgid "Staff login"
+msgstr "员工登录"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "以 %1$s 或 %2$s 开头，以 %3$s 结尾。"
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "您登录后打开的仪表板"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "数据库服务器接受了登录，但没有使用该名称的数据库。"
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "数据库服务器拒绝了该用户名或密码。"
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "您为数据库指定的名称。共享主机通常会在前面加上您的账户名，例如 %s。"
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "该数据库用户的密码。当您点击“安装”时，ChurchCRM 会检查这些详细信息。"
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "此服务器上的发行检查文件与 ChurchCRM 不匹配。请重新上传发行版，或继续并向您的网络主机商寻求帮助。"
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "测试邮件将发送到教会电子邮件地址，并在此处显示 SMTP 调试日志。"
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "您添加到该数据库的用户。不是您的主机登录账户。"
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "这些文件不属于 ChurchCRM 发行版。您的网络主机商可以删除它们。"
+
+#: 
+msgid "These files do not match the release"
+msgstr "这些文件与发行版不一致"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "这些文件尚未上传"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "此 ChurchCRM 副本不包含发行文件检查。您可以继续。"
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "此仪表板现在是您的主仪表板。"
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "人们将在此处打开 ChurchCRM。仅当他们将使用与此页面不同的地址时才更改它。"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "这是您的教会账户。您可以为自己做的一切都在这里。"
+
+#: 
+msgid "Total deposited"
+msgstr "存款总额"
+
+#: 
+msgid "Usually 3306."
+msgstr "通常是 3306。"
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "我们建议您在安装前请主机商切换，此时还没有数据需要迁移。MariaDB 10.11 是一个很好的目标。"
+
+#: 
+msgid "Web address"
+msgstr "网址"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "您现在可以安装：ChurchCRM 将会安装并运行。"
+
+#: 
+msgid "Your main dashboard"
+msgstr "您的主仪表板"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "您的网络主机商需要修复某些问题"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "还有 {{count}} 个"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "还有 {{count}} 个"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "在数据库迁移到受支持的版本之前，管理员将在每个页面上看到警告。"
+
+#: 
+msgid "Database out of support"
+msgstr "数据库不受支持"
+
+#: 
+msgid "Deactivated"
+msgstr "已停用"
+
+#: 
+msgid "How to find the log"
+msgstr "如何查找日志"
+
+#: 
+msgid "How to install server locales"
+msgstr "如何安装服务器区域设置"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "我了解此数据库不受支持"
+
+#: 
+msgid "Last edited"
+msgstr "最后编辑"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "未安装在服务器上，并且也没有安装英语后备区域设置，因此界面将以英文显示。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM 日志会记录具体原因。分享前请删除姓名。"
+
+#: 
+msgid "Verify now"
+msgstr "立即验证"
+
+#: 
+msgid "View Giving History"
+msgstr "查看捐献历史"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "您的数据库（%1$s %2$s）不受支持，可能不安全。ChurchCRM 仍可运行，但我们强烈推荐使用带有 MariaDB %3$s+ 或 MySQL %4$s+ 的主机。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "您的数据库服务器（%1$s %2$s）对 ChurchCRM 来说太旧了，需要 MySQL %3$s 或 MariaDB %4$s 及更高版本。"
 

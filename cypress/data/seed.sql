@@ -35,7 +35,7 @@ CREATE TABLE `groupprop_2` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_23` (
@@ -43,7 +43,7 @@ CREATE TABLE `groupprop_23` (
   `c1` year(4) DEFAULT NULL,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_17` (
@@ -55,7 +55,7 @@ CREATE TABLE `groupprop_17` (
   `c6` date DEFAULT NULL,
   `c7` varchar(100) DEFAULT NULL,
   `c8` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_25` (
@@ -65,68 +65,68 @@ CREATE TABLE `groupprop_25` (
   `c3` date DEFAULT NULL,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_20` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_11` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_7` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_13` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_1` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_45` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_47` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_6` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_9` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` tinyint(4) DEFAULT NULL,
   `c2` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_49` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 INSERT INTO `calendar_events` (`calendar_id`, `event_id`) VALUES (2,1),
@@ -142,6 +142,7 @@ INSERT INTO `calendars` (`calendar_id`, `name`, `accesstoken`, `foregroundColor`
 
 INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgrade',''),
 ('sInstallDataProfile','test'),
+('sSystemID','dev-churchcrm-testing'),
 ('bEnableExternalCalendarAPI',''),
 ('bEnableNonDeductible',''),
 ('bEnableSelfRegistration','1'),
@@ -1949,7 +1950,7 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 (91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),
 (92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44'),
 (93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31'),
-(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03'),(97,'7.8.5','2026-11-12 20:16:14','2026-11-12 20:16:14'),(98,'7.8.6','2026-11-17 02:16:50','2026-11-17 02:16:50');
+(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03'),(97,'7.8.5','2026-11-12 20:16:14','2026-11-12 20:16:14'),(98,'7.8.6','2026-11-17 02:16:50','2026-11-17 02:16:50'),(99,'7.8.7','2026-11-22 07:29:19','2026-11-22 07:29:19');
 
 -- Keep bulk geocoding fast. All ordinary seed addresses have coordinates so the
 -- dedicated Main Street family below is the only address the batch geocodes.
@@ -2000,7 +2001,7 @@ ALTER TABLE `eventcountnames_evctnm` AUTO_INCREMENT = 8;
 ALTER TABLE `events_event` AUTO_INCREMENT = 5;
 ALTER TABLE `event_attend` AUTO_INCREMENT = 3;
 ALTER TABLE `family_fam` AUTO_INCREMENT = 46;
-ALTER TABLE `group_grp` AUTO_INCREMENT = 25;
+ALTER TABLE `group_grp` AUTO_INCREMENT = 50;
 ALTER TABLE `menu_links` AUTO_INCREMENT = 4;
 ALTER TABLE `pledge_plg` AUTO_INCREMENT = 36;
 ALTER TABLE `propertytype_prt` AUTO_INCREMENT = 5;

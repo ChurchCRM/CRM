@@ -157,7 +157,7 @@ function ensurePropTableAndRow(int $iGroupID, int $iPersonID, $logger): void
             per_ID mediumint(8) unsigned NOT NULL default "0",
             PRIMARY KEY (per_ID),
             UNIQUE KEY per_ID (per_ID)
-        ) ENGINE=InnoDB';
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
         $r = FunctionsUtils::runQuery($createSQL, false);
         if (!$r) {
             $logger->error('Failed to create group properties table', ['group_id' => $iGroupID]);

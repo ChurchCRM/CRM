@@ -24,8 +24,6 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $dashboardService = new DashboardService();
-    $familyCount      = $dashboardService->getFamilyCount();
-    $groupStats       = $dashboardService->getGroupStats();
     $dashboardStats   = $dashboardService->getDashboardStats();
 
     $personCount         = $dashboardStats['personCount'];
@@ -72,8 +70,6 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'notesEnabled'       => $currentUser->canReadNotes(),
         'peopleDays'         => $peopleDays,
         'latestNotes'        => (new NoteService())->latestNotesFor($currentUser, 200, $peopleDays),
-        'familyCount'        => $familyCount,
-        'groupStats'         => $groupStats,
         'personCount'        => $personCount,
         'classificationStats' => $classificationStats,
         'simpleGenderStats'  => $simpleGenderStats,

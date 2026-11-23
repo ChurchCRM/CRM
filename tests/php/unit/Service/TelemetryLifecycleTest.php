@@ -87,7 +87,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
             Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
-            $keys = ['crm_version', 'install_profile', 'church_country', 'database_engine', 'database_version'];
+            $keys = ['crm_version', 'install_profile', 'church_country', 'php_version', 'database_engine', 'database_version'];
             if ($payload['event'] !== 'install_observed') {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
@@ -109,6 +109,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             Assert::same($payload['event'] === 'upgrade_failed' ? VersionUtils::getInstalledVersion() : '7.8.4', $properties['crm_version']);
             Assert::same('mariadb', $properties['database_engine']);
             Assert::same('10.11', $properties['database_version']);
+            Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $properties['php_version']);
         }
 
         $GLOBALS['lifecyclePayloads'] = [];
@@ -159,14 +160,37 @@ TelemetryService::captureInstallFailure('schema_import_failed');
 TelemetryService::captureInstallFailure('SQLSTATE[42000] church data');
 Assert::same(['install_failed', 'install_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
 Assert::same(['schema_import_failed', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
-Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 Assert::same($GLOBALS['lifecyclePayloads'][0]['distinct_id'], $GLOBALS['lifecyclePayloads'][1]['distinct_id']);
 Assert::false(array_key_exists('database_error', $GLOBALS['lifecyclePayloads'][0]['properties']));
 
 $configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProfile' => $value('production')]);
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');
-Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+
+// With the fake connection live, base properties carry its database identity.
+// baseProperties() reads sLanguage, so give it a complete config map first.
+$configs->setValue(null, [
+    'sTelemetryLevel' => $value('install'),
+    'sInstallDataProfile' => $value('production'),
+    'sSystemID' => $value('church-guid'),
+    'sTelemetryLifecycleVersion' => $value('7.8.2'),
+    'sChurchCountry' => $value('US'),
+    'sLanguage' => $value('en_US'),
+]);
+$baseProperties = new \ReflectionMethod(TelemetryService::class, 'baseProperties');
+$base = $baseProperties->invoke(null);
+Assert::same('mariadb', $base['database_engine']);
+Assert::same('10.11', $base['database_version']);
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $base['php_version']);
+
+// A caller-supplied server version wins over the connection's own version.
+$GLOBALS['lifecyclePayloads'] = [];
+TelemetryService::captureInstallFailure('other', '8.4.5-private-host');
+Assert::same('mysql', $GLOBALS['lifecyclePayloads'][0]['properties']['database_engine']);
+Assert::same('8.4', $GLOBALS['lifecyclePayloads'][0]['properties']['database_version']);
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $GLOBALS['lifecyclePayloads'][0]['properties']['php_version']);
 
 $_SERVER['HTTP_HOST'] = 'stmarys.example.org:8080';
 Assert::same(

@@ -6,6 +6,7 @@ use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
 use Propel\Runtime\Propel;
@@ -92,7 +93,7 @@ class TelemetryService
             return;
         }
 
-        $systemId = SystemConfig::getValue('sSystemID');
+        $systemId = self::installId() ?? '';
         if ($systemId === '') {
             return;
         }
@@ -228,20 +229,38 @@ class TelemetryService
         ]));
     }
 
+    /** Fixed codes only: a free-text reason could carry details of a church's installation. */
+    private const INSTALL_FAILURE_REASONS = [
+        'schema_import_failed',
+        'database_unreachable',
+        'database_host_unreachable',
+        'database_login_rejected',
+        'database_not_found',
+        'database_too_old',
+        'config_not_writable',
+        'config_invalid',
+    ];
+
     /**
-     * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
-     * document root's device and inode, which hold no server name or path, so repeated attempts on one
-     * server count as one installation. Sent at every level.
+     * A failed first install has no configuration yet, but it has the system ID file, so its attempts and the
+     * install that finally succeeds share one ID. Sent at every level.
      */
-    public static function captureInstallFailure(string $reason): void
+    public static function captureInstallFailure(string $reason, ?string $serverVersion = null): void
     {
-        $installId = self::unconfiguredInstallId();
+        $installId = self::installId();
         if ($installId === null) {
             return;
         }
-        self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
-            'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
-        ]), $installId);
+        $properties = array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'failure_reason' => in_array($reason, self::INSTALL_FAILURE_REASONS, true) ? $reason : 'other',
+        ]);
+        if ($serverVersion !== null && $serverVersion !== '') {
+            // The caller may know the attempted server version even when no
+            // connection is available here (e.g. the setup wizard's own probe
+            // succeeded before a later step failed).
+            $properties = array_merge($properties, self::databaseProperties($serverVersion));
+        }
+        self::capture('install_failed', $properties, $installId);
     }
 
     /**
@@ -253,15 +272,83 @@ class TelemetryService
      */
     public static function captureRequirementsFailure(array $failedRequirements): void
     {
-        $installId = self::unconfiguredInstallId();
+        $installId = self::installId();
         sort($failedRequirements);
         if ($installId === null || !self::firstLogToday('requirements|' . implode('|', $failedRequirements))) {
             return;
         }
         self::capture('requirements_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
-            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'failed_requirements' => $failedRequirements,
         ]), $installId);
+    }
+
+    /**
+     * What an install is missing: release files that were not uploaded, files that do not match the
+     * release, and named checks (PHP extensions, writable folders, locale). Sent at every level, once
+     * per distinct list per UTC day. Paths stay repo-relative. No hashes and no install path.
+     *
+     * @param string[] $missingFiles
+     * @param string[] $changedFiles
+     * @param string[] $unmetChecks
+     */
+    public static function captureInstallGaps(array $missingFiles, array $changedFiles, array $unmetChecks): void
+    {
+        $missingFiles = self::relativeReportPaths($missingFiles);
+        $changedFiles = self::relativeReportPaths($changedFiles);
+        $unmetChecks = array_values(array_unique(array_filter(array_map(
+            static fn ($name): string => is_string($name) ? mb_substr(trim($name), 0, 80) : '',
+            $unmetChecks
+        ))));
+        sort($missingFiles);
+        sort($changedFiles);
+        sort($unmetChecks);
+        if ($missingFiles === [] && $changedFiles === [] && $unmetChecks === []) {
+            return;
+        }
+        $installId = '';
+        try {
+            // Once installed, these are diagnostics, not a failed install: the admin's telemetry level applies.
+            if (SystemConfig::isInitialized()) {
+                if (self::getLevel() === self::LEVEL_NONE) {
+                    return;
+                }
+                $installId = (string) SystemConfig::getValue('sSystemID');
+            }
+        } catch (\Throwable) {
+            $installId = '';
+        }
+        if ($installId === '') {
+            $installId = self::unconfiguredInstallId() ?? '';
+        }
+        $key = 'install_gaps|' . implode('|', $missingFiles) . '|' . implode('|', $changedFiles) . '|' . implode('|', $unmetChecks);
+        if ($installId === '' || !self::firstLogToday($key)) {
+            return;
+        }
+        self::capture('install_gaps', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'missing_files' => $missingFiles,
+            'changed_files' => $changedFiles,
+            'unmet_checks' => $unmetChecks,
+        ]), $installId);
+    }
+
+    /** @param string[] $paths
+     *  @return string[]
+     */
+    private static function relativeReportPaths(array $paths): array
+    {
+        $safe = [];
+        foreach ($paths as $path) {
+            if (!is_string($path)) {
+                continue;
+            }
+            $path = str_replace('\\', '/', trim($path));
+            if ($path === '' || str_contains($path, '..') || str_starts_with($path, '/') || strlen($path) > 180) {
+                continue;
+            }
+            $safe[] = $path;
+        }
+
+        return array_values(array_unique($safe));
     }
 
     /** Fixed states for version_mismatch: the failed upgrade page and the database-newer-than-software page. */
@@ -277,23 +364,47 @@ class TelemetryService
             || !self::firstLogToday('version_mismatch|' . $state . '|' . $dbVersion)) {
             return;
         }
-        $systemId = SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        $installId = self::installId();
+        if ($installId === null) {
+            return;
+        }
         self::capture('version_mismatch', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'db_version' => $dbVersion,
             'mismatch_state' => $state,
-        ]), $systemId !== '' ? $systemId : self::unconfiguredInstallId());
+        ]), $installId);
+    }
+
+    /** The system ID file, written from sSystemID when lost; the document root hash only when the file cannot be kept. */
+    private static function installId(): ?string
+    {
+        if (self::installProfile() === 'test') {
+            return null;
+        }
+        try {
+            $storedId = SystemConfig::isInitialized() ? (string) SystemConfig::getValue('sSystemID') : '';
+        } catch (\Throwable) {
+            $storedId = '';
+        }
+
+        return SystemIdentity::ensure($storedId) ?? self::unconfiguredInstallId();
     }
 
     /**
-     * An installation ID for events sent before configuration exists: hashed from the document root's device
-     * and inode, which hold no server name or path, so repeated attempts on one server count as one installation.
+     * Hashed from the document root's device and inode, which hold no server name or path, so repeated
+     * attempts on a server that cannot write the system ID file still count as one installation.
      */
     private static function unconfiguredInstallId(): ?string
     {
         if (self::installProfile() === 'test') {
             return null;
         }
-        $stat = @stat((string) SystemURLs::getDocumentRoot());
+        // Setup runs before SystemURLs::init. The fallback is the src directory, which is the
+        // document root Bootstrapper records, so a wizard failure and a later boot failure share an id.
+        $root = SystemURLs::getDocumentRoot();
+        if (!is_string($root) || $root === '') {
+            $root = dirname(__DIR__, 2);
+        }
+        $stat = @stat($root);
 
         return $stat === false ? null : 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
     }
@@ -459,6 +570,7 @@ class TelemetryService
             'crm_version' => $version,
             'install_profile' => self::installProfile(),
             'church_country' => self::churchCountry(),
+            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
         ];
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
@@ -500,6 +612,14 @@ class TelemetryService
             $properties['church_country'] = $churchCountry;
         }
 
+        try {
+            $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
+            $properties += self::databaseProperties($serverVersion);
+        } catch (\Throwable) {
+            // Database properties are best-effort: an event must still send
+            // when no connection is available (e.g. an early-boot log error).
+        }
+
         return $properties;
     }
 
@@ -535,7 +655,7 @@ class TelemetryService
             return true;
         }
 
-        $distinctId ??= SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        $distinctId ??= self::installId() ?? '';
         if ($distinctId === '') {
             return false;
         }

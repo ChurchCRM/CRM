@@ -9,8 +9,11 @@ use ChurchCRM\data\States;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
@@ -714,17 +717,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 }
 
-//Get Classifications for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-$rsClassifications = RunQuery($sSQL);
-
-//Get Families for the drop-down
-$sSQL = 'SELECT * FROM family_fam ORDER BY fam_Name';
-$rsFamilies = RunQuery($sSQL);
-
-//Get Family Roles for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-$rsFamilyRoles = RunQuery($sSQL);
+$classifications = Classification::getAll();
+$families = FamilyQuery::create()->orderByName()->find();
+$familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
 $sCountry = Countries::toISO($sCountry);
 
@@ -951,14 +946,13 @@ require_once __DIR__ . '/Include/Header.php';
                         <option value="0" selected><?= gettext('Unassigned') ?></option>
                         <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                         <option value="" disabled>-----------------------</option>
-                        <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
-                            extract($aRow);
-                            $fam_ID = (int)$fam_ID;
+                        <?php foreach ($families as $familyOption) {
+                            $fam_ID = $familyOption->getId();
                             echo '<option value="' . $fam_ID . '"';
                             if ($iFamily === $fam_ID || $queryParamFamilyId === $fam_ID) {
                                 echo ' selected';
                             }
-                            echo '>' . InputUtils::escapeHTML($fam_Name) . '&nbsp;' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
+                            echo '>' . InputUtils::escapeHTML($familyOption->getName()) . '&nbsp;' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($familyOption->getAddress1(), $familyOption->getCity(), $familyOption->getState()));
                         } ?>
                     </select>
                 </div>
@@ -967,13 +961,12 @@ require_once __DIR__ . '/Include/Header.php';
                     <select name="FamilyRole" id="FamilyRole" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
                         <option value="" disabled>-----------------------</option>
-                        <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                            extract($aRow);
-                            echo '<option value="' . $lst_OptionID . '"';
-                            if ($iFamilyRole == $lst_OptionID) {
+                        <?php foreach ($familyRoles as $role) {
+                            echo '<option value="' . $role->getOptionId() . '"';
+                            if ((int) $iFamilyRole === $role->getOptionId()) {
                                 echo ' selected';
                             }
-                            echo '>' . $lst_OptionName . '&nbsp;';
+                            echo '>' . InputUtils::escapeHTML($role->getOptionName()) . '&nbsp;';
                         } ?>
                     </select>
                 </div>
@@ -1300,13 +1293,12 @@ require_once __DIR__ . '/Include/Header.php';
                     <select id="Classification" name="Classification" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
                         <option value="" disabled>-----------------------</option>
-                        <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                            extract($aRow);
-                            echo '<option value="' . $lst_OptionID . '"';
-                            if ($iClassification == $lst_OptionID) {
+                        <?php foreach ($classifications as $classification) {
+                            echo '<option value="' . $classification->getOptionId() . '"';
+                            if ((int) $iClassification === $classification->getOptionId()) {
                                 echo ' selected';
                             }
-                            echo '>' . $lst_OptionName . '&nbsp;';
+                            echo '>' . InputUtils::escapeHTML($classification->getOptionName()) . '&nbsp;';
                         }
                         ?>
                     </select>

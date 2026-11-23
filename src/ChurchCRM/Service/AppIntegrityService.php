@@ -82,17 +82,21 @@ class AppIntegrityService
         $logger = LoggerUtils::getAppLogger();
         $documentRoot = AppIntegrityService::resolveDocumentRoot();
         $signatureFile = $documentRoot . '/admin/data/signatures.json';
-        $signatureFailures = [];
+        $missingFiles = [];
+        $changedFiles = [];
         if (is_file($signatureFile)) {
             if (!is_readable($signatureFile)) {
                 $logger->warning("Signature definition file is not readable: {signatureFile}", [
                     'signatureFile' => $signatureFile,
                 ]);
+                TelemetryService::captureInstallGaps([], [], ['signature_unreadable']);
 
                 return [
                     'status'  => 'failure',
-                    'message' => gettext('Signature definition file exists but is not readable. Check file permissions.'),
+                    'message' => gettext('ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue.'),
                     'files'   => [],
+                    'missingFiles' => [],
+                    'changedFiles' => [],
                 ];
             }
 
@@ -110,9 +114,14 @@ class AppIntegrityService
                     'exception' => $e,
                 ]);
 
+                TelemetryService::captureInstallGaps([], [], ['signature_invalid']);
+
                 return [
                     'status'  => 'failure',
-                    'message' => gettext('Error decoding signature definition file'),
+                    'message' => gettext('The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help.'),
+                    'files'   => [],
+                    'missingFiles' => [],
+                    'changedFiles' => [],
                 ];
             }
             if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
@@ -126,21 +135,25 @@ class AppIntegrityService
                                 'expectedHash' => $file->sha1,
                                 'actualHash' => $actualHash,
                             ]);
-                                $signatureFailures[] = (string) $file->filename;
+                            $changedFiles[] = (string) $file->filename;
                         }
                     } else {
                         $logger->warning("File Missing: {filename}", [
                             'filename' => $file->filename,
                         ]);
-                            $signatureFailures[] = (string) $file->filename;
+                        $missingFiles[] = (string) $file->filename;
                     }
                 }
             } else {
                 $logger->warning('Signature definition file signature failed validation');
+                TelemetryService::captureInstallGaps([], [], ['signature_invalid']);
 
                 return [
                     'status'  => 'failure',
-                    'message' => gettext('Signature definition file signature failed validation'),
+                    'message' => gettext('The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help.'),
+                    'files'   => [],
+                    'missingFiles' => [],
+                    'changedFiles' => [],
                 ];
             }
         } else {
@@ -150,19 +163,24 @@ class AppIntegrityService
 
             return [
                 'status'  => 'failure',
-                'message' => sprintf(
-                    gettext('Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures.'),
-                    $signatureFile
-                ),
+                'message' => gettext('This copy of ChurchCRM does not include the release file check. You can continue.'),
                 'files'   => [],
+                'missingFiles' => [],
+                'changedFiles' => [],
             ];
         }
 
-        if (count($signatureFailures) > 0) {
+        if ($missingFiles !== [] || $changedFiles !== []) {
+            TelemetryService::captureInstallGaps($missingFiles, $changedFiles, []);
+
             return [
                 'status'  => 'failure',
-                'message' => gettext('One or more files failed signature validation'),
-                'files'   => $signatureFailures,
+                'message' => $missingFiles !== []
+                    ? gettext('Some ChurchCRM files were not uploaded.')
+                    : gettext('Some files on the server do not match the ChurchCRM release.'),
+                'files'   => array_merge($missingFiles, $changedFiles),
+                'missingFiles' => $missingFiles,
+                'changedFiles' => $changedFiles,
             ];
         }
 
@@ -170,6 +188,8 @@ class AppIntegrityService
             'status'  => 'success',
             'message' => gettext('All system file signatures match the expected values.'),
             'files'   => [],
+            'missingFiles' => [],
+            'changedFiles' => [],
         ];
     }
 
@@ -258,10 +278,25 @@ class AppIntegrityService
             AppIntegrityService::getFilesystemPrerequisites()
         );
 
-        return array_filter(
+        $unmet = array_filter(
             $allPrerequisites,
             fn (Prerequisite $prereq): bool => !$prereq->isPrerequisiteMet()
         );
+        self::reportUnmet($unmet);
+
+        return $unmet;
+    }
+
+    /** @param Prerequisite[] $prerequisites */
+    public static function reportUnmet(array $prerequisites): void
+    {
+        $names = [];
+        foreach ($prerequisites as $prereq) {
+            if (!$prereq->isPrerequisiteMet()) {
+                $names[] = $prereq->getName();
+            }
+        }
+        TelemetryService::captureInstallGaps([], [], $names);
     }
 
     public static function arePrerequisitesMet(): bool
@@ -492,6 +527,7 @@ class AppIntegrityService
             '/^\.gitignore$/',
             '/^composer\.lock$/',
             '/^Include\/Config\.php$/',
+            '/^Include\/SystemID\.php$/',
             '/^propel\/propel\.php$/',
             '/^integrityCheck\.json$/',
             '/^Images\/Person\/thumbnails\//',

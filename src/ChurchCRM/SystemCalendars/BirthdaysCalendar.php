@@ -46,6 +46,10 @@ class BirthdaysCalendar implements SystemCalendar
             ->filterByBirthDay(0, Criteria::GREATER_THAN)
             ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->filterByLiving()
+            ->filterByActive()
+            ->useFamilyQuery(null, Criteria::LEFT_JOIN)
+                ->filterByActive()
+            ->endUse()
             ->find();
 
         return $this->peopleCollectionToEvents($people, $start, $end);
@@ -58,6 +62,10 @@ class BirthdaysCalendar implements SystemCalendar
             ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->filterById($Id)
             ->filterByLiving()
+            ->filterByActive()
+            ->useFamilyQuery(null, Criteria::LEFT_JOIN)
+                ->filterByActive()
+            ->endUse()
             ->find();
 
         return $this->peopleCollectionToEvents($people);

@@ -1,7 +1,9 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\LocaleService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Utils\URLValidator;
 use ChurchCRM\Slim\SlimUtils;
@@ -39,18 +41,23 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
+        AppIntegrityService::reportUnmet($required);
 
         return SlimUtils::renderJSON($response, $required);
     });
 
     $group->get('SystemFilesystemCheck', function (Request $request, Response $response, array $args): Response {
         $filesystem = AppIntegrityService::getFilesystemPrerequisites();
+        AppIntegrityService::reportUnmet($filesystem);
 
         return SlimUtils::renderJSON($response, $filesystem);
     });
 
     $group->get('SystemLocaleCheck', function (Request $request, Response $response, array $args): Response {
         $localeInfo = LocaleService::getLocaleSetupInfo();
+        if (empty($localeInfo['systemLocaleDetected'])) {
+            TelemetryService::captureInstallGaps([], [], ['Server locale']);
+        }
 
         return SlimUtils::renderJSON($response, $localeInfo);
     });
@@ -65,45 +72,27 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         $setupData = $request->getParsedBody();
 
-        // Validate each field and collect errors
+        // One plain sentence per field the installer has to fix.
+        $checks = [
+            'DB_SERVER_NAME' => [fn ($v): bool => (bool) is_valid_hostname($v), gettext('Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes.')],
+            'DB_SERVER_PORT' => [fn ($v): bool => (bool) is_valid_port($v), gettext('Enter the database port as a number. It is usually 3306.')],
+            'DB_NAME'        => [fn ($v): bool => (bool) is_valid_db_name($v), gettext('Enter the database name. Use only letters, numbers, underscores, dashes and dots.')],
+            'DB_USER'        => [fn ($v): bool => (bool) is_valid_db_user($v), gettext('Enter the database user. Use only letters, numbers, underscores, dashes, dots and @.')],
+            'DB_PASSWORD'    => [fn ($v): bool => is_valid_db_password($v), gettext('Enter the password for the database user.')],
+            'URL'            => [fn ($v): bool => URLValidator::isValidConfigURL($v), gettext('Enter the web address, starting with http:// or https://.')],
+            'ROOT_PATH'      => [fn ($v): bool => (bool) is_valid_root_path($v), gettext('Enter the folder starting with /, like /churchcrm, or leave it empty.')],
+        ];
         $errors = [];
-        if (!isset($setupData['DB_SERVER_NAME'])) {
-            $errors['DB_SERVER_NAME'] = 'Missing DB_SERVER_NAME';
-        } elseif (!is_valid_hostname($setupData['DB_SERVER_NAME'])) {
-            $errors['DB_SERVER_NAME'] = 'Invalid DB_SERVER_NAME';
-        }
-        if (!isset($setupData['DB_SERVER_PORT'])) {
-            $errors['DB_SERVER_PORT'] = 'Missing DB_SERVER_PORT';
-        } elseif (!is_valid_port($setupData['DB_SERVER_PORT'])) {
-            $errors['DB_SERVER_PORT'] = 'Invalid DB_SERVER_PORT';
-        }
-        if (!isset($setupData['DB_NAME'])) {
-            $errors['DB_NAME'] = 'Missing DB_NAME';
-        } elseif (!is_valid_db_name($setupData['DB_NAME'])) {
-            $errors['DB_NAME'] = 'Invalid DB_NAME';
-        }
-        if (!isset($setupData['DB_USER'])) {
-            $errors['DB_USER'] = 'Missing DB_USER';
-        } elseif (!is_valid_db_user($setupData['DB_USER'])) {
-            $errors['DB_USER'] = 'Invalid DB_USER';
-        }
-        if (!isset($setupData['DB_PASSWORD'])) {
-            $errors['DB_PASSWORD'] = 'Missing DB_PASSWORD';
-        } elseif (!is_valid_db_password($setupData['DB_PASSWORD'])) {
-            $errors['DB_PASSWORD'] = 'Invalid DB_PASSWORD';
-        }
-        if (!isset($setupData['ROOT_PATH'])) {
-            $errors['ROOT_PATH'] = 'Missing ROOT_PATH';
-        } elseif (!is_valid_root_path($setupData['ROOT_PATH'])) {
-            $errors['ROOT_PATH'] = 'Invalid ROOT_PATH';
-        }
-        if (!isset($setupData['URL'])) {
-            $errors['URL'] = 'Missing URL';
-        } elseif (!URLValidator::isValidConfigURL($setupData['URL'])) {
-            $errors['URL'] = 'Invalid URL format';
+        foreach ($checks as $field => [$isValid, $message]) {
+            $value = $setupData[$field] ?? null;
+            if (!is_string($value) || !$isValid($value)) {
+                $errors[$field] = $message;
+            }
         }
         if (!empty($errors)) {
-            return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
+            TelemetryService::captureInstallFailure('config_invalid');
+
+            return SlimUtils::renderJSON($response, ['errors' => $errors], 400);
         }
 
         // Use sanitized values
@@ -114,6 +103,47 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $dbPassword  = $setupData['DB_PASSWORD'];
         $rootPath    = $setupData['ROOT_PATH'];
         $url         = $setupData['URL'];
+
+        // Prove these exact values before Config.php exists. A failure here leaves setup unlocked.
+        $connection = connect_to_database($dbServerName, $dbServerPort, $dbName, $dbUser, $dbPassword);
+        if ($connection['reason'] !== null) {
+            TelemetryService::captureInstallFailure($connection['reason']);
+
+            // PHP reaches "localhost" through a socket file; when that file is elsewhere, the TCP address still works.
+            $message = $connection['message'];
+            if ($connection['reason'] === 'database_host_unreachable' && strtolower($dbServerName) === 'localhost') {
+                $message = gettext('ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name.');
+            }
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => $connection['reason'],
+                'message' => $message,
+            ]);
+        }
+
+        $versionCheck = DatabaseVersionService::check($connection['version']);
+        if (!$versionCheck['installable']) {
+            TelemetryService::captureInstallFailure('database_too_old');
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => 'database_too_old',
+                'message' => DatabaseVersionService::getBlockMessage($connection['version']),
+            ]);
+        }
+
+        // A server below the supported floor is not a failed connection: it installs after an acknowledgment.
+        if (!$versionCheck['supported'] && !filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
+            return SlimUtils::renderJSON($response, [
+                'valid'     => true,
+                'correct'   => true,
+                'supported' => false,
+                'message'   => DatabaseVersionService::getUnsupportedMessage($connection['version']),
+            ]);
+        }
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
@@ -126,7 +156,28 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             '||URL||'            => escape_php_single_quoted($url),
         ]);
 
-        file_put_contents($configFile, $template);
+        // Mode 'x' creates the file only if it does not exist, so a second install request racing this one cannot overwrite it.
+        $handle = @fopen($configFile, 'x');
+        if ($handle === false && file_exists($configFile)) {
+            return $response->withStatus(403, 'Setup is already complete.');
+        }
+        $written = $handle !== false && fwrite($handle, $template) === strlen($template);
+        if ($handle !== false) {
+            fclose($handle);
+        }
+        if (!$written) {
+            if ($handle !== false) {
+                unlink($configFile);
+            }
+            TelemetryService::captureInstallFailure('config_not_writable', $connection['version']);
+
+            return SlimUtils::renderJSON($response, [
+                'valid'   => true,
+                'correct' => false,
+                'reason'  => 'config_not_writable',
+                'message' => gettext('ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable.'),
+            ]);
+        }
 
         // Generate correct RewriteBase in all routing .htaccess files
         // now that $sRootPath is known. See #10563.
@@ -137,7 +188,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
         }
 
-        return $response->withStatus(200);
+        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true]);
     };
 
     $group->post('', $postHandler);
@@ -150,6 +201,67 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 function escape_php_single_quoted($value)
 {
     return addcslashes($value, "'\\");
+}
+
+// PDO::ATTR_TIMEOUT only limits opening the socket. A server that accepts it and never
+// finishes the handshake is cut off by the read timeout.
+function connect_to_database(string $host, string $port, string $name, string $user, string $password): array
+{
+    $previousReadTimeout = ini_set('mysqlnd.net_read_timeout', '5');
+
+    try {
+        $pdo = new PDO(
+            sprintf('mysql:host=%s;port=%s;dbname=%s', $host, $port, $name),
+            $user,
+            $password,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5]
+        );
+
+        return [
+            'version' => (string) $pdo->getAttribute(PDO::ATTR_SERVER_VERSION),
+            'reason'  => null,
+            'message' => null,
+        ];
+    } catch (\Throwable $e) {
+        $failure = classify_database_connection_failure($e);
+
+        return ['version' => null, 'reason' => $failure['reason'], 'message' => $failure['message']];
+    } finally {
+        if ($previousReadTimeout !== false) {
+            ini_set('mysqlnd.net_read_timeout', $previousReadTimeout);
+        }
+    }
+}
+
+function classify_database_connection_failure(\Throwable $e): array
+{
+    $code = 0;
+    if ($e instanceof \PDOException && isset($e->errorInfo[1])) {
+        $code = (int) $e->errorInfo[1];
+    } elseif (preg_match('/\[(\d{3,4})\]/', $e->getMessage(), $matches) === 1) {
+        $code = (int) $matches[1];
+    }
+
+    // 1044 is access denied to that database after the password was accepted. A user granted
+    // only their own database gets 1044, not 1049, when the name is wrong.
+    $reason = match (true) {
+        $code === 1045 => 'database_login_rejected',
+        in_array($code, [1044, 1049], true) => 'database_not_found',
+        in_array($code, [2001, 2002, 2003, 2005, 2006, 2013], true) => 'database_host_unreachable',
+        default => 'database_unreachable',
+    };
+
+    return ['reason' => $reason, 'message' => database_connection_message($reason)];
+}
+
+function database_connection_message(string $reason): string
+{
+    return match ($reason) {
+        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost.'),
+        'database_login_rejected' => gettext('The database server rejected that username or password.'),
+        'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
+        default => gettext('ChurchCRM could not connect to the database with these settings.'),
+    };
 }
 
 function sanitize_db_field($value)

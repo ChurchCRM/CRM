@@ -2153,14 +2153,6 @@ msgid "Deposit Comment"
 msgstr "Talletuksen kommentti"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Allekirjoitusmääritystiedoston allekirjoituksen varmennus epäonnistui"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Yhden tai useamman tiedoston allekirjoituksen varmennus epäonnistui"
-
-#: 
 msgid "item"
 msgstr "kohde"
 
@@ -4005,10 +3997,6 @@ msgid "Legend"
 msgstr "Selite"
 
 #: 
-msgid "assigned"
-msgstr "määritetty"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Näytetään oppilaat, joiden syntymäpäivä on kuussa:"
 
@@ -4668,10 +4656,6 @@ msgid "Estonian"
 msgstr "Viro"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Virhe allekirjoituksen määritystiedoston purkamisessa"
-
-#: 
 msgid "Event not found"
 msgstr "Tapahtumaa ei löytynyt"
 
@@ -5249,14 +5233,6 @@ msgstr "Syötä kelvollinen URL-osoite, joka alkaa http:// tai https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Kaikki järjestelmätiedostojen allekirjoitukset vastaavat odotettuja arvoja."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Allekirjoitusten määritystiedosto on olemassa, mutta se ei ole luettavissa. Tarkista oikeudet."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Allekirjoitusten määritystiedosto puuttuu polusta %s. Aja paketointi tai asenna virallinen julkaisu luodaksesi allekirjoitukset uudelleen."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13282,22 +13258,6 @@ msgid "Move Members to Group"
 msgstr "Siirrä jäsenet ryhmään"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "On oltava kelvollinen URL-osoite, joka alkaa http:// tai https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "On oltava kelvollinen URL-osoite (esim. http://localhost tai https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "On oltava kelvollinen porttinumero (esim. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Täytyy alkaa /-merkillä jos ei tyhjä; ei loppu-kauttaviivaa. Vain kirjaimet, numerot, alaviiva, viiva, piste ja / sallittu."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Pitääkö nämä tiedot poistaa myöhemmin?"
 
@@ -13448,10 +13408,6 @@ msgstr "Syötä kelvollinen sähköpostiosoite"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Syötä kelvollinen sähköpostiosoite (esim. nimi@esimerkki.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Syötä kelvollinen numero"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -17610,10 +17566,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Julkisen ilmoittautumislomakkeen kautta tulleet ilmoittautumiset odottavat tarkistusta. Merkinnät, joilla ei ole sähköpostia tai puhelinnumeroa, on merkitty – tarkista yhteystiedot ennen yhteydenottoa."
 
 #: 
-msgid "Review self registrations"
-msgstr "Tarkista itseilmoittautumiset"
-
-#: 
 msgid "Select month"
 msgstr "Valitse kuukausi"
 
@@ -17640,10 +17592,6 @@ msgstr "Tämä henkilö kuuluu perheeseen – hyväksy sen sijaan perhe"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Tämä henkilö ei ole odottava itseilmoittautuminen"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Tämä itse ilmoittautunut perhe odottaa tarkistusta"
 
 #: 
 msgid "Total registrations"
@@ -26175,10 +26123,6 @@ msgstr "Tuntematon rahasto"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Pyydä palveluntarjoajaasi siirtämään tietokanta tuettuun versioon ja yritä sitten uudelleen."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Pyydä palveluntarjoajaasi siirtämään tietokanta tuettuun versioon."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26204,10 +26148,6 @@ msgstr "Päivitystä ei aloitettu, joten mitään ei muutettu."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Tätä päivitystä ei voi suorittaa tietokannassasi."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Tietokantapalvelimesi (%1$s %2$s) on vanhempi kuin ChurchCRM tukee (MySQL %3$s tai MariaDB %4$s ja uudemmat)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27876,4 +27816,478 @@ msgstr "Seurakuntasi maa on Kanada, joten kanadalaiset viralliset kuitit ovat sa
 #: 
 msgid "groups"
 msgstr "ryhmät"
+
+#: 
+msgid "14 days"
+msgstr "14 päivää"
+
+#: 
+msgid "6 months"
+msgstr "6 kuukautta"
+
+#: 
+msgid "60 days"
+msgstr "60 päivää"
+
+#: 
+msgid "7 days"
+msgstr "7 päivää"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Kysy Discordissa"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Vaihda salasanasi heti kirjautumisen jälkeen."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Valitse toinen kirjautumistapa"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM ei tavoita tietokantaa osoitteessa localhost. Kokeile sen sijaan osoitetta 127.0.0.1 tai kysy verkkopalveluntarjoajaltasi tietokannan isäntänimeä."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM ei tavoita tietokantapalvelinta kyseisessä osoitteessa ja portissa. Tarkista isäntänimi ja portti. Jaetussa verkkohotellissa isäntä ei usein ole localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM ei voi lukea julkaisutarkistustaan. Pyydä verkkopalveluntarjoajaasi tekemään ChurchCRM-kansiosta luettavan, tai jatka."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM ei voinut tarkistaa kansion käyttöoikeuksia"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM ei voinut tarkistaa tiedostojaan. Pyydä verkkopalveluntarjoajaasi katsomaan palvelimen virhelokia."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM ei voinut tarkistaa palvelinohjelmistoa"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM ei voinut muodostaa yhteyttä tietokantaan näillä asetuksilla."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM ei voinut viimeistellä asennusta. Yritä uudelleen tai pyydä verkkopalveluntarjoajaasi tarkistamaan palvelimen virheloki."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM ei voinut tallentaa tiedostoa Include/Config.php. Pyydä verkkopalveluntarjoajaasi tekemään Include-kansiosta kirjoitettavan."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM-tiedostot vastaavat julkaisua"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Tiivistä sivupalkki kuvakkeiksi"
+
+#: 
+msgid "Congregation login"
+msgstr "Seurakunnan kirjautuminen"
+
+#: 
+msgid "Connect your database"
+msgstr "Yhdistä tietokantasi"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Yhdistetään tietokantaasi…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Päähallintapaneeliasi ei voitu tallentaa."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Luo ensin MySQL- tai MariaDB-tietokanta verkkohotellisi hallintapaneelissa (cPanelissa: %s) ja kopioi sen tiedot sitten tähän. ChurchCRM tukee MySQL 8.4+ - ja MariaDB 10.11+ -versioita (LTS-julkaisuja)."
+
+#: 
+msgid "Database host"
+msgstr "Tietokannan isäntä"
+
+#: 
+msgid "Database name"
+msgstr "Tietokannan nimi"
+
+#: 
+msgid "Database password"
+msgstr "Tietokannan salasana"
+
+#: 
+msgid "Database user"
+msgstr "Tietokannan käyttäjä"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Tyhjä, kun ChurchCRM on sivuston ylimmällä tasolla. Muussa tapauksessa kansio, kuten %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Kirjoita muistiinpanon teksti tähän..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Anna tietokannan isäntä, kuten localhost tai mysql.example.com. Käytä vain kirjaimia, numeroita, pisteitä ja yhdysmerkkejä."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Anna tietokannan nimi. Käytä vain kirjaimia, numeroita, alaviivoja, yhdysmerkkejä ja pisteitä."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Anna tietokannan portti numerona. Se on yleensä 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Anna tietokannan käyttäjä. Käytä vain kirjaimia, numeroita, alaviivoja, yhdysmerkkejä, pisteitä ja @-merkkiä."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Anna kansio, joka alkaa merkillä /, kuten /churchcrm, tai jätä se tyhjäksi."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Anna tietokannan käyttäjän salasana."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Anna verkko-osoite, joka alkaa merkeillä http:// tai https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Jokainen aktiivinen jäsenperhe teki maksun ajanjaksolla %s–%s."
+
+#: 
+msgid "Exclude"
+msgstr "Sulje pois"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Vanhasta versiosta jäljelle jääneet tiedostot"
+
+#: 
+msgid "Files to review"
+msgstr "Tarkistettavat tiedostot"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Pidä verkkopalveluntarjoajaltasi saamasi tietokannan tiedot valmiina. Se kestää noin kaksi minuuttia."
+
+#: 
+msgid "Hide"
+msgstr "Piilota"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Miten seurakunta koostuu"
+
+#: 
+msgid "Insights"
+msgstr "Näkemykset"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Asenna ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Asennus valmis!"
+
+#: 
+msgid "Installation guide"
+msgstr "Asennusopas"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Eheystarkistus epäonnistui"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Eheystarkistus onnistui"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Virheellinen CSRF-tunnus"
+
+#: 
+msgid "Last %d days"
+msgstr "Viimeiset %d päivää"
+
+#: 
+msgid "Last 12 months"
+msgstr "Viimeiset 12 kuukautta"
+
+#: 
+msgid "Main dashboard"
+msgstr "Päähallintapaneeli"
+
+#: 
+msgid "Navigation"
+msgstr "Navigointi"
+
+#: 
+msgid "Need help?"
+msgstr "Tarvitsetko apua?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Ei muistiinpanoja tällä aikavälillä."
+
+#: 
+msgid "No notes yet."
+msgstr "Ei vielä muistiinpanoja."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Usein %1$s. Jotkin palveluntarjoajat antavat osoitteen, kuten %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Avoin summa"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Avaa Talous-hallintapaneelin tälle aikavälille. Valitse aiempi tilivuosi itse hallintapaneelista."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Edelliset 7 päivää ja seuraavat %d päivää"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Henkilöt ilman perhettä: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Oikeus tallentaa asetuksia ja valokuvia"
+
+#: 
+msgid "Port"
+msgstr "Portti"
+
+#: 
+msgid "Ready"
+msgstr "Valmis"
+
+#: 
+msgid "Recent"
+msgstr "Viimeaikaiset"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Rekisteröi perheesi seurakuntaamme"
+
+#: 
+msgid "Release check"
+msgstr "Julkaisun tarkistus"
+
+#: 
+msgid "Report a problem"
+msgstr "Ilmoita ongelmasta"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Jokaisessa taulukossa ja hallintapaneelin kortissa näytettävät rivit sivua kohden. Tulee voimaan seuraavalla sivun latauksella."
+
+#: 
+msgid "Send Test Email"
+msgstr "Lähetä testisähköposti"
+
+#: 
+msgid "Send a test email"
+msgstr "Lähetä testisähköposti"
+
+#: 
+msgid "Send them the list below."
+msgstr "Lähetä heille alla oleva luettelo."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Palvelinohjelmisto, jonka ChurchCRM tarvitsee"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Aseta päähallintapaneelikseni"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Kirjaudu sisään ylläpitäjätililläsi"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Jotkin ChurchCRM-tiedostot puuttuvat tai ovat muuttuneet. Lataa ChurchCRM uudelleen, jos sivu ei lataudu."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Joitakin ChurchCRM-tiedostoja ei ladattu."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Jotkin palvelimella olevat tiedostot eivät vastaa ChurchCRM-julkaisua."
+
+#: 
+msgid "Staff login"
+msgstr "Henkilökunnan kirjautuminen"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Alkaa merkeillä %1$s tai %2$s ja päättyy merkkiin %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Hallintapaneeli, joka avautuu kirjautumisen jälkeen"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Tietokantapalvelin hyväksyi kirjautumisen, mutta kyseisellä nimellä ei ole tietokantaa."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Tietokantapalvelin hylkäsi kyseisen käyttäjänimen tai salasanan."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Tietokannalle antamasi nimi. Jaetut palveluntarjoajat lisäävät usein tilisi nimen eteen, kuten %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Kyseisen tietokannan käyttäjän salasana. ChurchCRM tarkistaa nämä tiedot, kun napsautat Asenna."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Tämän palvelimen julkaisutarkistustiedosto ei vastaa ChurchCRM:ää. Lataa julkaisu uudelleen tai jatka ja pyydä apua verkkopalveluntarjoajaltasi."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Testiviesti menee seurakunnan sähköpostiosoitteeseen ja näyttää SMTP-virheenkorjauslokin tässä."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Käyttäjä, jonka lisäsit kyseiseen tietokantaan. Ei verkkohotellisi kirjautumistunnus."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Nämä tiedostot eivät kuulu ChurchCRM-julkaisuun. Verkkopalveluntarjoajasi voi poistaa ne."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Nämä tiedostot eivät vastaa julkaisua"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Näitä tiedostoja ei ladattu"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Tämä ChurchCRM-kopio ei sisällä julkaisutiedostojen tarkistusta. Voit jatkaa."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Tämä hallintapaneeli on nyt päähallintapaneelisi."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Täällä ihmiset avaavat ChurchCRM:n. Muuta sitä vain, jos he käyttävät eri osoitetta kuin tämä sivu."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Tämä on seurakuntatilisi. Kaikki, mitä voit tehdä itse, löytyy täältä."
+
+#: 
+msgid "Total deposited"
+msgstr "Talletettu yhteensä"
+
+#: 
+msgid "Usually 3306."
+msgstr "Yleensä 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Suosittelemme pyytämään palveluntarjoajaasi vaihtamaan ennen asennusta, kun siirrettävää dataa ei vielä ole. MariaDB 10.11 on hyvä kohde."
+
+#: 
+msgid "Web address"
+msgstr "Verkko-osoite"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Voit asentaa nyt: ChurchCRM asentuu ja toimii."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Päähallintapaneelisi"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Verkkopalveluntarjoajasi on korjattava jotakin"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "ja {{count}} lisää"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "ja {{count}} lisää"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Ylläpitäjät näkevät varoituksen jokaisella sivulla, kunnes tietokanta siirretään tuettuun versioon."
+
+#: 
+msgid "Database out of support"
+msgstr "Tietokanta ei ole tuettu"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivoitu"
+
+#: 
+msgid "How to find the log"
+msgstr "Miten löydät lokin"
+
+#: 
+msgid "How to install server locales"
+msgstr "Palvelimen kieliasetusten asentaminen"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Ymmärrän, että tätä tietokantaa ei tueta"
+
+#: 
+msgid "Last edited"
+msgstr "Viimeksi muokattu"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Ei asennettu palvelimelle, eikä myöskään englanninkielistä varalokaalia ole asennettu, joten käyttöliittymä näytetään englanniksi."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM-loki tallentaa tarkan syyn. Poista nimet ennen jakamista."
+
+#: 
+msgid "Verify now"
+msgstr "Vahvista nyt"
+
+#: 
+msgid "View Giving History"
+msgstr "Näytä lahjoitushistoria"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Tietokantasi (%1$s %2$s) ei ole tuettu ja se voi olla vaarallinen. ChurchCRM toimii, mutta suosittelemme vahvasti isäntää, jossa on MariaDB %3$s+ tai MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Tietokantapalvelimesi (%1$s %2$s) on liian vanha ChurchCRM:lle, joka tarvitsee MySQL %3$s tai MariaDB %4$s tai uudemman."
 

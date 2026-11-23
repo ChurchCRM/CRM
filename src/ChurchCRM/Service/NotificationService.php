@@ -75,6 +75,7 @@ class NotificationService
     public static function loadSessionNotifications(): void
     {
         self::loadUpgradeNotification();
+        self::loadDatabaseSupportNotification();
         self::loadRemoteNotifications();
     }
 
@@ -113,6 +114,30 @@ class NotificationService
             SystemURLs::getRootPath() . ($isAdmin ? '/admin/system/upgrade' : '/v2/releases'),
             'warning',
             'refresh',
+        ));
+    }
+
+    /**
+     * Not dismissible: it stays until the database is moved to a supported version.
+     */
+    private static function loadDatabaseSupportNotification(): void
+    {
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+            return;
+        }
+        $message = DatabaseVersionService::getUnsupportedMessage();
+        if ($message === null) {
+            return;
+        }
+
+        self::add(new UiNotification(
+            'database-out-of-support',
+            '',
+            gettext('Database out of support'),
+            $message,
+            '',
+            'danger',
+            'database',
         ));
     }
 

@@ -2147,14 +2147,6 @@ msgid "Deposit Comment"
 msgstr "Komentar uplate"
 
 #: 
-msgid "Signature definition file signature failed validation"
-msgstr "Provjera valjanosti potpisa definicijske datoteke nije uspjela"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Jedna ili više datoteka nije prošla provjeru valjanosti potpisa"
-
-#: 
 msgid "item"
 msgstr "stavka"
 
@@ -3999,10 +3991,6 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: 
-msgid "assigned"
-msgstr "dodijeljeno"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Prikazujem učenike s rođendanima u"
 
@@ -4660,10 +4648,6 @@ msgid "Estonian"
 msgstr "Estonski"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Greška pri dekodiranju datoteke definicije potpisa"
-
-#: 
 msgid "Event not found"
 msgstr "Događaj nije pronađen"
 
@@ -5245,14 +5229,6 @@ msgstr "Molim unesite valjanu URL adresu koja počinje s http:// ili https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Sve hash vrijednosti sistemskih datoteka odgovaraju očekivanim vrijednostima."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Datoteka definicije potpisa postoji, ali nije čitljiva. Provjerite dozvole datoteke."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Datoteka definicije potpisa nedostaje na %s. Pokrenite zadatak pakiranja ili implementirajte službeno izdanje za regeneriranje potpisa."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -13286,22 +13262,6 @@ msgid "Move Members to Group"
 msgstr "Premjesti članove u skupinu"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Mora biti valjani URL koji počinje s http:// ili https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Mora biti valjani URL koji počinje s http:// ili https:// (npr. http://localhost ili https://domena.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Mora biti valjani broj porta (npr. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Mora počinjati s / ako nije prazno; bez završne kose crte. Dozvoljeni su samo slova, brojevi, podvlaka, crtica, točka i /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Trebate ukloniti ove podatke kasnije?"
 
@@ -13452,10 +13412,6 @@ msgstr "Molim unesite valjanu adresu e-pošte"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Molim unesite valjanu adresu e-pošte (npr. ime@primjer.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Molim unesite valjani broj"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -17619,10 +17575,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registracije koje čekaju pregled s vašeg javnog registracijskog obrasca. Unosi bez e-pošte ili telefona označeni su – prije kontaktiranja provjerite kontaktne podatke."
 
 #: 
-msgid "Review self registrations"
-msgstr "Pregledaj samoregistracije"
-
-#: 
 msgid "Select month"
 msgstr "Odaberite mjesec"
 
@@ -17649,10 +17601,6 @@ msgstr "Ova osoba pripada obitelji – umjesto toga odobrite obitelj"
 #: 
 msgid "This person is not a pending self-registration"
 msgstr "Ova osoba nije samoregistracija na čekanju"
-
-#: 
-msgid "This self-registered family is pending review"
-msgstr "Ova samoregistrirana obitelj čeka pregled"
 
 #: 
 msgid "Total registrations"
@@ -26197,10 +26145,6 @@ msgstr "Nepoznati fond"
 msgid "Ask your host to move the database to a supported version, then try again."
 msgstr "Zamolite svog pružatelja hostinga da bazu podataka prebaci na podržanu verziju, a zatim pokušajte ponovno."
 
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Zamolite svog pružatelja hostinga da bazu podataka prebaci na podržanu verziju."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26226,10 +26170,6 @@ msgstr "Nadogradnja nije pokrenuta, pa ništa nije promijenjeno."
 #: 
 msgid "This upgrade cannot run on your database."
 msgstr "Ova se nadogradnja ne može pokrenuti na vašoj bazi podataka."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Vaš poslužitelj baze podataka (%1$s %2$s) stariji je od verzija koje ChurchCRM podržava (MySQL %3$s ili MariaDB %4$s i novije)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27905,4 +27845,478 @@ msgstr "Zemlja vaše crkve je Kanada, pa su kanadske službene potvrde dostupne 
 #: 
 msgid "groups"
 msgstr "skupine"
+
+#: 
+msgid "14 days"
+msgstr "14 dana"
+
+#: 
+msgid "6 months"
+msgstr "6 mjeseci"
+
+#: 
+msgid "60 days"
+msgstr "60 dana"
+
+#: 
+msgid "7 days"
+msgstr "7 dana"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Pitajte na Discordu"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Promijenite lozinku odmah nakon prijave."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Odaberite drugi način prijave"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM ne može pristupiti bazi podataka na adresi localhost. Pokušajte umjesto toga s 127.0.0.1 ili pitajte svog web-domaćina za naziv domaćina baze podataka."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM ne može pristupiti poslužitelju baze podataka na toj adresi i portu. Provjerite naziv domaćina i port. Na dijeljenom hostingu domaćin često nije localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM ne može pročitati svoju provjeru izdanja. Zamolite web-domaćina da mapu ChurchCRM učini čitljivom ili nastavite."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM nije mogao provjeriti dopuštenja mapa"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM nije mogao provjeriti svoje datoteke. Zamolite web-domaćina da pogleda zapisnik pogrešaka poslužitelja."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM nije mogao provjeriti softver poslužitelja"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM se nije mogao povezati s bazom podataka s ovim postavkama."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM nije mogao dovršiti instalaciju. Pokušajte ponovno ili zamolite web-domaćina da provjeri zapisnik pogrešaka poslužitelja."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM nije mogao spremiti Include/Config.php. Zamolite web-domaćina da mapu Include učini zapisivom."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Datoteke ChurchCRM odgovaraju izdanju"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Sažmi bočnu traku na ikone"
+
+#: 
+msgid "Congregation login"
+msgstr "Prijava zajednice"
+
+#: 
+msgid "Connect your database"
+msgstr "Povežite svoju bazu podataka"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Povezivanje s vašom bazom podataka…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Nije bilo moguće spremiti vašu glavnu nadzornu ploču."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Najprije stvorite MySQL ili MariaDB bazu podataka u upravljačkoj ploči hostinga (u cPanelu: %s), a zatim ovdje kopirajte njezine podatke. ChurchCRM podržava MySQL 8.4+ i MariaDB 10.11+ (LTS izdanja)."
+
+#: 
+msgid "Database host"
+msgstr "Domaćin baze podataka"
+
+#: 
+msgid "Database name"
+msgstr "Naziv baze podataka"
+
+#: 
+msgid "Database password"
+msgstr "Lozinka baze podataka"
+
+#: 
+msgid "Database user"
+msgstr "Korisnik baze podataka"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Prazno kada je ChurchCRM na vrhu web-mjesta. Inače mapa, poput %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Ovdje unesite tekst bilješke..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Unesite domaćina baze podataka, poput localhost ili mysql.example.com. Koristite samo slova, brojeve, točke i crtice."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Unesite naziv baze podataka. Koristite samo slova, brojeve, donje crte, crtice i točke."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Unesite port baze podataka kao broj. Obično je 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Unesite korisnika baze podataka. Koristite samo slova, brojeve, donje crte, crtice, točke i @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Unesite mapu koja počinje s /, poput /churchcrm, ili je ostavite praznu."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Unesite lozinku korisnika baze podataka."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Unesite web-adresu koja počinje s http:// ili https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Svaka aktivna obitelj članova izvršila je uplatu između %s i %s."
+
+#: 
+msgid "Exclude"
+msgstr "Isključi"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Datoteke preostale od starije verzije"
+
+#: 
+msgid "Files to review"
+msgstr "Datoteke za pregled"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Pripremite podatke o bazi podataka od svog web-domaćina. Traje oko dvije minute."
+
+#: 
+msgid "Hide"
+msgstr "Sakrij"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Sastav zajednice"
+
+#: 
+msgid "Insights"
+msgstr "Uvidi"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Instaliraj ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalacija dovršena!"
+
+#: 
+msgid "Installation guide"
+msgstr "Vodič za instalaciju"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Provjera integriteta nije uspjela"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Provjera integriteta prošla"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Nevažeći CSRF token"
+
+#: 
+msgid "Last %d days"
+msgstr "Zadnjih %d dana"
+
+#: 
+msgid "Last 12 months"
+msgstr "Zadnjih 12 mjeseci"
+
+#: 
+msgid "Main dashboard"
+msgstr "Glavna nadzorna ploča"
+
+#: 
+msgid "Navigation"
+msgstr "Navigacija"
+
+#: 
+msgid "Need help?"
+msgstr "Trebate pomoć?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Nema bilješki u ovom vremenskom rasponu."
+
+#: 
+msgid "No notes yet."
+msgstr "Još nema bilješki."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Često %1$s. Neki domaćini daju adresu poput %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Zbroj otvorenih"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Otvara nadzornu ploču financija za ovaj raspon. Prošlu fiskalnu godinu odaberite na samoj nadzornoj ploči."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Prošlih 7 dana i sljedećih %d dana"
+
+#: 
+msgid "People without a family: %d"
+msgstr "Osobe bez obitelji: %d"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Dopuštenje za spremanje postavki i fotografija"
+
+#: 
+msgid "Port"
+msgstr "Port"
+
+#: 
+msgid "Ready"
+msgstr "Spremno"
+
+#: 
+msgid "Recent"
+msgstr "Nedavno"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Registrirajte svoju obitelj u našu crkvu"
+
+#: 
+msgid "Release check"
+msgstr "Provjera izdanja"
+
+#: 
+msgid "Report a problem"
+msgstr "Prijavi problem"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Broj redaka po stranici u svakoj tablici i kartici nadzorne ploče. Stupa na snagu pri sljedećem učitavanju stranice."
+
+#: 
+msgid "Send Test Email"
+msgstr "Pošalji probnu e-poštu"
+
+#: 
+msgid "Send a test email"
+msgstr "Pošalji probnu e-poštu"
+
+#: 
+msgid "Send them the list below."
+msgstr "Pošaljite im popis u nastavku."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Softver poslužitelja koji ChurchCRM treba"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Postavi kao moju glavnu nadzornu ploču"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Prijavite se svojim administratorskim računom"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Neke datoteke ChurchCRM nedostaju ili su promijenjene. Ponovno prenesite ChurchCRM ako se stranica ne učita."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Neke datoteke ChurchCRM nisu prenesene."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Neke datoteke na poslužitelju ne odgovaraju izdanju ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Prijava za osoblje"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Počinje s %1$s ili %2$s i završava s %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Nadzorna ploča koja vam se otvara nakon prijave"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Poslužitelj baze podataka prihvatio je prijavu, ali ne postoji baza podataka s tim nazivom."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Poslužitelj baze podataka odbio je to korisničko ime ili lozinku."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Naziv koji ste dali bazi podataka. Dijeljeni domaćini često ispred dodaju naziv vašeg računa, poput %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Lozinka tog korisnika baze podataka. ChurchCRM provjerava ove podatke kada kliknete Instaliraj."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Datoteka provjere izdanja na ovom poslužitelju ne odgovara ChurchCRM. Ponovno prenesite izdanje ili nastavite i zamolite web-domaćina za pomoć."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Probna poruka ide na e-adresu crkve, a zapisnik otklanjanja pogrešaka SMTP-a prikazuje se ovdje."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Korisnik kojeg ste dodali u tu bazu podataka. Ne vaša prijava za hosting."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Ove datoteke nisu dio izdanja ChurchCRM. Vaš web-domaćin ih može ukloniti."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Ove datoteke ne odgovaraju izdanju"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Ove datoteke nisu prenesene"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Ova kopija ChurchCRM ne uključuje provjeru datoteke izdanja. Možete nastaviti."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Ova nadzorna ploča sada je vaša glavna nadzorna ploča."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Ovdje će ljudi otvarati ChurchCRM. Promijenite to samo ako će koristiti drugu adresu od ove stranice."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Ovo je vaš crkveni račun. Sve što možete učiniti sami nalazi se ovdje."
+
+#: 
+msgid "Total deposited"
+msgstr "Ukupno uplaćeno"
+
+#: 
+msgid "Usually 3306."
+msgstr "Obično 3306."
+
+#: 
+msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
+msgstr "Preporučujemo da zamolite domaćina da se prebaci prije instalacije, dok još nema podataka za premještanje. MariaDB 10.11 dobar je cilj."
+
+#: 
+msgid "Web address"
+msgstr "Web-adresa"
+
+#: 
+msgid "You can install now: ChurchCRM will install and run."
+msgstr "Sada možete instalirati: ChurchCRM će se instalirati i raditi."
+
+#: 
+msgid "Your main dashboard"
+msgstr "Vaša glavna nadzorna ploča"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Vaš web-domaćin mora nešto popraviti"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "i još {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "i još {{count}}"
+
+#: 
+msgid "Administrators will see a warning on every page until the database is moved to a supported version."
+msgstr "Administratori će vidjeti upozorenje na svakoj stranici dok se baza podataka ne premjesti na podržanu verziju."
+
+#: 
+msgid "Database out of support"
+msgstr "Baza podataka nije podržana"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivirano"
+
+#: 
+msgid "How to find the log"
+msgstr "Kako pronaći zapisnik"
+
+#: 
+msgid "How to install server locales"
+msgstr "Kako instalirati jezične postavke poslužitelja"
+
+#: 
+msgid "I understand this database is out of support"
+msgstr "Razumijem da ova baza podataka nije podržana"
+
+#: 
+msgid "Last edited"
+msgstr "Zadnje uređeno"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nije instalirano na poslužitelju, a nije instalirana ni engleska rezervna jezična postavka, pa će se sučelje prikazivati na engleskom."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Zapisnik ChurchCRM bilježi konkretan razlog. Uklonite imena prije dijeljenja."
+
+#: 
+msgid "Verify now"
+msgstr "Potvrdi sada"
+
+#: 
+msgid "View Giving History"
+msgstr "Prikaži povijest darivanja"
+
+#: 
+msgid "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaša baza podataka (%1$s %2$s) nije podržana i možda nije sigurna. ChurchCRM će raditi, ali toplo preporučujemo pružatelja s MariaDB %3$s+ ili MySQL %4$s+."
+
+#: 
+msgid "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later."
+msgstr "Vaš poslužitelj baze podataka (%1$s %2$s) prestar je za ChurchCRM, koji treba MySQL %3$s ili MariaDB %4$s i novije."
 
