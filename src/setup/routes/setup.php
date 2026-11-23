@@ -158,7 +158,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             if ($handle !== false) {
                 unlink($configFile);
             }
-            TelemetryService::captureInstallFailure('config_not_writable');
+            TelemetryService::captureInstallFailure('config_not_writable', $connection['version']);
 
             return SlimUtils::renderJSON($response, [
                 'valid'   => true,
