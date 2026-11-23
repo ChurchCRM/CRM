@@ -6,7 +6,7 @@ const suffix = Date.now() % 100000;
 // The options API strips tags; `< ` followed by a space survives and must reach the page escaped.
 const CLASSIFICATION = `CyCls${suffix} < D & E`;
 const FAMILY_ROLE = `CyRole${suffix} < D & E`;
-const escaped = (name) => name.replace("&", "&amp;").replace("<", "&lt;");
+const escaped = (name) => name.replaceAll("&", "&amp;").replaceAll("<", "&lt;");
 const LAST_NAME = `CyDropdowns${suffix}`;
 const created = { classificationId: null, roleId: null, personId: null, familyId: null };
 
