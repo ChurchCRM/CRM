@@ -35,7 +35,7 @@ CREATE TABLE `groupprop_2` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_23` (
@@ -43,7 +43,7 @@ CREATE TABLE `groupprop_23` (
   `c1` year(4) DEFAULT NULL,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_17` (
@@ -55,7 +55,7 @@ CREATE TABLE `groupprop_17` (
   `c6` date DEFAULT NULL,
   `c7` varchar(100) DEFAULT NULL,
   `c8` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_25` (
@@ -65,68 +65,68 @@ CREATE TABLE `groupprop_25` (
   `c3` date DEFAULT NULL,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_20` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_11` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_7` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_13` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_1` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_45` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_47` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_6` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_9` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` tinyint(4) DEFAULT NULL,
   `c2` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `groupprop_49` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 INSERT INTO `calendar_events` (`calendar_id`, `event_id`) VALUES (2,1),
