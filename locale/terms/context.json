@@ -4,8 +4,14 @@
     "src/ChurchCRM/Config/Menu/Menu.php:356",
     "src/ChurchCRM/Config/Menu/Menu.php:368"
   ],
+  "How to find the log": [
+    "src/errors/template.php:266"
+  ],
   "Last edited": [
     "src/people/views/family-view.php:785"
+  ],
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": [
+    "src/errors/template.php:265"
   ],
   "Verify now": [
     "src/people/views/family-view.php:755"
