@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use ChurchCRM\Utils\SystemIdentity;
 use Tester\Environment;
 
 define('APP_ROOT', getenv('PHP_TEST_APP_ROOT') ?: dirname(__DIR__, 2) . '/src');
@@ -24,6 +25,9 @@ spl_autoload_register(static function (string $class): void {
         require $path;
     }
 }, true, true);
+
+(new ReflectionProperty(SystemIdentity::class, 'path'))
+    ->setValue(null, sys_get_temp_dir() . '/crm-system-id-' . bin2hex(random_bytes(6)) . '.php');
 
 Environment::setup();
 date_default_timezone_set('UTC');

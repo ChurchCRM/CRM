@@ -18,6 +18,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\RequestUtils;
 use ChurchCRM\Utils\SQLUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
@@ -199,16 +200,14 @@ class Bootstrapper
             }
         }
 
-        // Auto-generate a stable anonymous installation UUID on first boot.
-        // A very narrow race window exists if two requests arrive simultaneously
-        // on a brand-new install, but the last writer wins in the DB and every
-        // subsequent request reads the persisted value — identical to the
-        // sTwoFASecretKey auto-generation pattern in LoadConfigs.php.
+        // The system ID file is canonical: sSystemID mirrors it, and a lost file is rewritten from sSystemID.
         // Runs AFTER the DB-upgrade check above: writing to config_cfg before the
         // schema is current fatals when a restored/older database's config_cfg is
         // missing a column default the current Propel model expects on INSERT.
-        if (empty(SystemConfig::getValue('sSystemID'))) {
-            SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
+        $storedSystemId = (string) SystemConfig::getValue('sSystemID');
+        $systemId = SystemIdentity::ensure($storedSystemId !== '' ? $storedSystemId : Uuid::uuid4()->toString());
+        if ($systemId !== null && $systemId !== $storedSystemId) {
+            SystemConfig::setValue('sSystemID', $systemId);
         }
 
         TelemetryService::syncLifecycle();

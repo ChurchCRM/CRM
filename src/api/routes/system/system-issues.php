@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -55,7 +56,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
             'Web Server |' . ($_SERVER['SERVER_SOFTWARE'] ?? 'Unknown') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
             'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
-            'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
+            'Installation ID |' . SystemIdentity::current() . "\r\n" .
             'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
             'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
             'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
