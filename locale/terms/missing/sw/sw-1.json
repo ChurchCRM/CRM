@@ -1,0 +1,12 @@
+{
+  "%d people added successfully; %d people could not be added and remain in the cart.": "",
+  "%d people could not be added and remain in your cart.": "",
+  "Failed to add person to group": "",
+  "Group Assignment": "",
+  "Retry Group Assignment": "",
+  "Retry group assignments": "",
+  "Select one or more groups for this person.": "",
+  "Select the groups you want to retry.": "",
+  "The person was saved, but one or more group assignments failed. Select the groups below and retry.": "",
+  "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": ""
+}

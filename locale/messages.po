@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 05:47+0000\n"
+"POT-Creation-Date: 2026-11-23 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,6 +259,14 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d payments are not on any deposit yet."
+msgstr ""
+
+#, php-format
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr ""
+
+#, php-format
+msgid "%d people could not be added and remain in your cart."
 msgstr ""
 
 #, php-format
@@ -6789,6 +6797,9 @@ msgstr ""
 msgid "Failed to add option"
 msgstr ""
 
+msgid "Failed to add person to group"
+msgstr ""
+
 msgid "Failed to add role. Please try again."
 msgstr ""
 
@@ -8343,6 +8354,9 @@ msgid "Grenada"
 msgstr ""
 
 msgid "Group"
+msgstr ""
+
+msgid "Group Assignment"
 msgstr ""
 
 msgid "Group Directory"
@@ -14677,6 +14691,12 @@ msgstr ""
 msgid "Retry Download"
 msgstr ""
 
+msgid "Retry Group Assignment"
+msgstr ""
+
+msgid "Retry group assignments"
+msgstr ""
+
 msgid "Return Home"
 msgstr ""
 
@@ -15426,7 +15446,13 @@ msgstr ""
 msgid "Select one deposit to print a bank slip."
 msgstr ""
 
+msgid "Select one or more groups for this person."
+msgstr ""
+
 msgid "Select the families to review."
+msgstr ""
+
+msgid "Select the groups you want to retry."
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -17471,6 +17497,12 @@ msgid "The permissions could not be loaded."
 msgstr ""
 
 msgid "The person loses this permission in the Member Portal at once."
+msgstr ""
+
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr ""
+
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
 msgstr ""
 
 msgid "The place where receipts are issued. Blank uses the city on Church Info."
