@@ -34,12 +34,18 @@ describe("Family view with no financial data", () => {
                 url: $form.attr("action"),
                 headers: { "content-type": "application/x-www-form-urlencoded" },
                 body: body.toString(),
+                followRedirect: false,
             });
         });
 
+    const assertFamilyView = (familyId, address) => {
+        cy.visit(`/people/family/${familyId}`);
+        cy.get("h2.page-title").should("contain.text", familyName);
+        cy.get("#family-profile-header").should("be.visible");
+        cy.get("#family-address-card").should("contain.text", address);
+    };
+
     it("renders a brand-new family with no financial records, and survives an edit + save", () => {
-        // Create the family through the editor form. The create POST redirects
-        // to the family view, so a 500 there already fails this request.
         cy.visit("/FamilyEditor.php");
         cy.get("#FamilyName").type(familyName);
         postEditorForm({
@@ -50,24 +56,17 @@ describe("Family view with no financial data", () => {
             Zip: "64111",
             Country: "US",
         }).then((response) => {
-            const familyId = Number(response.redirects.pop().split("/").pop());
-            expect(familyId).to.be.a("number").and.to.be.greaterThan(0);
+            expect(response.status).to.eq(302);
+            const familyId = Number(response.headers.location.split("/").pop());
+            expect(familyId).to.be.greaterThan(0);
             createdFamilyIds.push(familyId);
 
-            // The family view itself loads for the finance-enabled admin.
-            cy.visit(`/people/family/${familyId}`);
-            cy.get("#family-profile-header").should("be.visible").and("contain.text", familyName);
-            cy.get("#family-address-card").should("contain.text", street);
+            assertFamilyView(familyId, street);
 
-            // Edit the address and save: the post-save redirect renders the
-            // same family view (the #11876 failure shape).
             cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
             cy.get("#FamilyName").should("have.value", familyName);
-            postEditorForm({ Address1: newStreet }).then(() => {
-                cy.visit(`/people/family/${familyId}`);
-                cy.get("#family-profile-header").should("be.visible").and("contain.text", familyName);
-                cy.get("#family-address-card").should("contain.text", newStreet);
-            });
+            postEditorForm({ Address1: newStreet }).its("status").should("eq", 302);
+            assertFamilyView(familyId, newStreet);
         });
     });
 });
