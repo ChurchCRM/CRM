@@ -7038,5 +7038,18 @@
   "and {{count}} more": {
     "one": "i još {{count}}",
     "other": "i još {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Administratori će vidjeti upozorenje na svakoj stranici dok se baza podataka ne premjesti na podržanu verziju.",
+  "Database out of support": "Baza podataka nije podržana",
+  "Deactivated": "Deaktivirano",
+  "How to find the log": "Kako pronaći zapisnik",
+  "How to install server locales": "Kako instalirati jezične postavke poslužitelja",
+  "I understand this database is out of support": "Razumijem da ova baza podataka nije podržana",
+  "Last edited": "Zadnje uređeno",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Nije instalirano na poslužitelju, a nije instalirana ni engleska rezervna jezična postavka, pa će se sučelje prikazivati na engleskom.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Zapisnik ChurchCRM bilježi konkretan razlog. Uklonite imena prije dijeljenja.",
+  "Verify now": "Potvrdi sada",
+  "View Giving History": "Prikaži povijest darivanja",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Vaša baza podataka (%1$s %2$s) nije podržana i možda nije sigurna. ChurchCRM će raditi, ali toplo preporučujemo pružatelja s MariaDB %3$s+ ili MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Vaš poslužitelj baze podataka (%1$s %2$s) prestar je za ChurchCRM, koji treba MySQL %3$s ili MariaDB %4$s i novije."
 }

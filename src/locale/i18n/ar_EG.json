@@ -7143,5 +7143,18 @@
   "and {{count}} more": {
     "one": "و{{count}} آخر",
     "other": "و{{count}} أخرى"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "سيرى المسؤولون تحذيرًا في كل صفحة حتى يتم نقل قاعدة البيانات إلى إصدار مدعوم.",
+  "Database out of support": "قاعدة البيانات غير مدعومة",
+  "Deactivated": "مُعطَّل",
+  "How to find the log": "كيفية العثور على السجل",
+  "How to install server locales": "كيفية تثبيت إعدادات اللغة على الخادم",
+  "I understand this database is out of support": "أفهم أن قاعدة البيانات هذه غير مدعومة",
+  "Last edited": "آخر تعديل",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "غير مثبّت على الخادم، ولا توجد إعدادات لغة إنجليزية احتياطية مثبّتة أيضًا، لذا ستظهر الواجهة باللغة الإنجليزية.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "يسجّل سجل ChurchCRM السبب المحدد. أزل الأسماء قبل مشاركته.",
+  "Verify now": "تحقق الآن",
+  "View Giving History": "عرض سجل التبرعات",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "قاعدة البيانات الخاصة بك (%1$s %2$s) غير مدعومة وقد تكون غير آمنة. سيعمل ChurchCRM، لكننا نوصي بشدة بمستضيف يوفر MariaDB %3$s+ أو MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "خادم قاعدة البيانات الخاص بك (%1$s %2$s) قديم جدًا بالنسبة لـ ChurchCRM، الذي يحتاج إلى MySQL %3$s أو MariaDB %4$s أو أحدث."
 }

@@ -6968,5 +6968,18 @@
   "and {{count}} more": {
     "one": "还有 {{count}} 个",
     "other": "还有 {{count}} 个"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "在数据库迁移到受支持的版本之前，管理员将在每个页面上看到警告。",
+  "Database out of support": "数据库不受支持",
+  "Deactivated": "已停用",
+  "How to find the log": "如何查找日志",
+  "How to install server locales": "如何安装服务器区域设置",
+  "I understand this database is out of support": "我了解此数据库不受支持",
+  "Last edited": "最后编辑",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "未安装在服务器上，并且也没有安装英语后备区域设置，因此界面将以英文显示。",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM 日志会记录具体原因。分享前请删除姓名。",
+  "Verify now": "立即验证",
+  "View Giving History": "查看捐献历史",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "您的数据库（%1$s %2$s）不受支持，可能不安全。ChurchCRM 仍可运行，但我们强烈推荐使用带有 MariaDB %3$s+ 或 MySQL %4$s+ 的主机。",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "您的数据库服务器（%1$s %2$s）对 ChurchCRM 来说太旧了，需要 MySQL %3$s 或 MariaDB %4$s 及更高版本。"
 }

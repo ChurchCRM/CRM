@@ -6968,5 +6968,18 @@
   "and {{count}} more": {
     "one": "và thêm {{count}}",
     "other": "và thêm {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Quản trị viên sẽ thấy cảnh báo trên mọi trang cho đến khi cơ sở dữ liệu được chuyển sang phiên bản được hỗ trợ.",
+  "Database out of support": "Cơ sở dữ liệu không được hỗ trợ",
+  "Deactivated": "Đã hủy kích hoạt",
+  "How to find the log": "Cách tìm nhật ký",
+  "How to install server locales": "Cách cài đặt locale của máy chủ",
+  "I understand this database is out of support": "Tôi hiểu cơ sở dữ liệu này không được hỗ trợ",
+  "Last edited": "Chỉnh sửa lần cuối",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Chưa được cài đặt trên máy chủ, và cũng không có locale dự phòng tiếng Anh nào được cài đặt, vì vậy giao diện sẽ hiển thị bằng tiếng Anh.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Nhật ký ChurchCRM ghi lại lý do cụ thể. Hãy xóa tên trước khi chia sẻ.",
+  "Verify now": "Xác minh ngay",
+  "View Giving History": "Xem Lịch sử Quyên góp",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Cơ sở dữ liệu của bạn (%1$s %2$s) không được hỗ trợ và có thể không an toàn. ChurchCRM sẽ chạy, nhưng chúng tôi đặc biệt khuyên dùng máy chủ có MariaDB %3$s+ hoặc MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Máy chủ cơ sở dữ liệu của bạn (%1$s %2$s) quá cũ đối với ChurchCRM, vốn cần MySQL %3$s hoặc MariaDB %4$s trở lên."
 }

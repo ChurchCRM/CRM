@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "és még {{count}}",
     "other": "és még {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "A rendszergazdák minden oldalon figyelmeztetést fognak látni, amíg az adatbázis át nem kerül egy támogatott verzióra.",
+  "Database out of support": "Az adatbázis nem támogatott",
+  "Deactivated": "Deaktiválva",
+  "How to find the log": "Hogyan találja meg a naplót",
+  "How to install server locales": "A kiszolgáló területi beállításainak telepítése",
+  "I understand this database is out of support": "Megértem, hogy ez az adatbázis nem támogatott",
+  "Last edited": "Utoljára szerkesztve",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Nincs telepítve a szerveren, és angol tartalék területi beállítás sincs telepítve, így a felület angolul jelenik meg.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "A ChurchCRM napló rögzíti a konkrét okot. Megosztás előtt távolítsa el a neveket.",
+  "Verify now": "Ellenőrzés most",
+  "View Giving History": "Adományi előzmények megtekintése",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Az adatbázisa (%1$s %2$s) nem támogatott, és nem biztonságos lehet. A ChurchCRM működni fog, de erősen ajánlunk egy MariaDB %3$s+ vagy MySQL %4$s+ verziót kínáló tárhelyet.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Az adatbázis-kiszolgálója (%1$s %2$s) túl régi a ChurchCRM számára, amelynek MySQL %3$s vagy MariaDB %4$s és újabb szükséges."
 }

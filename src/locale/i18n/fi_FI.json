@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "ja {{count}} lisää",
     "other": "ja {{count}} lisää"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Ylläpitäjät näkevät varoituksen jokaisella sivulla, kunnes tietokanta siirretään tuettuun versioon.",
+  "Database out of support": "Tietokanta ei ole tuettu",
+  "Deactivated": "Deaktivoitu",
+  "How to find the log": "Miten löydät lokin",
+  "How to install server locales": "Palvelimen kieliasetusten asentaminen",
+  "I understand this database is out of support": "Ymmärrän, että tätä tietokantaa ei tueta",
+  "Last edited": "Viimeksi muokattu",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Ei asennettu palvelimelle, eikä myöskään englanninkielistä varalokaalia ole asennettu, joten käyttöliittymä näytetään englanniksi.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM-loki tallentaa tarkan syyn. Poista nimet ennen jakamista.",
+  "Verify now": "Vahvista nyt",
+  "View Giving History": "Näytä lahjoitushistoria",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Tietokantasi (%1$s %2$s) ei ole tuettu ja se voi olla vaarallinen. ChurchCRM toimii, mutta suosittelemme vahvasti isäntää, jossa on MariaDB %3$s+ tai MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Tietokantapalvelimesi (%1$s %2$s) on liian vanha ChurchCRM:lle, joka tarvitsee MySQL %3$s tai MariaDB %4$s tai uudemman."
 }

@@ -7073,5 +7073,18 @@
   "and {{count}} more": {
     "one": "a ďalšie {{count}}",
     "other": "a ďalšie {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Správcovia uvidia varovanie na každej stránke, kým sa databáza nepresunie na podporovanú verziu.",
+  "Database out of support": "Databáza nie je podporovaná",
+  "Deactivated": "Deaktivované",
+  "How to find the log": "Ako nájsť denník",
+  "How to install server locales": "Ako nainštalovať miestne nastavenia servera",
+  "I understand this database is out of support": "Rozumiem, že táto databáza nie je podporovaná",
+  "Last edited": "Naposledy upravené",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Nie je nainštalované na serveri a nie je nainštalované ani anglické záložné miestne nastavenie, takže rozhranie sa zobrazí v angličtine.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Denník ChurchCRM zaznamenáva konkrétny dôvod. Pred zdieľaním odstráňte mená.",
+  "Verify now": "Overiť teraz",
+  "View Giving History": "Zobraziť históriu darov",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Vaša databáza (%1$s %2$s) nie je podporovaná a nemusí byť bezpečná. ChurchCRM bude fungovať, ale dôrazne odporúčame poskytovateľa s MariaDB %3$s+ alebo MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Váš databázový server (%1$s %2$s) je pre ChurchCRM príliš starý, ktorý potrebuje MySQL %3$s alebo MariaDB %4$s a novší."
 }

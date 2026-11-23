@@ -7073,5 +7073,18 @@
   "and {{count}} more": {
     "one": "и ещё {{count}}",
     "other": "и ещё {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Администраторы будут видеть предупреждение на каждой странице, пока база данных не будет переведена на поддерживаемую версию.",
+  "Database out of support": "База данных не поддерживается",
+  "Deactivated": "Деактивировано",
+  "How to find the log": "Как найти журнал",
+  "How to install server locales": "Как установить локали сервера",
+  "I understand this database is out of support": "Я понимаю, что эта база данных не поддерживается",
+  "Last edited": "Последнее изменение",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Не установлено на сервере, и английская резервная локаль также не установлена, поэтому интерфейс будет отображаться на английском языке.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Журнал ChurchCRM записывает конкретную причину. Удалите имена перед тем, как делиться им.",
+  "Verify now": "Проверить сейчас",
+  "View Giving History": "Просмотреть историю благотворительных взносов",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Ваша база данных (%1$s %2$s) не поддерживается и может быть небезопасна. ChurchCRM будет работать, но мы настоятельно рекомендуем хостинг с MariaDB %3$s+ или MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Ваш сервер базы данных (%1$s %2$s) слишком старый для ChurchCRM, которому нужен MySQL %3$s или MariaDB %4$s и новее."
 }

@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "और {{count}} अधिक",
     "other": "और {{count}} अधिक"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "प्रशासकों को हर पेज पर चेतावनी दिखेगी जब तक डेटाबेस को समर्थित संस्करण पर नहीं ले जाया जाता।",
+  "Database out of support": "डेटाबेस समर्थित नहीं है",
+  "Deactivated": "निष्क्रिय किया गया",
+  "How to find the log": "लॉग कैसे खोजें",
+  "How to install server locales": "सर्वर लोकेल कैसे इंस्टॉल करें",
+  "I understand this database is out of support": "मैं समझता हूँ कि यह डेटाबेस समर्थित नहीं है",
+  "Last edited": "अंतिम संपादन",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "सर्वर पर स्थापित नहीं है, और कोई अंग्रेज़ी फ़ॉलबैक लोकेल भी स्थापित नहीं है, इसलिए इंटरफ़ेस अंग्रेज़ी में दिखेगा।",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "ChurchCRM लॉग विशिष्ट कारण दर्ज करता है। साझा करने से पहले नाम हटा दें।",
+  "Verify now": "अभी सत्यापित करें",
+  "View Giving History": "दान का इतिहास देखें",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "आपका डेटाबेस (%1$s %2$s) समर्थित नहीं है और असुरक्षित हो सकता है। ChurchCRM चलेगा, लेकिन हम MariaDB %3$s+ या MySQL %4$s+ वाले होस्ट की दृढ़ता से अनुशंसा करते हैं।",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "आपका डेटाबेस सर्वर (%1$s %2$s) ChurchCRM के लिए बहुत पुराना है, जिसे MySQL %3$s या MariaDB %4$s और बाद के संस्करण की आवश्यकता है।"
 }

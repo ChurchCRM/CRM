@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "እና {{count}} ተጨማሪ",
     "other": "እና {{count}} ተጨማሪ"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "አስተዳዳሪዎች ዳታቤዙ ወደሚደገፍ ሥሪት እስኪዘዋወር ድረስ በእያንዳንዱ ገጽ ላይ ማስጠንቀቂያ ያያሉ።",
+  "Database out of support": "ዳታቤዝ ከድጋፍ ውጭ",
+  "Deactivated": "ተቋርጧል",
+  "How to find the log": "ምዝገባ ማስታወሻውን እንዴት ማግኘት እንደሚቻል",
+  "How to install server locales": "የሰርቨር ቦታ ቅምጦችን እንዴት መጫን እንደሚቻል",
+  "I understand this database is out of support": "ይህ ዳታቤዝ ከድጋፍ ውጭ መሆኑን ተረድቻለሁ",
+  "Last edited": "በመጨረሻ የተስተካከለ",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "በሰርቨር ላይ አልተጫነም፣ የእንግሊዝኛ አማራጭ ቦታ ቅምጥም አልተጫነም፣ ስለዚህ በይነገጹ በእንግሊዝኛ ይታያል።",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "የChurchCRM ምዝገባ ማስታወሻ ትክክለኛውን ምክንያት ይመዘግባል። ከማጋራትዎ በፊት ስሞችን ያስወግዱ።",
+  "Verify now": "አሁን ያረጋግጡ",
+  "View Giving History": "የለገና ታሪክን ይመልከቱ",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "የእርስዎ ዳታቤዝ (%1$s %2$s) ከድጋፍ ውጭ ሲሆን ደህንነቱም ላይኖረው ይችላል። ChurchCRM ይሰራል፣ ግን MariaDB %3$s+ ወይም MySQL %4$s+ ያለው አስተናጋጅ በጥብቅ እንመክራለን።",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "የእርስዎ የዳታቤዝ ሰርቨር (%1$s %2$s) ለChurchCRM በጣም ያረጀ ነው፤ MySQL %3$s ወይም MariaDB %4$s እና ከዚያ በኋላ ያስፈልገዋል።"
 }

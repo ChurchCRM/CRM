@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "na {{count}} zaidi",
     "other": "na {{count}} zaidi"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Wasimamizi wataona onyo kwenye kila ukurasa hadi hifadhidata ihamishwe kwenye toleo linalotumika.",
+  "Database out of support": "Hifadhidata haitumiki",
+  "Deactivated": "Imezimwa",
+  "How to find the log": "Jinsi ya kupata kumbukumbu",
+  "How to install server locales": "Jinsi ya kusakinisha lugha za seva",
+  "I understand this database is out of support": "Naelewa hifadhidata hii haitumiki",
+  "Last edited": "Imehaririwa mwisho",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Haikusakinishwa kwenye seva, na hakuna lugha mbadala ya Kiingereza iliyosakinishwa pia, kwa hivyo kiolesura kitaonyeshwa kwa Kiingereza.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Kumbukumbu ya ChurchCRM inarekodi sababu maalum. Ondoa majina kabla ya kuishiriki.",
+  "Verify now": "Thibitisha sasa",
+  "View Giving History": "Angalia historia ya utoaji",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Hifadhidata yako (%1$s %2$s) haitumiki na inaweza kuwa si salama. ChurchCRM itafanya kazi, lakini tunapendekeza sana mwenyeji aliye na MariaDB %3$s+ au MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Seva yako ya hifadhidata (%1$s %2$s) ni ya zamani mno kwa ChurchCRM, inayohitaji MySQL %3$s au MariaDB %4$s na mpya zaidi."
 }

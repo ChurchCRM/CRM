@@ -7003,5 +7003,18 @@
   "and {{count}} more": {
     "one": "en nog {{count}}",
     "other": "en nog {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Beheerders zien op elke pagina een waarschuwing totdat de database is verplaatst naar een ondersteunde versie.",
+  "Database out of support": "Database wordt niet ondersteund",
+  "Deactivated": "Gedeactiveerd",
+  "How to find the log": "Hoe u het logboek vindt",
+  "How to install server locales": "Hoe u serverlocales installeert",
+  "I understand this database is out of support": "Ik begrijp dat deze database niet wordt ondersteund",
+  "Last edited": "Laatst bewerkt",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Niet geïnstalleerd op de server, en er is ook geen Engelse terugval-locale geïnstalleerd, dus de interface wordt in het Engels weergegeven.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Het ChurchCRM-logboek vermeldt de specifieke reden. Verwijder namen voordat u het deelt.",
+  "Verify now": "Nu verifiëren",
+  "View Giving History": "Givinggeschiedenis bekijken",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Uw database (%1$s %2$s) wordt niet ondersteund en is mogelijk onveilig. ChurchCRM zal werken, maar we raden een host met MariaDB %3$s+ of MySQL %4$s+ sterk aan.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Uw databaseserver (%1$s %2$s) is te oud voor ChurchCRM, dat MySQL %3$s of MariaDB %4$s en nieuwer nodig heeft."
 }

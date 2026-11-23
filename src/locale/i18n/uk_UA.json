@@ -7073,5 +7073,18 @@
   "and {{count}} more": {
     "one": "і ще {{count}}",
     "other": "і ще {{count}}"
-  }
+  },
+  "Administrators will see a warning on every page until the database is moved to a supported version.": "Адміністратори бачитимуть попередження на кожній сторінці, доки базу даних не буде переведено на підтримувану версію.",
+  "Database out of support": "База даних не підтримується",
+  "Deactivated": "Деактивовано",
+  "How to find the log": "Як знайти журнал",
+  "How to install server locales": "Як встановити локалі сервера",
+  "I understand this database is out of support": "Я розумію, що ця база даних не підтримується",
+  "Last edited": "Востаннє відредаговано",
+  "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.": "Не встановлено на сервері, і англійську резервну локаль також не встановлено, тому інтерфейс відображатиметься англійською мовою.",
+  "The ChurchCRM log records the specific reason. Remove names before you share it.": "Журнал ChurchCRM записує конкретну причину. Видаліть імена, перш ніж ділитися ним.",
+  "Verify now": "Перевірити зараз",
+  "View Giving History": "Переглянути історію пожертв",
+  "Your database (%1$s %2$s) is out of support and might be unsafe. ChurchCRM will run, but we strongly recommend a host with MariaDB %3$s+ or MySQL %4$s+.": "Ваша база даних (%1$s %2$s) не підтримується і може бути небезпечною. ChurchCRM працюватиме, але ми наполегливо рекомендуємо хостинг із MariaDB %3$s+ або MySQL %4$s+.",
+  "Your database server (%1$s %2$s) is too old for ChurchCRM, which needs MySQL %3$s or MariaDB %4$s and later.": "Ваш сервер бази даних (%1$s %2$s) занадто старий для ChurchCRM, якому потрібен MySQL %3$s або MariaDB %4$s і новіший."
 }
