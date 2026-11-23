@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
@@ -22,6 +23,7 @@ use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -57,7 +59,15 @@ if (array_key_exists('FamilyID', $_GET)) {
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
-// Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
+$canManageGroups = AuthenticationManager::getCurrentUser()->isManageGroupsEnabled();
+
+$isGroupAssignmentRetry = isset($_GET['GroupAssignmentRetry'])
+    && $_GET['GroupAssignmentRetry'] === '1';
+
+if ($isGroupAssignmentRetry && ($isNewPerson || !$canManageGroups)) {
+    DashboardLandingService::redirect();
+}
+
 $person = null;
 if (!$isNewPerson) {
     $person = PersonQuery::create()->findOneById($iPersonID);
@@ -67,7 +77,7 @@ if (!$isNewPerson) {
 
     $per_fam_ID = $person->getFamId();
 
-    if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    if (!$isGroupAssignmentRetry && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         DashboardLandingService::redirect();
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
@@ -75,6 +85,26 @@ if (!$isNewPerson) {
 }
 
 $customFieldService = new CustomFieldService();
+
+$retryGroupIds = [];
+if ($isGroupAssignmentRetry && isset($_GET['GroupIds'])) {
+    $retryGroupIds = array_map('intval', explode(',', (string) $_GET['GroupIds']));
+}
+
+$availableGroups = (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups)
+    ? GroupQuery::create()->orderByName()->find()
+    : [];
+
+$availableGroupIds = [];
+foreach ($availableGroups as $group) {
+    $availableGroupIds[] = (int) $group->getId();
+}
+
+$selectedGroupIds = array_values(array_intersect($retryGroupIds, $availableGroupIds));
+
+if ($isGroupAssignmentRetry && $selectedGroupIds === []) {
+    DashboardLandingService::redirect();
+}
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -160,12 +190,83 @@ $bFamilyCellPhone = 0;
 $bHomeBound = false;
 $aCustomData = [];
 
+// Retry group assignments without updating person fields.
+if ($isGroupAssignmentRetry && (
+    isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])
+)) {
+    http_response_code(403);
+    exit;
+}
+
+if (isset($_POST['GroupAssignmentRetrySubmit'])) {
+    if (!$isGroupAssignmentRetry || !$canManageGroups || $person === null) {
+        http_response_code(403);
+        exit;
+    }
+
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        exit;
+    }
+
+    $postedGroupIds = $_POST['GroupIds'] ?? [];
+
+    if (!is_array($postedGroupIds)) {
+        $postedGroupIds = [];
+    }
+
+    $requestedGroupIds = array_map(
+        'intval',
+        array_filter($postedGroupIds, 'is_scalar')
+    );
+
+    $selectedRetryGroupIds = array_values(array_unique(array_intersect(
+        $requestedGroupIds,
+        $selectedGroupIds,
+        $availableGroupIds
+    )));
+
+    // Keep groups that were not selected for this attempt.
+    $failedGroupIds = array_values(array_diff(
+        $selectedGroupIds,
+        $selectedRetryGroupIds
+    ));
+
+    $groupService = new GroupService();
+
+    foreach ($selectedRetryGroupIds as $groupId) {
+        if ($groupService->addUserToGroup($groupId, $iPersonID, 0) === false) {
+            $failedGroupIds[] = $groupId;
+        }
+    }
+
+    $failedGroupIds = array_values(array_unique($failedGroupIds));
+
+    if ($failedGroupIds !== []) {
+        RedirectUtils::redirect(
+            'PersonEditor.php?PersonID=' . $iPersonID
+                . '&GroupAssignmentRetry=1&GroupIds=' . implode(',', $failedGroupIds)
+        );
+    }
+
+    RedirectUtils::redirect(Person::getViewURIForId($iPersonID));
+}
+
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (!CSRFUtils::verifyRequest($_POST)) {
         http_response_code(403);
         exit;
     }
+    if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) {
+        $selectedGroupIds = (isset($_POST['GroupIds']) && is_array($_POST['GroupIds']))
+            ? array_values(array_unique(array_intersect(
+                array_map('intval', $_POST['GroupIds']),
+                $availableGroupIds
+            )))
+            : [];
+    }
+
     //Get all the variables from the request object and assign them locally
     $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
     $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
@@ -485,9 +586,20 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             (new FamilyService())->autoGeocodePerson($person);
         }
 
-        if (!$personAlreadyExist) {
-            $iPersonID = $person->getId();
+        $iPersonID = $person->getId();
+        $failedGroupIds = [];
 
+        if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) {
+            $groupService = new GroupService();
+
+            foreach ($selectedGroupIds as $groupId) {
+                if ($groupService->addUserToGroup($groupId, $iPersonID, 0) === false) {
+                    $failedGroupIds[] = $groupId;
+                }
+            }
+        }
+
+        if (!$personAlreadyExist) {
             $personCustom = new PersonCustom();
             $personCustom->setPerId($iPersonID);
             $personCustom->save();
@@ -499,6 +611,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Update the custom person fields.
         if ($numCustomFields > 0) {
             $customFieldService->savePersonValues((int) $iPersonID, $aCustomData);
+        }
+
+        if ($failedGroupIds !== []) {
+            RedirectUtils::redirect(
+                'PersonEditor.php?PersonID=' . $iPersonID
+                    . '&GroupAssignmentRetry=1&GroupIds=' . implode(',', $failedGroupIds)
+            );
         }
 
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
@@ -524,7 +643,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //FirstPass
     //Are we editing or adding?
 
-    if (!$isNewPerson) {
+    if (!$isNewPerson && !$isGroupAssignmentRetry) {
         //Editing....
         //Get all the data on this record
 
@@ -623,17 +742,94 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor" id="personEditor">
+<?php if ($isGroupAssignmentRetry) { ?>
+    <form
+        method="post"
+        action="PersonEditor.php?PersonID=<?= $iPersonID ?>&amp;GroupAssignmentRetry=1&amp;GroupIds=<?= implode(',', $selectedGroupIds) ?>"
+        name="GroupAssignmentRetryForm"
+        id="groupAssignmentRetryForm">
+        <?= CSRFUtils::getTokenInputField() ?>
+
+        <div class="alert alert-warning" role="alert">
+            <?= gettext('The person was saved, but one or more group assignments failed. Select the groups below and retry.') ?>
+        </div>
+
+        <div class="card clearfix">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <?= gettext('Retry Group Assignment') ?>
+                </h3>
+            </div>
+
+            <div class="card-body">
+                <label for="groupIds">
+                    <?= gettext('Groups') ?>:
+                </label>
+
+                <select
+                    name="GroupIds[]"
+                    id="groupIds"
+                    class="form-select"
+                    multiple
+                    size="6">
+                    <?php foreach ($availableGroups as $group) {
+                        $groupId = (int) $group->getId();
+
+                        if (!in_array($groupId, $selectedGroupIds, true)) {
+                            continue;
+                        }
+                    ?>
+                        <option value="<?= $groupId ?>" selected>
+                            <?= InputUtils::escapeHTML($group->getName()) ?>
+                        </option>
+                    <?php } ?>
+                </select>
+
+                <div class="form-text">
+                    <?= gettext('Select the groups you want to retry.') ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+            <button
+                type="submit"
+                name="GroupAssignmentRetrySubmit"
+                value="1"
+                class="btn btn-success">
+                <?= gettext('Retry group assignments') ?>
+            </button>
+
+            <a
+                href="<?= Person::getViewURIForId($iPersonID) ?>"
+                class="btn btn-secondary">
+                <?= gettext('Cancel') ?>
+            </a>
+        </div>
+    </form>
+
+<?php
+    require_once __DIR__ . '/Include/Footer.php';
+    exit;
+}
+?>
+<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?><?= $isGroupAssignmentRetry ? '&GroupAssignmentRetry=1' : '' ?>" name="PersonEditor" id="personEditor">
     <?= CSRFUtils::getTokenInputField() ?>
     <?php if ($bErrorFlag) {
-        ?>
+    ?>
         <div class="alert alert-danger alert-dismissable">
             <i class="fa-solid fa-ban"></i>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
-        <?php
+    <?php
     } ?>
+    <?php if ($isGroupAssignmentRetry) { ?>
+        <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <?= gettext('The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.') ?>
+        </div>
+    <?php } ?>
     <!-- Card 1: Name & Identity -->
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
@@ -644,14 +840,14 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Title"><?= gettext('Title') ?>:</label>
                     <input type="text" name="Title" id="Title"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sTitle)) ?>"
-                           class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr.') ?>">
+                        value="<?= InputUtils::escapeAttribute(stripslashes($sTitle)) ?>"
+                        class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr.') ?>">
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="FirstName"><?= gettext('First Name') ?>:</label>
                     <input type="text" name="FirstName" id="FirstName"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sFirstName)) ?>"
-                           class="form-control">
+                        value="<?= InputUtils::escapeAttribute(stripslashes($sFirstName)) ?>"
+                        class="form-control">
                     <?php if ($sFirstNameError) { ?>
                         <span class="text-danger small"><?= $sFirstNameError ?></span>
                     <?php } ?>
@@ -659,8 +855,8 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="MiddleName"><?= gettext('Middle') ?>:</label>
                     <input type="text" name="MiddleName" id="MiddleName"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sMiddleName)) ?>"
-                           class="form-control">
+                        value="<?= InputUtils::escapeAttribute(stripslashes($sMiddleName)) ?>"
+                        class="form-control">
                     <?php if ($sMiddleNameError) { ?>
                         <span class="text-danger small"><?= $sMiddleNameError ?></span>
                     <?php } ?>
@@ -668,8 +864,8 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="LastName"><?= gettext('Last Name') ?>:</label>
                     <input type="text" name="LastName" id="LastName"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sLastName)) ?>"
-                           class="form-control">
+                        value="<?= InputUtils::escapeAttribute(stripslashes($sLastName)) ?>"
+                        class="form-control">
                     <?php if ($sLastNameError) { ?>
                         <span class="text-danger small"><?= $sLastNameError ?></span>
                     <?php } ?>
@@ -677,8 +873,8 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Suffix"><?= gettext('Suffix') ?>:</label>
                     <input type="text" name="Suffix" id="Suffix"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sSuffix)) ?>"
-                           placeholder="<?= gettext('Jr., Sr.') ?>" class="form-control">
+                        value="<?= InputUtils::escapeAttribute(stripslashes($sSuffix)) ?>"
+                        placeholder="<?= gettext('Jr., Sr.') ?>" class="form-control">
                 </div>
                 <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Gender"><?= gettext('Gender') ?>:</label>
@@ -730,7 +926,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="BirthYear"><?= gettext('Year') ?>:</label>
                     <input type="text" id="BirthYear" name="BirthYear" value="<?= $iBirthYear ?>"
-                           maxlength="4" placeholder="YYYY" class="form-control">
+                        maxlength="4" placeholder="YYYY" class="form-control">
                     <?php if ($sBirthYearError) { ?>
                         <span class="text-danger small"><?= $sBirthYearError ?></span>
                     <?php } ?>
@@ -779,7 +975,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <select name="Grade" id="Grade" class="form-select">
                         <option value=""><?= gettext('Unassigned') ?></option>
                         <?php foreach (GradeService::names() as $gradeId => $gradeName) { ?>
-                            <option value="<?= (int) $gradeId ?>"<?= $iGrade === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
+                            <option value="<?= (int) $gradeId ?>" <?= $iGrade === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -787,86 +983,131 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
     </div>
 
-    <!-- Card 2: Address -->
-    <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
-    <div class="card clearfix">
-        <div class="card-header d-flex align-items-center">
-            <h3 class="card-title"><?= gettext('Address') ?></h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="mb-3 col-12 col-md-6">
-                    <label for="Address1">
-                        <?= $bFamilyAddress1 ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Address') ?> 1:
-                        <?= $bFamilyAddress1 ? '</span>' : '' ?>
+    <!-- Group Assignment -->
+    <?php if (($isNewPerson || $isGroupAssignmentRetry) && $canManageGroups) { ?>
+        <div class="card clearfix">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title">
+                    <?= gettext('Group Assignment') ?>
+                </h3>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="groupIds">
+                        <?= gettext('Groups') ?>:
                     </label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                        <input type="text" name="Address1" id="Address1"
-                               value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"
-                               maxlength="250" class="form-control">
+
+                    <select
+                        name="GroupIds[]"
+                        id="groupIds"
+                        class="form-select"
+                        multiple>
+                        <?php foreach ($availableGroups as $group) { ?>
+                            <?php $groupId = (int) $group->getId(); ?>
+
+                            <option
+                                value="<?= $groupId ?>"
+                                <?= in_array(
+                                    $groupId,
+                                    $selectedGroupIds,
+                                    true
+                                ) ? 'selected' : '' ?>>
+                                <?= InputUtils::escapeHTML($group->getName()) ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+
+                    <div class="form-text">
+                        <?= gettext(
+                            'Select one or more groups for this person.'
+                        ) ?>
                     </div>
                 </div>
-                <div class="mb-3 col-12 col-md-6">
-                    <label for="Address2">
-                        <?= $bFamilyAddress2 ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Address') ?> 2:
-                        <?= $bFamilyAddress2 ? '</span>' : '' ?>
-                    </label>
-                    <input type="text" name="Address2" id="Address2"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>"
-                           maxlength="250" class="form-control">
-                </div>
             </div>
-            <div class="row">
-                <div class="mb-3 col-12 col-sm-6 col-md-4">
-                    <label for="City">
-                        <?= $bFamilyCity ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('City') ?>:
-                        <?= $bFamilyCity ? '</span>' : '' ?>
-                    </label>
-                    <input type="text" name="City" id="City"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
-                           class="form-control">
+        </div>
+    <?php } ?>
+
+    <!-- Card 2: Address -->
+    <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
+        <div class="card clearfix">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><?= gettext('Address') ?></h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="Address1">
+                            <?= $bFamilyAddress1 ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('Address') ?> 1:
+                            <?= $bFamilyAddress1 ? '</span>' : '' ?>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                            <input type="text" name="Address1" id="Address1"
+                                value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"
+                                maxlength="250" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="Address2">
+                            <?= $bFamilyAddress2 ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('Address') ?> 2:
+                            <?= $bFamilyAddress2 ? '</span>' : '' ?>
+                        </label>
+                        <input type="text" name="Address2" id="Address2"
+                            value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>"
+                            maxlength="250" class="form-control">
+                    </div>
                 </div>
-                <div id="stateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
-                    <label for="State">
-                        <?= $bFamilyState ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('State') ?>:
-                        <?= $bFamilyState ? '</span>' : '' ?>
-                    </label>
-                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
-                    </select>
-                </div>
-                <div id="stateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
-                    <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
-                    <input type="text" name="StateTextbox" id="StateTextbox"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>"
-                           maxlength="30" class="form-control">
-                </div>
-                <div class="mb-3 col-12 col-sm-6 col-md-2">
-                    <label for="Zip">
-                        <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Zip Code') ?>:
-                        <?= $bFamilyZip ? '</span>' : '' ?>
-                    </label>
-                    <input type="text" name="Zip" id="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>"
-                           value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
-                           maxlength="10">
-                </div>
-                <div class="mb-3 col-12 col-sm-6 col-md-3">
-                    <label for="Country">
-                        <?= $bFamilyCountry ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Country') ?>:
-                        <?= $bFamilyCountry ? '</span>' : '' ?>
-                    </label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
-                    </select>
+                <div class="row">
+                    <div class="mb-3 col-12 col-sm-6 col-md-4">
+                        <label for="City">
+                            <?= $bFamilyCity ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('City') ?>:
+                            <?= $bFamilyCity ? '</span>' : '' ?>
+                        </label>
+                        <input type="text" name="City" id="City"
+                            value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
+                            class="form-control">
+                    </div>
+                    <div id="stateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
+                        <label for="State">
+                            <?= $bFamilyState ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('State') ?>:
+                            <?= $bFamilyState ? '</span>' : '' ?>
+                        </label>
+                        <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
+                        </select>
+                    </div>
+                    <div id="stateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
+                        <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
+                        <input type="text" name="StateTextbox" id="StateTextbox"
+                            value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>"
+                            maxlength="30" class="form-control">
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6 col-md-2">
+                        <label for="Zip">
+                            <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('Zip Code') ?>:
+                            <?= $bFamilyZip ? '</span>' : '' ?>
+                        </label>
+                        <input type="text" name="Zip" id="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>"
+                            value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
+                            maxlength="10">
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6 col-md-3">
+                        <label for="Country">
+                            <?= $bFamilyCountry ? '<span class="text-danger">' : '' ?>
+                            <?= gettext('Country') ?>:
+                            <?= $bFamilyCountry ? '</span>' : '' ?>
+                        </label>
+                        <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php } else { // Hidden fields when address is hidden
         $sHiddenCity = $isNewPerson ? '' : $sCity;
         $sHiddenState = $isNewPerson ? '' : $sState;
@@ -904,9 +1145,9 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                             <input type="tel" name="HomePhone" id="HomePhone"
-                                   value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
-                                   maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
+                                value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
+                                maxlength="30" class="form-control"
+                                data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
                             <span class="input-group-text gap-2">
                                 <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
                                 <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
@@ -926,9 +1167,9 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
                             <input type="tel" name="CellPhone" id="CellPhone"
-                                   value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
-                                   maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
+                                value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
+                                maxlength="30" class="form-control"
+                                data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
                             <span class="input-group-text gap-2">
                                 <input class="form-check-input mt-0" type="checkbox" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
                                 <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
@@ -948,9 +1189,9 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
                             <input type="tel" name="WorkPhone" id="WorkPhone"
-                                   value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
-                                   maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
+                                value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
+                                maxlength="30" class="form-control"
+                                data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
                             <span class="input-group-text gap-2">
                                 <input class="form-check-input mt-0" type="checkbox" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
                                 <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
@@ -966,8 +1207,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
-                                   value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
-                                   maxlength="100" class="form-control"<?= $bEmailLocked ? ' readonly aria-describedby="EmailHint"' : ($sEmailHint !== '' ? ' aria-describedby="EmailHint"' : '') ?>>
+                                value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
+                                maxlength="100" class="form-control" <?= $bEmailLocked ? ' readonly aria-describedby="EmailHint"' : ($sEmailHint !== '' ? ' aria-describedby="EmailHint"' : '') ?>>
                         </div>
                         <?php if ($sEmailHint !== '') { ?>
                             <div class="form-text" id="EmailHint"><?= InputUtils::escapeHTML($sEmailHint) ?></div>
@@ -981,8 +1222,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
                             <input type="email" name="WorkEmail" id="WorkEmail"
-                                   value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>"
-                                   maxlength="100" class="form-control">
+                                value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>"
+                                maxlength="100" class="form-control">
                         </div>
                         <?php if ($sWorkEmailError) { ?>
                             <span class="text-danger small"><?= $sWorkEmailError ?></span>
@@ -1005,8 +1246,8 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-facebook"></i></span>
                         <input type="text" name="Facebook" id="Facebook"
-                               value="<?= InputUtils::escapeAttribute($sFacebook) ?>"
-                               maxlength="50" class="form-control">
+                            value="<?= InputUtils::escapeAttribute($sFacebook) ?>"
+                            maxlength="50" class="form-control">
                     </div>
                     <?php if ($sFacebookError) { ?>
                         <span class="text-danger small"><?= $sFacebookError ?></span>
@@ -1017,8 +1258,8 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-x-twitter"></i></span>
                         <input type="text" name="Twitter" id="Twitter"
-                               value="<?= InputUtils::escapeAttribute($sTwitter) ?>"
-                               maxlength="50" class="form-control">
+                            value="<?= InputUtils::escapeAttribute($sTwitter) ?>"
+                            maxlength="50" class="form-control">
                     </div>
                     <?php if ($sTwitterError) { ?>
                         <span class="text-danger small"><?= $sTwitterError ?></span>
@@ -1029,8 +1270,8 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-linkedin"></i></span>
                         <input type="text" name="LinkedIn" id="LinkedIn"
-                               value="<?= InputUtils::escapeAttribute($sLinkedIn) ?>"
-                               maxlength="50" class="form-control">
+                            value="<?= InputUtils::escapeAttribute($sLinkedIn) ?>"
+                            maxlength="50" class="form-control">
                     </div>
                     <?php if ($sLinkedInError) { ?>
                         <span class="text-danger small"><?= $sLinkedInError ?></span>
@@ -1067,39 +1308,39 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
-                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
+                            value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
+                            placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
                     <?php } ?>
                 </div>
                 <?php if (!SystemConfig::getBooleanValue('bHideFriendDate')) { ?>
-                <div class="mb-3 col-12 col-sm-6 col-md-3">
-                    <label for="FriendDate"><?= gettext('Friend Date') ?>:</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
-                        <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
-                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
+                    <div class="mb-3 col-12 col-sm-6 col-md-3">
+                        <label for="FriendDate"><?= gettext('Friend Date') ?>:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
+                            <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
+                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
+                                placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
+                        </div>
+                        <?php if ($sFriendDateError) { ?>
+                            <span class="text-danger small"><?= $sFriendDateError ?></span>
+                        <?php } ?>
                     </div>
-                    <?php if ($sFriendDateError) { ?>
-                        <span class="text-danger small"><?= $sFriendDateError ?></span>
-                    <?php } ?>
-                </div>
                 <?php } ?>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label class="form-label d-block"><?= gettext('Deceased') ?></label>
                     <div class="form-check mt-2">
                         <input type="checkbox" class="form-check-input" id="IsDeceased" name="IsDeceased"
-                               value="1" <?= $bIsDeceased ? 'checked' : '' ?>>
+                            value="1" <?= $bIsDeceased ? 'checked' : '' ?>>
                         <label class="form-check-label" for="IsDeceased"><?= gettext('This person is deceased') ?></label>
                     </div>
                     <div class="input-group mt-2" id="DeceasedDateGroup" <?= $bIsDeceased ? '' : 'style="display:none"' ?>>
                         <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
                         <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
-                               value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
+                            value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
+                            placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sDateDeceasedError) { ?>
                         <span class="text-danger small"><?= $sDateDeceasedError ?></span>
@@ -1115,31 +1356,31 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
             <div class="card-body">
                 <?php
-                    $customPhoneFields = [];
-                    mysqli_data_seek($rsCustomFields, 0);
-                    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                        extract($rowCustomField);
-                        if ($customFieldService->canView((int) $custom_FieldSec)) {
-                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . InputUtils::escapeAttribute($custom_Field) . '">' . InputUtils::escapeHTML($custom_Name) . '</label>';
+                $customPhoneFields = [];
+                mysqli_data_seek($rsCustomFields, 0);
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
+                    extract($rowCustomField);
+                    if ($customFieldService->canView((int) $custom_FieldSec)) {
+                        echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . InputUtils::escapeAttribute($custom_Field) . '">' . InputUtils::escapeHTML($custom_Name) . '</label>';
 
-                            if (array_key_exists($custom_Field, $aCustomData)) {
-                                $currentFieldData = trim($aCustomData[$custom_Field]);
-                            } else {
-                                $currentFieldData = '';
-                            }
-
-                            if ($type_ID == 11) {
-                                $custom_Special = null;
-                                $customPhoneFields[] = ['checkboxName' => $custom_Field . 'noformat', 'inputName' => $custom_Field];
-                            }
-
-                            CustomFieldUtils::renderForm($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
-                            if (isset($aCustomErrors[$custom_Field]) && !empty($aCustomErrors[$custom_Field])) {
-                                echo '<span class="text-danger small">' . $aCustomErrors[$custom_Field] . '</span>';
-                            }
-                            echo '</div></div>';
+                        if (array_key_exists($custom_Field, $aCustomData)) {
+                            $currentFieldData = trim($aCustomData[$custom_Field]);
+                        } else {
+                            $currentFieldData = '';
                         }
+
+                        if ($type_ID == 11) {
+                            $custom_Special = null;
+                            $customPhoneFields[] = ['checkboxName' => $custom_Field . 'noformat', 'inputName' => $custom_Field];
+                        }
+
+                        CustomFieldUtils::renderForm($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
+                        if (isset($aCustomErrors[$custom_Field]) && !empty($aCustomErrors[$custom_Field])) {
+                            echo '<span class="text-danger small">' . $aCustomErrors[$custom_Field] . '</span>';
+                        }
+                        echo '</div></div>';
                     }
+                }
                 ?>
             </div>
         </div>
@@ -1152,19 +1393,19 @@ require_once __DIR__ . '/Include/Header.php';
         </button>
         <!-- Secondary action: Save and Add (blue) -->
         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-        <button type="submit" name="PersonSubmitAndAdd" class="btn btn-info flex-grow-1">
-            <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Save and Add') ?>
-        </button>
+            <button type="submit" name="PersonSubmitAndAdd" class="btn btn-info flex-grow-1">
+                <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Save and Add') ?>
+            </button>
         <?php } ?>
         <!-- Tertiary action: Cancel (gray) -->
         <?php if ($iPersonID > 0) { ?>
-        <a href="<?= Person::getViewURIForId($iPersonID) ?>" class="btn btn-secondary">
-            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
-        </a>
+            <a href="<?= Person::getViewURIForId($iPersonID) ?>" class="btn btn-secondary">
+                <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+            </a>
         <?php } else { ?>
-        <a href="people/list" class="btn btn-secondary">
-            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
-        </a>
+            <a href="people/list" class="btn btn-secondary">
+                <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+            </a>
         <?php } ?>
     </div>
 </form>
@@ -1173,13 +1414,22 @@ require_once __DIR__ . '/Include/Header.php';
     $(function() {
         // Initialize phone mask toggles FIRST, before applying masks globally
         // This ensures phone fields with"No format" checked don't get masked
-        var phoneFields = [
-            { checkboxName: 'NoFormat_HomePhone', inputName: 'HomePhone' },
-            { checkboxName: 'NoFormat_WorkPhone', inputName: 'WorkPhone' },
-            { checkboxName: 'NoFormat_CellPhone', inputName: 'CellPhone' }
+        var phoneFields = [{
+                checkboxName: 'NoFormat_HomePhone',
+                inputName: 'HomePhone'
+            },
+            {
+                checkboxName: 'NoFormat_WorkPhone',
+                inputName: 'WorkPhone'
+            },
+            {
+                checkboxName: 'NoFormat_CellPhone',
+                inputName: 'CellPhone'
+            }
         ];
+
         <?php if (!empty($customPhoneFields)) { ?>
-        phoneFields = phoneFields.concat(<?= InputUtils::jsonEncodeForScript($customPhoneFields) ?>);
+            phoneFields = phoneFields.concat(<?= InputUtils::jsonEncodeForScript($customPhoneFields) ?>);
         <?php } ?>
         window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
 
