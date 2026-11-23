@@ -20,14 +20,13 @@ updates:
       # Remove this entry when a newer 2.x release addresses them.
       - dependency-name: "quill"
         versions: ["2.0.3"]
-      # Majors of these are planned upgrades on their own branch, because the
-      # build and the Cypress suite need changes first. Remove an entry to let
-      # Dependabot propose that major.
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "cypress"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "i18next"
+      # Majors are never Dependabot PRs (maintainer policy, Nov 23, 2026):
+      # every major upgrade starts as an issue, where the upgrade is tested
+      # and verified before any PR is created. This wildcard covers every
+      # package, including typescript, cypress and i18next, whose majors were
+      # previously ignored one by one. Remove it to let Dependabot propose
+      # majors again.
+      - dependency-name: "*"
         update-types: ["version-update:semver-major"]
     groups:
       # Named groups come first; the dev and runtime minor/patch groups take the
@@ -96,6 +95,10 @@ updates:
     commit-message:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
+    ignore:
+      # Majors are upgrade issues, tested and verified before any PR (see npm).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     groups:
       # Named groups come first; the dev and runtime minor/patch groups take the
       # rest.
@@ -140,6 +143,10 @@ updates:
     commit-message:
       prefix: "chore(deps)"
     open-pull-requests-limit: 2
+    ignore:
+      # Majors are upgrade issues, tested and verified before any PR (see npm).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions workflows
   - package-ecosystem: "github-actions"
@@ -152,6 +159,10 @@ updates:
     commit-message:
       prefix: "chore(ci)"
     open-pull-requests-limit: 3
+    ignore:
+      # Majors are upgrade issues, tested and verified before any PR (see npm).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     groups:
       # Group all actions together into single PR
       actions:
