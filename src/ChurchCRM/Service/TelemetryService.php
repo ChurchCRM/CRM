@@ -244,15 +244,22 @@ class TelemetryService
      * document root's device and inode, which hold no server name or path, so repeated attempts on one
      * server count as one installation. Sent at every level.
      */
-    public static function captureInstallFailure(string $reason): void
+    public static function captureInstallFailure(string $reason, ?string $serverVersion = null): void
     {
         $installId = self::unconfiguredInstallId();
         if ($installId === null) {
             return;
         }
-        self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+        $properties = array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'failure_reason' => in_array($reason, self::INSTALL_FAILURE_REASONS, true) ? $reason : 'other',
-        ]), $installId);
+        ]);
+        if ($serverVersion !== null && $serverVersion !== '') {
+            // The caller may know the attempted server version even when no
+            // connection is available here (e.g. the setup wizard's own probe
+            // succeeded before a later step failed).
+            $properties = array_merge($properties, self::databaseProperties($serverVersion));
+        }
+        self::capture('install_failed', $properties, $installId);
     }
 
     /**
@@ -270,7 +277,6 @@ class TelemetryService
             return;
         }
         self::capture('requirements_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
-            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'failed_requirements' => $failedRequirements,
         ]), $installId);
     }
@@ -545,6 +551,7 @@ class TelemetryService
             'crm_version' => $version,
             'install_profile' => self::installProfile(),
             'church_country' => self::churchCountry(),
+            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
         ];
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
@@ -584,6 +591,14 @@ class TelemetryService
         $churchCountry = self::churchCountry();
         if ($churchCountry !== null) {
             $properties['church_country'] = $churchCountry;
+        }
+
+        try {
+            $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
+            $properties += self::databaseProperties($serverVersion);
+        } catch (\Throwable) {
+            // Database properties are best-effort: an event must still send
+            // when no connection is available (e.g. an early-boot log error).
         }
 
         return $properties;

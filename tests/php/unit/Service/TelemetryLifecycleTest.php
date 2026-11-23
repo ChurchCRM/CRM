@@ -87,7 +87,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
             Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
-            $keys = ['crm_version', 'install_profile', 'church_country', 'database_engine', 'database_version'];
+            $keys = ['crm_version', 'install_profile', 'church_country', 'php_version', 'database_engine', 'database_version'];
             if ($payload['event'] !== 'install_observed') {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
@@ -109,6 +109,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             Assert::same($payload['event'] === 'upgrade_failed' ? VersionUtils::getInstalledVersion() : '7.8.4', $properties['crm_version']);
             Assert::same('mariadb', $properties['database_engine']);
             Assert::same('10.11', $properties['database_version']);
+            Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $properties['php_version']);
         }
 
         $GLOBALS['lifecyclePayloads'] = [];
@@ -167,6 +168,20 @@ $configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProf
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');
 Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+
+// With the fake connection live, base properties carry its database identity.
+$baseProperties = new \ReflectionMethod(TelemetryService::class, 'baseProperties');
+$base = $baseProperties->invoke(null);
+Assert::same('mariadb', $base['database_engine']);
+Assert::same('10.11', $base['database_version']);
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $base['php_version']);
+
+// A caller-supplied server version wins over the connection's own version.
+$GLOBALS['lifecyclePayloads'] = [];
+TelemetryService::captureInstallFailure('other', '8.4.5-private-host');
+Assert::same('mysql', $GLOBALS['lifecyclePayloads'][0]['properties']['database_engine']);
+Assert::same('8.4', $GLOBALS['lifecyclePayloads'][0]['properties']['database_version']);
+Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $GLOBALS['lifecyclePayloads'][0]['properties']['php_version']);
 
 $_SERVER['HTTP_HOST'] = 'stmarys.example.org:8080';
 Assert::same(
