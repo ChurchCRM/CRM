@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Ikka järjekorras, saadetakse automaatselt: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Järjekord tühjendati. Sõnumeid, mida ei saadeta: {{total}}",
   "This email batch was queued by another user": "Selle e-kirjade hulga pani järjekorda teine kasutaja",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Pärast importimist saad halduri töölaual kasutada käsku Lähtesta andmebaas, et kustutada kõik andmed ja alustada puhtalt lehelt. Rakenduse seadistus säilib.",
   "Importing demo data...": "Demoadmete importimine...",
   "Please do not refresh or navigate away": "Palun ära värskenda lehte ega lahku sellelt",
   "Skip to main content": "Liigu põhisisu juurde",

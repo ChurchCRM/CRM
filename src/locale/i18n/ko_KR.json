@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "아직 대기 중이며 자동으로 보내집니다: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "대기열을 비웠습니다. 보내지 않을 메일: {{total}}",
   "This email batch was queued by another user": "이 이메일 일괄 발송은 다른 사용자가 대기열에 넣었습니다",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "가져온 뒤 관리 대시보드의 데이터베이스 초기화로 모든 데이터를 지우고 새로 시작할 수 있습니다. 응용 프로그램 설정은 유지됩니다.",
   "Importing demo data...": "예시 데이터를 가져오는 중...",
   "Please do not refresh or navigate away": "새로고침하거나 이 페이지를 떠나지 마세요",
   "Skip to main content": "본문으로 건너뛰기",

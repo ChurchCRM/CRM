@@ -5432,7 +5432,6 @@
   "Still queued, to be sent automatically: {{total}}": "まだ送信待ちで、自動送信されます: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "送信待ちを空にしました。送信されないメール: {{total}}",
   "This email batch was queued by another user": "このメール一括送信は別のユーザーが送信待ちにしました",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "取り込み後、管理画面の「データベースを初期化」ですべてのデータを消去してやり直せます。アプリケーションの設定は残ります。",
   "Importing demo data...": "サンプルデータを取り込んでいます...",
   "Please do not refresh or navigate away": "再読み込みしたり、このページから移動したりしないでください",
   "Skip to main content": "主な内容へ移動",

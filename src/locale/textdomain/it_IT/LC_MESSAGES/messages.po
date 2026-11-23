@@ -22553,10 +22553,6 @@ msgid "This email batch was queued by another user"
 msgstr "Questo lotto di e-mail è stato messo in coda da un altro utente"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Dopo l'importazione, puoi usare Ripristina database nel Dashboard Amministratore per cancellare tutti i dati e ricominciare. La configurazione dell'applicazione sarà conservata."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Importazione dei dati dimostrativi..."
 

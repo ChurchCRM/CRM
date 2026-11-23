@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Még sorban, automatikus küldésre: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "A sor ki lett ürítve. Üzenetek, amelyek nem lesznek elküldve: {{total}}",
   "This email batch was queued by another user": "Ezt az e-mail-köteget egy másik felhasználó állította sorba",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Importálás után az adminisztrátori irányítópulton az Adatbázis visszaállítása segítségével törölheti az összes adatot, és újrakezdheti. Az alkalmazás beállításai megmaradnak.",
   "Importing demo data...": "Bemutatóadatok importálása...",
   "Please do not refresh or navigate away": "Ne frissítse az oldalt, és ne navigáljon el",
   "Skip to main content": "Ugrás a fő tartalomra",

@@ -22618,10 +22618,6 @@ msgid "This email batch was queued by another user"
 msgstr "Acest lot de e-mailuri a fost pus în coadă de alt utilizator"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "După import, puteți folosi Resetare bază de date în Panoul de control administrator pentru a șterge toate datele și a o lua de la capăt. Configurația aplicației va fi păstrată."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Se importă datele demonstrative..."
 

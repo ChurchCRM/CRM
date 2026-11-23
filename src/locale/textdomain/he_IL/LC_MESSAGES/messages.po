@@ -22531,10 +22531,6 @@ msgid "This email batch was queued by another user"
 msgstr "אצוות הדוא״ל הזו הוכנסה לתור על ידי משתמש אחר"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "אחרי הייבוא אפשר להשתמש באיפוס מסד הנתונים בלוח הניהול כדי לנקות את כל הנתונים ולהתחיל מחדש. תצורת היישום תישמר."
-
-#: 
 msgid "Importing demo data..."
 msgstr "מייבא נתוני הדגמה..."
 

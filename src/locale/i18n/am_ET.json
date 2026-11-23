@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "አሁንም በወረፋ፣ በራስ-ሰር ይላካሉ፦ {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "ወረፋው ተጸድቷል። የማይላኩ መልዕክቶች፦ {{total}}",
   "This email batch was queued by another user": "ይህን የደብዳቤ ስብስብ ሌላ ተጠቃሚ ወደ ወረፋ አስገብቶታል",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "ከማስመጣት በኋላ ሁሉንም ውሂብ አጽድተው እንደገና ለመጀመር በአስተዳዳሪ ዳሽቦርድ ላይ የመረጃ ጎታ ዳግም ማስጀመርን መጠቀም ይችላሉ። የመተግበሪያው ቅንብር ይጠበቃል።",
   "Importing demo data...": "የሙከራ ውሂብ በማስመጣት ላይ...",
   "Please do not refresh or navigate away": "እባክዎ አያድሱ ወይም አይውጡ",
   "Skip to main content": "ወደ ዋናው ይዘት ዝለል",

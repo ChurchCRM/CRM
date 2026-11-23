@@ -22524,10 +22524,6 @@ msgid "This email batch was queued by another user"
 msgstr "Këtë grup emaili e vendosi në radhë një përdorues tjetër"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Pas importimit, mund të përdorni Rivendos bazën e të dhënave në Panelin e administratorit për të pastruar të gjitha të dhënat dhe për të filluar nga e para. Konfigurimi i aplikacionit do të ruhet."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Po importohen të dhënat demonstruese..."
 

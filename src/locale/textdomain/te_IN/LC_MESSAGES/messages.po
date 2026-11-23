@@ -22511,10 +22511,6 @@ msgid "This email batch was queued by another user"
 msgstr "ఈ ఈమెయిల్ సమూహాన్ని మరో వాడుకరి వరుసలో చేర్చారు"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "దిగుమతి తర్వాత, మొత్తం దత్తాంశాన్ని తొలగించి కొత్తగా ప్రారంభించడానికి నిర్వాహక పలకలో దత్తాంశకోశాన్ని శుభ్రం చేయవచ్చు. మీ అనువర్తన స్వరూపణం భద్రంగా ఉంటుంది."
-
-#: 
 msgid "Importing demo data..."
 msgstr "నమూనా దత్తాంశం దిగుమతి అవుతోంది..."
 

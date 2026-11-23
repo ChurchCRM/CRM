@@ -22533,10 +22533,6 @@ msgid "This email batch was queued by another user"
 msgstr "Bu e-posta toplu işini başka bir kullanıcı kuyruğa aldı"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "İçe aktardıktan sonra tüm verileri silip yeniden başlamak için Yönetici Panosundaki Veritabanını Sıfırla seçeneğini kullanabilirsiniz. Uygulama yapılandırmanız korunur."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demo veriler içe aktarılıyor..."
 

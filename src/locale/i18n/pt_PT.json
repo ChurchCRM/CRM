@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Ainda em fila, a enviar automaticamente: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "A fila foi limpa. Mensagens que não serão enviadas: {{total}}",
   "This email batch was queued by another user": "Este lote de e-mails foi colocado em fila por outro utilizador",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Depois de importar, pode usar Redefinir Base de Dados no Painel de administração para limpar todos os dados e recomeçar. A configuração da aplicação será preservada.",
   "Importing demo data...": "A importar dados de demonstração...",
   "Please do not refresh or navigate away": "Não atualize nem saia da página",
   "Skip to main content": "Saltar para o conteúdo principal",

@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Fortsatt i kø, sendes automatisk: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Køen ble tømt. Meldinger som ikke blir sendt: {{total}}",
   "This email batch was queued by another user": "Denne e-postgruppen ble lagt i kø av en annen bruker",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Etter importen kan du bruke Tilbakestill database på administratoroversikten for å tømme alle data og starte på nytt. Programkonfigurasjonen beholdes.",
   "Importing demo data...": "Importerer demodata...",
   "Please do not refresh or navigate away": "Ikke oppdater siden eller naviger bort",
   "Skip to main content": "Hopp til hovedinnhold",

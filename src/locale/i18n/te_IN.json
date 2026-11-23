@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "ఇంకా వరుసలో, స్వయంచాలకంగా పంపబడతాయి: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "వరుస తొలగించబడింది. పంపబడని సందేశాలు: {{total}}",
   "This email batch was queued by another user": "ఈ ఈమెయిల్ సమూహాన్ని మరో వాడుకరి వరుసలో చేర్చారు",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "దిగుమతి తర్వాత, మొత్తం దత్తాంశాన్ని తొలగించి కొత్తగా ప్రారంభించడానికి నిర్వాహక పలకలో దత్తాంశకోశాన్ని శుభ్రం చేయవచ్చు. మీ అనువర్తన స్వరూపణం భద్రంగా ఉంటుంది.",
   "Importing demo data...": "నమూనా దత్తాంశం దిగుమతి అవుతోంది...",
   "Please do not refresh or navigate away": "దయచేసి పేజీని తాజా చేయవద్దు లేదా వేరే చోటికి వెళ్లవద్దు",
   "Skip to main content": "ప్రధాన విషయానికి వెళ్లండి",

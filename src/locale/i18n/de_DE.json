@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Noch in der Warteschlange, automatischer Versand: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Die Warteschlange wurde geleert. Nachrichten, die nicht gesendet werden: {{total}}",
   "This email batch was queued by another user": "Dieser E-Mail-Stapel wurde von einem anderen Benutzer in die Warteschlange gestellt",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Nach dem Import können Sie auf dem Verwaltungs-Dashboard „Datenbank zurücksetzen“ nutzen, um alle Daten zu löschen und neu zu beginnen. Die Anwendungskonfiguration bleibt erhalten.",
   "Importing demo data...": "Demodaten werden importiert...",
   "Please do not refresh or navigate away": "Bitte nicht neu laden und die Seite nicht verlassen",
   "Skip to main content": "Zum Hauptinhalt springen",

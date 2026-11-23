@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Hâlâ kuyrukta, otomatik gönderilecek: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Kuyruk temizlendi. Gönderilmeyecek iletiler: {{total}}",
   "This email batch was queued by another user": "Bu e-posta toplu işini başka bir kullanıcı kuyruğa aldı",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "İçe aktardıktan sonra tüm verileri silip yeniden başlamak için Yönetici Panosundaki Veritabanını Sıfırla seçeneğini kullanabilirsiniz. Uygulama yapılandırmanız korunur.",
   "Importing demo data...": "Demo veriler içe aktarılıyor...",
   "Please do not refresh or navigate away": "Lütfen sayfayı yenilemeyin veya başka bir yere gitmeyin",
   "Skip to main content": "Ana içeriğe atla",

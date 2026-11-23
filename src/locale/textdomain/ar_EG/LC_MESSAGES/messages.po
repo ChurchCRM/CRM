@@ -22641,10 +22641,6 @@ msgid "This email batch was queued by another user"
 msgstr "دفعة البريد دي حطها مستخدم تاني في الانتظار"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "بعد الاستيراد تقدر تستخدم إعادة ضبط قاعدة البيانات من لوحة المسؤول عشان تمسح كل البيانات وتبدأ من جديد. إعدادات التطبيق هتفضل محفوظة."
-
-#: 
 msgid "Importing demo data..."
 msgstr "جاري استيراد بيانات التجربة..."
 

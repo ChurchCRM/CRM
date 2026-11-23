@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Fortfarande i kön, skickas automatiskt: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Kön tömdes. Meddelanden som inte skickas: {{total}}",
   "This email batch was queued by another user": "Den här e-postomgången köades av en annan användare",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Efter importen kan du använda Återställ databasen på administratörspanelen för att rensa alla data och börja om. Programmets konfiguration behålls.",
   "Importing demo data...": "Importerar demodata...",
   "Please do not refresh or navigate away": "Uppdatera inte sidan och navigera inte bort",
   "Skip to main content": "Hoppa till huvudinnehåll",

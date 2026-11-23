@@ -22484,10 +22484,6 @@ msgid "This email batch was queued by another user"
 msgstr "ชุดอีเมลนี้ถูกใส่คิวโดยผู้ใช้อื่น"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "หลังจากนำเข้า คุณใช้รีเซ็ตฐานข้อมูลบนแดชบอร์ดผู้ดูแลระบบเพื่อล้างข้อมูลทั้งหมดและเริ่มใหม่ได้ การกำหนดค่าแอปพลิเคชันจะยังคงอยู่"
-
-#: 
 msgid "Importing demo data..."
 msgstr "กำลังนำเข้าข้อมูลตัวอย่าง..."
 

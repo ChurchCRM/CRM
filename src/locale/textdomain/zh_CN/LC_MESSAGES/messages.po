@@ -22569,10 +22569,6 @@ msgid "This email batch was queued by another user"
 msgstr "这批邮件是由另一位用户加入队列的"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "导入之后，可以在管理仪表板上使用「重置数据库」清除全部数据并重新开始。应用程序配置会保留。"
-
-#: 
 msgid "Importing demo data..."
 msgstr "正在导入示例数据..."
 

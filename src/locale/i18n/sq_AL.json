@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Ende në radhë, për t’u dërguar automatikisht: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Radha u pastrua. Mesazhe që nuk do të dërgohen: {{total}}",
   "This email batch was queued by another user": "Këtë grup emaili e vendosi në radhë një përdorues tjetër",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Pas importimit, mund të përdorni Rivendos bazën e të dhënave në Panelin e administratorit për të pastruar të gjitha të dhënat dhe për të filluar nga e para. Konfigurimi i aplikacionit do të ruhet.",
   "Importing demo data...": "Po importohen të dhënat demonstruese...",
   "Please do not refresh or navigate away": "Ju lutemi mos e rifreskoni faqen dhe mos largohuni",
   "Skip to main content": "Kalo te përmbajtja kryesore",

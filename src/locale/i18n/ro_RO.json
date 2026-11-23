@@ -5488,7 +5488,6 @@
   "Still queued, to be sent automatically: {{total}}": "Încă în coadă, de trimis automat: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Coada a fost golită. Mesaje care nu vor fi trimise: {{total}}",
   "This email batch was queued by another user": "Acest lot de e-mailuri a fost pus în coadă de alt utilizator",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "După import, puteți folosi Resetare bază de date în Panoul de control administrator pentru a șterge toate datele și a o lua de la capăt. Configurația aplicației va fi păstrată.",
   "Importing demo data...": "Se importă datele demonstrative...",
   "Please do not refresh or navigate away": "Nu reîmprospătați pagina și nu plecați",
   "Skip to main content": "Sari la conținutul principal",

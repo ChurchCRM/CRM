@@ -22514,10 +22514,6 @@ msgid "This email batch was queued by another user"
 msgstr "Lô email này được người dùng khác đưa vào hàng đợi"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Sau khi nhập, bạn có thể dùng Đặt lại cơ sở dữ liệu trên Bảng điều khiển quản trị để xóa mọi dữ liệu và bắt đầu lại. Cấu hình ứng dụng của bạn được giữ nguyên."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Đang nhập dữ liệu mẫu..."
 

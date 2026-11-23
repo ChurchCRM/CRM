@@ -22539,10 +22539,6 @@ msgid "This email batch was queued by another user"
 msgstr "ይህን የደብዳቤ ስብስብ ሌላ ተጠቃሚ ወደ ወረፋ አስገብቶታል"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "ከማስመጣት በኋላ ሁሉንም ውሂብ አጽድተው እንደገና ለመጀመር በአስተዳዳሪ ዳሽቦርድ ላይ የመረጃ ጎታ ዳግም ማስጀመርን መጠቀም ይችላሉ። የመተግበሪያው ቅንብር ይጠበቃል።"
-
-#: 
 msgid "Importing demo data..."
 msgstr "የሙከራ ውሂብ በማስመጣት ላይ..."
 

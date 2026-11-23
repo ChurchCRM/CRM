@@ -22618,10 +22618,6 @@ msgid "This email batch was queued by another user"
 msgstr "Den här e-postomgången köades av en annan användare"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Efter importen kan du använda Återställ databasen på administratörspanelen för att rensa alla data och börja om. Programmets konfiguration behålls."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Importerar demodata..."
 

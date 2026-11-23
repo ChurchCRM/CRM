@@ -5460,7 +5460,6 @@
   "Still queued, to be sent automatically: {{total}}": "Siguen en cola, se enviarán automáticamente: {{total}}",
   "The queue was cleared. Messages that will not be sent: {{total}}": "Se vació la cola. Mensajes que no se enviarán: {{total}}",
   "This email batch was queued by another user": "Otro usuario puso este lote de correo en cola",
-  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "Después de importar, pueden usar Restablecer la base de datos en el panel de administración para borrar todos los datos y empezar de cero. Se conservará la configuración de la aplicación.",
   "Importing demo data...": "Importando datos de demostración...",
   "Please do not refresh or navigate away": "No actualicen la página ni salgan de ella",
   "Skip to main content": "Saltar al contenido principal",
