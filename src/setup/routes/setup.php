@@ -123,27 +123,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             ]);
         }
 
-        $versionCheck = DatabaseVersionService::check($connection['version']);
-        if (!$versionCheck['installable']) {
-            TelemetryService::captureInstallFailure('database_too_old');
-
-            return SlimUtils::renderJSON($response, [
-                'valid'   => true,
-                'correct' => false,
-                'reason'  => 'database_too_old',
-                'message' => DatabaseVersionService::getBlockMessage($connection['version']),
-            ]);
-        }
-
-        // A server below the supported floor is not a failed connection: it installs after an acknowledgment.
-        if (!$versionCheck['supported'] && !filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
-            return SlimUtils::renderJSON($response, [
-                'valid'     => true,
-                'correct'   => true,
-                'supported' => false,
-                'message'   => DatabaseVersionService::getUnsupportedMessage($connection['version']),
-            ]);
-        }
+        $databaseWarning = DatabaseVersionService::getSecurityRiskMessage($connection['version']);
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
@@ -188,7 +168,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
         }
 
-        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true]);
+        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true, 'databaseWarning' => $databaseWarning]);
     };
 
     $group->post('', $postHandler);
