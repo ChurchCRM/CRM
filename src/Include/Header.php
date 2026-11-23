@@ -6,11 +6,9 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
@@ -20,9 +18,10 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\SystemIdentity;
-use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\DashboardLandingService;
+use ChurchCRM\Service\InstallSetupService;
+use ChurchCRM\Service\LocaleService;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -37,6 +36,9 @@ PluginManager::init($pluginsPath);
 
 // Resolve theme attributes from user settings
 $currentUser = AuthenticationManager::getCurrentUser();
+// Until the church has a name, an administrator sees only the Setup Dashboard: no sidebar, a minimal top bar.
+$setupMode = $currentUser->isAdmin() && InstallSetupService::needsChurchSetup();
+$homeUrl = $setupMode ? SystemURLs::getRootPath() . DashboardLandingService::SETUP_PATH : DashboardLandingService::urlFor($currentUser);
 $pluginsClientConfig = PluginManager::getPluginsClientConfig();
 $_themeMode = $currentUser->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
@@ -181,6 +183,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
+  <?php if (!$setupMode): ?>
   <aside class="navbar navbar-vertical navbar-expand-xl d-print-none<?= $currentUser->getSettingValue(UserSetting::UI_SIDEBAR_FOLDED) === '1' ? ' navbar-folded-hover' : '' ?>" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
@@ -189,21 +192,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= DashboardLandingService::urlFor($currentUser) ?>" class="navbar-brand py-2">
-        <?php if (ChurchLogoService::hasCustomLogo()): ?>
-        <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
-        <?php else: ?>
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
-             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
-             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
-        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
-          <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
-        </span>
-        <?php endif; ?>
-      </a>
+      <?php include __DIR__ . '/partials/brand.php'; ?>
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-xl-3">
           <?php MenuRenderer::renderMenu(); ?>
@@ -211,6 +200,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
       </div>
     </div>
   </aside>
+  <?php endif; ?>
 
   <!-- ============================================================ -->
   <!-- Topbar                                                        -->
@@ -218,6 +208,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <header class="navbar navbar-expand-md d-print-none sticky-top order-first order-xl-0" id="topbar">
     <div class="container-xl">
 
+      <?php if (!$setupMode): ?>
       <button type="button" id="menu-toggle"
               class="btn btn-ghost-secondary d-inline-flex d-xl-none align-items-center me-2"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -225,14 +216,18 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= InputUtils::escapeAttribute(gettext('Toggle navigation')) ?>">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
+      <?php endif; ?>
 
+      <?php if (!$setupMode): ?>
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#navbar-menu"
               aria-controls="navbar-menu" aria-expanded="false"
               aria-label="<?= gettext('Toggle search') ?>">
         <i class="fa-solid fa-search"></i>
       </button>
+      <?php endif; ?>
 
+      <?php if (!$setupMode): ?>
       <button type="button" id="desktop-sidebar-toggle"
               class="btn btn-ghost-secondary d-none d-xl-inline-flex align-items-center me-2"
               aria-controls="sidebar" aria-expanded="true"
@@ -242,6 +237,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               data-expand-label="<?= InputUtils::escapeAttribute(gettext('Expand sidebar')) ?>">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
+      <?php endif; ?>
+
+      <?php if ($setupMode): ?>
+      <?php include __DIR__ . '/partials/brand.php'; ?>
+      <?php endif; ?>
 
       <!-- Right-side nav items -->
       <div class="navbar-nav flex-row order-md-last ms-auto">
@@ -283,6 +283,17 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
         $localeUrl   = SystemURLs::getRootPath() . '/account#tab-localization';
         ?>
+        <?php if ($setupMode): ?>
+        <div class="nav-item ms-1">
+          <select class="form-select form-select-sm" id="setupLanguage" aria-label="<?= gettext('Language') ?>">
+            <?php foreach (LocaleService::getSupportedLocales() as $_localeName => $_locale): ?>
+              <option value="<?= InputUtils::escapeAttribute($_locale['locale']) ?>"<?= $_locale['locale'] === SystemConfig::getValue('sLanguage') ? ' selected' : '' ?>>
+                <?= InputUtils::escapeHTML($_locale['nativeName'] ?: $_localeName) ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <?php else: ?>
         <div class="nav-item ms-1">
           <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute($localeUrl) ?>"
              title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
@@ -313,6 +324,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <span class="badge bg-primary position-absolute top-0 end-0 small d-none" id="communityFeedbackCount">0</span>
           </a>
         </div>
+
+        <?php endif; ?>
 
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
@@ -387,6 +400,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <?php if (!$setupMode): ?>
             <a href="<?= InputUtils::escapeAttribute(Person::getViewURIForId($currentUser->getPersonId())) ?>"
                class="dropdown-item">
               <i class="fa-solid fa-user me-2"></i><?= gettext("Profile") ?>
@@ -407,6 +421,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
+            <?php endif; ?>
             <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
               <i class="fa-solid fa-arrow-right-from-bracket me-2"></i><?= gettext('Sign out') ?>
             </a>
@@ -415,6 +430,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
       </div><!-- /.navbar-nav.order-md-last -->
 
+      <?php if (!$setupMode): ?>
       <!-- Search -->
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div class="global-search">
@@ -432,11 +448,33 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           <div id="globalSearchDropdown" class="dropdown-menu w-100 global-search-dropdown"></div>
         </div>
       </div>
+      <?php endif; ?>
 
     </div><!-- /.container-xl -->
   </header>
 
   <div class="page-wrapper">
+<?php if ($setupMode || ($currentUser->isAdmin() && InstallSetupService::isDemoDataLoaded())): ?>
+    <script src="<?= SystemURLs::assetVersioned('/skin/v2/first-run.min.js') ?>"></script>
+<?php endif; ?>
+<?php if (InstallSetupService::isDemoDataLoaded()): ?>
+    <div class="container-xl mt-3">
+      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner">
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <i class="fa-solid fa-flask"></i>
+          <div class="flex-grow-1">
+            <strong><?= gettext("You're exploring ChurchCRM with demo data.") ?></strong>
+            <?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?>
+          </div>
+          <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
+            <button type="button" class="btn btn-warning btn-sm js-start-fresh">
+              <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Start Fresh') ?>
+            </button>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+<?php endif; ?>
 
 <?php
     // Unified page header defaults (backward-compatible)
@@ -453,7 +491,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if (!empty($aBreadcrumbs)) : ?>
             <ol class="breadcrumb mb-0" aria-label="breadcrumbs">
               <li class="breadcrumb-item">
-                <a href="<?= DashboardLandingService::urlFor($currentUser) ?>"><?= gettext('Home') ?></a>
+                <a href="<?= InputUtils::escapeAttribute($homeUrl) ?>"><?= gettext('Home') ?></a>
               </li>
               <?php foreach ($aBreadcrumbs as $crumb) : ?>
                 <?php if (!empty($crumb['active'])) : ?>

@@ -70,7 +70,7 @@ class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
-    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowVolunteer'];
+    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bEnabledFundraiser', 'bPortalShowVolunteer'];
 
     private const DEMO_NOTIFICATION_REASON = 'demo data import';
 
@@ -127,7 +127,7 @@ class DemoDataService
             $this->logger->info('Demo data import started');
 
             // Load demo system configuration (if present) before importing data
-            $this->importSystemConfig($force);
+            $this->importSystemConfig();
             SystemConfig::setValue('sInstallDataProfile', 'demo');
 
             VolunteerEventService::addOtherEventType();
@@ -182,13 +182,11 @@ class DemoDataService
 
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
-     * `bEnabledSundaySchool`, `bEnabledFinance`, `bEnabledEvents` (ministry events) and the Member Portal's
-     * calendar and volunteering pages are always switched on.
-     * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
-     * (fresh installs, no `force`) must not silently opt a real self-hosted install into
-     * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
+     * Every module in DEMO_TOGGLES is switched on so an evaluator sees the whole product.
+     * Demo mode also turns on usage statistics and the Google Analytics plugin (config.json);
+     * the import dialog says so, and Start Fresh resets both with every other setting.
      */
-    private function importSystemConfig(bool $force = false): void
+    private function importSystemConfig(): void
     {
         $logger = LoggerUtils::getAppLogger();
         $filePath = self::DATA_PATH . '/config.json';
@@ -213,8 +211,7 @@ class DemoDataService
 
         foreach ($json as $key => $value) {
             // The toggles in DEMO_TOGGLES are switched on below.
-            // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
-            if (in_array($key, self::DEMO_TOGGLES, true) || $key === 'sTelemetryLevel') {
+            if (in_array($key, self::DEMO_TOGGLES, true)) {
                 continue;
             }
 
@@ -232,18 +229,6 @@ class DemoDataService
             } catch (Exception $e) {
                 $this->addWarning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
                 $logger->warning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
-            }
-        }
-
-        // sTelemetryLevel from config.json is only ever applied on a forced reseed (e.g. the
-        // demo.churchcrm.io reimport job). Ordinary onboarding ("Explore Demo Data" on a fresh,
-        // real self-hosted install) must not silently opt the install into telemetry.
-        if ($force && array_key_exists('sTelemetryLevel', $json)) {
-            try {
-                SystemConfig::setValue('sTelemetryLevel', $json['sTelemetryLevel']);
-            } catch (Exception $e) {
-                $this->addWarning("Failed to set SystemConfig 'sTelemetryLevel' from demo config: {$e->getMessage()}", ['error' => $e->getMessage()]);
-                $logger->warning('Failed to set SystemConfig sTelemetryLevel from demo config', ['error' => $e->getMessage()]);
             }
         }
 

@@ -17,6 +17,7 @@ class DashboardLandingService
     public const SETTING = 'ui.landing';
     public const DEFAULT_KEY = 'people';
     public const DEFAULT_PATH = '/people/dashboard';
+    public const SETUP_PATH = '/admin/setup';
 
     /**
      * @return array<string, array{0: string, 1: string, 2: string}> key => [path, label, icon]
@@ -52,6 +53,14 @@ class DashboardLandingService
     public static function pathFor(User $user): string
     {
         return self::tabsFor($user)[self::keyFor($user)][0];
+    }
+
+    /** Where sign-in lands: the Setup Dashboard for an administrator until the church is set up and while the setup window is open. */
+    public static function signInPathFor(User $user): string
+    {
+        $setup = InstallSetupService::needsChurchSetup() || InstallSetupService::isWindowOpen();
+
+        return $user->isAdmin() && $setup ? self::SETUP_PATH : self::pathFor($user);
     }
 
     public static function urlFor(User $user): string

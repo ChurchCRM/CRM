@@ -184,7 +184,7 @@ describe('01 - Setup Wizard', () => {
             cy.contains('Password Change Required').should('be.visible');
         });
 
-        it('should complete forced password change and redirect to church-info', () => {
+        it('should complete forced password change and open the Setup Dashboard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
@@ -196,20 +196,25 @@ describe('01 - Setup Wizard', () => {
             cy.get('#NewPassword2').type(newAdminPassword);
             cy.get('button[type=submit]').click();
 
-            // ChurchInfoRequiredMiddleware redirects admin to church-info when sChurchName is empty
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
-
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
         });
     });
 
     describe('Church Info Setup', () => {
-        it('should redirect to church-info after login when church name is not set', () => {
+        it('keeps the admin on the Setup Dashboard and its three paths until the church has a name', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
-            cy.contains('Church Information').should('be.visible');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+            cy.get('#sidebar').should('not.exist');
+            cy.get('#globalSearch').should('not.exist');
+            cy.get('#setupLanguage').should('exist');
+
+            cy.visit('/people/dashboard');
+            cy.location('pathname').should('match', /\/admin\/setup$/);
+            cy.visit('/admin/system/restore');
+            cy.location('pathname').should('match', /\/admin\/system\/restore$/);
         });
 
         it('should fill and save church information to complete first-run setup', () => {
@@ -217,7 +222,9 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+            cy.get('#startChurchSetup').click();
+            cy.location('pathname').should('match', /\/admin\/system\/church-info$/);
 
             // Wait for page to fully load — country defaults to US and populates state dropdown
             cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
@@ -245,9 +252,11 @@ describe('01 - Setup Wizard', () => {
             // the other heavy setup steps in this spec use.
             cy.get('#church-info-form button[type=submit]').should('be.visible').click();
 
-            // Should remain on church-info and show success notification
-            cy.url({ timeout: 10000 }).should('include', 'church-info');
+            // The first save returns to the Setup Dashboard and its next steps.
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/setup$/);
             cy.contains('Church information saved successfully', { timeout: 30000 }).should('be.visible');
+            cy.get('#setupSteps [data-step-done]').first().should('have.attr', 'data-step-done', 'true');
+            cy.get('#globalSearch').should('exist');
         });
     });
 

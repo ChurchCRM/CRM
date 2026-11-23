@@ -1,11 +1,13 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\DashboardLandingService;
+use ChurchCRM\Service\FlashService;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\CSRFUtils;
@@ -45,88 +47,51 @@ $app->get('/get-started', function (Request $request, Response $response) {
     return $renderer->render($response, 'get-started.php', $pageArgs);
 });
 
+$app->get('/setup', function (Request $request, Response $response) {
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+    $personCount = PersonQuery::create()->count();
+    $familyCount = FamilyQuery::create()->count();
+    $dashboardUrl = DashboardLandingService::urlFor(AuthenticationManager::getCurrentUser());
+    $windowOpen = InstallSetupService::isWindowOpen();
+    $needsChurchSetup = InstallSetupService::needsChurchSetup();
+    $flash = FlashService::take();
+
+    return $renderer->render($response, 'setup.php', [
+        'sRootPath'           => SystemURLs::getRootPath(),
+        'sPageTitle'          => gettext('Setup Dashboard'),
+        'sPageSubtitle'       => gettext('Explore ChurchCRM with demo data, or set it up for your church'),
+        'sPageHeaderButtons'  => $needsChurchSetup ? '' : PageHeader::buttons([
+            ['label' => gettext('Admin Dashboard'), 'url' => '/admin/', 'icon' => 'fa-gauge'],
+            ...($windowOpen ? [[
+                'label' => gettext('Finish setup'),
+                'js'    => true,
+                'id'    => 'finishSetup',
+                'class' => 'btn-success',
+                'icon'  => 'fa-flag-checkered',
+                'data'  => ['dashboard-url' => $dashboardUrl],
+            ]] : []),
+        ]),
+        'sGlobalMessage'      => $flash['message'] ?? '',
+        'sGlobalMessageClass' => $flash['class'] ?? 'success',
+        'needsChurchSetup'    => $needsChurchSetup,
+        'demoLoaded'          => InstallSetupService::isDemoDataLoaded(),
+        'hasExistingData'     => $personCount > 1 || $familyCount > 0,
+        'personCount'         => $personCount,
+        'familyCount'         => $familyCount,
+        'steps'               => InstallSetupService::checklist(),
+        'windowOpen'          => $windowOpen,
+        'dashboardUrl'        => $dashboardUrl,
+    ]);
+});
+
 // The admin dashboard and all other /admin routes require an authenticated administrator.
 $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    // Setup progress checklist
-    $churchName    = SystemConfig::getValue('sChurchName');
-    $churchAddress = SystemConfig::getValue('sChurchAddress');
-    $churchEmail   = SystemConfig::getValue('sChurchEmail');
-
-    $hasChurchInfo  = $churchName !== 'Some Church' && $churchName !== '' && $churchAddress !== '' && $churchEmail !== '';
-    $hasData        = FamilyQuery::create()->select('Id')->findOne() !== null
-        || PersonQuery::create()->select('Id')->findOne() !== null;
+    $setupChecklist = InstallSetupService::checklist();
+    $completedSteps = count(array_filter(array_column($setupChecklist, 'done')));
+    $totalSteps     = count($setupChecklist);
     $hasEmail       = SystemConfig::hasValidMailServerSettings();
-    $userCount      = UserQuery::create()->count();
-    $hasMultiUser   = $userCount > 1;
-    // PluginManager::init() is normally called by Header.php (during view render),
-    // but we need the plugin state before rendering, so initialize it here.
-    // init() is idempotent — calling it twice is safe.
-    PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
-    $hasPlugins = PluginManager::hasAnyActivePlugin();
-
-    // New steps: HTTPS configuration and Admin contact (name/email) for password resets
-    $hasHttps = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
-
-    // Check for an admin user with an email address
-    $adminUser = UserQuery::create()->filterByAdmin(true)->findOne();
-    $hasAdminContact = $adminUser && !empty($adminUser->getEmail());
-
-    $completedSteps = (int)$hasChurchInfo + (int)$hasData + (int)$hasEmail + (int)$hasMultiUser + (int)$hasPlugins + (int)$hasHttps + (int)$hasAdminContact;
-    $totalSteps     = 7;
-
-    $setupChecklist = [
-        [
-            'done'  => $hasChurchInfo,
-            'label' => gettext('Church Information'),
-            'desc'  => gettext('Set your church name, address, and contact email'),
-            'link'  => SystemURLs::getRootPath() . '/admin/system/church-info',
-            'icon'  => 'fa-church',
-        ],
-        [
-            'done'  => $hasData,
-            'label' => gettext('Add Your Data'),
-            'desc'  => gettext('Import, restore, or manually enter your congregation'),
-            'link'  => SystemURLs::getRootPath() . '/admin/get-started',
-            'icon'  => 'fa-users',
-        ],
-        [
-            'done'  => $hasEmail,
-            'label' => gettext('Configure Email'),
-            'desc'  => gettext('Connect an SMTP server so ChurchCRM can send emails'),
-            'link'  => SystemURLs::getRootPath() . '/admin/email',
-            'icon'  => 'fa-envelope',
-        ],
-            [
-                'done'  => $hasHttps,
-                'label' => gettext('Enable HTTPS'),
-                'desc'  => gettext('Install a TLS/SSL certificate for secure connections'),
-                'link'  => SystemURLs::attributed('https://docs.churchcrm.io/installation/ssl-https', 'admin_checklist_https'),
-                'icon'  => 'fa-lock',
-            ],
-            [
-                'done'  => $hasAdminContact,
-                'label' => gettext('Update Admin Contact'),
-                'desc'  => gettext('Set an admin user email so you can reset passwords and receive notifications'),
-                'link'  => SystemURLs::getRootPath() . '/admin/system/users',
-                'icon'  => 'fa-user-shield',
-            ],
-        [
-            'done'    => $hasMultiUser,
-            'label'   => gettext('Invite Your Team'),
-            'desc'    => gettext('Add staff or volunteers as system users'),
-            'link'    => SystemURLs::getRootPath() . '/admin/system/users',
-            'icon'    => 'fa-user-plus',
-        ],
-        [
-            'done'  => $hasPlugins,
-            'label' => gettext('Enable Plugins'),
-            'desc'  => gettext('Extend ChurchCRM with MailChimp, backups, and more'),
-            'link'  => SystemURLs::getRootPath() . '/plugins/management',
-            'icon'  => 'fa-plug',
-        ],
-    ];
 
     // Scheduled-task health (#9724). The timer jobs only run on a page load
     // unless the administrator has installed the cron entry, so surface it here
@@ -141,6 +106,7 @@ $app->get('/', function (Request $request, Response $response) {
             [gettext('Admin')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
+            ...(InstallSetupService::isWindowOpen() ? [['label' => gettext('Setup Dashboard'), 'url' => '/admin/setup', 'icon' => 'fa-list-check']] : []),
             ['label' => gettext('System Settings'), 'url' => '/SystemSettings.php', 'icon' => 'fa-cog'],
             ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
@@ -150,6 +116,11 @@ $app->get('/', function (Request $request, Response $response) {
             $setting['tooltip'] = gettext($setting['tooltip']);
             return $setting;
         }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
+        'setupSettings' => array_map(static function (array $setting): array {
+            $setting['label'] = gettext('Setup Dashboard Days');
+            $setting['tooltip'] = gettext($setting['tooltip']);
+            return $setting;
+        }, SystemConfig::getSettingsConfig([InstallSetupService::DAYS_SETTING])),
         'setupChecklist'   => $setupChecklist,
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,

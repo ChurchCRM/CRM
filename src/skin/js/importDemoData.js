@@ -1,5 +1,5 @@
 /* Shared Import Demo Data behavior for admin/system-maintenance and v2 dashboard
- * - Attaches to buttons with IDs: #importDemoData, #importDemoDataQuickBtn and #importDemoDataV2
+ * - Attaches to buttons with IDs: #importDemoData, #importDemoDataQuickBtn, #importDemoDataV2 and #importDemoDataSetup
  * - Opens one Tabler modal that confirms the import, shows progress while it runs, and shows any error
  * - Uses optional status/result elements when present (#demoImportStatus, #demoImportResults, #demoImportResultsList)
  */
@@ -34,7 +34,10 @@
               <ul class="list-unstyled mb-0">${included}</ul>
               <div id="demoImportInstructions" class="mt-3 pt-3 border-top">
                 <div class="fw-medium">${i18next.t("Need to remove this data later?")}</div>
-                <div class="text-secondary">${i18next.t("After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.")}</div>
+                <div class="text-secondary">${i18next.t("Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install.")}</div>
+              </div>
+              <div class="mt-3 pt-3 border-top text-secondary small" id="demoImportAnalytics">
+                ${i18next.t("Demo mode also turns on anonymous usage statistics (PostHog) and Google Analytics, so we can see how people explore ChurchCRM. Start Fresh turns them off.")}
               </div>
             </div>
             <div class="modal-body text-center py-5 d-none" id="demoImportProgress">
@@ -226,6 +229,9 @@
           }
 
           window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
+          if ($button.data("success-url")) {
+            window.location.assign($button.data("success-url"));
+          }
         } else {
           failImport(data && data.message ? data.message : i18next.t("Unknown error"));
         }
@@ -247,7 +253,7 @@
   }
 
   function attachHandlers() {
-    ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2"].forEach((sel) => {
+    ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2", "#importDemoDataSetup"].forEach((sel) => {
       var $btn = $(sel);
       if (!$btn.length) {
         return;
@@ -280,7 +286,10 @@
       .off("click", "#demoImportConfirmBtn")
       .on("click", "#demoImportConfirmBtn", (e) => {
         e.preventDefault();
-        doImport($("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first(), forceImportMode);
+        doImport(
+          $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2, #importDemoDataSetup").first(),
+          forceImportMode,
+        );
       });
   }
 

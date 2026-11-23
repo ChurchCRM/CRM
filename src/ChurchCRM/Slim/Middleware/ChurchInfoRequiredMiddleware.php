@@ -13,22 +13,18 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Middleware that enforces church name configuration on first run.
+ * Keeps an administrator on the Setup Dashboard until the church has a name.
  *
- * When sChurchName is empty (fresh install), browser requests from admin
- * users are redirected to the church-info setup page. API routes and the
- * church-info page itself are exempt from the redirect. Non-admin users
- * pass through since they cannot complete the setup.
+ * While sChurchName is empty (fresh install), browser requests from admin
+ * users go to the Setup Dashboard. Its three paths stay reachable: demo data,
+ * church information and restoring a backup. API routes pass through.
+ * Non-admin users pass through since they cannot complete the setup.
  */
 class ChurchInfoRequiredMiddleware implements MiddlewareInterface
 {
     use BrowserRequestTrait;
 
-    /**
-     * Admin path for the church-info setup page.
-     * Used both for the exempt-path check and the redirect target.
-     */
-    private const CHURCH_INFO_PATH = '/admin/system/church-info';
+    private const SETUP_PATH = '/admin/setup';
 
     /**
      * Admin paths (relative to root) exempt from the church-info redirect.
@@ -38,7 +34,9 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
      * @var string[]
      */
     private const EXEMPT_PATHS = [
-        self::CHURCH_INFO_PATH,
+        self::SETUP_PATH,
+        '/admin/system/church-info',
+        '/admin/system/restore',
         LocalAuthentication::STAFF_PASSWORD_PATH,
         LocalAuthentication::STAFF_TWO_FACTOR_PATH,
     ];
@@ -78,14 +76,6 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
             }
         }
 
-        return $this->redirectToChurchInfo();
-    }
-
-    private function redirectToChurchInfo(): ResponseInterface
-    {
-        $response    = new Response();
-        $redirectUrl = SystemURLs::getRootPath() . self::CHURCH_INFO_PATH;
-
-        return $response->withStatus(302)->withHeader('Location', $redirectUrl);
+        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . self::SETUP_PATH);
     }
 }

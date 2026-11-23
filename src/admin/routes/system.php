@@ -17,6 +17,7 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\GradeService;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\UserPermissionsService;
@@ -453,6 +454,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->post('/church-info', function (Request $request, Response $response): Response {
         // Body fields have already been sanitized by InputSanitizationMiddleware
         $body = $request->getParsedBody();
+        $firstSave = InstallSetupService::needsChurchSetup();
 
         $churchName    = trim($body['sChurchName'] ?? '');
         $churchAddress = trim($body['sChurchAddress'] ?? '');
@@ -635,7 +637,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         }
 
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info')
+            ->withHeader('Location', SystemURLs::getRootPath() . ($firstSave ? '/admin/setup' : '/admin/system/church-info'))
             ->withStatus(303);
     })->add(new InputSanitizationMiddleware([
         'sChurchName'    => 'text',

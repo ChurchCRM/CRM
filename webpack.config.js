@@ -103,6 +103,8 @@ module.exports = {
     restore: './webpack/restore',
     'csv-import': './webpack/csv-import',
     'admin-dashboard': './webpack/admin-dashboard',
+    'admin-setup': './webpack/admin-setup',
+    'first-run': './webpack/first-run',
     // Admin → Member Portal (#9864): theme picker, portal settings, statistics.
     'admin-member-portal': './webpack/admin-member-portal.ts',
     // Admin → Convert Volunteer Opportunities (#10606).

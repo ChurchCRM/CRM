@@ -7,19 +7,23 @@ import "./telemetry-consent";
 import "./former-portal-accounts-notice";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const reportingSettings = document.getElementById("reportingSettings");
-  if (reportingSettings) {
-    window.CRM.onLocalesReady(() => {
+  window.CRM.onLocalesReady(() => {
+    [
+      ["reportingSettings", i18next.t("Reporting"), "fa-solid fa-file-pdf"],
+      ["setupSettings", i18next.t("Setup Dashboard"), "fa-solid fa-list-check"],
+    ].forEach(([id, title, icon]) => {
+      const panel = document.getElementById(id);
+      if (!panel) return;
       new window.CRM.SettingsPanel().init({
-        container: "#reportingSettings",
-        title: i18next.t("Reporting"),
-        icon: "fa-solid fa-file-pdf",
-        settings: JSON.parse(reportingSettings.dataset.settings),
+        container: `#${id}`,
+        title,
+        icon,
+        settings: JSON.parse(panel.dataset.settings),
         autoSave: true,
         showAllSettingsLink: false,
       });
     });
-  }
+  });
 
   // Bootstrap's data API is on window.bootstrap. The page bundle's jQuery
   // does not get $.fn.tooltip.

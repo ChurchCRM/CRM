@@ -70,21 +70,16 @@ describe('02 - Demo Data Import', () => {
             cy.get('#demoImportCancelBtn').should('be.visible');
         });
 
-        it('should successfully import demo data', () => {
-            // Demo data import is on the Get Started page
-            cy.visit('/admin/get-started');
+        it('lands on the Setup Dashboard and explores the demo data from it', () => {
+            cy.location('pathname').should('match', /\/admin\/setup$/);
+            cy.get('#demoModeBanner').should('not.exist');
 
-            // Click Import Demo Data card
-            cy.get('#importDemoDataV2', { timeout: 10000 }).click();
-            
-            // Wait for confirmation overlay
+            cy.get('#importDemoDataSetup').click();
             cy.get('#demoImportModal', { timeout: 5000 }).should('be.visible');
-            
-            // Click confirm to start import
             cy.get('#demoImportConfirmBtn').click();
-            
-            // The modal closes when the import succeeds and stays open with an error when it fails
-            cy.get('#demoImportModal', { timeout: 120000 }).should('not.be.visible');
+
+            cy.location('pathname', { timeout: 120000 }).should('match', /\/people\/dashboard$/);
+            cy.get('#demoModeBanner').should('be.visible').find('.js-start-fresh').should('be.visible');
         });
     });
 
@@ -344,6 +339,26 @@ describe('02 - Demo Data Import', () => {
         });
     });
 
+    describe('Demo mode settings', () => {
+        beforeEach(() => {
+            loginAsAdmin();
+        });
+
+        it('turns on the Member Portal sign-in an evaluator can try with Login as Person', () => {
+            ['bMemberSignIn', 'bAllowLoginAsPerson', 'bPortalShowDirectory', 'bEnabledFundraiser'].forEach((key) => {
+                cy.request(`/admin/api/system/config/${key}`).its('body.value').should('eq', '1');
+            });
+        });
+
+        it('turns on usage statistics and Google Analytics, as the import dialog says', () => {
+            cy.request('/admin/api/system/config/sTelemetryLevel').its('body.value').should('eq', 'full');
+            cy.visit('/plugins/management');
+            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
+                .find('.badge')
+                .should('not.contain', 'Disabled');
+        });
+    });
+
     describe('Re-run the Demo Import', () => {
         beforeEach(() => {
             loginAsAdmin();
@@ -374,16 +389,12 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should disable the Google Analytics plugin from plugin management', () => {
-            // Disable via API directly — avoids flaky jQuery click-handler timing
             cy.request({
                 method: 'POST',
                 url: '/plugins/api/plugins/google-analytics/disable',
                 timeout: 30000
-            }).then((response) => {
-                expect(response.status).to.be.oneOf([200, 204]);
-            });
+            }).its('status').should('be.oneOf', [200, 204]);
 
-            // Verify the plugin shows as disabled on the management page
             cy.visit('/plugins/management');
             cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
                 .find('.badge')
