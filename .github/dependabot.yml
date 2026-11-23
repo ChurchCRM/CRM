@@ -27,6 +27,8 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "cypress"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "i18next"
+        update-types: ["version-update:semver-major"]
     groups:
       # Named groups come first; the dev and runtime minor/patch groups take the
       # rest. UI-critical libraries each get their own PR, because a patch bump
