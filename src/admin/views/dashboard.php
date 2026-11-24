@@ -553,6 +553,7 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
 </div>
 
 <div class="container-fluid mb-3">
+    <div id="quickSearchSettings" class="mb-3" data-settings="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($searchSettings)) ?>"></div>
     <div id="reportingSettings" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($pdfSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
     <div id="setupSettings" class="mt-3" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($setupSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
 </div>

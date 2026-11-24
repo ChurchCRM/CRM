@@ -49,40 +49,6 @@ $featureGroups = [
             'description' => gettext('Enforce strict CSP headers to protect against XSS attacks'),
         ],
     ],
-    gettext('Search Settings') => [
-        'bSearchIncludePersons' => [
-            'label' => gettext('Search People'),
-            'description' => gettext('Include people in quick global search'),
-        ],
-        'bSearchIncludeFamilies' => [
-            'label' => gettext('Search Families'),
-            'description' => gettext('Include families in quick global search'),
-        ],
-        'bSearchIncludeGroups' => [
-            'label' => gettext('Search Groups'),
-            'description' => gettext('Include groups in quick global search'),
-        ],
-        'bSearchIncludeDeposits' => [
-            'label' => gettext('Search Deposits'),
-            'description' => gettext('Include deposits in quick global search'),
-        ],
-        'bSearchIncludePayments' => [
-            'label' => gettext('Search Payments'),
-            'description' => gettext('Include payments in quick global search'),
-        ],
-        'bSearchIncludeAddresses' => [
-            'label' => gettext('Search Addresses'),
-            'description' => gettext('Include addresses in quick global search'),
-        ],
-        'bSearchIncludeCalendarEvents' => [
-            'label' => gettext('Search Calendar Events'),
-            'description' => gettext('Include calendar events in quick global search'),
-        ],
-        'bSearchIncludeFamilyCustomProperties' => [
-            'label' => gettext('Search Family Custom Properties'),
-            'description' => gettext('Include custom family properties in quick global search'),
-        ],
-    ],
 ];
 ?>
 
