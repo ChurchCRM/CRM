@@ -374,6 +374,8 @@ describe("GET /api/groups/:id/emails", () => {
         });
 
         after(() => {
+            cy.setSystemConfig('bEnableDepositPostedNotification', "false");
+            cy.setSystemConfig('sToEmailAddress', "churchcrm@example.com");
             cy.setupAdminSession();
             testDepositIds.forEach((id) => {
                 cy.request("POST", `/api/deposits/${id}`, {

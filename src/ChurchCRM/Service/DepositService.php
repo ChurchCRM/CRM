@@ -88,6 +88,7 @@ class DepositService {
         AuthService::requireUserGroupMembership('bFinance');
         if ($iDepositSlipID) {
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
+            $wasClosed = $deposit->getClosed();
             $deposit
                 ->setDate($depositDate)
                 ->setComment($depositComment)
@@ -102,11 +103,14 @@ class DepositService {
                     ->filterByAutCleared(0)
                     ->delete();
             }
-            if ($depositClosed && SystemConfig::getBooleanValue('bEnableDepositPostedNotification')) {
-                $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
-                $toAddresses = [SystemConfig::getValue('sToEmailAddress')];
-                $email = new DepositPostedEmail($toAddresses, $deposit);
-                $email->send();
+            if (!$wasClosed && $depositClosed && SystemConfig::getBooleanValue('bEnableDepositPostedNotification')) {
+                $toAddress = SystemConfig::getValue('sToEmailAddress');
+                if (!empty($toAddress)) {
+                    $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
+                    $toAddresses = [$toAddress];
+                    $email = new DepositPostedEmail($toAddresses, $deposit);
+                    $email->send();
+                }
             }
         } else {
             $deposit = new Deposit();
