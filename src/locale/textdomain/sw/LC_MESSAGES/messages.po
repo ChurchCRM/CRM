@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Hakuna familia iliyokabidhiwa)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Geuza Watu Kuwa Familia"
-
-#: 
-msgid "Convert Next"
-msgstr "Geuza anayefata"
-
-#: 
-msgid "Convert All"
-msgstr "Geuza wote"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Nambari ya Malipo ya Amana"
@@ -8274,10 +8262,6 @@ msgstr "Thibitisha nenosiri lako jipya"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Unganisha seva ya SMTP ili ChurchCRM iweze kutuma barua pepe"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Badilisha rekodi za mtu binafsi kuwa vitengo vya familia"
 
 #: 
 msgid "Convert to Family"
@@ -27939,10 +27923,6 @@ msgid "Integrity check passed"
 msgstr "Ukaguzi wa uadilifu umefaulu"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Tokeni ya CSRF isiyo sahihi"
-
-#: 
 msgid "Last %d days"
 msgstr "Siku %d zilizopita"
 
@@ -27985,10 +27965,6 @@ msgstr "Hufungua dashibodi ya Fedha kwenye kipindi hiki. Chagua mwaka wa fedha u
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Siku 7 zilizopita na siku %d zinazofuata"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Watu wasio na familia: %d"
 
 #: 
 msgid "Permission to save settings and photos"

@@ -364,18 +364,6 @@ msgid "(No assigned family)"
 msgstr "(Nepriradená rodina)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Konvertovať jednotlivcov na rodiny"
-
-#: 
-msgid "Convert Next"
-msgstr "Konvertovať ďalší"
-
-#: 
-msgid "Convert All"
-msgstr "Konvertovať všetko"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Číslo vkladového lístka"
 
@@ -8263,10 +8251,6 @@ msgstr "Potvrďte svoje nové heslo"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Pripojiť SMTP server, aby ChurchCRM mohol odosielať e-maily"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Previesť jednotlivé záznamy do rodinných jednotiek"
 
 #: 
 msgid "Convert to Family"
@@ -27980,10 +27964,6 @@ msgid "Integrity check passed"
 msgstr "Kontrola integrity prebehla úspešne"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Neplatný token CSRF"
-
-#: 
 msgid "Last %d days"
 msgstr "Posledných %d dní"
 
@@ -28026,10 +28006,6 @@ msgstr "Otvorí finančný prehľad pre tento rozsah. Minulý fiškálny rok vyb
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Posledných 7 dní a nasledujúcich %d dní"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Ľudia bez rodiny: %d"
 
 #: 
 msgid "Permission to save settings and photos"

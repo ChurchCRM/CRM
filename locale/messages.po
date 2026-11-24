@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 16:25+0000\n"
+"POT-Creation-Date: 2026-11-24 17:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4218,18 +4218,6 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
-msgid "Convert All"
-msgstr ""
-
-msgid "Convert Individuals to Families"
-msgstr ""
-
-msgid "Convert Next"
-msgstr ""
-
-msgid "Convert individual records into family units"
-msgstr ""
-
 msgid "Convert to Family"
 msgstr ""
 
@@ -4472,6 +4460,9 @@ msgid "Create a backup of your church database"
 msgstr ""
 
 msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr ""
+
+msgid "Create a family for this person? Their address and home phone move to the new family."
 msgstr ""
 
 msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
@@ -9306,9 +9297,6 @@ msgstr ""
 msgid "Invalid Birth Date: Missing birth month or day."
 msgstr ""
 
-msgid "Invalid CSRF token"
-msgstr ""
-
 msgid "Invalid Editor ID!"
 msgstr ""
 
@@ -13191,10 +13179,6 @@ msgid "People with this email: %s"
 msgstr ""
 
 msgid "People with wedding anniversaries in a particular month"
-msgstr ""
-
-#, php-format
-msgid "People without a family: %d"
 msgstr ""
 
 msgid "Percentage"
@@ -17244,6 +17228,9 @@ msgid "The content of this email is not stored. ChurchCRM keeps the text of mess
 msgstr ""
 
 msgid "The content of this email was not kept."
+msgstr ""
+
+msgid "The conversion failed. Nothing was changed."
 msgstr ""
 
 msgid "The coordinator could not be added"

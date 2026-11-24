@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(배정된 가족 없음)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "개인을 가족으로 변환"
-
-#: 
-msgid "Convert Next"
-msgstr "다음 항목 변환"
-
-#: 
-msgid "Convert All"
-msgstr "모두 변환"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "입금 내역서 번호"
@@ -8264,10 +8252,6 @@ msgstr "새 비밀번호 확인"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "ChurchCRM이 이메일을 보낼 수 있도록 SMTP 서버 연결"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "개인 기록을 가족 단위로 변환"
 
 #: 
 msgid "Convert to Family"
@@ -27903,10 +27887,6 @@ msgid "Integrity check passed"
 msgstr "무결성 검사 통과"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "잘못된 CSRF 토큰"
-
-#: 
 msgid "Last %d days"
 msgstr "최근 %d일"
 
@@ -27949,10 +27929,6 @@ msgstr "이 범위에 대한 재정 대시보드를 엽니다. 지난 회계 연
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "지난 7일 및 향후 %d일"
-
-#: 
-msgid "People without a family: %d"
-msgstr "가족이 없는 사람: %d"
 
 #: 
 msgid "Permission to save settings and photos"

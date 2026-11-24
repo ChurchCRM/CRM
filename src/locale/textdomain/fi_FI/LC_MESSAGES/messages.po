@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Ei määrättyä perhettä)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Muunna yksilöt perheiksi"
-
-#: 
-msgid "Convert Next"
-msgstr "Muunna seuraavaksi"
-
-#: 
-msgid "Convert All"
-msgstr "Muunnan kaikki"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Talletuksen kuittinumero"
@@ -8249,10 +8237,6 @@ msgstr "Vahvista uusi salasanasi"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Yhdistä SMTP-palvelin, jotta ChurchCRM voi lähettää sähköposteja"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Muunna yksittäiset tietueet perheyksiköiksi"
 
 #: 
 msgid "Convert to Family"
@@ -27914,10 +27898,6 @@ msgid "Integrity check passed"
 msgstr "Eheystarkistus onnistui"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Virheellinen CSRF-tunnus"
-
-#: 
 msgid "Last %d days"
 msgstr "Viimeiset %d päivää"
 
@@ -27960,10 +27940,6 @@ msgstr "Avaa Talous-hallintapaneelin tälle aikavälille. Valitse aiempi tilivuo
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Edelliset 7 päivää ja seuraavat %d päivää"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Henkilöt ilman perhettä: %d"
 
 #: 
 msgid "Permission to save settings and photos"

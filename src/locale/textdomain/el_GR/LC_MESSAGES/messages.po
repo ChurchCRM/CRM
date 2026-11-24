@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Δεν έχει οριστεί οικογένεια)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Μετατροπή Μελών σε οικογένειες"
-
-#: 
-msgid "Convert Next"
-msgstr "Μετατροπή Επόμενο"
-
-#: 
-msgid "Convert All"
-msgstr "Μετατροπή όλων"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Αριθμός δελτίου κατάθεσης"
@@ -8278,10 +8266,6 @@ msgstr "Επιβεβαιώστε τον νέο κωδικό πρόσβασης"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Συνδέστε διακομιστή SMTP ώστε το ChurchCRM να στέλνει email"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Μετατροπή ατομικών εγγραφών σε οικογενειακές μονάδες"
 
 #: 
 msgid "Convert to Family"
@@ -27943,10 +27927,6 @@ msgid "Integrity check passed"
 msgstr "Ο έλεγχος ακεραιότητας πέτυχε"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Μη έγκυρο διακριτικό CSRF"
-
-#: 
 msgid "Last %d days"
 msgstr "Τελευταίες %d ημέρες"
 
@@ -27989,10 +27969,6 @@ msgstr "Ανοίγει τον πίνακα ελέγχου Οικονομικών
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Προηγούμενες 7 ημέρες και επόμενες %d ημέρες"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Άτομα χωρίς οικογένεια: %d"
 
 #: 
 msgid "Permission to save settings and photos"

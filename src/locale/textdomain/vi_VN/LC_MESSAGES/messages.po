@@ -378,18 +378,6 @@ msgid "(No assigned family)"
 msgstr "(Chưa được thêm vào gia đình)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Chuyển đổi cá nhân thành gia đình"
-
-#: 
-msgid "Convert Next"
-msgstr "Chuyển đổi tiếp theo"
-
-#: 
-msgid "Convert All"
-msgstr "Chuyển đổi tất cả"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Số phiếu gửi tiền"
@@ -8278,10 +8266,6 @@ msgstr "Xac nhan mat khau moi cua ban"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Ket noi may chu SMTP de ChurchCRM co the gui email"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
 
 #: 
 msgid "Convert to Family"
@@ -27917,10 +27901,6 @@ msgid "Integrity check passed"
 msgstr "Kiểm tra tính toàn vẹn thành công"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Mã thông báo CSRF không hợp lệ"
-
-#: 
 msgid "Last %d days"
 msgstr "%d ngày qua"
 
@@ -27963,10 +27943,6 @@ msgstr "Mở bảng điều khiển Tài chính theo khoảng này. Hãy chọn 
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 ngày qua và %d ngày tới"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Người không có gia đình: %d"
 
 #: 
 msgid "Permission to save settings and photos"

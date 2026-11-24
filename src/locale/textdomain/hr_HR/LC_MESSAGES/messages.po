@@ -364,18 +364,6 @@ msgid "(No assigned family)"
 msgstr "(Nije dodijeljena obitelj)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Pretvori pojedince u obitelji"
-
-#: 
-msgid "Convert Next"
-msgstr "Pretvori sljedeće"
-
-#: 
-msgid "Convert All"
-msgstr "Pretvori sve"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Broj uplatnice"
 
@@ -8252,10 +8240,6 @@ msgstr "Potvrdite vašu novu lozinku"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Povežite SMTP poslužitelj kako bi ChurchCRM mogao slati e-poštu"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Pretvori pojedinačne zapise u obiteljske jedinice"
 
 #: 
 msgid "Convert to Family"
@@ -27943,10 +27927,6 @@ msgid "Integrity check passed"
 msgstr "Provjera integriteta prošla"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Nevažeći CSRF token"
-
-#: 
 msgid "Last %d days"
 msgstr "Zadnjih %d dana"
 
@@ -27989,10 +27969,6 @@ msgstr "Otvara nadzornu ploču financija za ovaj raspon. Prošlu fiskalnu godinu
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Prošlih 7 dana i sljedećih %d dana"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Osobe bez obitelji: %d"
 
 #: 
 msgid "Permission to save settings and photos"

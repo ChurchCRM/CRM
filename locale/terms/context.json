@@ -6,6 +6,9 @@
     "src/admin/views/dashboard.php:206",
     "src/admin/views/debug.php:588"
   ],
+  "Create a family for this person? Their address and home phone move to the new family.": [
+    "webpack/people/person-convert-to-family.ts:53"
+  ],
   "Finance Settings": [
     "src/ChurchCRM/Config/Menu/Menu.php:463",
     "src/ChurchCRM/view/PageHeader.php:170",
@@ -38,6 +41,10 @@
     "src/admin/views/dashboard.php:200",
     "src/admin/views/dashboard.php:212",
     "src/admin/views/debug.php:586"
+  ],
+  "The conversion failed. Nothing was changed.": [
+    "webpack/people/person-convert-to-family.ts:26",
+    "webpack/people/person-convert-to-family.ts:36"
   ],
   "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": [
     "src/admin/views/dashboard.php:208"
