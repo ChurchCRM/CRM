@@ -66,7 +66,7 @@ TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);
 
 $payloads = $GLOBALS['telemetryPayloads'];
-Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_failed', 'upgrade_failed'], array_column($payloads, 'event'));
+Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_failed', 'upgrade_sql_failed', 'upgrade_failed', 'upgrade_script_interrupted'], array_column($payloads, 'event'));
 foreach ($payloads as $payload) {
     Assert::true($payload['properties']['$geoip_disable']);
     Assert::false(array_key_exists('$ip', $payload['properties']));

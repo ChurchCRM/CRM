@@ -112,3 +112,22 @@
     }
   }
 }
+
+// Wide enough to read the notice text; on phones it spans the sticky navbar.
+#databaseSupportMenuItem .dropdown-menu,
+#demoModeMenuItem .dropdown-menu {
+  width: 22rem;
+}
+
+@media (max-width: 767.98px) {
+  #databaseSupportMenuItem,
+  #demoModeMenuItem {
+    position: static;
+
+    .dropdown-menu[data-bs-popper] {
+      left: 1rem;
+      right: 1rem;
+      width: auto;
+    }
+  }
+}

@@ -10370,6 +10370,42 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/admin/api/person/{personId}/convert-to-family':
+    post:
+      tags:
+        - Admin
+      summary: 'Make a person with no family the only member of a new family (Admin role)'
+      description: "The family takes the person's last name, address and home phone, and those fields move off the person."
+      operationId: convertPersonToFamily
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: Converted
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  family: { properties: { id: { type: integer, example: 12 }, name: { type: string, example: Smith }, url: { type: string, example: /people/family/12 } }, type: object }
+                type: object
+        '400':
+          description: 'The person already belongs to a family'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/member-portal/sign-in:
     get:
       tags:
@@ -12369,7 +12405,7 @@ paths:
                 level:
                   description: 'Telemetry collection level. Every choice dismisses the one-time consent prompt.'
                   type: string
-                  enum: [none, install, errors, full]
+                  enum: [default, full]
               type: object
       responses:
         '403':

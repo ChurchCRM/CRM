@@ -28,7 +28,7 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 
-$showTelemetryPrompt = !TelemetryService::isEnabled()
+$showTelemetryPrompt = !TelemetryService::capturesPageViews()
     && SystemConfig::getValue('sTelemetryAskedVersion') === '';
 ?>
 
@@ -197,25 +197,21 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
-                    <?php $offerInstall = TelemetryService::getLevel() === TelemetryService::LEVEL_NONE; ?>
-                    <h5 class="mb-1"><?= $offerInstall ? gettext('Share anonymous install statistics?') : gettext('Help us find and fix problems?') ?></h5>
+                    <h5 class="mb-1"><?= gettext('Share which pages are used') ?></h5>
                     <p class="text-secondary mb-2">
                         <?= gettext('Your data is yours. This reports on the software, never on your church or its people.') ?>
                     </p>
                     <ul class="text-secondary mb-3">
-                        <?php if ($offerInstall): ?>
-                        <li><?= gettext('Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once.') ?></li>
-                        <?php else: ?>
-                        <li><?= gettext('Shared in addition: warnings, error details, and which pages are opened.') ?></li>
-                        <?php endif; ?>
+                        <li><?= gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.') ?></li>
+                        <li><?= gettext('Also send which pages are used.') ?></li>
                         <li><?= gettext('Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
-                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported.') ?></li>
+                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.') ?></li>
                     </ul>
                     <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= $offerInstall ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
-                            <i class="fa-solid fa-check me-1"></i><?= $offerInstall ? gettext('Share install statistics') : gettext('Share error and usage reports') ?>
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_FULL ?>">
+                            <i class="fa-solid fa-check me-1"></i><?= gettext('Share which pages are used') ?>
                         </button>
-                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= InputUtils::escapeAttribute(TelemetryService::getLevel()) ?>">
+                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_DEFAULT ?>">
                             <?= gettext('No thanks') ?>
                         </button>
                     </div>

@@ -49,12 +49,6 @@ $featureGroups = [
             'description' => gettext('Enforce strict CSP headers to protect against XSS attacks'),
         ],
     ],
-    gettext('Finance Features') => [
-        'bEnableNonDeductible' => [
-            'label' => gettext('Non-Deductible Payments'),
-            'description' => gettext('Allow recording non-tax-deductible payments (e.g., merchandise sales)'),
-        ],
-    ],
     gettext('Search Settings') => [
         'bSearchIncludePersons' => [
             'label' => gettext('Search People'),

@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Ei määrättyä perhettä)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Muunna yksilöt perheiksi"
-
-#: 
-msgid "Convert Next"
-msgstr "Muunna seuraavaksi"
-
-#: 
-msgid "Convert All"
-msgstr "Muunnan kaikki"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Talletuksen kuittinumero"
@@ -8251,10 +8239,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Yhdistä SMTP-palvelin, jotta ChurchCRM voi lähettää sähköposteja"
 
 #: 
-msgid "Convert individual records into family units"
-msgstr "Muunna yksittäiset tietueet perheyksiköiksi"
-
-#: 
 msgid "Convert to Family"
 msgstr "Muunna perheeksi"
 
@@ -15402,10 +15386,6 @@ msgid "ChurchCRM version"
 msgstr "ChurchCRM-versio"
 
 #: 
-msgid "Collection level"
-msgstr "Keräystaso"
-
-#: 
 msgid "Count unique installs"
 msgstr "Laske yksilölliset asennukset"
 
@@ -15460,14 +15440,6 @@ msgstr "Sitoumuksen päivittäminen epäonnistui"
 #: 
 msgid "Financial data"
 msgstr "Taloustiedot"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Täysi — kaikki edellä mainittu sekä sivunäkymät"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Täysi — sivunäkymät, varoitukset, virheet ja JS-poikkeukset"
 
 #: 
 msgid "Fund Summary"
@@ -15544,10 +15516,6 @@ msgstr "Ei vähennyskelpoinen ($)"
 #: 
 msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Ei-vähennyskelpoinen summa ei voi ylittää rahaston summaa"
-
-#: 
-msgid "None (disabled)"
-msgstr "Ei mitään (poistettu käytöstä)"
 
 #: 
 msgid "Overpaid"
@@ -15668,10 +15636,6 @@ msgstr "Toivotaan sinulle ihanaa syntymäpäivää!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Tililläsi ei ole sähköpostiosoitetta tallennettu. Lisää yksi profiiliisi lähettääksesi testin."
-
-#: 
-msgid "errors+"
-msgstr "virheet+"
 
 #: 
 msgid "full only"
@@ -17112,10 +17076,6 @@ msgstr "järjestelmälokit"
 #: 
 msgid "Access Control & Security"
 msgstr "Pääsynvalvonta ja turvallisuus"
-
-#: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Salli ei-verovähennyskelpoiset maksut (esim. tavaramyynti)"
 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
@@ -26290,22 +26250,6 @@ msgid "Database engine and major/minor version"
 msgstr "Tietokantamoottori ja pää-/alaversio"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Virheet — asennustilastot, varoitukset, virheet ja JS-poikkeukset"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Autatko meitä löytämään ja korjaamaan ongelmia?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Asennus jakaa vähimmäismäärän asennus- ja päivitystilastoja. Virheet lisää varoitukset ja virheraportit. Täysi lisää sivunäkymät. Ei mitään lähettää vain epäonnistuneet asennukset ja päivitykset."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Asennus — asennus- ja päivitystilastot (oletus)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Asennusten ja päivitysten tulokset, aiempi versio päivityksissä ja päivittäinen tilailmoitus käytön aikana"
 
@@ -26314,20 +26258,8 @@ msgid "Installation profile"
 msgstr "Asennusprofiili"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Kieli- ja alueasetus (Virheet ja Täysi)"
-
-#: 
 msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
 msgstr "Ei koskaan jaeta: jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Maasi on seurakunnan asetuksissa määritetty maa, eikä sitä päätellä verkostasi."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Käyttöjärjestelmäperhe (Virheet ja Täysi)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "PHP-versio (Virheet ja Täysi)"
 
 #: 
 msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
@@ -26338,44 +26270,12 @@ msgid "Separate production, demo, and test installs"
 msgstr "Erottele tuotanto-, demo- ja testiasennukset"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Jaetaanko nimettömiä asennustilastoja?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Jaa virhe- ja käyttöraportteja"
-
-#: 
-msgid "Share install statistics"
-msgstr "Jaa asennustilastoja"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Lisäksi jaetaan: varoitukset, virheiden tiedot ja avatut sivut."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Jaetaan: tieto siitä, että ChurchCRM on asennettu tai päivitetty ja onnistuiko se, kerran päivässä lähetettävä tilailmoitus käytön aikana, versionumero, maasi ja tietokannan tyyppi. Satunnainen asennustunnus laskee jokaisen asennuksen kerran."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Ymmärrä tietokantojen yhteensopivuus"
 
 #: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Valintaa kysytään kerran. Voit muuttaa sitä milloin tahansa. Valinnalla Ei kiitos raportoidaan vain epäonnistunut asennus tai päivitys."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Tietosi ovat sinun. Asennus jakaa vain asennusten ja päivitysten tulokset, asennustunnuksen, ohjelmistoversion, asennusprofiilin, määritetyn maan sekä tietokantamoottorin ja sen pää-/alaversion. Virheet lisää varoitukset ja virheiden tiedot. Täysi lisää sivunäkymät. Ei mitään lähettää vain epäonnistuneet asennukset ja päivitykset. Mikään taso ei lähetä verkko-osoitettasi tai palvelimesi nimeä. Testiasennukset eivät lähetä mitään. Telemetria lähetetään PostHogille Yhdysvaltoihin."
-
-#: 
 msgid "Your data is yours. This reports on the software, never on your church or its people."
 msgstr "Tietosi ovat sinun. Tämä raportoi ohjelmistosta, ei koskaan seurakunnastasi tai sen ihmisistä."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Tietosi ovat sinun. Asennusten laskemiseksi ChurchCRM ilmoittaa, että se on asennettu tai päivitetty ja onnistuiko se, kerran päivässä tilailmoituksen käytön aikana sekä versionumeron, maasi, tietokannan tyypin ja satunnaisen asennustunnuksen. Se ei koskaan ilmoita jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Voit poistaa tämän käytöstä milloin tahansa kohdassa Ylläpito → Telemetria; epäonnistunut asennus tai päivitys ilmoitetaan silti. Varoitukset, virheiden tiedot ja sivunäkymät jaetaan vain, jos valitset niin."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27998,10 +27898,6 @@ msgid "Integrity check passed"
 msgstr "Eheystarkistus onnistui"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Virheellinen CSRF-tunnus"
-
-#: 
 msgid "Last %d days"
 msgstr "Viimeiset %d päivää"
 
@@ -28044,10 +27940,6 @@ msgstr "Avaa Talous-hallintapaneelin tälle aikavälille. Valitse aiempi tilivuo
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Edelliset 7 päivää ja seuraavat %d päivää"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Henkilöt ilman perhettä: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28250,4 +28142,156 @@ msgstr "Vahvista nyt"
 #: 
 msgid "View Giving History"
 msgstr "Näytä lahjoitushistoria"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d henkilöä lisättiin onnistuneesti; %d henkilöä ei voitu lisätä, ja he jäävät ostoskoriin."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d henkilöä ei voitu lisätä, ja he jäävät ostoskoriisi."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Ylläpitäjät näkevät tämän varoituksen jokaisella sivulla, kunnes tietokanta on siirretty versioon, joka saa edelleen tietoturvakorjauksia. Siirtäminen nyt, kun tietoja on vähän, on helpointa."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Ylläpitäjät kirjautuvat jatkossa tavalliseen hallintapaneeliin. Asennuspaneeli ei avaudu enää kirjautumisen yhteydessä."
+
+#: 
+msgid "Database security risk"
+msgstr "Tietokannan tietoturvariski"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Demotila ottaa käyttöön myös nimettömät käyttötilastot (PostHog), jotta näemme, miten ihmiset tutustuvat ChurchCRM:ään. Aloita alusta poistaa sen käytöstä."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Sähköpostiasetukset tallennettu. Jäsenten kirjautuminen on nyt käytössä, joten jäsenet voivat kirjautua Jäsenportaaliin sähköpostillaan."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Anna seurakuntasi tiedot, lisää henkilöt ja kutsu tiimisi."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Kaikki tässä on esimerkkitietoja. Aloita alusta ennen kuin syötät seurakuntasi todelliset tiedot."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Kaikki tässä on esimerkkitietoja. Kun olet valmis käyttämään ChurchCRM:ää seurakunnallesi, aloita alusta: se poistaa demotiedot ja jokaisen asetuksen, jotta voit aloittaa omillasi."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Tutustu ChurchCRM:ään demotiedoilla tai määritä se seurakunnallesi"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Henkilön lisääminen ryhmään epäonnistui"
+
+#: 
+msgid "Finish setup"
+msgstr "Viimeistele asennus"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Ylläpitäjät kirjautuvat Asennuspaneeliin näin monen päivän ajan asennuksen jälkeen. Aseta arvoksi 0 poistaaksesi sen käytöstä."
+
+#: 
+msgid "Group Assignment"
+msgstr "Ryhmämääritys"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Sisäinen: ylläpitäjä valitsi Viimeistele asennus Asennuspaneelissa. Älä muokkaa manuaalisesti."
+
+#: 
+msgid "Keep exploring"
+msgstr "Jatka tutustumista"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Siirrytkö toiselta ChurchCRM-palvelimelta? Palauta siellä tehty varmuuskopio. Tämä korvaa kaiken tässä asennuksessa."
+
+#: 
+msgid "Ready for your church"
+msgstr "Valmis seurakunnallesi"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Yritä ryhmämääritystä uudelleen"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Yritä ryhmämäärityksiä uudelleen"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Valitse tälle henkilölle yksi tai useampi ryhmä."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Valitse ryhmät, joita haluat yrittää uudelleen."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Määritä seurakuntasi"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Asennuspaneeli"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Asennuspaneelin päivät"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Aloita alusta demopalkissa tai Nollaa tietokanta Järjestelmänvalvojan koontinäytössä poistaa demotiedot ja jokaisen asetuksen ja palauttaa ChurchCRM:n uuteen asennukseen."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Aloita ensin alusta ja määritä sitten ChurchCRM omilla seurakuntasi tiedoilla."
+
+#: 
+msgid "Start setup"
+msgstr "Aloita asennus"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Demotiedot ovat poissa. Kirjaudu sisään oletusylläpitäjätilillä määrittääksesi seurakuntasi."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Henkilö tallennettiin, mutta yksi tai useampi ryhmämääritys epäonnistui. Valitse ryhmät alta ja yritä uudelleen."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Henkilö tallennettiin, mutta yksi tai useampi ryhmämääritys epäonnistui. Epäonnistuneet ryhmät on valittu alla. Tarkista ne ja tallenna uudelleen yrittääksesi uudelleen."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Tämä poistaa demotiedot ja jokaisen asetuksen ja palauttaa ChurchCRM:n uuteen asennukseen."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Kirjaudut uudelleen sisään oletusylläpitäjätilillä ja annat seurakuntasi tiedot."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Tutustut ChurchCRM:ään demotiedoilla."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Tutustut demotietoihin"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Seurakuntasi tiedot on tallennettu. Käy läpi alla olevat vaiheet."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Tietokantasi (%1$s %2$s) on tietoturvariski: sen toimittaja ei enää julkaise tietoturvakorjauksia kyseiselle versiolle. ChurchCRM toimii edelleen, mutta pyydä isäntääsi siirtymään MariaDB %3$s+ tai MySQL %4$s+ -versioon."
 

@@ -165,6 +165,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           'PageName' => $_SERVER['REQUEST_URI'] ?? '',
           'telemetry' => [
               'level' => TelemetryService::getLevel(),
+              'properties' => array_diff_key(TelemetryService::baseProperties(), ['$lib' => true]),
               'install_profile' => TelemetryService::installProfile(),
               'key' => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint' => TelemetryService::POSTHOG_ENDPOINT,
@@ -274,6 +275,53 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </a>
           </div>
         </div>
+
+        <?php $demoDataLoaded = InstallSetupService::isDemoDataLoaded(); ?>
+        <?php $demoBannerDismissed = $demoDataLoaded && $currentUser->getSettingValue(NotificationService::dismissalSettingKey('demo-mode')) === 'true'; ?>
+
+        <!-- Database support notice: once dismissed, the banner lives here until the database is supported -->
+        <?php $dbSupportWarning = NotificationService::getDatabaseSupportWarning(); ?>
+        <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
+        <div class="nav-item dropdown" id="databaseSupportMenuItem">
+          <a class="nav-link px-0 text-danger" data-bs-toggle="dropdown" href="#"
+             id="databaseSupportMenu"
+             title="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>"
+             aria-label="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>">
+            <i class="fa-solid fa-database" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <div class="dropdown-item-text">
+              <strong><i class="fa-solid fa-database me-2"></i><?= InputUtils::escapeHTML($dbSupportWarning['title']) ?></strong>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($dbSupportWarning['message']) ?></div>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
+
+        <!-- Demo mode notice: once dismissed, the banner lives here while demo data is loaded -->
+        <?php if ($demoDataLoaded && $demoBannerDismissed): ?>
+        <div class="nav-item dropdown" id="demoModeMenuItem">
+          <a class="nav-link px-0 text-warning" data-bs-toggle="dropdown" href="#"
+             id="demoModeMenu"
+             title="<?= InputUtils::escapeAttribute(gettext("You're exploring ChurchCRM with demo data.")) ?>"
+             aria-label="<?= InputUtils::escapeAttribute(gettext("You're exploring ChurchCRM with demo data.")) ?>">
+            <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <div class="dropdown-item-text">
+              <strong><i class="fa-solid fa-flask me-2"></i><?= gettext("You're exploring ChurchCRM with demo data.") ?></strong>
+              <div class="text-secondary"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
+            </div>
+            <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
+            <div class="dropdown-item-text">
+              <button type="button" class="btn btn-warning btn-sm js-start-fresh">
+                <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Start Fresh') ?>
+              </button>
+            </div>
+            <?php endif; ?>
+          </div>
+        </div>
+        <?php endif; ?>
 
         <!-- Locale: flag links directly to the localization tab on the profile page -->
         <?php
@@ -457,9 +505,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 <?php if ($setupMode || ($currentUser->isAdmin() && InstallSetupService::isDemoDataLoaded())): ?>
     <script src="<?= SystemURLs::assetVersioned('/skin/v2/first-run.min.js') ?>"></script>
 <?php endif; ?>
-<?php if (InstallSetupService::isDemoDataLoaded()): ?>
+<?php if ($demoDataLoaded && !$demoBannerDismissed): ?>
     <div class="container-xl mt-3">
-      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner">
+      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner"
+           data-notification-id="demo-mode"
+           data-dismiss-key="<?= InputUtils::escapeAttribute(NotificationService::dismissalSettingKey('demo-mode')) ?>">
         <div class="d-flex flex-wrap align-items-center gap-2">
           <i class="fa-solid fa-flask"></i>
           <div class="flex-grow-1">
@@ -472,6 +522,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </button>
           <?php endif; ?>
         </div>
+        <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
       </div>
     </div>
 <?php endif; ?>
@@ -528,8 +579,12 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
     <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php
-// Hydrate registry from session-cached remote notifications (no HTTP calls)
-NotificationService::loadSessionNotifications();
+// Hydrate registry from session-cached remote notifications (no HTTP calls).
+// In setup mode the Setup Dashboard is the admin's home URL, but remote
+// announcements presume an install in daily use — they wait until setup is done.
+NotificationService::loadSessionNotifications(
+    !$setupMode && parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) === parse_url($homeUrl, PHP_URL_PATH)
+);
 
 // Render all active notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {

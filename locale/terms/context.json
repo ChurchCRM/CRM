@@ -1,125 +1,52 @@
 {
-  "%d people added successfully; %d people could not be added and remain in the cart.": [
-    "src/api/routes/cart.php:184"
+  "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.": [
+    "src/setup/templates/setup-steps.php:200"
   ],
-  "%d people could not be added and remain in your cart.": [
-    "src/groups/routes/cart.php:113"
+  "Also send which pages are used.": [
+    "src/admin/views/dashboard.php:206",
+    "src/admin/views/debug.php:588"
   ],
-  "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.": [
-    "src/setup/templates/setup-steps.php:197"
+  "Create a family for this person? Their address and home phone move to the new family.": [
+    "webpack/people/person-convert-to-family.ts:53"
   ],
-  "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again.": [
-    "webpack/admin-setup.js:15"
+  "Finance Settings": [
+    "src/ChurchCRM/Config/Menu/Menu.php:463",
+    "src/ChurchCRM/view/PageHeader.php:170",
+    "src/ChurchCRM/view/PageHeader.php:176"
   ],
-  "Database security risk": [
-    "src/setup/templates/setup-steps.php:195"
+  "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": [
+    "src/setup/templates/setup-steps.php:201"
   ],
-  "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off.": [
-    "src/skin/js/importDemoData.js:40"
+  "No Payments Text": [
+    "src/admin/routes/finance.php:39"
   ],
-  "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email.": [
-    "src/admin/routes/email.php:133"
+  "No Pledge Text": [
+    "src/admin/routes/finance.php:38"
   ],
-  "Enter your church information, add your people, and invite your team.": [
-    "src/admin/views/setup.php:54"
+  "No tier sends people, donors, giving, content, church contact details, your web address or server name.": [
+    "src/setup/templates/setup-steps.php:202"
   ],
-  "Everything here is sample data. Start fresh before you enter your church's real information.": [
-    "src/Include/Header.php:467"
+  "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.": [
+    "src/admin/views/debug.php:624"
   ],
-  "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own.": [
-    "src/admin/views/setup.php:23"
+  "OS family": [
+    "src/admin/views/debug.php:607"
   ],
-  "Explore ChurchCRM with demo data, or set it up for your church": [
-    "src/admin/routes/dashboard.php:62"
+  "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.": [
+    "src/ChurchCRM/dto/SystemConfig.php:367",
+    "src/admin/views/dashboard.php:205",
+    "src/admin/views/debug.php:581"
   ],
-  "Failed to add person to group": [
-    "src/ChurchCRM/Service/GroupService.php:36",
-    "src/ChurchCRM/Service/GroupService.php:117",
-    "src/ChurchCRM/Service/GroupService.php:152"
+  "Share which pages are used": [
+    "src/admin/views/dashboard.php:200",
+    "src/admin/views/dashboard.php:212",
+    "src/admin/views/debug.php:586"
   ],
-  "Finish setup": [
-    "src/ChurchCRM/dto/SystemConfig.php:351",
-    "src/admin/routes/dashboard.php:66",
-    "webpack/admin-setup.js:2"
+  "The conversion failed. Nothing was changed.": [
+    "webpack/people/person-convert-to-family.ts:26",
+    "webpack/people/person-convert-to-family.ts:36"
   ],
-  "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off.": [
-    "src/ChurchCRM/dto/SystemConfig.php:350"
-  ],
-  "Group Assignment": [
-    "src/PersonEditor.php:760",
-    "src/PersonEditor.php:986",
-    "src/PersonEditor.php:991"
-  ],
-  "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually.": [
-    "src/ChurchCRM/dto/SystemConfig.php:351"
-  ],
-  "Keep exploring": [
-    "src/admin/views/setup.php:25"
-  ],
-  "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install.": [
-    "src/admin/views/setup.php:69"
-  ],
-  "Ready for your church": [
-    "webpack/first-run.js:31"
-  ],
-  "Retry Group Assignment": [
-    "src/PersonEditor.php:760"
-  ],
-  "Retry group assignments": [
-    "src/PersonEditor.php:193",
-    "src/PersonEditor.php:800"
-  ],
-  "Select one or more groups for this person.": [
-    "src/PersonEditor.php:1023"
-  ],
-  "Select the groups you want to retry.": [
-    "src/PersonEditor.php:789"
-  ],
-  "Set Up Your Church": [
-    "src/admin/views/setup.php:50"
-  ],
-  "Setup Dashboard": [
-    "src/ChurchCRM/Service/DashboardLandingService.php:58",
-    "src/ChurchCRM/Slim/Middleware/ChurchInfoRequiredMiddleware.php:16",
-    "src/ChurchCRM/Slim/Middleware/ChurchInfoRequiredMiddleware.php:19"
-  ],
-  "Setup Dashboard Days": [
-    "src/admin/routes/dashboard.php:120"
-  ],
-  "Start fresh first, then set up ChurchCRM with your own church information.": [
-    "src/admin/views/setup.php:52"
-  ],
-  "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install.": [
-    "src/skin/js/importDemoData.js:37"
-  ],
-  "Start setup": [
-    "src/admin/views/setup.php:56"
-  ],
-  "The demo data is gone. Sign in with the default administrator account to set up your church.": [
-    "webpack/first-run.js:32"
-  ],
-  "The person was saved, but one or more group assignments failed. Select the groups below and retry.": [
-    "src/PersonEditor.php:754"
-  ],
-  "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry.": [
-    "src/PersonEditor.php:830"
-  ],
-  "This erases the demo data and every setting, and returns ChurchCRM to a new install.": [
-    "webpack/first-run.js:15"
-  ],
-  "You will sign in again with the default administrator account and enter your church information.": [
-    "webpack/first-run.js:16"
-  ],
-  "You're exploring ChurchCRM with demo data.": [
-    "src/Include/Header.php:466"
-  ],
-  "You're exploring demo data": [
-    "src/admin/views/setup.php:22"
-  ],
-  "Your church information is saved. Work through the steps below.": [
-    "src/admin/views/setup.php:59"
-  ],
-  "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+.": [
-    "src/ChurchCRM/Service/DatabaseVersionService.php:62"
+  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": [
+    "src/admin/views/dashboard.php:208"
   ]
 }

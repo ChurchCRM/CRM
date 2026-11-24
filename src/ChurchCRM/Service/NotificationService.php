@@ -72,11 +72,13 @@ class NotificationService
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
      */
-    public static function loadSessionNotifications(): void
+    public static function loadSessionNotifications(bool $onLandingPage = false): void
     {
         self::loadUpgradeNotification();
         self::loadDatabaseSupportNotification();
-        self::loadRemoteNotifications();
+        if ($onLandingPage) {
+            self::loadRemoteNotifications();
+        }
     }
 
     // ─── Source 1: System upgrade (session set at login) ────────────────
@@ -118,23 +120,49 @@ class NotificationService
     }
 
     /**
-     * Not dismissible: it stays until the database is moved to a supported version.
+     * The database support warning for the current user, or null when the
+     * database is on a supported version or the user is not an admin.
+     * 'dismissed' is the current user's per-user dismissal state: while false
+     * the warning renders as the full banner; once dismissed it collapses to
+     * the red top-nav indicator (Header.php) until the database is supported.
+     *
+     * @return array{title: string, message: string, dismissed: bool}|null
      */
-    private static function loadDatabaseSupportNotification(): void
+    public static function getDatabaseSupportWarning(): ?array
     {
-        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-            return;
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->isAdmin()) {
+            return null;
         }
         $message = DatabaseVersionService::getSecurityRiskMessage();
         if ($message === null) {
+            return null;
+        }
+
+        return [
+            'title'     => gettext('Database out of support'),
+            'message'   => $message,
+            'dismissed' => $currentUser->getSettingValue(self::dismissalSettingKey('database-out-of-support')) === 'true',
+        ];
+    }
+
+    /**
+     * Dismissible per user (#11942): dismissal collapses the banner into the
+     * top-nav indicator; the warning fully clears only when the database is
+     * moved to a supported version.
+     */
+    private static function loadDatabaseSupportNotification(): void
+    {
+        $warning = self::getDatabaseSupportWarning();
+        if ($warning === null) {
             return;
         }
 
         self::add(new UiNotification(
             'database-out-of-support',
-            '',
-            gettext('Database out of support'),
-            $message,
+            self::dismissalSettingKey('database-out-of-support'),
+            $warning['title'],
+            $warning['message'],
             '',
             'danger',
             'database',
@@ -191,6 +219,13 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
+            // Announcements show once per login, on the landing page only.
+            if ($id !== '') {
+                if (isset($_SESSION['remoteNoticesShown'][$id])) {
+                    continue;
+                }
+                $_SESSION['remoteNoticesShown'][$id] = true;
+            }
             $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
