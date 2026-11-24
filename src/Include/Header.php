@@ -463,7 +463,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <div class="modal-dialog crm-side-panel">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h2 class="modal-title h4" id="notificationDetailTitle"></h2>
+                  <h5 class="modal-title" id="notificationDetailTitle"></h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
                 </div>
                 <div class="modal-body">

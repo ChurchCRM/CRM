@@ -12,6 +12,8 @@
 // layout down. Dismiss it the way a user does so it is saved per user and never rendered again.
 Cypress.Commands.add('dismissSystemNotifications', () => {
     cy.window().its('CRM.userId').should('exist');
+    // Footer.js attaches the dismiss handlers once locales load; a click before that is lost.
+    cy.window().its('CRM.localesLoaded').should('eq', true);
     cy.get('body').then($body => {
         const $buttons = $body.find('#notificationCenterMenuItem .js-dismiss-notification');
         if ($buttons.length === 0) {
