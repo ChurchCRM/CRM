@@ -39,7 +39,7 @@ $idPath = sys_get_temp_dir() . '/cypress-telemetry-' . bin2hex(random_bytes(8)) 
 $GLOBALS['captures'] = [];
 TelemetryService::capturePageView('/admin/system/debug');
 $handler = new \ChurchCRM\Logging\PostHogLogHandler();
-foreach (['/people/person/123?personId=456', '/api/person/%31%32%33/photo/456?token=private'] as $url) {
+foreach (['/people/person/123?personId=456', '/api/person/%31%32%33/photo/456?token=private', '/api/person/private@example.org/token/private-token'] as $url) {
     $handler->handle(new \Monolog\LogRecord(new \DateTimeImmutable(), 'app', \Monolog\Level::Error, 'Cypress telemetry ' . bin2hex(random_bytes(8)), extra: ['url' => $url]));
 }
 $capture = new \ReflectionMethod(TelemetryService::class, 'capture');
@@ -123,9 +123,11 @@ describe("Admin chooses whether to share page usage", () => {
                 expect(scripts.some((url) => url.includes("web-vitals"))).to.eq(false);
             });
             serverCaptures(level).then((captures) => {
-                expect(captures.filter((capture) => capture.event === "log_error").map((capture) => capture.properties.route))
-                    .to.deep.eq(["/people/person/{id}", "/api/person/{id}/photo/{id}"]);
-                expect(captures.map((capture) => capture.event)).to.deep.eq(level === "full" ? ["page_view", "log_error", "log_error", "heartbeat"] : ["log_error", "log_error", "heartbeat"]);
+                captures.filter((capture) => capture.event === "log_error").forEach((capture) => {
+                    expect(capture.properties).not.to.have.property("route");
+                    expect(JSON.stringify(capture)).not.to.match(/personId|private@example|private-token|%31%32%33/);
+                });
+                expect(captures.map((capture) => capture.event)).to.deep.eq(level === "full" ? ["page_view", "log_error", "log_error", "log_error", "heartbeat"] : ["log_error", "log_error", "log_error", "heartbeat"]);
             });
         };
         cy.on("window:before:load", (win) => {

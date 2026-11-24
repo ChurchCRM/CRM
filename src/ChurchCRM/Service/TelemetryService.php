@@ -483,10 +483,6 @@ class TelemetryService
             return;
         }
 
-        // Replace numeric path identifiers and strip query strings before reporting routes.
-        $rawUrl = $record->extra['url'] ?? '';
-        $route  = $rawUrl !== '' ? self::normalizePageRoute($rawUrl, SystemURLs::getRootPath()) : 'unknown';
-
         $message = self::scrubLogMessage($record->message);
         if (!self::firstLogToday($record->level->name . '|' . $message)) {
             return;
@@ -497,8 +493,7 @@ class TelemetryService
             'message'        => $message,
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
-            'route'          => $route,
-            // remote_ip is intentionally excluded — PII
+            // Raw request paths and remote_ip can identify church records or users.
         ]);
 
         self::capture('log_error', $properties);
