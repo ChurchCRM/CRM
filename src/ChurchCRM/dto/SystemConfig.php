@@ -125,27 +125,8 @@ class   SystemConfig
     {
         return [
             'Choices' => [
-                gettext('None (disabled)') . ':none',
-                gettext('Install — installation and upgrade statistics (default)') . ':install',
-                gettext('Errors — install statistics, warnings, errors, and JS exceptions') . ':errors',
-                gettext('Full — all of the above plus page views') . ':full',
-            ],
-        ];
-    }
-
-    /**
-     * The V1/V2 Volunteer Management rollout states (#9704).
-     *
-     * An explicit version choice rather than a boolean, so the transition
-     * state ("both") is representable while V1 data is migrated (#9702).
-     */
-    public static function getVolunteerVersionChoices(): array
-    {
-        return [
-            'Choices' => [
-                gettext('V1 — legacy Volunteer Opportunities') . ':v1',
-                gettext('V2 — Volunteer Management') . ':v2',
-                gettext('Both — V1 and V2 side by side (transition)') . ':both',
+                gettext('Default') . ':default',
+                gettext('Full') . ':full',
             ],
         ];
     }
@@ -225,7 +206,12 @@ class   SystemConfig
             'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
             'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
-            'sCanadianTaxSignatureAsset'           => new ConfigItem('sCanadianTaxSignatureAsset', 'text', '', gettext('Private Canadian giving-statement signature asset identifier. Managed by signature upload.')),
+            'sCharityLegalName' => new ConfigItem('sCharityLegalName', 'text', '', gettext('Charity Legal Name')),
+            'sCharityRegisteredAddress' => new ConfigItem('sCharityRegisteredAddress', 'text', '', gettext('Charity Registered Address')),
+            'sCharityRegistrationNumber' => new ConfigItem('sCharityRegistrationNumber', 'text', '', gettext('Charity Registration Number')),
+            'sReceiptIssueLocality' => new ConfigItem('sReceiptIssueLocality', 'text', '', gettext('Receipt Issue Locality')),
+            'sReceiptClosing' => new ConfigItem('sReceiptClosing', 'text', 'Sincerely', gettext('Receipt Closing')),
+            'sTaxSignatureAsset'           => new ConfigItem('sTaxSignatureAsset', 'text', '', gettext('Private giving-statement signature asset identifier. Managed by signature upload.')),
             'sTaxSignatureStoragePath'             => new ConfigItem('sTaxSignatureStoragePath', 'text', '', gettext('Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to.')),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
             'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
@@ -338,9 +324,6 @@ class   SystemConfig
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
             // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
             // category (2026-09-18): their one home is Admin → Ministry Settings.
-            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v2', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
-            'aVolunteerV1Conversion'               => new ConfigItem('aVolunteerV1Conversion', 'json', '{}', gettext('Which legacy Volunteer Opportunities have been converted, and the position each became.')),
-            'sVolunteerV1NoticeDismissed'          => new ConfigItem('sVolunteerV1NoticeDismissed', 'text', '', gettext('The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice.')),
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
             'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
             'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),
@@ -362,6 +345,8 @@ class   SystemConfig
             'sLastGradePromotionResult'            => new ConfigItem('sLastGradePromotionResult', 'text', '', gettext('Internal: how the last grade promotion ran and how many people it moved. Do not edit manually.')),
             'sLastTimerJobsRunDateTime'            => new ConfigItem('sLastTimerJobsRunDateTime', 'text', '', gettext('Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.')),
             'iTimerJobsStaleHours'                 => new ConfigItem('iTimerJobsStaleHours', 'number', '26', gettext('Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning.')),
+            'iSetupDashboardDays'                  => new ConfigItem('iSetupDashboardDays', 'number', '30', gettext('For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off.')),
+            'bSetupFinished'                       => new ConfigItem('bSetupFinished', 'boolean', '0', gettext('Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually.')),
             'iTimerJobsMinIntervalMinutes'         => new ConfigItem('iTimerJobsMinIntervalMinutes', 'number', '15', gettext('Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load.')),
             'sEmailPreheader'                      => new ConfigItem('sEmailPreheader', 'text', '', gettext('Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback.')),
             'sGreeterCustomMsg1'                   => new ConfigItem('sGreeterCustomMsg1', 'text', '', gettext('Custom message for church greeter email 1, max 255 characters')),
@@ -379,7 +364,7 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'default', gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
@@ -394,7 +379,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
-            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3'],
+            gettext('Report Settings')    => ['sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2'],
         ];
     }
 
@@ -409,10 +394,6 @@ class   SystemConfig
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            // Older installs stored None by omitting the row. Preserve that choice during upgrades.
-            if (!$pruneUnknown) {
-                self::$configs['sTelemetryLevel'] = new ConfigItem('sTelemetryLevel', 'choice', 'none', self::$configs['sTelemetryLevel']->getTooltip(), '', json_encode(self::getTelemetryLevelChoices()));
-            }
             self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
@@ -612,7 +593,7 @@ class   SystemConfig
 
     public static function setValue(string $name, $value, bool $serverManaged = false): void
     {
-        if ($name === 'sCanadianTaxSignatureAsset' && !$serverManaged) {
+        if ($name === 'sTaxSignatureAsset' && !$serverManaged) {
             throw new \InvalidArgumentException(gettext('Use signature upload or removal to change this setting.'));
         }
 

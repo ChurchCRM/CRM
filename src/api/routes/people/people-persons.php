@@ -359,11 +359,9 @@ function getEmailDupesAPI(Request $request, Response $response, array $args): Re
  */
 function getLatestPersons(Request $request, Response $response, array $args): Response
 {
-    $people = PersonQuery::create()
-        ->leftJoinWithFamily()
-        ->orderByDateEntered('DESC')
-        ->limit(10)
-        ->find();
+    $days = (int) ($request->getQueryParams()['days'] ?? 0);
+    $query = PersonQuery::create()->leftJoinWithFamily()->orderByDateEntered('DESC');
+    $people = ($days > 0 ? $query->filterByDateEntered(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
 }
@@ -390,11 +388,9 @@ function getLatestPersons(Request $request, Response $response, array $args): Re
  */
 function getUpdatedPersons(Request $request, Response $response, array $args): Response
 {
-    $people = PersonQuery::create()
-        ->leftJoinWithFamily()
-        ->orderByDateLastEdited('DESC')
-        ->limit(10)
-        ->find();
+    $days = (int) ($request->getQueryParams()['days'] ?? 0);
+    $query = PersonQuery::create()->leftJoinWithFamily()->orderByDateLastEdited('DESC');
+    $people = ($days > 0 ? $query->filterByDateLastEdited(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
 }
@@ -425,10 +421,12 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
 {
     // Get birthdays for 14-day range: 7 days before to 7 days after today
     // Use start of today (midnight) to ensure day-boundary comparisons are accurate
+    $span = (int) ($request->getQueryParams()['days'] ?? 7);
+    $span = in_array($span, [7, 14, 30, 60, 90, 180], true) ? $span : 7;
     $today = DateTimeUtils::getStartOfToday();
     $dates = [];
     
-    for ($i = -7; $i <= 7; $i++) {
+    for ($i = -7; $i <= $span; $i++) {
         $date = (clone $today)->modify("{$i} days");
         $dates[] = [
             'month' => (int)$date->format('m'),

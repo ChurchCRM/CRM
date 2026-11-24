@@ -96,13 +96,13 @@ function _renderManagedGroupConflict(Response $response, Group $group): ?Respons
 }
 
 /**
- * Volunteer v2 (D23): while V2 is on, the Teacher role of a Sunday School class linked
+ * Volunteer v2 (D23): the Teacher role of a Sunday School class linked
  * to a volunteer team is given and taken by that team's qualifications. Any write here
  * that would add, remove or change a role to or from Teacher answers 409 with the
  * ministry and team to go to; student writes are untouched.
  *
- * Checked before the write because `GroupService::addUserToGroup()` swallows the
- * model's refusal, which would otherwise read as a successful add.
+ * Checked before the write so the API can return the specific conflict response
+ * with guidance to the ministry and team responsible for the Teacher role.
  */
 function _renderTeacherRoleConflict(Response $response, ?VolunteerException $conflict): ?Response
 {
@@ -1091,7 +1091,14 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
 
             $groupService = new GroupService();
-            $groupService->addUserToGroup($groupID, $userID, $roleID);
+            if ($groupService->addUserToGroup((int) $groupID, (int) $userID, (int) $roleID) === false) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    gettext('Failed to add person to group'),
+                    [],
+                    500
+                );
+            }
 
             $membership = Person2group2roleP2g2rQuery::create()
                 ->filterByGroupId((int) $groupID)

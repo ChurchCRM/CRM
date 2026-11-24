@@ -13,15 +13,6 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 
 <div class="row">
     <div class="col-12">
-        <?php if (!empty($databaseBlockMessage)): ?>
-            <div class="alert alert-danger d-flex align-items-start gap-2 mb-3" role="alert">
-                <i class="fa-solid fa-circle-xmark fa-lg mt-1"></i>
-                <div>
-                    <strong><?= gettext('This upgrade cannot run on your database.') ?></strong>
-                    <?= InputUtils::escapeHTML($databaseBlockMessage) ?>
-                </div>
-            </div>
-        <?php endif; ?>
         <!-- Version Information -->
         <div class="card mb-3">
             <div class="card-body py-3">
@@ -382,6 +373,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
     </div>
 </div>
 
+<?php require __DIR__ . '/partials/backup-download-form.php'; ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.js') ?>"></script>
 
@@ -399,7 +391,10 @@ $(document).ready(function() {
             window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
             window.CRM.AdminAPIRequest({
                 method: 'POST',
-                path: 'upgrade/refresh-upgrade-info'
+                path: 'upgrade/refresh-upgrade-info',
+                headers: {
+                    'X-CSRF-Token': document.querySelector('#backup-download-form input[name="csrf_token"]')?.value ?? ''
+                }
             }).always(function() {
                 setTimeout(function() { window.location.reload(); }, 1500);
             });

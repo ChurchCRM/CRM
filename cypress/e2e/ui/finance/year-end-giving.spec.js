@@ -87,18 +87,11 @@ describe("Year-End Giving keeps one year and saves the wording as it changes", (
         cy.get("#year-end-entry a.btn-primary").should("have.attr", "href").and("include", "/finance/reports/year-end?year=2018");
     });
 
-    it("the wording saves without a Save button and survives a reload", () => {
-        const key = "sGivingStatementClosing";
-        const wording = "Year-end thanks — saved as typed";
-        cy.getSystemConfig(key).then((original) => {
-            cy.intercept("POST", `**/finance/api/config/${key}`).as("saveWording");
-            cy.visit(yearEndPath);
-            cy.get(`#statementWording textarea[name='${key}']`).should("not.be.disabled").clear().type(wording).blur();
-            cy.wait("@saveWording").its("response.statusCode").should("eq", 200);
-            cy.reload();
-            cy.get(`#statementWording textarea[name='${key}']`).should("have.value", wording);
-            cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${key}`, { value: original }, 200);
-        });
+    it("keeps statement setup on Statement Settings, not inline", () => {
+        cy.visit(yearEndPath);
+        cy.get("#statementWording").should("not.exist");
+        cy.get("#statementSettingsLink").should("have.attr", "href").and("include", "/finance/statements/settings");
+        cy.get("#sampleLetter").should("have.attr", "href").and("include", "/giving-statements/sample");
     });
 
     it("Review and Filter opens the filters with the totals and Back returns here", () => {

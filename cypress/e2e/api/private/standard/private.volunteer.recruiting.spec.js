@@ -36,7 +36,6 @@
  * runner crashes mid-spec (cypress-testing.md).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 
@@ -80,10 +79,6 @@ function dbOk(sql, params = []) {
         }
         return result.rows;
     });
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 /**
@@ -143,7 +138,6 @@ function helpWantedRow(ministryId, assert) {
 
 describe("Volunteer v2 position recruiting flag (#9701)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         createMinistry("Coffee Bar").then((id) => {
@@ -231,7 +225,6 @@ describe("Volunteer v2 position recruiting flag (#9701)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // ─────────────────────────────────────────────────────────────────────

@@ -28,8 +28,6 @@ const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
 const MINISTRY_CALENDAR_NAME = "PORTALCAL Youth Ministry";
 const GONE_CALENDAR_NAME = "PORTALCAL Deleted";
-const VOLUNTEER_VERSION = "sVolunteerVersion";
-let originalVolunteerVersion;
 
 const adminKey = () => Cypress.testEnv("admin.api.key");
 
@@ -54,16 +52,6 @@ const openCalendarsTab = () => {
 /** The row for one calendar, found by the name in its first cell. */
 const calendarRow = (name) => cy.get("#portalCalendarsTable tbody tr").contains("td", name).parent();
 
-// The ministries API answers only while Volunteer v2 is on; the page is tested as the seed has it.
-const withVolunteerV2 = (work) => {
-    cy.getSystemConfig(VOLUNTEER_VERSION).then((value) => {
-        originalVolunteerVersion = value;
-    });
-    cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${VOLUNTEER_VERSION}`, { value: "v2" }, 200);
-    work();
-    cy.then(() => cy.restoreSystemConfig(VOLUNTEER_VERSION, originalVolunteerVersion));
-};
-
 /** Deleting the ministry deletes its calendar too. */
 const removeMinistryCalendar = () =>
     cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
@@ -81,21 +69,19 @@ describe("Admin → Member Portal → Calendars", () => {
     let goneCalendarId = null;
 
     before(() => {
-        withVolunteerV2(() => {
-            removeMinistryCalendar();
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/ministries/ministries",
-                { name: MINISTRY_CALENDAR_NAME, description: "member portal calendars fixture" },
-                201,
-            );
-        });
+        removeMinistryCalendar();
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/ministries/ministries",
+            { name: MINISTRY_CALENDAR_NAME, description: "member portal calendars fixture" },
+            201,
+        );
     });
 
     after(() => {
         // Leave the installation as the seed had it: nothing shared.
         setVisibleCalendars([]);
-        withVolunteerV2(removeMinistryCalendar);
+        removeMinistryCalendar();
         if (goneCalendarId !== null) {
             cy.makePrivateAdminAPICall("DELETE", `/api/calendars/${goneCalendarId}`, null, [200, 404]);
         }

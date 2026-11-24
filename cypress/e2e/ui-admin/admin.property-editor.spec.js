@@ -16,7 +16,7 @@ describe("Admin defines the properties families and people can carry", () => {
     const personPropertyCount = () => cy.request("/api/people/properties/person").its("body.length");
 
     it("adds a family property from the property list and edits it", () => {
-        cy.visit("/PropertyList.php?Type=f");
+        cy.visit("/people/properties/f");
         cy.get('a[href$="/admin/properties/family/new"]').first().click();
         cy.location("pathname").should("match", /\/admin\/properties\/family\/new$/);
         cy.contains("Family Property Editor");
@@ -27,7 +27,7 @@ describe("Admin defines the properties families and people can carry", () => {
         cy.get("#prompt").type("Which night?");
         cy.get("#save-property").click();
 
-        cy.location("search").should("eq", "?Type=f");
+        cy.location("pathname").should("match", /\/people\/properties\/f$/);
         cy.contains("tr", propertyName)
             .should("contain", "Which night?")
             .find('a[href*="/admin/properties/"]')
@@ -42,7 +42,7 @@ describe("Admin defines the properties families and people can carry", () => {
         cy.get("#name").should("have.value", propertyName).clear().type(renamedPropertyName);
         cy.get("#save-property").click();
 
-        cy.location("search").should("eq", "?Type=f");
+        cy.location("pathname").should("match", /\/people\/properties\/f$/);
         cy.contains("tr", renamedPropertyName).should("contain", "Which night of the week?");
         cy.request("/api/people/properties/family")
             .its("body")

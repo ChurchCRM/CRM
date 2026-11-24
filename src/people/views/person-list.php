@@ -721,16 +721,31 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             { sel: '.filter-DeceasedStatus', colName: 'Deceased Status', regex: true }
         ];
 
+        // Puts an "Exclude" switch beside the filter's label; when on, the filter hides the selected values.
+        function addExcludeToggle(cfg, select) {
+            var $label = $(select).siblings('.form-label').first();
+            var $input = $('<input type="checkbox" class="form-check-input">')
+                .attr('id', 'filter-exclude-' + cfg.colName.replace(/\s+/g, ''))
+                .attr('aria-label', i18next.t('Exclude') + ': ' + $label.text().trim());
+            var $toggle = $('<label class="form-check form-switch mb-0 small">')
+                .append($input, $('<span class="form-check-label">').text(i18next.t('Exclude')));
+            $('<div class="d-flex align-items-center justify-content-between gap-2 mb-2">')
+                .insertBefore($label)
+                .append($label.addClass('mb-0'), $toggle);
+            return $input[0];
+        }
+
         // Function to initialize TomSelect instances (will be called after options are populated)
         function initializeTomSelectFilters() {
             filterConfigs.forEach(function(cfg) {
                 $(cfg.sel).each(function () {
                     if (!this.tomselect) {
+                        var exclude = addExcludeToggle(cfg, this);
                         var ts = new TomSelect(this, {
                             plugins: ['remove_button', 'input_autogrow'],
                             hideSelected: true
                         });
-                        tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };
+                        tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex, exclude: exclude };
                     }
                 });
             });
@@ -778,8 +793,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
         }
 
-        // apply filters
-        function filterColumn(col, search, regEx) {
+        // apply filters; exclude keeps only the rows that match none of the selected values
+        function filterColumn(col, search, regEx, exclude) {
             if (!search || search.length === 0) {
                 oTable.column(col).search('', 1, 0, 1).draw();
                 return;
@@ -797,6 +812,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
             // join array into string with regex or (|)
             var val = searchTerms.join('|');
+            if (exclude) {
+                val = '^(?![\\s\\S]*(?:' + val + '))[\\s\\S]*$';
+            }
             // apply search
             oTable.column(col).search(val, 1, 0, 1).draw();
         }
@@ -836,11 +854,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         filterConfigs.forEach(function(cfg) {
             var instance = tomSelectInstances[cfg.colName];
             if (instance && instance.ts) {
-                instance.ts.on('change', function(value) {
-                    var searchData = getTomSelectData(cfg.colName);
-                    var colId = filterMap[cfg.colName];
-                    filterColumn(colId, searchData, cfg.regex);
-                });
+                var applyFilter = function() {
+                    filterColumn(filterMap[cfg.colName], getTomSelectData(cfg.colName), cfg.regex, instance.exclude.checked);
+                };
+                instance.ts.on('change', applyFilter);
+                instance.exclude.addEventListener('change', applyFilter);
             }
         });
 
@@ -859,6 +877,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             Object.keys(tomSelectInstances).forEach(function(colName) {
                 var instance = tomSelectInstances[colName];
                 if (instance && instance.ts) {
+                    instance.exclude.checked = false;
                     instance.ts.clear(); // default silent=false: onChange fires and filterColumn() resets the DataTable
                 }
             });

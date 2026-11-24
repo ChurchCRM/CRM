@@ -60,19 +60,37 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports/year-end.php', [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Year-End Giving'),
-            'sPageSubtitle' => gettext('Review the year, then download giving statements.'),
+            'sPageSubtitle' => gettext('Check the year, set up the statement, then download.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Finance'), '/finance/'],
                 [gettext('Year-End Giving')],
+            ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
             ]),
             'years' => $years,
             'overview' => YearEndGivingService::overview($year),
         ]);
     });
 
-    // Giving Statements: choose filters, preview the result, then download.
-    $group->get('/giving-statements', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
+    // Giving Statements page. The Canadian download renders it again, with the
+    // treasurer's answers kept, when a receipt cannot be generated.
+    $renderStatements = function (Response $response, array $query, string $canadianError = '', int $status = 200): Response {
+        $canadianEnabled = GivingStatementService::isCanadianChurch();
+        $canadian = ($query['template'] ?? '') === 'canadian' && $canadianEnabled;
+        $canadianReview = [];
+        if ($canadian && (($query['review'] ?? '') === '1' || $canadianError !== '')) {
+            // Check Again and a failed download re-check every reviewed family, not only the included ones.
+            $reviewQuery = $query;
+            if (!empty($query['reviewed'])) {
+                $reviewQuery['family'] = $query['reviewed'];
+            }
+            try {
+                $canadianReview = GivingStatementService::canadianReview(GivingStatementService::canadianOptions($reviewQuery));
+            } catch (InvalidArgumentException $error) {
+                $canadianError = $canadianError !== '' ? $canadianError : $error->getMessage();
+            }
+        }
         $remembered = FiscalYearUtils::rememberedEndYear();
         if ($remembered !== null && ($query['year'] ?? '') === '' && ($query['DateStart'] ?? '') === '' && ($query['DateEnd'] ?? '') === '') {
             $query['year'] = $remembered;
@@ -84,7 +102,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        return $renderer->render($response, 'reports/giving-statements.php', [
+        return $renderer->render($response->withStatus($status), 'reports/giving-statements.php', [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Giving Statements'),
             'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
@@ -92,6 +110,14 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 [gettext('Year-End Giving'), '/finance/reports/year-end'],
                 [gettext('Giving Statements')],
             ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
+                ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
+            ]),
+            'canadianEnabled' => $canadianEnabled,
+            'canadian' => $canadian,
+            'canadianReview' => $canadianReview,
+            'canadianError' => $canadianError,
             'query' => $query,
             'criteria' => $criteria,
             'summary' => $summary,
@@ -101,6 +127,16 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'fundGroups' => FinanceReportOptions::fundGroups(),
             'deposits' => FinanceReportOptions::deposits(),
         ]);
+    };
+
+    // Giving Statements: choose filters, preview the result, then download.
+    $group->map(['GET', 'POST'], '/giving-statements', function (Request $request, Response $response) use ($renderStatements): Response {
+        $query = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        if (($query['review'] ?? '') === '1' && !CSRFUtils::verifyRequest($query)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid or missing CSRF token'), [], 403);
+        }
+
+        return $renderStatements($response, $query);
     });
 
     // The preview popup: the same summary as ?preview=1. The filters arrive in a POST body so a long family selection does not hit a URL length limit.
@@ -113,14 +149,30 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/giving-statements/sample', function (Request $request, Response $response): Response {
-        $pdf = (new MpdfRenderer())->renderToString('tax-report', GivingStatementService::sampleDocument());
+        $template = $request->getQueryParams()['template'] ?? (GivingStatementService::isCanadianChurch() ? 'canadian' : '');
+        $document = $template === 'canadian' && GivingStatementService::isCanadianChurch()
+            ? GivingStatementService::canadianSampleDocument() : GivingStatementService::sampleDocument();
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         return PdfResponse::create($response, $pdf, 'GivingStatement-Sample');
     });
 
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
-    $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
+    $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response) use ($renderStatements): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        if (($input['template'] ?? '') === 'canadian') {
+            if ($request->getMethod() !== 'POST' || !CSRFUtils::verifyRequest($input)) {
+                return SlimUtils::renderErrorJSON($response, gettext('A reviewed POST with a valid CSRF token is required.'), [], 403);
+            }
+            try {
+                $document = GivingStatementService::canadianDocument($input);
+                $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+                return PdfResponse::create($response, $pdf, 'CanadianReceipts-' . $document['gift_year']);
+            } catch (InvalidArgumentException $error) {
+                // Show the review page again, with the answers kept and the reason named.
+                return $renderStatements($response, $input, $error->getMessage(), 400);
+            }
+        }
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {

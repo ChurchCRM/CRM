@@ -4,7 +4,6 @@ namespace ChurchCRM\Volunteer\Service;
 
 use ChurchCRM\model\ChurchCRM\Config;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -31,14 +30,10 @@ final class VolunteerScheduleTopUp
      * @param bool $force run even though today's run has happened ("Run background jobs now")
      *
      * @return array{ranAt: string, schedules: int, created: int, failed: int, assigned: int, skipped: int, unqualified: int}|null
-     *         null when V2 is off, or today's run has already happened and `$force` is false
+     *         null when today's run has already happened and `$force` is false
      */
     public static function run(bool $force = false): ?array
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return null;
-        }
-
         if (!self::claimToday(DateTimeUtils::getTodayDate()) && !$force) {
             return null;
         }

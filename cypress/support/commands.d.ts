@@ -190,6 +190,12 @@ declare namespace Cypress {
     sendComposerEmailNow(body: Record<string, unknown>): Chainable<any>;
 
     /**
+     * Read the session CSRF token from a staff page that renders a form.
+     * @param pageUrl - Page to read; defaults to the backup page
+     */
+    sessionCsrfToken(pageUrl?: string): Chainable<string>;
+
+    /**
      * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
      * Does nothing when value is undefined (the capture never ran).
      * @param name - Config key
@@ -212,6 +218,13 @@ declare namespace Cypress {
      * nav entry and home card while at least one is shared. Replaces the browser session cookie.
      */
     shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
+
+    /**
+     * Clear the directory report "saved" user setting so DirectoryReports.php form defaults
+     * are not overridden by a prior people/reports/directory POST (#11465).
+     * @param userId - Person/user id (admin is 1)
+     */
+    clearDirectoryReportPrefs(userId?: number): Chainable<any>;
 
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;

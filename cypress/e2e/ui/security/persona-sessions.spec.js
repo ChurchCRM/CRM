@@ -8,8 +8,8 @@ describe("Persona fixtures: every persona can still sign in", () => {
 
         it(`${name} lands ${confinedToPortal ? "in the portal" : "in the admin shell"}`, () => {
             cy.setupPersonaSession(name);
-            cy.visit(confinedToPortal ? "/" : "/v2/dashboard");
-            cy.location("pathname").should("match", confinedToPortal ? /\/portal\/$/ : /\/v2\/dashboard$/);
+            cy.visit(confinedToPortal ? "/" : "/people/dashboard");
+            cy.location("pathname").should("match", confinedToPortal ? /\/portal\/$/ : /\/people\/dashboard$/);
         });
     });
 });

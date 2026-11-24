@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\DonationFundService;
@@ -60,15 +61,17 @@ $app->get('/funds', function (Request $request, Response $response): Response {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $pageArgs = [
-        'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Donation Funds'),
-        'sPageSubtitle' => gettext('Manage donation funds for financial tracking'),
-        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('Donation Funds'),
+        'sPageSubtitle'      => gettext('Manage donation funds for financial tracking'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs(array_values(array_filter([
             [gettext('Finance'), '/finance/'],
+            AuthenticationManager::getCurrentUser()->isAdmin() ? [gettext('Finance Settings'), '/admin/finance'] : null,
             [gettext('Donation Funds')],
-        ]),
-        'fundsData'     => $fundsData,
-        'categories'    => $service->getCategories(),
+        ]))),
+        'sPageHeaderButtons' => PageHeader::financeSettingsButton(),
+        'fundsData'          => $fundsData,
+        'categories'         => $service->getCategories(),
     ];
 
     return $renderer->render($response, 'funds/index.php', $pageArgs);

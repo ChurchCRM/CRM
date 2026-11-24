@@ -15,7 +15,8 @@ export function initTimelineFilter(container) {
 
   if (chips.length === 0 || events.length === 0) return;
 
-  let active = new Set(["notes"]);
+  const defaultFilter = container.dataset.timelineDefault || "notes";
+  let active = new Set([defaultFilter]);
 
   function applyFilter() {
     const showAll = active.has("all");
@@ -60,7 +61,7 @@ export function initTimelineFilter(container) {
       active.delete("all");
       if (active.has(f)) active.delete(f);
       else active.add(f);
-      if (active.size === 0) active.add("notes");
+      if (active.size === 0) active.add(defaultFilter);
       applyFilter();
     });
   });

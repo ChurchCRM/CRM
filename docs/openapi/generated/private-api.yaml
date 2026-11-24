@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.5
+  version: 7.8.8
 servers:
   -
     url: '{scheme}://{host}{basePath}'
@@ -100,9 +100,74 @@ paths:
           required: false
           schema:
             type: integer
+        -
+          name: from
+          in: query
+          description: 'ISO start date; with to, replaces days'
+          required: false
+          schema:
+            type: string
+        -
+          name: to
+          in: query
+          description: 'ISO end date'
+          required: false
+          schema:
+            type: string
+        -
+          name: all
+          in: query
+          description: 'Any value returns the whole history'
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: 'Array of deposits within the requested time range'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/deposits/dashboard-by-fund:
+    get:
+      tags:
+        - Finance
+      summary: 'Get payment totals per fund per day for a time range (Finance role required)'
+      parameters:
+        -
+          name: days
+          in: query
+          description: 'Days window: 30|90|365 (default 90)'
+          required: false
+          schema:
+            type: integer
+        -
+          name: from
+          in: query
+          description: 'ISO start date; with to, replaces days'
+          required: false
+          schema:
+            type: string
+        -
+          name: to
+          in: query
+          description: 'ISO end date'
+          required: false
+          schema:
+            type: string
+        -
+          name: all
+          in: query
+          description: 'Any value returns the whole history'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Per-fund daily totals: {dates: string[], funds: [{fundId, name, data}]}; funds with no payments in the window are omitted'
         '401':
           description: Unauthorized
         '403':
@@ -656,6 +721,58 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /api/payments/pledge-installments:
+    get:
+      tags:
+        - Finance
+      summary: 'Preview the number of pledge installments within a fiscal year'
+      parameters:
+        -
+          name: schedule
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - Weekly
+              - Monthly
+              - Quarterly
+        -
+          name: first
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: last
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: fyId
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Installment count'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                type: object
+        '400':
+          description: 'Invalid schedule or dates'
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/api/payments/pledges/{groupKey}':
     get:
       tags:
@@ -707,7 +824,7 @@ paths:
       tags:
         - Finance
       summary: 'Create a new pledge or multi-fund payment (Finance role required)'
-      description: "Creates one or more pledge_plg rows sharing a single GroupKey. Supports multi-fund splits where amounts across funds must sum to the desired total. Set `type` to 'Pledge' or 'Payment'."
+      description: "Creates one or more pledge_plg rows sharing a single GroupKey. amountBasis defaults to total for compatibility. For installment pledges, supply amountBasis=installment, schedule (Weekly/Monthly/Quarterly), firstInstallment and lastInstallment (ISO dates within FYID); FundSplit amounts are per installment and stored as full commitments. Set `type` to 'Pledge' or 'Payment'."
       requestBody:
         required: true
         content:
@@ -1330,6 +1447,8 @@ paths:
               schema:
                 properties:
                   success: { type: boolean }
+                  invited: { description: 'Whether the member portal invitation was emailed', type: boolean }
+                  cannotSignIn: { description: 'Present when no member of the family may sign in to the member portal, so nobody was invited', properties: { message: { type: string }, members: { type: array, items: { properties: { name: { type: string }, reason: { type: string } }, type: object } } }, type: object }
                 type: object
       security:
         -
@@ -1905,6 +2024,73 @@ paths:
           description: 'Person or role not found'
         '500':
           description: 'Failed to save role'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/person/{personId}/why-came':
+    get:
+      tags:
+        - People
+      summary: 'Get why-came entry for a person'
+      operationId: getPersonWhyCame
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Why-came entry or null'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - People
+      summary: 'Create or update why-came entry for a person'
+      description: 'Matches legacy WhyCameEditor permission (EditRecords). Creates if none exists for the person.'
+      operationId: createOrUpdatePersonWhyCame
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                join:
+                  type: string
+                come:
+                  type: string
+                suggest:
+                  type: string
+                hearOfUs:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Why-came saved'
+        '201':
+          description: 'Why-came created'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords required'
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
@@ -7271,27 +7457,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/ministries/status:
-    get:
-      tags:
-        - Volunteer
-      summary: 'Report the Volunteer Management rollout state'
-      responses:
-        '403':
-          description: 'Volunteer Management V2 is not enabled'
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  version: { type: string, enum: [v1, v2, both] }
-                  v1Enabled: { type: boolean }
-                  v2Enabled: { type: boolean }
-                type: object
-      security:
-        -
-          ApiKeyAuth: []
   /api/ministries/ministries:
     get:
       tags:
@@ -10205,6 +10370,42 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/admin/api/person/{personId}/convert-to-family':
+    post:
+      tags:
+        - Admin
+      summary: 'Make a person with no family the only member of a new family (Admin role)'
+      description: "The family takes the person's last name, address and home phone, and those fields move off the person."
+      operationId: convertPersonToFamily
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: Converted
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  family: { properties: { id: { type: integer, example: 12 }, name: { type: string, example: Smith }, url: { type: string, example: /people/family/12 } }, type: object }
+                type: object
+        '400':
+          description: 'The person already belongs to a family'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/member-portal/sign-in:
     get:
       tags:
@@ -11251,6 +11452,46 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/admin/api/user/{userId}/setTwoFactorRequired':
+    post:
+      tags:
+        - Admin
+      summary: 'Require or stop requiring 2FA for one user (Admin role required)'
+      description: 'Works alongside bRequire2FA. A user who has not enrolled gets the same grace period and enrollment redirect as under bRequire2FA, starting today.'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - required
+              properties:
+                required:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Requirement saved'
+          content:
+            application/json:
+              schema:
+                properties:
+                  required: { type: boolean }
+                type: object
+        '400':
+          description: 'required is missing or not a boolean'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/admin/api/user/{userId}/login/reset':
     post:
       tags:
@@ -12164,7 +12405,7 @@ paths:
                 level:
                   description: 'Telemetry collection level. Every choice dismisses the one-time consent prompt.'
                   type: string
-                  enum: [none, install, errors, full]
+                  enum: [default, full]
               type: object
       responses:
         '403':
@@ -12177,150 +12418,6 @@ paths:
                 properties:
                   status: { type: string }
                 type: object
-      security:
-        -
-          ApiKeyAuth: []
-  /admin/api/volunteer-opportunities:
-    get:
-      tags:
-        - Admin
-      summary: 'List all volunteer opportunities (Admin role required)'
-      parameters:
-        -
-          name: activeOnly
-          in: query
-          required: false
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: 'Array of volunteer opportunities'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    post:
-      tags:
-        - Admin
-      summary: 'Create a new volunteer opportunity (Admin role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - name
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '201':
-          description: 'Newly created volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/admin/api/volunteer-opportunities/{id}':
-    get:
-      tags:
-        - Admin
-      summary: 'Get a single volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Volunteer opportunity object'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    put:
-      tags:
-        - Admin
-      summary: 'Update a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '200':
-          description: 'Updated volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    delete:
-      tags:
-        - Admin
-      summary: 'Delete a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Deleted
-        '404':
-          description: 'Volunteer opportunity not found'
-        '409':
-          description: 'Volunteer opportunity is still assigned to one or more people'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []
@@ -12438,7 +12535,7 @@ paths:
         -
           ApiKeyAuth: []
   /admin/api/upgrade/download-latest-release:
-    get:
+    post:
       tags:
         - Admin
       summary: 'Download the latest release from GitHub (or a specific version)'
@@ -12468,7 +12565,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
       security:
         -
           ApiKeyAuth: []
@@ -12497,7 +12594,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error applying upgrade'
       security:
@@ -12523,7 +12620,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Forbidden — Admin role required'
+          description: 'Forbidden — Admin role required, or the CSRF token is missing'
         '500':
           description: 'Error refreshing upgrade information'
       security:
@@ -13770,7 +13867,7 @@ tags:
     description: 'Plugin management (Admin role required)'
   -
     name: Volunteer
-    description: 'Volunteer Management v2 (requires the sVolunteerVersion rollout state to include v2)'
+    description: 'Volunteer Management: ministries, teams, positions and schedules'
   -
     name: Email
     description: Email

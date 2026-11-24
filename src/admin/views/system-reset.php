@@ -5,6 +5,8 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<?php require __DIR__ . '/partials/backup-download-form.php'; ?>
+
 <!-- Danger banner -->
 <div class="alert alert-danger" role="alert">
     <div class="d-flex">
@@ -181,7 +183,9 @@ $(document).ready(function () {
 
         $("#downloadBackup").on("click", function () {
             var filename = $(this).data("filename");
-            window.location = window.CRM.root + "/admin/api/database/download/" + filename;
+            var downloadForm = document.getElementById("backup-download-form");
+            downloadForm.action = window.CRM.root + "/admin/api/database/download/" + encodeURIComponent(filename);
+            downloadForm.submit();
             $(this).prop("disabled", true).removeClass("btn-success").addClass("btn-secondary");
             $("#backupCompleteMessage").text(i18next.t("Backup downloaded."));
         });

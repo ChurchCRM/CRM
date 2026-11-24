@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PortalSigninAudit;
 use ChurchCRM\model\ChurchCRM\PortalSigninAuditQuery;
@@ -9,7 +10,6 @@ use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInMethod;
 use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Utils\DateTimeUtils;
 use DateTimeImmutable;
@@ -155,15 +155,15 @@ final class SignInAuditService
      *
      * @param array<string, string> $detail
      */
-    private static function detailScope(string $event, array $detail): ?PortalScope
+    private static function detailScope(string $event, array $detail): ?Scope
     {
         if (in_array($event, [SignInAuditEvent::GRANT_ADDED->value, SignInAuditEvent::GRANT_REMOVED->value], true) && isset($detail['scope'])) {
             [$type, $id] = array_pad(explode(':', $detail['scope'], 2), 2, '0');
 
-            return new PortalScope($type, (int) $id);
+            return new Scope($type, (int) $id);
         }
         if ($event === SignInAuditEvent::FAMILY_CONFIRMED->value && isset($detail['family'])) {
-            return PortalScope::family((int) $detail['family']);
+            return Scope::family((int) $detail['family']);
         }
 
         return null;

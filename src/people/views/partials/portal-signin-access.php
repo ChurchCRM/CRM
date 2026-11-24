@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Portal\Permissions\EffectiveGrant;
+use ChurchCRM\Authorization\EffectiveGrant;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 

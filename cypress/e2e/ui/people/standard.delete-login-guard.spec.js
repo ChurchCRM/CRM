@@ -3,7 +3,7 @@
 // Seeded data, read only: person 1 is an administrator, person 3 is the
 // standard user (tony.wade, DeleteRecords, non-admin), persons 901 and 2 are
 // in family 1 (901 has a login, 2 does not), person 10 has no login, and
-// family 3 has no member with a login.
+// family 2 has a member with a login.
 describe("Standard user - delete controls for people who have a login", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -50,16 +50,22 @@ describe("Standard user - delete controls for people who have a login", () => {
         });
     });
 
-    it("disables deleting a family with its members when a member has a login", () => {
-        cy.visit("/SelectDelete.php?FamilyID=2");
-        cy.get("#deleteFamilyAndMembersBtn").should("be.disabled");
-        cy.get("#deleteFamilyAndMembersBlockedReason").should("contain", "administrator");
-        cy.get("#deleteFamilyOnlyBtn").should("be.enabled");
-    });
-
-    it("keeps deleting a family with its members available when no member has a login", () => {
-        cy.visit("/SelectDelete.php?FamilyID=3");
-        cy.get("#deleteFamilyAndMembersBtn").should("be.enabled");
-        cy.get("#deleteFamilyAndMembersBlockedReason").should("not.exist");
+    it("names the family and shows the refusal when a member has a login", () => {
+        cy.visit("/people/family/2");
+        cy.get("#deleteFamilyBtn")
+            .invoke("attr", "data-family_name")
+            .then((familyName) => {
+                cy.get("#family-actions-dropdown").first().click();
+                cy.get("#deleteFamilyBtn").first().click();
+                cy.get(".bootbox").should("contain", familyName);
+            });
+        cy.get("#deleteFamilyMembersToo").check({ force: true });
+        cy.intercept("DELETE", "**/api/family/2*").as("deleteFamily");
+        cy.get(".bootbox-accept").first().click({ force: true });
+        cy.wait("@deleteFamily").then(({ response }) => {
+            expect(response.statusCode).to.eq(403);
+            cy.contains(".crm-toast-message", response.body.message.slice(0, 40)).should("be.visible");
+        });
+        cy.location("pathname").should("match", /\/people\/family\/2$/);
     });
 });

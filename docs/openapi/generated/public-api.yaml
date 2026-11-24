@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.5
+  version: 7.8.8
 servers:
   -
     url: '{scheme}://{host}{basePath}'
@@ -171,6 +171,8 @@ paths:
       responses:
         '204':
           description: 'Report logged successfully (no content)'
+        '429':
+          description: 'Too many reports from this address; nothing was logged'
   '/api/public/calendar/{CalendarAccessToken}/events':
     get:
       tags:

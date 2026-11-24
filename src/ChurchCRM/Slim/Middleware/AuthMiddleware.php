@@ -76,6 +76,13 @@ class AuthMiddleware implements MiddlewareInterface
                     if ($result->nextStepURL !== null) {
                         return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
                     }
+                } elseif (!$this->isPath($request, 'background') && !$this->isOwnAccountApiPath($request)) {
+                    // A session still authenticated with a next step is one whose 2FA enrollment
+                    // is overdue; its API calls stop here, except the ones enrollment itself uses.
+                    $result = AuthenticationManager::getAuthenticationProvider()->validateUserSessionIsActive(false);
+                    if ($result->nextStepURL !== null) {
+                        return SlimUtils::renderErrorJSON(new Response(), gettext('Set up two-factor authentication to continue.'), [], 403);
+                    }
                 }
             } elseif (($this->isPortalPath($request) || $this->isPortalVolunteerApiPath($request)) && PortalSessionStore::has()) {
                 // A portal session with no staff user (member sign-in design §3).
@@ -142,10 +149,10 @@ class AuthMiddleware implements MiddlewareInterface
         return false;
     }
 
-    /** `/api/ministries/…` while Volunteer v2 is on: the volunteer API the portal pages call. */
+    /** `/api/ministries/…`: the volunteer API the portal pages call. */
     private function isPortalVolunteerApiPath(ServerRequestInterface $request): bool
     {
-        return User::isVolunteerV2Enabled() && VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
+        return VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
     }
 
     /** `/portal` and `/api/portal`, anchored at the root path and matched by whole segments. */
@@ -162,6 +169,12 @@ class AuthMiddleware implements MiddlewareInterface
         }
 
         return false;
+    }
+
+    /** `/api/user/current/…`: the signed-in user's own account calls, which 2FA enrollment uses. */
+    private function isOwnAccountApiPath(ServerRequestInterface $request): bool
+    {
+        return str_starts_with($request->getUri()->getPath(), SystemURLs::getRootPath() . '/api/user/current/');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
@@ -212,6 +225,10 @@ class AuthMiddleware implements MiddlewareInterface
         $redirectUrl = $this->isPortalPath($request)
             ? AuthenticationManager::getPortalLoginURL()
             : AuthenticationManager::getStaffSignInURL();
+        $username = $request->getQueryParams()['username'] ?? '';
+        if (!$this->isPortalPath($request) && is_string($username) && $username !== '') {
+            $redirectUrl .= '?username=' . rawurlencode($username);
+        }
 
         return (new Response())->withStatus(302)->withHeader('Location', $redirectUrl);
     }

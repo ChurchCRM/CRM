@@ -68,7 +68,8 @@ class PageHeader
      *     id?: string,
      *     data?: array<string, scalar>,
      *     adminOnly?: bool,
-     *     editRecords?: bool
+     *     editRecords?: bool,
+     *     class?: string
      * }> $buttons
      * @return string HTML
      */
@@ -93,6 +94,7 @@ class PageHeader
             }
 
             $label = $btn['label'];
+            $btnClass = htmlspecialchars((string) ($btn['class'] ?? 'btn-outline-secondary'), ENT_QUOTES, 'UTF-8');
             $icon = isset($btn['icon']) ? '<i class="fa-solid ' . $btn['icon'] . ' me-1"></i>' : '';
 
             if (isset($btn['collapse'])) {
@@ -120,7 +122,7 @@ class PageHeader
                     $dataAttrs .= ' data-' . htmlspecialchars((string) $key, ENT_QUOTES, 'UTF-8')
                         . '="' . htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8') . '"';
                 }
-                $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
+                $html .= '<button class="btn btn-sm ' . $btnClass . '" type="button"'
                     . $id . $dataAttrs . '>'
                     . $icon . $label . '</button>';
             } else {
@@ -131,7 +133,8 @@ class PageHeader
                     $url = SystemURLs::getRootPath() . $url;
                 }
                 $targetAttr = $isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
-                $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary"' . $targetAttr . '>'
+                $linkId = isset($btn['id']) ? ' id="' . htmlspecialchars((string) $btn['id'], ENT_QUOTES, 'UTF-8') . '"' : '';
+                $html .= '<a href="' . $url . '"' . $linkId . ' class="btn btn-sm ' . $btnClass . '"' . $targetAttr . '>'
                     . $icon . $label . '</a>';
             }
         }
@@ -155,5 +158,21 @@ class PageHeader
     public static function peopleSettingsLink(): array
     {
         return ['label' => gettext('People Settings'), 'url' => '/admin/people', 'icon' => 'fa-sliders'];
+    }
+
+    /** Header button back to the Finance settings hub; admin-only like the hub itself. */
+    public static function financeSettingsButton(): string
+    {
+        return self::buttons([self::financeSettingsLink()]);
+    }
+
+    /**
+     * The Finance Settings button as an entry for buttons(), for a page that shows it beside its own buttons.
+     *
+     * @return array{label: string, url: string, icon: string}
+     */
+    public static function financeSettingsLink(): array
+    {
+        return ['label' => gettext('Finance Settings'), 'url' => '/admin/finance', 'icon' => 'fa-sliders'];
     }
 }

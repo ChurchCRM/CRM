@@ -1,5 +1,5 @@
 /**
- * Admin → Feature Toggles: saves a switch or the Volunteer Management choice as it changes,
+ * Admin → Feature Toggles: saves a switch as it changes,
  * shows the result beside the row, then reloads so the sidebar follows the new state.
  */
 import { fetchAdminAPI } from "./api-utils";
@@ -50,20 +50,6 @@ function wire(): void {
       });
       if (!saved) {
         toggle.checked = !toggle.checked;
-      }
-    });
-  });
-
-  document.querySelectorAll<HTMLSelectElement>(".feature-choice").forEach((select) => {
-    let current = select.value;
-    select.addEventListener("change", async () => {
-      const saved = await save(select, `system/config/${encodeURIComponent(select.dataset.setting ?? "")}`, {
-        value: select.value,
-      });
-      if (saved) {
-        current = select.value;
-      } else {
-        select.value = current;
       }
     });
   });

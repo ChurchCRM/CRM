@@ -36,6 +36,9 @@ $pledgeFyId    = $isEdit ? ($pledge['fyId'] ?? $currentFyId) : $currentFyId;
 $pledgeMethod  = $isEdit ? ($pledge['method'] ?? 'CHECK') : 'CHECK';
 $pledgeCheckNo = $isEdit ? ($pledge['checkNo'] ?? '') : '';
 $pledgeSchedule = $isEdit ? ($pledge['schedule'] ?? 'Once') : 'Once';
+$amountBasis = $isEdit ? ($pledge['amountBasis'] ?? 'total') : 'total';
+$firstInstallment = $isEdit ? ($pledge['firstInstallment'] ?? '') : '';
+$lastInstallment = $isEdit ? ($pledge['lastInstallment'] ?? '') : '';
 $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 $requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
 $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
@@ -140,6 +143,14 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
                     </select>
                 </div>
                 <?php else: ?>
+                <div class="col-lg-4">
+                    <label class="form-label" for="AmountBasis"><?= gettext('Amounts entered are') ?></label>
+                    <select class="form-select" id="AmountBasis" aria-describedby="amountBasisHelp">
+                        <option value="total" <?= $amountBasis === 'total' ? 'selected' : '' ?>><?= gettext('Total commitment') ?></option>
+                        <option value="installment" <?= $amountBasis === 'installment' ? 'selected' : '' ?>><?= gettext('Amount per installment') ?></option>
+                    </select>
+                    <div class="form-text" id="amountBasisHelp"><?= gettext('Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift.') ?></div>
+                </div>
                 <!-- Schedule (Pledges only) -->
                 <div class="col-lg-4">
                     <label class="form-label" for="Schedule"><?= gettext('Payment Schedule') ?></label>
@@ -151,10 +162,24 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
                         <option value="Other"     <?= $pledgeSchedule === 'Other'     ? 'selected' : '' ?>><?= gettext('Other') ?></option>
                     </select>
                 </div>
+                <div class="col-lg-4" id="installmentDates" <?= $amountBasis === 'installment' ? '' : 'hidden' ?>>
+                    <label class="form-label" for="FirstInstallment"><?= gettext('First installment') ?></label>
+                    <input class="form-control" type="date" id="FirstInstallment" value="<?= InputUtils::escapeAttribute($firstInstallment) ?>">
+                    <label class="form-label mt-2" for="LastInstallment"><?= gettext('Last installment on or before') ?></label>
+                    <input class="form-control" type="date" id="LastInstallment" value="<?= InputUtils::escapeAttribute($lastInstallment) ?>">
+                    <div class="form-text"><?= gettext('Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months.') ?></div>
+                </div>
                 <?php endif; ?>
             </div>
         </div>
     </div>
+    <?php if ($isPledge): ?>
+    <div class="alert alert-info" role="status" aria-live="polite">
+        <strong><?= gettext('Full commitment') ?>: <span id="commitmentTotal">—</span></strong>
+        <span id="installmentPreview"></span>
+        <div class="small"><?= gettext('Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation.') ?></div>
+    </div>
+    <?php endif; ?>
 
     <!-- Fund Allocation Card -->
     <div class="card mb-3">
@@ -171,11 +196,11 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-vcenter mb-0" id="fundTable">
+                <table class="table table-vcenter mb-0 pledge-fund-table" id="fundTable">
                     <thead>
                         <tr>
                             <th><?= gettext('Fund') ?> <span class="text-danger">*</span></th>
-                            <th><?= gettext('Amount ($)') ?> <span class="text-danger">*</span></th>
+                            <th><span id="allocationAmountLabel"><?= $isPledge ? gettext('Commitment amount') : gettext('Amount ($)') ?></span> <span class="text-danger">*</span></th>
                             <?php if ($enableNonDeductible): ?>
                             <th><?= gettext('Non-Deductible ($)') ?></th>
                             <?php endif; ?>
@@ -205,13 +230,13 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
                             <td>
                                 <input type="number" class="form-control fund-amount" name="funds[][amount]"
                                     step="0.01" min="0" max="999999.99"
-                                    value="<?= number_format((float) $f['amount'], 2, '.', '') ?>" required>
+                                    value="<?= number_format((float) $f['inputAmount'], 2, '.', '') ?>" required>
                             </td>
                             <?php if ($enableNonDeductible): ?>
                             <td>
                                 <input type="number" class="form-control fund-nondeductible" name="funds[][nonDeductible]"
                                     step="0.01" min="0" max="999999.99"
-                                    value="<?= number_format((float) $f['nonDeductible'], 2, '.', '') ?>">
+                                    value="<?= number_format((float) $f['inputNonDeductible'], 2, '.', '') ?>">
                             </td>
                             <?php endif; ?>
                             <td>
@@ -281,7 +306,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
 
     <!-- Action Buttons -->
     <div class="card mb-3">
-        <div class="card-body d-flex gap-2">
+        <div class="card-body d-flex flex-wrap gap-2">
             <button type="button" class="btn btn-primary" id="savePledgeBtn"<?= $isEdit ? ' aria-keyshortcuts="Control+Enter Meta+Enter"' : '' ?>>
                 <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save') ?>
             </button>

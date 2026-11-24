@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\PersonDeletionService;
@@ -40,15 +39,7 @@ class Note extends BaseNote
 
     public function getEditLink(): string
     {
-        $url = SystemURLs::getRootPath() . '/NoteEditor.php?NoteID=' . $this->getId() . '&';
-
-        if ($this->getPerId() !== 0) {
-            $url = $url . 'PersonID=' . $this->getPerId();
-        } else {
-            $url = $url . 'FamilyID=' . $this->getFamId();
-        }
-
-        return $url;
+        return '#note-' . $this->getId();
     }
 
     public function getDeleteLink(): string

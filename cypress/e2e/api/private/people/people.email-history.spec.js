@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, useMemberSignIn } from "../../../../support/member-sign-in";
+
 /**
  * Email history (#9877): every email BaseEmail::send() hands to PHPMailer is logged
  * per recipient in email_log_eml and readable through GET /api/email/log.
@@ -9,6 +11,17 @@
  * 10–12 for person 3 are one of each kind the labels test reads.
  */
 const adminGet = (url, status = 200) => cy.makePrivateAdminAPICall("GET", url, null, status);
+
+const savedSignIn = {};
+
+// File-level, so member sign-in stays on for the verification-email test in the second describe.
+before(() => {
+    useMemberSignIn(savedSignIn);
+});
+
+after(() => {
+    restoreSettings(savedSignIn);
+});
 
 describe("API GET /api/email/log", () => {
     it("pages a person's history newest first with the API row shape", () => {

@@ -4,28 +4,18 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\StaffSignInPage;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
-use ChurchCRM\Utils\RedirectUtils;
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\ServerRequestFactory;
-
-// The exact /admin root is the staff sign-in address. It is decided here, before the
-// admin app exists, so AuthMiddleware and AdminRoleAuthMiddleware keep no path exception.
+// A signed-in person who is not an administrator has no Admin Dashboard.
+// A signed-out visit is a normal protected page: the app sends them to staff
+// sign-in and brings them back to /admin after that sign-in.
 if (rtrim((string) strtok($_SERVER['REQUEST_URI'], '?'), '/') === rtrim(SystemURLs::getRootPath(), '/') . '/admin'
-    && !LoginAsPerson::isActive()) {
-    if (!AuthenticationManager::validateUserSessionIsActive(false)) {
-        $request = ServerRequestFactory::fromGlobals();
-        $response = StaffSignInPage::handle($request, new Response());
-        http_response_code($response->getStatusCode());
-        echo $response->getBody();
-        exit;
-    }
-    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-        RedirectUtils::redirect('v2/dashboard');
-    }
+    && !LoginAsPerson::isActive()
+    && AuthenticationManager::validateUserSessionIsActive(false)
+    && !AuthenticationManager::getCurrentUser()->isAdmin()) {
+    DashboardLandingService::redirect();
 }
 
 $app = MvcAppFactory::create('/admin', [
@@ -49,6 +39,7 @@ require __DIR__ . '/routes/api/person-sign-in.php';
 require __DIR__ . '/routes/api/member-portal-reports.php';
 require __DIR__ . '/routes/api/person-portal-access.php';
 require __DIR__ . '/routes/api/person-login-as-person.php';
+require __DIR__ . '/routes/api/family-conversion.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
 require __DIR__ . '/routes/api/system/letterhead.php';
 require __DIR__ . '/routes/api/system/tax-signature.php';
@@ -59,8 +50,6 @@ require __DIR__ . '/routes/api/system/system-custom-fields.php';
 require __DIR__ . '/routes/api/system/system-logs.php';
 require __DIR__ . '/routes/api/system/feature-toggles.php';
 require __DIR__ . '/routes/api/system/telemetry-consent.php';
-require __DIR__ . '/routes/api/system/volunteer-opportunities.php';
-require __DIR__ . '/routes/api/volunteer-conversion.php';
 require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/api/user-admin.php';
 require __DIR__ . '/routes/api/import.php';
@@ -68,11 +57,11 @@ require __DIR__ . '/routes/import.php';
 require __DIR__ . '/routes/export.php';
 require __DIR__ . '/routes/system.php';
 require __DIR__ . '/routes/people.php';
+require __DIR__ . '/routes/finance.php';
 require __DIR__ . '/routes/properties.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/member-portal.php';
 require __DIR__ . '/routes/ministry-settings.php';
-require __DIR__ . '/routes/volunteer-conversion.php';
 require __DIR__ . '/routes/property-types.php';
 
 $app->run();

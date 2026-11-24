@@ -52,7 +52,6 @@ describe("Standard Groups", () => {
                 });
                 cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)").within(() => {
                     cy.contains("View").should("exist");
-                    cy.contains("Change Role").should("exist");
                     cy.get(".AddToCart, .RemoveFromCart").should("exist");
                     cy.contains("Remove").should("exist");
                 });

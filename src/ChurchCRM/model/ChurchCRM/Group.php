@@ -38,18 +38,22 @@ class Group extends BaseGroup
     /**
      * The `bManageGroups` gate, plus the one Volunteer v2 exception (D19).
      *
-     * Order matters and is the reason V1 is unchanged: the V1 answer is asked FIRST and
-     * returns immediately when it is yes, so a group with no ministry — every group in an
-     * installation that has never made one — takes exactly the path it always took, with
-     * no extra query and the same thrown 401 when it is refused.
+     * A ministry's pool written inside a V2 service's managed write is allowed first: the
+     * service has authorized it already, and the write may run with nobody signed in, as
+     * the upgrade that converts Volunteer Opportunities does. Otherwise the V1 answer is
+     * asked and returns immediately when it is yes, so a group with no ministry takes the
+     * path it always took, with no extra query and the same thrown 401 when it is refused.
      *
-     * Only a caller V1 would have refused reaches the second question, and only a group
+     * Only a caller V1 would have refused reaches the last question, and only a group
      * that IS a ministry's volunteer pool can answer it yes: its coordinator, a global
-     * volunteer manager, an administrator, or a V2 service that has already authorized
-     * the write itself (`VolunteerPoolWriter`).
+     * volunteer manager or an administrator.
      */
     private function assertGroupWritable(): void
     {
+        if ($this->getMinistryId() !== null && VolunteerPoolWriter::isManagedWriteOpen()) {
+            return;
+        }
+
         if (AuthService::hasUserGroupMembership('bManageGroups')) {
             return;
         }

@@ -16,7 +16,7 @@
  * Scenarios covered:
  *   1. Renderer  - window.CRM.renderEventActionMenu() output parsed with DOMParser
  *   2. Events Dashboard (/event/dashboard) - PHP placeholder hydrated by the renderer
- *   3. V2 Dashboard (/v2/dashboard) - "Today's Events" DataTable column
+ *   3. V2 Dashboard (/people/dashboard) - "Today's Events" DataTable column
  *
  * Fixtures are created and removed through the API with the cleanup-before
  * pattern (see .agents/skills/churchcrm/cypress-testing.md): `before` deletes
@@ -135,7 +135,7 @@ describe("Event action menu — title in data-event_title", () => {
 
     // ── Scenario 1: the renderer itself ──────────────────────────────────────
     it("renderEventActionMenu() writes the literal title into data-event_title", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.window().should("have.nested.property", "CRM.renderEventActionMenu");
 
         cy.window().then((win) => {
@@ -171,7 +171,7 @@ describe("Event action menu — title in data-event_title", () => {
     // GET /events/today filters on the server's calendar day. When the server
     // clock has rolled past midnight relative to the browser's, the fixture is
     // not "today" for the widget; skip rather than assert on an absent row.
-    it("[/v2/dashboard] the Today's Events Delete item round-trips the title", function () {
+    it("[/people/dashboard] the Today's Events Delete item round-trips the title", function () {
         cy.makePrivateAdminAPICall("GET", "/api/events/today", null, [200, 404])
             .then((resp) => {
                 // GET /events/today answers { "events": [ { id, title, … } ] }.
@@ -187,7 +187,7 @@ describe("Event action menu — title in data-event_title", () => {
 
                 // cy.request() above reset the PHP session cookie.
                 cy.setupAdminSession();
-                cy.visit("/v2/dashboard");
+                cy.visit("/people/dashboard");
 
                 cy.get(`#todayEventsDashboardItem .delete-event[data-event_id="${eventId}"]`, { timeout: 15000 })
                     .should("exist")

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginInterface;
 use ChurchCRM\Plugin\PluginManager;
@@ -136,7 +137,7 @@ final class PortalCapabilityRegistry
     private static function pluginCapability(string $pluginId, mixed $declaration): ?PortalCapability
     {
         $key = is_array($declaration) ? (string) ($declaration['key'] ?? '') : '';
-        $scopeType = is_array($declaration) ? (string) ($declaration['scopeType'] ?? PortalScope::NONE) : '';
+        $scopeType = is_array($declaration) ? (string) ($declaration['scopeType'] ?? Scope::NONE) : '';
         $matches = [];
         if (
             !preg_match(self::PLUGIN_KEY_PATTERN, $key, $matches)

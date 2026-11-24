@@ -1,0 +1,91 @@
+name: "Locale: terms guard"
+run-name: >-
+  Terms guard for PR #${{ github.event.pull_request.number }}
+
+# The terms review, moved to code-review time. The terms PR flags odd new strings only after
+# they have been extracted onto master, where each fix is a cleanup PR and the bad wording has
+# already queued for translation in every language. This workflow reads the PR diff instead:
+# locale-terms-guard.js pulls the string literals the PR adds to gettext()/ngettext()/t() calls
+# under src/ and webpack/ and runs the terms review's own checks (near-duplicates — including
+# pairs where both variants are new in the same PR — code-like strings, over-long strings, and
+# rewordings of catalog terms the PR removes) against the base catalog.
+#
+# Flags fail the check and are posted as one PR comment. A flagged wording that is intentional
+# passes with the `locale-terms-ok` label; the comment then stands as the record of why.
+# The guard needs no npm install: its require chain is dependency-free Node.
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'webpack/**'
+      - 'locale/messages.po'
+      - 'locale/scripts/lib/locale-terms-guard.js'
+      - 'locale/scripts/lib/locale-terms-diff.js'
+      - '.github/workflows/locale-terms-guard.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: locale-terms-guard-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  terms-guard:
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout the PR
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js (from .nvmrc)
+        uses: ./.github/actions/setup-node
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Run the terms guard against the PR base
+        id: guard
+        continue-on-error: true
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node locale/scripts/lib/locale-terms-guard.js --base "$BASE_SHA" --report terms-guard-report.md
+
+      - name: Post or update the guard comment
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        env:
+          FLAGGED: ${{ steps.guard.outputs.flagged }}
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('terms-guard-report.md')) { core.info('No guard report; skipping.'); return; }
+            const body = fs.readFileSync('terms-guard-report.md', 'utf8');
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number, per_page: 100 });
+            const existing = comments.find(c => c.body && c.body.includes('<!-- locale-terms-guard -->'));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+              core.info(`Updated guard comment ${existing.id}.`);
+            } else if (Number(process.env.FLAGGED || 0) > 0) {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+              core.info('Created guard comment.');
+            } else {
+              core.info('Clean and no earlier guard comment; nothing to post.');
+            }
+
+      - name: Pass when the locale-terms-ok label accepts the flags
+        if: steps.guard.outcome == 'failure' && contains(github.event.pull_request.labels.*.name, 'locale-terms-ok')
+        run: echo "::notice::Terms guard flags accepted via the locale-terms-ok label; the guard comment is the record."
+
+      - name: Fail on flagged terms
+        if: steps.guard.outcome == 'failure' && !contains(github.event.pull_request.labels.*.name, 'locale-terms-ok')
+        run: |
+          echo "::error::The terms guard flagged new strings in this PR — see the guard comment. Fix the strings in code, or add the locale-terms-ok label with the reason in the PR description."
+          exit 1

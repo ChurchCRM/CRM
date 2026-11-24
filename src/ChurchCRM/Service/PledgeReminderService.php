@@ -173,7 +173,7 @@ class PledgeReminderService
         foreach ($funds as $fundId => $name) {
             if (($pledgedByFund[$fundId] ?? 0) > 0) {
                 $due[] = sprintf(
-                    gettext('Amount due for %s: %s'),
+                    gettext('Remaining commitment for %s: %s'),
                     $name,
                     CurrencyFormatter::format(max(0, $pledgedByFund[$fundId] - ($paidByFund[$fundId] ?? 0)) / 100)
                 );

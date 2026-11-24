@@ -2,7 +2,7 @@
 
 const VOLUNTEER_URL = "/api/ministries";
 const PREFIX = "OTL11177";
-const SETTINGS = ["sVolunteerVersion", "bEnabledEmail", "sSMTPHost", "iSMTPTimeout", "sLastTimerJobsRunDateTime"];
+const SETTINGS = ["bEnabledEmail", "sSMTPHost", "iSMTPTimeout", "sLastTimerJobsRunDateTime"];
 const PERSON_LEADER = 3;
 const PERSON_COORDINATOR = 52;
 const PEOPLE_ADDED = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 48];
@@ -37,7 +37,6 @@ describe("Volunteer v2 — the outbox stops at the web run's time limit (#11177)
                 original[name] = value;
             }),
         );
-        cy.setSystemConfig("sVolunteerVersion", "v2");
         removeFixtures();
 
         api("admin.api.key", "POST", `${VOLUNTEER_URL}/ministries`, { name: `${PREFIX} Hospitality` }, 201).then((resp) => {
@@ -63,7 +62,6 @@ describe("Volunteer v2 — the outbox stops at the web run's time limit (#11177)
         ["bEnabledEmail", "sSMTPHost", "iSMTPTimeout"].forEach((name) => cy.restoreSystemConfig(name, original[name]));
         removeFixtures();
         runTimerJobs(120000);
-        cy.restoreSystemConfig("sVolunteerVersion", original.sVolunteerVersion);
         cy.restoreSystemConfig("sLastTimerJobsRunDateTime", original.sLastTimerJobsRunDateTime);
     });
 

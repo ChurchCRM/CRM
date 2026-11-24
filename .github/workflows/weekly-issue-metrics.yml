@@ -41,14 +41,14 @@ jobs:
           METRICS_MILESTONE: ${{ inputs.milestone }}
         run: node scripts/maintainer/weekly-issue-metrics.js dates
       - name: Measure responsiveness of issues created in the past 30 days
-        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        uses: github-community-projects/issue-metrics@671528652402b9b8a33da44b5c693b3161bc090f # v5.0.3
         env:
           SEARCH_QUERY: ${{ steps.queries.outputs.recent_query }}
           OUTPUT_FILE: recent-issue-metrics.md
           HIDE_ITEMS_LIST: 'true'
           NON_MENTIONING_LINKS: 'true'
       - name: Measure the full open backlog
-        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        uses: github-community-projects/issue-metrics@671528652402b9b8a33da44b5c693b3161bc090f # v5.0.3
         env:
           SEARCH_QUERY: ${{ steps.queries.outputs.backlog_query }}
           OUTPUT_FILE: backlog-issue-metrics.md

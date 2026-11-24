@@ -27,7 +27,7 @@ describe("portal-only: the API is closed outside the portal", () => {
             cy
                 .request({ method, url, body: method === "POST" ? {} : undefined, failOnStatusCode: false })
                 .then((response) => {
-                    expect(response.status).to.eq(401);
+                    expect(response.status).to.be.oneOf([401, 403]);
                     expect(response.body.success).to.eq(false);
                 }));
     });

@@ -1,3 +1,4 @@
+import { buildAPIUrl } from "./api-utils";
 import { confirmAction } from "./common/confirm-action";
 
 window.CRM.onLocalesReady(() => {
@@ -7,6 +8,28 @@ window.CRM.onLocalesReady(() => {
   const LINK_BACK_RAW = window.CRM.pledgeEditor.linkBack;
   const LINK_BACK_TARGET = window.CRM.pledgeEditor.linkBackTarget;
   const REQUIRE_CHECK_NO = window.CRM.pledgeEditor.requireCheckNumber;
+
+  function getDepositPaymentDefaults(depositId) {
+    if (!depositId) return null;
+
+    try {
+      const saved = window.sessionStorage.getItem("churchcrm_deposit_payment_defaults_" + depositId);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function setDepositPaymentDefaults(depositId, date, method) {
+    try {
+      window.sessionStorage.setItem(
+        "churchcrm_deposit_payment_defaults_" + depositId,
+        JSON.stringify({ date, method }),
+      );
+    } catch {
+      // Storage may be unavailable even after the payment has been saved.
+    }
+  }
 
   // ---- Family TomSelect ----
   const familyNameEl = document.getElementById("FamilyName");
@@ -40,6 +63,61 @@ window.CRM.onLocalesReady(() => {
     }
   }
 
+  const basisEl = document.getElementById("AmountBasis");
+  let installmentCount = 1;
+  let previewRequest = 0;
+  let previewTimer;
+
+  function showCommitment(total) {
+    if (!basisEl) return;
+    const installment = basisEl.value === "installment";
+    const output = document.getElementById("commitmentTotal");
+    const detail = document.getElementById("installmentPreview");
+    output.textContent = installmentCount === null ? "—" : window.CRM.currency.format(total * installmentCount);
+    if (installmentCount !== null) {
+      detail.textContent = installment ? i18next.t("({{count}} installments)", { count: installmentCount }) : "";
+    }
+  }
+
+  async function updateInstallments() {
+    if (!basisEl) return;
+    const request = ++previewRequest;
+    const installment = basisEl.value === "installment";
+    document.getElementById("installmentDates").hidden = !installment;
+    document.getElementById("allocationAmountLabel").textContent = installment
+      ? i18next.t("Amount per installment")
+      : i18next.t("Commitment amount");
+    installmentCount = installment ? null : 1;
+    document.getElementById("installmentPreview").textContent = installment
+      ? i18next.t("Enter the schedule and installment dates to preview the commitment.")
+      : "";
+    recalcTotal();
+    if (!installment) return;
+    const params = new URLSearchParams({
+      schedule: document.getElementById("Schedule").value,
+      first: document.getElementById("FirstInstallment").value,
+      last: document.getElementById("LastInstallment").value,
+      fyId: document.getElementById("FYID").value,
+    });
+    try {
+      const res = await fetch(buildAPIUrl("payments/pledge-installments?") + params);
+      const data = await res.json();
+      if (request !== previewRequest) return;
+      if (!res.ok) throw new Error(data.message || i18next.t("Unable to preview the commitment."));
+      installmentCount = data.count;
+      recalcTotal();
+    } catch (error) {
+      if (request === previewRequest) document.getElementById("installmentPreview").textContent = error.message;
+    }
+  }
+
+  ["AmountBasis", "Schedule", "FirstInstallment", "LastInstallment", "FYID"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("change", () => {
+      clearTimeout(previewTimer);
+      previewTimer = setTimeout(updateInstallments, 100);
+    });
+  });
+
   // ---- Fund total calculation ----
   function recalcTotal() {
     let total = 0;
@@ -48,6 +126,7 @@ window.CRM.onLocalesReady(() => {
       if (!isNaN(v) && v > 0) total += v;
     });
     document.getElementById("fundTotal").textContent = total.toFixed(2);
+    showCommitment(total);
   }
 
   document.addEventListener("input", (e) => {
@@ -82,42 +161,87 @@ window.CRM.onLocalesReady(() => {
   const methodEl = document.getElementById("Method");
   const checkGroup = document.getElementById("checkNumberGroup");
   const checkEl = document.getElementById("CheckNo");
-  if (methodEl && checkGroup && checkEl) {
-    function toggleCheckGroup() {
-      if (methodEl.value === "CHECK") {
-        checkGroup.style.display = "";
-        if (REQUIRE_CHECK_NO) {
-          checkEl.required = true;
-        }
-      } else {
-        checkGroup.style.display = "none";
-        checkEl.value = "";
-        checkEl.required = false;
-      }
+  function toggleCheckGroup() {
+    if (!methodEl || !checkGroup || !checkEl) return;
+
+    if (methodEl.value === "CHECK") {
+      checkGroup.style.display = "";
+      checkEl.required = REQUIRE_CHECK_NO;
+    } else {
+      checkGroup.style.display = "none";
+      checkEl.value = "";
+      checkEl.required = false;
     }
-    methodEl.addEventListener("change", toggleCheckGroup);
-    toggleCheckGroup();
   }
+
+  methodEl?.addEventListener("change", toggleCheckGroup);
 
   // ---- Date → auto-resolve FYID via FiscalYearUtils (/api/fiscalyear) ----
   const dateEl = document.getElementById("Date");
   const fyEl = document.getElementById("FYID");
+  let resolvedFiscalYearDate = dateEl?.value;
+  let fiscalYearLookup;
 
-  if (dateEl && fyEl) {
-    dateEl.addEventListener("change", async function () {
-      if (!this.value) {
-        return;
-      }
-      const res = await fetch(ROOT + "/api/fiscalyear?date=" + encodeURIComponent(this.value));
-      if (!res.ok) {
-        return;
-      }
-      const data = await res.json();
-      if (data.fyId) {
-        fyEl.value = String(data.fyId);
-      }
-    });
+  function syncFiscalYearForDate(dateValue, restore = false) {
+    const lookup = { date: dateValue, restore, originalDate: dateEl?.value };
+    fiscalYearLookup = lookup;
+    resolvedFiscalYearDate = null;
+    lookup.promise = resolveFiscalYear(dateValue, lookup);
+    return lookup.promise;
   }
+
+  async function resolveFiscalYear(dateValue, lookup) {
+    if (!dateValue || !fyEl) return false;
+
+    try {
+      const res = await fetch(ROOT + "/api/fiscalyear?date=" + encodeURIComponent(dateValue));
+      if (!res.ok) return false;
+
+      const data = await res.json();
+      const expectedDate = lookup.restore ? lookup.originalDate : dateValue;
+      if (data.fyId && dateEl.value === expectedDate && fiscalYearLookup === lookup) {
+        if (lookup.restore) dateEl.value = dateValue;
+        fyEl.value = String(data.fyId);
+        resolvedFiscalYearDate = dateValue;
+        updateInstallments();
+        return true;
+      }
+    } catch {
+      return false;
+    } finally {
+      if (lookup.restore && fiscalYearLookup === lookup && resolvedFiscalYearDate === null) {
+        resolvedFiscalYearDate = lookup.originalDate;
+      }
+    }
+    return false;
+  }
+
+  dateEl?.addEventListener("change", () => {
+    void syncFiscalYearForDate(dateEl.value);
+  });
+
+  if (!GROUP_KEY && PLEDGE_TYPE === "Payment") {
+    const initialDepositId = document.getElementById("DepositID")?.value;
+    const savedDefaults = getDepositPaymentDefaults(initialDepositId);
+
+    if (dateEl && savedDefaults?.date) {
+      const candidateDate = dateEl.cloneNode();
+      candidateDate.value = savedDefaults.date;
+      if (candidateDate.value) {
+        void syncFiscalYearForDate(candidateDate.value, true);
+      }
+    }
+
+    if (
+      methodEl &&
+      savedDefaults?.method &&
+      Array.from(methodEl.options).some((option) => option.value === savedDefaults.method)
+    ) {
+      methodEl.value = savedDefaults.method;
+    }
+  }
+
+  toggleCheckGroup();
 
   // ---- Collect form data for API submission ----
   function collectPayload() {
@@ -206,6 +330,9 @@ window.CRM.onLocalesReady(() => {
       iCheckNo: checkNo || null,
       DepositID: depId || null,
       schedule: schedule,
+      amountBasis: basisEl ? basisEl.value : "total",
+      firstInstallment: document.getElementById("FirstInstallment")?.value || null,
+      lastInstallment: document.getElementById("LastInstallment")?.value || null,
       FundSplit: JSON.stringify(fundSplit),
       tScanString: "",
     };
@@ -224,11 +351,28 @@ window.CRM.onLocalesReady(() => {
 
   async function savePledge(redirectAfter) {
     if (saving) return;
-    const payload = collectPayload();
-    if (!payload) return;
-
     setSaving(true);
     try {
+      while (dateEl?.value && resolvedFiscalYearDate !== dateEl.value) {
+        const dateValue = dateEl.value;
+        const pending =
+          fiscalYearLookup?.date === dateValue ||
+          (fiscalYearLookup?.restore && fiscalYearLookup.originalDate === dateValue)
+            ? fiscalYearLookup.promise
+            : syncFiscalYearForDate(dateValue);
+        const resolved = await pending;
+        if (!resolved && dateEl.value === dateValue) {
+          fiscalYearLookup = null;
+          throw new Error("Fiscal year lookup failed");
+        }
+      }
+
+      const payload = collectPayload();
+      if (!payload) {
+        setSaving(false);
+        return;
+      }
+
       const isEditMode = !!GROUP_KEY;
       const url = isEditMode ? ROOT + "/api/payments/" + encodeURIComponent(GROUP_KEY) : ROOT + "/api/payments/pledges";
       const res = await fetch(url, {
@@ -243,6 +387,10 @@ window.CRM.onLocalesReady(() => {
         window.CRM.notify(window.CRM.escapeHtml(msg), { type: "danger", delay: 4000 });
         setSaving(false);
         return;
+      }
+
+      if (!isEditMode && PLEDGE_TYPE === "Payment" && payload.DepositID) {
+        setDepositPaymentDefaults(payload.DepositID, payload.Date, payload.iMethod);
       }
 
       window.CRM.notify(window.CRM.escapeHtml(i18next.t("Saved successfully")), { type: "success", delay: 4000 });
@@ -343,4 +491,5 @@ window.CRM.onLocalesReady(() => {
 
   // Initial total calculation
   recalcTotal();
+  updateInstallments();
 });

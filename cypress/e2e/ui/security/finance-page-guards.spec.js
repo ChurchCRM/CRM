@@ -24,7 +24,7 @@ describe("ManageFundraisers permission guard on fundraiser pages", () => {
         });
 
         it("does not show Fundraiser menu items", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.contains("a", "Create New Fundraiser").should("not.exist");
             cy.contains("a", "Add Donors to Buyer List").should("not.exist");
             cy.contains("a", "View Buyers").should("not.exist");
@@ -44,7 +44,7 @@ describe("ManageFundraisers permission guard on fundraiser pages", () => {
         });
 
         it("shows Fundraiser menu items", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.contains("a", "Create New Fundraiser").should("exist");
         });
     });
@@ -84,11 +84,11 @@ describe("bEnabledFundraiser feature flag — fundraiser module disabled", () =>
 
         // Admin should be redirected away — NOT see the fundraiser page or
         // the generic role access-denied page, and should land on the home
-        // dashboard (SystemURLs::getRootPath() + '/' resolves to /v2/dashboard).
+        // dashboard (SystemURLs::getRootPath() + '/' resolves to /people/dashboard).
         cy.visit("/fundraiser/", { failOnStatusCode: false });
         cy.url().should("not.include", "/fundraiser/");
         cy.url().should("not.include", ACCESS_DENIED);
-        cy.url().should("include", "/v2/dashboard");
+        cy.url().should("include", "/people/dashboard");
     });
 
     it("blocks API access to /api/fundraisers when disabled (returns 403)", () => {

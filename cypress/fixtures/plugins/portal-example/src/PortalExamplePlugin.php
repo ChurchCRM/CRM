@@ -2,12 +2,12 @@
 
 namespace ChurchCRM\Plugins\PortalExample;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Portal\Permissions\CallbackPortalRule;
 use ChurchCRM\Portal\Permissions\PortalRuleGrant;
-use ChurchCRM\Portal\Permissions\PortalScope;
 
 class PortalExamplePlugin extends AbstractPlugin
 {
@@ -43,7 +43,7 @@ class PortalExamplePlugin extends AbstractPlugin
                     $group = $membership->getGroup();
                     $grants[] = new PortalRuleGrant(
                         self::ROSTER,
-                        PortalScope::group((int) $membership->getGroupId()),
+                        Scope::group((int) $membership->getGroupId()),
                         sprintf('Member of %s', $group === null ? '' : $group->getName())
                     );
                 }

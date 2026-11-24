@@ -29,19 +29,15 @@ describe("Reminder Report fund selection - Issue #9803", () => {
 
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("/FinancialReports.php");
-        cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Pledge Reminders");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Pledge Reminders");
-        cy.get('select[name="FYID"]').select(fiscalYearId);
+        cy.visit("/finance/reports/pledge-reminders");
+        cy.get("#FYID").select(fiscalYearId);
         cy.intercept("POST", "**/finance/reports/pledge-reminders/download").as("reminderReport");
     });
 
     it("generates a PDF across all funds when no fund is selected", () => {
         cy.get("#fundsList").invoke("val").should("be.empty");
 
-        cy.get("#createReport").click();
+        cy.get("#downloadPledgeReminders").click();
 
         cy.wait("@reminderReport", { timeout: 30000 }).then(expectPdfResponse);
     });
@@ -53,7 +49,7 @@ describe("Reminder Report fund selection - Issue #9803", () => {
         cy.get("#fundsList").select("1", { force: true });
         cy.get("#fundsList").invoke("val").should("deep.equal", ["1"]);
 
-        cy.get("#createReport").click();
+        cy.get("#downloadPledgeReminders").click();
 
         cy.wait("@reminderReport", { timeout: 30000 }).then(expectPdfResponse);
     });

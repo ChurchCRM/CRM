@@ -286,8 +286,8 @@ describe("Deceased Person Flag", () => {
                         .parents("tr")
                         .should("not.have.class", "text-body-secondary");
 
-                    // Sidebar shows "1 Member (+1 deceased)"
-                    cy.contains("li", "Member").should("contain", "(+1");
+                    // Header counts the living member and the deceased one separately
+                    cy.get("#family-profile-header").should("contain.text", "1 Member").and("contain.text", "1 deceased");
                 });
             });
     });

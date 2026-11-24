@@ -21,7 +21,7 @@ CREATE TABLE `config_cfg` (
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
   PRIMARY KEY (`cfg_name`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.
 
@@ -37,7 +37,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL default '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `deposit_dep`
@@ -58,7 +58,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Category` varchar(50) default NULL,
   PRIMARY KEY  (`fun_ID`),
   UNIQUE KEY `fun_Name_unique` (`fun_Name`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `donationfund_fun`
@@ -79,7 +79,7 @@ CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_countname` varchar(20) NOT NULL default '',
   UNIQUE KEY `evctnm_countid` (`evctnm_countid`),
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `eventcountnames_evctnm`
@@ -104,7 +104,7 @@ CREATE TABLE `eventcounts_evtcnt` (
   `evtcnt_countcount` int(6) default NULL,
   `evtcnt_notes` varchar(20) default NULL,
   PRIMARY KEY  (`evtcnt_eventid`,`evtcnt_countid`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `eventcounts_evtcnt`
@@ -218,7 +218,7 @@ CREATE TABLE `calendars` (
   PRIMARY KEY (`calendar_id`),
   UNIQUE KEY `accesstoken` (`accesstoken`),
   KEY `calendars_ministry_idx` (`ministry_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
  (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
@@ -246,7 +246,7 @@ CREATE TABLE `calendar_events` (
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `family_custom`
@@ -265,7 +265,7 @@ CREATE TABLE `family_custom_master` (
   `fam_custom_Special` mediumint(8) unsigned default NULL,
   `fam_custom_FieldSec` tinyint(4) NOT NULL default '1',
   `type_ID` tinyint(4) NOT NULL default '0'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `family_custom_master`
@@ -310,7 +310,7 @@ CREATE TABLE `family_fam` (
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `family_fam`
@@ -353,7 +353,7 @@ CREATE TABLE `groupprop_master` (
   `type_ID` smallint(5) unsigned NOT NULL default '0',
   `prop_Special` mediumint(9) unsigned default NULL,
   `prop_PersonDisplay` enum('false','true') NOT NULL default 'false'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='Group-specific properties order, name, description, type';
 
 --
 -- Dumping data for table `groupprop_master`
@@ -378,7 +378,7 @@ CREATE TABLE `group_grp` (
   `grp_ministry_id` int(11) default NULL,
   PRIMARY KEY  (`grp_ID`),
   KEY `grp_ministry_idx` (`grp_ministry_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `group_grp`
@@ -397,7 +397,7 @@ CREATE TABLE `list_lst` (
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
   `lst_OptionName` varchar(50) NOT NULL default '',
   PRIMARY KEY (`lst_ID`, `lst_OptionID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `list_lst`
@@ -505,30 +505,13 @@ CREATE TABLE `person2group2role_p2g2r` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `person2volunteeropp_p2vo`
---
-
-CREATE TABLE `person2volunteeropp_p2vo` (
-  `p2vo_ID` mediumint(9) NOT NULL auto_increment,
-  `p2vo_per_ID` mediumint(9) default NULL,
-  `p2vo_vol_ID` mediumint(9) default NULL,
-  PRIMARY KEY  (`p2vo_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `person2volunteeropp_p2vo`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `person_custom`
 --
 
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL default '0',
   PRIMARY KEY  (`per_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `person_custom`
@@ -548,7 +531,7 @@ CREATE TABLE `person_custom_master` (
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL default '0',
   PRIMARY KEY (`custom_Field`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `person_custom_master`
@@ -608,7 +591,7 @@ CREATE TABLE `person_per` (
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
   INDEX `idx_per_fmr_ID` (`per_fmr_ID`),
   INDEX `idx_per_grd_ID` (`per_grd_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `person_per`
@@ -629,6 +612,9 @@ CREATE TABLE `pledge_plg` (
   `plg_FYID` mediumint(9) default NULL,
   `plg_date` date default NULL,
   `plg_amount` decimal(8,2) default NULL,
+  `plg_installment_amount` decimal(8,2) DEFAULT NULL,
+  `plg_first_installment` date DEFAULT NULL,
+  `plg_last_installment` date DEFAULT NULL,
   `plg_schedule` enum('Weekly', 'Monthly','Quarterly','Once','Other') default NULL,
   `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT') default NULL,
   `plg_comment` text,
@@ -651,7 +637,7 @@ CREATE TABLE `pledge_plg` (
   INDEX `idx_plg_fundID` (`plg_fundID`),
   INDEX `idx_plg_depID` (`plg_depID`),
   INDEX `idx_plg_GroupKey` (`plg_GroupKey`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `pledge_plg`
@@ -669,7 +655,7 @@ CREATE TABLE `propertytype_prt` (
   `prt_Name` varchar(50) NOT NULL default '',
   `prt_Description` text NOT NULL,
   PRIMARY KEY  (`prt_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `propertytype_prt`
@@ -694,7 +680,7 @@ CREATE TABLE `property_pro` (
   `pro_Description` text NOT NULL,
   `pro_Prompt` varchar(255) default NULL,
   PRIMARY KEY  (`pro_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `property_pro`
@@ -715,7 +701,7 @@ CREATE TABLE `record2property_r2p` (
   `r2p_pro_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_record_ID` mediumint(8) unsigned NOT NULL default '0',
   `r2p_Value` text NOT NULL
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `record2property_r2p`
@@ -767,7 +753,7 @@ CREATE TABLE `userconfig_ucfg` (
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   `ucfg_cat` varchar(20) NOT NULL,
   PRIMARY KEY  (`ucfg_per_id`,`ucfg_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `userconfig_ucfg`
@@ -802,6 +788,7 @@ CREATE TABLE `user_usr` (
   `usr_ManageMyMinistries` tinyint(1) unsigned NOT NULL default '0',
   `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
   `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
+  `usr_IsOwner` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',
   `usr_Style` varchar(50) default 'Style.css',
   `usr_showPledges` tinyint(1) NOT NULL default '0',
@@ -826,6 +813,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
   `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
+  `usr_TwoFactorAuthRequired` tinyint(1) unsigned NOT NULL default '0',
   `usr_LastPortalActivity` datetime default NULL,
   `usr_PortalCalendarToken` VARCHAR(64) default NULL,
   `usr_PortalCalendarSelection` TEXT default NULL,
@@ -833,7 +821,7 @@ CREATE TABLE `user_usr` (
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
   UNIQUE KEY `usr_PortalCalendarToken` (`usr_PortalCalendarToken`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_usr`
@@ -841,13 +829,13 @@ CREATE TABLE `user_usr` (
 
 INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
                         `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
-                        `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
+                        `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`, `usr_IsOwner`,
                         `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
                         `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`,
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Table structure for table `user_settings`
@@ -857,7 +845,7 @@ CREATE TABLE `user_settings` (
   `user_id` mediumint(9) unsigned NOT NULL,
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_settings`
@@ -880,25 +868,6 @@ ALTER TABLE `user_settings`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `volunteeropportunity_vol`
---
-
-CREATE TABLE `volunteeropportunity_vol` (
-  `vol_ID` int(3) NOT NULL auto_increment,
-  `vol_Order` int(3) NOT NULL default '0',
-  `vol_Active` enum('true','false') NOT NULL default 'true',
-  `vol_Name` varchar(30) default NULL,
-  `vol_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`vol_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `volunteeropportunity_vol`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `whycame_why`
 --
 
@@ -910,7 +879,7 @@ CREATE TABLE `whycame_why` (
   `why_suggest` text NOT NULL,
   `why_hearOfUs` text NOT NULL,
   PRIMARY KEY  (`why_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Fundraiser support added 4/11/2009 Michael Wilt
@@ -938,7 +907,7 @@ CREATE TABLE `fundraiser_fr` (
   `fr_fund_ID` mediumint(8) unsigned NULL,
   PRIMARY KEY  (`fr_ID`),
   UNIQUE KEY `fr_ID` (`fr_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `donateditem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -957,7 +926,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredDate` date NOT NULL,
   `di_picture` text,
   PRIMARY KEY  (`di_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `multibuy_mb` (
   `mb_ID` mediumint(9) unsigned NOT NULL auto_increment,
@@ -977,7 +946,7 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_PendingCommands` varchar(50),
 
   PRIMARY KEY  (`kdev_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE `kioskassginment_kasm` (
   `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
@@ -1022,7 +991,7 @@ CREATE TABLE `locations` (
   `location_email` VARCHAR(45) NULL,
   `location_timzezone` VARCHAR(45) NULL,
   PRIMARY KEY (`location_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `menu_links`
@@ -1030,11 +999,11 @@ CREATE TABLE `locations` (
 
 CREATE TABLE `menu_links` (
   `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `pledge_denominations_pdem`
@@ -1667,6 +1636,52 @@ CREATE TABLE `login_as_person_action_lpa` (
   KEY `lpa_session_time_idx` (`lpa_lps_ID`, `lpa_Time`),
   CONSTRAINT `fk_lpa_session` FOREIGN KEY (`lpa_lps_ID`)
       REFERENCES `login_as_person_session_lps` (`lps_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `role_rol` (
+  `rol_ID`         int(11)      NOT NULL AUTO_INCREMENT,
+  `rol_Key`        varchar(64)  NOT NULL,
+  `rol_Name`       varchar(128) NOT NULL,
+  `rol_Kind`       varchar(16)  NOT NULL,
+  `rol_Version`    int(11)      NOT NULL DEFAULT 1,
+  `rol_CopiedFrom` varchar(64)           DEFAULT NULL,
+  PRIMARY KEY (`rol_ID`),
+  UNIQUE KEY `rol_key_uidx` (`rol_Key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `role_grant_rgr` (
+  `rgr_ID`         int(11)     NOT NULL AUTO_INCREMENT,
+  `rgr_rol_ID`     int(11)     NOT NULL,
+  `rgr_Permission` varchar(64) NOT NULL,
+  `rgr_Scope`      varchar(32) NOT NULL DEFAULT 'all',
+  PRIMARY KEY (`rgr_ID`),
+  UNIQUE KEY `rgr_role_permission_scope_uidx` (`rgr_rol_ID`, `rgr_Permission`, `rgr_Scope`),
+  CONSTRAINT `fk_rgr_role` FOREIGN KEY (`rgr_rol_ID`)
+      REFERENCES `role_rol` (`rol_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `user_role_uro` (
+  `uro_usr_ID`             mediumint(9) unsigned NOT NULL,
+  `uro_rol_ID`             int(11)               NOT NULL,
+  `uro_AssignedBy_usr_ID`  mediumint(9) unsigned          DEFAULT NULL,
+  `uro_ApprovedBy_usr_ID`  mediumint(9) unsigned          DEFAULT NULL,
+  `uro_AssignedAt`         datetime              NOT NULL,
+  PRIMARY KEY (`uro_usr_ID`, `uro_rol_ID`),
+  KEY `uro_rol_idx` (`uro_rol_ID`),
+  CONSTRAINT `fk_uro_user` FOREIGN KEY (`uro_usr_ID`)
+      REFERENCES `user_usr` (`usr_per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_uro_role` FOREIGN KEY (`uro_rol_ID`)
+      REFERENCES `role_rol` (`rol_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `role_audit_rau` (
+  `rau_ID`             int(11)               NOT NULL AUTO_INCREMENT,
+  `rau_Actor_usr_ID`   mediumint(9) unsigned          DEFAULT NULL,
+  `rau_Subject_usr_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `rau_Action`         varchar(32)           NOT NULL,
+  `rau_Detail`         text                           DEFAULT NULL,
+  `rau_Time`           datetime              NOT NULL,
+  PRIMARY KEY (`rau_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

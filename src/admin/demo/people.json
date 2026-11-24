@@ -751,7 +751,16 @@
       "weddingDate": "2016-07-15T00:00:00.000Z",
       "active": true,
       "verified": true,
-      "photo": "family.baker.jpg"
+      "photo": "family.baker.jpg",
+      "secondAddress": {
+        "line1": "PO Box 1180",
+        "line2": null,
+        "city": "Overland Park",
+        "state": "KS",
+        "zip": "66201",
+        "country": "United States",
+        "isMailing": true
+      }
     },
     {
       "name": "Thompson",
@@ -1180,7 +1189,16 @@
       "weddingDate": "2000-10-15T00:00:00.000Z",
       "active": true,
       "verified": true,
-      "photo": "family.lewis.jpg"
+      "photo": "family.lewis.jpg",
+      "secondAddress": {
+        "line1": "412 Lakeshore Dr",
+        "line2": null,
+        "city": "Lake Winnebago",
+        "state": "MO",
+        "zip": "64034",
+        "country": "United States",
+        "isMailing": false
+      }
     },
     {
       "name": "Hernandez",

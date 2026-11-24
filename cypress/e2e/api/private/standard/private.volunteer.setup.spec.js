@@ -6,9 +6,9 @@
  * #9705 ships tables, not endpoints: the V2 API arrives with #9706/#9707, so
  * there is nothing to exercise over HTTP yet. What the issue actually promises
  * is a set of database guarantees — "duplicate assignments are prevented",
- * "open gaps can be derived without duplicating assignment truth", "the
- * migration does not modify V1 volunteer data" — and every one of those lives
- * in a UNIQUE key, a foreign key, an ON DELETE rule or an enum domain.
+ * "open gaps can be derived without duplicating assignment truth" — and every
+ * one of those lives in a UNIQUE key, a foreign key, an ON DELETE rule or an
+ * enum domain.
  *
  * So this spec asserts them where they live, through the node-side `db:query`
  * task (`cy.dbQuery`, cypress/configs/_shared.ts). #9707 extends this same file
@@ -295,12 +295,6 @@ function cleanupV2Rows() {
     });
 }
 
-function countRows(table) {
-    return cy
-        .dbQuery(`SELECT COUNT(*) AS c FROM \`${table}\``)
-        .then((result) => (result.error === null ? result.rows[0].c : -1));
-}
-
 before(() => {
     cy.useChurchTimeZone();
 });
@@ -310,19 +304,11 @@ after(() => {
 });
 
 describe("API Private Volunteer v2 core schema", () => {
-    // D7: the V1 tables must be untouched by anything in this issue.
-    const v1CountsBefore = {};
     let sqlMode = "";
 
     before(() => {
         cy.dbQuery("SELECT @@sql_mode AS mode").then((result) => {
             sqlMode = result.error === null ? result.rows[0].mode : "";
-        });
-        countRows("volunteeropportunity_vol").then((c) => {
-            v1CountsBefore.volunteeropportunity_vol = c;
-        });
-        countRows("person2volunteeropp_p2vo").then((c) => {
-            v1CountsBefore.person2volunteeropp_p2vo = c;
         });
         cleanupV2Rows();
     });
@@ -1358,21 +1344,6 @@ describe("API Private Volunteer v2 core schema", () => {
                         [rows.insertId],
                     );
                 });
-            });
-        });
-    });
-
-    describe("V1 volunteer data (D7)", () => {
-        it("leaves volunteeropportunity_vol and person2volunteeropp_p2vo untouched", () => {
-            countRows("volunteeropportunity_vol").then((c) => {
-                expect(c, "volunteeropportunity_vol row count").to.equal(
-                    v1CountsBefore.volunteeropportunity_vol,
-                );
-            });
-            countRows("person2volunteeropp_p2vo").then((c) => {
-                expect(c, "person2volunteeropp_p2vo row count").to.equal(
-                    v1CountsBefore.person2volunteeropp_p2vo,
-                );
             });
         });
     });

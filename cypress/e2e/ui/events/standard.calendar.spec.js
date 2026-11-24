@@ -443,19 +443,7 @@ describe("Standard Calendar — save (admin-session)", () => {
  */
 describe("Calendar sidebar — church, ministry and system lists", () => {
     const MINISTRY_NAME = "CALSIDEBAR Youth Ministry";
-    const VOLUNTEER_VERSION = "sVolunteerVersion";
     let ministryId = 0;
-    let originalVolunteerVersion;
-
-    // The ministries API answers only while Volunteer v2 is on; the sidebar is tested as the seed has it.
-    const withVolunteerV2 = (work) => {
-        cy.getSystemConfig(VOLUNTEER_VERSION).then((value) => {
-            originalVolunteerVersion = value;
-        });
-        cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${VOLUNTEER_VERSION}`, { value: "v2" }, 200);
-        work();
-        cy.then(() => cy.restoreSystemConfig(VOLUNTEER_VERSION, originalVolunteerVersion));
-    };
 
     const removeFixture = () =>
         cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
@@ -466,21 +454,19 @@ describe("Calendar sidebar — church, ministry and system lists", () => {
         });
 
     before(() => {
-        withVolunteerV2(() => {
-            removeFixture();
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/ministries/ministries",
-                { name: MINISTRY_NAME, description: "calendar sidebar fixture" },
-                201,
-            ).then((resp) => {
-                ministryId = resp.body.ministry.id;
-            });
+        removeFixture();
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/ministries/ministries",
+            { name: MINISTRY_NAME, description: "calendar sidebar fixture" },
+            201,
+        ).then((resp) => {
+            ministryId = resp.body.ministry.id;
         });
     });
 
     after(() => {
-        withVolunteerV2(removeFixture);
+        removeFixture();
     });
 
     beforeEach(() => cy.setupStandardSession());

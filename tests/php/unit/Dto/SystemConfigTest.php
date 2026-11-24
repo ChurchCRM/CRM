@@ -57,9 +57,9 @@ Assert::true(!$pruned['declared']->deleted, 'database current: a declared key\'s
 Assert::true(!$pruned['plugin']->deleted, 'database current: a plugin row stays');
 
 SystemConfig::init();
-Assert::same('install', SystemConfig::getValue('sTelemetryLevel'));
+Assert::same('default', SystemConfig::getValue('sTelemetryLevel'));
 SystemConfig::init([new StoredConfigRow('sChurchName', 'Existing church')], false);
-Assert::same('none', SystemConfig::getValue('sTelemetryLevel'));
+Assert::same('default', SystemConfig::getValue('sTelemetryLevel'));
 foreach (['none', 'errors', 'warnings', 'full'] as $level) {
     SystemConfig::init([new StoredConfigRow('sTelemetryLevel', $level)], false);
     Assert::same($level, SystemConfig::getValue('sTelemetryLevel'));

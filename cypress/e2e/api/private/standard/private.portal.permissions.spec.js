@@ -20,7 +20,6 @@ const ADMIN = { username: "admin", password: "changeme" };
 const AMANDA_EMAIL = "amanda.black@example.com";
 const MATHEW_EMAIL = "mathew.campbell@example.com";
 const PREFIX = "PERM10463";
-const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
 const touchedConfig = ["bPortalShowVolunteer"];
 const NON_ADULT_SEED = { FamilyRole: 4, BirthYear: 1910, BirthMonth: 7, BirthDay: 23 };
 
@@ -28,7 +27,6 @@ let ministryId = 0;
 let teamLed = 0;
 let teamOther = 0;
 let leaderScopeId = 0;
-let originalVersion = "v1";
 
 const givenGrants = [];
 
@@ -95,10 +93,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
                 savedConfig[name] = value;
             });
         });
-        cy.makePrivateAdminAPICall("GET", VERSION_URL, null, 200).then((response) => {
-            originalVersion = response.body.value ?? response.body.Value ?? "v1";
-        });
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         cy.makePrivateAdminAPICall("POST", "/api/ministries/ministries", { name: `${PREFIX} Hospitality`, description: "" }, 201).then(
@@ -146,7 +140,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
 
     after(() => {
         cleanupFixtures();
-        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: originalVersion }, 200);
         cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
     });
 

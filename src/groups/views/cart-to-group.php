@@ -58,6 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="card-body">
                     <form name="CartToGroup" action="<?= $sRootPath ?>/groups/cart/add" method="POST">
+                        <input type="hidden" name="csrf_token" value="<?= InputUtils::escapeAttribute($csrfToken) ?>">
                         <div class="mb-3">
                             <label class="form-label" for="GroupID"><?= gettext('Select Group') ?></label>
                             <select id="GroupID" name="GroupID" class="form-select" onchange="UpdateRoles();" required>

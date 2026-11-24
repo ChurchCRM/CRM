@@ -14,8 +14,9 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'statementWording' => [gettext('Statement Wording'), 'fa-solid fa-file-lines', [
             'sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions', 'sTaxSigner',
         ]],
-        'statementTax' => [gettext('Tax Information'), 'fa-solid fa-building-columns', [
-            'sChurchTaxId',
+        'statementTax' => [gettext('Charity on receipts'), 'fa-solid fa-building-columns', [
+            'sChurchTaxId', 'sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber',
+            'sReceiptIssueLocality', 'sReceiptClosing',
         ]],
         'statementOutput' => [gettext('PDF Output'), 'fa-solid fa-file-pdf', [
             'iPDFOutputType',
@@ -27,19 +28,33 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'sGivingStatementClosing' => gettext('Closing Line'),
         'sGivingStatementQuestions' => gettext('Questions Line'),
         'sTaxSigner'     => gettext('Signer'),
-        'sChurchTaxId'   => gettext('Church Tax ID (EIN)'),
+        'sChurchTaxId'   => gettext('Tax ID on statements'),
+        'sCharityLegalName' => gettext('Charity Legal Name'),
+        'sCharityRegisteredAddress' => gettext('Charity Registered Address'),
+        'sCharityRegistrationNumber' => gettext('Charity Registration Number'),
+        'sReceiptIssueLocality' => gettext('Receipt Issue Locality'),
+        'sReceiptClosing' => gettext('Receipt Closing'),
         'iPDFOutputType' => gettext('PDF Handling'),
+    ];
+    $help = [
+        'sChurchTaxId' => gettext('Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info.'),
+        'sCharityLegalName' => gettext('The name the charity is registered under. It can differ from the church name.'),
+        'sCharityRegisteredAddress' => gettext('The charity\'s registered address. Blank uses the address on Church Info.'),
+        'sCharityRegistrationNumber' => gettext('The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info.'),
+        'sReceiptIssueLocality' => gettext('The place where receipts are issued. Blank uses the city on Church Info.'),
+        'sReceiptClosing' => gettext('The closing phrase above the signer, for example Sincerely.'),
     ];
 
     $sections = [];
     foreach ($sectionDefinitions as $id => [$title, $icon, $keys]) {
-        $settings = array_map(function (array $setting) use ($labels): array {
+        $settings = array_map(function (array $setting) use ($labels, $help): array {
             $setting['label'] = $labels[$setting['name']] ?? $setting['label'];
-            if (($setting['tooltip'] ?? '') === $setting['label']) {
+            $setting['tooltip'] = $help[$setting['name']] ?? '';
+            if ($setting['tooltip'] === '') {
                 unset($setting['tooltip']);
             }
 
-            if (in_array($setting['name'], ['sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions'], true)) {
+            if (in_array($setting['name'], ['sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions', 'sCharityRegisteredAddress'], true)) {
                 $setting['type'] = 'textarea';
             }
 
@@ -52,10 +67,14 @@ $app->get('/statements/settings', function (Request $request, Response $response
     $pageArgs = [
         'sRootPath'    => SystemURLs::getRootPath(),
         'sPageTitle'   => gettext('Statement Settings'),
-        'sPageSubtitle' => gettext('Wording, tax ID and PDF handling for giving statements'),
+        'sPageSubtitle' => gettext('Letter wording, charity details, and PDF handling for giving statements'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Year-End Giving'), '/finance/reports/year-end'],
             [gettext('Statement Settings')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Giving Statements'), 'url' => '/finance/reports/giving-statements', 'icon' => 'fa-file-invoice-dollar', 'adminOnly' => false],
+            ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
         ]),
         'sections'     => $sections,
     ];

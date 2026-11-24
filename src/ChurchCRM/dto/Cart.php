@@ -177,15 +177,20 @@ class Cart
         return $persons->count();
     }
 
-    public static function emptyToGroup($GroupID, $RoleID): void
+    public static function emptyToGroup($GroupID, $RoleID): array
     {
         $groupService = new GroupService();
+        $failedPeople = [];
 
         foreach ($_SESSION['aPeopleCart'] as $element) {
-            $groupService->addUserToGroup($GroupID, $element, $RoleID);
+            if ($groupService->addUserToGroup($GroupID, (int) $element, (int) $RoleID) === false) {
+                $failedPeople[] = $element;
+            }
         }
 
-        $_SESSION['aPeopleCart'] = [];
+        $_SESSION['aPeopleCart'] = $failedPeople;
+
+        return $failedPeople;
     }
 
     /**
@@ -287,6 +292,7 @@ class Cart
         // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
         foreach (PersonQuery::create()
             ->filterById($cartIds)
+            ->filterByNeedsReview(false)
             ->filterByEmail('', Criteria::NOT_EQUAL)
             ->find() as $cartPerson) {
             if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Permissions\Rules;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -9,7 +10,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Portal\Permissions\BulkPortalRule;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalRuleGrant;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Utils\DateTimeUtils;
 use DateTimeImmutable;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -136,7 +136,7 @@ final class FamilyAdultRule implements BulkPortalRule
      */
     private static function grants(int $familyId, string $familyName): array
     {
-        $scope = PortalScope::family($familyId);
+        $scope = Scope::family($familyId);
         $label = sprintf(gettext('Adult of the %s family'), $familyName);
 
         return array_map(static fn (string $capability): PortalRuleGrant => new PortalRuleGrant($capability, $scope, $label), self::CAPABILITIES);

@@ -246,7 +246,7 @@ $inactive = (int) $event->getInActive() === 1;
     <!--
       Volunteer v2 staffing (#9713, design §3.5). Read-only: who is needed and how many are
       short, per occurrence linked to this event. The route decided whether it may be shown
-      at all (rollout flag AND scope) and hands over an empty array otherwise, so there is no
+      at all (scope) and hands over an empty array otherwise, so there is no
       permission logic here. Editing happens on the occurrence page.
     -->
     <?php if (!empty($volunteerOccurrences)): ?>

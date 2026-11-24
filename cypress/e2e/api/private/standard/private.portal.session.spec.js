@@ -120,13 +120,13 @@ describe("Member Portal session (portal principal)", () => {
         cy.request({ url: `/api/person/${staffUser.personId}`, failOnStatusCode: false })
             .its("status")
             .should("eq", 401);
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).then((response) => {
+        cy.request({ url: "/people/dashboard", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
         });
-        cy.request({ url: "/PropertyList.php", followRedirect: false }).then((response) => {
+        cy.request({ url: "/people/properties/p", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
         });
     });
 
@@ -182,7 +182,7 @@ describe("Member Portal session (portal principal)", () => {
                 expect(response.redirectedToUrl).to.include("/portal/login");
             });
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-            cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
+            cy.request({ url: "/people/dashboard", followRedirect: false }).its("status").should("eq", 302);
 
             auditRowsSince(staffUser.personId, startId).then((rows) => {
                 expect(rows.map((row) => row.psa_Event)).not.to.include("refused");

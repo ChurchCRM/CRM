@@ -226,10 +226,6 @@ msgstr[0] "%d default skipped for another reason (the occurrence is over, cancel
 msgstr[1] "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Assignment cancelled"
 

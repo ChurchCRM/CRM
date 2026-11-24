@@ -4,7 +4,7 @@ describe("Communication Menu and Dashboards", () => {
     beforeEach(() => cy.setupAdminSession());
 
     it("Communication menu opens to Email and Text", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.get("#sidebar-menu").contains("Communication").click();
         cy.get("#sidebar-menu").contains("Email").should("be.visible");
         cy.get("#sidebar-menu").contains("Text").should("be.visible");

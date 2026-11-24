@@ -9,7 +9,6 @@
  * coordinator of both fixture ministries.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const URL = "/api/ministries";
 const GROUPS_URL = "/api/groups";
 const PREFIX = "UISS2829";
@@ -134,7 +133,6 @@ after(() => {
 
 describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (D28), on screen", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         for (const key of ["A", "B", "C"]) {
@@ -214,7 +212,6 @@ describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     it("asks the Sunday School question in Add Ministry, off by default", () => {

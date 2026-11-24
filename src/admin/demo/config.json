@@ -18,12 +18,12 @@
   "sChurchTaxId": "00-0000000",
   "sReminderSigner": "Elder Joe Smith",
   "sConfirmSigner": "Elder Joe Smith",
-  "plugin.google-analytics.trackingId": "G-JD5J0825V8",
-  "plugin.google-analytics.enabled": "1",
   "plugin.holidays.enabled": "1",
   "plugin.holidays.countries": "USA",
   "plugin.holidays.categories": "official,religious",
   "bEnabledEmail": "0",
-  "sVolunteerVersion": "v2",
-  "sTelemetryLevel": "full"
+  "sTelemetryLevel": "full",
+  "bMemberSignIn": "1",
+  "bAllowLoginAsPerson": "1",
+  "bPortalShowDirectory": "1"
 }

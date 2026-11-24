@@ -19,7 +19,7 @@ const pageBody = (path) => {
 };
 const listBody = (status) => pageBody(`/people/list?personActiveStatus=${status}`);
 const dashboardPeopleCount = () =>
-    pageBody("/v2/dashboard").then((body) => Number(/id="peopleStatsDashboard">(\d+)</.exec(body)[1]));
+    pageBody("/people/dashboard").then((body) => Number(/id="peopleStatsDashboard">(\d+)</.exec(body)[1]));
 const personLink = () => `/people/view/${created.personId}"`;
 const toggleInactive = () =>
     cy

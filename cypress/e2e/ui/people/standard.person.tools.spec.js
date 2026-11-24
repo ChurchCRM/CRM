@@ -5,7 +5,7 @@ describe("People Tools", () => {
 
     it("opens the People Dashboard and the people tools for a standard user", () => {
         cy.visit("people/dashboard");
-        cy.contains("People Dashboard");
+        cy.contains("Welcome to");
         cy.contains("People by Classification");
         cy.contains("Gender Demographics");
 

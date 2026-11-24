@@ -33,7 +33,8 @@ class NotificationService
         $currentUser = AuthenticationManager::getCurrentUser();
 
         $dismissKey = $notification->getDismissSettingKey();
-        if ($dismissKey !== '' && $currentUser->getSettingValue($dismissKey) === 'true') {
+        if ($notification->getId() !== 'system-update-available'
+            && $dismissKey !== '' && $currentUser->getSettingValue($dismissKey) === 'true') {
             return;
         }
 
@@ -71,43 +72,100 @@ class NotificationService
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
      */
-    public static function loadSessionNotifications(): void
+    public static function loadSessionNotifications(bool $onLandingPage = false): void
     {
         self::loadUpgradeNotification();
-        self::loadRemoteNotifications();
+        self::loadDatabaseSupportNotification();
+        if ($onLandingPage) {
+            self::loadRemoteNotifications();
+        }
     }
 
     // ─── Source 1: System upgrade (session set at login) ────────────────
 
     /**
-     * If a system upgrade is available, push the admin notification.
+     * Show the system upgrade notification to every logged-in user.
+     * Only this notice is dismissed per session, not through user settings.
      */
     private static function loadUpgradeNotification(): void
     {
-        $currentUser = AuthenticationManager::getCurrentUser();
-        if (
-            !$currentUser->isAdmin()
-            || !isset($_SESSION['systemUpdateAvailable'])
-            || $_SESSION['systemUpdateAvailable'] !== true
-        ) {
+        if (($_SESSION['systemUpdateAvailable'] ?? false) !== true
+            || ($_SESSION['systemUpdateNoticeDismissed'] ?? false) === true) {
             return;
         }
 
-        $version = (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null)
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $version = isset($_SESSION['systemUpdateVersion'])
             ? (string) $_SESSION['systemUpdateVersion']
             : '';
+        $isAdmin = $currentUser->isAdmin();
+        $message = $isAdmin
+            ? ($version !== ''
+                ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $version)
+                : gettext('A system update is available. Please upgrade your installation.'))
+            : ($version !== ''
+                ? sprintf(gettext('Version %s is available. Please ask your administrator to upgrade your installation.'), $version)
+                : gettext('A system update is available. Please ask your administrator to upgrade your installation.'));
 
         $id = 'system-update-available';
         self::add(new UiNotification(
             $id,
             self::dismissalSettingKey($id),
             gettext('System Update Available'),
-            $version !== ''
-                ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $version)
-                : gettext('A system update is available. Please upgrade your installation.'),
-            SystemURLs::getRootPath() . '/admin/system/upgrade',
+            $message . ' ' . gettext('Security updates and support are provided for the latest version only.'),
+            SystemURLs::getRootPath() . ($isAdmin ? '/admin/system/upgrade' : '/v2/releases'),
             'warning',
             'refresh',
+        ));
+    }
+
+    /**
+     * The database support warning for the current user, or null when the
+     * database is on a supported version or the user is not an admin.
+     * 'dismissed' is the current user's per-user dismissal state: while false
+     * the warning renders as the full banner; once dismissed it collapses to
+     * the red top-nav indicator (Header.php) until the database is supported.
+     *
+     * @return array{title: string, message: string, dismissed: bool}|null
+     */
+    public static function getDatabaseSupportWarning(): ?array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->isAdmin()) {
+            return null;
+        }
+        $message = DatabaseVersionService::getSecurityRiskMessage();
+        if ($message === null) {
+            return null;
+        }
+
+        return [
+            'title'     => gettext('Database out of support'),
+            'message'   => $message,
+            'dismissed' => $currentUser->getSettingValue(self::dismissalSettingKey('database-out-of-support')) === 'true',
+        ];
+    }
+
+    /**
+     * Dismissible per user (#11942): dismissal collapses the banner into the
+     * top-nav indicator; the warning fully clears only when the database is
+     * moved to a supported version.
+     */
+    private static function loadDatabaseSupportNotification(): void
+    {
+        $warning = self::getDatabaseSupportWarning();
+        if ($warning === null) {
+            return;
+        }
+
+        self::add(new UiNotification(
+            'database-out-of-support',
+            self::dismissalSettingKey('database-out-of-support'),
+            $warning['title'],
+            $warning['message'],
+            '',
+            'danger',
+            'database',
         ));
     }
 
@@ -161,6 +219,13 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
+            // Announcements show once per login, on the landing page only.
+            if ($id !== '') {
+                if (isset($_SESSION['remoteNoticesShown'][$id])) {
+                    continue;
+                }
+                $_SESSION['remoteNoticesShown'][$id] = true;
+            }
             $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(

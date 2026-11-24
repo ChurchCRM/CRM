@@ -39,6 +39,7 @@ describe("Directory report - classification selection (#10248)", () => {
 
     beforeEach(() => {
         cy.setupAdminSession();
+        cy.clearDirectoryReportPrefs();
     });
 
     after(() => {

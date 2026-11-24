@@ -1,10 +1,22 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, useMemberSignIn } from "../../../support/member-sign-in";
+
 const SUBJECT = 'subject:"Campbell: Please verify"';
 const search = () => `${Cypress.mailpitUrl()}/api/v1/search?query=${encodeURIComponent(SUBJECT)}`;
 const PHONE_WIDTH = 375;
 
 describe("Email link", () => {
+    const saved = {};
+
+    before(() => {
+        useMemberSignIn(saved);
+    });
+
+    after(() => {
+        restoreSettings(saved);
+    });
+
     it("wraps the copy-and-paste link so the email stays within a phone screen", () => {
         cy.request({ method: "DELETE", url: search() });
         cy.makePrivateAdminAPICall("POST", "/api/family/1/verify", null, 200);

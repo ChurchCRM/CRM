@@ -73,7 +73,7 @@ $(document).ready(function () {
       // Build role options
       let roleOptions = '<option value="0">' + window.CRM.i18n.selectRole + "</option>";
       window.CRM.familyRoles.forEach(function (role) {
-        roleOptions += '<option value="' + role.id + '">' + role.name + "</option>";
+        roleOptions += '<option value="' + role.id + '">' + window.CRM.escapeHtml(role.name) + "</option>";
       });
 
       // Build month options
@@ -94,7 +94,7 @@ $(document).ready(function () {
       let classOptions = '<option value="0">' + window.CRM.i18n.unassigned + "</option>";
       classOptions += '<option value="" disabled>-----------------------</option>';
       window.CRM.classifications.forEach(function (cls) {
-        classOptions += '<option value="' + cls.id + '">' + cls.name + "</option>";
+        classOptions += '<option value="' + cls.id + '">' + window.CRM.escapeHtml(cls.name) + "</option>";
       });
 
       let gradeOptions = '<option value="">' + window.CRM.i18n.unassigned + "</option>";

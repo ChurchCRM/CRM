@@ -54,7 +54,7 @@ describe("Kiosk Manager", () => {
         it("does not show a Group Properties button on the Groups dashboard", () => {
             cy.visit("/groups/dashboard");
             cy.contains("Group Reports");
-            cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
+            cy.get('a[href*="/people/properties/g"]').should("not.exist");
         });
 
         it("ManageGroups user who is not an admin does not see Group Properties in the Groups menu (#9172)", () => {
@@ -63,7 +63,7 @@ describe("Kiosk Manager", () => {
             // Kiosk Manager is gated on ManageGroups, so it stays; PropertyList.php is admin-only,
             // so the menu must not offer it to this user.
             cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).should("exist");
-            cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
+            cy.get('a[href*="/people/properties/g"]').should("not.exist");
         });
     });
 });

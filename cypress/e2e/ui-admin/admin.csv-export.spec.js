@@ -210,8 +210,8 @@ describe("CSV Export Page", () => {
             const emailIdx = rows[0].findIndex((cell) => cell.endsWith("Email"));
             const rowOf = (first, last) => rows.find((cells) => cells.includes(first) && cells.includes(last));
             expect(emailIdx).to.be.greaterThan(-1);
-            expect(rowOf("Mark", "Smith")[emailIdx]).to.eq("mark.smith@example.com");
-            expect(rowOf("Mary", "Smith")[emailIdx]).to.eq("");
+            expect(rowOf("Nathan", "Lewis")[emailIdx]).to.eq("nathan.lewis@example.com");
+            expect(rowOf("Church", "Admin")[emailIdx]).to.eq("");
         });
     });
 
@@ -347,7 +347,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.visit("/admin/export/csv", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
-        cy.location("pathname").should("match", /\/admin\/$/);
+        cy.location("pathname").should("match", /\/session\/begin$/);
     });
 
     it("should deny unauthenticated POST to the CSV export endpoint", () => {

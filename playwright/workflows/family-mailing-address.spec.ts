@@ -65,14 +65,14 @@ test.describe('Family mailing address', () => {
     try {
       await expect(page.locator('#second-address-card')).toBeVisible({ timeout: 15000 });
       await expect(page.locator('#fab-container .fab-button:visible')).toHaveCount(0, { timeout: 15000 });
-      await keepInFrame(page, '.card:has(+ #second-address-card) .card-header', '#second-address-card');
+      await keepInFrame(page, '#family-address-card .card-header', '#second-address-card');
       await settle(page, 800);
 
       await captureScreen(page, testInfo, {
         name: 'family-view-mailing-address',
         title: 'Family View Mailing Address',
         category: 'People & Families',
-        purpose: 'Show the family page with the home address on the Primary Address card and a PO Box on the Mailing Address card',
+        purpose: 'Show the family page with the home address and map on the Address card and the PO Box listed under it as the Mailing Address',
         usedIn: ['docs'],
       });
     } finally {

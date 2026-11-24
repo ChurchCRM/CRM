@@ -68,10 +68,13 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::captureUpgradeInterruption('7.8.3', 10);
     TelemetryService::captureRequirementsFailure(['PHP Filter', 'cURL']);
     TelemetryService::captureRequirementsFailure(['cURL', 'PHP Filter']);
+    TelemetryService::captureInstallGaps(['Include/Config.php.example'], ['skin/v2/setup.min.js'], ['PHP PDO MySQL']);
+    TelemetryService::captureInstallGaps(['Include/Config.php.example'], ['skin/v2/setup.min.js'], ['PHP PDO MySQL']);
+    TelemetryService::captureInstallGaps(['../secret'], [], []);
     TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
     TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
     TelemetryService::captureVersionMismatch('7.9.0', 'invalid');
-    Assert::same($suppressed ? 0 : 13, $GLOBALS['telemetryTransportCalls'] - $before);
+    Assert::same($suppressed ? 0 : 14, $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
 $configs->setValue(null, ['sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
@@ -82,6 +85,7 @@ foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $o
     $before = $GLOBALS['telemetryTransportCalls'];
     TelemetryService::captureInstallFailure('schema_import_failed');
     TelemetryService::captureRequirementsFailure(['cURL']);
+    TelemetryService::captureInstallGaps(['Include/Config.php'], [], ['cURL']);
     TelemetryService::captureVersionMismatch('7.9.0', 'upgrade_failed');
     Assert::same($before, $GLOBALS['telemetryTransportCalls']);
     putenv($override);

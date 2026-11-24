@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -15,6 +16,11 @@ $systemService = new SystemService();
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
+
+    // Legacy pages get the same gate ChurchInfoRequiredMiddleware gives the MVC apps.
+    if (AuthenticationManager::getCurrentUser()->isAdmin() && InstallSetupService::needsChurchSetup()) {
+        RedirectUtils::redirect('admin/setup');
+    }
 
     // Boot plugins early so hook listeners are registered before any ORM saves.
     // Legacy pages process form submissions before including Header.php, so without

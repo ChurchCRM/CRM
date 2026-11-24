@@ -73,7 +73,7 @@ const bs4Class = new RegExp(
 );
 const stylePatterns = [
     { re: /(?:^|[}\s,])(?:html|:root|body)\s*(?:,\s*(?:html|:root|body)\s*)*\{[^}]*\bfont-size\s*:/m, what: 'root/body font-size override (Tabler sets it)' },
-    { re: /--tblr-(?:primary|secondary|success|danger|warning|info|font-sans-serif|body-bg|body-color)\s*:/, what: 'Tabler palette/font variable redefined (use data-bs-theme-primary for the accent)' },
+    { re: /--tblr-(?:primary|secondary|success|danger|warning|info|font-sans-serif|body-color)\s*:/, what: 'Tabler palette/font variable redefined (use data-bs-theme-primary for the accent)' },
     { re: /data-bs-theme-base/, what: 'theme-base override (stock Tabler greys)' },
     { re: /\.(?:custom-control(?:-\w+)?|custom-checkbox|form-group|input-group-addon|btn-default|pull-(?:left|right)|panel(?:-\w+)?)(?![\w-])/, what: 'Bootstrap 4 selector' },
 ];

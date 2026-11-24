@@ -36,7 +36,6 @@
  * crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 const MINISTRIES_URL = "/ministries";
@@ -75,7 +74,6 @@ let posMilk = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
 let eventId = 0;
-let originalVersion = "v1";
 let seriesStart = "";
 let seriesEnd = "";
 
@@ -127,10 +125,6 @@ function dbOk(sql, params = []) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -330,10 +324,6 @@ after(() => {
 
 describe("Volunteer v2 — #9714's browser walk-through and the responsive pass", () => {
     before(() => {
-        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi(
@@ -505,7 +495,6 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── 1. the shortest loop, as three different people ───────────────────────
@@ -640,56 +629,6 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             freshMemberLogin();
             cy.visit(DASHBOARD_URL, { failOnStatusCode: false });
             cy.url().should("not.include", "/ministries/dashboard");
-        });
-    });
-
-    // ── 1b. rollout: the member surface in v1 (§3.8) ──────────────────────────
-
-    /**
-     * The seventh switch surface the rollout specs did not reach.
-     * `admin.volunteer-v2.rollout.spec.js` covers the admin menu, the person-view
-     * tab and the legacy editor across all three states, and
-     * `admin.volunteer-v2.event-ministry.spec.js` covers #9713's event-editor
-     * select in `v1` — but #9712's two **member** menu entries are only ever
-     * asserted with V2 on, and they are visible to *every* authenticated user, so
-     * they are the entries most likely to leak in `v1`.
-     */
-    describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704 / #9712)", () => {
-        before(() => {
-            setVersion("v1");
-        });
-
-        after(() => {
-            setVersion("v2");
-        });
-
-        it("shows a volunteer no volunteering navigation at all", () => {
-            freshMemberLogin();
-            cy.visit("/");
-            // Neither the portal's Volunteering entry (#9867) nor any link to the
-            // retired admin URLs.
-            cy.get("a[href$='portal/volunteer/schedule']").should("not.exist");
-            cy.get("a[href$='volunteer/my-schedule']").should("not.exist");
-            cy.get("a[href$='volunteer/opportunities']").should("not.exist");
-            cy.get("a[href$='ministries/dashboard']").should("not.exist");
-        });
-
-        it("does not serve the member pages by URL either", () => {
-            freshMemberLogin();
-            // With the flag on v1 the portal route answers 404 through the portal's
-            // own error page — the page itself never renders.
-            cy.visit(MY_SCHEDULE_URL, { failOnStatusCode: false });
-            cy.get("#volunteer-my-schedule").should("not.exist");
-
-            cy.visit(OPPORTUNITIES_URL, { failOnStatusCode: false });
-            cy.get("#volunteer-opportunities").should("not.exist");
-        });
-
-        it("leaves the legacy V1 person-view tab working for an administrator", () => {
-            freshAdminLogin();
-            cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-            cy.get("#nav-item-volunteer").should("exist");
-            cy.get("#nav-item-volunteer-v2").should("not.exist");
         });
     });
 
@@ -901,10 +840,9 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
              * event: the card footer at `src/event/views/view.php:79` lays
              * Check-in + Deactivate + Edit out in a `d-flex gap-2` that cannot wrap,
              * and the row measures 396 px inside a 360 px viewport. Proven
-             * independent of V2 while building #9714 — it reproduces with
-             * `sVolunteerVersion = v1` on an event carrying **no** volunteer
-             * ministry, so the Volunteers card is neither the cause nor able to fix
-             * it. Seeded events 1-3 hide it because they are all in 2016/2017, where
+             * independent of V2 while building #9714 — it reproduces on an event
+             * carrying **no** volunteer ministry, so the Volunteers card is neither
+             * the cause nor able to fix it. Seeded events 1-3 hide it because they are all in 2016/2017, where
              * `$eventEnded` drops the Check-in button and the remaining two fit.
              *
              * Fixing core markup does not belong in a V2 PR, so what is asserted is
@@ -935,10 +873,10 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             it(`the person view's Volunteer tab fits at ${at}`, () => {
                 cy.viewport(viewport.width, viewport.height);
                 cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-                cy.get("#nav-item-volunteer-v2", { timeout: 20000 })
+                cy.get("#nav-item-volunteer", { timeout: 20000 })
                     .should("exist")
                     .click();
-                cy.get("#volunteer-v2").should("be.visible");
+                cy.get("#volunteer").should("be.visible");
                 assertNoHorizontalOverflow(`person view Volunteer tab @ ${at}`);
             });
         });

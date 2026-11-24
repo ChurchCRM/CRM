@@ -26,7 +26,6 @@
  * Fixtures are removed in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UI9713";
@@ -65,16 +64,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.location("pathname").should("not.match", /\/admin\/$/);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -273,14 +268,12 @@ after(() => {
 
 describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", () => {
     before(() => {
-        setVersion("v2");
         deleteFixtures();
         buildFixtures();
     });
 
     after(() => {
         deleteFixtures();
-        setVersion("v1");
     });
 
     describe("the ministry select on the event editor (§2.16 item 10)", () => {
@@ -391,18 +384,6 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             cy.get("#event-editor-save").click();
             cy.url().should("not.include", "/event/editor");
         });
-
-        it("is not rendered at all while the rollout flag is v1", () => {
-            setVersion("v1");
-            freshAdminLogin();
-            cy.visit(`/event/editor/${plainEventId}`);
-            cy.get('[data-bs-target="#eventAdvancedFields"]', {
-                timeout: 15000,
-            }).click();
-            cy.get("#linkedGroupSelect").should("be.visible");
-            cy.get("#eventMinistryField").should("not.be.visible");
-            setVersion("v2");
-        });
     });
 
     describe("the Volunteers card on the event view (§3.5)", () => {
@@ -425,15 +406,6 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             cy.visit(`/event/view/${plainEventId}`);
             cy.get(".card", { timeout: 15000 }).should("exist");
             cy.get("#event-volunteers-card").should("not.exist");
-        });
-
-        it("is absent while the rollout flag is v1", () => {
-            setVersion("v1");
-            freshAdminLogin();
-            cy.visit(`/event/view/${linkedEventId}`);
-            cy.get(".card", { timeout: 15000 }).should("exist");
-            cy.get("#event-volunteers-card").should("not.exist");
-            setVersion("v2");
         });
     });
 

@@ -274,4 +274,4 @@ if (require.main === module) {
     console.error(`${title(d, date)}; ${d.flagged.length + d.renames.length} flagged`);
 }
 
-module.exports = { diffTerms, suspicions, similar, renderReport, truncateBody, title, searchFragment };
+module.exports = { diffTerms, suspicions, similar, normalize, renderReport, truncateBody, title, searchFragment };

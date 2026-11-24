@@ -33,6 +33,7 @@
  */
 
 import { buildAPIUrl } from "../api-utils";
+import { copyText } from "./copy-to-clipboard";
 
 /** Response shape from /api/people/emails, /api/cart/emails and /api/groups/{id}/emails */
 interface EmailListResponse {
@@ -799,16 +800,10 @@ function ensureModalExists(): void {
   });
 
   // ── Copy handler ──────────────────────────────────────────────────
-  copyBtn.addEventListener("click", () => {
+  copyBtn.addEventListener("click", async () => {
     const csv = currentEmails.join(", ");
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(csv).then(
-        () => showCopyFeedback(true),
-        () => legacyCopy(csv),
-      );
-    } else {
-      legacyCopy(csv);
-    }
+    // Shared helper (#11458): Clipboard API with the execCommand fallback.
+    showCopyFeedback(await copyText(csv));
   });
 
   // ── Open-in-client handler ────────────────────────────────────────
@@ -851,21 +846,6 @@ function showCopyFeedback(success: boolean): void {
     if (label instanceof Text) label.nodeValue = i18next.t("Copy Addresses");
     copyBtn.disabled = false;
   }, 2000);
-}
-
-function legacyCopy(text: string): void {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.className = "position-fixed opacity-0";
-  document.body.appendChild(ta);
-  ta.select();
-  try {
-    const ok = document.execCommand("copy");
-    showCopyFeedback(ok);
-  } catch {
-    showCopyFeedback(false);
-  }
-  document.body.removeChild(ta);
 }
 
 // ─────────────────────────────────────────────

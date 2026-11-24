@@ -5,7 +5,9 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyCustomMasterTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyCustomTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PersonCustomMasterTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PersonCustomTableMap;
 use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
@@ -41,6 +43,15 @@ class CustomFieldDefinitionService
     /**
      * Swaps a field with the one directly above ('up') or below ('down') it.
      *
+     * The definition row is re-read under a write lock inside the transaction:
+     * the object passed in may have been fetched before a concurrent move
+     * changed its order, and the neighbour lookup must use the current order,
+     * not the stale in-memory one. Propel's instance pool would hand the
+     * locked re-read back as the object already in memory without hydrating
+     * it, so the definition is dropped from the pool first. Locking both
+     * rows serializes concurrent moves on the same pair, so two swaps cannot
+     * interleave and duplicate an order (#11602).
+     *
      * @return bool false when no field sits in that direction
      */
     public function move(PersonCustomMaster|FamilyCustomMaster $definition, string $direction): bool
@@ -49,23 +60,46 @@ class CustomFieldDefinitionService
             throw new \InvalidArgumentException('Direction must be "up" or "down"');
         }
 
-        $order = (int) $definition->getOrder();
-        $neighbourOrder = $direction === 'up' ? $order - 1 : $order + 1;
-        $neighbour = $this->createQuery($definition)->filterByOrder($neighbourOrder)->findOne();
-        if ($neighbour === null) {
-            return false;
-        }
-
         $connection = Propel::getWriteConnection($this->valuesTableMap($definition)::DATABASE_NAME);
         $connection->beginTransaction();
         try {
+            // Drop the definition from Propel's instance pool first: without
+            // this, the locked re-read below returns the pooled object as-is
+            // and getOrder() still reports the order from before the lock.
+            $this->definitionTableMap($definition)::removeInstanceFromPool($definition);
+            $current = $this->createQuery($definition)
+                ->filterByPrimaryKey($definition->getPrimaryKey())
+                ->lockForUpdate()
+                ->findOne($connection);
+            if ($current === null) {
+                $connection->rollBack();
+
+                return false;
+            }
+
+            $order = (int) $current->getOrder();
+            $neighbourOrder = $direction === 'up' ? $order - 1 : $order + 1;
+            $neighbour = $this->createQuery($definition)
+                ->filterByOrder($neighbourOrder)
+                ->lockForUpdate()
+                ->findOne($connection);
+            if ($neighbour === null) {
+                $connection->rollBack();
+
+                return false;
+            }
+
             $neighbour->setOrder($order)->save($connection);
-            $definition->setOrder($neighbourOrder)->save($connection);
+            $current->setOrder($neighbourOrder)->save($connection);
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
             throw $e;
         }
+
+        // Keep the object the caller holds in step with the row just moved,
+        // as the previous implementation did by saving through it.
+        $definition->setOrder($neighbourOrder);
 
         return true;
     }
@@ -90,7 +124,27 @@ class CustomFieldDefinitionService
         // definition in place rather than a column of values no definition points to.
         $tableMap = $this->valuesTableMap($definition);
         $connection = Propel::getWriteConnection($tableMap::DATABASE_NAME);
-        $connection->exec('ALTER TABLE `' . $tableMap::TABLE_NAME . '` DROP IF EXISTS `' . $column . '`'); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        // `DROP ... IF EXISTS` for a column is MariaDB-only syntax: MySQL rejects it
+        // with a 1064 syntax error (nightly run 44435504066, both MySQL regression
+        // jobs; the MariaDB jobs passed). Check information_schema first, then issue
+        // a plain DROP COLUMN, which both servers accept. The table name is a class
+        // constant and $column is validated against /^c\d+$/ above.
+        $tableExists = (int) $connection->query(
+            "SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" . $tableMap::TABLE_NAME . "'" // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        )->fetchColumn();
+        if ($tableExists === 0) {
+            // A missing value table is a failure, not an already-dropped column:
+            // throwing here leaves the definition in place (the DROP-first ordering
+            // above), instead of silently deleting a definition whose values were
+            // never dropped. A missing column on an existing table stays a no-op.
+            throw new \RuntimeException('Custom field value table does not exist: ' . $tableMap::TABLE_NAME);
+        }
+        $columnExists = (int) $connection->query(
+            "SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" . $tableMap::TABLE_NAME . "' AND COLUMN_NAME = '" . $column . "'" // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        )->fetchColumn();
+        if ($columnExists > 0) {
+            $connection->exec('ALTER TABLE `' . $tableMap::TABLE_NAME . '` DROP COLUMN `' . $column . '`'); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+        }
 
         $order = (int) $definition->getOrder();
         $definition->delete($connection);
@@ -109,6 +163,14 @@ class CustomFieldDefinitionService
         return $definition instanceof PersonCustomMaster
             ? PersonCustomMasterQuery::create()
             : FamilyCustomMasterQuery::create();
+    }
+
+    /**
+     * @return class-string<PersonCustomMasterTableMap|FamilyCustomMasterTableMap>
+     */
+    private function definitionTableMap(PersonCustomMaster|FamilyCustomMaster $definition): string
+    {
+        return $definition instanceof PersonCustomMaster ? PersonCustomMasterTableMap::class : FamilyCustomMasterTableMap::class;
     }
 
     /**

@@ -42,7 +42,6 @@ const CHURCH_CALENDAR = { type: "calendar", id: 1 };
 let savedCalendars;
 
 /** Stashed in `before` and restored in `after` — see the comment there. */
-let originalVolunteerVersion = "v1";
 
 /*
  * NOTE: every x-api-key request below replaces the browser session cookie with
@@ -142,26 +141,10 @@ describe("Admin → Member Portal page", () => {
         });
     });
 
-    before(() => {
-        // Two tests below switch the volunteer rollout flag to `v2` to make the
-        // volunteering card real. Left on, it retires the V1 opportunity editor by
-        // design (#9704), and `admin.people` and
-        // `admin.volunteer-opportunity-editor` then fail later in the suite looking
-        // for a page that quietly redirected away. Stash it and put it back (#9869).
-        cy.request({
-            url: "/admin/api/system/config/sVolunteerVersion",
-            headers: { "x-api-key": adminKey() },
-            failOnStatusCode: false,
-        }).then((resp) => {
-            originalVolunteerVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-    });
-
     after(() => {
         activateTheme("default");
         setConfig("bPortalDeveloperMode", "0");
         setConfig("bPortalShowVolunteer", "1");
-        setConfig("sVolunteerVersion", originalVolunteerVersion);
         cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
         for (const [name] of PORTAL_SWITCHES) {
             cy.restoreSystemConfig(name, savedSwitches[name]);
@@ -221,7 +204,7 @@ describe("Admin → Member Portal page", () => {
         });
 
         it("Is reachable from the Admin menu", () => {
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.get('a[href$="/admin/member-portal"]').should("exist");
         });
 
@@ -364,8 +347,6 @@ describe("Admin → Member Portal page", () => {
 
         it("Sharing no calendar hides the calendar card in the portal", () => {
             activateTheme("default");
-            // The volunteering card needs the V2 rollout flag on as well as its own switch.
-            setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "1");
             cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
             loginAsMember();
@@ -380,7 +361,6 @@ describe("Admin → Member Portal page", () => {
         it("Turning the volunteering section off hides its card in the portal", () => {
             activateTheme("default");
             cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
-            setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "0");
             loginAsMember();
             cy.get("#portal-volunteering-card").should("not.exist");

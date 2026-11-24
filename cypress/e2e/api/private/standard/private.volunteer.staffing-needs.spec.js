@@ -35,7 +35,6 @@
  * `after` because an `after` hook does not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 
@@ -51,16 +50,11 @@ let posHelper = 0;
 let posSpare = 0;
 /** A position of the OTHER ministry — the §2.10 "different ministry" rejection. */
 let posForeign = 0;
-let originalVersion = "v1";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -188,11 +182,6 @@ after(() => {
 
 describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
         createWednesdayEvents();
 
@@ -235,7 +224,6 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── the schedule's plan ────────────────────────────────────────────────

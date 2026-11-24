@@ -249,7 +249,6 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
     const seen = {};
     let authorSession = null;
     let formerCount = 0;
-    let volunteerVersion = "v1";
 
     const admin = (method, url, body = null, status = 200) => {
         cy.clearCookies();
@@ -323,10 +322,6 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
         config("iMemberSignInFormerAccounts").then((value) => {
             formerCount = Number(value || 0);
         });
-        config("sVolunteerVersion").then((value) => {
-            volunteerVersion = value || "v1";
-        });
-        setConfig("sVolunteerVersion", "v2");
         addPerson("author");
         addPerson("subject");
         cy.then(() =>
@@ -478,7 +473,6 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
         db(`DELETE FROM user_usr WHERE usr_per_ID IN (${people.map(() => "?").join(",")})`, people);
         cy.cleanupPeople(people);
         setConfig("iMemberSignInFormerAccounts", String(formerCount));
-        setConfig("sVolunteerVersion", volunteerVersion);
     });
 
     it("removes the account and nothing that names it", () => {

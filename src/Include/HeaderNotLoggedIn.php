@@ -15,12 +15,13 @@ PluginManager::init($pluginsPath);
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
+<html data-theme-mode="auto"<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="<?= SystemURLs::assetVersioned('/skin/v2/theme.min.js') ?>"></script>
 
     <?php require __DIR__ . '/partials/head-assets.php'; ?>
 

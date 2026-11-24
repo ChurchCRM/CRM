@@ -43,6 +43,7 @@ const pageCount = (pdf) => Number(/\/Type \/Pages[\s\S]*?\/Count (\d+)/.exec(pdf
 describe("Directory report - page layout (#8958)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
+        cy.clearDirectoryReportPrefs();
     });
 
     it("offers a Page Layout choice with single pages selected by default", () => {

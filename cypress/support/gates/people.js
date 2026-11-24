@@ -52,6 +52,7 @@ export const SIGN_IN_EMAIL_GATES = [
 
 export const RECORD_GATES = [
     recordRow("person-photo-upload-api", "POST", "/api/person/2/photo", "edit"),
+    recordRow("why-came-api", "POST", "/api/person/2/why-came", "edit"),
     recordRow("person-activate-api", "POST", "/api/person/2/activate/false", "edit"),
     recordRow("person-role-api", "POST", "/api/person/2/role/1", "edit"),
     recordRow("person-approve-review-api", "POST", "/api/person/2/approve-review", "edit"),
