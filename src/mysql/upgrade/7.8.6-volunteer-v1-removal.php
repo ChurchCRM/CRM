@@ -30,6 +30,22 @@ SystemConfig::init(ConfigQuery::create()->find());
 $logger = LoggerUtils::getAppLogger();
 $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
 
+// usr_IsOwner joins the User model with the 7.8.8 role tables (#11918), but the
+// "current" step that adds the column runs AFTER this one, and the model already
+// selects the column in every User query. On a multi-version upgrade (7.8.5 or
+// older straight to 7.8.8) the admin lookup below therefore fails with
+// "Unknown column 'usr_IsOwner'", the conversion rolls back, and the V1 tables
+// are kept with no ministry created (nightly run 45325481673, all four 6.0.0
+// upgrade jobs). Add the column here if it is missing, using the same column
+// definition as 7.8.8-role-tables.sql; that script's guarded ALTER is then a
+// no-op when the current step runs.
+$isOwnerExists = (int) $connection->query(
+    "SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_usr' AND COLUMN_NAME = 'usr_IsOwner'"
+)->fetchColumn();
+if ($isOwnerExists === 0) {
+    $connection->exec("ALTER TABLE `user_usr` ADD COLUMN `usr_IsOwner` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_Admin`");
+}
+
 $storedSetting = static fn (string $name): ?string => ConfigQuery::create()->filterByName($name)->findOne($connection)?->getValue();
 $tableExists = static fn (string $table): bool => $connection->query("SHOW TABLES LIKE '" . $table . "'")->fetchColumn() !== false;
 
