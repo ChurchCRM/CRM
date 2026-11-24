@@ -35,7 +35,7 @@ class DashboardLandingService
             $tabs['events'] = ['/event/dashboard', gettext('Events'), 'fa-calendar-days'];
         }
         if ($user->isFinanceEnabled()) {
-            $tabs['finance'] = ['/finance', gettext('Finance'), 'fa-circle-dollar-to-slot'];
+            $tabs['finance'] = ['/finance/', gettext('Finance'), 'fa-circle-dollar-to-slot'];
             $tabs['deposits'] = ['/finance/deposit/search', gettext('Deposits'), 'fa-vault'];
         }
 
