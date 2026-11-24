@@ -187,14 +187,14 @@ class TelemetryService
     private static function normalizePageRoute(string $route, string $rootPath): string
     {
         $path = parse_url($route, PHP_URL_PATH);
-        $route = is_string($path) && $path !== '' ? $path : '/';
+        $route = is_string($path) && $path !== '' ? rawurldecode($path) : '/';
         $rootPath = rtrim($rootPath, '/');
 
         if ($rootPath !== '' && ($route === $rootPath || str_starts_with($route, $rootPath . '/'))) {
             $route = substr($route, strlen($rootPath)) ?: '/';
         }
 
-        return $route;
+        return preg_replace('#(?<=/)[0-9]+(?=/|$)#', '{id}', $route) ?? '/';
     }
 
     public static function captureUpgradeSqlDuration(string $version, int $durationMs, bool $completed): void
@@ -483,7 +483,7 @@ class TelemetryService
             return;
         }
 
-        // Strip query string so no record IDs reach PostHog.
+        // Replace numeric path identifiers and strip query strings before reporting routes.
         $rawUrl = $record->extra['url'] ?? '';
         $route  = $rawUrl !== '' ? self::normalizePageRoute($rawUrl, SystemURLs::getRootPath()) : 'unknown';
 

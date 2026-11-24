@@ -39,14 +39,22 @@ $idPath = sys_get_temp_dir() . '/cypress-telemetry-' . bin2hex(random_bytes(8)) 
 $GLOBALS['captures'] = [];
 TelemetryService::capturePageView('/admin/system/debug');
 $handler = new \ChurchCRM\Logging\PostHogLogHandler();
-$handler->handle(new \Monolog\LogRecord(new \DateTimeImmutable(), 'app', \Monolog\Level::Error, 'Cypress telemetry ' . bin2hex(random_bytes(8))));
+foreach (['/people/person/123?personId=456', '/api/person/%31%32%33/photo/456?token=private'] as $url) {
+    $handler->handle(new \Monolog\LogRecord(new \DateTimeImmutable(), 'app', \Monolog\Level::Error, 'Cypress telemetry ' . bin2hex(random_bytes(8)), extra: ['url' => $url]));
+}
 $capture = new \ReflectionMethod(TelemetryService::class, 'capture');
 $send = static fn ($event, $properties) => $capture->invoke(null, $event, $properties);
 TelemetryService::syncLifecycle($send);
 TelemetryService::syncLifecycle($send);
 @unlink($idPath);
 echo json_encode($GLOBALS['captures']);`;
-    return cy.exec(`php -r 'eval(base64_decode("${btoa(script)}"));'`).then(({ stdout }) => JSON.parse(stdout));
+    const command = `php -r 'eval(base64_decode("${btoa(script)}"));'`;
+    // CI's host PHP differs from the application runtime in the selected Compose service.
+    return cy.exec(`if [ "$GITHUB_ACTIONS" = "true" ]; then
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml exec -T -w /home/ChurchCRM "webserver-$DEPLOYMENT" ${command}
+    else
+        ${command}
+    fi`).then(({ stdout }) => JSON.parse(stdout));
 }
 
 describe("Admin chooses whether to share page usage", () => {
@@ -103,18 +111,21 @@ describe("Admin chooses whether to share page usage", () => {
                 const message = `Telemetry verification probe ${level}`;
                 const error = new win.Error(message);
                 // Keep the probe stack on an application URL.
-                error.stack = `Error: ${message}\n    at telemetryProbe (${win.location.origin}/skin/v2/debug.min.js:1:1)`;
+                error.stack = `Error: ${message}\n    at telemetryProbe (${win.location.origin}/people/person/%31%32%33:1:1)`;
                 win.onerror(message, win.location.href, 1, 1, error);
             });
             cy.wrap(null, { timeout: 15000 }).should(() => {
                 const exception = events.find((event) => event.event === "$exception");
                 expect(exception, `browser exception at ${level}`).to.exist;
                 expect(exception.properties).to.include.keys("crm_version", "php_version", "database_version", "locale", "install_path_type");
+                expect(exception.properties.$exception_list[0].stacktrace.frames[0].filename).to.eq("/people/person/{id}");
                 expect(events.map((event) => event.event)).not.to.include("$web_vitals");
                 expect(scripts.some((url) => url.includes("web-vitals"))).to.eq(false);
             });
             serverCaptures(level).then((captures) => {
-                expect(captures.map((capture) => capture.event)).to.deep.eq(level === "full" ? ["page_view", "log_error", "heartbeat"] : ["log_error", "heartbeat"]);
+                expect(captures.filter((capture) => capture.event === "log_error").map((capture) => capture.properties.route))
+                    .to.deep.eq(["/people/person/{id}", "/api/person/{id}/photo/{id}"]);
+                expect(captures.map((capture) => capture.event)).to.deep.eq(level === "full" ? ["page_view", "log_error", "log_error", "heartbeat"] : ["log_error", "log_error", "heartbeat"]);
             });
         };
         cy.on("window:before:load", (win) => {

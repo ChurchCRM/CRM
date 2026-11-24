@@ -37,7 +37,9 @@ function stripUrlDetails(value) {
 // Stack frames and messages carry this installation's address; replace it wherever it appears.
 function scrubHost(value, replacements) {
   if (typeof value === "string") {
-    return replacements.reduce((text, [needle, replacement]) => text.split(needle).join(replacement), value);
+    return replacements
+      .reduce((text, [needle, replacement]) => text.split(needle).join(replacement), value)
+      .replace(/\/(?:\d|%3\d)+(?=\/|[?#\s):]|$)/gi, "/{id}");
   }
   if (Array.isArray(value)) {
     return value.map((item) => scrubHost(item, replacements));
