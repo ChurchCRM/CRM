@@ -28247,3 +28247,155 @@ msgstr "I-verify ngayon"
 msgid "View Giving History"
 msgstr "Tingnan ang Kasaysayan ng Pagbibigay"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d tao ang matagumpay na naidagdag; %d tao ang hindi naidagdag at nananatili sa listahan."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d tao ang hindi naidagdag at nananatili sa iyong listahan."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Makikita ng mga tagapangasiwa ang babalang ito sa bawat pahina hanggang mailipat ang database sa isang bersyon na nakakatanggap pa ng mga ayos sa seguridad. Pinakamadali ang paglipat ngayon, habang kaunti pa ang data."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Mula ngayon, magsa-sign in ang mga tagapangasiwa sa karaniwang dashboard. Hindi na muling magbubukas ang Dashboard ng Setup sa pag-sign in."
+
+#: 
+msgid "Database security risk"
+msgstr "Panganib sa seguridad ng database"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Ina-on din ng demo mode ang mga estadistika ng paggamit na anonimo (PostHog), para makita namin kung paano ginagalugad ng mga tao ang ChurchCRM. Ino-off ito ng Magsimulang Muli."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Na-save ang mga setting ng email. Naka-on na ngayon ang pag-sign in ng miyembro, kaya maaaring mag-sign in ang mga miyembro sa Portal ng Miyembro gamit ang kanilang email."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Ilagay ang impormasyon ng iyong simbahan, idagdag ang iyong mga tao, at imbitahan ang iyong pangkat."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Lahat ng narito ay sample na data. Magsimulang muli bago mo ilagay ang tunay na impormasyon ng iyong simbahan."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Lahat ng narito ay sample na data. Kapag handa ka nang gamitin ang ChurchCRM para sa iyong simbahan, magsimulang muli: binubura nito ang demo data at bawat setting para makapagsimula ka sa sarili mo."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Galugarin ang ChurchCRM gamit ang demo data, o i-setup ito para sa iyong simbahan"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Nabigong idagdag ang tao sa grupo"
+
+#: 
+msgid "Finish setup"
+msgstr "Tapusin ang setup"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Sa ganitong karaming araw pagkatapos ng pag-install, nagsa-sign in ang mga tagapangasiwa sa Dashboard ng Setup. Itakda sa 0 para i-off ito."
+
+#: 
+msgid "Group Assignment"
+msgstr "Pagtatalaga sa Grupo"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Internal: pinili ng isang tagapangasiwa ang Tapusin ang setup sa Dashboard ng Setup. Huwag i-edit nang manu-mano."
+
+#: 
+msgid "Keep exploring"
+msgstr "Magpatuloy sa paggalugad"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Lilipat mula sa ibang server ng ChurchCRM? I-restore ang backup na ginawa doon. Pinapalitan nito ang lahat sa install na ito."
+
+#: 
+msgid "Ready for your church"
+msgstr "Handa para sa iyong simbahan"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Subukan Muli ang Pagtatalaga sa Grupo"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Subukan muli ang mga pagtatalaga sa grupo"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Pumili ng isa o higit pang grupo para sa taong ito."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Piliin ang mga grupong gusto mong subukan muli."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "I-setup ang Iyong Simbahan"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dashboard ng Setup"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Mga Araw ng Dashboard ng Setup"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Ang Magsimulang Muli sa demo banner, o I-reset ang Database sa Dashboard ng Admin, ay nagbubura ng demo data at bawat setting at nagbabalik ng ChurchCRM sa isang bagong install."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Magsimulang muli muna, pagkatapos ay i-setup ang ChurchCRM gamit ang sarili mong impormasyon ng simbahan."
+
+#: 
+msgid "Start setup"
+msgstr "Simulan ang setup"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Wala na ang demo data. Mag-sign in gamit ang default na account ng tagapangasiwa para i-setup ang iyong simbahan."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Na-save ang tao, ngunit nabigo ang isa o higit pang pagtatalaga sa grupo. Piliin ang mga grupo sa ibaba at subukan muli."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Na-save ang tao, ngunit nabigo ang isa o higit pang pagtatalaga sa grupo. Napili na ang mga hindi matagumpay na grupo sa ibaba. Suriin ang mga ito at i-save muli para subukan muli."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Binubura nito ang demo data at bawat setting, at ibinabalik ang ChurchCRM sa isang bagong install."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Magsa-sign in ka muli gamit ang default na account ng tagapangasiwa at ilalagay ang impormasyon ng iyong simbahan."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Ginagalugad mo ang ChurchCRM gamit ang demo data."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Ginagalugad mo ang demo data"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Na-save ang impormasyon ng iyong simbahan. Gawin ang mga hakbang sa ibaba."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ang iyong database (%1$s %2$s) ay isang panganib sa seguridad: hindi na nagbibigay ang vendor nito ng mga ayos sa seguridad para sa bersyong iyon. Patuloy na gumagana ang ChurchCRM, ngunit hilingin sa iyong host na lumipat sa MariaDB %3$s+ o MySQL %4$s+."
+

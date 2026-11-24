@@ -28303,3 +28303,155 @@ msgstr "Ellenőrzés most"
 msgid "View Giving History"
 msgstr "Adományi előzmények megtekintése"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d személy sikeresen hozzáadva; %d személyt nem sikerült hozzáadni, és a kosárban maradnak."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d személyt nem sikerült hozzáadni, és a kosaradban maradnak."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "A rendszergazdák minden oldalon látni fogják ezt a figyelmeztetést, amíg az adatbázist át nem helyezik egy olyan verzióra, amely még kap biztonsági javításokat. Most, amíg kevés az adat, a legegyszerűbb átköltözni."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "A rendszergazdák mostantól a szokásos vezérlőpultra jelentkeznek be. A beállítási vezérlőpult bejelentkezéskor nem nyílik meg újra."
+
+#: 
+msgid "Database security risk"
+msgstr "Adatbázis-biztonsági kockázat"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "A demó mód bekapcsolja az anonim használati statisztikát (PostHog) is, hogy láthassuk, hogyan fedezik fel az emberek a ChurchCRM-et. Az Újrakezdés kikapcsolja azt."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Az e-mail-beállítások mentve. A tagi bejelentkezés most be van kapcsolva, így a tagok az e-mailjükkel bejelentkezhetnek a Tagi portálra."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Adja meg egyháza adatait, vegye fel embereit, és hívja meg csapatát."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Itt minden mintaadat. Kezdjen újra, mielőtt megadná egyháza valódi adatait."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Itt minden mintaadat. Amikor készen áll arra, hogy egyháza számára használja a ChurchCRM-et, kezdjen újra: törli a demóadatokat és minden beállítást, hogy a saját adataival kezdhessen."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Fedezze fel a ChurchCRM-et demóadatokkal, vagy állítsa be egyháza számára"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Nem sikerült a személyt a csoporthoz adni"
+
+#: 
+msgid "Finish setup"
+msgstr "Beállítás befejezése"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "A telepítés után ennyi napig a rendszergazdák a beállítási vezérlőpultra jelentkeznek be. A kikapcsoláshoz állítsa 0-ra."
+
+#: 
+msgid "Group Assignment"
+msgstr "Csoport-hozzárendelés"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Belső: egy rendszergazda a Beállítás befejezése lehetőséget választotta a beállítási vezérlőpulton. Ne szerkessze kézzel."
+
+#: 
+msgid "Keep exploring"
+msgstr "Felfedezés folytatása"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Egy másik ChurchCRM-kiszolgálóról költözik? Állítsa vissza az ott készült biztonsági mentést. Ez mindent lecserél ezen a telepítésen."
+
+#: 
+msgid "Ready for your church"
+msgstr "Készen áll az egyháza számára"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Csoport-hozzárendelés újrapróbálása"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Csoport-hozzárendelések újrapróbálása"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Válasszon egy vagy több csoportot ehhez a személyhez."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Válassza ki azokat a csoportokat, amelyeket újra szeretne próbálni."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Állítsa be egyházát"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Beállítási vezérlőpult"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Beállítási vezérlőpult napjai"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "A demó sávon található Újrakezdés, vagy a Rendszergazda Műszerfalon található Adatbázis visszaállítása törli a demóadatokat és minden beállítást, és visszaállítja a ChurchCRM-et egy új telepítés állapotába."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Először kezdjen újra, majd állítsa be a ChurchCRM-et saját egyházi adataival."
+
+#: 
+msgid "Start setup"
+msgstr "Beállítás indítása"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "A demóadatok törlődtek. Jelentkezzen be az alapértelmezett rendszergazdai fiókkal egyháza beállításához."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "A személy mentve lett, de egy vagy több csoport-hozzárendelés sikertelen volt. Válassza ki az alábbi csoportokat, és próbálja újra."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "A személy mentve lett, de egy vagy több csoport-hozzárendelés sikertelen volt. A sikertelen csoportok alább ki vannak jelölve. Ellenőrizze őket, és mentse újra az újrapróbáláshoz."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Ez törli a demóadatokat és minden beállítást, és visszaállítja a ChurchCRM-et egy új telepítés állapotába."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Újra be kell jelentkeznie az alapértelmezett rendszergazdai fiókkal, és meg kell adnia egyháza adatait."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Demóadatokkal fedezi fel a ChurchCRM-et."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Demóadatokat fedez fel"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Egyháza adatai mentve vannak. Haladjon végig az alábbi lépéseken."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Az Ön adatbázisa (%1$s %2$s) biztonsági kockázatot jelent: szállítója már nem ad ki biztonsági javításokat ahhoz a verzióhoz. A ChurchCRM továbbra is működik, de kérje meg tárhelyszolgáltatóját, hogy térjen át MariaDB %3$s+ vagy MySQL %4$s+ verzióra."
+

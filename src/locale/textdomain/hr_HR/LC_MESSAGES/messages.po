@@ -28280,3 +28280,155 @@ msgstr "Potvrdi sada"
 msgid "View Giving History"
 msgstr "Prikaži povijest darivanja"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Uspješno dodano %d osoba; %d osoba nije bilo moguće dodati i ostaju u košarici."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d osoba nije bilo moguće dodati i ostaju u vašoj košarici."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administratori će vidjeti ovo upozorenje na svakoj stranici dok se baza podataka ne premjesti na verziju koja još uvijek dobiva sigurnosne popravke. Premještanje sada, dok je podataka malo, najlakše je."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administratori će se od sada prijavljivati na standardnu nadzornu ploču. Nadzorna ploča postavljanja više se neće otvarati pri prijavi."
+
+#: 
+msgid "Database security risk"
+msgstr "Sigurnosni rizik baze podataka"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Način demonstracije također uključuje anonimnu statistiku korištenja (PostHog), kako bismo vidjeli kako ljudi istražuju ChurchCRM. Opcija Počnite ispočetka je isključuje."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Postavke e-pošte spremljene. Prijava članova sada je uključena, pa se članovi mogu prijaviti na Portal članova svojom e-poštom."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Unesite informacije o svojoj župi, dodajte svoje ljude i pozovite svoj tim."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Sve ovdje su ogledni podaci. Počnite ispočetka prije nego što unesete stvarne informacije o svojoj župi."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Sve ovdje su ogledni podaci. Kada budete spremni koristiti ChurchCRM za svoju župu, počnite ispočetka: to briše demonstracijske podatke i sve postavke kako biste mogli započeti s vlastitima."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Istražite ChurchCRM s demonstracijskim podacima ili ga postavite za svoju župu"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Dodavanje osobe u skupinu nije uspjelo"
+
+#: 
+msgid "Finish setup"
+msgstr "Završi postavljanje"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Ovoliko dana nakon instalacije administratori se prijavljuju na Nadzornu ploču postavljanja. Postavite 0 da biste to isključili."
+
+#: 
+msgid "Group Assignment"
+msgstr "Dodjela grupa"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Interno: administrator je odabrao Završi postavljanje na Nadzornoj ploči postavljanja. Nemojte uređivati ručno."
+
+#: 
+msgid "Keep exploring"
+msgstr "Nastavi istraživati"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Selite se s drugog ChurchCRM poslužitelja? Obnovite sigurnosnu kopiju napravljenu tamo. To zamjenjuje sve na ovoj instalaciji."
+
+#: 
+msgid "Ready for your church"
+msgstr "Spremno za vašu župu"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Ponovno pokušaj dodjelu grupa"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Ponovno pokušaj dodjele grupa"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Odaberite jednu ili više skupina za ovu osobu."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Odaberite skupine koje želite ponovno pokušati."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Postavite svoju župu"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Nadzorna ploča postavljanja"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Dani nadzorne ploče postavljanja"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Opcija Počnite ispočetka na demonstracijskoj traci ili Resetiraj bazu podataka na Administratorskoj nadzornoj ploči briše demonstracijske podatke i sve postavke te vraća ChurchCRM na novu instalaciju."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Prvo počnite ispočetka, a zatim postavite ChurchCRM s informacijama o vlastitoj župi."
+
+#: 
+msgid "Start setup"
+msgstr "Započni postavljanje"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Demonstracijski podaci su nestali. Prijavite se zadanim administratorskim računom kako biste postavili svoju župu."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Osoba je spremljena, ali jedna ili više dodjela grupa nije uspjela. Odaberite skupine u nastavku i pokušajte ponovno."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Osoba je spremljena, ali jedna ili više dodjela grupa nije uspjela. Neuspješne skupine odabrane su u nastavku. Pregledajte ih i ponovno spremite za novi pokušaj."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "To briše demonstracijske podatke i sve postavke te vraća ChurchCRM na novu instalaciju."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Ponovno ćete se prijaviti zadanim administratorskim računom i unijeti informacije o svojoj župi."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Istražujete ChurchCRM s demonstracijskim podacima."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Istražujete demonstracijske podatke"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informacije o vašoj župi su spremljene. Prođite korake u nastavku."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaša baza podataka (%1$s %2$s) predstavlja sigurnosni rizik: njezin dobavljač više ne isporučuje sigurnosne popravke za tu verziju. ChurchCRM nastavlja raditi, ali zamolite svog davatelja usluge hostinga da prijeđe na MariaDB %3$s+ ili MySQL %4$s+."
+

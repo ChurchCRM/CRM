@@ -28258,3 +28258,155 @@ msgstr "ఇప్పుడు ధృవీకరించండి"
 msgid "View Giving History"
 msgstr "దానం చరిత్రను వీక్షించండి"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d మంది విజయవంతంగా జోడించబడ్డారు; %d మందిని జోడించలేకపోయారు మరియు వారు కార్ట్‌లోనే ఉన్నారు."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d మందిని జోడించలేకపోయారు మరియు వారు మీ కార్ట్‌లో ఉన్నారు."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "డేటాబేస్ ఇప్పటికీ భద్రతా పరిష్కారాలు పొందే సంస్కరణకు తరలించబడే వరకు నిర్వాహకులు ప్రతి పేజీలో ఈ హెచ్చరికను చూస్తారు. డేటా తక్కువగా ఉన్న ఇప్పుడు తరలించడం సులభం."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "ఇకపై నిర్వాహకులు ప్రామాణిక డ్యాష్‌బోర్డ్‌కు సైన్ ఇన్ చేస్తారు. సెటప్ డ్యాష్‌బోర్డ్ సైన్ ఇన్ సమయంలో మళ్లీ తెరవబడదు."
+
+#: 
+msgid "Database security risk"
+msgstr "డేటాబేస్ భద్రతా ప్రమాదం"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "డెమో మోడ్ అనామక వినియోగ గణాంకాలను (PostHog) కూడా ఆన్ చేస్తుంది, తద్వారా ప్రజలు ChurchCRM ను ఎలా అన్వేషిస్తున్నారో మేము చూడగలము. 'కొత్తగా ప్రారంభించు' దానిని ఆఫ్ చేస్తుంది."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "ఇమెయిల్ సెట్టింగ్‌లు సేవ్ చేయబడ్డాయి. సభ్యుల సైన్-ఇన్ ఇప్పుడు ఆన్‌లో ఉంది, కాబట్టి సభ్యులు వారి ఇమెయిల్‌తో సభ్య పోర్టల్‌కు సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "మీ చర్చి సమాచారాన్ని నమోదు చేయండి, మీ ప్రజలను జోడించండి మరియు మీ బృందాన్ని ఆహ్వానించండి."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "ఇక్కడ ఉన్నదంతా నమూనా డేటా. మీ చర్చి యొక్క నిజమైన సమాచారాన్ని నమోదు చేసే ముందు కొత్తగా ప్రారంభించండి."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "ఇక్కడ ఉన్నదంతా నమూనా డేటా. మీ చర్చి కోసం ChurchCRM ను ఉపయోగించడానికి మీరు సిద్ధంగా ఉన్నప్పుడు, కొత్తగా ప్రారంభించండి: ఇది డెమో డేటా మరియు ప్రతి సెట్టింగ్‌ను తొలగించి, మీ స్వంత దానితో ప్రారంభించడానికి మిమ్మల్ని అనుమతిస్తుంది."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "డెమో డేటాతో ChurchCRM ను అన్వేషించండి, లేదా మీ చర్చి కోసం దానిని సెటప్ చేయండి"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "వ్యక్తిని సమూహానికి జోడించడం విఫలమైంది"
+
+#: 
+msgid "Finish setup"
+msgstr "సెటప్ పూర్తి చేయండి"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "ఇన్‌స్టాలేషన్ తర్వాత ఇన్ని రోజుల పాటు, నిర్వాహకులు సెటప్ డ్యాష్‌బోర్డ్‌కు సైన్ ఇన్ చేస్తారు. ఆఫ్ చేయడానికి 0 కు సెట్ చేయండి."
+
+#: 
+msgid "Group Assignment"
+msgstr "సమూహ కేటాయింపు"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "అంతర్గత: ఒక నిర్వాహకుడు సెటప్ డ్యాష్‌బోర్డ్‌లో 'సెటప్ పూర్తి చేయండి'ని ఎంచుకున్నాడు. మాన్యువల్‌గా సవరించవద్దు."
+
+#: 
+msgid "Keep exploring"
+msgstr "అన్వేషణ కొనసాగించండి"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "మరొక ChurchCRM సర్వర్ నుండి తరలిస్తున్నారా? అక్కడ చేసిన బ్యాకప్‌ను పునరుద్ధరించండి. ఇది ఈ ఇన్‌స్టాల్‌లోని అన్నింటినీ భర్తీ చేస్తుంది."
+
+#: 
+msgid "Ready for your church"
+msgstr "మీ చర్చి కోసం సిద్ధంగా ఉంది"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "సమూహ కేటాయింపును మళ్లీ ప్రయత్నించండి"
+
+#: 
+msgid "Retry group assignments"
+msgstr "సమూహ కేటాయింపులను మళ్లీ ప్రయత్నించండి"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "ఈ వ్యక్తి కోసం ఒకటి లేదా అంతకంటే ఎక్కువ సమూహాలను ఎంచుకోండి."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "మీరు మళ్లీ ప్రయత్నించాలనుకుంటున్న సమూహాలను ఎంచుకోండి."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "మీ చర్చిని సెటప్ చేయండి"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "సెటప్ డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "సెటప్ డ్యాష్‌బోర్డ్ రోజులు"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "డెమో బ్యానర్‌పై 'కొత్తగా ప్రారంభించు', లేదా అడ్మిన్ డ్యాష్‌బోర్డ్‌పై 'డేటాబేస్ రీసెట్', డెమో డేటా మరియు ప్రతి సెట్టింగ్‌ను తొలగించి ChurchCRM ను కొత్త ఇన్‌స్టాల్‌కు తిరిగి తీసుకువస్తుంది."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "ముందు కొత్తగా ప్రారంభించండి, ఆపై మీ స్వంత చర్చి సమాచారంతో ChurchCRM ను సెటప్ చేయండి."
+
+#: 
+msgid "Start setup"
+msgstr "సెటప్ ప్రారంభించండి"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "డెమో డేటా పోయింది. మీ చర్చిని సెటప్ చేయడానికి డిఫాల్ట్ నిర్వాహక ఖాతాతో సైన్ ఇన్ చేయండి."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "వ్యక్తి సేవ్ చేయబడ్డాడు, కానీ ఒకటి లేదా అంతకంటే ఎక్కువ సమూహ కేటాయింపులు విఫలమయ్యాయి. దిగువ సమూహాలను ఎంచుకుని మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "వ్యక్తి సేవ్ చేయబడ్డాడు, కానీ ఒకటి లేదా అంతకంటే ఎక్కువ సమూహ కేటాయింపులు విఫలమయ్యాయి. విఫలమైన సమూహాలు దిగువ ఎంచుకోబడ్డాయి. వాటిని సమీక్షించి మళ్లీ ప్రయత్నించడానికి మళ్లీ సేవ్ చేయండి."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "ఇది డెమో డేటా మరియు ప్రతి సెట్టింగ్‌ను తొలగించి ChurchCRM ను కొత్త ఇన్‌స్టాల్‌కు తిరిగి తీసుకువస్తుంది."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "మీరు డిఫాల్ట్ నిర్వాహక ఖాతాతో మళ్లీ సైన్ ఇన్ చేసి మీ చర్చి సమాచారాన్ని నమోదు చేస్తారు."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "మీరు డెమో డేటాతో ChurchCRM ను అన్వేషిస్తున్నారు."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "మీరు డెమో డేటాను అన్వేషిస్తున్నారు"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "మీ చర్చి సమాచారం సేవ్ చేయబడింది. దిగువ దశలను పూర్తి చేయండి."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "మీ డేటాబేస్ (%1$s %2$s) భద్రతా ప్రమాదం: దాని విక్రేత ఆ సంస్కరణ కోసం ఇకపై భద్రతా పరిష్కారాలను అందించదు. ChurchCRM పని చేస్తూనే ఉంటుంది, కానీ MariaDB %3$s+ లేదా MySQL %4$s+ కు తరలించమని మీ హోస్ట్‌ను అడగండి."
+

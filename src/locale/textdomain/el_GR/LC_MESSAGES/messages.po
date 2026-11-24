@@ -28280,3 +28280,155 @@ msgstr "Επαλήθευση τώρα"
 msgid "View Giving History"
 msgstr "Προβολή Ιστορίας Παροχής"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d άτομα προστέθηκαν με επιτυχία· %d άτομα δεν μπόρεσαν να προστεθούν και παραμένουν στο καλάθι."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d άτομα δεν μπόρεσαν να προστεθούν και παραμένουν στο καλάθι σας."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Οι διαχειριστές θα βλέπουν αυτή την προειδοποίηση σε κάθε σελίδα μέχρι η βάση δεδομένων να μεταφερθεί σε μια έκδοση που εξακολουθεί να λαμβάνει διορθώσεις ασφαλείας. Η μεταφορά τώρα, ενώ υπάρχουν λίγα δεδομένα, είναι ευκολότερη."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Οι διαχειριστές θα συνδέονται από εδώ και στο εξής στον τυπικό πίνακα ελέγχου. Ο Πίνακας Ελέγχου Ρύθμισης δεν θα ανοίγει πλέον κατά τη σύνδεση."
+
+#: 
+msgid "Database security risk"
+msgstr "Κίνδυνος ασφάλειας βάσης δεδομένων"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Η λειτουργία επίδειξης ενεργοποιεί επίσης ανώνυμα στατιστικά χρήσης (PostHog), ώστε να μπορούμε να δούμε πώς εξερευνούν οι χρήστες το ChurchCRM. Η Έναρξη από την αρχή το απενεργοποιεί."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Οι ρυθμίσεις email αποθηκεύτηκαν. Η σύνδεση μελών είναι πλέον ενεργή, ώστε τα μέλη να μπορούν να συνδέονται στην Πύλη μελών με το email τους."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Εισαγάγετε τις πληροφορίες της εκκλησίας σας, προσθέστε τα μέλη σας και προσκαλέστε την ομάδα σας."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Όλα εδώ είναι παραδειγματικά δεδομένα. Ξεκινήστε από την αρχή πριν εισαγάγετε τις πραγματικές πληροφορίες της εκκλησίας σας."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Όλα εδώ είναι παραδειγματικά δεδομένα. Όταν είστε έτοιμοι να χρησιμοποιήσετε το ChurchCRM για την εκκλησία σας, ξεκινήστε από την αρχή: διαγράφει τα δεδομένα επίδειξης και κάθε ρύθμιση, ώστε να μπορέσετε να ξεκινήσετε με τα δικά σας."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Εξερευνήστε το ChurchCRM με δεδομένα επίδειξης ή ρυθμίστε το για την εκκλησία σας"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Απέτυχε η προσθήκη ατόμου σε ομάδα"
+
+#: 
+msgid "Finish setup"
+msgstr "Ολοκλήρωση ρύθμισης"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Για τόσες ημέρες μετά την εγκατάσταση, οι διαχειριστές συνδέονται στον Πίνακα Ελέγχου Ρύθμισης. Ορίστε 0 για να το απενεργοποιήσετε."
+
+#: 
+msgid "Group Assignment"
+msgstr "Ανάθεση Ομάδας"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Εσωτερικό: ένας διαχειριστής επέλεξε Ολοκλήρωση ρύθμισης στον Πίνακα Ελέγχου Ρύθμισης. Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Keep exploring"
+msgstr "Συνεχίστε την εξερεύνηση"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Προέρχεστε από άλλον διακομιστή ChurchCRM; Κάντε επαναφορά ενός αντιγράφου ασφαλείας που δημιουργήθηκε εκεί. Αυτό αντικαθιστά τα πάντα σε αυτήν την εγκατάσταση."
+
+#: 
+msgid "Ready for your church"
+msgstr "Έτοιμο για την εκκλησία σας"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Επανάληψη Ανάθεσης Ομάδας"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Επανάληψη αναθέσεων ομάδων"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Επιλέξτε μία ή περισσότερες ομάδες για αυτό το άτομο."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Επιλέξτε τις ομάδες που θέλετε να επαναλάβετε."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Ρυθμίστε την Εκκλησία Σας"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Πίνακας Ελέγχου Ρύθμισης"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Ημέρες Πίνακα Ελέγχου Ρύθμισης"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Η Έναρξη από την αρχή στο μπάνερ της επίδειξης, ή η Επαναφορά Βάσης Δεδομένων στον Πίνακα Ελέγχου Διαχειριστή, διαγράφει τα δεδομένα επίδειξης και κάθε ρύθμιση και επαναφέρει το ChurchCRM σε νέα εγκατάσταση."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Ξεκινήστε πρώτα από την αρχή και μετά ρυθμίστε το ChurchCRM με τις δικές σας πληροφορίες εκκλησίας."
+
+#: 
+msgid "Start setup"
+msgstr "Έναρξη ρύθμισης"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Τα δεδομένα επίδειξης έχουν φύγει. Συνδεθείτε με τον προεπιλεγμένο λογαριασμό διαχειριστή για να ρυθμίσετε την εκκλησία σας."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Το άτομο αποθηκεύτηκε, αλλά μία ή περισσότερες αναθέσεις ομάδων απέτυχαν. Επιλέξτε τις ομάδες παρακάτω και προσπαθήστε ξανά."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Το άτομο αποθηκεύτηκε, αλλά μία ή περισσότερες αναθέσεις ομάδων απέτυχαν. Οι ομάδες που απέτυχαν είναι επιλεγμένες παρακάτω. Ελέγξτε τις και αποθηκεύστε ξανά για να προσπαθήσετε ξανά."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Αυτό διαγράφει τα δεδομένα επίδειξης και κάθε ρύθμιση και επαναφέρει το ChurchCRM σε νέα εγκατάσταση."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Θα συνδεθείτε ξανά με τον προεπιλεγμένο λογαριασμό διαχειριστή και θα εισαγάγετε τις πληροφορίες της εκκλησίας σας."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Εξερευνάτε το ChurchCRM με δεδομένα επίδειξης."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Εξερευνάτε δεδομένα επίδειξης"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Οι πληροφορίες της εκκλησίας σας αποθηκεύτηκαν. Ολοκληρώστε τα παρακάτω βήματα."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Η βάση δεδομένων σας (%1$s %2$s) αποτελεί κίνδυνο ασφάλειας: ο προμηθευτής της δεν παρέχει πλέον διορθώσεις ασφαλείας για αυτή την έκδοση. Το ChurchCRM συνεχίζει να λειτουργεί, αλλά ζητήστε από τον πάροχο φιλοξενίας σας να μεταβεί σε MariaDB %3$s+ ή MySQL %4$s+."
+

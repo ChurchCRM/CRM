@@ -28254,3 +28254,155 @@ msgstr "Xác minh ngay"
 msgid "View Giving History"
 msgstr "Xem Lịch sử Quyên góp"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Đã thêm thành công %d người; %d người không thể thêm và vẫn ở trong giỏ chọn."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d người không thể thêm và vẫn ở trong giỏ chọn của bạn."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Quản trị viên sẽ thấy cảnh báo này trên mọi trang cho đến khi cơ sở dữ liệu được chuyển sang phiên bản vẫn nhận được các bản sửa lỗi bảo mật. Chuyển ngay bây giờ, khi dữ liệu còn ít, là dễ nhất."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Từ nay quản trị viên sẽ đăng nhập vào bảng điều khiển tiêu chuẩn. Bảng điều khiển thiết lập sẽ không mở lại khi đăng nhập nữa."
+
+#: 
+msgid "Database security risk"
+msgstr "Rủi ro bảo mật cơ sở dữ liệu"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Chế độ demo cũng bật thống kê sử dụng ẩn danh (PostHog), để chúng tôi có thể thấy cách mọi người khám phá ChurchCRM. Bắt đầu từ đầu sẽ tắt nó."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Đã lưu cài đặt email. Đăng nhập thành viên hiện đã bật, vì vậy thành viên có thể đăng nhập vào Cổng Hội thánh bằng email của họ."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Nhập thông tin nhà thờ của bạn, thêm mọi người của bạn và mời đội của bạn."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Mọi thứ ở đây đều là dữ liệu mẫu. Hãy bắt đầu từ đầu trước khi nhập thông tin thật của nhà thờ bạn."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Mọi thứ ở đây đều là dữ liệu mẫu. Khi bạn sẵn sàng dùng ChurchCRM cho nhà thờ của mình, hãy bắt đầu từ đầu: thao tác này xóa dữ liệu demo và mọi cài đặt để bạn có thể bắt đầu với dữ liệu của riêng mình."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Khám phá ChurchCRM với dữ liệu demo, hoặc thiết lập cho nhà thờ của bạn"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Không thể thêm người vào Ban/Mục vụ"
+
+#: 
+msgid "Finish setup"
+msgstr "Hoàn tất thiết lập"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Trong số ngày này sau khi cài đặt, quản trị viên đăng nhập vào Bảng điều khiển thiết lập. Đặt thành 0 để tắt."
+
+#: 
+msgid "Group Assignment"
+msgstr "Phân công Ban/Mục vụ"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Nội bộ: quản trị viên đã chọn Hoàn tất thiết lập trên Bảng điều khiển thiết lập. Không tự chỉnh sửa."
+
+#: 
+msgid "Keep exploring"
+msgstr "Tiếp tục khám phá"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Chuyển từ máy chủ ChurchCRM khác? Hãy khôi phục bản sao lưu được tạo ở đó. Thao tác này thay thế mọi thứ trên bản cài đặt này."
+
+#: 
+msgid "Ready for your church"
+msgstr "Sẵn sàng cho nhà thờ của bạn"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Thử lại Phân công Ban/Mục vụ"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Thử lại việc phân công Ban/Mục vụ"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Chọn một hoặc nhiều Ban/Mục vụ cho người này."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Chọn các Ban/Mục vụ bạn muốn thử lại."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Thiết lập nhà thờ của bạn"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Bảng điều khiển thiết lập"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Số ngày Bảng điều khiển thiết lập"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Bắt đầu từ đầu trên biểu ngữ demo, hoặc Đặt lại cơ sở dữ liệu trên Bảng điều khiển quản trị, sẽ xóa dữ liệu demo và mọi cài đặt và đưa ChurchCRM trở về bản cài đặt mới."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Hãy bắt đầu từ đầu trước, sau đó thiết lập ChurchCRM với thông tin nhà thờ của riêng bạn."
+
+#: 
+msgid "Start setup"
+msgstr "Bắt đầu thiết lập"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Dữ liệu demo đã biến mất. Đăng nhập bằng tài khoản quản trị viên mặc định để thiết lập nhà thờ của bạn."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Người đã được lưu, nhưng một hoặc nhiều lần phân công Ban/Mục vụ đã thất bại. Chọn các Ban/Mục vụ bên dưới và thử lại."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Người đã được lưu, nhưng một hoặc nhiều lần phân công Ban/Mục vụ đã thất bại. Các Ban/Mục vụ không thành công đã được chọn bên dưới. Xem lại chúng và lưu lại để thử lại."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Thao tác này xóa dữ liệu demo và mọi cài đặt, và đưa ChurchCRM trở về bản cài đặt mới."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Bạn sẽ đăng nhập lại bằng tài khoản quản trị viên mặc định và nhập thông tin nhà thờ của bạn."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Bạn đang khám phá ChurchCRM với dữ liệu demo."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Bạn đang khám phá dữ liệu demo"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Thông tin nhà thờ của bạn đã được lưu. Hãy thực hiện các bước bên dưới."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Cơ sở dữ liệu của bạn (%1$s %2$s) là rủi ro bảo mật: nhà cung cấp của nó không còn phát hành bản sửa lỗi bảo mật cho phiên bản đó nữa. ChurchCRM vẫn hoạt động, nhưng hãy yêu cầu máy chủ của bạn chuyển sang MariaDB %3$s+ hoặc MySQL %4$s+."
+

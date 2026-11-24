@@ -28300,3 +28300,155 @@ msgstr "Verifica ora"
 msgid "View Giving History"
 msgstr "Visualizza cronologia donazioni"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d persone aggiunte con successo; %d persone non hanno potuto essere aggiunte e restano nel carrello."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d persone non hanno potuto essere aggiunte e restano nel tuo carrello."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Gli amministratori vedranno questo avviso su ogni pagina finché il database non sarà spostato su una versione che riceve ancora correzioni di sicurezza. Farlo ora, finché ci sono pochi dati, è più semplice."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "D'ora in poi gli amministratori accederanno alla dashboard standard. La dashboard di configurazione non si aprirà più all'accesso."
+
+#: 
+msgid "Database security risk"
+msgstr "Rischio per la sicurezza del database"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "La modalità demo attiva anche le statistiche di utilizzo anonime (PostHog), così possiamo vedere come le persone esplorano ChurchCRM. Ricomincia da zero le disattiva."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Impostazioni e-mail salvate. L'accesso dei membri è ora attivo, quindi i membri possono accedere al Portale dei fedeli con la loro e-mail."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Inserisci le informazioni della tua chiesa, aggiungi le tue persone e invita il tuo team."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Qui è tutto costituito da dati di esempio. Ricomincia da zero prima di inserire le informazioni reali della tua chiesa."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Qui è tutto costituito da dati di esempio. Quando sei pronto a usare ChurchCRM per la tua chiesa, ricomincia da zero: cancella i dati demo e ogni impostazione, così puoi iniziare con i tuoi."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Esplora ChurchCRM con i dati demo, oppure configuralo per la tua chiesa"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Impossibile aggiungere la persona al gruppo"
+
+#: 
+msgid "Finish setup"
+msgstr "Completa la configurazione"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Per questo numero di giorni dopo l'installazione, gli amministratori accedono alla dashboard di configurazione. Imposta 0 per disattivarla."
+
+#: 
+msgid "Group Assignment"
+msgstr "Assegnazione ai gruppi"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Interno: un amministratore ha scelto Completa la configurazione nella dashboard di configurazione. Non modificare manualmente."
+
+#: 
+msgid "Keep exploring"
+msgstr "Continua a esplorare"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Stai migrando da un altro server ChurchCRM? Ripristina un backup creato lì. Questo sostituisce tutto in questa installazione."
+
+#: 
+msgid "Ready for your church"
+msgstr "Pronto per la tua chiesa"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Riprova l'assegnazione ai gruppi"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Riprova le assegnazioni ai gruppi"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Seleziona uno o più gruppi per questa persona."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Seleziona i gruppi che vuoi riprovare."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Configura la tua chiesa"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dashboard di configurazione"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Giorni della dashboard di configurazione"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Ricomincia da zero, sul banner demo, o Reimposta database, nella Dashboard Amministratore, cancella i dati demo e ogni impostazione e riporta ChurchCRM a una nuova installazione."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Prima ricomincia da zero, poi configura ChurchCRM con le informazioni della tua chiesa."
+
+#: 
+msgid "Start setup"
+msgstr "Avvia la configurazione"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "I dati demo sono stati eliminati. Accedi con l'account amministratore predefinito per configurare la tua chiesa."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "La persona è stata salvata, ma una o più assegnazioni ai gruppi non sono riuscite. Seleziona i gruppi qui sotto e riprova."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "La persona è stata salvata, ma una o più assegnazioni ai gruppi non sono riuscite. I gruppi non riusciti sono selezionati qui sotto. Controllali e salva di nuovo per riprovare."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Questo cancella i dati demo e ogni impostazione, e riporta ChurchCRM a una nuova installazione."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Accederai di nuovo con l'account amministratore predefinito e inserirai le informazioni della tua chiesa."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Stai esplorando ChurchCRM con i dati demo."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Stai esplorando i dati demo"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Le informazioni della tua chiesa sono state salvate. Segui i passaggi qui sotto."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Il tuo database (%1$s %2$s) è un rischio per la sicurezza: il suo fornitore non rilascia più correzioni di sicurezza per quella versione. ChurchCRM continua a funzionare, ma chiedi al tuo host di passare a MariaDB %3$s+ o MySQL %4$s+."
+
