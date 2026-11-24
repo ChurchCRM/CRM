@@ -28224,3 +28224,155 @@ msgstr "ยืนยันตอนนี้"
 msgid "View Giving History"
 msgstr "ดูประวัติการบริจาค"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "เพิ่ม %d คนสำเร็จ; %d คนไม่สามารถเพิ่มได้และยังคงอยู่ในตะกร้า"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d คนไม่สามารถเพิ่มได้และยังคงอยู่ในตะกร้าของคุณ"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "ผู้ดูแลระบบจะเห็นคำเตือนนี้ในทุกหน้าจนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่ยังได้รับการแก้ไขด้านความปลอดภัย การย้ายตอนนี้ ในขณะที่ข้อมูลยังมีน้อย จะง่ายที่สุด"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "จากนี้ไปผู้ดูแลระบบจะเข้าสู่ระบบไปยังแดชบอร์ดมาตรฐาน แดชบอร์ดการตั้งค่าจะไม่เปิดขึ้นอีกเมื่อเข้าสู่ระบบ"
+
+#: 
+msgid "Database security risk"
+msgstr "ความเสี่ยงด้านความปลอดภัยของฐานข้อมูล"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "โหมดสาธิตยังเปิดสถิติการใช้งานแบบไม่ระบุชื่อ (PostHog) เพื่อให้เราเห็นว่าผู้คนสำรวจ ChurchCRM อย่างไร เริ่มต้นใหม่จะปิดสิ่งนี้"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "บันทึกการตั้งค่าอีเมลแล้ว การเข้าสู่ระบบของสมาชิกเปิดอยู่ตอนนี้ ดังนั้นสมาชิกสามารถเข้าสู่ระบบพอร์ทัลสมาชิกด้วยอีเมลของตนได้"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "ป้อนข้อมูลคริสตจักรของคุณ เพิ่มผู้คนของคุณ และเชิญทีมของคุณ"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "ทุกอย่างที่นี่เป็นข้อมูลตัวอย่าง เริ่มต้นใหม่ก่อนที่คุณจะป้อนข้อมูลจริงของคริสตจักรของคุณ"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "ทุกอย่างที่นี่เป็นข้อมูลตัวอย่าง เมื่อคุณพร้อมที่จะใช้ ChurchCRM สำหรับคริสตจักรของคุณ ให้เริ่มต้นใหม่: จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง เพื่อให้คุณเริ่มต้นด้วยข้อมูลของคุณเอง"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "สำรวจ ChurchCRM ด้วยข้อมูลสาธิต หรือตั้งค่าสำหรับคริสตจักรของคุณ"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "ไม่สามารถเพิ่มบุคคลเข้ากลุ่มได้"
+
+#: 
+msgid "Finish setup"
+msgstr "เสร็จสิ้นการตั้งค่า"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "เป็นเวลาหลายวันนี้หลังจากการติดตั้ง ผู้ดูแลระบบจะเข้าสู่ระบบไปยังแดชบอร์ดการตั้งค่า ตั้งค่าเป็น 0 เพื่อปิด"
+
+#: 
+msgid "Group Assignment"
+msgstr "การมอบหมายกลุ่ม"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "ภายใน: ผู้ดูแลระบบเลือก เสร็จสิ้นการตั้งค่า บนแดชบอร์ดการตั้งค่า อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Keep exploring"
+msgstr "สำรวจต่อไป"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "ย้ายมาจากเซิร์ฟเวอร์ ChurchCRM อื่น? กู้คืนข้อมูลสำรองที่สร้างไว้ที่นั่น การทำเช่นนี้จะแทนที่ทุกอย่างในการติดตั้งนี้"
+
+#: 
+msgid "Ready for your church"
+msgstr "พร้อมสำหรับคริสตจักรของคุณ"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "ลองใหม่ การมอบหมายกลุ่ม"
+
+#: 
+msgid "Retry group assignments"
+msgstr "ลองมอบหมายกลุ่มอีกครั้ง"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "เลือกกลุ่มหนึ่งกลุ่มหรือมากกว่าสำหรับบุคคลนี้"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "เลือกกลุ่มที่คุณต้องการลองใหม่"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "ตั้งค่าคริสตจักรของคุณ"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "แดชบอร์ดการตั้งค่า"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "จำนวนวันของแดชบอร์ดการตั้งค่า"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "เริ่มต้นใหม่บนแบนเนอร์สาธิต หรือ รีเซ็ตฐานข้อมูลบนแดชบอร์ดผู้ดูแลระบบ จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง และทำให้ ChurchCRM กลับไปเป็นการติดตั้งใหม่"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "เริ่มต้นใหม่ก่อน จากนั้นตั้งค่า ChurchCRM ด้วยข้อมูลคริสตจักรของคุณเอง"
+
+#: 
+msgid "Start setup"
+msgstr "เริ่มการตั้งค่า"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "ข้อมูลสาธิตหายไปแล้ว เข้าสู่ระบบด้วยบัญชีผู้ดูแลระบบเริ่มต้นเพื่อตั้งค่าคริสตจักรของคุณ"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "บันทึกบุคคลแล้ว แต่การมอบหมายกลุ่มหนึ่งรายการหรือมากกว่าล้มเหลว เลือกกลุ่มด้านล่างและลองใหม่"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "บันทึกบุคคลแล้ว แต่การมอบหมายกลุ่มหนึ่งรายการหรือมากกว่าล้มเหลว กลุ่มที่ไม่สำเร็จถูกเลือกไว้ด้านล่าง ตรวจสอบและบันทึกอีกครั้งเพื่อลองใหม่"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "การทำเช่นนี้จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง และทำให้ ChurchCRM กลับไปเป็นการติดตั้งใหม่"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "คุณจะเข้าสู่ระบบอีกครั้งด้วยบัญชีผู้ดูแลระบบเริ่มต้นและป้อนข้อมูลคริสตจักรของคุณ"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "คุณกำลังสำรวจ ChurchCRM ด้วยข้อมูลสาธิต"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "คุณกำลังสำรวจข้อมูลสาธิต"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "บันทึกข้อมูลคริสตจักรของคุณแล้ว ทำตามขั้นตอนด้านล่าง"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "ฐานข้อมูลของคุณ (%1$s %2$s) เป็นความเสี่ยงด้านความปลอดภัย: ผู้จำหน่ายไม่ปล่อยการแก้ไขด้านความปลอดภัยสำหรับเวอร์ชันนั้นอีกต่อไป ChurchCRM ยังทำงานต่อไป แต่ขอให้โฮสต์ของคุณย้ายไปยัง MariaDB %3$s+ หรือ MySQL %4$s+"
+

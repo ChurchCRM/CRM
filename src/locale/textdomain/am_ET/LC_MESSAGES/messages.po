@@ -28286,3 +28286,155 @@ msgstr "አሁን ያረጋግጡ"
 msgid "View Giving History"
 msgstr "የለገና ታሪክን ይመልከቱ"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d ሰዎች በተሳካ ሁኔታ ታክለዋል፤ %d ሰዎች ሊታከሉ አልቻሉም እና በጋሪው ውስጥ ይቀራሉ።"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d ሰዎች ሊታከሉ አልቻሉም እና በጋሪዎ ውስጥ ይቀራሉ።"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "አስተዳዳሪዎች ዳታቤዙ አሁንም የደህንነት ጥገናዎችን ወደሚያገኝ ሥሪት እስኪዘዋወር ድረስ ይህን ማስጠንቀቂያ በእያንዳንዱ ገጽ ላይ ያያሉ። አሁን፣ ውሂብ አነስተኛ እያለ፣ መዘዋወር ቀላሉ ነው።"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "አስተዳዳሪዎች ከአሁን ጀምሮ ወደ መደበኛው ዳሽቦርድ ይገባሉ። የማጠናቀቅ ዳሽቦርድ በመግቢያ ላይ እንደገና አይከፈትም።"
+
+#: 
+msgid "Database security risk"
+msgstr "የዳታቤዝ ደህንነት ስጋት"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "የሙከራ ሁነታ ስም የለሽ የአጠቃቀም ስታቲስቲክስ (PostHog) ን ያበራል፣ ስለዚህ ሰዎች ChurchCRM ን እንዴት እንደሚያስሱ ማየት እንችላለን። ተፈላጊ ጀምር ያጠፋዋል።"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "የኢሜይል ቅንብሮች ተቀምጠዋል። የአባላት መግቢያ አሁን በርቷል፣ ስለዚህ አባላት በኢሜይላቸው ወደ የአባላት ፖርታል መግባት ይችላሉ።"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "የቤተ ክርስቲያንዎን መረጃ ያስገቡ፣ ሰዎችዎን ያክሉ እና ቡድንዎን ይጋብዙ።"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "እዚህ ያለው ሁሉ የምሳሌ መረጃ ነው። የእውነተኛ የቤተ ክርስቲያንዎን መረጃ ከማስገባትዎ በፊት እንደገና ይጀምሩ።"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "እዚህ ያለው ሁሉ የምሳሌ መረጃ ነው። ChurchCRM ን ለቤተ ክርስቲያንዎ ለመጠቀም ዝግጁ ሲሆኑ እንደገና ይጀምሩ፦ የሙከራ ውሂቡን እና እያንዳንዱን ቅንብር ይሰርዛል ስለዚህ በራስዎ መጀመር ይችላሉ።"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "ChurchCRM ን በሙከራ ውሂብ ያስሱ፣ ወይም ለቤተ ክርስቲያንዎ ያዘጋጁት"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "ግለሰብን ወደ ቡድን መጨመር አልተሳካም"
+
+#: 
+msgid "Finish setup"
+msgstr "ማጠናቀቅን ጨርስ"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "ከተጫነ በኋላ ለዚህ ያህል ቀናት አስተዳዳሪዎች ወደ የማጠናቀቅ ዳሽቦርድ ይገባሉ። ለማጥፋት ወደ 0 ያዘጋጁ።"
+
+#: 
+msgid "Group Assignment"
+msgstr "የቡድን ምደባ"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "ውስጣዊ፦ አስተዳዳሪ በማጠናቀቅ ዳሽቦርድ ላይ ማጠናቀቅን ጨርስን መርጧል። በእጅ አታርም።"
+
+#: 
+msgid "Keep exploring"
+msgstr "ማሰስዎን ይቀጥሉ"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "ከሌላ የ ChurchCRM አገልጋይ እየተዘዋወሩ ነው? እዚያ የተሰራ ምትክን መልሰህ አግኝ። ይህ በዚህ ጭነት ላይ ያለውን ሁሉ ይተካል።"
+
+#: 
+msgid "Ready for your church"
+msgstr "ለቤተ ክርስቲያንዎ ዝግጁ"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "የቡድን ምደባን እንደገና ሞክር"
+
+#: 
+msgid "Retry group assignments"
+msgstr "የቡድን ምደባዎችን እንደገና ሞክር"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "ለዚህ ግለሰብ አንድ ወይም ከዚያ በላይ ቡድኖችን ይምረጡ።"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "እንደገና መሞከር የሚፈልጉትን ቡድኖች ይምረጡ።"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "ቤተ ክርስቲያንዎን ያዘጋጁ"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "የማጠናቀቅ ዳሽቦርድ"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "የማጠናቀቅ ዳሽቦርድ ቀናት"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "በሙከራ ባነር ላይ ተፈላጊ ጀምር፣ ወይም በአስተዳዳሪ ዳሽቦርድ ላይ የውሂብ ጎታ ዳግም አስጀምር፣ የሙከራ ውሂቡን እና እያንዳንዱን ቅንብር ሰርዞ ChurchCRM ን ወደ አዲስ ጭነት ይመልሳል።"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "በመጀመሪያ እንደገና ይጀምሩ፣ ከዚያ ChurchCRM ን በራስዎ የቤተ ክርስቲያን መረጃ ያዘጋጁ።"
+
+#: 
+msgid "Start setup"
+msgstr "ማጠናቀቅ ጀምር"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "የሙከራ ውሂቡ ጠፍቷል። ቤተ ክርስቲያንዎን ለማዘጋጀት በነባሪ የአስተዳዳሪ መለያ ይግቡ።"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "ግለሰቡ ተቀምጧል፣ ነገር ግን አንድ ወይም ከዚያ በላይ የቡድን ምደባዎች አልተሳኩም። ከታች ያሉትን ቡድኖች ይምረጡ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "ግለሰቡ ተቀምጧል፣ ነገር ግን አንድ ወይም ከዚያ በላይ የቡድን ምደባዎች አልተሳኩም። ያልተሳኩ ቡድኖች ከታች ተመርጠዋል። ይገምግሟቸው እና እንደገና ለመሞከር እንደገና ያስቀምጡ።"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "ይህ የሙከራ ውሂቡን እና እያንዳንዱን ቅንብር ሰርዞ ChurchCRM ን ወደ አዲስ ጭነት ይመልሳል።"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "በነባሪ የአስተዳዳሪ መለያ እንደገና ገብተው የቤተ ክርስቲያንዎን መረጃ ያስገባሉ።"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "ChurchCRM ን በሙከራ ውሂብ እያሰሱ ነው።"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "የሙከራ ውሂብ እያሰሱ ነው"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "የቤተ ክርስቲያንዎ መረጃ ተቀምጧል። ከታች ያሉትን እርምጃዎች ይስሩ።"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "ዳታቤዝዎ (%1$s %2$s) የደህንነት ስጋት ነው፦ አቅራቢው ለዚያ ሥሪት የደህንነት ጥገናዎችን መላክ አቋርጧል። ChurchCRM መሥራቱን ይቀጥላል፣ ነገር ግን አስተናጋጅዎ ወደ MariaDB %3$s+ ወይም MySQL %4$s+ እንዲዘዋወር ይጠይቁት።"
+

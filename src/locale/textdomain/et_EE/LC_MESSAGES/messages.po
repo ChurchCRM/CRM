@@ -28279,3 +28279,155 @@ msgstr "Kinnita kohe"
 msgid "View Giving History"
 msgstr "Vaata annetuste ajalugu"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d inimest lisati edukalt; %d inimest ei saanud lisada ja nad jäävad ostukorvi."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d inimest ei saanud lisada ja nad jäävad sinu ostukorvi."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administraatorid näevad seda hoiatust igal lehel, kuni andmebaas on viidud versioonile, mis saab endiselt turvaparandusi. Praegu, kui andmeid on vähe, on üleviimine kõige lihtsam."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administraatorid logivad edaspidi sisse tavalisele töölauale. Seadistustöölaud ei avane sisselogimisel enam."
+
+#: 
+msgid "Database security risk"
+msgstr "Andmebaasi turvarisk"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Demorežiim lülitab sisse ka anonüümse kasutusstatistika (PostHog), et näeksime, kuidas inimesed ChurchCRM-i avastavad. Alusta puhtalt lülitab selle välja."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "E-posti sätted on salvestatud. Liikmete sisselogimine on nüüd sees, nii et liikmed saavad oma e-postiga Liikmeportaali sisse logida."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Sisesta oma koguduse teave, lisa oma inimesed ja kutsu oma meeskond."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Kõik siin on näidisandmed. Alusta puhtalt, enne kui sisestad oma koguduse tegelikud andmed."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Kõik siin on näidisandmed. Kui oled valmis ChurchCRM-i oma koguduse jaoks kasutama, alusta puhtalt: see kustutab demoandmed ja iga sätte, et saaksid alustada oma andmetega."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Avasta ChurchCRM-i demoandmetega või seadista see oma koguduse jaoks"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Isiku gruppi lisamine ebaõnnestus"
+
+#: 
+msgid "Finish setup"
+msgstr "Lõpeta seadistamine"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Nii mitme päeva jooksul pärast installimist logivad administraatorid sisse Seadistustöölauale. Selle väljalülitamiseks määra väärtuseks 0."
+
+#: 
+msgid "Group Assignment"
+msgstr "Grupi määramine"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Sisemine: administraator valis Seadistustöölaual Lõpeta seadistamine. Ära muuda käsitsi."
+
+#: 
+msgid "Keep exploring"
+msgstr "Jätka avastamist"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Kolid teiselt ChurchCRM-i serverilt? Taasta seal tehtud varukoopia. See asendab kõik selle installi andmed."
+
+#: 
+msgid "Ready for your church"
+msgstr "Sinu koguduse jaoks valmis"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Proovi grupi määramist uuesti"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Proovi grupimääramisi uuesti"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Vali sellele isikule üks või mitu gruppi."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Vali grupid, mille määramist soovid uuesti proovida."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Seadista oma kogudus"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Seadistustöölaud"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Seadistustöölaua päevad"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Alusta puhtalt demoribal või Lähtesta andmebaas Administraatori armatuurlaual kustutab demoandmed ja iga sätte ning taastab ChurchCRM-i uue installina."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Alusta esmalt puhtalt ja seadista seejärel ChurchCRM oma koguduse andmetega."
+
+#: 
+msgid "Start setup"
+msgstr "Alusta seadistamist"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Demoandmed on kadunud. Logi sisse vaikimisi administraatori kontoga, et oma kogudus seadistada."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Isik salvestati, kuid üks või mitu grupimääramist ebaõnnestus. Vali allolevad grupid ja proovi uuesti."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Isik salvestati, kuid üks või mitu grupimääramist ebaõnnestus. Ebaõnnestunud grupid on allpool valitud. Vaata need üle ja salvesta uuesti, et uuesti proovida."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "See kustutab demoandmed ja iga sätte ning taastab ChurchCRM-i uue installina."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Logid uuesti sisse vaikimisi administraatori kontoga ja sisestad oma koguduse teabe."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Avastad ChurchCRM-i demoandmetega."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Avastad demoandmeid"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Sinu koguduse teave on salvestatud. Vaata läbi allolevad sammud."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Sinu andmebaas (%1$s %2$s) on turvarisk: selle tarnija ei väljasta sellele versioonile enam turvaparandusi. ChurchCRM töötab edasi, kuid palu oma hostil minna üle MariaDB %3$s+ või MySQL %4$s+ versioonile."
+

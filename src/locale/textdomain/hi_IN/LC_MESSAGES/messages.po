@@ -28249,3 +28249,155 @@ msgstr "अभी सत्यापित करें"
 msgid "View Giving History"
 msgstr "दान का इतिहास देखें"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d लोग सफलतापूर्वक जोड़े गए; %d लोग जोड़े नहीं जा सके और कार्ट में बने हुए हैं।"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d लोग जोड़े नहीं जा सके और आपके कार्ट में बने हुए हैं।"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "प्रशासक हर पेज पर यह चेतावनी तब तक देखेंगे जब तक डेटाबेस को ऐसे संस्करण पर नहीं ले जाया जाता जिसे अभी भी सुरक्षा सुधार मिलते हैं। अभी स्थानांतरित करना, जब डेटा कम है, सबसे आसान है।"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "प्रशासक अब से मानक डैशबोर्ड में साइन इन करेंगे। सेटअप डैशबोर्ड अब साइन इन पर नहीं खुलेगा।"
+
+#: 
+msgid "Database security risk"
+msgstr "डेटाबेस सुरक्षा जोखिम"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "डेमो मोड गुमनाम उपयोग आँकड़े (PostHog) भी चालू करता है, ताकि हम देख सकें कि लोग ChurchCRM को कैसे खोजते हैं। नई शुरुआत इसे बंद कर देती है।"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "ईमेल सेटिंग्स सहेजी गईं। सदस्य साइन-इन अब चालू है, इसलिए सदस्य अपने ईमेल से सदस्य पोर्टल में साइन इन कर सकते हैं।"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "अपने चर्च की जानकारी दर्ज करें, अपने लोगों को जोड़ें, और अपनी टीम को आमंत्रित करें।"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "यहाँ सब कुछ नमूना डेटा है। अपने चर्च की असली जानकारी दर्ज करने से पहले नई शुरुआत करें।"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "यहाँ सब कुछ नमूना डेटा है। जब आप अपने चर्च के लिए ChurchCRM का उपयोग करने के लिए तैयार हों, तो नई शुरुआत करें: यह डेमो डेटा और हर सेटिंग मिटा देता है ताकि आप अपने डेटा के साथ शुरुआत कर सकें।"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "डेमो डेटा के साथ ChurchCRM को खोजें, या इसे अपने चर्च के लिए सेट अप करें"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "व्यक्ति को समूह में जोड़ना विफल रहा"
+
+#: 
+msgid "Finish setup"
+msgstr "सेटअप समाप्त करें"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "स्थापना के बाद इतने दिनों तक, प्रशासक सेटअप डैशबोर्ड में साइन इन करते हैं। इसे बंद करने के लिए 0 पर सेट करें।"
+
+#: 
+msgid "Group Assignment"
+msgstr "समूह असाइनमेंट"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "आंतरिक: एक प्रशासक ने सेटअप डैशबोर्ड पर सेटअप समाप्त करें चुना। मैन्युअल रूप से संपादित न करें।"
+
+#: 
+msgid "Keep exploring"
+msgstr "खोजते रहें"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "किसी अन्य ChurchCRM सर्वर से स्थानांतरित हो रहे हैं? वहाँ बनाए गए बैकअप को पुनर्स्थापित करें। यह इस स्थापना पर सब कुछ बदल देता है।"
+
+#: 
+msgid "Ready for your church"
+msgstr "आपके चर्च के लिए तैयार"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "समूह असाइनमेंट पुनः प्रयास"
+
+#: 
+msgid "Retry group assignments"
+msgstr "समूह असाइनमेंट पुनः प्रयास करें"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "इस व्यक्ति के लिए एक या अधिक समूह चुनें।"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "वे समूह चुनें जिन्हें आप पुनः प्रयास करना चाहते हैं।"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "अपना चर्च सेट अप करें"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "सेटअप डैशबोर्ड"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "सेटअप डैशबोर्ड दिन"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "डेमो बैनर पर नई शुरुआत, या एडमिन डैशबोर्ड पर डेटाबेस रीसेट करें, डेमो डेटा और हर सेटिंग मिटा देता है और ChurchCRM को नई स्थापना पर लौटा देता है।"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "पहले नई शुरुआत करें, फिर ChurchCRM को अपने चर्च की जानकारी के साथ सेट अप करें।"
+
+#: 
+msgid "Start setup"
+msgstr "सेटअप शुरू करें"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "डेमो डेटा चला गया है। अपने चर्च को सेट अप करने के लिए डिफ़ॉल्ट प्रशासक खाते से साइन इन करें।"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "व्यक्ति सहेजा गया, लेकिन एक या अधिक समूह असाइनमेंट विफल रहे। नीचे समूह चुनें और पुनः प्रयास करें।"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "व्यक्ति सहेजा गया, लेकिन एक या अधिक समूह असाइनमेंट विफल रहे। असफल समूह नीचे चुने गए हैं। उनकी समीक्षा करें और पुनः प्रयास करने के लिए फिर से सहेजें।"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "यह डेमो डेटा और हर सेटिंग मिटा देता है, और ChurchCRM को नई स्थापना पर लौटा देता है।"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "आप डिफ़ॉल्ट प्रशासक खाते से फिर से साइन इन करेंगे और अपने चर्च की जानकारी दर्ज करेंगे।"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "आप डेमो डेटा के साथ ChurchCRM को खोज रहे हैं।"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "आप डेमो डेटा खोज रहे हैं"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "आपके चर्च की जानकारी सहेजी गई है। नीचे दिए गए चरणों को पूरा करें।"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "आपका डेटाबेस (%1$s %2$s) एक सुरक्षा जोखिम है: इसका विक्रेता अब उस संस्करण के लिए सुरक्षा सुधार जारी नहीं करता। ChurchCRM काम करता रहता है, लेकिन अपने होस्ट से MariaDB %3$s+ या MySQL %4$s+ पर जाने के लिए कहें।"
+

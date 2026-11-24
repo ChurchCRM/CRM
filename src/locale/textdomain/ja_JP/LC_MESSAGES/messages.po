@@ -28212,3 +28212,155 @@ msgstr "今すぐ確認"
 msgid "View Giving History"
 msgstr "献金履歴を表示"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d 人が正常に追加されました。%d 人は追加できず、カートに残っています。"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d 人は追加できず、カートに残っています。"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "データベースが、引き続きセキュリティ修正を受けられるバージョンに移行されるまで、管理者はすべてのページでこの警告を目にします。データが少ない今のうちに移行するのが最も簡単です。"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "今後、管理者は標準のダッシュボードにサインインします。セットアップダッシュボードはサインイン時に開かなくなります。"
+
+#: 
+msgid "Database security risk"
+msgstr "データベースのセキュリティリスク"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "デモモードでは、匿名の利用統計（PostHog）も有効になり、人々が ChurchCRM をどのように探索しているかを確認できます。「最初から始める」でそれが無効になります。"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "メール設定が保存されました。メンバーサインインが有効になったため、メンバーはメールアドレスでメンバーポータルにサインインできます。"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "教会情報を入力し、メンバーを追加して、チームを招待してください。"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "ここにあるのはすべてサンプルデータです。教会の実際の情報を入力する前に、最初から始めてください。"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "ここにあるのはすべてサンプルデータです。教会のために ChurchCRM を使う準備ができたら、最初から始めてください。デモデータとすべての設定が消去され、自分のデータで始められます。"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "デモデータで ChurchCRM を探索するか、教会用にセットアップしましょう"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "グループに個人を追加できませんでした"
+
+#: 
+msgid "Finish setup"
+msgstr "セットアップを完了"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "インストール後この日数の間、管理者はセットアップダッシュボードにサインインします。0 に設定すると無効になります。"
+
+#: 
+msgid "Group Assignment"
+msgstr "グループ割り当て"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "内部用：管理者がセットアップダッシュボードで「セットアップを完了」を選択しました。手動で編集しないでください。"
+
+#: 
+msgid "Keep exploring"
+msgstr "探索を続ける"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "別の ChurchCRM サーバーから移行しますか？そこで作成したバックアップを復元してください。このインストールのすべてが置き換えられます。"
+
+#: 
+msgid "Ready for your church"
+msgstr "教会の準備が整いました"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "グループ割り当てを再試行"
+
+#: 
+msgid "Retry group assignments"
+msgstr "グループ割り当てを再試行"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "この人のグループを 1 つ以上選択してください。"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "再試行するグループを選択してください。"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "教会をセットアップ"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "セットアップダッシュボード"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "セットアップダッシュボードの日数"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "デモバナーの「最初から始める」、または管理ダッシュボードの「データベースをリセット」により、デモデータとすべての設定が消去され、ChurchCRM が新規インストールの状態に戻ります。"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "まず最初から始めて、それから自分の教会情報で ChurchCRM をセットアップしてください。"
+
+#: 
+msgid "Start setup"
+msgstr "セットアップを開始"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "デモデータは消去されました。既定の管理者アカウントでサインインして、教会をセットアップしてください。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "個人は保存されましたが、1 つ以上のグループ割り当てが失敗しました。下のグループを選択して再試行してください。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "個人は保存されましたが、1 つ以上のグループ割り当てが失敗しました。失敗したグループが下に選択されています。確認して再度保存し、再試行してください。"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "これによりデモデータとすべての設定が消去され、ChurchCRM が新規インストールの状態に戻ります。"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "既定の管理者アカウントで再度サインインし、教会情報を入力します。"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "デモデータで ChurchCRM を探索しています。"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "デモデータを探索しています"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "教会情報が保存されました。以下の手順を進めてください。"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "お使いのデータベース（%1$s %2$s）はセキュリティリスクです。そのバージョンに対するセキュリティ修正はベンダーから提供されなくなりました。ChurchCRM は動作し続けますが、MariaDB %3$s 以降または MySQL %4$s 以降への移行をホスティング事業者に依頼してください。"
+
