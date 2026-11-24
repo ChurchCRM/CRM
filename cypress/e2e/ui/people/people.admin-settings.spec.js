@@ -79,27 +79,6 @@ describe("People Settings hub", () => {
             cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
         });
 
-        it("no longer lists the moved settings on the System Settings page", () => {
-            cy.visit("/SystemSettings.php");
-            [
-                "sNewPersonNotificationRecipientIDs",
-                "sGreeterCustomMsg1",
-                "iPersonNameStyle",
-                "bHidePersonAddress",
-                "bHideFriendDate",
-                "bHideWeddingDate",
-                "bForceUppercaseZip",
-                "sDirRoleHead",
-                "sDirClassifications",
-                "sInactiveClassification",
-                "bHideFamilyNewsletter",
-            ].forEach((key) => {
-                cy.get(`[name='new_value[${key}]']`).should("not.exist");
-            });
-            // Not moved yet — still managed here.
-            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("exist");
-        });
-
         it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {
             cy.visit("/admin/people");
             cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
@@ -136,8 +115,6 @@ describe("People Settings hub", () => {
             });
             cy.reload();
             keys.forEach((key) => cy.get(`[name='${key}']`).should("have.value", `Updated ${key}`));
-            cy.visit("/SystemSettings.php");
-            keys.forEach((key) => cy.get(`[name='new_value[${key}]']`).should("not.exist"));
         });
 
         it("auto-saves the default city", () => {

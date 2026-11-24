@@ -17,11 +17,6 @@ class   SystemConfig
      */
     private static ?array $configs = null;
 
-    /**
-     * @var array<string, string[]>
-     */
-    private static ?array $categories = null;
-
     private static function getSupportedLocales(): array
     {
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
@@ -193,7 +188,6 @@ class   SystemConfig
             'sDateFormatNoYear'                    => new ConfigItem('sDateFormatNoYear', 'text', 'm/d'),
             'sDateTimeFormat'                      => new ConfigItem('sDateTimeFormat', 'text', 'm/d/Y g:i a'),
             'sDateFilenameFormat'                  => new ConfigItem('sDateFilenameFormat', 'text', 'Ymd-Gis'),
-            'sDatePickerPlaceHolder'               => new ConfigItem('sDatePickerPlaceHolder', 'text', 'yyyy-mm-dd', gettext('For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.')),
             'sDatePickerFormat'                    => new ConfigItem('sDatePickerFormat', 'text', 'Y-m-d', gettext('For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.')),
             'sChurchName'                          => new ConfigItem('sChurchName', 'text', '', ''),
             'sChurchAddress'                       => new ConfigItem('sChurchAddress', 'text', '', ''),
@@ -232,7 +226,6 @@ class   SystemConfig
             'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
             'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
             'sZeroGivers3'                         => new ConfigItem('sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
-            'sChurchChkAcctNum'                    => new ConfigItem('sChurchChkAcctNum', 'text', '', gettext('Church Checking Account Number')),
             'sQBDTSettings'                        => new ConfigItem('sQBDTSettings', 'json', '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext('QuickBooks Deposit Ticket Settings')),
             'sChurchCountry'                       => new ConfigItem('sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
             'sConfirmSincerely'                    => new ConfigItem('sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
@@ -248,16 +241,13 @@ class   SystemConfig
             'sChurchTaxId'                         => new ConfigItem('sChurchTaxId', 'text', '', gettext('Church tax ID (EIN) printed on contribution statements')),
             // Church social media accounts. Like the other church-identity
             // items above, these are deliberately absent from
-            // buildCategories() so they never appear on the System Settings
-            // page — they are edited on Admin -> System -> Church Info and
+            // a settings hub; they are edited on Admin -> System -> Church Info and
             // read back through ChurchMetaData::getChurchSocialLinks().
             'sChurchX'                             => new ConfigItem('sChurchX', 'text', '', ''),
             'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
             'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
             'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
-            // Member Portal (#9863, #9864). Deliberately declared without a
-            // System Settings category so they never appear on
-            // src/SystemSettings.php: the portal's settings live on their own
+            // Member Portal (#9863, #9864). Deliberately declared; the portal's settings live on their own
             // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
@@ -311,8 +301,6 @@ class   SystemConfig
             'bSearchIncludeDepositsMax'            => new ConfigItem('bSearchIncludeDepositsMax', 'text', '5', gettext('Maximum number of Deposits')),
             'bSearchIncludePaymentsMax'            => new ConfigItem('bSearchIncludePaymentsMax', 'text', '5', gettext('Maximum number of Payments')),
             'bSearchIncludeAddressesMax'           => new ConfigItem('bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
-            'iPersonConfessionFatherCustomField'   => new ConfigItem('iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/admin/api/system/custom-fields/person/?typeId=9'),
-            'iPersonConfessionDateCustomField'     => new ConfigItem('iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/admin/api/system/custom-fields/person/?typeId=2'),
             'iDoNotEmailPropertyId'                => new ConfigItem('iDoNotEmailPropertyId', 'ajax', '', gettext('Person property used to exclude members from email lists'), '', '/admin/api/system/properties/person'),
             'iDoNotSmsPropertyId'                  => new ConfigItem('iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/admin/api/system/properties/person'),
             'bEnforceCSP'                          => new ConfigItem('bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
@@ -373,13 +361,6 @@ class   SystemConfig
         ];
     }
 
-    private static function buildCategories(): array
-    {
-        return [
-            gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-        ];
-    }
-
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
      * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
@@ -389,7 +370,6 @@ class   SystemConfig
     public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
-        self::$categories = self::buildCategories();
         if (!empty($configs)) {
             self::scrapeDBConfigs($configs, $pruneUnknown);
         }
@@ -398,14 +378,6 @@ class   SystemConfig
     public static function isInitialized(): bool
     {
         return isset(self::$configs);
-    }
-
-    /**
-     * @return array<string, string[]>
-     */
-    public static function getCategories(): array
-    {
-        return self::$categories;
     }
 
     /**

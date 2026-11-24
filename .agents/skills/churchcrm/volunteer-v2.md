@@ -36,5 +36,5 @@ Full design (domain model, API, screens, tests): [`docs/design/volunteer-v2.md`]
 ## UI and tests
 
 - Page logic lives in `webpack/ministries/` entries; the Member Portal team pages reuse `webpack/ministries/components/`.
-- Settings live on Admin → Ministry Settings, not `buildCategories()`.
+- Settings live on Admin → Ministry Settings, and nowhere else.
 - Specs: `private.volunteer.*.spec.js` (API), `admin.volunteer-v2.*.spec.js` (admin UI), `volunteer-v2.*.spec.js` and portal specs (member UI). Cover the authorization matrix with a negative case for each tier.

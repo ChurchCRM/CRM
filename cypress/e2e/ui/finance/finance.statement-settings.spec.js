@@ -114,13 +114,6 @@ describe("Finance Statement Settings", () => {
                 .its("status")
                 .should("eq", 403);
         });
-
-        it("keeps statement settings out of System Settings", () => {
-            cy.visit("/SystemSettings.php");
-            for (const key of ["sGivingStatementOpening", "sGivingStatementClosing", "sGivingStatementQuestions", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
-                cy.get(`[name='new_value[${key}]']`).should("not.exist");
-            }
-        });
     });
 
     describe("Finance-only user (not admin)", () => {

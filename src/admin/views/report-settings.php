@@ -57,7 +57,7 @@ unset($setting);
 
 <div class="row mt-3">
     <div class="col-12">
-        <div id="letter-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Letter greeting and signature')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($letterSettings, JSON_THROW_ON_ERROR)) ?>"></div>
+        <div id="letter-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Signature Storage')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($letterSettings, JSON_THROW_ON_ERROR)) ?>"></div>
     </div>
 </div>
 

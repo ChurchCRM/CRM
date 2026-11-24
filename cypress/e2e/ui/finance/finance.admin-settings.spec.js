@@ -111,25 +111,8 @@ describe("Finance Settings hub", () => {
                 });
         });
     });
-    it("removes the moved settings from their old pages", () => {
+    it("keeps module toggles off the Finance Features card", () => {
         cy.setupAdminSession();
-
-        cy.visit("/SystemSettings.php");
-        cy.get(".page-title").should("contain.text", "System Settings");
-        cy.get("[name='new_value[sConfirm1]']").should("exist");
-
-        for (const key of [
-            "sQBDTSettings",
-            "sReminder1",
-            "sReminderSigner",
-            "sReminderNoPledge",
-            "sReminderNoPayments",
-            "sZeroGivers",
-            "sZeroGivers2",
-            "sZeroGivers3",
-        ]) {
-            cy.get(`[name='new_value[${key}]']`).should("not.exist");
-        }
 
         cy.visit("/admin/system/feature-toggles");
         cy.get(".page-title").should("contain.text", "Feature Toggles");

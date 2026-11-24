@@ -135,7 +135,6 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ...(InstallSetupService::isWindowOpen() ? [['label' => gettext('Setup Dashboard'), 'url' => '/admin/setup', 'icon' => 'fa-list-check']] : []),
-            ['label' => gettext('System Settings'), 'url' => '/SystemSettings.php', 'icon' => 'fa-cog'],
             ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
         ]),

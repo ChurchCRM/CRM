@@ -34,9 +34,9 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 When you change `==` to `===`, cast first: `(int)$type_ID === 11`.
 Do not `(int)` a string slug getter.
 
-## SystemConfig Settings (Frozen)
+## SystemConfig Settings
 
-**Do not add new keys to `SystemConfig::buildCategories()`.** The old-style settings page is frozen. Define the `ConfigItem` in `buildConfigs()`, omit it from `buildCategories()`, and surface it in its area admin hub (`/admin/people`). See `settings-placement.md`.
+Define the `ConfigItem` in `buildConfigs()` and surface it in its area admin hub (`/admin/people`). No setting lives anywhere else; there is no all-settings page. A `ConfigItem` that no code reads is deleted. See `settings-placement.md`.
 
 ## Admin Page Headers
 

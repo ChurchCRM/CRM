@@ -151,7 +151,7 @@ if (require.main === module) {
             const stuck = orphanedCaptureIds(
                 removedIdLines(base),
                 (id) => gitOk(['grep', '-F', '-q', '-e', `id="${id}"`, '-e', `id='${id}'`, '--', 'src', 'webpack']),
-                (id) => gitOk(['grep', '-F', '-q', `#${id}`, '--', 'playwright']),
+                (id) => gitOk(['grep', '-E', '-q', `#${id}([^A-Za-z0-9_-]|$)`, '--', 'playwright']),
             );
             stuck.forEach((id) => problems.push(`#${id} was removed and playwright/ still selects it. Update the capture in this PR.`));
         } catch {

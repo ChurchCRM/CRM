@@ -35,15 +35,6 @@ describe("Admin Debug", () => {
         cy.contains("SMTP Configuration");
     });
 
-    it("View system settings", () => {
-        cy.visit("SystemSettings.php");
-        cy.contains("System Settings");
-        cy.contains("People");
-        cy.contains("Report Settings");
-        cy.contains("Quick Search");
-        cy.contains("Confession");
-    });
-
     it("Gen DirectoryReports", () => {
         cy.visit("DirectoryReports.php");
         cy.contains("Directory reports");

@@ -11,7 +11,7 @@ complexity: "beginner"
 
 ## Where a New Setting Goes
 
-Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the value), leave it out of `buildCategories()`, and surface it in its area admin hub (`/admin/people` is the reference). `/SystemSettings.php` lists only what `buildCategories()` names; internal state keys (e.g. `sTelemetryAskedVersion`) stay out of it too. Placement and hub recipe: [settings-placement.md](./settings-placement.md).
+Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the value) and surface it in its area admin hub (`/admin/people` is the reference). There is no all-settings page. Internal state keys (e.g. `sTelemetryAskedVersion`) get no control. Placement and hub recipe: [settings-placement.md](./settings-placement.md).
 
 ### Member Portal settings
 
@@ -57,10 +57,6 @@ Boolean keys use the `b` prefix (`bEmailMailto`, `bEnableLostPassword`). Always 
 ### Resetting to the default
 
 `ConfigItem::setValue()` deletes the `config_cfg` row when the value equals the default and clears the in-memory value, so `getValue()` returns the default at once.
-
-### Cross-checking `buildCategories()`
-
-Every key in `buildCategories()` needs a matching `buildConfigs()` entry; a missing one raises a PHP error when the settings page iterates categories.
 
 ## Asset Paths (SystemURLs)
 
@@ -115,7 +111,7 @@ Call `getSettingsConfig()` once per request and reuse the result.
 
 ## Adding a Setting: Workflow
 
-1. Add the `ConfigItem` to `buildConfigs()` with a key, type, default, and tooltip; leave it out of `buildCategories()`
+1. Add the `ConfigItem` to `buildConfigs()` with a key, type, default, and tooltip
 2. Read it in a service: `SystemConfig::getValue('sSupportEmail')`
 3. Add the key to the area hub section's `getSettingsConfig()` list
 4. Render it with `SettingsPanel` in the hub view

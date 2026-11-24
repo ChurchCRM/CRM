@@ -51,6 +51,5 @@ export const MVC_PAGES = {
 export const LEGACY_PAGES = [
     "/PersonEditor.php?PersonID=2",
     "/FamilyEditor.php?FamilyID=1",
-    "/SystemSettings.php",
     "/DirectoryReports.php",
 ];

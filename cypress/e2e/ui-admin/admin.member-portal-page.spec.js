@@ -256,18 +256,6 @@ describe("Admin → Member Portal page", () => {
             );
         });
 
-        it("The four portal settings are absent from the System Settings page", () => {
-            cy.visit("/SystemSettings.php");
-            for (const name of [
-                "sMemberPortalTheme",
-                "bPortalDeveloperMode",
-                "bPortalShowVolunteer",
-                "bPortalAllowBirthdayEdit",
-            ]) {
-                cy.get("body").should("not.contain.text", name);
-            }
-        });
-
         it("Refuses a broken theme and lists the findings under its row", () => {
             activateTheme("default");
             cy.setupAdminSession();

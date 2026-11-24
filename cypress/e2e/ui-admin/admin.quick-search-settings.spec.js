@@ -36,8 +36,6 @@ describe("Administrator configures Quick Search", () => {
         cy.visit("/admin/system/feature-toggles");
         cy.get("#featureTogglesContainer").should("not.contain", "Search Settings");
         cy.get("[data-setting^='bSearchInclude']").should("not.exist");
-        cy.visit("/SystemSettings.php");
-        keys.forEach((key) => cy.get(`[name='new_value[${key}]']`).should("not.exist"));
     });
 
     it("hides module-specific controls without discarding their saved settings", () => {

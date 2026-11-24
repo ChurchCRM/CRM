@@ -174,4 +174,4 @@ Cypress mobile specs live in `cypress/e2e/ui/mobile/` and default to 375x812. Ad
 
 ## Admin Pages
 
-Admin pages (anything under the Admin menu: `src/admin/**`, `SystemSettings.php`, Plugin Management, OptionManager, PropertyList, user management) are built for laptop/desktop: dense configuration tables and bulk operations. All other nav pages and their children work at mobile, tablet and laptop widths.
+Admin pages (anything under the Admin menu: `src/admin/**`, Plugin Management, OptionManager, PropertyList, user management) are built for laptop/desktop: dense configuration tables and bulk operations. All other nav pages and their children work at mobile, tablet and laptop widths.

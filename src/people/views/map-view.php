@@ -21,7 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php if (!$mapConfig['hasLocation']): ?>
     <div class="alert alert-danger">
         <?= gettext('Unable to display map: church address has not been geocoded yet.') ?>
-        <a href="<?= $sRootPath ?>/SystemSettings.php" class="alert-link">
+        <a href="<?= $sRootPath ?>/admin/system/church-info" class="alert-link">
             <?= gettext('Update church address in Settings.') ?>
         </a>
     </div>

@@ -32,11 +32,5 @@ describe("Administrator adjusts scheduled-task timing on the dashboard", () => {
         });
         cy.get("#timer-jobs-stale-warning").should("not.exist");
         keys.forEach((key, index) => cy.getSystemConfig(key).should("eq", index === 0 ? "0" : "3"));
-        cy.freshAdminFormLogin({ enabled: true });
-        cy.visit("/SystemSettings.php");
-        cy.get("#settings-nav").should("not.contain", "Scheduled Tasks");
-        [...keys, "sLastTimerJobsRunDateTime"].forEach((key) => {
-            cy.get(`[name='new_value[${key}]']`).should("not.exist");
-        });
     });
 });
