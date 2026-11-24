@@ -57,11 +57,14 @@ describe("State-changing actions need a POST with a CSRF token", () => {
         );
     });
 
-    it("convert individuals to families runs only on a POST with a token", () => {
-        cy.visit("/ConvertIndividualToFamily.php");
-        cy.contains("People without a family");
-        cy.get('form[action="ConvertIndividualToFamily.php"] input[name="csrf_token"]').should("exist");
-        postForm("/ConvertIndividualToFamily.php", { all: "true" }).its("status").should("eq", 403);
+    it("convert to family runs only on a POST with a token", () => {
+        const convert = `/admin/api/person/${PERSON_ID}/convert-to-family`;
+        const familyId = () => cy.request(`/api/person/${PERSON_ID}`).its("body.FamId");
+
+        familyId().should("eq", 0);
+        cy.request({ url: convert, failOnStatusCode: false }).its("status").should("eq", 405);
+        postForm(convert, {}).its("status").should("eq", 403);
+        familyId().should("eq", 0);
     });
 
     it("upgrade release download refuses GET and a POST without a token", () => {

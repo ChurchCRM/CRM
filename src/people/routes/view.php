@@ -303,6 +303,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         }
     }
 
+    $convertToFamilyCsrfToken = $currentUser->isAdmin() && (int) $person->getFamId() === 0 ? CSRFUtils::generateToken() : null;
+
     // PageInit.php (required above) took the previous request's message, e.g. why
     // Login as Person ended, out of the session; Footer.php shows it.
     global $sGlobalMessage, $sGlobalMessageClass;
@@ -362,6 +364,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Login as Person: the Actions item (null while off or for non-admins) and the history card
         'loginAsPerson'          => $loginAsPerson,
         'loginAsPersonHistory'   => $loginAsPersonHistory,
+        'convertToFamilyCsrfToken' => $convertToFamilyCsrfToken,
         'portalAccess'           => $portalAccess,
         'portalGrantChoices'     => $portalGrantChoices,
         'sGlobalMessage'         => $sGlobalMessage ?? '',
