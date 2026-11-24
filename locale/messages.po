@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 04:31+0000\n"
+"POT-Creation-Date: 2026-11-24 06:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -620,6 +620,9 @@ msgid "A coordinator runs the whole ministry — its teams, positions, schedules
 msgstr ""
 
 msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr ""
+
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
 msgstr ""
 
 msgid "A day a month does not have falls on its last day."
@@ -1709,6 +1712,9 @@ msgid "Also runs automatically via WebDAV based on your configured interval."
 msgstr ""
 
 msgid "Also send to church address ({{email}})"
+msgstr ""
+
+msgid "Also send which pages are used."
 msgstr ""
 
 msgid "Also used by"
@@ -3914,9 +3920,6 @@ msgid "Collapse the sidebar to icons"
 msgstr ""
 
 msgid "Collation"
-msgstr ""
-
-msgid "Collection level"
 msgstr ""
 
 #. Context: countries
@@ -6440,9 +6443,6 @@ msgstr ""
 msgid "Errors"
 msgstr ""
 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr ""
-
 msgid "Est. Value"
 msgstr ""
 
@@ -7869,12 +7869,6 @@ msgstr ""
 msgid "Full · {{live}} of {{max}}"
 msgstr ""
 
-msgid "Full — all of the above plus page views"
-msgstr ""
-
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr ""
-
 msgid "Fully translated."
 msgstr ""
 
@@ -8616,9 +8610,6 @@ msgstr ""
 msgid "Help on types.."
 msgstr ""
 
-msgid "Help us find and fix problems?"
-msgstr ""
-
 msgid "Help wanted could not be saved"
 msgstr ""
 
@@ -9056,6 +9047,9 @@ msgstr ""
 msgid "Importing..."
 msgstr ""
 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr ""
+
 msgid "In Directory"
 msgstr ""
 
@@ -9203,13 +9197,7 @@ msgstr ""
 msgid "Install from URL"
 msgstr ""
 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr ""
-
 msgid "Install stable {{version}}"
-msgstr ""
-
-msgid "Install — installation and upgrade statistics (default)"
 msgstr ""
 
 msgid "Installation Complete!"
@@ -10115,9 +10103,6 @@ msgid "Local development"
 msgstr ""
 
 msgid "Locale"
-msgstr ""
-
-msgid "Locale (Errors and Full)"
 msgstr ""
 
 msgid "Localization"
@@ -11874,6 +11859,12 @@ msgstr ""
 msgid "No thanks"
 msgstr ""
 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr ""
+
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr ""
+
 msgid "No timeline events yet."
 msgstr ""
 
@@ -11979,9 +11970,6 @@ msgid "NonDeductible amount can't be greater than total amount."
 msgstr ""
 
 msgid "None"
-msgstr ""
-
-msgid "None (disabled)"
 msgstr ""
 
 msgid "None (one-time event)"
@@ -12315,7 +12303,7 @@ msgstr ""
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
 msgstr ""
 
-msgid "OS family (Errors and Full)"
+msgid "OS family"
 msgstr ""
 
 msgid "Occurrence canceled"
@@ -12838,9 +12826,6 @@ msgid "PHP Version"
 msgstr ""
 
 msgid "PHP format for date picker inputs. Default: Y-m-d"
-msgstr ""
-
-msgid "PHP version (Errors and Full)"
 msgstr ""
 
 msgid "PHPMailer SMTP session"
@@ -15599,6 +15584,9 @@ msgstr ""
 msgid "Send email to families"
 msgstr ""
 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr ""
+
 msgid "Send text message"
 msgstr ""
 
@@ -15865,13 +15853,7 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-msgid "Share anonymous install statistics?"
-msgstr ""
-
-msgid "Share error and usage reports"
-msgstr ""
-
-msgid "Share install statistics"
+msgid "Share which pages are used"
 msgstr ""
 
 msgid "Shared addresses fixed: {{total}}"
@@ -15886,13 +15868,7 @@ msgstr ""
 msgid "Shared emails that stop people from signing in"
 msgstr ""
 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr ""
-
 msgid "Shared-envelope conflict: another family currently has this envelope number."
-msgstr ""
-
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
 msgstr ""
 
 msgid "Shipped with ChurchCRM."
@@ -20736,7 +20712,7 @@ msgstr ""
 msgid "Your child"
 msgstr ""
 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
 msgstr ""
 
 msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
@@ -20760,13 +20736,7 @@ msgstr ""
 msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
 msgstr ""
 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr ""
-
 msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr ""
-
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr ""
 
 #, php-format
@@ -21019,9 +20989,6 @@ msgid "end offset"
 msgstr ""
 
 msgid "endDate must be after startDate"
-msgstr ""
-
-msgid "errors+"
 msgstr ""
 
 msgid "event"
