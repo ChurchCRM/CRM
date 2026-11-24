@@ -72,11 +72,11 @@ class NotificationService
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
      */
-    public static function loadSessionNotifications(bool $onLandingPage = false): void
+    public static function loadSessionNotifications(bool $includeRemote = false): void
     {
         self::loadUpgradeNotification();
         self::loadDatabaseSupportNotification();
-        if ($onLandingPage) {
+        if ($includeRemote) {
             self::loadRemoteNotifications();
         }
     }
@@ -219,13 +219,6 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
-            // Announcements show once per login, on the landing page only.
-            if ($id !== '') {
-                if (isset($_SESSION['remoteNoticesShown'][$id])) {
-                    continue;
-                }
-                $_SESSION['remoteNoticesShown'][$id] = true;
-            }
             $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
@@ -235,9 +228,22 @@ class NotificationService
                 $message->message ?? '',
                 $message->link ?? '',
                 $message->type ?? 'info',
-                $message->icon ?? 'circle-info',
+                self::iconForRemote($message->icon ?? ''),
             ));
         }
+    }
+
+    /**
+     * Remote notices name a Font Awesome icon. Names the bundled Font Awesome
+     * build does not define render as an empty box, so map them to a defined
+     * icon; anything unknown falls back to circle-info.
+     */
+    private static function iconForRemote(string $icon): string
+    {
+        $aliases = ['message-circle' => 'message'];
+        $icon = $aliases[$icon] ?? $icon;
+
+        return preg_match('/^[a-z0-9-]+$/', $icon) === 1 ? $icon : 'circle-info';
     }
 
     /**

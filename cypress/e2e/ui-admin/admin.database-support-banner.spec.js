@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
-const banner = '.crm-system-notification[data-notification-id="database-out-of-support"]';
-const navIndicator = "#databaseSupportMenuItem";
+const item = '#notificationCenterMenuItem [data-notification-id="database-out-of-support"]';
 const dismissKey = "notification.dismissed.database-out-of-support";
 
 const belowSupportedFloor = (serverVersion) => {
@@ -21,7 +20,7 @@ const readServerVersion = () => {
 };
 
 // Dismissal is a per-user setting with no un-dismiss UI; undo it through the
-// app's own API so a run never leaves the shared admin with the banner hidden.
+// app's own API so a run never leaves the shared admin with the notice hidden.
 const resetDismissal = () => {
     cy.window().then((win) =>
         win.CRM.APIRequest({
@@ -44,7 +43,9 @@ const freshLogin = (usernameKey, passwordKey) =>
         }),
     );
 
-describe("Database out-of-support banner", () => {
+const openCenter = () => cy.get("#notificationCenterMenu").click();
+
+describe("Database out-of-support notice", () => {
     it("follows the running database version on the dashboard and the upgrader", () => {
         cy.setupAdminSession();
         cy.visit("/people/dashboard");
@@ -53,68 +54,63 @@ describe("Database out-of-support banner", () => {
             for (const page of ["/people/dashboard", "/admin/system/upgrade"]) {
                 cy.visit(page);
                 if (belowSupportedFloor(serverVersion)) {
-                    cy.get(banner)
+                    openCenter();
+                    cy.get(item)
                         .should("be.visible")
                         .and("contain", "is a security risk")
                         .and("contain", "no longer ships security fixes")
                         .find(".js-dismiss-notification")
                         .should("exist");
-                    cy.get(navIndicator).should("not.exist");
+                    cy.get(item).find(".js-notification-more").click();
+                    cy.get("#notificationDetailPanel").should("be.visible").and("contain", "is a security risk");
+                    cy.get("#notificationDetailPanel .btn-close").click();
+                    cy.get("#notificationDetailPanel").should("not.be.visible");
                 } else {
-                    cy.get(banner).should("not.exist");
-                    cy.get(navIndicator).should("not.exist");
+                    cy.get(item).should("not.exist");
                 }
             }
             cy.get("#upgrade-wizard-card").should("be.visible");
         });
     });
 
-    it("collapses into the top nav when dismissed and reopens from there", () => {
+    it("dismisses from the notification center and stays dismissed per user", () => {
         cy.setupAdminSession();
         cy.visit("/people/dashboard");
         resetDismissal();
         readServerVersion().then((serverVersion) => {
             cy.visit("/people/dashboard");
             if (!belowSupportedFloor(serverVersion)) {
-                cy.get(banner).should("not.exist");
-                cy.get(navIndicator).should("not.exist");
+                cy.get(item).should("not.exist");
                 return;
             }
-            cy.get(banner).should("be.visible");
+            openCenter();
+            cy.get(item).should("be.visible");
             cy.intercept("POST", `**/api/user/*/setting/${dismissKey}`).as("dismissDbWarning");
-            cy.get(banner).find(".js-dismiss-notification").click();
+            cy.get(item).find(".js-dismiss-notification").click();
             cy.wait("@dismissDbWarning");
-            cy.get(banner).should("not.exist");
+            cy.get(item).should("not.exist");
 
             freshLogin("admin.username", "admin.password");
             cy.visit("/people/dashboard");
-            cy.get(banner).should("not.exist");
-            cy.get(navIndicator).should("be.visible");
-            cy.get("#databaseSupportMenu").click();
-            cy.get(navIndicator)
-                .find(".dropdown-menu")
-                .should("be.visible")
-                .and("contain", "Database out of support")
-                .and("contain", "is a security risk");
+            cy.get(item).should("not.exist");
 
             freshLogin("locale.admin.username", "locale.admin.password");
             resetDismissal();
             cy.visit("/people/dashboard");
-            cy.get(banner).should("be.visible");
-            cy.get(navIndicator).should("not.exist");
+            openCenter();
+            cy.get(item).should("be.visible");
 
             freshLogin("admin.username", "admin.password");
             resetDismissal();
             cy.visit("/people/dashboard");
-            cy.get(banner).should("be.visible");
-            cy.get(navIndicator).should("not.exist");
+            openCenter();
+            cy.get(item).should("be.visible");
         });
     });
 
     it("is not shown to a standard user", () => {
         cy.setupStandardSession();
         cy.visit("/people/dashboard");
-        cy.get(banner).should("not.exist");
-        cy.get(navIndicator).should("not.exist");
+        cy.get(item).should("not.exist");
     });
 });

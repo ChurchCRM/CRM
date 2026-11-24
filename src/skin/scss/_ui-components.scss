@@ -113,15 +113,64 @@
   }
 }
 
-// Wide enough to read the notice text; on phones it spans the sticky navbar.
-#databaseSupportMenuItem .dropdown-menu,
-#demoModeMenuItem .dropdown-menu {
+// Wide enough to read a notice; on phones it spans the sticky navbar.
+#notificationCenterMenuItem .dropdown-menu {
   width: 22rem;
 }
 
+// Every notice in the center has the same footprint: a fixed icon column,
+// a one-line title, a two-line preview and one action row directly below.
+#notificationCenterMenuItem .crm-notification-item + .crm-notification-item {
+  border-top: 1px solid var(--tblr-border-color);
+}
+
+// Right-hand detail panel: a modal docked to the right edge. Bootstrap's
+// .offcanvas is restyled as the mobile sidebar here, so it cannot be reused.
+#notificationDetailPanel .crm-side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 26rem;
+  height: 100%;
+  margin: 0;
+  transition: transform 0.25s ease-out;
+  transform: translateX(100%);
+
+  .modal-content {
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+#notificationDetailPanel.show .crm-side-panel {
+  transform: none;
+}
+
+#notificationCenterMenuItem .crm-notification-icon {
+  flex: 0 0 1.75rem;
+  padding-top: 0.125rem;
+}
+
+#notificationCenterMenuItem .crm-notification-title,
+#notificationCenterMenuItem .crm-notification-text {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+#notificationCenterMenuItem .crm-notification-title {
+  -webkit-line-clamp: 1;
+}
+
+#notificationCenterMenuItem .crm-notification-text {
+  -webkit-line-clamp: 2;
+  min-height: 2.9em;
+}
+
 @media (max-width: 767.98px) {
-  #databaseSupportMenuItem,
-  #demoModeMenuItem {
+  #notificationCenterMenuItem {
     position: static;
 
     .dropdown-menu[data-bs-popper] {
