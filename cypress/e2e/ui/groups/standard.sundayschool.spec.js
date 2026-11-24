@@ -32,15 +32,17 @@ describe("Standard Sunday School", () => {
             .then((text) => {
                 expect(Number(text.trim())).to.be.at.least(0);
             });
-        cy.get(".text-body-secondary")
-            .contains(/^Classes$/)
-            .prev(".fw-medium")
-            .invoke("text")
-            .then((text) => {
-                cy.window()
-                    .its("$")
-                    .then(($) => $("#sundayschoolClasses").DataTable().rows().count())
-                    .should("eq", Number(text.trim()));
+        // The DataTable is initialised by the page script; rows exist in the HTML before that.
+        cy.window()
+            .its("$")
+            .should(($) => expect($.fn.dataTable.isDataTable("#sundayschoolClasses")).to.eq(true))
+            .then(($) => {
+                cy.get(".text-body-secondary")
+                    .contains(/^Classes$/)
+                    .prev(".fw-medium")
+                    .should(($stat) => {
+                        expect($("#sundayschoolClasses").DataTable().rows().count()).to.eq(Number($stat.text().trim()));
+                    });
             });
         cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
         cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");

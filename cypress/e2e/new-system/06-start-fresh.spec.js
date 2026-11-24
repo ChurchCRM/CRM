@@ -44,7 +44,8 @@ describe('06 - Explore demo data, start fresh, restore a backup', () => {
         });
 
         cy.visit('/people/dashboard');
-        cy.get('#demoModeBanner .js-start-fresh').click();
+        cy.get('#notificationCenterMenu').click();
+        cy.get('[data-notification-id="demo-mode"] .js-start-fresh').click();
         cy.get('.bootbox .btn-danger').click();
         cy.get('.bootbox', { timeout: 60000 }).should('contain.text', 'Ready for your church');
         cy.get('.bootbox .btn-primary').click();
@@ -60,7 +61,7 @@ describe('06 - Explore demo data, start fresh, restore a backup', () => {
         cy.get('button[type=submit]').click();
 
         cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
-        cy.get('#demoModeBanner').should('not.exist');
+        cy.get('[data-notification-id="demo-mode"]').should('not.exist');
         cy.get('#sidebar').should('not.exist');
         cy.get('#setupChoiceDemo #importDemoDataSetup').should('be.visible');
 
@@ -85,7 +86,7 @@ describe('06 - Explore demo data, start fresh, restore a backup', () => {
         cy.location('pathname', { timeout: 30000 }).should('match', /\/session\/begin$/);
 
         signIn('changeme');
-        cy.get('#demoModeBanner', { timeout: 30000 }).should('be.visible');
+        cy.get('[data-notification-id="demo-mode"]', { timeout: 30000 }).should('exist');
         cy.request('/admin/api/system/config/sChurchName').its('body.value').should('eq', 'Main St. Cathedral');
         cy.request('/api/families/latest').its('body.families').should('have.length.greaterThan', 0);
     });

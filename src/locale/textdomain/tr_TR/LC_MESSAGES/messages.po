@@ -1595,10 +1595,6 @@ msgid "Permission"
 msgstr "İzin"
 
 #: 
-msgid "System Settings"
-msgstr "Sistem ayarları"
-
-#: 
 msgid "User Editor"
 msgstr "Kullanıcı editörü"
 
@@ -2084,24 +2080,12 @@ msgid "Localization"
 msgstr "Yerelleştirme"
 
 #: 
-msgid "Setting saved"
-msgstr "Tasarlandı"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON Ayarlarını Düzenle"
-
-#: 
 msgid "False"
 msgstr "Yanlış"
 
 #: 
 msgid "True"
 msgstr "Doğru"
-
-#: 
-msgid "Edit Settings"
-msgstr "Ayarları Düzenle"
 
 #: 
 msgid "Functions"
@@ -2219,33 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Yalnızca bu sınıflandırmaları dizine ekleyin, virgül ayrılmış"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Bunlar evin başkanı olarak belirlenen aile rolü numaraları"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Bunlar eş olarak belirlenen aile rolü numaraları"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Bunlar çocuk olarak belirlenen aile rol numaralarıdır"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Bir kullanıcının şifresini ayarlayabileceği minimum uzunluk"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "İzinsiz (çok açık) şifrelerin virgülle ayrılmış bir listesi."
-
-#: 
 msgid "Default City"
 msgstr "Varsayılan şehir"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Varsayılan durum - 2 harfli kısaltma olmalıdır!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2268,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Mali yılın ilk ayı"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Kişiler editöründe arkadaş tarihini devre dışı bırakmak için true ayarlayın. Kişiler Editöründe Arkadaş Tarihini Girmeyi Etkinleştirmek için Yanlış Ayarlayın."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Aile Editörü'ndeki bülten aboneliklerinin yönetimini devre dışı bırakmak için true ayarlayın."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Aile Editöründe Düğün Tarihini Giriş Dışı Bırakmak İçin True Ayarlayın. Aile Editörüne Düğün Tarihini Giriş Etkinlik için Yanlış Ayarlayın."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Para Yatırma Fişi Raporu için Çek Sayısı"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Birim mesafe, mil veya km ölçmek için kullanılır."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "İndirilemez ödemeleri etkinleştirin"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Vergi raporunun üst satırı için söz konusu. Tarihler bu çizginin sonuna eklenecektir."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Vergi raporunun alt satırı için söz konusu."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Vergi Raporu Signer"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Taahhüt hatırlatma raporu metni"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Taahhüt hatırlatmasını imzalayan"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Taahhüt hatırlatma raporu metni - Taahhüt kaydı yok"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Taahhüt hatırlatma raporu metni - Ödeme kaydı yok"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Veritabanı Bilgiler Onayı ve Düzeltme Raporu için Verba"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Veritabanı Bilgileri Onaylama ve Düzeltme Raporu Signer"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Dizin Raporu için Vaka"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3784,10 +3687,6 @@ msgstr "Yedek arşivi bir veritabanı içermiyor"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Veritabanına kaydedilirken kullanıcı tarafından girilen zip/postkodları büyük harf yapın."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Signer'dan önce bir mektubu bitirmek için kullanılır"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3892,10 +3791,6 @@ msgid "Failed"
 msgstr "Arızalı"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Kilise Kontrol Hesap Numarası"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Aileyi devre dışı bıraktı"
@@ -3908,10 +3803,6 @@ msgstr "Aileyi etkinleştirdi"
 #: 
 msgid "families"
 msgstr "aileler"
-
-#: 
-msgid "Financial Settings"
-msgstr "Finansal Ayarlar"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3952,10 +3843,6 @@ msgstr "Mülk başarıyla atanmamış."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Tesis tayinsiz olamazdı."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "E -postalarda/raporlarda addan önce metin"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4199,10 +4086,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "Kayıtlar seçilen gruba başarıyla eklendi."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "TARİH KURULUNDA TARİHİN tanımlanması için, varsayılan başına: YYYY-MM-DD, Fransızca: Örneğin DD/MM/YYYY."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Tarih seçmesinin tarihini tanımlamak için, varsayılan başına: y-m-d, Fransızca: D/m/y Örneğin."
 
@@ -4289,10 +4172,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Aile Arama"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4391,10 +4270,6 @@ msgid "Change Settings"
 msgstr "Ayarları değiştir"
 
 #: 
-msgid "Unknown Type"
-msgstr "Bilinmeyen tip"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Sepet için personid sayısal olmalı"
 
@@ -4413,14 +4288,6 @@ msgstr "İnsanları arama"
 #: 
 msgid "Maximum number of People"
 msgstr "Maksimum kişi sayısı"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "İtiraf babasının listelendiği alan, grup tipi bir insan olmalı"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Son itirafın depolandığı alan, tarih türü olmalıdır"
 
 #: 
 msgid "People Reports"
@@ -4674,18 +4541,6 @@ msgid "Event not found"
 msgstr "Olay bulunamadı"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Oturum zaman aşımı uzunluğu saniye cinsinden\n"
-"Oturum zaman aşımlarını devre dışı bırakmak için sıfıra ayarlayın."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
-"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
-
-#: 
 msgid "Verify People"
 msgstr "İnsanları doğrulayın"
 
@@ -4757,10 +4612,6 @@ msgstr "Pinasız Etkinlikler"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Son ad ilk ad ikinci ad"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Hesapları silindiğinde kullanıcıları bildiren bir e -posta gönderin"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7730,10 +7581,6 @@ msgid "selected family has no coordinates"
 msgstr "seçilen ailenin koordinatları yok"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktif Gruplar"
 
@@ -8212,10 +8059,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Veritabanınızı nasıl doldurmak istediğinizi seçin. Daha sonra her zaman farklı bir yöntem kullanabilirsiniz."
 
 #: 
-msgid "Church Info"
-msgstr "Kilise Bilgileri"
-
-#: 
 msgid "Clear all"
 msgstr "Tümünü temizle"
 
@@ -8246,14 +8089,6 @@ msgstr "Topluluk Yönetim Platformu"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "ChurchCRM'i cemaatiniz için hazırlamak üzere bunları herhangi bir sırayla tamamlayın."
-
-#: 
-msgid "Confession"
-msgstr "Günah İtirafı"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Genel sistem ayarlarını ve tercihlerini yapılandır"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8302,10 +8137,6 @@ msgstr "Mevcut kişi"
 #: 
 msgid "Database Reset"
 msgstr "Veritabanı Sıfırlama"
-
-#: 
-msgid "Default / Notes"
-msgstr "Varsayılan / Notlar"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9926,10 +9757,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub'da 'ön sürüm' olarak işaretlenmiş sürümlere sistem yükseltmesine izin ver"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Takvim etkinliklerine genel HTML, ICS ve JSON URL'leri aracılığıyla kimlik doğrulamasız erişime izin ver. Takvimleri harici uygulamalarla paylaşmak için gereklidir."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ziyaretçilerin kendi kendine kayıt sayfası aracılığıyla aile kaydı oluşturmasına izin ver"
 
@@ -10092,24 +9919,12 @@ msgid "Enable Email"
 msgstr "E-postayı Etkinleştir"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Etkinlikler Menüsünü Etkinleştir"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Harici Takvim API'sini Etkinleştir"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM'den e-posta göndermeyi etkinleştir. Parola sıfırlama, bildirimler ve e-posta bağlantıları için gereklidir."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "SMTP sunucunuz kullanıcı adı ve parola gerektiriyorsa etkinleştirin"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Pazar Okulu modülünü ve kenar çubuğu menüsünü etkinleştirin veya devre dışı bırakın."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10207,10 +10022,6 @@ msgstr "Enlemi/Boylamı Gizle"
 #: 
 msgid "How it works"
 msgstr "Nasıl çalışır"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Depozito makbuzu sayfasına kaç çek yazdırılacak"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10370,10 +10181,6 @@ msgid "Privacy Note"
 msgstr "Gizlilik Notu"
 
 #: 
-msgid "Quick Settings"
-msgstr "Hızlı Ayarlar"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP Kimlik Doğrulama"
 
@@ -10400,10 +10207,6 @@ msgstr "Kurulum"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Depozito makbuzu raporunda banknot kupürü dökümünü göster"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Ana navigasyonda Etkinlikler menüsünü göster veya gizle."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10817,10 +10620,6 @@ msgstr "Bozuk karakterler, metin olarak görünen HTML varlıkları veya sayfa d
 #: 
 msgid "Indigo"
 msgstr "İndigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Geçersiz JSON değeri — ayar kaydedilmedi. Lütfen düzeltin ve tekrar deneyin."
 
 #: 
 msgid "Language and regional settings"
@@ -12597,10 +12396,6 @@ msgstr "Bütün gün"
 #: 
 msgid "All Roles"
 msgstr "Tüm Roller"
-
-#: 
-msgid "All System Settings"
-msgstr "Tüm Sistem Ayarları"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15071,10 +14866,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Genel harici takvim sayfasının iframe içine gömülmesine izin verilen kaynaklar listesi."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Genel takvim sayfasının iframe içine gömülmesine izin verilen kaynaklar."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Pazar Okulu grubu yalnızca şu iki durumda değiştirilebilir"
 
@@ -15605,10 +15396,6 @@ msgstr "Başarıyla kaydedildi"
 #: 
 msgid "Select a fund"
 msgstr "Bir fon seçin"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Kendime Test Doğum Günü E-postası Gönder"
 
 #: 
 msgid "Sending to"
@@ -16627,10 +16414,6 @@ msgid "Not a valid date of death"
 msgstr "Geçerli bir vefat tarihi değil"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA zorunlu kılındıktan sonra kullanıcıların kayıt olması için tanınan gün sayısı. Hemen zorunlu kılmak için 0 olarak ayarlayın. Aktif bir geçiş süresini kısaltmak, kullanıcıları anında sistem dışında bırakabilir."
-
-#: 
 msgid "Offline"
 msgstr "Çevrimdışı"
 
@@ -16955,14 +16738,6 @@ msgid "Download CSV"
 msgstr "CSV İndir"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Finans modülünü ve yan çubuk menüsünü etkinleştirin veya devre dışı bırakın."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Bağış toplama modülünü etkinleştirin veya devre dışı bırakın."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Kilise logosu kaldırılamadı"
 
@@ -17159,46 +16934,6 @@ msgid "Feature Toggles"
 msgstr "Özellik Değiştirgeleri"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Özellik değiştirgeleri, ChurchCRM'de hangi modüllerin ve özelliklerin kullanılabilir olduğunu kontrol eder. Değişiklikler hemen geçerli olur."
-
-#: 
-msgid "Finance Features"
-msgstr "Finansal Özellikler"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Hızlı genel aramaya adresleri dahil et"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Hızlı genel aramaya takvim etkinliklerini dahil et"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Hızlı genel aramaya özel aile özelliklerini dahil et"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Hızlı genel aramaya mevduatları dahil et"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Hızlı genel aramaya aileleri dahil et"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Hızlı genel aramaya grupları dahil et"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Hızlı genel aramaya ödemeleri dahil et"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Hızlı genel aramaya insanları dahil et"
-
-#: 
 msgid "Invalid setting"
 msgstr "Geçersiz ayar"
 
@@ -17207,16 +16942,8 @@ msgid "Lost Password Link"
 msgstr "Kaybolan Şifre Bağlantısı"
 
 #: 
-msgid "Manage All Features"
-msgstr "Tüm Özellikleri Yönet"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "E-posta gönderimi için ana değiştirge. Parola sıfırlaması ve bildirimler için GEREKLİDİR"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Düşülemez Ödemeler"
 
 #: 
 msgid "Primary Modules"
@@ -17227,20 +16954,12 @@ msgid "Public Calendar API"
 msgstr "Genel Takvim API"
 
 #: 
-msgid "Saved"
-msgstr "Kaydedildi"
-
-#: 
 msgid "Search Families"
 msgstr "Aileleri Ara"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Aile Özel Özelliklerini Ara"
-
-#: 
-msgid "Search Settings"
-msgstr "Arama Ayarları"
 
 #: 
 msgid "Self-Registration"
@@ -17457,14 +17176,6 @@ msgstr "Bildirim alıcıları"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişiler"
-
-#: 
-msgid "Person initials style"
-msgstr "Kişi baş harfleri stili"
-
-#: 
-msgid "Person name display style"
-msgstr "Kişi adı görüntüleme stili"
 
 #: 
 msgid "Spouse Role"
@@ -23473,30 +23184,6 @@ msgid "Download PDF"
 msgstr "PDF indir"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Kilitleme süresi (dakika)\n"
-"Kilitli bir hesap bu kadar dakika sonra kendiliğinden açılır. Bir IP adresinden başarısız oturum açma denemeleri aynı süre boyunca sayılır."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Bir IP adresinden en fazla başarısız oturum açma sayısı\n"
-"Bir IP adresinden gelen başarısız oturum açma denemeleri ve parola sıfırlama istekleri, kilitleme süresi içinde bu sınıra sayılır. Sınıra ulaşıldığında süre bitene kadar o adresten oturum açma reddedilir.\n"
-"Bu özelliği kapatmak için sıfır yazın; örneğin herkes ChurchCRM’e tek bir vekil adresi üzerinden ulaşıyorsa."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verilen en fazla başarısız oturum açma sayısı.\n"
-"Kilitli bir hesap kilitleme süresi sonunda kendiliğinden açılır; bir yönetici başarısız oturum açmaları sıfırlarsa daha erken açılır.\n"
-"Bu özellik, otomatik parola tahmin saldırılarına karşı korumaya yardımcı olur.\n"
-"Bu özelliği kapatmak için sıfır yazın."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Kendiliğinden açılmasına kalan dakika: %d"
 
@@ -23825,10 +23512,6 @@ msgid "PDF Output"
 msgstr "PDF çıktısı"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF işleme kipi"
-
-#: 
 msgid "Questions Line"
 msgstr "Sorular satırı"
 
@@ -23865,10 +23548,6 @@ msgid "Greeting"
 msgstr "Selamlama"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Mektup selamlaması ve imzası"
-
-#: 
 msgid "Letterhead"
 msgstr "Antet"
 
@@ -23891,10 +23570,6 @@ msgstr "PDF mektuplarının bastığı anteti ayarlayın"
 #: 
 msgid "Using the church name and address"
 msgstr "Kilise adı ve adresi kullanılıyor"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Sistem Ayarları’nda belirlenen antet yolu kullanılıyor"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28271,10 +27946,6 @@ msgstr "Kilisenizi Kurun"
 #: 
 msgid "Setup Dashboard"
 msgstr "Kurulum Paneli"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Kurulum Paneli Günleri"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

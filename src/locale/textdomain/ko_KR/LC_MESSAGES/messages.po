@@ -1595,10 +1595,6 @@ msgid "Permission"
 msgstr "권한"
 
 #: 
-msgid "System Settings"
-msgstr "시스템 설정"
-
-#: 
 msgid "User Editor"
 msgstr "사용자 편집"
 
@@ -2084,24 +2080,12 @@ msgid "Localization"
 msgstr "지역화"
 
 #: 
-msgid "Setting saved"
-msgstr "설정을 저장했습니다."
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON 설정 편집"
-
-#: 
 msgid "False"
 msgstr "아니오"
 
 #: 
 msgid "True"
 msgstr "예"
-
-#: 
-msgid "Edit Settings"
-msgstr "설정 편집"
 
 #: 
 msgid "Functions"
@@ -2218,32 +2202,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "명부에 포함할 분류를 쉼표로 구분해 입력하세요."
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "가구주로 지정된 가족 역할 번호"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "배우자로 지정된 가족 역할 번호"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "자녀로 지정된 가족 역할 번호"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "비밀번호 최소 길이"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "사용할 수 없는(너무 단순한) 비밀번호 목록, 쉼표로 구분"
-
-#: 
 msgid "Default City"
 msgstr "기본 도시"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "기본 주/도(2글자 약어)"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2266,68 +2226,12 @@ msgid "First month of the fiscal year"
 msgstr "회계 연도 시작 월"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "True로 설정하면 개인 정보 편집에서 교제 등록일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "True로 설정하면 가족 정보에서 소식지 구독 관리를 사용할 수 없습니다."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "True로 설정하면 가족 정보에서 결혼기념일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "입금 내역서 보고서에 표시할 수표 수"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "거리 단위(마일 또는 km)"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "공제 불가 헌금 허용"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "세금 보고서 상단 문구(끝에 날짜가 붙습니다)"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "세금 보고서 하단 문구"
-
-#: 
-msgid "Tax Report signer"
-msgstr "세금 보고서 서명자"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "서약 독촉 보고서 문구"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "서약 독촉 보고서 서명자"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "서약 독촉 보고서 문구 - 서약 기록 없음"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "서약 독촉 보고서 문구 - 납입 기록 없음"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "데이터 확인·수정 보고서 문구"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "데이터 확인·수정 보고서 서명자"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "명부 보고서 문구"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3782,10 +3686,6 @@ msgstr "백업 압축 파일에 데이터베이스가 포함되어 있지 않습
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "사용자가 입력한 우편번호를 저장할 때 대문자로 변환합니다."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "편지에서 서명자 직전에 넣는 마무리 문구"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3890,10 +3790,6 @@ msgid "Failed"
 msgstr "실패"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "교회 당좌 계좌 번호"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "가족을 비활성화했습니다"
@@ -3906,10 +3802,6 @@ msgstr "가족을 활성화했습니다"
 #: 
 msgid "families"
 msgstr "가족"
-
-#: 
-msgid "Financial Settings"
-msgstr "재정 설정"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3950,10 +3842,6 @@ msgstr "속성 배정이 해제되었습니다."
 #: 
 msgid "The property could not be unassigned."
 msgstr "속성 배정을 해제하지 못했습니다."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4196,10 +4084,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "건이 선택한 그룹에 추가되었습니다."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "날짜 선택 기본 형식은 yyyy-mm-dd입니다. 예를 들어 프랑스식은 dd/mm/yyyy입니다."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "날짜 형식 기본값은 Y-m-d이며, 프랑스식 예시는 d/m/Y입니다."
 
@@ -4286,10 +4170,6 @@ msgstr "서북서"
 #: 
 msgid "WSW"
 msgstr "서남서"
-
-#: 
-msgid "Search Family"
-msgstr "가족 검색"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4388,10 +4268,6 @@ msgid "Change Settings"
 msgstr "설정 변경"
 
 #: 
-msgid "Unknown Type"
-msgstr "알 수 없는 유형"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "카트에 추가하려면 PersonID가 숫자여야 합니다"
 
@@ -4410,14 +4286,6 @@ msgstr "개인 검색"
 #: 
 msgid "Maximum number of People"
 msgstr "개인 최대 개수"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "고백을 맡는 사제가 기록된 필드입니다. 그룹 유형의 개인이어야 합니다."
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "마지막 고백 날짜가 저장되는 필드입니다. 날짜 형식이어야 합니다."
 
 #: 
 msgid "People Reports"
@@ -4670,18 +4538,6 @@ msgid "Event not found"
 msgstr "행사를 찾을 수 없습니다"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "세션 시간 제한(초)\n"
-"0으로 설정하면 타임아웃을 비활성화합니다."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
-"0으로 설정하면 기능을 끕니다."
-
-#: 
 msgid "Verify People"
 msgstr "개인 정보 확인"
 
@@ -4751,10 +4607,6 @@ msgstr "고정되지 않은 행사"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "성, 이름 미들네임"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "계정이 삭제되면 사용자에게 알림 이메일 보내기"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7717,10 +7569,6 @@ msgid "selected family has no coordinates"
 msgstr "선택한 가족에 좌표가 없습니다"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "모든 사용자에게 이중 인증 등록 요구"
-
-#: 
 msgid "Active Groups"
 msgstr "활성 그룹"
 
@@ -8198,10 +8046,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "데이터베이스를 채울 방법을 선택하세요. 나중에 언제든지 다른 방법을 사용할 수 있습니다."
 
 #: 
-msgid "Church Info"
-msgstr "교회 정보"
-
-#: 
 msgid "Clear all"
 msgstr "전체 지우기"
 
@@ -8232,14 +8076,6 @@ msgstr "공동체 관리 플랫폼"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "교회에 ChurchCRM을 준비하기 위해 이 항목들을 원하는 순서대로 완료하세요."
-
-#: 
-msgid "Confession"
-msgstr "고해성사"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "전역 시스템 설정 및 환경설정 구성"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8288,10 +8124,6 @@ msgstr "현재 사람"
 #: 
 msgid "Database Reset"
 msgstr "데이터베이스 초기화"
-
-#: 
-msgid "Default / Notes"
-msgstr "기본값 / 메모"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9912,10 +9744,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub에서 '프리릴리즈'로 표시된 릴리즈로의 시스템 업그레이드 허용"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "공개 HTML, ICS, JSON URL을 통해 캘린더 이벤트에 비인증 접근 허용합니다. 외부 앱과 캘린더를 공유할 때 필요합니다."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "방문자가 자기 등록 페이지를 통해 자신의 가족 기록을 생성하도록 허용"
 
@@ -10078,24 +9906,12 @@ msgid "Enable Email"
 msgstr "이메일 활성화"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "이벤트 메뉴 활성화"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "외부 캘린더 API 활성화"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM에서 이메일 발송을 활성화합니다. 비밀번호 재설정, 알림, 이메일 링크에 필요합니다."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "SMTP 서버에 사용자 이름과 비밀번호가 필요한 경우 활성화"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "주일학교 모듈과 사이드바 메뉴를 활성화하거나 비활성화합니다."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10193,10 +10009,6 @@ msgstr "위도/경도 숨기기"
 #: 
 msgid "How it works"
 msgstr "작동 방식"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "입금 전표 페이지당 인쇄할 수표 수"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10356,10 +10168,6 @@ msgid "Privacy Note"
 msgstr "개인정보 공지"
 
 #: 
-msgid "Quick Settings"
-msgstr "빠른 설정"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP 인증"
 
@@ -10386,10 +10194,6 @@ msgstr "설정"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "입금 전표 보고서에 지폐 권종 내역 표시"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "기본 탐색의 이벤트 메뉴를 표시하거나 숨깁니다."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10803,10 +10607,6 @@ msgstr "문자가 깨지거나, HTML 엔티티가 텍스트로 표시되거나, 
 #: 
 msgid "Indigo"
 msgstr "남색"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "유효하지 않은 JSON 값입니다 — 설정이 저장되지 않았습니다. 수정 후 다시 시도해 주세요."
 
 #: 
 msgid "Language and regional settings"
@@ -12582,10 +12382,6 @@ msgstr "하루 종일"
 #: 
 msgid "All Roles"
 msgstr "모든 역할"
-
-#: 
-msgid "All System Settings"
-msgstr "모든 시스템 설정"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15053,10 +14849,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "공개 외부 캘린더 페이지를 iframe에 임베드할 수 있는 출처 목록. 기본값은 모든 출처를 허용합니다."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "공개 캘린더 페이지를 iframe에 임베드할 수 있는 출처. 기본값은 모든 사이트를 허용합니다."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "주일학교 그룹은 다음 두 가지 경우에만 수정할 수 있습니다"
 
@@ -15587,10 +15379,6 @@ msgstr "성공적으로 저장되었습니다"
 #: 
 msgid "Select a fund"
 msgstr "헌금 항목 선택"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "나에게 테스트 생일 이메일 보내기"
 
 #: 
 msgid "Sending to"
@@ -16607,10 +16395,6 @@ msgid "Not a valid date of death"
 msgstr "유효한 별세일이 아닙니다"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA가 의무화된 후 사용자가 등록할 수 있는 유예 기간(일)입니다. 즉시 적용하려면 0으로 설정하세요. 진행 중인 유예 기간을 단축하면 사용자가 즉시 잠길 수 있습니다."
-
-#: 
 msgid "Offline"
 msgstr "오프라인"
 
@@ -16935,14 +16719,6 @@ msgid "Download CSV"
 msgstr "CSV 다운로드"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "재무 모듈 및 사이드바 메뉴를 활성화하거나 비활성화합니다."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "모금 모듈을 활성화하거나 비활성화합니다."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "교회 로고 제거 실패"
 
@@ -17139,46 +16915,6 @@ msgid "Feature Toggles"
 msgstr "기능 토글"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "기능 토글은 ChurchCRM에서 사용 가능한 모듈과 기능을 제어합니다. 변경사항은 즉시 적용됩니다."
-
-#: 
-msgid "Finance Features"
-msgstr "재무 기능"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "빠른 전역 검색에 주소 포함"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "빠른 전역 검색에 달력 이벤트 포함"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "빠른 전역 검색에 사용자 정의 가족 속성 포함"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "빠른 전역 검색에 예금 포함"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "빠른 전역 검색에 가족 포함"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "빠른 전역 검색에 사역 포함"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "빠른 전역 검색에 결제 포함"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "빠른 전역 검색에 사람 포함"
-
-#: 
 msgid "Invalid setting"
 msgstr "잘못된 설정"
 
@@ -17187,16 +16923,8 @@ msgid "Lost Password Link"
 msgstr "비밀번호 재설정 링크"
 
 #: 
-msgid "Manage All Features"
-msgstr "모든 기능 관리"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "이메일 전송 마스터 토글. 비밀번호 재설정 및 알림에 필수."
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "공제 불가능한 지불"
 
 #: 
 msgid "Primary Modules"
@@ -17207,20 +16935,12 @@ msgid "Public Calendar API"
 msgstr "공개 달력 API"
 
 #: 
-msgid "Saved"
-msgstr "저장됨"
-
-#: 
 msgid "Search Families"
 msgstr "가족 검색"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "가족 사용자 정의 속성 검색"
-
-#: 
-msgid "Search Settings"
-msgstr "설정 검색"
 
 #: 
 msgid "Self-Registration"
@@ -17437,14 +17157,6 @@ msgstr "알림 수신자"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "새 가족 또는 사람이 추가될 때 알림을 받을 사람"
-
-#: 
-msgid "Person initials style"
-msgstr "사람 이니셜 형식"
-
-#: 
-msgid "Person name display style"
-msgstr "사람 이름 표시 형식"
 
 #: 
 msgid "Spouse Role"
@@ -23440,30 +23152,6 @@ msgid "Download PDF"
 msgstr "PDF 다운로드"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "잠금 기간(분)\n"
-"잠긴 계정은 이 분 후에 자동으로 잠금 해제됩니다. 하나의 IP 주소에서 실패한 로그인은 같은 기간에 계산됩니다."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "하나의 IP 주소에서 최대 실패 로그인 수\n"
-"잠금 기간 내에 하나의 IP 주소에서 실패한 로그인과 비밀번호 재설정 요청이 이 한도에 계산됩니다. 한도에 도달하면 해당 주소에서의 로그인은 기간이 끝날 때까지 거부됩니다.\n"
-"이 기능을 비활성화하려면 0으로 설정하세요. 예를 들어 모든 사람이 하나의 프록시 주소를 통해 ChurchCRM에 액세스하는 경우입니다."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "사용자 계정이 잠기기 전에 허용되는 최대 실패 로그인 수.\n"
-"잠긴 계정은 잠금 기간 후에 자동으로 잠금 해제되거나 관리자가 실패한 로그인을 재설정하면 더 빨리 잠금 해제됩니다.\n"
-"이 기능은 자동화된 비밀번호 추측 공격으로부터 보호하는 데 도움이 됩니다.\n"
-"이 기능을 비활성화하려면 0으로 설정하세요."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "자동 잠금 해제까지 남은 분: %d"
 
@@ -23792,10 +23480,6 @@ msgid "PDF Output"
 msgstr "PDF 출력"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF 처리 방식"
-
-#: 
 msgid "Questions Line"
 msgstr "문의 문구"
 
@@ -23832,10 +23516,6 @@ msgid "Greeting"
 msgstr "인사"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "서신 인사와 서명"
-
-#: 
 msgid "Letterhead"
 msgstr "서신 머리글"
 
@@ -23858,10 +23538,6 @@ msgstr "PDF 서신에 인쇄할 서신 머리글 설정"
 #: 
 msgid "Using the church name and address"
 msgstr "교회 이름과 주소 사용"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28231,10 +27907,6 @@ msgstr "교회 설정하기"
 #: 
 msgid "Setup Dashboard"
 msgstr "설정 대시보드"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "설정 대시보드 일수"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

@@ -93,9 +93,9 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
             cy.get("input[name=Password]").type(`${env["admin.password"]}{enter}`, { log: false });
         });
         cy.location("pathname").should("match", SETUP);
-        // Announcements presume an install in daily use; in setup mode the
-        // Setup Dashboard is the landing page, but none may render there.
-        cy.get(".crm-system-notification").should("not.exist");
+        // Announcements presume an install in daily use; in setup mode they
+        // never load, so the notification center stays away entirely.
+        cy.get("#notificationCenterMenuItem").should("not.exist");
     });
 
     it("starts in the browser's language, and the top bar picker changes it", () => {
@@ -149,7 +149,8 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.setSystemConfig(PROFILE, "demo");
         cy.freshAdminFormLogin();
         cy.location("pathname").should("match", SETUP);
-        cy.get("#demoModeBanner .js-start-fresh").should("be.visible");
+        cy.get("#notificationCenterMenu").click();
+        cy.get('[data-notification-id="demo-mode"] .js-start-fresh').should("be.visible");
         cy.get("#setupChoiceDemo")
             .should("contain.text", "You're exploring demo data")
             .find(".js-start-fresh")
@@ -158,9 +159,10 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.get("#setupSteps").should("not.exist");
 
         cy.visit("/people/dashboard");
-        cy.get("#demoModeBanner").should("be.visible");
+        cy.get("#notificationCenterMenuItem").should("be.visible");
 
         staffSignIn();
-        cy.get("#demoModeBanner").should("be.visible").find(".js-start-fresh").should("not.exist");
+        cy.get("#notificationCenterMenu").click();
+        cy.get('[data-notification-id="demo-mode"]').should("be.visible").find(".js-start-fresh").should("not.exist");
     });
 });

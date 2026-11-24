@@ -36,7 +36,7 @@ describe("Communication Menu and Dashboards", () => {
         cy.visit("people/text");
         cy.contains("h2", "Text");
         cy.contains("SMS Integration");
-        cy.get(".alert:not(.crm-system-notification)").should("exist");
+        cy.get(".alert").should("exist");
         cy.contains("Text Tools");
         cy.get(".page-header a[href$='/admin/settings#textMessageSettings']").should("contain", "Text Settings");
     });

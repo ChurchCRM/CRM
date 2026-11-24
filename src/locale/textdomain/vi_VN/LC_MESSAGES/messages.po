@@ -1606,10 +1606,6 @@ msgid "Permission"
 msgstr "Quyền hạn"
 
 #: 
-msgid "System Settings"
-msgstr "Hệ thống"
-
-#: 
 msgid "User Editor"
 msgstr "Trình chỉnh sửa người dùng"
 
@@ -2095,24 +2091,12 @@ msgid "Localization"
 msgstr "Ngôn ngữ"
 
 #: 
-msgid "Setting saved"
-msgstr "Cài đặt đã được lưu lại"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Chỉnh sửa cài đặt JSON"
-
-#: 
 msgid "False"
 msgstr "Không"
 
 #: 
 msgid "True"
 msgstr "Có"
-
-#: 
-msgid "Edit Settings"
-msgstr "Chỉnh sửa cài đặt"
 
 #: 
 msgid "Functions"
@@ -2230,33 +2214,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Chỉ bao gồm các phân loại này trong thư mục, được phân tách bằng dấu phẩy"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Đây là những con số vai trò trong gia đình được chỉ định là người đứng đầu nhà"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Đây là những con số vai trò trong gia đình được chỉ định là vợ / chồng"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Đây là các số vai trò gia đình được chỉ định khi còn nhỏ"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Độ dài tối thiểu mà người dùng có thể đặt mật khẩu của họ"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Danh sách mật khẩu không được phép (quá rõ ràng) được phân tách bằng dấu phẩy."
-
-#: 
 msgid "Default City"
 msgstr "Thành phố mặc định"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Trạng thái mặc định - Phải là chữ viết tắt 2 chữ cái!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2279,68 +2238,12 @@ msgid "First month of the fiscal year"
 msgstr "Tháng đầu tiên của năm tài chính"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Đặt true để tắt tính năng nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân. Đặt false để cho phép nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Đặt true để tắt tính năng quản lý đăng ký bản tin trong Family Editor."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Đặt true để tắt tính năng nhập Ngày cưới trong Family Editor. Đặt false để cho phép nhập Ngày cưới trong Family Editor."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Số lượng séc cho Báo cáo nộp tiền"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Đơn vị dùng để đo khoảng cách, dặm hoặc km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Cho phép thanh toán không khấu trừ"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Rác cho dòng trên cùng của báo cáo thuế. Ngày sẽ được thêm vào cuối dòng này."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Rác cho dòng dưới cùng của báo cáo thuế."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Người ký báo cáo thuế"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Rác cho báo cáo nhắc nhở cam kết"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Người ký lời nhắc cam kết"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Rác cho báo cáo nhắc nhở cam kết - Không có hồ sơ cam kết"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Rác cho báo cáo nhắc nhở cầm cố - Không có hồ sơ thanh toán"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Rác cho báo cáo xác nhận và sửa thông tin cơ sở dữ liệu"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Người ký báo cáo xác nhận và chỉnh sửa thông tin cơ sở dữ liệu"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Rác cho báo cáo thư mục"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3795,10 +3698,6 @@ msgstr "Kho lưu trữ sao lưu không chứa cơ sở dữ liệu"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Làm cho mã zip / mã bưu điện do người dùng nhập UPPERCASE khi lưu vào cơ sở dữ liệu."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Dùng để kết thúc một lá thư trước Người ký"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3903,10 +3802,6 @@ msgid "Failed"
 msgstr "Thất bại"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Số tài khoản kiểm tra nhà thờ"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Đã hủy kích hoạt gia đình này"
@@ -3919,10 +3814,6 @@ msgstr "Đã kích hoạt Gia đình"
 #: 
 msgid "families"
 msgstr "các gia đình"
-
-#: 
-msgid "Financial Settings"
-msgstr "Tài chính"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3963,10 +3854,6 @@ msgstr "Thuộc tính được hủy gán thành công."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Thuộc tính không thể được hủy chỉ định."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Văn bản trước tên trong email / báo cáo"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4210,10 +4097,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "(các) bản ghi được thêm thành công vào Nhóm đã chọn."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Để xác định ngày trong Công cụ chọn ngày, theo mặc định: yyyy-mm-dd, Ví dụ: bằng tiếng Pháp: dd / mm / yyyy."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Để xác định ngày trong Công cụ chọn ngày, theo mặc định: Ymd, Ví dụ: bằng tiếng Pháp: d / m / Y."
 
@@ -4300,10 +4183,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Tìm kiếm gia đình"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4402,10 +4281,6 @@ msgid "Change Settings"
 msgstr "Thay đổi cài đặt"
 
 #: 
-msgid "Unknown Type"
-msgstr "Loại không xác định"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID cho Giỏ hàng phải là số"
 
@@ -4424,14 +4299,6 @@ msgstr "Tìm kiếm mọi người"
 #: 
 msgid "Maximum number of People"
 msgstr "Số người tối đa"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Lĩnh vực nơi Father Of Confession được liệt kê, phải là những người thuộc loại nhóm"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Trường nơi lưu trữ Lời thú tội cuối cùng, phải là một loại ngày tháng"
 
 #: 
 msgid "People Reports"
@@ -4685,16 +4552,6 @@ msgid "Event not found"
 msgstr "Không tìm thấy sự kiện"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Độ dài thời gian chờ của phiên tính bằng giây. Đặt thành 0 để tắt thời gian chờ của phiên."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Số tiền tối thiểu mà mật khẩu mới phải khác mật khẩu cũ (# ký tự đã thay đổi).  Đặt thành 0 để tắt tính năng này"
-
-#: 
 msgid "Verify People"
 msgstr "Xác minh mọi người"
 
@@ -4764,10 +4621,6 @@ msgstr "Sự kiện được bỏ ghim"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Gửi email thông báo cho người dùng khi tài khoản của họ đã bị xóa"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7731,10 +7584,6 @@ msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
-
-#: 
 msgid "Active Groups"
 msgstr "Nhóm hoạt động"
 
@@ -8212,10 +8061,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Chon cach ban muon nhap du lieu vao co so du lieu. Ban luon co the su dung phuong phap khac sau."
 
 #: 
-msgid "Church Info"
-msgstr "Thong tin giao hoi"
-
-#: 
 msgid "Clear all"
 msgstr "Xoa tat ca"
 
@@ -8246,14 +8091,6 @@ msgstr "Nen tang quan ly cong dong"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Hoan thanh cac buoc nay theo bat ky thu tu nao de chuan bi ChurchCRM cho giao xu cua ban."
-
-#: 
-msgid "Confession"
-msgstr "Xung toi"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Cau hinh cai dat va tuy chon he thong toan cuc"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8302,10 +8139,6 @@ msgstr "Nguoi hien tai"
 #: 
 msgid "Database Reset"
 msgstr "Dat lai co so du lieu"
-
-#: 
-msgid "Default / Notes"
-msgstr "Mac dinh / Ghi chu"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9926,10 +9759,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Cho phép nâng cấp hệ thống lên các phiên bản được đánh dấu là 'phát hành thử' trên GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Cho phép truy cập không xác thực vào các sự kiện lịch qua URL HTML, ICS và JSON công khai. Cần thiết để chia sẻ lịch với các ứng dụng bên ngoài."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang tự đăng ký"
 
@@ -10092,24 +9921,12 @@ msgid "Enable Email"
 msgstr "Bật email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Bật menu sự kiện"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Bật API lịch bên ngoài"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Bật gửi email từ ChurchCRM. Cần thiết để đặt lại mật khẩu, thông báo và liên kết email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Bật nếu máy chủ SMTP của bạn yêu cầu tên người dùng và mật khẩu"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Bật hoặc tắt mô-đun Trường Chúa nhật và menu thanh bên."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10207,10 +10024,6 @@ msgstr "Ẩn vĩ độ/kinh độ"
 #: 
 msgid "How it works"
 msgstr "Cách hoạt động"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Số séc cần in trên mỗi trang phiếu tiền gửi"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10370,10 +10183,6 @@ msgid "Privacy Note"
 msgstr "Lưu ý về quyền riêng tư"
 
 #: 
-msgid "Quick Settings"
-msgstr "Cài đặt nhanh"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Xác thực SMTP"
 
@@ -10400,10 +10209,6 @@ msgstr "Thiết lập"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Hiển thị phân tích mệnh giá tiền trên báo cáo phiếu tiền gửi"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Hiển thị hoặc ẩn menu Sự kiện trong điều hướng chính."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10817,10 +10622,6 @@ msgstr "Nếu bạn nhận thấy ký tự bị lỗi, thực thể HTML hiển 
 #: 
 msgid "Indigo"
 msgstr "Chàm"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Giá trị JSON không hợp lệ — cài đặt chưa được lưu. Vui lòng sửa và thử lại."
 
 #: 
 msgid "Language and regional settings"
@@ -12596,10 +12397,6 @@ msgstr "Cả ngày"
 #: 
 msgid "All Roles"
 msgstr "Tat ca vai tro"
-
-#: 
-msgid "All System Settings"
-msgstr "Tất cả cài đặt hệ thống"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15067,10 +14864,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Danh sách các nguồn gốc phân cách bằng dấu cách được phép nhúng trang lịch công kờ bên ngoài trong iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Các nguồn gốc phân cách bằng dấu cách được phép nhúng trang lịch công kờ trong iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Nhóm Trường Chúa nhật không thể sửa đổi, chỉ trong hai trường hợp này"
 
@@ -15601,10 +15394,6 @@ msgstr "Đã lưu thành công"
 #: 
 msgid "Select a fund"
 msgstr "Chọn một quỹ"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Gửi Email Sinh nhật Thử nghiệm cho Tôi"
 
 #: 
 msgid "Sending to"
@@ -16621,10 +16410,6 @@ msgid "Not a valid date of death"
 msgstr "Ngày mất không hợp lệ"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Số ngày người dùng có để đăng ký 2FA sau khi bắt buộc. Đặt là 0 để bắt buộc ngay lập tức. Rút ngắn thời gian ân hạn đang hoạt động có thể khóa người dùng ngay lập tức."
-
-#: 
 msgid "Offline"
 msgstr "Ngoại tuyến"
 
@@ -16949,14 +16734,6 @@ msgid "Download CSV"
 msgstr "Tải xuống CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Bật hoặc tắt mô-đun Tài chính và menu thanh bên."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Bật hoặc tắt mô-đun Huy động quỹ."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Không thể xóa logo nhà thờ"
 
@@ -17153,46 +16930,6 @@ msgid "Feature Toggles"
 msgstr "Các Công tắc Tính năng"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Các công tắc tính năng kiểm soát các mô-đun và tính năng nào có sẵn trong ChurchCRM. Các thay đổi có hiệu lực ngay lập tức."
-
-#: 
-msgid "Finance Features"
-msgstr "Tính năng Tài chính"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Bao gồm địa chỉ trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Bao gồm các sự kiện lịch trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Bao gồm các thuộc tính gia đình tùy chỉnh trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Bao gồm các tiền gửi trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Bao gồm các gia đình trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Bao gồm các nhóm trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Bao gồm các khoản thanh toán trong tìm kiếm toàn cầu nhanh"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Bao gồm mọi người trong tìm kiếm toàn cầu nhanh"
-
-#: 
 msgid "Invalid setting"
 msgstr "Cài đặt không hợp lệ"
 
@@ -17201,16 +16938,8 @@ msgid "Lost Password Link"
 msgstr "Liên kết Đặt lại Mật khẩu"
 
 #: 
-msgid "Manage All Features"
-msgstr "Quản lý Tất cả Tính năng"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Công tắc chính cho việc gửi email. CẦN THIẾT cho việc đặt lại mật khẩu và thông báo"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Các Khoản thanh toán Không được khấu trừ"
 
 #: 
 msgid "Primary Modules"
@@ -17221,20 +16950,12 @@ msgid "Public Calendar API"
 msgstr "API Lịch Công khai"
 
 #: 
-msgid "Saved"
-msgstr "Đã lưu"
-
-#: 
 msgid "Search Families"
 msgstr "Tìm kiếm Gia đình"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Tìm kiếm Thuộc tính Tùy chỉnh Gia đình"
-
-#: 
-msgid "Search Settings"
-msgstr "Cài đặt Tìm kiếm"
 
 #: 
 msgid "Self-Registration"
@@ -17451,14 +17172,6 @@ msgstr "Người nhận thông báo"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Những người được thông báo khi có gia đình hoặc cá nhân mới được thêm"
-
-#: 
-msgid "Person initials style"
-msgstr "Kiểu chữ cái đầu của người"
-
-#: 
-msgid "Person name display style"
-msgstr "Kiểu hiển thị tên người"
 
 #: 
 msgid "Spouse Role"
@@ -23454,30 +23167,6 @@ msgid "Download PDF"
 msgstr "Tải PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Thời gian khóa, tính bằng phút\n"
-"Tài khoản bị khóa sẽ tự mở sau số phút này. Các lần đăng nhập thất bại từ một địa chỉ IP được đếm trong cùng khoảng thời gian đó."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Số lần đăng nhập thất bại tối đa từ một địa chỉ IP\n"
-"Các lần đăng nhập thất bại và yêu cầu đặt lại mật khẩu từ một địa chỉ IP được tính vào giới hạn này trong thời gian khóa. Khi đạt giới hạn, đăng nhập từ địa chỉ đó bị từ chối cho đến khi hết thời gian.\n"
-"Đặt bằng 0 để tắt tính năng này, ví dụ khi mọi người vào ChurchCRM qua một địa chỉ proxy."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Số lần đăng nhập thất bại tối đa trước khi khóa tài khoản người dùng.\n"
-"Tài khoản bị khóa sẽ tự mở sau thời gian khóa, hoặc sớm hơn khi quản trị viên đặt lại số lần đăng nhập thất bại.\n"
-"Tính năng này giúp chống việc đoán mật khẩu tự động.\n"
-"Đặt bằng 0 để tắt tính năng này."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Số phút còn lại trước khi tự mở khóa: %d"
 
@@ -23806,10 +23495,6 @@ msgid "PDF Output"
 msgstr "Đầu ra PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Chế độ xử lý PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Dòng câu hỏi"
 
@@ -23846,10 +23531,6 @@ msgid "Greeting"
 msgstr "Lời chào"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Lời chào và chữ ký thư"
-
-#: 
 msgid "Letterhead"
 msgstr "Phần đầu thư"
 
@@ -23872,10 +23553,6 @@ msgstr "Đặt phần đầu thư mà thư PDF sẽ in"
 #: 
 msgid "Using the church name and address"
 msgstr "Đang dùng tên và địa chỉ nhà thờ"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Đang dùng đường dẫn phần đầu thư đã đặt trong Cài đặt hệ thống"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28245,10 +27922,6 @@ msgstr "Thiết lập nhà thờ của bạn"
 #: 
 msgid "Setup Dashboard"
 msgstr "Bảng điều khiển thiết lập"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Số ngày Bảng điều khiển thiết lập"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
