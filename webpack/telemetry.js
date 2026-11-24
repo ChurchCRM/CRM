@@ -1,13 +1,4 @@
-/**
- * PostHog telemetry initialisation.
- *
- * Loaded only when sTelemetryLevel !== 'none' (Header.php injects the bundle
- * conditionally via TelemetryService::isEnabled()). Reads config from
- * window.CRM.telemetry which is set by Header.php before this bundle loads.
- *
- * JS exceptions are captured at all non-none levels (errors / warnings / full).
- * Page views are handled server-side only.
- */
+/** Browser exceptions send at Default and Full; page views are handled server-side. */
 
 import posthog from "posthog-js";
 
@@ -60,7 +51,7 @@ function scrubHost(value, replacements) {
 }
 
 function sanitizeEvent(event) {
-  if (isBenignResizeObserverLoop(event)) {
+  if (event?.event === "$web_vitals" || isBenignResizeObserverLoop(event)) {
     return null;
   }
 
@@ -99,21 +90,22 @@ function sanitizeEvent(event) {
   return event;
 }
 
-if (cfg?.key && cfg.level && cfg.level !== "none" && cfg.install_profile !== "test") {
+if (cfg?.key && cfg.install_profile !== "test") {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
     capture_pageview: false,
-    capture_performance: false,
+    capture_performance: { web_vitals: false, network_timing: false },
     autocapture: false,
     capture_heatmaps: false,
     disable_session_recording: true,
-    capture_exceptions: true, // active at all levels (errors / warnings / full)
+    capture_exceptions: true,
     person_profiles: "never",
     ip: false,
     bootstrap: { distinctID: cfg.distinctID || "" },
     before_send: sanitizeEvent,
   });
   const superProperties = {
+    ...cfg.properties,
     install_profile: cfg.install_profile,
     install_path_type: window.CRM?.root && window.CRM.root !== "/" ? "subdirectory" : "root",
   };

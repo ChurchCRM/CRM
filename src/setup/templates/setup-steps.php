@@ -196,7 +196,10 @@ require_once __DIR__ . '/header.php';
                         <p id="db-version-message"></p>
                         <p class="mb-0"><?= gettext('Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.') ?></p>
                     </div>
-                    <p class="text-body-secondary small"><?= gettext('Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose.') ?></p>
+                    <p class="text-body-secondary small"><?= gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.') ?></p>
+                    <p class="text-body-secondary small"><?= gettext('A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.') ?></p>
+                    <p class="text-body-secondary small"><?= gettext('In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.') ?></p>
+                    <p class="text-body-secondary small"><?= gettext('No tier sends people, donors, giving, content, church contact details, your web address or server name.') ?></p>
                     <div class="card bg-light mb-4">
                         <div class="card-body">
                             <p class="text-body-secondary mb-2"><?= gettext('Sign in with your admin account') ?>:</p>

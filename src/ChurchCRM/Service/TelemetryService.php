@@ -21,10 +21,8 @@ class TelemetryService
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
 
     // Collection levels stored in sTelemetryLevel.
-    public const LEVEL_NONE     = 'none';
-    public const LEVEL_INSTALL  = 'install';
-    public const LEVEL_ERRORS   = 'errors';    // WARNING+ + JS exceptions
-    public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
+    public const LEVEL_DEFAULT = 'default';
+    public const LEVEL_FULL = 'full';
 
     private static array $installProfileCache = [];
     private static ?string $logDedupeDirectory = null;
@@ -67,16 +65,14 @@ class TelemetryService
 
     public static function getLevel(): string
     {
-        $level = SystemConfig::getValue('sTelemetryLevel');
-        $level = $level === 'warnings' ? self::LEVEL_ERRORS : $level;
-        return in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
-            ? $level
-            : self::LEVEL_NONE;
+        return SystemConfig::getValue('sTelemetryLevel') === self::LEVEL_FULL
+            ? self::LEVEL_FULL
+            : self::LEVEL_DEFAULT;
     }
 
     public static function isEnabled(): bool
     {
-        return in_array(self::getLevel(), [self::LEVEL_ERRORS, self::LEVEL_FULL], true);
+        return true;
     }
 
     /** True only at 'full' level — page views are high-volume, opt-in extra. */
@@ -89,7 +85,7 @@ class TelemetryService
     public static function syncLifecycle(?callable $send = null): void
     {
         $level = self::getLevel();
-        if ($level === self::LEVEL_NONE || self::installProfile() === 'test') {
+        if (self::installProfile() === 'test') {
             return;
         }
 
@@ -158,8 +154,7 @@ class TelemetryService
     /** Build a lifecycle event for an installation with uncovered version state. */
     public static function buildLifecycleEvent(string $level, string $systemId, string $coveredVersion, string $currentVersion): ?array
     {
-        if (!in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
-            || self::installProfile() === 'test' || $systemId === '' || $coveredVersion === $currentVersion) {
+        if (self::installProfile() === 'test' || $systemId === '' || $coveredVersion === $currentVersion) {
             return null;
         }
 
@@ -306,11 +301,7 @@ class TelemetryService
         }
         $installId = '';
         try {
-            // Once installed, these are diagnostics, not a failed install: the admin's telemetry level applies.
             if (SystemConfig::isInitialized()) {
-                if (self::getLevel() === self::LEVEL_NONE) {
-                    return;
-                }
                 $installId = (string) SystemConfig::getValue('sSystemID');
             }
         } catch (\Throwable) {
@@ -565,19 +556,7 @@ class TelemetryService
 
     private static function lifecycleProperties(string $version): array
     {
-        $properties = [
-            'crm_version' => $version,
-            'install_profile' => self::installProfile(),
-            'church_country' => self::churchCountry(),
-            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
-        ];
-        try {
-            $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
-            $properties += self::databaseProperties($serverVersion);
-        } catch (\Throwable) {
-            // Database failure reporting must also work when the connection is unavailable.
-        }
-        return $properties;
+        return array_replace(self::baseProperties(), ['crm_version' => $version]);
     }
 
     public static function databaseProperties(string $serverVersion): array
@@ -592,8 +571,8 @@ class TelemetryService
         ];
     }
 
-    /** Properties attached to every server-side PostHog event. */
-    private static function baseProperties(): array
+    /** System information shared by server and browser telemetry. */
+    public static function baseProperties(): array
     {
         $properties = [
             '$lib'        => 'churchcrm-php',
