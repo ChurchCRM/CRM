@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GradePromotionService;
+use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,11 +20,11 @@ $app->get('/people', function (Request $request, Response $response): Response {
             'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
             'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
         ]],
-        'peopleFamilies' => [gettext('Families'), 'fa-solid fa-people-roof', [
-            'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideWeddingDate', 'bHideFamilyNewsletter', 'bForceUppercaseZip',
-        ]],
         'peoplePeople' => [gettext('People'), 'fa-solid fa-user', [
             'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideDeceasedFromDirectory',
+        ]],
+        'peopleFamilies' => [gettext('Families'), 'fa-solid fa-people-roof', [
+            'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideWeddingDate', 'bHideFamilyNewsletter', 'bForceUppercaseZip',
         ]],
         'peopleGrades' => [gettext('Grade Promotion'), 'fa-solid fa-graduation-cap', [
             'iGradePromotionMonth', 'iGradePromotionDay',
@@ -31,11 +32,19 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
             'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
         ]],
+        'peopleDirectory' => [gettext('Directory'), 'fa-solid fa-address-book', [
+            'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2',
+        ]],
+        'peopleConfirmation' => [gettext('Confirmation Letter'), 'fa-solid fa-envelope', [
+            'sDear', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sConfirmSincerely', 'sConfirmSigner',
+        ]],
     ];
 
     // Short labels; the legacy sentence stays as the help text.
     $labels = [
         'bEnableSelfRegistration'              => gettext('Self-Registration'),
+        'iPersonNameStyle'                     => gettext('Name Format'),
+        'iPersonInitialStyle'                  => gettext('Initials Format'),
         'bHidePersonAddress'                   => gettext('Hide Address Without Family'),
         'bHideFriendDate'                      => gettext('Hide Friend Date'),
         'bHideWeddingDate'                     => gettext('Hide Wedding Date'),
@@ -56,6 +65,17 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'iMapZoom'                             => gettext('Default Map View'),
         'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
         'sGeocoderProviders'                   => gettext('Geocoding services'),
+        'sDear'                                => gettext('Greeting'),
+        'sConfirmSincerely'                    => gettext('Closing'),
+        'sConfirmSigner'                       => gettext('Signer'),
+        'sConfirm1'                            => sprintf(gettext('Letter Text %d'), 1),
+        'sConfirm2'                            => sprintf(gettext('Letter Text %d'), 2),
+        'sConfirm3'                            => sprintf(gettext('Letter Text %d'), 3),
+        'sConfirm4'                            => sprintf(gettext('Letter Text %d'), 4),
+        'sConfirm5'                            => sprintf(gettext('Letter Text %d'), 5),
+        'sConfirm6'                            => sprintf(gettext('Letter Text %d'), 6),
+        'sDirectoryDisclaimer1'                => sprintf(gettext('Disclaimer %d'), 1),
+        'sDirectoryDisclaimer2'                => sprintf(gettext('Disclaimer %d'), 2),
         'iGradePromotionMonth'                 => gettext('Promotion Month'),
         'iGradePromotionDay'                   => gettext('Promotion Day'),
     ];
@@ -80,7 +100,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
                 unset($setting['tooltip']);
             }
 
-            if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
+            if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2'], true)) {
                 $setting['type'] = 'textarea';
             }
             if ($setting['name'] === GeocoderChain::CONFIG_KEY) {
@@ -132,6 +152,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
         ]),
         'sections'      => $sections,
         'gradePromotion' => gradePromotionSummary(),
+        'memberSignIn'  => ['on' => SystemConfig::getBooleanValue('bMemberSignIn'), 'emailProblem' => (new MemberSignInSettingsService())->emailProblem()],
         'listLinks'     => array_values(array_filter([
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
             [gettext('Person Properties'), '/people/properties/p', 'fa-person-half-dress'],
@@ -140,7 +161,6 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/people/properties/f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
-            [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
         ])),
     ];
 

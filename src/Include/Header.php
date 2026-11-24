@@ -532,7 +532,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
     $sPageSubtitle = $sPageSubtitle ?? '';
     $aBreadcrumbs = $aBreadcrumbs ?? [];
     $sPageHeaderButtons = $sPageHeaderButtons ?? '';
-    $sSettingsCollapseId = $sSettingsCollapseId ?? '';
     ?>
     <div class="page-header">
       <div class="container-xl">
@@ -571,11 +570,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         </div>
       </div>
     </div><!-- /.page-header -->
-    <?php if (!empty($sSettingsCollapseId)) : ?>
-    <div class="container-xl">
-      <div class="collapse mb-3" id="<?= InputUtils::escapeAttribute($sSettingsCollapseId) ?>"></div>
-    </div>
-    <?php endif; ?>
     <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php

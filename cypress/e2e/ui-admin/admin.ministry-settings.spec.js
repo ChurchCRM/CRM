@@ -167,7 +167,9 @@ describe("Admin → Ministry Settings", () => {
             .and("have.attr", "min", "0")
             .closest(".mb-3")
             .should("contain", "Unfilled-position alert lead time (hours)")
-            .and("contain", "reminders are not affected");
+            .find(".setting-hint")
+            .invoke("attr", "aria-label")
+            .should("contain", "reminders are not affected");
 
         cy.intercept("POST", "**/admin/api/system/config/iVolunteerGapAlertLeadHours").as("saveGapLead");
         cy.get("#ministrySettingsPanel input[name='iVolunteerGapAlertLeadHours']").should("be.enabled").clear().type("168");
@@ -187,7 +189,9 @@ describe("Admin → Ministry Settings", () => {
             .and("have.value", "07:00")
             .closest(".mb-3")
             .should("contain", "Daily unfilled-position email time")
-            .and("contain", "lead time plus 24 hours");
+            .find(".setting-hint")
+            .invoke("attr", "aria-label")
+            .should("contain", "lead time plus 24 hours");
 
         cy.intercept("POST", "**/admin/api/system/config/sVolunteerGapAlertBatchTime").as("saveBatchTime");
         cy.get("#ministrySettingsPanel input[name='sVolunteerGapAlertBatchTime']").should("be.enabled").clear().type("06:30");
@@ -267,14 +271,6 @@ describe("Admin → Ministry Settings", () => {
         cy.get("#ministry-topup-skipped").should("contain", "1 default skipped for another reason");
         cy.get("#ministry-topup-hint").should("contain", "default volunteer");
         cy.dbQuery("DELETE FROM config_cfg WHERE cfg_name = 'sLastVolunteerTopUpResult'");
-    });
-
-    it("has taken its settings off the System Settings page", () => {
-        freshAdminLogin();
-        cy.visit("/SystemSettings.php");
-        cy.get('input[name="new_value[iVolunteerReminderLeadHours]"]').should("not.exist");
-        cy.get('input[name="new_value[iVolunteerGapAlertLeadHours]"]').should("not.exist");
-        cy.get('input[name="new_value[sVolunteerGapAlertBatchTime]"]').should("not.exist");
     });
 
     it("leaves the Ministry Dashboard with the notification card and a link here, not a settings strip", () => {

@@ -46,4 +46,24 @@ describe("Admin sidebar navigation", () => {
             });
         });
     });
+
+    it("indents a nested menu under its toggle and keeps the current page in view", () => {
+        cy.setupAdminSession();
+        cy.viewport(1280, 600);
+        cy.visit("/admin/people");
+        cy.contains("#sidebar-menu .dropdown-item", "Self Registrations").then(($sibling) => {
+            const siblingPad = parseFloat(getComputedStyle($sibling[0]).paddingInlineStart);
+            cy.get("#sidebar-menu .dropdown-item.active").closest(".dropdown").children(".dropdown-toggle").then(($toggle) => {
+                expect(parseFloat(getComputedStyle($toggle[0]).paddingInlineStart)).to.eq(siblingPad);
+            });
+            cy.get("#sidebar-menu .dropdown-item.active").should(($active) => {
+                expect(parseFloat(getComputedStyle($active[0]).paddingInlineStart)).to.be.greaterThan(siblingPad);
+            });
+        });
+
+        cy.visit("/admin/system/feature-toggles");
+        cy.get("#sidebar-menu .dropdown-item.active").should(($active) => {
+            expect($active[0].getBoundingClientRect().bottom).to.be.at.most(Cypress.config("viewportHeight"));
+        });
+    });
 });

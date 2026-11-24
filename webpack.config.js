@@ -103,6 +103,7 @@ module.exports = {
     restore: './webpack/restore',
     'csv-import': './webpack/csv-import',
     'admin-dashboard': './webpack/admin-dashboard',
+    'admin-settings': './webpack/admin-settings',
     'admin-setup': './webpack/admin-setup',
     'first-run': './webpack/first-run',
     // Admin → Member Portal (#9864): theme picker, portal settings, statistics.
@@ -135,7 +136,6 @@ module.exports = {
     'email-delete-queue': './webpack/people/email-delete-queue',
     'email-log-table': './webpack/people/email-log-table',
     'error': './webpack/error',
-    'feature-toggles': './webpack/feature-toggles',
     'finance-report-options': './webpack/finance-report-options',
     'groups-group-view': './webpack/groups/group-view',
     'groups-group-properties-form': './webpack/groups/group-properties-form',

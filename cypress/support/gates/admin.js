@@ -12,6 +12,15 @@ export const ADMIN_GATES = [
         deny: except(STAFF, "church-admin"),
     },
     {
+        id: "finance-statement-settings",
+        audience: "admin",
+        classification: "configuration",
+        api: { method: "GET", url: "/finance/api/config/sChurchTaxId" },
+        page: "/finance/statements/settings",
+        allow: ["church-admin"],
+        deny: except(STAFF, "church-admin"),
+    },
+    {
         id: "people-property-lists",
         audience: "admin",
         classification: "configuration",

@@ -42,7 +42,7 @@ describe("Member Portal — member landing", () => {
 
     it("direct staff page visits send a member session to staff sign-in", () => {
         login();
-        ["people/dashboard", "people/dashboard", "SystemSettings.php"].forEach((path) => {
+        ["people/dashboard", "admin/people"].forEach((path) => {
             cy.visit(path, { failOnStatusCode: false });
             cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
         });

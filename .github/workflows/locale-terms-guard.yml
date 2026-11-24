@@ -57,7 +57,12 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: node locale/scripts/lib/locale-terms-guard.js --base "$BASE_SHA" --report terms-guard-report.md
 
+      - name: Show the guard report for fork PRs
+        if: steps.guard.outcome == 'failure' && github.event.pull_request.head.repo.full_name != github.repository
+        run: cat terms-guard-report.md
+
       - name: Post or update the guard comment
+        if: github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           FLAGGED: ${{ steps.guard.outputs.flagged }}

@@ -98,6 +98,7 @@ $app->get('/', function (Request $request, Response $response) {
     // rather than letting birthday emails silently stop going out.
     $timerJobsLastRun = SystemService::getLastTimerJobsRun();
 
+
     $pageArgs = [
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Admin Dashboard'),
@@ -107,20 +108,9 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ...(InstallSetupService::isWindowOpen() ? [['label' => gettext('Setup Dashboard'), 'url' => '/admin/setup', 'icon' => 'fa-list-check']] : []),
-            ['label' => gettext('System Settings'), 'url' => '/SystemSettings.php', 'icon' => 'fa-cog'],
-            ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
+            ['label' => gettext('Settings'), 'url' => '/admin/settings', 'icon' => 'fa-sliders'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
         ]),
-        'pdfSettings' => array_map(static function (array $setting): array {
-            $setting['label'] = gettext('PDF Temporary Directory');
-            $setting['tooltip'] = gettext($setting['tooltip']);
-            return $setting;
-        }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
-        'setupSettings' => array_map(static function (array $setting): array {
-            $setting['label'] = gettext('Setup Dashboard Days');
-            $setting['tooltip'] = gettext($setting['tooltip']);
-            return $setting;
-        }, SystemConfig::getSettingsConfig([InstallSetupService::DAYS_SETTING])),
         'setupChecklist'   => $setupChecklist,
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,

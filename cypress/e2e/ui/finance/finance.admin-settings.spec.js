@@ -1,12 +1,6 @@
 describe("Finance Settings hub", () => {
     it("shows all finance settings and quick links for an admin", () => {
         const settingsBySection = {
-            financeTaxStatements: [
-                "sGivingStatementOpening",
-                "sGivingStatementClosing",
-                "sGivingStatementQuestions",
-                "sTaxSigner",
-            ],
             financePledgeReminders: [
                 "sReminder1",
                 "sReminderSigner",
@@ -15,7 +9,7 @@ describe("Finance Settings hub", () => {
             ],
             financeZeroGivers: ["sZeroGivers", "sZeroGivers2", "sZeroGivers3"],
             financeQuickBooks: ["sQBDTSettings"],
-            financeOptions: ["bEnableNonDeductible"],
+            financeDeposits: ["iFYMonth", "iMaxTaxYears", "sDepositSlipType", "bDisplayBillCounts", "bUseScannedChecks", "bRequireCheckNumber", "bEnableNonDeductible", "bUseDonationEnvelopes"],
         };
 
         cy.setupAdminSession();
@@ -61,8 +55,8 @@ describe("Finance Settings hub", () => {
         it("saves text and boolean settings and reloads their values", () => {
             const signer = "#financePledgeReminders [name='sReminderSigner']";
             const nonDeductible =
-                "#financeOptions input[name='bEnableNonDeductible']";
-            const options = "#financeOptions .settings-panel-fields";
+                "#financeDeposits input[name='bEnableNonDeductible']";
+            const options = "#financeDeposits .settings-panel-fields";
             const newSigner = `Finance test signer ${Date.now()}`;
 
             cy.setupAdminSession();
@@ -84,14 +78,11 @@ describe("Finance Settings hub", () => {
             cy.wait("@saveSigner").its("response.statusCode").should("eq", 200);
 
             cy.get(options, { timeout: 30000 }).should("not.be.disabled");
-            cy.get(`${nonDeductible}:checked`)
-                .invoke("val")
-                .then((currentValue) => {
-                    const nextValue = currentValue === "1" ? "0" : "1";
+            cy.get(nonDeductible)
+                .then(($switch) => {
+                    const nextValue = $switch.is(":checked") ? "0" : "1";
 
-                    cy.get(`${nonDeductible}[value='${nextValue}']`)
-                        .closest("label")
-                        .click();
+                    cy.wrap($switch).click({ force: true });
                     cy.wait("@saveNonDeductible")
                         .its("response.statusCode")
                         .should("eq", 200);
@@ -104,40 +95,9 @@ describe("Finance Settings hub", () => {
                     cy.get(options, { timeout: 30000 }).should(
                         "not.be.disabled",
                     );
-                    cy.get(`${nonDeductible}:checked`).should(
-                        "have.value",
-                        nextValue,
-                    );
+                    cy.get(nonDeductible).should(nextValue === "1" ? "be.checked" : "not.be.checked");
                 });
         });
-    });
-    it("removes the moved settings from their old pages", () => {
-        cy.setupAdminSession();
-
-        cy.visit("/SystemSettings.php");
-        cy.get(".page-title").should("contain.text", "System Settings");
-        cy.get("[name='new_value[sConfirm1]']").should("exist");
-
-        for (const key of [
-            "sQBDTSettings",
-            "sReminder1",
-            "sReminderSigner",
-            "sReminderNoPledge",
-            "sReminderNoPayments",
-            "sZeroGivers",
-            "sZeroGivers2",
-            "sZeroGivers3",
-        ]) {
-            cy.get(`[name='new_value[${key}]']`).should("not.exist");
-        }
-
-        cy.visit("/admin/system/feature-toggles");
-        cy.get(".page-title").should("contain.text", "Feature Toggles");
-        cy.get(".feature-toggle[data-setting='bEnabledEvents']").should(
-            "exist",
-        );
-        cy.get("[data-setting='bEnableNonDeductible']").should("not.exist");
-        cy.contains(".card-title", /^Finance Features$/).should("not.exist");
     });
     describe("navigation from finance pages", () => {
         const pages = [

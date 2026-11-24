@@ -187,6 +187,7 @@ window.CRM.onLocalesReady(() => {
     window.CRM.settingsPanel.init({
       container: "#logSettings",
       title: i18next.t("Log Settings"),
+      autoSave: true,
       settings: [
         {
           name: "sLogLevel",
