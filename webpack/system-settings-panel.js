@@ -653,11 +653,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
     }
 
-    // A setting with dependsOn shows only while that boolean setting is on.
+    // A setting with dependsOn shows only while its parent switch is on and the parent is itself shown.
     syncDependents() {
       this.container.querySelectorAll("[data-depends-on]").forEach((field) => {
         const parent = this.container.querySelector(`input[name="${field.dataset.dependsOn}"]`);
-        field.classList.toggle("d-none", !parent?.checked);
+        const parentField = parent?.closest("[class*='col-']");
+        const parentShown = !!parentField && !parentField.classList.contains("d-none");
+        field.classList.toggle("d-none", !(parent?.checked && parentShown));
       });
     }
 

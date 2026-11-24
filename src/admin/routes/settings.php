@@ -44,21 +44,41 @@ $app->get('/settings', function (Request $request, Response $response): Response
         'bSearchIncludeCalendarEvents' => gettext('Search Calendar Events'),
         'bSearchIncludeFamilyCustomProperties' => gettext('Search Family Custom Properties'),
     ];
-    $searchKeys = ['bSearchIncludePersons', 'bSearchIncludeFamilies', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeAddresses', 'bSearchIncludeGroups'];
+    $searchMaxKeys = [
+        'bSearchIncludePersons' => 'bSearchIncludePersonsMax',
+        'bSearchIncludeFamilies' => 'bSearchIncludeFamiliesMax',
+        'bSearchIncludeFamilyHOH' => 'bSearchIncludeFamilyHOHMax',
+        'bSearchIncludeGroups' => 'bSearchIncludeGroupsMax',
+        'bSearchIncludeDeposits' => 'bSearchIncludeDepositsMax',
+        'bSearchIncludePayments' => 'bSearchIncludePaymentsMax',
+        'bSearchIncludeAddresses' => 'bSearchIncludeAddressesMax',
+        'bSearchIncludeCalendarEvents' => 'bSearchIncludeCalendarEventsMax',
+    ];
+    $searchSwitches = ['bSearchIncludePersons', 'bSearchIncludeFamilies', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeAddresses', 'bSearchIncludeGroups'];
     if ($financeOn) {
-        array_push($searchKeys, 'bSearchIncludeDeposits', 'bSearchIncludePayments');
+        array_push($searchSwitches, 'bSearchIncludeDeposits', 'bSearchIncludePayments');
     }
     if ($eventsOn) {
-        $searchKeys[] = 'bSearchIncludeCalendarEvents';
+        $searchSwitches[] = 'bSearchIncludeCalendarEvents';
     }
+    $searchKeys = [];
+    $searchDependsOn = ['bSearchIncludeFamilyCustomProperties' => 'bSearchIncludeFamilies'];
+    foreach ($searchSwitches as $switch) {
+        $searchKeys[] = $switch;
+        if (isset($searchMaxKeys[$switch])) {
+            $searchKeys[] = $searchMaxKeys[$switch];
+            $searchDependsOn[$searchMaxKeys[$switch]] = $switch;
+        }
+    }
+    $searchDependsOn['bSearchIncludeFamilyHOH'] = 'bSearchIncludeFamilies';
 
     $sections = [
-        ['id' => 'quickSearchSettings', 'title' => gettext('Quick Search'), 'icon' => 'fa-solid fa-magnifying-glass', 'settings' => array_map(static function (array $setting) use ($searchLabels): array {
+        ['id' => 'quickSearchSettings', 'title' => gettext('Quick Search'), 'icon' => 'fa-solid fa-magnifying-glass', 'settings' => array_map(static function (array $setting) use ($searchLabels, $searchDependsOn): array {
             if (isset($searchLabels[$setting['name']])) {
                 $setting['label'] = $searchLabels[$setting['name']];
             }
-            if (in_array($setting['name'], ['bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyCustomProperties'], true)) {
-                $setting['dependsOn'] = 'bSearchIncludeFamilies';
+            if (isset($searchDependsOn[$setting['name']])) {
+                $setting['dependsOn'] = $searchDependsOn[$setting['name']];
             }
 
             return $setting;
