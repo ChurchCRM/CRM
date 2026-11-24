@@ -18,13 +18,12 @@ describe("Administrator configures Quick Search", () => {
         [...keys, family, ...modules].forEach((key) => cy.restoreSystemConfig(key, original[key]));
     });
 
-    it("saves every search source on Settings and offers no per-source limits", () => {
+    it("saves every search source on Settings", () => {
         const before = {};
         cy.freshAdminFormLogin({ enabled: true });
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveSearch");
         cy.visit("/admin/settings");
         cy.get("#quickSearchSettings .settings-panel-fields").should("not.be.disabled");
-        cy.get("#quickSearchSettings [name$='Max']").should("not.exist");
         keys.forEach((key) => {
             cy.get(field(key)).then(($switch) => {
                 before[key] = $switch.is(":checked");
@@ -43,8 +42,10 @@ describe("Administrator configures Quick Search", () => {
         cy.visit("/admin/settings");
         cy.get("#quickSearchSettings .settings-panel-fields").should("not.be.disabled");
         cy.get(field("bSearchIncludeFamilyHOH")).should("be.visible");
+        cy.get(field("bSearchIncludeFamiliesMax")).should("be.visible");
         cy.get(field(family)).click({ force: true });
         cy.get(field("bSearchIncludeFamilyHOH")).should("not.be.visible");
+        cy.get(field("bSearchIncludeFamiliesMax")).should("not.be.visible");
         cy.get(field("bSearchIncludeFamilyCustomProperties")).should("not.be.visible");
     });
 
