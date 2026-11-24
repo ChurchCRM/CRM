@@ -12,15 +12,10 @@ const signInAs = ({ username, password }) => {
 const administrator = () =>
     cy.readEnv("admin.username").then((username) => cy.readEnv("admin.password").then((password) => ({ username, password })));
 
-/**
- * Signs in as `user` (the administrator when null) and saves the person editor with
- * every field as the form shows it, changed by `changes`. A checkbox takes true or
- * false. Yields the response: a 302 to the person page when it saved.
- */
-export const savePersonEditor = (personId, changes, user = null) =>
+const submitPersonEditor = (url, changes, user) =>
     (user ? cy.wrap(user, { log: false }) : administrator()).then((who) => {
         signInAs(who);
-        return cy.request(`/PersonEditor.php?PersonID=${personId}`).then((page) => {
+        return cy.request(url).then((page) => {
             const form = Cypress.$(new DOMParser().parseFromString(page.body, "text/html")).find("#personEditor");
             expect(form.length, "person editor form").to.eq(1);
             const body = {};
@@ -35,6 +30,26 @@ export const savePersonEditor = (personId, changes, user = null) =>
                 }
             });
             body.PersonSubmit = "";
-            return cy.request({ method: "POST", url: `/PersonEditor.php?PersonID=${personId}`, form: true, body, followRedirect: false });
+            return cy.request({ method: "POST", url, form: true, body, followRedirect: false });
         });
     });
+
+/**
+ * Signs in as the administrator and adds a person through the person editor with
+ * `fields` filled in. Yields the new person's id.
+ */
+export const createPersonInEditor = (fields) =>
+    submitPersonEditor("/PersonEditor.php", fields, null).then((resp) => {
+        expect(resp.status, "person editor saved").to.eq(302);
+        const id = Number(String(resp.headers.location).match(/\/people\/view\/(\d+)/)?.[1]);
+        expect(id, `new person id from ${resp.headers.location}`).to.be.greaterThan(0);
+        return id;
+    });
+
+/**
+ * Signs in as `user` (the administrator when null) and saves the person editor with
+ * every field as the form shows it, changed by `changes`. A checkbox takes true or
+ * false. Yields the response: a 302 to the person page when it saved.
+ */
+export const savePersonEditor = (personId, changes, user = null) =>
+    submitPersonEditor(`/PersonEditor.php?PersonID=${personId}`, changes, user);
