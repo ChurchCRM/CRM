@@ -207,6 +207,21 @@ function initializeApp() {
     btn.addEventListener("click", (e) => {
       const alert = btn.closest("[data-notification-id]");
       const dismissKey = alert?.dataset.dismissKey;
+      // In the notification center there is no Bootstrap alert to fade out:
+      // remove the item and keep the badge count honest.
+      const center = document.getElementById("notificationCenterMenuItem");
+      if (center && alert && center.contains(alert)) {
+        alert.remove();
+        const remaining = center.querySelectorAll("[data-notification-id]").length;
+        if (remaining === 0) {
+          center.remove();
+        } else {
+          const badge = document.getElementById("notificationCenterCount");
+          if (badge) {
+            badge.textContent = remaining;
+          }
+        }
+      }
       if (!dismissKey) {
         return;
       }
