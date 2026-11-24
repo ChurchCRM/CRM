@@ -1589,10 +1589,6 @@ msgid "Permission"
 msgstr "అనుమతి"
 
 #: 
-msgid "System Settings"
-msgstr "సిస్టమ్ సెట్టింగులు"
-
-#: 
 msgid "User Editor"
 msgstr "వినియోగదారు ఎడిటర్"
 
@@ -2074,24 +2070,12 @@ msgid "Localization"
 msgstr "స్థానికీకరణ"
 
 #: 
-msgid "Setting saved"
-msgstr "సెట్టింగ్ సేవ్ చేయబడింది"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON సెట్టింగ్‌లను సవరించండి"
-
-#: 
 msgid "False"
 msgstr "అబద్ధం"
 
 #: 
 msgid "True"
 msgstr "నిజం"
-
-#: 
-msgid "Edit Settings"
-msgstr "సెట్టింగులను సవరించు"
 
 #: 
 msgid "Functions"
@@ -2206,32 +2190,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "డైరెక్టరీలో ఈ వర్గీకరణలను మాత్రమే చేర్చండి, కామాతో వేరు చేయబడినవి"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "ఇవి కుటుంబ ప్రధానిగా నిర్ణయించబడిన కుటుంబ పాత్ర సంఖ్యలు"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "ఇవి భార్య/భర్తగా నిర్ణయించబడిన కుటుంబ పాత్ర సంఖ్యలు"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "ఇవి పిల్లలుగా నిర్ణయించబడిన కుటుంబ పాత్ర సంఖ్యలు"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "వినియోగదారు తమ పాస్‌వర్డ్‌ను సెట్ చేయగల కనీస పొడవు"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "అనుమతించబడని (చాలా స్పష్టమైన) పాస్‌వర్డ్‌ల కామాతో వేరు చేయబడిన జాబితా."
-
-#: 
 msgid "Default City"
 msgstr "డిఫాల్ట్ నగరం"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "డిఫాల్ట్ రాష్ట్రం - 2-అక్షర సంక్షిప్తీకరణ అయి ఉండాలి!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2254,68 +2214,12 @@ msgid "First month of the fiscal year"
 msgstr "ఆర్థిక సంవత్సరం యొక్క మొదటి నెల"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "పర్సన్ ఎడిటర్‌లో ఫ్రెండ్ డేట్ ఎంటర్ చేయడాన్ని నిలిపివేయడానికి true సెట్ చేయండి. పర్సన్ ఎడిటర్‌లో ఫ్రెండ్ డేట్ ఎంటర్ చేయడాన్ని ప్రారంభించడానికి false సెట్ చేయండి."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "ఫ్యామిలీ ఎడిటర్‌లో న్యూస్‌లెటర్ సబ్‌స్క్రిప్షన్‌ల నిర్వహణను నిలిపివేయడానికి true సెట్ చేయండి."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "ఫ్యామిలీ ఎడిటర్‌లో వివాహ తేదీని ఎంటర్ చేయడాన్ని నిలిపివేయడానికి true సెట్ చేయండి. ఫ్యామిలీ ఎడిటర్‌లో వివాహ తేదీని ఎంటర్ చేయడాన్ని ప్రారంభించడానికి false సెట్ చేయండి."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "డిపాజిట్ స్లిప్ రిపోర్ట్ కోసం చెక్‌ల సంఖ్య"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "దూరాన్ని కొలవడానికి ఉపయోగించే యూనిట్, మైళ్ళు లేదా కి.మీ."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "నాన్-డిడక్టిబుల్ చెల్లింపులను ప్రారంభించండి"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "పన్ను నివేదిక యొక్క టాప్ లైన్ కోసం వెర్బేజ్. ఈ పంక్తి చివరలో తేదీలు జోడించబడతాయి."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "పన్ను నివేదిక యొక్క బాటమ్ లైన్ కోసం వెర్బేజ్."
-
-#: 
-msgid "Tax Report signer"
-msgstr "పన్ను నివేదిక సంతకదారు"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "ప్లెడ్జ్ రిమైండర్ రిపోర్ట్ కోసం వెర్బేజ్"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "ప్లెడ్జ్ రిమైండర్ సంతకదారు"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "ప్లెడ్జ్ రిమైండర్ రిపోర్ట్ కోసం వెర్బేజ్ - ప్లెడ్జ్ రికార్డ్ లేదు"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "ప్లెడ్జ్ రిమైండర్ రిపోర్ట్ కోసం వెర్బేజ్ - చెల్లింపుల రికార్డ్ లేదు"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "డేటాబేస్ సమాచారం నిర్ధారణ మరియు దిద్దుబాటు నివేదిక కోసం వెర్బేజ్"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "డేటాబేస్ సమాచారం నిర్ధారణ మరియు దిద్దుబాటు నివేదిక సంతకదారు"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "డైరెక్టరీ నివేదిక కోసం వెర్బేజ్"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3770,10 +3674,6 @@ msgstr "బ్యాకప్ ఆర్కైవ్‌లో డేటాబే�
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "డేటాబేస్‌లో సేవ్ చేసేటప్పుడు వినియోగదారు నమోదు చేసిన zip/పోస్ట్‌కోడ్‌లను పెద్ద అక్షరాలలో మార్చండి."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "సంతకందారుకు ముందు లేఖను ముగించడానికి ఉపయోగించబడుతుంది"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3878,10 +3778,6 @@ msgid "Failed"
 msgstr "విఫలమైంది"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "చర్చి చెకింగ్ ఖాతా సంఖ్య"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "కుటుంబాన్ని నిష్క్రియంగా గుర్తించబడింది"
 
@@ -3892,10 +3788,6 @@ msgstr "కుటుంబాన్ని క్రియాశీలంగా �
 #: 
 msgid "families"
 msgstr "కుటుంబాలు"
-
-#: 
-msgid "Financial Settings"
-msgstr "ఆర్థిక సెట్టింగ్‌లు"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3936,10 +3828,6 @@ msgstr "ఆస్తి విజయవంతంగా తీసివేయబ�
 #: 
 msgid "The property could not be unassigned."
 msgstr "ఆస్తిని తీసివేయడం సాధ్యపడలేదు."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "ఇమెయిల్‌లు/నివేదికలలో పేరుకు ముందు వచనం"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4182,10 +4070,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "రికార్డు(లు) ఎంచుకున్న సమూహానికి విజయవంతంగా జోడించబడ్డాయి."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "తేదీ-పికర్‌లో తేదీ నిర్వచించడానికి, డిఫాల్ట్‌గా: yyyy-mm-dd, ఫ్రెంచ్‌లో: dd/mm/yyyy ఉదాహరణకు."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "తేదీ-పికర్‌లో తేదీ నిర్వచించడానికి, డిఫాల్ట్‌గా: Y-m-d, ఫ్రెంచ్‌లో: d/m/Y ఉదాహరణకు."
 
@@ -4272,10 +4156,6 @@ msgstr "పశ్చిమ-వాయవ్యం"
 #: 
 msgid "WSW"
 msgstr "పశ్చిమ-నైఋతి"
-
-#: 
-msgid "Search Family"
-msgstr "కుటుంబాన్ని వెతకండి"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4374,10 +4254,6 @@ msgid "Change Settings"
 msgstr "సెట్టింగ్‌లను మార్చండి"
 
 #: 
-msgid "Unknown Type"
-msgstr "తెలియని రకం"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "కార్ట్ కోసం పర్సన్ ఐడి సంఖ్యాత్మకంగా ఉండాలి"
 
@@ -4396,14 +4272,6 @@ msgstr "వ్యక్తులను శోధించండి"
 #: 
 msgid "Maximum number of People"
 msgstr "వ్యక్తుల గరిష్ట సంఖ్య"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "తండ్రి ఉన్న ఫీల్డ్, కన్ఫెషన్ అనేది గ్రూప్ రకం వ్యక్తులకు ఉండాలి"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "చివరి కన్ఫెషన్ నిల్వ చేయబడిన ఫీల్డ్, తేదీ రకంగా ఉండాలి"
 
 #: 
 msgid "People Reports"
@@ -4653,18 +4521,6 @@ msgid "Event not found"
 msgstr "ఈవెంట్ కనుగొనబడలేదు"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "సెషన్ టైమ్‌అవుట్ పొడవు సెకన్లలో\n"
-"సెషన్ టైమ్‌అవుట్‌లను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "కొత్త పాస్‌వర్డ్ పాతదాని నుండి భిన్నంగా ఉండవలసిన కనీస మొత్తం (మార్చబడిన అక్షరాల #)\n"
-"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి"
-
-#: 
 msgid "Verify People"
 msgstr "వ్యక్తులను ధృవీకరించండి"
 
@@ -4736,10 +4592,6 @@ msgstr "అన్‌పిన్ చేయబడిన ఈవెంట్‌ల�
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "ఇంటిపేరు, మొదటిపేరు మధ్యపేరు"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "వారి ఖాతా తొలగించబడినప్పుడు వినియోగదారులకు తెలియజేసే ఇమెయిల్‌ను పంపండి"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7708,10 +7560,6 @@ msgid "selected family has no coordinates"
 msgstr "ఎంచుకున్న కుటుంబానికి కోఆర్డినేట్‌లు లేవు"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "అన్ని వినియోగదారులు రెండు-కారకాల ప్రమాణీకరణలో నమోదు చేసుకోవడం అవసరం"
-
-#: 
 msgid "Active Groups"
 msgstr "చురుకైన గ్రూప్‌లు"
 
@@ -8190,10 +8038,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "మీ డేటాబేస్‌ను ఎలా నింపాలనుకుంటున్నారో ఎంచుకోండి. మీరు ఎల్లప్పుడు తరువాతకు వేరే పద్ధతిని ఉపయోగించుకోవచ్చు."
 
 #: 
-msgid "Church Info"
-msgstr "చర్చ సమాచారం"
-
-#: 
 msgid "Clear all"
 msgstr "అన్నీ క్లియర్ చేయండి"
 
@@ -8224,14 +8068,6 @@ msgstr "సమాజ నిర్వహణ ప్ల్యాట్‌ఫార�
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "మీ సంఘానికి ChurchCRM సిద్ధం చేయడానికి వీటిని ఏ క్రమంలోనైనా పూర్తి చేయండి."
-
-#: 
-msgid "Confession"
-msgstr "అంగీకారం"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "గ్లోబల్ సిస్టమ్ సెట్టింగులు మరియు ప్రాధాన్యతలను కాన్ఫిగర్ చేయండి"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8280,10 +8116,6 @@ msgstr "ప్రస్తుత వ్యక్తి"
 #: 
 msgid "Database Reset"
 msgstr "డేటాబేస్ రీసెట్"
-
-#: 
-msgid "Default / Notes"
-msgstr "డిఫాల్ట్ / గమనికలు"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9904,10 +9736,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub లో 'pre release' గా గుర్తించబడిన విడుదలలకు సిస్టమ్ అప్‌గ్రేడ్‌లు అనుమతించండి"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "పబ్లిక్ HTML, ICS, మరియు JSON URL ల ద్వారా క్యాలెండర్ ఈవెంట్‌లకు ప్రమాణీకరించబడని యాక్సెస్ అనుమతించండి. బాహ్య యాప్‌లతో క్యాలెండర్‌లు షేర్ చేయడానికి అవసరం."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "సందర్శకులు స్వీయ-నమోదు పేజీ ద్వారా వారి స్వంత కుటుంబ రికార్డు సృష్టించడానికి అనుమతించండి"
 
@@ -10070,24 +9898,12 @@ msgid "Enable Email"
 msgstr "ఇమెయిల్‌ను ప్రారంభించండి"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "ఈవెంట్‌ల మెనూను ప్రారంభించండి"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "బాహ్య క్యాలెండర్ APIని ప్రారంభించండి"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM నుండి ఈమెయిల్ పంపడాన్ని ప్రారంభించండి. పాస్‌వర్డ్ రీసెట్, నోటిఫికేషన్‌లు మరియు ఈమెయిల్ లింక్‌లకు అవసరం."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "మీ SMTP సర్వర్ వినియోగదారు పేరు మరియు పాస్‌వర్డ్ అవసరమైతే ప్రారంభించండి"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "ఆదివారం పాఠశాల మాడ్యూల్ మరియు సైడ్‌బార్ మెనూను ప్రారంభించండి లేదా నిలిపివేయండి."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10185,10 +10001,6 @@ msgstr "అక్షాంశం/రేఖాంశం దాచండి"
 #: 
 msgid "How it works"
 msgstr "ఇది ఎలా పనిచేస్తుందో"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "డిపాజిట్ స్లిప్ పేజీకి ఎన్ని చెక్కులు ముద్రించాలి"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10348,10 +10160,6 @@ msgid "Privacy Note"
 msgstr "గోప్యత గమనిక"
 
 #: 
-msgid "Quick Settings"
-msgstr "త్వరిత సెట్టింగులు"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP ధృవీకరణ"
 
@@ -10378,10 +10186,6 @@ msgstr "సెటప్"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "డిపాజిట్ స్లిప్ నివేదికలో కరెన్సీ విభజన వివరణ చూపించండి"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "ప్రధాన నావిగేషన్‌లో Events మెనూ చూపించండి లేదా దాచండి."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10795,10 +10599,6 @@ msgstr "మీరు గందరగోళ అక్షరాలు, వచన�
 #: 
 msgid "Indigo"
 msgstr "నీలిరంగు"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "చెల్లని JSON విలువ — సెట్టింగ్ సేవ్ చేయబడలేదు. దయచేసి దాన్ని సరిదిద్దండి మరియు మళ్ళీ ప్రయత్నించండి."
 
 #: 
 msgid "Language and regional settings"
@@ -12575,10 +12375,6 @@ msgstr "రోజంతా"
 #: 
 msgid "All Roles"
 msgstr "అన్ని పాత్రలు"
-
-#: 
-msgid "All System Settings"
-msgstr "అన్ని సిస్టమ్ సెట్టింగ్‌లు"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15049,10 +14845,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "పబ్లిక్ బాహ్య క్యాలెండర్ పేజీని iframe లో పొందుపరచడానికి అనుమతించిన మూలాల జాబితా."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "పబ్లిక్ క్యాలెండర్ పేజీని iframe లో పొందుపరచడానికి అనుమతించిన మూలాలు."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "ఆదివారం పాఠశాల సమూహాన్ని సవరించలేరు, ఈ రెండు సందర్భాల్లో మాత్రమే"
 
@@ -15583,10 +15375,6 @@ msgstr "విజయవంతంగా సేవ్ చేయబడింది"
 #: 
 msgid "Select a fund"
 msgstr "నిధిని ఎంచుకోండి"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "నాకు పరీక్ష పుట్టినరోజు ఇమెయిల్ పంపండి"
 
 #: 
 msgid "Sending to"
@@ -16605,10 +16393,6 @@ msgid "Not a valid date of death"
 msgstr "మరణించిన తేదీ చెల్లదు"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA తప్పనిసరి చేసిన తర్వాత వినియోగదారులు నమోదు చేసుకోవడానికి ఉండే రోజుల సంఖ్య. వెంటనే అమలు చేయడానికి 0కి సెట్ చేయండి. యాక్టివ్‌గా ఉన్న గ్రేస్ పీరియడ్‌ను తగ్గించడం వల్ల వినియోగదారులు వెంటనే లాక్ అవ్వవచ్చు."
-
-#: 
 msgid "Offline"
 msgstr "ఆఫ్‌లైన్"
 
@@ -16933,14 +16717,6 @@ msgid "Download CSV"
 msgstr "CSVని డౌన్‌లోడ్ చేయండి"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "ఫిన్‌యాన్స్ మాడ్యూల్ మరియు సైడ్‌బార్ మెనూను ప్రారంభించండి లేదా నిలిపివేయండి."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "ఫండ్‌రైజర్ మాడ్యూల్‌ను ప్రారంభించండి లేదా నిలిపివేయండి."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "చర్చ్ లోగోను తీసివేయడం విఫలమైంది"
 
@@ -17137,46 +16913,6 @@ msgid "Feature Toggles"
 msgstr "ఫీచర్ టోగిల్‌లు"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "ఫీచర్ టోగిల్‌లు ChurchCRM లో ఏ మాడ్యూళ్ళు మరియు లక్షణాలు అందుబాటులో ఉన్నాయో నియంత్రిస్తాయి. మార్పులు వెంటనే ప్రభావం చేస్తాయి."
-
-#: 
-msgid "Finance Features"
-msgstr "ఆర్థిక లక్షణాలు"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో చిరునామాలను చేర్చండి"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో క్యాలెండర్ ఈవెంట్‌లను చేర్చండి"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో కస్టమ్ కుటుంబ లక్షణాలను చేర్చండి"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో డిపాజిట్‌లను చేర్చండి"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో కుటుంబాలను చేర్చండి"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో సేవలను చేర్చండి"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో చెల్లుళ్ళను చేర్చండి"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "త్వరిత ప్రపంచ శోధనలో వ్యక్తులను చేర్చండి"
-
-#: 
 msgid "Invalid setting"
 msgstr "చెల్లని సెట్టింగ్"
 
@@ -17185,16 +16921,8 @@ msgid "Lost Password Link"
 msgstr "కోల్పోయిన పాస్‌వర్డ్ లింక్"
 
 #: 
-msgid "Manage All Features"
-msgstr "అన్ని లక్షణాలను నిర్వహించండి"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "ఇమెయిల్ పంపడం కోసం మాస్టర్ టోగిల్. పాస్‌వర్డ్ రీసెట్‌లు మరియు నోటిఫికేషన్‌ల కోసం అవసరం"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "పన్ను తగ్గించదగిన కాని చెల్లుళ్ళు"
 
 #: 
 msgid "Primary Modules"
@@ -17205,20 +16933,12 @@ msgid "Public Calendar API"
 msgstr "ప్రజా క్యాలెండర్ API"
 
 #: 
-msgid "Saved"
-msgstr "భద్రపరచిన"
-
-#: 
 msgid "Search Families"
 msgstr "కుటుంబాలను శోధించండి"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "కుటుంబ కస్టమ్ లక్షణాలను శోధించండి"
-
-#: 
-msgid "Search Settings"
-msgstr "శోధన సెట్టింగ్‌లు"
 
 #: 
 msgid "Self-Registration"
@@ -17435,14 +17155,6 @@ msgstr "నోటిఫికేషన్ గ్రహీతలు"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "కొత్త కుటుంబం లేదా వ్యక్తిని జోడించినప్పుడు తెలియజేయవలసిన వ్యక్తులు"
-
-#: 
-msgid "Person initials style"
-msgstr "వ్యక్తి ఇనీషియల్స్ శైలి"
-
-#: 
-msgid "Person name display style"
-msgstr "వ్యక్తి పేరు ప్రదర్శన శైలి"
 
 #: 
 msgid "Spouse Role"
@@ -23451,30 +23163,6 @@ msgid "Download PDF"
 msgstr "PDF డౌన్‌లోడ్ చేయండి"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "లాక్‌అవుట్ కాలం నిమిషాల్లో\n"
-"లాక్ అయిన ఖాతా ఇన్ని నిమిషాల తర్వాత స్వయంగా అన్‌లాక్ అవుతుంది. ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌లు అదే కాలంలో లెక్కించబడతాయి."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌ల గరిష్ట సంఖ్య\n"
-"లాక్‌అవుట్ కాలంలో ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌లు మరియు పాస్‌వర్డ్ రీసెట్ అభ్యర్థనలు ఈ పరిమితికి లెక్కించబడతాయి. అది చేరిన తర్వాత, కాలం ముగిసే వరకు ఆ చిరునామా నుండి సైన్-ఇన్ తిరస్కరించబడుతుంది.\n"
-"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి, ఉదాహరణకు అందరూ ఒక ప్రాక్సీ చిరునామా ద్వారా ChurchCRM ను చేరుకున్నప్పుడు."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "వినియోగదారు ఖాతా లాక్ అయ్యే ముందు అనుమతించే విఫలమైన లాగిన్‌ల గరిష్ట సంఖ్య.\n"
-"లాక్ అయిన ఖాతా లాక్‌అవుట్ కాలం తర్వాత స్వయంగా అన్‌లాక్ అవుతుంది, లేదా నిర్వాహకుడు విఫలమైన లాగిన్‌లను రీసెట్ చేస్తే ముందుగా.\n"
-"ఈ ఫీచర్ స్వయంచాలక పాస్‌వర్డ్ ఊహించే దాడుల నుండి రక్షించడానికి సహాయపడుతుంది.\n"
-"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "అది స్వయంగా అన్‌లాక్ అయ్యే వరకు నిమిషాలు: %d"
 
@@ -23803,10 +23491,6 @@ msgid "PDF Output"
 msgstr "PDF అవుట్‌పుట్"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF నిర్వహణ విధానం"
-
-#: 
 msgid "Questions Line"
 msgstr "ప్రశ్నల వాక్యం"
 
@@ -23843,10 +23527,6 @@ msgid "Greeting"
 msgstr "శుభాకాంక్ష"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "లేఖ శుభాకాంక్ష మరియు సంతకం"
-
-#: 
 msgid "Letterhead"
 msgstr "లేఖ శీర్షిక"
 
@@ -23869,10 +23549,6 @@ msgstr "PDF లేఖలు ముద్రించే లేఖ శీర్�
 #: 
 msgid "Using the church name and address"
 msgstr "చర్చి పేరు మరియు చిరునామాను ఉపయోగిస్తోంది"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "సిస్టమ్ సెట్టింగ్‌లలో సెట్ చేసిన లేఖ శీర్షిక మార్గాన్ని ఉపయోగిస్తోంది"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28249,10 +27925,6 @@ msgstr "మీ చర్చిని సెటప్ చేయండి"
 #: 
 msgid "Setup Dashboard"
 msgstr "సెటప్ డ్యాష్‌బోర్డ్"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "సెటప్ డ్యాష్‌బోర్డ్ రోజులు"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

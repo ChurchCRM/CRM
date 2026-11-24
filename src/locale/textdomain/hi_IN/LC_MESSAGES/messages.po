@@ -1581,10 +1581,6 @@ msgid "Permission"
 msgstr "अनुमति"
 
 #: 
-msgid "System Settings"
-msgstr "सिस्टम सेटिंग्स"
-
-#: 
 msgid "User Editor"
 msgstr "उपयोगकर्ता संपादक"
 
@@ -2066,24 +2062,12 @@ msgid "Localization"
 msgstr "स्थानीयकरण"
 
 #: 
-msgid "Setting saved"
-msgstr "सेटिंग सहेजी गई"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON सेटिंग संपादित करें"
-
-#: 
 msgid "False"
 msgstr "असत्य"
 
 #: 
 msgid "True"
 msgstr "सत्य"
-
-#: 
-msgid "Edit Settings"
-msgstr "सेटिंग्स संपादित करें"
 
 #: 
 msgid "Functions"
@@ -2198,32 +2182,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "निर्देशिका में केवल इन वर्गीकरणों को शामिल करें, अल्पविराम से अलग करके"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "ये परिवार की भूमिका संख्याएँ हैं जो घर के मुखिया के रूप में नामित हैं"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "ये परिवार की भूमिका संख्याएँ हैं जो जीवनसाथी के रूप में नामित हैं"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "ये परिवार की भूमिका संख्याएँ हैं जो बच्चे के रूप में नामित हैं"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "न्यूनतम लंबाई जो एक उपयोगकर्ता अपना पासवर्ड सेट कर सकता है"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "अस्वीकृत (बहुत स्पष्ट) पासवर्ड की अल्पविराम से अलग की गई सूची।"
-
-#: 
 msgid "Default City"
 msgstr "डिफ़ॉल्ट शहर"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "डिफ़ॉल्ट राज्य - 2-अक्षर का संक्षिप्त नाम होना चाहिए!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2246,68 +2206,12 @@ msgid "First month of the fiscal year"
 msgstr "वित्तीय वर्ष का पहला महीना"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "व्यक्ति संपादक में मित्र तिथि दर्ज करने को अक्षम करने के लिए true सेट करें। सक्षम करने के लिए false सेट करें।"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "परिवार संपादक में न्यूज़लेटर सदस्यता प्रबंधन को अक्षम करने के लिए true सेट करें।"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "परिवार संपादक में शादी की तारीख दर्ज करने को अक्षम करने के लिए true सेट करें।"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "जमा पर्ची रिपोर्ट के लिए चेक की संख्या"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "दूरी मापने के लिए प्रयुक्त इकाई, मील या किमी।"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "गैर-कटौती योग्य भुगतान सक्षम करें"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "टैक्स रिपोर्ट की शीर्ष पंक्ति के लिए शब्दावली।"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "टैक्स रिपोर्ट की निचली पंक्ति के लिए शब्दावली।"
-
-#: 
-msgid "Tax Report signer"
-msgstr "टैक्स रिपोर्ट हस्ताक्षरकर्ता"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "प्रतिज्ञा अनुस्मारक रिपोर्ट के लिए शब्दावली"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "प्रतिज्ञा अनुस्मारक हस्ताक्षरकर्ता"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "प्रतिज्ञा अनुस्मारक रिपोर्ट के लिए शब्दावली - प्रतिज्ञा का कोई रिकॉर्ड नहीं"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "प्रतिज्ञा अनुस्मारक रिपोर्ट के लिए शब्दावली - भुगतान का कोई रिकॉर्ड नहीं"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "डेटाबेस जानकारी पुष्टि और सुधार रिपोर्ट के लिए शब्दावली"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "डेटाबेस जानकारी पुष्टि और सुधार रिपोर्ट हस्ताक्षरकर्ता"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "निर्देशिका रिपोर्ट के लिए शब्दावली"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3762,10 +3666,6 @@ msgstr "बैकअप संग्रह में डेटाबेस न�
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "डेटाबेस में सहेजते समय उपयोगकर्ता द्वारा दर्ज पिन कोड को बड़े अक्षरों में करें।"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "हस्ताक्षरकर्ता से पहले पत्र समाप्त करने के लिए उपयोग किया जाता है"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3870,10 +3770,6 @@ msgid "Failed"
 msgstr "विफल"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "चर्च चेकिंग खाता संख्या"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "परिवार को निष्क्रिय के रूप में चिह्नित किया गया"
 
@@ -3884,10 +3780,6 @@ msgstr "परिवार को सक्रिय के रूप में 
 #: 
 msgid "families"
 msgstr "परिवार"
-
-#: 
-msgid "Financial Settings"
-msgstr "वित्तीय सेटिंग"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3928,10 +3820,6 @@ msgstr "विशेषता सफलतापूर्वक हटा दी
 #: 
 msgid "The property could not be unassigned."
 msgstr "विशेषता हटाई नहीं जा सकी।"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "ईमेल/रिपोर्ट में नाम से पहले का टेक्स्ट"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4174,10 +4062,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "रिकॉर्ड सफलतापूर्वक चयनित समूह में जोड़े गए।"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "डेट-पिकर में तिथि परिभाषित करने के लिए, डिफ़ॉल्ट रूप से: yyyy-mm-dd।"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "डेट-पिकर में तिथि परिभाषित करने के लिए, डिफ़ॉल्ट रूप से: Y-m-d।"
 
@@ -4264,10 +4148,6 @@ msgstr "पश्चिम-उत्तर-पश्चिम"
 #: 
 msgid "WSW"
 msgstr "पश्चिम-दक्षिण-पश्चिम"
-
-#: 
-msgid "Search Family"
-msgstr "परिवार खोजें"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4366,10 +4246,6 @@ msgid "Change Settings"
 msgstr "सेटिंग्स बदलें"
 
 #: 
-msgid "Unknown Type"
-msgstr "अज्ञात प्रकार"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "कार्ट के लिए PersonID संख्यात्मक होनी चाहिए"
 
@@ -4388,14 +4264,6 @@ msgstr "लोग खोजें"
 #: 
 msgid "Maximum number of People"
 msgstr "लोगों की अधिकतम संख्या"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "वह क्षेत्र जहाँ स्वीकारोक्ति के पिता सूचीबद्ध हैं"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "वह क्षेत्र जहाँ अंतिम स्वीकारोक्ति संग्रहीत है, तिथि प्रकार का होना चाहिए"
 
 #: 
 msgid "People Reports"
@@ -4645,17 +4513,6 @@ msgid "Event not found"
 msgstr "कार्यक्रम नहीं मिला"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "सेकंड में सत्र टाइमआउट अवधि\n"
-"सत्र टाइमआउट को अक्षम करने के लिए शून्य पर सेट करें।"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "नया पासवर्ड पुराने से कितना अलग होना चाहिए।"
-
-#: 
 msgid "Verify People"
 msgstr "लोगों को सत्यापित करें"
 
@@ -4727,10 +4584,6 @@ msgstr "अनपिन किए गए कार्यक्रम"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "अंतिमनाम, प्रथमनाम मध्यमनाम"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "खाता हटाए जाने पर उपयोगकर्ताओं को सूचित करने के लिए ईमेल भेजें"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7699,10 +7552,6 @@ msgid "selected family has no coordinates"
 msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है"
-
-#: 
 msgid "Active Groups"
 msgstr "सक्रिय समूह"
 
@@ -8181,10 +8030,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "चुनें कि आप अपना डेटाबेस कैसे भरना चाहते हैं। आप बाद में कभी भी दूसरी विधि का उपयोग कर सकते हैं।"
 
 #: 
-msgid "Church Info"
-msgstr "कलीसिया जानकारी"
-
-#: 
 msgid "Clear all"
 msgstr "सब साफ़ करें"
 
@@ -8215,14 +8060,6 @@ msgstr "समुदाय प्रबंधन मंच"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "अपनी मण्डली के लिए ChurchCRM तैयार करने हेतु इन्हें किसी भी क्रम में पूरा करें।"
-
-#: 
-msgid "Confession"
-msgstr "पाप-स्वीकृति"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "वैश्विक सिस्टम सेटिंग्स और प्राथमिकताएँ कॉन्फ़िगर करें"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8271,10 +8108,6 @@ msgstr "वर्तमान व्यक्ति"
 #: 
 msgid "Database Reset"
 msgstr "डेटाबेस रीसेट"
-
-#: 
-msgid "Default / Notes"
-msgstr "डिफ़ॉल्ट / नोट्स"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9895,10 +9728,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub पर 'प्री-रिलीज' के रूप में चिह्नित रिलीज़ में सिस्टम अपग्रेड की अनुमति दें"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "सार्वजनिक HTML, ICS और JSON URL के माध्यम से कैलेंडर इवेंट तक गैर-प्रमाणित पहुंच की अनुमति दें। बाहरी ऐप्स के साथ कैलेंडर साझा करने के लिए आवश्यक है।"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "आगंतुकों को स्व-पंजीकरण पृष्ठ के माध्यम से अपना परिवार रिकॉर्ड बनाने की अनुमति दें"
 
@@ -10061,24 +9890,12 @@ msgid "Enable Email"
 msgstr "ईमेल सक्षम करें"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "इवेंट मेनू सक्षम करें"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "बाहरी कैलेंडर API सक्षम करें"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM से ईमेल भेजना सक्षम करें। पासवर्ड रीसेट, सूचनाएं और ईमेल लिंक के लिए आवश्यक है।"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "यदि आपके SMTP सर्वर को उपयोगकर्ता नाम और पासवर्ड की आवश्यकता है तो सक्षम करें"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "रविवार विद्यालय मॉड्यूल और साइडबार मेनू सक्षम या अक्षम करें।"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10176,10 +9993,6 @@ msgstr "अक्षांश/देशांतर छुपाएं"
 #: 
 msgid "How it works"
 msgstr "यह कैसे काम करता है"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "प्रति जमा पर्ची पृष्ठ पर कितने चेक प्रिंट करें"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10339,10 +10152,6 @@ msgid "Privacy Note"
 msgstr "गोपनीयता नोट"
 
 #: 
-msgid "Quick Settings"
-msgstr "त्वरित सेटिंग्स"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP प्रमाणीकरण"
 
@@ -10369,10 +10178,6 @@ msgstr "सेटअप"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "जमा पर्ची रिपोर्ट पर नोट मूल्यवर्ग का विवरण दिखाएं"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "मुख्य नेविगेशन में इवेंट मेनू दिखाएं या छुपाएं।"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10786,10 +10591,6 @@ msgstr "यदि आप गड़बड़ अक्षर, टेक्स्�
 #: 
 msgid "Indigo"
 msgstr "इंडिगो"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "अमान्य JSON मान — सेटिंग सहेजी नहीं गई। कृपया इसे सुधारें और पुनः प्रयास करें।"
 
 #: 
 msgid "Language and regional settings"
@@ -12566,10 +12367,6 @@ msgstr "पूरे दिन"
 #: 
 msgid "All Roles"
 msgstr "सभी भूमिकाएँ"
-
-#: 
-msgid "All System Settings"
-msgstr "सभी सिस्टम सेटिंग्स"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15040,10 +14837,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "सार्वजनिक बाह्य कैलेंडर पृष्ठ को iframe में एम्बेड करने की अनुमति प्राप्त उत्पत्तियों की स्थान-पृथक सूची।"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "सार्वजनिक कैलेंडर पृष्ठ को iframe में एम्बेड करने की अनुमति प्राप्त उत्पत्तियाँ की स्थान-पृथक सूची।"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "संडे स्कूल समूह को केवल इन दो मामलों में नहीं संशोधित किया जा सकता"
 
@@ -15574,10 +15367,6 @@ msgstr "सफलतापूर्वक सहेजा गया"
 #: 
 msgid "Select a fund"
 msgstr "एक निधि चुनें"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "स्वयं को परीक्षण जन्मदिन ईमेल भेजें"
 
 #: 
 msgid "Sending to"
@@ -16596,10 +16385,6 @@ msgid "Not a valid date of death"
 msgstr "मृत्यु की तिथि मान्य नहीं है"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA अनिवार्य होने के बाद उपयोगकर्ताओं के पास नामांकन के लिए दिनों की संख्या। तुरंत लागू करने के लिए 0 पर सेट करें। सक्रिय छूट अवधि को छोटा करने से उपयोगकर्ता तुरंत लॉक आउट हो सकते हैं।"
-
-#: 
 msgid "Offline"
 msgstr "ऑफ़लाइन"
 
@@ -16924,14 +16709,6 @@ msgid "Download CSV"
 msgstr "CSV डाउनलोड करें"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "वित्त मॉड्यूल और साइडबार मेनू को सक्षम या अक्षम करें।"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "धनराशि संग्रह मॉड्यूल को सक्षम या अक्षम करें।"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "चर्च लोगो को हटाने में विफल"
 
@@ -17128,46 +16905,6 @@ msgid "Feature Toggles"
 msgstr "सुविधा स्विच"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "सुविधा स्विच नियंत्रित करते हैं कि ChurchCRM में कौन से मॉड्यूल और सुविधाएं उपलब्ध हैं। परिवर्तन तुरंत प्रभावी होते हैं।"
-
-#: 
-msgid "Finance Features"
-msgstr "वित्त सुविधाएं"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "त्वरित वैश्विक खोज में पते शामिल करें"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "त्वरित वैश्विक खोज में कैलेंडर कार्यक्रम शामिल करें"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "त्वरित वैश्विक खोज में कस्टम परिवार गुण शामिल करें"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "त्वरित वैश्विक खोज में जमा शामिल करें"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "त्वरित वैश्विक खोज में परिवार शामिल करें"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "त्वरित वैश्विक खोज में मंत्रालय शामिल करें"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "त्वरित वैश्विक खोज में भुगतान शामिल करें"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "त्वरित वैश्विक खोज में लोग शामिल करें"
-
-#: 
 msgid "Invalid setting"
 msgstr "अमान्य सेटिंग"
 
@@ -17176,16 +16913,8 @@ msgid "Lost Password Link"
 msgstr "पासवर्ड भूल गए लिंक"
 
 #: 
-msgid "Manage All Features"
-msgstr "सभी सुविधाएं प्रबंधित करें"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "ईमेल भेजने का मुख्य स्विच। पासवर्ड रीसेट और सूचनाओं के लिए आवश्यक"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "कर-कटौती योग्य न होने वाले भुगतान"
 
 #: 
 msgid "Primary Modules"
@@ -17196,20 +16925,12 @@ msgid "Public Calendar API"
 msgstr "सार्वजनिक कैलेंडर API"
 
 #: 
-msgid "Saved"
-msgstr "सहेजा गया"
-
-#: 
 msgid "Search Families"
 msgstr "परिवार खोजें"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "परिवार के कस्टम गुण खोजें"
-
-#: 
-msgid "Search Settings"
-msgstr "सेटिंग खोजें"
 
 #: 
 msgid "Self-Registration"
@@ -17426,14 +17147,6 @@ msgstr "सूचना प्राप्तकर्ता"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले लोग"
-
-#: 
-msgid "Person initials style"
-msgstr "व्यक्ति के आद्याक्षर की शैली"
-
-#: 
-msgid "Person name display style"
-msgstr "व्यक्ति के नाम की प्रदर्शन शैली"
 
 #: 
 msgid "Spouse Role"
@@ -23442,30 +23155,6 @@ msgid "Download PDF"
 msgstr "PDF डाउनलोड करें"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "लॉकआउट अवधि मिनटों में\n"
-"लॉक किया गया खाता इतने मिनटों के बाद अपने आप अनलॉक हो जाता है। एक IP पते से असफल लॉगिन इसी अवधि में गिने जाते हैं।"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "एक IP पते से असफल लॉगिन की अधिकतम संख्या\n"
-"लॉकआउट अवधि में एक IP पते से असफल लॉगिन और पासवर्ड रीसेट अनुरोध इस सीमा में गिने जाते हैं। सीमा पूरी होने पर अवधि समाप्त होने तक उस पते से साइन इन अस्वीकार कर दिया जाता है।\n"
-"इस सुविधा को बंद करने के लिए शून्य रखें, उदाहरण के लिए जब सभी लोग एक प्रॉक्सी पते से ChurchCRM तक पहुँचते हों।"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "उपयोगकर्ता खाता लॉक होने से पहले अनुमत असफल लॉगिन की अधिकतम संख्या।\n"
-"लॉक किया गया खाता लॉकआउट अवधि के बाद अपने आप अनलॉक हो जाता है, या उससे पहले जब कोई प्रशासक उसके असफल लॉगिन रीसेट कर दे।\n"
-"यह सुविधा स्वचालित पासवर्ड अनुमान हमलों से सुरक्षा में मदद करती है।\n"
-"इस सुविधा को बंद करने के लिए शून्य रखें।"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "अपने आप अनलॉक होने तक मिनट: %d"
 
@@ -23794,10 +23483,6 @@ msgid "PDF Output"
 msgstr "PDF आउटपुट"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF प्रबंधन मोड"
-
-#: 
 msgid "Questions Line"
 msgstr "प्रश्न पंक्ति"
 
@@ -23834,10 +23519,6 @@ msgid "Greeting"
 msgstr "अभिवादन"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "पत्र का अभिवादन और हस्ताक्षर"
-
-#: 
 msgid "Letterhead"
 msgstr "पत्रशीर्ष"
 
@@ -23860,10 +23541,6 @@ msgstr "वह पत्रशीर्ष सेट करें जिसे P
 #: 
 msgid "Using the church name and address"
 msgstr "चर्च का नाम और पता उपयोग हो रहा है"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "सिस्टम सेटिंग में सेट पत्रशीर्ष पथ उपयोग हो रहा है"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28240,10 +27917,6 @@ msgstr "अपना चर्च सेट अप करें"
 #: 
 msgid "Setup Dashboard"
 msgstr "सेटअप डैशबोर्ड"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "सेटअप डैशबोर्ड दिन"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

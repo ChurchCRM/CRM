@@ -1595,10 +1595,6 @@ msgid "Permission"
 msgstr "Αδεια"
 
 #: 
-msgid "System Settings"
-msgstr "Ρυθμίσεις συστήματος"
-
-#: 
 msgid "User Editor"
 msgstr "Επεξεργαστής χρήστη"
 
@@ -2084,24 +2080,12 @@ msgid "Localization"
 msgstr "Εντοπισμός"
 
 #: 
-msgid "Setting saved"
-msgstr "Η ρύθμιση αποθηκεύτηκε"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Επεξεργασία ρυθμίσεων JSON"
-
-#: 
 msgid "False"
 msgstr "Ψευδής"
 
 #: 
 msgid "True"
 msgstr "Αληθής"
-
-#: 
-msgid "Edit Settings"
-msgstr "Επεξεργασία ρυθμίσεων"
 
 #: 
 msgid "Functions"
@@ -2219,33 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Συμπεριλάβετε μόνο αυτές τις ταξινομήσεις στον κατάλογο, διαχωρισμένες με κόμματα"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Αυτοί είναι οι αριθμοί ρόλων της οικογένειας που ορίζονται ως αρχηγός του σπιτιού"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Αυτοί είναι οι αριθμοί οικογενειακών ρόλων που ορίζονται ως σύζυγος"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Αυτοί είναι οι αριθμοί ρόλων της οικογένειας που ορίζονται ως παιδί"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Ελάχιστο μήκος στο οποίο μπορεί να ορίσει ο χρήστης τον κωδικό πρόσβασής του"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Μια λίστα διαχωρισμένων με κόμματα με μη επιτρεπόμενους (πολύ προφανείς) κωδικούς πρόσβασης."
-
-#: 
 msgid "Default City"
 msgstr "Προεπιλεγμένη πόλη"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Προεπιλεγμένη κατάσταση - Πρέπει να είναι συντομογραφία 2 γραμμάτων!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2268,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Πρώτος μήνας του οικονομικού έτους"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Ορίστε το true για να απενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor. Ορίστε το false για να ενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Ορίστε true για να απενεργοποιήσετε τη διαχείριση των συνδρομών ενημερωτικών δελτίων στο Family Editor."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Ορίστε true για να απενεργοποιήσετε την καταχώριση της ημερομηνίας γάμου στο Family Editor. Ορίστε το false για να ενεργοποιήσετε την εισαγωγή της ημερομηνίας γάμου στο Family Editor."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Αριθμός επιταγών για Αναφορά δελτίου κατάθεσης"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Μονάδα που χρησιμοποιείται για τη μέτρηση απόστασης, μιλίων ή χιλιομέτρων."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Ενεργοποιήστε τις μη εκπιπτόμενες πληρωμές"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage για την κορυφή της φορολογικής έκθεσης. Οι ημερομηνίες θα προστεθούν στο τέλος αυτής της γραμμής."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbage για την κατώτατη γραμμή της φορολογικής έκθεσης."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Υπογράφων φορολογικής δήλωσης"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Λήμα για την αναφορά υπενθύμισης ενεχύρου"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Υπογραφή υπενθύμισης ενεχύρου"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Λήμα για την αναφορά υπενθύμισης ενεχύρου - Δεν υπάρχει καταγραφή δέσμευσης"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbage για την αναφορά υπενθύμισης ενεχύρου - Δεν υπάρχει αρχείο πληρωμών"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage για την αναφορά επιβεβαίωσης και διόρθωσης πληροφοριών της βάσης δεδομένων"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Υπογραφή της αναφοράς επιβεβαίωσης και διόρθωσης πληροφοριών βάσης δεδομένων"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage για την αναφορά καταλόγου"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3784,10 +3687,6 @@ msgstr "Το εφεδρικό αρχείο δεν περιέχει βάση δε
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Οι ταχυδρομικοί κώδικες/ταχυδρομικοί κώδικες που έχουν εισαχθεί από τον χρήστη να είναι ΚΕΦΑΛΑΙΟΙ κατά την αποθήκευση στη βάση δεδομένων."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Χρησιμοποιείται για να τελειώνει ένα γράμμα πριν από το Signer"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3892,10 +3791,6 @@ msgid "Failed"
 msgstr "Απέτυχε"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Αριθμός λογαριασμού ελέγχου Εκκλησίας"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Απενεργοποιήθηκε η οικογένεια"
@@ -3908,10 +3803,6 @@ msgstr "Ενεργοποίησε την Οικογένεια"
 #: 
 msgid "families"
 msgstr "οικογένειες"
-
-#: 
-msgid "Financial Settings"
-msgstr "Οικονομικές Ρυθμίσεις"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3952,10 +3843,6 @@ msgstr "Το ακίνητο καταργήθηκε με επιτυχία."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Δεν ήταν δυνατή η κατάργηση της εκχώρησης της ιδιοκτησίας."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Κείμενο πριν από το όνομα στα email/αναφορές"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4199,10 +4086,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "οι εγγραφές προστέθηκαν με επιτυχία στην επιλεγμένη ομάδα."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Για τον καθορισμό της ημερομηνίας στο Date-Picker, ανά προεπιλογή : εεε-μμ-ηη, Στα γαλλικά : ηη/μμ/εεεε για παράδειγμα."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Για τον καθορισμό της ημερομηνίας στο Date-Picker, ανά προεπιλογή : Y-m-d, Στα γαλλικά: d/m/Y για παράδειγμα."
 
@@ -4289,10 +4172,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Αναζήτηση οικογένειας"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4391,10 +4270,6 @@ msgid "Change Settings"
 msgstr "Αλλαξε ρυθμίσεις"
 
 #: 
-msgid "Unknown Type"
-msgstr "Άγνωστος τύπος"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Το PersonID για το καλάθι πρέπει να είναι αριθμητικό"
 
@@ -4413,14 +4288,6 @@ msgstr "Αναζήτηση Μελών"
 #: 
 msgid "Maximum number of People"
 msgstr "Μέγιστος αριθμός Μελών"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Το πεδίο όπου αναφέρεται ο Father Of Confession, πρέπει να είναι άτομα ομαδικού τύπου"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Το πεδίο όπου έχει αποθηκευτεί η τελευταία Εξομολόγηση πρέπει να είναι τύπος ημερομηνίας"
 
 #: 
 msgid "People Reports"
@@ -4674,18 +4541,6 @@ msgid "Event not found"
 msgstr "Το συμβάν δεν βρέθηκε"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Διάρκεια χρονικού ορίου λήξης περιόδου σύνδεσης σε δευτερόλεπτα\n"
-"Ορίστε στο μηδέν για να απενεργοποιήσετε τα χρονικά όρια περιόδου λειτουργίας."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Ελάχιστο ποσό που πρέπει να διαφέρει ένας νέος κωδικός πρόσβασης από τον παλιό (# χαρακτήρες άλλαξαν)\n"
-"Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα"
-
-#: 
 msgid "Verify People"
 msgstr "Επαλήθευση Μελών"
 
@@ -4757,10 +4612,6 @@ msgstr "Ξεκαρφιτσωμένα συμβάντα"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Επώνυμο, Όνομα MiddleName"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Στείλτε ένα email ειδοποιώντας τους χρήστες όταν ο λογαριασμός τους έχει διαγραφεί"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7730,10 +7581,6 @@ msgid "selected family has no coordinates"
 msgstr "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων"
-
-#: 
 msgid "Active Groups"
 msgstr "Ενεργές ομάδες"
 
@@ -8212,10 +8059,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Επιλέξτε πώς θέλετε να γεμίσετε τη βάση δεδομένων σας. Μπορείτε πάντα να χρησιμοποιήσετε διαφορετική μέθοδο αργότερα."
 
 #: 
-msgid "Church Info"
-msgstr "Πληροφορίες ενορίας"
-
-#: 
 msgid "Clear all"
 msgstr "Εκκαθάριση όλων"
 
@@ -8246,14 +8089,6 @@ msgstr "Πλατφόρμα διαχείρισης κοινότητας"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Ολοκληρώστε αυτά με οποιαδήποτε σειρά για να προετοιμάσετε το ChurchCRM για την ενορία σας."
-
-#: 
-msgid "Confession"
-msgstr "Εξομολόγηση"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Ρύθμιση καθολικών παραμέτρων και προτιμήσεων συστήματος"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8302,10 +8137,6 @@ msgstr "Τρέχον άτομο"
 #: 
 msgid "Database Reset"
 msgstr "Επαναφορά βάσης δεδομένων"
-
-#: 
-msgid "Default / Notes"
-msgstr "Προεπιλογή / Σημειώσεις"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9926,10 +9757,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Επιτρέψτε αναβαθμίσεις συστήματος σε εκδόσεις που είναι σημειωμένες ως 'pre release' στο GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Επιτρέψτε μη πιστοποιημένη πρόσβαση σε συμβάντα ημερολογίου μέσω δημόσιων URL HTML, ICS και JSON. Απαιτείται για κοινή χρήση ημερολογίων με εξωτερικές εφαρμογές."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Επιτρέψτε στους επισκέπτες να δημιουργούν οικογενειακές εγγραφές μέσω της σελίδας αυτοεγγραφής"
 
@@ -10092,24 +9919,12 @@ msgid "Enable Email"
 msgstr "Ενεργοποίηση Email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Ενεργοποίηση Μενού Εκδηλώσεων"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Ενεργοποίηση Εξωτερικού API Ημερολογίου"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Ενεργοποίηση αποστολής email από το ChurchCRM. Απαιτείται για επαναφορά κωδικού, ειδοποιήσεις και συνδέσμους email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Ενεργοποιήστε εάν ο διακομιστής SMTP σας απαιτεί όνομα χρήστη και κωδικό πρόσβασης"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Ενεργοποίηση ή απενεργοποίηση της ενότητας Κατηχητικού Σχολείου και του πλαϊνού μενού."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10207,10 +10022,6 @@ msgstr "Απόκρυψη Γεωγρ. Πλάτους/Μήκους"
 #: 
 msgid "How it works"
 msgstr "Πώς λειτουργεί"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Πόσες επιταγές να εκτυπωθούν ανά σελίδα δελτίου κατάθεσης"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10370,10 +10181,6 @@ msgid "Privacy Note"
 msgstr "Σημείωση Απορρήτου"
 
 #: 
-msgid "Quick Settings"
-msgstr "Γρήγορες Ρυθμίσεις"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Αυθεντικοποίηση SMTP"
 
@@ -10400,10 +10207,6 @@ msgstr "Ρύθμιση"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Εμφάνιση ανάλυσης ονομαστικών αξιών χαρτονομισμάτων στην αναφορά δελτίου κατάθεσης"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Εμφάνιση ή απόκρυψη του μενού Εκδηλώσεων στην κύρια πλοήγηση."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10817,10 +10620,6 @@ msgstr "Εάν παρατηρήσετε κατεστραμμένους χαρα�
 #: 
 msgid "Indigo"
 msgstr "Ινδικό Μπλε"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Μη έγκυρη τιμή JSON — η ρύθμιση δεν αποθηκεύτηκε. Παρακαλώ διορθώστε την και προσπαθήστε ξανά."
 
 #: 
 msgid "Language and regional settings"
@@ -12597,10 +12396,6 @@ msgstr "Όλη την ημέρα"
 #: 
 msgid "All Roles"
 msgstr "Όλοι οι ρόλοι"
-
-#: 
-msgid "All System Settings"
-msgstr "Όλες οι Ρυθμίσεις Συστήματος"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15071,10 +14866,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Λίστα προελεύσεων (διαχωρισμένες με κενά) που επιτρέπεται να ενσωματώνουν τη δημόσια σελίδα εξωτερικού ημερολογίου σε iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Προελεύσεις (διαχωρισμένες με κενά) που επιτρέπεται να ενσωματώνουν τη δημόσια σελίδα ημερολογίου σε iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Η ομάδα Κατηχητικού Σχολείου δεν μπορεί να τροποποιηθεί, μόνο σε αυτές τις δύο περιπτώσεις"
 
@@ -15605,10 +15396,6 @@ msgstr "Αποθηκεύτηκε επιτυχώς"
 #: 
 msgid "Select a fund"
 msgstr "Επιλέξτε ταμείο"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Αποστολή Δοκιμαστικού Email Γενεθλίων στον Εαυτό μου"
 
 #: 
 msgid "Sending to"
@@ -16627,10 +16414,6 @@ msgid "Not a valid date of death"
 msgstr "Μη έγκυρη ημερομηνία θανάτου"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Αριθμός ημερών που έχουν οι χρήστες για εγγραφή στον έλεγχο ταυτότητας δύο παραγόντων αφότου καταστεί υποχρεωτικός. Ορίστε 0 για άμεση επιβολή. Η μείωση μιας ενεργής περιόδου χάριτος μπορεί να αποκλείσει άμεσα τους χρήστες."
-
-#: 
 msgid "Offline"
 msgstr "Εκτός σύνδεσης"
 
@@ -16955,14 +16738,6 @@ msgid "Download CSV"
 msgstr "Κατεβάστε CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση χρηματοδότησης και το μενού της πλευρικής γραμμής."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση Fundraiser."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Αποτυχία αφαίρεσης λογότυπου εκκλησίας"
 
@@ -17159,46 +16934,6 @@ msgid "Feature Toggles"
 msgstr "Διακόπτες δυνατοτήτων"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Οι διακόπτες δυνατοτήτων ελέγχουν ποιες ενότητες και δυνατότητες είναι διαθέσιμες στο ChurchCRM. Οι αλλαγές ισχύουν αμέσως."
-
-#: 
-msgid "Finance Features"
-msgstr "Χρηματοοικονομικές δυνατότητες"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Συμπερίληψη διευθύνσεων στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Συμπερίληψη γεγονότων ημερολογίου στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Συμπερίληψη προσαρμοσμένων ιδιοτήτων οικογένειας στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Συμπερίληψη καταθέσεων στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Συμπερίληψη οικογενειών στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Συμπερίληψη ομάδων στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Συμπερίληψη πληρωμών στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Συμπερίληψη ανθρώπων στη γρήγορη παγκόσμια αναζήτηση"
-
-#: 
 msgid "Invalid setting"
 msgstr "Μη έγκυρη ρύθμιση"
 
@@ -17207,16 +16942,8 @@ msgid "Lost Password Link"
 msgstr "Σύνδεσμος χαμένου κωδικού πρόσβασης"
 
 #: 
-msgid "Manage All Features"
-msgstr "Διαχείριση όλων των δυνατοτήτων"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Κύριος διακόπτης για αποστολή ηλεκτρονικής αλληλογραφίας. ΑΠΑΙΤΕΙΤΑΙ για επαναφορές κωδικού πρόσβασης και ειδοποιήσεις"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Μη εκπεστέα πληρωμές"
 
 #: 
 msgid "Primary Modules"
@@ -17227,20 +16954,12 @@ msgid "Public Calendar API"
 msgstr "Δημόσιο API ημερολογίου"
 
 #: 
-msgid "Saved"
-msgstr "Αποθηκεύτηκε"
-
-#: 
 msgid "Search Families"
 msgstr "Αναζήτηση οικογενειών"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Αναζήτηση προσαρμοσμένων ιδιοτήτων οικογένειας"
-
-#: 
-msgid "Search Settings"
-msgstr "Ρυθμίσεις αναζήτησης"
 
 #: 
 msgid "Self-Registration"
@@ -17457,14 +17176,6 @@ msgstr "Παραλήπτες ειδοποιήσεων"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Άτομα που θα ειδοποιούνται όταν προστίθεται νέα οικογένεια ή νέο άτομο"
-
-#: 
-msgid "Person initials style"
-msgstr "Στυλ αρχικών του ατόμου"
-
-#: 
-msgid "Person name display style"
-msgstr "Στυλ εμφάνισης ονόματος του ατόμου"
 
 #: 
 msgid "Spouse Role"
@@ -23473,30 +23184,6 @@ msgid "Download PDF"
 msgstr "Λήψη PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Περίοδος κλειδώματος σε λεπτά\n"
-"Ένας κλειδωμένος λογαριασμός ξεκλειδώνει μόνος του μετά από τόσα λεπτά. Οι αποτυχημένες συνδέσεις από μία διεύθυνση IP μετρώνται στην ίδια περίοδο."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων από μία διεύθυνση IP\n"
-"Οι αποτυχημένες συνδέσεις και τα αιτήματα επαναφοράς κωδικού από μία διεύθυνση IP προσμετρώνται σε αυτό το όριο εντός της περιόδου κλειδώματος. Μόλις συμπληρωθεί, η σύνδεση από τη διεύθυνση αυτή απορρίπτεται μέχρι να λήξει η περίοδος.\n"
-"Ορίστε μηδέν για να απενεργοποιήσετε αυτή τη λειτουργία, για παράδειγμα όταν όλοι φτάνουν στο ChurchCRM μέσω μίας διεύθυνσης διακομιστή μεσολάβησης."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων που επιτρέπονται πριν κλειδωθεί ένας λογαριασμός χρήστη.\n"
-"Ένας κλειδωμένος λογαριασμός ξεκλειδώνει μόνος του μετά την περίοδο κλειδώματος, ή νωρίτερα όταν ένας διαχειριστής μηδενίσει τις αποτυχημένες συνδέσεις του.\n"
-"Αυτή η λειτουργία βοηθά στην προστασία από αυτοματοποιημένες επιθέσεις εικασίας κωδικού.\n"
-"Ορίστε μηδέν για να απενεργοποιήσετε αυτή τη λειτουργία."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Λεπτά μέχρι να ξεκλειδώσει μόνος του: %d"
 
@@ -23825,10 +23512,6 @@ msgid "PDF Output"
 msgstr "Έξοδος PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Λειτουργία διαχείρισης PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Γραμμή ερωτήσεων"
 
@@ -23865,10 +23548,6 @@ msgid "Greeting"
 msgstr "Χαιρετισμός"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Χαιρετισμός και υπογραφή επιστολής"
-
-#: 
 msgid "Letterhead"
 msgstr "Επιστολόχαρτο"
 
@@ -23891,10 +23570,6 @@ msgstr "Ορίστε το επιστολόχαρτο που εκτυπώνουν
 #: 
 msgid "Using the church name and address"
 msgstr "Χρήση του ονόματος και της διεύθυνσης της εκκλησίας"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Χρήση της διαδρομής επιστολόχαρτου που ορίστηκε στις Ρυθμίσεις συστήματος"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28271,10 +27946,6 @@ msgstr "Ρυθμίστε την Εκκλησία Σας"
 #: 
 msgid "Setup Dashboard"
 msgstr "Πίνακας Ελέγχου Ρύθμισης"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Ημέρες Πίνακα Ελέγχου Ρύθμισης"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

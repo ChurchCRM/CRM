@@ -1593,10 +1593,6 @@ msgid "Permission"
 msgstr "الإذن"
 
 #: 
-msgid "System Settings"
-msgstr "اعدادات النظام"
-
-#: 
 msgid "User Editor"
 msgstr "محرر المستخدم"
 
@@ -2082,24 +2078,12 @@ msgid "Localization"
 msgstr "الموقع"
 
 #: 
-msgid "Setting saved"
-msgstr "تم حفظ الإعداد"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "تعديل الإعدادات JSON"
-
-#: 
 msgid "False"
 msgstr "خاطئة"
 
 #: 
 msgid "True"
 msgstr "صحيح"
-
-#: 
-msgid "Edit Settings"
-msgstr "تعديل الإعدادات"
 
 #: 
 msgid "Functions"
@@ -2217,33 +2201,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "تشمل فقط هذه التصنيفات في الدليل، مفصولة بفواصل"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "هذه هي الأرقام دور الأسرة المعين كرئيس للمنزل"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "هذه هي الأرقام دور الأسرة تسمى الزوج"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "هذه هي الأرقام دور الأسرة تسمى الطفل"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "الحد الأدنى لطول يجوز للمستخدم ضبط كلمة المرور الخاصة بهم ل"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "قائمة مفصولة بفواصل من غير مسموح كلمات السر (واضحة جدا)."
-
-#: 
 msgid "Default City"
 msgstr "افتراضي مدينة"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "افتراضي الدولة - 2 يجب أن تكون حرف اختصار!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2266,68 +2225,12 @@ msgid "First month of the fiscal year"
 msgstr "الشهر الأول من السنة المالية"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "تعيين وفيا لتعطيل دخول صديق التسجيل في محرر شخص. مجموعة كاذبة لتمكين دخول صديق التسجيل في محرر شخص."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "تعيين وفيا لإدارة تعطيل من الاشتراك في النشرات الإخبارية في محرر الأسرة."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "تعيين وفيا لتعطيل دخول تاريخ الزفاف في محرر الأسرة. مجموعة كاذبة لتمكين دخول تاريخ الزفاف في محرر الأسرة."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "عدد الشيكات لتقرير زلة الإيداع"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "تستخدم وحدة لقياس المسافة، ميل أو كلم."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "تمكين المدفوعات غير قابلة للخصم"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage لخط العلوي من تقرير الضريبة. سيتم إلحاق مواعيد لنهاية هذا الخط."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbage لخط السفلي من تقرير الضريبة."
-
-#: 
-msgid "Tax Report signer"
-msgstr "تقرير الضرائب الموقع"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Verbage للتقرير تذكير تعهد"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "تعهد تذكير صاحب التوقيع"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Verbage للتقرير تعهد تذكير - لا يوجد سجل تعهد"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbage للتقرير تعهد تذكير - لا يوجد سجل المدفوعات"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage لتأكيد معلومات قاعدة البيانات وتقرير تصحيح"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "تأكيدا معلومات قاعدة البيانات وتصحيح تقرير الموقع"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage للتقرير الدليل"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3782,10 +3685,6 @@ msgstr "لا يحتوي أرشيف النسخ الاحتياطي قاعدة بي
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "جعل الرمز البريدي / الرموز البريدية الحروف الكبيرة عند حفظ إلى قاعدة بيانات دخل المستخدم."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "تستخدم لإنهاء بريد إلكتروني قبل صاحب التوقيع"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3890,10 +3789,6 @@ msgid "Failed"
 msgstr "فشل"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "الكنيسة التحقق من رقم الحساب"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "إلغاء تنشيط الأسرة"
@@ -3906,10 +3801,6 @@ msgstr "تنشيط الأسرة"
 #: 
 msgid "families"
 msgstr "أسر"
-
-#: 
-msgid "Financial Settings"
-msgstr "إعدادات المالية"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3950,10 +3841,6 @@ msgstr "الخاصية هي غير المعينة بنجاح."
 #: 
 msgid "The property could not be unassigned."
 msgstr "الخاصية لا يمكن أن يكون غير معين."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "النص قبل الاسم في رسائل البريد الإلكتروني / تقارير"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4197,10 +4084,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "سجلات (ق) وأضاف بنجاح لاختيار المجموعة."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "لتحديد موعد في تاريخ-المنتقى، في الافتراضي: YYYY-MM-DD، وفي الفرنسية: يوم / شهر / سنة على سبيل المثال."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "لتحديد موعد في تاريخ-المنتقى، في الافتراضي: YMD، وفي الفرنسية: د / م / Y على سبيل المثال."
 
@@ -4287,10 +4170,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "بحث بالعائلة"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4389,10 +4268,6 @@ msgid "Change Settings"
 msgstr "تغيير الاعدادات"
 
 #: 
-msgid "Unknown Type"
-msgstr "نوع غير معروف"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "يجب أن يكون PersonID لسلة الرقمية"
 
@@ -4411,14 +4286,6 @@ msgstr "البحث عن أشخاص"
 #: 
 msgid "Maximum number of People"
 msgstr "الحد الأقصى لعدد الناس"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "الحقل حيث يتم سرد أب الإعتراف، يجب أن تكون له شعبا من نوع المجموعة"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "الحقل حيث يتم تخزين اعتراف الماضي، يجب أن يكون نوع التاريخ"
 
 #: 
 msgid "People Reports"
@@ -4672,16 +4539,6 @@ msgid "Event not found"
 msgstr "لم يتم العثور على الحدث"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "مدة الجلسة المهلة في ثواني محدد من الصفر إلى مهلة جلسة تعطيل."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "الحد الأدنى أن كلمة المرور الجديدة يجب أن تختلف من واحدة من العمر (# من الشخصيات تغيرت) مجموعة من الصفر لتعطيل هذه الميزة"
-
-#: 
 msgid "Verify People"
 msgstr "تحقق من الناس"
 
@@ -4761,10 +4618,6 @@ msgstr "أحداث غير المثبتة"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "الاسم الاخير الاسم الاول والاسم الاوسط"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "ارسال رساله الي الأعضاء عند مسح حساباتهم من البرنامج"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7758,10 +7611,6 @@ msgid "selected family has no coordinates"
 msgstr "الأسرة المختارة ليس لها إحداثيات"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "طلب من جميع المستخدمين التسجيل في المصادقة الثنائية"
-
-#: 
 msgid "Active Groups"
 msgstr "المجموعات النشطة"
 
@@ -8244,10 +8093,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "اختر كيفية ملء قاعدة البيانات الخاصة بك. يمكنك دائمًا استخدام طريقة مختلفة لاحقًا."
 
 #: 
-msgid "Church Info"
-msgstr "معلومات الكنيسة"
-
-#: 
 msgid "Clear all"
 msgstr "امسح الكل"
 
@@ -8278,14 +8123,6 @@ msgstr "منصة إدارة المجتمع"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "أكمل هذه بأي ترتيب لتحضير ChurchCRM لجماعتك."
-
-#: 
-msgid "Confession"
-msgstr "الاعتراف"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "تكوين إعدادات النظام العام والتفضيلات"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8334,10 +8171,6 @@ msgstr "الشخص الحالي"
 #: 
 msgid "Database Reset"
 msgstr "إعادة تعيين قاعدة البيانات"
-
-#: 
-msgid "Default / Notes"
-msgstr "الافتراضي / الملاحظات"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9958,10 +9791,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "السماح بترقيات النظام للإصدارات المحددة كـ \"ما قبل الإصدار\" على GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "السماح بالوصول غير المصرح به لأحداث التقويم عبر عناوين URL العامة."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "السماح للزوار بإنشاء سجل أسرتهم الخاص عبر صفحة التسجيل الذاتي"
 
@@ -10124,24 +9953,12 @@ msgid "Enable Email"
 msgstr "تفعيل البريد الإلكتروني"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "تفعيل قائمة الأحداث"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "تفعيل API التقويم الخارجي"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "فعّل إرسال البريد الإلكتروني من ChurchCRM. مطلوب لإعادة تعيين كلمة المرور والإخطارات وروابط البريد الإلكتروني."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "فعّل إذا كان خادم SMTP الخاص بك يتطلب اسم مستخدم وكلمة مرور"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "فعّل أو عطّل وحدة مدرسة الأحد وقائمة الشريط الجانبي."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10239,10 +10056,6 @@ msgstr "إخفاء خط العرض / خط الطول"
 #: 
 msgid "How it works"
 msgstr "كيف يعمل"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "عدد الشيكات المراد طباعتها في كل صفحة إيصال إيداع"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10402,10 +10215,6 @@ msgid "Privacy Note"
 msgstr "ملاحظة الخصوصية"
 
 #: 
-msgid "Quick Settings"
-msgstr "الإعدادات السريعة"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "مصادقة SMTP"
 
@@ -10432,10 +10241,6 @@ msgstr "الإعداد"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "عرض تفصيل فئات الأوراق النقدية في تقرير إيصال الإيداع"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "إظهار أو إخفاء قائمة الأحداث في التنقل الرئيسي."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10849,10 +10654,6 @@ msgstr "إذا لاحظت أحرفًا مشوهة، أو كيانات HTML تظ�
 #: 
 msgid "Indigo"
 msgstr "نيلي"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "قيمة JSON غير صالحة — لم يتم حفظ الإعداد. يُرجى تصحيحه والمحاولة مرة أخرى."
 
 #: 
 msgid "Language and regional settings"
@@ -12633,10 +12434,6 @@ msgstr "طوال اليوم"
 #: 
 msgid "All Roles"
 msgstr "جميع الأدوار"
-
-#: 
-msgid "All System Settings"
-msgstr "جميع إعدادات النظام"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15119,10 +14916,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "قائمة مصادر مفصولة بمسافات يُسمح لها بتضمين صفحة التقويم الخارجية العامة في iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "مصادر مفصولة بمسافات يُسمح لها بتضمين صفحة التقويم العامة في iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "لا يمكن تعديل مجموعة مدرسة الأحد إلا في هاتين الحالتين"
 
@@ -15653,10 +15446,6 @@ msgstr "تم الحفظ بنجاح"
 #: 
 msgid "Select a fund"
 msgstr "اختر صندوقًا"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "إرسال رسالة تهنئة بعيد الميلاد تجريبية إلى نفسي"
 
 #: 
 msgid "Sending to"
@@ -16683,10 +16472,6 @@ msgid "Not a valid date of death"
 msgstr "ليس تاريخ وفاة صالحًا"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "عدد الأيام المتاحة للمستخدمين للتسجيل في المصادقة الثنائية بعد أن تصبح إلزامية. اضبطه على 0 للتطبيق فورًا. قد يؤدي تقصير فترة السماح النشطة إلى إغلاق الوصول أمام المستخدمين فورًا."
-
-#: 
 msgid "Offline"
 msgstr "غير متصل"
 
@@ -17011,14 +16796,6 @@ msgid "Download CSV"
 msgstr "تحميل CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "تمكين أو تعطيل وحدة المالية والقائمة الجانبية."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "تمكين أو تعطيل وحدة جمع التبرعات."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "فشل حذف شعار الكنيسة"
 
@@ -17215,46 +16992,6 @@ msgid "Feature Toggles"
 msgstr "تبديلات الميزات"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "تتحكم تبديلات الميزات في الوحدات والميزات المتاحة في ChurchCRM. يتم تطبيق التغييرات على الفور."
-
-#: 
-msgid "Finance Features"
-msgstr "ميزات التمويل"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "تضمين العناوين في البحث العام السريع"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "تضمين أحداث التقويم في البحث العام السريع"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "تضمين خصائص العائلة المخصصة في البحث العام السريع"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "تضمين الودائع في البحث العام السريع"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "تضمين العائلات في البحث العام السريع"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "تضمين المجموعات في البحث العام السريع"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "تضمين المدفوعات في البحث العام السريع"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "تضمين الأشخاص في البحث العام السريع"
-
-#: 
 msgid "Invalid setting"
 msgstr "إعداد غير صحيح"
 
@@ -17263,16 +17000,8 @@ msgid "Lost Password Link"
 msgstr "رابط كلمة المرور المفقودة"
 
 #: 
-msgid "Manage All Features"
-msgstr "إدارة جميع الميزات"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "تبديل رئيسي لإرسال البريد الإلكتروني. مطلوب لإعادة تعيين كلمات المرور والإخطارات"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "المدفوعات غير القابلة للخصم"
 
 #: 
 msgid "Primary Modules"
@@ -17283,20 +17012,12 @@ msgid "Public Calendar API"
 msgstr "واجهة برمجة التطبيقات للتقويم العام"
 
 #: 
-msgid "Saved"
-msgstr "تم الحفظ"
-
-#: 
 msgid "Search Families"
 msgstr "البحث عن العائلات"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "البحث في خصائص العائلة المخصصة"
-
-#: 
-msgid "Search Settings"
-msgstr "إعدادات البحث"
 
 #: 
 msgid "Self-Registration"
@@ -17513,14 +17234,6 @@ msgstr "مستلمو الإشعارات"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "الأشخاص الذين سيتم إشعارهم عند إضافة أسرة أو شخص جديد"
-
-#: 
-msgid "Person initials style"
-msgstr "نمط الأحرف الأولى للشخص"
-
-#: 
-msgid "Person name display style"
-msgstr "نمط عرض اسم الشخص"
 
 #: 
 msgid "Spouse Role"
@@ -23581,30 +23294,6 @@ msgid "Download PDF"
 msgstr "تنزيل PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "فترة القفل بالدقائق\n"
-"يتم إلغاء قفل الحساب المقفل تلقائيًا بعد هذا العدد من الدقائق. يتم احتساب محاولات تسجيل الدخول الفاشلة من عنوان IP واحد خلال نفس الفترة."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "الحد الأقصى لعدد محاولات تسجيل الدخول الفاشلة من عنوان IP واحد\n"
-"تُحتسب محاولات تسجيل الدخول الفاشلة وطلبات إعادة تعيين كلمة المرور من عنوان IP واحد ضمن هذا الحد خلال فترة القفل. بمجرد الوصول إليه، يُرفض تسجيل الدخول من ذلك العنوان حتى تنتهي الفترة.\n"
-"اضبط على صفر لتعطيل هذه الميزة، على سبيل المثال عندما يصل الجميع إلى ChurchCRM عبر عنوان وكيل واحد."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "الحد الأقصى لعدد محاولات تسجيل الدخول الفاشلة المسموح بها قبل قفل حساب المستخدم.\n"
-"يتم إلغاء قفل الحساب المقفل تلقائيًا بعد فترة القفل، أو في وقت أقرب عندما يعيد المسؤول تعيين محاولات تسجيل الدخول الفاشلة.\n"
-"تساعد هذه الميزة في الحماية من هجمات تخمين كلمة المرور الآلية.\n"
-"اضبط على صفر لتعطيل هذه الميزة."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "دقائق حتى يتم إلغاء القفل تلقائيًا: %d"
 
@@ -23933,10 +23622,6 @@ msgid "PDF Output"
 msgstr "مخرجات PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "وضع التعامل مع PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "سطر الأسئلة"
 
@@ -23973,10 +23658,6 @@ msgid "Greeting"
 msgstr "التحية"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "تحية الخطاب والتوقيع"
-
-#: 
 msgid "Letterhead"
 msgstr "الترويسة"
 
@@ -23999,10 +23680,6 @@ msgstr "تعيين الترويسة التي تطبعها خطابات PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "باستخدام اسم الكنيسة وعنوانها"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "باستخدام مسار الترويسة المحدد في إعدادات النظام"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28407,10 +28084,6 @@ msgstr "إعداد كنيستك"
 #: 
 msgid "Setup Dashboard"
 msgstr "لوحة معلومات الإعداد"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "أيام لوحة معلومات الإعداد"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

@@ -1635,10 +1635,6 @@ msgid "Permission"
 msgstr "允许"
 
 #: 
-msgid "System Settings"
-msgstr "系统设置"
-
-#: 
 msgid "User Editor"
 msgstr "用户编辑器"
 
@@ -2145,24 +2141,12 @@ msgid "Localization"
 msgstr "本土化"
 
 #: 
-msgid "Setting saved"
-msgstr "设置已保存"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "编辑JSON设置"
-
-#: 
 msgid "False"
 msgstr "否"
 
 #: 
 msgid "True"
 msgstr "是"
-
-#: 
-msgid "Edit Settings"
-msgstr "编辑设置"
 
 #: 
 msgid "Functions"
@@ -2280,33 +2264,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "仅在目录中包含这些分类，逗号分隔"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "这些是指定为房屋主管的家庭角色的编号"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "这些是指定为配偶的家庭角色的编号"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "这些是指定为孩子的家庭角色的编号"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "用户设置密码的最小长度"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "以逗号分隔的不允许（太简单）密码列表。"
-
-#: 
 msgid "Default City"
 msgstr "默认城市"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "默认状态 - 必须是2个字母的缩写！"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2329,68 +2288,12 @@ msgid "First month of the fiscal year"
 msgstr "财政年度的第一个月"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入Friend Date。设置为false(否)以启用在Person Editor(人员编辑)中输入Friend Date。"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "设置为true(是)以禁用家庭编辑器中的新闻稿订阅管理。"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "设置为true(是)以禁用在家庭编辑器中输入结婚日期。设置为false(否)以启用在族编辑器中输入结婚日期。"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "存款单报告的支票数量"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "用于测量距离，英里或公里的单位。"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "税收报告第一行的动词。日期将附加到该行的末尾。"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "税收报告底线的动词。"
-
-#: 
-msgid "Tax Report signer"
-msgstr "税务报告签名者"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "质押提醒报告的动词"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "承诺签名者"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "质押提醒报告的动词-没有质押记录"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "质押提醒报告的动词-没有付款记录"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "数据库信息确认和更正报告的动词"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "数据库信息确认和更正报告签名者"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "目录报告的动词"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3845,10 +3748,6 @@ msgstr "备份存档不包含数据库"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "将用户输入的邮编/邮政编码以大写方式保存到数据库。"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "用于在签名者之前结束一封信"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3953,10 +3852,6 @@ msgid "Failed"
 msgstr "失败"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "教堂检查账号"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "停止的家庭"
@@ -3969,10 +3864,6 @@ msgstr "激活的家庭"
 #: 
 msgid "families"
 msgstr "家庭"
-
-#: 
-msgid "Financial Settings"
-msgstr "财务设置"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4013,10 +3904,6 @@ msgstr "属性已成功取消分配。"
 #: 
 msgid "The property could not be unassigned."
 msgstr "属性无法取消分配。"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "电子邮件/报告中姓名前的文字"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4260,10 +4147,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "记录已成功添加到选定的组。"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "要在日期选取器中定义日期，默认情况下：yyyy-mm-dd，在法国：dd / mm / yyyy。"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "要在日期选取器中定义日期，默认情况下：Y-m-d，在法国：d/m/Y。"
 
@@ -4351,10 +4234,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "搜索家庭"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4455,10 +4334,6 @@ msgstr "更变设定\n"
 ""
 
 #: 
-msgid "Unknown Type"
-msgstr "未知类别"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "购物车中的个人ID必需是数字"
 
@@ -4477,14 +4352,6 @@ msgstr "搜索人物"
 #: 
 msgid "Maximum number of People"
 msgstr "人数上限"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Father Of Confession出现的字段，必须是群体类型中的人"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Confession最后字段的存储，必须是一个数据类型"
 
 #: 
 msgid "People Reports"
@@ -4738,18 +4605,6 @@ msgid "Event not found"
 msgstr "找不到活动"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "会话超时时间（以秒为单位）\n"
-"设置为零可禁用会话超时。"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "新密码必须不同于旧密码的最小数量（已更改的字符数）\n"
-"设置为零以禁用此功能"
-
-#: 
 msgid "Verify People"
 msgstr "验证人员"
 
@@ -4819,10 +4674,6 @@ msgstr "未固定事件"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "姓，名，中间名"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "发送电子邮件通知用户帐户被删除的时间"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7786,10 +7637,6 @@ msgid "selected family has no coordinates"
 msgstr "所选家庭没有坐标"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "要求所有用户注册双重身份验证"
-
-#: 
 msgid "Active Groups"
 msgstr "活跃小组"
 
@@ -8267,10 +8114,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "选择您想要如何填充数据库。您始终可以稍后使用不同的方法。"
 
 #: 
-msgid "Church Info"
-msgstr "教会信息"
-
-#: 
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -8301,14 +8144,6 @@ msgstr "社区管理平台"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "以任何顺序完成这些操作，为您的会众准备好 ChurchCRM。"
-
-#: 
-msgid "Confession"
-msgstr "忏悔"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "配置全局系统设置和偏好设置"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8357,10 +8192,6 @@ msgstr "当前人员"
 #: 
 msgid "Database Reset"
 msgstr "数据库重置"
-
-#: 
-msgid "Default / Notes"
-msgstr "默认/笔记"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9981,10 +9812,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "允许系统升级到GitHub上标记为「预发布」的版本"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "允许通过公共HTML、ICS和JSON URL未经身份验证访问日历事件。与外部应用共享日历时需要此设置。"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "允许访客通过自助注册页面创建自己的家庭记录"
 
@@ -10147,24 +9974,12 @@ msgid "Enable Email"
 msgstr "启用电子邮件"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "启用活动菜单"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "启用外部日历API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "启用从ChurchCRM发送电子邮件。重置密码、通知和电子邮件链接需要此设置。"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "如果您的SMTP服务器需要用户名和密码，请启用此选项"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "启用或禁用主日学模块和侧边栏菜单。"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10262,10 +10077,6 @@ msgstr "隐藏经纬度"
 #: 
 msgid "How it works"
 msgstr "工作原理"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "每页存款单打印多少张支票"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10425,10 +10236,6 @@ msgid "Privacy Note"
 msgstr "隐私声明"
 
 #: 
-msgid "Quick Settings"
-msgstr "快速设置"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP身份验证"
 
@@ -10455,10 +10262,6 @@ msgstr "设置"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "在存款单报告中显示票面金额明细"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "在主导航中显示或隐藏活动菜单。"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10872,10 +10675,6 @@ msgstr "如果您发现乱码、HTML 实体以文字形式出现，或翻译导�
 #: 
 msgid "Indigo"
 msgstr "靛蓝色"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "JSON 值无效——设置未保存。请更正后重试。"
 
 #: 
 msgid "Language and regional settings"
@@ -12651,10 +12450,6 @@ msgstr "整天"
 #: 
 msgid "All Roles"
 msgstr "所有角色"
-
-#: 
-msgid "All System Settings"
-msgstr "所有系统设置"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15122,10 +14917,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "以空格分隔的来源列表，允许将公共外部日历页面嵌入 iframe。默认允许任何来源。"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "以空格分隔的来源，允许将公共日历页面嵌入 iframe。默认允许任何站点。"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "主日学小组只能在以下两种情况下修改"
 
@@ -15656,10 +15447,6 @@ msgstr "保存成功"
 #: 
 msgid "Select a fund"
 msgstr "选择基金"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "向自己发送测试生日邮件"
 
 #: 
 msgid "Sending to"
@@ -16676,10 +16463,6 @@ msgid "Not a valid date of death"
 msgstr "不是有效的逝世日期"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "在强制启用双重认证（2FA）后，用户可用于完成注册的天数。设为 0 表示立即强制执行。缩短正在生效的宽限期可能导致用户立即被锁定。"
-
-#: 
 msgid "Offline"
 msgstr "离线"
 
@@ -17004,14 +16787,6 @@ msgid "Download CSV"
 msgstr "下载 CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "启用或禁用财务模块和侧边栏菜单"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "启用或禁用筹款模块"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "移除教堂标志失败"
 
@@ -17208,46 +16983,6 @@ msgid "Feature Toggles"
 msgstr "功能开关"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "功能开关控制ChurchCRM中哪些模块和功能可用。更改立即生效。"
-
-#: 
-msgid "Finance Features"
-msgstr "财务功能"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "在快速全局搜索中包含地址"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "在快速全局搜索中包含日历事件"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "在快速全局搜索中包含自定义家庭属性"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "在快速全局搜索中包含存款"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "在快速全局搜索中包含家庭"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "在快速全局搜索中包含事工"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "在快速全局搜索中包含付款"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "在快速全局搜索中包含人员"
-
-#: 
 msgid "Invalid setting"
 msgstr "无效设置"
 
@@ -17256,16 +16991,8 @@ msgid "Lost Password Link"
 msgstr "丢失密码链接"
 
 #: 
-msgid "Manage All Features"
-msgstr "管理所有功能"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "电子邮件发送的主开关。密码重置和通知需要。"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "不可抵扣的款项"
 
 #: 
 msgid "Primary Modules"
@@ -17276,20 +17003,12 @@ msgid "Public Calendar API"
 msgstr "公共日历API"
 
 #: 
-msgid "Saved"
-msgstr "已保存"
-
-#: 
 msgid "Search Families"
 msgstr "搜索家庭"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "搜索家庭自定义属性"
-
-#: 
-msgid "Search Settings"
-msgstr "搜索设置"
 
 #: 
 msgid "Self-Registration"
@@ -17506,14 +17225,6 @@ msgstr "通知接收人"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "新增家庭或人员时需要通知的人员"
-
-#: 
-msgid "Person initials style"
-msgstr "人员姓名首字母样式"
-
-#: 
-msgid "Person name display style"
-msgstr "人员姓名显示样式"
 
 #: 
 msgid "Spouse Role"
@@ -23509,30 +23220,6 @@ msgid "Download PDF"
 msgstr "下载 PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "锁定时间（分钟）\n"
-"锁定的账户在此分钟数后自动解锁。同一时间段内来自一个 IP 地址的失败登录会被计数。"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "来自一个 IP 地址的最大失败登录次数\n"
-"在锁定时间内，来自一个 IP 地址的失败登录和密码重置请求计入此限制。达到限制后，该地址的登录将被拒绝，直到时间段结束。\n"
-"设为零以禁用此功能，例如当所有人都通过一个代理地址访问 ChurchCRM 时。"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "在用户账户被锁定之前允许的最大失败登录次数。\n"
-"锁定的账户在锁定时间后自动解锁，或在管理员重置失败登录时提前解锁。\n"
-"此功能有助于防止自动密码猜测攻击。\n"
-"设为零以禁用此功能。"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "自动解锁前剩余分钟数：%d"
 
@@ -23861,10 +23548,6 @@ msgid "PDF Output"
 msgstr "PDF 输出"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF 处理方式"
-
-#: 
 msgid "Questions Line"
 msgstr "问询语"
 
@@ -23901,10 +23584,6 @@ msgid "Greeting"
 msgstr "问候语"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "信件问候语与签名"
-
-#: 
 msgid "Letterhead"
 msgstr "信头"
 
@@ -23927,10 +23606,6 @@ msgstr "设置 PDF 信件打印的信头"
 #: 
 msgid "Using the church name and address"
 msgstr "使用教会名称和地址"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "使用系统设置中的信头路径"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28300,10 +27975,6 @@ msgstr "设置您的教会"
 #: 
 msgid "Setup Dashboard"
 msgstr "设置仪表板"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "设置仪表板天数"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
