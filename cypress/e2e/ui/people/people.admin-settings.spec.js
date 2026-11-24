@@ -12,7 +12,7 @@
 
 describe("People Settings hub", () => {
     const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleConfirmation", "#peopleDirectory", "#peopleMap"];
-    const reportKeys = ["sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
+    const reportKeys = ["sDear", "sConfirmSincerely", "sConfirmSigner", "bDirLetterHead", "sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
     const reportOriginals = {};
     let savedProviders;
     let savedFriendDate;
@@ -131,12 +131,11 @@ describe("People Settings hub", () => {
             cy.visit("/admin/people");
             cy.get("#peopleDirectory .settings-panel-fields").should("not.be.disabled");
             keys.forEach((key) => {
-                cy.get(`textarea[name='${key}']`).clear().type(`Updated ${key}\nSecond line`).blur();
+                cy.get(`[name='${key}']`).clear().type(`Updated ${key}`).blur();
                 cy.wait("@saveReportText").its("response.statusCode").should("eq", 200);
             });
             cy.reload();
-            keys.forEach((key) => cy.get(`textarea[name='${key}']`).should("have.value", `Updated ${key}\nSecond line`));
-            cy.get("[name='sDear'], [name='sConfirmSincerely'], [name='sConfirmSigner'], [name='bDirLetterHead']").should("not.exist");
+            keys.forEach((key) => cy.get(`[name='${key}']`).should("have.value", `Updated ${key}`));
             cy.visit("/SystemSettings.php");
             keys.forEach((key) => cy.get(`[name='new_value[${key}]']`).should("not.exist"));
         });

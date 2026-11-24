@@ -373,9 +373,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $labels = [
-            'sDear'             => gettext('Greeting'),
-            'sConfirmSincerely' => gettext('Closing'),
-            'sConfirmSigner'    => gettext('Signer'),
             'sTaxSignatureStoragePath' => gettext('Signature storage folder'),
         ];
         $letterSettings = array_map(function (array $setting) use ($labels): array {

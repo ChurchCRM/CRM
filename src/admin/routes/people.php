@@ -29,10 +29,10 @@ $app->get('/people', function (Request $request, Response $response): Response {
             'iGradePromotionMonth', 'iGradePromotionDay',
         ]],
         'peopleConfirmation' => [gettext('Confirmation Letter'), 'fa-solid fa-envelope', [
-            'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6',
+            'sDear', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sConfirmSincerely', 'sConfirmSigner',
         ]],
         'peopleDirectory' => [gettext('Directory'), 'fa-solid fa-address-book', [
-            'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2',
+            'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead',
         ]],
         'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
             'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
@@ -62,6 +62,10 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'iMapZoom'                             => gettext('Default Map View'),
         'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
         'sGeocoderProviders'                   => gettext('Geocoding services'),
+        'sDear'                                => gettext('Greeting'),
+        'sConfirmSincerely'                    => gettext('Closing'),
+        'sConfirmSigner'                       => gettext('Signer'),
+        'bDirLetterHead'                       => gettext('Letterhead'),
         'sConfirm1'                            => sprintf(gettext('Letter Text %d'), 1),
         'sConfirm2'                            => sprintf(gettext('Letter Text %d'), 2),
         'sConfirm3'                            => sprintf(gettext('Letter Text %d'), 3),
