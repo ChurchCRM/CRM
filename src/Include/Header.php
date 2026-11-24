@@ -530,7 +530,9 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
       <div class="container-xl">
 <?php
 // Hydrate registry from session-cached remote notifications (no HTTP calls)
-NotificationService::loadSessionNotifications();
+NotificationService::loadSessionNotifications(
+    parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) === parse_url($homeUrl, PHP_URL_PATH)
+);
 
 // Render all active notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {
