@@ -4,7 +4,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\QuickBooksTicketSettingsService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
@@ -126,4 +125,4 @@ $app->post('/api/finance/quickbooks', function (Request $request, Response $resp
     }
 
     return SlimUtils::renderJSON($response, $service->read());
-})->add(new CSRFMiddleware())->add(AdminRoleAuthMiddleware::class);
+})->add(new CSRFMiddleware());

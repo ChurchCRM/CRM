@@ -17,7 +17,6 @@ export const COVERAGE = {
     "src/admin/routes/api/system/system-config.php": APP_GATE,
     "src/admin/routes/api/system/tax-signature.php": APP_GATE,
     "src/admin/routes/api/user-admin.php": APP_GATE,
-    "src/admin/routes/finance.php": APP_GATE,
     "src/admin/routes/import.php": APP_GATE,
 
     "src/finance/index.php": { rows: ["finance-app"] },
