@@ -32,20 +32,17 @@ describe("Standard Sunday School", () => {
             .then((text) => {
                 expect(Number(text.trim())).to.be.at.least(0);
             });
-        // The Classes stat is server-rendered, but the table below it is a
-        // DataTable that populates async - on master run 45324287207 the
-        // count was read before any rows had loaded (0 vs the stat's 6) and
-        // the old one-shot .then() chain never retried, so it failed in
-        // 0.000s. Wait for rows first, then compare inside a retrying
-        // .should() that re-reads both numbers.
-        cy.get("#sundayschoolClasses tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
-        cy.get(".text-body-secondary")
-            .contains(/^Classes$/)
-            .prev(".fw-medium")
-            .should(($stat) => {
-                const classes = Number($stat.text().trim());
-                const rows = Cypress.$("#sundayschoolClasses").DataTable().rows().count();
-                expect(rows, "DataTable rows vs Classes stat").to.eq(classes);
+        // The DataTable is initialised by the page script; rows exist in the HTML before that.
+        cy.window()
+            .its("$")
+            .should(($) => expect($.fn.dataTable.isDataTable("#sundayschoolClasses")).to.eq(true))
+            .then(($) => {
+                cy.get(".text-body-secondary")
+                    .contains(/^Classes$/)
+                    .prev(".fw-medium")
+                    .should(($stat) => {
+                        expect($("#sundayschoolClasses").DataTable().rows().count()).to.eq(Number($stat.text().trim()));
+                    });
             });
         cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
         cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");
