@@ -66,7 +66,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 [gettext('Year-End Giving')],
             ]),
             'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog'],
             ]),
             'years' => $years,
             'overview' => YearEndGivingService::overview($year),
@@ -111,7 +111,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 [gettext('Giving Statements')],
             ]),
             'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog', 'adminOnly' => false],
+                ['label' => gettext('Statement Settings'), 'url' => '/finance/statements/settings', 'icon' => 'fa-cog'],
                 ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
             ]),
             'canadianEnabled' => $canadianEnabled,

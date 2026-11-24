@@ -11,8 +11,9 @@ $app->get('/finance', function (Request $request, Response $response): Response 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $sectionDefinitions = [
-        'financeTaxStatements' => [gettext('Giving Statements'), 'fa-solid fa-file-invoice-dollar', [
-            'sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions', 'sTaxSigner',
+        'financeDeposits' => [gettext('Deposits & Payments'), 'fa-solid fa-sliders', [
+            'iFYMonth', 'iMaxTaxYears', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts',
+            'bUseScannedChecks', 'bRequireCheckNumber', 'bEnableNonDeductible', 'bUseDonationEnvelopes',
         ]],
         'financePledgeReminders' => [gettext('Pledge Reminders'), 'fa-solid fa-bell', [
             'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments',
@@ -23,16 +24,17 @@ $app->get('/finance', function (Request $request, Response $response): Response 
         'financeQuickBooks' => [gettext('QuickBooks Deposit Ticket Settings'), 'fa-solid fa-receipt', [
             'sQBDTSettings',
         ]],
-        'financeOptions' => [gettext('Finance Features'), 'fa-solid fa-sliders', [
-            'bEnableNonDeductible',
-        ]],
     ];
 
     $labels = [
-        'sGivingStatementOpening'   => gettext('Opening Line'),
-        'sGivingStatementClosing'   => gettext('Closing Line'),
-        'sGivingStatementQuestions' => gettext('Questions Line'),
-        'sTaxSigner'                => gettext('Signer'),
+        'iFYMonth'                  => gettext('First month of the fiscal year'),
+        'iMaxTaxYears'              => gettext('Maximum tax years shown per family'),
+        'sDepositSlipType'          => gettext('Deposit ticket type'),
+        'iChecksPerDepositForm'     => gettext('Number of checks for Deposit Slip Report'),
+        'bDisplayBillCounts'        => gettext('Display bill counts on deposit slip'),
+        'bUseScannedChecks'         => gettext('Enable use of scanned checks'),
+        'bRequireCheckNumber'       => gettext('Require check number on check payments'),
+        'bUseDonationEnvelopes'     => gettext('Enable use of donation envelopes'),
         'sReminder1'                => gettext('Opening Line'),
         'sReminderSigner'           => gettext('Signer'),
         'sReminderNoPledge'         => gettext('No Pledge Text'),
@@ -41,13 +43,10 @@ $app->get('/finance', function (Request $request, Response $response): Response 
         'sZeroGivers2'              => gettext('Closing Line'),
         'sZeroGivers3'              => gettext('Questions Line'),
         'sQBDTSettings'             => gettext('QuickBooks Deposit Ticket Settings'),
-        'bEnableNonDeductible'      => gettext('Non-Deductible Payments'),
+        'bEnableNonDeductible'      => gettext('Enable non-deductible payments'),
     ];
 
     $textareaKeys = [
-        'sGivingStatementOpening',
-        'sGivingStatementClosing',
-        'sGivingStatementQuestions',
         'sReminder1',
         'sReminderNoPledge',
         'sReminderNoPayments',

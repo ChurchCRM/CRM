@@ -43,7 +43,7 @@ unset($setting);
                 </button>
                 <?php else: ?>
                 <span class="text-body-secondary small ms-2" id="church-letterhead-default-note">
-                    <i class="fa-solid fa-circle-info me-1"></i><?= MpdfRenderer::graphicLetterhead() !== null ? gettext('Using the letterhead path set in System Settings') : gettext('Using the church name and address') ?>
+                    <i class="fa-solid fa-circle-info me-1"></i><?= MpdfRenderer::graphicLetterhead() !== null ? gettext('Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.') : gettext('Using the church name and address') ?>
                 </span>
                 <?php endif; ?>
 

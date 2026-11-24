@@ -40,7 +40,6 @@ $currentDeposit = $dashboardData['currentDeposit'];
 $currentDepositId = $dashboardData['currentDepositId'];
 $hasOpenDeposit = $currentDeposit && !$currentDeposit->getClosed();
 
-$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 $sRootPath = SystemURLs::getRootPath();
 ?>
@@ -304,9 +303,11 @@ $sRootPath = SystemURLs::getRootPath();
                     <a href="<?= $sRootPath ?>/finance/reports/year-end?year=<?= (int) $yearEnd['year'] ?>" class="btn btn-primary w-100">
                         <i class="fa-solid fa-envelope-open-text me-1"></i><?= gettext('Prepare Giving Statements') ?>
                     </a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) : ?>
                     <a href="<?= $sRootPath ?>/finance/statements/settings" class="btn btn-ghost-secondary w-100 mt-2">
                         <i class="fa-solid fa-file-invoice me-1"></i><?= gettext('Statement Settings') ?>
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -345,19 +346,9 @@ $sRootPath = SystemURLs::getRootPath();
     </div>
 
 
-<?php if ($isAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<?php endif; ?>
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">window.financeDashboardConfig = <?= InputUtils::jsonEncodeForScript([
     'funds' => $paymentsByFund,
     'depositRange' => ['from' => $dashboardData['fiscalYear']['startDate'], 'to' => $days === null ? $dashboardData['fiscalYear']['endDate'] : null],
-    'isAdmin' => $isAdmin,
-    'fiscalYearMonths' => $isAdmin ? SystemConfig::getChoices('iFYMonth') : [],
-    'depositSlipTooltip' => $isAdmin ? SystemConfig::getTooltip('sDepositSlipType') : '',
-    'depositSlipTypes' => $isAdmin ? SystemConfig::getChoices('sDepositSlipType') : [],
-    'requireCheckNumberTooltip' => $isAdmin ? SystemConfig::getTooltip('bRequireCheckNumber') : '',
 ]) ?>;</script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-dashboard.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 

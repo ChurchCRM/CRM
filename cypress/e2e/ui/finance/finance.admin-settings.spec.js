@@ -1,12 +1,6 @@
 describe("Finance Settings hub", () => {
     it("shows all finance settings and quick links for an admin", () => {
         const settingsBySection = {
-            financeTaxStatements: [
-                "sGivingStatementOpening",
-                "sGivingStatementClosing",
-                "sGivingStatementQuestions",
-                "sTaxSigner",
-            ],
             financePledgeReminders: [
                 "sReminder1",
                 "sReminderSigner",
@@ -15,7 +9,7 @@ describe("Finance Settings hub", () => {
             ],
             financeZeroGivers: ["sZeroGivers", "sZeroGivers2", "sZeroGivers3"],
             financeQuickBooks: ["sQBDTSettings"],
-            financeOptions: ["bEnableNonDeductible"],
+            financeDeposits: ["iFYMonth", "iMaxTaxYears", "sDepositSlipType", "iChecksPerDepositForm", "bDisplayBillCounts", "bUseScannedChecks", "bRequireCheckNumber", "bEnableNonDeductible", "bUseDonationEnvelopes"],
         };
 
         cy.setupAdminSession();
@@ -61,8 +55,8 @@ describe("Finance Settings hub", () => {
         it("saves text and boolean settings and reloads their values", () => {
             const signer = "#financePledgeReminders [name='sReminderSigner']";
             const nonDeductible =
-                "#financeOptions input[name='bEnableNonDeductible']";
-            const options = "#financeOptions .settings-panel-fields";
+                "#financeDeposits input[name='bEnableNonDeductible']";
+            const options = "#financeDeposits .settings-panel-fields";
             const newSigner = `Finance test signer ${Date.now()}`;
 
             cy.setupAdminSession();

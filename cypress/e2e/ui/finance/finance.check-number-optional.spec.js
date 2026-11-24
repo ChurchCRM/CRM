@@ -46,12 +46,11 @@ describe("Treasurer records checks without check numbers", () => {
         return cy.wait("@savePayment").its("response");
     };
 
-    it("turns off the requirement in Financial Settings, then saves blank and 0 check numbers twice for one family", () => {
+    it("turns off the requirement in Finance Settings, then saves blank and 0 check numbers twice for one family", () => {
         cy.intercept("POST", "**/admin/api/system/config/bRequireCheckNumber").as("saveRequireCheckNumber");
-        cy.visit("/finance/");
-        cy.contains("Financial Settings").click();
-        cy.get("#financialSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-        cy.get("#financialSettings input[name='bRequireCheckNumber'][value='0']").check({ force: true });
+        cy.visit("/admin/finance");
+        cy.get("#financeDeposits .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+        cy.get("#financeDeposits input[name='bRequireCheckNumber'][value='0']").check({ force: true });
         cy.wait("@saveRequireCheckNumber").its("response.statusCode").should("eq", 200);
         cy.getSystemConfig("bRequireCheckNumber").should("eq", "0");
 

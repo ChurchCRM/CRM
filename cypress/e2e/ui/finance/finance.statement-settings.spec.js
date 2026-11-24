@@ -119,12 +119,12 @@ describe("Finance Statement Settings", () => {
     describe("Finance-only user (not admin)", () => {
         beforeEach(() => cy.setupFinanceOnlySession());
 
-        it("can access the finance statement settings page", () => {
-            cy.visit("/finance/statements/settings");
-            cy.url().should("include", "/finance/statements/settings");
-            cy.contains("Statement Settings");
-            cy.get("#statementTax textarea[name='sCharityRegisteredAddress']").should("be.visible");
-            cy.get("#statementTax input[name='sCharityLegalName']").should("be.visible");
+        it("cannot open or save statement settings, which are admin-only", () => {
+            cy.visit("/finance/statements/settings", { failOnStatusCode: false });
+            cy.url().should("not.include", "/finance/statements/settings");
+            cy.request({ method: "POST", url: "/finance/api/config/sTaxSigner", body: { value: "Nope" }, failOnStatusCode: false })
+                .its("status")
+                .should("be.oneOf", [401, 403]);
         });
     });
 

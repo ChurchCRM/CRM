@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -119,7 +120,9 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                     <?php if (GivingStatementService::isCanadianChurch()) : ?>
                         <div class="alert alert-info mb-0" role="status" id="canadian-receipts-info"><?= gettext('Your church country is Canada, so Canadian official receipts are also available when you generate statements.') ?></div>
                     <?php endif; ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) : ?>
                     <a href="<?= $root ?>/finance/statements/settings" class="btn btn-outline-primary" id="statementSettingsLink"><i class="fa-solid fa-sliders me-1"></i><?= gettext('Statement Settings') ?></a>
+                    <?php endif; ?>
                     <a href="<?= $root ?>/finance/reports/giving-statements/sample" class="btn btn-outline-secondary" id="sampleLetter" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Preview Sample Letter') ?></a>
                     <div class="form-text"><?= gettext('Letter wording, charity details and PDF handling are set once on Statement Settings.') ?></div>
                 </div>

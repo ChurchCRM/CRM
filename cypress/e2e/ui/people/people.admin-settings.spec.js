@@ -12,7 +12,7 @@
 
 describe("People Settings hub", () => {
     const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleConfirmation", "#peopleDirectory", "#peopleMap"];
-    const reportKeys = ["sDear", "sConfirmSincerely", "sConfirmSigner", "bDirLetterHead", "sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
+    const reportKeys = ["sDear", "sConfirmSincerely", "sConfirmSigner", "sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
     const reportOriginals = {};
     let savedProviders;
     let savedFriendDate;
