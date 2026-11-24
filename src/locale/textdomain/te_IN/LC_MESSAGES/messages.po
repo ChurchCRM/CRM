@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(అసైన్డ్ ఫ్యామిలీ లేదు)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "వ్యక్తులను కుటుంబాలుగా మార్చండి"
-
-#: 
-msgid "Convert Next"
-msgstr "తదుపరి మార్చండి"
-
-#: 
-msgid "Convert All"
-msgstr "అన్నింటినీ మార్చండి"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "డిపాజిట్ స్లిప్ సంఖ్య"
 
@@ -8256,10 +8244,6 @@ msgstr "మీ కొత్త సంకేతపదాన్ని నిర్
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "ChurchCRM ఈమెయిల్‌లు పంపగలిగేలా SMTP సర్వర్‌ని కనెక్ట్ చేయండి"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "వ్యక్తిగత రికార్డులను కుటుంబ యూనిట్లుగా మార్చండి"
 
 #: 
 msgid "Convert to Family"
@@ -27921,10 +27905,6 @@ msgid "Integrity check passed"
 msgstr "సమగ్రత తనిఖీ విజయవంతమైంది"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "చెల్లని CSRF టోకెన్"
-
-#: 
 msgid "Last %d days"
 msgstr "గత %d రోజులు"
 
@@ -27967,10 +27947,6 @@ msgstr "ఈ పరిధిలో ఫైనాన్స్ డ్యాష్‌
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "గత 7 రోజులు మరియు తదుపరి %d రోజులు"
-
-#: 
-msgid "People without a family: %d"
-msgstr "కుటుంబం లేని వ్యక్తులు: %d"
 
 #: 
 msgid "Permission to save settings and photos"

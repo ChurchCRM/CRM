@@ -382,18 +382,6 @@ msgid "(No assigned family)"
 msgstr "（沒有分配的家庭）"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "轉換個人的家庭"
-
-#: 
-msgid "Convert Next"
-msgstr "轉換下一頁"
-
-#: 
-msgid "Convert All"
-msgstr "轉換所有"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "存款單號碼"
@@ -8404,10 +8392,6 @@ msgstr "確認您的新密碼"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "連接 SMTP 伺服器以便 ChurchCRM 發送電子郵件"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "將個人記錄轉換為家庭單位"
 
 #: 
 msgid "Convert to Family"
@@ -28043,10 +28027,6 @@ msgid "Integrity check passed"
 msgstr "完整性檢查通過"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "CSRF 權杖無效"
-
-#: 
 msgid "Last %d days"
 msgstr "最近 %d 天"
 
@@ -28089,10 +28069,6 @@ msgstr "在此範圍內開啟財務儀錶板。在儀錶板本身上選擇過去
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "過去 7 天和未來 %d 天"
-
-#: 
-msgid "People without a family: %d"
-msgstr "沒有家庭的人數：%d"
 
 #: 
 msgid "Permission to save settings and photos"

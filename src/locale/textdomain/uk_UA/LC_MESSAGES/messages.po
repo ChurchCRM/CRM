@@ -368,18 +368,6 @@ msgid "(No assigned family)"
 msgstr "(Сім'я відсутня)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Перетворити людей на сім’ї"
-
-#: 
-msgid "Convert Next"
-msgstr "Перетворити далі"
-
-#: 
-msgid "Convert All"
-msgstr "Перетворити все"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Номер квитанції депозиту"
 
@@ -8296,10 +8284,6 @@ msgstr "Підтвердіть новий пароль"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Підключіть SMTP-сервер для надсилання листів з ChurchCRM"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Перетворити окремі записи на сімейні одиниці"
 
 #: 
 msgid "Convert to Family"
@@ -28013,10 +27997,6 @@ msgid "Integrity check passed"
 msgstr "Перевірка цілісності пройдена"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Недійсний токен CSRF"
-
-#: 
 msgid "Last %d days"
 msgstr "Останні %d днів"
 
@@ -28059,10 +28039,6 @@ msgstr "Відкриває фінансову панель для цього д�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Минулі 7 днів і наступні %d днів"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Люди без родини: %d"
 
 #: 
 msgid "Permission to save settings and photos"

@@ -365,18 +365,6 @@ msgid "(No assigned family)"
 msgstr "(Nincs hozzárendelt család)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Egyének családdá alakítása"
-
-#: 
-msgid "Convert Next"
-msgstr "Következő átalakítása"
-
-#: 
-msgid "Convert All"
-msgstr "Az összes átalakítása"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Befizetési bizonylat száma"
 
@@ -8301,10 +8289,6 @@ msgstr "Új jelszó megerősítése"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP szerver csatlakoztatása, hogy a ChurchCRM küldhessen e-maileket"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Egyéni rekordok átalakítása családi egységekké"
 
 #: 
 msgid "Convert to Family"
@@ -27966,10 +27950,6 @@ msgid "Integrity check passed"
 msgstr "Az integritás-ellenőrzés sikeres"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Érvénytelen CSRF token"
-
-#: 
 msgid "Last %d days"
 msgstr "Elmúlt %d nap"
 
@@ -28012,10 +27992,6 @@ msgstr "Megnyitja a Pénzügy vezérlőpultot erre a tartományra. A múltbeli p
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Elmúlt 7 nap és következő %d nap"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Család nélküli személyek: %d"
 
 #: 
 msgid "Permission to save settings and photos"

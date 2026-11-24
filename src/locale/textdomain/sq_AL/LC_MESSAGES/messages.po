@@ -368,18 +368,6 @@ msgid "(No assigned family)"
 msgstr "(Nuk ka familja caktuar)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Convert Individët të Familjeve"
-
-#: 
-msgid "Convert Next"
-msgstr "Convert Tjetër"
-
-#: 
-msgid "Convert All"
-msgstr "Të kthyer të gjitha"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Depozita Numri Shqip"
@@ -8269,10 +8257,6 @@ msgstr "Konfirmo fjalëkalimin tuaj të ri"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Lidhu një server SMTP në mënyrë që ChurchCRM të mund të dërgojë email-e"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Konverto rekorde individuale në njësi familjare"
 
 #: 
 msgid "Convert to Family"
@@ -27934,10 +27918,6 @@ msgid "Integrity check passed"
 msgstr "Kontrolli i integritetit kaloi"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF i pavlefshëm"
-
-#: 
 msgid "Last %d days"
 msgstr "%d ditët e fundit"
 
@@ -27980,10 +27960,6 @@ msgstr "Hap panelin e Financave në këtë interval. Zgjidhni një vit fiskal t�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 ditët e kaluara dhe %d ditët e ardhshme"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Njerëz pa familje: %d"
 
 #: 
 msgid "Permission to save settings and photos"

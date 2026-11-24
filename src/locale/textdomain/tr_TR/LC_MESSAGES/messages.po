@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Atanan Aile Yok)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Bireyleri ailelere dönüştürmek"
-
-#: 
-msgid "Convert Next"
-msgstr "Sonraki Dönüştür"
-
-#: 
-msgid "Convert All"
-msgstr "Hepsini dönüştür"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Depozito Kayma Numarası"
@@ -8278,10 +8266,6 @@ msgstr "Yeni şifrenizi onaylayın"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "ChurchCRM'in e-posta gönderebilmesi için bir SMTP sunucusu bağlayın"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Bireysel kayıtları aile birimlerine dönüştür"
 
 #: 
 msgid "Convert to Family"
@@ -27943,10 +27927,6 @@ msgid "Integrity check passed"
 msgstr "Bütünlük denetimi başarılı oldu"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Geçersiz CSRF belirteci"
-
-#: 
 msgid "Last %d days"
 msgstr "Son %d gün"
 
@@ -27989,10 +27969,6 @@ msgstr "Bu aralık için Finans gösterge panelini açar. Geçmiş bir mali yıl
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Geçen 7 gün ve sonraki %d gün"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Ailesi olmayan kişiler: %d"
 
 #: 
 msgid "Permission to save settings and photos"

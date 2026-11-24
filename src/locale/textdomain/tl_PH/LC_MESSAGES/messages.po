@@ -364,18 +364,6 @@ msgid "(No assigned family)"
 msgstr "(Walang itinalagang pamilya)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "I-convert ang mga Indibidwal sa mga Pamilya"
-
-#: 
-msgid "Convert Next"
-msgstr "I-convert ang Susunod"
-
-#: 
-msgid "Convert All"
-msgstr "I-convert ang Lahat"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Numero ng Deposit Slip"
 
@@ -8245,10 +8233,6 @@ msgstr "Kumpirmahin ang iyong bagong password"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Kumonekta ng SMTP server para makapagpadala ng mga email ang ChurchCRM"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "I-convert ang mga indibidwal na rekord sa mga yunit ng pamilya"
 
 #: 
 msgid "Convert to Family"
@@ -27910,10 +27894,6 @@ msgid "Integrity check passed"
 msgstr "Pumasa ang integrity check"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Di-wastong CSRF token"
-
-#: 
 msgid "Last %d days"
 msgstr "Nakaraang %d araw"
 
@@ -27956,10 +27936,6 @@ msgstr "Binubuksan ang Finance dashboard sa saklaw na ito. Pumili ng nakaraang t
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Nakaraang 7 araw at susunod na %d araw"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Mga taong walang pamilya: %d"
 
 #: 
 msgid "Permission to save settings and photos"

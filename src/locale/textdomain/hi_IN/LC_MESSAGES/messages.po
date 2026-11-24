@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(कोई सौंपा गया परिवार नहीं)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "व्यक्तियों को परिवारों में बदलें"
-
-#: 
-msgid "Convert Next"
-msgstr "अगला बदलें"
-
-#: 
-msgid "Convert All"
-msgstr "सभी बदलें"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "जमा पर्ची संख्या"
 
@@ -8247,10 +8235,6 @@ msgstr "अपना नया पासवर्ड पुष्टि कर�
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP सर्वर कनेक्ट करें ताकि ChurchCRM ईमेल भेज सके"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "व्यक्तिगत रिकॉर्ड को पारिवारिक इकाइयों में बदलें"
 
 #: 
 msgid "Convert to Family"
@@ -27912,10 +27896,6 @@ msgid "Integrity check passed"
 msgstr "अखंडता जाँच सफल"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "अमान्य CSRF टोकन"
-
-#: 
 msgid "Last %d days"
 msgstr "पिछले %d दिन"
 
@@ -27958,10 +27938,6 @@ msgstr "इस सीमा पर वित्त डैशबोर्ड ख�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "पिछले 7 दिन और अगले %d दिन"
-
-#: 
-msgid "People without a family: %d"
-msgstr "परिवार के बिना लोग: %d"
 
 #: 
 msgid "Permission to save settings and photos"

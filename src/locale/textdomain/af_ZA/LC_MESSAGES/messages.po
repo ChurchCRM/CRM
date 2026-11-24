@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(geen toegekende gesin)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Skakel individue in gesinne om"
-
-#: 
-msgid "Convert Next"
-msgstr "Skakel volgende om"
-
-#: 
-msgid "Convert All"
-msgstr "Skakel almal om"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Inbetaling strokie nommer"
@@ -8278,10 +8266,6 @@ msgstr "Bevestig jou nuwe wagwoord"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Verbind 'n SMTP-bediener sodat ChurchCRM e-posse kan stuur"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Skakel individuele rekords om in familieenhede"
 
 #: 
 msgid "Convert to Family"
@@ -27943,10 +27927,6 @@ msgid "Integrity check passed"
 msgstr "Integriteitskontrole geslaag"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Ongeldige CSRF-token"
-
-#: 
 msgid "Last %d days"
 msgstr "Laaste %d dae"
 
@@ -27989,10 +27969,6 @@ msgstr "Maak die Finansies-dashboard vir hierdie reeks oop. Kies 'n vorige fiska
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Vorige 7 dae en volgende %d dae"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Mense sonder 'n gesin: %d"
 
 #: 
 msgid "Permission to save settings and photos"

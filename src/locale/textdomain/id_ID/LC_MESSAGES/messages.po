@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "Belum ada data keluarga"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Konversi beberapa individu menjadi Keluarga"
-
-#: 
-msgid "Convert Next"
-msgstr "Konversi Berikutnya"
-
-#: 
-msgid "Convert All"
-msgstr "Konversi semuanya"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Nomor Slip Setoran"
@@ -8267,10 +8255,6 @@ msgstr "Konfirmasi kata sandi baru Anda"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Hubungkan server SMTP agar ChurchCRM dapat mengirim email"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Ubah catatan individu menjadi unit keluarga"
 
 #: 
 msgid "Convert to Family"
@@ -27906,10 +27890,6 @@ msgid "Integrity check passed"
 msgstr "Pemeriksaan integritas berhasil"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF tidak valid"
-
-#: 
 msgid "Last %d days"
 msgstr "%d hari terakhir"
 
@@ -27952,10 +27932,6 @@ msgstr "Membuka dasbor Keuangan pada rentang ini. Pilih tahun fiskal yang lalu d
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 hari terakhir dan %d hari berikutnya"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Orang tanpa keluarga: %d"
 
 #: 
 msgid "Permission to save settings and photos"
