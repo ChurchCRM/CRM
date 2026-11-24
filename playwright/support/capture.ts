@@ -172,8 +172,8 @@ async function captureAtViewport(
     const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', LOCALE, device);
     fs.mkdirSync(screenshotDir, { recursive: true });
     screenshotPath = path.join(screenshotDir, `${opts.name}.png`);
-    // The pipeline explores the demo data, so every page carries the demo-mode banner.
-    await page.screenshot({ path: screenshotPath, fullPage: false, style: '#demoModeBanner { display: none !important; }' });
+    // The pipeline explores the demo data, so the notification center is in the top nav.
+    await page.screenshot({ path: screenshotPath, fullPage: false, style: '#notificationCenterMenuItem { display: none !important; }' });
   }
 
   // Left flat (no locale segment) to match finalize-marketing-videos.js —
