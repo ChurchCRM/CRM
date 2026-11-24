@@ -159,4 +159,20 @@ class PageHeader
     {
         return ['label' => gettext('People Settings'), 'url' => '/admin/people', 'icon' => 'fa-sliders'];
     }
+
+    /** Header button back to the Finance settings hub; admin-only like the hub itself. */
+    public static function financeSettingsButton(): string
+    {
+        return self::buttons([self::financeSettingsLink()]);
+    }
+
+    /**
+     * The Finance Settings button as an entry for buttons(), for a page that shows it beside its own buttons.
+     *
+     * @return array{label: string, url: string, icon: string}
+     */
+    public static function financeSettingsLink(): array
+    {
+        return ['label' => gettext('Finance Settings'), 'url' => '/admin/finance', 'icon' => 'fa-sliders'];
+    }
 }

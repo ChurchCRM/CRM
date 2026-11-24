@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\EnvelopeService;
@@ -111,12 +112,14 @@ function financeEnvelopeManager(Request $request, Response $response): Response
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Envelope Manager'),
         'sPageSubtitle' => gettext('Assign and manage donation envelope numbers'),
-        'aBreadcrumbs' => PageHeader::breadcrumbs([
+        'aBreadcrumbs' => PageHeader::breadcrumbs(array_values(array_filter([
             [gettext('Finance'), '/finance/'],
+            AuthenticationManager::getCurrentUser()->isAdmin() ? [gettext('Finance Settings'), '/admin/finance'] : null,
             [gettext('Envelope Manager')],
-        ]),
+        ]))),
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Envelope Numbers'), 'url' => '/finance/reports/envelope-numbers?' . http_build_query(['classification' => $classificationId, 'sortBy' => $sortBy]), 'icon' => 'fa-print', 'adminOnly' => false],
+            PageHeader::financeSettingsLink(),
         ]),
         'sGlobalMessage' => $sGlobalMessage,
         'sGlobalMessageClass' => $sGlobalMessageClass,
