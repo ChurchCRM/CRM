@@ -14,7 +14,7 @@
   "Database security risk": [
     "src/setup/templates/setup-steps.php:195"
   ],
-  "Demo mode also turns on anonymous usage statistics (PostHog) and Google Analytics, so we can see how people explore ChurchCRM. Start Fresh turns them off.": [
+  "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off.": [
     "src/skin/js/importDemoData.js:40"
   ],
   "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email.": [
