@@ -72,14 +72,15 @@ describe('02 - Demo Data Import', () => {
 
         it('lands on the Setup Dashboard and explores the demo data from it', () => {
             cy.location('pathname').should('match', /\/admin\/setup$/);
-            cy.get('#demoModeBanner').should('not.exist');
+            cy.get('[data-notification-id="demo-mode"]').should('not.exist');
 
             cy.get('#importDemoDataSetup').click();
             cy.get('#demoImportModal', { timeout: 5000 }).should('be.visible');
             cy.get('#demoImportConfirmBtn').click();
 
             cy.location('pathname', { timeout: 120000 }).should('match', /\/people\/dashboard$/);
-            cy.get('#demoModeBanner').should('be.visible').find('.js-start-fresh').should('be.visible');
+            cy.get('#notificationCenterMenu').click();
+            cy.get('[data-notification-id="demo-mode"]').should('be.visible').find('.js-start-fresh').should('be.visible');
         });
     });
 
