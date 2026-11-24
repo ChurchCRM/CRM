@@ -32,15 +32,20 @@ describe("Standard Sunday School", () => {
             .then((text) => {
                 expect(Number(text.trim())).to.be.at.least(0);
             });
+        // The Classes stat is server-rendered, but the table below it is a
+        // DataTable that populates async - on master run 45324287207 the
+        // count was read before any rows had loaded (0 vs the stat's 6) and
+        // the old one-shot .then() chain never retried, so it failed in
+        // 0.000s. Wait for rows first, then compare inside a retrying
+        // .should() that re-reads both numbers.
+        cy.get("#sundayschoolClasses tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
         cy.get(".text-body-secondary")
             .contains(/^Classes$/)
             .prev(".fw-medium")
-            .invoke("text")
-            .then((text) => {
-                cy.window()
-                    .its("$")
-                    .then(($) => $("#sundayschoolClasses").DataTable().rows().count())
-                    .should("eq", Number(text.trim()));
+            .should(($stat) => {
+                const classes = Number($stat.text().trim());
+                const rows = Cypress.$("#sundayschoolClasses").DataTable().rows().count();
+                expect(rows, "DataTable rows vs Classes stat").to.eq(classes);
             });
         cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
         cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");
