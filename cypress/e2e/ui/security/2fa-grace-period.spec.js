@@ -9,10 +9,10 @@
  *   2. i2FAGracePeriodDays persists a written value and can be reset.
  *   3. i2FAGracePeriodDays accepts 0 (immediate enforcement mode).
  *   4. With grace=7 and mandate on, an unenrolled user can reach the
- *      dashboard (within-grace pass-through) and sees the grace banner.
+ *      dashboard (within-grace pass-through) and sees the grace notice.
  *   5. With grace=0 and mandate on, an unenrolled user is immediately
  *      redirected to the enrollment page.
- *   6. With mandate off, no grace banner is shown.
+ *   6. With mandate off, no grace notice is shown.
  *
  * TODO (require Docker environment with direct DB access):
  *   - Verify that an unenrolled user whose grace start is >N days in the
@@ -144,9 +144,9 @@ describe("2FA Grace Period — enforcement", () => {
         // Should land on dashboard, NOT on the enrollment page
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
 
-        // Grace banner must be visible
-        cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
-        cy.get("#two-fa-grace-banner").should("contain.text", "day");
+        // Grace notice must be visible
+        cy.get("[data-notification-id="two-fa-grace"]", { timeout: 10000 }).should("exist");
+        cy.get("[data-notification-id="two-fa-grace"]").should("contain.text", "day");
     });
 
     it("grace=0, mandate on: unenrolled user is immediately redirected to enrollment", () => {
@@ -172,7 +172,7 @@ describe("2FA Grace Period — enforcement", () => {
         // available via the public API. Run manually in a Docker environment.
     });
 
-    it("mandate off: no grace banner shown", () => {
+    it("mandate off: no grace notice shown", () => {
         disableUser2FA(3);
         setRequire2FA(false);
         setGraceDays(7);
@@ -183,7 +183,7 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
-        // Banner must NOT be present when mandate is off
-        cy.get("#two-fa-grace-banner").should("not.exist");
+        // Notice must NOT be present when mandate is off
+        cy.get("[data-notification-id="two-fa-grace"]").should("not.exist");
     });
 });
