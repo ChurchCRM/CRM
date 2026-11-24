@@ -28057,3 +28057,295 @@ msgstr "As informações da sua igreja foram guardadas. Siga os passos abaixo."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "A sua base de dados (%1$s %2$s) é um risco de segurança: o fornecedor já não publica correções de segurança para essa versão. O ChurchCRM continua a funcionar, mas peça ao seu fornecedor de alojamento para a transferir para MariaDB %3$s+ ou MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Um registo diário enquanto está em utilização, as versões do software e da base de dados, o idioma/região, o país, o tipo de instalação e um ID de instalação aleatório ajudam a contar as instalações ativas."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Contas e início de sessão"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Também envia quais páginas são utilizadas."
+
+#: 
+msgid "Areas"
+msgstr "Áreas"
+
+#: 
+msgid "Church & System"
+msgstr "Igreja e sistema"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Cidade ou localidade onde os recibos são emitidos, impressa nos recibos oficiais. Deixe em branco para utilizar a cidade da igreja."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Fecho antes do nome do signatário, por exemplo Atentamente."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Fecho impresso antes do signatário nos recibos oficiais."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Palavras-passe separadas por vírgulas que ninguém pode utilizar."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Carta de confirmação"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Criar uma família para esta pessoa? O seu endereço e telefone residencial passam para a nova família."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Dias que os utilizadores têm para configurar a autenticação de dois fatores depois de esta se tornar obrigatória. 0 impõe-na de imediato. Encurtar um período de tolerância ativo pode bloquear o acesso dos utilizadores."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depósitos e pagamentos"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Palavras-passe não permitidas"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Renúncia %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Enviar e-mail aos utilizadores quando a sua conta for apagada"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Todas as páginas de definições num só lugar, e as definições que se aplicam a todo o sistema"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Inícios de sessão falhados antes do bloqueio"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Inícios de sessão falhados por endereço IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Papéis familiares tratados como crianças no diretório."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Papéis familiares tratados como chefe de família no diretório e no início de sessão dos membros."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Papéis familiares tratados como cônjuge no diretório e no início de sessão dos membros."
+
+#: 
+msgid "Finance Settings"
+msgstr "Definições de finanças"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Período de tolerância (dias)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ocultar as subscrições do boletim informativo no Editor de famílias."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ocultar o campo Visitante desde no Editor de pessoas."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ocultar o campo Data de casamento no Editor de famílias."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Durante quanto tempo uma conta bloqueada permanece bloqueada. Os inícios de sessão falhados a partir de um endereço IP são contados durante o mesmo período."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Em quantos caracteres uma nova palavra-passe deve diferir da antiga. 0 desativa esta opção."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Em Admin → Telemetria, ative Partilhar quais páginas são utilizadas para selecionar Completo. O Completo também envia visualizações de páginas."
+
+#: 
+msgid "Initials Format"
+msgstr "Formato das iniciais"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Texto da carta %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Período de bloqueio (minutos)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Bloqueia uma conta após este número de inícios de sessão falhados seguidos. É desbloqueada após o período de bloqueio, ou quando um administrador a repõe. 0 desativa o bloqueio."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Gerir o Portal do Membro"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Os membros podem iniciar sessão com o seu e-mail."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Os membros ainda não podem iniciar sessão."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Mínimo de caracteres alterados"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Comprimento mínimo da palavra-passe"
+
+#: 
+msgid "Name Format"
+msgstr "Formato do nome"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nome impresso por baixo do fecho de cartas e e-mails"
+
+#: 
+msgid "No Payments Text"
+msgstr "Texto quando não há pagamentos"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Texto quando não há promessas"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Nenhum nível envia pessoas, doadores, ofertas, conteúdo, dados de contacto da igreja, o seu endereço web ou o nome do seu servidor."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Nenhum nível envia o seu endereço web ou o nome do seu servidor. As instalações de teste não enviam nada. A telemetria é enviada para o PostHog nos Estados Unidos."
+
+#: 
+msgid "OS family"
+msgstr "Família do sistema operativo"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Parágrafo de abertura da carta de lembrete de promessas."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Parágrafo que convida a perguntas no extrato de ofertas."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Parágrafo que convida a perguntas na carta para famílias sem ofertas."
+
+#: 
+msgid "Passwords"
+msgstr "Palavras-passe"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Impresso após o intervalo de datas na linha de abertura da carta para famílias sem ofertas."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Impresso primeiro no extrato de ofertas, seguido do intervalo de datas."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Impresso quando uma família não tem pagamentos registados."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Impresso quando uma família não tem promessas registadas."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Recusa o início de sessão a partir de um endereço IP durante o período de bloqueio após este número de inícios de sessão falhados ou reposições de palavra-passe. 0 desativa-o, por exemplo quando todos se ligam através de um único proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Exigir autenticação de dois fatores"
+
+#: 
+msgid "Security Settings"
+msgstr "Definições de segurança"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Envia relatórios de erros, eventos de instalação/atualização e informações do sistema para que os problemas possam ser corrigidos. Sem visualizações de páginas, sem dados da igreja."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Tempo limite da sessão (segundos)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Partilhar quais páginas são utilizadas"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Início de sessão e segurança"
+
+#: 
+msgid "Signature Storage"
+msgstr "Armazenamento da assinatura"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Termina a sessão de um utilizador após este número de segundos sem atividade. 0 nunca termina a sessão."
+
+#: 
+msgid "System-wide"
+msgstr "Todo o sistema"
+
+#: 
+msgid "Text After Dates"
+msgstr "Texto após as datas"
+
+#: 
+msgid "Text Messages"
+msgstr "Mensagens de texto"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Parágrafo de agradecimento do extrato de ofertas."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Parágrafo de agradecimento da carta para famílias sem ofertas."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "A conversão falhou. Nada foi alterado."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "A utilizar um ficheiro de papel timbrado guardado antes de os carregamentos serem adicionados. Carregue um papel timbrado para o substituir."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Aviso após (horas)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Palavra antes do nome em cartas e e-mails, por exemplo Caro."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "A sua escolha é pedida uma única vez. Pode alterá-la a qualquer momento. Com Não, obrigado, o Padrão mantém-se ativo e as visualizações de páginas não são enviadas."
+

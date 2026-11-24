@@ -28133,3 +28133,295 @@ msgstr "تم حفظ معلومات كنيستك. أكمل الخطوات أدن�
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "قاعدة بياناتك (%1$s %2$s) تشكل خطرًا أمنيًا: لم يعد مورّدها يصدر إصلاحات أمان لذلك الإصدار. يستمر ChurchCRM في العمل، لكن اطلب من مضيفك الانتقال إلى MariaDB %3$s+ أو MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "تسجيل وصول يومي أثناء الاستخدام، وإصدارات البرنامج وقاعدة البيانات، واللغة والمنطقة، والبلد، ونوع التثبيت، ومعرّف تثبيت عشوائي، تساعد في عدّ التثبيتات النشطة."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "الحسابات وتسجيل الدخول"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "يُرسل أيضًا الصفحات المستخدمة."
+
+#: 
+msgid "Areas"
+msgstr "المجالات"
+
+#: 
+msgid "Church & System"
+msgstr "الكنيسة والنظام"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "المدينة أو البلدة التي تُصدر فيها الإيصالات، تُطبع على الإيصالات الرسمية. اتركه فارغًا لاستخدام مدينة الكنيسة."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "عبارة الختام قبل اسم الموقّع، على سبيل المثال مع خالص التحية."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "عبارة الختام المطبوعة قبل الموقّع على الإيصالات الرسمية."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "كلمات سر مفصولة بفواصل لا يجوز لأحد استخدامها."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "خطاب التأكيد"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "إنشاء أسرة لهذا الشخص؟ ينتقل عنوانه وهاتف منزله إلى الأسرة الجديدة."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "الأيام المتاحة للمستخدمين لإعداد المصادقة الثنائية بعد أن تصبح مطلوبة. 0 يفرضها فورًا. تقصير فترة سماح نشطة قد يحرم المستخدمين من الدخول."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "الإيداعات والمدفوعات"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "كلمات السر غير المسموح بها"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "إخلاء المسؤولية %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "إرسال بريد إلكتروني للمستخدمين عند حذف حسابهم"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "كل صفحات الإعدادات في مكان واحد، والإعدادات التي تنطبق على النظام بأكمله"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "محاولات تسجيل الدخول الفاشلة قبل القفل"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "محاولات تسجيل الدخول الفاشلة لكل عنوان IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "أدوار الأسرة التي تُعامل كأطفال في الدليل."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "أدوار الأسرة التي تُعامل كربّ أسرة في الدليل وتسجيل دخول الأعضاء."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "أدوار الأسرة التي تُعامل كزوج/زوجة في الدليل وتسجيل دخول الأعضاء."
+
+#: 
+msgid "Finance Settings"
+msgstr "إعدادات المالية"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "فترة السماح (أيام)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "إخفاء اشتراكات النشرة الإخبارية في محرر الأسرة."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "إخفاء حقل تاريخ الصديق في محرر الشخص."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "إخفاء حقل تاريخ الزفاف في محرر الأسرة."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "مدة بقاء الحساب المقفل مقفلًا. تُحسب محاولات تسجيل الدخول الفاشلة من عنوان IP واحد خلال الفترة نفسها."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "عدد الأحرف التي يجب أن تختلف بها كلمة السر الجديدة عن القديمة. 0 يعطّل هذا."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "في الإدارة ← القياس عن بُعد، فعّل مشاركة الصفحات المستخدمة لاختيار الكامل. الكامل يُرسل أيضًا مشاهدات الصفحات."
+
+#: 
+msgid "Initials Format"
+msgstr "تنسيق الأحرف الأولى"
+
+#: 
+msgid "Letter Text %d"
+msgstr "نص الخطاب %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "فترة القفل (دقائق)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "يقفل الحساب بعد هذا العدد من محاولات تسجيل الدخول الفاشلة المتتالية. يُفكّ القفل بعد فترة القفل، أو عندما يعيد المسؤول تعيينه. 0 يعطّل القفل."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "إدارة بوابة الأعضاء"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "يمكن للأعضاء تسجيل الدخول ببريدهم الإلكتروني."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "لا يمكن للأعضاء تسجيل الدخول بعد."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "الحد الأدنى للأحرف المتغيرة"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "الحد الأدنى لطول كلمة السر"
+
+#: 
+msgid "Name Format"
+msgstr "تنسيق الاسم"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "الاسم المطبوع أسفل ختام الخطابات ورسائل البريد الإلكتروني"
+
+#: 
+msgid "No Payments Text"
+msgstr "نص عدم وجود مدفوعات"
+
+#: 
+msgid "No Pledge Text"
+msgstr "نص عدم وجود تعهد"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "لا مستوى يُرسل الأشخاص أو المتبرعين أو العطاء أو المحتوى أو بيانات اتصال الكنيسة أو عنوان الويب أو اسم الخادم الخاص بك."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "لا مستوى يُرسل عنوان الويب أو اسم الخادم الخاص بك. تثبيتات الاختبار لا تُرسل شيئًا. تُرسل القياسات عن بُعد إلى PostHog في الولايات المتحدة."
+
+#: 
+msgid "OS family"
+msgstr "عائلة نظام التشغيل"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "الفقرة الافتتاحية لخطاب تذكير التعهد."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "فقرة تدعو إلى الأسئلة في بيان العطاء."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "فقرة تدعو إلى الأسئلة في خطاب غير المعطين."
+
+#: 
+msgid "Passwords"
+msgstr "كلمات السر"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "تُطبع بعد نطاق التاريخ في السطر الافتتاحي لخطاب غير المعطين."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "تُطبع أولًا في بيان العطاء، يليها نطاق التاريخ."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "تُطبع عندما لا تكون لدى الأسرة مدفوعات مسجلة."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "تُطبع عندما لا يكون لدى الأسرة تعهد مسجل."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "يرفض تسجيل الدخول من عنوان IP واحد لفترة القفل بعد هذا العدد من محاولات تسجيل الدخول الفاشلة أو إعادة تعيين كلمة السر. 0 يعطّل هذا، على سبيل المثال عندما يتصل الجميع عبر وكيل واحد."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "طلب المصادقة الثنائية"
+
+#: 
+msgid "Security Settings"
+msgstr "إعدادات الأمان"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "يُرسل تقارير الأخطاء وأحداث التثبيت/الترقية ومعلومات النظام حتى يمكن إصلاح المشكلات. لا مشاهدات صفحات، ولا بيانات كنيسة."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "مهلة الجلسة (ثوانٍ)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "مشاركة الصفحات المستخدمة"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "تسجيل الدخول والأمان"
+
+#: 
+msgid "Signature Storage"
+msgstr "تخزين التوقيع"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "يُسجّل خروج المستخدم بعد هذا العدد من الثواني دون نشاط. 0 لا يُسجّل الخروج أبدًا."
+
+#: 
+msgid "System-wide"
+msgstr "على مستوى النظام"
+
+#: 
+msgid "Text After Dates"
+msgstr "النص بعد التواريخ"
+
+#: 
+msgid "Text Messages"
+msgstr "الرسائل النصية"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "فقرة الشكر في بيان العطاء."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "فقرة الشكر في خطاب غير المعطين."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "فشل التحويل. لم يتغير شيء."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "يستخدم ملف ترويسة محفوظًا قبل إضافة التحميلات. حمّل ترويسة لاستبداله."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "التحذير بعد (ساعات)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "كلمة قبل الاسم في الخطابات ورسائل البريد الإلكتروني، على سبيل المثال عزيزي."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "يُطلب اختيارك مرة واحدة. يمكنك تغييره في أي وقت. مع لا شكرًا، يبقى الافتراضي نشطًا ولا تُرسل مشاهدات الصفحات."
+

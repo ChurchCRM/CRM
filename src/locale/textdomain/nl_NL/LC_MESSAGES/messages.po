@@ -27965,3 +27965,295 @@ msgstr "De gegevens van uw gemeente zijn opgeslagen. Werk de onderstaande stappe
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Uw database (%1$s %2$s) is een beveiligingsrisico: de leverancier levert geen beveiligingsupdates meer voor die versie. ChurchCRM blijft werken, maar vraag uw host om over te stappen naar MariaDB %3$s+ of MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Een dagelijkse controle tijdens gebruik, software- en databaseversies, taalinstelling, land, installatietype en een willekeurige installatie-ID helpen om actieve installaties te tellen."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Accounts en aanmelden"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Stuur ook mee welke pagina's worden gebruikt."
+
+#: 
+msgid "Areas"
+msgstr "Gebieden"
+
+#: 
+msgid "Church & System"
+msgstr "Gemeente en systeem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Plaats waar kwitanties worden uitgegeven, afgedrukt op officiële kwitanties. Laat leeg om de plaats van de gemeente te gebruiken."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Afsluiting vóór de naam van de ondertekenaar, bijvoorbeeld Met vriendelijke groet."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Afsluiting die vóór de ondertekenaar op officiële kwitanties wordt afgedrukt."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Met komma's gescheiden wachtwoorden die niemand mag gebruiken."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Bevestigingsbrief"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Een gezin aanmaken voor deze persoon? Het adres en de thuistelefoon verhuizen mee naar het nieuwe gezin."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Aantal dagen dat gebruikers hebben om twee-factor-authenticatie in te stellen nadat deze verplicht wordt. 0 dwingt het meteen af. Het inkorten van een actieve respijtperiode kan gebruikers buitensluiten."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Stortingen en betalingen"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Niet-toegestane wachtwoorden"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Ontkenning %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Gebruikers e-mailen wanneer hun account wordt verwijderd"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Elke instellingenpagina op één plek, en de instellingen die voor het hele systeem gelden"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Mislukte aanmeldingen vóór blokkering"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Mislukte aanmeldingen per IP-adres"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Gezinsrollen die in het adresboek als kinderen worden behandeld."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Gezinsrollen die in het adresboek en bij het aanmelden van leden als gezinshoofd worden behandeld."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Gezinsrollen die in het adresboek en bij het aanmelden van leden als partner worden behandeld."
+
+#: 
+msgid "Finance Settings"
+msgstr "Financiële instellingen"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Respijtperiode (dagen)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Nieuwsbriefabonnementen verbergen in Overzicht."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Het veld Vriendendatum verbergen in Beheer personen."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Het veld Trouwdatum verbergen in Overzicht."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Hoe lang een geblokkeerd account geblokkeerd blijft. Mislukte aanmeldingen vanaf één IP-adres worden over dezelfde periode geteld."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Met hoeveel tekens een nieuw wachtwoord moet verschillen van het oude. 0 schakelt dit uit."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Schakel in Admin → Telemetrie Deel welke pagina's worden gebruikt in om Volledig te selecteren. Volledig stuurt ook paginaweergaven."
+
+#: 
+msgid "Initials Format"
+msgstr "Initialenformaat"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Brieftekst %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Blokkeringsperiode (minuten)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Blokkeert een account na dit aantal mislukte aanmeldingen op rij. Het wordt ontgrendeld na de blokkeringsperiode, of wanneer een beheerder het reset. 0 schakelt blokkering uit."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Ledenportaal beheren"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Leden kunnen zich aanmelden met hun e-mail."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Leden kunnen zich nog niet aanmelden."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimumaantal gewijzigde tekens"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Minimale wachtwoordlengte"
+
+#: 
+msgid "Name Format"
+msgstr "Naamformaat"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Naam die onder de afsluiting van brieven en e-mails wordt afgedrukt"
+
+#: 
+msgid "No Payments Text"
+msgstr "Tekst bij geen betalingen"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Tekst bij geen toezegging"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Geen enkel niveau stuurt personen, schenkers, giften, inhoud, contactgegevens van de gemeente, uw webadres of uw servernaam."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Geen enkel niveau stuurt uw webadres of uw servernaam. Testinstallaties sturen niets. Telemetrie wordt naar PostHog in de Verenigde Staten gestuurd."
+
+#: 
+msgid "OS family"
+msgstr "OS-familie"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Openingsalinea van de herinneringsbrief voor toezeggingen."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Alinea met een uitnodiging voor vragen in het giftenoverzicht."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Alinea met een uitnodiging voor vragen in de brief aan niet-gevers."
+
+#: 
+msgid "Passwords"
+msgstr "Wachtwoorden"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Afgedrukt na het datumbereik in de openingsregel van de brief aan niet-gevers."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Als eerste afgedrukt op het giftenoverzicht, gevolgd door het datumbereik."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Afgedrukt wanneer een gezin geen betalingen heeft geregistreerd."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Afgedrukt wanneer een gezin geen toezegging heeft geregistreerd."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Weigert aanmelding vanaf één IP-adres gedurende de blokkeringsperiode na dit aantal mislukte aanmeldingen of wachtwoordresets. 0 schakelt dit uit, bijvoorbeeld wanneer iedereen via één proxy verbinding maakt."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Twee-factor-authenticatie vereisen"
+
+#: 
+msgid "Security Settings"
+msgstr "Beveiligingsinstellingen"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Stuur foutrapporten, installatie-/upgradegebeurtenissen en systeeminformatie, zodat problemen kunnen worden opgelost. Geen paginaweergaven, geen gemeentegegevens."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Sessietime-out (seconden)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Deel welke pagina's worden gebruikt"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Aanmelden en beveiliging"
+
+#: 
+msgid "Signature Storage"
+msgstr "Handtekeningopslag"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Meldt een gebruiker af na dit aantal seconden zonder activiteit. 0 meldt nooit af."
+
+#: 
+msgid "System-wide"
+msgstr "Systeembreed"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst na datums"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstberichten"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Dankalinea van het giftenoverzicht."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Dankalinea van de brief aan niet-gevers."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "De conversie is mislukt. Er is niets gewijzigd."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Er wordt een briefhoofdbestand gebruikt dat is opgeslagen voordat uploads werden toegevoegd. Upload een briefhoofd om het te vervangen."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Waarschuwing na (uren)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Woord vóór de naam in brieven en e-mails, bijvoorbeeld Beste."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Uw keuze wordt één keer gevraagd. U kunt deze op elk moment wijzigen. Met Nee, bedankt blijft Standaard actief en worden paginaweergaven niet gestuurd."
+

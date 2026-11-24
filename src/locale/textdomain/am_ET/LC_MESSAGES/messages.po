@@ -28000,3 +28000,295 @@ msgstr "የቤተ ክርስቲያንዎ መረጃ ተቀምጧል። ከታች �
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "ዳታቤዝዎ (%1$s %2$s) የደህንነት ስጋት ነው፦ አቅራቢው ለዚያ ሥሪት የደህንነት ጥገናዎችን መላክ አቋርጧል። ChurchCRM መሥራቱን ይቀጥላል፣ ነገር ግን አስተናጋጅዎ ወደ MariaDB %3$s+ ወይም MySQL %4$s+ እንዲዘዋወር ይጠይቁት።"
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "በየቀኑ ጥቅም ላይ እያለ የሚደረግ ቼክ-ኢን፣ የሶፍትዌርና የዳታቤዝ ሥሪቶች፣ የአካባቢ ቋንቋ፣ ሀገር፣ የመጫኛ ዓይነት እና የዘፈቀደ የመጫኛ መታወቂያ ንቁ መጫኛዎችን ለመቁጠር ይረዳሉ።"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "መለያዎች እና መግቢያ"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "የትኞቹ ገጾች እንደሚጠቀሙም ይላኩ።"
+
+#: 
+msgid "Areas"
+msgstr "አካባቢዎች"
+
+#: 
+msgid "Church & System"
+msgstr "ቤተ ክርስቲያን እና ስርዓት"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "ደረሰኞች የሚወጡባት ከተማ ወይም መንደር፣ በኦፊሴላዊ ደረሰኞች ላይ ይታተማል። የቤተ ክርስቲያኒቱን ከተማ ለመጠቀም ባዶ ይተዉት።"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "ከፊርማ አድራጊው ስም በፊት የሚመጣ መዝጊያ፣ ለምሳሌ በታማኝነት።"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "በኦፊሴላዊ ደረሰኞች ላይ ከፊርማ አድራጊው በፊት የሚታተም መዝጊያ።"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "ማንም ሊጠቀምባቸው የማይችላቸው በኮማ የተለዩ የይለፍ ቃላት።"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "የማረጋገጫ ደብዳቤ"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "ለዚህ ሰው ቤተሰብ ይፍጠር? አድራሻቸው እና የቤት ስልካቸው ወደ አዲሱ ቤተሰብ ይዛወራል።"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "ባለሁለት-ደረጃ ማረጋገጫ ካስፈለገ በኋላ ተጠቃሚዎች ለማዘጋጀት የሚኖራቸው ቀናት። 0 በአንድ ጊዜ ያስገድዳል። ንቁ የሆነ የጸጋ ጊዜ ማሳጠር ተጠቃሚዎችን ሊያግድ ይችላል።"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "ተቀማጭ ገንዘቦች እና ክፍያዎች"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "የተከለከሉ የይለፍ ቃላት"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "ማስተባበያ %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "መለያቸው ሲሰረዝ ለተጠቃሚዎች ደብዳቤ ላክ"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "ሁሉም የቅንብሮች ገጾች በአንድ ቦታ፣ እና በመላው ስርዓቱ ላይ የሚሠሩ ቅንብሮች"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "ከመቆለፍ በፊት ያልተሳኩ መግቢያዎች"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "በአንድ IP አድራሻ ያልተሳኩ መግቢያዎች"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "በማውጫው ውስጥ እንደ ህጻናት የሚቆጠሩ የቤተሰብ ሚናዎች።"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "በማውጫው እና በአባላት መግቢያ ውስጥ እንደ የቤተሰብ ራስ የሚቆጠሩ የቤተሰብ ሚናዎች።"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "በማውጫው እና በአባላት መግቢያ ውስጥ እንደ የትዳር ጓደኛ የሚቆጠሩ የቤተሰብ ሚናዎች።"
+
+#: 
+msgid "Finance Settings"
+msgstr "የፋይናንስ ቅንብሮች"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "የጸጋ ጊዜ (ቀናት)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "በቤተሰብ አርታኢ ውስጥ የዜና መጽሔት ምዝገባዎችን ደብቅ።"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "በግለሰብ አርታኢ ውስጥ የወዳጅነት ቀን መስኩን ደብቅ።"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "በቤተሰብ አርታኢ ውስጥ የሰርግ ቀን መስኩን ደብቅ።"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "የተቆለፈ መለያ ለምን ያህል ጊዜ እንደተቆለፈ ይቆያል። ከአንድ IP አድራሻ የሚደረጉ ያልተሳኩ መግቢያዎች በተመሳሳይ ጊዜ ውስጥ ይቆጠራሉ።"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "አዲስ የይለፍ ቃል ከአሮጌው ምን ያህል ቁምፊዎች መለየት አለበት። 0 ይህንን ያጠፋዋል።"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "በአስተዳደር → ቴሌሜትሪ ውስጥ፣ ሙሉ የሚለውን ለመምረጥ የትኞቹ ገጾች እንደሚጠቀሙ ያጋሩ የሚለውን ያብሩ። ሙሉ የገጽ እይታዎችንም ይልካል።"
+
+#: 
+msgid "Initials Format"
+msgstr "የመጀመሪያ ፊደላት ቅርጸት"
+
+#: 
+msgid "Letter Text %d"
+msgstr "የደብዳቤ ጽሑፍ %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "የመቆለፍ ጊዜ (ደቂቃዎች)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "ከዚህ ያህል ተከታታይ ያልተሳኩ መግቢያዎች በኋላ መለያ ይቆልፋል። ከመቆለፍ ጊዜ በኋላ፣ ወይም አስተዳዳሪ ዳግም ሲያስጀምረው ይከፈታል። 0 መቆለፍን ያጠፋዋል።"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "የአባላት ፖርታልን ያስተዳድሩ"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "አባላት በኢሜይላቸው መግባት ይችላሉ።"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "አባላት ገና መግባት አይችሉም።"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "ዝቅተኛው የተቀየሩ ቁምፊዎች"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "ዝቅተኛው የይለፍ ቃል ርዝመት"
+
+#: 
+msgid "Name Format"
+msgstr "የስም ቅርጸት"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "በደብዳቤዎች እና በኢሜይሎች መዝጊያ ስር የሚታተም ስም"
+
+#: 
+msgid "No Payments Text"
+msgstr "የክፍያ የለም ጽሑፍ"
+
+#: 
+msgid "No Pledge Text"
+msgstr "የቃል መግባት የለም ጽሑፍ"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "ምንም ደረጃ ሰዎችን፣ ለጋሾችን፣ ስጦታን፣ ይዘትን፣ የቤተ ክርስቲያን አድራሻ ዝርዝሮችን፣ የድረ-ገጽ አድራሻዎን ወይም የአገልጋይ ስምዎን አይልክም።"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ምንም ደረጃ የድረ-ገጽ አድራሻዎን ወይም የአገልጋይ ስምዎን አይልክም። የሙከራ ጭነቶች ምንም አይልኩም። ቴሌሜትሪ ወደ PostHog በዩናይትድ ስቴትስ ይላካል።"
+
+#: 
+msgid "OS family"
+msgstr "የኦፕሬቲንግ ሲስተም ቤተሰብ"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "የቃል መግባት አስታዋሽ ደብዳቤ የመክፈቻ አንቀጽ።"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "በስጦታ መግለጫ ውስጥ ጥያቄዎችን የሚጋብዝ አንቀጽ።"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "በዜሮ ለጋሾች ደብዳቤ ውስጥ ጥያቄዎችን የሚጋብዝ አንቀጽ።"
+
+#: 
+msgid "Passwords"
+msgstr "የይለፍ ቃላት"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "በዜሮ ለጋሾች ደብዳቤ የመክፈቻ መስመር ውስጥ ከቀን ክልሉ በኋላ ይታተማል።"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "በስጦታ መግለጫ ላይ በመጀመሪያ ይታተማል፣ ከዚያም የቀን ክልሉ ይከተላል።"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "ቤተሰብ ምንም የክፍያ መዝገብ ከሌለው ይታተማል።"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "ቤተሰብ ምንም የቃል መግባት መዝገብ ከሌለው ይታተማል።"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "ከዚህ ያህል ያልተሳኩ መግቢያዎች ወይም የይለፍ ቃል ዳግም ማስጀመር በኋላ ለአንድ IP አድራሻ ለመቆለፍ ጊዜ መግባትን ይከለክላል። 0 ያጠፋዋል፣ ለምሳሌ ሁሉም ሰው በአንድ ፕሮክሲ ሲገናኝ።"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "ባለሁለት-ደረጃ ማረጋገጫ ይጠይቁ"
+
+#: 
+msgid "Security Settings"
+msgstr "የደህንነት ቅንብሮች"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "ችግሮች እንዲስተካከሉ የስህተት ሪፖርቶችን፣ የመጫን/የማሻሻል ክስተቶችን እና የስርዓት መረጃን ይላኩ። የገጽ እይታዎች የለም፣ የቤተ ክርስቲያን መረጃ የለም።"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "የክፍለ ጊዜ ማብቂያ (ሰከንዶች)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "የትኞቹ ገጾች እንደሚጠቀሙ ያጋሩ"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "መግቢያ እና ደህንነት"
+
+#: 
+msgid "Signature Storage"
+msgstr "የፊርማ ማከማቻ"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "ከዚህ ያህል ሰከንዶች ያለ እንቅስቃሴ በኋላ ተጠቃሚን ያስወጣል። 0 በፍጹም አያስወጣም።"
+
+#: 
+msgid "System-wide"
+msgstr "በመላው ስርዓቱ"
+
+#: 
+msgid "Text After Dates"
+msgstr "ከቀኖች በኋላ ያለው ጽሑፍ"
+
+#: 
+msgid "Text Messages"
+msgstr "የጽሑፍ መልዕክቶች"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "የስጦታ መግለጫ የምስጋና አንቀጽ።"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "የዜሮ ለጋሾች ደብዳቤ የምስጋና አንቀጽ።"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ልወጣው አልተሳካም። ምንም አልተቀየረም።"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "መጫኛዎች ከመጨመራቸው በፊት የተቀመጠ የደብዳቤ ራስጌ ፋይልን በመጠቀም ላይ። ለመተካት የደብዳቤ ራስጌ ይስቀሉ።"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "ማስጠንቀቂያ በኋላ (ሰዓታት)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "በደብዳቤዎች እና በኢሜይሎች ውስጥ ከስሙ በፊት ያለው ቃል፣ ለምሳሌ ውድ።"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "ምርጫዎ አንድ ጊዜ ይጠየቃል። በማንኛውም ጊዜ ሊቀይሩት ይችላሉ። አይ፣ አመሰግናለሁ ሲሉ ነባሪው ንቁ ሆኖ ይቆያል እና የገጽ እይታዎች አይላኩም።"
+

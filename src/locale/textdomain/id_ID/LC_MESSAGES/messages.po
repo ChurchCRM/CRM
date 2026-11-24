@@ -27960,3 +27960,295 @@ msgstr "Informasi gereja Anda tersimpan. Kerjakan langkah-langkah di bawah ini."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Basis data Anda (%1$s %2$s) adalah risiko keamanan: vendornya tidak lagi menyediakan perbaikan keamanan untuk versi tersebut. ChurchCRM tetap berfungsi, tetapi mintalah host Anda untuk pindah ke MariaDB %3$s+ atau MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Check-in harian saat digunakan, versi perangkat lunak dan basis data, lokal, negara, jenis instalasi dan ID instalasi acak membantu menghitung instalasi aktif."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Akun & Masuk"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Kirim juga halaman mana yang digunakan."
+
+#: 
+msgid "Areas"
+msgstr "Area"
+
+#: 
+msgid "Church & System"
+msgstr "Gereja & Sistem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Kota atau kota kecil tempat kwitansi diterbitkan, dicetak pada kwitansi resmi. Kosongkan untuk menggunakan kota gereja."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Penutup sebelum nama penanda tangan, misalnya Hormat kami."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Penutup yang dicetak sebelum penanda tangan pada kwitansi resmi."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kata sandi yang dipisahkan koma yang tidak boleh digunakan siapa pun."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Surat Konfirmasi"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Buat keluarga untuk orang ini? Alamat dan telepon rumah mereka pindah ke keluarga baru."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Hari yang dimiliki pengguna untuk menyiapkan autentikasi dua faktor setelah menjadi wajib. 0 langsung memberlakukannya. Memperpendek masa tenggang yang aktif dapat mengunci pengguna."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Simpanan & Pembayaran"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Kata Sandi yang Tidak Diizinkan"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Penolakan %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Email Pengguna Saat Akun Mereka Dihapus"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Setiap halaman pengaturan di satu tempat, dan pengaturan yang berlaku untuk seluruh sistem"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Upaya Masuk Gagal Sebelum Penguncian"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Upaya Masuk Gagal per Alamat IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Peran keluarga yang diperlakukan sebagai anak-anak di direktori."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Peran keluarga yang diperlakukan sebagai kepala keluarga di direktori dan masuk anggota."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Peran keluarga yang diperlakukan sebagai pasangan di direktori dan masuk anggota."
+
+#: 
+msgid "Finance Settings"
+msgstr "Pengaturan Keuangan"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Masa Tenggang (hari)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Sembunyikan langganan warta jemaat di Editor Keluarga."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Sembunyikan bidang Tanggal Teman di Editor Orang."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Sembunyikan bidang Tanggal Pernikahan di Editor Keluarga."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Berapa lama akun yang terkunci tetap terkunci. Upaya masuk gagal dari satu alamat IP dihitung selama periode yang sama."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Berapa banyak karakter kata sandi baru harus berbeda dari yang lama. 0 menonaktifkan ini."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Di Admin → Telemetri, aktifkan Bagikan halaman mana yang digunakan untuk memilih Penuh. Penuh juga mengirim tampilan halaman."
+
+#: 
+msgid "Initials Format"
+msgstr "Format Inisial"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Teks Surat %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Periode Penguncian (menit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Mengunci akun setelah upaya masuk gagal sebanyak ini berturut-turut. Akun terbuka setelah periode penguncian, atau ketika administrator meresetnya. 0 menonaktifkan penguncian."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Kelola Portal Jemaat"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Anggota dapat masuk dengan email mereka."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Anggota belum dapat masuk."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Karakter Minimum yang Diubah"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Panjang Kata Sandi Minimum"
+
+#: 
+msgid "Name Format"
+msgstr "Format Nama"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nama yang dicetak di bawah penutup surat dan email"
+
+#: 
+msgid "No Payments Text"
+msgstr "Teks Tidak Ada Pembayaran"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Teks Tidak Ada Janji"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Tidak ada tingkat yang mengirim orang, penyumbang, pemberian, konten, detail kontak gereja, alamat web Anda atau nama server Anda."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Tidak ada tingkat yang mengirim alamat web atau nama server Anda. Instalasi uji tidak mengirim apa pun. Telemetri dikirim ke PostHog di Amerika Serikat."
+
+#: 
+msgid "OS family"
+msgstr "Keluarga OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragraf pembuka surat pengingat janji."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragraf yang mengundang pertanyaan dalam laporan pemberian."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragraf yang mengundang pertanyaan dalam surat pemberi nol."
+
+#: 
+msgid "Passwords"
+msgstr "Kata Sandi"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Dicetak setelah rentang tanggal di baris pembuka surat pemberi nol."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Dicetak pertama pada laporan pemberian, diikuti oleh rentang tanggal."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Dicetak ketika sebuah keluarga tidak memiliki pembayaran yang tercatat."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Dicetak ketika sebuah keluarga tidak memiliki janji yang tercatat."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Menolak masuk dari satu alamat IP selama periode penguncian setelah upaya masuk gagal atau reset kata sandi sebanyak ini. 0 menonaktifkannya, misalnya ketika semua orang terhubung melalui satu proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Wajibkan Autentikasi Dua Faktor"
+
+#: 
+msgid "Security Settings"
+msgstr "Pengaturan Keamanan"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Kirim laporan kesalahan, peristiwa instalasi/peningkatan dan info sistem agar masalah dapat diperbaiki. Tidak ada tampilan halaman, tidak ada data gereja."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Batas Waktu Sesi (detik)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Bagikan halaman mana yang digunakan"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Masuk & Keamanan"
+
+#: 
+msgid "Signature Storage"
+msgstr "Penyimpanan Tanda Tangan"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Mengeluarkan pengguna setelah tidak aktif selama sekian detik. 0 tidak pernah mengeluarkan."
+
+#: 
+msgid "System-wide"
+msgstr "Seluruh Sistem"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teks Setelah Tanggal"
+
+#: 
+msgid "Text Messages"
+msgstr "Pesan Teks"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragraf terima kasih dari laporan pemberian."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragraf terima kasih dari surat pemberi nol."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konversi gagal. Tidak ada yang diubah."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Menggunakan file kop surat yang disimpan sebelum unggahan ditambahkan. Unggah kop surat untuk menggantinya."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Peringatan Setelah (Jam)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Kata sebelum nama dalam surat dan email, misalnya Yth."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Pilihan Anda ditanyakan satu kali. Anda dapat mengubahnya kapan saja. Dengan Tidak, terima kasih, Default tetap aktif dan tampilan halaman tidak dikirim."
+

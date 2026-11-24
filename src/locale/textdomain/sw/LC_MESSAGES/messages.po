@@ -27992,3 +27992,295 @@ msgstr "Maelezo ya kanisa lako yamehifadhiwa. Fanya hatua zilizo hapa chini."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Hifadhidata yako (%1$s %2$s) ni hatari ya usalama: muuzaji wake hatoi tena marekebisho ya usalama kwa toleo hilo. ChurchCRM inaendelea kufanya kazi, lakini mwombe mwenyeji wako ahamie MariaDB %3$s+ au MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Kuingia kwa kila siku ukiwa unatumia, matoleo ya programu na hifadhidata, lugha ya eneo, nchi, aina ya usakinishaji na kitambulisho cha usakinishaji cha nasibu husaidia kuhesabu usakinishaji unaotumika."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Akaunti na Kuingia"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Tuma pia kurasa zinazotumiwa."
+
+#: 
+msgid "Areas"
+msgstr "Maeneo"
+
+#: 
+msgid "Church & System"
+msgstr "Kanisa na Mfumo"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Mji au mji mdogo ambapo risiti hutolewa, huchapishwa kwenye risiti rasmi. Acha wazi kutumia mji wa kanisa."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Kufunga kabla ya jina la mtiishaji, kwa mfano Kwa dhati."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Kufunga kunakochapishwa kabla ya mtiishaji kwenye risiti rasmi."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Manenosiri yaliyotenganishwa kwa koma ambayo hakuna mtu anayeruhusiwa kuyatumia."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Barua ya Uthibitisho"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Uunde familia kwa ajili ya mtu huyu? Anuani yao na simu ya nyumbani huhamia kwenye familia mpya."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Siku ambazo watumiaji wanapaswa kusanidi uthibitishaji wa hatua mbili baada ya kuhitajika. 0 hulazimisha mara moja. Kufupisha kipindi cha neema kinachoendelea kunaweza kuwafungia watumiaji nje."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Amana na Malipo"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Manenosiri Yasiyokubalika"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Tahadhari %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Watumie Watumiaji Barua Pepe Akaunti Yao Ikifutwa"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Kila ukurasa wa mipangilio mahali pamoja, na mipangilio inayotumika kwa mfumo mzima"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Kuingia Kulikoshindwa Kabla ya Kufungiwa"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Kuingia Kulikoshindwa kwa Anwani ya IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Majukumu ya familia yanayotendewa kama watoto katika orodha."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Majukumu ya familia yanayotendewa kama mkuu wa kaya katika orodha na kuingia kwa wanachama."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Majukumu ya familia yanayotendewa kama mwenzi katika orodha na kuingia kwa wanachama."
+
+#: 
+msgid "Finance Settings"
+msgstr "Mipangilio ya Fedha"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Kipindi cha Neema (siku)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ficha usajili wa jarida katika Kihariri cha Familia."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ficha sehemu ya Tarehe ya Rafiki katika Kihariri cha Mtu."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ficha sehemu ya Tarehe ya Harusi katika Kihariri cha Familia."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Muda ambao akaunti iliyofungiwa hubaki imefungiwa. Kuingia kulikoshindwa kutoka anwani moja ya IP huhesabiwa katika kipindi hicho hicho."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Ni herufi ngapi nenosiri jipya lazima litofautiane na la zamani. 0 huzima hii."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Katika Msimamizi → Telemetry, washa Shiriki kurasa zinazotumiwa kuchagua Kamili. Kamili pia hutuma mionekano ya kurasa."
+
+#: 
+msgid "Initials Format"
+msgstr "Muundo wa Herufi za Kwanza"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Maandishi ya Barua %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Kipindi cha Kufungiwa (dakika)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Hufunga akaunti baada ya kuingia kulikoshindwa mara nyingi hivi mfululizo. Hufunguka baada ya kipindi cha kufungiwa, au msimamizi anapoireseti. 0 huzima kufungiwa."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Simamia Tovuti ya Washirika"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Wanachama wanaweza kuingia kwa barua pepe yao."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Wanachama hawawezi kuingia bado."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Kiwango cha Chini cha Herufi Zilizobadilishwa"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Urefu wa Chini wa Nenosiri"
+
+#: 
+msgid "Name Format"
+msgstr "Muundo wa Jina"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Jina lililochapishwa chini ya kufunga kwa barua na barua pepe"
+
+#: 
+msgid "No Payments Text"
+msgstr "Maandishi ya Hakuna Malipo"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Maandishi ya Hakuna Ahadi"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Hakuna kiwango kinachotuma watu, wafadhili, utoaji, maudhui, maelezo ya mawasiliano ya kanisa, anwani yako ya wavuti au jina la seva yako."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Hakuna kiwango kinachotuma anwani yako ya wavuti au jina la seva yako. Usakinishaji wa majaribio hautumi chochote. Telemetry hutumwa kwa PostHog nchini Marekani."
+
+#: 
+msgid "OS family"
+msgstr "Familia ya OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Aya ya ufunguzi ya barua ya ukumbusho wa ahadi."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Aya inayokaribisha maswali katika taarifa ya utoaji."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Aya inayokaribisha maswali katika barua ya watoaji sifuri."
+
+#: 
+msgid "Passwords"
+msgstr "Manenosiri"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Huchapishwa baada ya kipindi cha tarehe katika mstari wa ufunguzi wa barua ya watoaji sifuri."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Huchapishwa kwanza kwenye taarifa ya utoaji, ikifuatiwa na kipindi cha tarehe."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Huchapishwa familia isipokuwa na malipo yoyote kwenye rekodi."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Huchapishwa familia isipokuwa na ahadi yoyote kwenye rekodi."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Hukataa kuingia kutoka anwani moja ya IP kwa kipindi cha kufungiwa baada ya kuingia kulikoshindwa au kuweka upya nenosiri mara nyingi hivi. 0 huzima, kwa mfano wakati kila mtu anaunganisha kupitia proksi moja."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Hitaji Uthibitishaji wa Hatua Mbili"
+
+#: 
+msgid "Security Settings"
+msgstr "Mipangilio ya Usalama"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Tuma ripoti za makosa, matukio ya kusakinisha/kuboresha na maelezo ya mfumo ili matatizo yaweze kurekebishwa. Hakuna mionekano ya kurasa, hakuna data ya kanisa."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Kuisha kwa Kikao (sekunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Shiriki kurasa zinazotumiwa"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Kuingia na Usalama"
+
+#: 
+msgid "Signature Storage"
+msgstr "Hifadhi ya Saini"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Humtoa mtumiaji baada ya sekunde nyingi hivi bila shughuli. 0 humtoi kamwe."
+
+#: 
+msgid "System-wide"
+msgstr "Kwa Mfumo Mzima"
+
+#: 
+msgid "Text After Dates"
+msgstr "Maandishi Baada ya Tarehe"
+
+#: 
+msgid "Text Messages"
+msgstr "Ujumbe wa Maandishi"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Aya ya shukrani ya taarifa ya utoaji."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Aya ya shukrani ya barua ya watoaji sifuri."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Ubadilishaji umeshindwa. Hakuna kilichobadilishwa."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Inatumia faili ya kichwa cha barua iliyohifadhiwa kabla ya upakiaji kuongezwa. Pakia kichwa cha barua kuibadilisha."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Onyo Baada ya (Saa)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Chaguo lako huulizwa mara moja. Unaweza kulibadilisha wakati wowote. Ukiwa na Hapana, asante, Chaguomsingi hubaki kikitumika na mionekano ya kurasa haitumwi."
+

@@ -28065,3 +28065,295 @@ msgstr "Menighetsinformasjonen din er lagret. Gå gjennom trinnene nedenfor."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Databasen din (%1$s %2$s) er en sikkerhetsrisiko: leverandøren leverer ikke lenger sikkerhetsrettelser for den versjonen. ChurchCRM fortsetter å virke, men be verten din om å flytte til MariaDB %3$s+ eller MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "En daglig innsjekking under bruk, programvare- og databaseversjoner, nasjonale innstillinger, land, installasjonstype og en tilfeldig installasjons-ID bidrar til å telle aktive installasjoner."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Kontoer & innlogging"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Send også hvilke sider som brukes."
+
+#: 
+msgid "Areas"
+msgstr "Områder"
+
+#: 
+msgid "Church & System"
+msgstr "Menighet & system"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "By eller sted der kvitteringer utstedes, trykt på offisielle kvitteringer. La stå tomt for å bruke menighetens by."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Avslutning før underskriverens navn, for eksempel Med vennlig hilsen."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Avslutning som trykkes før underskriveren på offisielle kvitteringer."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kommaseparerte passord som ingen kan bruke."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Bekreftelsesbrev"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Opprett en familie for denne personen? Adressen og hjemmetelefonen deres flyttes til den nye familien."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Dager brukere har til å sette opp totrinnsverifisering etter at det blir påkrevd. 0 håndhever det med en gang. Å forkorte en aktiv frist kan låse brukere ute."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Innskudd & betalinger"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Ikke tillatte passord"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Ansvarsfraskrivelse %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Send e-post til brukere når kontoen deres slettes"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Hver innstillingsside på ett sted, og innstillingene som gjelder for hele systemet"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Mislykkede innlogginger før sperring"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Mislykkede innlogginger per IP-adresse"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Familieroller som behandles som barn i katalogen."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Familieroller som behandles som husholdningsoverhode i katalogen og ved medlemsinnlogging."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Familieroller som behandles som ektefelle i katalogen og ved medlemsinnlogging."
+
+#: 
+msgid "Finance Settings"
+msgstr "Økonomiinnstillinger"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Frist (dager)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Skjul nyhetsbrevabonnementer i Family Editor."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Skjul feltet Venn Dato i Person Editor."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Skjul feltet Wedding Date i Family Editor."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Hvor lenge en låst konto forblir låst. Mislykkede innlogginger fra én IP-adresse telles over samme periode."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Hvor mange tegn et nytt passord må skille seg fra det gamle. 0 slår dette av."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "I Admin → Telemetri, slå på Del hvilke sider som brukes for å velge Fullt. Fullt sender også sidevisninger."
+
+#: 
+msgid "Initials Format"
+msgstr "Initialformat"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Brevtekst %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Sperreperiode (minutter)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Sperrer en konto etter så mange mislykkede innlogginger på rad. Den låses opp etter sperreperioden, eller når en administrator nullstiller den. 0 slår av sperring."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Administrer Medlemsportal"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Medlemmer kan logge inn med e-posten sin."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Medlemmer kan ikke logge inn ennå."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimum antall endrede tegn"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Minimum passordlengde"
+
+#: 
+msgid "Name Format"
+msgstr "Navneformat"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Navn som trykkes under avslutningen i brev og e-poster"
+
+#: 
+msgid "No Payments Text"
+msgstr "Tekst for ingen betalinger"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Tekst for intet løfte"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ingen nivåer sender personer, givere, gaver, innhold, menighetens kontaktopplysninger, nettadressen din eller servernavnet ditt."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ingen nivåer sender nettadressen din eller servernavnet ditt. Testinstallasjoner sender ingenting. Telemetri sendes til PostHog i USA."
+
+#: 
+msgid "OS family"
+msgstr "OS-familie"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Åpningsavsnitt i påminnelsesbrevet om løfte."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Avsnitt i gaveoppgaven som inviterer til spørsmål."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Avsnitt i brevet til nullgiverne som inviterer til spørsmål."
+
+#: 
+msgid "Passwords"
+msgstr "Passord"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Trykkes etter datointervallet i åpningslinjen i brevet til nullgiverne."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Trykkes først på gaveoppgaven, etterfulgt av datointervallet."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Trykkes når en familie ikke har noen betalinger registrert."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Trykkes når en familie ikke har noe løfte registrert."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Avviser innlogging fra én IP-adresse i sperreperioden etter så mange mislykkede innlogginger eller tilbakestillinger av passord. 0 slår det av, for eksempel når alle kobler til via én proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Krev totrinnsverifisering"
+
+#: 
+msgid "Security Settings"
+msgstr "Sikkerhetsinnstillinger"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Send feilrapporter, installasjons-/oppgraderingshendelser og systeminfo slik at problemer kan rettes. Ingen sidevisninger, ingen menighetsdata."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Økttidsavbrudd (sekunder)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Del hvilke sider som brukes"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Innlogging & sikkerhet"
+
+#: 
+msgid "Signature Storage"
+msgstr "Signaturlagring"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Logger en bruker ut etter så mange sekunder uten aktivitet. 0 logger aldri ut."
+
+#: 
+msgid "System-wide"
+msgstr "Systemomfattende"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst etter datoer"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstmeldinger"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Takk-avsnittet i gaveoppgaven."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Takk-avsnittet i brevet til nullgiverne."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konverteringen mislyktes. Ingenting ble endret."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Bruker en brevhodetfil som ble lagret før opplastinger ble lagt til. Last opp et brevhode for å erstatte den."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Advarsel etter (timer)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Ord før navnet i brev og e-poster, for eksempel Kjære."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Valget ditt spørres om én gang. Du kan endre det når som helst. Med Nei takk forblir Standard aktiv, og sidevisninger sendes ikke."
+
