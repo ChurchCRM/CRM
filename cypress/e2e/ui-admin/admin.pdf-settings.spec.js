@@ -50,9 +50,9 @@ describe("Reporting temporary directory localization", () => {
                 cy.get(`#reportingSettings label[for='${key}']`)
                     .should("contain.text", "Diretório temporário de PDF")
                     .and("be.visible");
-                cy.get("#reportingSettings small.form-text")
-                    .should("contain.text", "Deixe em branco para usar o diretório temporário")
-                    .and("be.visible");
+                cy.get("#reportingSettings .setting-hint")
+                    .should("have.attr", "aria-label")
+                    .and("include", "Deixe em branco para usar o diretório temporário");
             }
         }
     });

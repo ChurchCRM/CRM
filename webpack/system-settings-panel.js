@@ -37,7 +37,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                    data-type="boolean" ${isOn ? "checked" : ""}>
                             <span class="form-check-label fw-bold small">${escapeHtml(resolve(setting.label))}</span>
                         </label>
-                        ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
+                        ${hint(setting)}
                     </div>
                 `;
       },
@@ -47,7 +47,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
+                            ${escapeHtml(resolve(setting.label))}${hint(setting)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="number" class="form-control setting-input"
@@ -56,7 +56,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                                value="${value || ""}"
                                ${setting.min !== undefined ? `min="${setting.min}"` : ""}
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `,
       getValue: (el) => el.value,
@@ -65,7 +64,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
+                            ${escapeHtml(resolve(setting.label))}${hint(setting)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="text" class="form-control setting-input"
@@ -73,7 +72,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                                data-type="text"
                                value="${escapeHtml(value || "")}"
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `,
       getValue: (el) => el.value,
@@ -82,13 +80,12 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
+                            ${escapeHtml(resolve(setting.label))}${hint(setting)}
                         </label>
                         <input type="time" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="time"
                                value="${escapeHtml(value || "")}">
-                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `,
       getValue: (el) => el.value,
@@ -97,12 +94,11 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
                     <div class="col-12 col-lg-6 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
+                            ${escapeHtml(resolve(setting.label))}${hint(setting)}
                         </label>
                         <textarea class="form-control setting-input"
                                   id="${setting.name}" name="${setting.name}"
                                   data-type="textarea" rows="3" maxlength="255"></textarea>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `,
       getValue: (el) => el.value,
@@ -121,7 +117,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
+                            ${escapeHtml(resolve(setting.label))}${hint(setting)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <select class="form-select setting-input"
@@ -129,7 +125,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 data-type="choice">
                             ${optionsHtml}
                         </select>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -148,7 +143,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <div class="input-group">
                 <input type="password" class="form-control setting-input"
@@ -158,7 +153,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                      placeholder="${t("Leave blank to keep existing")}">
                 ${generateBtn}
               </div>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `;
       },
@@ -173,14 +167,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <select multiple class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
                       data-type="multiselect">
                 ${(setting.choices || []).map((c) => `<option value="${escapeHtml(String(c.value))}">${escapeHtml(c.label)}</option>`).join("")}
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `,
       getValue: (el) =>
@@ -191,14 +184,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <select multiple class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
                       data-type="persons">
                 ${(setting.selected || []).map((p) => `<option value="${escapeHtml(String(p.id))}" selected>${escapeHtml(p.text)}</option>`).join("")}
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `,
       getValue: (el) => Array.from(el.selectedOptions, (o) => o.value).join(","),
@@ -228,14 +220,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <select class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
                       data-type="country">
                 <option value="">— ${t("Select Country")} —</option>
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>`,
       getValue: (el) => el.value,
     },
@@ -245,7 +236,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <div id="${setting.name}Control">
                 <select class="form-select setting-input"
@@ -254,7 +245,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                   <option value="">— ${t("Select State")} —</option>
                 </select>
               </div>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>`,
       getValue: (el) => el.value,
     },
@@ -262,7 +252,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${escapeHtml(resolve(setting.label))}
+                ${escapeHtml(resolve(setting.label))}${hint(setting)}
               </label>
               <select class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
@@ -270,7 +260,6 @@ import "../src/skin/scss/system-settings-panel.scss";
                       data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
                 <option value="">${t("Unassigned")}</option>
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `,
       getValue: (el) => el.value,
@@ -294,6 +283,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       return translated !== undefined ? translated : key;
     }
     return key;
+  }
+
+  // A help icon beside the label; the hint shows on hover or keyboard focus.
+  function hint(setting) {
+    if (!setting.tooltip) return "";
+    const text = escapeHtml(resolve(setting.tooltip));
+    return `<span class="text-muted ms-1 setting-hint" tabindex="0" role="note" aria-label="${text}" data-bs-toggle="tooltip" data-bs-placement="top" title="${text}"><i class="fa-solid fa-circle-question"></i></span>`;
   }
 
   // Safely resolve a setting label or tooltip, returning "" for falsy values.

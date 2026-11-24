@@ -66,9 +66,9 @@ describe("Settings Panel — Choice Dropdowns", () => {
                 cy.wrap($input).clear().type(next).blur();
                 cy.wait("@failedSave");
                 // The frozen clock also holds the toast's fade-in, so let it finish first.
-                cy.contains("Failed to save settings").should("exist");
+                cy.contains("simulated failure").should("exist");
                 cy.tick(500);
-                cy.contains("Failed to save settings").should("be.visible");
+                cy.contains("simulated failure").should("be.visible");
                 cy.get("#financeDeposits input[name='iMaxTaxYears']").should("have.value", previous);
                 cy.tick(1500);
                 cy.get("@originalDocument").then((doc) => cy.document().should("eq", doc));
