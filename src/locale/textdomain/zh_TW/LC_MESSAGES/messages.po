@@ -17243,10 +17243,6 @@ msgid "Access Control & Security"
 msgstr "存取控制與安全性"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "允許記錄不可抵稅的款項（例如商品銷售）"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "允許未認證存取公開事件（用於嵌入日曆）"
 

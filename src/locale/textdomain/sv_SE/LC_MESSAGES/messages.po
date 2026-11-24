@@ -17208,10 +17208,6 @@ msgid "Access Control & Security"
 msgstr "Åtkomstkontroll och säkerhet"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Tillåt registrering av icke-avdragsgilla betalningar (t.ex. varuförsäljning)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Tillåt oautentiserad åtkomst till offentliga evenemang (för inbäddning av kalendrar)"
 

@@ -17117,10 +17117,6 @@ msgid "Access Control & Security"
 msgstr "Kiểm soát Truy cập và Bảo mật"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Cho phép ghi nhận các khoản thanh toán không được khấu trừ thuế (ví dụ: bán hàng hóa)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Cho phép truy cập chưa được xác thực đến các sự kiện công khai (để nhúng lịch)"
 

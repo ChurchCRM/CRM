@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 06:21+0000\n"
+"POT-Creation-Date: 2026-11-24 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1657,9 +1657,6 @@ msgid "Allow changes while an administrator uses Login as Person. When off, Logi
 msgstr ""
 
 msgid "Allow members to change their own and their family members' birthdays."
-msgstr ""
-
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
 msgstr ""
 
 msgid "Allow recording of non-tax-deductible payments in the finance module"
@@ -7552,6 +7549,9 @@ msgstr ""
 msgid "Finance Module"
 msgstr ""
 
+msgid "Finance Settings"
+msgstr ""
+
 msgid "Finance access"
 msgstr ""
 
@@ -11429,7 +11429,13 @@ msgstr ""
 msgid "No Orphaned Files Found"
 msgstr ""
 
+msgid "No Payments Text"
+msgstr ""
+
 msgid "No Payments on this Deposit"
+msgstr ""
+
+msgid "No Pledge Text"
 msgstr ""
 
 msgid "No Sunday School"

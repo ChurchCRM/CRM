@@ -17146,10 +17146,6 @@ msgid "Access Control & Security"
 msgstr "Hozzáférés-vezérlés és biztonság"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Az adólevonás nélküli kifizetések rögzítésének engedélyezése (pl. árucikkek értékesítése)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "A nem hitelesített hozzáférés engedélyezése nyilvános eseményekhez (naptárak beágyazásához)"
 

@@ -17172,10 +17172,6 @@ msgid "Access Control & Security"
 msgstr "访问控制和安全"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "允许记录不可税收抵扣的款项（例如商品销售）"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "允许未认证访问公共事件（用于嵌入日历）"
 

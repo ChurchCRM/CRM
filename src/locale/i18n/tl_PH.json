@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "para sa mga error sa paligid ng oras na ito nangyari, at i-download at isama ang nauugnay na log file sa iyong GitHub issue — timutulong ito sa amin na ayusin ang problema nang hindi nagtanong ng mga sumusunod na tanong.",
   "system logs": "mga log ng sistema",
   "Access Control & Security": "Kontrol ng Access at Seguridad",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Payagan ang pagtatala ng mga pagbabayad na hindi maaaring ibawas sa buwis (halimbawa, benta ng merchandise)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Payagan ang hindi na-authenticate na access sa mga pampublikong kaganapan (para sa pag-embed ng mga kalendaryo)",
   "Automatically send birthday emails (requires background job scheduler)": "Awtomatikong magpadala ng mga email ng kaarawan (kailangan ng background job scheduler)",
   "Birthday Greeting Emails": "Mga Email ng Pagbati sa Kaarawan",

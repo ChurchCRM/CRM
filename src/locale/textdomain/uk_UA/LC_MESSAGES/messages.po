@@ -17153,10 +17153,6 @@ msgid "Access Control & Security"
 msgstr "Контроль доступу та безпека"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Дозволити запис платежів, що не підлягають відрахуванню від податків (наприклад, продаж товарів)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Дозволити неавторизований доступ до публічних подій (для вбудовування календарів)"
 

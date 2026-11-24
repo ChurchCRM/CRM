@@ -1,7 +1,10 @@
 {
   "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.": "",
   "Also send which pages are used.": "",
+  "Finance Settings": "",
   "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": "",
+  "No Payments Text": "",
+  "No Pledge Text": "",
   "No tier sends people, donors, giving, content, church contact details, your web address or server name.": "",
   "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.": "",
   "OS family": "",

@@ -17119,10 +17119,6 @@ msgid "Access Control & Security"
 msgstr "Udhibiti wa Ufikiaji na Usalama"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)"
 

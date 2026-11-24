@@ -17123,10 +17123,6 @@ msgid "Access Control & Security"
 msgstr "Έλεγχος πρόσβασης και ασφάλεια"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Επιτρέπει την καταγραφή πληρωμών που δεν αφαιρούνται φόρου (π.χ. πώληση εμπορευμάτων)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Επιτρέπει την μη πιστοποιημένη πρόσβαση σε δημόσια γεγονότα (για ενσωμάτωση ημερολογίων)"
 

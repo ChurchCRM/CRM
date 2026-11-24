@@ -17121,10 +17121,6 @@ msgid "Access Control & Security"
 msgstr "בקרת גישה וביטחון"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "אפשר רישום תשלומים שלא ניתן להפחית מיסים (למשל, מכירת סחורה)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)"
 

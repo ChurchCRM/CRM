@@ -4195,7 +4195,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "للتحقق من الأخطاء حول الوقت الذي حدث فيه هذا، وقم بتحميل وإرفاق ملف السجل ذي الصلة بمشكلتك على GitHub - فهذا يساعدنا على إصلاح المشكلة دون طرح أسئلة متابعة.",
   "system logs": "سجلات النظام",
   "Access Control & Security": "التحكم في الوصول والأمان",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "السماح بتسجيل المدفوعات غير القابلة للخصم الضريبي (على سبيل المثال، مبيعات البضائع)",
   "Allow unauthenticated access to public events (for embedding calendars)": "السماح بالوصول غير المصرح به إلى الأحداث العامة (لتضمين التقويمات)",
   "Automatically send birthday emails (requires background job scheduler)": "إرسال رسائل عيد الميلاد تلقائيًا (يتطلب جدولة المهام الخلفية)",
   "Birthday Greeting Emails": "رسائل تحية أعياد الميلاد",

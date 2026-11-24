@@ -17120,10 +17120,6 @@ msgid "Access Control & Security"
 msgstr "Contrôle d'accès et sécurité"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Permettre l'enregistrement des paiements non déductibles fiscalement (p. ex., ventes de marchandises)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Autoriser l'accès non authentifié aux événements publics (pour intégrer des calendriers)"
 

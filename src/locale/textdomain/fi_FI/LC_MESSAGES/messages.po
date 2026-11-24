@@ -17094,10 +17094,6 @@ msgid "Access Control & Security"
 msgstr "Pääsynvalvonta ja turvallisuus"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Salli ei-verovähennyskelpoiset maksut (esim. tavaramyynti)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Salli todentamattoman pääsyn julkisiin tapahtumiin (kalentereiden upottamista varten)"
 

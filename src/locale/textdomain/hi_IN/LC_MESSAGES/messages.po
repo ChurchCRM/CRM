@@ -17092,10 +17092,6 @@ msgid "Access Control & Security"
 msgstr "अभिगम नियंत्रण और सुरक्षा"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "कर-कटौती योग्य न होने वाले भुगतान दर्ज करने की अनुमति दें (जैसे, सामग्री की बिक्री)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "सार्वजनिक कार्यक्रमों तक बिना लॉगिन के पहुंच की अनुमति दें (कैलेंडर एम्बेड करने के लिए)"
 

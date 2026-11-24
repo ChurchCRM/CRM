@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "pour les erreurs autour du moment où cela s'est produit, et téléchargez et joignez le fichier journal pertinent à votre problème GitHub - cela nous aide à résoudre le problème sans poser de questions de suivi.",
   "system logs": "journaux système",
   "Access Control & Security": "Contrôle d'accès et sécurité",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Permettre l'enregistrement des paiements non déductibles fiscalement (p. ex., ventes de marchandises)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Autoriser l'accès non authentifié aux événements publics (pour intégrer des calendriers)",
   "Automatically send birthday emails (requires background job scheduler)": "Envoyer automatiquement des e-mails d'anniversaire (nécessite un planificateur de tâches de fond)",
   "Birthday Greeting Emails": "E-mails de vœux d'anniversaire",

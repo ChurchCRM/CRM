@@ -17179,10 +17179,6 @@ msgid "Access Control & Security"
 msgstr "التحكم في الوصول والأمان"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "السماح بتسجيل المدفوعات غير القابلة للخصم الضريبي (على سبيل المثال، مبيعات البضائع)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "السماح بالوصول غير المصرح به إلى الأحداث العامة (لتضمين التقويمات)"
 
