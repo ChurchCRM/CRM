@@ -44,7 +44,6 @@ $(document).ready(function () {
             title: section.title,
             icon: section.icon,
             settings: section.settings,
-            showAllSettingsLink: false,
             autoSave: true,
             columns: 1,
             configApiPath: '/finance/api/config',

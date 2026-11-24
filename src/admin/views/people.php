@@ -85,7 +85,6 @@ $(document).ready(function () {
             title: section.title,
             icon: section.icon,
             settings: section.settings,
-            showAllSettingsLink: false,
             autoSave: true,
             onSave: section.id === 'peopleGrades' ? function () { window.CRM.refreshGradePromotion(); } : null
         });

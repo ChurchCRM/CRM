@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     title: container.dataset.title,
     icon: "fa-solid fa-desktop",
     settings: JSON.parse(container.dataset.settings ?? "[]"),
-    showAllSettingsLink: false,
     autoSave: true,
   });
 });

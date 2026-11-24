@@ -17,8 +17,7 @@
  *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
  *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
  *        ],
- *        autoSave: true,
- *        reloadOnSave: true
+ *        autoSave: true
  *    });
  */
 
@@ -352,10 +351,6 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.savedValues = {};
       this.latestValues = {};
       this.writeQueue = {};
-      this.pendingSaves = 0;
-      this.failedSaves = new Set();
-      this.reloadTimer = null;
-      this.hasSaved = false;
       this.initialized = false;
     }
 
@@ -368,8 +363,6 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {string} options.icon - Font Awesome icon class
      * @param {Array} options.settings - Array of setting names or setting config objects
      * @param {Function} options.onSave - Callback after successful save; receives {name: value} of the saved settings
-     * @param {boolean} options.reloadOnSave - Reload an auto-save panel once writes and editing finish
-     * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
      * @param {string} options.csrfToken - Session CSRF token sent as X-CSRF-Token with each save (APIs behind CSRFMiddleware need it)
      * @param {number} options.columns - Fields per row from the lg breakpoint up: 3 (default), 2, or 1 (one full-width setting per row)
@@ -383,10 +376,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           icon: "fa-solid fa-cog",
           settings: [],
           onSave: null,
-          showAllSettingsLink: true,
           autoSave: false,
-          reloadOnSave: false,
-          allSettingsUrl: "/SystemSettings.php",
           configApiPath: "/admin/api/system/config",
           csrfToken: "",
           headerClass: "bg-primary-lt",
@@ -665,16 +655,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                               this.options.autoSave
                                 ? ""
                                 : `<hr class="my-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                ${
-                                  this.options.showAllSettingsLink
-                                    ? `
-                                <a href="${window.CRM.root}${this.options.allSettingsUrl}" class="btn btn-outline-secondary btn-sm">
-                                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${t("All System Settings")}
-                                </a>
-                                `
-                                    : "<div></div>"
-                                }
+                            <div class="d-flex justify-content-end">
                                 <button type="button" class="btn btn-primary settings-panel-save" disabled>
                                     <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
@@ -742,11 +723,6 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
 
       if (this.options.autoSave) {
-        if (this.options.reloadOnSave) {
-          this.container.addEventListener("focusin", () => clearTimeout(this.reloadTimer));
-          this.container.addEventListener("input", () => clearTimeout(this.reloadTimer));
-          this.container.addEventListener("focusout", () => this.scheduleReload());
-        }
         this.container.addEventListener("change", (event) => {
           const input = event.target.closest(".setting-input");
           if (input && SettingTypes[input.dataset.type]) this.saveOne(input);
@@ -825,16 +801,12 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       const name = input.name;
       this.latestValues[name] = val;
-      this.pendingSaves++;
-      clearTimeout(this.reloadTimer);
 
       // One write at a time per setting, so the last selection is the last write.
       this.writeQueue[name] = (this.writeQueue[name] || Promise.resolve())
         .then(() => this.postSetting(name, val))
         .then(() => {
           this.savedValues[name] = val;
-          this.hasSaved = true;
-          this.failedSaves.delete(name);
           if (window.CRM?.notify) {
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
@@ -843,31 +815,11 @@ import "../src/skin/scss/system-settings-panel.scss";
           }
         })
         .catch(() => {
-          this.failedSaves.add(name);
           if (window.CRM?.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
           if (this.latestValues[name] === val) this.revertField(input);
-        })
-        .finally(() => {
-          this.pendingSaves--;
-          this.scheduleReload();
         });
-    }
-
-    scheduleReload() {
-      if (!this.options.reloadOnSave || !this.hasSaved) return;
-      clearTimeout(this.reloadTimer);
-      // Keep editing and failed fields visible; never navigate away from pending writes.
-      this.reloadTimer = setTimeout(() => {
-        if (
-          this.pendingSaves === 0 &&
-          this.failedSaves.size === 0 &&
-          !this.container.contains(document.activeElement)
-        ) {
-          window.location.reload();
-        }
-      }, 1500);
     }
 
     // Show the last value the server confirmed after a failed save.

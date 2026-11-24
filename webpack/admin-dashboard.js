@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         icon,
         settings: JSON.parse(panel.dataset.settings),
         autoSave: true,
-        showAllSettingsLink: false,
       });
     });
   });

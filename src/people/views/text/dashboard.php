@@ -80,7 +80,6 @@ $(document).ready(function() {
             }
         ],
         autoSave: true,
-        showAllSettingsLink: false
     });
 <?php if (isset($_GET['settings']) && $_GET['settings'] === 'open'): ?>
     var textSettingsEl = document.getElementById('textSettings');

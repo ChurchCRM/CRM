@@ -270,7 +270,6 @@ interface CRMSettingsPanel {
     title?: string;
     icon?: string;
     headerClass?: string;
-    showAllSettingsLink?: boolean;
     settings: Array<string | CRMSettingsPanelSetting>;
     onSave?: (savedValues?: Record<string, string>) => void;
     [key: string]: unknown;

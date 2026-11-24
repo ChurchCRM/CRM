@@ -178,13 +178,11 @@ class UserService
      */
     public function getUserSettingsConfig(): array
     {
-        // Define user-related settings that should appear in the admin panel
         $userSettings = [
             'iSessionTimeout',
             'iMaxFailedLogins',
             'iLoginLockoutMinutes',
             'iMaxFailedLoginsPerIP',
-            'bEnableLostPassword',
             'bSendUserDeletedEmail',
             'iMinPasswordLength',
             'iMinPasswordChange',
