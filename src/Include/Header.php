@@ -276,7 +276,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
-        <!-- Database Support Warning: once dismissed, the banner lives here until the database is supported -->
+        <!-- Database support notice: once dismissed, the banner lives here until the database is supported -->
         <?php $dbSupportWarning = NotificationService::getDatabaseSupportWarning(); ?>
         <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
         <div class="nav-item dropdown" id="databaseSupportMenuItem">
