@@ -32,6 +32,18 @@ const resetDismissal = () => {
     );
 };
 
+// Signs in without cy.session, whose setup dismisses every notification.
+const freshLogin = (usernameKey, passwordKey) =>
+    cy.readEnv(usernameKey).then((username) =>
+        cy.readEnv(passwordKey).then((password) => {
+            cy.clearAllCookies();
+            cy.visit("/session/begin");
+            cy.get("input[name=User]").type(username);
+            cy.get("input[name=Password]").type(`${password}{enter}`);
+            cy.expectStaffSignedIn();
+        }),
+    );
+
 describe("Database out-of-support banner", () => {
     it("follows the running database version on the dashboard and the upgrader", () => {
         cy.setupAdminSession();
@@ -74,8 +86,7 @@ describe("Database out-of-support banner", () => {
             cy.wait("@dismissDbWarning");
             cy.get(banner).should("not.exist");
 
-            // The dismissal is per-user and persists: after a fresh page load
-            // the banner stays gone and the warning lives in the top nav.
+            freshLogin("admin.username", "admin.password");
             cy.visit("/people/dashboard");
             cy.get(banner).should("not.exist");
             cy.get(navIndicator).should("be.visible");
@@ -86,7 +97,13 @@ describe("Database out-of-support banner", () => {
                 .and("contain", "Database out of support")
                 .and("contain", "is a security risk");
 
-            // Restore the banner for the next run.
+            freshLogin("locale.admin.username", "locale.admin.password");
+            resetDismissal();
+            cy.visit("/people/dashboard");
+            cy.get(banner).should("be.visible");
+            cy.get(navIndicator).should("not.exist");
+
+            freshLogin("admin.username", "admin.password");
             resetDismissal();
             cy.visit("/people/dashboard");
             cy.get(banner).should("be.visible");

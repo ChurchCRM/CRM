@@ -112,3 +112,20 @@
     }
   }
 }
+
+// Wide enough to read the database warning; on phones it spans the sticky navbar.
+#databaseSupportMenuItem .dropdown-menu {
+  width: 22rem;
+}
+
+@media (max-width: 767.98px) {
+  #databaseSupportMenuItem {
+    position: static;
+
+    .dropdown-menu[data-bs-popper] {
+      left: 1rem;
+      right: 1rem;
+      width: auto;
+    }
+  }
+}

@@ -281,8 +281,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
         <div class="nav-item dropdown" id="databaseSupportMenuItem">
           <a class="nav-link px-0 text-danger" data-bs-toggle="dropdown" href="#"
-             id="databaseSupportMenu" title="<?= gettext('Database out of support') ?>">
-            <i class="fa-solid fa-database"></i>
+             id="databaseSupportMenu"
+             title="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>"
+             aria-label="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>">
+            <i class="fa-solid fa-database" aria-hidden="true"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <div class="dropdown-item-text">
