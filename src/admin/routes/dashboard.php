@@ -98,7 +98,35 @@ $app->get('/', function (Request $request, Response $response) {
     // rather than letting birthday emails silently stop going out.
     $timerJobsLastRun = SystemService::getLastTimerJobsRun();
 
+    $searchLabels = [
+        'bSearchIncludePersons' => [gettext('Search People'), gettext('Include people in quick global search')],
+        'bSearchIncludeFamilies' => [gettext('Search Families'), gettext('Include families in quick global search')],
+        'bSearchIncludeGroups' => [gettext('Search Groups'), gettext('Include groups in quick global search')],
+        'bSearchIncludeDeposits' => [gettext('Search Deposits'), gettext('Include deposits in quick global search')],
+        'bSearchIncludePayments' => [gettext('Search Payments'), gettext('Include payments in quick global search')],
+        'bSearchIncludeAddresses' => [gettext('Search Addresses'), gettext('Include addresses in quick global search')],
+        'bSearchIncludeCalendarEvents' => [gettext('Search Calendar Events'), gettext('Include calendar events in quick global search')],
+        'bSearchIncludeFamilyCustomProperties' => [gettext('Search Family Custom Properties'), gettext('Include custom family properties in quick global search')],
+    ];
+
+    $searchKeys = ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeFamilyCustomProperties'];
+    if (SystemConfig::getBooleanValue('bEnabledFinance')) {
+        array_push($searchKeys, 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax');
+    }
+    if (SystemConfig::getBooleanValue('bEnabledEvents')) {
+        array_push($searchKeys, 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax');
+    }
+
     $pageArgs = [
+        'searchSettings' => array_map(static function (array $setting) use ($searchLabels): array {
+            if (isset($searchLabels[$setting['name']])) {
+                [$setting['label'], $setting['tooltip']] = $searchLabels[$setting['name']];
+            }
+            if (str_ends_with($setting['name'], 'Max')) {
+                $setting['type'] = 'number';
+            }
+            return $setting;
+        }, SystemConfig::getSettingsConfig($searchKeys)),
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Admin Dashboard'),
         'sPageSubtitle'    => gettext("Let's get your system set up and ready to use"),
