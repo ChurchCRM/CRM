@@ -29,20 +29,20 @@ $configs->setValue(null, [
     },
 ]);
 
-$firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
+$firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '', '7.8.3');
 Assert::same('install_observed', $firstSync['event']);
 Assert::same('production', $firstSync['properties']['install_profile']);
-Assert::same(['crm_version', 'install_profile', 'church_country', 'php_version'], array_keys($firstSync['properties']));
+Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type'], array_keys($firstSync['properties']));
 Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $firstSync['properties']['php_version']);
 $normalizeRoute = new ReflectionMethod(TelemetryService::class, 'normalizePageRoute');
 Assert::same('/people/person', $normalizeRoute->invoke(null, '/churchcrm/people/person?personId=42#tab', '/churchcrm'));
 Assert::same('/people/person', $normalizeRoute->invoke(null, '/people/person?personId=42#tab', ''));
 SystemURLs::init('/churchcrm', [], APP_ROOT);
-$subdirectoryEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
-Assert::false(array_key_exists('install_path_type', $subdirectoryEvent['properties']));
+$subdirectoryEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '', '7.8.3');
+Assert::same('subdirectory', $subdirectoryEvent['properties']['install_path_type']);
 SystemURLs::init('', [], APP_ROOT);
-$rootEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
-Assert::false(array_key_exists('install_path_type', $rootEvent['properties']));
+$rootEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '', '7.8.3');
+Assert::same('root', $rootEvent['properties']['install_path_type']);
 
 // No Propel connection is configured in this process: base properties must
 // still carry the PHP version and omit the database properties cleanly.
@@ -52,15 +52,14 @@ Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $base['php_version']);
 Assert::false(array_key_exists('database_engine', $base));
 Assert::false(array_key_exists('database_version', $base));
 
-Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '7.8.3', '7.8.3'));
-Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_NONE, 'install-id', '', '7.8.3'));
-Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, '', '', '7.8.3'));
+Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '7.8.3', '7.8.3'));
+Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, '', '', '7.8.3'));
 
-$upgrade = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '7.8.2', '7.8.3');
+$upgrade = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '7.8.2', '7.8.3');
 Assert::same('upgrade_completed', $upgrade['event']);
 Assert::same('7.8.2', $upgrade['properties']['from_version']);
 Assert::same('7.8.3', $upgrade['properties']['crm_version']);
-Assert::same(['crm_version', 'install_profile', 'church_country', 'php_version', 'from_version'], array_keys($upgrade['properties']));
+Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type', 'from_version'], array_keys($upgrade['properties']));
 
 $configValue = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
@@ -70,7 +69,7 @@ $configValue = static fn (string $value) => new class($value) {
 };
 $configs->setValue(null, [
     'sLanguage' => $configValue('en_US'),
-    'sTelemetryLevel' => $configValue(TelemetryService::LEVEL_ERRORS),
+    'sTelemetryLevel' => $configValue(TelemetryService::LEVEL_DEFAULT),
     'sSystemID' => $configValue('install-id'),
     'sTelemetryLifecycleVersion' => $configValue(''),
     'sTelemetryHeartbeatDate' => $configValue(gmdate('Y-m-d')),
@@ -94,17 +93,18 @@ Assert::same('7.8.2', $sentEvents[1]['properties']['from_version']);
 Assert::same($currentVersion, $sentEvents[1]['properties']['crm_version']);
 
 SystemConfig::setValue('sTelemetryLifecycleVersion', '');
-SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_NONE);
+SystemConfig::setValue('sTelemetryLevel', 'none');
 TelemetryService::syncLifecycle($sender);
-Assert::same(2, count($sentEvents));
-Assert::same('', SystemConfig::getValue('sTelemetryLifecycleVersion'));
+Assert::same(3, count($sentEvents));
+Assert::same($currentVersion, SystemConfig::getValue('sTelemetryLifecycleVersion'));
+SystemConfig::setValue('sTelemetryLifecycleVersion', '');
 
-SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_ERRORS);
+SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_DEFAULT);
 $notAcknowledged = static fn (): bool => false;
 TelemetryService::syncLifecycle($notAcknowledged);
 Assert::same('', SystemConfig::getValue('sTelemetryLifecycleVersion'));
 
-SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_INSTALL);
+SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_DEFAULT);
 SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
 SystemConfig::setValue('sTelemetryHeartbeatDate', '2000-01-01');
 $beats = [];

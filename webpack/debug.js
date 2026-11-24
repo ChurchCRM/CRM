@@ -1,25 +1,21 @@
-/**
- * Debug page JavaScript.
- * Handles the telemetry level selector buttons in the App environment tab.
- */
+import { fetchAdminAPI } from "./api-utils";
+import { notifyError } from "./common/notify";
 
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".js-debug-telemetry-toggle");
-  if (!btn) return;
+document.addEventListener("change", async (event) => {
+  const toggle = event.target;
+  if (toggle.id !== "telemetry-page-usage") return;
 
-  const level = btn.getAttribute("data-level") || "none";
-  btn.disabled = true;
-
-  const root = window.CRM?.root || "";
-  fetch(`${root}/admin/api/system/telemetry-consent`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ level }),
-  })
-    .then(() => {
-      window.location.reload();
-    })
-    .catch(() => {
-      btn.disabled = false;
+  const checked = toggle.checked;
+  toggle.disabled = true;
+  try {
+    await fetchAdminAPI("system/telemetry-consent", {
+      method: "POST",
+      body: JSON.stringify({ level: checked ? "full" : "default" }),
     });
+    window.location.reload();
+  } catch {
+    toggle.checked = !checked;
+    toggle.disabled = false;
+    notifyError(window.i18next.t("Failed to save settings"));
+  }
 });

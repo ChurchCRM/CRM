@@ -165,6 +165,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           'PageName' => $_SERVER['REQUEST_URI'] ?? '',
           'telemetry' => [
               'level' => TelemetryService::getLevel(),
+              'properties' => array_diff_key(TelemetryService::baseProperties(), ['$lib' => true]),
               'install_profile' => TelemetryService::installProfile(),
               'key' => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint' => TelemetryService::POSTHOG_ENDPOINT,

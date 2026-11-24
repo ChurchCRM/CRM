@@ -66,7 +66,7 @@ describe('06 - Explore demo data, start fresh, restore a backup', () => {
 
         cy.request('/admin/api/system/config/sInstallDataProfile').its('body.value').should('eq', 'production');
         cy.request('/admin/api/system/config/sChurchName').its('body.value').should('eq', '');
-        cy.request('/admin/api/system/config/sTelemetryLevel').its('body.value').should('eq', 'install');
+        cy.request('/admin/api/system/config/sTelemetryLevel').its('body.value').should('eq', 'default');
         cy.request('/api/persons/latest').its('body.people').should('have.length.lessThan', 2);
         cy.request('/api/families/latest').its('body.families').should('have.length', 0);
         cy.request('/api/groups/').its('body').should('have.length', 0);

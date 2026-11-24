@@ -29,8 +29,8 @@ putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 putenv('PHP_TEST_DISPOSABLE_DB');
 SystemURLs::init('', [], APP_ROOT);
 SystemConfig::init();
-Assert::same('install', TelemetryService::getLevel());
-Assert::same(['none', 'install', 'errors', 'full'], array_map(
+Assert::same('default', TelemetryService::getLevel());
+Assert::same(['default', 'full'], array_map(
     static fn (string $choice): string => substr($choice, strrpos($choice, ':') + 1),
     SystemConfig::getTelemetryLevelChoices()['Choices']
 ));
@@ -73,7 +73,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             'sLanguage' => $value('en_US'),
         ]);
         $GLOBALS['lifecyclePayloads'] = [];
-        $normalized = $level === 'warnings' ? 'errors' : $level;
+        $normalized = $level === 'full' ? 'full' : 'default';
         Assert::same($normalized, TelemetryService::getLevel());
         foreach (['', '7.8.2'] as $covered) {
             $event = TelemetryService::buildLifecycleEvent($normalized, 'church-guid', $covered, '7.8.4');
@@ -82,12 +82,12 @@ foreach (['production', 'demo', 'test'] as $profile) {
             }
         }
         TelemetryService::captureUpgradeFailure('7.8.4', 'PrivateException');
-        $expected = $profile === 'test' ? 0 : ($level === 'none' ? 1 : 3);
+        $expected = $profile === 'test' ? 0 : 3;
         Assert::count($expected, $GLOBALS['lifecyclePayloads']);
         foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
             Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
-            $keys = ['crm_version', 'install_profile', 'church_country', 'php_version', 'database_engine', 'database_version'];
+            $keys = ['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type', 'church_country', 'database_engine', 'database_version'];
             if ($payload['event'] !== 'install_observed') {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
@@ -100,7 +100,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
                 Assert::false(array_key_exists('error_detail', $properties));
                 Assert::false(array_key_exists('upgrade_script', $properties));
             }
-            $keys = array_merge($keys, ['$process_person_profile', '$geoip_disable']);
+            $keys[] = '$process_person_profile';
             Assert::same($keys, array_keys($properties));
             Assert::true($properties['$geoip_disable']);
             Assert::false($properties['$process_person_profile']);
@@ -118,7 +118,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Warning, 'Warning'));
         $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
         TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
-        $events = $profile === 'test' || in_array($level, ['none', 'install'], true)
+        $events = $profile === 'test'
             ? [] : ($level === 'full' ? ['page_view', 'log_error', 'log_error', 'log_error'] : ['log_error', 'log_error', 'log_error']);
         Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
         TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
@@ -133,7 +133,8 @@ $mutable = static fn (string $v) => new class($v) {
     public function getType(): string { return 'internal'; }
 };
 $configs->setValue(null, [
-    'sTelemetryLevel' => $mutable('install'),
+    'sTelemetryLevel' => $mutable('default'),
+    'sLanguage' => $mutable('en_US'),
     'sInstallDataProfile' => $mutable('production'),
     'sSystemID' => $mutable('church-guid'),
     'sTelemetryLifecycleVersion' => $mutable('7.8.2'),
@@ -148,7 +149,7 @@ Assert::same(['no_upgrade_path', 'other'], array_column(array_column($GLOBALS['l
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureUpgradeSqlError('7.8.4', 10, "Duplicate entry 'secret@example.org' for key 'person.email'");
 TelemetryService::captureUpgradeInterruption('7.8.4', 10);
-Assert::same(['upgrade_failed', 'upgrade_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
+Assert::same(['upgrade_failed', 'upgrade_sql_failed', 'upgrade_failed', 'upgrade_script_interrupted'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
 Assert::same(['sql_error', 'script_interrupted'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
 Assert::same('7.8.4', $GLOBALS['lifecyclePayloads'][0]['properties']['upgrade_version']);
 Assert::false(array_key_exists('error_detail', $GLOBALS['lifecyclePayloads'][0]['properties']));
@@ -164,7 +165,7 @@ Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 Assert::same($GLOBALS['lifecyclePayloads'][0]['distinct_id'], $GLOBALS['lifecyclePayloads'][1]['distinct_id']);
 Assert::false(array_key_exists('database_error', $GLOBALS['lifecyclePayloads'][0]['properties']));
 
-$configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProfile' => $value('production')]);
+$configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');
 Assert::same('church-guid', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
@@ -211,7 +212,7 @@ foreach (['install', 'errors', 'full', 'none'] as $choice) {
     $request->getBody()->write(json_encode(['level' => $choice], JSON_THROW_ON_ERROR));
     $response = $app->handle($request);
     Assert::same(200, $response->getStatusCode());
-    Assert::same($choice, SystemConfig::getValue('sTelemetryLevel'));
+    Assert::same($choice === 'full' ? 'full' : 'default', SystemConfig::getValue('sTelemetryLevel'));
     Assert::same(VersionUtils::getInstalledVersion(), SystemConfig::getValue('sTelemetryAskedVersion'));
 }
 $sent = 0;
