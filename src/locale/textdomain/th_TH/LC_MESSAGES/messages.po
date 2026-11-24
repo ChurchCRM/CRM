@@ -1590,10 +1590,6 @@ msgid "Permission"
 msgstr "สิทธิ์"
 
 #: 
-msgid "System Settings"
-msgstr "การตั้งค่าระบบ"
-
-#: 
 msgid "User Editor"
 msgstr "ตัวแก้ไขผู้ใช้"
 
@@ -2075,24 +2071,12 @@ msgid "Localization"
 msgstr "การแปลภาษา"
 
 #: 
-msgid "Setting saved"
-msgstr "บันทึกการตั้งค่าแล้ว"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "แก้ไขการตั้งค่า JSON"
-
-#: 
 msgid "False"
 msgstr "เท็จ"
 
 #: 
 msgid "True"
 msgstr "จริง"
-
-#: 
-msgid "Edit Settings"
-msgstr "แก้ไขการตั้งค่า"
 
 #: 
 msgid "Functions"
@@ -2207,32 +2191,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "รวมเฉพาะการจัดประเภทเหล่านี้ในไดเรกทอรี คั่นด้วยคอมมา"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นหัวหน้าครัวเรือน"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นคู่สมรส"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นเด็ก"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "ความยาวขั้นต่ำที่ผู้ใช้สามารถตั้งค่ารหัสผ่านได้"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "รายการรหัสผ่านที่ไม่อนุญาต (ชัดเจนเกินไป) คั่นด้วยคอมมา"
-
-#: 
 msgid "Default City"
 msgstr "เมืองเริ่มต้น"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "รัฐเริ่มต้น - ต้องเป็นตัวย่อ 2 ตัวอักษร!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2255,68 +2215,12 @@ msgid "First month of the fiscal year"
 msgstr "เดือนแรกของปีงบประมาณ"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล ตั้งเป็นเท็จเพื่อเปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการจัดการการสมัครจดหมายข่าวในตัวแก้ไขครอบครัว"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันแต่งงานในตัวแก้ไขครอบครัว ตั้งเป็นเท็จเพื่อเปิดการป้อนวันแต่งงานในตัวแก้ไขครอบครัว"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "จำนวนเช็คสำหรับรายงานใบนำฝาก"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "หน่วยที่ใช้วัดระยะทาง ไมล์หรือกม."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "เปิดใช้งานการชำระเงินที่ไม่สามารถหักลดหย่อน"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "ข้อความสำหรับบรรทัดบนของรายงานภาษี วันที่จะถูกเพิ่มต่อท้ายบรรทัดนี้"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "ข้อความสำหรับบรรทัดล่างของรายงานภาษี"
-
-#: 
-msgid "Tax Report signer"
-msgstr "ผู้ลงนามรายงานภาษี"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "ผู้ลงนามการเตือนคำมั่นสัญญา"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา - ไม่มีบันทึกคำมั่นสัญญา"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา - ไม่มีบันทึกการชำระเงิน"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "ข้อความสำหรับรายงานการยืนยันและแก้ไขข้อมูลฐานข้อมูล"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "ผู้ลงนามรายงานการยืนยันและแก้ไขข้อมูลฐานข้อมูล"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "ข้อความสำหรับรายงานไดเรกทอรี"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3771,10 +3675,6 @@ msgstr "ไฟล์สำรองข้อมูลไม่มีฐานข
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "ทำให้รหัสไปรษณีย์ที่ผู้ใช้ป้อนเป็นตัวพิมพ์ใหญ่เมื่อบันทึกลงฐานข้อมูล"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "ใช้ลงท้ายจดหมายก่อนผู้ลงนาม"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3879,10 +3779,6 @@ msgid "Failed"
 msgstr "ล้มเหลว"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "หมายเลขบัญชีเช็คคริสตจักร"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "ทำเครื่องหมายครอบครัวเป็นไม่ใช้งาน"
 
@@ -3893,10 +3789,6 @@ msgstr "ทำเครื่องหมายครอบครัวเป็
 #: 
 msgid "families"
 msgstr "ครอบครัว"
-
-#: 
-msgid "Financial Settings"
-msgstr "การตั้งค่าการเงิน"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3937,10 +3829,6 @@ msgstr "ยกเลิกการกำหนดคุณสมบัติส
 #: 
 msgid "The property could not be unassigned."
 msgstr "ไม่สามารถยกเลิกการกำหนดคุณสมบัติได้"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "ข้อความก่อนชื่อในอีเมล/รายงาน"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4183,10 +4071,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "ระเบียนถูกเพิ่มลงในกลุ่มที่เลือกสำเร็จ"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: yyyy-mm-dd ในภาษาฝรั่งเศส: dd/mm/yyyy เป็นต้น"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: Y-m-d ในภาษาฝรั่งเศส: d/m/Y เป็นต้น"
 
@@ -4273,10 +4157,6 @@ msgstr "ตะวันตกเฉียงเหนือตะวันตก
 #: 
 msgid "WSW"
 msgstr "ตะวันตกเฉียงใต้ตะวันตก"
-
-#: 
-msgid "Search Family"
-msgstr "ค้นหาครอบครัว"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4375,10 +4255,6 @@ msgid "Change Settings"
 msgstr "เปลี่ยนการตั้งค่า"
 
 #: 
-msgid "Unknown Type"
-msgstr "ประเภทไม่ทราบ"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID สำหรับตะกร้าต้องเป็นตัวเลข"
 
@@ -4397,14 +4273,6 @@ msgstr "ค้นหาคน"
 #: 
 msgid "Maximum number of People"
 msgstr "จำนวนคนสูงสุด"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "ฟิลด์ที่แสดงรายการบิดาแห่งการสารภาพ ต้องเป็นคนจากประเภทกลุ่ม"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "ฟิลด์ที่เก็บการสารภาพครั้งล่าสุด ต้องเป็นประเภทวันที่"
 
 #: 
 msgid "People Reports"
@@ -4654,18 +4522,6 @@ msgid "Event not found"
 msgstr "ไม่พบกิจกรรม"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "ความยาวหมดเวลาเซสชันเป็นวินาที\n"
-"ตั้งเป็นศูนย์เพื่อปิดใช้งานการหมดเวลาเซสชัน"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "จำนวนขั้นต่ำที่รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเก่า (จำนวนตัวอักษรที่เปลี่ยน)\n"
-"ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
-
-#: 
 msgid "Verify People"
 msgstr "ยืนยันคน"
 
@@ -4735,10 +4591,6 @@ msgstr "กิจกรรมที่ยกเลิกการปักหม
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "นามสกุล, ชื่อจริง ชื่อกลาง"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "ส่งอีเมลแจ้งเตือนผู้ใช้เมื่อบัญชีของพวกเขาถูกลบ"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7701,10 +7553,6 @@ msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย"
-
-#: 
 msgid "Active Groups"
 msgstr "กลุ่มที่ใช้งานอยู่"
 
@@ -8182,10 +8030,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "เลือกวิธีที่คุณต้องการเพิ่มข้อมูลลงฐานข้อมูล คุณสามารถใช้วิธีอื่นได้ในภายหลัง"
 
 #: 
-msgid "Church Info"
-msgstr "ข้อมูลคริสตจักร"
-
-#: 
 msgid "Clear all"
 msgstr "ล้างทั้งหมด"
 
@@ -8216,14 +8060,6 @@ msgstr "แพลตฟอร์มบริหารจัดการชุม
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "ทำขั้นตอนเหล่านี้ตามลำดับใดก็ได้เพื่อเตรียม ChurchCRM สำหรับคริสตจักรของคุณ"
-
-#: 
-msgid "Confession"
-msgstr "การสารภาพบาป"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "กำหนดค่าการตั้งค่าและค่ากำหนดระบบทั่วไป"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8272,10 +8108,6 @@ msgstr "บุคคลปัจจุบัน"
 #: 
 msgid "Database Reset"
 msgstr "รีเซ็ตฐานข้อมูล"
-
-#: 
-msgid "Default / Notes"
-msgstr "ค่าเริ่มต้น / บันทึก"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9896,10 +9728,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "อนุญาตการอัปเกรดระบบเป็นรุ่นที่ทำเครื่องหมายว่า 'ก่อนเผยแพร่' บน GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "อนุญาตการเข้าถึงกิจกรรมในปฏิทินโดยไม่ต้องยืนยันตัวตนผ่าน URL สาธารณะ HTML, ICS และ JSON จำเป็นสำหรับการแชร์ปฏิทินกับแอปภายนอก"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "อนุญาตให้ผู้เยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าลงทะเบียนด้วยตนเอง"
 
@@ -10062,24 +9890,12 @@ msgid "Enable Email"
 msgstr "เปิดใช้งานอีเมล"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "เปิดใช้งานเมนูกิจกรรม"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "เปิดใช้งาน API ปฏิทินภายนอก"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "เปิดใช้งานการส่งอีเมลจาก ChurchCRM จำเป็นสำหรับการรีเซ็ตรหัสผ่าน การแจ้งเตือน และลิงก์อีเมล"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "เปิดใช้งานหากเซิร์ฟเวอร์ SMTP ของคุณต้องใช้ชื่อผู้ใช้และรหัสผ่าน"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "เปิดหรือปิดใช้งานโมดูลโรงเรียนวันอาทิตย์และเมนูแถบด้านข้าง"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10177,10 +9993,6 @@ msgstr "ซ่อนละติจูด/ลองจิจูด"
 #: 
 msgid "How it works"
 msgstr "วิธีการทำงาน"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "จำนวนเช็คที่จะพิมพ์ต่อหน้าใบนำฝาก"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10340,10 +10152,6 @@ msgid "Privacy Note"
 msgstr "หมายเหตุความเป็นส่วนตัว"
 
 #: 
-msgid "Quick Settings"
-msgstr "การตั้งค่าด่วน"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "การยืนยันตัวตน SMTP"
 
@@ -10370,10 +10178,6 @@ msgstr "การตั้งค่า"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "แสดงรายละเอียดมูลค่าธนบัตรในรายงานใบนำฝาก"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "แสดงหรือซ่อนเมนูกิจกรรมในการนำทางหลัก"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10787,10 +10591,6 @@ msgstr "หากคุณพบอักขระที่แสดงผิด
 #: 
 msgid "Indigo"
 msgstr "สีคราม"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
 
 #: 
 msgid "Language and regional settings"
@@ -12566,10 +12366,6 @@ msgstr "ตลอดวัน"
 #: 
 msgid "All Roles"
 msgstr "ทุกบทบาท"
-
-#: 
-msgid "All System Settings"
-msgstr "การตั้งค่าระบบทั้งหมด"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15037,10 +14833,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "รายการแหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "แหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "กลุ่มโรงเรียนวันอาทิตย์ไม่สามารถแก้ไขได้ ยกเว้นสองกรณีนี้เท่านั้น"
 
@@ -15571,10 +15363,6 @@ msgstr "บันทึกเรียบร้อยแล้ว"
 #: 
 msgid "Select a fund"
 msgstr "เลือกกองทุน"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "ส่งอีเมลทดสอบวันเกิดถึงตัวเอง"
 
 #: 
 msgid "Sending to"
@@ -16591,10 +16379,6 @@ msgid "Not a valid date of death"
 msgstr "วันที่เสียชีวิตไม่ถูกต้อง"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "จำนวนวันที่ผู้ใช้มีเวลาลงทะเบียนใช้ 2FA หลังจากมีการบังคับใช้ ตั้งค่าเป็น 0 เพื่อบังคับใช้ทันที การลดระยะเวลาผ่อนผันที่กำลังดำเนินอยู่อาจทำให้ผู้ใช้ถูกล็อกออกจากระบบทันที"
-
-#: 
 msgid "Offline"
 msgstr "ออฟไลน์"
 
@@ -16919,14 +16703,6 @@ msgid "Download CSV"
 msgstr "ดาวน์โหลด CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "เปิดหรือปิดใช้งานโมดูลการเงินและเมนูแถบด้านข้าง"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "เปิดหรือปิดใช้งานโมดูลระดมทุน"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "ล้มเหลวในการลบโลโก้โบสถ์"
 
@@ -17123,46 +16899,6 @@ msgid "Feature Toggles"
 msgstr "สวิตช์คุณลักษณะ"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "สวิตช์คุณลักษณะควบคุมโมดูลและคุณลักษณะใดที่พร้อมใช้งานใน ChurchCRM การเปลี่ยนแปลงจะมีผลใช้บังคับทันที"
-
-#: 
-msgid "Finance Features"
-msgstr "คุณลักษณะการเงิน"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "รวมที่อยู่ในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "รวมกิจกรรมปฏิทินในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "รวมคุณสมบัติครอบครัวที่กำหนดเองในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "รวมเงินฝากในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "รวมครอบครัวในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "รวมหน่วยงานในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "รวมการชำระเงินในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "รวมผู้คนในการค้นหาทั่วโลกด่วน"
-
-#: 
 msgid "Invalid setting"
 msgstr "การตั้งค่าไม่ถูกต้อง"
 
@@ -17171,16 +16907,8 @@ msgid "Lost Password Link"
 msgstr "ลิงค์รีเซ็ตรหัสผ่าน"
 
 #: 
-msgid "Manage All Features"
-msgstr "จัดการคุณลักษณะทั้งหมด"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "สวิตช์หลักสำหรับการส่งอีเมล จำเป็นสำหรับการรีเซ็ตรหัสผ่านและการแจ้งเตือน"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "การชำระเงินที่ไม่สามารถหักลดหย่อนได้"
 
 #: 
 msgid "Primary Modules"
@@ -17191,20 +16919,12 @@ msgid "Public Calendar API"
 msgstr "API ปฏิทินสาธารณะ"
 
 #: 
-msgid "Saved"
-msgstr "บันทึก"
-
-#: 
 msgid "Search Families"
 msgstr "ค้นหาครอบครัว"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "ค้นหาคุณสมบัติที่กำหนดเองของครอบครัว"
-
-#: 
-msgid "Search Settings"
-msgstr "ค้นหาการตั้งค่า"
 
 #: 
 msgid "Self-Registration"
@@ -17421,14 +17141,6 @@ msgstr "ผู้รับการแจ้งเตือน"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "บุคคลที่จะได้รับแจ้งเมื่อมีการเพิ่มครอบครัวหรือบุคคลใหม่"
-
-#: 
-msgid "Person initials style"
-msgstr "รูปแบบอักษรย่อของบุคคล"
-
-#: 
-msgid "Person name display style"
-msgstr "รูปแบบการแสดงชื่อบุคคล"
 
 #: 
 msgid "Spouse Role"
@@ -23424,30 +23136,6 @@ msgid "Download PDF"
 msgstr "ดาวน์โหลด PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "ระยะเวลาล็อกเป็นนาที\n"
-"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังจากผ่านไปตามจำนวนนาทีนี้ การลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP เดียวกันจะถูกนับในช่วงเวลาเดียวกัน"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP หนึ่ง\n"
-"การลงชื่อเข้าใช้ที่ล้มเหลวและคำขอรีเซ็ตรหัสผ่านจากที่อยู่ IP หนึ่งจะนับรวมในขีดจำกัดนี้ภายในระยะเวลาล็อก เมื่อถึงขีดจำกัด การลงชื่อเข้าใช้จากที่อยู่นั้นจะถูกปฏิเสธจนกว่าระยะเวลาจะสิ้นสุด\n"
-"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้ เช่น เมื่อทุกคนเข้าถึง ChurchCRM ผ่านที่อยู่พร็อกซีเดียว"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวที่อนุญาตก่อนบัญชีผู้ใช้จะถูกล็อก\n"
-"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังระยะเวลาล็อก หรือเร็วกว่านั้นเมื่อผู้ดูแลรีเซ็ตจำนวนครั้งที่ล้มเหลว\n"
-"คุณสมบัตินี้ช่วยป้องกันการเดารหัสผ่านโดยอัตโนมัติ\n"
-"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "นาทีจนกว่าจะปลดล็อกเอง: %d"
 
@@ -23776,10 +23464,6 @@ msgid "PDF Output"
 msgstr "ผลลัพธ์ PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "โหมดการจัดการ PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "บรรทัดคำถาม"
 
@@ -23816,10 +23500,6 @@ msgid "Greeting"
 msgstr "คำขึ้นต้น"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "คำขึ้นต้นและลายมือชื่อในจดหมาย"
-
-#: 
 msgid "Letterhead"
 msgstr "หัวจดหมาย"
 
@@ -23842,10 +23522,6 @@ msgstr "ตั้งหัวจดหมายที่จดหมาย PDF �
 #: 
 msgid "Using the church name and address"
 msgstr "ใช้ชื่อและที่อยู่ของคริสตจักร"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28215,10 +27891,6 @@ msgstr "ตั้งค่าคริสตจักรของคุณ"
 #: 
 msgid "Setup Dashboard"
 msgstr "แดชบอร์ดการตั้งค่า"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "จำนวนวันของแดชบอร์ดการตั้งค่า"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

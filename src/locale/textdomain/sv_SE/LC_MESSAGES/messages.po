@@ -1659,10 +1659,6 @@ msgid "Permission"
 msgstr "Tillstånd"
 
 #: 
-msgid "System Settings"
-msgstr "Systeminställningar"
-
-#: 
 msgid "User Editor"
 msgstr "Användare redigeringsverktyg"
 
@@ -2169,24 +2165,12 @@ msgid "Localization"
 msgstr "Lokalisering"
 
 #: 
-msgid "Setting saved"
-msgstr "Inställningen sparad"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Redigera JSON-inställningar"
-
-#: 
 msgid "False"
 msgstr "Falsk"
 
 #: 
 msgid "True"
 msgstr "Sann"
-
-#: 
-msgid "Edit Settings"
-msgstr "Ändra inställningar"
 
 #: 
 msgid "Functions"
@@ -2304,33 +2288,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkludera endast dessa klassificeringar i katalogen, kommaseparerad"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Det här är familjerollen som utsetts till huschefen"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Det här är familjens rollnummer som utses till make"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Det här är familjens rollnummer som utses till barn"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Minsta längd som en användare kan ställa in sitt lösenord till"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "En kommaseparerad lista med tillåtna (för uppenbara) lösenord."
-
-#: 
 msgid "Default City"
 msgstr "Standardstad"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Standardtillstånd - Måste vara en förkortning med två bokstäver!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2353,68 +2312,12 @@ msgid "First month of the fiscal year"
 msgstr "Första månaden av räkenskapsåret"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Ställ in true för att inaktivera att ange Friend Date i Person Editor. Ställ in falskt för att aktivera att ange Friend Date i Person Editor."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Ställ in true för att inaktivera hantering av prenumerationer på nyhetsbrev i Family Editor."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Ställ in true för att inaktivera att ange bröllopsdatum i Family Editor. Ställ in falskt för att aktivera att ange bröllopsdatum i Family Editor."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Antal checkar för insättningskvittorapporten"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Enhet som används för att mäta avstånd, miles eller km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktivera icke avdragsgilla betalningar"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage för översta raden i skatterapporten. Datum läggs till i slutet av den här raden."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbage för den nedersta raden i skatterapporten."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Skattrapportsignatör"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Verbage för pensionspåminnelserapporten"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Löfte påminnelsetecken"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Verbage för pensionspåminnelserapporten - Inget register över pantsättning"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbage för pensionspåminnelserapporten - Inga register över betalningar"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage för bekräftelse och korrigeringsrapport för databasinformation"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Signatur för bekräftelse av databasinformation och korrigeringsrapport"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage för katalograpporten"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3869,10 +3772,6 @@ msgstr "Säkerhetskopieringsarkivet innehåller inte en databas"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Gör användarinmatade postnummer / postnummer UPPERCASE när du sparar i databasen."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Används för att avsluta ett brev före Signer"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3977,10 +3876,6 @@ msgid "Failed"
 msgstr "misslyckades"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Kyrkan kontrollerar kontonummer"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Deaktiverade familjen"
@@ -3993,10 +3888,6 @@ msgstr "Aktiverade familjen"
 #: 
 msgid "families"
 msgstr "familjer"
-
-#: 
-msgid "Financial Settings"
-msgstr "Ekonomiska inställningar"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4037,10 +3928,6 @@ msgstr "Fastigheten är inte tilldelad."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Fastigheten kunde inte tilldelas."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Text före namn i e-postmeddelanden / rapporter"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4284,10 +4171,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "poster har lagts till den valda gruppen."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "För att definiera datumet i Date-Picker, per standard: åååå-mm-dd, på franska: till exempel dd / mm / åååå."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "För att definiera datumet i Date-Picker, per standard: Ymd, på franska: d / m / Y till exempel."
 
@@ -4374,10 +4257,6 @@ msgstr "VNV"
 #: 
 msgid "WSW"
 msgstr "VSV"
-
-#: 
-msgid "Search Family"
-msgstr "Sök familj"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4476,10 +4355,6 @@ msgid "Change Settings"
 msgstr "Ändra inställningar"
 
 #: 
-msgid "Unknown Type"
-msgstr "Okänd typ"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID för kundvagn måste vara numeriskt"
 
@@ -4498,14 +4373,6 @@ msgstr "Sök personer"
 #: 
 msgid "Maximum number of People"
 msgstr "Maximalt antal personer"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Fält där Confession Father är listat, måste vara en person av grupptyp"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Fältet där den senaste konfessionen lagras, måste vara en datumtyp"
 
 #: 
 msgid "People Reports"
@@ -4759,18 +4626,6 @@ msgid "Event not found"
 msgstr "Händelsen hittade ej"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Session timeout längd i sekunder\n"
-"Ställ in på noll för att inaktivera sessionstider. "
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Minsta som ett nytt lösenord måste skilja sig från det gamla (antalet tecken har ändrats)\n"
-"Ställ in på noll för att inaktivera den här funktionen"
-
-#: 
 msgid "Verify People"
 msgstr "Verifiera personer"
 
@@ -4842,10 +4697,6 @@ msgstr "Otilldelade händelser"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Efternamn, Förstanamn andra namn"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Skicka ett e-postmeddelande för användare när deras konto har tagits bort"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7815,10 +7666,6 @@ msgid "selected family has no coordinates"
 msgstr "vald familj har inga koordinater"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiva grupper"
 
@@ -8297,10 +8144,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Välj hur du vill fylla din databas. Du kan alltid använda en annan metod senare."
 
 #: 
-msgid "Church Info"
-msgstr "Församlingsinformation"
-
-#: 
 msgid "Clear all"
 msgstr "Rensa allt"
 
@@ -8331,14 +8174,6 @@ msgstr "Plattform för gemenskapshantering"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Slutför dessa i valfri ordning för att förbereda ChurchCRM för din församling."
-
-#: 
-msgid "Confession"
-msgstr "Bikt"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Konfigurera globala systeminställningar och preferenser"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8387,10 +8222,6 @@ msgstr "Aktuell person"
 #: 
 msgid "Database Reset"
 msgstr "Databasåterställning"
-
-#: 
-msgid "Default / Notes"
-msgstr "Standard / Anteckningar"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -10011,10 +9842,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Tillåt systemuppdateringar till versioner märkta som 'pre release' på GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Tillåt oautentiserad åtkomst till kalenderhändelser via offentliga HTML-, ICS- och JSON-URL:er. Krävs för att dela kalendrar med externa appar."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Tillåt besökare att skapa sin egen familjepost via självregistreringssidan"
 
@@ -10177,24 +10004,12 @@ msgid "Enable Email"
 msgstr "Aktivera e-post"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Aktivera händelsemeny"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Aktivera externt kalender-API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Aktivera e-postutskick från ChurchCRM. Krävs för lösenordsåterställning, aviseringar och e-postlänkar."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Aktivera om din SMTP-server kräver användarnamn och lösenord"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Aktivera eller inaktivera söndagsskolemodulens och sidofältets meny."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10292,10 +10107,6 @@ msgstr "Dölj latitud/longitud"
 #: 
 msgid "How it works"
 msgstr "Hur det fungerar"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Hur många checkar som ska skrivas ut per insättningskvittosida"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10455,10 +10266,6 @@ msgid "Privacy Note"
 msgstr "Integritetsmeddelande"
 
 #: 
-msgid "Quick Settings"
-msgstr "Snabbinställningar"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP-autentisering"
 
@@ -10485,10 +10292,6 @@ msgstr "Installation"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Visa en uppdelning av sedlar och mynt på insättningssedelsrapporten"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Visa eller dölj händelsemenyn i huvudnavigeringen."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10902,10 +10705,6 @@ msgstr "Om du märker förvrängda tecken, HTML-entiteter som visas som text, el
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
 
 #: 
 msgid "Language and regional settings"
@@ -12682,10 +12481,6 @@ msgstr "Olles beaivvi"
 #: 
 msgid "All Roles"
 msgstr "Alla roller"
-
-#: 
-msgid "All System Settings"
-msgstr "Alla systeminställningar"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15156,10 +14951,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Blankstegsavgränsad lista över ursprung som tillåts bädda in den offentliga externa kalendersidan i en iframe. Standard tillåter vilket ursprung som helst."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Blankstegsavgränsade ursprung som tillåts bädda in den offentliga kalendersidan i en iframe. Standard tillåter vilken webbplats som helst."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Söndagsskolgruppen kan inte ändras, endast i dessa två fall"
 
@@ -15690,10 +15481,6 @@ msgstr "Sparades"
 #: 
 msgid "Select a fund"
 msgstr "Välj en fond"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Skicka testmeddelande för födelsedag till mig själv"
 
 #: 
 msgid "Sending to"
@@ -16712,10 +16499,6 @@ msgid "Not a valid date of death"
 msgstr "Inte ett giltigt dödsdatum"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Antal dagar användare har på sig att aktivera tvåfaktorsautentisering efter att det gjorts obligatoriskt. Ange 0 för att kräva det omedelbart. Att förkorta en pågående respittid kan låsa ute användare omedelbart."
-
-#: 
 msgid "Offline"
 msgstr "Offline"
 
@@ -17040,14 +16823,6 @@ msgid "Download CSV"
 msgstr "Hämta CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Aktivera eller inaktivera Finance-modulen och sidlistmenyn."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Aktivera eller inaktivera Fundraiser-modulen."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Det gick inte att ta bort kyrkologotypen"
 
@@ -17244,46 +17019,6 @@ msgid "Feature Toggles"
 msgstr "Funktionsväxlar"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Funktionsväxlar styr vilka moduler och funktioner som är tillgängliga i ChurchCRM. Ändringarna träder i kraft omedelbar."
-
-#: 
-msgid "Finance Features"
-msgstr "Finansfunktioner"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Inkludera adresser i snabb global sökning"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Inkludera kalenderhändelser i snabb global sökning"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Inkludera anpassade familjegenskaper i snabb global sökning"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Inkludera insättningar i snabb global sökning"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Inkludera familjer i snabb global sökning"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Inkludera ministerie i snabb global sökning"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Inkludera betalningar i snabb global sökning"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Inkludera personer i snabb global sökning"
-
-#: 
 msgid "Invalid setting"
 msgstr "Ogiltig inställning"
 
@@ -17292,16 +17027,8 @@ msgid "Lost Password Link"
 msgstr "Länk för återställning av lösenord"
 
 #: 
-msgid "Manage All Features"
-msgstr "Hantera alla funktioner"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Huvudväxel för e-postöversändning. KRÄVS för lösenordsåterställning och meddelanden"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Icke-avdragsgilla betalningar"
 
 #: 
 msgid "Primary Modules"
@@ -17312,20 +17039,12 @@ msgid "Public Calendar API"
 msgstr "Offentligt kalender-API"
 
 #: 
-msgid "Saved"
-msgstr "Sparad"
-
-#: 
 msgid "Search Families"
 msgstr "Sök familjer"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Sök anpassade familjegenskaper"
-
-#: 
-msgid "Search Settings"
-msgstr "Sök inställningar"
 
 #: 
 msgid "Self-Registration"
@@ -17542,14 +17261,6 @@ msgstr "Mottagare av aviseringar"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Personer att meddela när en ny familj eller person läggs till"
-
-#: 
-msgid "Person initials style"
-msgstr "Stil för personens initialer"
-
-#: 
-msgid "Person name display style"
-msgstr "Visningsstil för personens namn"
 
 #: 
 msgid "Spouse Role"
@@ -23558,30 +23269,6 @@ msgid "Download PDF"
 msgstr "Ladda ner PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Låsperiod i minuter\n"
-"Ett låst konto låser upp sig själv efter så många minuter. Misslyckade inloggningar från en IP-adress räknas under samma period."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Maximalt antal misslyckade inloggningar från en IP-adress\n"
-"Misslyckade inloggningar och förfrågningar om lösenordsåterställning från en IP-adress räknas mot denna gräns inom låsperioden. När den nås nekas inloggning från den adressen tills perioden slutar.\n"
-"Ställ in på noll för att inaktivera denna funktion, till exempel när alla når ChurchCRM via en proxyadress."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximalt antal misslyckade inloggningar som tillåts innan ett användarkonto låses.\n"
-"Ett låst konto låser upp sig själv efter låsperioden, eller tidigare när en administratör återställer dess misslyckade inloggningar.\n"
-"Denna funktion hjälper till att skydda mot automatiserade lösenordsattacker.\n"
-"Ställ in på noll för att inaktivera denna funktion."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minuter tills det låser upp sig själv: %d"
 
@@ -23910,10 +23597,6 @@ msgid "PDF Output"
 msgstr "PDF-utdata"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Hanteringssätt för PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Rad för frågor"
 
@@ -23950,10 +23633,6 @@ msgid "Greeting"
 msgstr "Hälsning"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Hälsning och underskrift i brevet"
-
-#: 
 msgid "Letterhead"
 msgstr "Brevhuvud"
 
@@ -23976,10 +23655,6 @@ msgstr "Ange det brevhuvud som PDF-breven skriver ut"
 #: 
 msgid "Using the church name and address"
 msgstr "Använder församlingens namn och adress"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Använder sökvägen till brevhuvudet som angetts i systeminställningarna"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28356,10 +28031,6 @@ msgstr "Ställ in din församling"
 #: 
 msgid "Setup Dashboard"
 msgstr "Installationspanel"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Installationspanelens dagar"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

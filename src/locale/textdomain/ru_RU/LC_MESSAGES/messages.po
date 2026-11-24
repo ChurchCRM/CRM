@@ -1633,10 +1633,6 @@ msgid "Permission"
 msgstr "Разрешение"
 
 #: 
-msgid "System Settings"
-msgstr "Системные настройки"
-
-#: 
 msgid "User Editor"
 msgstr "Редактор Пользователь"
 
@@ -2142,24 +2138,12 @@ msgid "Localization"
 msgstr "Локализация"
 
 #: 
-msgid "Setting saved"
-msgstr "Настройки сохранены"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Изменить настройки JSON"
-
-#: 
 msgid "False"
 msgstr "Ложный"
 
 #: 
 msgid "True"
 msgstr "Правдивый"
-
-#: 
-msgid "Edit Settings"
-msgstr "Изменить настройки"
 
 #: 
 msgid "Functions"
@@ -2276,33 +2260,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Это номера ролей семьи, назначенные главой домохозяйства."
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Это номера ролей в семье, обозначенные как супруг."
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Номера семейных ролей, обозначенные как ребенок"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Минимальная длина, на которую пользователь может установить свой пароль"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Список запрещенных (слишком очевидных) паролей, разделенных запятыми."
-
-#: 
 msgid "Default City"
 msgstr "Город по умолчанию"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Осласть по умолчанию - должно быть двухбуквенное сокращение!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2325,68 +2284,12 @@ msgid "First month of the fiscal year"
 msgstr "Первый месяц финансового года"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Установите true, чтобы запретить ввод даты вступления в друзья в редакторе персон. Установите false, чтобы разрешить."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Установите true, чтобы отключить управление подписками на рассылку в редакторе семей."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Установите true, чтобы запретить ввод даты свадьбы в редакторе семей. Установите false, чтобы разрешить."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Количество чеков для отчета о депозите"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Единица измерения расстояния, мили или км."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Разрешить невычитаемые платежи"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Вербаж к верхней строке налоговой отчетности. Даты будут добавлены в конец этой строки."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Вербаж для итогов налоговой отчетности."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Лицо, подписывающее налоговый отчет"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Вербаж для отчета с напоминанием о залоге"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Подписчик напоминания о залоге"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о залоге"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о платежах"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Вербаж  для подтверждения информации базы данных и отчета об исправлениях"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Подписчик отчета о подтверждении и исправлении информации в базе данных"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Вербаж для отчета каталога"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3842,10 +3745,6 @@ msgstr "Архив резервной копии не содержит базу 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Приводить вводимые пользователем почтовые индексы к верхнему регистру при сохранении."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Используется для завершения письма перед подписью"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3950,10 +3849,6 @@ msgid "Failed"
 msgstr "Ошибка"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Номер расчетного счета церкви"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Семья отмечена как неактивная"
 
@@ -3964,10 +3859,6 @@ msgstr "Семья отмечена как активная"
 #: 
 msgid "families"
 msgstr "семьи"
-
-#: 
-msgid "Financial Settings"
-msgstr "Финансовые настройки"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4008,10 +3899,6 @@ msgstr "Свойство успешно снято."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Не удалось снять свойство."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Текст перед именем в письмах/отчетах"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4254,10 +4141,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "запись(и) успешно добавлена в выбранную группу."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Для определения даты в выборе даты, по умолчанию: гггг-мм-дд, например, на русском: дд.мм.гггг."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Для определения формата даты, по умолчанию: Y-m-d, например: d.m.Y."
 
@@ -4344,10 +4227,6 @@ msgstr "З-СЗ"
 #: 
 msgid "WSW"
 msgstr "З-ЮЗ"
-
-#: 
-msgid "Search Family"
-msgstr "Поиск семьи"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4446,10 +4325,6 @@ msgid "Change Settings"
 msgstr "Изменить настройки"
 
 #: 
-msgid "Unknown Type"
-msgstr "Неизвестный тип"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID для корзины должен быть числом"
 
@@ -4468,14 +4343,6 @@ msgstr "Поиск людей"
 #: 
 msgid "Maximum number of People"
 msgstr "Максимальное количество людей"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Поле духовника должно быть типа 'люди из группы'"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Поле последней исповеди должно быть типа 'дата'"
 
 #: 
 msgid "People Reports"
@@ -4725,18 +4592,6 @@ msgid "Event not found"
 msgstr "Событие не найдено"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Продолжительность времени ожидания сеанса в секундах\n"
-"Установите значение на ноль, чтобы убрать интервал ожидания сеанса."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
-"Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
 msgid "Verify People"
 msgstr "Проверить людей"
 
@@ -4812,10 +4667,6 @@ msgstr "Снятые события"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Фамилия, Имя Отчество"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Отправить эл.письмо, уведомляющее пользователей о том, что их учетная запись была удалена"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7797,10 +7648,6 @@ msgid "selected family has no coordinates"
 msgstr "У выбранной семьи нет координат"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Требовать от всех пользователей регистрации в двухфакторной аутентификации"
-
-#: 
 msgid "Active Groups"
 msgstr "Активные группы"
 
@@ -8281,10 +8128,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Выберите, как заполнить базу данных. Позже можно использовать другой метод."
 
 #: 
-msgid "Church Info"
-msgstr "Информация о церкви"
-
-#: 
 msgid "Clear all"
 msgstr "Очистить всё"
 
@@ -8315,14 +8158,6 @@ msgstr "Платформа управления общиной"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Выполните их в любом порядке, чтобы подготовить ChurchCRM для вашего прихода."
-
-#: 
-msgid "Confession"
-msgstr "Исповедь"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Настроить глобальные параметры системы"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8371,10 +8206,6 @@ msgstr "Текущий человек"
 #: 
 msgid "Database Reset"
 msgstr "Сброс базы данных"
-
-#: 
-msgid "Default / Notes"
-msgstr "По умолчанию / Заметки"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9995,10 +9826,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Разрешить обновление системы до версий, помеченных как 'pre release' на GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Разрешить неаутентифицированный доступ к событиям календаря через общедоступные URL в форматах HTML, ICS и JSON. Требуется для совместного использования календарей с внешними приложениями."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Разрешить посетителям создавать собственную запись семьи через страницу самостоятельной регистрации"
 
@@ -10161,24 +9988,12 @@ msgid "Enable Email"
 msgstr "Включить email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Включить меню событий"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Включить внешний API календаря"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Включить отправку email из ChurchCRM. Необходимо для сброса пароля, уведомлений и ссылок по email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Включить, если ваш SMTP-сервер требует имя пользователя и пароль"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Включить или отключить модуль воскресной школы и боковое меню."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10276,10 +10091,6 @@ msgstr "Скрыть широту/долготу"
 #: 
 msgid "How it works"
 msgstr "Как это работает"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Сколько чеков печатать на страницу квитанции депозита"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10439,10 +10250,6 @@ msgid "Privacy Note"
 msgstr "Примечание о конфиденциальности"
 
 #: 
-msgid "Quick Settings"
-msgstr "Быстрые настройки"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP-аутентификация"
 
@@ -10469,10 +10276,6 @@ msgstr "Настройка"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Показывать разбивку номиналов банкнот в отчёте о квитанции депозита"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Показывать или скрывать меню «Мероприятия» в главной навигации."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10886,10 +10689,6 @@ msgstr "Если вы заметили искажённые символы, HTML
 #: 
 msgid "Indigo"
 msgstr "Индиго"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Недопустимое значение JSON — настройка не была сохранена. Пожалуйста, исправьте и попробуйте снова."
 
 #: 
 msgid "Language and regional settings"
@@ -12668,10 +12467,6 @@ msgstr "Весь день"
 #: 
 msgid "All Roles"
 msgstr "Все роли"
-
-#: 
-msgid "All System Settings"
-msgstr "Все системные настройки"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15148,10 +14943,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Разделённый пробелами список источников, которым разрешено встраивать публичную страницу внешнего календаря в <iframe> (CSP frame-ancestors). Значение по умолчанию \"*\" разрешает любой источник. Для повышения безопасности ограничьте конкретными источниками, например \"https://mysite.org https://embed.example.com\"."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Разделённые пробелами источники, которым разрешено встраивать публичную страницу календаря в <iframe> (CSP frame-ancestors). Значение по умолчанию \"*\" разрешает любой сайт. Для повышения безопасности ограничьте, например \"https://mysite.org\"."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Группа воскресной школы не может быть изменена, только в этих двух случаях"
 
@@ -15682,10 +15473,6 @@ msgstr "Успешно сохранено"
 #: 
 msgid "Select a fund"
 msgstr "Выберите фонд"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Отправить тестовое поздравление с днём рождения себе"
 
 #: 
 msgid "Sending to"
@@ -16708,10 +16495,6 @@ msgid "Not a valid date of death"
 msgstr "Недопустимая дата смерти"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Количество дней, которое есть у пользователей для подключения 2FA после того, как она стала обязательной. Установите 0, чтобы требовать её немедленно. Сокращение уже действующего льготного периода может немедленно заблокировать доступ пользователям."
-
-#: 
 msgid "Offline"
 msgstr "Не в сети"
 
@@ -17036,14 +16819,6 @@ msgid "Download CSV"
 msgstr "Загрузить CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Включить или отключить модуль Финансы и меню боковой панели."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Включить или отключить модуль сбора средств."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Ошибка при удалении логотипа Церкви"
 
@@ -17240,46 +17015,6 @@ msgid "Feature Toggles"
 msgstr "Переключатели функций"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Переключатели функций управляют тем, какие модули и функции доступны в ChurchCRM. Изменения вступают в силу немедленно."
-
-#: 
-msgid "Finance Features"
-msgstr "Финансовые функции"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Включить адреса в быстрый глобальный поиск"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Включить события календаря в быстрый глобальный поиск"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Включить пользовательские свойства семей в быстрый глобальный поиск"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Включить депозиты в быстрый глобальный поиск"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Включить семьи в быстрый глобальный поиск"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Включить министерства в быстрый глобальный поиск"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Включить платежи в быстрый глобальный поиск"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Включить людей в быстрый глобальный поиск"
-
-#: 
 msgid "Invalid setting"
 msgstr "Недопустимое значение"
 
@@ -17288,16 +17023,8 @@ msgid "Lost Password Link"
 msgstr "Ссылка для восстановления пароля"
 
 #: 
-msgid "Manage All Features"
-msgstr "Управлять всеми функциями"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Главный переключатель для отправки электронной почты. ТРЕБУЕТСЯ для восстановления пароля и уведомлений"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Платежи, не подлежащие вычету"
 
 #: 
 msgid "Primary Modules"
@@ -17308,20 +17035,12 @@ msgid "Public Calendar API"
 msgstr "Публичный API календаря"
 
 #: 
-msgid "Saved"
-msgstr "Сохранено"
-
-#: 
 msgid "Search Families"
 msgstr "Поиск семей"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Поиск пользовательских свойств семей"
-
-#: 
-msgid "Search Settings"
-msgstr "Параметры поиска"
 
 #: 
 msgid "Self-Registration"
@@ -17538,14 +17257,6 @@ msgstr "Получатели уведомлений"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Кого уведомлять при добавлении новой семьи или человека"
-
-#: 
-msgid "Person initials style"
-msgstr "Стиль инициалов человека"
-
-#: 
-msgid "Person name display style"
-msgstr "Стиль отображения имени человека"
 
 #: 
 msgid "Spouse Role"
@@ -23580,30 +23291,6 @@ msgid "Download PDF"
 msgstr "Скачать PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Период блокировки в минутах\n"
-"Заблокированная учётная запись разблокируется автоматически через это количество минут. Неудачные попытки входа с одного IP-адреса учитываются за тот же период."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Максимальное количество неудачных попыток входа с одного IP-адреса\n"
-"Неудачные попытки входа и запросы на сброс пароля с одного IP-адреса учитываются в этом лимите в течение периода блокировки. После достижения лимита вход с этого адреса отклоняется до окончания периода.\n"
-"Установите ноль, чтобы отключить эту функцию, например, когда все получают доступ к ChurchCRM через один прокси-адрес."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальное количество неудачных попыток входа до блокировки учётной записи пользователя.\n"
-"Заблокированная учётная запись разблокируется автоматически после периода блокировки или раньше, если администратор сбрасывает неудачные попытки.\n"
-"Эта функция помогает защитить от автоматизированных атак подбора пароля.\n"
-"Установите ноль, чтобы отключить эту функцию."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Минут до автоматической разблокировки: %d"
 
@@ -23932,10 +23619,6 @@ msgid "PDF Output"
 msgstr "Вывод PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Режим обработки PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Строка вопросов"
 
@@ -23972,10 +23655,6 @@ msgid "Greeting"
 msgstr "Приветствие"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Приветствие и подпись письма"
-
-#: 
 msgid "Letterhead"
 msgstr "Бланк"
 
@@ -23998,10 +23677,6 @@ msgstr "Задайте бланк, который печатают письма 
 #: 
 msgid "Using the church name and address"
 msgstr "Используются название и адрес церкви"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Используется путь к бланку из системных параметров"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28392,10 +28067,6 @@ msgstr "Настройте свою церковь"
 #: 
 msgid "Setup Dashboard"
 msgstr "Панель настройки"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Дни панели настройки"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

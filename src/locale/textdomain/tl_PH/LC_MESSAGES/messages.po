@@ -1578,10 +1578,6 @@ msgid "Permission"
 msgstr "Pahintulot"
 
 #: 
-msgid "System Settings"
-msgstr "Mga Setting ng Sistema"
-
-#: 
 msgid "User Editor"
 msgstr "Editor ng User"
 
@@ -2063,24 +2059,12 @@ msgid "Localization"
 msgstr "Lokalisasyon"
 
 #: 
-msgid "Setting saved"
-msgstr "Na-save ang setting"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "I-edit ang Mga Setting ng JSON"
-
-#: 
 msgid "False"
 msgstr "Mali"
 
 #: 
 msgid "True"
 msgstr "Totoo"
-
-#: 
-msgid "Edit Settings"
-msgstr "I-edit ang mga Setting"
 
 #: 
 msgid "Functions"
@@ -2195,32 +2179,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Isama lamang ang mga klasipikasyong ito sa direktoryo, pinaghiwalay ng kuwit"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Ito ang mga numero ng papel ng pamilya na itinalaga bilang pinuno ng sambahayan"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Ito ang mga numero ng papel ng pamilya na itinalaga bilang asawa"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Ito ang mga numero ng papel ng pamilya na itinalaga bilang bata"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Pinakamaliit na haba na maaaring itakda ng isang user para sa kanilang password"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Isang listahang pinaghiwalay ng kuwit ng mga hindi pinapayagang (masyadong halata) password."
-
-#: 
 msgid "Default City"
 msgstr "Default na Lungsod"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Default na Estado - Dapat 2-letrang abbreviation!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2243,68 +2203,12 @@ msgid "First month of the fiscal year"
 msgstr "Unang buwan ng taong piskal"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Itakda ang totoo para huwag paganahin ang pagpasok ng Petsa ng Pagkakaibigan sa Editor ng Tao. Itakda ang mali para paganahin ang pagpasok ng Petsa ng Pagkakaibigan sa Editor ng Tao."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Itakda ang totoo para huwag paganahin ang pamamahala ng mga subscription sa newsletter sa Editor ng Pamilya."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Itakda ang totoo para huwag paganahin ang pagpasok ng Petsa ng Kasal sa Editor ng Pamilya. Itakda ang mali para paganahin ang pagpasok ng Petsa ng Kasal sa Editor ng Pamilya."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Bilang ng mga tseke para sa Ulat ng Deposit Slip"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Yunit na ginagamit upang sukatin ang distansya, milya o km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Paganahin ang mga pagbabayad na hindi mababawas"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Teksto para sa tuktok na linya ng ulat sa buwis. Ang mga petsa ay idadagdag sa dulo ng linyang ito."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Teksto para sa ilalim na linya ng ulat sa buwis."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Pumirma sa Ulat sa Buwis"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Teksto para sa ulat ng paalala sa pangako"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Pumirma sa Paalala ng Pangako"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Teksto para sa ulat ng paalala sa pangako - Walang rekord ng pangako"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Teksto para sa ulat ng paalala sa pangako - Walang rekord ng mga pagbabayad"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Teksto para sa ulat ng kumpirmasyon at pagwawasto ng impormasyon ng database"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Pumirma sa ulat ng kumpirmasyon at pagwawasto ng impormasyon ng database"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Teksto para sa ulat ng direktoryo"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3759,10 +3663,6 @@ msgstr "Ang backup archive ay hindi naglalaman ng database"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Gawing UPPERCASE ang mga zip/postcode na ipinasok ng user kapag ina-save sa database."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Ginagamit upang tapusin ang isang sulat bago ang Pumirma"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3867,10 +3767,6 @@ msgid "Failed"
 msgstr "Nabigo"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Numero ng Checking Account ng Simbahan"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Minarkahan ang Pamilya bilang Hindi Aktibo"
 
@@ -3881,10 +3777,6 @@ msgstr "Minarkahan ang Pamilya bilang Aktibo"
 #: 
 msgid "families"
 msgstr "mga pamilya"
-
-#: 
-msgid "Financial Settings"
-msgstr "Mga Setting ng Pananalapi"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3925,10 +3817,6 @@ msgstr "Matagumpay na naalis ang katangian."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Hindi maalis ang katangian."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Teksto bago ang pangalan sa mga email/ulat"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4171,10 +4059,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "rekord(s) ay matagumpay na naidagdag sa napiling Grupo."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Para sa pagtukoy ng petsa sa Date-Picker, bilang default: yyyy-mm-dd, Sa Pranses: dd/mm/yyyy halimbawa."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Para sa pagtukoy ng petsa sa Date-Picker, bilang default: Y-m-d, Sa Pranses: d/m/Y halimbawa."
 
@@ -4261,10 +4145,6 @@ msgstr "KHK"
 #: 
 msgid "WSW"
 msgstr "KTK"
-
-#: 
-msgid "Search Family"
-msgstr "Maghanap ng Pamilya"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4363,10 +4243,6 @@ msgid "Change Settings"
 msgstr "Baguhin ang mga Setting"
 
 #: 
-msgid "Unknown Type"
-msgstr "Hindi Kilalang Uri"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Ang PersonID para sa Cart ay dapat numeric"
 
@@ -4385,14 +4261,6 @@ msgstr "Maghanap ng mga Tao"
 #: 
 msgid "Maximum number of People"
 msgstr "Pinakamataas na bilang ng mga Tao"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Larangan kung saan nakalista ang Ama ng Kumpisal, dapat isang tao ng uri ng grupo"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Larangan kung saan nakaimbak ang huling Kumpisal, dapat uri ng petsa"
 
 #: 
 msgid "People Reports"
@@ -4642,18 +4510,6 @@ msgid "Event not found"
 msgstr "Hindi nahanap ang kaganapan"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Haba ng session timeout sa segundo\n"
-"Itakda sa zero para huwag paganahin ang mga session timeout."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Pinakamaliit na halaga na dapat magkaiba ang bagong password sa luma (# ng mga karakter na binago)\n"
-"Itakda sa zero para huwag paganahin ang tampok na ito"
-
-#: 
 msgid "Verify People"
 msgstr "I-verify ang mga Tao"
 
@@ -4725,10 +4581,6 @@ msgstr "Mga Kaganapang Hindi Naka-pin"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Apelyido, Pangalan GitnangPangalan"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Magpadala ng email na nagaabiso sa mga user kapag nabura ang kanilang account"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7697,10 +7549,6 @@ msgid "selected family has no coordinates"
 msgstr "ang napiling pamilya ay walang mga coordinate"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Hilingin sa lahat ng user na mag-enroll sa two-factor authentication"
-
-#: 
 msgid "Active Groups"
 msgstr "Mga Aktibong Grupo"
 
@@ -8179,10 +8027,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Piliin kung paano mo gustong punan ang iyong database. Maaari kang palaging gumamit ng ibang paraan sa ibang pagkakataon."
 
 #: 
-msgid "Church Info"
-msgstr "Impormasyon ng Simbahan"
-
-#: 
 msgid "Clear all"
 msgstr "Linisin lahat"
 
@@ -8213,14 +8057,6 @@ msgstr "Platform ng Pamamahala ng Komunidad"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Kumpletuhin ang mga ito sa anumang pagkakasunod para ihanda ang ChurchCRM para sa iyong kongregasyon."
-
-#: 
-msgid "Confession"
-msgstr "Kumpisal"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "I-configure ang mga pandaigdigang setting at kagustuhan ng sistema"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8269,10 +8105,6 @@ msgstr "Kasalukuyang tao"
 #: 
 msgid "Database Reset"
 msgstr "Pag-reset ng Database"
-
-#: 
-msgid "Default / Notes"
-msgstr "Default / Mga Tala"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9893,10 +9725,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Payagan ang mga upgrade ng sistema sa mga release na minarkahan bilang 'pre release' sa GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Payagan ang hindi napatunayan na access sa mga kaganapan ng kalendaryo sa pamamagitan ng mga pampublikong HTML, ICS, at JSON na URL. Kinakailangan para sa pagbabahagi ng mga kalendaryo sa mga external na app."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling rekord ng pamilya sa pamamagitan ng pahina ng sariling pagpaparehistro"
 
@@ -10059,24 +9887,12 @@ msgid "Enable Email"
 msgstr "Paganahin ang Email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Paganahin ang Menu ng mga Kaganapan"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Paganahin ang External Calendar API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Paganahin ang pagpapadala ng email mula sa ChurchCRM. Kinakailangan para sa pag-reset ng password, mga abiso, at mga link ng email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Paganahin kung ang iyong SMTP server ay nangangailangan ng username at password"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Paganahin o i-disable ang module ng Paaralan ng Linggo at sidebar menu."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10174,10 +9990,6 @@ msgstr "Itago ang Latitude/Longitude"
 #: 
 msgid "How it works"
 msgstr "Paano ito gumagana"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Ilang tseke ang i-print bawat pahina ng deposit slip"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10337,10 +10149,6 @@ msgid "Privacy Note"
 msgstr "Tala sa Privacy"
 
 #: 
-msgid "Quick Settings"
-msgstr "Mga Mabilis na Setting"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Authentication ng SMTP"
 
@@ -10367,10 +10175,6 @@ msgstr "Setup"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Ipakita ang breakdown ng mga denominasyon ng bill sa ulat ng deposit slip"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Ipakita o itago ang menu ng mga Kaganapan sa pangunahing navigation."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10784,10 +10588,6 @@ msgstr "Kung mapansin mo ang mga nasisira na karakter, HTML entities na lumalaba
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Di-wastong JSON value — hindi na-save ang setting. Mangyaring itama ito at subukang muli."
 
 #: 
 msgid "Language and regional settings"
@@ -12564,10 +12364,6 @@ msgstr "Buong Araw"
 #: 
 msgid "All Roles"
 msgstr "Lahat ng Papel"
-
-#: 
-msgid "All System Settings"
-msgstr "Lahat ng Mga Setting ng Sistema"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15038,10 +14834,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Listahan ng mga pinagmulan na pinahihintulutang mag-embed ng pampublikong external na pahina ng kalendaryo sa isang iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Mga pinagmulan na pinahihintulutang mag-embed ng pampublikong pahina ng kalendaryo sa isang iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Hindi mababago ang grupo ng Sunday School, sa dalawang kasong ito lamang"
 
@@ -15572,10 +15364,6 @@ msgstr "Matagumpay na na-save"
 #: 
 msgid "Select a fund"
 msgstr "Pumili ng pondo"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Magpadala ng Test na Email sa Kaarawan sa Aking Sarili"
 
 #: 
 msgid "Sending to"
@@ -16594,10 +16382,6 @@ msgid "Not a valid date of death"
 msgstr "Hindi wastong petsa ng kamatayan"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa 2FA kapag ito ay ipinag-utos. Itakda sa 0 para ipatupad kaagad. Ang pagpapaikli ng aktibong grace period ay maaaring agad na maglock-out sa mga user."
-
-#: 
 msgid "Offline"
 msgstr "Offline"
 
@@ -16922,14 +16706,6 @@ msgid "Download CSV"
 msgstr "I-download ang CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "I-enable o i-disable ang Finance module at sidebar menu."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "I-enable o i-disable ang Fundraiser module."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Nabigo ang pag-alisin ng logo ng simbahan"
 
@@ -17126,46 +16902,6 @@ msgid "Feature Toggles"
 msgstr "Mga Toggle ng Feature"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Ang mga toggle ng feature ay kumokontrol kung aling mga modyul at feature ang available sa ChurchCRM. Ang mga pagbabago ay nakakaapekto kaagad."
-
-#: 
-msgid "Finance Features"
-msgstr "Mga Feature ng Finance"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Isama ang mga address sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Isama ang mga kaganapan ng kalendaryo sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Isama ang mga custom na property ng pamilya sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Isama ang mga deposito sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Isama ang mga pamilya sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Isama ang mga serbisyo sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Isama ang mga pagbabayad sa mabilis na pandaigdigang paghahanap"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Isama ang mga tao sa mabilis na pandaigdigang paghahanap"
-
-#: 
 msgid "Invalid setting"
 msgstr "Hindi valid na setting"
 
@@ -17174,16 +16910,8 @@ msgid "Lost Password Link"
 msgstr "Link ng Pagtalakay ng Lihim na Numero"
 
 #: 
-msgid "Manage All Features"
-msgstr "Pamahalaan ang Lahat ng Mga Feature"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Master toggle para sa pagpadala ng email. KINAKAILANGAN para sa pagtalakay ng lihim na numero at mga notification"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Mga Pagbabayad na Hindi Maaaring Ibawas"
 
 #: 
 msgid "Primary Modules"
@@ -17194,20 +16922,12 @@ msgid "Public Calendar API"
 msgstr "Pampublikong API ng Kalendaryo"
 
 #: 
-msgid "Saved"
-msgstr "Nakatipid"
-
-#: 
 msgid "Search Families"
 msgstr "Maghanap ng Mga Pamilya"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Maghanap ng Custom Properties ng Pamilya"
-
-#: 
-msgid "Search Settings"
-msgstr "Mga Setting ng Paghahanap"
 
 #: 
 msgid "Self-Registration"
@@ -17424,14 +17144,6 @@ msgstr "Mga Tatanggap ng Abiso"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Mga taong aabisuhan kapag may idinagdag na bagong pamilya o tao"
-
-#: 
-msgid "Person initials style"
-msgstr "Istilo ng mga inisyal ng tao"
-
-#: 
-msgid "Person name display style"
-msgstr "Istilo ng pagpapakita ng pangalan ng tao"
 
 #: 
 msgid "Spouse Role"
@@ -23440,30 +23152,6 @@ msgid "Download PDF"
 msgstr "I-download ang PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Panahon ng lockout sa minuto\n"
-"Ang naka-lock na account ay nag-a-unlock nang kusa pagkalipas ng ganitong bilang ng minuto. Binibilang sa parehong panahon ang mga nabigong login mula sa isang IP address."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Pinakamaraming nabigong login mula sa isang IP address\n"
-"Binibilang sa limitasyong ito, sa loob ng panahon ng lockout, ang mga nabigong login at kahilingan ng pag-reset ng password mula sa isang IP address. Kapag naabot na ito, tinatanggihan ang pag-sign in mula sa address na iyon hanggang matapos ang panahon.\n"
-"Itakda sa zero para i-disable ang feature na ito, halimbawa kapag ang lahat ay umaabot sa ChurchCRM sa pamamagitan ng isang proxy address."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Pinakamaraming nabigong login na papayagan bago ma-lock ang account ng user.\n"
-"Ang naka-lock na account ay nag-a-unlock nang kusa pagkatapos ng panahon ng lockout, o mas maaga kapag ni-reset ng administrator ang mga nabigong login nito.\n"
-"Tumutulong ang feature na ito laban sa awtomatikong paghula ng password.\n"
-"Itakda sa zero para i-disable ang feature na ito."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Mga minuto bago ito mag-unlock nang kusa: %d"
 
@@ -23792,10 +23480,6 @@ msgid "PDF Output"
 msgstr "Output ng PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Mode ng paghawak ng PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Linya ng mga Tanong"
 
@@ -23832,10 +23516,6 @@ msgid "Greeting"
 msgstr "Pagbati"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Pagbati at lagda ng liham"
-
-#: 
 msgid "Letterhead"
 msgstr "Letterhead"
 
@@ -23858,10 +23538,6 @@ msgstr "Itakda ang letterhead na inililimbag ng mga liham na PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Ginagamit ang pangalan at address ng simbahan"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Ginagamit ang landas ng letterhead na nakatakda sa System Settings"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28238,10 +27914,6 @@ msgstr "I-setup ang Iyong Simbahan"
 #: 
 msgid "Setup Dashboard"
 msgstr "Dashboard ng Setup"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Mga Araw ng Dashboard ng Setup"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

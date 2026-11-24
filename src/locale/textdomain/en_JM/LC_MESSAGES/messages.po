@@ -42,16 +42,8 @@ msgid "Localization"
 msgstr "Localisation"
 
 #: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Default Parish - Must be 2-letter abbreviation!"
-
-#: 
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Number of cheques for Deposit Slip Report"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -67,20 +59,12 @@ msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postal codes UPPERCASE when saving to the database."
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Church Chequing Account Number"
-
-#: 
 msgid "Default Zip"
 msgstr "Default Postal Code"
 
 #: 
 msgid "Checks"
 msgstr "Cheques"
-
-#: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Require all users to enrol in two-factor authentication"
 
 #: 
 msgid "ZIP code is required."
@@ -151,10 +135,6 @@ msgstr "For security:\n"
 #: 
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "How many cheques to print per deposit slip page"
 
 #. plugin:mailchimp:summary
 #: 
@@ -266,10 +246,6 @@ msgid "Two-factor authentication is required. You have %d day to enroll."
 msgid_plural "Two-factor authentication is required. You have %d days to enroll."
 msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
 msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
-
-#: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 
 #: 
 msgid "Enable or disable features for your organization"

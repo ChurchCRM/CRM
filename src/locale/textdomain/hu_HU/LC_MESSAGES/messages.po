@@ -1610,10 +1610,6 @@ msgid "Permission"
 msgstr "Engedély"
 
 #: 
-msgid "System Settings"
-msgstr "Rendszerbeállítások"
-
-#: 
 msgid "User Editor"
 msgstr "Felhasználó szerkesztő"
 
@@ -2119,24 +2115,12 @@ msgid "Localization"
 msgstr "Lokalizáció"
 
 #: 
-msgid "Setting saved"
-msgstr "Beállítás mentve"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON beállítások szerkesztése"
-
-#: 
 msgid "False"
 msgstr "Hamis"
 
 #: 
 msgid "True"
 msgstr "Igaz"
-
-#: 
-msgid "Edit Settings"
-msgstr "Beállítások szerkesztése"
 
 #: 
 msgid "Functions"
@@ -2251,32 +2235,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Csak ezeket a besorolásokat tartalmazza a névjegyzék, vesszővel elválasztva"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Ezek a családfőként megjelölt családi szerepkör számok"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Ezek a házastársként megjelölt családi szerepkör számok"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Ezek a gyermekként megjelölt családi szerepkör számok"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Minimális jelszóhossz a felhasználók számára"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "A nem engedélyezett (túl egyértelmű) jelszavak vesszővel elválasztott listája."
-
-#: 
 msgid "Default City"
 msgstr "Alapértelmezett város"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Alapértelmezett állam - 2 betűs rövidítésnek kell lennie!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2299,68 +2259,12 @@ msgid "First month of the fiscal year"
 msgstr "A pénzügyi év első hónapja"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Állítsa Igazra a Barát Dátum megadásának letiltásához a Személyszerkesztőben. Állítsa Hamisra az engedélyezéséhez."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Állítsa Igazra a hírlevél-feliratkozások kezelésének letiltásához a Családszerkesztőben."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Állítsa Igazra a Házasságkötés Dátuma megadásának letiltásához a Családszerkesztőben. Állítsa Hamisra az engedélyezéséhez."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Csekkek száma a Befizetési Bizonylat Jelentéshez"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "A távolság mérésére használt mértékegység, mérföld vagy km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Nem levonható kifizetések engedélyezése"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Szöveg az adójelentés első sorához. A dátumok a sor végére kerülnek."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Szöveg az adójelentés alsó sorához."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Adójelentés aláírója"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Szöveg a felajánlás emlékeztető jelentéshez"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Felajánlás emlékeztető aláírója"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Szöveg a felajánlás emlékeztető jelentéshez - Nincs rekord a felajánlásról"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Szöveg a felajánlás emlékeztető jelentéshez - Nincs rekord a kifizetésekről"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Szöveg az adatbázis információk megerősítéséhez és javításához"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Adatbázis információk megerősítése és javítása jelentés aláírója"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Szöveg a névjegyzék jelentéshez"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3815,10 +3719,6 @@ msgstr "A biztonsági mentési archívum nem tartalmaz adatbázist"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "A felhasználó által megadott irányítószámokat alakítsa NAGYBETŰSSÉ az adatbázisba mentéskor."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "A levél végén, az aláíró előtt használatos"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3923,10 +3823,6 @@ msgid "Failed"
 msgstr "Sikertelen"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Egyházi folyószámla száma"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "A család inaktívnak jelölve"
 
@@ -3937,10 +3833,6 @@ msgstr "A család aktívnak jelölve"
 #: 
 msgid "families"
 msgstr "családok"
-
-#: 
-msgid "Financial Settings"
-msgstr "Pénzügyi beállítások"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3981,10 +3873,6 @@ msgstr "A tulajdonság hozzárendelése sikeresen törölve."
 #: 
 msgid "The property could not be unassigned."
 msgstr "A tulajdonság hozzárendelését nem sikerült törölni."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Név előtti szöveg e-mailekben/jelentésekben"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4227,10 +4115,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "rekord(ok) sikeresen hozzáadva a kiválasztott csoporthoz."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "A dátumválasztó formátumának meghatározásához, alapértelmezett: éééé-hh-nn, például magyarul: éééé.hh.nn."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "A dátumválasztó formátumának meghatározásához, alapértelmezett: Y-m-d, például magyarul: Y.m.d."
 
@@ -4317,10 +4201,6 @@ msgstr "NYNYÉ"
 #: 
 msgid "WSW"
 msgstr "NYNYD"
-
-#: 
-msgid "Search Family"
-msgstr "Család keresése"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4419,10 +4299,6 @@ msgid "Change Settings"
 msgstr "Beállítások módosítása"
 
 #: 
-msgid "Unknown Type"
-msgstr "Ismeretlen típus"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "A kosár PersonID-jének numerikusnak kell lennie"
 
@@ -4441,14 +4317,6 @@ msgstr "Személyek keresése"
 #: 
 msgid "Maximum number of People"
 msgstr "Személyek maximális száma"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Az a mező, ahol a Père Confessor fel van sorolva, egy csoport típusú embernek kell lennie"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Az a mező, ahol az utolsó vallomás tárolódik, dátum típusúnak kell lennie"
 
 #: 
 msgid "People Reports"
@@ -4698,18 +4566,6 @@ msgid "Event not found"
 msgstr "Az esemény nem található"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Munkamenet időtúllépésének hossza másodpercben\n"
-"Hallgatólagos értékre állítsa, hogy letiltsa a munkamenet időtúllépéseket."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Az az alapösszeg, amely egy új jelszónak eltérnie kell a régitől (megváltozott karakterek száma)\n"
-"Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót"
-
-#: 
 msgid "Verify People"
 msgstr "Emberek ellenőrzése"
 
@@ -4781,10 +4637,6 @@ msgstr "Nem rögzített események"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Vezetéknév, Keresztnév KözépsőNév"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "E-mail küldése a felhasználóknak, ha fiókjukat törölték"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7753,10 +7605,6 @@ msgid "selected family has no coordinates"
 msgstr "A kiválasztott családnak nincs koordinátája"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktív csoportok"
 
@@ -8235,10 +8083,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Válassza ki, hogyan szeretné feltölteni az adatbázist. Később bármikor használhat más módszert."
 
 #: 
-msgid "Church Info"
-msgstr "Gyülekezeti adatok"
-
-#: 
 msgid "Clear all"
 msgstr "Összes törlése"
 
@@ -8269,14 +8113,6 @@ msgstr "Közösségkezelő platform"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Végezze el ezeket tetszőleges sorrendben a ChurchCRM előkészítéséhez a gyülekezet számára."
-
-#: 
-msgid "Confession"
-msgstr "Gyónás"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Globális rendszerbeállítások és preferenciák konfigurálása"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8325,10 +8161,6 @@ msgstr "Aktuális személy"
 #: 
 msgid "Database Reset"
 msgstr "Adatbázis visszaállítása"
-
-#: 
-msgid "Default / Notes"
-msgstr "Alapértelmezett / Megjegyzések"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9949,10 +9781,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Rendszerfrissítések engedélyezése a GitHub-on 'előzetes kiadásként' megjelölt verziókra"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Hitelesítés nélküli hozzáférés engedélyezése naptári eseményekhez nyilvános HTML-, ICS- és JSON-URL-eken keresztül. Külső alkalmazásokkal való naptármegosztáshoz szükséges."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Látogatók számára engedélyezze saját család nyilvántartásának létrehozását az önregisztrációs oldalon"
 
@@ -10115,24 +9943,12 @@ msgid "Enable Email"
 msgstr "E-mail engedélyezése"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Eseménymenü engedélyezése"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Külső naptár API engedélyezése"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "E-mail küldésének engedélyezése a ChurchCRM-ből. Szükséges a jelszó-visszaállításhoz, értesítésekhez és e-mail hivatkozásokhoz."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Engedélyezze, ha az SMTP-kiszolgáló felhasználónevet és jelszót igényel"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "A Hittanóra modul és az oldalsávban lévő menü engedélyezése vagy letiltása."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10230,10 +10046,6 @@ msgstr "Szélesség/Hosszúság elrejtése"
 #: 
 msgid "How it works"
 msgstr "Hogyan működik"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Hány csekket kell nyomtatni betéti bizonylat oldalanként"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10393,10 +10205,6 @@ msgid "Privacy Note"
 msgstr "Adatvédelmi megjegyzés"
 
 #: 
-msgid "Quick Settings"
-msgstr "Gyorsbeállítások"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP hitelesítés"
 
@@ -10423,10 +10231,6 @@ msgstr "Beállítás"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Bankjegycímlet-bontás megjelenítése a befizetési szelvény jelentésben"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Az Események menü megjelenítése vagy elrejtése a fő navigációban."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10840,10 +10644,6 @@ msgstr "Ha olvashatatlan karaktereket, szövegként megjelenő HTML-entitásokat
 #: 
 msgid "Indigo"
 msgstr "Indigókék"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Érvénytelen JSON-érték – a beállítás nem lett mentve. Kérjük, javítsa ki, és próbálja újra."
 
 #: 
 msgid "Language and regional settings"
@@ -12620,10 +12420,6 @@ msgstr "Egész nap"
 #: 
 msgid "All Roles"
 msgstr "Összes szerep"
-
-#: 
-msgid "All System Settings"
-msgstr "Az Összes Rendszerbeállítás"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15094,10 +14890,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Szóközzel elválasztott lista, amelyek beágyazhatják a nyilvános naptároldalt egy iframe-be. A csillag bármely forrást engedélyezi."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Szóközzel elválasztott forrásokból beágyazható a nyilvános naptároldal egy iframe-be. A csillag bármely oldalt engedélyezi."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "A vasárnapi iskolai csoport csak ebben a két esetben módosítható"
 
@@ -15628,10 +15420,6 @@ msgstr "Sikeresen mentve"
 #: 
 msgid "Select a fund"
 msgstr "Válasszon alapot"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Születésnapi teszt e-mail küldése magamnak"
 
 #: 
 msgid "Sending to"
@@ -16650,10 +16438,6 @@ msgid "Not a valid date of death"
 msgstr "Nem érvényes elhalálozási dátum"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Azoknak a napoknak a száma, amennyi idő a felhasználóknak a kétfaktoros hitelesítés beállítására áll rendelkezésre a kötelezővé tétele után. Állítsa 0-ra az azonnali kikényszerítéshez. Egy aktív türelmi idő lerövidítése azonnal kizárhatja a felhasználókat."
-
-#: 
 msgid "Offline"
 msgstr "Offline"
 
@@ -16978,14 +16762,6 @@ msgid "Download CSV"
 msgstr "CSV letöltése"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "A Pénzügyi modul és az oldalsáv menü engedélyezése vagy letiltása."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Az Adománygyűjtő modul engedélyezése vagy letiltása."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "A templom logójának eltávolítása sikertelen"
 
@@ -17182,46 +16958,6 @@ msgid "Feature Toggles"
 msgstr "Funkciók kapcsolói"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "A funkciókapcsolók szabályozzák, hogy mely modulok és funkciók érhetők el a ChurchCRM-ben. A módosítások azonnal érvénybe lépnek."
-
-#: 
-msgid "Finance Features"
-msgstr "Pénzügyi funkciók"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Címek belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Naptáresemények belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Egyéni családi tulajdonságok belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Betételek belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Családok belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Csoportok belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Kifizetések belefoglalása a gyors globális keresésbe"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Emberek belefoglalása a gyors globális keresésbe"
-
-#: 
 msgid "Invalid setting"
 msgstr "Érvénytelen beállítás"
 
@@ -17230,16 +16966,8 @@ msgid "Lost Password Link"
 msgstr "Elfeledett jelszó link"
 
 #: 
-msgid "Manage All Features"
-msgstr "Az összes funkció kezelése"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "E-mail küldésre vonatkozó fő kapcsoló. SZÜKSÉGES a jelszó-visszaállítások és értesítések számára"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Nem levonható kifizetések"
 
 #: 
 msgid "Primary Modules"
@@ -17250,20 +16978,12 @@ msgid "Public Calendar API"
 msgstr "Nyilvános naptár API"
 
 #: 
-msgid "Saved"
-msgstr "Mentve"
-
-#: 
 msgid "Search Families"
 msgstr "Családok keresése"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Családi egyéni tulajdonságok keresése"
-
-#: 
-msgid "Search Settings"
-msgstr "Keresési beállítások"
 
 #: 
 msgid "Self-Registration"
@@ -17480,14 +17200,6 @@ msgstr "Értesítések címzettjei"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Értesítendő személyek új család vagy személy hozzáadásakor"
-
-#: 
-msgid "Person initials style"
-msgstr "Személy monogramjának stílusa"
-
-#: 
-msgid "Person name display style"
-msgstr "Személy nevének megjelenítési stílusa"
 
 #: 
 msgid "Spouse Role"
@@ -23496,30 +23208,6 @@ msgid "Download PDF"
 msgstr "PDF letöltése"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Zárolási idő percben\n"
-"A zárolt fiók ennyi perc után magától feloldódik. Egy IP-címről érkező sikertelen bejelentkezéseket ugyanezen az időszakon belül számoljuk."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Sikertelen bejelentkezések megengedett száma egy IP-címről\n"
-"Egy IP-címről érkező sikertelen bejelentkezések és jelszó-visszaállítási kérések a zárolási időn belül beleszámítanak ebbe a korlátba. Ha elérik, arról a címről a bejelentkezés az időszak végéig elutasításra kerül.\n"
-"Állítsa nullára a funkció kikapcsolásához, például ha mindenki egy proxycímen keresztül éri el a ChurchCRM-et."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Ennyi sikertelen bejelentkezés után zárolódik a felhasználói fiók.\n"
-"A zárolt fiók a zárolási idő után magától feloldódik, vagy hamarabb, ha egy rendszergazda nullázza a sikertelen bejelentkezéseit.\n"
-"A funkció az automatikus jelszókitaláló támadások ellen véd.\n"
-"Állítsa nullára a funkció kikapcsolásához."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Ennyi perc múlva oldódik fel magától: %d"
 
@@ -23848,10 +23536,6 @@ msgid "PDF Output"
 msgstr "PDF-kimenet"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF-kezelési mód"
-
-#: 
 msgid "Questions Line"
 msgstr "Kérdések sora"
 
@@ -23888,10 +23572,6 @@ msgid "Greeting"
 msgstr "Megszólítás"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Levél megszólítása és aláírása"
-
-#: 
 msgid "Letterhead"
 msgstr "Levélfej"
 
@@ -23914,10 +23594,6 @@ msgstr "A PDF-leveleken megjelenő levélfej beállítása"
 #: 
 msgid "Using the church name and address"
 msgstr "A gyülekezet nevének és címének használata"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "A Rendszerbeállításokban megadott levélfej-útvonal használata"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28294,10 +27970,6 @@ msgstr "Állítsa be egyházát"
 #: 
 msgid "Setup Dashboard"
 msgstr "Beállítási vezérlőpult"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "Beállítási vezérlőpult napjai"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

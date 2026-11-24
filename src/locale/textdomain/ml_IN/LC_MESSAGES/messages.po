@@ -1578,10 +1578,6 @@ msgid "Permission"
 msgstr "അനുമതി"
 
 #: 
-msgid "System Settings"
-msgstr "സിസ്റ്റം ക്രമീകരണങ്ങൾ"
-
-#: 
 msgid "User Editor"
 msgstr "ഉപയോക്തൃ എഡിറ്റർ"
 
@@ -2063,24 +2059,12 @@ msgid "Localization"
 msgstr "പ്രാദേശീകരണം"
 
 #: 
-msgid "Setting saved"
-msgstr "ക്രമീകരണം സംരക്ഷിച്ചു"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON ക്രമീകരണങ്ങൾ എഡിറ്റ് ചെയ്യുക"
-
-#: 
 msgid "False"
 msgstr "തെറ്റ്"
 
 #: 
 msgid "True"
 msgstr "ശരി"
-
-#: 
-msgid "Edit Settings"
-msgstr "ക്രമീകരണങ്ങൾ എഡിറ്റ് ചെയ്യുക"
 
 #: 
 msgid "Functions"
@@ -2195,32 +2179,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "ഡയറക്ടറിയിൽ ഈ വർഗ്ഗീകരണങ്ങൾ മാത്രം ഉൾപ്പെടുത്തുക, കോമ വേർതിരിച്ച്"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "ഇവ കുടുംബ നാഥൻ ആയി നൽകിയ കുടുംബ പങ്ക് നമ്പറുകൾ"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "ഇവ ഇണ ആയി നൽകിയ കുടുംബ പങ്ക് നമ്പറുകൾ"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "ഇവ കുട്ടി ആയി നൽകിയ കുടുംബ പങ്ക് നമ്പറുകൾ"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "ഒരു ഉപയോക്താവ് ക്രമീകരിക്കാവുന്ന ഏറ്റവും കുറഞ്ഞ പാസ്‌വേഡ് നീളം"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "അനുവദനീയമല്ലാത്ത (വളരെ ലളിതമായ) പാസ്‌വേഡുകളുടെ കോമ-വേർതിരിച്ച ലിസ്‌റ്റ്."
-
-#: 
 msgid "Default City"
 msgstr "ഡിഫോൾട്ട് നഗരം"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "ഡിഫോൾട്ട് സംസ്ഥാനം - 2 അക്ഷര ചുരുക്കം ആയിരിക്കണം!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2243,68 +2203,12 @@ msgid "First month of the fiscal year"
 msgstr "ധനകാര്യ വർഷത്തിന്റെ ആദ്യ മാസം"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "വ്യക്തി എഡിറ്ററിൽ സൗഹൃദ തീയതി നൽകൽ പ്രവർത്തനരഹിതമാക്കാൻ ശരി ക്രമീകരിക്കുക. പ്രവർത്തനക്ഷമമാക്കാൻ തെറ്റ്."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "കുടുംബ എഡിറ്ററിൽ ന്യൂസ്‌ലെറ്റർ സബ്‌സ്‌ക്രിപ്ഷൻ മാനേജ്‌മെന്റ് പ്രവർത്തനരഹിതമാക്കാൻ ശരി ക്രമീകരിക്കുക."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "കുടുംബ എഡിറ്ററിൽ വിവാഹ തീയതി നൽകൽ പ്രവർത്തനരഹിതമാക്കാൻ ശരി ക്രമീകരിക്കുക."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "ഡിപ്പോസിറ്റ് സ്ലിപ്പ് റിപ്പോർട്ടിനുള്ള ചെക്കുകളുടെ എണ്ണം"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "ദൂരം അളക്കാൻ ഉപയോഗിക്കുന്ന യൂണിറ്റ്, മൈൽ അല്ലെങ്കിൽ കി.മി."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "കിഴിവ് ലഭിക്കാത്ത പേമെന്റുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "നികുതി റിപ്പോർട്ടിന്റെ മുകൾ വരിക്കുള്ള വാക്കുകൾ. ഈ വരിയുടെ അവസാനം തീയതി ചേർക്കും."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "നികുതി റിപ്പോർട്ടിന്റെ അടിവരിക്കുള്ള വാക്കുകൾ."
-
-#: 
-msgid "Tax Report signer"
-msgstr "നികുതി റിപ്പോർട്ട് ഒപ്പിടുന്നയാൾ"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ റിപ്പോർട്ടിനുള്ള വാക്കുകൾ"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ ഒപ്പിടുന്നയാൾ"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ റിപ്പോർട്ടിനുള്ള വാക്കുകൾ - പ്രതിജ്ഞ ഇല്ല"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ റിപ്പോർട്ടിനുള്ള വാക്കുകൾ - പേമെന്റ് ഇല്ല"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "ഡേറ്റാബേസ് വിവര സ്ഥിരീകരണ-തിരുത്തൽ റിപ്പോർട്ടിനുള്ള വാക്കുകൾ"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "ഡേറ്റാബേസ് വിവര സ്ഥിരീകരണ-തിരുത്തൽ റിപ്പോർട്ട് ഒപ്പിടുന്നയാൾ"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "ഡയറക്ടറി റിപ്പോർട്ടിനുള്ള വാക്കുകൾ"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3759,10 +3663,6 @@ msgstr "ബാക്കപ്പ് ആർക്കൈവ് ഡേറ്റാ�
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "ഡേറ്റാബേസിൽ സംരക്ഷിക്കുമ്പോൾ ഉപയോക്താവ് നൽകിയ സിപ്/പോസ്‌റ്റ്‌കോഡ് വലിയ അക്ഷരമാക്കുക."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "ഒപ്പിടുന്നയാൾക്ക് മുൻപ് ഒരു കത്ത് അവസാനിക്കാൻ ഉപയോഗിക്കുന്നത്"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3867,10 +3767,6 @@ msgid "Failed"
 msgstr "പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "പള്ളി ചെക്കിംഗ് അക്കൗണ്ട് നമ്പർ"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "കുടുംബം നിഷ്‌ക്രിയമായി അടയാളപ്പെടുത്തി"
 
@@ -3881,10 +3777,6 @@ msgstr "കുടുംബം സജീവമായി അടയാളപ്പ�
 #: 
 msgid "families"
 msgstr "കുടുംബങ്ങൾ"
-
-#: 
-msgid "Financial Settings"
-msgstr "സാമ്പത്തിക ക്രമീകരണങ്ങൾ"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3925,10 +3817,6 @@ msgstr "സ്വഭാവം വിജയകരമായി നീക്കി.
 #: 
 msgid "The property could not be unassigned."
 msgstr "സ്വഭാവം നീക്കാൻ കഴിഞ്ഞില്ല."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "ഇമെയിലുകളിൽ/റിപ്പോർട്ടുകളിൽ പേരിന് മുൻപ് ടെക്സ്റ്റ്"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4171,10 +4059,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "റെക്കോർഡ്(കൾ) തിരഞ്ഞെടുത്ത ഗ്രൂപ്പിൽ വിജയകരമായി ചേർത്തു."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "ഡേറ്റ്-പിക്കറിൽ തീയതി നിർവ്വചിക്കാൻ, ഡിഫോൾട്ടായി: yyyy-mm-dd, ഉദാഹരണം ഫ്രഞ്ചിൽ: dd/mm/yyyy."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "ഡേറ്റ്-പിക്കറിൽ തീയതി നിർവ്വചിക്കാൻ, ഡിഫോൾട്ടായി: Y-m-d, ഉദാഹരണം ഫ്രഞ്ചിൽ: d/m/Y."
 
@@ -4261,10 +4145,6 @@ msgstr "പ.വ.പ."
 #: 
 msgid "WSW"
 msgstr "പ.ത.പ."
-
-#: 
-msgid "Search Family"
-msgstr "കുടുംബം തിരയുക"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4363,10 +4243,6 @@ msgid "Change Settings"
 msgstr "ക്രമീകരണങ്ങൾ മാറ്റുക"
 
 #: 
-msgid "Unknown Type"
-msgstr "അജ്ഞാത തരം"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "കാർട്ടിനുള്ള PersonID അക്കത്തിൽ ആയിരിക്കണം"
 
@@ -4385,14 +4261,6 @@ msgstr "ആളുകൾ തിരയുക"
 #: 
 msgid "Maximum number of People"
 msgstr "പരമാവധി ആളുകളുടെ എണ്ണം"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "കുമ്പസ്സാർ അച്ഛൻ ലിസ്‌റ്റ് ചെയ്യപ്പെടുന്ന ഫീൽഡ്, ഗ്രൂപ്പ് തരത്തിലെ ആൾ ആയിരിക്കണം"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "അവസാന കുമ്പസ്സാർ സൂക്ഷിക്കുന്ന ഫീൽഡ്, തീയതി തരം ആയിരിക്കണം"
 
 #: 
 msgid "People Reports"
@@ -4642,18 +4510,6 @@ msgid "Event not found"
 msgstr "ഇവന്റ് കണ്ടെത്തിയില്ല"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "സെഷൻ ടൈംഔട്ട് ദൈർഘ്യം സെക്കൻഡിൽ\n"
-"സെഷൻ ടൈംഔട്ട് പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
-"ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
 msgid "Verify People"
 msgstr "ആളുകൾ സ്ഥിരീകരിക്കുക"
 
@@ -4725,10 +4581,6 @@ msgstr "പിൻ ചെയ്യാത്ത ഇവന്റുകൾ"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "കുടുംബപ്പേര്, പേര് മദ്ധ്യനാമം"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "അക്കൗണ്ട് ഇല്ലാതാക്കിയപ്പോൾ ഉപയോക്താക്കളെ ഇമെയിൽ മുഖേന അറിയിക്കുക"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7697,10 +7549,6 @@ msgid "selected family has no coordinates"
 msgstr "തിരഞ്ഞെടുത്ത കുടുംബത്തിന് കോർഡിനേറ്റ് ഇല്ല"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "എല്ലാ ഉപയോക്താക്കളും ഇരട്ടഘടക ആധികാരികതയിൽ ചേരണം"
-
-#: 
 msgid "Active Groups"
 msgstr "സജീവ ഗ്രൂപ്പുകൾ"
 
@@ -8179,10 +8027,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "ഡേറ്റ ചേർക്കാൻ ഉചിതമായ രീതി തിരഞ്ഞെടുക്കൂ."
 
 #: 
-msgid "Church Info"
-msgstr "പള്ളി വിവരം"
-
-#: 
 msgid "Clear all"
 msgstr "എല്ലാം ക്ലിയർ ചെയ്യൂ"
 
@@ -8213,14 +8057,6 @@ msgstr "കമ്മ്യൂണിറ്റി മാനേജ്‌മെന�
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "ഭക്തർക്കായി ChurchCRM തയ്യാറാക്കാൻ ഏത് ക്രമത്തിലും ഇവ പൂർത്തിയാക്കൂ."
-
-#: 
-msgid "Confession"
-msgstr "കുമ്പസ്സാർ"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "ആഗോള സിസ്റ്റം ക്രമീകരണം, മുൻഗണനകൾ ക്രമീകരിക്കൂ"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8269,10 +8105,6 @@ msgstr "നിലവിലെ വ്യക്തി"
 #: 
 msgid "Database Reset"
 msgstr "ഡേറ്റാബേസ് പുനഃക്രമീകരണം"
-
-#: 
-msgid "Default / Notes"
-msgstr "ഡിഫോൾട്ട് / കുറിപ്പുകൾ"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9893,10 +9725,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub-ൽ 'pre release' ആയി അടയാളപ്പെടുത്തിയ releases-ലേക്ക് system upgrade അനുവദിക്കുക"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "പൊതു HTML, ICS, JSON URLs വഴി കലണ്ടർ ഇവന്റുകളിലേക്ക് authentication ഇല്ലാതെ access അനുവദിക്കുക. ബാഹ്യ ആപ്ലിക്കേഷനുകളുമായി കലണ്ടർ പങ്കിടാൻ ആവശ്യമാണ്."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "സ്വയം രജിസ്ട്രേഷൻ പേജ് വഴി സന്ദർശകർ സ്വന്തം കുടുംബ record ഉണ്ടാക്കാൻ അനുവദിക്കുക"
 
@@ -10059,24 +9887,12 @@ msgid "Enable Email"
 msgstr "ഇമെയിൽ പ്രാപ്തമാക്കുക"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "ഇവന്റ് മെനു പ്രാപ്തമാക്കുക"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "ബാഹ്യ കലണ്ടർ API പ്രാപ്തമാക്കുക"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM-ൽ നിന്ന് ഇമെയിൽ അയക്കൽ പ്രാപ്തമാക്കുക. Password reset, notifications, ഇമെയിൽ ലിങ്കുകൾ എന്നിവയ്ക്ക് ആവശ്യമാണ്."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "SMTP server-ൽ username, password ആവശ്യമെങ്കിൽ പ്രാപ്തമാക്കുക"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Sunday School module, sidebar menu എന്നിവ പ്രാപ്തമാക്കുകയോ നിഷ്‌ക്രിയമാക്കുകയോ ചെയ്യുക."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10174,10 +9990,6 @@ msgstr "Latitude/Longitude മറയ്ക്കുക"
 #: 
 msgid "How it works"
 msgstr "എങ്ങനെ പ്രവർത്തിക്കുന്നു"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "ഓരോ ഡിപ്പോസിറ്റ് സ്ലിപ്പ് പേജിലും പ്രിന്റ് ചെയ്യേണ്ട ചെക്കുകളുടെ എണ്ണം"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10337,10 +10149,6 @@ msgid "Privacy Note"
 msgstr "Privacy കുറിപ്പ്"
 
 #: 
-msgid "Quick Settings"
-msgstr "ദ്രുത ക്രമീകരണങ്ങൾ"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP ആധികാരികത"
 
@@ -10367,10 +10175,6 @@ msgstr "സജ്ജീകരണം"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Deposit slip report-ൽ bill denominations-ന്റെ breakdown കാണിക്കുക"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Main navigation-ൽ Events മെനു കാണിക്കുകയോ മറയ്ക്കുകയോ ചെയ്യുക."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10784,10 +10588,6 @@ msgstr "Garbled characters, text ആയി ദൃശ്യമാകുന്ന 
 #: 
 msgid "Indigo"
 msgstr "ഇൻഡിഗോ"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Invalid JSON value — setting save ആയില്ല. ശരിയാക്കി വീണ്ടും ശ്രമിക്കുക."
 
 #: 
 msgid "Language and regional settings"
@@ -12564,10 +12364,6 @@ msgstr "ദിവസം മുഴുവൻ"
 #: 
 msgid "All Roles"
 msgstr "എല്ലാ പങ്കുകളും"
-
-#: 
-msgid "All System Settings"
-msgstr "എല്ലാ സിസ്റ്റം ക്രമീകരണങ്ങളും"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15038,10 +14834,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "പൊതു ബാഹ്യ കലണ്ഡർ പേജ് കൾ iframe-ല്‍ ഉൾചേർക്കാൻ അനുവദിച്ച ഉറവിടങ്ങളുടെ സ്ഥലമൎവർത്തിത പട്ടിക."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "പൊതു കലണ്ഡർ പേജ് കൾ iframe-ല്‍ ഉൾചേർക്കാൻ അനുവദിച്ച സ്ഥലമൎവർത്തിത ഉറവിടങ്ങൾ."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "സണ്ഡേ സ്കൂൾ ഗ്രൂപ് ഈ രണ്ട് കേസുകളില്‍ മാത്രമേ പരിഷ്‌ക്കരിക്കാൻ കഴിയൂ"
 
@@ -15572,10 +15364,6 @@ msgstr "വിജയകരമായി സംരക്ഷിച്ചു"
 #: 
 msgid "Select a fund"
 msgstr "ഒരു ഫണ്ട് തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "എനിക്ക് ടെസ്റ്റ് ജന്മദിന ഇമെയിൽ അയക്കുക"
 
 #: 
 msgid "Sending to"
@@ -16594,10 +16382,6 @@ msgid "Not a valid date of death"
 msgstr "സാധുവായ മരണ തീയതിയല്ല"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA നിർബന്ധമാക്കിയ ശേഷം ഉപയോക്താക്കൾക്ക് അതിൽ ചേരാൻ ലഭിക്കുന്ന ദിവസങ്ങളുടെ എണ്ണം. ഉടനടി നിർബന്ധമാക്കാൻ 0 ആയി സജ്ജമാക്കുക. സജീവമായ ഒരു ഗ്രേസ് പിരീഡ് ചുരുക്കുന്നത് ഉപയോക്താക്കളെ ഉടനടി ലോക്ക് ഔട്ട് ചെയ്തേക്കാം."
-
-#: 
 msgid "Offline"
 msgstr "ഓഫ്‌ലൈൻ"
 
@@ -16922,14 +16706,6 @@ msgid "Download CSV"
 msgstr "CSV ഡൗൺലോഡ് ചെയ്യുക"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "ധനകാര്യ മാഡ്യൂൾ ഓടാക്കുക അല്ലെങ്കിൽ അടയ്ക്കുക സൈഡ്ബാർ മെനു."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "പണസംഗ്രഹണ മാഡ്യൂൾ ഓടാക്കുക അല്ലെങ്കിൽ അടയ്ക്കുക."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "സഭ ലോഗോ നീക്കം ചെയ്യാൻ പരാജയപ്പെട്ടു"
 
@@ -17126,46 +16902,6 @@ msgid "Feature Toggles"
 msgstr "ഫീച്ചർ ടോഗിൾ"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "ഫീച്ചർ ടോഗിൽ ChurchCRM-ൽ ഏതൊരു മൊഡ്യൂൾ കൂടാതെ ഫീച്ചറുകൾ ലഭ്യമാണ് എന്ന് നിയന്ത്രിക്കുന്നു. മാറ്റങ്ങൾ ഉടനെ സ്വീകരിക്കുന്നു."
-
-#: 
-msgid "Finance Features"
-msgstr "ധനകാര്യ ഫീച്ചറുകൾ"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ വിലാസങ്ങൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കലണ്ടർ ഇവന്റുകൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കസ്റ്റം കുടുംബ സ്വത്തുകൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ നിക്ഷേപം ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കുടുംബങ്ങൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ സേവകരെ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ പേയ്‌മെന്റുകൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ ആളുകൾ ഉൾപ്പെടുത്തുക"
-
-#: 
 msgid "Invalid setting"
 msgstr "അസാധുവായ സെറ്റിംഗ്"
 
@@ -17174,16 +16910,8 @@ msgid "Lost Password Link"
 msgstr "നഷ്ടപ്പെട്ട പാസ്‌വേഡ് ലിങ്ക്"
 
 #: 
-msgid "Manage All Features"
-msgstr "എല്ലാ ഫീച്ചറുകൾ കൈകാര്യം ചെയ്യുക"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "ഇമെയിൽ അയയ്‌ക്കുന്നതിനുള്ള പ്രധാന ടോഗിൾ. പാസ്‌വേഡ് പുനഃസജ്ജീകരണ കൂടാതെ അറിയിപ്പുകൾക്കായി ആവശ്യമാണ്"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "നികുതി കിഴിവില്ലാത്ത പേയ്‌മെന്റുകൾ"
 
 #: 
 msgid "Primary Modules"
@@ -17194,20 +16922,12 @@ msgid "Public Calendar API"
 msgstr "പൊതു കലണ്ടർ API"
 
 #: 
-msgid "Saved"
-msgstr "സൂക്ഷിപ്പിച്ചത്"
-
-#: 
 msgid "Search Families"
 msgstr "കുടുംബങ്ങൾ തിരയുക"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "കുടുംബ കസ്റ്റം സ്വത്തുകൾ തിരയുക"
-
-#: 
-msgid "Search Settings"
-msgstr "തിരയുവാനുള്ള സജ്ജീകരണങ്ങൾ"
 
 #: 
 msgid "Self-Registration"
@@ -17424,14 +17144,6 @@ msgstr "അറിയിപ്പ് സ്വീകർത്താക്കൾ"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "പുതിയ കുടുംബമോ വ്യക്തിയോ ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവർ"
-
-#: 
-msgid "Person initials style"
-msgstr "വ്യക്തിയുടെ ഇനിഷ്യലുകളുടെ ശൈലി"
-
-#: 
-msgid "Person name display style"
-msgstr "വ്യക്തിയുടെ പേര് പ്രദർശിപ്പിക്കുന്ന ശൈലി"
 
 #: 
 msgid "Spouse Role"
@@ -23440,30 +23152,6 @@ msgid "Download PDF"
 msgstr "PDF ഡൗൺലോഡ് ചെയ്യുക"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "ലോക്കൗട്ട് കാലയളവ് മിനിറ്റുകളിൽ\n"
-"ഇത്ര മിനിറ്റുകൾക്ക് ശേഷം ലോക്ക് ചെയ്ത അക്കൗണ്ട് സ്വയം തുറക്കും. ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരാജയപ്പെട്ട ലോഗിനുകൾ അതേ കാലയളവിൽ എണ്ണും."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരമാവധി പരാജയപ്പെട്ട ലോഗിനുകൾ\n"
-"ലോക്കൗട്ട് കാലയളവിൽ ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരാജയപ്പെട്ട ലോഗിനുകളും പാസ്‌വേഡ് റീസെറ്റ് അഭ്യർത്ഥനകളും ഈ പരിധിയിൽ എണ്ണും. പരിധി എത്തിയാൽ, കാലയളവ് അവസാനിക്കുന്നതുവരെ ആ വിലാസത്തിൽ നിന്നുള്ള സൈൻ-ഇൻ നിരസിക്കും.\n"
-"ഈ സവിശേഷത പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ആക്കുക, ഉദാഹരണത്തിന് എല്ലാവരും ഒരു പ്രോക്സി വിലാസത്തിലൂടെ ChurchCRM-ൽ എത്തുമ്പോൾ."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "ഒരു ഉപയോക്തൃ അക്കൗണ്ട് ലോക്ക് ആകുന്നതിന് മുമ്പ് അനുവദിക്കുന്ന പരമാവധി പരാജയപ്പെട്ട ലോഗിനുകൾ.\n"
-"ലോക്ക് ചെയ്ത അക്കൗണ്ട് ലോക്കൗട്ട് കാലയളവിന് ശേഷം സ്വയം തുറക്കും, അല്ലെങ്കിൽ അഡ്മിനിസ്ട്രേറ്റർ പരാജയപ്പെട്ട ലോഗിനുകൾ റീസെറ്റ് ചെയ്താൽ നേരത്തെ തുറക്കും.\n"
-"സ്വയമേവയുള്ള പാസ്‌വേഡ് ഊഹിക്കൽ ആക്രമണങ്ങളിൽ നിന്ന് സംരക്ഷിക്കാൻ ഈ സവിശേഷത സഹായിക്കുന്നു.\n"
-"ഈ സവിശേഷത പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ആക്കുക."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "സ്വയം തുറക്കാൻ ബാക്കിയുള്ള മിനിറ്റുകൾ: %d"
 
@@ -23792,10 +23480,6 @@ msgid "PDF Output"
 msgstr "PDF ഔട്ട്പുട്ട്"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF കൈകാര്യ മോഡ്"
-
-#: 
 msgid "Questions Line"
 msgstr "ചോദ്യ വരി"
 
@@ -23832,10 +23516,6 @@ msgid "Greeting"
 msgstr "അഭിവാദ്യം"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "കത്തിന്റെ അഭിവാദ്യവും ഒപ്പും"
-
-#: 
 msgid "Letterhead"
 msgstr "ലെറ്റർഹെഡ്"
 
@@ -23858,10 +23538,6 @@ msgstr "PDF കത്തുകൾ അച്ചടിക്കുന്ന ലെ
 #: 
 msgid "Using the church name and address"
 msgstr "പള്ളിയുടെ പേരും വിലാസവും ഉപയോഗിക്കുന്നു"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "സിസ്റ്റം ക്രമീകരണങ്ങളിൽ സജ്ജമാക്കിയ ലെറ്റർഹെഡ് പാത്ത് ഉപയോഗിക്കുന്നു"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28238,10 +27914,6 @@ msgstr "നിങ്ങളുടെ പള്ളി സജ്ജീകരിക�
 #: 
 msgid "Setup Dashboard"
 msgstr "സജ്ജീകരണ ഡാഷ്ബോർഡ്"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "സജ്ജീകരണ ഡാഷ്ബോർഡ് ദിവസങ്ങൾ"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."

@@ -1578,10 +1578,6 @@ msgid "Permission"
 msgstr "権限"
 
 #: 
-msgid "System Settings"
-msgstr "システム設定"
-
-#: 
 msgid "User Editor"
 msgstr "ユーザーエディター"
 
@@ -2063,24 +2059,12 @@ msgid "Localization"
 msgstr "ローカライズ"
 
 #: 
-msgid "Setting saved"
-msgstr "設定が保存されました"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON 設定を編集"
-
-#: 
 msgid "False"
 msgstr "偽"
 
 #: 
 msgid "True"
 msgstr "真"
-
-#: 
-msgid "Edit Settings"
-msgstr "設定を編集"
 
 #: 
 msgid "Functions"
@@ -2195,32 +2179,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "ディレクトリにこれらの分類のみを含める(カンマ区切り)"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "これらは家族の頭として指定された役割番号です"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "これらは配偶者として指定された役割番号です"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "これらは子供として指定された役割番号です"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "ユーザーがパスワードに設定できる最小長"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "許可されていない(明らかすぎる)パスワードのカンマ区切りリスト。"
-
-#: 
 msgid "Default City"
 msgstr "デフォルト市区町村"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "デフォルト都道府県 - 2文字の略語である必要があります!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2243,68 +2203,12 @@ msgid "First month of the fiscal year"
 msgstr "会計年度の最初の月"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "人物エディタで友人日付の入力を無効にするには、trueを設定します。人物エディタで友人日付の入力を有効にするには、falseを設定します。"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "ファミリーエディタのニュースレター購読の管理を無効にするにはtrueを設定します。"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "ファミリーエディタで結婚日の入力を無効にするにはtrueを設定します。ファミリーエディタで結婚日の入力を有効にするにはfalseを設定します。"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "入金伝票レポートの小切手数"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "距離を測定するために使用される単位(マイルまたはkm)"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "控除不可能な支払いを有効にします"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "税務報告書の最上行の文言。日付はこの行の最後に追加されます。"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "税務報告書の下部行の文言。"
-
-#: 
-msgid "Tax Report signer"
-msgstr "税務報告書署名者"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "誓約リマインダーレポートの文言"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "誓約リマインダー署名者"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "誓約リマインダーレポートの文言 - 誓約の記録がない"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "誓約リマインダーレポートの文言 - 支払い記録がない"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "データベース情報確認・修正レポートの文言"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "データベース情報確認・修正レポート署名者"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "ディレクトリレポートの文言"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3759,10 +3663,6 @@ msgstr "バックアップアーカイブにはデータベースが含まれて
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "ユーザーが入力した郵便番号をデータベースに保存するときに大文字にします。"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "署名者の前に手紙を終了するために使用されます"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3867,10 +3767,6 @@ msgid "Failed"
 msgstr "失敗しました"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "教会普通預金口座番号"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "ファミリーを非アクティブとしてマーク"
 
@@ -3881,10 +3777,6 @@ msgstr "ファミリーをアクティブとしてマーク"
 #: 
 msgid "families"
 msgstr "家族"
-
-#: 
-msgid "Financial Settings"
-msgstr "財務設定"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3925,10 +3817,6 @@ msgstr "プロパティが正常に割り当て解除されました。"
 #: 
 msgid "The property could not be unassigned."
 msgstr "プロパティの割り当てを解除できませんでした。"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "メール/レポート内の名前の前のテキスト"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4171,10 +4059,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "件のレコードが選択したグループに正常に追加されました。"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "日付ピッカーの日付形式を定義するには、デフォルト: yyyy-mm-dd、フランス語の例: dd/mm/yyyy"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "日付ピッカーの日付形式を定義するには、デフォルト: Y-m-d、フランス語の例: d/m/Y"
 
@@ -4261,10 +4145,6 @@ msgstr "西北西"
 #: 
 msgid "WSW"
 msgstr "西南西"
-
-#: 
-msgid "Search Family"
-msgstr "家族を検索"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4363,10 +4243,6 @@ msgid "Change Settings"
 msgstr "設定を変更"
 
 #: 
-msgid "Unknown Type"
-msgstr "不明なタイプ"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "カートのPersonIDは数値である必要があります"
 
@@ -4385,14 +4261,6 @@ msgstr "人物を検索"
 #: 
 msgid "Maximum number of People"
 msgstr "人物の最大数"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "告解の父が記載されているフィールド、グループタイプの人々である必要があります"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "最後の告解が保存されているフィールド、日付タイプである必要があります"
 
 #: 
 msgid "People Reports"
@@ -4642,18 +4510,6 @@ msgid "Event not found"
 msgstr "イベントが見つかりません"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "セッションタイムアウトの長さ（秒）\n"
-"セッションタイムアウトを無効にするには0に設定。"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "新しいパスワードが古いパスワードと異なる必要がある最小量（変更された文字数）\n"
-"この機能を無効にするには0に設定"
-
-#: 
 msgid "Verify People"
 msgstr "人物を確認"
 
@@ -4723,10 +4579,6 @@ msgstr "ピン留め解除されたイベント"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名, ミドルネーム"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "アカウントが削除されたときにユーザーに通知メールを送信"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7689,10 +7541,6 @@ msgid "selected family has no coordinates"
 msgstr "選択した家族に座標がありません"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "すべてのユーザーに二段階認証への登録を要求する"
-
-#: 
 msgid "Active Groups"
 msgstr "アクティブなグループ"
 
@@ -8170,10 +8018,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "データベースの入力方法を選択してください。後から別の方法も使えます。"
 
 #: 
-msgid "Church Info"
-msgstr "教会情報"
-
-#: 
 msgid "Clear all"
 msgstr "すべてクリア"
 
@@ -8204,14 +8048,6 @@ msgstr "コミュニティ管理プラットフォーム"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "任意の順序でこれらを完了して、教会用にChurchCRMを準備しましょう。"
-
-#: 
-msgid "Confession"
-msgstr "告解"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "グローバルシステム設定とプリファレンスを構成"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8260,10 +8096,6 @@ msgstr "現在の人"
 #: 
 msgid "Database Reset"
 msgstr "データベースリセット"
-
-#: 
-msgid "Default / Notes"
-msgstr "デフォルト / メモ"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9884,10 +9716,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub で「プレリリース」とマークされたリリースへのシステムアップグレードを許可"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "公開 HTML、ICS、JSON URL を通じてカレンダーイベントへの非認証アクセスを許可します。外部アプリとカレンダーを共有する際に必要です。"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "訪問者が自己登録ページで自分の家族記録を作成することを許可"
 
@@ -10050,24 +9878,12 @@ msgid "Enable Email"
 msgstr "メールを有効化"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "イベントメニューを有効化"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "外部カレンダー API を有効化"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM からのメール送信を有効化します。パスワードリセット、通知、メールリンクに必要です。"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "SMTP サーバーでユーザー名とパスワードが必要な場合に有効化"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "日曜学校モジュールとサイドバーメニューを有効または無効にします。"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10165,10 +9981,6 @@ msgstr "緯度・経度を非表示"
 #: 
 msgid "How it works"
 msgstr "仕組み"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "入金伝票 1 ページに印刷する小切手の枚数"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10328,10 +10140,6 @@ msgid "Privacy Note"
 msgstr "プライバシー通知"
 
 #: 
-msgid "Quick Settings"
-msgstr "クイック設定"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP 認証"
 
@@ -10358,10 +10166,6 @@ msgstr "セットアップ"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "入金伝票レポートに紙幣の内訳を表示"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "メインナビゲーションのイベントメニューを表示または非表示にします。"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10775,10 +10579,6 @@ msgstr "文字化け、テキストとして表示されるHTMLエンティテ�
 #: 
 msgid "Indigo"
 msgstr "インディゴ"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "無効なJSON値 — 設定が保存されませんでした。修正してもう一度お試しください。"
 
 #: 
 msgid "Language and regional settings"
@@ -12554,10 +12354,6 @@ msgstr "終日"
 #: 
 msgid "All Roles"
 msgstr "すべての役割"
-
-#: 
-msgid "All System Settings"
-msgstr "すべてのシステム設定"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15025,10 +14821,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "公開外部カレンダーページを iframe に埋め込むことを許可するオリジンのスペース区切りリスト。デフォルトは任意のオリジンを許可します。"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "公開カレンダーページを iframe に埋め込むことを許可するオリジンのスペース区切りリスト。デフォルトは任意のサイトを許可します。"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "日曜学校グループはこの2つのケースでのみ変更できます"
 
@@ -15559,10 +15351,6 @@ msgstr "正常に保存されました"
 #: 
 msgid "Select a fund"
 msgstr "ファンドを選択"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "自分にテスト誕生日メールを送信"
 
 #: 
 msgid "Sending to"
@@ -16579,10 +16367,6 @@ msgid "Not a valid date of death"
 msgstr "有効な死亡日ではありません"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FAが義務化された後、ユーザーが登録するまでの猶予日数です。0に設定するとすぐに強制されます。有効な猶予期間を短縮すると、ユーザーが即座にロックアウトされる可能性があります。"
-
-#: 
 msgid "Offline"
 msgstr "オフライン"
 
@@ -16907,14 +16691,6 @@ msgid "Download CSV"
 msgstr "CSVをダウンロード"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "財務モジュールとサイドバーメニューを有効または無効にします。"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "募金活動モジュールを有効または無効にします。"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "教会ロゴの削除に失敗しました"
 
@@ -17111,46 +16887,6 @@ msgid "Feature Toggles"
 msgstr "機能トグル"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "機能トグルはChurchCRMで利用可能なモジュールと機能を制御します。変更は直ちに有効になります。"
-
-#: 
-msgid "Finance Features"
-msgstr "財務機能"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "クイックグローバル検索にアドレスを含める"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "クイックグローバル検索にカレンダーイベントを含める"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "クイックグローバル検索にカスタム家族プロパティを含める"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "クイックグローバル検索に預金を含める"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "クイックグローバル検索に家族を含める"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "クイックグローバル検索に事工を含める"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "クイックグローバル検索に支払いを含める"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "クイックグローバル検索に人を含める"
-
-#: 
 msgid "Invalid setting"
 msgstr "無効な設定"
 
@@ -17159,16 +16895,8 @@ msgid "Lost Password Link"
 msgstr "パスワードリセットリンク"
 
 #: 
-msgid "Manage All Features"
-msgstr "すべての機能を管理する"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "メール送信のマスタートグル。パスワードリセットと通知に必須。"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "控除不適格の支払い"
 
 #: 
 msgid "Primary Modules"
@@ -17179,20 +16907,12 @@ msgid "Public Calendar API"
 msgstr "公開カレンダーAPI"
 
 #: 
-msgid "Saved"
-msgstr "保存しました"
-
-#: 
 msgid "Search Families"
 msgstr "家族を検索する"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "家族カスタムプロパティを検索する"
-
-#: 
-msgid "Search Settings"
-msgstr "検索設定"
 
 #: 
 msgid "Self-Registration"
@@ -17409,14 +17129,6 @@ msgstr "通知の受信者"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "新しい家族または人物が追加されたときに通知する人"
-
-#: 
-msgid "Person initials style"
-msgstr "人物のイニシャルの形式"
-
-#: 
-msgid "Person name display style"
-msgstr "人物の名前の表示形式"
 
 #: 
 msgid "Spouse Role"
@@ -23412,30 +23124,6 @@ msgid "Download PDF"
 msgstr "PDFをダウンロード"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "ロックアウト期間（分）\n"
-"ロックされたアカウントはこの分数後に自動的にロック解除されます。1つのIPアドレスからの失敗したログインは同じ期間にカウントされます。"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "1つのIPアドレスからの最大失敗ログイン数\n"
-"ロックアウト期間内に、1つのIPアドレスからの失敗したログインとパスワードリセットリクエストがこの制限にカウントされます。制限に達すると、そのアドレスからのサインインは期間が終了するまで拒否されます。\n"
-"この機能を無効にするにはゼロに設定してください。例えば、全員が1つのプロキシアドレス経由でChurchCRMにアクセスする場合など。"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "ユーザーアカウントがロックされる前に許可する最大失敗ログイン数。\n"
-"ロックされたアカウントはロックアウト期間後に自動的にロック解除されるか、管理者が失敗したログインをリセットすると早くロック解除されます。\n"
-"この機能は自動パスワード推測攻撃から保護するのに役立ちます。\n"
-"この機能を無効にするにはゼロに設定してください。"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "自動ロック解除までの分数：%d"
 
@@ -23764,10 +23452,6 @@ msgid "PDF Output"
 msgstr "PDF出力"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDFの扱い方"
-
-#: 
 msgid "Questions Line"
 msgstr "問い合わせの文"
 
@@ -23804,10 +23488,6 @@ msgid "Greeting"
 msgstr "あいさつ"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "手紙のあいさっと署名"
-
-#: 
 msgid "Letterhead"
 msgstr "レターヘッド"
 
@@ -23830,10 +23510,6 @@ msgstr "PDFの手紙に印刷するレターヘッドを設定"
 #: 
 msgid "Using the church name and address"
 msgstr "教会名と住所を使用"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "システム設定で指定したレターヘッドのパスを使用"
 
 #: 
 msgid "%1$s as %2$s"
@@ -28203,10 +27879,6 @@ msgstr "教会をセットアップ"
 #: 
 msgid "Setup Dashboard"
 msgstr "セットアップダッシュボード"
-
-#: 
-msgid "Setup Dashboard Days"
-msgstr "セットアップダッシュボードの日数"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
