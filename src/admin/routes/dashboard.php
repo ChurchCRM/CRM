@@ -139,6 +139,12 @@ $app->get('/', function (Request $request, Response $response) {
             ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
         ]),
+        'scheduledTaskSettings' => array_map(static function (array $setting): array {
+            $setting['label'] = $setting['name'] === 'iTimerJobsStaleHours'
+                ? gettext('Warning After (Hours)')
+                : gettext('Minimum Interval (Minutes)');
+            return $setting;
+        }, SystemConfig::getSettingsConfig(['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'])),
         'pdfSettings' => array_map(static function (array $setting): array {
             $setting['label'] = gettext('PDF Temporary Directory');
             $setting['tooltip'] = gettext($setting['tooltip']);

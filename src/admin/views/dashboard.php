@@ -149,12 +149,14 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
                 </p>
                 <pre class="mb-2"><code id="timer-jobs-cron-command">0 * * * * <?= InputUtils::escapeHTML($timerJobsCronCommand ?? '') ?></code></pre>
                 <p class="mb-0 small text-muted">
-                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), 'iTimerJobsStaleHours') ?>
+                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), '<a href="#scheduledTasksSettings">' . gettext('Scheduled Tasks') . '</a>') ?>
                 </p>
             </div>
         </div>
     </div>
     <?php endif; ?>
+
+    <div id="scheduledTasksSettings" class="mb-3" data-settings="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($scheduledTaskSettings)) ?>"></div>
 
     <?php if (!empty($formerPortalAccounts)): ?>
     <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">

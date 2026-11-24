@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.CRM.onLocalesReady(() => {
     [
       ["quickSearchSettings", i18next.t("Quick Search"), "fa-solid fa-magnifying-glass"],
+      ["scheduledTasksSettings", i18next.t("Scheduled Tasks"), "fa-solid fa-clock"],
       ["reportingSettings", i18next.t("Reporting"), "fa-solid fa-file-pdf"],
       ["setupSettings", i18next.t("Setup Dashboard"), "fa-solid fa-list-check"],
     ].forEach(([id, title, icon]) => {
