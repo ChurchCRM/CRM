@@ -15497,10 +15497,6 @@ msgid "ChurchCRM version"
 msgstr "Wersja ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Poziom zbierania danych"
-
-#: 
 msgid "Count unique installs"
 msgstr "Zliczaj unikalne instalacje"
 
@@ -15555,14 +15551,6 @@ msgstr "Nie udało się zaktualizować zobowiązania"
 #: 
 msgid "Financial data"
 msgstr "Dane finansowe"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Pełny — wszystkie powyższe oraz odsłony stron"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Pełny — odsłony stron, ostrzeżenia, błędy i wyjątki JS"
 
 #: 
 msgid "Fund Summary"
@@ -15639,10 +15627,6 @@ msgstr "Nieodliczany ($)"
 #: 
 msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Kwota nieodliczana nie może przekraczać kwoty funduszu"
-
-#: 
-msgid "None (disabled)"
-msgstr "Brak (wyłączone)"
 
 #: 
 msgid "Overpaid"
@@ -15763,10 +15747,6 @@ msgstr "Życzymy wspaniałych urodzin!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Twoje konto nie ma zapisanego adresu e-mail. Dodaj go do swojego profilu, aby wysłać test."
-
-#: 
-msgid "errors+"
-msgstr "błędy+"
 
 #: 
 msgid "full only"
@@ -26402,22 +26382,6 @@ msgid "Database engine and major/minor version"
 msgstr "Silnik bazy danych i wersja główna/podrzędna"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Błędy — statystyki instalacji, ostrzeżenia, błędy i wyjątki JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Pomożesz nam znajdować i naprawiać problemy?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Instalacja udostępnia minimalne statystyki instalacji i aktualizacji. Błędy dodaje ostrzeżenia i raporty błędów. Pełny dodaje odsłony stron. Brak wysyła tylko nieudane instalacje i aktualizacje."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Instalacja — statystyki instalacji i aktualizacji (domyślnie)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Wyniki instalacji i aktualizacji, poprzednia wersja przy aktualizacjach i codzienny sygnał podczas używania"
 
@@ -26426,20 +26390,8 @@ msgid "Installation profile"
 msgstr "Profil instalacji"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Ustawienia regionalne (Błędy i Pełny)"
-
-#: 
 msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
 msgstr "Nigdy nie udostępniamy: danych członków, ofiar ani innych danych wspólnoty, nazwy Twojej wspólnoty, adresu strony lub nazwy serwera ani adresów e-mail. Twój kraj to ten z ustawień wspólnoty, a nie ustalany na podstawie Twojej sieci."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Rodzina systemu operacyjnego (Błędy i Pełny)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Wersja PHP (Błędy i Pełny)"
 
 #: 
 msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
@@ -26450,44 +26402,12 @@ msgid "Separate production, demo, and test installs"
 msgstr "Rozróżniaj instalacje produkcyjne, demonstracyjne i testowe"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Udostępniać anonimowe statystyki instalacji?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Udostępniaj raporty błędów i użycia"
-
-#: 
-msgid "Share install statistics"
-msgstr "Udostępniaj statystyki instalacji"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Dodatkowo udostępniane: ostrzeżenia, szczegóły błędów i otwierane strony."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Udostępniane: informacja, że ChurchCRM został zainstalowany lub zaktualizowany i czy się to udało, sygnał raz dziennie podczas używania, numer wersji, Twój kraj i rodzaj bazy danych. Losowy identyfikator instalacji liczy każdą instalację jeden raz."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Poznaj zgodność baz danych"
 
 #: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Pytamy o to tylko raz. Wybór możesz zmienić w dowolnym momencie. Przy Nie, dziękuję zgłaszana jest tylko nieudana instalacja lub aktualizacja."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Twoje dane należą do Ciebie. Instalacja udostępnia tylko wyniki instalacji i aktualizacji, identyfikator instalacji, wersję oprogramowania, profil instalacji, skonfigurowany kraj oraz silnik bazy danych z wersją główną/podrzędną. Błędy dodaje ostrzeżenia i szczegóły błędów. Pełny dodaje odsłony stron. Brak wysyła tylko nieudane instalacje i aktualizacje. Żaden poziom nie wysyła adresu strony ani nazwy serwera. Instalacje testowe nie wysyłają niczego. Telemetria jest wysyłana do PostHog w Stanach Zjednoczonych."
-
-#: 
 msgid "Your data is yours. This reports on the software, never on your church or its people."
 msgstr "Twoje dane należą do Ciebie. Raporty dotyczą oprogramowania, nigdy Twojej wspólnoty ani jej ludzi."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Twoje dane należą do Ciebie. Aby zliczać instalacje, ChurchCRM zgłasza, że został zainstalowany lub zaktualizowany i czy się to udało, wysyła sygnał raz dziennie podczas używania, a także numer wersji, Twój kraj, rodzaj bazy danych i losowy identyfikator instalacji. Nigdy nie zgłasza danych członków, ofiar ani innych danych wspólnoty, nazwy Twojej wspólnoty, adresu strony lub nazwy serwera ani adresów e-mail. Możesz to wyłączyć w dowolnym momencie w Administracja → Telemetria; nieudana instalacja lub aktualizacja nadal jest zgłaszana. Ostrzeżenia, szczegóły błędów i odsłony stron są udostępniane tylko wtedy, gdy tak wybierzesz."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."

@@ -15454,10 +15454,6 @@ msgid "ChurchCRM version"
 msgstr "ChurchCRM verzió"
 
 #: 
-msgid "Collection level"
-msgstr "Gyűjtési szint"
-
-#: 
 msgid "Count unique installs"
 msgstr "Egyedi telepítések számlálása"
 
@@ -15512,14 +15508,6 @@ msgstr "A fogadalom frissítése sikertelen"
 #: 
 msgid "Financial data"
 msgstr "Pénzügyi adatok"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Teljes – mindez plusz oldalmegtekintések"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Teljes – oldalmegtekintések, figyelmeztetések, hibák és JS kivételek"
 
 #: 
 msgid "Fund Summary"
@@ -15596,10 +15584,6 @@ msgstr "Nem levonható ($)"
 #: 
 msgid "Non-deductible amount can't exceed fund amount"
 msgstr "A nem levonható összeg nem haladhatja meg az alap összegét"
-
-#: 
-msgid "None (disabled)"
-msgstr "Nincs (letiltva)"
 
 #: 
 msgid "Overpaid"
@@ -15720,10 +15704,6 @@ msgstr "Csodálatos születésnapot kívánunk!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Fiókjához nincs e-mail-cím megadva. Adjon hozzá egyet a profiljához a teszt küldéséhez."
-
-#: 
-msgid "errors+"
-msgstr "hibák+"
 
 #: 
 msgid "full only"
@@ -26342,22 +26322,6 @@ msgid "Database engine and major/minor version"
 msgstr "Adatbázismotor és fő-/alverzió"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Hibák — telepítési statisztikák, figyelmeztetések, hibák és JS-kivételek"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Segít nekünk megtalálni és kijavítani a hibákat?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "A Telepítés minimális telepítési és frissítési statisztikákat oszt meg. A Hibák figyelmeztetéseket és hibajelentéseket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Telepítés — telepítési és frissítési statisztikák (alapértelmezett)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Telepítési és frissítési eredmények, frissítéskor az előző verzió és napi egyszeri jelzés használat közben"
 
@@ -26366,20 +26330,8 @@ msgid "Installation profile"
 msgstr "Telepítési profil"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Területi beállítás (Hibák és Teljes)"
-
-#: 
 msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
 msgstr "Soha nem osztjuk meg: tagok, adományok vagy más gyülekezeti adatok, a gyülekezet neve, a webcíme vagy kiszolgálóneve, illetve e-mail-címek. Az ország a gyülekezeti beállításokban megadott ország, nem a hálózatából állapítjuk meg."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Operációs rendszer családja (Hibák és Teljes)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "PHP-verzió (Hibák és Teljes)"
 
 #: 
 msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
@@ -26390,44 +26342,12 @@ msgid "Separate production, demo, and test installs"
 msgstr "Éles, bemutató és teszttelepítések elkülönítése"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Megosztja a névtelen telepítési statisztikákat?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Hiba- és használati jelentések megosztása"
-
-#: 
-msgid "Share install statistics"
-msgstr "Telepítési statisztikák megosztása"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Ezen felül megosztva: figyelmeztetések, hibarészletek és a megnyitott oldalak."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Megosztva: hogy a ChurchCRM telepítve vagy frissítve lett-e és sikerült-e, napi egyszeri jelzés használat közben, a verziószám, az ország és az adatbázis típusa. Egy véletlenszerű telepítési azonosító minden telepítést egyszer számol."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Az adatbázis-kompatibilitás megértése"
 
 #: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Csak egyszer kérdezünk rá. Választását bármikor módosíthatja. A Nem, köszönöm választással csak a sikertelen telepítés vagy frissítés kerül jelentésre."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Az adatai az Önéi. A Telepítés csak a telepítési és frissítési eredményeket, a telepítési azonosítót, a szoftververziót, a telepítési profilt, a beállított országot, valamint az adatbázismotort és annak fő-/alverzióját osztja meg. A Hibák figyelmeztetéseket és hibarészleteket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi. Egyik szint sem küldi el a webcímét vagy kiszolgálónevét. A teszttelepítések semmit sem küldenek. A telemetriai adatok a PostHoghoz kerülnek az Egyesült Államokba."
-
-#: 
 msgid "Your data is yours. This reports on the software, never on your church or its people."
 msgstr "Az adatai az Önéi. Ez a szoftverről szól, soha nem a gyülekezetéről vagy annak tagjairól."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Az adatai az Önéi. A telepítések számlálásához a ChurchCRM jelenti, hogy telepítve vagy frissítve lett-e és sikerült-e, használat közben naponta egyszer jelzést küld, valamint a verziószámot, az országot, az adatbázis típusát és egy véletlenszerű telepítési azonosítót. Soha nem jelenti a tagok, adományok vagy más gyülekezeti adatokat, a gyülekezet nevét, a webcímét vagy kiszolgálónevét, illetve e-mail-címeket. Ezt bármikor kikapcsolhatja itt: Adminisztráció → Telemetria; a sikertelen telepítés vagy frissítés továbbra is jelentésre kerül. A figyelmeztetéseket, hibarészleteket és oldalmegtekintéseket csak akkor osztjuk meg, ha így dönt."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."

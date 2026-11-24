@@ -15553,10 +15553,6 @@ msgid "ChurchCRM version"
 msgstr "ChurchCRM 版本"
 
 #: 
-msgid "Collection level"
-msgstr "收集級別"
-
-#: 
 msgid "Count unique installs"
 msgstr "計算唯一安裝次數"
 
@@ -15611,14 +15607,6 @@ msgstr "更新承諾奉獻失敗"
 #: 
 msgid "Financial data"
 msgstr "財務資料"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "完整——以上所有項目加上頁面瀏覽"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "完整——頁面瀏覽、警告、錯誤及 JS 異常"
 
 #: 
 msgid "Fund Summary"
@@ -15695,10 +15683,6 @@ msgstr "不可扣稅（$）"
 #: 
 msgid "Non-deductible amount can't exceed fund amount"
 msgstr "不可扣稅金額不能超過基金金額"
-
-#: 
-msgid "None (disabled)"
-msgstr "無（已停用）"
 
 #: 
 msgid "Overpaid"
@@ -15819,10 +15803,6 @@ msgstr "祝您生日快樂！"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "您的帳號尚未設定電子郵件地址。請在個人資料中新增電子郵件以發送測試。"
-
-#: 
-msgid "errors+"
-msgstr "錯誤＋"
 
 #: 
 msgid "full only"
@@ -26424,22 +26404,6 @@ msgid "Database engine and major/minor version"
 msgstr "資料庫引擎及主/次版本"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "錯誤 — 安裝統計、警告、錯誤和 JS 例外"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "協助我們找出並修正問題？"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "「安裝」層級僅分享最少的安裝和升級統計。「錯誤」層級另外分享警告和錯誤報告。「完整」層級另外分享頁面瀏覽。「無」僅傳送失敗的安裝和升級。"
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "安裝 — 安裝和升級統計（預設）"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "安裝和升級結果、升級時的先前版本，以及使用期間每天一次的回報"
 
@@ -26448,20 +26412,8 @@ msgid "Installation profile"
 msgstr "安裝設定檔"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "地區設定（錯誤和完整層級）"
-
-#: 
 msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
 msgstr "絕不分享：會友、奉獻或其他教會記錄、您的教會名稱、您的網址或伺服器名稱、電子郵件地址。您的國家取自教會設定，而非從您的網路推斷。"
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "作業系統類型（錯誤和完整層級）"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "PHP 版本（錯誤和完整層級）"
 
 #: 
 msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
@@ -26472,44 +26424,12 @@ msgid "Separate production, demo, and test installs"
 msgstr "區分正式、展示和測試安裝"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "分享匿名安裝統計？"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "分享錯誤和使用報告"
-
-#: 
-msgid "Share install statistics"
-msgstr "分享安裝統計"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "另外分享：警告、錯誤詳細資料以及開啟了哪些頁面。"
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "分享內容：ChurchCRM 已安裝或升級以及是否成功、使用期間每天一次的回報、版本號碼、您的國家和資料庫類型。隨機安裝識別碼確保每個安裝只計算一次。"
-
-#: 
 msgid "Understand database compatibility"
 msgstr "了解資料庫相容性"
 
 #: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "此選擇只會詢問一次，您可以隨時變更。選擇「不，謝謝」時，僅回報失敗的安裝或升級。"
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "您的資料屬於您。「安裝」層級僅分享安裝和升級結果、安裝識別碼、軟體版本、安裝設定檔、設定的國家以及資料庫引擎及其主/次版本。「錯誤」層級另外分享警告和錯誤詳細資料。「完整」層級另外分享頁面瀏覽。「無」僅傳送失敗的安裝和升級。任何層級都不會傳送您的網址或伺服器名稱。測試安裝不傳送任何內容。遙測資料傳送至位於美國的 PostHog。"
-
-#: 
 msgid "Your data is yours. This reports on the software, never on your church or its people."
 msgstr "您的資料屬於您。回報內容僅涉及軟體，絕不涉及您的教會或會眾。"
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "您的資料屬於您。為統計安裝數，ChurchCRM 會回報它已安裝或升級以及是否成功、使用期間每天一次的回報，以及版本號碼、您的國家、資料庫類型和隨機安裝識別碼。它絕不會回報會友、奉獻或其他教會記錄、您的教會名稱、您的網址或伺服器名稱、電子郵件地址。您可以隨時在 管理 → 遙測 中關閉此功能；失敗的安裝或升級仍會被回報。警告、錯誤詳細資料和頁面瀏覽只有在您選擇後才會分享。"
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."

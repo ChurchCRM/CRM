@@ -1,0 +1,11 @@
+{
+  "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.": "",
+  "Also send which pages are used.": "",
+  "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": "",
+  "No tier sends people, donors, giving, content, church contact details, your web address or server name.": "",
+  "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.": "",
+  "OS family": "",
+  "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.": "",
+  "Share which pages are used": "",
+  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": ""
+}

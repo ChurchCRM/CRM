@@ -1,0 +1,34 @@
+{
+  "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.": [
+    "src/setup/templates/setup-steps.php:200"
+  ],
+  "Also send which pages are used.": [
+    "src/admin/views/dashboard.php:206",
+    "src/admin/views/debug.php:588"
+  ],
+  "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": [
+    "src/setup/templates/setup-steps.php:201"
+  ],
+  "No tier sends people, donors, giving, content, church contact details, your web address or server name.": [
+    "src/setup/templates/setup-steps.php:202"
+  ],
+  "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.": [
+    "src/admin/views/debug.php:624"
+  ],
+  "OS family": [
+    "src/admin/views/debug.php:607"
+  ],
+  "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.": [
+    "src/ChurchCRM/dto/SystemConfig.php:367",
+    "src/admin/views/dashboard.php:205",
+    "src/admin/views/debug.php:581"
+  ],
+  "Share which pages are used": [
+    "src/admin/views/dashboard.php:200",
+    "src/admin/views/dashboard.php:212",
+    "src/admin/views/debug.php:586"
+  ],
+  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": [
+    "src/admin/views/dashboard.php:208"
+  ]
+}
