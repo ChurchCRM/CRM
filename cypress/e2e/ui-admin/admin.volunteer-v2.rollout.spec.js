@@ -61,8 +61,8 @@ describe("Volunteer Management with Ministries only — navigation (#10606)", ()
 
     it("offers no volunteer experience choice on Feature Toggles", () => {
         cy.visit("/admin/system/feature-toggles");
-        cy.get("#featureTogglesContainer .feature-toggle").should("have.length.greaterThan", 0);
-        cy.get("[data-setting='sVolunteerVersion']").should("not.exist");
+        cy.get("#featureTogglesContainer input[data-type=boolean]").should("have.length.greaterThan", 0);
+        cy.get("[name='sVolunteerVersion']").should("not.exist");
     });
 
     it("lists no Volunteer Opportunities on People Settings", () => {

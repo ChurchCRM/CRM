@@ -7,25 +7,6 @@ import "./telemetry-consent";
 import "./former-portal-accounts-notice";
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.CRM.onLocalesReady(() => {
-    [
-      ["quickSearchSettings", i18next.t("Quick Search"), "fa-solid fa-magnifying-glass"],
-      ["scheduledTasksSettings", i18next.t("Scheduled Tasks"), "fa-solid fa-clock"],
-      ["reportingSettings", i18next.t("Reporting"), "fa-solid fa-file-pdf"],
-      ["setupSettings", i18next.t("Setup Dashboard"), "fa-solid fa-list-check"],
-    ].forEach(([id, title, icon]) => {
-      const panel = document.getElementById(id);
-      if (!panel) return;
-      new window.CRM.SettingsPanel().init({
-        container: `#${id}`,
-        title,
-        icon,
-        settings: JSON.parse(panel.dataset.settings),
-        autoSave: true,
-      });
-    });
-  });
-
   // Bootstrap's data API is on window.bootstrap. The page bundle's jQuery
   // does not get $.fn.tooltip.
   window.bootstrap?.Tooltip &&

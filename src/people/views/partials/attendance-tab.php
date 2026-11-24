@@ -40,7 +40,7 @@ $i18n = [
 <div id="attendance-tab"
      data-person-id="<?= (int)$iPersonID ?>"
      data-api-root="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>"
-     data-i18n="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($i18n)) ?>">
+     data-i18n="<?= InputUtils::jsonEncodeForAttribute($i18n) ?>">
 
     <!-- Loading state -->
     <div class="attendance-loading text-center py-4">

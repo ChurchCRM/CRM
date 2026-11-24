@@ -72,9 +72,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Users')],
             ]),
-            'sSettingsCollapseId' => 'userSettingsPanel',
             'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettingsPanel'],
+                ['label' => gettext('Security Settings'), 'url' => '/admin/settings#securitySettings', 'icon' => 'fa-shield-halved'],
                 ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
             ]),
         ];
@@ -240,10 +239,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Logs')],
             ]),
-            'sSettingsCollapseId' => 'logSettings',
-            'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#logSettings'],
-            ]),
             'logFiles'   => $logFiles,
         ];
 
@@ -349,10 +344,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'aBreadcrumbs'          => PageHeader::breadcrumbs([
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Upgrade')],
-            ]),
-            'sSettingsCollapseId'   => 'upgradeSettingsPanel',
-            'sPageHeaderButtons'    => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#upgradeSettingsPanel'],
             ]),
             'hasWarnings'           => $hasWarnings,
             'integrityCheckFailed'  => $integrityCheckFailed,

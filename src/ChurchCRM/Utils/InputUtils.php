@@ -191,6 +191,17 @@ class InputUtils
         return json_encode($data, $baseFlags | $flags);
     }
 
+    /**
+     * JSON for a data-* attribute. escapeAttribute() strips backslashes, which corrupts JSON escapes.
+     *
+     * @param mixed $data
+     * @throws \JsonException
+     */
+    public static function jsonEncodeForAttribute($data): string
+    {
+        return htmlspecialchars(json_encode($data, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR), ENT_QUOTES, 'UTF-8');
+    }
+
     public static function filterChar($sInput, $size = 1): string
     {
         return mb_substr(trim($sInput), 0, $size);

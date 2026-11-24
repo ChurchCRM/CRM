@@ -32,15 +32,13 @@ describe("Communication Menu and Dashboards", () => {
         cy.contains("label", "Do Not Email Property");
     });
 
-    it("Text page shows the SMS status and opens the settings panel for an admin", () => {
+    it("Text page shows the SMS status and links an admin to its setting", () => {
         cy.visit("people/text");
         cy.contains("h2", "Text");
         cy.contains("SMS Integration");
         cy.get(".alert:not(.crm-system-notification)").should("exist");
         cy.contains("Text Tools");
-        cy.contains("Text Settings").click();
-        cy.get("#textSettings").should("be.visible");
-        cy.get("#textSettings").contains("Do Not SMS Property");
+        cy.get(".page-header a[href$='/admin/settings#textMessageSettings']").should("contain", "Text Settings");
     });
 });
 
@@ -96,24 +94,21 @@ describe("Text page auto-save", () => {
 
     it("an administrator auto-saves the Do Not SMS property", () => {
         cy.intercept("POST", "**/admin/api/system/config/iDoNotSmsPropertyId").as("saveProperty");
-        cy.visit("/people/text");
-        cy.contains("Text Settings").click();
-        cy.get("#textSettings").should("be.visible");
-        cy.get("#textSettings").contains("Do Not SMS Property");
-        cy.get("#textSettings .settings-panel-save").should("not.exist");
-        cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
-        cy.get("#textSettings select[name='iDoNotSmsPropertyId'] option").then(($options) => {
+        cy.visit("/admin/settings");
+        cy.get("#textMessageSettings").contains("Do Not SMS Property");
+        cy.get("#textMessageSettings .settings-panel-save").should("not.exist");
+        cy.get("#textMessageSettings .settings-panel-fields").should("not.be.disabled");
+        cy.get("#textMessageSettings select[name='iDoNotSmsPropertyId'] option").then(($options) => {
             const next = [...$options].find((option) => option.value !== originalProperty && option.value !== "").value;
-            cy.get("#textSettings select[name='iDoNotSmsPropertyId']").select(next);
+            cy.get("#textMessageSettings select[name='iDoNotSmsPropertyId']").select(next);
             cy.wait("@saveProperty").then(({ request, response }) => {
                 expect(request.body.value).to.eq(next);
                 expect(response.statusCode).to.eq(200);
             });
             cy.request("/admin/api/system/config/iDoNotSmsPropertyId").its("body.value").should("eq", next);
             cy.reload();
-            cy.contains("Text Settings").click();
-            cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
-            cy.get("#textSettings select[name='iDoNotSmsPropertyId']").should("have.value", next);
+            cy.get("#textMessageSettings .settings-panel-fields").should("not.be.disabled");
+            cy.get("#textMessageSettings select[name='iDoNotSmsPropertyId']").should("have.value", next);
         });
     });
 });

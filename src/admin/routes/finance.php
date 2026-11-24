@@ -12,7 +12,7 @@ $app->get('/finance', function (Request $request, Response $response): Response 
 
     $sectionDefinitions = [
         'financeDeposits' => [gettext('Deposits & Payments'), 'fa-solid fa-sliders', [
-            'iFYMonth', 'iMaxTaxYears', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts',
+            'iFYMonth', 'iMaxTaxYears', 'sDepositSlipType', 'bDisplayBillCounts',
             'bUseScannedChecks', 'bRequireCheckNumber', 'bEnableNonDeductible', 'bUseDonationEnvelopes',
         ]],
         'financePledgeReminders' => [gettext('Pledge Reminders'), 'fa-solid fa-bell', [
@@ -30,7 +30,6 @@ $app->get('/finance', function (Request $request, Response $response): Response 
         'iFYMonth'                  => gettext('First month of the fiscal year'),
         'iMaxTaxYears'              => gettext('Maximum tax years shown per family'),
         'sDepositSlipType'          => gettext('Deposit ticket type'),
-        'iChecksPerDepositForm'     => gettext('Number of checks for Deposit Slip Report'),
         'bDisplayBillCounts'        => gettext('Display bill counts on deposit slip'),
         'bUseScannedChecks'         => gettext('Enable use of scanned checks'),
         'bRequireCheckNumber'       => gettext('Require check number on check payments'),
@@ -39,7 +38,7 @@ $app->get('/finance', function (Request $request, Response $response): Response 
         'sReminderSigner'           => gettext('Signer'),
         'sReminderNoPledge'         => gettext('No Pledge Text'),
         'sReminderNoPayments'       => gettext('No Payments Text'),
-        'sZeroGivers'               => gettext('Opening Line'),
+        'sZeroGivers'               => gettext('Text After Dates'),
         'sZeroGivers2'              => gettext('Closing Line'),
         'sZeroGivers3'              => gettext('Questions Line'),
         'sQBDTSettings'             => gettext('QuickBooks Deposit Ticket Settings'),

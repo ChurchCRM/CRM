@@ -259,6 +259,7 @@ interface CRMSettingsPanelSetting {
   type: "boolean" | "number" | "text" | "choice" | "password" | "date" | "textarea" | "json" | "ajax";
   label?: string;
   tooltip?: string;
+  dependsOn?: string;
   choices?: Array<string | { value: string; label: string }>;
   [key: string]: unknown;
 }

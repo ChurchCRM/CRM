@@ -9,7 +9,7 @@ describe("Finance Settings hub", () => {
             ],
             financeZeroGivers: ["sZeroGivers", "sZeroGivers2", "sZeroGivers3"],
             financeQuickBooks: ["sQBDTSettings"],
-            financeDeposits: ["iFYMonth", "iMaxTaxYears", "sDepositSlipType", "iChecksPerDepositForm", "bDisplayBillCounts", "bUseScannedChecks", "bRequireCheckNumber", "bEnableNonDeductible", "bUseDonationEnvelopes"],
+            financeDeposits: ["iFYMonth", "iMaxTaxYears", "sDepositSlipType", "bDisplayBillCounts", "bUseScannedChecks", "bRequireCheckNumber", "bEnableNonDeductible", "bUseDonationEnvelopes"],
         };
 
         cy.setupAdminSession();
@@ -78,14 +78,11 @@ describe("Finance Settings hub", () => {
             cy.wait("@saveSigner").its("response.statusCode").should("eq", 200);
 
             cy.get(options, { timeout: 30000 }).should("not.be.disabled");
-            cy.get(`${nonDeductible}:checked`)
-                .invoke("val")
-                .then((currentValue) => {
-                    const nextValue = currentValue === "1" ? "0" : "1";
+            cy.get(nonDeductible)
+                .then(($switch) => {
+                    const nextValue = $switch.is(":checked") ? "0" : "1";
 
-                    cy.get(`${nonDeductible}[value='${nextValue}']`)
-                        .closest("label")
-                        .click();
+                    cy.wrap($switch).click({ force: true });
                     cy.wait("@saveNonDeductible")
                         .its("response.statusCode")
                         .should("eq", 200);
@@ -98,10 +95,7 @@ describe("Finance Settings hub", () => {
                     cy.get(options, { timeout: 30000 }).should(
                         "not.be.disabled",
                     );
-                    cy.get(`${nonDeductible}:checked`).should(
-                        "have.value",
-                        nextValue,
-                    );
+                    cy.get(nonDeductible).should(nextValue === "1" ? "be.checked" : "not.be.checked");
                 });
         });
     });

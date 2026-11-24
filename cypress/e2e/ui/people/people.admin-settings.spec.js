@@ -62,7 +62,7 @@ describe("People Settings hub", () => {
             cy.get("#peoplePeople").should("contain.text", "Hide Friend Date");
             cy.get("#peoplePeople .form-label").filter(":contains('Set true to disable')").should("not.exist");
             cy.get(
-                "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
+                "#peoplePeople [title*='Hide the Friend Date field'], #peoplePeople [data-bs-original-title*='Hide the Friend Date field']",
             ).should("exist");
             cy.get("#peoplePeople select[name='iPersonNameStyle'] option").should("have.length", 9);
             cy.get("#peoplePeople select[name='iPersonInitialStyle'] option").should("have.length", 2);
@@ -71,7 +71,7 @@ describe("People Settings hub", () => {
             cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
             cy.get("#peopleMap select[name='sGeocoderProviders']").should("exist");
             // Hide Person Address lives under People, not twice
-            cy.get("[name='bHidePersonAddress']").should("have.length", 2); // Yes/No pills of one setting
+            cy.get("[name='bHidePersonAddress']").should("have.length", 1);
             cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
 
             cy.visit("/people/map");
@@ -115,6 +115,12 @@ describe("People Settings hub", () => {
             });
             cy.reload();
             keys.forEach((key) => cy.get(`[name='${key}']`).should("have.value", `Updated ${key}`));
+        });
+
+        it("shows Member Portal sign-in status first, with one click to its switch", () => {
+            cy.visit("/admin/people");
+            cy.get("#memberPortalStatus").should("be.visible").and("contain", "Member Portal");
+            cy.get("#memberPortalManage").should("have.attr", "href").and("include", "/admin/member-portal#portal-signin");
         });
 
         it("auto-saves the default city", () => {
@@ -173,12 +179,9 @@ describe("People Settings hub", () => {
             cy.get("#peoplePeople .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
             cy.get(".settings-panel-save").should("not.exist");
 
-            const yesRadio = "#peoplePeople input[name='bHideFriendDate'][value='1']";
-            const noRadio = "#peoplePeople input[name='bHideFriendDate'][value='0']";
-
-            cy.get(yesRadio).then(($yes) => {
-                const currentlyOn = $yes.is(":checked");
-                cy.get(currentlyOn ? noRadio : yesRadio).click({ force: true });
+            cy.get("#peoplePeople input[name='bHideFriendDate']").then(($switch) => {
+                const currentlyOn = $switch.is(":checked");
+                cy.wrap($switch).click({ force: true });
 
                 cy.wait("@saveConfig").then((interception) => {
                     expect(interception.response.statusCode).to.eq(200);

@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -50,58 +49,27 @@ $featureGroups = [
         ],
     ],
 ];
+$sections = [];
+foreach ($featureGroups as $groupName => $features) {
+    $settings = [];
+    foreach ($features as $settingKey => $settingInfo) {
+        $settings[] = ['name' => $settingKey, 'type' => 'boolean', 'label' => $settingInfo['label'], 'tooltip' => $settingInfo['description']];
+    }
+    $sections[] = ['id' => 'featureGroup' . count($sections), 'title' => $groupName, 'settings' => $settings];
+}
 ?>
 
-<div class="page-body">
-    <div class="container-xl">
-        <div class="alert alert-info">
-            <div class="d-flex">
-                <div>
-                    <i class="fa-solid fa-circle-info me-2"></i>
-                </div>
-                <div>
-                    <?= gettext('Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately.') ?>
-                </div>
-            </div>
-        </div>
-
-        <div id="featureTogglesContainer">
-            <?php foreach ($featureGroups as $groupName => $features): ?>
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h3 class="card-title"><?= $groupName ?></h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-vcenter card-table">
-                            <tbody>
-                                <?php foreach ($features as $settingKey => $settingInfo): ?>
-                                    <tr data-setting="<?= $settingKey ?>">
-                                        <td class="w-100">
-                                            <div class="font-weight-medium"><?= $settingInfo['label'] ?></div>
-                                            <small class="text-muted"><?= $settingInfo['description'] ?></small>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="d-flex align-items-center gap-2 justify-content-end">
-                                                <span class="status-badge admin-status-badge-sm" style="display: none;"></span>
-                                                <label class="form-check form-switch form-check-single m-0">
-                                                    <input class="form-check-input feature-toggle" type="checkbox"
-                                                        aria-label="<?= InputUtils::escapeAttribute($settingInfo['label']) ?>"
-                                                        data-setting="<?= $settingKey ?>"
-                                                        <?= SystemConfig::getBooleanValue($settingKey) ? 'checked' : '' ?>>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
+<div id="featureTogglesContainer" data-reload-on-save>
+    <?php foreach ($sections as $section) : ?>
+        <div id="<?= InputUtils::escapeAttribute($section['id']) ?>" class="mb-3"
+             data-title="<?= InputUtils::escapeAttribute($section['title']) ?>"
+             data-icon="fa-solid fa-toggle-on"
+             data-settings="<?= InputUtils::jsonEncodeForAttribute($section['settings']) ?>"></div>
+    <?php endforeach; ?>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/feature-toggles.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

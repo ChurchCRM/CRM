@@ -9,6 +9,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
+    <div class="card mb-3" id="memberPortalStatus">
+        <div class="card-body d-flex flex-wrap align-items-center gap-3">
+            <span class="avatar rounded-circle <?= $memberSignIn['on'] ? 'bg-success-lt' : 'bg-secondary-lt' ?>"><i class="fa-solid fa-house-user"></i></span>
+            <div class="flex-grow-1">
+                <div class="fw-bold"><?= gettext('Member Portal') ?>:
+                    <span class="badge <?= $memberSignIn['on'] ? 'bg-success-lt' : 'bg-secondary-lt' ?>"><?= $memberSignIn['on'] ? gettext('On') : gettext('Off') ?></span>
+                </div>
+                <div class="text-secondary small">
+                    <?= $memberSignIn['on'] ? gettext('Members can sign in with their email.') : InputUtils::escapeHTML($memberSignIn['emailProblem'] ?? gettext('Members cannot sign in yet.')) ?>
+                </div>
+            </div>
+            <a href="<?= InputUtils::escapeAttribute($sRootPath . '/admin/member-portal#portal-signin') ?>" class="btn <?= $memberSignIn['on'] ? 'btn-outline-secondary' : 'btn-primary' ?>" id="memberPortalManage">
+                <?= $memberSignIn['on'] ? gettext('Manage Member Portal') : gettext('Turn on member sign-in') ?>
+            </a>
+        </div>
+    </div>
+
     <div class="row mb-3">
         <?php foreach ($listLinks as [$label, $path, $icon]) : ?>
             <div class="col-6 col-lg-3 mb-3">

@@ -98,35 +98,8 @@ $app->get('/', function (Request $request, Response $response) {
     // rather than letting birthday emails silently stop going out.
     $timerJobsLastRun = SystemService::getLastTimerJobsRun();
 
-    $searchLabels = [
-        'bSearchIncludePersons' => [gettext('Search People'), gettext('Include people in quick global search')],
-        'bSearchIncludeFamilies' => [gettext('Search Families'), gettext('Include families in quick global search')],
-        'bSearchIncludeGroups' => [gettext('Search Groups'), gettext('Include groups in quick global search')],
-        'bSearchIncludeDeposits' => [gettext('Search Deposits'), gettext('Include deposits in quick global search')],
-        'bSearchIncludePayments' => [gettext('Search Payments'), gettext('Include payments in quick global search')],
-        'bSearchIncludeAddresses' => [gettext('Search Addresses'), gettext('Include addresses in quick global search')],
-        'bSearchIncludeCalendarEvents' => [gettext('Search Calendar Events'), gettext('Include calendar events in quick global search')],
-        'bSearchIncludeFamilyCustomProperties' => [gettext('Search Family Custom Properties'), gettext('Include custom family properties in quick global search')],
-    ];
-
-    $searchKeys = ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeFamilyCustomProperties'];
-    if (SystemConfig::getBooleanValue('bEnabledFinance')) {
-        array_push($searchKeys, 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax');
-    }
-    if (SystemConfig::getBooleanValue('bEnabledEvents')) {
-        array_push($searchKeys, 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax');
-    }
 
     $pageArgs = [
-        'searchSettings' => array_map(static function (array $setting) use ($searchLabels): array {
-            if (isset($searchLabels[$setting['name']])) {
-                [$setting['label'], $setting['tooltip']] = $searchLabels[$setting['name']];
-            }
-            if (str_ends_with($setting['name'], 'Max')) {
-                $setting['type'] = 'number';
-            }
-            return $setting;
-        }, SystemConfig::getSettingsConfig($searchKeys)),
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Admin Dashboard'),
         'sPageSubtitle'    => gettext("Let's get your system set up and ready to use"),
@@ -135,25 +108,9 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
             ...(InstallSetupService::isWindowOpen() ? [['label' => gettext('Setup Dashboard'), 'url' => '/admin/setup', 'icon' => 'fa-list-check']] : []),
-            ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
+            ['label' => gettext('Settings'), 'url' => '/admin/settings', 'icon' => 'fa-sliders'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
         ]),
-        'scheduledTaskSettings' => array_map(static function (array $setting): array {
-            $setting['label'] = $setting['name'] === 'iTimerJobsStaleHours'
-                ? gettext('Warning After (Hours)')
-                : gettext('Minimum Interval (Minutes)');
-            return $setting;
-        }, SystemConfig::getSettingsConfig(['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'])),
-        'pdfSettings' => array_map(static function (array $setting): array {
-            $setting['label'] = gettext('PDF Temporary Directory');
-            $setting['tooltip'] = gettext($setting['tooltip']);
-            return $setting;
-        }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
-        'setupSettings' => array_map(static function (array $setting): array {
-            $setting['label'] = gettext('Setup Dashboard Days');
-            $setting['tooltip'] = gettext($setting['tooltip']);
-            return $setting;
-        }, SystemConfig::getSettingsConfig([InstallSetupService::DAYS_SETTING])),
         'setupChecklist'   => $setupChecklist,
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,

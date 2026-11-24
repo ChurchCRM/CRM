@@ -20,7 +20,7 @@ $app->get('/calendars', function (Request $request, Response $response) {
         ['label' => gettext('Calendars'), 'icon' => 'fa-layer-group', 'offcanvas' => '#calendarSidebar', 'adminOnly' => false],
     ];
     if ($isAdmin) {
-        $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'collapse' => '#calendarSettings', 'adminOnly' => true];
+        $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'url' => '/admin/settings#publicCalendarSettings', 'adminOnly' => true];
         $headerButtons[] = ['label' => gettext('Holiday Settings'), 'icon' => 'fa-calendar-days', 'url' => '/plugins/management/holidays', 'adminOnly' => true];
     }
 
@@ -40,7 +40,6 @@ $app->get('/calendars', function (Request $request, Response $response) {
             [gettext('Calendar')],
         ]),
         'sPageHeaderButtons'   => PageHeader::buttons($headerButtons),
-        'sSettingsCollapseId'  => $isAdmin ? 'calendarSettings' : '',
         'isAdmin'              => $isAdmin,
         'calendarJSArgs'       => $calendarJSArgs,
     ]);

@@ -1134,15 +1134,4 @@ document.addEventListener("DOMContentLoaded", () => {
     await applyFcLocale(window.CRM.fullcalendar);
     window.CRM.fullcalendar.render();
   });
-
-  // Initialize the system settings panel for admins (config provided inline by view)
-  if (window.CRM.calendarSettingsPanel && window.CRM.settingsPanel) {
-    const cfg = window.CRM.calendarSettingsPanel;
-    window.CRM.settingsPanel.init({
-      ...cfg,
-      onSave: () => {
-        setTimeout(() => window.location.reload(), 1500);
-      },
-    });
-  }
 });

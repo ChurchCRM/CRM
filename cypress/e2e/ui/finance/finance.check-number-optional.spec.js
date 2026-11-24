@@ -50,7 +50,7 @@ describe("Treasurer records checks without check numbers", () => {
         cy.intercept("POST", "**/admin/api/system/config/bRequireCheckNumber").as("saveRequireCheckNumber");
         cy.visit("/admin/finance");
         cy.get("#financeDeposits .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-        cy.get("#financeDeposits input[name='bRequireCheckNumber'][value='0']").check({ force: true });
+        cy.get("#financeDeposits input[name='bRequireCheckNumber']").uncheck({ force: true });
         cy.wait("@saveRequireCheckNumber").its("response.statusCode").should("eq", 200);
         cy.getSystemConfig("bRequireCheckNumber").should("eq", "0");
 

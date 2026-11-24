@@ -149,14 +149,13 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
                 </p>
                 <pre class="mb-2"><code id="timer-jobs-cron-command">0 * * * * <?= InputUtils::escapeHTML($timerJobsCronCommand ?? '') ?></code></pre>
                 <p class="mb-0 small text-muted">
-                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), '<a href="#scheduledTasksSettings">' . gettext('Scheduled Tasks') . '</a>') ?>
+                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), '<a href="' . SystemURLs::getRootPath() . '/admin/settings#scheduledTasksSettings">' . gettext('Scheduled Tasks') . '</a>') ?>
                 </p>
             </div>
         </div>
     </div>
     <?php endif; ?>
 
-    <div id="scheduledTasksSettings" class="mb-3" data-settings="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($scheduledTaskSettings)) ?>"></div>
 
     <?php if (!empty($formerPortalAccounts)): ?>
     <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
@@ -475,37 +474,6 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
             </div>
 
 
-            <!-- Feature Toggles Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-status-top bg-danger"></div>
-                <div class="card-header py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-toggle-on"></i> <?= gettext('Feature Toggles') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <?php foreach ([
-                        'bEnabledFinance'      => gettext('Finance'),
-                        'bEnabledFundraiser'   => gettext('Fundraiser'),
-                        'bEnabledEvents'       => gettext('Events'),
-                        'bEnabledSundaySchool' => gettext('Sunday School'),
-                        'bEnabledEmail'        => gettext('Email'),
-                    ] as $toggleKey => $toggleLabel): ?>
-                        <label class="d-flex justify-content-between align-items-center mb-2">
-                            <span><?= InputUtils::escapeHTML($toggleLabel) ?></span>
-                            <span class="form-check form-switch m-0">
-                                <input class="form-check-input dashboard-feature-toggle" type="checkbox"
-                                       data-setting="<?= InputUtils::escapeAttribute($toggleKey) ?>"
-                                       aria-label="<?= InputUtils::escapeAttribute($toggleLabel) ?>"
-                                       <?= SystemConfig::getBooleanValue($toggleKey) ? 'checked' : '' ?>>
-                            </span>
-                        </label>
-                    <?php endforeach; ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/feature-toggles" class="btn btn-sm btn-outline-danger w-100 mt-2">
-                        <i class="fa-solid fa-sliders"></i><?= gettext('Manage All Features') ?>
-                    </a>
-                </div>
-            </div>
 
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
@@ -554,32 +522,10 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
     </div>
 </div>
 
-<div class="container-fluid mb-3">
-    <div id="quickSearchSettings" class="mb-3" data-settings="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($searchSettings)) ?>"></div>
-    <div id="reportingSettings" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($pdfSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
-    <div id="setupSettings" class="mt-3" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($setupSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
-</div>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 
 <!-- Load admin dashboard JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-document.querySelectorAll('.dashboard-feature-toggle').forEach((toggle) => {
-    toggle.addEventListener('change', () => {
-        const checked = toggle.checked;
-        toggle.disabled = true;
-        fetch('<?= SystemURLs::getRootPath() ?>/admin/api/system/feature-toggles', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ [toggle.dataset.setting]: checked ? '1' : '0' }),
-        })
-            .then((r) => { if (!r.ok) throw new Error(r.status); location.reload(); })
-            .catch(() => { toggle.checked = !checked; toggle.disabled = false; window.CRM.notify(i18next.t('Error'), 'danger'); });
-    });
-});
-</script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

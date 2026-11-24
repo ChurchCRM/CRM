@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GradePromotionService;
+use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -42,6 +43,8 @@ $app->get('/people', function (Request $request, Response $response): Response {
     // Short labels; the legacy sentence stays as the help text.
     $labels = [
         'bEnableSelfRegistration'              => gettext('Self-Registration'),
+        'iPersonNameStyle'                     => gettext('Name Format'),
+        'iPersonInitialStyle'                  => gettext('Initials Format'),
         'bHidePersonAddress'                   => gettext('Hide Address Without Family'),
         'bHideFriendDate'                      => gettext('Hide Friend Date'),
         'bHideWeddingDate'                     => gettext('Hide Wedding Date'),
@@ -149,6 +152,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
         ]),
         'sections'      => $sections,
         'gradePromotion' => gradePromotionSummary(),
+        'memberSignIn'  => ['on' => SystemConfig::getBooleanValue('bMemberSignIn'), 'emailProblem' => (new MemberSignInSettingsService())->emailProblem()],
         'listLinks'     => array_values(array_filter([
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
             [gettext('Person Properties'), '/people/properties/p', 'fa-person-half-dress'],
@@ -157,7 +161,6 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/people/properties/f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
-            [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
         ])),
     ];
 

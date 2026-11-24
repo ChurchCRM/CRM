@@ -1,36 +1,25 @@
 /// <reference types="cypress" />
 
-describe("Administrator adjusts scheduled-task timing on the dashboard", () => {
-    const keys = ["iTimerJobsStaleHours", "iTimerJobsMinIntervalMinutes"];
-    const original = {};
-    const input = (key) => `#scheduledTasksSettings input[name='${key}']`;
+describe("Administrator adjusts the scheduled-task warning", () => {
+    const key = "iTimerJobsStaleHours";
+    const input = `#scheduledTasksSettings input[name='${key}']`;
+    let original;
 
-    before(() => {
-        keys.forEach((key) => cy.getSystemConfig(key).then((value) => { original[key] = value; }));
-        cy.restoreSystemConfig(keys[0], "26");
-        cy.restoreSystemConfig(keys[1], "15");
-    });
+    before(() => cy.getSystemConfig(key).then((value) => { original = value; }));
+    after(() => cy.restoreSystemConfig(key, original));
 
-    after(() => {
-        keys.forEach((key) => cy.restoreSystemConfig(key, original[key]));
-    });
-
-    it("auto-saves both controls, preserves zero values and keeps the run marker internal", () => {
+    it("auto-saves the warning threshold, keeps 0, and shows no internal timing fields", () => {
+        cy.restoreSystemConfig(key, "26");
         cy.freshAdminFormLogin({ enabled: true });
-        cy.intercept("POST", "**/admin/api/system/config/*").as("saveTiming");
+        cy.intercept("POST", `**/admin/api/system/config/${key}`).as("save");
+        cy.visit("/admin/settings");
+        cy.get(input).should("have.value", "26");
+        cy.get("[name='iTimerJobsMinIntervalMinutes'], [name='sLastTimerJobsRunDateTime']").should("not.exist");
+        cy.get(input).clear().type("0").blur();
+        cy.wait("@save").its("response.statusCode").should("eq", 200);
+        cy.reload();
+        cy.get(input).should("have.value", "0");
         cy.visit("/admin/");
-        cy.get(input(keys[0])).should("have.value", "26");
-        cy.get(input(keys[1])).should("have.value", "15");
-        cy.get("[name='sLastTimerJobsRunDateTime']").should("not.exist");
-        [["48", "0"], ["0", "3"]].forEach((values) => {
-            keys.forEach((key, index) => {
-                cy.get(input(key)).clear().type(values[index]).blur();
-                cy.wait("@saveTiming").its("response.statusCode").should("eq", 200);
-            });
-            cy.reload();
-            keys.forEach((key, index) => cy.get(input(key)).should("have.value", values[index]));
-        });
         cy.get("#timer-jobs-stale-warning").should("not.exist");
-        keys.forEach((key, index) => cy.getSystemConfig(key).should("eq", index === 0 ? "0" : "3"));
     });
 });

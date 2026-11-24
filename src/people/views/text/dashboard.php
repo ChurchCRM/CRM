@@ -1,10 +1,8 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -61,35 +59,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-    window.CRM.settingsPanel.init({
-        container: '#textSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Text Settings')) ?>,
-        icon: 'fa-solid fa-comment-sms',
-        settings: [
-            {
-                name: 'iDoNotSmsPropertyId',
-                type: 'ajax',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Do Not SMS Property')) ?>,
-                ajaxUrl: '/admin/api/system/properties/person',
-                tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iDoNotSmsPropertyId')) ?>
-            }
-        ],
-        autoSave: true,
-    });
-<?php if (isset($_GET['settings']) && $_GET['settings'] === 'open'): ?>
-    var textSettingsEl = document.getElementById('textSettings');
-    if (textSettingsEl) {
-        new bootstrap.Collapse(textSettingsEl, { toggle: false }).show();
-    }
-<?php endif; ?>
-});
-</script>
-<?php endif; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

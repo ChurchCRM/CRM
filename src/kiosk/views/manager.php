@@ -75,7 +75,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php if (!empty($kioskSettings)) : ?>
 <div id="kioskSettings" class="mb-4"
      data-title="<?= InputUtils::escapeAttribute(gettext('Kiosk Settings')) ?>"
-     data-settings="<?= InputUtils::escapeAttribute(json_encode($kioskSettings)) ?>"></div>
+     data-settings="<?= InputUtils::jsonEncodeForAttribute($kioskSettings) ?>"></div>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

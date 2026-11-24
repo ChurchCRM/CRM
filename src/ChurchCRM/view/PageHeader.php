@@ -51,7 +51,6 @@ class PageHeader
      *                 pair with adminOnly => false
      *
      * Button types (mutually exclusive, checked in this order):
-     *   - collapse   string '#targetId'  — Bootstrap collapse toggle
      *   - offcanvas  string '#targetId'  — Bootstrap offcanvas trigger
      *   - js         bool   true         — JS-wired button (no href, no inline onclick).
      *                                      Requires 'id' key; optional 'data' array for data-* attrs.
@@ -62,7 +61,6 @@ class PageHeader
      *     label: string,
      *     url?: string,
      *     icon?: string,
-     *     collapse?: string,
      *     offcanvas?: string,
      *     js?: bool,
      *     id?: string,
@@ -97,14 +95,7 @@ class PageHeader
             $btnClass = htmlspecialchars((string) ($btn['class'] ?? 'btn-outline-secondary'), ENT_QUOTES, 'UTF-8');
             $icon = isset($btn['icon']) ? '<i class="fa-solid ' . $btn['icon'] . ' me-1"></i>' : '';
 
-            if (isset($btn['collapse'])) {
-                // Settings toggle button (Bootstrap collapse)
-                $target = $btn['collapse'];
-                $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
-                    . ' data-bs-toggle="collapse" data-bs-target="' . $target . '"'
-                    . ' aria-expanded="false" aria-controls="' . ltrim($target, '#') . '">'
-                    . $icon . $label . '</button>';
-            } elseif (isset($btn['offcanvas'])) {
+            if (isset($btn['offcanvas'])) {
                 // Offcanvas trigger button
                 $target = $btn['offcanvas'];
                 $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'

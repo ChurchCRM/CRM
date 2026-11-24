@@ -29,9 +29,8 @@ function getPeopleTextDashboard(Request $request, Response $response, array $arg
             [gettext('People'), '/people/dashboard'],
             [gettext('Text')],
         ]),
-        'sSettingsCollapseId' => 'textSettings',
         'sPageHeaderButtons' => PageHeader::buttons([
-            ['label' => gettext('Text Settings'), 'collapse' => '#textSettings', 'icon' => 'fa-sliders'],
+            ['label' => gettext('Text Settings'), 'url' => '/admin/settings#textMessageSettings', 'icon' => 'fa-sliders'],
         ]),
         'vonageConfigured'   => $vonagePlugin !== null && $vonagePlugin->isConfigured(),
     ];

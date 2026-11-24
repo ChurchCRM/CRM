@@ -30,39 +30,18 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: (setting, value) => {
         const isOn = value === "1" || value === "true" || value === true;
         return `
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="form-label small fw-bold mb-1">
-                            ${escapeHtml(resolve(setting.label))}
-                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
-                        </div>
-                        <div class="form-selectgroup form-selectgroup-pills">
-                            <label class="form-selectgroup-item">
-                                <input type="radio" class="form-selectgroup-input setting-input"
-                                       name="${setting.name}" value="1"
-                                       data-type="boolean"
-                                       ${isOn ? "checked" : ""}>
-                                <span class="form-selectgroup-label">
-                                    <i class="fa-solid fa-check me-1"></i>${t("Yes")}
-                                </span>
-                            </label>
-                            <label class="form-selectgroup-item">
-                                <input type="radio" class="form-selectgroup-input setting-input"
-                                       name="${setting.name}" value="0"
-                                       data-type="boolean"
-                                       ${!isOn ? "checked" : ""}>
-                                <span class="form-selectgroup-label">
-                                    <i class="fa-solid fa-xmark me-1"></i>${t("No")}
-                                </span>
-                            </label>
-                        </div>
+                    <div class="col-md-6 col-lg-4 mb-3 d-flex align-items-center">
+                        <label class="form-check form-switch mb-0">
+                            <input type="checkbox" class="form-check-input setting-input"
+                                   id="${setting.name}" name="${setting.name}" value="1"
+                                   data-type="boolean" ${isOn ? "checked" : ""}>
+                            <span class="form-check-label fw-bold small">${escapeHtml(resolve(setting.label))}</span>
+                        </label>
+                        ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
                     </div>
                 `;
       },
-      getValue: (el) => {
-        // Radio inputs: only the checked one returns a value; unchecked returns null (skipped in save)
-        if (el.type === "radio") return el.checked ? el.value : null;
-        return el.checked ? "1" : "0";
-      },
+      getValue: (el) => (el.checked ? "1" : "0"),
     },
     number: {
       render: (setting, value) => `
@@ -572,19 +551,10 @@ import "../src/skin/scss/system-settings-panel.scss";
       });
     }
 
-    // Update a single input (or radio group) without re-rendering the whole panel
+    // Update a single input without re-rendering the whole panel
     applyValue(name, value) {
       const inputs = this.container.querySelectorAll(`[name="${name}"]`);
       if (inputs.length === 0) return;
-
-      if (inputs.length > 1) {
-        // Radio group (boolean pills): check the radio whose value matches
-        const normalized = value === "1" || value === true || value === "true" ? "1" : "0";
-        inputs.forEach((input) => {
-          input.checked = input.value === normalized;
-        });
-        return;
-      }
 
       const input = inputs[0];
       if (input.dataset.type === "multiselect" && input.tomselect) {
@@ -598,6 +568,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
       if (input.dataset.type === "boolean") {
         input.checked = value === "1" || value === "true" || value === true;
+        this.syncDependents();
       } else {
         input.value = value != null ? value : "";
       }
@@ -667,6 +638,14 @@ import "../src/skin/scss/system-settings-panel.scss";
             `;
 
       this.container.innerHTML = html;
+      this.options.settings
+        .map((setting) => this.getSettingConfig(setting))
+        .filter((cfg) => cfg.dependsOn)
+        .forEach((cfg) => {
+          const field = this.container.querySelector(`[name="${cfg.name}"]`)?.closest("[class*='col-']");
+          if (field) field.dataset.dependsOn = cfg.dependsOn;
+        });
+      this.syncDependents();
       if (this.options.columns === 2) {
         this.container.querySelectorAll(".col-lg-4").forEach((el) => el.classList.replace("col-lg-4", "col-lg-6"));
       }
@@ -678,16 +657,28 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
     }
 
+    // A setting with dependsOn shows only while that boolean setting is on.
+    syncDependents() {
+      this.container.querySelectorAll("[data-depends-on]").forEach((field) => {
+        const parent = this.container.querySelector(`input[name="${field.dataset.dependsOn}"]`);
+        field.classList.toggle("d-none", !parent?.checked);
+      });
+    }
+
     // Get merged setting configuration from the caller-supplied object.
     // Falls back to { type: "text", label: name } when no config is provided.
     getSettingConfig(setting) {
       const name = typeof setting === "string" ? setting : setting.name;
       const customConfig = typeof setting === "object" ? setting : {};
-      return Object.assign({ name: name, type: "text", label: name }, customConfig);
+      const config = Object.assign({ name: name, type: "text", label: name }, customConfig);
+      const same = (text) => resolve(text).trim().toLowerCase();
+      if (config.tooltip && same(config.tooltip) === same(config.label)) delete config.tooltip;
+      return config;
     }
 
     // Bind event handlers
     bindEvents() {
+      this.container.addEventListener("change", () => this.syncDependents());
       this.container.querySelectorAll('select[data-type="country"]').forEach((el) => {
         el.addEventListener("change", () => {
           const keep = el.dataset.keepState || "";
@@ -787,9 +778,12 @@ import "../src/skin/scss/system-settings-panel.scss";
           ...(this.options.csrfToken ? { "X-CSRF-Token": this.options.csrfToken } : {}),
         },
         body: JSON.stringify({ value: value }),
-      }).then((response) => {
+      }).then(async (response) => {
         if (!response.ok) {
-          throw new Error(`${key}: ${response.status} ${response.statusText}`);
+          const body = await response.json().catch(() => ({}));
+          const error = new Error(`${key}: ${response.status} ${response.statusText}`);
+          error.userMessage = body.message;
+          throw error;
         }
         return response;
       });
@@ -814,9 +808,12 @@ import "../src/skin/scss/system-settings-panel.scss";
             this.options.onSave({ [name]: val });
           }
         })
-        .catch(() => {
+        .catch((error) => {
           if (window.CRM?.notify) {
-            window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
+            window.CRM.notify(error.userMessage ? escapeHtml(error.userMessage) : t("Failed to save settings"), {
+              type: "error",
+              delay: 5000,
+            });
           }
           if (this.latestValues[name] === val) this.revertField(input);
         });

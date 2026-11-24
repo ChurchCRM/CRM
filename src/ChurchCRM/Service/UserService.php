@@ -191,7 +191,13 @@ class UserService
             'i2FAGracePeriodDays',
         ];
 
-        return SystemConfig::getSettingsConfig($userSettings);
+        return array_map(static function (array $setting): array {
+            if ($setting['name'] === 'i2FAGracePeriodDays') {
+                $setting['dependsOn'] = 'bRequire2FA';
+            }
+
+            return $setting;
+        }, SystemConfig::getSettingsConfig($userSettings));
     }
 
     /**

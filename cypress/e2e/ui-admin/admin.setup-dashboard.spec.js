@@ -147,18 +147,4 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         staffSignIn();
         cy.get("#demoModeBanner").should("be.visible").find(".js-start-fresh").should("not.exist");
     });
-
-    it("ends with the window, which the admin can lengthen from the Admin Dashboard", () => {
-        setInstallAgeDays(31);
-        cy.freshAdminFormLogin();
-        cy.location("pathname").should("match", STANDARD);
-
-        cy.intercept("POST", `**/admin/api/system/config/${DAYS}`).as("saveDays");
-        cy.visit("/admin/");
-        cy.get(`#setupSettings input[name='${DAYS}']`).should("not.be.disabled").clear().type("60").blur();
-        cy.wait("@saveDays").its("response.statusCode").should("eq", 200);
-
-        cy.freshAdminFormLogin();
-        cy.location("pathname").should("match", SETUP);
-    });
 });

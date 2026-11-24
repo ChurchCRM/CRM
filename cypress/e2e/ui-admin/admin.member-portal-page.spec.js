@@ -228,9 +228,9 @@ describe("Admin → Member Portal page", () => {
                     .and("contain.text", label);
                 cy.get(`${panel} .settings-panel-save`).should("not.exist");
 
-                cy.get(`${panel} input[name='${name}'][value='1']`).then(($yes) => {
-                    const flipped = $yes.is(":checked") ? "0" : "1";
-                    cy.get(`${panel} input[name='${name}'][value='${flipped}']`).click({ force: true });
+                cy.get(`${panel} input[name='${name}']`).then(($switch) => {
+                    const flipped = $switch.is(":checked") ? "0" : "1";
+                    cy.wrap($switch).click({ force: true });
                     cy.wait("@saveSwitch").then((interception) => {
                         expect(interception.response.statusCode).to.eq(200);
                         expect(String(interception.request.body.value)).to.eq(flipped);
