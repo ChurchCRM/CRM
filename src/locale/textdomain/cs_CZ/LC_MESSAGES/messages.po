@@ -28304,3 +28304,155 @@ msgstr "Ověřit nyní"
 msgid "View Giving History"
 msgstr "Zobrazit historii darů"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Úspěšně bylo přidáno %d lidí; %d lidí se nepodařilo přidat a zůstávají v košíku."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d lidí se nepodařilo přidat a zůstávají ve vašem košíku."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Správci uvidí toto varování na každé stránce, dokud nebude databáze převedena na verzi, která stále dostává bezpečnostní opravy. Přesun nyní, dokud je dat málo, je nejjednodušší."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Správci se od nynějška budou přihlašovat do standardní nástěnky. Nástěnka nastavení se při přihlášení už neotevře."
+
+#: 
+msgid "Database security risk"
+msgstr "Bezpečnostní riziko databáze"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Režim ukázky také zapíná anonymní statistiky používání (PostHog), abychom viděli, jak lidé ChurchCRM objevují. Funkce Začít znovu je vypne."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Nastavení e-mailu uloženo. Přihlašování členů je nyní zapnuté, takže se členové mohou přihlásit do Členského portálu pomocí svého e-mailu."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Zadejte informace o svém sboru, přidejte své lidi a pozvěte svůj tým."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Vše zde jsou ukázková data. Než zadáte skutečné informace o svém sboru, začněte znovu."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Vše zde jsou ukázková data. Až budete připraveni používat ChurchCRM pro svůj sbor, začněte znovu: smaže to ukázková data i veškerá nastavení, abyste mohli začít s vlastními."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Prozkoumejte ChurchCRM s ukázkovými daty, nebo jej nastavte pro svůj sbor"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Nepodařilo se přidat osobu do skupiny"
+
+#: 
+msgid "Finish setup"
+msgstr "Dokončit nastavení"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Tolik dní po instalaci se správci přihlašují do Nástěnky nastavení. Nastavením 0 funkci vypnete."
+
+#: 
+msgid "Group Assignment"
+msgstr "Přiřazení do skupin"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Interní: správce zvolil Dokončit nastavení na Nástěnce nastavení. Neupravujte ručně."
+
+#: 
+msgid "Keep exploring"
+msgstr "Pokračovat v prozkoumávání"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Přecházíte z jiného serveru ChurchCRM? Obnovte zálohu vytvořenou tam. Tím se v této instalaci nahradí vše."
+
+#: 
+msgid "Ready for your church"
+msgstr "Připraveno pro váš sbor"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Zkusit znovu přiřazení do skupin"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Zkusit znovu přiřazení do skupin"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Vyberte pro tuto osobu jednu nebo více skupin."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Vyberte skupiny, které chcete zkusit znovu."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Nastavte svůj sbor"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Nástěnka nastavení"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Dny nástěnky nastavení"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Funkce Začít znovu na banneru ukázky nebo Vymazat databázi na Nástěnce správce smaže ukázková data i veškerá nastavení a vrátí ChurchCRM do stavu nové instalace."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Nejprve začněte znovu a poté nastavte ChurchCRM s informacemi o svém vlastním sboru."
+
+#: 
+msgid "Start setup"
+msgstr "Zahájit nastavení"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Ukázková data jsou pryč. Přihlaste se výchozím účtem správce a nastavte svůj sbor."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Osoba byla uložena, ale jedno nebo více přiřazení do skupin se nezdařilo. Vyberte skupiny níže a zkuste to znovu."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Osoba byla uložena, ale jedno nebo více přiřazení do skupin se nezdařilo. Neúspěšné skupiny jsou vybrány níže. Zkontrolujte je a uložte znovu pro další pokus."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Tím se smažou ukázková data i veškerá nastavení a ChurchCRM se vrátí do stavu nové instalace."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Znovu se přihlásíte výchozím účtem správce a zadáte informace o svém sboru."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Prozkoumáváte ChurchCRM s ukázkovými daty."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Prozkoumáváte ukázková data"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informace o vašem sboru jsou uloženy. Postupujte podle kroků níže."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaše databáze (%1$s %2$s) je bezpečnostní riziko: její dodavatel už pro tuto verzi nevydává bezpečnostní opravy. ChurchCRM dál funguje, ale požádejte svého hostitele o přechod na MariaDB %3$s+ nebo MySQL %4$s+."
+

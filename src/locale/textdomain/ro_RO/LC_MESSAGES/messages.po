@@ -28372,3 +28372,155 @@ msgstr "Verificați acum"
 msgid "View Giving History"
 msgstr "Vizualizați istoricul donațiilor"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d persoane adăugate cu succes; %d persoane nu au putut fi adăugate și rămân în coș."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d persoane nu au putut fi adăugate și rămân în coșul dvs."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administratorii vor vedea acest avertisment pe fiecare pagină până când baza de date va fi mutată la o versiune care primește încă remedieri de securitate. Mutarea acum, cât timp există puține date, este cea mai ușoară."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "De acum înainte, administratorii se vor autentifica în panoul de bord standard. Panoul de configurare nu se va mai deschide la autentificare."
+
+#: 
+msgid "Database security risk"
+msgstr "Risc de securitate al bazei de date"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Modul demonstrativ activează și statisticile anonime de utilizare (PostHog), ca să putem vedea cum explorează oamenii ChurchCRM. Începe de la zero le dezactivează."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Setări e-mail salvate. Autentificarea membrilor este acum activată, deci membrii se pot autentifica în Portalul comunității cu e-mailul lor."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Introduceți informațiile bisericii dvs., adăugați persoanele și invitați-vă echipa."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Totul aici este format din date de exemplu. Începeți de la zero înainte de a introduce informațiile reale ale bisericii dvs."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Totul aici este format din date de exemplu. Când sunteți gata să folosiți ChurchCRM pentru biserica dvs., începeți de la zero: șterge datele demonstrative și fiecare setare, ca să puteți începe cu ale dvs."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Explorați ChurchCRM cu date demonstrative sau configurați-l pentru biserica dvs."
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Eșec la adăugarea persoanei în grup"
+
+#: 
+msgid "Finish setup"
+msgstr "Finalizează configurarea"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Timp de acest număr de zile după instalare, administratorii se autentifică în panoul de configurare. Setați 0 pentru a-l dezactiva."
+
+#: 
+msgid "Group Assignment"
+msgstr "Atribuire la grupuri"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Intern: un administrator a ales Finalizează configurarea în panoul de configurare. Nu editați manual."
+
+#: 
+msgid "Keep exploring"
+msgstr "Continuă explorarea"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Vă mutați de pe alt server ChurchCRM? Restaurați o copie de rezervă făcută acolo. Aceasta înlocuiește totul în această instalare."
+
+#: 
+msgid "Ready for your church"
+msgstr "Gata pentru biserica ta"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Reîncearcă atribuirea la grupuri"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Reîncearcă atribuirile la grupuri"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Selectați unul sau mai multe grupuri pentru această persoană."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Selectați grupurile pe care doriți să le reîncercați."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Configurează-ți biserica"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Panou de configurare"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Zile panou de configurare"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Începe de la zero, din bannerul demonstrativ, sau Resetare bază de date, din Panoul de control administrator, șterge datele demonstrative și fiecare setare și readuce ChurchCRM la o instalare nouă."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Mai întâi începeți de la zero, apoi configurați ChurchCRM cu informațiile propriei biserici."
+
+#: 
+msgid "Start setup"
+msgstr "Începe configurarea"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Datele demonstrative au dispărut. Autentificați-vă cu contul de administrator implicit pentru a vă configura biserica."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Persoana a fost salvată, dar una sau mai multe atribuiri la grupuri au eșuat. Selectați grupurile de mai jos și reîncercați."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Persoana a fost salvată, dar una sau mai multe atribuiri la grupuri au eșuat. Grupurile nereușite sunt selectate mai jos. Verificați-le și salvați din nou pentru a reîncerca."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Aceasta șterge datele demonstrative și fiecare setare și readuce ChurchCRM la o instalare nouă."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Vă veți autentifica din nou cu contul de administrator implicit și veți introduce informațiile bisericii dvs."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Explorați ChurchCRM cu date demonstrative."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Explorați date demonstrative"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informațiile bisericii dvs. au fost salvate. Parcurgeți pașii de mai jos."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Baza dvs. de date (%1$s %2$s) este un risc de securitate: furnizorul ei nu mai publică remedieri de securitate pentru acea versiune. ChurchCRM funcționează în continuare, dar cereți gazdei dvs. să treacă la MariaDB %3$s+ sau MySQL %4$s+."
+

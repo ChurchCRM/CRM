@@ -28243,3 +28243,155 @@ msgstr "Verifikasi sekarang"
 msgid "View Giving History"
 msgstr "Lihat Riwayat Pemberian"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d orang berhasil ditambahkan; %d orang tidak dapat ditambahkan dan tetap berada di keranjang."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d orang tidak dapat ditambahkan dan tetap berada di keranjang Anda."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administrator akan melihat peringatan ini di setiap halaman hingga basis data dipindahkan ke versi yang masih mendapatkan perbaikan keamanan. Pindah sekarang, selagi data masih sedikit, adalah yang paling mudah."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administrator akan masuk ke dasbor standar mulai sekarang. Dasbor Pengaturan tidak akan terbuka lagi saat masuk."
+
+#: 
+msgid "Database security risk"
+msgstr "Risiko keamanan basis data"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Mode demo juga mengaktifkan statistik penggunaan anonim (PostHog), sehingga kami dapat melihat bagaimana orang menjelajahi ChurchCRM. Mulai dari Awal menonaktifkannya."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Pengaturan email tersimpan. Masuk anggota sekarang aktif, sehingga anggota dapat masuk ke Portal Jemaat dengan email mereka."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Masukkan informasi gereja Anda, tambahkan jemaat Anda, dan undang tim Anda."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Semua yang ada di sini adalah data contoh. Mulai dari awal sebelum Anda memasukkan informasi gereja Anda yang sebenarnya."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Semua yang ada di sini adalah data contoh. Saat Anda siap menggunakan ChurchCRM untuk gereja Anda, mulai dari awal: tindakan ini menghapus data demo dan setiap pengaturan sehingga Anda dapat memulai dengan milik Anda sendiri."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Jelajahi ChurchCRM dengan data demo, atau siapkan untuk gereja Anda"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Gagal menambahkan orang ke kelompok"
+
+#: 
+msgid "Finish setup"
+msgstr "Selesaikan pengaturan"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Selama jumlah hari ini setelah instalasi, administrator masuk ke Dasbor Pengaturan. Atur ke 0 untuk menonaktifkannya."
+
+#: 
+msgid "Group Assignment"
+msgstr "Penugasan Kelompok"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Internal: administrator memilih Selesaikan pengaturan di Dasbor Pengaturan. Jangan edit secara manual."
+
+#: 
+msgid "Keep exploring"
+msgstr "Terus menjelajah"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Pindah dari server ChurchCRM lain? Pulihkan cadangan yang dibuat di sana. Ini menggantikan semua yang ada di instalasi ini."
+
+#: 
+msgid "Ready for your church"
+msgstr "Siap untuk gereja Anda"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Coba Lagi Penugasan Kelompok"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Coba lagi penugasan kelompok"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Pilih satu atau beberapa kelompok untuk orang ini."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Pilih kelompok yang ingin Anda coba lagi."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Siapkan Gereja Anda"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dasbor Pengaturan"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Hari Dasbor Pengaturan"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Mulai dari Awal pada banner demo, atau Reset Database pada Dasbor Admin, menghapus data demo dan setiap pengaturan dan mengembalikan ChurchCRM ke instalasi baru."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Mulai dari awal terlebih dahulu, lalu siapkan ChurchCRM dengan informasi gereja Anda sendiri."
+
+#: 
+msgid "Start setup"
+msgstr "Mulai pengaturan"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Data demo telah hilang. Masuk dengan akun administrator default untuk menyiapkan gereja Anda."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Orang tersebut tersimpan, tetapi satu atau beberapa penugasan kelompok gagal. Pilih kelompok di bawah ini dan coba lagi."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Orang tersebut tersimpan, tetapi satu atau beberapa penugasan kelompok gagal. Kelompok yang tidak berhasil sudah dipilih di bawah ini. Tinjau kelompok tersebut dan simpan lagi untuk mencoba lagi."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Ini menghapus data demo dan setiap pengaturan, dan mengembalikan ChurchCRM ke instalasi baru."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Anda akan masuk lagi dengan akun administrator default dan memasukkan informasi gereja Anda."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Anda sedang menjelajahi ChurchCRM dengan data demo."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Anda sedang menjelajahi data demo"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informasi gereja Anda tersimpan. Kerjakan langkah-langkah di bawah ini."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Basis data Anda (%1$s %2$s) adalah risiko keamanan: vendornya tidak lagi menyediakan perbaikan keamanan untuk versi tersebut. ChurchCRM tetap berfungsi, tetapi mintalah host Anda untuk pindah ke MariaDB %3$s+ atau MySQL %4$s+."
+

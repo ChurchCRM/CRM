@@ -28309,3 +28309,155 @@ msgstr "立即验证"
 msgid "View Giving History"
 msgstr "查看捐献历史"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "已成功添加 %d 人；%d 人无法添加，仍保留在清单中。"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d 人无法添加，仍保留在您的清单中。"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "在数据库迁移到仍能获得安全修复的版本之前，管理员将在每个页面上看到此警告。现在迁移最容易，因为数据还很少。"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "从现在起，管理员将登录到标准仪表板。设置仪表板将不会在登录时再次打开。"
+
+#: 
+msgid "Database security risk"
+msgstr "数据库安全风险"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "演示模式还会开启匿名使用统计（PostHog），以便我们了解人们如何探索 ChurchCRM。“重新开始”会将其关闭。"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "电子邮件设置已保存。会员登录现已开启，会员可以使用其电子邮件登录会众门户。"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "输入您的教会信息，添加您的成员，并邀请您的团队。"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "这里的一切都是示例数据。在输入您教会的真实信息之前，请先重新开始。"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "这里的一切都是示例数据。当您准备好为您的教会使用 ChurchCRM 时，请重新开始：它会清除演示数据和所有设置，让您可以从自己的数据开始。"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "使用演示数据探索 ChurchCRM，或为您的教会进行设置"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "无法将人员添加到组"
+
+#: 
+msgid "Finish setup"
+msgstr "完成设置"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "安装后的这么多天内，管理员登录到设置仪表板。设置为 0 可将其关闭。"
+
+#: 
+msgid "Group Assignment"
+msgstr "组分配"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "内部：管理员在设置仪表板上选择了“完成设置”。请勿手动编辑。"
+
+#: 
+msgid "Keep exploring"
+msgstr "继续探索"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "从另一台 ChurchCRM 服务器迁移？恢复在那里创建的备份。这将替换此安装中的所有内容。"
+
+#: 
+msgid "Ready for your church"
+msgstr "为您的教会做好准备"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "重试组分配"
+
+#: 
+msgid "Retry group assignments"
+msgstr "重试组分配"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "为此人选择一个或多个组。"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "选择您要重试的组。"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "设置您的教会"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "设置仪表板"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "设置仪表板天数"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "演示横幅上的“重新开始”，或管理控制面板上的“重置数据库”，会清除演示数据和所有设置，并将 ChurchCRM 恢复为全新安装。"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "先重新开始，然后使用您自己的教会信息设置 ChurchCRM。"
+
+#: 
+msgid "Start setup"
+msgstr "开始设置"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "演示数据已被清除。使用默认管理员帐户登录，为您的教会进行设置。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "此人已保存，但一个或多个组分配失败。选择下面的组并重试。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "此人已保存，但一个或多个组分配失败。失败的组已在下面选中。检查它们并再次保存以重试。"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "这将清除演示数据和所有设置，并将 ChurchCRM 恢复为全新安装。"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "您将使用默认管理员帐户再次登录并输入您的教会信息。"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "您正在使用演示数据探索 ChurchCRM。"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "您正在探索演示数据"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "您的教会信息已保存。完成下面的步骤。"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "您的数据库（%1$s %2$s）存在安全风险：其供应商不再为该版本提供安全修复。ChurchCRM 仍可继续工作，但请让您的主机商迁移到 MariaDB %3$s+ 或 MySQL %4$s+。"
+

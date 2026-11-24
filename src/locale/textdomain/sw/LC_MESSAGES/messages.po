@@ -28276,3 +28276,155 @@ msgstr "Thibitisha sasa"
 msgid "View Giving History"
 msgstr "Angalia historia ya utoaji"
 
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d watu wameongezwa kwa mafanikio; %d watu hawakuweza kuongezwa na wamebaki kwenye kigari."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d watu hawakuweza kuongezwa na wamebaki kwenye kigari chako."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Wasimamizi wataona onyo hili kwenye kila ukurasa hadi hifadhidata ihamishwe kwenye toleo linaloendelea kupata marekebisho ya usalama. Kuhama sasa, wakati data ni chache, ni rahisi zaidi."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Wasimamizi wataingia kwenye dashibodi ya kawaida kuanzia sasa. Dashibodi ya Usanidi haitafunguka tena wakati wa kuingia."
+
+#: 
+msgid "Database security risk"
+msgstr "Hatari ya usalama wa hifadhidata"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Hali ya majaribio pia huwasha takwimu za matumizi zisizojulikana (PostHog), ili tuweze kuona jinsi watu wanavyochunguza ChurchCRM. Anza Upya huizima."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Mipangilio ya barua pepe imehifadhiwa. Kuingia kwa wanachama sasa kumewashwa, kwa hivyo wanachama wanaweza kuingia kwenye Tovuti ya Washirika kwa barua pepe yao."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Weka maelezo ya kanisa lako, ongeza watu wako, na waalike timu yako."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Kila kitu hapa ni data ya mfano. Anza upya kabla ya kuweka maelezo halisi ya kanisa lako."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Kila kitu hapa ni data ya mfano. Ukiwa tayari kutumia ChurchCRM kwa ajili ya kanisa lako, anza upya: hufuta data ya majaribio na kila mpangilio ili uweze kuanza na yako mwenyewe."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Chunguza ChurchCRM ukitumia data ya majaribio, au uiweke kwa ajili ya kanisa lako"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Imeshindwa kuongeza mtu kwenye kikundi"
+
+#: 
+msgid "Finish setup"
+msgstr "Maliza usanidi"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Kwa siku nyingi hivi baada ya kusakinisha, wasimamizi huingia kwenye Dashibodi ya Usanidi. Weka 0 ili kuizima."
+
+#: 
+msgid "Group Assignment"
+msgstr "Mgawo wa Kikundi"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Ndani: msimamizi alichagua Maliza usanidi kwenye Dashibodi ya Usanidi. Usihariri mwenyewe."
+
+#: 
+msgid "Keep exploring"
+msgstr "Endelea kuchunguza"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Unahama kutoka seva nyingine ya ChurchCRM? Rejesha nakala ya hifadhi iliyotengenezwa huko. Hii hubadilisha kila kitu kwenye usakinishaji huu."
+
+#: 
+msgid "Ready for your church"
+msgstr "Tayari kwa kanisa lako"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Jaribu Tena Mgawo wa Kikundi"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Jaribu tena mgawo wa vikundi"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Chagua kikundi kimoja au zaidi kwa mtu huyu."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Chagua vikundi unavyotaka kujaribu tena."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Weka Kanisa Lako"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dashibodi ya Usanidi"
+
+#: 
+msgid "Setup Dashboard Days"
+msgstr "Siku za Dashibodi ya Usanidi"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Anza Upya kwenye bango la majaribio, au Weka upya Hifadhidata kwenye Dashibodi ya Msimamizi, hufuta data ya majaribio na kila mpangilio na hurudisha ChurchCRM kwenye usakinishaji mpya."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Anza upya kwanza, kisha weka ChurchCRM ukitumia maelezo ya kanisa lako mwenyewe."
+
+#: 
+msgid "Start setup"
+msgstr "Anza usanidi"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Data ya majaribio imekwisha. Ingia kwa akaunti chaguomsingi ya msimamizi ili kuweka kanisa lako."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Mtu amehifadhiwa, lakini mgawo mmoja au zaidi wa vikundi umeshindwa. Chagua vikundi vilivyo hapa chini na ujaribu tena."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Mtu amehifadhiwa, lakini mgawo mmoja au zaidi wa vikundi umeshindwa. Vikundi ambavyo havikufanikiwa vimechaguliwa hapa chini. Vikague na uhifadhi tena ili kujaribu tena."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Hii hufuta data ya majaribio na kila mpangilio, na hurudisha ChurchCRM kwenye usakinishaji mpya."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Utaingia tena kwa akaunti chaguomsingi ya msimamizi na kuweka maelezo ya kanisa lako."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Unachunguza ChurchCRM ukitumia data ya majaribio."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Unachunguza data ya majaribio"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Maelezo ya kanisa lako yamehifadhiwa. Fanya hatua zilizo hapa chini."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Hifadhidata yako (%1$s %2$s) ni hatari ya usalama: muuzaji wake hatoi tena marekebisho ya usalama kwa toleo hilo. ChurchCRM inaendelea kufanya kazi, lakini mwombe mwenyeji wako ahamie MariaDB %3$s+ au MySQL %4$s+."
+
