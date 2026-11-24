@@ -10,7 +10,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div id="<?= InputUtils::escapeAttribute($panelId) ?>"
          data-title="<?= InputUtils::escapeAttribute($panelTitle) ?>"
          data-icon="<?= InputUtils::escapeAttribute($panelIcon) ?>"
-         data-settings="<?= InputUtils::escapeAttribute(json_encode($settings, JSON_THROW_ON_ERROR)) ?>"></div>
+         data-settings="<?= InputUtils::jsonEncodeForAttribute($settings) ?>"></div>
 </div>
 
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
