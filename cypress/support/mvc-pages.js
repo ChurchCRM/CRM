@@ -32,6 +32,7 @@ export const MVC_PAGES = {
     admin: [
         "/admin/",
         "/admin/people",
+        "/admin/finance",
         "/admin/properties/person/new",
         "/admin/export",
         "/admin/export/csv",
