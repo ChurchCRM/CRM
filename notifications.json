@@ -27,12 +27,12 @@
       "align": "right"
     },
     {
-      "id": "upgrade-7.8.5",
-      "title": "ChurchCRM 7.8.5 is available",
-      "message": "Your ChurchCRM is on 7.8.1. Version 7.8.5 is available with security updates and fixes. Support covers only the latest version, so please upgrade when you can — and back up first.",
+      "id": "upgrade-7.8.7",
+      "title": "ChurchCRM 7.8.7 is available",
+      "message": "Your ChurchCRM is on 7.8.1. Version 7.8.7 is available with security updates and fixes. Support covers only the latest version, so please upgrade when you can — and back up first.",
       "icon": "message-circle",
       "type": "info",
-      "link": "https://github.com/ChurchCRM/CRM/releases/tag/7.8.5",
+      "link": "https://github.com/ChurchCRM/CRM/releases/tag/7.8.7",
       "adminOnly": false,
       "targetVersionPattern": "7.8.1",
       "placement": "bottom",
