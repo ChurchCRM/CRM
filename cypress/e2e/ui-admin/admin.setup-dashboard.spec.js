@@ -82,6 +82,22 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.get("#globalSearch").should("exist");
     });
 
+    it("shows no remote announcements before setup is done", () => {
+        cy.setSystemConfig(CHURCH, "");
+        // Raw form login: freshAdminFormLogin would dismiss any notifications,
+        // which is exactly what this test needs to observe.
+        cy.env(["admin.username", "admin.password"]).then((env) => {
+            cy.clearCookies();
+            cy.visit("/session/begin");
+            cy.get("input[name=User]").type(env["admin.username"]);
+            cy.get("input[name=Password]").type(`${env["admin.password"]}{enter}`, { log: false });
+        });
+        cy.location("pathname").should("match", SETUP);
+        // Announcements presume an install in daily use; in setup mode the
+        // Setup Dashboard is the landing page, but none may render there.
+        cy.get(".crm-system-notification").should("not.exist");
+    });
+
     it("starts in the browser's language, and the top bar picker changes it", () => {
         cy.setSystemConfig(CHURCH, "");
         cy.freshAdminFormLogin();
