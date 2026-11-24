@@ -37,7 +37,7 @@
                 <div class="text-secondary">${i18next.t("Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install.")}</div>
               </div>
               <div class="mt-3 pt-3 border-top text-secondary small" id="demoImportAnalytics">
-                ${i18next.t("Demo mode also turns on anonymous usage statistics (PostHog) and Google Analytics, so we can see how people explore ChurchCRM. Start Fresh turns them off.")}
+                ${i18next.t("Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off.")}
               </div>
             </div>
             <div class="modal-body text-center py-5 d-none" id="demoImportProgress">

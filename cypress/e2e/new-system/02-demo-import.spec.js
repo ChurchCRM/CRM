@@ -350,12 +350,12 @@ describe('02 - Demo Data Import', () => {
             });
         });
 
-        it('turns on usage statistics and Google Analytics, as the import dialog says', () => {
+        it('turns on usage statistics, as the import dialog says — and leaves Google Analytics off', () => {
             cy.request('/admin/api/system/config/sTelemetryLevel').its('body.value').should('eq', 'full');
             cy.visit('/plugins/management');
             cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
                 .find('.badge')
-                .should('not.contain', 'Disabled');
+                .should('contain', 'Disabled');
         });
     });
 
