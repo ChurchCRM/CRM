@@ -276,6 +276,9 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
+        <?php $demoDataLoaded = InstallSetupService::isDemoDataLoaded(); ?>
+        <?php $demoBannerDismissed = $demoDataLoaded && $currentUser->getSettingValue(NotificationService::dismissalSettingKey('demo-mode')) === 'true'; ?>
+
         <!-- Database support notice: once dismissed, the banner lives here until the database is supported -->
         <?php $dbSupportWarning = NotificationService::getDatabaseSupportWarning(); ?>
         <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
@@ -291,6 +294,31 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <strong><i class="fa-solid fa-database me-2"></i><?= InputUtils::escapeHTML($dbSupportWarning['title']) ?></strong>
               <div class="text-secondary"><?= InputUtils::escapeHTML($dbSupportWarning['message']) ?></div>
             </div>
+          </div>
+        </div>
+        <?php endif; ?>
+
+        <!-- Demo mode notice: once dismissed, the banner lives here while demo data is loaded -->
+        <?php if ($demoDataLoaded && $demoBannerDismissed): ?>
+        <div class="nav-item dropdown" id="demoModeMenuItem">
+          <a class="nav-link px-0 text-warning" data-bs-toggle="dropdown" href="#"
+             id="demoModeMenu"
+             title="<?= InputUtils::escapeAttribute(gettext("You're exploring ChurchCRM with demo data.")) ?>"
+             aria-label="<?= InputUtils::escapeAttribute(gettext("You're exploring ChurchCRM with demo data.")) ?>">
+            <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <div class="dropdown-item-text">
+              <strong><i class="fa-solid fa-flask me-2"></i><?= gettext("You're exploring ChurchCRM with demo data.") ?></strong>
+              <div class="text-secondary"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
+            </div>
+            <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
+            <div class="dropdown-item-text">
+              <button type="button" class="btn btn-warning btn-sm js-start-fresh">
+                <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Start Fresh') ?>
+              </button>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
         <?php endif; ?>
@@ -477,9 +505,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 <?php if ($setupMode || ($currentUser->isAdmin() && InstallSetupService::isDemoDataLoaded())): ?>
     <script src="<?= SystemURLs::assetVersioned('/skin/v2/first-run.min.js') ?>"></script>
 <?php endif; ?>
-<?php if (InstallSetupService::isDemoDataLoaded()): ?>
+<?php if ($demoDataLoaded && !$demoBannerDismissed): ?>
     <div class="container-xl mt-3">
-      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner">
+      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner"
+           data-notification-id="demo-mode"
+           data-dismiss-key="<?= InputUtils::escapeAttribute(NotificationService::dismissalSettingKey('demo-mode')) ?>">
         <div class="d-flex flex-wrap align-items-center gap-2">
           <i class="fa-solid fa-flask"></i>
           <div class="flex-grow-1">
@@ -492,6 +522,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </button>
           <?php endif; ?>
         </div>
+        <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
       </div>
     </div>
 <?php endif; ?>
