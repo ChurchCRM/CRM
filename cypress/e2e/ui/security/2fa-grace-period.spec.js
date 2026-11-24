@@ -145,8 +145,9 @@ describe("2FA Grace Period — enforcement", () => {
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
 
         // Grace notice must be visible
-        cy.get("[data-notification-id="two-fa-grace"]", { timeout: 10000 }).should("exist");
-        cy.get("[data-notification-id="two-fa-grace"]").should("contain.text", "day");
+        cy.get('[data-notification-id="two-fa-grace"]', { timeout: 10000 }).should("exist");
+        cy.get('[data-notification-id="two-fa-grace"]').should("contain.text", "day");
+        cy.get('[data-notification-id="two-fa-grace"] a').should("have.attr", "href").and("include", "/account/2fa");
     });
 
     it("grace=0, mandate on: unenrolled user is immediately redirected to enrollment", () => {
@@ -184,6 +185,6 @@ describe("2FA Grace Period — enforcement", () => {
 
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
         // Notice must NOT be present when mandate is off
-        cy.get("[data-notification-id="two-fa-grace"]").should("not.exist");
+        cy.get('[data-notification-id="two-fa-grace"]').should("not.exist");
     });
 });

@@ -280,84 +280,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
-        <?php
-        // Notification center: everything that used to stack up as banners at
-        // the top of every page lives in this one dropdown, so the page itself
-        // stays clean for the work the user came to do. The center renders
-        // only when something actually needs attention.
-        $centerNotifications = NotificationService::getNotifications();
-        $demoDataLoaded = InstallSetupService::isDemoDataLoaded();
-        $twoFAGrace = $currentUser->getTwoFactorGraceStatus() === 'within-grace';
-        $twoFADaysLeft = $twoFAGrace ? $currentUser->getTwoFactorGraceDaysRemaining() : 0;
-        $centerCount = count($centerNotifications) + ($demoDataLoaded ? 1 : 0) + ($twoFAGrace ? 1 : 0);
-        $centerBadgeClass = ($twoFAGrace && $twoFADaysLeft <= 1) ? 'bg-danger' : 'bg-primary';
-        foreach ($centerNotifications as $centerNotification) {
-            if ($centerNotification->getType() === 'danger') {
-                $centerBadgeClass = 'bg-danger';
-                break;
-            }
-        }
-        ?>
-        <?php if ($centerCount > 0): ?>
-        <div class="nav-item dropdown" id="notificationCenterMenuItem">
-          <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#"
-             id="notificationCenterMenu" title="<?= gettext('Notifications') ?>"
-             aria-label="<?= gettext('Notifications') ?>">
-            <i class="fa-solid fa-inbox" aria-hidden="true"></i>
-            <span class="badge <?= $centerBadgeClass ?> position-absolute top-0 end-0 small" id="notificationCenterCount"><?= $centerCount ?></span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <?php foreach ($centerNotifications as $notification): ?>
-            <div class="dropdown-item-text crm-notification-item"
-                 <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
-                 <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
-              <div class="d-flex">
-                <div><i class="fa-solid fa-<?= InputUtils::escapeHTML($notification->getIcon()) ?> text-<?= InputUtils::escapeHTML($notification->getType()) ?> me-2" aria-hidden="true"></i></div>
-                <div class="flex-grow-1">
-                  <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
-                  <?php if ($notification->getMessage()): ?>
-                  <div class="text-secondary"><?= InputUtils::escapeHTML($notification->getMessage()) ?></div>
-                  <?php endif; ?>
-                  <?php if ($notification->getUrl()): ?>
-                  <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>"><?= gettext('Learn more') ?></a>
-                  <?php endif; ?>
-                </div>
-                <?php if ($notification->getDismissSettingKey()): ?>
-                <button type="button" class="btn-close js-dismiss-notification" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
-                <?php endif; ?>
-              </div>
-            </div>
-            <?php endforeach; ?>
-            <?php if ($demoDataLoaded): ?>
-            <div class="dropdown-item-text crm-notification-item" data-notification-id="demo-mode">
-              <div class="d-flex">
-                <div><i class="fa-solid fa-flask text-warning me-2" aria-hidden="true"></i></div>
-                <div class="flex-grow-1">
-                  <strong><?= gettext("You're exploring ChurchCRM with demo data.") ?></strong>
-                  <div class="text-secondary"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
-                  <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
-                  <button type="button" class="btn btn-warning btn-sm js-start-fresh mt-2">
-                    <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Start Fresh') ?>
-                  </button>
-                  <?php endif; ?>
-                </div>
-              </div>
-            </div>
-            <?php endif; ?>
-            <?php if ($twoFAGrace): ?>
-            <div class="dropdown-item-text crm-notification-item" data-notification-id="two-fa-grace">
-              <div class="d-flex">
-                <div><i class="fa-solid fa-shield-halved text-<?= $twoFADaysLeft <= 1 ? 'danger' : 'warning' ?> me-2" aria-hidden="true"></i></div>
-                <div class="flex-grow-1">
-                  <?= InputUtils::escapeHTML(sprintf(ngettext('Two-factor authentication is required. You have %d day to enroll.', 'Two-factor authentication is required. You have %d days to enroll.', $twoFADaysLeft), $twoFADaysLeft)) ?>
-                  <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="ms-1"><?= gettext('Set up now') ?></a>
-                </div>
-              </div>
-            </div>
-            <?php endif; ?>
-          </div>
-        </div>
-        <?php endif; ?>
 
         <!-- Locale: flag links directly to the localization tab on the profile page -->
         <?php
@@ -442,6 +364,117 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </a>
           </div>
         </div>
+
+        <?php
+        // Notification center: everything that used to stack up as banners at
+        // the top of every page lives in this one dropdown, so the page itself
+        // stays clean for the work the user came to do. The center renders
+        // only when something actually needs attention.
+        $centerNotifications = NotificationService::getNotifications();
+        $demoDataLoaded = InstallSetupService::isDemoDataLoaded();
+        $twoFAGrace = $currentUser->getTwoFactorGraceStatus() === 'within-grace';
+        $twoFADaysLeft = $twoFAGrace ? $currentUser->getTwoFactorGraceDaysRemaining() : 0;
+        $centerCount = count($centerNotifications) + ($demoDataLoaded ? 1 : 0) + ($twoFAGrace ? 1 : 0);
+        $centerBadgeClass = ($twoFAGrace && $twoFADaysLeft <= 1) ? 'bg-danger' : 'bg-primary';
+        foreach ($centerNotifications as $centerNotification) {
+            if ($centerNotification->getType() === 'danger') {
+                $centerBadgeClass = 'bg-danger';
+                break;
+            }
+        }
+        ?>
+        <?php if ($centerCount > 0): ?>
+        <div class="nav-item dropdown" id="notificationCenterMenuItem">
+          <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#"
+             id="notificationCenterMenu" title="<?= gettext('Notifications') ?>"
+             aria-label="<?= gettext('Notifications') ?>">
+            <i class="fa-solid fa-inbox" aria-hidden="true"></i>
+            <span class="badge <?= $centerBadgeClass ?> position-absolute top-0 end-0 small" id="notificationCenterCount"><?= $centerCount ?></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <?php foreach ($centerNotifications as $notification): ?>
+            <?php
+            // "Header — body" titles read as a header line plus a body line.
+            $noticeTitle = $notification->getTitle();
+            $noticeBody = $notification->getMessage();
+            if (str_contains($noticeTitle, ' — ')) {
+                [$noticeTitle, $noticeBody] = explode(' — ', $noticeTitle, 2);
+                $noticeBody = mb_strtoupper(mb_substr($noticeBody, 0, 1)) . mb_substr($noticeBody, 1);
+            }
+            ?>
+            <div class="dropdown-item-text crm-notification-item"
+                 <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+                 <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-<?= InputUtils::escapeHTML($notification->getIcon() ?: 'circle-info') ?> text-<?= InputUtils::escapeHTML($notification->getType()) ?>" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= InputUtils::escapeHTML($noticeTitle) ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= InputUtils::escapeHTML($noticeBody) ?></div>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <?php if ($notification->getUrl()): ?>
+                    <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm"><?= gettext('Learn more') ?></a>
+                    <?php else: ?>
+                    <button type="button" class="btn btn-outline-primary btn-sm js-notification-more"
+                            data-title="<?= InputUtils::escapeAttribute($notification->getTitle()) ?>"
+                            data-message="<?= InputUtils::escapeAttribute($notification->getMessage()) ?>"><?= gettext('Read more') ?></button>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <?php if ($notification->getDismissSettingKey()): ?>
+                <button type="button" class="btn-close js-dismiss-notification" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
+                <?php endif; ?>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <?php if ($demoDataLoaded): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="demo-mode">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-flask text-warning" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext("You're exploring ChurchCRM with demo data.") ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
+                  <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <button type="button" class="btn btn-outline-warning btn-sm js-start-fresh">
+                      <i class="fa-solid fa-rotate-left me-1" aria-hidden="true"></i><?= gettext('Start Fresh') ?>
+                    </button>
+                  </div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php if ($twoFAGrace): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="two-fa-grace">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-shield-halved text-<?= $twoFADaysLeft <= 1 ? 'danger' : 'warning' ?>" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext('Two-factor authentication') ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= InputUtils::escapeHTML(sprintf(ngettext('Two-factor authentication is required. You have %d day to enroll.', 'Two-factor authentication is required. You have %d days to enroll.', $twoFADaysLeft), $twoFADaysLeft)) ?></div>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="btn btn-outline-primary btn-sm"><?= gettext('Set up now') ?></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endif; ?>
+          </div>
+          <div class="modal fade" tabindex="-1" id="notificationDetailPanel" aria-labelledby="notificationDetailTitle" aria-hidden="true">
+            <div class="modal-dialog crm-side-panel">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title h4" id="notificationDetailTitle"></h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+                </div>
+                <div class="modal-body">
+                  <p id="notificationDetailBody" class="mb-3"></p>
+                  <a id="notificationDetailLink" class="btn btn-outline-primary btn-sm" href="#" target="_blank" rel="noopener" hidden><?= gettext('Learn more') ?></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
 
         <!-- User -->
         <?php

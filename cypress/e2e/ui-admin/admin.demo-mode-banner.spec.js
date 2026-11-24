@@ -50,6 +50,7 @@ describe("Demo mode notice", () => {
         cy.get("#demoModeBanner").should("not.exist");
         cy.get("#notificationCenterMenu").click();
         cy.get(item).should("be.visible").and("contain", "demo data").find(".js-start-fresh").should("be.visible");
+        cy.get(item).find(".js-dismiss-notification").should("not.exist");
     });
 
     it("shows to a standard user without Start Fresh", () => {

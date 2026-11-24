@@ -46,7 +46,7 @@ describe("2FA required for one user", () => {
 
         signInAsStandardUser();
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
-        cy.get("[data-notification-id="two-fa-grace"]", { timeout: 10000 }).should("exist");
+        cy.get('[data-notification-id="two-fa-grace"]', { timeout: 10000 }).should("exist");
     });
 
     it("sends a required user straight to enrollment when there is no grace period", () => {
@@ -76,7 +76,7 @@ describe("2FA required for one user", () => {
         setRequired(true);
 
         signInAsStandardUser();
-        cy.get("[data-notification-id="two-fa-grace"]", { timeout: 10000 }).should("exist");
+        cy.get('[data-notification-id="two-fa-grace"]', { timeout: 10000 }).should("exist");
         cy.request(absoluteUrl("/api/cart/")).its("status").should("eq", 200);
     });
 
@@ -87,7 +87,7 @@ describe("2FA required for one user", () => {
 
         signInAsStandardUser();
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
-        cy.get("[data-notification-id="two-fa-grace"]").should("not.exist");
+        cy.get('[data-notification-id="two-fa-grace"]').should("not.exist");
     });
 
     it("lets an administrator require 2FA from the Users page and then offers to remove it", () => {

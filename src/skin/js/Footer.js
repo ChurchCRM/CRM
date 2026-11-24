@@ -202,6 +202,24 @@ function initializeApp() {
   // Load fundraiser count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadFundraiserCount();
 
+  // "Read more" fills the shared right-side panel with the full notice.
+  document.querySelectorAll(".js-notification-more").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const panel = document.getElementById("notificationDetailPanel");
+      if (!panel || !window.bootstrap) {
+        return;
+      }
+      // The navbar clips a panel nested in it; move it to the body first.
+      document.body.appendChild(panel);
+      document.getElementById("notificationDetailTitle").textContent = btn.dataset.title || "";
+      document.getElementById("notificationDetailBody").textContent = btn.dataset.message || "";
+      const link = document.getElementById("notificationDetailLink");
+      link.hidden = !btn.dataset.url;
+      link.href = btn.dataset.url || "#";
+      window.bootstrap.Modal.getOrCreateInstance(panel).show();
+    });
+  });
+
   // Initialize notification dismissal handlers
   document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
     btn.addEventListener("click", (e) => {

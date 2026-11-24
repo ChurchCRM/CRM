@@ -61,6 +61,10 @@ describe("Database out-of-support notice", () => {
                         .and("contain", "no longer ships security fixes")
                         .find(".js-dismiss-notification")
                         .should("exist");
+                    cy.get(item).find(".js-notification-more").click();
+                    cy.get("#notificationDetailPanel").should("be.visible").and("contain", "is a security risk");
+                    cy.get("#notificationDetailPanel .btn-close").click();
+                    cy.get("#notificationDetailPanel").should("not.be.visible");
                 } else {
                     cy.get(item).should("not.exist");
                 }

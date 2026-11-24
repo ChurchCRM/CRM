@@ -13,7 +13,7 @@
 Cypress.Commands.add('dismissSystemNotifications', () => {
     cy.window().its('CRM.userId').should('exist');
     cy.get('body').then($body => {
-        const $buttons = $body.find('.crm-system-notification .js-dismiss-notification');
+        const $buttons = $body.find('#notificationCenterMenuItem .js-dismiss-notification');
         if ($buttons.length === 0) {
             return;
         }
@@ -28,9 +28,10 @@ Cypress.Commands.add('dismissSystemNotifications', () => {
             cy.intercept('POST', '**/v2/releases/dismiss-update-notice').as('dismissUpdateNotice');
             aliases.push(...Array($session.length).fill('@dismissUpdateNotice'));
         }
-        cy.wrap($buttons).click({ multiple: true });
+        // The buttons sit in the closed notification-center dropdown.
+        cy.wrap($buttons).click({ multiple: true, force: true });
         cy.wait(aliases);
-        cy.get('.crm-system-notification .js-dismiss-notification').should('not.exist');
+        cy.get('#notificationCenterMenuItem .js-dismiss-notification').should('not.exist');
     });
 });
 

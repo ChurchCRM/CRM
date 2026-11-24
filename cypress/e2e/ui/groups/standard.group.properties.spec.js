@@ -345,7 +345,7 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
             .and("contain", "profile page");
         cy.get('button[name="SaveChanges"]').should("be.visible").click();
         cy.url().should("include", "/properties/form");
-        cy.get(".alert-danger:not(.crm-system-notification)").should("not.exist");
+        cy.get(".alert-danger").should("not.exist");
     });
 });
 
