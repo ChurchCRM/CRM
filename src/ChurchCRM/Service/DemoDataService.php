@@ -183,8 +183,8 @@ class DemoDataService
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
      * Every module in DEMO_TOGGLES is switched on so an evaluator sees the whole product.
-     * Demo mode also turns on usage statistics and the Google Analytics plugin (config.json);
-     * the import dialog says so, and Start Fresh resets both with every other setting.
+     * Demo mode also turns on usage statistics (config.json);
+     * the import dialog says so, and Start Fresh resets it with every other setting.
      */
     private function importSystemConfig(): void
     {
