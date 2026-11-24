@@ -548,9 +548,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
     <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php
-// Hydrate registry from session-cached remote notifications (no HTTP calls)
+// Hydrate registry from session-cached remote notifications (no HTTP calls).
+// In setup mode the Setup Dashboard is the admin's home URL, but remote
+// announcements presume an install in daily use — they wait until setup is done.
 NotificationService::loadSessionNotifications(
-    parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) === parse_url($homeUrl, PHP_URL_PATH)
+    !$setupMode && parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) === parse_url($homeUrl, PHP_URL_PATH)
 );
 
 // Render all active notifications as dismissible alerts
