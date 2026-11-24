@@ -425,6 +425,7 @@ class CsvExportService
                 $whereTypes .= 's';
             }
         }
+        $sWhereExt .= ' AND per_NeedsReview = 0 ';
 
             // Build the complete SQL statement
 

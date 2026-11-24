@@ -953,6 +953,9 @@ class Family extends BaseFamily implements PhotoInterface
     {
         $names = [];
         foreach ($this->getPeopleSorted() as $person) {
+            if ($person->getNeedsReview()) {
+                continue;
+            }
             $names[] = $person->getFirstName();
         }
 
