@@ -4,7 +4,7 @@
   "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest.": "",
   "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again.": "",
   "Database security risk": "",
-  "Demo mode also turns on anonymous usage statistics (PostHog) and Google Analytics, so we can see how people explore ChurchCRM. Start Fresh turns them off.": "",
+  "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off.": "",
   "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email.": "",
   "Enter your church information, add your people, and invite your team.": "",
   "Everything here is sample data. Start fresh before you enter your church's real information.": "",
