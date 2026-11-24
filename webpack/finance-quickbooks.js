@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    form.classList.add("was-validated");
+    for (const input of form.elements) {
+      input.classList?.toggle("is-invalid", !input.validity?.valid);
+    }
     if (!form.checkValidity()) {
       window.CRM.notify(t("Every position must be a number from 0 to 1000 millimetres."), { type: "danger" });
       return;
