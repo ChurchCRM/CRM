@@ -383,18 +383,6 @@ msgid "(No assigned family)"
 msgstr "(Ingen angiven familj)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Konvertera enskilda personer till familjer"
-
-#: 
-msgid "Convert Next"
-msgstr "Konvertera nästa"
-
-#: 
-msgid "Convert All"
-msgstr "Konvertera alla"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Insättningsblankett nummer"
@@ -8363,10 +8351,6 @@ msgstr "Bekräfta ditt nya lösenord"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Anslut en SMTP-server så att ChurchCRM kan skicka e-post"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Konvertera enskilda poster till familjeenheter"
 
 #: 
 msgid "Convert to Family"
@@ -28028,10 +28012,6 @@ msgid "Integrity check passed"
 msgstr "Integritetskontrollen godkändes"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Ogiltig CSRF-token"
-
-#: 
 msgid "Last %d days"
 msgstr "Senaste %d dagarna"
 
@@ -28074,10 +28054,6 @@ msgstr "Öppnar Ekonomi-instrumentbrädan för det här intervallet. Välj ett t
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Föregående 7 dagar och kommande %d dagar"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Personer utan familj: %d"
 
 #: 
 msgid "Permission to save settings and photos"

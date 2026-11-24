@@ -1,6 +1,7 @@
 {
   "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.": "",
   "Also send which pages are used.": "",
+  "Create a family for this person? Their address and home phone move to the new family.": "",
   "Finance Settings": "",
   "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": "",
   "No Payments Text": "",
@@ -10,5 +11,6 @@
   "OS family": "",
   "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.": "",
   "Share which pages are used": "",
+  "The conversion failed. Nothing was changed.": "",
   "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": ""
 }

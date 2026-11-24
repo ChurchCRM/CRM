@@ -364,18 +364,6 @@ msgid "(No assigned family)"
 msgstr "(കുടുംബം നൽകിയിട്ടില്ല)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "വ്യക്തികളെ കുടുംബങ്ങളാക്കി മാറ്റുക"
-
-#: 
-msgid "Convert Next"
-msgstr "അടുത്തത് മാറ്റുക"
-
-#: 
-msgid "Convert All"
-msgstr "എല്ലാം മാറ്റുക"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "ഡിപ്പോസിറ്റ് സ്ലിപ്പ് നമ്പർ"
 
@@ -8245,10 +8233,6 @@ msgstr "പുതിയ പാസ്‌വേഡ് സ്ഥിരീകരി�
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "ChurchCRM ഇമെയിൽ അയക്കാൻ SMTP സർവ്വർ ബന്ധിക്കൂ"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "വ്യക്തി റെക്കോർഡ് കുടുംബ യൂണിറ്റായി മാറ്റൂ"
 
 #: 
 msgid "Convert to Family"
@@ -27910,10 +27894,6 @@ msgid "Integrity check passed"
 msgstr "സമഗ്രതാ പരിശോധന വിജയിച്ചു"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "അസാധുവായ CSRF ടോക്കൺ"
-
-#: 
 msgid "Last %d days"
 msgstr "കഴിഞ്ഞ %d ദിവസങ്ങൾ"
 
@@ -27956,10 +27936,6 @@ msgstr "ഈ പരിധിയിൽ ധനകാര്യ ഡാഷ്‌ബോ
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "കഴിഞ്ഞ 7 ദിവസവും അടുത്ത %d ദിവസവും"
-
-#: 
-msgid "People without a family: %d"
-msgstr "കുടുംബമില്ലാത്ത ആളുകൾ: %d"
 
 #: 
 msgid "Permission to save settings and photos"

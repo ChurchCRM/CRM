@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(የተመደበ ቤተሰብ የለም)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "ግለሰቦችን ወደ ቤተሰቦች ቀይር"
-
-#: 
-msgid "Convert Next"
-msgstr "ቀጣይ ቀይር"
-
-#: 
-msgid "Convert All"
-msgstr "ሁሉንም ቀይር"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "ተቀማጭ ገንዘብ ወረቀት ቁጥር"
 
@@ -8283,10 +8271,6 @@ msgstr "አዲስ ዕለት ይህ ትንተናቸውን"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP ሰራዊ ታሰር በ ChurchCRM ኢሜይል ሕሪግ"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "ግለሰብ ሰነዶች ቤተሰብ ዓይነ ለውጥ"
 
 #: 
 msgid "Convert to Family"
@@ -27949,10 +27933,6 @@ msgid "Integrity check passed"
 msgstr "የታማኝነት ፍተሻ አልፏል"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "ልክ ያልሆነ የCSRF ቶከን"
-
-#: 
 msgid "Last %d days"
 msgstr "ያለፉት %d ቀናት"
 
@@ -27995,10 +27975,6 @@ msgstr "የፋይናንስ ዳሸቦርዱን በዚህ ክልል ላይ ይከ�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "ያለፉት 7 ቀናት እና የሚቀጥሉት %d ቀናት"
-
-#: 
-msgid "People without a family: %d"
-msgstr "ቤተሰብ የሌላቸው ሰዎች: %d"
 
 #: 
 msgid "Permission to save settings and photos"

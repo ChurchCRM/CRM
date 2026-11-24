@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Nessuna famiglia assegnata)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Converti Individui a Famiglie"
-
-#: 
-msgid "Convert Next"
-msgstr "Convertire Avanti"
-
-#: 
-msgid "Convert All"
-msgstr "Converti tutto"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Numero di versamento del deposito"
@@ -8297,10 +8285,6 @@ msgstr "Conferma la nuova password"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Collega un server SMTP per consentire a ChurchCRM di inviare e-mail"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Converti schede individuali in unità familiari"
 
 #: 
 msgid "Convert to Family"
@@ -27963,10 +27947,6 @@ msgid "Integrity check passed"
 msgstr "Controllo di integrità superato"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF non valido"
-
-#: 
 msgid "Last %d days"
 msgstr "Ultimi %d giorni"
 
@@ -28009,10 +27989,6 @@ msgstr "Apre la dashboard Finanze su questo intervallo. Scegli un anno fiscale p
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Ultimi 7 giorni e prossimi %d giorni"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Persone senza famiglia: %d"
 
 #: 
 msgid "Permission to save settings and photos"

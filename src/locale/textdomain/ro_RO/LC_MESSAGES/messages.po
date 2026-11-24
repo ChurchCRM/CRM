@@ -381,18 +381,6 @@ msgid "(No assigned family)"
 msgstr "(Nicio familie alocate)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Conversia Persoanelor în Familii"
-
-#: 
-msgid "Convert Next"
-msgstr "Convetește următoarea"
-
-#: 
-msgid "Convert All"
-msgstr "Converti toate"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Numărul bonului de depozit"
@@ -8344,10 +8332,6 @@ msgstr "Confirmați noua parolă"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Conectați un server SMTP pentru ca ChurchCRM să poată trimite e-mailuri"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Convertiți înregistrări individuale în unități de familie"
 
 #: 
 msgid "Convert to Family"
@@ -28035,10 +28019,6 @@ msgid "Integrity check passed"
 msgstr "Verificarea integrității a trecut"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Jeton CSRF nevalid"
-
-#: 
 msgid "Last %d days"
 msgstr "Ultimele %d zile"
 
@@ -28081,10 +28061,6 @@ msgstr "Deschide panoul de bord Finanțe pe acest interval. Alegeți un an fisca
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Ultimele 7 zile și următoarele %d zile"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Persoane fără familie: %d"
 
 #: 
 msgid "Permission to save settings and photos"

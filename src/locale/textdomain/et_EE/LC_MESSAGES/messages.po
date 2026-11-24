@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Pole määratud perekonda)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Teisendage üksikisikud perekondadeks"
-
-#: 
-msgid "Convert Next"
-msgstr "Teisenda järgmine"
-
-#: 
-msgid "Convert All"
-msgstr "Teisenda kõik"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Sissetuleku number"
@@ -8277,10 +8265,6 @@ msgstr "Kinnitage oma uus parool"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Ühendage SMTP server, et ChurchCRM saaks e-kirju saata"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Teisendage üksikisiku kirjed perekondadeks"
 
 #: 
 msgid "Convert to Family"
@@ -27942,10 +27926,6 @@ msgid "Integrity check passed"
 msgstr "Tervikluse kontroll õnnestus"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "Kehtetu CSRF-token"
-
-#: 
 msgid "Last %d days"
 msgstr "Viimased %d päeva"
 
@@ -27988,10 +27968,6 @@ msgstr "Avab selle ajavahemiku Finantside töölaua. Vali varasem majandusaasta 
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Viimased 7 päeva ja järgmised %d päeva"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Perekonnata inimesed: %d"
 
 #: 
 msgid "Permission to save settings and photos"

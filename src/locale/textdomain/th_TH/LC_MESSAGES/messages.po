@@ -376,18 +376,6 @@ msgid "(No assigned family)"
 msgstr "(ไม่มีครอบครัวที่กำหนด)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "แปลงบุคคลเป็นครอบครัว"
-
-#: 
-msgid "Convert Next"
-msgstr "แปลงถัดไป"
-
-#: 
-msgid "Convert All"
-msgstr "แปลงทั้งหมด"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "หมายเลขใบนำฝาก"
 
@@ -8248,10 +8236,6 @@ msgstr "ยืนยันรหัสผ่านใหม่ของคุณ
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "เชื่อมต่อเซิร์ฟเวอร์ SMTP เพื่อให้ ChurchCRM สามารถส่งอีเมลได้"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "แปลงข้อมูลบุคคลเป็นหน่วยครอบครัว"
 
 #: 
 msgid "Convert to Family"
@@ -27887,10 +27871,6 @@ msgid "Integrity check passed"
 msgstr "การตรวจสอบความสมบูรณ์ผ่าน"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "โทเค็น CSRF ไม่ถูกต้อง"
-
-#: 
 msgid "Last %d days"
 msgstr "%d วันที่ผ่านมา"
 
@@ -27933,10 +27913,6 @@ msgstr "เปิดแดชบอร์ดการเงินในช่ว
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 วันที่ผ่านมาและ %d วันถัดไป"
-
-#: 
-msgid "People without a family: %d"
-msgstr "ผู้ที่ไม่มีครอบครัว: %d"
 
 #: 
 msgid "Permission to save settings and photos"

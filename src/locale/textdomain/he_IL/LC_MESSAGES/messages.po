@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(לא נבחרה משפחה)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "המר בודדים למשפחות"
-
-#: 
-msgid "Convert Next"
-msgstr "המר הבא"
-
-#: 
-msgid "Convert All"
-msgstr "המר את כולם"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "מספר אישור הפקדה"
@@ -8276,10 +8264,6 @@ msgstr "אשרו את הסיסמה החדשה שלכם"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "חברו שרת SMTP כדי ש-ChurchCRM יוכל לשלוח דוא\"ל"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "המרת רשומות בודדות ליחידות משפחתיות"
 
 #: 
 msgid "Convert to Family"
@@ -27941,10 +27925,6 @@ msgid "Integrity check passed"
 msgstr "בדיקת השלמות עברה"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "אסימון CSRF לא חוקי"
-
-#: 
 msgid "Last %d days"
 msgstr "%d הימים האחרונים"
 
@@ -27987,10 +27967,6 @@ msgstr "פותח את לוח הבקרה של הכספים לטווח זה. בח�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 הימים האחרונים ו-%d הימים הבאים"
-
-#: 
-msgid "People without a family: %d"
-msgstr "אנשים ללא משפחה: %d"
 
 #: 
 msgid "Permission to save settings and photos"

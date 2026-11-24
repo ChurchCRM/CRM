@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "لا يوجد أسرة مخصصة"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "تحويل الأفراد إلى الأسر"
-
-#: 
-msgid "Convert Next"
-msgstr "تحويل التالي"
-
-#: 
-msgid "Convert All"
-msgstr "تحويل الكل"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "رقم إيصال الإيداع"
 
@@ -8310,10 +8298,6 @@ msgstr "تأكيد كلمة المرور الجديدة"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "قم بتوصيل خادم SMTP بحيث يمكن لـ ChurchCRM إرسال رسائل البريد الإلكتروني"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "تحويل السجلات الفردية إلى وحدات عائلية"
 
 #: 
 msgid "Convert to Family"
@@ -28079,10 +28063,6 @@ msgid "Integrity check passed"
 msgstr "نجح فحص السلامة"
 
 #: 
-msgid "Invalid CSRF token"
-msgstr "رمز CSRF غير صالح"
-
-#: 
 msgid "Last %d days"
 msgstr "آخر %d أيام"
 
@@ -28125,10 +28105,6 @@ msgstr "يفتح لوحة معلومات المالية على هذا النطا
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "الأيام السبعة الماضية والأيام %d القادمة"
-
-#: 
-msgid "People without a family: %d"
-msgstr "أشخاص بدون أسرة: %d"
 
 #: 
 msgid "Permission to save settings and photos"
