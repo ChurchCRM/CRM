@@ -401,6 +401,7 @@ Cascade only where the children belong to the parent:
 - Deposit -> Pledges: `Deposit::preDelete()` deletes the pledges; a deposit is a batch container
 - Family -> Notes + non-Payment pledges: `src/api/routes/people/people-family.php` cascades them and blocks non-finance users when `Payment` pledges exist
 - Property definition -> RecordProperty assignments: `src/api/routes/people/people-properties.php` deletes the assignments first
+- Accepted exception — User -> Notes they authored: `DELETE /admin/api/user/{userId}` (`src/admin/routes/api/user-admin.php`) neither blocks nor cascades. Deleting a user removes the login only; the person and everything they entered stay, and `note_nte.nte_entered_by` is a person reference, so note authorship keeps resolving to the person — audit-trail preservation by design (#8672)
 
 Otherwise block.
 
