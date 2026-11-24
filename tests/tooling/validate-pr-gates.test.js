@@ -1,11 +1,19 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { gates, injections, orphanedCaptureIds } = require('../../scripts/lint/validate-pr-gates');
+const { gates, injections, orphanedCaptureIds, propelOnlyChange } = require('../../scripts/lint/validate-pr-gates');
 
 test('fails a schema change without an upgrade script and upgrade.json', () => {
     assert.equal(gates(['orm/schema.xml']).fail.length, 1);
     assert.equal(gates(['src/mysql/install/Install.sql', 'src/mysql/upgrade/7.9.0.sql']).fail.length, 1);
     assert.equal(gates(['orm/schema.xml', 'src/mysql/upgrade/7.9.0.sql', 'src/mysql/upgrade.json']).fail.length, 0);
+});
+
+test('treats a schema.xml change to Propel-only attributes as no schema change', () => {
+    const col = (attrs) => `        <column name="usr_IsOwner" phpName="IsOwner"${attrs} type="BOOLEAN" required="true"/>`;
+    assert.equal(propelOnlyChange(['--- a/orm/schema.xml', '+++ b/orm/schema.xml', `-${col('')}`, `+${col(' lazyLoad="true"')}`]), true);
+    assert.equal(propelOnlyChange([`-${col('')}`, `+${col('').replace('BOOLEAN', 'INTEGER')}`]), false);
+    assert.equal(propelOnlyChange([`+${col('')}`]), false);
+    assert.equal(propelOnlyChange([]), false);
 });
 
 test('accepts a schema change whose upgrade script upgrade.json already lists', () => {
