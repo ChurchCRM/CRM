@@ -17075,10 +17075,6 @@ msgid "Access Control & Security"
 msgstr "アクセス制御とセキュリティ"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "税控除不適格の支払い（例えば、商品販売）の記録を許可する"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "公開イベントへの認証されていないアクセスを許可する（カレンダー埋め込み用）"
 

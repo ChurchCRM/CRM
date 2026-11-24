@@ -17123,10 +17123,6 @@ msgid "Access Control & Security"
 msgstr "Toegangsbeheer en sekuriteit"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Laat opneem van nie-aftrekbare betalings toe (bv. goedereverkope)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Laat ongeauthentiseerde toegang tot openbare geleenthede toe (vir kalenderinbedding)"
 

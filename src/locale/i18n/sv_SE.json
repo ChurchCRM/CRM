@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "för fel runt tiden detta hände, och ladda ner och bifoga relevant loggfil till ditt GitHub-problem – det hjälper oss att åtgärda problemet utan att ställa uppföljningsfrågor.",
   "system logs": "systemloggar",
   "Access Control & Security": "Åtkomstkontroll och säkerhet",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Tillåt registrering av icke-avdragsgilla betalningar (t.ex. varuförsäljning)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Tillåt oautentiserad åtkomst till offentliga evenemang (för inbäddning av kalendrar)",
   "Automatically send birthday emails (requires background job scheduler)": "Skicka automatiskt födelsedagse-postmeddelanden (kräver bakgrundsjobbschemaläggare)",
   "Birthday Greeting Emails": "E-postmeddelanden för födelsedag",

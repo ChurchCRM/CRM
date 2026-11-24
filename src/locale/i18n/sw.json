@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "kwa hitilafu karibu na wakati hili lilipotokea, na pakua na uambatishe faili husika ya kumbukumbu kwenye suala lako la GitHub — inatusaidia kurekebisha tatizo bila kuuliza maswali ya ziada.",
   "system logs": "kumbukumbu za mfumo",
   "Access Control & Security": "Udhibiti wa Ufikiaji na Usalama",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)",
   "Automatically send birthday emails (requires background job scheduler)": "Tuma barua pepe za siku ya kuzaliwa kiotomatiki (inahitaji kipanga ratiba cha kazi za usuli)",
   "Birthday Greeting Emails": "Barua Pepe za Salamu za Siku ya Kuzaliwa",

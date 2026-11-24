@@ -17114,10 +17114,6 @@ msgid "Access Control & Security"
 msgstr "Kontrolli i Aksesit dhe Siguria"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh. shitje merce)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Lejoni qasjen e pa-vërtetuar në ngjarje publike (për ngulitjen e kalendarëve)"
 

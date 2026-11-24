@@ -17190,10 +17190,6 @@ msgid "Access Control & Security"
 msgstr "Tilgangskontroll og sikkerhet"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Tillat registrering av ikke-fradragsberettigede betalinger (f.eks. varesalg)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Tillat uauthentisert tilgang til offentlige arrangementer (for innebygning av kalendere)"
 

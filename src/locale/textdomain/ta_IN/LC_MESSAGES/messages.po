@@ -17133,10 +17133,6 @@ msgid "Access Control & Security"
 msgstr "அணுகல் கட்டுப்பாடு மற்றும் பாதுகாப்பு"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்களை பதிவு செய்ய அனுமதி (எ.கா. பொருட்கள் விற்பனை)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)"
 

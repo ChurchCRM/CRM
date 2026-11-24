@@ -4150,7 +4150,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "za greške oko vremena kada se to dogodilo, te preuzmite i priložite odgovarajuću log datoteku na vašu GitHub problemu — pomaže nam da riješimo problem bez postavljanja dodatnih pitanja.",
   "system logs": "sustavi logovi",
   "Access Control & Security": "Kontrola pristupa i sigurnost",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Dozvoli zabilježavanje plaćanja koja nisu odbitna od poreza (npr. prodaja robe)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)",
   "Automatically send birthday emails (requires background job scheduler)": "Automatski slanje e-pošte za rođendane (zahtijeva raspoređivač zadataka u pozadini)",
   "Birthday Greeting Emails": "Čestitke za e-poštu na rođendan",

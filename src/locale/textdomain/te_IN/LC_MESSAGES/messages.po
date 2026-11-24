@@ -17101,10 +17101,6 @@ msgid "Access Control & Security"
 msgstr "ప్రాప్యత నియంత్రణ మరియు భద్రత"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "పన్ను తగ్గించదగిన కాని చెల్లుళ్లను రికార్డ్ చేయడానికి అనుమతించండి (ఉదా., సరుకుల విక్రయం)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "ప్రజా ఈవెంట్‌లకు ఆధీకరణ లేని ప్రాప్యతను అనుమతించండి (క్యాలెండర్‌లను పొందుపరచడానికి)"
 

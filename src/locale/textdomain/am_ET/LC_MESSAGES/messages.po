@@ -17129,10 +17129,6 @@ msgid "Access Control & Security"
 msgstr "ተደራሲ ቁጥጥር እና ደህንነት"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "ታክስ ብር ያልተነሳ ክፍያ መመዝገብ ይፈቅዱ (ለምሳሌ, ሸቀጦች ሽያጭ)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)"
 

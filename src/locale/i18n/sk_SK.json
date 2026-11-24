@@ -4165,7 +4165,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "kvôli chybám z času, keď sa to stalo, a stiahnite a priložte príslušný súbor denníka k hláseniu na GitHube – pomôže nám to vyriešiť problém bez ďalších doplňujúcich otázok.",
   "system logs": "systémové denníky",
   "Access Control & Security": "Kontrola prístupu a bezpečnosť",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Umožniť zaznamenávanie platieb, ktoré nie sú daňovo odpočítateľné (napr. predaj tovaru)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Umožniť prístup bez prihlásenia k verejným udalostiam (na vkladanie kalendárov)",
   "Automatically send birthday emails (requires background job scheduler)": "Automaticky posielať e-maily k narodeninám (vyžaduje plánovač úloh na pozadí)",
   "Birthday Greeting Emails": "E-maily k narodeninám",

@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "இது நடந்த நேரத்தின் சுற்றுவட்டாரத்தில் பிழைகளுக்கு, மற்றும் தொடர்புடைய பதிவு கோப்பை பதிவிறக்கவும் உங்கள் GitHub சிக்கலுக்கு இணைக்கவும் — இது சிக்கலை கூடுதல் கேள்விகள் இல்லாமல் சரிசெய்ய உதவுகிறது.",
   "system logs": "கணினி பதிவுகள்",
   "Access Control & Security": "அணுகல் கட்டுப்பாடு மற்றும் பாதுகாப்பு",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்களை பதிவு செய்ய அனுமதி (எ.கா. பொருட்கள் விற்பனை)",
   "Allow unauthenticated access to public events (for embedding calendars)": "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)",
   "Automatically send birthday emails (requires background job scheduler)": "பிறந்தநாள் ஈமெயிலை தானாக அனுப்பவும் (பின்புல வேலை அட்டவணையை தேவை)",
   "Birthday Greeting Emails": "பிறந்தநாள் வாழ்த்து ஈமெயிலுகள்",

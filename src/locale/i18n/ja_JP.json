@@ -4120,7 +4120,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "これが発生した時期のエラーについては、関連するログファイルをダウンロードしてGitHubの問題に添付してください。フォローアップの質問をせずに問題を修正するのに役立ちます。",
   "system logs": "システムログ",
   "Access Control & Security": "アクセス制御とセキュリティ",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "税控除不適格の支払い（例えば、商品販売）の記録を許可する",
   "Allow unauthenticated access to public events (for embedding calendars)": "公開イベントへの認証されていないアクセスを許可する（カレンダー埋め込み用）",
   "Automatically send birthday emails (requires background job scheduler)": "誕生日メールを自動的に送信する（バックグラウンドジョブスケジューラが必要）",
   "Birthday Greeting Emails": "誕生日グリーティングメール",

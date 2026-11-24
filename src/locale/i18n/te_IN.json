@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "ఇది జరిగిన సమయం చుట్టూ లోపాల కోసం, మరియు సంబంధిత లాగ్ ఫైల్‌ను డౌన్‌లోడ్ చేసి మీ GitHub సమస్యకు జోడించండి — ఇది ఫాలో-అప్ ప్రశ్నలు అడగకుండా సమస్యను సరిచేయడానికి సహాయపడుతుంది.",
   "system logs": "సిస్టమ్ లాగ్‌లు",
   "Access Control & Security": "ప్రాప్యత నియంత్రణ మరియు భద్రత",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "పన్ను తగ్గించదగిన కాని చెల్లుళ్లను రికార్డ్ చేయడానికి అనుమతించండి (ఉదా., సరుకుల విక్రయం)",
   "Allow unauthenticated access to public events (for embedding calendars)": "ప్రజా ఈవెంట్‌లకు ఆధీకరణ లేని ప్రాప్యతను అనుమతించండి (క్యాలెండర్‌లను పొందుపరచడానికి)",
   "Automatically send birthday emails (requires background job scheduler)": "పుట్టినరోజు ఇమెయిల్‌లను స్వయంచాలకంగా పంపండి (నేపథ్య ఉద్యోగ షెడ్యూలర్ అవసరం)",
   "Birthday Greeting Emails": "పుట్టినరోజు గ్రీటింగ్ ఇమెయిల్‌లు",

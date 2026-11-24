@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "לשגיאות סביב הזמן שזה קרה, ולהורדה ולהצמדת קובץ הרישום הרלוונטי לבעיה ב-GitHub שלך - זה עוזר לנו לתקן את הבעיה ללא הצעת שאלות ממשך.",
   "system logs": "רישומי מערכת",
   "Access Control & Security": "בקרת גישה וביטחון",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "אפשר רישום תשלומים שלא ניתן להפחית מיסים (למשל, מכירת סחורה)",
   "Allow unauthenticated access to public events (for embedding calendars)": "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)",
   "Automatically send birthday emails (requires background job scheduler)": "שלח אימיילים ליום הולדת באופן אוטומטי (דורש מתזמן עבודה ברקע)",
   "Birthday Greeting Emails": "אימיילים של ברכות ליום הולדת",

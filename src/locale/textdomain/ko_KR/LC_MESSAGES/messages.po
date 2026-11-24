@@ -17103,10 +17103,6 @@ msgid "Access Control & Security"
 msgstr "접근 제어 및 보안"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "비세금공제 지불(예: 상품 판매)을 기록할 수 있도록 허용"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "공개 이벤트에 대한 인증되지 않은 접근을 허용(달력 포함용)"
 

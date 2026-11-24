@@ -17087,10 +17087,6 @@ msgid "Access Control & Security"
 msgstr "การควบคุมการเข้าถึงและความปลอดภัย"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "อนุญาตให้บันทึกการชำระเงินที่ไม่สามารถหักลดหย่อนภาษีได้ (เช่น การขายสินค้า)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
 

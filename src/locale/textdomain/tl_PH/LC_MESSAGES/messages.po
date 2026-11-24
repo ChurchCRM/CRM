@@ -17090,10 +17090,6 @@ msgid "Access Control & Security"
 msgstr "Kontrol ng Access at Seguridad"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Payagan ang pagtatala ng mga pagbabayad na hindi maaaring ibawas sa buwis (halimbawa, benta ng merchandise)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Payagan ang hindi na-authenticate na access sa mga pampublikong kaganapan (para sa pag-embed ng mga kalendaryo)"
 

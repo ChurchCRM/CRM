@@ -4150,7 +4150,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte příslušný soubor protokolu k hlášení na GitHubu – pomůže nám to vyřešit problém bez dalších doplňujících otázek.",
   "system logs": "systémové protokoly",
   "Access Control & Security": "Přístupová kontrola a bezpečnost",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Umožnit zaznamenávání plateb, které nejsou daňově odečitatelné (např. prodej zboží)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Umožnit přístup bez přihlášení k veřejným událostem (pro vkládání kalendářů)",
   "Automatically send birthday emails (requires background job scheduler)": "Automaticky odesílat e-maily k narozeninám (vyžaduje plánovač úloh na pozadí)",
   "Birthday Greeting Emails": "E-maily k narozeninám",

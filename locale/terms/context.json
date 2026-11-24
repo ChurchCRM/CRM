@@ -6,8 +6,19 @@
     "src/admin/views/dashboard.php:206",
     "src/admin/views/debug.php:588"
   ],
+  "Finance Settings": [
+    "src/ChurchCRM/Config/Menu/Menu.php:463",
+    "src/ChurchCRM/view/PageHeader.php:170",
+    "src/ChurchCRM/view/PageHeader.php:176"
+  ],
   "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.": [
     "src/setup/templates/setup-steps.php:201"
+  ],
+  "No Payments Text": [
+    "src/admin/routes/finance.php:39"
+  ],
+  "No Pledge Text": [
+    "src/admin/routes/finance.php:38"
   ],
   "No tier sends people, donors, giving, content, church contact details, your web address or server name.": [
     "src/setup/templates/setup-steps.php:202"

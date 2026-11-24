@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "በ ይህ ተስኖ አጋዥ ጊዜ አስህተት ለ, አውርድ ና አሟሙ ተዛማች ዝርዝር ፋይል ወደ ነ GitHub ጉዳይ — ለ ጊዜ ይህ ሂሳብ ድስት ገጥሞ ጠይቅ እንደገና ጥያቄ.",
   "system logs": "ስርዓት ዝርዝሮች",
   "Access Control & Security": "ተደራሲ ቁጥጥር እና ደህንነት",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "ታክስ ብር ያልተነሳ ክፍያ መመዝገብ ይፈቅዱ (ለምሳሌ, ሸቀጦች ሽያጭ)",
   "Allow unauthenticated access to public events (for embedding calendars)": "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)",
   "Automatically send birthday emails (requires background job scheduler)": "ደወሳደሳ ኢሜይልን በራስ ነክ ይላኩ (የጀርባ ሥራ አቀባይ ያስፈልጋል)",
   "Birthday Greeting Emails": "ሙሉበርቱ ምድረ ሰናይ ኢሜይልች",

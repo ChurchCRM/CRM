@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "et otsida vigu selle juhtumise ajal ja laadida oma GitHub probleemile alla ning lisada asjaomane logifail – see aitab meil probleemi parandada ilma täiendavate küsimusteta.",
   "system logs": "süsteemi logid",
   "Access Control & Security": "Juurdepääsu juhtimine ja turvalisus",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Lubada mittemahakasvuliste maksete salvestamist (nt kaubamüük)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Lubada autentimata juurdepääs avalikele sündmustele (kalendrite manustamiseks)",
   "Automatically send birthday emails (requires background job scheduler)": "Saada automaatselt sünnipäeva kirju (nõuab tausta tööülesannete planeerijat)",
   "Birthday Greeting Emails": "Sünnipäeva tervituse e-kirjad",

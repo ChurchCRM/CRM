@@ -4135,7 +4135,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "për gabimet rreth kohës kur ndodhi kjo, dhe shkarkoni dhe bashkangjitni skedarin e log-ut përkatës në çështjen tuaj në GitHub — na ndihmon të rregullojmë problemin pa bërë pyetje ndjekese.",
   "system logs": "regjistra sistemi",
   "Access Control & Security": "Kontrolli i Aksesit dhe Siguria",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh. shitje merce)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Lejoni qasjen e pa-vërtetuar në ngjarje publike (për ngulitjen e kalendarëve)",
   "Automatically send birthday emails (requires background job scheduler)": "Dërgoni automatikisht email-et e ditëlindjes (kërkon planifikuesi i punës në prapavijë)",
   "Birthday Greeting Emails": "Email-et e Përshëndetjes për Ditëlindje",

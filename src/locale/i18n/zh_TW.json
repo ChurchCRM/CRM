@@ -4120,7 +4120,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "查找發生此錯誤時周圍的錯誤，並下載相關日誌文件並將其附加到您的 GitHub 問題中——這有助於我們修復問題，而無需提出後續問題",
   "system logs": "系統日誌",
   "Access Control & Security": "存取控制與安全性",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "允許記錄不可抵稅的款項（例如商品銷售）",
   "Allow unauthenticated access to public events (for embedding calendars)": "允許未認證存取公開事件（用於嵌入日曆）",
   "Automatically send birthday emails (requires background job scheduler)": "自動傳送生日電子郵件（需要背景工作排程器）",
   "Birthday Greeting Emails": "生日問候電子郵件",

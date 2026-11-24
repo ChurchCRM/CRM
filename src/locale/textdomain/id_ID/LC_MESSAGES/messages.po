@@ -17106,10 +17106,6 @@ msgid "Access Control & Security"
 msgstr "Kontrol Akses dan Keamanan"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Izinkan pencatatan pembayaran tidak dapat dikurangkan dari pajak (misalnya penjualan barang dagangan)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Izinkan akses tidak terautentikasi ke acara publik (untuk menyematkan kalender)"
 

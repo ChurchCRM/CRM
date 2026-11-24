@@ -4120,7 +4120,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "สำหรับข้อผิดพลาดในเวลาที่เกิดเหตุการณ์นี้ ดาวน์โหลดและแนบไฟล์บันทึกที่เกี่ยวข้องกับปัญหา GitHub ของคุณ - สิ่งนี้ช่วยให้เราแก้ไขปัญหาได้โดยไม่ต้องถามคำถามติดตามผล",
   "system logs": "บันทึกระบบ",
   "Access Control & Security": "การควบคุมการเข้าถึงและความปลอดภัย",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "อนุญาตให้บันทึกการชำระเงินที่ไม่สามารถหักลดหย่อนภาษีได้ (เช่น การขายสินค้า)",
   "Allow unauthenticated access to public events (for embedding calendars)": "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)",
   "Automatically send birthday emails (requires background job scheduler)": "ส่งอีเมลวันเกิดโดยอัตโนมัติ (ต้องใช้ตัวจัดกำหนดการสำหรับงานพื้นหลัง)",
   "Birthday Greeting Emails": "อีเมลอวยพรวันเกิด",

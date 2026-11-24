@@ -17123,10 +17123,6 @@ msgid "Access Control & Security"
 msgstr "Erişim Kontrolü ve Güvenliği"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Vergi indirimine tabi olmayan ödemelerin kaydedilmesine izin ver (örneğin, ürün satışları)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Genel etkinliklere kimliği doğrulanmamış erişime izin ver (takvimleri gömme için)"
 

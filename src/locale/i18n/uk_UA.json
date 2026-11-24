@@ -4165,7 +4165,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "на наявність помилок у той час, коли це сталося, а також завантажте й додайте відповідний файл журналу до вашого звіту на GitHub — це допоможе нам виправити проблему без додаткових запитань.",
   "system logs": "системні журнали",
   "Access Control & Security": "Контроль доступу та безпека",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Дозволити запис платежів, що не підлягають відрахуванню від податків (наприклад, продаж товарів)",
   "Allow unauthenticated access to public events (for embedding calendars)": "Дозволити неавторизований доступ до публічних подій (для вбудовування календарів)",
   "Automatically send birthday emails (requires background job scheduler)": "Автоматично відправляти листи з днем народження (потрібен планувальник фонових завдань)",
   "Birthday Greeting Emails": "Листи привітання з днем народження",

@@ -4120,7 +4120,6 @@
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "이것이 발생한 시간 주변의 오류를 확인하고 관련 로그 파일을 GitHub 문제에 다운로드하여 첨부하세요. 이는 후속 질문 없이 문제를 해결하는 데 도움이 됩니다.",
   "system logs": "시스템 로그",
   "Access Control & Security": "접근 제어 및 보안",
-  "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "비세금공제 지불(예: 상품 판매)을 기록할 수 있도록 허용",
   "Allow unauthenticated access to public events (for embedding calendars)": "공개 이벤트에 대한 인증되지 않은 접근을 허용(달력 포함용)",
   "Automatically send birthday emails (requires background job scheduler)": "생일 이메일 자동 전송(백그라운드 작업 스케줄러 필요)",
   "Birthday Greeting Emails": "생일 인사 이메일",

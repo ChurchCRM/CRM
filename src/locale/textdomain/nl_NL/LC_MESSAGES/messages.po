@@ -17093,10 +17093,6 @@ msgid "Access Control & Security"
 msgstr "Toegangscontrole en beveiliging"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Opnemen van niet-aftrekbare betalingen toestaan (bijv. goederen verkoop)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Niet-geverifieerde toegang tot openbare evenementen toestaan (voor inbedding van kalenders)"
 

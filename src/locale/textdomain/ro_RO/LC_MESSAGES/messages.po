@@ -17195,10 +17195,6 @@ msgid "Access Control & Security"
 msgstr "Control de acces și securitate"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Permite înregistrarea plăților nedeductibile (de ex., vânzări de mărfuri)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Permite accesul neautentificat la evenimentele publice (pentru încorporarea calendarelor)"
 
