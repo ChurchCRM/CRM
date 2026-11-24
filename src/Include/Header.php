@@ -276,6 +276,23 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
+        <!-- Database Support Warning: once dismissed, the banner lives here until the database is supported -->
+        <?php $dbSupportWarning = NotificationService::getDatabaseSupportWarning(); ?>
+        <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
+        <div class="nav-item dropdown" id="databaseSupportMenuItem">
+          <a class="nav-link px-0 text-danger" data-bs-toggle="dropdown" href="#"
+             id="databaseSupportMenu" title="<?= gettext('Database out of support') ?>">
+            <i class="fa-solid fa-database"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <div class="dropdown-item-text">
+              <strong><i class="fa-solid fa-database me-2"></i><?= InputUtils::escapeHTML($dbSupportWarning['title']) ?></strong>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($dbSupportWarning['message']) ?></div>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
+
         <!-- Locale: flag links directly to the localization tab on the profile page -->
         <?php
         $flagCode    = $localeInfo->getCountryFlagCode();
