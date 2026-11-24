@@ -11,12 +11,15 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleConfirmation", "#peopleDirectory", "#peopleMap"];
+    const reportKeys = ["sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
+    const reportOriginals = {};
     let savedProviders;
     let savedFriendDate;
     let savedDefaultCity;
 
     before(() => {
+        reportKeys.forEach((key) => cy.getSystemConfig(key).then((value) => { reportOriginals[key] = value; }));
         cy.getSystemConfig("bHideFriendDate").then((value) => {
             savedFriendDate = value;
         });
@@ -29,6 +32,7 @@ describe("People Settings hub", () => {
     });
 
     after(() => {
+        reportKeys.forEach((key) => cy.restoreSystemConfig(key, reportOriginals[key]));
         cy.restoreSystemConfig("bHideFriendDate", savedFriendDate);
         cy.restoreSystemConfig("sDefaultCity", savedDefaultCity);
         cy.restoreSystemConfig("sGeocoderProviders", savedProviders);
@@ -105,7 +109,9 @@ describe("People Settings hub", () => {
                 expect(titles[1]).to.contain("Families");
                 expect(titles[2]).to.contain("People");
                 expect(titles[3]).to.contain("Grade Promotion");
-                expect(titles[4]).to.contain("Map Settings");
+                expect(titles[4]).to.contain("Confirmation Letter");
+                expect(titles[5]).to.contain("Directory");
+                expect(titles[6]).to.contain("Map Settings");
             });
             cy.get("#peopleDefaults").should("not.exist");
             cy.get("#peopleNewMembers h4.subheader").should("contain", "New Record Defaults");
@@ -116,6 +122,23 @@ describe("People Settings hub", () => {
             cy.get("#peopleNewMembers select[name='sDefaultState'] option").should("have.length.greaterThan", 10);
             cy.get("#peopleNewMembers input[name='sDefaultState']").should("not.exist");
             cy.get("#copy-church-address").should("contain", "Copy from Church Info");
+        });
+
+        it("lets an administrator edit confirmation letters and directory disclaimers", () => {
+            const keys = reportKeys;
+            cy.freshAdminFormLogin({ enabled: true });
+            cy.intercept("POST", "**/admin/api/system/config/*").as("saveReportText");
+            cy.visit("/admin/people");
+            cy.get("#peopleDirectory .settings-panel-fields").should("not.be.disabled");
+            keys.forEach((key) => {
+                cy.get(`textarea[name='${key}']`).clear().type(`Updated ${key}\nSecond line`).blur();
+                cy.wait("@saveReportText").its("response.statusCode").should("eq", 200);
+            });
+            cy.reload();
+            keys.forEach((key) => cy.get(`textarea[name='${key}']`).should("have.value", `Updated ${key}\nSecond line`));
+            cy.get("[name='sDear'], [name='sConfirmSincerely'], [name='sConfirmSigner'], [name='bDirLetterHead']").should("not.exist");
+            cy.visit("/SystemSettings.php");
+            keys.forEach((key) => cy.get(`[name='new_value[${key}]']`).should("not.exist"));
         });
 
         it("auto-saves the default city", () => {

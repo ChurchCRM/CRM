@@ -28,6 +28,12 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleGrades' => [gettext('Grade Promotion'), 'fa-solid fa-graduation-cap', [
             'iGradePromotionMonth', 'iGradePromotionDay',
         ]],
+        'peopleConfirmation' => [gettext('Confirmation Letter'), 'fa-solid fa-envelope', [
+            'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6',
+        ]],
+        'peopleDirectory' => [gettext('Directory'), 'fa-solid fa-address-book', [
+            'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2',
+        ]],
         'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
             'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
         ]],
@@ -56,6 +62,14 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'iMapZoom'                             => gettext('Default Map View'),
         'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
         'sGeocoderProviders'                   => gettext('Geocoding services'),
+        'sConfirm1'                            => sprintf(gettext('Letter Text %d'), 1),
+        'sConfirm2'                            => sprintf(gettext('Letter Text %d'), 2),
+        'sConfirm3'                            => sprintf(gettext('Letter Text %d'), 3),
+        'sConfirm4'                            => sprintf(gettext('Letter Text %d'), 4),
+        'sConfirm5'                            => sprintf(gettext('Letter Text %d'), 5),
+        'sConfirm6'                            => sprintf(gettext('Letter Text %d'), 6),
+        'sDirectoryDisclaimer1'                => sprintf(gettext('Disclaimer %d'), 1),
+        'sDirectoryDisclaimer2'                => sprintf(gettext('Disclaimer %d'), 2),
         'iGradePromotionMonth'                 => gettext('Promotion Month'),
         'iGradePromotionDay'                   => gettext('Promotion Day'),
     ];
@@ -80,7 +94,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
                 unset($setting['tooltip']);
             }
 
-            if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
+            if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2'], true)) {
                 $setting['type'] = 'textarea';
             }
             if ($setting['name'] === GeocoderChain::CONFIG_KEY) {
