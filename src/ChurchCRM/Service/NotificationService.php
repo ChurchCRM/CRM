@@ -72,11 +72,13 @@ class NotificationService
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
      */
-    public static function loadSessionNotifications(): void
+    public static function loadSessionNotifications(bool $onLandingPage = false): void
     {
         self::loadUpgradeNotification();
         self::loadDatabaseSupportNotification();
-        self::loadRemoteNotifications();
+        if ($onLandingPage) {
+            self::loadRemoteNotifications();
+        }
     }
 
     // ─── Source 1: System upgrade (session set at login) ────────────────
@@ -191,6 +193,13 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
+            // Announcements show once per login, on the landing page only.
+            if ($id !== '') {
+                if (isset($_SESSION['remoteNoticesShown'][$id])) {
+                    continue;
+                }
+                $_SESSION['remoteNoticesShown'][$id] = true;
+            }
             $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
