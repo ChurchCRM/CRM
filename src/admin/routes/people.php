@@ -19,23 +19,23 @@ $app->get('/people', function (Request $request, Response $response): Response {
             'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
             'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
         ]],
-        'peopleFamilies' => [gettext('Families'), 'fa-solid fa-people-roof', [
-            'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideWeddingDate', 'bHideFamilyNewsletter', 'bForceUppercaseZip',
-        ]],
         'peoplePeople' => [gettext('People'), 'fa-solid fa-user', [
             'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideDeceasedFromDirectory',
+        ]],
+        'peopleFamilies' => [gettext('Families'), 'fa-solid fa-people-roof', [
+            'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideWeddingDate', 'bHideFamilyNewsletter', 'bForceUppercaseZip',
         ]],
         'peopleGrades' => [gettext('Grade Promotion'), 'fa-solid fa-graduation-cap', [
             'iGradePromotionMonth', 'iGradePromotionDay',
         ]],
-        'peopleConfirmation' => [gettext('Confirmation Letter'), 'fa-solid fa-envelope', [
-            'sDear', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sConfirmSincerely', 'sConfirmSigner',
+        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
+            'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
         ]],
         'peopleDirectory' => [gettext('Directory'), 'fa-solid fa-address-book', [
             'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2',
         ]],
-        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
-            'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
+        'peopleConfirmation' => [gettext('Confirmation Letter'), 'fa-solid fa-envelope', [
+            'sDear', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sConfirmSincerely', 'sConfirmSigner',
         ]],
     ];
 

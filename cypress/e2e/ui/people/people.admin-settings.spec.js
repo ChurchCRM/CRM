@@ -11,7 +11,7 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleConfirmation", "#peopleDirectory", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleGrades", "#peopleMap", "#peopleDirectory", "#peopleConfirmation"];
     const reportKeys = ["sDear", "sConfirmSincerely", "sConfirmSigner", "sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
     const reportOriginals = {};
     let savedProviders;
@@ -79,18 +79,18 @@ describe("People Settings hub", () => {
             cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
         });
 
-        it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {
+        it("orders sections by how often they change, with with address defaults in the greeting section", () => {
             cy.visit("/admin/people");
             cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
             cy.get(".settings-panel-card h6").then(($headings) => {
                 const titles = [...$headings].map((heading) => heading.textContent);
                 expect(titles[0]).to.contain("New Members & Greeting");
-                expect(titles[1]).to.contain("Families");
-                expect(titles[2]).to.contain("People");
+                expect(titles[1]).to.contain("People");
+                expect(titles[2]).to.contain("Families");
                 expect(titles[3]).to.contain("Grade Promotion");
-                expect(titles[4]).to.contain("Confirmation Letter");
+                expect(titles[4]).to.contain("Map Settings");
                 expect(titles[5]).to.contain("Directory");
-                expect(titles[6]).to.contain("Map Settings");
+                expect(titles[6]).to.contain("Confirmation Letter");
             });
             cy.get("#peopleDefaults").should("not.exist");
             cy.get("#peopleNewMembers h4.subheader").should("contain", "New Record Defaults");
@@ -108,7 +108,7 @@ describe("People Settings hub", () => {
             cy.freshAdminFormLogin({ enabled: true });
             cy.intercept("POST", "**/admin/api/system/config/*").as("saveReportText");
             cy.visit("/admin/people");
-            cy.get("#peopleDirectory .settings-panel-fields").should("not.be.disabled");
+            cy.get("#peopleConfirmation .settings-panel-fields, #peopleDirectory .settings-panel-fields").should("not.be.disabled");
             keys.forEach((key) => {
                 cy.get(`[name='${key}']`).clear().type(`Updated ${key}`).blur();
                 cy.wait("@saveReportText").its("response.statusCode").should("eq", 200);

@@ -212,16 +212,16 @@ class   SystemConfig
             'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', gettext('Pledge Reminder Signer')),
             'sReminderNoPledge'                    => new ConfigItem('sReminderNoPledge', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of a pledge'), '', '', false),
             'sReminderNoPayments'                  => new ConfigItem('sReminderNoPayments', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of payments'), '', '', false),
-            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Database information confirmation and correction report signer')),
-            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext('Verbage for the directory report'), '', '', false),
-            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', gettext('Verbage for the directory report'), '', '', false),
-            // Legacy path or https URL with no settings control; read only when no letterhead is uploaded on Admin -> Report Settings.
+            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', '', '', '', false),
+            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', '', '', '', false),
+            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', '', '', '', false),
+            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', '', '', '', false),
+            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', '', '', '', false),
+            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', '', '', '', false),
+            'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Name printed under the closing of letters and emails')),
+            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", '', '', '', false),
+            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', '', '', '', false),
+            // No settings control: read only when no letterhead is uploaded.
             'bDirLetterHead'                       => new ConfigItem('bDirLetterHead', 'text', '', gettext('Church Letterhead path and file')),
             'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
             'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
@@ -239,16 +239,10 @@ class   SystemConfig
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             'sChurchTaxId'                         => new ConfigItem('sChurchTaxId', 'text', '', gettext('Church tax ID (EIN) printed on contribution statements')),
-            // Church social media accounts. Like the other church-identity
-            // items above, these are deliberately absent from
-            // a settings hub; they are edited on Admin -> System -> Church Info and
-            // read back through ChurchMetaData::getChurchSocialLinks().
             'sChurchX'                             => new ConfigItem('sChurchX', 'text', '', ''),
             'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
             'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
             'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
-            // Member Portal (#9863, #9864). Deliberately declared; the portal's settings live on their own
-            // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
@@ -310,8 +304,6 @@ class   SystemConfig
             'bEnabledFinance'                      => new ConfigItem('bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem('bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
-            // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
-            // category (2026-09-18): their one home is Admin → Ministry Settings.
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
             'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
             'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),

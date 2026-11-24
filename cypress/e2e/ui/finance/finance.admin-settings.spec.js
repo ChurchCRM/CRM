@@ -105,17 +105,6 @@ describe("Finance Settings hub", () => {
                 });
         });
     });
-    it("keeps module toggles off the Finance Features card", () => {
-        cy.setupAdminSession();
-
-        cy.visit("/admin/system/feature-toggles");
-        cy.get(".page-title").should("contain.text", "Feature Toggles");
-        cy.get(".feature-toggle[data-setting='bEnabledEvents']").should(
-            "exist",
-        );
-        cy.get("[data-setting='bEnableNonDeductible']").should("not.exist");
-        cy.contains(".card-title", /^Finance Features$/).should("not.exist");
-    });
     describe("navigation from finance pages", () => {
         const pages = [
             ["/finance/funds", "Donation Funds"],

@@ -29,6 +29,9 @@ Reference: `src/admin/routes/people.php`, `src/admin/views/people.php`.
 6. Every area admin page gets a header button back to the hub (`PageHeader::peopleSettingsButton()` is the pattern; add a sibling per area) and a breadcrumb through it.
 7. The area dashboard keeps only a link to the hub. No settings panel there.
 8. Group settings by what they edit (Person form, Family form, Notifications), not by when they were added.
+9. Order sections by how often an administrator changes them: day-to-day behavior first, annual tasks next, set-once wording and disclaimers last. Do not add a section for one field; fold it into the nearest one.
+10. A setting is for administrators only. A non-admin role never edits system settings: gate the page and its API with `AdminRoleAuthMiddleware`, and show a link to the settings only to admins. There is no module-level settings role.
+11. A `ConfigItem` tooltip is help text the panel shows. Reword it when the control changes; delete it when it only repeats the label. A `ConfigItem` that no code reads is deleted.
 
 ## Reports
 
