@@ -43,6 +43,10 @@ function standaloneReportInstallFailure($reason, $databaseErrorCode = null)
             }
             $distinctId = 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
         }
+        // The shared development system ID is a dev/CI system, never a church install.
+        if ($distinctId === 'dev-churchcrm-testing') {
+            return false;
+        }
         $directory = sys_get_temp_dir() . '/churchcrm-telemetry';
         if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
             return false;

@@ -36,6 +36,12 @@ foreach (['demos6.softaculous.com' => true, 'softaculous.com:8080' => true, 'not
 Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true));
 Assert::same('test', TelemetryService::resolveInstallProfile('test', false, true));
 Assert::same('test', TelemetryService::resolveInstallProfile('production', true, true));
+foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test'] as $stored => $expected) {
+    Assert::same('test', TelemetryService::resolveInstallProfile($stored, false, false, true));
+    Assert::same($expected, TelemetryService::resolveInstallProfile($stored, false, false, false));
+}
+Assert::same('test', TelemetryService::resolveInstallProfile('production', false, true, true));
+Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true, false));
 
 $value = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
