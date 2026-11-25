@@ -90,8 +90,7 @@ class PledgeReminderService
             $query->filterById($criteria['familyIds'], Criteria::IN);
         }
 
-        $classService = new ClassificationService();
-        $activePeople = static fn (): PersonQuery => $classService->excludeInactive(PersonQuery::create());
+        $activePeople = static fn (): PersonQuery => PersonQuery::create()->filterByActive();
         $classIds = $criteria['classificationIds'];
         $allClassIds = [];
         foreach (Classification::getAll() as $option) {
@@ -107,7 +106,7 @@ class PledgeReminderService
                 return [];
             }
             $query->filterById($eligible, Criteria::IN);
-        } elseif ($classService->getInactiveIds() !== []) {
+        } elseif ((new ClassificationService())->getInactiveIds() !== []) {
             $query->filterById(self::familyIdsWithClass($activePeople()), Criteria::IN);
         }
 

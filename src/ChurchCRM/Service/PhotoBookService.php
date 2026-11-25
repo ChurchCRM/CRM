@@ -36,15 +36,13 @@ class PhotoBookService
 
             foreach (self::rolesOf($group) as $role) {
                 $roleName = (string) $role->getOptionName();
-                $personQuery = (new ClassificationService())->excludeInactive(
-                    Person2group2roleP2g2rQuery::create()
-                        ->filterByGroup($group)
-                        ->filterByRoleId($role->getOptionId())
-                        ->joinWithPerson()
-                        ->usePersonQuery()
-                );
-                $memberships = $personQuery
-                    ->orderByLastName()
+                $memberships = Person2group2roleP2g2rQuery::create()
+                    ->filterByGroup($group)
+                    ->filterByRoleId($role->getOptionId())
+                    ->joinWithPerson()
+                    ->usePersonQuery()
+                        ->filterByActive()
+                        ->orderByLastName()
                     ->orderByFirstName()
                     ->endUse()
                     ->find();

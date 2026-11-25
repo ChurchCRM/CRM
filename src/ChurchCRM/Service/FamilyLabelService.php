@@ -24,7 +24,7 @@ class FamilyLabelService
     {
         $query = FamilyQuery::create()->filterByActive();
         if ((new ClassificationService())->getInactiveIds() !== []) {
-            $activePeople = (new ClassificationService())->excludeInactive(PersonQuery::create());
+            $activePeople = PersonQuery::create()->filterByActive();
             $query->filterById($activePeople->filterByFamId(0, Criteria::GREATER_THAN)->select('FamId')->distinct()->find()->toArray(), Criteria::IN);
         }
         if ($newsletterOnly) {
@@ -59,8 +59,7 @@ class FamilyLabelService
         }
 
         $cells = [];
-        $people = (new ClassificationService())->excludeInactive(PersonQuery::create())
-            ->filterByActive()
+        $people = PersonQuery::create()->filterByActive()
             ->filterById($personIds)
             ->orderByLastName()
             ->orderByFirstName()

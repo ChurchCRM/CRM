@@ -63,6 +63,14 @@ class CsvExportService
         return $options;
     }
 
+    /** Limits the hand-built person_per query to the ids the ORM calls active. */
+    private static function activePeopleSql(): string
+    {
+        $ids = array_map('intval', PersonQuery::create()->filterByActive()->select('Id')->find()->toArray());
+
+        return $ids === [] ? ' AND 1 = 0 ' : ' AND per_ID IN (' . implode(',', $ids) . ') ';
+    }
+
     /**
      * Adds the people the form's filters select to the cart.
      *
@@ -219,7 +227,7 @@ class CsvExportService
             }
         }
 
-        $sWhereExt .= (new ClassificationService())->inactiveExclusionSql();
+        $sWhereExt .= self::activePeopleSql();
         $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
             "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
             $whereTypes,
@@ -426,7 +434,7 @@ class CsvExportService
                 $whereTypes .= 's';
             }
         }
-        $sWhereExt .= ' AND per_NeedsReview = 0 ' . (new ClassificationService())->inactiveExclusionSql();
+        $sWhereExt .= ' AND per_NeedsReview = 0 ' . self::activePeopleSql();
 
             // Build the complete SQL statement
 

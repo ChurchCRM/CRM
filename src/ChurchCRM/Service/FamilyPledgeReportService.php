@@ -142,7 +142,7 @@ class FamilyPledgeReportService
      */
     private static function familiesWithClassification(array $classificationIds = []): array
     {
-        $query = (new ClassificationService())->excludeInactive(PersonQuery::create());
+        $query = PersonQuery::create()->filterByActive();
         if ($classificationIds !== []) {
             $query->filterByClsId($classificationIds, Criteria::IN);
         }

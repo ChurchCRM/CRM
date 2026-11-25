@@ -317,7 +317,7 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         ->orderByLastName()
         ->orderByFirstName();
 
-    (new ClassificationService())->excludeInactive($peopleQuery);
+    $peopleQuery->filterByActiveClassification();
 
     if ($filterUnassigned) {
         $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');

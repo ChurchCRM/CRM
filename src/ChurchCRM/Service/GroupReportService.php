@@ -53,9 +53,9 @@ class GroupReportService
         if ($roleId > 0) {
             $query->filterByRoleId($roleId);
         }
-        $personQuery = (new ClassificationService())->excludeInactive($query->joinWithPerson()->usePersonQuery())
+        $personQuery = $query->joinWithPerson()->usePersonQuery()
+            ->filterByActive()
             ->leftJoinWithFamily()
-            ->filterByNeedsReview(false)
             ->orderByLastName()
             ->orderByFirstName();
         if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {

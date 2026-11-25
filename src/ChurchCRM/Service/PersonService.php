@@ -266,7 +266,7 @@ class PersonService
             $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
         }
 
-        $persons = (new ClassificationService())->excludeInactive(PersonQuery::create())
+        $persons = PersonQuery::create()->filterByActive()
             ->filterByFamId(null, Criteria::ISNOTNULL)
             ->filterByFamId(0, Criteria::NOT_EQUAL)
             ->leftJoinWithFamily()
@@ -330,12 +330,13 @@ class PersonService
     public function getGroupMailingEmails(\ChurchCRM\model\ChurchCRM\Group $group): array
     {
         $groupId = (int) $group->getId();
-        $memberships = (new ClassificationService())->excludeInactive(
-            Person2group2roleP2g2rQuery::create()
-                ->filterByGroupId($groupId)
-                ->innerJoinWithPerson()
-                ->usePersonQuery()
-        )->endUse()->find();
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupId)
+            ->innerJoinWithPerson()
+            ->usePersonQuery()
+                ->filterByActive()
+            ->endUse()
+            ->find();
 
         $personIds = [];
         foreach ($memberships as $m) {
