@@ -11,7 +11,7 @@ run-name: >-
 #      finds no meaningful changes — for when terms are known to be missing but a run would no-op.
 #   3. Extract the strings (npm run locale:build) into locale/messages.po. The same command then
 #      brings every locale in line with it (locale:apply --prune: translations of removed strings are
-#      dropped, each locale .po/.mo is rebuilt from its JSON) and rewrites locale/terms/missing/<code>/*.json,
+#      dropped from its JSON) and rewrites locale/terms/missing/<code>/*.json,
 #      the checked-in queue of terms still to translate. The tree is ready to commit.
 #   4. Open or update ONE terms PR, "locale: new terms from code (+N / -M) - <date>", on the rolling
 #      branch locale/terms/<version>. Its body lists every new and removed string, where it is in the
@@ -19,8 +19,8 @@ run-name: >-
 #   5. A person reviews and merges it. New strings are then translated in the repo (/locale-translate,
 #      npm run locale:missing + locale:apply) and land as a normal PR. There is no outside sync.
 #
-# Translation PRs and the terms PR only touch src/locale/i18n and src/locale/textdomain, so those paths
-# are excluded: merging them never starts another extraction. The terms PR also carries locale/terms/missing.
+# Translation PRs and the terms PR only touch src/locale/i18n, so that path
+# is excluded: merging them never starts another extraction. The terms PR also carries locale/terms/missing.
 
 on:
   push:
@@ -29,7 +29,6 @@ on:
     paths:
       - 'src/**'
       - '!src/locale/i18n/**'
-      - '!src/locale/textdomain/**'
   workflow_dispatch:
     inputs:
       force:
@@ -162,7 +161,6 @@ jobs:
             locale/terms/missing
             locale/terms/context.json
             src/locale/i18n
-            src/locale/textdomain
           labels: |
             Localization
           title: ${{ steps.report.outputs.title }}

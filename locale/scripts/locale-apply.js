@@ -2,19 +2,16 @@
 'use strict';
 
 /**
- * Writes translations into the locale files in the repo, the only place they live:
- * src/locale/i18n/<locale>.json, and from it src/locale/textdomain/<locale>/LC_MESSAGES/messages.po and .mo.
+ * Writes translations into the locale JSON, the only place they are committed:
+ * src/locale/i18n/<locale>.json. The PHP gettext catalogs (.po/.mo) are never written here: they are
+ * compiled from the JSON at build time by npm run locale:compile.
  *
  *   npm run locale:apply                       move every filled term of the batch files
- *                                              (locale/terms/missing/<code>/*.json) into the locale files,
+ *                                              (locale/terms/missing/<code>/*.json) into the locale JSON,
  *                                              then drop it from the batch; empty terms stay
- *   npm run locale:apply -- --json-only        write only the locale JSON (translate PRs carry
- *                                              JSON + queue; .po/.mo are rebuilt on master after merge)
  *   npm run locale:apply -- --locale de,fr     some locales only
  *   npm run locale:apply -- --prune            also drop translations of terms that are no longer in
  *                                              locale/messages.po (the terms workflow runs this)
- *   npm run locale:apply -- --check            write nothing; exit 1 when a locale's .po or .mo does not
- *                                              match its JSON and locale/messages.po
  *
  * Every incoming value is checked (placeholders, script, plural forms); a rejected value stays in its
  * batch file with the reason printed, and the exit code is 1.
@@ -28,12 +25,10 @@ const { obsoleteTerms } = require('./lib/locale-files');
 const { validateTranslation } = require('./lib/translation-checks');
 
 function parseArgs(argv) {
-    const opts = { locale: null, prune: false, check: false, jsonOnly: false };
+    const opts = { locale: null, prune: false };
     for (let i = 0; i < argv.length; i++) {
         if (argv[i] === '--locale') opts.locale = argv[++i];
         else if (argv[i] === '--prune') opts.prune = true;
-        else if (argv[i] === '--check') opts.check = true;
-        else if (argv[i] === '--json-only') opts.jsonOnly = true;
         else if (argv[i] === '--help' || argv[i] === '-h') {
             console.log(fs.readFileSync(__filename, 'utf8').match(/\/\*\*([\s\S]*?)\*\//)[1].replace(/^ \* ?/gm, ''));
             process.exit(0);
@@ -101,79 +96,46 @@ function flushPendingWrites(pendingWrites) {
     for (const { file, remaining } of pendingWrites) repo.writeBatch(file, remaining);
 }
 
-/**
- * One preflight for every run, whatever its size (1 term or 1,000): the .mo
- * compiler must be installed before anything is read or written, so a
- * checkout without dependencies fails here instead of mid-apply.
- */
-function preflight() {
-    try {
-        require.resolve('gettext-parser');
-    } catch {
-        console.error('❌ Missing dependency: gettext-parser. Run `npm ci` first — no files were changed.');
-        process.exit(1);
-    }
-}
-
 function main() {
     const opts = parseArgs(process.argv.slice(2));
-    preflight();
     const entries = repo.loadSource();
     if (entries.length === 0) {
         console.error('❌ locale/messages.po has no terms; refusing to touch the locale files');
         process.exit(1);
     }
 
-    const outOfSync = [];
     let applied = 0;
     let pruned = 0;
     for (const target of repo.selectLocales(repo.targetLocales(), opts.locale)) {
         const ctx = repo.loadLocale(target, entries);
         const notes = [];
-        let pendingWrites = [];
 
-        if (!opts.check) {
-            const r = applyBatches(ctx, opts);
-            pendingWrites = r.pendingWrites;
-            applied += r.applied;
-            if (r.applied) notes.push(`${r.applied} applied`);
-            if (r.kept) notes.push(`${r.kept} still empty`);
-            if (r.stale) notes.push(`${r.stale} stale batch terms dropped`);
-            for (const { file, term, problems } of r.rejected) {
-                console.error(`❌ ${target.code}: rejected "${term.slice(0, 70)}" (${path.relative(config.projectRoot, file)}): ${problems.join('; ')}`);
-                process.exitCode = 1;
-            }
-            if (opts.prune) {
-                const obsolete = obsoleteTerms(ctx.shapes, ctx.translations);
-                for (const term of obsolete) delete ctx.translations[term];
-                pruned += obsolete.length;
-                if (obsolete.length) notes.push(`${obsolete.length} obsolete removed`);
-            }
-        }
-
-        const changes = repo.writeLocale(ctx, entries, { dryRun: opts.check, jsonOnly: opts.jsonOnly && !opts.check });
-        // The locale files are written; only now may the batches be consumed.
-        // If writeLocale threw, this line never runs and the filled batches
-        // are still on disk for the next run.
-        flushPendingWrites(pendingWrites);
-        const files = ['json', 'po', 'mo'].filter((k) => changes[k]);
-        if (opts.check && (changes.po || changes.mo)) outOfSync.push(`${target.locale} (${files.join(', ')})`);
-        if (files.length) notes.push(`${opts.check ? 'out of sync' : 'wrote'}: ${files.join(', ')}`);
-        if (notes.length) console.log(`${opts.check ? '⚠️ ' : '✅'} ${target.locale.padEnd(6)} ${notes.join(', ')}`);
-    }
-
-    if (opts.check) {
-        if (outOfSync.length) {
-            console.error(`\n❌ ${outOfSync.length} locale(s) have a .po/.mo that does not match their JSON. Run: npm run locale:apply`);
+        const r = applyBatches(ctx, opts);
+        applied += r.applied;
+        if (r.applied) notes.push(`${r.applied} applied`);
+        if (r.kept) notes.push(`${r.kept} still empty`);
+        if (r.stale) notes.push(`${r.stale} stale batch terms dropped`);
+        for (const { file, term, problems } of r.rejected) {
+            console.error(`❌ ${target.code}: rejected "${term.slice(0, 70)}" (${path.relative(config.projectRoot, file)}): ${problems.join('; ')}`);
             process.exitCode = 1;
-        } else {
-            console.log('✅ Every locale .po and .mo matches its JSON.');
         }
-        return;
+        if (opts.prune) {
+            const obsolete = obsoleteTerms(ctx.shapes, ctx.translations);
+            for (const term of obsolete) delete ctx.translations[term];
+            pruned += obsolete.length;
+            if (obsolete.length) notes.push(`${obsolete.length} obsolete removed`);
+        }
+
+        if (repo.writeJson(ctx)) notes.push('wrote: json');
+        // The JSON is written; only now may the batches be consumed. If writeJson
+        // threw, the filled batches are still on disk for the next run.
+        flushPendingWrites(r.pendingWrites);
+        if (notes.length) console.log(`✅ ${target.locale.padEnd(6)} ${notes.join(', ')}`);
     }
+
     console.log(`\nApplied ${applied} translations${opts.prune ? `, removed ${pruned} obsolete` : ''}.`);
 }
 
 if (require.main === module) main();
 
-module.exports = { applyBatches, flushPendingWrites, preflight };
+module.exports = { applyBatches, flushPendingWrites };

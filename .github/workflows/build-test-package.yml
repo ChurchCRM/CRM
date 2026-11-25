@@ -56,7 +56,6 @@ on:
       - '!.github/issue-comments/**'
       - '!.github/workflows/**'
       - '!src/locale/i18n/**'
-      - '!src/locale/textdomain/**'
       # Re-include the test workflows and their shared root suite.
       - '.github/workflows/build-test-package.yml'
       - '.github/workflows/build-test-nightly.yml'

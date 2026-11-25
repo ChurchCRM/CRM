@@ -31,7 +31,7 @@ The prefix says who made the branch and what it is for.
 
 | Workflow (file) | Starts on | Does |
 |---|---|---|
-| `CI: build, test and package` (`build-test-package.yml`) | PR to `master`/`develop`/`hotfix/**`; push to those and `release/**`. Skips docs, agent files, Playwright artifacts, tooling config and workflow files outside the test pipeline. A pull request also skips generated translations (`src/locale/i18n`, `src/locale/textdomain`); a push builds them, because the release ZIP ships them | Runs `lint` and `build` first, then separate API, Admin UI and Staff UI root jobs with duration-balanced shards through `test-root-suite.yml`, plus the setup wizard. `test-summary` checks required groups and links failures and timings. `build` uploads `ChurchCRM-<version>.zip`, which the release flow reuses. The subdirectory suite runs in the nightly. Details and triage: [`ci-test-infrastructure.md`](../../.agents/skills/churchcrm/ci-test-infrastructure.md) |
+| `CI: build, test and package` (`build-test-package.yml`) | PR to `master`/`develop`/`hotfix/**`; push to those and `release/**`. Skips docs, agent files, Playwright artifacts, tooling config and workflow files outside the test pipeline. A pull request also skips translation JSON (`src/locale/i18n`); the build compiles the gettext catalogs (`npm run locale:compile`, inside `npm run build`) and the test jobs reuse them from the build artifact | Runs `lint` and `build` first, then separate API, Admin UI and Staff UI root jobs with duration-balanced shards through `test-root-suite.yml`, plus the setup wizard. `test-summary` checks required groups and links failures and timings. `build` uploads `ChurchCRM-<version>.zip`, which the release flow reuses. The subdirectory suite runs in the nightly. Details and triage: [`ci-test-infrastructure.md`](../../.agents/skills/churchcrm/ci-test-infrastructure.md) |
 | `Build, Test and Package (Nightly)` (`build-test-nightly.yml`) | 03:17, 11:17 and 19:17 UTC, manual, release published, push to `release/**`. A scheduled run with no testable change since the last green run ends green without testing (`scripts/ci/nightly-needed.js`) | The heavy sweeps: PHP 8.4 and 8.5, the full suite at the root and under `/churchcrm`, full locale sweep (root and subdirectory), upgrade tests |
 | `CI — Typecheck, Lint & Format` (`code-quality.yml`) | push to `master`/`develop`/`hotfix/**`; PRs | `npm run lint` (`scripts/lint/lint.js`): `tsc`, Biome format and lint, UI, icon and Cypress checks, seed data only, install-path URLs, shard timings, MySQL upgrade syntax, locale script tests |
 | `Documentation` (`docs.yml`) | push or PR touching API routes or `docs/openapi/**` | Generates and validates the OpenAPI specs; on `master` it commits the regenerated specs back (its own output paths are excluded from the trigger) |
@@ -48,7 +48,7 @@ The prefix says who made the branch and what it is for.
 
 ### Locale
 
-`Locale: extract terms`, `Locale: rebuild generated files`, `Locale: check translations` and `Locale: terms guard`: see [locale-pipeline.md](locale-pipeline.md#workflows). The POEditor workflows are removed ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo and are reviewed in repository PRs.
+`Locale: extract terms`, `Locale: check translations` and `Locale: terms guard`: see [locale-pipeline.md](locale-pipeline.md#workflows). The POEditor workflows are removed ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo and are reviewed in repository PRs.
 
 ### Release
 
