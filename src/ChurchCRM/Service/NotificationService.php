@@ -123,8 +123,9 @@ class NotificationService
      * The database support warning for the current user, or null when the
      * database is on a supported version or the user is not an admin.
      * 'dismissed' is the current user's per-user dismissal state: while false
-     * the warning renders as the full banner; once dismissed it collapses to
-     * the red top-nav indicator (Header.php) until the database is supported.
+     * the warning shows in the notification center (Header.php) with the red
+     * badge; once dismissed it no longer renders for that user. It clears for
+     * everyone when the database reaches a supported version.
      *
      * @return array{title: string, message: string, dismissed: bool}|null
      */
@@ -147,9 +148,10 @@ class NotificationService
     }
 
     /**
-     * Dismissible per user (#11942): dismissal collapses the banner into the
-     * top-nav indicator; the warning fully clears only when the database is
-     * moved to a supported version.
+     * Dismissible per user (#11942): the warning renders in the notification
+     * center with the red badge (it is a security risk); dismissal removes it
+     * for that user. It clears for everyone when the database is moved to a
+     * supported version.
      */
     private static function loadDatabaseSupportNotification(): void
     {
