@@ -21,6 +21,7 @@ class DashboardService
     {
         $familyCount = FamilyQuery::create()
             ->filterByDateDeactivated()
+            ->filterByNeedsReview(false)
             ->count();
 
         return ['familyCount' => $familyCount];
@@ -34,6 +35,7 @@ class DashboardService
         return [
             'families' => $this->getFamilyCount()['familyCount'],
             'People' => PersonQuery::create()->filterByActiveClassification()
+                ->filterByNeedsReview(false)
                 ->leftJoinWithFamily()
                 ->where('Family.DateDeactivated is null')
                 ->filterByLiving()
@@ -70,6 +72,7 @@ class DashboardService
         $familyRoleStats = [];
 
         $people = PersonQuery::create('per')->filterByActiveClassification()
+            ->filterByNeedsReview(false)
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
             ->endUse()
