@@ -426,6 +426,6 @@ include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php'
 
 <?php } ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-dashboard.min.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/groups-sundayschool-dashboard.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
