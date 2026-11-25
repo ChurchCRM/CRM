@@ -28338,3 +28338,79 @@ msgstr "மொத்தம், மேல்"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM ஆல் தரவுத்தளத்துடன் இணைக்க முடியவில்லை. ஒவ்வொரு புலத்தையும் உங்கள் வலை ஹோஸ்டிடம் சரிபார்க்கவும், அல்லது Discord இல் உதவி கேட்கவும்."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM ஆல் தரவுத்தளச் சேவையகத்தைக் கண்டறிய முடியவில்லை. தரவுத்தளச் சேவையக முகவரியையும் போர்ட்டையும் உங்கள் வலை ஹோஸ்டிடம் சரிபார்க்கவும்."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM உங்கள் தேவாலயத்தின் தகவல்களை ஒரு தரவுத்தளத்தில் சேமிக்கிறது. முதலில் ஒரு காலி தரவுத்தளத்தை உருவாக்கி, பின்னர் அதன் விவரங்களைக் கீழே உள்ளிடவும்."
+
+#: 
+msgid "Database server address"
+msgstr "தரவுத்தளச் சேவையக முகவரி"
+
+#: 
+msgid "How do I create a database?"
+msgstr "நான் எப்படி ஒரு தரவுத்தளத்தை உருவாக்குவது?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "தரவுத்தள இணைப்புச் சிக்கல்களை எப்படிச் சரிசெய்வது"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "உங்களுக்கு வேறு எண் வழங்கப்படாவிட்டால் 3306 என்றே வைக்கவும்."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 அல்லது அதற்கு மேற்பட்டது, அல்லது MariaDB 10.11 அல்லது அதற்கு மேற்பட்டது தேவை."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s கட்டமைப்புச் சரிபார்ப்புகளை உள்ளடக்கியது."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "தரவுத்தளப் பயனர் பெயர் அல்லது கடவுச்சொல் தவறானது. இரண்டையும் உங்கள் வலை ஹோஸ்டிடம் சரிபார்க்கவும்; அவை உங்கள் ஹோஸ்டிங் உள்நுழைவு அல்ல."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "நீங்கள் உருவாக்கிய காலி தரவுத்தளத்தின் பெயர். காட்டப்பட்டுள்ளபடியே சரியாக நகலெடுக்கவும்; சில ஹோஸ்டுகள் உங்கள் கணக்குப் பெயரை முன்னால் சேர்க்கும்."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "அந்தத் தரவுத்தளப் பயனரின் கடவுச்சொல். எதையும் சேமிப்பதற்கு முன் ChurchCRM இணைப்பைச் சோதிக்கிறது."
+
+#: 
+msgid "The server address from your web host."
+msgstr "உங்கள் வலை ஹோஸ்டிடமிருந்து பெற்ற சேவையக முகவரி."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "பயனர் பெயரும் கடவுச்சொல்லும் சரியாக உள்ளன, ஆனால் அந்தப் பெயரில் தரவுத்தளம் இல்லை. தரவுத்தளப் பெயரைச் சரிபார்க்கவும், அல்லது முதலில் தரவுத்தளத்தை உருவாக்கவும்."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "தரவுத்தளத்திற்கான பயனர் பெயர். இது உங்கள் வலை ஹோஸ்டில் உள்நுழைய நீங்கள் பயன்படுத்தும் பெயர் அல்ல."
+
+#: 
+msgid "Undo"
+msgstr "செயல்தவிர்"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "செயல்தவிர்க்க முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "உங்கள் வலை ஹோஸ்டிடமிருந்தோ, அல்லது உங்கள் சேவையகத்தை அமைத்தவரிடமிருந்தோ தரவுத்தள விவரங்கள் உங்களுக்குத் தேவை."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "தரவுத்தள அமைவு சரிசெய்தல் வழிகாட்டி"
+

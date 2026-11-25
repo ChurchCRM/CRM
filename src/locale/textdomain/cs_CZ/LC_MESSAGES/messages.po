@@ -28352,3 +28352,79 @@ msgstr "Celkem, nahoře"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM se nemohl připojit k databázi. Zkontrolujte každé pole u svého poskytovatele webhostingu, nebo požádejte o pomoc na Discordu."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM nenašel databázový server. Zkontrolujte adresu a port databázového serveru u svého poskytovatele webhostingu."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM ukládá informace o vašem sboru do databáze. Nejprve vytvořte prázdnou databázi a poté níže zadejte její údaje."
+
+#: 
+msgid "Database server address"
+msgstr "Adresa databázového serveru"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Jak vytvořím databázi?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Jak opravit problémy s připojením k databázi"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Ponechte 3306, pokud vám nebylo přiděleno jiné číslo."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Vyžaduje MySQL 8.4 nebo novější, nebo MariaDB 10.11 nebo novější."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s zahrnuje kontroly konfigurace."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Uživatelské jméno nebo heslo k databázi je nesprávné. Ověřte obojí u svého poskytovatele webhostingu; nejsou to vaše přihlašovací údaje k hostingu."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Název prázdné databáze, kterou jste vytvořili. Zkopírujte jej přesně tak, jak je uveden; někteří poskytovatelé hostingu na začátek přidávají název vašeho účtu."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Heslo pro tohoto uživatele databáze. ChurchCRM před uložením čehokoli nejprve otestuje připojení."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Adresa serveru od vašeho poskytovatele webhostingu."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Uživatelské jméno a heslo fungovaly, ale databáze s tímto názvem neexistuje. Zkontrolujte název databáze, nebo databázi nejprve vytvořte."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Uživatelské jméno pro databázi. Není to jméno, které používáte k přihlášení ke svému webhostingu."
+
+#: 
+msgid "Undo"
+msgstr "Vrátit zpět"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Vrácení zpět se nezdařilo. Zkuste to prosím znovu."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Potřebujete údaje o databázi od svého poskytovatele webhostingu, nebo od toho, kdo váš server nastavil."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "průvodce řešením problémů s nastavením databáze"
+

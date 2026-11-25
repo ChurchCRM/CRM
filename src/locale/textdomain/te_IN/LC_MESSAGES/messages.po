@@ -28306,3 +28306,79 @@ msgstr "మొత్తం, పైన"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM డేటాబేస్‌కు కనెక్ట్ కాలేకపోయింది. ప్రతి ఫీల్డ్‌ను మీ వెబ్ హోస్ట్‌తో తనిఖీ చేయండి, లేదా Discordలో సహాయం అడగండి."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM డేటాబేస్ సర్వర్‌ను కనుగొనలేకపోయింది. డేటాబేస్ సర్వర్ చిరునామా మరియు పోర్ట్‌ను మీ వెబ్ హోస్ట్‌తో తనిఖీ చేయండి."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM మీ చర్చి సమాచారాన్ని డేటాబేస్‌లో నిల్వ చేస్తుంది. ముందుగా ఖాళీ డేటాబేస్‌ను సృష్టించండి, ఆపై దాని వివరాలను క్రింద నమోదు చేయండి."
+
+#: 
+msgid "Database server address"
+msgstr "డేటాబేస్ సర్వర్ చిరునామా"
+
+#: 
+msgid "How do I create a database?"
+msgstr "నేను డేటాబేస్‌ను ఎలా సృష్టించాలి?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "డేటాబేస్ కనెక్షన్ సమస్యలను ఎలా పరిష్కరించాలి"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "మీకు వేరే సంఖ్య ఇవ్వకపోతే 3306నే ఉంచండి."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 లేదా అంతకంటే కొత్తది, లేదా MariaDB 10.11 లేదా అంతకంటే కొత్తది అవసరం."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s కాన్ఫిగరేషన్ తనిఖీలను కవర్ చేస్తుంది."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "డేటాబేస్ వినియోగదారు పేరు లేదా పాస్‌వర్డ్ తప్పు. రెండింటినీ మీ వెబ్ హోస్ట్‌తో తనిఖీ చేయండి; అవి మీ హోస్టింగ్ సైన్-ఇన్ కాదు."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "మీరు సృష్టించిన ఖాళీ డేటాబేస్ పేరు. చూపిన విధంగానే ఖచ్చితంగా కాపీ చేయండి; కొన్ని హోస్ట్‌లు మీ ఖాతా పేరును ముందు చేరుస్తాయి."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "ఆ డేటాబేస్ వినియోగదారు పాస్‌వర్డ్. ఏదైనా సేవ్ చేయడానికి ముందు ChurchCRM కనెక్షన్‌ను పరీక్షిస్తుంది."
+
+#: 
+msgid "The server address from your web host."
+msgstr "మీ వెబ్ హోస్ట్ నుండి వచ్చిన సర్వర్ చిరునామా."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "వినియోగదారు పేరు మరియు పాస్‌వర్డ్ పనిచేశాయి, కానీ ఆ పేరుతో డేటాబేస్ లేదు. డేటాబేస్ పేరును తనిఖీ చేయండి, లేదా ముందుగా డేటాబేస్‌ను సృష్టించండి."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "డేటాబేస్ కోసం వినియోగదారు పేరు. ఇది మీ వెబ్ హోస్ట్‌లోకి సైన్ ఇన్ చేయడానికి మీరు ఉపయోగించే పేరు కాదు."
+
+#: 
+msgid "Undo"
+msgstr "రద్దుచేయండి"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "రద్దుచేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "మీకు మీ వెబ్ హోస్ట్ నుండి, లేదా మీ సర్వర్‌ను సెటప్ చేసిన వారి నుండి డేటాబేస్ వివరాలు అవసరం."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "డేటాబేస్ సెటప్ ట్రబుల్షూటింగ్ గైడ్"
+

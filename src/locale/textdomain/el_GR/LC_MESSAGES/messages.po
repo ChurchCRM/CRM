@@ -28327,3 +28327,79 @@ msgstr "Σύνολο, επάνω"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "Το ChurchCRM δεν μπόρεσε να συνδεθεί στη βάση δεδομένων. Ελέγξτε κάθε πεδίο με τον πάροχο φιλοξενίας σας ή ζητήστε βοήθεια στο Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "Το ChurchCRM δεν μπόρεσε να βρει τον διακομιστή βάσης δεδομένων. Ελέγξτε τη διεύθυνση και τη θύρα του διακομιστή βάσης δεδομένων με τον πάροχο φιλοξενίας σας."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "Το ChurchCRM αποθηκεύει τις πληροφορίες της εκκλησίας σας σε μια βάση δεδομένων. Δημιουργήστε πρώτα μια κενή βάση δεδομένων και, στη συνέχεια, εισαγάγετε τα στοιχεία της παρακάτω."
+
+#: 
+msgid "Database server address"
+msgstr "Διεύθυνση διακομιστή βάσης δεδομένων"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Πώς μπορώ να δημιουργήσω μια βάση δεδομένων;"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Πώς να διορθώσετε τα προβλήματα σύνδεσης με τη βάση δεδομένων"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Αφήστε το 3306, εκτός αν σας δόθηκε διαφορετικός αριθμός."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Απαιτείται MySQL 8.4 ή νεότερη έκδοση, ή MariaDB 10.11 ή νεότερη έκδοση."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "Το %s καλύπτει τους ελέγχους διαμόρφωσης."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Το όνομα χρήστη ή ο κωδικός πρόσβασης της βάσης δεδομένων είναι λάθος. Ελέγξτε και τα δύο με τον πάροχο φιλοξενίας σας· δεν είναι τα στοιχεία που χρησιμοποιείτε για να συνδεθείτε στη φιλοξενία σας."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Το όνομα της κενής βάσης δεδομένων που δημιουργήσατε. Αντιγράψτε το ακριβώς όπως εμφανίζεται· ορισμένοι πάροχοι προσθέτουν το όνομα του λογαριασμού σας στην αρχή."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Ο κωδικός πρόσβασης για αυτόν τον χρήστη της βάσης δεδομένων. Το ChurchCRM ελέγχει τη σύνδεση πριν αποθηκεύσει οτιδήποτε."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Η διεύθυνση διακομιστή από τον πάροχο φιλοξενίας σας."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Το όνομα χρήστη και ο κωδικός πρόσβασης λειτούργησαν, αλλά δεν υπάρχει βάση δεδομένων με αυτό το όνομα. Ελέγξτε το όνομα της βάσης δεδομένων ή δημιουργήστε πρώτα τη βάση δεδομένων."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Το όνομα χρήστη για τη βάση δεδομένων. Αυτό δεν είναι το όνομα που χρησιμοποιείτε για να συνδεθείτε στον πάροχο φιλοξενίας σας."
+
+#: 
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Η αναίρεση απέτυχε. Δοκιμάστε ξανά."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Χρειάζεστε τα στοιχεία της βάσης δεδομένων από τον πάροχο φιλοξενίας σας ή από όποιον ρύθμισε τον διακομιστή σας."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "οδηγός αντιμετώπισης προβλημάτων ρύθμισης βάσης δεδομένων"
+
