@@ -20,6 +20,6 @@ $content = '<p class="text-secondary">ChurchCRM encountered an error during star
     . '<strong>Error Details:</strong><br>'
     . '<code class="small d-block mt-2 text-break">' . nl2br(htmlspecialchars($errorMessage)) . '</code>'
     . '</div>'
-    . '<p class="text-secondary small mt-3"><strong>To fix this:</strong> Review your local <code>Include/Config.php</code> file and ensure it is valid. Check the error message above for details about what configuration issue occurred. If you do not have a Config.php file, you may need to run the <strong>setup wizard</strong>. The <a href="https://docs.churchcrm.io/installation/database-setup-troubleshooting">database setup troubleshooting guide</a> covers the configuration checks.</p>';
+    . '<p class="text-secondary small mt-3"><strong>To fix this:</strong> Review your local <code>Include/Config.php</code> file and ensure it is valid. Check the error message above for details about what configuration issue occurred. If you do not have a Config.php file, you may need to run the <strong>setup wizard</strong>. The <a href="https://docs.churchcrm.io/installation/database-setup-troubleshooting?utm_source=churchcrm_app&utm_medium=product&utm_campaign=in_app_links&utm_content=config_error_help">database setup troubleshooting guide</a> covers the configuration checks.</p>';
 
 renderErrorPage($errorRootPath, 'Configuration Error', '⚙️', 'danger', $content, $issueBody);
