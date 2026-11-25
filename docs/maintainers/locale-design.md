@@ -6,12 +6,12 @@ POEditor retired Nov 2026 (#11416).
 
 ## TL;DR
 
-The repo is the source of truth for translations. Code PRs still produce one batched terms PR. Agents or contributors fill missing terms in a normal PR, with `npm run locale:missing` to find them and `npm run locale:apply -- --json-only` to write them. The `.po`/`.mo` are compiled from the JSON at build time and are not committed; lint fails when the JSON does not compile. Releases no longer wait on upload or download syncs.
+The repo is the source of truth for translations. Code PRs still produce one batched terms PR. Agents or contributors fill missing terms in a normal PR, with `npm run locale:missing` to find them and `npm run locale:apply` to write them. The `.po`/`.mo` are compiled from the JSON at build time and are not committed; lint fails when the JSON does not compile. Releases no longer wait on upload or download syncs.
 
 **What maintainers do now**
 
 1. Merge the terms PR (`locale: new terms from code …`) after a quick review.
-2. Have an agent run `/locale-translate --all`, or run `npm run locale:missing`, translate, then `npm run locale:apply -- --json-only`. Open the PR, review it, merge it.
+2. Have an agent run `/locale-translate --all`, or run `npm run locale:missing`, translate, then `npm run locale:apply`. Open the PR, review it, merge it.
 3. Before a release, run `npm run locale:release -- --go` until it exits 0.
 
 ---
@@ -49,7 +49,7 @@ flowchart LR
     batch -->|agent or person fills| batch
     batch --> apply["locale:apply<br/>validates"]
     apply --> json
-    json --> po["textdomain/{locale}/messages.po"]
+    json -->|locale:compile| po["textdomain/{locale}/messages.po"]
     po --> mo["messages.mo"]
     src -. "--prune drops removed terms" .-> apply
     json --> audit["locale:audit"] --> stats["locale-stats.json<br/>(app shows %)"]
@@ -61,9 +61,8 @@ flowchart LR
 |---|---|
 | `npm run locale:missing [-- --locale de] [-- --term "…"]` | Writes the terms each locale is missing: in `messages.po` but with no complete translation in the JSON. Keeps values already filled. `--term` queues a string that isn't extracted yet |
 | `node locale/scripts/locale-translate.js --list / --prefill / --export / --apply-bulk` | Lets agents read and fill batches. Validates every value |
-| `npm run locale:apply` | Moves filled batch values into the JSON, writes the `.po` and `.mo` (skip with `--json-only`), and empties the batch. Rejected values stay in the batch with the reason |
+| `npm run locale:apply` | Moves filled batch values into the JSON, and empties the batch. Rejected values stay in the batch with the reason |
 | `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po`. `locale:build` runs this |
-| `npm run locale:apply -- --check` | Writes nothing. Exits 1 if any compiled `.po`/`.mo` doesn't match its JSON (compile first) |
 | `npm run locale:compile` | Compiles every locale's `.po`/`.mo` from its JSON and fails if a `.mo` is missing. Part of `npm run build` |
 | `npm run locale:audit` | Completeness from the repo → `locale-stats.json` and `locale-audit.md` |
 | `npm run locale:release [-- --go]` | Release check: terms PR open? extraction running? anything missing? `--go` extracts now, skipping the wait |
@@ -126,10 +125,10 @@ sequenceDiagram
 | Who | How |
 |---|---|
 | **Community translator** | Edit `src/locale/i18n/<locale>.json` (in the browser on GitHub is fine) and open a PR. A maintainer reviews and merges it; the `.po`/`.mo` are compiled at build time. See [CONTRIBUTING.md](../../CONTRIBUTING.md#translate) |
-| **Maintainer / agent** | `locale-branch-manager.js --init` → `npm run locale:missing` → `/locale-translate` → `--commit-and-push` per locale (runs `locale:apply --json-only`) → open a PR |
-| **Fixing a translation** | Put the corrected value in any batch file for that locale, then `npm run locale:apply -- --json-only` |
-| **Rewording a string** | In the same code PR: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply -- --json-only` ([details](locale-pipeline.md#rewording-a-string)) |
-| **English variants** (`en`, `en-au`, …) | Hand-write only the spellings that differ into `locale/terms/missing/<code>/<code>-1.json`, then `locale:apply --json-only` |
+| **Maintainer / agent** | `locale-branch-manager.js --init` → `npm run locale:missing` → `/locale-translate` → `--commit-and-push` per locale (runs `locale:apply`) → open a PR |
+| **Fixing a translation** | Put the corrected value in any batch file for that locale, then `npm run locale:apply` |
+| **Rewording a string** | In the same code PR: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply` ([details](locale-pipeline.md#rewording-a-string)) |
+| **English variants** (`en`, `en-au`, …) | Hand-write only the spellings that differ into `locale/terms/missing/<code>/<code>-1.json`, then `locale:apply` |
 | **New language** | `locale-add.js`, then `locale:missing --locale <code>` and translate |
 
 ## 6. Quality gates

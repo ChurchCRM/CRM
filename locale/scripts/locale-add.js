@@ -290,8 +290,6 @@ Examples:
      */
     createDirectories(config) {
         const directories = [
-            path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}`),
-            path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}/LC_MESSAGES`),
             path.resolve(__dirname, '../../src/locale/i18n')
         ];
 
@@ -315,25 +313,7 @@ Examples:
     createTranslationFiles(config) {
         const files = [
             {
-                path: path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`),
-                content: `# ChurchCRM ${config.name} Translation
-# Language: ${config.name} (${config.code})
-# Locale: ${config.locale}
-# Generated: ${new Date().toISOString()}
-
-msgid ""
-msgstr ""
-"Language: ${config.code}\\n"
-"MIME-Version: 1.0\\n"
-"Content-Type: text/plain; charset=UTF-8\\n"
-"Content-Transfer-Encoding: 8bit\\n"
-"Plural-Forms: nplurals=1; plural=0;\\n"
-
-# Add translations below
-`
-            },
-            {
-                path: `src/locale/i18n/${config.locale}.json`,
+                path: path.resolve(__dirname, `../../src/locale/i18n/${config.locale}.json`),
                 content: '{}\n'
             }
         ];
@@ -361,8 +341,8 @@ msgstr ""
         console.log('📋 **Next Steps:**\n');
         console.log('1. **Translate it in the repo:**');
         console.log(`   npm run locale:missing -- --locale ${config.code}`);
-        console.log(`   /locale-translate --locale ${config.code}, then npm run locale:apply`);
-        console.log('   (This writes the translations into the JSON, .po and .mo files)\n');
+        console.log(`   /locale-translate --locale ${config.code}, then npm run locale:apply -- --json-only`);
+        console.log('   (This writes the translations into the JSON; the PHP .po/.mo compile from it at build time)\n');
 
         console.log('2. **Verify the setup:**');
         console.log('   npm run locale:audit');
@@ -374,7 +354,6 @@ msgstr ""
         
         console.log('📄 **Files created:**');
         console.log(`   - ${this.localesPath} (updated)`);
-        console.log(`   - ../../src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`);
         console.log(`   - ../../src/locale/i18n/${config.locale}.json\n`);
         
         if (this.dryRun) {

@@ -194,7 +194,7 @@ function initBranch(version) {
 }
 
 /**
- * Write the filled batches into the locale JSON (npm run locale:apply -- --json-only),
+ * Write the filled batches into the locale JSON (npm run locale:apply),
  * then commit and push — one pass for the whole run, the same for 1 term or 1,000.
  * With no locale list (or "all") every locale is applied and committed in a
  * single commit; a locale list scopes the same flow to one locale or family.
@@ -239,7 +239,7 @@ function commitAndPush(localeCodes, label, termCount) {
     }
 
     console.log(`\n  🧩 Writing ${codes.join(', ')} into the locale JSON...`);
-    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(','), '--json-only'], { stdio: 'inherit' });
+    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(',')], { stdio: 'inherit' });
 
     const files = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).json));
     console.log(`\n  📝 Committing to ${branch}...`);

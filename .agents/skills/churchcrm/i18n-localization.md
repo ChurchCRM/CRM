@@ -34,7 +34,7 @@ Keep acronyms `ID`, `URL`, `API`.
 - Source strings use US English spelling (color, organize, canceled, behavior, catalog). Regional spelling lives in the English variant locales (`en` is en-GB, `en-au`, `en-ca`, `en-za`, `en-jm`), never in the source.
 - Reuse an existing msgid before adding one. Grep `locale/messages.po` for case, trailing punctuation, colon and ellipsis variants (`Save Changes`, `Loading...`) and use the existing form.
 - Add no near-duplicate terms: one msgid per wording, differing only by case or punctuation.
-- A PR that rewords a source term re-translates it in the same PR, so no locale loses it: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply -- --json-only` ([locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md#rewording-a-string)). List each old term → new term in the PR body.
+- A PR that rewords a source term re-translates it in the same PR, so no locale loses it: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply` ([locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md#rewording-a-string)). List each old term → new term in the PR body.
 
 Family status in UI: Active / Inactive. Actions: Set Active / Set Inactive.
 

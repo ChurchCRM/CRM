@@ -16,9 +16,13 @@
 
 const fs = require('fs');
 const repo = require('./lib/locale-repo');
-const { preflight } = require('./locale-apply');
 
-preflight();
+try {
+    require.resolve('gettext-parser');
+} catch {
+    console.error('❌ Missing dependency: gettext-parser. Run `npm ci` first — no files were changed.');
+    process.exit(1);
+}
 const entries = repo.loadSource();
 if (entries.length === 0) {
     console.error('❌ locale/messages.po has no terms; refusing to compile catalogs');
@@ -28,7 +32,7 @@ if (entries.length === 0) {
 const targets = repo.targetLocales();
 const missing = [];
 for (const target of targets) {
-    repo.writeLocale(repo.loadLocale(target, entries), entries, { catalogsOnly: true });
+    repo.writeCatalogs(repo.loadLocale(target, entries), entries);
     const mo = repo.paths(target).mo;
     if (!fs.existsSync(mo) || fs.statSync(mo).size === 0) missing.push(target.code);
 }

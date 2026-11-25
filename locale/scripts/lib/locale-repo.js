@@ -106,44 +106,28 @@ function sameMo(a, b) {
     return JSON.stringify(moTranslations(a)) === JSON.stringify(moTranslations(b));
 }
 
+/** Writes the locale JSON (the source of truth) from `ctx.translations`. Returns whether it changed. */
+function writeJson(ctx) {
+    const next = jsonText(ctx.translations);
+    const changed = next !== readIfPresent(ctx.paths.json, 'utf8');
+    if (changed) fs.writeFileSync(ctx.paths.json, next, 'utf8');
+    return changed;
+}
+
 /**
- * Writes JSON, .po and .mo for a locale from `ctx.translations`. Returns what changed; with
- * `dryRun` nothing is written. With `jsonOnly` only the JSON is written: translate PRs carry
- * just the JSON (the source of truth); the generated .po/.mo are never committed — they are
- * compiled from the JSON at build time (npm run locale:compile), which uses `catalogsOnly`:
- * write the .po/.mo and leave the JSON untouched.
+ * Writes the gettext .po/.mo PHP reads from `ctx.translations`. They are generated, gitignored
+ * files: this runs at build time (npm run locale:compile) and never touches the JSON.
  */
-function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false, catalogsOnly = false } = {}) {
+function writeCatalogs(ctx, entries) {
     const { paths: p, translations, shapes, poText, target } = ctx;
-    const changes = { json: false, po: false, mo: false, po_added: 0, po_updated: 0, po_removed: 0 };
-
-    const nextJson = jsonText(translations);
-    const currentJson = readIfPresent(p.json, 'utf8');
-    changes.json = nextJson !== currentJson;
-
-    if (jsonOnly) {
-        if (!dryRun && changes.json) fs.writeFileSync(p.json, nextJson, 'utf8');
-        return changes;
-    }
-
     const header = files.poHeader(target.languageCode, ctx.forms.length);
     const po = files.renderLocalePo(poText, entries, shapes, translations, header);
-    changes.po = po.changed;
-    changes.po_added = po.added;
-    changes.po_updated = po.updated;
-    changes.po_removed = po.removed;
-
     const mo = compileMo(po.text);
     const currentMo = readIfPresent(p.mo);
-    changes.mo = currentMo === null || !sameMo(mo, currentMo);
 
-    if (!dryRun) {
-        if (changes.json && !catalogsOnly) fs.writeFileSync(p.json, nextJson, 'utf8');
-        fs.mkdirSync(path.dirname(p.po), { recursive: true });
-        if (changes.po) fs.writeFileSync(p.po, po.text, 'utf8');
-        if (changes.mo) fs.writeFileSync(p.mo, mo);
-    }
-    return changes;
+    fs.mkdirSync(path.dirname(p.po), { recursive: true });
+    if (po.changed) fs.writeFileSync(p.po, po.text, 'utf8');
+    if (currentMo === null || !sameMo(mo, currentMo)) fs.writeFileSync(p.mo, mo);
 }
 
 function readDirIfPresent(dir) {
@@ -181,7 +165,8 @@ module.exports = {
     paths,
     loadSource,
     loadLocale,
-    writeLocale,
+    writeJson,
+    writeCatalogs,
     compileMo,
     sameMo,
     readBatches,
