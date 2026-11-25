@@ -1,0 +1,103 @@
+name: "CI: publish prebuilt test image"
+
+# Publishes the app-under-test image — the `test` target of
+# docker/Dockerfile.churchcrm-apache-php8 — to GHCR as
+# ghcr.io/churchcrm/ci-test-image, so CI workflows pull it instead of
+# cold-building it on every run (measured in the 2026-11-24 CI image audit:
+# ~2.6 min on every quick-CI run, ~3.2 min per nightly, ~2.4 min — half the
+# job — on every locale-terms run).
+#
+# The image carries no application code: CI bind-mounts src/ over it, so it
+# cannot drift from master. It is a pure function of the Dockerfile and its
+# digest-pinned base image, and it is rebuilt here whenever the Dockerfile
+# (or the Apache config its stages copy) changes on master.
+#
+# Tags: `latest` (what consumers pull) and `dockerfile-<hash>` (the same
+# image, pinned to the Dockerfile's content hash, for anyone who wants to
+# pin). Consumers keep a from-source build as a fallback, so until the
+# first successful run of this workflow every consumer behaves exactly as
+# it did before — merging the consumer changes is safe on its own.
+#
+# Pull requests that touch the Dockerfile build the image (no push) so a
+# broken test stage fails before merge; the new image only becomes
+# consumable once this workflow has run on master.
+#
+# GHCR, not Docker Hub: same-repo packages authenticate with the workflow
+# GITHUB_TOKEN (packages: write here, packages: read in consumers), no new
+# secrets, and no Docker Hub pull rate limits across ~50 jobs a night.
+# Docker Hub stays the home of the production churchcrm/crm images.
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docker/Dockerfile.churchcrm-apache-php8'
+      - 'docker/apache/default.conf'
+      - '.github/workflows/ci-image-publish.yml'
+  pull_request:
+    paths:
+      - 'docker/Dockerfile.churchcrm-apache-php8'
+      - 'docker/apache/default.conf'
+      - '.github/workflows/ci-image-publish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-image-publish
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: churchcrm/ci-test-image
+
+jobs:
+  publish:
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compute image tags
+        id: tags
+        run: |
+          HASH=$(sha256sum docker/Dockerfile.churchcrm-apache-php8 | cut -c1-12)
+          echo "pinned=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:dockerfile-${HASH}" >> "$GITHUB_OUTPUT"
+          echo "latest=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the test image (push on master and manual runs)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: docker
+          file: docker/Dockerfile.churchcrm-apache-php8
+          target: test
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ steps.tags.outputs.latest }}
+            ${{ steps.tags.outputs.pinned }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Informational: prints the PHP version the published image actually
+      # contains, so the version is visible in the run log.
+      - name: Show the published image's PHP version
+        if: github.event_name != 'pull_request'
+        run: docker run --rm "${{ steps.tags.outputs.pinned }}" php -v

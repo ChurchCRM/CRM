@@ -43,6 +43,28 @@ runs:
       shell: bash
       run: npm run marketing:install
 
+    - name: Log in to GHCR (for the prebuilt CI test image)
+      continue-on-error: true
+      uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # The capture script starts the stack via docker:ci:new-system:start,
+    # which no longer forces a build: with the prebuilt image tagged
+    # locally, compose reuses it; with no local image, compose builds
+    # from the Dockerfile, exactly as before.
+    - name: Pull the prebuilt CI test image
+      shell: bash
+      run: |
+        if docker pull ghcr.io/churchcrm/ci-test-image:latest; then
+          docker tag ghcr.io/churchcrm/ci-test-image:latest churchcrm/crm:php8-debian
+          echo "Using the prebuilt CI test image."
+        else
+          echo "::warning::Prebuilt CI test image unavailable; compose will build it locally."
+        fi
+
     - name: Capture ${{ inputs.locale }}
       shell: bash
       env:

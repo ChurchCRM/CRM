@@ -113,6 +113,7 @@ jobs:
     timeout-minutes: 40
     permissions:
       contents: read
+      packages: read
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
@@ -128,17 +129,38 @@ jobs:
     - name: Validate PHP syntax
       run: npm run build:php:validate -- --all
 
-    - name: Build Docker images (PHP 8.4 and 8.5)
+    - name: Log in to GHCR (for the prebuilt CI test image)
+      continue-on-error: true
+      uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # Pull the prebuilt test image published by ci-image-publish.yml.
+    # When it is unavailable (before that workflow has run on master),
+    # build both variants from source exactly as this job did before.
+    - name: Get Docker test images (pull prebuilt, else build)
       run: |
-        for version in 8.4 8.5; do
-          echo "Building Docker image for PHP $version..."
-          docker build --target test \
-            --build-arg PHP_VERSION=$version \
-            -t churchcrm/crm:php${version}-test \
-            -f docker/Dockerfile.churchcrm-apache-php8 docker/
-          docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
-          echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
-        done
+        PREBUILT="ghcr.io/churchcrm/ci-test-image:latest"
+        if docker pull "$PREBUILT"; then
+          for version in 8.4 8.5; do
+            docker tag "$PREBUILT" "churchcrm/crm:php${version}-test"
+            docker save "churchcrm/crm:php${version}-test" | gzip > "temp/docker-image-${version}.tar.gz"
+            echo "Saved: $(du -h "temp/docker-image-${version}.tar.gz" | cut -f1)"
+          done
+        else
+          echo "::warning::Prebuilt CI test image unavailable; building from source."
+          for version in 8.4 8.5; do
+            echo "Building Docker image for PHP $version..."
+            docker build --target test \
+              --build-arg PHP_VERSION=$version \
+              -t churchcrm/crm:php${version}-test \
+              -f docker/Dockerfile.churchcrm-apache-php8 docker/
+            docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
+            echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
+          done
+        fi
 
     - name: Upload build artifact
       uses: ./.github/actions/upload-artifact
