@@ -514,12 +514,14 @@ window.moment = moment;
     const box = document.getElementById("db-connection-result");
     box.textContent = message;
     box.classList.remove("d-none");
+    document.getElementById("db-connection-help").classList.remove("d-none");
     box.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   // The answer belonged to the values that were submitted; editing them clears it.
   function clearSetupProblem() {
     document.getElementById("db-connection-result").classList.add("d-none");
+    document.getElementById("db-connection-help").classList.add("d-none");
     document.getElementById("submit-setup").disabled = installInFlight;
     for (const field of document.querySelectorAll("#setup-form .is-invalid")) {
       field.classList.remove("is-invalid");
