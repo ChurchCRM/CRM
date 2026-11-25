@@ -111,9 +111,11 @@ describe('01 - Setup Wizard', () => {
             fillDatabase({ password: 'not-the-password' });
             cy.get('#db-connection-result').should('not.be.visible');
             clickInstallExpecting('database_login_rejected', 'rejected that username or password');
+            cy.get('#db-connection-result').should('contain.text', 'account prefix');
 
             fillDatabase({ name: 'churchcrm_missing_db' });
             clickInstallExpecting('database_not_found', 'no database with that name');
+            cy.get('#db-connection-result').should('contain.text', 'cannot create the database');
 
             cy.visit('/setup');
             cy.get('.setup-logo').should('be.visible');

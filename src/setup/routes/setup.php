@@ -238,8 +238,8 @@ function database_connection_message(string $reason): string
 {
     return match ($reason) {
         'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost. In Docker, the host is the database service name in your compose file — db in the official compose file.'),
-        'database_login_rejected' => gettext('The database server rejected that username or password.'),
-        'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
+        'database_login_rejected' => gettext('The database server rejected that username or password. Check for typos. On shared hosting, the user name often needs your account prefix, and the user must be assigned to the database in your hosting panel. In Docker, the user and password are the ones in your compose file.'),
+        'database_not_found' => gettext('The database server accepted the login, but there is no database with that name. ChurchCRM cannot create the database for you — create it first, and check the name. On shared hosting, the name often needs your account prefix.'),
         default => gettext('ChurchCRM could not connect to the database with these settings.'),
     };
 }
