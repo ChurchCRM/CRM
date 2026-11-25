@@ -1522,7 +1522,7 @@ msgstr "Um(a)"
 
 #: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
-msgstr "Introduzir um valor Prompt permitirá a associação de um valor de forma livre."
+msgstr "Inserir um valor Prompt permitirá a associação de um valor de forma livre."
 
 #: 
 msgid "Property List"
@@ -1836,7 +1836,7 @@ msgstr "M/F"
 
 #: 
 msgid "Liaison"
-msgstr "Ligação"
+msgstr "Contato"
 
 #: 
 msgid "Send Newsletter"
@@ -5989,7 +5989,7 @@ msgstr "Redes sociais"
 
 #: 
 msgid "Some application prerequisites are not met"
-msgstr "Alguns pré-requisitos de aplicação não são atendidos"
+msgstr "Alguns pré-requisitos de aplicativo não são atendidos"
 
 #: 
 msgid "State (Other)"
@@ -8104,7 +8104,7 @@ msgstr "Pessoa atual"
 
 #: 
 msgid "Database Reset"
-msgstr "Reinicialização da base de dados"
+msgstr "Reinicialização do banco de dados"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -8244,7 +8244,7 @@ msgstr "Inscrito"
 
 #: 
 msgid "Enter Data Manually"
-msgstr "Introduzir dados manualmente"
+msgstr "Inserir dados manualmente"
 
 #: 
 msgid "Enter a search term"
@@ -8420,11 +8420,11 @@ msgstr "Importar de uma folha de cálculo"
 
 #: 
 msgid "Import, restore, or enter manually"
-msgstr "Importar, restaurar ou introduzir manualmente"
+msgstr "Importar, restaurar ou inserir manualmente"
 
 #: 
 msgid "Import, restore, or manually enter your congregation"
-msgstr "Importar, restaurar ou introduzir manualmente os seus fiéis"
+msgstr "Importar, restaurar ou inserir manualmente os seus fiéis"
 
 #: 
 msgid "Include in Email Export"
@@ -8436,7 +8436,7 @@ msgstr "Incluído"
 
 #: 
 msgid "Install a TLS/SSL certificate for secure connections"
-msgstr "Instalar um certificado TLS/SSL para ligações seguras"
+msgstr "Instalar um certificado TLS/SSL para conexões seguras"
 
 #: 
 msgid "Invalid import request"
@@ -9018,7 +9018,7 @@ msgstr "Sessão de carregamento expirou. Carregue o arquivo novamente."
 
 #: 
 msgid "Uploading, please wait..."
-msgstr "A carregar, por favor aguarde..."
+msgstr "Carregando, por favor aguarde..."
 
 #: 
 msgid "Users"
@@ -15637,7 +15637,7 @@ msgstr "Enviar e-mails de verificação de família"
 
 #: 
 msgid "Sent %1$d of %2$d — %3$d families could not be reached."
-msgstr "Enviado %1$d de %2$d — %3$d famílias não puderam ser contactadas."
+msgstr "Enviado %1$d de %2$d — %3$d famílias não puderam ser contatadas."
 
 #: 
 msgid "Show in Profile"
@@ -21879,7 +21879,7 @@ msgstr "Escola Bíblica Dominical: {{name}}"
 
 #: 
 msgid "Teachers to import: {{total}}"
-msgstr "Professores a importar: {{total}}"
+msgstr "Professores para importar: {{total}}"
 
 #: 
 msgid "That is more than {{max}} events. Choose a shorter range."
@@ -26622,8 +26622,8 @@ msgstr "A autenticação de dois fatores já está configurada. Seu segredo é e
 #: 
 msgid "%1$d gift totaling %2$s"
 msgid_plural "%1$d gifts totaling %2$s"
-msgstr[0] "%1$d doação num total de %2$s"
-msgstr[1] "%1$d doações num total de %2$s"
+msgstr[0] "%1$d doação em um total de %2$s"
+msgstr[1] "%1$d doações em um total de %2$s"
 
 #: 
 msgid "%d families currently have properties of this type."
@@ -26653,7 +26653,7 @@ msgstr "%s: %s Não foi gerado nenhum recibo."
 
 #: 
 msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
-msgstr "%s: introduza o(s) nome(s) completo(s) verificado(s) do(s) doador(es), confirme os doadores e confirme um único conjunto de doadores. Os conjuntos de pagamentos de doadores mistos têm de ser tratados fora desta funcionalidade."
+msgstr "%s: digite o(s) nome(s) completo(s) verificado(s) do(s) doador(es), confirme os doadores e confirme um único conjunto de doadores. Os conjuntos de pagamentos de doadores mistos devem ser tratados fora desta funcionalidade."
 
 #: 
 msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
@@ -26671,7 +26671,7 @@ msgstr "({{count}} parcelas)"
 
 #: 
 msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
-msgstr "Um pagamento por cartão de crédito ou transferência bancária está num depósito que ainda não foi fechado. Feche o depósito assim que o pagamento for liquidado."
+msgstr "Um pagamento por cartão de crédito ou transferência bancária está em um depósito que ainda não foi fechado. Feche o depósito assim que o pagamento for liquidado."
 
 #: 
 msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
@@ -26739,7 +26739,7 @@ msgstr "Valor por parcela"
 
 #: 
 msgid "Amounts entered are"
-msgstr "Os valores introduzidos são"
+msgstr "Os valores inseridos são"
 
 #: 
 msgid "An administrator uploads it under Report Settings."
@@ -26827,7 +26827,7 @@ msgstr "Escolha compromisso total ou valor por parcela."
 
 #: 
 msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
-msgstr "As traduções do ChurchCRM são geridas no repositório do ChurchCRM no GitHub. Pode ajudar"
+msgstr "As traduções do ChurchCRM são gerenciadas no repositório do ChurchCRM no GitHub. Você pode ajudar"
 
 #: 
 msgid "Commitment amount"
@@ -27067,7 +27067,7 @@ msgstr "Original"
 
 #: 
 msgid "Original Issue Date (enter from retained original)"
-msgstr "Data de emissão original (introduza a partir do original guardado)"
+msgstr "Data de emissão original (digite a partir do original guardado)"
 
 #: 
 msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
@@ -27079,7 +27079,7 @@ msgstr "Impresso nas declarações de doações comuns, por exemplo o EIN nos Es
 
 #: 
 msgid "Private giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identificador privado do recurso de assinatura da declaração de doações. Gerido através do carregamento da assinatura."
+msgstr "Identificador privado do recurso de assinatura da declaração de doações. Gerenciado através do carregamento da assinatura."
 
 #: 
 msgid "Properties / Assignments"
@@ -27091,7 +27091,7 @@ msgstr "Propriedade excluída"
 
 #: 
 msgid "Property type deleted"
-msgstr "Tipo de propriedade eliminado"
+msgstr "Tipo de propriedade excluído"
 
 #: 
 msgid "Receipt Closing"
@@ -27247,7 +27247,7 @@ msgstr "A frase de fecho acima do signatário, por exemplo Atenciosamente."
 
 #: 
 msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
-msgstr "O compromisso total não pode exceder 999999.99 por fundo e os valores têm de usar, no máximo, duas casas decimais."
+msgstr "O compromisso total não pode exceder 999999.99 por fundo e os valores devem usar, no máximo, duas casas decimais."
 
 #: 
 msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
@@ -27335,7 +27335,7 @@ msgstr "Verifique a família pessoalmente, em alternativa."
 
 #: 
 msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
-msgstr "Verifique o nome completo e o endereço do doador para cada família. Os conjuntos de pagamentos de doadores mistos têm de ser tratados fora desta funcionalidade."
+msgstr "Verifique o nome completo e o endereço do doador para cada família. Os conjuntos de pagamentos de doadores mistos devem ser tratados fora desta funcionalidade."
 
 #: 
 msgid "Version %s is available. Please ask your administrator to upgrade your installation."
@@ -27905,7 +27905,7 @@ msgstr "Um registro diário enquanto está em uso, as versões do software e do 
 
 #: 
 msgid "Accounts & Sign-in"
-msgstr "Contas e início de sessão"
+msgstr "Contas e login"
 
 #: 
 msgid "Also send which pages are used."
@@ -27981,11 +27981,11 @@ msgstr "Papéis familiares tratados como crianças no diretório."
 
 #: 
 msgid "Family roles treated as head of household in the directory and member sign-in."
-msgstr "Papéis familiares tratados como chefe de família no diretório e no início de sessão dos membros."
+msgstr "Papéis familiares tratados como chefe de família no diretório e no login dos membros."
 
 #: 
 msgid "Family roles treated as spouse in the directory and member sign-in."
-msgstr "Papéis familiares tratados como cônjuge no diretório e no início de sessão dos membros."
+msgstr "Papéis familiares tratados como cônjuge no diretório e no login dos membros."
 
 #: 
 msgid "Finance Settings"
@@ -28141,7 +28141,7 @@ msgstr "Compartilhar quais páginas são usadas"
 
 #: 
 msgid "Sign-in & Security"
-msgstr "Início de sessão e segurança"
+msgstr "Login e segurança"
 
 #: 
 msgid "Signature Storage"

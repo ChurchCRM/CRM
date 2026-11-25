@@ -375,7 +375,7 @@ msgstr "Detalles del depósito: "
 
 #: 
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
-msgstr "Nota importante: las transacciones no realizadas se borrarán permanentemente al cerrar la ficha de depósitos."
+msgstr "Nota importante: las transacciones no realizadas se eliminarán permanentemente al cerrar la ficha de depósitos."
 
 #: 
 msgid "Add Payment"
@@ -804,7 +804,7 @@ msgstr "Subir foto"
 
 #: 
 msgid "Delete Photo"
-msgstr "Borrar foto"
+msgstr "Eliminar foto"
 
 #: 
 msgid "Timeline"
@@ -856,7 +856,7 @@ msgstr "Confirmar eliminación"
 
 #: 
 msgid "You are about to delete the profile photo, this procedure is irreversible."
-msgstr "Está a punto de borrar la foto de perfil, este procedimiento es irreversible."
+msgstr "Está a punto de eliminar la foto de perfil, este procedimiento es irreversible."
 
 #: 
 msgid "Do you want to proceed?"
@@ -1200,7 +1200,7 @@ msgstr "Etiquetas boletín"
 
 #: 
 msgid "Confirm data labels"
-msgstr "Compruebe las etiquetas de datos"
+msgstr "Verifique las etiquetas de datos"
 
 #: 
 msgid "Invalid login or password"
@@ -1524,7 +1524,7 @@ msgstr "Un"
 
 #: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
-msgstr "Introducción de un valor del sistema permitirá a la asociación de un valor de forma libre."
+msgstr "Ingreso de un valor del sistema permitirá a la asociación de un valor de forma libre."
 
 #: 
 msgid "Property List"
@@ -1625,7 +1625,7 @@ msgstr "caracteres"
 
 #: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
-msgstr "Introduzca su contraseña actual, luego su nueva contraseña dos veces. Las contraseñas deben tener al menos"
+msgstr "Ingrese su contraseña actual, luego su nueva contraseña dos veces. Las contraseñas deben tener al menos"
 
 #: 
 msgid "characters in length."
@@ -2022,7 +2022,7 @@ msgstr "Importar datos"
 
 #: 
 msgid "Are you sure you want to delete the selected"
-msgstr "Realmente desea borrar el seleccionado"
+msgstr "Realmente desea eliminar el seleccionado"
 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
@@ -2348,7 +2348,7 @@ msgstr "Datos de familia verificados"
 
 #: 
 msgid "Profile Image Deleted"
-msgstr "Imagen de perfil borrada"
+msgstr "Imagen de perfil eliminada"
 
 #: 
 msgid "miles"
@@ -3826,11 +3826,11 @@ msgstr "Mostrar cuenta en ficha de depósitos "
 
 #: 
 msgid "Your Account was Deleted"
-msgstr "Su cuenta fue borrada"
+msgstr "Su cuenta fue eliminada"
 
 #: 
 msgid "Your ChurchCRM Account was Deleted."
-msgstr "Su cuenta de ChurchCRM fue borrada."
+msgstr "Su cuenta de ChurchCRM fue eliminada."
 
 #: 
 msgid "Account Locked"
@@ -3922,7 +3922,7 @@ msgstr "usuario de sistema actualizado"
 
 #: 
 msgid "system user deleted"
-msgstr "usuario de sistema borrado"
+msgstr "usuario de sistema eliminado"
 
 #: 
 msgid "system user password reset"
@@ -4297,9 +4297,8 @@ msgid "Remove All from Cart"
 msgstr "Eliminar todo de carrito"
 
 #: 
-#, fuzzy
 msgid "record(s) successfully deleted from the selected Group."
-msgstr "registros exitosamente borrados del grupo seleccionado."
+msgstr "registros exitosamente eliminados del grupo seleccionado."
 
 #: 
 msgid "Not Found"
@@ -4319,7 +4318,7 @@ msgstr "no encontrado"
 
 #: 
 msgid "Deleted from group"
-msgstr "Borrado del grupo"
+msgstr "Eliminado del grupo"
 
 #: 
 msgid "Added to group"
@@ -4399,7 +4398,7 @@ msgstr "Falta token de acceso de calendario"
 
 #: 
 msgid "User must have Delete Records permission"
-msgstr "Usuario debe tener permiso para borrar registros"
+msgstr "Usuario debe tener permiso para eliminar registros"
 
 #: 
 msgid "invalid calendar pinning"
@@ -4435,7 +4434,7 @@ msgstr "Usuario debe tener permisos de Edición de registros"
 
 #: 
 msgid "Can't delete yourself"
-msgstr "No puede borrarse a si mismo"
+msgstr "No puede eliminarse a si mismo"
 
 #: 
 msgid "The role could not be found."
@@ -5435,7 +5434,7 @@ msgstr "Copia de seguridad en progreso, por favor espere..."
 
 #: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
-msgstr "PRECAUCIÓN: Restaurar una copia de seguridad borrará completamente la base de datos existente y la reemplazará con los datos de la copia de seguridad."
+msgstr "PRECAUCIÓN: Restaurar una copia de seguridad eliminará completamente la base de datos existente y la reemplazará con los datos de la copia de seguridad."
 
 #: 
 msgid "Close & Refresh"
@@ -5743,7 +5742,7 @@ msgstr "Limpiar archivos"
 
 #: 
 msgid "Clear all data and start fresh. Cannot be undone."
-msgstr "Borrar todos los datos y empezar de nuevo. No se puede deshacer."
+msgstr "Eliminar todos los datos y empezar de nuevo. No se puede deshacer."
 
 #: 
 msgid "Close All Deposits"
@@ -5967,7 +5966,7 @@ msgstr "Restaurar"
 
 #: 
 msgid "Restore from a backup file. Erases existing data."
-msgstr "Restaurar desde un archivo de copia de seguridad. Borra los datos existentes."
+msgstr "Restaurar desde un archivo de copia de seguridad. Elimina los datos existentes."
 
 #: 
 msgid "Save and Add New Family"
@@ -8030,11 +8029,11 @@ msgstr "Elija cómo desea poblar su base de datos. Siempre puede utilizar otro m
 
 #: 
 msgid "Clear all"
-msgstr "Borrar todo"
+msgstr "Eliminar todo"
 
 #: 
 msgid "Clear all data and start fresh"
-msgstr "Borrar todos los datos y empezar de cero"
+msgstr "Eliminar todos los datos y empezar de cero"
 
 #: 
 msgid "Clear all items from cart"
@@ -8246,31 +8245,31 @@ msgstr "Inscrito"
 
 #: 
 msgid "Enter Data Manually"
-msgstr "Introducir datos manualmente"
+msgstr "Ingresar datos manualmente"
 
 #: 
 msgid "Enter a search term"
-msgstr "Introduzca un término de búsqueda"
+msgstr "Ingrese un término de búsqueda"
 
 #: 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
-msgstr "Introduzca el código de 6 dígitos de su aplicación de autenticación para completar el inicio de sesión"
+msgstr "Ingrese el código de 6 dígitos de su aplicación de autenticación para completar el inicio de sesión"
 
 #: 
 msgid "Enter your current password"
-msgstr "Introduzca su contraseña actual"
+msgstr "Ingrese su contraseña actual"
 
 #: 
 msgid "Enter your login name"
-msgstr "Introduzca su nombre de usuario"
+msgstr "Ingrese su nombre de usuario"
 
 #: 
 msgid "Enter your new password"
-msgstr "Introduzca su nueva contraseña"
+msgstr "Ingrese su nueva contraseña"
 
 #: 
 msgid "Enter your password"
-msgstr "Introduzca su contraseña"
+msgstr "Ingrese su contraseña"
 
 #: 
 msgid "Est. Value"
@@ -8390,7 +8389,7 @@ msgstr "¿Tiene datos existentes?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
-msgstr "Si tiene muchos registros en una hoja de cálculo, la importación CSV puede ser más rápida que la introducción manual de datos."
+msgstr "Si tiene muchos registros en una hoja de cálculo, la importación CSV puede ser más rápida que el ingreso manual de datos."
 
 #: 
 msgid "Import Another File"
@@ -8422,11 +8421,11 @@ msgstr "Importar desde una hoja de cálculo"
 
 #: 
 msgid "Import, restore, or enter manually"
-msgstr "Importar, restaurar o introducir manualmente"
+msgstr "Importar, restaurar o ingresar manualmente"
 
 #: 
 msgid "Import, restore, or manually enter your congregation"
-msgstr "Importe, restaure o introduzca manualmente su feligresía"
+msgstr "Importe, restaure o ingrese manualmente su feligresía"
 
 #: 
 msgid "Include in Email Export"
@@ -8720,7 +8719,7 @@ msgstr "Elija una opción para empezar"
 
 #: 
 msgid "Please check everything looks right before submitting."
-msgstr "Por favor, compruebe que todo es correcto antes de enviar."
+msgstr "Por favor, verifique que todo es correcto antes de enviar."
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -9108,7 +9107,7 @@ msgstr "¡Bienvenido de nuevo!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
-msgstr "¡Bienvenido de nuevo! Introduzca sus datos para continuar"
+msgstr "¡Bienvenido de nuevo! Ingrese sus datos para continuar"
 
 #: 
 msgid "What happens next?"
@@ -10031,10 +10030,10 @@ msgid "If messages are sent but not received:\n"
 "3. Some carriers may block messages from unknown numbers\n"
 "4. Check if the destination country has SMS restrictions"
 msgstr "Si los mensajes se envían pero no se reciben:\n"
-"1. Comprueba el Panel de Vonage > SMS > Registros para ver el estado de entrega\n"
+"1. Verifica el Panel de Vonage > SMS > Registros para ver el estado de entrega\n"
 "2. Verifica que el número del destinatario sea correcto y pueda recibir SMS\n"
 "3. Algunos operadores pueden bloquear mensajes de números desconocidos\n"
-"4. Comprueba si el país de destino tiene restricciones de SMS"
+"4. Verifica si el país de destino tiene restricciones de SMS"
 
 #. plugin:vonage:section:4:content
 #: 
@@ -12521,7 +12520,7 @@ msgstr "Confirme desactivación"
 
 #: 
 msgid "Confirm Delete Group"
-msgstr "Confirmar el borrado de grupo"
+msgstr "Confirmar la eliminación de grupo"
 
 #: 
 msgid "Confirm Disable Group Specific Properties"
@@ -12577,7 +12576,7 @@ msgstr "Rol predeterminado actualizado."
 
 #: 
 msgid "Delete Calendar"
-msgstr "Borrar calendario"
+msgstr "Eliminar calendario"
 
 #: 
 msgid "Delete Event Type"
@@ -12597,7 +12596,7 @@ msgstr "¿Eliminar este evento?"
 
 #: 
 msgid "Delete this person?"
-msgstr "Borrar a esta persona?"
+msgstr "Eliminar a esta persona?"
 
 #: 
 msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
@@ -13162,7 +13161,7 @@ msgstr "Por favor confirme desactivación de familia"
 
 #: 
 msgid "Please confirm deletion of this group record"
-msgstr "Por favor confirme que desea borrar este grupo de registros"
+msgstr "Por favor confirme que desea eliminar este grupo de registros"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
@@ -13178,11 +13177,11 @@ msgstr "Por favor confirme la renovación de contraseña de este usuario"
 
 #: 
 msgid "Please enter a valid URL"
-msgstr "Por favor, introduzca una URL válida"
+msgstr "Por favor, ingrese una URL válida"
 
 #: 
 msgid "Please enter a valid email address"
-msgstr "Por favor, introduce una dirección de correo electrónico válida"
+msgstr "Por favor, ingresa una dirección de correo electrónico válida"
 
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
@@ -13190,7 +13189,7 @@ msgstr "Ingrese una dirección de correo electrónico válida (por ejemplo, nomb
 
 #: 
 msgid "Please enter a valid phone number"
-msgstr "Por favor, introduzca un número de teléfono válido"
+msgstr "Por favor, ingrese un número de teléfono válido"
 
 #: 
 msgid "Please fill in all required fields correctly."
@@ -13418,11 +13417,11 @@ msgstr "Este campo es requerido"
 
 #: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Esto también borrará todos los roles y propiedades específicas de grupos asociados a este grupo."
+msgstr "Esto también eliminará todos los roles y propiedades específicas de grupos asociados a este grupo."
 
 #: 
 msgid "This will also delete all payments associated with this deposit"
-msgstr "Esto también borrará todos los pagos asociados a este depósito"
+msgstr "Esto también eliminará todos los pagos asociados a este depósito"
 
 #: 
 msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
@@ -13510,7 +13509,7 @@ msgstr "Información de actualización actualizada. Recargando página..."
 
 #: 
 msgid "Upload failed. Please check the file and try again."
-msgstr "Error al subir. Compruebe el archivo e inténtelo de nuevo."
+msgstr "Error al subir. Verifique el archivo e inténtelo de nuevo."
 
 #: 
 msgid "User Delete Confirmation"
@@ -14786,7 +14785,7 @@ msgstr "Desarrollo local"
 
 #: 
 msgid "Minimum Total Amount"
-msgstr "Importe total mínimo"
+msgstr "Monto total mínimo"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16498,11 +16497,11 @@ msgstr "Esta persona está fallecida"
 
 #: 
 msgid "This will clear all configured values for this plugin. This cannot be undone."
-msgstr "Esto borrará todos los valores configurados para este complemento. Esta acción no se puede deshacer."
+msgstr "Esto eliminará todos los valores configurados para este complemento. Esta acción no se puede deshacer."
 
 #: 
 msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
-msgstr "Esto eliminará permanentemente los archivos del complemento del disco y borrará su configuración. Esta acción no se puede deshacer."
+msgstr "Esto eliminará permanentemente los archivos del complemento del disco y eliminará su configuración. Esta acción no se puede deshacer."
 
 #: 
 msgid "URL cannot contain HTML tags"
@@ -19634,7 +19633,7 @@ msgstr "Quitar el líder del equipo"
 
 #: 
 msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
-msgstr "¿Quitar {{name}} de {{ministry}}? Esto elimina todas sus calificaciones aquí, los quita de cada ocurrencia futura, los borra como voluntario predeterminado en los horarios de este ministerio y los quita del grupo de voluntarios."
+msgstr "¿Quitar {{name}} de {{ministry}}? Esto elimina todas sus calificaciones aquí, los quita de cada ocurrencia futura, los elimina como voluntario predeterminado en los horarios de este ministerio y los quita del grupo de voluntarios."
 
 #: 
 msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
@@ -20230,7 +20229,7 @@ msgstr "No se pudo activar ese tema."
 
 #: 
 msgid "That theme could not be checked."
-msgstr "No se pudo comprobar ese tema."
+msgstr "No se pudo verificar ese tema."
 
 #: 
 msgid "That theme has errors, so it was not activated."
@@ -21094,7 +21093,7 @@ msgstr "Qué requiere su atención esta semana"
 
 #: 
 msgid "What the check found"
-msgstr "Lo que encontró la comprobación"
+msgstr "Lo que encontró la verificación"
 
 #: 
 msgid "What you want to say"
@@ -22248,7 +22247,7 @@ msgstr "Guardar configuración de correo"
 
 #: 
 msgid "Turning this off clears the saved username and password."
-msgstr "Al desactivar esto se borran el usuario y la contraseña guardados."
+msgstr "Al desactivar esto se eliminan el usuario y la contraseña guardados."
 
 #: 
 msgid "%1$s added %2$s to the %3$s volunteer pool."
@@ -23016,7 +23015,7 @@ msgstr "NIF (EIN)"
 
 #: 
 msgid "Tax-deductible amount"
-msgstr "Importe deducible de impuestos"
+msgstr "Monto deducible de impuestos"
 
 #: 
 msgid "This is the household statement. It includes gifts for your family."
@@ -25926,7 +25925,7 @@ msgstr "Motor de base de datos y versión principal/secundaria"
 
 #: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
-msgstr "Resultados de instalación y actualización, versión anterior en las actualizaciones y una comprobación diaria mientras está en uso"
+msgstr "Resultados de instalación y actualización, versión anterior en las actualizaciones y una verificación diaria mientras está en uso"
 
 #: 
 msgid "Installation profile"
@@ -26012,7 +26011,7 @@ msgstr "Cumpleaños de hoy"
 
 #: 
 msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
-msgstr "No se puede crear el archivo privado de firma fiscal. Compruebe que la carpeta de almacenamiento permita escritura."
+msgstr "No se puede crear el archivo privado de firma fiscal. Verifique que la carpeta de almacenamiento permita escritura."
 
 #: 
 msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
@@ -26060,7 +26059,7 @@ msgstr "Año fiscal de la iglesia"
 
 #: 
 msgid "ChurchCRM System Check"
-msgstr "Comprobación del sistema ChurchCRM"
+msgstr "Verificación del sistema ChurchCRM"
 
 #: 
 msgid "Custom field not found"
@@ -26635,8 +26634,8 @@ msgstr "%d familias tienen actualmente propiedades de este tipo."
 #: 
 msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
 msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
-msgstr[0] "%d familia aún no puede recibir un recibo y queda excluida. Corrija el problema indicado debajo de ella y luego elija Comprobar de nuevo."
-msgstr[1] "%d familias aún no pueden recibir un recibo y quedan excluidas. Corrija los problemas indicados debajo de ellas y luego elija Comprobar de nuevo."
+msgstr[0] "%d familia aún no puede recibir un recibo y queda excluida. Corrija el problema indicado debajo de ella y luego elija Verificar de nuevo."
+msgstr[1] "%d familias aún no pueden recibir un recibo y quedan excluidas. Corrija los problemas indicados debajo de ellas y luego elija Verificar de nuevo."
 
 #: 
 msgid "%d groups currently have properties of this type."
@@ -26656,11 +26655,11 @@ msgstr "%s: %s No se generó ningún recibo."
 
 #: 
 msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
-msgstr "%s: introduzca el nombre completo verificado del donante o donantes, confirme los donantes y confirme un único conjunto de donantes. Los conjuntos de pagos de donantes mixtos deben gestionarse fuera de esta función."
+msgstr "%s: ingrese el nombre completo verificado del donante o donantes, confirme los donantes y confirme un único conjunto de donantes. Los conjuntos de pagos de donantes mixtos deben gestionarse fuera de esta función."
 
 #: 
 msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
-msgstr "%s: las donaciones o la dirección postal cambiaron desde la revisión. Elija Comprobar de nuevo y confirme el donante otra vez."
+msgstr "%s: las donaciones o la dirección postal cambiaron desde la revisión. Elija Verificar de nuevo y confirme el donante otra vez."
 
 #: 
 msgctxt "one"
@@ -26678,11 +26677,11 @@ msgstr "Un pago con tarjeta de crédito o giro bancario está en un depósito qu
 
 #: 
 msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
-msgstr "Un pago tiene un importe no deducible. Los recibos canadienses aquí solo admiten donaciones sin ninguna ventaja."
+msgstr "Un pago tiene un monto no deducible. Los recibos canadienses aquí solo admiten donaciones sin ninguna ventaja."
 
 #: 
 msgid "A payment has an invalid monetary amount."
-msgstr "Un pago tiene un importe monetario no válido."
+msgstr "Un pago tiene un monto monetario no válido."
 
 #: 
 msgid "A payment has no date."
@@ -26730,19 +26729,19 @@ msgstr "Eliminar también a los miembros de la familia"
 
 #: 
 msgid "Amount of advantages"
-msgstr "Importe de las ventajas"
+msgstr "Monto de las ventajas"
 
 #: 
 msgid "Amount of gifts"
-msgstr "Importe de las donaciones"
+msgstr "Monto de las donaciones"
 
 #: 
 msgid "Amount per installment"
-msgstr "Importe por cuota"
+msgstr "Monto por cuota"
 
 #: 
 msgid "Amounts entered are"
-msgstr "Los importes introducidos son"
+msgstr "Los montos ingresados son"
 
 #: 
 msgid "An administrator uploads it under Report Settings."
@@ -26802,19 +26801,19 @@ msgstr "Organización benéfica en los recibos"
 
 #: 
 msgid "Check Again"
-msgstr "Comprobar de nuevo"
+msgstr "Verificar de nuevo"
 
 #: 
 msgid "Check the year"
-msgstr "Compruebe el año"
+msgstr "Verifique el año"
 
 #: 
 msgid "Check the year, set up the statement, then download."
-msgstr "Compruebe el año, configure el estado de donaciones y luego descárguelo."
+msgstr "Verifique el año, configure el estado de donaciones y luego descárguelo."
 
 #: 
 msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
-msgstr "Elija Semanal, Mensual o Trimestral para un importe por cuota."
+msgstr "Elija Semanal, Mensual o Trimestral para un monto por cuota."
 
 #: 
 msgid "Choose a valid donation calendar year."
@@ -26826,7 +26825,7 @@ msgstr "Elija original o duplicado."
 
 #: 
 msgid "Choose total commitment or installment amount."
-msgstr "Elija compromiso total o importe por cuota."
+msgstr "Elija compromiso total o monto por cuota."
 
 #: 
 msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
@@ -26834,7 +26833,7 @@ msgstr "Las traducciones de ChurchCRM se gestionan en el repositorio de ChurchCR
 
 #: 
 msgid "Commitment amount"
-msgstr "Importe del compromiso"
+msgstr "Monto del compromiso"
 
 #: 
 msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
@@ -26890,23 +26889,23 @@ msgstr "Duplicate copy / Copie duplicata"
 
 #: 
 msgid "Eligible amount of gifts for income tax purposes"
-msgstr "Importe de las donaciones admisible a efectos del impuesto sobre la renta"
+msgstr "Monto de las donaciones admisible a efectos del impuesto sobre la renta"
 
 #: 
 msgid "Enter the schedule and installment dates to preview the commitment."
-msgstr "Introduzca el calendario y las fechas de las cuotas para previsualizar el compromiso."
+msgstr "Ingrese el calendario y las fechas de las cuotas para previsualizar el compromiso."
 
 #: 
 msgid "Enter valid first and last installment dates in order."
-msgstr "Introduzca fechas válidas de primera y última cuota en orden."
+msgstr "Ingrese fechas válidas de primera y última cuota en orden."
 
 #: 
 msgid "Enter valid installment amounts with at most two decimal places."
-msgstr "Introduzca importes de cuota válidos con un máximo de dos decimales."
+msgstr "Ingrese montos de cuota válidos con un máximo de dos decimales."
 
 #: 
 msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
-msgstr "Las promesas existentes conservan sus totales registrados. Elija el importe por cuota solo al introducir cada donación programada."
+msgstr "Las promesas existentes conservan sus totales registrados. Elija el monto por cuota solo al ingresar cada donación programada."
 
 #: 
 msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
@@ -26942,7 +26941,7 @@ msgstr "Los cambios históricos de sobres no son compatibles."
 
 #: 
 msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
-msgstr "Lo comparé con el original conservado: el donante, el importe, el número de serie y el texto no han cambiado. Esto no es una corrección ni un reemplazo."
+msgstr "Lo comparé con el original conservado: el donante, el monto, el número de serie y el texto no han cambiado. Esto no es una corrección ni un reemplazo."
 
 #: 
 msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
@@ -26966,7 +26965,7 @@ msgstr "Versión instalada: %s"
 
 #: 
 msgid "Installment amounts can only be used for pledges."
-msgstr "Los importes por cuota solo pueden usarse para promesas."
+msgstr "Los montos por cuota solo pueden usarse para promesas."
 
 #: 
 msgid "Installment dates must be within the selected fiscal year."
@@ -27206,7 +27205,7 @@ msgstr "Atentamente"
 
 #: 
 msgid "Specify the amount basis when editing a recurring pledge."
-msgstr "Especifique la base del importe al editar una promesa recurrente."
+msgstr "Especifique la base del monto al editar una promesa recurrente."
 
 #: 
 msgid "Standard Giving Statement"
@@ -27250,11 +27249,11 @@ msgstr "La frase de cierre encima del firmante, por ejemplo «Atentamente»."
 
 #: 
 msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
-msgstr "El compromiso total no debe superar 999999.99 por fondo y los importes deben usar como máximo dos decimales."
+msgstr "El compromiso total no debe superar 999999.99 por fondo y los montos deben usar como máximo dos decimales."
 
 #: 
 msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
-msgstr "Las donaciones o la dirección postal cambiaron desde su última comprobación. Revíselas y confirme el donante otra vez."
+msgstr "Las donaciones o la dirección postal cambiaron desde su última verificación. Revíselas y confirme el donante otra vez."
 
 #: 
 msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
@@ -27394,19 +27393,19 @@ msgstr "Elige otra forma de iniciar sesión"
 
 #: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
-msgstr "ChurchCRM no puede leer su comprobación de versión. Pide a tu proveedor de alojamiento web que haga legible la carpeta de ChurchCRM, o continúa."
+msgstr "ChurchCRM no puede leer su verificación de versión. Pide a tu proveedor de alojamiento web que haga legible la carpeta de ChurchCRM, o continúa."
 
 #: 
 msgid "ChurchCRM could not check folder permissions"
-msgstr "ChurchCRM no pudo comprobar los permisos de las carpetas"
+msgstr "ChurchCRM no pudo verificar los permisos de las carpetas"
 
 #: 
 msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
-msgstr "ChurchCRM no pudo comprobar sus archivos. Pide a tu proveedor de alojamiento web que revise el registro de errores del servidor."
+msgstr "ChurchCRM no pudo verificar sus archivos. Pide a tu proveedor de alojamiento web que revise el registro de errores del servidor."
 
 #: 
 msgid "ChurchCRM could not check the server software"
-msgstr "ChurchCRM no pudo comprobar el software del servidor"
+msgstr "ChurchCRM no pudo verificar el software del servidor"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27530,11 +27529,11 @@ msgstr "Guía de instalación"
 
 #: 
 msgid "Integrity check failed"
-msgstr "La comprobación de integridad falló"
+msgstr "La verificación de integridad falló"
 
 #: 
 msgid "Integrity check passed"
-msgstr "La comprobación de integridad se superó"
+msgstr "La verificación de integridad se superó"
 
 #: 
 msgid "Last %d days"
@@ -27598,7 +27597,7 @@ msgstr "Registra a tu familia en nuestra iglesia"
 
 #: 
 msgid "Release check"
-msgstr "Comprobación de versión"
+msgstr "Verificación de versión"
 
 #: 
 msgid "Report a problem"
@@ -27658,7 +27657,7 @@ msgstr "El escritorio que se abre al iniciar sesión"
 
 #: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
-msgstr "El archivo de comprobación de versión de este servidor no coincide con ChurchCRM. Vuelve a subir la versión publicada, o continúa y pide ayuda a tu proveedor de alojamiento web."
+msgstr "El archivo de verificación de versión de este servidor no coincide con ChurchCRM. Vuelve a subir la versión publicada, o continúa y pide ayuda a tu proveedor de alojamiento web."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
@@ -27678,7 +27677,7 @@ msgstr "Estos archivos no se subieron"
 
 #: 
 msgid "This copy of ChurchCRM does not include the release file check. You can continue."
-msgstr "Esta copia de ChurchCRM no incluye la comprobación de archivos de la versión. Puedes continuar."
+msgstr "Esta copia de ChurchCRM no incluye la verificación de archivos de la versión. Puedes continuar."
 
 #: 
 msgid "This dashboard is now your main dashboard."
@@ -27792,7 +27791,7 @@ msgstr "Todo lo que hay aquí son datos de muestra. Empiece de cero antes de ing
 
 #: 
 msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
-msgstr "Todo lo que hay aquí son datos de muestra. Cuando esté listo para usar ChurchCRM en su iglesia, empiece de cero: borra los datos de demostración y todos los ajustes para que pueda comenzar con los suyos propios."
+msgstr "Todo lo que hay aquí son datos de muestra. Cuando esté listo para usar ChurchCRM en su iglesia, empiece de cero: elimina los datos de demostración y todos los ajustes para que pueda comenzar con los suyos propios."
 
 #: 
 msgid "Explore ChurchCRM with demo data, or set it up for your church"
@@ -27856,7 +27855,7 @@ msgstr "Escritorio de configuración"
 
 #: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
-msgstr "Empezar de cero en el banner de demostración, o Restablecer base de datos en el Panel de administración, borra los datos de demostración y todos los ajustes y devuelve ChurchCRM a una instalación nueva."
+msgstr "Empezar de cero en el banner de demostración, o Restablecer base de datos en el Panel de administración, elimina los datos de demostración y todos los ajustes y devuelve ChurchCRM a una instalación nueva."
 
 #: 
 msgid "Start fresh first, then set up ChurchCRM with your own church information."
@@ -27880,7 +27879,7 @@ msgstr "La persona se guardó, pero una o más asignaciones de grupos fallaron. 
 
 #: 
 msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
-msgstr "Esto borra los datos de demostración y todos los ajustes, y devuelve ChurchCRM a una instalación nueva."
+msgstr "Esto elimina los datos de demostración y todos los ajustes, y devuelve ChurchCRM a una instalación nueva."
 
 #: 
 msgid "You will sign in again with the default administrator account and enter your church information."
@@ -28300,11 +28299,11 @@ msgstr "mm"
 
 #: 
 msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
-msgstr "ChurchCRM no pudo conectarse a la base de datos. Comprueba cada campo con tu proveedor de alojamiento web o pide ayuda en Discord."
+msgstr "ChurchCRM no pudo conectarse a la base de datos. Verifica cada campo con tu proveedor de alojamiento web o pide ayuda en Discord."
 
 #: 
 msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
-msgstr "ChurchCRM no pudo encontrar el servidor de base de datos. Comprueba la dirección y el puerto del servidor de base de datos con tu proveedor de alojamiento web."
+msgstr "ChurchCRM no pudo encontrar el servidor de base de datos. Verifica la dirección y el puerto del servidor de base de datos con tu proveedor de alojamiento web."
 
 #: 
 msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
@@ -28332,11 +28331,11 @@ msgstr "Necesita MySQL 8.4 o más reciente, o MariaDB 10.11 o más reciente."
 
 #: 
 msgid "The %s covers the configuration checks."
-msgstr "El %s cubre las comprobaciones de configuración."
+msgstr "El %s cubre las verificaciones de configuración."
 
 #: 
 msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
-msgstr "El nombre de usuario o la contraseña de la base de datos es incorrecto. Comprueba ambos datos con tu proveedor de alojamiento web; no son los que usas para iniciar sesión en tu alojamiento."
+msgstr "El nombre de usuario o la contraseña de la base de datos es incorrecto. Verifica ambos datos con tu proveedor de alojamiento web; no son los que usas para iniciar sesión en tu alojamiento."
 
 #: 
 msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
@@ -28352,7 +28351,7 @@ msgstr "La dirección del servidor de tu proveedor de alojamiento web."
 
 #: 
 msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
-msgstr "El nombre de usuario y la contraseña funcionaron, pero no hay ninguna base de datos con ese nombre. Comprueba el nombre de la base de datos o crea primero la base de datos."
+msgstr "El nombre de usuario y la contraseña funcionaron, pero no hay ninguna base de datos con ese nombre. Verifica el nombre de la base de datos o crea primero la base de datos."
 
 #: 
 msgid "The user name for the database. This is not the name you use to sign in to your web host."
