@@ -25961,24 +25961,12 @@ msgid "Installation profile"
 msgstr "Paigaldusprofiil"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Kunagi ei jagata: liikmete, annetuste ega muid koguduse andmeid, sinu koguduse nime, veebiaadressi ega serveri nime ega e-posti aadresse. Sinu riik on see, mis on määratud koguduse seadetes, seda ei tuvastata sinu võrgu järgi."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Vaata täpselt, mida jagatakse, või muuda oma valikut jaotises Admin → Telemeetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Erista toodangu-, demo- ja testpaigaldusi"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Mõista andmebaaside ühilduvust"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Sinu andmed kuuluvad sulle. See annab teavet tarkvara kohta, mitte kunagi sinu koguduse ega selle inimeste kohta."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28281,8 +28269,4 @@ msgstr "Hoiatus pärast (tundi)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Sõna enne nime kirjades ja e-kirjades, näiteks Lugupeetud."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Sinu valikut küsitakse üks kord. Saad seda igal ajal muuta. Valikuga Ei, tänan jääb Vaikimisi aktiivseks ja lehevaatamisi ei saadeta."
 

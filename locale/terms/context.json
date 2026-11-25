@@ -2,6 +2,10 @@
   "Amount offset, left": [
     "src/admin/views/finance-quickbooks.php:15"
   ],
+  "Demo data loaded": [
+    "src/admin/routes/api/demo.php:65",
+    "src/admin/views/get-started.php:37"
+  ],
   "Every position must be a number from 0 to 1000 millimetres.": [
     "src/ChurchCRM/Service/QuickBooksTicketSettingsService.php:63",
     "webpack/finance-quickbooks.js:15"
@@ -30,6 +34,9 @@
   "Maximum width": [
     "src/admin/views/finance-quickbooks.php:16"
   ],
+  "Off by default. Helps us improve ChurchCRM. Never includes your church or its people.": [
+    "src/Include/Header.php:456"
+  ],
   "Perforation, top": [
     "src/admin/views/finance-quickbooks.php:15"
   ],
@@ -43,6 +50,10 @@
   ],
   "Second date, left": [
     "src/admin/views/finance-quickbooks.php:11"
+  ],
+  "See what's shared": [
+    "src/Include/Header.php:462",
+    "src/Include/themes/default/templates/volunteer/schedule.html.twig:62"
   ],
   "Spacing, horizontal": [
     "src/admin/views/finance-quickbooks.php:19"

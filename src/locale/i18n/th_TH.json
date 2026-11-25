@@ -6290,11 +6290,8 @@
   "Database engine and major/minor version": "เอนจินฐานข้อมูลและเวอร์ชันหลัก/รอง",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "ผลการติดตั้งและอัปเกรด เวอร์ชันก่อนหน้าเมื่ออัปเกรด และการแจ้งสถานะวันละครั้งขณะใช้งาน",
   "Installation profile": "โปรไฟล์การติดตั้ง",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "ไม่มีการแชร์: ข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล ประเทศของคุณคือประเทศในการตั้งค่าคริสตจักร ไม่ได้ค้นหาจากเครือข่ายของคุณ",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "ดูว่ามีการแชร์อะไรบ้าง หรือเปลี่ยนตัวเลือกของคุณ ได้ที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล",
   "Separate production, demo, and test installs": "แยกการติดตั้งสำหรับใช้งานจริง สาธิต และทดสอบ",
   "Understand database compatibility": "ทำความเข้าใจความเข้ากันได้ของฐานข้อมูล",
-  "Your data is yours. This reports on the software, never on your church or its people.": "ข้อมูลของคุณเป็นของคุณ รายงานนี้เกี่ยวกับซอฟต์แวร์ ไม่เคยเกี่ยวกับคริสตจักรของคุณหรือผู้คนในคริสตจักร",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"
@@ -6976,6 +6973,5 @@
   "The conversion failed. Nothing was changed.": "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงอะไร",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "กำลังใช้ไฟล์หัวจดหมายที่บันทึกไว้ก่อนที่จะมีการเพิ่มการอัปโหลด อัปโหลดหัวจดหมายเพื่อแทนที่",
   "Warning After (Hours)": "คำเตือนหลัง (ชั่วโมง)",
-  "Word before the name in letters and emails, for example Dear.": "คำก่อนชื่อในจดหมายและอีเมล ตัวอย่างเช่น เรียน",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "ตัวเลือกของคุณจะถูกถามเพียงครั้งเดียว คุณสามารถเปลี่ยนแปลงได้ทุกเมื่อ เมื่อเลือก ไม่ขอบคุณ ค่าเริ่มต้นจะยังคงทำงานอยู่ และการดูหน้าเว็บจะไม่ถูกส่ง"
+  "Word before the name in letters and emails, for example Dear.": "คำก่อนชื่อในจดหมายและอีเมล ตัวอย่างเช่น เรียน"
 }

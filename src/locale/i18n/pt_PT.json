@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Motor de base de dados e versão principal/secundária",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Resultados de instalação e atualização, versão anterior nas atualizações e uma verificação diária enquanto está em uso",
   "Installation profile": "Perfil de instalação",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Nunca partilhado: registos de membros, de ofertas ou outros registos da igreja, o nome da sua igreja, o seu endereço web ou nome do servidor, nem endereços de e-mail. O seu país é o definido nas definições da igreja, não é obtido a partir da sua rede.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Veja exatamente o que é partilhado, ou altere a sua escolha, em Admin → Telemetria.",
   "Separate production, demo, and test installs": "Distinguir instalações de produção, demonstração e teste",
   "Understand database compatibility": "Compreender a compatibilidade de bases de dados",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Os seus dados são seus. Isto informa sobre o software, nunca sobre a sua igreja ou as suas pessoas.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ocorrência criada",
     "other": "\"{{name}}\": {{count}} ocorrências criadas"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "A conversão falhou. Nada foi alterado.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "A utilizar um ficheiro de papel timbrado guardado antes de os carregamentos serem adicionados. Carregue um papel timbrado para o substituir.",
   "Warning After (Hours)": "Aviso após (horas)",
-  "Word before the name in letters and emails, for example Dear.": "Palavra antes do nome em cartas e e-mails, por exemplo Caro.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "A sua escolha é pedida uma única vez. Pode alterá-la a qualquer momento. Com Não, obrigado, o Padrão mantém-se ativo e as visualizações de páginas não são enviadas."
+  "Word before the name in letters and emails, for example Dear.": "Palavra antes do nome em cartas e e-mails, por exemplo Caro."
 }

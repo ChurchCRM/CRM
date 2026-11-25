@@ -25930,24 +25930,12 @@ msgid "Installation profile"
 msgstr "Profile ng installation"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Hindi kailanman ibinabahagi: mga rekord ng miyembro, pagbibigay, o iba pang rekord ng simbahan, pangalan ng iyong simbahan, iyong web address o pangalan ng server, o mga email address. Ang iyong bansa ay ang nasa settings ng iyong simbahan, hindi hinahanap mula sa iyong network."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Tingnan kung ano mismo ang ibinabahagi, o baguhin ang iyong pinili, sa Admin → Telemetry."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Paghiwalayin ang production, demo, at test na installation"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Unawain ang compatibility ng database"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Iyo ang iyong data. Tungkol ito sa software, hindi kailanman tungkol sa iyong simbahan o sa mga tao nito."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28250,8 +28238,4 @@ msgstr "Babala Pagkatapos ng (Mga Oras)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Salita bago ang pangalan sa mga liham at email, halimbawa Mahal na."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Isang beses lang itatanong ang iyong pinili. Maaari mo itong baguhin anumang oras. Sa Hindi na salamat, mananatiling aktibo ang Default at hindi ipinapadala ang mga page view."
 

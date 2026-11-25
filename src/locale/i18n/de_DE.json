@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Datenbank-Engine und Haupt-/Nebenversion",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Installations- und Upgrade-Ergebnisse, vorherige Version bei Upgrades und eine tägliche Rückmeldung während der Nutzung",
   "Installation profile": "Installationsprofil",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Niemals geteilt: Mitglieder-, Spenden- oder andere Gemeindedaten, der Name Ihrer Gemeinde, Ihre Webadresse oder Ihr Servername sowie E-Mail-Adressen. Ihr Land ist das aus Ihren Gemeindeeinstellungen und wird nicht aus Ihrem Netzwerk ermittelt.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Unter Admin → Telemetrie sehen Sie genau, was geteilt wird, und können Ihre Auswahl ändern.",
   "Separate production, demo, and test installs": "Produktiv-, Demo- und Testinstallationen unterscheiden",
   "Understand database compatibility": "Datenbankkompatibilität verstehen",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Ihre Daten gehören Ihnen. Berichtet wird über die Software, niemals über Ihre Gemeinde oder ihre Mitglieder.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} Ereignis erstellt",
     "other": "\"{{name}}\": {{count}} Ereignisse erstellt"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "Die Umwandlung ist fehlgeschlagen. Es wurde nichts geändert.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Es wird eine Briefkopfdatei verwendet, die gespeichert wurde, bevor Uploads hinzugefügt wurden. Laden Sie einen Briefkopf hoch, um sie zu ersetzen.",
   "Warning After (Hours)": "Warnung nach (Stunden)",
-  "Word before the name in letters and emails, for example Dear.": "Wort vor dem Namen in Briefen und E-Mails, zum Beispiel Liebe.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Ihre Auswahl wird einmal abgefragt. Sie können sie jederzeit ändern. Mit Nein, danke bleibt Standard aktiv und Seitenaufrufe werden nicht gesendet."
+  "Word before the name in letters and emails, for example Dear.": "Wort vor dem Namen in Briefen und E-Mails, zum Beispiel Liebe."
 }

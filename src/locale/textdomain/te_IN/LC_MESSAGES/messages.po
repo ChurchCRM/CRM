@@ -25941,24 +25941,12 @@ msgid "Installation profile"
 msgstr "ఇన్‌స్టాలేషన్ ప్రొఫైల్"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "ఎప్పటికీ పంచుకోబడవు: సభ్యులు, దానాలు లేదా ఇతర సంఘ రికార్డులు, మీ సంఘం పేరు, మీ వెబ్ చిరునామా లేదా సర్వర్ పేరు, ఇమెయిల్ చిరునామాలు. మీ దేశం మీ సంఘ సెట్టింగ్‌లలో ఉన్నదే, మీ నెట్‌వర్క్ నుండి కనుగొనబడదు."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "ఏమి పంచుకోబడుతుందో ఖచ్చితంగా చూడండి, లేదా మీ ఎంపికను మార్చండి, అడ్మిన్ → టెలిమెట్రీలో."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "ప్రొడక్షన్, డెమో మరియు టెస్ట్ ఇన్‌స్టాల్‌లను వేరు చేయండి"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "డేటాబేస్ అనుకూలతను అర్థం చేసుకోండి"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "మీ డేటా మీదే. ఇది సాఫ్ట్‌వేర్ గురించి మాత్రమే నివేదిస్తుంది, మీ సంఘం లేదా దాని ప్రజల గురించి ఎప్పుడూ కాదు."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28261,8 +28249,4 @@ msgstr "హెచ్చరిక తర్వాత (గంటలు)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "లేఖలు మరియు ఇమెయిల్‌లలో పేరుకు ముందు వచ్చే మాట, ఉదాహరణకు ప్రియమైన."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "మీ ఎంపిక ఒక్కసారి మాత్రమే అడగబడుతుంది. మీరు దానిని ఎప్పుడైనా మార్చవచ్చు. వద్దు, ధన్యవాదాలు అంటే, డిఫాల్ట్ క్రియాశీలంగా ఉంటుంది మరియు పేజీ వీక్షణలు పంపబడవు."
 

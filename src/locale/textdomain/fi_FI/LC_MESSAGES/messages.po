@@ -25936,24 +25936,12 @@ msgid "Installation profile"
 msgstr "Asennusprofiili"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Ei koskaan jaeta: jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Maasi on seurakunnan asetuksissa määritetty maa, eikä sitä päätellä verkostasi."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Katso tarkalleen, mitä jaetaan, tai muuta valintaasi kohdassa Ylläpito → Telemetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Erottele tuotanto-, demo- ja testiasennukset"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Ymmärrä tietokantojen yhteensopivuus"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Tietosi ovat sinun. Tämä raportoi ohjelmistosta, ei koskaan seurakunnastasi tai sen ihmisistä."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28256,8 +28244,4 @@ msgstr "Varoitus jälkeen (tuntia)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Sana ennen nimeä kirjeissä ja sähköposteissa, esimerkiksi Hyvä."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Valintaasi kysytään kerran. Voit muuttaa sitä milloin tahansa. Valinnalla Ei kiitos Oletus pysyy aktiivisena eikä sivukatseluita lähetetä."
 

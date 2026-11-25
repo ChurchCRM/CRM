@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Injini ya hifadhidata na toleo kuu/dogo",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Matokeo ya usakinishaji na usasishaji, toleo la awali wakati wa kusasisha, na ripoti ya kila siku wakati inatumika",
   "Installation profile": "Wasifu wa usakinishaji",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Haishirikiwi kamwe: kumbukumbu za washirika, sadaka au kumbukumbu nyingine za kanisa, jina la kanisa lako, anwani yako ya wavuti au jina la seva, wala anwani za barua pepe. Nchi yako ni ile iliyo kwenye mipangilio ya kanisa lako, haitambuliwi kutoka kwenye mtandao wako.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Tazama hasa kinachoshirikiwa, au badilisha chaguo lako, katika Msimamizi → Telemetry.",
   "Separate production, demo, and test installs": "Tenganisha usakinishaji wa uzalishaji, onyesho na majaribio",
   "Understand database compatibility": "Elewa uoanifu wa hifadhidata",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Data yako ni yako. Hii inaripoti kuhusu programu, kamwe si kuhusu kanisa lako au watu wake.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": tukio {{count}} la tarehe limeundwa",
     "other": "\"{{name}}\": matukio {{count}} ya tarehe yameundwa"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "Ubadilishaji umeshindwa. Hakuna kilichobadilishwa.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Inatumia faili ya kichwa cha barua iliyohifadhiwa kabla ya upakiaji kuongezwa. Pakia kichwa cha barua kuibadilisha.",
   "Warning After (Hours)": "Onyo Baada ya (Saa)",
-  "Word before the name in letters and emails, for example Dear.": "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Chaguo lako huulizwa mara moja. Unaweza kulibadilisha wakati wowote. Ukiwa na Hapana, asante, Chaguomsingi hubaki kikitumika na mionekano ya kurasa haitumwi."
+  "Word before the name in letters and emails, for example Dear.": "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa."
 }

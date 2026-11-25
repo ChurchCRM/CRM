@@ -25932,24 +25932,12 @@ msgid "Installation profile"
 msgstr "Profil instalasi"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Tidak pernah dibagikan: data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Negara Anda adalah negara di pengaturan gereja, bukan dideteksi dari jaringan Anda."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Lihat persis apa yang dibagikan, atau ubah pilihan Anda, di Admin → Telemetri."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Bedakan instalasi produksi, demo, dan uji coba"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Memahami kompatibilitas basis data"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Data Anda milik Anda. Laporan ini tentang perangkat lunak, tidak pernah tentang gereja Anda atau jemaatnya."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28247,8 +28235,4 @@ msgstr "Peringatan Setelah (Jam)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Kata sebelum nama dalam surat dan email, misalnya Yth."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Pilihan Anda ditanyakan satu kali. Anda dapat mengubahnya kapan saja. Dengan Tidak, terima kasih, Default tetap aktif dan tampilan halaman tidak dikirim."
 

@@ -25900,24 +25900,12 @@ msgid "Installation profile"
 msgstr "インストール プロファイル"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "共有されないもの：会員、献金、その他の教会の記録、教会名、Web アドレスやサーバー名、メールアドレス。国は教会の設定にあるもので、ネットワークから判別するものではありません。"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "共有される内容の確認や選択の変更は、管理 → テレメトリーで行えます。"
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "本番、デモ、テストのインストールを区別する"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "データベースの互換性を把握する"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "データはあなたのものです。報告するのはソフトウェアについてであり、教会やその人々については決して報告しません。"
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28215,8 +28203,4 @@ msgstr "警告までの時間（時間）"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "手紙やメールで名前の前に置かれる言葉。例：拝啓。"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "選択は一度だけ尋ねられます。いつでも変更できます。「不要です」を選ぶと「デフォルト」が有効なままで、ページビューは送信されません。"
 

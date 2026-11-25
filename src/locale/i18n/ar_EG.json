@@ -6440,11 +6440,8 @@
   "Database engine and major/minor version": "محرك قاعدة البيانات والإصدار الرئيسي/الفرعي",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "نتائج التثبيت والترقية، والإصدار السابق عند الترقية، وإشارة يومية أثناء الاستخدام",
   "Installation profile": "ملف تعريف التثبيت",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "لا تتم مشاركتها أبدًا: سجلات الأعضاء أو العطايا أو غيرها من سجلات الكنيسة، واسم كنيستك، وعنوان موقعك أو اسم الخادم، وعناوين البريد الإلكتروني. بلدك هو المحدد في إعدادات الكنيسة، ولا يُستنتج من شبكتك.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "اطّلع على ما تتم مشاركته بالضبط، أو غيّر اختيارك، من الإدارة → القياس عن بُعد.",
   "Separate production, demo, and test installs": "التمييز بين عمليات التثبيت الإنتاجية والتجريبية والاختبارية",
   "Understand database compatibility": "فهم توافق قواعد البيانات",
-  "Your data is yours. This reports on the software, never on your church or its people.": "بياناتك ملك لك. تتعلق هذه التقارير بالبرنامج، ولا تتعلق أبدًا بكنيستك أو أفرادها.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""
@@ -7151,6 +7148,5 @@
   "The conversion failed. Nothing was changed.": "فشل التحويل. لم يتغير شيء.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "يستخدم ملف ترويسة محفوظًا قبل إضافة التحميلات. حمّل ترويسة لاستبداله.",
   "Warning After (Hours)": "التحذير بعد (ساعات)",
-  "Word before the name in letters and emails, for example Dear.": "كلمة قبل الاسم في الخطابات ورسائل البريد الإلكتروني، على سبيل المثال عزيزي.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "يُطلب اختيارك مرة واحدة. يمكنك تغييره في أي وقت. مع لا شكرًا، يبقى الافتراضي نشطًا ولا تُرسل مشاهدات الصفحات."
+  "Word before the name in letters and emails, for example Dear.": "كلمة قبل الاسم في الخطابات ورسائل البريد الإلكتروني، على سبيل المثال عزيزي."
 }

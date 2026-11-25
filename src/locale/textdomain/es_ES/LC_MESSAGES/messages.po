@@ -25975,24 +25975,12 @@ msgid "Installation profile"
 msgstr "Perfil de instalación"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nunca se comparten: registros de miembros, ofrendas u otros registros de la iglesia, el nombre de su iglesia, su dirección web o nombre de servidor, ni direcciones de correo electrónico. Su país es el que figura en la configuración de su iglesia, no se obtiene de su red."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Vea exactamente qué se comparte, o cambie su elección, en Admin → Telemetría."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Distinguir instalaciones de producción, demostración y prueba"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Comprender la compatibilidad de bases de datos"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Sus datos son suyos. Esto informa sobre el software, nunca sobre su iglesia ni sus personas."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28295,8 +28283,4 @@ msgstr "Aviso después de (horas)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Palabra antes del nombre en cartas y correos electrónicos, por ejemplo Estimado."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Su elección se pide una sola vez. Puede cambiarla en cualquier momento. Con No, gracias, Por defecto permanece activo y las vistas de página no se envían."
 

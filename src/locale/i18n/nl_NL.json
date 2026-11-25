@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Database-engine en hoofd-/subversie",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Installatie- en upgraderesultaten, vorige versie bij upgrades en een dagelijkse check-in tijdens gebruik",
   "Installation profile": "Installatieprofiel",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Nooit gedeeld: leden-, giften- of andere kerkgegevens, de naam van uw kerk, uw webadres of servernaam, of e-mailadressen. Uw land is het land uit de instellingen van uw kerk en wordt niet uit uw netwerk afgeleid.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Bekijk precies wat er wordt gedeeld, of wijzig uw keuze, via Admin → Telemetrie.",
   "Separate production, demo, and test installs": "Productie-, demo- en testinstallaties onderscheiden",
   "Understand database compatibility": "Databasecompatibiliteit begrijpen",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Uw gegevens zijn van u. Dit rapporteert over de software, nooit over uw kerk of haar mensen.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkomen gemaakt",
     "other": "\"{{name}}\": {{count}} voorkomens gemaakt"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "De conversie is mislukt. Er is niets gewijzigd.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Er wordt een briefhoofdbestand gebruikt dat is opgeslagen voordat uploads werden toegevoegd. Upload een briefhoofd om het te vervangen.",
   "Warning After (Hours)": "Waarschuwing na (uren)",
-  "Word before the name in letters and emails, for example Dear.": "Woord vóór de naam in brieven en e-mails, bijvoorbeeld Beste.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Uw keuze wordt één keer gevraagd. U kunt deze op elk moment wijzigen. Met Nee, bedankt blijft Standaard actief en worden paginaweergaven niet gestuurd."
+  "Word before the name in letters and emails, for example Dear.": "Woord vóór de naam in brieven en e-mails, bijvoorbeeld Beste."
 }

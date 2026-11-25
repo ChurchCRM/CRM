@@ -25954,24 +25954,12 @@ msgid "Installation profile"
 msgstr "Profili i instalimit"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nuk ndahen kurrë: të dhënat e anëtarëve, të dhurimeve apo të tjera të kishës, emri i kishës suaj, adresa juaj e internetit ose emri i serverit, apo adresat e emailit. Shteti juaj është ai në cilësimet e kishës, jo i nxjerrë nga rrjeti juaj."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Shihni saktësisht çfarë ndahet, ose ndryshoni zgjedhjen tuaj, te Administrimi → Telemetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Dallo instalimet e prodhimit, demonstrimit dhe testimit"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Kuptoni përputhshmërinë e bazave të të dhënave"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Të dhënat tuaja janë tuajat. Këto raporte kanë të bëjnë me softuerin, kurrë me kishën tuaj apo njerëzit e saj."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28274,8 +28262,4 @@ msgstr "Paralajmërimi pas (orë)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Fjala para emrit në letra dhe e-posta, për shembull I dashur."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Zgjedhja juaj kërkohet vetëm një herë. Mund ta ndryshoni në çdo kohë. Me Jo, faleminderit, Parazgjedhur mbetet aktiv dhe shikimet e faqeve nuk dërgohen."
 

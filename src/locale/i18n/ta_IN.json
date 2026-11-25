@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "தரவுத்தள இயந்திரமும் முதன்மை/துணைப் பதிப்பும்",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "நிறுவல் மற்றும் மேம்படுத்தல் முடிவுகள், மேம்படுத்தலின்போது முந்தைய பதிப்பு, பயன்பாட்டில் இருக்கும்போது தினசரி சரிபார்ப்பு",
   "Installation profile": "நிறுவல் சுயவிவரம்",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "ஒருபோதும் பகிரப்படாதவை: உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள். உங்கள் நாடு சபை அமைப்புகளில் உள்ளதே, உங்கள் பிணையத்திலிருந்து கண்டறியப்படுவதில்லை.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "என்ன பகிரப்படுகிறது என்பதைத் துல்லியமாகப் பார்க்க அல்லது உங்கள் தேர்வை மாற்ற, நிர்வாகம் → தொலைமிதி என்பதற்குச் செல்லவும்.",
   "Separate production, demo, and test installs": "உற்பத்தி, டெமோ மற்றும் சோதனை நிறுவல்களைப் பிரித்தறிக",
   "Understand database compatibility": "தரவுத்தள இணக்கத்தன்மையைப் புரிந்துகொள்",
-  "Your data is yours. This reports on the software, never on your church or its people.": "உங்கள் தரவு உங்களுடையது. இது மென்பொருளைப் பற்றி மட்டுமே தெரிவிக்கிறது, உங்கள் சபையையோ அதன் மக்களையோ பற்றி ஒருபோதும் இல்லை.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} நிகழ்வு உருவாக்கப்பட்டது",
     "other": "\"{{name}}\": {{count}} நிகழ்வுகள் உருவாக்கப்பட்டன"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "பதிவேற்றங்கள் சேர்க்கப்படுவதற்கு முன் சேமிக்கப்பட்ட தலைப்புப் படக் கோப்பைப் பயன்படுத்துகிறது. அதை மாற்ற ஒரு தலைப்புப் படத்தைப் பதிவேற்றவும்.",
   "Warning After (Hours)": "எச்சரிக்கை நேரம் (மணிநேரம்)",
-  "Word before the name in letters and emails, for example Dear.": "கடிதங்கள் மற்றும் மின்னஞ்சல்களில் பெயருக்கு முன் வரும் சொல், எடுத்துக்காட்டாக அன்புள்ள.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "உங்கள் தேர்வு ஒருமுறை மட்டுமே கேட்கப்படும். எந்த நேரத்திலும் அதை மாற்றலாம். வேண்டாம், நன்றி என்பதுடன், இயல்புநிலை செயலில் இருக்கும், பக்கக் காட்சிகள் அனுப்பப்படாது."
+  "Word before the name in letters and emails, for example Dear.": "கடிதங்கள் மற்றும் மின்னஞ்சல்களில் பெயருக்கு முன் வரும் சொல், எடுத்துக்காட்டாக அன்புள்ள."
 }
