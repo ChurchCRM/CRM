@@ -48,7 +48,7 @@ try {
             Assert::contains('ChurchCRM System Check', $html);
             Assert::contains('href="' . $root . '/skin/v2/error.min.css"', $html);
             Assert::notContains('cdn.jsdelivr.net', $html);
-            foreach (['locale gettext', 'GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
+            foreach (['GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
                 Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
             }
             Assert::contains('PHP Session', $html);
@@ -105,6 +105,10 @@ try {
         . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
         . 'throw new \\RuntimeException("Bootstrap must stop");');
     Assert::contains('ChurchCRM System Check', $installRoot);
+
+    $softOnly = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
+        . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; echo "continue";', 'gettext,bindtextdomain');
+    Assert::same('continue', $softOnly);
 
     $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
         . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '

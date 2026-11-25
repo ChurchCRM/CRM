@@ -13,6 +13,9 @@ if ($failedRequirements !== []) {
     } catch (\Throwable) {
         // Reporting must never hide the checklist.
     }
+}
+$failedRequirements = array_values(array_filter($failedRequirements, fn (Prerequisite $check): bool => !$check->isSoft()));
+if ($failedRequirements !== []) {
     http_response_code(503);
     header('Cache-Control: no-store');
     $requestPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
