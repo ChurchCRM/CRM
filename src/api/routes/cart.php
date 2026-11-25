@@ -167,12 +167,37 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, $e, $request);
             }
 
-            Cart::emptyToGroup((int)$cartPayload['groupID'], (int)$cartPayload['groupRoleID']);
+            $totalPeople = count($_SESSION['aPeopleCart'] ?? []);
+
+            $failedPeople = Cart::emptyToGroup(
+                (int) $cartPayload['groupID'],
+                (int) $cartPayload['groupRoleID']
+            );
+
+            $failedCount = count($failedPeople);
+            $successCount = $totalPeople - $failedCount;
+
+            if ($failedCount > 0) {
+                return SlimUtils::renderJSON($response, [
+                    'status' => 'partial_success',
+                    'message' => sprintf(
+                        gettext('%d people added successfully; %d people could not be added and remain in the cart.'),
+                        $successCount,
+                        $failedCount
+                    ),
+                    'successCount' => $successCount,
+                    'failedCount' => $failedCount,
+                    'failedPeople' => $failedPeople,
+                ]);
+            }
 
             return SlimUtils::renderJSON($response, [
-            'status' => 'success',
-            'message' => gettext('record(s) successfully added to selected Group.')
-        ]);
+                'status' => 'success',
+                'message' => gettext('record(s) successfully added to selected Group.'),
+                'successCount' => $successCount,
+                'failedCount' => 0,
+                'failedPeople' => [],
+            ]);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, $e, $request);
         }

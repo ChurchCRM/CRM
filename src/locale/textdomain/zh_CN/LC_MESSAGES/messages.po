@@ -381,18 +381,6 @@ msgid "(No assigned family)"
 msgstr "（没有分配的家庭）"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "转换个人的家庭"
-
-#: 
-msgid "Convert Next"
-msgstr "转换下一页"
-
-#: 
-msgid "Convert All"
-msgstr "转换所有"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "存款单号码"
@@ -1647,10 +1635,6 @@ msgid "Permission"
 msgstr "允许"
 
 #: 
-msgid "System Settings"
-msgstr "系统设置"
-
-#: 
 msgid "User Editor"
 msgstr "用户编辑器"
 
@@ -2157,24 +2141,12 @@ msgid "Localization"
 msgstr "本土化"
 
 #: 
-msgid "Setting saved"
-msgstr "设置已保存"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "编辑JSON设置"
-
-#: 
 msgid "False"
 msgstr "否"
 
 #: 
 msgid "True"
 msgstr "是"
-
-#: 
-msgid "Edit Settings"
-msgstr "编辑设置"
 
 #: 
 msgid "Functions"
@@ -2292,33 +2264,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "仅在目录中包含这些分类，逗号分隔"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "这些是指定为房屋主管的家庭角色的编号"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "这些是指定为配偶的家庭角色的编号"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "这些是指定为孩子的家庭角色的编号"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "用户设置密码的最小长度"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "以逗号分隔的不允许（太简单）密码列表。"
-
-#: 
 msgid "Default City"
 msgstr "默认城市"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "默认状态 - 必须是2个字母的缩写！"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2341,68 +2288,12 @@ msgid "First month of the fiscal year"
 msgstr "财政年度的第一个月"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入Friend Date。设置为false(否)以启用在Person Editor(人员编辑)中输入Friend Date。"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "设置为true(是)以禁用家庭编辑器中的新闻稿订阅管理。"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "设置为true(是)以禁用在家庭编辑器中输入结婚日期。设置为false(否)以启用在族编辑器中输入结婚日期。"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "存款单报告的支票数量"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "用于测量距离，英里或公里的单位。"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "税收报告第一行的动词。日期将附加到该行的末尾。"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "税收报告底线的动词。"
-
-#: 
-msgid "Tax Report signer"
-msgstr "税务报告签名者"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "质押提醒报告的动词"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "承诺签名者"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "质押提醒报告的动词-没有质押记录"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "质押提醒报告的动词-没有付款记录"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "数据库信息确认和更正报告的动词"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "数据库信息确认和更正报告签名者"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "目录报告的动词"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3857,10 +3748,6 @@ msgstr "备份存档不包含数据库"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "将用户输入的邮编/邮政编码以大写方式保存到数据库。"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "用于在签名者之前结束一封信"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3965,10 +3852,6 @@ msgid "Failed"
 msgstr "失败"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "教堂检查账号"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "停止的家庭"
@@ -3981,10 +3864,6 @@ msgstr "激活的家庭"
 #: 
 msgid "families"
 msgstr "家庭"
-
-#: 
-msgid "Financial Settings"
-msgstr "财务设置"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4025,10 +3904,6 @@ msgstr "属性已成功取消分配。"
 #: 
 msgid "The property could not be unassigned."
 msgstr "属性无法取消分配。"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "电子邮件/报告中姓名前的文字"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4272,10 +4147,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "记录已成功添加到选定的组。"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "要在日期选取器中定义日期，默认情况下：yyyy-mm-dd，在法国：dd / mm / yyyy。"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "要在日期选取器中定义日期，默认情况下：Y-m-d，在法国：d/m/Y。"
 
@@ -4363,10 +4234,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "搜索家庭"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4467,10 +4334,6 @@ msgstr "更变设定\n"
 ""
 
 #: 
-msgid "Unknown Type"
-msgstr "未知类别"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "购物车中的个人ID必需是数字"
 
@@ -4489,14 +4352,6 @@ msgstr "搜索人物"
 #: 
 msgid "Maximum number of People"
 msgstr "人数上限"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Father Of Confession出现的字段，必须是群体类型中的人"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Confession最后字段的存储，必须是一个数据类型"
 
 #: 
 msgid "People Reports"
@@ -4750,18 +4605,6 @@ msgid "Event not found"
 msgstr "找不到活动"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "会话超时时间（以秒为单位）\n"
-"设置为零可禁用会话超时。"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "新密码必须不同于旧密码的最小数量（已更改的字符数）\n"
-"设置为零以禁用此功能"
-
-#: 
 msgid "Verify People"
 msgstr "验证人员"
 
@@ -4831,10 +4674,6 @@ msgstr "未固定事件"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "姓，名，中间名"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "发送电子邮件通知用户帐户被删除的时间"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7798,10 +7637,6 @@ msgid "selected family has no coordinates"
 msgstr "所选家庭没有坐标"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "要求所有用户注册双重身份验证"
-
-#: 
 msgid "Active Groups"
 msgstr "活跃小组"
 
@@ -8279,10 +8114,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "选择您想要如何填充数据库。您始终可以稍后使用不同的方法。"
 
 #: 
-msgid "Church Info"
-msgstr "教会信息"
-
-#: 
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -8315,14 +8146,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "以任何顺序完成这些操作，为您的会众准备好 ChurchCRM。"
 
 #: 
-msgid "Confession"
-msgstr "忏悔"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "配置全局系统设置和偏好设置"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "配置组设置、角色和属性"
 
@@ -8333,10 +8156,6 @@ msgstr "确认您的新密码"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "将个人记录转换为家族单位"
 
 #: 
 msgid "Convert to Family"
@@ -8373,10 +8192,6 @@ msgstr "当前人员"
 #: 
 msgid "Database Reset"
 msgstr "数据库重置"
-
-#: 
-msgid "Default / Notes"
-msgstr "默认/笔记"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9997,10 +9812,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "允许系统升级到GitHub上标记为「预发布」的版本"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "允许通过公共HTML、ICS和JSON URL未经身份验证访问日历事件。与外部应用共享日历时需要此设置。"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "允许访客通过自助注册页面创建自己的家庭记录"
 
@@ -10163,24 +9974,12 @@ msgid "Enable Email"
 msgstr "启用电子邮件"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "启用活动菜单"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "启用外部日历API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "启用从ChurchCRM发送电子邮件。重置密码、通知和电子邮件链接需要此设置。"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "如果您的SMTP服务器需要用户名和密码，请启用此选项"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "启用或禁用主日学模块和侧边栏菜单。"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10278,10 +10077,6 @@ msgstr "隐藏经纬度"
 #: 
 msgid "How it works"
 msgstr "工作原理"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "每页存款单打印多少张支票"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10441,10 +10236,6 @@ msgid "Privacy Note"
 msgstr "隐私声明"
 
 #: 
-msgid "Quick Settings"
-msgstr "快速设置"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP身份验证"
 
@@ -10471,10 +10262,6 @@ msgstr "设置"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "在存款单报告中显示票面金额明细"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "在主导航中显示或隐藏活动菜单。"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10888,10 +10675,6 @@ msgstr "如果您发现乱码、HTML 实体以文字形式出现，或翻译导�
 #: 
 msgid "Indigo"
 msgstr "靛蓝色"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "JSON 值无效——设置未保存。请更正后重试。"
 
 #: 
 msgid "Language and regional settings"
@@ -12667,10 +12450,6 @@ msgstr "整天"
 #: 
 msgid "All Roles"
 msgstr "所有角色"
-
-#: 
-msgid "All System Settings"
-msgstr "所有系统设置"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15138,10 +14917,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "以空格分隔的来源列表，允许将公共外部日历页面嵌入 iframe。默认允许任何来源。"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "以空格分隔的来源，允许将公共日历页面嵌入 iframe。默认允许任何站点。"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "主日学小组只能在以下两种情况下修改"
 
@@ -15482,10 +15257,6 @@ msgid "ChurchCRM version"
 msgstr "ChurchCRM 版本"
 
 #: 
-msgid "Collection level"
-msgstr "采集级别"
-
-#: 
 msgid "Count unique installs"
 msgstr "统计唯一安装数"
 
@@ -15540,14 +15311,6 @@ msgstr "更新承诺奉献失败"
 #: 
 msgid "Financial data"
 msgstr "财务数据"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "完整——以上所有内容及页面访问"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "完整——页面访问、警告、错误和 JS 异常"
 
 #: 
 msgid "Fund Summary"
@@ -15626,10 +15389,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "不可抵税金额不能超过基金金额"
 
 #: 
-msgid "None (disabled)"
-msgstr "无（已禁用）"
-
-#: 
 msgid "Overpaid"
 msgstr "超额奉献"
 
@@ -15690,10 +15449,6 @@ msgid "Select a fund"
 msgstr "选择基金"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "向自己发送测试生日邮件"
-
-#: 
 msgid "Sending to"
 msgstr "正在发送至"
 
@@ -15748,10 +15503,6 @@ msgstr "祝您生日快乐！"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "您的账户尚未绑定电子邮件地址。请在个人资料中添加一个以发送测试邮件。"
-
-#: 
-msgid "errors+"
-msgstr "错误+"
 
 #: 
 msgid "full only"
@@ -16712,10 +16463,6 @@ msgid "Not a valid date of death"
 msgstr "不是有效的逝世日期"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "在强制启用双重认证（2FA）后，用户可用于完成注册的天数。设为 0 表示立即强制执行。缩短正在生效的宽限期可能导致用户立即被锁定。"
-
-#: 
 msgid "Offline"
 msgstr "离线"
 
@@ -17040,14 +16787,6 @@ msgid "Download CSV"
 msgstr "下载 CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "启用或禁用财务模块和侧边栏菜单"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "启用或禁用筹款模块"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "移除教堂标志失败"
 
@@ -17192,10 +16931,6 @@ msgid "Access Control & Security"
 msgstr "访问控制和安全"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "允许记录不可税收抵扣的款项（例如商品销售）"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "允许未认证访问公共事件（用于嵌入日历）"
 
@@ -17248,46 +16983,6 @@ msgid "Feature Toggles"
 msgstr "功能开关"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "功能开关控制ChurchCRM中哪些模块和功能可用。更改立即生效。"
-
-#: 
-msgid "Finance Features"
-msgstr "财务功能"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "在快速全局搜索中包含地址"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "在快速全局搜索中包含日历事件"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "在快速全局搜索中包含自定义家庭属性"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "在快速全局搜索中包含存款"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "在快速全局搜索中包含家庭"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "在快速全局搜索中包含事工"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "在快速全局搜索中包含付款"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "在快速全局搜索中包含人员"
-
-#: 
 msgid "Invalid setting"
 msgstr "无效设置"
 
@@ -17296,16 +16991,8 @@ msgid "Lost Password Link"
 msgstr "丢失密码链接"
 
 #: 
-msgid "Manage All Features"
-msgstr "管理所有功能"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "电子邮件发送的主开关。密码重置和通知需要。"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "不可抵扣的款项"
 
 #: 
 msgid "Primary Modules"
@@ -17316,20 +17003,12 @@ msgid "Public Calendar API"
 msgstr "公共日历API"
 
 #: 
-msgid "Saved"
-msgstr "已保存"
-
-#: 
 msgid "Search Families"
 msgstr "搜索家庭"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "搜索家庭自定义属性"
-
-#: 
-msgid "Search Settings"
-msgstr "搜索设置"
 
 #: 
 msgid "Self-Registration"
@@ -17546,14 +17225,6 @@ msgstr "通知接收人"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "新增家庭或人员时需要通知的人员"
-
-#: 
-msgid "Person initials style"
-msgstr "人员姓名首字母样式"
-
-#: 
-msgid "Person name display style"
-msgstr "人员姓名显示样式"
 
 #: 
 msgid "Spouse Role"
@@ -22569,10 +22240,6 @@ msgid "This email batch was queued by another user"
 msgstr "这批邮件是由另一位用户加入队列的"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "导入之后，可以在管理仪表板上使用「重置数据库」清除全部数据并重新开始。应用程序配置会保留。"
-
-#: 
 msgid "Importing demo data..."
 msgstr "正在导入示例数据..."
 
@@ -23553,30 +23220,6 @@ msgid "Download PDF"
 msgstr "下载 PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "锁定时间（分钟）\n"
-"锁定的账户在此分钟数后自动解锁。同一时间段内来自一个 IP 地址的失败登录会被计数。"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "来自一个 IP 地址的最大失败登录次数\n"
-"在锁定时间内，来自一个 IP 地址的失败登录和密码重置请求计入此限制。达到限制后，该地址的登录将被拒绝，直到时间段结束。\n"
-"设为零以禁用此功能，例如当所有人都通过一个代理地址访问 ChurchCRM 时。"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "在用户账户被锁定之前允许的最大失败登录次数。\n"
-"锁定的账户在锁定时间后自动解锁，或在管理员重置失败登录时提前解锁。\n"
-"此功能有助于防止自动密码猜测攻击。\n"
-"设为零以禁用此功能。"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "自动解锁前剩余分钟数：%d"
 
@@ -23905,10 +23548,6 @@ msgid "PDF Output"
 msgstr "PDF 输出"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF 处理方式"
-
-#: 
 msgid "Questions Line"
 msgstr "问询语"
 
@@ -23945,10 +23584,6 @@ msgid "Greeting"
 msgstr "问候语"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "信件问候语与签名"
-
-#: 
 msgid "Letterhead"
 msgstr "信头"
 
@@ -23971,10 +23606,6 @@ msgstr "设置 PDF 信件打印的信头"
 #: 
 msgid "Using the church name and address"
 msgstr "使用教会名称和地址"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "使用系统设置中的信头路径"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26184,14 +25815,6 @@ msgstr "按基金分类的付款"
 msgid "Unknown Fund"
 msgstr "未知基金"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "请联系您的主机服务商将数据库迁移到受支持的版本，然后重试。"
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "请联系您的主机服务商将数据库迁移到受支持的版本。"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26209,18 +25832,6 @@ msgstr "在存款记录中登记支票付款时要求填写支票号码。关闭
 #: 
 msgid "Require check number on check payments"
 msgstr "支票付款须填写支票号码"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "升级未开始，因此未做任何更改。"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "此升级无法在您的数据库上运行。"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "您的数据库服务器（%1$s %2$s）版本低于 ChurchCRM 支持的版本（MySQL %3$s 或 MariaDB %4$s 及更高版本）。"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26377,22 +25988,6 @@ msgid "Database engine and major/minor version"
 msgstr "数据库引擎及主/次版本"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "错误 — 安装统计、警告、错误和 JS 异常"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "帮助我们发现并修复问题？"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "“安装”级别仅共享最少的安装和升级统计。“错误”级别另外共享警告和错误报告。“完整”级别另外共享页面访问。“无”仅发送失败的安装和升级。"
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "安装 — 安装和升级统计（默认）"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "安装和升级结果、升级时的先前版本，以及使用期间每天一次的签到"
 
@@ -26401,68 +25996,12 @@ msgid "Installation profile"
 msgstr "安装配置"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "区域设置（错误和完整级别）"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "绝不共享：会友、奉献或其他教会记录、您的教会名称、您的网址或服务器名称、电子邮件地址。您的国家取自教会设置，而不是根据您的网络推断。"
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "操作系统类型（错误和完整级别）"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "PHP 版本（错误和完整级别）"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "在 管理 → 遥测 中查看具体共享了哪些内容，或更改您的选择。"
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "区分生产、演示和测试安装"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "共享匿名安装统计？"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "共享错误和使用报告"
-
-#: 
-msgid "Share install statistics"
-msgstr "共享安装统计"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "另外共享：警告、错误详情以及打开了哪些页面。"
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "共享内容：ChurchCRM 已安装或升级以及是否成功、使用期间每天一次的签到、版本号、您的国家和数据库类型。随机安装 ID 确保每个安装只计数一次。"
-
-#: 
 msgid "Understand database compatibility"
 msgstr "了解数据库兼容性"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "此选择只询问一次，您可以随时更改。选择“不，谢谢”时，仅报告失败的安装或升级。"
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "您的数据属于您。“安装”级别仅共享安装和升级结果、安装 ID、软件版本、安装配置、设置的国家以及数据库引擎及其主/次版本。“错误”级别另外共享警告和错误详情。“完整”级别另外共享页面访问。“无”仅发送失败的安装和升级。任何级别都不会发送您的网址或服务器名称。测试安装不发送任何内容。遥测数据发送至位于美国的 PostHog。"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "您的数据属于您。报告内容仅涉及软件，绝不涉及您的教会或会众。"
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "您的数据属于您。为统计安装数，ChurchCRM 会报告它已安装或升级以及是否成功、使用期间每天一次的签到，以及版本号、您的国家、数据库类型和随机安装 ID。它绝不会报告会友、奉献或其他教会记录、您的教会名称、您的网址或服务器名称、电子邮件地址。您可以随时在 管理 → 遥测 中关闭此功能；失败的安装或升级仍会被报告。警告、错误详情和页面访问只有在您选择后才会共享。"
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28056,10 +27595,6 @@ msgid "How the congregation is made up"
 msgstr "会众的构成情况"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "我了解此数据库不受支持，升级将被阻止"
-
-#: 
 msgid "Insights"
 msgstr "洞察"
 
@@ -28082,10 +27617,6 @@ msgstr "完整性检查失败"
 #: 
 msgid "Integrity check passed"
 msgstr "完整性检查通过"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "CSRF 令牌无效"
 
 #: 
 msgid "Last %d days"
@@ -28130,10 +27661,6 @@ msgstr "在此范围内打开财务仪表板。在仪表板本身上选择过去
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "过去 7 天和未来 %d 天"
-
-#: 
-msgid "People without a family: %d"
-msgstr "没有家庭的人数：%d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28264,10 +27791,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "此仪表板现在是您的主仪表板。"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "此数据库不再从其供应商处获得安全修复。"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "人们将在此处打开 ChurchCRM。仅当他们将使用与此页面不同的地址时才更改它。"
 
@@ -28280,28 +27803,12 @@ msgid "Total deposited"
 msgstr "存款总额"
 
 #: 
-msgid "Unsupported database server"
-msgstr "不受支持的数据库服务器"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "在数据库迁移到受支持的版本之前，升级将被阻止。"
-
-#: 
 msgid "Usually 3306."
 msgstr "通常是 3306。"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "我们建议您在安装前请主机商切换，此时还没有数据需要迁移。MariaDB 10.11 是一个很好的目标。"
-
-#: 
 msgid "Web address"
 msgstr "网址"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "您现在可以安装：ChurchCRM 将会安装并运行。"
 
 #: 
 msgid "Your main dashboard"
@@ -28320,4 +27827,476 @@ msgstr "还有 {{count}} 个"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "还有 {{count}} 个"
+
+#: 
+msgid "Database out of support"
+msgstr "数据库不受支持"
+
+#: 
+msgid "Deactivated"
+msgstr "已停用"
+
+#: 
+msgid "How to find the log"
+msgstr "如何查找日志"
+
+#: 
+msgid "How to install server locales"
+msgstr "如何安装服务器区域设置"
+
+#: 
+msgid "Last edited"
+msgstr "最后编辑"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "未安装在服务器上，并且也没有安装英语后备区域设置，因此界面将以英文显示。"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "ChurchCRM 日志会记录具体原因。分享前请删除姓名。"
+
+#: 
+msgid "Verify now"
+msgstr "立即验证"
+
+#: 
+msgid "View Giving History"
+msgstr "查看捐献历史"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "已成功添加 %d 人；%d 人无法添加，仍保留在清单中。"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d 人无法添加，仍保留在您的清单中。"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "在数据库迁移到仍能获得安全修复的版本之前，管理员将在每个页面上看到此警告。现在迁移最容易，因为数据还很少。"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "从现在起，管理员将登录到标准仪表板。设置仪表板将不会在登录时再次打开。"
+
+#: 
+msgid "Database security risk"
+msgstr "数据库安全风险"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "演示模式还会开启匿名使用统计（PostHog），以便我们了解人们如何探索 ChurchCRM。“重新开始”会将其关闭。"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "电子邮件设置已保存。会员登录现已开启，会员可以使用其电子邮件登录会众门户。"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "输入您的教会信息，添加您的成员，并邀请您的团队。"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "这里的一切都是示例数据。在输入您教会的真实信息之前，请先重新开始。"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "这里的一切都是示例数据。当您准备好为您的教会使用 ChurchCRM 时，请重新开始：它会清除演示数据和所有设置，让您可以从自己的数据开始。"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "使用演示数据探索 ChurchCRM，或为您的教会进行设置"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "无法将人员添加到组"
+
+#: 
+msgid "Finish setup"
+msgstr "完成设置"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "安装后的这么多天内，管理员登录到设置仪表板。设置为 0 可将其关闭。"
+
+#: 
+msgid "Group Assignment"
+msgstr "组分配"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "内部：管理员在设置仪表板上选择了“完成设置”。请勿手动编辑。"
+
+#: 
+msgid "Keep exploring"
+msgstr "继续探索"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "从另一台 ChurchCRM 服务器迁移？恢复在那里创建的备份。这将替换此安装中的所有内容。"
+
+#: 
+msgid "Ready for your church"
+msgstr "为您的教会做好准备"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "重试组分配"
+
+#: 
+msgid "Retry group assignments"
+msgstr "重试组分配"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "为此人选择一个或多个组。"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "选择您要重试的组。"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "设置您的教会"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "设置仪表板"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "演示横幅上的“重新开始”，或管理控制面板上的“重置数据库”，会清除演示数据和所有设置，并将 ChurchCRM 恢复为全新安装。"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "先重新开始，然后使用您自己的教会信息设置 ChurchCRM。"
+
+#: 
+msgid "Start setup"
+msgstr "开始设置"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "演示数据已被清除。使用默认管理员帐户登录，为您的教会进行设置。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "此人已保存，但一个或多个组分配失败。选择下面的组并重试。"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "此人已保存，但一个或多个组分配失败。失败的组已在下面选中。检查它们并再次保存以重试。"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "这将清除演示数据和所有设置，并将 ChurchCRM 恢复为全新安装。"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "您将使用默认管理员帐户再次登录并输入您的教会信息。"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "您正在使用演示数据探索 ChurchCRM。"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "您正在探索演示数据"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "您的教会信息已保存。完成下面的步骤。"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "您的数据库（%1$s %2$s）存在安全风险：其供应商不再为该版本提供安全修复。ChurchCRM 仍可继续工作，但请让您的主机商迁移到 MariaDB %3$s+ 或 MySQL %4$s+。"
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "使用期间的每日签到、软件和数据库版本、语言区域、国家、安装类型以及随机安装 ID，有助于统计活跃安装数量。"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "账户与登录"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "同时发送所使用的页面。"
+
+#: 
+msgid "Areas"
+msgstr "区域"
+
+#: 
+msgid "Church & System"
+msgstr "教会与系统"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "签发收据的城市或城镇，印在正式收据上。留空则使用教会所在城市。"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "位于签名人姓名之前的结束语，例如“此致敬礼”。"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "印在正式收据上签名人之前的结束语。"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "以逗号分隔的任何人不得使用的密码。"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "确认信"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "为此人创建一个家庭？其地址和家庭电话将转移到新家庭。"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "双重身份验证成为必需后，用户有几天时间进行设置。0 表示立即强制执行。缩短正在生效的宽限期可能会使用户被锁定。"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "存款与付款"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "禁用密码"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "免责声明 %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "当用户账户被删除时向其发送电子邮件"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "所有设置页面集中在一处，以及适用于整个系统的设置"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "锁定前失败的登录次数"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "每个 IP 地址的失败登录次数"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "在目录中被视为儿童的家庭角色。"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "在目录和成员登录中被视为户主的家庭角色。"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "在目录和成员登录中被视为配偶的家庭角色。"
+
+#: 
+msgid "Finance Settings"
+msgstr "财务设置"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "宽限期（天）"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "在族编辑器中隐藏通讯订阅。"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "在人编辑器中隐藏朋友日期字段。"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "在族编辑器中隐藏婚礼日期字段。"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "锁定账户保持锁定的时长。来自同一 IP 地址的失败登录在同一时段内计数。"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "新密码与旧密码必须相差的字符数。0 表示关闭此功能。"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "在 管理 → 遥测 中，开启“分享所使用的页面”以选择“完整”。“完整”还会发送页面浏览量。"
+
+#: 
+msgid "Initials Format"
+msgstr "首字母格式"
+
+#: 
+msgid "Letter Text %d"
+msgstr "信函文本 %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "锁定时长（分钟）"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "在连续多次登录失败达到此数值后锁定账户。账户会在锁定时长结束后解锁，或由管理员重置后解锁。0 表示关闭锁定。"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "管理会众门户"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "成员可以使用其电子邮件登录。"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "成员尚不能登录。"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "最少更改字符数"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "密码最小长度"
+
+#: 
+msgid "Name Format"
+msgstr "姓名格式"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "印在信函和电子邮件结束语下方的姓名"
+
+#: 
+msgid "No Payments Text"
+msgstr "无付款文本"
+
+#: 
+msgid "No Pledge Text"
+msgstr "无奉献承诺文本"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "任何级别都不会发送人员、捐赠者、奉献、内容、教会联系方式、您的网址或服务器名称。"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "任何级别都不会发送您的网址或服务器名称。测试安装不会发送任何内容。遥测数据会发送到位于美国的 PostHog。"
+
+#: 
+msgid "OS family"
+msgstr "操作系统系列"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "奉献承诺提醒信的开头段落。"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "奉献报表中邀请提问的段落。"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "零奉献者信函中邀请提问的段落。"
+
+#: 
+msgid "Passwords"
+msgstr "密码"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "印在零奉献者信函开头一行中日期范围之后。"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "首先印在奉献报表上，后面是日期范围。"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "当一个家庭没有付款记录时打印。"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "当一个家庭没有奉献承诺记录时打印。"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "在同一 IP 地址出现此次数的失败登录或密码重置后，在锁定时长内拒绝该 IP 的登录。0 表示关闭此功能，例如当所有人都通过同一代理连接时。"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "要求双重身份验证"
+
+#: 
+msgid "Security Settings"
+msgstr "安全设置"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "发送错误报告、安装/升级事件和系统信息，以便修复问题。不发送页面浏览量，不发送教会数据。"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "会话超时（秒）"
+
+#: 
+msgid "Share which pages are used"
+msgstr "分享所使用的页面"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "登录与安全"
+
+#: 
+msgid "Signature Storage"
+msgstr "签名存储"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "用户在无操作达到此秒数后自动退出登录。0 表示从不退出登录。"
+
+#: 
+msgid "System-wide"
+msgstr "全系统"
+
+#: 
+msgid "Text After Dates"
+msgstr "日期后文本"
+
+#: 
+msgid "Text Messages"
+msgstr "短信"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "奉献报表的感谢段落。"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "零奉献者信函的感谢段落。"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "转换失败。未做任何更改。"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "正在使用在上传功能添加之前保存的信头文件。上传一个信头以替换它。"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "警告时限（小时）"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "位于信函和电子邮件中姓名之前的称呼词，例如“亲爱的”。"
 

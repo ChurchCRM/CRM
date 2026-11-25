@@ -72,10 +72,13 @@ class NotificationService
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
      */
-    public static function loadSessionNotifications(): void
+    public static function loadSessionNotifications(bool $includeRemote = false): void
     {
         self::loadUpgradeNotification();
-        self::loadRemoteNotifications();
+        self::loadDatabaseSupportNotification();
+        if ($includeRemote) {
+            self::loadRemoteNotifications();
+        }
     }
 
     // ─── Source 1: System upgrade (session set at login) ────────────────
@@ -113,6 +116,56 @@ class NotificationService
             SystemURLs::getRootPath() . ($isAdmin ? '/admin/system/upgrade' : '/v2/releases'),
             'warning',
             'refresh',
+        ));
+    }
+
+    /**
+     * The database support warning for the current user, or null when the
+     * database is on a supported version or the user is not an admin.
+     * 'dismissed' is the current user's per-user dismissal state: while false
+     * the warning renders as the full banner; once dismissed it collapses to
+     * the red top-nav indicator (Header.php) until the database is supported.
+     *
+     * @return array{title: string, message: string, dismissed: bool}|null
+     */
+    public static function getDatabaseSupportWarning(): ?array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->isAdmin()) {
+            return null;
+        }
+        $message = DatabaseVersionService::getSecurityRiskMessage();
+        if ($message === null) {
+            return null;
+        }
+
+        return [
+            'title'     => gettext('Database out of support'),
+            'message'   => $message,
+            'dismissed' => $currentUser->getSettingValue(self::dismissalSettingKey('database-out-of-support')) === 'true',
+        ];
+    }
+
+    /**
+     * Dismissible per user (#11942): dismissal collapses the banner into the
+     * top-nav indicator; the warning fully clears only when the database is
+     * moved to a supported version.
+     */
+    private static function loadDatabaseSupportNotification(): void
+    {
+        $warning = self::getDatabaseSupportWarning();
+        if ($warning === null) {
+            return;
+        }
+
+        self::add(new UiNotification(
+            'database-out-of-support',
+            self::dismissalSettingKey('database-out-of-support'),
+            $warning['title'],
+            $warning['message'],
+            '',
+            'danger',
+            'database',
         ));
     }
 
@@ -175,9 +228,22 @@ class NotificationService
                 $message->message ?? '',
                 $message->link ?? '',
                 $message->type ?? 'info',
-                $message->icon ?? 'circle-info',
+                self::iconForRemote($message->icon ?? ''),
             ));
         }
+    }
+
+    /**
+     * Remote notices name a Font Awesome icon. Names the bundled Font Awesome
+     * build does not define render as an empty box, so map them to a defined
+     * icon; anything unknown falls back to circle-info.
+     */
+    private static function iconForRemote(string $icon): string
+    {
+        $aliases = ['message-circle' => 'message'];
+        $icon = $aliases[$icon] ?? $icon;
+
+        return preg_match('/^[a-z0-9-]+$/', $icon) === 1 ? $icon : 'circle-info';
     }
 
     /**

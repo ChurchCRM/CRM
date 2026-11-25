@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(לא נבחרה משפחה)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "המר בודדים למשפחות"
-
-#: 
-msgid "Convert Next"
-msgstr "המר הבא"
-
-#: 
-msgid "Convert All"
-msgstr "המר את כולם"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "מספר אישור הפקדה"
@@ -1607,10 +1595,6 @@ msgid "Permission"
 msgstr "הרשאה"
 
 #: 
-msgid "System Settings"
-msgstr "הגדרות מערכת"
-
-#: 
 msgid "User Editor"
 msgstr "עורך משתמשים"
 
@@ -2096,24 +2080,12 @@ msgid "Localization"
 msgstr "לוקליזציה"
 
 #: 
-msgid "Setting saved"
-msgstr "ההגדרה נשמרה"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "עריכת הגדרות JSON"
-
-#: 
 msgid "False"
 msgstr "לא"
 
 #: 
 msgid "True"
 msgstr "כן"
-
-#: 
-msgid "Edit Settings"
-msgstr "ערוך הגדרות"
 
 #: 
 msgid "Functions"
@@ -2230,32 +2202,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "כלול רק סיווגים אלה במדריך, מופרדים בפסיקים"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "אלה מספרי תפקידי המשפחה המוגדרים כראש משק הבית"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "אלה מספרי תפקידי המשפחה המוגדרים כבן/בת זוג"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "אלה מספרי תפקידי המשפחה המוגדרים כילד"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "אורך מינימלי שמשתמש יכול להגדיר לסיסמה שלו"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "רשימה מופרדת בפסיקים של סיסמאות אסורות (ברורות מדי)."
-
-#: 
 msgid "Default City"
 msgstr "עיר ברירת מחדל"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "מדינת ברירת מחדל - חייבת להיות קיצור של 2 אותיות!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2278,68 +2226,12 @@ msgid "First month of the fiscal year"
 msgstr "החודש הראשון של שנת הכספים"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "הגדר כ-true כדי להשבית הזנת תאריך חברות בעורך האיש. הגדר כ-false כדי לאפשר הזנת תאריך חברות בעורך האיש."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "הגדר כ-true כדי להשבית ניהול מנויי עלון בעורך המשפחה."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "הגדר כ-true כדי להשבית הזנת תאריך נישואים בעורך המשפחה. הגדר כ-false כדי לאפשר הזנת תאריך נישואים בעורך המשפחה."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "מספר הצ'קים לדוח שובר הפקדה"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "יחידת המידה למרחק, מיילים או ק\"מ"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "אפשר תשלומים שאינם ניתנים לניכוי"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "טקסט עבור השורה העליונה של דוח המס. תאריכים יתווספו בסוף שורה זו."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "טקסט לשורה התחתונה של דוח המס."
-
-#: 
-msgid "Tax Report signer"
-msgstr "חותם דוח המס"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "טקסט לדוח תזכורת התרומה"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "חותם תזכורת התרומה"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "טקסט עבור דוח תזכורת התחייבות - אין רישום של התחייבות"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "טקסט עבור דוח תזכורת התחייבות - אין רישום של תשלומים"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "טקסט עבור אישור מידע מסד הנתונים ודוח תיקונים"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "אישור מידע מסד הנתונים וחותם דוח התיקונים"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "טקסט עבור דוח הספריה"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3797,10 +3689,6 @@ msgstr "קובץ הגיבוי אינו מכיל מסד נתונים"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "הפוך מיקודים שהוזנו על ידי המשתמש לאותיות גדולות בעת שמירה למסד הנתונים."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "משמש לסיום מכתב לפני החתימה"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3905,10 +3793,6 @@ msgid "Failed"
 msgstr "נכשל"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "מספר חשבון בנק של המוסד"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "המשפחה הושבתה"
@@ -3921,10 +3805,6 @@ msgstr "המשפחה הופעלה"
 #: 
 msgid "families"
 msgstr "משפחות"
-
-#: 
-msgid "Financial Settings"
-msgstr "הגדרות כספים"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3965,10 +3845,6 @@ msgstr "המאפיין בוטל בהצלחה."
 #: 
 msgid "The property could not be unassigned."
 msgstr "לא ניתן היה לבטל את שיוך המאפיין."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "טקסט לפני השם באימיילים/דוחות"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4211,10 +4087,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "הרשומה(ות) נוספה בהצלחה לקבוצה הנבחרת."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "להגדרת התאריך בבוחר התאריכים, כברירת מחדל: yyyy-mm-dd, בצרפתית: dd/mm/yyyy לדוגמה."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "להגדרת התאריך בבוחר התאריכים, כברירת מחדל: Y-m-d, בצרפתית: d/m/Y לדוגמה."
 
@@ -4301,10 +4173,6 @@ msgstr "מערב-צפון-מערב"
 #: 
 msgid "WSW"
 msgstr "מערב-דרום-מערב"
-
-#: 
-msgid "Search Family"
-msgstr "חיפוש משפחה"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4403,10 +4271,6 @@ msgid "Change Settings"
 msgstr "שינוי הגדרות"
 
 #: 
-msgid "Unknown Type"
-msgstr "סוג לא ידוע"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID עבור העגלה חייב להיות מספרי"
 
@@ -4425,14 +4289,6 @@ msgstr "חיפוש אנשים"
 #: 
 msgid "Maximum number of People"
 msgstr "מספר מקסימלי של אנשים"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "שדה בו רשום אב הווידוי, חייב להיות אנשים מסוג קבוצה"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "שדה בו נשמר הווידוי האחרון, חייב להיות מסוג תאריך"
 
 #: 
 msgid "People Reports"
@@ -4685,18 +4541,6 @@ msgid "Event not found"
 msgstr "לא נמצא אירוע"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "זמן תפוגת הפעלה בשניות\n"
-"הגדר לאפס כדי לבטל תפוגת הפעלות."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "כמות מינימלית שסיסמה חדשה חייבת להיות שונה מהישנה (# תווים ששונו)\n"
-"הגדר לאפס כדי לבטל תכונה זו"
-
-#: 
 msgid "Verify People"
 msgstr "אמת אנשים"
 
@@ -4768,10 +4612,6 @@ msgstr "אירועים שלא סומנו"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "שם משפחה, שם פרטי שם אמצעי"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "שלח הודעת דוא\"ל למשתמשים כאשר החשבון שלהם נמחק"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7740,10 +7580,6 @@ msgid "selected family has no coordinates"
 msgstr "למשפחה שנבחרה אין קואורדינטות"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
-
-#: 
 msgid "Active Groups"
 msgstr "קבוצות פעילות"
 
@@ -8222,10 +8058,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "בחרו כיצד תרצו לאכלס את מסד הנתונים. תמיד תוכלו להשתמש בשיטה אחרת מאוחר יותר."
 
 #: 
-msgid "Church Info"
-msgstr "פרטי הקהילה"
-
-#: 
 msgid "Clear all"
 msgstr "ניקוי הכל"
 
@@ -8258,14 +8090,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "השלימו אלה בכל סדר שתרצו כדי להכין את ChurchCRM לקהילה שלכם."
 
 #: 
-msgid "Confession"
-msgstr "וידוי"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "הגדרת הגדרות והעדפות מערכת כלליות"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "הגדרת הגדרות קבוצה, תפקידים ומאפיינים"
 
@@ -8276,10 +8100,6 @@ msgstr "אשרו את הסיסמה החדשה שלכם"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "חברו שרת SMTP כדי ש-ChurchCRM יוכל לשלוח דוא\"ל"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "המרת רשומות בודדות ליחידות משפחתיות"
 
 #: 
 msgid "Convert to Family"
@@ -8316,10 +8136,6 @@ msgstr "אדם נוכחי"
 #: 
 msgid "Database Reset"
 msgstr "איפוס מסד נתונים"
-
-#: 
-msgid "Default / Notes"
-msgstr "ברירת מחדל / הערות"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9940,10 +9756,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "אפשר שדרוגי מערכת לגרסאות המסומנות כ-'pre release' ב-GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "אפשר גישה לא מאומתת לאירועי לוח שנה באמצעות כתובות HTML, ICS ו-JSON ציבוריות. נדרש לשיתוף לוחות שנה עם אפליקציות חיצוניות."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "אפשר למבקרים ליצור רשומת משפחה משלהם דרך דף ההרשמה העצמי"
 
@@ -10106,24 +9918,12 @@ msgid "Enable Email"
 msgstr "אפשר דואר אלקטרוני"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "אפשר תפריט אירועים"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "אפשר API לוח שנה חיצוני"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "אפשר שליחת דוא\"ל מ-ChurchCRM. נדרש לאיפוס סיסמה, התראות וקישורי דוא\"ל."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "אפשר אם שרת ה-SMTP שלך דורש שם משתמש וסיסמה"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "אפשר או השבת את מודול בית הספר לשבת ותפריט הסרגל הצדי."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10221,10 +10021,6 @@ msgstr "הסתר קו רוחב/קו אורך"
 #: 
 msgid "How it works"
 msgstr "כיצד זה עובד"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "כמה צ'קים להדפיס בכל עמוד שובר הפקדה"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10384,10 +10180,6 @@ msgid "Privacy Note"
 msgstr "הערת פרטיות"
 
 #: 
-msgid "Quick Settings"
-msgstr "הגדרות מהירות"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "אימות SMTP"
 
@@ -10414,10 +10206,6 @@ msgstr "הגדרה"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "הצג פירוט של כינויי שטרות בדוח פתק ההפקדה"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "הצג או הסתר את תפריט האירועים בניווט הראשי."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10831,10 +10619,6 @@ msgstr "אם אתה מבחין בתווים מקולקלים, ישויות HTML 
 #: 
 msgid "Indigo"
 msgstr "אינדיגו"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
 
 #: 
 msgid "Language and regional settings"
@@ -12611,10 +12395,6 @@ msgstr "כל היום"
 #: 
 msgid "All Roles"
 msgstr "כל התפקידים"
-
-#: 
-msgid "All System Settings"
-msgstr "כל הגדרות המערכת"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15085,10 +14865,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "רשימת מקורות מופרדים ברווח המורשים להטמיע את דף לוח השנה ב-iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "מקורות מופרדים ברווח המורשים להטמיע את דף לוח השנה ב-iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "קבוצת בית ספר ראשון לא ניתנת לשינוי, רק בשני המקרים הבאים"
 
@@ -15429,10 +15205,6 @@ msgid "ChurchCRM version"
 msgstr "גרסת ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "רמת איסוף"
-
-#: 
 msgid "Count unique installs"
 msgstr "ספור התקנות ייחודיות"
 
@@ -15487,14 +15259,6 @@ msgstr "עדכון ההתחייבות נכשל"
 #: 
 msgid "Financial data"
 msgstr "נתונים פיננסיים"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "מלא — כל האמור לעיל בתוספת צפיות בדפים"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "מלא — צפיות בדפים, אזהרות, שגיאות וחריגות JS"
 
 #: 
 msgid "Fund Summary"
@@ -15573,10 +15337,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "הסכום שאינו ניתן לניכוי אינו יכול לעלות על סכום הקרן"
 
 #: 
-msgid "None (disabled)"
-msgstr "ללא (מושבת)"
-
-#: 
 msgid "Overpaid"
 msgstr "שולם יתר"
 
@@ -15637,10 +15397,6 @@ msgid "Select a fund"
 msgstr "בחר קרן"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "שלח לי הודעת יום הולדת לדוגמה"
-
-#: 
 msgid "Sending to"
 msgstr "שולח אל"
 
@@ -15695,10 +15451,6 @@ msgstr "מאחלים לך יום הולדת נפלא!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "לחשבונך אין כתובת דוא\"ל רשומה. הוסף כתובת לפרופיל שלך כדי לשלוח הודעת דוגמה."
-
-#: 
-msgid "errors+"
-msgstr "שגיאות+"
 
 #: 
 msgid "full only"
@@ -16661,10 +16413,6 @@ msgid "Not a valid date of death"
 msgstr "תאריך פטירה אינו תקין"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "מספר הימים שיש למשתמשים כדי להירשם לאימות דו-שלבי (2FA) לאחר שהוא הופך לחובה. הגדר ל-0 כדי לאכוף מיידית. קיצור תקופת חסד פעילה עלול לחסום משתמשים באופן מיידי."
-
-#: 
 msgid "Offline"
 msgstr "לא מקוון"
 
@@ -16989,14 +16737,6 @@ msgid "Download CSV"
 msgstr "הורד CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "הפוך או כבה את מודול הפיננסים ותפריט הסרגל הצדדי."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "הפוך או כבה את מודול הגיוס כספים."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "נכשל בהסרת לוגו כנסיה"
 
@@ -17141,10 +16881,6 @@ msgid "Access Control & Security"
 msgstr "בקרת גישה וביטחון"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "אפשר רישום תשלומים שלא ניתן להפחית מיסים (למשל, מכירת סחורה)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)"
 
@@ -17197,46 +16933,6 @@ msgid "Feature Toggles"
 msgstr "החלפות תכונות"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "החלפות תכונות שולטות באילו מודולים ותכונות זמינים ב-ChurchCRM. שינויים נכנסים לתוקף מיד."
-
-#: 
-msgid "Finance Features"
-msgstr "תכונות במימון"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "כלול כתובות בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "כלול אירועי לוח שנה בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "כלול תכונות משפחה מותאמות בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "כלול הפקדות בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "כלול משפחות בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "כלול קבוצות בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "כלול תשלומים בחיפוש גלובלי מהיר"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "כלול אנשים בחיפוש גלובלי מהיר"
-
-#: 
 msgid "Invalid setting"
 msgstr "הגדרה לא חוקית"
 
@@ -17245,16 +16941,8 @@ msgid "Lost Password Link"
 msgstr "קישור סיסמה שנשכחה"
 
 #: 
-msgid "Manage All Features"
-msgstr "נהל את כל התכונות"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "החלפה ראשית לשליחת דואר אלקטרוני. נדרש לאיפוס סיסמה והודעות"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "תשלומים שלא ניתן להפחית"
 
 #: 
 msgid "Primary Modules"
@@ -17265,20 +16953,12 @@ msgid "Public Calendar API"
 msgstr "Calendar API ציבורי"
 
 #: 
-msgid "Saved"
-msgstr "נשמר"
-
-#: 
 msgid "Search Families"
 msgstr "משפחות חיפוש"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "חיפוש בתכונות משפחה מותאמות"
-
-#: 
-msgid "Search Settings"
-msgstr "הגדרות חיפוש"
 
 #: 
 msgid "Self-Registration"
@@ -17495,14 +17175,6 @@ msgstr "נמעני התראות"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "אנשים שיקבלו הודעה כאשר נוספת משפחה או אדם חדשים"
-
-#: 
-msgid "Person initials style"
-msgstr "סגנון ראשי התיבות של האדם"
-
-#: 
-msgid "Person name display style"
-msgstr "סגנון הצגת שם האדם"
 
 #: 
 msgid "Spouse Role"
@@ -22531,10 +22203,6 @@ msgid "This email batch was queued by another user"
 msgstr "אצוות הדוא״ל הזו הוכנסה לתור על ידי משתמש אחר"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "אחרי הייבוא אפשר להשתמש באיפוס מסד הנתונים בלוח הניהול כדי לנקות את כל הנתונים ולהתחיל מחדש. תצורת היישום תישמר."
-
-#: 
 msgid "Importing demo data..."
 msgstr "מייבא נתוני הדגמה..."
 
@@ -23515,30 +23183,6 @@ msgid "Download PDF"
 msgstr "הורדת PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "תקופת נעילה בדקות\n"
-"חשבון נעול נפתח מעצמו אחרי מספר הדקות הזה. ניסיונות התחברות כושלים מכתובת IP אחת נספרים באותה תקופה."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "מספר מרבי של התחברויות כושלות מכתובת IP אחת\n"
-"התחברויות כושלות ובקשות לאיפוס סיסמה מכתובת IP אחת נספרות למגבלה זו בתוך תקופת הנעילה. כשמגיעים אליה, ההתחברות מכתובת זו נדחית עד סוף התקופה.\n"
-"הגדירו אפס כדי לבטל את התכונה, למשל כשכולם מגיעים ל-ChurchCRM דרך כתובת מתווך אחת."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "מספר מרבי של התחברויות כושלות לפני נעילת חשבון משתמש.\n"
-"חשבון נעול נפתח מעצמו אחרי תקופת הנעילה, או מוקדם יותר כשמנהל מאפס את ההתחברויות הכושלות.\n"
-"התכונה מסייעת להגן מפני ניחוש סיסמאות אוטומטי.\n"
-"הגדירו אפס כדי לבטל את התכונה."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "דקות עד שהוא נפתח מעצמו: %d"
 
@@ -23867,10 +23511,6 @@ msgid "PDF Output"
 msgstr "פלט PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "מצב טיפול ב-PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "שורת שאלות"
 
@@ -23907,10 +23547,6 @@ msgid "Greeting"
 msgstr "ברכה"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "ברכת המכתב והחתימה"
-
-#: 
 msgid "Letterhead"
 msgstr "כותרת מכתב"
 
@@ -23933,10 +23569,6 @@ msgstr "הגדירו את כותרת המכתב שמכתבי PDF מדפיסים"
 #: 
 msgid "Using the church name and address"
 msgstr "בשימוש בשם הקהילה ובכתובת"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "בשימוש בנתיב כותרת המכתב שהוגדר בהגדרות המערכת"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26146,14 +25778,6 @@ msgstr "תשלומים לפי קרן"
 msgid "Unknown Fund"
 msgstr "קרן לא ידועה"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת, ולאחר מכן נסו שוב."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26171,18 +25795,6 @@ msgstr "דרישת מספר צ'ק בעת רישום תשלומים בצ'ק בר�
 #: 
 msgid "Require check number on check payments"
 msgstr "דרישת מספר צ'ק בתשלומים בצ'ק"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "השדרוג לא התחיל, ולכן דבר לא השתנה."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "לא ניתן להריץ שדרוג זה על מסד הנתונים שלך."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "שרת מסד הנתונים שלך (%1$s %2$s) ישן יותר ממה ש-ChurchCRM תומך בו (MySQL %3$s או MariaDB %4$s ואילך)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26341,22 +25953,6 @@ msgid "Database engine and major/minor version"
 msgstr "מנוע מסד הנתונים וגרסה ראשית/משנית"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "שגיאות — סטטיסטיקות התקנה, אזהרות, שגיאות וחריגות JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "לעזור לנו למצוא ולתקן בעיות?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "התקנה משתפת סטטיסטיקות מינימליות של התקנה ושדרוג. שגיאות מוסיפה אזהרות ודוחות שגיאה. מלא מוסיפה צפיות בדפים. ללא שולחת רק התקנות ושדרוגים שנכשלו."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "התקנה — סטטיסטיקות התקנה ושדרוג (ברירת מחדל)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "תוצאות התקנה ושדרוג, הגרסה הקודמת בשדרוגים ודיווח יומי בזמן השימוש"
 
@@ -26365,68 +25961,12 @@ msgid "Installation profile"
 msgstr "פרופיל התקנה"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "אזור ושפה (שגיאות ומלא)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "לעולם לא משותפים: רשומות חברים, תרומות או רשומות אחרות של הקהילה, שם הקהילה שלך, כתובת האתר או שם השרת שלך, או כתובות דוא\"ל. המדינה שלך היא זו שבהגדרות הקהילה, ולא נקבעת לפי הרשת שלך."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "משפחת מערכת ההפעלה (שגיאות ומלא)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "גרסת PHP (שגיאות ומלא)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "ראו בדיוק מה משותף, או שנו את בחירתכם, בניהול → טלמטריה."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "הפרדה בין התקנות ייצור, הדגמה ובדיקה"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "לשתף סטטיסטיקות התקנה אנונימיות?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "שיתוף דוחות שגיאות ושימוש"
-
-#: 
-msgid "Share install statistics"
-msgstr "שיתוף סטטיסטיקות התקנה"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "משותפים בנוסף: אזהרות, פרטי שגיאות ואילו דפים נפתחים."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "משותף: ש-ChurchCRM הותקנה או שודרגה והאם זה הצליח, דיווח פעם ביום בזמן השימוש, מספר הגרסה, המדינה שלך וסוג מסד הנתונים. מזהה התקנה אקראי סופר כל התקנה פעם אחת."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "הבנת תאימות מסדי נתונים"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "הבחירה נשאלת פעם אחת. אפשר לשנות אותה בכל עת. עם לא תודה, מדווחת רק התקנה או שדרוג שנכשלו."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "הנתונים שלך שייכים לך. התקנה משתפת רק תוצאות התקנה ושדרוג, מזהה התקנה, גרסת תוכנה, פרופיל התקנה, המדינה שהוגדרה ומנוע מסד הנתונים עם גרסה ראשית/משנית. שגיאות מוסיפה אזהרות ופרטי שגיאות. מלא מוסיפה צפיות בדפים. ללא שולחת רק התקנות ושדרוגים שנכשלו. אף רמה לא שולחת את כתובת האתר או שם השרת שלך. התקנות בדיקה לא שולחות דבר. הטלמטריה נשלחת ל-PostHog בארצות הברית."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "הנתונים שלך שייכים לך. הדיווח עוסק בתוכנה, ולעולם לא בקהילה שלך או באנשיה."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "הנתונים שלך שייכים לך. כדי לספור התקנות, ChurchCRM מדווחת שהיא הותקנה או שודרגה והאם זה הצליח, שולחת דיווח פעם ביום בזמן השימוש, וכן את מספר הגרסה, המדינה שלך, סוג מסד הנתונים ומזהה התקנה אקראי. היא לעולם לא מדווחת על רשומות חברים, תרומות או רשומות אחרות של הקהילה, שם הקהילה שלך, כתובת האתר או שם השרת שלך, או כתובות דוא\"ל. אפשר לכבות זאת בכל עת בניהול → טלמטריה; התקנה או שדרוג שנכשלו עדיין מדווחים. אזהרות, פרטי שגיאות וצפיות בדפים משותפים רק אם תבחרו בכך."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28025,10 +27565,6 @@ msgid "How the congregation is made up"
 msgstr "כיצד מורכבת הקהילה"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "אני מבין שמסד נתונים זה אינו נתמך ושדרוגים ייחסמו"
-
-#: 
 msgid "Insights"
 msgstr "תובנות"
 
@@ -28051,10 +27587,6 @@ msgstr "בדיקת השלמות נכשלה"
 #: 
 msgid "Integrity check passed"
 msgstr "בדיקת השלמות עברה"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "אסימון CSRF לא חוקי"
 
 #: 
 msgid "Last %d days"
@@ -28099,10 +27631,6 @@ msgstr "פותח את לוח הבקרה של הכספים לטווח זה. בח�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 הימים האחרונים ו-%d הימים הבאים"
-
-#: 
-msgid "People without a family: %d"
-msgstr "אנשים ללא משפחה: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28233,10 +27761,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "לוח הבקרה הזה הוא כעת לוח הבקרה הראשי שלכם."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "מסד נתונים זה אינו מקבל עוד תיקוני אבטחה מהספק שלו."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "כאן אנשים יפתחו את ChurchCRM. שנו זאת רק אם ישתמשו בכתובת שונה מעמוד זה."
 
@@ -28249,28 +27773,12 @@ msgid "Total deposited"
 msgstr "סך שהופקד"
 
 #: 
-msgid "Unsupported database server"
-msgstr "שרת מסד נתונים לא נתמך"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "שדרוגים ייחסמו עד שמסד הנתונים יועבר לגרסה נתמכת."
-
-#: 
 msgid "Usually 3306."
 msgstr "בדרך כלל 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "אנו ממליצים לבקש מהמארח שלכם לעבור לפני ההתקנה, כשאין עדיין נתונים להעביר. MariaDB 10.11 היא יעד מתאים."
-
-#: 
 msgid "Web address"
 msgstr "כתובת אינטרנט"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "ניתן להתקין כעת: ChurchCRM יותקן ויפעל."
 
 #: 
 msgid "Your main dashboard"
@@ -28289,4 +27797,476 @@ msgstr "ועוד {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "ועוד {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "מסד הנתונים אינו נתמך"
+
+#: 
+msgid "Deactivated"
+msgstr "הושבת"
+
+#: 
+msgid "How to find the log"
+msgstr "כיצד למצוא את היומן"
+
+#: 
+msgid "How to install server locales"
+msgstr "כיצד להתקין את הגדרות האזור של השרת"
+
+#: 
+msgid "Last edited"
+msgstr "נערך לאחרונה"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "לא מותקן בשרת, וגם לא מותקנת הגדרת אזור חלופית באנגלית, לכן הממשק יוצג באנגלית."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "יומן ChurchCRM מתעד את הסיבה הספציפית. הסר שמות לפני השיתוף."
+
+#: 
+msgid "Verify now"
+msgstr "אמת עכשיו"
+
+#: 
+msgid "View Giving History"
+msgstr "הצג היסטוריית תרומה"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d אנשים נוספו בהצלחה; %d אנשים לא ניתן היה להוסיף והם נשארים בסל."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d אנשים לא ניתן היה להוסיף והם נשארים בסל שלכם."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "מנהלים יראו אזהרה זו בכל עמוד עד שמסד הנתונים יועבר לגרסה שעדיין מקבלת תיקוני אבטחה. המעבר עכשיו, כשיש מעט נתונים, הוא הקל ביותר."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "מנהלים יתחברו מעתה ללוח הבקרה הרגיל. לוח בקרת ההגדרה לא ייפתח עוד בעת ההתחברות."
+
+#: 
+msgid "Database security risk"
+msgstr "סיכון אבטחה במסד הנתונים"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "מצב ההדגמה מפעיל גם סטטיסטיקות שימוש אנונימיות (PostHog), כדי שנוכל לראות איך אנשים חוקרים את ChurchCRM. התחלה מחדש מכבה אותה."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "הגדרות הדוא\"ל נשמרו. התחברות החברים מופעלת כעת, כך שחברים יכולים להתחבר לפורטל החברים עם הדוא\"ל שלהם."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "הזינו את פרטי הכנסייה שלכם, הוסיפו את האנשים שלכם והזמינו את הצוות שלכם."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "כל מה שכאן הוא נתוני דוגמה. התחילו מחדש לפני שתזינו את המידע האמיתי של הכנסייה שלכם."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "כל מה שכאן הוא נתוני דוגמה. כשתהיו מוכנים להשתמש ב-ChurchCRM עבור הכנסייה שלכם, התחילו מחדש: זה מוחק את נתוני ההדגמה ואת כל ההגדרות כדי שתוכלו להתחיל עם שלכם."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "גלו את ChurchCRM עם נתוני הדגמה, או הגדירו אותו עבור הכנסייה שלכם"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "הוספת האדם לקבוצה נכשלה"
+
+#: 
+msgid "Finish setup"
+msgstr "סיום ההגדרה"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "במשך מספר ימים זה לאחר ההתקנה, מנהלים מתחברים ללוח בקרת ההגדרה. הגדירו 0 כדי לבטל זאת."
+
+#: 
+msgid "Group Assignment"
+msgstr "שיוך קבוצות"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "פנימי: מנהל בחר ב'סיום ההגדרה' בלוח בקרת ההגדרה. אין לערוך ידנית."
+
+#: 
+msgid "Keep exploring"
+msgstr "המשיכו לחקור"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "עוברים משרת ChurchCRM אחר? שחזרו גיבוי שנוצר שם. זה מחליף את כל מה שיש בהתקנה זו."
+
+#: 
+msgid "Ready for your church"
+msgstr "מוכן לכנסייה שלכם"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "נסו שוב שיוך קבוצות"
+
+#: 
+msgid "Retry group assignments"
+msgstr "נסו שוב את שיוכי הקבוצות"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "בחרו קבוצה אחת או יותר עבור אדם זה."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "בחרו את הקבוצות שברצונכם לנסות שוב."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "הגדירו את הכנסייה שלכם"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "לוח בקרת ההגדרה"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "'התחלה מחדש' בבאנר ההדגמה, או 'איפוס מסד הנתונים' בלוח הבקרה למנהל, מוחקים את נתוני ההדגמה ואת כל ההגדרות ומחזירים את ChurchCRM להתקנה חדשה."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "התחילו מחדש תחילה, ואז הגדירו את ChurchCRM עם פרטי הכנסייה שלכם."
+
+#: 
+msgid "Start setup"
+msgstr "התחלת הגדרה"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "נתוני ההדגמה נעלמו. התחברו באמצעות חשבון מנהל המערכת המוגדר כברירת מחדל כדי להגדיר את הכנסייה שלכם."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "האדם נשמר, אך שיוך אחד או יותר לקבוצות נכשל. בחרו את הקבוצות שלהלן ונסו שוב."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "האדם נשמר, אך שיוך אחד או יותר לקבוצות נכשל. הקבוצות שלא הצליחו מסומנות שלהלן. בדקו אותן ושמרו שוב כדי לנסות שוב."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "זה מוחק את נתוני ההדגמה ואת כל ההגדרות, ומחזיר את ChurchCRM להתקנה חדשה."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "תתחברו שוב באמצעות חשבון מנהל המערכת המוגדר כברירת מחדל ותזינו את פרטי הכנסייה שלכם."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "אתם חוקרים את ChurchCRM עם נתוני הדגמה."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "אתם חוקרים נתוני הדגמה"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "פרטי הכנסייה שלכם נשמרו. בצעו את השלבים הבאים."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "מסד הנתונים שלכם (%1$s %2$s) מהווה סיכון אבטחה: הספק שלו כבר אינו מפרסם תיקוני אבטחה עבור גרסה זו. ChurchCRM ממשיך לעבוד, אך בקשו מהמארח שלכם לעבור ל-MariaDB %3$s+ או MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "צ'ק-אין יומי במהלך השימוש, גרסאות תוכנה ומסד נתונים, מיקום אזורי, מדינה, סוג התקנה ומזהה התקנה אקראי עוזרים לספור התקנות פעילות."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "חשבונות וכניסה"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "שולח גם אילו דפים בשימוש."
+
+#: 
+msgid "Areas"
+msgstr "אזורים"
+
+#: 
+msgid "Church & System"
+msgstr "מוסד ומערכת"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "עיר או יישוב שבו מונפקות הקבלות, מודפס על קבלות רשמיות. השאירו ריק כדי להשתמש בעיר המוסד."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "סיום לפני שם החותם, לדוגמה בכבוד רב."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "סיום המודפס לפני החותם על קבלות רשמיות."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "סיסמאות מופרדות בפסיקים שאסור לאיש להשתמש בהן."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "מכתב אישור"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "ליצור משפחה עבור אדם זה? הכתובת וטלפון הבית שלו עוברים למשפחה החדשה."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "ימים שיש למשתמשים להגדיר אימות דו-שלבי לאחר שהוא הופך לנדרש. 0 אוכף אותו מיד. קיצור תקופת חסד פעילה עלול לנעול משתמשים בחוץ."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "הפקדות ותשלומים"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "סיסמאות אסורות"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "כתב ויתור %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "שלח דוא\"ל למשתמשים כאשר החשבון שלהם נמחק"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "כל דפי ההגדרות במקום אחד, וההגדרות שחלות על כל המערכת"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "כניסות כושלות לפני נעילה"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "כניסות כושלות לפי כתובת IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "תפקידי משפחה הנחשבים לילדים בספרייה."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "תפקידי משפחה הנחשבים לראש משק בית בספרייה ובכניסת חברים."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "תפקידי משפחה הנחשבים לבן/בת זוג בספרייה ובכניסת חברים."
+
+#: 
+msgid "Finance Settings"
+msgstr "הגדרות כספים"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "תקופת חסד (ימים)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "הסתר מינויים לניוזלטר בעורך המשפחה."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "הסתר את שדה תאריך החבר בעורך האנשים."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "הסתר את שדה תאריך החתונה בעורך המשפחה."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "כמה זמן חשבון נעול נשאר נעול. כניסות כושלות מכתובת IP אחת נספרות באותה תקופה."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "בכמה תווים סיסמה חדשה חייבת להיות שונה מהישנה. 0 מכבה זאת."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "בניהול → טלמטריה, הפעילו את שתף אילו דפים בשימוש כדי לבחור מלא. מלא שולח גם צפיות בדפים."
+
+#: 
+msgid "Initials Format"
+msgstr "תבנית ראשי תיבות"
+
+#: 
+msgid "Letter Text %d"
+msgstr "טקסט מכתב %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "תקופת נעילה (דקות)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "נועל חשבון לאחר מספר זה של כניסות כושלות ברצף. הנעילה משתחררת לאחר תקופת הנעילה, או כאשר מנהל מערכת מאפס אותה. 0 מכבה את הנעילה."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "ניהול פורטל החברים"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "חברים יכולים להיכנס עם הדוא\"ל שלהם."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "חברים עדיין אינם יכולים להיכנס."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "מינימום תווים שהשתנו"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "אורך סיסמה מינימלי"
+
+#: 
+msgid "Name Format"
+msgstr "תבנית שם"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "שם המודפס מתחת לסיום של מכתבים ודוא\"ל"
+
+#: 
+msgid "No Payments Text"
+msgstr "טקסט אין תשלומים"
+
+#: 
+msgid "No Pledge Text"
+msgstr "טקסט אין התחייבות"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "אין דרגה ששולחת אנשים, תורמים, נתינה, תוכן, פרטי קשר של המוסד, כתובת האינטרנט או שם השרת שלכם."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "אין דרגה ששולחת את כתובת האינטרנט או שם השרת שלכם. התקנות בדיקה אינן שולחות דבר. הטלמטריה נשלחת ל-PostHog בארצות הברית."
+
+#: 
+msgid "OS family"
+msgstr "משפחת מערכת הפעלה"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "פסקת הפתיחה של מכתב התזכורת להתחייבות."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "פסקה המזמינה שאלות בדוח הנתינה."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "פסקה המזמינה שאלות במכתב למי שלא נתנו."
+
+#: 
+msgid "Passwords"
+msgstr "סיסמאות"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "מודפס אחרי טווח התאריכים בשורת הפתיחה של המכתב למי שלא נתנו."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "מודפס ראשון בדוח הנתינה, ואחריו טווח התאריכים."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "מודפס כאשר למשפחה אין תשלומים רשומים."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "מודפס כאשר למשפחה אין התחייבות רשומה."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "מסרב לכניסה מכתובת IP אחת למשך תקופת הנעילה לאחר מספר זה של כניסות כושלות או איפוסי סיסמה. 0 מכבה זאת, לדוגמה כאשר כולם מתחברים דרך פרוקסי אחד."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "דרוש אימות דו-שלבי"
+
+#: 
+msgid "Security Settings"
+msgstr "הגדרות אבטחה"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "שולח דוחות שגיאה, אירועי התקנה/שדרוג ומידע מערכת כדי שניתן יהיה לתקן בעיות. ללא צפיות בדפים, ללא נתוני מוסד."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "פסק זמן של הפעלה (שניות)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "שתף אילו דפים בשימוש"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "כניסה ואבטחה"
+
+#: 
+msgid "Signature Storage"
+msgstr "אחסון חתימה"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "מוציא משתמש לאחר מספר זה של שניות ללא פעילות. 0 לעולם אינו מוציא."
+
+#: 
+msgid "System-wide"
+msgstr "בכל המערכת"
+
+#: 
+msgid "Text After Dates"
+msgstr "טקסט אחרי תאריכים"
+
+#: 
+msgid "Text Messages"
+msgstr "הודעות טקסט"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "פסקת התודה של דוח הנתינה."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "פסקת התודה של המכתב למי שלא נתנו."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ההמרה נכשלה. דבר לא השתנה."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "משתמש בקובץ נייר מכתבים שנשמר לפני שהתווספו העלאות. העלו נייר מכתבים כדי להחליף אותו."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "אזהרה אחרי (שעות)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "מילה לפני השם במכתבים ובדוא\"ל, לדוגמה יקר."
 

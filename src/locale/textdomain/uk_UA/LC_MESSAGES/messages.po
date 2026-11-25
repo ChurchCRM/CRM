@@ -368,18 +368,6 @@ msgid "(No assigned family)"
 msgstr "(Сім'я відсутня)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Перетворити людей на сім’ї"
-
-#: 
-msgid "Convert Next"
-msgstr "Перетворити далі"
-
-#: 
-msgid "Convert All"
-msgstr "Перетворити все"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Номер квитанції депозиту"
 
@@ -1607,10 +1595,6 @@ msgid "Permission"
 msgstr "Дозвіл"
 
 #: 
-msgid "System Settings"
-msgstr "Налаштування системи"
-
-#: 
 msgid "User Editor"
 msgstr "Редактор користувача"
 
@@ -2096,24 +2080,12 @@ msgid "Localization"
 msgstr "Локалізація"
 
 #: 
-msgid "Setting saved"
-msgstr "Налаштування збережено"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Редагуйте налаштування JSON"
-
-#: 
 msgid "False"
 msgstr "помилковий"
 
 #: 
 msgid "True"
 msgstr "Правда"
-
-#: 
-msgid "Edit Settings"
-msgstr "Редагувати налаштування"
 
 #: 
 msgid "Functions"
@@ -2231,33 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включіть лише ці класифікації в каталог, розділені комами"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Це номери сімейних ролей, призначених головою будинку"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Це номери сімейних ролей, позначені як чоловік / дружина"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Це номери сімейних ролей, позначені як дитячі"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Мінімальна довжина, яку користувач може встановити для свого пароля"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Список заборонених (занадто очевидних) паролів, розділений комами."
-
-#: 
 msgid "Default City"
 msgstr "Місто за замовчуванням"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Стан за замовчуванням - Має бути двобуквене скорочення!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2280,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Перший місяць фінансового року"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Встановіть значення true, щоб вимкнути введення дати друга в редакторі особи. Встановіть значення false, щоб увімкнути введення дати друга в редакторі особи."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Встановіть значення true, щоб вимкнути керування підписками на розсилки в редакторі сімейства."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Встановіть значення true, щоб заборонити введення дати весілля в сімейному редакторі. Встановіть значення false, щоб увімкнути введення дати весілля у сімейному редакторі."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Кількість чеків для звіту про депозит"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Одиниця вимірювання відстані, миль або км."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Увімкнути платежі, що не підлягають вирахуванню"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage для верхнього рядка податкового звіту. Дати будуть додані до кінця цього рядка."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Запустіть нижній рядок податкового звіту."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Підписувач податкової звітності"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Текст звіту-нагадування про обіцянки"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Підписант нагадування про обіцянки"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Текст звіту-нагадування про обіцянки - немає запису про обіцянку"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Текст звіту-нагадування про обіцянки - немає записів про платежі"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage для підтвердження та виправлення інформації про базу даних"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Підписувач звіту про підтвердження та виправлення інформації в базі даних"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage для звіту каталогу"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3796,10 +3687,6 @@ msgstr "Архів резервної копії не містить бази д
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Зробіть введені користувачем поштові індекси ВИСОКИМИ під час збереження в базі даних."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Використовується для закінчення листа перед підписувачем"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3904,10 +3791,6 @@ msgid "Failed"
 msgstr "Помилка"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Номер церковного чекового рахунку"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Деактивував сім’ю"
@@ -3920,10 +3803,6 @@ msgstr "Активізував сім’ю"
 #: 
 msgid "families"
 msgstr "сім'ї"
-
-#: 
-msgid "Financial Settings"
-msgstr "Фінансові налаштування"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3964,10 +3843,6 @@ msgstr "Властивість успішно не призначено."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Власність не може бути відмінена."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Текст перед назвою в електронних листах / звітах"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4211,10 +4086,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "записи успішно додано до вибраної групи."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Для визначення дати в засобі вибору дати за замовчуванням: рррр-мм-дд, французькою мовою: дд / мм / рррр, наприклад."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Для визначення дати в засобі вибору дати за замовчуванням: Y-m-d, французькою мовою: d / m / Y, наприклад."
 
@@ -4301,10 +4172,6 @@ msgstr "ПнЗ"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Пошук сім’ї"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4403,10 +4270,6 @@ msgid "Change Settings"
 msgstr "Змінити налаштування"
 
 #: 
-msgid "Unknown Type"
-msgstr "Невідомий тип"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID для кошика має бути цифровим"
 
@@ -4425,14 +4288,6 @@ msgstr "Шукати людей"
 #: 
 msgid "Maximum number of People"
 msgstr "Максимальна кількість людей"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Поле, де вказаний Батько Сповіді, повинно бути людьми групового типу"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Поле, де зберігається останнє Сповідь, має бути типом дати"
 
 #: 
 msgid "People Reports"
@@ -4686,18 +4541,6 @@ msgid "Event not found"
 msgstr "Подія не знайдена"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Тривалість очікування сеансу в секундах\n"
-"Встановіть нуль, щоб вимкнути час очікування сеансу."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Мінімальна кількість, яку новий пароль повинен відрізнятися від старого (змінено кількість символів)\n"
-"Встановіть нуль, щоб вимкнути цю функцію"
-
-#: 
 msgid "Verify People"
 msgstr "Перевірити людей"
 
@@ -4773,10 +4616,6 @@ msgstr "Незакріплені події"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Прізвище, Ім'я Середнє Ім'я"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Надішліть повідомлення електронною поштою, коли користувачі будуть видалені"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7758,10 +7597,6 @@ msgid "selected family has no coordinates"
 msgstr "обрана сім'я не має координат"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Вимагати від усіх користувачів реєстрації в двофакторній автентифікації"
-
-#: 
 msgid "Active Groups"
 msgstr "Активні групи"
 
@@ -8242,10 +8077,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Виберіть, як ви хотіли б заповнити свою базу даних. Ви завжди можете використовувати інший метод пізніше."
 
 #: 
-msgid "Church Info"
-msgstr "Інформація про церкву"
-
-#: 
 msgid "Clear all"
 msgstr "Очистити все"
 
@@ -8278,14 +8109,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Виконайте їх у будь-якому порядку, щоб підготувати ChurchCRM для вашої парафії."
 
 #: 
-msgid "Confession"
-msgstr "Сповідь"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Налаштувати глобальні параметри системи"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Налаштувати параметри групи, ролі та властивості"
 
@@ -8296,10 +8119,6 @@ msgstr "Підтвердіть новий пароль"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Підключіть SMTP-сервер для надсилання листів з ChurchCRM"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Перетворити окремі записи на сімейні одиниці"
 
 #: 
 msgid "Convert to Family"
@@ -8336,10 +8155,6 @@ msgstr "Поточна людина"
 #: 
 msgid "Database Reset"
 msgstr "Скидання бази даних"
-
-#: 
-msgid "Default / Notes"
-msgstr "За замовчуванням / Нотатки"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9960,10 +9775,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Дозволити оновлення системи до версій, позначених як 'pre release' на GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Дозволити неавтентифікований доступ до подій календаря через публічні HTML, ICS та JSON URL-адреси. Необхідно для спільного використання календарів із зовнішніми програмами."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Дозволити відвідувачам створювати власний запис сім'ї через сторінку самореєстрації"
 
@@ -10126,24 +9937,12 @@ msgid "Enable Email"
 msgstr "Увімкнути електронну пошту"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Увімкнути меню подій"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Увімкнути зовнішній API календаря"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Увімкнути надсилання електронних листів із ChurchCRM. Необхідно для скидання паролю, сповіщень та посилань електронної пошти."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Увімкніть, якщо ваш SMTP-сервер вимагає ім'я користувача та пароль"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Увімкнути або вимкнути модуль Недільної школи та бічне меню."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10241,10 +10040,6 @@ msgstr "Приховати широту/довготу"
 #: 
 msgid "How it works"
 msgstr "Як це працює"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Скільки чеків друкувати на сторінці квитанції про депозит"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10404,10 +10199,6 @@ msgid "Privacy Note"
 msgstr "Примітка щодо конфіденційності"
 
 #: 
-msgid "Quick Settings"
-msgstr "Швидкі налаштування"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Автентифікація SMTP"
 
@@ -10434,10 +10225,6 @@ msgstr "Налаштування"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Показати розбивку номіналів банкнот у звіті про депозитний квиток"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Показати або приховати меню Заходи в головній навігації."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10851,10 +10638,6 @@ msgstr "Якщо ви помітили спотворені символи, HTML
 #: 
 msgid "Indigo"
 msgstr "Індиго"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Недійсне значення JSON — налаштування не збережено. Будь ласка, виправте та спробуйте ще раз."
 
 #: 
 msgid "Language and regional settings"
@@ -12633,10 +12416,6 @@ msgstr "Весь день"
 #: 
 msgid "All Roles"
 msgstr "Всі ролі"
-
-#: 
-msgid "All System Settings"
-msgstr "Усі налаштування системи"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15113,10 +14892,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Розділений пробілами список джерел, яким дозволено вбудовувати сторінку публічного зовнішнього календаря в <iframe> (CSP frame-ancestors). Значення за замовчуванням \"*\" дозволяє будь-яке джерело. Обмежте конкретними джерелами для більшої безпеки, напр. \"https://mysite.org https://embed.example.com\"."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Розділені пробілами джерела, яким дозволено вбудовувати сторінку публічного календаря в <iframe> (CSP frame-ancestors). Значення за замовчуванням \"*\" дозволяє будь-який сайт. Обмежте для більшої безпеки, напр. \"https://mysite.org\"."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Групу недільної школи не можна змінити, лише у двох цих випадках"
 
@@ -15457,10 +15232,6 @@ msgid "ChurchCRM version"
 msgstr "Версія ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Рівень збору"
-
-#: 
 msgid "Count unique installs"
 msgstr "Підраховувати унікальні інсталяції"
 
@@ -15515,14 +15286,6 @@ msgstr "Не вдалося оновити обітницю"
 #: 
 msgid "Financial data"
 msgstr "Фінансові дані"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Повний — усе вищезазначене плюс перегляди сторінок"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Повний — перегляди сторінок, попередження, помилки та виключення JS"
 
 #: 
 msgid "Fund Summary"
@@ -15601,10 +15364,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Сума без відрахування не може перевищувати суму фонду"
 
 #: 
-msgid "None (disabled)"
-msgstr "Вимкнено"
-
-#: 
 msgid "Overpaid"
 msgstr "Переплачено"
 
@@ -15665,10 +15424,6 @@ msgid "Select a fund"
 msgstr "Оберіть фонд"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Надіслати тестовий лист з днем народження собі"
-
-#: 
 msgid "Sending to"
 msgstr "Надсилається до"
 
@@ -15723,10 +15478,6 @@ msgstr "Бажаємо чудового дня народження!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "У вашому обліковому записі немає збереженої електронної адреси. Додайте її до свого профілю, щоб надіслати тест."
-
-#: 
-msgid "errors+"
-msgstr "помилки+"
 
 #: 
 msgid "full only"
@@ -16693,10 +16444,6 @@ msgid "Not a valid date of death"
 msgstr "Некоректна дата смерті"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Кількість днів, протягом яких користувачі повинні підключити двофакторну автентифікацію після того, як вона стане обов'язковою. Встановіть 0, щоб застосувати вимогу негайно. Скорочення активного пільгового періоду може негайно заблокувати доступ користувачам."
-
-#: 
 msgid "Offline"
 msgstr "Офлайн"
 
@@ -17021,14 +16768,6 @@ msgid "Download CSV"
 msgstr "Завантажити CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Увімкніть або вимкніть модуль Finance та меню сайдбару."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Увімкніть або вимкніть модуль Fundraiser."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Не вдалося видалити логотип церкви"
 
@@ -17173,10 +16912,6 @@ msgid "Access Control & Security"
 msgstr "Контроль доступу та безпека"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Дозволити запис платежів, що не підлягають відрахуванню від податків (наприклад, продаж товарів)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Дозволити неавторизований доступ до публічних подій (для вбудовування календарів)"
 
@@ -17229,46 +16964,6 @@ msgid "Feature Toggles"
 msgstr "Перемикачі функцій"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Перемикачі функцій контролюють, які модулі та функції доступні в ChurchCRM. Зміни набувають чинності негайно."
-
-#: 
-msgid "Finance Features"
-msgstr "Фінансові функції"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Включити адреси в швидкий глобальний пошук"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Включити події календаря в швидкий глобальний пошук"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Включити користувацькі властивості сім'ї в швидкий глобальний пошук"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Включити внески в швидкий глобальний пошук"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Включити сім'ї в швидкий глобальний пошук"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Включити групи в швидкий глобальний пошук"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Включити платежі в швидкий глобальний пошук"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Включити людей в швидкий глобальний пошук"
-
-#: 
 msgid "Invalid setting"
 msgstr "Недійсний параметр"
 
@@ -17277,16 +16972,8 @@ msgid "Lost Password Link"
 msgstr "Посилання на відновлення пароля"
 
 #: 
-msgid "Manage All Features"
-msgstr "Керувати всіма функціями"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Головний перемикач для відправлення листів. ПОТРІБЕН для скидання пароля та сповіщень"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Платежі, що не підлягають відрахуванню"
 
 #: 
 msgid "Primary Modules"
@@ -17297,20 +16984,12 @@ msgid "Public Calendar API"
 msgstr "Публічний API календаря"
 
 #: 
-msgid "Saved"
-msgstr "Збережено"
-
-#: 
 msgid "Search Families"
 msgstr "Пошук сімей"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Пошук користувацьких властивостей сім'ї"
-
-#: 
-msgid "Search Settings"
-msgstr "Пошук параметрів"
 
 #: 
 msgid "Self-Registration"
@@ -17527,14 +17206,6 @@ msgstr "Отримувачі сповіщень"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Кого сповіщати, коли додано нову родину або особу"
-
-#: 
-msgid "Person initials style"
-msgstr "Стиль ініціалів особи"
-
-#: 
-msgid "Person name display style"
-msgstr "Стиль відображення імені особи"
 
 #: 
 msgid "Spouse Role"
@@ -22589,10 +22260,6 @@ msgid "This email batch was queued by another user"
 msgstr "Цей пакет листів поставив у чергу інший користувач"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Після імпорту можна скинути базу даних на панелі адміністратора, щоб очистити всі дані й почати спочатку. Налаштування програми збережуться."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Імпорт демонстраційних даних..."
 
@@ -23573,30 +23240,6 @@ msgid "Download PDF"
 msgstr "Завантажити PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Період блокування в хвилинах\n"
-"Заблокований обліковий запис розблоковується сам через стільки хвилин. Невдалі входи з однієї IP-адреси підраховуються за той самий період."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Максимальна кількість невдалих входів з однієї IP-адреси\n"
-"Невдалі входи та запити на скидання пароля з однієї IP-адреси зараховуються до цієї межі протягом періоду блокування. Коли її досягнуто, вхід із цієї адреси відхиляється до кінця періоду.\n"
-"Установіть нуль, щоб вимкнути цю функцію, наприклад коли всі звертаються до ChurchCRM через одну проксі-адресу."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальна кількість невдалих входів, після якої обліковий запис користувача блокується.\n"
-"Заблокований обліковий запис розблоковується сам після періоду блокування або раніше, коли адміністратор скидає лічильник невдалих входів.\n"
-"Ця функція допомагає захиститися від автоматичного підбору пароля.\n"
-"Установіть нуль, щоб вимкнути цю функцію."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Хвилин до самостійного розблокування: %d"
 
@@ -23925,10 +23568,6 @@ msgid "PDF Output"
 msgstr "Виведення PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Режим обробки PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Рядок запитань"
 
@@ -23965,10 +23604,6 @@ msgid "Greeting"
 msgstr "Привітання"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Привітання та підпис листа"
-
-#: 
 msgid "Letterhead"
 msgstr "Фірмовий бланк"
 
@@ -23991,10 +23626,6 @@ msgstr "Установіть фірмовий бланк, який друкую�
 #: 
 msgid "Using the church name and address"
 msgstr "Використовується назва та адреса церкви"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Використовується шлях до фірмового бланка, заданий у параметрах системи"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26204,14 +25835,6 @@ msgstr "Платежі за фондами"
 msgid "Unknown Fund"
 msgstr "Невідомий фонд"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Попросіть хостинг-провайдера перевести базу даних на підтримувану версію, а потім спробуйте ще раз."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Попросіть хостинг-провайдера перевести базу даних на підтримувану версію."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26229,18 +25852,6 @@ msgstr "Вимагати номер чека під час запису плат
 #: 
 msgid "Require check number on check payments"
 msgstr "Вимагати номер чека для платежів чеком"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Оновлення не було запущено, тому нічого не змінилося."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Це оновлення неможливо виконати на вашій базі даних."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Ваш сервер бази даних (%1$s %2$s) старіший, ніж підтримує ChurchCRM (MySQL %3$s або MariaDB %4$s і новіші)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26403,22 +26014,6 @@ msgid "Database engine and major/minor version"
 msgstr "Рушій бази даних і основна/додаткова версія"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Помилки — статистика встановлення, попередження, помилки та винятки JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Допомогти нам знаходити й виправляти проблеми?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Встановлення передає мінімальну статистику встановлення та оновлень. Помилки додає попередження й звіти про помилки. Повний додає перегляди сторінок. Вимкнено надсилає лише невдалі встановлення та оновлення."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Встановлення — статистика встановлення та оновлень (типово)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Результати встановлення та оновлень, попередня версія під час оновлень і щоденний сигнал під час використання"
 
@@ -26427,68 +26022,12 @@ msgid "Installation profile"
 msgstr "Профіль встановлення"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Мовний стандарт (Помилки та Повний)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Ніколи не передаються: записи про членів, пожертви чи інші записи громади, назва вашої громади, ваша вебадреса чи ім'я сервера, а також адреси електронної пошти. Ваша країна береться з налаштувань громади, а не визначається за вашою мережею."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Сімейство ОС (Помилки та Повний)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Версія PHP (Помилки та Повний)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Перегляньте, що саме передається, або змініть свій вибір у розділі Адміністрування → Телеметрія."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Розрізняти робочі, демонстраційні та тестові встановлення"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Передавати анонімну статистику встановлення?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Передавати звіти про помилки та використання"
-
-#: 
-msgid "Share install statistics"
-msgstr "Передавати статистику встановлення"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Додатково передаються: попередження, відомості про помилки та відкриті сторінки."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Передається: факт встановлення чи оновлення ChurchCRM і чи вдалося це, сигнал раз на день під час використання, номер версії, ваша країна й тип бази даних. Випадковий ідентифікатор встановлення дає змогу враховувати кожне встановлення один раз."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Розуміти сумісність баз даних"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Це питання ставиться один раз. Ви можете змінити вибір будь-коли. Якщо вибрати «Ні, дякую», повідомляється лише про невдале встановлення чи оновлення."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Ваші дані належать вам. Встановлення передає лише результати встановлення та оновлень, ідентифікатор встановлення, версію програми, профіль встановлення, вказану країну, а також рушій бази даних і його основну/додаткову версію. Помилки додає попередження й відомості про помилки. Повний додає перегляди сторінок. Вимкнено надсилає лише невдалі встановлення та оновлення. Жоден рівень не надсилає вашу вебадресу чи ім'я сервера. Тестові встановлення нічого не надсилають. Телеметрія надсилається до PostHog у США."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Ваші дані належать вам. Звіти стосуються програми й ніколи — вашої громади чи її людей."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Ваші дані належать вам. Щоб підраховувати встановлення, ChurchCRM повідомляє, що його встановлено чи оновлено і чи вдалося це, раз на день надсилає сигнал під час використання, а також номер версії, вашу країну, тип бази даних і випадковий ідентифікатор встановлення. Він ніколи не повідомляє записи про членів, пожертви чи інші записи громади, назву вашої громади, вашу вебадресу чи ім'я сервера, а також адреси електронної пошти. Ви можете вимкнути це будь-коли в розділі Адміністрування → Телеметрія; про невдале встановлення чи оновлення все одно буде повідомлено. Попередження, відомості про помилки та перегляди сторінок передаються, лише якщо ви це виберете."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28097,10 +27636,6 @@ msgid "How the congregation is made up"
 msgstr "Склад громади"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Я розумію, що ця база даних не підтримується і оновлення буде заблоковано"
-
-#: 
 msgid "Insights"
 msgstr "Аналітика"
 
@@ -28123,10 +27658,6 @@ msgstr "Перевірка цілісності не вдалася"
 #: 
 msgid "Integrity check passed"
 msgstr "Перевірка цілісності пройдена"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Недійсний токен CSRF"
 
 #: 
 msgid "Last %d days"
@@ -28171,10 +27702,6 @@ msgstr "Відкриває фінансову панель для цього д�
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Минулі 7 днів і наступні %d днів"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Люди без родини: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28305,10 +27832,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Ця панель тепер є вашою головною панеллю."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Ця база даних більше не отримує виправлень безпеки від свого постачальника."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Тут люди відкриватимуть ChurchCRM. Змінюйте це лише тоді, якщо вони використовуватимуть іншу адресу, ніж ця сторінка."
 
@@ -28321,28 +27844,12 @@ msgid "Total deposited"
 msgstr "Усього внесено"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Непідтримуваний сервер бази даних"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Оновлення буде заблоковано, доки базу даних не буде переміщено на підтримувану версію."
-
-#: 
 msgid "Usually 3306."
 msgstr "Зазвичай 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Рекомендуємо попросити хостинг перейти до встановлення, поки немає даних для переміщення. MariaDB 10.11 — гарна мета."
-
-#: 
 msgid "Web address"
 msgstr "Веб-адреса"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Тепер можна встановлювати: ChurchCRM встановиться і працюватиме."
 
 #: 
 msgid "Your main dashboard"
@@ -28361,4 +27868,476 @@ msgstr "і ще {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "і ще {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "База даних не підтримується"
+
+#: 
+msgid "Deactivated"
+msgstr "Деактивовано"
+
+#: 
+msgid "How to find the log"
+msgstr "Як знайти журнал"
+
+#: 
+msgid "How to install server locales"
+msgstr "Як встановити локалі сервера"
+
+#: 
+msgid "Last edited"
+msgstr "Востаннє відредаговано"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Не встановлено на сервері, і англійську резервну локаль також не встановлено, тому інтерфейс відображатиметься англійською мовою."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Журнал ChurchCRM записує конкретну причину. Видаліть імена, перш ніж ділитися ним."
+
+#: 
+msgid "Verify now"
+msgstr "Перевірити зараз"
+
+#: 
+msgid "View Giving History"
+msgstr "Переглянути історію пожертв"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Успішно додано %d людей; %d людей не вдалося додати, і вони залишилися в кошику."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d людей не вдалося додати, і вони залишилися у вашому кошику."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Адміністратори бачитимуть це попередження на кожній сторінці, доки базу даних не буде переведено на версію, яка все ще отримує виправлення безпеки. Перехід зараз, коли даних мало, є найлегшим."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Відтепер адміністратори входитимуть до стандартної інформаційної панелі. Панель налаштування більше не відкриватиметься під час входу."
+
+#: 
+msgid "Database security risk"
+msgstr "Ризик безпеки бази даних"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Демонстраційний режим також вмикає анонімну статистику використання (PostHog), щоб ми могли бачити, як люди знайомляться з ChurchCRM. Функція «Почати заново» її вимикає."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Налаштування електронної пошти збережено. Вхід для членів тепер увімкнено, тож члени можуть входити до Порталу парафії за своєю електронною поштою."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Введіть інформацію про свою церкву, додайте своїх людей і запросіть свою команду."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Усе тут — зразкові дані. Почніть заново, перш ніж вводити справжню інформацію про свою церкву."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Усе тут — зразкові дані. Коли будете готові використовувати ChurchCRM для своєї церкви, почніть заново: це видалить демонстраційні дані та всі налаштування, щоб ви могли почати з власних."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Знайомтеся з ChurchCRM на демонстраційних даних або налаштуйте його для своєї церкви"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Не вдалося додати людину до групи"
+
+#: 
+msgid "Finish setup"
+msgstr "Завершити налаштування"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Стільки днів після встановлення адміністратори входитимуть до Панелі налаштування. Встановіть 0, щоб вимкнути це."
+
+#: 
+msgid "Group Assignment"
+msgstr "Призначення груп"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Внутрішнє: адміністратор обрав «Завершити налаштування» на Панелі налаштування. Не редагуйте вручну."
+
+#: 
+msgid "Keep exploring"
+msgstr "Продовжити знайомство"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Переїжджаєте з іншого сервера ChurchCRM? Відновіть створену там резервну копію. Це замінить усе в цій установці."
+
+#: 
+msgid "Ready for your church"
+msgstr "Готово для вашої церкви"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Повторити призначення груп"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Повторити призначення груп"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Виберіть одну або кілька груп для цієї людини."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Виберіть групи, які хочете повторити."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Налаштуйте свою церкву"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Панель налаштування"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Опція «Почати заново» на демонстраційному банері або «Скинути базу даних» на Панелі адміністратора видаляє демонстраційні дані та всі налаштування й повертає ChurchCRM до стану нової установки."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Спочатку почніть заново, а потім налаштуйте ChurchCRM з інформацією про власну церкву."
+
+#: 
+msgid "Start setup"
+msgstr "Почати налаштування"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Демонстраційні дані зникли. Увійдіть за допомогою стандартного облікового запису адміністратора, щоб налаштувати свою церкву."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Людину збережено, але одне або кілька призначень груп не вдалося виконати. Виберіть групи нижче та повторіть спробу."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Людину збережено, але одне або кілька призначень груп не вдалося виконати. Невдалі групи вибрано нижче. Перегляньте їх і збережіть знову, щоб повторити спробу."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Це видаляє демонстраційні дані та всі налаштування й повертає ChurchCRM до стану нової установки."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Ви знову ввійдете за допомогою стандартного облікового запису адміністратора та введете інформацію про свою церкву."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Ви знайомитеся з ChurchCRM на демонстраційних даних."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Ви знайомитеся з демонстраційними даними"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Інформацію про вашу церкву збережено. Виконайте наведені нижче кроки."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ваша база даних (%1$s %2$s) становить ризик безпеки: її постачальник більше не випускає виправлень безпеки для цієї версії. ChurchCRM продовжує працювати, але попросіть свого хостинг-провайдера перейти на MariaDB %3$s+ або MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Щоденна реєстрація під час використання, версії програмного забезпечення та бази даних, локаль, країна, тип встановлення та випадковий ідентифікатор встановлення допомагають підраховувати активні встановлення."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Облікові записи та вхід"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Також надсилати, які сторінки використовуються."
+
+#: 
+msgid "Areas"
+msgstr "Області"
+
+#: 
+msgid "Church & System"
+msgstr "Церква та система"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Місто, де видаються квитанції, надруковане на офіційних квитанціях. Залиште порожнім, щоб використовувати місто церкви."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Завершення перед іменем підписанта, наприклад «З повагою»."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Завершення, надруковане перед підписантом на офіційних квитанціях."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Паролі, розділені комами, які ніхто не може використовувати."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Лист-підтвердження"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Створити сім'ю для цієї людини? Її адреса та домашній телефон перейдуть до нової сім'ї."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Кількість днів, протягом яких користувачі мають налаштувати двофакторну автентифікацію після того, як вона стане обов'язковою. 0 застосовує її одразу. Скорочення активного пільгового періоду може заблокувати користувачів."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Депозити та платежі"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Заборонені паролі"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Застереження %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Надсилати користувачам лист після видалення їхнього облікового запису"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Кожна сторінка налаштувань в одному місці та налаштування, що стосуються всієї системи"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Невдалі входи перед блокуванням"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Невдалі входи з однієї IP-адреси"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Сімейні ролі, які в каталозі вважаються дітьми."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Сімейні ролі, які в каталозі та під час входу членів вважаються головою домогосподарства."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Сімейні ролі, які в каталозі та під час входу членів вважаються подружжям."
+
+#: 
+msgid "Finance Settings"
+msgstr "Налаштування фінансів"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Пільговий період (днів)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Приховати підписки на інформаційний бюлетень у Сімейному редакторі."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Приховати поле «Дата друга» у Редакторі людини."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Приховати поле «Дата весілля» у Сімейному редакторі."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Як довго заблокований обліковий запис залишається заблокованим. Невдалі входи з однієї IP-адреси підраховуються за той самий період."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "На скільки символів новий пароль має відрізнятися від старого. 0 вимикає цю функцію."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "У розділі Адміністрування → Телеметрія увімкніть параметр «Надсилати, які сторінки використовуються», щоб вибрати Full. Full також надсилає перегляди сторінок."
+
+#: 
+msgid "Initials Format"
+msgstr "Формат ініціалів"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Текст листа %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Період блокування (хвилини)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Блокує обліковий запис після такої кількості невдалих входів поспіль. Він розблоковується після закінчення періоду блокування або коли адміністратор скине його. 0 вимикає блокування."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Керувати Порталом парафії"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Члени можуть входити за допомогою своєї електронної пошти."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Члени ще не можуть входити."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Мінімальна кількість змінених символів"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Мінімальна довжина пароля"
+
+#: 
+msgid "Name Format"
+msgstr "Формат імені"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Ім'я, надруковане під завершенням листів та електронних листів"
+
+#: 
+msgid "No Payments Text"
+msgstr "Текст за відсутності платежів"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Текст за відсутності обіцянок"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Жоден рівень не надсилає людей, донорів, пожертви, вміст, контактні дані церкви, вашу веб-адресу чи назву сервера."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Жоден рівень не надсилає вашу веб-адресу чи назву сервера. Тестові встановлення не надсилають нічого. Телеметрія надсилається до PostHog у Сполучених Штатах."
+
+#: 
+msgid "OS family"
+msgstr "Сімейство ОС"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Початковий абзац листа-нагадування про обіцянку."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Абзац із запрошенням ставити запитання у звіті про пожертви."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Абзац із запрошенням ставити запитання в листі до тих, хто не жертвував."
+
+#: 
+msgid "Passwords"
+msgstr "Паролі"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Друкується після діапазону дат у початковому рядку листа до тих, хто не жертвував."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Друкується першим у звіті про пожертви, після нього йде діапазон дат."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Друкується, коли сім'я не має зареєстрованих платежів."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Друкується, коли сім'я не має зареєстрованої обіцянки."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Відмовляє у вході з однієї IP-адреси на період блокування після такої кількості невдалих входів або скидань пароля. 0 вимикає цю функцію, наприклад, коли всі підключаються через один проксі."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Вимагати двофакторну автентифікацію"
+
+#: 
+msgid "Security Settings"
+msgstr "Налаштування безпеки"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Надсилайте звіти про помилки, події встановлення/оновлення та системну інформацію, щоб проблеми можна було виправляти. Без переглядів сторінок, без даних церкви."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Час очікування сеансу (секунди)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Надсилати, які сторінки використовуються"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Вхід і безпека"
+
+#: 
+msgid "Signature Storage"
+msgstr "Сховище підписів"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Виводить користувача після такої кількості секунд бездіяльності. 0 ніколи не виводить."
+
+#: 
+msgid "System-wide"
+msgstr "Вся система"
+
+#: 
+msgid "Text After Dates"
+msgstr "Текст після дат"
+
+#: 
+msgid "Text Messages"
+msgstr "Текстові повідомлення"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Абзац подяки у звіті про пожертви."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Абзац подяки в листі до тих, хто не жертвував."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Перетворення не вдалося. Нічого не було змінено."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Використовується файл фірмового бланка, збережений до додавання завантажень. Завантажте фірмовий бланк, щоб замінити його."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Попередження через (години)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Слово перед іменем у листах та електронних листах, наприклад «Шановний»."
 

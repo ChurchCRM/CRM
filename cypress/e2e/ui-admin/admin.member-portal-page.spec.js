@@ -228,9 +228,9 @@ describe("Admin → Member Portal page", () => {
                     .and("contain.text", label);
                 cy.get(`${panel} .settings-panel-save`).should("not.exist");
 
-                cy.get(`${panel} input[name='${name}'][value='1']`).then(($yes) => {
-                    const flipped = $yes.is(":checked") ? "0" : "1";
-                    cy.get(`${panel} input[name='${name}'][value='${flipped}']`).click({ force: true });
+                cy.get(`${panel} input[name='${name}']`).then(($switch) => {
+                    const flipped = $switch.is(":checked") ? "0" : "1";
+                    cy.wrap($switch).click({ force: true });
                     cy.wait("@saveSwitch").then((interception) => {
                         expect(interception.response.statusCode).to.eq(200);
                         expect(String(interception.request.body.value)).to.eq(flipped);
@@ -254,18 +254,6 @@ describe("Admin → Member Portal page", () => {
                 "contain.text",
                 "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
             );
-        });
-
-        it("The four portal settings are absent from the System Settings page", () => {
-            cy.visit("/SystemSettings.php");
-            for (const name of [
-                "sMemberPortalTheme",
-                "bPortalDeveloperMode",
-                "bPortalShowVolunteer",
-                "bPortalAllowBirthdayEdit",
-            ]) {
-                cy.get("body").should("not.contain.text", name);
-            }
         });
 
         it("Refuses a broken theme and lists the findings under its row", () => {

@@ -26,13 +26,15 @@ class GroupService
      * @param int $personID Person ID to add to group properties
      * @return void
      */
-    private function addPersonToGroupProperties(int $groupID, int $personID): void
+    private function addPersonToGroupProperties(int $groupID, int $personID, $connection = null): void
     {
-        $connection = Propel::getConnection();
+        $connection ??= Propel::getConnection();
         $sql = 'INSERT IGNORE INTO groupprop_' . (int)$groupID . ' (per_ID) VALUES (:personId)';
         $stmt = $connection->prepare($sql);
         $stmt->bindValue(':personId', $personID, \PDO::PARAM_INT);
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            throw new \RuntimeException('Failed to add person to group properties');
+        }
     }
 
     /**
@@ -62,37 +64,55 @@ class GroupService
     }
 
     /**
-     *  addUserToGroup.
+     * addUserToGroup.
      *
-     * @param int $groupID  Group ID from which  to remove the user
-     * @param int $personID UserID to remove from the group
-     * @param int $roleID   Role ID to set to the person
+     * @param int $iGroupID Group ID to add the user to
+     * @param int $iPersonID User ID to add to the group
+     * @param int $iRoleID Role ID to set for the person
+     * @return array|false
      */
-    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array
+    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array|false
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        //
-        // Adds a person to a group with specified role.
-        // Returns false if the operation fails. (such as person already in group)
-        //
+
+        $group = GroupQuery::create()->findOneById($iGroupID);
+        if ($group === null) {
+            return false;
+        }
 
         // Was a RoleID passed in?
         if ($iRoleID === 0) {
-            // No, get the Default Role for this Group
-            $group = GroupQuery::create()->findOneById($iGroupID);
             $iRoleID = $group->getDefaultRole();
         }
 
-        $result = false;
+        $connection = Propel::getWriteConnection(GroupTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
         try {
-            $person2group2role = new Person2group2roleP2g2r();
-            $person2group2role
-                ->setPersonId($iPersonID)
-                ->setGroupId($iGroupID)
-                ->setRoleId($iRoleID);
-            $person2group2role->save();
-            $result = true;
+            // Check whether the person is already a member of this group.
+            $membership = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($iGroupID)
+                ->filterByPersonId($iPersonID)
+                ->findOne($connection);
+
+            if ($membership === null) {
+                $person2group2role = new Person2group2roleP2g2r();
+                $person2group2role
+                    ->setPersonId($iPersonID)
+                    ->setGroupId($iGroupID)
+                    ->setRoleId($iRoleID);
+                $person2group2role->save($connection);
+            }
+
+            // Check if this group has special properties.
+            if ($group->getHasSpecialProps()) {
+                $this->addPersonToGroupProperties($iGroupID, $iPersonID, $connection);
+            }
+
+            $connection->commit();
         } catch (\Throwable $t) {
+            $connection->rollBack();
+
             $logger = LoggerUtils::getAppLogger();
             $logger->warning('Failed to add person to group', [
                 'groupId' => $iGroupID,
@@ -100,19 +120,12 @@ class GroupService
                 'roleId' => $iRoleID,
                 'error' => $t->getMessage(),
             ]);
-        }
 
-        if ($result) {
-            // Check if this group has special properties
-            $group = GroupQuery::create()->findOneById($iGroupID);
-            if ($group->getHasSpecialProps()) {
-                $this->addPersonToGroupProperties($iGroupID, $iPersonID);
-            }
+            return false;
         }
 
         return $this->getGroupMembers($iGroupID, $iPersonID);
     }
-
 
     /**
      * Add a user to a group without performing Auth checks. Intended for trusted imports.

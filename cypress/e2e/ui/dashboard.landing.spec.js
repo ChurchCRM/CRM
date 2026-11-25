@@ -11,6 +11,10 @@ describe("Dashboard tabs and main dashboard", () => {
         cy.visit("people/dashboard");
         ["People", "Groups", "Sunday School", "Events", "Finance", "Deposits"].forEach((tab) => cy.get("#dashboardSwitch").should("contain", tab));
         cy.get("#dashboardSwitch .nav-link.active").invoke("text").then((text) => expect(text.trim()).to.eq("People"));
+        // The Finance pill must carry the trailing slash: the bare /finance path is a real
+        // directory, and Apache's DirectorySlash redirect rewrites it with the server's
+        // internal port on proxied installs (#11928).
+        cy.contains("#dashboardSwitch .nav-link", /^\s*Finance\s*$/).should("have.attr", "href").and("match", /\/finance\/$/);
     });
 
     it("shows finance-only staff People and Finance, and no group dashboards", () => {

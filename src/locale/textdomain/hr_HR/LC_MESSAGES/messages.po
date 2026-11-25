@@ -364,18 +364,6 @@ msgid "(No assigned family)"
 msgstr "(Nije dodijeljena obitelj)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Pretvori pojedince u obitelji"
-
-#: 
-msgid "Convert Next"
-msgstr "Pretvori sljedeće"
-
-#: 
-msgid "Convert All"
-msgstr "Pretvori sve"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "Broj uplatnice"
 
@@ -1590,10 +1578,6 @@ msgid "Permission"
 msgstr "Dozvola"
 
 #: 
-msgid "System Settings"
-msgstr "Sistemske postavke"
-
-#: 
 msgid "User Editor"
 msgstr "Urednik korisnika"
 
@@ -2075,24 +2059,12 @@ msgid "Localization"
 msgstr "Lokalizacija"
 
 #: 
-msgid "Setting saved"
-msgstr "Postavka spremljena"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Uredi JSON postavke"
-
-#: 
 msgid "False"
 msgstr "Lažno"
 
 #: 
 msgid "True"
 msgstr "Istinito"
-
-#: 
-msgid "Edit Settings"
-msgstr "Uredi postavke"
 
 #: 
 msgid "Functions"
@@ -2207,32 +2179,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "U imeniku uključi samo ove klasifikacije, odvojene zarezom"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Ovo su obiteljski brojevi uloga označeni kao nositelj kućanstva"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Ovo su obiteljski brojevi uloga označeni kao bračni partner"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Ovo su obiteljski brojevi uloga označeni kao dijete"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Minimalna duljina lozinke koju korisnik može postaviti"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Popis zabranjenih (preočitih) lozinki odvojenih zarezom."
-
-#: 
 msgid "Default City"
 msgstr "Zadani grad"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Zadana županija - Mora biti kratica od 2 slova!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2255,68 +2203,12 @@ msgid "First month of the fiscal year"
 msgstr "Prvi mjesec fiskalne godine"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Postavite na true za onemogućavanje unosa datuma prijateljevanja. Postavite na false za omogućavanje unosa."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Postavite na true za onemogućavanje upravljanja pretplatom na bilten u uredniku obitelji."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Postavite na true za onemogućavanje unosa datuma vjenčanja. Postavite na false za omogućavanje."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Broj čekova za izvještaj uplatnice"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Jedinica za mjerenje udaljenosti, milje ili km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Omogući neodbatljiva plaćanja"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Tekst za gornji redak poreznog izvještaja. Datumi će biti dodani na kraj ovog retka."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Tekst za donji redak poreznog izvještaja."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Potpisnik poreznog izvještaja"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Tekst za izvještaj podsjetnika za zavjete"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Potpisnik podsjetnika za zavjete"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Tekst za izvještaj podsjetnika - Nema zapisa o zavjetu"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Tekst za izvještaj podsjetnika - Nema zapisa o uplatama"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Tekst za izvještaj potvrde i ispravke podataka baze podataka"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Potpisnik izvještaja potvrde i ispravke podataka"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Tekst za imenički izvještaj"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3771,10 +3663,6 @@ msgstr "Sigurnosna arhiva ne sadrži bazu podataka"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Pretvorite korisnički unesene poštanske brojeve u VELIKA SLOVA pri spremanju u bazu podataka."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Koristi se za završetak pisma prije potpisnika"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3879,10 +3767,6 @@ msgid "Failed"
 msgstr "Nije uspjelo"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Broj tekućeg računa župe"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Obitelj označena kao neaktivna"
 
@@ -3893,10 +3777,6 @@ msgstr "Obitelj označena kao aktivna"
 #: 
 msgid "families"
 msgstr "obitelji"
-
-#: 
-msgid "Financial Settings"
-msgstr "Financijske postavke"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3937,10 +3817,6 @@ msgstr "Svojstvo je uspješno uklonj."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Svojstvo nije moguće ukloniti."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Tekst prije imena u e-porukama/izvještajima"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4182,10 +4058,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "zapis(i) uspješno dodani u odabranu skupinu."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Za definiranje datuma u birač datuma, zadano: gggg-mm-dd, Npr. na francuskom: dd/mm/gggg."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Za definiranje datuma u birač datuma, zadano: G-m-d, Npr. na francuskom: d/m/G."
 
@@ -4272,10 +4144,6 @@ msgstr "ZSZ"
 #: 
 msgid "WSW"
 msgstr "ZJZ"
-
-#: 
-msgid "Search Family"
-msgstr "Pretraži obitelji"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4374,10 +4242,6 @@ msgid "Change Settings"
 msgstr "Promijeni postavke"
 
 #: 
-msgid "Unknown Type"
-msgstr "Nepoznata vrsta"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "ID osobe za košaricu mora biti numerički"
 
@@ -4396,14 +4260,6 @@ msgstr "Pretraži vjernike"
 #: 
 msgid "Maximum number of People"
 msgstr "Maksimalni broj vjernika"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Polje gdje je naveden ispovjednik, mora biti osoba vrste skupini"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Polje gdje je pohranjena zadnja ispovijed, mora biti vrste datum"
 
 #: 
 msgid "People Reports"
@@ -4652,18 +4508,6 @@ msgid "Event not found"
 msgstr "Događaj nije pronađen"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Duljina vremenskog ograničenja sesije u sekundama\n"
-"Postavite na nulu za onemogućavanje."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Minimalni iznos u kojem se nova lozinka mora razlikovati od stare (# promijenjenih znakova)\n"
-"Postavite na nulu za onemogućavanje."
-
-#: 
 msgid "Verify People"
 msgstr "Provjeri vjernike"
 
@@ -4737,10 +4581,6 @@ msgstr "Odkvačeni događaji"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Prezime, Ime SrednjeIme"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Pošalji e-poruku s obavijesti korisnicima kad je njihov račun obrisan"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7715,10 +7555,6 @@ msgid "selected family has no coordinates"
 msgstr "odabrana obitelj nema koordinate"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Zahtijevaj od svih korisnika upis u dvofaktorsku autentifikaciju"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktivne skupini"
 
@@ -8198,10 +8034,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Odaberite kako biste željeli popuniti vašu bazu podataka. Uvijek možete koristiti drugu metodu kasnije."
 
 #: 
-msgid "Church Info"
-msgstr "Informacije o župi"
-
-#: 
 msgid "Clear all"
 msgstr "Očisti sve"
 
@@ -8234,14 +8066,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Dovršite ovo u bilo kojem redoslijedu kako biste pripremili ChurchCRM za vašu zajednicu."
 
 #: 
-msgid "Confession"
-msgstr "Ispovijed"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Konfigurirajte globalne sistemske postavke i preference"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Konfigurirajte postavke skupini, uloge i svojstva"
 
@@ -8252,10 +8076,6 @@ msgstr "Potvrdite vašu novu lozinku"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Povežite SMTP poslužitelj kako bi ChurchCRM mogao slati e-poštu"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Pretvori pojedinačne zapise u obiteljske jedinice"
 
 #: 
 msgid "Convert to Family"
@@ -8292,10 +8112,6 @@ msgstr "Trenutna osoba"
 #: 
 msgid "Database Reset"
 msgstr "Resetiranje baze podataka"
-
-#: 
-msgid "Default / Notes"
-msgstr "Zadano / Bilješke"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9916,10 +9732,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Dozvoli sistemske nadogradnje na izdanja označena kao 'pred-izdanje' na GitHubu"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Dozvoli neautentificirani pristup kalendarskim događajima putem javnih HTML, ICS i JSON URL-ova. Potrebno za dijeljenje kalendara s vanjskim aplikacijama."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Dozvoli posjetiteljima kreiranje vlastitog obiteljskog zapisa putem stranice za samo-registraciju"
 
@@ -10082,24 +9894,12 @@ msgid "Enable Email"
 msgstr "Omogući e-poštu"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Omogući izbornik događaja"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Omogući vanjski API kalendara"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Omogući slanje e-pošte iz ChurchCRM-a. Potrebno za resetiranje lozinke, obavijesti i veze e-pošte."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Omogući ako vaš SMTP poslužitelj zahtijeva korisničko ime i lozinku"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Omogući ili onemogući modul nedjeljne škole i bočni izbornik."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10197,10 +9997,6 @@ msgstr "Sakrij geografsku širinu/dužinu"
 #: 
 msgid "How it works"
 msgstr "Kako funkcionira"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Koliko čekova ispisati po stranici uplatnice"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10360,10 +10156,6 @@ msgid "Privacy Note"
 msgstr "Napomena o privatnosti"
 
 #: 
-msgid "Quick Settings"
-msgstr "Brze postavke"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP autentifikacija"
 
@@ -10390,10 +10182,6 @@ msgstr "Postavljanje"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Prikaži pregled denominacija novčanica na izvještaju uplatnice"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Prikaži ili sakrij izbornik događaja u glavnoj navigaciji."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10807,10 +10595,6 @@ msgstr "Ako primijetite iskrivljene znakove, HTML entitete koji se prikazuju kao
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Nevažeća JSON vrijednost — postavka nije spremljena. Ispravite i pokušajte ponovo."
 
 #: 
 msgid "Language and regional settings"
@@ -12588,10 +12372,6 @@ msgstr "Cijeli dan"
 #: 
 msgid "All Roles"
 msgstr "Sve uloge"
-
-#: 
-msgid "All System Settings"
-msgstr "Sve sistemske postavke"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15065,10 +14845,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Popis izvora odvojen razmacima kojima je dopušteno ugrađivanje javne vanjske stranice kalendara u iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Izvori odvojeni razmacima kojima je dopušteno ugrađivanje javne stranice kalendara u iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Nedjeljnoškolska skupina ne može se mijenjati, osim u ova dva slučaja"
 
@@ -15409,10 +15185,6 @@ msgid "ChurchCRM version"
 msgstr "Verzija ChurchCRM-a"
 
 #: 
-msgid "Collection level"
-msgstr "Razina prikupljanja"
-
-#: 
 msgid "Count unique installs"
 msgstr "Broji jedinstvene instalacije"
 
@@ -15467,14 +15239,6 @@ msgstr "Nije uspjelo ažuriranje zavjeta"
 #: 
 msgid "Financial data"
 msgstr "Financijski podaci"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Potpuno — sve navedeno plus pregledi stranica"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Potpuno — pregledi stranica, upozorenja, greške i JS iznimke"
 
 #: 
 msgid "Fund Summary"
@@ -15553,10 +15317,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Neodbitni iznos ne može premašiti iznos fonda"
 
 #: 
-msgid "None (disabled)"
-msgstr "Ništa (onemogućeno)"
-
-#: 
 msgid "Overpaid"
 msgstr "Preplaćeno"
 
@@ -15617,10 +15377,6 @@ msgid "Select a fund"
 msgstr "Odaberi fond"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Pošalji sebi testnu e-poruku za rođendan"
-
-#: 
 msgid "Sending to"
 msgstr "Šaljem na"
 
@@ -15675,10 +15431,6 @@ msgstr "Želimo vam prekrasan rođendan!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Vaš račun nema e-mail adresu u evidenciji. Dodajte je svom profilu kako biste poslali test."
-
-#: 
-msgid "errors+"
-msgstr "greške+"
 
 #: 
 msgid "full only"
@@ -16643,10 +16395,6 @@ msgid "Not a valid date of death"
 msgstr "Nije valjan datum smrti"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Broj dana koje korisnici imaju za uključivanje 2FA nakon što postane obavezan. Postavite na 0 za trenutnu primjenu. Skraćivanje aktivnog razdoblja odgode može odmah zaključati korisnike."
-
-#: 
 msgid "Offline"
 msgstr "Izvan mreže"
 
@@ -16971,14 +16719,6 @@ msgid "Download CSV"
 msgstr "Preuzmite CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Omogućite ili onemogućite modul Financije i bočni izbornik."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Omogućite ili onemogućite modul Skupljač sredstava."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Neuspješno uklanjanje loga crkve"
 
@@ -17123,10 +16863,6 @@ msgid "Access Control & Security"
 msgstr "Kontrola pristupa i sigurnost"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Dozvoli zabilježavanje plaćanja koja nisu odbitna od poreza (npr. prodaja robe)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)"
 
@@ -17179,46 +16915,6 @@ msgid "Feature Toggles"
 msgstr "Sklopke značajki"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Sklopke značajki kontroliraju koje su module i značajke dostupne u ChurchCRM. Promjene stupaju na snagu odmah."
-
-#: 
-msgid "Finance Features"
-msgstr "Financijske značajke"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Uključi adrese u brzo globalno pretraživanje"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Uključi događaje kalendara u brzo globalno pretraživanje"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Uključi svojstva obitelji po mjeri u brzo globalno pretraživanje"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Uključi depozite u brzo globalno pretraživanje"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Uključi obitelji u brzo globalno pretraživanje"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Uključi grupe u brzo globalno pretraživanje"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Uključi plaćanja u brzo globalno pretraživanje"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Uključi ljude u brzo globalno pretraživanje"
-
-#: 
 msgid "Invalid setting"
 msgstr "Nevaljana postavka"
 
@@ -17227,16 +16923,8 @@ msgid "Lost Password Link"
 msgstr "Veza za obnovu lozinke"
 
 #: 
-msgid "Manage All Features"
-msgstr "Upravljaj svim značajkama"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Glavni sklopka za slanje e-pošte. OBAVEZNO za ponovno postavljanje lozinke i obavijesti"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Plaćanja koja nisu odbitna"
 
 #: 
 msgid "Primary Modules"
@@ -17247,20 +16935,12 @@ msgid "Public Calendar API"
 msgstr "Javni API kalendara"
 
 #: 
-msgid "Saved"
-msgstr "Spremljeno"
-
-#: 
 msgid "Search Families"
 msgstr "Pretraživanje obitelji"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Pretraživanje svojstava obitelji po mjeri"
-
-#: 
-msgid "Search Settings"
-msgstr "Pretraživanje postavki"
 
 #: 
 msgid "Self-Registration"
@@ -17477,14 +17157,6 @@ msgstr "Primatelji obavijesti"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba"
-
-#: 
-msgid "Person initials style"
-msgstr "Stil inicijala osobe"
-
-#: 
-msgid "Person name display style"
-msgstr "Stil prikaza imena osobe"
 
 #: 
 msgid "Spouse Role"
@@ -22526,10 +22198,6 @@ msgid "This email batch was queued by another user"
 msgstr "Ovu skupinu e-pošte stavio je u red drugi korisnik"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Nakon uvoza možete na nadzornoj ploči administratora upotrijebiti Ponovno postavljanje baze podataka da obrišete sve podatke i počnete ispočetka. Konfiguracija aplikacije bit će sačuvana."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Uvoz demonstracijskih podataka..."
 
@@ -23510,30 +23178,6 @@ msgid "Download PDF"
 msgstr "Preuzmi PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Razdoblje zaključavanja u minutama\n"
-"Zaključani račun se sam otključava nakon ovog broja minuta. Neuspješne prijave s jedne IP adrese broje se tijekom istog razdoblja."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Maksimalan broj neuspješnih prijava s jedne IP adrese\n"
-"Neuspješne prijave i zahtjevi za resetiranje lozinke s jedne IP adrese broje se prema ovoj granici unutar razdoblja zaključavanja. Nakon što se dostigne, prijava s te adrese se odbija do kraja razdoblja.\n"
-"Postavite na nulu za onemogućavanje ove značajke, na primjer kada svi pristupaju ChurchCRM-u putem jedne proxy adrese."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimalan broj neuspješnih prijava dopuštenih prije zaključavanja korisničkog računa.\n"
-"Zaključani račun se sam otključava nakon razdoblja zaključavanja ili ranije kada administrator resetira neuspješne prijave.\n"
-"Ova značajka pomaže u zaštiti od automatiziranih napada pogađanja lozinki.\n"
-"Postavite na nulu za onemogućavanje ove značajke."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minuta do samootključavanja: %d"
 
@@ -23862,10 +23506,6 @@ msgid "PDF Output"
 msgstr "PDF ispis"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Način rukovanja PDF-om"
-
-#: 
 msgid "Questions Line"
 msgstr "Redak s pitanjima"
 
@@ -23902,10 +23542,6 @@ msgid "Greeting"
 msgstr "Pozdrav"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Pozdrav i potpis pisma"
-
-#: 
 msgid "Letterhead"
 msgstr "Zaglavlje"
 
@@ -23928,10 +23564,6 @@ msgstr "Postavite zaglavlje koje PDF pisma ispisuju"
 #: 
 msgid "Using the church name and address"
 msgstr "Koristi se naziv i adresa crkve"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Koristi se putanja zaglavlja postavljena u postavkama sustava"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26141,14 +25773,6 @@ msgstr "Uplate po fondu"
 msgid "Unknown Fund"
 msgstr "Nepoznati fond"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Zamolite svog pružatelja hostinga da bazu podataka prebaci na podržanu verziju, a zatim pokušajte ponovno."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Zamolite svog pružatelja hostinga da bazu podataka prebaci na podržanu verziju."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26166,18 +25790,6 @@ msgstr "Zahtijevaj broj čeka pri bilježenju plaćanja čekom u uplatama. Kada 
 #: 
 msgid "Require check number on check payments"
 msgstr "Zahtijevaj broj čeka pri plaćanju čekom"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Nadogradnja nije pokrenuta, pa ništa nije promijenjeno."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Ova se nadogradnja ne može pokrenuti na vašoj bazi podataka."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Vaš poslužitelj baze podataka (%1$s %2$s) stariji je od verzija koje ChurchCRM podržava (MySQL %3$s ili MariaDB %4$s i novije)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26338,22 +25950,6 @@ msgid "Database engine and major/minor version"
 msgstr "Pogon baze podataka i glavna/sporedna verzija"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Pogreške — statistika instalacije, upozorenja, pogreške i JS iznimke"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Pomoći nam pronaći i ispraviti probleme?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Instalacija dijeli minimalnu statistiku instalacije i nadogradnje. Pogreške dodaje upozorenja i izvješća o pogreškama. Potpuno dodaje preglede stranica. Ništa šalje samo neuspjele instalacije i nadogradnje."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Instalacija — statistika instalacije i nadogradnje (zadano)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Rezultati instalacije i nadogradnje, prethodna verzija pri nadogradnjama i dnevna prijava tijekom korištenja"
 
@@ -26362,68 +25958,12 @@ msgid "Installation profile"
 msgstr "Profil instalacije"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Jezična postavka (Pogreške i Potpuno)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nikad se ne dijeli: podaci o članovima, darovima ili drugi podaci crkve, naziv vaše crkve, vaša web adresa ili naziv poslužitelja niti adrese e-pošte. Vaša je država ona iz postavki vaše crkve i ne određuje se prema vašoj mreži."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Obitelj operacijskog sustava (Pogreške i Potpuno)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Verzija PHP-a (Pogreške i Potpuno)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Pogledajte točno što se dijeli ili promijenite svoj izbor u Administracija → Telemetrija."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Razlikuj produkcijske, demo i testne instalacije"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Dijeliti anonimnu statistiku instalacije?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Dijeli izvješća o pogreškama i korištenju"
-
-#: 
-msgid "Share install statistics"
-msgstr "Dijeli statistiku instalacije"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Dodatno se dijeli: upozorenja, pojedinosti o pogreškama i koje se stranice otvaraju."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Dijeli se: da je ChurchCRM instaliran ili nadograđen i je li to uspjelo, prijava jednom dnevno tijekom korištenja, broj verzije, vaša država i vrsta baze podataka. Nasumični ID instalacije broji svaku instalaciju jednom."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Razumjeti kompatibilnost baza podataka"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Izbor se traži jednom. Možete ga promijeniti u bilo kojem trenutku. Uz Ne, hvala prijavljuje se samo neuspjela instalacija ili nadogradnja."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Vaši su podaci vaši. Instalacija dijeli samo rezultate instalacije i nadogradnje, ID instalacije, verziju softvera, profil instalacije, postavljenu državu te pogon baze podataka s glavnom/sporednom verzijom. Pogreške dodaje upozorenja i pojedinosti o pogreškama. Potpuno dodaje preglede stranica. Ništa šalje samo neuspjele instalacije i nadogradnje. Nijedna razina ne šalje vašu web adresu ni naziv poslužitelja. Testne instalacije ne šalju ništa. Telemetrija se šalje PostHogu u Sjedinjenim Američkim Državama."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Vaši su podaci vaši. Ovo izvještava o softveru, nikad o vašoj crkvi ili njezinim ljudima."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Vaši su podaci vaši. Kako bi brojio instalacije, ChurchCRM prijavljuje da je instaliran ili nadograđen i je li to uspjelo, prijavu jednom dnevno tijekom korištenja te broj verzije, vašu državu, vrstu baze podataka i nasumični ID instalacije. Nikad ne prijavljuje podatke o članovima, darovima ili druge podatke crkve, naziv vaše crkve, vašu web adresu ili naziv poslužitelja niti adrese e-pošte. To možete isključiti u bilo kojem trenutku u Administracija → Telemetrija; neuspjela instalacija ili nadogradnja i dalje se prijavljuje. Upozorenja, pojedinosti o pogreškama i pregledi stranica dijele se samo ako to odaberete."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28027,10 +27567,6 @@ msgid "How the congregation is made up"
 msgstr "Sastav zajednice"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Razumijem da ova baza podataka nije podržana i da će nadogradnje biti blokirane"
-
-#: 
 msgid "Insights"
 msgstr "Uvidi"
 
@@ -28053,10 +27589,6 @@ msgstr "Provjera integriteta nije uspjela"
 #: 
 msgid "Integrity check passed"
 msgstr "Provjera integriteta prošla"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Nevažeći CSRF token"
 
 #: 
 msgid "Last %d days"
@@ -28101,10 +27633,6 @@ msgstr "Otvara nadzornu ploču financija za ovaj raspon. Prošlu fiskalnu godinu
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Prošlih 7 dana i sljedećih %d dana"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Osobe bez obitelji: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28235,10 +27763,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Ova nadzorna ploča sada je vaša glavna nadzorna ploča."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Ova baza podataka više ne prima sigurnosne popravke od svog dobavljača."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Ovdje će ljudi otvarati ChurchCRM. Promijenite to samo ako će koristiti drugu adresu od ove stranice."
 
@@ -28251,28 +27775,12 @@ msgid "Total deposited"
 msgstr "Ukupno uplaćeno"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Nepodržani poslužitelj baze podataka"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Nadogradnje će biti blokirane dok se baza podataka ne premjesti na podržanu verziju."
-
-#: 
 msgid "Usually 3306."
 msgstr "Obično 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Preporučujemo da zamolite domaćina da se prebaci prije instalacije, dok još nema podataka za premještanje. MariaDB 10.11 dobar je cilj."
-
-#: 
 msgid "Web address"
 msgstr "Web-adresa"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Sada možete instalirati: ChurchCRM će se instalirati i raditi."
 
 #: 
 msgid "Your main dashboard"
@@ -28291,4 +27799,476 @@ msgstr "i još {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "i još {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "Baza podataka nije podržana"
+
+#: 
+msgid "Deactivated"
+msgstr "Deaktivirano"
+
+#: 
+msgid "How to find the log"
+msgstr "Kako pronaći zapisnik"
+
+#: 
+msgid "How to install server locales"
+msgstr "Kako instalirati jezične postavke poslužitelja"
+
+#: 
+msgid "Last edited"
+msgstr "Zadnje uređeno"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nije instalirano na poslužitelju, a nije instalirana ni engleska rezervna jezična postavka, pa će se sučelje prikazivati na engleskom."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Zapisnik ChurchCRM bilježi konkretan razlog. Uklonite imena prije dijeljenja."
+
+#: 
+msgid "Verify now"
+msgstr "Potvrdi sada"
+
+#: 
+msgid "View Giving History"
+msgstr "Prikaži povijest darivanja"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Uspješno dodano %d osoba; %d osoba nije bilo moguće dodati i ostaju u košarici."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d osoba nije bilo moguće dodati i ostaju u vašoj košarici."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administratori će vidjeti ovo upozorenje na svakoj stranici dok se baza podataka ne premjesti na verziju koja još uvijek dobiva sigurnosne popravke. Premještanje sada, dok je podataka malo, najlakše je."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administratori će se od sada prijavljivati na standardnu nadzornu ploču. Nadzorna ploča postavljanja više se neće otvarati pri prijavi."
+
+#: 
+msgid "Database security risk"
+msgstr "Sigurnosni rizik baze podataka"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Način demonstracije također uključuje anonimnu statistiku korištenja (PostHog), kako bismo vidjeli kako ljudi istražuju ChurchCRM. Opcija Počnite ispočetka je isključuje."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Postavke e-pošte spremljene. Prijava članova sada je uključena, pa se članovi mogu prijaviti na Portal članova svojom e-poštom."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Unesite informacije o svojoj župi, dodajte svoje ljude i pozovite svoj tim."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Sve ovdje su ogledni podaci. Počnite ispočetka prije nego što unesete stvarne informacije o svojoj župi."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Sve ovdje su ogledni podaci. Kada budete spremni koristiti ChurchCRM za svoju župu, počnite ispočetka: to briše demonstracijske podatke i sve postavke kako biste mogli započeti s vlastitima."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Istražite ChurchCRM s demonstracijskim podacima ili ga postavite za svoju župu"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Dodavanje osobe u skupinu nije uspjelo"
+
+#: 
+msgid "Finish setup"
+msgstr "Završi postavljanje"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Ovoliko dana nakon instalacije administratori se prijavljuju na Nadzornu ploču postavljanja. Postavite 0 da biste to isključili."
+
+#: 
+msgid "Group Assignment"
+msgstr "Dodjela grupa"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Interno: administrator je odabrao Završi postavljanje na Nadzornoj ploči postavljanja. Nemojte uređivati ručno."
+
+#: 
+msgid "Keep exploring"
+msgstr "Nastavi istraživati"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Selite se s drugog ChurchCRM poslužitelja? Obnovite sigurnosnu kopiju napravljenu tamo. To zamjenjuje sve na ovoj instalaciji."
+
+#: 
+msgid "Ready for your church"
+msgstr "Spremno za vašu župu"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Ponovno pokušaj dodjelu grupa"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Ponovno pokušaj dodjele grupa"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Odaberite jednu ili više skupina za ovu osobu."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Odaberite skupine koje želite ponovno pokušati."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Postavite svoju župu"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Nadzorna ploča postavljanja"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Opcija Počnite ispočetka na demonstracijskoj traci ili Resetiraj bazu podataka na Administratorskoj nadzornoj ploči briše demonstracijske podatke i sve postavke te vraća ChurchCRM na novu instalaciju."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Prvo počnite ispočetka, a zatim postavite ChurchCRM s informacijama o vlastitoj župi."
+
+#: 
+msgid "Start setup"
+msgstr "Započni postavljanje"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Demonstracijski podaci su nestali. Prijavite se zadanim administratorskim računom kako biste postavili svoju župu."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Osoba je spremljena, ali jedna ili više dodjela grupa nije uspjela. Odaberite skupine u nastavku i pokušajte ponovno."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Osoba je spremljena, ali jedna ili više dodjela grupa nije uspjela. Neuspješne skupine odabrane su u nastavku. Pregledajte ih i ponovno spremite za novi pokušaj."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "To briše demonstracijske podatke i sve postavke te vraća ChurchCRM na novu instalaciju."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Ponovno ćete se prijaviti zadanim administratorskim računom i unijeti informacije o svojoj župi."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Istražujete ChurchCRM s demonstracijskim podacima."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Istražujete demonstracijske podatke"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informacije o vašoj župi su spremljene. Prođite korake u nastavku."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Vaša baza podataka (%1$s %2$s) predstavlja sigurnosni rizik: njezin dobavljač više ne isporučuje sigurnosne popravke za tu verziju. ChurchCRM nastavlja raditi, ali zamolite svog davatelja usluge hostinga da prijeđe na MariaDB %3$s+ ili MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Svakodnevna prijava tijekom korištenja, verzije softvera i baze podataka, jezične postavke, zemlja, vrsta instalacije i nasumični ID instalacije pomažu brojiti aktivne instalacije."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Računi i prijava"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Šaljite i koje se stranice koriste."
+
+#: 
+msgid "Areas"
+msgstr "Područja"
+
+#: 
+msgid "Church & System"
+msgstr "Crkva i sustav"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Grad u kojem se izdaju potvrde, ispisan na službenim potvrdama. Ostavite prazno za korištenje grada crkve."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Završetak prije imena potpisnika, na primjer S poštovanjem."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Završetak ispisan prije potpisnika na službenim potvrdama."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Lozinke odvojene zarezima koje nitko ne smije koristiti."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Potvrdno pismo"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Stvoriti obitelj za ovu osobu? Njezina adresa i kućni telefon prelaze u novu obitelj."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Broj dana u kojima korisnici moraju postaviti dvofaktorsku autentifikaciju nakon što postane obavezna. 0 je nameće odmah. Skraćivanje aktivnog razdoblja počeka može korisnicima onemogućiti pristup."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Uplate i plaćanja"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Nedopuštene lozinke"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Odricanje odgovornosti %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "E-pošta korisnicima kada se njihov račun izbriše"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Svaka stranica postavki na jednom mjestu i postavke koje vrijede za cijeli sustav"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Neuspjele prijave prije zaključavanja"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Neuspjele prijave po IP adresi"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Obiteljske uloge koje se u imeniku smatraju djecom."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Obiteljske uloge koje se u imeniku i pri prijavi članova smatraju glavom kućanstva."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Obiteljske uloge koje se u imeniku i pri prijavi članova smatraju supružnikom."
+
+#: 
+msgid "Finance Settings"
+msgstr "Postavke financija"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Razdoblje počeka (dana)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Sakrij pretplate na bilten u Uredniku obitelji."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Sakrij polje Datum prijatelja u Uredniku osobe."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Sakrij polje Datum vjenčanja u Uredniku obitelji."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Koliko dugo zaključani račun ostaje zaključan. Neuspjele prijave s jedne IP adrese broje se u istom razdoblju."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Za koliko se znakova nova lozinka mora razlikovati od stare. 0 isključuje ovu mogućnost."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "U Administracija → Telemetrija uključite opciju „Dijeli koje se stranice koriste“ da biste odabrali Puno. Puno također šalje preglede stranica."
+
+#: 
+msgid "Initials Format"
+msgstr "Format inicijala"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Tekst pisma %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Trajanje zaključavanja (minute)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Zaključava račun nakon toliko uzastopnih neuspjelih prijava. Otključava se nakon isteka trajanja zaključavanja ili kada ga administrator resetira. 0 isključuje zaključavanje."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Upravljaj Portalom članova"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Članovi se mogu prijaviti svojom e-poštom."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Članovi se još ne mogu prijaviti."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Najmanji broj promijenjenih znakova"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Najmanja duljina lozinke"
+
+#: 
+msgid "Name Format"
+msgstr "Format imena"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Ime ispisano ispod završetka pisama i e-pošte"
+
+#: 
+msgid "No Payments Text"
+msgstr "Tekst kada nema uplata"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Tekst kada nema zavjeta"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Nijedna razina ne šalje osobe, darivatelje, darove, sadržaj, kontaktne podatke crkve, vašu web adresu ni naziv poslužitelja."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Nijedna razina ne šalje vašu web adresu ni naziv poslužitelja. Testne instalacije ne šalju ništa. Telemetrija se šalje u PostHog u Sjedinjenim Državama."
+
+#: 
+msgid "OS family"
+msgstr "Obitelj OS-a"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Uvodni odlomak pisma s podsjetnikom na zavjet."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Odlomak koji poziva na pitanja u izjavi o darovima."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Odlomak koji poziva na pitanja u pismu za one koji nisu darivali."
+
+#: 
+msgid "Passwords"
+msgstr "Lozinke"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Ispisuje se nakon raspona datuma u uvodnom retku pisma za one koji nisu darivali."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Ispisuje se prvo na izjavi o darovima, a nakon njega slijedi raspon datuma."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Ispisuje se kada obitelj nema zabilježenih uplata."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Ispisuje se kada obitelj nema zabilježenog zavjeta."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Odbija prijavu s jedne IP adrese na trajanje zaključavanja nakon toliko neuspjelih prijava ili resetiranja lozinke. 0 isključuje ovu mogućnost, na primjer kada se svi povezuju putem jednog proxyja."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Zahtijevaj dvofaktorsku autentifikaciju"
+
+#: 
+msgid "Security Settings"
+msgstr "Sigurnosne postavke"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Šaljite izvješća o pogreškama, događaje instalacije/nadogradnje i informacije o sustavu kako bi se problemi mogli ispraviti. Bez pregleda stranica, bez podataka crkve."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Istek sesije (sekunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Dijeli koje se stranice koriste"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Prijava i sigurnost"
+
+#: 
+msgid "Signature Storage"
+msgstr "Pohrana potpisa"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Odjavljuje korisnika nakon toliko sekundi neaktivnosti. 0 nikada ne odjavljuje."
+
+#: 
+msgid "System-wide"
+msgstr "Cijeli sustav"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst nakon datuma"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstualne poruke"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Odlomak zahvale u izjavi o darovima."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Odlomak zahvale u pismu za one koji nisu darivali."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Pretvorba nije uspjela. Ništa nije promijenjeno."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Koristi se datoteka zaglavlja spremljena prije dodavanja prijenosa. Prenesite zaglavlje da biste ga zamijenili."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Upozorenje nakon (sati)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Riječ prije imena u pismima i e-pošti, na primjer Poštovani."
 

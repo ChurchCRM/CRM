@@ -32,6 +32,11 @@ function startDesktopSidebarToggle() {
     }
   });
 
+  sidebar.querySelector(".dropdown-item.active, .nav-link.active")?.scrollIntoView({ block: "nearest" });
+  sidebar.addEventListener("shown.bs.dropdown", (event) => {
+    event.target.nextElementSibling?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+
   let folded = sidebar.classList.contains(FOLDED_CLASS);
 
   const render = () => {

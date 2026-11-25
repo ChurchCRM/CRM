@@ -322,19 +322,4 @@ describe("Deceased Person Flag", () => {
             .find("[name='bHideDeceasedFromDirectory']")
             .should("exist");
     });
-
-    it("the System Settings page no longer lists the deceased-directory setting", () => {
-        // Switch to admin session so we can see the System Settings admin page
-        cy.setupAdminSession();
-        cy.visit("/SystemSettings.php");
-        cy.get("body").should("be.visible");
-        // The ConfigItem still exists (so the value persists) but is no longer
-        // in buildCategories(), so neither its key nor its label renders here.
-        cy.get("[name='bHideDeceasedFromDirectory'], #bHideDeceasedFromDirectory").should(
-            "not.exist"
-        );
-        cy.contains("Hide deceased members from the printed directory").should(
-            "not.exist"
-        );
-    });
 });

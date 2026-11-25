@@ -283,7 +283,7 @@ class AuthenticationManager
         if ($result->isAuthenticated && !$result->preventRedirect) {
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
-            $redirectLocation ??= DashboardLandingService::pathFor(self::getCurrentUser());
+            $redirectLocation ??= DashboardLandingService::signInPathFor(self::getCurrentUser());
 
             // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();

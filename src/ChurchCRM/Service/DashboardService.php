@@ -7,7 +7,6 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\FunctionsUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 const GENDER_STATS_UNASSIGNED = 0;
@@ -34,7 +33,7 @@ class DashboardService
     {
         return [
             'families' => $this->getFamilyCount()['familyCount'],
-            'People' => (new ClassificationService())->excludeInactive(PersonQuery::create())
+            'People' => PersonQuery::create()->filterByActiveClassification()
                 ->leftJoinWithFamily()
                 ->where('Family.DateDeactivated is null')
                 ->filterByLiving()
@@ -70,7 +69,7 @@ class DashboardService
         ];
         $familyRoleStats = [];
 
-        $people = (new ClassificationService())->excludeInactive(PersonQuery::Create('per'))
+        $people = PersonQuery::create('per')->filterByActiveClassification()
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
             ->endUse()
@@ -181,60 +180,5 @@ class DashboardService
         });
 
         return $ageGroups;
-    }
-
-    public function getGroupStats(): array
-    {
-        $sSQL = 'select
-        (select count(*) from group_grp) as Group_cnt,
-        (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
-        (Select count(*) from person_per
-          INNER JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID
-          INNER JOIN group_grp ON grp_ID = p2g2r_grp_ID
-          LEFT JOIN family_fam ON fam_ID = per_fam_ID
-          where fam_DateDeactivated is  null and
-                p2g2r_rle_ID = 2 and grp_Type = 4) as SundaySchoolKidsCount
-        from dual ;
-        ';
-        $rsQuickStat = FunctionsUtils::runQuery($sSQL);
-        $row = mysqli_fetch_array($rsQuickStat);
-
-        return ['groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
-    }
-
-    /**
-     * Return last edited members. Only from active families selected.
-     *
-     * @param int $limit
-     *
-     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
-     */
-    public function getUpdatedMembers($limit = 12)
-    {
-        return PersonQuery::create()
-            ->leftJoinWithFamily()
-            ->where('Family.DateDeactivated is null')
-            ->filterByLiving()
-            ->orderByDateLastEdited('DESC')
-            ->limit($limit)
-            ->find();
-    }
-
-    /**
-     * Newly added members. Only from Active families selected.
-     *
-     * @param int $limit
-     *
-     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
-     */
-    public function getLatestMembers($limit = 12)
-    {
-        return PersonQuery::create()
-            ->leftJoinWithFamily()
-            ->where('Family.DateDeactivated is null')
-            ->filterByLiving()
-            ->orderByDateEntered('DESC')
-            ->limit($limit)
-            ->find();
     }
 }

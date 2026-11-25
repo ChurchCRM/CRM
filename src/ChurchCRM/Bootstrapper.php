@@ -143,6 +143,11 @@ class Bootstrapper
             $dbVersion = VersionUtils::getDBVersion();
             $softwareVersion = VersionUtils::getInstalledVersion();
 
+            if ($dbVersion === '') {
+                // Tables without a version row: another request is still installing the schema.
+                self::systemFailure('ChurchCRM is still being installed. Reload this page in a minute.', 'Installation in progress');
+            }
+
             if (version_compare($softwareVersion, $dbVersion, '>')) {
                 // Software is newer than DB — auto-upgrade the database
                 if (session_status() !== PHP_SESSION_ACTIVE) {

@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       title: letterPanel.dataset.title,
       icon: "fa-solid fa-signature",
       settings: JSON.parse(letterPanel.dataset.settings),
-      showAllSettingsLink: false,
       autoSave: true,
       columns: 1,
     });

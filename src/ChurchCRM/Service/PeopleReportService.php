@@ -301,7 +301,7 @@ class PeopleReportService
         // The classification filter picks the couples; the label names both spouses even
         // when the filter matched only one of them.
         if ($anniversaryFamilies !== []) {
-            $couple = PersonQuery::create()
+            $couple = PersonQuery::create()->filterByActive()
                 ->filterByFamId(array_keys($anniversaryFamilies), Criteria::IN)
                 ->filterByFmrId([self::FAMILY_ROLE_HEAD, self::FAMILY_ROLE_SPOUSE])
                 ->select(['Id'])
@@ -493,7 +493,7 @@ class PeopleReportService
             $query->filterByClsId($classifications, Criteria::IN);
         }
 
-        return $query;
+        return $query->filterByActive();
     }
 
     /**

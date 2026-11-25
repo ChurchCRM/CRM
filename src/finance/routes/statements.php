@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -73,11 +74,11 @@ $app->get('/statements/settings', function (Request $request, Response $response
             [gettext('Statement Settings')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
-            ['label' => gettext('Giving Statements'), 'url' => '/finance/reports/giving-statements', 'icon' => 'fa-file-invoice-dollar', 'adminOnly' => false],
+            ['label' => gettext('Giving Statements'), 'url' => '/finance/reports/giving-statements', 'icon' => 'fa-file-invoice-dollar'],
             ['label' => gettext('Report Settings'), 'url' => '/admin/system/report-settings', 'icon' => 'fa-signature'],
         ]),
         'sections'     => $sections,
     ];
 
     return $renderer->render($response, 'statements.php', $pageArgs);
-});
+})->add(AdminRoleAuthMiddleware::class);

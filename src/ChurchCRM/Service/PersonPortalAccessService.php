@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authorization\EffectiveGrant;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonPasskeyQuery;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Portal\Permissions\EffectiveGrant;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
 use ChurchCRM\Utils\DateTimeUtils;

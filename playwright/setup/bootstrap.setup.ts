@@ -81,13 +81,14 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanPause(page, 400);
   await humanClick(page.locator('button[type=submit]'));
 
-  // ChurchInfoRequiredMiddleware redirects here while sChurchName is empty.
-  // The demo data import (next test) overwrites this with its own fixture
-  // ("Main St. Cathedral") — expected, not a bug; this save only needs to
-  // satisfy the required-fields gate so we can move on.
-  await page.waitForURL(/\/admin\/system\/church-info/, { timeout: 15000 });
+  // With no church name yet, the admin lands on the Setup Dashboard and picks
+  // Set Up Your Church. The demo data import (next test) overwrites this with
+  // its own fixture ("Main St. Cathedral") — expected, not a bug.
+  await page.waitForURL(/\/admin\/setup$/, { timeout: 15000 });
   await dismissSystemNotifications(page);
-  await page.reload();
+  await humanPause(page, 800);
+  await humanClick(page.locator('#startChurchSetup'));
+  await page.waitForURL(/\/admin\/system\/church-info/, { timeout: 15000 });
   await humanPause(page, 500);
 
   await humanType(page.locator('#sChurchName'), CHURCH_NAME);
@@ -111,7 +112,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
     name: 'setup-church-info',
     title: 'Setup - Church Info',
     category: 'Setup',
-    purpose: 'Show the first sign-in: the forced password change and the church info form',
+    purpose: 'Show the first sign-in: the forced password change, the Setup Dashboard, and the church info form',
     usedIn: ['website'],
   });
 });
@@ -124,30 +125,22 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // An administrator's first full sign-in checks GitHub for releases and fetches the remote
   // notifications before it redirects, which can take well past the 15s action timeout on a runner.
   await page.locator('input[name=Password]').press('Enter', { timeout: 60000 });
-  // An administrator signed in at /admin/ stays there, on the Admin Dashboard.
-  await expect(page.locator('input[name=Password]')).toHaveCount(0, { timeout: 60000 });
+  // A new install's first admin sign-in opens the Setup Dashboard.
+  await page.waitForURL(/\/admin\/setup$/, { timeout: 60000 });
 
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
-
-  await page.goto('/admin/get-started');
   await humanPause(page, 500);
 
-  const importCard = page.locator('#importDemoDataV2');
-  await importCard.waitFor({ state: 'visible', timeout: 10000 });
-  await humanClick(importCard);
+  const importButton = page.locator('#importDemoDataSetup');
+  await importButton.waitFor({ state: 'visible', timeout: 10000 });
+  await humanClick(importButton);
 
   await page.locator('#demoImportModal').waitFor({ state: 'visible', timeout: 5000 });
   await humanPause(page, 500);
   await humanClick(page.locator('#demoImportConfirmBtn'));
 
-  // The modal shows its progress state while the import runs and closes when done.
-  await page.locator('#demoImportModal').waitFor({ state: 'hidden', timeout: 120000 });
-  await humanPause(page, 800);
-
-  // Show the payoff, not just the click — end on the People (members)
-  // dashboard, populated by the import, rather than leaving the video on
-  // the get-started page.
-  await page.goto('/people/dashboard');
+  // The import ends on the People dashboard, populated with the demo data.
+  await page.waitForURL(/\/people\/dashboard$/, { timeout: 120000 });
   // The unified dashboard renders several h2s (page title, Insights, ...);
   // a bare 'h2' locator is a strict-mode violation now. Wait on the title.
   await page.locator('h2.page-title').waitFor({ state: 'visible', timeout: 15000 });
@@ -157,7 +150,7 @@ setup('demo-data-import', async ({ page }, testInfo) => {
     name: 'demo-data-import',
     title: 'Demo Data Import',
     category: 'Setup',
-    purpose: 'Show importing the sample data set and the resulting seeded families',
+    purpose: 'Show a new install opening on the Setup Dashboard, importing the sample data, and the populated People dashboard',
     usedIn: ['website'],
   });
 

@@ -83,7 +83,7 @@ $app->post('/cart/add', function (Request $request, Response $response) {
             $iCount     = count($_SESSION['aPeopleCart']);
 
             // Volunteer v2 (D23): the Teacher role of a linked class is given by a team's
-            // qualifications. Refused here because addUserToGroup() swallows the refusal.
+            // qualifications.
             $teacherLock = VolunteerClassLinkService::findTeacherWriteConflict(
                 $iGroupID,
                 null,
@@ -97,15 +97,36 @@ $app->post('/cart/add', function (Request $request, Response $response) {
                     ->withStatus(302);
             }
 
-            Cart::emptyToGroup($iGroupID, $iGroupRole);
+            $failedPeople = Cart::emptyToGroup($iGroupID, $iGroupRole);
+            $successCount = $iCount - count($failedPeople);
+
+            if ($failedPeople !== []) {
+                $message = sprintf(
+                    ngettext(
+                        '%d Person successfully added to selected Group.',
+                        '%d People successfully added to selected Group.',
+                        $successCount
+                    ),
+                    $successCount
+                );
+                $message .= ' ' . sprintf(
+                    gettext('%d people could not be added and remain in your cart.'),
+                    count($failedPeople)
+                );
+                FlashService::set($message, 'warning');
+
+                return $response
+                    ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart/add')
+                    ->withStatus(302);
+            }
 
             FlashService::set(sprintf(
                 ngettext(
                     '%d Person successfully added to selected Group.',
                     '%d People successfully added to selected Group.',
-                    $iCount
+                    $successCount
                 ),
-                $iCount
+                $successCount
             ));
 
             return $response

@@ -381,18 +381,6 @@ msgid "(No assigned family)"
 msgstr "(Nicio familie alocate)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Conversia Persoanelor în Familii"
-
-#: 
-msgid "Convert Next"
-msgstr "Convetește următoarea"
-
-#: 
-msgid "Convert All"
-msgstr "Converti toate"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Numărul bonului de depozit"
@@ -1647,10 +1635,6 @@ msgid "Permission"
 msgstr "Permisiune"
 
 #: 
-msgid "System Settings"
-msgstr "Setări system"
-
-#: 
 msgid "User Editor"
 msgstr "Utilizator Editor"
 
@@ -2153,24 +2137,12 @@ msgid "Localization"
 msgstr "Localizare"
 
 #: 
-msgid "Setting saved"
-msgstr "Setarea salvată"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Editați Setările JSON"
-
-#: 
 msgid "False"
 msgstr "Fals"
 
 #: 
 msgid "True"
 msgstr "Adevărat"
-
-#: 
-msgid "Edit Settings"
-msgstr "Editeaza setarile"
 
 #: 
 msgid "Functions"
@@ -2288,33 +2260,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Include în director, numai aceste clarificări, separate de virgulă"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Acestea sunt numerele de rol familial desemnate ca șef de casă"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Acestea sunt numerele de rol familial desemnate ca soție"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Acestea sunt numerele de rol familial desemnate șef copil"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Lungime minim parolă"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Listă de cuvinte, separate prin virgulă, pe care utilizatorul nu le poate folosi ca parolă."
-
-#: 
 msgid "Default City"
 msgstr "Oraș inplicit"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Stadiu implicit - Trebuie să fie abreviere de 2 litere!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2337,68 +2284,12 @@ msgid "First month of the fiscal year"
 msgstr "Prima luna a anului fiscal"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Setați true pentru a dezactiva introducerea datei prietenului în editorul de persoane. Setați false pentru a activa introducerea datei prietenului în editorul de persoane"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Setați true pentru a dezactiva managementul newsletter-ului în editorul de familie"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Setați true pentru a dezactiva introducerea datei nunții în editorul familiei. Setați false pentru a permite introducerea datei nunții în Family Editor"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Numărul de cecuri pentru raportul borderoului de depunere"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unități pentru distanță, mile sau km"
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Permite plățile nedeductibile"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbalizare pentru prima linie a raportului fiscal. Datele vor fi anexate la sfârșitul acestei linii."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbalizare pentru ultima linie a raportului fiscal"
-
-#: 
-msgid "Tax Report signer"
-msgstr "Semnatar raport fiscal"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Text pentru raportul de reamintire a angajamentelor"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Semnatarul reamintirii angajamentelor"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Logoree pentru reamintirea raportului de gaj - nu există înregistrări de gaj"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Logoree pentru reamintirea raportului de gaj - nu există înregistrări de plăți"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbalizare pentru confirmarea informațiilor de bază de date și raportul de corecție"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Semnatar confirmarea informațiilor de bază de date"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbalizare pentru raportul directorului"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3854,10 +3745,6 @@ msgstr "Copia de rezervă nu conține baza de date"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Transformă codurile poștale introduse de user în litere CAPITALIZAT la salvarea în baza de date"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Folosit pentru a încheia o scrisoare înainte de semnare"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3962,10 +3849,6 @@ msgid "Failed"
 msgstr "Eșuat"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Numărul contului de verificare al Bisericii"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Dezactivează familia"
@@ -3978,10 +3861,6 @@ msgstr "Activează familia"
 #: 
 msgid "families"
 msgstr "familii"
-
-#: 
-msgid "Financial Settings"
-msgstr "Setări financiare"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4022,10 +3901,6 @@ msgstr "Proprietatea a fost ștearsă cu success"
 #: 
 msgid "The property could not be unassigned."
 msgstr "Proprietatea nu a putut fi ștearsă"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Text înainte de nume în email-uri/rapoarte"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4269,10 +4144,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "înregistrări adăugate cu succes grupului selectat."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Pentru definirea datei în Data-Picker, implicit: aaaa-ll-zz, în franceză: zz / ll / aaaa de exemplu."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Pentru definirea datei în Data-Picker, în mod implicit: Y-m-d, în franceză: d / m / Y de exemplu."
 
@@ -4359,10 +4230,6 @@ msgstr "VNV"
 #: 
 msgid "WSW"
 msgstr "VSV"
-
-#: 
-msgid "Search Family"
-msgstr "Caută familie"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4461,10 +4328,6 @@ msgid "Change Settings"
 msgstr "Schimbă setările"
 
 #: 
-msgid "Unknown Type"
-msgstr "Tip necunoscut"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonalID pentru coș trebuie să fie numeric"
 
@@ -4483,14 +4346,6 @@ msgstr "Caută oameni"
 #: 
 msgid "Maximum number of People"
 msgstr "Numărul maxim de persoane"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Câmpul în care este listat Părintele pentru Spovedanie trebuie să fie de tip persoană dintr-un grup"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Câmpul în care este stocată ultima Spovedanie trebuie să fie de tip dată"
 
 #: 
 msgid "People Reports"
@@ -4744,18 +4599,6 @@ msgid "Event not found"
 msgstr "Evenimentul nu a fost gasit"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Durata de expirare a sesiunii în secunde\n"
-"Setați la zero pentru a dezactiva expirarea sesiunii"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Suma minimă cu care o nouă parolă trebuie să difere de cea veche (# de caractere schimbate)\n"
-"Setați la zero pentru a dezactiva această funcționalitate"
-
-#: 
 msgid "Verify People"
 msgstr "Verifică oamenii"
 
@@ -4829,10 +4672,6 @@ msgstr "Evenimente nefixate"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Nume, prenume, al doile prenume"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Trimite un email prin care să notifici utilizatorii când contul lor a fost șters"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7807,10 +7646,6 @@ msgid "selected family has no coordinates"
 msgstr "familia selectată nu are coordonate"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
-
-#: 
 msgid "Active Groups"
 msgstr "Grupuri active"
 
@@ -8290,10 +8125,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Alegeți cum doriți să populați baza de date. Puteți folosi oricând o altă metodă ulterior."
 
 #: 
-msgid "Church Info"
-msgstr "Informații parohie"
-
-#: 
 msgid "Clear all"
 msgstr "Șterge tot"
 
@@ -8326,14 +8157,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Completați aceștia în orice ordine pentru a pregăti ChurchCRM pentru parohia dumneavoastră."
 
 #: 
-msgid "Confession"
-msgstr "Spovedanie"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Configurați setările globale ale sistemului și preferințele"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Configurați setările grupului, rolurile și proprietățile"
 
@@ -8344,10 +8167,6 @@ msgstr "Confirmați noua parolă"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Conectați un server SMTP pentru ca ChurchCRM să poată trimite e-mailuri"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Convertiți înregistrări individuale în unități de familie"
 
 #: 
 msgid "Convert to Family"
@@ -8384,10 +8203,6 @@ msgstr "Persoana curentă"
 #: 
 msgid "Database Reset"
 msgstr "Resetare bază de date"
-
-#: 
-msgid "Default / Notes"
-msgstr "Implicit / Note"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -10008,10 +9823,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Permiteți actualizările sistemului la versiunile marcate ca 'pre release' pe GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Permiteți accesul neautentificat la evenimentele calendarului prin URL-uri HTML, ICS și JSON publice. Necesar pentru partajarea calendarelor cu aplicații externe."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Permiteți vizitatorilor să creeze propria înregistrare de familie prin pagina de auto-înregistrare"
 
@@ -10174,24 +9985,12 @@ msgid "Enable Email"
 msgstr "Activează e-mail"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Activează meniu Evenimente"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Activează API calendar extern"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Activați trimiterea de e-mailuri din ChurchCRM. Necesar pentru resetarea parolei, notificări și linkuri prin e-mail."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Activați dacă serverul SMTP necesită un nume de utilizator și o parolă"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Activați sau dezactivați modulul Școala duminicală și meniul lateral."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10289,10 +10088,6 @@ msgstr "Ascunde latitudine/longitudine"
 #: 
 msgid "How it works"
 msgstr "Cum funcționează"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Câte cecuri se imprimă pe pagina bonului de depozit"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10452,10 +10247,6 @@ msgid "Privacy Note"
 msgstr "Notă de confidențialitate"
 
 #: 
-msgid "Quick Settings"
-msgstr "Setări rapide"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Autentificare SMTP"
 
@@ -10482,10 +10273,6 @@ msgstr "Configurare"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Afișați o defalcare a denominațiilor bancnotelor în raportul foii de depozit"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Afișați sau ascundeți meniul Evenimente în navigarea principală."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10899,10 +10686,6 @@ msgstr "Dacă observați caractere corupte, entități HTML afișate ca text sau
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Valoare JSON invalidă — setarea nu a fost salvată. Vă rugăm să o corectați și să încercați din nou."
 
 #: 
 msgid "Language and regional settings"
@@ -12680,10 +12463,6 @@ msgstr "Toată ziua"
 #: 
 msgid "All Roles"
 msgstr "Toate rolurile"
-
-#: 
-msgid "All System Settings"
-msgstr "Toate setările de sistem"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15157,10 +14936,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Lista separata prin spatii de origini permise sa incorporeze pagina publica externa de calendar intr-un iframe CSP frame-ancestors. Valoarea implicita permite orice origine. Restrictionati la origini specifice pentru securitate sporita."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Origini separate prin spatii permise sa incorporeze pagina publica de calendar intr-un iframe CSP frame-ancestors. Valoarea implicita permite orice site. Restrictionati pentru securitate sporita."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Grupul Scolii Duminicale nu poate fi modificat, doar in aceste doua cazuri"
 
@@ -15501,10 +15276,6 @@ msgid "ChurchCRM version"
 msgstr "Versiunea ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Nivel de colectare"
-
-#: 
 msgid "Count unique installs"
 msgstr "Numără instalările unice"
 
@@ -15559,14 +15330,6 @@ msgstr "Actualizarea angajamentului a eșuat"
 #: 
 msgid "Financial data"
 msgstr "Date financiare"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Complet — toate cele de mai sus plus vizualizări de pagini"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Complet — vizualizări de pagini, avertismente, erori și excepții JS"
 
 #: 
 msgid "Fund Summary"
@@ -15645,10 +15408,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Suma nedeductibilă nu poate depăși suma fondului"
 
 #: 
-msgid "None (disabled)"
-msgstr "Niciunul (dezactivat)"
-
-#: 
 msgid "Overpaid"
 msgstr "Plătit în exces"
 
@@ -15709,10 +15468,6 @@ msgid "Select a fund"
 msgstr "Selectați un fond"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Trimite-mi un e-mail de test de ziua de naștere"
-
-#: 
 msgid "Sending to"
 msgstr "Se trimite către"
 
@@ -15767,10 +15522,6 @@ msgstr "Vă dorim o zi de naștere minunată!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Contul dvs. nu are o adresă de e-mail înregistrată. Adăugați una în profilul dvs. pentru a trimite un test."
-
-#: 
-msgid "errors+"
-msgstr "erori+"
 
 #: 
 msgid "full only"
@@ -16735,10 +16486,6 @@ msgid "Not a valid date of death"
 msgstr "Data decesului nu este validă"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Numărul de zile pe care utilizatorii le au pentru a se înscrie la 2FA după ce devine obligatoriu. Setați la 0 pentru a impune imediat. Scurtarea unei perioade de grație active poate bloca imediat utilizatorii."
-
-#: 
 msgid "Offline"
 msgstr "Deconectat"
 
@@ -17063,14 +16810,6 @@ msgid "Download CSV"
 msgstr "Descarcă CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Activează sau dezactivează modulul Finanțe și meniul barei laterale."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Activează sau dezactivează modulul Strângere de fonduri."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Eșec la eliminarea logo-ului bisericii"
 
@@ -17215,10 +16954,6 @@ msgid "Access Control & Security"
 msgstr "Control de acces și securitate"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Permite înregistrarea plăților nedeductibile (de ex., vânzări de mărfuri)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Permite accesul neautentificat la evenimentele publice (pentru încorporarea calendarelor)"
 
@@ -17271,46 +17006,6 @@ msgid "Feature Toggles"
 msgstr "Comutatoare de caracteristici"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Comutatoarele de caracteristici controlează care module și funcții sunt disponibile în ChurchCRM. Modificările au efect imediat."
-
-#: 
-msgid "Finance Features"
-msgstr "Caracteristici financiare"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Includeți adresele în căutarea globală rapidă"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Includeți evenimentele calendarului în căutarea globală rapidă"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Includeți proprietățile familiale personalizate în căutarea globală rapidă"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Includeți depunerile în căutarea globală rapidă"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Includeți familiile în căutarea globală rapidă"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Includeți ministerele în căutarea globală rapidă"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Includeți plățile în căutarea globală rapidă"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Includeți persoanele în căutarea globală rapidă"
-
-#: 
 msgid "Invalid setting"
 msgstr "Setare nevalidă"
 
@@ -17319,16 +17014,8 @@ msgid "Lost Password Link"
 msgstr "Link parolă uitată"
 
 #: 
-msgid "Manage All Features"
-msgstr "Gestionați toate funcțiile"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Comutatorul master pentru trimiterea de e-mail. NECESAR pentru resetări de parolă și notificări"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Plăți nedeductibile"
 
 #: 
 msgid "Primary Modules"
@@ -17339,20 +17026,12 @@ msgid "Public Calendar API"
 msgstr "API calendar public"
 
 #: 
-msgid "Saved"
-msgstr "Salvat"
-
-#: 
 msgid "Search Families"
 msgstr "Căutare familii"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Căutare proprietăți personalizate ale familiei"
-
-#: 
-msgid "Search Settings"
-msgstr "Setări de căutare"
 
 #: 
 msgid "Self-Registration"
@@ -17569,14 +17248,6 @@ msgstr "Destinatarii notificărilor"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Persoane de notificat când se adaugă o familie sau o persoană nouă"
-
-#: 
-msgid "Person initials style"
-msgstr "Stilul inițialelor persoanei"
-
-#: 
-msgid "Person name display style"
-msgstr "Stilul de afișare a numelui persoanei"
 
 #: 
 msgid "Spouse Role"
@@ -22618,10 +22289,6 @@ msgid "This email batch was queued by another user"
 msgstr "Acest lot de e-mailuri a fost pus în coadă de alt utilizator"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "După import, puteți folosi Resetare bază de date în Panoul de control administrator pentru a șterge toate datele și a o lua de la capăt. Configurația aplicației va fi păstrată."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Se importă datele demonstrative..."
 
@@ -23602,30 +23269,6 @@ msgid "Download PDF"
 msgstr "Descărcați PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Perioadă de blocare, în minute\n"
-"Un cont blocat se deblochează singur după acest număr de minute. Autentificările eșuate de la o adresă IP sunt numărate în aceeași perioadă."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Număr maxim de autentificări eșuate de la o adresă IP\n"
-"Autentificările eșuate și cererile de resetare a parolei de la o adresă IP se adună la această limită în perioada de blocare. Odată atinsă, autentificarea de la acea adresă este refuzată până la sfârșitul perioadei.\n"
-"Setați zero pentru a dezactiva această funcție, de exemplu când toată lumea ajunge la ChurchCRM printr-o singură adresă proxy."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Număr maxim de autentificări eșuate permis înainte ca un cont de utilizator să fie blocat.\n"
-"Un cont blocat se deblochează singur după perioada de blocare sau mai devreme, când un administrator îi resetează autentificările eșuate.\n"
-"Această funcție ajută la protecția împotriva atacurilor automate de ghicire a parolei.\n"
-"Setați zero pentru a dezactiva această funcție."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minute până se deblochează singur: %d"
 
@@ -23954,10 +23597,6 @@ msgid "PDF Output"
 msgstr "Ieșire PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Mod de gestionare PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Rând de întrebări"
 
@@ -23994,10 +23633,6 @@ msgid "Greeting"
 msgstr "Formulă de salut"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Salutul și semnătura scrisorii"
-
-#: 
 msgid "Letterhead"
 msgstr "Antet"
 
@@ -24020,10 +23655,6 @@ msgstr "Setați antetul pe care îl tipăresc scrisorile PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Se folosesc numele și adresa bisericii"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Se folosește calea antetului setată în Setările de sistem"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26233,14 +25864,6 @@ msgstr "Plăți pe fonduri"
 msgid "Unknown Fund"
 msgstr "Fond necunoscut"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată, apoi încercați din nou."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26258,18 +25881,6 @@ msgstr "Solicitați numărul cecului la înregistrarea plăților cu cec în dep
 #: 
 msgid "Require check number on check payments"
 msgstr "Solicitați numărul cecului la plățile cu cec"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Actualizarea nu a fost pornită, deci nu s-a schimbat nimic."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Această actualizare nu poate rula pe baza dvs. de date."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Serverul dvs. de baze de date (%1$s %2$s) este mai vechi decât acceptă ChurchCRM (MySQL %3$s sau MariaDB %4$s și versiunile ulterioare)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26430,22 +26041,6 @@ msgid "Database engine and major/minor version"
 msgstr "Motorul bazei de date și versiunea majoră/minoră"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Erori — statistici de instalare, avertismente, erori și excepții JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Ne ajutați să găsim și să remediem probleme?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Instalare partajează statistici minime de instalare și actualizare. Erori adaugă avertismente și rapoarte de erori. Complet adaugă vizualizările de pagini. Niciunul trimite doar instalările și actualizările eșuate."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Instalare — statistici de instalare și actualizare (implicit)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Rezultatele instalării și actualizării, versiunea anterioară la actualizări și un semnal zilnic cât timp este folosit"
 
@@ -26454,68 +26049,12 @@ msgid "Installation profile"
 msgstr "Profil de instalare"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Setări regionale (Erori și Complet)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nu se partajează niciodată: datele membrilor, donațiile sau alte date ale bisericii, numele bisericii dvs., adresa web sau numele serverului ori adresele de e-mail. Țara dvs. este cea din setările bisericii, nu este dedusă din rețeaua dvs."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Familia sistemului de operare (Erori și Complet)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Versiunea PHP (Erori și Complet)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Vedeți exact ce se partajează sau schimbați-vă alegerea în Administrare → Telemetrie."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Separați instalările de producție, demonstrație și test"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Partajați statistici anonime de instalare?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Partajați rapoarte de erori și de utilizare"
-
-#: 
-msgid "Share install statistics"
-msgstr "Partajați statistici de instalare"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Se partajează în plus: avertismente, detalii despre erori și ce pagini sunt deschise."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Se partajează: faptul că ChurchCRM a fost instalat sau actualizat și dacă a funcționat, un semnal o dată pe zi cât timp este folosit, numărul versiunii, țara dvs. și tipul bazei de date. Un ID de instalare aleatoriu numără fiecare instalare o singură dată."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Înțelegeți compatibilitatea bazelor de date"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Alegerea vi se cere o singură dată. O puteți schimba oricând. Cu Nu, mulțumesc, se raportează doar o instalare sau o actualizare eșuată."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Datele dvs. vă aparțin. Instalare partajează doar rezultatele instalării și actualizării, ID-ul de instalare, versiunea software, profilul de instalare, țara configurată și motorul bazei de date cu versiunea majoră/minoră. Erori adaugă avertismente și detalii despre erori. Complet adaugă vizualizările de pagini. Niciunul trimite doar instalările și actualizările eșuate. Niciun nivel nu trimite adresa web sau numele serverului. Instalările de test nu trimit nimic. Telemetria este trimisă către PostHog în Statele Unite."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Datele dvs. vă aparțin. Aceste rapoarte privesc software-ul, niciodată biserica dvs. sau oamenii ei."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Datele dvs. vă aparțin. Pentru a număra instalările, ChurchCRM raportează că a fost instalat sau actualizat și dacă a funcționat, un semnal o dată pe zi cât timp este folosit, plus numărul versiunii, țara dvs., tipul bazei de date și un ID de instalare aleatoriu. Nu raportează niciodată datele membrilor, donațiile sau alte date ale bisericii, numele bisericii dvs., adresa web sau numele serverului ori adresele de e-mail. Puteți dezactiva aceasta oricând în Administrare → Telemetrie; o instalare sau o actualizare eșuată este raportată în continuare. Avertismentele, detaliile despre erori și vizualizările de pagini sunt partajate doar dacă alegeți acest lucru."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28119,10 +27658,6 @@ msgid "How the congregation is made up"
 msgstr "Componența congregației"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Înțeleg că această bază de date nu este acceptată și că actualizările vor fi blocate"
-
-#: 
 msgid "Insights"
 msgstr "Perspective"
 
@@ -28145,10 +27680,6 @@ msgstr "Verificarea integrității a eșuat"
 #: 
 msgid "Integrity check passed"
 msgstr "Verificarea integrității a trecut"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Jeton CSRF nevalid"
 
 #: 
 msgid "Last %d days"
@@ -28193,10 +27724,6 @@ msgstr "Deschide panoul de bord Finanțe pe acest interval. Alegeți un an fisca
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Ultimele 7 zile și următoarele %d zile"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Persoane fără familie: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28327,10 +27854,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Acest panou de bord este acum panoul de bord principal."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Această bază de date nu mai primește remedieri de securitate de la furnizorul său."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Aici vor deschide oamenii ChurchCRM. Modificați-l numai dacă vor folosi o adresă diferită de cea a acestei pagini."
 
@@ -28343,28 +27866,12 @@ msgid "Total deposited"
 msgstr "Total depus"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Server de baze de date neacceptat"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Actualizările vor fi blocate până când baza de date va fi mutată la o versiune acceptată."
-
-#: 
 msgid "Usually 3306."
 msgstr "De obicei 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Vă recomandăm să cereți gazdei să facă trecerea înainte de instalare, cât timp nu există date de mutat. MariaDB 10.11 este o țintă potrivită."
-
-#: 
 msgid "Web address"
 msgstr "Adresă web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Puteți instala acum: ChurchCRM se va instala și va funcționa."
 
 #: 
 msgid "Your main dashboard"
@@ -28383,4 +27890,476 @@ msgstr "și încă {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "și încă {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "Baza de date nu este suportată"
+
+#: 
+msgid "Deactivated"
+msgstr "Dezactivat"
+
+#: 
+msgid "How to find the log"
+msgstr "Cum să găsiți jurnalul"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cum să instalați setările regionale ale serverului"
+
+#: 
+msgid "Last edited"
+msgstr "Ultima editare"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nu este instalat pe server și nu este instalată nici o setare regională de rezervă în engleză, așa că interfața se va afișa în engleză."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Jurnalul ChurchCRM înregistrează motivul specific. Eliminați numele înainte de a-l partaja."
+
+#: 
+msgid "Verify now"
+msgstr "Verificați acum"
+
+#: 
+msgid "View Giving History"
+msgstr "Vizualizați istoricul donațiilor"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d persoane adăugate cu succes; %d persoane nu au putut fi adăugate și rămân în coș."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d persoane nu au putut fi adăugate și rămân în coșul dvs."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administratorii vor vedea acest avertisment pe fiecare pagină până când baza de date va fi mutată la o versiune care primește încă remedieri de securitate. Mutarea acum, cât timp există puține date, este cea mai ușoară."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "De acum înainte, administratorii se vor autentifica în panoul de bord standard. Panoul de configurare nu se va mai deschide la autentificare."
+
+#: 
+msgid "Database security risk"
+msgstr "Risc de securitate al bazei de date"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Modul demonstrativ activează și statisticile anonime de utilizare (PostHog), ca să putem vedea cum explorează oamenii ChurchCRM. Începe de la zero le dezactivează."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Setări e-mail salvate. Autentificarea membrilor este acum activată, deci membrii se pot autentifica în Portalul comunității cu e-mailul lor."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Introduceți informațiile bisericii dvs., adăugați persoanele și invitați-vă echipa."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Totul aici este format din date de exemplu. Începeți de la zero înainte de a introduce informațiile reale ale bisericii dvs."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Totul aici este format din date de exemplu. Când sunteți gata să folosiți ChurchCRM pentru biserica dvs., începeți de la zero: șterge datele demonstrative și fiecare setare, ca să puteți începe cu ale dvs."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Explorați ChurchCRM cu date demonstrative sau configurați-l pentru biserica dvs."
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Eșec la adăugarea persoanei în grup"
+
+#: 
+msgid "Finish setup"
+msgstr "Finalizează configurarea"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Timp de acest număr de zile după instalare, administratorii se autentifică în panoul de configurare. Setați 0 pentru a-l dezactiva."
+
+#: 
+msgid "Group Assignment"
+msgstr "Atribuire la grupuri"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Intern: un administrator a ales Finalizează configurarea în panoul de configurare. Nu editați manual."
+
+#: 
+msgid "Keep exploring"
+msgstr "Continuă explorarea"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Vă mutați de pe alt server ChurchCRM? Restaurați o copie de rezervă făcută acolo. Aceasta înlocuiește totul în această instalare."
+
+#: 
+msgid "Ready for your church"
+msgstr "Gata pentru biserica ta"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Reîncearcă atribuirea la grupuri"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Reîncearcă atribuirile la grupuri"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Selectați unul sau mai multe grupuri pentru această persoană."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Selectați grupurile pe care doriți să le reîncercați."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Configurează-ți biserica"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Panou de configurare"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Începe de la zero, din bannerul demonstrativ, sau Resetare bază de date, din Panoul de control administrator, șterge datele demonstrative și fiecare setare și readuce ChurchCRM la o instalare nouă."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Mai întâi începeți de la zero, apoi configurați ChurchCRM cu informațiile propriei biserici."
+
+#: 
+msgid "Start setup"
+msgstr "Începe configurarea"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Datele demonstrative au dispărut. Autentificați-vă cu contul de administrator implicit pentru a vă configura biserica."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Persoana a fost salvată, dar una sau mai multe atribuiri la grupuri au eșuat. Selectați grupurile de mai jos și reîncercați."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Persoana a fost salvată, dar una sau mai multe atribuiri la grupuri au eșuat. Grupurile nereușite sunt selectate mai jos. Verificați-le și salvați din nou pentru a reîncerca."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Aceasta șterge datele demonstrative și fiecare setare și readuce ChurchCRM la o instalare nouă."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Vă veți autentifica din nou cu contul de administrator implicit și veți introduce informațiile bisericii dvs."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Explorați ChurchCRM cu date demonstrative."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Explorați date demonstrative"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informațiile bisericii dvs. au fost salvate. Parcurgeți pașii de mai jos."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Baza dvs. de date (%1$s %2$s) este un risc de securitate: furnizorul ei nu mai publică remedieri de securitate pentru acea versiune. ChurchCRM funcționează în continuare, dar cereți gazdei dvs. să treacă la MariaDB %3$s+ sau MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "O verificare zilnică în timpul utilizării, versiunile software-ului și ale bazei de date, limba, țara, tipul de instalare și un ID de instalare aleatoriu ajută la numărarea instalărilor active."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Conturi și autentificare"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Trimite și paginile utilizate."
+
+#: 
+msgid "Areas"
+msgstr "Zone"
+
+#: 
+msgid "Church & System"
+msgstr "Biserică și sistem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Orașul sau localitatea în care sunt emise chitanțele, tipărit pe chitanțele oficiale. Lăsați necompletat pentru a folosi orașul bisericii."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Formula de încheiere înaintea numelui semnatarului, de exemplu Cu stimă."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Formula de încheiere tipărită înaintea semnatarului pe chitanțele oficiale."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Parole separate prin virgule pe care nimeni nu le poate folosi."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Scrisoare de confirmare"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Creați o familie pentru această persoană? Adresa și telefonul de acasă se mută în noua familie."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Zilele pe care utilizatorii le au la dispoziție pentru a configura autentificarea cu doi factori după ce devine obligatorie. 0 o impune imediat. Scurtarea unei perioade de grație active poate bloca accesul utilizatorilor."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depozite și plăți"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Parole interzise"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Act de renunțare %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Trimite e-mail utilizatorilor când contul lor este șters"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Toate paginile de setări într-un singur loc și setările care se aplică întregului sistem"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Autentificări eșuate înainte de blocare"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Autentificări eșuate per adresă IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Roluri de familie tratate ca și copii în director."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Roluri de familie tratate ca și cap de familie în director și la autentificarea membrilor."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Roluri de familie tratate ca și soț/soție în director și la autentificarea membrilor."
+
+#: 
+msgid "Finance Settings"
+msgstr "Setări financiare"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Perioadă de grație (zile)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ascunde abonamentele la buletinul informativ în Editor de familie."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ascunde câmpul Prieten Data în Persoana Editor."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ascunde câmpul Data nunții în Editor de familie."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Cât timp rămâne blocat un cont blocat. Autentificările eșuate de la o singură adresă IP sunt numărate în aceeași perioadă."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Cu câte caractere trebuie să difere o parolă nouă de cea veche. 0 dezactivează această regulă."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "În Administrare → Telemetrie, activați Partajează paginile utilizate pentru a selecta Complet. Complet trimite și vizualizările de pagini."
+
+#: 
+msgid "Initials Format"
+msgstr "Formatul inițialelor"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Textul scrisorii %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Perioadă de blocare (minute)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Blochează un cont după acest număr de autentificări eșuate consecutive. Se deblochează după perioada de blocare sau când un administrator îl resetează. 0 dezactivează blocarea."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Gestionați Portalul comunității"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Membrii se pot autentifica cu e-mailul lor."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Membrii nu se pot autentifica încă."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Caractere minime modificate"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Lungimea minimă a parolei"
+
+#: 
+msgid "Name Format"
+msgstr "Formatul numelui"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Numele tipărit sub formula de încheiere a scrisorilor și e-mailurilor"
+
+#: 
+msgid "No Payments Text"
+msgstr "Text pentru lipsa plăților"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Text pentru lipsa angajamentului"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Niciun nivel nu trimite persoane, donatori, donații, conținut, datele de contact ale bisericii, adresa dvs. web sau numele serverului dvs."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Niciun nivel nu trimite adresa dvs. web sau numele serverului dvs. Instalările de test nu trimit nimic. Telemetria este trimisă la PostHog în Statele Unite."
+
+#: 
+msgid "OS family"
+msgstr "Familia sistemului de operare"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragraful de deschidere al scrisorii de reamintire a angajamentului."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragraful care invită la întrebări în extrasul de donații."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragraful care invită la întrebări în scrisoarea pentru donatorii fără donații."
+
+#: 
+msgid "Passwords"
+msgstr "Parole"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Tipărit după intervalul de date în rândul de deschidere al scrisorii pentru donatorii fără donații."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Tipărit primul pe extrasul de donații, urmat de intervalul de date."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Tipărit când o familie nu are plăți înregistrate."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Tipărit când o familie nu are niciun angajament înregistrat."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Refuză autentificarea de la o adresă IP pe durata perioadei de blocare după acest număr de autentificări eșuate sau resetări de parolă. 0 dezactivează această regulă, de exemplu când toată lumea se conectează printr-un singur proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Solicită autentificarea cu doi factori"
+
+#: 
+msgid "Security Settings"
+msgstr "Setări de securitate"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Trimite rapoarte de eroare, evenimente de instalare/actualizare și informații de sistem, pentru ca problemele să poată fi remediate. Fără vizualizări de pagini, fără date ale bisericii."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Expirare sesiune (secunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Partajează paginile utilizate"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Autentificare și securitate"
+
+#: 
+msgid "Signature Storage"
+msgstr "Stocarea semnăturii"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Deconectează un utilizator după acest număr de secunde de inactivitate. 0 nu deconectează niciodată."
+
+#: 
+msgid "System-wide"
+msgstr "Întregul sistem"
+
+#: 
+msgid "Text After Dates"
+msgstr "Text după date"
+
+#: 
+msgid "Text Messages"
+msgstr "Mesaje text"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragraful de mulțumire din extrasul de donații."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragraful de mulțumire din scrisoarea pentru donatorii fără donații."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Conversia a eșuat. Nu s-a modificat nimic."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Se folosește un fișier cu antet salvat înainte de adăugarea încărcărilor. Încărcați un antet pentru a-l înlocui."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Avertizare după (ore)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Cuvântul înaintea numelui în scrisori și e-mailuri, de exemplu Dragă."
 

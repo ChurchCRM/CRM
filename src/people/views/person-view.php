@@ -187,6 +187,9 @@ if ($person->isMale()) {
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
                     <?php } ?>
+                    <?php if ($convertToFamilyCsrfToken !== null) { ?>
+                        <a class="dropdown-item" href="#" id="convertToFamily" data-person-id="<?= (int) $iPersonID ?>" data-csrf-token="<?= InputUtils::escapeAttribute($convertToFamilyCsrfToken) ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('Convert to Family') ?></a>
+                    <?php } ?>
                     <?php if ($fam_ID !== '' && $familyHasCoords) { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Find Neighbors") ?></a>
                     <?php } ?>

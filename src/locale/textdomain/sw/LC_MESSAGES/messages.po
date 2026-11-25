@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(Hakuna familia iliyokabidhiwa)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Geuza Watu Kuwa Familia"
-
-#: 
-msgid "Convert Next"
-msgstr "Geuza anayefata"
-
-#: 
-msgid "Convert All"
-msgstr "Geuza wote"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Nambari ya Malipo ya Amana"
@@ -1607,10 +1595,6 @@ msgid "Permission"
 msgstr "Ruhusa"
 
 #: 
-msgid "System Settings"
-msgstr "Mipangilio ya Mfumo"
-
-#: 
 msgid "User Editor"
 msgstr "Mhariri wa Mtumiaji"
 
@@ -2096,24 +2080,12 @@ msgid "Localization"
 msgstr "Ujanibishaji"
 
 #: 
-msgid "Setting saved"
-msgstr "Mipangilio imehifadhiwa"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Hariri Mipangilio ya JSON"
-
-#: 
 msgid "False"
 msgstr "Uongo"
 
 #: 
 msgid "True"
 msgstr "Kweli"
-
-#: 
-msgid "Edit Settings"
-msgstr "Badilisha Mipangilio"
 
 #: 
 msgid "Functions"
@@ -2230,32 +2202,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Jumuisha uainishaji huu pekee kwenye saraka, iliyotenganishwa kwa koma"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Hizi ndizo nambari za majukumu ya familia zilizoteuliwa kama mkuu wa nyumba"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Hizi ndizo nambari za jukumu la familia zilizoteuliwa kama mwenzi"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Hizi ndizo nambari za jukumu la familia zilizoteuliwa kama mtoto"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Urefu wa chini ambao mtumiaji anaweza kuweka nenosiri lake"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Orodha iliyotenganishwa kwa koma ya manenosiri yasiyoruhusiwa (dhahiri sana)."
-
-#: 
 msgid "Default City"
 msgstr "Mji Chaguomsingi"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Jimbo Chaguomsingi - Lazima liwe kifupisho cha herufi 2!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2278,68 +2226,12 @@ msgid "First month of the fiscal year"
 msgstr "Mwezi wa kwanza wa mwaka wa fedha"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Weka kweli ili kuzima kuweka Tarehe ya Rafiki katika Kihariri cha Mtu. Weka sivyo ili kuwezesha kuweka Tarehe ya Rafiki katika Kihariri cha Mtu."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Weka kuwa kweli ili kuzima usimamizi wa usajili wa jarida katika Kihariri cha Familia."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Weka kuwa kweli ili kuzima kuweka Tarehe ya Harusi katika Kihariri cha Familia. Weka sivyo ili kuwezesha kuweka Tarehe ya Harusi katika Kihariri cha Familia."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Idadi ya hundi kwa Ripoti ya Slip ya Amana"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Kitengo kinachotumika kupima umbali, maili au km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Washa malipo yasiyokatwa"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage kwa mstari wa juu wa ripoti ya ushuru. Tarehe zitaongezwa hadi mwisho wa mstari huu."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbage kwa mstari wa chini wa ripoti ya ushuru."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Mtia saini wa Ripoti ya Ushuru"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Verbage kwa ripoti ya ukumbusho wa ahadi"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Kikumbusho cha Ahadi"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Verbage kwa ripoti ya ukumbusho wa ahadi - Hakuna rekodi ya ahadi"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbage kwa ripoti ya ukumbusho wa ahadi - Hakuna rekodi ya malipo"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage kwa taarifa ya hifadhidata ya uthibitisho na urekebishaji ripoti"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Kitiaji sahihi cha taarifa ya hifadhidata na ripoti ya marekebisho"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage kwa ripoti ya saraka"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3794,10 +3686,6 @@ msgstr "Kumbukumbu ya chelezo haina hifadhidata"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Fanya zip/misimbo ya posta iliyoingizwa na mtumiaji UPPERCASE unapohifadhi kwenye hifadhidata."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Hutumika kumalizia barua kabla ya Mtia saini"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3902,10 +3790,6 @@ msgid "Failed"
 msgstr "Imeshindwa"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Nambari ya Akaunti ya Ukaguzi wa Kanisa"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Imezima Familia"
@@ -3918,10 +3802,6 @@ msgstr "Imewasha Familia"
 #: 
 msgid "families"
 msgstr "familia"
-
-#: 
-msgid "Financial Settings"
-msgstr "Mipangilio ya Fedha"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3962,10 +3842,6 @@ msgstr "Mali imeondolewa kwa mafanikio."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Sifa hii haikuweza kutengwa."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Tuma maandishi kabla ya jina katika barua pepe/ripoti"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4209,10 +4085,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "rekodi zimeongezwa kwa Kikundi kilichochaguliwa."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Kwa kufafanua tarehe katika Kiteua Tarehe, kwa chaguo-msingi : yyy-mm-dd, Kwa Kifaransa : dd/mm/yyyy kwa mfano."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Kwa kufafanua tarehe katika Kichagua Tarehe, kwa chaguo-msingi : Y-m-d, Kwa Kifaransa : d/m/Y kwa mfano."
 
@@ -4299,10 +4171,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Tafuta Familia"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4401,10 +4269,6 @@ msgid "Change Settings"
 msgstr "Badilisha Mipangilio"
 
 #: 
-msgid "Unknown Type"
-msgstr "Aina Isiyojulikana"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Kitambulisho cha Mtu cha Rukwama lazima kiwe nambari"
 
@@ -4423,14 +4287,6 @@ msgstr "Tafuta Watu"
 #: 
 msgid "Maximum number of People"
 msgstr "Idadi ya juu zaidi ya Watu"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Uwanja ambapo Baba wa Kuungama ameorodheshwa, lazima wawe watu wa aina ya kikundi"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Sehemu ambayo Kuungama mara ya mwisho imehifadhiwa, lazima iwe aina ya tarehe"
 
 #: 
 msgid "People Reports"
@@ -4683,18 +4539,6 @@ msgid "Event not found"
 msgstr "Tukio halijapatikana"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Muda wa muda wa kipindi katika sekunde\n"
-"Weka hadi sufuri ili kuzima muda wa kuisha kwa kipindi."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Kiasi cha chini ambacho nenosiri jipya lazima litofautiane na lile la zamani (# ya herufi zimebadilishwa)\n"
-"Weka hadi sufuri ili kuzima kipengele hiki"
-
-#: 
 msgid "Verify People"
 msgstr "Thibitisha Watu"
 
@@ -4766,10 +4610,6 @@ msgstr "Matukio Yasiobandikwa"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Jina la Mwisho, Jina la Kwanza Jina la Kati"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Tuma barua pepe kuwaarifu watumiaji wakati akaunti yao imefutwa"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7738,10 +7578,6 @@ msgid "selected family has no coordinates"
 msgstr "familia iliyochaguliwa haina kuratibu"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili"
-
-#: 
 msgid "Active Groups"
 msgstr "Vikundi Vilivyo Hai"
 
@@ -8220,10 +8056,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Chagua jinsi unavyotaka kujaza hifadhidata yako. Unaweza kutumia njia nyingine baadaye."
 
 #: 
-msgid "Church Info"
-msgstr "Maelezo ya Kanisa"
-
-#: 
 msgid "Clear all"
 msgstr "Futa yote"
 
@@ -8256,14 +8088,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Kamilisha hizi kwa mpangilio wowote ili kuandaa ChurchCRM kwa ushirika wako."
 
 #: 
-msgid "Confession"
-msgstr "Ungamo"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Sanidi mipangilio na mapendeleo ya mfumo kwa ujumla"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Sanidi mipangilio, majukumu, na sifa za kikundi"
 
@@ -8274,10 +8098,6 @@ msgstr "Thibitisha nenosiri lako jipya"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Unganisha seva ya SMTP ili ChurchCRM iweze kutuma barua pepe"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Badilisha rekodi za mtu binafsi kuwa vitengo vya familia"
 
 #: 
 msgid "Convert to Family"
@@ -8314,10 +8134,6 @@ msgstr "Mtu wa sasa"
 #: 
 msgid "Database Reset"
 msgstr "Kuweka upya Hifadhidata"
-
-#: 
-msgid "Default / Notes"
-msgstr "Chaguo-msingi / Maelezo"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9938,10 +9754,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Ruhusu uboreshaji wa mfumo kwa kutolewa kulikowekwa alama ya 'pre release' kwenye GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Ruhusu ufikiaji usiohitaji uthibitishaji kwa matukio ya kalenda kupitia URL za HTML, ICS, na JSON za umma. Inahitajika kwa kushiriki kalenda na programu za nje."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ruhusu wageni kuunda rekodi yao ya familia kupitia ukurasa wa kujiandikisha"
 
@@ -10104,24 +9916,12 @@ msgid "Enable Email"
 msgstr "Wezesha barua pepe"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Wezesha menyu ya matukio"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Wezesha API ya kalenda ya nje"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Wezesha utumaji wa barua pepe kutoka ChurchCRM. Inahitajika kwa kuweka upya nenosiri, arifa, na viungo vya barua pepe."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Wezesha ikiwa seva yako ya SMTP inahitaji jina la mtumiaji na nenosiri"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Wezesha au zima moduli ya Shule ya Jumapili na menyu ya upande."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10219,10 +10019,6 @@ msgstr "Ficha latitudo/longitudo"
 #: 
 msgid "How it works"
 msgstr "Jinsi inavyofanya kazi"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Ni hundi ngapi za kuchapisha kwa ukurasa wa stakabadhi ya amana"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10382,10 +10178,6 @@ msgid "Privacy Note"
 msgstr "Dokezo la faragha"
 
 #: 
-msgid "Quick Settings"
-msgstr "Mipangilio ya haraka"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Uthibitishaji wa SMTP"
 
@@ -10412,10 +10204,6 @@ msgstr "Usanidi"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Onyesha muundo wa thamani za noti kwenye ripoti ya stakabadhi ya amana"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Onyesha au uficha menyu ya Matukio katika urambazaji mkuu."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10829,10 +10617,6 @@ msgstr "Ikiwa unaona herufi zilizopotoka, vipengele vya HTML vinavyoonekana kama
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Thamani batili ya JSON — mipangilio haikuhifadhiwa. Tafadhali irekebisha na ujaribu tena."
 
 #: 
 msgid "Language and regional settings"
@@ -12609,10 +12393,6 @@ msgstr "Siku Nzima"
 #: 
 msgid "All Roles"
 msgstr "Majukumu Yote"
-
-#: 
-msgid "All System Settings"
-msgstr "Mipangilio Yote ya Mfumo"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15083,10 +14863,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Orodha ya asili zilizotengwa kwa nafasi zinazoruhusiwa kuingiza ukurasa wa kalenda ya umma wa nje katika iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Asili zilizotengwa kwa nafasi zinazoruhusiwa kuingiza ukurasa wa kalenda ya umma katika iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Kikundi cha Shule ya Jumapili hakiwezi kubadilishwa, isipokuwa katika hali hizi mbili"
 
@@ -15427,10 +15203,6 @@ msgid "ChurchCRM version"
 msgstr "Toleo la ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Kiwango cha ukusanyaji"
-
-#: 
 msgid "Count unique installs"
 msgstr "Hesabu usakinishaji wa kipekee"
 
@@ -15485,14 +15257,6 @@ msgstr "Imeshindwa kusasisha ahadi ya mchango"
 #: 
 msgid "Financial data"
 msgstr "Data ya fedha"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Kamili — yote yaliyotajwa hapo juu pamoja na mionekano ya ukurasa"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Kamili — mionekano ya ukurasa, maonyo, makosa, na vighairi vya JS"
 
 #: 
 msgid "Fund Summary"
@@ -15571,10 +15335,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Kiasi kisichokatwa hakiwezi kuzidi kiasi cha mfuko"
 
 #: 
-msgid "None (disabled)"
-msgstr "Hakuna (imezimwa)"
-
-#: 
 msgid "Overpaid"
 msgstr "Umelipwa zaidi"
 
@@ -15635,10 +15395,6 @@ msgid "Select a fund"
 msgstr "Chagua mfuko"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Nitumie Mimi Mwenyewe Barua Pepe ya Majaribio ya Siku ya Kuzaliwa"
-
-#: 
 msgid "Sending to"
 msgstr "Inatumwa kwa"
 
@@ -15693,10 +15449,6 @@ msgstr "Tunakutakia siku njema ya kuzaliwa!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Akaunti yako haina anwani ya barua pepe iliyohifadhiwa. Ongeza moja kwenye wasifu wako ili kutuma majaribio."
-
-#: 
-msgid "errors+"
-msgstr "makosa+"
 
 #: 
 msgid "full only"
@@ -16659,10 +16411,6 @@ msgid "Not a valid date of death"
 msgstr "Sio tarehe sahihi ya kifo"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Idadi ya siku ambazo watumiaji wanapaswa kujiandikisha kwa 2FA baada ya kuamriwa kutumika. Weka 0 ili kutekeleza mara moja. Kupunguza muda wa neema unaoendelea kunaweza kuwafungia watumiaji nje mara moja."
-
-#: 
 msgid "Offline"
 msgstr "Haipo Mtandaoni"
 
@@ -16987,14 +16735,6 @@ msgid "Download CSV"
 msgstr "Pakua CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Washa au zima moduli ya Fedha na menyu ya upau wa pembeni."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Washa au zima moduli ya Uchangishaji."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Imeshindwa kuondoa nembo ya kanisa"
 
@@ -17139,10 +16879,6 @@ msgid "Access Control & Security"
 msgstr "Udhibiti wa Ufikiaji na Usalama"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)"
 
@@ -17195,46 +16931,6 @@ msgid "Feature Toggles"
 msgstr "Swichi za Vipengele"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Swichi za vipengele hudhibiti ni moduli na vipengele vipi vinapatikana katika ChurchCRM. Mabadiliko huanza kutumika mara moja."
-
-#: 
-msgid "Finance Features"
-msgstr "Vipengele vya Fedha"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Jumuisha anwani katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Jumuisha matukio ya kalenda katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Jumuisha sifa maalum za familia katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Jumuisha amana katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Jumuisha familia katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Jumuisha huduma katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Jumuisha malipo katika utafutaji wa haraka wa jumla"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Jumuisha watu katika utafutaji wa haraka wa jumla"
-
-#: 
 msgid "Invalid setting"
 msgstr "Mpangilio batili"
 
@@ -17243,16 +16939,8 @@ msgid "Lost Password Link"
 msgstr "Kiungo cha Nenosiri Lililosahaulika"
 
 #: 
-msgid "Manage All Features"
-msgstr "Simamia Vipengele Vyote"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Swichi kuu ya kutuma barua pepe. INAHITAJIKA kwa kuweka upya nenosiri na arifa"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Malipo Yasiyokatwa Kodi"
 
 #: 
 msgid "Primary Modules"
@@ -17263,20 +16951,12 @@ msgid "Public Calendar API"
 msgstr "API ya Kalenda ya Umma"
 
 #: 
-msgid "Saved"
-msgstr "Imehifadhiwa"
-
-#: 
 msgid "Search Families"
 msgstr "Tafuta Familia"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Tafuta Sifa Maalum za Familia"
-
-#: 
-msgid "Search Settings"
-msgstr "Tafuta Mipangilio"
 
 #: 
 msgid "Self-Registration"
@@ -17493,14 +17173,6 @@ msgstr "Wapokeaji wa Arifa"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Watu wa kuarifiwa familia au mtu mpya anapoongezwa"
-
-#: 
-msgid "Person initials style"
-msgstr "Mtindo wa herufi za kwanza za mtu"
-
-#: 
-msgid "Person name display style"
-msgstr "Mtindo wa kuonyesha jina la mtu"
 
 #: 
 msgid "Spouse Role"
@@ -22529,10 +22201,6 @@ msgid "This email batch was queued by another user"
 msgstr "Kundi hili la barua pepe liliwekwa kwenye foleni na mtumiaji mwingine"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Baada ya kuingiza, unaweza kutumia Weka upya Hifadhidata kwenye Dashibodi ya Msimamizi kufuta data yote na kuanza upya. Usanidi wa programu yako utahifadhiwa."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Inaingiza data ya onyesho..."
 
@@ -23513,30 +23181,6 @@ msgid "Download PDF"
 msgstr "Pakua PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Kipindi cha kufunga kwa dakika\n"
-"Akaunti iliyofungwa hujifungua yenyewe baada ya dakika hizi. Majaribio ya kuingia yaliyoshindwa kutoka anwani moja ya IP huhesabiwa katika kipindi hicho hicho."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Idadi ya juu ya majaribio ya kuingia yaliyoshindwa kutoka anwani moja ya IP\n"
-"Majaribio ya kuingia yaliyoshindwa na maombi ya kuweka upya nenosiri kutoka anwani moja ya IP huhesabiwa kwenye kikomo hiki ndani ya kipindi cha kufunga. Kikomo kikifikiwa, kuingia kutoka anwani hiyo hukataliwa hadi kipindi kiishe.\n"
-"Weka sifuri ili kuzima kipengele hiki, kwa mfano kila mtu anapofikia ChurchCRM kupitia anwani moja ya proksi."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Idadi ya juu ya majaribio ya kuingia yaliyoshindwa yanayoruhusiwa kabla akaunti ya mtumiaji haijafungwa.\n"
-"Akaunti iliyofungwa hujifungua yenyewe baada ya kipindi cha kufunga, au mapema zaidi msimamizi anapoweka upya majaribio yake yaliyoshindwa.\n"
-"Kipengele hiki husaidia kulinda dhidi ya mashambulizi ya kubahatisha nenosiri kiotomatiki.\n"
-"Weka sifuri ili kuzima kipengele hiki."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Dakika hadi ijifungue yenyewe: %d"
 
@@ -23865,10 +23509,6 @@ msgid "PDF Output"
 msgstr "Matokeo ya PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Hali ya ushughulikiaji wa PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Mstari wa maswali"
 
@@ -23905,10 +23545,6 @@ msgid "Greeting"
 msgstr "Salamu"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Salamu na saini ya barua"
-
-#: 
 msgid "Letterhead"
 msgstr "Kichwa cha barua"
 
@@ -23931,10 +23567,6 @@ msgstr "Weka kichwa cha barua kinachochapishwa na barua za PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Inatumia jina na anwani ya kanisa"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Inatumia njia ya kichwa cha barua iliyowekwa katika Mipangilio ya Mfumo"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26144,14 +25776,6 @@ msgstr "Malipo kwa Mfuko"
 msgid "Unknown Fund"
 msgstr "Mfuko Usiojulikana"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Muombe mtoa huduma wako wa hosting ahamishe hifadhidata kwenye toleo linalotumika, kisha ujaribu tena."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Muombe mtoa huduma wako wa hosting ahamishe hifadhidata kwenye toleo linalotumika."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26169,18 +25793,6 @@ msgstr "Lazimisha nambari ya cheki wakati wa kurekodi malipo ya cheki kwenye mai
 #: 
 msgid "Require check number on check payments"
 msgstr "Lazimisha nambari ya cheki kwa malipo ya cheki"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Usasishaji haukuanzishwa, kwa hivyo hakuna kilichobadilika."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Usasishaji huu hauwezi kuendeshwa kwenye hifadhidata yako."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Seva yako ya hifadhidata (%1$s %2$s) ni ya zamani kuliko inavyotumika na ChurchCRM (MySQL %3$s au MariaDB %4$s na matoleo mapya zaidi)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26339,22 +25951,6 @@ msgid "Database engine and major/minor version"
 msgstr "Injini ya hifadhidata na toleo kuu/dogo"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Hitilafu — takwimu za usakinishaji, maonyo, hitilafu na vighairi vya JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Utusaidie kupata na kurekebisha matatizo?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Usakinishaji hushiriki takwimu chache za usakinishaji na usasishaji. Hitilafu huongeza maonyo na ripoti za hitilafu. Kamili huongeza mionekano ya kurasa. Hakuna hutuma tu usakinishaji na usasishaji ulioshindwa."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Usakinishaji — takwimu za usakinishaji na usasishaji (chaguomsingi)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Matokeo ya usakinishaji na usasishaji, toleo la awali wakati wa kusasisha, na ripoti ya kila siku wakati inatumika"
 
@@ -26363,68 +25959,12 @@ msgid "Installation profile"
 msgstr "Wasifu wa usakinishaji"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Lugha na eneo (Hitilafu na Kamili)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Haishirikiwi kamwe: kumbukumbu za washirika, sadaka au kumbukumbu nyingine za kanisa, jina la kanisa lako, anwani yako ya wavuti au jina la seva, wala anwani za barua pepe. Nchi yako ni ile iliyo kwenye mipangilio ya kanisa lako, haitambuliwi kutoka kwenye mtandao wako."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Familia ya mfumo wa uendeshaji (Hitilafu na Kamili)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Toleo la PHP (Hitilafu na Kamili)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Tazama hasa kinachoshirikiwa, au badilisha chaguo lako, katika Msimamizi → Telemetry."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Tenganisha usakinishaji wa uzalishaji, onyesho na majaribio"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Shiriki takwimu za usakinishaji bila kujulikana?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Shiriki ripoti za hitilafu na matumizi"
-
-#: 
-msgid "Share install statistics"
-msgstr "Shiriki takwimu za usakinishaji"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Hushirikiwa zaidi: maonyo, maelezo ya hitilafu na kurasa zipi zinafunguliwa."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Hushirikiwa: kwamba ChurchCRM ilisakinishwa au kusasishwa na kama ilifanikiwa, ripoti mara moja kwa siku wakati inatumika, nambari ya toleo, nchi yako na aina ya hifadhidata. Kitambulisho cha usakinishaji cha nasibu huhesabu kila usakinishaji mara moja."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Elewa uoanifu wa hifadhidata"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Chaguo lako huulizwa mara moja. Unaweza kulibadilisha wakati wowote. Ukichagua Hapana, asante, ni usakinishaji au usasishaji ulioshindwa pekee unaoripotiwa."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Data yako ni yako. Usakinishaji hushiriki tu matokeo ya usakinishaji na usasishaji, kitambulisho cha usakinishaji, toleo la programu, wasifu wa usakinishaji, nchi iliyowekwa, na injini ya hifadhidata pamoja na toleo kuu/dogo. Hitilafu huongeza maonyo na maelezo ya hitilafu. Kamili huongeza mionekano ya kurasa. Hakuna hutuma tu usakinishaji na usasishaji ulioshindwa. Hakuna kiwango kinachotuma anwani yako ya wavuti au jina la seva. Usakinishaji wa majaribio hautumi chochote. Telemetry hutumwa kwa PostHog nchini Marekani."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Data yako ni yako. Hii inaripoti kuhusu programu, kamwe si kuhusu kanisa lako au watu wake."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Data yako ni yako. Ili kuhesabu usakinishaji, ChurchCRM huripoti kwamba ilisakinishwa au kusasishwa na kama ilifanikiwa, ripoti mara moja kwa siku wakati inatumika, pamoja na nambari ya toleo, nchi yako, aina ya hifadhidata na kitambulisho cha usakinishaji cha nasibu. Kamwe haiwasilishi kumbukumbu za washirika, sadaka au kumbukumbu nyingine za kanisa, jina la kanisa lako, anwani yako ya wavuti au jina la seva, wala anwani za barua pepe. Unaweza kuzima hili wakati wowote katika Msimamizi → Telemetry; usakinishaji au usasishaji ulioshindwa bado huripotiwa. Maonyo, maelezo ya hitilafu na mionekano ya kurasa hushirikiwa tu ukichagua."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28023,10 +27563,6 @@ msgid "How the congregation is made up"
 msgstr "Jinsi washirika walivyo"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Ninaelewa kuwa hifadhidata hii haiungwi mkono na masasisho yatazuiwa"
-
-#: 
 msgid "Insights"
 msgstr "Maarifa"
 
@@ -28049,10 +27585,6 @@ msgstr "Ukaguzi wa uadilifu umeshindwa"
 #: 
 msgid "Integrity check passed"
 msgstr "Ukaguzi wa uadilifu umefaulu"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Tokeni ya CSRF isiyo sahihi"
 
 #: 
 msgid "Last %d days"
@@ -28097,10 +27629,6 @@ msgstr "Hufungua dashibodi ya Fedha kwenye kipindi hiki. Chagua mwaka wa fedha u
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "Siku 7 zilizopita na siku %d zinazofuata"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Watu wasio na familia: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28231,10 +27759,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Dashibodi hii sasa ni dashibodi yako kuu."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Hifadhidata hii haipokei tena marekebisho ya usalama kutoka kwa muuzaji wake."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Hapa ndipo watu watafungua ChurchCRM. Ibaddilishe tu ikiwa watatumia anuani tofauti na ukurasa huu."
 
@@ -28247,28 +27771,12 @@ msgid "Total deposited"
 msgstr "Jumla iliyowekwa"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Seva ya hifadhidata isiyoungwa mkono"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Masasisho yatazuiwa hadi hifadhidata ihamishwe kwenye toleo linaloungwa mkono."
-
-#: 
 msgid "Usually 3306."
 msgstr "Kawaida 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Tunapendekeza kumwomba mwenyeji wako abaddilishe kabla ya kusakinisha, wakati hakuna data ya kuhamisha. MariaDB 10.11 ni lengo zuri."
-
-#: 
 msgid "Web address"
 msgstr "Anuani ya wavuti"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Unaweza kusakinisha sasa: ChurchCRM itasakinisha na kufanya kazi."
 
 #: 
 msgid "Your main dashboard"
@@ -28287,4 +27795,476 @@ msgstr "na {{count}} zaidi"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "na {{count}} zaidi"
+
+#: 
+msgid "Database out of support"
+msgstr "Hifadhidata haitumiki"
+
+#: 
+msgid "Deactivated"
+msgstr "Imezimwa"
+
+#: 
+msgid "How to find the log"
+msgstr "Jinsi ya kupata kumbukumbu"
+
+#: 
+msgid "How to install server locales"
+msgstr "Jinsi ya kusakinisha lugha za seva"
+
+#: 
+msgid "Last edited"
+msgstr "Imehaririwa mwisho"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Haikusakinishwa kwenye seva, na hakuna lugha mbadala ya Kiingereza iliyosakinishwa pia, kwa hivyo kiolesura kitaonyeshwa kwa Kiingereza."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Kumbukumbu ya ChurchCRM inarekodi sababu maalum. Ondoa majina kabla ya kuishiriki."
+
+#: 
+msgid "Verify now"
+msgstr "Thibitisha sasa"
+
+#: 
+msgid "View Giving History"
+msgstr "Angalia historia ya utoaji"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d watu wameongezwa kwa mafanikio; %d watu hawakuweza kuongezwa na wamebaki kwenye kigari."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d watu hawakuweza kuongezwa na wamebaki kwenye kigari chako."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Wasimamizi wataona onyo hili kwenye kila ukurasa hadi hifadhidata ihamishwe kwenye toleo linaloendelea kupata marekebisho ya usalama. Kuhama sasa, wakati data ni chache, ni rahisi zaidi."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Wasimamizi wataingia kwenye dashibodi ya kawaida kuanzia sasa. Dashibodi ya Usanidi haitafunguka tena wakati wa kuingia."
+
+#: 
+msgid "Database security risk"
+msgstr "Hatari ya usalama wa hifadhidata"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Hali ya majaribio pia huwasha takwimu za matumizi zisizojulikana (PostHog), ili tuweze kuona jinsi watu wanavyochunguza ChurchCRM. Anza Upya huizima."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Mipangilio ya barua pepe imehifadhiwa. Kuingia kwa wanachama sasa kumewashwa, kwa hivyo wanachama wanaweza kuingia kwenye Tovuti ya Washirika kwa barua pepe yao."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Weka maelezo ya kanisa lako, ongeza watu wako, na waalike timu yako."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Kila kitu hapa ni data ya mfano. Anza upya kabla ya kuweka maelezo halisi ya kanisa lako."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Kila kitu hapa ni data ya mfano. Ukiwa tayari kutumia ChurchCRM kwa ajili ya kanisa lako, anza upya: hufuta data ya majaribio na kila mpangilio ili uweze kuanza na yako mwenyewe."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Chunguza ChurchCRM ukitumia data ya majaribio, au uiweke kwa ajili ya kanisa lako"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Imeshindwa kuongeza mtu kwenye kikundi"
+
+#: 
+msgid "Finish setup"
+msgstr "Maliza usanidi"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Kwa siku nyingi hivi baada ya kusakinisha, wasimamizi huingia kwenye Dashibodi ya Usanidi. Weka 0 ili kuizima."
+
+#: 
+msgid "Group Assignment"
+msgstr "Mgawo wa Kikundi"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Ndani: msimamizi alichagua Maliza usanidi kwenye Dashibodi ya Usanidi. Usihariri mwenyewe."
+
+#: 
+msgid "Keep exploring"
+msgstr "Endelea kuchunguza"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Unahama kutoka seva nyingine ya ChurchCRM? Rejesha nakala ya hifadhi iliyotengenezwa huko. Hii hubadilisha kila kitu kwenye usakinishaji huu."
+
+#: 
+msgid "Ready for your church"
+msgstr "Tayari kwa kanisa lako"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Jaribu Tena Mgawo wa Kikundi"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Jaribu tena mgawo wa vikundi"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Chagua kikundi kimoja au zaidi kwa mtu huyu."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Chagua vikundi unavyotaka kujaribu tena."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Weka Kanisa Lako"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dashibodi ya Usanidi"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Anza Upya kwenye bango la majaribio, au Weka upya Hifadhidata kwenye Dashibodi ya Msimamizi, hufuta data ya majaribio na kila mpangilio na hurudisha ChurchCRM kwenye usakinishaji mpya."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Anza upya kwanza, kisha weka ChurchCRM ukitumia maelezo ya kanisa lako mwenyewe."
+
+#: 
+msgid "Start setup"
+msgstr "Anza usanidi"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Data ya majaribio imekwisha. Ingia kwa akaunti chaguomsingi ya msimamizi ili kuweka kanisa lako."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Mtu amehifadhiwa, lakini mgawo mmoja au zaidi wa vikundi umeshindwa. Chagua vikundi vilivyo hapa chini na ujaribu tena."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Mtu amehifadhiwa, lakini mgawo mmoja au zaidi wa vikundi umeshindwa. Vikundi ambavyo havikufanikiwa vimechaguliwa hapa chini. Vikague na uhifadhi tena ili kujaribu tena."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Hii hufuta data ya majaribio na kila mpangilio, na hurudisha ChurchCRM kwenye usakinishaji mpya."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Utaingia tena kwa akaunti chaguomsingi ya msimamizi na kuweka maelezo ya kanisa lako."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Unachunguza ChurchCRM ukitumia data ya majaribio."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Unachunguza data ya majaribio"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Maelezo ya kanisa lako yamehifadhiwa. Fanya hatua zilizo hapa chini."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Hifadhidata yako (%1$s %2$s) ni hatari ya usalama: muuzaji wake hatoi tena marekebisho ya usalama kwa toleo hilo. ChurchCRM inaendelea kufanya kazi, lakini mwombe mwenyeji wako ahamie MariaDB %3$s+ au MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Kuingia kwa kila siku ukiwa unatumia, matoleo ya programu na hifadhidata, lugha ya eneo, nchi, aina ya usakinishaji na kitambulisho cha usakinishaji cha nasibu husaidia kuhesabu usakinishaji unaotumika."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Akaunti na Kuingia"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Tuma pia kurasa zinazotumiwa."
+
+#: 
+msgid "Areas"
+msgstr "Maeneo"
+
+#: 
+msgid "Church & System"
+msgstr "Kanisa na Mfumo"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Mji au mji mdogo ambapo risiti hutolewa, huchapishwa kwenye risiti rasmi. Acha wazi kutumia mji wa kanisa."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Kufunga kabla ya jina la mtiishaji, kwa mfano Kwa dhati."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Kufunga kunakochapishwa kabla ya mtiishaji kwenye risiti rasmi."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Manenosiri yaliyotenganishwa kwa koma ambayo hakuna mtu anayeruhusiwa kuyatumia."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Barua ya Uthibitisho"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Uunde familia kwa ajili ya mtu huyu? Anuani yao na simu ya nyumbani huhamia kwenye familia mpya."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Siku ambazo watumiaji wanapaswa kusanidi uthibitishaji wa hatua mbili baada ya kuhitajika. 0 hulazimisha mara moja. Kufupisha kipindi cha neema kinachoendelea kunaweza kuwafungia watumiaji nje."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Amana na Malipo"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Manenosiri Yasiyokubalika"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Tahadhari %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Watumie Watumiaji Barua Pepe Akaunti Yao Ikifutwa"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Kila ukurasa wa mipangilio mahali pamoja, na mipangilio inayotumika kwa mfumo mzima"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Kuingia Kulikoshindwa Kabla ya Kufungiwa"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Kuingia Kulikoshindwa kwa Anwani ya IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Majukumu ya familia yanayotendewa kama watoto katika orodha."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Majukumu ya familia yanayotendewa kama mkuu wa kaya katika orodha na kuingia kwa wanachama."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Majukumu ya familia yanayotendewa kama mwenzi katika orodha na kuingia kwa wanachama."
+
+#: 
+msgid "Finance Settings"
+msgstr "Mipangilio ya Fedha"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Kipindi cha Neema (siku)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ficha usajili wa jarida katika Kihariri cha Familia."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ficha sehemu ya Tarehe ya Rafiki katika Kihariri cha Mtu."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ficha sehemu ya Tarehe ya Harusi katika Kihariri cha Familia."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Muda ambao akaunti iliyofungiwa hubaki imefungiwa. Kuingia kulikoshindwa kutoka anwani moja ya IP huhesabiwa katika kipindi hicho hicho."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Ni herufi ngapi nenosiri jipya lazima litofautiane na la zamani. 0 huzima hii."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Katika Msimamizi → Telemetry, washa Shiriki kurasa zinazotumiwa kuchagua Kamili. Kamili pia hutuma mionekano ya kurasa."
+
+#: 
+msgid "Initials Format"
+msgstr "Muundo wa Herufi za Kwanza"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Maandishi ya Barua %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Kipindi cha Kufungiwa (dakika)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Hufunga akaunti baada ya kuingia kulikoshindwa mara nyingi hivi mfululizo. Hufunguka baada ya kipindi cha kufungiwa, au msimamizi anapoireseti. 0 huzima kufungiwa."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Simamia Tovuti ya Washirika"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Wanachama wanaweza kuingia kwa barua pepe yao."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Wanachama hawawezi kuingia bado."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Kiwango cha Chini cha Herufi Zilizobadilishwa"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Urefu wa Chini wa Nenosiri"
+
+#: 
+msgid "Name Format"
+msgstr "Muundo wa Jina"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Jina lililochapishwa chini ya kufunga kwa barua na barua pepe"
+
+#: 
+msgid "No Payments Text"
+msgstr "Maandishi ya Hakuna Malipo"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Maandishi ya Hakuna Ahadi"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Hakuna kiwango kinachotuma watu, wafadhili, utoaji, maudhui, maelezo ya mawasiliano ya kanisa, anwani yako ya wavuti au jina la seva yako."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Hakuna kiwango kinachotuma anwani yako ya wavuti au jina la seva yako. Usakinishaji wa majaribio hautumi chochote. Telemetry hutumwa kwa PostHog nchini Marekani."
+
+#: 
+msgid "OS family"
+msgstr "Familia ya OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Aya ya ufunguzi ya barua ya ukumbusho wa ahadi."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Aya inayokaribisha maswali katika taarifa ya utoaji."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Aya inayokaribisha maswali katika barua ya watoaji sifuri."
+
+#: 
+msgid "Passwords"
+msgstr "Manenosiri"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Huchapishwa baada ya kipindi cha tarehe katika mstari wa ufunguzi wa barua ya watoaji sifuri."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Huchapishwa kwanza kwenye taarifa ya utoaji, ikifuatiwa na kipindi cha tarehe."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Huchapishwa familia isipokuwa na malipo yoyote kwenye rekodi."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Huchapishwa familia isipokuwa na ahadi yoyote kwenye rekodi."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Hukataa kuingia kutoka anwani moja ya IP kwa kipindi cha kufungiwa baada ya kuingia kulikoshindwa au kuweka upya nenosiri mara nyingi hivi. 0 huzima, kwa mfano wakati kila mtu anaunganisha kupitia proksi moja."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Hitaji Uthibitishaji wa Hatua Mbili"
+
+#: 
+msgid "Security Settings"
+msgstr "Mipangilio ya Usalama"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Tuma ripoti za makosa, matukio ya kusakinisha/kuboresha na maelezo ya mfumo ili matatizo yaweze kurekebishwa. Hakuna mionekano ya kurasa, hakuna data ya kanisa."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Kuisha kwa Kikao (sekunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Shiriki kurasa zinazotumiwa"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Kuingia na Usalama"
+
+#: 
+msgid "Signature Storage"
+msgstr "Hifadhi ya Saini"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Humtoa mtumiaji baada ya sekunde nyingi hivi bila shughuli. 0 humtoi kamwe."
+
+#: 
+msgid "System-wide"
+msgstr "Kwa Mfumo Mzima"
+
+#: 
+msgid "Text After Dates"
+msgstr "Maandishi Baada ya Tarehe"
+
+#: 
+msgid "Text Messages"
+msgstr "Ujumbe wa Maandishi"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Aya ya shukrani ya taarifa ya utoaji."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Aya ya shukrani ya barua ya watoaji sifuri."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Ubadilishaji umeshindwa. Hakuna kilichobadilishwa."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Inatumia faili ya kichwa cha barua iliyohifadhiwa kabla ya upakiaji kuongezwa. Pakia kichwa cha barua kuibadilisha."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Onyo Baada ya (Saa)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa."
 

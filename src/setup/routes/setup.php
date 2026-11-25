@@ -123,16 +123,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             ]);
         }
 
-        // An unsupported server version is not a failed connection: it installs after an acknowledgment.
-        $supported = DatabaseVersionService::check($connection['version'])['supported'];
-        if (!$supported &&!filter_var($setupData['ACKNOWLEDGE_UNSUPPORTED_DB'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
-            return SlimUtils::renderJSON($response, [
-                'valid'     => true,
-                'correct'   => true,
-                'supported' => false,
-                'message'   => DatabaseVersionService::getUnsupportedMessage($connection['version']),
-            ]);
-        }
+        $databaseWarning = DatabaseVersionService::getSecurityRiskMessage($connection['version']);
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
@@ -158,7 +149,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             if ($handle !== false) {
                 unlink($configFile);
             }
-            TelemetryService::captureInstallFailure('config_not_writable');
+            TelemetryService::captureInstallFailure('config_not_writable', $connection['version']);
 
             return SlimUtils::renderJSON($response, [
                 'valid'   => true,
@@ -177,7 +168,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
         }
 
-        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true]);
+        return SlimUtils::renderJSON($response, ['valid' => true, 'correct' => true, 'databaseWarning' => $databaseWarning]);
     };
 
     $group->post('', $postHandler);

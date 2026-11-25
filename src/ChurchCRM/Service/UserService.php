@@ -178,22 +178,38 @@ class UserService
      */
     public function getUserSettingsConfig(): array
     {
-        // Define user-related settings that should appear in the admin panel
-        $userSettings = [
-            'iSessionTimeout',
-            'iMaxFailedLogins',
-            'iLoginLockoutMinutes',
-            'iMaxFailedLoginsPerIP',
-            'bEnableLostPassword',
-            'bSendUserDeletedEmail',
-            'iMinPasswordLength',
-            'iMinPasswordChange',
-            'aDisallowedPasswords',
-            'bRequire2FA',
-            'i2FAGracePeriodDays',
+        $groups = [
+            gettext('Accounts & Sign-in') => [
+                'iSessionTimeout' => gettext('Session Timeout (seconds)'),
+                'iMaxFailedLogins' => gettext('Failed Sign-ins Before Lockout'),
+                'iLoginLockoutMinutes' => gettext('Lockout Period (minutes)'),
+                'iMaxFailedLoginsPerIP' => gettext('Failed Sign-ins per IP Address'),
+                'bSendUserDeletedEmail' => gettext('Email Users When Their Account Is Deleted'),
+            ],
+            gettext('Passwords') => [
+                'iMinPasswordLength' => gettext('Minimum Password Length'),
+                'iMinPasswordChange' => gettext('Minimum Characters Changed'),
+                'aDisallowedPasswords' => gettext('Disallowed Passwords'),
+            ],
+            gettext('Two-Factor Authentication') => [
+                'bRequire2FA' => gettext('Require Two-Factor Authentication'),
+                'i2FAGracePeriodDays' => gettext('Grace Period (days)'),
+            ],
         ];
 
-        return SystemConfig::getSettingsConfig($userSettings);
+        $settings = [];
+        foreach ($groups as $heading => $labels) {
+            $settings[] = ['name' => 'heading' . count($settings), 'type' => 'heading', 'label' => $heading];
+            foreach (SystemConfig::getSettingsConfig(array_keys($labels)) as $setting) {
+                $setting['label'] = $labels[$setting['name']];
+                if ($setting['name'] === 'i2FAGracePeriodDays') {
+                    $setting['dependsOn'] = 'bRequire2FA';
+                }
+                $settings[] = $setting;
+            }
+        }
+
+        return $settings;
     }
 
     /**

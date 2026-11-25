@@ -131,14 +131,15 @@ describe('Upgrade via Restore', () => {
             cy.get('#NewPassword2').type(newAdminPassword);
             cy.get('button[type=submit]').click();
 
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
         });
 
         it('should fill church info to complete first-run setup', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+            cy.get('#startChurchSetup').click();
 
             cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
             cy.get('#sChurchName').clear().type('Upgrade Test Church');

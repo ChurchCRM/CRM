@@ -259,6 +259,7 @@ interface CRMSettingsPanelSetting {
   type: "boolean" | "number" | "text" | "choice" | "password" | "date" | "textarea" | "json" | "ajax";
   label?: string;
   tooltip?: string;
+  dependsOn?: string;
   choices?: Array<string | { value: string; label: string }>;
   [key: string]: unknown;
 }
@@ -270,7 +271,6 @@ interface CRMSettingsPanel {
     title?: string;
     icon?: string;
     headerClass?: string;
-    showAllSettingsLink?: boolean;
     settings: Array<string | CRMSettingsPanelSetting>;
     onSave?: (savedValues?: Record<string, string>) => void;
     [key: string]: unknown;

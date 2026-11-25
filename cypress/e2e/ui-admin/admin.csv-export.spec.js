@@ -210,8 +210,8 @@ describe("CSV Export Page", () => {
             const emailIdx = rows[0].findIndex((cell) => cell.endsWith("Email"));
             const rowOf = (first, last) => rows.find((cells) => cells.includes(first) && cells.includes(last));
             expect(emailIdx).to.be.greaterThan(-1);
-            expect(rowOf("Mark", "Smith")[emailIdx]).to.eq("mark.smith@example.com");
-            expect(rowOf("Mary", "Smith")[emailIdx]).to.eq("");
+            expect(rowOf("Nathan", "Lewis")[emailIdx]).to.eq("nathan.lewis@example.com");
+            expect(rowOf("Church", "Admin")[emailIdx]).to.eq("");
         });
     });
 

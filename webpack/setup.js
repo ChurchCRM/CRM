@@ -517,19 +517,9 @@ window.moment = moment;
     box.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  function showVersionWarning(message) {
-    document.getElementById("db-version-message").textContent = message;
-    document.getElementById("db-version-warning").classList.remove("d-none");
-    document.getElementById("db-version-ack").checked = false;
-    document.getElementById("submit-setup").disabled = true;
-    document.getElementById("db-version-warning").scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
   // The answer belonged to the values that were submitted; editing them clears it.
   function clearSetupProblem() {
     document.getElementById("db-connection-result").classList.add("d-none");
-    document.getElementById("db-version-warning").classList.add("d-none");
-    document.getElementById("db-version-ack").checked = false;
     document.getElementById("submit-setup").disabled = installInFlight;
     for (const field of document.querySelectorAll("#setup-form .is-invalid")) {
       field.classList.remove("is-invalid");
@@ -579,10 +569,6 @@ window.moment = moment;
           );
           return;
         }
-        if (response?.supported === false) {
-          showVersionWarning(response.message);
-          return;
-        }
         if (response?.errors) {
           showFieldErrors(response.errors);
           return;
@@ -590,6 +576,10 @@ window.moment = moment;
 
         installInFlight = true;
         document.getElementById("submit-setup").disabled = true;
+        if (response?.databaseWarning) {
+          document.getElementById("db-version-message").textContent = response.databaseWarning;
+          document.getElementById("db-version-warning").classList.remove("d-none");
+        }
         $("#continue-to-login")
           .off("click")
           .on("click", () => {
@@ -623,9 +613,6 @@ window.moment = moment;
     for (const id of [...DB_CONNECTION_FIELDS, "URL", "ROOT_PATH"]) {
       document.getElementById(id).addEventListener("input", clearSetupProblem);
     }
-    document.getElementById("db-version-ack").addEventListener("change", (event) => {
-      document.getElementById("submit-setup").disabled = !event.target.checked;
-    });
 
     document.getElementById("toggle-db-password").addEventListener("click", (event) => {
       const field = document.getElementById("DB_PASSWORD");

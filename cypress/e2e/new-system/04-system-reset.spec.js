@@ -45,8 +45,9 @@ describe('04 - System Reset', () => {
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');
                 cy.get('button[type=submit]').click();
-                // ChurchInfoRequiredMiddleware redirects to church-info when sChurchName is empty
-                cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+                // With no church name yet, the admin lands on the Setup Dashboard; Set Up Your Church opens church-info.
+                cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+                cy.visit('/admin/system/church-info');
             }
         });
 
@@ -67,7 +68,7 @@ describe('04 - System Reset', () => {
                 cy.get('#sChurchState').should('have.value', 'IL');
                 cy.get('#sChurchZip').clear().type('62701');
                 cy.get('#church-info-form').submit();
-                cy.url({ timeout: 10000 }).should('include', 'church-info');
+                cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/setup$/);
             }
         });
     };

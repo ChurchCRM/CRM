@@ -125,41 +125,23 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').should('not.have.class', 'is-invalid');
         });
 
-        it('holds an unsupported database server for an acknowledgment', () => {
-            const posts = [];
-            cy.intercept('POST', /\/setup\/?$/, (req) => {
-                const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-                posts.push(body);
-                req.reply(
-                    body.ACKNOWLEDGE_UNSUPPORTED_DB
-                        ? { valid: true, correct: false, reason: 'database_unreachable', message: 'stubbed stop' }
-                        : {
-                              valid: true,
-                              correct: true,
-                              supported: false,
-                              message: 'Your database server (MySQL 8.0.36) is older than ChurchCRM supports.',
-                          },
-                );
+        it('installs on an out-of-support database with a security warning and no prompt', () => {
+            cy.intercept('POST', /\/setup\/?$/, {
+                valid: true,
+                correct: true,
+                databaseWarning: 'Your database (MySQL 8.0.36) is a security risk: its vendor no longer ships security fixes for that version.',
             }).as('setupPost');
             openConfigureStep();
             fillDatabase();
 
             cy.get('#submit-setup').click();
             cy.wait('@setupPost');
+            cy.get('#setupModal').should('be.visible');
+            cy.contains('#setupModal', 'Installation Complete!').should('be.visible');
             cy.get('#db-version-warning').should('be.visible');
-            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36');
-            cy.get('#submit-setup').should('be.disabled');
-
-            cy.get('#db-version-ack').check();
-            cy.get('#submit-setup').should('not.be.disabled').click();
-            cy.wait('@setupPost').then(() => {
-                expect(posts[posts.length - 1].ACKNOWLEDGE_UNSUPPORTED_DB).to.eq('1');
-            });
-
-            cy.get('#DB_NAME').type('x');
-            cy.get('#db-version-warning').should('not.be.visible');
-            cy.get('#db-version-ack').should('not.be.checked');
-            cy.get('#submit-setup').should('not.be.disabled');
+            cy.get('#db-version-message').should('contain.text', 'MySQL 8.0.36').and('contain.text', 'security risk');
+            cy.get('#setupModal input[type="checkbox"]').should('not.exist');
+            cy.get('@setupPost.all').should('have.length', 1);
         });
 
         it('should complete full installation with database setup', () => {
@@ -202,7 +184,7 @@ describe('01 - Setup Wizard', () => {
             cy.contains('Password Change Required').should('be.visible');
         });
 
-        it('should complete forced password change and redirect to church-info', () => {
+        it('should complete forced password change and open the Setup Dashboard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
@@ -214,20 +196,25 @@ describe('01 - Setup Wizard', () => {
             cy.get('#NewPassword2').type(newAdminPassword);
             cy.get('button[type=submit]').click();
 
-            // ChurchInfoRequiredMiddleware redirects admin to church-info when sChurchName is empty
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
-
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
         });
     });
 
     describe('Church Info Setup', () => {
-        it('should redirect to church-info after login when church name is not set', () => {
+        it('keeps the admin on the Setup Dashboard and its three paths until the church has a name', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
-            cy.contains('Church Information').should('be.visible');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+            cy.get('#sidebar').should('not.exist');
+            cy.get('#globalSearch').should('not.exist');
+            cy.get('#setupLanguage').should('exist');
+
+            cy.visit('/people/dashboard');
+            cy.location('pathname').should('match', /\/admin\/setup$/);
+            cy.visit('/admin/system/restore');
+            cy.location('pathname').should('match', /\/admin\/system\/restore$/);
         });
 
         it('should fill and save church information to complete first-run setup', () => {
@@ -235,7 +222,9 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
-            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            cy.location('pathname', { timeout: 15000 }).should('match', /\/admin\/setup$/);
+            cy.get('#startChurchSetup').click();
+            cy.location('pathname').should('match', /\/admin\/system\/church-info$/);
 
             // Wait for page to fully load — country defaults to US and populates state dropdown
             cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
@@ -254,13 +243,20 @@ describe('01 - Setup Wizard', () => {
             cy.get('#sChurchState').should('have.value', 'IL');
 
             cy.get('#sChurchZip').clear().type('62701');
+            cy.get('#sChurchZip').should('have.value', '62701');
 
-            // Submit the form
-            cy.get('#church-info-form').submit();
+            // Submit via the real button, settled first - a programmatic
+            // .submit() raced the page on master run 45204267654 and the
+            // success toast never landed inside the 10s window. The save
+            // posts and reloads the page, so give the toast the same 30s
+            // the other heavy setup steps in this spec use.
+            cy.get('#church-info-form button[type=submit]').should('be.visible').click();
 
-            // Should remain on church-info and show success notification
-            cy.url({ timeout: 10000 }).should('include', 'church-info');
-            cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
+            // The first save returns to the Setup Dashboard and its next steps.
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/setup$/);
+            cy.contains('Church information saved successfully', { timeout: 30000 }).should('be.visible');
+            cy.get('#setupSteps [data-step-done]').first().should('have.attr', 'data-step-done', 'true');
+            cy.get('#globalSearch').should('exist');
         });
     });
 

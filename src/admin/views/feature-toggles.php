@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -49,99 +48,28 @@ $featureGroups = [
             'description' => gettext('Enforce strict CSP headers to protect against XSS attacks'),
         ],
     ],
-    gettext('Finance Features') => [
-        'bEnableNonDeductible' => [
-            'label' => gettext('Non-Deductible Payments'),
-            'description' => gettext('Allow recording non-tax-deductible payments (e.g., merchandise sales)'),
-        ],
-    ],
-    gettext('Search Settings') => [
-        'bSearchIncludePersons' => [
-            'label' => gettext('Search People'),
-            'description' => gettext('Include people in quick global search'),
-        ],
-        'bSearchIncludeFamilies' => [
-            'label' => gettext('Search Families'),
-            'description' => gettext('Include families in quick global search'),
-        ],
-        'bSearchIncludeGroups' => [
-            'label' => gettext('Search Groups'),
-            'description' => gettext('Include groups in quick global search'),
-        ],
-        'bSearchIncludeDeposits' => [
-            'label' => gettext('Search Deposits'),
-            'description' => gettext('Include deposits in quick global search'),
-        ],
-        'bSearchIncludePayments' => [
-            'label' => gettext('Search Payments'),
-            'description' => gettext('Include payments in quick global search'),
-        ],
-        'bSearchIncludeAddresses' => [
-            'label' => gettext('Search Addresses'),
-            'description' => gettext('Include addresses in quick global search'),
-        ],
-        'bSearchIncludeCalendarEvents' => [
-            'label' => gettext('Search Calendar Events'),
-            'description' => gettext('Include calendar events in quick global search'),
-        ],
-        'bSearchIncludeFamilyCustomProperties' => [
-            'label' => gettext('Search Family Custom Properties'),
-            'description' => gettext('Include custom family properties in quick global search'),
-        ],
-    ],
 ];
+$sections = [];
+foreach ($featureGroups as $groupName => $features) {
+    $settings = [];
+    foreach ($features as $settingKey => $settingInfo) {
+        $settings[] = ['name' => $settingKey, 'type' => 'boolean', 'label' => $settingInfo['label'], 'tooltip' => $settingInfo['description']];
+    }
+    $sections[] = ['id' => 'featureGroup' . count($sections), 'title' => $groupName, 'settings' => $settings];
+}
 ?>
 
-<div class="page-body">
-    <div class="container-xl">
-        <div class="alert alert-info">
-            <div class="d-flex">
-                <div>
-                    <i class="fa-solid fa-circle-info me-2"></i>
-                </div>
-                <div>
-                    <?= gettext('Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately.') ?>
-                </div>
-            </div>
-        </div>
-
-        <div id="featureTogglesContainer">
-            <?php foreach ($featureGroups as $groupName => $features): ?>
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h3 class="card-title"><?= $groupName ?></h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-vcenter card-table">
-                            <tbody>
-                                <?php foreach ($features as $settingKey => $settingInfo): ?>
-                                    <tr data-setting="<?= $settingKey ?>">
-                                        <td class="w-100">
-                                            <div class="font-weight-medium"><?= $settingInfo['label'] ?></div>
-                                            <small class="text-muted"><?= $settingInfo['description'] ?></small>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="d-flex align-items-center gap-2 justify-content-end">
-                                                <span class="status-badge admin-status-badge-sm" style="display: none;"></span>
-                                                <label class="form-check form-switch form-check-single m-0">
-                                                    <input class="form-check-input feature-toggle" type="checkbox"
-                                                        aria-label="<?= InputUtils::escapeAttribute($settingInfo['label']) ?>"
-                                                        data-setting="<?= $settingKey ?>"
-                                                        <?= SystemConfig::getBooleanValue($settingKey) ? 'checked' : '' ?>>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
+<div id="featureTogglesContainer" data-reload-on-save>
+    <?php foreach ($sections as $section) : ?>
+        <div id="<?= InputUtils::escapeAttribute($section['id']) ?>" class="mb-3"
+             data-title="<?= InputUtils::escapeAttribute($section['title']) ?>"
+             data-icon="fa-solid fa-toggle-on"
+             data-settings="<?= InputUtils::jsonEncodeForAttribute($section['settings']) ?>"></div>
+    <?php endforeach; ?>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/feature-toggles.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

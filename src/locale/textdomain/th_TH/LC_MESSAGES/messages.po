@@ -376,18 +376,6 @@ msgid "(No assigned family)"
 msgstr "(ไม่มีครอบครัวที่กำหนด)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "แปลงบุคคลเป็นครอบครัว"
-
-#: 
-msgid "Convert Next"
-msgstr "แปลงถัดไป"
-
-#: 
-msgid "Convert All"
-msgstr "แปลงทั้งหมด"
-
-#: 
 msgid "Deposit Slip Number"
 msgstr "หมายเลขใบนำฝาก"
 
@@ -1602,10 +1590,6 @@ msgid "Permission"
 msgstr "สิทธิ์"
 
 #: 
-msgid "System Settings"
-msgstr "การตั้งค่าระบบ"
-
-#: 
 msgid "User Editor"
 msgstr "ตัวแก้ไขผู้ใช้"
 
@@ -2087,24 +2071,12 @@ msgid "Localization"
 msgstr "การแปลภาษา"
 
 #: 
-msgid "Setting saved"
-msgstr "บันทึกการตั้งค่าแล้ว"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "แก้ไขการตั้งค่า JSON"
-
-#: 
 msgid "False"
 msgstr "เท็จ"
 
 #: 
 msgid "True"
 msgstr "จริง"
-
-#: 
-msgid "Edit Settings"
-msgstr "แก้ไขการตั้งค่า"
 
 #: 
 msgid "Functions"
@@ -2219,32 +2191,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "รวมเฉพาะการจัดประเภทเหล่านี้ในไดเรกทอรี คั่นด้วยคอมมา"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นหัวหน้าครัวเรือน"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นคู่สมรส"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นเด็ก"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "ความยาวขั้นต่ำที่ผู้ใช้สามารถตั้งค่ารหัสผ่านได้"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "รายการรหัสผ่านที่ไม่อนุญาต (ชัดเจนเกินไป) คั่นด้วยคอมมา"
-
-#: 
 msgid "Default City"
 msgstr "เมืองเริ่มต้น"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "รัฐเริ่มต้น - ต้องเป็นตัวย่อ 2 ตัวอักษร!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2267,68 +2215,12 @@ msgid "First month of the fiscal year"
 msgstr "เดือนแรกของปีงบประมาณ"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล ตั้งเป็นเท็จเพื่อเปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล"
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการจัดการการสมัครจดหมายข่าวในตัวแก้ไขครอบครัว"
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันแต่งงานในตัวแก้ไขครอบครัว ตั้งเป็นเท็จเพื่อเปิดการป้อนวันแต่งงานในตัวแก้ไขครอบครัว"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "จำนวนเช็คสำหรับรายงานใบนำฝาก"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "หน่วยที่ใช้วัดระยะทาง ไมล์หรือกม."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "เปิดใช้งานการชำระเงินที่ไม่สามารถหักลดหย่อน"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "ข้อความสำหรับบรรทัดบนของรายงานภาษี วันที่จะถูกเพิ่มต่อท้ายบรรทัดนี้"
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "ข้อความสำหรับบรรทัดล่างของรายงานภาษี"
-
-#: 
-msgid "Tax Report signer"
-msgstr "ผู้ลงนามรายงานภาษี"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "ผู้ลงนามการเตือนคำมั่นสัญญา"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา - ไม่มีบันทึกคำมั่นสัญญา"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "ข้อความสำหรับรายงานการเตือนคำมั่นสัญญา - ไม่มีบันทึกการชำระเงิน"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "ข้อความสำหรับรายงานการยืนยันและแก้ไขข้อมูลฐานข้อมูล"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "ผู้ลงนามรายงานการยืนยันและแก้ไขข้อมูลฐานข้อมูล"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "ข้อความสำหรับรายงานไดเรกทอรี"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3783,10 +3675,6 @@ msgstr "ไฟล์สำรองข้อมูลไม่มีฐานข
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "ทำให้รหัสไปรษณีย์ที่ผู้ใช้ป้อนเป็นตัวพิมพ์ใหญ่เมื่อบันทึกลงฐานข้อมูล"
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "ใช้ลงท้ายจดหมายก่อนผู้ลงนาม"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3891,10 +3779,6 @@ msgid "Failed"
 msgstr "ล้มเหลว"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "หมายเลขบัญชีเช็คคริสตจักร"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "ทำเครื่องหมายครอบครัวเป็นไม่ใช้งาน"
 
@@ -3905,10 +3789,6 @@ msgstr "ทำเครื่องหมายครอบครัวเป็
 #: 
 msgid "families"
 msgstr "ครอบครัว"
-
-#: 
-msgid "Financial Settings"
-msgstr "การตั้งค่าการเงิน"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3949,10 +3829,6 @@ msgstr "ยกเลิกการกำหนดคุณสมบัติส
 #: 
 msgid "The property could not be unassigned."
 msgstr "ไม่สามารถยกเลิกการกำหนดคุณสมบัติได้"
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "ข้อความก่อนชื่อในอีเมล/รายงาน"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4195,10 +4071,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "ระเบียนถูกเพิ่มลงในกลุ่มที่เลือกสำเร็จ"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: yyyy-mm-dd ในภาษาฝรั่งเศส: dd/mm/yyyy เป็นต้น"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: Y-m-d ในภาษาฝรั่งเศส: d/m/Y เป็นต้น"
 
@@ -4285,10 +4157,6 @@ msgstr "ตะวันตกเฉียงเหนือตะวันตก
 #: 
 msgid "WSW"
 msgstr "ตะวันตกเฉียงใต้ตะวันตก"
-
-#: 
-msgid "Search Family"
-msgstr "ค้นหาครอบครัว"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4387,10 +4255,6 @@ msgid "Change Settings"
 msgstr "เปลี่ยนการตั้งค่า"
 
 #: 
-msgid "Unknown Type"
-msgstr "ประเภทไม่ทราบ"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID สำหรับตะกร้าต้องเป็นตัวเลข"
 
@@ -4409,14 +4273,6 @@ msgstr "ค้นหาคน"
 #: 
 msgid "Maximum number of People"
 msgstr "จำนวนคนสูงสุด"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "ฟิลด์ที่แสดงรายการบิดาแห่งการสารภาพ ต้องเป็นคนจากประเภทกลุ่ม"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "ฟิลด์ที่เก็บการสารภาพครั้งล่าสุด ต้องเป็นประเภทวันที่"
 
 #: 
 msgid "People Reports"
@@ -4666,18 +4522,6 @@ msgid "Event not found"
 msgstr "ไม่พบกิจกรรม"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "ความยาวหมดเวลาเซสชันเป็นวินาที\n"
-"ตั้งเป็นศูนย์เพื่อปิดใช้งานการหมดเวลาเซสชัน"
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "จำนวนขั้นต่ำที่รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเก่า (จำนวนตัวอักษรที่เปลี่ยน)\n"
-"ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
-
-#: 
 msgid "Verify People"
 msgstr "ยืนยันคน"
 
@@ -4747,10 +4591,6 @@ msgstr "กิจกรรมที่ยกเลิกการปักหม
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "นามสกุล, ชื่อจริง ชื่อกลาง"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "ส่งอีเมลแจ้งเตือนผู้ใช้เมื่อบัญชีของพวกเขาถูกลบ"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7713,10 +7553,6 @@ msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย"
-
-#: 
 msgid "Active Groups"
 msgstr "กลุ่มที่ใช้งานอยู่"
 
@@ -8194,10 +8030,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "เลือกวิธีที่คุณต้องการเพิ่มข้อมูลลงฐานข้อมูล คุณสามารถใช้วิธีอื่นได้ในภายหลัง"
 
 #: 
-msgid "Church Info"
-msgstr "ข้อมูลคริสตจักร"
-
-#: 
 msgid "Clear all"
 msgstr "ล้างทั้งหมด"
 
@@ -8230,14 +8062,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "ทำขั้นตอนเหล่านี้ตามลำดับใดก็ได้เพื่อเตรียม ChurchCRM สำหรับคริสตจักรของคุณ"
 
 #: 
-msgid "Confession"
-msgstr "การสารภาพบาป"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "กำหนดค่าการตั้งค่าและค่ากำหนดระบบทั่วไป"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "กำหนดค่าการตั้งค่ากลุ่ม บทบาท และคุณสมบัติ"
 
@@ -8248,10 +8072,6 @@ msgstr "ยืนยันรหัสผ่านใหม่ของคุณ
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "เชื่อมต่อเซิร์ฟเวอร์ SMTP เพื่อให้ ChurchCRM สามารถส่งอีเมลได้"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "แปลงข้อมูลบุคคลเป็นหน่วยครอบครัว"
 
 #: 
 msgid "Convert to Family"
@@ -8288,10 +8108,6 @@ msgstr "บุคคลปัจจุบัน"
 #: 
 msgid "Database Reset"
 msgstr "รีเซ็ตฐานข้อมูล"
-
-#: 
-msgid "Default / Notes"
-msgstr "ค่าเริ่มต้น / บันทึก"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9912,10 +9728,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "อนุญาตการอัปเกรดระบบเป็นรุ่นที่ทำเครื่องหมายว่า 'ก่อนเผยแพร่' บน GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "อนุญาตการเข้าถึงกิจกรรมในปฏิทินโดยไม่ต้องยืนยันตัวตนผ่าน URL สาธารณะ HTML, ICS และ JSON จำเป็นสำหรับการแชร์ปฏิทินกับแอปภายนอก"
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "อนุญาตให้ผู้เยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าลงทะเบียนด้วยตนเอง"
 
@@ -10078,24 +9890,12 @@ msgid "Enable Email"
 msgstr "เปิดใช้งานอีเมล"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "เปิดใช้งานเมนูกิจกรรม"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "เปิดใช้งาน API ปฏิทินภายนอก"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "เปิดใช้งานการส่งอีเมลจาก ChurchCRM จำเป็นสำหรับการรีเซ็ตรหัสผ่าน การแจ้งเตือน และลิงก์อีเมล"
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "เปิดใช้งานหากเซิร์ฟเวอร์ SMTP ของคุณต้องใช้ชื่อผู้ใช้และรหัสผ่าน"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "เปิดหรือปิดใช้งานโมดูลโรงเรียนวันอาทิตย์และเมนูแถบด้านข้าง"
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10193,10 +9993,6 @@ msgstr "ซ่อนละติจูด/ลองจิจูด"
 #: 
 msgid "How it works"
 msgstr "วิธีการทำงาน"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "จำนวนเช็คที่จะพิมพ์ต่อหน้าใบนำฝาก"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10356,10 +10152,6 @@ msgid "Privacy Note"
 msgstr "หมายเหตุความเป็นส่วนตัว"
 
 #: 
-msgid "Quick Settings"
-msgstr "การตั้งค่าด่วน"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "การยืนยันตัวตน SMTP"
 
@@ -10386,10 +10178,6 @@ msgstr "การตั้งค่า"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "แสดงรายละเอียดมูลค่าธนบัตรในรายงานใบนำฝาก"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "แสดงหรือซ่อนเมนูกิจกรรมในการนำทางหลัก"
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10803,10 +10591,6 @@ msgstr "หากคุณพบอักขระที่แสดงผิด
 #: 
 msgid "Indigo"
 msgstr "สีคราม"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
 
 #: 
 msgid "Language and regional settings"
@@ -12582,10 +12366,6 @@ msgstr "ตลอดวัน"
 #: 
 msgid "All Roles"
 msgstr "ทุกบทบาท"
-
-#: 
-msgid "All System Settings"
-msgstr "การตั้งค่าระบบทั้งหมด"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15053,10 +14833,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "รายการแหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "แหล่งที่มาคั่นด้วยช่องว่างที่อนุญาตให้ฝังหน้าปฏิทินสาธารณใน iframe"
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "กลุ่มโรงเรียนวันอาทิตย์ไม่สามารถแก้ไขได้ ยกเว้นสองกรณีนี้เท่านั้น"
 
@@ -15397,10 +15173,6 @@ msgid "ChurchCRM version"
 msgstr "เวอร์ชัน ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "ระดับการเก็บรวบรวมข้อมูล"
-
-#: 
 msgid "Count unique installs"
 msgstr "นับการติดตั้งที่ไม่ซ้ำกัน"
 
@@ -15455,14 +15227,6 @@ msgstr "ไม่สามารถอัปเดตคำมั่นสัญ
 #: 
 msgid "Financial data"
 msgstr "ข้อมูลทางการเงิน"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "เต็มรูปแบบ — ทั้งหมดข้างต้นรวมถึงการดูหน้าเพจ"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "เต็มรูปแบบ — การดูหน้าเพจ คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
 
 #: 
 msgid "Fund Summary"
@@ -15541,10 +15305,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "จำนวนเงินที่ไม่สามารถหักลดหย่อนไม่สามารถเกินจำนวนกองทุน"
 
 #: 
-msgid "None (disabled)"
-msgstr "ไม่มี (ปิดใช้งาน)"
-
-#: 
 msgid "Overpaid"
 msgstr "ถวายเกิน"
 
@@ -15605,10 +15365,6 @@ msgid "Select a fund"
 msgstr "เลือกกองทุน"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "ส่งอีเมลทดสอบวันเกิดถึงตัวเอง"
-
-#: 
 msgid "Sending to"
 msgstr "กำลังส่งถึง"
 
@@ -15663,10 +15419,6 @@ msgstr "ขออวยพรให้คุณมีวันเกิดที
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "บัญชีของคุณไม่มีที่อยู่อีเมลในระบบ เพิ่มอีเมลในโปรไฟล์ของคุณเพื่อส่งการทดสอบ"
-
-#: 
-msgid "errors+"
-msgstr "ข้อผิดพลาด+"
 
 #: 
 msgid "full only"
@@ -16627,10 +16379,6 @@ msgid "Not a valid date of death"
 msgstr "วันที่เสียชีวิตไม่ถูกต้อง"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "จำนวนวันที่ผู้ใช้มีเวลาลงทะเบียนใช้ 2FA หลังจากมีการบังคับใช้ ตั้งค่าเป็น 0 เพื่อบังคับใช้ทันที การลดระยะเวลาผ่อนผันที่กำลังดำเนินอยู่อาจทำให้ผู้ใช้ถูกล็อกออกจากระบบทันที"
-
-#: 
 msgid "Offline"
 msgstr "ออฟไลน์"
 
@@ -16955,14 +16703,6 @@ msgid "Download CSV"
 msgstr "ดาวน์โหลด CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "เปิดหรือปิดใช้งานโมดูลการเงินและเมนูแถบด้านข้าง"
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "เปิดหรือปิดใช้งานโมดูลระดมทุน"
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "ล้มเหลวในการลบโลโก้โบสถ์"
 
@@ -17107,10 +16847,6 @@ msgid "Access Control & Security"
 msgstr "การควบคุมการเข้าถึงและความปลอดภัย"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "อนุญาตให้บันทึกการชำระเงินที่ไม่สามารถหักลดหย่อนภาษีได้ (เช่น การขายสินค้า)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
 
@@ -17163,46 +16899,6 @@ msgid "Feature Toggles"
 msgstr "สวิตช์คุณลักษณะ"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "สวิตช์คุณลักษณะควบคุมโมดูลและคุณลักษณะใดที่พร้อมใช้งานใน ChurchCRM การเปลี่ยนแปลงจะมีผลใช้บังคับทันที"
-
-#: 
-msgid "Finance Features"
-msgstr "คุณลักษณะการเงิน"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "รวมที่อยู่ในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "รวมกิจกรรมปฏิทินในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "รวมคุณสมบัติครอบครัวที่กำหนดเองในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "รวมเงินฝากในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "รวมครอบครัวในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "รวมหน่วยงานในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "รวมการชำระเงินในการค้นหาทั่วโลกด่วน"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "รวมผู้คนในการค้นหาทั่วโลกด่วน"
-
-#: 
 msgid "Invalid setting"
 msgstr "การตั้งค่าไม่ถูกต้อง"
 
@@ -17211,16 +16907,8 @@ msgid "Lost Password Link"
 msgstr "ลิงค์รีเซ็ตรหัสผ่าน"
 
 #: 
-msgid "Manage All Features"
-msgstr "จัดการคุณลักษณะทั้งหมด"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "สวิตช์หลักสำหรับการส่งอีเมล จำเป็นสำหรับการรีเซ็ตรหัสผ่านและการแจ้งเตือน"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "การชำระเงินที่ไม่สามารถหักลดหย่อนได้"
 
 #: 
 msgid "Primary Modules"
@@ -17231,20 +16919,12 @@ msgid "Public Calendar API"
 msgstr "API ปฏิทินสาธารณะ"
 
 #: 
-msgid "Saved"
-msgstr "บันทึก"
-
-#: 
 msgid "Search Families"
 msgstr "ค้นหาครอบครัว"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "ค้นหาคุณสมบัติที่กำหนดเองของครอบครัว"
-
-#: 
-msgid "Search Settings"
-msgstr "ค้นหาการตั้งค่า"
 
 #: 
 msgid "Self-Registration"
@@ -17461,14 +17141,6 @@ msgstr "ผู้รับการแจ้งเตือน"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "บุคคลที่จะได้รับแจ้งเมื่อมีการเพิ่มครอบครัวหรือบุคคลใหม่"
-
-#: 
-msgid "Person initials style"
-msgstr "รูปแบบอักษรย่อของบุคคล"
-
-#: 
-msgid "Person name display style"
-msgstr "รูปแบบการแสดงชื่อบุคคล"
 
 #: 
 msgid "Spouse Role"
@@ -22484,10 +22156,6 @@ msgid "This email batch was queued by another user"
 msgstr "ชุดอีเมลนี้ถูกใส่คิวโดยผู้ใช้อื่น"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "หลังจากนำเข้า คุณใช้รีเซ็ตฐานข้อมูลบนแดชบอร์ดผู้ดูแลระบบเพื่อล้างข้อมูลทั้งหมดและเริ่มใหม่ได้ การกำหนดค่าแอปพลิเคชันจะยังคงอยู่"
-
-#: 
 msgid "Importing demo data..."
 msgstr "กำลังนำเข้าข้อมูลตัวอย่าง..."
 
@@ -23468,30 +23136,6 @@ msgid "Download PDF"
 msgstr "ดาวน์โหลด PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "ระยะเวลาล็อกเป็นนาที\n"
-"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังจากผ่านไปตามจำนวนนาทีนี้ การลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP เดียวกันจะถูกนับในช่วงเวลาเดียวกัน"
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP หนึ่ง\n"
-"การลงชื่อเข้าใช้ที่ล้มเหลวและคำขอรีเซ็ตรหัสผ่านจากที่อยู่ IP หนึ่งจะนับรวมในขีดจำกัดนี้ภายในระยะเวลาล็อก เมื่อถึงขีดจำกัด การลงชื่อเข้าใช้จากที่อยู่นั้นจะถูกปฏิเสธจนกว่าระยะเวลาจะสิ้นสุด\n"
-"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้ เช่น เมื่อทุกคนเข้าถึง ChurchCRM ผ่านที่อยู่พร็อกซีเดียว"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวที่อนุญาตก่อนบัญชีผู้ใช้จะถูกล็อก\n"
-"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังระยะเวลาล็อก หรือเร็วกว่านั้นเมื่อผู้ดูแลรีเซ็ตจำนวนครั้งที่ล้มเหลว\n"
-"คุณสมบัตินี้ช่วยป้องกันการเดารหัสผ่านโดยอัตโนมัติ\n"
-"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้"
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "นาทีจนกว่าจะปลดล็อกเอง: %d"
 
@@ -23820,10 +23464,6 @@ msgid "PDF Output"
 msgstr "ผลลัพธ์ PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "โหมดการจัดการ PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "บรรทัดคำถาม"
 
@@ -23860,10 +23500,6 @@ msgid "Greeting"
 msgstr "คำขึ้นต้น"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "คำขึ้นต้นและลายมือชื่อในจดหมาย"
-
-#: 
 msgid "Letterhead"
 msgstr "หัวจดหมาย"
 
@@ -23886,10 +23522,6 @@ msgstr "ตั้งหัวจดหมายที่จดหมาย PDF �
 #: 
 msgid "Using the church name and address"
 msgstr "ใช้ชื่อและที่อยู่ของคริสตจักร"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26099,14 +25731,6 @@ msgstr "การชำระเงินตามกองทุน"
 msgid "Unknown Fund"
 msgstr "กองทุนที่ไม่รู้จัก"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ แล้วลองอีกครั้ง"
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ"
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26124,18 +25748,6 @@ msgstr "กำหนดให้ต้องระบุหมายเลขเ
 #: 
 msgid "Require check number on check payments"
 msgstr "ต้องระบุหมายเลขเช็คสำหรับการชำระด้วยเช็ค"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "ยังไม่ได้เริ่มการอัปเกรด จึงไม่มีอะไรเปลี่ยนแปลง"
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "ไม่สามารถเรียกใช้การอัปเกรดนี้กับฐานข้อมูลของคุณได้"
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลของคุณ (%1$s %2$s) เก่ากว่าที่ ChurchCRM รองรับ (MySQL %3$s หรือ MariaDB %4$s ขึ้นไป)"
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26292,22 +25904,6 @@ msgid "Database engine and major/minor version"
 msgstr "เอนจินฐานข้อมูลและเวอร์ชันหลัก/รอง"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "ข้อผิดพลาด — สถิติการติดตั้ง คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "ช่วยเราค้นหาและแก้ไขปัญหาไหม"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "การติดตั้ง แชร์สถิติการติดตั้งและอัปเกรดขั้นต่ำ ข้อผิดพลาด เพิ่มคำเตือนและรายงานข้อผิดพลาด เต็มรูปแบบ เพิ่มการดูหน้าเพจ ไม่มี ส่งเฉพาะการติดตั้งและอัปเกรดที่ล้มเหลว"
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "การติดตั้ง — สถิติการติดตั้งและอัปเกรด (ค่าเริ่มต้น)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "ผลการติดตั้งและอัปเกรด เวอร์ชันก่อนหน้าเมื่ออัปเกรด และการแจ้งสถานะวันละครั้งขณะใช้งาน"
 
@@ -26316,68 +25912,12 @@ msgid "Installation profile"
 msgstr "โปรไฟล์การติดตั้ง"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "ภาษาและภูมิภาค (ข้อผิดพลาดและเต็มรูปแบบ)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "ไม่มีการแชร์: ข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล ประเทศของคุณคือประเทศในการตั้งค่าคริสตจักร ไม่ได้ค้นหาจากเครือข่ายของคุณ"
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "ตระกูลระบบปฏิบัติการ (ข้อผิดพลาดและเต็มรูปแบบ)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "เวอร์ชัน PHP (ข้อผิดพลาดและเต็มรูปแบบ)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "ดูว่ามีการแชร์อะไรบ้าง หรือเปลี่ยนตัวเลือกของคุณ ได้ที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล"
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "แยกการติดตั้งสำหรับใช้งานจริง สาธิต และทดสอบ"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "แชร์สถิติการติดตั้งแบบไม่ระบุตัวตนไหม"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "แชร์รายงานข้อผิดพลาดและการใช้งาน"
-
-#: 
-msgid "Share install statistics"
-msgstr "แชร์สถิติการติดตั้ง"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "แชร์เพิ่มเติม: คำเตือน รายละเอียดข้อผิดพลาด และหน้าที่ถูกเปิด"
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "สิ่งที่แชร์: การที่ ChurchCRM ถูกติดตั้งหรืออัปเกรดและสำเร็จหรือไม่ การแจ้งสถานะวันละครั้งขณะใช้งาน หมายเลขเวอร์ชัน ประเทศของคุณ และประเภทฐานข้อมูล รหัสการติดตั้งแบบสุ่มช่วยนับแต่ละการติดตั้งเพียงครั้งเดียว"
-
-#: 
 msgid "Understand database compatibility"
 msgstr "ทำความเข้าใจความเข้ากันได้ของฐานข้อมูล"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "ระบบจะถามตัวเลือกนี้เพียงครั้งเดียว คุณเปลี่ยนได้ทุกเมื่อ หากเลือก ไม่ขอบคุณ จะรายงานเฉพาะการติดตั้งหรืออัปเกรดที่ล้มเหลว"
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "ข้อมูลของคุณเป็นของคุณ การติดตั้ง แชร์เฉพาะผลการติดตั้งและอัปเกรด รหัสการติดตั้ง เวอร์ชันซอฟต์แวร์ โปรไฟล์การติดตั้ง ประเทศที่ตั้งค่าไว้ และเอนจินฐานข้อมูลพร้อมเวอร์ชันหลัก/รอง ข้อผิดพลาด เพิ่มคำเตือนและรายละเอียดข้อผิดพลาด เต็มรูปแบบ เพิ่มการดูหน้าเพจ ไม่มี ส่งเฉพาะการติดตั้งและอัปเกรดที่ล้มเหลว ไม่มีระดับใดส่งที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ การติดตั้งเพื่อทดสอบจะไม่ส่งอะไรเลย ข้อมูลจะถูกส่งไปยัง PostHog ในสหรัฐอเมริกา"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "ข้อมูลของคุณเป็นของคุณ รายงานนี้เกี่ยวกับซอฟต์แวร์ ไม่เคยเกี่ยวกับคริสตจักรของคุณหรือผู้คนในคริสตจักร"
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "ข้อมูลของคุณเป็นของคุณ เพื่อนับจำนวนการติดตั้ง ChurchCRM จะรายงานว่าถูกติดตั้งหรืออัปเกรดและสำเร็จหรือไม่ การแจ้งสถานะวันละครั้งขณะใช้งาน รวมถึงหมายเลขเวอร์ชัน ประเทศของคุณ ประเภทฐานข้อมูล และรหัสการติดตั้งแบบสุ่ม โดยจะไม่รายงานข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล คุณปิดได้ทุกเมื่อที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล โดยการติดตั้งหรืออัปเกรดที่ล้มเหลวจะยังคงถูกรายงาน คำเตือน รายละเอียดข้อผิดพลาด และการดูหน้าเพจจะถูกแชร์เฉพาะเมื่อคุณเลือกเท่านั้น"
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27971,10 +27511,6 @@ msgid "How the congregation is made up"
 msgstr "องค์ประกอบของสมาชิกคริสตจักร"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "ฉันเข้าใจว่าฐานข้อมูลนี้ไม่ได้รับการสนับสนุน และการอัปเกรดจะถูกบล็อก"
-
-#: 
 msgid "Insights"
 msgstr "ข้อมูลเชิงลึก"
 
@@ -27997,10 +27533,6 @@ msgstr "การตรวจสอบความสมบูรณ์ล้ม
 #: 
 msgid "Integrity check passed"
 msgstr "การตรวจสอบความสมบูรณ์ผ่าน"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "โทเค็น CSRF ไม่ถูกต้อง"
 
 #: 
 msgid "Last %d days"
@@ -28045,10 +27577,6 @@ msgstr "เปิดแดชบอร์ดการเงินในช่ว
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 วันที่ผ่านมาและ %d วันถัดไป"
-
-#: 
-msgid "People without a family: %d"
-msgstr "ผู้ที่ไม่มีครอบครัว: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28179,10 +27707,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "แดชบอร์ดนี้เป็นแดชบอร์ดหลักของคุณแล้ว"
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "ฐานข้อมูลนี้ไม่ได้รับการแก้ไขด้านความปลอดภัยจากผู้จำหน่ายอีกต่อไป"
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "นี่คือที่ที่ผู้คนจะเปิด ChurchCRM เปลี่ยนเฉพาะเมื่อพวกเขาจะใช้ที่อยู่อื่นที่ไม่ใช่หน้านี้เท่านั้น"
 
@@ -28195,28 +27719,12 @@ msgid "Total deposited"
 msgstr "ยอดรวมที่ฝาก"
 
 #: 
-msgid "Unsupported database server"
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลที่ไม่ได้รับการสนับสนุน"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "การอัปเกรดจะถูกบล็อกจนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่ได้รับการสนับสนุน"
-
-#: 
 msgid "Usually 3306."
 msgstr "โดยปกติคือ 3306"
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "เราแนะนำให้ขอให้โฮสต์ของคุณเปลี่ยนก่อนที่คุณจะติดตั้ง ในขณะที่ยังไม่มีข้อมูลให้ย้าย MariaDB 10.11 เป็นเป้าหมายที่ดี"
-
-#: 
 msgid "Web address"
 msgstr "ที่อยู่เว็บ"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "คุณสามารถติดตั้งได้ตอนนี้: ChurchCRM จะติดตั้งและทำงาน"
 
 #: 
 msgid "Your main dashboard"
@@ -28235,4 +27743,476 @@ msgstr "และอีก {{count}}"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "และอีก {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "ฐานข้อมูลไม่รองรับ"
+
+#: 
+msgid "Deactivated"
+msgstr "ปิดใช้งานแล้ว"
+
+#: 
+msgid "How to find the log"
+msgstr "วิธีค้นหาบันทึก"
+
+#: 
+msgid "How to install server locales"
+msgstr "วิธีติดตั้งโลแคลของเซิร์ฟเวอร์"
+
+#: 
+msgid "Last edited"
+msgstr "แก้ไขล่าสุด"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "ไม่ได้ติดตั้งบนเซิร์ฟเวอร์ และไม่ได้ติดตั้งโลแคลสำรองภาษาอังกฤษไว้ด้วย ดังนั้นอินเทอร์เฟซจะแสดงเป็นภาษาอังกฤษ"
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "บันทึกของ ChurchCRM จะบันทึกเหตุผลเฉพาะไว้ โปรดลบชื่อออกก่อนแชร์"
+
+#: 
+msgid "Verify now"
+msgstr "ยืนยันตอนนี้"
+
+#: 
+msgid "View Giving History"
+msgstr "ดูประวัติการบริจาค"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "เพิ่ม %d คนสำเร็จ; %d คนไม่สามารถเพิ่มได้และยังคงอยู่ในตะกร้า"
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d คนไม่สามารถเพิ่มได้และยังคงอยู่ในตะกร้าของคุณ"
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "ผู้ดูแลระบบจะเห็นคำเตือนนี้ในทุกหน้าจนกว่าฐานข้อมูลจะถูกย้ายไปยังเวอร์ชันที่ยังได้รับการแก้ไขด้านความปลอดภัย การย้ายตอนนี้ ในขณะที่ข้อมูลยังมีน้อย จะง่ายที่สุด"
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "จากนี้ไปผู้ดูแลระบบจะเข้าสู่ระบบไปยังแดชบอร์ดมาตรฐาน แดชบอร์ดการตั้งค่าจะไม่เปิดขึ้นอีกเมื่อเข้าสู่ระบบ"
+
+#: 
+msgid "Database security risk"
+msgstr "ความเสี่ยงด้านความปลอดภัยของฐานข้อมูล"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "โหมดสาธิตยังเปิดสถิติการใช้งานแบบไม่ระบุชื่อ (PostHog) เพื่อให้เราเห็นว่าผู้คนสำรวจ ChurchCRM อย่างไร เริ่มต้นใหม่จะปิดสิ่งนี้"
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "บันทึกการตั้งค่าอีเมลแล้ว การเข้าสู่ระบบของสมาชิกเปิดอยู่ตอนนี้ ดังนั้นสมาชิกสามารถเข้าสู่ระบบพอร์ทัลสมาชิกด้วยอีเมลของตนได้"
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "ป้อนข้อมูลคริสตจักรของคุณ เพิ่มผู้คนของคุณ และเชิญทีมของคุณ"
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "ทุกอย่างที่นี่เป็นข้อมูลตัวอย่าง เริ่มต้นใหม่ก่อนที่คุณจะป้อนข้อมูลจริงของคริสตจักรของคุณ"
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "ทุกอย่างที่นี่เป็นข้อมูลตัวอย่าง เมื่อคุณพร้อมที่จะใช้ ChurchCRM สำหรับคริสตจักรของคุณ ให้เริ่มต้นใหม่: จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง เพื่อให้คุณเริ่มต้นด้วยข้อมูลของคุณเอง"
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "สำรวจ ChurchCRM ด้วยข้อมูลสาธิต หรือตั้งค่าสำหรับคริสตจักรของคุณ"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "ไม่สามารถเพิ่มบุคคลเข้ากลุ่มได้"
+
+#: 
+msgid "Finish setup"
+msgstr "เสร็จสิ้นการตั้งค่า"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "เป็นเวลาหลายวันนี้หลังจากการติดตั้ง ผู้ดูแลระบบจะเข้าสู่ระบบไปยังแดชบอร์ดการตั้งค่า ตั้งค่าเป็น 0 เพื่อปิด"
+
+#: 
+msgid "Group Assignment"
+msgstr "การมอบหมายกลุ่ม"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "ภายใน: ผู้ดูแลระบบเลือก เสร็จสิ้นการตั้งค่า บนแดชบอร์ดการตั้งค่า อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Keep exploring"
+msgstr "สำรวจต่อไป"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "ย้ายมาจากเซิร์ฟเวอร์ ChurchCRM อื่น? กู้คืนข้อมูลสำรองที่สร้างไว้ที่นั่น การทำเช่นนี้จะแทนที่ทุกอย่างในการติดตั้งนี้"
+
+#: 
+msgid "Ready for your church"
+msgstr "พร้อมสำหรับคริสตจักรของคุณ"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "ลองใหม่ การมอบหมายกลุ่ม"
+
+#: 
+msgid "Retry group assignments"
+msgstr "ลองมอบหมายกลุ่มอีกครั้ง"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "เลือกกลุ่มหนึ่งกลุ่มหรือมากกว่าสำหรับบุคคลนี้"
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "เลือกกลุ่มที่คุณต้องการลองใหม่"
+
+#: 
+msgid "Set Up Your Church"
+msgstr "ตั้งค่าคริสตจักรของคุณ"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "แดชบอร์ดการตั้งค่า"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "เริ่มต้นใหม่บนแบนเนอร์สาธิต หรือ รีเซ็ตฐานข้อมูลบนแดชบอร์ดผู้ดูแลระบบ จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง และทำให้ ChurchCRM กลับไปเป็นการติดตั้งใหม่"
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "เริ่มต้นใหม่ก่อน จากนั้นตั้งค่า ChurchCRM ด้วยข้อมูลคริสตจักรของคุณเอง"
+
+#: 
+msgid "Start setup"
+msgstr "เริ่มการตั้งค่า"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "ข้อมูลสาธิตหายไปแล้ว เข้าสู่ระบบด้วยบัญชีผู้ดูแลระบบเริ่มต้นเพื่อตั้งค่าคริสตจักรของคุณ"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "บันทึกบุคคลแล้ว แต่การมอบหมายกลุ่มหนึ่งรายการหรือมากกว่าล้มเหลว เลือกกลุ่มด้านล่างและลองใหม่"
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "บันทึกบุคคลแล้ว แต่การมอบหมายกลุ่มหนึ่งรายการหรือมากกว่าล้มเหลว กลุ่มที่ไม่สำเร็จถูกเลือกไว้ด้านล่าง ตรวจสอบและบันทึกอีกครั้งเพื่อลองใหม่"
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "การทำเช่นนี้จะลบข้อมูลสาธิตและการตั้งค่าทุกอย่าง และทำให้ ChurchCRM กลับไปเป็นการติดตั้งใหม่"
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "คุณจะเข้าสู่ระบบอีกครั้งด้วยบัญชีผู้ดูแลระบบเริ่มต้นและป้อนข้อมูลคริสตจักรของคุณ"
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "คุณกำลังสำรวจ ChurchCRM ด้วยข้อมูลสาธิต"
+
+#: 
+msgid "You're exploring demo data"
+msgstr "คุณกำลังสำรวจข้อมูลสาธิต"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "บันทึกข้อมูลคริสตจักรของคุณแล้ว ทำตามขั้นตอนด้านล่าง"
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "ฐานข้อมูลของคุณ (%1$s %2$s) เป็นความเสี่ยงด้านความปลอดภัย: ผู้จำหน่ายไม่ปล่อยการแก้ไขด้านความปลอดภัยสำหรับเวอร์ชันนั้นอีกต่อไป ChurchCRM ยังทำงานต่อไป แต่ขอให้โฮสต์ของคุณย้ายไปยัง MariaDB %3$s+ หรือ MySQL %4$s+"
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "การเช็คอินรายวันขณะใช้งาน เวอร์ชันซอฟต์แวร์และฐานข้อมูล ภาษา ประเทศ ประเภทการติดตั้ง และรหัสการติดตั้งแบบสุ่ม ช่วยนับการติดตั้งที่ใช้งานอยู่"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "บัญชีและการลงชื่อเข้าใช้"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "ส่งด้วยว่าหน้าใดบ้างที่ถูกใช้"
+
+#: 
+msgid "Areas"
+msgstr "พื้นที่"
+
+#: 
+msgid "Church & System"
+msgstr "คริสตจักรและระบบ"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "เมืองหรือเมืองเล็กที่ออกใบเสร็จ พิมพ์บนใบเสร็จอย่างเป็นทางการ เว้นว่างไว้เพื่อใช้เมืองของคริสตจักร"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "คำลงท้ายก่อนชื่อผู้ลงนาม ตัวอย่างเช่น ด้วยความเคารพ"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "คำลงท้ายที่พิมพ์ก่อนผู้ลงนามบนใบเสร็จอย่างเป็นทางการ"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "รหัสผ่านที่คั่นด้วยจุลภาคที่ไม่มีใครใช้ได้"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "จดหมายยืนยัน"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "สร้างครอบครัวสำหรับบุคคลนี้? ที่อยู่และโทรศัพท์บ้านของพวกเขาจะย้ายไปครอบครัวใหม่"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "จำนวนวันที่ผู้ใช้ต้องตั้งค่าการยืนยันตัวตนแบบสองปัจจัยหลังจากที่มันกลายเป็นข้อบังคับ 0 บังคับใช้ทันที การลดระยะเวลาผ่อนผันที่ใช้งานอยู่อาจทำให้ผู้ใช้ถูกล็อกออก"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "การฝากและการชำระเงิน"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "รหัสผ่านที่ไม่ได้รับอนุญาต"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "ข้อจำกัดความรับผิดชอบ %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "ส่งอีเมลถึงผู้ใช้เมื่อบัญชีของพวกเขาถูกลบ"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "ทุกหน้าการตั้งค่าในที่เดียว และการตั้งค่าที่ใช้กับทั้งระบบ"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "การลงชื่อเข้าใช้ที่ล้มเหลวก่อนการล็อก"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "การลงชื่อเข้าใช้ที่ล้มเหลวต่อที่อยู่ IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นเด็กในไดเรกทอรี"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นหัวหน้าครัวเรือนในไดเรกทอรีและการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นคู่สมรสในไดเรกทอรีและการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Finance Settings"
+msgstr "การตั้งค่าการเงิน"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "ระยะเวลาผ่อนผัน (วัน)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "ซ่อนการสมัครจดหมายข่าวในตัวแก้ไขครอบครัว"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "ซ่อนช่องวันที่ของเพื่อนในตัวแก้ไขบุคคล"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "ซ่อนช่องวันแต่งงานในตัวแก้ไขครอบครัว"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "บัญชีที่ถูกล็อกจะถูกล็อกนานเท่าใด การลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP หนึ่งจะถูกนับในช่วงเวลาเดียวกัน"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเดิมกี่ตัวอักษร 0 ปิดสิ่งนี้"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "ใน ผู้ดูแลระบบ → การรวบรวมข้อมูล เปิด แชร์ว่าหน้าใดบ้างที่ถูกใช้ เพื่อเลือก เต็มรูปแบบ เต็มรูปแบบยังส่งการดูหน้าเว็บด้วย"
+
+#: 
+msgid "Initials Format"
+msgstr "รูปแบบอักษรย่อ"
+
+#: 
+msgid "Letter Text %d"
+msgstr "ข้อความจดหมาย %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "ระยะเวลาการล็อก (นาที)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "ล็อกบัญชีหลังจากการลงชื่อเข้าใช้ล้มเหลวติดต่อกันจำนวนนี้ จะปลดล็อกหลังจากระยะเวลาการล็อก หรือเมื่อผู้ดูแลระบบรีเซ็ต 0 ปิดการล็อก"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "จัดการพอร์ทัลสมาชิก"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "สมาชิกสามารถลงชื่อเข้าใช้ด้วยอีเมลของพวกเขา"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "สมาชิกยังไม่สามารถลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "จำนวนตัวอักษรขั้นต่ำที่เปลี่ยนแปลง"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "ความยาวรหัสผ่านขั้นต่ำ"
+
+#: 
+msgid "Name Format"
+msgstr "รูปแบบชื่อ"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "ชื่อที่พิมพ์ใต้คำลงท้ายของจดหมายและอีเมล"
+
+#: 
+msgid "No Payments Text"
+msgstr "ข้อความไม่มีการชำระเงิน"
+
+#: 
+msgid "No Pledge Text"
+msgstr "ข้อความไม่มีคำมั่นสัญญา"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "ไม่มีระดับใดส่งบุคคล ผู้บริจาค การถวาย เนื้อหา รายละเอียดการติดต่อของคริสตจักร ที่อยู่เว็บ หรือชื่อเซิร์ฟเวอร์ของคุณ"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ไม่มีระดับใดส่งที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ การติดตั้งทดสอบไม่ส่งอะไรเลย ข้อมูลการรวบรวมจะถูกส่งไปยัง PostHog ในสหรัฐอเมริกา"
+
+#: 
+msgid "OS family"
+msgstr "ตระกูล OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "ย่อหน้าเปิดของจดหมายเตือนคำมั่นสัญญา"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "ย่อหน้าที่เชิญให้ถามคำถามในใบแจ้งการถวาย"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "ย่อหน้าที่เชิญให้ถามคำถามในจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "Passwords"
+msgstr "รหัสผ่าน"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "พิมพ์หลังช่วงวันที่ในบรรทัดเปิดของจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "พิมพ์เป็นอันดับแรกบนใบแจ้งการถวาย ตามด้วยช่วงวันที่"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "พิมพ์เมื่อครอบครัวไม่มีการชำระเงินในบันทึก"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "พิมพ์เมื่อครอบครัวไม่มีคำมั่นสัญญาในบันทึก"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "ปฏิเสธการลงชื่อเข้าใช้จากที่อยู่ IP หนึ่งเป็นระยะเวลาการล็อกหลังจากการลงชื่อเข้าใช้ล้มเหลวหรือการรีเซ็ตรหัสผ่านจำนวนนี้ 0 ปิดสิ่งนี้ ตัวอย่างเช่นเมื่อทุกคนเชื่อมต่อผ่านพร็อกซีเดียว"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "ต้องมีการยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Security Settings"
+msgstr "การตั้งค่าความปลอดภัย"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "ส่งรายงานข้อผิดพลาด เหตุการณ์การติดตั้ง/อัปเกรด และข้อมูลระบบเพื่อให้สามารถแก้ไขปัญหาได้ ไม่มีการดูหน้าเว็บ ไม่มีข้อมูลคริสตจักร"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "หมดเวลาเซสชัน (วินาที)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "แชร์ว่าหน้าใดบ้างที่ถูกใช้"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "การลงชื่อเข้าใช้และความปลอดภัย"
+
+#: 
+msgid "Signature Storage"
+msgstr "ที่เก็บลายเซ็น"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "ลงชื่อผู้ใช้ออกหลังจากไม่มีกิจกรรมเป็นจำนวนวินาทีนี้ 0 ไม่ลงชื่อออกเลย"
+
+#: 
+msgid "System-wide"
+msgstr "ทั้งระบบ"
+
+#: 
+msgid "Text After Dates"
+msgstr "ข้อความหลังวันที่"
+
+#: 
+msgid "Text Messages"
+msgstr "ข้อความตัวอักษร"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "ย่อหน้าขอบคุณของใบแจ้งการถวาย"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "ย่อหน้าขอบคุณของจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงอะไร"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "กำลังใช้ไฟล์หัวจดหมายที่บันทึกไว้ก่อนที่จะมีการเพิ่มการอัปโหลด อัปโหลดหัวจดหมายเพื่อแทนที่"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "คำเตือนหลัง (ชั่วโมง)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "คำก่อนชื่อในจดหมายและอีเมล ตัวอย่างเช่น เรียน"
 

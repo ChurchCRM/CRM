@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "Belum ada data keluarga"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Konversi beberapa individu menjadi Keluarga"
-
-#: 
-msgid "Convert Next"
-msgstr "Konversi Berikutnya"
-
-#: 
-msgid "Convert All"
-msgstr "Konversi semuanya"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Nomor Slip Setoran"
@@ -1607,10 +1595,6 @@ msgid "Permission"
 msgstr "Izin"
 
 #: 
-msgid "System Settings"
-msgstr "Pengaturan sistem"
-
-#: 
 msgid "User Editor"
 msgstr "Editor Pengguna"
 
@@ -2096,24 +2080,12 @@ msgid "Localization"
 msgstr "Lokalisasi"
 
 #: 
-msgid "Setting saved"
-msgstr "Pengaturan disimpan"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Edit Pengaturan JSON"
-
-#: 
 msgid "False"
 msgstr "Salah"
 
 #: 
 msgid "True"
 msgstr "Benar"
-
-#: 
-msgid "Edit Settings"
-msgstr "Edit Pengaturan"
 
 #: 
 msgid "Functions"
@@ -2231,33 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Masukkan hanya klasifikasi ini dalam direktori, pisahkan dengan koma"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Ini adalah nomor peran keluarga yang ditunjuk sebagai kepala rumah"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Ini adalah nomor peran keluarga yang ditetapkan sebagai pasangan"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Ini adalah nomor peran keluarga yang ditetapkan sebagai anak"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Panjang minimum pengguna dapat mengatur kata sandi mereka"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Daftar kata sandi yang ditolak (terlalu jelas) yang dipisah koma."
-
-#: 
 msgid "Default City"
 msgstr "Kota Default"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Status Default - Harus singkatan 2 huruf!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2280,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Bulan pertama tahun fiskal"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Set true untuk menonaktifkan memasukkan Tanggal Teman di Editor Orang. Set false untuk mengaktifkan memasukkan Tanggal Teman di Editor Orang."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Jadikan true untuk menonaktifkan manajemen langganan buletin di Editor Keluarga."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Set true untuk menonaktifkan memasukkan Tanggal Pernikahan di Editor Keluarga. Set false untuk mengaktifkan memasukkan Tanggal Pernikahan di Editor Keluarga."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Jumlah cek untuk Laporan Slip Setoran"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Satuan yang digunakan untuk mengukur jarak, mil atau km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktifkan pembayaran yang tidak dapat dikurangkan"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verbage untuk baris atas laporan pajak. Tanggal akan ditambahkan ke akhir baris ini."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verbage untuk bottom line laporan pajak."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Penandatangan Laporan Pajak"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Verbage untuk laporan pengingat janji"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Penanda Pengingat Janji"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Verbage untuk laporan pengingat janji - Tidak ada catatan janji"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbage untuk laporan pengingat janji - Tidak ada catatan pembayaran"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbage untuk konfirmasi informasi database dan laporan koreksi"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Konfirmasi informasi basis data dan penandatangan laporan koreksi"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Verbage untuk laporan direktori"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3796,10 +3687,6 @@ msgstr "Arsip cadangan tidak mengandung basis data"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Buat zip / kode pos yang dimasukkan pengguna UPPERCASE saat menyimpan ke database."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Digunakan untuk mengakhiri surat sebelum Penandatangan"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3904,10 +3791,6 @@ msgid "Failed"
 msgstr "Gagal"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Nomor Rekening Pengecekan Gereja"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Menonaktifkan Keluarga"
@@ -3920,10 +3803,6 @@ msgstr "Mengaktifkan Keluarga"
 #: 
 msgid "families"
 msgstr "keluarga"
-
-#: 
-msgid "Financial Settings"
-msgstr "Pengaturan Keuangan"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3964,10 +3843,6 @@ msgstr "Properti berhasil dibatalkan penetapannya."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Properti tidak dapat dibatalkan penetapannya."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Teks sebelum nama di email / laporan"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4211,10 +4086,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "catatan berhasil ditambahkan ke Grup yang dipilih."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Untuk menentukan tanggal di Date-Picker, per default: yyyy-mm-dd, dalam bahasa Prancis: dd / mm / yyyy misalnya."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Untuk menentukan tanggal di Date-Picker, per default: Ymd, Dalam Bahasa Perancis: d / m / Y misalnya."
 
@@ -4301,10 +4172,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Cari Keluarga"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4403,10 +4270,6 @@ msgid "Change Settings"
 msgstr "Ubah pengaturan"
 
 #: 
-msgid "Unknown Type"
-msgstr "Jenis tidak dikenal"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID untuk Keranjang harus berupa angka"
 
@@ -4425,14 +4288,6 @@ msgstr "Cari Orang"
 #: 
 msgid "Maximum number of People"
 msgstr "Jumlah maksimal orang"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Bidang tempat Father Of Confession terdaftar, haruslah orang-orang dengan tipe kelompok"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Bidang tempat Pengakuan terakhir disimpan, harus berupa tipe tanggal"
 
 #: 
 msgid "People Reports"
@@ -4686,16 +4541,6 @@ msgid "Event not found"
 msgstr "Acara tidak ditemukan"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Panjang batas waktu sesi dalam detik Ditetapkan ke nol untuk menonaktifkan batas waktu sesi."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Jumlah minimum yang harus berbeda dengan kata sandi baru dari kata sandi lama (# karakter yang diubah) Setel ke nol untuk menonaktifkan fitur ini"
-
-#: 
 msgid "Verify People"
 msgstr "Verifikasi Orang"
 
@@ -4765,10 +4610,6 @@ msgstr "Acara tanpa pin"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Kirim email pemberitahuan ketika akun pengguna telah dihapus"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7732,10 +7573,6 @@ msgid "selected family has no coordinates"
 msgstr "keluarga yang dipilih tidak memiliki koordinat"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
-
-#: 
 msgid "Active Groups"
 msgstr "Kelompok Aktif"
 
@@ -8213,10 +8050,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Pilih cara Anda ingin mengisi database. Anda selalu bisa menggunakan metode lain nanti."
 
 #: 
-msgid "Church Info"
-msgstr "Info Gereja"
-
-#: 
 msgid "Clear all"
 msgstr "Hapus semua"
 
@@ -8249,14 +8082,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Selesaikan ini dalam urutan apa pun untuk menyiapkan ChurchCRM bagi jemaat Anda."
 
 #: 
-msgid "Confession"
-msgstr "Pengakuan Dosa"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Konfigurasi pengaturan dan preferensi sistem global"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Konfigurasi pengaturan grup, peran, dan properti"
 
@@ -8267,10 +8092,6 @@ msgstr "Konfirmasi kata sandi baru Anda"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Hubungkan server SMTP agar ChurchCRM dapat mengirim email"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Ubah catatan individu menjadi unit keluarga"
 
 #: 
 msgid "Convert to Family"
@@ -8307,10 +8128,6 @@ msgstr "Orang saat ini"
 #: 
 msgid "Database Reset"
 msgstr "Reset Database"
-
-#: 
-msgid "Default / Notes"
-msgstr "Default / Catatan"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9931,10 +9748,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Izinkan peningkatan sistem ke rilis yang ditandai sebagai 'pra rilis' di GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Izinkan akses tidak terautentikasi ke acara kalender melalui URL HTML, ICS, dan JSON publik. Diperlukan untuk berbagi kalender dengan aplikasi eksternal."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Izinkan pengunjung membuat catatan keluarga mereka sendiri melalui halaman pendaftaran mandiri"
 
@@ -10097,24 +9910,12 @@ msgid "Enable Email"
 msgstr "Aktifkan Email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Aktifkan Menu Acara"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Aktifkan API Kalender Eksternal"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Aktifkan pengiriman email dari ChurchCRM. Diperlukan untuk pengaturan ulang kata sandi, notifikasi, dan tautan email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Aktifkan jika server SMTP Anda memerlukan nama pengguna dan kata sandi"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Aktifkan atau nonaktifkan modul Sekolah Minggu dan menu bilah samping."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10212,10 +10013,6 @@ msgstr "Sembunyikan Lintang/Bujur"
 #: 
 msgid "How it works"
 msgstr "Cara kerjanya"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Berapa banyak cek yang dicetak per halaman slip setoran"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10375,10 +10172,6 @@ msgid "Privacy Note"
 msgstr "Catatan Privasi"
 
 #: 
-msgid "Quick Settings"
-msgstr "Pengaturan Cepat"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Autentikasi SMTP"
 
@@ -10405,10 +10198,6 @@ msgstr "Pengaturan"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Tampilkan rincian denominasi uang kertas pada laporan slip setoran"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Tampilkan atau sembunyikan menu Acara di navigasi utama."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10822,10 +10611,6 @@ msgstr "Jika Anda menemukan karakter rusak, entitas HTML yang muncul sebagai tek
 #: 
 msgid "Indigo"
 msgstr "Nila"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
 
 #: 
 msgid "Language and regional settings"
@@ -12601,10 +12386,6 @@ msgstr "Sepanjang Hari"
 #: 
 msgid "All Roles"
 msgstr "Semua Peran"
-
-#: 
-msgid "All System Settings"
-msgstr "Semua Pengaturan Sistem"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15072,10 +14853,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Daftar asal yang dipisahkan spasi yang diizinkan untuk menyematkan halaman kalender eksternal publik dalam iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Asal yang dipisahkan spasi yang diizinkan untuk menyematkan halaman kalender publik dalam iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Kelompok Sekolah Minggu tidak dapat diubah, hanya dalam dua kasus ini"
 
@@ -15416,10 +15193,6 @@ msgid "ChurchCRM version"
 msgstr "Versi ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Tingkat pengumpulan"
-
-#: 
 msgid "Count unique installs"
 msgstr "Hitung instalasi unik"
 
@@ -15474,14 +15247,6 @@ msgstr "Gagal memperbarui janji persembahan"
 #: 
 msgid "Financial data"
 msgstr "Data keuangan"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Penuh — semua di atas ditambah kunjungan halaman"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Penuh — kunjungan halaman, peringatan, kesalahan, dan pengecualian JS"
 
 #: 
 msgid "Fund Summary"
@@ -15560,10 +15325,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Jumlah tidak dapat dikurangkan tidak boleh melebihi jumlah dana"
 
 #: 
-msgid "None (disabled)"
-msgstr "Tidak ada (dinonaktifkan)"
-
-#: 
 msgid "Overpaid"
 msgstr "Kelebihan Bayar"
 
@@ -15624,10 +15385,6 @@ msgid "Select a fund"
 msgstr "Pilih dana"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Kirim Email Ulang Tahun Percobaan ke Diri Sendiri"
-
-#: 
 msgid "Sending to"
 msgstr "Mengirim ke"
 
@@ -15682,10 +15439,6 @@ msgstr "Selamat ulang tahun yang luar biasa!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Akun Anda tidak memiliki alamat email yang tersimpan. Tambahkan ke profil Anda untuk mengirim percobaan."
-
-#: 
-msgid "errors+"
-msgstr "kesalahan+"
 
 #: 
 msgid "full only"
@@ -16646,10 +16399,6 @@ msgid "Not a valid date of death"
 msgstr "Bukan tanggal kematian yang valid"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Jumlah hari yang dimiliki pengguna untuk mendaftar 2FA setelah diwajibkan. Atur ke 0 untuk menerapkan segera. Memperpendek masa tenggang yang sedang berlangsung dapat langsung mengunci pengguna."
-
-#: 
 msgid "Offline"
 msgstr "Luring"
 
@@ -16974,14 +16723,6 @@ msgid "Download CSV"
 msgstr "Unduh CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Aktifkan atau nonaktifkan modul Keuangan dan menu bilah sisi."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Aktifkan atau nonaktifkan modul Penggalangan Dana."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Gagal menghapus logo gereja"
 
@@ -17126,10 +16867,6 @@ msgid "Access Control & Security"
 msgstr "Kontrol Akses dan Keamanan"
 
 #: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Izinkan pencatatan pembayaran tidak dapat dikurangkan dari pajak (misalnya penjualan barang dagangan)"
-
-#: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Izinkan akses tidak terautentikasi ke acara publik (untuk menyematkan kalender)"
 
@@ -17182,46 +16919,6 @@ msgid "Feature Toggles"
 msgstr "Pengalih Fitur"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Pengalih fitur mengontrol modul dan fitur mana yang tersedia di ChurchCRM. Perubahan berlaku segera."
-
-#: 
-msgid "Finance Features"
-msgstr "Fitur Keuangan"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Sertakan alamat dalam pencarian global cepat"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Sertakan acara kalender dalam pencarian global cepat"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Sertakan properti keluarga khusus dalam pencarian global cepat"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Sertakan setoran dalam pencarian global cepat"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Sertakan keluarga dalam pencarian global cepat"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Sertakan pelayanan dalam pencarian global cepat"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Sertakan pembayaran dalam pencarian global cepat"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Sertakan orang-orang dalam pencarian global cepat"
-
-#: 
 msgid "Invalid setting"
 msgstr "Pengaturan tidak valid"
 
@@ -17230,16 +16927,8 @@ msgid "Lost Password Link"
 msgstr "Tautan Atur Ulang Kata Sandi"
 
 #: 
-msgid "Manage All Features"
-msgstr "Kelola Semua Fitur"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Pengalih induk untuk pengiriman email. DIPERLUKAN untuk pengaturan ulang kata sandi dan notifikasi"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Pembayaran Tidak Dapat Dikurangkan"
 
 #: 
 msgid "Primary Modules"
@@ -17250,20 +16939,12 @@ msgid "Public Calendar API"
 msgstr "API Kalender Publik"
 
 #: 
-msgid "Saved"
-msgstr "Disimpan"
-
-#: 
 msgid "Search Families"
 msgstr "Cari Keluarga"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Cari Properti Khusus Keluarga"
-
-#: 
-msgid "Search Settings"
-msgstr "Pengaturan Pencarian"
 
 #: 
 msgid "Self-Registration"
@@ -17480,14 +17161,6 @@ msgstr "Penerima notifikasi"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Orang yang diberi tahu saat keluarga atau orang baru ditambahkan"
-
-#: 
-msgid "Person initials style"
-msgstr "Gaya inisial orang"
-
-#: 
-msgid "Person name display style"
-msgstr "Gaya tampilan nama orang"
 
 #: 
 msgid "Spouse Role"
@@ -22503,10 +22176,6 @@ msgid "This email batch was queued by another user"
 msgstr "Kelompok surel ini dimasukkan antrean oleh pengguna lain"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Setelah mengimpor, Anda dapat memakai Atur Ulang Basis Data di Dasbor Admin untuk menghapus semua data dan mulai dari awal. Konfigurasi aplikasi Anda tetap disimpan."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Mengimpor data contoh..."
 
@@ -23487,30 +23156,6 @@ msgid "Download PDF"
 msgstr "Unduh PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Periode penguncian dalam menit\n"
-"Akun yang terkunci terbuka dengan sendirinya setelah sejumlah menit ini. Upaya masuk yang gagal dari satu alamat IP dihitung selama periode yang sama."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Jumlah maksimum upaya masuk yang gagal dari satu alamat IP\n"
-"Upaya masuk yang gagal dan permintaan pengaturan ulang kata sandi dari satu alamat IP dihitung terhadap batas ini dalam periode penguncian. Setelah tercapai, masuk dari alamat tersebut ditolak hingga periode berakhir.\n"
-"Atur ke nol untuk menonaktifkan fitur ini, misalnya ketika semua orang mengakses ChurchCRM melalui satu alamat proksi."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Jumlah maksimum upaya masuk yang gagal sebelum akun pengguna dikunci.\n"
-"Akun yang terkunci terbuka dengan sendirinya setelah periode penguncian, atau lebih cepat jika administrator mengatur ulang upaya masuk yang gagal.\n"
-"Fitur ini membantu melindungi dari serangan tebakan kata sandi otomatis.\n"
-"Atur ke nol untuk menonaktifkan fitur ini."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Menit hingga terbuka dengan sendirinya: %d"
 
@@ -23839,10 +23484,6 @@ msgid "PDF Output"
 msgstr "Keluaran PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Mode penanganan PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Baris Pertanyaan"
 
@@ -23879,10 +23520,6 @@ msgid "Greeting"
 msgstr "Salam"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Salam dan tanda tangan surat"
-
-#: 
 msgid "Letterhead"
 msgstr "Kop surat"
 
@@ -23905,10 +23542,6 @@ msgstr "Atur kop surat yang dicetak surat PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Menggunakan nama dan alamat gereja"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Menggunakan jalur kop surat yang diatur di Pengaturan Sistem"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26118,14 +25751,6 @@ msgstr "Pembayaran per Dana"
 msgid "Unknown Fund"
 msgstr "Dana Tidak Dikenal"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung, lalu coba lagi."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26143,18 +25768,6 @@ msgstr "Wajibkan nomor cek saat mencatat pembayaran dengan cek pada entri setora
 #: 
 msgid "Require check number on check payments"
 msgstr "Wajibkan nomor cek pada pembayaran dengan cek"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Pembaruan tidak dimulai, jadi tidak ada yang berubah."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Pembaruan ini tidak dapat dijalankan pada basis data Anda."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Server basis data Anda (%1$s %2$s) lebih lama daripada yang didukung ChurchCRM (MySQL %3$s atau MariaDB %4$s ke atas)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26311,22 +25924,6 @@ msgid "Database engine and major/minor version"
 msgstr "Mesin basis data dan versi mayor/minor"
 
 #: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Kesalahan — statistik instalasi, peringatan, kesalahan, dan pengecualian JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Bantu kami menemukan dan memperbaiki masalah?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Instalasi membagikan statistik instalasi dan pembaruan minimal. Kesalahan menambahkan peringatan dan laporan kesalahan. Penuh menambahkan tampilan halaman. Tidak ada hanya mengirim instalasi dan pembaruan yang gagal."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Instalasi — statistik instalasi dan pembaruan (bawaan)"
-
-#: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
 msgstr "Hasil instalasi dan pembaruan, versi sebelumnya saat pembaruan, dan laporan harian selama digunakan"
 
@@ -26335,68 +25932,12 @@ msgid "Installation profile"
 msgstr "Profil instalasi"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Lokal (Kesalahan dan Penuh)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Tidak pernah dibagikan: data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Negara Anda adalah negara di pengaturan gereja, bukan dideteksi dari jaringan Anda."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Keluarga sistem operasi (Kesalahan dan Penuh)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Versi PHP (Kesalahan dan Penuh)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Lihat persis apa yang dibagikan, atau ubah pilihan Anda, di Admin → Telemetri."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Bedakan instalasi produksi, demo, dan uji coba"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Bagikan statistik instalasi anonim?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Bagikan laporan kesalahan dan penggunaan"
-
-#: 
-msgid "Share install statistics"
-msgstr "Bagikan statistik instalasi"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Dibagikan tambahan: peringatan, detail kesalahan, dan halaman yang dibuka."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Dibagikan: bahwa ChurchCRM telah diinstal atau diperbarui dan apakah berhasil, laporan sekali sehari selama digunakan, nomor versi, negara Anda, dan jenis basis data. ID instalasi acak menghitung setiap instalasi satu kali."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Memahami kompatibilitas basis data"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Pilihan ini ditanyakan sekali. Anda dapat mengubahnya kapan saja. Dengan Tidak, terima kasih, hanya instalasi atau pembaruan yang gagal yang dilaporkan."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Data Anda milik Anda. Instalasi hanya membagikan hasil instalasi dan pembaruan, ID instalasi, versi perangkat lunak, profil instalasi, negara yang dikonfigurasi, serta mesin basis data dengan versi mayor/minor. Kesalahan menambahkan peringatan dan detail kesalahan. Penuh menambahkan tampilan halaman. Tidak ada hanya mengirim instalasi dan pembaruan yang gagal. Tidak ada tingkat yang mengirim alamat web atau nama server Anda. Instalasi uji coba tidak mengirim apa pun. Telemetri dikirim ke PostHog di Amerika Serikat."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Data Anda milik Anda. Laporan ini tentang perangkat lunak, tidak pernah tentang gereja Anda atau jemaatnya."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Data Anda milik Anda. Untuk menghitung instalasi, ChurchCRM melaporkan bahwa ia telah diinstal atau diperbarui dan apakah berhasil, laporan sekali sehari selama digunakan, ditambah nomor versi, negara Anda, jenis basis data, dan ID instalasi acak. ChurchCRM tidak pernah melaporkan data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Anda dapat menonaktifkannya kapan saja di Admin → Telemetri; instalasi atau pembaruan yang gagal tetap dilaporkan. Peringatan, detail kesalahan, dan tampilan halaman hanya dibagikan jika Anda memilihnya."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27990,10 +27531,6 @@ msgid "How the congregation is made up"
 msgstr "Bagaimana susunan jemaat"
 
 #: 
-msgid "I understand this database is unsupported and upgrades will be blocked"
-msgstr "Saya mengerti basis data ini tidak didukung dan pemutakhiran akan diblokir"
-
-#: 
 msgid "Insights"
 msgstr "Wawasan"
 
@@ -28016,10 +27553,6 @@ msgstr "Pemeriksaan integritas gagal"
 #: 
 msgid "Integrity check passed"
 msgstr "Pemeriksaan integritas berhasil"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF tidak valid"
 
 #: 
 msgid "Last %d days"
@@ -28064,10 +27597,6 @@ msgstr "Membuka dasbor Keuangan pada rentang ini. Pilih tahun fiskal yang lalu d
 #: 
 msgid "Past 7 days and next %d days"
 msgstr "7 hari terakhir dan %d hari berikutnya"
-
-#: 
-msgid "People without a family: %d"
-msgstr "Orang tanpa keluarga: %d"
 
 #: 
 msgid "Permission to save settings and photos"
@@ -28198,10 +27727,6 @@ msgid "This dashboard is now your main dashboard."
 msgstr "Dasbor ini sekarang adalah dasbor utama Anda."
 
 #: 
-msgid "This database no longer receives security fixes from its vendor."
-msgstr "Basis data ini tidak lagi menerima perbaikan keamanan dari vendornya."
-
-#: 
 msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
 msgstr "Di sinilah orang akan membuka ChurchCRM. Ubah hanya jika mereka akan menggunakan alamat yang berbeda dari halaman ini."
 
@@ -28214,28 +27739,12 @@ msgid "Total deposited"
 msgstr "Total disetorkan"
 
 #: 
-msgid "Unsupported database server"
-msgstr "Server basis data tidak didukung"
-
-#: 
-msgid "Upgrades will be blocked until the database is moved to a supported version."
-msgstr "Pemutakhiran akan diblokir sampai basis data dipindahkan ke versi yang didukung."
-
-#: 
 msgid "Usually 3306."
 msgstr "Biasanya 3306."
 
 #: 
-msgid "We recommend asking your host to switch before you install, while there is no data to move. MariaDB 10.11 is a fine target."
-msgstr "Kami menyarankan untuk meminta host Anda beralih sebelum Anda menginstal, selagi belum ada data yang dipindahkan. MariaDB 10.11 adalah target yang baik."
-
-#: 
 msgid "Web address"
 msgstr "Alamat web"
-
-#: 
-msgid "You can install now: ChurchCRM will install and run."
-msgstr "Anda dapat menginstal sekarang: ChurchCRM akan terinstal dan berjalan."
 
 #: 
 msgid "Your main dashboard"
@@ -28254,4 +27763,476 @@ msgstr "dan {{count}} lainnya"
 msgctxt "other"
 msgid "and {{count}} more"
 msgstr "dan {{count}} lainnya"
+
+#: 
+msgid "Database out of support"
+msgstr "Basis data tidak didukung"
+
+#: 
+msgid "Deactivated"
+msgstr "Dinonaktifkan"
+
+#: 
+msgid "How to find the log"
+msgstr "Cara menemukan log"
+
+#: 
+msgid "How to install server locales"
+msgstr "Cara menginstal lokal server"
+
+#: 
+msgid "Last edited"
+msgstr "Terakhir diubah"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Tidak diinstal di server, dan lokal cadangan bahasa Inggris juga tidak diinstal, jadi antarmuka akan ditampilkan dalam bahasa Inggris."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Log ChurchCRM mencatat alasan spesifiknya. Hapus nama sebelum membagikannya."
+
+#: 
+msgid "Verify now"
+msgstr "Verifikasi sekarang"
+
+#: 
+msgid "View Giving History"
+msgstr "Lihat Riwayat Pemberian"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d orang berhasil ditambahkan; %d orang tidak dapat ditambahkan dan tetap berada di keranjang."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d orang tidak dapat ditambahkan dan tetap berada di keranjang Anda."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administrator akan melihat peringatan ini di setiap halaman hingga basis data dipindahkan ke versi yang masih mendapatkan perbaikan keamanan. Pindah sekarang, selagi data masih sedikit, adalah yang paling mudah."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administrator akan masuk ke dasbor standar mulai sekarang. Dasbor Pengaturan tidak akan terbuka lagi saat masuk."
+
+#: 
+msgid "Database security risk"
+msgstr "Risiko keamanan basis data"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Mode demo juga mengaktifkan statistik penggunaan anonim (PostHog), sehingga kami dapat melihat bagaimana orang menjelajahi ChurchCRM. Mulai dari Awal menonaktifkannya."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Pengaturan email tersimpan. Masuk anggota sekarang aktif, sehingga anggota dapat masuk ke Portal Jemaat dengan email mereka."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Masukkan informasi gereja Anda, tambahkan jemaat Anda, dan undang tim Anda."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Semua yang ada di sini adalah data contoh. Mulai dari awal sebelum Anda memasukkan informasi gereja Anda yang sebenarnya."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Semua yang ada di sini adalah data contoh. Saat Anda siap menggunakan ChurchCRM untuk gereja Anda, mulai dari awal: tindakan ini menghapus data demo dan setiap pengaturan sehingga Anda dapat memulai dengan milik Anda sendiri."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Jelajahi ChurchCRM dengan data demo, atau siapkan untuk gereja Anda"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Gagal menambahkan orang ke kelompok"
+
+#: 
+msgid "Finish setup"
+msgstr "Selesaikan pengaturan"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Selama jumlah hari ini setelah instalasi, administrator masuk ke Dasbor Pengaturan. Atur ke 0 untuk menonaktifkannya."
+
+#: 
+msgid "Group Assignment"
+msgstr "Penugasan Kelompok"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Internal: administrator memilih Selesaikan pengaturan di Dasbor Pengaturan. Jangan edit secara manual."
+
+#: 
+msgid "Keep exploring"
+msgstr "Terus menjelajah"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Pindah dari server ChurchCRM lain? Pulihkan cadangan yang dibuat di sana. Ini menggantikan semua yang ada di instalasi ini."
+
+#: 
+msgid "Ready for your church"
+msgstr "Siap untuk gereja Anda"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Coba Lagi Penugasan Kelompok"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Coba lagi penugasan kelompok"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Pilih satu atau beberapa kelompok untuk orang ini."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Pilih kelompok yang ingin Anda coba lagi."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Siapkan Gereja Anda"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Dasbor Pengaturan"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Mulai dari Awal pada banner demo, atau Reset Database pada Dasbor Admin, menghapus data demo dan setiap pengaturan dan mengembalikan ChurchCRM ke instalasi baru."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Mulai dari awal terlebih dahulu, lalu siapkan ChurchCRM dengan informasi gereja Anda sendiri."
+
+#: 
+msgid "Start setup"
+msgstr "Mulai pengaturan"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Data demo telah hilang. Masuk dengan akun administrator default untuk menyiapkan gereja Anda."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Orang tersebut tersimpan, tetapi satu atau beberapa penugasan kelompok gagal. Pilih kelompok di bawah ini dan coba lagi."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Orang tersebut tersimpan, tetapi satu atau beberapa penugasan kelompok gagal. Kelompok yang tidak berhasil sudah dipilih di bawah ini. Tinjau kelompok tersebut dan simpan lagi untuk mencoba lagi."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Ini menghapus data demo dan setiap pengaturan, dan mengembalikan ChurchCRM ke instalasi baru."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Anda akan masuk lagi dengan akun administrator default dan memasukkan informasi gereja Anda."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Anda sedang menjelajahi ChurchCRM dengan data demo."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Anda sedang menjelajahi data demo"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informasi gereja Anda tersimpan. Kerjakan langkah-langkah di bawah ini."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Basis data Anda (%1$s %2$s) adalah risiko keamanan: vendornya tidak lagi menyediakan perbaikan keamanan untuk versi tersebut. ChurchCRM tetap berfungsi, tetapi mintalah host Anda untuk pindah ke MariaDB %3$s+ atau MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Check-in harian saat digunakan, versi perangkat lunak dan basis data, lokal, negara, jenis instalasi dan ID instalasi acak membantu menghitung instalasi aktif."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Akun & Masuk"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Kirim juga halaman mana yang digunakan."
+
+#: 
+msgid "Areas"
+msgstr "Area"
+
+#: 
+msgid "Church & System"
+msgstr "Gereja & Sistem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Kota atau kota kecil tempat kwitansi diterbitkan, dicetak pada kwitansi resmi. Kosongkan untuk menggunakan kota gereja."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Penutup sebelum nama penanda tangan, misalnya Hormat kami."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Penutup yang dicetak sebelum penanda tangan pada kwitansi resmi."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kata sandi yang dipisahkan koma yang tidak boleh digunakan siapa pun."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Surat Konfirmasi"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Buat keluarga untuk orang ini? Alamat dan telepon rumah mereka pindah ke keluarga baru."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Hari yang dimiliki pengguna untuk menyiapkan autentikasi dua faktor setelah menjadi wajib. 0 langsung memberlakukannya. Memperpendek masa tenggang yang aktif dapat mengunci pengguna."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Simpanan & Pembayaran"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Kata Sandi yang Tidak Diizinkan"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Penolakan %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Email Pengguna Saat Akun Mereka Dihapus"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Setiap halaman pengaturan di satu tempat, dan pengaturan yang berlaku untuk seluruh sistem"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Upaya Masuk Gagal Sebelum Penguncian"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Upaya Masuk Gagal per Alamat IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Peran keluarga yang diperlakukan sebagai anak-anak di direktori."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Peran keluarga yang diperlakukan sebagai kepala keluarga di direktori dan masuk anggota."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Peran keluarga yang diperlakukan sebagai pasangan di direktori dan masuk anggota."
+
+#: 
+msgid "Finance Settings"
+msgstr "Pengaturan Keuangan"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Masa Tenggang (hari)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Sembunyikan langganan warta jemaat di Editor Keluarga."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Sembunyikan bidang Tanggal Teman di Editor Orang."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Sembunyikan bidang Tanggal Pernikahan di Editor Keluarga."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Berapa lama akun yang terkunci tetap terkunci. Upaya masuk gagal dari satu alamat IP dihitung selama periode yang sama."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Berapa banyak karakter kata sandi baru harus berbeda dari yang lama. 0 menonaktifkan ini."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Di Admin → Telemetri, aktifkan Bagikan halaman mana yang digunakan untuk memilih Penuh. Penuh juga mengirim tampilan halaman."
+
+#: 
+msgid "Initials Format"
+msgstr "Format Inisial"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Teks Surat %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Periode Penguncian (menit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Mengunci akun setelah upaya masuk gagal sebanyak ini berturut-turut. Akun terbuka setelah periode penguncian, atau ketika administrator meresetnya. 0 menonaktifkan penguncian."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Kelola Portal Jemaat"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Anggota dapat masuk dengan email mereka."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Anggota belum dapat masuk."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Karakter Minimum yang Diubah"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Panjang Kata Sandi Minimum"
+
+#: 
+msgid "Name Format"
+msgstr "Format Nama"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nama yang dicetak di bawah penutup surat dan email"
+
+#: 
+msgid "No Payments Text"
+msgstr "Teks Tidak Ada Pembayaran"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Teks Tidak Ada Janji"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Tidak ada tingkat yang mengirim orang, penyumbang, pemberian, konten, detail kontak gereja, alamat web Anda atau nama server Anda."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Tidak ada tingkat yang mengirim alamat web atau nama server Anda. Instalasi uji tidak mengirim apa pun. Telemetri dikirim ke PostHog di Amerika Serikat."
+
+#: 
+msgid "OS family"
+msgstr "Keluarga OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragraf pembuka surat pengingat janji."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragraf yang mengundang pertanyaan dalam laporan pemberian."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragraf yang mengundang pertanyaan dalam surat pemberi nol."
+
+#: 
+msgid "Passwords"
+msgstr "Kata Sandi"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Dicetak setelah rentang tanggal di baris pembuka surat pemberi nol."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Dicetak pertama pada laporan pemberian, diikuti oleh rentang tanggal."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Dicetak ketika sebuah keluarga tidak memiliki pembayaran yang tercatat."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Dicetak ketika sebuah keluarga tidak memiliki janji yang tercatat."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Menolak masuk dari satu alamat IP selama periode penguncian setelah upaya masuk gagal atau reset kata sandi sebanyak ini. 0 menonaktifkannya, misalnya ketika semua orang terhubung melalui satu proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Wajibkan Autentikasi Dua Faktor"
+
+#: 
+msgid "Security Settings"
+msgstr "Pengaturan Keamanan"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Kirim laporan kesalahan, peristiwa instalasi/peningkatan dan info sistem agar masalah dapat diperbaiki. Tidak ada tampilan halaman, tidak ada data gereja."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Batas Waktu Sesi (detik)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Bagikan halaman mana yang digunakan"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Masuk & Keamanan"
+
+#: 
+msgid "Signature Storage"
+msgstr "Penyimpanan Tanda Tangan"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Mengeluarkan pengguna setelah tidak aktif selama sekian detik. 0 tidak pernah mengeluarkan."
+
+#: 
+msgid "System-wide"
+msgstr "Seluruh Sistem"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teks Setelah Tanggal"
+
+#: 
+msgid "Text Messages"
+msgstr "Pesan Teks"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragraf terima kasih dari laporan pemberian."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragraf terima kasih dari surat pemberi nol."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konversi gagal. Tidak ada yang diubah."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Menggunakan file kop surat yang disimpan sebelum unggahan ditambahkan. Unggah kop surat untuk menggantinya."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Peringatan Setelah (Jam)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Kata sebelum nama dalam surat dan email, misalnya Yth."
 

@@ -163,7 +163,6 @@ $(document).ready(function () {
         headerClass: 'bg-info-lt',
         // These items deliberately carry no System Settings category, so a link
         // to that page would be a dead end.
-        showAllSettingsLink: false,
         columns: 2,
         settings: [
             {
