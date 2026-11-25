@@ -46,6 +46,24 @@ describe("Kiosk device - walk-in guest registration", () => {
             });
         });
 
+    // Open from the event's base day through the end of the next day.
+    // A plain single-day window expires if the suite starts just before
+    // local midnight and the tests run past it: master run 45549258764
+    // began setup at 23:59 EST and every registerGuest call after
+    // 00:00 local got 409 "This event has ended". The two-day span makes
+    // the window survive a midnight crossing anywhere in the suite.
+    const setEventOpenWindow = (id) =>
+        api("GET", `/api/events/${id}`).then((event) => {
+            baseDays[id] ??= String(event.body.Start).slice(0, 10);
+            const end = new Date(`${baseDays[id]}T12:00:00Z`);
+            end.setUTCDate(end.getUTCDate() + 1);
+            const endDate = end.toISOString().slice(0, 10);
+            return api("POST", `/api/events/${id}/time`, {
+                startTime: `${baseDays[id]} 00:00:00`,
+                endTime: `${endDate} 23:59:59`,
+            });
+        });
+
     const rosterGuests = () =>
         cy
             .request({ method: "GET", url: "/kiosk/device/activeClassMembers" })
@@ -67,7 +85,7 @@ describe("Kiosk device - walk-in guest registration", () => {
             api("POST", "/api/events/quick-create", { groupId }).then((response) => {
                 eventId = response.body.eventId;
                 createdEventIds.push(eventId);
-                setEventDay(eventId, 0);
+                setEventOpenWindow(eventId);
             });
         });
 
@@ -256,7 +274,7 @@ describe("Kiosk device - walk-in guest registration", () => {
                 assignEvent(eventId);
             });
 
-            setEventDay(eventId, 0);
+            setEventOpenWindow(eventId);
             rosterGuests().then((after) => {
                 expect(after).to.have.length(before.length);
             });

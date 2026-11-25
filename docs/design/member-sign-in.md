@@ -239,13 +239,15 @@ So Disable sign-in, a change to the rule, a deactivated family or "sign out ever
 
 Requests over a limit get the same answer screen and no email. They are audited as "throttled".
 
-**Behind a proxy or shared hosting.** These per-IP limits, and #10197's limit on failed staff sign-ins, count the address PHP sees (`REMOTE_ADDR`). An IPv6 address counts by its /64.
-- ChurchCRM doesn't read `X-Forwarded-For` itself, because any visitor can send it.
-- Some sites sit behind a reverse proxy, a CDN or a shared-hosting front end that doesn't pass the visitor's address on. There every visitor shares one address, and they all reach the limit together.
-- Such a site has two choices:
+**Behind a proxy or shared hosting.** These per-IP limits, and #10197's limit on failed staff sign-ins, count the address PHP sees (`REMOTE_ADDR`), or the visitor's address that a trusted proxy passes on. An IPv6 address counts by its /64.
+- ChurchCRM reads `X-Forwarded-For` only when `REMOTE_ADDR` is listed in `CHURCHCRM_TRUSTED_PROXIES`, because any visitor can send it. It walks the header from the right, past the listed proxies, and counts the first address that is not one.
+- Each listed proxy must append the address it received the request from. The list must name proxies only: every listed address is believed, so a visitor inside a listed range could choose the address it is counted by.
+- Some sites sit behind a reverse proxy, a CDN or a shared-hosting front end, so PHP sees the front end's address. Unless the site takes one of the choices below, every visitor shares that address, and they all reach the limit together.
+- Such a site has three choices:
+  - list its proxies in `CHURCHCRM_TRUSTED_PROXIES`;
   - have the web server take the real address from its trusted proxy (Apache `mod_remoteip`, nginx `real_ip`);
   - or set the per-IP limits to 0 (`iMemberSignInRequestsPerIP`, `iMaxFailedLoginsPerIP`).
-- The per-address and per-person limits still apply either way. The settings' help text says this.
+- The per-address and per-person limits still apply in every case. The settings' help text says this.
 
 ### 6.2 Remembered devices
 

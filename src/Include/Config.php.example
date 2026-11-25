@@ -1,103 +1,49 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Config.php
- *  website     : https://churchcrm.io
- *  description : ChurchCRM Configuration
- *
- ******************************************************************************/
-
 /**
- * IMPORTANT: Configuration is loaded and validated by LoadConfigs.php (line at bottom).
+ * ChurchCRM configuration. LoadConfigs.php (required at the bottom) loads and validates it.
  *
- * If you are NOT using the setup wizard:
- * - Replace ||PLACEHOLDER|| values with your actual settings below
- * - Ensure all REQUIRED settings are present (will fail validation otherwise)
- * - Be careful with special characters in $sPASSWORD (no quotes needed, but must be exact)
- * - Test by accessing the application; errors will display on config-error.php page
+ * The setup wizard writes this file. To write it by hand instead:
+ * - Copy Config.php.example to Config.php and replace each ||PLACEHOLDER|| value below
+ * - Values are single-quoted PHP strings: write \' for a ' and \\ for a \ (the wizard does this for you)
+ * - Test by opening ChurchCRM: a setting or database problem shows a page that says which
+ * - Help: https://docs.churchcrm.io/installation/database-setup-troubleshooting
  */
 
 // ============================================================================
-// DATABASE CONNECTION (REQUIRED)
+// DATABASE CONNECTION
 // ============================================================================
-// These must match your database server exactly or the application will fail
 
-// Database server hostname or IP address
-// Examples: "localhost", "127.0.0.1", "db.example.com"
+// Database server address from your web host.
+// In Docker, use the database service name (db in the official compose file), not localhost.
 $sSERVERNAME = '||DB_SERVER_NAME||';
 
-// Database server port (standard MySQL port is 3306)
+// Database server port, usually 3306 (also used when blank).
+// Ignored when the server is localhost: PHP then uses the MySQL socket.
 $dbPort = '||DB_SERVER_PORT||';
 
-// Database user (must have SELECT, INSERT, UPDATE, DELETE, ALTER privileges)
+// Database user. It needs ALL PRIVILEGES on this database only; upgrades create, alter and drop tables.
 $sUSER = '||DB_USER||';
 
-// Database password (special chars are allowed; the setup wizard escapes ' and \, do NOT add quotes)
+// Database password. It cannot be empty. Keep it inside the single quotes.
 $sPASSWORD = '||DB_PASSWORD||';
 
-// Database name where ChurchCRM tables are located
+// Database name. Create the database first: ChurchCRM creates its tables, not the database.
 $sDATABASE = '||DB_NAME||';
 
 // ============================================================================
-// APPLICATION PATH (REQUIRED)
+// WEB ADDRESS
 // ============================================================================
-// Path where ChurchCRM is installed on your web server (MUST BE SET CORRECTLY)
 
-// Examples:
-// - https://www.yourdomain.com/churchcrm    → $sRootPath = '/churchcrm'
-// - https://www.yourdomain.com               → $sRootPath = ''  (empty string)
-// - https://crm.yourdomain.com               → $sRootPath = ''  (empty string, subdomain)
-//
-// Rules:
-// - Start with "/" (slash) OR use empty string for root installation
-// - DO NOT end with "/" (slash)
-// - Case sensitive (usually lowercase)
+// Path ChurchCRM is installed under: '' at the site root, or a path starting with / and no trailing slash.
+// - https://www.mychurch.org/churchcrm/  ->  '/churchcrm'
+// - https://crm.mychurch.org/            ->  ''
 $sRootPath = '||ROOT_PATH||';
 
-// ============================================================================
-// ACCESS URLS (REQUIRED)
-// ============================================================================
-// URL[0] is the primary URL users will use to access ChurchCRM
-
-// Primary URL - must include https://, domain, and path (with trailing slash)
-// Examples: "https://www.mychurch.org/churchcrm/", "https://crm.mychurch.org/"
+// Full web address, starting with http:// or https:// and ending with a slash. Use https:// in production.
 $URL[0] = '||URL||';
 
-// Optional: Add alternate URLs for multi-domain or multi-port access
-//
-// IMPORTANT: Alternate URLs are only enforced when "Lock URL" is enabled in the
-// admin settings (System Config). When disabled (default), any URL can access the app.
-// When enabled, ONLY the URLs listed below are allowed.
-//
-// Use cases:
-// - Allow access from both www.mychurch.org/churchcrm and crm.mychurch.org
-// - Allow both http and https (not recommended for security)
-// - Support non-standard port numbers (e.g., :8080)
-// - Support shared SSL hosted solutions
-//
-// Uncomment and configure as needed. Format: https://domain/path/ (with trailing slash)
-//
-// Example for non-standard port:
-//$URL[1] = 'https://www.mychurch.org:8080/churchcrm/';
-//
-// Example for alternate domain:
-//$URL[2] = 'https://crm.mychurch.org/';
-//
-// Example for shared SSL server:
-//$URL[3] = 'https://ssl.sharedsslserver.com/mychurch.org/churchcrm/';
-//
-// Number them sequentially starting from [1]. ChurchCRM accepts $URL[0] through $URL[5]
-
-// ============================================================================
-// ERROR REPORTING (OPTIONAL)
-// ============================================================================
-// Sets which PHP errors are reported
-// E_ERROR = only fatal errors (recommended for production)
-// See https://www.php.net/manual/en/errorfunc.constants.php for other options
+// Only fatal PHP errors are reported. See https://www.php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);
 
-// ============================================================================
-// DO NOT MODIFY BELOW THIS LINE
-// ============================================================================
-// LoadConfigs.php loads and validates all settings above
+// Do not change below this line.
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');

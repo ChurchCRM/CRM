@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.8.8",
+    "version": "7.9.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -35,10 +35,10 @@
         "format:web": "node scripts/lint/ensure-biome.js && biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:apply": "node locale/scripts/locale-apply.js",
+        "locale:compile": "node locale/scripts/locale-compile.js",
         "locale:build": "node locale/scripts/locale-build.js",
         "locale:missing": "node locale/scripts/locale-missing.js",
         "locale:release": "node locale/scripts/locale-release.js",
-        "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "locale:test": "node --test locale/scripts/lib/*.test.js",
         "lint": "node scripts/lint/lint.js",
         "lint:fix": "node scripts/lint/ensure-biome.js && biome check --write webpack/ && biome format --write .",

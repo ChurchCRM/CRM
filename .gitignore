@@ -85,3 +85,6 @@ cy.log
 /.obsidian
 .claude/settings.local.json
 cypress/fixtures/plugin-registry
+
+# Generated gettext catalogs — compiled from src/locale/i18n at build time (npm run locale:compile), never committed
+src/locale/textdomain/

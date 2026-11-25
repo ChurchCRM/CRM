@@ -194,12 +194,12 @@ function initBranch(version) {
 }
 
 /**
- * Write the filled batches into the locale JSON (npm run locale:apply -- --json-only),
+ * Write the filled batches into the locale JSON (npm run locale:apply),
  * then commit and push — one pass for the whole run, the same for 1 term or 1,000.
  * With no locale list (or "all") every locale is applied and committed in a
  * single commit; a locale list scopes the same flow to one locale or family.
- * The generated .po/.mo are not carried by translate PRs: the Locale rebuild
- * workflow regenerates them on master after merge.
+ * The generated .po/.mo are not carried by translate PRs and are never
+ * committed: they are compiled from the JSON at build time (npm run locale:compile).
  * Stages explicit paths only: each locale's JSON plus the english-ok allowlist,
  * the term-context file and the locales' queue folders under
  * locale/terms/missing (applied terms leave them, so deletions are staged too).
@@ -239,7 +239,7 @@ function commitAndPush(localeCodes, label, termCount) {
     }
 
     console.log(`\n  🧩 Writing ${codes.join(', ')} into the locale JSON...`);
-    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(','), '--json-only'], { stdio: 'inherit' });
+    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(',')], { stdio: 'inherit' });
 
     const files = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).json));
     console.log(`\n  📝 Committing to ${branch}...`);
@@ -365,7 +365,7 @@ Usage:
     --locale/--language to commit every locale in a single commit; a locale
     list scopes the same flow to one locale or a language family.
     Stages only the locales' JSON, queue folders, locale/terms/english-ok.json
-    and locale/terms/context.json (generated .po/.mo are rebuilt on master)
+    and locale/terms/context.json (generated .po/.mo are never committed)
     Example: --commit-and-push --terms 301
     Example: --commit-and-push --locale fr --language "French - France" --terms 154
 

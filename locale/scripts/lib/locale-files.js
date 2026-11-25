@@ -4,7 +4,7 @@
  * Translations live in the repo. For every locale:
  *
  *   src/locale/i18n/<locale>.json                        what agents and the browser read (i18next)
- *   src/locale/textdomain/<locale>/LC_MESSAGES/messages.po  what PHP gettext reads, generated from the JSON
+ *   src/locale/textdomain/<locale>/LC_MESSAGES/messages.po  what PHP gettext reads, generated from the JSON at build time (not committed)
  *   src/locale/textdomain/<locale>/LC_MESSAGES/messages.mo  compiled from the .po by msgfmt
  *
  * locale/messages.po (extracted from the code by `npm run locale:build`) is the list of source terms.

@@ -14,13 +14,19 @@ if (is_file(dirname(__FILE__) . '/../Include/PostHogProject.php')) {
 }
 
 /**
- * Report that a blocking error page was shown (php_unsupported, config_invalid) as an install_failed event.
+ * Report that a blocking error page was shown, as a telemetry event.
+ *
+ * Pages on an install that never got configured (php_unsupported, config_invalid) report as
+ * install_failed, like the setup wizard's failures. A database failure on a configured install
+ * (any database_* reason, passed by Bootstrapper with the MySQL error number) reports as
+ * database_failed instead, so the fleet counts never mix "never got in" with "was running,
+ * now down".
  *
  * The page cannot load the autoloader, configuration or telemetry settings, so like install_failed in
  * TelemetryService this is sent at every level. Fixed reason codes only, once per UTC day, one second at
  * most, and every failure is swallowed: reporting must never change what the page shows.
  */
-function standaloneReportInstallFailure($reason)
+function standaloneReportInstallFailure($reason, $databaseErrorCode = null)
 {
     if (!defined('POSTHOG_PROJECT_KEY') || getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
         return false;
@@ -47,18 +53,26 @@ function standaloneReportInstallFailure($reason)
         }
         fclose($marker);
 
+        // A configured install whose database broke is not an install failure.
+        $event = strpos($reason, 'database_') === 0 ? 'database_failed' : 'install_failed';
+
+        $properties = array(
+            'failure_reason' => $reason,
+            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
+            'install_profile' => 'production',
+            '$lib' => 'churchcrm-php',
+            '$geoip_disable' => true,
+            '$process_person_profile' => false,
+        );
+        if ($databaseErrorCode !== null) {
+            $properties['database_error_code'] = (int) $databaseErrorCode;
+        }
+
         $payload = json_encode(array(
             'api_key' => POSTHOG_PROJECT_KEY,
-            'event' => 'install_failed',
+            'event' => $event,
             'distinct_id' => $distinctId,
-            'properties' => array(
-                'failure_reason' => $reason,
-                'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
-                'install_profile' => 'production',
-                '$lib' => 'churchcrm-php',
-                '$geoip_disable' => true,
-                '$process_person_profile' => false,
-            ),
+            'properties' => $properties,
         ));
 
         return @file_get_contents(POSTHOG_PROJECT_HOST . '/i/v0/e/?ip=0', false, stream_context_create(array('http' => array(

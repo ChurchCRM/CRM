@@ -122,6 +122,28 @@ describe("Scenario 1 — Family View member table dropdown", () => {
       );
     });
   });
+
+  // At phone width .card-body scrolls sideways, so the menu is position:fixed.
+  // It must stay the width of its items and sit on the button.
+  it("[375px mobile] row menu stays on its button inside the scrolling card", () => {
+    cy.viewport(375, 812);
+    cy.visit("/people/family/1");
+    cy.get(".card-table", { timeout: 10000 }).should("exist");
+
+    cy.get(".card-table [data-bs-toggle='dropdown']")
+      .first()
+      .click({ scrollBehavior: "center" })
+      .should(($button) => {
+        const button = $button[0].getBoundingClientRect();
+        const menu = $button[0].parentElement.querySelector(".dropdown-menu");
+        expect(menu.classList.contains("show"), "menu is open").to.equal(true);
+        const rect = menu.getBoundingClientRect();
+        expect(rect.width, "menu width").to.be.within(80, 320);
+        expect(rect.right, "menu stays with its button").to.be.closeTo(button.right, 16);
+        expect(rect.left, "menu left edge").to.be.at.least(0);
+        expect(rect.right, "menu right edge").to.be.at.most(375);
+      });
+  });
 });
 
 // ── Scenario 2: Family View — Pledges and Payments DataTable row dropdown ─────

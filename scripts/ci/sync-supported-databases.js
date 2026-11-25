@@ -39,8 +39,8 @@ const targets = {
         [/(MIN_MARIADB = ')([\d.]+)(')/g, 'mariadb'],
     ],
     'src/setup/templates/setup-steps.php': [
-        [/(supports MySQL )([\d.]+)(\+)/g, 'mysql'],
-        [/(and MariaDB )([\d.]+)(\+ \(the LTS)/g, 'mariadb'],
+        [/(Needs MySQL )([\d.]+)( or newer)/g, 'mysql'],
+        [/(or MariaDB )([\d.]+)( or newer)/g, 'mariadb'],
     ],
 };
 

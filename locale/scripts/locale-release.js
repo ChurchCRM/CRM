@@ -9,7 +9,7 @@
  *                                     terms PR review if there is one, otherwise report what is still
  *                                     untranslated in the repo
  *
- * Translations live in the repo (src/locale/i18n, src/locale/textdomain); there is no outside service
+ * Translations live in the repo (src/locale/i18n; the .po/.mo compile from it at build time); there is no outside service
  * to sync. Run it from an up-to-date master checkout, as yourself (gh auth). It never merges the terms
  * PR: merge that after review, pull, and run the command again. Exit code 0 = locales are release-ready.
  */

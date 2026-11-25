@@ -18,10 +18,17 @@ const place = (): void => {
     return;
   }
   const { toggle, menu } = current;
+  // Static popper pins .dropdown-menu-end with inset-inline-end: 0. Combined
+  // with an inline left, that stretches a fixed menu to the viewport edge.
+  menu.style.right = "auto";
+  menu.style.insetInlineEnd = "auto";
+  menu.style.width = "max-content";
   const rect = toggle.getBoundingClientRect();
-  const left = menu.classList.contains("dropdown-menu-end") ? rect.right - menu.offsetWidth : rect.left;
+  const width = menu.offsetWidth;
+  const left = menu.classList.contains("dropdown-menu-end") ? rect.right - width : rect.left;
   const below = rect.bottom + menu.offsetHeight <= window.innerHeight;
   const top = below || rect.top < menu.offsetHeight ? rect.bottom : rect.top - menu.offsetHeight;
+  menu.style.width = `${width}px`;
   menu.style.left = `${Math.max(0, left)}px`;
   menu.style.top = `${top}px`;
 };
@@ -33,6 +40,9 @@ const release = (): void => {
   current.menu.classList.remove("dropdown-menu-fixed");
   current.menu.style.top = "";
   current.menu.style.left = "";
+  current.menu.style.right = "";
+  current.menu.style.width = "";
+  current.menu.style.insetInlineEnd = "";
   current = null;
   window.removeEventListener("resize", place);
   window.removeEventListener("scroll", place, true);

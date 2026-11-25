@@ -121,7 +121,7 @@ describe('composer-install.js', { skip }, () => {
 describe('build.js', { skip }, () => {
     const fakeNpm = '[ "$1" = run ] || exit 2\necho "$2" >> "$LOG"\n[ "$2" = "$FAIL" ] && exit 1\nexit 0';
 
-    it('signs only after composer and webpack both finish', () => {
+    it('compiles locales, then signs, only after composer and webpack both finish', () => {
         const root = makeTree();
         const log = path.join(root, 'npm.log');
         fakeBin(root, 'npm', fakeNpm);
@@ -129,10 +129,10 @@ describe('build.js', { skip }, () => {
         assert.equal(result.status, 0);
         const steps = fs.readFileSync(log, 'utf8').trim().split('\n');
         assert.deepEqual(steps.slice(0, 2).sort(), ['build:frontend', 'build:php']);
-        assert.equal(steps[2], 'build:signatures');
+        assert.deepEqual(steps.slice(2), ['locale:compile', 'build:signatures']);
     });
 
-    for (const failing of ['build:php', 'build:frontend']) {
+    for (const failing of ['build:php', 'build:frontend', 'locale:compile']) {
         it(`fails without signing when ${failing} fails`, () => {
             const root = makeTree();
             const log = path.join(root, 'npm.log');

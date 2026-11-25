@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 01:44+0000\n"
+"POT-Creation-Date: 2026-11-25 17:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3709,12 +3709,6 @@ msgstr ""
 msgid "ChurchCRM can send emails directly."
 msgstr ""
 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr ""
-
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr ""
-
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr ""
 
@@ -3727,7 +3721,10 @@ msgstr ""
 msgid "ChurchCRM could not check the server software"
 msgstr ""
 
-msgid "ChurchCRM could not connect to the database with these settings."
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr ""
+
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
 msgstr ""
 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -3737,6 +3734,9 @@ msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make th
 msgstr ""
 
 msgid "ChurchCRM files match the release"
+msgstr ""
+
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -4455,10 +4455,6 @@ msgstr ""
 msgid "Create Today's Event"
 msgstr ""
 
-#, php-format
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr ""
-
 msgid "Create a backup now and upload it to your WebDAV server."
 msgstr ""
 
@@ -4755,9 +4751,6 @@ msgstr ""
 msgid "Database engine and major/minor version"
 msgstr ""
 
-msgid "Database host"
-msgstr ""
-
 msgid "Database name"
 msgstr ""
 
@@ -4777,6 +4770,9 @@ msgid "Database schema upgraded automatically"
 msgstr ""
 
 msgid "Database security risk"
+msgstr ""
+
+msgid "Database server address"
 msgstr ""
 
 msgid "Database user"
@@ -8560,9 +8556,6 @@ msgstr ""
 msgid "Have an email"
 msgstr ""
 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr ""
-
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr ""
 
@@ -8747,6 +8740,9 @@ msgstr ""
 msgid "How did you learn of the church?"
 msgstr ""
 
+msgid "How do I create a database?"
+msgstr ""
+
 msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
 msgstr ""
 
@@ -8813,6 +8809,9 @@ msgid "How to Fix"
 msgstr ""
 
 msgid "How to find the log"
+msgstr ""
+
+msgid "How to fix database connection problems"
 msgstr ""
 
 msgid "How to install server locales"
@@ -9864,6 +9863,9 @@ msgid "Leader of %s"
 msgstr ""
 
 msgid "Learn more"
+msgstr ""
+
+msgid "Leave 3306 unless you were given a different number."
 msgstr ""
 
 msgid "Leave blank to check out without recording the supervisor."
@@ -11197,6 +11199,9 @@ msgstr ""
 msgid "Needs Configuration"
 msgstr ""
 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr ""
+
 msgid "Needs an answer"
 msgstr ""
 
@@ -12373,10 +12378,6 @@ msgid "Official receipts need a registration number in the form 123456789RR0001 
 msgstr ""
 
 msgid "Offline"
-msgstr ""
-
-#, php-format
-msgid "Often %1$s. Some hosts give an address like %2$s."
 msgstr ""
 
 msgid "Old Password"
@@ -17091,6 +17092,10 @@ msgid "That wedding date is not a valid date."
 msgstr ""
 
 #, php-format
+msgid "The %s covers the configuration checks."
+msgstr ""
+
+#, php-format
 msgid "The %s family has no living members to invite to the member portal."
 msgstr ""
 
@@ -17267,10 +17272,7 @@ msgstr ""
 msgid "The database has been cleared. The system is ready for a fresh start."
 msgstr ""
 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr ""
-
-msgid "The database server rejected that username or password."
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
 msgstr ""
 
 msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
@@ -17457,11 +17459,10 @@ msgstr ""
 msgid "The name can be at most %d characters"
 msgstr ""
 
-msgid "The name the charity is registered under. It can differ from the church name."
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
 msgstr ""
 
-#, php-format
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgid "The name the charity is registered under. It can differ from the church name."
 msgstr ""
 
 msgid "The occurrence could not be canceled"
@@ -17514,7 +17515,7 @@ msgstr ""
 msgid "The password for %s has been updated."
 msgstr ""
 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
 msgstr ""
 
 msgid "The people sharing it are in different families, or not in a family"
@@ -17694,6 +17695,9 @@ msgstr ""
 msgid "The selected person was not found."
 msgstr ""
 
+msgid "The server address from your web host."
+msgstr ""
+
 msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
 msgstr ""
 
@@ -17795,7 +17799,10 @@ msgstr ""
 msgid "The unconfirmed email has changed. Reload the page and try again."
 msgstr ""
 
-msgid "The user you added to that database. Not your hosting login."
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr ""
+
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
 msgstr ""
 
 msgid "The volunteer assignment could not be saved"
@@ -19063,6 +19070,12 @@ msgstr ""
 msgid "Undesignated"
 msgstr ""
 
+msgid "Undo"
+msgstr ""
+
+msgid "Undo failed. Please try again."
+msgstr ""
+
 msgid "Unexpected Person Id"
 msgstr ""
 
@@ -19518,9 +19531,6 @@ msgid "Using default ChurchCRM logo"
 msgstr ""
 
 msgid "Using the church name and address"
-msgstr ""
-
-msgid "Usually 3306."
 msgstr ""
 
 #. Context: countries
@@ -20593,6 +20603,9 @@ msgstr ""
 msgid "You must specify a date range."
 msgstr ""
 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr ""
+
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr ""
 
@@ -20935,6 +20948,9 @@ msgid "complete"
 msgstr ""
 
 msgid "data for member"
+msgstr ""
+
+msgid "database setup troubleshooting guide"
 msgstr ""
 
 msgid "day"

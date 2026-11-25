@@ -37,8 +37,8 @@ function emptyOrUnassignedJSON($stuff): string
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Load compiled webpack assets for people list
-echo '<link rel="stylesheet" href="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.css">';
-echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"></script>';
+echo '<link rel="stylesheet" href="' . SystemURLs::assetVersioned('/skin/v2/people-list.min.css') . '">';
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/people-list.min.js') . '"></script>';
 // Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
 $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
 if ($canSendEmail) {

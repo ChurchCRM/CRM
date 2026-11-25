@@ -328,6 +328,9 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                     .should("have.class", "dropdown-menu-fixed")
                     .then(($menu) => {
                         const rect = $menu[0].getBoundingClientRect();
+                        const button = $menu[0].parentElement.querySelector("[data-bs-toggle='dropdown']").getBoundingClientRect();
+                        expect(rect.width, "menu stays the width of its items").to.be.within(80, 320);
+                        expect(rect.right, "menu stays on its button").to.be.closeTo(button.right, 16);
                         expect(rect.left, "menu left edge").to.be.at.least(0);
                         expect(rect.right, "menu right edge").to.be.at.most(375);
                         expect(rect.bottom, "menu bottom edge").to.be.at.most(812);

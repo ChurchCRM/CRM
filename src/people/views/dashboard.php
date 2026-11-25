@@ -38,7 +38,7 @@ require __DIR__ . '/_dashboard-overview.php';
                                 <th class="text-end count-col"><?= gettext('Count') ?></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="classification-stats">
                             <?php foreach (array_keys($classificationStats) as $key):
                                 $pct = $personCount > 0 ? round($classificationStats[$key]['count'] / $personCount * 100) : 0;
                                 ?>
@@ -80,7 +80,7 @@ require __DIR__ . '/_dashboard-overview.php';
                                 <th class="text-end count-col"><?= gettext('Count') ?></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="family-role-stats">
                             <?php foreach (array_keys($familyRoleStats) as $key):
                                 $genderId        = $familyRoleStats[$key]['genderId'];
                                 $roleId          = $familyRoleStats[$key]['roleId'];
@@ -132,7 +132,7 @@ require __DIR__ . '/_dashboard-overview.php';
                                 <th class="text-end"><?= gettext('Percentage') ?></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="gender-stats">
                             <?php
                             $totalGender = array_sum($simpleGenderStats);
                             foreach ($simpleGenderStats as $gender => $count):
