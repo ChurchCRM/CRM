@@ -30,7 +30,7 @@ test('events-plan-service-attendance', async ({ page }, testInfo) => {
   const personId = await waiting.first().getAttribute('data-person-id');
   if (!personId) throw new Error('Demo roster has no person id to record attendance.');
   await humanClick(waiting.first().locator('.roster-action-btn[data-action="checkin"]'));
-  await expect(page.locator(`#checkedInList .roster-member[data-person-id="${personId}"]`)).toBeVisible({
+  await expect(page.locator(`#checkedInList .checked-in-member[data-person-id="${personId}"]`)).toBeVisible({
     timeout: 15000,
   });
   await settle(page, 2000);
