@@ -107,7 +107,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 <?php } ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= $sRootPath ?>/skin/js/GroupRoles.js"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/js/GroupRoles.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
