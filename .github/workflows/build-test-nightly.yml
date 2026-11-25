@@ -372,6 +372,8 @@ jobs:
         docker load < temp/docker-image-8.5.tar.gz
         docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
 
+    - name: Compile locales (generated .po/.mo, not committed)
+      run: npm run locale:compile
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 
@@ -431,6 +433,8 @@ jobs:
         docker load < temp/docker-image-8.5.tar.gz
         docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
 
+    - name: Compile locales (generated .po/.mo, not committed)
+      run: npm run locale:compile
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 
@@ -681,6 +685,8 @@ jobs:
         docker load < temp/docker-image-${{ matrix.php }}.tar.gz
         docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
+    - name: Compile locales (generated .po/.mo, not committed)
+      run: npm run locale:compile
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 
@@ -767,6 +773,8 @@ jobs:
         docker load < temp/docker-image-${{ matrix.php }}.tar.gz
         docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
+    - name: Compile locales (generated .po/.mo, not committed)
+      run: npm run locale:compile
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 

@@ -109,8 +109,8 @@ function sameMo(a, b) {
 /**
  * Writes JSON, .po and .mo for a locale from `ctx.translations`. Returns what changed; with
  * `dryRun` nothing is written. With `jsonOnly` only the JSON is written: translate PRs carry
- * just the JSON (the source of truth), and the generated .po/.mo are rebuilt on master by
- * the Locale rebuild workflow after merge.
+ * just the JSON (the source of truth); the generated .po/.mo are never committed — they are
+ * compiled from the JSON at build time (npm run locale:compile).
  */
 function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false } = {}) {
     const { paths: p, translations, shapes, poText, target } = ctx;

@@ -198,8 +198,8 @@ function initBranch(version) {
  * then commit and push — one pass for the whole run, the same for 1 term or 1,000.
  * With no locale list (or "all") every locale is applied and committed in a
  * single commit; a locale list scopes the same flow to one locale or family.
- * The generated .po/.mo are not carried by translate PRs: the Locale rebuild
- * workflow regenerates them on master after merge.
+ * The generated .po/.mo are not carried by translate PRs and are never
+ * committed: they are compiled from the JSON at build time (npm run locale:compile).
  * Stages explicit paths only: each locale's JSON plus the english-ok allowlist,
  * the term-context file and the locales' queue folders under
  * locale/terms/missing (applied terms leave them, so deletions are staged too).

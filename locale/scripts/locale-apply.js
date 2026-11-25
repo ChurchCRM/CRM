@@ -9,7 +9,8 @@
  *                                              (locale/terms/missing/<code>/*.json) into the locale files,
  *                                              then drop it from the batch; empty terms stay
  *   npm run locale:apply -- --json-only        write only the locale JSON (translate PRs carry
- *                                              JSON + queue; .po/.mo are rebuilt on master after merge)
+ *                                              JSON + queue; .po/.mo are generated files, compiled
+ *                                              at build time by npm run locale:compile)
  *   npm run locale:apply -- --locale de,fr     some locales only
  *   npm run locale:apply -- --prune            also drop translations of terms that are no longer in
  *                                              locale/messages.po (the terms workflow runs this)
