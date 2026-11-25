@@ -167,12 +167,24 @@ describe("Admin chooses whether to share page usage", () => {
         cy.setSystemConfig("sTelemetryAskedVersion", "");
         cy.setupAdminSession();
         cy.visit("/admin/");
-        cy.get('#telemetry-consent-card [data-level="default"]').contains("No thanks").click();
-        cy.get("#telemetry-consent-card").should("not.exist");
+        cy.get("#notificationCenterMenu").click();
+        cy.get('[data-notification-id="telemetry-consent"] .js-telemetry-decline').click({ force: true });
+        cy.get('[data-notification-id="telemetry-consent"]').should("not.exist");
         cy.request("/admin/api/system/config/sTelemetryLevel").its("body.value").should("eq", "default");
         cy.reload();
-        cy.get("#telemetry-consent-card").should("not.exist");
+        cy.get('[data-notification-id="telemetry-consent"]').should("not.exist");
         cy.window().its("CRM.telemetry.install_profile").should("eq", "test");
+    });
+
+    it("enables page usage from the notification center toggle", () => {
+        cy.setSystemConfig("sTelemetryLevel", "default");
+        cy.setSystemConfig("sTelemetryAskedVersion", "");
+        cy.setupAdminSession();
+        cy.visit("/admin/");
+        cy.get("#notificationCenterMenu").click();
+        cy.get("#telemetry-consent-toggle").should("not.be.checked").check({ force: true });
+        cy.get('[data-notification-id="telemetry-consent"]').should("not.exist");
+        cy.request("/admin/api/system/config/sTelemetryLevel").its("body.value").should("eq", "full");
     });
 
     it("denies non-admin changes", () => {
