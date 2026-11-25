@@ -28,6 +28,38 @@ describe("Sunday School class list", () => {
         });
     });
 
+    describe("student custom fields", () => {
+        const pdfLines = () =>
+            cy.request({ url: classList(ANGELS_CLASS_GROUP_ID), encoding: "binary" }).then((response) => pdfText(response.body));
+        const text = (lines) => lines.join("\n");
+
+        it("prints the filled fields an administrator may see and skips empty ones", () => {
+            cy.setupAdminSession();
+            pdfLines().then((lines) => {
+                const pdf = text(lines);
+                expect(pdf).to.include("Highest Degree Received: Peanut allergy");
+                expect(pdf).to.include("Baptism Year: 2018");
+                expect(pdf).to.include("Giving Review Note: Scholarship reviewed");
+                expect(pdf).to.include("Pastoral Care Notes: Meets weekly with the pastor.");
+                expect(pdf).to.include("Highest Degree Received: Asthma inhaler in backpack");
+                expect(pdf.match(/Baptism Year:/g)).to.have.length(1);
+            });
+        });
+
+        it("leaves out fields the signed-in user's permissions hide", () => {
+            cy.setupPersonaSession("groups-only");
+            pdfLines().then((lines) => {
+                const pdf = text(lines);
+                expect(pdf).to.include("Highest Degree Received: Peanut allergy");
+                expect(pdf).to.include("Baptism Year: 2018");
+                expect(pdf).to.not.include("Giving Review Note");
+                expect(pdf).to.not.include("Scholarship reviewed");
+                expect(pdf).to.not.include("Pastoral Care Notes");
+                expect(pdf).to.not.include("Meets weekly with the pastor.");
+            });
+        });
+    });
+
     it("a user without group management is sent to access denied", () => {
         cy.setupPersonaSession("finance-only");
         cy.request({ url: classList(ANGELS_CLASS_GROUP_ID), followRedirect: false, failOnStatusCode: false }).then((response) => {
