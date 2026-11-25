@@ -170,13 +170,19 @@ class ApprovedPluginRegistry
     }
 
     /**
+     * Rejections are logged at INFO on purpose (#11978): a rejected entry is a
+     * data-quality signal about a centrally controlled registry file, not an
+     * error on this install. At WARNING the PostHog handler would forward one
+     * log_error per install per session for a single bad row, flooding fleet
+     * telemetry. The rejection itself — the security control — is unaffected.
+     *
      * @param array<string, mixed> $entry
      */
     private static function isValidEntry(array $entry): bool
     {
         foreach (self::REQUIRED_KEYS as $key) {
             if (!isset($entry[$key]) || !is_string($entry[$key]) || $entry[$key] === '') {
-                LoggerUtils::getAppLogger()->warning('Approved plugin entry missing key', [
+                LoggerUtils::getAppLogger()->info('Approved plugin entry missing key', [
                     'key' => $key,
                     'entry' => $entry['id'] ?? '(unknown)',
                 ]);
@@ -186,7 +192,7 @@ class ApprovedPluginRegistry
         }
 
         if (!preg_match('/^https:\/\//i', (string) $entry['downloadUrl'])) {
-            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (non-HTTPS downloadUrl)', [
+            LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (non-HTTPS downloadUrl)', [
                 'entry' => $entry['id'],
             ]);
 
@@ -194,7 +200,7 @@ class ApprovedPluginRegistry
         }
 
         if (isset($entry['homepage']) && (!is_string($entry['homepage']) || !preg_match('/^https:\/\//i', $entry['homepage']))) {
-            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (non-HTTPS homepage)', [
+            LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (non-HTTPS homepage)', [
                 'entry' => $entry['id'],
             ]);
 
@@ -202,7 +208,7 @@ class ApprovedPluginRegistry
         }
 
         if (!preg_match('/^[a-f0-9]{64}$/i', (string) $entry['sha256'])) {
-            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (invalid sha256)', [
+            LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (invalid sha256)', [
                 'entry' => $entry['id'],
             ]);
 
@@ -210,7 +216,7 @@ class ApprovedPluginRegistry
         }
 
         if (!preg_match('/^[a-z0-9][a-z0-9-]*$/', (string) $entry['id'])) {
-            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (invalid id)', [
+            LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (invalid id)', [
                 'entry' => $entry['id'],
             ]);
 
@@ -218,7 +224,7 @@ class ApprovedPluginRegistry
         }
 
         if (!in_array(strtolower((string) $entry['risk']), self::RISK_LEVELS, true)) {
-            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (invalid risk level)', [
+            LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (invalid risk level)', [
                 'entry' => $entry['id'],
                 'risk' => $entry['risk'] ?? null,
             ]);
@@ -228,7 +234,7 @@ class ApprovedPluginRegistry
 
         if (isset($entry['permissions'])) {
             if (!is_array($entry['permissions'])) {
-                LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (permissions not an array)', [
+                LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (permissions not an array)', [
                     'entry' => $entry['id'],
                 ]);
 
@@ -236,7 +242,7 @@ class ApprovedPluginRegistry
             }
             foreach ($entry['permissions'] as $perm) {
                 if (!is_string($perm) || !in_array($perm, self::KNOWN_PERMISSIONS, true)) {
-                    LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (unknown permission tag)', [
+                    LoggerUtils::getAppLogger()->info('Approved plugin entry rejected (unknown permission tag)', [
                         'entry' => $entry['id'],
                         'permission' => $perm,
                     ]);
