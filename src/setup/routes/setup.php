@@ -107,19 +107,13 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         // Prove these exact values before Config.php exists. A failure here leaves setup unlocked.
         $connection = connect_to_database($dbServerName, $dbServerPort, $dbName, $dbUser, $dbPassword);
         if ($connection['reason'] !== null) {
-            TelemetryService::captureInstallFailure($connection['reason']);
-
-            // PHP reaches "localhost" through a socket file; when that file is elsewhere, the TCP address still works.
-            $message = $connection['message'];
-            if ($connection['reason'] === 'database_host_unreachable' && strtolower($dbServerName) === 'localhost') {
-                $message = gettext('ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name.');
-            }
+            TelemetryService::captureInstallFailure($connection['reason'], null, $connection['code']);
 
             return SlimUtils::renderJSON($response, [
                 'valid'   => true,
                 'correct' => false,
                 'reason'  => $connection['reason'],
-                'message' => $message,
+                'message' => $connection['message'],
             ]);
         }
 
@@ -203,9 +197,10 @@ function connect_to_database(string $host, string $port, string $name, string $u
             'message' => null,
         ];
     } catch (\Throwable $e) {
-        $failure = classify_database_connection_failure($e);
+        $code = TelemetryService::databaseErrorCode($e);
+        $reason = TelemetryService::databaseFailureReason($code);
 
-        return ['version' => null, 'reason' => $failure['reason'], 'message' => $failure['message']];
+        return ['version' => null, 'reason' => $reason, 'message' => database_connection_message($reason), 'code' => $code];
     } finally {
         if ($previousReadTimeout !== false) {
             ini_set('mysqlnd.net_read_timeout', $previousReadTimeout);
@@ -213,34 +208,13 @@ function connect_to_database(string $host, string $port, string $name, string $u
     }
 }
 
-function classify_database_connection_failure(\Throwable $e): array
-{
-    $code = 0;
-    if ($e instanceof \PDOException && isset($e->errorInfo[1])) {
-        $code = (int) $e->errorInfo[1];
-    } elseif (preg_match('/\[(\d{3,4})\]/', $e->getMessage(), $matches) === 1) {
-        $code = (int) $matches[1];
-    }
-
-    // 1044 is access denied to that database after the password was accepted. A user granted
-    // only their own database gets 1044, not 1049, when the name is wrong.
-    $reason = match (true) {
-        $code === 1045 => 'database_login_rejected',
-        in_array($code, [1044, 1049], true) => 'database_not_found',
-        in_array($code, [2001, 2002, 2003, 2005, 2006, 2013], true) => 'database_host_unreachable',
-        default => 'database_unreachable',
-    };
-
-    return ['reason' => $reason, 'message' => database_connection_message($reason)];
-}
-
 function database_connection_message(string $reason): string
 {
     return match ($reason) {
-        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost.'),
-        'database_login_rejected' => gettext('The database server rejected that username or password.'),
-        'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
-        default => gettext('ChurchCRM could not connect to the database with these settings.'),
+        'database_host_unreachable' => gettext('ChurchCRM could not find the database server. Check the database server address and port with your web host.'),
+        'database_login_rejected' => gettext('The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in.'),
+        'database_not_found' => gettext('The user name and password worked, but there is no database with that name. Check the database name, or create the database first.'),
+        default => gettext('ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord.'),
     };
 }
 

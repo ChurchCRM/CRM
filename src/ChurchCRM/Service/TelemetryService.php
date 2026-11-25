@@ -235,11 +235,34 @@ class TelemetryService
         'config_invalid',
     ];
 
+    /** The MySQL error number behind a failed connection, or 0 when none is given. */
+    public static function databaseErrorCode(\Throwable $e): int
+    {
+        if ($e instanceof \PDOException && isset($e->errorInfo[1])) {
+            return (int) $e->errorInfo[1];
+        }
+
+        return preg_match('/\[(\d{3,4})\]/', $e->getMessage(), $matches) === 1 ? (int) $matches[1] : 0;
+    }
+
+    /** Maps a MySQL client or server error number to a fixed failure reason. */
+    public static function databaseFailureReason(int $errorCode): string
+    {
+        return match (true) {
+            $errorCode === 1045 => 'database_login_rejected',
+            // 1044 is access denied to that database after the password was accepted. A user granted
+            // only their own database gets 1044, not 1049, when the name is wrong.
+            in_array($errorCode, [1044, 1049], true) => 'database_not_found',
+            in_array($errorCode, [2001, 2002, 2003, 2005, 2006, 2013], true) => 'database_host_unreachable',
+            default => 'database_unreachable',
+        };
+    }
+
     /**
      * A failed first install has no configuration yet, but it has the system ID file, so its attempts and the
      * install that finally succeeds share one ID. Sent at every level.
      */
-    public static function captureInstallFailure(string $reason, ?string $serverVersion = null): void
+    public static function captureInstallFailure(string $reason, ?string $serverVersion = null, ?int $databaseErrorCode = null): void
     {
         $installId = self::installId();
         if ($installId === null) {
@@ -248,6 +271,9 @@ class TelemetryService
         $properties = array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'failure_reason' => in_array($reason, self::INSTALL_FAILURE_REASONS, true) ? $reason : 'other',
         ]);
+        if ($databaseErrorCode !== null) {
+            $properties['database_error_code'] = $databaseErrorCode;
+        }
         if ($serverVersion !== null && $serverVersion !== '') {
             // The caller may know the attempted server version even when no
             // connection is available here (e.g. the setup wizard's own probe

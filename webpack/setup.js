@@ -510,16 +510,24 @@ window.moment = moment;
     button.textContent = installing ? i18next.t("Connecting to your database…") : INSTALL_LABEL();
   }
 
+  const FIELDS_FOR_FAILURE = {
+    database_host_unreachable: ["DB_SERVER_NAME", "DB_SERVER_PORT"],
+    database_login_rejected: ["DB_USER", "DB_PASSWORD"],
+    database_not_found: ["DB_NAME"],
+  };
+
   function showSetupProblem(message) {
     const box = document.getElementById("db-connection-result");
     box.textContent = message;
     box.classList.remove("d-none");
+    document.getElementById("db-connection-help").classList.remove("d-none");
     box.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   // The answer belonged to the values that were submitted; editing them clears it.
   function clearSetupProblem() {
     document.getElementById("db-connection-result").classList.add("d-none");
+    document.getElementById("db-connection-help").classList.add("d-none");
     document.getElementById("submit-setup").disabled = installInFlight;
     for (const field of document.querySelectorAll("#setup-form .is-invalid")) {
       field.classList.remove("is-invalid");
@@ -565,8 +573,14 @@ window.moment = moment;
         setInstalling(false);
         if (response?.correct === false) {
           showSetupProblem(
-            response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
+            response.message ||
+              i18next.t(
+                "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord.",
+              ),
           );
+          for (const id of FIELDS_FOR_FAILURE[response.reason] ?? []) {
+            document.getElementById(id)?.classList.add("is-invalid");
+          }
           return;
         }
         if (response?.errors) {
