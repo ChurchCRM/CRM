@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Utils\SystemIdentity;
@@ -59,7 +60,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // The identity exists before any configuration or database, so every install attempt reports as one system.
 SystemIdentity::ensure();
 
-// Store paths in global for template access (no SystemURLs available)
+SystemURLs::init($rootPath, [], dirname(__DIR__));
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
 $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 

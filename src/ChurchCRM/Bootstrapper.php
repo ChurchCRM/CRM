@@ -421,10 +421,10 @@ class Bootstrapper
                 ? mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword)
                 : mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
         } catch (\mysqli_sql_exception $e) {
-            self::connectionFailure($e->getMessage());
+            self::connectionFailure($e->getMessage(), $e->getCode());
         }
         if (!$connection instanceof \mysqli) {
-            self::connectionFailure((string) mysqli_connect_error());
+            self::connectionFailure((string) mysqli_connect_error(), mysqli_connect_errno());
         }
         mysqli_set_charset($connection, self::DEFAULT_CHARSET);
 
@@ -442,7 +442,7 @@ class Bootstrapper
     /**
      * Logs a failed database connection and shows the error page.
      */
-    private static function connectionFailure(string $error): never
+    private static function connectionFailure(string $error, int $errorCode): never
     {
         $error = $error === '' ? 'none captured' : $error;
         $portDisplay = (self::$databaseServerName === self::LOCALHOST_IDENTIFIER) ? "Unix socket" : (string)self::$databasePort;
@@ -451,7 +451,7 @@ class Bootstrapper
             SystemConfig::init();
         }
         LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . $portDisplay . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $error . "'");
-        self::systemFailure('Could not connect to MySQL on <strong>' . InputUtils::escapeHTML(self::$databaseServerName) . '</strong> on port <strong>' . InputUtils::escapeHTML($portDisplay) . '</strong> as <strong>' . InputUtils::escapeHTML(self::$databaseUser) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML($error), 'Database Connection Failed', 'database_unreachable');
+        self::systemFailure('Could not connect to MySQL on <strong>' . InputUtils::escapeHTML(self::$databaseServerName) . '</strong> on port <strong>' . InputUtils::escapeHTML($portDisplay) . '</strong> as <strong>' . InputUtils::escapeHTML(self::$databaseUser) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML($error), 'Database Connection Failed', TelemetryService::databaseFailureReason($errorCode), $errorCode);
         exit;
     }
     private static function initPropel(): void
@@ -489,7 +489,7 @@ class Bootstrapper
             while ($cause->getPrevious() !== null) {
                 $cause = $cause->getPrevious();
             }
-            self::connectionFailure($cause->getMessage());
+            self::connectionFailure($cause->getMessage(), TelemetryService::databaseErrorCode($cause));
         } catch (\PDOException $e) {
             self::$bootStrapLogger->error("Database check failed: " . $e->getMessage());
             self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()), 'Database Access Failed', 'database_access_failed');
@@ -631,8 +631,9 @@ class Bootstrapper
      *
      * @param string      $message      HTML built by the caller, with every dynamic value already escaped
      * @param string|null $reportReason fixed reason code for standaloneReportInstallFailure(); never the message
+     * @param int|null    $reportErrorCode MySQL error number for a database failure
      */
-    public static function systemFailure(string $message, string $header = 'Setup failure', ?string $reportReason = null): void
+    public static function systemFailure(string $message, string $header = 'Setup failure', ?string $reportReason = null, ?int $reportErrorCode = null): void
     {
         while (ob_get_level() > 0) {
             ob_end_clean();
@@ -643,7 +644,7 @@ class Bootstrapper
         try {
             require_once __DIR__ . '/../errors/template.php';
             if ($reportReason !== null) {
-                standaloneReportInstallFailure($reportReason);
+                standaloneReportInstallFailure($reportReason, $reportErrorCode);
             }
             try {
                 $rootPath = SystemURLs::getRootPath();

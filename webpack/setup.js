@@ -510,6 +510,12 @@ window.moment = moment;
     button.textContent = installing ? i18next.t("Connecting to your database…") : INSTALL_LABEL();
   }
 
+  const FIELDS_FOR_FAILURE = {
+    database_host_unreachable: ["DB_SERVER_NAME", "DB_SERVER_PORT"],
+    database_login_rejected: ["DB_USER", "DB_PASSWORD"],
+    database_not_found: ["DB_NAME"],
+  };
+
   function showSetupProblem(message) {
     const box = document.getElementById("db-connection-result");
     box.textContent = message;
@@ -565,8 +571,14 @@ window.moment = moment;
         setInstalling(false);
         if (response?.correct === false) {
           showSetupProblem(
-            response.message || i18next.t("ChurchCRM could not connect to the database with these settings."),
+            response.message ||
+              i18next.t(
+                "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord.",
+              ),
           );
+          for (const id of FIELDS_FOR_FAILURE[response.reason] ?? []) {
+            document.getElementById(id)?.classList.add("is-invalid");
+          }
           return;
         }
         if (response?.errors) {

@@ -85,13 +85,16 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').should('be.visible');
         };
 
-        const clickInstallExpecting = (reason, text) => {
+        const clickInstallExpecting = (reason, fields) => {
             cy.get('#submit-setup').click();
             cy.wait('@setupPost').its('response.body').should((body) => {
                 expect(body.correct).to.eq(false);
                 expect(body.reason).to.eq(reason);
             });
-            cy.get('#db-connection-result').should('be.visible').and('contain.text', text);
+            cy.get('#db-connection-result').should('be.visible');
+            cy.get('#setup-form .is-invalid')
+                .then(($fields) => [...$fields].map((field) => field.id))
+                .should('deep.equal', fields);
             cy.get('#setupModal').should('not.be.visible');
         };
 
@@ -101,14 +104,14 @@ describe('01 - Setup Wizard', () => {
             cy.get('#db-connection-result').should('not.be.visible');
 
             fillDatabase({ host: '127.0.0.1', port: '1' });
-            clickInstallExpecting('database_host_unreachable', 'often not localhost');
+            clickInstallExpecting('database_host_unreachable', ['DB_SERVER_NAME', 'DB_SERVER_PORT']);
 
             fillDatabase({ password: 'not-the-password' });
             cy.get('#db-connection-result').should('not.be.visible');
-            clickInstallExpecting('database_login_rejected', 'rejected that username or password');
+            clickInstallExpecting('database_login_rejected', ['DB_USER', 'DB_PASSWORD']);
 
             fillDatabase({ name: 'churchcrm_missing_db' });
-            clickInstallExpecting('database_not_found', 'no database with that name');
+            clickInstallExpecting('database_not_found', ['DB_NAME']);
 
             cy.visit('/setup');
             cy.get('.setup-logo').should('be.visible');

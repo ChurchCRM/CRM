@@ -24,7 +24,7 @@ require_once __DIR__ . '/header.php';
     <div class="setup-hero">
         <img src="<?= $rootPath ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" class="setup-logo">
         <h1 class="setup-title"><?= gettext('Install ChurchCRM') ?></h1>
-        <p class="setup-lead"><?= gettext('Have the database details from your web host ready. It takes about two minutes.') ?></p>
+        <p class="setup-lead"><?= gettext('You need the database details from your web host, or from whoever set up your server.') ?></p>
     </div>
 
     <form id="setup-form" novalidate>
@@ -114,22 +114,24 @@ require_once __DIR__ . '/header.php';
         <section id="step-database" class="card setup-card">
             <div class="card-body">
                 <h2 class="setup-card-title"><?= gettext('Connect your database') ?></h2>
-                <p class="text-secondary"><?= sprintf(gettext('Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases).'), '<strong>MySQL Databases</strong>') ?></p>
+                <p class="text-secondary mb-1"><?= gettext('ChurchCRM stores your church\'s information in a database. Create an empty database first, then enter its details below.') ?>
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation', 'setup_database_help')) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('How do I create a database?') ?></a></p>
+                <p class="small text-secondary"><?= gettext('Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer.') ?></p>
 
                 <div class="row">
                     <div class="col-sm-8 mb-3">
-                        <label class="form-label required" for="DB_SERVER_NAME"><?= gettext('Database host') ?></label>
+                        <label class="form-label required" for="DB_SERVER_NAME"><?= gettext('Database server address') ?></label>
                         <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="<?= $DB_SERVER_NAME ?? '' ?>"
                                class="form-control" maxlength="64" required autocomplete="off" aria-describedby="DB_SERVER_NAME_HELP">
                         <div class="invalid-feedback"></div>
-                        <small id="DB_SERVER_NAME_HELP" class="form-text"><?= sprintf(gettext('Often %1$s. Some hosts give an address like %2$s.'), '<code>localhost</code>', '<code>mysql.example.com</code>') ?></small>
+                        <small id="DB_SERVER_NAME_HELP" class="form-text"><?= gettext('The server address from your web host.') ?></small>
                     </div>
                     <div class="col-sm-4 mb-3">
                         <label class="form-label required" for="DB_SERVER_PORT"><?= gettext('Port') ?></label>
                         <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" value="<?= $DB_SERVER_PORT ?? '3306' ?>"
                                class="form-control" pattern="[0-9]+" maxlength="16" inputmode="numeric" required aria-describedby="DB_SERVER_PORT_HELP">
                         <div class="invalid-feedback"></div>
-                        <small id="DB_SERVER_PORT_HELP" class="form-text"><?= gettext('Usually 3306.') ?></small>
+                        <small id="DB_SERVER_PORT_HELP" class="form-text"><?= gettext('Leave 3306 unless you were given a different number.') ?></small>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -137,14 +139,14 @@ require_once __DIR__ . '/header.php';
                     <input type="text" name="DB_NAME" id="DB_NAME" value="<?= $DB_NAME ?? '' ?>"
                            class="form-control" maxlength="64" required autocomplete="off" aria-describedby="DB_NAME_HELP">
                     <div class="invalid-feedback"></div>
-                    <small id="DB_NAME_HELP" class="form-text"><?= sprintf(gettext('The name you gave the database. Shared hosts often add your account name in front, like %s.'), '<code>account_churchcrm</code>') ?></small>
+                    <small id="DB_NAME_HELP" class="form-text"><?= gettext('The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front.') ?></small>
                 </div>
                 <div class="mb-3">
                     <label class="form-label required" for="DB_USER"><?= gettext('Database user') ?></label>
                     <input type="text" name="DB_USER" id="DB_USER" value="<?= $DB_USER ?? '' ?>"
                            class="form-control" maxlength="64" required autocomplete="off" aria-describedby="DB_USER_HELP">
                     <div class="invalid-feedback"></div>
-                    <small id="DB_USER_HELP" class="form-text"><?= gettext('The user you added to that database. Not your hosting login.') ?></small>
+                    <small id="DB_USER_HELP" class="form-text"><?= gettext('The user name for the database. This is not the name you use to sign in to your web host.') ?></small>
                 </div>
                 <div class="mb-3">
                     <label class="form-label required" for="DB_PASSWORD"><?= gettext('Database password') ?></label>
@@ -154,7 +156,7 @@ require_once __DIR__ . '/header.php';
                         <button type="button" class="btn btn-outline-secondary" id="toggle-db-password" aria-controls="DB_PASSWORD" aria-pressed="false"><?= gettext('Show') ?></button>
                     </div>
                     <div class="invalid-feedback"></div>
-                    <small id="DB_PASSWORD_HELP" class="form-text"><?= gettext('The password for that database user. ChurchCRM checks these details when you click Install.') ?></small>
+                    <small id="DB_PASSWORD_HELP" class="form-text"><?= gettext('The password for that database user. ChurchCRM tests the connection before saving anything.') ?></small>
                 </div>
 
                 <div id="db-connection-result" class="alert alert-danger d-none" role="status" aria-live="polite"></div>
@@ -200,7 +202,7 @@ require_once __DIR__ . '/header.php';
                     <p class="text-body-secondary small"><?= gettext('A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs.') ?></p>
                     <p class="text-body-secondary small"><?= gettext('In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views.') ?></p>
                     <p class="text-body-secondary small"><?= gettext('No tier sends people, donors, giving, content, church contact details, your web address or server name.') ?></p>
-                    <div class="card bg-light mb-4">
+                    <div class="card bg-surface-secondary mb-4">
                         <div class="card-body">
                             <p class="text-body-secondary mb-2"><?= gettext('Sign in with your admin account') ?>:</p>
                             <div class="d-flex justify-content-center align-items-center mb-2">

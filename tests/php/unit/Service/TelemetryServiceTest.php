@@ -116,3 +116,7 @@ TelemetryService::syncLifecycle($beatSender);
 TelemetryService::syncLifecycle($beatSender);
 Assert::same(['heartbeat'], $beats);
 Assert::same(gmdate('Y-m-d'), SystemConfig::getValue('sTelemetryHeartbeatDate'));
+
+foreach ([1045 => 'database_login_rejected', 1044 => 'database_not_found', 1049 => 'database_not_found', 2002 => 'database_host_unreachable', 1130 => 'database_unreachable', 0 => 'database_unreachable'] as $code => $reason) {
+    Assert::same($reason, TelemetryService::databaseFailureReason($code));
+}
