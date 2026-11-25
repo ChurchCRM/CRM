@@ -1,4 +1,19 @@
 describe("CSV Export Page", () => {
+    // The CSV export page and the legacy FamilyEditor this suite navigates
+    // to are heavy page loads; on a loaded runner their load event can
+    // exceed the project's 30s pageLoadTimeout (master run 45655683136,
+    // where the timed-out test's cleanup DELETE never ran and the family
+    // and people it created tripped the row-count guard in this file's
+    // last describe). Give this suite's navigations more room, then
+    // restore the project default.
+    before(() => {
+        Cypress.config("pageLoadTimeout", 120000);
+    });
+
+    after(() => {
+        Cypress.config("pageLoadTimeout", 30000);
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
         cy.visit("/admin/export/csv");
