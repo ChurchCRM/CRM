@@ -316,8 +316,8 @@ jobs:
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 
-    - name: Remove Config.php for fresh install test
-      run: rm -f src/Include/Config.php
+    - name: Prepare fresh install (docker-config.js --remove)
+      run: node scripts/ci/docker-config.js --remove
 
     - name: Start Docker (new system)
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
