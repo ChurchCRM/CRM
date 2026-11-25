@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
@@ -106,10 +107,8 @@ if ($isGroupAssignmentRetry && $selectedGroupIds === []) {
     DashboardLandingService::redirect();
 }
 
-// Get the list of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
+$customFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
+$numCustomFields = count($customFields);
 
 //Initialize the error flag
 $bErrorFlag = false;
@@ -451,15 +450,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate all the custom fields
     $aCustomData = [];
-    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-        extract($rowCustomField);
-
-        if ($customFieldService->canView((int) $custom_FieldSec)) {
+    foreach ($customFields as $customField) {
+        $custom_Field = $customField->getId();
+        if ($customFieldService->canView((int) $customField->getFieldSecurity())) {
             $currentFieldData = CustomFieldUtils::cleanInput($_POST[$custom_Field] ?? '');
 
-            $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
+            $bErrorFlag |= !CustomFieldUtils::validate($customField->getTypeId(), $currentFieldData, $custom_Field, $aCustomErrors);
 
-            // assign processed value locally to $aPersonProps so we can use it to generate the form later
             $aCustomData[$custom_Field] = $currentFieldData;
         }
     }
@@ -644,74 +641,65 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Are we editing or adding?
 
     if (!$isNewPerson && !$isGroupAssignmentRetry) {
-        //Editing....
-        //Get all the data on this record
+        $storedDate = static function ($value): string {
+            return $value instanceof \DateTimeInterface ? $value->format('Y-m-d') : '';
+        };
 
-        $rsPerson = RunPreparedQuery('SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = ?', 'i', [$iPersonID]);
-        extract(mysqli_fetch_array($rsPerson));
+        $sTitle = $person->getTitle() ?? '';
+        $sFirstName = $person->getFirstName() ?? '';
+        $sMiddleName = $person->getMiddleName() ?? '';
+        $sLastName = $person->getLastName() ?? '';
+        $sSuffix = $person->getSuffix() ?? '';
+        $iGender = (int) $person->getGender();
+        $sAddress1 = $person->getAddress1() ?? '';
+        $sAddress2 = $person->getAddress2() ?? '';
+        $sCity = $person->getCity() ?? '';
+        $sState = $person->getState() ?? '';
+        $sZip = $person->getZip() ?? '';
+        $sCountry = $person->getCountry() ?? '';
+        $sEmail = $person->getEmail() ?? '';
+        $sWorkEmail = $person->getWorkEmail() ?? '';
+        $iBirthMonth = is_numeric($person->getBirthMonth()) ? (int) $person->getBirthMonth() : null;
+        $iBirthDay = is_numeric($person->getBirthDay()) ? (int) $person->getBirthDay() : null;
+        $iBirthYear = is_numeric($person->getBirthYear()) ? (int) $person->getBirthYear() : null;
+        $iViewAgeFlag = (int) $person->getFlags();
+        $bHideAge = ($iViewAgeFlag & 1) !== 0;
+        $iOriginalFamily = $person->getFamId();
+        $iFamily = (int) $person->getFamId();
+        $iFamilyRole = (int) $person->getFmrId();
+        $dMembershipDate = $storedDate($person->getMembershipDate());
+        $dFriendDate = $storedDate($person->getFriendDate());
+        $dDateDeceased = $storedDate($person->getDateDeceased());
+        $bIsDeceased = $dDateDeceased !== '';
+        $iClassification = (int) $person->getClsId();
+        $iGrade = GradeService::resolve($person->getGradeId());
 
-        $sTitle = $per_Title;
-        $sFirstName = $per_FirstName;
-        $sMiddleName = $per_MiddleName;
-        $sLastName = $per_LastName;
-        $sSuffix = $per_Suffix;
-        $iGender = (int) $per_Gender;
-        $sAddress1 = $per_Address1;
-        $sAddress2 = $per_Address2;
-        $sCity = $per_City;
-        $sState = $per_State;
-        $sZip = $per_Zip;
-        $sCountry = $per_Country;
-        $sHomePhone = $per_HomePhone;
-        $sWorkPhone = $per_WorkPhone;
-        $sCellPhone = $per_CellPhone;
-        $sEmail = $per_Email;
-        $sWorkEmail = $per_WorkEmail;
-        $iBirthMonth = is_numeric($per_BirthMonth) ? (int) $per_BirthMonth : null;
-        $iBirthDay = is_numeric($per_BirthDay) ? (int) $per_BirthDay : null;
-        $iBirthYear = is_numeric($per_BirthYear) ? (int) $per_BirthYear : null;
-        $bHideAge = ($per_Flags & 1) !== 0;
-        $iOriginalFamily = $per_fam_ID;
-        $iFamily = (int) $per_fam_ID;
-        $iFamilyRole = (int) $per_fmr_ID;
-        $dMembershipDate = $per_MembershipDate;
-        $dFriendDate = $per_FriendDate;
-        $bIsDeceased = !empty($per_DateDeceased);
-        $dDateDeceased = $per_DateDeceased ?? '';
-        $iClassification = (int) $per_cls_ID;
-        $iGrade = GradeService::resolve($per_grd_ID);
-        $iViewAgeFlag = (int) $per_Flags;
-
-        $sFacebook = $per_Facebook;
-        $sTwitter = $per_Twitter;
-        $sLinkedIn = $per_LinkedIn;
+        $sFacebook = $person->getFacebook() ?? '';
+        $sTwitter = $person->getTwitter() ?? '';
+        $sLinkedIn = $person->getLinkedIn() ?? '';
 
         $sPhoneCountry = $sCountry;
 
-        $sHomePhone = $per_HomePhone ?? '';
-        $sWorkPhone = $per_WorkPhone ?? '';
-        $sCellPhone = $per_CellPhone ?? '';
+        $sHomePhone = $person->getHomePhone() ?? '';
+        $sWorkPhone = $person->getWorkPhone() ?? '';
+        $sCellPhone = $person->getCellPhone() ?? '';
 
-        // Set"No format" checkboxes based on whether fields have data
-        // If field has data: checkbox checked, no mask
-        // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
         $bNoFormat_CellPhone = !empty($sCellPhone);
         $bNoFormat_WorkPhone = !empty($sWorkPhone);
 
-        //The following values are True booleans if the family record has a value for the
-        //indicated field.  These are used to highlight field headers in red.
-        $bFamilyAddress1 = strlen($fam_Address1);
-        $bFamilyAddress2 = strlen($fam_Address2);
-        $bFamilyCity = strlen($fam_City);
-        $bFamilyState = strlen($fam_State);
-        $bFamilyZip = strlen($fam_Zip);
-        $bFamilyCountry = strlen($fam_Country);
-        $bFamilyHomePhone = strlen($fam_HomePhone);
+        $editorFamily = $person->getFamily();
+        $bFamilyAddress1 = strlen($editorFamily?->getAddress1() ?? '');
+        $bFamilyAddress2 = strlen($editorFamily?->getAddress2() ?? '');
+        $bFamilyCity = strlen($editorFamily?->getCity() ?? '');
+        $bFamilyState = strlen($editorFamily?->getState() ?? '');
+        $bFamilyZip = strlen($editorFamily?->getZip() ?? '');
+        $bFamilyCountry = strlen($editorFamily?->getCountry() ?? '');
+        $bFamilyHomePhone = strlen($editorFamily?->getHomePhone() ?? '');
 
-        $bFacebook = strlen($per_Facebook);
-        $bTwitter = strlen($per_Twitter);
-        $bLinkedIn = strlen($per_LinkedIn);
+        $bFacebook = strlen($sFacebook);
+        $bTwitter = strlen($sTwitter);
+        $bLinkedIn = strlen($sLinkedIn);
 
         $aCustomData = $customFieldService->getPersonValues((int) $iPersonID);
     }
@@ -1357,10 +1345,12 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="card-body">
                 <?php
                 $customPhoneFields = [];
-                mysqli_data_seek($rsCustomFields, 0);
-                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                    extract($rowCustomField);
-                    if ($customFieldService->canView((int) $custom_FieldSec)) {
+                foreach ($customFields as $customField) {
+                    $custom_Field = $customField->getId();
+                    $custom_Name = $customField->getName();
+                    $type_ID = $customField->getTypeId();
+                    $custom_Special = $customField->getSpecial();
+                    if ($customFieldService->canView((int) $customField->getFieldSecurity())) {
                         echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . InputUtils::escapeAttribute($custom_Field) . '">' . InputUtils::escapeHTML($custom_Name) . '</label>';
 
                         if (array_key_exists($custom_Field, $aCustomData)) {
