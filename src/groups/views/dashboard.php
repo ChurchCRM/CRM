@@ -154,6 +154,6 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
     </div>
 
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/GroupList.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
