@@ -107,9 +107,11 @@ class DepositService {
                 $toAddress = SystemConfig::getValue('sToEmailAddress');
                 if (!empty($toAddress)) {
                     $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
-                    $toAddresses = [$toAddress];
-                    $email = new DepositPostedEmail($toAddresses, $deposit);
-                    $email->send();
+                    if ($deposit !== null) {
+                        $toAddresses = [$toAddress];
+                        $email = new DepositPostedEmail($toAddresses, $deposit);
+                        $email->send();
+                    }
                 }
             }
         } else {
