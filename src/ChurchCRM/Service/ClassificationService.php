@@ -63,6 +63,14 @@ class ClassificationService
         return $query;
     }
 
+    /** The excludeInactive() condition for a hand-built person_per WHERE clause. Ids are ints, so inlining is safe. */
+    public function inactiveExclusionSql(): string
+    {
+        $inactiveIds = $this->getInactiveIds();
+
+        return $inactiveIds === [] ? '' : ' AND per_cls_ID NOT IN (' . implode(',', $inactiveIds) . ') ';
+    }
+
     /**
      * Person Listing filter. 'active' drops deactivated people and inactive classifications,
      * 'inactive' keeps only those, anything else ('all') leaves the query alone.

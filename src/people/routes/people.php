@@ -206,8 +206,6 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     (new ClassificationService())->filterByActiveStatus($members, $personActiveStatus);
 
-    $members->find();
-
     $filterByClsId = '';
     $filterByClsOptionId = '';
     if (isset($_GET['Classification'])) {

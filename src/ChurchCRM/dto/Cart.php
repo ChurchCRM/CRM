@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -290,7 +291,7 @@ class Cart
         $emailsSeen = [];
         // No per_fam_ID filter here: the cart may intentionally contain persons
         // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
-        foreach (PersonQuery::create()
+        foreach ((new ClassificationService())->excludeInactive(PersonQuery::create())
             ->filterById($cartIds)
             ->filterByNeedsReview(false)
             ->filterByEmail('', Criteria::NOT_EQUAL)

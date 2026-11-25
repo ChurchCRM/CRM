@@ -163,7 +163,7 @@ class MailingLabelService
         $adultRoles = self::roleIds(SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse'));
         $childRoles = self::roleIds(SystemConfig::getValue('sDirRoleChild'));
 
-        $people = PersonQuery::create()
+        $people = (new ClassificationService())->excludeInactive(PersonQuery::create())
             ->filterById($personIds, Criteria::IN)
             ->filterByNeedsReview(false)
             ->filterByDateDeceased(null, Criteria::ISNULL)
@@ -360,7 +360,7 @@ class MailingLabelService
         }
         $familyName = (string) $family->getName();
 
-        $members = PersonQuery::create()
+        $members = (new ClassificationService())->excludeInactive(PersonQuery::create())
             ->filterByFamId($familyId)
             ->filterById($personIds, Criteria::IN)
             ->filterByNeedsReview(false)

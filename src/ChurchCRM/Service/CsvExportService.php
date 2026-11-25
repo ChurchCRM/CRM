@@ -219,6 +219,7 @@ class CsvExportService
             }
         }
 
+        $sWhereExt .= (new ClassificationService())->inactiveExclusionSql();
         $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
             "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
             $whereTypes,
@@ -425,7 +426,7 @@ class CsvExportService
                 $whereTypes .= 's';
             }
         }
-        $sWhereExt .= ' AND per_NeedsReview = 0 ';
+        $sWhereExt .= ' AND per_NeedsReview = 0 ' . (new ClassificationService())->inactiveExclusionSql();
 
             // Build the complete SQL statement
 

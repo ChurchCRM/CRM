@@ -117,7 +117,7 @@ class FamilyPledgeReportService
     private static function familiesByClassification(array $classificationIds): ?array
     {
         if ($classificationIds === []) {
-            return null;
+            return (new ClassificationService())->getInactiveIds() === [] ? null : self::familiesWithClassification();
         }
 
         $otherClassificationIds = [];
@@ -135,13 +135,18 @@ class FamilyPledgeReportService
     }
 
     /**
-     * @param int[] $classificationIds
+     * Families with a member outside the Inactive classifications, optionally within the given ones.
+     *
+     * @param int[] $classificationIds empty = any classification
      * @return int[]
      */
-    private static function familiesWithClassification(array $classificationIds): array
+    private static function familiesWithClassification(array $classificationIds = []): array
     {
-        $ids = PersonQuery::create()
-            ->filterByClsId($classificationIds, Criteria::IN)
+        $query = (new ClassificationService())->excludeInactive(PersonQuery::create());
+        if ($classificationIds !== []) {
+            $query->filterByClsId($classificationIds, Criteria::IN);
+        }
+        $ids = $query
             ->filterByFamId(0, Criteria::GREATER_THAN)
             ->select('FamId')
             ->distinct()

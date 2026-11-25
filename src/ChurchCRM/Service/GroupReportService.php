@@ -53,7 +53,7 @@ class GroupReportService
         if ($roleId > 0) {
             $query->filterByRoleId($roleId);
         }
-        $personQuery = $query->joinWithPerson()->usePersonQuery()
+        $personQuery = (new ClassificationService())->excludeInactive($query->joinWithPerson()->usePersonQuery())
             ->leftJoinWithFamily()
             ->filterByNeedsReview(false)
             ->orderByLastName()
