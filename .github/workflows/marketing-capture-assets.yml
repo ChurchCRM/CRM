@@ -34,6 +34,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 concurrency:
   group: marketing-capture-assets-${{ github.ref }}

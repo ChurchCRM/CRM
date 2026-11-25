@@ -43,6 +43,27 @@ runs:
       shell: bash
       run: npm run marketing:install
 
+    # A plain run step, not docker/login-action: composite actions cannot
+    # use the secrets context, and a failed login must not fail the capture
+    # (the pull below then simply misses and compose builds locally).
+    - name: Log in to GHCR (for the prebuilt CI test image)
+      shell: bash
+      run: echo "${{ github.token }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin || true
+
+    # The capture script starts the stack via docker:ci:new-system:start,
+    # which no longer forces a build: with the prebuilt image tagged
+    # locally, compose reuses it; with no local image, compose builds
+    # from the Dockerfile, exactly as before.
+    - name: Pull the prebuilt CI test image
+      shell: bash
+      run: |
+        if docker pull ghcr.io/churchcrm/ci-test-image:latest; then
+          docker tag ghcr.io/churchcrm/ci-test-image:latest churchcrm/crm:php8-debian
+          echo "Using the prebuilt CI test image."
+        else
+          echo "::warning::Prebuilt CI test image unavailable; compose will build it locally."
+        fi
+
     - name: Capture ${{ inputs.locale }}
       shell: bash
       env:

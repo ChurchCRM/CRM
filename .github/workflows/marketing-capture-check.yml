@@ -23,6 +23,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 concurrency:
   # One run per pull request or branch, so branches don't cancel each other.
