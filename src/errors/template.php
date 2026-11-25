@@ -14,7 +14,13 @@ if (is_file(dirname(__FILE__) . '/../Include/PostHogProject.php')) {
 }
 
 /**
- * Report that a blocking error page was shown (php_unsupported, config_invalid) as an install_failed event.
+ * Report that a blocking error page was shown, as a telemetry event.
+ *
+ * Pages on an install that never got configured (php_unsupported, config_invalid) report as
+ * install_failed, like the setup wizard's failures. A database failure on a configured install
+ * (database_unreachable, database_access_failed, passed by Bootstrapper) reports as
+ * database_failed instead, so the fleet counts never mix "never got in" with "was running,
+ * now down".
  *
  * The page cannot load the autoloader, configuration or telemetry settings, so like install_failed in
  * TelemetryService this is sent at every level. Fixed reason codes only, once per UTC day, one second at
@@ -47,9 +53,12 @@ function standaloneReportInstallFailure($reason)
         }
         fclose($marker);
 
+        // A configured install whose database broke is not an install failure.
+        $event = in_array($reason, array('database_unreachable', 'database_access_failed'), true) ? 'database_failed' : 'install_failed';
+
         $payload = json_encode(array(
             'api_key' => POSTHOG_PROJECT_KEY,
-            'event' => 'install_failed',
+            'event' => $event,
             'distinct_id' => $distinctId,
             'properties' => array(
                 'failure_reason' => $reason,
