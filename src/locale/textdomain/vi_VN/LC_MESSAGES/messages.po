@@ -28247,3 +28247,111 @@ msgstr "Cảnh báo sau (Giờ)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Từ trước tên trong thư và email, ví dụ Kính gửi."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Độ lệch số tiền, trái"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Dữ liệu mẫu đã được tải"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Mọi vị trí phải là một số từ 0 đến 1000 milimét."
+
+#: 
+msgid "First date, left"
+msgstr "Ngày đầu tiên, trái"
+
+#: 
+msgid "First date, top"
+msgstr "Ngày đầu tiên, trên"
+
+#: 
+msgid "Item count, left"
+msgstr "Số lượng mục, trái"
+
+#: 
+msgid "Item count, top"
+msgstr "Số lượng mục, trên"
+
+#: 
+msgid "Left margin"
+msgstr "Lề trái"
+
+#: 
+msgid "Line items"
+msgstr "Các mục dòng"
+
+#: 
+msgid "Maximum height"
+msgstr "Chiều cao tối đa"
+
+#: 
+msgid "Maximum width"
+msgstr "Chiều rộng tối đa"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Tắt theo mặc định. Giúp chúng tôi cải thiện ChurchCRM. Không bao giờ bao gồm nhà thờ của bạn hoặc người của nhà thờ."
+
+#: 
+msgid "Perforation, top"
+msgstr "Đường đục lỗ, trên"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Vị trí tính bằng milimét trên phiếu gửi tiền in sẵn"
+
+#: 
+msgid "Saved"
+msgstr "Đã lưu"
+
+#: 
+msgid "Second date, left"
+msgstr "Ngày thứ hai, trái"
+
+#: 
+msgid "See what's shared"
+msgstr "Xem những gì được chia sẻ"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Khoảng cách, ngang"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Khoảng cách, dọc"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Tổng phụ, trái"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Tổng phụ, trên"
+
+#: 
+msgid "Ticket"
+msgstr "Phiếu gửi tiền"
+
+#: 
+msgid "Title, left"
+msgstr "Tiêu đề, trái"
+
+#: 
+msgid "Top margin"
+msgstr "Lề trên"
+
+#: 
+msgid "Total, left"
+msgstr "Tổng cộng, trái"
+
+#: 
+msgid "Total, top"
+msgstr "Tổng cộng, trên"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

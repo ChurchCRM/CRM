@@ -28232,3 +28232,111 @@ msgstr "경고까지의 시간(시간)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "서신과 이메일에서 이름 앞에 오는 말, 예: 친애하는."
 
+#: 
+msgid "Amount offset, left"
+msgstr "금액 오프셋, 왼쪽"
+
+#: 
+msgid "Demo data loaded"
+msgstr "데모 데이터를 불러왔습니다"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "모든 위치는 0에서 1000밀리미터 사이의 숫자여야 합니다."
+
+#: 
+msgid "First date, left"
+msgstr "첫 번째 날짜, 왼쪽"
+
+#: 
+msgid "First date, top"
+msgstr "첫 번째 날짜, 위"
+
+#: 
+msgid "Item count, left"
+msgstr "항목 수, 왼쪽"
+
+#: 
+msgid "Item count, top"
+msgstr "항목 수, 위"
+
+#: 
+msgid "Left margin"
+msgstr "왼쪽 여백"
+
+#: 
+msgid "Line items"
+msgstr "줄 항목"
+
+#: 
+msgid "Maximum height"
+msgstr "최대 높이"
+
+#: 
+msgid "Maximum width"
+msgstr "최대 너비"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "기본적으로 꺼져 있습니다. ChurchCRM을 개선하는 데 도움이 됩니다. 교회나 교인 정보는 절대 포함되지 않습니다."
+
+#: 
+msgid "Perforation, top"
+msgstr "절취선, 위"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "미리 인쇄된 입금 전표의 밀리미터 단위 위치"
+
+#: 
+msgid "Saved"
+msgstr "저장됨"
+
+#: 
+msgid "Second date, left"
+msgstr "두 번째 날짜, 왼쪽"
+
+#: 
+msgid "See what's shared"
+msgstr "공유되는 항목 보기"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "간격, 가로"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "간격, 세로"
+
+#: 
+msgid "Subtotal, left"
+msgstr "소계, 왼쪽"
+
+#: 
+msgid "Subtotal, top"
+msgstr "소계, 위"
+
+#: 
+msgid "Ticket"
+msgstr "입금 전표"
+
+#: 
+msgid "Title, left"
+msgstr "제목, 왼쪽"
+
+#: 
+msgid "Top margin"
+msgstr "위쪽 여백"
+
+#: 
+msgid "Total, left"
+msgstr "전체, 왼쪽"
+
+#: 
+msgid "Total, top"
+msgstr "전체, 위"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

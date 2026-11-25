@@ -28270,3 +28270,111 @@ msgstr "Hoiatus pärast (tundi)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Sõna enne nime kirjades ja e-kirjades, näiteks Lugupeetud."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Summa nihe, vasak"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demoandmed on laaditud"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Iga asukoht peab olema arv vahemikus 0 kuni 1000 millimeetrit."
+
+#: 
+msgid "First date, left"
+msgstr "Esimene kuupäev, vasak"
+
+#: 
+msgid "First date, top"
+msgstr "Esimene kuupäev, ülemine"
+
+#: 
+msgid "Item count, left"
+msgstr "Üksuste arv, vasak"
+
+#: 
+msgid "Item count, top"
+msgstr "Üksuste arv, ülemine"
+
+#: 
+msgid "Left margin"
+msgstr "Vasak veeris"
+
+#: 
+msgid "Line items"
+msgstr "Reaüksused"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimaalne kõrgus"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimaalne laius"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Vaikimisi väljas. Aitab meil ChurchCRM-i täiustada. Ei sisalda kunagi teie kogudust ega selle liikmeid."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforatsioon, ülemine"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Asukohad millimeetrites eeltrükitud sissemakse kviitungil"
+
+#: 
+msgid "Saved"
+msgstr "Salvestatud"
+
+#: 
+msgid "Second date, left"
+msgstr "Teine kuupäev, vasak"
+
+#: 
+msgid "See what's shared"
+msgstr "Vaadake, mida jagatakse"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Vahe, horisontaalne"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Vahe, vertikaalne"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Vahesumma, vasak"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Vahesumma, ülemine"
+
+#: 
+msgid "Ticket"
+msgstr "Sissemakse kviitung"
+
+#: 
+msgid "Title, left"
+msgstr "Pealkiri, vasak"
+
+#: 
+msgid "Top margin"
+msgstr "Ülemine veeris"
+
+#: 
+msgid "Total, left"
+msgstr "Kokku, vasak"
+
+#: 
+msgid "Total, top"
+msgstr "Kokku, ülemine"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

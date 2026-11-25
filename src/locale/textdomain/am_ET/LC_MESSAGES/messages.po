@@ -28276,3 +28276,111 @@ msgstr "ማስጠንቀቂያ በኋላ (ሰዓታት)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "በደብዳቤዎች እና በኢሜይሎች ውስጥ ከስሙ በፊት ያለው ቃል፣ ለምሳሌ ውድ።"
 
+#: 
+msgid "Amount offset, left"
+msgstr "የመጠን ማካካሻ, ግራ"
+
+#: 
+msgid "Demo data loaded"
+msgstr "የሙከራ መረጃ ተጭኗል"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "እያንዳንዱ ቦታ ከ0 እስከ 1000 ሚሊሜትር ያለ ቁጥር መሆን አለበት።"
+
+#: 
+msgid "First date, left"
+msgstr "የመጀመሪያ ቀን, ግራ"
+
+#: 
+msgid "First date, top"
+msgstr "የመጀመሪያ ቀን, ላይ"
+
+#: 
+msgid "Item count, left"
+msgstr "የእቃዎች ብዛት, ግራ"
+
+#: 
+msgid "Item count, top"
+msgstr "የእቃዎች ብዛት, ላይ"
+
+#: 
+msgid "Left margin"
+msgstr "የግራ ህዳግ"
+
+#: 
+msgid "Line items"
+msgstr "የመስመር እቃዎች"
+
+#: 
+msgid "Maximum height"
+msgstr "ከፍተኛ ቁመት"
+
+#: 
+msgid "Maximum width"
+msgstr "ከፍተኛ ስፋት"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "በነባሪነት ጠፍቷል። ChurchCRM ን እንድናሻሽል ይረዳናል። ቤተ ክርስቲያንዎን ወይም ሰዎቿን በፍጹም አያካትትም።"
+
+#: 
+msgid "Perforation, top"
+msgstr "የቀዳዳ መስመር, ላይ"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "በቅድመ-ህትመት የተቀማጭ ትኬት ላይ በ ሚሊሜትር ያሉ ቦታዎች"
+
+#: 
+msgid "Saved"
+msgstr "ተቀምጧል"
+
+#: 
+msgid "Second date, left"
+msgstr "ሁለተኛ ቀን, ግራ"
+
+#: 
+msgid "See what's shared"
+msgstr "ምን እንደሚጋራ ይመልከቱ"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "ክፍተት, አግድም"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "ክፍተት, ቀጥታ"
+
+#: 
+msgid "Subtotal, left"
+msgstr "ንዑስ ድምር, ግራ"
+
+#: 
+msgid "Subtotal, top"
+msgstr "ንዑስ ድምር, ላይ"
+
+#: 
+msgid "Ticket"
+msgstr "ትኬት"
+
+#: 
+msgid "Title, left"
+msgstr "ርዕስ, ግራ"
+
+#: 
+msgid "Top margin"
+msgstr "የላይኛው ህዳግ"
+
+#: 
+msgid "Total, left"
+msgstr "አጠቃላይ, ግራ"
+
+#: 
+msgid "Total, top"
+msgstr "አጠቃላይ, ላይ"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

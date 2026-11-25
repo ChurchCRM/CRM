@@ -28272,3 +28272,111 @@ msgstr "Upozorenje nakon (sati)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Riječ prije imena u pismima i e-pošti, na primjer Poštovani."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Pomak iznosa, lijevo"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demo podaci učitani"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Svaki položaj mora biti broj od 0 do 1000 milimetara."
+
+#: 
+msgid "First date, left"
+msgstr "Prvi datum, lijevo"
+
+#: 
+msgid "First date, top"
+msgstr "Prvi datum, gore"
+
+#: 
+msgid "Item count, left"
+msgstr "Broj stavki, lijevo"
+
+#: 
+msgid "Item count, top"
+msgstr "Broj stavki, gore"
+
+#: 
+msgid "Left margin"
+msgstr "Lijeva margina"
+
+#: 
+msgid "Line items"
+msgstr "Stavke"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimalna visina"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimalna širina"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Isključeno prema zadanim postavkama. Pomaže nam poboljšati ChurchCRM. Nikada ne uključuje vašu crkvu ni njezine članove."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforacija, gore"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Položaji u milimetrima na unaprijed tiskanoj uplatnici"
+
+#: 
+msgid "Saved"
+msgstr "Spremljeno"
+
+#: 
+msgid "Second date, left"
+msgstr "Drugi datum, lijevo"
+
+#: 
+msgid "See what's shared"
+msgstr "Pogledajte što se dijeli"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Razmak, vodoravni"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Razmak, okomiti"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Međuzbroj, lijevo"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Međuzbroj, gore"
+
+#: 
+msgid "Ticket"
+msgstr "Uplatnica"
+
+#: 
+msgid "Title, left"
+msgstr "Naslov, lijevo"
+
+#: 
+msgid "Top margin"
+msgstr "Gornja margina"
+
+#: 
+msgid "Total, left"
+msgstr "Ukupno, lijevo"
+
+#: 
+msgid "Total, top"
+msgstr "Ukupno, gore"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

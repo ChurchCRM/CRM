@@ -22,7 +22,7 @@ class FamilyLabelService
      */
     public static function familyCells(bool $newsletterOnly, bool $familyNames): array
     {
-        $query = FamilyQuery::create()->filterByActive();
+        $query = FamilyQuery::create()->filterByActive()->filterByNeedsReview(false);
         if ((new ClassificationService())->getInactiveIds() !== []) {
             $activePeople = PersonQuery::create()->filterByActive();
             $query->filterById($activePeople->filterByFamId(0, Criteria::GREATER_THAN)->select('FamId')->distinct()->find()->toArray(), Criteria::IN);

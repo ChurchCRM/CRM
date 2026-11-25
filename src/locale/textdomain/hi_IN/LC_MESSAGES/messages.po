@@ -28242,3 +28242,111 @@ msgstr "चेतावनी बाद (घंटे)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "पत्रों और ईमेल में नाम से पहले का शब्द, उदाहरण के लिए प्रिय।"
 
+#: 
+msgid "Amount offset, left"
+msgstr "राशि ऑफसेट, बायाँ"
+
+#: 
+msgid "Demo data loaded"
+msgstr "डेमो डेटा लोड किया गया"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "प्रत्येक स्थिति 0 से 1000 मिलीमीटर के बीच की संख्या होनी चाहिए।"
+
+#: 
+msgid "First date, left"
+msgstr "पहली तिथि, बायाँ"
+
+#: 
+msgid "First date, top"
+msgstr "पहली तिथि, ऊपर"
+
+#: 
+msgid "Item count, left"
+msgstr "आइटम संख्या, बायाँ"
+
+#: 
+msgid "Item count, top"
+msgstr "आइटम संख्या, ऊपर"
+
+#: 
+msgid "Left margin"
+msgstr "बायाँ हाशिया"
+
+#: 
+msgid "Line items"
+msgstr "पंक्ति आइटम"
+
+#: 
+msgid "Maximum height"
+msgstr "अधिकतम ऊँचाई"
+
+#: 
+msgid "Maximum width"
+msgstr "अधिकतम चौड़ाई"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "डिफ़ॉल्ट रूप से बंद। ChurchCRM को बेहतर बनाने में हमारी मदद करता है। इसमें कभी भी आपका चर्च या उसके लोग शामिल नहीं होते।"
+
+#: 
+msgid "Perforation, top"
+msgstr "छिद्रण, ऊपर"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "पहले से छपी जमा टिकट पर मिलीमीटर में स्थितियाँ"
+
+#: 
+msgid "Saved"
+msgstr "सहेजा गया"
+
+#: 
+msgid "Second date, left"
+msgstr "दूसरी तिथि, बायाँ"
+
+#: 
+msgid "See what's shared"
+msgstr "देखें क्या साझा किया जाता है"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "रिक्ति, क्षैतिज"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "रिक्ति, ऊर्ध्वाधर"
+
+#: 
+msgid "Subtotal, left"
+msgstr "उप-योग, बायाँ"
+
+#: 
+msgid "Subtotal, top"
+msgstr "उप-योग, ऊपर"
+
+#: 
+msgid "Ticket"
+msgstr "टिकट"
+
+#: 
+msgid "Title, left"
+msgstr "शीर्षक, बायाँ"
+
+#: 
+msgid "Top margin"
+msgstr "ऊपरी हाशिया"
+
+#: 
+msgid "Total, left"
+msgstr "कुल, बायाँ"
+
+#: 
+msgid "Total, top"
+msgstr "कुल, ऊपर"
+
+#: 
+msgid "mm"
+msgstr "mm"
+
