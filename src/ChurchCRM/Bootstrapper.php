@@ -652,7 +652,7 @@ class Bootstrapper
                 $rootPath = standaloneRootPath();
             }
             if (str_starts_with($reportReason ?? '', 'database_')) {
-                $message .= '<br/><a href="' . InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'database_error_help')) . '">' . gettext('How to fix database connection problems') . '</a>';
+                $message .= '<br/><a href="' . SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'database_error_help') . '">' . gettext('How to fix database connection problems') . '</a>';
             }
             $title = gettext($header);
             $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';
