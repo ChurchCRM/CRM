@@ -106,6 +106,7 @@ module.exports = {
     'admin-settings': './webpack/admin-settings',
     'admin-setup': './webpack/admin-setup',
     'first-run': './webpack/first-run',
+    'telemetry-consent': './webpack/telemetry-consent',
     // Admin → Member Portal (#9864): theme picker, portal settings, statistics.
     'admin-member-portal': './webpack/admin-member-portal.ts',
     // Admin → Convert Volunteer Opportunities (#10606).
