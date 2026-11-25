@@ -651,8 +651,8 @@ class Bootstrapper
             } catch (\Throwable) {
                 $rootPath = standaloneRootPath();
             }
-            if (in_array($reportReason, ['database_unreachable', 'database_access_failed'], true)) {
-                $message .= '<br/>See the <a href="' . SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'database_error_help') . '">database setup troubleshooting guide</a> for what to check.';
+            if (str_starts_with($reportReason ?? '', 'database_')) {
+                $message .= '<br/><a href="' . InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'database_error_help')) . '">' . gettext('How to fix database connection problems') . '</a>';
             }
             $title = gettext($header);
             $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';

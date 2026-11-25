@@ -92,6 +92,7 @@ describe('01 - Setup Wizard', () => {
                 expect(body.reason).to.eq(reason);
             });
             cy.get('#db-connection-result').should('be.visible');
+            cy.get('#db-connection-help a').should('be.visible').and('have.attr', 'href').and('include', 'database-setup-troubleshooting');
             cy.get('#setup-form .is-invalid')
                 .then(($fields) => [...$fields].map((field) => field.id))
                 .should('deep.equal', fields);

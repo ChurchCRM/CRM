@@ -115,7 +115,7 @@ require_once __DIR__ . '/header.php';
             <div class="card-body">
                 <h2 class="setup-card-title"><?= gettext('Connect your database') ?></h2>
                 <p class="text-secondary mb-1"><?= gettext('ChurchCRM stores your church\'s information in a database. Create an empty database first, then enter its details below.') ?>
-                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation', 'setup_database_help')) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('How do I create a database?') ?></a></p>
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting#creating-the-database-and-user', 'setup_database_create')) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('How do I create a database?') ?></a></p>
                 <p class="small text-secondary"><?= gettext('Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer.') ?></p>
 
                 <div class="row">
@@ -161,8 +161,7 @@ require_once __DIR__ . '/header.php';
 
                 <div id="db-connection-result" class="alert alert-danger d-none" role="status" aria-live="polite"></div>
                 <p id="db-connection-help" class="small d-none mt-2 mb-0">
-                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'setup_database_help')) ?>" target="_blank" rel="noopener"><?= gettext('Database setup troubleshooting') ?></a>
-                    <?= gettext('explains each connection problem and how to fix it.') ?>
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'setup_database_help')) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('How to fix database connection problems') ?></a>
                 </p>
             </div>
             <div class="card-footer">
