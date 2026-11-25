@@ -44,7 +44,7 @@ Done for a release when `npm run locale:missing` reports nothing to translate on
 | `npm run locale:apply -- --json-only` | Writes only the locale JSON, no `.po`/`.mo`. The translate flow uses this; the generated files are compiled from the JSON at build time (below) |
 | `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po` (`locale:build` runs this) |
 | `npm run locale:apply -- --check` | Writes nothing; fails when a locale `.po`/`.mo` does not match its JSON (on a tree where they have been compiled) |
-| `npm run locale:compile` | Compiles every locale's `.po`/`.mo` from its JSON and fails if any locale's `.mo` is missing afterwards. Part of `npm run build`; also runs in CI before the test stacks start and as the lint suite's `locale files in sync` check. The generated files are not committed |
+| `npm run locale:compile` | Writes every locale's `.po`/`.mo` from its JSON only (no queue batch consumed, no JSON rewritten) and fails if any `.mo` is missing afterwards. Part of `npm run build`; also runs in CI before the test stacks start and as the lint suite's `locale files in sync` check. The generated files are not committed |
 | `npm run locale:audit` | Completeness per locale from the repo: `src/locale/locale-stats.json` (read by the app for the translation %) and `locale/locale-audit.md` |
 | `npm run locale:release [-- --go]` | Release check, below |
 | `npm run locale:test` | Unit tests for the locale scripts |

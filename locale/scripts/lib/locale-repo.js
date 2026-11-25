@@ -110,9 +110,10 @@ function sameMo(a, b) {
  * Writes JSON, .po and .mo for a locale from `ctx.translations`. Returns what changed; with
  * `dryRun` nothing is written. With `jsonOnly` only the JSON is written: translate PRs carry
  * just the JSON (the source of truth); the generated .po/.mo are never committed — they are
- * compiled from the JSON at build time (npm run locale:compile).
+ * compiled from the JSON at build time (npm run locale:compile), which uses `catalogsOnly`:
+ * write the .po/.mo and leave the JSON untouched.
  */
-function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false } = {}) {
+function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false, catalogsOnly = false } = {}) {
     const { paths: p, translations, shapes, poText, target } = ctx;
     const changes = { json: false, po: false, mo: false, po_added: 0, po_updated: 0, po_removed: 0 };
 
@@ -137,7 +138,7 @@ function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false } = {}) {
     changes.mo = currentMo === null || !sameMo(mo, currentMo);
 
     if (!dryRun) {
-        if (changes.json) fs.writeFileSync(p.json, nextJson, 'utf8');
+        if (changes.json && !catalogsOnly) fs.writeFileSync(p.json, nextJson, 'utf8');
         fs.mkdirSync(path.dirname(p.po), { recursive: true });
         if (changes.po) fs.writeFileSync(p.po, po.text, 'utf8');
         if (changes.mo) fs.writeFileSync(p.mo, mo);
