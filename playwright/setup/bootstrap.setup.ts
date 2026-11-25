@@ -22,14 +22,16 @@ const ADMIN_PERSON_ID = 1;
 const ADMIN_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'andrew.adams.jpg');
 
 /**
- * These tests are real, recorded workflows — not plumbing — because they're
- * the videos this pipeline exists to produce first: installing ChurchCRM,
- * the first sign-in with church info, and loading the sample data. They run
- * once (the "setup" project in playwright.config.ts), in order, before the
- * desktop/tablet/mobile projects, which declare a dependency on this project
- * and reuse the storage state saved at the end of the last test.
+ * One recorded workflow: install, first sign-in, church info, demo import,
+ * then the module dashboards with that data on screen. It runs once (the
+ * "setup" project), before every other project, and saves the storage state
+ * those projects reuse.
+ *
+ * The summed waits (prerequisites, migration, first sign-in, import) can
+ * exceed the suite's 300s test timeout, so this test sets its own.
  */
-setup('install-churchcrm', async ({ page }, testInfo) => {
+setup('setup-demo-dashboards', async ({ page }, testInfo) => {
+  setup.setTimeout(600000);
   await page.goto('/');
   await expect(page).toHaveURL(/\/setup/);
   await expect(page.locator('.setup-logo')).toBeVisible();
@@ -54,16 +56,6 @@ setup('install-churchcrm', async ({ page }, testInfo) => {
   await expect(page.locator('input[name=User]')).toBeVisible({ timeout: 30000 });
   await settle(page, 1500);
 
-  await captureScreen(page, testInfo, {
-    name: 'install-churchcrm',
-    title: 'Install ChurchCRM',
-    category: 'Setup',
-    purpose: 'Show installing ChurchCRM on one page, from the setup screen to the sign-in screen',
-    usedIn: ['website'],
-  });
-});
-
-setup('setup-church-info', async ({ page }, testInfo) => {
   // First admin login — forced password change.
   await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
@@ -108,26 +100,8 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.getByText(/Church information saved/).first().waitFor({ state: 'visible', timeout: 10000 });
   await settle(page, 800);
 
-  await captureScreen(page, testInfo, {
-    name: 'setup-church-info',
-    title: 'Setup - Church Info',
-    category: 'Setup',
-    purpose: 'Show the first sign-in: the forced password change, the Setup Dashboard, and the church info form',
-    usedIn: ['website'],
-  });
-});
-
-setup('demo-data-import', async ({ page }, testInfo) => {
-  await page.goto('/session/begin');
-  await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
-  await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
-  await humanPause(page, 300);
-  // An administrator's first full sign-in checks GitHub for releases and fetches the remote
-  // notifications before it redirects, which can take well past the 15s action timeout on a runner.
-  await page.locator('input[name=Password]').press('Enter', { timeout: 60000 });
-  // A new install's first admin sign-in opens the Setup Dashboard.
-  await page.waitForURL(/\/admin\/setup$/, { timeout: 60000 });
-
+  await page.goto('/admin/setup');
+  await page.waitForURL(/\/admin\/setup$/, { timeout: 30000 });
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
   await humanPause(page, 500);
 
@@ -153,10 +127,10 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   }
 
   await captureScreen(page, testInfo, {
-    name: 'demo-data-import',
-    title: 'Demo Data Import',
+    name: 'setup-demo-dashboards',
+    title: 'From Setup to Demo Dashboards',
     category: 'Setup',
-    purpose: 'Show a new install opening on the Setup Dashboard, importing the sample data, and the populated People dashboard',
+    purpose: 'Install ChurchCRM, set the church, import the sample data, and show that data on the module dashboards',
     usedIn: ['website'],
   });
 
