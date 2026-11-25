@@ -28239,3 +28239,111 @@ msgstr "Babala Pagkatapos ng (Mga Oras)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Salita bago ang pangalan sa mga liham at email, halimbawa Mahal na."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Offset ng halaga, kaliwa"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Na-load na ang demo data"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Ang bawat posisyon ay dapat isang numero mula 0 hanggang 1000 milimetro."
+
+#: 
+msgid "First date, left"
+msgstr "Unang petsa, kaliwa"
+
+#: 
+msgid "First date, top"
+msgstr "Unang petsa, itaas"
+
+#: 
+msgid "Item count, left"
+msgstr "Bilang ng mga aytem, kaliwa"
+
+#: 
+msgid "Item count, top"
+msgstr "Bilang ng mga aytem, itaas"
+
+#: 
+msgid "Left margin"
+msgstr "Margin sa kaliwa"
+
+#: 
+msgid "Line items"
+msgstr "Mga aytem sa linya"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimum na taas"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimum na lapad"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Naka-off bilang default. Tumutulong sa amin na mapabuti ang ChurchCRM. Hindi kailanman isinasama ang iyong simbahan o ang mga tao nito."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perporasyon, itaas"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Mga posisyon sa milimetro sa paunang naka-print na deposit ticket"
+
+#: 
+msgid "Saved"
+msgstr "Na-save"
+
+#: 
+msgid "Second date, left"
+msgstr "Pangalawang petsa, kaliwa"
+
+#: 
+msgid "See what's shared"
+msgstr "Tingnan kung ano ang ibinabahagi"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Espasyo, pahalang"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Espasyo, patayo"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotal, kaliwa"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotal, itaas"
+
+#: 
+msgid "Ticket"
+msgstr "Tiket ng deposito"
+
+#: 
+msgid "Title, left"
+msgstr "Pamagat, kaliwa"
+
+#: 
+msgid "Top margin"
+msgstr "Margin sa itaas"
+
+#: 
+msgid "Total, left"
+msgstr "Kabuuan, kaliwa"
+
+#: 
+msgid "Total, top"
+msgstr "Kabuuan, itaas"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

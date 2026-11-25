@@ -28409,3 +28409,111 @@ msgstr "التحذير بعد (ساعات)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "كلمة قبل الاسم في الخطابات ورسائل البريد الإلكتروني، على سبيل المثال عزيزي."
 
+#: 
+msgid "Amount offset, left"
+msgstr "إزاحة المبلغ, اليسار"
+
+#: 
+msgid "Demo data loaded"
+msgstr "تم تحميل البيانات التجريبية"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "يجب أن يكون كل موضع رقمًا من 0 إلى 1000 مليمتر."
+
+#: 
+msgid "First date, left"
+msgstr "التاريخ الأول, اليسار"
+
+#: 
+msgid "First date, top"
+msgstr "التاريخ الأول, الأعلى"
+
+#: 
+msgid "Item count, left"
+msgstr "عدد العناصر, اليسار"
+
+#: 
+msgid "Item count, top"
+msgstr "عدد العناصر, الأعلى"
+
+#: 
+msgid "Left margin"
+msgstr "الهامش الأيسر"
+
+#: 
+msgid "Line items"
+msgstr "عناصر السطور"
+
+#: 
+msgid "Maximum height"
+msgstr "الارتفاع الأقصى"
+
+#: 
+msgid "Maximum width"
+msgstr "العرض الأقصى"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "متوقف افتراضيًا. يساعدنا على تحسين ChurchCRM. لا يشمل أبدًا كنيستك أو أفرادها."
+
+#: 
+msgid "Perforation, top"
+msgstr "التثقيب, الأعلى"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "المواضع بالمليمترات على قسيمة الإيداع المطبوعة مسبقًا"
+
+#: 
+msgid "Saved"
+msgstr "تم الحفظ"
+
+#: 
+msgid "Second date, left"
+msgstr "التاريخ الثاني, اليسار"
+
+#: 
+msgid "See what's shared"
+msgstr "اطّلع على ما تتم مشاركته"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "التباعد, أفقي"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "التباعد, عمودي"
+
+#: 
+msgid "Subtotal, left"
+msgstr "المجموع الفرعي, اليسار"
+
+#: 
+msgid "Subtotal, top"
+msgstr "المجموع الفرعي, الأعلى"
+
+#: 
+msgid "Ticket"
+msgstr "قسيمة الإيداع"
+
+#: 
+msgid "Title, left"
+msgstr "العنوان, اليسار"
+
+#: 
+msgid "Top margin"
+msgstr "الهامش العلوي"
+
+#: 
+msgid "Total, left"
+msgstr "الإجمالي, اليسار"
+
+#: 
+msgid "Total, top"
+msgstr "الإجمالي, الأعلى"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

@@ -28271,3 +28271,111 @@ msgstr "Προειδοποίηση Μετά από (Ώρες)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Λέξη πριν από το όνομα σε επιστολές και email, για παράδειγμα Αγαπητέ."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Μετατόπιση ποσού, αριστερά"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Τα δεδομένα επίδειξης φορτώθηκαν"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Κάθε θέση πρέπει να είναι ένας αριθμός από 0 έως 1000 χιλιοστά."
+
+#: 
+msgid "First date, left"
+msgstr "Πρώτη ημερομηνία, αριστερά"
+
+#: 
+msgid "First date, top"
+msgstr "Πρώτη ημερομηνία, επάνω"
+
+#: 
+msgid "Item count, left"
+msgstr "Πλήθος στοιχείων, αριστερά"
+
+#: 
+msgid "Item count, top"
+msgstr "Πλήθος στοιχείων, επάνω"
+
+#: 
+msgid "Left margin"
+msgstr "Αριστερό περιθώριο"
+
+#: 
+msgid "Line items"
+msgstr "Στοιχεία γραμμών"
+
+#: 
+msgid "Maximum height"
+msgstr "Μέγιστο ύψος"
+
+#: 
+msgid "Maximum width"
+msgstr "Μέγιστο πλάτος"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Απενεργοποιημένο από προεπιλογή. Μας βοηθά να βελτιώσουμε το ChurchCRM. Δεν περιλαμβάνει ποτέ την εκκλησία σας ή τα μέλη της."
+
+#: 
+msgid "Perforation, top"
+msgstr "Διάτρηση, επάνω"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Θέσεις σε χιλιοστά στο προεκτυπωμένο δελτίο κατάθεσης"
+
+#: 
+msgid "Saved"
+msgstr "Αποθηκεύτηκε"
+
+#: 
+msgid "Second date, left"
+msgstr "Δεύτερη ημερομηνία, αριστερά"
+
+#: 
+msgid "See what's shared"
+msgstr "Δείτε τι κοινοποιείται"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Απόσταση, οριζόντια"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Απόσταση, κάθετα"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Υποσύνολο, αριστερά"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Υποσύνολο, επάνω"
+
+#: 
+msgid "Ticket"
+msgstr "Δελτίο κατάθεσης"
+
+#: 
+msgid "Title, left"
+msgstr "Τίτλος, αριστερά"
+
+#: 
+msgid "Top margin"
+msgstr "Επάνω περιθώριο"
+
+#: 
+msgid "Total, left"
+msgstr "Σύνολο, αριστερά"
+
+#: 
+msgid "Total, top"
+msgstr "Σύνολο, επάνω"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

@@ -28341,3 +28341,111 @@ msgstr "Advarsel etter (timer)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Ord før navnet i brev og e-poster, for eksempel Kjære."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Beløpsforskyvning, venstre"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demodata ble lastet inn"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Hver posisjon må være et tall fra 0 til 1000 millimeter."
+
+#: 
+msgid "First date, left"
+msgstr "Første dato, venstre"
+
+#: 
+msgid "First date, top"
+msgstr "Første dato, øverst"
+
+#: 
+msgid "Item count, left"
+msgstr "Antall poster, venstre"
+
+#: 
+msgid "Item count, top"
+msgstr "Antall poster, øverst"
+
+#: 
+msgid "Left margin"
+msgstr "Venstre marg"
+
+#: 
+msgid "Line items"
+msgstr "Linjeposter"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimal høyde"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimal bredde"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Av som standard. Hjelper oss med å forbedre ChurchCRM. Inkluderer aldri menigheten din eller dens medlemmer."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforering, øverst"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posisjoner i millimeter på den forhåndstrykte innskuddsseddelen"
+
+#: 
+msgid "Saved"
+msgstr "Lagret"
+
+#: 
+msgid "Second date, left"
+msgstr "Andre dato, venstre"
+
+#: 
+msgid "See what's shared"
+msgstr "Se hva som deles"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Avstand, horisontal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Avstand, vertikal"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Delsum, venstre"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Delsum, øverst"
+
+#: 
+msgid "Ticket"
+msgstr "Innskuddsseddel"
+
+#: 
+msgid "Title, left"
+msgstr "Tittel, venstre"
+
+#: 
+msgid "Top margin"
+msgstr "Øvre marg"
+
+#: 
+msgid "Total, left"
+msgstr "Totalt, venstre"
+
+#: 
+msgid "Total, top"
+msgstr "Totalt, øverst"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

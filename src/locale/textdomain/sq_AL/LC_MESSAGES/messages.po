@@ -28263,3 +28263,111 @@ msgstr "Paralajmërimi pas (orë)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Fjala para emrit në letra dhe e-posta, për shembull I dashur."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Zhvendosja e shumës, majtas"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Të dhënat demo u ngarkuan"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Çdo pozicion duhet të jetë një numër nga 0 deri në 1000 milimetra."
+
+#: 
+msgid "First date, left"
+msgstr "Data e parë, majtas"
+
+#: 
+msgid "First date, top"
+msgstr "Data e parë, lart"
+
+#: 
+msgid "Item count, left"
+msgstr "Numri i artikujve, majtas"
+
+#: 
+msgid "Item count, top"
+msgstr "Numri i artikujve, lart"
+
+#: 
+msgid "Left margin"
+msgstr "Margjina e majtë"
+
+#: 
+msgid "Line items"
+msgstr "Artikujt e rreshtave"
+
+#: 
+msgid "Maximum height"
+msgstr "Lartësia maksimale"
+
+#: 
+msgid "Maximum width"
+msgstr "Gjerësia maksimale"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "I çaktivizuar si parazgjedhje. Na ndihmon të përmirësojmë ChurchCRM. Nuk përfshin kurrë kishën tuaj ose njerëzit e saj."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforimi, lart"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Pozicionet në milimetra në biletën e depozitës të printuar paraprakisht"
+
+#: 
+msgid "Saved"
+msgstr "Ruajtur"
+
+#: 
+msgid "Second date, left"
+msgstr "Data e dytë, majtas"
+
+#: 
+msgid "See what's shared"
+msgstr "Shihni çfarë ndahet"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Hapësira, horizontale"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Hapësira, vertikale"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Nëntotali, majtas"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Nëntotali, lart"
+
+#: 
+msgid "Ticket"
+msgstr "Bileta e depozitës"
+
+#: 
+msgid "Title, left"
+msgstr "Titulli, majtas"
+
+#: 
+msgid "Top margin"
+msgstr "Margjina e sipërme"
+
+#: 
+msgid "Total, left"
+msgstr "Totali, majtas"
+
+#: 
+msgid "Total, top"
+msgstr "Totali, lart"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

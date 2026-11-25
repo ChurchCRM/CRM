@@ -28250,3 +28250,111 @@ msgstr "హెచ్చరిక తర్వాత (గంటలు)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "లేఖలు మరియు ఇమెయిల్‌లలో పేరుకు ముందు వచ్చే మాట, ఉదాహరణకు ప్రియమైన."
 
+#: 
+msgid "Amount offset, left"
+msgstr "మొత్తం ఆఫ్‌సెట్, ఎడమ"
+
+#: 
+msgid "Demo data loaded"
+msgstr "డెమో డేటా లోడ్ చేయబడింది"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "ప్రతి స్థానం 0 నుండి 1000 మిల్లీమీటర్ల మధ్య ఉన్న సంఖ్య అయి ఉండాలి."
+
+#: 
+msgid "First date, left"
+msgstr "మొదటి తేదీ, ఎడమ"
+
+#: 
+msgid "First date, top"
+msgstr "మొదటి తేదీ, పైన"
+
+#: 
+msgid "Item count, left"
+msgstr "అంశాల సంఖ్య, ఎడమ"
+
+#: 
+msgid "Item count, top"
+msgstr "అంశాల సంఖ్య, పైన"
+
+#: 
+msgid "Left margin"
+msgstr "ఎడమ అంచు"
+
+#: 
+msgid "Line items"
+msgstr "లైన్ అంశాలు"
+
+#: 
+msgid "Maximum height"
+msgstr "గరిష్ఠ ఎత్తు"
+
+#: 
+msgid "Maximum width"
+msgstr "గరిష్ఠ వెడల్పు"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "డిఫాల్ట్‌గా ఆఫ్‌లో ఉంది. ChurchCRMను మెరుగుపరచడంలో మాకు సహాయపడుతుంది. మీ చర్చిని లేదా దాని ప్రజలను ఎప్పుడూ చేర్చదు."
+
+#: 
+msgid "Perforation, top"
+msgstr "చిల్లులు గీత, పైన"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "ముందే ముద్రించిన డిపాజిట్ టికెట్‌పై మిల్లీమీటర్లలో స్థానాలు"
+
+#: 
+msgid "Saved"
+msgstr "సేవ్ చేయబడింది"
+
+#: 
+msgid "Second date, left"
+msgstr "రెండవ తేదీ, ఎడమ"
+
+#: 
+msgid "See what's shared"
+msgstr "ఏది భాగస్వామ్యం చేయబడుతుందో చూడండి"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "అంతరం, క్షితిజ సమాంతరం"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "అంతరం, నిలువు"
+
+#: 
+msgid "Subtotal, left"
+msgstr "ఉప మొత్తం, ఎడమ"
+
+#: 
+msgid "Subtotal, top"
+msgstr "ఉప మొత్తం, పైన"
+
+#: 
+msgid "Ticket"
+msgstr "టికెట్"
+
+#: 
+msgid "Title, left"
+msgstr "శీర్షిక, ఎడమ"
+
+#: 
+msgid "Top margin"
+msgstr "పై అంచు"
+
+#: 
+msgid "Total, left"
+msgstr "మొత్తం, ఎడమ"
+
+#: 
+msgid "Total, top"
+msgstr "మొత్తం, పైన"
+
+#: 
+msgid "mm"
+msgstr "mm"
+
