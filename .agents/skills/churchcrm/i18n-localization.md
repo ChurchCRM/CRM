@@ -9,7 +9,7 @@ Locale list: `src/locale/locales.json`.
 Locale loop: [docs/maintainers/locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md). Design: [docs/maintainers/locale-design.md](../../../docs/maintainers/locale-design.md).
 Translation-agent rules: [Locale Translation](./locale-translation-workflow.md).
 Feature localization guidance: `locale/README.md`.
-Translations live in the repo: `src/locale/i18n/<locale>.json` is the source of truth, and each locale `.po`/`.mo` is built from it (`npm run locale:apply`). There is no outside translation service.
+Translations live in the repo: `src/locale/i18n/<locale>.json` is the source of truth, and each locale `.po`/`.mo` is compiled from it at build time (`npm run locale:compile`, part of `npm run build`). The `.po`/`.mo` are gitignored: never commit them. After a fresh checkout or a JSON edit, run `npm run locale:compile` before testing a non-English page. There is no outside translation service.
 Extract job: `.github/workflows/locale-generate-terms.yml` (`Locale: extract terms`: waits 15 minutes after the last merge to `master`, then `npm run locale:build` (extract, prune, missing queue) and one terms PR, `locale: new terms from code (+N / -M) - <date>`, on `locale/terms/<version>`).
 The terms PR body lists each new and removed msgid, where it is in the code, and **Needs a look** flags (code-like, HTML, whitespace, near-duplicate, reworded term that loses translations). Generator: `locale/scripts/lib/locale-terms-diff.js`; run it locally with `node locale/scripts/lib/locale-terms-diff.js --base HEAD` after `npm run locale:build` to see what your PR will add.
 
@@ -34,7 +34,7 @@ Keep acronyms `ID`, `URL`, `API`.
 - Source strings use US English spelling (color, organize, canceled, behavior, catalog). Regional spelling lives in the English variant locales (`en` is en-GB, `en-au`, `en-ca`, `en-za`, `en-jm`), never in the source.
 - Reuse an existing msgid before adding one. Grep `locale/messages.po` for case, trailing punctuation, colon and ellipsis variants (`Save Changes`, `Loading...`) and use the existing form.
 - Add no near-duplicate terms: one msgid per wording, differing only by case or punctuation.
-- A PR that rewords a source term re-translates it in the same PR, so no locale loses it: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply` ([locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md#rewording-a-string)). List each old term → new term in the PR body.
+- A PR that rewords a source term re-translates it in the same PR, so no locale loses it: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply -- --json-only` ([locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md#rewording-a-string)). List each old term → new term in the PR body.
 
 Family status in UI: Active / Inactive. Actions: Set Active / Set Inactive.
 

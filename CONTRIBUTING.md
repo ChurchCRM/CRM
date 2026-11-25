@@ -62,7 +62,7 @@ Translations live in this repo, one file per language: `src/locale/i18n/<locale>
 
 **Fix or add a translation with a pull request:**
 1. Edit the value next to the English text in your language's file (you can [edit it in the browser](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files) on GitHub)
-2. Open a pull request; a maintainer rebuilds the gettext files (`npm run locale:apply`) and merges it
+2. Open a pull request; a maintainer reviews and merges it (the gettext files are compiled at build time, not committed)
 3. It ships in the next release
 
 Missing terms are listed by `npm run locale:missing`. To ask for a new language, open an issue.

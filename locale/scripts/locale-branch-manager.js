@@ -365,7 +365,7 @@ Usage:
     --locale/--language to commit every locale in a single commit; a locale
     list scopes the same flow to one locale or a language family.
     Stages only the locales' JSON, queue folders, locale/terms/english-ok.json
-    and locale/terms/context.json (generated .po/.mo are rebuilt on master)
+    and locale/terms/context.json (generated .po/.mo are never committed)
     Example: --commit-and-push --terms 301
     Example: --commit-and-push --locale fr --language "French - France" --terms 154
 

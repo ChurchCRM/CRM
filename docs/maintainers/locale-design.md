@@ -6,12 +6,12 @@ POEditor retired Nov 2026 (#11416).
 
 ## TL;DR
 
-The repo is the source of truth for translations. Code PRs still produce one batched terms PR. Agents or contributors fill missing terms in a normal PR, with `npm run locale:missing` to find them and `npm run locale:apply` to write them. Lint fails when a locale's `.po`/`.mo` doesn't match its JSON. Releases no longer wait on upload or download syncs.
+The repo is the source of truth for translations. Code PRs still produce one batched terms PR. Agents or contributors fill missing terms in a normal PR, with `npm run locale:missing` to find them and `npm run locale:apply -- --json-only` to write them. The `.po`/`.mo` are compiled from the JSON at build time and are not committed; lint fails when the JSON does not compile. Releases no longer wait on upload or download syncs.
 
 **What maintainers do now**
 
 1. Merge the terms PR (`locale: new terms from code …`) after a quick review.
-2. Have an agent run `/locale-translate --all`, or run `npm run locale:missing`, translate, then `npm run locale:apply`. Open the PR, review it, merge it.
+2. Have an agent run `/locale-translate --all`, or run `npm run locale:missing`, translate, then `npm run locale:apply -- --json-only`. Open the PR, review it, merge it.
 3. Before a release, run `npm run locale:release -- --go` until it exits 0.
 
 ---
@@ -33,8 +33,8 @@ The repo is the source of truth for translations. Code PRs still produce one bat
 |---|---|---|
 | `locale/messages.po` | The **list of source terms** (English msgids, contexts, plurals) | `npm run locale:build` in the terms workflow |
 | `src/locale/i18n/<locale>.json` | The **translations**, read by i18next in the browser | Agents and contributors, via `locale:apply` |
-| `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` | gettext copy for PHP, **generated from the JSON** | `locale:apply` |
-| `…/messages.mo` | Compiled `.po`, read by PHP | `locale:apply` (uses `gettext-parser`, no `msgfmt` needed) |
+| `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` | gettext copy for PHP, **generated from the JSON, gitignored** | `locale:compile` |
+| `…/messages.mo` | Compiled `.po`, read by PHP | `locale:compile` (uses `gettext-parser`, no `msgfmt` needed) |
 | `locale/terms/missing/<code>/*.json` | Queue of untranslated terms, **checked in** until translated (the terms PR writes it, a translate PR empties it) | `locale:missing`, filled by `locale-translate.js` |
 | `src/locale/locale-stats.json` | Completeness % per locale, shown in the app | `locale:audit` |
 
@@ -61,14 +61,15 @@ flowchart LR
 |---|---|
 | `npm run locale:missing [-- --locale de] [-- --term "…"]` | Writes the terms each locale is missing: in `messages.po` but with no complete translation in the JSON. Keeps values already filled. `--term` queues a string that isn't extracted yet |
 | `node locale/scripts/locale-translate.js --list / --prefill / --export / --apply-bulk` | Lets agents read and fill batches. Validates every value |
-| `npm run locale:apply` | Moves filled batch values into the JSON, rebuilds the `.po` and `.mo`, and empties the batch. Rejected values stay in the batch with the reason |
+| `npm run locale:apply` | Moves filled batch values into the JSON, writes the `.po` and `.mo` (skip with `--json-only`), and empties the batch. Rejected values stay in the batch with the reason |
 | `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po`. `locale:build` runs this |
-| `npm run locale:apply -- --check` | Writes nothing. Exits 1 if any `.po`/`.mo` doesn't match its JSON |
+| `npm run locale:apply -- --check` | Writes nothing. Exits 1 if any compiled `.po`/`.mo` doesn't match its JSON (compile first) |
+| `npm run locale:compile` | Compiles every locale's `.po`/`.mo` from its JSON and fails if a `.mo` is missing. Part of `npm run build` |
 | `npm run locale:audit` | Completeness from the repo → `locale-stats.json` and `locale-audit.md` |
 | `npm run locale:release [-- --go]` | Release check: terms PR open? extraction running? anything missing? `--go` extracts now, skipping the wait |
 | `node locale/scripts/locale-add.js …` | Adds a language: adds it to `locales.json`, creates an empty JSON and a `.po` header, and prints the translate steps |
 
-**Lint:** `npm run lint` includes **locale files in sync** (`locale-apply.js --check`, about 14 s), so a PR can't merge with stale `.po`/`.mo` files.
+**Lint:** `npm run lint` includes **locale files in sync** (`locale-compile.js`), so a PR can't merge with JSON that does not compile into catalogs.
 
 **Format rules:** `.po` entries that didn't change keep their exact text. New ones are appended in the existing gettext layout. Plural slots follow the locale's existing JSON forms, or CLDR for a new locale.
 
@@ -93,7 +94,7 @@ sequenceDiagram
     Mt->>T: review the generated terms, merge
     T->>M: messages.po + pruned locale files
     Tr->>Tr: locale:missing → translate → locale:apply
-    Tr->>L: translate PR (JSON + .po + .mo)
+    Tr->>L: translate PR (JSON + queue)
     L-->>Tr: placeholder/script/plural checks passed at apply time,<br/>files in sync, tests green
     Mt->>M: review and merge translate PR
 ```
@@ -104,7 +105,7 @@ sequenceDiagram
 | Batch wait (15 min, restarts on each merge) | `Locale: extract terms` | One extraction per burst |
 | Terms PR | Workflow | `messages.po` diff, a list of new and removed terms with `file:line`, and **Needs a look** flags |
 | Review | Maintainer | Fix odd strings in the code, not in the PR |
-| Translate | Agent (`/locale-translate`) or contributor | Translate PR with JSON, `.po` and `.mo` |
+| Translate | Agent (`/locale-translate`) or contributor | Translate PR with JSON and queue |
 | Merge | Maintainer | Ships in the next release |
 
 ## 4. Release workflow impact
@@ -124,11 +125,11 @@ sequenceDiagram
 
 | Who | How |
 |---|---|
-| **Community translator** | Edit `src/locale/i18n/<locale>.json` (in the browser on GitHub is fine) and open a PR. A maintainer runs `npm run locale:apply` to rebuild the `.po`/`.mo`. See [CONTRIBUTING.md](../../CONTRIBUTING.md#translate) |
-| **Maintainer / agent** | `locale-branch-manager.js --init` → `npm run locale:missing` → `/locale-translate` → `--commit-and-push` per locale (runs `locale:apply`) → open a PR |
-| **Fixing a translation** | Put the corrected value in any batch file for that locale, then `npm run locale:apply` |
-| **Rewording a string** | In the same code PR: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply` ([details](locale-pipeline.md#rewording-a-string)) |
-| **English variants** (`en`, `en-au`, …) | Hand-write only the spellings that differ into `locale/terms/missing/<code>/<code>-1.json`, then `locale:apply` |
+| **Community translator** | Edit `src/locale/i18n/<locale>.json` (in the browser on GitHub is fine) and open a PR. A maintainer reviews and merges it; the `.po`/`.mo` are compiled at build time. See [CONTRIBUTING.md](../../CONTRIBUTING.md#translate) |
+| **Maintainer / agent** | `locale-branch-manager.js --init` → `npm run locale:missing` → `/locale-translate` → `--commit-and-push` per locale (runs `locale:apply --json-only`) → open a PR |
+| **Fixing a translation** | Put the corrected value in any batch file for that locale, then `npm run locale:apply -- --json-only` |
+| **Rewording a string** | In the same code PR: `npm run locale:missing -- --term "New wording"`, translate, `npm run locale:apply -- --json-only` ([details](locale-pipeline.md#rewording-a-string)) |
+| **English variants** (`en`, `en-au`, …) | Hand-write only the spellings that differ into `locale/terms/missing/<code>/<code>-1.json`, then `locale:apply --json-only` |
 | **New language** | `locale-add.js`, then `locale:missing --locale <code>` and translate |
 
 ## 6. Quality gates
@@ -138,7 +139,7 @@ sequenceDiagram
 | Placeholders | `locale:apply`, `locale-translate.js` (`translation-checks.js`) | `{{name}}` set differs, `%s`/`%d` count or order, mixed positional and plain |
 | Script | same | Letters outside the locale's `scripts` (Latin always allowed for brand names) |
 | Plural shape | same | Missing, extra or empty plural forms; a string where an object is required |
-| Files in sync | `npm run lint` (CI and pre-push) | JSON edited without rebuilding the `.po`/`.mo` |
+| Files in sync | `npm run lint` (CI and pre-push) | JSON that does not compile into catalogs |
 | Unit tests | `npm run locale:test`, also run in lint | `.po` rendering, plural forms, missing and obsolete detection, stable output |
 | Terms review | Terms PR **Needs a look** | Code-like strings, HTML, whitespace, near-duplicates, rewordings that lose translations |
 | Human review | Translate PR | Wording and tone (church vocabulary) |
@@ -147,7 +148,7 @@ sequenceDiagram
 
 | Risk | Mitigation |
 |---|---|
-| Generated gettext files drift from the JSON | Lint checks consistency; run `locale:apply` after editing JSON |
-| A community PR edits only JSON | A maintainer rebuilds the gettext files with `locale:apply` |
+| Generated gettext files missing or stale locally | They are gitignored; run `npm run locale:compile` (or `npm run build`) |
+| A community PR edits only JSON | Nothing to rebuild: the catalogs compile at build time |
 | Plural slot order differs for a new locale | Check its `Plural-Forms` header against the locale's CLDR forms |
 | Rewording a source term loses translations | Review the terms diff and translate the new wording |

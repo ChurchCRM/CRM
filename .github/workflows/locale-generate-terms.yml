@@ -19,8 +19,8 @@ run-name: >-
 #   5. A person reviews and merges it. New strings are then translated in the repo (/locale-translate,
 #      npm run locale:missing + locale:apply) and land as a normal PR. There is no outside sync.
 #
-# Translation PRs and the terms PR only touch src/locale/i18n and src/locale/textdomain, so those paths
-# are excluded: merging them never starts another extraction. The terms PR also carries locale/terms/missing.
+# Translation PRs and the terms PR only touch src/locale/i18n, so that path
+# is excluded: merging them never starts another extraction. The terms PR also carries locale/terms/missing.
 
 on:
   push:
@@ -29,7 +29,6 @@ on:
     paths:
       - 'src/**'
       - '!src/locale/i18n/**'
-      - '!src/locale/textdomain/**'
   workflow_dispatch:
     inputs:
       force:

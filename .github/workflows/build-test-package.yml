@@ -56,7 +56,6 @@ on:
       - '!.github/issue-comments/**'
       - '!.github/workflows/**'
       - '!src/locale/i18n/**'
-      - '!src/locale/textdomain/**'
       # Re-include the test workflows and their shared root suite.
       - '.github/workflows/build-test-package.yml'
       - '.github/workflows/build-test-nightly.yml'
@@ -314,8 +313,6 @@ jobs:
         docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
         docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
-    - name: Compile locales (generated .po/.mo, not committed)
-      run: npm run locale:compile
     - name: Generate file signatures
       run: node scripts/build/generate-signatures-node.js
 
