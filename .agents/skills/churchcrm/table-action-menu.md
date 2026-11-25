@@ -127,8 +127,8 @@ Any table that lists people includes this standard menu. Domain actions (Check O
 
 `.table-responsive` and any `overflow: auto|scroll|hidden` ancestor clip an absolutely-positioned dropdown menu. `webpack/common/dropdown-overflow.ts`, loaded by `skin-core.js` into `churchcrm.min.js` (admin shell and Member Portal), handles every dropdown menu automatically.
 
-- On `shown.bs.dropdown`, a toggle with an ancestor whose computed `overflow-x` or `overflow-y` is not `visible` (up to `body`) gets `.dropdown-menu-fixed` on its menu (`position: fixed`, defined in `_tabler-bridge.scss`).
-- `top`/`left` come from the toggle's `getBoundingClientRect()`: right-aligned for `dropdown-menu-end`, flipped above the toggle when the menu would pass the viewport bottom.
+- On `shown.bs.dropdown`, a toggle with an ancestor whose computed `overflow-y` is not `visible` (up to `body`) gets `.dropdown-menu-fixed` on its menu (`position: fixed`, defined in `_tabler-bridge.scss`). `overflow-x: auto|scroll|hidden` counts, because the used `overflow-y` becomes `auto`. `overflow-x: clip` with `overflow-y: visible` (`.table-clip-x`) does not.
+- `top`/`left` come from the toggle's `getBoundingClientRect()`: right-aligned for `dropdown-menu-end`, flipped above the toggle when the menu would pass the viewport bottom. The fixed menu clears the popper `inset-inline-end` and locks its content width so `dropdown-menu-end` does not stretch it to the viewport edge.
 - The menu is re-placed on `scroll` (capture) and `resize` while open, and released on `hide.bs.dropdown`.
 - The DOM does not change, so Bootstrap focus handling and delegated click handlers keep working. No ancestor may set `transform`, `filter` or `perspective`.
 
