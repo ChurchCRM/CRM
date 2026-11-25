@@ -28356,3 +28356,111 @@ msgstr "Varning efter (timmar)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Ord före namnet i brev och e-post, till exempel Kära."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Beloppsförskjutning, vänster"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demodata har laddats"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Varje position måste vara ett tal från 0 till 1000 millimeter."
+
+#: 
+msgid "First date, left"
+msgstr "Första datum, vänster"
+
+#: 
+msgid "First date, top"
+msgstr "Första datum, överst"
+
+#: 
+msgid "Item count, left"
+msgstr "Antal poster, vänster"
+
+#: 
+msgid "Item count, top"
+msgstr "Antal poster, överst"
+
+#: 
+msgid "Left margin"
+msgstr "Vänstermarginal"
+
+#: 
+msgid "Line items"
+msgstr "Radposter"
+
+#: 
+msgid "Maximum height"
+msgstr "Maximal höjd"
+
+#: 
+msgid "Maximum width"
+msgstr "Maximal bredd"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Avstängt som standard. Hjälper oss att förbättra ChurchCRM. Innehåller aldrig din församling eller dess medlemmar."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforering, överst"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Positioner i millimeter på den förtryckta insättningsbiljetten"
+
+#: 
+msgid "Saved"
+msgstr "Sparat"
+
+#: 
+msgid "Second date, left"
+msgstr "Andra datum, vänster"
+
+#: 
+msgid "See what's shared"
+msgstr "Se vad som delas"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Avstånd, horisontellt"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Avstånd, vertikalt"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Delsumma, vänster"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Delsumma, överst"
+
+#: 
+msgid "Ticket"
+msgstr "Insättningskvitto"
+
+#: 
+msgid "Title, left"
+msgstr "Titel, vänster"
+
+#: 
+msgid "Top margin"
+msgstr "Övre marginal"
+
+#: 
+msgid "Total, left"
+msgstr "Totalt, vänster"
+
+#: 
+msgid "Total, top"
+msgstr "Totalt, överst"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

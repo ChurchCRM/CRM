@@ -28307,3 +28307,111 @@ msgstr "Upozornenie po (hodiny)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Slovo pred menom v listoch a e-mailoch, napríklad Vážený."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Posun sumy, vľavo"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Ukážkové dáta načítané"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Každá pozícia musí byť číslo od 0 do 1000 milimetrov."
+
+#: 
+msgid "First date, left"
+msgstr "Prvý dátum, vľavo"
+
+#: 
+msgid "First date, top"
+msgstr "Prvý dátum, hore"
+
+#: 
+msgid "Item count, left"
+msgstr "Počet položiek, vľavo"
+
+#: 
+msgid "Item count, top"
+msgstr "Počet položiek, hore"
+
+#: 
+msgid "Left margin"
+msgstr "Ľavý okraj"
+
+#: 
+msgid "Line items"
+msgstr "Riadkové položky"
+
+#: 
+msgid "Maximum height"
+msgstr "Maximálna výška"
+
+#: 
+msgid "Maximum width"
+msgstr "Maximálna šírka"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "V predvolenom nastavení vypnuté. Pomáha nám vylepšovať ChurchCRM. Nikdy nezahŕňa váš zbor ani jeho členov."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforácia, hore"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Pozície v milimetroch na predtlačenom vkladovom doklade"
+
+#: 
+msgid "Saved"
+msgstr "Uložené"
+
+#: 
+msgid "Second date, left"
+msgstr "Druhý dátum, vľavo"
+
+#: 
+msgid "See what's shared"
+msgstr "Zobraziť, čo sa zdieľa"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Rozostup, vodorovný"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Rozostup, zvislý"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Medzisúčet, vľavo"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Medzisúčet, hore"
+
+#: 
+msgid "Ticket"
+msgstr "Vkladový doklad"
+
+#: 
+msgid "Title, left"
+msgstr "Názov, vľavo"
+
+#: 
+msgid "Top margin"
+msgstr "Horný okraj"
+
+#: 
+msgid "Total, left"
+msgstr "Celkom, vľavo"
+
+#: 
+msgid "Total, top"
+msgstr "Celkom, hore"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

@@ -28291,3 +28291,111 @@ msgstr "Avviso dopo (ore)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Parola prima del nome in lettere ed email, ad esempio Gentile."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Scostamento della cifra, sinistra"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Dati dimostrativi caricati"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Ogni posizione deve essere un numero da 0 a 1000 millimetri."
+
+#: 
+msgid "First date, left"
+msgstr "Prima data, sinistra"
+
+#: 
+msgid "First date, top"
+msgstr "Prima data, alto"
+
+#: 
+msgid "Item count, left"
+msgstr "Numero di articoli, sinistra"
+
+#: 
+msgid "Item count, top"
+msgstr "Numero di articoli, alto"
+
+#: 
+msgid "Left margin"
+msgstr "Margine sinistro"
+
+#: 
+msgid "Line items"
+msgstr "Voci di riga"
+
+#: 
+msgid "Maximum height"
+msgstr "Altezza massima"
+
+#: 
+msgid "Maximum width"
+msgstr "Larghezza massima"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Disattivato per impostazione predefinita. Ci aiuta a migliorare ChurchCRM. Non include mai la tua chiesa né le sue persone."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforazione, alto"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posizioni in millimetri sul ticket di deposito prestampato"
+
+#: 
+msgid "Saved"
+msgstr "Salvato"
+
+#: 
+msgid "Second date, left"
+msgstr "Seconda data, sinistra"
+
+#: 
+msgid "See what's shared"
+msgstr "Vedi cosa viene condiviso"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Spaziatura, orizzontale"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Spaziatura, verticale"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotale, sinistra"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotale, alto"
+
+#: 
+msgid "Ticket"
+msgstr "Ticket di deposito"
+
+#: 
+msgid "Title, left"
+msgstr "Titolo, sinistra"
+
+#: 
+msgid "Top margin"
+msgstr "Margine superiore"
+
+#: 
+msgid "Total, left"
+msgstr "Totale, sinistra"
+
+#: 
+msgid "Total, top"
+msgstr "Totale, alto"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

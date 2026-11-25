@@ -28392,3 +28392,111 @@ msgstr "Предупреждение через (часы)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Слово перед именем в письмах и электронных письмах, например «Уважаемый»."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Смещение суммы, слева"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Демонстрационные данные загружены"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Каждая позиция должна быть числом от 0 до 1000 миллиметров."
+
+#: 
+msgid "First date, left"
+msgstr "Первая дата, слева"
+
+#: 
+msgid "First date, top"
+msgstr "Первая дата, сверху"
+
+#: 
+msgid "Item count, left"
+msgstr "Количество позиций, слева"
+
+#: 
+msgid "Item count, top"
+msgstr "Количество позиций, сверху"
+
+#: 
+msgid "Left margin"
+msgstr "Левое поле"
+
+#: 
+msgid "Line items"
+msgstr "Позиции строк"
+
+#: 
+msgid "Maximum height"
+msgstr "Максимальная высота"
+
+#: 
+msgid "Maximum width"
+msgstr "Максимальная ширина"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "По умолчанию отключено. Помогает нам улучшать ChurchCRM. Никогда не включает вашу церковь или её людей."
+
+#: 
+msgid "Perforation, top"
+msgstr "Перфорация, сверху"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Позиции в миллиметрах на предпечатной депозитной квитанции"
+
+#: 
+msgid "Saved"
+msgstr "Сохранено"
+
+#: 
+msgid "Second date, left"
+msgstr "Вторая дата, слева"
+
+#: 
+msgid "See what's shared"
+msgstr "Посмотреть, что передаётся"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Интервал, по горизонтали"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Интервал, по вертикали"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Промежуточный итог, слева"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Промежуточный итог, сверху"
+
+#: 
+msgid "Ticket"
+msgstr "Депозитная квитанция"
+
+#: 
+msgid "Title, left"
+msgstr "Название, слева"
+
+#: 
+msgid "Top margin"
+msgstr "Верхнее поле"
+
+#: 
+msgid "Total, left"
+msgstr "Всего, слева"
+
+#: 
+msgid "Total, top"
+msgstr "Всего, сверху"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

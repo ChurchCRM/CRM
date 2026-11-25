@@ -28270,3 +28270,111 @@ msgstr "אזהרה אחרי (שעות)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "מילה לפני השם במכתבים ובדוא\"ל, לדוגמה יקר."
 
+#: 
+msgid "Amount offset, left"
+msgstr "היסט הסכום, שמאל"
+
+#: 
+msgid "Demo data loaded"
+msgstr "נתוני ההדגמה נטענו"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "כל מיקום חייב להיות מספר מ-0 עד 1000 מילימטרים."
+
+#: 
+msgid "First date, left"
+msgstr "תאריך ראשון, שמאל"
+
+#: 
+msgid "First date, top"
+msgstr "תאריך ראשון, למעלה"
+
+#: 
+msgid "Item count, left"
+msgstr "מספר הפריטים, שמאל"
+
+#: 
+msgid "Item count, top"
+msgstr "מספר הפריטים, למעלה"
+
+#: 
+msgid "Left margin"
+msgstr "שוליים שמאליים"
+
+#: 
+msgid "Line items"
+msgstr "פריטי שורה"
+
+#: 
+msgid "Maximum height"
+msgstr "גובה מרבי"
+
+#: 
+msgid "Maximum width"
+msgstr "רוחב מרבי"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "כבוי כברירת מחדל. עוזר לנו לשפר את ChurchCRM. לעולם אינו כולל את הכנסייה שלך או את אנשיה."
+
+#: 
+msgid "Perforation, top"
+msgstr "ניקוב, למעלה"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "מיקומים במילימטרים על שובר ההפקדה המודפס מראש"
+
+#: 
+msgid "Saved"
+msgstr "נשמר"
+
+#: 
+msgid "Second date, left"
+msgstr "תאריך שני, שמאל"
+
+#: 
+msgid "See what's shared"
+msgstr "ראו מה משותף"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "מרווח, אופקי"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "מרווח, אנכי"
+
+#: 
+msgid "Subtotal, left"
+msgstr "סכום ביניים, שמאל"
+
+#: 
+msgid "Subtotal, top"
+msgstr "סכום ביניים, למעלה"
+
+#: 
+msgid "Ticket"
+msgstr "שובר הפקדה"
+
+#: 
+msgid "Title, left"
+msgstr "כותרת, שמאל"
+
+#: 
+msgid "Top margin"
+msgstr "שוליים עליונים"
+
+#: 
+msgid "Total, left"
+msgstr "סה\"כ, שמאל"
+
+#: 
+msgid "Total, top"
+msgstr "סה\"כ, למעלה"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

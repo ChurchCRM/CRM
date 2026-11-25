@@ -28241,3 +28241,111 @@ msgstr "Waarschuwing na (uren)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Woord vóór de naam in brieven en e-mails, bijvoorbeeld Beste."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Bedragverschuiving, links"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demogegevens geladen"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Elke positie moet een getal van 0 tot 1000 millimeter zijn."
+
+#: 
+msgid "First date, left"
+msgstr "Eerste datum, links"
+
+#: 
+msgid "First date, top"
+msgstr "Eerste datum, boven"
+
+#: 
+msgid "Item count, left"
+msgstr "Aantal items, links"
+
+#: 
+msgid "Item count, top"
+msgstr "Aantal items, boven"
+
+#: 
+msgid "Left margin"
+msgstr "Linkermarge"
+
+#: 
+msgid "Line items"
+msgstr "Regelitems"
+
+#: 
+msgid "Maximum height"
+msgstr "Maximale hoogte"
+
+#: 
+msgid "Maximum width"
+msgstr "Maximale breedte"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Standaard uitgeschakeld. Helpt ons ChurchCRM te verbeteren. Bevat nooit uw gemeente of haar mensen."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforatie, boven"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posities in millimeters op het voorgedrukte stortingsticket"
+
+#: 
+msgid "Saved"
+msgstr "Opgeslagen"
+
+#: 
+msgid "Second date, left"
+msgstr "Tweede datum, links"
+
+#: 
+msgid "See what's shared"
+msgstr "Bekijk wat wordt gedeeld"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Afstand, horizontaal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Afstand, verticaal"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotaal, links"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotaal, boven"
+
+#: 
+msgid "Ticket"
+msgstr "Stortingsticket"
+
+#: 
+msgid "Title, left"
+msgstr "Titel, links"
+
+#: 
+msgid "Top margin"
+msgstr "Bovenmarge"
+
+#: 
+msgid "Total, left"
+msgstr "Totaal, links"
+
+#: 
+msgid "Total, top"
+msgstr "Totaal, boven"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

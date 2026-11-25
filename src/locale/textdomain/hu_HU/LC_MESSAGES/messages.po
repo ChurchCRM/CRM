@@ -28295,3 +28295,111 @@ msgstr "Figyelmeztetés után (óra)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "A levelekben és e-mailekben a név előtt álló szó, például Tisztelt."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Összeg eltolása, bal"
+
+#: 
+msgid "Demo data loaded"
+msgstr "A bemutató adatok betöltve"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Minden pozíciónak 0 és 1000 milliméter közötti számnak kell lennie."
+
+#: 
+msgid "First date, left"
+msgstr "Első dátum, bal"
+
+#: 
+msgid "First date, top"
+msgstr "Első dátum, fent"
+
+#: 
+msgid "Item count, left"
+msgstr "Tételszám, bal"
+
+#: 
+msgid "Item count, top"
+msgstr "Tételszám, fent"
+
+#: 
+msgid "Left margin"
+msgstr "Bal margó"
+
+#: 
+msgid "Line items"
+msgstr "Tételek"
+
+#: 
+msgid "Maximum height"
+msgstr "Maximális magasság"
+
+#: 
+msgid "Maximum width"
+msgstr "Maximális szélesség"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Alapértelmezés szerint kikapcsolva. Segít nekünk a ChurchCRM fejlesztésében. Soha nem tartalmazza az Ön gyülekezetét vagy annak tagjait."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforáció, fent"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Pozíciók milliméterben az előnyomtatott befizetési jegyen"
+
+#: 
+msgid "Saved"
+msgstr "Mentve"
+
+#: 
+msgid "Second date, left"
+msgstr "Második dátum, bal"
+
+#: 
+msgid "See what's shared"
+msgstr "Tekintse meg, mi kerül megosztásra"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Térköz, vízszintes"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Térköz, függőleges"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Részösszeg, bal"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Részösszeg, fent"
+
+#: 
+msgid "Ticket"
+msgstr "Befizetési jegy"
+
+#: 
+msgid "Title, left"
+msgstr "Cím, bal"
+
+#: 
+msgid "Top margin"
+msgstr "Felső margó"
+
+#: 
+msgid "Total, left"
+msgstr "Összesen, bal"
+
+#: 
+msgid "Total, top"
+msgstr "Összesen, fent"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

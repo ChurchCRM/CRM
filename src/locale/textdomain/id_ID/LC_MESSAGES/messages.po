@@ -28236,3 +28236,111 @@ msgstr "Peringatan Setelah (Jam)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Kata sebelum nama dalam surat dan email, misalnya Yth."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Pergeseran jumlah, kiri"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Data demo dimuat"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Setiap posisi harus berupa angka dari 0 hingga 1000 milimeter."
+
+#: 
+msgid "First date, left"
+msgstr "Tanggal pertama, kiri"
+
+#: 
+msgid "First date, top"
+msgstr "Tanggal pertama, atas"
+
+#: 
+msgid "Item count, left"
+msgstr "Jumlah item, kiri"
+
+#: 
+msgid "Item count, top"
+msgstr "Jumlah item, atas"
+
+#: 
+msgid "Left margin"
+msgstr "Margin kiri"
+
+#: 
+msgid "Line items"
+msgstr "Item baris"
+
+#: 
+msgid "Maximum height"
+msgstr "Tinggi maksimum"
+
+#: 
+msgid "Maximum width"
+msgstr "Lebar maksimum"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Nonaktif secara bawaan. Membantu kami meningkatkan ChurchCRM. Tidak pernah mencakup gereja Anda atau jemaatnya."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforasi, atas"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posisi dalam milimeter pada tiket setoran yang sudah dicetak"
+
+#: 
+msgid "Saved"
+msgstr "Disimpan"
+
+#: 
+msgid "Second date, left"
+msgstr "Tanggal kedua, kiri"
+
+#: 
+msgid "See what's shared"
+msgstr "Lihat apa yang dibagikan"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Jarak, horizontal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Jarak, vertikal"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotal, kiri"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotal, atas"
+
+#: 
+msgid "Ticket"
+msgstr "Tiket setoran"
+
+#: 
+msgid "Title, left"
+msgstr "Judul, kiri"
+
+#: 
+msgid "Top margin"
+msgstr "Margin atas"
+
+#: 
+msgid "Total, left"
+msgstr "Total, kiri"
+
+#: 
+msgid "Total, top"
+msgstr "Total, atas"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

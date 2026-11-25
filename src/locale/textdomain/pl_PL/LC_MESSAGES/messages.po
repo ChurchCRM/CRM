@@ -28359,3 +28359,111 @@ msgstr "Ostrzeżenie po (godziny)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Słowo przed nazwiskiem w listach i e-mailach, na przykład Drogi."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Przesunięcie kwoty, z lewej"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Dane demo załadowane"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Każda pozycja musi być liczbą od 0 do 1000 milimetrów."
+
+#: 
+msgid "First date, left"
+msgstr "Pierwsza data, z lewej"
+
+#: 
+msgid "First date, top"
+msgstr "Pierwsza data, z góry"
+
+#: 
+msgid "Item count, left"
+msgstr "Liczba pozycji, z lewej"
+
+#: 
+msgid "Item count, top"
+msgstr "Liczba pozycji, z góry"
+
+#: 
+msgid "Left margin"
+msgstr "Lewy margines"
+
+#: 
+msgid "Line items"
+msgstr "Pozycje"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksymalna wysokość"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksymalna szerokość"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Domyślnie wyłączone. Pomaga nam ulepszać ChurchCRM. Nigdy nie obejmuje Twojego kościoła ani jego członków."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforacja, z góry"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Pozycje w milimetrach na wstępnie zadrukowanym dowodzie wpłaty"
+
+#: 
+msgid "Saved"
+msgstr "Zapisano"
+
+#: 
+msgid "Second date, left"
+msgstr "Druga data, z lewej"
+
+#: 
+msgid "See what's shared"
+msgstr "Zobacz, co jest udostępniane"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Odstęp, poziomy"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Odstęp, pionowy"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Suma częściowa, z lewej"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Suma częściowa, z góry"
+
+#: 
+msgid "Ticket"
+msgstr "Dowód wpłaty"
+
+#: 
+msgid "Title, left"
+msgstr "Tytuł, z lewej"
+
+#: 
+msgid "Top margin"
+msgstr "Górny margines"
+
+#: 
+msgid "Total, left"
+msgstr "Suma, z lewej"
+
+#: 
+msgid "Total, top"
+msgstr "Suma, z góry"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

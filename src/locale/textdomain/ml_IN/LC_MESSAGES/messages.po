@@ -28239,3 +28239,111 @@ msgstr "മുന്നറിയിപ്പിനുള്ള സമയം (മ
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "കത്തുകളിലും ഇമെയിലുകളിലും പേരിന് മുമ്പ് വരുന്ന വാക്ക്, ഉദാഹരണത്തിന് പ്രിയ."
 
+#: 
+msgid "Amount offset, left"
+msgstr "തുക ഓഫ്‌സെറ്റ്, ഇടത്"
+
+#: 
+msgid "Demo data loaded"
+msgstr "ഡെമോ ഡേറ്റ ലോഡ് ചെയ്തു"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "ഓരോ സ്ഥാനവും 0 മുതൽ 1000 മില്ലിമീറ്റർ വരെയുള്ള ഒരു സംഖ്യയായിരിക്കണം."
+
+#: 
+msgid "First date, left"
+msgstr "ആദ്യ തീയതി, ഇടത്"
+
+#: 
+msgid "First date, top"
+msgstr "ആദ്യ തീയതി, മുകളിൽ"
+
+#: 
+msgid "Item count, left"
+msgstr "ഇനങ്ങളുടെ എണ്ണം, ഇടത്"
+
+#: 
+msgid "Item count, top"
+msgstr "ഇനങ്ങളുടെ എണ്ണം, മുകളിൽ"
+
+#: 
+msgid "Left margin"
+msgstr "ഇടത് മാർജിൻ"
+
+#: 
+msgid "Line items"
+msgstr "ലൈൻ ഇനങ്ങൾ"
+
+#: 
+msgid "Maximum height"
+msgstr "പരമാവധി ഉയരം"
+
+#: 
+msgid "Maximum width"
+msgstr "പരമാവധി വീതി"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "സ്ഥിരസ്ഥിതിയായി ഓഫാണ്. ChurchCRM മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കുന്നു. നിങ്ങളുടെ പള്ളിയെയോ അതിലെ ആളുകളെയോ ഒരിക്കലും ഉൾപ്പെടുത്തില്ല."
+
+#: 
+msgid "Perforation, top"
+msgstr "സുഷിരരേഖ, മുകളിൽ"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "മുൻകൂട്ടി അച്ചടിച്ച ഡിപ്പോസിറ്റ് ടിക്കറ്റിൽ മില്ലിമീറ്ററിലുള്ള സ്ഥാനങ്ങൾ"
+
+#: 
+msgid "Saved"
+msgstr "സേവ് ചെയ്തു"
+
+#: 
+msgid "Second date, left"
+msgstr "രണ്ടാം തീയതി, ഇടത്"
+
+#: 
+msgid "See what's shared"
+msgstr "എന്താണ് പങ്കിടുന്നതെന്ന് കാണുക"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "അകലം, തിരശ്ചീനം"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "അകലം, ലംബം"
+
+#: 
+msgid "Subtotal, left"
+msgstr "ഉപആകെ, ഇടത്"
+
+#: 
+msgid "Subtotal, top"
+msgstr "ഉപആകെ, മുകളിൽ"
+
+#: 
+msgid "Ticket"
+msgstr "ടിക്കറ്റ്"
+
+#: 
+msgid "Title, left"
+msgstr "ശീർഷകം, ഇടത്"
+
+#: 
+msgid "Top margin"
+msgstr "മുകളിലെ മാർജിൻ"
+
+#: 
+msgid "Total, left"
+msgstr "ആകെ, ഇടത്"
+
+#: 
+msgid "Total, top"
+msgstr "ആകെ, മുകളിൽ"
+
+#: 
+msgid "mm"
+msgstr "mm"
+
