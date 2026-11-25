@@ -4746,7 +4746,7 @@ msgstr "Si esto no funciona, copie y pegue el siguiente enlace en su navegador"
 
 #: 
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
-msgstr "Recibió este correo electrónico porque recibimos una solicitud de actividad en su cuenta. Si no solicitó esto, puede eliminar este correo electrónico de forma segura."
+msgstr "Recibió este correo porque recibimos una solicitud de actividad en su cuenta. Si no solicitó esto, puede eliminar este correo de forma segura."
 
 #: 
 msgid "To stop receiving these emails, you can email"
@@ -4978,7 +4978,7 @@ msgstr "Aplicando actualización del sistema..."
 
 #: 
 msgid "Back to Login"
-msgstr "Volver al inicio de sesión"
+msgstr "Volver al ingreso"
 
 #: 
 msgid "Complete"
@@ -5002,7 +5002,7 @@ msgstr "Nombre del archivo"
 
 #: 
 msgid "Go to Login"
-msgstr "Ir a iniciar sesión"
+msgstr "Ir a ingresar"
 
 #: 
 msgid "Login Name is required"
@@ -5082,7 +5082,7 @@ msgstr "Cheques"
 
 #: 
 msgid "Click a bar to filter payments"
-msgstr "Haga clic en una barra para filtrar los pagos"
+msgstr "Hacé clic en una barra para filtrar los pagos"
 
 #: 
 msgid "Delete Selected"
@@ -5667,7 +5667,7 @@ msgstr "¿Qué son los archivos huérfanos?"
 
 #: 
 msgid "You will be logged out and redirected to the login page."
-msgstr "Se cerrará su sesión y será redirigido a la página de inicio de sesión."
+msgstr "Se cerrará su sesión y será redirigido a la página de ingreso."
 
 #: 
 msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
@@ -5711,7 +5711,7 @@ msgstr "Operaciones avanzadas"
 
 #: 
 msgid "An unexpected error occurred. Please contact your administrator."
-msgstr "Ocurrió un error inesperado. Póngase en contacto con su administrador."
+msgstr "Ocurrió un error inesperado. Contactá a tu administrador."
 
 #: 
 msgid "Apr"
@@ -5967,7 +5967,7 @@ msgstr "Restaurar"
 
 #: 
 msgid "Restore from a backup file. Erases existing data."
-msgstr "Restaurar desde un archivo de copia de seguridad. Borra los datos existentes."
+msgstr "Restaurar desde un archivo de respaldo. Borra los datos existentes."
 
 #: 
 msgid "Save and Add New Family"
@@ -6163,7 +6163,7 @@ msgstr "Voluntario"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
-msgstr "Ocurrió un error. Póngase en contacto con su administrador del sistema."
+msgstr "Ocurrió un error. Contactá a tu administrador del sistema."
 
 #: 
 msgid "Backup failed"
@@ -6271,7 +6271,7 @@ msgstr "Persona(s) eliminadas del carrito"
 
 #: 
 msgid "Reset Failed Logins"
-msgstr "Reiniciar inicios de sesión fallidos"
+msgstr "Reiniciar ingresos fallidos"
 
 #: 
 msgid "Reset Password via Email"
@@ -7320,7 +7320,7 @@ msgstr "El valor está establecido: dejá en blanco para mantener el actual"
 
 #: 
 msgid "Verify & Sign In"
-msgstr "Verificar e iniciar sesión"
+msgstr "Verificar e ingresar"
 
 #: 
 msgid "Vonage API Key"
@@ -7902,7 +7902,7 @@ msgstr "Un fiel de la parroquia. Almacena nombre, fecha de nacimiento, correo pe
 
 #: 
 msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
-msgstr "Se ha producido un error inesperado al procesar su solicitud. Póngase en contacto con su administrador."
+msgstr "Se ha producido un error inesperado al procesar su solicitud. Contactá a tu administrador."
 
 #: 
 msgid "An unexpected error occurred."
@@ -8042,7 +8042,7 @@ msgstr "Vaciar el carrito"
 
 #: 
 msgid "Click to upload photo"
-msgstr "Haga clic para subir una foto"
+msgstr "Hacé clic para subir una foto"
 
 #: 
 msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
@@ -8254,7 +8254,7 @@ msgstr "Introduzca un término de búsqueda"
 
 #: 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
-msgstr "Introduzca el código de 6 dígitos de su aplicación de autenticación para completar el inicio de sesión"
+msgstr "Introduzca el código de 6 dígitos de su aplicación de autenticación para completar el ingreso"
 
 #: 
 msgid "Enter your current password"
@@ -8494,7 +8494,7 @@ msgstr "Nivel de registro"
 
 #: 
 msgid "Login to your account"
-msgstr "Iniciar sesión en su cuenta"
+msgstr "Ingresar a su cuenta"
 
 #: 
 msgid "MailChimp, backups, and more"
@@ -8578,7 +8578,7 @@ msgstr "Mover al grupo"
 
 #: 
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
-msgstr "¿Migra desde una instalación existente de ChurchCRM o ChurchInfo? Suba su archivo de copia de seguridad y restauraremos sus datos automáticamente."
+msgstr "¿Migra desde una instalación existente de ChurchCRM o ChurchInfo? Suba su archivo de respaldo y restauraremos sus datos automáticamente."
 
 #: 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -8724,7 +8724,7 @@ msgstr "Por favor, compruebe que todo es correcto antes de enviar."
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
-msgstr "Por favor, solicite un nuevo enlace para restablecer la contraseña o contacte con el soporte si el problema persiste."
+msgstr "Por favor, solicite un nuevo enlace para restablecer la contraseña o contactá al soporte si el problema persiste."
 
 #: 
 msgid "Pledges"
@@ -8804,7 +8804,7 @@ msgstr "Restaurar copia de seguridad"
 
 #: 
 msgid "Restore your church database from a backup file"
-msgstr "Restaurar la base de datos parroquial desde un archivo de copia de seguridad"
+msgstr "Restaurar la base de datos parroquial desde un archivo de respaldo"
 
 #: 
 msgid "Return to Dashboard"
@@ -8864,7 +8864,7 @@ msgstr "Seleccionar campos a incluir"
 
 #: 
 msgid "Select a backup file and click Restore Database."
-msgstr "Seleccione un archivo de copia de seguridad y haga clic en Restaurar base de datos."
+msgstr "Seleccione un archivo de respaldo y haga clic en Restaurar base de datos."
 
 #: 
 msgid "Select your options above and click a backup button."
@@ -8916,7 +8916,7 @@ msgstr "Mostrando fieles de: %s"
 
 #: 
 msgid "Sign in"
-msgstr "Iniciar sesión"
+msgstr "Ingresar"
 
 #: 
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
@@ -9140,7 +9140,7 @@ msgstr "Puede crear o eliminar grupos de catequesis."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
-msgstr "Se han cargado los datos de su copia de seguridad. Será redirigido para iniciar sesión con sus credenciales anteriores."
+msgstr "Se han cargado los datos de su copia de seguridad. Será redirigido para ingresar con sus credenciales anteriores."
 
 #: 
 msgid "Your backup will be automatically upgraded to the latest database schema if needed."
@@ -9148,7 +9148,7 @@ msgstr "Su copia de seguridad se actualizará automáticamente al esquema de bas
 
 #: 
 msgid "Your previous session timed out. Please login again."
-msgstr "Su sesión anterior ha caducado. Por favor, inicie sesión de nuevo."
+msgstr "Su sesión anterior ha caducado. Por favor, ingrese de nuevo."
 
 #: 
 msgid "complete"
@@ -9656,9 +9656,9 @@ msgid "1. Go to Google Analytics (analytics.google.com)\n"
 "3. Go to Admin → Data Streams → Web\n"
 "4. Copy the Measurement ID (starts with G-)"
 msgstr "1. Ve a Google Analytics (analytics.google.com)\n"
-"2. Crea una propiedad o selecciona una existente\n"
+"2. Creá una propiedad o seleccioná una existente\n"
 "3. Ve a Admin → Flujos de Datos → Web\n"
-"4. Copia el ID de Medición (comienza con G-)"
+"4. Copiá el ID de Medición (comienza con G-)"
 
 #. plugin:openlp:section:2:content
 #: 
@@ -10031,10 +10031,10 @@ msgid "If messages are sent but not received:\n"
 "3. Some carriers may block messages from unknown numbers\n"
 "4. Check if the destination country has SMS restrictions"
 msgstr "Si los mensajes se envían pero no se reciben:\n"
-"1. Comprueba el Panel de Vonage > SMS > Registros para ver el estado de entrega\n"
-"2. Verifica que el número del destinatario sea correcto y pueda recibir SMS\n"
+"1. Comprobá el Panel de Vonage > SMS > Registros para ver el estado de entrega\n"
+"2. Verificá que el número del destinatario sea correcto y pueda recibir SMS\n"
 "3. Algunos operadores pueden bloquear mensajes de números desconocidos\n"
-"4. Comprueba si el país de destino tiene restricciones de SMS"
+"4. Comprobá si el país de destino tiene restricciones de SMS"
 
 #. plugin:vonage:section:4:content
 #: 
@@ -10282,7 +10282,7 @@ msgid "To use MailChimp Integration, you need a MailChimp account and an API key
 "4. Enter the API key in the plugin settings"
 msgstr "Para usar la Integración de MailChimp, necesita una cuenta de MailChimp y una clave API.\n"
 "\n"
-"1. Inicie sesión en su cuenta de MailChimp\n"
+"1. Ingrese a su cuenta de MailChimp\n"
 "2. Vaya a Cuenta > Extras > API Keys\n"
 "3. Cree una nueva clave API o copie una existente\n"
 "4. Ingrese la clave API en la configuración del complemento"
@@ -10544,7 +10544,7 @@ msgstr "Cambiar foto"
 
 #: 
 msgid "Changes will not take effect until next logon."
-msgstr "Los cambios no tendrán efecto hasta el próximo inicio de sesión."
+msgstr "Los cambios no tendrán efecto hasta el próximo ingreso."
 
 #: 
 msgid "Customize the look and feel of the application"
@@ -13182,7 +13182,7 @@ msgstr "Por favor, introduzca una URL válida"
 
 #: 
 msgid "Please enter a valid email address"
-msgstr "Por favor, introduce una dirección de correo electrónico válida"
+msgstr "Por favor, introducí una dirección de correo electrónico válida"
 
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
@@ -13374,7 +13374,7 @@ msgstr "Mostrar más opciones"
 
 #: 
 msgid "Sign In"
-msgstr "Iniciar sesión"
+msgstr "Ingresar"
 
 #: 
 msgid "Skip & Check Out"
@@ -14074,7 +14074,7 @@ msgstr "Formato de versión inválido"
 
 #: 
 msgid "Last login"
-msgstr "Último inicio de sesión"
+msgstr "Último ingreso"
 
 #: 
 msgid "Loading release information..."
@@ -14142,11 +14142,11 @@ msgstr "Esta cuenta está bloqueada debido a demasiados intentos fallidos de ini
 
 #: 
 msgid "This user must set a new password the next time they sign in."
-msgstr "Este usuario debe establecer una nueva contraseña la próxima vez que inicie sesión."
+msgstr "Este usuario debe establecer una nueva contraseña la próxima vez que ingrese."
 
 #: 
 msgid "User must change their password at next login"
-msgstr "El usuario debe cambiar su contraseña en el próximo inicio de sesión"
+msgstr "El usuario debe cambiar su contraseña en el próximo ingreso"
 
 #: 
 msgid "User must have Email permission"
@@ -16806,7 +16806,7 @@ msgstr "Ejecutar informe"
 
 #: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
-msgstr "Se muestra en la barra lateral, en la página de inicio de sesión y en correos. Cargar un logo reemplaza la marca de ChurchCRM en todos los lugares donde aparece."
+msgstr "Se muestra en la barra lateral, en la página de ingreso y en correos. Cargar un logo reemplaza la marca de ChurchCRM en todos los lugares donde aparece."
 
 #: 
 msgid "Single Pages"
@@ -16938,7 +16938,7 @@ msgstr "Autorregistro"
 
 #: 
 msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
-msgstr "Mostrar opción \"Contraseña Perdida\" en la pantalla de inicio de sesión (permite reinicio automático del usuario)"
+msgstr "Mostrar opción \"Contraseña Perdida\" en la pantalla de ingreso (permite reinicio automático del usuario)"
 
 #: 
 msgid "Show/hide the Sunday School module in sidebar"
@@ -16946,15 +16946,15 @@ msgstr "Mostrar/ocultar el módulo de Escuela Dominical en la barra lateral"
 
 #: 
 msgid "Can't deactivate the only administrator who can sign in"
-msgstr "No se puede desactivar el único administrador que puede iniciar sesión"
+msgstr "No se puede desactivar el único administrador que puede ingresar"
 
 #: 
 msgid "Can't mark the only administrator who can sign in as deceased"
-msgstr "No se puede marcar al único administrador que puede iniciar sesión como fallecido"
+msgstr "No se puede marcar al único administrador que puede ingresar como fallecido"
 
 #: 
 msgid "Deceased — cannot sign in"
-msgstr "Fallecido — no puede iniciar sesión"
+msgstr "Fallecido — no puede ingresar"
 
 #: 
 msgid "Enter a second address before marking it as the mailing address"
@@ -16962,7 +16962,7 @@ msgstr "Ingrese una segunda dirección antes de marcarla como dirección de corr
 
 #: 
 msgid "Inactive — cannot sign in"
-msgstr "Inactivo — no puede iniciar sesión"
+msgstr "Inactivo — no puede ingresar"
 
 #: 
 msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
@@ -17002,7 +17002,7 @@ msgstr "Esta es la dirección de correo"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
-msgstr "Solo un administrador puede eliminar a una persona que tiene un inicio de sesión."
+msgstr "Solo un administrador puede eliminar a una persona que tiene un ingreso."
 
 #: 
 msgid "The last administrator cannot be deleted."
@@ -17914,7 +17914,7 @@ msgstr "Cancelar esta asignación"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
-msgstr "Cambie la contraseña con la que inicia sesión, o añada un segundo paso para que no baste solo con la contraseña."
+msgstr "Cambie la contraseña con la que ingresa, o añada un segundo paso para que no baste solo con la contraseña."
 
 #: 
 msgid "Change your password"
@@ -18648,7 +18648,7 @@ msgstr "Si ya no puedes hacerlo, por favor rechaza en tu horario de voluntarios 
 
 #: 
 msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
-msgstr "Si compartiste esta dirección por error, obtén una nueva. La dirección anterior deja de funcionar inmediatamente."
+msgstr "Si compartiste esta dirección por error, obtené una nueva. La dirección anterior deja de funcionar inmediatamente."
 
 #: 
 msgid "In the last 15 minutes"
@@ -18708,7 +18708,7 @@ msgstr "Último visto en el portal"
 
 #: 
 msgid "Last sign-in"
-msgstr "Último inicio de sesión"
+msgstr "Último ingreso"
 
 #: 
 msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
@@ -18884,7 +18884,7 @@ msgstr "Necesita llenar"
 
 #: 
 msgid "Never signed in"
-msgstr "Nunca ha iniciado sesión"
+msgstr "Nunca ingresó"
 
 #: 
 msgid "New account"
@@ -18960,7 +18960,7 @@ msgstr "Ya no es necesario"
 
 #: 
 msgid "No member has signed in to the Member Portal yet."
-msgstr "Ningún miembro ha iniciado sesión en el Portal de Miembros aún."
+msgstr "Ningún miembro ingresó al Portal de Miembros aún."
 
 #: 
 msgid "No ministry"
@@ -19886,7 +19886,7 @@ msgstr "Apuntarse"
 
 #: 
 msgid "Sign-in and security"
-msgstr "Inicio de sesión y seguridad"
+msgstr "Ingreso y seguridad"
 
 #: 
 msgid "Signed in"
@@ -20090,7 +20090,7 @@ msgstr "Equipos, puestos y las personas que los ocupan"
 
 #: 
 msgid "Ten most recent sign-ins"
-msgstr "Los diez inicios de sesión más recientes"
+msgstr "Los diez ingresos más recientes"
 
 #: 
 msgid "Thank you"
@@ -20326,7 +20326,7 @@ msgstr "No se pudo añadir la selección"
 
 #: 
 msgid "The church has not emailed you yet."
-msgstr "La parroquia aún no le ha enviado ningún correo electrónico."
+msgstr "La parroquia aún no le ha enviado ningún correo."
 
 #: 
 msgid "The church office has been notified. Please try again later."
@@ -21074,7 +21074,7 @@ msgstr "A la espera de que su coordinador lo confirme."
 
 #: 
 msgid "We will email you when something needs filling."
-msgstr "Le enviaremos un correo electrónico cuando haya algo que cubrir."
+msgstr "Le enviaremos un correo cuando haya algo que cubrir."
 
 #: 
 msgid "We would love more help on Sunday mornings — no experience needed."
@@ -21126,7 +21126,7 @@ msgstr "De dónde provienen las fechas"
 
 #: 
 msgid "Where we reach you"
-msgstr "Dónde podemos contactar con usted"
+msgstr "Dónde podemos contactarlo"
 
 #: 
 msgid "Which events"
@@ -21166,7 +21166,7 @@ msgstr "Ya está ayudando ese día como {{what}}. ¿Quiere apuntarse también a 
 
 #: 
 msgid "You are not allowed to change this. Please contact the church office."
-msgstr "No tiene permiso para cambiar esto. Póngase en contacto con la oficina parroquial."
+msgstr "No tiene permiso para cambiar esto. Contactá a la oficina parroquial."
 
 #: 
 msgid "You are not currently associated with a family"
@@ -21226,7 +21226,7 @@ msgstr "Volverá a estar en la lista para este."
 
 #: 
 msgid "Your account is not linked to a person record. Please contact the church office."
-msgstr "Su cuenta no está vinculada a ninguna ficha de persona. Póngase en contacto con la oficina parroquial."
+msgstr "Su cuenta no está vinculada a ninguna ficha de persona. Contactá a la oficina parroquial."
 
 #: 
 msgid "Your calendar subscription was saved."
@@ -21262,7 +21262,7 @@ msgstr "No se pudo cargar su horario."
 
 #: 
 msgid "Your session has expired. Please sign in again."
-msgstr "Su sesión ha caducado. Inicie sesión de nuevo."
+msgstr "Su sesión ha caducado. Ingrese de nuevo."
 
 #: 
 msgid "Your substitute request was approved"
@@ -21638,7 +21638,7 @@ msgstr "Por favor ingrese un número de cheque"
 
 #: 
 msgid "Register & Check In"
-msgstr "Registrarse e iniciar sesión"
+msgstr "Registrarse e ingresar"
 
 #: 
 msgid "Register Walk-In Guest"
@@ -21666,7 +21666,7 @@ msgstr "Este evento no tiene hora de inicio y fin"
 
 #: 
 msgid "{{name}} registered and checked in!"
-msgstr "¡{{name}} se registró e inició sesión!"
+msgstr "¡{{name}} se registró e ingresó!"
 
 #: 
 msgid "Search by family name"
@@ -22928,7 +22928,7 @@ msgstr "5.º"
 
 #: 
 msgid "Can't remove administrator access from the only administrator who can sign in"
-msgstr "No se puede quitar el acceso de administrador del único administrador que puede iniciar sesión"
+msgstr "No se puede quitar el acceso de administrador del único administrador que puede ingresar"
 
 #: 
 msgid "Choose the week of the month, from 1st to 5th"
@@ -25830,7 +25830,7 @@ msgstr "Segundo año fiscal"
 
 #: 
 msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
-msgstr "Inicie sesión en el portal de miembros con esta dirección de correo para revisar la información de su familia. Desde la página Mi familia, confirme que todo es correcto o actualice sus datos."
+msgstr "Ingrese al portal de miembros con esta dirección de correo para revisar la información de su familia. Desde la página Mi familia, confirme que todo es correcto o actualice sus datos."
 
 #: 
 msgid "This family is inactive, so it is not sent verification emails."
@@ -26004,7 +26004,7 @@ msgstr "Los administradores tienen todos los permisos mientras la función corre
 
 #: 
 msgid "Also disable sign-in, so they can't use the Member Portal"
-msgstr "Desactivar también el inicio de sesión para impedir el acceso al portal de miembros"
+msgstr "Desactivar también el ingreso para impedir el acceso al portal de miembros"
 
 #: 
 msgid "Birthday today"
@@ -26164,7 +26164,7 @@ msgstr "Buscar familias que prometieron donar en un año fiscal, pero no en otro
 
 #: 
 msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
-msgstr "Carpeta donde se almacena la firma privada de los comprobantes de donaciones. Deje este campo vacío para usar la carpeta privada integrada Images/TaxSignatures, que bloquea el acceso web directo. Para usar otra carpeta, ingrese una ruta absoluta fuera de la carpeta de ChurchCRM en la que el servidor web pueda escribir."
+msgstr "Carpeta donde se almacena la firma privada de los comprobantes de donaciones. Dejá este campo vacío para usar la carpeta privada integrada Images/TaxSignatures, que bloquea el acceso web directo. Para usar otra carpeta, ingresá una ruta absoluta fuera de la carpeta de ChurchCRM en la que el servidor web pueda escribir."
 
 #: 
 msgid "Fundraisers are turned off for this church"
@@ -26212,7 +26212,7 @@ msgstr "Almacenamiento de firma fiscal no válido."
 
 #: 
 msgid "Last successful login"
-msgstr "Último inicio de sesión correcto"
+msgstr "Último ingreso correcto"
 
 #: 
 msgid "Lockout state"
@@ -26304,7 +26304,7 @@ msgstr "Depósito abierto"
 
 #: 
 msgid "Password change required at next login"
-msgstr "Se requiere cambiar la contraseña en el próximo inicio de sesión"
+msgstr "Se requiere cambiar la contraseña en el próximo ingreso"
 
 #: 
 msgid "Password strength"
@@ -26380,7 +26380,7 @@ msgstr "Clave de configuración"
 
 #: 
 msgid "Sign-in status"
-msgstr "Estado del inicio de sesión"
+msgstr "Estado del ingreso"
 
 #: 
 msgid "Signature storage folder"
@@ -26464,7 +26464,7 @@ msgstr "Estos números de sobre no se guardan hasta que seleccione «Actualizar 
 
 #: 
 msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
-msgstr "Esta persona no puede iniciar sesión como personal ni en el portal de miembros. Se eliminan sus sesiones, dispositivos y claves de acceso."
+msgstr "Esta persona no puede ingresar como personal ni en el portal de miembros. Se eliminan sus sesiones, dispositivos y claves de acceso."
 
 #: 
 msgid "This password looks strong."
@@ -27006,7 +27006,7 @@ msgstr "Máximo 2 MiB y 2000 × 1000 píxeles. Elija una imagen nueva para reemp
 
 #: 
 msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
-msgstr "El inicio de sesión de miembros está desactivado, por lo que nadie de la familia %s puede iniciar sesión en el portal de miembros. Un administrador puede activarlo en Admin → Portal de miembros."
+msgstr "El ingreso de miembros está desactivado, por lo que nadie de la familia %s puede ingresar al portal de miembros. Un administrador puede activarlo en Admin → Portal de miembros."
 
 #: 
 msgid "Memo"
@@ -27042,7 +27042,7 @@ msgstr "No — donantes diferentes; gestionar fuera de esta función"
 
 #: 
 msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
-msgstr "Nadie de la familia %s puede iniciar sesión en el portal de miembros según la regla actual de inicio de sesión."
+msgstr "Nadie de la familia %s puede ingresar al portal de miembros según la regla actual de ingreso."
 
 #: 
 msgid "None / Aucun"
@@ -27294,7 +27294,7 @@ msgstr "Esta opción da formato a un recibo canadiense, pero no mantiene un regi
 
 #: 
 msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
-msgstr "Esta familia autorregistrada está esperando aprobación. Al aprobarla, se enviará por correo electrónico a cada miembro que pueda iniciar sesión en el portal de miembros una invitación para revisar la información de la familia."
+msgstr "Esta familia autorregistrada está esperando aprobación. Al aprobarla, se enviará por correo electrónico a cada miembro que pueda ingresar al portal de miembros una invitación para revisar la información de la familia."
 
 #: 
 msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
@@ -27386,11 +27386,11 @@ msgstr "Pregunta en Discord"
 
 #: 
 msgid "Change your password right after you sign in."
-msgstr "Cambia tu contraseña justo después de iniciar sesión."
+msgstr "Cambia tu contraseña justo después de ingresar."
 
 #: 
 msgid "Choose a different way to sign in"
-msgstr "Elige otra forma de iniciar sesión"
+msgstr "Elige otra forma de ingresar"
 
 #: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
@@ -27654,7 +27654,7 @@ msgstr "Empieza por %1$s o %2$s y termina en %3$s."
 
 #: 
 msgid "The dashboard you open on after signing in"
-msgstr "El escritorio que se abre al iniciar sesión"
+msgstr "El escritorio que se abre al ingresar"
 
 #: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
@@ -27768,7 +27768,7 @@ msgstr "Los administradores verán esta advertencia en todas las páginas hasta 
 
 #: 
 msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
-msgstr "A partir de ahora, los administradores iniciarán sesión en el escritorio estándar. El Escritorio de configuración ya no se abrirá al iniciar sesión."
+msgstr "A partir de ahora, los administradores ingresarán en el escritorio estándar. El Escritorio de configuración ya no se abrirá al ingresar."
 
 #: 
 msgid "Database security risk"
@@ -27780,7 +27780,7 @@ msgstr "El modo de demostración también activa las estadísticas de uso anóni
 
 #: 
 msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
-msgstr "Configuración de email guardada. El inicio de sesión de miembros ahora está activado, así que los miembros pueden iniciar sesión en el Portal de miembros con su email."
+msgstr "Configuración de email guardada. El ingreso de miembros ahora está activado, así que los miembros pueden ingresar al Portal de miembros con su email."
 
 #: 
 msgid "Enter your church information, add your people, and invite your team."
@@ -27808,7 +27808,7 @@ msgstr "Finalizar configuración"
 
 #: 
 msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
-msgstr "Durante esta cantidad de días después de la instalación, los administradores inician sesión en el Escritorio de configuración. Establézcalo en 0 para desactivarlo."
+msgstr "Durante esta cantidad de días después de la instalación, los administradores ingresan en el Escritorio de configuración. Establézcalo en 0 para desactivarlo."
 
 #: 
 msgid "Group Assignment"
@@ -27868,7 +27868,7 @@ msgstr "Iniciar la configuración"
 
 #: 
 msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
-msgstr "Los datos de demostración se han eliminado. Inicie sesión con la cuenta de administrador predeterminada para configurar su iglesia."
+msgstr "Los datos de demostración se han eliminado. Ingrese con la cuenta de administrador predeterminada para configurar su iglesia."
 
 #: 
 msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
@@ -27884,7 +27884,7 @@ msgstr "Esto borra los datos de demostración y todos los ajustes, y devuelve Ch
 
 #: 
 msgid "You will sign in again with the default administrator account and enter your church information."
-msgstr "Volverá a iniciar sesión con la cuenta de administrador predeterminada e ingresará la información de su iglesia."
+msgstr "Volverá a ingresar con la cuenta de administrador predeterminada e ingresará la información de su iglesia."
 
 #: 
 msgid "You're exploring ChurchCRM with demo data."
@@ -27908,7 +27908,7 @@ msgstr "Un registro diario mientras está en uso, las versiones del software y d
 
 #: 
 msgid "Accounts & Sign-in"
-msgstr "Cuentas e inicio de sesión"
+msgstr "Cuentas e ingreso"
 
 #: 
 msgid "Also send which pages are used."
@@ -27972,11 +27972,11 @@ msgstr "Todas las páginas de configuración en un solo lugar, y los ajustes que
 
 #: 
 msgid "Failed Sign-ins Before Lockout"
-msgstr "Inicios de sesión fallidos antes del bloqueo"
+msgstr "Ingresos fallidos antes del bloqueo"
 
 #: 
 msgid "Failed Sign-ins per IP Address"
-msgstr "Inicios de sesión fallidos por dirección IP"
+msgstr "Ingresos fallidos por dirección IP"
 
 #: 
 msgid "Family roles treated as children in the directory."
@@ -27984,11 +27984,11 @@ msgstr "Roles familiares tratados como hijos en el directorio."
 
 #: 
 msgid "Family roles treated as head of household in the directory and member sign-in."
-msgstr "Roles familiares tratados como cabeza de familia en el directorio y en el inicio de sesión de miembros."
+msgstr "Roles familiares tratados como cabeza de familia en el directorio y en el ingreso de miembros."
 
 #: 
 msgid "Family roles treated as spouse in the directory and member sign-in."
-msgstr "Roles familiares tratados como cónyuge en el directorio y en el inicio de sesión de miembros."
+msgstr "Roles familiares tratados como cónyuge en el directorio y en el ingreso de miembros."
 
 #: 
 msgid "Finance Settings"
@@ -28012,7 +28012,7 @@ msgstr "Ocultar el campo Fecha de matrimonio en el Editor de familia."
 
 #: 
 msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
-msgstr "Tiempo que una cuenta bloqueada permanece bloqueada. Los inicios de sesión fallidos desde una dirección IP se cuentan durante el mismo período."
+msgstr "Tiempo que una cuenta bloqueada permanece bloqueada. Los ingresos fallidos desde una dirección IP se cuentan durante el mismo período."
 
 #: 
 msgid "How many characters a new password must differ from the old one. 0 turns this off."
@@ -28036,7 +28036,7 @@ msgstr "Período de bloqueo (minutos)"
 
 #: 
 msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
-msgstr "Bloquea una cuenta después de esta cantidad de inicios de sesión fallidos consecutivos. Se desbloquea tras el período de bloqueo o cuando un administrador la restablece. 0 desactiva el bloqueo."
+msgstr "Bloquea una cuenta después de esta cantidad de ingresos fallidos consecutivos. Se desbloquea tras el período de bloqueo o cuando un administrador la restablece. 0 desactiva el bloqueo."
 
 #: 
 msgid "Manage Member Portal"
@@ -28044,11 +28044,11 @@ msgstr "Gestionar el Portal de miembros"
 
 #: 
 msgid "Members can sign in with their email."
-msgstr "Los miembros pueden iniciar sesión con su correo electrónico."
+msgstr "Los miembros pueden ingresar con su correo electrónico."
 
 #: 
 msgid "Members cannot sign in yet."
-msgstr "Los miembros aún no pueden iniciar sesión."
+msgstr "Los miembros aún no pueden ingresar."
 
 #: 
 msgid "Minimum Characters Changed"
@@ -28120,7 +28120,7 @@ msgstr "Impreso cuando una familia no tiene promesas registradas."
 
 #: 
 msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
-msgstr "Rechaza el inicio de sesión desde una dirección IP durante el período de bloqueo después de esta cantidad de inicios de sesión fallidos o restablecimientos de contraseña. 0 lo desactiva, por ejemplo cuando todos se conectan a través de un único proxy."
+msgstr "Rechaza el ingreso desde una dirección IP durante el período de bloqueo después de esta cantidad de ingresos fallidos o restablecimientos de contraseña. 0 lo desactiva, por ejemplo cuando todos se conectan a través de un único proxy."
 
 #: 
 msgid "Require Two-Factor Authentication"
@@ -28144,7 +28144,7 @@ msgstr "Compartir qué páginas se utilizan"
 
 #: 
 msgid "Sign-in & Security"
-msgstr "Inicio de sesión y seguridad"
+msgstr "Ingreso y seguridad"
 
 #: 
 msgid "Signature Storage"
