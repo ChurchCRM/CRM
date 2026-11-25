@@ -19,7 +19,11 @@ function UpdateRoles() {
 $(document).ready(function (e, confirmed) {
   $("#addToGroup").click(function () {
     window.CRM.groups.addGroup(function (data) {
-      location.href = window.CRM.root + "/groups/cart/add?groupeCreationID=" + data.Id;
+      $("#GroupID").append(new Option(data.Name, data.Id, true, true));
+      $("#GroupRole")
+        .empty()
+        .append(new Option("", "", true, true));
+      document.forms.CartToGroup.submit();
     });
   });
 });

@@ -8,12 +8,23 @@ use ChurchCRM\Utils\InputUtils;
  *
  * Expects $timeline (array of timeline item arrays) set by the caller.
  * Renders filter chips + timeline event list; no outer card wrapper.
+ *
+ * Optional $timelineScope: 'all' (default), 'notes' (notes only, no chips) or
+ * 'activity' (everything except notes, no Notes chip).
  */
+
+$timelineScope = $timelineScope ?? 'all';
+if ($timelineScope !== 'all') {
+    $timeline = array_values(array_filter(
+        $timeline,
+        static fn (array $item): bool => (($item['category'] ?? 'notes') === 'notes') === ($timelineScope === 'notes')
+    ));
+}
 
 if (empty($timeline)) { ?>
     <div class="alert alert-info">
         <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
-        <span><?= gettext('No timeline events yet.') ?></span>
+        <span><?= $timelineScope === 'notes' ? gettext('No notes yet.') : gettext('No timeline events yet.') ?></span>
     </div>
 <?php } else {
     $timelineCounts = ['notes' => 0, 'events' => 0, 'email' => 0, 'account' => 0, 'system' => 0];
@@ -24,12 +35,15 @@ if (empty($timeline)) { ?>
         }
     }
     ?>
+    <?php if ($timelineScope !== 'notes') : ?>
     <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
         <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show') ?>:</span>
+        <?php if ($timelineScope === 'all') : ?>
         <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
             <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
             <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
         </button>
+        <?php endif; ?>
         <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
             <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
             <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
@@ -59,6 +73,7 @@ if (empty($timeline)) { ?>
         </a>
         <?php endif; ?>
     </div>
+    <?php endif; ?>
     <div class="timeline-empty-notice alert alert-info" style="display:none;">
         <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
     </div>
@@ -123,8 +138,8 @@ if (empty($timeline)) { ?>
                                     </button>
                                     <div class="ms-auto d-flex gap-1">
                                         <?php if ($hasActions) { ?>
-                                            <?php if (!empty($item["editLink"])) { ?>
-                                                <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-secondary py-0 px-2"><i class="fa-solid fa-pen fa-sm me-1"></i><?= gettext('Edit') ?></a>
+                                            <?php if (!empty($item["editLink"]) && $noteId !== null) { ?>
+                                                <button type="button" class="btn btn-sm btn-ghost-secondary py-0 px-2" data-open-note-id="<?= (int) $noteId ?>"><i class="fa-solid fa-pen fa-sm me-1"></i><?= gettext('Edit') ?></button>
                                             <?php } ?>
                                             <?php if ($noteId !== null) { ?>
                                                 <button type="button" class="btn btn-sm btn-ghost-danger py-0 px-2" data-bs-toggle="modal" data-bs-target="#deleteNoteModal" data-note-id="<?= htmlspecialchars($noteId) ?>">

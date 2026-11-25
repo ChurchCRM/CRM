@@ -269,20 +269,20 @@ describe("Member Portal sign-in by email", () => {
         signInWithLink();
         cy.request("/api/portal/me").its("body.profile.id").should("eq", member.personId);
         cy.request({ url: `/api/person/${member.personId}`, failOnStatusCode: false }).its("status").should("eq", 401);
-        cy.request({ url: "/v2/dashboard", followRedirect: false }).then((response) => {
+        cy.request({ url: "/people/dashboard", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
         });
         cy.request({ url: "/people/properties/p", followRedirect: false }).its("status").should("eq", 302);
     });
 
-    it("signs out a portal-only session completely and lands on /portal/login", () => {
+    it("signs out a portal-only session completely and lands on the sign-in chooser", () => {
         lastAuditId().then((startId) => {
             signInWithLink();
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountSignOut").click();
-            cy.location("pathname").should("match", /\/portal\/login$/);
-            cy.get("#portalSignInEmail").should("be.visible");
+            cy.location("pathname").should("match", /\/session\/$/);
+            cy.get("#sessionDoorMember").should("be.visible");
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
@@ -307,7 +307,7 @@ describe("Member Portal sign-in by email", () => {
             "Member sign-in isn't available yet. Please contact the church office.",
         );
         cy.get("#portalSignInEmail").should("not.exist");
-        cy.get("#portalStaffSignIn").should("have.attr", "href").and("match", /\/admin\/$/);
+        cy.get("#portalStaffSignIn").should("have.attr", "href").and("match", /\/session\/begin$/);
         cy.get("#portal-account-toggle").should("not.exist");
         setConfig("bMemberSignIn", "1");
     });

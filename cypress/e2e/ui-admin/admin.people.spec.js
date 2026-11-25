@@ -135,9 +135,4 @@ describe("Admin People", () => {
         cy.visit("PersonCustomFieldsEditor.php");
         cy.contains("Custom Person Fields Editor");
     });
-
-    it("Volunteer Opportunity Editor", () => {
-        cy.visit("VolunteerOpportunityEditor.php");
-        cy.contains("Volunteer Opportunity Editor");
-    });
 });

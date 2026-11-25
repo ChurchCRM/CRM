@@ -41,8 +41,9 @@ class PhotoBookService
                     ->filterByRoleId($role->getOptionId())
                     ->joinWithPerson()
                     ->usePersonQuery()
+                        ->filterByActive()
                         ->orderByLastName()
-                        ->orderByFirstName()
+                    ->orderByFirstName()
                     ->endUse()
                     ->find();
 

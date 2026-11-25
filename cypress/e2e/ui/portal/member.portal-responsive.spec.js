@@ -40,7 +40,6 @@ const MEMBER_PERSON_ID = 100;
 const MINISTRY_NAME = `Responsive9869 ${Cypress._.random(0, 1e6)}`;
 let teamId = 0;
 let ministryId = 0;
-let originalVersion = "v1";
 
 /** The form factors the guidelines name, tightest first. */
 const FORM_FACTORS = [
@@ -188,19 +187,8 @@ before(() => {
 describe("Member Portal — responsive (#9869)", () => {
     before(() => {
         // Everything the pages need to render their real content rather than an
-        // empty state, done once and before any login. The rollout flag is stashed
-        // and put back in `after`: leaving it on `v2` retires the V1 opportunity
-        // editor, and the admin specs that open it then fail for no visible reason.
-        cy.request({
-            url: "/admin/api/system/config/sVolunteerVersion",
-            headers: { "x-api-key": adminKey() },
-            failOnStatusCode: false,
-        }).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-
+        // empty state, done once and before any login.
         setConfig("bPortalShowVolunteer", "1");
-        setConfig("sVolunteerVersion", "v2");
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
 
         cy.request({
@@ -256,7 +244,6 @@ describe("Member Portal — responsive (#9869)", () => {
                 headers: { "x-api-key": adminKey() },
                 failOnStatusCode: false,
             });
-            setConfig("sVolunteerVersion", originalVersion);
         });
     });
 

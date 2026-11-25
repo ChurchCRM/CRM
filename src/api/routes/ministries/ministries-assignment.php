@@ -24,7 +24,6 @@ use ChurchCRM\Volunteer\Middleware\VolunteerOccurrenceMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerSwapMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -48,14 +47,8 @@ use Slim\Routing\RouteCollectorProxy;
  * `VolunteerAuthorizationService` a third time because it is also reachable from the
  * member surface, where no entity middleware ran (§4.5, three layers).
  *
- * **This group opens its own `$app->group('/ministries', …)` and chains
- * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
- * `RouteCollectorProxy` it is chained on; nothing propagates from the group in
- * `ministries-status.php` or `ministries-schedule.php`, and an ungated group would be
- * reachable in every rollout state (§3.3).
- *
  * Middleware order is LIFO — the last `->add()` runs first. On every route:
- * rollout gate → role gate → entity load + per-record scope check → sanitizer → handler.
+ * role gate → entity load + per-record scope check → sanitizer → handler.
  *
  * No business logic lives in this file. Every rule — I1–I8, the transition table, the
  * one-transaction swap approval, every notification enqueue — is in
@@ -115,7 +108,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // half-succeeded and reported a list of reasons was a worse answer than the
     // single-person Assign flow beside it. The Cart still feeds V2 — it fills the
     // ministry's volunteer POOL (`/ministries/{id}/pool/from-cart`, ministries-setup.php).
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
 
 // ─── Wire shapes ─────────────────────────────────────────────────────────────
 //

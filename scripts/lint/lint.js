@@ -54,6 +54,7 @@ const checks = {
     'mysql upgrade syntax': script('lint/validate-mysql-upgrade-syntax.js'),
     'mysql index length': script('lint/validate-mysql-index-length.js'),
     'upgrade handoff': script('lint/validate-upgrade-handoff.js'),
+    'upgrade script version': script('lint/validate-upgrade-script-version.js'),
     'upgrade locale list': script('lint/validate-upgrade-locales.js'),
     'supported databases': script('ci/sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],

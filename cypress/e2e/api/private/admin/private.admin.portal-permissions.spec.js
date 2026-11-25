@@ -216,8 +216,6 @@ describe("Admin → Member Portal permissions and given grants", () => {
     });
 
     it("stops counting a given permission once its team is deleted", () => {
-        cy.getSystemConfig("sVolunteerVersion").as("volunteerVersion");
-        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sVolunteerVersion", { value: "v2" }, 200);
         cy.makePrivateAdminAPICall("POST", "/api/ministries/ministries", { name: `${REASON} ministry`, description: "" }, 201).then(({ body }) => {
             const ministryId = body.ministry.id;
             cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministryId}/teams`, { name: `${REASON} team` }, 201).then(({ body: created }) => {
@@ -232,7 +230,6 @@ describe("Admin → Member Portal permissions and given grants", () => {
             cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministryId}`, { active: false }, 200);
             cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${ministryId}`, null, [200, 204]);
         });
-        cy.get("@volunteerVersion").then((version) => cy.restoreSystemConfig("sVolunteerVersion", version));
     });
 
     it("refuses a permission the person already holds from a rule or the everyone rule", () => {

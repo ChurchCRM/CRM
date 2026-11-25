@@ -11,6 +11,16 @@
  *
  * Nominatim's usage policy allows one request per second; the second call
  * waits so the two lookups never run back to back.
+ *
+ * The control test asserts the fixed coordinates of the Empire State
+ * Building. The variant tests assert equivalence with the control result
+ * instead: normalisation turns their queries into the control's query, so
+ * Nominatim should return the same place — while which nearby candidate
+ * Nominatim ranks first drifts with its index (master run 44322974230
+ * failed the fixed bound on the unit-designator variant). A coarse fixed
+ * bound stays as a backstop; the #9847 regression was ~40 miles out.
+ * Stubbing Nominatim is not an option here: the regression only manifests
+ * against the real index.
  */
 describe("API Private Geocoder — street name normalisation (#9847)", { retries: 2 }, () => {
     const EMPIRE_STATE = { lat: 40.7484, lon: -73.9857 };
@@ -23,6 +33,20 @@ describe("API Private Geocoder — street name normalisation (#9847)", { retries
         expect(Math.abs(body.Longitude - EMPIRE_STATE.lon)).to.be.lessThan(TOLERANCE);
     };
 
+    // Set by the control test; the variants must land where it landed.
+    let controlResult = null;
+    const COARSE_TOLERANCE = 0.05; // ~5 km — the regression was ~65 km out
+
+    const expectSameAsControl = (body) => {
+        expect(body).to.have.property("Latitude").that.is.a("number");
+        expect(body).to.have.property("Longitude").that.is.a("number");
+        expect(Math.abs(body.Latitude - EMPIRE_STATE.lat)).to.be.lessThan(COARSE_TOLERANCE);
+        expect(Math.abs(body.Longitude - EMPIRE_STATE.lon)).to.be.lessThan(COARSE_TOLERANCE);
+        expect(controlResult, "control result captured").to.not.equal(null);
+        expect(Math.abs(body.Latitude - controlResult.lat)).to.be.lessThan(TOLERANCE);
+        expect(Math.abs(body.Longitude - controlResult.lon)).to.be.lessThan(TOLERANCE);
+    };
+
     it("resolves the address written with its ordinal suffix (control)", () => {
         cy.makePrivateAdminAPICall(
             "POST",
@@ -30,7 +54,10 @@ describe("API Private Geocoder — street name normalisation (#9847)", { retries
             { address: "350 5th Avenue, New York, NY 10118" },
             200,
             30000,
-        ).then((response) => expectNear(response.body));
+        ).then((response) => {
+            expectNear(response.body);
+            controlResult = { lat: response.body.Latitude, lon: response.body.Longitude };
+        });
     });
 
     it("resolves the same address written without the ordinal suffix", () => {
@@ -41,7 +68,7 @@ describe("API Private Geocoder — street name normalisation (#9847)", { retries
             { address: "350 5 Avenue, New York, NY 10118" },
             200,
             30000,
-        ).then((response) => expectNear(response.body));
+        ).then((response) => expectSameAsControl(response.body));
     });
 
     it("ignores a trailing unit designator", () => {
@@ -52,7 +79,7 @@ describe("API Private Geocoder — street name normalisation (#9847)", { retries
             { address: "350 5 Avenue Suite 3300, New York, NY 10118" },
             200,
             30000,
-        ).then((response) => expectNear(response.body));
+        ).then((response) => expectSameAsControl(response.body));
     });
 
     it("normalises a street line that starts with the street number (no house number)", () => {
@@ -80,6 +107,6 @@ describe("API Private Geocoder — street name normalisation (#9847)", { retries
             { address: "350 5 Avenue Apt 215 Suite 3300, New York, NY 10118" },
             200,
             30000,
-        ).then((response) => expectNear(response.body));
+        ).then((response) => expectSameAsControl(response.body));
     });
 });

@@ -21,7 +21,7 @@ class NoteService
      *
      * @return array<int, array{subject: string, url: string, excerpt: string, author: string, date: string, private: bool}>
      */
-    public function latestNotesFor(User $viewer, int $limit): array
+    public function latestNotesFor(User $viewer, int $limit, ?int $days = null): array
     {
         if (!$viewer->canReadNotes()) {
             return [];
@@ -34,6 +34,9 @@ class NoteService
             ->orderByDateEntered(Criteria::DESC)
             ->orderById(Criteria::DESC)
             ->limit($limit);
+        if ($days !== null) {
+            $query->filterByDateEntered(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')]);
+        }
         if (!$viewer->canReadPrivateNotes()) {
             $query
                 ->condition('public', NoteTableMap::COL_NTE_PRIVATE . ' = ?', 0)

@@ -355,3 +355,35 @@ describe("Admin - Language settings save round-trip (#9656)", () => {
         cy.get("#sLanguage", { timeout: 8000 }).should("have.attr", "data-selected-locale", "es_ES");
     });
 });
+
+describe("Admin - Localization server locale warning", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+        cy.visit("/admin/system/localization");
+        cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
+    });
+
+    const previewMissingLocale = (messagesFallback) => {
+        cy.window().then((win) => {
+            win.CRM.localeSystemCheckEnabled = true;
+            win.CRM.localeMessagesFallback = messagesFallback;
+            win.CRM.localeStats.fr_FR.systemAvailable = false;
+        });
+        cy.get("#sLanguage").then(($el) => {
+            $el[0].tomselect.setValue("fr_FR");
+        });
+    };
+
+    it("warns about formatting when an English fallback locale is installed", () => {
+        previewMissingLocale(true);
+        cy.get("#locale-preview-support .text-warning").should("contain", "dates and numbers");
+    });
+
+    it("warns the interface will show in English without an English fallback locale", () => {
+        previewMissingLocale(false);
+        cy.get("#locale-preview-support .text-danger").should("contain", "the interface will show in English");
+        cy.get("#locale-preview-support a")
+            .should("have.attr", "href")
+            .and("include", "docs.churchcrm.io/administration/server-locale");
+    });
+});

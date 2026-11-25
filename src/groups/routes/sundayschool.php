@@ -14,7 +14,6 @@ use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\ClassAttendanceService;
 use ChurchCRM\Service\ClassListService;
-use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
@@ -107,21 +106,18 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
 
     // Sunday School Dashboard
     $group->get('/dashboard', function (Request $request, Response $response) {
-        $dashboardService    = new DashboardService();
         $sundaySchoolService = new SundaySchoolService();
 
         try {
-            $groupStats         = $dashboardService->getGroupStats();
             $kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
             $classStats         = $sundaySchoolService->getClassStats();
         } catch (\Throwable $e) {
             LoggerUtils::getAppLogger()->error('SundaySchool Dashboard: Error loading data', ['exception' => $e->getMessage()]);
-            $groupStats         = ['sundaySchoolClasses' => 0];
             $kidsWithoutClasses = [];
             $classStats         = [];
         }
 
-        $classes  = $groupStats['sundaySchoolClasses'];
+        $classes  = count($classStats);
         $teachers = 0;
         $kids     = 0;
 

@@ -35,7 +35,7 @@ describe("Sign-in email on the person page and the person editor (§9)", () => {
     it("lets an administrator confirm an email moved from the family email", () => {
         markEmailUnconfirmed(MATHEW.id, "family_email");
         cy.freshAdminFormLogin();
-        cy.visit(`/people/view/${MATHEW.id}`);
+        cy.visit(`/people/view/${MATHEW.id}#portal-signin-card`);
         cy.get("#portal-signin-unconfirmed").should("contain", MATHEW.email).and("contain", "Moved from the family email");
 
         cy.get("#portal-signin-confirm-email").click();
@@ -49,7 +49,7 @@ describe("Sign-in email on the person page and the person editor (§9)", () => {
     it("shows staff with Edit Records why they can't confirm a replacement address", () => {
         markReplacedAfterSignIn(LENA.id, "old.address@example.com");
         signInAs(JUDITH);
-        cy.visit(`/people/view/${LENA.id}`);
+        cy.visit(`/people/view/${LENA.id}#portal-signin-card`);
         cy.get("#portal-signin-unconfirmed").should("contain", LENA.email).and("contain", "Changed by staff after the person signed in");
         cy.get("#portal-signin-confirm-email").should("not.exist");
         cy.get("#portal-signin-confirm-refusal").should("contain", "Only an administrator can confirm");

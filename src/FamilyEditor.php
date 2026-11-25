@@ -6,11 +6,13 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
+use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
@@ -46,7 +48,7 @@ if ($iFamilyID > 0) {
 
     $family = FamilyQuery::create()->findOneById($iFamilyID);
     if ($family === null) {
-        RedirectUtils::redirect('v2/dashboard');
+        DashboardLandingService::redirect();
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::securityRedirect('AddRecords');
@@ -935,7 +937,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                             if ($aRoles[$iCount] === $aFamilyRoleIDs[$c]) {
                                                                 echo ' selected';
                                                             }
-                                                            echo '>' . $aFamilyRoleNames[$c] . '</option>';
+                                                            echo '>' . InputUtils::escapeHTML($aFamilyRoleNames[$c]) . '</option>';
                                                         } ?>
                                                     </select>
                                                 </td>
@@ -982,18 +984,12 @@ require_once __DIR__ . '/Include/Header.php';
                                                         <option value="0" <?= $aClassification[$iCount] === 0 ? 'selected' : '' ?>><?= gettext('Unassigned') ?></option>
                                                         <option value="" disabled>-----------------------</option>
                                                         <?php
-                                                        //Get Classifications for the drop-down
-                                                        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-                                                        $rsClassifications = RunQuery($sSQL);
-
-                                                        //Display Classifications
-                                                        while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                                                            extract($aRow);
-                                                            echo "<option value=\"$lst_OptionID\"";
-                                                            if ($aClassification[$iCount] == $lst_OptionID) {
+                                                        foreach (Classification::getAll() as $classification) {
+                                                            echo '<option value="' . $classification->getOptionId() . '"';
+                                                            if ((int) $aClassification[$iCount] === $classification->getOptionId()) {
                                                                 echo ' selected';
                                                             }
-                                                            echo '>' . InputUtils::escapeHTML($lst_OptionName) . '</option>';
+                                                            echo '>' . InputUtils::escapeHTML($classification->getOptionName()) . '</option>';
                                                         }
                                                         ?>
                                                     </select>

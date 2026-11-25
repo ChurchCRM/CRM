@@ -93,45 +93,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div id="calendar-event-app"></div>
 
-<!-- System Settings Panel Component -->
-<?php if ($isAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<?php
-$calendarSettingsPanelConfig = [
-    'container'           => '#calendarSettings',
-    'title'               => gettext('Calendar Settings'),
-    'icon'                => 'fa-solid fa-sliders',
-    'headerClass'         => 'bg-info-lt',
-    'showAllSettingsLink' => false,
-    'settings'            => [
-        [
-            'name'    => 'bEnabledEvents',
-            'type'    => 'boolean',
-            'label'   => gettext('Enable Events Menu'),
-            'tooltip' => gettext('Show or hide the Events menu in the main navigation.'),
-        ],
-        [
-            'name'    => 'bEnableExternalCalendarAPI',
-            'type'    => 'boolean',
-            'label'   => gettext('Enable External Calendar API'),
-            'tooltip' => gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.'),
-        ],
-        [
-            'name'    => 'sCalendarEmbedOrigins',
-            'type'    => 'text',
-            'label'   => gettext('Calendar Embed Origins'),
-            'tooltip' => gettext('Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any site. Restrict for tighter security, e.g. "https://mysite.org".'),
-        ],
-    ],
-];
-?>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-window.CRM = window.CRM || {};
-window.CRM.calendarSettingsPanel = <?= InputUtils::jsonEncodeForScript($calendarSettingsPanelConfig) ?>;
-</script>
-<?php endif; ?>
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
 window.CRM.calendarJSArgs = <?= InputUtils::jsonEncodeForScript($calendarJSArgs) ?>;

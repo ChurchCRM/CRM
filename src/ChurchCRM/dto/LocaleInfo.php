@@ -6,6 +6,8 @@ use ChurchCRM\model\ChurchCRM\UserSetting;
 
 class LocaleInfo
 {
+    private const MESSAGES_FALLBACK = ['en_US.UTF-8', 'en_US.utf8', 'en_GB.UTF-8', 'en_GB.utf8'];
+
     public $systemLocale;
     public $locale;
     public $language;
@@ -65,10 +67,25 @@ class LocaleInfo
         putenv('LANGUAGE=' . $this->locale);
         $set = setlocale(LC_ALL, $this->locale, $this->locale . '.UTF-8', $this->locale . '.utf8');
         if ($set === false) {
-            setlocale(LC_MESSAGES, 'en_US.UTF-8', 'en_US.utf8', 'en_GB.UTF-8', 'en_GB.utf8');
+            setlocale(LC_MESSAGES, ...self::MESSAGES_FALLBACK);
         }
 
         return $set;
+    }
+
+    /**
+     * Whether a language without its own OS locale can still show its translations through the
+     * LC_MESSAGES fallback in activate().
+     */
+    public static function hasMessagesFallback(): bool
+    {
+        $previous = setlocale(LC_MESSAGES, '0');
+        $fallback = setlocale(LC_MESSAGES, ...self::MESSAGES_FALLBACK);
+        if ($previous !== false) {
+            setlocale(LC_MESSAGES, $previous);
+        }
+
+        return $fallback !== false;
     }
 
     /**

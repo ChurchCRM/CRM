@@ -4,9 +4,11 @@ namespace ChurchCRM\Backup;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\SQLUtils;
+use ChurchCRM\Utils\SystemIdentity;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ImageSupportUtils;
 use Exception;
@@ -135,11 +137,12 @@ class RestoreJob extends JobBase
         
         // Create a unique extraction directory for full backup restore
         $extractDir = sys_get_temp_dir() . '/churchcrm_restore_' . bin2hex(random_bytes(8));
-        mkdir($extractDir, 0750, true);
+        mkdir($extractDir, 0700, true);
         
         LoggerUtils::getAppLogger()->debug('Extracting ' . $this->RestoreFile . ' to ' . $extractDir);
         $phar->extractTo($extractDir);
         LoggerUtils::getAppLogger()->debug('Finished extraction');
+        $this->rejectSymlinksAndDotDot($extractDir);
 
         try {
             $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
@@ -166,6 +169,30 @@ class RestoreJob extends JobBase
             LoggerUtils::getAppLogger()->debug('Cleaned up extraction directory');
         }
         LoggerUtils::getAppLogger()->debug('Finished restoring full archive');
+    }
+
+
+    /**
+     * Reject symlinks and path traversal (..) entries after extraction.
+     * Aborts the restore if any are found.
+     */
+    private function rejectSymlinksAndDotDot(string $dir): void
+    {
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::SELF_FIRST
+        );
+        foreach ($iterator as $file) {
+            $pathname = $file->getPathname();
+            if (is_link($pathname)) {
+                LoggerUtils::getAppLogger()->warning('Restore: rejecting symlink in archive: ' . $pathname);
+                throw new Exception('Restore aborted: archive contains a symlink which is not allowed.');
+            }
+            if (str_contains($file->getFilename(), '..') || str_contains($pathname, '/../') || str_contains($pathname, '/..')) {
+                LoggerUtils::getAppLogger()->warning('Restore: rejecting path traversal entry: ' . $pathname);
+                throw new Exception('Restore aborted: archive contains a path traversal entry which is not allowed.');
+            }
+        }
     }
 
     /**
@@ -218,7 +245,7 @@ class RestoreJob extends JobBase
     private function restoreGZSQL(): void
     {
         LoggerUtils::getAppLogger()->debug('Decompressing gzipped SQL file: ' . $this->RestoreFile);
-        $sqlFile = sys_get_temp_dir() . '/ChurchCRM-Database.sql';
+        $sqlFile = sys_get_temp_dir() . '/churchcrm_restore_sql_' . bin2hex(random_bytes(8)) . '.sql';
         file_put_contents($sqlFile, gzdecode(file_get_contents($this->RestoreFile)));
         $this->restoreSQLBackup($sqlFile);
         unlink($sqlFile);
@@ -229,7 +256,15 @@ class RestoreJob extends JobBase
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         LoggerUtils::getAppLogger()->debug('Starting post-restore cleanup');
-        
+
+        // SystemConfig still caches the replaced database, so read the restored ID from the table. A dump
+        // without one (ChurchInfo 1.x, an old schema) keeps this server's identity.
+        try {
+            SystemIdentity::adopt((string) ConfigQuery::create()->findOneByName('sSystemID')?->getValue());
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->debug('Restored database has no system ID: ' . $e->getMessage());
+        }
+
         // Disable the external backup plugin if it was enabled
         try {
             SystemConfig::setValue('plugin.external-backup.enabled', '0');

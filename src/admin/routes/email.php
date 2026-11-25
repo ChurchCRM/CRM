@@ -7,8 +7,11 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\EmailLogService;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\FlashService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -113,6 +116,7 @@ $app->post('/email', function (Request $request, Response $response): Response {
         );
     }
 
+    $emailWorkedBefore = SystemConfig::isEmailEnabled();
     foreach (['bEnabledEmail', 'bPHPMailerAutoTLS', 'bSMTPAuth'] as $name) {
         SystemConfig::setValue($name, $settings[$name] ? '1' : '0');
     }
@@ -125,7 +129,9 @@ $app->post('/email', function (Request $request, Response $response): Response {
         SystemConfig::setValue('sSMTPPass', $password);
     }
 
-    FlashService::set(gettext('Email settings saved successfully'));
+    FlashService::set(InstallSetupService::turnOnMemberSignInWhenEmailStarts($emailWorkedBefore)
+        ? gettext('Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email.')
+        : gettext('Email settings saved successfully'));
 
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/admin/email')
@@ -166,9 +172,10 @@ $app->get('/email/log', function (Request $request, Response $response): Respons
     return $renderer->render($response, 'email-log.php', $pageArgs);
 });
 
-// Email Debug page — sends a test message to the church's own email
-// address so an admin can confirm the SMTP settings work end-to-end.
-$app->get('/email/debug', function (Request $request, Response $response): Response {
+// Email Debug page — GET shows the SMTP settings; POST sends a test message to
+// the church's own email address so an admin can confirm SMTP works end-to-end.
+function renderAdminEmailDebug(Response $response, bool $send): Response
+{
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $configError = null;
@@ -209,7 +216,7 @@ $app->get('/email/debug', function (Request $request, Response $response): Respo
         'to'        => null,
     ];
 
-    if ($configError === null) {
+    if ($send && $configError === null) {
         $email = new TestEmail([$churchEmail]);
         $sendResult['attempted'] = true;
         $sendResult['from']     = $churchEmail;
@@ -247,7 +254,12 @@ $app->get('/email/debug', function (Request $request, Response $response): Respo
         'smtpSettings' => $smtpSettings,
         'sendResult'   => $sendResult,
         'emailDashboardUrl' => SystemURLs::getRootPath() . '/admin/email',
+        'csrfToken'    => CSRFUtils::generateToken(),
     ];
 
     return $renderer->render($response, 'email-debug.php', $pageArgs);
-});
+}
+
+$app->get('/email/debug', fn (Request $request, Response $response): Response => renderAdminEmailDebug($response, false));
+$app->post('/email/debug', fn (Request $request, Response $response): Response => renderAdminEmailDebug($response, true))
+    ->add(new CSRFMiddleware());

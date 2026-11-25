@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Scope;
 use Closure;
 
 /**
@@ -9,8 +10,7 @@ use Closure;
  *
  * `owner` is `core` or a plugin id. `featureSwitch` is a boolean SystemConfig
  * key: while it is off the capability is denied for everyone. Core may add an
- * `available` check for a switch that is not a single setting, such as the
- * Volunteer v2 rollout state.
+ * `available` check for a switch that is not a single setting.
  */
 final class PortalCapability
 {
@@ -24,7 +24,7 @@ final class PortalCapability
         public readonly string $label,
         public readonly string $description,
         public readonly string $owner,
-        public readonly string $scopeType = PortalScope::NONE,
+        public readonly string $scopeType = Scope::NONE,
         public readonly ?string $featureSwitch = null,
         private readonly ?Closure $available = null,
     ) {
@@ -37,7 +37,7 @@ final class PortalCapability
 
     public function isScoped(): bool
     {
-        return $this->scopeType !== PortalScope::NONE;
+        return $this->scopeType !== Scope::NONE;
     }
 
     /** @internal PortalAuthorizationService */

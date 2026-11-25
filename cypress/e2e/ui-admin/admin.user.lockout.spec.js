@@ -38,12 +38,13 @@ describe("Admin: temporary account lockout (#10197)", () => {
         unlock();
     });
 
-    it("the Users page offers the lockout settings", () => {
+    it("Settings offers the lockout settings, linked from the Users page", () => {
         cy.setupAdminSession();
         cy.visit("/admin/system/users");
-        cy.get("#userSettingsPanel")
-            .should("contain.text", "Lockout period in minutes")
-            .and("contain.text", "Maximum number of failed logins from one IP address");
+        cy.get(".page-header a[href$='/admin/settings#securitySettings']").click();
+        cy.get("#securitySettings")
+            .should("contain.text", "Lockout Period (minutes)")
+            .and("contain.text", "Failed Sign-ins per IP Address");
     });
 
     it("a locked account shows when it unlocks, and Reset Failed Logins unlocks it", () => {

@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerNotification;
 use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\Service\SystemService;
@@ -20,15 +19,8 @@ use Slim\Views\PhpRenderer;
 // this page is administrators-only without any check of its own.
 //
 // The one home of the Volunteer Management settings, following the Member Portal
-// precedent. They are deliberately in no System Settings category. The page only
-// exists while V2 is on; the V1 / V2 / Both switch is on Feature Toggles.
+// precedent. They are deliberately in no System Settings category.
 $ministrySettingsHandler = function (Request $request, Response $response): Response {
-    // The rollout state (V1 / V2 / Both) is switched on the Feature Toggles page; these
-    // settings only mean something once V2 is on.
-    if (!User::isVolunteerV2Enabled()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/feature-toggles')->withStatus(302);
-    }
-
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     // Delivery health, installation-wide (this is an administrator's page, so

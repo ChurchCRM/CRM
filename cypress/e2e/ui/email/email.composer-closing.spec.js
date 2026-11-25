@@ -9,7 +9,7 @@ describe("Composer closing", () => {
     const signatureWith = (value) => {
         cy.makePrivateAdminAPICall("POST", "admin/api/system/config/sConfirmSincerely", { value }, 200);
         cy.setupAdminSession();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         return cy.window().its("CRM.comm.emailSignature");
     };
 

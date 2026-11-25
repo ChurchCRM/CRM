@@ -12,7 +12,6 @@
  * session. Ministries come from the real create API, so each has its own calendar.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = 99;
@@ -29,7 +28,6 @@ const PREFIX = "VMEVT24";
 const URL = "/api/ministries";
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let originalVersion = "v1";
 const ministry = {};
 const ownCalendar = {};
 const firstTeam = {};
@@ -55,10 +53,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function localDate(offsetDays) {
@@ -209,10 +203,6 @@ after(() => {
 
 describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule; and the Calendar tab's list with staffing and headcount (D26)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         for (const key of ["A", "B", "C"]) {
@@ -257,7 +247,6 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── one event ──────────────────────────────────────────────────────────────
@@ -408,13 +397,6 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
             });
             rowsTitled("Self Service").should("have.length", 0);
             dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_SELFEDIT]);
-        });
-
-        it("is closed while the rollout is v1", () => {
-            setVersion("v1");
-            createEvents(oneEvent("Rollout V1"), ADMIN_KEY, 403);
-            setVersion("v2");
-            rowsTitled("Rollout V1").should("have.length", 0);
         });
 
         it("needs a login", () => {

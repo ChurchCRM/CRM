@@ -6,6 +6,7 @@ use ChurchCRM\Backup\BackupType;
 use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\LoggerUtils;
@@ -135,7 +136,7 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
         }
     });
 
-    $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
+    $group->post('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
         try {
             BackupDownloader::downloadBackup($filename);
@@ -144,7 +145,7 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
             return SlimUtils::renderErrorJSON($response, gettext('Download failed'), [], $status, $e, $request);
         }
-    });
+    })->add(new CSRFMiddleware());
 
     $group->delete('/reset', function (Request $request, Response $response): Response {
         $connection = Propel::getConnection();

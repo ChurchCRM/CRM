@@ -14,7 +14,7 @@ describe("Calendar menu counters", () => {
 
         it("fills the Calendar menu badges", () => {
             interceptPageInit();
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.wait("@counters");
             cy.get("#BirthdateNumber").should("exist");
             cy.get("#AnniversaryNumber").should("exist");
@@ -38,7 +38,7 @@ describe("Calendar menu counters", () => {
 
         it("loads pages without requesting the counters", () => {
             interceptPageInit();
-            cy.visit("/v2/dashboard");
+            cy.visit("/people/dashboard");
             cy.wait("@timerJobs");
             cy.get("#BirthdateNumber").should("not.exist");
             cy.get("@counters.all").should("have.length", 0);

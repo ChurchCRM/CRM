@@ -264,24 +264,6 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
 <!-- /.box -->
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/users.js') ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-    // Initialize the user settings panel
-    window.CRM.settingsPanel.init({
-        container: '#userSettingsPanel',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Quick Settings')) ?>,
-        icon: 'fa-solid fa-user-gear',
-        headerClass: 'bg-primary',
-        settings: <?= InputUtils::jsonEncodeForScript($userSettingsConfig) ?>,
-        onSave: function() {
-            // Reload page after settings save to reflect changes
-            setTimeout(function() {
-                window.location.reload();
-            }, 1500);
-        }
-    });
-});
-</script>
 </div>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

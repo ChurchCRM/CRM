@@ -37,7 +37,6 @@
  * (cypress-testing.md: an `after` hook does not run when the runner crashes).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const SCOPES_URL = "/api/ministries/scopes";
 const ME_PERMISSIONS_URL = "/api/ministries/me/permissions";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -64,10 +63,6 @@ function dbOk(sql, params = []) {
         }
         return result.rows;
     });
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /**
@@ -177,8 +172,7 @@ before(() => {
 
 describe("Volunteer v2 scoped authorization (#9706)", () => {
     before(() => {
-        // Cleanup-before: an earlier crashed run may have left rows or v2 set.
-        setVersion("v2");
+        // Cleanup-before: an earlier crashed run may have left rows.
         cleanupFixtures();
         restoreManagerUser();
         createMinistry("Ministry A").then((id) => {
@@ -199,13 +193,12 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
         cleanupFixtures();
         restoreManagerUser();
         cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
-        setVersion("v1");
     });
 
     // ---------------------------------------------------------------------
-    // §4.8 — authentication and the rollout gate
+    // §4.8 — authentication
     // ---------------------------------------------------------------------
-    describe("Authentication and rollout gates", () => {
+    describe("Authentication", () => {
         it("returns 401 for an unauthenticated call to the scope API", () => {
             cy.request({
                 method: "GET",
@@ -216,18 +209,6 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.status).to.eq(401);
                 expect(resp.body).to.have.property("code", 401);
             });
-        });
-
-        it("returns 403 for every /api/ministries call while the rollout state is v1", () => {
-            setVersion("v1");
-            // Admin is used deliberately here: this 403 comes from
-            // VolunteerV2EnabledMiddleware, which an administrator does NOT bypass,
-            // so it is not the forbidden "strict 403 on an admin-keyed role gate".
-            cy.makePrivateAdminAPICall("GET", SCOPES_URL, null, 403).then((resp) => {
-                expect(resp.body).to.have.property("success", false);
-            });
-            cy.makePrivateAdminAPICall("GET", ME_PERMISSIONS_URL, null, 403);
-            setVersion("v2");
         });
     });
 
@@ -1045,13 +1026,6 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             memberPageRequest(DASHBOARD_URL).then((resp) => {
                 expect(resp.status).to.be.oneOf([302, 403]);
             });
-        });
-
-        it("loses the member path when the rollout state leaves v2", () => {
-            setVersion("v1");
-            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", ME_PERMISSIONS_URL, null, 401);
-            setVersion("v2");
-            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", ME_PERMISSIONS_URL, null, 200);
         });
     });
 });

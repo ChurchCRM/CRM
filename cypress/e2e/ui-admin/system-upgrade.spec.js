@@ -50,12 +50,6 @@ describe("System Upgrade Page", () => {
         cy.get("#refreshFromGitHub").should("be.visible");
     });
 
-    it("should not warn about the database on a supported server", () => {
-        cy.visit("/admin/system/upgrade");
-
-        cy.contains("This upgrade cannot run on your database.").should("not.exist");
-    });
-
     it("should display the upgrade wizard with all steps", () => {
         cy.visit("/admin/system/upgrade");
 
@@ -132,7 +126,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: {
                     ...downloadFixture,
@@ -180,7 +174,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 400,
                 body: { message: "Rate limit exceeded" },
             }).as("downloadFail");
@@ -329,7 +323,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: downloadFixture,
             }).as("downloadRelease");
@@ -376,7 +370,7 @@ describe("System Upgrade Page", () => {
                 body: previewFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release", {
                 statusCode: 200,
                 body: downloadFixture,
             }).as("downloadRelease");
@@ -626,7 +620,7 @@ describe("System Upgrade Page", () => {
                 body: multiReleaseFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
                 statusCode: 200,
                 body: {
                     fileName: "ChurchCRM-5.0.2.zip",

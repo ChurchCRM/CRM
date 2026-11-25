@@ -90,6 +90,7 @@ class PledgeReminderService
             $query->filterById($criteria['familyIds'], Criteria::IN);
         }
 
+        $activePeople = static fn (): PersonQuery => PersonQuery::create()->filterByActive();
         $classIds = $criteria['classificationIds'];
         $allClassIds = [];
         foreach (Classification::getAll() as $option) {
@@ -98,13 +99,15 @@ class PledgeReminderService
         // Every class selected behaves as no class filter.
         if ($classIds !== [] && array_diff($allClassIds, $classIds) !== []) {
             // A family qualifies when it has a member in a selected class and no member outside them.
-            $inSelected = self::familyIdsWithClass(PersonQuery::create()->filterByClsId($classIds, Criteria::IN));
-            $outside = self::familyIdsWithClass(PersonQuery::create()->filterByClsId($classIds, Criteria::NOT_IN));
+            $inSelected = self::familyIdsWithClass($activePeople()->filterByClsId($classIds, Criteria::IN));
+            $outside = self::familyIdsWithClass($activePeople()->filterByClsId($classIds, Criteria::NOT_IN));
             $eligible = array_values(array_diff($inSelected, $outside));
             if ($eligible === []) {
                 return [];
             }
             $query->filterById($eligible, Criteria::IN);
+        } elseif ((new ClassificationService())->getInactiveIds() !== []) {
+            $query->filterById(self::familyIdsWithClass($activePeople()), Criteria::IN);
         }
 
         return iterator_to_array($query->find(), false);

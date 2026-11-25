@@ -41,7 +41,7 @@
  * @OA\Tag(name="Map", description="Geographic map data")
  * @OA\Tag(name="Kiosk", description="Kiosk device management (Admin role required)")
  * @OA\Tag(name="Plugins", description="Plugin management (Admin role required)")
- * @OA\Tag(name="Volunteer", description="Volunteer Management v2 (requires the sVolunteerVersion rollout state to include v2)")
+ * @OA\Tag(name="Volunteer", description="Volunteer Management: ministries, teams, positions and schedules")
  */
 
 /**

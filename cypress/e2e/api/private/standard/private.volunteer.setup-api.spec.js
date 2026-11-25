@@ -28,8 +28,7 @@
  *
  * §6.6 rule honoured throughout: never assert a strict 403 on an admin-keyed
  * call to a role-gated route — an administrator bypasses every role middleware
- * except AdminRoleAuthMiddleware. The 403s asserted with the admin key below
- * come from VolunteerV2EnabledMiddleware, which nobody bypasses.
+ * except AdminRoleAuthMiddleware.
  *
  * Two error shapes are still in play (design §4.9): BaseAuthRoleMiddleware
  * denials are `{"error","code"}`; everything from SlimUtils::renderErrorJSON()
@@ -42,7 +41,6 @@
  * an `after` hook does not run when the runner crashes mid-spec).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const SCOPES_URL = "/api/ministries/scopes";
 
@@ -69,10 +67,6 @@ function dbOk(sql, params = []) {
         }
         return result.rows;
     });
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today; the root hooks put the browser in the church's time zone. */
@@ -171,13 +165,11 @@ after(() => {
 
 describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
     });
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // -----------------------------------------------------------------
@@ -194,24 +186,6 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 expect(resp.status).to.eq(401);
                 expect(resp.body).to.have.property("code", 401);
             });
-        });
-
-        it("returns 403 for every setup route while the rollout state is v1", () => {
-            setVersion("v1");
-            // Admin deliberately: this 403 is VolunteerV2EnabledMiddleware, which an
-            // administrator does NOT bypass, so it is not a role-gate 403 on admin.
-            cy.makePrivateAdminAPICall("GET", MINISTRIES_URL, null, 403).then(
-                (resp) => {
-                    expect(resp.body).to.have.property("success", false);
-                },
-            );
-            cy.makePrivateAdminAPICall(
-                "POST",
-                MINISTRIES_URL,
-                { name: `${PREFIX} Blocked` },
-                403,
-            );
-            setVersion("v2");
         });
 
         it("denies a user with no manager flag and no scope", () => {

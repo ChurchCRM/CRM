@@ -44,11 +44,10 @@ class DirectoryReportPreferences
     private const MAX_VALUE = 50;
 
     /**
-     * Hard cap on numbered chunks per list. A few dozen covers any real ID list
-     * and bounds loops when the base count key is attacker-controlled via the
-     * user-settings API (maintainer review on #11571).
+     * Hard cap on numbered chunks per list. Allows large directory option lists
+     * while bounding storage writes and loops when the base count is attacker-controlled.
      */
-    public const MAX_CHUNKS = 40;
+    public const MAX_CHUNKS = 200;
 
     /**
      * Primary setting names (list bases hold a chunk count; data lives in {base}.N).
@@ -95,6 +94,12 @@ class DirectoryReportPreferences
             $classifications = [];
         }
 
+        $this->assertIdListWithinLimit($classifications);
+        $this->assertIdListWithinLimit($options['groups'] ?? []);
+        $this->assertIdListWithinLimit($options['customFieldOrders'] ?? []);
+        $this->assertIdListWithinLimit($options['headRoles'] ?? []);
+        $this->assertIdListWithinLimit($options['spouseRoles'] ?? []);
+
         $this->saveIdList($user, self::CLASSIFICATIONS, $classifications);
         $this->saveIdList($user, self::GROUPS, $options['groups'] ?? []);
         $user->setSetting(self::EXCLUDE_INACTIVE, !empty($options['excludeInactive']) ? '1' : '0');
@@ -130,7 +135,7 @@ class DirectoryReportPreferences
      *     show: array<string, bool>,
      *     customFieldOrders: list<int>
      * }|null
-     */
+    */
     public function load(User $user): ?array
     {
         if (!$this->hasSaved($user)) {
@@ -149,14 +154,26 @@ class DirectoryReportPreferences
     }
 
     /**
+     * Ensure an ID list fits within the supported number of chunks.
+     *
+     * @param array<int|string> $ids
+     */
+    private function assertIdListWithinLimit(array $ids): void
+    {
+        if (count($this->chunkIds($ids)) > self::MAX_CHUNKS) {
+            throw new \LengthException(
+                'Directory report option list exceeds the maximum supported size.'
+            );
+        }
+    }
+
+    /**
      * @param array<int|string> $ids
      */
     private function saveIdList(User $user, string $base, array $ids): void
     {
         $chunks = $this->chunkIds($ids);
-        if (count($chunks) > self::MAX_CHUNKS) {
-            $chunks = array_slice($chunks, 0, self::MAX_CHUNKS);
-        }
+
         $count = max(count($chunks), 1);
         $previousCount = $this->boundedChunkCount($user->getSettingValue($base));
 

@@ -679,8 +679,8 @@ if ($bCanManageGroups) {
     window.CRM.currentGroup = <?= (int) $iGroupId ?>;
     window.CRM.currentGroupName = <?= InputUtils::jsonEncodeForScript($iGroupName) ?>;
 </script>
-<script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/sundayschool-actions.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/groups-sundayschool-class-view.min.js') ?>"></script>
 <?php if ($canEmail): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>

@@ -8,6 +8,8 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -16,6 +18,21 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class FamilyPledgeReportService
 {
+    /**
+     * Turn untrusted form values into the criteria the report form and report() take.
+     *
+     * @return array{fiscalYearId: int, classificationIds: int[], familyIds: int[], fundIds: int[]}
+     */
+    public static function criteriaFromInput(array $input): array
+    {
+        return [
+            'fiscalYearId' => InputUtils::filterInt(self::scalar($input['FYID'] ?? '')) ?: FiscalYearUtils::getCurrentFiscalYearId(),
+            'classificationIds' => self::intList($input['classList'] ?? []),
+            'familyIds' => self::intList($input['family'] ?? []),
+            'fundIds' => self::intList($input['funds'] ?? []),
+        ];
+    }
+
     /**
      * @param int[] $classificationIds families must have a member in one of these and none in the other classifications
      * @param int[] $familyIds         only these families
@@ -100,7 +117,7 @@ class FamilyPledgeReportService
     private static function familiesByClassification(array $classificationIds): ?array
     {
         if ($classificationIds === []) {
-            return null;
+            return (new ClassificationService())->getInactiveIds() === [] ? null : self::familiesWithClassification();
         }
 
         $otherClassificationIds = [];
@@ -118,13 +135,18 @@ class FamilyPledgeReportService
     }
 
     /**
-     * @param int[] $classificationIds
+     * Families with a member outside the Inactive classifications, optionally within the given ones.
+     *
+     * @param int[] $classificationIds empty = any classification
      * @return int[]
      */
-    private static function familiesWithClassification(array $classificationIds): array
+    private static function familiesWithClassification(array $classificationIds = []): array
     {
-        $ids = PersonQuery::create()
-            ->filterByClsId($classificationIds, Criteria::IN)
+        $query = PersonQuery::create()->filterByActive();
+        if ($classificationIds !== []) {
+            $query->filterByClsId($classificationIds, Criteria::IN);
+        }
+        $ids = $query
             ->filterByFamId(0, Criteria::GREATER_THAN)
             ->select('FamId')
             ->distinct()
@@ -132,5 +154,26 @@ class FamilyPledgeReportService
             ->toArray();
 
         return array_map('intval', $ids);
+    }
+
+    private static function scalar(mixed $value): string
+    {
+        return is_scalar($value) ? (string) $value : '';
+    }
+
+    /**
+     * @return int[]
+     */
+    private static function intList(mixed $values): array
+    {
+        $ids = [];
+        foreach ((array) $values as $value) {
+            $id = InputUtils::filterInt(self::scalar($value));
+            if ($id > 0) {
+                $ids[] = $id;
+            }
+        }
+
+        return array_values(array_unique($ids));
     }
 }

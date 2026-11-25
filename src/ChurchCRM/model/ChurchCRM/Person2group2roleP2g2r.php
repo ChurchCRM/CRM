@@ -23,9 +23,11 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
     /**
      * The `bManageGroups` gate, plus the one Volunteer v2 exception (D19).
      *
-     * Same shape and same ordering rule as `Group::assertGroupWritable()`: the V1 answer
-     * is asked first and wins immediately, so a membership row in an ordinary group takes
-     * the path it always took — no ministry lookup, no extra query, the same 401.
+     * Same shape as `Group::assertGroupWritable()`. Inside a V2 service's managed write the
+     * group decides, with nobody signed in needed: the service has authorized the write
+     * already, and it may run during an upgrade. Otherwise the V1 answer is asked first and
+     * wins immediately, so a membership row in an ordinary group takes the path it always
+     * took — no ministry lookup, no extra query, the same 401.
      *
      * Only when V1 says no is the group loaded to see whether it is a ministry's volunteer
      * pool. Unlike `Group`, membership writes have NO extra rule for delete: adding and
@@ -35,7 +37,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
      */
     private function assertMembershipWritable(): void
     {
-        if (AuthService::hasUserGroupMembership('bManageGroups')) {
+        if (!VolunteerPoolWriter::isManagedWriteOpen() && AuthService::hasUserGroupMembership('bManageGroups')) {
             return;
         }
 
@@ -57,7 +59,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
     }
 
     /**
-     * D23 (c): while V2 is on, the Teacher role of a class linked to a volunteer team
+     * D23 (c): the Teacher role of a class linked to a volunteer team
      * is written by V2 alone — for everyone, Manage Groups or not. Asked after the
      * permission check, so a caller who may not write the group learns nothing more.
      */

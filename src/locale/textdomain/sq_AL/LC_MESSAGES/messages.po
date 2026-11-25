@@ -368,18 +368,6 @@ msgid "(No assigned family)"
 msgstr "(Nuk ka familja caktuar)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Convert Individët të Familjeve"
-
-#: 
-msgid "Convert Next"
-msgstr "Convert Tjetër"
-
-#: 
-msgid "Convert All"
-msgstr "Të kthyer të gjitha"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Depozita Numri Shqip"
@@ -1306,10 +1294,6 @@ msgid "People"
 msgstr "Njerëz"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Fëmijët e shkollës së diel"
-
-#: 
 msgid "Role / Gender"
 msgstr "Roli / Gjinia"
 
@@ -1372,10 +1356,6 @@ msgstr "Grup"
 #: 
 msgid "Default"
 msgstr "Parazgjedhur"
-
-#: 
-msgid "Exit"
-msgstr "Dalje"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1460,6 @@ msgstr "Përditëso karakteristikat"
 #: 
 msgid "Assign New Group"
 msgstr "Cakto grup të ri"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Cakto një re Vullnetare Opportunity"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1600,10 +1576,6 @@ msgid "Restore Database"
 msgstr "Rikthe bazën e të dhënave"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Ju lutemi konfirmoni fshirjen e"
-
-#: 
 msgid "Listing"
 msgstr "Listimi"
 
@@ -1622,10 +1594,6 @@ msgstr "Save Settings"
 #: 
 msgid "Permission"
 msgstr "Leje"
-
-#: 
-msgid "System Settings"
-msgstr "Cilësimet e sistemit"
 
 #: 
 msgid "User Editor"
@@ -1690,14 +1658,6 @@ msgstr "Fjalëkalimi i ri"
 #: 
 msgid "Confirm New Password"
 msgstr "Konfirmo Re Password"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Volunteer Opportunity Editor"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Nuk ka mundësi vullnetare janë shtuar ende"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2123,24 +2083,12 @@ msgid "Localization"
 msgstr "Lokalizimi"
 
 #: 
-msgid "Setting saved"
-msgstr "Cilësimi u ruajt"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Ndrysho cilësimet JSON"
-
-#: 
 msgid "False"
 msgstr "Gabim (False)"
 
 #: 
 msgid "True"
 msgstr "Vërtetë (True)"
-
-#: 
-msgid "Edit Settings"
-msgstr "Ndrysho cilësimet"
 
 #: 
 msgid "Functions"
@@ -2193,14 +2141,6 @@ msgstr "Pastro të gjitha fondet"
 #: 
 msgid "Deposit Comment"
 msgstr "Komenti i depozitës"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Nënshkrimi i skedarit të definicionit të nënshkrimit dështoi në validim"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Një ose më shumë skedarë dështuan në validimin e nënshkrimit"
 
 #: 
 msgid "item"
@@ -2263,32 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Përfshini vetëm këto klasifikime në direktori, të ndara me presje"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Këta janë numrat e roleve familjare të përcaktuar si kryefamiljarë"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Këta janë numrat e roleve familjare të përcaktuar si bashkëshortë"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Këta janë numrat e roleve familjare të përcaktuar si fëmijë"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Gjatësia minimale që një përdorues mund të caktojë për fjalëkalimin e tij"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Një listë e ndarë me presje e fjalëkalimeve të ndaluara (shumë të thjeshta)."
-
-#: 
 msgid "Default City"
 msgstr "Qyteti i paracaktuar"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Shteti i paracaktuar - Duhet të jetë shkurtesë me 2 shkronja!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2311,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Muaji i parë i vitit fiskal"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Caktoni 'True' për të çaktivizuar futjen e datës së mikut në redaktorin e personit. Caktoni 'False' për ta aktivizuar."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Caktoni 'True' për të çaktivizuar menaxhimin e pajtimeve në buletin në redaktorin e familjes."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Caktoni 'True' për të çaktivizuar futjen e datës së martesës në redaktorin e familjes. Caktoni 'False' për ta aktivizuar."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Numri i çekëve për raportin e fletë-depozitës"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Njësia e përdorur për të matur distancën, milje ose km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktivizoni pagesat jo të zbritshme"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Teksti për rreshtin e parë të raportit tatimor. Datat do të shtohen në fund të këtij rreshti."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Teksti për rreshtin e fundit të raportit tatimor."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Nënshkruesi i raportit tatimor"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Teksti për raportin e kujtesës së zotimit"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Nënshkruesi i kujtesës së zotimit"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Teksti për raportin e kujtesës së zotimit - Nuk ka rekord për një zotim"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Teksti për raportin e kujtesës së zotimit - Nuk ka rekord për pagesat"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Teksti për raportin e konfirmimit dhe korrigjimit të informacionit të bazës së të dhënave"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Nënshkruesi i raportit të konfirmimit dhe korrigjimit të informacionit"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Teksti për raportin e direktorisë"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3827,10 +3687,6 @@ msgstr "Arkiva e kopjes rezervë nuk përmban një bazë të dhënash"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Bëni kodet postare të futura nga përdoruesi me SHKRONJA TË MËDHA kur ruhen në bazën e të dhënave."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Përdoret për të mbyllur një letër përpara Nënshkruesit"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3935,10 +3791,6 @@ msgid "Failed"
 msgstr "Dështoi"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Numri i llogarisë rrjedhëse të kishës"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Markoi familjen si joaktive"
 
@@ -3949,10 +3801,6 @@ msgstr "Markoi familjen si aktive"
 #: 
 msgid "families"
 msgstr "familje"
-
-#: 
-msgid "Financial Settings"
-msgstr "Cilësimet Financiare"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3993,10 +3841,6 @@ msgstr "Prona u hoq me sukses."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Prona nuk mund të hiqej."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Teksti para emrit në email/raporte"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4045,10 +3889,6 @@ msgstr "Përfshij"
 #: 
 msgid "Legend"
 msgstr "Legjenda"
-
-#: 
-msgid "assigned"
-msgstr "caktuar"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -4243,10 +4083,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "rekord(e) u shtuan me sukses në grupin e zgjedhur."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Për përcaktimin e datës në zgjedhësin e datave, si parazgjedhje: yyyy-mm-dd, në frëngjisht: dd/mm/yyyy për shembull."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Për përcaktimin e datës në zgjedhësin e datave, si parazgjedhje: Y-m-d, në frëngjisht: d/m/Y për shembull."
 
@@ -4333,10 +4169,6 @@ msgstr "PVP"
 #: 
 msgid "WSW"
 msgstr "PJP"
-
-#: 
-msgid "Search Family"
-msgstr "Kërko familje"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4435,10 +4267,6 @@ msgid "Change Settings"
 msgstr "Ndrysho cilësimet"
 
 #: 
-msgid "Unknown Type"
-msgstr "Lloj i panjohur"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID për shportën duhet të jetë numerik"
 
@@ -4459,20 +4287,8 @@ msgid "Maximum number of People"
 msgstr "Numri maksimal i personave"
 
 #: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Fusha ku listohet ati i rrëfimit, duhet të jetë një lloj grupi personash"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Fusha ku ruhet rrëfimi i fundit, duhet të jetë lloj date"
-
-#: 
 msgid "People Reports"
 msgstr "Raportet e personave"
-
-#: 
-msgid "People Dashboard"
-msgstr "Paneli i personave"
 
 #: 
 msgid "People Directory"
@@ -4714,24 +4530,8 @@ msgid "Estonian"
 msgstr "Estonez"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Gabim gjatë dekodimit të skedarit të përkufizimit të nënshkrimit"
-
-#: 
 msgid "Event not found"
 msgstr "Ngjarja nuk u gjet"
-
-#: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Kohëzgjatja e skadimit të sesionit në sekonda\n"
-"Vendos zero për të çaktivizuar skadimin e sesionit."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Shuma minimale që një fjalëkalim i ri duhet të ndryshojë nga i vjetri (# i karaktereve të ndryshuara)\n"
-"Vendos zero për të çaktivizuar këtë veçori"
 
 #: 
 msgid "Verify People"
@@ -4805,10 +4605,6 @@ msgstr "Ngjarje të zhgozhdhuara"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Mbiemri, Emri Emri i mesëm"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Dërgo një email për të njoftuar përdoruesit kur llogaria e tyre është fshirë"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -5063,10 +4859,6 @@ msgid "Enter event description..."
 msgstr "Vendosni përshkrimin e ngjarjes..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Vendosni tekstin e shënimit këtu..."
-
-#: 
 msgid "Note"
 msgstr "Shënim"
 
@@ -5301,14 +5093,6 @@ msgstr "Ju lutem vendosni një URL të vlefshme që fillon me http:// ose https:
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Të gjitha nënshkrimet e skedarëve të sistemit përputhen me vlerat e pritura."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Skedari i përcaktimit të nënshkrimit ekziston por nuk është i lexueshëm. Kontrolloni lejet e skedarit."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Skedari i përcaktimit të nënshkrimit mungon në %s. Ekzekutoni detyrën e paketimit ose vendosni një version zyrtar për të rigjeneruar nënshkrimet."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6384,20 +6168,8 @@ msgid "Additional Information"
 msgstr "Informacion shtesë"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Cakto mundësitë"
-
-#: 
 msgid "Choose a property..."
 msgstr "Zgjidhni një pronë..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Zgjidhni mundësitë..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Informacioni i kontaktit dhe personal"
 
 #: 
 msgid "Edited"
@@ -6406,14 +6178,6 @@ msgstr "I ndryshuar"
 #: 
 msgid "Newsletter"
 msgstr "Buletini i lajmeve"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Zgjidhni mundësitë"
 
 #: 
 msgid "Volunteer"
@@ -6600,10 +6364,6 @@ msgid "Confirm Property Deletion"
 msgstr "Konfirmo fshirjen e pronës"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Konfirmo fshirjen e mundësisë vullnetare"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Konfirmimi i fshirjes"
 
@@ -6616,16 +6376,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Fushat e personalizuara ekzistuese të personit"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Mundësitë ekzistuese për vullnetarë"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Fusha u fshi me sukses"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Token CSRF i pavlefshëm"
 
 #: 
 msgid "Invalid fields or selections."
@@ -7821,10 +7573,6 @@ msgid "selected family has no coordinates"
 msgstr "familja e zgjedhur nuk ka koordinata"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë"
-
-#: 
 msgid "Active Groups"
 msgstr "Grupet aktive"
 
@@ -8025,10 +7773,6 @@ msgid "or later to continue."
 msgstr "ose më vonë për të vazhduar."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Shënime \"Pse Erdhe\""
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d rezultat për \"%s\""
@@ -8137,10 +7881,6 @@ msgstr "Shto ose redakto skedarët e personave individualë"
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Shto ose redakto artikujt e dhuruar për ngjarjet e mbledhjes së fondeve"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Shto ose redakto shënime për njerëzit dhe familjet"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8311,10 +8051,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Zgjedh se si do ta plotësosh bazën e të dhënave. Mund të përdorësh një metodë tjetër më vonë."
 
 #: 
-msgid "Church Info"
-msgstr "Informacioni i Kishës"
-
-#: 
 msgid "Clear all"
 msgstr "Pastro Të Gjithë"
 
@@ -8347,14 +8083,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Plotëso këto në çdo rend për të përgatitur ChurchCRM për meshen tuaj."
 
 #: 
-msgid "Confession"
-msgstr "Pendim"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Konfiguro cilësimet dhe preferencat globale të sistemit"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Konfiguro cilësimet e grupmesionit, rolet dhe pronat"
 
@@ -8365,10 +8093,6 @@ msgstr "Konfirmo fjalëkalimin tuaj të ri"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Lidhu një server SMTP në mënyrë që ChurchCRM të mund të dërgojë email-e"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Konverto rekorde individuale në njësi familjare"
 
 #: 
 msgid "Convert to Family"
@@ -8399,20 +8123,12 @@ msgid "Create or edit property type categories"
 msgstr "Krijo ose redakto kategorite e llojit të pronës"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Krijo ose redakto pozicionet e vullnetarëve"
-
-#: 
 msgid "Current person"
 msgstr "Personi aktual"
 
 #: 
 msgid "Database Reset"
 msgstr "Rivendosja e Bazës të Dhënave"
-
-#: 
-msgid "Default / Notes"
-msgstr "Parazgjedhje / Shënime"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -8851,10 +8567,6 @@ msgid "Manage user account details and permissions"
 msgstr "Administro detajet e llogarisë së përdoruesit dhe lejet"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Administro mundësitë e vullnetarëve dhe cakto anëtarëve"
-
-#: 
 msgid "Map cart items"
 msgstr "Hartuese artikujt e listës"
 
@@ -8975,10 +8687,6 @@ msgid "No timeline events yet."
 msgstr "Ende nuk ka ngjarje në kronologji."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Ende nuk ka caktime të mundësive të vullnetarëve."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Nuk je i gatshëm akoma?"
 
@@ -9015,10 +8723,6 @@ msgstr "Vështrim i Përgjithshëm"
 #: 
 msgid "Password Recovery"
 msgstr "Rimëkëmbja e Fjalëkalimit"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "E kaluara & 7 ditët e ardhshme"
 
 #: 
 msgid "People by Classification"
@@ -9103,10 +8807,6 @@ msgstr "Regjistroj fitues të nxjerrjes së mbledhjes fundesh me shumë njëher�
 #: 
 msgid "Record new pledges and payments"
 msgstr "Regjistroj premtimet dhe pagesa të reja"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
 
 #: 
 msgid "Remove from Class"
@@ -9489,10 +9189,6 @@ msgid "funds"
 msgstr "fondet"
 
 #: 
-msgid "opportunities"
-msgstr "mundësitë"
-
-#: 
 msgid "or connect an external service"
 msgstr "ose lidhu një shërbim të jashtëm"
 
@@ -9795,11 +9491,6 @@ msgstr "Dështoi për të marrë numrat e telefonit"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Gjeni vullnetarë për një mundësi të veçantë"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Miqtë që u regjistuan në muajt e mëparshëm"
 
@@ -10058,10 +9749,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Lejo përditësimet e sistemit për versionet e shënuara si 'para-publikim' në GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Lejo aksesin e pavërtetuar te ngjarjet e kalendarit përmes URL-ve publike HTML, ICS dhe JSON. E nevojshme për ndarjen e kalendarëve me aplikacione të jashtme."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Lejo vizitorët të krijojnë regjistrimin e tyre familjar përmes faqes së vetë-regjistrimit"
 
@@ -10224,24 +9911,12 @@ msgid "Enable Email"
 msgstr "Aktivizo Email-in"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Aktivizo Menynë e Ngjarjeve"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Aktivizo API-në e Kalendarit të Jashtëm"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Aktivizoni dërgimin e email-eve nga ChurchCRM. E nevojshme për rivendosjen e fjalëkalimit, njoftimet dhe lidhjet e email-it."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Aktivizoni nëse serveri juaj SMTP kërkon emër përdoruesi dhe fjalëkalim"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Aktivizoni ose çaktivizoni modulin e Shkollës së Dielës dhe menynë anësore."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10339,10 +10014,6 @@ msgstr "Fshih Gjerësinë/Gjatësinë Gjeografike"
 #: 
 msgid "How it works"
 msgstr "Si funksionon"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Sa çeqe të printohen për faqe të fletës së depozitës"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10502,10 +10173,6 @@ msgid "Privacy Note"
 msgstr "Shënim Privatësie"
 
 #: 
-msgid "Quick Settings"
-msgstr "Cilësime të Shpejta"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Vërtetimi SMTP"
 
@@ -10532,10 +10199,6 @@ msgstr "Konfigurimi"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Shfaq një ndarje të vlerave të kartëmonedhave në raportin e fletës së depozitës"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Shfaq ose fshih menynë e Ngjarjeve në navigimin kryesor."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10921,10 +10584,6 @@ msgstr "E errët"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Vetëm baza e të dhënave (.sql) ose arkiv i plotë (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Numri i parazgjedhur i rreshtave të shfaqura në tabelat e të dhënave. Hyn në fuqi me ngarkimin e faqes tjetër."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -10953,10 +10612,6 @@ msgstr "Nëse vëreni karaktere të çrregullta, entitete HTML që shfaqen si te
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Vlerë JSON e pavlefshme — cilësimi nuk u ruajt. Ju lutemi korrigjoni dhe provoni përsëri."
 
 #: 
 msgid "Language and regional settings"
@@ -12567,10 +12222,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Nuk mund të fshihet lloji i pronës: %d prona ende e referencojnë. Ricaktoni ose fshini ato prona fillimisht."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Nuk mund të fshihet mundësia vullnetare: %d persona janë ende të caktuar. Hiqini caktimet fillimisht."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klasa duhet të jetë njëra nga p, f, ose g"
 
@@ -12581,10 +12232,6 @@ msgstr "Kopjo mesazhin e gabimit"
 #: 
 msgid "Could not load note."
 msgstr "Nuk mund të ngarkohet shënimi."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Përshkrimi nuk mund të kalojë 100 karaktere"
 
 #: 
 msgid "Donation fund not found"
@@ -12607,10 +12254,6 @@ msgid "Failed to create property type"
 msgstr "Krijimi i llojit të pronës dështoi"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Krijimi i mundësisë vullnetare dështoi"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Fshirja e fondit të donacioneve dështoi"
 
@@ -12627,10 +12270,6 @@ msgid "Failed to delete property type"
 msgstr "Fshirja e llojit të pronës dështoi"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Fshirja e mundësisë vullnetare dështoi"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Përditësimi i fondit të donacioneve dështoi"
 
@@ -12643,10 +12282,6 @@ msgid "Failed to update property type"
 msgstr "Përditësimi i llojit të pronës dështoi"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Përditësimi i mundësisë vullnetare dështoi"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Mbledhja e fondeve nuk u gjet"
 
@@ -12657,10 +12292,6 @@ msgstr "ID e instalimit"
 #: 
 msgid "Invalid class"
 msgstr "Klasë e pavlefshme"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Emri nuk mund të kalojë 30 karaktere"
 
 #: 
 msgid "Note by %s deleted"
@@ -12683,16 +12314,8 @@ msgid "Read more"
 msgstr "Lexo më shumë"
 
 #: 
-msgid "That name already exists."
-msgstr "Ai emër ekziston tashmë."
-
-#: 
 msgid "Title is required"
 msgstr "Titulli është i detyrueshëm"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Mundësia vullnetare nuk u gjet"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12765,10 +12388,6 @@ msgstr "Gjithë ditën"
 #: 
 msgid "All Roles"
 msgstr "Të Gjitha Rolet"
-
-#: 
-msgid "All System Settings"
-msgstr "Të gjitha cilësimet e sistemit"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -12903,14 +12522,6 @@ msgid "Click Save to apply."
 msgstr "Kliko Ruaj për të zbatuar."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API e Clipboard nuk është në dispozicion. Ju lutemi kopjojeni URL-in manualisht."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Kllipbordi nuk është i disponueshëm. Ju lutemi përdorni butonin e Shkarkimit për të ruajtur kodet tuaja."
-
-#: 
 msgid "Code incomplete"
 msgstr "Kodi i paplotësuar"
 
@@ -13029,10 +12640,6 @@ msgstr "Të dhënat demo zakonisht ngarkohen vetëm në instalime të reja. Impo
 #: 
 msgid "Deposit ID"
 msgstr "ID e depozitës"
-
-#: 
-msgid "Deposit Value"
-msgstr "Vlera e Depozitimit"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13451,22 +13058,6 @@ msgid "Move Members to Group"
 msgstr "Zhvendos Besimtarët në Grupmesion"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Duhet të jetë një URL e vlefshme që fillon me http:// ose https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Duhet të jetë një URL e vlefshme (p.sh., http://localhost ose https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Duhet të jetë një numër porti i vlefshëm (p.sh., 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Duhet të fillojë me / nëse nuk është bosh; pa slash në fund. Vetëm shkronja, numra, nënvizë, vizë, pikë dhe / janë të lejuara."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Duhet t'i hiqni këto të dhëna më vonë?"
 
@@ -13489,14 +13080,6 @@ msgstr "Nuk ka Depozite"
 #: 
 msgid "No Events Today"
 msgstr "Nuk Ka Ngjarje Sot"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Nuk ka vite jubileu në të kaluarën ose 7 ditët e ardhshme"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Nuk ka ditëlindje në të kaluarën ose 7 ditët e ardhshme"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13625,10 +13208,6 @@ msgstr "Ju lutemi shkruani një adresë email-i të vlefshme"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Ju lutemi shkruani një adresë email-i të vlefshme (p.sh., emer@shembull.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Ju lutemi shkruani një numër të vlefshëm"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14443,24 +14022,12 @@ msgid "People &amp; Families"
 msgstr "Njerëz &amp; Familje"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
-
-#: 
 msgid "User List"
 msgstr "Lista e Përdoruesve"
 
 #: 
 msgid "View Person"
 msgstr "Shiko Personin"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
 
 #: 
 msgid "Account locked"
@@ -15091,10 +14658,6 @@ msgid "Target family"
 msgstr "Familja e synuar"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Grupi nuk u gjet. Ju lutemi provoni përsëri."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Familja e zgjedhur nuk ekziston më. Ju lutemi rifreskoni faqen dhe provoni përsëri."
 
@@ -15161,10 +14724,6 @@ msgstr "goalAmount duhet të jetë jo-negativ"
 #: 
 msgid "thru %s"
 msgstr "deri %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Shënime Pse erdhi për %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15299,10 +14858,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Listë origjinash të ndara me hapësirë të lejuara të ngulisin faqen publike të kalendarit të jashtëm në një iframe."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Origjina të ndara me hapësirë të lejuara të ngulisin faqen publike të kalendarit në një iframe."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Grupi i Shkollës së Dielës nuk mund të ndryshohet, vetëm në këto dy raste"
 
@@ -15313,10 +14868,6 @@ msgstr "Formatet e mbështetura"
 #: 
 msgid "System Configuration"
 msgstr "Konfigurimi i sistemit"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'i heqë caktimet"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15547,10 +15098,6 @@ msgid "Add New Fund"
 msgstr "Shto Fond të Ri"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Shto Mundësi të Re"
-
-#: 
 msgid "Add New Person"
 msgstr "Shto Person të Ri"
 
@@ -15563,10 +15110,6 @@ msgid "Add New Role"
 msgstr "Shto Rol të Ri"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Shto Mundësi të Re Vullnetare"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Shto Klasë të Shkollës së Dielës"
 
@@ -15577,10 +15120,6 @@ msgstr "Fshi këtë familje?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Rishikoni familjet dhe individët e rinj që u regjistruan në formularin tuaj publik të regjistrimit"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Konfirmim i fshirjes së mundësisë vullnetare"
 
 #: 
 msgid "# Payments"
@@ -15659,10 +15198,6 @@ msgid "ChurchCRM version"
 msgstr "Versioni i ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Niveli i mbledhjes"
-
-#: 
 msgid "Count unique installs"
 msgstr "Numëro instalimet unike"
 
@@ -15717,14 +15252,6 @@ msgstr "Dështoi përditësimi i premtimit"
 #: 
 msgid "Financial data"
 msgstr "Të dhëna financiare"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "I plotë — të gjitha sa më sipër plus shikimet e faqeve"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "I plotë — shikime faqesh, paralajmërime, gabime dhe përjashtime JS"
 
 #: 
 msgid "Fund Summary"
@@ -15803,10 +15330,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Shuma jo e zbritshme nuk mund të tejkalojë shumën e fondit"
 
 #: 
-msgid "None (disabled)"
-msgstr "Asnjë (çaktivizuar)"
-
-#: 
 msgid "Overpaid"
 msgstr "Paguar tepër"
 
@@ -15867,10 +15390,6 @@ msgid "Select a fund"
 msgstr "Zgjidhni një fond"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Dërgoni Email Testues Ditëlindjeje Vetes"
-
-#: 
 msgid "Sending to"
 msgstr "Po dërgon tek"
 
@@ -15925,10 +15444,6 @@ msgstr "Ju urojmë një ditëlindje të mrekullueshme!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "Llogaria juaj nuk ka adresë emaili të regjistruar. Shtoni një në profilin tuaj për të dërguar një test."
-
-#: 
-msgid "errors+"
-msgstr "gabime+"
 
 #: 
 msgid "full only"
@@ -16891,10 +16406,6 @@ msgid "Not a valid date of death"
 msgstr "Nuk është një datë vdekjeje e vlefshme"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Numri i ditëve që përdoruesit kanë për t'u regjistruar në 2FA pasi bëhet i detyrueshëm. Vendoseni në 0 për ta zbatuar menjëherë. Shkurtimi i një periudhe hiri aktive mund t'i bllokojë përdoruesit menjëherë."
-
-#: 
 msgid "Offline"
 msgstr "Jashtë Linje"
 
@@ -17219,14 +16730,6 @@ msgid "Download CSV"
 msgstr "Shkarko CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Aktivizo ose çaktivizo modulin e Financës dhe menynë anësore."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Aktivizo ose çaktivizo modulin e Mbledhësit të Fondeve."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Dështoi heqja e logos s kishës"
 
@@ -17245,14 +16748,6 @@ msgstr "Moduli i Financës"
 #: 
 msgid "Find people who did not attend an event"
 msgstr "Gjeni njerëzit që nuk morën pjesë në një ngjarje"
-
-#: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Gjeni vullnetarë që përputhen me dy kodet specifike të mundësisë"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Mundësia e parë e vullnetarizmit"
 
 #: 
 msgid "Folded Booklet"
@@ -17331,10 +16826,6 @@ msgid "Run Report"
 msgstr "Ekzekuto raportin"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Mundësia e dytë e vullnetarizmit"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Shfaqur në shiritin anësor, në faqen e hyrjes dhe në emailet. Ngarkimi i një loge zëvendëson shënjimin e markës ChurchCRM kudo që shfaqet."
 
@@ -17363,14 +16854,6 @@ msgid "View Full Family Giving"
 msgstr "Shiko dhurimin e plotë të familjes"
 
 #: 
-msgid "Volunteer Opportunity"
-msgstr "Mundësia e vullnetarizmit"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vullnetarë për dy mundësi"
-
-#: 
 msgid "YTD"
 msgstr "Nga fillimi i vitit"
 
@@ -17389,10 +16872,6 @@ msgstr "regjistra sistemi"
 #: 
 msgid "Access Control & Security"
 msgstr "Kontrolli i Aksesit dhe Siguria"
-
-#: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh. shitje merce)"
 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
@@ -17447,46 +16926,6 @@ msgid "Feature Toggles"
 msgstr "Çelësat e Funksionit"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Çelësat e funksionit kontrollojnë cilat module dhe funksione janë të disponueshme në ChurchCRM. Ndryshimet hyjnë në fuqi menjëherë."
-
-#: 
-msgid "Finance Features"
-msgstr "Funksionet e Financës"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Përfshi adresa në kërkimin global të shpejtë"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Përfshi ngjarjet e kalendarit në kërkimin global të shpejtë"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Përfshi pronësi të familjes së personalizuar në kërkimin global të shpejtë"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Përfshi depozita në kërkimin global të shpejtë"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Përfshi familje në kërkimin global të shpejtë"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Përfshi grupe në kërkimin global të shpejtë"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Përfshi pagesa në kërkimin global të shpejtë"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Përfshi njerëz në kërkimin global të shpejtë"
-
-#: 
 msgid "Invalid setting"
 msgstr "Rregullim i pavlefshëm"
 
@@ -17495,16 +16934,8 @@ msgid "Lost Password Link"
 msgstr "Lidhja e fjalëkalimit të humbur"
 
 #: 
-msgid "Manage All Features"
-msgstr "Menaxhoni të Gjithë Funksionet"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Çelës kryesor për dërgimin e email. I NEVOJSHËM për rivendosjen e fjalëkalimit dhe njoftimet"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Pagesa të pakapshme"
 
 #: 
 msgid "Primary Modules"
@@ -17515,20 +16946,12 @@ msgid "Public Calendar API"
 msgstr "API i Kalendarit Publik"
 
 #: 
-msgid "Saved"
-msgstr "Ruajtur"
-
-#: 
 msgid "Search Families"
 msgstr "Kërkimi i Familjeve"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Kërkimi i Pronësive të Familjes të Personalizuar"
-
-#: 
-msgid "Search Settings"
-msgstr "Cilësimet e Kërkimit"
 
 #: 
 msgid "Self-Registration"
@@ -17747,14 +17170,6 @@ msgid "People to notify when a new family or person is added"
 msgstr "Personat që njoftohen kur shtohet një familje ose person i ri"
 
 #: 
-msgid "Person initials style"
-msgstr "Stili i inicialeve të personit"
-
-#: 
-msgid "Person name display style"
-msgstr "Stili i shfaqjes së emrit të personit"
-
-#: 
 msgid "Spouse Role"
 msgstr "Roli i bashkëshortit/es"
 
@@ -17843,14 +17258,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Regjistrime që presin shqyrtim nga formulari juaj publik i regjistrimit. Hyrjet pa email ose telefon janë shënuar – verifikoni të dhënat e kontaktit përpara se t'i kontaktoni."
 
 #: 
-msgid "Review now"
-msgstr "Shqyrtoje tani"
-
-#: 
-msgid "Review self registrations"
-msgstr "Shqyrto vetëregjistrimet"
-
-#: 
 msgid "Select month"
 msgstr "Zgjidhni muajin"
 
@@ -17879,10 +17286,6 @@ msgid "This person is not a pending self-registration"
 msgstr "Ky person nuk është vetëregjistrim në pritje"
 
 #: 
-msgid "This self-registered family is pending review"
-msgstr "Kjo familje e vetëregjistruar është në pritje të shqyrtimit"
-
-#: 
 msgid "Total registrations"
 msgstr "Regjistrime gjithsej"
 
@@ -17897,10 +17300,6 @@ msgstr "Dje"
 #: 
 msgid "days ago"
 msgstr "ditë më parë"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "vetëregjistrime janë në pritje të shqyrtimit"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18201,10 +17600,6 @@ msgstr "Një orar që ndjek një lloj ngjarjeje duhet të caktojë llojin e ngja
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "Një orar që stafon një ngjarje të vetme nuk mund të ndjekë ngjarje të tjera; fshijeni dhe shtoni një orar në vend të tij"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Një listë e vetme mundësish, si \"Çerdhja\" ose \"Pritësi\", mbahet te Njerëzit → Administrimi. Çdo person etiketohet me mundësitë me të cilat është i gatshëm të ndihmojë, te skeda Vullnetar e regjistrimit të tij. Kjo është gjithçka që regjistrohet: nuk ka ekipe, orare, caktime për një datë dhe as email-e kujtese. Etiketat përdoren te raportet dhe te regjistrimi i personit."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18513,18 +17908,6 @@ msgstr "Punët në sfond u ekzekutuan"
 #: 
 msgid "Birthday greeting"
 msgstr "Urimi i ditëlindjes"
-
-#: 
-msgid "Both"
-msgstr "Të dyja"
-
-#: 
-msgid "Both (transition)"
-msgstr "Të dyja (kalimtare)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Të dyja – V1 dhe V2 krah për krah (kalimtare)"
 
 #: 
 msgid "Calendar address"
@@ -21611,22 +20994,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Përdoruesi duhet të ketë lejen Shto ngjarje, ose të koordinojë shërbesën e vullnetarëve së cilës i përket ky kalendar"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 – Mundësi për vullnetarë (e vjetër)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 – Mundësitë e vjetra për vullnetarë"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 – Shërbesat"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 – Menaxhimi i vullnetarëve"
-
-#: 
 msgid "Valid"
 msgstr "E vlefshme"
 
@@ -21645,14 +21012,6 @@ msgstr "Shiko ngjarjen"
 #: 
 msgid "View this email"
 msgstr "Shiko këtë email"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vullnetar (e vjetër)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Menaxhimi i vullnetarëve V2 nuk është aktivizuar"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21759,10 +21118,6 @@ msgid "What the check found"
 msgstr "Çfarë gjeti kontrolli"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Cilat janë përvojat e vullnetarëve"
-
-#: 
 msgid "What you want to say"
 msgstr "Çfarë dëshironi të thoni"
 
@@ -21793,10 +21148,6 @@ msgstr "Nga vijnë datat"
 #: 
 msgid "Where we reach you"
 msgstr "Ku t'ju arrijmë"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Cila përvojë e menaxhimit të vullnetarëve është aktive. V1 është funksioni i vjetër Mundësi për vullnetarë; V2 është rrjedha e re e planifikimit dhe caktimit. \"Të dyja\" i shfaq krah për krah gjatë migrimit."
 
 #: 
 msgid "Which events"
@@ -22205,10 +21556,6 @@ msgstr "Nuk keni autorizim për të ndryshuar grupin e këtij eventi"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Vetëm menaxheri i vullnetarëve mund të ndryshojë koordinatorin e një shërbimi"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Zgjedhja e V1 pauzon emailin V2; çdo gjë në radhë dërgohet kur V2 është përsëri në fuqi, nëse ngjarja nuk ka përfunduar."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22849,10 +22196,6 @@ msgid "This email batch was queued by another user"
 msgstr "Këtë grup emaili e vendosi në radhë një përdorues tjetër"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Pas importimit, mund të përdorni Rivendos bazën e të dhënave në Panelin e administratorit për të pastruar të gjitha të dhënat dhe për të filluar nga e para. Konfigurimi i aplikacionit do të ruhet."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Po importohen të dhënat demonstruese..."
 
@@ -23053,10 +22396,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Koha e paralajmërimit për pozicion të paplotësuar (orë)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Menaxhimi i vullnetarëve"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Shërbesat vullnetare, ekipet, oraret dhe caktimet"
 
@@ -23067,14 +22406,6 @@ msgstr "Pozicione vullnetarësh për t’u plotësuar në ditët e ardhshme"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vullnetarë që duhen ende për këto raste të ardhshme: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Çfarë nënkuptojnë këto?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Cilin përvojë vullnetari përdor kjo kishë"
 
 #: 
 msgid "You are on the schedule"
@@ -23845,30 +23176,6 @@ msgid "Download PDF"
 msgstr "Shkarkoni PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Periudha e bllokimit në minuta\n"
-"Një llogari e bllokuar zhbllokohet vetë pas kaq minutash. Hyrjet e dështuara nga një adresë IP numërohen gjatë së njëjtës periudhë."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Numri maksimal i hyrjeve të dështuara nga një adresë IP\n"
-"Hyrjet e dështuara dhe kërkesat për rivendosjen e fjalëkalimit nga një adresë IP numërohen drejt këtij kufiri brenda periudhës së bllokimit. Pasi arrihet, hyrja nga ajo adresë refuzohet derisa të mbarojë periudha.\n"
-"Vendoseni në zero për ta çaktivizuar këtë veçori, për shembull kur të gjithë arrijnë ChurchCRM përmes një adrese proxy."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Numri maksimal i hyrjeve të dështuara që lejohen para se një llogari përdoruesi të bllokohet.\n"
-"Një llogari e bllokuar zhbllokohet vetë pas periudhës së bllokimit, ose më herët kur një administrator rivendos hyrjet e saj të dështuara.\n"
-"Kjo veçori ndihmon për t’u mbrojtur nga sulmet e automatizuara të hamendësimit të fjalëkalimit.\n"
-"Vendoseni në zero për ta çaktivizuar këtë veçori."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minuta derisa të zhbllokohet vetë: %d"
 
@@ -24005,10 +23312,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagesa nuk janë ende në asnjë depozitë."
 
 #: 
-msgid "Closing line"
-msgstr "Rreshti i mbylljes"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Çdo depozitë e datuar në këtë vit është mbyllur."
 
@@ -24021,28 +23324,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Çdo pagesë në këtë vit është në një depozitë."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gjeneroni deklaratat tatimore"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raporti i dhurimeve (deklaratat tatimore)"
-
-#: 
-msgid "Opening line"
-msgstr "Rreshti i hapjes"
-
-#: 
 msgid "Qty"
 msgstr "Sasia"
-
-#: 
-msgid "Signed by"
-msgstr "Nënshkruar nga"
-
-#: 
-msgid "Thank-you line"
-msgstr "Rreshti i falënderimit"
 
 #: 
 msgid "Year-End Giving"
@@ -24201,10 +23484,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Drejtoria e përkohshme e PDF duhet të jetë një shteg absolut drejtorie."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Numri tatimor i kishës (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Rreshti i mbylljes"
 
@@ -24223,10 +23502,6 @@ msgstr "Trajtimi i PDF"
 #: 
 msgid "PDF Output"
 msgstr "Dalja PDF"
-
-#: 
-msgid "PDF handling mode"
-msgstr "Mënyra e trajtimit të PDF"
 
 #: 
 msgid "Questions Line"
@@ -24249,10 +23524,6 @@ msgid "Statement Wording"
 msgstr "Formulimi i deklaratës"
 
 #: 
-msgid "Tax Information"
-msgstr "Informacioni tatimor"
-
-#: 
 msgid "Failed to remove letterhead"
 msgstr "Dështoi heqja e kokës së letrës"
 
@@ -24267,10 +23538,6 @@ msgstr "Dështoi ngarkimi i kokës së letrës"
 #: 
 msgid "Greeting"
 msgstr "Përshëndetja"
-
-#: 
-msgid "Letter greeting and signature"
-msgstr "Përshëndetja dhe nënshkrimi i letrës"
 
 #: 
 msgid "Letterhead"
@@ -24295,14 +23562,6 @@ msgstr "Vendosni kokën e letrës që shtypin letrat PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Duke përdorur emrin dhe adresën e kishës"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Duke përdorur shtegun e kokës së letrës të vendosur te Cilësimet e sistemit"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Formulimi, numri tatimor dhe trajtimi i PDF për deklaratat e dhurimeve"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24575,10 +23834,6 @@ msgstr "Shteti i kishës"
 #: 
 msgid "Church default: %s"
 msgstr "Parazgjedhja e kishës: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Hyrja e udhëheqësit të kishës"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25223,10 +24478,6 @@ msgstr "Nuk ka përfunduar"
 #: 
 msgid "Not moved"
 msgstr "Nuk është zhvendosur"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nuk jeni të sigurt cilin email kemi? Kontaktoni zyrën e kishës."
 
 #: 
 msgid "Not yet"
@@ -26481,248 +25732,8 @@ msgid "Review Family Information"
 msgstr "Shqyrto informacionin e familjes"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Ekziston tashmë një shërbesë me emrin \"%s\". Zgjidheni nga lista ose zgjidhni një emër tjetër."
-
-#: 
-msgid "A new ministry"
-msgstr "Një shërbesë e re"
-
-#: 
-msgid "A position"
-msgstr "Një pozicion"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Të shtohen vullnetarët ({{total}}) në pozicionet e konvertuara më parë?"
-
-#: 
-msgid "Already converted"
-msgstr "Konvertuar tashmë"
-
-#: 
-msgid "An existing ministry"
-msgstr "Një shërbesë ekzistuese"
-
-#: 
-msgid "Becomes"
-msgstr "Bëhet"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM ka dy mënyra për të menaxhuar vullnetarët. Vetëm njëra duhet të përdoret në një kohë; cilësimi \"Përvoja e vullnetarëve\" vendos se cilën sheh kjo kishë. Ndërrimi fsheh ose shfaq faqe dhe zëra menuje dhe nuk fshin kurrë të dhëna. V1 dhe Të dyja ofrohen vetëm sa kohë që përdoren Mundësitë vullnetare: sapo çdo mundësi të konvertohet dhe kisha të jetë në V2, ato largohen nga kjo listë."
-
-#: 
-msgid "Convert"
-msgstr "Konverto"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Konverto Mundësitë vullnetare"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Të konvertohen tani mundësitë ({{total}})? Të dhënat e V1 mbeten siç janë derisa Mundësitë vullnetare të tërhiqen."
-
-#: 
-msgid "Converted"
-msgstr "Konvertuar"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "U konvertuan: pozicione {{positions}} dhe shërbesa {{ministries}}, vullnetarë të kualifikuar {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Çdo mundësi bëhet pozicion në ekipin e parë të një shërbese dhe të gjithë ata që lidhen me të kualifikohen për atë pozicion. Vetëregjistrimi fillon i çaktivizuar në këto pozicione."
-
-#: 
-msgid "Everything is converted."
-msgstr "Gjithçka është konvertuar."
-
-#: 
-msgid "Existing ministry"
-msgstr "Shërbesë ekzistuese"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Jepini shërbesës së re një emër deri në 100 karaktere."
-
-#: 
-msgid "Its own ministry"
-msgstr "Shërbesa e vet"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Lidhur që atëherë: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Lidhje që nuk mund të konvertohen"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Shërbesa të reja më vete"
-
-#: 
-msgid "New ministry name"
-msgstr "Emri i shërbesës së re"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Nuk dërgohet asnjë email dhe Mundësitë vullnetare mbeten siç janë derisa të tërhiqen."
-
-#: 
-msgid "No name"
-msgstr "Pa emër"
-
-#: 
-msgid "Not converted"
-msgstr "Pa konvertuar"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Hap Çelësat e Funksionit"
-
-#: 
-msgid "Open Ministries"
-msgstr "Hap Shërbesat"
-
-#: 
-msgid "Opportunities"
-msgstr "Mundësi"
-
-#: 
-msgid "Opportunity"
-msgstr "Mundësi"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Mundësia nr. %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Persona të lidhur me Mundësi vullnetare të konvertuara që nga konvertimi: %d. Shtojini në pozicionet e tyre përpara se Mundësitë vullnetare të tërhiqen në fillim të 2027."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Shikoni fillimisht paraparjen e konvertimit dhe dërgoni rishikimin që ajo ktheu."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "U riemërtua për t'i mbajtur emrat unikë"
-
-#: 
-msgid "Review the conversion"
-msgstr "Rishiko konvertimin"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Dërgoni zgjedhjen e konvertimit si objekt JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Dërgoni mundësitë që bëhen shërbesa si listë ID-sh."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Ajo shërbesë nuk ekziston."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Versioni i ChurchCRM në të cilin një administrues hodhi poshtë njoftimin për tërheqjen e Mundësive vullnetare."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Mundësitë vullnetare kanë ndryshuar që nga paraparja. Kontrolloni sërish paraparjen, pastaj konvertoni."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Konfirmimi nuk u hap dot. Ringarkoni faqen dhe provoni sërish."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Paraparja e konvertimit nuk u krijua dot."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Konvertimi dështoi. Asgjë nuk u ndryshua."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Shërbesa \"%s\" nuk ka ekip për pozicionet."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Serveri nuk u arrit dot. Ringarkoni faqen për të parë nëse konvertimi u krye."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Nuk ka Mundësi vullnetare për t'u konvertuar."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Menaxhimi i vullnetarëve kalon në Të dyja, që shërbesat e reja të shihen pranë Mundësive vullnetare."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Mundësitë vullnetare po tërhiqen"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Mundësitë vullnetare u konvertuan"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Mundësitë vullnetare do të tërhiqen në fillim të 2027. Konvertojini në Shërbesa për të ruajtur se kush shërben ku."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Mundësitë vullnetare do të tërhiqen në fillim të 2027. Konvertoni tani në Shërbesa mundësitë (%1$d) dhe vullnetarët tuaj (%2$d). Mund ta shihni rezultatin paraprakisht para se të ndryshojë diçka."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Vullnetarë të kualifikuar"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Vullnetarë për t'u shtuar në pozicionet e konvertuara"
-
-#: 
-msgid "What it becomes"
-msgstr "Çfarë bëhet"
-
-#: 
-msgid "What will happen"
-msgstr "Çfarë do të ndodhë"
-
-#: 
-msgid "Where they go"
-msgstr "Ku shkojnë"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Cilat Mundësi vullnetare të vjetra janë konvertuar dhe në cilin pozicion u kthye secila."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Cilën përvojë vullnetarësh përdor kjo kishë. Mundësitë vullnetare (V1) do të tërhiqen në fillim të 2027."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Mundësitë tuaja vullnetare u konvertuan në Shërbesa. Kalojeni Menaxhimin e vullnetarëve në V2 përpara se Mundësitë vullnetare të tërhiqen në fillim të 2027."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "në një shërbesë të re, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "në shërbesën {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "nuk është më në ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26760,14 +25771,6 @@ msgstr "Pagesat sipas fondit"
 msgid "Unknown Fund"
 msgstr "Fond i panjohur"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Kërkojini ofruesit të hostimit ta kalojë bazën e të dhënave në një version të mbështetur dhe më pas provoni përsëri."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Kërkojini ofruesit të hostimit ta kalojë bazën e të dhënave në një version të mbështetur."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26785,18 +25788,6 @@ msgstr "Kërko numrin e çekut kur regjistrohen pagesa me çek në depozita. Kur
 #: 
 msgid "Require check number on check payments"
 msgstr "Kërko numrin e çekut për pagesat me çek"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Përmirësimi nuk filloi, prandaj nuk ndryshoi asgjë."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Ky përmirësim nuk mund të ekzekutohet në bazën tuaj të të dhënave."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Serveri juaj i bazës së të dhënave (%1$s %2$s) është më i vjetër se sa mbështet ChurchCRM (MySQL %3$s ose MariaDB %4$s e më të reja)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26899,10 +25890,6 @@ msgstr[0] "%d i parazgjedhur u anashkalua për një arsye tjetër (zhvillimi ka 
 msgstr[1] "%d të parazgjedhur u anashkaluan për një arsye tjetër (zhvillimi ka mbaruar, është anuluar ose është plot)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Një cilësim kalimtar. Si faqet e vjetra të Mundësive për vullnetarët, ashtu edhe faqet e reja të Shërbesave janë të disponueshme, dhe regjistrimi i një personi shfaq të dyja skedat Vullnetar, të shënuara qartë. Përdoreni gjatë kalimit të një kishe nga V1 në V2, pastaj kaloni vetëm te V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Caktimi u anulua"
 
@@ -26951,32 +25938,12 @@ msgid "This occurrence has been canceled"
 msgstr "Ky zhvillim u anulua"
 
 #: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vullnetarizëm i organizuar siç e drejton një kishë. Çdo shërbesë ka ekipe dhe pozicione; njerëzit kualifikohen për pozicione dhe i përkasin grupit të vullnetarëve të shërbesës; orarët ndjekin ngjarjet në kalendar dhe prodhojnë zhvillime me datë me kërkesa stafimi; koordinatorët caktojnë njerëz, të cilët pranojnë, refuzojnë ose propozojnë një zëvendësues; kujtesat dhe njoftimet dërgohen me email. Administratorët dhe përdoruesit me lejen Menaxho shërbesat shohin çdo shërbesë dhe mund t'i krijojnë, çaktivizojnë dhe fshijnë. Një koordinator i shërbesës merr në vend të kësaj lejen Menaxho shërbesat e mia: titulli Shërbesat në shiritin anësor shfaq atëherë vetëm shërbesat që koordinon. Një udhëheqës ekipi e drejton ekipin e tij nga Portali i anëtarëve. Anëtarët e përdorin Portalin e anëtarëve për të parë orarin e tyre, për t'u përgjigjur, për t'u regjistruar dhe për të ofruar ndihmë."
-
-#: 
 msgid "Count active installations and upgrade outcomes"
 msgstr "Numëro instalimet aktive dhe rezultatet e përmirësimeve"
 
 #: 
 msgid "Database engine and major/minor version"
 msgstr "Motori i bazës së të dhënave dhe versioni kryesor/dytësor"
-
-#: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Gabime — statistika instalimi, paralajmërime, gabime dhe përjashtime JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Na ndihmoni të gjejmë dhe rregullojmë problemet?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Instalimi ndan statistika minimale instalimi dhe përmirësimi. Gabime shton paralajmërime dhe raporte gabimesh. I plotë shton shikimet e faqeve. Asnjë dërgon vetëm instalimet dhe përmirësimet e dështuara."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Instalimi — statistika instalimi dhe përmirësimi (parazgjedhje)"
 
 #: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
@@ -26987,68 +25954,12 @@ msgid "Installation profile"
 msgstr "Profili i instalimit"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Rajoni (Gabime dhe I plotë)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nuk ndahen kurrë: të dhënat e anëtarëve, të dhurimeve apo të tjera të kishës, emri i kishës suaj, adresa juaj e internetit ose emri i serverit, apo adresat e emailit. Shteti juaj është ai në cilësimet e kishës, jo i nxjerrë nga rrjeti juaj."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Familja e sistemit operativ (Gabime dhe I plotë)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Versioni i PHP (Gabime dhe I plotë)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Shihni saktësisht çfarë ndahet, ose ndryshoni zgjedhjen tuaj, te Administrimi → Telemetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Dallo instalimet e prodhimit, demonstrimit dhe testimit"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Të ndahen statistika anonime instalimi?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Ndaj raporte gabimesh dhe përdorimi"
-
-#: 
-msgid "Share install statistics"
-msgstr "Ndaj statistika instalimi"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Ndahen gjithashtu: paralajmërimet, hollësitë e gabimeve dhe cilat faqe hapen."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Ndahet: që ChurchCRM u instalua ose u përmirësua dhe nëse funksionoi, një sinjal një herë në ditë gjatë përdorimit, numri i versionit, shteti juaj dhe lloji i bazës së të dhënave. Një ID e rastësishme instalimi e numëron çdo instalim një herë."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Kuptoni përputhshmërinë e bazave të të dhënave"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Zgjedhja ju kërkohet një herë. Mund ta ndryshoni në çdo kohë. Me Jo, faleminderit, raportohet vetëm një instalim ose përmirësim i dështuar."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Të dhënat tuaja janë tuajat. Instalimi ndan vetëm rezultatet e instalimit dhe përmirësimit, ID-në e instalimit, versionin e softuerit, profilin e instalimit, shtetin e konfiguruar dhe motorin e bazës së të dhënave me versionin kryesor/dytësor. Gabime shton paralajmërime dhe hollësi gabimesh. I plotë shton shikimet e faqeve. Asnjë dërgon vetëm instalimet dhe përmirësimet e dështuara. Asnjë nivel nuk dërgon adresën tuaj të internetit ose emrin e serverit. Instalimet e testimit nuk dërgojnë asgjë. Telemetria dërgohet te PostHog në Shtetet e Bashkuara."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Të dhënat tuaja janë tuajat. Këto raporte kanë të bëjnë me softuerin, kurrë me kishën tuaj apo njerëzit e saj."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Të dhënat tuaja janë tuajat. Për të numëruar instalimet, ChurchCRM raporton që u instalua ose u përmirësua dhe nëse funksionoi, një sinjal një herë në ditë gjatë përdorimit, si dhe numrin e versionit, shtetin tuaj, llojin e bazës së të dhënave dhe një ID të rastësishme instalimi. Nuk raporton kurrë të dhënat e anëtarëve, të dhurimeve apo të tjera të kishës, emrin e kishës suaj, adresën tuaj të internetit ose emrin e serverit, apo adresat e emailit. Mund ta çaktivizoni në çdo kohë te Administrimi → Telemetria; një instalim ose përmirësim i dështuar raportohet sërish. Paralajmërimet, hollësitë e gabimeve dhe shikimet e faqeve ndahen vetëm nëse e zgjidhni."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27117,10 +26028,6 @@ msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Gjithashtu çaktivizoni identifikimin, në mënyrë që ata të mos mund të përdorin Portalin e Anëtarëve"
 
 #: 
-msgid "Before You Send Statements"
-msgstr "Përpara se të dërgoni deklarata"
-
-#: 
 msgid "Birthday today"
 msgstr "Sot ditelindjen"
 
@@ -27187,10 +26094,6 @@ msgstr "Fshi njerëzit dhe familjet"
 #: 
 msgid "Delete the login for"
 msgstr "Fshini hyrjen për"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Gama kohore e grafikut të depozitave"
 
 #: 
 msgid "Disabled at"
@@ -27445,10 +26348,6 @@ msgid "Preview Sample Letter"
 msgstr "Shiko paraprakisht Letër Shembull"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Identifikuesi i pasurisë së nënshkrimit të deklaratës private kanadeze të dhurimit. Menaxhohet nga ngarkimi i nënshkrimit."
-
-#: 
 msgid "Property Type"
 msgstr "Lloji i atributit të personalizuar"
 
@@ -27483,10 +26382,6 @@ msgstr "Rishikoni dhe filtro"
 #: 
 msgid "Review and vote"
 msgstr "Rishikoni dhe votoni"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Rishikoni vitin, më pas shkarkoni deklaratat e dhurimit."
 
 #: 
 msgid "Review what we are considering"
@@ -27535,10 +26430,6 @@ msgstr "I fortë"
 #: 
 msgid "Support"
 msgstr "Mbështetje"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "ID Tatimore dhe Cilësimet PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27645,10 +26536,6 @@ msgid "View people and families"
 msgstr "Shiko njerëzit dhe familjet"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Menaxhimi i vullnetarëve është i çaktivizuar për këtë kishë"
-
-#: 
 msgid "Weak"
 msgstr "I dobët"
 
@@ -27745,10 +26632,6 @@ msgid "Latest Notes"
 msgstr "Shënimet më të fundit"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Ende nuk janë shtuar shënime."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Filloni regjistrimin për të marrë një kod QR."
 
@@ -27759,4 +26642,1732 @@ msgstr "Ai fjalëkalim ose kod nuk është i saktë. Vërtetimi dyfaktorësh ës
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Vërtetimi dyfaktorësh është konfiguruar tashmë. Sekreti i tij shfaqet vetëm gjatë regjistrimit."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d dhuratë gjithsej %2$s"
+msgstr[1] "%1$d dhurata gjithsej %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d familje kanë aktualisht prona të këtij lloji."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d familje nuk mund të marrë ende një faturë dhe mbetet jashtë. Rregulloni problemin e renditur nën të, pastaj zgjidhni Kontrollo Sërish."
+msgstr[1] "%d familje nuk mund të marrin ende një faturë dhe mbeten jashtë. Rregulloni problemet e renditura nën to, pastaj zgjidhni Kontrollo Sërish."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d grupe kanë aktualisht prona të këtij lloji."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d persona kanë aktualisht prona të këtij lloji."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d lëshime të disponueshme që nga versioni juaj i instaluar."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Nuk u gjenerua asnjë faturë."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: shkruani emrin e plotë të verifikuar të dhuruesit, konfirmoni dhuruesit dhe konfirmoni një grup dhuruesish. Grupet e pagesave me dhurues të përzier duhet të trajtohen jashtë kësaj veçorie."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: dhuratat ose adresa postare ndryshuan që nga rishikimi. Zgjidhni Kontrollo Sërish dhe konfirmoni përsëri dhuruesin."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} këst)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} këste)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Një pagesë me kartë krediti ose me çek bankar është në një depozitë që nuk është mbyllur ende. Mbyllni depozitën pasi pagesa të jetë shlyer."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Një pagesë ka një shumë të pazbritshme. Faturat kanadeze këtu mbështesin vetëm dhuratat pa asnjë përfitim."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Një pagesë ka një shumë monetare të pavlefshme."
+
+#: 
+msgid "A payment has no date."
+msgstr "Një pagesë nuk ka datë."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Një pagesë është datuar pas datës së lëshimit."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Një pagesë është shënuar si problem."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Një pagesë është zero ose negative."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Kërkohet një POST i rishikuar me një token të vlefshëm CSRF."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Një familje e zgjedhur nuk ekziston më."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Një imazh nënshkrimi nuk është një nënshkrim digjital i sigurt."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Një përditësim i sistemit është i disponueshëm. Ju lutemi kërkojini administratorit tuaj të përmirësojë instalimin tuaj."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Të gjitha rreshtat e përfshira janë dhurata monetare pa asnjë përfitim."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Të gjitha cilësimet e kërkuara të faturave kanadeze janë plotësuar."
+
+#: 
+msgid "Also delete family members"
+msgstr "Fshi edhe anëtarët e familjes"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Shuma e përfitimeve"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Shuma e dhuratave"
+
+#: 
+msgid "Amount per installment"
+msgstr "Shuma për këst"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Shumat e futura janë"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Një administrator e ngarkon te Cilësimet e Raportit."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Miratuar, por nuk u dërgua asnjë ftesë"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Kërkojini administratorit të sistemit të përmirësojë ChurchCRM në versionin më të fundit."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Nënshkrimi i autorizuar"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Agjencia e të Ardhurave e Kanadasë"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Faturë Zyrtare Kanadeze"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Faturat zyrtare kanadeze kërkojnë Kanadanë si vendin e kishës te Informacioni i Kishës."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Faturat kanadeze kërkojnë të gjithë vitin kalendarik dhe të gjitha fondet, pa filtra të tjerë."
+
+#: 
+msgid "Change Selection"
+msgstr "Ndrysho zgjedhjen"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Emri Ligjor i Organizmit Bamirës"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Adresa e Regjistruar e Organizmit Bamirës"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Numri i Regjistrimit të Organizmit Bamirës"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Detajet e organizmit bamirës për faturat nuk janë plotësuar ende. Shtoni emrin ligjor, adresën e regjistruar, numrin e regjistrimit dhe vendndodhjen e lëshimit kur të mundeni. Financa vazhdon të funksionojë deri atëherë."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Organizmi bamirës në fatura"
+
+#: 
+msgid "Check Again"
+msgstr "Kontrollo Sërish"
+
+#: 
+msgid "Check the year"
+msgstr "Kontrollo vitin"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Kontrolloni vitin, konfiguroni deklaratën, pastaj shkarkoni."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Zgjidhni Javor, Mujor ose Tremujor për një shumë kësti."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Zgjidhni një vit kalendarik të vlefshëm dhurimi."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Zgjidhni origjinal ose dublikatë."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Zgjidhni angazhimin total ose shumën e këstit."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Përkthimet e ChurchCRM menaxhohen në depon e ChurchCRM në GitHub. Mund të ndihmoni duke"
+
+#: 
+msgid "Commitment amount"
+msgstr "Shuma e angazhimit"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Krahasoni dublikatën me origjinalin e ruajtur dhe konfirmoni që i gjithë informacioni i faturës është i pandryshuar."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Plotësoni çdo konfirmim fature përpara se të shkarkoni."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Plotësoni emrin ligjor të organizmit bamirës, adresën e regjistruar, numrin e regjistrimit, vendndodhjen e lëshimit dhe nënshkruesin e shtypur."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Nënshkruesi i Shtypur i Letrës së Konfirmimit"
+
+#: 
+msgid "Copy Kind"
+msgstr "Lloji i Kopjes"
+
+#: 
+msgid "Currency"
+msgstr "Monedha"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Simboli i monedhës $ ose CAD"
+
+#: 
+msgid "Date received"
+msgstr "Data e marrjes"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Fshirja e tij do të heqë gjithashtu %d prona dhe të gjitha caktimet e tyre, kështu që asgjë nuk mbetet pezull."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "A i përkasin të gjitha dhuratat e vitit të zgjedhur dhuruesit(ve) të emëruar së bashku më sipër?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Mos e ripërdorni një numër për një faturë tjetër, mos faturoni të njëjtat dhurata dy herë dhe mos rigjeneroni informacionin e ndryshuar si një origjinal të pandryshuar."
+
+#: 
+msgid "Duplicate"
+msgstr "Dublikatë"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Kopje dublikatë / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Shuma e pranueshme e dhuratave për qëllime të tatimit mbi të ardhurat"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Shkruani orarin dhe datat e kësteve për të parë paraprakisht angazhimin."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Shkruani data të vlefshme të këstit të parë dhe të fundit, sipas radhës."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Shkruani shuma të vlefshme këstesh me më së shumti dy shifra dhjetore."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Zotimet ekzistuese mbajnë totalet e tyre të regjistruara. Zgjidhni shumën për këst vetëm kur futni çdo dhuratë të planifikuar."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Plotësuar nga kryefamiljarët dhe bashkëshortët. Ndryshojeni që të përputhet saktësisht me dhuruesit."
+
+#: 
+msgid "First installment"
+msgstr "Kësti i parë"
+
+#: 
+msgid "Full commitment"
+msgstr "Angazhimi i plotë"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Gjenero Deklaratat Tatimore"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Viti Kalendarik i Dhurimit"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Deklarata e dhurimeve — jo një faturë zyrtare dhurimi"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Ndihmo me Përkthimin në GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Ndryshimet historike të zarfeve nuk mbështeten."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "U krahasova me origjinalin e ruajtur: dhuruesi, shuma, seriali dhe teksti janë të pandryshuar. Ky nuk është një korrigjim ose zëvendësim."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Do ta ruaj PDF-në e lëshuar dhe një regjistër të jashtëm faturash në vendndodhjen kanadeze të regjistrave të organizmit bamirës."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Nëse një origjinal i ruajtur nuk është i disponueshëm ose është i ndryshëm, përdorni procedurat tuaja të jashtme të anulimit/zëvendësimit të CRA-së."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Përfshi shënimet e pagesës: i rishikova si të përshtatshme për dhuruesin."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Përfshi këtë familje në shkarkim"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Versioni i instaluar: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Shumat e kësteve mund të përdoren vetëm për zotimet."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Datat e kësteve duhet të jenë brenda vitit fiskal të zgjedhur."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Token CSRF i pavlefshëm ose që mungon"
+
+#: 
+msgid "Issue Date"
+msgstr "Data e Lëshimit"
+
+#: 
+msgid "Issue Locality"
+msgstr "Vendndodhja e Lëshimit"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Ruani PDF-në origjinale dhe një regjistër të jashtëm faturash në vendndodhjen kanadeze të regjistrave të organizmit bamirës."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Kësti i fundit në ose para"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Formulimi i letrës, detajet e organizmit bamirës dhe trajtimi i PDF-së vendosen një herë te Cilësimet e Deklaratës."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Formulimi i letrës, detajet e organizmit bamirës dhe trajtimi i PDF-së për deklaratat e dhurimeve"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maksimumi 2 MiB dhe 2000 × 1000 pikselë. Zgjidhni një imazh të ri për të zëvendësuar nënshkrimin e ruajtur. Një imazh nënshkrimi nuk është një nënshkrim digjital i sigurt."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Identifikimi i anëtarëve është i çaktivizuar, kështu që askush në familjen %s nuk mund të identifikohet në portalin e anëtarëve. Një administrator mund ta aktivizojë te Administrimi → Portali i Anëtarëve."
+
+#: 
+msgid "Memo"
+msgstr "Shënim"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Grupet e pagesave familjare me dhurues të përzier nuk mund të ndahen këtu; trajtojini jashtë kësaj veçorie."
+
+#: 
+msgid "Narrow the list"
+msgstr "Ngushto listën"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Asnjë familje nuk përputhet me këta filtra për %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Nuk ekziston asnjë faturë individuale ose përmbledhëse që mbivendoset."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Ende nuk mund të gjenerohet një faturë për këtë familje"
+
+#: 
+msgid "No signature on file"
+msgstr "Nuk ka nënshkrim në dosje"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Jo — dhurues të ndryshëm; trajtojeni jashtë kësaj veçorie"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Askush në familjen %s nuk mund të identifikohet në portalin e anëtarëve sipas rregullit aktual të identifikimit."
+
+#: 
+msgid "None / Aucun"
+msgstr "Asnjë / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nuk është gati për të lëshuar fatura kanadeze. Mungojnë ende"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Faturë Zyrtare / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Faturë zyrtare për qëllime të tatimit mbi të ardhurat / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Faturat zyrtare kanë nevojë për një numër regjistrimi në formën 123456789RR0001 dhe një imazh nënshkrimi."
+
+#: 
+msgid "Original"
+msgstr "Origjinal"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Data Origjinale e Lëshimit (shënoni nga origjinali i ruajtur)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Datat e pagesave pasqyrojnë datat e marrjes së dhuratave, përfshirë trajtimin e dokumentuar të vulës postare të çekut të dërguar me postë."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Shtypur në deklaratat e zakonshme të dhurimeve, për shembull EIN në Shtetet e Bashkuara. E njëjta vlerë është te Informacioni i Kishës."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identifikuesi privat i asetit të nënshkrimit të deklaratës së dhurimeve. Menaxhohet nga ngarkimi i nënshkrimit."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Pronat / Caktimet"
+
+#: 
+msgid "Property deleted"
+msgstr "Prona u fshi"
+
+#: 
+msgid "Property type deleted"
+msgstr "Lloji i pronës u fshi"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Mbyllja e Faturës"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Vendndodhja e Lëshimit të Faturës"
+
+#: 
+msgid "Receipt No."
+msgstr "Nr. i Faturës"
+
+#: 
+msgid "Registration Number"
+msgstr "Numri i Regjistrimit"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Numri i regjistrimit në formën 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Shënimet e lëshimit nuk janë të disponueshme tani."
+
+#: 
+msgid "Releases"
+msgstr "Lëshimet"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Angazhimi i mbetur për %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Hiq kërkesën për 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Të hiqet imazhi i ruajtur i nënshkrimit? Faturat zyrtare kërkojnë një në dosje."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Raportet dhe kujtesat e krahasojnë këtë angazhim të gjithë periudhës me dhurimet. Bilanci i mbetur nuk është një llogaritje kësti të vonuar."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Raportet dhe kujtesat përdorin angazhimin e plotë të treguar më sipër. Bilanci i mbetur nuk është një llogaritje kësti të vonuar."
+
+#: 
+msgid "Require 2FA"
+msgstr "Kërko 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Rivendos Opsionet"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Rishiko Familjet e Zgjedhura"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "MOSTËR — JO E VLEFSHME PËR QËLLIME TATIMORE"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Mbajtës vendi për nënshkrimin shembull"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Tregoni nëse kërkohet 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Përditësimet e sigurisë dhe mbështetja ofrohen vetëm për versionin më të fundit."
+
+#: 
+msgid "Select the families to review."
+msgstr "Zgjidhni familjet për t’i rishikuar."
+
+#: 
+msgid "Set up the statement"
+msgstr "Konfiguro deklaratën"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Konfiguroni vërtetimin me dy faktorë për të vazhduar."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Konflikt i zarfit të përbashkët: një familje tjetër ka aktualisht këtë numër zarfi."
+
+#: 
+msgid "Signature Image"
+msgstr "Imazhi i Nënshkrimit"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Imazhi i nënshkrimit (Administrimi, Cilësimet e Raportit)"
+
+#: 
+msgid "Signature on file"
+msgstr "Nënshkrimi në dosje"
+
+#: 
+msgid "Sincerely"
+msgstr "Sinqerisht"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Specifikoni bazën e shumës kur ndryshoni një zotim të përsëritur."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Deklarata Standarde e Dhurimeve"
+
+#: 
+msgid "Statement Template"
+msgstr "Shablloni i Deklaratës"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Jepni një datë lëshimi jo më vonë se sot."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "ID Tatimore në deklarata"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Familja %s nuk ka anëtarë të gjallë për t’i ftuar në portalin e anëtarëve."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Numri kanadez i regjistrimit duhet të ketë formatin 123456789RR0001. Kjo nuk verifikon statusin e regjistrimit."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Numri i regjistrimit të organizmit bamirës duhet të jetë tekst."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Numri i regjistrimit të organizmit bamirës i shtypur në faturat zyrtare. Nëse lihet bosh, përdoret ID Tatimore te Informacioni i Kishës."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Adresa e regjistruar e organizmit bamirës. Nëse lihet bosh, përdoret adresa te Informacioni i Kishës."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Fraza mbyllëse mbi nënshkruesin, për shembull Sinqerisht."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Angazhimi i plotë nuk duhet të kalojë 999999.99 për fond dhe shumat duhet të përdorin më së shumti dy shifra dhjetore."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Dhuratat ose adresa postare ndryshuan që nga hera e fundit që kontrolluat. Rishikojini dhe konfirmoni përsëri dhuruesin."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Adresa postare është e paplotë. Kërkohen një rrugë, qytet, provincë dhe kod postar."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Emri me të cilin është regjistruar organizmi bamirës. Mund të ndryshojë nga emri i kishës."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Vendi ku lëshohen faturat. Nëse lihet bosh, përdoret qyteti te Informacioni i Kishës."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Nënshkruesi i shtypur i deklaratës së dhurimeve është i autorizuar të nënshkruajë këto fatura."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Simboli i monedhës së sistemit duhet të jetë $ ose të identifikojë CAD për faturat kanadeze."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Nuk ka pagesa në vitin kalendarik të zgjedhur."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Këta janë dhuruesit e vërtetë për çdo dhuratë në këtë familje/vit kalendarik, dhe adresa postare është e saktë."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Ky imazh shtypet mbi emrin e nënshkruesit në deklaratat e dhurimeve dhe faturat. Detajet e organizmit bamirës dhe emri i shtypur i nënshkruesit janë te Financa, Cilësimet e Deklaratës."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Ky opsion e formaton një faturë si faturë kanadeze, por nuk mban një regjistër faturash dhe nuk ruan PDF-të."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Kjo familje e vetëregjistruar po pret miratimin. Miratimi i saj u dërgon me email secilit anëtar që mund të identifikohet në portalin e anëtarëve një ftesë për të rishikuar informacionin e familjes."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Ky mjet nuk ka një rrjedhë pune anulimi/zëvendësimi; përdorni procedurat tuaja ekzistuese në përputhje me CRA-në për korrigjime/zëvendësime të faturave të humbura."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Ky përdorues duhet të konfigurojë 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Kjo do të fshijë përgjithmonë regjistrimin e familjes dhe shënimet e saj. Kjo nuk mund të zhbëhet."
+
+#: 
+msgid "Total commitment"
+msgstr "Angazhimi total"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Nuk mund të shihet paraprakisht angazhimi."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Ngarko ose zëvendëso nënshkrimin"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Ngarkoni nënshkrimin e autorizuar tatimor te Cilësimet e Raportit."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Përdorni data brenda vitit fiskal të zgjedhur. Dhuratat mujore dhe tremujore përdorin ditën e këstit të parë, ose ditën e fundit të muajve më të shkurtër."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Emri i Plotë i Verifikuar i Dhuruesit(ve)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Verifikoni familjen personalisht në vend të kësaj."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Verifikoni emrin e plotë dhe adresën e dhuruesit për çdo familje. Grupet e pagesave me dhurues të përzier duhet të trajtohen jashtë kësaj veçorie."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Versioni %s është i disponueshëm. Ju lutemi kërkojini administratorit tuaj të përmirësojë instalimin tuaj."
+
+#: 
+msgid "View all emails"
+msgstr "Shiko të gjitha emailet"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Po — një grup i verifikuar dhuruesish"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Vendi i kishës suaj është Kanadaja, kështu që faturat zyrtare kanadeze janë gjithashtu të disponueshme kur gjeneroni deklarata."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Vendi i kishës suaj është Kanadaja, kështu që faturat zyrtare kanadeze janë të disponueshme në Deklaratat e Dhurimeve dhe deklaratat e zakonshme shënohen si jo faturë zyrtare dhurimi."
+
+#: 
+msgid "groups"
+msgstr "Grupet"
+
+#: 
+msgid "14 days"
+msgstr "14 ditë"
+
+#: 
+msgid "6 months"
+msgstr "6 muaj"
+
+#: 
+msgid "60 days"
+msgstr "60 ditë"
+
+#: 
+msgid "7 days"
+msgstr "7 ditë"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Pyetni në Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Ndryshoni fjalëkalimin tuaj menjëherë pasi të hyni."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Zgjidhni një mënyrë tjetër për të hyrë"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM nuk mund të arrijë një bazë të dhënash në localhost. Provoni 127.0.0.1 në vend të saj, ose pyesni hostin tuaj të uebit për emrin e hostit të bazës së të dhënave."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM nuk mund të arrijë serverin e bazës së të dhënave në atë adresë dhe port. Kontrolloni emrin e hostit dhe portin. Në hostimin e përbashkët, hosti shpesh nuk është localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM nuk mund të lexojë kontrollin e tij të versionit. Kërkojini hostit tuaj të uebit ta bëjë dosjen e ChurchCRM të lexueshme, ose vazhdoni."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM nuk mundi të kontrollojë lejet e dosjes"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM nuk mundi të kontrollojë skedarët e tij. Kërkojini hostit tuaj të uebit të shikojë regjistrin e gabimeve të serverit."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM nuk mundi të kontrollojë softuerin e serverit"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM nuk mundi të lidhet me bazën e të dhënave me këto cilësime."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM nuk mundi ta përfundojë instalimin. Provoni përsëri, ose kërkojini hostit tuaj të uebit të kontrollojë regjistrin e gabimeve të serverit."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM nuk mundi të ruajë Include/Config.php. Kërkojini hostit tuaj të uebit ta bëjë dosjen Include të shkrueshme."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Skedarët e ChurchCRM përputhen me versionin"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Palos shiritin anësor në ikona"
+
+#: 
+msgid "Congregation login"
+msgstr "Hyrja e kongregacionit"
+
+#: 
+msgid "Connect your database"
+msgstr "Lidhni bazën tuaj të të dhënave"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Po lidhet me bazën tuaj të të dhënave…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Nuk mundi të ruajë panelin tuaj kryesor të kontrollit."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Krijoni së pari një bazë të dhënash MySQL ose MariaDB në panelin e kontrollit të hostimit tuaj (në cPanel: %s), pastaj kopjoni detajet e saj këtu. ChurchCRM mbështet MySQL 8.4+ dhe MariaDB 10.11+ (versionet LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Hosti i bazës së të dhënave"
+
+#: 
+msgid "Database name"
+msgstr "Emri i bazës së të dhënave"
+
+#: 
+msgid "Database password"
+msgstr "Fjalëkalimi i bazës së të dhënave"
+
+#: 
+msgid "Database user"
+msgstr "Përdoruesi i bazës së të dhënave"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Bosh kur ChurchCRM është në krye të faqes. Përndryshe dosja, si %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Shkruani tekstin e shënimit këtu..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Shkruani hostin e bazës së të dhënave, si localhost ose mysql.example.com. Përdorni vetëm shkronja, numra, pika dhe viza."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Shkruani emrin e bazës së të dhënave. Përdorni vetëm shkronja, numra, nënvizime, viza dhe pika."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Shkruani portin e bazës së të dhënave si numër. Zakonisht është 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Shkruani përdoruesin e bazës së të dhënave. Përdorni vetëm shkronja, numra, nënvizime, viza, pika dhe @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Shkruani dosjen që fillon me /, si /churchcrm, ose lëreni bosh."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Shkruani fjalëkalimin për përdoruesin e bazës së të dhënave."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Shkruani adresën e uebit, duke filluar me http:// ose https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Çdo familje anëtare aktive bëri një pagesë midis %s dhe %s."
+
+#: 
+msgid "Exclude"
+msgstr "Përjashto"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Skedarë të mbetur nga një version më i vjetër"
+
+#: 
+msgid "Files to review"
+msgstr "Skedarë për t'u shqyrtuar"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Mbani gati detajet e bazës së të dhënave nga hosti juaj i uebit. Duhen rreth dy minuta."
+
+#: 
+msgid "Hide"
+msgstr "Fshih"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Si përbëhet kongregacioni"
+
+#: 
+msgid "Insights"
+msgstr "Vështrime"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Instalo ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Instalimi u plotësua!"
+
+#: 
+msgid "Installation guide"
+msgstr "Udhëzuesi i instalimit"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Kontrolli i integritetit dështoi"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Kontrolli i integritetit kaloi"
+
+#: 
+msgid "Last %d days"
+msgstr "%d ditët e fundit"
+
+#: 
+msgid "Last 12 months"
+msgstr "12 muajt e fundit"
+
+#: 
+msgid "Main dashboard"
+msgstr "Paneli kryesor i kontrollit"
+
+#: 
+msgid "Navigation"
+msgstr "Navigimi"
+
+#: 
+msgid "Need help?"
+msgstr "Keni nevojë për ndihmë?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Nuk ka shënime në këtë periudhë."
+
+#: 
+msgid "No notes yet."
+msgstr "Ende nuk ka shënime."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Shpesh %1$s. Disa hostë japin një adresë si %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Totali i hapur"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Hap panelin e Financave në këtë interval. Zgjidhni një vit fiskal të kaluar në vetë panelin."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "7 ditët e kaluara dhe %d ditët e ardhshme"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Leje për të ruajtur cilësimet dhe fotot"
+
+#: 
+msgid "Port"
+msgstr "Porti"
+
+#: 
+msgid "Ready"
+msgstr "Gati"
+
+#: 
+msgid "Recent"
+msgstr "Të fundit"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Regjistroni familjen tuaj në kishën tonë"
+
+#: 
+msgid "Release check"
+msgstr "Kontrolli i versionit"
+
+#: 
+msgid "Report a problem"
+msgstr "Raportoni një problem"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Rreshtat e treguar për faqe në çdo tabelë dhe kartë paneli. Hyn në fuqi në ngarkimin tjetër të faqes."
+
+#: 
+msgid "Send Test Email"
+msgstr "Dërgo e-postë testimi"
+
+#: 
+msgid "Send a test email"
+msgstr "Dërgo një e-postë testimi"
+
+#: 
+msgid "Send them the list below."
+msgstr "Dërgoju atyre listën më poshtë."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Softueri i serverit që i nevojitet ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Vendos si panelin tim kryesor të kontrollit"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Hyni me llogarinë tuaj të administratorit"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Disa skedarë të ChurchCRM mungojnë ose janë ndryshuar. Ngarkoni ChurchCRM përsëri nëse një faqe nuk ngarkohet."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Disa skedarë të ChurchCRM nuk u ngarkuan."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Disa skedarë në server nuk përputhen me versionin e ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Hyrja e stafit"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Fillon me %1$s ose %2$s dhe mbaron me %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Paneli që hapni pasi të hyni"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Serveri i bazës së të dhënave e pranoi hyrjen, por nuk ka bazë të dhënash me atë emër."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Serveri i bazës së të dhënave e refuzoi atë emër përdoruesi ose fjalëkalim."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Emri që i dhatë bazës së të dhënave. Hostët e përbashkët shpesh shtojnë emrin e llogarisë suaj përpara, si %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Fjalëkalimi për atë përdorues të bazës së të dhënave. ChurchCRM i kontrollon këto detaje kur klikoni Instalo."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Skedari i kontrollit të versionit në këtë server nuk përputhet me ChurchCRM. Ngarkoni versionin përsëri, ose vazhdoni dhe kërkoni ndihmë nga hosti juaj i uebit."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Mesazhi i testimit shkon në adresën e postës elektronike të kishës dhe tregon këtu regjistrin e korrigjimit SMTP."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Përdoruesi që shtuat në atë bazë të dhënash. Jo hyrja juaj e hostimit."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Këta skedarë nuk janë pjesë e versionit të ChurchCRM. Hosti juaj i uebit mund t'i heqë ata."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Këta skedarë nuk përputhen me versionin"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Këta skedarë nuk u ngarkuan"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Kjo kopje e ChurchCRM nuk përfshin kontrollin e skedarit të versionit. Mund të vazhdoni."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Ky panel tani është paneli juaj kryesor i kontrollit."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Këtu do ta hapin njerëzit ChurchCRM. Ndryshojeni vetëm nëse do të përdorin një adresë të ndryshme nga kjo faqe."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Kjo është llogaria juaj e kishës. Gjithçka që mund të bëni për veten tuaj ndodhet këtu."
+
+#: 
+msgid "Total deposited"
+msgstr "Totali i depozituar"
+
+#: 
+msgid "Usually 3306."
+msgstr "Zakonisht 3306."
+
+#: 
+msgid "Web address"
+msgstr "Adresa e uebit"
+
+#: 
+msgid "Your main dashboard"
+msgstr "Paneli juaj kryesor i kontrollit"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Hosti juaj i uebit duhet të rregullojë diçka"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "dhe {{count}} tjetër"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "dhe {{count}} të tjerë"
+
+#: 
+msgid "Database out of support"
+msgstr "Baza e të dhënave nuk mbështetet"
+
+#: 
+msgid "Deactivated"
+msgstr "I çaktivizuar"
+
+#: 
+msgid "How to find the log"
+msgstr "Si të gjeni regjistrin"
+
+#: 
+msgid "How to install server locales"
+msgstr "Si të instaloni lokalet e serverit"
+
+#: 
+msgid "Last edited"
+msgstr "Ndryshuar së fundmi"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nuk është instaluar në server, dhe nuk është instaluar as një lokale rezervë në anglisht, kështu që ndërfaqja do të shfaqet në anglisht."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Regjistri i ChurchCRM shënon arsyen specifike. Hiqni emrat para se ta ndani."
+
+#: 
+msgid "Verify now"
+msgstr "Verifiko tani"
+
+#: 
+msgid "View Giving History"
+msgstr "Shiko historikun e dhurimit"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d persona u shtuan me sukses; %d persona nuk mund të shtoheshin dhe mbeten në shportë."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d persona nuk mund të shtoheshin dhe mbeten në shportën tuaj."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Administratorët do ta shohin këtë paralajmërim në çdo faqe derisa baza e të dhënave të zhvendoset në një version që ende merr rregullime sigurie. Zhvendosja tani, ndërsa ka pak të dhëna, është më e lehta."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Administratorët tani e tutje do të identifikohen në panelin standard të kontrollit. Paneli i konfigurimit nuk do të hapet më gjatë identifikimit."
+
+#: 
+msgid "Database security risk"
+msgstr "Rrezik sigurie i bazës së të dhënave"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Modaliteti demo aktivizon gjithashtu statistikat anonime të përdorimit (PostHog), që të shohim se si njerëzit e eksplorojnë ChurchCRM. 'Fillo nga e para' i çaktivizon ato."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Cilësimet e e-postës u ruajtën. Identifikimi i anëtarëve tani është i aktivizuar, kështu që anëtarët mund të identifikohen në Portalin e anëtarëve me e-postën e tyre."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Vendosni informacionin e kishës suaj, shtoni njerëzit tuaj dhe ftoni ekipin tuaj."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Gjithçka këtu është e dhënë shembull. Filloni nga e para para se të vendosni informacionin e vërtetë të kishës suaj."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Gjithçka këtu është e dhënë shembull. Kur të jeni gati ta përdorni ChurchCRM për kishën tuaj, filloni nga e para: fshin të dhënat demo dhe çdo cilësim, që të mund të filloni me tuajat."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Eksploroni ChurchCRM me të dhëna demo, ose konfigurojeni për kishën tuaj"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Dështoi shtimi i personit në grup"
+
+#: 
+msgid "Finish setup"
+msgstr "Përfundo konfigurimin"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Për kaq ditë pas instalimit, administratorët identifikohen në Panelin e konfigurimit. Vendoseni në 0 për ta çaktivizuar."
+
+#: 
+msgid "Group Assignment"
+msgstr "Caktimi i grupit"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "E brendshme: një administrator zgjodhi 'Përfundo konfigurimin' në Panelin e konfigurimit. Mos e modifikoni manualisht."
+
+#: 
+msgid "Keep exploring"
+msgstr "Vazhdo eksplorimin"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Po zhvendoseni nga një tjetër server ChurchCRM? Riktheni një rezervë të bërë atje. Kjo zëvendëson gjithçka në këtë instalim."
+
+#: 
+msgid "Ready for your church"
+msgstr "Gati për kishën tuaj"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Riprovoni caktimin e grupit"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Riprovoni caktimet e grupeve"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Zgjidhni një ose më shumë grupe për këtë person."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Zgjidhni grupet që dëshironi të riprovoni."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Konfiguroni kishën tuaj"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Paneli i konfigurimit"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "'Fillo nga e para' në banderolën demo, ose 'Rivendos bazën e të dhënave' në Panelin e administratorit, fshin të dhënat demo dhe çdo cilësim dhe e kthen ChurchCRM në një instalim të ri."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Filloni nga e para së pari, pastaj konfiguroni ChurchCRM me informacionin e kishës suaj."
+
+#: 
+msgid "Start setup"
+msgstr "Fillo konfigurimin"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Të dhënat demo janë fshirë. Identifikohuni me llogarinë e paracaktuar të administratorit për të konfiguruar kishën tuaj."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Personi u ruajt, por një ose më shumë caktime grupesh dështuan. Zgjidhni grupet më poshtë dhe riprovoni."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Personi u ruajt, por një ose më shumë caktime grupesh dështuan. Grupet e pasuksesshme janë të zgjedhura më poshtë. Rishikojini dhe ruani përsëri për të riprovuar."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Kjo fshin të dhënat demo dhe çdo cilësim, dhe e kthen ChurchCRM në një instalim të ri."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Do të identifikoheni përsëri me llogarinë e paracaktuar të administratorit dhe do të vendosni informacionin e kishës suaj."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Po eksploroni ChurchCRM me të dhëna demo."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Po eksploroni të dhëna demo"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Informacioni i kishës suaj është ruajtur. Punoni nëpër hapat më poshtë."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Baza juaj e të dhënave (%1$s %2$s) është një rrezik sigurie: furnizuesi i saj nuk ofron më rregullime sigurie për atë version. ChurchCRM vazhdon të funksionojë, por kërkojini hostit tuaj të kalojë në MariaDB %3$s+ ose MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Një regjistrim ditor gjatë përdorimit, versionet e softuerit dhe të bazës së të dhënave, gjuha, shteti, lloji i instalimit dhe një ID instalimi e rastësishme ndihmojnë në numërimin e instalimeve aktive."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Llogaritë & Hyrja"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Dërgo edhe faqet e përdorura."
+
+#: 
+msgid "Areas"
+msgstr "Zonat"
+
+#: 
+msgid "Church & System"
+msgstr "Kisha & Sistemi"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Qyteti ose vendbanimi ku lëshohen faturat, i shtypur në faturat zyrtare. Lëreni bosh për të përdorur qytetin e kishës."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Mbyllja para emrit të nënshkruesit, për shembull Sinqerisht."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Mbyllja e shtypur para nënshkruesit në faturat zyrtare."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Fjalëkalime të ndara me presje që askush nuk mund t'i përdorë."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Letra e konfirmimit"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Të krijohet një familje për këtë person? Adresa dhe telefoni i shtëpisë i tyre zhvendosen te familja e re."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Ditët që kanë përdoruesit për të konfiguruar vërtetimin dyfaktorësh pasi ai bëhet i detyrueshëm. 0 e zbaton menjëherë. Shkurtimi i një periudhe aktive tolerimi mund t'i bllokojë përdoruesit jashtë."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depozitat & Pagesat"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Fjalëkalimet e palejuara"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Mohim %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Dërgo e-postë përdoruesve kur llogaria e tyre fshihet"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Çdo faqe cilësimesh në një vend, dhe cilësimet që zbatohen për të gjithë sistemin"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Hyrjet e dështuara para bllokimit"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Hyrjet e dështuara për adresë IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Rolet e familjes që trajtohen si fëmijë në drejtori."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Rolet e familjes që trajtohen si kryefamiljar në drejtori dhe në hyrjen e anëtarëve."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Rolet e familjes që trajtohen si bashkëshort në drejtori dhe në hyrjen e anëtarëve."
+
+#: 
+msgid "Finance Settings"
+msgstr "Cilësimet e financave"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Periudha e tolerimit (ditë)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Fshih abonimet në buletinin e lajmeve në Redaktuesin e Familjes."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Fshih fushën Data e Mikut në Redaktuesin e Personit."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Fshih fushën Data e Martesës në Redaktuesin e Familjes."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Sa kohë qëndron e bllokuar një llogari e bllokuar. Hyrjet e dështuara nga një adresë IP numërohen gjatë së njëjtës periudhë."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Me sa karaktere duhet të ndryshojë një fjalëkalim i ri nga i vjetri. 0 e çaktivizon këtë."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Te Administrimi → Telemetria, aktivizoni Shpërnda faqet e përdorura për të zgjedhur E plotë. E plotë dërgon edhe shikime faqesh."
+
+#: 
+msgid "Initials Format"
+msgstr "Formati i inicialeve"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Teksti i letrës %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Periudha e bllokimit (minuta)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Bllokon një llogari pas kaq hyrjeve të dështuara radhazi. Zhbllokohet pas periudhës së bllokimit, ose kur një administrator e rivendos. 0 e çaktivizon bllokimin."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Menaxho Portalin e Anëtarëve"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Anëtarët mund të hyjnë me e-postën e tyre."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Anëtarët nuk mund të hyjnë ende."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Ndryshimi minimal i karaktereve"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Gjatësia minimale e fjalëkalimit"
+
+#: 
+msgid "Name Format"
+msgstr "Formati i emrit"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Emri i shtypur nën mbylljen e letrave dhe e-postave"
+
+#: 
+msgid "No Payments Text"
+msgstr "Teksti kur nuk ka pagesa"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Teksti kur nuk ka zotim"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Asnjë nivel nuk dërgon njerëz, dhurues, dhurime, përmbajtje, të dhëna kontakti të kishës, adresën tuaj të uebit ose emrin e serverit."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Asnjë nivel nuk dërgon adresën tuaj të uebit ose emrin e serverit. Instalimet testuese nuk dërgojnë asgjë. Telemetria dërgohet te PostHog në Shtetet e Bashkuara."
+
+#: 
+msgid "OS family"
+msgstr "Familja e OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragrafi hapës i letrës kujtesë për zotimin."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragrafi që fton pyetje në deklaratën e dhurimeve."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragrafi që fton pyetje në letrën e dhuruesve zero."
+
+#: 
+msgid "Passwords"
+msgstr "Fjalëkalimet"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "I shtypur pas intervalit të datave në rreshtin hapës të letrës së dhuruesve zero."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "I shtypur i pari në deklaratën e dhurimeve, i ndjekur nga intervali i datave."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Shtypet kur një familje nuk ka pagesa të regjistruara."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Shtypet kur një familje nuk ka zotim të regjistruar."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Refuzon hyrjen nga një adresë IP për periudhën e bllokimit pas kaq hyrjeve të dështuara ose rivendosjeve të fjalëkalimit. 0 e çaktivizon, për shembull kur të gjithë lidhen përmes një proxy të vetëm."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Kërko vërtetimin dyfaktorësh"
+
+#: 
+msgid "Security Settings"
+msgstr "Cilësimet e sigurisë"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Dërgo raporte gabimesh, ngjarje instalimi/përmirësimi dhe informacion sistemi që problemet të mund të rregullohen. Pa shikime faqesh, pa të dhëna kishe."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Koha e skadimit të sesionit (sekonda)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Shpërnda faqet e përdorura"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Hyrja & Siguria"
+
+#: 
+msgid "Signature Storage"
+msgstr "Ruajtja e nënshkrimit"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Nxjerr jashtë një përdorues pas kaq sekondash pa aktivitet. 0 nuk e nxjerr kurrë jashtë."
+
+#: 
+msgid "System-wide"
+msgstr "Në të gjithë sistemin"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teksti pas datave"
+
+#: 
+msgid "Text Messages"
+msgstr "Mesazhet me tekst"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragrafi i falënderimit i deklaratës së dhurimeve."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragrafi i falënderimit i letrës së dhuruesve zero."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konvertimi dështoi. Asgjë nuk u ndryshua."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Po përdor një skedar koke letre të ruajtur para se të shtoheshin ngarkimet. Ngarkoni një kokë letre për ta zëvendësuar."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Paralajmërimi pas (orë)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Fjala para emrit në letra dhe e-posta, për shembull I dashur."
+
+#: 
+msgid "Amount offset, left"
+msgstr "Zhvendosja e shumës, majtas"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Të dhënat demo u ngarkuan"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Çdo pozicion duhet të jetë një numër nga 0 deri në 1000 milimetra."
+
+#: 
+msgid "First date, left"
+msgstr "Data e parë, majtas"
+
+#: 
+msgid "First date, top"
+msgstr "Data e parë, lart"
+
+#: 
+msgid "Item count, left"
+msgstr "Numri i artikujve, majtas"
+
+#: 
+msgid "Item count, top"
+msgstr "Numri i artikujve, lart"
+
+#: 
+msgid "Left margin"
+msgstr "Margjina e majtë"
+
+#: 
+msgid "Line items"
+msgstr "Artikujt e rreshtave"
+
+#: 
+msgid "Maximum height"
+msgstr "Lartësia maksimale"
+
+#: 
+msgid "Maximum width"
+msgstr "Gjerësia maksimale"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "I çaktivizuar si parazgjedhje. Na ndihmon të përmirësojmë ChurchCRM. Nuk përfshin kurrë kishën tuaj ose njerëzit e saj."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforimi, lart"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Pozicionet në milimetra në biletën e depozitës të printuar paraprakisht"
+
+#: 
+msgid "Saved"
+msgstr "Ruajtur"
+
+#: 
+msgid "Second date, left"
+msgstr "Data e dytë, majtas"
+
+#: 
+msgid "See what's shared"
+msgstr "Shihni çfarë ndahet"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Hapësira, horizontale"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Hapësira, vertikale"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Nëntotali, majtas"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Nëntotali, lart"
+
+#: 
+msgid "Ticket"
+msgstr "Bileta e depozitës"
+
+#: 
+msgid "Title, left"
+msgstr "Titulli, majtas"
+
+#: 
+msgid "Top margin"
+msgstr "Margjina e sipërme"
+
+#: 
+msgid "Total, left"
+msgstr "Totali, majtas"
+
+#: 
+msgid "Total, top"
+msgstr "Totali, lart"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

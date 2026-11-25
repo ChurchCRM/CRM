@@ -177,7 +177,7 @@ $inactive = (int) $event->getInActive() === 1;
               <?php if ($canEmail && $nonAttendeeRecipients !== []): ?>
                 <button type="button" id="event-email-non-attendees" class="btn btn-sm btn-outline-primary"
                         data-email-composer
-                        data-email-recipients="<?= InputUtils::escapeAttribute(json_encode($nonAttendeeRecipients)) ?>"
+                        data-email-recipients="<?= InputUtils::jsonEncodeForAttribute($nonAttendeeRecipients) ?>"
                         data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email non-attendees: %s'), $event->getTitle())) ?>">
                   <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                 </button>
@@ -246,7 +246,7 @@ $inactive = (int) $event->getInActive() === 1;
     <!--
       Volunteer v2 staffing (#9713, design §3.5). Read-only: who is needed and how many are
       short, per occurrence linked to this event. The route decided whether it may be shown
-      at all (rollout flag AND scope) and hands over an empty array otherwise, so there is no
+      at all (scope) and hands over an empty array otherwise, so there is no
       permission logic here. Editing happens on the occurrence page.
     -->
     <?php if (!empty($volunteerOccurrences)): ?>
@@ -258,7 +258,7 @@ $inactive = (int) $event->getInActive() === 1;
         </div>
         <div class="list-group list-group-flush">
           <?php foreach ($volunteerOccurrences as $vo): ?>
-            <div class="list-group-item volunteer-staffing-row" data-volunteer-staffing="<?= InputUtils::escapeAttribute(json_encode($vo['staffing'])) ?>">
+            <div class="list-group-item volunteer-staffing-row" data-volunteer-staffing="<?= InputUtils::jsonEncodeForAttribute($vo['staffing']) ?>">
               <div class="d-flex justify-content-between align-items-start gap-2">
                 <div>
                   <div class="fw-bold"><?= InputUtils::escapeHTML($vo['ministryName']) ?></div>

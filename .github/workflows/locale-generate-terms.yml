@@ -7,6 +7,8 @@ run-name: >-
 #   2. Wait (default 15 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
 #      wait, so a burst of code merges becomes ONE terms PR. A manual run skips the wait and cancels a
 #      wait that is already running ("run now", e.g. before a release).
+#      A manual run may also set force: the terms PR then opens or updates even when the change check
+#      finds no meaningful changes — for when terms are known to be missing but a run would no-op.
 #   3. Extract the strings (npm run locale:build) into locale/messages.po. The same command then
 #      brings every locale in line with it (locale:apply --prune: translations of removed strings are
 #      dropped, each locale .po/.mo is rebuilt from its JSON) and rewrites locale/terms/missing/<code>/*.json,
@@ -29,6 +31,11 @@ on:
       - '!src/locale/i18n/**'
       - '!src/locale/textdomain/**'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force the terms PR open/update even when the change check finds no meaningful changes'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -111,7 +118,12 @@ jobs:
 
       - name: Check for meaningful changes
         id: check_changes
-        run: node locale/scripts/lib/locale-po-changes.js
+        run: |
+          node locale/scripts/lib/locale-po-changes.js
+          if [ "${{ inputs.force }}" = "true" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Forced run: the terms PR will open or update even without meaningful .po changes."
+          fi
 
       - name: List new and removed terms
         id: report
@@ -139,7 +151,7 @@ jobs:
       # shows everything master has not merged yet. GITHUB_TOKEN: the PR still needs a person's merge.
       - name: Open or update the terms PR
         if: steps.check_changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8
         with:
           token: ${{ github.token }}
           base: master

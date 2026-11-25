@@ -21,8 +21,8 @@ use Slim\Factory\AppFactory;
 $basePath = SlimUtils::getBasePath('/kiosk');
 
 // Determine if this is an admin route or a device route
-$requestUri = $_SERVER['REQUEST_URI'] ?? '';
-$isAdminRoute = str_contains($requestUri, '/kiosk/admin') || str_contains($requestUri, '/kiosk/api');
+$requestPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+$isAdminRoute = str_starts_with($requestPath, $basePath . '/admin') || str_starts_with($requestPath, $basePath . '/api');
 
 // For device routes, handle kiosk device initialization
 if (!$isAdminRoute) {
@@ -49,7 +49,6 @@ if (!$isAdminRoute) {
                     'samesite' => 'Lax',
                 ]);
                 http_response_code(401);
-                $sRootPath = SystemURLs::getRootPath();
                 require __DIR__ . '/templates/registration-closed.php';
                 exit;
             }
@@ -72,7 +71,6 @@ if (!$isAdminRoute) {
     } else {
         // No cookie and registration window is closed - show registration disabled page
         http_response_code(401);
-        $sRootPath = SystemURLs::getRootPath();
         require __DIR__ . '/templates/registration-closed.php';
         exit;
     }

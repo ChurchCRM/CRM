@@ -101,7 +101,7 @@ describe("Access Denied Page", () => {
         it("Should redirect to dashboard when clicking Go to Dashboard button", () => {
             cy.visit("/v2/access-denied?role=Admin");
             cy.get("a").contains("Go to Dashboard").click();
-            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("include", "/people/dashboard");
             cy.contains("Dashboard").should("be.visible");
         });
     });

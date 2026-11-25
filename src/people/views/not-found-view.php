@@ -1,6 +1,8 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardLandingService;
 
 $sPageTitle = gettext("Not Found") .":" . gettext($memberType);
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -27,7 +29,7 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $message = gettext('We could not find the group you were looking for.');
     $code = 404;
 } else {
-    $returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
+    $returnUrl = DashboardLandingService::urlFor(AuthenticationManager::getCurrentUser());
     $returnText = gettext('Return to Dashboard');
     $title = gettext('Not Found');
     $message = gettext('We could not find the record you were looking for.');

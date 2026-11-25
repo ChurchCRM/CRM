@@ -98,11 +98,22 @@ describe("Mailing address on mailed reports", () => {
             body: JSON.stringify(body),
         });
 
+    // Every test in this file navigates the legacy FamilyEditor and report
+    // pages; on a loaded runner their load event can exceed the project's
+    // 30s pageLoadTimeout (master run 44322974230), and the timeout orphans
+    // the family being created — its id is tracked only after the landing —
+    // tripping the row-count guard. Give this file's navigations more room
+    // and restore the project default afterwards (same pattern as #11748).
+    before(() => {
+        Cypress.config("pageLoadTimeout", 120000);
+    });
+
     beforeEach(() => {
         cy.freshAdminFormLogin();
     });
 
     after(() => {
+        Cypress.config("pageLoadTimeout", 30000);
         // deleteMembers: without it the family delete only unlinks the members,
         // which would leave the directory suite's people behind as orphans.
         createdFamilyIds.forEach((id) => {

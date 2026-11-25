@@ -31,7 +31,6 @@
  * Cleanup runs in `before` as well as `after` (cypress-testing.md).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = 99;
@@ -55,7 +54,6 @@ let posSongLeader = 0;
 let posCommunion = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
-let originalVersion = "v1";
 let seriesStart = "";
 let seriesEnd = "";
 
@@ -78,10 +76,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -279,11 +273,6 @@ after(() => {
 
 describe("Volunteer v2 — substitution / swap workflow (#9709, epic #9701, D13)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
-
         cleanupFixtures();
 
         api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, {
@@ -411,7 +400,6 @@ describe("Volunteer v2 — substitution / swap workflow (#9709, epic #9701, D13)
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ───────────────────────────────────────────────────────────────────────────

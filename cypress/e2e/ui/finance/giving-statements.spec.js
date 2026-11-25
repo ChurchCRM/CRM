@@ -120,3 +120,42 @@ describe("Giving statements", () => {
         cy.contains("No Data Found");
     });
 });
+
+describe("Canadian statement review form", () => {
+    let previousCountry;
+    before(() => {
+        cy.getSystemConfig("sChurchCountry").then((value) => { previousCountry = value; });
+        cy.setSystemConfig("sChurchCountry", "CA");
+    });
+    after(() => cy.restoreSystemConfig("sChurchCountry", previousCountry));
+    beforeEach(() => cy.freshAdminFormLogin({ enabled: true }));
+    it("requires donor review without selecting members or carrying standard filters", () => {
+        cy.visit(`${statementsPath}?template=canadian`);
+        cy.get("#calendarYear").clear().type("2025");
+        cy.get("#canadianFamily").select("1");
+        cy.get("#copyKind").select("duplicate");
+        cy.get('[name="review"]').click();
+        // Prefilled from the heads of household, and still editable.
+        cy.get('[name="donorNames[1]"]').invoke("val").should("include", "Mathew").and("include", "Alice");
+        cy.get('[name="donorNames[1]"]').should("not.be.disabled");
+        cy.get('[name="donorVerified[1]"]').should("not.be.checked");
+        // The Campbell family has no postal code, so the review names the problem and leaves it out.
+        cy.get('fieldset[data-family-id="1"] .alert-danger').should("contain", "mailing address is incomplete");
+        cy.get('fieldset[data-family-id="1"] [name="family[]"]').should("be.disabled").and("not.be.checked");
+        cy.get("#canadianBlocked").should("be.visible");
+        cy.get("#canadianDownload").should("be.disabled");
+        cy.get("#issueDate").should("have.value", "");
+        cy.get("#DateStart, #DateEnd, #fundsList, #deposit, #minimum").should("not.exist");
+        cy.get("#canadianDownload").should("have.attr", "formaction").and("include", "/download");
+        cy.get("#canadianReportForm").should("have.attr", "method", "post");
+        for (const theme of ["light", "dark"]) {
+            for (const width of [1440, 820, 390]) {
+                cy.viewport(width, 1000);
+                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
+                cy.get("#canadianReportForm").should("be.visible");
+                cy.document().then((document) => expect(document.documentElement.scrollWidth).to.be.at.most(width));
+                cy.screenshot(`canadian-review-${theme}-${width}`);
+            }
+        }
+    });
+});

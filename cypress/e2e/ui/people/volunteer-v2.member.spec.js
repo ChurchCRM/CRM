@@ -25,7 +25,6 @@
  * which now looks at the portal's nav because the admin sidebar is not there.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 /**
@@ -64,10 +63,6 @@ let seriesEnd = "";
 
 function freshMemberLogin() {
     cy.signInAsMember(MEMBER_USERNAME);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
@@ -243,7 +238,6 @@ after(() => {
 
 describe("Volunteer v2 — S5 / S6, the volunteer self-service screens (#9712, §5.6), inside the Member Portal (#9867)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
@@ -363,7 +357,6 @@ describe("Volunteer v2 — S5 / S6, the volunteer self-service screens (#9712, �
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // ── S5 — My schedule (§5.6) ────────────────────────────────────────────────

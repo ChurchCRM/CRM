@@ -26,9 +26,6 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
  * reached from. Every other AddEvent-gated route (check-in/out, quick-create, the repeat
  * generator, calendar administration, the audit sweep) keeps the untouched
  * `AddEventsRoleAuthMiddleware`, because nothing in D9 asks for those.
- *
- * With the rollout flag off, `User::canWriteEvents()` collapses back to `canManageEvents()`
- * and this class behaves exactly like its sibling.
  */
 class AddEventsOrMinistryRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {

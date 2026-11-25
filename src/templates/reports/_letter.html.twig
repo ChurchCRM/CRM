@@ -1,7 +1,7 @@
 {% extends "_base.html.twig" %}
 {% block content %}
   {% block letter_body %}{% endblock %}
-  {% if generated_on %}
+  {% if generated_on and not canadian|default(false) %}
     <div class="generated">{{ gettext('Generated') }} {{ generated_on }}</div>
   {% endif %}
 {% endblock %}

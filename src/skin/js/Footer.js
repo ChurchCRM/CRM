@@ -202,11 +202,44 @@ function initializeApp() {
   // Load fundraiser count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadFundraiserCount();
 
+  // "Read more" fills the shared right-side panel with the full notice.
+  document.querySelectorAll(".js-notification-more").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const panel = document.getElementById("notificationDetailPanel");
+      if (!panel || !window.bootstrap) {
+        return;
+      }
+      // The navbar clips a panel nested in it; move it to the body first.
+      document.body.appendChild(panel);
+      document.getElementById("notificationDetailTitle").textContent = btn.dataset.title || "";
+      document.getElementById("notificationDetailBody").textContent = btn.dataset.message || "";
+      const link = document.getElementById("notificationDetailLink");
+      link.hidden = !btn.dataset.url;
+      link.href = btn.dataset.url || "#";
+      window.bootstrap.Modal.getOrCreateInstance(panel).show();
+    });
+  });
+
   // Initialize notification dismissal handlers
   document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const alert = btn.closest("[data-notification-id]");
       const dismissKey = alert?.dataset.dismissKey;
+      // In the notification center there is no Bootstrap alert to fade out:
+      // remove the item and keep the badge count honest.
+      const center = document.getElementById("notificationCenterMenuItem");
+      if (center && alert && center.contains(alert)) {
+        alert.remove();
+        const remaining = center.querySelectorAll("[data-notification-id]").length;
+        if (remaining === 0) {
+          center.remove();
+        } else {
+          const badge = document.getElementById("notificationCenterCount");
+          if (badge) {
+            badge.textContent = remaining;
+          }
+        }
+      }
       if (!dismissKey) {
         return;
       }

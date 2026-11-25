@@ -66,25 +66,11 @@ describe("Admin - Report Settings page", () => {
             .should("have.text", "Finance");
     });
 
-    it("auto-saves the letter closing and no longer lists it on System Settings", () => {
-        cy.intercept("POST", "**/admin/api/system/config/sConfirmSincerely").as("saveClosing");
+    it("keeps the signature storage folder and leaves the letter fields to People Settings", () => {
         cy.visit("/admin/system/report-settings");
         cy.get("#letter-settings-panel .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-        cy.get("#letter-settings-panel input[name='sDear']").should("exist");
-        cy.get("#letter-settings-panel input[name='sDear']").then(($dear) => {
-            cy.get("#letter-settings-panel input[name='sConfirmSincerely']").should(($closing) => {
-                expect($closing[0].getBoundingClientRect().top).to.be.greaterThan($dear[0].getBoundingClientRect().bottom - 1);
-            });
-        });
-        cy.get("#letter-settings-panel input[name='sConfirmSigner']").should("exist");
-        cy.get("#letter-settings-panel input[name='sConfirmSincerely']").clear().type("Warmly").blur();
-        cy.wait("@saveClosing").its("response.statusCode").should("eq", 200);
-        cy.getSystemConfig("sConfirmSincerely").should("eq", "Warmly");
-        cy.get("#letter-settings-panel input[name='sConfirmSincerely']").clear().type("Sincerely").blur();
-        cy.wait("@saveClosing");
-
-        cy.visit("/SystemSettings.php");
-        cy.get("[name='new_value[sDear]'], [name='new_value[sConfirmSincerely]'], [name='new_value[sConfirmSigner]']").should("not.exist");
+        cy.get("#letter-settings-panel input[name='sTaxSignatureStoragePath']").should("exist");
+        cy.get("#letter-settings-panel input[name='sDear'], #letter-settings-panel input[name='sConfirmSincerely'], #letter-settings-panel input[name='sConfirmSigner']").should("not.exist");
     });
 
     it("shows the letterhead card and opens the shared uploader", () => {
@@ -199,7 +185,7 @@ describe("Private Canadian giving-statement signature", () => {
 
     it("stores a re-encoded private image with an opaque random identifier and removes it", () => {
         cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").then((firstIdentifier) => {
+        cy.getSystemConfig("sTaxSignatureAsset").then((firstIdentifier) => {
             expect(firstIdentifier).to.match(/^[a-f0-9]{64}\.png$/);
             cy.readEnv("admin.api.key").then((key) => {
                 cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, encoding: "base64" }).then((image) => {
@@ -213,11 +199,11 @@ describe("Private Canadian giving-statement signature", () => {
             cy.request({ url: absoluteUrl(`/Images/TaxSignatures/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
             cy.request({ url: absoluteUrl("/Images/TaxSignatures/"), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
-            cy.getSystemConfig("sCanadianTaxSignatureAsset").should("not.eq", firstIdentifier);
+            cy.getSystemConfig("sTaxSignatureAsset").should("not.eq", firstIdentifier);
             cy.request({ url: absoluteUrl(`/Images/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("eq", 404);
         });
         cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+        cy.getSystemConfig("sTaxSignatureAsset").should("eq", "");
         cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
         cy.readEnv("admin.api.key").then((key) => {
             cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, failOnStatusCode: false }).its("status").should("eq", 404);
@@ -277,9 +263,9 @@ describe("Private Canadian giving-statement signature", () => {
 
     it("blocks direct asset-setting writes", () => {
         for (const value of ["https://example.com/signature.png", "../../Include/Config.php", "a".repeat(64) + ".png", ""]) {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sCanadianTaxSignatureAsset", { value }, 400);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sTaxSignatureAsset", { value }, 400);
         }
-        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+        cy.getSystemConfig("sTaxSignatureAsset").should("eq", "");
     });
 
     it("rejects session writes without CSRF and denies finance-only access", () => {
@@ -292,5 +278,47 @@ describe("Private Canadian giving-statement signature", () => {
         cy.request({ url: `${endpoint}/image`, failOnStatusCode: false, followRedirect: false }).its("status").should("eq", 403);
         cy.clearCookies();
         cy.request({ url: `${endpoint}/image`, failOnStatusCode: false, followRedirect: false }).its("status").should("be.oneOf", [302, 401]);
+    });
+});
+
+describe("Admin - Tax signature control", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("DELETE", "/admin/api/system/tax-signature", null, 200);
+        cy.freshAdminFormLogin({ enabled: true });
+    });
+    after(() => cy.makePrivateAdminAPICall("DELETE", "/admin/api/system/tax-signature", null, 200));
+    it("uploads, replaces and removes the private signature through Report Settings", () => {
+        cy.intercept("GET", "**/admin/api/system/tax-signature").as("signatureStatus");
+        cy.intercept("POST", "**/admin/api/system/tax-signature").as("signatureUpload");
+        cy.intercept("DELETE", "**/admin/api/system/tax-signature").as("signatureRemove");
+        cy.visit("/admin/system/report-settings");
+        cy.wait("@signatureStatus");
+        cy.get("#tax-signature-status").should("contain", "No signature on file");
+        for (const fileName of ["signature.png", "replacement.png"]) {
+            cy.get("#tax-signature-file").selectFile({ contents: Cypress.Buffer.from(LETTERHEAD_PNG_BASE64, "base64"), fileName, mimeType: "image/png" });
+            cy.wait("@signatureUpload").its("response.statusCode").should("eq", 200);
+            cy.get("#tax-signature-status").should("have.text", "Signature on file");
+        }
+        cy.get("#tax-signature-remove").click();
+        cy.get(".bootbox .btn-danger").contains("Remove").click();
+        cy.wait("@signatureRemove");
+        cy.get("#tax-signature-status").should("contain", "No signature on file");
+        cy.get("#tax-signature-remove").should("be.disabled");
+        for (const theme of ["light", "dark"]) {
+            for (const width of [1440, 820, 390]) {
+                cy.viewport(width, 1000);
+                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
+                cy.get("#tax-signature-card").scrollIntoView().should("be.visible");
+                cy.document().then((document) => expect(document.documentElement.scrollWidth).to.be.at.most(width));
+                cy.screenshot(`canadian-settings-${theme}-${width}`);
+            }
+        }
+    });
+    it("shows the API validation error for a rejected file", () => {
+        cy.intercept("POST", "**/admin/api/system/tax-signature").as("badSignature");
+        cy.visit("/admin/system/report-settings");
+        cy.get("#tax-signature-file").selectFile({ contents: Cypress.Buffer.from("<svg></svg>"), fileName: "signature.svg", mimeType: "image/svg+xml" });
+        cy.wait("@badSignature").its("response.statusCode").should("eq", 400);
+        cy.get("#tax-signature-error").should("not.be.empty");
     });
 });

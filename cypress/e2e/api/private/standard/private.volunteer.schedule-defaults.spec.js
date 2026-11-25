@@ -21,7 +21,6 @@
 const ADMIN_KEY = "admin.api.key";
 const URL = "/api/ministries";
 const configUrl = (name) => `/admin/api/system/config/${name}`;
-const VERSION = "sVolunteerVersion";
 const HORIZON = "iVolunteerSchedulingHorizonWeeks";
 const LEAD = "iVolunteerReminderLeadHours";
 const DEFAULT_TYPE = "iVolunteerDefaultEventTypeId";
@@ -276,7 +275,7 @@ after(() => {
 
 describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
     before(() => {
-        for (const name of [VERSION, HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT]) {
+        for (const name of [HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT]) {
             getConfig(name).then((value) => {
                 original[name] = value;
             });
@@ -284,7 +283,6 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         getConfig("sTimeZone").then((value) => {
             timezone = value || "UTC";
         });
-        setConfig(VERSION, "v2");
         setConfig(HORIZON, "8");
         cleanupFixtures();
 
@@ -316,7 +314,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
 
     after(() => {
         cleanupFixtures();
-        for (const name of [HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
+        for (const name of [HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT]) {
             setConfig(name, original[name], [200, 400]);
         }
     });

@@ -5,7 +5,7 @@ import { settle } from '../support/human';
 
 /**
  * One shot per module dashboard, all populated by the demo data import —
- * distinct from dashboard-hero (`/v2/dashboard`, the main landing page).
+ * distinct from dashboard-hero (`/people/dashboard`, the main landing page).
  * `/people/email` and `/people/text` are deliberately excluded:
  * both only ever show a "disabled" warning banner on this demo instance
  * (no real SMTP/SMS server configured — see communication.spec.ts's
@@ -59,7 +59,7 @@ test.describe('Module Dashboards', () => {
     const capture = defineCapture({ name, title, category: 'Dashboards', purpose, usedIn, locales });
     test(name, capture, async ({ page }, testInfo) => {
       await page.goto(path);
-      await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
+      await expect(page.locator('h2').first()).toBeVisible({ timeout: 15000 });
       if (name === 'dashboard-finance') {
         await expect(page.locator('#payments-by-fund-chart .apexcharts-svg')).toBeVisible();
       }

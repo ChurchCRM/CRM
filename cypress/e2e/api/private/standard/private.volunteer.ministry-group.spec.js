@@ -42,7 +42,6 @@
  * leave its group behind as an orphan nobody can recognise.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const TIMERJOBS_LAST_RUN_URL =
     "/admin/api/system/config/sLastTimerJobsRunDateTime";
 const VOLUNTEER_URL = "/api/ministries";
@@ -85,10 +84,6 @@ function dbOk(sql, params = []) {
         }
         return result.rows;
     });
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function cleanupFixtures() {
@@ -216,7 +211,6 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
             mailpitAvailable = result.available;
         });
 
-        setVersion("v2");
         cleanupFixtures();
 
         // The premise of every "coordinator without Manage Groups" test below. If a
@@ -246,7 +240,6 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // -----------------------------------------------------------------
@@ -786,19 +779,6 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
                 { helpWanted: true },
                 200,
             );
-        });
-
-        it("keeps the advert behind the rollout flag", () => {
-            setVersion("v1");
-            // Without V2 there is no member API: a member session is not signed in to it.
-            cy.makeMemberAPICall(
-                PERSON_VOLUNTEER,
-                "GET",
-                `${VOLUNTEER_URL}/me/help-wanted`,
-                null,
-                401,
-            );
-            setVersion("v2");
         });
 
         it("refuses an unauthenticated offer", () => {

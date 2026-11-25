@@ -377,18 +377,6 @@ msgid "(No assigned family)"
 msgstr "(Нет присвоена серия)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Преобразование Лица семьям"
-
-#: 
-msgid "Convert Next"
-msgstr "Преобразование Далее"
-
-#: 
-msgid "Convert All"
-msgstr "Конвертировать все"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Депозит номер накладной"
@@ -1340,10 +1328,6 @@ msgid "People"
 msgstr "Люди"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Дети Воскресной школы"
-
-#: 
 msgid "Role / Gender"
 msgstr "Роль / Пол"
 
@@ -1406,10 +1390,6 @@ msgstr "Группа"
 #: 
 msgid "Default"
 msgstr "По умолчанию"
-
-#: 
-msgid "Exit"
-msgstr "Выход"
 
 #: 
 msgid "Add New"
@@ -1516,11 +1496,6 @@ msgstr "Обновить свойства"
 #: 
 msgid "Assign New Group"
 msgstr "Назначить новую группу"
-
-#: 
-#, fuzzy
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Назначьте Возможность Нью-добровольцев"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1638,11 +1613,6 @@ msgid "Restore Database"
 msgstr "Восстановить базу данных"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of"
-msgstr "Пожалуйста, подтвердите удаление"
-
-#: 
 msgid "Listing"
 msgstr "Составление списка"
 
@@ -1661,10 +1631,6 @@ msgstr "Сохранить настройки"
 #: 
 msgid "Permission"
 msgstr "Разрешение"
-
-#: 
-msgid "System Settings"
-msgstr "Системные настройки"
 
 #: 
 msgid "User Editor"
@@ -1736,14 +1702,6 @@ msgstr "Новый пароль"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Подтвердите новый пароль"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Редактор служений"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Нет волонтеров не было добавлено еще"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2180,24 +2138,12 @@ msgid "Localization"
 msgstr "Локализация"
 
 #: 
-msgid "Setting saved"
-msgstr "Настройки сохранены"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Изменить настройки JSON"
-
-#: 
 msgid "False"
 msgstr "Ложный"
 
 #: 
 msgid "True"
 msgstr "Правдивый"
-
-#: 
-msgid "Edit Settings"
-msgstr "Изменить настройки"
 
 #: 
 msgid "Functions"
@@ -2250,14 +2196,6 @@ msgstr "Очистить все средства"
 #: 
 msgid "Deposit Comment"
 msgstr "Комментарий к депозиту"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Ошибка проверки подписи файла определения подписи"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Один или несколько файлов не прошли проверку подписи"
 
 #: 
 msgid "item"
@@ -2322,33 +2260,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Это номера ролей семьи, назначенные главой домохозяйства."
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Это номера ролей в семье, обозначенные как супруг."
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Номера семейных ролей, обозначенные как ребенок"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Минимальная длина, на которую пользователь может установить свой пароль"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Список запрещенных (слишком очевидных) паролей, разделенных запятыми."
-
-#: 
 msgid "Default City"
 msgstr "Город по умолчанию"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Осласть по умолчанию - должно быть двухбуквенное сокращение!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2371,68 +2284,12 @@ msgid "First month of the fiscal year"
 msgstr "Первый месяц финансового года"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Установите true, чтобы запретить ввод даты вступления в друзья в редакторе персон. Установите false, чтобы разрешить."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Установите true, чтобы отключить управление подписками на рассылку в редакторе семей."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Установите true, чтобы запретить ввод даты свадьбы в редакторе семей. Установите false, чтобы разрешить."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Количество чеков для отчета о депозите"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Единица измерения расстояния, мили или км."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Разрешить невычитаемые платежи"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Вербаж к верхней строке налоговой отчетности. Даты будут добавлены в конец этой строки."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Вербаж для итогов налоговой отчетности."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Лицо, подписывающее налоговый отчет"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Вербаж для отчета с напоминанием о залоге"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Подписчик напоминания о залоге"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о залоге"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о платежах"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Вербаж  для подтверждения информации базы данных и отчета об исправлениях"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Подписчик отчета о подтверждении и исправлении информации в базе данных"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Вербаж для отчета каталога"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3888,10 +3745,6 @@ msgstr "Архив резервной копии не содержит базу 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Приводить вводимые пользователем почтовые индексы к верхнему регистру при сохранении."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Используется для завершения письма перед подписью"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3996,10 +3849,6 @@ msgid "Failed"
 msgstr "Ошибка"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Номер расчетного счета церкви"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Семья отмечена как неактивная"
 
@@ -4010,10 +3859,6 @@ msgstr "Семья отмечена как активная"
 #: 
 msgid "families"
 msgstr "семьи"
-
-#: 
-msgid "Financial Settings"
-msgstr "Финансовые настройки"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -4054,10 +3899,6 @@ msgstr "Свойство успешно снято."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Не удалось снять свойство."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Текст перед именем в письмах/отчетах"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4106,10 +3947,6 @@ msgstr "Включить"
 #: 
 msgid "Legend"
 msgstr "Легенда"
-
-#: 
-msgid "assigned"
-msgstr "назначено"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -4304,10 +4141,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "запись(и) успешно добавлена в выбранную группу."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Для определения даты в выборе даты, по умолчанию: гггг-мм-дд, например, на русском: дд.мм.гггг."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Для определения формата даты, по умолчанию: Y-m-d, например: d.m.Y."
 
@@ -4394,10 +4227,6 @@ msgstr "З-СЗ"
 #: 
 msgid "WSW"
 msgstr "З-ЮЗ"
-
-#: 
-msgid "Search Family"
-msgstr "Поиск семьи"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4496,10 +4325,6 @@ msgid "Change Settings"
 msgstr "Изменить настройки"
 
 #: 
-msgid "Unknown Type"
-msgstr "Неизвестный тип"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "PersonID для корзины должен быть числом"
 
@@ -4520,20 +4345,8 @@ msgid "Maximum number of People"
 msgstr "Максимальное количество людей"
 
 #: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Поле духовника должно быть типа 'люди из группы'"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Поле последней исповеди должно быть типа 'дата'"
-
-#: 
 msgid "People Reports"
 msgstr "Отчеты по людям"
-
-#: 
-msgid "People Dashboard"
-msgstr "Панель Управления Людей"
 
 #: 
 msgid "People Directory"
@@ -4775,24 +4588,8 @@ msgid "Estonian"
 msgstr "Эстонский"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Ошибка декодирования файла определений подписей"
-
-#: 
 msgid "Event not found"
 msgstr "Событие не найдено"
-
-#: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Продолжительность времени ожидания сеанса в секундах\n"
-"Установите значение на ноль, чтобы убрать интервал ожидания сеанса."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
-"Чтобы отключить эту функцию установите значение \"ноль\""
 
 #: 
 msgid "Verify People"
@@ -4870,10 +4667,6 @@ msgstr "Снятые события"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Фамилия, Имя Отчество"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Отправить эл.письмо, уведомляющее пользователей о том, что их учетная запись была удалена"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -5129,10 +4922,6 @@ msgid "Enter event description..."
 msgstr "Введите описание события..."
 
 #: 
-msgid "Enter note text here..."
-msgstr "Введите текст заметки..."
-
-#: 
 msgid "Note"
 msgstr "Заметка"
 
@@ -5367,14 +5156,6 @@ msgstr "Введите корректный URL (напр. https://)"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Все подписи системных файлов верны."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Файл подписей существует, но недоступен для чтения."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Файл подписей отсутствует по пути %s."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6454,20 +6235,8 @@ msgid "Additional Information"
 msgstr "Дополнительная информация"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Установить служение"
-
-#: 
 msgid "Choose a property..."
 msgstr "Выберите свойство..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Выберите возможности..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Личная и конт. информация"
 
 #: 
 msgid "Edited"
@@ -6476,14 +6245,6 @@ msgstr "Изменено"
 #: 
 msgid "Newsletter"
 msgstr "Рассылка"
-
-#: 
-msgid "Personal"
-msgstr "Личное"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Выбрать служение"
 
 #: 
 msgid "Volunteer"
@@ -6674,10 +6435,6 @@ msgid "Confirm Property Deletion"
 msgstr "Подтвердите удаление свойства"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Подтвердите удаление волонтерской возможности"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
 
@@ -6690,16 +6447,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Существующие поля людей"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Существующие волонтерские возможности"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Поле успешно удалено"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Неверный токен CSRF"
 
 #: 
 msgid "Invalid fields or selections."
@@ -7899,10 +7648,6 @@ msgid "selected family has no coordinates"
 msgstr "У выбранной семьи нет координат"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Требовать от всех пользователей регистрации в двухфакторной аутентификации"
-
-#: 
 msgid "Active Groups"
 msgstr "Активные группы"
 
@@ -8103,10 +7848,6 @@ msgid "or later to continue."
 msgstr "или более поздней версии для продолжения."
 
 #: 
-msgid "\"Why Came\" Notes"
-msgstr "Заметки «Почему пришёл»"
-
-#: 
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
 msgstr[0] "%d результат для \"%s\""
@@ -8217,10 +7958,6 @@ msgstr "Добавить или изменить записи отдельных
 #: 
 msgid "Add or edit items donated for fundraising events"
 msgstr "Добавить или изменить пожертвованные предметы для благотворительных мероприятий"
-
-#: 
-msgid "Add or edit notes for people and families"
-msgstr "Добавить или изменить заметки для людей и семей"
 
 #: 
 msgid "Add staff and volunteers"
@@ -8391,10 +8128,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Выберите, как заполнить базу данных. Позже можно использовать другой метод."
 
 #: 
-msgid "Church Info"
-msgstr "Информация о церкви"
-
-#: 
 msgid "Clear all"
 msgstr "Очистить всё"
 
@@ -8427,14 +8160,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Выполните их в любом порядке, чтобы подготовить ChurchCRM для вашего прихода."
 
 #: 
-msgid "Confession"
-msgstr "Исповедь"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Настроить глобальные параметры системы"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Настроить параметры группы, роли и свойства"
 
@@ -8445,10 +8170,6 @@ msgstr "Подтвердите новый пароль"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Подключите SMTP-сервер для отправки писем из ChurchCRM"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Преобразовать отдельные записи в семейные единицы"
 
 #: 
 msgid "Convert to Family"
@@ -8479,20 +8200,12 @@ msgid "Create or edit property type categories"
 msgstr "Создать или изменить категории типов свойств"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Создать или изменить должности добровольцев"
-
-#: 
 msgid "Current person"
 msgstr "Текущий человек"
 
 #: 
 msgid "Database Reset"
 msgstr "Сброс базы данных"
-
-#: 
-msgid "Default / Notes"
-msgstr "По умолчанию / Заметки"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -8931,10 +8644,6 @@ msgid "Manage user account details and permissions"
 msgstr "Управление данными учётной записи и правами пользователя"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Управление волонтёрскими возможностями и назначением участников"
-
-#: 
 msgid "Map cart items"
 msgstr "Сопоставить элементы корзины"
 
@@ -9055,10 +8764,6 @@ msgid "No timeline events yet."
 msgstr "События временной шкалы отсутствуют."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Назначения волонтёрских возможностей отсутствуют."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Ещё не готовы?"
 
@@ -9095,10 +8800,6 @@ msgstr "Обзор"
 #: 
 msgid "Password Recovery"
 msgstr "Восстановление пароля"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Прошедшие и следующие 7 дней"
 
 #: 
 msgid "People by Classification"
@@ -9183,10 +8884,6 @@ msgstr "Записать нескольких победителей розыг�
 #: 
 msgid "Record new pledges and payments"
 msgstr "Записать новые обязательства по пожертвованиям и платежи"
-
-#: 
-msgid "Record why attendees visited your church"
-msgstr "Записать причину посещения церкви"
 
 #: 
 msgid "Remove from Class"
@@ -9569,10 +9266,6 @@ msgid "funds"
 msgstr "фонды"
 
 #: 
-msgid "opportunities"
-msgstr "возможности"
-
-#: 
 msgid "or connect an external service"
 msgstr "или подключите внешний сервис"
 
@@ -9875,11 +9568,6 @@ msgstr "Не удалось получить номера телефонов"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Найти волонтеров для конкретной возможности"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Друзья, которые зарегистрировались в предыдущие месяцы"
 
@@ -10138,10 +9826,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Разрешить обновление системы до версий, помеченных как 'pre release' на GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Разрешить неаутентифицированный доступ к событиям календаря через общедоступные URL в форматах HTML, ICS и JSON. Требуется для совместного использования календарей с внешними приложениями."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Разрешить посетителям создавать собственную запись семьи через страницу самостоятельной регистрации"
 
@@ -10304,24 +9988,12 @@ msgid "Enable Email"
 msgstr "Включить email"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Включить меню событий"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Включить внешний API календаря"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Включить отправку email из ChurchCRM. Необходимо для сброса пароля, уведомлений и ссылок по email."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Включить, если ваш SMTP-сервер требует имя пользователя и пароль"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Включить или отключить модуль воскресной школы и боковое меню."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10419,10 +10091,6 @@ msgstr "Скрыть широту/долготу"
 #: 
 msgid "How it works"
 msgstr "Как это работает"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Сколько чеков печатать на страницу квитанции депозита"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10582,10 +10250,6 @@ msgid "Privacy Note"
 msgstr "Примечание о конфиденциальности"
 
 #: 
-msgid "Quick Settings"
-msgstr "Быстрые настройки"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP-аутентификация"
 
@@ -10612,10 +10276,6 @@ msgstr "Настройка"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Показывать разбивку номиналов банкнот в отчёте о квитанции депозита"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Показывать или скрывать меню «Мероприятия» в главной навигации."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -11001,10 +10661,6 @@ msgstr "Тёмная"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Только база данных (.sql) или полный архив (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Количество строк по умолчанию в таблицах данных. Вступает в силу при следующей загрузке страницы."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -11033,10 +10689,6 @@ msgstr "Если вы заметили искажённые символы, HTML
 #: 
 msgid "Indigo"
 msgstr "Индиго"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Недопустимое значение JSON — настройка не была сохранена. Пожалуйста, исправьте и попробуйте снова."
 
 #: 
 msgid "Language and regional settings"
@@ -12649,10 +12301,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Невозможно удалить тип свойства: на него ссылаются %d свойства(-в). Сначала переназначьте или удалите эти свойства."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Невозможно удалить возможность волонтёрства: ей назначено %d человек(-а). Сначала снимите назначения."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Класс должен быть одним из: p, f или g"
 
@@ -12663,10 +12311,6 @@ msgstr "Копировать сообщение об ошибке"
 #: 
 msgid "Could not load note."
 msgstr "Не удалось загрузить заметку."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Описание не должно превышать 100 символов"
 
 #: 
 msgid "Donation fund not found"
@@ -12689,10 +12333,6 @@ msgid "Failed to create property type"
 msgstr "Не удалось создать тип свойства"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Не удалось создать возможность волонтёрства"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Не удалось удалить фонд пожертвований"
 
@@ -12709,10 +12349,6 @@ msgid "Failed to delete property type"
 msgstr "Не удалось удалить тип свойства"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Не удалось удалить возможность волонтёрства"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Не удалось обновить фонд пожертвований"
 
@@ -12725,10 +12361,6 @@ msgid "Failed to update property type"
 msgstr "Не удалось обновить тип свойства"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Не удалось обновить возможность волонтёрства"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Сбор средств не найден"
 
@@ -12739,10 +12371,6 @@ msgstr "Идентификатор установки"
 #: 
 msgid "Invalid class"
 msgstr "Недопустимый класс"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Имя не должно превышать 30 символов"
 
 #: 
 msgid "Note by %s deleted"
@@ -12765,16 +12393,8 @@ msgid "Read more"
 msgstr "Подробнее"
 
 #: 
-msgid "That name already exists."
-msgstr "Такое имя уже существует."
-
-#: 
 msgid "Title is required"
 msgstr "Заголовок обязателен"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Возможность волонтёрства не найдена"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12847,10 +12467,6 @@ msgstr "Весь день"
 #: 
 msgid "All Roles"
 msgstr "Все роли"
-
-#: 
-msgid "All System Settings"
-msgstr "Все системные настройки"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -12985,14 +12601,6 @@ msgid "Click Save to apply."
 msgstr "Нажмите «Сохранить» для применения."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API буфера обмена недоступен. Пожалуйста, скопируйте URL вручную."
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Буфер обмена недоступен. Используйте кнопку «Скачать», чтобы сохранить коды."
-
-#: 
 msgid "Code incomplete"
 msgstr "Код не полон"
 
@@ -13111,10 +12719,6 @@ msgstr "Демонстрационные данные обычно загруж�
 #: 
 msgid "Deposit ID"
 msgstr "ID депозита"
-
-#: 
-msgid "Deposit Value"
-msgstr "Сумма депозита"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13533,22 +13137,6 @@ msgid "Move Members to Group"
 msgstr "Переместить участников в группу"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Должен быть валидный URL, начинающийся с http:// или https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Должен быть валидный URL (например, https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Должен быть валидный номер порта (например, 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Должно начинаться с / если не пусто; без завершающей косой черты. Разрешены только буквы, цифры, подчёркивание, дефис, точка и /."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Нужно будет удалить эти данные позже?"
 
@@ -13571,14 +13159,6 @@ msgstr "Нет депозитов"
 #: 
 msgid "No Events Today"
 msgstr "Сегодня нет мероприятий"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Нет годовщин за прошедшие или следующие 7 дней"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Нет дней рождения за прошедшие или следующие 7 дней"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13707,10 +13287,6 @@ msgstr "Введите корректный адрес эл. почты"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Введите корректный адрес эл. почты (напр., name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Введите корректное число"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -14527,24 +14103,12 @@ msgid "People &amp; Families"
 msgstr "Прихожане &amp; Семьи"
 
 #: 
-msgid "The note you are trying to edit no longer exists."
-msgstr "Заметка, которую вы пытаетесь редактировать, больше не существует."
-
-#: 
 msgid "User List"
 msgstr "Список пользователей"
 
 #: 
 msgid "View Person"
 msgstr "Просмотр прихожанина"
-
-#: 
-msgid "You do not have permission to add a note for this family."
-msgstr "У вас нет разрешения добавлять заметку для этой семьи."
-
-#: 
-msgid "You do not have permission to add a note for this person."
-msgstr "У вас нет разрешения добавлять заметку для этого прихожанина."
 
 #: 
 msgid "Account locked"
@@ -15179,10 +14743,6 @@ msgid "Target family"
 msgstr "Целевая семья"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Группа не найдена. Пожалуйста, попробуйте ещё раз."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Выбранная семья больше не существует. Пожалуйста, обновите страницу и попробуйте ещё раз."
 
@@ -15249,10 +14809,6 @@ msgstr "goalAmount должен быть неотрицательным"
 #: 
 msgid "thru %s"
 msgstr "по %s"
-
-#: 
-msgid "\"Why Came\" notes for %1$s %2$s"
-msgstr "Заметки «Причина прихода» для %1$s %2$s"
 
 #: 
 msgid "%1$s of the %2$s family"
@@ -15387,10 +14943,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Разделённый пробелами список источников, которым разрешено встраивать публичную страницу внешнего календаря в <iframe> (CSP frame-ancestors). Значение по умолчанию \"*\" разрешает любой источник. Для повышения безопасности ограничьте конкретными источниками, например \"https://mysite.org https://embed.example.com\"."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Разделённые пробелами источники, которым разрешено встраивать публичную страницу календаря в <iframe> (CSP frame-ancestors). Значение по умолчанию \"*\" разрешает любой сайт. Для повышения безопасности ограничьте, например \"https://mysite.org\"."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Группа воскресной школы не может быть изменена, только в этих двух случаях"
 
@@ -15401,10 +14953,6 @@ msgstr "Поддерживаемые форматы"
 #: 
 msgid "System Configuration"
 msgstr "Конфигурация системы"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "К этому волонтёрскому служению прикреплены люди. Удаление отменит назначение"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15635,10 +15183,6 @@ msgid "Add New Fund"
 msgstr "Добавить новый фонд"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Добавить новую возможность"
-
-#: 
 msgid "Add New Person"
 msgstr "Добавить нового прихожанина"
 
@@ -15651,10 +15195,6 @@ msgid "Add New Role"
 msgstr "Добавить новую роль"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Добавить новое волонтёрское служение"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Добавить класс воскресной школы"
 
@@ -15665,10 +15205,6 @@ msgstr "Удалить эту семью?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Просмотрите новые семьи и отдельных лиц, зарегистрировавшихся через публичную форму регистрации"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Подтверждение удаления волонтёрского служения"
 
 #: 
 msgid "# Payments"
@@ -15747,10 +15283,6 @@ msgid "ChurchCRM version"
 msgstr "Версия ChurchCRM"
 
 #: 
-msgid "Collection level"
-msgstr "Уровень сбора данных"
-
-#: 
 msgid "Count unique installs"
 msgstr "Подсчёт уникальных установок"
 
@@ -15805,14 +15337,6 @@ msgstr "Не удалось обновить обетование"
 #: 
 msgid "Financial data"
 msgstr "Финансовые данные"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Полный — всё вышеперечисленное плюс просмотры страниц"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Полный — просмотры страниц, предупреждения, ошибки и исключения JS"
 
 #: 
 msgid "Fund Summary"
@@ -15891,10 +15415,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Не вычитаемая сумма не может превышать сумму фонда"
 
 #: 
-msgid "None (disabled)"
-msgstr "Нет (отключено)"
-
-#: 
 msgid "Overpaid"
 msgstr "Переплачено"
 
@@ -15955,10 +15475,6 @@ msgid "Select a fund"
 msgstr "Выберите фонд"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Отправить тестовое поздравление с днём рождения себе"
-
-#: 
 msgid "Sending to"
 msgstr "Отправляется на"
 
@@ -16013,10 +15529,6 @@ msgstr "Поздравляем с замечательным днём рожде
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "В вашем профиле не указан адрес электронной почты. Добавьте его в профиль, чтобы отправить тест."
-
-#: 
-msgid "errors+"
-msgstr "ошибки+"
 
 #: 
 msgid "full only"
@@ -16983,10 +16495,6 @@ msgid "Not a valid date of death"
 msgstr "Недопустимая дата смерти"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Количество дней, которое есть у пользователей для подключения 2FA после того, как она стала обязательной. Установите 0, чтобы требовать её немедленно. Сокращение уже действующего льготного периода может немедленно заблокировать доступ пользователям."
-
-#: 
 msgid "Offline"
 msgstr "Не в сети"
 
@@ -17311,14 +16819,6 @@ msgid "Download CSV"
 msgstr "Загрузить CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Включить или отключить модуль Финансы и меню боковой панели."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Включить или отключить модуль сбора средств."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Ошибка при удалении логотипа Церкви"
 
@@ -17337,14 +16837,6 @@ msgstr "Модуль Финансы"
 #: 
 msgid "Find people who did not attend an event"
 msgstr "Найти людей, которые не присутствовали на мероприятии"
-
-#: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Найти волонтеров, соответствующих двум конкретным кодам возможностей"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Первая возможность для волонтеров"
 
 #: 
 msgid "Folded Booklet"
@@ -17423,10 +16915,6 @@ msgid "Run Report"
 msgstr "Запустить отчет"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Вторая возможность для волонтеров"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Отображается в боковой панели, на странице входа и в письмах. Загрузка логотипа заменяет логотип ChurchCRM везде, где он появляется."
 
@@ -17455,14 +16943,6 @@ msgid "View Full Family Giving"
 msgstr "Просмотреть полные благотворительные взносы семьи"
 
 #: 
-msgid "Volunteer Opportunity"
-msgstr "Возможность для волонтеров"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Волонтеры для двух возможностей"
-
-#: 
 msgid "YTD"
 msgstr "С начала года"
 
@@ -17481,10 +16961,6 @@ msgstr "системные журналы"
 #: 
 msgid "Access Control & Security"
 msgstr "Контроль доступа и безопасность"
-
-#: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Разрешить записывать не подлежащие налоговому вычету платежи (например, продажу товаров)"
 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
@@ -17539,46 +17015,6 @@ msgid "Feature Toggles"
 msgstr "Переключатели функций"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Переключатели функций управляют тем, какие модули и функции доступны в ChurchCRM. Изменения вступают в силу немедленно."
-
-#: 
-msgid "Finance Features"
-msgstr "Финансовые функции"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Включить адреса в быстрый глобальный поиск"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Включить события календаря в быстрый глобальный поиск"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Включить пользовательские свойства семей в быстрый глобальный поиск"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Включить депозиты в быстрый глобальный поиск"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Включить семьи в быстрый глобальный поиск"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Включить министерства в быстрый глобальный поиск"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Включить платежи в быстрый глобальный поиск"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Включить людей в быстрый глобальный поиск"
-
-#: 
 msgid "Invalid setting"
 msgstr "Недопустимое значение"
 
@@ -17587,16 +17023,8 @@ msgid "Lost Password Link"
 msgstr "Ссылка для восстановления пароля"
 
 #: 
-msgid "Manage All Features"
-msgstr "Управлять всеми функциями"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Главный переключатель для отправки электронной почты. ТРЕБУЕТСЯ для восстановления пароля и уведомлений"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Платежи, не подлежащие вычету"
 
 #: 
 msgid "Primary Modules"
@@ -17607,20 +17035,12 @@ msgid "Public Calendar API"
 msgstr "Публичный API календаря"
 
 #: 
-msgid "Saved"
-msgstr "Сохранено"
-
-#: 
 msgid "Search Families"
 msgstr "Поиск семей"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Поиск пользовательских свойств семей"
-
-#: 
-msgid "Search Settings"
-msgstr "Параметры поиска"
 
 #: 
 msgid "Self-Registration"
@@ -17839,14 +17259,6 @@ msgid "People to notify when a new family or person is added"
 msgstr "Кого уведомлять при добавлении новой семьи или человека"
 
 #: 
-msgid "Person initials style"
-msgstr "Стиль инициалов человека"
-
-#: 
-msgid "Person name display style"
-msgstr "Стиль отображения имени человека"
-
-#: 
 msgid "Spouse Role"
 msgstr "Роль супруга(и)"
 
@@ -17935,14 +17347,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Регистрации из вашей общедоступной формы, ожидающие проверки. Записи без эл. почты или телефона помечены — проверьте контактные данные, прежде чем связываться."
 
 #: 
-msgid "Review now"
-msgstr "Проверить сейчас"
-
-#: 
-msgid "Review self registrations"
-msgstr "Проверить саморегистрации"
-
-#: 
 msgid "Select month"
 msgstr "Выберите месяц"
 
@@ -17971,10 +17375,6 @@ msgid "This person is not a pending self-registration"
 msgstr "Этот человек не ожидает проверки саморегистрации"
 
 #: 
-msgid "This self-registered family is pending review"
-msgstr "Эта саморегистрированная семья ожидает проверки"
-
-#: 
 msgid "Total registrations"
 msgstr "Всего регистраций"
 
@@ -17989,10 +17389,6 @@ msgstr "Вчера"
 #: 
 msgid "days ago"
 msgstr "дн. назад"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "саморегистраций ожидают проверки"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18309,10 +17705,6 @@ msgid "A schedule that staffs one event cannot follow other events; delete it an
 msgstr "Расписание, обслуживающее одно событие, не может следовать за другими событиями; удалите его и добавьте новое расписание"
 
 #: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "Единый список возможностей служения, например «Детская комната» или «Встречающий», который ведётся в разделе «Люди» → «Администрирование». Каждому человеку присваиваются метки возможностей, в которых он готов помогать, на вкладке «Волонтёр» его карточки. Это всё, что записывается: нет команд, расписаний, назначений на дату и напоминаний по эл. почте. Метки используются в отчётах и в карточке человека."
-
-#: 
 msgid "A square picture of your face works best."
 msgstr "Лучше всего подходит квадратное фото лица."
 
@@ -18619,18 +18011,6 @@ msgstr "Фоновые задания выполнены"
 #: 
 msgid "Birthday greeting"
 msgstr "Поздравление с днём рождения"
-
-#: 
-msgid "Both"
-msgstr "Оба"
-
-#: 
-msgid "Both (transition)"
-msgstr "Оба (переход)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Оба — V1 и V2 рядом (переход)"
 
 #: 
 msgid "Calendar address"
@@ -21725,22 +21105,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "У пользователя должно быть право добавлять события или он должен координировать волонтёрское служение, которому принадлежит этот календарь"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Возможности для волонтёров (прежняя версия)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — прежние Возможности для волонтёров"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Служения"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Управление волонтёрами"
-
-#: 
 msgid "Valid"
 msgstr "Действительно"
 
@@ -21759,14 +21123,6 @@ msgstr "Посмотреть событие"
 #: 
 msgid "View this email"
 msgstr "Посмотреть это письмо"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Волонтёр (прежняя версия)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Управление волонтёрами V2 не включено"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21877,10 +21233,6 @@ msgid "What the check found"
 msgstr "Что обнаружила проверка"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Что представляют собой режимы работы с волонтёрами"
-
-#: 
 msgid "What you want to say"
 msgstr "Что вы хотите сказать"
 
@@ -21911,10 +21263,6 @@ msgstr "Откуда берутся даты"
 #: 
 msgid "Where we reach you"
 msgstr "Как мы с вами связываемся"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Какой режим управления волонтёрами активен. V1 — прежняя функция «Возможности для волонтёров»; V2 — новый процесс планирования и назначений. «Оба» показывает их рядом на время перехода."
 
 #: 
 msgid "Which events"
@@ -22323,10 +21671,6 @@ msgstr "У вас нет прав для изменения группы это�
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Только руководитель добровольцев может изменить координатора служения"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "Выбор V1 приостанавливает отправку писем V2; все отложенные письма будут отправлены при включении V2, если событие еще не завершилось."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22967,10 +22311,6 @@ msgid "This email batch was queued by another user"
 msgstr "Этот пакет писем поставил в очередь другой пользователь"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "После импорта можно сбросить базу данных на панели администратора, чтобы очистить все данные и начать заново. Настройки приложения сохранятся."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Импорт демонстрационных данных..."
 
@@ -23171,10 +22511,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Упреждение оповещения о незаполненной позиции (часы)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Управление добровольцами"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Служения добровольцев, команды, расписания и назначения"
 
@@ -23185,14 +22521,6 @@ msgstr "Позиции добровольцев на ближайшие дни"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Добровольцы ещё нужны для этих предстоящих проведений: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Что это значит?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Какой опыт добровольцев использует эта церковь"
 
 #: 
 msgid "You are on the schedule"
@@ -23963,30 +23291,6 @@ msgid "Download PDF"
 msgstr "Скачать PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Период блокировки в минутах\n"
-"Заблокированная учётная запись разблокируется автоматически через это количество минут. Неудачные попытки входа с одного IP-адреса учитываются за тот же период."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Максимальное количество неудачных попыток входа с одного IP-адреса\n"
-"Неудачные попытки входа и запросы на сброс пароля с одного IP-адреса учитываются в этом лимите в течение периода блокировки. После достижения лимита вход с этого адреса отклоняется до окончания периода.\n"
-"Установите ноль, чтобы отключить эту функцию, например, когда все получают доступ к ChurchCRM через один прокси-адрес."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальное количество неудачных попыток входа до блокировки учётной записи пользователя.\n"
-"Заблокированная учётная запись разблокируется автоматически после периода блокировки или раньше, если администратор сбрасывает неудачные попытки.\n"
-"Эта функция помогает защитить от автоматизированных атак подбора пароля.\n"
-"Установите ноль, чтобы отключить эту функцию."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Минут до автоматической разблокировки: %d"
 
@@ -24123,10 +23427,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d платежей ещё не включены ни в один депозит."
 
 #: 
-msgid "Closing line"
-msgstr "Заключительная строка"
-
-#: 
 msgid "Every deposit dated in this year is closed."
 msgstr "Все депозиты, датированные этим годом, закрыты."
 
@@ -24139,28 +23439,8 @@ msgid "Every payment in this year is on a deposit."
 msgstr "Каждый платёж этого года включён в депозит."
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Сформировать налоговые выписки"
-
-#: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Отчёт о пожертвованиях (налоговые выписки)"
-
-#: 
-msgid "Opening line"
-msgstr "Вступительная строка"
-
-#: 
 msgid "Qty"
 msgstr "Кол-во"
-
-#: 
-msgid "Signed by"
-msgstr "Подписал"
-
-#: 
-msgid "Thank-you line"
-msgstr "Строка благодарности"
 
 #: 
 msgid "Year-End Giving"
@@ -24319,10 +23599,6 @@ msgid "The PDF temporary directory must be an absolute directory path."
 msgstr "Временный каталог PDF должен быть абсолютным путём к каталогу."
 
 #: 
-msgid "Church Tax ID (EIN)"
-msgstr "Налоговый идентификатор церкви (EIN)"
-
-#: 
 msgid "Closing Line"
 msgstr "Заключительная строка"
 
@@ -24341,10 +23617,6 @@ msgstr "Обработка PDF"
 #: 
 msgid "PDF Output"
 msgstr "Вывод PDF"
-
-#: 
-msgid "PDF handling mode"
-msgstr "Режим обработки PDF"
 
 #: 
 msgid "Questions Line"
@@ -24367,10 +23639,6 @@ msgid "Statement Wording"
 msgstr "Формулировки выписки"
 
 #: 
-msgid "Tax Information"
-msgstr "Налоговые сведения"
-
-#: 
 msgid "Failed to remove letterhead"
 msgstr "Не удалось удалить бланк"
 
@@ -24385,10 +23653,6 @@ msgstr "Не удалось загрузить бланк"
 #: 
 msgid "Greeting"
 msgstr "Приветствие"
-
-#: 
-msgid "Letter greeting and signature"
-msgstr "Приветствие и подпись письма"
 
 #: 
 msgid "Letterhead"
@@ -24413,14 +23677,6 @@ msgstr "Задайте бланк, который печатают письма 
 #: 
 msgid "Using the church name and address"
 msgstr "Используются название и адрес церкви"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Используется путь к бланку из системных параметров"
-
-#: 
-msgid "Wording, tax ID and PDF handling for giving statements"
-msgstr "Формулировки, налоговый идентификатор и обработка PDF для выписок о пожертвованиях"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24693,10 +23949,6 @@ msgstr "Страна церкви"
 #: 
 msgid "Church default: %s"
 msgstr "Значение церкви по умолчанию: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Вход руководителя церкви"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25341,10 +24593,6 @@ msgstr "Не завершено"
 #: 
 msgid "Not moved"
 msgstr "Не перенесено"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Не уверены, какой адрес у нас есть? Обратитесь в церковную канцелярию."
 
 #: 
 msgid "Not yet"
@@ -26599,248 +25847,8 @@ msgid "Review Family Information"
 msgstr "Проверить сведения о семье"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "Служение с названием «%s» уже существует. Выберите его из списка или укажите другое название."
-
-#: 
-msgid "A new ministry"
-msgstr "Новое служение"
-
-#: 
-msgid "A position"
-msgstr "Позиция"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Добавить волонтеров ({{total}}) на ранее преобразованные позиции?"
-
-#: 
-msgid "Already converted"
-msgstr "Уже преобразовано"
-
-#: 
-msgid "An existing ministry"
-msgstr "Существующее служение"
-
-#: 
-msgid "Becomes"
-msgstr "Становится"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "В ChurchCRM есть два способа управления волонтерами. Одновременно должен использоваться только один; настройка «Режим волонтеров» определяет, какой из них видит эта церковь. Переключение скрывает или показывает страницы и пункты меню и никогда не удаляет данные. V1 и Оба доступны, только пока используются Возможности для волонтеров: когда все возможности преобразованы и церковь перешла на V2, они исчезают из этого списка."
-
-#: 
-msgid "Convert"
-msgstr "Преобразовать"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Преобразовать Возможности для волонтеров"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Преобразовать возможности ({{total}}) сейчас? Данные V1 сохраняются без изменений до вывода Возможностей для волонтеров из использования."
-
-#: 
-msgid "Converted"
-msgstr "Преобразовано"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Преобразовано: позиций — {{positions}}, служений — {{ministries}}, допущено волонтеров — {{qualifications}}."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Каждая возможность становится позицией в первой команде одного служения, а все связанные с ней люди получают допуск к этой позиции. Самозапись на эти позиции изначально отключена."
-
-#: 
-msgid "Everything is converted."
-msgstr "Все преобразовано."
-
-#: 
-msgid "Existing ministry"
-msgstr "Существующее служение"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Дайте новому служению название длиной до 100 символов."
-
-#: 
-msgid "Its own ministry"
-msgstr "Собственное служение"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Связаны с тех пор: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Связи, которые нельзя преобразовать"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Новые отдельные служения"
-
-#: 
-msgid "New ministry name"
-msgstr "Название нового служения"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Письма не отправляются, а Возможности для волонтеров остаются без изменений до вывода их из использования."
-
-#: 
-msgid "No name"
-msgstr "Без названия"
-
-#: 
-msgid "Not converted"
-msgstr "Не преобразовано"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Открыть Переключатели функций"
-
-#: 
-msgid "Open Ministries"
-msgstr "Открыть Служения"
-
-#: 
-msgid "Opportunities"
-msgstr "Возможности"
-
-#: 
-msgid "Opportunity"
-msgstr "Возможность"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Возможность № %d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Люди, связанные с преобразованными Возможностями для волонтеров после преобразования: %d. Добавьте их на позиции до того, как Возможности для волонтеров будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Сначала выполните предпросмотр преобразования и отправьте полученную в ответ ревизию."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Переименовано, чтобы названия не повторялись"
-
-#: 
-msgid "Review the conversion"
-msgstr "Проверить преобразование"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Отправьте выбор преобразования в виде объекта JSON."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Отправьте возможности, которые станут служениями, в виде списка идентификаторов."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Такого служения не существует."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Версия ChurchCRM, в которой администратор скрыл уведомление о выводе Возможностей для волонтеров из использования."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Возможности для волонтеров изменились после предпросмотра. Проверьте предпросмотр еще раз, затем выполните преобразование."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Не удалось открыть подтверждение. Перезагрузите страницу и повторите попытку."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Не удалось выполнить предпросмотр преобразования."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Преобразование не удалось. Ничего не изменено."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "У служения «%s» нет команды для этих позиций."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Не удалось связаться с сервером. Перезагрузите страницу, чтобы проверить, выполнено ли преобразование."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Нет Возможностей для волонтеров для преобразования."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Управление добровольцами переключается в режим «Оба», чтобы новые служения были видны рядом с Возможностями для волонтеров."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Возможности для волонтеров выводятся из использования"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Возможности для волонтеров преобразованы"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Возможности для волонтеров будут выведены из использования в начале 2027 года. Преобразуйте их в Служения, чтобы сохранить, кто где служит."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Возможности для волонтеров будут выведены из использования в начале 2027 года. Преобразуйте сейчас в Служения ваши возможности (%1$d) и волонтеров (%2$d). Вы можете просмотреть результат до того, как что-либо изменится."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Допущенные волонтеры"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Волонтеры для добавления на преобразованные позиции"
-
-#: 
-msgid "What it becomes"
-msgstr "Чем становится"
-
-#: 
-msgid "What will happen"
-msgstr "Что произойдет"
-
-#: 
-msgid "Where they go"
-msgstr "Куда они попадут"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Какие прежние Возможности для волонтеров преобразованы и какой позицией стала каждая из них."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Какой режим волонтеров использует эта церковь. Возможности для волонтеров (V1) будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Ваши Возможности для волонтеров преобразованы в Служения. Переключите Управление добровольцами на V2 до того, как Возможности для волонтеров будут выведены из использования в начале 2027 года."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "в новое служение, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "в служение {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "больше нет в ChurchCRM"
 
 #: 
 msgid "Collapse sidebar"
@@ -26878,14 +25886,6 @@ msgstr "Платежи по фондам"
 msgid "Unknown Fund"
 msgstr "Неизвестный фонд"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Попросите хостинг-провайдера перевести базу данных на поддерживаемую версию, а затем повторите попытку."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Попросите хостинг-провайдера перевести базу данных на поддерживаемую версию."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26903,18 +25903,6 @@ msgstr "Требовать номер чека при записи платеж�
 #: 
 msgid "Require check number on check payments"
 msgstr "Требовать номер чека при оплате чеком"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Обновление не было запущено, поэтому ничего не изменилось."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Это обновление невозможно выполнить на вашей базе данных."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Ваш сервер базы данных (%1$s %2$s) старее, чем поддерживает ChurchCRM (MySQL %3$s или MariaDB %4$s и новее)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -27021,10 +26009,6 @@ msgstr[2] "%d назначений по умолчанию пропущено п
 msgstr[3] "%d назначения по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Переходная настройка. Доступны и прежние страницы «Возможности для волонтёров», и новые страницы «Служения», а в карточке человека показаны обе вкладки «Волонтёр» с понятными подписями. Используйте её на время перехода церкви с V1 на V2, затем переключитесь только на V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Назначение отменено"
 
@@ -27073,32 +26057,12 @@ msgid "This occurrence has been canceled"
 msgstr "Это проведение отменено"
 
 #: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Волонтёрство, организованное так, как это принято в церкви. У каждого служения есть команды и позиции; люди получают квалификацию для позиций и входят в группу резерва служения; расписания следуют за событиями календаря и создают проведения с датами и потребностями в людях; координаторы назначают людей, которые принимают назначение, отказываются или предлагают замену; напоминания и оповещения отправляются по эл. почте. Администраторы и пользователи с правом «Управление служениями» видят все служения и могут создавать, деактивировать и удалять их. Координатору служения вместо этого даётся право «Управление моими служениями»: тогда раздел «Служения» на боковой панели показывает только те служения, которые он координирует. Руководитель команды управляет своей командой через портал общины. Члены общины используют портал общины, чтобы видеть своё расписание, отвечать, записываться и предлагать помощь."
-
-#: 
 msgid "Count active installations and upgrade outcomes"
 msgstr "Подсчитывать активные установки и результаты обновлений"
 
 #: 
 msgid "Database engine and major/minor version"
 msgstr "Движок базы данных и основная/дополнительная версия"
-
-#: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Ошибки — статистика установки, предупреждения, ошибки и исключения JS"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Помочь нам находить и исправлять проблемы?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Установка передает минимальную статистику установки и обновлений. Ошибки добавляет предупреждения и отчеты об ошибках. Полный добавляет просмотры страниц. Нет отправляет только неудачные установки и обновления."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Установка — статистика установки и обновлений (по умолчанию)"
 
 #: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
@@ -27109,68 +26073,12 @@ msgid "Installation profile"
 msgstr "Профиль установки"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Языковой стандарт (Ошибки и Полный)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Никогда не передаются: записи о членах, пожертвованиях и другие записи общины, название вашей общины, ваш веб-адрес или имя сервера, а также адреса электронной почты. Ваша страна берется из настроек общины, а не определяется по вашей сети."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Семейство ОС (Ошибки и Полный)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "Версия PHP (Ошибки и Полный)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Посмотрите, что именно передается, или измените свой выбор в разделе Администрирование → Телеметрия."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Различать рабочие, демонстрационные и тестовые установки"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Передавать анонимную статистику установки?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Передавать отчеты об ошибках и использовании"
-
-#: 
-msgid "Share install statistics"
-msgstr "Передавать статистику установки"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Дополнительно передаются: предупреждения, сведения об ошибках и открываемые страницы."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Передается: факт установки или обновления ChurchCRM и его успешность, сигнал раз в день во время использования, номер версии, ваша страна и тип базы данных. Случайный идентификатор установки позволяет учитывать каждую установку один раз."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Понимать совместимость баз данных"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Этот вопрос задается один раз. Вы можете изменить выбор в любое время. При выборе «Нет, спасибо» сообщается только о неудачной установке или обновлении."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Ваши данные принадлежат вам. Установка передает только результаты установки и обновлений, идентификатор установки, версию программы, профиль установки, указанную страну, а также движок базы данных и его основную/дополнительную версию. Ошибки добавляет предупреждения и сведения об ошибках. Полный добавляет просмотры страниц. Нет отправляет только неудачные установки и обновления. Ни один уровень не отправляет ваш веб-адрес или имя сервера. Тестовые установки ничего не отправляют. Телеметрия отправляется в PostHog в США."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Ваши данные принадлежат вам. Отчеты касаются программы и никогда — вашей общины или ее людей."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Ваши данные принадлежат вам. Чтобы подсчитывать установки, ChurchCRM сообщает, что был установлен или обновлен и прошло ли это успешно, раз в день отправляет сигнал во время использования, а также номер версии, вашу страну, тип базы данных и случайный идентификатор установки. Он никогда не сообщает записи о членах, пожертвованиях и другие записи общины, название вашей общины, ваш веб-адрес или имя сервера, а также адреса электронной почты. Вы можете отключить это в любое время в разделе Администрирование → Телеметрия; о неудачной установке или обновлении по-прежнему будет сообщено. Предупреждения, сведения об ошибках и просмотры страниц передаются, только если вы это выберете."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27243,10 +26151,6 @@ msgstr "У администраторов есть все права, пока �
 #: 
 msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr "Также отключить вход, чтобы они не могли пользоваться порталом участников"
-
-#: 
-msgid "Before You Send Statements"
-msgstr "Перед отправкой выписок"
 
 #: 
 msgid "Birthday today"
@@ -27331,10 +26235,6 @@ msgstr "Удаление людей и семей"
 #: 
 msgid "Delete the login for"
 msgstr "Удалить учётную запись для"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Период диаграммы взносов"
 
 #: 
 msgid "Disabled at"
@@ -27589,10 +26489,6 @@ msgid "Preview Sample Letter"
 msgstr "Просмотреть образец письма"
 
 #: 
-msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
-msgstr "Приватный идентификатор подписи на канадских выписках о пожертвованиях. Управляется через загрузку подписи."
-
-#: 
 msgid "Property Type"
 msgstr "Тип свойства"
 
@@ -27631,10 +26527,6 @@ msgstr "Проверить и отфильтровать"
 #: 
 msgid "Review and vote"
 msgstr "Просмотреть и проголосовать"
-
-#: 
-msgid "Review the year, then download giving statements."
-msgstr "Проверьте год, затем скачайте выписки о пожертвованиях."
 
 #: 
 msgid "Review what we are considering"
@@ -27683,10 +26575,6 @@ msgstr "Надёжный"
 #: 
 msgid "Support"
 msgstr "Поддержка"
-
-#: 
-msgid "Tax ID and PDF Settings"
-msgstr "Налоговый номер и настройки PDF"
 
 #: 
 msgid "The list could not be loaded. You can still open the ideas on GitHub."
@@ -27801,10 +26689,6 @@ msgid "View people and families"
 msgstr "Просмотр людей и семей"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Управление волонтёрами отключено для этой церкви"
-
-#: 
 msgid "Weak"
 msgstr "Слабый"
 
@@ -27873,10 +26757,6 @@ msgid "Latest Notes"
 msgstr "Последние заметки"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Заметки ещё не добавлены."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Начните регистрацию, чтобы получить QR-код."
 
@@ -27887,4 +26767,1736 @@ msgstr "Этот пароль или код неверен. Двухфактор
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Двухфакторная аутентификация уже настроена. Её секрет показывается только во время регистрации."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d подарок на общую сумму %2$s"
+msgstr[1] "%1$d подарка на общую сумму %2$s"
+msgstr[2] "%1$d подарков на общую сумму %2$s"
+msgstr[3] "%1$d подарков на общую сумму %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d семей в настоящее время имеют свойства этого типа."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d семья ещё не может получить квитанцию и пропускается. Исправьте проблему, указанную под ней, затем выберите «Проверить ещё раз»."
+msgstr[1] "%d семьи ещё не могут получить квитанцию и пропускаются. Исправьте проблемы, указанные под ними, затем выберите «Проверить ещё раз»."
+msgstr[2] "%d семей ещё не могут получить квитанцию и пропускаются. Исправьте проблемы, указанные под ними, затем выберите «Проверить ещё раз»."
+msgstr[3] "%d семей ещё не могут получить квитанцию и пропускаются. Исправьте проблемы, указанные под ними, затем выберите «Проверить ещё раз»."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d групп в настоящее время имеют свойства этого типа."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d человек в настоящее время имеют свойства этого типа."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d выпусков доступно с вашей установленной версии."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Квитанция не была создана."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: введите проверенное полное имя донора (доноров), подтвердите доноров и подтвердите один набор доноров. Наборы платежей от разных доноров необходимо обрабатывать вне этой функции."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: подарки или почтовый адрес изменились после проверки. Выберите «Проверить ещё раз» и снова подтвердите донора."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} взносов)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} взносов)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "Платёж кредитной картой или банковским переводом находится в депозите, который ещё не закрыт. Закройте депозит, когда платёж будет проведён."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "Платёж содержит сумму, не подлежащую вычету. Канадские квитанции здесь поддерживают только подарки без выгоды."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "Платёж имеет недопустимую денежную сумму."
+
+#: 
+msgid "A payment has no date."
+msgstr "У платежа нет даты."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "Платёж датирован позже даты выдачи."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "Платёж помечен как проблемный."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "Платёж равен нулю или отрицательный."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "Требуется проверенный POST-запрос с действительным токеном CSRF."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "Выбранная семья больше не существует."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "Изображение подписи не является безопасной цифровой подписью."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "Доступно обновление системы. Попросите администратора обновить вашу установку."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Все включённые строки — это денежные подарки без выгоды."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Все обязательные настройки канадских квитанций заполнены."
+
+#: 
+msgid "Also delete family members"
+msgstr "Также удалить членов семьи"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Сумма выгод"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Сумма подарков"
+
+#: 
+msgid "Amount per installment"
+msgstr "Сумма за взнос"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Введённые суммы являются"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "Администратор загружает его в разделе «Настройки отчётов»."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Одобрено, но приглашение не было отправлено"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Попросите системного администратора обновить ChurchCRM до последней версии."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Подпись уполномоченного лица"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Канадское налоговое агентство"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Канадская официальная квитанция"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Для канадских официальных квитанций в разделе «Информация о церкви» страной церкви должна быть Канада."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Канадские квитанции требуют весь календарный год и все фонды, без других фильтров."
+
+#: 
+msgid "Change Selection"
+msgstr "Изменить выбор"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Юридическое название благотворительной организации"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Юридический адрес благотворительной организации"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Регистрационный номер благотворительной организации"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Данные благотворительной организации для квитанций ещё не заполнены. Добавьте юридическое название, юридический адрес, регистрационный номер и место выдачи, когда сможете. Финансы до тех пор продолжат работать."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Благотворительная организация на квитанциях"
+
+#: 
+msgid "Check Again"
+msgstr "Проверить ещё раз"
+
+#: 
+msgid "Check the year"
+msgstr "Проверьте год"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Проверьте год, настройте выписку, затем скачайте."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Для суммы взноса выберите Еженедельно, Ежемесячно или Ежеквартально."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Выберите действительный календарный год пожертвований."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Выберите оригинал или дубликат."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Выберите общее обещание или сумму взноса."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "Переводы ChurchCRM ведутся в репозитории ChurchCRM на GitHub. Вы можете помочь,"
+
+#: 
+msgid "Commitment amount"
+msgstr "Сумма обещания"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Сравните дубликат с сохранённым оригиналом и подтвердите, что все данные квитанции не изменились."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Заполните каждое подтверждение квитанции перед скачиванием."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Заполните юридическое название благотворительной организации, юридический адрес, регистрационный номер, место выдачи и печатное имя подписанта."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Печатное имя подписанта письма-подтверждения"
+
+#: 
+msgid "Copy Kind"
+msgstr "Тип копии"
+
+#: 
+msgid "Currency"
+msgstr "Валюта"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Символ валюты $ или CAD"
+
+#: 
+msgid "Date received"
+msgstr "Дата получения"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "Удаление также удалит %d свойств и все их назначения, чтобы ничего не осталось висеть."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Все ли подарки за выбранный год принадлежат донору (донорам), указанным вместе выше?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Не используйте номер повторно для другой квитанции, не выдавайте квитанцию за одни и те же подарки дважды и не создавайте изменённые данные повторно как неизменный оригинал."
+
+#: 
+msgid "Duplicate"
+msgstr "Дубликат"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Дубликат / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Допустимая сумма подарков для целей подоходного налога"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Введите график и даты взносов, чтобы просмотреть обещание."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Введите действительные даты первого и последнего взносов по порядку."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Введите действительные суммы взносов не более чем с двумя знаками после запятой."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Существующие обещания сохраняют записанные итоги. Выбирайте сумму за взнос только при вводе каждого запланированного подарка."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Заполняется по главам домохозяйств и супругам. Отредактируйте, чтобы точно соответствовало донорам."
+
+#: 
+msgid "First installment"
+msgstr "Первый взнос"
+
+#: 
+msgid "Full commitment"
+msgstr "Полное обещание"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Создать налоговые выписки"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Календарный год подарков"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Выписка о пожертвованиях — не является официальной квитанцией о пожертвовании"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Помогите с переводом на GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Исторические изменения конвертов не поддерживаются."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Я сравнил с сохранённым оригиналом: донор, сумма, серийный номер и текст не изменились. Это не исправление и не замена."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Я сохраню выданный PDF и внешний журнал квитанций в канадском месте хранения документов благотворительной организации."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "Если сохранённый оригинал недоступен или отличается, воспользуйтесь внешними процедурами отмены/замены CRA."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Включить примечания к платежам: я проверил их как подходящие для донора."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Включить эту семью в скачивание"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Установленная версия: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Суммы взносов можно использовать только для обещаний."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Даты взносов должны быть в пределах выбранного финансового года."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Недействительный или отсутствующий токен CSRF"
+
+#: 
+msgid "Issue Date"
+msgstr "Дата выдачи"
+
+#: 
+msgid "Issue Locality"
+msgstr "Место выдачи"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Сохраняйте оригинальный PDF и внешний журнал квитанций в канадском месте хранения документов благотворительной организации."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Последний взнос в день или до"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Текст письма, данные благотворительной организации и обработка PDF настраиваются один раз в Настройках выписки."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Текст письма, данные благотворительной организации и обработка PDF для выписок о пожертвованиях"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Максимум 2 МиБ и 2000 × 1000 пикселей. Выберите новое изображение, чтобы заменить сохранённую подпись. Изображение подписи не является безопасной цифровой подписью."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Вход для участников отключён, поэтому никто из семьи %s не может войти на портал участников. Администратор может включить его в разделе Администрирование → Портал участников."
+
+#: 
+msgid "Memo"
+msgstr "Примечание"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Наборы семейных платежей от разных доноров здесь нельзя разделить; обрабатывайте их вне этой функции."
+
+#: 
+msgid "Narrow the list"
+msgstr "Сузить список"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Ни одна семья не соответствует этим фильтрам для %s."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Не существует перекрывающейся индивидуальной или совокупной квитанции."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Для этой семьи ещё нельзя создать квитанцию"
+
+#: 
+msgid "No signature on file"
+msgstr "Подпись отсутствует"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Нет — разные доноры; обработать вне этой функции"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Никто из семьи %s не может войти на портал участников по текущему правилу входа."
+
+#: 
+msgid "None / Aucun"
+msgstr "Нет / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Не готово к выдаче канадских квитанций. Всё ещё не хватает"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Официальная квитанция / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Официальная квитанция для целей подоходного налога / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Официальные квитанции требуют регистрационный номер в формате 123456789RR0001 и изображение подписи."
+
+#: 
+msgid "Original"
+msgstr "Оригинал"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Дата первоначальной выдачи (введите с сохранённого оригинала)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Даты платежей отражают даты получения подарков, включая документированный учёт почтового штемпеля чеков, отправленных по почте."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Печатается на обычных выписках о пожертвованиях, например EIN в Соединённых Штатах. То же значение указано в разделе «Информация о церкви»."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Частный идентификатор ресурса подписи выписки о пожертвованиях. Управляется загрузкой подписи."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Свойства / Назначения"
+
+#: 
+msgid "Property deleted"
+msgstr "Свойство удалено"
+
+#: 
+msgid "Property type deleted"
+msgstr "Тип свойства удалён"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Завершение квитанции"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Место выдачи квитанции"
+
+#: 
+msgid "Receipt No."
+msgstr "№ квитанции"
+
+#: 
+msgid "Registration Number"
+msgstr "Регистрационный номер"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Регистрационный номер в формате 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Примечания к выпуску сейчас недоступны."
+
+#: 
+msgid "Releases"
+msgstr "Выпуски"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Оставшееся обещание для %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Убрать требование 2FA"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Удалить сохранённое изображение подписи? Официальные квитанции требуют наличия подписи."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Отчёты и напоминания сравнивают это обещание за весь период с пожертвованиями. Оставшийся баланс не является расчётом просроченного взноса."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Отчёты и напоминания используют полное обещание, показанное выше. Оставшийся баланс не является расчётом просроченного взноса."
+
+#: 
+msgid "Require 2FA"
+msgstr "Требовать 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Сбросить параметры"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Проверить выбранные семьи"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "ОБРАЗЕЦ — НЕДЕЙСТВИТЕЛЬНО ДЛЯ НАЛОГОВЫХ ЦЕЛЕЙ"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Заполнитель образца подписи"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Укажите, требуется ли 2FA."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Обновления безопасности и поддержка предоставляются только для последней версии."
+
+#: 
+msgid "Select the families to review."
+msgstr "Выберите семьи для проверки."
+
+#: 
+msgid "Set up the statement"
+msgstr "Настроить выписку"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Чтобы продолжить, настройте двухфакторную аутентификацию."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Конфликт общего конверта: другая семья в настоящее время имеет этот номер конверта."
+
+#: 
+msgid "Signature Image"
+msgstr "Изображение подписи"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Изображение подписи (Администрирование, Настройки отчётов)"
+
+#: 
+msgid "Signature on file"
+msgstr "Подпись в наличии"
+
+#: 
+msgid "Sincerely"
+msgstr "С уважением"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "При редактировании повторяющегося обещания укажите основу суммы."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Стандартная выписка о пожертвованиях"
+
+#: 
+msgid "Statement Template"
+msgstr "Шаблон выписки"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Укажите дату выдачи не позднее сегодняшней."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Налоговый идентификатор на выписках"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "У семьи %s нет живых членов, которых можно пригласить на портал участников."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Канадский регистрационный номер должен иметь формат 123456789RR0001. Это не проверяет статус регистрации."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Регистрационный номер благотворительной организации должен быть текстом."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Регистрационный номер благотворительной организации, печатаемый на официальных квитанциях. Если пусто, используется налоговый идентификатор из раздела «Информация о церкви»."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Юридический адрес благотворительной организации. Если пусто, используется адрес из раздела «Информация о церкви»."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Заключительная фраза над подписантом, например «С уважением»."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Полное обещание не должно превышать 999999.99 на фонд, а суммы должны иметь не более двух знаков после запятой."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Подарки или почтовый адрес изменились после вашей последней проверки. Проверьте их и снова подтвердите донора."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Почтовый адрес неполный. Требуются улица, город, провинция и почтовый индекс."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Название, под которым зарегистрирована благотворительная организация. Оно может отличаться от названия церкви."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Место выдачи квитанций. Если пусто, используется город из раздела «Информация о церкви»."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Печатный подписант выписки о пожертвованиях уполномочен подписывать эти квитанции."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Символ валюты системы должен быть $ или обозначать CAD для канадских квитанций."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "В выбранном календарном году нет платежей."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Это настоящие доноры каждого подарка в этой семье/календарном году, а почтовый адрес верен."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Это изображение печатается над именем подписанта на выписках о пожертвованиях и квитанциях. Данные благотворительной организации и печатное имя подписанта находятся в разделе Финансы, Настройки выписки."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Эта опция форматирует канадскую квитанцию, но не ведёт реестр квитанций и не хранит PDF."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Эта самостоятельно зарегистрированная семья ожидает одобрения. Её одобрение отправляет каждому члену, который может войти на портал участников, приглашение по электронной почте проверить информацию о семье."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "У этого инструмента нет процесса отмены/замены; для исправлений/замены утерянных квитанций используйте существующий процесс, соответствующий требованиям CRA."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Этот пользователь должен настроить 2FA"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Это навсегда удалит запись семьи и её примечания. Это действие нельзя отменить."
+
+#: 
+msgid "Total commitment"
+msgstr "Общее обещание"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Не удалось просмотреть обещание."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Загрузить или заменить подпись"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Загрузите уполномоченную налоговую подпись в разделе «Настройки отчётов»."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Используйте даты в пределах выбранного финансового года. Ежемесячные и ежеквартальные подарки используют день первого взноса или последний день более коротких месяцев."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Проверенное полное имя донора (доноров)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Вместо этого проверьте семью лично."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Проверьте полное имя и адрес донора для каждой семьи. Наборы платежей от разных доноров необходимо обрабатывать вне этой функции."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Доступна версия %s. Попросите администратора обновить вашу установку."
+
+#: 
+msgid "View all emails"
+msgstr "Просмотреть все электронные письма"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Да — один проверенный набор доноров"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Страна вашей церкви — Канада, поэтому канадские официальные квитанции также доступны при создании выписок."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Страна вашей церкви — Канада, поэтому канадские официальные квитанции доступны в Выписках о пожертвованиях, а обычные выписки отмечены как неофициальные квитанции о пожертвовании."
+
+#: 
+msgid "groups"
+msgstr "группы"
+
+#: 
+msgid "14 days"
+msgstr "14 дней"
+
+#: 
+msgid "6 months"
+msgstr "6 месяцев"
+
+#: 
+msgid "60 days"
+msgstr "60 дней"
+
+#: 
+msgid "7 days"
+msgstr "7 дней"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Спросите в Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Смените пароль сразу после входа."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Выберите другой способ входа"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM не может подключиться к базе данных на localhost. Попробуйте вместо этого 127.0.0.1 или спросите у своего веб-хостинга имя хоста базы данных."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM не может подключиться к серверу базы данных по этому адресу и порту. Проверьте имя хоста и порт. На общем хостинге хост часто не localhost."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM не может прочитать свою проверку выпуска. Попросите веб-хостинг сделать папку ChurchCRM доступной для чтения или продолжите."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM не смог проверить разрешения папок"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM не смог проверить свои файлы. Попросите веб-хостинг посмотреть журнал ошибок сервера."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM не смог проверить программное обеспечение сервера"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM не смог подключиться к базе данных с этими настройками."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM не смог завершить установку. Попробуйте снова или попросите веб-хостинг проверить журнал ошибок сервера."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM не смог сохранить Include/Config.php. Попросите веб-хостинг сделать папку Include доступной для записи."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "Файлы ChurchCRM соответствуют выпуску"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Свернуть боковую панель до значков"
+
+#: 
+msgid "Congregation login"
+msgstr "Вход для общины"
+
+#: 
+msgid "Connect your database"
+msgstr "Подключите свою базу данных"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Подключение к вашей базе данных…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Не удалось сохранить вашу главную панель."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Сначала создайте базу данных MySQL или MariaDB в панели управления хостингом (в cPanel: %s), затем скопируйте сюда её данные. ChurchCRM поддерживает MySQL 8.4+ и MariaDB 10.11+ (выпуски LTS)."
+
+#: 
+msgid "Database host"
+msgstr "Хост базы данных"
+
+#: 
+msgid "Database name"
+msgstr "Имя базы данных"
+
+#: 
+msgid "Database password"
+msgstr "Пароль базы данных"
+
+#: 
+msgid "Database user"
+msgstr "Пользователь базы данных"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Пусто, когда ChurchCRM находится на верхнем уровне сайта. Иначе папка, например %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Введите текст заметки здесь..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Введите хост базы данных, например localhost или mysql.example.com. Используйте только буквы, цифры, точки и дефисы."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Введите имя базы данных. Используйте только буквы, цифры, подчёркивания, дефисы и точки."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Введите порт базы данных числом. Обычно это 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Введите пользователя базы данных. Используйте только буквы, цифры, подчёркивания, дефисы, точки и @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Введите папку, начиная с /, например /churchcrm, или оставьте пустой."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Введите пароль пользователя базы данных."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Введите веб-адрес, начиная с http:// или https://."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Каждая активная семья членов сделала платёж между %s и %s."
+
+#: 
+msgid "Exclude"
+msgstr "Исключить"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Файлы, оставшиеся от более старой версии"
+
+#: 
+msgid "Files to review"
+msgstr "Файлы для проверки"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Подготовьте данные базы данных от своего веб-хостинга. Это займёт около двух минут."
+
+#: 
+msgid "Hide"
+msgstr "Скрыть"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Состав общины"
+
+#: 
+msgid "Insights"
+msgstr "Аналитика"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Установить ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Установка завершена!"
+
+#: 
+msgid "Installation guide"
+msgstr "Руководство по установке"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Проверка целостности не пройдена"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Проверка целостности пройдена"
+
+#: 
+msgid "Last %d days"
+msgstr "Последние %d дней"
+
+#: 
+msgid "Last 12 months"
+msgstr "Последние 12 месяцев"
+
+#: 
+msgid "Main dashboard"
+msgstr "Главная панель управления"
+
+#: 
+msgid "Navigation"
+msgstr "Навигация"
+
+#: 
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Нет заметок в этом диапазоне времени."
+
+#: 
+msgid "No notes yet."
+msgstr "Пока нет заметок."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Часто %1$s. Некоторые хосты дают адрес вроде %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Сумма открытых"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Открывает финансовую панель для этого диапазона. Прошлый финансовый год выберите на самой панели."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Прошедшие 7 дней и следующие %d дней"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Разрешение сохранять настройки и фотографии"
+
+#: 
+msgid "Port"
+msgstr "Порт"
+
+#: 
+msgid "Ready"
+msgstr "Готово"
+
+#: 
+msgid "Recent"
+msgstr "Недавние"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Зарегистрируйте свою семью в нашей церкви"
+
+#: 
+msgid "Release check"
+msgstr "Проверка выпуска"
+
+#: 
+msgid "Report a problem"
+msgstr "Сообщить о проблеме"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Количество строк на страницу в каждой таблице и карточке панели. Вступает в силу при следующей загрузке страницы."
+
+#: 
+msgid "Send Test Email"
+msgstr "Отправить тестовое письмо"
+
+#: 
+msgid "Send a test email"
+msgstr "Отправить тестовое письмо"
+
+#: 
+msgid "Send them the list below."
+msgstr "Отправьте им список ниже."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Программное обеспечение сервера, нужное ChurchCRM"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Сделать моей главной панелью"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Войдите под своей учётной записью администратора"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Некоторые файлы ChurchCRM отсутствуют или изменены. Загрузите ChurchCRM снова, если страница не загружается."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Некоторые файлы ChurchCRM не были загружены."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Некоторые файлы на сервере не соответствуют выпуску ChurchCRM."
+
+#: 
+msgid "Staff login"
+msgstr "Вход для сотрудников"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Начинается с %1$s или %2$s и заканчивается на %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Панель, которая открывается после входа"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Сервер базы данных принял вход, но базы данных с таким именем нет."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Сервер базы данных отклонил это имя пользователя или пароль."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Имя, которое вы дали базе данных. Общие хосты часто добавляют спереди имя вашей учётной записи, например %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Пароль этого пользователя базы данных. ChurchCRM проверит эти данные, когда вы нажмёте «Установить»."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Файл проверки выпуска на этом сервере не соответствует ChurchCRM. Загрузите выпуск снова или продолжите и попросите веб-хостинг о помощи."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Тестовое сообщение приходит на адрес электронной почты церкви, а журнал отладки SMTP показывается здесь."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Пользователь, которого вы добавили в эту базу данных. Не ваш вход в хостинг."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Эти файлы не являются частью выпуска ChurchCRM. Ваш веб-хостинг может их удалить."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Эти файлы не соответствуют выпуску"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Эти файлы не были загружены"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Эта копия ChurchCRM не включает проверку файла выпуска. Вы можете продолжить."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Эта панель теперь является вашей главной панелью."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Здесь люди будут открывать ChurchCRM. Меняйте это только если они будут использовать другой адрес, чем эта страница."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Это ваша церковная учётная запись. Всё, что вы можете сделать самостоятельно, находится здесь."
+
+#: 
+msgid "Total deposited"
+msgstr "Всего внесено"
+
+#: 
+msgid "Usually 3306."
+msgstr "Обычно 3306."
+
+#: 
+msgid "Web address"
+msgstr "Веб-адрес"
+
+#: 
+msgid "Your main dashboard"
+msgstr "Ваша главная панель"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Вашему веб-хостингу нужно что-то исправить"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "и ещё {{count}}"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "и ещё {{count}}"
+
+#: 
+msgid "Database out of support"
+msgstr "База данных не поддерживается"
+
+#: 
+msgid "Deactivated"
+msgstr "Деактивировано"
+
+#: 
+msgid "How to find the log"
+msgstr "Как найти журнал"
+
+#: 
+msgid "How to install server locales"
+msgstr "Как установить локали сервера"
+
+#: 
+msgid "Last edited"
+msgstr "Последнее изменение"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Не установлено на сервере, и английская резервная локаль также не установлена, поэтому интерфейс будет отображаться на английском языке."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Журнал ChurchCRM записывает конкретную причину. Удалите имена перед тем, как делиться им."
+
+#: 
+msgid "Verify now"
+msgstr "Проверить сейчас"
+
+#: 
+msgid "View Giving History"
+msgstr "Просмотреть историю благотворительных взносов"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "Успешно добавлено %d человек; %d человек не удалось добавить, и они остались в корзине."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d человек не удалось добавить, и они остались в вашей корзине."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Администраторы будут видеть это предупреждение на каждой странице, пока база данных не будет переведена на версию, которая всё ещё получает исправления безопасности. Переход сейчас, пока данных мало, проще всего."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Отныне администраторы будут входить в стандартную панель управления. Панель настройки больше не будет открываться при входе."
+
+#: 
+msgid "Database security risk"
+msgstr "Риск безопасности базы данных"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Демонстрационный режим также включает анонимную статистику использования (PostHog), чтобы мы могли видеть, как люди знакомятся с ChurchCRM. Функция «Начать заново» её отключает."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "Настройки электронной почты сохранены. Вход для участников теперь включён, поэтому участники могут входить на Портал общины по своей электронной почте."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Введите информацию о своей церкви, добавьте своих людей и пригласите свою команду."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Всё здесь — демонстрационные данные. Начните заново, прежде чем вводить настоящую информацию о своей церкви."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Всё здесь — демонстрационные данные. Когда будете готовы использовать ChurchCRM для своей церкви, начните заново: это удалит демонстрационные данные и все настройки, чтобы вы могли начать со своих собственных."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Познакомьтесь с ChurchCRM на демонстрационных данных или настройте его для своей церкви"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Не удалось добавить человека в группу"
+
+#: 
+msgid "Finish setup"
+msgstr "Завершить настройку"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Столько дней после установки администраторы будут входить в Панель настройки. Установите 0, чтобы отключить это."
+
+#: 
+msgid "Group Assignment"
+msgstr "Назначение групп"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Внутреннее: администратор выбрал «Завершить настройку» на Панели настройки. Не редактируйте вручную."
+
+#: 
+msgid "Keep exploring"
+msgstr "Продолжить знакомство"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Переезжаете с другого сервера ChurchCRM? Восстановите созданную там резервную копию. Это заменит всё в этой установке."
+
+#: 
+msgid "Ready for your church"
+msgstr "Готово для вашей церкви"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Повторить назначение групп"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Повторить назначения групп"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Выберите одну или несколько групп для этого человека."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Выберите группы, которые хотите повторить."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Настройте свою церковь"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Панель настройки"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Опция «Начать заново» на демонстрационном баннере или «Сбросить базу данных» на Панели администратора удаляет демонстрационные данные и все настройки и возвращает ChurchCRM к состоянию новой установки."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Сначала начните заново, а затем настройте ChurchCRM с информацией о собственной церкви."
+
+#: 
+msgid "Start setup"
+msgstr "Начать настройку"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Демонстрационные данные удалены. Войдите с учётной записью администратора по умолчанию, чтобы настроить свою церковь."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Человек сохранён, но одно или несколько назначений групп не удалось выполнить. Выберите группы ниже и повторите попытку."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Человек сохранён, но одно или несколько назначений групп не удалось выполнить. Неудачные группы выбраны ниже. Проверьте их и сохраните снова, чтобы повторить попытку."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Это удаляет демонстрационные данные и все настройки и возвращает ChurchCRM к состоянию новой установки."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Вы снова войдёте с учётной записью администратора по умолчанию и введёте информацию о своей церкви."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Вы знакомитесь с ChurchCRM на демонстрационных данных."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Вы знакомитесь с демонстрационными данными"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Информация о вашей церкви сохранена. Выполните приведённые ниже шаги."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Ваша база данных (%1$s %2$s) представляет риск безопасности: её поставщик больше не выпускает исправления безопасности для этой версии. ChurchCRM продолжает работать, но попросите своего хостинг-провайдера перейти на MariaDB %3$s+ или MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Ежедневная регистрация во время использования, версии программного обеспечения и базы данных, локаль, страна, тип установки и случайный идентификатор установки помогают подсчитывать активные установки."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Учётные записи и вход"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Также отправлять, какие страницы используются."
+
+#: 
+msgid "Areas"
+msgstr "Области"
+
+#: 
+msgid "Church & System"
+msgstr "Церковь и система"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Город, где выдаются квитанции, печатается на официальных квитанциях. Оставьте пустым, чтобы использовать город церкви."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Завершение перед именем подписавшего, например «С уважением»."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Завершение, печатаемое перед подписавшим на официальных квитанциях."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Пароли, разделённые запятыми, которые никто не может использовать."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Письмо-подтверждение"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Создать семью для этого человека? Его адрес и домашний телефон перейдут в новую семью."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Количество дней, в течение которых пользователи должны настроить двухфакторную аутентификацию после того, как она станет обязательной. 0 применяет её сразу. Сокращение действующего льготного периода может заблокировать пользователей."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Депозиты и платежи"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Запрещённые пароли"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Правовая информация %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Отправлять пользователям письмо при удалении их учётной записи"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Каждая страница настроек в одном месте и настройки, действующие для всей системы"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Неудачные входы перед блокировкой"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Неудачные входы с одного IP-адреса"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Семейные роли, считающиеся в каталоге детьми."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Семейные роли, считающиеся в каталоге и при входе членов главой домохозяйства."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Семейные роли, считающиеся в каталоге и при входе членов супругом."
+
+#: 
+msgid "Finance Settings"
+msgstr "Настройки финансов"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Льготный период (дней)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Скрыть подписки на рассылку в Редакторе семей."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Скрыть поле «Дата друга» в Редакторе персоны."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Скрыть поле «Дата свадьбы» в Редакторе семей."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Как долго заблокированная учётная запись остаётся заблокированной. Неудачные входы с одного IP-адреса подсчитываются за тот же период."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "На сколько символов новый пароль должен отличаться от старого. 0 отключает эту функцию."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "В разделе Администрирование → Телеметрия включите параметр «Отправлять, какие страницы используются», чтобы выбрать Full. Full также отправляет просмотры страниц."
+
+#: 
+msgid "Initials Format"
+msgstr "Формат инициалов"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Текст письма %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Период блокировки (минуты)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Блокирует учётную запись после такого количества неудачных входов подряд. Она разблокируется после окончания периода блокировки или когда администратор сбросит её. 0 отключает блокировку."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Управлять Порталом общины"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Члены могут входить с помощью своей электронной почты."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Члены пока не могут входить."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Минимальное количество изменённых символов"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Минимальная длина пароля"
+
+#: 
+msgid "Name Format"
+msgstr "Формат имени"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Имя, печатаемое под завершением писем и электронных писем"
+
+#: 
+msgid "No Payments Text"
+msgstr "Текст при отсутствии платежей"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Текст при отсутствии обещаний"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ни один уровень не отправляет людей, доноров, пожертвования, содержимое, контактные данные церкви, ваш веб-адрес или имя сервера."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ни один уровень не отправляет ваш веб-адрес или имя сервера. Тестовые установки не отправляют ничего. Телеметрия отправляется в PostHog в Соединённых Штатах."
+
+#: 
+msgid "OS family"
+msgstr "Семейство ОС"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Начальный абзац письма-напоминания об обещании."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Абзац с приглашением задавать вопросы в выписке о пожертвованиях."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Абзац с приглашением задавать вопросы в письме для тех, кто не жертвовал."
+
+#: 
+msgid "Passwords"
+msgstr "Пароли"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Печатается после диапазона дат в начальной строке письма для тех, кто не жертвовал."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Печатается первым в выписке о пожертвованиях, после него идёт диапазон дат."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Печатается, когда у семьи нет зарегистрированных платежей."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Печатается, когда у семьи нет зарегистрированного обещания."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Отказывает во входе с одного IP-адреса на период блокировки после такого количества неудачных входов или сбросов пароля. 0 отключает эту функцию, например, когда все подключаются через один прокси."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Требовать двухфакторную аутентификацию"
+
+#: 
+msgid "Security Settings"
+msgstr "Настройки безопасности"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Отправляйте отчёты об ошибках, события установки/обновления и системную информацию, чтобы проблемы можно было исправлять. Без просмотров страниц, без данных церкви."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Тайм-аут сеанса (секунды)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Отправлять, какие страницы используются"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Вход и безопасность"
+
+#: 
+msgid "Signature Storage"
+msgstr "Хранилище подписей"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Выводит пользователя после такого количества секунд бездействия. 0 никогда не выводит."
+
+#: 
+msgid "System-wide"
+msgstr "Вся система"
+
+#: 
+msgid "Text After Dates"
+msgstr "Текст после дат"
+
+#: 
+msgid "Text Messages"
+msgstr "Текстовые сообщения"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Абзац благодарности в выписке о пожертвованиях."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Абзац благодарности в письме для тех, кто не жертвовал."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Преобразование не удалось. Ничего не было изменено."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Используется файл бланка, сохранённый до добавления загрузок. Загрузите бланк, чтобы заменить его."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Предупреждение через (часы)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Слово перед именем в письмах и электронных письмах, например «Уважаемый»."
+
+#: 
+msgid "Amount offset, left"
+msgstr "Смещение суммы, слева"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Демонстрационные данные загружены"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Каждая позиция должна быть числом от 0 до 1000 миллиметров."
+
+#: 
+msgid "First date, left"
+msgstr "Первая дата, слева"
+
+#: 
+msgid "First date, top"
+msgstr "Первая дата, сверху"
+
+#: 
+msgid "Item count, left"
+msgstr "Количество позиций, слева"
+
+#: 
+msgid "Item count, top"
+msgstr "Количество позиций, сверху"
+
+#: 
+msgid "Left margin"
+msgstr "Левое поле"
+
+#: 
+msgid "Line items"
+msgstr "Позиции строк"
+
+#: 
+msgid "Maximum height"
+msgstr "Максимальная высота"
+
+#: 
+msgid "Maximum width"
+msgstr "Максимальная ширина"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "По умолчанию отключено. Помогает нам улучшать ChurchCRM. Никогда не включает вашу церковь или её людей."
+
+#: 
+msgid "Perforation, top"
+msgstr "Перфорация, сверху"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Позиции в миллиметрах на предпечатной депозитной квитанции"
+
+#: 
+msgid "Saved"
+msgstr "Сохранено"
+
+#: 
+msgid "Second date, left"
+msgstr "Вторая дата, слева"
+
+#: 
+msgid "See what's shared"
+msgstr "Посмотреть, что передаётся"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Интервал, по горизонтали"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Интервал, по вертикали"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Промежуточный итог, слева"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Промежуточный итог, сверху"
+
+#: 
+msgid "Ticket"
+msgstr "Депозитная квитанция"
+
+#: 
+msgid "Title, left"
+msgstr "Название, слева"
+
+#: 
+msgid "Top margin"
+msgstr "Верхнее поле"
+
+#: 
+msgid "Total, left"
+msgstr "Всего, слева"
+
+#: 
+msgid "Total, top"
+msgstr "Всего, сверху"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

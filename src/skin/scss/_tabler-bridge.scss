@@ -69,8 +69,7 @@ select {
 
   &.active {
     box-shadow: 0 0 0 3px var(--tblr-primary);
-    border-color: var(--tblr-primary);
-    transform: scale(1.15);
+    border-color: var(--tblr-bg-surface);
   }
 }
 
@@ -221,6 +220,17 @@ select {
 // Menu counters sit at the end of the row, beside the chevron.
 .navbar-vertical .nav-link-title {
   flex: 1;
+}
+
+// Tabler starts a submenu icon under the parent title. Pull the first level
+// in so the icon sits just to the right of the parent icon.
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu > .dropdown-item,
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu > .dropdown > .dropdown-item {
+  padding-inline-start: 1.75rem;
+}
+
+.navbar-vertical[class*="navbar-expand"] .navbar-collapse .dropdown-menu .dropdown-menu > .dropdown-item {
+  padding-inline-start: 2.75rem;
 }
 
 .navbar-vertical .badge {

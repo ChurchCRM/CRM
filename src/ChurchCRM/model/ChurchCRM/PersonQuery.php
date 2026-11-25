@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery as BasePersonQuery;
+use ChurchCRM\Service\ClassificationService;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -16,9 +17,12 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class PersonQuery extends BasePersonQuery
 {
+    /**
+     * Active people: not deactivated, not awaiting review, outside the Inactive classifications.
+     */
     public function filterByActive(): self
     {
-        return $this->filterByDateDeactivated(null, Criteria::ISNULL);
+        return $this->filterByDateDeactivated(null, Criteria::ISNULL)->filterByNeedsReview(false)->filterByActiveClassification();
     }
 
     /**
@@ -35,5 +39,13 @@ class PersonQuery extends BasePersonQuery
     public function filterByDeceased(): self
     {
         return $this->filterByDateDeceased(null, Criteria::ISNOTNULL);
+    }
+
+    /**
+     * Only persons outside the Inactive classifications (sInactiveClassification).
+     */
+    public function filterByActiveClassification(): self
+    {
+        return (new ClassificationService())->excludeInactive($this);
     }
 }

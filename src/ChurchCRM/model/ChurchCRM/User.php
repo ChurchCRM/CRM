@@ -43,8 +43,8 @@ class User extends BaseUser
      *
      * STATIC on purpose: the logged-in User object is serialized into the PHP
      * session, and an instance property would be serialized with it — so an
-     * answer computed while the rollout flag was still 'v1' would follow the
-     * session until the next login. A static is never serialized and lives for
+     * answer computed before an administrator changed the login's permissions would
+     * follow the session until the next login. A static is never serialized and lives for
      * exactly one request (#9706, found in review).
      *
      * @var array<int, bool>
@@ -232,42 +232,12 @@ class User extends BaseUser
         return SystemConfig::getBooleanValue('bEnabledEvents');
     }
 
-    /**
-     * The Volunteer Management rollout state (#9704): 'v1', 'v2' or 'both'.
-     *
-     * Pure system check — no per-user permission gate, mirroring
-     * isEventsEnabled(). Anything not in the choice list degrades to 'v1',
-     * so a hand-edited or half-migrated config_cfg row can never expose V2.
-     */
-    public static function getVolunteerVersion(): string
-    {
-        $version = SystemConfig::getValue('sVolunteerVersion');
-
-        return in_array($version, ['v1', 'v2', 'both'], true) ? $version : 'v1';
-    }
-
-    /**
-     * Whether the V2 Volunteer Management experience is active ('v2' or 'both').
-     */
-    public static function isVolunteerV2Enabled(): bool
-    {
-        return in_array(self::getVolunteerVersion(), ['v2', 'both'], true);
-    }
-
-    /**
-     * Whether the legacy V1 Volunteer Opportunities experience is active ('v1' or 'both').
-     */
-    public static function isVolunteerV1Enabled(): bool
-    {
-        return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
-    }
-
     public function isManageMinistriesEnabled(): bool
     {
         if ($this instanceof PortalMemberUser) {
             return false;
         }
-        return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isManageMinistries());
+        return $this->isAdmin() || $this->isManageMinistries();
     }
 
     /**
@@ -290,8 +260,7 @@ class User extends BaseUser
         if ($this instanceof PortalMemberUser) {
             return false;
         }
-        return self::isVolunteerV2Enabled()
-            && ($this->isAdmin() || $this->isManageMinistries() || $this->isManageMyMinistries());
+        return $this->isAdmin() || $this->isManageMinistries() || $this->isManageMyMinistries();
     }
 
     public function isVolunteerCoordinatorEnabled(): bool
@@ -317,10 +286,6 @@ class User extends BaseUser
         $key = (int) $this->getId();
         if (array_key_exists($key, self::$volunteerTeamLeaderMemo)) {
             return self::$volunteerTeamLeaderMemo[$key];
-        }
-
-        if (!self::isVolunteerV2Enabled()) {
-            return self::$volunteerTeamLeaderMemo[$key] = false;
         }
 
         return self::$volunteerTeamLeaderMemo[$key] =
@@ -387,7 +352,7 @@ class User extends BaseUser
      * Returns true if the current user may read private notes authored by other users.
      *
      * Policy: admins may read any private note (full content visible in timeline,
-     * API, and NoteEditor). Non-admin users may only read their own private notes;
+     * API). Non-admin users may only read their own private notes;
      * that author-equality check is handled in Note::isVisibleTo(), so this method
      * governs only the "read someone else's private note" case.
      *

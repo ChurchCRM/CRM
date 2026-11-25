@@ -860,8 +860,6 @@ class Person extends BasePerson implements PhotoInterface
         // The legacy whycame_why table has no physical FK on person_per.
         \ChurchCRM\model\ChurchCRM\WhyCameQuery::create()->filterByPerId($this->getId())->delete($con);
 
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
-
         PropertyQuery::create()
             ->filterByProClass('p')
             ->useRecordPropertyQuery()

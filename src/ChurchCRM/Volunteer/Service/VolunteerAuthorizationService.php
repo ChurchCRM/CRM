@@ -154,7 +154,7 @@ class VolunteerAuthorizationService
 
     /**
      * May this user write a calendar event whose ministry is `$eventMinistryId` (§4.6
-     * "Ministry-linked events")? The global AddEvent right, or — with the rollout on — the
+     * "Ministry-linked events")? The global AddEvent right, or the
      * coordinators of the event's ministry. An event with no ministry stays AddEvent-only.
      */
     public function canWriteEvent(User $user, ?int $eventMinistryId): bool
@@ -163,7 +163,7 @@ class VolunteerAuthorizationService
             return true;
         }
 
-        if (!User::isVolunteerV2Enabled() || $eventMinistryId === null) {
+        if ($eventMinistryId === null) {
             return false;
         }
 
@@ -186,7 +186,7 @@ class VolunteerAuthorizationService
             return true;
         }
 
-        if (!User::isVolunteerV2Enabled() || $eventMinistryId === null || $groupId <= 0) {
+        if ($eventMinistryId === null || $groupId <= 0) {
             return false;
         }
 
@@ -364,16 +364,12 @@ class VolunteerAuthorizationService
 
     /**
      * The person's own `team` scope rows, as the portal's team-leader rule reads
-     * them. Nothing when V2 is off.
+     * them.
      *
      * @return int[]
      */
     public function teamScopeIdsForPerson(int $personId): array
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return [];
-        }
-
         return array_map(
             'intval',
             VolunteerScopeQuery::create()
@@ -720,10 +716,6 @@ class VolunteerAuthorizationService
 
         if (isset($this->scopeCache[$personId])) {
             return $this->scopeCache[$personId];
-        }
-
-        if (!User::isVolunteerV2Enabled()) {
-            return $this->scopeCache[$personId] = ['ministry' => [], 'team' => []];
         }
 
         $result = ['ministry' => [], 'team' => []];

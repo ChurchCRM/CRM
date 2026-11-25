@@ -64,7 +64,7 @@ describe("Page requests stay inside the install path", () => {
             it(`${page} Cancel returns to the dashboard of its own install`, () => {
                 cy.visit(page);
                 cy.contains("a.btn", "Cancel").click();
-                cy.location("pathname").should("eq", `${installPath()}/v2/dashboard`);
+                cy.location("pathname").should("eq", `${installPath()}/people/dashboard`);
             });
         });
     });

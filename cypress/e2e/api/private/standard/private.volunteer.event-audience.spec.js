@@ -16,7 +16,6 @@
  * is revoked. The administrator is the global-right persona.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 
@@ -33,7 +32,6 @@ let poolGroupA = 0;
 let poolGroupB = 0;
 let classGroupA = 0;
 let foreignGroup = 0;
-let originalVersion = "v1";
 
 function dbOk(sql, params = []) {
     return cy.dbQuery(sql, params).then((result) => {
@@ -162,13 +160,6 @@ after(() => {
 
 describe("Volunteer v2 — a coordinator's choice of event audience (#10353)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then(
-            (resp) => {
-                originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-            },
-        );
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v2" }, 200);
-
         cleanupFixtures();
 
         createMinistry("Ministry A").then((ministry) => {
@@ -208,12 +199,6 @@ describe("Volunteer v2 — a coordinator's choice of event audience (#10353)", (
 
     after(() => {
         cleanupFixtures();
-        cy.makePrivateAdminAPICall(
-            "POST",
-            SETTING_URL,
-            { value: originalVersion },
-            200,
-        );
     });
 
     it("refuses a group the ministry does not own, and leaves no event behind", () => {

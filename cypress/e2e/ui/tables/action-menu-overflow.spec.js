@@ -141,8 +141,8 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       // initial ?fyid=30 request is still in-flight; DataTables may drop
       // or defer ajax.url().load() calls made during an active request,
       // so the All-Time reload never fires and the row assertion times out.
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
-      cy.visit("/people/family/1");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeInit");
+      cy.visit("/people/family/1#giving-history");
 
       // Wait for the initial DataTable AJAX (fyid=30, returns empty) to
       // complete before clicking the pill. The wrapper also confirms init.
@@ -150,7 +150,7 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       cy.get("#pledge-payment-v2-table_wrapper").should("exist");
 
       // Re-arm the intercept for the All-Time reload.
-      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeAllTime");
+      cy.intercept("GET", "**/api/payments/family/1/list*fyid=*").as("pledgeAllTime");
 
       // Seed pledges for family 1 are from 2018; the default FY filter hides them.
       // Click "All Time" to remove the filter and reveal all rows.

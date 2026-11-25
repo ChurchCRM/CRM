@@ -206,8 +206,6 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     (new ClassificationService())->filterByActiveStatus($members, $personActiveStatus);
 
-    $members->find();
-
     $filterByClsId = '';
     $filterByClsOptionId = '';
     if (isset($_GET['Classification'])) {
@@ -319,7 +317,7 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         ->orderByLastName()
         ->orderByFirstName();
 
-    (new ClassificationService())->excludeInactive($peopleQuery);
+    $peopleQuery->filterByActiveClassification();
 
     if ($filterUnassigned) {
         $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');

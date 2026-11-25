@@ -6,6 +6,7 @@
  *
  * Fails (exit 1):
  *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script that upgrade.json lists
+ *     (a schema.xml change to lazyLoad, phpName or description alone is not a schema change)
  *   - a workflow or action passes untrusted GitHub context straight into a `run:` script
  *   - a removed element id is still a Playwright selector (`#id` under playwright/) and is no longer rendered
  * Warns (exit 0, printed): behavior changes without a Cypress spec or script test, a changed
@@ -57,6 +58,20 @@ const upgradeJsonLists = (script) => {
         return false;
     }
 };
+
+const PROPEL_ONLY = /\s(?:lazyLoad|phpName|description)="[^"]*"/g;
+
+/** True when the changed schema.xml lines differ only in attributes Propel reads to generate PHP, never DDL. */
+function propelOnlyChange(diffLines) {
+    const side = (sign) =>
+        diffLines
+            .filter((line) => line.startsWith(sign) && !line.startsWith(sign.repeat(3)))
+            .map((line) => line.slice(1).replace(PROPEL_ONLY, '').trim())
+            .sort();
+    const removed = side('-');
+    const added = side('+');
+    return removed.length > 0 && removed.join('\n') === added.join('\n');
+}
 
 function gates(files, isListed = upgradeJsonLists) {
     const fail = [];
@@ -121,6 +136,15 @@ function removedIdLines(base) {
     return diff.split('\n').filter((line) => line.startsWith('-') && !line.startsWith('---'));
 }
 
+function schemaDiffLines() {
+    try {
+        const base = execFileSync('git', ['merge-base', 'HEAD', 'origin/master'], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+        return execFileSync('git', ['diff', '-U0', base, '--', 'orm/schema.xml'], { cwd: root, encoding: 'utf8' }).split('\n');
+    } catch {
+        return [];
+    }
+}
+
 function changedFiles() {
     const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
     for (const ref of ['origin/master', 'master']) {
@@ -138,7 +162,7 @@ if (require.main === module) {
     const problems = workflowFiles().flatMap((file) =>
         injections(fs.readFileSync(file, 'utf8')).map((hit) => `${path.relative(root, file)}:${hit.line}  untrusted context in run: ${hit.text}`),
     );
-    const files = changedFiles();
+    const files = changedFiles()?.filter((file) => file !== 'orm/schema.xml' || !propelOnlyChange(schemaDiffLines()));
     const { fail, warn } = files ? gates(files) : { fail: [], warn: [] };
     problems.push(...fail);
     if (files) {
@@ -151,7 +175,7 @@ if (require.main === module) {
             const stuck = orphanedCaptureIds(
                 removedIdLines(base),
                 (id) => gitOk(['grep', '-F', '-q', '-e', `id="${id}"`, '-e', `id='${id}'`, '--', 'src', 'webpack']),
-                (id) => gitOk(['grep', '-F', '-q', `#${id}`, '--', 'playwright']),
+                (id) => gitOk(['grep', '-E', '-q', `#${id}([^A-Za-z0-9_-]|$)`, '--', 'playwright']),
             );
             stuck.forEach((id) => problems.push(`#${id} was removed and playwright/ still selects it. Update the capture in this PR.`));
         } catch {
@@ -166,4 +190,4 @@ if (require.main === module) {
     process.exit(problems.length ? 1 : 0);
 }
 
-module.exports = { gates, injections, orphanedCaptureIds };
+module.exports = { gates, injections, orphanedCaptureIds, propelOnlyChange };

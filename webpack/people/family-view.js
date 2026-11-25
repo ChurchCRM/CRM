@@ -8,9 +8,69 @@
  */
 import L from "../leaflet-global";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
+import { initPropertyPopup } from "./property-popup";
 import { initTimelineFilter } from "./timeline-filter";
 
+function initTabLinks() {
+  const showTab = (id) => {
+    const trigger = document.querySelector(`.nav-link[href="#${id}"]`);
+    if (!trigger) return false;
+    window.bootstrap.Tab.getOrCreateInstance(trigger).show();
+    return true;
+  };
+  for (const el of document.querySelectorAll("[data-open-tab]")) {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (showTab(el.dataset.openTab)) {
+        document.getElementById(el.dataset.openTab)?.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+  if (window.location.hash) showTab(window.location.hash.slice(1));
+  for (const el of document.querySelectorAll('.nav-link[data-bs-toggle="tab"]')) {
+    el.addEventListener("shown.bs.tab", () => {
+      window.$?.fn?.dataTable?.tables({ visible: true, api: true }).columns.adjust();
+    });
+  }
+}
+
+function initGivingSummary() {
+  const summary = document.getElementById("family-giving-summary");
+  if (!summary) return;
+  window.CRM.APIRequest({ path: `payments/family/${window.CRM.currentFamily}/list` })
+    .then((resp) => {
+      const rows = (resp?.data ?? []).filter((row) => row.PledgeOrPayment === "Payment");
+      if (!rows.length) return;
+      const money = (amount) => window.CRM.currency.format(amount);
+      const currentFY = window.CRM.currentFY || "";
+      const ytd = rows
+        .filter((row) => currentFY && row.FormattedFY === currentFY)
+        .reduce((sum, row) => sum + (parseFloat(row.Amount) || 0), 0);
+      const last = rows.reduce((a, b) => (b.Date > a.Date ? b : a));
+      document.getElementById("family-giving-ytd").textContent = money(ytd);
+      document.getElementById("family-giving-last").textContent =
+        `${money(parseFloat(last.Amount))} — ${last.Date || ""}`;
+      summary.classList.remove("d-none");
+    })
+    .catch(() => {});
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initTabLinks();
+  initPropertyPopup({
+    modalId: "add-family-property-modal",
+    selectId: "input-family-properties",
+    promptBoxId: "family-property-prompt-box",
+    assignBtnId: "assign-family-property-btn",
+    onSave: (propertyId, value) => {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
+        data: JSON.stringify({ value }),
+      }).then(() => window.location.reload());
+    },
+  });
+  initGivingSummary();
   document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
   // Initialize map if coordinates exist and the map container is in the DOM
   const config = window.CRM?.familyMapConfig;
