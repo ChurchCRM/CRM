@@ -251,7 +251,7 @@ async function openEmailHistoryModal(page: Page, row: Locator): Promise<void> {
 
 /** Dismisses the header notices (for example a security notice from churchcrm.io) for this admin, then reloads. */
 async function dismissHeaderNotices(page: Page): Promise<void> {
-  const notices = page.locator('.crm-system-notification[data-dismiss-key]');
+  const notices = page.locator('.crm-notification-item[data-dismiss-key]');
   if ((await notices.count()) === 0) return;
   const userId = await page.evaluate(() => window.CRM?.userId);
   const keys = await notices.evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.dismissKey ?? ''));

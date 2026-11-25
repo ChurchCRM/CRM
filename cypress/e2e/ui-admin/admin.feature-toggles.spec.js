@@ -8,53 +8,23 @@ describe("Admin Feature Toggles page", () => {
     it("renders once with a single page title and toggles", () => {
         cy.visit("admin/system/feature-toggles");
         cy.get(".page-title").should("have.length", 1).and("contain", "Feature Toggles");
-        cy.get(".feature-toggle").should("have.length.greaterThan", 0);
-        cy.get(".feature-toggle").each(($el) => {
-            expect($el.attr("aria-label")).to.be.a("string").and.not.be.empty;
-        });
+        cy.get("#featureTogglesContainer .settings-panel-fields").should("not.be.disabled");
+        cy.get("#featureTogglesContainer input[type=checkbox][data-type=boolean]").should("have.length.greaterThan", 5);
     });
 
-    it("shows a Feature Toggles card on the dashboard linking to the full page", () => {
-        cy.visit("admin/");
-        cy.get(".dashboard-feature-toggle").should("have.length.greaterThan", 0);
-        cy.contains("a", "Manage All Features").click();
-        cy.url().should("include", "/admin/system/feature-toggles");
-    });
-
-    it("saves a toggle from the dashboard card", () => {
-        cy.intercept("POST", "**/admin/api/system/feature-toggles").as("toggleSave");
-        cy.visit("admin/");
-        cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').then(($cb) => {
-            const wasChecked = $cb.prop("checked");
-            cy.wrap($cb).click();
-            cy.wait("@toggleSave");
-            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
-                wasChecked ? "not.be.checked" : "be.checked",
-            );
-            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').click();
-            cy.wait("@toggleSave");
-            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
-                wasChecked ? "be.checked" : "not.be.checked",
-            );
-        });
-    });
-
-    it("saves a toggle and persists it after reload", () => {
-        cy.intercept("POST", "**/admin/api/system/feature-toggles").as("toggleSave");
+    it("saves a toggle and keeps it after the page reloads", () => {
+        const toggle = "#featureTogglesContainer input[name='bEnabledEvents']";
+        cy.intercept("POST", "**/admin/api/system/config/bEnabledEvents").as("toggleSave");
         cy.visit("admin/system/feature-toggles");
-        cy.get('.feature-toggle[data-setting="bEnabledEvents"]').then(($cb) => {
+        cy.get("#featureTogglesContainer .settings-panel-fields").should("not.be.disabled");
+        cy.get(toggle).then(($cb) => {
             const wasChecked = $cb.prop("checked");
-            cy.wrap($cb).click();
+            cy.wrap($cb).click({ force: true });
+            cy.wait("@toggleSave").its("response.statusCode").should("eq", 200);
+            cy.get("#featureTogglesContainer .settings-panel-fields").should("not.be.disabled");
+            cy.get(toggle).should(wasChecked ? "not.be.checked" : "be.checked");
+            cy.get(toggle).click({ force: true });
             cy.wait("@toggleSave");
-            cy.contains(".status-badge", "Saved").should("be.visible");
-            cy.url().should("include", "/admin/system/feature-toggles");
-            cy.get('.feature-toggle[data-setting="bEnabledEvents"]').should(
-                wasChecked ? "not.be.checked" : "be.checked",
-            );
-            // restore
-            cy.get('.feature-toggle[data-setting="bEnabledEvents"]').click();
-            cy.wait("@toggleSave");
-            cy.contains(".status-badge", "Saved").should("be.visible");
         });
     });
 });

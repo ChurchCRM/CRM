@@ -360,7 +360,7 @@ function getEmailDupesAPI(Request $request, Response $response, array $args): Re
 function getLatestPersons(Request $request, Response $response, array $args): Response
 {
     $days = (int) ($request->getQueryParams()['days'] ?? 0);
-    $query = PersonQuery::create()->leftJoinWithFamily()->orderByDateEntered('DESC');
+    $query = PersonQuery::create()->filterByActive()->leftJoinWithFamily()->orderByDateEntered('DESC');
     $people = ($days > 0 ? $query->filterByDateEntered(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
@@ -389,7 +389,7 @@ function getLatestPersons(Request $request, Response $response, array $args): Re
 function getUpdatedPersons(Request $request, Response $response, array $args): Response
 {
     $days = (int) ($request->getQueryParams()['days'] ?? 0);
-    $query = PersonQuery::create()->leftJoinWithFamily()->orderByDateLastEdited('DESC');
+    $query = PersonQuery::create()->filterByActive()->leftJoinWithFamily()->orderByDateLastEdited('DESC');
     $people = ($days > 0 ? $query->filterByDateLastEdited(['min' => (new \DateTimeImmutable("-{$days} days"))->format('Y-m-d H:i:s')])->limit(50) : $query->limit(10))->find();
 
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
@@ -436,7 +436,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
     }
     
     // Build query for all dates in range
-    $people = PersonQuery::create()
+    $people = PersonQuery::create()->filterByActive()
         ->leftJoinWithFamily()
         ->where('Family.DateDeactivated is null')
         ->filterByBirthDay(null, Criteria::NOT_EQUAL)

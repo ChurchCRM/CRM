@@ -103,8 +103,10 @@ module.exports = {
     restore: './webpack/restore',
     'csv-import': './webpack/csv-import',
     'admin-dashboard': './webpack/admin-dashboard',
+    'admin-settings': './webpack/admin-settings',
     'admin-setup': './webpack/admin-setup',
     'first-run': './webpack/first-run',
+    'telemetry-consent': './webpack/telemetry-consent',
     // Admin → Member Portal (#9864): theme picker, portal settings, statistics.
     'admin-member-portal': './webpack/admin-member-portal.ts',
     // Admin → Convert Volunteer Opportunities (#10606).
@@ -135,7 +137,8 @@ module.exports = {
     'email-delete-queue': './webpack/people/email-delete-queue',
     'email-log-table': './webpack/people/email-log-table',
     'error': './webpack/error',
-    'feature-toggles': './webpack/feature-toggles',
+    'finance-settings': './webpack/finance-settings',
+    'finance-quickbooks': './webpack/finance-quickbooks',
     'finance-report-options': './webpack/finance-report-options',
     'groups-group-view': './webpack/groups/group-view',
     'groups-group-properties-form': './webpack/groups/group-properties-form',

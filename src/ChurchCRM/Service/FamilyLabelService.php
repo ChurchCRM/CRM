@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Family address labels and personal name badges.
@@ -21,7 +22,11 @@ class FamilyLabelService
      */
     public static function familyCells(bool $newsletterOnly, bool $familyNames): array
     {
-        $query = FamilyQuery::create()->filterByActive();
+        $query = FamilyQuery::create()->filterByActive()->filterByNeedsReview(false);
+        if ((new ClassificationService())->getInactiveIds() !== []) {
+            $activePeople = PersonQuery::create()->filterByActive();
+            $query->filterById($activePeople->filterByFamId(0, Criteria::GREATER_THAN)->select('FamId')->distinct()->find()->toArray(), Criteria::IN);
+        }
         if ($newsletterOnly) {
             $query->filterBySendNewsletter('TRUE');
         }
@@ -54,8 +59,7 @@ class FamilyLabelService
         }
 
         $cells = [];
-        $people = PersonQuery::create()
-            ->filterByActive()
+        $people = PersonQuery::create()->filterByActive()
             ->filterById($personIds)
             ->orderByLastName()
             ->orderByFirstName()

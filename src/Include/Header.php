@@ -39,6 +39,10 @@ $currentUser = AuthenticationManager::getCurrentUser();
 // Until the church has a name, an administrator sees only the Setup Dashboard: no sidebar, a minimal top bar.
 $setupMode = $currentUser->isAdmin() && InstallSetupService::needsChurchSetup();
 $homeUrl = $setupMode ? SystemURLs::getRootPath() . DashboardLandingService::SETUP_PATH : DashboardLandingService::urlFor($currentUser);
+// Hydrate the notification registry before the top nav renders: the
+// notification center drops down from it. Remote announcements join on
+// every page except in setup mode — the church has not used the system yet.
+NotificationService::loadSessionNotifications(!$setupMode);
 $pluginsClientConfig = PluginManager::getPluginsClientConfig();
 $_themeMode = $currentUser->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
@@ -276,24 +280,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
-        <!-- Database support notice: once dismissed, the banner lives here until the database is supported -->
-        <?php $dbSupportWarning = NotificationService::getDatabaseSupportWarning(); ?>
-        <?php if ($dbSupportWarning !== null && $dbSupportWarning['dismissed']): ?>
-        <div class="nav-item dropdown" id="databaseSupportMenuItem">
-          <a class="nav-link px-0 text-danger" data-bs-toggle="dropdown" href="#"
-             id="databaseSupportMenu"
-             title="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>"
-             aria-label="<?= InputUtils::escapeAttribute($dbSupportWarning['title']) ?>">
-            <i class="fa-solid fa-database" aria-hidden="true"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <div class="dropdown-item-text">
-              <strong><i class="fa-solid fa-database me-2"></i><?= InputUtils::escapeHTML($dbSupportWarning['title']) ?></strong>
-              <div class="text-secondary"><?= InputUtils::escapeHTML($dbSupportWarning['message']) ?></div>
-            </div>
-          </div>
-        </div>
-        <?php endif; ?>
 
         <!-- Locale: flag links directly to the localization tab on the profile page -->
         <?php
@@ -378,6 +364,140 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             </a>
           </div>
         </div>
+
+        <?php
+        // Notification center: everything that used to stack up as banners at
+        // the top of every page lives in this one dropdown, so the page itself
+        // stays clean for the work the user came to do. The center renders
+        // only when something actually needs attention.
+        $centerNotifications = NotificationService::getNotifications();
+        $demoDataLoaded = InstallSetupService::isDemoDataLoaded();
+        $twoFAGrace = $currentUser->getTwoFactorGraceStatus() === 'within-grace';
+        $twoFADaysLeft = $twoFAGrace ? $currentUser->getTwoFactorGraceDaysRemaining() : 0;
+        $telemetryPrompt = $currentUser->isAdmin() && !$setupMode
+            && !TelemetryService::capturesPageViews()
+            && SystemConfig::getValue('sTelemetryAskedVersion') === '';
+        $centerCount = count($centerNotifications) + ($demoDataLoaded ? 1 : 0) + ($twoFAGrace ? 1 : 0) + ($telemetryPrompt ? 1 : 0);
+        $centerBadgeClass = ($twoFAGrace && $twoFADaysLeft <= 1) ? 'bg-danger' : 'bg-primary';
+        foreach ($centerNotifications as $centerNotification) {
+            if ($centerNotification->getType() === 'danger') {
+                $centerBadgeClass = 'bg-danger';
+                break;
+            }
+        }
+        ?>
+        <?php if ($centerCount > 0): ?>
+        <div class="nav-item dropdown" id="notificationCenterMenuItem">
+          <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#"
+             id="notificationCenterMenu" title="<?= gettext('Notifications') ?>"
+             aria-label="<?= gettext('Notifications') ?>">
+            <i class="fa-solid fa-inbox" aria-hidden="true"></i>
+            <span class="badge <?= $centerBadgeClass ?> position-absolute top-0 end-0 small" id="notificationCenterCount"><?= $centerCount ?></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <?php foreach ($centerNotifications as $notification): ?>
+            <?php
+            // "Header — body" titles read as a header line plus a body line.
+            $noticeTitle = $notification->getTitle();
+            $noticeBody = $notification->getMessage();
+            if (str_contains($noticeTitle, ' — ')) {
+                [$noticeTitle, $noticeBody] = explode(' — ', $noticeTitle, 2);
+                $noticeBody = mb_strtoupper(mb_substr($noticeBody, 0, 1)) . mb_substr($noticeBody, 1);
+            }
+            ?>
+            <div class="dropdown-item-text crm-notification-item"
+                 <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+                 <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-<?= InputUtils::escapeHTML($notification->getIcon() ?: 'circle-info') ?> text-<?= InputUtils::escapeHTML($notification->getType()) ?>" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= InputUtils::escapeHTML($noticeTitle) ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= InputUtils::escapeHTML($noticeBody) ?></div>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <?php if ($notification->getUrl()): ?>
+                    <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm"><?= gettext('Learn more') ?></a>
+                    <?php else: ?>
+                    <button type="button" class="btn btn-outline-primary btn-sm js-notification-more"
+                            data-title="<?= InputUtils::escapeAttribute($notification->getTitle()) ?>"
+                            data-message="<?= InputUtils::escapeAttribute($notification->getMessage()) ?>"><?= gettext('Read more') ?></button>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <?php if ($notification->getDismissSettingKey()): ?>
+                <button type="button" class="btn-close js-dismiss-notification" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
+                <?php endif; ?>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <?php if ($demoDataLoaded): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="demo-mode">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-flask text-warning" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext("You're exploring ChurchCRM with demo data.") ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
+                  <?php if ($currentUser->isAdmin()): ?>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <button type="button" class="btn btn-outline-warning btn-sm js-start-fresh">
+                      <i class="fa-solid fa-rotate-left me-1" aria-hidden="true"></i><?= gettext('Start Fresh') ?>
+                    </button>
+                  </div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php if ($telemetryPrompt): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="telemetry-consent">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-chart-bar text-info" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext('Share which pages are used') ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= gettext('Off by default. Helps us improve ChurchCRM. Never includes your church or its people.') ?></div>
+                  <div class="d-flex align-items-center justify-content-between gap-2 mt-2">
+                    <label class="form-check form-switch mb-0">
+                      <input class="form-check-input" type="checkbox" role="switch" id="telemetry-consent-toggle">
+                      <span class="form-check-label small"><?= gettext('Enable') ?></span>
+                    </label>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry" class="small"><?= gettext("See what's shared") ?></a>
+                  </div>
+                </div>
+                <button type="button" class="btn-close js-telemetry-decline" aria-label="<?= gettext('No thanks') ?>" title="<?= gettext('No thanks') ?>"></button>
+              </div>
+            </div>
+            <script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry-consent.min.js') ?>"></script>
+            <?php endif; ?>
+            <?php if ($twoFAGrace): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="two-fa-grace">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-shield-halved text-<?= $twoFADaysLeft <= 1 ? 'danger' : 'warning' ?>" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext('Two-factor authentication') ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= InputUtils::escapeHTML(sprintf(ngettext('Two-factor authentication is required. You have %d day to enroll.', 'Two-factor authentication is required. You have %d days to enroll.', $twoFADaysLeft), $twoFADaysLeft)) ?></div>
+                  <div class="d-flex gap-2 mt-2 crm-notification-actions">
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="btn btn-outline-primary btn-sm"><?= gettext('Set up now') ?></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endif; ?>
+          </div>
+          <div class="modal fade" tabindex="-1" id="notificationDetailPanel" aria-labelledby="notificationDetailTitle" aria-hidden="true">
+            <div class="modal-dialog crm-side-panel">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="notificationDetailTitle"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+                </div>
+                <div class="modal-body">
+                  <p id="notificationDetailBody" class="mb-3"></p>
+                  <a id="notificationDetailLink" class="btn btn-outline-primary btn-sm" href="#" target="_blank" rel="noopener" hidden><?= gettext('Learn more') ?></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
 
         <!-- User -->
         <?php
@@ -477,31 +597,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 <?php if ($setupMode || ($currentUser->isAdmin() && InstallSetupService::isDemoDataLoaded())): ?>
     <script src="<?= SystemURLs::assetVersioned('/skin/v2/first-run.min.js') ?>"></script>
 <?php endif; ?>
-<?php if (InstallSetupService::isDemoDataLoaded()): ?>
-    <div class="container-xl mt-3">
-      <div class="alert alert-warning mb-0" role="status" id="demoModeBanner">
-        <div class="d-flex flex-wrap align-items-center gap-2">
-          <i class="fa-solid fa-flask"></i>
-          <div class="flex-grow-1">
-            <strong><?= gettext("You're exploring ChurchCRM with demo data.") ?></strong>
-            <?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?>
-          </div>
-          <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
-            <button type="button" class="btn btn-warning btn-sm js-start-fresh">
-              <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Start Fresh') ?>
-            </button>
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
-<?php endif; ?>
-
 <?php
     // Unified page header defaults (backward-compatible)
     $sPageSubtitle = $sPageSubtitle ?? '';
     $aBreadcrumbs = $aBreadcrumbs ?? [];
     $sPageHeaderButtons = $sPageHeaderButtons ?? '';
-    $sSettingsCollapseId = $sSettingsCollapseId ?? '';
     ?>
     <div class="page-header">
       <div class="container-xl">
@@ -540,45 +640,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         </div>
       </div>
     </div><!-- /.page-header -->
-    <?php if (!empty($sSettingsCollapseId)) : ?>
-    <div class="container-xl">
-      <div class="collapse mb-3" id="<?= InputUtils::escapeAttribute($sSettingsCollapseId) ?>"></div>
-    </div>
-    <?php endif; ?>
     <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
-<?php
-// Hydrate registry from session-cached remote notifications (no HTTP calls)
-NotificationService::loadSessionNotifications(
-    parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) === parse_url($homeUrl, PHP_URL_PATH)
-);
-
-// Render all active notifications as dismissible alerts
-foreach (NotificationService::getNotifications() as $notification) {
-?>
-      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible crm-system-notification"
-           role="alert"
-           <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
-           <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
-        <div class="d-flex">
-          <div><i class="fa-solid fa-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
-          <div>
-            <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
-            <?php if ($notification->getMessage()): ?>
-              <div class="text-secondary"><?= InputUtils::escapeHTML($notification->getMessage()) ?></div>
-            <?php endif; ?>
-            <?php if ($notification->getUrl()): ?>
-              <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" class="alert-link">
-                <?= gettext('Learn more') ?>
-              </a>
-            <?php endif; ?>
-          </div>
-        </div>
-        <?php if ($notification->getDismissSettingKey()): ?>
-          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>" aria-label="<?= gettext('Dismiss') ?>"></button>
-        <?php endif; ?>
-      </div>
-<?php } ?>
 <?php
 // Server-side page view telemetry for legacy (non-API) pages.
 // Strip query string so no record IDs reach PostHog.
@@ -589,35 +652,3 @@ if (TelemetryService::isEnabled()):
 ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry.min.js') ?>" defer></script>
 <?php endif; ?>
-<?php
-// 2FA grace-period banner — shown inside the page body when the current user
-// is within the mandatory-2FA grace window. Uses Tabler alert colours:
-//   - alert-warning (yellow) while > 1 day remains
-//   - alert-danger  (red)    when <= 1 day remains
-if ($currentUser !== null):
-    $_twoFAGraceStatus = $currentUser->getTwoFactorGraceStatus();
-    if ($_twoFAGraceStatus === 'within-grace'):
-        $_twoFADaysLeft   = $currentUser->getTwoFactorGraceDaysRemaining();
-        $_twoFAAlertClass = $_twoFADaysLeft <= 1 ? 'alert-danger' : 'alert-warning';
-?>
-<div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">
-  <div class="d-flex align-items-center">
-    <div class="me-2"><i class="fa-solid fa-shield-halved"></i></div>
-    <div>
-      <?= InputUtils::escapeHTML(sprintf(
-          ngettext(
-              'Two-factor authentication is required. You have %d day to enroll.',
-              'Two-factor authentication is required. You have %d days to enroll.',
-              $_twoFADaysLeft
-          ),
-          $_twoFADaysLeft
-      )) ?>
-      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="alert-link ms-1">
-        <?= gettext('Set up now') ?>
-      </a>
-    </div>
-  </div>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
-</div>
-<?php endif; // within-grace ?>
-<?php endif; // currentUser !== null ?>

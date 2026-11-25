@@ -1580,10 +1580,6 @@ msgid "Permission"
 msgstr "Permiso"
 
 #: 
-msgid "System Settings"
-msgstr "Ajustes de sistema"
-
-#: 
 msgid "User Editor"
 msgstr "Editor de usuario"
 
@@ -2065,24 +2061,12 @@ msgid "Localization"
 msgstr "Localización"
 
 #: 
-msgid "Setting saved"
-msgstr "Ajustes guardados"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Editar ajustes de JSON"
-
-#: 
 msgid "False"
 msgstr "Falso"
 
 #: 
 msgid "True"
 msgstr "Verdadero"
-
-#: 
-msgid "Edit Settings"
-msgstr "Editar ajustes"
 
 #: 
 msgid "Functions"
@@ -2197,32 +2181,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Incluir solo estas clasificaciones en el directorio, separadas por coma"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Estos son los números de roles de familia designados como cabezas del hogar"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Estos son los números de rol familiar designados como cónyuge"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Estos son los números de rol de familia designados como niño"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Largo mínimo de contraseña que un usuario debe ingresar"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Una lista de contraseñas deshabilitadas (muy obvias), separadas por coma."
-
-#: 
 msgid "Default City"
 msgstr "Ciudad por defecto"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Estado por Defecto - Debe ser una abreviación de 2 letras!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2245,68 +2205,12 @@ msgid "First month of the fiscal year"
 msgstr "Primer mes del año fiscal"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Colocar en verdadero para deshabilitar ingreso de Fecha de Amistad en Editor de personas. Colocar en falso para habilitar ingreso de Fecha de Amistad en Editor de personas."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Colocar en verdadero para deshabilitar manejo de suscripciones al boletín de noticias en el Editor de familia."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Colocar en verdadero para deshabilitar ingreso de Fecha de Matrimonio en Editor de familia. Colocar en falso para habilitar ingreso de Fecha de Matrimonio en Editor de familia."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Número de cheques para Reporte de fichas de depósito"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unidad usada para medir distancias, millas o km."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Activar pagos no deducibles"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Palabras para la primera línea del reporte de impuestos. Fechas serán agregadas al final de esta línea."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Palabras para la última línea del reporte de impuestos."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Firmante del Reporte de Impuestos"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Palabras para el reporte de recordatorios de promesas"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Firmante del recordatorio de promesa"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Palabras para el reporte de recordatorios de promesas - No hay registros de una promesa"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Palabras para el reporte de recordatorios de promesas - No hay registros de pagos"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Palabras para el reporte de confirmación y corrección de la información de la base de datos"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Firmante de la confirmación y corrección de la información de la base de datos"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Palabras para el reporte de directorio"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3761,10 +3665,6 @@ msgstr "Archivo de respaldo no contiene una base de datos"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Hacer que los códigos postales ingresados por el usuario sean en MAYÚSCULA cuando se guarden en la base de datos."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Usado para terminar una carta antes de Firmante"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3869,10 +3769,6 @@ msgid "Failed"
 msgstr "Fracasó"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Número de cuenta corriente de iglesia"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Familia desactivada"
 
@@ -3883,10 +3779,6 @@ msgstr "Familia activada"
 #: 
 msgid "families"
 msgstr "familias"
-
-#: 
-msgid "Financial Settings"
-msgstr "Ajustes financieros"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3927,10 +3819,6 @@ msgstr "La propiedad ha sido desasignada exitosamente."
 #: 
 msgid "The property could not be unassigned."
 msgstr "La propiedad no puedo ser desasignada."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Texto antes del nombre en correo electrónicos/reportes"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4173,10 +4061,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "registro(s) agregados exitosamente al grupo seleccionado"
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Para definir la fecha en el Selector de Fechas, por defecto: yyyy-mm-dd, por ejemplo en Francés: dd/mm/yyyy."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Para definir la fecha en el Selector de Fechas, por defecto: Y-m-d, por ejemplo en Francés: d/m/Y."
 
@@ -4263,10 +4147,6 @@ msgstr "ONO"
 #: 
 msgid "WSW"
 msgstr "OSO"
-
-#: 
-msgid "Search Family"
-msgstr "Buscar familia"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4365,10 +4245,6 @@ msgid "Change Settings"
 msgstr "Cambiar ajustes"
 
 #: 
-msgid "Unknown Type"
-msgstr "Tipo desconocido"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "ID de persona para carrito debe ser numérico"
 
@@ -4387,14 +4263,6 @@ msgstr "Buscar personas"
 #: 
 msgid "Maximum number of People"
 msgstr "Número máximo de personas"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Campo donde se lista el Padre de Confesión, debe ser de tipo persona de grupo"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Campo donde la última Confesión es almacenada, debe ser de tipo fecha"
 
 #: 
 msgid "People Reports"
@@ -4644,18 +4512,6 @@ msgid "Event not found"
 msgstr "Evento no encontrado"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Límite de tiempo de la sesión en segundos\n"
-"Ajustar a cero para deshabilitar el límite de tiempo."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Cantidad mínima en que una nueva contraseña debe diferir de la antigua (# caracteres cambiados)\n"
-"Ajustar a cero para deshabilitar esta funcionalidad"
-
-#: 
 msgid "Verify People"
 msgstr "Verificación de personas"
 
@@ -4727,10 +4583,6 @@ msgstr "Eventos desanclados"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Apellido, PrimerNombre SegundoNombre"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Enviar un correo notificando a usuarios cuando se les haya borrado su cuenta"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7699,10 +7551,6 @@ msgid "selected family has no coordinates"
 msgstr "la familia seleccionada no tiene coordenadas"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Requerir que todos los usuarios se inscriban en la autenticación de dos factores"
-
-#: 
 msgid "Active Groups"
 msgstr "Grupos activos"
 
@@ -8181,10 +8029,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Elija cómo desea poblar su base de datos. Siempre puede utilizar otro método más adelante."
 
 #: 
-msgid "Church Info"
-msgstr "Información parroquial"
-
-#: 
 msgid "Clear all"
 msgstr "Borrar todo"
 
@@ -8215,14 +8059,6 @@ msgstr "Plataforma de gestión parroquial"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Complete estos pasos en cualquier orden para preparar ChurchCRM para su feligresía."
-
-#: 
-msgid "Confession"
-msgstr "Confesión"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Configurar los ajustes y preferencias globales del sistema"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8271,10 +8107,6 @@ msgstr "Persona actual"
 #: 
 msgid "Database Reset"
 msgstr "Restablecer base de datos"
-
-#: 
-msgid "Default / Notes"
-msgstr "Predeterminado / Notas"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9895,10 +9727,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Permitir actualizaciones del sistema a versiones marcadas como 'versión previa' en GitHub"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Permitir acceso no autenticado a eventos del calendario mediante URLs públicas HTML, ICS y JSON. Necesario para compartir calendarios con aplicaciones externas."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Permitir que los visitantes creen su propio registro familiar a través de la página de auto-registro"
 
@@ -10061,24 +9889,12 @@ msgid "Enable Email"
 msgstr "Habilitar correo"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Habilitar menú de eventos"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Habilitar API de calendario externo"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Habilitar el envío de correos desde ChurchCRM. Requerido para reseteo de contraseña, notificaciones y enlaces de correo."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Habilitar si tu servidor SMTP requiere nombre de usuario y contraseña"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Habilitar o deshabilitar el módulo de Escuela Dominical y el menú de la barra lateral."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10176,10 +9992,6 @@ msgstr "Ocultar latitud/longitud"
 #: 
 msgid "How it works"
 msgstr "Cómo funciona"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Cuántos cheques imprimir por página de comprobante de depósito"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10339,10 +10151,6 @@ msgid "Privacy Note"
 msgstr "Nota de privacidad"
 
 #: 
-msgid "Quick Settings"
-msgstr "Configuración rápida"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "Autenticación SMTP"
 
@@ -10369,10 +10177,6 @@ msgstr "Configuración"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Mostrar un desglose de los billetes en el informe del comprobante de depósito"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Mostrar u ocultar el menú de Eventos en la navegación principal."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10786,10 +10590,6 @@ msgstr "Si notás caracteres ilegibles, entidades HTML que aparecen como texto, 
 #: 
 msgid "Indigo"
 msgstr "Índigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Valor JSON inválido — la configuración no fue guardada. Por favor, corregílo e intentá de nuevo."
 
 #: 
 msgid "Language and regional settings"
@@ -12566,10 +12366,6 @@ msgstr "Todo el día"
 #: 
 msgid "All Roles"
 msgstr "Todos los roles"
-
-#: 
-msgid "All System Settings"
-msgstr "Todas las configuraciones del sistema"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15041,10 +14837,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Lista de orígenes separados por espacios con permiso para incrustar la página de calendario público externo en un <iframe> (CSP frame-ancestors). El valor predeterminado \"*\" permite cualquier origen. Restringí a orígenes específicos para mayor seguridad, p. ej. \"https://mysite.org https://embed.example.com\"."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Orígenes separados por espacios con permiso para incrustar la página de calendario público en un <iframe> (CSP frame-ancestors). El valor predeterminado \"*\" permite cualquier sitio. Restringí para mayor seguridad, p. ej. \"https://mysite.org\"."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "El grupo de Escuela Dominical no puede modificarse, solo en estos dos casos"
 
@@ -15575,10 +15367,6 @@ msgstr "Guardado correctamente"
 #: 
 msgid "Select a fund"
 msgstr "Seleccioná un fondo"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Enviarme un correo de cumpleaños de prueba"
 
 #: 
 msgid "Sending to"
@@ -16597,10 +16385,6 @@ msgid "Not a valid date of death"
 msgstr "No es una fecha de fallecimiento válida"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Cantidad de días que tienen los usuarios para habilitar la autenticación de dos factores después de que se vuelve obligatoria. Poné 0 para exigirla de inmediato. Acortar un período de gracia activo puede bloquear a los usuarios de inmediato."
-
-#: 
 msgid "Offline"
 msgstr "Sin conexión"
 
@@ -16925,14 +16709,6 @@ msgid "Download CSV"
 msgstr "Descargar CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Habilitar o deshabilitar el módulo de Finanzas y el menú lateral."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Habilitar o deshabilitar el módulo de Recaudación de Fondos."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Error al eliminar el logo de la iglesia"
 
@@ -17129,46 +16905,6 @@ msgid "Feature Toggles"
 msgstr "Alternar características"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Los alternadores de características controlan qué módulos y características están disponibles en ChurchCRM. Los cambios tienen efecto inmediato."
-
-#: 
-msgid "Finance Features"
-msgstr "Características financieras"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Incluir direcciones en la búsqueda global rápida"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Incluir eventos del calendario en la búsqueda global rápida"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Incluir propiedades de familia personalizadas en la búsqueda global rápida"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Incluir depósitos en la búsqueda global rápida"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Incluir familias en la búsqueda global rápida"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Incluir grupos en la búsqueda global rápida"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Incluir pagos en la búsqueda global rápida"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Incluir personas en la búsqueda global rápida"
-
-#: 
 msgid "Invalid setting"
 msgstr "Configuración inválida"
 
@@ -17177,16 +16913,8 @@ msgid "Lost Password Link"
 msgstr "Enlace de contraseña perdida"
 
 #: 
-msgid "Manage All Features"
-msgstr "Gestionar todas las características"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Alternador maestro para envío de correos electrónicos. REQUERIDO para restablecimientos de contraseña y notificaciones"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Pagos no deducibles"
 
 #: 
 msgid "Primary Modules"
@@ -17197,20 +16925,12 @@ msgid "Public Calendar API"
 msgstr "API de calendario público"
 
 #: 
-msgid "Saved"
-msgstr "Guardado"
-
-#: 
 msgid "Search Families"
 msgstr "Buscar familias"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Buscar propiedades personalizadas de familia"
-
-#: 
-msgid "Search Settings"
-msgstr "Configuración de búsqueda"
 
 #: 
 msgid "Self-Registration"
@@ -17427,14 +17147,6 @@ msgstr "Destinatarios de notificaciones"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Personas a notificar cuando se agrega una nueva familia o persona"
-
-#: 
-msgid "Person initials style"
-msgstr "Estilo de iniciales de la persona"
-
-#: 
-msgid "Person name display style"
-msgstr "Estilo de visualización del nombre de la persona"
 
 #: 
 msgid "Spouse Role"
@@ -23443,30 +23155,6 @@ msgid "Download PDF"
 msgstr "Descargar PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Período de bloqueo en minutos\n"
-"Una cuenta bloqueada se desbloquea por sí misma después de esta cantidad de minutos. Los inicios de sesión fallidos desde una dirección IP se cuentan durante el mismo período."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Número máximo de inicios de sesión fallidos desde una dirección IP\n"
-"Los inicios de sesión fallidos y las solicitudes de restablecimiento de contraseña desde una dirección IP cuentan para este límite dentro del período de bloqueo. Una vez alcanzado, el inicio de sesión desde esa dirección se rechaza hasta que termine el período.\n"
-"Establece en cero para desactivar esta función, por ejemplo cuando todos acceden a ChurchCRM a través de una dirección proxy."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Número máximo de inicios de sesión fallidos permitidos antes de que se bloquee una cuenta de usuario.\n"
-"Una cuenta bloqueada se desbloquea por sí misma después del período de bloqueo, o antes cuando un administrador restablece sus inicios de sesión fallidos.\n"
-"Esta función ayuda a proteger contra ataques de adivinación de contraseñas automatizados.\n"
-"Establece en cero para desactivar esta función."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minutos hasta que se desbloquea por sí mismo: %d"
 
@@ -23795,10 +23483,6 @@ msgid "PDF Output"
 msgstr "Salida de PDF"
 
 #: 
-msgid "PDF handling mode"
-msgstr "Modo de manejo de PDF"
-
-#: 
 msgid "Questions Line"
 msgstr "Línea de consultas"
 
@@ -23835,10 +23519,6 @@ msgid "Greeting"
 msgstr "Saludo"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Saludo y firma de la carta"
-
-#: 
 msgid "Letterhead"
 msgstr "Membrete"
 
@@ -23861,10 +23541,6 @@ msgstr "Definí el membrete que imprimen las cartas PDF"
 #: 
 msgid "Using the church name and address"
 msgstr "Con el nombre y la dirección de la iglesia"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Con la ruta del membrete definida en Ajustes del sistema"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26257,24 +25933,12 @@ msgid "Installation profile"
 msgstr "Perfil de instalación"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nunca se comparten: registros de miembros, ofrendas u otros registros de la iglesia, el nombre de su iglesia, su dirección web o nombre de servidor, ni direcciones de correo electrónico. Su país es el que figura en la configuración de su iglesia, no se obtiene de su red."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Vea exactamente qué se comparte, o cambie su elección, en Admin → Telemetría."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Distinguir instalaciones de producción, demostración y prueba"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Comprender la compatibilidad de bases de datos"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Sus datos son suyos. Esto informa sobre el software, nunca sobre su iglesia ni sus personas."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28243,10 +27907,6 @@ msgid "Setup Dashboard"
 msgstr "Escritorio de configuración"
 
 #: 
-msgid "Setup Dashboard Days"
-msgstr "Días del Escritorio de configuración"
-
-#: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
 msgstr "Empezar de cero en el banner de demostración, o Restablecer base de datos en el Panel de administración, borra los datos de demostración y todos los ajustes y devuelve ChurchCRM a una instalación nueva."
 
@@ -28293,4 +27953,400 @@ msgstr "La información de su iglesia se ha guardado. Siga los pasos que aparece
 #: 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Su base de datos (%1$s %2$s) es un riesgo de seguridad: su proveedor ya no publica correcciones de seguridad para esa versión. ChurchCRM sigue funcionando, pero pida a su proveedor de alojamiento que la traslade a MariaDB %3$s+ o MySQL %4$s+."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Un registro diario mientras está en uso, las versiones del software y de la base de datos, la configuración regional, el país, el tipo de instalación y un ID de instalación aleatorio ayudan a contar las instalaciones activas."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Cuentas e inicio de sesión"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "También envía qué páginas se utilizan."
+
+#: 
+msgid "Areas"
+msgstr "Áreas"
+
+#: 
+msgid "Church & System"
+msgstr "Iglesia y sistema"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Ciudad o población donde se emiten los recibos, impresa en los recibos oficiales. Déjelo en blanco para usar la ciudad de la iglesia."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Despedida antes del nombre del firmante, por ejemplo Atentamente."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Despedida impresa antes del firmante en los recibos oficiales."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Contraseñas separadas por comas que nadie puede usar."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Carta de confirmación"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "¿Crear una familia para esta persona? Su dirección y su teléfono del hogar se trasladan a la nueva familia."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Días que tienen los usuarios para configurar la autenticación de dos factores después de que se vuelva obligatoria. 0 la exige de inmediato. Acortar un período de gracia activo puede bloquear el acceso de los usuarios."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depósitos y pagos"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Contraseñas no permitidas"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Descargo de responsabilidad %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Enviar un correo electrónico a los usuarios cuando se elimine su cuenta"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Todas las páginas de configuración en un solo lugar, y los ajustes que se aplican a todo el sistema"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Inicios de sesión fallidos antes del bloqueo"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Inicios de sesión fallidos por dirección IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Roles familiares tratados como hijos en el directorio."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Roles familiares tratados como cabeza de familia en el directorio y en el inicio de sesión de miembros."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Roles familiares tratados como cónyuge en el directorio y en el inicio de sesión de miembros."
+
+#: 
+msgid "Finance Settings"
+msgstr "Configuración de finanzas"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Período de gracia (días)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ocultar las suscripciones al boletín informativo en el Editor de familia."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ocultar el campo Fecha de amistad en el Editor de personas."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ocultar el campo Fecha de matrimonio en el Editor de familia."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Tiempo que una cuenta bloqueada permanece bloqueada. Los inicios de sesión fallidos desde una dirección IP se cuentan durante el mismo período."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Cuántos caracteres debe diferir una contraseña nueva de la anterior. 0 desactiva esta opción."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "En Admin → Telemetría, active Compartir qué páginas se utilizan para seleccionar Completo. Completo también envía las vistas de página."
+
+#: 
+msgid "Initials Format"
+msgstr "Formato de iniciales"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Texto de la carta %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Período de bloqueo (minutos)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Bloquea una cuenta después de esta cantidad de inicios de sesión fallidos consecutivos. Se desbloquea tras el período de bloqueo o cuando un administrador la restablece. 0 desactiva el bloqueo."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Gestionar el Portal de miembros"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Los miembros pueden iniciar sesión con su correo electrónico."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Los miembros aún no pueden iniciar sesión."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Mínimo de caracteres cambiados"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Longitud mínima de la contraseña"
+
+#: 
+msgid "Name Format"
+msgstr "Formato del nombre"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nombre impreso debajo de la despedida de cartas y correos electrónicos"
+
+#: 
+msgid "No Payments Text"
+msgstr "Texto cuando no hay pagos"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Texto cuando no hay promesas"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ningún nivel envía personas, donantes, ofrendas, contenido, datos de contacto de la iglesia, su dirección web ni el nombre de su servidor."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ningún nivel envía su dirección web ni el nombre de su servidor. Las instalaciones de prueba no envían nada. La telemetría se envía a PostHog en los Estados Unidos."
+
+#: 
+msgid "OS family"
+msgstr "Familia del sistema operativo"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Párrafo de apertura de la carta de recordatorio de promesas."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Párrafo que invita a hacer preguntas en el estado de ofrendas."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Párrafo que invita a hacer preguntas en la carta para las familias sin ofrendas."
+
+#: 
+msgid "Passwords"
+msgstr "Contraseñas"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Impreso después del intervalo de fechas en la línea de apertura de la carta para las familias sin ofrendas."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Impreso primero en el estado de ofrendas, seguido del intervalo de fechas."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Impreso cuando una familia no tiene pagos registrados."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Impreso cuando una familia no tiene promesas registradas."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Rechaza el inicio de sesión desde una dirección IP durante el período de bloqueo después de esta cantidad de inicios de sesión fallidos o restablecimientos de contraseña. 0 lo desactiva, por ejemplo cuando todos se conectan a través de un único proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Requerir autenticación de dos factores"
+
+#: 
+msgid "Security Settings"
+msgstr "Configuración de seguridad"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Envía informes de errores, eventos de instalación/actualización e información del sistema para que los problemas puedan corregirse. Sin vistas de página, sin datos de la iglesia."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Tiempo de espera de la sesión (segundos)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Compartir qué páginas se utilizan"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Inicio de sesión y seguridad"
+
+#: 
+msgid "Signature Storage"
+msgstr "Almacenamiento de la firma"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Cierra la sesión de un usuario después de esta cantidad de segundos sin actividad. 0 nunca cierra la sesión."
+
+#: 
+msgid "System-wide"
+msgstr "Todo el sistema"
+
+#: 
+msgid "Text After Dates"
+msgstr "Texto después de las fechas"
+
+#: 
+msgid "Text Messages"
+msgstr "Mensajes de texto"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Párrafo de agradecimiento del estado de ofrendas."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Párrafo de agradecimiento de la carta para las familias sin ofrendas."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "La conversión falló. No se cambió nada."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Se está usando un archivo de membrete guardado antes de que se añadieran las cargas. Cargue un membrete para reemplazarlo."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Aviso después de (horas)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Palabra antes del nombre en cartas y correos electrónicos, por ejemplo Estimado."
+
+#: 
+msgid "Amount offset, left"
+msgstr "Desplazamiento de la cantidad, izquierda"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Datos de demostración cargados"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Cada posición debe ser un número de 0 a 1000 milímetros."
+
+#: 
+msgid "First date, left"
+msgstr "Primera fecha, izquierda"
+
+#: 
+msgid "First date, top"
+msgstr "Primera fecha, superior"
+
+#: 
+msgid "Item count, left"
+msgstr "Cantidad de ítems, izquierda"
+
+#: 
+msgid "Item count, top"
+msgstr "Cantidad de ítems, superior"
+
+#: 
+msgid "Left margin"
+msgstr "Margen izquierdo"
+
+#: 
+msgid "Line items"
+msgstr "Partidas"
+
+#: 
+msgid "Maximum height"
+msgstr "Altura máxima"
+
+#: 
+msgid "Maximum width"
+msgstr "Ancho máximo"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Desactivado de forma predeterminada. Nos ayuda a mejorar ChurchCRM. Nunca incluye su iglesia ni a sus personas."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforación, superior"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posiciones en milímetros en el ticket de depósito preimpreso"
+
+#: 
+msgid "Saved"
+msgstr "Guardado"
+
+#: 
+msgid "Second date, left"
+msgstr "Segunda fecha, izquierda"
+
+#: 
+msgid "See what's shared"
+msgstr "Ver lo que se comparte"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Espaciado, horizontal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Espaciado, vertical"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotal, izquierda"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotal, superior"
+
+#: 
+msgid "Ticket"
+msgstr "Ticket de depósito"
+
+#: 
+msgid "Title, left"
+msgstr "Título, izquierda"
+
+#: 
+msgid "Top margin"
+msgstr "Margen superior"
+
+#: 
+msgid "Total, left"
+msgstr "Total, izquierda"
+
+#: 
+msgid "Total, top"
+msgstr "Total, superior"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

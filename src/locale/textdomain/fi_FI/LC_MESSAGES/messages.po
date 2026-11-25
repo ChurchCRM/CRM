@@ -1584,10 +1584,6 @@ msgid "Permission"
 msgstr "Lupa"
 
 #: 
-msgid "System Settings"
-msgstr "Järjestelmäasetukset"
-
-#: 
 msgid "User Editor"
 msgstr "Käyttäjien muokkaus"
 
@@ -2069,24 +2065,12 @@ msgid "Localization"
 msgstr "Lokalisointi"
 
 #: 
-msgid "Setting saved"
-msgstr "Asetus tallennettu"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Muokkaa JSON-asetuksia"
-
-#: 
 msgid "False"
 msgstr "Epätosi"
 
 #: 
 msgid "True"
 msgstr "Tosi"
-
-#: 
-msgid "Edit Settings"
-msgstr "Muokkaa asetuksia"
 
 #: 
 msgid "Functions"
@@ -2201,32 +2185,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Sisällytä hakemistoon vain nämä luokitukset (pilkulla erotettuna)"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Nämä ovat perherooleja, jotka on määritelty perheenpääksi"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Nämä ovat perherooleja, jotka on määritelty puolisoiksi"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Nämä ovat perherooleja, jotka on määritelty lapsiksi"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Salasanan vähimmäispituus"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Pilkulla erotettu lista kielletyistä (liian helpoista) salasanoista."
-
-#: 
 msgid "Default City"
 msgstr "Oletuskaupunki"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Oletusosavaltio/lääni - täytyy olla 2-kirjaiminen lyhenne!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2249,68 +2209,12 @@ msgid "First month of the fiscal year"
 msgstr "Tilikauden ensimmäinen kuukausi"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Aseta 'Tosi' poistaaksesi Ystävyyspäivän syöttämisen käytöstä. Aseta 'Epätosi' salliaksesi sen."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Aseta 'Tosi' poistaaksesi uutiskirjeiden tilausten hallinnan käytöstä perhemuokkaimessa."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Aseta 'Tosi' poistaaksesi hääpäivän syöttämisen käytöstä perhemuokkaimessa."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Shekkien määrä talletusraportissa"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Etäisyyden mittayksikkö (mailit tai kilometrit)."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Ota käyttöön vähennyskelvottomat maksut"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Verotusraportin ylärivin teksti. Päivämäärät lisätään rivin loppuun."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Verotusraportin alarivin teksti."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Verotusraportin allekirjoittaja"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Lupausmuistutusraportin teksti"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Lupausmuistutuksen allekirjoittaja"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Lupausmuistutusraportin teksti - ei lupauksia"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Lupausmuistutusraportin teksti - ei maksuja"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Tietokannan tietojen vahvistus- ja korjausraportin teksti"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Tietojen vahvistusraportin allekirjoittaja"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Hakemistoraportin teksti"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3765,10 +3669,6 @@ msgstr "Varmuuskopioarkisto ei sisällä tietokantaa"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Muuta käyttäjän syöttämät postinumerot suuraakkosiksi tallennettaessa."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Käytetään kirjeen lopussa ennen allekirjoittajaa"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3873,10 +3773,6 @@ msgid "Failed"
 msgstr "Epäonnistui"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Kirkon käyttötilin numero"
-
-#: 
 msgid "Marked the Family as Inactive"
 msgstr "Perhe merkitty epäaktiiviseksi"
 
@@ -3887,10 +3783,6 @@ msgstr "Perhe merkitty aktiiviseksi"
 #: 
 msgid "families"
 msgstr "perheet"
-
-#: 
-msgid "Financial Settings"
-msgstr "Talousasetukset"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3931,10 +3823,6 @@ msgstr "Ominaisuuden poisto onnistui."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Ominaisuuden poisto epäonnistui."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Teksti ennen nimeä sähköposteissa/raporteissa"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4177,10 +4065,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "tietueet lisätty onnistuneesti valittuun ryhmään."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Päivämäärän valitsimen muoto, oletus: yyyy-mm-dd, esim. suomeksi: dd.mm.yyyy."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Päivämäärän valitsimen PHP-muoto, oletus: Y-m-d, esim. suomeksi: d.m.Y."
 
@@ -4267,10 +4151,6 @@ msgstr "LLU"
 #: 
 msgid "WSW"
 msgstr "LLO"
-
-#: 
-msgid "Search Family"
-msgstr "Etsi perhettä"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4369,10 +4249,6 @@ msgid "Change Settings"
 msgstr "Muuta asetuksia"
 
 #: 
-msgid "Unknown Type"
-msgstr "Tuntematon tyyppi"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Ostoskorin PersonID:n on oltava numeerinen"
 
@@ -4391,14 +4267,6 @@ msgstr "Etsi henkilöitä"
 #: 
 msgid "Maximum number of People"
 msgstr "Henkilöiden enimmäismäärä"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Kentän, jossa rippi-isä on lueteltu, on oltava ryhmätyyppiä 'henkilöt'"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Kentän, johon viimeisin ripittäytyminen tallennetaan, on oltava päivämäärätyyppiä"
 
 #: 
 msgid "People Reports"
@@ -4648,16 +4516,6 @@ msgid "Event not found"
 msgstr "Tapahtumaa ei löytynyt"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Istunnon aikakatkaisu sekunneissa. Aseta nollaksi poistaaksesi aikakatkaisun käytöstä."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Vähimmäismäärä merkkejä, joiden verran uuden salasanan on poikettava vanhasta. Aseta nollaksi poistaaksesi ominaisuuden."
-
-#: 
 msgid "Verify People"
 msgstr "Vahvista henkilöitä"
 
@@ -4729,10 +4587,6 @@ msgstr "Kiinnittämättömät tapahtumat"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Sukunimi, Etunimi Toinen-nimi"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Lähetä sähköposti-ilmoitus käyttäjälle, kun hänen tilinsä on poistettu"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7701,10 +7555,6 @@ msgid "selected family has no coordinates"
 msgstr "valitulla perheellä ei ole koordinaatteja"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen todennukseen"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiiviset ryhmät"
 
@@ -8183,10 +8033,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Valitse, miten haluat täyttää tietokantasi. Voit aina käyttää toista menetelmää myöhemmin."
 
 #: 
-msgid "Church Info"
-msgstr "Seurakunnan tiedot"
-
-#: 
 msgid "Clear all"
 msgstr "Tyhjennä kaikki"
 
@@ -8217,14 +8063,6 @@ msgstr "Yhteisön hallinta-alusta"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Suorita nämä missä tahansa järjestyksessä valmistellaksesi ChurchCRM:n seurakuntaasi varten."
-
-#: 
-msgid "Confession"
-msgstr "Rippi"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Määritä yleiset järjestelmäasetukset ja -valinnat"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8273,10 +8111,6 @@ msgstr "Nykyinen henkilö"
 #: 
 msgid "Database Reset"
 msgstr "Tietokannan nollaus"
-
-#: 
-msgid "Default / Notes"
-msgstr "Oletus / Muistiinpanot"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9897,10 +9731,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Salli järjestelmäpäivitykset GitHub:ssa 'pre release' -merkityiksi julkaisuihin"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Salli todentamaton pääsy kalenteritapahtumiin julkisten HTML-, ICS- ja JSON-URL-osoitteiden kautta. Vaaditaan kalenterien jakamiseen ulkoisten sovellusten kanssa."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Salli vierailijoiden luoda oma perherekisterinsä itsensä rekisteröitymissivun kautta"
 
@@ -10063,24 +9893,12 @@ msgid "Enable Email"
 msgstr "Ota sähköposti käyttöön"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Ota tapahtumavalikko käyttöön"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Ota ulkoinen kalenterin API käyttöön"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Ota sähköpostin lähetys käyttöön ChurchCRM:stä. Vaaditaan salasanan palautukseen, ilmoituksiin ja sähköpostilinkkeihin."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Ota käyttöön, jos SMTP-palvelimesi vaatii käyttäjätunnuksen ja salasanan"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Ota käyttöön tai poista käytöstä Pyhäkoulu-moduuli ja sivupalkin valikko."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10178,10 +9996,6 @@ msgstr "Piilota leveys- ja pituusaste"
 #: 
 msgid "How it works"
 msgstr "Kuinka se toimii"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Kuinka monta shekkiä tulostetaan talletuskuittisivulle"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10341,10 +10155,6 @@ msgid "Privacy Note"
 msgstr "Tietosuojahuomio"
 
 #: 
-msgid "Quick Settings"
-msgstr "Pika-asetukset"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP-todennus"
 
@@ -10371,10 +10181,6 @@ msgstr "Asennus"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Näytä setelidenominaatioerittely talletustositeraportissa"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Näytä tai piilota Tapahtumat-valikko päänavigaatiossa."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10788,10 +10594,6 @@ msgstr "Jos huomaat vääristyneitä merkkejä, HTML-entiteettejä tekstinä tai
 #: 
 msgid "Indigo"
 msgstr "Indigonsininen"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Virheellinen JSON-arvo — asetusta ei tallennettu. Korjaa se ja yritä uudelleen."
 
 #: 
 msgid "Language and regional settings"
@@ -12568,10 +12370,6 @@ msgstr "Koko päivä"
 #: 
 msgid "All Roles"
 msgstr "Kaikki roolit"
-
-#: 
-msgid "All System Settings"
-msgstr "Kaikki järjestelmän asetukset"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15042,10 +14840,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Välilyönnillä erotettu luettelo lähteistä, joilla on lupa upottaa julkinen ulkoinen kalenterisivu iframe-elementtiin. Oletus sallii kaikki lähteet."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Välilyönnillä erotetut lähteet, joilla on lupa upottaa julkinen kalenterisivu iframe-elementtiin. Oletus sallii kaikki sivustot."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Pyhäkouluryhmiä ei voi muokata, paitsi näissä kahdessa tapauksessa"
 
@@ -15576,10 +15370,6 @@ msgstr "Tallennettu onnistuneesti"
 #: 
 msgid "Select a fund"
 msgstr "Valitse rahasto"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Lähetä testisyntymäpäiväsähköposti itselleni"
 
 #: 
 msgid "Sending to"
@@ -16598,10 +16388,6 @@ msgid "Not a valid date of death"
 msgstr "Virheellinen kuolinpäivä"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Päivien määrä, jonka käyttäjillä on aikaa ottaa käyttöön 2FA sen jälkeen, kun se on tehty pakolliseksi. Aseta arvoksi 0 pakottaaksesi sen käyttöön välittömästi. Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjiä ulos välittömästi."
-
-#: 
 msgid "Offline"
 msgstr "Ei verkossa"
 
@@ -16926,14 +16712,6 @@ msgid "Download CSV"
 msgstr "Lataa CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Ota talousmoduuli ja sivupalkin valikko käyttöön tai poista käytöstä."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Ota varainhankintamoduuli käyttöön tai poista käytöstä."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Seurakunnan logon poistaminen epäonnistui"
 
@@ -17130,46 +16908,6 @@ msgid "Feature Toggles"
 msgstr "Ominaisuuksien kytkimet"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Ominaisuuksien kytkimet hallitsevat, mitkä moduulit ja ominaisuudet ovat saatavilla ChurchCRM:ssä. Muutokset tulevat voimaan välittömästi."
-
-#: 
-msgid "Finance Features"
-msgstr "Rahoitusominaisuudet"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Sisällytä osoitteet nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Sisällytä kalenteritapahtumat nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Sisällytä mukautetut perheominaisuudet nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Sisällytä talletukset nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Sisällytä perheet nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Sisällytä ministério nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Sisällytä maksut nopeaan globaaliin hakuun"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Sisällytä henkilöt nopeaan globaaliin hakuun"
-
-#: 
 msgid "Invalid setting"
 msgstr "Virheellinen asetus"
 
@@ -17178,16 +16916,8 @@ msgid "Lost Password Link"
 msgstr "Salasanan palautus linkki"
 
 #: 
-msgid "Manage All Features"
-msgstr "Hallitse kaikkia ominaisuuksia"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Pääkytkin sähköpostinlähettämiseen. VAADITAAN salasanan palautukselle ja ilmoituksille"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Ei-verovähennyskelpoisia maksuja"
 
 #: 
 msgid "Primary Modules"
@@ -17198,20 +16928,12 @@ msgid "Public Calendar API"
 msgstr "Julkinen kalenterin API"
 
 #: 
-msgid "Saved"
-msgstr "Tallennettu"
-
-#: 
 msgid "Search Families"
 msgstr "Etsi perheistä"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Etsi mukautettuja perheominaisuuksia"
-
-#: 
-msgid "Search Settings"
-msgstr "Etsi asetuksia"
 
 #: 
 msgid "Self-Registration"
@@ -17428,14 +17150,6 @@ msgstr "Ilmoitusten vastaanottajat"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Henkilöt, joille ilmoitetaan, kun uusi perhe tai henkilö lisätään"
-
-#: 
-msgid "Person initials style"
-msgstr "Henkilön nimikirjainten tyyli"
-
-#: 
-msgid "Person name display style"
-msgstr "Henkilön nimen esitystapa"
 
 #: 
 msgid "Spouse Role"
@@ -23444,30 +23158,6 @@ msgid "Download PDF"
 msgstr "Lataa PDF"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Lukitusjakso minuutteina\n"
-"Lukittu tili avautuu itsestään näin monen minuutin jälkeen. Yhden IP-osoitteen epäonnistuneet kirjautumiset lasketaan samalta ajanjaksolta."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Yhden IP-osoitteen epäonnistuneiden kirjautumisten enimmäismäärä\n"
-"Yhden IP-osoitteen epäonnistuneet kirjautumiset ja salasanan nollauspyynnöt lasketaan tähän rajaan lukitusjakson aikana. Kun raja saavutetaan, kirjautuminen kyseisestä osoitteesta hylätään jakson loppuun asti.\n"
-"Aseta nollaksi poistaaksesi tämän ominaisuuden käytöstä, esimerkiksi kun kaikki pääsevät ChurchCRM:ään yhden välityspalvelinosoitteen kautta."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Käyttäjätilin lukitsemista edeltävien epäonnistuneiden kirjautumisten enimmäismäärä.\n"
-"Lukittu tili avautuu itsestään lukitusjakson jälkeen tai aikaisemmin, kun järjestelmänvalvoja nollaa sen epäonnistuneet kirjautumiset.\n"
-"Tämä ominaisuus auttaa suojaamaan automaattisilta salasanan arvaushyökkäyksiltä.\n"
-"Aseta nollaksi poistaaksesi tämän ominaisuuden käytöstä."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minuutteja itsestään avautumiseen: %d"
 
@@ -23796,10 +23486,6 @@ msgid "PDF Output"
 msgstr "PDF-tuloste"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF-käsittelytapa"
-
-#: 
 msgid "Questions Line"
 msgstr "Kysymysrivi"
 
@@ -23836,10 +23522,6 @@ msgid "Greeting"
 msgstr "Tervehdys"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Kirjeen tervehdys ja allekirjoitus"
-
-#: 
 msgid "Letterhead"
 msgstr "Kirjelomake"
 
@@ -23862,10 +23544,6 @@ msgstr "Aseta kirjelomake, jonka PDF-kirjeet tulostavat"
 #: 
 msgid "Using the church name and address"
 msgstr "Käytetään seurakunnan nimeä ja osoitetta"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Käytetään järjestelmäasetuksissa määritettyä kirjelomakkeen polkua"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26258,24 +25936,12 @@ msgid "Installation profile"
 msgstr "Asennusprofiili"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Ei koskaan jaeta: jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Maasi on seurakunnan asetuksissa määritetty maa, eikä sitä päätellä verkostasi."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Katso tarkalleen, mitä jaetaan, tai muuta valintaasi kohdassa Ylläpito → Telemetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Erottele tuotanto-, demo- ja testiasennukset"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Ymmärrä tietokantojen yhteensopivuus"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Tietosi ovat sinun. Tämä raportoi ohjelmistosta, ei koskaan seurakunnastasi tai sen ihmisistä."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28244,10 +27910,6 @@ msgid "Setup Dashboard"
 msgstr "Asennuspaneeli"
 
 #: 
-msgid "Setup Dashboard Days"
-msgstr "Asennuspaneelin päivät"
-
-#: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
 msgstr "Aloita alusta demopalkissa tai Nollaa tietokanta Järjestelmänvalvojan koontinäytössä poistaa demotiedot ja jokaisen asetuksen ja palauttaa ChurchCRM:n uuteen asennukseen."
 
@@ -28294,4 +27956,400 @@ msgstr "Seurakuntasi tiedot on tallennettu. Käy läpi alla olevat vaiheet."
 #: 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Tietokantasi (%1$s %2$s) on tietoturvariski: sen toimittaja ei enää julkaise tietoturvakorjauksia kyseiselle versiolle. ChurchCRM toimii edelleen, mutta pyydä isäntääsi siirtymään MariaDB %3$s+ tai MySQL %4$s+ -versioon."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Päivittäinen tarkistus käytön aikana, ohjelmisto- ja tietokantaversiot, kielialue, maa, asennustyyppi ja satunnainen asennustunnus auttavat laskemaan aktiiviset asennukset."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Tilit & kirjautuminen"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Lähetä myös, mitä sivuja käytetään."
+
+#: 
+msgid "Areas"
+msgstr "Alueet"
+
+#: 
+msgid "Church & System"
+msgstr "Seurakunta & järjestelmä"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Kaupunki tai paikkakunta, jossa kuitit myönnetään, tulostetaan virallisiin kuitteihin. Jätä tyhjäksi käyttääksesi seurakunnan kaupunkia."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Lopetus allekirjoittajan nimen edellä, esimerkiksi Ystävällisin terveisin."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Lopetus, joka tulostetaan allekirjoittajan edelle virallisiin kuitteihin."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Pilkulla erotetut salasanat, joita kukaan ei saa käyttää."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Vahvistuskirje"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Luodaanko tälle henkilölle perhe? Hänen osoitteensa ja kotipuhelimensa siirtyvät uuteen perheeseen."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Päiviä, jotka käyttäjillä on kaksivaiheisen todentamisen käyttöönottoon sen jälkeen, kun siitä tulee pakollinen. 0 pakottaa sen heti. Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjiä ulos."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Talletukset & maksut"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Kielletyt salasanat"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Vastuuvapauslauseke %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Lähetä käyttäjille sähköpostia, kun heidän tilinsä poistetaan"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Jokainen asetussivu yhdessä paikassa sekä asetukset, jotka koskevat koko järjestelmää"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Epäonnistuneet kirjautumiset ennen lukitusta"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Epäonnistuneet kirjautumiset IP-osoitetta kohti"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Perheroolit, joita käsitellään lapsina hakemistossa."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Perheroolit, joita käsitellään perheen päänä hakemistossa ja jäsenten kirjautumisessa."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Perheroolit, joita käsitellään puolisona hakemistossa ja jäsenten kirjautumisessa."
+
+#: 
+msgid "Finance Settings"
+msgstr "Talousasetukset"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Siirtymäaika (päivää)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Piilota uutiskirjetilaukset kohdassa Perheen muokkaus."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Piilota Ystävyyspäivä-kenttä kohdassa Henkilön muokkaus."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Piilota Hääpäivä-kenttä kohdassa Perheen muokkaus."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Kuinka kauan lukittu tili pysyy lukittuna. Epäonnistuneet kirjautumiset yhdestä IP-osoitteesta lasketaan saman ajanjakson ajalta."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Kuinka monella merkillä uuden salasanan on erottava vanhasta. 0 poistaa tämän käytöstä."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Kohdassa Ylläpito → Telemetria, ota käyttöön Jaa, mitä sivuja käytetään valitaksesi Täynnä. Täynnä lähettää myös sivukatseluita."
+
+#: 
+msgid "Initials Format"
+msgstr "Nimikirjainmuoto"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Kirjeteksti %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Lukitusaika (minuutit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Lukitsee tilin tämän monen peräkkäisen epäonnistuneen kirjautumisen jälkeen. Lukitus avautuu lukitusajan jälkeen tai kun ylläpitäjä nollaa sen. 0 poistaa lukituksen käytöstä."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Hallitse Jäsenportaalia"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Jäsenet voivat kirjautua sisään sähköpostillaan."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Jäsenet eivät voi vielä kirjautua sisään."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Muutettujen merkkien vähimmäismäärä"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Salasanan vähimmäispituus"
+
+#: 
+msgid "Name Format"
+msgstr "Nimimuoto"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nimi, joka tulostetaan kirjeiden ja sähköpostien lopetuksen alle"
+
+#: 
+msgid "No Payments Text"
+msgstr "Ei maksuja -teksti"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Ei lupausta -teksti"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Mikään taso ei lähetä henkilöitä, lahjoittajia, lahjoituksia, sisältöä, seurakunnan yhteystietoja, verkko-osoitettasi tai palvelimesi nimeä."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Mikään taso ei lähetä verkko-osoitettasi tai palvelimesi nimeä. Testiasennukset eivät lähetä mitään. Telemetria lähetetään PostHogiin Yhdysvaltoihin."
+
+#: 
+msgid "OS family"
+msgstr "Käyttöjärjestelmäperhe"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Lupausmuistutuskirjeen avauskappale."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Lahjoitustiedotteen kappale, joka kutsuu esittämään kysymyksiä."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Kappale nollalahjoittajien kirjeessä, joka kutsuu esittämään kysymyksiä."
+
+#: 
+msgid "Passwords"
+msgstr "Salasanat"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Tulostetaan päivämääräalueen jälkeen nollalahjoittajien kirjeen avausriville."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Tulostetaan ensimmäisenä lahjoitustiedotteeseen, jonka jälkeen tulee päivämääräalue."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Tulostetaan, kun perheellä ei ole kirjattuja maksuja."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Tulostetaan, kun perheellä ei ole kirjattua lupausta."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Estää kirjautumisen yhdestä IP-osoitteesta lukitusajaksi tämän monen epäonnistuneen kirjautumisen tai salasanan nollauksen jälkeen. 0 poistaa sen käytöstä, esimerkiksi kun kaikki yhdistävät yhden välityspalvelimen kautta."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Vaadi kaksivaiheista todentamista"
+
+#: 
+msgid "Security Settings"
+msgstr "Turvallisuusasetukset"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Lähetä virheraportteja, asennus-/päivitystapahtumia ja järjestelmätietoja, jotta ongelmat voidaan korjata. Ei sivukatseluita, ei seurakunnan tietoja."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Istunnon aikakatkaisu (sekuntia)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Jaa, mitä sivuja käytetään"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Kirjautuminen & turvallisuus"
+
+#: 
+msgid "Signature Storage"
+msgstr "Allekirjoitusten tallennus"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Kirjaa käyttäjän ulos tämän monen sekunnin käyttämättömyyden jälkeen. 0 ei kirjaa koskaan ulos."
+
+#: 
+msgid "System-wide"
+msgstr "Koko järjestelmän"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teksti päivämäärien jälkeen"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstiviestit"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Lahjoitustiedotteen kiitoskappale."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Nollalahjoittajien kirjeen kiitoskappale."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Muunnos epäonnistui. Mitään ei muutettu."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Käytetään kirjelomaketiedostoa, joka on tallennettu ennen latausten lisäämistä. Lataa kirjelomake korvataksesi sen."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Varoitus jälkeen (tuntia)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Sana ennen nimeä kirjeissä ja sähköposteissa, esimerkiksi Hyvä."
+
+#: 
+msgid "Amount offset, left"
+msgstr "Summan siirtymä, vasen"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demotiedot ladattu"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Jokaisen sijainnin on oltava luku väliltä 0–1000 millimetriä."
+
+#: 
+msgid "First date, left"
+msgstr "Ensimmäinen päivämäärä, vasen"
+
+#: 
+msgid "First date, top"
+msgstr "Ensimmäinen päivämäärä, ylä"
+
+#: 
+msgid "Item count, left"
+msgstr "Kohteiden määrä, vasen"
+
+#: 
+msgid "Item count, top"
+msgstr "Kohteiden määrä, ylä"
+
+#: 
+msgid "Left margin"
+msgstr "Vasen marginaali"
+
+#: 
+msgid "Line items"
+msgstr "Rivikohteet"
+
+#: 
+msgid "Maximum height"
+msgstr "Enimmäiskorkeus"
+
+#: 
+msgid "Maximum width"
+msgstr "Enimmäisleveys"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Pois päältä oletuksena. Auttaa meitä parantamaan ChurchCRM:ää. Ei koskaan sisällä seurakuntaasi tai sen jäseniä."
+
+#: 
+msgid "Perforation, top"
+msgstr "Rei'itys, ylä"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Sijainnit millimetreinä esipainetulla talletuskuitilla"
+
+#: 
+msgid "Saved"
+msgstr "Tallennettu"
+
+#: 
+msgid "Second date, left"
+msgstr "Toinen päivämäärä, vasen"
+
+#: 
+msgid "See what's shared"
+msgstr "Katso, mitä jaetaan"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Väli, vaakasuora"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Väli, pystysuora"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Välisumma, vasen"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Välisumma, ylä"
+
+#: 
+msgid "Ticket"
+msgstr "Talletuskuitti"
+
+#: 
+msgid "Title, left"
+msgstr "Otsikko, vasen"
+
+#: 
+msgid "Top margin"
+msgstr "Ylämarginaali"
+
+#: 
+msgid "Total, left"
+msgstr "Yhteensä, vasen"
+
+#: 
+msgid "Total, top"
+msgstr "Yhteensä, ylä"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

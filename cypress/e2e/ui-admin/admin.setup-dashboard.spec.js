@@ -82,6 +82,22 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.get("#globalSearch").should("exist");
     });
 
+    it("shows no remote announcements before setup is done", () => {
+        cy.setSystemConfig(CHURCH, "");
+        // Raw form login: freshAdminFormLogin would dismiss any notifications,
+        // which is exactly what this test needs to observe.
+        cy.env(["admin.username", "admin.password"]).then((env) => {
+            cy.clearCookies();
+            cy.visit("/session/begin");
+            cy.get("input[name=User]").type(env["admin.username"]);
+            cy.get("input[name=Password]").type(`${env["admin.password"]}{enter}`, { log: false });
+        });
+        cy.location("pathname").should("match", SETUP);
+        // Announcements presume an install in daily use; in setup mode they
+        // never load, so the notification center stays away entirely.
+        cy.get("#notificationCenterMenuItem").should("not.exist");
+    });
+
     it("starts in the browser's language, and the top bar picker changes it", () => {
         cy.setSystemConfig(CHURCH, "");
         cy.freshAdminFormLogin();
@@ -133,7 +149,8 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.setSystemConfig(PROFILE, "demo");
         cy.freshAdminFormLogin();
         cy.location("pathname").should("match", SETUP);
-        cy.get("#demoModeBanner .js-start-fresh").should("be.visible");
+        cy.get("#notificationCenterMenu").click();
+        cy.get('[data-notification-id="demo-mode"] .js-start-fresh').should("be.visible");
         cy.get("#setupChoiceDemo")
             .should("contain.text", "You're exploring demo data")
             .find(".js-start-fresh")
@@ -142,23 +159,10 @@ describe("Admin of a new install signs in to the Setup Dashboard", () => {
         cy.get("#setupSteps").should("not.exist");
 
         cy.visit("/people/dashboard");
-        cy.get("#demoModeBanner").should("be.visible");
+        cy.get("#notificationCenterMenuItem").should("be.visible");
 
         staffSignIn();
-        cy.get("#demoModeBanner").should("be.visible").find(".js-start-fresh").should("not.exist");
-    });
-
-    it("ends with the window, which the admin can lengthen from the Admin Dashboard", () => {
-        setInstallAgeDays(31);
-        cy.freshAdminFormLogin();
-        cy.location("pathname").should("match", STANDARD);
-
-        cy.intercept("POST", `**/admin/api/system/config/${DAYS}`).as("saveDays");
-        cy.visit("/admin/");
-        cy.get(`#setupSettings input[name='${DAYS}']`).should("not.be.disabled").clear().type("60").blur();
-        cy.wait("@saveDays").its("response.statusCode").should("eq", 200);
-
-        cy.freshAdminFormLogin();
-        cy.location("pathname").should("match", SETUP);
+        cy.get("#notificationCenterMenu").click();
+        cy.get('[data-notification-id="demo-mode"]').should("be.visible").find(".js-start-fresh").should("not.exist");
     });
 });

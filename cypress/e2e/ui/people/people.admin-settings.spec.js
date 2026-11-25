@@ -11,12 +11,15 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleGrades", "#peopleMap", "#peopleDirectory", "#peopleConfirmation"];
+    const reportKeys = ["sDear", "sConfirmSincerely", "sConfirmSigner", "sConfirm1", "sConfirm2", "sConfirm3", "sConfirm4", "sConfirm5", "sConfirm6", "sDirectoryDisclaimer1", "sDirectoryDisclaimer2"];
+    const reportOriginals = {};
     let savedProviders;
     let savedFriendDate;
     let savedDefaultCity;
 
     before(() => {
+        reportKeys.forEach((key) => cy.getSystemConfig(key).then((value) => { reportOriginals[key] = value; }));
         cy.getSystemConfig("bHideFriendDate").then((value) => {
             savedFriendDate = value;
         });
@@ -29,6 +32,7 @@ describe("People Settings hub", () => {
     });
 
     after(() => {
+        reportKeys.forEach((key) => cy.restoreSystemConfig(key, reportOriginals[key]));
         cy.restoreSystemConfig("bHideFriendDate", savedFriendDate);
         cy.restoreSystemConfig("sDefaultCity", savedDefaultCity);
         cy.restoreSystemConfig("sGeocoderProviders", savedProviders);
@@ -58,7 +62,7 @@ describe("People Settings hub", () => {
             cy.get("#peoplePeople").should("contain.text", "Hide Friend Date");
             cy.get("#peoplePeople .form-label").filter(":contains('Set true to disable')").should("not.exist");
             cy.get(
-                "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
+                "#peoplePeople [title*='Hide the Friend Date field'], #peoplePeople [data-bs-original-title*='Hide the Friend Date field']",
             ).should("exist");
             cy.get("#peoplePeople select[name='iPersonNameStyle'] option").should("have.length", 9);
             cy.get("#peoplePeople select[name='iPersonInitialStyle'] option").should("have.length", 2);
@@ -67,7 +71,7 @@ describe("People Settings hub", () => {
             cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
             cy.get("#peopleMap select[name='sGeocoderProviders']").should("exist");
             // Hide Person Address lives under People, not twice
-            cy.get("[name='bHidePersonAddress']").should("have.length", 2); // Yes/No pills of one setting
+            cy.get("[name='bHidePersonAddress']").should("have.length", 1);
             cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
 
             cy.visit("/people/map");
@@ -75,37 +79,18 @@ describe("People Settings hub", () => {
             cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
         });
 
-        it("no longer lists the moved settings on the System Settings page", () => {
-            cy.visit("/SystemSettings.php");
-            [
-                "sNewPersonNotificationRecipientIDs",
-                "sGreeterCustomMsg1",
-                "iPersonNameStyle",
-                "bHidePersonAddress",
-                "bHideFriendDate",
-                "bHideWeddingDate",
-                "bForceUppercaseZip",
-                "sDirRoleHead",
-                "sDirClassifications",
-                "sInactiveClassification",
-                "bHideFamilyNewsletter",
-            ].forEach((key) => {
-                cy.get(`[name='new_value[${key}]']`).should("not.exist");
-            });
-            // Not moved yet — still managed here.
-            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("exist");
-        });
-
-        it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {
+        it("orders sections by how often they change, with with address defaults in the greeting section", () => {
             cy.visit("/admin/people");
             cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
             cy.get(".settings-panel-card h6").then(($headings) => {
                 const titles = [...$headings].map((heading) => heading.textContent);
                 expect(titles[0]).to.contain("New Members & Greeting");
-                expect(titles[1]).to.contain("Families");
-                expect(titles[2]).to.contain("People");
+                expect(titles[1]).to.contain("People");
+                expect(titles[2]).to.contain("Families");
                 expect(titles[3]).to.contain("Grade Promotion");
                 expect(titles[4]).to.contain("Map Settings");
+                expect(titles[5]).to.contain("Directory");
+                expect(titles[6]).to.contain("Confirmation Letter");
             });
             cy.get("#peopleDefaults").should("not.exist");
             cy.get("#peopleNewMembers h4.subheader").should("contain", "New Record Defaults");
@@ -116,6 +101,26 @@ describe("People Settings hub", () => {
             cy.get("#peopleNewMembers select[name='sDefaultState'] option").should("have.length.greaterThan", 10);
             cy.get("#peopleNewMembers input[name='sDefaultState']").should("not.exist");
             cy.get("#copy-church-address").should("contain", "Copy from Church Info");
+        });
+
+        it("lets an administrator edit confirmation letters and directory disclaimers", () => {
+            const keys = reportKeys;
+            cy.freshAdminFormLogin({ enabled: true });
+            cy.intercept("POST", "**/admin/api/system/config/*").as("saveReportText");
+            cy.visit("/admin/people");
+            cy.get("#peopleConfirmation .settings-panel-fields, #peopleDirectory .settings-panel-fields").should("not.be.disabled");
+            keys.forEach((key) => {
+                cy.get(`[name='${key}']`).clear().type(`Updated ${key}`).blur();
+                cy.wait("@saveReportText").its("response.statusCode").should("eq", 200);
+            });
+            cy.reload();
+            keys.forEach((key) => cy.get(`[name='${key}']`).should("have.value", `Updated ${key}`));
+        });
+
+        it("shows Member Portal sign-in status first, with one click to its switch", () => {
+            cy.visit("/admin/people");
+            cy.get("#memberPortalStatus").should("be.visible").and("contain", "Member Portal");
+            cy.get("#memberPortalManage").should("have.attr", "href").and("include", "/admin/member-portal#portal-signin");
         });
 
         it("auto-saves the default city", () => {
@@ -174,12 +179,9 @@ describe("People Settings hub", () => {
             cy.get("#peoplePeople .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
             cy.get(".settings-panel-save").should("not.exist");
 
-            const yesRadio = "#peoplePeople input[name='bHideFriendDate'][value='1']";
-            const noRadio = "#peoplePeople input[name='bHideFriendDate'][value='0']";
-
-            cy.get(yesRadio).then(($yes) => {
-                const currentlyOn = $yes.is(":checked");
-                cy.get(currentlyOn ? noRadio : yesRadio).click({ force: true });
+            cy.get("#peoplePeople input[name='bHideFriendDate']").then(($switch) => {
+                const currentlyOn = $switch.is(":checked");
+                cy.wrap($switch).click({ force: true });
 
                 cy.wait("@saveConfig").then((interception) => {
                     expect(interception.response.statusCode).to.eq(200);

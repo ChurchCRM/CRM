@@ -1595,10 +1595,6 @@ msgid "Permission"
 msgstr "Luba"
 
 #: 
-msgid "System Settings"
-msgstr "Süsteemisätted"
-
-#: 
 msgid "User Editor"
 msgstr "Kasutaja muutja"
 
@@ -2084,24 +2080,12 @@ msgid "Localization"
 msgstr "Lokaliseerimine"
 
 #: 
-msgid "Setting saved"
-msgstr "Seade on salvestatud"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Redigeeri JSON-i sätteid"
-
-#: 
 msgid "False"
 msgstr "Vale"
 
 #: 
 msgid "True"
 msgstr "Õige"
-
-#: 
-msgid "Edit Settings"
-msgstr "Redigeeri seadeid"
 
 #: 
 msgid "Functions"
@@ -2218,33 +2202,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Lisage kataloogi ainult need klassifikatsioonid, eraldades need komadega"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Need on perekonnapead tähistavad perekonnanumbrid"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Need on perekonnanumbrid, mis on mõeldud abikaasaks"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Need perekonnanumbrid on mõeldud lapsena"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Minimaalne pikkus, mille kasutaja võib parooliks seada"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "Komaga eraldatud nimekiri keelatud (liiga ilmsetest) paroolidest."
-
-#: 
 msgid "Default City"
 msgstr "Vaikimisi linn"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Vaikimisi maakond - peab olema kahe täheline lühend!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2267,68 +2226,12 @@ msgid "First month of the fiscal year"
 msgstr "Majandusaasta esimene kuu"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Valige tõeseks, et keelata sõbrakuupäeva sisestamine isikuredaktorisse. Valige Sõbrakuupäeva isikuredaktorisse sisestamise lubamiseks vale."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Määrake väärtus, et keelata uudiskirja tellimuste haldamine pereredaktoris."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Kui valite Pereredaktoris pulmakuupäeva sisestamise, keelake see. Määrake vale, et lubada pereredaktorisse pulmakuupäeva sisestamine."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Tšekkide arv sissemakse kviitungi aruandes"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Ühik, mida kasutatakse vahemaa, miili või km mõõtmiseks."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Mahaarvatavate maksete lubamine"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Sõnastus maksuraporti ülemise rea jaoks. Kuupäevad lisatakse selle rea lõppu."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Sõnastus maksuaruande alumise rea jaoks."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Maksuaruande allkirjastaja"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Sõnastus annetuste meeldetuletuse aruandele"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Annetuste meeldetuletuse allkirjastaja"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Sõnastus annetuste meeldetuletuse aruandele - Ühtegi kirjet ei ole"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Sõnastus annetuste meeldetuletuse aruandele - Ühtegi kirjet ei ole"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Sõnastus andmebaasi teabe kinnituse ja paranduste aruande jaoks"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Andmebaasi teabe kinnitus ja paranduste aruande allkirjastaja"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Sõnastus kataloogiaruande jaoks"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3783,10 +3686,6 @@ msgstr "Varundusarhiiv ei sisalda andmebaasi"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Andmebaasi salvestamisel tehke kasutaja sisestatud sihtnumbrid SUURTÄHED."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Kasutatakse kirja lõpetamiseks enne allkirjastajat"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3891,10 +3790,6 @@ msgid "Failed"
 msgstr "Ebaõnnestunud"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Koguduse arvelduskonto number"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Perekond deaktiveeritud"
@@ -3907,10 +3802,6 @@ msgstr "Perekond aktiveeritud"
 #: 
 msgid "families"
 msgstr "peredele"
-
-#: 
-msgid "Financial Settings"
-msgstr "Finantsseaded"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3951,10 +3842,6 @@ msgstr "Omaduse määramine on edukalt tühistatud."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Omaduse määramist ei saanud tühistada."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "Tekst enne nime e-kirjades/aruannetes"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4198,10 +4085,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "kirje(d) edukalt lisatud valitud gruppi."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Kuupäeva määramiseks kuupäevavalijas vaikimisi : yyyy-mm-dd, prantsuse keeles : pp/mm/yyyy näiteks"
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Kuupäeva määramiseks kuupäevavalijas, vaikimisi: Y-m-d, prantsuse keeles: näiteks d/m/Y."
 
@@ -4288,10 +4171,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Otsi perekonda"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4390,10 +4269,6 @@ msgid "Change Settings"
 msgstr "Muuda seadeid"
 
 #: 
-msgid "Unknown Type"
-msgstr "Tundmatu tüüp"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Person ID korvis peab olema numbriline"
 
@@ -4412,14 +4287,6 @@ msgstr "Otsige inimesi"
 #: 
 msgid "Maximum number of People"
 msgstr "Maksimaalne inimeste arv"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Väli, kus on loetletud pastorid, peab olema rühma tüüpi inimesed"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Viimane tunnistus salvestatud väli peab olema kuupäeva tüüp"
 
 #: 
 msgid "People Reports"
@@ -4673,18 +4540,6 @@ msgid "Event not found"
 msgstr "Sündmust ei leitud"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Seansi ajalõpu pikkus sekundites\n"
-"Seansi ajalõpu keelamiseks seadke null."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
-"Selle funktsiooni keelamiseks seadke null"
-
-#: 
 msgid "Verify People"
 msgstr "Kinnitage inimesi"
 
@@ -4756,10 +4611,6 @@ msgstr "Ühendamata sündmused"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Perekonnanimi, eesnimi keskminenimi"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Saatke meilisõnum kasutajatele, kui nende konto on kustutatud"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7729,10 +7580,6 @@ msgid "selected family has no coordinates"
 msgstr "valitud perekonnal pole koordinaate"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiivsed rühmad"
 
@@ -8211,10 +8058,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Valige, kuidas soovite oma andmebaasi täita. Saate hiljem alati kasutada teist meetodit."
 
 #: 
-msgid "Church Info"
-msgstr "Kiriku teave"
-
-#: 
 msgid "Clear all"
 msgstr "Tühjenda kõik"
 
@@ -8245,14 +8088,6 @@ msgstr "Kogukonna haldamise platvorm"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Täitke need mis tahes järjekorras, et valmistada ChurchCRM teie koguduse jaoks ette."
-
-#: 
-msgid "Confession"
-msgstr "Piht"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Seadistage globaalsed süsteemi sätted ja eelistused"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8301,10 +8136,6 @@ msgstr "Praegune isik"
 #: 
 msgid "Database Reset"
 msgstr "Andmebaasi lähtestamine"
-
-#: 
-msgid "Default / Notes"
-msgstr "Vaikeväärtus / Märkmed"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9925,10 +9756,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Luba süsteemi uuendamine GitHubis 'pre release' (eelversioon) tähistatud väljaannetele"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Luba autentimata juurdepääs kalendrisündmustele avalike HTML-, ICS- ja JSON-URL-ide kaudu. Vajalik kalendrite jagamiseks väliste rakendustega."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Luba külastajatel luua oma perekonnakirje iseteeninduse lehel"
 
@@ -10091,24 +9918,12 @@ msgid "Enable Email"
 msgstr "Luba e-post"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Luba sündmuste menüü"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Luba väline kalendri API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Luba e-posti saatmine ChurchCRMist. Vajalik parooli lähtestamiseks, teatiste saatmiseks ja e-posti linkide kasutamiseks."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Luba, kui teie SMTP-server nõuab kasutajanime ja parooli"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Luba või keela pühapäevakooli moodul ja külgriba menüü."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10206,10 +10021,6 @@ msgstr "Peida laiuskraad/pikkuskraad"
 #: 
 msgid "How it works"
 msgstr "Kuidas see toimib"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Mitu tšekki trükkida deposiidilehe lehele"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10369,10 +10180,6 @@ msgid "Privacy Note"
 msgstr "Privaatsusmärkus"
 
 #: 
-msgid "Quick Settings"
-msgstr "Kiirseaded"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP autentimine"
 
@@ -10399,10 +10206,6 @@ msgstr "Seadistamine"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Näita rahatähtede nimiväärtuste jaotust sissemaksekviitungi aruandel"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Näita või peida sündmuste menüü põhinavigatsioonis."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10816,10 +10619,6 @@ msgstr "Kui märkate moonutatud märke, tekstina kuvatavaid HTML-üksusi või t�
 #: 
 msgid "Indigo"
 msgstr "Indigosinine"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Vigane JSON-väärtus — seadet ei salvestatud. Palun parandage see ja proovige uuesti."
 
 #: 
 msgid "Language and regional settings"
@@ -12596,10 +12395,6 @@ msgstr "Kogu päev"
 #: 
 msgid "All Roles"
 msgstr "Kõik rollid"
-
-#: 
-msgid "All System Settings"
-msgstr "Kõik süsteemi sätted"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15070,10 +14865,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Tühikutega eraldatud päritolute loend, millel on lubatud manustada avalikku väliskalendri lehte iframe-i. Vaikeväärtus lubab kõiki päritoluid."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Tühikutega eraldatud päritolud, millel on lubatud manustada avalikku kalendrilehte iframe-i. Vaikeväärtus lubab kõiki saite."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Pühapäevakooli rühma ei saa muuta, ainult nendel kahel juhul"
 
@@ -15604,10 +15395,6 @@ msgstr "Edukalt salvestatud"
 #: 
 msgid "Select a fund"
 msgstr "Valige fond"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Saada katse-sünnipäeva e-kiri iseendale"
 
 #: 
 msgid "Sending to"
@@ -16626,10 +16413,6 @@ msgid "Not a valid date of death"
 msgstr "Surmadaatum ei ole kehtiv"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Päevade arv, mis kasutajatel on kaheastmelise autentimise seadistamiseks pärast selle kohustuslikuks muutumist. Seadke väärtuseks 0, et jõustada koheselt. Aktiivse ajapikenduse lühendamine võib kasutajad kohe välja lukustada."
-
-#: 
 msgid "Offline"
 msgstr "Võrguühenduseta"
 
@@ -16954,14 +16737,6 @@ msgid "Download CSV"
 msgstr "Laadi alla CSV"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Luba või keela rahamoduli ja külgribamenüü."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Luba või keela annetuste kogumise moodul."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Kirikute logo eemaldamine nurjus"
 
@@ -17158,46 +16933,6 @@ msgid "Feature Toggles"
 msgstr "Funktsioonide lülitid"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Funktsioonide lülitid kontrollivad, millised moodulid ja funktsioonid on saadaval ChurchCRM-is. Muutused jõustuvad kohe."
-
-#: 
-msgid "Finance Features"
-msgstr "Rahandusfunktsioonid"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Kaasa aadressid kiirsel otsingusse"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Kaasa kalendrisündmused kiirsel otsingusse"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Kaasa kohandatud perekonna omadused kiirsel otsingusse"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Kaasa deposiidid kiirsel otsingusse"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Kaasa perekonnad kiirsel otsingusse"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Kaasa rühmad kiirsel otsingusse"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Kaasa maksed kiirsel otsingusse"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Kaasa inimesed kiirsel otsingusse"
-
-#: 
 msgid "Invalid setting"
 msgstr "Sobimatu seade"
 
@@ -17206,16 +16941,8 @@ msgid "Lost Password Link"
 msgstr "Unustatud parooli link"
 
 #: 
-msgid "Manage All Features"
-msgstr "Halda kõiki funktsioonide"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Peamise lüliti e-posti saatmiseks. NÕUTAV parooli lähtestamiseks ja märguannete jaoks"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Mittemahakasvulised maksed"
 
 #: 
 msgid "Primary Modules"
@@ -17226,20 +16953,12 @@ msgid "Public Calendar API"
 msgstr "Avalik kalender API"
 
 #: 
-msgid "Saved"
-msgstr "Salvestatud"
-
-#: 
 msgid "Search Families"
 msgstr "Otsi perekondade järgi"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Otsi perekonna kohandatud omadusi"
-
-#: 
-msgid "Search Settings"
-msgstr "Otsingu seaded"
 
 #: 
 msgid "Self-Registration"
@@ -17456,14 +17175,6 @@ msgstr "Teavituste saajad"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "Isikud, keda teavitatakse uue perekonna või isiku lisamisel"
-
-#: 
-msgid "Person initials style"
-msgstr "Isiku initsiaalide stiil"
-
-#: 
-msgid "Person name display style"
-msgstr "Isiku nime kuvamise stiil"
 
 #: 
 msgid "Spouse Role"
@@ -23472,30 +23183,6 @@ msgid "Download PDF"
 msgstr "Laadige PDF alla"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Blokeerimisperiood minutites\n"
-"Lukustatud konto avaneb iseenesest pärast nii mitut minutit. Ühelt IP-aadressilt ebaõnnestunud sisselogimisi loetakse sama perioodi jooksul."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Ühelt IP-aadressilt ebaõnnestunud sisselogimiste suurim arv\n"
-"Ühelt IP-aadressilt tehtud ebaõnnestunud sisselogimised ja parooli lähtestamise taotlused arvestatakse selle piirangu sisse blokeerimisperioodi jooksul. Kui piir on täis, keeldutakse sellelt aadressilt sisselogimisest kuni perioodi lõpuni.\n"
-"Määrake null, et see funktsioon välja lülitada, näiteks kui kõik jõuavad ChurchCRM-i ühe puhverserveri aadressi kaudu."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Ebaõnnestunud sisselogimiste suurim arv enne kasutajakonto lukustamist.\n"
-"Lukustatud konto avaneb iseenesest pärast blokeerimisperioodi või varem, kui administraator lähtestab selle ebaõnnestunud sisselogimised.\n"
-"See funktsioon aitab kaitsta automaatsete parooli äraarvamise rünnakute eest.\n"
-"Määrake null, et see funktsioon välja lülitada."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minuteid iseenesliku avanemiseni: %d"
 
@@ -23824,10 +23511,6 @@ msgid "PDF Output"
 msgstr "PDF-i väljund"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF-i käsitlemise režiim"
-
-#: 
 msgid "Questions Line"
 msgstr "Küsimuste rida"
 
@@ -23864,10 +23547,6 @@ msgid "Greeting"
 msgstr "Tervitus"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Kirja tervitus ja allkiri"
-
-#: 
 msgid "Letterhead"
 msgstr "Kirjaplank"
 
@@ -23890,10 +23569,6 @@ msgstr "Määrake kirjaplank, mille PDF-kirjad trükivad"
 #: 
 msgid "Using the church name and address"
 msgstr "Kasutatakse koguduse nime ja aadressi"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Kasutatakse süsteemisätetes määratud kirjaplangi teed"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26286,24 +25961,12 @@ msgid "Installation profile"
 msgstr "Paigaldusprofiil"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Kunagi ei jagata: liikmete, annetuste ega muid koguduse andmeid, sinu koguduse nime, veebiaadressi ega serveri nime ega e-posti aadresse. Sinu riik on see, mis on määratud koguduse seadetes, seda ei tuvastata sinu võrgu järgi."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Vaata täpselt, mida jagatakse, või muuda oma valikut jaotises Admin → Telemeetria."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Erista toodangu-, demo- ja testpaigaldusi"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Mõista andmebaaside ühilduvust"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Sinu andmed kuuluvad sulle. See annab teavet tarkvara kohta, mitte kunagi sinu koguduse ega selle inimeste kohta."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28272,10 +27935,6 @@ msgid "Setup Dashboard"
 msgstr "Seadistustöölaud"
 
 #: 
-msgid "Setup Dashboard Days"
-msgstr "Seadistustöölaua päevad"
-
-#: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
 msgstr "Alusta puhtalt demoribal või Lähtesta andmebaas Administraatori armatuurlaual kustutab demoandmed ja iga sätte ning taastab ChurchCRM-i uue installina."
 
@@ -28322,4 +27981,400 @@ msgstr "Sinu koguduse teave on salvestatud. Vaata läbi allolevad sammud."
 #: 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Sinu andmebaas (%1$s %2$s) on turvarisk: selle tarnija ei väljasta sellele versioonile enam turvaparandusi. ChurchCRM töötab edasi, kuid palu oma hostil minna üle MariaDB %3$s+ või MySQL %4$s+ versioonile."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Igapäevane kontrollühendus kasutamise ajal, tarkvara- ja andmebaasi versioonid, lokaat, riik, paigaldustüüp ja juhuslik paigaldus-ID aitavad loendada aktiivseid paigaldusi."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Kontod & sisselogimine"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Saada ka, milliseid lehtiä kasutatakse."
+
+#: 
+msgid "Areas"
+msgstr "Piirkonnad"
+
+#: 
+msgid "Church & System"
+msgstr "Kogudus & süsteem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Linn või asula, kus kviitungeid väljastatakse, trükitakse ametlikele kviitungitele. Jäta tühjaks, et kasutada koguduse linna."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Lõppsõna enne allkirjastaja nime, näiteks Lugupidamisega."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Lõppsõna, mis trükitakse ametlikele kviitungitele allkirjastaja ette."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kommadega eraldatud paroolid, mida keegi ei tohi kasutada."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Kinnituskiri"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Kas luua sellele isikule perekond? Tema aadress ja kodutelefon viiakse uude perekonda."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Päevad, mis kasutajatel on kahe faktori autentimise seadistamiseks pärast selle kohustuslikuks muutumist. 0 rakendab selle kohe. Aktiivse ajapikenduse lühendamine võib kasutajad välja lukustada."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Sissetulekud & maksed"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Keelatud paroolid"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Kohustustest loobumine %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Saada kasutajatele e-kiri, kui nende konto kustutatakse"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Iga säteteleht ühes kohas ja sätted, mis kehtivad kogu süsteemile"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Ebaõnnestunud sisselogimised enne lukustamist"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Ebaõnnestunud sisselogimised IP-aadressi kohta"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis lastena."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis ja liikmete sisselogimisel perekonnapeana."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis ja liikmete sisselogimisel abikaasana."
+
+#: 
+msgid "Finance Settings"
+msgstr "Finantssätted"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Ajapikendus (päeva)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Peida uudiskirja tellimused Perekonna muutjas."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Peida Isiku muutjas väli Sõber alates."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Peida Perekonna muutjas väli Pulma - laulatuse kuupäev."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Kui kaua lukustatud konto lukustatuks jääb. Ühelt IP-aadressilt tehtud ebaõnnestunud sisselogimised loendatakse sama perioodi jooksul."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Mitme märgi võrra peab uus parool vanast erinema. 0 lülitab selle välja."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Jaotises Admin → Telemeetria lülita sisse Jaga, milliseid lehtiä kasutatakse, et valida Täis. Täis saadab ka lehevaatamisi."
+
+#: 
+msgid "Initials Format"
+msgstr "Initsiaalide vorming"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Kirja tekst %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Lukustusperiood (minutit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Lukustab konto pärast nii mitut järjestikust ebaõnnestunud sisselogimist. See avaneb pärast lukustusperioodi või kui administraator selle lähtestab. 0 lülitab lukustamise välja."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Halda Liikmeportaali"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Liikmed saavad sisse logida oma e-postiga."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Liikmed ei saa veel sisse logida."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimaalne muudetud märkide arv"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Parooli minimaalne pikkus"
+
+#: 
+msgid "Name Format"
+msgstr "Nimevorming"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nimi, mis trükitakse kirjade ja e-kirjade lõppsõna alla"
+
+#: 
+msgid "No Payments Text"
+msgstr "Maksete puudumise tekst"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Lubaduse puudumise tekst"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ükski tase ei saada inimesi, annetajaid, annetusi, sisu, koguduse kontaktandmeid, sinu veebiaadressi ega serveri nime."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ükski tase ei saada sinu veebiaadressi ega serveri nime. Testpaigaldused ei saada midagi. Telemeetria saadetakse PostHogi Ameerika Ühendriikides."
+
+#: 
+msgid "OS family"
+msgstr "Operatsioonisüsteemi perekond"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Lubaduse meeldetuletuskirja avamislõik."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Annetuste tõendi lõik, mis kutsub esitama küsimusi."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Lõik nullannetajate kirjas, mis kutsub esitama küsimusi."
+
+#: 
+msgid "Passwords"
+msgstr "Paroolid"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Trükitakse kuupäevavahemiku järele nullannetajate kirja avamisreal."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Trükitakse annetuste tõendile esimesena, sellele järgneb kuupäevavahemik."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Trükitakse, kui perekonnal pole ühtegi makset kirjas."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Trükitakse, kui perekonnal pole ühtegi lubadust kirjas."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Keeldub ühelt IP-aadressilt sisselogimisest lukustusperioodiks pärast nii mitut ebaõnnestunud sisselogimist või parooli lähtestamist. 0 lülitab selle välja, näiteks kui kõik ühenduvad ühe proksi kaudu."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Nõua kahe faktori autentimist"
+
+#: 
+msgid "Security Settings"
+msgstr "Turvasätted"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Saada veateateid, paigaldus-/uuendussündmusi ja süsteemi teavet, et probleeme saaks parandada. Ei lehevaatamisi ega koguduse andmeid."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Seansi ajalõpp (sekundit)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Jaga, milliseid lehtiä kasutatakse"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Sisselogimine & turvalisus"
+
+#: 
+msgid "Signature Storage"
+msgstr "Allkirjade salvestus"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Logib kasutaja välja pärast nii mitut sekundit tegevusetust. 0 ei logi kunagi välja."
+
+#: 
+msgid "System-wide"
+msgstr "Süsteemiülene"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst pärast kuupäevi"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstisõnumid"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Annetuste tõendi tänulõik."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Nullannetajate kirja tänulõik."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Teisendamine ebaõnnestus. Midagi ei muudetud."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Kasutatakse kirjaplanki faili, mis salvestati enne üleslaadimiste lisamist. Laadi üles kirjaplank, et see asendada."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Hoiatus pärast (tundi)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Sõna enne nime kirjades ja e-kirjades, näiteks Lugupeetud."
+
+#: 
+msgid "Amount offset, left"
+msgstr "Summa nihe, vasak"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demoandmed on laaditud"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Iga asukoht peab olema arv vahemikus 0 kuni 1000 millimeetrit."
+
+#: 
+msgid "First date, left"
+msgstr "Esimene kuupäev, vasak"
+
+#: 
+msgid "First date, top"
+msgstr "Esimene kuupäev, ülemine"
+
+#: 
+msgid "Item count, left"
+msgstr "Üksuste arv, vasak"
+
+#: 
+msgid "Item count, top"
+msgstr "Üksuste arv, ülemine"
+
+#: 
+msgid "Left margin"
+msgstr "Vasak veeris"
+
+#: 
+msgid "Line items"
+msgstr "Reaüksused"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimaalne kõrgus"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimaalne laius"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Vaikimisi väljas. Aitab meil ChurchCRM-i täiustada. Ei sisalda kunagi teie kogudust ega selle liikmeid."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforatsioon, ülemine"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Asukohad millimeetrites eeltrükitud sissemakse kviitungil"
+
+#: 
+msgid "Saved"
+msgstr "Salvestatud"
+
+#: 
+msgid "Second date, left"
+msgstr "Teine kuupäev, vasak"
+
+#: 
+msgid "See what's shared"
+msgstr "Vaadake, mida jagatakse"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Vahe, horisontaalne"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Vahe, vertikaalne"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Vahesumma, vasak"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Vahesumma, ülemine"
+
+#: 
+msgid "Ticket"
+msgstr "Sissemakse kviitung"
+
+#: 
+msgid "Title, left"
+msgstr "Pealkiri, vasak"
+
+#: 
+msgid "Top margin"
+msgstr "Ülemine veeris"
+
+#: 
+msgid "Total, left"
+msgstr "Kokku, vasak"
+
+#: 
+msgid "Total, top"
+msgstr "Kokku, ülemine"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

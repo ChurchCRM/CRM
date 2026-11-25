@@ -4,7 +4,7 @@ import { absoluteUrl, basePath } from "../../../support/urls";
 
 /**
  * Per-user "Require 2FA" (#9690): with bRequire2FA off, an administrator can
- * require 2FA for one login, which then gets the same grace banner and
+ * require 2FA for one login, which then gets the same grace notice and
  * enrollment redirect as the system-wide mandate.
  */
 describe("2FA required for one user", () => {
@@ -40,13 +40,13 @@ describe("2FA required for one user", () => {
         cy.makePrivateAdminAPICall("POST", `/admin/api/user/${USER_ID}/setTwoFactorRequired`, { required: "yes" }, 400);
     });
 
-    it("shows the grace banner to a required user who has not enrolled", () => {
+    it("shows the grace notice to a required user who has not enrolled", () => {
         setGraceDays(7);
         setRequired(true).its("body.required").should("eq", true);
 
         signInAsStandardUser();
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
-        cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
+        cy.get('[data-notification-id="two-fa-grace"]', { timeout: 10000 }).should("exist");
     });
 
     it("sends a required user straight to enrollment when there is no grace period", () => {
@@ -76,7 +76,7 @@ describe("2FA required for one user", () => {
         setRequired(true);
 
         signInAsStandardUser();
-        cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
+        cy.get('[data-notification-id="two-fa-grace"]', { timeout: 10000 }).should("exist");
         cy.request(absoluteUrl("/api/cart/")).its("status").should("eq", 200);
     });
 
@@ -87,7 +87,7 @@ describe("2FA required for one user", () => {
 
         signInAsStandardUser();
         cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
-        cy.get("#two-fa-grace-banner").should("not.exist");
+        cy.get('[data-notification-id="two-fa-grace"]').should("not.exist");
     });
 
     it("lets an administrator require 2FA from the Users page and then offers to remove it", () => {

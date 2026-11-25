@@ -266,7 +266,7 @@ class PersonService
             $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
         }
 
-        $persons = PersonQuery::create()
+        $persons = PersonQuery::create()->filterByActive()
             ->filterByFamId(null, Criteria::ISNOTNULL)
             ->filterByFamId(0, Criteria::NOT_EQUAL)
             ->leftJoinWithFamily()
@@ -333,6 +333,9 @@ class PersonService
         $memberships = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupId)
             ->innerJoinWithPerson()
+            ->usePersonQuery()
+                ->filterByActive()
+            ->endUse()
             ->find();
 
         $personIds = [];

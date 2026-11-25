@@ -2,10 +2,12 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\InstallSetupService;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
+$demoLoaded = InstallSetupService::isDemoDataLoaded();
 ?>
 
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/get-started.min.css') ?>">
@@ -21,8 +23,8 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
         <!-- Explore with Demo Data -->
         <div class="col-sm-6 mb-4">
             <!-- <a> wrapping the whole card; JS intercepts the click via id -->
-            <a href="#" id="importDemoDataV2" role="button"
-               class="gs-card gs-card--green"
+            <<?= $demoLoaded ? 'div aria-disabled="true" class="gs-card gs-card--green opacity-50 pe-none"' : 'a href="#" id="importDemoDataV2" role="button" class="gs-card gs-card--green"' ?>
+               data-success-url="<?= SystemURLs::getRootPath() ?>/admin/get-started"
                data-has-existing-data="<?= !empty($hasExistingData) ? 'true' : 'false' ?>"
                data-person-count="<?= (int)($personCount ?? 0) ?>"
                data-family-count="<?= (int)($familyCount ?? 0) ?>">
@@ -32,10 +34,10 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                 <h5><?= gettext('Explore with Demo Data') ?></h5>
                 <p><?= gettext('Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data.') ?></p>
                 <span class="gs-card-cta">
-                    <?= gettext('Load demo data') ?>
+                    <?= $demoLoaded ? gettext('Demo data loaded') : gettext('Load demo data') ?>
                     <i class="fa-solid fa-arrow-right fa-sm"></i>
                 </span>
-            </a>
+            </<?= $demoLoaded ? 'div' : 'a' ?>>
         </div>
 
         <!-- Import from CSV -->

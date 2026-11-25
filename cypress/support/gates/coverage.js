@@ -20,6 +20,8 @@ export const COVERAGE = {
     "src/admin/routes/import.php": APP_GATE,
 
     "src/finance/index.php": { rows: ["finance-app"] },
+    "src/finance/routes/api/statement-config-api.php": { rows: ["finance-statement-settings"] },
+    "src/finance/routes/statements.php": { rows: ["finance-statement-settings"] },
     "src/api/routes/finance/finance-deposits.php": { rows: ["finance-deposits-api"] },
     "src/api/routes/finance/finance-donation-funds.php": { rows: ["finance-donation-funds-api"] },
     "src/api/routes/finance/finance-fiscalyear.php": { rows: ["finance-fiscalyear-api"] },

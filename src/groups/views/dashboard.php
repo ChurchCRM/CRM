@@ -156,29 +156,4 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
-<?php if ($isAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    window.CRM.settingsPanel.init({
-        container: '#groupSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Group Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [
-            {
-                name: 'bEnabledSundaySchool',
-                type: 'boolean',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Sunday School Module')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Sunday School module and sidebar menu.')) ?>
-            }
-        ],
-        autoSave: true,
-        showAllSettingsLink: false,
-        reloadOnSave: true
-    });
-});
-</script>
-<?php endif; ?>
-
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

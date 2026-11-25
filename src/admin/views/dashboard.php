@@ -1,10 +1,8 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -28,8 +26,6 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 
-$showTelemetryPrompt = !TelemetryService::capturesPageViews()
-    && SystemConfig::getValue('sTelemetryAskedVersion') === '';
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -149,12 +145,13 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
                 </p>
                 <pre class="mb-2"><code id="timer-jobs-cron-command">0 * * * * <?= InputUtils::escapeHTML($timerJobsCronCommand ?? '') ?></code></pre>
                 <p class="mb-0 small text-muted">
-                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), 'iTimerJobsStaleHours') ?>
+                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), '<a href="' . SystemURLs::getRootPath() . '/admin/settings#scheduledTasksSettings">' . gettext('Scheduled Tasks') . '</a>') ?>
                 </p>
             </div>
         </div>
     </div>
     <?php endif; ?>
+
 
     <?php if (!empty($formerPortalAccounts)): ?>
     <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
@@ -181,43 +178,6 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
                     <button type="button" class="btn btn-ghost-secondary js-dismiss-former-portal-accounts">
                         <?= gettext('Dismiss') ?>
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <?php if ($showTelemetryPrompt): ?>
-    <!-- Telemetry consent card -->
-    <div class="card mb-4 border-info" id="telemetry-consent-card">
-        <div class="card-status-top bg-info"></div>
-        <div class="card-body">
-            <div class="d-flex align-items-start gap-3">
-                <div class="pt-1">
-                    <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h5 class="mb-1"><?= gettext('Share which pages are used') ?></h5>
-                    <p class="text-secondary mb-2">
-                        <?= gettext('Your data is yours. This reports on the software, never on your church or its people.') ?>
-                    </p>
-                    <ul class="text-secondary mb-3">
-                        <li><?= gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.') ?></li>
-                        <li><?= gettext('Also send which pages are used.') ?></li>
-                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
-                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.') ?></li>
-                    </ul>
-                    <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_FULL ?>">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Share which pages are used') ?>
-                        </button>
-                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_DEFAULT ?>">
-                            <?= gettext('No thanks') ?>
-                        </button>
-                    </div>
-                    <p class="text-secondary small mt-2 mb-0">
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry"><?= gettext('See exactly what is shared, or change your choice, in Admin → Telemetry.') ?></a>
-                    </p>
                 </div>
             </div>
         </div>
@@ -370,7 +330,7 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
 
                     </div>
 
-                    <div class="alert alert-light border mb-0 py-2">
+                    <div class="border rounded px-3 py-2 text-secondary">
                         <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip') ?>:</strong> <?= gettext('Complete these in any order to get ChurchCRM ready for your congregation.') ?></small>
                     </div>
                 </div>
@@ -473,37 +433,6 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
             </div>
 
 
-            <!-- Feature Toggles Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-status-top bg-danger"></div>
-                <div class="card-header py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-toggle-on"></i> <?= gettext('Feature Toggles') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <?php foreach ([
-                        'bEnabledFinance'      => gettext('Finance'),
-                        'bEnabledFundraiser'   => gettext('Fundraiser'),
-                        'bEnabledEvents'       => gettext('Events'),
-                        'bEnabledSundaySchool' => gettext('Sunday School'),
-                        'bEnabledEmail'        => gettext('Email'),
-                    ] as $toggleKey => $toggleLabel): ?>
-                        <label class="d-flex justify-content-between align-items-center mb-2">
-                            <span><?= InputUtils::escapeHTML($toggleLabel) ?></span>
-                            <span class="form-check form-switch m-0">
-                                <input class="form-check-input dashboard-feature-toggle" type="checkbox"
-                                       data-setting="<?= InputUtils::escapeAttribute($toggleKey) ?>"
-                                       aria-label="<?= InputUtils::escapeAttribute($toggleLabel) ?>"
-                                       <?= SystemConfig::getBooleanValue($toggleKey) ? 'checked' : '' ?>>
-                            </span>
-                        </label>
-                    <?php endforeach; ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/feature-toggles" class="btn btn-sm btn-outline-danger w-100 mt-2">
-                        <i class="fa-solid fa-sliders"></i><?= gettext('Manage All Features') ?>
-                    </a>
-                </div>
-            </div>
 
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
@@ -552,31 +481,10 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
     </div>
 </div>
 
-<div class="container-fluid mb-3">
-    <div id="reportingSettings" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($pdfSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
-    <div id="setupSettings" class="mt-3" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($setupSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
-</div>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 
 <!-- Load admin dashboard JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-document.querySelectorAll('.dashboard-feature-toggle').forEach((toggle) => {
-    toggle.addEventListener('change', () => {
-        const checked = toggle.checked;
-        toggle.disabled = true;
-        fetch('<?= SystemURLs::getRootPath() ?>/admin/api/system/feature-toggles', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ [toggle.dataset.setting]: checked ? '1' : '0' }),
-        })
-            .then((r) => { if (!r.ok) throw new Error(r.status); location.reload(); })
-            .catch(() => { toggle.checked = !checked; toggle.disabled = false; window.CRM.notify(i18next.t('Error'), 'danger'); });
-    });
-});
-</script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

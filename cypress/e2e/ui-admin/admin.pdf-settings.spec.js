@@ -11,7 +11,7 @@ describe("Reporting temporary directory", () => {
 
     it("saves a shared directory and restores the system default when cleared", () => {
         cy.intercept("POST", `**${endpoint}`).as("savePdfDirectory");
-        cy.visit("/admin/");
+        cy.visit("/admin/settings");
         cy.get(`#reportingSettings input[name='${key}']`).should("not.be.disabled").clear().type("/tmp").blur();
         cy.wait("@savePdfDirectory").its("response.statusCode").should("eq", 200);
         cy.reload();
@@ -34,7 +34,7 @@ describe("Reporting temporary directory localization", () => {
     after(() => cy.setupLocaleAdminSession("en_US"));
 
     it("renders the Portuguese label and tooltip in both themes and responsive widths", () => {
-        cy.visit("/admin/");
+        cy.visit("/admin/settings");
 
         cy.get("#reportingSettings").invoke("attr", "data-settings").then((json) => {
             const [setting] = JSON.parse(json);
@@ -50,9 +50,9 @@ describe("Reporting temporary directory localization", () => {
                 cy.get(`#reportingSettings label[for='${key}']`)
                     .should("contain.text", "Diretório temporário de PDF")
                     .and("be.visible");
-                cy.get("#reportingSettings small.form-text")
-                    .should("contain.text", "Deixe em branco para usar o diretório temporário")
-                    .and("be.visible");
+                cy.get("#reportingSettings .setting-hint")
+                    .should("have.attr", "aria-label")
+                    .and("include", "Deixe em branco para usar o diretório temporário");
             }
         }
     });

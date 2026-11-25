@@ -272,6 +272,23 @@ describe("Kiosk Registration Window - Disabled State", () => {
             expect(response.body).to.contain("Kiosk Registration Disabled");
         });
     });
+
+    it("GET /kiosk/ stays a device request when the query string names an admin path", () => {
+        cy.clearCookies();
+        ["/kiosk/?next=/kiosk/admin", "/kiosk/device/heartbeat?next=/kiosk/api"].forEach((url) => {
+            cy.request({ method: "GET", url, failOnStatusCode: false }).then((response) => {
+                expect(response.status, url).to.equal(401);
+                expect(response.body).to.contain("Kiosk Registration Disabled");
+            });
+        });
+    });
+
+    it("GET /kiosk/api/devices with a query string is still an admin request", () => {
+        cy.request({ method: "GET", url: "/kiosk/api/devices?refresh=1" }).then((response) => {
+            expect(response.status).to.equal(200);
+            expect(response.body).to.have.property("KioskDevices");
+        });
+    });
 });
 
 describe("Kiosk API - Access Control", () => {

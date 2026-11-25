@@ -1595,10 +1595,6 @@ msgid "Permission"
 msgstr "அனுமதி"
 
 #: 
-msgid "System Settings"
-msgstr "கணினி அமைப்புகளை"
-
-#: 
 msgid "User Editor"
 msgstr "பயனர் திருத்துநர்/ஆசிரியர்"
 
@@ -2084,24 +2080,12 @@ msgid "Localization"
 msgstr "உள்ளூர்மயமாக்கல்"
 
 #: 
-msgid "Setting saved"
-msgstr "அமைப்பு சேமிக்கப்பட்டது"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "JSON அமைப்புகளைத் திருத்து"
-
-#: 
 msgid "False"
 msgstr "பொய்"
 
 #: 
 msgid "True"
 msgstr "உண்மை"
-
-#: 
-msgid "Edit Settings"
-msgstr "அமைப்புகளைத் திருத்து"
 
 #: 
 msgid "Functions"
@@ -2218,32 +2202,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "கோப்பகத்தில் இந்த வகைப்பாடுகளை மட்டும் சேர்த்து, கமா பிரிக்கப்பட்டது"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "இவையே வீட்டின் தலைவனாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "இவை வாழ்க்கைத் துணையாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "இவையே குழந்தையாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "ஒரு பயனர் தனது கடவுச்சொல்லை அமைக்கக்கூடிய குறைந்தபட்ச நீளம்"
-
-#: 
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "அனுமதிக்கப்படாத (மிகவும் வெளிப்படையான) கடவுச்சொற்களின் காற்புள்ளி (கமாவால்) பிரிக்கப்பட்ட பட்டியல்."
-
-#: 
 msgid "Default City"
 msgstr "இயல்பு நகரம்"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "இயல்புநிலை - 2-எழுத்து சுருக்கமாக இருக்க வேண்டும்!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2266,68 +2226,12 @@ msgid "First month of the fiscal year"
 msgstr "நிதியாண்டின் முதல் மாதம்"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "தனிப்பட்ட எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை முடக்குவதற்கு சரி என அமைக்கவும். நபர் எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறானவை அமைக்கவும்."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "குடும்ப எடிட்டரில் செய்திமடல் சந்தாக்களின் நிர்வாகத்தை முடக்குவதற்கு உண்மையாக அமைக்கவும்."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "குடும்ப எடிட்டரில் திருமணத் தேதியை உள்ளிடுவதை முடக்குவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும். ஃபேமிலி எடிட்டரில் திருமண தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும்."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "டெபாசிட் சீட்டு அறிக்கைக்கான காசோலைகளின் எண்ணிக்கை"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "தூரம், மைல்கள் அல்லது கிமீ அளவிட பயன்படும் அலகு."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "கழிக்கப்படாத கட்டணங்களை இயக்கவும்"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "வரி அறிக்கையின் மேல் வரிக்கான வினைச்சொல். இந்த வரியின் முடிவில் தேதிகள் இணைக்கப்படும்."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "வரி அறிக்கையின் கீழ்நிலைக்கான சொற்கள்."
-
-#: 
-msgid "Tax Report signer"
-msgstr "வரி அறிக்கை கையொப்பமிட்டவர்"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான சொல்"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "உறுதிமொழி நினைவூட்டல் கையொப்பமிடுபவர்"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான சொல் - உறுதிமொழியின் பதிவு இல்லை"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான வார்த்தை - பணம் செலுத்தியதற்கான பதிவு இல்லை"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "தரவுத்தள தகவல் உறுதிப்படுத்தல் மற்றும் திருத்தம் அறிக்கைக்கான சொல்"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "தரவுத்தள தகவல் உறுதிப்படுத்தல் மற்றும் திருத்தம் அறிக்கை கையொப்பமிடுபவர்"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "அடைவு அறிக்கைக்கான சொல்"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3782,10 +3686,6 @@ msgstr "காப்புப்பிரதி காப்பகத்தி�
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "தரவுத்தளத்தில் சேமிக்கும் போது பயனர் உள்ளிடப்பட்ட ஜிப்/அஞ்சல் குறியீடுகளை மேல்முகமாக மாற்றவும்."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "கையொப்பமிடுவதற்கு முன் ஒரு கடிதத்தை முடிக்கப் பயன்படுகிறது"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3890,10 +3790,6 @@ msgid "Failed"
 msgstr "தோல்வியடைந்தது"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "சர்ச் சரிபார்ப்பு கணக்கு எண்"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "குடும்பத்தை செயலிழக்கச் செய்தது"
@@ -3906,10 +3802,6 @@ msgstr "குடும்பத்தை செயல்படுத்தி�
 #: 
 msgid "families"
 msgstr "குடும்பங்கள்"
-
-#: 
-msgid "Financial Settings"
-msgstr "நிதி அமைப்புகள்"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3950,10 +3842,6 @@ msgstr "பண்பு வெற்றிகரமாக ஒதுக்கப�
 #: 
 msgid "The property could not be unassigned."
 msgstr "பண்பு ஒதுக்கப்படாமல் இருக்க முடியாது."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "மின்னஞ்சல்கள்/அறிக்கைகளில் பெயருக்கு முன் உரை"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4196,10 +4084,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "தேர்ந்தெடுக்கப்பட்ட குழுவில் பதிவுகள்(கள்) வெற்றிகரமாகச் சேர்க்கப்பட்டன."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : yyyy-mm-dd, பிரெஞ்சு மொழியில் : dd/mm/yyyy எடுத்துக்காட்டாக."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : Y-m-d, பிரெஞ்சு மொழியில் : d/m/Y எடுத்துக்காட்டாக."
 
@@ -4286,10 +4170,6 @@ msgstr "டபிள்யூ என் டபிள்யூ (WNW)"
 #: 
 msgid "WSW"
 msgstr "டபிள்யூ எஸ் டபிள்யூ (WSM)"
-
-#: 
-msgid "Search Family"
-msgstr "குடும்பத்தைத் தேடுங்கள்"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4388,10 +4268,6 @@ msgid "Change Settings"
 msgstr "அமைப்புகளை மாற்றவும்"
 
 #: 
-msgid "Unknown Type"
-msgstr "தெரியாத வகை"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "(கார்ட்டு) மென்வண்டிக்கான நபர் ஐடி எண்ணாக இருக்க வேண்டும்"
 
@@ -4410,14 +4286,6 @@ msgstr "நபர்களைத் தேடுங்கள்"
 #: 
 msgid "Maximum number of People"
 msgstr "அதிகபட்ச மக்கள் எண்ணிக்கை"
-
-#: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "ஒப்புதல் வாக்குமூலத்தின் தந்தை பட்டியலிடப்பட்டுள்ள புலம், குழு வகையைச் சேர்ந்தவராக இருக்க வேண்டும்"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "கடைசியாக ஒப்புதல் வாக்குமூலம் சேமிக்கப்பட்டுள்ள களம், தேதி வகையாக இருக்க வேண்டும்"
 
 #: 
 msgid "People Reports"
@@ -4670,18 +4538,6 @@ msgid "Event not found"
 msgstr "நிகழ்வு கிடைக்கவில்லை"
 
 #: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "அமர்வு நேரம் முடிவடையும் நேரம் வினாடிகளில்\n"
-"அமர்வு நேரம் முடிவடைவதை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "புதிய கடவுச்சொல் பழையவற்றிலிருந்து வேறுபட வேண்டிய குறைந்தபட்சத் தொகை (# எழுத்துகள் மாற்றப்பட்டுள்ளன)\n"
-"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்"
-
-#: 
 msgid "Verify People"
 msgstr "நபர்களை சரிபார்க்கவும்"
 
@@ -4757,10 +4613,6 @@ msgstr "பின் நீக்கப்பட்ட நிகழ்வுக�
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "கடைசிப்பெயர், முதல்பெயர் நடுப்பெயர்"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "பயனர்களின் கணக்கு நீக்கப்பட்டதைத் தெரிவிக்கும் மின்னஞ்சலை அனுப்பவும்"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7736,10 +7588,6 @@ msgid "selected family has no coordinates"
 msgstr "தேர்ந்தெடுத்த குடும்பத்திற்கு ஆயங்கள் இல்லை"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "அனைத்து பயனர்களும் இரு காரணி அங்கீகாரத்தில் சேர வேண்டும்"
-
-#: 
 msgid "Active Groups"
 msgstr "செயலில் உள்ள குழுக்கள்"
 
@@ -8218,10 +8066,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "உங்கள் தரவுத்தளத்தை எவ்வாறு நிரப்ப விரும்புகிறீர்கள் என்பதை தேர்வு செய்யுங்கள். பின்னர் எப்போதும் வேறு முறையைப் பயன்படுத்தலாம்."
 
 #: 
-msgid "Church Info"
-msgstr "திருச்சபை தகவல்"
-
-#: 
 msgid "Clear all"
 msgstr "அனைத்தையும் அழி"
 
@@ -8252,14 +8096,6 @@ msgstr "சமூக மேலாண்மை தளம்"
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "உங்கள் சபைக்கு ChurchCRM ஐ தயார் செய்ய இவற்றை எந்த வரிசையிலும் முடிக்கவும்."
-
-#: 
-msgid "Confession"
-msgstr "பாவ அறிக்கை"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "உலகளாவிய கணினி அமைப்புகள் மற்றும் விருப்பங்களை கட்டமைக்கவும்"
 
 #: 
 msgid "Configure group settings, roles, and properties"
@@ -8308,10 +8144,6 @@ msgstr "தற்போதைய நபர்"
 #: 
 msgid "Database Reset"
 msgstr "தரவுத்தள மீட்டமைப்பு"
-
-#: 
-msgid "Default / Notes"
-msgstr "இயல்புநிலை / குறிப்புகள்"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -9932,10 +9764,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "GitHub-இல் 'pre release' (முன்-வெளியீடு) எனக் குறிக்கப்பட்ட பதிப்புகளுக்கு, அமைப்பை மேம்படுத்த அனுமதி அளித்தல்"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "பொது HTML, ICS மற்றும் JSON URL-கள் வாயிலாக, காலண்டர் நிகழ்வுகளைப் பயனாளர் அங்கீகாரம் இன்றியே அணுக அனுமதி அளித்தல். வெளிப்புறச் செயலிகளுடன் காலண்டர்களைப் பகிர்வதற்கு இது அவசியமாகும்."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "சுய-பதிவுப் பக்கம் வாயிலாக, வருகையாளர்கள் தங்களுக்கான குடும்பப் பதிவை அவர்களே உருவாக்கிக்கொள்ள அனுமதி அளித்தல்"
 
@@ -10099,24 +9927,12 @@ msgid "Enable Email"
 msgstr "மின்னஞ்சலை இயக்கு"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "நிகழ்வுகள் மெனுவை இயக்கு"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "வெளி காலெண்டர் API இயக்கு"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "ChurchCRM-இலிருந்து மின்னஞ்சல் அனுப்புவதை இயக்கவும். கடவுச்சொல் மீட்டமைப்பு, அறிவிப்புகள் மற்றும் மின்னஞ்சல் இணைப்புகளுக்கு இது தேவைப்படுகிறது."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "உங்கள் SMTP சேவையகத்திற்குப் பயனர்பெயர் மற்றும் கடவுச்சொல் தேவைப்பட்டால் இதை இயக்கவும்."
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "ஞாயிறு பள்ளித் தொகுதி மற்றும் பக்கவாட்டு மெனுவை இயக்கவும் அல்லது முடக்கவும்."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10215,10 +10031,6 @@ msgstr "அட்சரேகை/தீர்க்கரேகையை மற�
 #: 
 msgid "How it works"
 msgstr "இது எவ்வாறு செயல்படுகிறது"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "ஒவ்வொரு வைப்பு சீட்டு பக்கத்திலும் எத்தனை காசோலைகள் அச்சிட வேண்டும்"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10378,10 +10190,6 @@ msgid "Privacy Note"
 msgstr "தனியுரிமை குறிப்பு"
 
 #: 
-msgid "Quick Settings"
-msgstr "விரைவு அமைப்புகள்"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP அங்கீகாரம்"
 
@@ -10408,10 +10216,6 @@ msgstr "அமைவு"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "வைப்புச் சீட்டு அறிக்கையில், பணத்தாள்களின் மதிப்பு வாரியான விவரங்களைக் காட்டு."
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "முக்கிய வழிசெலுத்தல் பட்டியில் 'நிகழ்வுகள்' (Events) பட்டிப் பிரிவைக் காட்டு அல்லது மறை."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10827,10 +10631,6 @@ msgstr "சிதைந்த எழுத்துகள், உரையாக
 #: 
 msgid "Indigo"
 msgstr "இண்டிகோ"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "தவறான JSON மதிப்பு — அமைப்பு சேமிக்கப்படவில்லை. சரிசெய்து மீண்டும் முயற்சிக்கவும்."
 
 #: 
 msgid "Language and regional settings"
@@ -12607,10 +12407,6 @@ msgstr "நாள் முழுவதும்"
 #: 
 msgid "All Roles"
 msgstr "அனைத்து பாத்திரங்கள்"
-
-#: 
-msgid "All System Settings"
-msgstr "அனைத்து அமைப்பு அமைப்புகள்"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -15081,10 +14877,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "பொது வெளிப்புற நாட்காட்டி பக்கத்தை iframe-இல் உட்பொதிக்க அனுமதிக்கப்பட்ட இடைவெளியால் பிரிக்கப்பட்ட மூலங்களின் பட்டியல்."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "பொது நாட்காட்டி பக்கத்தை iframe-இல் உட்பொதிக்க அனுமதிக்கப்பட்ட இடைவெளியால் பிரிக்கப்பட்ட மூலங்கள்."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "ஞாயிற்றுக்கிழமை பள்ளி குழுவை மாற்ற முடியாது, இந்த இரண்டு சந்தர்ப்பங்களில் மட்டுமே"
 
@@ -15615,10 +15407,6 @@ msgstr "வெற்றிகரமாக சேமிக்கப்பட்�
 #: 
 msgid "Select a fund"
 msgstr "ஒரு நிதியை தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "சோதனை பிறந்தநாள் மின்னஞ்சலை என்னிடம் அனுப்பவும்"
 
 #: 
 msgid "Sending to"
@@ -16637,10 +16425,6 @@ msgid "Not a valid date of death"
 msgstr "சரியான இறப்பு தேதி அல்ல"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "2FA கட்டாயமாக்கப்பட்ட பிறகு பயனர்கள் அதில் பதிவு செய்ய வேண்டிய நாட்களின் எண்ணிக்கை. உடனடியாக அமல்படுத்த 0 எனக் குறிக்கவும். செயலில் உள்ள சலுகை காலத்தை குறைப்பது பயனர்களை உடனடியாக பூட்டிவிடலாம்."
-
-#: 
 msgid "Offline"
 msgstr "ஆஃப்லைன்"
 
@@ -16965,14 +16749,6 @@ msgid "Download CSV"
 msgstr "CSV ஐ பதிவிறக்கவும்"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "நிதி தொகுதி மற்றும் பக்க பட்டி பட்டியைத் இயக்க அல்லது முடக்கவும்."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "நிதி சங்கேத சேவையளாளர் தொகுதியைத் இயக்க அல்லது முடக்கவும்."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "தேவாலய சின்னத்தை நீக்க தவறிவிட்டது"
 
@@ -17169,46 +16945,6 @@ msgid "Feature Toggles"
 msgstr "சிறப்பு வசதி தலைப்புகள்"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "சிறப்பு வசதி தலைப்புகள் ChurchCRM இல் எந்த மடுலுகள் மற்றும் சிறப்பு வசதிகள் கிடைக்கும் என்பதை கட்டுப்படுத்தும். மாற்றங்கள் உடனே நகரும்."
-
-#: 
-msgid "Finance Features"
-msgstr "நிதி சிறப்பு வசதிகள்"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "வேகமான உலக தேடலில் முகவரிகளை சேர்க்கவும்"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "வேகமான உலக தேடலில் கலெண்டர் நிகழ்வுகளை சேர்க்கவும்"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "வேகமான உலக தேடலில் தனிப்பயன் குடும்ப சொத்துக்களை சேர்க்கவும்"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "விரைவு உலகளாவிய தேடலில் வைப்புகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "வேகமான உலக தேடலில் குடும்பங்களை சேர்க்கவும்"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "வேகமான உலக தேடலில் பணிகளை சேர்க்கவும்"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "வேகமான உலக தேடலில் பேமெண்ட்ஸை சேர்க்கவும்"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "வேகமான உலக தேடலில் மக்களை சேர்க்கவும்"
-
-#: 
 msgid "Invalid setting"
 msgstr "செல்லாத அமைப்பு"
 
@@ -17217,16 +16953,8 @@ msgid "Lost Password Link"
 msgstr "இழந்த கடவுச்சொல் இணைப்பு"
 
 #: 
-msgid "Manage All Features"
-msgstr "அனைத்து சிறப்பு வசதிகளை நிர்வகிக்கவும்"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "ஈமெயில் அனுப்புவதற்கான முதன்மை தலைப்பு. கடவுச்சொல் மறுசெட்டுக்கள் மற்றும் அறிவுப்புகளுக்குத் தேவை"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்ஸ்"
 
 #: 
 msgid "Primary Modules"
@@ -17237,20 +16965,12 @@ msgid "Public Calendar API"
 msgstr "பொது கலெண்டர் API"
 
 #: 
-msgid "Saved"
-msgstr "சேமிக்கப்பட்டது"
-
-#: 
 msgid "Search Families"
 msgstr "குடும்பங்களைத் தேடுங்கள்"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "குடும்ப தனிப்பயன் சொத்துக்களைத் தேடுங்கள்"
-
-#: 
-msgid "Search Settings"
-msgstr "தேடல் அமைப்புகள்"
 
 #: 
 msgid "Self-Registration"
@@ -17467,14 +17187,6 @@ msgstr "அறிவிப்பைப் பெறுபவர்கள்"
 #: 
 msgid "People to notify when a new family or person is added"
 msgstr "புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும்போது அறிவிக்கப்பட வேண்டியவர்கள்"
-
-#: 
-msgid "Person initials style"
-msgstr "நபரின் முதலெழுத்துகளின் பாணி"
-
-#: 
-msgid "Person name display style"
-msgstr "நபரின் பெயர் காட்டும் பாணி"
 
 #: 
 msgid "Spouse Role"
@@ -23483,30 +23195,6 @@ msgid "Download PDF"
 msgstr "PDF பதிவிறக்கவும்"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "பூட்டுக் காலம் நிமிடங்களில்\n"
-"பூட்டிய கணக்கு இத்தனை நிமிடங்களுக்குப் பிறகு தானாகத் திறக்கும். ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகள் அதே காலத்தில் எண்ணப்படும்."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "ஒரு IP முகவரியிலிருந்து அனுமதிக்கப்படும் அதிகபட்ச தோல்வி உள்நுழைவுகள்\n"
-"ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகளும் கடவுச்சொல் மீட்டமைப்புக் கோரிக்கைகளும் பூட்டுக் காலத்திற்குள் இந்த வரம்பை நோக்கி எண்ணப்படும். அது எட்டப்பட்டதும், காலம் முடியும் வரை அந்த முகவரியிலிருந்து உள்நுழைவு மறுக்கப்படும்.\n"
-"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும், எடுத்துக்காட்டாக அனைவரும் ஒரு பதிலி முகவரி வழியாக ChurchCRM ஐ அடையும்போது."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "ஒரு பயனர் கணக்கு பூட்டப்படுவதற்கு முன் அனுமதிக்கப்படும் அதிகபட்ச தோல்வி உள்நுழைவுகள்.\n"
-"பூட்டிய கணக்கு பூட்டுக் காலத்திற்குப் பிறகு தானாகத் திறக்கும், அல்லது நிர்வாகி அதன் தோல்வி உள்நுழைவுகளை மீட்டமைத்தால் அதற்கு முன்பே.\n"
-"தானியங்கி கடவுச்சொல் ஊகத் தாக்குதல்களிலிருந்து பாதுகாக்க இந்த அம்சம் உதவுகிறது.\n"
-"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "தானாகத் திறக்கும் வரை நிமிடங்கள்: %d"
 
@@ -23835,10 +23523,6 @@ msgid "PDF Output"
 msgstr "PDF வெளியீடு"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF கையாளுதல் முறை"
-
-#: 
 msgid "Questions Line"
 msgstr "கேள்விகள் வரி"
 
@@ -23875,10 +23559,6 @@ msgid "Greeting"
 msgstr "வாழ்த்து"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "கடித வாழ்த்தும் கையொப்பமும்"
-
-#: 
 msgid "Letterhead"
 msgstr "தலைப்புப் படம்"
 
@@ -23901,10 +23581,6 @@ msgstr "PDF கடிதங்கள் அச்சிடும் தலைப
 #: 
 msgid "Using the church name and address"
 msgstr "திருச்சபை பெயரையும் முகவரியையும் பயன்படுத்துகிறது"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "கணினி அமைப்புகளில் அமைக்கப்பட்ட தலைப்புப் படப் பாதையைப் பயன்படுத்துகிறது"
 
 #: 
 msgid "%1$s as %2$s"
@@ -26297,24 +25973,12 @@ msgid "Installation profile"
 msgstr "நிறுவல் சுயவிவரம்"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "ஒருபோதும் பகிரப்படாதவை: உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள். உங்கள் நாடு சபை அமைப்புகளில் உள்ளதே, உங்கள் பிணையத்திலிருந்து கண்டறியப்படுவதில்லை."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "என்ன பகிரப்படுகிறது என்பதைத் துல்லியமாகப் பார்க்க அல்லது உங்கள் தேர்வை மாற்ற, நிர்வாகம் → தொலைமிதி என்பதற்குச் செல்லவும்."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "உற்பத்தி, டெமோ மற்றும் சோதனை நிறுவல்களைப் பிரித்தறிக"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "தரவுத்தள இணக்கத்தன்மையைப் புரிந்துகொள்"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "உங்கள் தரவு உங்களுடையது. இது மென்பொருளைப் பற்றி மட்டுமே தெரிவிக்கிறது, உங்கள் சபையையோ அதன் மக்களையோ பற்றி ஒருபோதும் இல்லை."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28283,10 +27947,6 @@ msgid "Setup Dashboard"
 msgstr "அமைவு டாஷ்போர்டு"
 
 #: 
-msgid "Setup Dashboard Days"
-msgstr "அமைவு டாஷ்போர்டு நாட்கள்"
-
-#: 
 msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
 msgstr "டெமோ பதாகையில் உள்ள 'புதிதாகத் தொடங்கு', அல்லது நிர்வாக டாஷ்போர்டில் உள்ள 'தரவுத்தளத்தை மீட்டமை', டெமோ தரவையும் ஒவ்வொரு அமைப்பையும் அழித்து ChurchCRM-ஐப் புதிய நிறுவலாக மாற்றுகிறது."
 
@@ -28333,4 +27993,400 @@ msgstr "உங்கள் தேவாலயத் தகவல் சேமி
 #: 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "உங்கள் தரவுத்தளம் (%1$s %2$s) ஒரு பாதுகாப்பு அபாயம்: அதன் விற்பனையாளர் அந்தப் பதிப்பிற்கு இனி பாதுகாப்புச் சரிசெய்தல்களை வழங்குவதில்லை. ChurchCRM தொடர்ந்து செயல்படும், ஆனால் MariaDB %3$s+ அல்லது MySQL %4$s+ க்கு மாற உங்கள் ஹோஸ்டிடம் கேளுங்கள்."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "பயன்பாட்டில் இருக்கும்போது தினசரி செக்-இன், மென்பொருள் மற்றும் தரவுத்தளப் பதிப்புகள், மொழி, நாடு, நிறுவல் வகை மற்றும் சீரற்ற நிறுவல் ID ஆகியவை செயலில் உள்ள நிறுவல்களை எண்ண உதவுகின்றன."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "கணக்குகள் & உள்நுழைவு"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "பயன்படுத்திய பக்கங்களையும் அனுப்பவும்."
+
+#: 
+msgid "Areas"
+msgstr "பகுதிகள்"
+
+#: 
+msgid "Church & System"
+msgstr "தேவாலயம் & கணினி"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "ரசீதுகள் வழங்கப்படும் நகரம் அல்லது ஊர், அதிகாரப்பூர்வ ரசீதுகளில் அச்சிடப்படும். காலியாக விட்டால் தேவாலயத்தின் நகரம் பயன்படுத்தப்படும்."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "கையொப்பமிடுபவரின் பெயருக்கு முன் வரும் முடிவு வாசகம், எடுத்துக்காட்டாக மரியாதையுடன்."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "அதிகாரப்பூர்வ ரசீதுகளில் கையொப்பமிடுபவருக்கு முன் அச்சிடப்படும் முடிவு வாசகம்."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "யாரும் பயன்படுத்தக் கூடாத, காற்புள்ளியால் பிரிக்கப்பட்ட கடவுச்சொற்கள்."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "உறுதிப்படுத்தல் கடிதம்"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "இந்த நபருக்கு ஒரு குடும்பத்தை உருவாக்கவா? அவர்களின் முகவரியும் வீட்டு தொலைபேசியும் புதிய குடும்பத்திற்கு நகரும்."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "இரண்டு-காரணி அங்கீகாரம் தேவையானதாக மாறிய பிறகு பயனர்கள் அதை அமைக்க வேண்டிய நாட்கள். 0 என்றால் உடனடியாக அமல்படுத்தப்படும். செயலில் உள்ள சலுகை காலத்தைக் குறைப்பது பயனர்களைப் பூட்டிவிடலாம்."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "வைப்புகள் & கொடுப்பனவுகள்"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "அனுமதிக்கப்படாத கடவுச்சொற்கள்"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "மறுப்பு %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "பயனரின் கணக்கு நீக்கப்படும்போது அவருக்கு மின்னஞ்சல் அனுப்பவும்"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "அனைத்து அமைப்புகள் பக்கங்களும் ஒரே இடத்தில், மற்றும் முழு கணினிக்கும் பொருந்தும் அமைப்புகள்"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "பூட்டுவதற்கு முன் தோல்வியடைந்த உள்நுழைவுகள்"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "ஒவ்வொரு IP முகவரிக்கும் தோல்வியடைந்த உள்நுழைவுகள்"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "அடைவில் குழந்தைகளாகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "அடைவிலும் உறுப்பினர் உள்நுழைவிலும் குடும்பத் தலைவராகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "அடைவிலும் உறுப்பினர் உள்நுழைவிலும் வாழ்க்கைத் துணையாகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Finance Settings"
+msgstr "நிதி அமைப்புகள்"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "சலுகை காலம் (நாட்கள்)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "குடும்ப திருத்துநர்/ஆசிரியரில் செய்திமடல் சந்தாக்களை மறைக்கவும்."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "நபர் திருத்துநர்/ஆசிரியரில் நண்பர் தேதி புலத்தை மறைக்கவும்."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "குடும்ப திருத்துநர்/ஆசிரியரில் திருமண தேதி புலத்தை மறைக்கவும்."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "பூட்டப்பட்ட கணக்கு எவ்வளவு நேரம் பூட்டப்பட்டிருக்கும். ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகள் அதே காலத்தில் எண்ணப்படும்."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "புதிய கடவுச்சொல் பழையதிலிருந்து எத்தனை எழுத்துக்கள் வேறுபட வேண்டும். 0 என்றால் இது அணைக்கப்படும்."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "நிர்வாகம் → தொலைமிதியில், முழு என்பதைத் தேர்ந்தெடுக்க பயன்படுத்திய பக்கங்களைப் பகிரவும் என்பதை இயக்கவும். முழு பக்கக் காட்சிகளையும் அனுப்பும்."
+
+#: 
+msgid "Initials Format"
+msgstr "முதலெழுத்துக்கள் வடிவமைப்பு"
+
+#: 
+msgid "Letter Text %d"
+msgstr "கடித உரை %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "பூட்டு காலம் (நிமிடங்கள்)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "தொடர்ச்சியாக இத்தனை தோல்வியடைந்த உள்நுழைவுகளுக்குப் பிறகு ஒரு கணக்கைப் பூட்டுகிறது. பூட்டு காலம் முடிந்த பிறகு அல்லது நிர்வாகி மீட்டமைக்கும்போது அது திறக்கும். 0 என்றால் பூட்டு அணைக்கப்படும்."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலை நிர்வகிக்கவும்"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "உறுப்பினர்கள் தங்கள் மின்னஞ்சலால் உள்நுழையலாம்."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "உறுப்பினர்கள் இன்னும் உள்நுழைய முடியாது."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "குறைந்தபட்சம் மாற்ற வேண்டிய எழுத்துக்கள்"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "கடவுச்சொல்லின் குறைந்தபட்ச நீளம்"
+
+#: 
+msgid "Name Format"
+msgstr "பெயர் வடிவமைப்பு"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "கடிதங்கள் மற்றும் மின்னஞ்சல்களின் முடிவு வாசகத்தின் கீழ் அச்சிடப்படும் பெயர்"
+
+#: 
+msgid "No Payments Text"
+msgstr "கொடுப்பனவு இல்லாத உரை"
+
+#: 
+msgid "No Pledge Text"
+msgstr "உறுதிமொழி இல்லாத உரை"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "எந்த நிலையும் மக்கள், நன்கொடையாளர்கள், கொடை, உள்ளடக்கம், தேவாலய தொடர்பு விவரங்கள், உங்கள் வலை முகவரி அல்லது சேவையகப் பெயரை அனுப்பாது."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "எந்த நிலையும் உங்கள் வலை முகவரியையோ சேவையகப் பெயரையோ அனுப்பாது. சோதனை நிறுவல்கள் எதையும் அனுப்பாது. தொலைமிதி ஐக்கிய அமெரிக்காவில் உள்ள PostHog-க்கு அனுப்பப்படுகிறது."
+
+#: 
+msgid "OS family"
+msgstr "OS குடும்பம்"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "உறுதிமொழி நினைவூட்டல் கடிதத்தின் தொடக்கப் பத்தி."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "கொடை அறிக்கையில் கேள்விகளை அழைக்கும் பத்தி."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தில் கேள்விகளை அழைக்கும் பத்தி."
+
+#: 
+msgid "Passwords"
+msgstr "கடவுச்சொற்கள்"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தின் தொடக்க வரியில் தேதி வரம்பிற்குப் பிறகு அச்சிடப்படும்."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "கொடை அறிக்கையில் முதலில் அச்சிடப்படும், அதைத் தொடர்ந்து தேதி வரம்பு."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "ஒரு குடும்பத்திற்கு கொடுப்பனவு பதிவுகள் இல்லாதபோது அச்சிடப்படும்."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "ஒரு குடும்பத்திற்கு உறுதிமொழி பதிவுகள் இல்லாதபோது அச்சிடப்படும்."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "இத்தனை தோல்வியடைந்த உள்நுழைவுகள் அல்லது கடவுச்சொல் மீட்டமைப்புகளுக்குப் பிறகு பூட்டு காலத்திற்கு ஒரு IP முகவரியிலிருந்து உள்நுழைவை மறுக்கிறது. 0 என்றால் இது அணைக்கப்படும், எடுத்துக்காட்டாக அனைவரும் ஒரே ப்ராக்ஸி வழியாக இணையும்போது."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "இரண்டு-காரணி அங்கீகாரத்தைத் தேவைப்படுத்தவும்"
+
+#: 
+msgid "Security Settings"
+msgstr "பாதுகாப்பு அமைப்புகள்"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "சிக்கல்களைச் சரிசெய்ய பிழை அறிக்கைகள், நிறுவல்/மேம்படுத்தல் நிகழ்வுகள் மற்றும் கணினித் தகவலை அனுப்பவும். பக்கக் காட்சிகள் இல்லை, தேவாலயத் தரவு இல்லை."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "அமர்வு நேர முடிவு (விநாடிகள்)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "பயன்படுத்திய பக்கங்களைப் பகிரவும்"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "உள்நுழைவு & பாதுகாப்பு"
+
+#: 
+msgid "Signature Storage"
+msgstr "கையொப்ப சேமிப்பு"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "இத்தனை விநாடிகள் செயல்பாடு இல்லாத பிறகு பயனரை வெளியேற்றுகிறது. 0 என்றால் ஒருபோதும் வெளியேற்றாது."
+
+#: 
+msgid "System-wide"
+msgstr "கணினி முழுவதும்"
+
+#: 
+msgid "Text After Dates"
+msgstr "தேதிகளுக்குப் பிறகான உரை"
+
+#: 
+msgid "Text Messages"
+msgstr "உரைச் செய்திகள்"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "கொடை அறிக்கையின் நன்றிப் பத்தி."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தின் நன்றிப் பத்தி."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "பதிவேற்றங்கள் சேர்க்கப்படுவதற்கு முன் சேமிக்கப்பட்ட தலைப்புப் படக் கோப்பைப் பயன்படுத்துகிறது. அதை மாற்ற ஒரு தலைப்புப் படத்தைப் பதிவேற்றவும்."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "எச்சரிக்கை நேரம் (மணிநேரம்)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "கடிதங்கள் மற்றும் மின்னஞ்சல்களில் பெயருக்கு முன் வரும் சொல், எடுத்துக்காட்டாக அன்புள்ள."
+
+#: 
+msgid "Amount offset, left"
+msgstr "தொகை ஈடு, இடது"
+
+#: 
+msgid "Demo data loaded"
+msgstr "டெமோ தரவு ஏற்றப்பட்டது"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "ஒவ்வொரு நிலையும் 0 முதல் 1000 மில்லிமீட்டர் வரையிலான எண்ணாக இருக்க வேண்டும்."
+
+#: 
+msgid "First date, left"
+msgstr "முதல் தேதி, இடது"
+
+#: 
+msgid "First date, top"
+msgstr "முதல் தேதி, மேல்"
+
+#: 
+msgid "Item count, left"
+msgstr "உருப்படிகளின் எண்ணிக்கை, இடது"
+
+#: 
+msgid "Item count, top"
+msgstr "உருப்படிகளின் எண்ணிக்கை, மேல்"
+
+#: 
+msgid "Left margin"
+msgstr "இடது ஓரம்"
+
+#: 
+msgid "Line items"
+msgstr "வரி உருப்படிகள்"
+
+#: 
+msgid "Maximum height"
+msgstr "அதிகபட்ச உயரம்"
+
+#: 
+msgid "Maximum width"
+msgstr "அதிகபட்ச அகலம்"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "இயல்பாக முடக்கப்பட்டுள்ளது. ChurchCRM-ஐ மேம்படுத்த எங்களுக்கு உதவுகிறது. உங்கள் தேவாலயத்தையோ அதன் மக்களையோ ஒருபோதும் உள்ளடக்காது."
+
+#: 
+msgid "Perforation, top"
+msgstr "துளையிடும் கோடு, மேல்"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "முன்பே அச்சிடப்பட்ட வைப்பு டிக்கெட்டில் மில்லிமீட்டரில் நிலைகள்"
+
+#: 
+msgid "Saved"
+msgstr "சேமிக்கப்பட்டது"
+
+#: 
+msgid "Second date, left"
+msgstr "இரண்டாம் தேதி, இடது"
+
+#: 
+msgid "See what's shared"
+msgstr "என்ன பகிரப்படுகிறது என்பதைப் பார்க்கவும்"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "இடைவெளி, கிடைமட்டம்"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "இடைவெளி, செங்குத்து"
+
+#: 
+msgid "Subtotal, left"
+msgstr "துணை மொத்தம், இடது"
+
+#: 
+msgid "Subtotal, top"
+msgstr "துணை மொத்தம், மேல்"
+
+#: 
+msgid "Ticket"
+msgstr "டிக்கெட்"
+
+#: 
+msgid "Title, left"
+msgstr "தலைப்பு, இடது"
+
+#: 
+msgid "Top margin"
+msgstr "மேல் ஓரம்"
+
+#: 
+msgid "Total, left"
+msgstr "மொத்தம், இடது"
+
+#: 
+msgid "Total, top"
+msgstr "மொத்தம், மேல்"
+
+#: 
+msgid "mm"
+msgstr "mm"
 

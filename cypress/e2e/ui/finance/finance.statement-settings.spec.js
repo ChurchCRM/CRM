@@ -114,24 +114,17 @@ describe("Finance Statement Settings", () => {
                 .its("status")
                 .should("eq", 403);
         });
-
-        it("keeps statement settings out of System Settings", () => {
-            cy.visit("/SystemSettings.php");
-            for (const key of ["sGivingStatementOpening", "sGivingStatementClosing", "sGivingStatementQuestions", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
-                cy.get(`[name='new_value[${key}]']`).should("not.exist");
-            }
-        });
     });
 
     describe("Finance-only user (not admin)", () => {
         beforeEach(() => cy.setupFinanceOnlySession());
 
-        it("can access the finance statement settings page", () => {
-            cy.visit("/finance/statements/settings");
-            cy.url().should("include", "/finance/statements/settings");
-            cy.contains("Statement Settings");
-            cy.get("#statementTax textarea[name='sCharityRegisteredAddress']").should("be.visible");
-            cy.get("#statementTax input[name='sCharityLegalName']").should("be.visible");
+        it("cannot open or save statement settings, which are admin-only", () => {
+            cy.visit("/finance/statements/settings", { failOnStatusCode: false });
+            cy.url().should("not.include", "/finance/statements/settings");
+            cy.request({ method: "POST", url: "/finance/api/config/sTaxSigner", body: { value: "Nope" }, failOnStatusCode: false })
+                .its("status")
+                .should("be.oneOf", [401, 403]);
         });
     });
 

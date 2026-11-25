@@ -60,9 +60,9 @@ class VotingMembersService
     public static function report(array $criteria): array
     {
         $query = PersonQuery::create()->filterByClsId($criteria['classIds'], Criteria::IN)
-            ->filterByDateDeceased(null, Criteria::ISNULL)->filterByDateDeactivated(null, Criteria::ISNULL)
+            ->filterByDateDeceased(null, Criteria::ISNULL)->filterByActive()
             ->filterByNeedsReview(false)->leftJoinWithFamily()->orderByLastName()->orderByFirstName()->orderById();
-        $people = (new ClassificationService())->excludeInactive($query)->find();
+        $people = $query->find();
         $givers = [];
         $givingRange = '';
         if ($criteria['donationYears'] > 0) {
