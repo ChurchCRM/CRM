@@ -5,7 +5,7 @@
  * An admin still has finance while bEnabledFinance is on, so that profile
  * turns the module off. The staff profile has every other permission and
  * leaves the module on.
- * The finance-on family view stays in family.view-no-finance.spec.js.
+ * The finance-on family view stays in family.view-layout.spec.js.
  */
 
 const createdFamilyIds = [];

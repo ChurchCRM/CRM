@@ -35,7 +35,7 @@ export const PERSONAS = {
         principal: "staff",
         apiKey: "allbutfinance.api.key",
         login: { usernameKey: "allbutfinance.username", passwordKey: "allbutfinance.password" },
-        flags: "Add, Edit, Delete, Manage Groups, Manage My Ministries, Notes; not Finance, not Manage Fundraisers, not Admin",
+        flags: "Add, Edit, Delete, Manage Groups, Manage Ministries, Manage My Ministries, Notes; not Finance, not Manage Fundraisers, not Admin",
     },
     "office-staff": {
         principal: "staff",
