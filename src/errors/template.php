@@ -26,9 +26,19 @@ function standaloneReportInstallFailure($reason)
         return false;
     }
     try {
-        $stat = @stat(dirname(dirname(__FILE__)));
+        $root = dirname(dirname(__FILE__));
+        $identity = @file_get_contents($root . '/Include/SystemID.php');
+        if (is_string($identity) && preg_match("/'([A-Za-z0-9-]{1,64})'/", $identity, $match) === 1) {
+            $distinctId = $match[1];
+        } else {
+            $stat = @stat($root);
+            if ($stat === false) {
+                return false;
+            }
+            $distinctId = 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
+        }
         $directory = sys_get_temp_dir() . '/churchcrm-telemetry';
-        if ($stat === false || (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory))) {
+        if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
             return false;
         }
         $marker = @fopen($directory . '/' . sha1(gmdate('Y-m-d') . '|standalone|' . $reason), 'x');
@@ -40,7 +50,7 @@ function standaloneReportInstallFailure($reason)
         $payload = json_encode(array(
             'api_key' => POSTHOG_PROJECT_KEY,
             'event' => 'install_failed',
-            'distinct_id' => 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32),
+            'distinct_id' => $distinctId,
             'properties' => array(
                 'failure_reason' => $reason,
                 'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
@@ -228,6 +238,11 @@ function renderStandaloneBrand($rootPath)
     <?php
 }
 
+function standaloneLoggingDocsUrl()
+{
+    return 'https://docs.churchcrm.io/administration/logging-and-diagnostics';
+}
+
 /**
  * Render a complete error page through the standalone layout.
  *
@@ -256,6 +271,10 @@ function renderErrorPage($rootPath, $title, $icon, $variant, $content, $issueBod
                         <h1 class="h2 mb-0"><?= standaloneEscape($title) ?></h1>
                     </div>
                     <?= $content ?>
+                    <p class="text-secondary small mt-3 mb-0">
+                        <?= standaloneEscape(function_exists('gettext') ? gettext('The ChurchCRM log records the specific reason. Remove names before you share it.') : 'The ChurchCRM log records the specific reason. Remove names before you share it.') ?>
+                        <a href="<?= standaloneEscape(standaloneLoggingDocsUrl()) ?>" target="_blank" rel="noopener noreferrer"><?= standaloneEscape(function_exists('gettext') ? gettext('How to find the log') : 'How to find the log') ?></a>
+                    </p>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex gap-2 flex-wrap">

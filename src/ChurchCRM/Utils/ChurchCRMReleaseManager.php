@@ -405,6 +405,11 @@ class ChurchCRMReleaseManager
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
         $returnFile['fullPath'] = $destPath;
         $returnFile['sha1'] = sha1_file($destPath);
+        // Record server-side expected hash for later verification (do not trust client-supplied value alone)
+        if (!isset($_SESSION['upgrade_expected_sha1']) || !is_array($_SESSION['upgrade_expected_sha1'])) {
+            $_SESSION['upgrade_expected_sha1'] = [];
+        }
+        $_SESSION['upgrade_expected_sha1'][$destPath] = $returnFile['sha1'];
         $logger->info('SHA1 hash for ' . $returnFile['fullPath'] . ': ' . $returnFile['sha1']);
         $logger->info('Release notes: ' . $returnFile['releaseNotes']);
 
@@ -562,6 +567,10 @@ class ChurchCRMReleaseManager
                 );
             }
 
+            $serverSha1 = $_SESSION['upgrade_expected_sha1'][$zipFilename] ?? null;
+            if ($serverSha1 !== null) {
+                $sha1 = $serverSha1; // prefer server-recorded value
+            }
             if ($sha1 !== $actualSha1) {
                 $message = 'hash validation failure';
                 $logger->error(

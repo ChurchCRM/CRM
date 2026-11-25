@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Decision;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 
 /**
@@ -11,13 +13,13 @@ use ChurchCRM\Portal\Auth\PortalPrincipal;
 interface PortalAuthorization
 {
     /** May this person do this, on this thing? Unknown capability: no. */
-    public function decide(PortalPrincipal $who, string $capability, ?PortalScope $on = null): Decision;
+    public function decide(PortalPrincipal $who, string $capability, ?Scope $on = null): Decision;
 
     /**
      * Every scope this person holds the capability on, e.g. the teams they lead.
-     * An unscoped capability that is held answers `[PortalScope::none()]`.
+     * An unscoped capability that is held answers `[Scope::none()]`.
      *
-     * @return PortalScope[]
+     * @return Scope[]
      */
     public function scopesFor(PortalPrincipal $who, string $capability): array;
 }

@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
@@ -33,7 +34,7 @@ class MvcAppFactory
      *     displayErrorDetails?: bool,
      *     errorHandler?:        callable|null,
      * } $config Module-specific configuration:
-     *   - dashboardUrl:  path (relative to root) for the error-page "go back" button
+     *   - dashboardUrl:  path (relative to root) for the error-page "go back" button (default: the signed-in user's dashboard)
      *   - dashboardText: label for the "go back" button
      *   - roleMiddleware: FQCN of a role-auth middleware (e.g. AdminRoleAuthMiddleware::class)
      *   - displayErrorDetails: override the debug-driven default; omit to follow
@@ -44,7 +45,7 @@ class MvcAppFactory
      */
     public static function create(string $endpoint, array $config = []): App
     {
-        $dashboardUrl = $config['dashboardUrl'] ?? $endpoint . '/';
+        $dashboardUrl = $config['dashboardUrl'] ?? DashboardLandingService::currentPath();
         $dashboardText = $config['dashboardText'] ?? gettext('Return to Dashboard');
         $roleMiddleware = $config['roleMiddleware'] ?? null;
         $errorHandler = $config['errorHandler'] ?? null;

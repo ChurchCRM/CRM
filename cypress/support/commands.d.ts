@@ -190,6 +190,12 @@ declare namespace Cypress {
     sendComposerEmailNow(body: Record<string, unknown>): Chainable<any>;
 
     /**
+     * Read the session CSRF token from a staff page that renders a form.
+     * @param pageUrl - Page to read; defaults to the backup page
+     */
+    sessionCsrfToken(pageUrl?: string): Chainable<string>;
+
+    /**
      * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
      * Does nothing when value is undefined (the capture never ran).
      * @param name - Config key

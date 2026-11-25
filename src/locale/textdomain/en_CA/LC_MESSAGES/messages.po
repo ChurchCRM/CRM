@@ -37,14 +37,6 @@ msgstr "Cheque number not valid for 'CASH' payment"
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Default Province - Must be 2-letter abbreviation!"
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Number of cheques for Deposit Slip Report"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
@@ -59,20 +51,12 @@ msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postal codes UPPERCASE when saving to the database."
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Church Chequing Account Number"
-
-#: 
 msgid "Default Zip"
 msgstr "Default Postal Code"
 
 #: 
 msgid "Checks"
 msgstr "Cheques"
-
-#: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Require all users to enrol in two-factor authentication"
 
 #: 
 msgid "ZIP code is required."
@@ -104,10 +88,6 @@ msgstr "Choose what appears when no Gravatar exists:\n"
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Enable use of scanned cheques"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "How many cheques to print per deposit slip page"
 
 #: 
 msgid "Neighborhood"
@@ -196,10 +176,6 @@ msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
 msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-
-#: 
 msgid "Uppercase Zip/Postcodes"
 msgstr "Uppercase Postal Codes"
 
@@ -224,10 +200,6 @@ msgid "%d default skipped for another reason (the occurrence is over, canceled o
 msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] "%d default skipped for another reason (the occurrence is over, cancelled or full)"
 msgstr[1] "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-
-#: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
 
 #: 
 msgid "Assignment canceled"

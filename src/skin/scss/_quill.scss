@@ -51,6 +51,29 @@
   color: var(--tblr-body-color);
 }
 
+// Snow hardcodes #444 icons and a white picker; follow the Tabler theme tokens so the toolbar reads in dark.
+.ql-snow {
+  .ql-stroke { stroke: var(--tblr-body-color); }
+  .ql-fill,
+  .ql-stroke.ql-fill { fill: var(--tblr-body-color); }
+  .ql-picker { color: var(--tblr-body-color); }
+  .ql-picker-options {
+    background-color: var(--tblr-bg-surface);
+    border-color: var(--tblr-border-color);
+  }
+  .ql-formats button:hover .ql-stroke,
+  .ql-formats button.ql-active .ql-stroke,
+  .ql-picker-label:hover .ql-stroke,
+  .ql-picker-label.ql-active .ql-stroke { stroke: var(--tblr-primary); }
+  .ql-formats button:hover .ql-fill,
+  .ql-formats button.ql-active .ql-fill { fill: var(--tblr-primary); }
+  .ql-picker-label:hover,
+  .ql-picker-label.ql-active,
+  .ql-picker-item:hover,
+  .ql-picker-item.ql-selected { color: var(--tblr-primary); }
+  .ql-editor.ql-blank::before { color: var(--tblr-secondary-color); }
+}
+
 // Mirrored toolbar icons look jumbled: pin the toolbar LTR and right-align the content.
 [dir="rtl"] {
   .ql-toolbar.ql-snow { direction: ltr; }

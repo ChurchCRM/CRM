@@ -54,3 +54,19 @@ test('cart-generate-labels', cartGenerateLabels, async ({ page }, testInfo) => {
   await settle(page, 800);
   await captureScreen(page, testInfo, cartGenerateLabels);
 });
+
+const cartFunctionsBar = defineCapture({
+  name: 'cart-functions-bar',
+  title: 'The Cart Functions Bar',
+  category: 'People & Families',
+  purpose: 'Show the Cart Functions bar - Empty, To Group, To Family, Check In, Map, Tags, Labels, Email and Directory - above the people in the cart, for the cart page of the user guide',
+  usedIn: ['docs'],
+});
+
+test('cart-functions-bar', cartFunctionsBar, async ({ page }, testInfo) => {
+  await openCartWithBakerFamily(page);
+  await waitForFloatingButtonsToHide(page);
+  await expect(page.locator('#emptyCart')).toBeVisible();
+  await settle(page, 800);
+  await captureScreen(page, testInfo, cartFunctionsBar);
+});

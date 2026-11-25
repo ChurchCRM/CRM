@@ -19,6 +19,12 @@ $(document).ready(() => {
   }
 });
 
+function GetMinPasswordLength() {
+  var raw = $("#PasswordStrengthContainer").attr("data-min-length");
+  var parsed = Number.parseInt(raw, 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 8;
+}
+
 function PasswordMismatchText() {
   return i18next.t("You must enter the same password in both boxes");
 }
@@ -39,12 +45,13 @@ function ValidateNewPassword() {
 // Advisory only: the score never blocks submission and the server
 // policy is unchanged. A password shorter than the minimum length
 // cannot score above Weak, whatever characters it contains.
-function PasswordStrength(password) {
+function PasswordStrength(password, minLength) {
+  var configuredMin = Number.isInteger(minLength) && minLength > 0 ? minLength : GetMinPasswordLength();
   var points = 0;
-  if (password.length >= 8) {
+  if (password.length >= configuredMin) {
     points += 1;
   }
-  if (password.length >= 12) {
+  if (password.length >= configuredMin + 4) {
     points += 1;
   }
   if (/[a-z]/.test(password) && /[A-Z]/.test(password)) {
@@ -56,7 +63,7 @@ function PasswordStrength(password) {
   if (/[^A-Za-z0-9]/.test(password)) {
     points += 1;
   }
-  if (password.length < 8) {
+  if (password.length < configuredMin) {
     points = Math.min(points, 1);
   }
   var level = password === "" ? 0 : Math.min(Math.max(points, 1), 4);

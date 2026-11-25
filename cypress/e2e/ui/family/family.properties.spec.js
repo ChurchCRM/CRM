@@ -1,54 +1,33 @@
 /// <reference types="cypress" />
 
 /**
- * Family property inline-assign form (7.2.1).
+ * Family "Add Property" popup.
  *
- * The family profile used to open a bootbox.prompt modal when the user
- * clicked "Assign". That flow has been replaced with an inline form in
- * the sidebar that mirrors the Person view UX — #input-family-properties
- * select + optional prompt textarea + #assign-family-property-btn button.
- *
- * These tests verify the inline form renders, populates from the master
- * property list, and that assignments POST to the existing
- * /api/people/properties/family/{familyId}/{propertyId} endpoint.
+ * The Properties section has an Add Property button that opens a popup with
+ * the #input-family-properties select, an optional prompt textarea and the
+ * #assign-family-property-btn button. Assignments POST to
+ * /api/people/properties/family/{familyId}/{propertyId}.
  */
-describe("Family Properties — inline assign form", () => {
+describe("Family Properties — Add Property popup", () => {
     beforeEach(() => {
         cy.setupAdminSession();
         cy.visit("people/family/1");
+        cy.get("#add-family-property-btn", { timeout: 10000 }).click();
+        cy.get("#add-family-property-modal").should("be.visible");
     });
 
-    it("renders the inline assign form (not a bootbox modal)", () => {
-        // Wait for the API-loaded list to finish populating and the form
-        // wrapper to be revealed. The legacy flow rendered no select at
-        // all; seeing the select here proves the new UX is in place.
-        cy.get("#family-property-assign-wrapper", { timeout: 10000 }).should("be.visible");
+    it("opens the assign form in a popup from the Add Property button", () => {
         cy.get("#input-family-properties").should("exist");
         cy.get("#assign-family-property-btn").should("be.visible").and("contain", "Assign");
     });
 
-    it("populates the select from the master family property definitions API", () => {
-        cy.request("/api/people/properties/family").then((response) => {
-            expect(response.status).to.equal(200);
-            // The API returns every family-class property (even assigned
-            // ones). The select should hold one <option> per entry plus
-            // the empty placeholder.
-            cy.get("#input-family-properties option").should("have.length", response.body.length + 1);
-        });
-    });
-
-    it("marks already-assigned properties with an (assigned) suffix so users can edit their value", () => {
-        cy.request(`/api/people/properties/family/1`).then((response) => {
-            const assigned = response.body || [];
-            if (assigned.length === 0) {
-                // Nothing to check — this family has no assignments in the
-                // test DB. The other specs still cover the happy path.
-                return;
-            }
-            cy.get("#input-family-properties option:contains('(assigned)')").should(
-                "have.length.at.least",
-                1,
-            );
+    it("lists only unassigned properties in the select", () => {
+        cy.request("/api/people/properties/family").then((all) => {
+            cy.request("/api/people/properties/family/1").then((assigned) => {
+                const expected = all.body.length - (assigned.body || []).length;
+                cy.get("#input-family-properties option[value]:not([value=''])").should("have.length", expected);
+                cy.get("#input-family-properties option:contains('(assigned)')").should("not.exist");
+            });
         });
     });
 

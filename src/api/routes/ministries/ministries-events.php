@@ -13,7 +13,6 @@ use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerPositionMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerTeamMiddleware;
-use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\VolunteerException;
@@ -30,7 +29,7 @@ use Slim\Routing\RouteCollectorProxy;
  * follow it ("Staff them", D33 — creating and staffing are separate steps), and list what the
  * ministry owns with each event's staffing and headcount.
  *
- * Gated like the other V2 groups — rollout, then the coordinator role, then the ministry (or
+ * Gated like the other V2 groups — the coordinator role, then the ministry (or
  * position) entity middleware — and `VolunteerEventService` asks again from the resolved rows.
  */
 $app->group('/ministries', function (RouteCollectorProxy $group): void {
@@ -63,7 +62,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // The schedule dialog's Default volunteer (D32): the schedule it would ask may not exist yet.
     $group->get('/positions/{positionId:[0-9]+}/eligible', 'listVolunteerPositionEligiblePeople')
         ->add(new VolunteerPositionMiddleware());
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
 
 /**
  * @OA\Post(

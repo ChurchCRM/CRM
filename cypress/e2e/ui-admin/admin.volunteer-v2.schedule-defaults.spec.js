@@ -10,7 +10,6 @@
  * cy.request() rotates the PHP session cookie.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const HORIZON_URL = "/admin/api/system/config/iVolunteerSchedulingHorizonWeeks";
 const MINISTRIES_URL = "/api/ministries/ministries";
 
@@ -106,7 +105,6 @@ after(() => {
 
 describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         admin("POST", HORIZON_URL, { value: "8" });
         cleanupFixtures();
 
@@ -172,7 +170,6 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     beforeEach(() => {

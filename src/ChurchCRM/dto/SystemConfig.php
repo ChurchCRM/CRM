@@ -17,11 +17,6 @@ class   SystemConfig
      */
     private static ?array $configs = null;
 
-    /**
-     * @var array<string, string[]>
-     */
-    private static ?array $categories = null;
-
     private static function getSupportedLocales(): array
     {
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
@@ -125,27 +120,8 @@ class   SystemConfig
     {
         return [
             'Choices' => [
-                gettext('None (disabled)') . ':none',
-                gettext('Install — installation and upgrade statistics (default)') . ':install',
-                gettext('Errors — install statistics, warnings, errors, and JS exceptions') . ':errors',
-                gettext('Full — all of the above plus page views') . ':full',
-            ],
-        ];
-    }
-
-    /**
-     * The V1/V2 Volunteer Management rollout states (#9704).
-     *
-     * An explicit version choice rather than a boolean, so the transition
-     * state ("both") is representable while V1 data is migrated (#9702).
-     */
-    public static function getVolunteerVersionChoices(): array
-    {
-        return [
-            'Choices' => [
-                gettext('V1 — legacy Volunteer Opportunities') . ':v1',
-                gettext('V2 — Volunteer Management') . ':v2',
-                gettext('Both — V1 and V2 side by side (transition)') . ':both',
+                gettext('Default') . ':default',
+                gettext('Full') . ':full',
             ],
         ];
     }
@@ -155,20 +131,20 @@ class   SystemConfig
         return [
             'sLogLevel'                            => new ConfigItem('sLogLevel', 'choice', '200', gettext('Event Log severity to write, used by ORM and App Logs'), '', json_encode(SystemConfig::getMonoLogLevels())),
             'sDirClassifications'                  => new ConfigItem('sDirClassifications', 'text', '1,2,4,5', gettext('Include only these classifications in the directory, comma separated')),
-            'sDirRoleHead'                         => new ConfigItem('sDirRoleHead', 'choice', '1', gettext('These are the family role numbers designated as head of house'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
-            'sDirRoleSpouse'                       => new ConfigItem('sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
-            'sDirRoleChild'                        => new ConfigItem('sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
-            'iSessionTimeout'                      => new ConfigItem('iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
-            'iMinPasswordLength'                   => new ConfigItem('iMinPasswordLength', 'number', '8', gettext('Minimum length a user may set their password to')),
-            'iMinPasswordChange'                   => new ConfigItem('iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
-            'aDisallowedPasswords'                 => new ConfigItem('aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
-            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext("Maximum number of failed logins to allow before a user account is locked.\nA locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.")),
-            'iLoginLockoutMinutes'                 => new ConfigItem('iLoginLockoutMinutes', 'number', '15', gettext("Lockout period in minutes\nA locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period.")),
-            'iMaxFailedLoginsPerIP'                => new ConfigItem('iMaxFailedLoginsPerIP', 'number', '20', gettext("Maximum number of failed logins from one IP address\nFailed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\nSet to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address.")),
-            'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'choice', '1', gettext('PDF handling mode'), '', json_encode(['Choices' => [gettext('Save File dialog') . ':1', gettext('Open in browser window') . ':2']])),
+            'sDirRoleHead'                         => new ConfigItem('sDirRoleHead', 'choice', '1', gettext('Family roles treated as head of household in the directory and member sign-in.'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
+            'sDirRoleSpouse'                       => new ConfigItem('sDirRoleSpouse', 'choice', '2', gettext('Family roles treated as spouse in the directory and member sign-in.'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
+            'sDirRoleChild'                        => new ConfigItem('sDirRoleChild', 'choice', '3', gettext('Family roles treated as children in the directory.'), '', json_encode(SystemConfig::getFamilyRoleChoices())),
+            'iSessionTimeout'                      => new ConfigItem('iSessionTimeout', 'number', '3600', gettext('Signs out a user after this many seconds without activity. 0 never signs out.')),
+            'iMinPasswordLength'                   => new ConfigItem('iMinPasswordLength', 'number', '8', ''),
+            'iMinPasswordChange'                   => new ConfigItem('iMinPasswordChange', 'number', '4', gettext('How many characters a new password must differ from the old one. 0 turns this off.')),
+            'aDisallowedPasswords'                 => new ConfigItem('aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('Comma-separated passwords nobody may use.')),
+            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext('Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off.')),
+            'iLoginLockoutMinutes'                 => new ConfigItem('iLoginLockoutMinutes', 'number', '15', gettext('How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period.')),
+            'iMaxFailedLoginsPerIP'                => new ConfigItem('iMaxFailedLoginsPerIP', 'number', '20', gettext('Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy.')),
+            'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'choice', '1', '', '', json_encode(['Choices' => [gettext('Save File dialog') . ':1', gettext('Open in browser window') . ':2']])),
             'sPDFTempDir'                          => new ConfigItem('sPDFTempDir', 'text', '', gettext('Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access.'), '', '', false),
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
-            'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
+            'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', ''),
             'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
             'sToEmailAddress'                      => new ConfigItem('sToEmailAddress', 'text', '', gettext('Church email address automatically added as a removable recipient when composing emails from CRM')),
             'iSMTPTimeout'                         => new ConfigItem('iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
@@ -183,14 +159,13 @@ class   SystemConfig
             'iChurchLatitude'                      => new ConfigItem('iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem('iChurchLongitude', 'number', '', ''),
             'bHidePersonAddress'                   => new ConfigItem('bHidePersonAddress', 'boolean', '1', gettext('When enabled, hides the address field for people not assigned to a family')),
-            'bHideFriendDate'                      => new ConfigItem('bHideFriendDate', 'boolean', '0', gettext('Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.')),
+            'bHideFriendDate'                      => new ConfigItem('bHideFriendDate', 'boolean', '0', gettext('Hide the Friend Date field in the Person Editor.')),
             'bHideDeceasedFromDirectory'            => new ConfigItem('bHideDeceasedFromDirectory', 'boolean', '1', gettext('Hide deceased members from the printed directory and CSV exports.')),
-            'bHideFamilyNewsletter'                => new ConfigItem('bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
-            'bHideWeddingDate'                     => new ConfigItem('bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
+            'bHideFamilyNewsletter'                => new ConfigItem('bHideFamilyNewsletter', 'boolean', '0', gettext('Hide newsletter subscriptions in the Family Editor.')),
+            'bHideWeddingDate'                     => new ConfigItem('bHideWeddingDate', 'boolean', '0', gettext('Hide the Wedding Date field in the Family Editor.')),
             'bHideLatLon'                          => new ConfigItem('bHideLatLon', 'boolean', '0', gettext('When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.')),
             'sGeocoderProviders'                   => new ConfigItem('sGeocoderProviders', 'text', 'Nominatim', gettext('Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.')),
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
-            'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
             'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext('Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates.')),
 
@@ -212,7 +187,6 @@ class   SystemConfig
             'sDateFormatNoYear'                    => new ConfigItem('sDateFormatNoYear', 'text', 'm/d'),
             'sDateTimeFormat'                      => new ConfigItem('sDateTimeFormat', 'text', 'm/d/Y g:i a'),
             'sDateFilenameFormat'                  => new ConfigItem('sDateFilenameFormat', 'text', 'Ymd-Gis'),
-            'sDatePickerPlaceHolder'               => new ConfigItem('sDatePickerPlaceHolder', 'text', 'yyyy-mm-dd', gettext('For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.')),
             'sDatePickerFormat'                    => new ConfigItem('sDatePickerFormat', 'text', 'Y-m-d', gettext('For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.')),
             'sChurchName'                          => new ConfigItem('sChurchName', 'text', '', ''),
             'sChurchAddress'                       => new ConfigItem('sChurchAddress', 'text', '', ''),
@@ -222,62 +196,52 @@ class   SystemConfig
             'sChurchPhone'                         => new ConfigItem('sChurchPhone', 'text', '', ''),
             'sChurchEmail'                         => new ConfigItem('sChurchEmail', 'text', '', ''),
             
-            'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
-            'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
-            'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
+            'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Printed first on the giving statement, followed by the date range.'), '', '', false),
+            'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Thank-you paragraph of the giving statement.'), '', '', false),
+            'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Paragraph inviting questions in the giving statement.'), '', '', false),
             'sCharityLegalName' => new ConfigItem('sCharityLegalName', 'text', '', gettext('Charity Legal Name')),
             'sCharityRegisteredAddress' => new ConfigItem('sCharityRegisteredAddress', 'text', '', gettext('Charity Registered Address')),
             'sCharityRegistrationNumber' => new ConfigItem('sCharityRegistrationNumber', 'text', '', gettext('Charity Registration Number')),
-            'sReceiptIssueLocality' => new ConfigItem('sReceiptIssueLocality', 'text', '', gettext('Receipt Issue Locality')),
-            'sReceiptClosing' => new ConfigItem('sReceiptClosing', 'text', 'Sincerely', gettext('Receipt Closing')),
+            'sReceiptIssueLocality' => new ConfigItem('sReceiptIssueLocality', 'text', '', gettext('City or town where receipts are issued, printed on official receipts. Leave blank to use the church city.')),
+            'sReceiptClosing' => new ConfigItem('sReceiptClosing', 'text', 'Sincerely', gettext('Closing printed before the signer on official receipts.')),
             'sTaxSignatureAsset'           => new ConfigItem('sTaxSignatureAsset', 'text', '', gettext('Private giving-statement signature asset identifier. Managed by signature upload.')),
             'sTaxSignatureStoragePath'             => new ConfigItem('sTaxSignatureStoragePath', 'text', '', gettext('Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to.')),
-            'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
-            'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
-            'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', gettext('Pledge Reminder Signer')),
-            'sReminderNoPledge'                    => new ConfigItem('sReminderNoPledge', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of a pledge'), '', '', false),
-            'sReminderNoPayments'                  => new ConfigItem('sReminderNoPayments', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', gettext('Verbage for the pledge reminder report - No record of payments'), '', '', false),
-            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', gettext('Verbage for the database information confirmation and correction report'), '', '', false),
-            'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Database information confirmation and correction report signer')),
-            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext('Verbage for the directory report'), '', '', false),
-            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', gettext('Verbage for the directory report'), '', '', false),
-            // Legacy path or https URL, read as a fallback when no letterhead is uploaded on Admin -> Report Settings.
+            'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', ''),
+            'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Opening paragraph of the pledge reminder letter.'), '', '', false),
+            'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', ''),
+            'sReminderNoPledge'                    => new ConfigItem('sReminderNoPledge', 'text', 'Pledges: We do not have record of a pledge for from you for this fiscal year.', gettext('Printed when a family has no pledge on record.'), '', '', false),
+            'sReminderNoPayments'                  => new ConfigItem('sReminderNoPayments', 'text', 'Payments: We do not have record of a pledge for from you for this fiscal year.', gettext('Printed when a family has no payments on record.'), '', '', false),
+            'sConfirm1'                            => new ConfigItem('sConfirm1', 'text', 'This letter shows the information we have in our database with respect to your family.  Please review, mark-up as necessary, and return this form to the church office.', '', '', '', false),
+            'sConfirm2'                            => new ConfigItem('sConfirm2', 'text', 'Thank you very much for helping us to update this information.', '', '', '', false),
+            'sConfirm3'                            => new ConfigItem('sConfirm3', 'text', '', '', '', '', false),
+            'sConfirm4'                            => new ConfigItem('sConfirm4', 'text', '[  ] I no longer want to be associated with the church (check here to be removed from our records).', '', '', '', false),
+            'sConfirm5'                            => new ConfigItem('sConfirm5', 'text', '', '', '', '', false),
+            'sConfirm6'                            => new ConfigItem('sConfirm6', 'text', '', '', '', '', false),
+            'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Name printed under the closing of letters and emails')),
+            'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", '', '', '', false),
+            'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', '', '', '', false),
+            // No settings control: read only when no letterhead is uploaded.
             'bDirLetterHead'                       => new ConfigItem('bDirLetterHead', 'text', '', gettext('Church Letterhead path and file')),
-            'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
-            'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
-            'sZeroGivers3'                         => new ConfigItem('sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
-            'sChurchChkAcctNum'                    => new ConfigItem('sChurchChkAcctNum', 'text', '', gettext('Church Checking Account Number')),
+            'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Printed after the date range in the opening line of the zero-givers letter.')),
+            'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Thank-you paragraph of the zero-givers letter.')),
+            'sZeroGivers3'                         => new ConfigItem('sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Paragraph inviting questions in the zero-givers letter.')),
             'sQBDTSettings'                        => new ConfigItem('sQBDTSettings', 'json', '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext('QuickBooks Deposit Ticket Settings')),
             'sChurchCountry'                       => new ConfigItem('sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
-            'sConfirmSincerely'                    => new ConfigItem('sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
-            'sDear'                                => new ConfigItem('sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
-            'sDepositSlipType'                     => new ConfigItem('sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type'), '', '{"Choices":["QBDT (QuickBooks):QBDT"]}'),
-            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', gettext('Person name display style'), '', json_encode(SystemConfig::getNameChoices())),
-            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', gettext('Person initials style'), '', json_encode(SystemConfig::getInitialStyleChoices())),
+            'sConfirmSincerely'                    => new ConfigItem('sConfirmSincerely', 'text', 'Sincerely', gettext('Closing before the signer\'s name, for example Sincerely.')),
+            'sDear'                                => new ConfigItem('sDear', 'text', 'Dear', gettext('Word before the name in letters and emails, for example Dear.')),
+            'sDepositSlipType'                     => new ConfigItem('sDepositSlipType', 'choice', 'QBDT', '', '', '{"Choices":["QBDT (QuickBooks):QBDT"]}'),
+            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices())),
+            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices())),
             'bDisplayBillCounts'                   => new ConfigItem('bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'iKioskGuestClassification'            => new ConfigItem('iKioskGuestClassification', 'choice', '3', gettext('Classification given to walk-in guests registered on a kiosk')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             'sChurchTaxId'                         => new ConfigItem('sChurchTaxId', 'text', '', gettext('Church tax ID (EIN) printed on contribution statements')),
-            // Church social media accounts. Like the other church-identity
-            // items above, these are deliberately absent from
-            // buildCategories() so they never appear on the System Settings
-            // page — they are edited on Admin -> System -> Church Info and
-            // read back through ChurchMetaData::getChurchSocialLinks().
             'sChurchX'                             => new ConfigItem('sChurchX', 'text', '', ''),
             'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
             'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
             'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
-            // Member Portal (#9863, #9864). Deliberately declared without a
-            // System Settings category so they never appear on
-            // src/SystemSettings.php: the portal's settings live on their own
-            // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
@@ -316,13 +280,13 @@ class   SystemConfig
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             
             'sNewPersonNotificationRecipientIDs'   => new ConfigItem('sNewPersonNotificationRecipientIDs', 'text', '', gettext('People to notify when a new family or person is added')),
-            'bSearchIncludePersons'                => new ConfigItem('bSearchIncludePersons', 'boolean', '1', gettext('Search People')),
-            'bSearchIncludeFamilies'               => new ConfigItem('bSearchIncludeFamilies', 'boolean', '1', gettext('Search Family')),
+            'bSearchIncludePersons'                => new ConfigItem('bSearchIncludePersons', 'boolean', '1', ''),
+            'bSearchIncludeFamilies'               => new ConfigItem('bSearchIncludeFamilies', 'boolean', '1', ''),
             'bSearchIncludeFamilyHOH'              => new ConfigItem('bSearchIncludeFamilyHOH', 'boolean', '1', gettext('Show Family Head of House Names')),
-            'bSearchIncludeGroups'                 => new ConfigItem('bSearchIncludeGroups', 'boolean', '1', gettext('Search Groups')),
-            'bSearchIncludeDeposits'               => new ConfigItem('bSearchIncludeDeposits', 'boolean', '1', gettext('Search Deposits')),
-            'bSearchIncludePayments'               => new ConfigItem('bSearchIncludePayments', 'boolean', '1', gettext('Search Payments')),
-            'bSearchIncludeAddresses'              => new ConfigItem('bSearchIncludeAddresses', 'boolean', '1', gettext('Search Addresses')),
+            'bSearchIncludeGroups'                 => new ConfigItem('bSearchIncludeGroups', 'boolean', '1', ''),
+            'bSearchIncludeDeposits'               => new ConfigItem('bSearchIncludeDeposits', 'boolean', '1', ''),
+            'bSearchIncludePayments'               => new ConfigItem('bSearchIncludePayments', 'boolean', '1', ''),
+            'bSearchIncludeAddresses'              => new ConfigItem('bSearchIncludeAddresses', 'boolean', '1', ''),
             'bSearchIncludePersonsMax'             => new ConfigItem('bSearchIncludePersonsMax', 'text', '15', gettext('Maximum number of People')),
             'bSearchIncludeFamiliesMax'            => new ConfigItem('bSearchIncludeFamiliesMax', 'text', '15', gettext('Maximum number of Families')),
             'bSearchIncludeFamilyHOHMax'           => new ConfigItem('bSearchIncludeFamilyHOHMax', 'text', '15', gettext('Maximum number of Family H.O.H Names')),
@@ -330,8 +294,6 @@ class   SystemConfig
             'bSearchIncludeDepositsMax'            => new ConfigItem('bSearchIncludeDepositsMax', 'text', '5', gettext('Maximum number of Deposits')),
             'bSearchIncludePaymentsMax'            => new ConfigItem('bSearchIncludePaymentsMax', 'text', '5', gettext('Maximum number of Payments')),
             'bSearchIncludeAddressesMax'           => new ConfigItem('bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
-            'iPersonConfessionFatherCustomField'   => new ConfigItem('iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/admin/api/system/custom-fields/person/?typeId=9'),
-            'iPersonConfessionDateCustomField'     => new ConfigItem('iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/admin/api/system/custom-fields/person/?typeId=2'),
             'iDoNotEmailPropertyId'                => new ConfigItem('iDoNotEmailPropertyId', 'ajax', '', gettext('Person property used to exclude members from email lists'), '', '/admin/api/system/properties/person'),
             'iDoNotSmsPropertyId'                  => new ConfigItem('iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/admin/api/system/properties/person'),
             'bEnforceCSP'                          => new ConfigItem('bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
@@ -341,11 +303,6 @@ class   SystemConfig
             'bEnabledFinance'                      => new ConfigItem('bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem('bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
-            // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
-            // category (2026-09-18): their one home is Admin → Ministry Settings.
-            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v2', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
-            'aVolunteerV1Conversion'               => new ConfigItem('aVolunteerV1Conversion', 'json', '{}', gettext('Which legacy Volunteer Opportunities have been converted, and the position each became.')),
-            'sVolunteerV1NoticeDismissed'          => new ConfigItem('sVolunteerV1NoticeDismissed', 'text', '', gettext('The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice.')),
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
             'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
             'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),
@@ -367,6 +324,8 @@ class   SystemConfig
             'sLastGradePromotionResult'            => new ConfigItem('sLastGradePromotionResult', 'text', '', gettext('Internal: how the last grade promotion ran and how many people it moved. Do not edit manually.')),
             'sLastTimerJobsRunDateTime'            => new ConfigItem('sLastTimerJobsRunDateTime', 'text', '', gettext('Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.')),
             'iTimerJobsStaleHours'                 => new ConfigItem('iTimerJobsStaleHours', 'number', '26', gettext('Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning.')),
+            'iSetupDashboardDays'                  => new ConfigItem('iSetupDashboardDays', 'number', '30', gettext('For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off.')),
+            'bSetupFinished'                       => new ConfigItem('bSetupFinished', 'boolean', '0', gettext('Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually.')),
             'iTimerJobsMinIntervalMinutes'         => new ConfigItem('iTimerJobsMinIntervalMinutes', 'number', '15', gettext('Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load.')),
             'sEmailPreheader'                      => new ConfigItem('sEmailPreheader', 'text', '', gettext('Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback.')),
             'sGreeterCustomMsg1'                   => new ConfigItem('sGreeterCustomMsg1', 'text', '', gettext('Custom message for church greeter email 1, max 255 characters')),
@@ -374,32 +333,22 @@ class   SystemConfig
             'IncludeDataInNewPersonNotifications'  => new ConfigItem('IncludeDataInNewPersonNotifications', 'boolean', '0', gettext('Include contact and demographic data in new member email notification body')),
             'bSearchIncludeFamilyCustomProperties' => new ConfigItem('bSearchIncludeFamilyCustomProperties', 'boolean', '0', gettext('Include family custom properties in global search.')),
             'bAllowPrereleaseUpgrade'              => new ConfigItem('bAllowPrereleaseUpgrade', 'boolean', '0', gettext("Allow system upgrades to releases marked as 'pre release' on GitHub")),
-            'bSearchIncludeCalendarEvents'         => new ConfigItem('bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
+            'bSearchIncludeCalendarEvents'         => new ConfigItem('bSearchIncludeCalendarEvents', 'boolean', '1', ''),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem('bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
-            'bRequire2FA'                          => new ConfigItem('bRequire2FA', 'boolean', '0', gettext('Require all users to enroll in two-factor authentication')),
-            'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.')),
+            'bRequire2FA'                          => new ConfigItem('bRequire2FA', 'boolean', '0', ''),
+            'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out.')),
             'sTwoFASecretKey'                      => new ConfigItem('sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
-            'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
+            'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', ''),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'default', gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
             'sTelemetryHeartbeatDate'               => new ConfigItem('sTelemetryHeartbeatDate', 'text', ''),
             'sTelemetryUpgradeFailureKey'           => new ConfigItem('sTelemetryUpgradeFailureKey', 'text', ''),
-        ];
-    }
-
-    private static function buildCategories(): array
-    {
-        return [
-            gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
-            gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
-            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3'],
         ];
     }
 
@@ -412,12 +361,7 @@ class   SystemConfig
     public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
-        self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            // Older installs stored None by omitting the row. Preserve that choice during upgrades.
-            if (!$pruneUnknown) {
-                self::$configs['sTelemetryLevel'] = new ConfigItem('sTelemetryLevel', 'choice', 'none', self::$configs['sTelemetryLevel']->getTooltip(), '', json_encode(self::getTelemetryLevelChoices()));
-            }
             self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
@@ -425,14 +369,6 @@ class   SystemConfig
     public static function isInitialized(): bool
     {
         return isset(self::$configs);
-    }
-
-    /**
-     * @return array<string, string[]>
-     */
-    public static function getCategories(): array
-    {
-        return self::$categories;
     }
 
     /**
@@ -514,8 +450,8 @@ class   SystemConfig
             $configItem = self::getConfigItem($settingName);
             if ($configItem) {
                 // Use the first line of tooltip as label, full tooltip as tooltip
-                $tooltip = $configItem->getTooltip();
-                $label = strtok($tooltip, "\n") ?: ucwords(str_replace(['i', 'b', 's', 'a'], '', $settingName));
+                $tooltip = $configItem->getTooltip() === '' ? '' : gettext($configItem->getTooltip());
+                $label = strtok($tooltip, "\n") ?: trim(preg_replace('/(?<!^)[A-Z]/', ' $0', preg_replace('/^[a-z]+/', '', $settingName)));
                 
                 $entry = [
                     'name' => $settingName,

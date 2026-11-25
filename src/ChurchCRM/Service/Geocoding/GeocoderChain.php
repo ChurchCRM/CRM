@@ -179,7 +179,7 @@ class GeocoderChain
             return GeocodeOutcome::unavailable();
         }
 
-        $this->logger->warning('Geocoding: No results found for address from any provider (see service log for familyId)');
+        $this->logger->info('Geocoding: No results found for address from any provider (see service log for familyId)');
 
         return GeocodeOutcome::notFound();
     }

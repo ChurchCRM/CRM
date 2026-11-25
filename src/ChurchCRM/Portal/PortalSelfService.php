@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal;
 
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -17,7 +18,6 @@ use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
-use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Portal\Permissions\Rules\FamilyAdultRule;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Utils\InputUtils;
@@ -235,7 +235,7 @@ class PortalSelfService
     private static function mayOnFamily(Person $actor, string $capability, Family $family): bool
     {
         return (new PortalAuthorizationService())
-            ->decideForPerson((int) $actor->getId(), $capability, PortalScope::family((int) $family->getId()))
+            ->decideForPerson((int) $actor->getId(), $capability, Scope::family((int) $family->getId()))
             ->allowed;
     }
 

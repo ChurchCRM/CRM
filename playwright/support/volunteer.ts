@@ -6,7 +6,7 @@ import { rememberedMemberContext, useMemberSignIn } from './member-sign-in';
 
 /**
  * Volunteer Management v2 fixture for the volunteer captures. The demo import
- * turns V2 on and brings a "Hospitality" ministry of its own; the seed replaces it
+ * brings a "Hospitality" ministry of its own; the seed replaces it
  * with this one, built through the volunteer API, because the recording changes its
  * staffing and the screenshots need it as seeded. removeVolunteerSeed() takes it
  * back out, because every workflow shares one database.
@@ -89,11 +89,6 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** The V1 / V2 / Both switch (Admin → Feature Toggles), set through its API so `v1` works even where the page no longer offers it. */
-export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
-  await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
-}
-
 async function personId(page: Page, email: string): Promise<number> {
   const matches = await api<Array<{ objid: number }>>(page, 'GET', `/api/persons/search/${encodeURIComponent(email)}`);
   if (matches.length !== 1) {
@@ -143,7 +138,6 @@ export async function ensureVolunteerSeed(page: Page): Promise<VolunteerSeed> {
   if (seed) {
     return seed;
   }
-  await setVolunteerVersion(page, 'v2');
   await deleteHospitality(page);
 
   const personIds = {} as Record<Volunteer, number>;
@@ -358,12 +352,11 @@ export async function seedVolunteerFixture(browser: Browser): Promise<VolunteerS
   }
 }
 
-/** Removes the ministry and its events and puts the sign-in settings back. V2 stays on: a new installation starts there (#10561). */
+/** Removes the ministry and its events and puts the sign-in settings back. */
 export async function removeVolunteerSeed(browser: Browser): Promise<void> {
   const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
   const page = await context.newPage();
   try {
-    await setVolunteerVersion(page, 'v2');
     await deleteHospitality(page);
     await restoreMemberSignIn?.();
   } finally {

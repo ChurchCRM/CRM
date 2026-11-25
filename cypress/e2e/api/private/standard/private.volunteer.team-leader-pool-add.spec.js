@@ -10,7 +10,6 @@
  * deactivated Ray family), 911 (deactivated).
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const TIMERJOBS_LAST_RUN_URL = "/admin/api/system/config/sLastTimerJobsRunDateTime";
 const ADMIN_KEY = "admin.api.key";
 const LEADER_KEY = "user.api.key";
@@ -46,7 +45,6 @@ let teamSibling = 0;
 let teamElsewhere = 0;
 let posLed = 0;
 let posSibling = 0;
-let originalVersion = "v1";
 let mailpitAvailable = false;
 
 /** A person id is a member, in their portal session; anything else names an API key. */
@@ -118,10 +116,6 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
         cy.task("mail:available").then((result) => {
             mailpitAvailable = result.available;
         });
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, { name: `${PREFIX} Hospitality` }, 201).then((resp) => {
@@ -171,7 +165,6 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
 
     after(() => {
         cleanupFixtures();
-        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: originalVersion }, 200);
     });
 
     describe("The person search", () => {

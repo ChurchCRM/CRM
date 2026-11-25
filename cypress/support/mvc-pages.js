@@ -4,7 +4,7 @@
 // /portal/email/confirm are public.
 
 export const MVC_PAGES = {
-    v2: ["/v2/dashboard", "/v2/search"],
+    v2: ["/v2/search"],
     account: ["/account", "/account/password", "/account/2fa"],
     people: [
         "/people/",
@@ -24,7 +24,7 @@ export const MVC_PAGES = {
         "/people/cart/to-family",
     ],
     groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
-    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/reports/pledge-reminders", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
+    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/reports/family-pledge-summary", "/finance/reports/zero-givers", "/finance/reports/pledge-reminders", "/finance/funds", "/finance/envelopes", "/finance/pledge/new"],
     event: ["/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
     fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],
@@ -32,6 +32,7 @@ export const MVC_PAGES = {
     admin: [
         "/admin/",
         "/admin/people",
+        "/admin/finance",
         "/admin/properties/person/new",
         "/admin/export",
         "/admin/export/csv",
@@ -50,6 +51,5 @@ export const MVC_PAGES = {
 export const LEGACY_PAGES = [
     "/PersonEditor.php?PersonID=2",
     "/FamilyEditor.php?FamilyID=1",
-    "/SystemSettings.php",
     "/DirectoryReports.php",
 ];

@@ -7,6 +7,9 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+$dashboardSwitchActive = 'groups';
+include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php';
+
 // Dashboard metrics — 2 queries: total+active at DB level; inactive = total - active
 $totalGroups      = GroupQuery::create()->count();
 $activeGroups     = GroupQuery::create()->filterByActive(true)->count();
@@ -15,10 +18,9 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 ?>
 
-<div class="container-fluid">
 
     <!-- Stat Cards Row -->
-    <div class="row mb-3">
+    <div class="row row-cards mb-3 g-2">
         <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
@@ -151,33 +153,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
     </div>
 
-</div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
-
-<?php if ($isAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    window.CRM.settingsPanel.init({
-        container: '#groupSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Group Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [
-            {
-                name: 'bEnabledSundaySchool',
-                type: 'boolean',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Sunday School Module')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Sunday School module and sidebar menu.')) ?>
-            }
-        ],
-        autoSave: true,
-        showAllSettingsLink: false,
-        reloadOnSave: true
-    });
-});
-</script>
-<?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

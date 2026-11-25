@@ -13,7 +13,6 @@ Full design (domain model, API, screens, tests): [`docs/design/volunteer-v2.md`]
 - A ministry owns exactly one core Group, its volunteer pool (`group_grp.grp_ministry_id`). Pool writes go through `VolunteerPoolWriter` or the coordinator exception in the Group model hooks, never through a link table.
 - Qualification is its own person ↔ position relation, separate from Group roles. Qualifying someone adds them to the pool.
 - Every occurrence is anchored to a calendar event (`vocc_event_id`). The event owns date and time; V2 generates no dates of its own.
-- V2 never reads or writes the V1 tables (`volunteeropportunity_vol`, `person2volunteeropp_p2vo`).
 - Schema changes go in `Install.sql`, `orm/schema.xml` and the release's `upgrade/*.sql` registered in `upgrade.json`.
 
 ## Authorization
@@ -37,5 +36,5 @@ Full design (domain model, API, screens, tests): [`docs/design/volunteer-v2.md`]
 ## UI and tests
 
 - Page logic lives in `webpack/ministries/` entries; the Member Portal team pages reuse `webpack/ministries/components/`.
-- Settings live on Admin → Ministry Settings, not `buildCategories()`.
+- Settings live on Admin → Ministry Settings, and nowhere else.
 - Specs: `private.volunteer.*.spec.js` (API), `admin.volunteer-v2.*.spec.js` (admin UI), `volunteer-v2.*.spec.js` and portal specs (member UI). Cover the authorization matrix with a negative case for each tier.

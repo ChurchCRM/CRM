@@ -149,7 +149,7 @@ function deleteCalendar() {
 
 /**
  * Volunteer v2 D25: the church calendar's "Ministries that may add events". The server sends
- * the ministries only when the rollout is on and this user may change the grants, so an empty
+ * the ministries only when this user may change the grants, so an empty
  * list means the field is not shown at all.
  */
 function grantMinistries() {
@@ -1134,15 +1134,4 @@ document.addEventListener("DOMContentLoaded", () => {
     await applyFcLocale(window.CRM.fullcalendar);
     window.CRM.fullcalendar.render();
   });
-
-  // Initialize the system settings panel for admins (config provided inline by view)
-  if (window.CRM.calendarSettingsPanel && window.CRM.settingsPanel) {
-    const cfg = window.CRM.calendarSettingsPanel;
-    window.CRM.settingsPanel.init({
-      ...cfg,
-      onSave: () => {
-        setTimeout(() => window.location.reload(), 1500);
-      },
-    });
-  }
 });

@@ -60,12 +60,16 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                         window.CRM = window.CRM || {};
                         window.CRM.localeStats = <?= InputUtils::jsonEncodeForScript($localeStats) ?>;
                         window.CRM.localeSystemCheckEnabled = <?= $systemCheckEnabled ? 'true' : 'false' ?>;
+                        window.CRM.localeMessagesFallback = <?= $messagesFallback ? 'true' : 'false' ?>;
+                        window.CRM.localeDocsUrl = <?= InputUtils::jsonEncodeForScript(SystemURLs::attributed('https://docs.churchcrm.io/administration/server-locale', 'server_locale')) ?>;
                         window.CRM.localePreviewI18n = {
                             translated: <?= InputUtils::jsonEncodeForScript(gettext('%d% of interface text is translated for this language.')) ?>,
                             fullyTranslated: <?= InputUtils::jsonEncodeForScript(gettext('Fully translated.')) ?>,
                             notTracked: <?= InputUtils::jsonEncodeForScript(gettext('Translation tracking is not available for this language.')) ?>,
                             supported: <?= InputUtils::jsonEncodeForScript(gettext('Supported — this locale is installed on the server.')) ?>,
                             notSupported: <?= InputUtils::jsonEncodeForScript(gettext('Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).')) ?>,
+                            notSupportedNoFallback: <?= InputUtils::jsonEncodeForScript(gettext('Not installed on the server, and no English fallback locale is installed either, so the interface will show in English.')) ?>,
+                            installLocales: <?= InputUtils::jsonEncodeForScript(gettext('How to install server locales')) ?>,
                             checkUnavailable: <?= InputUtils::jsonEncodeForScript(gettext('Server locale support could not be checked (exec is disabled).')) ?>,
                         };
                     </script>

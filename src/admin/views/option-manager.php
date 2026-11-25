@@ -124,6 +124,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </tr>
                 <?php endforeach; ?>
             </tbody>
+            <?php if ($mode === 'classes'): ?>
+            <tfoot>
+                <tr id="unassignedRow" class="text-muted">
+                    <td></td>
+                    <td><?= gettext('Unassigned') ?></td>
+                    <td><div class="form-check"><input type="checkbox" class="form-check-input" disabled <?= in_array(0, $inactiveClasses, true) ? 'checked' : '' ?>></div></td>
+                    <td><div class="form-check"><input type="checkbox" class="form-check-input" disabled <?= in_array(0, $directoryClasses, true) ? 'checked' : '' ?>></div></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+            <?php endif; ?>
         </table>
     </div>
 </div>

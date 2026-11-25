@@ -28,7 +28,6 @@
  * under docker-admin.config.ts.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 
 const PREFIX = "UIMINGRP";
@@ -50,16 +49,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (/\/admin\/$/.test(new URL(url).pathname)) {
+        if (/\/admin\/$|\/session\/begin$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.location("pathname").should("not.match", /\/admin\/$/);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** Ministries take their pool Group with them, so this is the whole cleanup. */
@@ -86,7 +81,6 @@ before(() => {
 
 describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         cy.makePrivateAdminAPICall(
@@ -108,7 +102,6 @@ describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", 
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     beforeEach(() => {

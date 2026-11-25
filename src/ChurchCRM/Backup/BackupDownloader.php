@@ -15,10 +15,20 @@ class BackupDownloader
             throw new \Exception($message, 500);
         }
 
-        // Security: Use system temp directory (outside web root)
-        $path = sys_get_temp_dir() . '/' . basename($filename);
+        // Security: only serve files recorded for this session's backup job
+        $basename = basename($filename);
+        $allowed = $_SESSION['backup_job_files'] ?? [];
+        if (!is_array($allowed) || !in_array($basename, $allowed, true)) {
+            $message = 'Requested download is not from this session\'s backup job: ' . $basename;
+            LoggerUtils::getAppLogger()->error($message);
+            throw new \Exception($message, 403);
+        }
+
+        // Prefer private per-job temp dir if recorded, else system temp
+        $tempBase = $_SESSION['backup_job_temp_dir'] ?? sys_get_temp_dir();
+        $path = rtrim($tempBase, '/') . '/' . $basename;
         LoggerUtils::getAppLogger()->info('Download requested for :' . $path);
-        if (!file_exists($path)) {
+        if (!file_exists($path) || !is_file($path)) {
             $message = 'Requested download does not exist: ' . $path;
             LoggerUtils::getAppLogger()->error($message);
 
@@ -64,8 +74,7 @@ class BackupDownloader
         }
         fclose($fd);
 
-        // Clean up the backup file after download
-        unlink($path);
-        LoggerUtils::getAppLogger()->debug('Removed backup file from server filesystem');
+        // Do not delete on GET — cleanup is the responsibility of the job or a later sweep
+        LoggerUtils::getAppLogger()->debug('Backup file served (not deleted on GET)');
     }
 }

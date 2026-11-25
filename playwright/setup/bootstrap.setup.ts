@@ -22,51 +22,48 @@ const ADMIN_PERSON_ID = 1;
 const ADMIN_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'andrew.adams.jpg');
 
 /**
- * These two tests are real, recorded workflows — not plumbing — because
- * they're the videos this pipeline exists to produce first: how setup and
- * church info work, and how to load the sample data. They run once (the
- * "setup" project in playwright.config.ts), before the desktop/tablet/mobile
- * projects, which declare a dependency on this project and reuse the
- * storage state saved at the end of the second test.
+ * These tests are real, recorded workflows — not plumbing — because they're
+ * the videos this pipeline exists to produce first: installing ChurchCRM,
+ * the first sign-in with church info, and loading the sample data. They run
+ * once (the "setup" project in playwright.config.ts), in order, before the
+ * desktop/tablet/mobile projects, which declare a dependency on this project
+ * and reuse the storage state saved at the end of the last test.
  */
-setup('setup-church-info', async ({ page }, testInfo) => {
+setup('install-churchcrm', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/setup/);
   await expect(page.locator('.setup-logo')).toBeVisible();
-  // Let the viewer actually see the welcome screen before the system-check
-  // busy-state takes over — otherwise the video jumps straight into
-  // "checking system requirements" with no chance to read it.
-  await humanPause(page, 3000);
+  await humanPause(page, 1500);
 
-  const prereqNext = page.locator('#prerequisites-next-btn');
-  await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
-  // Stays disabled until the page's own async system-check AJAX calls
-  // finish ("Checking system requirements...") — visible isn't enough, and
-  // that check can take well past the 15s action timeout under load.
-  // System checks may take 2+ minutes on slower systems, matching the
-  // database setup migration timeout.
-  await expect(prereqNext).toBeEnabled({ timeout: 120000 });
+  // The server check can take 2+ minutes on slower systems.
+  await expect(page.locator('#status-banner')).not.toHaveClass(/status-checking/, { timeout: 120000 });
   await humanPause(page, 600);
-  await humanClick(prereqNext);
-
-  await expect(page.locator('#step-database')).toHaveClass(/active/);
-  await humanPause(page, 400);
 
   await humanType(page.locator('#DB_SERVER_NAME'), DB.host);
   await humanType(page.locator('#DB_SERVER_PORT'), String(DB.port));
   await humanType(page.locator('#DB_NAME'), DB.name);
   await humanType(page.locator('#DB_USER'), DB.user);
   await humanType(page.locator('#DB_PASSWORD'), DB.password);
-  await humanType(page.locator('#DB_PASSWORD_CONFIRM'), DB.password);
 
-  await humanPause(page, 500);
+  await humanPause(page, 1200);
   await humanClick(page.locator('#submit-setup'));
 
   await page.locator('#setup-success').waitFor({ state: 'visible', timeout: 120000 });
   await humanPause(page, 800);
   await humanClick(page.locator('#continue-to-login'));
-  await page.waitForURL(/\/admin\/$/, { timeout: 30000 });
+  await expect(page.locator('input[name=User]')).toBeVisible({ timeout: 30000 });
+  await settle(page, 1500);
 
+  await captureScreen(page, testInfo, {
+    name: 'install-churchcrm',
+    title: 'Install ChurchCRM',
+    category: 'Setup',
+    purpose: 'Show installing ChurchCRM on one page, from the setup screen to the sign-in screen',
+    usedIn: ['website'],
+  });
+});
+
+setup('setup-church-info', async ({ page }, testInfo) => {
   // First admin login — forced password change.
   await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
@@ -84,13 +81,14 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanPause(page, 400);
   await humanClick(page.locator('button[type=submit]'));
 
-  // ChurchInfoRequiredMiddleware redirects here while sChurchName is empty.
-  // The demo data import (next test) overwrites this with its own fixture
-  // ("Main St. Cathedral") — expected, not a bug; this save only needs to
-  // satisfy the required-fields gate so we can move on.
-  await page.waitForURL(/\/admin\/system\/church-info/, { timeout: 15000 });
+  // With no church name yet, the admin lands on the Setup Dashboard and picks
+  // Set Up Your Church. The demo data import (next test) overwrites this with
+  // its own fixture ("Main St. Cathedral") — expected, not a bug.
+  await page.waitForURL(/\/admin\/setup$/, { timeout: 15000 });
   await dismissSystemNotifications(page);
-  await page.reload();
+  await humanPause(page, 800);
+  await humanClick(page.locator('#startChurchSetup'));
+  await page.waitForURL(/\/admin\/system\/church-info/, { timeout: 15000 });
   await humanPause(page, 500);
 
   await humanType(page.locator('#sChurchName'), CHURCH_NAME);
@@ -114,7 +112,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
     name: 'setup-church-info',
     title: 'Setup - Church Info',
     category: 'Setup',
-    purpose: 'Show first-run setup: prerequisites, database configuration, and church info',
+    purpose: 'Show the first sign-in: the forced password change, the Setup Dashboard, and the church info form',
     usedIn: ['website'],
   });
 });
@@ -127,38 +125,32 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // An administrator's first full sign-in checks GitHub for releases and fetches the remote
   // notifications before it redirects, which can take well past the 15s action timeout on a runner.
   await page.locator('input[name=Password]').press('Enter', { timeout: 60000 });
-  // An administrator signed in at /admin/ stays there, on the Admin Dashboard.
-  await expect(page.locator('input[name=Password]')).toHaveCount(0, { timeout: 60000 });
+  // A new install's first admin sign-in opens the Setup Dashboard.
+  await page.waitForURL(/\/admin\/setup$/, { timeout: 60000 });
 
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
-
-  await page.goto('/admin/get-started');
   await humanPause(page, 500);
 
-  const importCard = page.locator('#importDemoDataV2');
-  await importCard.waitFor({ state: 'visible', timeout: 10000 });
-  await humanClick(importCard);
+  const importButton = page.locator('#importDemoDataSetup');
+  await importButton.waitFor({ state: 'visible', timeout: 10000 });
+  await humanClick(importButton);
 
   await page.locator('#demoImportModal').waitFor({ state: 'visible', timeout: 5000 });
   await humanPause(page, 500);
   await humanClick(page.locator('#demoImportConfirmBtn'));
 
-  // The modal shows its progress state while the import runs and closes when done.
-  await page.locator('#demoImportModal').waitFor({ state: 'hidden', timeout: 120000 });
-  await humanPause(page, 800);
-
-  // Show the payoff, not just the click — end on the People (members)
-  // dashboard, populated by the import, rather than leaving the video on
-  // the get-started page.
-  await page.goto('/people/dashboard');
-  await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
+  // The import ends on the People dashboard, populated with the demo data.
+  await page.waitForURL(/\/people\/dashboard$/, { timeout: 120000 });
+  // The unified dashboard renders several h2s (page title, Insights, ...);
+  // a bare 'h2' locator is a strict-mode violation now. Wait on the title.
+  await page.locator('h2.page-title').waitFor({ state: 'visible', timeout: 15000 });
   await settle(page, 600);
 
   await captureScreen(page, testInfo, {
     name: 'demo-data-import',
     title: 'Demo Data Import',
     category: 'Setup',
-    purpose: 'Show importing the sample data set and the resulting seeded families',
+    purpose: 'Show a new install opening on the Setup Dashboard, importing the sample data, and the populated People dashboard',
     usedIn: ['website'],
   });
 

@@ -15,13 +15,10 @@ use ChurchCRM\Utils\InputUtils;
  * Behaviour: webpack/people/person-signin-card.ts.
  */
 ?>
-<div class="card mb-3" id="portal-signin-card"
+<div id="portal-signin-card"
      data-person-id="<?= (int) $iPersonID ?>"
      data-csrf-token="<?= InputUtils::escapeAttribute($portalSignInCsrfToken) ?>">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title m-0"><i class="fa-solid fa-right-to-bracket me-1"></i> <?= gettext('Portal sign-in') ?></h3>
-    </div>
-    <div class="card-body">
+    <div>
         <ul class="list-unstyled mb-0">
             <li class="mb-2" id="portal-signin-status" data-reason="<?= InputUtils::escapeAttribute((string) $portalSignIn['reason']) ?>">
                 <?php if ($portalSignIn['maySignIn']) : ?>
@@ -81,7 +78,7 @@ use ChurchCRM\Utils\InputUtils;
         <?php endif; ?>
     </div>
     <?php if ($portalSignInCanManage) : ?>
-        <div class="card-footer d-flex flex-wrap gap-2">
+        <div class="border-top pt-3 mt-3 d-flex flex-wrap gap-2">
             <?php if ($portalSignIn['signInDisabled']) : ?>
                 <button type="button" class="btn btn-sm btn-outline-success" id="portal-signin-enable">
                     <i class="fa-solid fa-lock-open me-1"></i><?= gettext('Enable sign-in') ?>

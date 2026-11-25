@@ -35,7 +35,6 @@
  * would leave its group behind as an orphan nobody can recognise.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 /** person 3 — tony.wade. Given the MINISTRY scope by this spec. */
 const COORDINATOR_KEY = "user.api.key";
@@ -70,7 +69,6 @@ let occAlpha = 0;
 let pastOccurrence = 0;
 let pastAssignment = 0;
 let futureAssignment = 0;
-let originalVersion = "v1";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
@@ -94,10 +92,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         body,
         expectedStatus,
     );
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -303,10 +297,6 @@ after(() => {
 
 describe("Volunteer v2 — the two API surfaces the restructured ministry page needs (epic #9701, design §5.4 as amended by the product owner)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         api(ADMIN_KEY, "POST", MINISTRIES_URL, { name: MINISTRY_NAME }, 201).then(
@@ -485,7 +475,6 @@ describe("Volunteer v2 — the two API surfaces the restructured ministry page n
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── the summary block ──────────────────────────────────────────────────────

@@ -36,7 +36,6 @@
  * hook does not run when the runner crashes mid-spec. Deletion order is FK-safe.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORD_A_KEY = "user.api.key";
 const COORD_B_KEY = "nofinance.api.key";
@@ -78,7 +77,6 @@ let occA1Near = 0;
 let occA1Far = 0;
 let occA2 = 0;
 let occB = 0;
-let originalVersion = "v1";
 let seriesStart = "";
 let seriesEnd = "";
 
@@ -98,10 +96,6 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today. */
@@ -374,10 +368,6 @@ after(() => {
 
 describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         createMinistry("Coffee Bar").then((id) => {
@@ -518,7 +508,6 @@ describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #970
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── tests ──────────────────────────────────────────────────────────────────
@@ -853,15 +842,6 @@ describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #970
 
         it("refuses a caller with no volunteer rights at all", () => {
             dashboard(PLAINAUTH_KEY, "", 403);
-        });
-    });
-
-    describe("GET /api/ministries/dashboard — the rollout gate (#9711, §3.3)", () => {
-        it("is refused when V2 is off, and reachable again when it is on", () => {
-            setVersion("v1");
-            dashboard(ADMIN_KEY, "", 403);
-            setVersion("v2");
-            dashboard(ADMIN_KEY, "", 200);
         });
     });
 });

@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <div id="password-help" class="form-text"><?= InputUtils::escapeHTML(gettext('Your new password must be at least') . ' ' . $minPasswordLength . ' ' . gettext('characters')) ?></div>
       </div>
 
-    <div class="mb-3" id="PasswordStrengthContainer" hidden>
+    <div class="mb-3" id="PasswordStrengthContainer" data-min-length="<?= (int) $minPasswordLength ?>" hidden>
         <span>
             <?= InputUtils::escapeHTML(gettext('Password strength')) ?>:
             <span id="PasswordStrengthLabel" aria-live="polite"></span>
@@ -54,6 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       </div>
       <button id="setPassword" type="submit" class="btn-reset"><?= gettext('Reset Password') ?></button>
       <div class="form-footer justify-content-center"><a href="<?= $sRootPath ?>/session/begin"><?= gettext('Back to Login') ?></a></div>
+      <?php require __DIR__ . '/../partials/back-to-chooser.php'; ?>
     </form>
   </div>
 </main>

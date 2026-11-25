@@ -28,7 +28,6 @@
  * that gives the member something to sign up for.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
@@ -171,7 +170,6 @@ after(() => {
 
 describe("Member Portal — the layout of \"Find something to do\"", () => {
     before(() => {
-        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
         adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
@@ -223,7 +221,6 @@ describe("Member Portal — the layout of \"Find something to do\"", () => {
 
     after(() => {
         cleanupFixtures();
-        adminApi("POST", SETTING_URL, { value: "v1" }, 200);
     });
 
     // ── the page's own furniture, and the empty state ──────────────────────────

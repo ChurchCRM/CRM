@@ -51,7 +51,7 @@ describe("API — Cart to Family", () => {
                 User: Cypress.testEnv("standard.username"),
                 Password: Cypress.testEnv("standard.password"),
             },
-            followRedirect: false, // 302 → /v2/dashboard on success
+            followRedirect: false, // 302 → /people/dashboard on success
             log: false,
         });
     }

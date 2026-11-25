@@ -33,6 +33,7 @@ describe(
             "CountryTest",
             "ClsRoleTest",
             "GradeImportTest",
+            "EmojiTest",
         ];
 
         after(() => {
@@ -493,6 +494,32 @@ describe(
                         cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
                             expect(famResp.body.Country, "Family (explicit-Canada creation row) Country").to.eq("Canada");
                         });
+                    });
+                });
+            });
+        });
+
+        it("Verify CSV Import keeps 4-byte characters in family and person fields (#10465)", () => {
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import_emoji.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+            cy.get("#summary-imported").should("have.text", "2");
+
+            cy.request("GET", "/api/search/EmojiTest").then((response) => {
+                const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
+                const hit = personsGroup.children.find((child) => child.text.startsWith("emojiHead "));
+                const personId = hit.uri.match(/\/people\/view\/(\d+)/)[1];
+                cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
+                    expect(resp.body.LastName).to.eq("EmojiTest 🎂");
+                    expect(resp.body.City).to.eq("Gladtown 😀");
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${resp.body.FamId}`, null, 200).then((famResp) => {
+                        expect(famResp.body.Name).to.eq("EmojiTest 🎂");
+                        expect(famResp.body.Address1).to.eq("1 Joy St 🎉");
+                        expect(famResp.body.City).to.eq("Gladtown 😀");
+                        expect(famResp.body.Country).to.eq("Canada 🍁");
                     });
                 });
             });

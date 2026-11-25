@@ -166,7 +166,7 @@ describe("Login as Person", () => {
     it("keeps staff pages closed until Stop", () => {
         startLoginAsPerson(MEMBER).its("status").should("eq", 200);
 
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.location("pathname").should("match", /\/portal\/$/);
         cy.get("#portal-toasts").should("contain", "Staff pages stay closed during Login as Person.");
         cy.get("#login-as-person-banner").should("be.visible");
@@ -198,8 +198,8 @@ describe("Login as Person", () => {
             expect(response.status).to.eq(303);
             expect(response.headers.location).to.match(new RegExp(`/people/view/${MEMBER}$`));
         });
-        cy.visit("/v2/dashboard");
-        cy.location("pathname").should("match", /\/v2\/dashboard$/);
+        cy.visit("/people/dashboard");
+        cy.location("pathname").should("match", /\/people\/dashboard$/);
     });
 
     it("shows the person's name as text in the confirm dialog", () => {

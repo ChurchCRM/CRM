@@ -6,6 +6,8 @@ use ChurchCRM\Service\Geocoding\GeocodeOutcome;
 use ChurchCRM\Service\Geocoding\GeocoderChain;
 use ChurchCRM\Service\Geocoding\GeocoderProviderInterface;
 use ChurchCRM\Service\Geocoding\GeocodeResult;
+use Psr\Log\AbstractLogger;
+use Psr\Log\LogLevel;
 use Psr\Log\NullLogger;
 use Tester\Assert;
 
@@ -35,6 +37,20 @@ final class StandInProvider implements GeocoderProviderInterface
         $this->calls++;
 
         return $this->answer;
+    }
+}
+
+/** A logger that remembers the level of every message above debug. */
+final class RecordingLogger extends AbstractLogger
+{
+    /** @var list<string> */
+    public array $levels = [];
+
+    public function log($level, string|\Stringable $message, array $context = []): void
+    {
+        if ($level !== LogLevel::DEBUG) {
+            $this->levels[] = (string) $level;
+        }
     }
 }
 
@@ -87,3 +103,14 @@ $outcome = $lookup($chain);
 Assert::true($outcome->isFound());
 Assert::same($attempts, $first->calls, 'Resting provider is skipped');
 Assert::same(2, $up->calls, 'Available provider is asked for every address');
+
+$missing = new StandInProvider('Missing', GeocodeOutcome::notFound());
+$logger = new RecordingLogger();
+$outcome = $lookup(new TestGeocoderChain([$missing], $logger));
+Assert::false($outcome->isFound() || $outcome->isUnavailable(), 'Unresolvable address stays a not-found outcome');
+Assert::same([LogLevel::INFO], $logger->levels, 'Not-found is an expected outcome, logged at info');
+
+$logger = new RecordingLogger();
+$outcome = $lookup(new TestGeocoderChain([new StandInProvider('Down', GeocodeOutcome::unavailable())], $logger));
+Assert::true($outcome->isUnavailable());
+Assert::same(LogLevel::WARNING, end($logger->levels), 'No provider could answer stays a warning');

@@ -95,11 +95,10 @@ function recordFixtures(): array
 {
     prepareScopeStore();
 
-    $on = static fn (bool $finance = true, bool $fundraiser = true, bool $events = true, string $volunteer = 'v2'): array => [
+    $on = static fn (bool $finance = true, bool $fundraiser = true, bool $events = true): array => [
         'bEnabledFinance' => $finance,
         'bEnabledFundraiser' => $fundraiser,
         'bEnabledEvents' => $events,
-        'sVolunteerVersion' => $volunteer,
         'bPortalShowVolunteer' => false,
     ];
 
@@ -124,7 +123,6 @@ function recordFixtures(): array
     $specs[] = spec('module-off-finance', true, [], $on(finance: false));
     $specs[] = spec('module-off-fundraiser', true, [], $on(fundraiser: false));
     $specs[] = spec('module-off-events', true, [], $on(events: false));
-    $specs[] = spec('module-off-volunteer-v1', true, [], $on(volunteer: 'v1'));
 
     $recorded = [];
     foreach ($specs as $index => $spec) {
@@ -210,8 +208,6 @@ function record(array $spec, int $personId): array
         'canManageEvents' => $user->canManageEvents(),
         'canWriteEvents' => $user->canWriteEvents(),
         'isEventsEnabled' => User::isEventsEnabled(),
-        'isVolunteerV1Enabled' => User::isVolunteerV1Enabled(),
-        'isVolunteerV2Enabled' => User::isVolunteerV2Enabled(),
         'isVolunteerCoordinatorEnabled' => $user->isVolunteerCoordinatorEnabled(),
         'isVolunteerTeamLeaderEnabled' => $user->isVolunteerTeamLeaderEnabled(),
         'canReadFamily' => $user->canReadFamily(OTHER_PERSON_ID),

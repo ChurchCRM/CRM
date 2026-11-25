@@ -40,7 +40,7 @@ describe("Standard Person", () => {
     });
 
     it("Name Search", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/cam",
@@ -57,7 +57,7 @@ describe("Standard Person", () => {
     });
 
     it("Middle Name Search", () => {
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/henry",
@@ -76,7 +76,7 @@ describe("Standard Person", () => {
 
     it("Unknown Name Search", () => {
         const unknownName = "nobody " + uniqueSeed;
-        cy.visit("v2/dashboard");
+        cy.visit("people/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/" + unknownName,

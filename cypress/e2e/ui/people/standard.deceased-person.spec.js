@@ -286,8 +286,8 @@ describe("Deceased Person Flag", () => {
                         .parents("tr")
                         .should("not.have.class", "text-body-secondary");
 
-                    // Sidebar shows "1 Member (+1 deceased)"
-                    cy.contains("li", "Member").should("contain", "(+1");
+                    // Header counts the living member and the deceased one separately
+                    cy.get("#family-profile-header").should("contain.text", "1 Member").and("contain.text", "1 deceased");
                 });
             });
     });
@@ -321,20 +321,5 @@ describe("Deceased Person Flag", () => {
         cy.get("#peoplePeople", { timeout: 10000 })
             .find("[name='bHideDeceasedFromDirectory']")
             .should("exist");
-    });
-
-    it("the System Settings page no longer lists the deceased-directory setting", () => {
-        // Switch to admin session so we can see the System Settings admin page
-        cy.setupAdminSession();
-        cy.visit("/SystemSettings.php");
-        cy.get("body").should("be.visible");
-        // The ConfigItem still exists (so the value persists) but is no longer
-        // in buildCategories(), so neither its key nor its label renders here.
-        cy.get("[name='bHideDeceasedFromDirectory'], #bHideDeceasedFromDirectory").should(
-            "not.exist"
-        );
-        cy.contains("Hide deceased members from the printed directory").should(
-            "not.exist"
-        );
     });
 });

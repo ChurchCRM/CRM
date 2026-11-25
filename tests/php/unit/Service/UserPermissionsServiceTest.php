@@ -19,8 +19,10 @@ $setting = static fn (string $value) => new class($value) {
     'bEnabledFinance' => $setting('0'),
     'bEnabledFundraiser' => $setting('1'),
     'bEnabledEvents' => $setting('0'),
-    'sVolunteerVersion' => $setting('v1'),
 ]);
+
+// Neither principal leads a team; seeding the memo keeps the scope table out of a unit test.
+(new \ReflectionProperty(User::class, 'volunteerTeamLeaderMemo'))->setValue(null, [0 => false, 1 => false]);
 
 $rows = static function (User $user): array {
     $byLabel = [];
@@ -40,7 +42,7 @@ Assert::false($admin['Manage Donations and Finance']['granted'], 'a module that 
 Assert::same('Finance is turned off for this church', $admin['Manage Donations and Finance']['reason']);
 Assert::true($admin['View events']['granted'], 'administrators see events while the module is off, as ViewEventsRoleAuthMiddleware allows');
 Assert::true($admin['Add and edit events']['granted']);
-Assert::same('Volunteer Management is turned off for this church', $admin['Manage all ministries']['reason']);
+Assert::true($admin['Manage all ministries']['granted']);
 Assert::true($admin['Email people and groups']['granted']);
 
 $member = $rows(PortalMemberUser::forPerson(1)->setAddRecords(true)->setManageFundraisers(true));

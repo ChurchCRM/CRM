@@ -15,9 +15,9 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
-use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\GradeService;
+use ChurchCRM\Service\InstallSetupService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\UserPermissionsService;
@@ -72,9 +72,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Users')],
             ]),
-            'sSettingsCollapseId' => 'userSettingsPanel',
             'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettingsPanel'],
+                ['label' => gettext('Security Settings'), 'url' => '/admin/settings#securitySettings', 'icon' => 'fa-shield-halved'],
                 ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
             ]),
         ];
@@ -240,10 +239,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Logs')],
             ]),
-            'sSettingsCollapseId' => 'logSettings',
-            'sPageHeaderButtons' => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#logSettings'],
-            ]),
             'logFiles'   => $logFiles,
         ];
 
@@ -350,10 +345,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Upgrade')],
             ]),
-            'sSettingsCollapseId'   => 'upgradeSettingsPanel',
-            'sPageHeaderButtons'    => PageHeader::buttons([
-                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#upgradeSettingsPanel'],
-            ]),
             'hasWarnings'           => $hasWarnings,
             'integrityCheckFailed'  => $integrityCheckFailed,
             'integrityCheckData'    => $integrityCheckData,
@@ -363,7 +354,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
             'isAheadOfStable'       => $isAheadOfStable,
-            'databaseBlockMessage'  => DatabaseVersionService::getUpgradeBlockMessage(),
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);
@@ -374,9 +364,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $labels = [
-            'sDear'             => gettext('Greeting'),
-            'sConfirmSincerely' => gettext('Closing'),
-            'sConfirmSigner'    => gettext('Signer'),
             'sTaxSignatureStoragePath' => gettext('Signature storage folder'),
         ];
         $letterSettings = array_map(function (array $setting) use ($labels): array {
@@ -455,6 +442,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->post('/church-info', function (Request $request, Response $response): Response {
         // Body fields have already been sanitized by InputSanitizationMiddleware
         $body = $request->getParsedBody();
+        $firstSave = InstallSetupService::needsChurchSetup();
 
         $churchName    = trim($body['sChurchName'] ?? '');
         $churchAddress = trim($body['sChurchAddress'] ?? '');
@@ -637,7 +625,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         }
 
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info')
+            ->withHeader('Location', SystemURLs::getRootPath() . ($firstSave ? '/admin/setup' : '/admin/system/church-info'))
             ->withStatus(303);
     })->add(new InputSanitizationMiddleware([
         'sChurchName'    => 'text',
@@ -752,7 +740,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'localeSettings'     => $localeSettings,
             'localeStats'        => $localeStats,
             'systemCheckEnabled' => $systemCheckEnabled,
-            'timezones'          => timezone_identifiers_list(),
+            'messagesFallback'   => LocaleInfo::hasMessagesFallback(),
+            'timezones'         => timezone_identifiers_list(),
             'sGlobalMessage'     => $sGlobalMessage,
             'sGlobalMessageClass' => $sGlobalMessageClass,
         ];

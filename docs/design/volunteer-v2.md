@@ -1854,21 +1854,13 @@ These are the only places the rollout flag has to be threaded. Everything else i
 
 ### 3.9 Retiring V1 (#10606, epic #9702)
 
-**V1 is in use** while `sVolunteerVersion` is `v1` or `both`, opportunities exist that have not been converted, or people linked to a converted opportunity since still wait for their qualification (`VolunteerV1Service::isInUse()`). Every V1 surface above shows only then; the `v1` and `both` choices on Feature Toggles too. A new install never sees V1.
-
-While V1 is in use, administrators see a retirement notice: on the Admin Dashboard (dismissible until the next upgrade, `sVolunteerV1NoticeDismissed`), and on the V1 editor, the person-view V1 tab and the Feature Toggles row.
-
-**Admin → People Settings → Convert Volunteer Opportunities** (`/admin/volunteer-conversion`, API `/admin/api/volunteer-conversion`) converts them:
-- each opportunity becomes a position on the first team of one ministry, a new one or an existing one; the preview can make any opportunity a ministry of its own (one team, one position of the same name);
+V1 is gone as of 7.8.6: Ministries is the only volunteer experience, with no rollout setting. The 7.8.6 upgrade step (`mysql/upgrade/7.8.6-volunteer-v1-removal.php`) converts whatever V1 data is left:
+- each opportunity not converted yet becomes a position on the first team of the ministry the last conversion filled, or of a new "Volunteer Opportunities" ministry;
 - name, description, order and active carry over; self sign-up starts off;
-- each living person linked to it gets a qualification for the position and joins the pool; links to missing or deceased people are listed, not converted;
+- each living person linked to it gets a qualification for the position and joins the pool, as do people linked to an already converted opportunity since its conversion; links to missing or deceased people are logged, not converted;
 - names already taken get a suffix, `(2)`, `(3)`…;
-- it runs through the V2 services in one transaction, holding a lock on the opportunities so two conversions cannot plan from the same map, and sends no email; an install on `v1` moves to `both` first; with nothing to do it writes nothing;
-- it runs only the plan the administrator confirmed: the preview returns a `revision` of its plan, the conversion sends it back, and a plan that changed since (new opportunities, links, names or choice) is refused with 409 before anything is written;
-- the opportunity → position map is `aVolunteerV1Conversion`, so a re-run converts only new opportunities, into the ministry used last time, and qualifies people linked to a converted opportunity since; a qualification removed in Ministries stays removed;
-- the V1 rows are not touched.
-
-V1 is removed in the first release after about 2027-01-10, three months after 7.8.0 made V2 available. That upgrade converts whatever is left the same way, then drops the V1 tables, screens, API and reports; `sVolunteerVersion` becomes a plain Ministries on/off.
+- it runs through the V2 services in one transaction and sends no email; an install that was on `v1` gets the "Other" event type;
+- only once that commits does it drop `volunteeropportunity_vol` and `person2volunteeropp_p2vo` and the settings `sVolunteerVersion`, `aVolunteerV1Conversion` and `sVolunteerV1NoticeDismissed`. When the conversion fails, the tables stay and the error is logged, so no volunteer data is lost.
 
 ## 4. Authorization model
 

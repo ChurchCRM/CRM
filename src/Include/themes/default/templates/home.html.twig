@@ -22,8 +22,9 @@
   which portal.ts replaces from `start`) and `hasVisibleCalendars` (the same as
   `portal.showCalendar`);
   `showVolunteering` (whether the volunteering card is rendered at all);
-  `familySummary` (`{name, memberCount}`, or null when the member has no family
-  record); `profile` (the same view-model the Profile page renders, or null for
+  `familySummary` (`{name, memberCount}` for a member who may open My Family,
+  null otherwise; the My Family card and the welcome text's "your family"
+  wait for it); `profile` (the same view-model the Profile page renders, or null for
   an account with no person record).
 #}
 
@@ -36,7 +37,11 @@
         <p class="portal-welcome-family">{{ gettext('%s family')|format(member.familyName) }}</p>
         {% endif %}
         <p class="portal-welcome-intro">
+            {% if familySummary %}
             {{ gettext('This is your church account. Everything you can do for yourself and your family lives here.') }}
+            {% else %}
+            {{ gettext('This is your church account. Everything you can do for yourself lives here.') }}
+            {% endif %}
         </p>
     </section>
 
@@ -89,22 +94,19 @@
         </section>
         {% endif %}
 
+        {% if familySummary %}
         <section class="portal-card" id="portal-home-family-card">
             <h2 class="portal-card-title">
                 <i class="fa-solid fa-people-roof" aria-hidden="true"></i>
                 <span>{{ gettext('My Family') }}</span>
             </h2>
-            {% if familySummary %}
             <p class="portal-card-text">
                 <span class="portal-card-lead">{{ gettext('%s family')|format(familySummary.name) }}</span><br>
                 {{ ngettext('%s person in your household', '%s people in your household', familySummary.memberCount)|format(familySummary.memberCount) }}
             </p>
             <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('Update your details') }}</a></p>
-            {% else %}
-            <p class="portal-card-text">{{ gettext('You are not currently associated with a family') }}</p>
-            <p class="portal-card-text">{{ gettext('Please contact the church office so we may correct our records.') }}</p>
-            {% endif %}
         </section>
+        {% endif %}
 
         <section class="portal-card" id="portal-home-profile-card">
             <h2 class="portal-card-title">

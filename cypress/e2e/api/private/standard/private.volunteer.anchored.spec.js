@@ -11,7 +11,6 @@
  * deleted in `before` as well as `after`.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
@@ -32,7 +31,6 @@ const HARVEST_TITLE = `${PREFIX} Harvest`;
 
 const URL = "/api/ministries";
 
-let originalVersion = "v1";
 let ministryA = 0;
 let ministryB = 0;
 let teamA1 = 0;
@@ -77,10 +75,6 @@ function api(key, method, url, body, expectedStatus = 200) {
         return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
     }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -225,10 +219,6 @@ after(() => {
 
 describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), schedule time offsets (D21) and the four ways a schedule finds its events, Staff this event included (D22)", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         createMinistry("Children").then((id) => {
@@ -324,7 +314,6 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     // ── the spec ───────────────────────────────────────────────────────────────

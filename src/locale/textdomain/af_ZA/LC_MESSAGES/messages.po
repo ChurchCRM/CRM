@@ -367,18 +367,6 @@ msgid "(No assigned family)"
 msgstr "(geen toegekende gesin)"
 
 #: 
-msgid "Convert Individuals to Families"
-msgstr "Skakel individue in gesinne om"
-
-#: 
-msgid "Convert Next"
-msgstr "Skakel volgende om"
-
-#: 
-msgid "Convert All"
-msgstr "Skakel almal om"
-
-#: 
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Inbetaling strokie nommer"
@@ -1306,10 +1294,6 @@ msgid "People"
 msgstr "Mense"
 
 #: 
-msgid "Sunday School Kids"
-msgstr "Sondagskoolkinders"
-
-#: 
 msgid "Role / Gender"
 msgstr "Rol / geslag"
 
@@ -1372,10 +1356,6 @@ msgstr "Groep"
 #: 
 msgid "Default"
 msgstr "Verstek"
-
-#: 
-msgid "Exit"
-msgstr "Uitgang"
 
 #: 
 msgid "Add New"
@@ -1480,10 +1460,6 @@ msgstr "Eienskappe op te dateer"
 #: 
 msgid "Assign New Group"
 msgstr "Ken nuwe groep toe"
-
-#: 
-msgid "Assign a New Volunteer Opportunity"
-msgstr "Ken 'n nuwe geleentheid vir vrywilligers toe"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1599,10 +1575,6 @@ msgid "Restore Database"
 msgstr "Herstel databasis"
 
 #: 
-msgid "Please confirm deletion of"
-msgstr "Bevestig die verwydering van"
-
-#: 
 msgid "Listing"
 msgstr "Lys"
 
@@ -1621,10 +1593,6 @@ msgstr "Stoor instellings"
 #: 
 msgid "Permission"
 msgstr "Toestemming"
-
-#: 
-msgid "System Settings"
-msgstr "Stelselinstellings"
 
 #: 
 msgid "User Editor"
@@ -1689,14 +1657,6 @@ msgstr "Nuwe Wagwoord"
 #: 
 msgid "Confirm New Password"
 msgstr "Bevestig nuwe wagwoord"
-
-#: 
-msgid "Volunteer Opportunity Editor"
-msgstr "Vrywillige geleentheidsredakteur"
-
-#: 
-msgid "No volunteer opportunities have been added yet"
-msgstr "Geen vrywilligersgeleenthede is nog bygevoeg nie"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2120,24 +2080,12 @@ msgid "Localization"
 msgstr "Lokalisering"
 
 #: 
-msgid "Setting saved"
-msgstr "Instelling gestoor"
-
-#: 
-msgid "Edit JSON Settings"
-msgstr "Wysig JSON-instellings"
-
-#: 
 msgid "False"
 msgstr "onwaar"
 
 #: 
 msgid "True"
 msgstr "Waar"
-
-#: 
-msgid "Edit Settings"
-msgstr "Wysig instellings"
 
 #: 
 msgid "Functions"
@@ -2190,14 +2138,6 @@ msgstr "Vee alle fondse uit"
 #: 
 msgid "Deposit Comment"
 msgstr "Deposito kommentaar"
-
-#: 
-msgid "Signature definition file signature failed validation"
-msgstr "Validasie van handtekeningdefinisie-lêerhandtekening het misluk"
-
-#: 
-msgid "One or more files failed signature validation"
-msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
 
 #: 
 msgid "item"
@@ -2263,33 +2203,8 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Sluit slegs hierdie klassifikasies in, sonder kommas, in die gids"
 
 #: 
-msgid "These are the family role numbers designated as head of house"
-msgstr "Dit is die gesinsrolnommers wat as hoof van die huis aangewys word"
-
-#: 
-msgid "These are the family role numbers designated as spouse"
-msgstr "Dit is die gesinsrolnommers wat as eggenoot aangewys word"
-
-#: 
-msgid "These are the family role numbers designated as child"
-msgstr "Dit is die gesinsrolnommers wat as kind aangewys word"
-
-#: 
-msgid "Minimum length a user may set their password to"
-msgstr "Minimum lengte waarop 'n gebruiker hul wagwoord kan stel"
-
-#: 
-#, fuzzy
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr "'N Kommaskeide lys van ontoelaatbare (te voor die hand liggende) wagwoorde."
-
-#: 
 msgid "Default City"
 msgstr "Verstekstad"
-
-#: 
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr "Standaardstaat - moet 'n afkorting van 2 letters wees!"
 
 #: 
 msgid "SMTP Server Address (mail.server.com:25)"
@@ -2312,68 +2227,12 @@ msgid "First month of the fiscal year"
 msgstr "Eerste maand van die fiskale jaar"
 
 #: 
-msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Stel waar om die invoer van vriendedatum in die persoonredakteur uit te skakel. Stel vals om dit moontlik te maak om Vriendedatum in Persoonredakteur in te voer."
-
-#: 
-msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Stel u waar om die bestuur van nuusbrief-intekeninge in die Family Editor uit te skakel."
-
-#: 
-msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Stel waar om die troudatum in die gesinsredakteur in te skakel. Stel onwaar om dit moontlik te maak om Troudatum in Gesinsredakteur in te voer."
-
-#: 
-msgid "Number of checks for Deposit Slip Report"
-msgstr "Aantal tjeks vir die depositostrokieverslag"
-
-#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Eenheid wat gebruik word om afstand, kilometers of km te meet."
 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktiveer nie-aftrekbare betalings"
-
-#: 
-msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Woord vir die boonste lyn van belastingverslag. Datums sal aan die einde van hierdie reël gevoeg word."
-
-#: 
-msgid "Verbage for bottom line of tax report."
-msgstr "Woord vir die onderste lyn van belastingverslag."
-
-#: 
-msgid "Tax Report signer"
-msgstr "Belastingverslag ondertekenaar"
-
-#: 
-msgid "Verbage for the pledge reminder report"
-msgstr "Verbaal vir die belofteverslag"
-
-#: 
-msgid "Pledge Reminder Signer"
-msgstr "Ondertekenaar van belofteherinnering"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Verbaal vir die belofteverslag - Geen verslag van die belofte nie"
-
-#: 
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Verbaal vir die belofteverslag - Geen rekord van betalings nie"
-
-#: 
-msgid "Verbage for the database information confirmation and correction report"
-msgstr "Verbod vir die bevestiging van die databasis en regstellingsverslag"
-
-#: 
-msgid "Database information confirmation and correction report signer"
-msgstr "Bekragtiging van databasisinligting en ondertekenaar van regstellingsverslag"
-
-#: 
-msgid "Verbage for the directory report"
-msgstr "Woord vir die gidsverslag"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -3828,10 +3687,6 @@ msgstr "Rugsteun-argief bevat nie 'n databasis nie"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Maak deur die gebruiker ingevoerde pos- / poskodes UPPERCASE wanneer u dit in die databasis stoor."
 
-#: 
-msgid "Used to end a letter before Signer"
-msgstr "Word gebruik om 'n brief voor Signer af te sluit"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -3936,10 +3791,6 @@ msgid "Failed"
 msgstr "Misluk"
 
 #: 
-msgid "Church Checking Account Number"
-msgstr "Kerkrekeningrekeningnommer"
-
-#: 
 #, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Die gesin gedeaktiveer"
@@ -3952,10 +3803,6 @@ msgstr "Die gesin geaktiveer"
 #: 
 msgid "families"
 msgstr "gesinne"
-
-#: 
-msgid "Financial Settings"
-msgstr "Finansiële instellings"
 
 #: 
 msgid "An invalid configuration name has been requested"
@@ -3996,10 +3843,6 @@ msgstr "Die eiendom is suksesvol nie toegeken nie."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Die eiendom kon nie onttrek word nie."
-
-#: 
-msgid "Text before name in emails/reports"
-msgstr "SMS voor naam in e-posse / verslae"
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -4048,10 +3891,6 @@ msgstr "Insluit"
 #: 
 msgid "Legend"
 msgstr "Legende"
-
-#: 
-msgid "assigned"
-msgstr "toegewys"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -4247,10 +4086,6 @@ msgid "record(s) successfully added to selected Group."
 msgstr "rekords (s) suksesvol by die geselekteerde groep gevoeg."
 
 #: 
-msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Om die datum in Date-Picker te definieer, standaard: yyyy-mm-dd, In Frans: dd / mm / yyyy byvoorbeeld."
-
-#: 
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "Vir die definisie van die datum in Date-Picker, standaard: Y-m-d, In Frans: d / m / Y byvoorbeeld."
 
@@ -4337,10 +4172,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Search Family"
-msgstr "Soek familie"
 
 #: 
 msgid "Show Family Head of House Names"
@@ -4439,10 +4270,6 @@ msgid "Change Settings"
 msgstr "Verander instellings"
 
 #: 
-msgid "Unknown Type"
-msgstr "Onbekende tipe"
-
-#: 
 msgid "PersonID for Cart must be numeric"
 msgstr "Persoon-ID vir wa moet numeries wees"
 
@@ -4463,20 +4290,8 @@ msgid "Maximum number of People"
 msgstr "Maksimum aantal mense"
 
 #: 
-msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Gebied waar Vader van Belydenis gelys word, moet 'n volk van groepsgroep wees"
-
-#: 
-msgid "Field where last Confession is stored, must be a date type"
-msgstr "Veld waarop die laaste belydenis gestoor is, moet 'n datumsoort wees"
-
-#: 
 msgid "People Reports"
 msgstr "Mense verslae"
-
-#: 
-msgid "People Dashboard"
-msgstr "Mense Dashboard"
 
 #: 
 msgid "People Directory"
@@ -4722,24 +4537,8 @@ msgid "Estonian"
 msgstr "Esties"
 
 #: 
-msgid "Error decoding signature definition file"
-msgstr "Kon nie die definisie-lêer van handtekeninge dekodeer nie"
-
-#: 
 msgid "Event not found"
 msgstr "Gebeurtenis nie gevind nie"
-
-#: 
-msgid "Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr "Sessie-time-outlengte in sekondes\n"
-"Stel op nul om sessie-timeouts uit te skakel."
-
-#: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
-"Set to zero to disable this feature"
-msgstr "Minimum bedrag wat 'n nuwe wagwoord moet verskil van die ou wagwoord (aantal karakters verander)\n"
-"Stel op nul om hierdie funksie uit te skakel"
 
 #: 
 msgid "Verify People"
@@ -4813,10 +4612,6 @@ msgstr "Ongespelde gebeure"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "Achternaam, Voornaam Middelnaam"
-
-#: 
-msgid "Send an email notifying users when their account has been deleted"
-msgstr "Stuur 'n e-pos wat gebruikers in kennis stel wanneer hul rekening verwyder is"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -5306,14 +5101,6 @@ msgstr "Voer asseblief 'n geldige URL in wat begin met http:// of https://"
 #: 
 msgid "All system file signatures match the expected values."
 msgstr "Al die stelsellêertekens stem ooreen met die verwagte waardes."
-
-#: 
-msgid "Signature definition file exists but is not readable. Check file permissions."
-msgstr "Tekendefinisielêer bestaan, maar kan nie gelees word nie. Kontroleer lêertoestemmings."
-
-#: 
-msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
-msgstr "Tekendefinisielêer ontbreek by %s. Voer die verpakkingstaak uit of stel 'n amptelike vrylasing in om tekens opnieuw te genereer."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -6389,20 +6176,8 @@ msgid "Additional Information"
 msgstr "Aanvullende Inligting"
 
 #: 
-msgid "Assign Opportunities"
-msgstr "Ken Geleenthede Toe"
-
-#: 
 msgid "Choose a property..."
 msgstr "Kies 'n eienskap..."
-
-#: 
-msgid "Choose opportunities..."
-msgstr "Kies geleenthede..."
-
-#: 
-msgid "Contact & Personal Info"
-msgstr "Kontak & Persoonlike Info"
 
 #: 
 msgid "Edited"
@@ -6411,14 +6186,6 @@ msgstr "Geredigeer"
 #: 
 msgid "Newsletter"
 msgstr "Nuusbrief"
-
-#: 
-msgid "Personal"
-msgstr "Persoonlik"
-
-#: 
-msgid "Select Opportunities"
-msgstr "Kies Geleenthede"
 
 #: 
 msgid "Volunteer"
@@ -6605,10 +6372,6 @@ msgid "Confirm Property Deletion"
 msgstr "Bevestig Eienskap Uitvoeging"
 
 #: 
-msgid "Confirm Volunteer Opportunity Deletion"
-msgstr "Bevestig Vrywilliger Geleentheid Uitvoeging"
-
-#: 
 msgid "Delete Confirmation"
 msgstr "Uitvee Bevestiging"
 
@@ -6621,16 +6384,8 @@ msgid "Existing Custom Person Fields"
 msgstr "Bestaande Pasgemaakte Persoon Velde"
 
 #: 
-msgid "Existing Volunteer Opportunities"
-msgstr "Bestaande Volunteer Opportunities"
-
-#: 
 msgid "Field deleted successfully"
 msgstr "Veld suksesvol verwyder"
-
-#: 
-msgid "Invalid CSRF token"
-msgstr "Ongeldig CSRF-teken"
 
 #: 
 msgid "Invalid fields or selections."
@@ -7826,10 +7581,6 @@ msgid "selected family has no coordinates"
 msgstr "gekose familie het geen koördinate nie"
 
 #: 
-msgid "Require all users to enroll in two-factor authentication"
-msgstr "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer"
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiewe Groepe"
 
@@ -8308,10 +8059,6 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr "Kies hoe jy jou databasis wil bevolken. Jy kan altyd 'n ander metode later gebruik."
 
 #: 
-msgid "Church Info"
-msgstr "Kerk Info"
-
-#: 
 msgid "Clear all"
 msgstr "Alles Maak Skoon"
 
@@ -8344,14 +8091,6 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Voltooi hierdie in enige volgorde om ChurchCRM gereed te maak vir jou geloofsgelyke."
 
 #: 
-msgid "Confession"
-msgstr "Belydenis"
-
-#: 
-msgid "Configure global system settings and preferences"
-msgstr "Konfigureer globale stelselinstellings en voorkeure"
-
-#: 
 msgid "Configure group settings, roles, and properties"
 msgstr "Konfigureer ministerie-instellings, rolle, en eienskappe"
 
@@ -8362,10 +8101,6 @@ msgstr "Bevestig jou nuwe wagwoord"
 #: 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Verbind 'n SMTP-bediener sodat ChurchCRM e-posse kan stuur"
-
-#: 
-msgid "Convert individual records into family units"
-msgstr "Skakel individuele rekords om in familieenhede"
 
 #: 
 msgid "Convert to Family"
@@ -8396,20 +8131,12 @@ msgid "Create or edit property type categories"
 msgstr "Skep of wysig eienskap-tipe kategorieë"
 
 #: 
-msgid "Create or edit volunteer positions"
-msgstr "Skep of wysig vrywilliger-poste"
-
-#: 
 msgid "Current person"
 msgstr "Huidige persoon"
 
 #: 
 msgid "Database Reset"
 msgstr "Databasis Herstel"
-
-#: 
-msgid "Default / Notes"
-msgstr "Verstek / Notas"
 
 #: 
 msgid "Define custom fields to collect additional family data"
@@ -8848,10 +8575,6 @@ msgid "Manage user account details and permissions"
 msgstr "Bestuur gebruiker-rekeningsbesonderhede en -toestemmings"
 
 #: 
-msgid "Manage volunteer opportunities and assign members"
-msgstr "Bestuur vrywilliger-geleenthede en ken geloofsgenote toe"
-
-#: 
 msgid "Map cart items"
 msgstr "Kaarteer lys-items"
 
@@ -8972,10 +8695,6 @@ msgid "No timeline events yet."
 msgstr "Nog geen tydslyn-gebeurtenisse."
 
 #: 
-msgid "No volunteer opportunity assignments yet."
-msgstr "Nog geen vrywilliger-geleentheid-toekennings."
-
-#: 
 msgid "Not ready yet?"
 msgstr "Nog nie gereed nie?"
 
@@ -9012,10 +8731,6 @@ msgstr "Oorsig"
 #: 
 msgid "Password Recovery"
 msgstr "Wagwoord-Herstel"
-
-#: 
-msgid "Past & next 7 days"
-msgstr "Verlede & volgende 7 dae"
 
 #: 
 msgid "People by Classification"
@@ -9482,10 +9197,6 @@ msgid "funds"
 msgstr "fondse"
 
 #: 
-msgid "opportunities"
-msgstr "geleenthede"
-
-#: 
 msgid "or connect an external service"
 msgstr "of verbind 'n eksterne diens"
 
@@ -9788,11 +9499,6 @@ msgstr "Kon nie telefoonnommers haal nie"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Soek dienswerkers vir 'n bepaalde geleentheid"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Vriende wat in vorige maande ingeteken het"
 
@@ -10051,10 +9757,6 @@ msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
 msgstr "Laat stelselopgraderings toe na vrystellings wat as 'voorvrystelling' op GitHub gemerk is"
 
 #: 
-msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
-msgstr "Laat ongestaafde toegang tot kalendergebeurtenisse toe via openbare HTML-, ICS- en JSON-URL's. Vereis vir die deel van kalenders met eksterne toepassings."
-
-#: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Laat besoekers toe om hul eie gesinsrekord te skep via die selfregistrasie-bladsy"
 
@@ -10217,24 +9919,12 @@ msgid "Enable Email"
 msgstr "Aktiveer E-pos"
 
 #: 
-msgid "Enable Events Menu"
-msgstr "Aktiveer Gebeurtenisse-kieslys"
-
-#: 
-msgid "Enable External Calendar API"
-msgstr "Aktiveer Eksterne Kalender-API"
-
-#: 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
 msgstr "Aktiveer e-posversending vanuit ChurchCRM. Vereis vir wagwoordterugstelling, kennisgewings en e-posskakels."
 
 #: 
 msgid "Enable if your SMTP server requires a username and password"
 msgstr "Aktiveer as jou SMTP-bediener 'n gebruikersnaam en wagwoord vereis"
-
-#: 
-msgid "Enable or disable the Sunday School module and sidebar menu."
-msgstr "Aktiveer of deaktiveer die Sondagskool-module en sybalk-kieslys."
 
 #: 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -10332,10 +10022,6 @@ msgstr "Versteek Breedtegraad/Lengtegraad"
 #: 
 msgid "How it works"
 msgstr "Hoe dit werk"
-
-#: 
-msgid "How many checks to print per deposit slip page"
-msgstr "Hoeveel tjekke per depositostrokiebladsy gedruk moet word"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -10495,10 +10181,6 @@ msgid "Privacy Note"
 msgstr "Privaatheidnota"
 
 #: 
-msgid "Quick Settings"
-msgstr "Vinnige Instellings"
-
-#: 
 msgid "SMTP Authentication"
 msgstr "SMTP-verifikasie"
 
@@ -10525,10 +10207,6 @@ msgstr "Opstelling"
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Wys 'n uiteensetting van banknootbenamings op die depositostrokieverslag"
-
-#: 
-msgid "Show or hide the Events menu in the main navigation."
-msgstr "Wys of versteek die Gebeurtenisse-kieslys in die hoofnavigasie."
 
 #: 
 msgid "Show or hide the Events section in the main navigation menu"
@@ -10914,10 +10592,6 @@ msgstr "Donker"
 msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr "Slegs databasis (.sql) of volledige argief (.tar.gz)"
 
-#: 
-msgid "Default number of rows shown in data tables. Takes effect on next page load."
-msgstr "Verstekgetal rye wat in datatabelle gewys word. Tree in werking by volgende bladsylading."
-
 #. Context: locales
 #: 
 msgid "Filipino - Philippines"
@@ -10946,10 +10620,6 @@ msgstr "As u deurmekaar karakters, HTML-entiteite wat as teks verskyn, of vertal
 #: 
 msgid "Indigo"
 msgstr "Indigo"
-
-#: 
-msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
-msgstr "Ongeldige JSON-waarde — instelling is nie gestoor nie. Korrigeer dit asseblief en probeer weer."
 
 #: 
 msgid "Language and regional settings"
@@ -12560,10 +12230,6 @@ msgid "Cannot delete property type: %d properties still reference it. Reassign o
 msgstr "Kan nie eiendomstipe uitvee nie: %d eiendomme verwys nog daarna. Herassigneer of vee eers daardie eiendomme uit."
 
 #: 
-msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
-msgstr "Kan nie vrywilligergeleentheid uitvee nie: %d persone is nog toegewys. Verwyder eers die toewysingings."
-
-#: 
 msgid "Class must be one of p, f, or g"
 msgstr "Klas moet een van p, f, of g wees"
 
@@ -12574,10 +12240,6 @@ msgstr "Kopieer foutboodskap"
 #: 
 msgid "Could not load note."
 msgstr "Kon nie nota laai nie."
-
-#: 
-msgid "Description cannot exceed 100 characters"
-msgstr "Beskrywing kan nie 100 karakters oorskry nie"
 
 #: 
 msgid "Donation fund not found"
@@ -12600,10 +12262,6 @@ msgid "Failed to create property type"
 msgstr "Kon nie eiendomstipe skep nie"
 
 #: 
-msgid "Failed to create volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid skep nie"
-
-#: 
 msgid "Failed to delete donation fund"
 msgstr "Kon nie skenkingsfonds uitvee nie"
 
@@ -12620,10 +12278,6 @@ msgid "Failed to delete property type"
 msgstr "Kon nie eiendomstipe uitvee nie"
 
 #: 
-msgid "Failed to delete volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid uitvee nie"
-
-#: 
 msgid "Failed to update donation fund"
 msgstr "Kon nie skenkingsfonds opdateer nie"
 
@@ -12636,10 +12290,6 @@ msgid "Failed to update property type"
 msgstr "Kon nie eiendomstipe opdateer nie"
 
 #: 
-msgid "Failed to update volunteer opportunity"
-msgstr "Kon nie vrywilligergeleentheid opdateer nie"
-
-#: 
 msgid "Fundraiser not found"
 msgstr "Fondsinsameling nie gevind nie"
 
@@ -12650,10 +12300,6 @@ msgstr "Installasie-ID"
 #: 
 msgid "Invalid class"
 msgstr "Ongeldige klas"
-
-#: 
-msgid "Name cannot exceed 30 characters"
-msgstr "Naam kan nie 30 karakters oorskry nie"
 
 #: 
 msgid "Note by %s deleted"
@@ -12676,16 +12322,8 @@ msgid "Read more"
 msgstr "Lees meer"
 
 #: 
-msgid "That name already exists."
-msgstr "Daardie naam bestaan reeds."
-
-#: 
 msgid "Title is required"
 msgstr "Titel is verpligtend"
-
-#: 
-msgid "Volunteer opportunity not found"
-msgstr "Vrywilligergeleentheid nie gevind nie"
 
 #: 
 msgid "You do not have permission to delete this note."
@@ -12758,10 +12396,6 @@ msgstr "Ganse Dag"
 #: 
 msgid "All Roles"
 msgstr "Alle Rolle"
-
-#: 
-msgid "All System Settings"
-msgstr "Alle Stelstelstellings"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -13014,10 +12648,6 @@ msgstr "Demo-data word gewoonlik slegs by nuwe installasies gelaai. Die invoer n
 #: 
 msgid "Deposit ID"
 msgstr "Deposito ID"
-
-#: 
-msgid "Deposit Value"
-msgstr "Insamelings-Waarde"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13436,22 +13066,6 @@ msgid "Move Members to Group"
 msgstr "Beweeg Geloofsgenote na Ministerie"
 
 #: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Moet 'n geldige URL wees wat begin met http:// of https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Moet 'n geldige URL wees wat begin met http:// of https:// (bv. http://localhost of https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Moet 'n geldige poortnommer wees (bv. 3306)"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat."
-
-#: 
 msgid "Need to remove this data later?"
 msgstr "Wil u hierdie data later verwyder?"
 
@@ -13474,14 +13088,6 @@ msgstr "Geen Insamelings"
 #: 
 msgid "No Events Today"
 msgstr "Geen Geleenthede Vandag"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Geen verjaardae in die verlede of volgende 7 dae"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Geen verjaardae in die verlede of volgende 7 dae"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
@@ -13610,10 +13216,6 @@ msgstr "Voer asseblief 'n geldige e-posadres in"
 #: 
 msgid "Please enter a valid email address (e.g., name@example.com)"
 msgstr "Voer asseblief 'n geldige e-posadres in (bv. name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Voer asseblief 'n geldige getal in"
 
 #: 
 msgid "Please enter a valid phone number"
@@ -15064,10 +14666,6 @@ msgid "Target family"
 msgstr "Teikengesin"
 
 #: 
-msgid "The group could not be found. Please try again."
-msgstr "Die groep kon nie gevind word nie. Probeer asseblief weer."
-
-#: 
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr "Die geselekteerde gesin bestaan nie meer nie. Herlaai asseblief die bladsy en probeer weer."
 
@@ -15268,10 +14866,6 @@ msgid "Space-separated list of origins allowed to embed the public external cale
 msgstr "Spasie-geskeide lys van oorspronge wat toegelaat word om die openbare eksterne kalenderblad in 'n iframe in te sluit."
 
 #: 
-msgid "Space-separated origins allowed to embed the public calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any site. Restrict for tighter security, e.g. \"https://mysite.org\"."
-msgstr "Spasie-geskeide oorspronge wat toegelaat word om die openbare kalenderblad in 'n iframe in te sluit."
-
-#: 
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr "Sondagskool-groep kan nie gewysig word nie, slegs in hierdie twee gevalle"
 
@@ -15282,10 +14876,6 @@ msgstr "Ondersteunde formate"
 #: 
 msgid "System Configuration"
 msgstr "Stelselkonfigurasie"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
-msgstr "Daar is mense aan hierdie Vrywilligersgeleentheid toegewys. Verwydering sal hulle onttoes"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -15516,10 +15106,6 @@ msgid "Add New Fund"
 msgstr "Voeg Nuwe Fonds By"
 
 #: 
-msgid "Add New Opportunity"
-msgstr "Voeg Nuwe Geleentheid By"
-
-#: 
 msgid "Add New Person"
 msgstr "Voeg Nuwe Persoon By"
 
@@ -15532,10 +15118,6 @@ msgid "Add New Role"
 msgstr "Voeg Nuwe Rol By"
 
 #: 
-msgid "Add New Volunteer Opportunity"
-msgstr "Voeg Nuwe Vrywilligersgeleentheid By"
-
-#: 
 msgid "Add Sunday School Class"
 msgstr "Voeg Sondagskoolklas By"
 
@@ -15546,10 +15128,6 @@ msgstr "Verwyder hierdie gesin?"
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Hersien nuwe gesinne en individue wat op jou openbare registrasievorm aangemeld het"
-
-#: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vrywilligersgeleentheid-verwyderingsbevestiging"
 
 #: 
 msgid "# Payments"
@@ -15628,10 +15206,6 @@ msgid "ChurchCRM version"
 msgstr "ChurchCRM-weergawe"
 
 #: 
-msgid "Collection level"
-msgstr "Insamelvlak"
-
-#: 
 msgid "Count unique installs"
 msgstr "Tel unieke installasies"
 
@@ -15686,14 +15260,6 @@ msgstr "Kon nie belofte opdateer nie"
 #: 
 msgid "Financial data"
 msgstr "Finansiële data"
-
-#: 
-msgid "Full — all of the above plus page views"
-msgstr "Volledig — al bogenoemde plus bladsybesoeke"
-
-#: 
-msgid "Full — page views, warnings, errors, and JS exceptions"
-msgstr "Volledig — bladsybesoeke, waarskuwings, foute en JS-uitsonderings"
 
 #: 
 msgid "Fund Summary"
@@ -15772,10 +15338,6 @@ msgid "Non-deductible amount can't exceed fund amount"
 msgstr "Nie-aftrekbare bedrag kan nie fondsbedrag oorskry nie"
 
 #: 
-msgid "None (disabled)"
-msgstr "Geen (gedeaktiveer)"
-
-#: 
 msgid "Overpaid"
 msgstr "Oorbetaal"
 
@@ -15836,10 +15398,6 @@ msgid "Select a fund"
 msgstr "Kies ʼn fonds"
 
 #: 
-msgid "Send Test Birthday Email to Myself"
-msgstr "Stuur Toetsverjaardage-pos aan Myself"
-
-#: 
 msgid "Sending to"
 msgstr "Stuur aan"
 
@@ -15894,10 +15452,6 @@ msgstr "Ons wens u ʼn wonderlike verjaardag toe!"
 #: 
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr "U rekening het geen e-posadres op rekord nie. Voeg een by u profiel om ʼn toets te stuur."
-
-#: 
-msgid "errors+"
-msgstr "foute+"
 
 #: 
 msgid "full only"
@@ -16860,10 +16414,6 @@ msgid "Not a valid date of death"
 msgstr "Nie 'n geldige datum van afsterwe nie"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
-msgstr "Aantal dae wat gebruikers het om by 2FA in te skryf nadat dit verpligtend gemaak is. Stel op 0 om onmiddellik af te dwing. Die verkorting van 'n aktiewe genadetydperk kan gebruikers onmiddellik uitsluit."
-
-#: 
 msgid "Offline"
 msgstr "Aflyn"
 
@@ -17188,14 +16738,6 @@ msgid "Download CSV"
 msgstr "Laai CSV af"
 
 #: 
-msgid "Enable or disable the Finance module and sidebar menu."
-msgstr "Skakel die Finansiemodule en sybalkmenû in of uit."
-
-#: 
-msgid "Enable or disable the Fundraiser module."
-msgstr "Skakel die Fondsinsamelingsmodule in of uit."
-
-#: 
 msgid "Failed to remove church logo"
 msgstr "Kon nie kerklogo verwyder nie"
 
@@ -17214,14 +16756,6 @@ msgstr "Finansiemodule"
 #: 
 msgid "Find people who did not attend an event"
 msgstr "Soek mense wat nie 'n gebeurtenis bygewoon het nie"
-
-#: 
-msgid "Find volunteers who match two specific opportunity codes"
-msgstr "Soek vrywilligers wat twee spesifieke geleentheidskodes ooreenstem"
-
-#: 
-msgid "First Volunteer Opportunity"
-msgstr "Eerste vrywilligersgeleentheid"
 
 #: 
 msgid "Folded Booklet"
@@ -17300,10 +16834,6 @@ msgid "Run Report"
 msgstr "Voer verslag uit"
 
 #: 
-msgid "Second Volunteer Opportunity"
-msgstr "Tweede vrywilligersgeleentheid"
-
-#: 
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr "Vertoon in die sybalk, op die aanmeldingsbladsy en in e-posse. Oplaai van 'n logo vervang die ChurchCRM-branding oral waar dit verskyn."
 
@@ -17332,14 +16862,6 @@ msgid "View Full Family Giving"
 msgstr "Bekyk volle gesinsgawing"
 
 #: 
-msgid "Volunteer Opportunity"
-msgstr "Vrywilligersgeleentheid"
-
-#: 
-msgid "Volunteers for Two Opportunities"
-msgstr "Vrywilligers vir twee geleenthede"
-
-#: 
 msgid "YTD"
 msgstr "JTD"
 
@@ -17358,10 +16880,6 @@ msgstr "stelsellogboeke"
 #: 
 msgid "Access Control & Security"
 msgstr "Toegangsbeheer en sekuriteit"
-
-#: 
-msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
-msgstr "Laat opneem van nie-aftrekbare betalings toe (bv. goedereverkope)"
 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
@@ -17416,46 +16934,6 @@ msgid "Feature Toggles"
 msgstr "Funksieskakelaars"
 
 #: 
-msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
-msgstr "Funksieskakelaars beheer watter modules en funksies beskikbaar is in ChurchCRM. Veranderings neem onmiddellik effek."
-
-#: 
-msgid "Finance Features"
-msgstr "Finansiële funksies"
-
-#: 
-msgid "Include addresses in quick global search"
-msgstr "Sluit adresse in snelle globale soektog in"
-
-#: 
-msgid "Include calendar events in quick global search"
-msgstr "Sluit kalendergebeure in snelle globale soektog in"
-
-#: 
-msgid "Include custom family properties in quick global search"
-msgstr "Sluit pasgemaakte familie-eienskappe in snelle globale soektog in"
-
-#: 
-msgid "Include deposits in quick global search"
-msgstr "Sluit deposito's in snelle globale soektog in"
-
-#: 
-msgid "Include families in quick global search"
-msgstr "Sluit families in snelle globale soektog in"
-
-#: 
-msgid "Include groups in quick global search"
-msgstr "Sluit bediening in snelle globale soektog in"
-
-#: 
-msgid "Include payments in quick global search"
-msgstr "Sluit betalings in snelle globale soektog in"
-
-#: 
-msgid "Include people in quick global search"
-msgstr "Sluit mense in snelle globale soektog in"
-
-#: 
 msgid "Invalid setting"
 msgstr "Ongeldig stelling"
 
@@ -17464,16 +16942,8 @@ msgid "Lost Password Link"
 msgstr "Wagwoord-herstelkoppeling"
 
 #: 
-msgid "Manage All Features"
-msgstr "Bestuur alle funksies"
-
-#: 
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr "Hoofskielaar vir e-posversending. VEREIST vir wagwoord herstelling en kennisgewings"
-
-#: 
-msgid "Non-Deductible Payments"
-msgstr "Nie-aftrekbare betalings"
 
 #: 
 msgid "Primary Modules"
@@ -17484,20 +16954,12 @@ msgid "Public Calendar API"
 msgstr "Openbare kalender-API"
 
 #: 
-msgid "Saved"
-msgstr "Gestoor"
-
-#: 
 msgid "Search Families"
 msgstr "Soek families"
 
 #: 
 msgid "Search Family Custom Properties"
 msgstr "Soek pasgemaakte familie-eienskappe"
-
-#: 
-msgid "Search Settings"
-msgstr "Soek stellings"
 
 #: 
 msgid "Self-Registration"
@@ -17716,14 +17178,6 @@ msgid "People to notify when a new family or person is added"
 msgstr "Persone om in kennis te stel wanneer 'n nuwe gesin of persoon bygevoeg word"
 
 #: 
-msgid "Person initials style"
-msgstr "Styl van die persoon se voorletters"
-
-#: 
-msgid "Person name display style"
-msgstr "Vertoonstyl van die persoon se naam"
-
-#: 
 msgid "Spouse Role"
 msgstr "Rol van eggenoot/eggenote"
 
@@ -17812,14 +17266,6 @@ msgid "Registrations awaiting review from your public registration form. Entries
 msgstr "Registrasies wat op hersiening wag vanaf jou openbare registrasievorm. Inskrywings sonder e-pos of foon is gemerk — verifieer kontakbesonderhede voordat jy opvolg."
 
 #: 
-msgid "Review now"
-msgstr "Hersien nou"
-
-#: 
-msgid "Review self registrations"
-msgstr "Hersien selfregistrasies"
-
-#: 
 msgid "Select month"
 msgstr "Kies maand"
 
@@ -17848,10 +17294,6 @@ msgid "This person is not a pending self-registration"
 msgstr "Hierdie persoon is nie 'n hangende selfregistrasie nie"
 
 #: 
-msgid "This self-registered family is pending review"
-msgstr "Hierdie selfgeregistreerde gesin wag op hersiening"
-
-#: 
 msgid "Total registrations"
 msgstr "Totale registrasies"
 
@@ -17866,10 +17308,6 @@ msgstr "Gister"
 #: 
 msgid "days ago"
 msgstr "dae gelede"
-
-#: 
-msgid "self-registrations are waiting for review"
-msgstr "selfregistrasies wag op hersiening"
 
 #: 
 msgid "Birthdays are addressed to the person and anniversaries to the couple."
@@ -18170,10 +17608,6 @@ msgstr "'n Rooster wat 'n geleentheidsoort volg, moet die geleentheidsoort noem"
 #: 
 msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
 msgstr "'n Rooster wat een geleentheid beman, kan nie ander geleenthede volg nie; vee dit uit en voeg eerder 'n rooster by"
-
-#: 
-msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
-msgstr "'n Enkele lys van geleenthede, soos \"Kleuterkamer\" of \"Verwelkomer\", gehou onder Mense → Admin. Elke persoon word gemerk met die geleenthede waarmee hulle bereid is om te help, op die Vrywilliger-oortjie van hul rekord. Dit is al wat dit aanteken: daar is geen spanne, geen roosters, geen toewysings aan 'n datum en geen herinnerings-e-posse nie. Verslae en die persoonrekord is waar die merkers gebruik word."
 
 #: 
 msgid "A square picture of your face works best."
@@ -18482,18 +17916,6 @@ msgstr "Agtergrondtake het gehardloop"
 #: 
 msgid "Birthday greeting"
 msgstr "Verjaarsdagwens"
-
-#: 
-msgid "Both"
-msgstr "Albei"
-
-#: 
-msgid "Both (transition)"
-msgstr "Albei (oorgang)"
-
-#: 
-msgid "Both — V1 and V2 side by side (transition)"
-msgstr "Albei — V1 en V2 langs mekaar (oorgang)"
 
 #: 
 msgid "Calendar address"
@@ -21580,22 +21002,6 @@ msgid "User must have Add Event permission, or coordinate the volunteer ministry
 msgstr "Gebruiker moet die toestemming Voeg geleentheid by hê, of die vrywilligerbediening koördineer waaraan hierdie kalender behoort"
 
 #: 
-msgid "V1 — Volunteer Opportunities (legacy)"
-msgstr "V1 — Vrywilligergeleenthede (ou)"
-
-#: 
-msgid "V1 — legacy Volunteer Opportunities"
-msgstr "V1 — ou Vrywilligergeleenthede"
-
-#: 
-msgid "V2 — Ministries"
-msgstr "V2 — Bedieninge"
-
-#: 
-msgid "V2 — Volunteer Management"
-msgstr "V2 — Vrywilligerbestuur"
-
-#: 
 msgid "Valid"
 msgstr "Geldig"
 
@@ -21614,14 +21020,6 @@ msgstr "Bekyk die geleentheid"
 #: 
 msgid "View this email"
 msgstr "Bekyk hierdie e-pos"
-
-#: 
-msgid "Volunteer (Legacy)"
-msgstr "Vrywilliger (ou)"
-
-#: 
-msgid "Volunteer Management V2 is not enabled"
-msgstr "Vrywilligerbestuur V2 is nie geaktiveer nie"
 
 #: 
 msgid "Volunteer Ministry"
@@ -21728,10 +21126,6 @@ msgid "What the check found"
 msgstr "Wat die kontrole gevind het"
 
 #: 
-msgid "What the volunteer experiences are"
-msgstr "Wat die vrywilligerervarings is"
-
-#: 
 msgid "What you want to say"
 msgstr "Wat jy wil sê"
 
@@ -21762,10 +21156,6 @@ msgstr "Waar die datums vandaan kom"
 #: 
 msgid "Where we reach you"
 msgstr "Waar ons jou bereik"
-
-#: 
-msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
-msgstr "Watter Vrywilligerbestuur-ervaring aktief is. V1 is die ou Vrywilligergeleenthede-kenmerk; V2 is die nuwe skeduleer- en toewysingswerkvloei. \"Albei\" wys elkeen langs mekaar tydens migrasie."
 
 #: 
 msgid "Which events"
@@ -22174,10 +21564,6 @@ msgstr "Nie gemagtig om die teikengroep van hierdie gebeurtenis te verander"
 #: 
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr "Slegs 'n vrywilligerkoördineerder kan verander wie 'n bediening koördineer"
-
-#: 
-msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
-msgstr "As u V1 kies, word V2-vrywilligeree-pos onderbreek; enigiets in die ry word gestuur wanneer V2 weer aan is, tensy sy voorkoms verby is."
 
 #: 
 msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
@@ -22818,10 +22204,6 @@ msgid "This email batch was queued by another user"
 msgstr "Hierdie e-posbondel is deur ’n ander gebruiker in die waglys geplaas"
 
 #: 
-msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
-msgstr "Ná die invoer kan u Stel die databasis terug op die admin-dashboard gebruik om alle data te wis en oor te begin. U toepassingsopstelling bly behoue."
-
-#: 
 msgid "Importing demo data..."
 msgstr "Demodata word ingevoer..."
 
@@ -23022,10 +22404,6 @@ msgid "Unfilled-position alert lead time (hours)"
 msgstr "Voorlooptyd vir waarskuwing oor ongevulde posisies (ure)"
 
 #: 
-msgid "Volunteer Management"
-msgstr "Vrywilligerbestuur"
-
-#: 
 msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr "Vrywilligerbedieninge, spanne, skedules en toewysings"
 
@@ -23036,14 +22414,6 @@ msgstr "Vrywilligerposisies om in die komende dae te vul"
 #: 
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr "Vrywilligers word nog benodig vir hierdie komende voorkomste: %d"
-
-#: 
-msgid "What do these mean?"
-msgstr "Wat beteken hierdie?"
-
-#: 
-msgid "Which volunteer experience this church uses"
-msgstr "Watter vrywilligerervaring hierdie kerk gebruik"
 
 #: 
 msgid "You are on the schedule"
@@ -23814,30 +23184,6 @@ msgid "Download PDF"
 msgstr "Laai PDF af"
 
 #: 
-msgid "Lockout period in minutes\n"
-"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
-msgstr "Sluittydperk in minute\n"
-"'n Geslote rekening ontsluit vanself ná soveel minute. Mislukte aanmeldings van een IP-adres word oor dieselfde tydperk getel."
-
-#: 
-msgid "Maximum number of failed logins from one IP address\n"
-"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
-"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
-msgstr "Maksimum aantal mislukte aanmeldings van een IP-adres\n"
-"Mislukte aanmeldings en wagwoordherstelversoeke van een IP-adres tel teen hierdie perk binne die sluittydperk. Sodra dit bereik word, word aanmelding van daardie adres geweier totdat die tydperk eindig.\n"
-"Stel op nul om hierdie funksie te deaktiveer, byvoorbeeld wanneer almal ChurchCRM deur een instaanadres bereik."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimum aantal mislukte aanmeldings wat toegelaat word voordat 'n gebruikersrekening gesluit word.\n"
-"'n Geslote rekening ontsluit vanself ná die sluittydperk, of vroeër wanneer 'n administrateur sy mislukte aanmeldings terugstel.\n"
-"Hierdie funksie help om teen outomatiese wagwoordraai-aanvalle te beskerm.\n"
-"Stel op nul om hierdie funksie te deaktiveer."
-
-#: 
 msgid "Minutes until it unlocks by itself: %d"
 msgstr "Minute totdat dit vanself ontsluit: %d"
 
@@ -24166,10 +23512,6 @@ msgid "PDF Output"
 msgstr "PDF-uitvoer"
 
 #: 
-msgid "PDF handling mode"
-msgstr "PDF-hanteringsmodus"
-
-#: 
 msgid "Questions Line"
 msgstr "Vraereël"
 
@@ -24206,10 +23548,6 @@ msgid "Greeting"
 msgstr "Groet"
 
 #: 
-msgid "Letter greeting and signature"
-msgstr "Briefgroet en handtekening"
-
-#: 
 msgid "Letterhead"
 msgstr "Briefhoof"
 
@@ -24232,10 +23570,6 @@ msgstr "Stel die briefhoof wat PDF-briewe druk"
 #: 
 msgid "Using the church name and address"
 msgstr "Gebruik die kerknaam en adres"
-
-#: 
-msgid "Using the letterhead path set in System Settings"
-msgstr "Gebruik die briefhoofpad wat in Stelselinstellings gestel is"
 
 #: 
 msgid "%1$s as %2$s"
@@ -24508,10 +23842,6 @@ msgstr "Kerkland"
 #: 
 msgid "Church default: %s"
 msgstr "Kerkverstek: %s"
-
-#: 
-msgid "Church leader sign-in"
-msgstr "Kerkeleier-aanmelding"
 
 #: 
 msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
@@ -25156,10 +24486,6 @@ msgstr "Nie geëindig nie"
 #: 
 msgid "Not moved"
 msgstr "Nie geskuif nie"
-
-#: 
-msgid "Not sure which email we have? Contact the church office."
-msgstr "Nie seker watter e-pos ons het nie? Kontak die kerkkantoor."
 
 #: 
 msgid "Not yet"
@@ -26414,248 +25740,8 @@ msgid "Review Family Information"
 msgstr "Hersien gesinsinligting"
 
 #: 
-msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
-msgstr "'n Bediening met die naam \"%s\" bestaan reeds. Kies dit uit die lys, of kies 'n ander naam."
-
-#: 
-msgid "A new ministry"
-msgstr "'n Nuwe bediening"
-
-#: 
-msgid "A position"
-msgstr "'n Posisie"
-
-#: 
-msgid "Add {{total}} volunteers to positions converted before?"
-msgstr "Voeg {{total}} vrywilligers by posisies wat voorheen omgeskakel is?"
-
-#: 
-msgid "Already converted"
-msgstr "Reeds omgeskakel"
-
-#: 
-msgid "An existing ministry"
-msgstr "'n Bestaande bediening"
-
-#: 
-msgid "Becomes"
-msgstr "Word"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
-msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op 'n slag gebruik te word; die instelling \"Vrywilligerervaring\" bepaal watter een hierdie kerk sien. Om te wissel, versteek of wys bladsye en kieslysitems en skrap nooit data nie. V1 en Albei word net aangebied terwyl Vrywillige geleenthede gebruik word: sodra elke geleentheid omgeskakel is en die kerk op V2 is, verdwyn hulle uit hierdie lys."
-
-#: 
-msgid "Convert"
-msgstr "Skakel om"
-
-#: 
-msgid "Convert Volunteer Opportunities"
-msgstr "Skakel Vrywillige geleenthede om"
-
-#: 
-msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
-msgstr "Skakel nou {{total}} geleenthede om? Die V1-data bly soos dit is totdat Vrywillige geleenthede uitgefaseer word."
-
-#: 
-msgid "Converted"
-msgstr "Omgeskakel"
-
-#: 
-msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
-msgstr "Omgeskakel: {{positions}} posisies en {{ministries}} bedieninge, {{qualifications}} vrywilligers gekwalifiseer."
-
-#: 
-msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
-msgstr "Elke geleentheid word 'n posisie in die eerste span van een bediening, en almal wat daaraan gekoppel is, word vir daardie posisie gekwalifiseer. Selfinskrywing is aanvanklik af vir hierdie posisies."
-
-#: 
-msgid "Everything is converted."
-msgstr "Alles is omgeskakel."
-
-#: 
-msgid "Existing ministry"
-msgstr "Bestaande bediening"
-
-#: 
-msgid "Give the new ministry a name of up to 100 characters."
-msgstr "Gee die nuwe bediening 'n naam van hoogstens 100 karakters."
-
-#: 
-msgid "Its own ministry"
-msgstr "Sy eie bediening"
-
-#: 
-msgid "Linked since: {{names}}"
-msgstr "Sedertdien gekoppel: {{names}}"
-
-#: 
-msgid "Links that cannot convert"
-msgstr "Skakels wat nie omgeskakel kan word nie"
-
-#: 
-msgid "New ministries of their own"
-msgstr "Nuwe bedieninge van hul eie"
-
-#: 
-msgid "New ministry name"
-msgstr "Naam van nuwe bediening"
-
-#: 
-msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
-msgstr "Geen e-pos word gestuur nie, en Vrywillige geleenthede bly soos dit is totdat dit uitgefaseer word."
-
-#: 
-msgid "No name"
-msgstr "Geen naam"
-
-#: 
-msgid "Not converted"
-msgstr "Nie omgeskakel nie"
-
-#: 
-msgid "Open Feature Toggles"
-msgstr "Open Funksieskakelaars"
-
-#: 
-msgid "Open Ministries"
-msgstr "Open Bedieninge"
-
-#: 
-msgid "Opportunities"
-msgstr "Geleenthede"
-
-#: 
-msgid "Opportunity"
-msgstr "Geleentheid"
-
-#: 
 msgid "Opportunity #%d"
 msgstr "Geleentheid #%d"
-
-#: 
-msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
-msgstr "Mense wat sedert die omskakeling aan omgeskakelde Vrywillige geleenthede gekoppel is: %d. Voeg hulle by hul posisies voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
-
-#: 
-msgid "Preview the conversion first, and send the revision it returned."
-msgstr "Kyk eers na die voorskou van die omskakeling, en stuur die hersiening wat dit teruggegee het."
-
-#: 
-msgid "Renamed to keep names unique"
-msgstr "Hernoem om name uniek te hou"
-
-#: 
-msgid "Review the conversion"
-msgstr "Hersien die omskakeling"
-
-#: 
-msgid "Send the conversion choice as a JSON object."
-msgstr "Stuur die omskakelingskeuse as 'n JSON-objek."
-
-#: 
-msgid "Send the opportunities that become ministries as a list of ids."
-msgstr "Stuur die geleenthede wat bedieninge word as 'n lys ID's."
-
-#: 
-msgid "That ministry does not exist."
-msgstr "Daardie bediening bestaan nie."
-
-#: 
-msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
-msgstr "Die ChurchCRM-weergawe waarop 'n beheerder die kennisgewing oor die uitfasering van Vrywillige geleenthede weggewys het."
-
-#: 
-msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
-msgstr "Die Vrywillige geleenthede het sedert die voorskou verander. Gaan die voorskou weer na en skakel dan om."
-
-#: 
-msgid "The confirmation could not open. Reload the page and try again."
-msgstr "Die bevestiging kon nie oopmaak nie. Herlaai die bladsy en probeer weer."
-
-#: 
-msgid "The conversion could not be previewed."
-msgstr "Die omskakeling kon nie voorskou word nie."
-
-#: 
-msgid "The conversion failed. Nothing was changed."
-msgstr "Die omskakeling het misluk. Niks is verander nie."
-
-#: 
-msgid "The ministry \"%s\" has no team to hold the positions."
-msgstr "Die bediening \"%s\" het geen span om die posisies te hou nie."
-
-#: 
-msgid "The server could not be reached. Reload the page to see whether the conversion ran."
-msgstr "Die bediener kon nie bereik word nie. Herlaai die bladsy om te sien of die omskakeling uitgevoer is."
-
-#: 
-msgid "There are no Volunteer Opportunities to convert."
-msgstr "Daar is geen Vrywillige geleenthede om om te skakel nie."
-
-#: 
-msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
-msgstr "Vrywilligerbestuur skakel oor na Albei, sodat die nuwe bedieninge langs Vrywillige geleenthede sigbaar is."
-
-#: 
-msgid "Volunteer Opportunities are being retired"
-msgstr "Vrywillige geleenthede word uitgefaseer"
-
-#: 
-msgid "Volunteer Opportunities converted"
-msgstr "Vrywillige geleenthede omgeskakel"
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
-msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel hulle om na Bedieninge om te behou wie waarvoor vrywillig dien."
-
-#: 
-msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
-msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel nou jou %1$d geleenthede en %2$d vrywilligers om na Bedieninge. Jy kan die resultaat voorskou voordat enigiets verander."
-
-#: 
-msgid "Volunteers qualified"
-msgstr "Vrywilligers gekwalifiseer"
-
-#: 
-msgid "Volunteers to add to converted positions"
-msgstr "Vrywilligers om by omgeskakelde posisies te voeg"
-
-#: 
-msgid "What it becomes"
-msgstr "Wat dit word"
-
-#: 
-msgid "What will happen"
-msgstr "Wat gaan gebeur"
-
-#: 
-msgid "Where they go"
-msgstr "Waarheen hulle gaan"
-
-#: 
-msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
-msgstr "Watter ou Vrywillige geleenthede omgeskakel is, en die posisie wat elkeen geword het."
-
-#: 
-msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
-msgstr "Watter vrywilligerervaring hierdie kerk gebruik. Vrywillige geleenthede (V1) word vroeg in 2027 uitgefaseer."
-
-#: 
-msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
-msgstr "Jou Vrywillige geleenthede is na Bedieninge omgeskakel. Skakel Vrywilligerbestuur oor na V2 voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
-
-#: 
-msgid "into a new ministry, {{name}}"
-msgstr "na 'n nuwe bediening, {{name}}"
-
-#: 
-msgid "into the ministry {{name}}"
-msgstr "na die bediening {{name}}"
-
-#: 
-msgid "no longer in ChurchCRM"
-msgstr "nie meer in ChurchCRM nie"
 
 #: 
 msgid "Collapse sidebar"
@@ -26693,14 +25779,6 @@ msgstr "Betalings per fonds"
 msgid "Unknown Fund"
 msgstr "Onbekende fonds"
 
-#: 
-msgid "Ask your host to move the database to a supported version, then try again."
-msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif, en probeer dan weer."
-
-#: 
-msgid "Ask your host to move the database to a supported version."
-msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif."
-
 #. plugin:holidays:section:3:content
 #: 
 msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
@@ -26718,18 +25796,6 @@ msgstr "Vereis 'n tjeknommer wanneer tjekbetalings op depositoinskrywings aanget
 #: 
 msgid "Require check number on check payments"
 msgstr "Vereis tjeknommer by tjekbetalings"
-
-#: 
-msgid "The upgrade was not started, so nothing changed."
-msgstr "Die opgradering is nie begin nie, dus het niks verander nie."
-
-#: 
-msgid "This upgrade cannot run on your database."
-msgstr "Hierdie opgradering kan nie op jou databasis loop nie."
-
-#: 
-msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
-msgstr "Jou databasisbediener (%1$s %2$s) is ouer as wat ChurchCRM ondersteun (MySQL %3$s of MariaDB %4$s en later)."
 
 #: 
 msgid "Approve this self-registered family before sending it a verification email"
@@ -26832,10 +25898,6 @@ msgstr[0] "%d verstek oorgeslaan om 'n ander rede (die geval is verby, gekansell
 msgstr[1] "%d verstekke oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "'n Oorgangsinstelling. Die ou Vrywilligergeleenthede-bladsye en die nuwe Bedieninge-bladsye is albei beskikbaar, en 'n persoonrekord toon albei Vrywilliger-oortjies, duidelik benoem. Gebruik dit terwyl jy 'n kerk van V1 na V2 skuif, en skakel dan oor na net V2."
-
-#: 
 msgid "Assignment canceled"
 msgstr "Toewysing gekanselleer"
 
@@ -26884,32 +25946,12 @@ msgid "This occurrence has been canceled"
 msgstr "Hierdie geval is gekanselleer"
 
 #: 
-msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vrywilligerswerk soos 'n kerk dit bedryf. Elke bediening het spanne en posisies; mense word vir posisies gekwalifiseer en behoort aan die bediening se poelgroep; roosters volg die geleenthede op die kalender en lewer gedateerde gevalle met bemanningsvereistes; koördineerders wys mense toe, wat aanvaar, van die hand wys of 'n plaasvervanger voorstel; herinneringe en waarskuwings gaan per e-pos uit. Administrateurs en gebruikers met die toestemming Bestuur bedieninge sien elke bediening en mag hulle skep, deaktiveer en uitvee. 'n Bedieningkoördineerder kry eerder die toestemming Bestuur my bedieninge: die opskrif Bedieninge in die kantkolom wys dan net die bedieninge wat hulle koördineer. 'n Spanleier bestuur sy span vanuit die Lidmaatportaal. Lidmate gebruik die Lidmaatportaal om hul rooster te sien, te antwoord, in te skryf en hulp aan te bied."
-
-#: 
 msgid "Count active installations and upgrade outcomes"
 msgstr "Tel aktiewe installasies en opgraderingsuitslae"
 
 #: 
 msgid "Database engine and major/minor version"
 msgstr "Databasisenjin en hoof-/subweergawe"
-
-#: 
-msgid "Errors — install statistics, warnings, errors, and JS exceptions"
-msgstr "Foute — installasiestatistiek, waarskuwings, foute en JS-uitsonderings"
-
-#: 
-msgid "Help us find and fix problems?"
-msgstr "Help ons om probleme te vind en reg te stel?"
-
-#: 
-msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
-msgstr "Installasie deel minimale installasie- en opgraderingstatistiek. Foute voeg waarskuwings en foutverslae by. Volledig voeg bladsybesoeke by. Geen stuur slegs mislukte installasies en opgraderings."
-
-#: 
-msgid "Install — installation and upgrade statistics (default)"
-msgstr "Installasie — installasie- en opgraderingstatistiek (verstek)"
 
 #: 
 msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
@@ -26920,68 +25962,12 @@ msgid "Installation profile"
 msgstr "Installasieprofiel"
 
 #: 
-msgid "Locale (Errors and Full)"
-msgstr "Lokaal (Foute en Volledig)"
-
-#: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Word nooit gedeel nie: lidmaat-, bydrae- of ander kerkrekords, jou kerk se naam, jou webadres of bedienernaam, of e-posadresse. Jou land is dié in jou kerkinstellings en word nie uit jou netwerk afgelei nie."
-
-#: 
-msgid "OS family (Errors and Full)"
-msgstr "Bedryfstelselfamilie (Foute en Volledig)"
-
-#: 
-msgid "PHP version (Errors and Full)"
-msgstr "PHP-weergawe (Foute en Volledig)"
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Sien presies wat gedeel word, of verander jou keuse, by Admin → Telemetrie."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Onderskei produksie-, demo- en toetsinstallasies"
 
 #: 
-msgid "Share anonymous install statistics?"
-msgstr "Deel anonieme installasiestatistiek?"
-
-#: 
-msgid "Share error and usage reports"
-msgstr "Deel fout- en gebruiksverslae"
-
-#: 
-msgid "Share install statistics"
-msgstr "Deel installasiestatistiek"
-
-#: 
-msgid "Shared in addition: warnings, error details, and which pages are opened."
-msgstr "Word bykomend gedeel: waarskuwings, foutbesonderhede en watter bladsye oopgemaak word."
-
-#: 
-msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
-msgstr "Gedeel: dat ChurchCRM geïnstalleer of opgegradeer is en of dit gewerk het, 'n aanmelding een keer per dag terwyl dit gebruik word, die weergawenommer, jou land en die tipe databasis. 'n Ewekansige installasie-ID tel elke installasie een keer."
-
-#: 
 msgid "Understand database compatibility"
 msgstr "Verstaan databasisversoenbaarheid"
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
-msgstr "Jou keuse word een keer gevra. Jy kan dit enige tyd verander. Met Nee dankie word slegs 'n mislukte installasie of opgradering gerapporteer."
-
-#: 
-msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
-msgstr "Jou data is joune. Installasie deel slegs installasie- en opgraderingsuitslae, installasie-ID, sagteware-weergawe, installasieprofiel, ingestelde land en databasisenjin met hoof-/subweergawe. Foute voeg waarskuwings en foutbesonderhede by. Volledig voeg bladsybesoeke by. Geen stuur slegs mislukte installasies en opgraderings. Geen vlak stuur jou webadres of bedienernaam nie. Toetsinstallasies stuur niks nie. Telemetrie word na PostHog in die Verenigde State gestuur."
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Jou data is joune. Dit rapporteer oor die sagteware, nooit oor jou kerk of sy mense nie."
-
-#: 
-msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
-msgstr "Jou data is joune. Om installasies te tel, rapporteer ChurchCRM dat dit geïnstalleer of opgegradeer is en of dit gewerk het, 'n aanmelding een keer per dag terwyl dit gebruik word, asook die weergawenommer, jou land, die tipe databasis en 'n ewekansige installasie-ID. Dit rapporteer nooit lidmaat-, bydrae- of ander kerkrekords, jou kerk se naam, jou webadres of bedienernaam, of e-posadresse nie. Jy kan dit enige tyd by Admin → Telemetrie afskakel; 'n mislukte installasie of opgradering word steeds gerapporteer. Waarskuwings, foutbesonderhede en bladsybesoeke word slegs gedeel as jy dit kies."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -27116,10 +26102,6 @@ msgstr "Vee mense en gesinne uit"
 #: 
 msgid "Delete the login for"
 msgstr "Vee die aanmelding uit vir"
-
-#: 
-msgid "Deposit chart time range"
-msgstr "Tydreeks vir depositografiek"
 
 #: 
 msgid "Disabled at"
@@ -27562,10 +26544,6 @@ msgid "View people and families"
 msgstr "Bekyk mense en gesinne"
 
 #: 
-msgid "Volunteer Management is turned off for this church"
-msgstr "Vrywilligersbestuur is afgeskakel vir hierdie kerk"
-
-#: 
 msgid "Weak"
 msgstr "Swak"
 
@@ -27662,10 +26640,6 @@ msgid "Latest Notes"
 msgstr "Jongste notas"
 
 #: 
-msgid "No notes have been added yet."
-msgstr "Nog geen notas is bygevoeg nie."
-
-#: 
 msgid "Start enrollment to get a QR code."
 msgstr "Begin inskrywing om 'n QR-kode te kry."
 
@@ -27676,4 +26650,1624 @@ msgstr "Daardie wagwoord of kode is nie reg nie. Twee-faktor-verifikasie is stee
 #: 
 msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr "Twee-faktor-verifikasie is reeds opgestel. Die geheim daarvan word slegs tydens inskrywing gewys."
+
+#: 
+msgid "%1$d gift totaling %2$s"
+msgid_plural "%1$d gifts totaling %2$s"
+msgstr[0] "%1$d gawe, totaal %2$s"
+msgstr[1] "%1$d gawes, totaal %2$s"
+
+#: 
+msgid "%d families currently have properties of this type."
+msgstr "%d gesinne het tans eiendomme van hierdie tipe."
+
+#: 
+msgid "%d family cannot get a receipt yet and is left out. Fix the problem listed under it, then choose Check Again."
+msgid_plural "%d families cannot get a receipt yet and are left out. Fix the problems listed under them, then choose Check Again."
+msgstr[0] "%d gesin kan nog nie 'n kwitansie kry nie en word uitgelaat. Los die probleem wat daaronder gelys word op en kies dan Kontroleer weer."
+msgstr[1] "%d gesinne kan nog nie 'n kwitansie kry nie en word uitgelaat. Los die probleme wat daaronder gelys word op en kies dan Kontroleer weer."
+
+#: 
+msgid "%d groups currently have properties of this type."
+msgstr "%d groepe het tans eiendomme van hierdie tipe."
+
+#: 
+msgid "%d people currently have properties of this type."
+msgstr "%d mense het tans eiendomme van hierdie tipe."
+
+#: 
+msgid "%d releases available since your installed version."
+msgstr "%d vrystellings beskikbaar sedert jou geïnstalleerde weergawe."
+
+#: 
+msgid "%s: %s No receipt was generated."
+msgstr "%s: %s Geen kwitansie is gegenereer nie."
+
+#: 
+msgid "%s: enter the verified full donor name(s), confirm the donors, and confirm one donor set. Mixed-donor payment sets must be handled outside this feature."
+msgstr "%s: voer die geverifieerde volle skenkernaam (of -name) in, bevestig die skenkers en bevestig een skenkerstel. Betalingsstelle van gemengde skenkers moet buite hierdie funksie hanteer word."
+
+#: 
+msgid "%s: the gifts or mailing address changed since the review. Choose Check Again and confirm the donor again."
+msgstr "%s: die gawes of posadres het sedert die hersiening verander. Kies Kontroleer weer en bevestig die skenker opnuut."
+
+#: 
+msgctxt "one"
+msgid "({{count}} installments)"
+msgstr "({{count}} paaiement)"
+
+#: 
+msgctxt "other"
+msgid "({{count}} installments)"
+msgstr "({{count}} paaiemente)"
+
+#: 
+msgid "A credit card or bank draft payment is in a deposit that is not closed yet. Close the deposit once the payment has cleared."
+msgstr "'n Kredietkaart- of bankwisselbetaling is in 'n deposito wat nog nie gesluit is nie. Sluit die deposito sodra die betaling vereffen is."
+
+#: 
+msgid "A payment has a non-deductible amount. Canadian receipts here support gifts with no advantage only."
+msgstr "'n Betaling het 'n nie-aftrekbare bedrag. Kanadese kwitansies hier ondersteun slegs gawes sonder enige voordeel."
+
+#: 
+msgid "A payment has an invalid monetary amount."
+msgstr "'n Betaling het 'n ongeldige geldbedrag."
+
+#: 
+msgid "A payment has no date."
+msgstr "'n Betaling het geen datum nie."
+
+#: 
+msgid "A payment is dated after the issue date."
+msgstr "'n Betaling is gedateer ná die uitreikingsdatum."
+
+#: 
+msgid "A payment is marked as a problem."
+msgstr "'n Betaling is as 'n probleem gemerk."
+
+#: 
+msgid "A payment is zero or negative."
+msgstr "'n Betaling is nul of negatief."
+
+#: 
+msgid "A reviewed POST with a valid CSRF token is required."
+msgstr "'n Hersiene POST met 'n geldige CSRF-teken word vereis."
+
+#: 
+msgid "A selected family no longer exists."
+msgstr "'n Gekose gesin bestaan nie meer nie."
+
+#: 
+msgid "A signature image is not a secure digital signature."
+msgstr "'n Handtekeningbeeld is nie 'n veilige digitale handtekening nie."
+
+#: 
+msgid "A system update is available. Please ask your administrator to upgrade your installation."
+msgstr "'n Stelselopdatering is beskikbaar. Vra jou beheerder om jou installasie op te gradeer."
+
+#: 
+msgid "All included rows are monetary gifts with no advantage."
+msgstr "Alle ingeslote rye is geldgawes sonder enige voordeel."
+
+#: 
+msgid "All required Canadian receipt settings are filled in."
+msgstr "Alle vereiste Kanadese kwitansie-instellings is ingevul."
+
+#: 
+msgid "Also delete family members"
+msgstr "Skrap ook gesinslede"
+
+#: 
+msgid "Amount of advantages"
+msgstr "Bedrag van voordele"
+
+#: 
+msgid "Amount of gifts"
+msgstr "Bedrag van gawes"
+
+#: 
+msgid "Amount per installment"
+msgstr "Bedrag per paaiement"
+
+#: 
+msgid "Amounts entered are"
+msgstr "Bedrae wat ingevoer is, is"
+
+#: 
+msgid "An administrator uploads it under Report Settings."
+msgstr "'n Beheerder laai dit op onder Verslaginstellings."
+
+#: 
+msgid "Approved, but no invitation was sent"
+msgstr "Goedgekeur, maar geen uitnodiging is gestuur nie"
+
+#: 
+msgid "Ask your system administrator to upgrade ChurchCRM to the latest version."
+msgstr "Vra jou stelselbeheerder om ChurchCRM na die nuutste weergawe op te gradeer."
+
+#: 
+msgid "Authorized Signature"
+msgstr "Gemagtigde handtekening"
+
+#: 
+msgid "Canada Revenue Agency"
+msgstr "Canada Revenue Agency"
+
+#: 
+msgid "Canadian Official Receipt"
+msgstr "Kanadese amptelike kwitansie"
+
+#: 
+msgid "Canadian official receipts require Canada as the church country on Church Info."
+msgstr "Kanadese amptelike kwitansies vereis Canada as die kerkland op Kerk Info."
+
+#: 
+msgid "Canadian receipts require the entire calendar year and all funds, without other filters."
+msgstr "Kanadese kwitansies vereis die hele kalenderjaar en alle fondse, sonder ander filters."
+
+#: 
+msgid "Change Selection"
+msgstr "Verander keuse"
+
+#: 
+msgid "Charity Legal Name"
+msgstr "Liefdadigheidsorganisasie se regnaam"
+
+#: 
+msgid "Charity Registered Address"
+msgstr "Liefdadigheidsorganisasie se geregistreerde adres"
+
+#: 
+msgid "Charity Registration Number"
+msgstr "Liefdadigheidsorganisasie se registrasienommer"
+
+#: 
+msgid "Charity details for receipts are not filled in yet. Add the legal name, registered address, registration number, and issue locality when you can. Finance keeps working until then."
+msgstr "Liefdadigheidsbesonderhede vir kwitansies is nog nie ingevul nie. Voeg die regnaam, geregistreerde adres, registrasienommer en uitreikingsplek by wanneer jy kan. Finansies hou aan werk tot dan."
+
+#: 
+msgid "Charity on receipts"
+msgstr "Liefdadigheid op kwitansies"
+
+#: 
+msgid "Check Again"
+msgstr "Kontroleer weer"
+
+#: 
+msgid "Check the year"
+msgstr "Kontroleer die jaar"
+
+#: 
+msgid "Check the year, set up the statement, then download."
+msgstr "Kontroleer die jaar, stel die staat op en laai dan af."
+
+#: 
+msgid "Choose Weekly, Monthly or Quarterly for an installment amount."
+msgstr "Kies Weekliks, Maandeliks of Kwartaalliks vir 'n paaiementbedrag."
+
+#: 
+msgid "Choose a valid donation calendar year."
+msgstr "Kies 'n geldige donasiekalenderjaar."
+
+#: 
+msgid "Choose original or duplicate."
+msgstr "Kies oorspronklike of duplikaat."
+
+#: 
+msgid "Choose total commitment or installment amount."
+msgstr "Kies totale verbintenis of paaiementbedrag."
+
+#: 
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
+msgstr "ChurchCRM-vertalings word in die ChurchCRM GitHub-bewaarplek bestuur. Jy kan help deur"
+
+#: 
+msgid "Commitment amount"
+msgstr "Verbintenisbedrag"
+
+#: 
+msgid "Compare the duplicate with the retained original and confirm all receipt information is unchanged."
+msgstr "Vergelyk die duplikaat met die behoue oorspronklike en bevestig dat alle kwitansie-inligting onveranderd is."
+
+#: 
+msgid "Complete every receipt acknowledgment before downloading."
+msgstr "Voltooi elke kwitansie-erkenning voor jy aflaai."
+
+#: 
+msgid "Complete the charity legal name, registered address, registration number, issue locality, and printed signer."
+msgstr "Voltooi die liefdadigheidsorganisasie se regnaam, geregistreerde adres, registrasienommer, uitreikingsplek en gedrukte ondertekenaar."
+
+#: 
+msgid "Confirmation Letter Printed Signer"
+msgstr "Bevestigingsbrief se gedrukte ondertekenaar"
+
+#: 
+msgid "Copy Kind"
+msgstr "Kopiesoort"
+
+#: 
+msgid "Currency"
+msgstr "Geldeenheid"
+
+#: 
+msgid "Currency symbol $ or CAD"
+msgstr "Geldeenheidsimbool $ of CAD"
+
+#: 
+msgid "Date received"
+msgstr "Datum ontvang"
+
+#: 
+msgid "Deleting it will also remove %d properties and all their assignments so nothing is left hanging."
+msgstr "As jy dit skrap, sal %d eiendomme en al hul toewysings ook verwyder word, sodat niks agterbly nie."
+
+#: 
+msgid "Do all selected-year gifts belong to the donor(s) named together above?"
+msgstr "Behoort alle gawes van die gekose jaar aan die skenker(s) wat hierbo saam genoem word?"
+
+#: 
+msgid "Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original."
+msgstr "Moenie 'n nommer vir 'n ander kwitansie hergebruik nie, moenie dieselfde gawes twee keer kwitansieer nie, en moenie veranderde inligting as 'n onveranderde oorspronklike hergenereer nie."
+
+#: 
+msgid "Duplicate"
+msgstr "Duplikaat"
+
+#: 
+msgid "Duplicate copy / Copie duplicata"
+msgstr "Duplikaatkopie / Copie duplicata"
+
+#: 
+msgid "Eligible amount of gifts for income tax purposes"
+msgstr "Kwalifiserende bedrag van gawes vir inkomstebelastingdoeleindes"
+
+#: 
+msgid "Enter the schedule and installment dates to preview the commitment."
+msgstr "Voer die skedule en paaiementdatums in om die verbintenis vooraf te bekyk."
+
+#: 
+msgid "Enter valid first and last installment dates in order."
+msgstr "Voer geldige eerste en laaste paaiementdatums in volgorde in."
+
+#: 
+msgid "Enter valid installment amounts with at most two decimal places."
+msgstr "Voer geldige paaiementbedrae met hoogstens twee desimale plekke in."
+
+#: 
+msgid "Existing pledges keep their recorded totals. Choose amount per installment only when entering each scheduled gift."
+msgstr "Bestaande bydraes behou hul aangetekende totale. Kies slegs bedrag per paaiement wanneer jy elke geskeduleerde gawe invoer."
+
+#: 
+msgid "Filled in from the heads of household and spouses. Edit it to match the donors exactly."
+msgstr "Ingevul vanaf die huishoudingshoofde en gades. Wysig dit om presies by die skenkers te pas."
+
+#: 
+msgid "First installment"
+msgstr "Eerste paaiement"
+
+#: 
+msgid "Full commitment"
+msgstr "Volle verbintenis"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Genereer belastingstate"
+
+#: 
+msgid "Gift Calendar Year"
+msgstr "Gawes se kalenderjaar"
+
+#: 
+msgid "Giving statement — not an official donation receipt"
+msgstr "Bydraestaat — nie 'n amptelike donasiekwitansie nie"
+
+#: 
+msgid "Help Translate on GitHub"
+msgstr "Help vertaal op GitHub"
+
+#: 
+msgid "Historical envelope changes are unsupported."
+msgstr "Historiese koevertveranderinge word nie ondersteun nie."
+
+#: 
+msgid "I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement."
+msgstr "Ek het dit met die behoue oorspronklike vergelyk: skenker, bedrag, reeksnommer en teks is onveranderd. Dit is nie 'n regstelling of vervanging nie."
+
+#: 
+msgid "I will retain the issued PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Ek sal die uitgereikte PDF en 'n eksterne kwitansielogboek by die liefdadigheidsorganisasie se Kanadese rekordligging bewaar."
+
+#: 
+msgid "If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures."
+msgstr "As 'n behoue oorspronklike nie beskikbaar is nie of verskil, gebruik jou eksterne CRA-kansellasie-/vervangingsprosedures."
+
+#: 
+msgid "Include payment memos: I reviewed them as suitable for the donor."
+msgstr "Sluit betalingsmemo's in: ek het hulle as geskik vir die skenker hersien."
+
+#: 
+msgid "Include this family in the download"
+msgstr "Sluit hierdie gesin by die aflaai in"
+
+#: 
+msgid "Installed version: %s"
+msgstr "Geïnstalleerde weergawe: %s"
+
+#: 
+msgid "Installment amounts can only be used for pledges."
+msgstr "Paaiementbedrae kan slegs vir bydraes gebruik word."
+
+#: 
+msgid "Installment dates must be within the selected fiscal year."
+msgstr "Paaiementdatums moet binne die gekose fiskale jaar val."
+
+#: 
+msgid "Invalid or missing CSRF token"
+msgstr "Ongeldige of ontbrekende CSRF-teken"
+
+#: 
+msgid "Issue Date"
+msgstr "Uitreikingsdatum"
+
+#: 
+msgid "Issue Locality"
+msgstr "Uitreikingsplek"
+
+#: 
+msgid "Keep the original PDF and an external receipt log at the charity's Canadian records location."
+msgstr "Bewaar die oorspronklike PDF en 'n eksterne kwitansielogboek by die liefdadigheidsorganisasie se Kanadese rekordligging."
+
+#: 
+msgid "Last installment on or before"
+msgstr "Laaste paaiement op of voor"
+
+#: 
+msgid "Letter wording, charity details and PDF handling are set once on Statement Settings."
+msgstr "Briefbewoording, liefdadigheidsbesonderhede en PDF-hantering word eenmalig op Staatinstellings gestel."
+
+#: 
+msgid "Letter wording, charity details, and PDF handling for giving statements"
+msgstr "Briefbewoording, liefdadigheidsbesonderhede en PDF-hantering vir bydraestate"
+
+#: 
+msgid "Maximum 2 MiB and 2000 × 1000 pixels. Choose a new image to replace the stored signature. A signature image is not a secure digital signature."
+msgstr "Maksimum 2 MiB en 2000 × 1000 piksels. Kies 'n nuwe beeld om die gestoorde handtekening te vervang. 'n Handtekeningbeeld is nie 'n veilige digitale handtekening nie."
+
+#: 
+msgid "Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal."
+msgstr "Lede-aanmelding is af, dus kan niemand in die %s-gesin by die ledeportaal aanmeld nie. 'n Beheerder kan dit aanskakel onder admin → Lidmaatportaal."
+
+#: 
+msgid "Memo"
+msgstr "Memo"
+
+#: 
+msgid "Mixed-donor family payment sets cannot be split here; handle them outside this feature."
+msgstr "Betalingsstelle van gemengde skenkers in 'n gesin kan nie hier verdeel word nie; hanteer hulle buite hierdie funksie."
+
+#: 
+msgid "Narrow the list"
+msgstr "Vereng die lys"
+
+#: 
+msgid "No family matches these filters for %s."
+msgstr "Geen gesin pas by hierdie filters vir %s nie."
+
+#: 
+msgid "No overlapping individual or cumulative receipt exists."
+msgstr "Geen oorvleuelende individuele of kumulatiewe kwitansie bestaan nie."
+
+#: 
+msgid "No receipt can be generated for this family yet"
+msgstr "Geen kwitansie kan nog vir hierdie gesin gegenereer word nie"
+
+#: 
+msgid "No signature on file"
+msgstr "Geen handtekening op lêer nie"
+
+#: 
+msgid "No — different donors; handle outside this feature"
+msgstr "Nee — verskillende skenkers; hanteer buite hierdie funksie"
+
+#: 
+msgid "Nobody in the %s family can sign in to the member portal under the current sign-in rule."
+msgstr "Niemand in die %s-gesin kan onder die huidige aanmeldreël by die ledeportaal aanmeld nie."
+
+#: 
+msgid "None / Aucun"
+msgstr "Geen / Aucun"
+
+#: 
+msgid "Not ready to issue Canadian receipts. Still missing"
+msgstr "Nie gereed om Kanadese kwitansies uit te reik nie. Ontbreek nog"
+
+#: 
+msgid "Official Receipt / Reçu officiel"
+msgstr "Amptelike kwitansie / Reçu officiel"
+
+#: 
+msgid "Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu"
+msgstr "Amptelike kwitansie vir inkomstebelastingdoeleindes / Reçu officiel aux fins de l’impôt sur le revenu"
+
+#: 
+msgid "Official receipts need a registration number in the form 123456789RR0001 and a signature image."
+msgstr "Amptelike kwitansies benodig 'n registrasienommer in die vorm 123456789RR0001 en 'n handtekeningbeeld."
+
+#: 
+msgid "Original"
+msgstr "Oorspronklike"
+
+#: 
+msgid "Original Issue Date (enter from retained original)"
+msgstr "Oorspronklike uitreikingsdatum (voer in vanaf behoue oorspronklike)"
+
+#: 
+msgid "Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment."
+msgstr "Betalingsdatums weerspieël die datums waarop gawes ontvang is, insluitend gedokumenteerde posmerkhantering van geposde tjeks."
+
+#: 
+msgid "Printed on ordinary giving statements, for example the EIN in the United States. The same value is on Church Info."
+msgstr "Gedruk op gewone bydraestate, byvoorbeeld die EIN in die Verenigde State. Dieselfde waarde is op Kerk Info."
+
+#: 
+msgid "Private giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Privaat bydraestaat-handtekeningbate-identifiseerder. Bestuur deur handtekeningoplaai."
+
+#: 
+msgid "Properties / Assignments"
+msgstr "Eiendomme / Toewysings"
+
+#: 
+msgid "Property deleted"
+msgstr "Eiendom geskrap"
+
+#: 
+msgid "Property type deleted"
+msgstr "Eiendomstipe geskrap"
+
+#: 
+msgid "Receipt Closing"
+msgstr "Kwitansie se afsluitingsfrase"
+
+#: 
+msgid "Receipt Issue Locality"
+msgstr "Kwitansie se uitreikingsplek"
+
+#: 
+msgid "Receipt No."
+msgstr "Kwitansienr."
+
+#: 
+msgid "Registration Number"
+msgstr "Registrasienommer"
+
+#: 
+msgid "Registration number in the form 123456789RR0001"
+msgstr "Registrasienommer in die vorm 123456789RR0001"
+
+#: 
+msgid "Release notes are unavailable right now."
+msgstr "Vrystellingsnotas is tans nie beskikbaar nie."
+
+#: 
+msgid "Releases"
+msgstr "Vrystellings"
+
+#: 
+msgid "Remaining commitment for %s: %s"
+msgstr "Oorblywende verbintenis vir %s: %s"
+
+#: 
+msgid "Remove 2FA requirement"
+msgstr "Verwyder 2FA-vereiste"
+
+#: 
+msgid "Remove the stored signature image? Official receipts require one on file."
+msgstr "Verwyder die gestoorde handtekeningbeeld? Amptelike kwitansies vereis een op lêer."
+
+#: 
+msgid "Reports and reminders compare this full-period commitment with giving. The remaining balance is not an overdue installment calculation."
+msgstr "Verslae en herinneringe vergelyk hierdie volperiod-verbintenis met bydraes. Die oorblywende balans is nie 'n agterstallige paaiementberekening nie."
+
+#: 
+msgid "Reports and reminders use the full commitment shown above. The remaining balance is not an overdue installment calculation."
+msgstr "Verslae en herinneringe gebruik die volle verbintenis wat hierbo gewys word. Die oorblywende balans is nie 'n agterstallige paaiementberekening nie."
+
+#: 
+msgid "Require 2FA"
+msgstr "Vereis 2FA"
+
+#: 
+msgid "Reset Options"
+msgstr "Herstel opsies"
+
+#: 
+msgid "Review Selected Families"
+msgstr "Hersien gekose gesinne"
+
+#: 
+msgid "SAMPLE — NOT VALID FOR TAX PURPOSES"
+msgstr "VOORBEELD — NIE GELDIG VIR BELASTINGDOELEINDES NIE"
+
+#: 
+msgid "Sample signature placeholder"
+msgstr "Voorbeeldhandtekening-plekhouer"
+
+#: 
+msgid "Say whether 2FA is required."
+msgstr "Sê of 2FA vereis word."
+
+#: 
+msgid "Security updates and support are provided for the latest version only."
+msgstr "Sekuriteitsopdaterings en ondersteuning word slegs vir die nuutste weergawe verskaf."
+
+#: 
+msgid "Select the families to review."
+msgstr "Kies die gesinne om te hersien."
+
+#: 
+msgid "Set up the statement"
+msgstr "Stel die staat op"
+
+#: 
+msgid "Set up two-factor authentication to continue."
+msgstr "Stel twee-faktor-verifikasie op om voort te gaan."
+
+#: 
+msgid "Shared-envelope conflict: another family currently has this envelope number."
+msgstr "Gedeelde koevertkonflik: 'n ander gesin het tans hierdie koevertnommer."
+
+#: 
+msgid "Signature Image"
+msgstr "Handtekeningbeeld"
+
+#: 
+msgid "Signature image (Admin, Report Settings)"
+msgstr "Handtekeningbeeld (admin, Verslaginstellings)"
+
+#: 
+msgid "Signature on file"
+msgstr "Handtekening op lêer"
+
+#: 
+msgid "Sincerely"
+msgstr "Vriendelike groete"
+
+#: 
+msgid "Specify the amount basis when editing a recurring pledge."
+msgstr "Spesifiseer die bedragrondslag wanneer jy 'n herhalende bydrae wysig."
+
+#: 
+msgid "Standard Giving Statement"
+msgstr "Standaardbydraestaat"
+
+#: 
+msgid "Statement Template"
+msgstr "Staatsjabloon"
+
+#: 
+msgid "Supply an issue date no later than today."
+msgstr "Verskaf 'n uitreikingsdatum nie later as vandag nie."
+
+#: 
+msgid "Tax ID on statements"
+msgstr "Belastingnommer op state"
+
+#: 
+msgid "The %s family has no living members to invite to the member portal."
+msgstr "Die %s-gesin het geen lewende lede om na die ledeportaal te nooi nie."
+
+#: 
+msgid "The Canadian registration number must have the format 123456789RR0001. This does not verify registration status."
+msgstr "Die Kanadese registrasienommer moet die formaat 123456789RR0001 hê. Dit verifieer nie registrasiestatus nie."
+
+#: 
+msgid "The charity registration number must be text."
+msgstr "Die liefdadigheidsorganisasie se registrasienommer moet teks wees."
+
+#: 
+msgid "The charity registration number printed on official receipts. Blank uses the Tax ID on Church Info."
+msgstr "Die liefdadigheidsorganisasie se registrasienommer wat op amptelike kwitansies gedruk word. Leeg gebruik die Belastingnommer op Kerk Info."
+
+#: 
+msgid "The charity's registered address. Blank uses the address on Church Info."
+msgstr "Die liefdadigheidsorganisasie se geregistreerde adres. Leeg gebruik die adres op Kerk Info."
+
+#: 
+msgid "The closing phrase above the signer, for example Sincerely."
+msgstr "Die afsluitingsfrase bo die ondertekenaar, byvoorbeeld Vriendelike groete."
+
+#: 
+msgid "The full commitment must not exceed 999999.99 per fund and amounts must use at most two decimal places."
+msgstr "Die volle verbintenis mag nie 999999.99 per fonds oorskry nie en bedrae moet hoogstens twee desimale plekke gebruik."
+
+#: 
+msgid "The gifts or mailing address changed since you last checked. Review them and confirm the donor again."
+msgstr "Die gawes of posadres het verander sedert jy laas gekontroleer het. Hersien hulle en bevestig die skenker opnuut."
+
+#: 
+msgid "The mailing address is incomplete. A street, city, province, and postal code are required."
+msgstr "Die posadres is onvolledig. 'n Straat, stad, provinsie en poskode word vereis."
+
+#: 
+msgid "The name the charity is registered under. It can differ from the church name."
+msgstr "Die naam waaronder die liefdadigheidsorganisasie geregistreer is. Dit kan van die kerknaam verskil."
+
+#: 
+msgid "The place where receipts are issued. Blank uses the city on Church Info."
+msgstr "Die plek waar kwitansies uitgereik word. Leeg gebruik die stad op Kerk Info."
+
+#: 
+msgid "The printed giving-statement signer is authorized to sign these receipts."
+msgstr "Die gedrukte bydraestaat-ondertekenaar is gemagtig om hierdie kwitansies te onderteken."
+
+#: 
+msgid "The system currency symbol must be $ or identify CAD for Canadian receipts."
+msgstr "Die stelsel se geldeenheidsimbool moet $ wees of CAD identifiseer vir Kanadese kwitansies."
+
+#: 
+msgid "There are no payments in the selected calendar year."
+msgstr "Daar is geen betalings in die gekose kalenderjaar nie."
+
+#: 
+msgid "These are the true donors for every gift in this family/calendar year, and the mailing address is correct."
+msgstr "Dit is die ware skenkers vir elke gawe in hierdie gesin/kalenderjaar, en die posadres is korrek."
+
+#: 
+msgid "This image prints above the signer's name on giving statements and receipts. Charity details and the signer's printed name are under Finance, Statement Settings."
+msgstr "Hierdie beeld druk bo die ondertekenaar se naam op bydraestate en kwitansies. Liefdadigheidsbesonderhede en die ondertekenaar se gedrukte naam is onder Finansies, Staatinstellings."
+
+#: 
+msgid "This option formats a Canadian receipt but does not keep a receipt register or retain PDFs."
+msgstr "Hierdie opsie formateer 'n Kanadese kwitansie, maar hou nie 'n kwitansieregister by of bewaar PDF's nie."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information."
+msgstr "Hierdie selfgeregistreerde gesin wag vir goedkeuring. As jy dit goedkeur, word 'n uitnodiging per e-pos aan elke lid wat by die ledeportaal kan aanmeld, gestuur om die gesin se inligting te hersien."
+
+#: 
+msgid "This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements."
+msgstr "Hierdie hulpmiddel het geen kansellasie-/vervangingswerkstroom nie; gebruik jou bestaande CRA-voldoenende proses vir regstellings/vervangings van verlore kwitansies."
+
+#: 
+msgid "This user must set up 2FA"
+msgstr "Hierdie gebruiker moet 2FA opstel"
+
+#: 
+msgid "This will permanently delete the family record and its notes. This cannot be undone."
+msgstr "Dit sal die gesinsrekord en sy notas permanent skrap. Dit kan nie ongedaan gemaak word nie."
+
+#: 
+msgid "Total commitment"
+msgstr "Totale verbintenis"
+
+#: 
+msgid "Unable to preview the commitment."
+msgstr "Kan nie die verbintenis vooraf bekyk nie."
+
+#: 
+msgid "Upload or replace the signature"
+msgstr "Laai die handtekening op of vervang dit"
+
+#: 
+msgid "Upload the authorized tax signature in Report Settings."
+msgstr "Laai die gemagtigde belastinghandtekening op in Verslaginstellings."
+
+#: 
+msgid "Use dates within the selected fiscal year. Monthly and quarterly gifts use the first installment day, or the last day of shorter months."
+msgstr "Gebruik datums binne die gekose fiskale jaar. Maandelikse en kwartaallikse gawes gebruik die eerste paaiementdag, of die laaste dag van korter maande."
+
+#: 
+msgid "Verified Full Donor Name(s)"
+msgstr "Geverifieerde volle skenkernaam (of -name)"
+
+#: 
+msgid "Verify the family in person instead."
+msgstr "Verifieer die gesin eerder persoonlik."
+
+#: 
+msgid "Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature."
+msgstr "Verifieer die volle skenkernaam en adres vir elke gesin. Betalingsstelle van gemengde skenkers moet buite hierdie funksie hanteer word."
+
+#: 
+msgid "Version %s is available. Please ask your administrator to upgrade your installation."
+msgstr "Weergawe %s is beskikbaar. Vra jou beheerder om jou installasie op te gradeer."
+
+#: 
+msgid "View all emails"
+msgstr "Bekyk alle e-posse"
+
+#: 
+msgid "Yes — one verified donor set"
+msgstr "Ja — een geverifieerde skenkerstel"
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are also available when you generate statements."
+msgstr "Jou kerkland is Canada, dus is Kanadese amptelike kwitansies ook beskikbaar wanneer jy state genereer."
+
+#: 
+msgid "Your church country is Canada, so Canadian official receipts are available on Giving Statements and ordinary statements are marked as not an official donation receipt."
+msgstr "Jou kerkland is Canada, dus is Kanadese amptelike kwitansies op Bydraestate beskikbaar en word gewone state as nie 'n amptelike donasiekwitansie gemerk nie."
+
+#: 
+msgid "groups"
+msgstr "groepe"
+
+#: 
+msgid "14 days"
+msgstr "14 dae"
+
+#: 
+msgid "6 months"
+msgstr "6 maande"
+
+#: 
+msgid "60 days"
+msgstr "60 dae"
+
+#: 
+msgid "7 days"
+msgstr "7 dae"
+
+#: 
+msgid "Ask on Discord"
+msgstr "Vra op Discord"
+
+#: 
+msgid "Change your password right after you sign in."
+msgstr "Verander jou wagwoord onmiddellik nadat jy aangemeld het."
+
+#: 
+msgid "Choose a different way to sign in"
+msgstr "Kies 'n ander manier om aan te meld"
+
+#: 
+msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
+msgstr "ChurchCRM kan nie 'n databasis by localhost bereik nie. Probeer eerder 127.0.0.1, of vra jou webgasheer vir die databasis se gasheernaam."
+
+#: 
+msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
+msgstr "ChurchCRM kan nie die databasisbediener by daardie adres en poort bereik nie. Kontroleer die gasheernaam en die poort. By gedeelde gasheerdienste is die gasheer dikwels nie localhost nie."
+
+#: 
+msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
+msgstr "ChurchCRM kan nie sy weergawekontrole lees nie. Vra jou webgasheer om die ChurchCRM-gids leesbaar te maak, of gaan voort."
+
+#: 
+msgid "ChurchCRM could not check folder permissions"
+msgstr "ChurchCRM kon nie gidstoestemmings kontroleer nie"
+
+#: 
+msgid "ChurchCRM could not check its files. Ask your web host to look at the server error log."
+msgstr "ChurchCRM kon nie sy lêers kontroleer nie. Vra jou webgasheer om na die bediener se foutlog te kyk."
+
+#: 
+msgid "ChurchCRM could not check the server software"
+msgstr "ChurchCRM kon nie die bedienersagteware kontroleer nie"
+
+#: 
+msgid "ChurchCRM could not connect to the database with these settings."
+msgstr "ChurchCRM kon nie met hierdie instellings aan die databasis koppel nie."
+
+#: 
+msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
+msgstr "ChurchCRM kon nie die installasie voltooi nie. Probeer weer, of vra jou webgasheer om die bediener se foutlog na te gaan."
+
+#: 
+msgid "ChurchCRM could not save Include/Config.php. Ask your web host to make the Include folder writable."
+msgstr "ChurchCRM kon nie Include/Config.php stoor nie. Vra jou webgasheer om die Include-gids skryfbaar te maak."
+
+#: 
+msgid "ChurchCRM files match the release"
+msgstr "ChurchCRM-lêers stem ooreen met die weergawe"
+
+#: 
+msgid "Collapse the sidebar to icons"
+msgstr "Vou die kantbalk tot ikone in"
+
+#: 
+msgid "Congregation login"
+msgstr "Gemeente-aanmelding"
+
+#: 
+msgid "Connect your database"
+msgstr "Koppel jou databasis"
+
+#: 
+msgid "Connecting to your database…"
+msgstr "Koppel tans aan jou databasis…"
+
+#: 
+msgid "Could not save your main dashboard."
+msgstr "Kon nie jou hoofdashboard stoor nie."
+
+#: 
+msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
+msgstr "Skep eers 'n MySQL- of MariaDB-databasis in jou gasheerbeheerpaneel (in cPanel: %s), en kopieer dan die besonderhede hierheen. ChurchCRM ondersteun MySQL 8.4+ en MariaDB 10.11+ (die LTS-weergawes)."
+
+#: 
+msgid "Database host"
+msgstr "Databasisgasheer"
+
+#: 
+msgid "Database name"
+msgstr "Databasisnaam"
+
+#: 
+msgid "Database password"
+msgstr "Databasiswagwoord"
+
+#: 
+msgid "Database user"
+msgstr "Databasisgebruiker"
+
+#: 
+msgid "Empty when ChurchCRM is at the top of the site. Otherwise the folder, like %s."
+msgstr "Leeg wanneer ChurchCRM boaan die webwerf is. Andersins die gids, soos %s."
+
+#: 
+msgid "Enter note text here..."
+msgstr "Voer notateks hier in..."
+
+#: 
+msgid "Enter the database host, like localhost or mysql.example.com. Use only letters, numbers, dots and dashes."
+msgstr "Voer die databasisgasheer in, soos localhost of mysql.example.com. Gebruik slegs letters, syfers, punte en strepies."
+
+#: 
+msgid "Enter the database name. Use only letters, numbers, underscores, dashes and dots."
+msgstr "Voer die databasisnaam in. Gebruik slegs letters, syfers, onderstrepe, strepies en punte."
+
+#: 
+msgid "Enter the database port as a number. It is usually 3306."
+msgstr "Voer die databasispoort as 'n getal in. Dit is gewoonlik 3306."
+
+#: 
+msgid "Enter the database user. Use only letters, numbers, underscores, dashes, dots and @."
+msgstr "Voer die databasisgebruiker in. Gebruik slegs letters, syfers, onderstrepe, strepies, punte en @."
+
+#: 
+msgid "Enter the folder starting with /, like /churchcrm, or leave it empty."
+msgstr "Voer die gids in wat met / begin, soos /churchcrm, of laat dit leeg."
+
+#: 
+msgid "Enter the password for the database user."
+msgstr "Voer die wagwoord vir die databasisgebruiker in."
+
+#: 
+msgid "Enter the web address, starting with http:// or https://."
+msgstr "Voer die webadres in, wat met http:// of https:// begin."
+
+#: 
+msgid "Every active member family made a payment between %s and %s."
+msgstr "Elke aktiewe lidgesin het 'n betaling tussen %s en %s gemaak."
+
+#: 
+msgid "Exclude"
+msgstr "Sluit uit"
+
+#: 
+msgid "Files left over from an older version"
+msgstr "Lêers wat van 'n ouer weergawe oorgebly het"
+
+#: 
+msgid "Files to review"
+msgstr "Lêers om na te gaan"
+
+#: 
+msgid "Have the database details from your web host ready. It takes about two minutes."
+msgstr "Hou die databasisbesonderhede van jou webgasheer gereed. Dit neem ongeveer twee minute."
+
+#: 
+msgid "Hide"
+msgstr "Versteek"
+
+#: 
+msgid "How the congregation is made up"
+msgstr "Hoe die gemeente saamgestel is"
+
+#: 
+msgid "Insights"
+msgstr "Insigte"
+
+#: 
+msgid "Install ChurchCRM"
+msgstr "Installeer ChurchCRM"
+
+#: 
+msgid "Installation Complete!"
+msgstr "Installasie voltooi!"
+
+#: 
+msgid "Installation guide"
+msgstr "Installasiegids"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Integriteitskontrole het misluk"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Integriteitskontrole geslaag"
+
+#: 
+msgid "Last %d days"
+msgstr "Laaste %d dae"
+
+#: 
+msgid "Last 12 months"
+msgstr "Laaste 12 maande"
+
+#: 
+msgid "Main dashboard"
+msgstr "Hoofdashboard"
+
+#: 
+msgid "Navigation"
+msgstr "Navigasie"
+
+#: 
+msgid "Need help?"
+msgstr "Het jy hulp nodig?"
+
+#: 
+msgid "No notes in this time range."
+msgstr "Geen notas in hierdie tydperk nie."
+
+#: 
+msgid "No notes yet."
+msgstr "Nog geen notas nie."
+
+#: 
+msgid "Often %1$s. Some hosts give an address like %2$s."
+msgstr "Dikwels %1$s. Sommige gashere gee 'n adres soos %2$s."
+
+#: 
+msgid "Open total"
+msgstr "Oop totaal"
+
+#: 
+msgid "Opens the Finance dashboard on this range. Pick a past fiscal year on the dashboard itself."
+msgstr "Maak die Finansies-dashboard vir hierdie reeks oop. Kies 'n vorige fiskale jaar op die dashboard self."
+
+#: 
+msgid "Past 7 days and next %d days"
+msgstr "Vorige 7 dae en volgende %d dae"
+
+#: 
+msgid "Permission to save settings and photos"
+msgstr "Toestemming om instellings en foto's te stoor"
+
+#: 
+msgid "Port"
+msgstr "Poort"
+
+#: 
+msgid "Ready"
+msgstr "Gereed"
+
+#: 
+msgid "Recent"
+msgstr "Onlangs"
+
+#: 
+msgid "Register your family to our church"
+msgstr "Registreer jou gesin by ons kerk"
+
+#: 
+msgid "Release check"
+msgstr "Weergawekontrole"
+
+#: 
+msgid "Report a problem"
+msgstr "Rapporteer 'n probleem"
+
+#: 
+msgid "Rows shown per page in every table and dashboard card. Takes effect on next page load."
+msgstr "Rye wat per bladsy in elke tabel en dashboardkaart gewys word. Tree in werking met die volgende bladsylaai."
+
+#: 
+msgid "Send Test Email"
+msgstr "Stuur toets-e-pos"
+
+#: 
+msgid "Send a test email"
+msgstr "Stuur 'n toets-e-pos"
+
+#: 
+msgid "Send them the list below."
+msgstr "Stuur vir hulle die lys hieronder."
+
+#: 
+msgid "Server software ChurchCRM needs"
+msgstr "Bedienersagteware wat ChurchCRM nodig het"
+
+#: 
+msgid "Set as my main dashboard"
+msgstr "Stel as my hoofdashboard"
+
+#: 
+msgid "Sign in with your admin account"
+msgstr "Meld aan met jou adminrekening"
+
+#: 
+msgid "Some ChurchCRM files are missing or changed. Upload ChurchCRM again if a page does not load."
+msgstr "Sommige ChurchCRM-lêers ontbreek of is verander. Laai ChurchCRM weer op as 'n bladsy nie laai nie."
+
+#: 
+msgid "Some ChurchCRM files were not uploaded."
+msgstr "Sommige ChurchCRM-lêers is nie opgelaai nie."
+
+#: 
+msgid "Some files on the server do not match the ChurchCRM release."
+msgstr "Sommige lêers op die bediener stem nie ooreen met die ChurchCRM-weergawe nie."
+
+#: 
+msgid "Staff login"
+msgstr "Personeelaanmelding"
+
+#: 
+msgid "Starts with %1$s or %2$s and ends with %3$s."
+msgstr "Begin met %1$s of %2$s en eindig met %3$s."
+
+#: 
+msgid "The dashboard you open on after signing in"
+msgstr "Die dashboard wat oopmaak nadat jy aangemeld het"
+
+#: 
+msgid "The database server accepted the login, but there is no database with that name."
+msgstr "Die databasisbediener het die aanmelding aanvaar, maar daar is geen databasis met daardie naam nie."
+
+#: 
+msgid "The database server rejected that username or password."
+msgstr "Die databasisbediener het daardie gebruikersnaam of wagwoord verwerp."
+
+#: 
+msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
+msgstr "Die naam wat jy aan die databasis gegee het. Gedeelde gashere voeg dikwels jou rekeningnaam vooraan by, soos %s."
+
+#: 
+msgid "The password for that database user. ChurchCRM checks these details when you click Install."
+msgstr "Die wagwoord vir daardie databasisgebruiker. ChurchCRM kontroleer hierdie besonderhede wanneer jy op Installeer klik."
+
+#: 
+msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
+msgstr "Die weergawekontrolelêer op hierdie bediener stem nie ooreen met ChurchCRM nie. Laai die weergawe weer op, of gaan voort en vra jou webgasheer om hulp."
+
+#: 
+msgid "The test message goes to the church email address and shows the SMTP debug log here."
+msgstr "Die toetsboodskap gaan na die kerk se e-posadres en wys die SMTP-ontfoutlog hier."
+
+#: 
+msgid "The user you added to that database. Not your hosting login."
+msgstr "Die gebruiker wat jy by daardie databasis gevoeg het. Nie jou gasheer-aanmelding nie."
+
+#: 
+msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
+msgstr "Hierdie lêers is nie deel van die ChurchCRM-weergawe nie. Jou webgasheer kan hulle verwyder."
+
+#: 
+msgid "These files do not match the release"
+msgstr "Hierdie lêers stem nie ooreen met die weergawe nie"
+
+#: 
+msgid "These files were not uploaded"
+msgstr "Hierdie lêers is nie opgelaai nie"
+
+#: 
+msgid "This copy of ChurchCRM does not include the release file check. You can continue."
+msgstr "Hierdie kopie van ChurchCRM sluit nie die weergawe-lêerkontrole in nie. Jy kan voortgaan."
+
+#: 
+msgid "This dashboard is now your main dashboard."
+msgstr "Hierdie dashboard is nou jou hoofdashboard."
+
+#: 
+msgid "This is where people will open ChurchCRM. Change it only if they will use a different address than this page."
+msgstr "Dit is waar mense ChurchCRM sal oopmaak. Verander dit slegs as hulle 'n ander adres as hierdie bladsy sal gebruik."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself lives here."
+msgstr "Dit is jou kerkrekening. Alles wat jy vir jouself kan doen, is hier."
+
+#: 
+msgid "Total deposited"
+msgstr "Totaal gedeponeer"
+
+#: 
+msgid "Usually 3306."
+msgstr "Gewoonlik 3306."
+
+#: 
+msgid "Web address"
+msgstr "Webadres"
+
+#: 
+msgid "Your main dashboard"
+msgstr "Jou hoofdashboard"
+
+#: 
+msgid "Your web host needs to fix something"
+msgstr "Jou webgasheer moet iets regstel"
+
+#: 
+msgctxt "one"
+msgid "and {{count}} more"
+msgstr "en {{count}} meer"
+
+#: 
+msgctxt "other"
+msgid "and {{count}} more"
+msgstr "en {{count}} meer"
+
+#: 
+msgid "Database out of support"
+msgstr "Databasis word nie ondersteun nie"
+
+#: 
+msgid "Deactivated"
+msgstr "Gedeaktiveer"
+
+#: 
+msgid "How to find the log"
+msgstr "Hoe om die log te vind"
+
+#: 
+msgid "How to install server locales"
+msgstr "Hoe om bediener-lokale te installeer"
+
+#: 
+msgid "Last edited"
+msgstr "Laas geredigeer"
+
+#: 
+msgid "Not installed on the server, and no English fallback locale is installed either, so the interface will show in English."
+msgstr "Nie op die bediener geïnstalleer nie, en geen Engelse terugval-lokaal is ook geïnstalleer nie, dus sal die koppelvlak in Engels vertoon."
+
+#: 
+msgid "The ChurchCRM log records the specific reason. Remove names before you share it."
+msgstr "Die ChurchCRM-log teken die spesifieke rede aan. Verwyder name voordat jy dit deel."
+
+#: 
+msgid "Verify now"
+msgstr "Verifieer nou"
+
+#: 
+msgid "View Giving History"
+msgstr "Bekyk Gawinggeschiedenis"
+
+#: 
+msgid "%d people added successfully; %d people could not be added and remain in the cart."
+msgstr "%d mense is suksesvol bygevoeg; %d mense kon nie bygevoeg word nie en bly in die mandjie."
+
+#: 
+msgid "%d people could not be added and remain in your cart."
+msgstr "%d mense kon nie bygevoeg word nie en bly in jou mandjie."
+
+#: 
+msgid "Administrators will see this warning on every page until the database is moved to a version that still gets security fixes. Moving now, while there is little data, is easiest."
+msgstr "Beheerders sal hierdie waarskuwing op elke bladsy sien totdat die databasis geskuif is na 'n weergawe wat steeds sekuriteitsregstellings kry. Om nou te skuif, terwyl daar min data is, is die maklikste."
+
+#: 
+msgid "Administrators will sign in to the standard dashboard from now on. The Setup Dashboard will not open at sign-in again."
+msgstr "Beheerders sal van nou af by die standaard-dashboard inteken. Die Opsteldashboard sal nie weer by intekening oopmaak nie."
+
+#: 
+msgid "Database security risk"
+msgstr "Databasis-sekuriteitsrisiko"
+
+#: 
+msgid "Demo mode also turns on anonymous usage statistics (PostHog), so we can see how people explore ChurchCRM. Start Fresh turns it off."
+msgstr "Demo-modus skakel ook anonieme gebruikstatistieke (PostHog) aan, sodat ons kan sien hoe mense ChurchCRM verken. Begin Vars skakel dit af."
+
+#: 
+msgid "Email settings saved. Member sign-in is now on, so members can sign in to the Member Portal with their email."
+msgstr "E-posinstellings is gestoor. Lid-intekening is nou aan, sodat lede met hul e-pos by die Lidmaatportaal kan inteken."
+
+#: 
+msgid "Enter your church information, add your people, and invite your team."
+msgstr "Voer jou kerkinligting in, voeg jou mense by en nooi jou span uit."
+
+#: 
+msgid "Everything here is sample data. Start fresh before you enter your church's real information."
+msgstr "Alles hier is voorbeelddata. Begin vars voordat jy jou kerk se regte inligting invoer."
+
+#: 
+msgid "Everything here is sample data. When you are ready to use ChurchCRM for your church, start fresh: it erases the demo data and every setting so you can begin with your own."
+msgstr "Alles hier is voorbeelddata. Wanneer jy gereed is om ChurchCRM vir jou kerk te gebruik, begin vars: dit vee die demo-data en elke instelling uit sodat jy met jou eie kan begin."
+
+#: 
+msgid "Explore ChurchCRM with demo data, or set it up for your church"
+msgstr "Verken ChurchCRM met demo-data, of stel dit vir jou kerk op"
+
+#: 
+msgid "Failed to add person to group"
+msgstr "Kon nie die persoon by die groep voeg nie"
+
+#: 
+msgid "Finish setup"
+msgstr "Voltooi opstelling"
+
+#: 
+msgid "For this many days after installation, administrators sign in to the Setup Dashboard. Set to 0 to turn it off."
+msgstr "Vir hierdie aantal dae na installasie teken beheerders by die Opsteldashboard in. Stel dit op 0 om dit af te skakel."
+
+#: 
+msgid "Group Assignment"
+msgstr "Groeptoewysing"
+
+#: 
+msgid "Internal: an administrator chose Finish setup on the Setup Dashboard. Do not edit manually."
+msgstr "Intern: 'n beheerder het Voltooi opstelling op die Opsteldashboard gekies. Moenie handmatig wysig nie."
+
+#: 
+msgid "Keep exploring"
+msgstr "Hou aan verken"
+
+#: 
+msgid "Moving from another ChurchCRM server? Restore a backup made there. This replaces everything on this install."
+msgstr "Skuif jy vanaf 'n ander ChurchCRM-bediener? Herstel 'n rugsteunkopie wat daar gemaak is. Dit vervang alles op hierdie installasie."
+
+#: 
+msgid "Ready for your church"
+msgstr "Gereed vir jou kerk"
+
+#: 
+msgid "Retry Group Assignment"
+msgstr "Probeer groeptoewysing weer"
+
+#: 
+msgid "Retry group assignments"
+msgstr "Probeer groeptoewysings weer"
+
+#: 
+msgid "Select one or more groups for this person."
+msgstr "Kies een of meer groepe vir hierdie persoon."
+
+#: 
+msgid "Select the groups you want to retry."
+msgstr "Kies die groepe wat jy weer wil probeer."
+
+#: 
+msgid "Set Up Your Church"
+msgstr "Stel jou kerk op"
+
+#: 
+msgid "Setup Dashboard"
+msgstr "Opsteldashboard"
+
+#: 
+msgid "Start Fresh on the demo banner, or Reset Database on the Admin Dashboard, erases the demo data and every setting and returns ChurchCRM to a new install."
+msgstr "Begin Vars op die demo-banier, of Stel die databasis terug op die Admin-dashboard, vee die demo-data en elke instelling uit en bring ChurchCRM terug na 'n nuwe installasie."
+
+#: 
+msgid "Start fresh first, then set up ChurchCRM with your own church information."
+msgstr "Begin eers vars en stel dan ChurchCRM met jou eie kerkinligting op."
+
+#: 
+msgid "Start setup"
+msgstr "Begin opstelling"
+
+#: 
+msgid "The demo data is gone. Sign in with the default administrator account to set up your church."
+msgstr "Die demo-data is weg. Teken in met die verstek-beheerderrekening om jou kerk op te stel."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. Select the groups below and retry."
+msgstr "Die persoon is gestoor, maar een of meer groeptoewysings het misluk. Kies die groepe hieronder en probeer weer."
+
+#: 
+msgid "The person was saved, but one or more group assignments failed. The unsuccessful groups are selected below. Review them and save again to retry."
+msgstr "Die persoon is gestoor, maar een of meer groeptoewysings het misluk. Die onsuksesvolle groepe is hieronder gekies. Gaan hulle na en stoor weer om weer te probeer."
+
+#: 
+msgid "This erases the demo data and every setting, and returns ChurchCRM to a new install."
+msgstr "Dit vee die demo-data en elke instelling uit en bring ChurchCRM terug na 'n nuwe installasie."
+
+#: 
+msgid "You will sign in again with the default administrator account and enter your church information."
+msgstr "Jy sal weer met die verstek-beheerderrekening inteken en jou kerkinligting invoer."
+
+#: 
+msgid "You're exploring ChurchCRM with demo data."
+msgstr "Jy verken ChurchCRM met demo-data."
+
+#: 
+msgid "You're exploring demo data"
+msgstr "Jy verken demo-data"
+
+#: 
+msgid "Your church information is saved. Work through the steps below."
+msgstr "Jou kerkinligting is gestoor. Werk deur die stappe hieronder."
+
+#: 
+msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
+msgstr "Jou databasis (%1$s %2$s) is 'n sekuriteitsrisiko: die verskaffer daarvan verskaf nie meer sekuriteitsregstellings vir daardie weergawe nie. ChurchCRM hou aan werk, maar vra jou gasheer om na MariaDB %3$s+ of MySQL %4$s+ oor te skakel."
+
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "'n Daaglikse intekening terwyl dit in gebruik is, sagteware- en databasisweergawes, taalinstelling, land, installasietipe en 'n ewekansige installasie-ID help om aktiewe installasies te tel."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Rekeninge & Aanmelding"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Stuur ook watter bladsye gebruik word."
+
+#: 
+msgid "Areas"
+msgstr "Gebiede"
+
+#: 
+msgid "Church & System"
+msgstr "Kerk & Stelsel"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Stad of dorp waar kwitansies uitgereik word, gedruk op amptelike kwitansies. Laat leeg om die kerk se stad te gebruik."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Afsluiting voor die ondertekenaar se naam, byvoorbeeld Vriendelike groete."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Afsluiting wat voor die ondertekenaar op amptelike kwitansies gedruk word."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Komma-geskeide wagwoorde wat niemand mag gebruik nie."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Bevestigingsbrief"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Skep 'n gesin vir hierdie persoon? Hul adres en tuisfoon skuif na die nuwe gesin."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Dae wat gebruikers het om twee-faktor-verifikasie op te stel nadat dit verpligtend word. 0 dwing dit dadelik af. Om 'n aktiewe grasietydperk te verkort, kan gebruikers uitgesluit word."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Deposito's & Betalings"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Nie-toegelate Wagwoorde"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Vrywaring %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "E-pos Gebruikers Wanneer Hul Rekening Geskrap Word"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Elke instellingsblad op een plek, en die instellings wat op die hele stelsel van toepassing is"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Mislukte Aanmeldings Voor Uitsluiting"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Mislukte Aanmeldings per IP Adres"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Gesinsrolle wat in die gids as kinders behandel word."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Gesinsrolle wat in die gids en lidmaataanmelding as gesinshoof behandel word."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Gesinsrolle wat in die gids en lidmaataanmelding as eggenoot behandel word."
+
+#: 
+msgid "Finance Settings"
+msgstr "Finansies-instellings"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Grasietydperk (dae)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Versteek nuusbriefintekeninge in die Gesinsredakteur."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Versteek die Vriend Datum-veld in die Persoonredakteur."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Versteek die Troudatum-veld in die Gesinsredakteur."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Hoe lank 'n geslote rekening gesluit bly. Mislukte aanmeldings vanaf een IP adres word oor dieselfde tydperk getel."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Hoeveel karakters 'n nuwe wagwoord van die oue moet verskil. 0 skakel dit af."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "By Admin → Telemetrie, skakel Deel watter bladsye gebruik word aan om Vol te kies. Vol stuur ook bladsybesoeke."
+
+#: 
+msgid "Initials Format"
+msgstr "Voorletters-formaat"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Briefteks %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Uitsluitingstydperk (minute)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Sluit 'n rekening na soveel mislukte aanmeldings in 'n ry. Dit ontsluit na die uitsluitingstydperk, of wanneer 'n beheerder dit terugstel. 0 skakel uitsluiting af."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Bestuur Lidmaatportaal"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Lede kan met hul e-pos aanmeld."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Lede kan nog nie aanmeld nie."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimum Karakters Verander"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Minimum Wagwoordlengte"
+
+#: 
+msgid "Name Format"
+msgstr "Naamformaat"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Naam wat onder die afsluiting van briewe en e-posse gedruk word"
+
+#: 
+msgid "No Payments Text"
+msgstr "Geen Betalings-teks"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Geen Bydrae-teks"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Geen vlak stuur mense, skenkers, bydraes, inhoud, kerk se kontakbesonderhede, jou webadres of bedienernaam nie."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Geen vlak stuur jou webadres of bedienernaam nie. Toetsinstallasies stuur niks nie. Telemetrie word na PostHog in die Verenigde State gestuur."
+
+#: 
+msgid "OS family"
+msgstr "Bedryfstelsel-familie"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Openingsparagraaf van die bydrae-herinneringsbrief."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragraaf in die bydraestaat wat vrae uitnooi."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragraaf in die nul-skenkersbrief wat vrae uitnooi."
+
+#: 
+msgid "Passwords"
+msgstr "Wagwoorde"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Gedruk na die datumreeks in die openingsreël van die nul-skenkersbrief."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Word eerste op die bydraestaat gedruk, gevolg deur die datumreeks."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Gedruk wanneer 'n gesin geen betalings op rekord het nie."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Gedruk wanneer 'n gesin geen bydrae op rekord het nie."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Weier aanmelding vanaf een IP adres vir die uitsluitingstydperk na soveel mislukte aanmeldings of wagwoordterugstellings. 0 skakel dit af, byvoorbeeld wanneer almal deur een instaanbediener koppel."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Vereis Twee-faktor-verifikasie"
+
+#: 
+msgid "Security Settings"
+msgstr "Sekuriteit-instellings"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Stuur foutverslae, installasie-/opgraderingsgebeurtenisse en stelselinligting sodat probleme reggemaak kan word. Geen bladsybesoeke nie, geen kerkdata nie."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Sessie-tydverstreke (sekondes)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Deel watter bladsye gebruik word"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Aanmelding & Sekuriteit"
+
+#: 
+msgid "Signature Storage"
+msgstr "Handtekeningberging"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Meld 'n gebruiker af na soveel sekondes sonder aktiwiteit. 0 meld nooit af nie."
+
+#: 
+msgid "System-wide"
+msgstr "Stelselwyd"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teks Na Datums"
+
+#: 
+msgid "Text Messages"
+msgstr "Teksboodskappe"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Dankie-paragraaf van die bydraestaat."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Dankie-paragraaf van die nul-skenkersbrief."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Die omskakeling het misluk. Niks is verander nie."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Gebruik 'n briefhooflêer wat gestoor is voordat oplaaie bygevoeg is. Laai 'n briefhoof op om dit te vervang."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Waarskuwing Na (Ure)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Woord voor die naam in briewe en e-posse, byvoorbeeld Beste."
 

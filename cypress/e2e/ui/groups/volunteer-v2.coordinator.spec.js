@@ -23,7 +23,6 @@
  * not run when the runner crashes mid-spec.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_SETTING_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
 const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
@@ -51,7 +50,6 @@ let posMilk = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
 let emptyMinistryId = 0;
-let originalVersion = "v1";
 let originalLeadHours = "48";
 let seriesStart = "";
 let seriesEnd = "";
@@ -93,10 +91,6 @@ function dbOk(sql, params = []) {
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
-}
-
-function setVersion(value) {
-    adminApi("POST", SETTING_URL, { value }, 200);
 }
 
 function isoDate(offsetDays) {
@@ -386,13 +380,9 @@ after(() => {
 
 describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     before(() => {
-        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-        });
         adminApi("GET", LEAD_SETTING_URL, null, 200).then((resp) => {
             originalLeadHours = String(resp.body.value ?? resp.body.Value ?? "48");
         });
-        setVersion("v2");
         cleanupFixtures();
         buildFixture();
     });
@@ -400,7 +390,6 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     after(() => {
         cleanupFixtures();
         adminApi("POST", LEAD_SETTING_URL, { value: originalLeadHours }, 200);
-        setVersion(originalVersion);
     });
 
     beforeEach(() => {
@@ -525,10 +514,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows the person's qualification and upcoming assignment, linking into /volunteer", () => {
             cy.visit(`/people/view/${POOL_MEMBER_A}`);
 
-            cy.get("#nav-item-volunteer-v2").should("exist").click();
-            cy.get("#volunteer-v2").should("be.visible");
-            cy.get("#person-volunteer-v2-qualifications").should("contain", POSITION_ESPRESSO);
-            cy.get("#person-volunteer-v2-assignments")
+            cy.get("#nav-item-volunteer").should("exist").click();
+            cy.get("#volunteer").should("be.visible");
+            cy.get("#person-volunteer-qualifications").should("contain", POSITION_ESPRESSO);
+            cy.get("#person-volunteer-assignments")
                 .should("contain", POSITION_ESPRESSO)
                 .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
@@ -537,19 +526,8 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         it("shows a first-class empty state for a person with nothing (§5.8)", () => {
             // Person 5 is a seeded pool member this fixture never qualifies.
             cy.visit("/people/view/5");
-            cy.get("#nav-item-volunteer-v2").click();
-            cy.get("#person-volunteer-v2-empty").should("be.visible");
-        });
-
-        it("leaves the V1 pane and its ids untouched when both are on", () => {
-            setVersion("both");
-            freshAdminLogin();
-            cy.visit(`/people/view/${POOL_MEMBER_A}`);
-            cy.get("#nav-item-volunteer").should("exist");
-            cy.get("#nav-item-volunteer-v2").should("exist");
-            cy.get("#volunteer").should("exist");
-            cy.get("#volunteer-v2").should("exist");
-            setVersion("v2");
+            cy.get("#nav-item-volunteer").click();
+            cy.get("#person-volunteer-empty").should("be.visible");
         });
     });
 

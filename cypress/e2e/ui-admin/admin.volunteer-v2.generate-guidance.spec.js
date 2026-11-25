@@ -12,7 +12,6 @@
  * horizon, or events moved into the past after the schedule was made.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/ministries/ministries";
 const GROUPS_URL = "/api/groups";
 
@@ -112,7 +111,6 @@ after(() => {
 
 describe("Volunteer v2 D30 — why nothing was generated", () => {
     before(() => {
-        admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
         admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, description: "D30 fixture", sundaySchool: true }, 201).then((resp) => {
@@ -209,7 +207,6 @@ describe("Volunteer v2 D30 — why nothing was generated", () => {
 
     after(() => {
         cleanupFixtures();
-        admin("POST", SETTING_URL, { value: "v1" });
     });
 
     beforeEach(() => {

@@ -8,7 +8,7 @@ describe("window.CRM.notify() toasts", () => {
 
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.window().its("CRM.notify").should("be.a", "function");
     });
 

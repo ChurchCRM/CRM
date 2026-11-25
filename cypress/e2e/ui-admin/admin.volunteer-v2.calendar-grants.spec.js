@@ -8,13 +8,11 @@
  * API setup runs before a fresh login: cy.request() rotates the PHP session cookie.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const PREFIX = "UIVCAL";
 const PERSON_COORDINATOR = 3;
 const PUBLIC_CALENDAR = 1;
 const CHURCH_SERVICE_TYPE = 1;
 
-let originalVersion = "v1";
 const ministry = {};
 const ministryCalendar = {};
 let bibleClasses = 0;
@@ -39,10 +37,6 @@ function freshLogin(username, password) {
 
 function adminLogin() {
     freshLogin(Cypress.testEnv("admin.username"), Cypress.testEnv("admin.password"));
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 function grantedMinistryIds(calendarId) {
@@ -98,10 +92,6 @@ before(() => {
 
 describe("Volunteer v2 D25 — calendar grants in the UI", () => {
     before(() => {
-        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-        });
-        setVersion("v2");
         cleanupFixtures();
 
         for (const key of ["A", "B"]) {
@@ -126,7 +116,6 @@ describe("Volunteer v2 D25 — calendar grants in the UI", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion(originalVersion);
     });
 
     it("offers the ministries on the New Calendar dialog and saves the choice", () => {
@@ -178,16 +167,6 @@ describe("Volunteer v2 D25 — calendar grants in the UI", () => {
         cy.get(`.calendarproperties[data-calendarid="${ministryCalendar.A}"]`, { timeout: 20000 }).click();
         cy.get(".bootbox .modal-body").should("be.visible").and("contain", "Access Token");
         cy.get("#calendarMinistryGrantsField").should("not.exist");
-    });
-
-    it("does not offer the field while the rollout is v1", () => {
-        setVersion("v1");
-        adminLogin();
-        openSidebar();
-        cy.get("#addCalendarBtn").click();
-        cy.get("#calendarName").should("be.visible");
-        cy.get("#calendarMinistryGrantsField").should("not.exist");
-        setVersion("v2");
     });
 
     it("says in the New event dialog which calendars it lists, for an administrator and a coordinator (#10374)", () => {

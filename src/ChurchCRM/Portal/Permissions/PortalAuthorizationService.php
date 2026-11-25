@@ -2,6 +2,9 @@
 
 namespace ChurchCRM\Portal\Permissions;
 
+use ChurchCRM\Authorization\Decision;
+use ChurchCRM\Authorization\EffectiveGrant;
+use ChurchCRM\Authorization\Scope;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -38,7 +41,7 @@ final class PortalAuthorizationService implements PortalAuthorization
     /** @var array<int, EffectiveGrant[]> */
     private static array $grantMemo = [];
 
-    public function decide(PortalPrincipal $who, string $capability, ?PortalScope $on = null): Decision
+    public function decide(PortalPrincipal $who, string $capability, ?Scope $on = null): Decision
     {
         return $this->decideForPerson($who->personId, $capability, $on);
     }
@@ -48,7 +51,7 @@ final class PortalAuthorizationService implements PortalAuthorization
         return $this->scopesForPerson($who->personId, $capability);
     }
 
-    public function decideForPerson(int $personId, string $capability, ?PortalScope $on = null): Decision
+    public function decideForPerson(int $personId, string $capability, ?Scope $on = null): Decision
     {
         $definition = PortalCapabilityRegistry::get($capability);
         if (!$definition instanceof PortalCapability) {
@@ -60,10 +63,10 @@ final class PortalAuthorizationService implements PortalAuthorization
             return Decision::deny($status);
         }
 
-        if ($definition->isScoped() && !$on instanceof PortalScope) {
+        if ($definition->isScoped() && !$on instanceof Scope) {
             return Decision::deny(Decision::SCOPE_REQUIRED);
         }
-        $on ??= PortalScope::none();
+        $on ??= Scope::none();
         if ($on->type !== $definition->scopeType) {
             return Decision::deny(Decision::SCOPE_MISMATCH);
         }
@@ -83,7 +86,7 @@ final class PortalAuthorizationService implements PortalAuthorization
     }
 
     /**
-     * @return PortalScope[]
+     * @return Scope[]
      */
     public function scopesForPerson(int $personId, string $capability): array
     {
@@ -107,7 +110,7 @@ final class PortalAuthorizationService implements PortalAuthorization
      */
     public function scopeIdsForPerson(int $personId, string $capability): array
     {
-        return array_map(static fn (PortalScope $scope): int => $scope->id, $this->scopesForPerson($personId, $capability));
+        return array_map(static fn (Scope $scope): int => $scope->id, $this->scopesForPerson($personId, $capability));
     }
 
     /**
@@ -234,7 +237,7 @@ final class PortalAuthorizationService implements PortalAuthorization
 
         $fitting = [];
         foreach ($rows as $row) {
-            $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
+            $scope = new Scope((string) $row->getScopeType(), (int) $row->getScopeId());
             if (self::fitsCatalog((string) $row->getCapability(), $scope)) {
                 $fitting[] = [$row, $scope];
             }
@@ -272,9 +275,9 @@ final class PortalAuthorizationService implements PortalAuthorization
 
     /**
      * The core scopes among these whose family, team, ministry or group is gone,
-     * keyed by PortalScope::key(). A plugin's own scope type is the plugin's to check.
+     * keyed by Scope::key(). A plugin's own scope type is the plugin's to check.
      *
-     * @param PortalScope[] $scopes
+     * @param Scope[] $scopes
      *
      * @return array<string, true>
      */
@@ -282,7 +285,7 @@ final class PortalAuthorizationService implements PortalAuthorization
     {
         $ids = [];
         foreach ($scopes as $scope) {
-            if ($scope->type !== PortalScope::NONE) {
+            if ($scope->type !== Scope::NONE) {
                 $ids[$scope->type][$scope->id] = $scope->id;
             }
         }
@@ -290,10 +293,10 @@ final class PortalAuthorizationService implements PortalAuthorization
         $missing = [];
         foreach ($ids as $type => $typeIds) {
             $query = match ($type) {
-                PortalScope::FAMILY => FamilyQuery::create(),
-                PortalScope::TEAM => VolunteerTeamQuery::create(),
-                PortalScope::MINISTRY => VolunteerMinistryQuery::create(),
-                PortalScope::GROUP => GroupQuery::create(),
+                Scope::FAMILY => FamilyQuery::create(),
+                Scope::TEAM => VolunteerTeamQuery::create(),
+                Scope::MINISTRY => VolunteerMinistryQuery::create(),
+                Scope::GROUP => GroupQuery::create(),
                 default => null,
             };
             if ($query === null) {
@@ -322,7 +325,7 @@ final class PortalAuthorizationService implements PortalAuthorization
      * A grant counts only for a known capability on a scope of its type. A
      * plugin's rule may give only that plugin's own capabilities.
      */
-    public static function fitsCatalog(string $capability, PortalScope $scope, ?string $ruleOwner = null): bool
+    public static function fitsCatalog(string $capability, Scope $scope, ?string $ruleOwner = null): bool
     {
         $definition = PortalCapabilityRegistry::get($capability);
 

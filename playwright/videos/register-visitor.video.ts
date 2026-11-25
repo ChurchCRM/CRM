@@ -19,9 +19,10 @@ test('register-first-time-visitor', async ({ page }, testInfo) => {
 
   await humanClick(page.getByRole('button', { name: 'Add Note' }));
   const followUp = 'Welcome team: call Avery this week to thank them for visiting and invite them to Sunday coffee.';
-  await humanType(page.locator('#noteText'), followUp);
+  await humanType(page.locator('#noteText .ql-editor'), followUp);
   await humanClick(page.locator('#noteWhyCameSave'));
-  const savedNote = page.locator('#timeline .note-preview').filter({ hasText: followUp });
+  await humanClick(page.locator('#nav-item-notes'));
+  const savedNote = page.locator('#notes .note-preview').filter({ hasText: followUp });
   await expect(savedNote).toBeVisible();
   await savedNote.scrollIntoViewIfNeeded();
   await settle(page, 2500);

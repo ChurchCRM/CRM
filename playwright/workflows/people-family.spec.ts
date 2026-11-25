@@ -15,7 +15,7 @@ test.describe('People & Families', () => {
     title: 'Family Profile',
     category: 'People & Families',
     dark: 'people-family-overview-dark',
-    purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
+    purpose: 'Show how ChurchCRM organizes people and families, with member photos, phone numbers and emails',
     usedIn: ['docs', 'website'],
   });
   test('people-family-overview', peopleFamilyOverviewCapture, async ({ page }, testInfo) => {
@@ -38,11 +38,8 @@ test.describe('People & Families', () => {
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
     await settle(page, 1000);
 
-    // Not "...and a geocoded map": family-view.php stacks the photo above
-    // the Address card in a narrow right column, so the map itself renders
-    // below the fold at this viewport regardless of family — the
-    // "Geocoded" badge is what's actually visible in frame. See
-    // marketing-visuals-pipeline.md's "Map visibility" note.
+    // The landing view holds the profile header and the member rows; the Address card
+    // and its map sit below the members, so the frame shows the people, not the map.
     await captureScreen(page, testInfo, peopleFamilyOverviewCapture);
   });
 

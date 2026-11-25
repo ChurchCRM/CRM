@@ -123,7 +123,7 @@ describe("Label sheets", () => {
         [mailing("5160"), NAME_TAGS, familyLabels("newsletter"), familyLabels("confirm")].forEach((url) => {
             cy.request({ url, followRedirect: false, failOnStatusCode: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.headers.location).to.match(/\/admin\/$/);
+                expect(response.headers.location).to.match(/\/session\/begin$/);
             });
         });
     });

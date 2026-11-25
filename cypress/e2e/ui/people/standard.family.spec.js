@@ -179,7 +179,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         cy.contains("Family Profile");
         cy.get("i.fa-ring").should("be.visible");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).should("be.visible");
-        cy.get("li").contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).find("i.fa-ring").should("be.visible");
+        cy.get("#family-profile-header").contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).find("i.fa-ring").should("be.visible");
     });
 });
 

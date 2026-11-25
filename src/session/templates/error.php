@@ -34,6 +34,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <i class="fa-solid fa-arrow-right-to-bracket me-2"></i><?= gettext('Back to Login') ?>
       </a>
     </div>
+    <?php require __DIR__ . '/partials/back-to-chooser.php'; ?>
   </div>
 </main>
 <?php

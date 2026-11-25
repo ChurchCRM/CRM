@@ -6,6 +6,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+?>
+<div id="logSettings" class="mb-3"></div>
+<?php
 
 // Calculate log statistics
 $totalLogFiles = count($logFiles ?? []);

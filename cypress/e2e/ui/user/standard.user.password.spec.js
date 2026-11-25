@@ -83,6 +83,10 @@ describe("Standard User Password", () => {
         cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#PasswordStrengthHint").should("not.be.empty");
+        // 7 chars with all character classes: capped at Weak under default min length (8)
+        cy.get("#NewPassword1").clear().type("Aa1!567");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
         cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
@@ -260,6 +264,10 @@ describe("Forced Password Change Strength Meter", () => {
         cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#PasswordStrengthHint").should("not.be.empty");
+        // 7 chars with all character classes: capped at Weak under default min length (8)
+        cy.get("#NewPassword1").clear().type("Aa1!567");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
         cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
         cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
         cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
@@ -270,5 +278,67 @@ describe("Forced Password Change Strength Meter", () => {
         cy.get("#NewPassword1").should("have.value", "P@ssw0rd!2026");
         cy.get("#NewPassword1").clear();
         cy.get("#PasswordStrengthContainer").should("not.be.visible");
+    });
+});
+
+describe("Password Strength Meter - configured minimum length", () => {
+    let originalMinPasswordLength;
+
+    before(() => {
+        cy.getSystemConfig("iMinPasswordLength").then((value) => {
+            originalMinPasswordLength = value;
+        });
+    });
+
+    after(() => {
+        cy.restoreSystemConfig("iMinPasswordLength", originalMinPasswordLength);
+    });
+
+    it("Respects a raised iMinPasswordLength on the standard password form", () => {
+        cy.setSystemConfig("iMinPasswordLength", 12);
+        cy.setupStandardSession();
+        cy.visit("/account/password");
+
+        cy.get("#PasswordStrengthContainer").should("have.attr", "data-min-length", "12");
+
+        // 10 chars with all character classes: >= 8, but shorter than configured min (12) -> capped at Weak
+        cy.get("#NewPassword1").type("P@ssw0rd!2");
+        cy.get("#PasswordStrengthContainer").should("be.visible");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
+
+        // 12 chars (mixed case + digit, no symbol): hits first length point (12) but not second (16) -> Good
+        cy.get("#NewPassword1").clear().type("Abcdefghijk1");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Good");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "75");
+
+        // 16 chars (12 + 4, mixed case + digit, no symbol): hits both length points -> Strong
+        cy.get("#NewPassword1").clear().type("Abcdefghijk12345");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
+    });
+
+    it("Respects a raised iMinPasswordLength on the forced-change form", () => {
+        cy.setSystemConfig("iMinPasswordLength", 12);
+        cy.clearCookies();
+        cy.visit("/session/begin");
+        cy.get("input[name=User]").type("mustchange.user");
+        cy.get("input[name=Password]").type("changeme{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/account/password");
+        cy.contains("Password Change Required").should("be.visible");
+
+        cy.get("#PasswordStrengthContainer").should("have.attr", "data-min-length", "12");
+
+        cy.get("#NewPassword1").type("P@ssw0rd!2");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
+
+        cy.get("#NewPassword1").clear().type("Abcdefghijk1");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Good");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "75");
+
+        cy.get("#NewPassword1").clear().type("Abcdefghijk12345");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
     });
 });

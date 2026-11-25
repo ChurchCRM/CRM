@@ -14,7 +14,7 @@
  * the admin user menu; `docker-admin.config.ts` is the config that runs it.
  */
 
-const ADMIN_DASHBOARD = "/v2/dashboard";
+const ADMIN_DASHBOARD = "/people/dashboard";
 const PORTAL_HOME = "/portal/";
 
 const ADMIN_CONSOLE_TEXT = "Admin Console";

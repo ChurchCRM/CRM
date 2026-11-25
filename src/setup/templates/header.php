@@ -10,6 +10,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Type" content="text/html">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script nonce="<?= $nonce ?>">
+            (function () {
+                var root = document.documentElement;
+                var mql = window.matchMedia("(prefers-color-scheme: dark)");
+                var apply = function () {
+                    if (mql.matches) {
+                        root.setAttribute("data-bs-theme", "dark");
+                    } else {
+                        root.removeAttribute("data-bs-theme");
+                    }
+                };
+                apply();
+                mql.addEventListener("change", apply);
+            })();
+        </script>
 
         <link rel="shortcut icon" href="<?= $rootPath ?>/favicon.ico">
         

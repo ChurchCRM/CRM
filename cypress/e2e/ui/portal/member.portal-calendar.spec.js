@@ -42,15 +42,6 @@ const setVisibleCalendars = (visible) =>
         failOnStatusCode: false,
     });
 
-const setConfig = (name, value) =>
-    cy.request({
-        method: "POST",
-        url: `/admin/api/system/config/${name}`,
-        headers: { "content-type": "application/json", "x-api-key": adminKey() },
-        body: { value },
-        failOnStatusCode: false,
-    });
-
 const statusOf = (url) => cy.request({ url, failOnStatusCode: false, followRedirect: false }).its("status");
 
 const loginAsMember = () => {
@@ -262,18 +253,8 @@ describe("Member Portal calendar", () => {
         const MINISTRY_NAME = `PortalLegend ${Cypress._.random(0, 1e6)}`;
         let ministryId = 0;
         let ministryCalendarId = 0;
-        let originalVersion = "v1";
 
         before(() => {
-            cy.request({
-                method: "GET",
-                url: "/admin/api/system/config/sVolunteerVersion",
-                headers: { "x-api-key": adminKey() },
-            }).then((resp) => {
-                originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-            });
-            setConfig("sVolunteerVersion", "v2");
-
             cy.request({
                 method: "POST",
                 url: "/api/ministries/ministries",
@@ -326,7 +307,6 @@ describe("Member Portal calendar", () => {
                     headers: { "x-api-key": adminKey() },
                     failOnStatusCode: false,
                 });
-                setConfig("sVolunteerVersion", originalVersion);
                 setVisibleCalendars([]);
             });
         });

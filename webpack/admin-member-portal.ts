@@ -271,7 +271,7 @@ function wireSettingsPanels(): void {
     options: { title: string; icon: string; settings: CRMSettingsPanelSetting[]; onSave?: () => void },
   ): void => {
     if (document.querySelector(container)) {
-      new SettingsPanel().init({ container, showAllSettingsLink: false, autoSave: true, ...options });
+      new SettingsPanel().init({ container, autoSave: true, ...options });
     }
   };
 

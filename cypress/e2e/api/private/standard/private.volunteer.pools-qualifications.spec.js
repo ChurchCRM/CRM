@@ -46,15 +46,13 @@
  *   person 900 `plainauth.api.key`  the "no volunteer rights" negative case
  *
  * §6.6 rule honoured: never assert a strict 403 on an admin-keyed call to a
- * role-gated route. The admin-keyed 403s below come from
- * VolunteerV2EnabledMiddleware, which nobody bypasses.
+ * role-gated route.
  *
  * Cleanup runs in `before` AND `after` (cypress-testing.md: an `after` hook does
  * not run when the runner crashes mid-spec), children first so no foreign key
  * blocks.
  */
 
-const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 const SCOPES_URL = `${VOLUNTEER_URL}/scopes`;
@@ -118,10 +116,6 @@ function dbOk(sql, params = []) {
         }
         return result.rows;
     });
-}
-
-function setVersion(value) {
-    cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
 /**
@@ -243,7 +237,6 @@ before(() => {
 
 describe("Volunteer v2 pool and qualification API (#9707)", () => {
     before(() => {
-        setVersion("v2");
         cleanupFixtures();
 
         createMinistry("Coffee Bar").then((id) => {
@@ -284,7 +277,6 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
 
     after(() => {
         cleanupFixtures();
-        setVersion("v1");
     });
 
     // -----------------------------------------------------------------
@@ -300,25 +292,6 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             }).then((resp) => {
                 expect(resp.status).to.eq(401);
             });
-        });
-
-        it("returns 403 for the pool and qualification routes while the rollout state is v1", () => {
-            setVersion("v1");
-            // Admin deliberately: this 403 is VolunteerV2EnabledMiddleware, which an
-            // administrator does NOT bypass.
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${MINISTRIES_URL}/${ministryA}/pool`,
-                null,
-                403,
-            );
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${VOLUNTEER_URL}/positions/${positionSetup}/qualifications`,
-                null,
-                403,
-            );
-            setVersion("v2");
         });
 
         it("denies a user with no manager flag and no scope", () => {

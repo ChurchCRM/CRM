@@ -21,6 +21,7 @@ const excludes = [
   /^\.gitignore$/,
   /^composer\.lock$/,
   /^Include\/Config\.php$/,
+  /^Include\/SystemID\.php$/,
   /^propel\/propel\.php$/,
   /^integrityCheck\.json$/,
   /^Images\/Person\/thumbnails\//,

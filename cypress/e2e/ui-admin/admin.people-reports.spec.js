@@ -12,9 +12,7 @@ const REPORTS = [
     "person-by-property",
     "birthdays",
     "membership-anniversaries",
-    "volunteers",
     "recent-friends",
-    "volunteers-two-opportunities",
     "missing-people",
     "wedding-anniversaries",
     "people-by-grade",
@@ -41,7 +39,7 @@ function rows() {
 describe("People Reports (#9914, #9915)", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("lists the ten people reports", () => {
+    it("lists the eight people reports", () => {
         cy.visit("/people/reports");
         cy.get("body").should("not.contain", "Fatal error");
         cy.get("#peopleReports a[id^='report-']").should("have.length", REPORTS.length);
@@ -53,7 +51,7 @@ describe("People Reports (#9914, #9915)", () => {
     });
 
     it("is reachable from the Data/Reports menu next to Queries", () => {
-        cy.visit("/v2/dashboard");
+        cy.visit("/people/dashboard");
         cy.get('a[href$="/people/reports"]').should("exist");
         cy.get('a[href$="QueryList.php"]').should("not.exist");
     });
@@ -169,8 +167,8 @@ describe("People Reports (#9914, #9915)", () => {
     });
 
     it("reports without a required choice show the form and no results", () => {
-        cy.visit("/people/reports/volunteers");
-        cy.get("#opportunity").should("exist");
+        cy.visit("/people/reports/person-by-property");
+        cy.get("#property").should("exist");
         cy.get("#reportResults").should("not.exist");
     });
 
