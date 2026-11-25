@@ -27423,14 +27423,6 @@ msgid "Choose a different way to sign in"
 msgstr "Odaberite drugi način prijave"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM ne može pristupiti bazi podataka na adresi localhost. Pokušajte umjesto toga s 127.0.0.1 ili pitajte svog web-domaćina za naziv domaćina baze podataka."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM ne može pristupiti poslužitelju baze podataka na toj adresi i portu. Provjerite naziv domaćina i port. Na dijeljenom hostingu domaćin često nije localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM ne može pročitati svoju provjeru izdanja. Zamolite web-domaćina da mapu ChurchCRM učini čitljivom ili nastavite."
 
@@ -27445,10 +27437,6 @@ msgstr "ChurchCRM nije mogao provjeriti svoje datoteke. Zamolite web-domaćina d
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM nije mogao provjeriti softver poslužitelja"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM se nije mogao povezati s bazom podataka s ovim postavkama."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27481,14 +27469,6 @@ msgstr "Povezivanje s vašom bazom podataka…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Nije bilo moguće spremiti vašu glavnu nadzornu ploču."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Najprije stvorite MySQL ili MariaDB bazu podataka u upravljačkoj ploči hostinga (u cPanelu: %s), a zatim ovdje kopirajte njezine podatke. ChurchCRM podržava MySQL 8.4+ i MariaDB 10.11+ (LTS izdanja)."
-
-#: 
-msgid "Database host"
-msgstr "Domaćin baze podataka"
 
 #: 
 msgid "Database name"
@@ -27555,10 +27535,6 @@ msgid "Files to review"
 msgstr "Datoteke za pregled"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Pripremite podatke o bazi podataka od svog web-domaćina. Traje oko dvije minute."
-
-#: 
 msgid "Hide"
 msgstr "Sakrij"
 
@@ -27617,10 +27593,6 @@ msgstr "Nema bilješki u ovom vremenskom rasponu."
 #: 
 msgid "No notes yet."
 msgstr "Još nema bilješki."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Često %1$s. Neki domaćini daju adresu poput %2$s."
 
 #: 
 msgid "Open total"
@@ -27715,32 +27687,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Nadzorna ploča koja vam se otvara nakon prijave"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Poslužitelj baze podataka prihvatio je prijavu, ali ne postoji baza podataka s tim nazivom."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Poslužitelj baze podataka odbio je to korisničko ime ili lozinku."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Naziv koji ste dali bazi podataka. Dijeljeni domaćini često ispred dodaju naziv vašeg računa, poput %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Lozinka tog korisnika baze podataka. ChurchCRM provjerava ove podatke kada kliknete Instaliraj."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Datoteka provjere izdanja na ovom poslužitelju ne odgovara ChurchCRM. Ponovno prenesite izdanje ili nastavite i zamolite web-domaćina za pomoć."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Probna poruka ide na e-adresu crkve, a zapisnik otklanjanja pogrešaka SMTP-a prikazuje se ovdje."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Korisnik kojeg ste dodali u tu bazu podataka. Ne vaša prijava za hosting."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27773,10 +27725,6 @@ msgstr "Ovo je vaš crkveni račun. Sve što možete učiniti sami nalazi se ovd
 #: 
 msgid "Total deposited"
 msgstr "Ukupno uplaćeno"
-
-#: 
-msgid "Usually 3306."
-msgstr "Obično 3306."
 
 #: 
 msgid "Web address"

@@ -27398,14 +27398,6 @@ msgid "Choose a different way to sign in"
 msgstr "Chọn cách đăng nhập khác"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM không thể kết nối tới cơ sở dữ liệu tại localhost. Hãy thử 127.0.0.1 thay vào đó, hoặc hỏi nhà cung cấp dịch vụ lưu trữ web của bạn về tên máy chủ cơ sở dữ liệu."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM không thể kết nối tới máy chủ cơ sở dữ liệu tại địa chỉ và cổng đó. Hãy kiểm tra tên máy chủ và cổng. Trên dịch vụ lưu trữ chia sẻ, máy chủ thường không phải là localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM không thể đọc tệp kiểm tra phiên bản của nó. Hãy yêu cầu nhà cung cấp dịch vụ lưu trữ web làm cho thư mục ChurchCRM có thể đọc được, hoặc tiếp tục."
 
@@ -27420,10 +27412,6 @@ msgstr "ChurchCRM không thể kiểm tra các tệp của nó. Hãy yêu cầu 
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM không thể kiểm tra phần mềm máy chủ"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM không thể kết nối tới cơ sở dữ liệu với các cài đặt này."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27456,14 +27444,6 @@ msgstr "Đang kết nối tới cơ sở dữ liệu của bạn…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Không thể lưu bảng điều khiển chính của bạn."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Trước tiên hãy tạo cơ sở dữ liệu MySQL hoặc MariaDB trong bảng điều khiển lưu trữ của bạn (trong cPanel: %s), sau đó sao chép thông tin của nó vào đây. ChurchCRM hỗ trợ MySQL 8.4+ và MariaDB 10.11+ (các phiên bản LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Máy chủ cơ sở dữ liệu"
 
 #: 
 msgid "Database name"
@@ -27530,10 +27510,6 @@ msgid "Files to review"
 msgstr "Các tệp cần xem xét"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Hãy chuẩn bị sẵn thông tin cơ sở dữ liệu từ nhà cung cấp dịch vụ lưu trữ web của bạn. Quá trình này mất khoảng hai phút."
-
-#: 
 msgid "Hide"
 msgstr "Ẩn"
 
@@ -27592,10 +27568,6 @@ msgstr "Không có ghi chú nào trong khoảng thời gian này."
 #: 
 msgid "No notes yet."
 msgstr "Chưa có ghi chú nào."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Thường là %1$s. Một số nhà cung cấp đưa ra địa chỉ như %2$s."
 
 #: 
 msgid "Open total"
@@ -27690,32 +27662,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Bảng điều khiển bạn mở sau khi đăng nhập"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Máy chủ cơ sở dữ liệu đã chấp nhận thông tin đăng nhập, nhưng không có cơ sở dữ liệu nào có tên đó."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Máy chủ cơ sở dữ liệu đã từ chối tên người dùng hoặc mật khẩu đó."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Tên bạn đã đặt cho cơ sở dữ liệu. Các nhà cung cấp lưu trữ chia sẻ thường thêm tên tài khoản của bạn vào phía trước, ví dụ %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Mật khẩu cho người dùng cơ sở dữ liệu đó. ChurchCRM sẽ kiểm tra các thông tin này khi bạn nhấp vào Cài đặt."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Tệp kiểm tra phiên bản phát hành trên máy chủ này không khớp với ChurchCRM. Hãy tải phiên bản phát hành lên lại, hoặc tiếp tục và yêu cầu nhà cung cấp dịch vụ lưu trữ web trợ giúp."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Thư kiểm tra sẽ được gửi đến địa chỉ email của nhà thờ và hiển thị nhật ký gỡ lỗi SMTP tại đây."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Người dùng bạn đã thêm vào cơ sở dữ liệu đó. Không phải thông tin đăng nhập lưu trữ của bạn."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27748,10 +27700,6 @@ msgstr "Đây là tài khoản nhà thờ của bạn. Mọi thứ bạn có th�
 #: 
 msgid "Total deposited"
 msgstr "Tổng số đã nộp"
-
-#: 
-msgid "Usually 3306."
-msgstr "Thường là 3306."
 
 #: 
 msgid "Web address"

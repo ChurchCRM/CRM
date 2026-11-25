@@ -27492,14 +27492,6 @@ msgid "Choose a different way to sign in"
 msgstr "Velg en annen måte å logge inn på"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM får ikke kontakt med en database på localhost. Prøv 127.0.0.1 i stedet, eller spør webverten din om vertsnavnet til databasen."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM får ikke kontakt med databaseserveren på den adressen og porten. Sjekk vertsnavnet og porten. På delt hosting er verten ofte ikke localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM kan ikke lese utgivelseskontrollen sin. Be webverten din gjøre ChurchCRM-mappen lesbar, eller fortsett."
 
@@ -27514,10 +27506,6 @@ msgstr "ChurchCRM kunne ikke sjekke filene sine. Be webverten din se i serverens
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM kunne ikke sjekke serverprogramvaren"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM kunne ikke koble til databasen med disse innstillingene."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27550,14 +27538,6 @@ msgstr "Kobler til databasen din…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Kunne ikke lagre hoveddashbordet ditt."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Opprett først en MySQL- eller MariaDB-database i hostingkontrollpanelet ditt (i cPanel: %s), og kopier deretter detaljene hit. ChurchCRM støtter MySQL 8.4+ og MariaDB 10.11+ (LTS-utgivelsene)."
-
-#: 
-msgid "Database host"
-msgstr "Databasevert"
 
 #: 
 msgid "Database name"
@@ -27624,10 +27604,6 @@ msgid "Files to review"
 msgstr "Filer til gjennomgang"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Ha databasedetaljene fra webverten din klare. Det tar omtrent to minutter."
-
-#: 
 msgid "Hide"
 msgstr "Skjul"
 
@@ -27686,10 +27662,6 @@ msgstr "Ingen notater i dette tidsrommet."
 #: 
 msgid "No notes yet."
 msgstr "Ingen notater ennå."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Ofte %1$s. Noen verter gir en adresse som %2$s."
 
 #: 
 msgid "Open total"
@@ -27784,32 +27756,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Dashbordet du kommer til etter innlogging"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Databaseserveren godtok innloggingen, men det finnes ingen database med det navnet."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Databaseserveren avviste det brukernavnet eller passordet."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Navnet du ga databasen. Delte verter legger ofte kontonavnet ditt foran, som %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Passordet for den databasebrukeren. ChurchCRM sjekker disse detaljene når du klikker på Installer."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Utgivelseskontrollfilen på denne serveren samsvarer ikke med ChurchCRM. Last opp utgivelsen på nytt, eller fortsett og be webverten din om hjelp."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Testmeldingen går til menighetens e-postadresse og viser SMTP-feilsøkingsloggen her."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Brukeren du la til i den databasen. Ikke hosting-innloggingen din."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27842,10 +27794,6 @@ msgstr "Dette er menighetskontoen din. Alt du kan gjøre for deg selv, finner du
 #: 
 msgid "Total deposited"
 msgstr "Totalt innskudd"
-
-#: 
-msgid "Usually 3306."
-msgstr "Vanligvis 3306."
 
 #: 
 msgid "Web address"

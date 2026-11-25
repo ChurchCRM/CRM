@@ -27422,14 +27422,6 @@ msgid "Choose a different way to sign in"
 msgstr "Επιλέξτε διαφορετικό τρόπο σύνδεσης"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "Το ChurchCRM δεν μπορεί να συνδεθεί σε βάση δεδομένων στο localhost. Δοκιμάστε αντ' αυτού το 127.0.0.1 ή ζητήστε από τον πάροχο φιλοξενίας σας το όνομα του διακομιστή της βάσης δεδομένων."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "Το ChurchCRM δεν μπορεί να φτάσει τον διακομιστή βάσης δεδομένων σε αυτή τη διεύθυνση και θύρα. Ελέγξτε το όνομα του διακομιστή και τη θύρα. Στην κοινόχρηστη φιλοξενία ο διακομιστής συχνά δεν είναι localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "Το ChurchCRM δεν μπορεί να διαβάσει τον έλεγχο έκδοσής του. Ζητήστε από τον πάροχο φιλοξενίας σας να κάνει τον φάκελο του ChurchCRM αναγνώσιμο, ή συνεχίστε."
 
@@ -27444,10 +27436,6 @@ msgstr "Το ChurchCRM δεν μπόρεσε να ελέγξει τα αρχεί
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "Το ChurchCRM δεν μπόρεσε να ελέγξει το λογισμικό του διακομιστή"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "Το ChurchCRM δεν μπόρεσε να συνδεθεί στη βάση δεδομένων με αυτές τις ρυθμίσεις."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27480,14 +27468,6 @@ msgstr "Σύνδεση στη βάση δεδομένων σας…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Δεν ήταν δυνατή η αποθήκευση του κύριου πίνακα ελέγχου σας."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Δημιουργήστε πρώτα μια βάση δεδομένων MySQL ή MariaDB στον πίνακα ελέγχου της φιλοξενίας σας (στο cPanel: %s), και μετά αντιγράψτε τα στοιχεία της εδώ. Το ChurchCRM υποστηρίζει MySQL 8.4+ και MariaDB 10.11+ (τις εκδόσεις LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Διακομιστής βάσης δεδομένων"
 
 #: 
 msgid "Database name"
@@ -27554,10 +27534,6 @@ msgid "Files to review"
 msgstr "Αρχεία προς έλεγχο"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Να έχετε έτοιμα τα στοιχεία της βάσης δεδομένων από τον πάροχο φιλοξενίας σας. Χρειάζονται περίπου δύο λεπτά."
-
-#: 
 msgid "Hide"
 msgstr "Απόκρυψη"
 
@@ -27616,10 +27592,6 @@ msgstr "Δεν υπάρχουν σημειώσεις σε αυτό το χρον
 #: 
 msgid "No notes yet."
 msgstr "Δεν υπάρχουν σημειώσεις ακόμη."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Συχνά %1$s. Ορισμένοι πάροχοι δίνουν μια διεύθυνση όπως %2$s."
 
 #: 
 msgid "Open total"
@@ -27714,32 +27686,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Ο πίνακας ελέγχου που ανοίγει μετά τη σύνδεσή σας"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Ο διακομιστής βάσης δεδομένων αποδέχτηκε τη σύνδεση, αλλά δεν υπάρχει βάση δεδομένων με αυτό το όνομα."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Ο διακομιστής βάσης δεδομένων απέρριψε αυτό το όνομα χρήστη ή τον κωδικό πρόσβασης."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Το όνομα που δώσατε στη βάση δεδομένων. Οι κοινόχρηστοι πάροχοι συχνά προσθέτουν το όνομα του λογαριασμού σας μπροστά, όπως %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Ο κωδικός πρόσβασης για αυτόν τον χρήστη βάσης δεδομένων. Το ChurchCRM ελέγχει αυτά τα στοιχεία όταν κάνετε κλικ στην Εγκατάσταση."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Το αρχείο ελέγχου έκδοσης σε αυτόν τον διακομιστή δεν ταιριάζει με το ChurchCRM. Ανεβάστε ξανά την έκδοση, ή συνεχίστε και ζητήστε βοήθεια από τον πάροχο φιλοξενίας σας."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Το δοκιμαστικό μήνυμα πηγαίνει στη διεύθυνση email της εκκλησίας και εμφανίζει εδώ το αρχείο καταγραφής εντοπισμού σφαλμάτων SMTP."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Ο χρήστης που προσθέσατε σε αυτή τη βάση δεδομένων. Όχι τα στοιχεία σύνδεσης της φιλοξενίας σας."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27772,10 +27724,6 @@ msgstr "Αυτός είναι ο λογαριασμός της εκκλησία�
 #: 
 msgid "Total deposited"
 msgstr "Συνολικό ποσό καταθέσεων"
-
-#: 
-msgid "Usually 3306."
-msgstr "Συνήθως 3306."
 
 #: 
 msgid "Web address"

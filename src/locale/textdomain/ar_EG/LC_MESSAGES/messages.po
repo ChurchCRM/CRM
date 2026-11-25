@@ -27560,14 +27560,6 @@ msgid "Choose a different way to sign in"
 msgstr "اختر طريقة أخرى لتسجيل الدخول"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "لا يستطيع ChurchCRM الوصول إلى قاعدة بيانات على localhost. جرّب 127.0.0.1 بدلاً من ذلك، أو اسأل مضيف الويب عن اسم مضيف قاعدة البيانات."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "لا يستطيع ChurchCRM الوصول إلى خادم قاعدة البيانات على هذا العنوان والمنفذ. تحقق من اسم المضيف والمنفذ. في الاستضافة المشتركة غالبًا لا يكون المضيف هو localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "لا يستطيع ChurchCRM قراءة فحص الإصدار الخاص به. اطلب من مضيف الويب جعل مجلد ChurchCRM قابلاً للقراءة، أو تابع."
 
@@ -27582,10 +27574,6 @@ msgstr "تعذّر على ChurchCRM التحقق من ملفاته. اطلب م�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "تعذّر على ChurchCRM التحقق من برنامج الخادم"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "تعذّر على ChurchCRM الاتصال بقاعدة البيانات بهذه الإعدادات."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27618,14 +27606,6 @@ msgstr "جارٍ الاتصال بقاعدة بياناتك…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "تعذّر حفظ لوحة المعلومات الرئيسية الخاصة بك."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "أنشئ أولاً قاعدة بيانات MySQL أو MariaDB في لوحة تحكم الاستضافة (في cPanel: %s)، ثم انسخ تفاصيلها هنا. يدعم ChurchCRM ‏MySQL 8.4+ وMariaDB 10.11+ (إصدارات LTS)."
-
-#: 
-msgid "Database host"
-msgstr "مضيف قاعدة البيانات"
 
 #: 
 msgid "Database name"
@@ -27692,10 +27672,6 @@ msgid "Files to review"
 msgstr "ملفات للمراجعة"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "جهّز تفاصيل قاعدة البيانات من مضيف الويب. يستغرق الأمر حوالي دقيقتين."
-
-#: 
 msgid "Hide"
 msgstr "إخفاء"
 
@@ -27754,10 +27730,6 @@ msgstr "لا توجد ملاحظات في هذا النطاق الزمني."
 #: 
 msgid "No notes yet."
 msgstr "لا توجد ملاحظات بعد."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "غالبًا %1$s. بعض المضيفين يعطون عنوانًا مثل %2$s."
 
 #: 
 msgid "Open total"
@@ -27852,32 +27824,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "لوحة المعلومات التي تفتحها بعد تسجيل الدخول"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "قبل خادم قاعدة البيانات تسجيل الدخول، ولكن لا توجد قاعدة بيانات بهذا الاسم."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "رفض خادم قاعدة البيانات اسم المستخدم أو كلمة السر هذه."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "الاسم الذي أعطيته لقاعدة البيانات. غالبًا ما يضيف المضيفون المشتركون اسم حسابك في المقدمة، مثل %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "كلمة السر لمستخدم قاعدة البيانات هذا. يتحقق ChurchCRM من هذه التفاصيل عند النقر على تثبيت."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "ملف فحص الإصدار على هذا الخادم لا يطابق ChurchCRM. أعد رفع الإصدار، أو تابع واطلب المساعدة من مضيف الويب."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "تذهب الرسالة التجريبية إلى عنوان البريد الإلكتروني للكنيسة وتُظهر سجل تصحيح SMTP هنا."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "المستخدم الذي أضفته إلى قاعدة البيانات هذه. ليس تسجيل دخول الاستضافة الخاص بك."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27910,10 +27862,6 @@ msgstr "هذا هو حساب كنيستك. كل ما يمكنك فعله لنف�
 #: 
 msgid "Total deposited"
 msgstr "إجمالي المودَع"
-
-#: 
-msgid "Usually 3306."
-msgstr "عادة 3306."
 
 #: 
 msgid "Web address"

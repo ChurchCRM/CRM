@@ -27355,14 +27355,6 @@ msgid "Choose a different way to sign in"
 msgstr "別のサインイン方法を選択"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRMはlocalhostのデータベースに接続できません。代わりに127.0.0.1を試すか、ウェブホストにデータベースのホスト名をお問い合わせください。"
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRMはそのアドレスとポートのデータベースサーバーに接続できません。ホスト名とポートを確認してください。共有ホスティングでは、ホストがlocalhostでないことがよくあります。"
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRMはリリースチェックを読み取れません。ウェブホストにChurchCRMフォルダを読み取り可能にしてもらうか、続行してください。"
 
@@ -27377,10 +27369,6 @@ msgstr "ChurchCRMはファイルを確認できませんでした。ウェブホ
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRMはサーバーソフトウェアを確認できませんでした"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRMはこれらの設定でデータベースに接続できませんでした。"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27413,14 +27401,6 @@ msgstr "データベースに接続しています…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "メインダッシュボードを保存できませんでした。"
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "まずホスティングのコントロールパネルでMySQLまたはMariaDBデータベースを作成し（cPanelの場合：%s）、その詳細をここにコピーしてください。ChurchCRMはMySQL 8.4以降とMariaDB 10.11以降（LTSリリース）をサポートします。"
-
-#: 
-msgid "Database host"
-msgstr "データベースホスト"
 
 #: 
 msgid "Database name"
@@ -27487,10 +27467,6 @@ msgid "Files to review"
 msgstr "確認が必要なファイル"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "ウェブホストから提供されたデータベースの詳細をご用意ください。約2分かかります。"
-
-#: 
 msgid "Hide"
 msgstr "非表示"
 
@@ -27549,10 +27525,6 @@ msgstr "この期間にはメモがありません。"
 #: 
 msgid "No notes yet."
 msgstr "メモはまだありません。"
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "多くの場合 %1$s です。ホストによっては %2$s のようなアドレスが提供されます。"
 
 #: 
 msgid "Open total"
@@ -27647,32 +27619,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "サインイン後に開くダッシュボード"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "データベースサーバーはログインを受け付けましたが、その名前のデータベースがありません。"
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "データベースサーバーがそのユーザー名またはパスワードを拒否しました。"
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "データベースに付けた名前。共有ホストでは、多くの場合、アカウント名が前に付きます（例：%s）。"
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "そのデータベースユーザーのパスワード。「インストール」をクリックすると、ChurchCRMがこれらの詳細を確認します。"
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "このサーバーのリリースチェックファイルがChurchCRMと一致しません。リリースを再アップロードするか、続行してウェブホストに助けを求めてください。"
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "テストメッセージは教会のメールアドレスに送信され、SMTPデバッグログがここに表示されます。"
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "そのデータベースに追加したユーザー。ホスティングのログインではありません。"
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27705,10 +27657,6 @@ msgstr "これはあなたの教会アカウントです。自分のためにで
 #: 
 msgid "Total deposited"
 msgstr "入金合計"
-
-#: 
-msgid "Usually 3306."
-msgstr "通常は3306です。"
 
 #: 
 msgid "Web address"

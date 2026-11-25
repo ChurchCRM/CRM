@@ -27367,14 +27367,6 @@ msgid "Choose a different way to sign in"
 msgstr "เลือกวิธีเข้าสู่ระบบอื่น"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM ไม่สามารถเข้าถึงฐานข้อมูลที่ localhost ได้ ลองใช้ 127.0.0.1 แทน หรือสอบถามชื่อโฮสต์ฐานข้อมูลจากผู้ให้บริการเว็บโฮสติ้งของคุณ"
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM ไม่สามารถเข้าถึงเซิร์ฟเวอร์ฐานข้อมูลที่ที่อยู่และพอร์ตนั้นได้ ตรวจสอบชื่อโฮสต์และพอร์ต บนโฮสติ้งแบบแชร์ โฮสต์มักจะไม่ใช่ localhost"
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM ไม่สามารถอ่านการตรวจสอบเวอร์ชันของตนได้ โปรดขอให้ผู้ให้บริการเว็บโฮสติ้งของคุณทำให้โฟลเดอร์ ChurchCRM อ่านได้ หรือดำเนินการต่อ"
 
@@ -27389,10 +27381,6 @@ msgstr "ChurchCRM ไม่สามารถตรวจสอบไฟล์�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM ไม่สามารถตรวจสอบซอฟต์แวร์ของเซิร์ฟเวอร์ได้"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM ไม่สามารถเชื่อมต่อกับฐานข้อมูลด้วยการตั้งค่าเหล่านี้ได้"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27425,14 +27413,6 @@ msgstr "กำลังเชื่อมต่อกับฐานข้อม
 #: 
 msgid "Could not save your main dashboard."
 msgstr "ไม่สามารถบันทึกแดชบอร์ดหลักของคุณได้"
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "สร้างฐานข้อมูล MySQL หรือ MariaDB ในแผงควบคุมโฮสติ้งของคุณก่อน (ใน cPanel: %s) จากนั้นคัดลอกรายละเอียดมาที่นี่ ChurchCRM รองรับ MySQL 8.4+ และ MariaDB 10.11+ (เวอร์ชัน LTS)"
-
-#: 
-msgid "Database host"
-msgstr "โฮสต์ฐานข้อมูล"
 
 #: 
 msgid "Database name"
@@ -27499,10 +27479,6 @@ msgid "Files to review"
 msgstr "ไฟล์ที่ต้องตรวจสอบ"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "เตรียมรายละเอียดฐานข้อมูลจากผู้ให้บริการเว็บโฮสติ้งของคุณให้พร้อม ใช้เวลาประมาณสองนาที"
-
-#: 
 msgid "Hide"
 msgstr "ซ่อน"
 
@@ -27561,10 +27537,6 @@ msgstr "ไม่มีบันทึกในช่วงเวลานี้
 #: 
 msgid "No notes yet."
 msgstr "ยังไม่มีบันทึก"
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "บ่อยครั้งคือ %1$s โฮสต์บางรายให้ที่อยู่เช่น %2$s"
 
 #: 
 msgid "Open total"
@@ -27659,32 +27631,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "แดชบอร์ดที่คุณเปิดหลังจากเข้าสู่ระบบ"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลยอมรับการเข้าสู่ระบบ แต่ไม่มีฐานข้อมูลชื่อนั้น"
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "เซิร์ฟเวอร์ฐานข้อมูลปฏิเสธชื่อผู้ใช้หรือรหัสผ่านนั้น"
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "ชื่อที่คุณตั้งให้กับฐานข้อมูล โฮสต์แบบแชร์มักจะเพิ่มชื่อบัญชีของคุณไว้ด้านหน้า เช่น %s"
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "รหัสผ่านสำหรับผู้ใช้ฐานข้อมูลนั้น ChurchCRM จะตรวจสอบรายละเอียดเหล่านี้เมื่อคุณคลิกติดตั้ง"
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "ไฟล์ตรวจสอบเวอร์ชันบนเซิร์ฟเวอร์นี้ไม่ตรงกับ ChurchCRM อัปโหลดเวอร์ชันอีกครั้ง หรือดำเนินการต่อและขอความช่วยเหลือจากผู้ให้บริการเว็บโฮสติ้งของคุณ"
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "ข้อความทดสอบจะถูกส่งไปยังที่อยู่อีเมลของคริสตจักรและแสดงบันทึกการแก้ไขข้อบกพร่อง SMTP ที่นี่"
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "ผู้ใช้ที่คุณเพิ่มลงในฐานข้อมูลนั้น ไม่ใช่ข้อมูลเข้าสู่ระบบโฮสติ้งของคุณ"
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27717,10 +27669,6 @@ msgstr "นี่คือบัญชีคริสตจักรของค
 #: 
 msgid "Total deposited"
 msgstr "ยอดรวมที่ฝาก"
-
-#: 
-msgid "Usually 3306."
-msgstr "โดยปกติคือ 3306"
 
 #: 
 msgid "Web address"

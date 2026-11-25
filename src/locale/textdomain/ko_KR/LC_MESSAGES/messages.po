@@ -27383,14 +27383,6 @@ msgid "Choose a different way to sign in"
 msgstr "다른 로그인 방법 선택"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM이 localhost의 데이터베이스에 연결할 수 없습니다. 대신 127.0.0.1을 시도하거나 웹 호스트에게 데이터베이스 호스트 이름을 문의하세요."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM이 해당 주소와 포트의 데이터베이스 서버에 연결할 수 없습니다. 호스트 이름과 포트를 확인하세요. 공유 호스팅에서는 호스트가 localhost가 아닌 경우가 많습니다."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM이 릴리스 검사를 읽을 수 없습니다. 웹 호스트에게 ChurchCRM 폴더를 읽을 수 있게 해달라고 요청하거나 계속 진행하세요."
 
@@ -27405,10 +27397,6 @@ msgstr "ChurchCRM이 파일을 확인할 수 없습니다. 웹 호스트에게 �
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM이 서버 소프트웨어를 확인할 수 없습니다"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM이 이 설정으로 데이터베이스에 연결할 수 없습니다."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27441,14 +27429,6 @@ msgstr "데이터베이스에 연결 중…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "메인 대시보드를 저장할 수 없습니다."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "먼저 호스팅 제어판에서 MySQL 또는 MariaDB 데이터베이스를 만드세요(cPanel의 경우: %s). 그런 다음 그 세부 정보를 여기에 복사하세요. ChurchCRM은 MySQL 8.4+ 및 MariaDB 10.11+(LTS 릴리스)를 지원합니다."
-
-#: 
-msgid "Database host"
-msgstr "데이터베이스 호스트"
 
 #: 
 msgid "Database name"
@@ -27515,10 +27495,6 @@ msgid "Files to review"
 msgstr "검토할 파일"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "웹 호스트가 제공한 데이터베이스 세부 정보를 준비하세요. 약 2분 정도 걸립니다."
-
-#: 
 msgid "Hide"
 msgstr "숨기기"
 
@@ -27577,10 +27553,6 @@ msgstr "이 기간에는 메모가 없습니다."
 #: 
 msgid "No notes yet."
 msgstr "아직 메모가 없습니다."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "보통 %1$s입니다. 일부 호스트는 %2$s와 같은 주소를 제공합니다."
 
 #: 
 msgid "Open total"
@@ -27675,32 +27647,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "로그인 후 열리는 대시보드"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "데이터베이스 서버가 로그인을 수락했지만 해당 이름의 데이터베이스가 없습니다."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "데이터베이스 서버가 해당 사용자 이름 또는 비밀번호를 거부했습니다."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "데이터베이스에 지정한 이름입니다. 공유 호스트는 종종 앞에 계정 이름을 붙입니다. 예: %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "해당 데이터베이스 사용자의 비밀번호입니다. 설치를 클릭하면 ChurchCRM이 이 세부 정보를 확인합니다."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "이 서버의 릴리스 검사 파일이 ChurchCRM과 일치하지 않습니다. 릴리스를 다시 업로드하거나 계속 진행하고 웹 호스트에게 도움을 요청하세요."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "테스트 메시지는 교회 이메일 주소로 전송되며 SMTP 디버그 로그가 여기에 표시됩니다."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "해당 데이터베이스에 추가한 사용자입니다. 호스팅 로그인이 아닙니다."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27733,10 +27685,6 @@ msgstr "이것은 귀하의 교회 계정입니다. 자신을 위해 할 수 있
 #: 
 msgid "Total deposited"
 msgstr "입금 총액"
-
-#: 
-msgid "Usually 3306."
-msgstr "보통 3306입니다."
 
 #: 
 msgid "Web address"

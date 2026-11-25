@@ -27421,14 +27421,6 @@ msgid "Choose a different way to sign in"
 msgstr "Vali teine sisselogimisviis"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM ei saa ühendust andmebaasiga aadressil localhost. Proovi selle asemel 127.0.0.1 või küsi oma veebimajutajalt andmebaasi hostinime."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM ei saa ühendust andmebaasiserveriga sellel aadressil ja pordil. Kontrolli hostinime ja porti. Jagatud majutuse korral ei ole host sageli localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM ei saa oma väljalaske kontrolli lugeda. Palu veebimajutajal muuta ChurchCRM-i kaust loetavaks või jätka."
 
@@ -27443,10 +27435,6 @@ msgstr "ChurchCRM ei saanud oma faile kontrollida. Palu veebimajutajal vaadata s
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM ei saanud serveri tarkvara kontrollida"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM ei saanud nende seadistustega andmebaasiga ühendust."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27479,14 +27467,6 @@ msgstr "Ühendamine sinu andmebaasiga…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Sinu põhitöölauda ei saanud salvestada."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Loo esmalt MySQL- või MariaDB-andmebaas oma majutuse juhtpaneelis (cPanelis: %s) ja kopeeri seejärel selle andmed siia. ChurchCRM toetab MySQL 8.4+ ja MariaDB 10.11+ (LTS-väljalasked)."
-
-#: 
-msgid "Database host"
-msgstr "Andmebaasi host"
 
 #: 
 msgid "Database name"
@@ -27553,10 +27533,6 @@ msgid "Files to review"
 msgstr "Ülevaatamist vajavad failid"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Hoia veebimajutajalt saadud andmebaasi andmed käepärast. See võtab umbes kaks minutit."
-
-#: 
 msgid "Hide"
 msgstr "Peida"
 
@@ -27615,10 +27591,6 @@ msgstr "Selles ajavahemikus pole märkusi."
 #: 
 msgid "No notes yet."
 msgstr "Märkusi veel pole."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Sageli %1$s. Mõned majutajad annavad aadressi nagu %2$s."
 
 #: 
 msgid "Open total"
@@ -27713,32 +27685,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Töölaud, mis avaneb pärast sisselogimist"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Andmebaasiserver nõustus sisselogimisega, kuid selle nimega andmebaasi pole."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Andmebaasiserver lükkas selle kasutajanime või parooli tagasi."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Nimi, mille andmebaasile andsid. Jagatud majutajad lisavad sageli ette sinu konto nime, näiteks %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Selle andmebaasikasutaja parool. ChurchCRM kontrollib neid andmeid, kui klõpsad nuppu Installi."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Selle serveri väljalaske kontrollfail ei vasta ChurchCRM-ile. Laadi väljalase uuesti üles või jätka ja küsi abi oma veebimajutajalt."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Testisõnum saadetakse koguduse e-posti aadressile ja SMTP silumislogi kuvatakse siin."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Kasutaja, mille lisasid sellesse andmebaasi. Mitte sinu majutuse sisselogimine."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27771,10 +27723,6 @@ msgstr "See on sinu koguduse konto. Kõik, mida saad enda jaoks teha, asub siin.
 #: 
 msgid "Total deposited"
 msgstr "Kokku hoiustatud"
-
-#: 
-msgid "Usually 3306."
-msgstr "Tavaliselt 3306."
 
 #: 
 msgid "Web address"
