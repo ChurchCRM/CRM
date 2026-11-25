@@ -436,7 +436,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                 <div class="flex-grow-1 min-w-0">
                   <div class="crm-notification-title small fw-semibold"><?= gettext("You're exploring ChurchCRM with demo data.") ?></div>
                   <div class="crm-notification-text text-secondary small"><?= gettext("Everything here is sample data. Start fresh before you enter your church's real information.") ?></div>
-                  <?php if ($currentUser->isAdmin() && InstallSetupService::isWindowOpen()): ?>
+                  <?php if ($currentUser->isAdmin()): ?>
                   <div class="d-flex gap-2 mt-2 crm-notification-actions">
                     <button type="button" class="btn btn-outline-warning btn-sm js-start-fresh">
                       <i class="fa-solid fa-rotate-left me-1" aria-hidden="true"></i><?= gettext('Start Fresh') ?>
