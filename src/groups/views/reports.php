@@ -182,6 +182,6 @@ document.getElementById('clearAllFields')?.addEventListener('click', function (e
     });
 });
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupRoles.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/GroupRoles.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

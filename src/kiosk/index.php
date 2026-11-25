@@ -49,7 +49,6 @@ if (!$isAdminRoute) {
                     'samesite' => 'Lax',
                 ]);
                 http_response_code(401);
-                $sRootPath = SystemURLs::getRootPath();
                 require __DIR__ . '/templates/registration-closed.php';
                 exit;
             }
@@ -72,7 +71,6 @@ if (!$isAdminRoute) {
     } else {
         // No cookie and registration window is closed - show registration disabled page
         http_response_code(401);
-        $sRootPath = SystemURLs::getRootPath();
         require __DIR__ . '/templates/registration-closed.php';
         exit;
     }
