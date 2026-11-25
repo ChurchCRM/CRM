@@ -1,10 +1,15 @@
+<?php
+
+use ChurchCRM\dto\SystemURLs;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= gettext('Kiosk Registration Disabled') ?></title>
-    <link rel="stylesheet" href="<?= $sRootPath ?>/skin/v2/kiosk-registration-closed.min.css">
+    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/kiosk-registration-closed.min.css') ?>">
 </head>
 <body class="kiosk-registration-closed">
     <div class="kiosk-message-container">
