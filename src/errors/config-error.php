@@ -15,11 +15,16 @@ $customSections .= "```\n" . str_replace(["\r", "\n", '`'], [' ', ' ', "'"], $er
 
 $issueBody = buildGitHubIssueBody('Configuration Error', $customSections);
 
+$guideLink = '<a href="https://docs.churchcrm.io/installation/database-setup-troubleshooting?utm_source=churchcrm_app&amp;utm_medium=product&amp;utm_campaign=in_app_links&amp;utm_content=config_error_help#configuration-error">'
+    . standaloneEscape(function_exists('gettext') ? gettext('database setup troubleshooting guide') : 'database setup troubleshooting guide')
+    . '</a>';
+$guideSentence = sprintf(function_exists('gettext') ? gettext('The %s covers the configuration checks.') : 'The %s covers the configuration checks.', $guideLink);
+
 $content = '<p class="text-secondary">ChurchCRM encountered an error during startup while reading your local configuration files.</p>'
     . '<div class="alert alert-warning border-2 mt-3">'
     . '<strong>Error Details:</strong><br>'
     . '<code class="small d-block mt-2 text-break">' . nl2br(htmlspecialchars($errorMessage)) . '</code>'
     . '</div>'
-    . '<p class="text-secondary small mt-3"><strong>To fix this:</strong> Review your local <code>Include/Config.php</code> file and ensure it is valid. Check the error message above for details about what configuration issue occurred. If you do not have a Config.php file, you may need to run the <strong>setup wizard</strong>. The <a href="https://docs.churchcrm.io/installation/database-setup-troubleshooting?utm_source=churchcrm_app&amp;utm_medium=product&amp;utm_campaign=in_app_links&amp;utm_content=config_error_help#configuration-error">database setup troubleshooting guide</a> covers the configuration checks.</p>';
+    . '<p class="text-secondary small mt-3"><strong>To fix this:</strong> Review your local <code>Include/Config.php</code> file and ensure it is valid. Check the error message above for details about what configuration issue occurred. If you do not have a Config.php file, you may need to run the <strong>setup wizard</strong>. ' . $guideSentence . '</p>';
 
 renderErrorPage($errorRootPath, 'Configuration Error', '⚙️', 'danger', $content, $issueBody);
