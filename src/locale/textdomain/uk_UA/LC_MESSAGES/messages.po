@@ -28397,3 +28397,79 @@ msgstr "Усього, зверху"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM не зміг підключитися до бази даних. Перевірте кожне поле у свого хостинг-провайдера або попросіть про допомогу в Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM не зміг знайти сервер бази даних. Перевірте адресу та порт сервера бази даних у свого хостинг-провайдера."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM зберігає інформацію про вашу церкву в базі даних. Спочатку створіть порожню базу даних, а потім введіть її дані нижче."
+
+#: 
+msgid "Database server address"
+msgstr "Адреса сервера бази даних"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Як створити базу даних?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Як виправити проблеми з підключенням до бази даних"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Залиште 3306, якщо вам не надали інший номер."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Потрібен MySQL 8.4 або новіший, або MariaDB 10.11 або новіший."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s охоплює перевірки конфігурації."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Ім'я користувача або пароль бази даних неправильні. Перевірте обидва у свого хостинг-провайдера; це не ваші дані для входу в хостинг."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Назва порожньої бази даних, яку ви створили. Скопіюйте її точно так, як показано; деякі хостинг-провайдери додають на початок назву вашого облікового запису."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Пароль для цього користувача бази даних. ChurchCRM перевіряє підключення, перш ніж щось зберігати."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Адреса сервера від вашого хостинг-провайдера."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Ім'я користувача та пароль спрацювали, але бази даних із такою назвою не існує. Перевірте назву бази даних або спочатку створіть базу даних."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Ім'я користувача для бази даних. Це не те ім'я, яке ви використовуєте для входу до свого хостинг-провайдера."
+
+#: 
+msgid "Undo"
+msgstr "Скасувати"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Не вдалося скасувати. Спробуйте ще раз."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Вам потрібні дані бази даних від вашого хостинг-провайдера або від того, хто налаштував ваш сервер."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "посібник з усунення проблем із налаштуванням бази даних"
+

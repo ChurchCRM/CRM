@@ -28465,3 +28465,79 @@ msgstr "الإجمالي, الأعلى"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "تعذّر على ChurchCRM الاتصال بقاعدة البيانات. تحققوا من كل حقل لدى مضيف الويب، أو اطلبوا المساعدة على Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "تعذّر على ChurchCRM العثور على خادم قاعدة البيانات. تحققوا من عنوان خادم قاعدة البيانات والمنفذ لدى مضيف الويب."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "يخزّن ChurchCRM معلومات كنيستكم في قاعدة بيانات. أنشئوا قاعدة بيانات فارغة أولًا، ثم أدخلوا تفاصيلها أدناه."
+
+#: 
+msgid "Database server address"
+msgstr "عنوان خادم قاعدة البيانات"
+
+#: 
+msgid "How do I create a database?"
+msgstr "كيف أنشئ قاعدة بيانات؟"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "كيفية إصلاح مشاكل الاتصال بقاعدة البيانات"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "اتركوا 3306 ما لم يُعطَ لكم رقم مختلف."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "يلزم MySQL 8.4 أو أحدث، أو MariaDB 10.11 أو أحدث."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "يغطي %s عمليات فحص التكوين."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "اسم مستخدم قاعدة البيانات أو كلمة السر غير صحيحة. تحققوا من كليهما لدى مضيف الويب؛ فهما ليسا بيانات تسجيل الدخول الخاصة باستضافتكم."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "اسم قاعدة البيانات الفارغة التي أنشأتموها. انسخوه تمامًا كما يظهر؛ فبعض المضيفين يضيفون اسم حسابكم في بدايته."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "كلمة السر لمستخدم قاعدة البيانات ذلك. يختبر ChurchCRM الاتصال قبل حفظ أي شيء."
+
+#: 
+msgid "The server address from your web host."
+msgstr "عنوان الخادم من مضيف الويب."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "عمل اسم المستخدم وكلمة السر، لكن لا توجد قاعدة بيانات بهذا الاسم. تحققوا من اسم قاعدة البيانات، أو أنشئوا قاعدة البيانات أولًا."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "اسم المستخدم لقاعدة البيانات. هذا ليس الاسم الذي تستخدمونه لتسجيل الدخول إلى مضيف الويب."
+
+#: 
+msgid "Undo"
+msgstr "تراجع"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "فشل التراجع. حاولوا مرة أخرى."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "تحتاجون إلى تفاصيل قاعدة البيانات من مضيف الويب، أو ممن أعدّ خادمكم."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "دليل استكشاف أخطاء إعداد قاعدة البيانات وإصلاحها"
+

@@ -28303,3 +28303,79 @@ msgstr "Tổng cộng, trên"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM không thể kết nối với cơ sở dữ liệu. Hãy kiểm tra mọi trường với nhà cung cấp lưu trữ web của bạn, hoặc yêu cầu trợ giúp trên Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM không tìm thấy máy chủ cơ sở dữ liệu. Hãy kiểm tra địa chỉ và cổng của máy chủ cơ sở dữ liệu với nhà cung cấp lưu trữ web của bạn."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM lưu trữ thông tin của nhà thờ bạn trong một cơ sở dữ liệu. Hãy tạo một cơ sở dữ liệu trống trước, sau đó nhập thông tin của nó bên dưới."
+
+#: 
+msgid "Database server address"
+msgstr "Địa chỉ máy chủ cơ sở dữ liệu"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Làm cách nào để tạo cơ sở dữ liệu?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Cách khắc phục sự cố kết nối cơ sở dữ liệu"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Giữ nguyên 3306 trừ khi bạn được cung cấp một số khác."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Cần MySQL 8.4 trở lên, hoặc MariaDB 10.11 trở lên."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s bao gồm các bước kiểm tra cấu hình."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Tên người dùng hoặc mật khẩu cơ sở dữ liệu không đúng. Hãy kiểm tra cả hai với nhà cung cấp lưu trữ web của bạn; chúng không phải là thông tin đăng nhập hosting của bạn."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Tên của cơ sở dữ liệu trống mà bạn đã tạo. Hãy sao chép chính xác như hiển thị; một số host thêm tên tài khoản của bạn vào phía trước."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Mật khẩu của người dùng cơ sở dữ liệu đó. ChurchCRM kiểm tra kết nối trước khi lưu bất cứ thứ gì."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Địa chỉ máy chủ từ nhà cung cấp lưu trữ web của bạn."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Tên người dùng và mật khẩu đã đúng, nhưng không có cơ sở dữ liệu nào mang tên đó. Hãy kiểm tra tên cơ sở dữ liệu, hoặc tạo cơ sở dữ liệu trước."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Tên người dùng cho cơ sở dữ liệu. Đây không phải là tên bạn dùng để đăng nhập vào nhà cung cấp lưu trữ web của mình."
+
+#: 
+msgid "Undo"
+msgstr "Hoàn tác"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Hoàn tác không thành công. Vui lòng thử lại."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Bạn cần thông tin cơ sở dữ liệu từ nhà cung cấp lưu trữ web của bạn, hoặc từ người đã thiết lập máy chủ cho bạn."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "hướng dẫn khắc phục sự cố thiết lập cơ sở dữ liệu"
+

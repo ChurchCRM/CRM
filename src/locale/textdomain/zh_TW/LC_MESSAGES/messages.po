@@ -28418,3 +28418,79 @@ msgstr "總計，上"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM 無法連接到資料庫。請向您的網路主機商核對每一個欄位，或在 Discord 上尋求協助。"
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM 找不到資料庫伺服器。請向您的網路主機商核對資料庫伺服器位址和連接埠。"
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM 將您教會的資訊儲存在資料庫中。請先建立一個空的資料庫，然後在下方輸入其詳細資訊。"
+
+#: 
+msgid "Database server address"
+msgstr "資料庫伺服器位址"
+
+#: 
+msgid "How do I create a database?"
+msgstr "如何建立資料庫？"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "如何解決資料庫連線問題"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "除非您得到了其他數字，否則請保留 3306。"
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "需要 MySQL 8.4 或更新版本，或 MariaDB 10.11 或更新版本。"
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s 涵蓋了設定檢查的內容。"
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "資料庫使用者名稱或密碼不正確。請向您的網路主機商核對這兩項；它們不是您的主機登入資料。"
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "您建立的空資料庫的名稱。請完全按照顯示的內容複製；某些主機商會在前面加上您的帳戶名稱。"
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "該資料庫使用者的密碼。ChurchCRM 會在儲存任何內容之前先測試連線。"
+
+#: 
+msgid "The server address from your web host."
+msgstr "您的網路主機商提供的伺服器位址。"
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "使用者名稱和密碼正確，但沒有這個名稱的資料庫。請檢查資料庫名稱，或先建立資料庫。"
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "資料庫的使用者名稱。這不是您登入網路主機時使用的名稱。"
+
+#: 
+msgid "Undo"
+msgstr "復原"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "復原失敗。請重試。"
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "您需要向您的網路主機商，或為您設定伺服器的人，取得資料庫詳細資訊。"
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "資料庫設定疑難排解指南"
+

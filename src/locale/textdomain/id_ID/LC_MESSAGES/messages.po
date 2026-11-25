@@ -28292,3 +28292,79 @@ msgstr "Total, atas"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM tidak dapat terhubung ke basis data. Periksa setiap kolom dengan host web Anda, atau minta bantuan di Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM tidak dapat menemukan server basis data. Periksa alamat dan port server basis data dengan host web Anda."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM menyimpan informasi gereja Anda dalam basis data. Buat basis data kosong terlebih dahulu, lalu masukkan detailnya di bawah ini."
+
+#: 
+msgid "Database server address"
+msgstr "Alamat server basis data"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Bagaimana cara membuat basis data?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Cara memperbaiki masalah koneksi basis data"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Biarkan 3306 kecuali Anda diberi nomor yang berbeda."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Memerlukan MySQL 8.4 atau yang lebih baru, atau MariaDB 10.11 atau yang lebih baru."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s mencakup pemeriksaan konfigurasi."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Nama pengguna atau kata sandi basis data salah. Periksa keduanya dengan host web Anda; keduanya bukan yang Anda gunakan untuk masuk ke hosting Anda."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Nama basis data kosong yang Anda buat. Salin persis seperti yang ditampilkan; beberapa host menambahkan nama akun Anda di depannya."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Kata sandi untuk pengguna basis data tersebut. ChurchCRM menguji koneksi sebelum menyimpan apa pun."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Alamat server dari host web Anda."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Nama pengguna dan kata sandi berhasil, tetapi tidak ada basis data dengan nama tersebut. Periksa nama basis data, atau buat basis datanya terlebih dahulu."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Nama pengguna untuk basis data. Ini bukan nama yang Anda gunakan untuk masuk ke host web Anda."
+
+#: 
+msgid "Undo"
+msgstr "Urungkan"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Gagal mengurungkan. Silakan coba lagi."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Anda memerlukan detail basis data dari host web Anda, atau dari siapa pun yang menyiapkan server Anda."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "panduan pemecahan masalah penyiapan basis data"
+

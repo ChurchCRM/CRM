@@ -28326,3 +28326,79 @@ msgstr "Kokku, ülemine"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM ei saanud andmebaasiga ühendust. Kontrolli iga välja oma veebimajutaja juures või küsi abi Discordist."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM ei leidnud andmebaasiserverit. Kontrolli andmebaasiserveri aadressi ja porti oma veebimajutaja juures."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM salvestab sinu koguduse teabe andmebaasi. Loo esmalt tühi andmebaas ja sisesta seejärel selle andmed allpool."
+
+#: 
+msgid "Database server address"
+msgstr "Andmebaasiserveri aadress"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Kuidas luua andmebaasi?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Kuidas parandada andmebaasiühenduse probleeme"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Jäta 3306, kui sulle ei antud teist numbrit."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Vajalik on MySQL 8.4 või uuem või MariaDB 10.11 või uuem."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s hõlmab konfiguratsiooni kontrolle."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Andmebaasi kasutajanimi või parool on vale. Kontrolli mõlemat oma veebimajutaja juures; need ei ole sinu majutusteenuse sisselogimisandmed."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Sinu loodud tühja andmebaasi nimi. Kopeeri see täpselt nii, nagu see on näidatud; mõned majutajad lisavad ette sinu konto nime."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Selle andmebaasikasutaja parool. ChurchCRM testib ühendust enne, kui midagi salvestatakse."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Serveri aadress sinu veebimajutajalt."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Kasutajanimi ja parool toimisid, kuid selle nimega andmebaasi ei ole. Kontrolli andmebaasi nime või loo andmebaas esmalt."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Andmebaasi kasutajanimi. See ei ole nimi, millega sa oma veebimajutaja juurde sisse logid."
+
+#: 
+msgid "Undo"
+msgstr "Võta tagasi"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Tagasivõtmine ebaõnnestus. Proovi uuesti."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Vajad andmebaasi andmeid oma veebimajutajalt või sellelt, kes sinu serveri seadistas."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "andmebaasi seadistamise tõrkeotsingu juhend"
+

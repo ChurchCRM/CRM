@@ -28295,3 +28295,79 @@ msgstr "Kabuuan, itaas"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "Hindi makakonekta ang ChurchCRM sa database. Suriin ang bawat field sa iyong web host, o humingi ng tulong sa Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "Hindi mahanap ng ChurchCRM ang database server. Suriin ang address at port ng database server sa iyong web host."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "Iniimbak ng ChurchCRM ang impormasyon ng inyong simbahan sa isang database. Gumawa muna ng walang lamang database, pagkatapos ay ilagay ang mga detalye nito sa ibaba."
+
+#: 
+msgid "Database server address"
+msgstr "Address ng database server"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Paano ako gagawa ng database?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Paano ayusin ang mga problema sa koneksyon ng database"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Iwanang 3306 maliban kung binigyan ka ng ibang numero."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Kailangan ng MySQL 8.4 o mas bago, o MariaDB 10.11 o mas bago."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "Saklaw ng %s ang mga pagsusuri sa konfigurasyon."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Mali ang username o password ng database. Suriin pareho sa iyong web host; hindi iyon ang ginagamit mong pag-sign in sa hosting."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Ang pangalan ng walang lamang database na ginawa mo. Kopyahin ito nang eksakto kung paano ito ipinapakita; ang ilang host ay nagdadagdag ng pangalan ng iyong account sa unahan."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Ang password para sa database user na iyon. Sinusubukan ng ChurchCRM ang koneksyon bago mag-save ng anuman."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Ang address ng server mula sa iyong web host."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Gumana ang username at password, ngunit walang database na may ganoong pangalan. Suriin ang pangalan ng database, o gumawa muna ng database."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Ang username para sa database. Hindi ito ang pangalang ginagamit mo sa pag-sign in sa iyong web host."
+
+#: 
+msgid "Undo"
+msgstr "I-undo"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Nabigo ang pag-undo. Pakisubukan muli."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Kailangan mo ang mga detalye ng database mula sa iyong web host, o mula sa sinumang nag-setup ng iyong server."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "gabay sa pag-troubleshoot ng setup ng database"
+
