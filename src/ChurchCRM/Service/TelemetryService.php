@@ -24,6 +24,11 @@ class TelemetryService
     public const LEVEL_DEFAULT = 'default';
     public const LEVEL_FULL = 'full';
 
+    // The shared development system ID, planted into Include/SystemID.php by
+    // scripts/ci/docker-config.js and seeded by cypress/data/seed.sql: an install
+    // carrying it is a dev/CI system, never a church, whatever its stored profile says.
+    private const DEV_SYSTEM_ID = 'dev-churchcrm-testing';
+
     private static array $installProfileCache = [];
     private static ?string $logDedupeDirectory = null;
 
@@ -35,9 +40,9 @@ class TelemetryService
         return $host === 'softaculous.com' || str_ends_with($host, '.softaculous.com');
     }
 
-    public static function resolveInstallProfile(string $storedProfile, bool $testOverride, bool $demoHost = false): string
+    public static function resolveInstallProfile(string $storedProfile, bool $testOverride, bool $demoHost = false, bool $devSystemId = false): string
     {
-        if ($testOverride) {
+        if ($testOverride || $devSystemId) {
             return 'test';
         }
         if ($demoHost && $storedProfile !== 'test') {
@@ -59,8 +64,9 @@ class TelemetryService
 
         // Config can initialize during setup or change during a demo import in this request.
         $demoHost = self::isKnownDemoHost((string) ($_SERVER['HTTP_HOST'] ?? ''));
-        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '');
-        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride, $demoHost);
+        $devSystemId = SystemIdentity::read() === self::DEV_SYSTEM_ID;
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '') . ($devSystemId ? ':devid' : '');
+        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride, $demoHost, $devSystemId);
     }
 
     public static function getLevel(): string
