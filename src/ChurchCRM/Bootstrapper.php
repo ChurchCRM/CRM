@@ -651,6 +651,9 @@ class Bootstrapper
             } catch (\Throwable) {
                 $rootPath = standaloneRootPath();
             }
+            if (in_array($reportReason, ['database_unreachable', 'database_access_failed'], true)) {
+                $message .= '<br/>See the <a href="' . SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'database_error_help') . '">database setup troubleshooting guide</a> for what to check.';
+            }
             $title = gettext($header);
             $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';
             // Added after buildGitHubIssueBody(), which replaces every URL in the body.

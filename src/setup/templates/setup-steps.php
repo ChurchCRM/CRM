@@ -160,6 +160,10 @@ require_once __DIR__ . '/header.php';
                 </div>
 
                 <div id="db-connection-result" class="alert alert-danger d-none" role="status" aria-live="polite"></div>
+                <p id="db-connection-help" class="small d-none mt-2 mb-0">
+                    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/installation/database-setup-troubleshooting', 'setup_database_help')) ?>" target="_blank" rel="noopener"><?= gettext('Database setup troubleshooting') ?></a>
+                    <?= gettext('explains each connection problem and how to fix it.') ?>
+                </p>
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-primary btn-lg w-100" id="submit-setup" aria-describedby="db-connection-result">
