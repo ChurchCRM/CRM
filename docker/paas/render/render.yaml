@@ -1,9 +1,9 @@
 services:
   - type: web
     name: churchcrm
-    runtime: image
-    image:
-      url: docker.io/churchcrm/crm:latest-php8-apache
+    runtime: docker
+    dockerfilePath: ./docker/paas/render/Dockerfile
+    dockerContext: .
     plan: starter
     region: oregon
     numInstances: 1

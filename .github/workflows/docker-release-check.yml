@@ -45,6 +45,12 @@ jobs:
         env:
           FLAVOR: ${{ matrix.flavor }}
         run: node tests/docker/test-production-image.js "churchcrm-check:$FLAVOR" "$FLAVOR"
+      - name: Build Render adapter from the latest release
+        if: matrix.flavor == 'apache'
+        run: docker build --pull -f docker/paas/render/Dockerfile -t churchcrm-check:render .
+      - name: Test Render root-owned disk and container replacement
+        if: matrix.flavor == 'apache'
+        run: node tests/docker/test-production-image.js churchcrm-check:render apache --root-bootstrap
 
   compose:
     runs-on: ubuntu-24.04

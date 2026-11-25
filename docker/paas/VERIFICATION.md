@@ -4,6 +4,23 @@ Checked on 2026-11-19 from CRM source commit `36b7aea` (7.8.6 development).
 Every platform candidate still requires a live deployment. No catalog entry,
 deploy button, partner application or documentation publication is complete.
 
+## Review fixes (2026-11-25)
+
+- Persistence and release-context tests: 13 passed on macOS with its default
+  temporary directory after normalizing both bootstrap paths.
+- Render adapter built with `docker build --pull` against the maintained
+  `latest-php8-apache` manifest
+  `sha256:fffa125428fb3038f6ae1272103c01634a046fa11fff33a7438d34b141708a95`.
+- `node tests/docker/test-production-image.js churchcrm-pr11803-render apache --root-bootstrap`
+  passed: a root-owned disk was initialized, UID 33 wrote configuration and
+  photos, a replacement container retained both, configuration mode was `0600`,
+  photo access rules remained denied, and Apache served HTTP.
+- The Docker workflow runs that adapter smoke test against the latest released
+  image. Both commands also run locally; CI adds a clean Docker environment.
+- Repository lint: 33 checks passed, including PHP regressions, TypeScript,
+  tooling tests, locale checks and Biome.
+- Live Render fresh-disk, upload, upgrade and restore verification remains open.
+
 ## Local results
 
 | Check | Result |

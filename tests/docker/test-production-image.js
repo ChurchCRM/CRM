@@ -2,13 +2,14 @@
 
 /**
  * Smoke-test a production image: non-root, no compiler, required extensions, then a live port.
- * Usage: node tests/docker/test-production-image.js IMAGE apache|fpm
+ * Usage: node tests/docker/test-production-image.js IMAGE apache|fpm [--root-bootstrap]
  */
 
 const { spawnSync } = require('child_process');
 
 const image = process.argv[2];
 const flavor = process.argv[3];
+const rootBootstrap = process.argv[4] === '--root-bootstrap';
 const ports = { apache: '8080', fpm: '9000' };
 
 if (!image || !ports[flavor]) {
@@ -51,7 +52,7 @@ function docker(args, options = {}) {
 
 const inspect = docker([
     'run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image, 'sh', '-ec',
-    `test "$(id -u)" -ne 0
+    `test "$(id -u)" ${rootBootstrap ? '-eq' : '-ne'} 0
 for tool in gcc g++ make; do
   if command -v "$tool" >/dev/null 2>&1; then
     echo "build tool present: $tool" >&2
@@ -83,8 +84,18 @@ if (flavor === 'apache') {
     }
     let result;
     try {
+        if (rootBootstrap) {
+            const prepared = docker(['run', '--rm', '--entrypoint', 'sh', '-u', '0',
+                '-v', `${volume}:/var/lib/churchcrm`, image, '-ec',
+                'chown 0:0 /var/lib/churchcrm; chmod 755 /var/lib/churchcrm']);
+            if (prepared.status !== 0) {
+                throw new Error(prepared.stderr || 'Could not prepare root-owned disk');
+            }
+        }
         const options = ['run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
-            '-e', 'CHURCHCRM_PERSISTENT_DATA=1', '-v', `${volume}:/var/lib/churchcrm`, image, 'sh', '-ec'];
+            ...(rootBootstrap ? ['--cap-add', 'CHOWN', '--cap-add', 'SETUID', '--cap-add', 'SETGID', '--cap-add', 'DAC_OVERRIDE'] : []),
+            '-e', 'CHURCHCRM_PERSISTENT_DATA=1', '-v', `${volume}:/var/lib/churchcrm`, image,
+            ...(rootBootstrap ? ['setpriv', '--reuid=33', '--regid=33', '--clear-groups'] : []), 'sh', '-ec'];
         result = docker([...options, `
 test ! -e Include/Config.php
 test -L Include/Config.php
@@ -119,7 +130,8 @@ test "$(stat -c %a /var/lib/churchcrm/Config.php)" = 600
 }
 
 const started = docker([
-    'run', '-d', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image,
+    'run', '-d', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+    ...(rootBootstrap ? ['--cap-add', 'CHOWN', '--cap-add', 'SETUID', '--cap-add', 'SETGID', '--cap-add', 'DAC_OVERRIDE'] : []), image,
 ]);
 if (started.status !== 0) {
     process.stderr.write(started.stderr || '');

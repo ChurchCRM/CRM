@@ -140,7 +140,9 @@ replacement. The entrypoint sets a private umask for configuration writes.
 
 Use a fresh installation, or restore a backup into `Config.php`, `Person/` and
 `Family/` on the disk with UID 33 ownership. Existing local configuration or
-photos cause startup to stop so migration cannot silently discard them. Back up
+photos cause startup to stop so migration cannot silently discard them. Follow
+the [migration steps](paas/README.md#image-prerequisite) to restore the database
+separately, update connection settings, and remove legacy mounts. Back up
 this disk together with the database; it contains credentials and personal data.
 The production Compose mounts work independently of this opt-in.
 
@@ -155,6 +157,8 @@ docker build --target prod -f docker/Dockerfile.churchcrm-apache-php8 -t churchc
 docker build --target prod -f docker/Dockerfile.churchcrm-fpm-php8 -t churchcrm-check:fpm build-context
 node tests/docker/test-production-image.js churchcrm-check:apache apache
 node tests/docker/test-production-image.js churchcrm-check:fpm fpm
+docker build --pull -f docker/paas/render/Dockerfile -t churchcrm-check:render .
+node tests/docker/test-production-image.js churchcrm-check:render apache --root-bootstrap
 ```
 
 The PR validation workflow repeats these builds on amd64 without registry

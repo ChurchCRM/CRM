@@ -26,9 +26,20 @@ ownership from the image. On platforms with root-owned disks, arrange ownership
 for UID 33 before setup. Railway supports `RAILWAY_RUN_UID=0`; the entrypoint
 initializes ownership and Apache runs its workers as `www-data`.
 
-Use this mode for a fresh installation. To migrate an existing installation,
-back up the database, configuration and photos, then restore them into the disk
-with UID 33 ownership. The entrypoint refuses to discard existing local data.
+Use this mode for a fresh installation. To migrate an existing installation:
+
+1. Back up the database, configuration and photos. Restore the database backup
+   into the destination MariaDB service, which has its own `/var/lib/mysql` disk.
+2. Restore `Config.php`, `Person/` and `Family/` to `/var/lib/churchcrm` on the
+   application disk with UID 33 ownership, including the restored contents.
+3. Edit the restored `Config.php` to use the destination database host and
+   application database password from the setup table below. Update its public
+   URL and install path for the destination. Keep `Config.php` mode `0600`.
+4. On Compose, remove the old `Config.php` bind mount and the `Images/Person`
+   and `Images/Family` volume mounts before enabling `CHURCHCRM_PERSISTENT_DATA=1`.
+   Keep the original volumes and host files until the restored installation works.
+
+The entrypoint refuses to discard existing local data.
 The production Compose file's existing mounts continue to work without opting in.
 
 ## Platform handoff
@@ -41,6 +52,14 @@ The production Compose file's existing mounts continue to work without opting in
 | Easypanel | [Generator](easypanel/index.ts), [metadata](easypanel/meta.yaml) | `easypanel-io/templates`, `templates/churchcrm`; generate `meta.ts`, add logo and real screenshot |
 | Railway | [Template editor instructions](railway/README.md) | Publish verified multi-service template and record its ID |
 | Render | [Blueprint](render/render.yaml) | Import the blueprint from a repository, then record the verified repository URL |
+
+Render builds a small adapter from the maintained `latest-php8-apache` image
+using [its Dockerfile](render/Dockerfile). It includes the persistence entrypoint
+so it can also use releases published before that entrypoint shipped. The adapter
+starts as root to initialize disk ownership; Apache workers run as `www-data`.
+The Blueprint's build context is the repository root. Rebuild with a fresh base
+image when upgrading; the adapter uses the released application from Docker Hub.
+Live fresh-disk, replacement and restore checks remain required on Render.
 
 Easypanel requests static image tags. ChurchCRM's support policy requires the
 latest build; obtain acceptance of the maintained tag before catalog submission.

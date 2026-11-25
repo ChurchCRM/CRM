@@ -50,7 +50,7 @@ test('fresh setup writes config and photos to disk across container replacement'
     assert.equal(fs.readFileSync(path.join(app, 'Images/Family/photo.jpg'), 'utf8'), 'family photo');
     assert.match(fs.readFileSync(path.join(data, 'Person/.htaccess'), 'utf8'), /refreshed/);
     assert.equal(fs.readFileSync(path.join(app, 'Include/Functions.php'), 'utf8'), 'new application code');
-    assert.equal(fs.realpathSync(path.join(data, 'LoadConfigs.php')), path.join(app, 'Include/LoadConfigs.php'));
+    assert.equal(fs.realpathSync(path.join(data, 'LoadConfigs.php')), fs.realpathSync(path.join(app, 'Include/LoadConfigs.php')));
     assert.equal(run().status, 0);
 });
 
