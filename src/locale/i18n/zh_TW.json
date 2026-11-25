@@ -6290,11 +6290,8 @@
   "Database engine and major/minor version": "資料庫引擎及主/次版本",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "安裝和升級結果、升級時的先前版本，以及使用期間每天一次的回報",
   "Installation profile": "安裝設定檔",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "絕不分享：會友、奉獻或其他教會記錄、您的教會名稱、您的網址或伺服器名稱、電子郵件地址。您的國家取自教會設定，而非從您的網路推斷。",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "在 管理 → 遙測 中查看確切分享的內容，或變更您的選擇。",
   "Separate production, demo, and test installs": "區分正式、展示和測試安裝",
   "Understand database compatibility": "了解資料庫相容性",
-  "Your data is yours. This reports on the software, never on your church or its people.": "您的資料屬於您。回報內容僅涉及軟體，絕不涉及您的教會或會眾。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：建立了 {{count}} 個發生",
     "other": "\"{{name}}\"：建立了 {{count}} 個發生"
@@ -6976,6 +6973,5 @@
   "The conversion failed. Nothing was changed.": "轉換失敗。未做任何更改。",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "正在使用在上傳功能加入之前儲存的信頭檔案。上傳一個信頭以取代它。",
   "Warning After (Hours)": "警告時限（小時）",
-  "Word before the name in letters and emails, for example Dear.": "位於信函和電子郵件中姓名之前的稱呼詞，例如「親愛的」。",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "您的選擇只會詢問一次。您可以隨時更改。選擇「不，謝謝」時，「默認」保持啟用，頁面瀏覽不會被傳送。"
+  "Word before the name in letters and emails, for example Dear.": "位於信函和電子郵件中姓名之前的稱呼詞，例如「親愛的」。"
 }

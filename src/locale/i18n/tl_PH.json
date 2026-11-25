@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Database engine at major/minor na bersyon",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Mga resulta ng pag-install at pag-upgrade, dating bersyon sa mga upgrade, at araw-araw na check-in habang ginagamit",
   "Installation profile": "Profile ng installation",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Hindi kailanman ibinabahagi: mga rekord ng miyembro, pagbibigay, o iba pang rekord ng simbahan, pangalan ng iyong simbahan, iyong web address o pangalan ng server, o mga email address. Ang iyong bansa ay ang nasa settings ng iyong simbahan, hindi hinahanap mula sa iyong network.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Tingnan kung ano mismo ang ibinabahagi, o baguhin ang iyong pinili, sa Admin → Telemetry.",
   "Separate production, demo, and test installs": "Paghiwalayin ang production, demo, at test na installation",
   "Understand database compatibility": "Unawain ang compatibility ng database",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Iyo ang iyong data. Tungkol ito sa software, hindi kailanman tungkol sa iyong simbahan o sa mga tao nito.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：lumikha ng {{count}} occurrence",
     "other": "\"{{name}}\"：lumikha ng {{count}} occurrences"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "Nabigo ang conversion. Walang binago.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Gumagamit ng letterhead file na na-save bago idinagdag ang mga upload. Mag-upload ng letterhead para palitan ito.",
   "Warning After (Hours)": "Babala Pagkatapos ng (Mga Oras)",
-  "Word before the name in letters and emails, for example Dear.": "Salita bago ang pangalan sa mga liham at email, halimbawa Mahal na.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Isang beses lang itatanong ang iyong pinili. Maaari mo itong baguhin anumang oras. Sa Hindi na salamat, mananatiling aktibo ang Default at hindi ipinapadala ang mga page view."
+  "Word before the name in letters and emails, for example Dear.": "Salita bago ang pangalan sa mga liham at email, halimbawa Mahal na."
 }

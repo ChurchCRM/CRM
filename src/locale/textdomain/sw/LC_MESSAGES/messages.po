@@ -25959,24 +25959,12 @@ msgid "Installation profile"
 msgstr "Wasifu wa usakinishaji"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Haishirikiwi kamwe: kumbukumbu za washirika, sadaka au kumbukumbu nyingine za kanisa, jina la kanisa lako, anwani yako ya wavuti au jina la seva, wala anwani za barua pepe. Nchi yako ni ile iliyo kwenye mipangilio ya kanisa lako, haitambuliwi kutoka kwenye mtandao wako."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Tazama hasa kinachoshirikiwa, au badilisha chaguo lako, katika Msimamizi → Telemetry."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Tenganisha usakinishaji wa uzalishaji, onyesho na majaribio"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Elewa uoanifu wa hifadhidata"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Data yako ni yako. Hii inaripoti kuhusu programu, kamwe si kuhusu kanisa lako au watu wake."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28279,8 +28267,4 @@ msgstr "Onyo Baada ya (Saa)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Chaguo lako huulizwa mara moja. Unaweza kulibadilisha wakati wowote. Ukiwa na Hapana, asante, Chaguomsingi hubaki kikitumika na mionekano ya kurasa haitumwi."
 

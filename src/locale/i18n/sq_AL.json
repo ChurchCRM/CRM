@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Motori i bazës së të dhënave dhe versioni kryesor/dytësor",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Rezultatet e instalimit dhe përmirësimit, versioni i mëparshëm gjatë përmirësimeve dhe një sinjal ditor gjatë përdorimit",
   "Installation profile": "Profili i instalimit",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Nuk ndahen kurrë: të dhënat e anëtarëve, të dhurimeve apo të tjera të kishës, emri i kishës suaj, adresa juaj e internetit ose emri i serverit, apo adresat e emailit. Shteti juaj është ai në cilësimet e kishës, jo i nxjerrë nga rrjeti juaj.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Shihni saktësisht çfarë ndahet, ose ndryshoni zgjedhjen tuaj, te Administrimi → Telemetria.",
   "Separate production, demo, and test installs": "Dallo instalimet e prodhimit, demonstrimit dhe testimit",
   "Understand database compatibility": "Kuptoni përputhshmërinë e bazave të të dhënave",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Të dhënat tuaja janë tuajat. Këto raporte kanë të bëjnë me softuerin, kurrë me kishën tuaj apo njerëzit e saj.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "Konvertimi dështoi. Asgjë nuk u ndryshua.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Po përdor një skedar koke letre të ruajtur para se të shtoheshin ngarkimet. Ngarkoni një kokë letre për ta zëvendësuar.",
   "Warning After (Hours)": "Paralajmërimi pas (orë)",
-  "Word before the name in letters and emails, for example Dear.": "Fjala para emrit në letra dhe e-posta, për shembull I dashur.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Zgjedhja juaj kërkohet vetëm një herë. Mund ta ndryshoni në çdo kohë. Me Jo, faleminderit, Parazgjedhur mbetet aktiv dhe shikimet e faqeve nuk dërgohen."
+  "Word before the name in letters and emails, for example Dear.": "Fjala para emrit në letra dhe e-posta, për shembull I dashur."
 }

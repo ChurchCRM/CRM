@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "Databasmotor och huvud-/delversion",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "Installations- och uppgraderingsresultat, tidigare version vid uppgraderingar och en daglig incheckning under användning",
   "Installation profile": "Installationsprofil",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "Delas aldrig: medlems-, gåvo- eller andra församlingsuppgifter, församlingens namn, din webbadress eller ditt servernamn eller e-postadresser. Ditt land är det som anges i församlingens inställningar och hämtas inte från ditt nätverk.",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "Se exakt vad som delas, eller ändra ditt val, under Admin → Telemetri.",
   "Separate production, demo, and test installs": "Skilj på produktions-, demo- och testinstallationer",
   "Understand database compatibility": "Förstå databaskompatibilitet",
-  "Your data is yours. This reports on the software, never on your church or its people.": "Dina data är dina. Det här rapporterar om programvaran, aldrig om din församling eller dess människor.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} förekomst skapad",
     "other": "\"{{name}}\": {{count}} förekomster skapade"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "Konverteringen misslyckades. Ingenting ändrades.",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "Använder en brevhuvudsfil som sparades innan uppladdningar lades till. Ladda upp ett brevhuvud för att ersätta den.",
   "Warning After (Hours)": "Varning efter (timmar)",
-  "Word before the name in letters and emails, for example Dear.": "Ord före namnet i brev och e-post, till exempel Kära.",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "Ditt val efterfrågas en gång. Du kan ändra det när som helst. Med Nej tack förblir Standard aktiv och sidvisningar skickas inte."
+  "Word before the name in letters and emails, for example Dear.": "Ord före namnet i brev och e-post, till exempel Kära."
 }

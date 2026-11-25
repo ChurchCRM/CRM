@@ -26047,24 +26047,12 @@ msgid "Installation profile"
 msgstr "Installationsprofil"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Delas aldrig: medlems-, gåvo- eller andra församlingsuppgifter, församlingens namn, din webbadress eller ditt servernamn eller e-postadresser. Ditt land är det som anges i församlingens inställningar och hämtas inte från ditt nätverk."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Se exakt vad som delas, eller ändra ditt val, under Admin → Telemetri."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Skilj på produktions-, demo- och testinstallationer"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Förstå databaskompatibilitet"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Dina data är dina. Det här rapporterar om programvaran, aldrig om din församling eller dess människor."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28367,8 +28355,4 @@ msgstr "Varning efter (timmar)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Ord före namnet i brev och e-post, till exempel Kära."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Ditt val efterfrågas en gång. Du kan ändra det när som helst. Med Nej tack förblir Standard aktiv och sidvisningar skickas inte."
 

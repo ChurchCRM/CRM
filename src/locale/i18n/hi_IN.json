@@ -6320,11 +6320,8 @@
   "Database engine and major/minor version": "डेटाबेस इंजन और मुख्य/उप संस्करण",
   "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use": "इंस्टॉलेशन और अपग्रेड परिणाम, अपग्रेड पर पिछला संस्करण, और उपयोग के दौरान दैनिक चेक-इन",
   "Installation profile": "इंस्टॉलेशन प्रोफ़ाइल",
-  "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.": "कभी साझा नहीं किया जाता: सदस्य, दान या अन्य कलीसिया रिकॉर्ड, आपकी कलीसिया का नाम, आपका वेब पता या सर्वर नाम, या ईमेल पते। आपका देश वही है जो आपकी कलीसिया सेटिंग्स में है, आपके नेटवर्क से पता नहीं लगाया जाता।",
-  "See exactly what is shared, or change your choice, in Admin → Telemetry.": "एडमिन → टेलीमेट्री में देखें कि ठीक-ठीक क्या साझा होता है, या अपना विकल्प बदलें।",
   "Separate production, demo, and test installs": "प्रोडक्शन, डेमो और परीक्षण इंस्टॉल अलग करें",
   "Understand database compatibility": "डेटाबेस संगतता समझें",
-  "Your data is yours. This reports on the software, never on your church or its people.": "आपका डेटा आपका है। यह सॉफ़्टवेयर के बारे में रिपोर्ट करता है, आपकी कलीसिया या उसके लोगों के बारे में कभी नहीं।",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} घटना बनाई गई",
     "other": "\"{{name}}\"：{{count}} घटनाएं बनाई गईं"
@@ -7011,6 +7008,5 @@
   "The conversion failed. Nothing was changed.": "रूपांतरण विफल रहा। कुछ भी नहीं बदला गया।",
   "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it.": "अपलोड जोड़े जाने से पहले सहेजी गई लेटरहेड फ़ाइल का उपयोग हो रहा है। इसे बदलने के लिए लेटरहेड अपलोड करें।",
   "Warning After (Hours)": "चेतावनी बाद (घंटे)",
-  "Word before the name in letters and emails, for example Dear.": "पत्रों और ईमेल में नाम से पहले का शब्द, उदाहरण के लिए प्रिय।",
-  "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.": "आपका विकल्प एक बार पूछा जाता है। आप इसे किसी भी समय बदल सकते हैं। नहीं, धन्यवाद के साथ, डिफ़ॉल्ट सक्रिय रहता है और पृष्ठ दृश्य नहीं भेजे जाते।"
+  "Word before the name in letters and emails, for example Dear.": "पत्रों और ईमेल में नाम से पहले का शब्द, उदाहरण के लिए प्रिय।"
 }

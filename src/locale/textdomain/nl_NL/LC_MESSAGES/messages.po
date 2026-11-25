@@ -25932,24 +25932,12 @@ msgid "Installation profile"
 msgstr "Installatieprofiel"
 
 #: 
-msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
-msgstr "Nooit gedeeld: leden-, giften- of andere kerkgegevens, de naam van uw kerk, uw webadres of servernaam, of e-mailadressen. Uw land is het land uit de instellingen van uw kerk en wordt niet uit uw netwerk afgeleid."
-
-#: 
-msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
-msgstr "Bekijk precies wat er wordt gedeeld, of wijzig uw keuze, via Admin → Telemetrie."
-
-#: 
 msgid "Separate production, demo, and test installs"
 msgstr "Productie-, demo- en testinstallaties onderscheiden"
 
 #: 
 msgid "Understand database compatibility"
 msgstr "Databasecompatibiliteit begrijpen"
-
-#: 
-msgid "Your data is yours. This reports on the software, never on your church or its people."
-msgstr "Uw gegevens zijn van u. Dit rapporteert over de software, nooit over uw kerk of haar mensen."
 
 #: 
 msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
@@ -28252,8 +28240,4 @@ msgstr "Waarschuwing na (uren)"
 #: 
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Woord vóór de naam in brieven en e-mails, bijvoorbeeld Beste."
-
-#: 
-msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
-msgstr "Uw keuze wordt één keer gevraagd. U kunt deze op elk moment wijzigen. Met Nee, bedankt blijft Standaard actief en worden paginaweergaven niet gestuurd."
 
