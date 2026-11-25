@@ -11,8 +11,8 @@
  * it carry the catalogs), in CI before the test stacks start, and as the
  * lint suite's "locale files in sync" check.
  *
- * After compiling, every locale target must have a non-empty .mo; a missing
- * one fails the build. That failure is the point: without it, a missed
+ * After compiling, every locale must have a non-empty .mo and its .po/.mo must
+ * match its JSON (locale-apply --check); a missing or stale one fails the build. That failure is the point: without it, a missed
  * compile would surface only as the app silently falling back to English.
  */
 
@@ -21,6 +21,8 @@ const fs = require('fs');
 const path = require('path');
 
 execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js')], { stdio: 'inherit' });
+
+execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--check'], { stdio: 'inherit' });
 
 const repo = require('./lib/locale-repo');
 const targets = repo.targetLocales();
