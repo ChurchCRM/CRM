@@ -27996,3 +27996,295 @@ msgstr "Informacije o vašoj župi su spremljene. Prođite korake u nastavku."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Vaša baza podataka (%1$s %2$s) predstavlja sigurnosni rizik: njezin dobavljač više ne isporučuje sigurnosne popravke za tu verziju. ChurchCRM nastavlja raditi, ali zamolite svog davatelja usluge hostinga da prijeđe na MariaDB %3$s+ ili MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Svakodnevna prijava tijekom korištenja, verzije softvera i baze podataka, jezične postavke, zemlja, vrsta instalacije i nasumični ID instalacije pomažu brojiti aktivne instalacije."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Računi i prijava"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Šaljite i koje se stranice koriste."
+
+#: 
+msgid "Areas"
+msgstr "Područja"
+
+#: 
+msgid "Church & System"
+msgstr "Crkva i sustav"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Grad u kojem se izdaju potvrde, ispisan na službenim potvrdama. Ostavite prazno za korištenje grada crkve."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Završetak prije imena potpisnika, na primjer S poštovanjem."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Završetak ispisan prije potpisnika na službenim potvrdama."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Lozinke odvojene zarezima koje nitko ne smije koristiti."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Potvrdno pismo"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Stvoriti obitelj za ovu osobu? Njezina adresa i kućni telefon prelaze u novu obitelj."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Broj dana u kojima korisnici moraju postaviti dvofaktorsku autentifikaciju nakon što postane obavezna. 0 je nameće odmah. Skraćivanje aktivnog razdoblja počeka može korisnicima onemogućiti pristup."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Uplate i plaćanja"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Nedopuštene lozinke"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Odricanje odgovornosti %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "E-pošta korisnicima kada se njihov račun izbriše"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Svaka stranica postavki na jednom mjestu i postavke koje vrijede za cijeli sustav"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Neuspjele prijave prije zaključavanja"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Neuspjele prijave po IP adresi"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Obiteljske uloge koje se u imeniku smatraju djecom."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Obiteljske uloge koje se u imeniku i pri prijavi članova smatraju glavom kućanstva."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Obiteljske uloge koje se u imeniku i pri prijavi članova smatraju supružnikom."
+
+#: 
+msgid "Finance Settings"
+msgstr "Postavke financija"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Razdoblje počeka (dana)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Sakrij pretplate na bilten u Uredniku obitelji."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Sakrij polje Datum prijatelja u Uredniku osobe."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Sakrij polje Datum vjenčanja u Uredniku obitelji."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Koliko dugo zaključani račun ostaje zaključan. Neuspjele prijave s jedne IP adrese broje se u istom razdoblju."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Za koliko se znakova nova lozinka mora razlikovati od stare. 0 isključuje ovu mogućnost."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "U Administracija → Telemetrija uključite opciju „Dijeli koje se stranice koriste“ da biste odabrali Puno. Puno također šalje preglede stranica."
+
+#: 
+msgid "Initials Format"
+msgstr "Format inicijala"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Tekst pisma %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Trajanje zaključavanja (minute)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Zaključava račun nakon toliko uzastopnih neuspjelih prijava. Otključava se nakon isteka trajanja zaključavanja ili kada ga administrator resetira. 0 isključuje zaključavanje."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Upravljaj Portalom članova"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Članovi se mogu prijaviti svojom e-poštom."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Članovi se još ne mogu prijaviti."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Najmanji broj promijenjenih znakova"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Najmanja duljina lozinke"
+
+#: 
+msgid "Name Format"
+msgstr "Format imena"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Ime ispisano ispod završetka pisama i e-pošte"
+
+#: 
+msgid "No Payments Text"
+msgstr "Tekst kada nema uplata"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Tekst kada nema zavjeta"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Nijedna razina ne šalje osobe, darivatelje, darove, sadržaj, kontaktne podatke crkve, vašu web adresu ni naziv poslužitelja."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Nijedna razina ne šalje vašu web adresu ni naziv poslužitelja. Testne instalacije ne šalju ništa. Telemetrija se šalje u PostHog u Sjedinjenim Državama."
+
+#: 
+msgid "OS family"
+msgstr "Obitelj OS-a"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Uvodni odlomak pisma s podsjetnikom na zavjet."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Odlomak koji poziva na pitanja u izjavi o darovima."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Odlomak koji poziva na pitanja u pismu za one koji nisu darivali."
+
+#: 
+msgid "Passwords"
+msgstr "Lozinke"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Ispisuje se nakon raspona datuma u uvodnom retku pisma za one koji nisu darivali."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Ispisuje se prvo na izjavi o darovima, a nakon njega slijedi raspon datuma."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Ispisuje se kada obitelj nema zabilježenih uplata."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Ispisuje se kada obitelj nema zabilježenog zavjeta."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Odbija prijavu s jedne IP adrese na trajanje zaključavanja nakon toliko neuspjelih prijava ili resetiranja lozinke. 0 isključuje ovu mogućnost, na primjer kada se svi povezuju putem jednog proxyja."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Zahtijevaj dvofaktorsku autentifikaciju"
+
+#: 
+msgid "Security Settings"
+msgstr "Sigurnosne postavke"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Šaljite izvješća o pogreškama, događaje instalacije/nadogradnje i informacije o sustavu kako bi se problemi mogli ispraviti. Bez pregleda stranica, bez podataka crkve."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Istek sesije (sekunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Dijeli koje se stranice koriste"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Prijava i sigurnost"
+
+#: 
+msgid "Signature Storage"
+msgstr "Pohrana potpisa"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Odjavljuje korisnika nakon toliko sekundi neaktivnosti. 0 nikada ne odjavljuje."
+
+#: 
+msgid "System-wide"
+msgstr "Cijeli sustav"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst nakon datuma"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstualne poruke"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Odlomak zahvale u izjavi o darovima."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Odlomak zahvale u pismu za one koji nisu darivali."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Pretvorba nije uspjela. Ništa nije promijenjeno."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Koristi se datoteka zaglavlja spremljena prije dodavanja prijenosa. Prenesite zaglavlje da biste ga zamijenili."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Upozorenje nakon (sati)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Riječ prije imena u pismima i e-pošti, na primjer Poštovani."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Vaš izbor pita se samo jednom. Možete ga promijeniti u bilo kojem trenutku. Uz „Ne, hvala“ Zadano ostaje aktivno i pregledi stranica se ne šalju."
+

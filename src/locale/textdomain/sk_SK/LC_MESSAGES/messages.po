@@ -28031,3 +28031,295 @@ msgstr "Informácie o vašom zbore sú uložené. Postupujte podľa krokov niž�
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Vaša databáza (%1$s %2$s) je bezpečnostné riziko: jej dodávateľ už pre túto verziu nevydáva bezpečnostné opravy. ChurchCRM naďalej funguje, ale požiadajte svojho hostiteľa o prechod na MariaDB %3$s+ alebo MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Každodenné hlásenie počas používania, verzie softvéru a databázy, národné prostredie, krajina, typ inštalácie a náhodné ID inštalácie pomáhajú počítať aktívne inštalácie."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Účty a prihlásenie"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Odosielajte aj to, ktoré stránky sa používajú."
+
+#: 
+msgid "Areas"
+msgstr "Oblasti"
+
+#: 
+msgid "Church & System"
+msgstr "Cirkev a systém"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Mesto, kde sa vydávajú potvrdenia, tlačené na oficiálnych potvrdeniach. Nechajte prázdne, ak chcete použiť mesto cirkvi."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Záver pred menom podpisujúceho, napríklad S pozdravom."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Záver tlačený pred podpisujúcim na oficiálnych potvrdeniach."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Heslá oddelené čiarkami, ktoré nikto nesmie používať."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Potvrdzovací list"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Vytvoriť pre túto osobu rodinu? Jej adresa a domáci telefón sa presunú do novej rodiny."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Počet dní, počas ktorých si používatelia musia nastaviť dvojfaktorovú autentifikáciu po tom, ako sa stane povinnou. 0 ju vynúti okamžite. Skrátenie prebiehajúcej odkladnej lehoty môže používateľom zablokovať prístup."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Vklady a platby"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Zakázané heslá"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Odmietnutie zodpovednosti %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "E-mail používateľom pri odstránení ich účtu"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Každá stránka nastavení na jednom mieste a nastavenia, ktoré platia pre celý systém"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Neúspešné prihlásenia pred zablokovaním"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Neúspešné prihlásenia na IP adresu"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Rodinné roly považované v adresári za deti."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Rodinné roly považované v adresári a pri prihlásení členov za hlavu rodiny."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Rodinné roly považované v adresári a pri prihlásení členov za manžela/manželku."
+
+#: 
+msgid "Finance Settings"
+msgstr "Nastavenia financií"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Odkladná lehota (dni)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Skryť odbery spravodaja v Editore rodiny."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Skryť pole Dátum priateľa v Editore osoby."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Skryť pole Dátum svadby v Editore rodiny."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Ako dlho zostane zablokovaný účet zablokovaný. Neúspešné prihlásenia z jednej IP adresy sa počítajú v rovnakom období."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "O koľko znakov sa musí nové heslo líšiť od starého. 0 túto funkciu vypne."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "V Správa → Telemetria zapnite možnosť „Zdieľať, ktoré stránky sa používajú“, aby ste zvolili Plné. Plné odosiela aj zobrazenia stránok."
+
+#: 
+msgid "Initials Format"
+msgstr "Formát iniciál"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Text listu %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Doba zablokovania (minúty)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Zablokuje účet po toľkých po sebe idúcich neúspešných prihláseniach. Odomkne sa po uplynutí doby zablokovania, alebo keď ho administrátor resetuje. 0 zablokovanie vypne."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Spravovať Portál členov"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Členovia sa môžu prihlásiť svojím e-mailom."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Členovia sa zatiaľ nemôžu prihlásiť."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimálny počet zmenených znakov"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Minimálna dĺžka hesla"
+
+#: 
+msgid "Name Format"
+msgstr "Formát mena"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Meno tlačené pod záverom listov a e-mailov"
+
+#: 
+msgid "No Payments Text"
+msgstr "Text pri chýbajúcich platbách"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Text pri chýbajúcom záväzku"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Žiadna úroveň neodosiela osoby, darcov, dary, obsah, kontaktné údaje cirkvi, vašu webovú adresu ani názov servera."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Žiadna úroveň neodosiela vašu webovú adresu ani názov servera. Testovacie inštalácie neodosielajú nič. Telemetria sa odosiela do PostHog v Spojených štátoch."
+
+#: 
+msgid "OS family"
+msgstr "Rodina OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Úvodný odsek listu s pripomienkou záväzku."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Odsek vyzývajúci na otázky vo výpise darov."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Odsek vyzývajúci na otázky v liste pre tých, ktorí nedarovali."
+
+#: 
+msgid "Passwords"
+msgstr "Heslá"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Tlačené za rozsahom dátumov v úvodnom riadku listu pre tých, ktorí nedarovali."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Tlačené ako prvé na výpise darov, za ním nasleduje rozsah dátumov."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Tlačené, keď rodina nemá zaznamenané žiadne platby."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Tlačené, keď rodina nemá zaznamenaný žiadny záväzok."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Odmietne prihlásenie z jednej IP adresy na dobu zablokovania po toľkých neúspešných prihláseniach alebo resetovaniach hesla. 0 túto funkciu vypne, napríklad keď sa všetci pripájajú cez jeden proxy server."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Vyžadovať dvojfaktorovú autentifikáciu"
+
+#: 
+msgid "Security Settings"
+msgstr "Nastavenia zabezpečenia"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Odosielajte hlásenia o chybách, udalosti inštalácie/aktualizácie a systémové informácie, aby bolo možné opravovať problémy. Žiadne zobrazenia stránok, žiadne údaje cirkvi."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Časový limit relácie (sekundy)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Zdieľať, ktoré stránky sa používajú"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Prihlásenie a zabezpečenie"
+
+#: 
+msgid "Signature Storage"
+msgstr "Úložisko podpisu"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Odhlási používateľa po toľkých sekundách nečinnosti. 0 nikdy neodhlási."
+
+#: 
+msgid "System-wide"
+msgstr "Celý systém"
+
+#: 
+msgid "Text After Dates"
+msgstr "Text za dátumami"
+
+#: 
+msgid "Text Messages"
+msgstr "Textové správy"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Ďakovný odsek výpisu darov."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Ďakovný odsek listu pre tých, ktorí nedarovali."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konverzia zlyhala. Nič sa nezmenilo."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Používa sa súbor hlavičky listu uložený pred pridaním nahrávania. Nahrajte hlavičku listu, aby ste ju nahradili."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Upozornenie po (hodiny)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Slovo pred menom v listoch a e-mailoch, napríklad Vážený."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Vaša voľba sa pýta iba raz. Môžete ju kedykoľvek zmeniť. Pri voľbe „Nie, ďakujem“ zostáva aktívne Predvolené a zobrazenia stránok sa neodosielajú."
+

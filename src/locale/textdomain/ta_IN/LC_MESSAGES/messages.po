@@ -28006,3 +28006,295 @@ msgstr "உங்கள் தேவாலயத் தகவல் சேமி
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "உங்கள் தரவுத்தளம் (%1$s %2$s) ஒரு பாதுகாப்பு அபாயம்: அதன் விற்பனையாளர் அந்தப் பதிப்பிற்கு இனி பாதுகாப்புச் சரிசெய்தல்களை வழங்குவதில்லை. ChurchCRM தொடர்ந்து செயல்படும், ஆனால் MariaDB %3$s+ அல்லது MySQL %4$s+ க்கு மாற உங்கள் ஹோஸ்டிடம் கேளுங்கள்."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "பயன்பாட்டில் இருக்கும்போது தினசரி செக்-இன், மென்பொருள் மற்றும் தரவுத்தளப் பதிப்புகள், மொழி, நாடு, நிறுவல் வகை மற்றும் சீரற்ற நிறுவல் ID ஆகியவை செயலில் உள்ள நிறுவல்களை எண்ண உதவுகின்றன."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "கணக்குகள் & உள்நுழைவு"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "பயன்படுத்திய பக்கங்களையும் அனுப்பவும்."
+
+#: 
+msgid "Areas"
+msgstr "பகுதிகள்"
+
+#: 
+msgid "Church & System"
+msgstr "தேவாலயம் & கணினி"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "ரசீதுகள் வழங்கப்படும் நகரம் அல்லது ஊர், அதிகாரப்பூர்வ ரசீதுகளில் அச்சிடப்படும். காலியாக விட்டால் தேவாலயத்தின் நகரம் பயன்படுத்தப்படும்."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "கையொப்பமிடுபவரின் பெயருக்கு முன் வரும் முடிவு வாசகம், எடுத்துக்காட்டாக மரியாதையுடன்."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "அதிகாரப்பூர்வ ரசீதுகளில் கையொப்பமிடுபவருக்கு முன் அச்சிடப்படும் முடிவு வாசகம்."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "யாரும் பயன்படுத்தக் கூடாத, காற்புள்ளியால் பிரிக்கப்பட்ட கடவுச்சொற்கள்."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "உறுதிப்படுத்தல் கடிதம்"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "இந்த நபருக்கு ஒரு குடும்பத்தை உருவாக்கவா? அவர்களின் முகவரியும் வீட்டு தொலைபேசியும் புதிய குடும்பத்திற்கு நகரும்."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "இரண்டு-காரணி அங்கீகாரம் தேவையானதாக மாறிய பிறகு பயனர்கள் அதை அமைக்க வேண்டிய நாட்கள். 0 என்றால் உடனடியாக அமல்படுத்தப்படும். செயலில் உள்ள சலுகை காலத்தைக் குறைப்பது பயனர்களைப் பூட்டிவிடலாம்."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "வைப்புகள் & கொடுப்பனவுகள்"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "அனுமதிக்கப்படாத கடவுச்சொற்கள்"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "மறுப்பு %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "பயனரின் கணக்கு நீக்கப்படும்போது அவருக்கு மின்னஞ்சல் அனுப்பவும்"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "அனைத்து அமைப்புகள் பக்கங்களும் ஒரே இடத்தில், மற்றும் முழு கணினிக்கும் பொருந்தும் அமைப்புகள்"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "பூட்டுவதற்கு முன் தோல்வியடைந்த உள்நுழைவுகள்"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "ஒவ்வொரு IP முகவரிக்கும் தோல்வியடைந்த உள்நுழைவுகள்"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "அடைவில் குழந்தைகளாகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "அடைவிலும் உறுப்பினர் உள்நுழைவிலும் குடும்பத் தலைவராகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "அடைவிலும் உறுப்பினர் உள்நுழைவிலும் வாழ்க்கைத் துணையாகக் கருதப்படும் குடும்பப் பாத்திரங்கள்."
+
+#: 
+msgid "Finance Settings"
+msgstr "நிதி அமைப்புகள்"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "சலுகை காலம் (நாட்கள்)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "குடும்ப திருத்துநர்/ஆசிரியரில் செய்திமடல் சந்தாக்களை மறைக்கவும்."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "நபர் திருத்துநர்/ஆசிரியரில் நண்பர் தேதி புலத்தை மறைக்கவும்."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "குடும்ப திருத்துநர்/ஆசிரியரில் திருமண தேதி புலத்தை மறைக்கவும்."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "பூட்டப்பட்ட கணக்கு எவ்வளவு நேரம் பூட்டப்பட்டிருக்கும். ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகள் அதே காலத்தில் எண்ணப்படும்."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "புதிய கடவுச்சொல் பழையதிலிருந்து எத்தனை எழுத்துக்கள் வேறுபட வேண்டும். 0 என்றால் இது அணைக்கப்படும்."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "நிர்வாகம் → தொலைமிதியில், முழு என்பதைத் தேர்ந்தெடுக்க பயன்படுத்திய பக்கங்களைப் பகிரவும் என்பதை இயக்கவும். முழு பக்கக் காட்சிகளையும் அனுப்பும்."
+
+#: 
+msgid "Initials Format"
+msgstr "முதலெழுத்துக்கள் வடிவமைப்பு"
+
+#: 
+msgid "Letter Text %d"
+msgstr "கடித உரை %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "பூட்டு காலம் (நிமிடங்கள்)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "தொடர்ச்சியாக இத்தனை தோல்வியடைந்த உள்நுழைவுகளுக்குப் பிறகு ஒரு கணக்கைப் பூட்டுகிறது. பூட்டு காலம் முடிந்த பிறகு அல்லது நிர்வாகி மீட்டமைக்கும்போது அது திறக்கும். 0 என்றால் பூட்டு அணைக்கப்படும்."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலை நிர்வகிக்கவும்"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "உறுப்பினர்கள் தங்கள் மின்னஞ்சலால் உள்நுழையலாம்."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "உறுப்பினர்கள் இன்னும் உள்நுழைய முடியாது."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "குறைந்தபட்சம் மாற்ற வேண்டிய எழுத்துக்கள்"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "கடவுச்சொல்லின் குறைந்தபட்ச நீளம்"
+
+#: 
+msgid "Name Format"
+msgstr "பெயர் வடிவமைப்பு"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "கடிதங்கள் மற்றும் மின்னஞ்சல்களின் முடிவு வாசகத்தின் கீழ் அச்சிடப்படும் பெயர்"
+
+#: 
+msgid "No Payments Text"
+msgstr "கொடுப்பனவு இல்லாத உரை"
+
+#: 
+msgid "No Pledge Text"
+msgstr "உறுதிமொழி இல்லாத உரை"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "எந்த நிலையும் மக்கள், நன்கொடையாளர்கள், கொடை, உள்ளடக்கம், தேவாலய தொடர்பு விவரங்கள், உங்கள் வலை முகவரி அல்லது சேவையகப் பெயரை அனுப்பாது."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "எந்த நிலையும் உங்கள் வலை முகவரியையோ சேவையகப் பெயரையோ அனுப்பாது. சோதனை நிறுவல்கள் எதையும் அனுப்பாது. தொலைமிதி ஐக்கிய அமெரிக்காவில் உள்ள PostHog-க்கு அனுப்பப்படுகிறது."
+
+#: 
+msgid "OS family"
+msgstr "OS குடும்பம்"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "உறுதிமொழி நினைவூட்டல் கடிதத்தின் தொடக்கப் பத்தி."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "கொடை அறிக்கையில் கேள்விகளை அழைக்கும் பத்தி."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தில் கேள்விகளை அழைக்கும் பத்தி."
+
+#: 
+msgid "Passwords"
+msgstr "கடவுச்சொற்கள்"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தின் தொடக்க வரியில் தேதி வரம்பிற்குப் பிறகு அச்சிடப்படும்."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "கொடை அறிக்கையில் முதலில் அச்சிடப்படும், அதைத் தொடர்ந்து தேதி வரம்பு."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "ஒரு குடும்பத்திற்கு கொடுப்பனவு பதிவுகள் இல்லாதபோது அச்சிடப்படும்."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "ஒரு குடும்பத்திற்கு உறுதிமொழி பதிவுகள் இல்லாதபோது அச்சிடப்படும்."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "இத்தனை தோல்வியடைந்த உள்நுழைவுகள் அல்லது கடவுச்சொல் மீட்டமைப்புகளுக்குப் பிறகு பூட்டு காலத்திற்கு ஒரு IP முகவரியிலிருந்து உள்நுழைவை மறுக்கிறது. 0 என்றால் இது அணைக்கப்படும், எடுத்துக்காட்டாக அனைவரும் ஒரே ப்ராக்ஸி வழியாக இணையும்போது."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "இரண்டு-காரணி அங்கீகாரத்தைத் தேவைப்படுத்தவும்"
+
+#: 
+msgid "Security Settings"
+msgstr "பாதுகாப்பு அமைப்புகள்"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "சிக்கல்களைச் சரிசெய்ய பிழை அறிக்கைகள், நிறுவல்/மேம்படுத்தல் நிகழ்வுகள் மற்றும் கணினித் தகவலை அனுப்பவும். பக்கக் காட்சிகள் இல்லை, தேவாலயத் தரவு இல்லை."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "அமர்வு நேர முடிவு (விநாடிகள்)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "பயன்படுத்திய பக்கங்களைப் பகிரவும்"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "உள்நுழைவு & பாதுகாப்பு"
+
+#: 
+msgid "Signature Storage"
+msgstr "கையொப்ப சேமிப்பு"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "இத்தனை விநாடிகள் செயல்பாடு இல்லாத பிறகு பயனரை வெளியேற்றுகிறது. 0 என்றால் ஒருபோதும் வெளியேற்றாது."
+
+#: 
+msgid "System-wide"
+msgstr "கணினி முழுவதும்"
+
+#: 
+msgid "Text After Dates"
+msgstr "தேதிகளுக்குப் பிறகான உரை"
+
+#: 
+msgid "Text Messages"
+msgstr "உரைச் செய்திகள்"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "கொடை அறிக்கையின் நன்றிப் பத்தி."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "கொடை வழங்காதவர்களின் கடிதத்தின் நன்றிப் பத்தி."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "பதிவேற்றங்கள் சேர்க்கப்படுவதற்கு முன் சேமிக்கப்பட்ட தலைப்புப் படக் கோப்பைப் பயன்படுத்துகிறது. அதை மாற்ற ஒரு தலைப்புப் படத்தைப் பதிவேற்றவும்."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "எச்சரிக்கை நேரம் (மணிநேரம்)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "கடிதங்கள் மற்றும் மின்னஞ்சல்களில் பெயருக்கு முன் வரும் சொல், எடுத்துக்காட்டாக அன்புள்ள."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "உங்கள் தேர்வு ஒருமுறை மட்டுமே கேட்கப்படும். எந்த நேரத்திலும் அதை மாற்றலாம். வேண்டாம், நன்றி என்பதுடன், இயல்புநிலை செயலில் இருக்கும், பக்கக் காட்சிகள் அனுப்பப்படாது."
+

@@ -28087,3 +28087,295 @@ msgstr "Informațiile bisericii dvs. au fost salvate. Parcurgeți pașii de mai 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Baza dvs. de date (%1$s %2$s) este un risc de securitate: furnizorul ei nu mai publică remedieri de securitate pentru acea versiune. ChurchCRM funcționează în continuare, dar cereți gazdei dvs. să treacă la MariaDB %3$s+ sau MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "O verificare zilnică în timpul utilizării, versiunile software-ului și ale bazei de date, limba, țara, tipul de instalare și un ID de instalare aleatoriu ajută la numărarea instalărilor active."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Conturi și autentificare"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Trimite și paginile utilizate."
+
+#: 
+msgid "Areas"
+msgstr "Zone"
+
+#: 
+msgid "Church & System"
+msgstr "Biserică și sistem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Orașul sau localitatea în care sunt emise chitanțele, tipărit pe chitanțele oficiale. Lăsați necompletat pentru a folosi orașul bisericii."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Formula de încheiere înaintea numelui semnatarului, de exemplu Cu stimă."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Formula de încheiere tipărită înaintea semnatarului pe chitanțele oficiale."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Parole separate prin virgule pe care nimeni nu le poate folosi."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Scrisoare de confirmare"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Creați o familie pentru această persoană? Adresa și telefonul de acasă se mută în noua familie."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Zilele pe care utilizatorii le au la dispoziție pentru a configura autentificarea cu doi factori după ce devine obligatorie. 0 o impune imediat. Scurtarea unei perioade de grație active poate bloca accesul utilizatorilor."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depozite și plăți"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Parole interzise"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Act de renunțare %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Trimite e-mail utilizatorilor când contul lor este șters"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Toate paginile de setări într-un singur loc și setările care se aplică întregului sistem"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Autentificări eșuate înainte de blocare"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Autentificări eșuate per adresă IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Roluri de familie tratate ca și copii în director."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Roluri de familie tratate ca și cap de familie în director și la autentificarea membrilor."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Roluri de familie tratate ca și soț/soție în director și la autentificarea membrilor."
+
+#: 
+msgid "Finance Settings"
+msgstr "Setări financiare"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Perioadă de grație (zile)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Ascunde abonamentele la buletinul informativ în Editor de familie."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Ascunde câmpul Prieten Data în Persoana Editor."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Ascunde câmpul Data nunții în Editor de familie."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Cât timp rămâne blocat un cont blocat. Autentificările eșuate de la o singură adresă IP sunt numărate în aceeași perioadă."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Cu câte caractere trebuie să difere o parolă nouă de cea veche. 0 dezactivează această regulă."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "În Administrare → Telemetrie, activați Partajează paginile utilizate pentru a selecta Complet. Complet trimite și vizualizările de pagini."
+
+#: 
+msgid "Initials Format"
+msgstr "Formatul inițialelor"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Textul scrisorii %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Perioadă de blocare (minute)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Blochează un cont după acest număr de autentificări eșuate consecutive. Se deblochează după perioada de blocare sau când un administrator îl resetează. 0 dezactivează blocarea."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Gestionați Portalul comunității"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Membrii se pot autentifica cu e-mailul lor."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Membrii nu se pot autentifica încă."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Caractere minime modificate"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Lungimea minimă a parolei"
+
+#: 
+msgid "Name Format"
+msgstr "Formatul numelui"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Numele tipărit sub formula de încheiere a scrisorilor și e-mailurilor"
+
+#: 
+msgid "No Payments Text"
+msgstr "Text pentru lipsa plăților"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Text pentru lipsa angajamentului"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Niciun nivel nu trimite persoane, donatori, donații, conținut, datele de contact ale bisericii, adresa dvs. web sau numele serverului dvs."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Niciun nivel nu trimite adresa dvs. web sau numele serverului dvs. Instalările de test nu trimit nimic. Telemetria este trimisă la PostHog în Statele Unite."
+
+#: 
+msgid "OS family"
+msgstr "Familia sistemului de operare"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragraful de deschidere al scrisorii de reamintire a angajamentului."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragraful care invită la întrebări în extrasul de donații."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragraful care invită la întrebări în scrisoarea pentru donatorii fără donații."
+
+#: 
+msgid "Passwords"
+msgstr "Parole"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Tipărit după intervalul de date în rândul de deschidere al scrisorii pentru donatorii fără donații."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Tipărit primul pe extrasul de donații, urmat de intervalul de date."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Tipărit când o familie nu are plăți înregistrate."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Tipărit când o familie nu are niciun angajament înregistrat."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Refuză autentificarea de la o adresă IP pe durata perioadei de blocare după acest număr de autentificări eșuate sau resetări de parolă. 0 dezactivează această regulă, de exemplu când toată lumea se conectează printr-un singur proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Solicită autentificarea cu doi factori"
+
+#: 
+msgid "Security Settings"
+msgstr "Setări de securitate"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Trimite rapoarte de eroare, evenimente de instalare/actualizare și informații de sistem, pentru ca problemele să poată fi remediate. Fără vizualizări de pagini, fără date ale bisericii."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Expirare sesiune (secunde)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Partajează paginile utilizate"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Autentificare și securitate"
+
+#: 
+msgid "Signature Storage"
+msgstr "Stocarea semnăturii"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Deconectează un utilizator după acest număr de secunde de inactivitate. 0 nu deconectează niciodată."
+
+#: 
+msgid "System-wide"
+msgstr "Întregul sistem"
+
+#: 
+msgid "Text After Dates"
+msgstr "Text după date"
+
+#: 
+msgid "Text Messages"
+msgstr "Mesaje text"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragraful de mulțumire din extrasul de donații."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragraful de mulțumire din scrisoarea pentru donatorii fără donații."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Conversia a eșuat. Nu s-a modificat nimic."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Se folosește un fișier cu antet salvat înainte de adăugarea încărcărilor. Încărcați un antet pentru a-l înlocui."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Avertizare după (ore)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Cuvântul înaintea numelui în scrisori și e-mailuri, de exemplu Dragă."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Alegerea dvs. este solicitată o singură dată. O puteți modifica oricând. Cu Nu, mulțumesc, nivelul Implicit rămâne activ și vizualizările de pagini nu sunt trimise."
+

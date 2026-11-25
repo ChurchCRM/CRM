@@ -27994,3 +27994,295 @@ msgstr "Sinu koguduse teave on salvestatud. Vaata läbi allolevad sammud."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Sinu andmebaas (%1$s %2$s) on turvarisk: selle tarnija ei väljasta sellele versioonile enam turvaparandusi. ChurchCRM töötab edasi, kuid palu oma hostil minna üle MariaDB %3$s+ või MySQL %4$s+ versioonile."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Igapäevane kontrollühendus kasutamise ajal, tarkvara- ja andmebaasi versioonid, lokaat, riik, paigaldustüüp ja juhuslik paigaldus-ID aitavad loendada aktiivseid paigaldusi."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Kontod & sisselogimine"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Saada ka, milliseid lehtiä kasutatakse."
+
+#: 
+msgid "Areas"
+msgstr "Piirkonnad"
+
+#: 
+msgid "Church & System"
+msgstr "Kogudus & süsteem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Linn või asula, kus kviitungeid väljastatakse, trükitakse ametlikele kviitungitele. Jäta tühjaks, et kasutada koguduse linna."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Lõppsõna enne allkirjastaja nime, näiteks Lugupidamisega."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Lõppsõna, mis trükitakse ametlikele kviitungitele allkirjastaja ette."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kommadega eraldatud paroolid, mida keegi ei tohi kasutada."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Kinnituskiri"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Kas luua sellele isikule perekond? Tema aadress ja kodutelefon viiakse uude perekonda."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Päevad, mis kasutajatel on kahe faktori autentimise seadistamiseks pärast selle kohustuslikuks muutumist. 0 rakendab selle kohe. Aktiivse ajapikenduse lühendamine võib kasutajad välja lukustada."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Sissetulekud & maksed"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Keelatud paroolid"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Kohustustest loobumine %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Saada kasutajatele e-kiri, kui nende konto kustutatakse"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Iga säteteleht ühes kohas ja sätted, mis kehtivad kogu süsteemile"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Ebaõnnestunud sisselogimised enne lukustamist"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Ebaõnnestunud sisselogimised IP-aadressi kohta"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis lastena."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis ja liikmete sisselogimisel perekonnapeana."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Perekonna rollid, mida käsitletakse kataloogis ja liikmete sisselogimisel abikaasana."
+
+#: 
+msgid "Finance Settings"
+msgstr "Finantssätted"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Ajapikendus (päeva)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Peida uudiskirja tellimused Perekonna muutjas."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Peida Isiku muutjas väli Sõber alates."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Peida Perekonna muutjas väli Pulma - laulatuse kuupäev."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Kui kaua lukustatud konto lukustatuks jääb. Ühelt IP-aadressilt tehtud ebaõnnestunud sisselogimised loendatakse sama perioodi jooksul."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Mitme märgi võrra peab uus parool vanast erinema. 0 lülitab selle välja."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Jaotises Admin → Telemeetria lülita sisse Jaga, milliseid lehtiä kasutatakse, et valida Täis. Täis saadab ka lehevaatamisi."
+
+#: 
+msgid "Initials Format"
+msgstr "Initsiaalide vorming"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Kirja tekst %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Lukustusperiood (minutit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Lukustab konto pärast nii mitut järjestikust ebaõnnestunud sisselogimist. See avaneb pärast lukustusperioodi või kui administraator selle lähtestab. 0 lülitab lukustamise välja."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Halda Liikmeportaali"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Liikmed saavad sisse logida oma e-postiga."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Liikmed ei saa veel sisse logida."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Minimaalne muudetud märkide arv"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Parooli minimaalne pikkus"
+
+#: 
+msgid "Name Format"
+msgstr "Nimevorming"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nimi, mis trükitakse kirjade ja e-kirjade lõppsõna alla"
+
+#: 
+msgid "No Payments Text"
+msgstr "Maksete puudumise tekst"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Lubaduse puudumise tekst"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ükski tase ei saada inimesi, annetajaid, annetusi, sisu, koguduse kontaktandmeid, sinu veebiaadressi ega serveri nime."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ükski tase ei saada sinu veebiaadressi ega serveri nime. Testpaigaldused ei saada midagi. Telemeetria saadetakse PostHogi Ameerika Ühendriikides."
+
+#: 
+msgid "OS family"
+msgstr "Operatsioonisüsteemi perekond"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Lubaduse meeldetuletuskirja avamislõik."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Annetuste tõendi lõik, mis kutsub esitama küsimusi."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Lõik nullannetajate kirjas, mis kutsub esitama küsimusi."
+
+#: 
+msgid "Passwords"
+msgstr "Paroolid"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Trükitakse kuupäevavahemiku järele nullannetajate kirja avamisreal."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Trükitakse annetuste tõendile esimesena, sellele järgneb kuupäevavahemik."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Trükitakse, kui perekonnal pole ühtegi makset kirjas."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Trükitakse, kui perekonnal pole ühtegi lubadust kirjas."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Keeldub ühelt IP-aadressilt sisselogimisest lukustusperioodiks pärast nii mitut ebaõnnestunud sisselogimist või parooli lähtestamist. 0 lülitab selle välja, näiteks kui kõik ühenduvad ühe proksi kaudu."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Nõua kahe faktori autentimist"
+
+#: 
+msgid "Security Settings"
+msgstr "Turvasätted"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Saada veateateid, paigaldus-/uuendussündmusi ja süsteemi teavet, et probleeme saaks parandada. Ei lehevaatamisi ega koguduse andmeid."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Seansi ajalõpp (sekundit)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Jaga, milliseid lehtiä kasutatakse"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Sisselogimine & turvalisus"
+
+#: 
+msgid "Signature Storage"
+msgstr "Allkirjade salvestus"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Logib kasutaja välja pärast nii mitut sekundit tegevusetust. 0 ei logi kunagi välja."
+
+#: 
+msgid "System-wide"
+msgstr "Süsteemiülene"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tekst pärast kuupäevi"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstisõnumid"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Annetuste tõendi tänulõik."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Nullannetajate kirja tänulõik."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Teisendamine ebaõnnestus. Midagi ei muudetud."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Kasutatakse kirjaplanki faili, mis salvestati enne üleslaadimiste lisamist. Laadi üles kirjaplank, et see asendada."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Hoiatus pärast (tundi)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Sõna enne nime kirjades ja e-kirjades, näiteks Lugupeetud."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Sinu valikut küsitakse üks kord. Saad seda igal ajal muuta. Valikuga Ei, tänan jääb Vaikimisi aktiivseks ja lehevaatamisi ei saadeta."
+

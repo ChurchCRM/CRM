@@ -27995,3 +27995,295 @@ msgstr "Kilise bilgileriniz kaydedildi. Aşağıdaki adımları tamamlayın."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Veritabanınız (%1$s %2$s) bir güvenlik riskidir: satıcısı artık o sürüm için güvenlik düzeltmeleri yayınlamıyor. ChurchCRM çalışmaya devam eder, ancak barındırma sağlayıcınızdan MariaDB %3$s+ veya MySQL %4$s+ sürümüne geçmesini isteyin."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Kullanım sırasında günlük bir bildirim, yazılım ve veritabanı sürümleri, yerel ayar, ülke, kurulum türü ve rastgele bir kurulum kimliği, aktif kurulumların sayılmasına yardımcı olur."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Hesaplar ve Giriş"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Hangi sayfaların kullanıldığını da gönderir."
+
+#: 
+msgid "Areas"
+msgstr "Alanlar"
+
+#: 
+msgid "Church & System"
+msgstr "Kilise ve Sistem"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Makbuzların düzenlendiği şehir veya kasaba, resmi makbuzlara yazdırılır. Kilisenin şehrini kullanmak için boş bırakın."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "İmzalayanın adından önce gelen kapanış, örneğin Saygılarımla."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Resmi makbuzlarda imzalayanın öncesinde yazdırılan kapanış."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Kimsenin kullanamayacağı, virgülle ayrılmış şifreler."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Onay Mektubu"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Bu kişi için bir aile oluşturulsun mu? Adresi ve ev telefonu yeni aileye taşınır."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Kullanıcıların, zorunlu hale geldikten sonra iki faktörlü doğrulamayı ayarlamak için sahip olduğu gün sayısı. 0, bunu hemen zorunlu kılar. Aktif bir ek süreyi kısaltmak kullanıcıların hesaplarına erişimini engelleyebilir."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depozitolar ve Ödemeler"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "İzin Verilmeyen Şifreler"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Sorumluluk Reddi %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Hesapları Silindiğinde Kullanıcılara E-posta Gönder"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Tüm ayar sayfaları tek bir yerde ve tüm sistem için geçerli olan ayarlar"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Kilitlenmeden Önceki Başarısız Girişler"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "IP Adresi Başına Başarısız Girişler"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Dizinde çocuk olarak değerlendirilen aile rolleri."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Dizinde ve üye girişinde hane reisi olarak değerlendirilen aile rolleri."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Dizinde ve üye girişinde eş olarak değerlendirilen aile rolleri."
+
+#: 
+msgid "Finance Settings"
+msgstr "Finans Ayarları"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Ek Süre (gün)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Aile Editöründe bülten aboneliklerini gizle."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Kişi Editöründe Arkadaş Tarihi alanını gizle."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Aile Editöründe Düğün Tarihi alanını gizle."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Kilitli bir hesabın ne kadar süre kilitli kaldığı. Bir IP adresinden yapılan başarısız girişler aynı süre boyunca sayılır."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Yeni bir şifrenin eski şifreden kaç karakter farklı olması gerektiği. 0 bunu kapatır."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Tam düzeyini seçmek için Yönetim → Telemetri bölümünde Hangi sayfaların kullanıldığını paylaş seçeneğini açın. Tam, sayfa görüntülemelerini de gönderir."
+
+#: 
+msgid "Initials Format"
+msgstr "Baş Harf Biçimi"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Mektup Metni %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Kilitleme Süresi (dakika)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Bu kadar ard arda başarısız girişten sonra bir hesabı kilitler. Kilitleme süresi dolduğunda veya bir yönetici sıfırladığında kilit açılır. 0, kilitlemeyi kapatır."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Üye Portalını Yönet"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Üyeler e-postalarıyla giriş yapabilir."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Üyeler henüz giriş yapamaz."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Değişen Minimum Karakter"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Minimum Şifre Uzunluğu"
+
+#: 
+msgid "Name Format"
+msgstr "Ad Biçimi"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Mektupların ve e-postaların kapanışının altında yazdırılan ad"
+
+#: 
+msgid "No Payments Text"
+msgstr "Ödeme Yok Metni"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Taahhüt Yok Metni"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Hiçbir düzey kişi, bağışçı, bağış, içerik, kilise iletişim bilgileri, web adresinizi veya sunucu adınızı göndermez."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Hiçbir düzey web adresinizi veya sunucu adınızı göndermez. Test kurulumları hiçbir şey göndermez. Telemetri, Amerika Birleşik Devletleri'ndeki PostHog'a gönderilir."
+
+#: 
+msgid "OS family"
+msgstr "İşletim sistemi ailesi"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Taahhüt hatırlatma mektubunun açılış paragrafı."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Bağış bildirimine soru sormaya davet eden paragraf."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Hiç bağış yapmayanlara yazılan mektupta soru sormaya davet eden paragraf."
+
+#: 
+msgid "Passwords"
+msgstr "Şifreler"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Hiç bağış yapmayanlara yazılan mektubun açılış satırında tarih aralığından sonra yazdırılır."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Bağış bildiriminde ilk olarak yazdırılır, ardından tarih aralığı gelir."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Bir ailenin kayıtlı ödemesi olmadığında yazdırılır."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Bir ailenin kayıtlı taahhüdü olmadığında yazdırılır."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Bu kadar başarısız giriş veya şifre sıfırlamadan sonra bir IP adresinden girişi kilitleme süresi boyunca reddeder. 0 bunu kapatır, örneğin herkes tek bir proxy üzerinden bağlandığında."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "İki Faktörlü Doğrulama Gerektir"
+
+#: 
+msgid "Security Settings"
+msgstr "Güvenlik Ayarları"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Sorunların düzeltilebilmesi için hata raporları, kurulum/yükseltme olayları ve sistem bilgilerini gönderir. Sayfa görüntülemesi yok, kilise verisi yok."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Oturum Zaman Aşımı (saniye)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Hangi sayfaların kullanıldığını paylaş"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Giriş ve Güvenlik"
+
+#: 
+msgid "Signature Storage"
+msgstr "İmza Depolama"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Bir kullanıcıyı bu kadar saniye hareketsiz kaldıktan sonra çıkış yaptırır. 0, asla çıkış yaptırmaz."
+
+#: 
+msgid "System-wide"
+msgstr "Sistem genelinde"
+
+#: 
+msgid "Text After Dates"
+msgstr "Tarihlerden Sonraki Metin"
+
+#: 
+msgid "Text Messages"
+msgstr "Metin Mesajları"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Bağış bildiriminin teşekkür paragrafı."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Hiç bağış yapmayanlara yazılan mektubun teşekkür paragrafı."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Dönüştürme başarısız oldu. Hiçbir şey değiştirilmedi."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Yüklemeler eklenmeden önce kaydedilmiş bir antetli dosya kullanılıyor. Değiştirmek için bir antetli yükleyin."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Uyarı Süresi (Saat)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Mektuplarda ve e-postalarda addan önce gelen kelime, örneğin Sevgili."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Seçiminiz bir kez sorulur. İstediğiniz zaman değiştirebilirsiniz. Hayır, teşekkürler ile Varsayılan aktif kalır ve sayfa görüntülemeleri gönderilmez."
+

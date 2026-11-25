@@ -27966,3 +27966,295 @@ msgstr "आपके चर्च की जानकारी सहेजी �
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "आपका डेटाबेस (%1$s %2$s) एक सुरक्षा जोखिम है: इसका विक्रेता अब उस संस्करण के लिए सुरक्षा सुधार जारी नहीं करता। ChurchCRM काम करता रहता है, लेकिन अपने होस्ट से MariaDB %3$s+ या MySQL %4$s+ पर जाने के लिए कहें।"
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "उपयोग के दौरान दैनिक चेक-इन, सॉफ़्टवेयर और डेटाबेस संस्करण, लोकेल, देश, स्थापना प्रकार और एक यादृच्छिक स्थापना ID सक्रिय स्थापनाओं को गिनने में मदद करते हैं।"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "खाते और साइन-इन"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "यह भी भेजता है कि कौन-से पृष्ठ उपयोग होते हैं।"
+
+#: 
+msgid "Areas"
+msgstr "क्षेत्र"
+
+#: 
+msgid "Church & System"
+msgstr "चर्च और सिस्टम"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "वह शहर या कस्बा जहाँ रसीदें जारी होती हैं, आधिकारिक रसीदों पर छपता है। चर्च के शहर का उपयोग करने के लिए खाली छोड़ें।"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "हस्ताक्षरकर्ता के नाम से पहले का समापन, उदाहरण के लिए सादर।"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "आधिकारिक रसीदों पर हस्ताक्षरकर्ता से पहले छपा समापन।"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "अल्पविराम से अलग किए गए पासवर्ड जिनका उपयोग कोई नहीं कर सकता।"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "पुष्टि पत्र"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "इस व्यक्ति के लिए परिवार बनाएँ? उनका पता और घर का फ़ोन नए परिवार में चला जाता है।"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "दो-कारक प्रमाणीकरण आवश्यक हो जाने के बाद उपयोगकर्ताओं को उसे सेट करने के लिए मिलने वाले दिन। 0 उसे तुरंत लागू करता है। सक्रिय छूट अवधि को छोटा करने से उपयोगकर्ता बाहर लॉक हो सकते हैं।"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "जमा और भुगतान"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "अस्वीकृत पासवर्ड"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "अस्वीकरण %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "उपयोगकर्ताओं का खाता हटाए जाने पर उन्हें ईमेल करें"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "हर सेटिंग्स पृष्ठ एक ही स्थान पर, और वे सेटिंग्स जो पूरे सिस्टम पर लागू होती हैं"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "लॉकआउट से पहले असफल साइन-इन"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "प्रति IP पते असफल साइन-इन"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "निर्देशिका में बच्चों के रूप में मानी जाने वाली पारिवारिक भूमिकाएँ।"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "निर्देशिका और सदस्य साइन-इन में परिवार के मुखिया के रूप में मानी जाने वाली पारिवारिक भूमिकाएँ।"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "निर्देशिका और सदस्य साइन-इन में जीवनसाथी के रूप में मानी जाने वाली पारिवारिक भूमिकाएँ।"
+
+#: 
+msgid "Finance Settings"
+msgstr "वित्त सेटिंग्स"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "छूट अवधि (दिन)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "परिवार संपादक में न्यूज़लेटर सदस्यताएँ छिपाएँ।"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "व्यक्ति संपादक में मित्र तिथि फ़ील्ड छिपाएँ।"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "परिवार संपादक में विवाह तिथि फ़ील्ड छिपाएँ।"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "लॉक किया गया खाता कितनी देर लॉक रहता है। एक IP पते से असफल साइन-इन उसी अवधि में गिने जाते हैं।"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "नया पासवर्ड पुराने से कितने वर्ण अलग होना चाहिए। 0 इसे बंद कर देता है।"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "एडमिन → टेलीमेट्री में, फ़ुल चुनने के लिए साझा करें कि कौन-से पृष्ठ उपयोग होते हैं चालू करें। फ़ुल पृष्ठ दृश्य भी भेजता है।"
+
+#: 
+msgid "Initials Format"
+msgstr "आद्याक्षर प्रारूप"
+
+#: 
+msgid "Letter Text %d"
+msgstr "पत्र टेक्स्ट %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "लॉकआउट अवधि (मिनट)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "लगातार इतने असफल साइन-इन के बाद खाता लॉक कर देता है। यह लॉकआउट अवधि के बाद, या जब कोई प्रशासक इसे रीसेट करता है, अनलॉक हो जाता है। 0 लॉकआउट बंद कर देता है।"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "सदस्य पोर्टल प्रबंधित करें"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "सदस्य अपने ईमेल से साइन इन कर सकते हैं।"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "सदस्य अभी साइन इन नहीं कर सकते।"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "न्यूनतम बदले गए वर्ण"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "न्यूनतम पासवर्ड लंबाई"
+
+#: 
+msgid "Name Format"
+msgstr "नाम प्रारूप"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "पत्रों और ईमेल के समापन के नीचे छपा नाम"
+
+#: 
+msgid "No Payments Text"
+msgstr "कोई भुगतान नहीं टेक्स्ट"
+
+#: 
+msgid "No Pledge Text"
+msgstr "कोई प्रतिज्ञा नहीं टेक्स्ट"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "कोई भी स्तर लोगों, दाताओं, दान, सामग्री, चर्च संपर्क विवरण, आपका वेब पता या सर्वर नाम नहीं भेजता।"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "कोई भी स्तर आपका वेब पता या सर्वर नाम नहीं भेजता। परीक्षण स्थापनाएँ कुछ नहीं भेजतीं। टेलीमेट्री संयुक्त राज्य अमेरिका में PostHog को भेजी जाती है।"
+
+#: 
+msgid "OS family"
+msgstr "OS परिवार"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "प्रतिज्ञा अनुस्मारक पत्र का प्रारंभिक अनुच्छेद।"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "दान विवरण में प्रश्नों के लिए आमंत्रित करने वाला अनुच्छेद।"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "शून्य-दाताओं वाले पत्र में प्रश्नों के लिए आमंत्रित करने वाला अनुच्छेद।"
+
+#: 
+msgid "Passwords"
+msgstr "पासवर्ड"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "शून्य-दाताओं वाले पत्र की प्रारंभिक पंक्ति में तिथि सीमा के बाद छपता है।"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "दान विवरण पर सबसे पहले छपता है, उसके बाद तिथि सीमा आती है।"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "तब छपता है जब किसी परिवार का कोई भुगतान रिकॉर्ड में नहीं होता।"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "तब छपता है जब किसी परिवार की कोई प्रतिज्ञा रिकॉर्ड में नहीं होती।"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "इतने असफल साइन-इन या पासवर्ड रीसेट के बाद एक IP पते से लॉकआउट अवधि के लिए साइन-इन अस्वीकार करता है। 0 इसे बंद कर देता है, उदाहरण के लिए जब सभी एक ही प्रॉक्सी से जुड़ते हैं।"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "टू-फैक्टर ऑथेंटिकेशन आवश्यक करें"
+
+#: 
+msgid "Security Settings"
+msgstr "सुरक्षा सेटिंग्स"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "त्रुटि रिपोर्ट, स्थापना/अपग्रेड घटनाएँ और सिस्टम जानकारी भेजता है ताकि समस्याएँ ठीक की जा सकें। कोई पृष्ठ दृश्य नहीं, कोई चर्च डेटा नहीं।"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "सत्र समय-समाप्ति (सेकंड)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "साझा करें कि कौन-से पृष्ठ उपयोग होते हैं"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "साइन-इन और सुरक्षा"
+
+#: 
+msgid "Signature Storage"
+msgstr "हस्ताक्षर संग्रहण"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "इतने सेकंड बिना गतिविधि के बाद उपयोगकर्ता को साइन आउट कर देता है। 0 कभी साइन आउट नहीं करता।"
+
+#: 
+msgid "System-wide"
+msgstr "सिस्टम-व्यापी"
+
+#: 
+msgid "Text After Dates"
+msgstr "तिथियों के बाद का टेक्स्ट"
+
+#: 
+msgid "Text Messages"
+msgstr "टेक्स्ट संदेश"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "दान विवरण का धन्यवाद अनुच्छेद।"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "शून्य-दाताओं वाले पत्र का धन्यवाद अनुच्छेद।"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "रूपांतरण विफल रहा। कुछ भी नहीं बदला गया।"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "अपलोड जोड़े जाने से पहले सहेजी गई लेटरहेड फ़ाइल का उपयोग हो रहा है। इसे बदलने के लिए लेटरहेड अपलोड करें।"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "चेतावनी बाद (घंटे)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "पत्रों और ईमेल में नाम से पहले का शब्द, उदाहरण के लिए प्रिय।"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "आपका विकल्प एक बार पूछा जाता है। आप इसे किसी भी समय बदल सकते हैं। नहीं, धन्यवाद के साथ, डिफ़ॉल्ट सक्रिय रहता है और पृष्ठ दृश्य नहीं भेजे जाते।"
+

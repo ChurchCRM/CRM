@@ -27928,3 +27928,295 @@ msgstr "教会情報が保存されました。以下の手順を進めてくだ
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "お使いのデータベース（%1$s %2$s）はセキュリティリスクです。そのバージョンに対するセキュリティ修正はベンダーから提供されなくなりました。ChurchCRM は動作し続けますが、MariaDB %3$s 以降または MySQL %4$s 以降への移行をホスティング事業者に依頼してください。"
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "使用中の毎日のチェックイン、ソフトウェアとデータベースのバージョン、ロケール、国、インストールの種類、ランダムなインストールIDにより、アクティブなインストール数を数えることができます。"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "アカウントとサインイン"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "使用したページも送信します。"
+
+#: 
+msgid "Areas"
+msgstr "エリア"
+
+#: 
+msgid "Church & System"
+msgstr "教会とシステム"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "領収書が発行される市町村。公式領収書に印刷されます。空白の場合は教会の市町村が使用されます。"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "署名者の名前の前に置かれる結びの言葉。例：敬具。"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "公式領収書で署名者の前に印刷される結びの言葉。"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "カンマ区切りの、使用禁止のパスワード。"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "確認レター"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "この人の家族を作成しますか？住所と固定電話は新しい家族に移ります。"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "二要素認証が必須になってから、ユーザーが設定を完了するまでの日数。0 の場合は直ちに強制されます。有効な猶予期間を短縮すると、ユーザーがロックアウトされることがあります。"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "入金と支払い"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "使用禁止のパスワード"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "免責事項 %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "アカウント削除時にユーザーへメールを送信"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "すべての設定ページを 1 か所にまとめ、システム全体に適用される設定"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "ロックアウトまでのサインイン失敗回数"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "IPアドレスごとのサインイン失敗回数"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "名簿で子どもとして扱われる家族の役割。"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "名簿とメンバーサインインで世帯主として扱われる家族の役割。"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "名簿とメンバーサインインで配偶者として扱われる家族の役割。"
+
+#: 
+msgid "Finance Settings"
+msgstr "財務設定"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "猶予期間（日）"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "世帯エディターでニュースレター購読を非表示にします。"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "個人エディターで友人の日付フィールドを非表示にします。"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "世帯エディターで結婚記念日フィールドを非表示にします。"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "ロックされたアカウントがロックされたままになる期間。1 つの IP アドレスからのサインイン失敗は同じ期間で数えられます。"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "新しいパスワードが古いパスワードと異なっていなければならない文字数。0 の場合はこの機能がオフになります。"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "管理 → テレメトリーで「使用したページを共有」をオンにすると「フル」が選択されます。「フル」ではページビューも送信されます。"
+
+#: 
+msgid "Initials Format"
+msgstr "イニシャルの形式"
+
+#: 
+msgid "Letter Text %d"
+msgstr "手紙のテキスト %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "ロックアウト期間（分）"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "サインインに連続してこの回数失敗すると、アカウントがロックされます。ロックアウト期間が過ぎるか、管理者がリセットするとロックが解除されます。0 の場合はロックアウトがオフになります。"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "メンバーポータルの管理"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "メンバーはメールアドレスでサインインできます。"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "メンバーはまだサインインできません。"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "最小変更文字数"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "パスワードの最小長"
+
+#: 
+msgid "Name Format"
+msgstr "名前の形式"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "手紙やメールの結びの言葉の下に印刷される名前"
+
+#: 
+msgid "No Payments Text"
+msgstr "支払いなしのテキスト"
+
+#: 
+msgid "No Pledge Text"
+msgstr "誓約なしのテキスト"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "どのレベルでも、人、寄付者、献金、コンテンツ、教会の連絡先、あなたの Web アドレスやサーバー名は送信されません。"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "どのレベルでも、あなたの Web アドレスやサーバー名は送信されません。テスト用インストールは何も送信しません。テレメトリーは米国の PostHog に送信されます。"
+
+#: 
+msgid "OS family"
+msgstr "OS ファミリー"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "誓約リマインダーレターの冒頭段落。"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "献金明細書で質問を招く段落。"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "献金ゼロレターで質問を招く段落。"
+
+#: 
+msgid "Passwords"
+msgstr "パスワード"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "献金ゼロレターの冒頭行で、日付範囲の後に印刷されます。"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "献金明細書に最初に印刷され、その後に日付範囲が続きます。"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "家族に支払いの記録がない場合に印刷されます。"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "家族に誓約の記録がない場合に印刷されます。"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "1 つの IP アドレスからこの回数のサインイン失敗またはパスワードリセットがあった場合、ロックアウト期間中、その IP アドレスからのサインインを拒否します。0 の場合はオフになります。たとえば全員が 1 つのプロキシ経由で接続する場合など。"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "二要素認証を必須にする"
+
+#: 
+msgid "Security Settings"
+msgstr "セキュリティ設定"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "問題を修正できるよう、エラーレポート、インストール/アップグレードイベント、システム情報を送信します。ページビューや教会のデータは送信されません。"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "セッションタイムアウト（秒）"
+
+#: 
+msgid "Share which pages are used"
+msgstr "使用したページを共有"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "サインインとセキュリティ"
+
+#: 
+msgid "Signature Storage"
+msgstr "署名の保管"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "この秒数だけ操作がないと、ユーザーは自動的にサインアウトされます。0 の場合はサインアウトされません。"
+
+#: 
+msgid "System-wide"
+msgstr "システム全体"
+
+#: 
+msgid "Text After Dates"
+msgstr "日付の後のテキスト"
+
+#: 
+msgid "Text Messages"
+msgstr "テキストメッセージ"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "献金明細書のお礼の段落。"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "献金ゼロレターのお礼の段落。"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "変換に失敗しました。何も変更されていません。"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "アップロード機能が追加される前に保存されたレターヘッドファイルを使用しています。レターヘッドをアップロードして置き換えてください。"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "警告までの時間（時間）"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "手紙やメールで名前の前に置かれる言葉。例：拝啓。"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "選択は一度だけ尋ねられます。いつでも変更できます。「不要です」を選ぶと「デフォルト」が有効なままで、ページビューは送信されません。"
+

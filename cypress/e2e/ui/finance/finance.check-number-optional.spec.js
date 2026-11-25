@@ -48,7 +48,7 @@ describe("Treasurer records checks without check numbers", () => {
 
     it("turns off the requirement in Finance Settings, then saves blank and 0 check numbers twice for one family", () => {
         cy.intercept("POST", "**/admin/api/system/config/bRequireCheckNumber").as("saveRequireCheckNumber");
-        cy.visit("/admin/finance");
+        cy.visit("/admin/finance/options");
         cy.get("#financeDeposits .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
         cy.get("#financeDeposits input[name='bRequireCheckNumber']").uncheck({ force: true });
         cy.wait("@saveRequireCheckNumber").its("response.statusCode").should("eq", 200);

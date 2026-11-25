@@ -27994,3 +27994,295 @@ msgstr "פרטי הכנסייה שלכם נשמרו. בצעו את השלבים 
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "מסד הנתונים שלכם (%1$s %2$s) מהווה סיכון אבטחה: הספק שלו כבר אינו מפרסם תיקוני אבטחה עבור גרסה זו. ChurchCRM ממשיך לעבוד, אך בקשו מהמארח שלכם לעבור ל-MariaDB %3$s+ או MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "צ'ק-אין יומי במהלך השימוש, גרסאות תוכנה ומסד נתונים, מיקום אזורי, מדינה, סוג התקנה ומזהה התקנה אקראי עוזרים לספור התקנות פעילות."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "חשבונות וכניסה"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "שולח גם אילו דפים בשימוש."
+
+#: 
+msgid "Areas"
+msgstr "אזורים"
+
+#: 
+msgid "Church & System"
+msgstr "מוסד ומערכת"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "עיר או יישוב שבו מונפקות הקבלות, מודפס על קבלות רשמיות. השאירו ריק כדי להשתמש בעיר המוסד."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "סיום לפני שם החותם, לדוגמה בכבוד רב."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "סיום המודפס לפני החותם על קבלות רשמיות."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "סיסמאות מופרדות בפסיקים שאסור לאיש להשתמש בהן."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "מכתב אישור"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "ליצור משפחה עבור אדם זה? הכתובת וטלפון הבית שלו עוברים למשפחה החדשה."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "ימים שיש למשתמשים להגדיר אימות דו-שלבי לאחר שהוא הופך לנדרש. 0 אוכף אותו מיד. קיצור תקופת חסד פעילה עלול לנעול משתמשים בחוץ."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "הפקדות ותשלומים"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "סיסמאות אסורות"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "כתב ויתור %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "שלח דוא\"ל למשתמשים כאשר החשבון שלהם נמחק"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "כל דפי ההגדרות במקום אחד, וההגדרות שחלות על כל המערכת"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "כניסות כושלות לפני נעילה"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "כניסות כושלות לפי כתובת IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "תפקידי משפחה הנחשבים לילדים בספרייה."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "תפקידי משפחה הנחשבים לראש משק בית בספרייה ובכניסת חברים."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "תפקידי משפחה הנחשבים לבן/בת זוג בספרייה ובכניסת חברים."
+
+#: 
+msgid "Finance Settings"
+msgstr "הגדרות כספים"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "תקופת חסד (ימים)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "הסתר מינויים לניוזלטר בעורך המשפחה."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "הסתר את שדה תאריך החבר בעורך האנשים."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "הסתר את שדה תאריך החתונה בעורך המשפחה."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "כמה זמן חשבון נעול נשאר נעול. כניסות כושלות מכתובת IP אחת נספרות באותה תקופה."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "בכמה תווים סיסמה חדשה חייבת להיות שונה מהישנה. 0 מכבה זאת."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "בניהול → טלמטריה, הפעילו את שתף אילו דפים בשימוש כדי לבחור מלא. מלא שולח גם צפיות בדפים."
+
+#: 
+msgid "Initials Format"
+msgstr "תבנית ראשי תיבות"
+
+#: 
+msgid "Letter Text %d"
+msgstr "טקסט מכתב %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "תקופת נעילה (דקות)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "נועל חשבון לאחר מספר זה של כניסות כושלות ברצף. הנעילה משתחררת לאחר תקופת הנעילה, או כאשר מנהל מערכת מאפס אותה. 0 מכבה את הנעילה."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "ניהול פורטל החברים"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "חברים יכולים להיכנס עם הדוא\"ל שלהם."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "חברים עדיין אינם יכולים להיכנס."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "מינימום תווים שהשתנו"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "אורך סיסמה מינימלי"
+
+#: 
+msgid "Name Format"
+msgstr "תבנית שם"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "שם המודפס מתחת לסיום של מכתבים ודוא\"ל"
+
+#: 
+msgid "No Payments Text"
+msgstr "טקסט אין תשלומים"
+
+#: 
+msgid "No Pledge Text"
+msgstr "טקסט אין התחייבות"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "אין דרגה ששולחת אנשים, תורמים, נתינה, תוכן, פרטי קשר של המוסד, כתובת האינטרנט או שם השרת שלכם."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "אין דרגה ששולחת את כתובת האינטרנט או שם השרת שלכם. התקנות בדיקה אינן שולחות דבר. הטלמטריה נשלחת ל-PostHog בארצות הברית."
+
+#: 
+msgid "OS family"
+msgstr "משפחת מערכת הפעלה"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "פסקת הפתיחה של מכתב התזכורת להתחייבות."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "פסקה המזמינה שאלות בדוח הנתינה."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "פסקה המזמינה שאלות במכתב למי שלא נתנו."
+
+#: 
+msgid "Passwords"
+msgstr "סיסמאות"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "מודפס אחרי טווח התאריכים בשורת הפתיחה של המכתב למי שלא נתנו."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "מודפס ראשון בדוח הנתינה, ואחריו טווח התאריכים."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "מודפס כאשר למשפחה אין תשלומים רשומים."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "מודפס כאשר למשפחה אין התחייבות רשומה."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "מסרב לכניסה מכתובת IP אחת למשך תקופת הנעילה לאחר מספר זה של כניסות כושלות או איפוסי סיסמה. 0 מכבה זאת, לדוגמה כאשר כולם מתחברים דרך פרוקסי אחד."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "דרוש אימות דו-שלבי"
+
+#: 
+msgid "Security Settings"
+msgstr "הגדרות אבטחה"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "שולח דוחות שגיאה, אירועי התקנה/שדרוג ומידע מערכת כדי שניתן יהיה לתקן בעיות. ללא צפיות בדפים, ללא נתוני מוסד."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "פסק זמן של הפעלה (שניות)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "שתף אילו דפים בשימוש"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "כניסה ואבטחה"
+
+#: 
+msgid "Signature Storage"
+msgstr "אחסון חתימה"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "מוציא משתמש לאחר מספר זה של שניות ללא פעילות. 0 לעולם אינו מוציא."
+
+#: 
+msgid "System-wide"
+msgstr "בכל המערכת"
+
+#: 
+msgid "Text After Dates"
+msgstr "טקסט אחרי תאריכים"
+
+#: 
+msgid "Text Messages"
+msgstr "הודעות טקסט"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "פסקת התודה של דוח הנתינה."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "פסקת התודה של המכתב למי שלא נתנו."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ההמרה נכשלה. דבר לא השתנה."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "משתמש בקובץ נייר מכתבים שנשמר לפני שהתווספו העלאות. העלו נייר מכתבים כדי להחליף אותו."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "אזהרה אחרי (שעות)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "מילה לפני השם במכתבים ובדוא\"ל, לדוגמה יקר."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "הבחירה שלכם נשאלת פעם אחת. ניתן לשנות אותה בכל עת. עם לא תודה, ברירת מחדל נשארת פעילה וצפיות בדפים אינן נשלחות."
+
