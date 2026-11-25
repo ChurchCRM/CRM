@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 21:53+0000\n"
+"POT-Creation-Date: 2026-11-25 00:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1741,6 +1741,9 @@ msgid "Amount of advantages"
 msgstr ""
 
 msgid "Amount of gifts"
+msgstr ""
+
+msgid "Amount offset, left"
 msgstr ""
 
 msgid "Amount paid: ________________"
@@ -6593,6 +6596,9 @@ msgstr ""
 msgid "Every position in this window has the people it needs."
 msgstr ""
 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr ""
+
 msgid "Every settings page in one place, and the settings that apply to the whole system"
 msgstr ""
 
@@ -7643,6 +7649,12 @@ msgid "First Sunday"
 msgstr ""
 
 msgid "First date"
+msgstr ""
+
+msgid "First date, left"
+msgstr ""
+
+msgid "First date, top"
 msgstr ""
 
 msgid "First installment"
@@ -9468,6 +9480,12 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
+msgid "Item count, left"
+msgstr ""
+
+msgid "Item count, top"
+msgstr ""
+
 msgid "Item deleted successfully"
 msgstr ""
 
@@ -9873,6 +9891,9 @@ msgstr ""
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
 
+msgid "Left margin"
+msgstr ""
+
 msgid "Legend"
 msgstr ""
 
@@ -9957,6 +9978,9 @@ msgid "Light"
 msgstr ""
 
 msgid "Lime"
+msgstr ""
+
+msgid "Line items"
 msgstr ""
 
 msgid "Link"
@@ -10532,6 +10556,9 @@ msgstr ""
 msgid "Maximum allowed for {{position}}"
 msgstr ""
 
+msgid "Maximum height"
+msgstr ""
+
 msgid "Maximum length is"
 msgstr ""
 
@@ -10566,6 +10593,9 @@ msgid "Maximum tax years shown per family"
 msgstr ""
 
 msgid "Maximum upload size"
+msgstr ""
+
+msgid "Maximum width"
 msgstr ""
 
 msgid "May"
@@ -13166,6 +13196,9 @@ msgstr ""
 msgid "Percentage of strings translated for your current language"
 msgstr ""
 
+msgid "Perforation, top"
+msgstr ""
+
 msgid "Permission"
 msgstr ""
 
@@ -13755,6 +13788,9 @@ msgid "Position saved"
 msgstr ""
 
 msgid "Positions"
+msgstr ""
+
+msgid "Positions in millimetres on the preprinted deposit ticket"
 msgstr ""
 
 msgid "Positions still short"
@@ -15056,6 +15092,9 @@ msgstr ""
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
 msgstr ""
 
+msgid "Saved"
+msgstr ""
+
 msgid "Saved successfully"
 msgstr ""
 
@@ -15234,6 +15273,9 @@ msgid "Second Fiscal Year"
 msgstr ""
 
 msgid "Second Home"
+msgstr ""
+
+msgid "Second date, left"
 msgstr ""
 
 msgid "Seconds"
@@ -16236,6 +16278,12 @@ msgstr ""
 msgid "Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default \"*\" allows any origin. Restrict to specific origins for tighter security, e.g. \"https://mysite.org https://embed.example.com\"."
 msgstr ""
 
+msgid "Spacing, horizontal"
+msgstr ""
+
+msgid "Spacing, vertical"
+msgstr ""
+
 #. Context: countries
 msgid "Spain (España)"
 msgstr ""
@@ -16516,6 +16564,12 @@ msgid "Substitution request not found"
 msgstr ""
 
 msgid "Substitution requests"
+msgstr ""
+
+msgid "Subtotal, left"
+msgstr ""
+
+msgid "Subtotal, top"
 msgstr ""
 
 msgid "Successfully deleted"
@@ -18423,6 +18477,9 @@ msgstr ""
 msgid "Tick this only on your own phone or computer, never on a shared or public one."
 msgstr ""
 
+msgid "Ticket"
+msgstr ""
+
 msgid "Ticks save as you make them."
 msgstr ""
 
@@ -18498,6 +18555,9 @@ msgid "Title is required"
 msgstr ""
 
 msgid "Title page"
+msgstr ""
+
+msgid "Title, left"
 msgstr ""
 
 msgid "To"
@@ -18620,6 +18680,9 @@ msgstr ""
 msgid "Too many wrong codes"
 msgstr ""
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
 msgstr ""
 
@@ -18695,6 +18758,12 @@ msgid "Total raised (no goal set)"
 msgstr ""
 
 msgid "Total registrations"
+msgstr ""
+
+msgid "Total, left"
+msgstr ""
+
+msgid "Total, top"
 msgstr ""
 
 msgid "Totals"
@@ -21083,6 +21152,9 @@ msgid "mismatch detected"
 msgstr ""
 
 msgid "mismatches detected"
+msgstr ""
+
+msgid "mm"
 msgstr ""
 
 msgid "mo"
