@@ -29,6 +29,11 @@ on:
       - '!src/locale/i18n/**'
       - '!src/locale/textdomain/**'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force the terms report and PR update even when the change check finds nothing new'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -115,7 +120,7 @@ jobs:
 
       - name: List new and removed terms
         id: report
-        if: steps.check_changes.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true' || inputs.force
         run: |
           mkdir -p locale-terms-report
           git diff -- locale/messages.po > locale-terms-report/messages.po.diff || true
@@ -126,7 +131,7 @@ jobs:
           echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Upload the terms report
-        if: steps.check_changes.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true' || inputs.force
         uses: ./.github/actions/upload-artifact
         with:
           name: locale-terms-report
@@ -138,7 +143,7 @@ jobs:
       # Rolling branch: while the terms PR is open, each later burst updates the same PR, so it always
       # shows everything master has not merged yet. GITHUB_TOKEN: the PR still needs a person's merge.
       - name: Open or update the terms PR
-        if: steps.check_changes.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true' || inputs.force
         uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8
         with:
           token: ${{ github.token }}
