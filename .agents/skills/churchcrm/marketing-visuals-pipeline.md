@@ -72,7 +72,7 @@ rather than expect every capture in every locale.
 
 ### Marking used captures
 
-`docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
+`docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. `install-churchcrm`, `setup-church-info`, and `demo-data-import` are the exception: they are replaced by `setup-demo-dashboards`. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
 
 ### Fixing a failed capture
 
@@ -89,7 +89,7 @@ A broken locator fails the same test in every locale, and serial specs skip the 
 
 Three Playwright projects run in this order (`playwright/playwright.config.ts`):
 
-1. `setup` (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, forced admin password change, church info and demo data import as recorded tests (`install-churchcrm`, `setup-church-info`, `demo-data-import`), then saves a Playwright `storageState`
+1. `setup` (`playwright/setup/bootstrap.setup.ts`) drives one recorded video (`setup-demo-dashboards`): the setup wizard, forced admin password change, church info, demo data import, and the populated module dashboards. It then saves a Playwright `storageState`
 2. `recordings` (`playwright/videos/*.video.ts`) holds click-through videos
 3. `screenshots` (`playwright/workflows/*.spec.ts`): each test captures desktop 1440x900, tablet 1024x768 and mobile 430x932 in one page load (`VIEWPORTS` in `playwright/support/capture.ts`)
 

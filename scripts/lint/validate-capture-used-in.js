@@ -69,7 +69,21 @@ for (const dir of SPEC_DIRS) {
     }
 }
 
-const missing = [...baseUsed].filter((name) => !headNames.has(name)).sort();
+// These three setup clips are one social video now. The check still fails
+// if that replacement capture is missing.
+const REPLACED_BY = new Map([
+    ['install-churchcrm', 'setup-demo-dashboards'],
+    ['setup-church-info', 'setup-demo-dashboards'],
+    ['demo-data-import', 'setup-demo-dashboards'],
+]);
+
+const missing = [...baseUsed].filter((name) => {
+    if (headNames.has(name)) {
+        return false;
+    }
+    const replacement = REPLACED_BY.get(name);
+    return !(replacement && headNames.has(replacement));
+}).sort();
 if (missing.length > 0) {
     console.error(`Captures used by docs or the website were removed or renamed (vs ${BASE_REF}):`);
     for (const name of missing) {

@@ -13,7 +13,7 @@ import { ADMIN_PERSON_ID, LOCALE, LOCALE_UI_VALUE } from './env';
  * language for the rest of this run.
  *
  * Call this once, after the admin login step and before the
- * storageState() save in bootstrap.setup.ts's 'demo-data-import' test, so
+ * storageState() save in bootstrap.setup.ts's 'setup-demo-dashboards' test, so
  * every downstream screenshots/tablet/mobile project inherits the locale
  * along with the rest of the saved session.
  *
