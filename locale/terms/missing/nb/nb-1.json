@@ -1,0 +1,21 @@
+{
+  "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord.": "",
+  "ChurchCRM could not find the database server. Check the database server address and port with your web host.": "",
+  "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below.": "",
+  "Database server address": "",
+  "How do I create a database?": "",
+  "How to fix database connection problems": "",
+  "Leave 3306 unless you were given a different number.": "",
+  "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer.": "",
+  "The %s covers the configuration checks.": "",
+  "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in.": "",
+  "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front.": "",
+  "The password for that database user. ChurchCRM tests the connection before saving anything.": "",
+  "The server address from your web host.": "",
+  "The user name and password worked, but there is no database with that name. Check the database name, or create the database first.": "",
+  "The user name for the database. This is not the name you use to sign in to your web host.": "",
+  "Undo": "",
+  "Undo failed. Please try again.": "",
+  "You need the database details from your web host, or from whoever set up your server.": "",
+  "database setup troubleshooting guide": ""
+}

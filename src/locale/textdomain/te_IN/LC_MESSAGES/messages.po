@@ -27401,14 +27401,6 @@ msgid "Choose a different way to sign in"
 msgstr "సైన్ ఇన్ చేయడానికి వేరే మార్గాన్ని ఎంచుకోండి"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM localhost వద్ద ఉన్న డేటాబేస్‌ను చేరుకోలేకపోతోంది. బదులుగా 127.0.0.1ని ప్రయత్నించండి, లేదా డేటాబేస్ హోస్ట్ పేరు కోసం మీ వెబ్ హోస్ట్‌ను అడగండి."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM ఆ చిరునామా మరియు పోర్ట్ వద్ద ఉన్న డేటాబేస్ సర్వర్‌ను చేరుకోలేకపోతోంది. హోస్ట్ పేరు మరియు పోర్ట్‌ను తనిఖీ చేయండి. షేర్డ్ హోస్టింగ్‌లో హోస్ట్ తరచుగా localhost కాదు."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM దాని విడుదల తనిఖీని చదవలేకపోతోంది. ChurchCRM ఫోల్డర్‌ను చదవగలిగేలా చేయమని మీ వెబ్ హోస్ట్‌ను అడగండి, లేదా కొనసాగించండి."
 
@@ -27423,10 +27415,6 @@ msgstr "ChurchCRM దాని ఫైళ్ళను తనిఖీ చేయ�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM సర్వర్ సాఫ్ట్‌వేర్‌ను తనిఖీ చేయలేకపోయింది"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM ఈ సెట్టింగ్‌లతో డేటాబేస్‌కు కనెక్ట్ కాలేకపోయింది."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27459,14 +27447,6 @@ msgstr "మీ డేటాబేస్‌కు కనెక్ట్ అవు
 #: 
 msgid "Could not save your main dashboard."
 msgstr "మీ ప్రధాన డ్యాష్‌బోర్డ్‌ను సేవ్ చేయలేకపోయింది."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "ముందుగా మీ హోస్టింగ్ నియంత్రణ ప్యానెల్‌లో MySQL లేదా MariaDB డేటాబేస్‌ను సృష్టించండి (cPanelలో: %s), ఆపై దాని వివరాలను ఇక్కడ కాపీ చేయండి. ChurchCRM MySQL 8.4+ మరియు MariaDB 10.11+ (LTS విడుదలలు)లకు మద్దతు ఇస్తుంది."
-
-#: 
-msgid "Database host"
-msgstr "డేటాబేస్ హోస్ట్"
 
 #: 
 msgid "Database name"
@@ -27533,10 +27513,6 @@ msgid "Files to review"
 msgstr "సమీక్షించాల్సిన ఫైళ్ళు"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "మీ వెబ్ హోస్ట్ నుండి డేటాబేస్ వివరాలను సిద్ధంగా ఉంచండి. దీనికి సుమారు రెండు నిమిషాలు పడుతుంది."
-
-#: 
 msgid "Hide"
 msgstr "దాచు"
 
@@ -27595,10 +27571,6 @@ msgstr "ఈ సమయ పరిధిలో గమనికలు లేవు."
 #: 
 msgid "No notes yet."
 msgstr "ఇంకా గమనికలు లేవు."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "తరచుగా %1$s. కొన్ని హోస్ట్‌లు %2$s వంటి చిరునామాను ఇస్తాయి."
 
 #: 
 msgid "Open total"
@@ -27693,32 +27665,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "సైన్ ఇన్ చేసిన తర్వాత మీరు తెరిచే డ్యాష్‌బోర్డ్"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "డేటాబేస్ సర్వర్ లాగిన్‌ను అంగీకరించింది, కానీ ఆ పేరుతో డేటాబేస్ లేదు."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "డేటాబేస్ సర్వర్ ఆ వినియోగదారు పేరు లేదా పాస్‌వర్డ్‌ను తిరస్కరించింది."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "మీరు డేటాబేస్‌కు ఇచ్చిన పేరు. షేర్డ్ హోస్ట్‌లు తరచుగా మీ ఖాతా పేరును ముందు చేరుస్తాయి, ఉదాహరణకు %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "ఆ డేటాబేస్ వినియోగదారు కోసం పాస్‌వర్డ్. మీరు ఇన్‌స్టాల్ క్లిక్ చేసినప్పుడు ChurchCRM ఈ వివరాలను తనిఖీ చేస్తుంది."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "ఈ సర్వర్‌లోని విడుదల తనిఖీ ఫైల్ ChurchCRMతో సరిపోలడం లేదు. విడుదలను మళ్లీ అప్‌లోడ్ చేయండి, లేదా కొనసాగించి సహాయం కోసం మీ వెబ్ హోస్ట్‌ను అడగండి."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "పరీక్ష సందేశం చర్చి ఇమెయిల్ చిరునామాకు వెళుతుంది మరియు SMTP డీబగ్ లాగ్‌ను ఇక్కడ చూపిస్తుంది."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "మీరు ఆ డేటాబేస్‌కు జోడించిన వినియోగదారు. మీ హోస్టింగ్ లాగిన్ కాదు."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27751,10 +27703,6 @@ msgstr "ఇది మీ చర్చి ఖాతా. మీ కోసం మ�
 #: 
 msgid "Total deposited"
 msgstr "మొత్తం డిపాజిట్ చేసినది"
-
-#: 
-msgid "Usually 3306."
-msgstr "సాధారణంగా 3306."
 
 #: 
 msgid "Web address"

@@ -27393,14 +27393,6 @@ msgid "Choose a different way to sign in"
 msgstr "Elige otra forma de iniciar sesión"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM no puede acceder a una base de datos en localhost. Prueba con 127.0.0.1 o pide a tu proveedor de alojamiento web el nombre del servidor de la base de datos."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM no puede acceder al servidor de la base de datos en esa dirección y puerto. Comprueba el nombre del servidor y el puerto. En el alojamiento compartido, el servidor no suele ser localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM no puede leer su comprobación de versión. Pide a tu proveedor de alojamiento web que haga legible la carpeta de ChurchCRM, o continúa."
 
@@ -27415,10 +27407,6 @@ msgstr "ChurchCRM no pudo comprobar sus archivos. Pide a tu proveedor de alojami
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM no pudo comprobar el software del servidor"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM no pudo conectarse a la base de datos con esta configuración."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27451,14 +27439,6 @@ msgstr "Conectando con tu base de datos…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "No se pudo guardar tu escritorio principal."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Crea primero una base de datos MySQL o MariaDB en tu panel de control de alojamiento (en cPanel: %s) y luego copia sus datos aquí. ChurchCRM es compatible con MySQL 8.4+ y MariaDB 10.11+ (las versiones LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Servidor de la base de datos"
 
 #: 
 msgid "Database name"
@@ -27525,10 +27505,6 @@ msgid "Files to review"
 msgstr "Archivos por revisar"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Ten a mano los datos de la base de datos de tu proveedor de alojamiento web. Tarda unos dos minutos."
-
-#: 
 msgid "Hide"
 msgstr "Ocultar"
 
@@ -27587,10 +27563,6 @@ msgstr "No hay notas en este periodo."
 #: 
 msgid "No notes yet."
 msgstr "Aún no hay notas."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "A menudo %1$s. Algunos proveedores dan una dirección como %2$s."
 
 #: 
 msgid "Open total"
@@ -27685,32 +27657,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "El escritorio que se abre al iniciar sesión"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "El servidor de la base de datos aceptó el inicio de sesión, pero no hay ninguna base de datos con ese nombre."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "El servidor de la base de datos rechazó ese nombre de usuario o contraseña."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "El nombre que diste a la base de datos. Los alojamientos compartidos suelen añadir tu nombre de cuenta delante, como %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "La contraseña de ese usuario de la base de datos. ChurchCRM comprueba estos datos cuando haces clic en Instalar."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "El archivo de comprobación de versión de este servidor no coincide con ChurchCRM. Vuelve a subir la versión publicada, o continúa y pide ayuda a tu proveedor de alojamiento web."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "El mensaje de prueba se envía a la dirección de email de la iglesia y muestra aquí el registro de depuración SMTP."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "El usuario que añadiste a esa base de datos. No es tu acceso al alojamiento."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27743,10 +27695,6 @@ msgstr "Esta es tu cuenta de la iglesia. Todo lo que puedes hacer por ti mismo e
 #: 
 msgid "Total deposited"
 msgstr "Total depositado"
-
-#: 
-msgid "Usually 3306."
-msgstr "Normalmente 3306."
 
 #: 
 msgid "Web address"

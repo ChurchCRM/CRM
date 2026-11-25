@@ -27433,14 +27433,6 @@ msgid "Choose a different way to sign in"
 msgstr "உள்நுழைய வேறு வழியைத் தேர்ந்தெடுக்கவும்"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM ஆல் localhost இல் உள்ள தரவுத்தளத்தை அணுக முடியவில்லை. அதற்குப் பதிலாக 127.0.0.1 ஐ முயற்சிக்கவும், அல்லது தரவுத்தள ஹோஸ்ட் பெயருக்காக உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "அந்த முகவரி மற்றும் போர்ட்டில் உள்ள தரவுத்தள சேவையகத்தை ChurchCRM ஆல் அணுக முடியவில்லை. ஹோஸ்ட் பெயரையும் போர்ட்டையும் சரிபார்க்கவும். பகிரப்பட்ட ஹோஸ்டிங்கில் ஹோஸ்ட் பெரும்பாலும் localhost ஆக இருக்காது."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM ஆல் அதன் வெளியீட்டுச் சரிபார்ப்பைப் படிக்க முடியவில்லை. ChurchCRM கோப்புறையைப் படிக்கக்கூடியதாக மாற்ற உங்கள் வலை ஹோஸ்டிடம் கேட்கவும், அல்லது தொடரவும்."
 
@@ -27455,10 +27447,6 @@ msgstr "ChurchCRM ஆல் அதன் கோப்புகளைச் ச�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM ஆல் சேவையக மென்பொருளைச் சரிபார்க்க முடியவில்லை"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "இந்த அமைப்புகளுடன் ChurchCRM ஆல் தரவுத்தளத்துடன் இணைக்க முடியவில்லை."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27491,14 +27479,6 @@ msgstr "உங்கள் தரவுத்தளத்துடன் இண�
 #: 
 msgid "Could not save your main dashboard."
 msgstr "உங்கள் பிரதான டாஷ்போர்டைச் சேமிக்க முடியவில்லை."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "முதலில் உங்கள் ஹோஸ்டிங் கட்டுப்பாட்டுப் பலகத்தில் ஒரு MySQL அல்லது MariaDB தரவுத்தளத்தை உருவாக்கவும் (cPanel இல்: %s), பின்னர் அதன் விவரங்களை இங்கே நகலெடுக்கவும். ChurchCRM MySQL 8.4+ மற்றும் MariaDB 10.11+ (LTS வெளியீடுகள்) ஐ ஆதரிக்கிறது."
-
-#: 
-msgid "Database host"
-msgstr "தரவுத்தள ஹோஸ்ட்"
 
 #: 
 msgid "Database name"
@@ -27565,10 +27545,6 @@ msgid "Files to review"
 msgstr "மதிப்பாய்வு செய்ய வேண்டிய கோப்புகள்"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "உங்கள் வலை ஹோஸ்டிடமிருந்து தரவுத்தள விவரங்களைத் தயாராக வைத்திருக்கவும். இது சுமார் இரண்டு நிமிடங்கள் எடுக்கும்."
-
-#: 
 msgid "Hide"
 msgstr "மறை"
 
@@ -27627,10 +27603,6 @@ msgstr "இந்தக் கால அளவில் குறிப்பு
 #: 
 msgid "No notes yet."
 msgstr "இன்னும் குறிப்புகள் இல்லை."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "பெரும்பாலும் %1$s. சில ஹோஸ்ட்கள் %2$s போன்ற முகவரியை வழங்குகின்றன."
 
 #: 
 msgid "Open total"
@@ -27725,32 +27697,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "உள்நுழைந்த பிறகு நீங்கள் திறக்கும் டாஷ்போர்டு"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "தரவுத்தள சேவையகம் உள்நுழைவை ஏற்றுக்கொண்டது, ஆனால் அந்தப் பெயரில் தரவுத்தளம் இல்லை."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "தரவுத்தள சேவையகம் அந்தப் பயனர் பெயரையோ கடவுச்சொல்லையோ நிராகரித்தது."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "நீங்கள் தரவுத்தளத்திற்குக் கொடுத்த பெயர். பகிரப்பட்ட ஹோஸ்ட்கள் பெரும்பாலும் உங்கள் கணக்குப் பெயரை முன்னால் சேர்க்கின்றன, எடுத்துக்காட்டாக %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "அந்தத் தரவுத்தளப் பயனருக்கான கடவுச்சொல். நீங்கள் நிறுவு என்பதைக் கிளிக் செய்யும்போது ChurchCRM இந்த விவரங்களைச் சரிபார்க்கிறது."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "இந்தச் சேவையகத்தில் உள்ள வெளியீட்டுச் சரிபார்ப்புக் கோப்பு ChurchCRM உடன் பொருந்தவில்லை. வெளியீட்டை மீண்டும் பதிவேற்றவும், அல்லது தொடர்ந்து உதவிக்காக உங்கள் வலை ஹோஸ்டிடம் கேட்கவும்."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "சோதனைச் செய்தி தேவாலய மின்னஞ்சல் முகவரிக்குச் செல்கிறது மற்றும் SMTP பிழைத்திருத்தப் பதிவை இங்கே காட்டுகிறது."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "நீங்கள் அந்தத் தரவுத்தளத்தில் சேர்த்த பயனர். உங்கள் ஹோஸ்டிங் உள்நுழைவு அல்ல."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27783,10 +27735,6 @@ msgstr "இது உங்கள் தேவாலயக் கணக்கு
 #: 
 msgid "Total deposited"
 msgstr "மொத்தம் டெபாசிட் செய்யப்பட்டது"
-
-#: 
-msgid "Usually 3306."
-msgstr "பொதுவாக 3306."
 
 #: 
 msgid "Web address"
