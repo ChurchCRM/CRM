@@ -27974,3 +27974,295 @@ msgstr "మీ చర్చి సమాచారం సేవ్ చేయబ�
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "మీ డేటాబేస్ (%1$s %2$s) భద్రతా ప్రమాదం: దాని విక్రేత ఆ సంస్కరణ కోసం ఇకపై భద్రతా పరిష్కారాలను అందించదు. ChurchCRM పని చేస్తూనే ఉంటుంది, కానీ MariaDB %3$s+ లేదా MySQL %4$s+ కు తరలించమని మీ హోస్ట్‌ను అడగండి."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "ఉపయోగంలో ఉన్నప్పుడు రోజువారీ చెక్-ఇన్, సాఫ్ట్‌వేర్ మరియు డేటాబేస్ వెర్షన్‌లు, లోకేల్, దేశం, ఇన్‌స్టాలేషన్ రకం మరియు యాదృచ్ఛిక ఇన్‌స్టాలేషన్ ID క్రియాశీల ఇన్‌స్టాలేషన్‌లను లెక్కించడంలో సహాయపడతాయి."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "ఖాతాలు & సైన్-ఇన్"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "ఉపయోగించిన పేజీలను కూడా పంపండి."
+
+#: 
+msgid "Areas"
+msgstr "ప్రాంతాలు"
+
+#: 
+msgid "Church & System"
+msgstr "చర్చి & వ్యవస్థ"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "రసీదులు జారీ చేసే నగరం లేదా పట్టణం, అధికారిక రసీదులపై ముద్రించబడుతుంది. ఖాళీగా వదిలితే చర్చి నగరాన్ని ఉపయోగిస్తారు."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "సంతకం చేసేవారి పేరుకు ముందు వచ్చే ముగింపు మాట, ఉదాహరణకు గౌరవంతో."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "అధికారిక రసీదులపై సంతకం చేసేవారికి ముందు ముద్రించబడే ముగింపు."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "ఎవరూ ఉపయోగించకూడని, కామాలతో వేరు చేయబడిన పాస్‌వర్డ్లు."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "నిర్ధారణ లేఖ"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "ఈ వ్యక్తి కోసం కుటుంబాన్ని సృష్టించాలా? వారి చిరునామా మరియు ఇంటి ఫోన్ కొత్త కుటుంబానికి మారుతాయి."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "రెండు-కారకాల ప్రమాణీకరణ తప్పనిసరి అయిన తర్వాత వినియోగదారులు దానిని సెటప్ చేయడానికి ఉన్న రోజులు. 0 అంటే వెంటనే అమలు చేయబడుతుంది. క్రియాశీల గ్రేస్ వ్యవధిని తగ్గించడం వల్ల వినియోగదారులు లాక్ అవ్వవచ్చు."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "డిపాజిట్‌లు & చెల్లింపులు"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "అనుమతించని పాస్‌వర్డ్లు"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "నిరాకరణ %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "వినియోగదారు ఖాతా తొలగించబడినప్పుడు వారికి ఇమెయిల్ పంపండి"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "అన్ని సెట్టింగ్‌ల పేజీలు ఒకే చోట, మరియు మొత్తం వ్యవస్థకు వర్తించే సెట్టింగ్‌లు"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "లాక్‌అవుట్‌కు ముందు విఫలమైన సైన్-ఇన్‌లు"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "IP చిరునామా వారీగా విఫలమైన సైన్-ఇన్‌లు"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "డైరెక్టరీలో పిల్లలుగా పరిగణించబడే కుటుంబ పాత్రలు."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "డైరెక్టరీలో మరియు సభ్యుల సైన్-ఇన్‌లో గృహనాథుడిగా పరిగణించబడే కుటుంబ పాత్రలు."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "డైరెక్టరీలో మరియు సభ్యుల సైన్-ఇన్‌లో జీవిత భాగస్వామిగా పరిగణించబడే కుటుంబ పాత్రలు."
+
+#: 
+msgid "Finance Settings"
+msgstr "ఫైనాన్స్ సెట్టింగ్‌లు"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "గ్రేస్ వ్యవధి (రోజులు)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "కుటుంబ సంపాదకుడిలో వార్తాలేఖ సభ్యత్వాలను దాచండి."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "వ్యక్తి ఎడిటర్‌లో స్నేహితుడి తేదీ ఫీల్డ్‌ను దాచండి."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "కుటుంబ సంపాదకుడిలో వివాహ తేదీ ఫీల్డ్‌ను దాచండి."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "లాక్ చేయబడిన ఖాతా ఎంతకాలం లాక్ చేయబడి ఉంటుంది. ఒక IP చిరునామా నుండి విఫలమైన సైన్-ఇన్‌లు అదే వ్యవధిలో లెక్కించబడతాయి."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "కొత్త పాస్‌వర్డ్ పాతదాని నుండి ఎన్ని అక్షరాలు భిన్నంగా ఉండాలి. 0 అంటే ఇది ఆఫ్ చేయబడుతుంది."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "అడ్మిన్ → టెలిమెట్రీలో, పూర్తిని ఎంచుకోవడానికి ఉపయోగించిన పేజీలను భాగస్వామ్యం చేయండి ని ఆన్ చేయండి. పూర్తి పేజీ వీక్షణలను కూడా పంపుతుంది."
+
+#: 
+msgid "Initials Format"
+msgstr "మొదటి అక్షరాల ఫార్మాట్"
+
+#: 
+msgid "Letter Text %d"
+msgstr "లేఖ టెక్స్ట్ %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "లాక్‌అవుట్ వ్యవధి (నిమిషాలు)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "వరుసగా ఇన్ని విఫలమైన సైన్-ఇన్‌ల తర్వాత ఖాతాను లాక్ చేస్తుంది. లాక్‌అవుట్ వ్యవధి తర్వాత లేదా నిర్వాహకుడు రీసెట్ చేసినప్పుడు అది అన్‌లాక్ అవుతుంది. 0 అంటే లాక్‌అవుట్ ఆఫ్ చేయబడుతుంది."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "సభ్య పోర్టల్‌ను నిర్వహించండి"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "సభ్యులు వారి ఇమెయిల్‌తో సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "సభ్యులు ఇంకా సైన్ ఇన్ చేయలేరు."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "కనీసం మార్చవలసిన అక్షరాలు"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "కనీస పాస్‌వర్డ్ పొడవు"
+
+#: 
+msgid "Name Format"
+msgstr "పేరు ఫార్మాట్"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "లేఖలు మరియు ఇమెయిల్‌ల ముగింపు క్రింద ముద్రించబడే పేరు"
+
+#: 
+msgid "No Payments Text"
+msgstr "చెల్లింపు లేని టెక్స్ట్"
+
+#: 
+msgid "No Pledge Text"
+msgstr "ప్రతిజ్ఞ లేని టెక్స్ట్"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "ఏ స్థాయి కూడా వ్యక్తులను, దాతలను, దానాలను, కంటెంట్‌ను, చర్చి సంప్రదింపు వివరాలను, మీ వెబ్ చిరునామాను లేదా సర్వర్ పేరును పంపదు."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ఏ స్థాయి కూడా మీ వెబ్ చిరునామాను లేదా సర్వర్ పేరును పంపదు. పరీక్ష ఇన్‌స్టాలేషన్‌లు ఏమీ పంపవు. టెలిమెట్రీ యునైటెడ్ స్టేట్స్‌లోని PostHogకు పంపబడుతుంది."
+
+#: 
+msgid "OS family"
+msgstr "OS కుటుంబం"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "ప్రతిజ్ఞ గుర్తుచేసే లేఖ ప్రారంభ పేరా."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "దాన ప్రకటనలో ప్రశ్నలను ఆహ్వానించే పేరా."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "దానం ఇవ్వనివారి లేఖలో ప్రశ్నలను ఆహ్వానించే పేరా."
+
+#: 
+msgid "Passwords"
+msgstr "పాస్‌వర్డ్లు"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "దానం ఇవ్వనివారి లేఖ ప్రారంభ వాక్యంలో తేదీ పరిధి తర్వాత ముద్రించబడుతుంది."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "దాన ప్రకటనపై మొదట ముద్రించబడుతుంది, తర్వాత తేదీ పరిధి వస్తుంది."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "కుటుంబానికి చెల్లింపు రికార్డులు లేనప్పుడు ముద్రించబడుతుంది."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "కుటుంబానికి ప్రతిజ్ఞ రికార్డులు లేనప్పుడు ముద్రించబడుతుంది."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "ఇన్ని విఫలమైన సైన్-ఇన్‌లు లేదా పాస్‌వర్డ్ రీసెట్‌ల తర్వాత లాక్‌అవుట్ వ్యవధి వరకు ఒక IP చిరునామా నుండి సైన్-ఇన్‌ను తిరస్కరిస్తుంది. 0 అంటే ఇది ఆఫ్ చేయబడుతుంది, ఉదాహరణకు అందరూ ఒకే ప్రాక్సీ ద్వారా కనెక్ట్ అయినప్పుడు."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "రెండు-కారకాల ప్రమాణీకరణను తప్పనిసరి చేయండి"
+
+#: 
+msgid "Security Settings"
+msgstr "భద్రతా సెట్టింగ్‌లు"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "సమస్యలను పరిష్కరించడానికి లోప నివేదికలు, ఇన్‌స్టాల్/అప్‌గ్రేడ్ ఈవెంట్‌లు మరియు వ్యవస్థ సమాచారాన్ని పంపండి. పేజీ వీక్షణలు లేవు, చర్చి డేటా లేదు."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "సెషన్ టైమ్‌అవుట్ (సెకన్లు)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "ఉపయోగించిన పేజీలను భాగస్వామ్యం చేయండి"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "సైన్-ఇన్ & భద్రత"
+
+#: 
+msgid "Signature Storage"
+msgstr "సంతకం నిల్వ"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "ఇన్ని సెకన్లు నిష్క్రియంగా ఉన్న తర్వాత వినియోగదారుని సైన్ అవుట్ చేస్తుంది. 0 అంటే ఎప్పటికీ సైన్ అవుట్ చేయదు."
+
+#: 
+msgid "System-wide"
+msgstr "వ్యవస్థ-వ్యాప్తం"
+
+#: 
+msgid "Text After Dates"
+msgstr "తేదీల తర్వాత టెక్స్ట్"
+
+#: 
+msgid "Text Messages"
+msgstr "టెక్స్ట్ సందేశాలు"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "దాన ప్రకటన ధన్యవాద పేరా."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "దానం ఇవ్వనివారి లేఖ ధన్యవాద పేరా."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "మార్పిడి విఫలమైంది. ఏమీ మార్చబడలేదు."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "అప్‌లోడ్లు జోడించబడటానికి ముందు సేవ్ చేయబడిన లేఖ శీర్షిక ఫైల్‌ను ఉపయోగిస్తోంది. దానిని భర్తీ చేయడానికి లేఖ శీర్షికను అప్‌లోడ్ చేయండి."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "హెచ్చరిక తర్వాత (గంటలు)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "లేఖలు మరియు ఇమెయిల్‌లలో పేరుకు ముందు వచ్చే మాట, ఉదాహరణకు ప్రియమైన."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "మీ ఎంపిక ఒక్కసారి మాత్రమే అడగబడుతుంది. మీరు దానిని ఎప్పుడైనా మార్చవచ్చు. వద్దు, ధన్యవాదాలు అంటే, డిఫాల్ట్ క్రియాశీలంగా ఉంటుంది మరియు పేజీ వీక్షణలు పంపబడవు."
+

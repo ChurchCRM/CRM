@@ -27995,3 +27995,295 @@ msgstr "Οι πληροφορίες της εκκλησίας σας αποθη�
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Η βάση δεδομένων σας (%1$s %2$s) αποτελεί κίνδυνο ασφάλειας: ο προμηθευτής της δεν παρέχει πλέον διορθώσεις ασφαλείας για αυτή την έκδοση. Το ChurchCRM συνεχίζει να λειτουργεί, αλλά ζητήστε από τον πάροχο φιλοξενίας σας να μεταβεί σε MariaDB %3$s+ ή MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Μια καθημερινή σύνδεση ελέγχου κατά τη χρήση, οι εκδόσεις λογισμικού και βάσης δεδομένων, οι τοπικές ρυθμίσεις, η χώρα, ο τύπος εγκατάστασης και ένα τυχαίο αναγνωριστικό εγκατάστασης βοηθούν στην καταμέτρηση των ενεργών εγκαταστάσεων."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Λογαριασμοί & Σύνδεση"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Αποστέλλει επίσης ποιες σελίδες χρησιμοποιούνται."
+
+#: 
+msgid "Areas"
+msgstr "Περιοχές"
+
+#: 
+msgid "Church & System"
+msgstr "Εκκλησία & Σύστημα"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Πόλη ή κωμόπολη όπου εκδίδονται οι αποδείξεις, εκτυπώνεται στις επίσημες αποδείξεις. Αφήστε το κενό για να χρησιμοποιηθεί η πόλη της εκκλησίας."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Χαιρετισμός κλεισίματος πριν από το όνομα του υπογράφοντος, για παράδειγμα Με εκτίμηση."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Χαιρετισμός κλεισίματος που εκτυπώνεται πριν από τον υπογράφοντα στις επίσημες αποδείξεις."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Κωδικοί πρόσβασης διαχωρισμένοι με κόμμα που κανείς δεν επιτρέπεται να χρησιμοποιεί."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Επιστολή Επιβεβαίωσης"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Να δημιουργηθεί οικογένεια για αυτό το άτομο; Η διεύθυνση και το τηλέφωνο κατοικίας του μεταφέρονται στη νέα οικογένεια."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Ημέρες που έχουν οι χρήστες για να ρυθμίσουν τον έλεγχο ταυτότητας δύο παραγόντων αφού καταστεί υποχρεωτικός. Το 0 τον επιβάλλει αμέσως. Η μείωση μιας ενεργής περιόδου χάριτος μπορεί να κλειδώσει χρήστες εκτός συστήματος."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Καταθέσεις & Πληρωμές"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Μη Επιτρεπόμενοι Κωδικοί Πρόσβασης"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Αποποίηση ευθύνης %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Αποστολή Email στους Χρήστες όταν Διαγράφεται ο Λογαριασμός τους"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Κάθε σελίδα ρυθμίσεων σε ένα μέρος, και οι ρυθμίσεις που ισχύουν για ολόκληρο το σύστημα"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Αποτυχημένες Συνδέσεις πριν το Κλείδωμα"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Αποτυχημένες Συνδέσεις ανά Διεύθυνση IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Οικογενειακοί ρόλοι που αντιμετωπίζονται ως παιδιά στο ευρετήριο."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Οικογενειακοί ρόλοι που αντιμετωπίζονται ως επικεφαλής νοικοκυριού στο ευρετήριο και στη σύνδεση μελών."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Οικογενειακοί ρόλοι που αντιμετωπίζονται ως σύζυγος στο ευρετήριο και στη σύνδεση μελών."
+
+#: 
+msgid "Finance Settings"
+msgstr "Ρυθμίσεις Οικονομικών"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Περίοδος Χάριτος (ημέρες)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Απόκρυψη των συνδρομών ενημερωτικών δελτίων στον Οικογενειακό συντάκτη."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Απόκρυψη του πεδίου Ημερομηνία Φίλου στον Επεξεργαστή Προσώπων."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Απόκρυψη του πεδίου Ημερομηνία Γάμου στον Οικογενειακό συντάκτη."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Πόσο διάστημα παραμένει κλειδωμένος ένας λογαριασμός. Οι αποτυχημένες συνδέσεις από μία διεύθυνση IP καταμετρώνται στην ίδια περίοδο."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Πόσοι χαρακτήρες πρέπει να διαφέρει ένας νέος κωδικός πρόσβασης από τον παλιό. Το 0 το απενεργοποιεί."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Στο Διαχείριση → Τηλεμετρία, ενεργοποιήστε την επιλογή Κοινοποίηση των σελίδων που χρησιμοποιούνται για να επιλέξετε το Πλήρες. Το Πλήρες αποστέλλει επίσης προβολές σελίδων."
+
+#: 
+msgid "Initials Format"
+msgstr "Μορφή Αρχικών"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Κείμενο Επιστολής %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Περίοδος Κλειδώματος (λεπτά)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Κλειδώνει έναν λογαριασμό μετά από τόσες συνεχόμενες αποτυχημένες συνδέσεις. Ξεκλειδώνει μετά την περίοδο κλειδώματος ή όταν τον επαναφέρει ένας διαχειριστής. Το 0 απενεργοποιεί το κλείδωμα."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Διαχείριση Πύλης Μελών"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Τα μέλη μπορούν να συνδέονται με το email τους."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Τα μέλη δεν μπορούν να συνδεθούν ακόμη."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Ελάχιστοι Χαρακτήρες που Αλλάζουν"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Ελάχιστο Μήκος Κωδικού Πρόσβασης"
+
+#: 
+msgid "Name Format"
+msgstr "Μορφή Ονόματος"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Όνομα που εκτυπώνεται κάτω από τον χαιρετισμό κλεισίματος επιστολών και email"
+
+#: 
+msgid "No Payments Text"
+msgstr "Κείμενο Χωρίς Πληρωμές"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Κείμενο Χωρίς Δέσμευση"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Καμία βαθμίδα δεν αποστέλλει άτομα, δωρητές, προσφορές, περιεχόμενο, στοιχεία επικοινωνίας της εκκλησίας, τη διεύθυνση ιστού ή το όνομα του διακομιστή σας."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Καμία βαθμίδα δεν αποστέλλει τη διεύθυνση ιστού ή το όνομα του διακομιστή σας. Οι δοκιμαστικές εγκαταστάσεις δεν αποστέλλουν τίποτα. Η τηλεμετρία αποστέλλεται στο PostHog στις Ηνωμένες Πολιτείες."
+
+#: 
+msgid "OS family"
+msgstr "Οικογένεια λειτουργικού συστήματος"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Εναρκτήρια παράγραφος της επιστολής υπενθύμισης δέσμευσης."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Παράγραφος που προσκαλεί ερωτήσεις στη δήλωση προσφορών."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Παράγραφος που προσκαλεί ερωτήσεις στην επιστολή προς όσους δεν έδωσαν."
+
+#: 
+msgid "Passwords"
+msgstr "Κωδικοί Πρόσβασης"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Εκτυπώνεται μετά το εύρος ημερομηνιών στην εναρκτήρια γραμμή της επιστολής προς όσους δεν έδωσαν."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Εκτυπώνεται πρώτη στη δήλωση προσφορών, ακολουθούμενη από το εύρος ημερομηνιών."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Εκτυπώνεται όταν μια οικογένεια δεν έχει καταγεγραμμένες πληρωμές."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Εκτυπώνεται όταν μια οικογένεια δεν έχει καταγεγραμμένη δέσμευση."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Αρνείται τη σύνδεση από μία διεύθυνση IP για την περίοδο κλειδώματος μετά από τόσες αποτυχημένες συνδέσεις ή επαναφορές κωδικού πρόσβασης. Το 0 το απενεργοποιεί, για παράδειγμα όταν όλοι συνδέονται μέσω ενός διακομιστή μεσολάβησης."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Απαίτηση Ελέγχου Ταυτότητας Δύο Παραγόντων"
+
+#: 
+msgid "Security Settings"
+msgstr "Ρυθμίσεις Ασφαλείας"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Αποστέλλει αναφορές σφαλμάτων, συμβάντα εγκατάστασης/αναβάθμισης και πληροφορίες συστήματος, ώστε τα προβλήματα να μπορούν να διορθωθούν. Χωρίς προβολές σελίδων, χωρίς δεδομένα εκκλησίας."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Λήξη Συνεδρίας (δευτερόλεπτα)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Κοινοποίηση των σελίδων που χρησιμοποιούνται"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Σύνδεση & Ασφάλεια"
+
+#: 
+msgid "Signature Storage"
+msgstr "Αποθήκευση Υπογραφής"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Αποσυνδέει έναν χρήστη μετά από τόσα δευτερόλεπτα χωρίς δραστηριότητα. Το 0 δεν αποσυνδέει ποτέ."
+
+#: 
+msgid "System-wide"
+msgstr "Σε όλο το σύστημα"
+
+#: 
+msgid "Text After Dates"
+msgstr "Κείμενο μετά τις Ημερομηνίες"
+
+#: 
+msgid "Text Messages"
+msgstr "Μηνύματα Κειμένου"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Ευχαριστήρια παράγραφος της δήλωσης προσφορών."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Ευχαριστήρια παράγραφος της επιστολής προς όσους δεν έδωσαν."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Η μετατροπή απέτυχε. Δεν άλλαξε τίποτα."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Χρήση αρχείου επιστολόχαρτου που αποθηκεύτηκε πριν προστεθούν οι μεταφορτώσεις. Μεταφορτώστε ένα επιστολόχαρτο για να το αντικαταστήσετε."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Προειδοποίηση Μετά από (Ώρες)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Λέξη πριν από το όνομα σε επιστολές και email, για παράδειγμα Αγαπητέ."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Η επιλογή σας ζητείται μία φορά. Μπορείτε να την αλλάξετε οποιαδήποτε στιγμή. Με το Όχι, ευχαριστώ, το Προκαθορισμένο παραμένει ενεργό και οι προβολές σελίδων δεν αποστέλλονται."
+

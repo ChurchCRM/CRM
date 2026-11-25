@@ -27963,3 +27963,295 @@ msgstr "Na-save ang impormasyon ng iyong simbahan. Gawin ang mga hakbang sa ibab
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Ang iyong database (%1$s %2$s) ay isang panganib sa seguridad: hindi na nagbibigay ang vendor nito ng mga ayos sa seguridad para sa bersyong iyon. Patuloy na gumagana ang ChurchCRM, ngunit hilingin sa iyong host na lumipat sa MariaDB %3$s+ o MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Ang araw-araw na pag-check-in habang ginagamit, mga bersyon ng software at database, locale, bansa, uri ng pag-install at isang random na ID ng pag-install ay tumutulong sa pagbilang ng mga aktibong pag-install."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Mga Account at Pag-sign in"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Ipapadala rin kung aling mga pahina ang ginagamit."
+
+#: 
+msgid "Areas"
+msgstr "Mga Area"
+
+#: 
+msgid "Church & System"
+msgstr "Simbahan at Sistema"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Lungsod o bayan kung saan inilalabas ang mga resibo, naka-print sa mga opisyal na resibo. Iwanang blangko para gamitin ang lungsod ng simbahan."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Pangwakas bago ang pangalan ng pumirma, halimbawa Sumasainyo."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Pangwakas na naka-print bago ang pumirma sa mga opisyal na resibo."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Mga password na pinaghihiwalay ng kuwit na hindi maaaring gamitin ng sinuman."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Liham ng Kumpirmasyon"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Lumikha ng pamilya para sa taong ito? Ang kanilang tirahan at telepono sa bahay ay lilipat sa bagong pamilya."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Mga araw na mayroon ang mga gumagamit para i-set up ang dalawang-hakbang na pagpapatunay pagkatapos itong maging kinakailangan. Agad itong ipinapatupad ng 0. Ang pagpapaikli ng aktibong palugit ay maaaring mag-lock out sa mga gumagamit."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Mga Deposito at Pagbabayad"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Mga Hindi Pinapayagang Password"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Paunawa %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "I-email ang mga Gumagamit Kapag Natanggal ang Kanilang Account"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Bawat pahina ng mga setting sa isang lugar, at ang mga setting na nalalapat sa buong sistema"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Mga Nabigong Pag-sign in Bago ang Pag-lock"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Mga Nabigong Pag-sign in bawat IP Address"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Mga tungkulin ng pamilya na itinuturing na mga bata sa direktoryo."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Mga tungkulin ng pamilya na itinuturing na pinuno ng sambahayan sa direktoryo at pag-sign in ng miyembro."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Mga tungkulin ng pamilya na itinuturing na asawa sa direktoryo at pag-sign in ng miyembro."
+
+#: 
+msgid "Finance Settings"
+msgstr "Mga Setting ng Pananalapi"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Palugit (mga araw)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Itago ang mga subscription sa newsletter sa Editor ng Pamilya."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Itago ang field na Petsa ng Kaibigan sa Editor ng Tao."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Itago ang field na Petsa ng Kasal sa Editor ng Pamilya."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Gaano katagal mananatiling naka-lock ang isang naka-lock na account. Ang mga nabigong pag-sign in mula sa isang IP address ay binibilang sa parehong panahon."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Ilang character ang dapat na pagkakaiba ng bagong password mula sa luma. Pinapatay ito ng 0."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Sa Admin → Telemetry, i-on ang Ibahagi kung aling mga pahina ang ginagamit para piliin ang Buo. Nagpapadala rin ang Buo ng mga page view."
+
+#: 
+msgid "Initials Format"
+msgstr "Format ng mga Inisyal"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Teksto ng Liham %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Panahon ng Pag-lock (mga minuto)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Nila-lock ang isang account pagkatapos ng ganitong karaming magkakasunod na nabigong pag-sign in. Nag-a-unlock ito pagkatapos ng panahon ng pag-lock, o kapag ni-reset ito ng isang administrator. Pinapatay ng 0 ang pag-lock."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Pamahalaan ang Portal ng Miyembro"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Maaaring mag-sign in ang mga miyembro gamit ang kanilang email."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Hindi pa maaaring mag-sign in ang mga miyembro."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Pinakamababang Character na Binago"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Pinakamababang Haba ng Password"
+
+#: 
+msgid "Name Format"
+msgstr "Format ng Pangalan"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Pangalang naka-print sa ilalim ng pangwakas ng mga liham at email"
+
+#: 
+msgid "No Payments Text"
+msgstr "Teksto ng Walang Pagbabayad"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Teksto ng Walang Pangako"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Walang tier ang nagpapadala ng mga tao, nagbibigay, pagbibigay, content, mga detalye ng contact ng simbahan, iyong web address o pangalan ng server."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Walang tier ang nagpapadala ng iyong web address o pangalan ng server. Walang ipinapadala ang mga test na pag-install. Ipinapadala ang telemetry sa PostHog sa United States."
+
+#: 
+msgid "OS family"
+msgstr "Pamilya ng OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Pambungad na talata ng liham ng paalala sa pangako."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Talata na nag-aanyaya ng mga tanong sa pahayag ng pagbibigay."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Talata na nag-aanyaya ng mga tanong sa liham ng mga zero-giver."
+
+#: 
+msgid "Passwords"
+msgstr "Mga Password"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Naka-print pagkatapos ng saklaw ng petsa sa pambungad na linya ng liham ng mga zero-giver."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Unang naka-print sa pahayag ng pagbibigay, na sinusundan ng saklaw ng petsa."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Naka-print kapag walang pagbabayad na nakatala ang isang pamilya."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Naka-print kapag walang pangako na nakatala ang isang pamilya."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Tinatanggihan ang pag-sign in mula sa isang IP address sa panahon ng pag-lock pagkatapos ng ganitong karaming nabigong pag-sign in o pag-reset ng password. Pinapatay ito ng 0, halimbawa kapag lahat ay kumokonekta sa pamamagitan ng isang proxy."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Kailanganin ang Dalawang-Hakbang na Pagpapatunay"
+
+#: 
+msgid "Security Settings"
+msgstr "Mga Setting ng Seguridad"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Magpadala ng mga ulat ng error, mga event ng pag-install/pag-upgrade at impormasyon ng sistema para maayos ang mga problema. Walang page view, walang data ng simbahan."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Timeout ng Session (mga segundo)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Ibahagi kung aling mga pahina ang ginagamit"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Pag-sign in at Seguridad"
+
+#: 
+msgid "Signature Storage"
+msgstr "Imbakan ng Lagda"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Nagsa-sign out ng gumagamit pagkatapos ng ganitong karaming segundo na walang aktibidad. Hindi kailanman nagsa-sign out ang 0."
+
+#: 
+msgid "System-wide"
+msgstr "Sa Buong Sistema"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teksto Pagkatapos ng mga Petsa"
+
+#: 
+msgid "Text Messages"
+msgstr "Mga Text Message"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Talata ng pasasalamat ng pahayag ng pagbibigay."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Talata ng pasasalamat ng liham ng mga zero-giver."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Nabigo ang conversion. Walang binago."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Gumagamit ng letterhead file na na-save bago idinagdag ang mga upload. Mag-upload ng letterhead para palitan ito."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Babala Pagkatapos ng (Mga Oras)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Salita bago ang pangalan sa mga liham at email, halimbawa Mahal na."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Isang beses lang itatanong ang iyong pinili. Maaari mo itong baguhin anumang oras. Sa Hindi na salamat, mananatiling aktibo ang Default at hindi ipinapadala ang mga page view."
+

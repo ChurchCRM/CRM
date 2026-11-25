@@ -28019,3 +28019,295 @@ msgstr "Egyháza adatai mentve vannak. Haladjon végig az alábbi lépéseken."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Az Ön adatbázisa (%1$s %2$s) biztonsági kockázatot jelent: szállítója már nem ad ki biztonsági javításokat ahhoz a verzióhoz. A ChurchCRM továbbra is működik, de kérje meg tárhelyszolgáltatóját, hogy térjen át MariaDB %3$s+ vagy MySQL %4$s+ verzióra."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "A használat közbeni napi bejelentkezés, a szoftver- és adatbázis-verziók, a területi beállítás, az ország, a telepítés típusa és egy véletlen telepítési azonosító segít megszámolni az aktív telepítéseket."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Fiókok és bejelentkezés"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "A használt oldalakat is elküldi."
+
+#: 
+msgid "Areas"
+msgstr "Területek"
+
+#: 
+msgid "Church & System"
+msgstr "Gyülekezet és rendszer"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "A város vagy település, ahol a bizonylatokat kiállítják, a hivatalos bizonylatokra nyomtatva. Hagyja üresen a gyülekezet városának használatához."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Az aláíró neve előtt álló záró formula, például Üdvözlettel."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "A hivatalos bizonylatokon az aláíró előtt nyomtatott záró formula."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Vesszővel elválasztott jelszavak, amelyeket senki sem használhat."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Visszaigazoló levél"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Létrehozzon egy családot ennek a személynek? A címe és az otthoni telefonszáma az új családhoz kerül."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "A napok száma, amely alatt a felhasználóknak be kell állítaniuk a kétlépcsős azonosítást, miután az kötelezővé válik. A 0 azonnal érvényesíti. Egy aktív türelmi időszak lerövidítése kizárhatja a felhasználókat."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Letétek és fizetések"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Tiltott jelszavak"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Jogi nyilatkozat %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "E-mail a felhasználóknak, ha a fiókjuk törlődik"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Minden beállítási oldal egy helyen, valamint az egész rendszerre vonatkozó beállítások"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Sikertelen bejelentkezések a zárolás előtt"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Sikertelen bejelentkezések IP-címenként"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "A címtárban gyermekként kezelt családi szerepek."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "A címtárban és a tagi bejelentkezésnél háztartásfőként kezelt családi szerepek."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "A címtárban és a tagi bejelentkezésnél házastársként kezelt családi szerepek."
+
+#: 
+msgid "Finance Settings"
+msgstr "Pénzügyi beállítások"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Türelmi időszak (nap)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "A hírlevél-feliratkozások elrejtése a Család szerkesztőben."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "A Barát dátuma mező elrejtése a Személy szerkesztőben."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "A Házasságkötés dátuma mező elrejtése a Család szerkesztőben."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Meddig marad zárolva egy zárolt fiók. Az egy IP-címről érkező sikertelen bejelentkezéseket ugyanazon időszak alatt számolja."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Hány karakterben kell különböznie az új jelszónak a régitől. A 0 kikapcsolja ezt."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Az Adminisztráció → Telemetria menüben kapcsolja be a Használt oldalak megosztása lehetőséget a Teljes kiválasztásához. A Teljes az oldalmegtekintéseket is elküldi."
+
+#: 
+msgid "Initials Format"
+msgstr "Kezdőbetűk formátuma"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Levélszöveg %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Zárolási időszak (perc)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Ennyi egymást követő sikertelen bejelentkezés után zárol egy fiókot. A zárolási időszak után, vagy amikor egy adminisztrátor visszaállítja, feloldódik. A 0 kikapcsolja a zárolást."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Tagi portál kezelése"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "A tagok az e-mail-címükkel jelentkezhetnek be."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "A tagok még nem tudnak bejelentkezni."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Módosítandó karakterek minimuma"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Jelszó minimális hossza"
+
+#: 
+msgid "Name Format"
+msgstr "Névformátum"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "A levelek és e-mailek záró formulája alá nyomtatott név"
+
+#: 
+msgid "No Payments Text"
+msgstr "Fizetés nélküli szöveg"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Vállalás nélküli szöveg"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Egyik szint sem küld személyeket, adományozókat, adományokat, tartalmat, gyülekezeti kapcsolattartási adatokat, az Ön webcímét vagy kiszolgálónevét."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Egyik szint sem küldi el az Ön webcímét vagy kiszolgálónevét. A teszttelepítések semmit sem küldenek. A telemetriát az Egyesült Államokban lévő PostHog részére küldjük."
+
+#: 
+msgid "OS family"
+msgstr "Operációsrendszer-család"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "A vállalási emlékeztető levél nyitó bekezdése."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Az adományigazolásban kérdésekre hívó bekezdés."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Az adományt nem adók levelében kérdésekre hívó bekezdés."
+
+#: 
+msgid "Passwords"
+msgstr "Jelszavak"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Az adományt nem adók levelének nyitó sorában a dátumtartomány után nyomtatva."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Az adományigazolásra nyomtatva elsőként, amelyet a dátumtartomány követ."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Akkor nyomtatja, ha egy családnak nincs rögzített fizetése."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Akkor nyomtatja, ha egy családnak nincs rögzített vállalása."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Ennyi sikertelen bejelentkezés vagy jelszó-visszaállítás után a zárolási időszakra megtagadja a bejelentkezést egy IP-címről. A 0 kikapcsolja, például amikor mindenki egyetlen proxyn keresztül csatlakozik."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Kétlépcsős azonosítás megkövetelése"
+
+#: 
+msgid "Security Settings"
+msgstr "Biztonsági beállítások"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Hibajelentések, telepítési/frissítési események és rendszerinformációk küldése, hogy a problémák javíthatók legyenek. Nincsenek oldalmegtekintések, nincs gyülekezeti adat."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Munkamenet-időtúllépés (másodperc)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Használt oldalak megosztása"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Bejelentkezés és biztonság"
+
+#: 
+msgid "Signature Storage"
+msgstr "Aláírás tárolása"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Ennyi másodperc inaktivitás után kijelentkezteti a felhasználót. A 0 soha nem jelentkeztet ki."
+
+#: 
+msgid "System-wide"
+msgstr "Rendszerszintű"
+
+#: 
+msgid "Text After Dates"
+msgstr "Dátumok utáni szöveg"
+
+#: 
+msgid "Text Messages"
+msgstr "Szöveges üzenetek"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Az adományigazolás köszönő bekezdése."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Az adományt nem adók levelének köszönő bekezdése."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Az átalakítás sikertelen volt. Semmi sem változott."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Egy, a feltöltések bevezetése előtt mentett levélfej-fájlt használ. Töltsön fel egy levélfejet a cseréjéhez."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Figyelmeztetés után (óra)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "A levelekben és e-mailekben a név előtt álló szó, például Tisztelt."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "A választását csak egyszer kérdezzük meg. Bármikor módosíthatja. A Nem, köszönöm választással az Alapértelmezett marad aktív, és az oldalmegtekintések nem kerülnek elküldésre."
+

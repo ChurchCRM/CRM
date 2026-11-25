@@ -27940,3 +27940,295 @@ msgstr "บันทึกข้อมูลคริสตจักรของ
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "ฐานข้อมูลของคุณ (%1$s %2$s) เป็นความเสี่ยงด้านความปลอดภัย: ผู้จำหน่ายไม่ปล่อยการแก้ไขด้านความปลอดภัยสำหรับเวอร์ชันนั้นอีกต่อไป ChurchCRM ยังทำงานต่อไป แต่ขอให้โฮสต์ของคุณย้ายไปยัง MariaDB %3$s+ หรือ MySQL %4$s+"
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "การเช็คอินรายวันขณะใช้งาน เวอร์ชันซอฟต์แวร์และฐานข้อมูล ภาษา ประเทศ ประเภทการติดตั้ง และรหัสการติดตั้งแบบสุ่ม ช่วยนับการติดตั้งที่ใช้งานอยู่"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "บัญชีและการลงชื่อเข้าใช้"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "ส่งด้วยว่าหน้าใดบ้างที่ถูกใช้"
+
+#: 
+msgid "Areas"
+msgstr "พื้นที่"
+
+#: 
+msgid "Church & System"
+msgstr "คริสตจักรและระบบ"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "เมืองหรือเมืองเล็กที่ออกใบเสร็จ พิมพ์บนใบเสร็จอย่างเป็นทางการ เว้นว่างไว้เพื่อใช้เมืองของคริสตจักร"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "คำลงท้ายก่อนชื่อผู้ลงนาม ตัวอย่างเช่น ด้วยความเคารพ"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "คำลงท้ายที่พิมพ์ก่อนผู้ลงนามบนใบเสร็จอย่างเป็นทางการ"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "รหัสผ่านที่คั่นด้วยจุลภาคที่ไม่มีใครใช้ได้"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "จดหมายยืนยัน"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "สร้างครอบครัวสำหรับบุคคลนี้? ที่อยู่และโทรศัพท์บ้านของพวกเขาจะย้ายไปครอบครัวใหม่"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "จำนวนวันที่ผู้ใช้ต้องตั้งค่าการยืนยันตัวตนแบบสองปัจจัยหลังจากที่มันกลายเป็นข้อบังคับ 0 บังคับใช้ทันที การลดระยะเวลาผ่อนผันที่ใช้งานอยู่อาจทำให้ผู้ใช้ถูกล็อกออก"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "การฝากและการชำระเงิน"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "รหัสผ่านที่ไม่ได้รับอนุญาต"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "ข้อจำกัดความรับผิดชอบ %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "ส่งอีเมลถึงผู้ใช้เมื่อบัญชีของพวกเขาถูกลบ"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "ทุกหน้าการตั้งค่าในที่เดียว และการตั้งค่าที่ใช้กับทั้งระบบ"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "การลงชื่อเข้าใช้ที่ล้มเหลวก่อนการล็อก"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "การลงชื่อเข้าใช้ที่ล้มเหลวต่อที่อยู่ IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นเด็กในไดเรกทอรี"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นหัวหน้าครัวเรือนในไดเรกทอรีและการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "บทบาทครอบครัวที่ถือว่าเป็นคู่สมรสในไดเรกทอรีและการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Finance Settings"
+msgstr "การตั้งค่าการเงิน"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "ระยะเวลาผ่อนผัน (วัน)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "ซ่อนการสมัครจดหมายข่าวในตัวแก้ไขครอบครัว"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "ซ่อนช่องวันที่ของเพื่อนในตัวแก้ไขบุคคล"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "ซ่อนช่องวันแต่งงานในตัวแก้ไขครอบครัว"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "บัญชีที่ถูกล็อกจะถูกล็อกนานเท่าใด การลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP หนึ่งจะถูกนับในช่วงเวลาเดียวกัน"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเดิมกี่ตัวอักษร 0 ปิดสิ่งนี้"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "ใน ผู้ดูแลระบบ → การรวบรวมข้อมูล เปิด แชร์ว่าหน้าใดบ้างที่ถูกใช้ เพื่อเลือก เต็มรูปแบบ เต็มรูปแบบยังส่งการดูหน้าเว็บด้วย"
+
+#: 
+msgid "Initials Format"
+msgstr "รูปแบบอักษรย่อ"
+
+#: 
+msgid "Letter Text %d"
+msgstr "ข้อความจดหมาย %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "ระยะเวลาการล็อก (นาที)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "ล็อกบัญชีหลังจากการลงชื่อเข้าใช้ล้มเหลวติดต่อกันจำนวนนี้ จะปลดล็อกหลังจากระยะเวลาการล็อก หรือเมื่อผู้ดูแลระบบรีเซ็ต 0 ปิดการล็อก"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "จัดการพอร์ทัลสมาชิก"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "สมาชิกสามารถลงชื่อเข้าใช้ด้วยอีเมลของพวกเขา"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "สมาชิกยังไม่สามารถลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "จำนวนตัวอักษรขั้นต่ำที่เปลี่ยนแปลง"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "ความยาวรหัสผ่านขั้นต่ำ"
+
+#: 
+msgid "Name Format"
+msgstr "รูปแบบชื่อ"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "ชื่อที่พิมพ์ใต้คำลงท้ายของจดหมายและอีเมล"
+
+#: 
+msgid "No Payments Text"
+msgstr "ข้อความไม่มีการชำระเงิน"
+
+#: 
+msgid "No Pledge Text"
+msgstr "ข้อความไม่มีคำมั่นสัญญา"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "ไม่มีระดับใดส่งบุคคล ผู้บริจาค การถวาย เนื้อหา รายละเอียดการติดต่อของคริสตจักร ที่อยู่เว็บ หรือชื่อเซิร์ฟเวอร์ของคุณ"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ไม่มีระดับใดส่งที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ การติดตั้งทดสอบไม่ส่งอะไรเลย ข้อมูลการรวบรวมจะถูกส่งไปยัง PostHog ในสหรัฐอเมริกา"
+
+#: 
+msgid "OS family"
+msgstr "ตระกูล OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "ย่อหน้าเปิดของจดหมายเตือนคำมั่นสัญญา"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "ย่อหน้าที่เชิญให้ถามคำถามในใบแจ้งการถวาย"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "ย่อหน้าที่เชิญให้ถามคำถามในจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "Passwords"
+msgstr "รหัสผ่าน"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "พิมพ์หลังช่วงวันที่ในบรรทัดเปิดของจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "พิมพ์เป็นอันดับแรกบนใบแจ้งการถวาย ตามด้วยช่วงวันที่"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "พิมพ์เมื่อครอบครัวไม่มีการชำระเงินในบันทึก"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "พิมพ์เมื่อครอบครัวไม่มีคำมั่นสัญญาในบันทึก"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "ปฏิเสธการลงชื่อเข้าใช้จากที่อยู่ IP หนึ่งเป็นระยะเวลาการล็อกหลังจากการลงชื่อเข้าใช้ล้มเหลวหรือการรีเซ็ตรหัสผ่านจำนวนนี้ 0 ปิดสิ่งนี้ ตัวอย่างเช่นเมื่อทุกคนเชื่อมต่อผ่านพร็อกซีเดียว"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "ต้องมีการยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Security Settings"
+msgstr "การตั้งค่าความปลอดภัย"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "ส่งรายงานข้อผิดพลาด เหตุการณ์การติดตั้ง/อัปเกรด และข้อมูลระบบเพื่อให้สามารถแก้ไขปัญหาได้ ไม่มีการดูหน้าเว็บ ไม่มีข้อมูลคริสตจักร"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "หมดเวลาเซสชัน (วินาที)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "แชร์ว่าหน้าใดบ้างที่ถูกใช้"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "การลงชื่อเข้าใช้และความปลอดภัย"
+
+#: 
+msgid "Signature Storage"
+msgstr "ที่เก็บลายเซ็น"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "ลงชื่อผู้ใช้ออกหลังจากไม่มีกิจกรรมเป็นจำนวนวินาทีนี้ 0 ไม่ลงชื่อออกเลย"
+
+#: 
+msgid "System-wide"
+msgstr "ทั้งระบบ"
+
+#: 
+msgid "Text After Dates"
+msgstr "ข้อความหลังวันที่"
+
+#: 
+msgid "Text Messages"
+msgstr "ข้อความตัวอักษร"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "ย่อหน้าขอบคุณของใบแจ้งการถวาย"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "ย่อหน้าขอบคุณของจดหมายผู้ไม่ได้ถวาย"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงอะไร"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "กำลังใช้ไฟล์หัวจดหมายที่บันทึกไว้ก่อนที่จะมีการเพิ่มการอัปโหลด อัปโหลดหัวจดหมายเพื่อแทนที่"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "คำเตือนหลัง (ชั่วโมง)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "คำก่อนชื่อในจดหมายและอีเมล ตัวอย่างเช่น เรียน"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "ตัวเลือกของคุณจะถูกถามเพียงครั้งเดียว คุณสามารถเปลี่ยนแปลงได้ทุกเมื่อ เมื่อเลือก ไม่ขอบคุณ ค่าเริ่มต้นจะยังคงทำงานอยู่ และการดูหน้าเว็บจะไม่ถูกส่ง"
+

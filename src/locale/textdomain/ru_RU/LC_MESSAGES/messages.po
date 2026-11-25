@@ -28116,3 +28116,295 @@ msgstr "Информация о вашей церкви сохранена. Вы
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Ваша база данных (%1$s %2$s) представляет риск безопасности: её поставщик больше не выпускает исправления безопасности для этой версии. ChurchCRM продолжает работать, но попросите своего хостинг-провайдера перейти на MariaDB %3$s+ или MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Ежедневная регистрация во время использования, версии программного обеспечения и базы данных, локаль, страна, тип установки и случайный идентификатор установки помогают подсчитывать активные установки."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Учётные записи и вход"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Также отправлять, какие страницы используются."
+
+#: 
+msgid "Areas"
+msgstr "Области"
+
+#: 
+msgid "Church & System"
+msgstr "Церковь и система"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Город, где выдаются квитанции, печатается на официальных квитанциях. Оставьте пустым, чтобы использовать город церкви."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Завершение перед именем подписавшего, например «С уважением»."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Завершение, печатаемое перед подписавшим на официальных квитанциях."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Пароли, разделённые запятыми, которые никто не может использовать."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Письмо-подтверждение"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Создать семью для этого человека? Его адрес и домашний телефон перейдут в новую семью."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Количество дней, в течение которых пользователи должны настроить двухфакторную аутентификацию после того, как она станет обязательной. 0 применяет её сразу. Сокращение действующего льготного периода может заблокировать пользователей."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Депозиты и платежи"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Запрещённые пароли"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Правовая информация %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Отправлять пользователям письмо при удалении их учётной записи"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Каждая страница настроек в одном месте и настройки, действующие для всей системы"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Неудачные входы перед блокировкой"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Неудачные входы с одного IP-адреса"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Семейные роли, считающиеся в каталоге детьми."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Семейные роли, считающиеся в каталоге и при входе членов главой домохозяйства."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Семейные роли, считающиеся в каталоге и при входе членов супругом."
+
+#: 
+msgid "Finance Settings"
+msgstr "Настройки финансов"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Льготный период (дней)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Скрыть подписки на рассылку в Редакторе семей."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Скрыть поле «Дата друга» в Редакторе персоны."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Скрыть поле «Дата свадьбы» в Редакторе семей."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Как долго заблокированная учётная запись остаётся заблокированной. Неудачные входы с одного IP-адреса подсчитываются за тот же период."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "На сколько символов новый пароль должен отличаться от старого. 0 отключает эту функцию."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "В разделе Администрирование → Телеметрия включите параметр «Отправлять, какие страницы используются», чтобы выбрать Full. Full также отправляет просмотры страниц."
+
+#: 
+msgid "Initials Format"
+msgstr "Формат инициалов"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Текст письма %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Период блокировки (минуты)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Блокирует учётную запись после такого количества неудачных входов подряд. Она разблокируется после окончания периода блокировки или когда администратор сбросит её. 0 отключает блокировку."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Управлять Порталом общины"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Члены могут входить с помощью своей электронной почты."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Члены пока не могут входить."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Минимальное количество изменённых символов"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Минимальная длина пароля"
+
+#: 
+msgid "Name Format"
+msgstr "Формат имени"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Имя, печатаемое под завершением писем и электронных писем"
+
+#: 
+msgid "No Payments Text"
+msgstr "Текст при отсутствии платежей"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Текст при отсутствии обещаний"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Ни один уровень не отправляет людей, доноров, пожертвования, содержимое, контактные данные церкви, ваш веб-адрес или имя сервера."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Ни один уровень не отправляет ваш веб-адрес или имя сервера. Тестовые установки не отправляют ничего. Телеметрия отправляется в PostHog в Соединённых Штатах."
+
+#: 
+msgid "OS family"
+msgstr "Семейство ОС"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Начальный абзац письма-напоминания об обещании."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Абзац с приглашением задавать вопросы в выписке о пожертвованиях."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Абзац с приглашением задавать вопросы в письме для тех, кто не жертвовал."
+
+#: 
+msgid "Passwords"
+msgstr "Пароли"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Печатается после диапазона дат в начальной строке письма для тех, кто не жертвовал."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Печатается первым в выписке о пожертвованиях, после него идёт диапазон дат."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Печатается, когда у семьи нет зарегистрированных платежей."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Печатается, когда у семьи нет зарегистрированного обещания."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Отказывает во входе с одного IP-адреса на период блокировки после такого количества неудачных входов или сбросов пароля. 0 отключает эту функцию, например, когда все подключаются через один прокси."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Требовать двухфакторную аутентификацию"
+
+#: 
+msgid "Security Settings"
+msgstr "Настройки безопасности"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Отправляйте отчёты об ошибках, события установки/обновления и системную информацию, чтобы проблемы можно было исправлять. Без просмотров страниц, без данных церкви."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Тайм-аут сеанса (секунды)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Отправлять, какие страницы используются"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Вход и безопасность"
+
+#: 
+msgid "Signature Storage"
+msgstr "Хранилище подписей"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Выводит пользователя после такого количества секунд бездействия. 0 никогда не выводит."
+
+#: 
+msgid "System-wide"
+msgstr "Вся система"
+
+#: 
+msgid "Text After Dates"
+msgstr "Текст после дат"
+
+#: 
+msgid "Text Messages"
+msgstr "Текстовые сообщения"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Абзац благодарности в выписке о пожертвованиях."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Абзац благодарности в письме для тех, кто не жертвовал."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Преобразование не удалось. Ничего не было изменено."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Используется файл бланка, сохранённый до добавления загрузок. Загрузите бланк, чтобы заменить его."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Предупреждение через (часы)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Слово перед именем в письмах и электронных письмах, например «Уважаемый»."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Ваш выбор запрашивается только один раз. Вы можете изменить его в любое время. При ответе «Нет, спасибо» уровень «По умолчанию» остаётся активным, а просмотры страниц не отправляются."
+

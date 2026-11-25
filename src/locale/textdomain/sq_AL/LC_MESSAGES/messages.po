@@ -27987,3 +27987,295 @@ msgstr "Informacioni i kishës suaj është ruajtur. Punoni nëpër hapat më po
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Baza juaj e të dhënave (%1$s %2$s) është një rrezik sigurie: furnizuesi i saj nuk ofron më rregullime sigurie për atë version. ChurchCRM vazhdon të funksionojë, por kërkojini hostit tuaj të kalojë në MariaDB %3$s+ ose MySQL %4$s+."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Një regjistrim ditor gjatë përdorimit, versionet e softuerit dhe të bazës së të dhënave, gjuha, shteti, lloji i instalimit dhe një ID instalimi e rastësishme ndihmojnë në numërimin e instalimeve aktive."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Llogaritë & Hyrja"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Dërgo edhe faqet e përdorura."
+
+#: 
+msgid "Areas"
+msgstr "Zonat"
+
+#: 
+msgid "Church & System"
+msgstr "Kisha & Sistemi"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Qyteti ose vendbanimi ku lëshohen faturat, i shtypur në faturat zyrtare. Lëreni bosh për të përdorur qytetin e kishës."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Mbyllja para emrit të nënshkruesit, për shembull Sinqerisht."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Mbyllja e shtypur para nënshkruesit në faturat zyrtare."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Fjalëkalime të ndara me presje që askush nuk mund t'i përdorë."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Letra e konfirmimit"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Të krijohet një familje për këtë person? Adresa dhe telefoni i shtëpisë i tyre zhvendosen te familja e re."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Ditët që kanë përdoruesit për të konfiguruar vërtetimin dyfaktorësh pasi ai bëhet i detyrueshëm. 0 e zbaton menjëherë. Shkurtimi i një periudhe aktive tolerimi mund t'i bllokojë përdoruesit jashtë."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Depozitat & Pagesat"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Fjalëkalimet e palejuara"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Mohim %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Dërgo e-postë përdoruesve kur llogaria e tyre fshihet"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Çdo faqe cilësimesh në një vend, dhe cilësimet që zbatohen për të gjithë sistemin"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Hyrjet e dështuara para bllokimit"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Hyrjet e dështuara për adresë IP"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Rolet e familjes që trajtohen si fëmijë në drejtori."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Rolet e familjes që trajtohen si kryefamiljar në drejtori dhe në hyrjen e anëtarëve."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Rolet e familjes që trajtohen si bashkëshort në drejtori dhe në hyrjen e anëtarëve."
+
+#: 
+msgid "Finance Settings"
+msgstr "Cilësimet e financave"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Periudha e tolerimit (ditë)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Fshih abonimet në buletinin e lajmeve në Redaktuesin e Familjes."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Fshih fushën Data e Mikut në Redaktuesin e Personit."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Fshih fushën Data e Martesës në Redaktuesin e Familjes."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Sa kohë qëndron e bllokuar një llogari e bllokuar. Hyrjet e dështuara nga një adresë IP numërohen gjatë së njëjtës periudhë."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Me sa karaktere duhet të ndryshojë një fjalëkalim i ri nga i vjetri. 0 e çaktivizon këtë."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Te Administrimi → Telemetria, aktivizoni Shpërnda faqet e përdorura për të zgjedhur E plotë. E plotë dërgon edhe shikime faqesh."
+
+#: 
+msgid "Initials Format"
+msgstr "Formati i inicialeve"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Teksti i letrës %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Periudha e bllokimit (minuta)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Bllokon një llogari pas kaq hyrjeve të dështuara radhazi. Zhbllokohet pas periudhës së bllokimit, ose kur një administrator e rivendos. 0 e çaktivizon bllokimin."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Menaxho Portalin e Anëtarëve"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Anëtarët mund të hyjnë me e-postën e tyre."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Anëtarët nuk mund të hyjnë ende."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Ndryshimi minimal i karaktereve"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Gjatësia minimale e fjalëkalimit"
+
+#: 
+msgid "Name Format"
+msgstr "Formati i emrit"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Emri i shtypur nën mbylljen e letrave dhe e-postave"
+
+#: 
+msgid "No Payments Text"
+msgstr "Teksti kur nuk ka pagesa"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Teksti kur nuk ka zotim"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Asnjë nivel nuk dërgon njerëz, dhurues, dhurime, përmbajtje, të dhëna kontakti të kishës, adresën tuaj të uebit ose emrin e serverit."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Asnjë nivel nuk dërgon adresën tuaj të uebit ose emrin e serverit. Instalimet testuese nuk dërgojnë asgjë. Telemetria dërgohet te PostHog në Shtetet e Bashkuara."
+
+#: 
+msgid "OS family"
+msgstr "Familja e OS"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Paragrafi hapës i letrës kujtesë për zotimin."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Paragrafi që fton pyetje në deklaratën e dhurimeve."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Paragrafi që fton pyetje në letrën e dhuruesve zero."
+
+#: 
+msgid "Passwords"
+msgstr "Fjalëkalimet"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "I shtypur pas intervalit të datave në rreshtin hapës të letrës së dhuruesve zero."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "I shtypur i pari në deklaratën e dhurimeve, i ndjekur nga intervali i datave."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Shtypet kur një familje nuk ka pagesa të regjistruara."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Shtypet kur një familje nuk ka zotim të regjistruar."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Refuzon hyrjen nga një adresë IP për periudhën e bllokimit pas kaq hyrjeve të dështuara ose rivendosjeve të fjalëkalimit. 0 e çaktivizon, për shembull kur të gjithë lidhen përmes një proxy të vetëm."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Kërko vërtetimin dyfaktorësh"
+
+#: 
+msgid "Security Settings"
+msgstr "Cilësimet e sigurisë"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Dërgo raporte gabimesh, ngjarje instalimi/përmirësimi dhe informacion sistemi që problemet të mund të rregullohen. Pa shikime faqesh, pa të dhëna kishe."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Koha e skadimit të sesionit (sekonda)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Shpërnda faqet e përdorura"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Hyrja & Siguria"
+
+#: 
+msgid "Signature Storage"
+msgstr "Ruajtja e nënshkrimit"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Nxjerr jashtë një përdorues pas kaq sekondash pa aktivitet. 0 nuk e nxjerr kurrë jashtë."
+
+#: 
+msgid "System-wide"
+msgstr "Në të gjithë sistemin"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teksti pas datave"
+
+#: 
+msgid "Text Messages"
+msgstr "Mesazhet me tekst"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Paragrafi i falënderimit i deklaratës së dhurimeve."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Paragrafi i falënderimit i letrës së dhuruesve zero."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konvertimi dështoi. Asgjë nuk u ndryshua."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Po përdor një skedar koke letre të ruajtur para se të shtoheshin ngarkimet. Ngarkoni një kokë letre për ta zëvendësuar."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Paralajmërimi pas (orë)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Fjala para emrit në letra dhe e-posta, për shembull I dashur."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Zgjedhja juaj kërkohet vetëm një herë. Mund ta ndryshoni në çdo kohë. Me Jo, faleminderit, Parazgjedhur mbetet aktiv dhe shikimet e faqeve nuk dërgohen."
+

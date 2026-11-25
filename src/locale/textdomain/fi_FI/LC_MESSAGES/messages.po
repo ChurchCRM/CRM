@@ -27969,3 +27969,295 @@ msgstr "Seurakuntasi tiedot on tallennettu. Käy läpi alla olevat vaiheet."
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "Tietokantasi (%1$s %2$s) on tietoturvariski: sen toimittaja ei enää julkaise tietoturvakorjauksia kyseiselle versiolle. ChurchCRM toimii edelleen, mutta pyydä isäntääsi siirtymään MariaDB %3$s+ tai MySQL %4$s+ -versioon."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "Päivittäinen tarkistus käytön aikana, ohjelmisto- ja tietokantaversiot, kielialue, maa, asennustyyppi ja satunnainen asennustunnus auttavat laskemaan aktiiviset asennukset."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "Tilit & kirjautuminen"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "Lähetä myös, mitä sivuja käytetään."
+
+#: 
+msgid "Areas"
+msgstr "Alueet"
+
+#: 
+msgid "Church & System"
+msgstr "Seurakunta & järjestelmä"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "Kaupunki tai paikkakunta, jossa kuitit myönnetään, tulostetaan virallisiin kuitteihin. Jätä tyhjäksi käyttääksesi seurakunnan kaupunkia."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "Lopetus allekirjoittajan nimen edellä, esimerkiksi Ystävällisin terveisin."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "Lopetus, joka tulostetaan allekirjoittajan edelle virallisiin kuitteihin."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "Pilkulla erotetut salasanat, joita kukaan ei saa käyttää."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "Vahvistuskirje"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "Luodaanko tälle henkilölle perhe? Hänen osoitteensa ja kotipuhelimensa siirtyvät uuteen perheeseen."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "Päiviä, jotka käyttäjillä on kaksivaiheisen todentamisen käyttöönottoon sen jälkeen, kun siitä tulee pakollinen. 0 pakottaa sen heti. Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjiä ulos."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "Talletukset & maksut"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Kielletyt salasanat"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "Vastuuvapauslauseke %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "Lähetä käyttäjille sähköpostia, kun heidän tilinsä poistetaan"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "Jokainen asetussivu yhdessä paikassa sekä asetukset, jotka koskevat koko järjestelmää"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "Epäonnistuneet kirjautumiset ennen lukitusta"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "Epäonnistuneet kirjautumiset IP-osoitetta kohti"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "Perheroolit, joita käsitellään lapsina hakemistossa."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "Perheroolit, joita käsitellään perheen päänä hakemistossa ja jäsenten kirjautumisessa."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "Perheroolit, joita käsitellään puolisona hakemistossa ja jäsenten kirjautumisessa."
+
+#: 
+msgid "Finance Settings"
+msgstr "Talousasetukset"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "Siirtymäaika (päivää)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "Piilota uutiskirjetilaukset kohdassa Perheen muokkaus."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "Piilota Ystävyyspäivä-kenttä kohdassa Henkilön muokkaus."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "Piilota Hääpäivä-kenttä kohdassa Perheen muokkaus."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "Kuinka kauan lukittu tili pysyy lukittuna. Epäonnistuneet kirjautumiset yhdestä IP-osoitteesta lasketaan saman ajanjakson ajalta."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "Kuinka monella merkillä uuden salasanan on erottava vanhasta. 0 poistaa tämän käytöstä."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "Kohdassa Ylläpito → Telemetria, ota käyttöön Jaa, mitä sivuja käytetään valitaksesi Täynnä. Täynnä lähettää myös sivukatseluita."
+
+#: 
+msgid "Initials Format"
+msgstr "Nimikirjainmuoto"
+
+#: 
+msgid "Letter Text %d"
+msgstr "Kirjeteksti %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "Lukitusaika (minuutit)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "Lukitsee tilin tämän monen peräkkäisen epäonnistuneen kirjautumisen jälkeen. Lukitus avautuu lukitusajan jälkeen tai kun ylläpitäjä nollaa sen. 0 poistaa lukituksen käytöstä."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "Hallitse Jäsenportaalia"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "Jäsenet voivat kirjautua sisään sähköpostillaan."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "Jäsenet eivät voi vielä kirjautua sisään."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "Muutettujen merkkien vähimmäismäärä"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "Salasanan vähimmäispituus"
+
+#: 
+msgid "Name Format"
+msgstr "Nimimuoto"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "Nimi, joka tulostetaan kirjeiden ja sähköpostien lopetuksen alle"
+
+#: 
+msgid "No Payments Text"
+msgstr "Ei maksuja -teksti"
+
+#: 
+msgid "No Pledge Text"
+msgstr "Ei lupausta -teksti"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "Mikään taso ei lähetä henkilöitä, lahjoittajia, lahjoituksia, sisältöä, seurakunnan yhteystietoja, verkko-osoitettasi tai palvelimesi nimeä."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Mikään taso ei lähetä verkko-osoitettasi tai palvelimesi nimeä. Testiasennukset eivät lähetä mitään. Telemetria lähetetään PostHogiin Yhdysvaltoihin."
+
+#: 
+msgid "OS family"
+msgstr "Käyttöjärjestelmäperhe"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "Lupausmuistutuskirjeen avauskappale."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "Lahjoitustiedotteen kappale, joka kutsuu esittämään kysymyksiä."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "Kappale nollalahjoittajien kirjeessä, joka kutsuu esittämään kysymyksiä."
+
+#: 
+msgid "Passwords"
+msgstr "Salasanat"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "Tulostetaan päivämääräalueen jälkeen nollalahjoittajien kirjeen avausriville."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "Tulostetaan ensimmäisenä lahjoitustiedotteeseen, jonka jälkeen tulee päivämääräalue."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "Tulostetaan, kun perheellä ei ole kirjattuja maksuja."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "Tulostetaan, kun perheellä ei ole kirjattua lupausta."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "Estää kirjautumisen yhdestä IP-osoitteesta lukitusajaksi tämän monen epäonnistuneen kirjautumisen tai salasanan nollauksen jälkeen. 0 poistaa sen käytöstä, esimerkiksi kun kaikki yhdistävät yhden välityspalvelimen kautta."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "Vaadi kaksivaiheista todentamista"
+
+#: 
+msgid "Security Settings"
+msgstr "Turvallisuusasetukset"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "Lähetä virheraportteja, asennus-/päivitystapahtumia ja järjestelmätietoja, jotta ongelmat voidaan korjata. Ei sivukatseluita, ei seurakunnan tietoja."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "Istunnon aikakatkaisu (sekuntia)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "Jaa, mitä sivuja käytetään"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "Kirjautuminen & turvallisuus"
+
+#: 
+msgid "Signature Storage"
+msgstr "Allekirjoitusten tallennus"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "Kirjaa käyttäjän ulos tämän monen sekunnin käyttämättömyyden jälkeen. 0 ei kirjaa koskaan ulos."
+
+#: 
+msgid "System-wide"
+msgstr "Koko järjestelmän"
+
+#: 
+msgid "Text After Dates"
+msgstr "Teksti päivämäärien jälkeen"
+
+#: 
+msgid "Text Messages"
+msgstr "Tekstiviestit"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "Lahjoitustiedotteen kiitoskappale."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "Nollalahjoittajien kirjeen kiitoskappale."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Muunnos epäonnistui. Mitään ei muutettu."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "Käytetään kirjelomaketiedostoa, joka on tallennettu ennen latausten lisäämistä. Lataa kirjelomake korvataksesi sen."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "Varoitus jälkeen (tuntia)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "Sana ennen nimeä kirjeissä ja sähköposteissa, esimerkiksi Hyvä."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "Valintaasi kysytään kerran. Voit muuttaa sitä milloin tahansa. Valinnalla Ei kiitos Oletus pysyy aktiivisena eikä sivukatseluita lähetetä."
+

@@ -27963,3 +27963,295 @@ msgstr "നിങ്ങളുടെ പള്ളി വിവരങ്ങൾ സ
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "നിങ്ങളുടെ ഡാറ്റാബേസ് (%1$s %2$s) ഒരു സുരക്ഷാ അപകടമാണ്: അതിന്റെ വെണ്ടർ ആ പതിപ്പിനായി ഇനി സുരക്ഷാ പരിഹാരങ്ങൾ നൽകുന്നില്ല. ChurchCRM പ്രവർത്തിക്കുന്നത് തുടരും, എന്നാൽ MariaDB %3$s+ അല്ലെങ്കിൽ MySQL %4$s+ ലേക്ക് മാറാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടുക."
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "ഉപയോഗത്തിലിരിക്കുമ്പോഴുള്ള ദൈനംദിന ചെക്ക്-ഇൻ, സോഫ്റ്റ്‌വെയർ, ഡാറ്റാബേസ് പതിപ്പുകൾ, ലോക്കേൽ, രാജ്യം, ഇൻസ്റ്റാളേഷൻ തരം, ക്രമരഹിതമായ ഒരു ഇൻസ്റ്റാളേഷൻ ID എന്നിവ സജീവ ഇൻസ്റ്റാളേഷനുകൾ എണ്ണാൻ സഹായിക്കുന്നു."
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "അക്കൗണ്ടുകളും സൈൻ ഇന്നും"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "ഉപയോഗിച്ച പേജുകളും അയയ്ക്കുക."
+
+#: 
+msgid "Areas"
+msgstr "മേഖലകൾ"
+
+#: 
+msgid "Church & System"
+msgstr "പള്ളിയും സിസ്റ്റവും"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "രസീതുകൾ നൽകുന്ന നഗരം അല്ലെങ്കിൽ പട്ടണം, ഔദ്യോഗിക രസീതുകളിൽ അച്ചടിക്കുന്നു. ശൂന്യമായി വിട്ടാൽ പള്ളിയുടെ നഗരം ഉപയോഗിക്കും."
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "ഒപ്പിടുന്നയാളുടെ പേരിന് മുമ്പ് വരുന്ന സമാപന വാചകം, ഉദാഹരണത്തിന് ആദരവോടെ."
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "ഔദ്യോഗിക രസീതുകളിൽ ഒപ്പിടുന്നയാൾക്ക് മുമ്പ് അച്ചടിക്കുന്ന സമാപനം."
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "ആർക്കും ഉപയോഗിക്കാൻ പാടില്ലാത്ത, കോമ കൊണ്ട് വേർതിരിച്ച പാസ്‌വേഡ്കൾ."
+
+#: 
+msgid "Confirmation Letter"
+msgstr "സ്ഥിരീകരണ കത്ത്"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "ഈ വ്യക്തിക്കായി ഒരു കുടുംബം സൃഷ്ടിക്കണോ? അവരുടെ വിലാസവും വീട്ടിലെ ഫോണും പുതിയ കുടുംബത്തിലേക്ക് മാറും."
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "ഇരട്ടഘടക ആധികാരികത നിർബന്ധമായതിന് ശേഷം ഉപയോക്താക്കൾക്ക് അത് സജ്ജമാക്കാൻ ലഭിക്കുന്ന ദിവസങ്ങൾ. 0 ആയാൽ അത് ഉടൻ നടപ്പിലാക്കും. സജീവമായ ഒരു ഗ്രേസ് കാലയളവ് കുറയ്ക്കുന്നത് ഉപയോക്താക്കളെ ലോക്ക് ഔട്ട് ചെയ്യാൻ ഇടയാക്കും."
+
+#: 
+msgid "Deposits & Payments"
+msgstr "ഡിപ്പോസിറ്റുകളും പേമെന്റുകളും"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "അനുവദനീയമല്ലാത്ത പാസ്‌വേഡ്കൾ"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "നിരാകരണം %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "അക്കൗണ്ട് ഇല്ലാതാക്കുമ്പോൾ ഉപയോക്താക്കൾക്ക് ഇമെയിൽ അയയ്ക്കുക"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "എല്ലാ ക്രമീകരണ പേജുകളും ഒരിടത്ത്, കൂടാതെ മുഴുവൻ സിസ്റ്റത്തിനും ബാധകമായ ക്രമീകരണങ്ങളും"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "ലോക്ക് ഔട്ടിന് മുമ്പുള്ള പരാജയപ്പെട്ട സൈൻ ഇന്നുകൾ"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "ഓരോ IP വിലാസത്തിനുമുള്ള പരാജയപ്പെട്ട സൈൻ ഇന്നുകൾ"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "ഡയറക്ടറിയിൽ കുട്ടികളായി കണക്കാക്കുന്ന കുടുംബ റോളുകൾ."
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "ഡയറക്ടറിയിലും അംഗ സൈൻ ഇന്നിലും കുടുംബനാഥനായി കണക്കാക്കുന്ന കുടുംബ റോളുകൾ."
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "ഡയറക്ടറിയിലും അംഗ സൈൻ ഇന്നിലും ജീവിതപങ്കാളിയായി കണക്കാക്കുന്ന കുടുംബ റോളുകൾ."
+
+#: 
+msgid "Finance Settings"
+msgstr "ധനകാര്യ ക്രമീകരണങ്ങൾ"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "ഗ്രേസ് കാലയളവ് (ദിവസങ്ങൾ)"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "കുടുംബ എഡിറ്ററിൽ ന്യൂസ്‌ലെറ്റർ സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ മറയ്ക്കുക."
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "വ്യക്തി എഡിറ്ററിൽ സുഹൃത്ത് തീയതി ഫീൽഡ് മറയ്ക്കുക."
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "കുടുംബ എഡിറ്ററിൽ വിവാഹ തീയതി ഫീൽഡ് മറയ്ക്കുക."
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "ലോക്ക് ചെയ്ത അക്കൗണ്ട് എത്രനാൾ ലോക്ക് ചെയ്തിരിക്കും. ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരാജയപ്പെട്ട സൈൻ ഇന്നുകൾ അതേ കാലയളവിൽ എണ്ണുന്നു."
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് എത്ര അക്ഷരങ്ങൾ വ്യത്യാസപ്പെട്ടിരിക്കണം. 0 ആയാൽ ഇത് ഓഫാകും."
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "അഡ്മിൻ → ടെലിമെട്രിയിൽ, പൂർണ്ണം തിരഞ്ഞെടുക്കാൻ ഉപയോഗിച്ച പേജുകൾ പങ്കിടുക എന്നത് ഓൺ ചെയ്യുക. പൂർണ്ണം പേജ് വ്യൂകളും അയയ്ക്കുന്നു."
+
+#: 
+msgid "Initials Format"
+msgstr "ഇനീഷ്യലുകളുടെ ഫോർമാറ്റ്"
+
+#: 
+msgid "Letter Text %d"
+msgstr "കത്തിന്റെ ടെക്സ്റ്റ് %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "ലോക്ക് ഔട്ട് കാലയളവ് (മിനിറ്റുകൾ)"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "തുടർച്ചയായി ഇത്രയും പരാജയപ്പെട്ട സൈൻ ഇന്നുകൾക്ക് ശേഷം ഒരു അക്കൗണ്ട് ലോക്ക് ചെയ്യുന്നു. ലോക്ക് ഔട്ട് കാലയളവിന് ശേഷമോ അഡ്മിനിസ്‌ട്രേറ്റർ റീസെറ്റ് ചെയ്യുമ്പോഴോ അത് അൺലോക്ക് ചെയ്യും. 0 ആയാൽ ലോക്ക് ഔട്ട് ഓഫാകും."
+
+#: 
+msgid "Manage Member Portal"
+msgstr "അംഗ പോർട്ടൽ നിയന്ത്രിക്കുക"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "അംഗങ്ങൾക്ക് അവരുടെ ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "അംഗങ്ങൾക്ക് ഇതുവരെ സൈൻ ഇൻ ചെയ്യാൻ കഴിയില്ല."
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "മാറ്റേണ്ട കുറഞ്ഞ അക്ഷരങ്ങൾ"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "പാസ്‌വേഡ്ന്റെ കുറഞ്ഞ നീളം"
+
+#: 
+msgid "Name Format"
+msgstr "പേരിന്റെ ഫോർമാറ്റ്"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "കത്തുകളുടെയും ഇമെയിലുകളുടെയും സമാപനത്തിന് താഴെ അച്ചടിക്കുന്ന പേര്"
+
+#: 
+msgid "No Payments Text"
+msgstr "പേമെന്റ് ഇല്ലാത്തപ്പോഴുള്ള ടെക്സ്റ്റ്"
+
+#: 
+msgid "No Pledge Text"
+msgstr "പ്രതിജ്ഞ ഇല്ലാത്തപ്പോഴുള്ള ടെക്സ്റ്റ്"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "ഒരു തലവും ആളുകളെയോ, ദാതാക്കളെയോ, ദാനങ്ങളെയോ, ഉള്ളടക്കത്തെയോ, പള്ളിയുടെ ബന്ധപ്പെടാനുള്ള വിവരങ്ങളെയോ, നിങ്ങളുടെ വെബ് വിലാസത്തെയോ സെർവർ പേരിനെയോ അയയ്ക്കുന്നില്ല."
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ഒരു തലവും നിങ്ങളുടെ വെബ് വിലാസമോ സെർവർ പേരോ അയയ്ക്കുന്നില്ല. ടെസ്റ്റ് ഇൻസ്റ്റാളേഷനുകൾ ഒന്നും അയയ്ക്കുന്നില്ല. ടെലിമെട്രി അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു."
+
+#: 
+msgid "OS family"
+msgstr "OS കുടുംബം"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "പ്രതിജ്ഞ ഓർമ്മപ്പെടുത്തൽ കത്തിന്റെ ആമുഖ ഖണ്ഡിക."
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "ദാന പ്രസ്താവനയിൽ ചോദ്യങ്ങൾ ക്ഷണിക്കുന്ന ഖണ്ഡിക."
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "ദാനം നൽകാത്തവർക്കുള്ള കത്തിൽ ചോദ്യങ്ങൾ ക്ഷണിക്കുന്ന ഖണ്ഡിക."
+
+#: 
+msgid "Passwords"
+msgstr "പാസ്‌വേഡ്കൾ"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "ദാനം നൽകാത്തവർക്കുള്ള കത്തിന്റെ ആദ്യ വരിയിൽ തീയതി പരിധിക്ക് ശേഷം അച്ചടിക്കുന്നു."
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "ദാന പ്രസ്താവനയിൽ ആദ്യം അച്ചടിക്കുന്നു, തുടർന്ന് തീയതി പരിധി."
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "ഒരു കുടുംബത്തിന് പേമെന്റ് രേഖകൾ ഇല്ലാത്തപ്പോൾ അച്ചടിക്കുന്നു."
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "ഒരു കുടുംബത്തിന് പ്രതിജ്ഞ രേഖകൾ ഇല്ലാത്തപ്പോൾ അച്ചടിക്കുന്നു."
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "ഇത്രയും പരാജയപ്പെട്ട സൈൻ ഇന്നുകൾക്കോ പാസ്‌വേഡ് റീസെറ്റുകൾക്കോ ശേഷം ലോക്ക് ഔട്ട് കാലയളവിലേക്ക് ഒരു IP വിലാസത്തിൽ നിന്നുള്ള സൈൻ ഇൻ നിരസിക്കുന്നു. 0 ആയാൽ ഇത് ഓഫാകും, ഉദാഹരണത്തിന് എല്ലാവരും ഒരു പ്രോക്സി വഴി കണക്റ്റ് ചെയ്യുമ്പോൾ."
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "ഇരട്ടഘടക ആധികാരികത ആവശ്യപ്പെടുക"
+
+#: 
+msgid "Security Settings"
+msgstr "സുരക്ഷാ ക്രമീകരണങ്ങൾ"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "പ്രശ്നങ്ങൾ പരിഹരിക്കാനായി പിശക് റിപ്പോർട്ടുകൾ, ഇൻസ്റ്റാൾ/അപ്‌ലോഡ്ഗ്രേഡ് ഇവന്റുകൾ, സിസ്റ്റം വിവരങ്ങൾ എന്നിവ അയയ്ക്കുക. പേജ് വ്യൂകളില്ല, പള്ളി ഡാറ്റയില്ല."
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "സെഷൻ ടൈംഔട്ട് (സെക്കൻഡുകൾ)"
+
+#: 
+msgid "Share which pages are used"
+msgstr "ഉപയോഗിച്ച പേജുകൾ പങ്കിടുക"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "സൈൻ ഇന്നും സുരക്ഷയും"
+
+#: 
+msgid "Signature Storage"
+msgstr "ഒപ്പ് സംഭരണം"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "ഇത്രയും സെക്കൻഡ് നിഷ്‌ക്രിയമായിരുന്നാൽ ഉപയോക്താവിനെ സൈൻ ഔട്ട് ചെയ്യുന്നു. 0 ആയാൽ ഒരിക്കലും സൈൻ ഔട്ട് ചെയ്യില്ല."
+
+#: 
+msgid "System-wide"
+msgstr "സിസ്റ്റം മുഴുവനും"
+
+#: 
+msgid "Text After Dates"
+msgstr "തീയതികൾക്ക് ശേഷമുള്ള ടെക്സ്റ്റ്"
+
+#: 
+msgid "Text Messages"
+msgstr "ടെക്സ്റ്റ് സന്ദേശങ്ങൾ"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "ദാന പ്രസ്താവനയുടെ നന്ദി ഖണ്ഡിക."
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "ദാനം നൽകാത്തവർക്കുള്ള കത്തിന്റെ നന്ദി ഖണ്ഡിക."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "പരിവർത്തനം പരാജയപ്പെട്ടു. ഒന്നും മാറ്റിയിട്ടില്ല."
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "അപ്‌ലോഡ്കൾ ചേർക്കുന്നതിന് മുമ്പ് സേവ് ചെയ്ത ഒരു ലെറ്റർഹെഡ് ഫയലാണ് ഉപയോഗിക്കുന്നത്. പകരം വയ്ക്കാൻ ഒരു ലെറ്റർഹെഡ് അപ്‌ലോഡ് ചെയ്യുക."
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "മുന്നറിയിപ്പിനുള്ള സമയം (മണിക്കൂറുകൾ)"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "കത്തുകളിലും ഇമെയിലുകളിലും പേരിന് മുമ്പ് വരുന്ന വാക്ക്, ഉദാഹരണത്തിന് പ്രിയ."
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "നിങ്ങളുടെ തിരഞ്ഞെടുപ്പ് ഒരിക്കൽ മാത്രം ചോദിക്കുന്നു. എപ്പോൾ വേണമെങ്കിലും അത് മാറ്റാം. വേണ്ട, നന്ദി എന്നതോടെ, ഡിഫോൾട്ട് സജീവമായി തുടരുകയും പേജ് വ്യൂകൾ അയയ്ക്കാതിരിക്കുകയും ചെയ്യുന്നു."
+

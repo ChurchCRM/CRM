@@ -28086,3 +28086,295 @@ msgstr "您的教會資訊已儲存。完成下面的步驟。"
 msgid "Your database (%1$s %2$s) is a security risk: its vendor no longer ships security fixes for that version. ChurchCRM keeps working, but ask your host to move to MariaDB %3$s+ or MySQL %4$s+."
 msgstr "您的資料庫（%1$s %2$s）存在安全風險：其供應商不再為該版本提供安全修正。ChurchCRM 仍可繼續運作，但請讓您的主機商移至 MariaDB %3$s+ 或 MySQL %4$s+。"
 
+#: 
+msgid "A daily check-in while in use, software and database versions, locale, country, installation type and a random installation ID help count active installs."
+msgstr "使用期間的每日簽到、軟體和資料庫版本、語言地區、國家、安裝類型以及隨機安裝 ID，有助於統計活躍安裝數量。"
+
+#: 
+msgid "Accounts & Sign-in"
+msgstr "帳戶與登入"
+
+#: 
+msgid "Also send which pages are used."
+msgstr "同時傳送所使用的頁面。"
+
+#: 
+msgid "Areas"
+msgstr "區域"
+
+#: 
+msgid "Church & System"
+msgstr "教會與系統"
+
+#: 
+msgid "City or town where receipts are issued, printed on official receipts. Leave blank to use the church city."
+msgstr "簽發收據的城市或城鎮，印在正式收據上。留空則使用教會所在城市。"
+
+#: 
+msgid "Closing before the signer's name, for example Sincerely."
+msgstr "位於簽署人姓名之前的結尾語，例如「此致敬禮」。"
+
+#: 
+msgid "Closing printed before the signer on official receipts."
+msgstr "印在正式收據上簽署人之前的結尾語。"
+
+#: 
+msgid "Comma-separated passwords nobody may use."
+msgstr "以逗號分隔的任何人不得使用的密碼。"
+
+#: 
+msgid "Confirmation Letter"
+msgstr "確認信"
+
+#: 
+msgid "Create a family for this person? Their address and home phone move to the new family."
+msgstr "為此人建立一個家庭？其地址和家庭電話將移至新家庭。"
+
+#: 
+msgid "Days users have to set up two-factor authentication after it becomes required. 0 enforces it at once. Shortening an active grace period can lock users out."
+msgstr "二階段驗證成為必要後，使用者有幾天時間進行設定。0 表示立即強制執行。縮短正在生效的寬限期可能會使使用者被鎖定。"
+
+#: 
+msgid "Deposits & Payments"
+msgstr "存款與付款"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "禁用密碼"
+
+#: 
+msgid "Disclaimer %d"
+msgstr "免責聲明 %d"
+
+#: 
+msgid "Email Users When Their Account Is Deleted"
+msgstr "當使用者帳戶被刪除時向其傳送電子郵件"
+
+#: 
+msgid "Every settings page in one place, and the settings that apply to the whole system"
+msgstr "所有設定頁面集中在一處，以及適用於整個系統的設定"
+
+#: 
+msgid "Failed Sign-ins Before Lockout"
+msgstr "鎖定前失敗的登入次數"
+
+#: 
+msgid "Failed Sign-ins per IP Address"
+msgstr "每個 IP 位址的失敗登入次數"
+
+#: 
+msgid "Family roles treated as children in the directory."
+msgstr "在目錄中被視為兒童的家庭角色。"
+
+#: 
+msgid "Family roles treated as head of household in the directory and member sign-in."
+msgstr "在目錄和成員登入中被視為戶主的家庭角色。"
+
+#: 
+msgid "Family roles treated as spouse in the directory and member sign-in."
+msgstr "在目錄和成員登入中被視為配偶的家庭角色。"
+
+#: 
+msgid "Finance Settings"
+msgstr "財務設定"
+
+#: 
+msgid "Grace Period (days)"
+msgstr "寬限期（天）"
+
+#: 
+msgid "Hide newsletter subscriptions in the Family Editor."
+msgstr "在族編輯器中隱藏通訊訂閱。"
+
+#: 
+msgid "Hide the Friend Date field in the Person Editor."
+msgstr "在人編輯器中隱藏朋友日期欄位。"
+
+#: 
+msgid "Hide the Wedding Date field in the Family Editor."
+msgstr "在族編輯器中隱藏結婚日期欄位。"
+
+#: 
+msgid "How long a locked account stays locked. Failed sign-ins from one IP address are counted over the same period."
+msgstr "鎖定帳戶保持鎖定的時長。來自同一 IP 位址的失敗登入在同一時段內計數。"
+
+#: 
+msgid "How many characters a new password must differ from the old one. 0 turns this off."
+msgstr "新密碼與舊密碼必須相差的字元數。0 表示關閉此功能。"
+
+#: 
+msgid "In Admin → Telemetry, turn on Share which pages are used to select Full. Full also sends page views."
+msgstr "在 管理 → 遙測 中，開啟「分享所使用的頁面」以選擇「完整」。「完整」還會傳送頁面瀏覽。"
+
+#: 
+msgid "Initials Format"
+msgstr "首字母格式"
+
+#: 
+msgid "Letter Text %d"
+msgstr "信函文本 %d"
+
+#: 
+msgid "Lockout Period (minutes)"
+msgstr "鎖定時長（分鐘）"
+
+#: 
+msgid "Locks an account after this many failed sign-ins in a row. It unlocks after the lockout period, or when an administrator resets it. 0 turns lockout off."
+msgstr "連續失敗登入達到此次數後鎖定帳戶。帳戶會在鎖定時長結束後解鎖，或由管理員重設後解鎖。0 表示關閉鎖定。"
+
+#: 
+msgid "Manage Member Portal"
+msgstr "管理會眾門戶"
+
+#: 
+msgid "Members can sign in with their email."
+msgstr "成員可以使用其電子郵件登入。"
+
+#: 
+msgid "Members cannot sign in yet."
+msgstr "成員尚不能登入。"
+
+#: 
+msgid "Minimum Characters Changed"
+msgstr "最少更改字元數"
+
+#: 
+msgid "Minimum Password Length"
+msgstr "密碼最小長度"
+
+#: 
+msgid "Name Format"
+msgstr "姓名格式"
+
+#: 
+msgid "Name printed under the closing of letters and emails"
+msgstr "印在信函和電子郵件結尾語下方的姓名"
+
+#: 
+msgid "No Payments Text"
+msgstr "無付款文本"
+
+#: 
+msgid "No Pledge Text"
+msgstr "無承諾文本"
+
+#: 
+msgid "No tier sends people, donors, giving, content, church contact details, your web address or server name."
+msgstr "任何等級都不會傳送人員、捐贈者、奉獻、內容、教會聯絡方式、您的網址或伺服器名稱。"
+
+#: 
+msgid "No tier sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "任何等級都不會傳送您的網址或伺服器名稱。測試安裝不會傳送任何內容。遙測資料會傳送到位於美國的 PostHog。"
+
+#: 
+msgid "OS family"
+msgstr "作業系統系列"
+
+#: 
+msgid "Opening paragraph of the pledge reminder letter."
+msgstr "承諾提醒信的開頭段落。"
+
+#: 
+msgid "Paragraph inviting questions in the giving statement."
+msgstr "奉獻報表中邀請提問的段落。"
+
+#: 
+msgid "Paragraph inviting questions in the zero-givers letter."
+msgstr "零奉獻者信函中邀請提問的段落。"
+
+#: 
+msgid "Passwords"
+msgstr "密碼"
+
+#: 
+msgid "Printed after the date range in the opening line of the zero-givers letter."
+msgstr "印在零奉獻者信函開頭一行中日期範圍之後。"
+
+#: 
+msgid "Printed first on the giving statement, followed by the date range."
+msgstr "首先印在奉獻報表上，後面是日期範圍。"
+
+#: 
+msgid "Printed when a family has no payments on record."
+msgstr "當一個家庭沒有付款記錄時列印。"
+
+#: 
+msgid "Printed when a family has no pledge on record."
+msgstr "當一個家庭沒有承諾記錄時列印。"
+
+#: 
+msgid "Refuses sign-in from one IP address for the lockout period after this many failed sign-ins or password resets. 0 turns it off, for example when everyone connects through one proxy."
+msgstr "在同一 IP 位址出現此次數的失敗登入或密碼重設後，在鎖定時長內拒絕該 IP 的登入。0 表示關閉此功能，例如當所有人都透過同一代理連線時。"
+
+#: 
+msgid "Require Two-Factor Authentication"
+msgstr "要求二階段驗證"
+
+#: 
+msgid "Security Settings"
+msgstr "安全設定"
+
+#: 
+msgid "Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data."
+msgstr "傳送錯誤報告、安裝/升級事件和系統資訊，以便修復問題。不傳送頁面瀏覽，不傳送教會資料。"
+
+#: 
+msgid "Session Timeout (seconds)"
+msgstr "工作階段逾時（秒）"
+
+#: 
+msgid "Share which pages are used"
+msgstr "分享所使用的頁面"
+
+#: 
+msgid "Sign-in & Security"
+msgstr "登入與安全"
+
+#: 
+msgid "Signature Storage"
+msgstr "簽名儲存"
+
+#: 
+msgid "Signs out a user after this many seconds without activity. 0 never signs out."
+msgstr "使用者在無操作達到此秒數後自動登出。0 表示從不登出。"
+
+#: 
+msgid "System-wide"
+msgstr "全系統"
+
+#: 
+msgid "Text After Dates"
+msgstr "日期後文本"
+
+#: 
+msgid "Text Messages"
+msgstr "簡訊"
+
+#: 
+msgid "Thank-you paragraph of the giving statement."
+msgstr "奉獻報表的感謝段落。"
+
+#: 
+msgid "Thank-you paragraph of the zero-givers letter."
+msgstr "零奉獻者信函的感謝段落。"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "轉換失敗。未做任何更改。"
+
+#: 
+msgid "Using a letterhead file saved before uploads were added. Upload a letterhead to replace it."
+msgstr "正在使用在上傳功能加入之前儲存的信頭檔案。上傳一個信頭以取代它。"
+
+#: 
+msgid "Warning After (Hours)"
+msgstr "警告時限（小時）"
+
+#: 
+msgid "Word before the name in letters and emails, for example Dear."
+msgstr "位於信函和電子郵件中姓名之前的稱呼詞，例如「親愛的」。"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent."
+msgstr "您的選擇只會詢問一次。您可以隨時更改。選擇「不，謝謝」時，「默認」保持啟用，頁面瀏覽不會被傳送。"
+
