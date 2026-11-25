@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.8.8](./changelog/7.8.8.md) | November 2026 | A calmer, clearer start — for churches trying ChurchCRM and the ones already running it |
 | [7.8.7](./changelog/7.8.7.md) | November 2026 | Database support for the hosting churches actually have |
 | [7.8.6](./changelog/7.8.6.md) | November 2026 | An installer that explains itself, Canadian giving receipts, redesigned record pages, and a proper front door for sign-in |
 | [7.8.5](./changelog/7.8.5.md) | November 2026 | Staff accounts and sign-in, protection against accidental deletion, Missing Pledges report, finance and group workflow improvements |
