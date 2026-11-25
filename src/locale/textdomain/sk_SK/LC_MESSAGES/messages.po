@@ -27458,14 +27458,6 @@ msgid "Choose a different way to sign in"
 msgstr "Vyberte iný spôsob prihlásenia"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM sa nemôže pripojiť k databáze na adrese localhost. Skúste namiesto toho 127.0.0.1 alebo sa opýtajte svojho webového hostiteľa na názov hostiteľa databázy."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM sa nemôže pripojiť k databázovému serveru na tejto adrese a porte. Skontrolujte názov hostiteľa a port. Pri zdieľanom hostingu hostiteľ často nie je localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM nemôže prečítať svoju kontrolu vydania. Požiadajte webového hostiteľa, aby priečinok ChurchCRM sprístupnil na čítanie, alebo pokračujte."
 
@@ -27480,10 +27472,6 @@ msgstr "ChurchCRM nemohol skontrolovať svoje súbory. Požiadajte webového hos
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM nemohol skontrolovať softvér servera"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM sa s týmito údajmi nemohol pripojiť k databáze."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27516,14 +27504,6 @@ msgstr "Pripájanie k vašej databáze…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Hlavný prehľad sa nepodarilo uložiť."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Najprv vytvorte databázu MySQL alebo MariaDB v ovládacom paneli hostingu (v cPanel: %s) a potom sem skopírujte jej údaje. ChurchCRM podporuje MySQL 8.4+ a MariaDB 10.11+ (vydania LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Hostiteľ databázy"
 
 #: 
 msgid "Database name"
@@ -27590,10 +27570,6 @@ msgid "Files to review"
 msgstr "Súbory na kontrolu"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Majte pripravené údaje o databáze od svojho webového hostiteľa. Trvá to asi dve minúty."
-
-#: 
 msgid "Hide"
 msgstr "Skryť"
 
@@ -27652,10 +27628,6 @@ msgstr "V tomto časovom rozsahu nie sú žiadne poznámky."
 #: 
 msgid "No notes yet."
 msgstr "Zatiaľ žiadne poznámky."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Často %1$s. Niektorí hostitelia uvádzajú adresu ako %2$s."
 
 #: 
 msgid "Open total"
@@ -27750,32 +27722,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Prehľad, ktorý sa vám otvorí po prihlásení"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Databázový server prijal prihlásenie, ale databáza s týmto názvom neexistuje."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Databázový server odmietol toto používateľské meno alebo heslo."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Názov, ktorý ste databáze dali. Zdieľaní hostitelia často pridávajú na začiatok názov vášho účtu, napríklad %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Heslo tohto používateľa databázy. ChurchCRM tieto údaje skontroluje, keď kliknete na Inštalovať."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Súbor kontroly vydania na tomto serveri nezodpovedá ChurchCRM. Nahrajte vydanie znova alebo pokračujte a požiadajte webového hostiteľa o pomoc."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Testovacia správa ide na e-mailovú adresu zboru a tu sa zobrazí ladiaci protokol SMTP."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Používateľ, ktorého ste pridali do tejto databázy. Nie vaše prihlásenie k hostingu."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27808,10 +27760,6 @@ msgstr "Toto je váš zborový účet. Všetko, čo môžete urobiť sami, nájd
 #: 
 msgid "Total deposited"
 msgstr "Celkom vložené"
-
-#: 
-msgid "Usually 3306."
-msgstr "Zvyčajne 3306."
 
 #: 
 msgid "Web address"

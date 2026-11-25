@@ -27513,14 +27513,6 @@ msgid "Choose a different way to sign in"
 msgstr "選擇其他登入方式"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM 無法連接到 localhost 上的資料庫。請改用 127.0.0.1，或向您的網路主機商詢問資料庫主機名稱。"
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM 無法連接到該位址和連接埠上的資料庫伺服器。請檢查主機名稱和連接埠。在共用主機上，主機通常不是 localhost。"
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM 無法讀取其發行檢查檔案。請讓您的網路主機商使 ChurchCRM 資料夾可讀，或繼續。"
 
@@ -27535,10 +27527,6 @@ msgstr "ChurchCRM 無法檢查其檔案。請讓您的網路主機商查看伺�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM 無法檢查伺服器軟體"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM 無法使用這些設定連接到資料庫。"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27571,14 +27559,6 @@ msgstr "正在連接您的資料庫…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "無法儲存您的主儀錶板。"
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "請先在您的主機控制面板中建立一個 MySQL 或 MariaDB 資料庫（在 cPanel 中：%s），然後將詳細資訊複製到此處。ChurchCRM 支援 MySQL 8.4+ 和 MariaDB 10.11+（LTS 版本）。"
-
-#: 
-msgid "Database host"
-msgstr "資料庫主機"
 
 #: 
 msgid "Database name"
@@ -27645,10 +27625,6 @@ msgid "Files to review"
 msgstr "需要檢查的檔案"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "請準備好網路主機商提供的資料庫詳細資訊。大約需要兩分鐘。"
-
-#: 
 msgid "Hide"
 msgstr "隱藏"
 
@@ -27707,10 +27683,6 @@ msgstr "此時間範圍內沒有注釋。"
 #: 
 msgid "No notes yet."
 msgstr "尚無注釋。"
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "通常是 %1$s。某些主機商會提供類似 %2$s 的位址。"
 
 #: 
 msgid "Open total"
@@ -27805,32 +27777,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "您登入後開啟的儀錶板"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "資料庫伺服器接受了登入，但沒有使用該名稱的資料庫。"
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "資料庫伺服器拒絕了該使用者名稱或密碼。"
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "您為資料庫指定的名稱。共用主機通常會在前面加上您的帳戶名稱，例如 %s。"
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "該資料庫使用者的密碼。當您點擊「安裝」時，ChurchCRM 會檢查這些詳細資訊。"
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "此伺服器上的發行檢查檔案與 ChurchCRM 不符。請重新上傳發行版，或繼續並向您的網路主機商尋求協助。"
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "測試郵件將傳送到教會電子郵件地址，並在此處顯示 SMTP 除錯日誌。"
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "您新增到該資料庫的使用者。不是您的主機登入帳戶。"
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27863,10 +27815,6 @@ msgstr "這是您的教會帳戶。您可以為自己做的一切都在這裡。
 #: 
 msgid "Total deposited"
 msgstr "存款總額"
-
-#: 
-msgid "Usually 3306."
-msgstr "通常是 3306。"
 
 #: 
 msgid "Web address"

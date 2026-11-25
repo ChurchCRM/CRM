@@ -27446,14 +27446,6 @@ msgid "Choose a different way to sign in"
 msgstr "Válasszon másik bejelentkezési módot"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "A ChurchCRM nem éri el az adatbázist a localhost címen. Próbálja helyette a 127.0.0.1 címet, vagy kérdezze meg webtárhely-szolgáltatóját az adatbázis gépnevéről."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "A ChurchCRM nem éri el az adatbázis-kiszolgálót azon a címen és porton. Ellenőrizze a gépnevet és a portot. Megosztott tárhelyen a gép gyakran nem localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "A ChurchCRM nem tudja beolvasni a kiadás-ellenőrzést. Kérje meg webtárhely-szolgáltatóját, hogy tegye olvashatóvá a ChurchCRM mappát, vagy folytassa."
 
@@ -27468,10 +27460,6 @@ msgstr "A ChurchCRM nem tudta ellenőrizni a fájljait. Kérje meg webtárhely-s
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "A ChurchCRM nem tudta ellenőrizni a kiszolgáló szoftverét"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "A ChurchCRM nem tudott csatlakozni az adatbázishoz ezekkel a beállításokkal."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27504,14 +27492,6 @@ msgstr "Csatlakozás az adatbázisához…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Nem sikerült menteni a fő vezérlőpultját."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Először hozzon létre egy MySQL vagy MariaDB adatbázist a tárhely vezérlőpultján (cPanel esetén: %s), majd másolja ide az adatait. A ChurchCRM a MySQL 8.4+ és a MariaDB 10.11+ (az LTS kiadásokat) támogatja."
-
-#: 
-msgid "Database host"
-msgstr "Adatbázis gépneve"
 
 #: 
 msgid "Database name"
@@ -27578,10 +27558,6 @@ msgid "Files to review"
 msgstr "Átnézendő fájlok"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Készítse elő a webtárhely-szolgáltatójától kapott adatbázisadatokat. Körülbelül két percet vesz igénybe."
-
-#: 
 msgid "Hide"
 msgstr "Elrejtés"
 
@@ -27640,10 +27616,6 @@ msgstr "Nincsenek jegyzetek ebben az időszakban."
 #: 
 msgid "No notes yet."
 msgstr "Még nincsenek jegyzetek."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Gyakran %1$s. Egyes tárhelyek olyan címet adnak, mint %2$s."
 
 #: 
 msgid "Open total"
@@ -27738,32 +27710,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "A bejelentkezés után megnyíló vezérlőpult"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Az adatbázis-kiszolgáló elfogadta a bejelentkezést, de nincs ilyen nevű adatbázis."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Az adatbázis-kiszolgáló elutasította azt a felhasználónevet vagy jelszót."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Az adatbázisnak adott név. A megosztott tárhelyek gyakran elé teszik a fiókja nevét, például %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Annak az adatbázis-felhasználónak a jelszava. Amikor a Telepítés gombra kattint, a ChurchCRM ellenőrzi ezeket az adatokat."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "A kiadás-ellenőrző fájl ezen a kiszolgálón nem egyezik a ChurchCRM-mel. Töltse fel újra a kiadást, vagy folytassa, és kérjen segítséget webtárhely-szolgáltatójától."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "A tesztüzenet a gyülekezet e-mail címére megy, és itt mutatja az SMTP hibakeresési naplót."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Az a felhasználó, akit hozzáadott ahhoz az adatbázishoz. Nem a tárhely-bejelentkezése."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27796,10 +27748,6 @@ msgstr "Ez az Ön gyülekezeti fiókja. Minden, amit saját magáért tehet, itt
 #: 
 msgid "Total deposited"
 msgstr "Összes befizetett"
-
-#: 
-msgid "Usually 3306."
-msgstr "Általában 3306."
 
 #: 
 msgid "Web address"

@@ -27427,14 +27427,6 @@ msgid "Choose a different way to sign in"
 msgstr "ሌላ የመግቢያ መንገድ ይምረጡ"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM በlocalhost ላይ ወዳለ ዳታቤዝ መድረስ አልቻለም። በምትኩ 127.0.0.1ን ይሞክሩ፣ ወይም የዳታቤዝ አስተናጋጅ ስም ለማግኘት የድረ ገጽ አስተናጋጅዎን ይጠይቁ።"
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM በዚያ አድራሻ እና ወደብ ወዳለው የዳታቤዝ ሰርቨር መድረስ አልቻለም። የአስተናጋጁን ስም እና ወደቡን ይፈትሹ። በተጋራ አስተናጋጅነት ላይ አስተናጋጁ አብዛኛውን ጊዜ localhost አይደለም።"
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM የሥሪት ፍተሻውን ማንበብ አልቻለም። የድረ ገጽ አስተናጋጅዎ የChurchCRM አቃፊ እንዲነበብ እንዲያደርግ ይጠይቁ፣ ወይም ይቀጥሉ።"
 
@@ -27449,10 +27441,6 @@ msgstr "ChurchCRM ፋይሎቹን መፈተሽ አልቻለም። የድረ ገ�
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM የሰርቨሩን ሶፍትዌር መፈተሽ አልቻለም"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM በእነዚህ ቅንብሮች ወደ ዳታቤዙ መገናኘት አልቻለም።"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27485,14 +27473,6 @@ msgstr "ወደ ዳታቤዝዎ በመገናኘት ላይ…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "ዋና ዳሸቦርድዎን ማስቀመጥ አልተቻለም።"
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "በመጀመሪያ በሆስቲንግ መቆጣጠሪያ ፓነልዎ ውስጥ የMySQL ወይም የMariaDB ዳታቤዝ ይፍጠሩ (በcPanel ውስጥ: %s)፣ ከዚያ ዝርዝሮቹን እዚህ ይቅዱ። ChurchCRM MySQL 8.4+ እና MariaDB 10.11+ (የLTS ሥሪቶችን) ይደግፋል።"
-
-#: 
-msgid "Database host"
-msgstr "የዳታቤዝ አስተናጋጅ"
 
 #: 
 msgid "Database name"
@@ -27559,10 +27539,6 @@ msgid "Files to review"
 msgstr "የሚገመገሙ ፋይሎች"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "ከድረ ገጽ አስተናጋጅዎ የዳታቤዝ ዝርዝሮችን ዝግጁ ያድርጉ። ወደ ሁለት ደቂቃ ይወስዳል።"
-
-#: 
 msgid "Hide"
 msgstr "ደብቅ"
 
@@ -27621,10 +27597,6 @@ msgstr "በዚህ የጊዜ ክልል ውስጥ ምንም ማስታወሻዎች 
 #: 
 msgid "No notes yet."
 msgstr "ገና ምንም ማስታወሻዎች የሉም።"
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "አብዛኛውን ጊዜ %1$s። አንዳንድ አስተናጋጆች እንደ %2$s ያለ አድራሻ ይሰጣሉ።"
 
 #: 
 msgid "Open total"
@@ -27719,32 +27691,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "ከገቡ በኋላ የሚከፍቱት ዳሸቦርድ"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "የዳታቤዝ ሰርቨሩ መግቢያውን ተቀብሏል፣ ነገር ግን በዚያ ስም ዳታቤዝ የለም።"
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "የዳታቤዝ ሰርቨሩ ያንን የተጠቃሚ ስም ወይም የይለፍ ቃል አልተቀበለም።"
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "ለዳታቤዙ የሰጡት ስም። የተጋሩ አስተናጋጆች አብዛኛውን ጊዜ የመለያ ስምዎን ከፊት ይጨምራሉ፣ እንደ %s።"
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "ለዚያ የዳታቤዝ ተጠቃሚ የይለፍ ቃል። Installን ሲጫኑ ChurchCRM እነዚህን ዝርዝሮች ይፈትሻል።"
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "በዚህ ሰርቨር ላይ ያለው የሥሪት ፍተሻ ፋይል ከChurchCRM ጋር አይዛመድም። ሥሪቱን እንደገና ይላኩ፣ ወይም ይቀጥሉ እና ለእርዳታ የድረ ገጽ አስተናጋጅዎን ይጠይቁ።"
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "የሙከራ መልእክቱ ወደ ቤተ ክርስቲያኑ ኢሜይል አድራሻ ይሄዳል እና የSMTP ስህተት ማስተካከያ ምዝገባን እዚህ ያሳያል።"
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "ወደዚያ ዳታቤዝ ያከሉት ተጠቃሚ። የሆስቲንግ መግቢያዎ አይደለም።"
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27777,10 +27729,6 @@ msgstr "ይህ የቤተ ክርስቲያን መለያዎ ነው። ለራስዎ 
 #: 
 msgid "Total deposited"
 msgstr "ጠቅላላ የተቀመጠ"
-
-#: 
-msgid "Usually 3306."
-msgstr "አብዛኛውን ጊዜ 3306።"
 
 #: 
 msgid "Web address"

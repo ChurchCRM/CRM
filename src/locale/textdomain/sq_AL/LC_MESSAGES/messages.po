@@ -27414,14 +27414,6 @@ msgid "Choose a different way to sign in"
 msgstr "Zgjidhni një mënyrë tjetër për të hyrë"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM nuk mund të arrijë një bazë të dhënash në localhost. Provoni 127.0.0.1 në vend të saj, ose pyesni hostin tuaj të uebit për emrin e hostit të bazës së të dhënave."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM nuk mund të arrijë serverin e bazës së të dhënave në atë adresë dhe port. Kontrolloni emrin e hostit dhe portin. Në hostimin e përbashkët, hosti shpesh nuk është localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM nuk mund të lexojë kontrollin e tij të versionit. Kërkojini hostit tuaj të uebit ta bëjë dosjen e ChurchCRM të lexueshme, ose vazhdoni."
 
@@ -27436,10 +27428,6 @@ msgstr "ChurchCRM nuk mundi të kontrollojë skedarët e tij. Kërkojini hostit 
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM nuk mundi të kontrollojë softuerin e serverit"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM nuk mundi të lidhet me bazën e të dhënave me këto cilësime."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27472,14 +27460,6 @@ msgstr "Po lidhet me bazën tuaj të të dhënave…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Nuk mundi të ruajë panelin tuaj kryesor të kontrollit."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Krijoni së pari një bazë të dhënash MySQL ose MariaDB në panelin e kontrollit të hostimit tuaj (në cPanel: %s), pastaj kopjoni detajet e saj këtu. ChurchCRM mbështet MySQL 8.4+ dhe MariaDB 10.11+ (versionet LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Hosti i bazës së të dhënave"
 
 #: 
 msgid "Database name"
@@ -27546,10 +27526,6 @@ msgid "Files to review"
 msgstr "Skedarë për t'u shqyrtuar"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Mbani gati detajet e bazës së të dhënave nga hosti juaj i uebit. Duhen rreth dy minuta."
-
-#: 
 msgid "Hide"
 msgstr "Fshih"
 
@@ -27608,10 +27584,6 @@ msgstr "Nuk ka shënime në këtë periudhë."
 #: 
 msgid "No notes yet."
 msgstr "Ende nuk ka shënime."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Shpesh %1$s. Disa hostë japin një adresë si %2$s."
 
 #: 
 msgid "Open total"
@@ -27706,32 +27678,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Paneli që hapni pasi të hyni"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Serveri i bazës së të dhënave e pranoi hyrjen, por nuk ka bazë të dhënash me atë emër."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Serveri i bazës së të dhënave e refuzoi atë emër përdoruesi ose fjalëkalim."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Emri që i dhatë bazës së të dhënave. Hostët e përbashkët shpesh shtojnë emrin e llogarisë suaj përpara, si %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Fjalëkalimi për atë përdorues të bazës së të dhënave. ChurchCRM i kontrollon këto detaje kur klikoni Instalo."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Skedari i kontrollit të versionit në këtë server nuk përputhet me ChurchCRM. Ngarkoni versionin përsëri, ose vazhdoni dhe kërkoni ndihmë nga hosti juaj i uebit."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Mesazhi i testimit shkon në adresën e postës elektronike të kishës dhe tregon këtu regjistrin e korrigjimit SMTP."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Përdoruesi që shtuat në atë bazë të dhënash. Jo hyrja juaj e hostimit."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27764,10 +27716,6 @@ msgstr "Kjo është llogaria juaj e kishës. Gjithçka që mund të bëni për v
 #: 
 msgid "Total deposited"
 msgstr "Totali i depozituar"
-
-#: 
-msgid "Usually 3306."
-msgstr "Zakonisht 3306."
 
 #: 
 msgid "Web address"

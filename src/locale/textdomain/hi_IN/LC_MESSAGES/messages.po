@@ -27393,14 +27393,6 @@ msgid "Choose a different way to sign in"
 msgstr "साइन इन करने का कोई दूसरा तरीका चुनें"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM localhost पर डेटाबेस तक नहीं पहुँच सकता। इसके बजाय 127.0.0.1 आज़माएँ, या अपने वेब होस्ट से डेटाबेस होस्ट नाम पूछें।"
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM उस पते और पोर्ट पर डेटाबेस सर्वर तक नहीं पहुँच सकता। होस्ट नाम और पोर्ट जाँचें। साझा होस्टिंग पर होस्ट अक्सर localhost नहीं होता।"
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM अपनी रिलीज़ जाँच नहीं पढ़ सकता। अपने वेब होस्ट से ChurchCRM फ़ोल्डर को पठनीय बनाने को कहें, या जारी रखें।"
 
@@ -27415,10 +27407,6 @@ msgstr "ChurchCRM अपनी फ़ाइलें नहीं जाँच �
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM सर्वर सॉफ़्टवेयर नहीं जाँच सका"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM इन सेटिंग्स के साथ डेटाबेस से कनेक्ट नहीं हो सका।"
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27451,14 +27439,6 @@ msgstr "आपके डेटाबेस से कनेक्ट हो र�
 #: 
 msgid "Could not save your main dashboard."
 msgstr "आपका मुख्य डैशबोर्ड सहेजा नहीं जा सका।"
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "पहले अपने होस्टिंग कंट्रोल पैनल में MySQL या MariaDB डेटाबेस बनाएँ (cPanel में: %s), फिर इसके विवरण यहाँ कॉपी करें। ChurchCRM MySQL 8.4+ और MariaDB 10.11+ (LTS रिलीज़) का समर्थन करता है।"
-
-#: 
-msgid "Database host"
-msgstr "डेटाबेस होस्ट"
 
 #: 
 msgid "Database name"
@@ -27525,10 +27505,6 @@ msgid "Files to review"
 msgstr "समीक्षा के लिए फ़ाइलें"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "अपने वेब होस्ट से डेटाबेस विवरण तैयार रखें। इसमें लगभग दो मिनट लगते हैं।"
-
-#: 
 msgid "Hide"
 msgstr "छिपाएँ"
 
@@ -27587,10 +27563,6 @@ msgstr "इस समय सीमा में कोई नोट नहीं
 #: 
 msgid "No notes yet."
 msgstr "अभी कोई नोट नहीं है।"
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "अक्सर %1$s। कुछ होस्ट %2$s जैसा पता देते हैं।"
 
 #: 
 msgid "Open total"
@@ -27685,32 +27657,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "साइन इन करने के बाद आप जो डैशबोर्ड खोलते हैं"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "डेटाबेस सर्वर ने लॉगिन स्वीकार किया, लेकिन उस नाम का कोई डेटाबेस नहीं है।"
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "डेटाबेस सर्वर ने वह उपयोगकर्ता नाम या पासवर्ड अस्वीकार कर दिया।"
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "वह नाम जो आपने डेटाबेस को दिया। साझा होस्ट अक्सर आपके खाता नाम को आगे जोड़ते हैं, जैसे %s।"
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "उस डेटाबेस उपयोगकर्ता के लिए पासवर्ड। जब आप इंस्टॉल पर क्लिक करते हैं तो ChurchCRM इन विवरणों की जाँच करता है।"
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "इस सर्वर पर रिलीज़ जाँच फ़ाइल ChurchCRM से मेल नहीं खाती। रिलीज़ फिर से अपलोड करें, या जारी रखें और अपने वेब होस्ट से मदद माँगें।"
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "परीक्षण संदेश चर्च के ईमेल पते पर जाता है और SMTP डीबग लॉग यहाँ दिखाता है।"
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "वह उपयोगकर्ता जिसे आपने उस डेटाबेस में जोड़ा। आपका होस्टिंग लॉगिन नहीं।"
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27743,10 +27695,6 @@ msgstr "यह आपका चर्च खाता है। जो कुछ
 #: 
 msgid "Total deposited"
 msgstr "कुल जमा किया गया"
-
-#: 
-msgid "Usually 3306."
-msgstr "आमतौर पर 3306।"
 
 #: 
 msgid "Web address"

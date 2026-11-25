@@ -27514,14 +27514,6 @@ msgid "Choose a different way to sign in"
 msgstr "Alegeți alt mod de autentificare"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM nu poate accesa o bază de date la localhost. Încercați în schimb 127.0.0.1 sau cereți furnizorului de găzduire numele gazdei bazei de date."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM nu poate accesa serverul de baze de date la acea adresă și acel port. Verificați numele gazdei și portul. Pe găzduirea partajată, gazda adesea nu este localhost."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM nu poate citi verificarea versiunii. Cereți furnizorului de găzduire să facă dosarul ChurchCRM lizibil sau continuați."
 
@@ -27536,10 +27528,6 @@ msgstr "ChurchCRM nu a putut verifica fișierele sale. Cereți furnizorului de g
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM nu a putut verifica software-ul serverului"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM nu s-a putut conecta la baza de date cu aceste setări."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27572,14 +27560,6 @@ msgstr "Se conectează la baza de date…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Nu s-a putut salva panoul de bord principal."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Creați mai întâi o bază de date MySQL sau MariaDB în panoul de control al găzduirii (în cPanel: %s), apoi copiați detaliile ei aici. ChurchCRM acceptă MySQL 8.4+ și MariaDB 10.11+ (versiunile LTS)."
-
-#: 
-msgid "Database host"
-msgstr "Gazda bazei de date"
 
 #: 
 msgid "Database name"
@@ -27646,10 +27626,6 @@ msgid "Files to review"
 msgstr "Fișiere de verificat"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Aveți la îndemână detaliile bazei de date de la furnizorul de găzduire. Durează aproximativ două minute."
-
-#: 
 msgid "Hide"
 msgstr "Ascundeți"
 
@@ -27708,10 +27684,6 @@ msgstr "Nicio notă în acest interval de timp."
 #: 
 msgid "No notes yet."
 msgstr "Nicio notă încă."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Adesea %1$s. Unele gazde oferă o adresă precum %2$s."
 
 #: 
 msgid "Open total"
@@ -27806,32 +27778,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Panoul de bord care se deschide după autentificare"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Serverul de baze de date a acceptat autentificarea, dar nu există o bază de date cu acel nume."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Serverul de baze de date a respins acel nume de utilizator sau acea parolă."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Numele pe care l-ați dat bazei de date. Gazdele partajate adaugă adesea numele contului în față, de exemplu %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "Parola acelui utilizator al bazei de date. ChurchCRM verifică aceste detalii când faceți clic pe Instalați."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Fișierul de verificare a versiunii de pe acest server nu corespunde ChurchCRM. Încărcați din nou versiunea sau continuați și cereți ajutorul furnizorului de găzduire."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Mesajul de test este trimis la adresa de e-mail a bisericii și afișează aici jurnalul de depanare SMTP."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "Utilizatorul pe care l-ați adăugat la acea bază de date. Nu autentificarea de găzduire."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27864,10 +27816,6 @@ msgstr "Acesta este contul bisericii dumneavoastră. Tot ce puteți face pentru 
 #: 
 msgid "Total deposited"
 msgstr "Total depus"
-
-#: 
-msgid "Usually 3306."
-msgstr "De obicei 3306."
 
 #: 
 msgid "Web address"

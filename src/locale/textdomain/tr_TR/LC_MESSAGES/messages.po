@@ -27422,14 +27422,6 @@ msgid "Choose a different way to sign in"
 msgstr "Giriş yapmak için farklı bir yol seçin"
 
 #: 
-msgid "ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name."
-msgstr "ChurchCRM, localhost'ta bir veritabanına ulaşamıyor. Bunun yerine 127.0.0.1'i deneyin veya web barındırıcınızdan veritabanı sunucu adını isteyin."
-
-#: 
-msgid "ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost."
-msgstr "ChurchCRM, o adres ve bağlantı noktasındaki veritabanı sunucusuna ulaşamıyor. Sunucu adını ve bağlantı noktasını kontrol edin. Paylaşımlı barındırmada sunucu genellikle localhost olmaz."
-
-#: 
 msgid "ChurchCRM cannot read its release check. Ask your web host to make the ChurchCRM folder readable, or continue."
 msgstr "ChurchCRM, sürüm denetimini okuyamıyor. Web barındırıcınızdan ChurchCRM klasörünü okunabilir yapmasını isteyin veya devam edin."
 
@@ -27444,10 +27436,6 @@ msgstr "ChurchCRM dosyalarını denetleyemedi. Web barındırıcınızdan sunucu
 #: 
 msgid "ChurchCRM could not check the server software"
 msgstr "ChurchCRM sunucu yazılımını denetleyemedi"
-
-#: 
-msgid "ChurchCRM could not connect to the database with these settings."
-msgstr "ChurchCRM bu ayarlarla veritabanına bağlanamadı."
 
 #: 
 msgid "ChurchCRM could not finish the install. Try again, or ask your web host to check the server error log."
@@ -27480,14 +27468,6 @@ msgstr "Veritabanınıza bağlanılıyor…"
 #: 
 msgid "Could not save your main dashboard."
 msgstr "Ana gösterge paneliniz kaydedilemedi."
-
-#: 
-msgid "Create a MySQL or MariaDB database in your hosting control panel first (in cPanel: %s), then copy its details here. ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)."
-msgstr "Önce barındırma kontrol panelinizde bir MySQL veya MariaDB veritabanı oluşturun (cPanel'de: %s), sonra ayrıntılarını buraya kopyalayın. ChurchCRM, MySQL 8.4+ ve MariaDB 10.11+ (LTS sürümleri) destekler."
-
-#: 
-msgid "Database host"
-msgstr "Veritabanı sunucusu"
 
 #: 
 msgid "Database name"
@@ -27554,10 +27534,6 @@ msgid "Files to review"
 msgstr "İncelenecek dosyalar"
 
 #: 
-msgid "Have the database details from your web host ready. It takes about two minutes."
-msgstr "Web barındırıcınızdan aldığınız veritabanı ayrıntılarını hazır bulundurun. Yaklaşık iki dakika sürer."
-
-#: 
 msgid "Hide"
 msgstr "Gizle"
 
@@ -27616,10 +27592,6 @@ msgstr "Bu zaman aralığında not yok."
 #: 
 msgid "No notes yet."
 msgstr "Henüz not yok."
-
-#: 
-msgid "Often %1$s. Some hosts give an address like %2$s."
-msgstr "Genellikle %1$s. Bazı sunucular %2$s gibi bir adres verir."
 
 #: 
 msgid "Open total"
@@ -27714,32 +27686,12 @@ msgid "The dashboard you open on after signing in"
 msgstr "Giriş yaptıktan sonra açtığınız gösterge paneli"
 
 #: 
-msgid "The database server accepted the login, but there is no database with that name."
-msgstr "Veritabanı sunucusu girişi kabul etti, ancak o adda bir veritabanı yok."
-
-#: 
-msgid "The database server rejected that username or password."
-msgstr "Veritabanı sunucusu o kullanıcı adını veya şifreyi reddetti."
-
-#: 
-msgid "The name you gave the database. Shared hosts often add your account name in front, like %s."
-msgstr "Veritabanına verdiğiniz ad. Paylaşımlı sunucular genellikle önüne hesap adınızı ekler, örneğin %s."
-
-#: 
-msgid "The password for that database user. ChurchCRM checks these details when you click Install."
-msgstr "O veritabanı kullanıcısının şifresi. Yükle düğmesine tıkladığınızda ChurchCRM bu ayrıntıları kontrol eder."
-
-#: 
 msgid "The release check file on this server does not match ChurchCRM. Upload the release again, or continue and ask your web host for help."
 msgstr "Bu sunucudaki sürüm denetim dosyası ChurchCRM ile eşleşmiyor. Sürümü yeniden yükleyin veya devam edip web barındırıcınızdan yardım isteyin."
 
 #: 
 msgid "The test message goes to the church email address and shows the SMTP debug log here."
 msgstr "Test mesajı kilise e-posta adresine gider ve SMTP hata ayıklama günlüğünü burada gösterir."
-
-#: 
-msgid "The user you added to that database. Not your hosting login."
-msgstr "O veritabanına eklediğiniz kullanıcı. Barındırma girişiniz değildir."
 
 #: 
 msgid "These files are not part of the ChurchCRM release. Your web host can remove them."
@@ -27772,10 +27724,6 @@ msgstr "Bu, kilise hesabınızdır. Kendiniz için yapabileceğiniz her şey bur
 #: 
 msgid "Total deposited"
 msgstr "Toplam yatırılan"
-
-#: 
-msgid "Usually 3306."
-msgstr "Genellikle 3306."
 
 #: 
 msgid "Web address"
