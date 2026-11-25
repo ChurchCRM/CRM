@@ -112,7 +112,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             // PHP reaches "localhost" through a socket file; when that file is elsewhere, the TCP address still works.
             $message = $connection['message'];
             if ($connection['reason'] === 'database_host_unreachable' && strtolower($dbServerName) === 'localhost') {
-                $message = gettext('ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name.');
+                $message = gettext('ChurchCRM cannot reach a database at localhost. Try 127.0.0.1 instead, or ask your web host for the database host name. In Docker, the host is the database service name in your compose file — db in the official compose file.');
             }
 
             return SlimUtils::renderJSON($response, [
@@ -237,7 +237,7 @@ function classify_database_connection_failure(\Throwable $e): array
 function database_connection_message(string $reason): string
 {
     return match ($reason) {
-        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost.'),
+        'database_host_unreachable' => gettext('ChurchCRM cannot reach the database server at that address and port. Check the host name and the port. On shared hosting the host is often not localhost. In Docker, the host is the database service name in your compose file — db in the official compose file.'),
         'database_login_rejected' => gettext('The database server rejected that username or password.'),
         'database_not_found' => gettext('The database server accepted the login, but there is no database with that name.'),
         default => gettext('ChurchCRM could not connect to the database with these settings.'),

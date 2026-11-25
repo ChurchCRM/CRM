@@ -102,6 +102,11 @@ describe('01 - Setup Wizard', () => {
 
             fillDatabase({ host: '127.0.0.1', port: '1' });
             clickInstallExpecting('database_host_unreachable', 'often not localhost');
+            cy.get('#db-connection-result').should('contain.text', 'In Docker, the host is the database service name');
+
+            fillDatabase({ host: 'localhost', port: '1' });
+            clickInstallExpecting('database_host_unreachable', 'cannot reach a database at localhost');
+            cy.get('#db-connection-result').should('contain.text', 'In Docker, the host is the database service name');
 
             fillDatabase({ password: 'not-the-password' });
             cy.get('#db-connection-result').should('not.be.visible');
