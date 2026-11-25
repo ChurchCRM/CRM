@@ -28326,3 +28326,79 @@ msgstr "סה\"כ, למעלה"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM לא הצליח להתחבר למסד הנתונים. בדקו כל שדה מול ספק האחסון שלכם, או בקשו עזרה ב-Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM לא הצליח למצוא את שרת מסד הנתונים. בדקו את כתובת שרת מסד הנתונים ואת היציאה מול ספק האחסון שלכם."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM שומר את המידע של הכנסייה שלכם במסד נתונים. צרו תחילה מסד נתונים ריק, ואז הזינו את פרטיו למטה."
+
+#: 
+msgid "Database server address"
+msgstr "כתובת שרת מסד הנתונים"
+
+#: 
+msgid "How do I create a database?"
+msgstr "איך יוצרים מסד נתונים?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "איך לתקן בעיות חיבור למסד הנתונים"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "השאירו 3306, אלא אם קיבלתם מספר אחר."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "נדרש MySQL 8.4 או חדש יותר, או MariaDB 10.11 או חדש יותר."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s מכסה את בדיקות התצורה."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "שם המשתמש או הסיסמה של מסד הנתונים שגויים. בדקו את שניהם מול ספק האחסון שלכם; הם אינם פרטי ההתחברות שלכם לאחסון."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "שם מסד הנתונים הריק שיצרתם. העתיקו אותו בדיוק כפי שהוא מופיע; חלק מהספקים מוסיפים את שם החשבון שלכם בתחילתו."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "הסיסמה של משתמש מסד הנתונים הזה. ChurchCRM בודק את החיבור לפני שהוא שומר משהו."
+
+#: 
+msgid "The server address from your web host."
+msgstr "כתובת השרת מספק האחסון שלכם."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "שם המשתמש והסיסמה עבדו, אך אין מסד נתונים בשם הזה. בדקו את שם מסד הנתונים, או צרו תחילה את מסד הנתונים."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "שם המשתמש למסד הנתונים. זה אינו השם שבו אתם מתחברים לספק האחסון שלכם."
+
+#: 
+msgid "Undo"
+msgstr "בטל"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "הביטול נכשל. נסו שוב."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "אתם זקוקים לפרטי מסד הנתונים מספק האחסון שלכם, או ממי שהגדיר את השרת שלכם."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "מדריך לפתרון תקלות בהגדרת מסד הנתונים"
+

@@ -28412,3 +28412,79 @@ msgstr "Totalt, överst"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM kunde inte ansluta till databasen. Kontrollera varje fält med din webbvärd, eller be om hjälp på Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM kunde inte hitta databasservern. Kontrollera databasserveradress och port med din webbvärd."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM lagrar din kyrkas information i en databas. Skapa först en tom databas och ange sedan dess uppgifter nedan."
+
+#: 
+msgid "Database server address"
+msgstr "Databasserveradress"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Hur skapar jag en databas?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Så här åtgärdar du problem med databasanslutningen"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Behåll 3306 om du inte har fått ett annat nummer."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Kräver MySQL 8.4 eller senare, eller MariaDB 10.11 eller senare."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s omfattar konfigurationskontrollerna."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Användarnamnet eller lösenordet för databasen är fel. Kontrollera båda med din webbvärd; de är inte din inloggning till webbhotellet."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Namnet på den tomma databas du skapade. Kopiera det exakt som det visas; vissa värdar lägger till ditt kontonamn i början."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Lösenordet för den databasanvändaren. ChurchCRM testar anslutningen innan något sparas."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Serveradressen från din webbvärd."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Användarnamnet och lösenordet fungerade, men det finns ingen databas med det namnet. Kontrollera databasnamnet, eller skapa databasen först."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Användarnamnet för databasen. Det är inte det namn du använder för att logga in hos din webbvärd."
+
+#: 
+msgid "Undo"
+msgstr "Ångra"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Ångringen misslyckades. Försök igen."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Du behöver databasuppgifterna från din webbvärd, eller från den som satte upp din server."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "felsökningsguide för databasinstallationen"
+

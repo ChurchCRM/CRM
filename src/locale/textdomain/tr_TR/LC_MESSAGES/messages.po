@@ -28327,3 +28327,79 @@ msgstr "Toplam, üst"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM veritabanına bağlanamadı. Her alanı web barındırıcınızla kontrol edin veya Discord'da yardım isteyin."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM veritabanı sunucusunu bulamadı. Veritabanı sunucusu adresini ve bağlantı noktasını web barındırıcınızla kontrol edin."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM, kilisenizin bilgilerini bir veritabanında saklar. Önce boş bir veritabanı oluşturun, ardından bilgilerini aşağıya girin."
+
+#: 
+msgid "Database server address"
+msgstr "Veritabanı sunucusu adresi"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Nasıl veritabanı oluşturabilirim?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Veritabanı bağlantı sorunları nasıl giderilir"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Size farklı bir numara verilmedikçe 3306 olarak bırakın."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 veya daha yenisi ya da MariaDB 10.11 veya daha yenisi gerekir."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s, yapılandırma denetimlerini kapsar."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Veritabanı kullanıcı adı veya şifresi yanlış. İkisini de web barındırıcınızla kontrol edin; bunlar barındırma hizmetinizde oturum açmak için kullandıklarınız değildir."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Oluşturduğunuz boş veritabanının adı. Aynen gösterildiği gibi kopyalayın; bazı barındırıcılar başına hesap adınızı ekler."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "O veritabanı kullanıcısının şifresi. ChurchCRM, herhangi bir şeyi kaydetmeden önce bağlantıyı test eder."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Web barındırıcınızdan aldığınız sunucu adresi."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Kullanıcı adı ve şifre çalıştı, ancak bu adda bir veritabanı yok. Veritabanı adını kontrol edin veya önce veritabanını oluşturun."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Veritabanı için kullanıcı adı. Bu, web barındırıcınızda oturum açmak için kullandığınız ad değildir."
+
+#: 
+msgid "Undo"
+msgstr "Geri al"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Geri alma başarısız oldu. Lütfen tekrar deneyin."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Veritabanı bilgilerini web barındırıcınızdan ya da sunucunuzu kuran kişiden almanız gerekir."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "veritabanı kurulumu sorun giderme kılavuzu"
+

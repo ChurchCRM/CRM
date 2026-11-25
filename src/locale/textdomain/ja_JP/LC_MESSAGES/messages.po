@@ -28260,3 +28260,79 @@ msgstr "合計、上"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRMはデータベースに接続できませんでした。各項目をウェブホストに確認するか、Discordで助けを求めてください。"
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRMはデータベースサーバーを見つけられませんでした。データベースサーバーのアドレスとポートをウェブホストに確認してください。"
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRMは教会の情報をデータベースに保存します。まず空のデータベースを作成し、以下にその詳細を入力してください。"
+
+#: 
+msgid "Database server address"
+msgstr "データベースサーバーのアドレス"
+
+#: 
+msgid "How do I create a database?"
+msgstr "データベースはどのように作成しますか？"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "データベース接続の問題を解決する方法"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "別の番号を指定された場合を除き、3306のままにしてください。"
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4以降、またはMariaDB 10.11以降が必要です。"
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s には設定チェックの内容が含まれています。"
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "データベースのユーザー名またはパスワードが間違っています。両方をウェブホストに確認してください。これらはホスティングのサインイン情報ではありません。"
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "作成した空のデータベースの名前。表示されているとおりに正確にコピーしてください。ホストによっては、先頭にアカウント名が追加されます。"
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "そのデータベースユーザーのパスワード。ChurchCRMは何も保存する前に接続をテストします。"
+
+#: 
+msgid "The server address from your web host."
+msgstr "ウェブホストから提供されたサーバーアドレス。"
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "ユーザー名とパスワードは正しいのですが、その名前のデータベースがありません。データベース名を確認するか、先にデータベースを作成してください。"
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "データベースのユーザー名。これはウェブホストにサインインするときに使う名前ではありません。"
+
+#: 
+msgid "Undo"
+msgstr "元に戻す"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "元に戻せませんでした。もう一度お試しください。"
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "データベースの詳細は、ウェブホスト、またはサーバーを設定した方から入手する必要があります。"
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "データベース設定のトラブルシューティングガイド"
+

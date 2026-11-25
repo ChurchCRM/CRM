@@ -28297,3 +28297,79 @@ msgstr "Totaal, boven"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM kon geen verbinding maken met de database. Controleer elk veld bij uw webhost, of vraag om hulp op Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM kon de databaseserver niet vinden. Controleer het adres en de poort van de databaseserver bij uw webhost."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM bewaart de gegevens van uw kerk in een database. Maak eerst een lege database aan en voer hieronder de gegevens ervan in."
+
+#: 
+msgid "Database server address"
+msgstr "Adres van de databaseserver"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Hoe maak ik een database aan?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Problemen met de databaseverbinding oplossen"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Laat 3306 staan, tenzij u een ander nummer hebt gekregen."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Vereist MySQL 8.4 of nieuwer, of MariaDB 10.11 of nieuwer."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "De %s behandelt de configuratiecontroles."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "De gebruikersnaam of het wachtwoord voor de database is onjuist. Controleer beide bij uw webhost; dit zijn niet uw inloggegevens voor uw hosting."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "De naam van de lege database die u hebt aangemaakt. Kopieer deze precies zoals weergegeven; sommige hosts voegen uw accountnaam aan het begin toe."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Het wachtwoord voor die databasegebruiker. ChurchCRM test de verbinding voordat er iets wordt opgeslagen."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Het serveradres van uw webhost."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "De gebruikersnaam en het wachtwoord werkten, maar er is geen database met die naam. Controleer de databasenaam, of maak eerst de database aan."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "De gebruikersnaam voor de database. Dit is niet de naam waarmee u zich aanmeldt bij uw webhost."
+
+#: 
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Ongedaan maken is mislukt. Probeer het opnieuw."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "U hebt de databasegegevens nodig van uw webhost, of van degene die uw server heeft ingesteld."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "probleemoplossingsgids voor de database-installatie"
+

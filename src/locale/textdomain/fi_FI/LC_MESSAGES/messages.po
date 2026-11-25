@@ -28301,3 +28301,79 @@ msgstr "Yhteensä, ylä"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM ei voinut muodostaa yhteyttä tietokantaan. Tarkista jokainen kenttä verkkopalveluntarjoajaltasi tai pyydä apua Discordissa."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM ei löytänyt tietokantapalvelinta. Tarkista tietokantapalvelimen osoite ja portti verkkopalveluntarjoajaltasi."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM tallentaa kirkkosi tiedot tietokantaan. Luo ensin tyhjä tietokanta ja syötä sen tiedot alla."
+
+#: 
+msgid "Database server address"
+msgstr "Tietokantapalvelimen osoite"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Miten luon tietokannan?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Tietokantayhteysongelmien korjaaminen"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Jätä 3306, ellei sinulle ole annettu toista numeroa."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Tarvitaan MySQL 8.4 tai uudempi, tai MariaDB 10.11 tai uudempi."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s kattaa asetustarkistukset."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Tietokannan käyttäjätunnus tai salasana on väärä. Tarkista molemmat verkkopalveluntarjoajaltasi; ne eivät ole webhotellisi kirjautumistunnuksia."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Luomasi tyhjän tietokannan nimi. Kopioi se täsmälleen sellaisena kuin se näkyy; jotkin webhotellit lisäävät tilinimesi sen alkuun."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Kyseisen tietokantakäyttäjän salasana. ChurchCRM testaa yhteyden ennen kuin mitään tallennetaan."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Palvelimen osoite verkkopalveluntarjoajaltasi."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Käyttäjätunnus ja salasana toimivat, mutta sillä nimellä ei ole tietokantaa. Tarkista tietokannan nimi tai luo tietokanta ensin."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Tietokannan käyttäjätunnus. Tämä ei ole nimi, jolla kirjaudut verkkopalveluntarjoajallesi."
+
+#: 
+msgid "Undo"
+msgstr "Kumoa"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Kumoaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Tarvitset tietokantatiedot verkkopalveluntarjoajaltasi tai henkilöltä, joka määritti palvelimesi."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "tietokannan asennuksen vianmääritysopas"
+
