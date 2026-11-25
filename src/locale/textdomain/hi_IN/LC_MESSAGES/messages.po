@@ -28298,3 +28298,79 @@ msgstr "कुल, ऊपर"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM डेटाबेस से कनेक्ट नहीं हो सका। अपने वेब होस्ट के साथ हर फ़ील्ड जाँचें, या Discord पर मदद माँगें।"
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM को डेटाबेस सर्वर नहीं मिला। अपने वेब होस्ट के साथ डेटाबेस सर्वर का पता और पोर्ट जाँचें।"
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM आपके चर्च की जानकारी एक डेटाबेस में संग्रहीत करता है। पहले एक खाली डेटाबेस बनाएँ, फिर नीचे उसका विवरण दर्ज करें।"
+
+#: 
+msgid "Database server address"
+msgstr "डेटाबेस सर्वर का पता"
+
+#: 
+msgid "How do I create a database?"
+msgstr "मैं डेटाबेस कैसे बनाऊँ?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "डेटाबेस कनेक्शन की समस्याएँ कैसे ठीक करें"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "3306 ही रहने दें, जब तक आपको कोई अलग नंबर न दिया गया हो।"
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 या नया, या MariaDB 10.11 या नया चाहिए।"
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s कॉन्फ़िगरेशन जाँचों को कवर करता है।"
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "डेटाबेस उपयोगकर्ता नाम या पासवर्ड गलत है। दोनों को अपने वेब होस्ट के साथ जाँचें; ये आपकी होस्टिंग साइन-इन जानकारी नहीं हैं।"
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "आपके द्वारा बनाए गए खाली डेटाबेस का नाम। इसे बिल्कुल वैसा ही कॉपी करें जैसा दिखाया गया है; कुछ होस्ट शुरुआत में आपके खाते का नाम जोड़ देते हैं।"
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "उस डेटाबेस उपयोगकर्ता का पासवर्ड। ChurchCRM कुछ भी सहेजने से पहले कनेक्शन का परीक्षण करता है।"
+
+#: 
+msgid "The server address from your web host."
+msgstr "आपके वेब होस्ट से मिला सर्वर पता।"
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "उपयोगकर्ता नाम और पासवर्ड काम कर गए, लेकिन उस नाम का कोई डेटाबेस नहीं है। डेटाबेस का नाम जाँचें, या पहले डेटाबेस बनाएँ।"
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "डेटाबेस के लिए उपयोगकर्ता नाम। यह वह नाम नहीं है जिसका उपयोग आप अपने वेब होस्ट में साइन इन करने के लिए करते हैं।"
+
+#: 
+msgid "Undo"
+msgstr "पूर्ववत करें"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "पूर्ववत करना विफल रहा। कृपया फिर से कोशिश करें।"
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "आपको डेटाबेस का विवरण अपने वेब होस्ट से, या जिसने भी आपका सर्वर सेट किया है, उससे चाहिए।"
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "डेटाबेस सेटअप समस्या निवारण गाइड"
+

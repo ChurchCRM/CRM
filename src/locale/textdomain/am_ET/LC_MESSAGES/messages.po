@@ -28332,3 +28332,79 @@ msgstr "አጠቃላይ, ላይ"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM ከዳታቤዙ ጋር መገናኘት አልቻለም። እያንዳንዱን መስክ ከድር አስተናጋጅዎ ጋር ያረጋግጡ፣ ወይም በDiscord ላይ እርዳታ ይጠይቁ።"
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM የዳታቤዝ ሰርቨሩን ማግኘት አልቻለም። የዳታቤዝ ሰርቨሩን አድራሻ እና ወደብ ከድር አስተናጋጅዎ ጋር ያረጋግጡ።"
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM የቤተ ክርስቲያንዎን መረጃ በዳታቤዝ ውስጥ ያስቀምጣል። መጀመሪያ ባዶ ዳታቤዝ ይፍጠሩ፣ ከዚያ ዝርዝሮቹን ከታች ያስገቡ።"
+
+#: 
+msgid "Database server address"
+msgstr "የዳታቤዝ ሰርቨር አድራሻ"
+
+#: 
+msgid "How do I create a database?"
+msgstr "ዳታቤዝ እንዴት እፈጥራለሁ?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "የዳታቤዝ ግንኙነት ችግሮችን እንዴት ማስተካከል እንደሚቻል"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "ሌላ ቁጥር ካልተሰጥዎት በስተቀር 3306 እንደሆነ ይተዉት።"
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 ወይም ከዚያ በላይ የሆነ፣ ወይም MariaDB 10.11 ወይም ከዚያ በላይ የሆነ ይፈልጋል።"
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s የውቅር ፍተሻዎችን ይሸፍናል።"
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "የዳታቤዙ የተጠቃሚ ስም ወይም የይለፍ ቃል ስህተት ነው። ሁለቱንም ከድር አስተናጋጅዎ ጋር ያረጋግጡ፤ እነሱ የማስተናገጃ መግቢያዎ አይደሉም።"
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "የፈጠሩት የባዶ ዳታቤዝ ስም። እንደሚታየው በትክክል ይቅዱት፤ አንዳንድ አስተናጋጆች የመለያዎን ስም ከፊት ያክላሉ።"
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "የዚያ የዳታቤዝ ተጠቃሚ የይለፍ ቃል። ChurchCRM ምንም ነገር ከማስቀመጡ በፊት ግንኙነቱን ይሞክራል።"
+
+#: 
+msgid "The server address from your web host."
+msgstr "ከድር አስተናጋጅዎ የተሰጠው የሰርቨር አድራሻ።"
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "የተጠቃሚ ስሙ እና የይለፍ ቃሉ ሰርተዋል፣ ነገር ግን በዚያ ስም ዳታቤዝ የለም። የዳታቤዙን ስም ያረጋግጡ፣ ወይም መጀመሪያ ዳታቤዙን ይፍጠሩ።"
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "የዳታቤዙ የተጠቃሚ ስም። ይህ ወደ ድር አስተናጋጅዎ ለመግባት የሚጠቀሙበት ስም አይደለም።"
+
+#: 
+msgid "Undo"
+msgstr "መልስ"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "መልሱ አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "የዳታቤዝ ዝርዝሮችን ከድር አስተናጋጅዎ ወይም ሰርቨርዎን ካዘጋጀው ሰው ማግኘት ያስፈልግዎታል።"
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "የዳታቤዝ ማዘጋጃ ችግር መፍቻ መመሪያ"
+

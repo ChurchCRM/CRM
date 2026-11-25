@@ -28351,3 +28351,79 @@ msgstr "Összesen, fent"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "A ChurchCRM nem tudott kapcsolódni az adatbázishoz. Ellenőrizzen minden mezőt a webtárhely-szolgáltatójánál, vagy kérjen segítséget a Discordon."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "A ChurchCRM nem találta az adatbázis-kiszolgálót. Ellenőrizze az adatbázis-kiszolgáló címét és portját a webtárhely-szolgáltatójánál."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "A ChurchCRM az Ön gyülekezetének adatait egy adatbázisban tárolja. Először hozzon létre egy üres adatbázist, majd adja meg az adatait alább."
+
+#: 
+msgid "Database server address"
+msgstr "Adatbázis-kiszolgáló címe"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Hogyan hozhatok létre adatbázist?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Az adatbázis-kapcsolati problémák megoldása"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Hagyja 3306-on, hacsak nem kapott másik számot."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "MySQL 8.4 vagy újabb, illetve MariaDB 10.11 vagy újabb szükséges."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "A %s ismerteti a konfigurációs ellenőrzéseket."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Az adatbázis-felhasználónév vagy a jelszó hibás. Ellenőrizze mindkettőt a webtárhely-szolgáltatójánál; ezek nem a tárhelyéhez tartozó bejelentkezési adatai."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "A létrehozott üres adatbázis neve. Pontosan úgy másolja be, ahogy megjelenik; egyes szolgáltatók a fióknevét elé teszik."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Annak az adatbázis-felhasználónak a jelszava. A ChurchCRM mentés előtt teszteli a kapcsolatot."
+
+#: 
+msgid "The server address from your web host."
+msgstr "A webtárhely-szolgáltatójától kapott kiszolgálócím."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "A felhasználónév és a jelszó működött, de nincs ilyen nevű adatbázis. Ellenőrizze az adatbázis nevét, vagy hozza létre előbb az adatbázist."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Az adatbázishoz tartozó felhasználónév. Ez nem az a név, amellyel a webtárhelyére jelentkezik be."
+
+#: 
+msgid "Undo"
+msgstr "Visszavonás"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "A visszavonás sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Az adatbázis adataira a webtárhely-szolgáltatójától, vagy attól van szüksége, aki a kiszolgálóját beállította."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "adatbázis-beállítási hibaelhárítási útmutató"
+

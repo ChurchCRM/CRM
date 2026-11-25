@@ -28319,3 +28319,79 @@ msgstr "Totali, lart"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM nuk mundi të lidhej me bazën e të dhënave. Kontrolloni çdo fushë me hostin tuaj të uebit, ose kërkoni ndihmë në Discord."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM nuk mundi të gjente serverin e bazës së të dhënave. Kontrolloni adresën dhe portin e serverit të bazës së të dhënave me hostin tuaj të uebit."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM ruan informacionin e kishës suaj në një bazë të dhënash. Krijoni fillimisht një bazë të dhënash bosh, pastaj shkruani të dhënat e saj më poshtë."
+
+#: 
+msgid "Database server address"
+msgstr "Adresa e serverit të bazës së të dhënave"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Si mund të krijoj një bazë të dhënash?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Si të rregulloni problemet e lidhjes me bazën e të dhënave"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Lëreni 3306, përveç nëse ju është dhënë një numër tjetër."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Kërkohet MySQL 8.4 ose më i ri, ose MariaDB 10.11 ose më i ri."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s mbulon kontrollet e konfigurimit."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Emri i përdoruesit ose fjalëkalimi i bazës së të dhënave është i gabuar. Kontrolloni të dyja me hostin tuaj të uebit; ato nuk janë hyrja juaj në hostim."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Emri i bazës së të dhënave bosh që krijuat. Kopjojeni saktësisht siç shfaqet; disa hostë shtojnë emrin e llogarisë suaj në fillim."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Fjalëkalimi për atë përdorues të bazës së të dhënave. ChurchCRM teston lidhjen përpara se të ruajë çdo gjë."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Adresa e serverit nga hosti juaj i uebit."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Emri i përdoruesit dhe fjalëkalimi funksionuan, por nuk ka asnjë bazë të dhënash me atë emër. Kontrolloni emrin e bazës së të dhënave, ose krijoni bazën e të dhënave fillimisht."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Emri i përdoruesit për bazën e të dhënave. Ky nuk është emri që përdorni për të hyrë te hosti juaj i uebit."
+
+#: 
+msgid "Undo"
+msgstr "Zhbëj"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Zhbërja dështoi. Ju lutemi provoni sërish."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Ju nevojiten të dhënat e bazës së të dhënave nga hosti juaj i uebit, ose nga ai që konfiguroi serverin tuaj."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "udhëzuesi për zgjidhjen e problemeve të konfigurimit të bazës së të dhënave"
+

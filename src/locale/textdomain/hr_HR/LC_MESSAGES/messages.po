@@ -28328,3 +28328,79 @@ msgstr "Ukupno, gore"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM se nije mogao povezati s bazom podataka. Provjerite svako polje kod svog davatelja hostinga ili zatražite pomoć na Discordu."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM nije mogao pronaći poslužitelj baze podataka. Provjerite adresu i port poslužitelja baze podataka kod svog davatelja hostinga."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM pohranjuje podatke o vašoj župi u bazu podataka. Najprije stvorite praznu bazu podataka, a zatim u nastavku unesite njezine podatke."
+
+#: 
+msgid "Database server address"
+msgstr "Adresa poslužitelja baze podataka"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Kako mogu stvoriti bazu podataka?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Kako riješiti probleme s povezivanjem s bazom podataka"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Ostavite 3306, osim ako vam nije dodijeljen drugi broj."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Potreban je MySQL 8.4 ili noviji, ili MariaDB 10.11 ili noviji."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s obuhvaća provjere konfiguracije."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Korisničko ime ili lozinka za bazu podataka nisu točni. Provjerite oboje kod svog davatelja hostinga; to nisu vaši podaci za prijavu na hosting."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Naziv prazne baze podataka koju ste stvorili. Kopirajte ga točno kako je prikazan; neki davatelji hostinga na početak dodaju naziv vašeg računa."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Lozinka za tog korisnika baze podataka. ChurchCRM provjerava vezu prije spremanja bilo čega."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Adresa poslužitelja od vašeg davatelja hostinga."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Korisničko ime i lozinka su radili, ali ne postoji baza podataka s tim nazivom. Provjerite naziv baze podataka ili najprije stvorite bazu podataka."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Korisničko ime za bazu podataka. To nije ime koje koristite za prijavu kod svog davatelja hostinga."
+
+#: 
+msgid "Undo"
+msgstr "Poništi"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Poništavanje nije uspjelo. Molimo pokušajte ponovno."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Potrebni su vam podaci o bazi podataka od vašeg davatelja hostinga ili od osobe koja je postavila vaš poslužitelj."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "vodič za rješavanje problema s postavljanjem baze podataka"
+

@@ -28415,3 +28415,79 @@ msgstr "Suma, z góry"
 msgid "mm"
 msgstr "mm"
 
+#: 
+msgid "ChurchCRM could not connect to the database. Check every field with your web host, or ask for help on Discord."
+msgstr "ChurchCRM nie mógł połączyć się z bazą danych. Sprawdź każde pole u swojego dostawcy hostingu lub poproś o pomoc na Discordzie."
+
+#: 
+msgid "ChurchCRM could not find the database server. Check the database server address and port with your web host."
+msgstr "ChurchCRM nie mógł znaleźć serwera bazy danych. Sprawdź adres i port serwera bazy danych u swojego dostawcy hostingu."
+
+#: 
+msgid "ChurchCRM stores your church's information in a database. Create an empty database first, then enter its details below."
+msgstr "ChurchCRM przechowuje informacje o Twoim kościele w bazie danych. Najpierw utwórz pustą bazę danych, a następnie wpisz poniżej jej dane."
+
+#: 
+msgid "Database server address"
+msgstr "Adres serwera bazy danych"
+
+#: 
+msgid "How do I create a database?"
+msgstr "Jak utworzyć bazę danych?"
+
+#: 
+msgid "How to fix database connection problems"
+msgstr "Jak rozwiązać problemy z połączeniem z bazą danych"
+
+#: 
+msgid "Leave 3306 unless you were given a different number."
+msgstr "Zostaw 3306, chyba że otrzymałeś inny numer."
+
+#: 
+msgid "Needs MySQL 8.4 or newer, or MariaDB 10.11 or newer."
+msgstr "Wymaga MySQL 8.4 lub nowszej wersji albo MariaDB 10.11 lub nowszej wersji."
+
+#: 
+msgid "The %s covers the configuration checks."
+msgstr "%s obejmuje kontrole konfiguracji."
+
+#: 
+msgid "The database user name or password is wrong. Check both with your web host; they are not your hosting sign-in."
+msgstr "Nazwa użytkownika bazy danych lub hasło są nieprawidłowe. Sprawdź oba u swojego dostawcy hostingu; nie są to dane logowania do hostingu."
+
+#: 
+msgid "The name of the empty database you created. Copy it exactly as shown; some hosts add your account name to the front."
+msgstr "Nazwa pustej bazy danych, którą utworzyłeś. Skopiuj ją dokładnie tak, jak jest wyświetlana; niektórzy dostawcy hostingu dodają na początku nazwę Twojego konta."
+
+#: 
+msgid "The password for that database user. ChurchCRM tests the connection before saving anything."
+msgstr "Hasło tego użytkownika bazy danych. ChurchCRM sprawdza połączenie, zanim cokolwiek zapisze."
+
+#: 
+msgid "The server address from your web host."
+msgstr "Adres serwera podany przez Twojego dostawcę hostingu."
+
+#: 
+msgid "The user name and password worked, but there is no database with that name. Check the database name, or create the database first."
+msgstr "Nazwa użytkownika i hasło zadziałały, ale nie istnieje baza danych o tej nazwie. Sprawdź nazwę bazy danych lub najpierw utwórz bazę danych."
+
+#: 
+msgid "The user name for the database. This is not the name you use to sign in to your web host."
+msgstr "Nazwa użytkownika bazy danych. Nie jest to nazwa, której używasz do logowania się u dostawcy hostingu."
+
+#: 
+msgid "Undo"
+msgstr "Cofnij"
+
+#: 
+msgid "Undo failed. Please try again."
+msgstr "Cofnięcie nie powiodło się. Spróbuj ponownie."
+
+#: 
+msgid "You need the database details from your web host, or from whoever set up your server."
+msgstr "Potrzebujesz danych bazy danych od swojego dostawcy hostingu lub od osoby, która skonfigurowała Twój serwer."
+
+#: 
+msgid "database setup troubleshooting guide"
+msgstr "przewodnik rozwiązywania problemów z konfiguracją bazy danych"
+
