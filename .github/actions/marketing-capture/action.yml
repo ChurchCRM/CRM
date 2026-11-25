@@ -43,13 +43,12 @@ runs:
       shell: bash
       run: npm run marketing:install
 
+    # A plain run step, not docker/login-action: composite actions cannot
+    # use the secrets context, and a failed login must not fail the capture
+    # (the pull below then simply misses and compose builds locally).
     - name: Log in to GHCR (for the prebuilt CI test image)
-      continue-on-error: true
-      uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+      run: echo "${{ github.token }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin || true
 
     # The capture script starts the stack via docker:ci:new-system:start,
     # which no longer forces a build: with the prebuilt image tagged
