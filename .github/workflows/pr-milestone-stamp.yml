@@ -75,26 +75,64 @@ jobs:
             const version = (pr.milestone && pr.milestone.title) || packageVersion;
             console.log(`Target milestone title: ${version}`);
 
-            const openMilestones = await github.paginate(github.rest.issues.listMilestones, {
-              owner, repo, state: 'open', per_page: 100,
-            });
-            let milestone = openMilestones.find((m) => m.title === version);
-            if (!milestone) {
+            async function findMilestone() {
+              const openMilestones = await github.paginate(github.rest.issues.listMilestones, {
+                owner, repo, state: 'open', per_page: 100,
+              });
+              const found = openMilestones.find((m) => m.title === version);
+              if (found) {
+                return found;
+              }
               const closedMilestones = await github.paginate(github.rest.issues.listMilestones, {
                 owner, repo, state: 'closed', per_page: 100,
               });
-              milestone = closedMilestones.find((m) => m.title === version);
+              return closedMilestones.find((m) => m.title === version);
             }
+
+            let milestone = await findMilestone();
             if (!milestone) {
               console.log(`Creating open milestone ${version}`);
-              milestone = (await github.rest.issues.createMilestone({
-                owner,
-                repo,
-                title: version,
-                description: `Development toward ${version}`,
-              })).data;
+              try {
+                milestone = (await github.rest.issues.createMilestone({
+                  owner,
+                  repo,
+                  title: version,
+                  description: `Development toward ${version}`,
+                })).data;
+              } catch (e) {
+                // The concurrency group is per-PR, so two PRs merged at the
+                // same time can race to create the same milestone and the
+                // loser's create fails with a 422. Look once more before
+                // giving up.
+                console.log(`createMilestone failed (${e.message}) — re-checking`);
+                milestone = await findMilestone();
+                if (!milestone) {
+                  core.setFailed(`Could not find or create milestone ${version}: ${e.message}`);
+                  return;
+                }
+              }
             }
             console.log(`Using milestone #${milestone.number} (${milestone.title})`);
+
+            // Stamp the PR itself FIRST, before any linked-issue work, so
+            // nothing in discovery or issue processing can prevent it. This
+            // is also the only stamp whose failure fails the run.
+            if (pr.milestone) {
+              console.log(`PR already on ${pr.milestone.title}`);
+            } else {
+              try {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: prNumber,
+                  milestone: milestone.number,
+                });
+                console.log(`Stamped PR #${prNumber} → ${version}`);
+              } catch (e) {
+                core.setFailed(`Could not stamp PR #${prNumber} with milestone ${version}: ${e.message}`);
+                return;
+              }
+            }
 
             // Issues this PR finishes. Mentions and "refs" do not qualify.
             const linked = new Set();
@@ -130,9 +168,9 @@ jobs:
             console.log(`Attached issues: ${[...linked].join(', ') || '(none)'}`);
 
             // A failed milestone write must not stop the issue from closing, or the
-            // next linked issue from being handled.
-            const failures = [];
-
+            // next linked issue from being handled. Linked-issue failures are
+            // warnings only — they never fail the run; only the PR stamp above
+            // can do that.
             async function stamp(issueNumber, kind, { forceIfClosed = false } = {}) {
               const issue = (await github.rest.issues.get({
                 owner, repo, issue_number: issueNumber,
@@ -158,7 +196,7 @@ jobs:
                   });
                   console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
                 } catch (e) {
-                  failures.push(`milestone on ${kind} #${issueNumber}: ${e.message}`);
+                  core.warning(`milestone on ${kind} #${issueNumber}: ${e.message}`);
                 }
               }
               if (kind === 'issue' && issue.state === 'open') {
@@ -178,25 +216,15 @@ jobs:
                   });
                   console.log(`Closed issue #${issueNumber}`);
                 } catch (e) {
-                  failures.push(`close issue #${issueNumber}: ${e.message}`);
+                  core.warning(`close issue #${issueNumber}: ${e.message}`);
                 }
               }
-            }
-
-            if (!pr.milestone) {
-              await stamp(prNumber, 'PR');
-            } else {
-              console.log(`PR already on ${pr.milestone.title}`);
             }
 
             for (const n of linked) {
               try {
                 await stamp(n, 'issue', { forceIfClosed: true });
               } catch (e) {
-                failures.push(`issue #${n}: ${e.message}`);
+                core.warning(`issue #${n}: ${e.message}`);
               }
-            }
-
-            if (failures.length) {
-              core.setFailed(failures.join('\n'));
             }
