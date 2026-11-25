@@ -136,6 +136,8 @@ module.exports = {
     'email-delete-queue': './webpack/people/email-delete-queue',
     'email-log-table': './webpack/people/email-log-table',
     'error': './webpack/error',
+    'finance-settings': './webpack/finance-settings',
+    'finance-quickbooks': './webpack/finance-quickbooks',
     'finance-report-options': './webpack/finance-report-options',
     'groups-group-view': './webpack/groups/group-view',
     'groups-group-properties-form': './webpack/groups/group-properties-form',

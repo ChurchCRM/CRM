@@ -28,7 +28,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
         it("auto-saves a number setting and keeps it after reload", () => {
             const next = originalTaxYears === "12" ? "13" : "12";
             cy.intercept("POST", "**/admin/api/system/config/iMaxTaxYears").as("saveTaxYears");
-            cy.visit("/admin/finance");
+            cy.visit("/admin/finance/options");
             cy.get("#financeDeposits", { timeout: 10000 }).should("be.visible");
 
             cy.get("#financeDeposits").within(() => {
@@ -56,7 +56,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
                 statusCode: 500,
                 body: { message: "simulated failure" },
             }).as("failedSave");
-            cy.visit("/admin/finance");
+            cy.visit("/admin/finance/options");
             cy.get("#financeDeposits .settings-panel-fields").should("not.be.disabled");
             cy.clock(null, ["setTimeout", "clearTimeout"]);
             cy.document().as("originalDocument", { type: "static" });
@@ -77,7 +77,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
         });
 
         it("fiscal year month dropdown has 12 month options", () => {
-            cy.visit("/admin/finance");
+            cy.visit("/admin/finance/options");
             cy.get("#financeDeposits", { timeout: 10000 }).should("be.visible");
 
             cy.get("#financeDeposits").within(() => {
@@ -87,7 +87,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
         });
 
         it("deposit slip type dropdown has QBDT option", () => {
-            cy.visit("/admin/finance");
+            cy.visit("/admin/finance/options");
             cy.get("#financeDeposits", { timeout: 10000 }).should("be.visible");
 
             cy.get("#financeDeposits").within(() => {
@@ -97,7 +97,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
         });
 
         it("boolean settings render as one switch", () => {
-            cy.visit("/admin/finance");
+            cy.visit("/admin/finance/options");
             cy.get("#financeDeposits", { timeout: 10000 }).should("be.visible");
 
             cy.get("#financeDeposits").within(() => {
