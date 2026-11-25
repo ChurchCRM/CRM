@@ -271,7 +271,8 @@ function updateRosterCounts() {
   $("#rosterStats").text(`${checkedIn} / ${total} ${i18next.t("checked in")}`);
   $("#notCheckedInCount").text(waiting);
   $("#checkedInCount").text(checkedIn);
-  $("#notCheckedInEmpty").toggleClass("d-none", waiting > 0);
+  // Rows stay in the left list after check-in, so that column is never empty.
+  $("#notCheckedInEmpty").addClass("d-none");
   $("#checkedInEmpty").toggleClass("d-none", checkedIn > 0);
 }
 
