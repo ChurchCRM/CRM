@@ -54,8 +54,8 @@ class GroupReportService
             $query->filterByRoleId($roleId);
         }
         $personQuery = $query->joinWithPerson()->usePersonQuery()
+            ->filterByActive()
             ->leftJoinWithFamily()
-            ->filterByNeedsReview(false)
             ->orderByLastName()
             ->orderByFirstName();
         if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {

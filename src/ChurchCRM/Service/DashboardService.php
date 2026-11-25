@@ -33,7 +33,7 @@ class DashboardService
     {
         return [
             'families' => $this->getFamilyCount()['familyCount'],
-            'People' => (new ClassificationService())->excludeInactive(PersonQuery::create())
+            'People' => PersonQuery::create()->filterByActiveClassification()
                 ->leftJoinWithFamily()
                 ->where('Family.DateDeactivated is null')
                 ->filterByLiving()
@@ -69,7 +69,7 @@ class DashboardService
         ];
         $familyRoleStats = [];
 
-        $people = (new ClassificationService())->excludeInactive(PersonQuery::Create('per'))
+        $people = PersonQuery::create('per')->filterByActiveClassification()
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
             ->endUse()
@@ -180,41 +180,5 @@ class DashboardService
         });
 
         return $ageGroups;
-    }
-
-    /**
-     * Return last edited members. Only from active families selected.
-     *
-     * @param int $limit
-     *
-     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
-     */
-    public function getUpdatedMembers($limit = 12)
-    {
-        return PersonQuery::create()
-            ->leftJoinWithFamily()
-            ->where('Family.DateDeactivated is null')
-            ->filterByLiving()
-            ->orderByDateLastEdited('DESC')
-            ->limit($limit)
-            ->find();
-    }
-
-    /**
-     * Newly added members. Only from Active families selected.
-     *
-     * @param int $limit
-     *
-     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
-     */
-    public function getLatestMembers($limit = 12)
-    {
-        return PersonQuery::create()
-            ->leftJoinWithFamily()
-            ->where('Family.DateDeactivated is null')
-            ->filterByLiving()
-            ->orderByDateEntered('DESC')
-            ->limit($limit)
-            ->find();
     }
 }
