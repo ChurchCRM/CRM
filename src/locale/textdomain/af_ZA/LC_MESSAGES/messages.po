@@ -28271,3 +28271,111 @@ msgstr "Waarskuwing Na (Ure)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Woord voor die naam in briewe en e-posse, byvoorbeeld Beste."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Bedragverskuiwing, links"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demodata gelaai"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Elke posisie moet 'n getal van 0 tot 1000 millimeter wees."
+
+#: 
+msgid "First date, left"
+msgstr "Eerste datum, links"
+
+#: 
+msgid "First date, top"
+msgstr "Eerste datum, bo"
+
+#: 
+msgid "Item count, left"
+msgstr "Itemtelling, links"
+
+#: 
+msgid "Item count, top"
+msgstr "Itemtelling, bo"
+
+#: 
+msgid "Left margin"
+msgstr "Linkerkantlyn"
+
+#: 
+msgid "Line items"
+msgstr "Lynitems"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimum hoogte"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimum breedte"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "By verstek af. Help ons om ChurchCRM te verbeter. Sluit nooit jou kerk of sy mense in nie."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforasie, bo"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Posisies in millimeter op die voorafgedrukte depositostrokie"
+
+#: 
+msgid "Saved"
+msgstr "Gestoor"
+
+#: 
+msgid "Second date, left"
+msgstr "Tweede datum, links"
+
+#: 
+msgid "See what's shared"
+msgstr "Kyk wat gedeel word"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Spasiëring, horisontaal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Spasiëring, vertikaal"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotaal, links"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotaal, bo"
+
+#: 
+msgid "Ticket"
+msgstr "Depositostrokie"
+
+#: 
+msgid "Title, left"
+msgstr "Titel, links"
+
+#: 
+msgid "Top margin"
+msgstr "Bokantlyn"
+
+#: 
+msgid "Total, left"
+msgstr "Totaal, links"
+
+#: 
+msgid "Total, top"
+msgstr "Totaal, bo"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

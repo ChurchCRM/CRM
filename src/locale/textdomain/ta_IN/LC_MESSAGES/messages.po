@@ -28282,3 +28282,111 @@ msgstr "எச்சரிக்கை நேரம் (மணிநேரம்
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "கடிதங்கள் மற்றும் மின்னஞ்சல்களில் பெயருக்கு முன் வரும் சொல், எடுத்துக்காட்டாக அன்புள்ள."
 
+#: 
+msgid "Amount offset, left"
+msgstr "தொகை ஈடு, இடது"
+
+#: 
+msgid "Demo data loaded"
+msgstr "டெமோ தரவு ஏற்றப்பட்டது"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "ஒவ்வொரு நிலையும் 0 முதல் 1000 மில்லிமீட்டர் வரையிலான எண்ணாக இருக்க வேண்டும்."
+
+#: 
+msgid "First date, left"
+msgstr "முதல் தேதி, இடது"
+
+#: 
+msgid "First date, top"
+msgstr "முதல் தேதி, மேல்"
+
+#: 
+msgid "Item count, left"
+msgstr "உருப்படிகளின் எண்ணிக்கை, இடது"
+
+#: 
+msgid "Item count, top"
+msgstr "உருப்படிகளின் எண்ணிக்கை, மேல்"
+
+#: 
+msgid "Left margin"
+msgstr "இடது ஓரம்"
+
+#: 
+msgid "Line items"
+msgstr "வரி உருப்படிகள்"
+
+#: 
+msgid "Maximum height"
+msgstr "அதிகபட்ச உயரம்"
+
+#: 
+msgid "Maximum width"
+msgstr "அதிகபட்ச அகலம்"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "இயல்பாக முடக்கப்பட்டுள்ளது. ChurchCRM-ஐ மேம்படுத்த எங்களுக்கு உதவுகிறது. உங்கள் தேவாலயத்தையோ அதன் மக்களையோ ஒருபோதும் உள்ளடக்காது."
+
+#: 
+msgid "Perforation, top"
+msgstr "துளையிடும் கோடு, மேல்"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "முன்பே அச்சிடப்பட்ட வைப்பு டிக்கெட்டில் மில்லிமீட்டரில் நிலைகள்"
+
+#: 
+msgid "Saved"
+msgstr "சேமிக்கப்பட்டது"
+
+#: 
+msgid "Second date, left"
+msgstr "இரண்டாம் தேதி, இடது"
+
+#: 
+msgid "See what's shared"
+msgstr "என்ன பகிரப்படுகிறது என்பதைப் பார்க்கவும்"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "இடைவெளி, கிடைமட்டம்"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "இடைவெளி, செங்குத்து"
+
+#: 
+msgid "Subtotal, left"
+msgstr "துணை மொத்தம், இடது"
+
+#: 
+msgid "Subtotal, top"
+msgstr "துணை மொத்தம், மேல்"
+
+#: 
+msgid "Ticket"
+msgstr "டிக்கெட்"
+
+#: 
+msgid "Title, left"
+msgstr "தலைப்பு, இடது"
+
+#: 
+msgid "Top margin"
+msgstr "மேல் ஓரம்"
+
+#: 
+msgid "Total, left"
+msgstr "மொத்தம், இடது"
+
+#: 
+msgid "Total, top"
+msgstr "மொத்தம், மேல்"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

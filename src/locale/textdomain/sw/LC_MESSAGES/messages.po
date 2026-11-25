@@ -28268,3 +28268,111 @@ msgstr "Onyo Baada ya (Saa)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Neno kabla ya jina katika barua na barua pepe, kwa mfano Mpendwa."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Uhamishaji wa kiasi, kushoto"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Data ya majaribio imepakiwa"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Kila nafasi lazima iwe nambari kutoka 0 hadi 1000 milimita."
+
+#: 
+msgid "First date, left"
+msgstr "Tarehe ya kwanza, kushoto"
+
+#: 
+msgid "First date, top"
+msgstr "Tarehe ya kwanza, juu"
+
+#: 
+msgid "Item count, left"
+msgstr "Idadi ya vipengele, kushoto"
+
+#: 
+msgid "Item count, top"
+msgstr "Idadi ya vipengele, juu"
+
+#: 
+msgid "Left margin"
+msgstr "Pambizo la kushoto"
+
+#: 
+msgid "Line items"
+msgstr "Vipengele vya mstari"
+
+#: 
+msgid "Maximum height"
+msgstr "Kimo cha juu zaidi"
+
+#: 
+msgid "Maximum width"
+msgstr "Upana wa juu zaidi"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Imezimwa kwa chaguo-msingi. Hutusaidia kuboresha ChurchCRM. Kamwe haijumuishi kanisa lako au watu wake."
+
+#: 
+msgid "Perforation, top"
+msgstr "Utoboaji, juu"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Nafasi kwa milimita kwenye tiketi ya amana iliyochapishwa awali"
+
+#: 
+msgid "Saved"
+msgstr "Imehifadhiwa"
+
+#: 
+msgid "Second date, left"
+msgstr "Tarehe ya pili, kushoto"
+
+#: 
+msgid "See what's shared"
+msgstr "Tazama kinachoshirikiwa"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Nafasi, mlalo"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Nafasi, wima"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Jumla ndogo, kushoto"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Jumla ndogo, juu"
+
+#: 
+msgid "Ticket"
+msgstr "Tiketi ya amana"
+
+#: 
+msgid "Title, left"
+msgstr "Kichwa, kushoto"
+
+#: 
+msgid "Top margin"
+msgstr "Pambizo la juu"
+
+#: 
+msgid "Total, left"
+msgstr "Jumla, kushoto"
+
+#: 
+msgid "Total, top"
+msgstr "Jumla, juu"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

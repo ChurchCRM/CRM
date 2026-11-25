@@ -28245,3 +28245,111 @@ msgstr "Varoitus jälkeen (tuntia)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Sana ennen nimeä kirjeissä ja sähköposteissa, esimerkiksi Hyvä."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Summan siirtymä, vasen"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demotiedot ladattu"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Jokaisen sijainnin on oltava luku väliltä 0–1000 millimetriä."
+
+#: 
+msgid "First date, left"
+msgstr "Ensimmäinen päivämäärä, vasen"
+
+#: 
+msgid "First date, top"
+msgstr "Ensimmäinen päivämäärä, ylä"
+
+#: 
+msgid "Item count, left"
+msgstr "Kohteiden määrä, vasen"
+
+#: 
+msgid "Item count, top"
+msgstr "Kohteiden määrä, ylä"
+
+#: 
+msgid "Left margin"
+msgstr "Vasen marginaali"
+
+#: 
+msgid "Line items"
+msgstr "Rivikohteet"
+
+#: 
+msgid "Maximum height"
+msgstr "Enimmäiskorkeus"
+
+#: 
+msgid "Maximum width"
+msgstr "Enimmäisleveys"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Pois päältä oletuksena. Auttaa meitä parantamaan ChurchCRM:ää. Ei koskaan sisällä seurakuntaasi tai sen jäseniä."
+
+#: 
+msgid "Perforation, top"
+msgstr "Rei'itys, ylä"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Sijainnit millimetreinä esipainetulla talletuskuitilla"
+
+#: 
+msgid "Saved"
+msgstr "Tallennettu"
+
+#: 
+msgid "Second date, left"
+msgstr "Toinen päivämäärä, vasen"
+
+#: 
+msgid "See what's shared"
+msgstr "Katso, mitä jaetaan"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Väli, vaakasuora"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Väli, pystysuora"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Välisumma, vasen"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Välisumma, ylä"
+
+#: 
+msgid "Ticket"
+msgstr "Talletuskuitti"
+
+#: 
+msgid "Title, left"
+msgstr "Otsikko, vasen"
+
+#: 
+msgid "Top margin"
+msgstr "Ylämarginaali"
+
+#: 
+msgid "Total, left"
+msgstr "Yhteensä, vasen"
+
+#: 
+msgid "Total, top"
+msgstr "Yhteensä, ylä"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

@@ -28300,3 +28300,111 @@ msgstr "警告时限（小时）"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "位于信函和电子邮件中姓名之前的称呼词，例如“亲爱的”。"
 
+#: 
+msgid "Amount offset, left"
+msgstr "金额偏移，左"
+
+#: 
+msgid "Demo data loaded"
+msgstr "演示数据已加载"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "每个位置都必须是0到1000毫米之间的数字。"
+
+#: 
+msgid "First date, left"
+msgstr "第一个日期，左"
+
+#: 
+msgid "First date, top"
+msgstr "第一个日期，上"
+
+#: 
+msgid "Item count, left"
+msgstr "项目数量，左"
+
+#: 
+msgid "Item count, top"
+msgstr "项目数量，上"
+
+#: 
+msgid "Left margin"
+msgstr "左边距"
+
+#: 
+msgid "Line items"
+msgstr "行项目"
+
+#: 
+msgid "Maximum height"
+msgstr "最大高度"
+
+#: 
+msgid "Maximum width"
+msgstr "最大宽度"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "默认关闭。帮助我们改进 ChurchCRM。绝不包含您的教会或其成员信息。"
+
+#: 
+msgid "Perforation, top"
+msgstr "穿孔线，上"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "预印存款票上以毫米为单位的位置"
+
+#: 
+msgid "Saved"
+msgstr "已保存"
+
+#: 
+msgid "Second date, left"
+msgstr "第二个日期，左"
+
+#: 
+msgid "See what's shared"
+msgstr "查看共享的内容"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "间距，水平"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "间距，垂直"
+
+#: 
+msgid "Subtotal, left"
+msgstr "小计，左"
+
+#: 
+msgid "Subtotal, top"
+msgstr "小计，上"
+
+#: 
+msgid "Ticket"
+msgstr "存款票"
+
+#: 
+msgid "Title, left"
+msgstr "标题，左"
+
+#: 
+msgid "Top margin"
+msgstr "上边距"
+
+#: 
+msgid "Total, left"
+msgstr "总计，左"
+
+#: 
+msgid "Total, top"
+msgstr "总计，上"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

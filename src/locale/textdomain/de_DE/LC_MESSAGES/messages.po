@@ -28343,3 +28343,111 @@ msgstr "Warnung nach (Stunden)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Wort vor dem Namen in Briefen und E-Mails, zum Beispiel Liebe."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Betragsversatz, links"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demodaten geladen"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Jede Position muss eine Zahl von 0 bis 1000 Millimetern sein."
+
+#: 
+msgid "First date, left"
+msgstr "Erstes Datum, links"
+
+#: 
+msgid "First date, top"
+msgstr "Erstes Datum, oben"
+
+#: 
+msgid "Item count, left"
+msgstr "Artikelanzahl, links"
+
+#: 
+msgid "Item count, top"
+msgstr "Artikelanzahl, oben"
+
+#: 
+msgid "Left margin"
+msgstr "Linker Rand"
+
+#: 
+msgid "Line items"
+msgstr "Positionen"
+
+#: 
+msgid "Maximum height"
+msgstr "Maximale Höhe"
+
+#: 
+msgid "Maximum width"
+msgstr "Maximale Breite"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Standardmäßig deaktiviert. Hilft uns, ChurchCRM zu verbessern. Umfasst niemals Ihre Gemeinde oder deren Mitglieder."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforation, oben"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Positionen in Millimetern auf dem vorgedruckten Einzahlungsschein"
+
+#: 
+msgid "Saved"
+msgstr "Gespeichert"
+
+#: 
+msgid "Second date, left"
+msgstr "Zweites Datum, links"
+
+#: 
+msgid "See what's shared"
+msgstr "Sehen Sie, was geteilt wird"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Abstand, horizontal"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Abstand, vertikal"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Zwischensumme, links"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Zwischensumme, oben"
+
+#: 
+msgid "Ticket"
+msgstr "Einzahlungsschein"
+
+#: 
+msgid "Title, left"
+msgstr "Titel, links"
+
+#: 
+msgid "Top margin"
+msgstr "Oberer Rand"
+
+#: 
+msgid "Total, left"
+msgstr "Summe, links"
+
+#: 
+msgid "Total, top"
+msgstr "Summe, oben"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

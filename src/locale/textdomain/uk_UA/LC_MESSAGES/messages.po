@@ -28341,3 +28341,111 @@ msgstr "Попередження через (години)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Слово перед іменем у листах та електронних листах, наприклад «Шановний»."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Зміщення суми, зліва"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Демонстраційні дані завантажено"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Кожна позиція має бути числом від 0 до 1000 міліметрів."
+
+#: 
+msgid "First date, left"
+msgstr "Перша дата, зліва"
+
+#: 
+msgid "First date, top"
+msgstr "Перша дата, зверху"
+
+#: 
+msgid "Item count, left"
+msgstr "Кількість елементів, зліва"
+
+#: 
+msgid "Item count, top"
+msgstr "Кількість елементів, зверху"
+
+#: 
+msgid "Left margin"
+msgstr "Ліве поле"
+
+#: 
+msgid "Line items"
+msgstr "Позиції рядків"
+
+#: 
+msgid "Maximum height"
+msgstr "Максимальна висота"
+
+#: 
+msgid "Maximum width"
+msgstr "Максимальна ширина"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "За замовчуванням вимкнено. Допомагає нам покращувати ChurchCRM. Ніколи не включає вашу церкву або її людей."
+
+#: 
+msgid "Perforation, top"
+msgstr "Перфорація, зверху"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Позиції в міліметрах на попередньо надрукованому депозитному талоні"
+
+#: 
+msgid "Saved"
+msgstr "Збережено"
+
+#: 
+msgid "Second date, left"
+msgstr "Друга дата, зліва"
+
+#: 
+msgid "See what's shared"
+msgstr "Переглянути, що надсилається"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Інтервал, по горизонталі"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Інтервал, по вертикалі"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Проміжний підсумок, зліва"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Проміжний підсумок, зверху"
+
+#: 
+msgid "Ticket"
+msgstr "Депозитний талон"
+
+#: 
+msgid "Title, left"
+msgstr "Назва, зліва"
+
+#: 
+msgid "Top margin"
+msgstr "Верхнє поле"
+
+#: 
+msgid "Total, left"
+msgstr "Усього, зліва"
+
+#: 
+msgid "Total, top"
+msgstr "Усього, зверху"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

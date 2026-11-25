@@ -28204,3 +28204,111 @@ msgstr "警告までの時間（時間）"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "手紙やメールで名前の前に置かれる言葉。例：拝啓。"
 
+#: 
+msgid "Amount offset, left"
+msgstr "金額オフセット、左"
+
+#: 
+msgid "Demo data loaded"
+msgstr "デモデータを読み込みました"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "すべての位置は0から1000ミリメートルの数値でなければなりません。"
+
+#: 
+msgid "First date, left"
+msgstr "1番目の日付、左"
+
+#: 
+msgid "First date, top"
+msgstr "1番目の日付、上"
+
+#: 
+msgid "Item count, left"
+msgstr "項目数、左"
+
+#: 
+msgid "Item count, top"
+msgstr "項目数、上"
+
+#: 
+msgid "Left margin"
+msgstr "左余白"
+
+#: 
+msgid "Line items"
+msgstr "明細項目"
+
+#: 
+msgid "Maximum height"
+msgstr "最大の高さ"
+
+#: 
+msgid "Maximum width"
+msgstr "最大幅"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "デフォルトではオフです。ChurchCRMの改善に役立ちます。あなたの教会やその人々の情報は一切含まれません。"
+
+#: 
+msgid "Perforation, top"
+msgstr "ミシン目、上"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "印刷済み預金チケット上のミリメートル単位の位置"
+
+#: 
+msgid "Saved"
+msgstr "保存済み"
+
+#: 
+msgid "Second date, left"
+msgstr "2番目の日付、左"
+
+#: 
+msgid "See what's shared"
+msgstr "共有される内容を見る"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "間隔、水平"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "間隔、垂直"
+
+#: 
+msgid "Subtotal, left"
+msgstr "小計、左"
+
+#: 
+msgid "Subtotal, top"
+msgstr "小計、上"
+
+#: 
+msgid "Ticket"
+msgstr "チケット"
+
+#: 
+msgid "Title, left"
+msgstr "タイトル、左"
+
+#: 
+msgid "Top margin"
+msgstr "上余白"
+
+#: 
+msgid "Total, left"
+msgstr "合計、左"
+
+#: 
+msgid "Total, top"
+msgstr "合計、上"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

@@ -28363,3 +28363,111 @@ msgstr "Avertizare după (ore)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Cuvântul înaintea numelui în scrisori și e-mailuri, de exemplu Dragă."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Decalaj sumă, stânga"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Datele demo au fost încărcate"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Fiecare poziție trebuie să fie un număr de la 0 la 1000 de milimetri."
+
+#: 
+msgid "First date, left"
+msgstr "Prima dată, stânga"
+
+#: 
+msgid "First date, top"
+msgstr "Prima dată, sus"
+
+#: 
+msgid "Item count, left"
+msgstr "Număr de articole, stânga"
+
+#: 
+msgid "Item count, top"
+msgstr "Număr de articole, sus"
+
+#: 
+msgid "Left margin"
+msgstr "Margine stângă"
+
+#: 
+msgid "Line items"
+msgstr "Articole rând"
+
+#: 
+msgid "Maximum height"
+msgstr "Înălțime maximă"
+
+#: 
+msgid "Maximum width"
+msgstr "Lățime maximă"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Dezactivat în mod implicit. Ne ajută să îmbunătățim ChurchCRM. Nu include niciodată biserica dvs. sau membrii acesteia."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforație, sus"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Poziții în milimetri pe bonul de depozit pretipărit"
+
+#: 
+msgid "Saved"
+msgstr "Salvat"
+
+#: 
+msgid "Second date, left"
+msgstr "A doua dată, stânga"
+
+#: 
+msgid "See what's shared"
+msgstr "Vedeți ce se partajează"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Spațiere, orizontală"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Spațiere, verticală"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Subtotal, stânga"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Subtotal, sus"
+
+#: 
+msgid "Ticket"
+msgstr "Bon de depozit"
+
+#: 
+msgid "Title, left"
+msgstr "Titlu, stânga"
+
+#: 
+msgid "Top margin"
+msgstr "Margine superioară"
+
+#: 
+msgid "Total, left"
+msgstr "Total, stânga"
+
+#: 
+msgid "Total, top"
+msgstr "Total, sus"
+
+#: 
+msgid "mm"
+msgstr "mm"
+

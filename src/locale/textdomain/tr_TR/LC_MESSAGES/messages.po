@@ -28271,3 +28271,111 @@ msgstr "Uyarı Süresi (Saat)"
 msgid "Word before the name in letters and emails, for example Dear."
 msgstr "Mektuplarda ve e-postalarda addan önce gelen kelime, örneğin Sevgili."
 
+#: 
+msgid "Amount offset, left"
+msgstr "Tutar ofseti, sol"
+
+#: 
+msgid "Demo data loaded"
+msgstr "Demo verileri yüklendi"
+
+#: 
+msgid "Every position must be a number from 0 to 1000 millimetres."
+msgstr "Her konum 0 ile 1000 milimetre arasında bir sayı olmalıdır."
+
+#: 
+msgid "First date, left"
+msgstr "Birinci tarih, sol"
+
+#: 
+msgid "First date, top"
+msgstr "Birinci tarih, üst"
+
+#: 
+msgid "Item count, left"
+msgstr "Öğe sayısı, sol"
+
+#: 
+msgid "Item count, top"
+msgstr "Öğe sayısı, üst"
+
+#: 
+msgid "Left margin"
+msgstr "Sol kenar boşluğu"
+
+#: 
+msgid "Line items"
+msgstr "Satır öğeleri"
+
+#: 
+msgid "Maximum height"
+msgstr "Maksimum yükseklik"
+
+#: 
+msgid "Maximum width"
+msgstr "Maksimum genişlik"
+
+#: 
+msgid "Off by default. Helps us improve ChurchCRM. Never includes your church or its people."
+msgstr "Varsayılan olarak kapalıdır. ChurchCRM'i geliştirmemize yardımcı olur. Kilisenizi veya üyelerini asla içermez."
+
+#: 
+msgid "Perforation, top"
+msgstr "Perforasyon, üst"
+
+#: 
+msgid "Positions in millimetres on the preprinted deposit ticket"
+msgstr "Önceden basılmış depozito biletinde milimetre cinsinden konumlar"
+
+#: 
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: 
+msgid "Second date, left"
+msgstr "İkinci tarih, sol"
+
+#: 
+msgid "See what's shared"
+msgstr "Neyin paylaşıldığını görün"
+
+#: 
+msgid "Spacing, horizontal"
+msgstr "Aralık, yatay"
+
+#: 
+msgid "Spacing, vertical"
+msgstr "Aralık, dikey"
+
+#: 
+msgid "Subtotal, left"
+msgstr "Ara toplam, sol"
+
+#: 
+msgid "Subtotal, top"
+msgstr "Ara toplam, üst"
+
+#: 
+msgid "Ticket"
+msgstr "Depozito bileti"
+
+#: 
+msgid "Title, left"
+msgstr "Başlık, sol"
+
+#: 
+msgid "Top margin"
+msgstr "Üst kenar boşluğu"
+
+#: 
+msgid "Total, left"
+msgstr "Toplam, sol"
+
+#: 
+msgid "Total, top"
+msgstr "Toplam, üst"
+
+#: 
+msgid "mm"
+msgstr "mm"
+
