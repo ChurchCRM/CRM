@@ -330,7 +330,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
                     </div>
 
-                    <div class="alert alert-light border mb-0 py-2">
+                    <div class="border rounded px-3 py-2 text-secondary">
                         <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip') ?>:</strong> <?= gettext('Complete these in any order to get ChurchCRM ready for your congregation.') ?></small>
                     </div>
                 </div>
