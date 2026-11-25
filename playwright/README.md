@@ -86,8 +86,10 @@ directories outside the publish path; production captures use real demo UI.
   fixtures from `src/admin/demo/`. It is not re-seeded per screenshot; it
   runs once, in the `setup` project, for the whole pipeline. The demo-mode
   banner is hidden in the PNGs (`captureScreen()`) and stays in the videos.
-- **Workflows**: `playwright/setup/bootstrap.setup.ts` (setup/church-info,
-  demo data import) and `playwright/workflows/*.spec.ts` — Dashboard (hero),
+- **Workflows**: `playwright/setup/bootstrap.setup.ts` (setup, church info,
+  demo data import; the demo clip continues across the populated module
+  dashboards, and finalize joins the three clips into `setup-demo-dashboards`
+  for social) and `playwright/workflows/*.spec.ts` — Dashboard (hero),
   People & Families (incl. the optional person directory list), Groups &
   Ministry, Events & Attendance, Communication, Giving (deposit entry + pledge
   report), and Settings (user permissions, nice-to-have). Each test describes

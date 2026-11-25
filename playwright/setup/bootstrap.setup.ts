@@ -144,7 +144,13 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // The unified dashboard renders several h2s (page title, Insights, ...);
   // a bare 'h2' locator is a strict-mode violation now. Wait on the title.
   await page.locator('h2.page-title').waitFor({ state: 'visible', timeout: 15000 });
-  await settle(page, 600);
+  await humanPause(page, 2000);
+
+  for (const dashboard of ['/groups/dashboard', '/groups/sundayschool/dashboard', '/event/dashboard', '/finance/']) {
+    await page.goto(dashboard);
+    await expect(page.locator('h2').first()).toBeVisible({ timeout: 15000 });
+    await humanPause(page, 2000);
+  }
 
   await captureScreen(page, testInfo, {
     name: 'demo-data-import',
