@@ -1,10 +1,8 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -28,8 +26,6 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 
-$showTelemetryPrompt = !TelemetryService::capturesPageViews()
-    && SystemConfig::getValue('sTelemetryAskedVersion') === '';
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -182,43 +178,6 @@ $showTelemetryPrompt = !TelemetryService::capturesPageViews()
                     <button type="button" class="btn btn-ghost-secondary js-dismiss-former-portal-accounts">
                         <?= gettext('Dismiss') ?>
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <?php if ($showTelemetryPrompt): ?>
-    <!-- Telemetry consent card -->
-    <div class="card mb-4 border-info" id="telemetry-consent-card">
-        <div class="card-status-top bg-info"></div>
-        <div class="card-body">
-            <div class="d-flex align-items-start gap-3">
-                <div class="pt-1">
-                    <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h5 class="mb-1"><?= gettext('Share which pages are used') ?></h5>
-                    <p class="text-secondary mb-2">
-                        <?= gettext('Your data is yours. This reports on the software, never on your church or its people.') ?>
-                    </p>
-                    <ul class="text-secondary mb-3">
-                        <li><?= gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.') ?></li>
-                        <li><?= gettext('Also send which pages are used.') ?></li>
-                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
-                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, Default stays active and page views are not sent.') ?></li>
-                    </ul>
-                    <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_FULL ?>">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Share which pages are used') ?>
-                        </button>
-                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= TelemetryService::LEVEL_DEFAULT ?>">
-                            <?= gettext('No thanks') ?>
-                        </button>
-                    </div>
-                    <p class="text-secondary small mt-2 mb-0">
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry"><?= gettext('See exactly what is shared, or change your choice, in Admin → Telemetry.') ?></a>
-                    </p>
                 </div>
             </div>
         </div>

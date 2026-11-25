@@ -374,7 +374,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         $demoDataLoaded = InstallSetupService::isDemoDataLoaded();
         $twoFAGrace = $currentUser->getTwoFactorGraceStatus() === 'within-grace';
         $twoFADaysLeft = $twoFAGrace ? $currentUser->getTwoFactorGraceDaysRemaining() : 0;
-        $centerCount = count($centerNotifications) + ($demoDataLoaded ? 1 : 0) + ($twoFAGrace ? 1 : 0);
+        $telemetryPrompt = $currentUser->isAdmin() && !$setupMode
+            && !TelemetryService::capturesPageViews()
+            && SystemConfig::getValue('sTelemetryAskedVersion') === '';
+        $centerCount = count($centerNotifications) + ($demoDataLoaded ? 1 : 0) + ($twoFAGrace ? 1 : 0) + ($telemetryPrompt ? 1 : 0);
         $centerBadgeClass = ($twoFAGrace && $twoFADaysLeft <= 1) ? 'bg-danger' : 'bg-primary';
         foreach ($centerNotifications as $centerNotification) {
             if ($centerNotification->getType() === 'danger') {
@@ -443,6 +446,26 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                 </div>
               </div>
             </div>
+            <?php endif; ?>
+            <?php if ($telemetryPrompt): ?>
+            <div class="dropdown-item-text crm-notification-item" data-notification-id="telemetry-consent">
+              <div class="d-flex">
+                <div class="crm-notification-icon"><i class="fa-solid fa-chart-bar text-info" aria-hidden="true"></i></div>
+                <div class="flex-grow-1 min-w-0">
+                  <div class="crm-notification-title small fw-semibold"><?= gettext('Share which pages are used') ?></div>
+                  <div class="crm-notification-text text-secondary small"><?= gettext('Off by default. Helps us improve ChurchCRM. Never includes your church or its people.') ?></div>
+                  <div class="d-flex align-items-center justify-content-between gap-2 mt-2">
+                    <label class="form-check form-switch mb-0">
+                      <input class="form-check-input" type="checkbox" role="switch" id="telemetry-consent-toggle">
+                      <span class="form-check-label small"><?= gettext('Enable') ?></span>
+                    </label>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry" class="small"><?= gettext("See what's shared") ?></a>
+                  </div>
+                </div>
+                <button type="button" class="btn-close js-telemetry-decline" aria-label="<?= gettext('No thanks') ?>" title="<?= gettext('No thanks') ?>"></button>
+              </div>
+            </div>
+            <script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry-consent.min.js') ?>"></script>
             <?php endif; ?>
             <?php if ($twoFAGrace): ?>
             <div class="dropdown-item-text crm-notification-item" data-notification-id="two-fa-grace">
