@@ -1,0 +1,6 @@
+{
+  "Some text will stay in English until the gettext PHP extension is enabled.": [
+    "src/admin/views/debug.php:435",
+    "webpack/setup.js:195"
+  ]
+}
