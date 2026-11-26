@@ -643,10 +643,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
     <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php
-// Server-side page view telemetry for legacy (non-API) pages.
-// Strip query string so no record IDs reach PostHog.
-$_telemetryRoute = explode('?', $_SERVER['PHP_SELF'] ?? 'unknown', 2)[0];
-TelemetryService::capturePageView($_telemetryRoute);
+require __DIR__ . '/PageTelemetry.php';
 
 if (TelemetryService::isEnabled()):
 ?>
