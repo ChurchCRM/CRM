@@ -77,18 +77,12 @@ function reorderGroupFormProp(Request $request, Response $response, array $args)
         throw new HttpBadRequestException($request, gettext('Cannot move property in that direction'));
     }
 
-    // Swap prop_ID values via raw SQL — groupprop_master has no PRIMARY KEY,
-    // so Propel ORM save() cannot identify which row to UPDATE.
+    // groupprop_master has no primary key, so a loaded row cannot save() itself.
+    // A criteria update still addresses the row by grp_ID and prop_ID.
     // Use a temporary value (-1) to avoid collisions during the swap.
-    FunctionsUtils::runQuery(
-        'UPDATE `groupprop_master` SET `prop_ID` = -1 WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $swapPropID
-    );
-    FunctionsUtils::runQuery(
-        'UPDATE `groupprop_master` SET `prop_ID` = ' . $swapPropID . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $iPropID
-    );
-    FunctionsUtils::runQuery(
-        'UPDATE `groupprop_master` SET `prop_ID` = ' . $iPropID . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = -1'
-    );
+    GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->filterByPropId($swapPropID)->update(['PropId' => -1]);
+    GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->filterByPropId($iPropID)->update(['PropId' => $swapPropID]);
+    GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->filterByPropId(-1)->update(['PropId' => $iPropID]);
 
     return SlimUtils::renderJSON($response, ['success' => true]);
 }
@@ -154,13 +148,12 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
     $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` DROP `' . $sField . '`';
     FunctionsUtils::runQuery($sSQL);
 
-    // Delete the property definition row via raw SQL — groupprop_master has
-    // no PRIMARY KEY so Propel ORM delete() cannot identify the row.
-    FunctionsUtils::runQuery(
-        'DELETE FROM `groupprop_master` WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $iPropID
-    );
+    GroupPropMasterQuery::create()
+        ->filterByGrpId($iGroupID)
+        ->filterByPropId($iPropID)
+        ->delete();
 
-    // Re-number remaining properties to keep sequential IDs (raw SQL — same reason)
+    // groupprop_master has no primary key, so renumber with a criteria update.
     $remainingProps = GroupPropMasterQuery::create()
         ->filterByGrpId($iGroupID)
         ->orderByPropId()
@@ -168,11 +161,12 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
 
     $newId = 1;
     foreach ($remainingProps as $remaining) {
-        if ((int) $remaining->getPropId() !== $newId) {
-            FunctionsUtils::runQuery(
-                'UPDATE `groupprop_master` SET `prop_ID` = ' . $newId
-                . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . (int) $remaining->getPropId()
-            );
+        $currentId = (int) $remaining->getPropId();
+        if ($currentId !== $newId) {
+            GroupPropMasterQuery::create()
+                ->filterByGrpId($iGroupID)
+                ->filterByPropId($currentId)
+                ->update(['PropId' => $newId]);
         }
         $newId++;
     }

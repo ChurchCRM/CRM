@@ -187,8 +187,15 @@ jobs:
         PHP_VERSIONS='${{ needs.configure.outputs.php-versions }}'
         for version in $(echo "$PHP_VERSIONS" | jq -r '.[]'); do
           echo "Building Docker image for PHP $version..."
+          # Quick CI stays on PHP 8.4 even though the Dockerfile default is now 8.5:
+          # pin the 8.4 matrix row to the last 8.4 base image (digest-pinned, no drift).
+          case "$version" in
+            8.4) PHP_IMAGE='php:8.4.27-apache-trixie@sha256:a0b75cee7023ba2c127138dcad2ecc6ec7e09435534645e70450f29f24ea2a5a' ;;
+            *) PHP_IMAGE="php:${version}-apache-trixie" ;;
+          esac
           docker build --target test \
             --build-arg PHP_VERSION=$version \
+            --build-arg PHP_IMAGE="$PHP_IMAGE" \
             -t churchcrm/crm:php${version}-test \
             -f docker/Dockerfile.churchcrm-apache-php8 docker/
           docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz

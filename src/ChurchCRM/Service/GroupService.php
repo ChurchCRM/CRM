@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -46,18 +47,16 @@ class GroupService
     public function removeUserFromGroup(int $groupID, int $personID): void
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $sSQL = 'DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $personID . ' AND p2g2r_grp_ID = ' . $groupID;
-        FunctionsUtils::runQuery($sSQL);
+        Person2group2roleP2g2rQuery::create()
+            ->filterByPersonId($personID)
+            ->filterByGroupId($groupID)
+            ->delete();
 
-        // Check if this group has special properties
-        $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = ' . $groupID;
-        $rsTemp = FunctionsUtils::runQuery($sSQL);
-        $rowTemp = mysqli_fetch_row($rsTemp);
-        $bHasProp = $rowTemp[0];
-
-        if ($bHasProp === '1') {
-            $sSQL = 'DELETE FROM groupprop_' . $groupID . " WHERE per_ID = '" . $personID . "'";
-            FunctionsUtils::runQuery($sSQL);
+        $group = GroupQuery::create()->findPk($groupID);
+        if ($group !== null && $group->getHasSpecialProps()) {
+            FunctionsUtils::runQuery(
+                'DELETE FROM groupprop_' . (int) $groupID . ' WHERE per_ID = ' . (int) $personID
+            );
         }
 
         (new CustomFieldService())->clearGroupMemberReferences((int) $groupID, (int) $personID);
@@ -177,21 +176,23 @@ class GroupService
      */
     public function getGroupRoles(int $groupID): array
     {
-        $groupRoles = [];
-        $sSQL = 'SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
-              FROM group_grp
-              LEFT JOIN list_lst ON
-              list_lst.lst_ID = group_grp.grp_RoleListID
-              WHERE group_grp.grp_ID = ' . $groupID;
-        $rsList = FunctionsUtils::runQuery($sSQL);
-
-        // Validate that this list ID is really for a group roles list. (for security)
-        if (mysqli_num_rows($rsList) === 0) {
+        $group = GroupQuery::create()->findPk($groupID);
+        if ($group === null) {
             throw new \Exception('invalid request');
         }
 
-        while ($row = mysqli_fetch_assoc($rsList)) {
-            $groupRoles[] = $row;
+        $groupRoles = [];
+        $options = ListOptionQuery::create()
+            ->filterById($group->getRoleListId())
+            ->orderByOptionSequence()
+            ->find();
+        foreach ($options as $option) {
+            $groupRoles[] = [
+                'grp_ID' => $group->getId(),
+                'lst_OptionName' => $option->getOptionName(),
+                'lst_OptionID' => $option->getOptionId(),
+                'lst_OptionSequence' => $option->getOptionSequence(),
+            ];
         }
 
         return $groupRoles;
@@ -200,13 +201,19 @@ class GroupService
     public function setGroupRoleOrder(string $groupID, string $groupRoleID, string $groupRoleOrder): void
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $sSQL = 'UPDATE list_lst
-                 INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                 SET list_lst.lst_OptionSequence = "' . $groupRoleOrder . '"
-                 WHERE group_grp.grp_ID = "' . $groupID . '"
-                    AND list_lst.lst_OptionID = ' . $groupRoleID;
-        FunctionsUtils::runQuery($sSQL);
+        $group = GroupQuery::create()->findPk((int) $groupID);
+        if ($group === null) {
+            return;
+        }
+        $role = ListOptionQuery::create()
+            ->filterById($group->getRoleListId())
+            ->filterByOptionId((int) $groupRoleID)
+            ->findOne();
+        if ($role === null) {
+            return;
+        }
+        $role->setOptionSequence((int) $groupRoleOrder);
+        $role->save();
     }
 
     /**
@@ -335,20 +342,23 @@ class GroupService
     public function enableGroupSpecificProperties(string $groupID): void
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = true
-            WHERE grp_ID = ' . $groupID;
-        FunctionsUtils::runQuery($sSQL);
-        $sSQLp = 'CREATE TABLE IF NOT EXISTS groupprop_' . $groupID . " (
+        $groupId = (int) $groupID;
+        $group = GroupQuery::create()->findPk($groupId);
+        if ($group !== null) {
+            $group->setHasSpecialProps(true);
+            $group->save();
+        }
+        $sSQLp = 'CREATE TABLE IF NOT EXISTS groupprop_' . $groupId . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
         FunctionsUtils::runQuery($sSQLp);
 
-        $groupMembers = $this->getGroupMembers($groupID);
+        $groupMembers = $this->getGroupMembers((string) $groupId);
 
         foreach ($groupMembers as $member) {
-            $sSQLr = 'INSERT IGNORE INTO groupprop_' . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
+            $sSQLr = 'INSERT IGNORE INTO groupprop_' . $groupId . ' ( per_ID ) VALUES ( ' . (int) $member['per_ID'] . ' );';
             FunctionsUtils::runQuery($sSQLr);
         }
     }
@@ -356,17 +366,16 @@ class GroupService
     public function disableGroupSpecificProperties(string $groupID): void
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $sSQLp = 'DROP TABLE groupprop_' . $groupID;
-        FunctionsUtils::runQuery($sSQLp);
+        $groupId = (int) $groupID;
+        FunctionsUtils::runQuery('DROP TABLE groupprop_' . $groupId);
 
-        // need to delete the master index stuff
-        $sSQLp = 'DELETE FROM groupprop_master WHERE grp_ID = ' . $groupID;
-        FunctionsUtils::runQuery($sSQLp);
+        GroupPropMasterQuery::create()->filterByGrpId($groupId)->delete();
 
-        $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = false
-            WHERE grp_ID = ' . $groupID;
-
-        FunctionsUtils::runQuery($sSQL);
+        $group = GroupQuery::create()->findPk($groupId);
+        if ($group !== null) {
+            $group->setHasSpecialProps(false);
+            $group->save();
+        }
     }
 
     public function getGroupMemberDetails(int $groupId): array

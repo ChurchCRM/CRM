@@ -10,8 +10,10 @@ use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\Service\DashboardLandingService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
@@ -54,10 +56,8 @@ if ($iFamilyID > 0) {
     RedirectUtils::securityRedirect('AddRecords');
 }
 
-// Get the list of custom person fields
-$sSQL = 'SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
+$customFields = FamilyCustomMasterQuery::create()->orderByOrder()->find();
+$numCustomFields = count($customFields);
 
 $customFieldService = new CustomFieldService();
 
@@ -250,16 +250,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate all the custom fields
     $aCustomData = [];
-    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-        extract($rowCustomField);
+    foreach ($customFields as $customField) {
+        $fieldId = $customField->getField();
+        if ($customFieldService->canView((int) $customField->getFieldSecurity())) {
+            $currentFieldData = CustomFieldUtils::cleanInput($_POST[$fieldId] ?? '');
 
-        if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
-            $currentFieldData = CustomFieldUtils::cleanInput($_POST[$fam_custom_Field] ?? '');
+            $bErrorFlag |= !CustomFieldUtils::validate($customField->getTypeId(), $currentFieldData, $fieldId, $aCustomErrors);
 
-            $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
-
-            // assign processed value locally to $aPersonProps so we can use it to generate the form later
-            $aCustomData[$fam_custom_Field] = $currentFieldData;
+            $aCustomData[$fieldId] = $currentFieldData;
         }
     }
 
@@ -325,7 +323,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
             // Add property if assigned
             if ($iPropertyID) {
-                RunPreparedQuery('INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES (?, ?)', 'ii', [$iPropertyID, $iFamilyID]);
+                (new RecordProperty())
+                    ->setPropertyId((int) $iPropertyID)
+                    ->setRecordId((int) $iFamilyID)
+                    ->setPropertyValue('')
+                    ->save();
             }
 
             //Run through the family member arrays...
@@ -420,10 +422,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if ($family) {
         //Editing....
         //Get the information on this family
-        $rsFamily = RunPreparedQuery('SELECT * FROM family_fam WHERE fam_ID = ?', 'i', [$iFamilyID]);
-        extract(mysqli_fetch_array($rsFamily));
-
         $iFamilyID = $family->getId();
+        $fam_Envelope = $family->getEnvelope() ?? '';
         $sName = $family->getName();
         $sAddress1 = $family->getAddress1();
         $sAddress2 = $family->getAddress2();
@@ -456,32 +456,31 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $aCustomErrors = [];
 
         if ($numCustomFields > 0) {
-            mysqli_data_seek($rsCustomFields, 0);
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                $aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
+            foreach ($customFields as $customField) {
+                $aCustomErrors[$customField->getField()] = false;
             }
         }
 
-        $rsMembers = RunPreparedQuery('SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = ? ORDER BY per_fmr_ID', 'i', [$iFamilyID]);
         $iCount = 0;
         $iFamilyMemberRows = 0;
-        while ($aRow = mysqli_fetch_array($rsMembers)) {
-            extract($aRow);
+        $members = PersonQuery::create()->filterByFamId((int) $iFamilyID)->orderByFmrId()->find();
+        foreach ($members as $member) {
             $iCount++;
             $iFamilyMemberRows++;
-            $aFirstNames[$iCount] = $per_FirstName;
-            $aMiddleNames[$iCount] = $per_MiddleName;
-            $aLastNames[$iCount] = $per_LastName;
-            $aSuffix[$iCount] = $per_Suffix;
-            $aGenders[$iCount] = (int)$per_Gender;
-            $aRoles[$iCount] = (int)$per_fmr_ID;
-            $aBirthMonths[$iCount] = (int)$per_BirthMonth;
-            $aBirthDays[$iCount] = (int)$per_BirthDay;
-            $aBirthYears[$iCount] = $per_BirthYear > 0 ? (int)$per_BirthYear : '';
-            $aClassification[$iCount] = (int)$per_cls_ID;
-            $aGrades[$iCount] = GradeService::resolve($per_grd_ID);
-            $aPersonIDs[$iCount] = (int)$per_ID;
-            $aPerFlag[$iCount] = $per_Flags;
+            $birthYear = $member->getBirthYear();
+            $aFirstNames[$iCount] = $member->getFirstName();
+            $aMiddleNames[$iCount] = $member->getMiddleName();
+            $aLastNames[$iCount] = $member->getLastName();
+            $aSuffix[$iCount] = $member->getSuffix();
+            $aGenders[$iCount] = (int) $member->getGender();
+            $aRoles[$iCount] = (int) $member->getFmrId();
+            $aBirthMonths[$iCount] = (int) $member->getBirthMonth();
+            $aBirthDays[$iCount] = (int) $member->getBirthDay();
+            $aBirthYears[$iCount] = $birthYear !== null && (int) $birthYear > 0 ? (int) $birthYear : '';
+            $aClassification[$iCount] = (int) $member->getClsId();
+            $aGrades[$iCount] = GradeService::resolve($member->getGradeId());
+            $aPersonIDs[$iCount] = (int) $member->getId();
+            $aPerFlag[$iCount] = $member->getFlags();
         }
     } else {
         //Adding....
@@ -541,13 +540,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         $aCustomData = [];
         $aCustomErrors = [];
-        if ($numCustomFields > 0) {
-            mysqli_data_seek($rsCustomFields, 0);
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                extract($rowCustomField);
-                $aCustomData[$fam_custom_Field] = '';
-                $aCustomErrors[$fam_custom_Field] = false;
-            }
+        foreach ($customFields as $customField) {
+            $aCustomData[$customField->getField()] = '';
+            $aCustomErrors[$customField->getField()] = false;
         }
     }
 }
@@ -833,19 +828,18 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="card-body">
                 <?php 
                 $customPhoneFields = [];
-                mysqli_data_seek($rsCustomFields, 0);
-                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                    extract($rowCustomField);
-                    if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
+                foreach ($customFields as $customField) {
+                    $fieldId = $customField->getField();
+                    if ($customFieldService->canView((int) $customField->getFieldSecurity())) {
                         ?>
                         <div class="row">
                             <div class="mb-3 col-12 col-md-6">
-                                <label for="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>"><?= InputUtils::escapeHTML($fam_custom_Name) ?></label>
-                        <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
+                                <label for="<?= InputUtils::escapeAttribute($fieldId) ?>"><?= InputUtils::escapeHTML($customField->getName()) ?></label>
+                        <?php $currentFieldData = trim($aCustomData[$fieldId] ?? '');
 
-                        CustomFieldUtils::renderForm($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
-                        if (!empty($aCustomErrors[$fam_custom_Field])) {
-                            echo '<span class="text-danger small">' . $aCustomErrors[$fam_custom_Field] . '</span>';
+                        CustomFieldUtils::renderForm($customField->getTypeId(), $fieldId, $currentFieldData, $customField->getCustomSpecial(), !isset($_POST['FamilySubmit']));
+                        if (!empty($aCustomErrors[$fieldId])) {
+                            echo '<span class="text-danger small">' . $aCustomErrors[$fieldId] . '</span>';
                         }
                         echo '</div></div>';
                     }

@@ -34,3 +34,32 @@ try {
 } finally {
     unlink($sqlFile);
 }
+
+$sqlFile = tempnam(sys_get_temp_dir(), 'churchcrm-sql-import-');
+if ($sqlFile === false) {
+    throw new RuntimeException('Unable to create SQL import fixture.');
+}
+file_put_contents($sqlFile, "ALTER TABLE a ADD COLUMN b int;\nALTER TABLE c ADD COLUMN d int\n");
+
+try {
+    $recorder = new class {
+        /** @var list<string> */
+        public array $queries = [];
+        public string $error = '';
+
+        public function query(string $sql): bool
+        {
+            $this->queries[] = $sql;
+
+            return true;
+        }
+    };
+
+    SQLUtils::sqlImport($sqlFile, $recorder);
+    Assert::same(
+        ['ALTER TABLE a ADD COLUMN b int', 'ALTER TABLE c ADD COLUMN d int'],
+        $recorder->queries,
+    );
+} finally {
+    unlink($sqlFile);
+}
