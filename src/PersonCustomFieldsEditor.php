@@ -6,9 +6,12 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -38,21 +41,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     // Does the user want to save changes to text fields?
     if (isset($_POST['SaveChanges'])) {
         // Fill in the other needed custom field data arrays not gathered from the form submit
-        $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
-        $rsCustomFields = RunQuery($sSQL);
-        $numRows = mysqli_num_rows($rsCustomFields);
+        $customMasters = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $numRows = count($customMasters);
 
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
-            extract($aRow);
-
-            $aFieldFields[$row] = $custom_Field;
-            $aTypeFields[$row] = $type_ID;
-            if (isset($custom_Special)) {
-                $aSpecialFields[$row] = $custom_Special;
-            } else {
-                $aSpecialFields[$row] = 'NULL';
-            }
+        $row = 1;
+        foreach ($customMasters as $customField) {
+            $aFieldFields[$row] = $customField->getId();
+            $aTypeFields[$row] = $customField->getTypeId();
+            $aSpecialFields[$row] = $customField->getSpecial() ?? 'NULL';
+            $row++;
         }
 
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
@@ -108,14 +105,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 // This should never happen, but check anyhow.
                 // $bNewTypeError = true;
             } else {
-                $sSQL = 'SELECT custom_Name FROM person_custom_master';
-                $rsCustomNames = RunQuery($sSQL);
-                while ($aRow = mysqli_fetch_array($rsCustomNames)) {
-                    if ($aRow[0] == $newFieldName) {
-                        $bDuplicateNameError = true;
-                        break;
-                    }
-                }
+                $bDuplicateNameError = PersonCustomMasterQuery::create()->filterByName($newFieldName)->count() > 0;
 
                 if (!$bDuplicateNameError) {
                     $connection = Bootstrapper::getMysqliConnection();
@@ -133,13 +123,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     // If we're inserting a new custom-list type field, create a new list and get its ID
                     if ($newFieldType == 12) {
                         // Get the first available lst_ID for insertion.  lst_ID 0-9 are reserved for permanent lists.
-                        $sSQL = 'SELECT MAX(lst_ID) FROM list_lst';
-                        $aTemp = mysqli_fetch_array(RunQuery($sSQL));
-                        if ($aTemp[0] > 9) {
-                            $newListID = $aTemp[0] + 1;
-                        } else {
-                            $newListID = 10;
-                        }
+                        $maxList = ListOptionQuery::create()->orderById(Criteria::DESC)->findOne();
+                        $maxListId = (int) ($maxList?->getId() ?? 0);
+                        $newListID = $maxListId > 9 ? $maxListId + 1 : 10;
 
                         // Insert into the lists table with an example option.
                         $listOption = new ListOption();
@@ -215,33 +201,33 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         }
 
         // Get data for the form as it now exists..
-        $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
+        $customMasters = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $numRows = count($customMasters);
 
-        $rsCustomFields = RunQuery($sSQL);
-        $numRows = mysqli_num_rows($rsCustomFields);
-
-        // Create arrays of the fields.
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
-            extract($aRow);
-
-            $aNameFields[$row] = $custom_Name;
-            $aSpecialFields[$row] = $custom_Special;
-            $aFieldFields[$row] = $custom_Field;
-            $aTypeFields[$row] = $type_ID;
-            $aFieldSecurity[$row] = $custom_FieldSec;
+        $row = 1;
+        foreach ($customMasters as $customField) {
+            $aNameFields[$row] = $customField->getName();
+            $aSpecialFields[$row] = $customField->getSpecial();
+            $aFieldFields[$row] = $customField->getId();
+            $aTypeFields[$row] = $customField->getTypeId();
+            $aFieldSecurity[$row] = $customField->getFieldSecurity();
+            $row++;
         }
     }
     // Prepare Security Group list
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-    $rsSecurityGrp = RunQuery($sSQL);
     $aSecurityType = [];
-
     $aSecurityGrp = [];
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        $aSecurityGrp[] = $aRow;
-        extract($aRow);
-        $aSecurityType[$lst_OptionID] = $lst_OptionName;
+    foreach (ListOptionQuery::create()->filterById(5)->orderByOptionSequence()->find() as $option) {
+        $aSecurityGrp[] = [
+            'lst_OptionID' => $option->getOptionId(),
+            'lst_OptionName' => $option->getOptionName(),
+        ];
+        $aSecurityType[$option->getOptionId()] = $option->getOptionName();
+    }
+
+    $personFieldGroups = [];
+    foreach (GroupQuery::create()->orderByName()->find() as $group) {
+        $personFieldGroups[] = ['grp_ID' => $group->getId(), 'grp_Name' => $group->getName()];
     }
     function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     {
@@ -380,17 +366,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                                     echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
-                                    $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
-                                    $rsGroupList = RunQuery($sSQL);
-
-                                    while ($aRow = mysqli_fetch_array($rsGroupList)) {
-                                        extract($aRow);
-
-                                        echo '<option value="' . htmlspecialchars($grp_ID, ENT_QUOTES, 'UTF-8') . '"';
-                                        if ($aSpecialFields[$row] == $grp_ID) {
+                                    foreach ($personFieldGroups as $groupOption) {
+                                        echo '<option value="' . htmlspecialchars($groupOption['grp_ID'], ENT_QUOTES, 'UTF-8') . '"';
+                                        if ($aSpecialFields[$row] == $groupOption['grp_ID']) {
                                             echo ' selected';
                                         }
-                                        echo '>' . htmlspecialchars($grp_Name, ENT_QUOTES, 'UTF-8') . '</option>';
+                                        echo '>' . htmlspecialchars($groupOption['grp_Name'], ENT_QUOTES, 'UTF-8') . '</option>';
                                     }
 
                                     echo '</select>';

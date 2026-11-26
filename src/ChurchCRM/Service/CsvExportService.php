@@ -7,7 +7,11 @@ use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -35,28 +39,23 @@ class CsvExportService
             'familyCustomFields' => [],
         ];
 
-        $rs = FunctionsUtils::runQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence');
-        while ($row = mysqli_fetch_array($rs)) {
-            $options['classifications'][(int) $row['lst_OptionID']] = $row['lst_OptionName'];
+        foreach (ListOptionQuery::create()->filterById(1)->orderByOptionSequence()->find() as $option) {
+            $options['classifications'][(int) $option->getOptionId()] = $option->getOptionName();
         }
-        $rs = FunctionsUtils::runQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence');
-        while ($row = mysqli_fetch_array($rs)) {
-            $options['familyRoles'][(int) $row['lst_OptionID']] = $row['lst_OptionName'];
+        foreach (ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find() as $option) {
+            $options['familyRoles'][(int) $option->getOptionId()] = $option->getOptionName();
         }
-        $rs = FunctionsUtils::runQuery('SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name');
-        while ($row = mysqli_fetch_array($rs)) {
-            $options['groups'][(int) $row['grp_ID']] = $row['grp_Name'];
+        foreach (GroupQuery::create()->orderByName()->find() as $group) {
+            $options['groups'][(int) $group->getId()] = $group->getName();
         }
-        $rs = FunctionsUtils::runQuery('SELECT custom_Field, custom_Name, custom_FieldSec FROM person_custom_master ORDER BY custom_Order');
-        while ($row = mysqli_fetch_array($rs)) {
-            if ($customFieldService->canView((int) $row['custom_FieldSec'])) {
-                $options['personCustomFields'][] = ['field' => $row['custom_Field'], 'name' => $row['custom_Name']];
+        foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $field) {
+            if ($customFieldService->canView((int) $field->getFieldSecurity())) {
+                $options['personCustomFields'][] = ['field' => $field->getId(), 'name' => $field->getName()];
             }
         }
-        $rs = FunctionsUtils::runQuery('SELECT fam_custom_Field, fam_custom_Name, fam_custom_FieldSec FROM family_custom_master ORDER BY fam_custom_Order');
-        while ($row = mysqli_fetch_array($rs)) {
-            if ($customFieldService->canView((int) $row['fam_custom_FieldSec'])) {
-                $options['familyCustomFields'][] = ['field' => $row['fam_custom_Field'], 'name' => $row['fam_custom_Name']];
+        foreach (FamilyCustomMasterQuery::create()->orderByOrder()->find() as $field) {
+            if ($customFieldService->canView((int) $field->getFieldSecurity())) {
+                $options['familyCustomFields'][] = ['field' => $field->getField(), 'name' => $field->getName()];
             }
         }
 
