@@ -53,7 +53,7 @@ test('kiosk-guest-register', async ({ page, context }, testInfo) => {
     await captureScreen(page, testInfo, {
       name: 'kiosk-guest-register',
       title: 'Register a Walk-In Guest at the Kiosk',
-      category: 'Recordings',
+      category: 'Events & Attendance',
       purpose: 'A walk-in guest is registered and checked in on the Sunday School kiosk, then appears on People > Self Registrations waiting for staff review',
     });
   } finally {
