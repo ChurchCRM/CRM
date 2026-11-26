@@ -8,6 +8,7 @@ use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\LoginAsPersonMiddleware;
+use ChurchCRM\Slim\Middleware\PageRouteMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -59,6 +60,7 @@ class MvcAppFactory
 
         // Body parsing and routing middleware
         $app->addBodyParsingMiddleware();
+        $app->add(new PageRouteMiddleware($app->getBasePath()));
         $app->addRoutingMiddleware();
 
         // Error middleware — added AFTER routing so it wraps routing in LIFO order
