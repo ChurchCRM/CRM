@@ -35,7 +35,7 @@ $appPrereqs = AppIntegrityService::getApplicationPrerequisites();
 $fsPrereqs = AppIntegrityService::getFilesystemPrerequisites();
 $prereqFailingCount = 0;
 foreach (array_merge($appPrereqs, $fsPrereqs) as $p) {
-    if ($p->getStatusText() !== gettext('Passed')) {
+    if ($p->isBlocking()) {
         $prereqFailingCount++;
     }
 }
@@ -429,10 +429,10 @@ $fmtBytes = static function ($bytes): string {
                     <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
-                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-xmark text-danger';
+                        $iconClass = $isOk ? 'fa-check text-success' : ($prerequisite->isSoft() ? 'fa-triangle-exclamation text-warning' : 'fa-xmark text-danger');
                     ?>
                         <tr>
-                            <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
+                            <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a><?php if (!$isOk && $prerequisite->isSoft()) { ?><div class="small text-secondary"><?= gettext('Some text will stay in English until the gettext PHP extension is enabled.') ?></div><?php } ?></td>
                         </tr>
                     <?php } ?>
                 </table>
