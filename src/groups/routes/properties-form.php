@@ -1,14 +1,19 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\GroupPropMaster;
+use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -28,20 +33,17 @@ function preparePropsFormData(int $iGroupID): array
         'aPersonDisplayFields' => [],
     ];
 
-    $rsPropList = FunctionsUtils::runQuery(
-        'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID'
-    );
-    $data['numRows'] = mysqli_num_rows($rsPropList);
-
-    for ($row = 1; $row <= $data['numRows']; $row++) {
-        $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-        $data['aNameFields'][$row]          = $aRow['prop_Name'];
-        $data['aDescFields'][$row]          = $aRow['prop_Description'];
-        $data['aSpecialFields'][$row]       = $aRow['prop_Special'];
-        $data['aFieldFields'][$row]         = $aRow['prop_Field'];
-        $data['aTypeFields'][$row]          = $aRow['type_ID'];
-        $data['aPersonDisplayFields'][$row] = ($aRow['prop_PersonDisplay'] === 'true');
+    $row = 1;
+    foreach (GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->orderByPropId()->find() as $prop) {
+        $data['aNameFields'][$row]          = $prop->getName();
+        $data['aDescFields'][$row]          = $prop->getDescription();
+        $data['aSpecialFields'][$row]       = $prop->getSpecial();
+        $data['aFieldFields'][$row]         = $prop->getField();
+        $data['aTypeFields'][$row]          = $prop->getTypeId();
+        $data['aPersonDisplayFields'][$row] = ($prop->getPersonDisplay() === 'true');
+        $row++;
     }
+    $data['numRows'] = $row - 1;
 
     return $data;
 }
@@ -97,10 +99,8 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
         // ---------------------------------------------------------------
         // Save changes to existing property names / descriptions.
         // ---------------------------------------------------------------
-        $rsPropList = FunctionsUtils::runQuery(
-            'SELECT prop_ID, prop_Field, type_ID, prop_Special, prop_PersonDisplay FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID'
-        );
-        $numRows = mysqli_num_rows($rsPropList);
+        $existingProps = GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->orderByPropId()->find();
+        $numRows = count($existingProps);
 
         $aFieldFields       = [];
         $aTypeFields        = [];
@@ -109,11 +109,12 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
         $aDescFields        = [];
         $aPersonDisplayFields = [];
 
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-            $aFieldFields[$row]   = $aRow['prop_Field'];
-            $aTypeFields[$row]    = $aRow['type_ID'];
-            $aSpecialFields[$row] = isset($aRow['prop_Special']) ? $aRow['prop_Special'] : 'NULL';
+        $row = 1;
+        foreach ($existingProps as $prop) {
+            $aFieldFields[$row]   = $prop->getField();
+            $aTypeFields[$row]    = $prop->getTypeId();
+            $aSpecialFields[$row] = $prop->getSpecial() ?? 'NULL';
+            $row++;
         }
 
         for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
@@ -141,14 +142,16 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
 
         if (!$bErrorFlag) {
             for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-                $temp = $aPersonDisplayFields[$iPropID] ? 'true' : 'false';
-                $sql  = "UPDATE groupprop_master
-                    SET `prop_Name` = '" . $aNameFields[$iPropID] . "',
-                        `prop_Description` = '" . $aDescFields[$iPropID] . "',
-                        `prop_Special` = " . $aSpecialFields[$iPropID] . ",
-                        `prop_PersonDisplay` = '" . $temp . "'
-                    WHERE `grp_ID` = '" . $iGroupID . "' AND `prop_ID` = '" . $iPropID . "';";
-                FunctionsUtils::runQuery($sql);
+                $special = $aSpecialFields[$iPropID];
+                GroupPropMasterQuery::create()
+                    ->filterByGrpId($iGroupID)
+                    ->filterByPropId($iPropID)
+                    ->update([
+                        'Name' => $aNameFields[$iPropID],
+                        'Description' => $aDescFields[$iPropID],
+                        'Special' => ($special === 'NULL' || $special === null) ? null : (int) $special,
+                        'PersonDisplay' => $aPersonDisplayFields[$iPropID] ? 'true' : 'false',
+                    ]);
             }
         }
 
@@ -171,72 +174,70 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
         } else {
-            $rsPropNames = FunctionsUtils::runQuery('SELECT prop_Name FROM groupprop_master WHERE grp_ID = ' . $iGroupID);
-            while ($aRow = mysqli_fetch_array($rsPropNames)) {
-                if ($aRow[0] === $newFieldName) {
-                    $bDuplicateNameError = true;
-                    break;
-                }
-            }
+            $duplicate = GroupPropMasterQuery::create()
+                ->filterByGrpId($iGroupID)
+                ->filterByName($newFieldName)
+                ->count();
+            $bDuplicateNameError = $duplicate > 0;
 
             if (!$bDuplicateNameError) {
-                $rsPropList = FunctionsUtils::runQuery('SELECT prop_ID FROM groupprop_master WHERE grp_ID = ' . $iGroupID);
-                $newRowNum  = mysqli_num_rows($rsPropList) + 1;
+                $newRowNum = GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->count() + 1;
 
-                $tableName    = 'groupprop_' . $iGroupID;
-                $fieldsResult = FunctionsUtils::runQuery('SELECT * FROM ' . $tableName);
-                $newFieldNum  = mysqli_num_fields($fieldsResult);
+                $columns = Propel::getConnection()->query('SHOW COLUMNS FROM `groupprop_' . $iGroupID . '`')->fetchAll();
+                $newFieldNum = count($columns);
 
                 // Guard: only types 1–12 have a known column definition.
                 if (!in_array($newFieldType, range(1, 12), true)) {
                     $bNewNameError = true; // re-render form with no change
                 } else {
-                if ($newFieldType == 12) {
-                    $rsTempMax = FunctionsUtils::runQuery('SELECT MAX(lst_ID) FROM list_lst');
-                    $aTemp     = mysqli_fetch_array($rsTempMax);
-                    $newListID = ($aTemp[0] > 9) ? $aTemp[0] + 1 : 10;
+                    $newProp = new GroupPropMaster();
+                    $newProp
+                        ->setGrpId($iGroupID)
+                        ->setPropId($newRowNum)
+                        ->setField('c' . $newFieldNum)
+                        ->setName($newFieldName)
+                        ->setDescription($newFieldDesc)
+                        ->setTypeId($newFieldType);
+                    if ($newFieldType == 12) {
+                        $maxList = ListOptionQuery::create()->orderById(Criteria::DESC)->findOne();
+                        $maxListId = (int) ($maxList?->getId() ?? 0);
+                        $newListID = $maxListId > 9 ? $maxListId + 1 : 10;
 
-                    $listOption = new ListOption();
-                    $listOption->setId($newListID)->setOptionId(1)->setOptionSequence(1)->setOptionName(gettext('Default Option'));
-                    $listOption->save();
+                        $listOption = new ListOption();
+                        $listOption->setId($newListID)->setOptionId(1)->setOptionSequence(1)->setOptionName(gettext('Default Option'));
+                        $listOption->save();
 
-                    $newSpecial = "'" . $newListID . "'";
-                } else {
-                    $newSpecial = 'NULL';
+                        $newProp->setSpecial($newListID);
+                    }
+                    $newProp->save();
+
+                    $alterSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` ADD `c' . $newFieldNum . '` ';
+                    switch ($newFieldType) {
+                        case 1:  $alterSQL .= "ENUM('false', 'true')"; break;
+                        case 2:  $alterSQL .= 'DATE'; break;
+                        case 3:  $alterSQL .= 'VARCHAR(50)'; break;
+                        case 4:  $alterSQL .= 'VARCHAR(100)'; break;
+                        case 5:  $alterSQL .= 'TEXT'; break;
+                        case 6:  $alterSQL .= 'YEAR'; break;
+                        case 7:  $alterSQL .= "ENUM('winter', 'spring', 'summer', 'fall')"; break;
+                        case 8:  $alterSQL .= 'INT'; break;
+                        case 9:  $alterSQL .= 'MEDIUMINT(9)'; break;
+                        case 10: $alterSQL .= 'DECIMAL(10,2)'; break;
+                        case 11: $alterSQL .= 'VARCHAR(30)'; break;
+                        case 12: $alterSQL .= 'TINYINT(4)'; break;
+                    }
+                    $alterSQL .= ' DEFAULT NULL;';
+                    $alterResult = FunctionsUtils::runQuery($alterSQL, false);
+
+                    if (!$alterResult) {
+                        $logger->warning('Failed to add column to group properties table', [
+                            'column'   => 'c' . $newFieldNum,
+                            'group_id' => $iGroupID,
+                        ]);
+                    }
+
+                    $bNewNameError = false;
                 }
-
-                $insertSQL = "INSERT INTO `groupprop_master`
-                    ( `grp_ID` , `prop_ID` , `prop_Field` , `prop_Name` , `prop_Description` , `type_ID` , `prop_Special` )
-                    VALUES ('" . $iGroupID . "', '" . $newRowNum . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', '" . $newFieldDesc . "', '" . $newFieldType . "', $newSpecial);";
-                FunctionsUtils::runQuery($insertSQL);
-
-                $alterSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` ADD `c' . $newFieldNum . '` ';
-                switch ($newFieldType) {
-                    case 1:  $alterSQL .= "ENUM('false', 'true')"; break;
-                    case 2:  $alterSQL .= 'DATE'; break;
-                    case 3:  $alterSQL .= 'VARCHAR(50)'; break;
-                    case 4:  $alterSQL .= 'VARCHAR(100)'; break;
-                    case 5:  $alterSQL .= 'TEXT'; break;
-                    case 6:  $alterSQL .= 'YEAR'; break;
-                    case 7:  $alterSQL .= "ENUM('winter', 'spring', 'summer', 'fall')"; break;
-                    case 8:  $alterSQL .= 'INT'; break;
-                    case 9:  $alterSQL .= 'MEDIUMINT(9)'; break;
-                    case 10: $alterSQL .= 'DECIMAL(10,2)'; break;
-                    case 11: $alterSQL .= 'VARCHAR(30)'; break;
-                    case 12: $alterSQL .= 'TINYINT(4)'; break;
-                }
-                $alterSQL .= ' DEFAULT NULL;';
-                $alterResult = FunctionsUtils::runQuery($alterSQL, false);
-
-                if (!$alterResult) {
-                    $logger->warning('Failed to add column to group properties table', [
-                        'column'   => 'c' . $newFieldNum,
-                        'group_id' => $iGroupID,
-                    ]);
-                }
-
-                $bNewNameError = false;
-                } // end type-range guard
             }
         }
     }
@@ -265,10 +266,9 @@ function buildPropsFormPageArgs(
     $aPropTypes = CustomFieldUtils::getPropTypes();
 
     // For type=9 (Person from Group) special select, load group list
-    $rsGroupList = FunctionsUtils::runQuery('SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name');
-    $aGroupList  = [];
-    while ($aRow = mysqli_fetch_array($rsGroupList)) {
-        $aGroupList[] = ['grp_ID' => $aRow['grp_ID'], 'grp_Name' => $aRow['grp_Name']];
+    $aGroupList = [];
+    foreach (GroupQuery::create()->orderByName()->find() as $group) {
+        $aGroupList[] = ['grp_ID' => $group->getId(), 'grp_Name' => $group->getName()];
     }
 
     $aBreadcrumbs = PageHeader::breadcrumbs([

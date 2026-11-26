@@ -19,17 +19,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
 <?php
-// Unpack commonly used personData fields
-$sClassName    = $personData['sClassName'] ?? '';
-$sFamRole      = $personData['sFamRole'] ?? '';
-$per_MembershipDate = $personData['per_MembershipDate'] ?? null;
-$per_FriendDate     = $personData['per_FriendDate'] ?? '';
-$per_Facebook       = $personData['per_Facebook'] ?? '';
-$per_Twitter        = $personData['per_Twitter'] ?? '';
-$per_LinkedIn       = $personData['per_LinkedIn'] ?? '';
-$per_WorkEmail      = $personData['per_WorkEmail'] ?? '';
-$fam_Latitude       = (float) ($personData['fam_Latitude'] ?? 0);
-$fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
+$familyRole = $person->getFamilyRole();
+$sClassName = $person->getClassificationName();
+$sFamRole = $familyRole !== null ? $familyRole->getOptionName() : '';
+$per_MembershipDate = $person->getMembershipDate();
+$per_MembershipDate = $per_MembershipDate instanceof \DateTimeInterface ? $per_MembershipDate : null;
+$friendDate = $person->getFriendDate();
+$per_FriendDate = $friendDate instanceof \DateTimeInterface ? $friendDate->format('Y-m-d') : '';
+$per_Facebook = $person->getFacebook() ?? '';
+$per_Twitter = $person->getTwitter() ?? '';
+$per_LinkedIn = $person->getLinkedIn() ?? '';
+$per_WorkEmail = $person->getWorkEmail() ?? '';
 ?>
 
 <?php
@@ -645,28 +645,9 @@ if ($person->isMale()) {
                                                 <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
                                                 <?php } ?>
                                                 <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
-                                                <?php
-                                                if ($grp_hasSpecialProps) {
-                                                    $grp_ID_int = (int)$grp_ID;
-                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID_int . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
-                                                    $rsPropList = RunQuery($sSQL);
-                                                    $sSQL = 'SELECT * FROM groupprop_' . $grp_ID_int . ' WHERE per_ID = ' . $iPersonID;
-                                                    $rsPersonProps = RunQuery($sSQL);
-                                                    $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
-                                                    while ($aProps = mysqli_fetch_array($rsPropList)) {
-                                                        $prop_Name    = $aProps['prop_Name'];
-                                                        $prop_Field   = $aProps['prop_Field'];
-                                                        $type_ID      = $aProps['type_ID'];
-                                                        $prop_Special = $aProps['prop_Special'] ?? null;
-                                                        $currentData  = isset($aPersonProps[$prop_Field]) ? trim($aPersonProps[$prop_Field]) : '';
-                                                        if (strlen($currentData) > 0) {
-                                                            if ((int)$type_ID === 11) {
-                                                                $prop_Special = null;
-                                                            }
-                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $prop_Special)) . '</small>';
-                                                        }
-                                                    }
-                                                } ?>
+                                                <?php foreach ($aRow['specialProps'] as $specialProp) { ?>
+                                                    <br><small class="text-body-secondary"><strong><?= InputUtils::escapeHTML($specialProp['name']) ?></strong>: <?= InputUtils::escapeHTML($specialProp['value']) ?></small>
+                                                <?php } ?>
                                             </div>
                                             <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                                             <div class="dropdown">

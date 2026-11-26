@@ -8,7 +8,10 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -38,21 +41,15 @@ $aNameErrors = [];
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
     // Fill in the other needed custom field data arrays not gathered from the form submit
-    $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
-    $rsCustomFields = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsCustomFields);
+    $customMasters = FamilyCustomMasterQuery::create()->orderByOrder()->find();
+    $numRows = count($customMasters);
 
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
-        extract($aRow);
-
-        $aFieldFields[$row] = $fam_custom_Field;
-        $aTypeFields[$row] = $type_ID;
-        if (isset($fam_custom_Special)) {
-            $aSpecialFields[$row] = $fam_custom_Special;
-        } else {
-            $aSpecialFields[$row] = 'NULL';
-        }
+    $row = 1;
+    foreach ($customMasters as $customField) {
+        $aFieldFields[$row] = $customField->getField();
+        $aTypeFields[$row] = $customField->getTypeId();
+        $aSpecialFields[$row] = $customField->getCustomSpecial() ?? 'NULL';
+        $row++;
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
@@ -108,14 +105,7 @@ if (isset($_POST['SaveChanges'])) {
             // This should never happen, but check anyhow.
             // $bNewTypeError = true;
         } else {
-            $sSQL = 'SELECT fam_custom_Name FROM family_custom_master';
-            $rsCustomNames = RunQuery($sSQL);
-            while ($aRow = mysqli_fetch_array($rsCustomNames)) {
-                if ($aRow[0] == $newFieldName) {
-                    $bDuplicateNameError = true;
-                    break;
-                }
-            }
+            $bDuplicateNameError = FamilyCustomMasterQuery::create()->filterByName($newFieldName)->count() > 0;
 
             if (!$bDuplicateNameError) {
                 $connection = Bootstrapper::getMysqliConnection();
@@ -138,13 +128,9 @@ if (isset($_POST['SaveChanges'])) {
                 if ($newFieldType == 12) {
                     // Get the first available lst_ID for insertion.
                     // lst_ID 0-9 are reserved for permanent lists.
-                    $sSQL = 'SELECT MAX(lst_ID) FROM list_lst';
-                    $aTemp = mysqli_fetch_array(RunQuery($sSQL));
-                    if ($aTemp[0] > 9) {
-                        $newListID = $aTemp[0] + 1;
-                    } else {
-                        $newListID = 10;
-                    }
+                    $maxList = ListOptionQuery::create()->orderById(Criteria::DESC)->findOne();
+                    $maxListId = (int) ($maxList?->getId() ?? 0);
+                    $newListID = $maxListId > 9 ? $maxListId + 1 : 10;
 
                     // Insert into the lists table with an example option.
                     $listOption = new ListOption();
@@ -220,35 +206,36 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     // Get data for the form as it now exists..
-    $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
+    $customMasters = FamilyCustomMasterQuery::create()->orderByOrder()->find();
+    $numRows = count($customMasters);
 
-    $rsCustomFields = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsCustomFields);
-
-    // Create arrays of the fields.
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
-        extract($aRow);
-
-        $aNameFields[$row] = $fam_custom_Name;
-        $aSpecialFields[$row] = $fam_custom_Special;
-        $aFieldFields[$row] = $fam_custom_Field;
-        $aTypeFields[$row] = $type_ID;
-        $aFieldSecurity[$row] = $fam_custom_FieldSec;
+    $row = 1;
+    foreach ($customMasters as $customField) {
+        $aNameFields[$row] = $customField->getName();
+        $aSpecialFields[$row] = $customField->getCustomSpecial();
+        $aFieldFields[$row] = $customField->getField();
+        $aTypeFields[$row] = $customField->getTypeId();
+        $aFieldSecurity[$row] = $customField->getFieldSecurity();
         $aNameErrors[$row] = false;
+        $row++;
     }
 }
 
 // Prepare Security Group list
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-    $rsSecurityGrp = RunQuery($sSQL);
-
+    $aSecurityType = [];
     $aSecurityGrp = [];
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    $aSecurityGrp[] = $aRow;
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
-}
+    foreach (ListOptionQuery::create()->filterById(5)->orderByOptionSequence()->find() as $option) {
+        $aSecurityGrp[] = [
+            'lst_OptionID' => $option->getOptionId(),
+            'lst_OptionName' => $option->getOptionName(),
+        ];
+        $aSecurityType[$option->getOptionId()] = $option->getOptionName();
+    }
+
+    $familyFieldGroups = [];
+    foreach (GroupQuery::create()->orderByName()->find() as $group) {
+        $familyFieldGroups[] = ['grp_ID' => $group->getId(), 'grp_Name' => $group->getName()];
+    }
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
@@ -386,17 +373,12 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                         echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                         echo '<option value="0">' . gettext('Select a group') . '</option>';
 
-                        $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
-                        $rsGroupList = RunQuery($sSQL);
-
-                        while ($aRow = mysqli_fetch_array($rsGroupList)) {
-                            extract($aRow);
-
-                            echo '<option value="' . InputUtils::escapeAttribute($grp_ID) . '"';
-                            if ($aSpecialFields[$row] == $grp_ID) {
+                        foreach ($familyFieldGroups as $groupOption) {
+                            echo '<option value="' . InputUtils::escapeAttribute($groupOption['grp_ID']) . '"';
+                            if ($aSpecialFields[$row] == $groupOption['grp_ID']) {
                                 echo ' selected';
                             }
-                            echo '>' . InputUtils::escapeHTML($grp_Name) . '</option>';
+                            echo '>' . InputUtils::escapeHTML($groupOption['grp_Name']) . '</option>';
                         }
 
                         echo '</select>';
