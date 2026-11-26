@@ -23,6 +23,10 @@ function curl_init(string $url): false
 $GLOBALS['telemetryTransportCalls'] = 0;
 putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 putenv('PHP_TEST_DISPOSABLE_DB');
+foreach (['CI', 'CONTINUOUS_INTEGRATION'] as $ciVariable) {
+    putenv($ciVariable);
+    unset($_ENV[$ciVariable], $_SERVER[$ciVariable]);
+}
 SystemURLs::init('', [], APP_ROOT);
 
 foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test'] as $stored => $expected) {
@@ -42,6 +46,31 @@ foreach (['' => 'production', 'invalid' => 'production', 'production' => 'produc
 }
 Assert::same('test', TelemetryService::resolveInstallProfile('production', false, true, true));
 Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true, false));
+
+foreach (['CI' => 'true', 'CONTINUOUS_INTEGRATION' => '1'] as $ciVariable => $ciValue) {
+    putenv($ciVariable . '=' . $ciValue);
+    foreach (['', 'invalid', 'production', 'demo', 'test'] as $stored) {
+        Assert::same('test', TelemetryService::resolveInstallProfile($stored, false));
+        Assert::same('test', TelemetryService::resolveInstallProfile($stored, false, true));
+    }
+    putenv($ciVariable);
+    unset($_ENV[$ciVariable], $_SERVER[$ciVariable]);
+    foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test'] as $stored => $expected) {
+        Assert::same($expected, TelemetryService::resolveInstallProfile($stored, false));
+        Assert::same($stored === 'test' ? 'test' : 'demo', TelemetryService::resolveInstallProfile($stored, false, true));
+    }
+}
+foreach (['false', '0', ''] as $ciValue) {
+    putenv('CI=' . $ciValue);
+    Assert::same('production', TelemetryService::resolveInstallProfile('production', false));
+    Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true));
+}
+putenv('CI');
+unset($_ENV['CI'], $_SERVER['CI']);
+$_SERVER['CI'] = 'true';
+Assert::same('test', TelemetryService::resolveInstallProfile('production', false));
+unset($_SERVER['CI']);
+Assert::same('production', TelemetryService::resolveInstallProfile('production', false));
 
 $value = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
@@ -83,7 +112,11 @@ foreach (['production', 'demo', 'test'] as $profile) {
     Assert::same($suppressed ? 0 : 14, $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
-$configs->setValue(null, ['sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
+$configs->setValue(null, [
+    'sInstallDataProfile' => $value('production'),
+    'sLanguage' => $value('en_US'),
+    'sTelemetryLevel' => $value('full'),
+]);
 foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $override) {
     putenv($override . '=1');
     Assert::same('test', TelemetryService::installProfile());
@@ -95,6 +128,19 @@ foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $o
     TelemetryService::captureVersionMismatch('7.9.0', 'upgrade_failed');
     Assert::same($before, $GLOBALS['telemetryTransportCalls']);
     putenv($override);
+}
+Assert::same('production', TelemetryService::installProfile());
+
+foreach (['CI' => 'true', 'CONTINUOUS_INTEGRATION' => '1'] as $ciVariable => $ciValue) {
+    putenv($ciVariable . '=' . $ciValue);
+    Assert::same('test', TelemetryService::installProfile());
+    Assert::same('test', $baseProperties->invoke(null)['install_profile']);
+    $before = $GLOBALS['telemetryTransportCalls'];
+    TelemetryService::captureInstallFailure('schema_import_failed');
+    TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Approved plugin entry rejected'));
+    Assert::same($before, $GLOBALS['telemetryTransportCalls']);
+    putenv($ciVariable);
+    unset($_ENV[$ciVariable], $_SERVER[$ciVariable]);
 }
 Assert::same('production', TelemetryService::installProfile());
 

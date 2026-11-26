@@ -29,5 +29,12 @@ spl_autoload_register(static function (string $class): void {
 (new ReflectionProperty(SystemIdentity::class, 'path'))
     ->setValue(null, sys_get_temp_dir() . '/crm-system-id-' . bin2hex(random_bytes(6)) . '.php');
 
+// GitHub Actions sets CI=true. Telemetry treats that as a test install, so the
+// suite starts clean and a test opts in by setting the variable itself.
+foreach (['CI', 'CONTINUOUS_INTEGRATION'] as $ciVariable) {
+    putenv($ciVariable);
+    unset($_ENV[$ciVariable], $_SERVER[$ciVariable]);
+}
+
 Environment::setup();
 date_default_timezone_set('UTC');
