@@ -118,10 +118,10 @@ Dockerfiles and workflow helpers. Human publication of a draft triggers the
 normal release event. Workflow runs are serialized; GitHub concurrency retains
 only one pending run, so rerun any displaced release explicitly.
 
-PHP image references pin PHP 8.4.27, Debian Trixie and the multi-platform digest.
+PHP image references pin PHP 8.5.13, Debian Trixie and the multi-platform digest.
 Update both the tag and digest together, keep builder and runtime references
 identical, and rerun production image tests. The `PHP_IMAGE` build argument must
-remain a compatible PHP 8.4+ image of the same server flavor and Debian suite.
+remain a compatible PHP 8.5 image of the same server flavor and Debian suite.
 Pinning does not replace regular security updates. Debian packages are still
 resolved from live repositories, so builds are not bit-for-bit reproducible.
 

@@ -11,7 +11,7 @@
 #   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
 #   opcache, pdo_mysql, sodium, xml, zip
 
-FROM dunglas/frankenphp:1-php8.4 AS base
+FROM dunglas/frankenphp:1-php8.5 AS base
 LABEL maintainer="ChurchCRM"
 
 # Expose HTTP (HTTPS/HTTP2 can be enabled via Caddyfile)
