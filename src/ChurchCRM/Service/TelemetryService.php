@@ -42,7 +42,8 @@ class TelemetryService
 
     public static function resolveInstallProfile(string $storedProfile, bool $testOverride, bool $demoHost = false, bool $devSystemId = false): string
     {
-        if ($testOverride || $devSystemId) {
+        // CI sets CI or CONTINUOUS_INTEGRATION. A church server does not, so that process is a test install.
+        if ($testOverride || $devSystemId || self::isContinuousIntegration()) {
             return 'test';
         }
         if ($demoHost && $storedProfile !== 'test') {
@@ -65,8 +66,37 @@ class TelemetryService
         // Config can initialize during setup or change during a demo import in this request.
         $demoHost = self::isKnownDemoHost((string) ($_SERVER['HTTP_HOST'] ?? ''));
         $devSystemId = SystemIdentity::read() === self::DEV_SYSTEM_ID;
-        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '') . ($devSystemId ? ':devid' : '');
+        $continuousIntegration = self::isContinuousIntegration();
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '') . ($devSystemId ? ':devid' : '') . ($continuousIntegration ? ':ci' : '');
         return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride, $demoHost, $devSystemId);
+    }
+
+    /** True when this process is a CI runner. Empty, 0, and false are not. */
+    private static function isContinuousIntegration(): bool
+    {
+        foreach (['CI', 'CONTINUOUS_INTEGRATION'] as $name) {
+            $value = self::environmentValue($name);
+            if ($value !== null && !in_array(strtolower($value), ['', '0', 'false'], true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static function environmentValue(string $name): ?string
+    {
+        $value = getenv($name);
+        if (!is_string($value)) {
+            foreach ([$_ENV, $_SERVER] as $source) {
+                if (isset($source[$name]) && is_string($source[$name])) {
+                    $value = $source[$name];
+                    break;
+                }
+            }
+        }
+
+        return is_string($value) ? trim($value) : null;
     }
 
     public static function getLevel(): string
