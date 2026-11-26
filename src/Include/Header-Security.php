@@ -6,7 +6,7 @@
  * This file configures security-related HTTP headers for ChurchCRM:
  *
  * - Content-Security-Policy (CSP): Helps protect against XSS attacks
- *   By default, CSP is in report-only mode. Enable enforcement via
+ *   CSP is enforced by default. Switch to report-only via
  *   System Settings > bEnforceCSP configuration option.
  *   CSP violations are reported to /api/public/csp-report (public endpoint).
  *
@@ -37,7 +37,7 @@ $posthogAssetsDomain = $telemetryEnabled
 
 $csp = [
     "default-src 'self'",
-    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com"
+    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' browser-update.org https://www.googletagmanager.com"
         . ($telemetryEnabled ? ' ' . $posthogAssetsDomain : ''),
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",

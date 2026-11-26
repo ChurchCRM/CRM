@@ -113,7 +113,7 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
           <div class="row g-3 mb-2">
             <div class="col-md-3">
               <label for="deposit-slip-fyid" class="form-label"><?= gettext('Fiscal Year') ?></label>
-              <select class="form-select" id="deposit-slip-fyid" name="fyid" onchange="(function(sel){sel.form.dateStart.value='';sel.form.dateEnd.value='';var p=new URLSearchParams();new FormData(sel.form).forEach(function(v,k){if(v!=='')p.append(k,v);});window.location.href=sel.form.action+(p.toString()?'?'+p.toString():'');})(this)">
+              <select class="form-select" id="deposit-slip-fyid" name="fyid" data-auto-submit data-clear="dateStart,dateEnd">
                 <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                 <?php foreach ($availableYears as $year): ?>
                 <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>

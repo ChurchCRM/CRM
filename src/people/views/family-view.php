@@ -886,7 +886,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="assign-family-property-form" onsubmit="return false;">
+                <form method="post" id="assign-family-property-form">
                     <div class="mb-3">
                         <select name="PropertyId" id="input-family-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
                                     <option value=""></option>

@@ -61,7 +61,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="hidden" name="csrf_token" value="<?= InputUtils::escapeAttribute($csrfToken) ?>">
                         <div class="mb-3">
                             <label class="form-label" for="GroupID"><?= gettext('Select Group') ?></label>
-                            <select id="GroupID" name="GroupID" class="form-select" onchange="UpdateRoles();" required>
+                            <select id="GroupID" name="GroupID" class="form-select" required>
                                 <option value="" disabled selected><?= gettext('Choose a group...') ?></option>
                                 <?php foreach ($aGroups as $group) { ?>
                                     <option value="<?= InputUtils::escapeAttribute($group->getID()) ?>">

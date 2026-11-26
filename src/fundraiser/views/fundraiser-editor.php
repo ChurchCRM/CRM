@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
       <div class="d-flex gap-2">
         <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
-        <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" onclick="document.location='<?= $sRootPath ?>/fundraiser/';">
+        <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" data-href="<?= $sRootPath ?>/fundraiser/">
       </div>
 
     </form>

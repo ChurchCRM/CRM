@@ -37,7 +37,7 @@ function setExternalCalendarApi(enabled) {
  *
  * We check whichever CSP flavour the server sends
  * (Content-Security-Policy or Content-Security-Policy-Report-Only —
- *  determined by the bEnforceCSP system config, defaulting to report-only).
+ *  determined by the bEnforceCSP system config, defaulting to enforced).
  */
 function assertFramingHeadersOpen(response) {
     // Must NOT send X-Frame-Options — its absence means no legacy restriction.

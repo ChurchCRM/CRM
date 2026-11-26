@@ -154,7 +154,7 @@ if ($sReportType === '') {
     <?php endif; ?>
 
       <div class="d-flex gap-2 mt-3">
-        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Back') ?>" onclick="javascript:document.location='FinancialReports.php';">
+        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Back') ?>" data-href="FinancialReports.php">
         <input type="submit" class="btn btn-primary" id="createReport" name="Submit2" value="<?= gettext('Create Report') ?>">
       </div>
     </form>

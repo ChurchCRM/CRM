@@ -436,3 +436,27 @@ function initializeFAB() {
     }
   });
 }
+
+// CSP-safe replacements for inline handlers (the policy blocks inline attributes).
+document.addEventListener("change", function (e) {
+  var el = e.target;
+  if (el.matches && el.matches("select[data-auto-submit]") && el.form) {
+    (el.getAttribute("data-clear") || "").split(",").forEach(function (n) {
+      if (n && el.form.elements[n]) {
+        el.form.elements[n].value = "";
+      }
+    });
+    el.form.submit();
+  }
+});
+document.addEventListener("click", function (e) {
+  var el = e.target.closest ? e.target.closest("[data-print],[data-href]") : null;
+  if (!el) {
+    return;
+  }
+  if (el.hasAttribute("data-print")) {
+    window.print();
+  } else {
+    window.location.href = el.getAttribute("data-href");
+  }
+});

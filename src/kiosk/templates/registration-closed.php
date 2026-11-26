@@ -16,7 +16,7 @@ use ChurchCRM\dto\SystemURLs;
         <div class="kiosk-message-icon">🔒</div>
         <h1 class="kiosk-message-title"><?= gettext('Kiosk Registration Disabled') ?></h1>
         <p class="kiosk-message-text"><?= gettext('New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration.') ?></p>
-        <a href="javascript:location.reload()" class="kiosk-retry-btn"><?= gettext('Try Again') ?></a>
+        <a href="" class="kiosk-retry-btn"><?= gettext('Try Again') ?></a>
     </div>
 </body>
 </html>
