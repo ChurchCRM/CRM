@@ -7,7 +7,7 @@
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_IMAGE=php:8.4.27-apache-trixie@sha256:a0b75cee7023ba2c127138dcad2ecc6ec7e09435534645e70450f29f24ea2a5a
+ARG PHP_IMAGE=php:8.5.13-apache-trixie@sha256:256c25149bca6639f538ece3c5dda90684409227dec546b87ca174950569b8f1
 
 # Base stage: Apache + PHP runtime
 FROM ${PHP_IMAGE} AS base
@@ -48,7 +48,7 @@ RUN docker-php-ext-install -j$(nproc) \
         intl \
         mbstring \
         mysqli \
-        opcache \
+        $(php -r 'echo PHP_VERSION_ID < 80500 ? "opcache" : "";') \
         pdo_mysql \
         xml \
         zip && \

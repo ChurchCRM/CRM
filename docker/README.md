@@ -36,7 +36,7 @@ First start: pulls/builds base image (includes dev tools). Subsequent starts are
 
 | Service | Image | Port | Notes |
 |---------|-------|------|-------|
-| `webserver` | `churchcrm/crm:php8-debian-dev` (built once) | `80` | Apache + PHP 8.4 with dev tools (Node, Composer, Xdebug) |
+| `webserver` | `churchcrm/crm:php8-debian-dev` (built once) | `80` | Apache + PHP 8.5 with dev tools (Node, Composer, Xdebug) |
 | `database` | `mariadb:10.11` | `3306` | Seeded with demo data |
 | `mailserver` | `axllent/mailpit` | `1025`, `8025` | Fake SMTP |
 
@@ -212,7 +212,7 @@ Every stable GitHub release publishes versioned multi-arch images
 
 | Tag | Variant | Supported |
 | --- | --- | --- |
-| `<version>-php8-apache` | Apache + PHP 8.4, HTTP on 8080 | Yes — use this |
+| `<version>-php8-apache` | Apache + PHP 8.5, HTTP on 8080 | Yes — use this |
 | `latest-php8-apache`, `latest` | Newest stable Apache build | Yes, but pin a version in production |
 | `<version>-php8-fpm`, `latest-php8-fpm` | PHP-FPM, FastCGI on 9000 | No — needs your own web server |
 
