@@ -66,7 +66,7 @@ test('volunteer-staff-sunday', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'volunteer-staff-sunday',
     title: 'Staff a Sunday Service',
-    category: 'Recordings',
+    category: 'Groups & Events',
     purpose: 'Show a coordinator filling an open position from the Ministry Dashboard until it reads Full.',
   });
 });
