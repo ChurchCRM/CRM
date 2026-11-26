@@ -56,7 +56,7 @@ test('family-self-register', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'family-self-register',
     title: 'Self-Register Family',
-    category: 'Recordings',
+    category: 'People & Families',
     purpose: 'Show a visitor self-registering their family without staff involvement',
   });
 });
