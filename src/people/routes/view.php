@@ -6,11 +6,14 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Group;
-use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
@@ -23,15 +26,57 @@ use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
+
+/**
+ * Group-specific fields shown on the profile. Definitions live on groupprop_master.
+ * Values live on groupprop_{id}, a table created per group, so that read stays SQL.
+ *
+ * @return list<array{name: string, value: string}>
+ */
+function personViewGroupSpecialProps(int $groupId, int $personId): array
+{
+    $definitions = GroupPropMasterQuery::create()
+        ->filterByGrpId($groupId)
+        ->filterByPersonDisplay('true')
+        ->orderByPropId()
+        ->find();
+    if (count($definitions) === 0) {
+        return [];
+    }
+
+    $statement = Propel::getConnection()->prepare(
+        'SELECT * FROM `groupprop_' . $groupId . '` WHERE per_ID = :personId'
+    );
+    $statement->bindValue(':personId', $personId, \PDO::PARAM_INT);
+    $statement->execute();
+    $values = $statement->fetch(\PDO::FETCH_ASSOC) ?: [];
+
+    $props = [];
+    foreach ($definitions as $definition) {
+        $current = trim((string) ($values[$definition->getField()] ?? ''));
+        if ($current === '') {
+            continue;
+        }
+        $special = (int) $definition->getTypeId() === 11 ? null : $definition->getSpecial();
+        $props[] = [
+            'name' => (string) $definition->getName(),
+            'value' => CustomFieldUtils::display($definition->getTypeId(), $current, $special),
+        ];
+    }
+
+    return $props;
+}
 
 // ─── GET: main person view ───────────────────────────────────────────────────
 $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -72,56 +117,64 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     }
     $sPageHeaderButtons = PageHeader::buttons($headerButtons);
 
-    // ── Person data (raw SQL join — legacy query) ────────────────────────────
-    $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName, 'Unassigned') AS sClassName, fmr.lst_OptionName AS sFamRole,
-            b.per_FirstName AS EnteredFirstName, b.per_ID AS EnteredId,
-            b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName,
-            c.per_LastName AS EditedLastName, c.per_ID AS EditedId
-        FROM person_per a
-        LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
-        LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-        LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-        LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
-        LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
-        WHERE a.per_ID = " . $iPersonID;
-    $rsPerson   = RunQuery($sSQL);
-    $personData = mysqli_fetch_array($rsPerson, MYSQLI_ASSOC);
-
-    // ── Custom fields master (definitions) ───────────────────────────────────
     // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
     $visibleCustomFields = $person->getVisibleCustomFieldDefinitions();
+    $aCustomData = (new CustomFieldService())->getPersonValues($iPersonID);
 
-    $sSQL       = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
-    $rsCustomData = RunQuery($sSQL);
-    $aCustomData  = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH) ?: [];
-
-    // ── Groups this person is assigned to ───────────────────────────────────
-    $sSQL = 'SELECT grp_ID, grp_Name, grp_Type, grp_hasSpecialProps, p2g2r_rle_ID AS roleId,
-            role.lst_OptionName AS roleName,
-            COALESCE(grptype.lst_OptionName, \'' . gettext('Unassigned') . '\') AS groupTypeName
-        FROM group_grp
-        LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-        LEFT JOIN list_lst role ON role.lst_OptionID = p2g2r_rle_ID AND role.lst_ID = grp_RoleListID
-        LEFT JOIN list_lst grptype ON grptype.lst_OptionID = grp_Type AND grptype.lst_ID = 3
-        WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $iPersonID . '
-        ORDER BY groupTypeName, grp_Name';
-    $rsAssignedGroups     = RunQuery($sSQL);
-    $assignedGroupsData   = [];
-    while ($row = mysqli_fetch_array($rsAssignedGroups, MYSQLI_ASSOC)) {
-        $row['viewUri'] = Group::getViewURIForId((int) $row['grp_ID'], (int) $row['grp_Type'] === 4);
-        $assignedGroupsData[] = $row;
+    $typeNames = [];
+    foreach (ListOptionQuery::create()->filterById(3)->find() as $typeOption) {
+        $typeNames[(int) $typeOption->getOptionId()] = $typeOption->getOptionName();
     }
 
-    // ── All groups (for add-group dropdown) ─────────────────────────────────
-    $sSQL = 'SELECT grp_ID, grp_Name, grp_Type, COALESCE(grptype.lst_OptionName, \'' . gettext('Unassigned') . '\') AS groupTypeName
-        FROM group_grp
-        LEFT JOIN list_lst grptype ON grptype.lst_OptionID = grp_Type AND grptype.lst_ID = 3
-        ORDER BY groupTypeName, grp_Name';
-    $rsGroups     = RunQuery($sSQL);
-    $allGroupsData = [];
-    while ($row = mysqli_fetch_array($rsGroups, MYSQLI_ASSOC)) {
-        $allGroupsData[] = $row;
+    $memberships = Person2group2roleP2g2rQuery::create()
+        ->filterByPersonId($iPersonID)
+        ->joinWithGroup()
+        ->find();
+
+    $roleListIds = [];
+    foreach ($memberships as $membership) {
+        $membershipGroup = $membership->getGroup();
+        if ($membershipGroup !== null) {
+            $roleListIds[] = (int) $membershipGroup->getRoleListId();
+        }
     }
+    $roleNames = [];
+    if ($roleListIds !== []) {
+        foreach (ListOptionQuery::create()->filterById(array_values(array_unique($roleListIds)))->find() as $roleOption) {
+            $roleNames[(int) $roleOption->getId() . ':' . (int) $roleOption->getOptionId()] = $roleOption->getOptionName();
+        }
+    }
+
+    $assignedGroupsData = [];
+    foreach ($memberships as $membership) {
+        $membershipGroup = $membership->getGroup();
+        if ($membershipGroup === null) {
+            continue;
+        }
+        $typeId = (int) $membershipGroup->getType();
+        $groupId = (int) $membershipGroup->getId();
+        $assignedGroupsData[] = [
+            'grp_ID' => $groupId,
+            'grp_Name' => $membershipGroup->getName(),
+            'grp_Type' => $typeId,
+            'grp_hasSpecialProps' => (bool) $membershipGroup->getHasSpecialProps(),
+            'roleId' => (int) $membership->getRoleId(),
+            'roleName' => $roleNames[(int) $membershipGroup->getRoleListId() . ':' . (int) $membership->getRoleId()] ?? '',
+            'groupTypeName' => $typeNames[$typeId] ?? gettext('Unassigned'),
+            'viewUri' => Group::getViewURIForId($groupId, $typeId === 4),
+            'specialProps' => $membershipGroup->getHasSpecialProps()
+                ? personViewGroupSpecialProps($groupId, $iPersonID)
+                : [],
+        ];
+    }
+    usort(
+        $assignedGroupsData,
+        static function (array $a, array $b): int {
+            $byType = strcasecmp((string) $a['groupTypeName'], (string) $b['groupTypeName']);
+
+            return $byType !== 0 ? $byType : strcasecmp((string) $a['grp_Name'], (string) $b['grp_Name']);
+        }
+    );
 
     // ── Volunteer pane ───────────────────────────────────────────────────────
     // What this person is qualified for and what they are committed to next,
@@ -244,32 +297,33 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $plaintextMailingAddress = $person->getAddress();
     $formattedMailingAddress = $person->getAddress();
 
-    $sHomePhone           = $personData['per_HomePhone'] ?? '';
-    $sHomePhoneUnformatted = $personData['per_HomePhone'] ?? '';
-    $sWorkPhone           = $personData['per_WorkPhone'] ?? '';
-    $sWorkPhoneUnformatted = $personData['per_WorkPhone'] ?? '';
-    $sCellPhone           = $personData['per_CellPhone'] ?? '';
-    $sCellPhoneUnformatted = $personData['per_CellPhone'] ?? '';
-    $sEmail               = $personData['per_Email'] ?? '';
-    $sUnformattedEmail    = $personData['per_Email'] ?? '';
+    $sHomePhone           = $person->getHomePhone() ?? '';
+    $sHomePhoneUnformatted = $sHomePhone;
+    $sWorkPhone           = $person->getWorkPhone() ?? '';
+    $sWorkPhoneUnformatted = $sWorkPhone;
+    $sCellPhone           = $person->getCellPhone() ?? '';
+    $sCellPhoneUnformatted = $sCellPhone;
+    $sEmail               = $person->getEmail() ?? '';
+    $sUnformattedEmail    = $sEmail;
 
-    $per_Envelope = $personData['per_Envelope'] ?? 0;
+    $per_Envelope = $person->getEnvelope() ?? 0;
     $sEnvelope    = ($per_Envelope > 0) ? $per_Envelope : gettext('Not assigned');
 
-    $fam_ID  = $personData['fam_ID'] ?? '';
-    $fam_Name = $personData['fam_Name'] ?? '';
+    $family = $person->getFamily();
+    $fam_ID  = $family !== null ? $family->getId() : '';
+    $fam_Name = $family !== null ? ($family->getName() ?? '') : '';
 
     // Edit permission
     $bOkToEdit = $currentUser->isEditRecordsEnabled();
 
     // ── Map configuration ────────────────────────────────────────────────────
     $personMapConfig = null;
-    $famLat          = (float) ($personData['fam_Latitude'] ?? 0);
-    $famLng          = (float) ($personData['fam_Longitude'] ?? 0);
-    $familyHasCoords = ($fam_ID !== '') && $famLat !== 0.0 && $famLng !== 0.0;
+    $famLat          = $family !== null ? (float) $family->getLatitude() : 0.0;
+    $famLng          = $family !== null ? (float) $family->getLongitude() : 0.0;
+    $familyHasCoords = $family !== null && $famLat !== 0.0 && $famLng !== 0.0;
     if ($familyHasCoords) {
         $personMapConfig = ['lat' => $famLat, 'lng' => $famLng];
-    } elseif ($fam_ID === '' && !empty($personData['per_Address1']) && !SystemConfig::getBooleanValue('bHidePersonAddress')) {
+    } elseif ($family === null && !empty($person->getAddress1()) && !SystemConfig::getBooleanValue('bHidePersonAddress')) {
         $personMapConfig = ['address' => $plaintextMailingAddress];
     }
 
@@ -321,7 +375,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Person
         'person'                 => $person,
         'iPersonID'              => $iPersonID,
-        'personData'             => $personData,
         'fam_ID'                 => $fam_ID,
         'fam_Name'               => $fam_Name,
         // Computed display values
@@ -343,7 +396,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'aCustomData'            => $aCustomData,
         // Groups
         'assignedGroupsData'     => $assignedGroupsData,
-        'allGroupsData'          => $allGroupsData,
         // Volunteer pane: positions the person is qualified for and what they serve next
         'volunteerQualifications'   => $volunteerQualifications,
         'volunteerAssignments'      => $volunteerAssignments,

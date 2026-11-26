@@ -14,7 +14,7 @@ REST endpoints in ChurchCRM use Slim 4 route files and the service layer ([`serv
 
 - Entry point: `src/api/index.php`
 - Non-admin APIs live under `/api/` in `src/api/routes/<domain>/` (finance routes use `FinanceRoleAuthMiddleware`)
-- Admin-only APIs live under `/admin/api/` (`src/admin/routes/api/`) behind `AdminRoleAuthMiddleware`. Every other API lives under `/api/` and carries its own role middleware (Edit Records, Manage Groups, Finance, …); a module gets no `/{module}/api/` of its own
+- Admin-only APIs live under `/admin/api/` (`src/admin/routes/api/`) behind `AdminRoleAuthMiddleware`. Every other API lives under `/api/` and carries its own role middleware (Edit Records, Manage Groups, Finance, …); a module gets no `/{module}/api/` of its own. `npm run lint` (`admin api prefix`) fails when `src/api` uses `AdminRoleAuthMiddleware`
 - Endpoints are kebab-case (`/download-latest-release`); GET reads, POST/PUT/DELETE change state
 - Create an endpoint for external clients, AJAX operations, or logic shared across pages. A page that needs a service method calls the service directly
 
