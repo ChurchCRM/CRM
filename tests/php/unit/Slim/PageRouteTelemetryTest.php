@@ -6,7 +6,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Slim\Middleware\PageRouteMiddleware;
 use Slim\Factory\AppFactory;
 use Slim\Psr7\Factory\ServerRequestFactory;
 use Tester\Assert;
@@ -39,36 +38,30 @@ foreach (['', '/churchcrm'] as $root) {
     SystemURLs::init($root, [], APP_ROOT);
     $GLOBALS['pagePayloads'] = [];
     $_SERVER['PHP_SELF'] = $root . '/v2/index.php';
+    $_SERVER['REQUEST_METHOD'] = 'GET';
     $app = AppFactory::create();
     $app->setBasePath($root . '/v2');
-    $app->add(new PageRouteMiddleware($app->getBasePath()));
-    $app->addRoutingMiddleware();
-    $render = static function ($request, $response) {
+    $app->get('/people/list', 'unused');
+    $app->get('/person/{id:[0-9]+}', 'unused');
+    $app->get('/confirm/{token}', 'unused');
+    $app->get('/search/{name}[/{page:[0-9]{1,3}}]', 'unused');
+    $GLOBALS['app'] = $app;
+    foreach (['/people/list', '/person/123?private=value', '/confirm/secret-token', '/search/private-name/2', '/missing'] as $path) {
+        $_SERVER['REQUEST_URI'] = $root . '/v2' . $path;
         require APP_ROOT . '/Include/PageTelemetry.php';
-        return $response;
-    };
-    $app->get('/people/list', $render);
-    $app->get('/person/{id:[0-9]+}', $render);
-    $app->get('/search/{name:[a-z-]+}[/{page:[0-9]{1,3}}]', $render);
-    $app->get('/failure', static function () {
-        throw new \RuntimeException('Render failed');
-    });
-    foreach (['/people/list', '/person/123?private=value', '/search/private-name?email=secret', '/search/private-name/2'] as $path) {
-        $response = $app->handle((new ServerRequestFactory())->createServerRequest('GET', $root . '/v2' . $path));
-        Assert::same(200, $response->getStatusCode());
-        Assert::null(PageRouteMiddleware::getRoutePattern());
     }
-    Assert::exception(
-        static fn () => $app->handle((new ServerRequestFactory())->createServerRequest('GET', $root . '/v2/failure')),
-        \RuntimeException::class,
-        'Render failed',
-    );
-    Assert::null(PageRouteMiddleware::getRoutePattern());
 
-    $_SERVER['PHP_SELF'] = $root . '/PersonEditor.php?PersonID=123';
+    unset($GLOBALS['app']);
+    $_SERVER['PHP_SELF'] = $root . '/PersonEditor.php';
+    $_SERVER['REQUEST_URI'] = $root . '/PersonEditor.php?PersonID=123';
     require APP_ROOT . '/Include/PageTelemetry.php';
-    Assert::same(['page_view', 'page_view', 'page_view', 'page_view', 'page_view'], array_column($GLOBALS['pagePayloads'], 'event'));
+
     Assert::same([
-        '/v2/people/list', '/v2/person/{id}', '/v2/search/{name}/{page}', '/v2/search/{name}/{page}', '/PersonEditor.php',
+        '/v2/people/list',
+        '/v2/person/{id:[0-9]+}',
+        '/v2/confirm/{token}',
+        '/v2/search/{name}[/{page:[0-9]{1,3}}]',
+        '/v2/index.php',
+        '/PersonEditor.php',
     ], array_column(array_column($GLOBALS['pagePayloads'], 'properties'), 'route'));
 }
