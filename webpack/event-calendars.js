@@ -2,10 +2,22 @@
 // temporal-polyfill must come first: it sets globalThis.Temporal, which FC reads at module load.
 import "temporal-polyfill/global";
 import { Calendar } from "fullcalendar/all";
+import breezyTheme from "fullcalendar/themes/breezy";
+import classicTheme from "fullcalendar/themes/classic";
 import formaTheme from "fullcalendar/themes/forma";
+import monarchTheme from "fullcalendar/themes/monarch";
+import pulseTheme from "fullcalendar/themes/pulse";
 import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
+import "fullcalendar/themes/classic/theme.css";
+import "fullcalendar/themes/classic/palette.css";
+import "fullcalendar/themes/breezy/theme.css";
+import "fullcalendar/themes/breezy/palettes/amber.css";
+import "fullcalendar/themes/monarch/theme.css";
+import "fullcalendar/themes/monarch/palettes/blue.css";
+import "fullcalendar/themes/pulse/theme.css";
+import "fullcalendar/themes/pulse/palettes/blue.css";
 import { alertAction, confirmAction } from "./common/confirm-action";
 import { copyText } from "./common/copy-to-clipboard";
 import { applyFcLocale } from "./common/fc-locale";
@@ -622,9 +634,23 @@ function initializeCalendar() {
   const desktopHeaderToolbar = {
     start: "prev,next today",
     center: "title",
-    end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+    end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth,printCalendar",
   };
-  const mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
+  const mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth,printCalendar" };
+  const calendarSettings = window.CRM.calendarJSArgs;
+  const userSettings = calendarSettings.userCalendarSettings || {};
+  const isMobile = window.innerWidth < 768;
+  const systemDefaultView = isMobile ? calendarSettings.mobileDefaultView : calendarSettings.desktopDefaultView;
+  const initialView = userSettings.view || systemDefaultView;
+  const themeName = userSettings.theme || calendarSettings.theme;
+  const themes = {
+    forma: formaTheme,
+    classic: classicTheme,
+    breezy: breezyTheme,
+    monarch: monarchTheme,
+    pulse: pulseTheme,
+  };
+  const chosenTheme = themes[themeName] ? themeName : "forma";
 
   // FullCalendar's "today" highlight is computed from `now`. Default `now` is
   // the actual current moment, but FC reads its date components in a way that
@@ -651,17 +677,39 @@ function initializeCalendar() {
   })();
 
   window.CRM.fullcalendar = new Calendar(document.getElementById("calendar"), {
-    plugins: [formaTheme],
+    plugins: [themes[chosenTheme]],
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
-    initialView: window.innerWidth < 768 ? "listMonth" : "dayGridMonth",
+    initialView,
+    buttons: {
+      printCalendar: {
+        text: i18next.t("Print"),
+        click: () => {
+          const printView = userSettings.printView || calendarSettings.printView;
+          const printStyle = userSettings.printStyle || calendarSettings.printStyle;
+          const calendar = window.CRM.fullcalendar;
+          const originalView = calendar.view.type;
+          const targetView = printView === "current" ? originalView : printView;
+          const restore = () => {
+            document.body.classList.remove("crm-calendar-printing", "crm-calendar-print-compact");
+            window.removeEventListener("afterprint", restore);
+            if (calendar.view.type !== originalView) calendar.changeView(originalView);
+          };
+          document.body.classList.add("crm-calendar-printing");
+          if (printStyle === "compact") document.body.classList.add("crm-calendar-print-compact");
+          window.addEventListener("afterprint", restore, { once: true });
+          if (targetView !== originalView) calendar.changeView(targetView);
+          window.setTimeout(() => window.print(), 150);
+        },
+      },
+    },
     buttonClass: (button) => {
       if (button.isIconOnly) return "btn btn-sm btn-icon btn-ghost-secondary";
       if (button.buttonGroup) return `btn btn-sm ${button.isSelected ? "btn-primary" : "btn-ghost-secondary"}`;
       return "btn btn-sm btn-outline-secondary";
     },
-    headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
+    headerToolbar: isMobile ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
     footerToolbarClass: "crm-fc-footer-toolbar",
@@ -672,6 +720,7 @@ function initializeCalendar() {
     eventResize: window.moveEventModal.handleEventResize,
     selectMirror: true,
     select: window.showNewEventForm,
+    eventClassNames: () => ["crm-calendar-print-event"],
     eventClick: (info) => {
       const eventData = info.event;
       const jsEvent = info.jsEvent;

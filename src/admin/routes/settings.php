@@ -96,11 +96,16 @@ $app->get('/settings', function (Request $request, Response $response): Response
 
             return $setting;
         }, SystemConfig::getSettingsConfig(['iDoNotSmsPropertyId']))],
-        ...($eventsOn ? [['id' => 'publicCalendarSettings', 'title' => gettext('Public Calendar'), 'icon' => 'fa-solid fa-calendar', 'settings' => array_map(static function (array $setting): array {
-            $setting['label'] = gettext('Calendar Embed Origins');
+        ...($eventsOn ? [['id' => 'calendarSettings', 'title' => gettext('Calendar'), 'icon' => 'fa-solid fa-calendar', 'settings' => array_map(static function (array $setting): array {
+            if ($setting['name'] === 'sCalendarEmbedOrigins') {
+                $setting['label'] = gettext('Calendar Embed Origins');
+            }
 
             return $setting;
-        }, SystemConfig::getSettingsConfig(['sCalendarEmbedOrigins']))]] : []),
+        }, SystemConfig::getSettingsConfig([
+            'sCalendarDefaultView', 'sCalendarMobileDefaultView', 'sCalendarTheme',
+            'sCalendarPrintView', 'sCalendarPrintStyle', 'sCalendarEmbedOrigins',
+        ]))]] : []),
         ['id' => 'reportingSettings', 'title' => gettext('Reporting'), 'icon' => 'fa-solid fa-file-pdf', 'settings' => array_map(static function (array $setting): array {
             $setting['label'] = gettext('PDF Temporary Directory');
 

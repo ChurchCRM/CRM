@@ -66,3 +66,48 @@
     border-color: var(--tblr-primary);
   }
 }
+
+@media print {
+  body.crm-calendar-printing {
+    .page-header,
+    #calendarTimezoneIndicator,
+    #calendarApiWarning,
+    #calendarSidebar,
+    .crm-fc-header-toolbar,
+    .crm-fc-footer-toolbar {
+      display: none !important;
+    }
+
+    .page-wrapper,
+    .page-body,
+    .page-body > .container-xl {
+      margin: 0 !important;
+      padding: 0 !important;
+      max-width: none !important;
+      width: 100% !important;
+    }
+
+    .page-body .card {
+      border: 0;
+      box-shadow: none;
+    }
+
+    #calendar {
+      color: #111;
+      background: #fff;
+    }
+  }
+
+  body.crm-calendar-print-compact #calendar {
+    font-size: 9pt;
+
+    .crm-calendar-print-event {
+      padding: 0 2px;
+      margin-block: 0;
+    }
+
+    .crm-calendar-print-event td {
+      padding-block: 2px;
+    }
+  }
+}
