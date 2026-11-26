@@ -6,7 +6,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\ImportantDateType;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\ImportantDateService;
-use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -267,4 +267,4 @@ $app->group('/family/{familyId:[0-9]+}/important-dates', function (RouteCollecto
 
         return SlimUtils::renderJSON($response, $payload($family));
     })->add(new EditRecordsRoleAuthMiddleware());
-})->add(new FamilyMiddleware());
+})->add(new FamilyReadMiddleware());

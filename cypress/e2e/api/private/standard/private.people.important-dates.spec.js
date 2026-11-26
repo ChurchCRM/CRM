@@ -21,6 +21,7 @@ describe("API - important dates on people and families", () => {
     });
 
     after(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/family/1/activate/true", null, 200);
         for (const path of ["/api/person/2/important-dates", "/api/family/1/important-dates"]) {
             cy.makePrivateAdminAPICall("GET", path, null, 200).then(({ body }) => {
                 const ours = [personType, repeatType, familyType].filter(Boolean).map((t) => t.id);
@@ -114,6 +115,18 @@ describe("API - important dates on people and families", () => {
         cy.makePrivateAdminAPICall("POST", "/api/family/1/important-dates", { typeId: familyType.id, month: 10, day: 2, year: 2018 }, 201).then(({ body }) => {
             const date = body.dates.find((d) => d.typeId === familyType.id);
             expect(date).to.include({ label: "House Blessing QA", year: 2018 });
+            const year = new Date().getFullYear();
+            const range = `start=${year}-01-01T00:00:00&end=${year}-12-31T00:00:00`;
+            cy.makePrivateAdminAPICall("GET", "/api/family/1", null, 200).then(({ body: family }) => {
+                cy.makePrivateAdminAPICall("GET", `/api/systemcalendars/4/fullcalendar?${range}`, null, 200).then(({ body: events }) => {
+                    expect(events.find((event) => event.title.startsWith("House Blessing QA: ")).title).to.contain(family.Name);
+                });
+            });
+            cy.makePrivateAdminAPICall("POST", "/api/family/1/activate/false", null, 200);
+            cy.makePrivateAdminAPICall("GET", `/api/systemcalendars/4/fullcalendar?${range}`, null, 200).then(({ body: events }) => {
+                expect(events.filter((event) => /^(Baptism QA|House Blessing QA): /.test(event.title))).to.have.length(0);
+            });
+            cy.makePrivateAdminAPICall("POST", "/api/family/1/activate/true", null, 200);
             cy.makePrivateAdminAPICall("DELETE", `/api/family/1/important-dates/${date.id}`, null, 200);
         });
     });

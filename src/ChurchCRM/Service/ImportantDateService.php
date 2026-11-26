@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\PersonImportantDateQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\DateTimeUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Church-defined yearly dates on people and families, and the types they are
@@ -323,7 +324,7 @@ class ImportantDateService
             $daysUntil = (int) round(($occurrence['date']->setTime(12, 0)->getTimestamp() - $from->setTime(12, 0)->getTimestamp()) / 86400);
             $rows[] = [
                 'ownerKind'  => $owner instanceof Person ? ImportantDateType::APPLIES_TO_PERSON : ImportantDateType::APPLIES_TO_FAMILY,
-                'ownerName'  => $owner instanceof Person ? (string) $owner->getFullName() : (string) $owner->getSalutation(),
+                'ownerName'  => $owner instanceof Person ? (string) $owner->getFullName() : (string) $owner->getName(),
                 'ownerUrl'   => (string) $owner->getViewURI(),
                 'type'       => (string) $occurrence['type']->getName(),
                 'typeId'     => (int) $occurrence['type']->getId(),
@@ -358,7 +359,10 @@ class ImportantDateService
             return $types;
         };
         $personQuery = $typeFilter(PersonImportantDateQuery::create()->useTypeQuery())->endUse()
-            ->usePersonQuery()->filterByLiving()->filterByActive()->endUse()
+            ->usePersonQuery()
+                ->filterByLiving()->filterByActive()
+                ->useFamilyQuery(null, Criteria::LEFT_JOIN)->filterByActive()->endUse()
+            ->endUse()
             ->with('Type')
             ->with('Person');
         $familyQuery = $typeFilter(FamilyImportantDateQuery::create()->useTypeQuery())->endUse()

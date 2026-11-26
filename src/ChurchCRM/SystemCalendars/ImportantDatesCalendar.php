@@ -76,7 +76,7 @@ class ImportantDatesCalendar implements StaffOnlySystemCalendar
         $events->setModel(Event::class);
         foreach ($occurrences as $occurrence) {
             $owner = $occurrence['owner'];
-            $name = $owner instanceof Person ? $owner->getFullName() : $owner->getSalutation();
+            $name = $owner instanceof Person ? $owner->getFullName() : $owner->getName();
             $title = sprintf(gettext('%1$s: %2$s'), $occurrence['type']->getName(), $name);
             if ($occurrence['years'] !== null && $occurrence['years'] > 0) {
                 $title .= ' (' . sprintf(ngettext('%d year', '%d years', $occurrence['years']), $occurrence['years']) . ')';
