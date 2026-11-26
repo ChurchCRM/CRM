@@ -28,6 +28,7 @@ scriptTests.push('tests/docker/test-release-context.test.js');
 
 const checks = {
     'composer lock': script('lint/validate-composer-lock.js'),
+    'admin api prefix': script('lint/validate-admin-api-prefix.js'),
     'PHP regression tests': [node, [path.join(root, 'tests', 'php', 'run.js'), 'unit', '--junit']],
     'biome lint': npx('biome', 'check', 'webpack/'),
     'biome format': npx('biome', 'format', '.'),
