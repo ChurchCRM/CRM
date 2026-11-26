@@ -117,7 +117,7 @@ class SQLUtils
             $sql = trim($sql . ' ' . $row);
         }
         if (strlen($sql) > 0) {
-            self::query($row, $mysqli);
+            self::query($sql, $mysqli);
         }
 
         fclose($fileHandle);
