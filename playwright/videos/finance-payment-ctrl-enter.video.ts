@@ -83,7 +83,7 @@ test('finance-payment-ctrl-enter', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'finance-payment-ctrl-enter',
     title: 'Fast Payment Entry with Ctrl+Enter',
-    category: 'Recordings',
+    category: 'Finance & Giving',
     purpose: 'Show three offering envelopes entered in a row, each saved with Ctrl+Enter into a fresh form.',
   });
 });
