@@ -40,7 +40,7 @@ test('events-plan-service-attendance', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'events-plan-service-attendance',
     title: 'Plan a Class Event and Record Attendance',
-    category: 'Recordings',
+    category: 'Events & Attendance',
     purpose: 'A Sunday School coordinator creates a group-linked event and records a class member as present.',
   });
 });
