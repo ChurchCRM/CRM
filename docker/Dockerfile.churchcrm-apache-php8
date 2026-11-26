@@ -48,7 +48,7 @@ RUN docker-php-ext-install -j$(nproc) \
         intl \
         mbstring \
         mysqli \
-        opcache \
+        $(php -r 'echo PHP_VERSION_ID < 80500 ? "opcache" : "";') \
         pdo_mysql \
         xml \
         zip && \

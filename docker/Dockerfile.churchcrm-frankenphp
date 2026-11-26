@@ -9,7 +9,7 @@
 #
 # Required PHP extensions for ChurchCRM:
 #   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
-#   opcache, pdo_mysql, sodium, xml, zip
+#   pdo_mysql, sodium, xml, zip
 
 FROM dunglas/frankenphp:1-php8.5 AS base
 LABEL maintainer="ChurchCRM"
@@ -45,7 +45,6 @@ RUN install-php-extensions \
     intl \
     mbstring \
     mysqli \
-    opcache \
     pdo_mysql \
     sodium \
     xml \

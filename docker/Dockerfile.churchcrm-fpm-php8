@@ -45,7 +45,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
         intl \
         mbstring \
         mysqli \
-        opcache \
         pdo_mysql \
         xml \
         zip
@@ -146,7 +145,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
         intl \
         mbstring \
         mysqli \
-        opcache \
         pdo_mysql \
         xml \
         zip
