@@ -12,6 +12,7 @@ use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RequestUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -46,6 +47,7 @@ if (!$isAdminRoute) {
                     'expires'  => time() - 3600,
                     'path'     => SystemURLs::getRootPath() . '/kiosk/',
                     'httponly'  => true,
+                    'secure'   => RequestUtils::isHttps(),
                     'samesite' => 'Lax',
                 ]);
                 http_response_code(401);
@@ -60,6 +62,7 @@ if (!$isAdminRoute) {
             'expires'  => time() + (90 * 24 * 60 * 60), // 90 days
             'path'     => SystemURLs::getRootPath() . '/kiosk/',
             'httponly'  => true,
+            'secure'   => RequestUtils::isHttps(),
             'samesite' => 'Lax',
         ]);
         // Populate $_COOKIE for current request since setcookie() doesn't
