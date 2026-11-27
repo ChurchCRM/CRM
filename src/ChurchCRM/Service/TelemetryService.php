@@ -647,6 +647,11 @@ class TelemetryService
             $properties['church_country'] = $churchCountry;
         }
 
+        $installSource = self::installSource();
+        if ($installSource !== null) {
+            $properties['install_source'] = $installSource;
+        }
+
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
             $properties += self::databaseProperties($serverVersion);
@@ -656,6 +661,24 @@ class TelemetryService
         }
 
         return $properties;
+    }
+
+    /**
+     * The install channel recorded by the installer (the sInstallSource config value), or null
+     * when no installer set one. The value is reported as stored, so any installer or hosting
+     * provider that records its own value is attributed the same way.
+     */
+    private static function installSource(): ?string
+    {
+        try {
+            $source = SystemConfig::isInitialized() ? SystemConfig::getValue('sInstallSource') : null;
+        } catch (\Throwable) {
+            return null;
+        }
+
+        $source = is_string($source) ? trim($source) : '';
+
+        return $source !== '' ? $source : null;
     }
 
     /** The church's self-declared country (sChurchCountry only), or null when empty or not a known ISO code. */
