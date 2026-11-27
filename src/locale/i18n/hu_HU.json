@@ -7041,5 +7041,6 @@
   "Undo": "Visszavonás",
   "Undo failed. Please try again.": "A visszavonás sikertelen. Kérjük, próbálja újra.",
   "You need the database details from your web host, or from whoever set up your server.": "Az adatbázis adataira a webtárhely-szolgáltatójától, vagy attól van szüksége, aki a kiszolgálóját beállította.",
-  "database setup troubleshooting guide": "adatbázis-beállítási hibaelhárítási útmutató"
+  "database setup troubleshooting guide": "adatbázis-beállítási hibaelhárítási útmutató",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "A szöveg egy része angolul marad, amíg a PHP gettext kiterjesztése nincs engedélyezve."
 }

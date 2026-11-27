@@ -7181,5 +7181,6 @@
   "Undo": "تراجع",
   "Undo failed. Please try again.": "فشل التراجع. حاولوا مرة أخرى.",
   "You need the database details from your web host, or from whoever set up your server.": "تحتاجون إلى تفاصيل قاعدة البيانات من مضيف الويب، أو ممن أعدّ خادمكم.",
-  "database setup troubleshooting guide": "دليل استكشاف أخطاء إعداد قاعدة البيانات وإصلاحها"
+  "database setup troubleshooting guide": "دليل استكشاف أخطاء إعداد قاعدة البيانات وإصلاحها",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "سيبقى بعض النص باللغة الإنجليزية حتى يتم تفعيل امتداد gettext في PHP."
 }

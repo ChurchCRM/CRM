@@ -7041,5 +7041,6 @@
   "Undo": "Desfazer",
   "Undo failed. Please try again.": "Falha ao desfazer. Por favor, tente novamente.",
   "You need the database details from your web host, or from whoever set up your server.": "Precisa dos dados da base de dados do seu fornecedor de alojamento web, ou de quem configurou o seu servidor.",
-  "database setup troubleshooting guide": "guia de resolução de problemas de configuração da base de dados"
+  "database setup troubleshooting guide": "guia de resolução de problemas de configuração da base de dados",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Parte do texto permanecerá em inglês até que a extensão gettext do PHP seja ativada."
 }
