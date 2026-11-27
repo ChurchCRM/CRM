@@ -7077,5 +7077,6 @@
   "Undo failed. Please try again.": "Vrácení zpět se nezdařilo. Zkuste to prosím znovu.",
   "You need the database details from your web host, or from whoever set up your server.": "Potřebujete údaje o databázi od svého poskytovatele webhostingu, nebo od toho, kdo váš server nastavil.",
   "database setup troubleshooting guide": "průvodce řešením problémů s nastavením databáze",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Část textu zůstane v angličtině, dokud nebude povoleno rozšíření PHP gettext."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Část textu zůstane v angličtině, dokud nebude povoleno rozšíření PHP gettext.",
+  "Install Source": "Zdroj instalace"
 }

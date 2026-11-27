@@ -1,6 +1,0 @@
-{
-  "Install Source": [
-    "src/admin/views/debug.php:121",
-    "src/api/routes/system/system-issues.php:61"
-  ]
-}

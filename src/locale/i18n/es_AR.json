@@ -7042,5 +7042,6 @@
   "Undo failed. Please try again.": "No se pudo deshacer. Intentá de nuevo.",
   "You need the database details from your web host, or from whoever set up your server.": "Necesitas los datos de la base de datos de tu proveedor de alojamiento web, o de quien haya configurado tu servidor.",
   "database setup troubleshooting guide": "guía de solución de problemas de configuración de la base de datos",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Parte del texto permanecerá en inglés hasta que se habilite la extensión gettext de PHP."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Parte del texto permanecerá en inglés hasta que se habilite la extensión gettext de PHP.",
+  "Install Source": "Origen de la instalación"
 }
