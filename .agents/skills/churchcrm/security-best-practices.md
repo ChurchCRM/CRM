@@ -14,6 +14,7 @@ Incoming vuln report: `security-report-triage.md`.
 - Escape on output: `InputUtils::escapeHTML()` / `escapeAttribute()`. For PDF/template rendering, verify the actual renderer configuration and follow `reports.md`; template interpolation alone does not establish escaping.
 - Sanitize on input: `sanitizeText()` (no HTML) or `sanitizeHTML()` (Quill / rich text)
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
+- CSP is always enforced (`src/Include/Header-Security.php`; no setting turns it off). No inline event attributes (`onclick=`, `onchange=`), no `javascript:` URLs, no `eval` / `new Function` in our code (`'unsafe-eval'` is there only for heic2any): bind events in the page's `webpack/` entry or with the `data-auto-submit` / `data-print` hooks in `Footer.js`. An inline `<script>` carries `nonce="<?= SystemURLs::getCSPNonce() ?>"`. A new third-party origin is added to that file's directive list. Cypress strips CSP headers, so check script changes in a real browser console for CSP violations
 - DB: ORM with bound values
 - IDs: `(int)` or `InputUtils::filterInt()`
 - Redirects: `RedirectUtils::*`

@@ -5,10 +5,8 @@
  *
  * This file configures security-related HTTP headers for ChurchCRM:
  *
- * - Content-Security-Policy (CSP): Helps protect against XSS attacks
- *   CSP is enforced by default. Switch to report-only via
- *   Admin > Feature Toggles (bEnforceCSP).
- *   CSP violations are reported to /api/public/csp-report (public endpoint).
+ * - Content-Security-Policy (CSP): always enforced, to block XSS.
+ *   Violations are reported to /api/public/csp-report (public endpoint).
  *
  * - X-Frame-Options: Prevents clickjacking attacks
  * - X-Content-Type-Options: Prevents MIME-sniffing attacks
@@ -37,15 +35,18 @@ $posthogAssetsDomain = $telemetryEnabled
 
 $csp = [
     "default-src 'self'",
-    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' browser-update.org https://www.googletagmanager.com"
+    // unsafe-eval: heic2any's libheif worker builds functions at run time to convert iPhone photos.
+    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com"
         . ($telemetryEnabled ? ' ' . $posthogAssetsDomain : ''),
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-    "img-src 'self' data: https://secure.gravatar.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
+    "img-src 'self' data: blob: https://secure.gravatar.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
     "media-src 'self'",
     "frame-src 'self'",
+    // heic2any converts iPhone photos in a worker it starts from a blob: URL.
+    "worker-src 'self' blob:",
     "font-src 'self' data: fonts.gstatic.com",
-    "connect-src 'self' https://www.google-analytics.com"
+    "connect-src 'self' blob: https://www.google-analytics.com"
         . ($telemetryEnabled ? ' ' . TelemetryService::POSTHOG_ENDPOINT . ' ' . $posthogAssetsDomain : ''),
     "base-uri 'self'",
     "form-action 'self'",
@@ -69,7 +70,6 @@ if (empty($allowFraming)) {
     // and response splitting even when input comes from an authenticated admin.
     $origins = preg_replace('/[;\r\n]/', '', SystemConfig::getValue('sCalendarEmbedOrigins') ?: '*');
     $csp[] = 'frame-ancestors ' . $origins;
-    // An enforcing frame-ancestors directive controls access for embeddable pages.
 }
 
 $csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report';
@@ -79,10 +79,4 @@ if (RequestUtils::isHttps()) {
     header('Strict-Transport-Security: max-age=31536000');
 }
 header('Referrer-Policy: strict-origin-when-cross-origin');
-// CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
-// The mode is controlled by the bEnforceCSP system configuration option
-if (SystemConfig::getBooleanValue('bEnforceCSP')) {
-    header('Content-Security-Policy: ' . join('; ', $csp));
-} else {
-    header('Content-Security-Policy-Report-Only: ' . join('; ', $csp));
-}
+header('Content-Security-Policy: ' . join('; ', $csp));

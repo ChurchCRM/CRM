@@ -199,7 +199,7 @@ module.exports = {
       config: [__filename],
     },
   },
-  devtool: isProduction ? false : 'cheap-module-source-map',
+  devtool: isProduction ? false : 'eval-cheap-module-source-map',
   optimization: {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
