@@ -1,5 +1,9 @@
 # Parallel test configuration for GitHub Actions
 # Supports running root and subdirectory tests in parallel with separate databases
+# Every webserver service forwards the runner's CI / CONTINUOUS_INTEGRATION
+# flags (CI=${CI:-}) so the app inside the container can tell it is a test
+# install (#12028). Outside CI the values interpolate empty, which the app
+# treats as "not CI", so local use of this file is unaffected.
 # Use with: docker compose -f docker-compose.yaml -f docker-compose.parallel.yaml --profile ci-root up
 #       or: docker compose -f docker-compose.yaml -f docker-compose.parallel.yaml --profile ci-subdir up
 
@@ -65,6 +69,8 @@ services:
     environment:
       - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
       - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
+      - CI=${CI:-}
+      - CONTINUOUS_INTEGRATION=${CONTINUOUS_INTEGRATION:-}
     depends_on:
       database-root:
         condition: service_healthy
@@ -100,6 +106,8 @@ services:
     environment:
       - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
       - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
+      - CI=${CI:-}
+      - CONTINUOUS_INTEGRATION=${CONTINUOUS_INTEGRATION:-}
       - CHURCHCRM_SUBDIR=churchcrm
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
@@ -155,6 +163,8 @@ services:
       - .env
     environment:
       - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
+      - CI=${CI:-}
+      - CONTINUOUS_INTEGRATION=${CONTINUOUS_INTEGRATION:-}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
       - MYSQL_USER=${MYSQL_USER:-churchcrm}

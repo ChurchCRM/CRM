@@ -49,6 +49,11 @@ services:
     environment:
       CHURCHCRM_PLUGIN_FIXTURES: /home/ChurchCRM/cypress/fixtures/plugin-registry
       CHURCHCRM_DISABLE_POSTHOG_TELEMETRY: "1"
+      # Forward the runner's CI flag so the app inside the container knows it
+      # is a test install (#12028). Empty outside CI, which the app treats as
+      # "not CI", so local stacks are unaffected.
+      CI: ${CI:-}
+      CONTINUOUS_INTEGRATION: ${CONTINUOUS_INTEGRATION:-}
     depends_on:
       database:
         condition: service_healthy
