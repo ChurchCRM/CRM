@@ -108,8 +108,6 @@ class DemoDataService
     private array $personMap = [];
     private array $groupMap = [];
     private array $groupNameToId = [];
-    /** @var array<string,int> family contact email (lowercase) → family DB id */
-    private array $familyEmailToId = [];
     /** @var array<string,int> person email (lowercase) → person DB id */
     private array $personEmailToId = [];
     private $logger;
@@ -372,12 +370,6 @@ class DemoDataService
 
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
-
-                // contact.email in people.json only links the family to finance.json; families have no email.
-                $contactEmail = strtolower(trim($contact['email'] ?? ''));
-                if ($contactEmail !== '') {
-                    $this->familyEmailToId[$contactEmail] = $family->getId();
-                }
 
                 // Import demo photo for family (if provided)
                 if (!empty($famData['photo'])) {
@@ -1761,6 +1753,14 @@ class DemoDataService
         return sprintf('%04d-%02d-%02d', $year, (int) $fr['end_month'], (int) $fr['end_day']);
     }
 
+    private function demoFamilyId(string $email): ?int
+    {
+        $personId = $this->personEmailToId[strtolower(trim($email))] ?? null;
+        $person = $personId === null ? null : ($this->personMap[$personId] ?? null);
+
+        return $person instanceof Person ? (int) $person->getFamId() : null;
+    }
+
     private function demoPersonId(string $email): ?int
     {
         $email = strtolower(trim($email));
@@ -1787,9 +1787,9 @@ class DemoDataService
 
         foreach ($givingFamilies as $family) {
             $email    = strtolower(trim($family['email'] ?? ''));
-            $familyId = $this->familyEmailToId[$email] ?? null;
+            $familyId = $this->demoFamilyId($email);
             if (!$familyId) {
-                $this->addWarning("Financial pledge skipped: family email '{$email}' not found");
+                $this->addWarning("Financial pledge skipped: no family for '{$email}'");
                 continue;
             }
 
@@ -1884,7 +1884,7 @@ class DemoDataService
 
         foreach ($givingFamilies as $family) {
             $email    = strtolower(trim($family['email'] ?? ''));
-            $familyId = $this->familyEmailToId[$email] ?? null;
+            $familyId = $this->demoFamilyId($email);
             if (!$familyId) {
                 continue;
             }
