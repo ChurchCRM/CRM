@@ -729,3 +729,79 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
         });
     });
 });
+
+describe("Kiosk Device Registration - cookie handling and pending cap", () => {
+    const MAX_PENDING = 20;
+    const createdKioskIds = [];
+    let originalVisibility;
+
+    const admin = (method, url, body) => cy.makePrivateAdminAPICall(method, url, body, 200);
+    const pendingKioskIds = () =>
+        admin("GET", "/kiosk/api/devices").then((response) =>
+            (response.body.KioskDevices || []).filter((k) => k.Accepted === false).map((k) => k.Id),
+        );
+    const registerAsNewDevice = () => {
+        cy.clearCookies();
+        return cy.request({ method: "GET", url: "/kiosk/device/heartbeat", failOnStatusCode: false });
+    };
+
+    before(() => {
+        cy.getSystemConfig("sKioskVisibilityTimestamp").then((value) => {
+            originalVisibility = value;
+        });
+    });
+
+    after(() => {
+        createdKioskIds.forEach((id) => admin("DELETE", `/kiosk/api/devices/${id}`));
+        cy.then(() => cy.restoreSystemConfig("sKioskVisibilityTimestamp", originalVisibility));
+    });
+
+    it("answers a non-string kiosk cookie with the registration page instead of a 500", () => {
+        cy.setSystemConfig("sKioskVisibilityTimestamp", "2000-01-01 00:00:00");
+        cy.clearCookies();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/",
+            headers: { Cookie: "kioskCookie[]=x" },
+            failOnStatusCode: false,
+        })
+            .its("status")
+            .should("equal", 401);
+    });
+
+    it("does not mark the kiosk cookie secure over plain HTTP, even with a spoofed X-Forwarded-Proto", () => {
+        admin("POST", "/kiosk/api/allowRegistration");
+        pendingKioskIds().then((before) => {
+            cy.clearCookies();
+            cy.request({
+                method: "GET",
+                url: "/kiosk/device/heartbeat",
+                headers: { "X-Forwarded-Proto": "https" },
+                failOnStatusCode: false,
+            }).then((response) => {
+                const kioskCookie = [].concat(response.headers["set-cookie"] || []).find((header) => header.startsWith("kioskCookie="));
+                expect(kioskCookie, "kiosk cookie issued").to.be.a("string");
+                expect(kioskCookie).to.not.match(/;\s*secure/i);
+            });
+            pendingKioskIds().then((after) => {
+                after.filter((id) => !before.includes(id)).forEach((id) => createdKioskIds.push(id));
+            });
+        });
+    });
+
+    it(`stops creating pending kiosks once ${MAX_PENDING} are waiting for acceptance`, () => {
+        admin("POST", "/kiosk/api/allowRegistration");
+        pendingKioskIds().then((before) => {
+            Cypress._.times(Math.max(0, MAX_PENDING - before.length), () => {
+                registerAsNewDevice().its("status").should("equal", 200);
+            });
+            pendingKioskIds().then((filled) => {
+                filled.filter((id) => !before.includes(id)).forEach((id) => createdKioskIds.push(id));
+                expect(filled.length).to.be.at.least(MAX_PENDING);
+
+                registerAsNewDevice().its("status").should("equal", 401);
+                pendingKioskIds().its("length").should("equal", filled.length);
+            });
+        });
+    });
+});
