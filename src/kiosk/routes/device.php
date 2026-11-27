@@ -268,18 +268,22 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
 
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, $assignment, $event] = $result;
+
+        if (!isKioskRosterMember($assignment, $personId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
+
         $Person = PersonQuery::create()
                 ->findOneById($personId);
 
         if ($Person === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
-
-        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
-        if ($result instanceof Response) {
-            return $result;
-        }
-        [, , $event] = $result;
         
         // Get event/group name for the notification
         $groups = $event->getGroups();
