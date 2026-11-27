@@ -686,6 +686,11 @@ class TelemetryService
             $properties['install_source'] = $installSource;
         }
 
+        $container = self::container();
+        if ($container !== null) {
+            $properties['container'] = $container;
+        }
+
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
             $properties += self::databaseProperties($serverVersion);
@@ -713,6 +718,16 @@ class TelemetryService
         $source = is_string($source) ? trim($source) : '';
 
         return $source !== '' ? $source : null;
+    }
+
+    /** The container engine running this process, or null outside a container. */
+    private static function container(): ?string
+    {
+        return match (true) {
+            is_file('/.dockerenv') => 'docker',
+            is_file('/run/.containerenv') => 'podman',
+            default => null,
+        };
     }
 
     /** The church's self-declared country (sChurchCountry only), or null when empty or not a known ISO code. */

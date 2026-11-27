@@ -606,6 +606,7 @@ $fmtBytes = static function ($bytes): string {
                                 <tr><td><?= gettext('Church country') ?></td><td><?= gettext('Understand where ChurchCRM is used') ?></td></tr>
                                 <tr><td><?= gettext('PHP Version') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>
                                 <tr><td><?= gettext('OS family') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
+                                <tr><td><?= gettext('Install source and container engine') ?></td><td><?= gettext('Understand how ChurchCRM is installed and run') ?></td></tr>
                                 <tr><td><?= gettext('Log level + message') ?></td><td><?= gettext('Catch recurring errors') ?></td></tr>
                                 <tr><td><?= gettext('JS exceptions') ?></td><td><?= gettext('Catch JS errors') ?></td></tr>
                                 <tr><td><?= gettext('Installation and upgrade results, previous version on upgrades, and a daily check-in while in use') ?></td><td><?= gettext('Count active installations and upgrade outcomes') ?></td></tr>
