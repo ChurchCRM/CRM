@@ -7041,5 +7041,6 @@
   "Undo": "Angre",
   "Undo failed. Please try again.": "Angringen mislyktes. Prøv igjen.",
   "You need the database details from your web host, or from whoever set up your server.": "Du trenger databaseopplysningene fra webverten din, eller fra den som satte opp serveren din.",
-  "database setup troubleshooting guide": "feilsøkingsveiledning for databaseoppsett"
+  "database setup troubleshooting guide": "feilsøkingsveiledning for databaseoppsett",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Noe tekst vil forbli på engelsk til PHP-utvidelsen gettext er aktivert."
 }
