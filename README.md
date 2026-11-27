@@ -35,6 +35,14 @@ Quick start: see the "Quick Start" section in the Documentation for a fast setup
 
 For core development setup, architecture, builds, and testing, see [DEVELOPING.md](DEVELOPING.md).
 
+> **Cloning?** The full history is over 3 GB. Clone with `--filter=blob:none` and the download stays small:
+>
+> ```bash
+> git clone --filter=blob:none https://github.com/ChurchCRM/CRM.git
+> ```
+>
+> For more options, see [Get the code](DEVELOPING.md#get-the-code-fast-clone).
+
 ## 🌐 Localization Support
 
 ChurchCRM currently lists **49 supported locales**. Translation coverage varies by locale; see the generated audit report for the current status.
