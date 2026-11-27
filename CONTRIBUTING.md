@@ -135,7 +135,7 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 1. Make sure you have a [GitHub account](https://github.com/signup/free)
 2. Join [Discord](https://discord.gg/tuWyFzj3Nj) and introduce yourself
 3. Ask in Discord what's a good place to start — maintainers will point you to something concrete
-4. Set up your [development environment](DEVELOPING.md)
+4. Clone with `git clone --filter=blob:none` ([why](DEVELOPING.md#get-the-code-fast-clone)), then set up your [development environment](DEVELOPING.md)
 5. Open a pull request
 
 **Using Claude Code?** If you're using [Claude Code](https://claude.com/claude-code), start with [ONBOARDING.md](ONBOARDING.md) for a guided setup and workflow tailored to this project.
