@@ -36,5 +36,9 @@ foreach (['CI', 'CONTINUOUS_INTEGRATION'] as $ciVariable) {
     unset($_ENV[$ciVariable], $_SERVER[$ciVariable]);
 }
 
+// Test runs never send telemetry. A test that exercises sending clears this
+// and stubs curl in its own namespace.
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1');
+
 Environment::setup();
 date_default_timezone_set('UTC');
