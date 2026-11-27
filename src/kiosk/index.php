@@ -28,7 +28,7 @@ $isAdminRoute = str_starts_with($requestPath, $basePath . '/admin') || str_start
 if (!$isAdminRoute) {
     $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
 
-    if (isset($_COOKIE['kioskCookie'])) {
+    if (is_string($_COOKIE['kioskCookie'] ?? null)) {
         $g = hash('sha256', $_COOKIE['kioskCookie']);
         $Kiosk = KioskDeviceQuery::create()
               ->findOneByGUIDHash($g);
