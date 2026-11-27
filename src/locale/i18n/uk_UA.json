@@ -7113,5 +7113,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "Вам потрібні дані бази даних від вашого хостинг-провайдера або від того, хто налаштував ваш сервер.",
   "database setup troubleshooting guide": "посібник з усунення проблем із налаштуванням бази даних",
   "Some text will stay in English until the gettext PHP extension is enabled.": "Частина тексту залишатиметься англійською, доки не буде ввімкнено розширення gettext PHP.",
-  "Install Source": "Джерело встановлення"
+  "Install Source": "Джерело встановлення",
+  "Install source and container engine": "Джерело встановлення та контейнерний рушій",
+  "Understand how ChurchCRM is installed and run": "Дізнайтеся, як ChurchCRM встановлюється та запускається"
 }

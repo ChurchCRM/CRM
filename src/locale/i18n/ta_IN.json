@@ -7043,5 +7043,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "உங்கள் வலை ஹோஸ்டிடமிருந்தோ, அல்லது உங்கள் சேவையகத்தை அமைத்தவரிடமிருந்தோ தரவுத்தள விவரங்கள் உங்களுக்குத் தேவை.",
   "database setup troubleshooting guide": "தரவுத்தள அமைவு சரிசெய்தல் வழிகாட்டி",
   "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext நீட்டிப்பு இயக்கப்படும் வரை சில உரைகள் ஆங்கிலத்திலேயே இருக்கும்.",
-  "Install Source": "நிறுவல் மூலம்"
+  "Install Source": "நிறுவல் மூலம்",
+  "Install source and container engine": "நிறுவல் மூலம் மற்றும் கொள்கலன் இயந்திரம்",
+  "Understand how ChurchCRM is installed and run": "ChurchCRM எவ்வாறு நிறுவப்பட்டு இயக்கப்படுகிறது என்பதைப் புரிந்துகொள்ளுங்கள்"
 }

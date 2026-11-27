@@ -7008,5 +7008,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "您需要向您的网络主机商，或为您设置服务器的人，获取数据库详细信息。",
   "database setup troubleshooting guide": "数据库设置故障排除指南",
   "Some text will stay in English until the gettext PHP extension is enabled.": "在启用 PHP gettext 扩展之前，部分文本将保持英文。",
-  "Install Source": "安装来源"
+  "Install Source": "安装来源",
+  "Install source and container engine": "安装来源和容器引擎",
+  "Understand how ChurchCRM is installed and run": "了解 ChurchCRM 的安装和运行方式"
 }

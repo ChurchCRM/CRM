@@ -7043,5 +7043,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "Vajad andmebaasi andmeid oma veebimajutajalt või sellelt, kes sinu serveri seadistas.",
   "database setup troubleshooting guide": "andmebaasi seadistamise tõrkeotsingu juhend",
   "Some text will stay in English until the gettext PHP extension is enabled.": "Osa tekstist jääb inglise keelde, kuni PHP gettext laiendus on lubatud.",
-  "Install Source": "Paigaldusallikas"
+  "Install Source": "Paigaldusallikas",
+  "Install source and container engine": "Paigaldusallikas ja konteinerimootor",
+  "Understand how ChurchCRM is installed and run": "Saage aru, kuidas ChurchCRM on paigaldatud ja töötab"
 }

@@ -7043,5 +7043,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "Jy het die databasisbesonderhede van jou webgasheer nodig, of van wie ook al jou bediener opgestel het.",
   "database setup troubleshooting guide": "foutsporingsgids vir databasisopset",
   "Some text will stay in English until the gettext PHP extension is enabled.": "Sommige teks sal in Engels bly totdat die gettext PHP-uitbreiding geaktiveer is.",
-  "Install Source": "Installasiebron"
+  "Install Source": "Installasiebron",
+  "Install source and container engine": "Installasiebron en houerenjin",
+  "Understand how ChurchCRM is installed and run": "Verstaan hoe ChurchCRM geïnstalleer en uitgevoer word"
 }

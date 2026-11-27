@@ -7078,5 +7078,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "Potrebni su vam podaci o bazi podataka od vašeg davatelja hostinga ili od osobe koja je postavila vaš poslužitelj.",
   "database setup troubleshooting guide": "vodič za rješavanje problema s postavljanjem baze podataka",
   "Some text will stay in English until the gettext PHP extension is enabled.": "Dio teksta ostat će na engleskom dok se ne omogući PHP proširenje gettext.",
-  "Install Source": "Izvor instalacije"
+  "Install Source": "Izvor instalacije",
+  "Install source and container engine": "Izvor instalacije i kontejnerski mehanizam",
+  "Understand how ChurchCRM is installed and run": "Razumijte kako je ChurchCRM instaliran i kako se izvodi"
 }

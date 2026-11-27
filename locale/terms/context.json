@@ -1,8 +1,0 @@
-{
-  "Install source and container engine": [
-    "src/admin/views/debug.php:609"
-  ],
-  "Understand how ChurchCRM is installed and run": [
-    "src/admin/views/debug.php:609"
-  ]
-}
