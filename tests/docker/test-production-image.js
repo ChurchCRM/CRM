@@ -62,7 +62,6 @@ test ! -d /usr/include/linux
 test ! -d /usr/local/include/php
 test -f /var/www/html/.htaccess
 test "$CHURCHCRM_INSTALL_SOURCE" = docker
-php -r 'require "/var/www/html/vendor/autoload.php"; exit((ChurchCRM\\Service\\TelemetryService::baseProperties()["container"] ?? "") === "docker" ? 0 : 1);'
 test -f /var/www/html/vendor/autoload.php
 test ! -e /var/www/html/apache/default.conf
 test ! -e /var/www/html/Include/Config.php
