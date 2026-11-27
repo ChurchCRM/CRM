@@ -368,7 +368,6 @@ paths:
                   City: { type: string }
                   State: { type: string }
                   Zip: { type: string }
-                  Email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column.", type: string, readOnly: true, deprecated: true }
                 type: object
         '400':
           description: 'Validation error'

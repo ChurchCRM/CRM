@@ -524,7 +524,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
 - The move is plain SQL in the 7.8.3 upgrade script (`src/mysql/upgrade/7.8.3.sql`), the same file the other 7.8.3 work adds to. It uses no window functions, so it runs on every database ChurchCRM supports.
 - **Some people lose email:** those who were reached only through the family email, and who aren't the head or spouse who receives it. Most are children. The Sign-in tab's "Email needs attention" list shows them.
-- The `fam_Email` column stays empty for one release, then a later upgrade drops it (§16, row 17). Nothing in core writes it during that release. The drop runs the same move again first, in case other code wrote an address.
+- The 7.9.0 upgrade (`src/mysql/upgrade/7.9.0-drop-fam-email.sql`) runs this same move for any family email still set, then drops `fam_Email`. A new install does not create the column. `family_email_move_fem` stays, because sign-in confirmation and the "Family emails not moved" list still read it.
 
 ### 10.2 After the move
 
@@ -542,7 +542,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
     - **Member Portal API:** `email` on `/api/portal/family`. It stays empty unless the member may see the family's contacts (§8.4) or is the person it comes from.
   - The API docs mark the field deprecated. Each of those responses carries a `Deprecation` header (RFC 9745) and a `Link` to the endpoint's docs page.
   - A write that sends a family email still succeeds, but the email isn't stored. A warning naming the endpoint is logged. The only API write that took it is `POST /api/portal/family`.
-  - The field goes away with the column (§16, row 17). The release notes list it as an API change.
+  - 7.9.0 removes that read-only field, the `Deprecation` header, and the warning. A family response has no `Email`. A portal family write that still sends `email` is ignored. Public registration still saves a family `Email` onto the person who registered. The release notes list it as an API change.
 - **Plugins:** no core plugin reads the family email any more; MailChimp's family status uses the head-then-spouse rule. Neither community plugin in the plugin registry (hello-world, meeting-outlines) reads it. The release notes still ask plugin authors to check theirs.
 - **Printed member directory:**
   - the "Family Email" option (`bDirFamilyEmail`) and its line on family records are removed;
@@ -656,7 +656,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
   - the per-IP limits `iMemberSignInRequestsPerIP` and `iMaxFailedLoginsPerIP` (§6.1).
   - The portal's calendar switch goes away: the calendar page follows the shared calendars (§8.4), and the upgrade clears the selection where the switch was off.
 - **Capabilities** live in code (core, and plugins at boot), not in a table. Only given grants are stored.
-- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.8.3.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` gets the same tables; the Cypress seed adds only the rows its tests need. `fam_Email` is dropped a release later.
+- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.8.3.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` gets the same tables; the Cypress seed adds only the rows its tests need. 7.9.0 drops `fam_Email`.
 
 ## 14. Security notes
 
@@ -744,7 +744,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | # | Work | Needs |
 |---|---|---|
 | 16 | Google and Microsoft sign-in (§6.6) | 5 |
-| 17 | Drop `fam_Email` | 11, one release later |
+| 17 | Drop `fam_Email` | 11; ships in 7.9.0 |
 
 **Separate proposals:**
 - the mobile app and its API (George);

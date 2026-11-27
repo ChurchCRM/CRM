@@ -2,15 +2,15 @@
 
 import { recordLinkConfirmation } from "../../../../support/member-sign-in-fixtures";
 
-describe("Deprecated family Email in the family API (7.8.3)", () => {
+describe("Family API has no family email (7.9.0)", () => {
     const run = Date.now();
     const address = (who) => `cypress-fem-${who}-${run}@example.com`;
     const families = {};
     let savedSelfReg;
 
-    const expectDeprecated = (response, page) => {
-        expect(response.headers.deprecation).to.match(/^@\d+$/);
-        expect(response.headers.link).to.eq(`<https://docs.churchcrm.io/api/${page}>; rel="deprecation"; type="text/html"`);
+    const noFamilyEmail = (response) => {
+        expect(response.headers).to.not.have.property("deprecation");
+        expect(response.body).to.not.have.property("Email");
     };
 
     const register = (key, people) =>
@@ -34,12 +34,6 @@ describe("Deprecated family Email in the family API (7.8.3)", () => {
 
     const person = (firstName, role, email) => ({ firstName, lastName: "FamilyEmail", gender: 1, role, email });
 
-    const expected = () => ({
-        head: address("head"),
-        spouse: address("spouse"),
-        none: "",
-    });
-
     before(() => {
         cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
             savedSelfReg = value;
@@ -56,64 +50,56 @@ describe("Deprecated family Email in the family API (7.8.3)", () => {
         cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
     });
 
-    it("POST /api/public/register/family returns it in the new family", () => {
-        Object.entries(expected()).forEach(([key, email]) => {
+    it("POST /api/public/register/family returns the family without an Email", () => {
+        Object.keys(families).forEach((key) => {
             expect(families[key].status).to.eq(200);
-            expectDeprecated(families[key], "public/register-family-api");
-            expect(families[key].body.Email, key).to.eq(email);
+            noFamilyEmail(families[key]);
         });
     });
 
-    it("GET /api/family/{id}: the head's email, else the spouse's, else empty", () => {
-        Object.entries(expected()).forEach(([key, email]) => {
-            cy.makePrivateAdminAPICall("GET", `/api/family/${families[key].body.Id}`, null, 200).then((response) => {
-                expectDeprecated(response, "private/get-family");
-                expect(response.body.Email, key).to.eq(email);
-            });
+    it("GET /api/family/{id} has no Email", () => {
+        Object.keys(families).forEach((key) => {
+            cy.makePrivateAdminAPICall("GET", `/api/family/${families[key].body.Id}`, null, 200).then(noFamilyEmail);
         });
     });
 
-    it("GET /api/families/self-register", () => {
+    it("GET /api/families/self-register has no Email", () => {
         cy.makePrivateAdminAPICall("GET", "/api/families/self-register", null, 200).then((response) => {
-            expectDeprecated(response, "private/get-self-registered-families");
-            Object.entries(expected()).forEach(([key, email]) => {
+            expect(response.headers).to.not.have.property("deprecation");
+            Object.keys(families).forEach((key) => {
                 const row = response.body.families.find((family) => family.Id === families[key].body.Id);
-                expect(row.Email, key).to.eq(email);
+                expect(row).to.not.have.property("Email");
             });
         });
     });
 
-    it("GET /api/families/email/without", () => {
+    it("GET /api/families/email/without has no Email", () => {
         cy.makePrivateAdminAPICall("GET", "/api/families/email/without", null, 200).then((response) => {
-            expectDeprecated(response, "private/get-families-without-email");
+            expect(response.headers).to.not.have.property("deprecation");
             const row = response.body.families.find((family) => family.Id === families.none.body.Id);
-            expect(row.Email).to.eq("");
+            expect(row).to.not.have.property("Email");
         });
     });
 
-    it("GET /api/families/self-verify", () => {
-        Object.keys(expected()).forEach((key) => {
+    it("GET /api/families/self-verify has no Email on the family", () => {
+        Object.keys(families).forEach((key) => {
             recordLinkConfirmation(families[key].body.Id, `Cypress ${key}`);
         });
         cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((response) => {
-            expectDeprecated(response, "private/get-self-verified-families");
-            Object.entries(expected()).forEach(([key, email]) => {
+            expect(response.headers).to.not.have.property("deprecation");
+            Object.keys(families).forEach((key) => {
                 const note = response.body.families.find((row) => row.Family.Id === families[key].body.Id);
-                expect(note.Family.Email, key).to.eq(email);
+                expect(note.Family).to.not.have.property("Email");
             });
         });
     });
 
-    it("GET /api/groups/{id}/members: each member's family", () => {
+    it("GET /api/groups/{id}/members embeds a family with no Email", () => {
         cy.makePrivateAdminAPICall("GET", "/api/groups/1/members", null, 200).then((response) => {
-            expectDeprecated(response, "private/get-group-members");
+            expect(response.headers).to.not.have.property("deprecation");
             const withFamily = response.body.Person2group2roleP2g2rs.filter((member) => member.Person.Family);
             expect(withFamily).to.not.be.empty;
-            withFamily.forEach((member) => {
-                cy.makePrivateAdminAPICall("GET", `/api/family/${member.Person.FamId}`, null, 200)
-                    .its("body.Email")
-                    .should("eq", member.Person.Family.Email);
-            });
+            withFamily.forEach((member) => expect(member.Person.Family).to.not.have.property("Email"));
         });
     });
 

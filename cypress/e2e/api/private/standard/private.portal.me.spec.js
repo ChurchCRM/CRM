@@ -242,52 +242,36 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
-        describe("the deprecated family email", () => {
-            const expectDeprecated = (response, page) => {
-                expect(response.headers.deprecation).to.match(/^@\d+$/);
-                expect(response.headers.link).to.eq(`<https://docs.churchcrm.io/api/private/${page}>; rel="deprecation"; type="text/html"`);
-            };
-
-            let headEmail;
+        describe("a posted family email", () => {
             let familyBefore;
 
             beforeEach(() => {
                 cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
                     familyBefore = response.body;
-                    headEmail = response.body.Email;
-                    expect(headEmail, "the head of household's email").to.be.a("string").and.not.eq("");
+                    expect(response.body).to.not.have.property("Email");
                 });
             });
 
-            it("shows an adult the head of household's email, read-only", () => {
-                portalLogin(adultUser);
-                cy.request("/api/portal/family").then((response) => {
-                    expectDeprecated(response, "get-portal-family");
-                    expect(response.body.family.email).to.eq(headEmail);
-                });
-            });
-
-            it("shows it to a member who may not see the family's contacts as empty", () => {
-                const nonAdultFamilyId = 1;
+            it("is absent from the family, including for a member who may not see contacts", () => {
                 portalLogin(nonAdultUser);
-                cy.makePrivateAdminAPICall("GET", `/api/family/${nonAdultFamilyId}`, null, 200).its("body.Email").should("not.eq", "");
                 cy.request("/api/portal/family").then((response) => {
+                    expect(response.headers).to.not.have.property("deprecation");
                     expect(response.body.canSeeContacts).to.eq(false);
-                    expect(response.body.family.email).to.eq("");
+                    expect(response.body.family).to.not.have.property("email");
                 });
             });
 
-            it("ignores a posted family email and stores nothing", () => {
+            it("is ignored and stores nothing", () => {
                 portalLogin(adultUser);
                 withCsrfToken((token) => {
                     portalPost("/api/portal/family", { email: "household@example.com" }, token, 200).then((response) => {
-                        expectDeprecated(response, "update-portal-family");
+                        expect(response.headers).to.not.have.property("deprecation");
                         expect(response.body.updated).to.deep.equal([]);
-                        expect(response.body.family.email).to.eq(headEmail);
+                        expect(response.body.family).to.not.have.property("email");
                     });
                 });
                 cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
-                    expect(response.body.Email).to.eq(headEmail);
+                    expect(response.body).to.not.have.property("Email");
                     expect(response.body.DateLastEdited).to.eq(familyBefore.DateLastEdited);
                 });
             });
@@ -299,7 +283,7 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
                     portalPost("/api/portal/family", { email: "household@example.com", homePhone: phone }, token, 200).then((response) => {
                         expect(response.body.updated).to.deep.equal(["homePhone"]);
                         expect(response.body.family.homePhone).to.eq(phone);
-                        expect(response.body.family.email).to.eq(headEmail);
+                        expect(response.body.family).to.not.have.property("email");
                     });
                     portalPost("/api/portal/family", { homePhone: familyBefore.HomePhone ?? "" }, token, 200);
                 });
