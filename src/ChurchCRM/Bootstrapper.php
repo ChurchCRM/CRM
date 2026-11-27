@@ -215,6 +215,10 @@ class Bootstrapper
             SystemConfig::setValue('sSystemID', $systemId);
         }
 
+        // One-time install provenance: a channel that cannot write config itself
+        // (Docker, a hosting panel) names itself via CHURCHCRM_INSTALL_SOURCE.
+        TelemetryService::stampInstallSourceFromEnvironment();
+
         TelemetryService::syncLifecycle();
 
         LoggerUtils::resetAppLoggerLevel();

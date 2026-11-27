@@ -7041,5 +7041,6 @@
   "Undo": "בטל",
   "Undo failed. Please try again.": "הביטול נכשל. נסו שוב.",
   "You need the database details from your web host, or from whoever set up your server.": "אתם זקוקים לפרטי מסד הנתונים מספק האחסון שלכם, או ממי שהגדיר את השרת שלכם.",
-  "database setup troubleshooting guide": "מדריך לפתרון תקלות בהגדרת מסד הנתונים"
+  "database setup troubleshooting guide": "מדריך לפתרון תקלות בהגדרת מסד הנתונים",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "חלק מהטקסט יישאר באנגלית עד להפעלת תוסף gettext של PHP."
 }

@@ -34,7 +34,7 @@ test('register-first-time-visitor', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'register-first-time-visitor',
     title: 'Welcome a First-Time Visitor',
-    category: 'Recordings',
+    category: 'People & Families',
     purpose: 'Help a front-desk volunteer register a visitor and save a welcome-team follow-up note on their record',
   });
 });

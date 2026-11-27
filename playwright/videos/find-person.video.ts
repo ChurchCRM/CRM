@@ -20,7 +20,7 @@ test('find-person-by-name', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'find-person-by-name',
     title: 'Find Someone in Seconds',
-    category: 'Recordings',
+    category: 'People & Families',
     purpose: 'Help a front-desk volunteer find a person by name and open their record to welcome them',
   });
 });

@@ -10,10 +10,21 @@ class Prerequisite implements \JsonSerializable
     private $testFunction;
     private ?bool $savedTestResult = null;
 
-    public function __construct(string $name, callable $testFunction)
+    public function __construct(string $name, callable $testFunction, private readonly bool $soft = false)
     {
         $this->name = $name;
         $this->testFunction = $testFunction;
+    }
+
+    /** A soft prerequisite is reported when it fails but never blocks the app. */
+    public function isSoft(): bool
+    {
+        return $this->soft;
+    }
+
+    public function isBlocking(): bool
+    {
+        return !$this->soft && !$this->isPrerequisiteMet();
     }
 
     public function isPrerequisiteMet(): ?bool
@@ -42,7 +53,7 @@ class Prerequisite implements \JsonSerializable
             return gettext('Passed');
         }
 
-        return gettext('Failed');
+        return $this->soft ? gettext('Warning') : gettext('Failed');
     }
 
     public function jsonSerialize(): array
@@ -51,6 +62,7 @@ class Prerequisite implements \JsonSerializable
             'Name'      => $this->getName(),
             'WikiLink'  => $this->getWikiLink(),
             'Satisfied' => $this->isPrerequisiteMet(),
+            'Soft'      => $this->soft,
         ];
     }
 }

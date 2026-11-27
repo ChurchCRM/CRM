@@ -247,7 +247,7 @@ class AppIntegrityService
             ),
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
-            new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
+            new Prerequisite('locale gettext', fn (): bool => function_exists('gettext') && (new \ReflectionFunction('gettext'))->isInternal(), true),
             new Prerequisite('PHP ZipArchive', fn (): bool => class_exists('ZipArchive')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
@@ -283,6 +283,7 @@ class AppIntegrityService
             fn (Prerequisite $prereq): bool => !$prereq->isPrerequisiteMet()
         );
         self::reportUnmet($unmet);
+        $unmet = array_filter($unmet, fn (Prerequisite $prereq): bool => !$prereq->isSoft());
 
         return $unmet;
     }

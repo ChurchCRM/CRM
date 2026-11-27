@@ -71,7 +71,7 @@ test('portal-member-update-address', async ({ page, context }, testInfo) => {
     await captureScreen(page, testInfo, {
       name: 'portal-member-update-address',
       title: 'Member Updates Family Address',
-      category: 'Recordings',
+      category: 'People & Families',
       purpose: 'A member signs in to the Member Portal and updates the family address.',
     });
   } finally {

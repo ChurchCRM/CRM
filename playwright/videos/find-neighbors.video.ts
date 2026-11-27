@@ -50,7 +50,7 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'find-neighbors-search',
     title: 'Plan a Visit to Nearby Families',
-    category: 'Recordings',
+    category: 'People & Families',
     purpose: 'Plan a visit by finding nearby families from a member’s family profile and adding the neighbors to the cart',
   });
 });

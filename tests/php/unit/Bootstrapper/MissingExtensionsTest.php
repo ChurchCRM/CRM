@@ -37,7 +37,7 @@ try {
             . '$sSERVERNAME = "localhost"; $dbPort = 3306; $sUSER = "test"; $sPASSWORD = "secret"; $sDATABASE = "test"; '
             . '$sRootPath = ' . var_export($root, true) . '; $URL = ["http://localhost/"];');
         foreach (['Include/LoadConfigs.php' => '/session/index.php'] as $entry => $scriptName) {
-            $script = 'namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { \\ChurchCRM\\dto\\SystemConfig::init(); } } '
+            $script = 'namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
                 . 'namespace ChurchCRM\Service; '
                 . 'function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
                 . '$_SERVER["SCRIPT_NAME"] = ' . var_export($root . $scriptName, true) . '; '
@@ -48,7 +48,7 @@ try {
             Assert::contains('ChurchCRM System Check', $html);
             Assert::contains('href="' . $root . '/skin/v2/error.min.css"', $html);
             Assert::notContains('cdn.jsdelivr.net', $html);
-            foreach (['locale gettext', 'GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
+            foreach (['GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
                 Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
             }
             Assert::contains('PHP Session', $html);
@@ -105,6 +105,12 @@ try {
         . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
         . 'throw new \\RuntimeException("Bootstrap must stop");');
     Assert::contains('ChurchCRM System Check', $installRoot);
+
+    $softOnly = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
+        . 'try { require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; } '
+        . 'catch (\\Error $error) { echo json_encode([http_response_code(), $error->getMessage(), gettext("Hello"), ngettext("one", "many", 2), '
+        . 'array_values(array_map(fn ($check) => [$check->getName(), $check->isBlocking()], array_filter(\\ChurchCRM\\Service\\AppIntegrityService::getPhpPrerequisites(), fn ($check) => !$check->isPrerequisiteMet())))]); }', 'gettext,_,ngettext,dgettext,bindtextdomain,bind_textdomain_codeset,textdomain');
+    Assert::same([false, 'Bootstrap failed', 'Hello', 'many', [['locale gettext', false]]], json_decode($softOnly, true, 512, JSON_THROW_ON_ERROR));
 
     $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
         . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '
