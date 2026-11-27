@@ -31,7 +31,8 @@ describe("Sunday School class list", () => {
     describe("student custom fields", () => {
         const pdfLines = () =>
             cy.request({ url: classList(ANGELS_CLASS_GROUP_ID), encoding: "binary" }).then((response) => pdfText(response.body));
-        const text = (lines) => lines.join("\n");
+        // The name cell is 45mm, so mPDF splits a label and its value across runs.
+        const text = (lines) => lines.join(" ").replace(/\s+/g, " ");
 
         it("prints the filled fields an administrator may see and skips empty ones", () => {
             cy.setupAdminSession();
