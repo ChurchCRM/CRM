@@ -67,6 +67,10 @@ LABEL maintainer="ChurchCRM" \
 
 EXPOSE 9000
 
+# Install provenance only: read once at install time and stamped into config
+# as sInstallSource (see TelemetryService). Not application configuration.
+ENV CHURCHCRM_INSTALL_SOURCE=docker
+
 # Install only runtime libraries (no dev tools)
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \

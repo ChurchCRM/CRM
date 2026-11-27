@@ -30,6 +30,7 @@ Full instructions, backup and upgrade procedure: https://docs.churchcrm.io/insta
 
 - The image ships no database — bring MariaDB/MySQL, as the compose stack does.
 - Keep `Include/Config.php` across container replacements (see the comments in `docker/production/compose.yaml`) so a rebuild doesn't send you back to setup.
+- `CHURCHCRM_INSTALL_SOURCE` names the install channel shown under Admin → System → Debug. The images set `docker`; a hosting provider can set its own name before the first start. The first recorded value is kept.
 - The images are for evaluation and self-hosted installs. For anything public, put a TLS reverse proxy in front — the compose stack binds loopback only by default.
 
 ## Links
