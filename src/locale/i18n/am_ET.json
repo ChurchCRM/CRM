@@ -7043,5 +7043,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "የዳታቤዝ ዝርዝሮችን ከድር አስተናጋጅዎ ወይም ሰርቨርዎን ካዘጋጀው ሰው ማግኘት ያስፈልግዎታል።",
   "database setup troubleshooting guide": "የዳታቤዝ ማዘጋጃ ችግር መፍቻ መመሪያ",
   "Some text will stay in English until the gettext PHP extension is enabled.": "የgettext PHP ቅጥያ እስኪነቃ ድረስ አንዳንድ ጽሑፍ በእንግሊዝኛ ይቆያል።",
-  "Install Source": "የጭነት ምንጭ"
+  "Install Source": "የጭነት ምንጭ",
+  "Install source and container engine": "የጭነት ምንጭ እና የኮንቴይነር ሞተር",
+  "Understand how ChurchCRM is installed and run": "ChurchCRM እንዴት እንደሚጫን እና እንደሚሠራ ይረዱ"
 }

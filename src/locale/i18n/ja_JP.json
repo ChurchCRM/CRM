@@ -7008,5 +7008,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "データベースの詳細は、ウェブホスト、またはサーバーを設定した方から入手する必要があります。",
   "database setup troubleshooting guide": "データベース設定のトラブルシューティングガイド",
   "Some text will stay in English until the gettext PHP extension is enabled.": "PHP の gettext 拡張機能が有効になるまで、一部のテキストは英語のままになります。",
-  "Install Source": "インストール ソース"
+  "Install Source": "インストール ソース",
+  "Install source and container engine": "インストール ソースとコンテナ エンジン",
+  "Understand how ChurchCRM is installed and run": "ChurchCRM のインストール方法と実行方法を理解する"
 }

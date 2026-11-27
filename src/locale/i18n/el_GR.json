@@ -7043,5 +7043,7 @@
   "You need the database details from your web host, or from whoever set up your server.": "Χρειάζεστε τα στοιχεία της βάσης δεδομένων από τον πάροχο φιλοξενίας σας ή από όποιον ρύθμισε τον διακομιστή σας.",
   "database setup troubleshooting guide": "οδηγός αντιμετώπισης προβλημάτων ρύθμισης βάσης δεδομένων",
   "Some text will stay in English until the gettext PHP extension is enabled.": "Κάποιο κείμενο θα παραμείνει στα Αγγλικά μέχρι να ενεργοποιηθεί η επέκταση gettext της PHP.",
-  "Install Source": "Πηγή εγκατάστασης"
+  "Install Source": "Πηγή εγκατάστασης",
+  "Install source and container engine": "Πηγή εγκατάστασης και μηχανή κοντέινερ",
+  "Understand how ChurchCRM is installed and run": "Κατανοήστε πώς εγκαθίσταται και εκτελείται το ChurchCRM"
 }
