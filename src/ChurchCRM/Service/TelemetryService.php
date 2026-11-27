@@ -29,6 +29,10 @@ class TelemetryService
     // carrying it is a dev/CI system, never a church, whatever its stored profile says.
     private const DEV_SYSTEM_ID = 'dev-churchcrm-testing';
 
+    // Environment variable a channel that cannot write config itself (Docker, a
+    // hosting panel) uses to name the install source at install time.
+    private const INSTALL_SOURCE_ENV_VAR = 'CHURCHCRM_INSTALL_SOURCE';
+
     private static array $installProfileCache = [];
     private static ?string $logDedupeDirectory = null;
 
@@ -97,6 +101,35 @@ class TelemetryService
         }
 
         return is_string($value) ? trim($value) : null;
+    }
+
+    /**
+     * Stamp the install source from the CHURCHCRM_INSTALL_SOURCE environment variable.
+     *
+     * Called from Bootstrapper until a marker exists, so in practice it lands on the
+     * first bootstrap of a new install, before the first lifecycle event is sent. A
+     * marker an installer wrote itself (Softaculous writes sInstallSource directly)
+     * always wins and is never overwritten: this is one-time install provenance, not
+     * runtime configuration, and nothing reads the variable after the stamp.
+     */
+    public static function stampInstallSourceFromEnvironment(): void
+    {
+        try {
+            if (!SystemConfig::isInitialized()) {
+                return;
+            }
+            $stored = SystemConfig::getValue('sInstallSource');
+            if (is_string($stored) && trim($stored) !== '') {
+                return;
+            }
+            $source = self::environmentValue(self::INSTALL_SOURCE_ENV_VAR);
+            if ($source === null || $source === '') {
+                return;
+            }
+            SystemConfig::setValue('sInstallSource', $source);
+        } catch (\Throwable) {
+            // Provenance must never break bootstrap.
+        }
     }
 
     public static function getLevel(): string

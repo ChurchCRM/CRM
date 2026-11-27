@@ -345,6 +345,7 @@ class   SystemConfig
 
             'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'default', gettext('Send error reports, install/upgrade events and system info so problems can be fixed. No page views, no church data.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
+            'sInstallSource'                       => new ConfigItem('sInstallSource', 'text', ''),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
             'sTelemetryHeartbeatDate'               => new ConfigItem('sTelemetryHeartbeatDate', 'text', ''),
