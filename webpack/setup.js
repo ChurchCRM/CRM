@@ -158,6 +158,7 @@ window.moment = moment;
         html: '<i class="fa-solid fa-spinner fa-spin"></i>',
       },
       false: { class: "text-danger", html: "&#x2717;" },
+      soft: { class: "text-warning", html: "&#9888;" },
     };
 
     let normalizedStatus = "pending";
@@ -170,8 +171,13 @@ window.moment = moment;
       storedValue = false;
     }
 
-    const td =
-      normalizedStatus === true
+    const isSoftMiss = normalizedStatus === false && prerequisite.Soft === true;
+    if (isSoftMiss) {
+      storedValue = true;
+    }
+    const td = isSoftMiss
+      ? statusConfig.soft
+      : normalizedStatus === true
         ? statusConfig.true
         : normalizedStatus === false
           ? statusConfig.false
@@ -184,7 +190,11 @@ window.moment = moment;
 
     const $prerequisiteRow = $("<tr>", { id: rowId })
       .append($("<td>", { text: prerequisite.Name }))
-      .append($("<td>", td));
+      .append(
+        isSoftMiss
+          ? buildStatusCell(td, i18next.t("Some text will stay in English until the gettext PHP extension is enabled."))
+          : $("<td>", td),
+      );
 
     const $existing = $(`#${rowId}`);
     if ($existing.length) {
@@ -325,11 +335,14 @@ window.moment = moment;
 
     let allPassed = true;
     let anyPending = false;
+    let anyWarning = false;
 
     $rows.each(function () {
       const statusCell = $(this).find("td:last");
       if (statusCell.hasClass("text-danger")) {
         allPassed = false;
+      } else if (statusCell.hasClass("text-warning") && statusCell.find(".fa-spinner").length === 0) {
+        anyWarning = true;
       } else if (statusCell.find(".fa-spinner").length > 0) {
         anyPending = true;
       }
@@ -337,6 +350,9 @@ window.moment = moment;
 
     if (anyPending) {
       $status.html('<i class="fa-solid fa-spinner fa-spin text-muted"></i>');
+      toggleCollapse(group, "show");
+    } else if (allPassed && anyWarning) {
+      $status.html('<i class="fa-solid fa-exclamation-triangle text-warning"></i>');
       toggleCollapse(group, "show");
     } else if (allPassed) {
       $status.html('<i class="fa-solid fa-check-circle text-success"></i>');

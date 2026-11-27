@@ -8,11 +8,13 @@ $failedRequirements = [];
 $rows = '';
 foreach ($phpPrerequisites as $check) {
     $satisfied = $check->isPrerequisiteMet();
-    if (!$satisfied) {
+    if ($check->isBlocking()) {
         $failedRequirements[] = $check->getName();
     }
+    $failClass = $check->isSoft() ? 'text-warning' : 'text-danger';
+    $failText = $check->isSoft() ? 'Warning' : 'Failed';
     $rows .= '<tr><th scope="row" class="text-wrap">' . standaloneEscape($check->getName()) . '</th>'
-        . '<td class="' . ($satisfied ? 'text-success' : 'text-danger') . '">' . standaloneEscape($satisfied ? ($hasGettext ? gettext('Passed') : 'Passed') : ($hasGettext ? gettext('Failed') : 'Failed')) . '</td></tr>';
+        . '<td class="' . ($satisfied ? 'text-success' : $failClass) . '">' . standaloneEscape($satisfied ? ($hasGettext ? gettext('Passed') : 'Passed') : ($hasGettext ? gettext($failText) : $failText)) . '</td></tr>';
 }
 
 $content = '<p role="alert" class="text-danger">' . standaloneEscape(($hasGettext ? gettext('Some PHP requirements are missing. ChurchCRM needs these before it can continue.') : 'Some PHP requirements are missing. ChurchCRM needs these before it can continue.')) . '</p>'

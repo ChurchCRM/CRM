@@ -7041,5 +7041,6 @@
   "Undo": "రద్దుచేయండి",
   "Undo failed. Please try again.": "రద్దుచేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
   "You need the database details from your web host, or from whoever set up your server.": "మీకు మీ వెబ్ హోస్ట్ నుండి, లేదా మీ సర్వర్‌ను సెటప్ చేసిన వారి నుండి డేటాబేస్ వివరాలు అవసరం.",
-  "database setup troubleshooting guide": "డేటాబేస్ సెటప్ ట్రబుల్షూటింగ్ గైడ్"
+  "database setup troubleshooting guide": "డేటాబేస్ సెటప్ ట్రబుల్షూటింగ్ గైడ్",
+  "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext పొడిగింపు ప్రారంభించబడే వరకు కొంత వచనం ఆంగ్లంలోనే ఉంటుంది."
 }

@@ -110,7 +110,7 @@ test.describe('Email composer', () => {
     name: 'email-composer-form',
     title: 'Write an Email',
     category: 'Communication',
-    purpose: 'Show the composer with a subject, the message and the pre-filled closing, for the email page of the user guide',
+    purpose: 'Show the composer with a subject, the message and the pre-filled closing',
     usedIn: ['docs'],
   });
 
@@ -194,7 +194,7 @@ test.describe('Email composer', () => {
     name: 'email-person-view-send-button',
     title: 'Email a Person from Their Page',
     category: 'Communication',
-    purpose: 'Show the paper-plane button next to the email address on the Person View, for the email page of the user guide',
+    purpose: 'Show the paper-plane button next to the email address on the Person View',
     usedIn: ['docs'],
   });
 
@@ -210,7 +210,7 @@ test.describe('Email composer', () => {
     name: 'email-person-view-family-send-buttons',
     title: 'Email Family Members from the Person View',
     category: 'Communication',
-    purpose: "Show the paper-plane buttons on the other family members' rows of the family card on the Person View, for the email page of the user guide",
+    purpose: "Show the paper-plane buttons on the other family members' rows of the family card on the Person View",
     usedIn: ['docs'],
   });
 
@@ -349,7 +349,7 @@ test.describe('Email history', () => {
     name: 'email-dashboard-recent-sends',
     title: 'Email History on the Email Page',
     category: 'Communication',
-    purpose: 'Show the Email History table on the Email page with the recent sends, for the email page of the user guide',
+    purpose: 'Show the Email History table on the Email page with the recent sends',
     usedIn: ['docs'],
   });
 

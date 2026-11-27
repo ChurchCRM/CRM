@@ -63,7 +63,7 @@ test('kiosk-child-checkin-checkout', async ({ page, context }, testInfo) => {
     await captureScreen(page, testInfo, {
       name: 'kiosk-child-checkin-checkout',
       title: 'Check a Child In and Out',
-      category: 'Recordings',
+      category: 'Events & Attendance',
       purpose: 'A parent checks a child in at the Sunday School kiosk and later checks them out, selecting the responsible family member when attribution is enabled.',
     });
   } finally {

@@ -46,6 +46,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    environment:
+      # Install provenance only: read once at install time and stamped into
+      # config as sInstallSource (see TelemetryService); never read again
+      # afterwards. This stack is Docker, so docker is the channel it names.
+      CHURCHCRM_INSTALL_SOURCE: docker
     ports:
       # Loopback only. Put a TLS reverse proxy in front for anything public.
       # Apache inside the image listens on 8080, NOT 80.

@@ -81,7 +81,8 @@
     "psr-4": {
       "ChurchCRM\\": "ChurchCRM/"
     },
-    "classmap": ["ChurchCRM/"]
+    "classmap": ["ChurchCRM/"],
+    "files": ["Include/gettext-fallback.php"]
   },
   "config": {
     "allow-plugins": {

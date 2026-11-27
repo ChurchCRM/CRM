@@ -71,7 +71,7 @@ test('family-profile-tour', async ({ page }, testInfo) => {
   await captureScreen(page, testInfo, {
     name: 'family-profile-tour',
     title: 'A Whole Family on One Page',
-    category: 'Recordings',
+    category: 'People & Families',
     purpose:
       'Show a church secretary how to go from the dashboard to a family, see who is in the household, how to reach each person, where they live, their giving, then open a parent and a child for groups, Sunday school and notes',
   });
