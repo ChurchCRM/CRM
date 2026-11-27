@@ -106,12 +106,9 @@ class DepositService {
             if (!$wasClosed && $depositClosed && SystemConfig::getBooleanValue('bEnableDepositPostedNotification')) {
                 $toAddress = SystemConfig::getValue('sToEmailAddress');
                 if (!empty($toAddress)) {
-                    $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
-                    if ($deposit !== null) {
-                        $toAddresses = [$toAddress];
-                        $email = new DepositPostedEmail($toAddresses, $deposit);
-                        $email->send();
-                    }
+                    $toAddresses = [$toAddress];
+                    $email = new DepositPostedEmail($toAddresses, $deposit);
+                    $email->send();
                 }
             }
         } else {

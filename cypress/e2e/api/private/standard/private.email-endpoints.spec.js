@@ -361,8 +361,8 @@ describe("GET /api/groups/:id/emails", () => {
                 cy.task("mail:list").its("body.messages").then((messages) => {
                     expect(messages).to.have.length(1);
                     const message = messages[0];
-                    cy.task("mail:get", { id: message.id }).then((result) => {
-                        expect(result.success).to.be.true;
+                    cy.task("mail:get", { id: message.ID }).then((result) => {
+                        expect(result.ok).to.be.true;
                         const email = result.body;
                         expect(email.To[0].Address).to.include("churchcrm@example.com");
                         expect(email.Text).to.contain("October 25 2025");
