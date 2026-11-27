@@ -35,6 +35,7 @@ describe("Admin Debug", () => {
     });
 
     it("lets an administrator identify and copy the installer for support", () => {
+        cy.viewport(390, 844);
         cy.setSystemConfig("sInstallSource", "custom-panel");
         cy.setupAdminSession();
         cy.visit("/admin/system/debug#collapseEnvironment");

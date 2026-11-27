@@ -35,6 +35,8 @@ describe("API System Issues", () => {
         diagnostics().its("body.issueBody").should("contain", "Install Source |custom-panel\r\n");
         cy.setSystemConfig("sInstallSource", "panel|channel\nextra row");
         diagnostics().its("body.issueBody").should("contain", "Install Source |panel\\|channel extra row\r\n");
+        cy.setSystemConfig("sInstallSource", "panel\\|channel");
+        diagnostics().its("body.issueBody").should("contain", "Install Source |panel\\\\\\|channel\r\n");
         cy.setSystemConfig("sInstallSource", "");
         diagnostics().its("body.issueBody").should("contain", "Install Source |Unknown\r\n");
     });
