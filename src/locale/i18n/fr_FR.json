@@ -7042,5 +7042,6 @@
   "Undo failed. Please try again.": "L'annulation a échoué. Veuillez réessayer.",
   "You need the database details from your web host, or from whoever set up your server.": "Vous avez besoin des informations de la base de données fournies par votre hébergeur web, ou par la personne qui a configuré votre serveur.",
   "database setup troubleshooting guide": "guide de dépannage de la configuration de la base de données",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Une partie du texte restera en anglais jusqu'à l'activation de l'extension gettext de PHP."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Une partie du texte restera en anglais jusqu'à l'activation de l'extension gettext de PHP.",
+  "Install Source": "Source d’installation"
 }

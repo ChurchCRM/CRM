@@ -7042,5 +7042,6 @@
   "Undo failed. Please try again.": "Ongedaan maken is mislukt. Probeer het opnieuw.",
   "You need the database details from your web host, or from whoever set up your server.": "U hebt de databasegegevens nodig van uw webhost, of van degene die uw server heeft ingesteld.",
   "database setup troubleshooting guide": "probleemoplossingsgids voor de database-installatie",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Een deel van de tekst blijft in het Engels totdat de PHP-extensie gettext is ingeschakeld."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Een deel van de tekst blijft in het Engels totdat de PHP-extensie gettext is ingeschakeld.",
+  "Install Source": "Installatiebron"
 }
