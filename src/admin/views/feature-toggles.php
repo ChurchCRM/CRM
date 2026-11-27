@@ -43,6 +43,10 @@ $featureGroups = [
             'label' => gettext('Public Calendar API'),
             'description' => gettext('Allow unauthenticated access to public events (for embedding calendars)'),
         ],
+        'bEnforceCSP' => [
+            'label' => gettext('Content Security Policy'),
+            'description' => gettext('Enforce strict CSP headers to protect against XSS attacks'),
+        ],
     ],
 ];
 $sections = [];

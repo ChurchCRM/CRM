@@ -5,7 +5,8 @@
  *
  * This file configures security-related HTTP headers for ChurchCRM:
  *
- * - Content-Security-Policy (CSP): always enforced, to block XSS.
+ * - Content-Security-Policy (CSP): enforced to block XSS. The bEnforceCSP
+ *   feature toggle (default on) switches it to report-only.
  *   Violations are reported to /api/public/csp-report (public endpoint).
  *
  * - X-Frame-Options: Prevents clickjacking attacks
@@ -79,4 +80,5 @@ if (RequestUtils::isHttps()) {
     header('Strict-Transport-Security: max-age=31536000');
 }
 header('Referrer-Policy: strict-origin-when-cross-origin');
-header('Content-Security-Policy: ' . join('; ', $csp));
+$cspHeader = SystemConfig::getBooleanValue('bEnforceCSP') ? 'Content-Security-Policy' : 'Content-Security-Policy-Report-Only';
+header($cspHeader . ': ' . join('; ', $csp));

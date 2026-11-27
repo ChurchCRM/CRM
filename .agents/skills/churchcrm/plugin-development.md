@@ -81,9 +81,14 @@ Core plugins are the directories under `src/plugins/core/`; read each `plugin.js
             "permission": "bEmailMailto"
         }
     ],
-    "hooks": ["person.created", "person.updated", "person.deleted"]
+    "hooks": ["person.created", "person.updated", "person.deleted"],
+    "cspCompatible": true
 }
 ```
+
+### Content Security Policy
+
+ChurchCRM enforces CSP by default (`bEnforceCSP`). Set `"cspCompatible": true` only after every plugin page runs with no CSP violations in the browser console. Without it, Plugin Management shows community plugins as **Not CSP-ready**. To pass: every inline `<script>` carries `nonce="<?= SystemURLs::getCSPNonce() ?>"`, there are no `onclick=` style attributes or `javascript:` URLs, and third-party scripts ship inside the plugin (no CDN origins are allowed).
 
 ### Menu item permission
 
