@@ -106,8 +106,9 @@ class TelemetryService
     /**
      * Stamp the install source from the CHURCHCRM_INSTALL_SOURCE environment variable.
      *
-     * Called from Bootstrapper until a marker exists, so in practice it lands on the
-     * first bootstrap of a new install, before the first lifecycle event is sent. A
+     * Called from Bootstrapper until a marker exists: on the first bootstrap of a new
+     * install, before the first lifecycle event, or on the first request after an
+     * existing install gains the variable (such as a Docker image upgrade). A
      * marker an installer wrote itself (Softaculous writes sInstallSource directly)
      * always wins and is never overwritten: this is one-time install provenance, not
      * runtime configuration, and nothing reads the variable after the stamp.
@@ -685,6 +686,11 @@ class TelemetryService
             $properties['install_source'] = $installSource;
         }
 
+        $container = self::container();
+        if ($container !== null) {
+            $properties['container'] = $container;
+        }
+
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
             $properties += self::databaseProperties($serverVersion);
@@ -712,6 +718,16 @@ class TelemetryService
         $source = is_string($source) ? trim($source) : '';
 
         return $source !== '' ? $source : null;
+    }
+
+    /** The container engine running this process, or null outside a container. */
+    private static function container(): ?string
+    {
+        return match (true) {
+            is_file('/.dockerenv') => 'docker',
+            is_file('/run/.containerenv') => 'podman',
+            default => null,
+        };
     }
 
     /** The church's self-declared country (sChurchCountry only), or null when empty or not a known ISO code. */

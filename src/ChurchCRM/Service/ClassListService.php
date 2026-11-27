@@ -22,6 +22,7 @@ class ClassListService
     public static function classes(array $groupIds): array
     {
         $classes = [];
+        $customFields = (new CustomFieldService())->getVisiblePersonFields();
         foreach ($groupIds as $groupId) {
             $group = GroupQuery::create()->findOneById($groupId);
             if ($group === null) {
@@ -33,8 +34,6 @@ class ClassListService
             foreach ($options as $option) {
                 $roleNames[$option->getOptionId()] = $option->getOptionName();
             }
-
-            $customFields = (new CustomFieldService())->getVisiblePersonFields();
 
             $class = ['name' => (string) $group->getName(), 'teachers' => [], 'liaisons' => [], 'students' => []];
 
