@@ -46,6 +46,15 @@ function getKioskRosterIds(object $assignment): array
 }
 
 /**
+ * True when the kiosk may record $personId: on the active roster, or already attending the event (a checked-out guest).
+ */
+function isKioskRosterMember(object $assignment, int $personId): bool
+{
+    return in_array($personId, getKioskRosterIds($assignment), true)
+        || EventAttendQuery::create()->filterByEventId($assignment->getEventId())->filterByPersonId($personId)->count() > 0;
+}
+
+/**
  * True when $guardianId is an adult family member of the child (the only people a kiosk may record).
  */
 function isKioskGuardianOf(int $childId, int $guardianId): bool
@@ -209,7 +218,11 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($result instanceof Response) {
             return $result;
         }
-        [, , $event] = $result;
+        [, $assignment, $event] = $result;
+
+        if (!isKioskRosterMember($assignment, $personId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
 
         if ($checkedInById !== null && !isKioskGuardianOf($personId, $checkedInById)) {
             return SlimUtils::renderErrorJSON($response, gettext('Checked-in-by person is not an adult family member'), [], 403);
@@ -233,7 +246,11 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($result instanceof Response) {
             return $result;
         }
-        [, , $event] = $result;
+        [, $assignment, $event] = $result;
+
+        if (!isKioskRosterMember($assignment, $personId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
 
         if ($checkedOutById !== null && !isKioskGuardianOf($personId, $checkedOutById)) {
             return SlimUtils::renderErrorJSON($response, gettext('Checked-out-by person is not an adult family member'), [], 403);
