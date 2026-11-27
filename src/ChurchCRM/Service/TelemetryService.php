@@ -106,8 +106,9 @@ class TelemetryService
     /**
      * Stamp the install source from the CHURCHCRM_INSTALL_SOURCE environment variable.
      *
-     * Called from Bootstrapper until a marker exists, so in practice it lands on the
-     * first bootstrap of a new install, before the first lifecycle event is sent. A
+     * Called from Bootstrapper until a marker exists: on the first bootstrap of a new
+     * install, before the first lifecycle event, or on the first request after an
+     * existing install gains the variable (such as a Docker image upgrade). A
      * marker an installer wrote itself (Softaculous writes sInstallSource directly)
      * always wins and is never overwritten: this is one-time install provenance, not
      * runtime configuration, and nothing reads the variable after the stamp.
