@@ -450,13 +450,7 @@ document.addEventListener("change", function (e) {
   }
 });
 document.addEventListener("click", function (e) {
-  var el = e.target.closest ? e.target.closest("[data-print],[data-href]") : null;
-  if (!el) {
-    return;
-  }
-  if (el.hasAttribute("data-print")) {
+  if (e.target.closest && e.target.closest("[data-print]")) {
     window.print();
-  } else {
-    window.location.href = el.getAttribute("data-href");
   }
 });

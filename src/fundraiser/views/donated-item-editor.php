@@ -95,10 +95,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <?php if ($itemId > 0): ?>
             <div class="mb-3">
-              <label class="form-label"><?= gettext('Replicate item') ?></label>
+              <label class="form-label" for="NumberCopies"><?= gettext('Replicate item') ?></label>
               <div class="input-group">
-                <input type="text" name="Count" id="NumberCopies" value="0" class="form-control">
-                <button type="submit" class="btn btn-primary" formnovalidate formaction="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/<?= (int) $itemId ?>/replicate"><?= gettext('Go') ?></button>
+                <input type="text" name="Count" id="NumberCopies" value="0" class="form-control" form="donated-item-replicate">
+                <button type="submit" class="btn btn-primary" form="donated-item-replicate"><?= gettext('Go') ?></button>
               </div>
             </div>
             <?php endif; ?>
@@ -137,4 +137,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 </form>
+<?php if ($itemId > 0): ?>
+<form id="donated-item-replicate" method="post" action="<?= InputUtils::escapeAttribute($sRootPath) ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/<?= (int) $itemId ?>/replicate">
+  <?= CSRFUtils::getTokenInputField('donated_item_replicate') ?>
+</form>
+<?php endif; ?>
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

@@ -7,7 +7,7 @@
  *
  * - Content-Security-Policy (CSP): Helps protect against XSS attacks
  *   CSP is enforced by default. Switch to report-only via
- *   System Settings > bEnforceCSP configuration option.
+ *   Admin > Feature Toggles (bEnforceCSP).
  *   CSP violations are reported to /api/public/csp-report (public endpoint).
  *
  * - X-Frame-Options: Prevents clickjacking attacks
@@ -69,10 +69,7 @@ if (empty($allowFraming)) {
     // and response splitting even when input comes from an authenticated admin.
     $origins = preg_replace('/[;\r\n]/', '', SystemConfig::getValue('sCalendarEmbedOrigins') ?: '*');
     $csp[] = 'frame-ancestors ' . $origins;
-    // X-Frame-Options is intentionally omitted — its absence is what
-    // actually permits cross-origin framing in the default (report-only)
-    // CSP mode. When bEnforceCSP is enabled, the enforcing CSP header's
-    // frame-ancestors directive takes over that role.
+    // An enforcing frame-ancestors directive controls access for embeddable pages.
 }
 
 $csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report';
