@@ -12,6 +12,7 @@ use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RequestUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -26,16 +27,17 @@ $isAdminRoute = str_starts_with($requestPath, $basePath . '/admin') || str_start
 
 // For device routes, handle kiosk device initialization
 if (!$isAdminRoute) {
-    $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
+    $registrationOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable()
+        && KioskDeviceQuery::create()->filterByAccepted(false)->count() < KioskDevice::MAX_PENDING;
 
-    if (isset($_COOKIE['kioskCookie'])) {
+    if (is_string($_COOKIE['kioskCookie'] ?? null)) {
         $g = hash('sha256', $_COOKIE['kioskCookie']);
         $Kiosk = KioskDeviceQuery::create()
               ->findOneByGUIDHash($g);
 
         if ($Kiosk === null) {
             // Kiosk was deleted - only allow re-registration if window is open
-            if ($windowOpen) {
+            if ($registrationOpen) {
                 $Kiosk = new KioskDevice();
                 $Kiosk->setGUIDHash($g);
                 $Kiosk->setAccepted(false);
@@ -46,6 +48,7 @@ if (!$isAdminRoute) {
                     'expires'  => time() - 3600,
                     'path'     => SystemURLs::getRootPath() . '/kiosk/',
                     'httponly'  => true,
+                    'secure'   => RequestUtils::isHttps(),
                     'samesite' => 'Lax',
                 ]);
                 http_response_code(401);
@@ -53,13 +56,14 @@ if (!$isAdminRoute) {
                 exit;
             }
         }
-    } elseif ($windowOpen) {
+    } elseif ($registrationOpen) {
         // No cookie and registration window is open - create new kiosk
         $guid = bin2hex(random_bytes(32));
         setcookie('kioskCookie', $guid, [
             'expires'  => time() + (90 * 24 * 60 * 60), // 90 days
             'path'     => SystemURLs::getRootPath() . '/kiosk/',
             'httponly'  => true,
+            'secure'   => RequestUtils::isHttps(),
             'samesite' => 'Lax',
         ]);
         // Populate $_COOKIE for current request since setcookie() doesn't

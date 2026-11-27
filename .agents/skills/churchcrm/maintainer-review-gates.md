@@ -71,6 +71,12 @@ The "Verified" + "No hard blocks" signal replaces an all-checked checkbox list.
 
 Comment volume is not a review topic. Wrong or essay comments can be deleted; that is not Request changes.
 
+### Fixes with gaps
+
+When a PR fixes a problem that exists on `master`, a gap that would otherwise be a hard block does not block it. List the gap under **Not blocking**, draft a follow-up issue for it, and post the review as Comment. Create the issue when the maintainer says to post, and link it in the review.
+
+Still a hard block: the PR itself introduces a security hole, widens access, or loses or destroys data.
+
 ### Locale-sensitive values
 
 Applies when the PR reads, writes, validates, or displays a date, time, number, currency, or timezone.
