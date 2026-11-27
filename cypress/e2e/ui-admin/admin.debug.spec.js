@@ -1,12 +1,22 @@
 /// <reference types="cypress" />
 
 describe("Admin Debug", () => {
+    let installSource;
+
+    before(() => {
+        cy.getSystemConfig("sInstallSource").then((value) => { installSource = value; });
+    });
+
+    after(() => {
+        cy.restoreSystemConfig("sInstallSource", installSource);
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
     it("View system debug", () => {
-        cy.visit("admin/system/debug");
+        cy.visit("/admin/system/debug");
 
         // Environment card subsumed the old "ChurchCRM Installation" card;
         // its tabs include Database, PHP, Web Server, Locale.
@@ -22,6 +32,20 @@ describe("Admin Debug", () => {
         cy.get("#browser-timezone").should("exist").invoke("text").should("not.be.empty");
         cy.get("#browser-time").should("exist").invoke("text").should("not.be.empty");
         cy.get("#timezone-summary").should("exist").invoke("text").should("not.be.empty");
+    });
+
+    it("lets an administrator identify and copy the installer for support", () => {
+        cy.setSystemConfig("sInstallSource", "custom-panel");
+        cy.setupAdminSession();
+        cy.visit("/admin/system/debug#collapseEnvironment");
+        cy.contains("#env-app tr", "Install Source").within(() => {
+            cy.get("code").should("have.text", "custom-panel");
+            cy.get("button[data-copy]").should("have.attr", "data-copy", "custom-panel");
+        });
+        cy.setSystemConfig("sInstallSource", "");
+        cy.setupAdminSession();
+        cy.visit("/admin/system/debug#collapseEnvironment");
+        cy.contains("#env-app tr", "Install Source").find("code").should("have.text", "Unknown");
     });
 
     it("View email debug", () => {

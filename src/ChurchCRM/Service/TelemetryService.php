@@ -701,7 +701,7 @@ class TelemetryService
      * when no installer set one. The value is reported as stored, so any installer or hosting
      * provider that records its own value is attributed the same way.
      */
-    private static function installSource(): ?string
+    public static function installSource(): ?string
     {
         try {
             $source = SystemConfig::isInitialized() ? SystemConfig::getValue('sInstallSource') : null;

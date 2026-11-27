@@ -6,12 +6,39 @@ const SERVER_DETAILS = [
     "PHP Version",
     "SQL Version",
     "Installation ID",
+    "Install Source",
     "Person Custom Fields",
     "Family Custom Fields",
     "Prerequisite Status",
 ];
 
 describe("API System Issues", () => {
+    let installSource;
+
+    before(() => {
+        cy.getSystemConfig("sInstallSource").then((value) => { installSource = value; });
+    });
+
+    after(() => {
+        cy.restoreSystemConfig("sInstallSource", installSource);
+    });
+
+    it("includes the recorded installer and handles an absent marker", () => {
+        const diagnostics = () => cy.makePrivateAdminAPICall("POST", "/api/issues", {
+            pageName: "InstallerDiagnostics",
+            screenSize: { height: 1080, width: 1920 },
+            windowSize: { height: 900, width: 1440 },
+            pageSize: { height: 2000, width: 1440 },
+        }, 200);
+
+        cy.setSystemConfig("sInstallSource", "custom-panel");
+        diagnostics().its("body.issueBody").should("contain", "Install Source |custom-panel\r\n");
+        cy.setSystemConfig("sInstallSource", "panel|channel\nextra row");
+        diagnostics().its("body.issueBody").should("contain", "Install Source |panel\\|channel extra row\r\n");
+        cy.setSystemConfig("sInstallSource", "");
+        diagnostics().its("body.issueBody").should("contain", "Install Source |Unknown\r\n");
+    });
+
     it("Issues endpoint requires authentication", () => {
         // Unauthenticated request should be rejected
         cy.apiRequest({
