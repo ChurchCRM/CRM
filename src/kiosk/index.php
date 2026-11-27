@@ -27,7 +27,8 @@ $isAdminRoute = str_starts_with($requestPath, $basePath . '/admin') || str_start
 
 // For device routes, handle kiosk device initialization
 if (!$isAdminRoute) {
-    $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
+    $registrationOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable()
+        && KioskDeviceQuery::create()->filterByAccepted(false)->count() < KioskDevice::MAX_PENDING;
 
     if (is_string($_COOKIE['kioskCookie'] ?? null)) {
         $g = hash('sha256', $_COOKIE['kioskCookie']);
@@ -36,7 +37,7 @@ if (!$isAdminRoute) {
 
         if ($Kiosk === null) {
             // Kiosk was deleted - only allow re-registration if window is open
-            if ($windowOpen) {
+            if ($registrationOpen) {
                 $Kiosk = new KioskDevice();
                 $Kiosk->setGUIDHash($g);
                 $Kiosk->setAccepted(false);
@@ -55,7 +56,7 @@ if (!$isAdminRoute) {
                 exit;
             }
         }
-    } elseif ($windowOpen) {
+    } elseif ($registrationOpen) {
         // No cookie and registration window is open - create new kiosk
         $guid = bin2hex(random_bytes(32));
         setcookie('kioskCookie', $guid, [
