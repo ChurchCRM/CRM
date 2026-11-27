@@ -11,6 +11,8 @@ use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
 
+Assert::same('test', TelemetryService::installProfile());
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 Assert::same('https://us.i.posthog.com/i/v0/e/', TelemetryService::POSTHOG_CAPTURE_ENDPOINT);
 $acknowledgement = new ReflectionMethod(TelemetryService::class, 'receivedCaptureAcknowledgement');
 Assert::true($acknowledgement->invoke(null, 'Ok', 200));
