@@ -74,7 +74,7 @@ $windowLabels = [
                             <th><?= gettext('Date') ?></th>
                             <th><?= gettext('Type') ?></th>
                             <th><?= gettext('Name') ?></th>
-                            <th><?= gettext('Years') ?></th>
+                            <th class="text-capitalize"><?= gettext('years') ?></th>
                             <th><?= gettext('Note') ?></th>
                         </tr>
                     </thead>
