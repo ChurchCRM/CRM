@@ -4,17 +4,18 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\model\ChurchCRM\Map\FamilyCustomTableMap;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -53,7 +54,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
+        $aNameFields[$iFieldID] = CustomFieldUtils::normalizeEditorFieldName($_POST[$iFieldID . 'name']);
 
         if (strlen($aNameFields[$iFieldID]) === 0) {
             $aNameErrors[$iFieldID] = true;
@@ -95,33 +96,26 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
+        $newFieldType = InputUtils::filterInt($_POST['newFieldType']);
+        $columnType = CustomFieldUtils::COLUMN_TYPES[$newFieldType] ?? null;
+        $newFieldName = CustomFieldUtils::normalizeEditorFieldName($_POST['newFieldName']);
         $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec'], 'int');
 
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
-        } elseif (strlen($newFieldType) === 0 || $newFieldType < 1) {
-            // This should never happen, but check anyhow.
-            // $bNewTypeError = true;
-        } else {
+        } elseif ($columnType !== null) {
             $bDuplicateNameError = FamilyCustomMasterQuery::create()->filterByName($newFieldName)->count() > 0;
 
             if (!$bDuplicateNameError) {
-                $connection = Bootstrapper::getMysqliConnection();
-                // Find the highest existing field number in the table to
-                // determine the next free one.
-                // This is essentially an auto-incrementing system where
-                // deleted numbers are not re-used.
-                $fields = mysqli_query($connection, 'SHOW COLUMNS FROM family_custom');
-                $last = mysqli_num_rows($fields) - 1;
-                // Set the new field number based on the highest existing.
-                // Chop off the"c" at the beginning of the old one's name.
-                // The"c#" naming scheme is necessary because MySQL 3.23
-                // doesn't allow numeric-only field (table column) names.
-                $fields = mysqli_query($connection, 'SELECT * FROM family_custom');
-                $fieldInfo = mysqli_fetch_field_direct($fields, $last);
-                $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
+                $connection = Propel::getWriteConnection(FamilyCustomTableMap::DATABASE_NAME);
+                // Use the last physical column so field numbering follows the existing table layout.
+                $columns = $connection->query('SHOW COLUMNS FROM family_custom')->fetchAll(PDO::FETCH_COLUMN);
+                $newOrderID = count($columns);
+                $newFieldNum = (int) mb_substr($columns[$newOrderID - 1], 1) + 1;
+                $column = 'c' . $newFieldNum;
+                if (!preg_match('/\Ac[0-9]+\z/', $column)) {
+                    throw new UnexpectedValueException('Invalid custom field column');
+                }
 
                 // If we're inserting a new custom-list type field,
                 // create a new list and get its ID
@@ -144,61 +138,17 @@ if (isset($_POST['SaveChanges'])) {
                 } // end if ($newFieldType == 12)
 
                 // Insert into the master table via ORM (avoids SQL injection from user-supplied field name/type)
-                $newOrderID = $last + 1;
                 $familyCustomMaster = new FamilyCustomMaster();
                 $familyCustomMaster
                     ->setOrder($newOrderID)
-                    ->setField('c' . $newFieldNum)
+                    ->setField($column)
                     ->setName($newFieldName)
                     ->setCustomSpecial($newFieldType == 12 ? $newListID : null)
                     ->setFieldSecurity($newFieldSec)
                     ->setTypeId($newFieldType);
                 $familyCustomMaster->save();
 
-                // Insert into the custom fields table
-                // $newFieldNum is (int)-cast from a DB column count; DDL identifiers cannot be parameterised.
-                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` '; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
-
-                switch ($newFieldType) {
-                    case 1:
-                        $sSQL .="ENUM('false', 'true')";
-                        break;
-                    case 2:
-                        $sSQL .= 'DATE';
-                        break;
-                    case 3:
-                        $sSQL .= 'VARCHAR(50)';
-                        break;
-                    case 4:
-                        $sSQL .= 'VARCHAR(100)';
-                        break;
-                    case 5:
-                        $sSQL .= 'TEXT';
-                        break;
-                    case 6:
-                        $sSQL .= 'YEAR';
-                        break;
-                    case 7:
-                        $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
-                        break;
-                    case 8:
-                        $sSQL .= 'INT';
-                        break;
-                    case 9:
-                        $sSQL .= 'MEDIUMINT(9)';
-                        break;
-                    case 10:
-                        $sSQL .= 'DECIMAL(10,2)';
-                        break;
-                    case 11:
-                        $sSQL .= 'VARCHAR(30)';
-                        break;
-                    case 12:
-                        $sSQL .= 'TINYINT(4)';
-                }
-
-                $sSQL .= ' DEFAULT NULL ;';
-                RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+                $connection->exec('ALTER TABLE family_custom ADD ' . $column . ' ' . $columnType . ' DEFAULT NULL'); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                 $bNewNameError = false;
             }

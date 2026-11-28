@@ -13,6 +13,35 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
  */
 class CustomFieldUtils
 {
+    public const COLUMN_TYPES = [
+        1 => "ENUM('false', 'true')",
+        2 => 'DATE',
+        3 => 'VARCHAR(50)',
+        4 => 'VARCHAR(100)',
+        5 => 'TEXT',
+        6 => 'YEAR',
+        7 => "ENUM('winter', 'spring', 'summer', 'fall')",
+        8 => 'INT',
+        9 => 'MEDIUMINT(9)',
+        10 => 'DECIMAL(10,2)',
+        11 => 'VARCHAR(30)',
+        12 => 'TINYINT(4)',
+    ];
+
+    public static function normalizeEditorFieldName(string $name): string
+    {
+        // Preserve the stored name and duplicate checks for names written by the legacy editors.
+        return strtr(InputUtils::sanitizeText($name), [
+            "\\" => "\\\\",
+            "\0" => '\0',
+            "\n" => '\n',
+            "\r" => '\r',
+            "\x1a" => '\Z',
+            "'" => "\\'",
+            '"' => '\\"',
+        ]);
+    }
+
     /**
      * Returns the custom field type ID → label map.
      * Equivalent to the legacy $aPropTypes global from Functions.php.
