@@ -11,11 +11,11 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyCustomTableMap;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Propel\Runtime\Propel;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -97,25 +97,17 @@ if (isset($_POST['SaveChanges'])) {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
         $newFieldType = InputUtils::filterInt($_POST['newFieldType']);
-        $columnType = CustomFieldUtils::COLUMN_TYPES[$newFieldType] ?? null;
         $newFieldName = CustomFieldUtils::normalizeEditorFieldName($_POST['newFieldName']);
         $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec'], 'int');
 
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
-        } elseif ($columnType !== null) {
+        } elseif (isset(CustomFieldService::COLUMN_TYPES[$newFieldType])) {
             $bDuplicateNameError = FamilyCustomMasterQuery::create()->filterByName($newFieldName)->count() > 0;
 
             if (!$bDuplicateNameError) {
-                $connection = Propel::getWriteConnection(FamilyCustomTableMap::DATABASE_NAME);
-                // Use the last physical column so field numbering follows the existing table layout.
-                $columns = $connection->query('SHOW COLUMNS FROM family_custom')->fetchAll(PDO::FETCH_COLUMN);
-                $newOrderID = count($columns);
-                $newFieldNum = (int) mb_substr($columns[$newOrderID - 1], 1) + 1;
-                $column = 'c' . $newFieldNum;
-                if (!preg_match('/\Ac[0-9]+\z/', $column)) {
-                    throw new UnexpectedValueException('Invalid custom field column');
-                }
+                $customFieldService = new CustomFieldService();
+                ['column' => $column, 'order' => $newOrderID] = $customFieldService->getNextFieldColumn(FamilyCustomTableMap::TABLE_NAME);
 
                 // If we're inserting a new custom-list type field,
                 // create a new list and get its ID
@@ -148,7 +140,7 @@ if (isset($_POST['SaveChanges'])) {
                     ->setTypeId($newFieldType);
                 $familyCustomMaster->save();
 
-                $connection->exec('ALTER TABLE family_custom ADD ' . $column . ' ' . $columnType . ' DEFAULT NULL'); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
+                $customFieldService->addFieldColumn(FamilyCustomTableMap::TABLE_NAME, $column, $newFieldType);
 
                 $bNewNameError = false;
             }
