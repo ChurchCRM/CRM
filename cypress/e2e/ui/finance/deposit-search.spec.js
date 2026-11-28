@@ -40,18 +40,22 @@ describe("Deposit Search: page load and search form", () => {
   });
 
   it("submits a date range and restores it into the search form", () => {
+    cy.get("#depositFiltersToggle").click();
     cy.get("#dateStart").clear().type("2020-01-01");
     cy.get("#dateEnd").clear().type("2099-12-31");
     cy.get("#depositFilterForm").submit();
 
     cy.url().should("include", "dateStart=2020-01-01");
     cy.url().should("include", "dateEnd=2099-12-31");
+    cy.get("#depositSearchForm").should("not.be.visible");
+    cy.get("#depositFilterSummary").should("contain.text", "From Date: 2020-01-01");
     cy.get("#dateStart").should("have.value", "2020-01-01");
     cy.get("#dateEnd").should("have.value", "2099-12-31");
   });
 
   it("clears the date range when the treasurer switches fiscal year", () => {
     cy.visit(DEPOSIT_SEARCH_URL + "?fyid=22");
+    cy.get("#depositFiltersToggle").click();
     cy.get("#depositId").type(String(SEEDED_DEPOSIT_ID));
     cy.get("#dateStart").type("2090-01-01");
     cy.get("#dateEnd").type("2099-12-31");
@@ -64,6 +68,7 @@ describe("Deposit Search: page load and search form", () => {
   });
 
   it("filters by deposit ID", () => {
+    cy.get("#depositFiltersToggle").click();
     cy.get("#depositId").clear().type(String(SEEDED_DEPOSIT_ID));
     cy.get("#depositFilterForm").submit();
 
@@ -74,10 +79,53 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#depositsTable tbody tr[data-deposit-id]")
       .should("have.length", 1)
       .and("have.attr", "data-deposit-id", String(SEEDED_DEPOSIT_ID));
+    cy.get("#depositsTable thead").should("not.contain.text", "Teller");
+    cy.get("#depositsTable tbody tr[data-deposit-id] td").should("have.length", 8);
+  });
+
+  it("finds and opens an open deposit, then exports several selected deposits", () => {
+    cy.viewport(1440, 900);
+    cy.get("#deposit-slip-fyid").should("be.visible");
+    cy.get("#depositSearchForm").should("not.be.visible");
+    cy.get("#depositsTable_wrapper input[type=search]").should("not.exist");
+    cy.get("#btnSelectAll").should("not.exist");
+    cy.get("#depositsTable tbody tr[data-deposit-id]").first().should(($row) => {
+      expect($row[0].getBoundingClientRect().bottom).to.be.lessThan(900);
+    });
+
+    cy.get("#depositFiltersToggle").click();
+    cy.get("#closed").select("0");
+    cy.get("#depositFilterForm").submit();
+    cy.get("#depositFilterSummary").should("contain.text", "Status: Open");
+    const depositLinks = "#depositsTable_wrapper tbody tr[data-deposit-id] td:nth-child(2) a";
+    cy.get(depositLinks).first().invoke("text").then((depositId) => {
+      cy.contains(depositLinks, new RegExp(`^${depositId}$`)).click();
+      cy.location("pathname").should("match", new RegExp(`/finance/deposit/${depositId}$`));
+    });
+    cy.go("back");
+
+    const seededRow = `[data-deposit-id="${SEEDED_DEPOSIT_ID}"]`;
+    cy.get("#depositsTable_wrapper .dt-length select").select("-1");
+    cy.get(`#depositsTable tbody .row-select${seededRow}`).check();
+    cy.get("#depositsTable tbody .row-select").not(seededRow).first().check();
+    cy.get("#selectedCount").should("contain.text", "2 rows selected");
+    cy.get("#depositsTable tbody .row-select:checked").then(($selected) => {
+      const ids = [...$selected].map((row) => row.dataset.depositId).sort();
+      const download = { location: "" };
+      cy.window().then((win) => cy.stub(win, "open").returns(download));
+      cy.intercept("HEAD", "**/api/deposits/csv?*").as("export");
+      cy.get("#btnExportCSV").click();
+      cy.wait("@export").then(({ request, response }) => {
+        expect(response.statusCode).to.eq(200);
+        expect(new URL(request.url).searchParams.get("ids").split(",").sort()).to.deep.equal(ids);
+      });
+      cy.wrap(download).its("location").should("include", "/api/deposits/csv?ids=");
+    });
   });
 
   it("clears filters when Clear button is clicked", () => {
     cy.visit(`${DEPOSIT_SEARCH_URL}?dateStart=2020-01-01&dateEnd=2099-12-31`);
+    cy.get("#depositFiltersToggle").click();
     cy.get("#depositFilterForm").contains("a", "Clear").click();
     cy.url().should("not.include", "dateStart");
     cy.url().should("not.include", "dateEnd");

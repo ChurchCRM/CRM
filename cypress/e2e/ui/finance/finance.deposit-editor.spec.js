@@ -319,12 +319,10 @@ describe("Deposit search: deleting deposits", { defaultCommandTimeout: 30000 }, 
         create("a").then((a) => {
             create("b").then((b) => {
                 cy.visit("/finance/deposit/search?fyid=0");
-                // Once DataTables initialises, the table pages in ID order
-                // and the two new deposits (the highest IDs, of 22) sit on
-                // the last page. Filter the table by their unique comment,
-                // as a treasurer finding them would.
-                cy.get("#depositsTable_wrapper").should("exist");
-                cy.get("#depositsTable_wrapper input[type='search']").type(tag);
+                // The search page has no table search box (filters live in
+                // the collapsible form), so show every row before picking
+                // the two new deposits by ID.
+                cy.get("#depositsTable_wrapper .dt-length select").select("-1");
                 cy.get(`#depositsTable .row-select[data-deposit-id="${a}"]`).check({ force: true });
                 cy.get(`#depositsTable .row-select[data-deposit-id="${b}"]`).check({ force: true });
                 cy.get("#btnDeleteSelected").should("not.be.disabled").click();
