@@ -623,6 +623,35 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
         });
     });
 
+    describe("POST /kiosk/device/checkin, /checkout and /triggerNotification roster enforcement", () => {
+        ["checkin", "checkout", "triggerNotification"].forEach((action) => {
+            it(`${action} denies a person who is not on the active roster`, () => {
+                asKiosk();
+                cy.request({
+                    method: "POST",
+                    url: `/kiosk/device/${action}`,
+                    body: { PersonId: NON_ROSTER_CHILD_ID },
+                    failOnStatusCode: false,
+                }).then((response) => {
+                    expect(response.status).to.equal(403);
+                    expect(response.body.message).to.equal("Person not in active class roster");
+                });
+            });
+        });
+
+        it("triggerNotification gives an unknown person id the same answer as a non-roster one", () => {
+            asKiosk();
+            cy.request({
+                method: "POST",
+                url: "/kiosk/device/triggerNotification",
+                body: { PersonId: 999999 },
+                failOnStatusCode: false,
+            })
+                .its("status")
+                .should("equal", 403);
+        });
+    });
+
     describe("GET /kiosk/device/activeClassMember/{PersonId}/family/{MemberId}/photo", () => {
         it("serves the photo of an adult family member of a roster child", () => {
             asKiosk();
