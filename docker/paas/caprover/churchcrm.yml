@@ -1,0 +1,46 @@
+captainVersion: 4
+services:
+  $$cap_appname-db:
+    image: mariadb:11.4.5
+    environment:
+      MARIADB_DATABASE: churchcrm
+      MARIADB_USER: churchcrm
+      MARIADB_PASSWORD: $$cap_db_password
+      MARIADB_ROOT_PASSWORD: $$cap_root_password
+    volumes:
+      - $$cap_appname-db:/var/lib/mysql
+    caproverExtra:
+      notExposeAsWebApp: 'true'
+  $$cap_appname:
+    image: churchcrm/crm:latest-php8-apache
+    environment:
+      CHURCHCRM_PERSISTENT_DATA: '1'
+    volumes:
+      - $$cap_appname-data:/var/lib/churchcrm
+    caproverExtra:
+      containerHttpPort: '8080'
+
+caproverOneClickApp:
+  variables:
+    - id: $$cap_db_password
+      label: Database password
+      defaultValue: $$cap_gen_random_hex(32)
+    - id: $$cap_root_password
+      label: Database root password
+      defaultValue: $$cap_gen_random_hex(32)
+  instructions:
+    start: |-
+      ChurchCRM manages your church's people, groups and giving.
+      Keep the database password for the setup wizard.
+    end: |-
+      Enable HTTPS and Force HTTPS in the app's HTTP settings before setup.
+      Open https://$$cap_appname.$$cap_root_domain/setup/.
+      Database host: srv-captain--$$cap_appname-db
+      Database port: 3306
+      Database and user: churchcrm
+      Use the database password chosen above. Leave the install path empty.
+      Wait for MariaDB to initialize if the wizard cannot connect immediately.
+  displayName: ChurchCRM
+  isOfficial: true
+  description: Manage your church's people, groups and giving.
+  documentation: https://docs.churchcrm.io/installation/docker

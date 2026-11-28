@@ -10,6 +10,8 @@ This directory contains Docker configurations for three scenarios:
 | **CI** | `docker-compose.yaml + docker-compose.parallel.yaml --profile ci-*` | Automated parallel testing (GitHub Actions) |
 
 Reference deployment templates are in `examples/`.
+Self-serve PaaS deployment candidates and their verification requirements are in
+[`paas/`](paas/README.md).
 
 ---
 

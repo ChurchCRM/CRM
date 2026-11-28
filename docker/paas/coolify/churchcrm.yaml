@@ -1,0 +1,44 @@
+# documentation: https://docs.churchcrm.io/installation/docker
+# slogan: Manage your church's people, groups and giving.
+# category: productivity
+# tags: church,crm
+# port: 8080
+
+services:
+  churchcrm:
+    image: churchcrm/crm:latest-php8-apache
+    restart: unless-stopped
+    environment:
+      - SERVICE_URL_CHURCHCRM_8080
+      - CHURCHCRM_PERSISTENT_DATA=1
+    volumes:
+      - churchcrm-data:/var/lib/churchcrm
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, curl, -fsS, -o, /dev/null, 'http://127.0.0.1:8080/']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  mariadb:
+    image: mariadb:11.4.5
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: churchcrm
+      MARIADB_USER: churchcrm
+      MARIADB_PASSWORD: ${SERVICE_PASSWORD_DATABASE}
+      MARIADB_ROOT_PASSWORD: ${SERVICE_PASSWORD_ROOT}
+    volumes:
+      - churchcrm-db:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+
+volumes:
+  churchcrm-data:
+  churchcrm-db:

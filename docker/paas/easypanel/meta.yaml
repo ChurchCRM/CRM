@@ -1,0 +1,29 @@
+name: ChurchCRM
+description: Manage your church's people, groups and giving.
+instructions: |-
+  Enable HTTPS before opening /setup/ on the application domain.
+  Use database host $(PROJECT_NAME)_<database service name>, port 3306,
+  database churchcrm and user churchcrm. Copy MARIADB_PASSWORD from the
+  database service environment. Leave the install path empty.
+  Wait for MariaDB to initialize if the wizard cannot connect immediately.
+links:
+  - label: Website
+    url: https://churchcrm.io
+  - label: Documentation
+    url: https://docs.churchcrm.io/installation/docker
+  - label: GitHub
+    url: https://github.com/ChurchCRM/CRM
+schema:
+  type: object
+  required:
+    - appServiceName
+    - databaseServiceName
+  properties:
+    appServiceName:
+      type: string
+      title: App Service Name
+      default: churchcrm
+    databaseServiceName:
+      type: string
+      title: Database Service Name
+      default: churchcrm-db

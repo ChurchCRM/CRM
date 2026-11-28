@@ -80,7 +80,7 @@ jobs:
         if: matrix.needs-apache-config
         run: |
           mkdir -p build-context/apache
-          cp docker/apache/default.conf build-context/apache/default.conf
+          cp docker/apache/* build-context/apache/
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0

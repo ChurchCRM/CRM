@@ -2,13 +2,14 @@
 
 /**
  * Smoke-test a production image: non-root, no compiler, required extensions, then a live port.
- * Usage: node tests/docker/test-production-image.js IMAGE apache|fpm
+ * Usage: node tests/docker/test-production-image.js IMAGE apache|fpm [--root-bootstrap]
  */
 
 const { spawnSync } = require('child_process');
 
 const image = process.argv[2];
 const flavor = process.argv[3];
+const rootBootstrap = process.argv[4] === '--root-bootstrap';
 const ports = { apache: '8080', fpm: '9000' };
 
 if (!image || !ports[flavor]) {
@@ -51,7 +52,7 @@ function docker(args, options = {}) {
 
 const inspect = docker([
     'run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image, 'sh', '-ec',
-    `test "$(id -u)" -ne 0
+    `test "$(id -u)" ${rootBootstrap ? '-eq' : '-ne'} 0
 for tool in gcc g++ make; do
   if command -v "$tool" >/dev/null 2>&1; then
     echo "build tool present: $tool" >&2
@@ -75,8 +76,63 @@ if (inspect.status !== 0) {
     process.exit(inspect.status || 1);
 }
 
+if (flavor === 'apache') {
+    const volume = `churchcrm-persistence-${process.pid}-${Date.now()}`;
+    const created = docker(['volume', 'create', volume]);
+    if (created.status !== 0) {
+        process.stderr.write(created.stderr || '');
+        process.exit(created.status || 1);
+    }
+    let result;
+    try {
+        if (rootBootstrap) {
+            const prepared = docker(['run', '--rm', '--entrypoint', 'sh', '-u', '0',
+                '-v', `${volume}:/var/lib/churchcrm`, image, '-ec',
+                'chown 0:0 /var/lib/churchcrm; chmod 755 /var/lib/churchcrm']);
+            if (prepared.status !== 0) {
+                throw new Error(prepared.stderr || 'Could not prepare root-owned disk');
+            }
+        }
+        const options = ['run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+            ...(rootBootstrap ? ['--cap-add', 'CHOWN', '--cap-add', 'SETUID', '--cap-add', 'SETGID', '--cap-add', 'DAC_OVERRIDE'] : []),
+            '-e', 'CHURCHCRM_PERSISTENT_DATA=1', '-v', `${volume}:/var/lib/churchcrm`, image,
+            ...(rootBootstrap ? ['setpriv', '--reuid=33', '--regid=33', '--clear-groups'] : []), 'sh', '-ec'];
+        result = docker([...options, `
+test ! -e Include/Config.php
+test -L Include/Config.php
+php -r 'file_put_contents("Include/Config.php", "<?php // persistent config");'
+printf person > Images/Person/photo.jpg
+printf family > Images/Family/photo.jpg
+`]);
+        if (result.status === 0) {
+            result = docker([...options, `
+test "$(cat Include/Config.php)" = '<?php // persistent config'
+test "$(cat Images/Person/photo.jpg)" = person
+test "$(cat Images/Family/photo.jpg)" = family
+test -f Include/LoadConfigs.php
+test ! -L Include/LoadConfigs.php
+test "$(readlink /var/lib/churchcrm/LoadConfigs.php)" = /var/www/html/Include/LoadConfigs.php
+grep -q 'Require all denied' Images/Person/.htaccess
+grep -q 'Require all denied' Images/Family/.htaccess
+test "$(stat -c %a /var/lib/churchcrm/Config.php)" = 600
+`]);
+        }
+    } finally {
+        const removed = docker(['volume', 'rm', volume]);
+        if (removed.status !== 0) {
+            process.stderr.write(removed.stderr || '');
+            process.exit(removed.status || 1);
+        }
+    }
+    if (result.status !== 0) {
+        process.stderr.write(result.stderr || '');
+        process.exit(result.status || 1);
+    }
+}
+
 const started = docker([
-    'run', '-d', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image,
+    'run', '-d', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+    ...(rootBootstrap ? ['--cap-add', 'CHOWN', '--cap-add', 'SETUID', '--cap-add', 'SETGID', '--cap-add', 'DAC_OVERRIDE'] : []), image,
 ]);
 if (started.status !== 0) {
     process.stderr.write(started.stderr || '');
