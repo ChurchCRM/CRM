@@ -71,6 +71,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             'sTelemetryLifecycleVersion' => $value('7.8.2'),
             'sChurchCountry' => $value('US'),
             'sLanguage' => $value('en_US'),
+            'sTimeZone' => $value('Asia/Kathmandu'),
         ]);
         $GLOBALS['lifecyclePayloads'] = [];
         $normalized = $level === 'full' ? 'full' : 'default';
@@ -87,7 +88,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
             Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
-            $keys = ['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type', 'church_country', 'database_engine', 'database_version'];
+            $keys = ['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'timezone', 'php_version', 'os_family', 'install_path_type', 'church_country', 'database_engine', 'database_version'];
             if ($payload['event'] !== 'install_observed') {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
@@ -105,6 +106,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             Assert::true($properties['$geoip_disable']);
             Assert::false($properties['$process_person_profile']);
             Assert::same('US', $properties['church_country']);
+            Assert::same('Asia/Kathmandu', $properties['timezone']);
             Assert::same($profile, $properties['install_profile']);
             Assert::same($payload['event'] === 'upgrade_failed' ? VersionUtils::getInstalledVersion() : '7.8.4', $properties['crm_version']);
             Assert::same('mariadb', $properties['database_engine']);
@@ -121,6 +123,9 @@ foreach (['production', 'demo', 'test'] as $profile) {
         $events = $profile === 'test'
             ? [] : ($level === 'full' ? ['page_view', 'log_error', 'log_error', 'log_error'] : ['log_error', 'log_error', 'log_error']);
         Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
+        if (in_array('page_view', $events, true)) {
+            Assert::same('Asia/Kathmandu', $GLOBALS['lifecyclePayloads'][0]['properties']['timezone']);
+        }
         TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
         Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
     }
