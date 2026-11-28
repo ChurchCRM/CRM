@@ -373,9 +373,20 @@ describe("7.8.3 upgrade: family email moves to people", () => {
     describe("a family email written after 7.8.3", () => {
         const later = addr("later");
 
+        before(() => {
+            addFamily("Late", addr("late"));
+            addPerson("lateHead", "Late", 1, null, { year: 1970 });
+            addPerson("lateSpouse", "Late", 2, null, { year: 1972 });
+        });
+
         it("is moved by the same rule, then fam_Email is dropped, and the script runs again", () => {
             cy.dbQuery("UPDATE family_fam SET fam_Email = ? WHERE fam_ID = ?", [later, fam.NoAdult]);
             cy.task("db:upgradeBlock", DROP).its("error").should("be.null");
+            emailOf("lateHead").should("eq", addr("late"));
+            moveOf("Late").its("0").should("include", { outcome: "head", personId: per.lateHead, needsConfirm: 1 });
+            cy.then(() => cy.dbQuery("SELECT psi_UnconfirmedEmail AS email FROM person_signin_psi WHERE psi_per_ID = ?", [per.lateHead]))
+                .its("rows.0.email")
+                .should("eq", addr("late"));
             moveOf("NoAdult").then((moves) => {
                 expect(moves.at(-1)).to.include({ email: later, outcome: "noted", reason: "no_adult" });
             });
