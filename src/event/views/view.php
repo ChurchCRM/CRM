@@ -116,7 +116,7 @@ $inactive = (int) $event->getInActive() === 1;
               </button>
             <?php endif; ?>
             <?php if ($eventEnded && !empty($linkedGroups)): ?>
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-print>
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
               </button>
             <?php endif; ?>

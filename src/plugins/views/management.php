@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 use ChurchCRM\Utils\InputUtils;
@@ -89,6 +90,12 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <span class="badge bg-orange-lt text-orange ms-2"
                           title="<?= htmlspecialchars((string) ($verificationReason ?? gettext('Unverified plugin'))) ?>">
                         <i class="fa-solid fa-shield-halved me-1"></i><?= gettext('Unverified') ?>
+                    </span>
+                <?php endif; ?>
+                <?php if (empty($plugin['cspCompatible']) && SystemConfig::getBooleanValue('bEnforceCSP')): ?>
+                    <span class="badge bg-yellow-lt text-yellow ms-2"
+                          title="<?= InputUtils::escapeAttribute(gettext('Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.')) ?>">
+                        <i class="fa-solid fa-triangle-exclamation me-1"></i><?= gettext('Not CSP-ready') ?>
                     </span>
                 <?php endif; ?>
                 <?php if ($risk !== null): ?>

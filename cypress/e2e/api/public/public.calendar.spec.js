@@ -252,9 +252,7 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
                 "x-frame-options must be absent on the external calendar route",
             ).to.be.undefined;
 
-            const cspHeader =
-                resp.headers["content-security-policy"] ??
-                resp.headers["content-security-policy-report-only"];
+            const cspHeader = resp.headers["content-security-policy"];
             expect(cspHeader, "a CSP header must be present").to.be.a("string");
             expect(cspHeader).to.match(
                 /frame-ancestors \*/,

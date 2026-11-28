@@ -27,6 +27,7 @@ class PluginMetadata
     private ?string $portalRoutesFile;
     private array $portal;
     private bool $hasTest;
+    private bool $cspCompatible;
 
     public function __construct(array $data, string $path)
     {
@@ -50,6 +51,7 @@ class PluginMetadata
         $this->portalRoutesFile = is_string($data['portalRoutesFile'] ?? null) ? $data['portalRoutesFile'] : null;
         $this->portal = is_array($data['portal'] ?? null) ? $data['portal'] : [];
         $this->hasTest = (bool) ($data['hasTest'] ?? false);
+        $this->cspCompatible = ($data['cspCompatible'] ?? false) === true;
     }
 
     /**
@@ -173,6 +175,12 @@ class PluginMetadata
     public function hasTest(): bool
     {
         return $this->hasTest;
+    }
+
+    /** The author states every page works under the enforced Content Security Policy. */
+    public function isCspCompatible(): bool
+    {
+        return $this->cspCompatible;
     }
 
     public function getHelp(): array

@@ -148,7 +148,9 @@ describe("Event Detail - Did Not Attend List", () => {
 
     it("lists the absent members, with Print and no Check-in, after a group-linked event ends", () => {
         // absentCount was captured in before() — no API call needed here
-        cy.visit(`event/view/${pastGroupEventId}`);
+        cy.visit(`/event/view/${pastGroupEventId}`, {
+            onBeforeLoad: (win) => cy.stub(win, "print").as("print"),
+        });
 
         cy.contains("h3", "Did Not Attend")
             .should("be.visible")
@@ -159,7 +161,8 @@ describe("Event Detail - Did Not Attend List", () => {
                 cy.contains("th", "Phone").should("exist");
                 cy.get("tbody tr").should("have.length", absentCount);
             });
-        cy.contains("h3", "Attendance").closest(".card-header").contains("button", "Print").should("be.visible");
+        cy.contains("h3", "Attendance").closest(".card-header").contains("button", "Print").click();
+        cy.get("@print").should("have.been.calledOnce");
         // a.btn, not the sidebar's "Check-in and Check-out" link, which is always there
         cy.contains("a.btn", "Check-in").should("not.exist");
     });
