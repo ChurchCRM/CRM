@@ -732,7 +732,7 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
 
 describe("Kiosk Device Registration - cookie handling and pending cap", () => {
     const MAX_PENDING = 20;
-    let existingKioskIds = [];
+    let existingKioskIds = null;
     let originalVisibility;
 
     const admin = (method, url, body) => cy.makePrivateAdminAPICall(method, url, body, 200);
@@ -753,10 +753,14 @@ describe("Kiosk Device Registration - cookie handling and pending cap", () => {
     });
 
     after(() => {
-        kioskDevices().then((devices) => {
-            devices.filter((k) => !existingKioskIds.includes(k.Id)).forEach((k) => admin("DELETE", `/kiosk/api/devices/${k.Id}`));
-        });
-        cy.then(() => cy.restoreSystemConfig("sKioskVisibilityTimestamp", originalVisibility));
+        cy.restoreSystemConfig("sKioskVisibilityTimestamp", originalVisibility);
+        if (existingKioskIds !== null) {
+            kioskDevices().then((devices) => {
+                devices
+                    .filter((k) => !existingKioskIds.includes(k.Id))
+                    .forEach((k) => admin("DELETE", `/kiosk/api/devices/${k.Id}`));
+            });
+        }
     });
 
     it("answers a non-string kiosk cookie with the registration page instead of a 500", () => {

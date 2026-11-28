@@ -76,6 +76,34 @@ describe("Kiosk Manager Workflow", () => {
         cy.setupAdminSession();
     });
 
+    it("warns staff at the pending-device cap and clears the warning after acceptance", () => {
+        const devices = Array.from({ length: 20 }, (_, index) => ({
+            Id: index + 1,
+            Name: `Kiosk ${index + 1}`,
+            Accepted: false,
+            LastHeartbeat: null,
+            KioskAssignments: [],
+        }));
+        cy.intercept("GET", "**/kiosk/api/devices", (request) => {
+            request.reply({ KioskDevices: devices });
+        }).as("devices");
+        cy.intercept("POST", "**/kiosk/api/devices/1/accept", (request) => {
+            devices[0].Accepted = true;
+            request.reply({ success: true });
+        }).as("acceptDevice");
+
+        cy.visit("/kiosk/admin");
+        cy.wait("@devices");
+        cy.get("#kioskPendingLimitNotice")
+            .should("be.visible")
+            .and("have.text", "Too many devices are waiting. Accept or delete some before registering another.");
+
+        cy.get('[data-kiosk-action="accept"][data-kiosk-id="1"]').click();
+        cy.wait("@acceptDevice");
+        cy.get("#statPending").should("have.text", "19");
+        cy.get("#kioskPendingLimitNotice").should("not.be.visible");
+    });
+
     it("should enable kiosk registration and show countdown", () => {
         cy.visit("kiosk/admin");
         
