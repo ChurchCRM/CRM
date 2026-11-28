@@ -331,6 +331,16 @@ describe("GET /api/groups/:id/emails", () => {
                 depositDate: "2025-10-25",
             }, 200).its("body.Id").then((id) => {
                 testDepositIds.push(id);
+                cy.makePrivateAdminAPICall("POST", "/api/payments/pledges", {
+                    type: "Payment",
+                    iMethod: "CASH",
+                    Date: "2025-10-25",
+                    FamilyID: "1",
+                    FYID: 29,
+                    DepositID: id,
+                    tScanString: "",
+                    FundSplit: JSON.stringify([{ FundID: "1", Amount: 100, NonDeductible: 0, Comment: "" }]),
+                }, 200);
                 cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
                     depositClosed: true,
                     depositType: "Bank",
@@ -352,6 +362,16 @@ describe("GET /api/groups/:id/emails", () => {
                 depositDate: "2025-10-25",
             }, 200).its("body.Id").then((id) => {
                 testDepositIds.push(id);
+                cy.makePrivateAdminAPICall("POST", "/api/payments/pledges", {
+                    type: "Payment",
+                    iMethod: "CASH",
+                    Date: "2025-10-25",
+                    FamilyID: "1",
+                    FYID: 29,
+                    DepositID: id,
+                    tScanString: "",
+                    FundSplit: JSON.stringify([{ FundID: "1", Amount: 100, NonDeductible: 0, Comment: "" }]),
+                }, 200);
                 cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
                     depositClosed: true,
                     depositType: "Bank",
