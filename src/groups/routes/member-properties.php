@@ -8,11 +8,12 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Service\CustomFieldService;
+use ChurchCRM\Service\GroupService;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -49,8 +50,7 @@ $app->get('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (Re
     ensurePropTableAndRow($iGroupID, $iPersonID, $logger);
 
     // Load current values for this person.
-    $rsPersonProps = FunctionsUtils::runQuery('SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID);
-    $aPersonProps  = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH) ?: [];
+    $aPersonProps = (new CustomFieldService())->getGroupPropertyValues($iGroupID, [$iPersonID])[$iPersonID] ?? [];
 
     $propMasterRows = GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->orderByPropId()->find();
 
@@ -128,8 +128,7 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (R
 
     // Validation failed or DB error — re-render with errors.
     // Reload current DB values for re-display.
-    $rsPersonProps = FunctionsUtils::runQuery('SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID);
-    $aPersonProps  = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH) ?: [];
+    $aPersonProps = (new CustomFieldService())->getGroupPropertyValues($iGroupID, [$iPersonID])[$iPersonID] ?? [];
 
     $pageArgs = buildMemberPropsPageArgs(
         $iGroupID,
@@ -151,23 +150,37 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (R
 // -----------------------------------------------------------------------
 function ensurePropTableAndRow(int $iGroupID, int $iPersonID, $logger): void
 {
-    $tableCheck = FunctionsUtils::runQuery('SHOW TABLES LIKE "groupprop_' . $iGroupID . '"');
-    if (mysqli_num_rows($tableCheck) === 0) {
-        $createSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
-            per_ID mediumint(8) unsigned NOT NULL default "0",
-            PRIMARY KEY (per_ID),
-            UNIQUE KEY per_ID (per_ID)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
-        $r = FunctionsUtils::runQuery($createSQL, false);
-        if (!$r) {
+    $connection = Propel::getConnection();
+    $table = 'groupprop_' . $iGroupID;
+    $tableCheck = $connection->prepare(
+        'SELECT 1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?'
+    );
+    $tableCheck->execute([$table]);
+
+    if ($tableCheck->fetch(\PDO::FETCH_NUM) === false) {
+        try {
+            $created = (new GroupService())->createGroupPropertyTable($iGroupID);
+        } catch (\PDOException) {
+            $created = false;
+        }
+
+        if (!$created) {
             $logger->error('Failed to create group properties table', ['group_id' => $iGroupID]);
             return;
         }
     }
 
-    $rowCheck = FunctionsUtils::runQuery('SELECT per_ID FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID);
-    if (mysqli_num_rows($rowCheck) === 0) {
-        FunctionsUtils::runQuery('INSERT INTO groupprop_' . $iGroupID . ' (per_ID) VALUES (' . $iPersonID . ')', false);
+    $rowCheck = $connection->prepare('SELECT per_ID FROM `' . $table . '` WHERE per_ID = ?');
+    $rowCheck->bindValue(1, $iPersonID, \PDO::PARAM_INT);
+    $rowCheck->execute();
+    if ($rowCheck->fetch(\PDO::FETCH_NUM) === false) {
+        try {
+            $insert = $connection->prepare('INSERT INTO `' . $table . '` (per_ID) VALUES (?)');
+            $insert->bindValue(1, $iPersonID, \PDO::PARAM_INT);
+            $insert->execute();
+        } catch (\PDOException) {
+            // The subsequent read determines whether a property row is available.
+        }
     }
 }
 

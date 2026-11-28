@@ -8,7 +8,6 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -17,6 +16,20 @@ use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
+
+function normalizeGroupPropertyMetadata(string $value): string
+{
+    // Match the stored format so existing names still participate in duplicate checks.
+    return strtr(InputUtils::sanitizeText($value), [
+        "\0" => '\\0',
+        "\n" => '\\n',
+        "\r" => '\\r',
+        "\x1a" => '\\Z',
+        "\\" => '\\\\',
+        "'" => "\\'",
+        '"' => '\\"',
+    ]);
+}
 
 // -----------------------------------------------------------------------
 // Shared helper: prepare the form data arrays from groupprop_master rows.
@@ -118,14 +131,14 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
         }
 
         for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-            $aNameFields[$iPropID] = InputUtils::legacyFilterInput($body[$iPropID . 'name'] ?? '');
+            $aNameFields[$iPropID] = normalizeGroupPropertyMetadata($body[$iPropID . 'name'] ?? '');
             if (strlen($aNameFields[$iPropID]) === 0) {
                 $aNameErrors[$iPropID] = true;
                 $bErrorFlag = true;
             } else {
                 $aNameErrors[$iPropID] = false;
             }
-            $aDescFields[$iPropID] = InputUtils::legacyFilterInput($body[$iPropID . 'desc'] ?? '');
+            $aDescFields[$iPropID] = normalizeGroupPropertyMetadata($body[$iPropID . 'desc'] ?? '');
 
             if (isset($body[$iPropID . 'special'])) {
                 $aSpecialFields[$iPropID] = InputUtils::filterInt($body[$iPropID . 'special']);
@@ -168,8 +181,8 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
     // -------------------------------------------------------------------
     if (isset($body['AddField'])) {
         $newFieldType = InputUtils::filterInt($body['newFieldType'] ?? '1');
-        $newFieldName = InputUtils::legacyFilterInput($body['newFieldName'] ?? '');
-        $newFieldDesc = InputUtils::legacyFilterInput($body['newFieldDesc'] ?? '');
+        $newFieldName = normalizeGroupPropertyMetadata($body['newFieldName'] ?? '');
+        $newFieldDesc = normalizeGroupPropertyMetadata($body['newFieldDesc'] ?? '');
 
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
@@ -227,7 +240,11 @@ $app->post('/{groupID:[0-9]+}/properties/form', function (Request $request, Resp
                         case 12: $alterSQL .= 'TINYINT(4)'; break;
                     }
                     $alterSQL .= ' DEFAULT NULL;';
-                    $alterResult = FunctionsUtils::runQuery($alterSQL, false);
+                    try {
+                        $alterResult = Propel::getConnection()->prepare($alterSQL)->execute();
+                    } catch (\PDOException) {
+                        $alterResult = false;
+                    }
 
                     if (!$alterResult) {
                         $logger->warning('Failed to add column to group properties table', [
