@@ -37,6 +37,36 @@ include SystemURLs::getDocumentRoot() . '/Include/partials/dashboard-switch.php'
 $openDeposits = array_filter($deposits, static fn (array $d): bool => !($d['Closed'] ?? false));
 $openTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['totalAmount'] ?? 0), $openDeposits));
 $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['totalAmount'] ?? 0), $deposits));
+$showTeller = array_any($deposits, static fn (array $deposit): bool => trim($deposit['tellerName'] ?? '') !== '');
+$selectedFundName = $filters['fundId'];
+foreach ($funds as $fund) {
+    if ((int) $fund->getId() === (int) $filters['fundId']) {
+        $selectedFundName = $fund->getName();
+        break;
+    }
+}
+
+$filterValues = [
+    [gettext('From Date'), $filters['dateStart']],
+    [gettext('To Date'), $filters['dateEnd']],
+    [gettext('Deposit ID'), $filters['depositId']],
+    [gettext('Amount Min'), $filters['amountMin']],
+    [gettext('Amount Max'), $filters['amountMax']],
+    [gettext('Fund'), $selectedFundName],
+    [gettext('Status'), match ($filters['closed']) {
+        '0' => gettext('Open'),
+        '1' => gettext('Closed'),
+        default => '',
+    }],
+    [gettext('Teller'), $tellerList[(int) $filters['enteredBy']] ?? $filters['enteredBy']],
+];
+$activeFilters = [];
+foreach ($filterValues as [$label, $value]) {
+    if ($value !== '') {
+        $activeFilters[] = $label . ': ' . $value;
+    }
+}
+$filterSummary = $activeFilters === [] ? gettext('No additional filters applied.') : implode(' · ', $activeFilters);
 ?>
 
 <div class="row row-cards mb-3 g-2">
@@ -96,117 +126,109 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
     </div>
   </div>
 
-  <!-- Search/Filter Form -->
-  <div class="card mb-3">
-    <div class="card-header">
-      <h3 class="card-title"><?= gettext('Search Deposits') ?></h3>
-      <div class="card-options">
-        <a href="#" class="card-options-collapse" data-bs-toggle="collapse" data-bs-target="#depositSearchForm">
-          <i class="fa-solid fa-chevron-up"></i>
-        </a>
+  <form id="depositFilterForm" class="card mb-3" method="get" action="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search">
+    <div class="card-header flex-wrap gap-2 py-2">
+      <div class="d-flex align-items-center flex-wrap gap-2">
+        <label for="deposit-slip-fyid" class="form-label mb-0"><?= gettext('Fiscal Year') ?></label>
+        <select class="form-select w-auto" id="deposit-slip-fyid" name="fyid" data-auto-submit data-clear="dateStart,dateEnd">
+          <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
+          <?php foreach ($availableYears as $year): ?>
+          <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+            <?= InputUtils::escapeHTML($year['label']) ?>
+            <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+        <button type="button" id="depositFiltersToggle" class="btn btn-outline-secondary collapsed"
+                data-bs-toggle="collapse" data-bs-target="#depositSearchForm" aria-expanded="false" aria-controls="depositSearchForm">
+          <?= gettext('Filters') ?>
+        </button>
       </div>
+      <span id="depositFilterSummary" class="text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($filterSummary) ?>">
+        <?= InputUtils::escapeHTML($filterSummary) ?>
+      </span>
     </div>
-    <div id="depositSearchForm" class="collapse show">
+    <div id="depositSearchForm" class="collapse">
       <div class="card-body">
-        <form id="depositFilterForm" method="get" action="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search">
-          <!-- Fiscal-Year filter: selecting a FY immediately reloads the page with fyid in the URL -->
-          <div class="row g-3 mb-2">
-            <div class="col-md-3">
-              <label for="deposit-slip-fyid" class="form-label"><?= gettext('Fiscal Year') ?></label>
-              <select class="form-select" id="deposit-slip-fyid" name="fyid" data-auto-submit data-clear="dateStart,dateEnd">
-                <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
-                <?php foreach ($availableYears as $year): ?>
-                <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
-                  <?= InputUtils::escapeHTML($year['label']) ?>
-                  <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label for="dateStart" class="form-label"><?= gettext('From Date') ?></label>
+            <input type="date" class="form-control" id="dateStart" name="dateStart"
+                   value="<?= InputUtils::escapeAttribute($filters['dateStart']) ?>">
+          </div>
+          <div class="col-md-3">
+            <label for="dateEnd" class="form-label"><?= gettext('To Date') ?></label>
+            <input type="date" class="form-control" id="dateEnd" name="dateEnd"
+                   value="<?= InputUtils::escapeAttribute($filters['dateEnd']) ?>">
+          </div>
+          <div class="col-md-2">
+            <label for="depositId" class="form-label"><?= gettext('Deposit ID') ?></label>
+            <input type="number" class="form-control" id="depositId" name="depositId"
+                   min="1" value="<?= InputUtils::escapeAttribute($filters['depositId']) ?>">
+          </div>
+          <div class="col-md-2">
+            <label for="amountMin" class="form-label"><?= gettext('Amount Min') ?></label>
+            <input type="number" class="form-control" id="amountMin" name="amountMin"
+                   min="0" step="0.01" value="<?= InputUtils::escapeAttribute($filters['amountMin']) ?>">
+          </div>
+          <div class="col-md-2">
+            <label for="amountMax" class="form-label"><?= gettext('Amount Max') ?></label>
+            <input type="number" class="form-control" id="amountMax" name="amountMax"
+                   min="0" step="0.01" value="<?= InputUtils::escapeAttribute($filters['amountMax']) ?>">
+          </div>
+        </div>
+        <div class="row g-3 mt-1">
+          <div class="col-md-3">
+            <label for="fundId" class="form-label"><?= gettext('Fund') ?></label>
+            <select class="form-select" id="fundId" name="fundId">
+              <option value=""><?= gettext('All Funds') ?></option>
+              <?php foreach ($funds as $fund) : ?>
+                <option value="<?= (int) $fund->getId() ?>"
+                  <?= ((int) $filters['fundId'] === (int) $fund->getId()) ? 'selected' : '' ?>>
+                  <?= InputUtils::escapeHTML($fund->getName()) ?>
                 </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
+              <?php endforeach; ?>
+            </select>
           </div>
-          <div class="row g-3">
-            <div class="col-md-3">
-              <label for="dateStart" class="form-label"><?= gettext('From Date') ?></label>
-              <input type="date" class="form-control" id="dateStart" name="dateStart"
-                     value="<?= InputUtils::escapeAttribute($filters['dateStart']) ?>">
-            </div>
-            <div class="col-md-3">
-              <label for="dateEnd" class="form-label"><?= gettext('To Date') ?></label>
-              <input type="date" class="form-control" id="dateEnd" name="dateEnd"
-                     value="<?= InputUtils::escapeAttribute($filters['dateEnd']) ?>">
-            </div>
-            <div class="col-md-2">
-              <label for="depositId" class="form-label"><?= gettext('Deposit ID') ?></label>
-              <input type="number" class="form-control" id="depositId" name="depositId"
-                     min="1" value="<?= InputUtils::escapeAttribute($filters['depositId']) ?>">
-            </div>
-            <div class="col-md-2">
-              <label for="amountMin" class="form-label"><?= gettext('Amount Min') ?></label>
-              <input type="number" class="form-control" id="amountMin" name="amountMin"
-                     min="0" step="0.01" value="<?= InputUtils::escapeAttribute($filters['amountMin']) ?>">
-            </div>
-            <div class="col-md-2">
-              <label for="amountMax" class="form-label"><?= gettext('Amount Max') ?></label>
-              <input type="number" class="form-control" id="amountMax" name="amountMax"
-                     min="0" step="0.01" value="<?= InputUtils::escapeAttribute($filters['amountMax']) ?>">
-            </div>
+          <div class="col-md-2">
+            <label for="closed" class="form-label"><?= gettext('Status') ?></label>
+            <select class="form-select" id="closed" name="closed">
+              <option value="" <?= $filters['closed'] === '' ? 'selected' : '' ?>><?= gettext('All') ?></option>
+              <option value="0" <?= $filters['closed'] === '0' ? 'selected' : '' ?>><?= gettext('Open') ?></option>
+              <option value="1" <?= $filters['closed'] === '1' ? 'selected' : '' ?>><?= gettext('Closed') ?></option>
+            </select>
           </div>
-          <div class="row g-3 mt-1">
-            <div class="col-md-3">
-              <label for="fundId" class="form-label"><?= gettext('Fund') ?></label>
-              <select class="form-select" id="fundId" name="fundId">
-                <option value=""><?= gettext('All Funds') ?></option>
-                <?php foreach ($funds as $fund) : ?>
-                  <option value="<?= (int) $fund->getId() ?>"
-                    <?= ((int) $filters['fundId'] === (int) $fund->getId()) ? 'selected' : '' ?>>
-                    <?= InputUtils::escapeHTML($fund->getName()) ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label for="closed" class="form-label"><?= gettext('Status') ?></label>
-              <select class="form-select" id="closed" name="closed">
-                <option value="" <?= $filters['closed'] === '' ? 'selected' : '' ?>><?= gettext('All') ?></option>
-                <option value="0" <?= $filters['closed'] === '0' ? 'selected' : '' ?>><?= gettext('Open') ?></option>
-                <option value="1" <?= $filters['closed'] === '1' ? 'selected' : '' ?>><?= gettext('Closed') ?></option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="enteredBy" class="form-label"><?= gettext('Teller') ?></label>
-              <select class="form-select" id="enteredBy" name="enteredBy">
-                <option value=""><?= gettext('All Tellers') ?></option>
-                <?php foreach ($tellerList as $tellerId => $tellerName) : ?>
-                  <option value="<?= (int) $tellerId ?>"
-                    <?= ((int) $filters['enteredBy'] === (int) $tellerId) ? 'selected' : '' ?>>
-                    <?= InputUtils::escapeHTML($tellerName) ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-            <div class="col-md-4 d-flex align-items-end gap-2">
-              <button type="submit" class="btn btn-primary">
-                <i class="fa-solid fa-search me-1"></i><?= gettext('Search') ?>
-              </button>
-              <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search" class="btn btn-secondary">
-                <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear') ?>
-              </a>
-            </div>
+          <div class="col-md-3">
+            <label for="enteredBy" class="form-label"><?= gettext('Teller') ?></label>
+            <select class="form-select" id="enteredBy" name="enteredBy">
+              <option value=""><?= gettext('All Tellers') ?></option>
+              <?php foreach ($tellerList as $tellerId => $tellerName) : ?>
+                <option value="<?= (int) $tellerId ?>"
+                  <?= ((int) $filters['enteredBy'] === (int) $tellerId) ? 'selected' : '' ?>>
+                  <?= InputUtils::escapeHTML($tellerName) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
           </div>
-        </form>
+          <div class="col-md-4 d-flex align-items-end gap-2">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-search me-1"></i><?= gettext('Search') ?>
+            </button>
+            <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/deposit/search" class="btn btn-secondary">
+              <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear') ?>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Results Table -->
   <div class="card">
-    <div class="card-header d-flex align-items-center justify-content-between">
+    <div class="card-header d-flex align-items-center flex-wrap gap-2">
       <h3 class="card-title"><?= gettext('Deposits') ?></h3>
-      <div class="card-options d-flex align-items-center gap-2">
+      <div class="card-options d-flex align-items-center flex-wrap gap-2">
         <span id="selectedCount" class="badge bg-blue me-2" style="display:none!important"></span>
-        <button type="button" id="btnSelectAll" class="btn btn-sm btn-outline-secondary">
-          <?= gettext('Select All') ?>
-        </button>
         <button type="button" id="btnDeleteSelected" class="btn btn-sm btn-danger" disabled>
           <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
         </button>
@@ -227,7 +249,7 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
           <thead>
             <tr>
               <th class="w-1">
-                <input type="checkbox" id="selectAllCheckbox" class="form-check-input">
+                <input type="checkbox" id="selectAllCheckbox" class="form-check-input" aria-label="<?= gettext('Select All') ?>">
               </th>
               <th><?= gettext('ID') ?></th>
               <th><?= gettext('Date') ?></th>
@@ -241,7 +263,9 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
                 <?php endif; ?>
               </th>
               <th><?= gettext('Status') ?></th>
-              <th><?= gettext('Teller') ?></th>
+              <?php if ($showTeller) : ?>
+                <th><?= gettext('Teller') ?></th>
+              <?php endif; ?>
               <th class="w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>
@@ -278,7 +302,9 @@ $allTotal = array_sum(array_map(static fn (array $d): float => (float) ($d['tota
                     <span class="badge bg-success"><?= gettext('Open') ?></span>
                   <?php endif; ?>
                 </td>
-                <td><?= $tellerName ?></td>
+                <?php if ($showTeller) : ?>
+                  <td><?= $tellerName ?></td>
+                <?php endif; ?>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-sm btn-ghost-secondary" type="button"

@@ -26,9 +26,14 @@ import { confirmAction } from "./common/confirm-action";
    */
   function getSelectedIds() {
     var ids = [];
-    $("#depositsTable tbody .row-select:checked").each(function () {
-      ids.push(parseInt($(this).data("deposit-id"), 10));
-    });
+    dataT
+      .rows()
+      .nodes()
+      .to$()
+      .find(".row-select:checked")
+      .each(function () {
+        ids.push(parseInt($(this).data("deposit-id"), 10));
+      });
     return ids;
   }
 
@@ -57,23 +62,21 @@ import { confirmAction } from "./common/confirm-action";
 
   function initDataTable() {
     var config = {
-      columns: [
-        { orderable: false, searchable: false }, // checkbox column
-        { type: "num" }, // ID
-        { type: "date" }, // Date
-        null, // Type
-        null, // Comment
-        { type: "num-fmt" }, // Total
-        null, // Status
-        null, // Teller
-        { orderable: false, searchable: false }, // Actions
-      ],
       order: [[1, "desc"]],
-      columnDefs: [{ targets: [0, 8], className: "text-center" }],
+      columnDefs: [
+        { targets: [0, -1], orderable: false, className: "text-center" },
+        { targets: 1, type: "num" },
+        { targets: 2, type: "date" },
+        { targets: 5, type: "num-fmt" },
+      ],
     };
     $.extend(config, window.CRM.plugin.dataTable);
 
-    dataT = $("#depositsTable").DataTable(config);
+    dataT = $("#depositsTable").DataTable({
+      ...config,
+      searching: false,
+      layout: { ...config.layout, topStart: null },
+    });
   }
 
   // ---------------------------------------------------------------------------
@@ -95,16 +98,6 @@ import { confirmAction } from "./common/confirm-action";
     $("#selectAllCheckbox").on("change", function () {
       var checked = $(this).is(":checked");
       dataT.rows({ search: "applied" }).nodes().to$().find(".row-select").prop("checked", checked);
-      updateActionButtons();
-    });
-
-    // "Select All" text button above the table
-    $("#btnSelectAll").on("click", () => {
-      var allChecked =
-        $("#depositsTable tbody .row-select").length === $("#depositsTable tbody .row-select:checked").length;
-      var newState = !allChecked;
-      dataT.rows({ search: "applied" }).nodes().to$().find(".row-select").prop("checked", newState);
-      $("#selectAllCheckbox").prop("checked", newState).prop("indeterminate", false);
       updateActionButtons();
     });
 
