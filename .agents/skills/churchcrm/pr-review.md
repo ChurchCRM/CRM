@@ -178,6 +178,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 ### Database / existing installs (hard block if upgrade is unsafe)
 
 - [ ] Schema change has a script under `src/mysql/upgrade/` and `upgrade.json`
+- [ ] Free of edits to shipped upgrade scripts: a fix to one is a new next-release script
 - [ ] New columns nullable or defaulted
 - [ ] ORM schema regenerated when the schema changed
 
