@@ -11,6 +11,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\KioskGuestService;
+use ChurchCRM\Service\RateLimiter;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -245,6 +246,12 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
     });
 
     $group->post('/triggerNotification', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [$kiosk, , $event] = $result;
+
         $input = $request->getParsedBody();
         $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
         if ($personId <= 0) {
@@ -258,12 +265,6 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
 
-        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
-        if ($result instanceof Response) {
-            return $result;
-        }
-        [, , $event] = $result;
-        
         // Get event/group name for the notification
         $groups = $event->getGroups();
         $eventName = $groups->count() > 0 ? $groups->getFirst()->getName() : $event->getTitle();
@@ -276,6 +277,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
                 'eventName' => $eventName,
             ]);
             return SlimUtils::renderErrorJSON($response, gettext('Person has no family'), [], 404);
+        }
+
+        $limiter = new RateLimiter('kiosk.notification', 10, 60);
+        $kioskKey = (string) $kiosk->getId();
+        if (!$limiter->attempt($kioskKey)) {
+            $response = $response->withHeader('Retry-After', (string) max(1, $limiter->availableIn($kioskKey)));
+
+            return SlimUtils::renderErrorJSON($response, gettext('Too many attempts'), [], 429);
         }
 
         LoggerUtils::getAppLogger()->info('triggerNotification: Sending notification', [
