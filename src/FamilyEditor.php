@@ -81,19 +81,19 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         exit;
     }
     //Assign everything locally
-    $sName = InputUtils::legacyFilterInput($_POST['Name']);
+    $sName = InputUtils::sanitizeText($_POST['Name']);
     // Strip commas out of address fields because they are problematic when
     // exporting addresses to CSV file
-    $sAddress1 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['Address1']));
-    $sAddress2 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['Address2']));
-    $sCity = InputUtils::legacyFilterInput($_POST['City']);
-    $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
+    $sAddress1 = str_replace(',', '', InputUtils::sanitizeText($_POST['Address1']));
+    $sAddress2 = str_replace(',', '', InputUtils::sanitizeText($_POST['Address2']));
+    $sCity = InputUtils::sanitizeText($_POST['City']);
+    $sZip = InputUtils::sanitizeText($_POST['Zip']);
 
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
 
-    $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
+    $sCountry = InputUtils::sanitizeText($_POST['Country']);
     $iFamilyMemberRows = filter_var($_POST['FamCount'] ?? null, FILTER_VALIDATE_INT);
     if ($iFamilyMemberRows === false || $iFamilyMemberRows < 0 || $iFamilyMemberRows > 500) {
         http_response_code(400);
@@ -114,22 +114,22 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         }
     }
 
-    $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
+    $sState = InputUtils::sanitizeText($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
     // Optional second address (#9743). Same handling as the primary address:
     // commas stripped from the street lines (they break the CSV export) and the
     // zip uppercased when the installation asks for it.
-    $sSecondAddress1 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['SecondAddress1'] ?? ''));
-    $sSecondAddress2 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['SecondAddress2'] ?? ''));
-    $sSecondCity = InputUtils::legacyFilterInput($_POST['SecondCity'] ?? '');
-    $sSecondZip = InputUtils::legacyFilterInput($_POST['SecondZip'] ?? '');
+    $sSecondAddress1 = str_replace(',', '', InputUtils::sanitizeText($_POST['SecondAddress1'] ?? ''));
+    $sSecondAddress2 = str_replace(',', '', InputUtils::sanitizeText($_POST['SecondAddress2'] ?? ''));
+    $sSecondCity = InputUtils::sanitizeText($_POST['SecondCity'] ?? '');
+    $sSecondZip = InputUtils::sanitizeText($_POST['SecondZip'] ?? '');
 
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sSecondZip = strtoupper($sSecondZip);
     }
 
-    $sSecondCountry = InputUtils::legacyFilterInput($_POST['SecondCountry'] ?? '');
-    $sSecondState = InputUtils::legacyFilterInput(
+    $sSecondCountry = InputUtils::sanitizeText($_POST['SecondCountry'] ?? '');
+    $sSecondState = InputUtils::sanitizeText(
         ($_POST['secondStateType'] ?? '') === 'dropDown'
             ? ($_POST['SecondState'] ?? '')
             : ($_POST['SecondStateTextbox'] ?? '')
@@ -147,7 +147,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sSecondCountry = '';
     }
 
-    $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
+    $sHomePhone = InputUtils::sanitizeText($_POST['HomePhone']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
@@ -176,17 +176,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if (array_key_exists('PropertyID', $_POST)) {
         $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
     }
-    $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate'] ?? '');
+    $dWeddingDate = InputUtils::sanitizeText($_POST['WeddingDate'] ?? '');
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
 
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
         // Assign everything to arrays
-        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST["FirstName$iCount"]);
-        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST["MiddleName$iCount"]);
-        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST["LastName$iCount"]);
-        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST["Suffix$iCount"]);
+        $aFirstNames[$iCount] = InputUtils::sanitizeText($_POST["FirstName$iCount"]);
+        $aMiddleNames[$iCount] = InputUtils::sanitizeText($_POST["MiddleName$iCount"]);
+        $aLastNames[$iCount] = InputUtils::sanitizeText($_POST["LastName$iCount"]);
+        $aSuffix[$iCount] = InputUtils::sanitizeText($_POST["Suffix$iCount"]);
         $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST["Role$iCount"], 'int');
         $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST["Gender$iCount"], 'int');
         $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST["BirthDay$iCount"], 'int');

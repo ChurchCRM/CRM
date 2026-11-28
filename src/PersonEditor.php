@@ -51,7 +51,7 @@ $isNewPerson = $iPersonID === 0;
 
 $sPreviousPage = '';
 if (array_key_exists('previousPage', $_GET)) {
-    $sPreviousPage = InputUtils::legacyFilterInput($_GET['previousPage']);
+    $sPreviousPage = InputUtils::sanitizeText($_GET['previousPage']);
 }
 
 $queryParamFamilyId = null;
@@ -267,11 +267,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     //Get all the variables from the request object and assign them locally
-    $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
-    $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
-    $sMiddleName = InputUtils::legacyFilterInput($_POST['MiddleName']);
-    $sLastName = InputUtils::legacyFilterInput($_POST['LastName']);
-    $sSuffix = InputUtils::legacyFilterInput($_POST['Suffix']);
+    $sTitle = InputUtils::sanitizeText($_POST['Title']);
+    $sFirstName = InputUtils::sanitizeText($_POST['FirstName']);
+    $sMiddleName = InputUtils::sanitizeText($_POST['MiddleName']);
+    $sLastName = InputUtils::sanitizeText($_POST['LastName']);
+    $sSuffix = InputUtils::sanitizeText($_POST['Suffix']);
     $iGender = InputUtils::legacyFilterInput($_POST['Gender'], 'int');
 
     // Person address stuff is normally suppressed in favor of family address info
@@ -281,16 +281,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sZip = '';
     $sCountry = '';
     if (array_key_exists('Address1', $_POST)) {
-        $sAddress1 = InputUtils::legacyFilterInput($_POST['Address1']);
+        $sAddress1 = InputUtils::sanitizeText($_POST['Address1']);
     }
     if (array_key_exists('Address2', $_POST)) {
-        $sAddress2 = InputUtils::legacyFilterInput($_POST['Address2']);
+        $sAddress2 = InputUtils::sanitizeText($_POST['Address2']);
     }
     if (array_key_exists('City', $_POST)) {
-        $sCity = InputUtils::legacyFilterInput($_POST['City']);
+        $sCity = InputUtils::sanitizeText($_POST['City']);
     }
     if (array_key_exists('Zip', $_POST)) {
-        $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
+        $sZip = InputUtils::sanitizeText($_POST['Zip']);
     }
 
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
@@ -298,7 +298,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     if (array_key_exists('Country', $_POST)) {
-        $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
+        $sCountry = InputUtils::sanitizeText($_POST['Country']);
     }
 
     $iFamily = InputUtils::legacyFilterInput($_POST['Family'], 'int');
@@ -309,16 +309,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     // State handling: API determines which countries have states; JS toggles UI visibility
     $sState = '';
     if (array_key_exists('State', $_POST)) {
-        $sState = InputUtils::legacyFilterInput($_POST['State']);
+        $sState = InputUtils::sanitizeText($_POST['State']);
     } elseif (array_key_exists('StateTextbox', $_POST)) {
-        $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
+        $sState = InputUtils::sanitizeText($_POST['StateTextbox']);
     }
 
-    $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
-    $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
-    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
-    $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
+    $sHomePhone = InputUtils::sanitizeText($_POST['HomePhone']);
+    $sWorkPhone = InputUtils::sanitizeText($_POST['WorkPhone']);
+    $sCellPhone = InputUtils::sanitizeText($_POST['CellPhone']);
+    $sEmail = InputUtils::sanitizeText($_POST['Email']);
+    $sWorkEmail = InputUtils::sanitizeText($_POST['WorkEmail']);
     $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
@@ -619,9 +619,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage !== '') {
-            $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            RedirectUtils::redirect($sPreviousPage . $iPersonID);
-        } elseif (isset($_POST['PersonSubmit'])) {
+            $returnUrl = RedirectUtils::validateRedirectUrl(str_replace(';', '&', $sPreviousPage) . $iPersonID, '');
+            if ($returnUrl !== '') {
+                RedirectUtils::redirect($returnUrl);
+            }
+        }
+        if (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
             RedirectUtils::redirect(Person::getViewURIForId($iPersonID));
         } else {

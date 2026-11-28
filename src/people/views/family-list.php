@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="filterCity"><?= gettext('City') ?></label>
-                        <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= InputUtils::escapeAttribute($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
+                        <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= htmlspecialchars($filterCity ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="<?= gettext('City') ?>">
                     </div>
                     <div class="mb-3">
                         <label for="familyActiveStatus"><?= gettext('Status') ?></label>
@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="filterState"><?= gettext('State') ?></label>
-                        <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= InputUtils::escapeAttribute($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
+                        <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= htmlspecialchars($filterState ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="<?= gettext('State') ?>">
                     </div>
                     <div class="mb-3">
                         <label for="filterGeocoded"><?= gettext('Address Status') ?></label>
