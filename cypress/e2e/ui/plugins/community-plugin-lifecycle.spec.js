@@ -54,7 +54,10 @@ describe('Community Plugin Lifecycle', { retries: 2 }, () => {
             const plugin = response.body.data.find((p) => p.id === PLUGIN_ID);
             expect(plugin, 'hello-world in plugin list').to.exist;
             expect(plugin.isActive, 'not yet enabled after install').to.be.false;
+            expect(plugin.cspCompatible, 'hello-world 1.0.1 does not declare cspCompatible').to.be.false;
         });
+        cy.get(`.card[data-plugin-id="${PLUGIN_ID}"]`).contains('.badge', 'Not CSP-ready').should('exist');
+        cy.get('#core-plugins-section').contains('.badge', 'Not CSP-ready').should('not.exist');
     });
 
     // ─────────────────────────────────────────────────────────────────────────

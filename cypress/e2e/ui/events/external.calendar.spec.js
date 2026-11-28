@@ -34,10 +34,6 @@ function setExternalCalendarApi(enabled) {
  * Helper: assert that a response from the external-calendar route has the
  * correct framing headers — no X-Frame-Options restriction and a CSP
  * frame-ancestors directive that permits embedding from any origin.
- *
- * We check whichever CSP flavour the server sends
- * (Content-Security-Policy or Content-Security-Policy-Report-Only —
- *  determined by the bEnforceCSP system config, defaulting to report-only).
  */
 function assertFramingHeadersOpen(response) {
     // Must NOT send X-Frame-Options — its absence means no legacy restriction.
@@ -46,10 +42,7 @@ function assertFramingHeadersOpen(response) {
         'x-frame-options should be absent on the external calendar route',
     ).to.be.undefined;
 
-    // Exactly one CSP flavour should be present; pick whichever is set.
-    const cspHeader =
-        response.headers['content-security-policy'] ??
-        response.headers['content-security-policy-report-only'];
+    const cspHeader = response.headers['content-security-policy'];
     expect(cspHeader, 'a CSP header must be present').to.be.a('string');
 
     // frame-ancestors must be open to all origins…

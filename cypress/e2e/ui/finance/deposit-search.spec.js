@@ -50,6 +50,19 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#dateEnd").should("have.value", "2099-12-31");
   });
 
+  it("clears the date range when the treasurer switches fiscal year", () => {
+    cy.visit(DEPOSIT_SEARCH_URL + "?fyid=22");
+    cy.get("#depositId").type(String(SEEDED_DEPOSIT_ID));
+    cy.get("#dateStart").type("2090-01-01");
+    cy.get("#dateEnd").type("2099-12-31");
+    cy.get("#deposit-slip-fyid").select("0");
+
+    cy.location("search").should("include", "fyid=0");
+    cy.get("#dateStart").should("have.value", "");
+    cy.get("#dateEnd").should("have.value", "");
+    cy.get(`#depositsTable tbody tr[data-deposit-id="${SEEDED_DEPOSIT_ID}"]`).should("be.visible");
+  });
+
   it("filters by deposit ID", () => {
     cy.get("#depositId").clear().type(String(SEEDED_DEPOSIT_ID));
     cy.get("#depositFilterForm").submit();

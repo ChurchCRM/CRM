@@ -7042,5 +7042,8 @@
   "Undo failed. Please try again.": "Rückgängig machen fehlgeschlagen. Bitte versuchen Sie es erneut.",
   "You need the database details from your web host, or from whoever set up your server.": "Sie benötigen die Datenbankdaten von Ihrem Webhoster oder von der Person, die Ihren Server eingerichtet hat.",
   "database setup troubleshooting guide": "Anleitung zur Fehlerbehebung bei der Datenbankeinrichtung",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Ein Teil des Textes bleibt auf Englisch, bis die PHP-Erweiterung gettext aktiviert ist."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Ein Teil des Textes bleibt auf Englisch, bis die PHP-Erweiterung gettext aktiviert ist.",
+  "Install Source": "Installationsquelle",
+  "Install source and container engine": "Installationsquelle und Container-Engine",
+  "Understand how ChurchCRM is installed and run": "Verstehen Sie, wie ChurchCRM installiert ist und ausgeführt wird"
 }

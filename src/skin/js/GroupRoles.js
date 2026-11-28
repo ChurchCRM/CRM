@@ -17,6 +17,7 @@ function UpdateRoles() {
 }
 
 $(document).ready(function (e, confirmed) {
+  $("#GroupID").on("change", UpdateRoles);
   $("#addToGroup").click(function () {
     window.CRM.groups.addGroup(function (data) {
       $("#GroupID").append(new Option(data.Name, data.Id, true, true));

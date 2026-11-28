@@ -7042,5 +7042,8 @@
   "Undo failed. Please try again.": "പൂർവസ്ഥിതിയിലാക്കൽ പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കൂ.",
   "You need the database details from your web host, or from whoever set up your server.": "നിങ്ങളുടെ വെബ് ഹോസ്റ്റിൽ നിന്നോ, അല്ലെങ്കിൽ നിങ്ങളുടെ സെർവർ സജ്ജീകരിച്ച ആളിൽ നിന്നോ ഉള്ള ഡാറ്റാബേസ് വിശദാംശങ്ങൾ നിങ്ങൾക്ക് ആവശ്യമാണ്.",
   "database setup troubleshooting guide": "ഡാറ്റാബേസ് സജ്ജീകരണ പ്രശ്നപരിഹാര ഗൈഡ്",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext എക്സ്റ്റൻഷൻ പ്രവർത്തനക്ഷമമാക്കുന്നതുവരെ ചില വാചകങ്ങൾ ഇംഗ്ലീഷിൽ തന്നെ തുടരും."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext എക്സ്റ്റൻഷൻ പ്രവർത്തനക്ഷമമാക്കുന്നതുവരെ ചില വാചകങ്ങൾ ഇംഗ്ലീഷിൽ തന്നെ തുടരും.",
+  "Install Source": "ഇൻസ്റ്റലേഷൻ ഉറവിടം",
+  "Install source and container engine": "ഇൻസ്റ്റലേഷൻ ഉറവിടവും കണ്ടെയ്‌നർ എഞ്ചിനും",
+  "Understand how ChurchCRM is installed and run": "ChurchCRM എങ്ങനെ ഇൻസ്റ്റാൾ ചെയ്‌ത് പ്രവർത്തിപ്പിക്കുന്നുവെന്ന് മനസ്സിലാക്കുക"
 }

@@ -66,7 +66,8 @@ The manifest declares `type: "community"`; the installer rejects other types.
     ],
     "menuItems": [],
     "hooks": [],
-    "hasTest": false
+    "hasTest": false,
+    "cspCompatible": true
 }
 ```
 
@@ -74,6 +75,7 @@ The manifest declares `type: "community"`; the installer rejects other types.
 - `version` equals the approved registry entry; the installer cross-checks both.
 - Password settings are masked in the admin UI; `getClientConfig()` omits raw passwords.
 - `minimumCRMVersion` is the oldest ChurchCRM release you test against; the installer enforces it.
+- `cspCompatible: true` once every page runs with no CSP violations ([rules](./plugin-development.md#content-security-policy)).
 
 Schema: [`plugin-development.md → plugin.json Manifest`](./plugin-development.md#pluginjson-manifest).
 

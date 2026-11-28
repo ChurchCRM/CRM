@@ -7042,5 +7042,8 @@
   "Undo failed. Please try again.": "Zhbërja dështoi. Ju lutemi provoni sërish.",
   "You need the database details from your web host, or from whoever set up your server.": "Ju nevojiten të dhënat e bazës së të dhënave nga hosti juaj i uebit, ose nga ai që konfiguroi serverin tuaj.",
   "database setup troubleshooting guide": "udhëzuesi për zgjidhjen e problemeve të konfigurimit të bazës së të dhënave",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Një pjesë e tekstit do të mbetet në anglisht derisa të aktivizohet shtesa gettext e PHP-së."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Një pjesë e tekstit do të mbetet në anglisht derisa të aktivizohet shtesa gettext e PHP-së.",
+  "Install Source": "Burimi i instalimit",
+  "Install source and container engine": "Burimi i instalimit dhe motori i kontejnerëve",
+  "Understand how ChurchCRM is installed and run": "Kuptoni se si instalohet dhe ekzekutohet ChurchCRM"
 }
