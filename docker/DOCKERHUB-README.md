@@ -2,7 +2,7 @@
 
 [ChurchCRM](https://churchcrm.io) is free, open-source church management software: people and families, groups, events and attendance, giving and financial tracking, volunteers, and reports. It runs in 49 languages.
 
-This image is the current ChurchCRM release, built from [ChurchCRM/CRM](https://github.com/ChurchCRM/CRM) on every release.
+ChurchCRM publishes this image from [ChurchCRM/CRM](https://github.com/ChurchCRM/CRM) on every stable release. The Apache image and production Compose stack are the official Docker installation path for VPS and managed container hosting.
 
 ## Tags
 
@@ -12,7 +12,7 @@ This image is the current ChurchCRM release, built from [ChurchCRM/CRM](https://
 | `latest-php8-fpm` | Current release, PHP 8 + PHP-FPM |
 | `<version>-php8-apache`, `<version>-php8-fpm` | A pinned release (e.g. `7.8.4-php8-apache`) |
 
-`latest` always tracks the newest release. Pin a version tag if you don't want to move on release day.
+Use `churchcrm/crm:latest-php8-apache` in production. ChurchCRM supports the latest stable Apache build. Your church or hosting provider maintains the host OS, reverse proxy, and TLS.
 
 ## Quick start
 
@@ -31,7 +31,7 @@ Full instructions, backup and upgrade procedure: https://docs.churchcrm.io/insta
 - The image ships no database — bring MariaDB/MySQL, as the compose stack does.
 - Keep `Include/Config.php` across container replacements (see the comments in `docker/production/compose.yaml`) so a rebuild doesn't send you back to setup.
 - `CHURCHCRM_INSTALL_SOURCE` names the install channel shown under Admin → System → Debug. The images set `docker`; a hosting provider can set its own name before the first start. The first recorded value is kept.
-- The images are for evaluation and self-hosted installs. For anything public, put a TLS reverse proxy in front — the compose stack binds loopback only by default.
+- The Compose stack binds to loopback by default. For remote access, put a TLS reverse proxy in front of it.
 
 ## Links
 

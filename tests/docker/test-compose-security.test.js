@@ -92,6 +92,7 @@ describe('compose development boundaries', () => {
             assert.notEqual(render(['production/compose.yaml'], undefined, environment).status, 0, omitted);
         }
         const rendered = services(render(['production/compose.yaml'], undefined, required), 'production');
+        assert.equal(rendered.web.image, 'churchcrm/crm:latest-php8-apache');
         assert.equal(rendered.db.ports?.length || 0, 0);
         for (const service of Object.values(rendered)) {
             for (const port of service.ports || []) {

@@ -212,8 +212,8 @@ Every stable GitHub release publishes versioned multi-arch images
 
 | Tag | Variant | Supported |
 | --- | --- | --- |
-| `<version>-php8-apache` | Apache + PHP 8.5, HTTP on 8080 | Yes — use this |
-| `latest-php8-apache`, `latest` | Newest stable Apache build | Yes, but pin a version in production |
+| `latest-php8-apache`, `latest` | Current stable Apache build, HTTP on 8080 | Yes. Production Compose uses `latest-php8-apache`. |
+| `<version>-php8-apache` | Apache build for a specific release | Latest stable release only |
 | `<version>-php8-fpm`, `latest-php8-fpm` | PHP-FPM, FastCGI on 9000 | No — needs your own web server |
 
 **To run one:** copy `production/` somewhere of your own, copy `.env.example` to

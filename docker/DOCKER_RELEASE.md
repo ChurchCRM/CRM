@@ -7,14 +7,12 @@ and `docker/production/compose.yaml`.
 Stable releases publish `churchcrm/crm:<version>-php8-apache` and
 `churchcrm/crm:<version>-php8-fpm`. Only the release currently marked latest on
 GitHub updates `latest-php8-apache` / `latest-php8-fpm`, and `latest`, which is
-the Apache image. Prefer a version tag or image digest for production
-deployments. Re-running a build can replace a version tag; DockerHub tag
-immutability is a separate registry policy. The one exception is the production
-compose file: `docker/production/compose.yaml` intentionally tracks
-`latest-php8-apache` rather than a versioned tag, per the latest-only support
-policy (anything outside latest is unsupported, and an unstable build gets
-deleted or fast-followed), so new compose deployments always land on the
-current release without a per-release pin bump.
+the Apache image. The latest stable Apache build and
+[docker/production/compose.yaml](production/compose.yaml) are the standard
+ChurchCRM install for VPS and managed container hosting. Production Compose
+tracks `latest-php8-apache`. ChurchCRM support covers the latest stable Apache
+build. The church or hosting provider maintains the host OS, reverse proxy,
+and TLS. See [decision #11753](https://github.com/ChurchCRM/CRM/issues/11753).
 
 Apache is the supported variant. The FPM tags are published, but they require a
 web server in front and ChurchCRM's routing depends on Apache's rewrite rules,
