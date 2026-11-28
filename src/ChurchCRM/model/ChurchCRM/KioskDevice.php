@@ -9,6 +9,8 @@ use Propel\Runtime\Connection\ConnectionInterface;
 
 class KioskDevice extends BaseKioskDevice
 {
+    public const MAX_PENDING = 20;
+
     public function getActiveAssignment(): ?KioskAssignment
     {
         $assignments = $this->getKioskAssignments();

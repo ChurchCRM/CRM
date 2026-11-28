@@ -611,6 +611,7 @@ class PluginManager
                     'settings' => self::getPluginSettingsWithValues($id),
                     'help' => $plugin?->getHelp() ?? $metadata->getHelp(),
                     'hasTest' => $metadata->hasTest(),
+                    'cspCompatible' => $metadata->getType() === 'core' || $metadata->isCspCompatible(),
                     'hasError' => $configError !== null,
                     'errorMessage' => $configError,
                     // Verification + quarantine fields.

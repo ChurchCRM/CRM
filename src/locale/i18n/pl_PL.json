@@ -7077,5 +7077,10 @@
   "Undo failed. Please try again.": "Cofnięcie nie powiodło się. Spróbuj ponownie.",
   "You need the database details from your web host, or from whoever set up your server.": "Potrzebujesz danych bazy danych od swojego dostawcy hostingu lub od osoby, która skonfigurowała Twój serwer.",
   "database setup troubleshooting guide": "przewodnik rozwiązywania problemów z konfiguracją bazy danych",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Część tekstu pozostanie w języku angielskim, dopóki rozszerzenie gettext PHP nie zostanie włączone."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Część tekstu pozostanie w języku angielskim, dopóki rozszerzenie gettext PHP nie zostanie włączone.",
+  "Install Source": "Źródło instalacji",
+  "Install source and container engine": "Źródło instalacji i silnik kontenerów",
+  "Understand how ChurchCRM is installed and run": "Dowiedz się, jak ChurchCRM jest instalowany i uruchamiany",
+  "Not CSP-ready": "Brak gotowości na CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Niektóre strony mogą nie działać. Jeśli przestaną działać, wyłącz Content Security Policy w sekcji Przełączniki funkcji."
 }

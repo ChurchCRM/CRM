@@ -7182,5 +7182,10 @@
   "Undo failed. Please try again.": "فشل التراجع. حاولوا مرة أخرى.",
   "You need the database details from your web host, or from whoever set up your server.": "تحتاجون إلى تفاصيل قاعدة البيانات من مضيف الويب، أو ممن أعدّ خادمكم.",
   "database setup troubleshooting guide": "دليل استكشاف أخطاء إعداد قاعدة البيانات وإصلاحها",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "سيبقى بعض النص باللغة الإنجليزية حتى يتم تفعيل امتداد gettext في PHP."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "سيبقى بعض النص باللغة الإنجليزية حتى يتم تفعيل امتداد gettext في PHP.",
+  "Install Source": "مصدر التثبيت",
+  "Install source and container engine": "مصدر التثبيت ومحرك الحاويات",
+  "Understand how ChurchCRM is installed and run": "افهم كيفية تثبيت ChurchCRM وتشغيله",
+  "Not CSP-ready": "غير جاهز لـ CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "قد لا تعمل بعض الصفحات. إذا تعطلت، أوقف سياسة أمان المحتوى في تبديلات الميزات."
 }

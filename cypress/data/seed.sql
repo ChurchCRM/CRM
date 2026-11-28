@@ -1566,6 +1566,13 @@ INSERT INTO `person_custom` (`per_ID`, `c2`, `c5`, `c6`, `c7`, `c8`, `c9`, `c10`
 (2,'Spiritual director note','Pledge reviewed 2026','2024-01-07','Hospital visit scheduled; keep confidential.',2009,'true','fall',4,1250.00,'(555) 010-1313')
 ON DUPLICATE KEY UPDATE `c2`=VALUES(`c2`), `c5`=VALUES(`c5`), `c6`=VALUES(`c6`), `c7`=VALUES(`c7`), `c8`=VALUES(`c8`), `c9`=VALUES(`c9`), `c10`=VALUES(`c10`), `c11`=VALUES(`c11`), `c12`=VALUES(`c12`), `c13`=VALUES(`c13`);
 
+-- Angels class students (group 1) with custom values for the class list PDF. c3 and c8 are open to
+-- everyone, c5 needs Finance, c7 needs Notes. Person 9 keeps every field empty.
+INSERT INTO `person_custom` (`per_ID`, `c3`, `c5`, `c7`, `c8`) VALUES
+(5,'Peanut allergy','Scholarship reviewed','Meets weekly with the pastor.',2018),
+(8,'Asthma inhaler in backpack',NULL,NULL,NULL)
+ON DUPLICATE KEY UPDATE `c3`=VALUES(`c3`), `c5`=VALUES(`c5`), `c7`=VALUES(`c7`), `c8`=VALUES(`c8`);
+
 INSERT INTO `person_per` (`per_ID`, `per_Title`, `per_FirstName`, `per_MiddleName`, `per_LastName`, `per_Suffix`, `per_Address1`, `per_Address2`, `per_City`, `per_State`, `per_Zip`, `per_Country`, `per_HomePhone`, `per_WorkPhone`, `per_CellPhone`, `per_Email`, `per_WorkEmail`, `per_BirthMonth`, `per_BirthDay`, `per_BirthYear`, `per_MembershipDate`, `per_DateDeceased`, `per_Gender`, `per_fmr_ID`, `per_cls_ID`, `per_fam_ID`, `per_Envelope`, `per_DateLastEdited`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_FriendDate`, `per_Flags`, `per_Facebook`, `per_Twitter`, `per_LinkedIn`, `per_DateDeactivated`, `per_NeedsReview`, `per_grd_ID`) VALUES (1,NULL,'Church',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL),
 (2,'Mr','Mathew','','Campbell','','3259 Daisy Dr','','Denton','AR','','USA','(728)-139-0768','','(003)-025-4087','mathew.campbell@example.com',NULL,6,15,1970,NULL,NULL,1,1,1,1,NULL,NULL,'2009-12-25 07:19:06',1,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL),
 (3,'Mr','Tony','','Campbell','','9889 Lone Wolf Trail','','Worcester','ME','','USA','(221) 294-5282','','(820) 203-5704','tony.wade@example.com','',3,3,1945,NULL,NULL,1,0,2,0,0,'2016-11-19 16:07:39','2006-05-18 08:07:27',1,1,NULL,0,NULL,NULL,NULL,NULL,0,NULL),

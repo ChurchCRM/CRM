@@ -95,27 +95,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <?php if ($itemId > 0): ?>
             <div class="mb-3">
-              <label class="form-label"><?= gettext('Replicate item') ?></label>
+              <label class="form-label" for="NumberCopies"><?= gettext('Replicate item') ?></label>
               <div class="input-group">
-                <input type="text" name="NumberCopies" id="NumberCopies" value="0" class="form-control">
-                <button type="button" class="btn btn-primary" onclick="
-                  var count = document.getElementById('NumberCopies').value;
-                  var form = document.createElement('form');
-                  form.method = 'post';
-                  form.action = '<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/<?= (int) $itemId ?>/replicate';
-                  var csrfInput = document.createElement('input');
-                  csrfInput.type = 'hidden';
-                  csrfInput.name = 'csrf_token';
-                  csrfInput.value = '<?= CSRFUtils::generateToken("donated_item_replicate") ?>';
-                  form.appendChild(csrfInput);
-                  var input = document.createElement('input');
-                  input.type = 'hidden';
-                  input.name = 'Count';
-                  input.value = count;
-                  form.appendChild(input);
-                  document.body.appendChild(form);
-                  form.submit();
-                "><?= gettext('Go') ?></button>
+                <input type="text" name="Count" id="NumberCopies" value="0" class="form-control" form="donated-item-replicate">
+                <button type="submit" class="btn btn-primary" form="donated-item-replicate"><?= gettext('Go') ?></button>
               </div>
             </div>
             <?php endif; ?>
@@ -154,4 +137,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 </form>
+<?php if ($itemId > 0): ?>
+<form id="donated-item-replicate" method="post" action="<?= InputUtils::escapeAttribute($sRootPath) ?>/fundraiser/<?= (int) $fundraiserId ?>/donated-items/<?= (int) $itemId ?>/replicate">
+  <?= CSRFUtils::getTokenInputField('donated_item_replicate') ?>
+</form>
+<?php endif; ?>
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

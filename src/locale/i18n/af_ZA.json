@@ -7042,5 +7042,10 @@
   "Undo failed. Please try again.": "Ontdoen het misluk. Probeer asseblief weer.",
   "You need the database details from your web host, or from whoever set up your server.": "Jy het die databasisbesonderhede van jou webgasheer nodig, of van wie ook al jou bediener opgestel het.",
   "database setup troubleshooting guide": "foutsporingsgids vir databasisopset",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Sommige teks sal in Engels bly totdat die gettext PHP-uitbreiding geaktiveer is."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Sommige teks sal in Engels bly totdat die gettext PHP-uitbreiding geaktiveer is.",
+  "Install Source": "Installasiebron",
+  "Install source and container engine": "Installasiebron en houerenjin",
+  "Understand how ChurchCRM is installed and run": "Verstaan hoe ChurchCRM geïnstalleer en uitgevoer word",
+  "Not CSP-ready": "Nie CSP-gereed nie",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Sommige bladsye werk dalk nie. As hulle breek, skakel Content Security Policy af in Funksieskakelaars."
 }

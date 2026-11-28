@@ -7007,5 +7007,10 @@
   "Undo failed. Please try again.": "เลิกทำไม่สำเร็จ โปรดลองอีกครั้ง",
   "You need the database details from your web host, or from whoever set up your server.": "คุณต้องใช้รายละเอียดฐานข้อมูลจากผู้ให้บริการเว็บโฮสติ้งของคุณ หรือจากผู้ที่ตั้งค่าเซิร์ฟเวอร์ให้คุณ",
   "database setup troubleshooting guide": "คู่มือแก้ไขปัญหาการตั้งค่าฐานข้อมูล",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "ข้อความบางส่วนจะยังคงเป็นภาษาอังกฤษจนกว่าจะเปิดใช้งานส่วนขยาย gettext ของ PHP"
+  "Some text will stay in English until the gettext PHP extension is enabled.": "ข้อความบางส่วนจะยังคงเป็นภาษาอังกฤษจนกว่าจะเปิดใช้งานส่วนขยาย gettext ของ PHP",
+  "Install Source": "แหล่งที่มาของการติดตั้ง",
+  "Install source and container engine": "แหล่งที่มาของการติดตั้งและเอ็นจินคอนเทนเนอร์",
+  "Understand how ChurchCRM is installed and run": "ทำความเข้าใจว่า ChurchCRM ถูกติดตั้งและทำงานอย่างไร",
+  "Not CSP-ready": "ไม่พร้อมสำหรับ CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "บางหน้าอาจไม่ทำงาน หากหน้าเหล่านั้นเสีย ให้ปิด Content Security Policy ใน สวิตช์คุณลักษณะ"
 }

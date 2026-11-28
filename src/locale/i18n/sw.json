@@ -7042,5 +7042,10 @@
   "Undo failed. Please try again.": "Kutendua kumeshindwa. Tafadhali jaribu tena.",
   "You need the database details from your web host, or from whoever set up your server.": "Unahitaji maelezo ya hifadhidata kutoka kwa mwenyeji wako wa wavuti, au kutoka kwa yeyote aliyeweka seva yako.",
   "database setup troubleshooting guide": "mwongozo wa kutatua matatizo ya usanidi wa hifadhidata",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Baadhi ya maandishi yatabaki kwa Kiingereza hadi kiendelezi cha gettext cha PHP kiwashwe."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Baadhi ya maandishi yatabaki kwa Kiingereza hadi kiendelezi cha gettext cha PHP kiwashwe.",
+  "Install Source": "Chanzo cha Usakinishaji",
+  "Install source and container engine": "Chanzo cha Usakinishaji na injini ya kontena",
+  "Understand how ChurchCRM is installed and run": "Elewa jinsi ChurchCRM inavyosakinishwa na kuendeshwa",
+  "Not CSP-ready": "Haiko tayari kwa CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Baadhi ya kurasa huenda zisifanye kazi. Zikiharibika, zima Content Security Policy katika Swichi za Vipengele."
 }

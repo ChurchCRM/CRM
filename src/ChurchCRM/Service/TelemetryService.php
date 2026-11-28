@@ -29,6 +29,10 @@ class TelemetryService
     // carrying it is a dev/CI system, never a church, whatever its stored profile says.
     private const DEV_SYSTEM_ID = 'dev-churchcrm-testing';
 
+    // Environment variable a channel that cannot write config itself (Docker, a
+    // hosting panel) uses to name the install source at install time.
+    private const INSTALL_SOURCE_ENV_VAR = 'CHURCHCRM_INSTALL_SOURCE';
+
     private static array $installProfileCache = [];
     private static ?string $logDedupeDirectory = null;
 
@@ -97,6 +101,36 @@ class TelemetryService
         }
 
         return is_string($value) ? trim($value) : null;
+    }
+
+    /**
+     * Stamp the install source from the CHURCHCRM_INSTALL_SOURCE environment variable.
+     *
+     * Called from Bootstrapper until a marker exists: on the first bootstrap of a new
+     * install, before the first lifecycle event, or on the first request after an
+     * existing install gains the variable (such as a Docker image upgrade). A
+     * marker an installer wrote itself (Softaculous writes sInstallSource directly)
+     * always wins and is never overwritten: this is one-time install provenance, not
+     * runtime configuration, and nothing reads the variable after the stamp.
+     */
+    public static function stampInstallSourceFromEnvironment(): void
+    {
+        try {
+            if (!SystemConfig::isInitialized()) {
+                return;
+            }
+            $stored = SystemConfig::getValue('sInstallSource');
+            if (is_string($stored) && trim($stored) !== '') {
+                return;
+            }
+            $source = self::environmentValue(self::INSTALL_SOURCE_ENV_VAR);
+            if ($source === null || $source === '') {
+                return;
+            }
+            SystemConfig::setValue('sInstallSource', $source);
+        } catch (\Throwable) {
+            // Provenance must never break bootstrap.
+        }
     }
 
     public static function getLevel(): string
@@ -647,6 +681,16 @@ class TelemetryService
             $properties['church_country'] = $churchCountry;
         }
 
+        $installSource = self::installSource();
+        if ($installSource !== null) {
+            $properties['install_source'] = $installSource;
+        }
+
+        $container = self::container();
+        if ($container !== null) {
+            $properties['container'] = $container;
+        }
+
         try {
             $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
             $properties += self::databaseProperties($serverVersion);
@@ -656,6 +700,34 @@ class TelemetryService
         }
 
         return $properties;
+    }
+
+    /**
+     * The install channel recorded by the installer (the sInstallSource config value), or null
+     * when no installer set one. The value is reported as stored, so any installer or hosting
+     * provider that records its own value is attributed the same way.
+     */
+    public static function installSource(): ?string
+    {
+        try {
+            $source = SystemConfig::isInitialized() ? SystemConfig::getValue('sInstallSource') : null;
+        } catch (\Throwable) {
+            return null;
+        }
+
+        $source = is_string($source) ? trim($source) : '';
+
+        return $source !== '' ? $source : null;
+    }
+
+    /** The container engine running this process, or null outside a container. */
+    private static function container(): ?string
+    {
+        return match (true) {
+            is_file('/.dockerenv') => 'docker',
+            is_file('/run/.containerenv') => 'podman',
+            default => null,
+        };
     }
 
     /** The church's self-declared country (sChurchCountry only), or null when empty or not a known ISO code. */

@@ -228,8 +228,22 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
         cy.visit("/people/sign-in-email");
         cy.get("#memberListTable tbody tr").should("have.length.at.least", 1);
         noHorizontalScroll();
+        cy.intercept({ method: "GET", pathname: /\/api\/persons\/sign-in-email\/attention$/, query: { problem: "email_unconfirmed" } }).as("unconfirmedAttention");
         cy.get('#memberListProblems [data-problem="email_unconfirmed"]').click();
-        cy.contains("#memberListTable tbody tr", "Franklin Beck").find("[data-cy=attention-select]").check();
+        cy.wait("@unconfirmedAttention");
+        // The problem-filter response can land before the table redraws, and
+        // Franklin Beck is already on screen in the unfiltered list until
+        // then. Wait until every row is an unconfirmed-email row before
+        // ticking, or the redraw clears the tick and the count stays 0
+        // (master nightly run 45999512617) — same race as the kind filter
+        // in the Edit Records test above.
+        cy.get("#memberListTable tbody tr").should((rows) => {
+            expect(rows.length, "rows").to.be.greaterThan(0);
+            rows.each((_, row) => {
+                expect(row.querySelector("[data-cy=attention-fix]")?.dataset.problem, row.innerText).to.eq("email_unconfirmed");
+            });
+        });
+        cy.contains("#memberListTable tbody tr", "Franklin Beck").find("[data-cy=attention-select]").check().should("be.checked");
         cy.get("#memberListTable tr.child").should("not.exist");
         cy.get("#bulkConfirmCount").should("have.text", "1");
         cy.get("#sharedEmailFixButton").click();

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 22:24+0000\n"
+"POT-Creation-Date: 2026-11-28 00:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9173,6 +9173,9 @@ msgstr ""
 msgid "Install Plugin from URL (Unverified)"
 msgstr ""
 
+msgid "Install Source"
+msgstr ""
+
 msgid "Install Unverified"
 msgstr ""
 
@@ -9183,6 +9186,9 @@ msgid "Install failed"
 msgstr ""
 
 msgid "Install from URL"
+msgstr ""
+
+msgid "Install source and container engine"
 msgstr ""
 
 msgid "Install stable {{version}}"
@@ -12010,6 +12016,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Norwegian"
+msgstr ""
+
+msgid "Not CSP-ready"
 msgstr ""
 
 msgid "Not Classified"
@@ -16227,6 +16236,9 @@ msgstr ""
 msgid "Some of your family details could not be saved. Please check the highlighted fields."
 msgstr ""
 
+msgid "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles."
+msgstr ""
+
 msgid "Some payments could not be deleted"
 msgstr ""
 
@@ -19065,6 +19077,9 @@ msgid "Understand deployments"
 msgstr ""
 
 msgid "Understand feature usage"
+msgstr ""
+
+msgid "Understand how ChurchCRM is installed and run"
 msgstr ""
 
 msgid "Understand where ChurchCRM is used"
