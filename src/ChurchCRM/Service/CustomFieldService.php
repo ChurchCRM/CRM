@@ -15,6 +15,8 @@ use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
+use InvalidArgumentException;
+use PDO;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 
@@ -29,6 +31,21 @@ use Propel\Runtime\Propel;
  */
 class CustomFieldService
 {
+    public const COLUMN_TYPES = [
+        1 => "ENUM('false', 'true')",
+        2 => 'DATE',
+        3 => 'VARCHAR(50)',
+        4 => 'VARCHAR(100)',
+        5 => 'TEXT',
+        6 => 'YEAR',
+        7 => "ENUM('winter', 'spring', 'summer', 'fall')",
+        8 => 'INT',
+        9 => 'MEDIUMINT(9)',
+        10 => 'DECIMAL(10,2)',
+        11 => 'VARCHAR(30)',
+        12 => 'TINYINT(4)',
+    ];
+
     /** @var array<int, string>|null FieldSecurity option id => permission name */
     private static ?array $securityNames = null;
 
@@ -233,6 +250,31 @@ class CustomFieldService
         return $values;
     }
 
+    /** @return array{column: string, order: int} */
+    public function getNextFieldColumn(string $table): array
+    {
+        $this->assertTable($table);
+        $connection = Propel::getWriteConnection(PersonCustomTableMap::DATABASE_NAME);
+        $columns = $connection->query("SHOW COLUMNS FROM `$table`")->fetchAll(PDO::FETCH_COLUMN);
+        $order = count($columns);
+
+        // Field numbering follows the final physical column even when display order changes.
+        $column = 'c' . ((int) mb_substr($columns[$order - 1], 1) + 1);
+        $this->assertColumn($column);
+
+        return ['column' => $column, 'order' => $order];
+    }
+
+    public function addFieldColumn(string $table, string $column, int $type): void
+    {
+        $this->assertTable($table);
+        $this->assertColumn($column);
+        $columnType = self::COLUMN_TYPES[$type] ?? throw new InvalidArgumentException('Invalid custom field type');
+
+        $connection = Propel::getWriteConnection(PersonCustomTableMap::DATABASE_NAME);
+        $connection->exec("ALTER TABLE `$table` ADD `$column` $columnType DEFAULT NULL");
+    }
+
     private function clearColumn(string $table, string $column, int $personId): void
     {
         $this->assertTable($table);
@@ -278,14 +320,14 @@ class CustomFieldService
 
     private function assertTable(string $table): void
     {
-        if (preg_match('/^(person_custom|family_custom|groupprop_\d+)$/', $table) !== 1) {
+        if (preg_match('/\A(person_custom|family_custom|groupprop_[0-9]+)\z/', $table) !== 1) {
             throw new \InvalidArgumentException('Unknown custom field table');
         }
     }
 
     private function assertColumn(string $column): void
     {
-        if (preg_match('/^c\d+$/', $column) !== 1) {
+        if (preg_match('/\Ac[0-9]+\z/', $column) !== 1) {
             throw new \InvalidArgumentException('Invalid custom field column');
         }
     }
