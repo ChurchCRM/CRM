@@ -71,7 +71,7 @@ function walkDir(dir, base) {
       out = out.concat(walkDir(full, rel));
     } else if (e.isFile()) {
       const ext = path.extname(e.name).toLowerCase();
-      if (ext !== '.php' && ext !== '.js') continue;
+      if (ext !== '.php' && ext !== '.js' && rel !== 'Include/Config.php.example') continue;
       if (isExcluded(rel)) continue;
       out.push(rel);
     }

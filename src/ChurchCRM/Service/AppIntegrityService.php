@@ -89,7 +89,6 @@ class AppIntegrityService
                 $logger->warning("Signature definition file is not readable: {signatureFile}", [
                     'signatureFile' => $signatureFile,
                 ]);
-                TelemetryService::captureInstallGaps([], [], ['signature_unreadable']);
 
                 return [
                     'status'  => 'failure',
@@ -107,14 +106,12 @@ class AppIntegrityService
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
-                $signatureData = json_decode($signatureFileContents, null, 512);
+                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
             } catch (\Exception $e) {
                 $logger->warning("Error decoding signature definition file: {signatureFile}", [
                     'signatureFile' => $signatureFile,
                     'exception' => $e,
                 ]);
-
-                TelemetryService::captureInstallGaps([], [], ['signature_invalid']);
 
                 return [
                     'status'  => 'failure',
@@ -124,13 +121,14 @@ class AppIntegrityService
                     'changedFiles' => [],
                 ];
             }
-            if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
+            if (is_array($signatureData->files ?? null)
+                && sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === ($signatureData->sha1 ?? null)) {
                 foreach ($signatureData->files as $file) {
                     $currentFile = $documentRoot . '/' . $file->filename;
                     if (is_file($currentFile)) {
                         $actualHash = sha1_file($currentFile);
                         if ($actualHash !== $file->sha1) {
-                            $logger->warning("File hash mismatch: {filename}. Expected: {expectedHash}; Got: {actualHash}", [
+                            $logger->info("File hash mismatch: {filename}. Expected: {expectedHash}; Got: {actualHash}", [
                                 'filename' => $file->filename,
                                 'expectedHash' => $file->sha1,
                                 'actualHash' => $actualHash,
@@ -138,7 +136,7 @@ class AppIntegrityService
                             $changedFiles[] = (string) $file->filename;
                         }
                     } else {
-                        $logger->warning("File Missing: {filename}", [
+                        $logger->info("File Missing: {filename}", [
                             'filename' => $file->filename,
                         ]);
                         $missingFiles[] = (string) $file->filename;
@@ -146,7 +144,6 @@ class AppIntegrityService
                 }
             } else {
                 $logger->warning('Signature definition file signature failed validation');
-                TelemetryService::captureInstallGaps([], [], ['signature_invalid']);
 
                 return [
                     'status'  => 'failure',
@@ -157,7 +154,7 @@ class AppIntegrityService
                 ];
             }
         } else {
-            $logger->warning("Signature definition file not found at: {signatureFile}", [
+            $logger->info("Signature definition file not found at: {signatureFile}", [
                 'signatureFile' => $signatureFile,
             ]);
 
@@ -170,9 +167,9 @@ class AppIntegrityService
             ];
         }
 
-        if ($missingFiles !== [] || $changedFiles !== []) {
-            TelemetryService::captureInstallGaps($missingFiles, $changedFiles, []);
+        self::reportInstallGaps($missingFiles, $changedFiles);
 
+        if ($missingFiles !== [] || $changedFiles !== []) {
             return [
                 'status'  => 'failure',
                 'message' => $missingFiles !== []
@@ -201,10 +198,10 @@ class AppIntegrityService
             return true;
         }
 
-        $logger->warning("Directory is not writeable: {path}", [
+        $logger->info("Directory is not writeable: {path}", [
             'path' => $path,
         ]);
-        return  false;
+        return false;
     }
 
     /**
@@ -282,22 +279,41 @@ class AppIntegrityService
             $allPrerequisites,
             fn (Prerequisite $prereq): bool => !$prereq->isPrerequisiteMet()
         );
-        self::reportUnmet($unmet);
+        if ($unmet !== []) {
+            self::getIntegrityCheckData();
+        }
         $unmet = array_filter($unmet, fn (Prerequisite $prereq): bool => !$prereq->isSoft());
 
         return $unmet;
     }
 
-    /** @param Prerequisite[] $prerequisites */
-    public static function reportUnmet(array $prerequisites): void
+    private static function reportInstallGaps(array $missingFiles, array $changedFiles): void
     {
-        $names = [];
-        foreach ($prerequisites as $prereq) {
-            if (!$prereq->isPrerequisiteMet()) {
-                $names[] = $prereq->getName();
+        try {
+            if (TelemetryService::installProfile() === 'test') {
+                return;
             }
+
+            $checks = array_merge(self::getApplicationPrerequisites(), self::getFilesystemPrerequisites());
+            $unmet = [];
+            foreach ($checks as $check) {
+                if (!$check->isPrerequisiteMet()) {
+                    $unmet[] = $check->getName();
+                }
+            }
+            try {
+                $localeDetected = LocaleService::getAvailableSystemLocales() !== [];
+            } catch (\RuntimeException) {
+                $localeDetected = false;
+            }
+            if (!$localeDetected) {
+                $unmet[] = 'Server locale';
+            }
+
+            TelemetryService::captureInstallGaps($missingFiles, $changedFiles, $unmet);
+        } catch (\Throwable) {
+            // Reporting must leave the integrity result available.
         }
-        TelemetryService::captureInstallGaps([], [], $names);
     }
 
     public static function arePrerequisitesMet(): bool

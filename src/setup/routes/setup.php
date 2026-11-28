@@ -41,23 +41,18 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
-        AppIntegrityService::reportUnmet($required);
 
         return SlimUtils::renderJSON($response, $required);
     });
 
     $group->get('SystemFilesystemCheck', function (Request $request, Response $response, array $args): Response {
         $filesystem = AppIntegrityService::getFilesystemPrerequisites();
-        AppIntegrityService::reportUnmet($filesystem);
 
         return SlimUtils::renderJSON($response, $filesystem);
     });
 
     $group->get('SystemLocaleCheck', function (Request $request, Response $response, array $args): Response {
         $localeInfo = LocaleService::getLocaleSetupInfo();
-        if (empty($localeInfo['systemLocaleDetected'])) {
-            TelemetryService::captureInstallGaps([], [], ['Server locale']);
-        }
 
         return SlimUtils::renderJSON($response, $localeInfo);
     });

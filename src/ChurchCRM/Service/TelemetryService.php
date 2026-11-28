@@ -374,8 +374,7 @@ class TelemetryService
 
     /**
      * What an install is missing: release files that were not uploaded, files that do not match the
-     * release, and named checks (PHP extensions, writable folders, locale). Sent at every level, once
-     * per distinct list per UTC day. Paths stay repo-relative. No hashes and no install path.
+     * release, and named checks. Sent at every level, once per installation per UTC day.
      *
      * @param string[] $missingFiles
      * @param string[] $changedFiles
@@ -385,36 +384,21 @@ class TelemetryService
     {
         $missingFiles = self::relativeReportPaths($missingFiles);
         $changedFiles = self::relativeReportPaths($changedFiles);
-        $unmetChecks = array_values(array_unique(array_filter(array_map(
-            static fn ($name): string => is_string($name) ? mb_substr(trim($name), 0, 80) : '',
-            $unmetChecks
-        ))));
         sort($missingFiles);
         sort($changedFiles);
         sort($unmetChecks);
         if ($missingFiles === [] && $changedFiles === [] && $unmetChecks === []) {
             return;
         }
-        $installId = '';
-        try {
-            if (SystemConfig::isInitialized()) {
-                $installId = (string) SystemConfig::getValue('sSystemID');
-            }
-        } catch (\Throwable) {
-            $installId = '';
-        }
-        if ($installId === '') {
-            $installId = self::unconfiguredInstallId() ?? '';
-        }
-        $key = 'install_gaps|' . implode('|', $missingFiles) . '|' . implode('|', $changedFiles) . '|' . implode('|', $unmetChecks);
-        if ($installId === '' || !self::firstLogToday($key)) {
+        $installId = self::installId();
+        if ($installId === null || !self::firstLogToday('install_gaps', $installId)) {
             return;
         }
-        self::capture('install_gaps', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+        self::capture('install_gaps', [
             'missing_files' => $missingFiles,
             'changed_files' => $changedFiles,
             'unmet_checks' => $unmetChecks,
-        ]), $installId);
+        ], $installId);
     }
 
     /** @param string[] $paths
@@ -427,11 +411,11 @@ class TelemetryService
             if (!is_string($path)) {
                 continue;
             }
-            $path = str_replace('\\', '/', trim($path));
-            if ($path === '' || str_contains($path, '..') || str_starts_with($path, '/') || strlen($path) > 180) {
+            if (preg_match('~\A[\w.() -]+(?:/[\w.() -]+)*\z~u', $path) !== 1
+                || preg_match('~(?:^|/)\.\.?(?:/|$)~', $path) === 1) {
                 continue;
             }
-            $safe[] = $path;
+            $safe[] = 'src/' . $path;
         }
 
         return array_values(array_unique($safe));
@@ -596,19 +580,19 @@ class TelemetryService
     }
 
     /**
-     * A misconfigured server can log the same warning on every request; send each message once per UTC day.
-     * ponytail: one marker file per message per day in the temp directory; the OS temp cleaner removes old ones.
+     * Claim a daily event marker atomically across requests.
      */
-    private static function firstLogToday(string $key): bool
+    private static function firstLogToday(string $key, ?string $installId = null): bool
     {
         $directory = self::$logDedupeDirectory ??= sys_get_temp_dir() . '/churchcrm-telemetry';
         if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
-            return true;
+            return $installId === null;
         }
-        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . self::installProfile() . '|' . (SystemConfig::isInitialized() ? self::getLevel() : '') . '|' . $key);
+        $scope = $installId ?? (self::installProfile() . '|' . (SystemConfig::isInitialized() ? self::getLevel() : ''));
+        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . $scope . '|' . $key);
         $handle = @fopen($marker, 'x');
         if ($handle === false) {
-            return !file_exists($marker);
+            return $installId === null && !file_exists($marker);
         }
         fclose($handle);
 
