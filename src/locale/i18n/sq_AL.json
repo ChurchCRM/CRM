@@ -7045,5 +7045,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Një pjesë e tekstit do të mbetet në anglisht derisa të aktivizohet shtesa gettext e PHP-së.",
   "Install Source": "Burimi i instalimit",
   "Install source and container engine": "Burimi i instalimit dhe motori i kontejnerëve",
-  "Understand how ChurchCRM is installed and run": "Kuptoni se si instalohet dhe ekzekutohet ChurchCRM"
+  "Understand how ChurchCRM is installed and run": "Kuptoni se si instalohet dhe ekzekutohet ChurchCRM",
+  "Not CSP-ready": "Jo gati për CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Disa faqe mund të mos funksionojnë. Nëse prishen, çaktivizoni Politika e Sigurimit të Përmbajtjes te Çelësat e Funksionit."
 }

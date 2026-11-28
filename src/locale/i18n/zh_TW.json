@@ -7010,5 +7010,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "在啟用 PHP gettext 擴充功能之前，部分文字將保持英文。",
   "Install Source": "安裝來源",
   "Install source and container engine": "安裝來源和容器引擎",
-  "Understand how ChurchCRM is installed and run": "了解 ChurchCRM 的安裝和執行方式"
+  "Understand how ChurchCRM is installed and run": "了解 ChurchCRM 的安裝和執行方式",
+  "Not CSP-ready": "CSP 未就緒",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "某些頁面可能無法正常運作。如果頁面出現問題，請在功能開關中關閉內容安全政策。"
 }

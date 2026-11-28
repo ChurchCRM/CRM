@@ -7080,5 +7080,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Dio teksta ostat će na engleskom dok se ne omogući PHP proširenje gettext.",
   "Install Source": "Izvor instalacije",
   "Install source and container engine": "Izvor instalacije i kontejnerski mehanizam",
-  "Understand how ChurchCRM is installed and run": "Razumijte kako je ChurchCRM instaliran i kako se izvodi"
+  "Understand how ChurchCRM is installed and run": "Razumijte kako je ChurchCRM instaliran i kako se izvodi",
+  "Not CSP-ready": "Nije spremno za CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Neke stranice možda neće raditi. Ako prestanu raditi, isključite Content Security Policy u odjeljku Sklopke značajki."
 }

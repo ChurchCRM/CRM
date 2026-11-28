@@ -7045,5 +7045,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "A szöveg egy része angolul marad, amíg a PHP gettext kiterjesztése nincs engedélyezve.",
   "Install Source": "Telepítési forrás",
   "Install source and container engine": "Telepítési forrás és konténermotor",
-  "Understand how ChurchCRM is installed and run": "Ismerje meg, hogyan van telepítve és futtatva a ChurchCRM"
+  "Understand how ChurchCRM is installed and run": "Ismerje meg, hogyan van telepítve és futtatva a ChurchCRM",
+  "Not CSP-ready": "Nem CSP-kész",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Előfordulhat, hogy egyes oldalak nem működnek. Ha hibát okoznak, kapcsolja ki a Tartalombiztonsági irányelv funkciót a Funkciók kapcsolói menüben."
 }
