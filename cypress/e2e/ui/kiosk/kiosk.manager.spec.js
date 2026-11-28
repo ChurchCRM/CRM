@@ -84,7 +84,9 @@ describe("Kiosk Manager Workflow", () => {
             LastHeartbeat: null,
             KioskAssignments: [],
         }));
-        cy.intercept("GET", "**/kiosk/api/devices", (request) => {
+        // The device table's DataTables request adds a cache-busting
+        // "?_=<timestamp>" query, so match the path with or without one.
+        cy.intercept("GET", /\/kiosk\/api\/devices(\?.*)?$/, (request) => {
             request.reply({ KioskDevices: devices });
         }).as("devices");
         cy.intercept("POST", "**/kiosk/api/devices/1/accept", (request) => {
