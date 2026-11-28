@@ -593,11 +593,10 @@ class UserService
             // Filter value by type (mirrors legacy input filtering)
             $rawVal = $newValue[$id] ?? '';
             $value  = match ($currentType) {
-                'text', 'textarea' => InputUtils::legacyFilterInput($rawVal),
                 'number'           => InputUtils::legacyFilterInput($rawVal, 'float'),
                 'date'             => InputUtils::legacyFilterInput($rawVal, 'date'),
                 'boolean'          => ($rawVal != '1') ? '' : '1',
-                default            => InputUtils::legacyFilterInput($rawVal),
+                default            => InputUtils::sanitizeText($rawVal),
             };
 
             $permission = ($newPermission[$id] ?? '') === 'TRUE' ? 'TRUE' : 'FALSE';

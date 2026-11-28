@@ -2,20 +2,9 @@
 
 namespace ChurchCRM\Utils;
 
-use ChurchCRM\Bootstrapper;
-
 class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
-
-    public static function legacyFilterInputArr(array $arr, $key, $type = 'string', $size = 1)
-    {
-        if (array_key_exists($key, $arr)) {
-            return InputUtils::legacyFilterInput($arr[$key], $type, $size);
-        } else {
-            return InputUtils::legacyFilterInput('', $type, $size);
-        }
-    }
 
     public static function translateSpecialCharset($string): string
     {
@@ -248,11 +237,11 @@ class InputUtils
         if (strlen($sInput) > 0) {
             switch ($type) {
                 case 'string':
-                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::sanitizeText($sInput));
+                    return self::sanitizeText($sInput);
                 case 'htmltext':
-                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::sanitizeHTML($sInput));
+                    return self::sanitizeHTML($sInput);
                 case 'char':
-                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::filterChar($sInput, $size));
+                    return self::filterChar($sInput, $size);
                 case 'int':
                     return self::filterInt($sInput);
                 case 'float':

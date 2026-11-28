@@ -185,8 +185,8 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $iNum   = (int) InputUtils::legacyFilterInput($body['Num'] ?? '0');
-    $iPerID = (int) InputUtils::legacyFilterInput($body['PerID'] ?? '0');
+    $iNum   = (int) InputUtils::sanitizeText($body['Num'] ?? '0');
+    $iPerID = (int) InputUtils::sanitizeText($body['PerID'] ?? '0');
 
     // On reassignment: delete the old owner's multibuy rows so their statement
     // no longer shows items from a paddle they no longer hold.

@@ -30,7 +30,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     $filterType   = '';
 
     if (!empty($params['dateStart'])) {
-        $dateStart = InputUtils::legacyFilterInput($params['dateStart']);
+        $dateStart = InputUtils::sanitizeText($params['dateStart']);
         if ($dateStart !== '') {
             $dateStartIso = DateTimeUtils::parseDatePicker($dateStart);
             if ($dateStartIso !== null) {
@@ -40,7 +40,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     }
 
     if (!empty($params['dateEnd'])) {
-        $dateEnd = InputUtils::legacyFilterInput($params['dateEnd']);
+        $dateEnd = InputUtils::sanitizeText($params['dateEnd']);
         if ($dateEnd !== '') {
             $dateEndIso = DateTimeUtils::parseDatePicker($dateEnd);
             if ($dateEndIso !== null) {
@@ -50,7 +50,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     }
 
     if (!empty($params['filterStatus'])) {
-        $filterStatus = InputUtils::legacyFilterInput($params['filterStatus']);
+        $filterStatus = InputUtils::sanitizeText($params['filterStatus']);
         if (in_array($filterStatus, ['Planning', 'Active', 'Closed'], true)) {
             $fundraisersQuery->filterByStatus($filterStatus);
         } else {
@@ -59,7 +59,7 @@ $app->get('/', function (Request $request, Response $response): Response {
     }
 
     if (!empty($params['filterType'])) {
-        $filterType = InputUtils::legacyFilterInput($params['filterType']);
+        $filterType = InputUtils::sanitizeText($params['filterType']);
         $allowedTypes = ['Auction', 'Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed'];
         if (in_array($filterType, $allowedTypes, true)) {
             $fundraisersQuery->filterByType($filterType);
@@ -292,15 +292,15 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
     $fundraiserId = (int) ($args['fundraiserId'] ?? 0);
     $body         = (array) $request->getParsedBody();
 
-    $dDate        = InputUtils::legacyFilterInput($body['Date'] ?? '');
+    $dDate        = InputUtils::sanitizeText($body['Date'] ?? '');
     $dDate        = DateTimeUtils::normalizeDate($dDate) ?: $dDate;
-    $sTitle       = InputUtils::legacyFilterInput($body['Title'] ?? '');
-    $sDescription = InputUtils::legacyFilterInput($body['Description'] ?? '');
-    $sEndDate     = InputUtils::legacyFilterInput($body['EndDate'] ?? '');
-    $sStatus      = InputUtils::legacyFilterInput($body['Status'] ?? 'Active');
-    $sGoalAmount  = InputUtils::legacyFilterInput($body['GoalAmount'] ?? '');
-    $sType        = InputUtils::legacyFilterInput($body['Type'] ?? 'Auction');
-    $sFundId      = InputUtils::legacyFilterInput($body['FundId'] ?? '');
+    $sTitle       = InputUtils::sanitizeText($body['Title'] ?? '');
+    $sDescription = InputUtils::sanitizeText($body['Description'] ?? '');
+    $sEndDate     = InputUtils::sanitizeText($body['EndDate'] ?? '');
+    $sStatus      = InputUtils::sanitizeText($body['Status'] ?? 'Active');
+    $sGoalAmount  = InputUtils::sanitizeText($body['GoalAmount'] ?? '');
+    $sType        = InputUtils::sanitizeText($body['Type'] ?? 'Auction');
+    $sFundId      = InputUtils::sanitizeText($body['FundId'] ?? '');
 
     $bErrorFlag  = false;
     $sDateError  = '';

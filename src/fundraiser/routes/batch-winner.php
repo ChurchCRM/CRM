@@ -100,7 +100,7 @@ $app->post('/{fundraiserId}/batch-winner', function (Request $request, Response 
     for ($row = 0; $row < 10; $row++) {
         $buyer = (int) ($body["Paddle$row"] ?? 0);
         $di    = (int) ($body["Item$row"] ?? 0);
-        $price = InputUtils::legacyFilterInput($body["SellPrice$row"] ?? '0');
+        $price = InputUtils::sanitizeText($body["SellPrice$row"] ?? '0');
 
         if ($buyer > 0 && $di > 0 && (float) $price > 0) {
             // Scope to fundraiserId to prevent cross-fundraiser item updates

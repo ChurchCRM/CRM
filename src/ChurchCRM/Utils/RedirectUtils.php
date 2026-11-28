@@ -62,9 +62,7 @@ class RedirectUtils
             return $fallback;
         }
         
-        $linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack') ?? '';
-
-        return self::validateRedirectUrl($linkBack, $fallback);
+        return self::validateRedirectUrl(InputUtils::sanitizeText($rawLinkBack), $fallback);
     }
 
     /**
