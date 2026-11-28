@@ -97,16 +97,17 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#closed").select("0");
     cy.get("#depositFilterForm").submit();
     cy.get("#depositFilterSummary").should("contain.text", "Status: Open");
-    cy.get("#depositsTable tbody tr[data-deposit-id]").first().find("td").eq(1).find("a").then(($link) => {
-      const depositId = $link.text();
-      cy.wrap($link).click();
+    const depositLinks = "#depositsTable_wrapper tbody tr[data-deposit-id] td:nth-child(2) a";
+    cy.get(depositLinks).first().invoke("text").then((depositId) => {
+      cy.contains(depositLinks, new RegExp(`^${depositId}$`)).click();
       cy.location("pathname").should("match", new RegExp(`/finance/deposit/${depositId}$`));
     });
     cy.go("back");
 
-    cy.get("#depositsTable_wrapper thead").contains("th", /^ID$/).click();
-    cy.get(`#depositsTable tbody .row-select[data-deposit-id="${SEEDED_DEPOSIT_ID}"]`).check();
-    cy.get("#depositsTable tbody .row-select").eq(1).check();
+    const seededRow = `[data-deposit-id="${SEEDED_DEPOSIT_ID}"]`;
+    cy.get("#depositsTable_wrapper .dt-length select").select("-1");
+    cy.get(`#depositsTable tbody .row-select${seededRow}`).check();
+    cy.get("#depositsTable tbody .row-select").not(seededRow).first().check();
     cy.get("#selectedCount").should("contain.text", "2 rows selected");
     cy.get("#depositsTable tbody .row-select:checked").then(($selected) => {
       const ids = [...$selected].map((row) => row.dataset.depositId).sort();
