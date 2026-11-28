@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Service\ClassAttendanceService;
 use ChurchCRM\Service\ClassListService;
 use ChurchCRM\Service\FinancialService;
@@ -280,6 +281,11 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             LoggerUtils::getAppLogger()->error('SundaySchool ClassView: Error getting kids full details', ['exception' => $e->getMessage()]);
         }
 
+        $aHiddenColumns = array_values(array_intersect(
+            UserSetting::SUNDAYSCHOOL_CLASS_COLUMNS,
+            explode(',', (string) $currentUser->getSettingValue(UserSetting::SUNDAYSCHOOL_CLASS_HIDDEN_COLUMNS))
+        ));
+
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $pageArgs = [
@@ -311,6 +317,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'birthDayMonthChartJSON' => $birthDayMonthChartJSON,
             'rsTeachers'             => $rsTeachers,
             'thisClassChildren'      => $thisClassChildren,
+            'aHiddenColumns'         => $aHiddenColumns,
             'canEmail'               => $currentUser->isEmailEnabled(),
             // Volunteer v2 (D23): null unless a volunteer team writes this class's teachers.
             'aTeacherLink'           => VolunteerClassLinkService::describeLink($iGroupId, $currentUser),

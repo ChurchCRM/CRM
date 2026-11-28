@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -53,6 +54,7 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
         $settingName = $args['settingName'];
 
         $value = ((array) $request->getParsedBody())['value'] ?? null;
+        $classColumn = '(' . implode('|', UserSetting::SUNDAYSCHOOL_CLASS_COLUMNS) . ')';
         $formats = [
             'ui.locale' => '/^([a-z]{2,3}(_[A-Za-z0-9]{2,8})*)?$/',
             'ui.table.size' => '/^-?\d{1,4}$/',
@@ -60,6 +62,7 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
             'ui.landing' => '/^(people|groups|sundayschool|events|finance|deposits)$/',
             'ui.dashboard.people.days' => '/^(7|14|30|60|90|180)$/',
             'ui.dashboard.finance.range' => '/^(days:(30|90|365)|fy|all)$/',
+            UserSetting::SUNDAYSCHOOL_CLASS_HIDDEN_COLUMNS => '/^(' . $classColumn . '(,' . $classColumn . ')*)?$/',
         ];
         if (
             !preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $settingName)

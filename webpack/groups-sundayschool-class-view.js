@@ -1,14 +1,51 @@
 /**
  * Sunday School Class View — webpack entry
- * Handles DataTable initialization, ApexCharts birthday chart, and birthday filter.
+ * Handles DataTable initialization, the roster column picker, ApexCharts birthday chart,
+ * and birthday filter.
  */
 
 import ApexCharts from "apexcharts";
 import { notifyAPIError } from "./api-utils";
 import { confirmAction } from "./common/confirm-action";
 
+const HIDDEN_COLUMNS_SETTING = "ui.sundayschool.class.hidden";
+
 document.addEventListener("DOMContentLoaded", () => {
-  const dataTable = $(".data-table").DataTable(window.CRM.plugin.dataTable);
+  // Read the column positions before DataTables detaches the hidden headers.
+  const columnIndexes = new Map(
+    Array.from(document.querySelectorAll("#sundayschool thead th")).flatMap((th, index) =>
+      th.dataset.column ? [[th.dataset.column, index]] : [],
+    ),
+  );
+  const columnToggles = Array.from(document.querySelectorAll(".ss-column-toggle"));
+  const hiddenColumnKeys = () => columnToggles.filter((toggle) => !toggle.checked).map((toggle) => toggle.value);
+
+  const dataTable = $(".data-table").DataTable({
+    columnDefs: [{ targets: hiddenColumnKeys().map((key) => columnIndexes.get(key)), visible: false }],
+    ...window.CRM.plugin.dataTable,
+    // column().visible() ignores Responsive, so columns collapsed on a narrow screen still export.
+    buttons: window.CRM.plugin.dataTable.buttons.map((button) => ({
+      ...button,
+      exportOptions: {
+        ...button.exportOptions,
+        columns: (index, _data, header) => dataTable.column(index).visible() && !header.classList.contains("no-export"),
+      },
+    })),
+  });
+
+  columnToggles.forEach((toggle) => {
+    toggle.addEventListener("change", () => {
+      dataTable.column(columnIndexes.get(toggle.value)).visible(toggle.checked);
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/${HIDDEN_COLUMNS_SETTING}`,
+        data: JSON.stringify({ value: hiddenColumnKeys().join(",") }),
+        suppressErrorDialog: true,
+      }).fail((jqXHR) => {
+        notifyAPIError(jqXHR, i18next.t("Failed to save settings"));
+      });
+    });
+  });
 
   // Birthday chart — data stored in data-chart attribute on the div element
   const chartElement = document.getElementById("bar-chart");
