@@ -5,8 +5,8 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -146,7 +146,7 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
 
     // Drop the column from the group properties table (DDL — cannot use ORM)
     $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` DROP `' . $sField . '`';
-    FunctionsUtils::runQuery($sSQL);
+    Propel::getConnection()->exec($sSQL);
 
     GroupPropMasterQuery::create()
         ->filterByGrpId($iGroupID)

@@ -12,7 +12,6 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AuthService;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -54,9 +53,9 @@ class GroupService
 
         $group = GroupQuery::create()->findPk($groupID);
         if ($group !== null && $group->getHasSpecialProps()) {
-            FunctionsUtils::runQuery(
-                'DELETE FROM groupprop_' . (int) $groupID . ' WHERE per_ID = ' . (int) $personID
-            );
+            $statement = Propel::getConnection()->prepare('DELETE FROM groupprop_' . $groupID . ' WHERE per_ID = ?');
+            $statement->bindValue(1, $personID, \PDO::PARAM_INT);
+            $statement->execute();
         }
 
         (new CustomFieldService())->clearGroupMemberReferences((int) $groupID, (int) $personID);
@@ -348,26 +347,31 @@ class GroupService
             $group->setHasSpecialProps(true);
             $group->save();
         }
-        $sSQLp = 'CREATE TABLE IF NOT EXISTS groupprop_' . $groupId . " (
-                        per_ID mediumint(8) unsigned NOT NULL default '0',
-                        PRIMARY KEY  (per_ID),
-                          UNIQUE KEY per_ID (per_ID)
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-        FunctionsUtils::runQuery($sSQLp);
-
-        $groupMembers = $this->getGroupMembers((string) $groupId);
-
-        foreach ($groupMembers as $member) {
-            $sSQLr = 'INSERT IGNORE INTO groupprop_' . $groupId . ' ( per_ID ) VALUES ( ' . (int) $member['per_ID'] . ' );';
-            FunctionsUtils::runQuery($sSQLr);
+        if (!$this->createGroupPropertyTable($groupId)) {
+            throw new \RuntimeException('Failed to create group properties table');
         }
+
+        foreach ($this->getGroupMembers((string) $groupId) as $member) {
+            $this->addPersonToGroupProperties($groupId, (int) $member['per_ID']);
+        }
+    }
+
+    public function createGroupPropertyTable(int $groupId): bool
+    {
+        return Propel::getConnection()->prepare(
+            'CREATE TABLE IF NOT EXISTS groupprop_' . $groupId . " (
+                per_ID mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY (per_ID),
+                UNIQUE KEY per_ID (per_ID)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+        )->execute();
     }
 
     public function disableGroupSpecificProperties(string $groupID): void
     {
         AuthService::requireUserGroupMembership('bManageGroups');
         $groupId = (int) $groupID;
-        FunctionsUtils::runQuery('DROP TABLE groupprop_' . $groupId);
+        Propel::getConnection()->exec('DROP TABLE groupprop_' . $groupId);
 
         GroupPropMasterQuery::create()->filterByGrpId($groupId)->delete();
 
