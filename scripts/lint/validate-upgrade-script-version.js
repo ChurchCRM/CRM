@@ -13,6 +13,8 @@
  * src/mysql/upgrade.json, read at check time.
  *
  * Fails (exit 1):
+ *   - an edited, renamed or deleted script named for a shipped version: installs
+ *     that ran it never run it again, so a fix goes in a new next-release script
  *   - an added file under src/mysql/upgrade/ whose name starts with a version
  *     other than the next release
  *   - a script added to any upgrade.json step other than `current`
@@ -41,6 +43,14 @@ function gitOrNull(...args) {
     } catch {
         return null;
     }
+}
+
+function changedFromNameStatus(output) {
+    return output
+        .split('\n')
+        .filter(Boolean)
+        .map((line) => line.split('\t'))
+        .flatMap(([status, file]) => (status === 'M' || status === 'D' || status.startsWith('R') ? [file] : []));
 }
 
 // `git diff --name-status` lines: "A\tpath", "M\tpath", "R100\told\tnew".
@@ -85,11 +95,20 @@ function versionOf(fileName) {
     return match ? match[1] : null;
 }
 
-function checkUpgradeScriptVersions({ addedFiles, baseJson, headJson }) {
+function checkUpgradeScriptVersions({ addedFiles, changedFiles = [], baseJson, headJson }) {
     const problems = [];
     const nextVersion = headJson?.current?.dbVersion;
     if (!nextVersion) {
         return [`Could not read the next release version: src/mysql/upgrade.json has no "current" step with a dbVersion.`];
+    }
+
+    for (const file of changedFiles) {
+        if (file.startsWith(UPGRADE_DIR) && /\.(sql|php)$/.test(file) && versionOf(file) !== nextVersion) {
+            problems.push(
+                `${file} has shipped and is frozen: installs that already ran it never run it again, so an edit forks the schema. ` +
+                    `Put the fix in a new ${nextVersion} script registered in the "current" step of src/mysql/upgrade.json.`,
+            );
+        }
     }
 
     for (const file of addedFiles) {
@@ -132,8 +151,8 @@ function checkUpgradeScriptVersions({ addedFiles, baseJson, headJson }) {
     return problems;
 }
 
-function touchesUpgrade(addedFiles, baseJson, headJson) {
-    if (addedFiles.some((file) => file.startsWith(UPGRADE_DIR))) {
+function touchesUpgrade({ addedFiles, changedFiles, baseJson, headJson }) {
+    if ([...addedFiles, ...changedFiles].some((file) => file.startsWith(UPGRADE_DIR))) {
         return true;
     }
     const baseSets = scriptSets(baseJson);
@@ -147,10 +166,10 @@ function touchesUpgrade(addedFiles, baseJson, headJson) {
 }
 
 function stagedChanges() {
-    const addedFiles = addedFromNameStatus(git('diff', '--cached', '--name-status'));
+    const nameStatus = git('diff', '--cached', '--name-status');
     const headJson = parseUpgradeJson(gitOrNull('show', `:${UPGRADE_JSON}`));
     const baseJson = parseUpgradeJson(gitOrNull('show', `HEAD:${UPGRADE_JSON}`));
-    return { addedFiles, baseJson, headJson };
+    return { addedFiles: addedFromNameStatus(nameStatus), changedFiles: changedFromNameStatus(nameStatus), baseJson, headJson };
 }
 
 function branchChanges() {
@@ -159,17 +178,19 @@ function branchChanges() {
         if (!base) {
             continue;
         }
+        const nameStatus = git('diff', '--name-status', base);
         const addedFiles = [
-            ...addedFromNameStatus(git('diff', '--name-status', base)),
+            ...addedFromNameStatus(nameStatus),
             ...git('ls-files', '--others', '--exclude-standard').split('\n').filter(Boolean),
         ];
+        const changedFiles = changedFromNameStatus(nameStatus);
         let headText = null;
         try {
             headText = fs.readFileSync(path.join(root, UPGRADE_JSON), 'utf8');
         } catch {
             // upgrade.json unreadable: the checks below report it if relevant
         }
-        return { addedFiles, baseJson: parseUpgradeJson(gitOrNull('show', `${base}:${UPGRADE_JSON}`)), headJson: parseUpgradeJson(headText) };
+        return { addedFiles, changedFiles, baseJson: parseUpgradeJson(gitOrNull('show', `${base}:${UPGRADE_JSON}`)), headJson: parseUpgradeJson(headText) };
     }
     return null;
 }
@@ -179,16 +200,15 @@ if (require.main === module) {
     if (!changes) {
         process.exit(0);
     }
-    const { addedFiles, baseJson, headJson } = changes;
-    if (!touchesUpgrade(addedFiles, baseJson, headJson)) {
-        const nextVersion = headJson?.current?.dbVersion;
+    if (!touchesUpgrade(changes)) {
+        const nextVersion = changes.headJson?.current?.dbVersion;
         console.log(`No new upgrade scripts${nextVersion ? ` (next release: ${nextVersion})` : ''}.`);
         process.exit(0);
     }
     const problems = checkUpgradeScriptVersions(changes);
     problems.forEach((message) => console.error(message));
     if (!problems.length) {
-        console.log(`Upgrade scripts match the next release (${headJson.current.dbVersion}).`);
+        console.log(`Upgrade scripts match the next release (${changes.headJson.current.dbVersion}).`);
     }
     process.exit(problems.length ? 1 : 0);
 }

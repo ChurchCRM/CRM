@@ -55,6 +55,8 @@ A 7.2.x install matches `pre-7.3.1` (DB set to 7.3.0), then `current` (runs the 
 
 New scripts always belong to the next release: name the file for the `current` block's `dbVersion` and register it in `current` only. Never add a script to a shipped `pre-*` block — installs that already passed that block never run it, so the schema change silently never happens (the 7.8.6 family-page 500s, #11874). `scripts/lint/validate-upgrade-script-version.js` enforces this in the pre-commit hook (`--staged`) and in `npm run lint` (CI), reading the next version from `upgrade.json` at check time.
 
+A shipped upgrade script is frozen. Never edit, rename or delete one, even to fix a bug: installs that already ran it never run it again, so an edit leaves those installs on a different schema or data than new upgrades. Put the fix in a new script for the next release, written to repair data that the old script may already have left behind. The same check fails on a changed script named for a shipped version.
+
 ## Files to Change Together
 
 | File | Change |
