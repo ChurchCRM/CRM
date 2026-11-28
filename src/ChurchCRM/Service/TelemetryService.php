@@ -671,6 +671,7 @@ class TelemetryService
             'crm_version' => VersionUtils::getInstalledVersion(),
             'install_profile' => self::installProfile(),
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
+            'timezone'    => self::installTimezone(),
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
             'install_path_type' => empty(SystemURLs::getRootPath()) ? 'root' : 'subdirectory',
@@ -700,6 +701,19 @@ class TelemetryService
         }
 
         return $properties;
+    }
+
+    private static function installTimezone(): string
+    {
+        try {
+            $timezone = SystemConfig::isInitialized() ? SystemConfig::getValue('sTimeZone') : null;
+        } catch (\Exception) {
+            $timezone = null;
+        }
+
+        return in_array($timezone, timezone_identifiers_list(\DateTimeZone::ALL_WITH_BC), true)
+            ? $timezone
+            : date_default_timezone_get();
     }
 
     /**

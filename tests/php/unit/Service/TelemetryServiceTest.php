@@ -34,7 +34,8 @@ $configs->setValue(null, [
 $firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT, 'install-id', '', '7.8.3');
 Assert::same('install_observed', $firstSync['event']);
 Assert::same('production', $firstSync['properties']['install_profile']);
-Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type'], array_keys($firstSync['properties']));
+Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'timezone', 'php_version', 'os_family', 'install_path_type'], array_keys($firstSync['properties']));
+Assert::same(date_default_timezone_get(), $firstSync['properties']['timezone']);
 Assert::same(PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION, $firstSync['properties']['php_version']);
 $normalizeRoute = new ReflectionMethod(TelemetryService::class, 'normalizePageRoute');
 Assert::same('/people/person', $normalizeRoute->invoke(null, '/churchcrm/people/person?personId=42#tab', '/churchcrm'));
@@ -61,7 +62,7 @@ $upgrade = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_DEFAULT
 Assert::same('upgrade_completed', $upgrade['event']);
 Assert::same('7.8.2', $upgrade['properties']['from_version']);
 Assert::same('7.8.3', $upgrade['properties']['crm_version']);
-Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'php_version', 'os_family', 'install_path_type', 'from_version'], array_keys($upgrade['properties']));
+Assert::same(['$lib', '$geoip_disable', 'crm_version', 'install_profile', 'locale', 'timezone', 'php_version', 'os_family', 'install_path_type', 'from_version'], array_keys($upgrade['properties']));
 
 $configValue = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
