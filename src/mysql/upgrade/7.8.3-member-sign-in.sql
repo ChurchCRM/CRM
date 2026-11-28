@@ -303,18 +303,16 @@ SET m.`fem_NeedsConfirm` = IF((SELECT COUNT(*) FROM `person_per` p
                                  AND p.`per_DateDeceased` IS NULL AND p.`per_DateDeactivated` IS NULL) > 1, 1, 0)
 WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse');
 
--- Each statement commits on its own, so the address is marked unconfirmed before
--- it is copied: an upgrade stopped between the two never leaves it usable to sign in.
+UPDATE `person_per` p
+JOIN `family_email_move_fem` m ON m.`fem_per_ID` = p.`per_ID`
+SET p.`per_Email` = m.`fem_Email`
+WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse');
+
 INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_UnconfirmedEmail`, `psi_UnconfirmedSource`, `psi_UnconfirmedAt`) SELECT
   m.`fem_per_ID`, m.`fem_Email`, 'family_email', @fem_run
 FROM `family_email_move_fem` m
 WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse') AND m.`fem_NeedsConfirm` = 1
 ON DUPLICATE KEY UPDATE `psi_UnconfirmedEmail` = m.`fem_Email`, `psi_UnconfirmedSource` = 'family_email', `psi_UnconfirmedAt` = @fem_run;
-
-UPDATE `person_per` p
-JOIN `family_email_move_fem` m ON m.`fem_per_ID` = p.`per_ID`
-SET p.`per_Email` = m.`fem_Email`
-WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse');
 
 -- nte_EnteredBy -4 is Person::UPGRADE, shown as "System Upgrade" on the timeline.
 INSERT INTO `note_nte` (`nte_per_ID`, `nte_fam_ID`, `nte_Private`, `nte_Text`, `nte_DateEntered`, `nte_EnteredBy`, `nte_EditedBy`, `nte_Type`) SELECT

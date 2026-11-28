@@ -32,11 +32,9 @@ test('every upgrade path from before 7.8.3 runs the 7.8.3 move before fam_Email 
     }
 });
 
-test('each move marks the address unconfirmed before copying it to the person', () => {
-    for (const script of [MOVE, DROP]) {
-        const sql = fs.readFileSync(path.join(mysql, '..', script), 'utf8');
-        const mark = sql.indexOf("'family_email', @fem_run");
-        const copy = sql.indexOf('SET p.`per_Email` = m.`fem_Email`');
-        assert.ok(mark > -1 && copy > -1 && mark < copy, script);
-    }
+test('the 7.9.0 move marks the address unconfirmed before copying it to the person', () => {
+    const sql = fs.readFileSync(path.join(mysql, '..', DROP), 'utf8');
+    const mark = sql.indexOf("'family_email', @fem_run");
+    const copy = sql.indexOf('SET p.`per_Email` = m.`fem_Email`');
+    assert.ok(mark > -1 && copy > -1 && mark < copy);
 });

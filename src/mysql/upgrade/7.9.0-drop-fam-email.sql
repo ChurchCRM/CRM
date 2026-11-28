@@ -147,6 +147,18 @@ JOIN `family_email_move_fem` m ON m.`fem_per_ID` = p.`per_ID`
 SET p.`per_Email` = m.`fem_Email`
 WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse');
 
+-- An interrupted 7.8.3 move could copy an address without marking it unconfirmed.
+-- Staff confirmation clears fem_NeedsConfirm, so a move still flagged whose
+-- person keeps the address and has nothing unconfirmed is marked again here.
+INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_UnconfirmedEmail`, `psi_UnconfirmedSource`, `psi_UnconfirmedAt`) SELECT
+  m.`fem_per_ID`, m.`fem_Email`, 'family_email', @fem_run
+FROM `family_email_move_fem` m
+JOIN `person_per` p ON p.`per_ID` = m.`fem_per_ID` AND LOWER(TRIM(p.`per_Email`)) = LOWER(m.`fem_Email`)
+LEFT JOIN `person_signin_psi` s ON s.`psi_per_ID` = m.`fem_per_ID`
+WHERE m.`fem_ID` <= @fem_max_id AND m.`fem_Outcome` IN ('head', 'spouse') AND m.`fem_NeedsConfirm` = 1
+  AND s.`psi_UnconfirmedEmail` IS NULL
+ON DUPLICATE KEY UPDATE `psi_UnconfirmedEmail` = m.`fem_Email`, `psi_UnconfirmedSource` = 'family_email', `psi_UnconfirmedAt` = @fem_run;
+
 -- nte_EnteredBy -4 is Person::UPGRADE, shown as "System Upgrade" on the timeline.
 INSERT INTO `note_nte` (`nte_per_ID`, `nte_fam_ID`, `nte_Private`, `nte_Text`, `nte_DateEntered`, `nte_EnteredBy`, `nte_EditedBy`, `nte_Type`) SELECT
        0, m.`fem_fam_ID`, 0,

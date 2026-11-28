@@ -381,7 +381,19 @@ describe("7.8.3 upgrade: family email moves to people", () => {
 
         it("is moved by the same rule, then fam_Email is dropped, and the script runs again", () => {
             cy.dbQuery("UPDATE family_fam SET fam_Email = ? WHERE fam_ID = ?", [later, fam.NoAdult]);
+            // A 7.8.3 run stopped after the copy left the head's address with no unconfirmed row.
+            cy.then(() => cy.dbQuery("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [per.headOlder]));
             cy.task("db:upgradeBlock", DROP).its("error").should("be.null");
+            cy.then(() =>
+                cy.dbQuery("SELECT psi_UnconfirmedEmail AS email, psi_UnconfirmedSource AS source FROM person_signin_psi WHERE psi_per_ID = ?", [
+                    per.headOlder,
+                ]),
+            )
+                .its("rows.0")
+                .should("deep.equal", { email: addr("head"), source: "family_email" });
+            cy.then(() => cy.dbQuery("SELECT COUNT(*) AS n FROM person_signin_psi WHERE psi_per_ID = ? AND psi_UnconfirmedEmail IS NOT NULL", [per.solo]))
+                .its("rows.0.n")
+                .should("eq", 0);
             emailOf("lateHead").should("eq", addr("late"));
             moveOf("Late").its("0").should("include", { outcome: "head", personId: per.lateHead, needsConfirm: 1 });
             cy.then(() => cy.dbQuery("SELECT psi_UnconfirmedEmail AS email FROM person_signin_psi WHERE psi_per_ID = ?", [per.lateHead]))
