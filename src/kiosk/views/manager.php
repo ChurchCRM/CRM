@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\KioskDevice;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -69,6 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
       </div>
     </div>
+    <div id="kioskPendingLimitNotice" class="alert alert-warning mt-3 mb-0 d-none" role="alert"></div>
   </div>
 </div>
 
@@ -427,9 +429,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $('#statOnline').text(online);
     $('#statPending').text(pending);
     $('#statAssigned').text(assigned);
+    $('#kioskPendingLimitNotice').toggleClass('d-none', pending < <?= KioskDevice::MAX_PENDING ?>);
   }
 
   function initKioskTable() {
+    $('#kioskPendingLimitNotice').text(i18next.t('Too many devices are waiting. Accept or delete some before registering another.'));
+
     var dataTableConfig = {
       ajax: {
         url: window.CRM.root +"/kiosk/api/devices",
