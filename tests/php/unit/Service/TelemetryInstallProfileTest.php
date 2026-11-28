@@ -104,12 +104,13 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::captureRequirementsFailure(['PHP Filter', 'cURL']);
     TelemetryService::captureRequirementsFailure(['cURL', 'PHP Filter']);
     TelemetryService::captureInstallGaps(['Include/Config.php.example'], ['skin/v2/setup.min.js'], ['PHP PDO MySQL']);
-    TelemetryService::captureInstallGaps(['Include/Config.php.example'], ['skin/v2/setup.min.js'], ['PHP PDO MySQL']);
+    TelemetryService::captureInstallGaps(['index.php'], [], ['Server locale']);
     TelemetryService::captureInstallGaps(['../secret'], [], []);
     TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
     TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
     TelemetryService::captureVersionMismatch('7.9.0', 'invalid');
-    Assert::same($suppressed ? 0 : 14, $GLOBALS['telemetryTransportCalls'] - $before);
+    $expectedCalls = ['production' => 14, 'demo' => 13, 'test' => 0];
+    Assert::same($expectedCalls[$profile], $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
 $configs->setValue(null, [

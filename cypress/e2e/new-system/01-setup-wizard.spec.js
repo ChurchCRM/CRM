@@ -62,6 +62,28 @@ describe('01 - Setup Wizard', () => {
             cy.get('#DB_NAME').should('be.visible');
         });
 
+        it('explains missing and changed release files and still allows setup', () => {
+            const missing = 'Include/Config.php.example';
+            const changed = 'index.php';
+            cy.intercept('GET', '**/setup/SystemIntegrityCheck', {
+                status: 'failure',
+                files: [missing, changed],
+                missingFiles: [missing],
+                changedFiles: [changed],
+            }).as('releaseCheck');
+
+            cy.visit('/setup');
+            cy.wait('@releaseCheck');
+            cy.get('#status-banner').should('have.class', 'status-warning');
+            cy.get('[data-bs-target="#server-details"]').click();
+            cy.get('[data-bs-target="#integrity-collapse"]').click();
+            cy.get('#integrity-collapse').within(() => {
+                cy.contains('These files were not uploaded').next('ul').should('be.visible').and('have.text', missing);
+                cy.contains('These files do not match the release').next('ul').should('be.visible').and('have.text', changed);
+            });
+            cy.get('#submit-setup').should('be.visible').and('be.enabled');
+        });
+
         it('should show advanced settings collapsed by default on configure step', () => {
             cy.visit('/setup');
             cy.get('#advanced-settings-collapse').should('not.have.class', 'show');
