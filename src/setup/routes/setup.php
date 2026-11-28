@@ -121,13 +121,14 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = strtr($template, [
-            '||DB_SERVER_NAME||' => escape_php_single_quoted($dbServerName),
-            '||DB_SERVER_PORT||' => escape_php_single_quoted($dbServerPort),
-            '||DB_NAME||'        => escape_php_single_quoted($dbName),
-            '||DB_USER||'        => escape_php_single_quoted($dbUser),
-            '||DB_PASSWORD||'    => escape_php_single_quoted($dbPassword),
-            '||ROOT_PATH||'      => escape_php_single_quoted($rootPath),
-            '||URL||'            => escape_php_single_quoted($url),
+            '||DB_SERVER_NAME||'   => escape_php_single_quoted($dbServerName),
+            '||DB_SERVER_PORT||'   => escape_php_single_quoted($dbServerPort),
+            '||DB_NAME||'          => escape_php_single_quoted($dbName),
+            '||DB_USER||'          => escape_php_single_quoted($dbUser),
+            '||DB_PASSWORD||'      => escape_php_single_quoted($dbPassword),
+            '||ROOT_PATH||'        => escape_php_single_quoted($rootPath),
+            '||URL||'              => escape_php_single_quoted($url),
+            '// ||WIZARD_INSTALL||' => '$installedByWizard = true;',
         ]);
 
         // Mode 'x' creates the file only if it does not exist, so a second install request racing this one cannot overwrite it.

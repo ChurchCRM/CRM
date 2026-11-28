@@ -68,10 +68,11 @@ class Bootstrapper
      * @param string $sRootPath Application root path
      * @param bool $bLockURL Whether to enforce URL restrictions
      * @param array $URL Array of allowed URLs
+     * @param bool $installedByWizard Whether the setup wizard created Config.php
      * 
      * @throws \InvalidArgumentException If required parameters are empty
      */
-    public static function init(string $sSERVERNAME, $dbPort, string $sUSER, string $sPASSWORD, string $sDATABASE, string $sRootPath, bool $bLockURL, array $URL): void
+    public static function init(string $sSERVERNAME, $dbPort, string $sUSER, string $sPASSWORD, string $sDATABASE, string $sRootPath, bool $bLockURL, array $URL, bool $installedByWizard = false): void
     {
         // Prevent double initialization
         if (self::$initialized) {
@@ -218,6 +219,10 @@ class Bootstrapper
         // One-time install provenance: a channel that cannot write config itself
         // (Docker, a hosting panel) names itself via CHURCHCRM_INSTALL_SOURCE.
         TelemetryService::stampInstallSourceFromEnvironment();
+
+        if ($installedByWizard) {
+            TelemetryService::stampWizardInstallSource();
+        }
 
         TelemetryService::syncLifecycle();
 

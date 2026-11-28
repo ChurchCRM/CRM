@@ -32,7 +32,7 @@ $setEnv = static function (?string $envValue): void {
 
 $stamp = static function (string $stored, ?string $envValue) use ($configs, $value, $setEnv): string {
     $item = $value($stored);
-    $configs->setValue(null, ['sInstallSource' => $item]);
+    $configs->setValue(null, ['sInstallSource' => $item, 'sLanguage' => $value('en_US')]);
     $setEnv($envValue);
     TelemetryService::stampInstallSourceFromEnvironment();
 
@@ -48,5 +48,22 @@ Assert::same('softaculous', $stamp('softaculous', 'docker'));
 // No environment value (or an empty one): nothing is stamped.
 Assert::same('', $stamp('', null));
 Assert::same('', $stamp('', ''));
+
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
+putenv('PHP_TEST_DISPOSABLE_DB');
+
+$stampWizard = static function (string $stored, ?string $envValue = null) use ($stamp): array {
+    $stamp($stored, $envValue);
+    TelemetryService::stampWizardInstallSource();
+    $event = TelemetryService::buildLifecycleEvent('default', 'church-guid', '', '7.9.0');
+    Assert::same('install_observed', $event['event']);
+
+    return [SystemConfig::getValue('sInstallSource'), $event['properties']['install_source']];
+};
+
+Assert::same(['wizard', 'wizard'], $stampWizard(''));
+Assert::same(['wizard', 'wizard'], $stampWizard('   '));
+Assert::same(['softaculous', 'softaculous'], $stampWizard('softaculous'));
+Assert::same(['docker', 'docker'], $stampWizard('', 'docker'));
 
 $setEnv(null);

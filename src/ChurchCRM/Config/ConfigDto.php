@@ -17,6 +17,7 @@ final class ConfigDto
         public readonly string $dbPassword,
         public readonly string $rootPath,
         public readonly array  $urls,
+        public readonly bool $installedByWizard = false,
     ) {}
 
     public function getDbServerName(): string

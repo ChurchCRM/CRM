@@ -52,7 +52,7 @@ $bLockURL = false;
 // this makes a lot of log noise, so don't leave it on for normal production use.
 //$debugBootstrapper = true;
 try {
-    Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL);
+    Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL, $config->installedByWizard);
 } catch (Error $error) {
     $requirementsRootPath = $sRootPath;
     require __DIR__ . '/CheckRequirements.php';

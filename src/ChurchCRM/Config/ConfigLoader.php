@@ -38,6 +38,7 @@ final class ConfigLoader
         $sDATABASE = null;
         $sRootPath = null;
         $URL = [];
+        $installedByWizard = false;
 
         // Use require (not require_once) so this method always executes Config.php in its
         // own local scope, regardless of whether the caller already included the file.
@@ -112,6 +113,7 @@ final class ConfigLoader
             dbPassword: (string)$sPASSWORD,
             rootPath: (string)$sRootPath,
             urls: array_map('strval', $URL),
+            installedByWizard: $installedByWizard === true,
         );
     }
 
