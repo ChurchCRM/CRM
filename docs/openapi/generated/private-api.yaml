@@ -7461,7 +7461,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  family: { properties: { email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.", type: string, readOnly: true, deprecated: true } }, type: object, nullable: true }
+                  family: { type: object, nullable: true }
                   members: { type: array, items: { type: object } }
                   canEdit: { description: 'portal.family.edit: an adult of the family', type: boolean }
                   canConfirm: { description: 'portal.family.confirm: an adult of the family', type: boolean }
@@ -7497,10 +7497,6 @@ paths:
                   type: string
                 homePhone:
                   type: string
-                email:
-                  description: 'Deprecated in 7.8.3 and ignored: families have no email. A member changes their own email on their profile.'
-                  type: string
-                  deprecated: true
                 weddingDate:
                   type: string
                   example: '2004-06-12'
@@ -7513,7 +7509,7 @@ paths:
               schema:
                 properties:
                   success: { type: boolean, example: true }
-                  family: { properties: { email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.", type: string, readOnly: true, deprecated: true } }, type: object }
+                  family: { type: object }
                   updated: { type: array, items: { type: string } }
                 type: object
         '400':
@@ -13652,11 +13648,6 @@ components:
         HomePhone:
           type: string
           nullable: true
-        Email:
-          description: "Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column."
-          type: string
-          readOnly: true
-          deprecated: true
         Weddingdate:
           type: string
           format: date

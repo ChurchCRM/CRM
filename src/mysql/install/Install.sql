@@ -294,7 +294,6 @@ CREATE TABLE `family_fam` (
   `fam_SecondCountry` varchar(50) default NULL,
   `fam_SecondIsMailing` tinyint(1) unsigned NOT NULL default '0',
   `fam_HomePhone` varchar(30) default NULL,
-  `fam_Email` varchar(100) default NULL,
   `fam_WeddingDate` date default NULL,
   `fam_DateEntered` datetime NOT NULL,
   `fam_DateLastEdited` datetime default NULL,

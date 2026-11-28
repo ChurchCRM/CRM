@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -107,7 +106,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-families-without-email'));
+    });
 
     /**
      * @OA\Get(
@@ -201,7 +200,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         unset($row);
 
         return SlimUtils::renderJSON($response, ['families' => $rows]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-self-registered-families'));
+    });
 
     /**
      * @OA\Get(
@@ -231,8 +230,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['families' => $rows]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-self-verified-families'))
-        ->add(new EditRecordsRoleAuthMiddleware());
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     /**
      * @OA\Get(

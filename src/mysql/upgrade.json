@@ -168,7 +168,7 @@
   },
   "current": {
     "versions": ["7.8.8"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.9.0-drop-fam-email.sql"],
     "dbVersion": "7.9.0"
   }
 }

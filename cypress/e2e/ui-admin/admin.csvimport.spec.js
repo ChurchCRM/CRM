@@ -109,9 +109,9 @@ describe(
                 const personId = hit.uri.match(/\/people\/view\/(\d+)/)[1];
                 cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
                     expect(resp.body.Email).to.eq("noBday@example.com");
-                    cy.makePrivateAdminAPICall("GET", `/api/family/${resp.body.FamId}`, null, 200)
-                        .its("body.Email")
-                        .should("eq", "");
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${resp.body.FamId}`, null, 200).then((family) => {
+                        expect(family.body).to.not.have.property("Email");
+                    });
                 });
             });
         });

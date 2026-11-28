@@ -50,6 +50,26 @@ const addPerson = (key, familyKey, role, email, { year = null, deceased = null, 
 
 const runMove = () => cy.task("db:upgradeBlock", MOVE).its("error").should("be.null");
 
+const DROP = {
+    script: "7.9.0-drop-fam-email.sql",
+    block: "drop fam_Email after moving a family email written since 7.8.3",
+};
+
+const familyEmailColumn = () =>
+    cy
+        .dbQuery(
+            "SELECT COUNT(*) AS n FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'family_fam' AND COLUMN_NAME = 'fam_Email'",
+        )
+        .its("rows.0.n");
+
+// The test database is a new install, which has no fam_Email. The 7.8.3 block still names the column.
+const ensureFamilyEmailColumn = () =>
+    familyEmailColumn().then((n) => {
+        if (Number(n) === 0) {
+            return cy.dbQuery("ALTER TABLE family_fam ADD COLUMN fam_Email varchar(100) DEFAULT NULL AFTER fam_HomePhone");
+        }
+    });
+
 // Ids are read when the command runs, so a family added earlier in the same test is found.
 const moveOf = (familyKey) =>
     cy
@@ -79,51 +99,58 @@ const expectNote = (familyKey, text) => {
 
 describe("7.8.3 upgrade: family email moves to people", () => {
     before(() => {
-        addFamily("Head", addr("head"));
-        addPerson("headOlder", "Head", 1, null, { year: 1950 });
-        addPerson("headYounger", "Head", 1, "", { year: 1980 });
-        addPerson("headSpouse", "Head", 2, null, { year: 1940 });
+        ensureFamilyEmailColumn().then(() => {
+            addFamily("Head", addr("head"));
+            addPerson("headOlder", "Head", 1, null, { year: 1950 });
+            addPerson("headYounger", "Head", 1, "", { year: 1980 });
+            addPerson("headSpouse", "Head", 2, null, { year: 1940 });
 
-        addFamily("Spouse", addr("spouse"));
-        addPerson("spouseHead", "Spouse", 1, addr("spouse-head"), { year: 1960 });
-        addPerson("spouseSpouse", "Spouse", 2, null, { year: 1962 });
+            addFamily("Spouse", addr("spouse"));
+            addPerson("spouseHead", "Spouse", 1, addr("spouse-head"), { year: 1960 });
+            addPerson("spouseSpouse", "Spouse", 2, null, { year: 1962 });
 
-        addFamily("Both", addr("both"));
-        addPerson("bothHead", "Both", 1, addr("both-head"));
-        addPerson("bothSpouse", "Both", 2, addr("both-spouse"));
+            addFamily("Both", addr("both"));
+            addPerson("bothHead", "Both", 1, addr("both-head"));
+            addPerson("bothSpouse", "Both", 2, addr("both-spouse"));
 
-        addFamily("NoAdult", addr("noadult"));
-        addPerson("noAdultDeceasedHead", "NoAdult", 1, null, { deceased: "2020-01-01" });
-        addPerson("noAdultChild", "NoAdult", 3, null, { year: 2012 });
+            addFamily("NoAdult", addr("noadult"));
+            addPerson("noAdultDeceasedHead", "NoAdult", 1, null, { deceased: "2020-01-01" });
+            addPerson("noAdultChild", "NoAdult", 3, null, { year: 2012 });
 
-        addFamily("Held", `  ${addr("held").toUpperCase()} `);
-        addPerson("heldHead", "Held", 1, null);
-        addPerson("heldChild", "Held", 3, addr("held"));
+            addFamily("Held", `  ${addr("held").toUpperCase()} `);
+            addPerson("heldHead", "Held", 1, null);
+            addPerson("heldChild", "Held", 3, addr("held"));
 
-        addFamily("Elsewhere", addr("elsewhere"));
-        addPerson("elsewhereHead", "Elsewhere", 1, null);
-        addFamily("Holder", null);
-        addPerson("holder", "Holder", 1, addr("elsewhere"));
+            addFamily("Elsewhere", addr("elsewhere"));
+            addPerson("elsewhereHead", "Elsewhere", 1, null);
+            addFamily("Holder", null);
+            addPerson("holder", "Holder", 1, addr("elsewhere"));
 
-        addFamily("InactiveHead", addr("inactive"));
-        addPerson("inactiveHead", "InactiveHead", 1, null, { year: 1940, inactive: "2024-01-01" });
-        addPerson("inactiveSpouse", "InactiveHead", 2, null, { year: 1945 });
+            addFamily("InactiveHead", addr("inactive"));
+            addPerson("inactiveHead", "InactiveHead", 1, null, { year: 1940, inactive: "2024-01-01" });
+            addPerson("inactiveSpouse", "InactiveHead", 2, null, { year: 1945 });
 
-        addFamily("Solo", addr("solo"));
-        addPerson("solo", "Solo", 1, null);
-        addPerson("soloDeceasedChild", "Solo", 3, null, { deceased: "2021-01-01" });
+            addFamily("Solo", addr("solo"));
+            addPerson("solo", "Solo", 1, null);
+            addPerson("soloDeceasedChild", "Solo", 3, null, { deceased: "2021-01-01" });
 
-        addFamily("SharedFirst", addr("shared"));
-        addPerson("sharedFirstHead", "SharedFirst", 1, null);
-        addFamily("SharedSecond", addr("shared").toUpperCase());
-        addPerson("sharedSecondHead", "SharedSecond", 1, null);
+            addFamily("SharedFirst", addr("shared"));
+            addPerson("sharedFirstHead", "SharedFirst", 1, null);
+            addFamily("SharedSecond", addr("shared").toUpperCase());
+            addPerson("sharedSecondHead", "SharedSecond", 1, null);
 
-        runMove();
+            runMove();
+        });
     });
 
     after(() => {
         cy.dbQuery(`DELETE FROM family_email_move_fem WHERE fem_fam_ID IN (${familyIds.map(Number).join(",")})`);
         cy.cleanupFamilies(familyIds);
+        familyEmailColumn().then((n) => {
+            if (Number(n) > 0) {
+                return cy.dbQuery("ALTER TABLE family_fam DROP COLUMN fam_Email");
+            }
+        });
     });
 
     it("copies the address to the head of household, the oldest first", () => {
@@ -212,11 +239,11 @@ describe("7.8.3 upgrade: family email moves to people", () => {
         moveOf("InactiveHead").its("0.needsConfirm").should("eq", 0);
     });
 
-    it("clears every family email, and the family API's deprecated Email is the head's moved address", () => {
+    it("clears every family email, and the family API has no Email field", () => {
         cy.dbQuery(`SELECT COUNT(*) AS n FROM family_fam WHERE fam_Email IS NOT NULL`).its("rows.0.n").should("eq", 0);
         cy.makePrivateAdminAPICall("GET", `/api/family/${fam.Head}`).then((resp) => {
-            expect(resp.body.Email).to.eq(addr("head"));
-            expect(resp.headers).to.have.property("deprecation");
+            expect(resp.body).to.not.have.property("Email");
+            expect(resp.headers).to.not.have.property("deprecation");
             expect(resp.body.Name).to.eq(`Head ${tag}`);
         });
     });
@@ -340,6 +367,50 @@ describe("7.8.3 upgrade: family email moves to people", () => {
                 expect(moves[1]).to.include({ email: stray, outcome: "noted", reason: "no_adult" });
             });
             cy.dbQuery("SELECT fam_Email AS email FROM family_fam WHERE fam_ID = ?", [fam.NoAdult]).its("rows.0.email").should("eq", null);
+        });
+    });
+
+    describe("a family email written after 7.8.3", () => {
+        const later = addr("later");
+
+        before(() => {
+            addFamily("Late", addr("late"));
+            addPerson("lateHead", "Late", 1, null, { year: 1970 });
+            addPerson("lateSpouse", "Late", 2, null, { year: 1972 });
+        });
+
+        it("is moved by the same rule, then fam_Email is dropped, and the script runs again", () => {
+            cy.dbQuery("UPDATE family_fam SET fam_Email = ? WHERE fam_ID = ?", [later, fam.NoAdult]);
+            // A 7.8.3 run stopped after the copy left the head's address with no unconfirmed row.
+            cy.then(() => cy.dbQuery("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [per.headOlder]));
+            cy.task("db:upgradeBlock", DROP).its("error").should("be.null");
+            cy.then(() =>
+                cy.dbQuery("SELECT psi_UnconfirmedEmail AS email, psi_UnconfirmedSource AS source FROM person_signin_psi WHERE psi_per_ID = ?", [
+                    per.headOlder,
+                ]),
+            )
+                .its("rows.0")
+                .should("deep.equal", { email: addr("head"), source: "family_email" });
+            cy.then(() => cy.dbQuery("SELECT COUNT(*) AS n FROM person_signin_psi WHERE psi_per_ID = ? AND psi_UnconfirmedEmail IS NOT NULL", [per.solo]))
+                .its("rows.0.n")
+                .should("eq", 0);
+            emailOf("lateHead").should("eq", addr("late"));
+            moveOf("Late").its("0").should("include", { outcome: "head", personId: per.lateHead, needsConfirm: 1 });
+            cy.then(() => cy.dbQuery("SELECT psi_UnconfirmedEmail AS email FROM person_signin_psi WHERE psi_per_ID = ?", [per.lateHead]))
+                .its("rows.0.email")
+                .should("eq", addr("late"));
+            moveOf("NoAdult").then((moves) => {
+                expect(moves.at(-1)).to.include({ email: later, outcome: "noted", reason: "no_adult" });
+            });
+            movedNotes("NoAdult").then((notes) => {
+                expect(notes.map((note) => note.text)).to.include(
+                    `The family email ${later} was not moved to a person: the family has no living, active head of household or spouse.`,
+                );
+            });
+            familyEmailColumn().should((n) => expect(Number(n)).to.eq(0));
+            cy.makePrivateAdminAPICall("GET", `/api/family/${fam.Head}`).its("body").should("not.have.property", "Email");
+            cy.task("db:upgradeBlock", DROP).its("error").should("be.null");
+            familyEmailColumn().should((n) => expect(Number(n)).to.eq(0));
         });
     });
 });

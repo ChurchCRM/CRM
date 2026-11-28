@@ -21,7 +21,6 @@ use Propel\Runtime\Propel;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -322,7 +321,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->get('/{groupID:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
         $members = (new GroupService())->getGroupMemberDetails((int) $args['groupID']);
         return SlimUtils::renderJSON($response, ['Person2group2roleP2g2rs' => $members]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-group-members'));
+    });
 
     /**
      * @OA\Get(
