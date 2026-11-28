@@ -18,6 +18,15 @@ foreach ($thisClassChildren as $child) {
 }
 $teacherCount = count($rsTeachers);
 
+$rosterColumns = [
+    'grade'  => gettext('Grade'),
+    'age'    => gettext('Age'),
+    'mobile' => gettext('Mobile'),
+    'email'  => gettext('Email'),
+    'father' => gettext('Father'),
+    'mother' => gettext('Mother'),
+];
+
 // Available properties for the "Assign" dropdown
 $availableProperties = [];
 if ($bCanManageGroups) {
@@ -269,6 +278,19 @@ if ($bCanManageGroups) {
             <div class="card-header d-flex align-items-center">
                 <h5 class="card-title mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext('Students') ?></h5>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= $totalStudents ?></span>
+                <div class="card-actions dropdown" id="ss-column-picker">
+                    <button type="button" class="btn btn-sm btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="fa-solid fa-table-columns me-1"></i><?= gettext('Columns') ?>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <?php foreach ($rosterColumns as $columnKey => $columnLabel): ?>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input m-0 me-2 ss-column-toggle" value="<?= $columnKey ?>"<?= in_array($columnKey, $aHiddenColumns, true) ? '' : ' checked' ?>>
+                            <?= $columnLabel ?>
+                        </label>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="birthday-filter d-none alert alert-info mb-3">
@@ -280,12 +302,9 @@ if ($bCanManageGroups) {
                         <thead>
                             <tr>
                                 <th><?= gettext('Name') ?></th>
-                                <th><?= gettext('Grade') ?></th>
-                                <th><?= gettext('Age') ?></th>
-                                <th><?= gettext('Mobile') ?></th>
-                                <th><?= gettext('Email') ?></th>
-                                <th><?= gettext('Father') ?></th>
-                                <th><?= gettext('Mother') ?></th>
+                                <?php foreach ($rosterColumns as $columnKey => $columnLabel): ?>
+                                <th data-column="<?= $columnKey ?>"><?= $columnLabel ?></th>
+                                <?php endforeach; ?>
                                 <th class="w-1 no-export text-center"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>

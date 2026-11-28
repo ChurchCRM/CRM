@@ -25,6 +25,12 @@ class UserSetting extends BaseUserSetting
     public const FINANCE_SHOW_PLEDGES = 'finance.show.pledges';
     public const FINANCE_SHOW_SINCE = 'finance.show.since';
 
+    /** Comma-separated keys of the roster columns this user hid on Sunday School class pages. */
+    public const SUNDAYSCHOOL_CLASS_HIDDEN_COLUMNS = 'ui.sundayschool.class.hidden';
+
+    /** Roster columns a user may hide on a Sunday School class page, in table order. */
+    public const SUNDAYSCHOOL_CLASS_COLUMNS = ['grade', 'age', 'mobile', 'email', 'father', 'mother'];
+
     public function set(User $user, $name, $value): void
     {
         $this->setUser($user);
