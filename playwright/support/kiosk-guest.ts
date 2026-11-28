@@ -18,6 +18,8 @@ const CHURCH_TIME_ZONE = 'America/Chicago';
 
 export interface KioskDemo {
   api: APIRequestContext;
+  /** The demo event the kiosk is assigned to — lets a capture close on the event's staff-side pages. */
+  eventId: number;
   /** Puts the registered kiosk's cookie into a browser context so its pages open the kiosk screen. */
   attachKiosk: (context: BrowserContext) => Promise<void>;
   /** Deletes the guests, the kiosk and the event, and restores the registration window. */
@@ -80,6 +82,7 @@ export async function setUpKioskDemo(browser: Browser): Promise<KioskDemo> {
 
   return {
     api,
+    eventId,
     attachKiosk: (context) => context.addCookies(kioskCookies),
     tearDown: async () => {
       try {
