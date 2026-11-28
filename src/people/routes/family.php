@@ -48,7 +48,7 @@ function listFamilies(Request $request, Response $response, array $args): Respon
 
     $familyActiveStatus = 'active';
     if (!empty($queryParams['mode'])) {
-        $modeVal = strtolower(InputUtils::legacyFilterInput($queryParams['mode']));
+        $modeVal = strtolower(InputUtils::sanitizeText($queryParams['mode']));
         if ($modeVal === 'inactive') {
             $familyActiveStatus = 'inactive';
         } elseif ($modeVal === 'all') {
@@ -58,24 +58,24 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         }
     }
     if (isset($queryParams['familyActiveStatus'])) {
-        $familyActiveStatus = strtolower(InputUtils::legacyFilterInput($queryParams['familyActiveStatus']));
+        $familyActiveStatus = strtolower(InputUtils::sanitizeText($queryParams['familyActiveStatus']));
     } elseif (isset($queryParams['active'])) {
         $familyActiveStatus = ($queryParams['active'] === '0' || $queryParams['active'] === 'false') ? 'inactive' : 'active';
     }
 
     $filterCity = '';
     if (!empty($queryParams['City'])) {
-        $filterCity = InputUtils::legacyFilterInput($queryParams['City']);
+        $filterCity = InputUtils::sanitizeText($queryParams['City']);
     }
 
     $filterState = '';
     if (!empty($queryParams['State'])) {
-        $filterState = InputUtils::legacyFilterInput($queryParams['State']);
+        $filterState = InputUtils::sanitizeText($queryParams['State']);
     }
 
     $filterGeocoded = '';
     if (!empty($queryParams['geocoded'])) {
-        $filterGeocoded = InputUtils::legacyFilterInput($queryParams['geocoded']);
+        $filterGeocoded = InputUtils::sanitizeText($queryParams['geocoded']);
     }
 
     $familiesQuery = FamilyQuery::create()->orderByName();
@@ -91,12 +91,12 @@ function listFamilies(Request $request, Response $response, array $args): Respon
     }
 
     if ($filterCity !== '') {
-        $familiesQuery->filterByCity('%' . $filterCity . '%', Criteria::LIKE);
+        $familiesQuery->filterByCity('%' . str_replace('\\', '\\\\', $filterCity) . '%', Criteria::LIKE);
         $sMode = $sMode . ' - ' . $filterCity;
     }
 
     if ($filterState !== '') {
-        $familiesQuery->filterByState('%' . $filterState . '%', Criteria::LIKE);
+        $familiesQuery->filterByState('%' . str_replace('\\', '\\\\', $filterState) . '%', Criteria::LIKE);
         $sMode = $sMode . ' - ' . $filterState;
     }
 
