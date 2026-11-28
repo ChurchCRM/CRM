@@ -12,6 +12,8 @@ require __DIR__ . '/_dashboard-overview.php';
 
 ?>
 
+<a href="<?= $sRootPath ?>/people/important-dates" class="btn btn-outline-primary mt-3" id="important-dates-dashboard-link"><i class="fa-solid fa-calendar-day me-1"></i><?= gettext('Important Dates') ?></a>
+
 <div class="d-flex align-items-baseline gap-2 mt-4 mb-2">
     <h2 class="h3 mb-0"><?= gettext('Insights') ?></h2>
     <span class="text-body-secondary small"><?= gettext('How the congregation is made up') ?></span>

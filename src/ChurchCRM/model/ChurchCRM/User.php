@@ -698,6 +698,14 @@ class User extends BaseUser
         $setting->save();
     }
 
+    public function clearSetting(string $name): void
+    {
+        $setting = $this->getSetting($name);
+        if ($setting !== null) {
+            $setting->delete();
+        }
+    }
+
     public function getSettingValue($name)
     {
         $userSetting = $this->getSetting($name);

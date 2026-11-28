@@ -18,6 +18,7 @@ use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
+use ChurchCRM\SystemCalendars\StaffOnlySystemCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTimeInterface;
@@ -365,7 +366,10 @@ class PortalCalendarService
      */
     private static function systemCalendars(): array
     {
-        return SystemCalendars::getCalendars();
+        return array_values(array_filter(
+            SystemCalendars::getCalendars(),
+            static fn (SystemCalendar $calendar): bool => !$calendar instanceof StaffOnlySystemCalendar
+        ));
     }
 
     /**

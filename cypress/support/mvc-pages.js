@@ -18,6 +18,7 @@ export const MVC_PAGES = {
         "/people/reports/letters-and-labels",
         "/people/map",
         "/people/photos",
+        "/people/important-dates",
         "/people/self-register",
         "/people/email/duplicate",
         "/people/email/missing",

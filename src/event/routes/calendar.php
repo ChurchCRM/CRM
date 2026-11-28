@@ -20,7 +20,7 @@ $app->get('/calendars', function (Request $request, Response $response) {
         ['label' => gettext('Calendars'), 'icon' => 'fa-layer-group', 'offcanvas' => '#calendarSidebar', 'adminOnly' => false],
     ];
     if ($isAdmin) {
-        $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'url' => '/admin/settings#publicCalendarSettings', 'adminOnly' => true];
+        $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'url' => '/admin/settings#calendarSettings', 'adminOnly' => true];
         $headerButtons[] = ['label' => gettext('Holiday Settings'), 'icon' => 'fa-calendar-days', 'url' => '/plugins/management/holidays', 'adminOnly' => true];
     }
 
@@ -30,6 +30,17 @@ $app->get('/calendars', function (Request $request, Response $response) {
         'countCalendarAccessTokens'  => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
         'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue('bEnableExternalCalendarAPI'),
         'sTimeZone'                  => SystemConfig::getValue('sTimeZone'),
+        'desktopDefaultView'         => SystemConfig::getValue('sCalendarDefaultView'),
+        'mobileDefaultView'          => SystemConfig::getValue('sCalendarMobileDefaultView'),
+        'theme'                      => SystemConfig::getValue('sCalendarTheme'),
+        'printView'                  => SystemConfig::getValue('sCalendarPrintView'),
+        'printStyle'                 => SystemConfig::getValue('sCalendarPrintStyle'),
+        'userCalendarSettings'       => [
+            'view' => AuthenticationManager::getCurrentUser()->getSettingValue('ui.calendar.view'),
+            'theme' => AuthenticationManager::getCurrentUser()->getSettingValue('ui.calendar.theme'),
+            'printView' => AuthenticationManager::getCurrentUser()->getSettingValue('ui.calendar.printView'),
+            'printStyle' => AuthenticationManager::getCurrentUser()->getSettingValue('ui.calendar.printStyle'),
+        ],
     ];
 
     return $renderer->render($response, 'calendar.php', [

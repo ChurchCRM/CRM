@@ -56,6 +56,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="fa-solid fa-palette me-2"></i><?= gettext("Appearance") ?>
           </a>
+          <a href="#tab-calendar" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="fa-solid fa-calendar me-2"></i><?= gettext("Calendar") ?>
+          </a>
           <a href="#tab-localization" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="fa-solid fa-language me-2"></i><?= gettext("Localization") ?>
           </a>
@@ -349,6 +352,35 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <small class="form-text"><?= gettext("Rows shown per page in every table and dashboard card. Takes effect on next page load.") ?></small>
               </div>
             </div>
+          </div>
+
+          <!-- =============== CALENDAR =============== -->
+          <div class="tab-pane" id="tab-calendar">
+            <h3 class="card-title"><?= gettext("Calendar") ?></h3>
+            <p class="text-body-secondary"><?= gettext("Personal calendar preferences override the system defaults") ?></p>
+            <?php
+            $calendarSettings = [
+                'ui.calendar.view' => ['label' => gettext('Default View'), 'system' => gettext('System default'), 'choices' => ['dayGridMonth' => gettext('Month'), 'timeGridWeek' => gettext('Week'), 'timeGridDay' => gettext('Day'), 'listMonth' => gettext('Agenda')]],
+                'ui.calendar.theme' => ['label' => gettext('Calendar Style'), 'system' => gettext('System default'), 'choices' => ['forma' => gettext('Forma'), 'classic' => gettext('Classic'), 'breezy' => gettext('Breezy'), 'monarch' => gettext('Monarch'), 'pulse' => gettext('Pulse')]],
+                'ui.calendar.printView' => ['label' => gettext('Print View'), 'system' => gettext('System default'), 'choices' => ['current' => gettext('Current View'), 'dayGridMonth' => gettext('Month'), 'timeGridWeek' => gettext('Week'), 'listMonth' => gettext('Agenda')]],
+                'ui.calendar.printStyle' => ['label' => gettext('Print Layout'), 'system' => gettext('System default'), 'choices' => ['standard' => gettext('Standard'), 'compact' => gettext('Compact')]],
+            ];
+            foreach ($calendarSettings as $settingName => $setting):
+                $currentValue = $user->getSettingValue($settingName);
+                $id = 'setting-' . str_replace('.', '-', $settingName);
+            ?>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="<?= $id ?>"><?= InputUtils::escapeHTML($setting['label']) ?></label>
+              <div class="col-sm-9">
+                <select id="<?= $id ?>" class="form-select" data-user-setting="<?= $settingName ?>">
+                  <option value=""<?= $currentValue === '' ? ' selected' : '' ?>><?= InputUtils::escapeHTML($setting['system']) ?></option>
+                  <?php foreach ($setting['choices'] as $value => $label): ?>
+                  <option value="<?= $value ?>"<?= $currentValue === $value ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
+            <?php endforeach; ?>
           </div>
 
           <!-- =============== LOCALIZATION =============== -->

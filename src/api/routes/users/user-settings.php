@@ -60,14 +60,23 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
             'ui.landing' => '/^(people|groups|sundayschool|events|finance|deposits)$/',
             'ui.dashboard.people.days' => '/^(7|14|30|60|90|180)$/',
             'ui.dashboard.finance.range' => '/^(days:(30|90|365)|fy|all)$/',
+            'ui.calendar.view' => '/^(dayGridMonth|timeGridWeek|timeGridDay|listMonth)$/',
+            'ui.calendar.theme' => '/^(forma|classic|breezy|monarch|pulse)$/',
+            'ui.calendar.printView' => '/^(current|dayGridMonth|timeGridWeek|listMonth)$/',
+            'ui.calendar.printStyle' => '/^(standard|compact)$/',
         ];
         if (
             !preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $settingName)
             || !is_scalar($value)
             || strlen((string) $value) > 50
-            || (isset($formats[$settingName]) && !preg_match($formats[$settingName], (string) $value))
+            || (isset($formats[$settingName]) && (string) $value !== '' && !preg_match($formats[$settingName], (string) $value))
         ) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid setting name or value'), [], 400);
+        }
+        if (isset($formats[$settingName]) && str_starts_with($settingName, 'ui.calendar.') && (string) $value === '') {
+            $user->clearSetting($settingName);
+
+            return SlimUtils::renderJSON($response, ['value' => '']);
         }
         $user->setSetting($settingName, (string) $value);
 
