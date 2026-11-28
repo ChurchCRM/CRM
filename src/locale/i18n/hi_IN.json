@@ -7042,5 +7042,8 @@
   "Undo failed. Please try again.": "पूर्ववत करना विफल रहा। कृपया फिर से कोशिश करें।",
   "You need the database details from your web host, or from whoever set up your server.": "आपको डेटाबेस का विवरण अपने वेब होस्ट से, या जिसने भी आपका सर्वर सेट किया है, उससे चाहिए।",
   "database setup troubleshooting guide": "डेटाबेस सेटअप समस्या निवारण गाइड",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "कुछ पाठ अंग्रेज़ी में ही रहेगा जब तक कि PHP gettext एक्सटेंशन सक्षम नहीं हो जाता।"
+  "Some text will stay in English until the gettext PHP extension is enabled.": "कुछ पाठ अंग्रेज़ी में ही रहेगा जब तक कि PHP gettext एक्सटेंशन सक्षम नहीं हो जाता।",
+  "Install Source": "इंस्टॉलेशन स्रोत",
+  "Install source and container engine": "इंस्टॉलेशन स्रोत और कंटेनर इंजन",
+  "Understand how ChurchCRM is installed and run": "समझें कि ChurchCRM कैसे इंस्टॉल और चलाया जाता है"
 }

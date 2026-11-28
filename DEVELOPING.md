@@ -2,6 +2,29 @@
 
 This guide is the starting point for contributors changing the ChurchCRM core application. User and administrator instructions belong on [docs.churchcrm.io](https://docs.churchcrm.io).
 
+## Get the code (fast clone)
+
+The full Git history is over 3 GB, mostly old screenshots and compiled translation
+files. The current code is under 100 MB. Don't use a plain `git clone`. Use one
+of these instead:
+
+```bash
+# Recommended: complete commit history, old file versions download only when needed
+git clone --filter=blob:none https://github.com/ChurchCRM/CRM.git
+
+# Fastest: latest commit only
+git clone --depth 1 https://github.com/ChurchCRM/CRM.git
+```
+
+If you're contributing from a fork, use the same flags with your fork's URL.
+Both kinds of clone work normally for branching, committing, pushing, and opening
+pull requests. To fill in the full history of a `--depth 1` clone later, run
+`git fetch --unshallow`.
+
+Just installing ChurchCRM? You don't need Git. Download the
+[latest release](https://github.com/ChurchCRM/CRM/releases/latest) or follow the
+[installation guide](https://docs.churchcrm.io).
+
 ## Shared environment setup
 
 Humans, CI, and coding agents use the same commands. Run setup while network

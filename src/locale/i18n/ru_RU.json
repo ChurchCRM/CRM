@@ -7112,5 +7112,8 @@
   "Undo failed. Please try again.": "Не удалось отменить. Повторите попытку.",
   "You need the database details from your web host, or from whoever set up your server.": "Вам нужны данные базы данных от вашего хостинг-провайдера или от того, кто настроил ваш сервер.",
   "database setup troubleshooting guide": "руководство по устранению неполадок при настройке базы данных",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "Часть текста останется на английском языке, пока не будет включено расширение gettext PHP."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "Часть текста останется на английском языке, пока не будет включено расширение gettext PHP.",
+  "Install Source": "Источник установки",
+  "Install source and container engine": "Источник установки и контейнерный движок",
+  "Understand how ChurchCRM is installed and run": "Узнайте, как ChurchCRM устанавливается и запускается"
 }

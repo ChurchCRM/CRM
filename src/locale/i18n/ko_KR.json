@@ -7007,5 +7007,8 @@
   "Undo failed. Please try again.": "실행 취소에 실패했습니다. 다시 시도해 주세요.",
   "You need the database details from your web host, or from whoever set up your server.": "웹 호스트나 서버를 설정한 사람에게서 데이터베이스 세부 정보를 받아야 합니다.",
   "database setup troubleshooting guide": "데이터베이스 설정 문제 해결 가이드",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext 확장이 활성화될 때까지 일부 텍스트는 영어로 유지됩니다."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext 확장이 활성화될 때까지 일부 텍스트는 영어로 유지됩니다.",
+  "Install Source": "설치 소스",
+  "Install source and container engine": "설치 소스 및 컨테이너 엔진",
+  "Understand how ChurchCRM is installed and run": "ChurchCRM이 설치되고 실행되는 방식을 이해하세요"
 }

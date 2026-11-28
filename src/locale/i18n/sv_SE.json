@@ -7042,5 +7042,8 @@
   "Undo failed. Please try again.": "Ångringen misslyckades. Försök igen.",
   "You need the database details from your web host, or from whoever set up your server.": "Du behöver databasuppgifterna från din webbvärd, eller från den som satte upp din server.",
   "database setup troubleshooting guide": "felsökningsguide för databasinstallationen",
-  "Some text will stay in English until the gettext PHP extension is enabled.": "En del text förblir på engelska tills PHP-tillägget gettext har aktiverats."
+  "Some text will stay in English until the gettext PHP extension is enabled.": "En del text förblir på engelska tills PHP-tillägget gettext har aktiverats.",
+  "Install Source": "Installationskälla",
+  "Install source and container engine": "Installationskälla och containermotor",
+  "Understand how ChurchCRM is installed and run": "Förstå hur ChurchCRM är installerat och körs"
 }
