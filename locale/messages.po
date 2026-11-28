@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 20:19+0000\n"
+"POT-Creation-Date: 2026-11-28 00:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12018,6 +12018,9 @@ msgstr ""
 msgid "Norwegian"
 msgstr ""
 
+msgid "Not CSP-ready"
+msgstr ""
+
 msgid "Not Classified"
 msgstr ""
 
@@ -16231,6 +16234,9 @@ msgid "Some of your details could not be saved. Please check the highlighted fie
 msgstr ""
 
 msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr ""
+
+msgid "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles."
 msgstr ""
 
 msgid "Some payments could not be deleted"

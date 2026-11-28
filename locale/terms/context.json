@@ -1,0 +1,8 @@
+{
+  "Not CSP-ready": [
+    "src/plugins/views/management.php:98"
+  ],
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": [
+    "src/plugins/views/management.php:97"
+  ]
+}
