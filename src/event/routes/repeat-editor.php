@@ -97,18 +97,18 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
 
     $iTypeID      = InputUtils::filterInt($body['typeId'] ?? 0);
-    $sTitle       = InputUtils::legacyFilterInput($body['EventTitle'] ?? '');
+    $sTitle       = InputUtils::sanitizeText($body['EventTitle'] ?? '');
     $sDesc        = InputUtils::sanitizeHTML($body['EventDescInput'] ?? '');
     $sText        = InputUtils::sanitizeHTML($body['EventTextInput'] ?? '');
-    $sStartTime   = InputUtils::legacyFilterInput($body['StartTime'] ?? '09:00');
-    $sEndTime     = InputUtils::legacyFilterInput($body['EndTime'] ?? '10:00');
-    $sRecurType   = InputUtils::legacyFilterInput($body['RecurType'] ?? '');
-    $sRecurDOW    = InputUtils::legacyFilterInput($body['RecurDOW'] ?? 'Sunday');
+    $sStartTime   = InputUtils::sanitizeText($body['StartTime'] ?? '09:00');
+    $sEndTime     = InputUtils::sanitizeText($body['EndTime'] ?? '10:00');
+    $sRecurType   = InputUtils::sanitizeText($body['RecurType'] ?? '');
+    $sRecurDOW    = InputUtils::sanitizeText($body['RecurDOW'] ?? 'Sunday');
     $iRecurDOM    = InputUtils::filterInt($body['RecurDOM'] ?? 1);
-    $sRecurDOY    = InputUtils::legacyFilterInput($body['RecurDOY'] ?? '01-01');
+    $sRecurDOY    = InputUtils::sanitizeText($body['RecurDOY'] ?? '01-01');
     $iRecurWOM    = InputUtils::filterInt($body['RecurWOM'] ?? 0);
-    $sRangeStart  = InputUtils::legacyFilterInput($body['RangeStart'] ?? '');
-    $sRangeEnd    = InputUtils::legacyFilterInput($body['RangeEnd'] ?? '');
+    $sRangeStart  = InputUtils::sanitizeText($body['RangeStart'] ?? '');
+    $sRangeEnd    = InputUtils::sanitizeText($body['RangeEnd'] ?? '');
     $iLinkedGroup = InputUtils::filterInt($body['LinkedGroupId'] ?? 0);
     $pinnedCalendars = [];
     if (!empty($body['PinnedCalendars'])) {

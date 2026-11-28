@@ -152,18 +152,18 @@ $app->post('/{fundraiserId}/donated-items/editor[/{itemId}]', function (Request 
 
     $_SESSION['iCurrentFundraiser'] = $fundraiserId;
 
-    $sItem         = InputUtils::legacyFilterInput($body['Item'] ?? '');
+    $sItem         = InputUtils::sanitizeText($body['Item'] ?? '');
     $bMultibuy     = (int) InputUtils::legacyFilterInput($body['Multibuy'] ?? '0', 'int');
     $iDonor        = (int) InputUtils::legacyFilterInput($body['Donor'] ?? '0', 'int');
     $iBuyer        = (int) InputUtils::legacyFilterInput($body['Buyer'] ?? '0', 'int');
-    $sTitle        = InputUtils::legacyFilterInput($body['Title'] ?? '');
-    $sDescription  = InputUtils::legacyFilterInput($body['Description'] ?? '');
+    $sTitle        = InputUtils::sanitizeText($body['Title'] ?? '');
+    $sDescription  = InputUtils::sanitizeText($body['Description'] ?? '');
     // DECIMAL columns reject empty/non-numeric strings, so coerce blank price fields to 0.0.
-    $nSellPrice     = (float) InputUtils::legacyFilterInput($body['SellPrice'] ?? '');
-    $nEstPrice      = (float) InputUtils::legacyFilterInput($body['EstPrice'] ?? '');
-    $nMaterialValue = (float) InputUtils::legacyFilterInput($body['MaterialValue'] ?? '');
-    $nMinimumPrice  = (float) InputUtils::legacyFilterInput($body['MinimumPrice'] ?? '');
-    $sPictureURL   = InputUtils::legacyFilterInput($body['PictureURL'] ?? '');
+    $nSellPrice     = (float) InputUtils::sanitizeText($body['SellPrice'] ?? '');
+    $nEstPrice      = (float) InputUtils::sanitizeText($body['EstPrice'] ?? '');
+    $nMaterialValue = (float) InputUtils::sanitizeText($body['MaterialValue'] ?? '');
+    $nMinimumPrice  = (float) InputUtils::sanitizeText($body['MinimumPrice'] ?? '');
+    $sPictureURL   = InputUtils::sanitizeText($body['PictureURL'] ?? '');
 
     if (!$bMultibuy) { $bMultibuy = 0; }
     if (!$iBuyer)    { $iBuyer    = 0; }

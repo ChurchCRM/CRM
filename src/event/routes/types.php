@@ -108,7 +108,7 @@ $app->get('/types/new', function (Request $request, Response $response) {
 $app->post('/types/new', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
 
-    $eName = InputUtils::legacyFilterInput($body['newEvtName'] ?? '');
+    $eName = InputUtils::sanitizeText($body['newEvtName'] ?? '');
     if (empty($eName)) {
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/new')->withStatus(302);
     }
@@ -121,10 +121,10 @@ $app->post('/types/new', function (Request $request, Response $response) {
         }
     }
 
-    $eRecur = InputUtils::legacyFilterInput($body['newEvtTypeRecur'] ?? '');
-    $eDOW = InputUtils::legacyFilterInput($body['newEvtRecurDOW'] ?? '');
-    $eDOM = InputUtils::legacyFilterInput($body['newEvtRecurDOM'] ?? '');
-    $eDOY = InputUtils::legacyFilterInput($body['newEvtRecurDOY'] ?? '');
+    $eRecur = InputUtils::sanitizeText($body['newEvtTypeRecur'] ?? '');
+    $eDOW = InputUtils::sanitizeText($body['newEvtRecurDOW'] ?? '');
+    $eDOM = InputUtils::sanitizeText($body['newEvtRecurDOM'] ?? '');
+    $eDOY = InputUtils::sanitizeText($body['newEvtRecurDOY'] ?? '');
     $eCntLst = $body['newEvtTypeCntLst'] ?? '';
     $eCntArray = array_filter(array_map('trim', explode(',', $eCntLst)));
 
@@ -248,7 +248,7 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
     // Handle RENAME_<countId> action for renaming an existing count category
     if (strpos($action, 'RENAME_') === 0) {
         $ctid = (int) mb_substr($action, 7);
-        $newName = trim((string) InputUtils::legacyFilterInput($body['countName_' . $ctid] ?? ''));
+        $newName = trim(InputUtils::sanitizeText($body['countName_' . $ctid] ?? ''));
         if ($ctid > 0 && $newName !== '') {
             $count = EventCountNameQuery::create()->findOneById($ctid);
             if ($count !== null && (int) $count->getTypeId() === $tyid) {
@@ -266,7 +266,7 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
 
     switch ($action) {
         case 'ADD':
-            $newCTName = InputUtils::legacyFilterInput($body['newCountName'] ?? '');
+            $newCTName = InputUtils::sanitizeText($body['newCountName'] ?? '');
             if (!empty($newCTName)) {
                 $eventCount = new EventCountName();
                 $eventCount->setTypeId($tyid);
@@ -276,7 +276,7 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
             break;
 
         case 'NAME':
-            $eName = InputUtils::legacyFilterInput($body['newEvtName'] ?? '');
+            $eName = InputUtils::sanitizeText($body['newEvtName'] ?? '');
             if (!empty($eName)) {
                 $eventType->setName($eName);
                 $eventType->save();

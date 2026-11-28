@@ -15,11 +15,11 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sReportType = '';
 
 if (array_key_exists('ReportType', $_POST)) {
-    $sReportType = InputUtils::legacyFilterInput($_POST['ReportType']);
+    $sReportType = InputUtils::sanitizeText($_POST['ReportType']);
 }
 
 if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
-    $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
+    $sReportType = InputUtils::sanitizeText($_GET['ReportType']);
 }
 
 if (!in_array($sReportType, ['Zero Givers'], true)) {
@@ -54,9 +54,9 @@ if (array_key_exists('DateEnd', $_POST)) {
     $sDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd'], 'date');
 }
 if (array_key_exists('datetype', $_POST)) {
-    $datetype = InputUtils::legacyFilterInput($_POST['datetype']);
+    $datetype = InputUtils::sanitizeText($_POST['datetype']);
 } elseif (array_key_exists('datetype', $_GET)) {
-    $datetype = InputUtils::legacyFilterInput($_GET['datetype']);
+    $datetype = InputUtils::sanitizeText($_GET['datetype']);
 }
 ?>
 <div class="card financial-reports">
