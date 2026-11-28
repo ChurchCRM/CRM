@@ -7010,5 +7010,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Một phần văn bản sẽ vẫn bằng tiếng Anh cho đến khi tiện ích mở rộng gettext của PHP được bật.",
   "Install Source": "Nguồn cài đặt",
   "Install source and container engine": "Nguồn cài đặt và công cụ container",
-  "Understand how ChurchCRM is installed and run": "Hiểu cách ChurchCRM được cài đặt và vận hành"
+  "Understand how ChurchCRM is installed and run": "Hiểu cách ChurchCRM được cài đặt và vận hành",
+  "Not CSP-ready": "Chưa sẵn sàng cho CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Một số trang có thể không hoạt động. Nếu chúng bị lỗi, hãy tắt Content Security Policy trong Các Công tắc Tính năng."
 }

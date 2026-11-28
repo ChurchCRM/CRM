@@ -7045,5 +7045,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "PHP gettext పొడిగింపు ప్రారంభించబడే వరకు కొంత వచనం ఆంగ్లంలోనే ఉంటుంది.",
   "Install Source": "ఇన్‌స్టాలేషన్ మూలం",
   "Install source and container engine": "ఇన్‌స్టాలేషన్ మూలం మరియు కంటైనర్ ఇంజిన్",
-  "Understand how ChurchCRM is installed and run": "ChurchCRM ఎలా ఇన్‌స్టాల్ చేయబడి అమలు చేయబడుతుందో అర్థం చేసుకోండి"
+  "Understand how ChurchCRM is installed and run": "ChurchCRM ఎలా ఇన్‌స్టాల్ చేయబడి అమలు చేయబడుతుందో అర్థం చేసుకోండి",
+  "Not CSP-ready": "CSP-కు సిద్ధంగా లేదు",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "కొన్ని పేజీలు పని చేయకపోవచ్చు. అవి పని చేయకపోతే, ఫీచర్ టోగిల్‌లు విభాగంలో విషయ సంరక్షణ విధానం ఆఫ్ చేయండి."
 }

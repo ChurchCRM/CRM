@@ -7080,5 +7080,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "O parte din text va rămâne în engleză până când extensia gettext PHP este activată.",
   "Install Source": "Sursă de instalare",
   "Install source and container engine": "Sursă de instalare și motor de containere",
-  "Understand how ChurchCRM is installed and run": "Înțelegeți cum este instalat și rulat ChurchCRM"
+  "Understand how ChurchCRM is installed and run": "Înțelegeți cum este instalat și rulat ChurchCRM",
+  "Not CSP-ready": "Nu este pregătit pentru CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Unele pagini pot să nu funcționeze. Dacă se defectează, dezactivați Politica de securitate a conținutului în Comutatoare de caracteristici."
 }

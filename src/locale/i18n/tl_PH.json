@@ -7045,5 +7045,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Mananatili sa Ingles ang ilang teksto hanggang paganahin ang gettext na ekstensyon ng PHP.",
   "Install Source": "Pinagmulan ng Pag-install",
   "Install source and container engine": "Pinagmulan ng Pag-install at container engine",
-  "Understand how ChurchCRM is installed and run": "Unawain kung paano naka-install at pinapatakbo ang ChurchCRM"
+  "Understand how ChurchCRM is installed and run": "Unawain kung paano naka-install at pinapatakbo ang ChurchCRM",
+  "Not CSP-ready": "Hindi handa sa CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Maaaring hindi gumana ang ilang page. Kung masira ang mga ito, i-off ang Content Security Policy sa Mga Toggle ng Feature."
 }

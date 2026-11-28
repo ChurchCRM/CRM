@@ -7045,5 +7045,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Ein Teil des Textes bleibt auf Englisch, bis die PHP-Erweiterung gettext aktiviert ist.",
   "Install Source": "Installationsquelle",
   "Install source and container engine": "Installationsquelle und Container-Engine",
-  "Understand how ChurchCRM is installed and run": "Verstehen Sie, wie ChurchCRM installiert ist und ausgeführt wird"
+  "Understand how ChurchCRM is installed and run": "Verstehen Sie, wie ChurchCRM installiert ist und ausgeführt wird",
+  "Not CSP-ready": "Nicht CSP-bereit",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Einige Seiten funktionieren möglicherweise nicht. Wenn sie nicht funktionieren, deaktivieren Sie Content Security Policy in Funktionsschalter."
 }

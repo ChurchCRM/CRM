@@ -7010,5 +7010,7 @@
   "Some text will stay in English until the gettext PHP extension is enabled.": "Sebagian teks akan tetap dalam bahasa Inggris hingga ekstensi gettext PHP diaktifkan.",
   "Install Source": "Sumber Instalasi",
   "Install source and container engine": "Sumber Instalasi dan mesin kontainer",
-  "Understand how ChurchCRM is installed and run": "Pahami cara ChurchCRM diinstal dan dijalankan"
+  "Understand how ChurchCRM is installed and run": "Pahami cara ChurchCRM diinstal dan dijalankan",
+  "Not CSP-ready": "Tidak siap untuk CSP",
+  "Some pages may not work. If they break, turn off Content Security Policy in Feature Toggles.": "Beberapa halaman mungkin tidak berfungsi. Jika rusak, matikan Content Security Policy di Pengalih Fitur."
 }
