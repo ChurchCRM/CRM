@@ -133,6 +133,17 @@ class TelemetryService
         }
     }
 
+    public static function stampWizardInstallSource(): void
+    {
+        try {
+            if (SystemConfig::isInitialized() && trim((string) SystemConfig::getValue('sInstallSource')) === '') {
+                SystemConfig::setValue('sInstallSource', 'wizard');
+            }
+        } catch (\Throwable) {
+            // Lifecycle provenance is best-effort during bootstrap.
+        }
+    }
+
     public static function getLevel(): string
     {
         return SystemConfig::getValue('sTelemetryLevel') === self::LEVEL_FULL

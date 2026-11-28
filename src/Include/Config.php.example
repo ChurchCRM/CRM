@@ -45,5 +45,7 @@ $URL[0] = '||URL||';
 // Only fatal PHP errors are reported. See https://www.php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);
 
+// ||WIZARD_INSTALL||
+
 // Do not change below this line.
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
