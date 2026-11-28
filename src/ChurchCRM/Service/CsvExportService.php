@@ -14,9 +14,11 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use PDO;
+use Propel\Runtime\Connection\StatementInterface;
+use Propel\Runtime\Propel;
 
 /**
  * Builds the people CSV export from the export form's fields.
@@ -84,8 +86,7 @@ class CsvExportService
         // Prepare the MySQL query
         $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
         $sPerTable = 'person_per';
-        $whereParams = [];  // Bound parameter values for RunPreparedQuery
-        $whereTypes  = '';  // MySQLi type string (i=int, s=string)
+        $whereParams = [];
 
         // If our source is the cart contents, we don't need to build a WHERE filter string.
         // Cart IDs come from the session (trusted), so no parameterisation needed here.
@@ -104,6 +105,7 @@ class CsvExportService
             }
             if (!empty($input['Classification'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['Classification'] as $Cls) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Cls, 'int');
                 }
@@ -111,17 +113,17 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_cls_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_cls_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
             }
 
             if (!empty($input['FamilyRole'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['FamilyRole'] as $Fmr) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Fmr, 'int');
                 }
@@ -129,23 +131,22 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_fmr_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_fmr_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
             }
 
             if (!empty($input['Gender'])) {
                 $sWhereExt .= 'AND per_Gender = ? ';
                 $whereParams[] = (int) InputUtils::legacyFilterInput($input['Gender'], 'int');
-                $whereTypes .= 'i';
             }
 
             if (!empty($input['GroupID'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['GroupID'] as $Grp) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Grp, 'int');
                 }
@@ -153,12 +154,11 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
 
                 // This is used for individual mode to remove duplicate rows from people assigned multiple groups.
@@ -189,12 +189,10 @@ class CsvExportService
                 if ($dates[$field . '1'] !== '') {
                     $sWhereExt .= "AND $column >= ? ";
                     $whereParams[] = $dates[$field . '1'];
-                    $whereTypes .= 's';
                 }
                 if ($dates[$field . '2'] !== '' && $dates[$field . '2'] !== $today) {
                     $sWhereExt .= "AND $column <= ? ";
                     $whereParams[] = $dates[$field . '2'];
-                    $whereTypes .= 's';
                 }
             }
 
@@ -208,7 +206,6 @@ class CsvExportService
                     $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR(?) ';
                 }
                 $whereParams[] = $dates['AnniversaryDate1'];
-                $whereTypes .= 's';
             }
 
             if ($dates['AnniversaryDate2'] !== '' && $dates['AnniversaryDate2'] !== $today) {
@@ -222,17 +219,15 @@ class CsvExportService
                     $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR(?) ';
                 }
                 $whereParams[] = $dates['AnniversaryDate2'];
-                $whereTypes .= 's';
             }
         }
 
         $sWhereExt .= self::activePeopleSql();
-        $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
+        $rsLabelsToWrite = self::select(
             "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
-            $whereTypes,
             $whereParams
         );
-        while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
+        while (($aRow = $rsLabelsToWrite->fetch(PDO::FETCH_ASSOC)) !== false) {
             Cart::addPerson((int) $aRow['per_ID']);
         }
     }
@@ -256,17 +251,13 @@ class CsvExportService
         $bSkipIncompleteAddr = isset($input['SkipIncompleteAddr']);
         $bSkipNoEnvelope = isset($input['SkipNoEnvelope']);
 
-        // Get the custom fields
+        $personFields = [];
+        $familyFields = [];
         if ($sFormat === 'default') {
-            $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
-            $rsCustomFields = FunctionsUtils::runQuery($sSQL);
-
-            $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
-            $rsFamCustomFields = FunctionsUtils::runQuery($sSQL);
+            $personFields = self::select('SELECT * FROM person_custom_master ORDER BY custom_Order')->fetchAll(PDO::FETCH_ASSOC);
         }
-        if ($sFormat === 'rollup') {
-            $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
-            $rsFamCustomFields = FunctionsUtils::runQuery($sSQL);
+        if ($sFormat === 'default' || $sFormat === 'rollup') {
+            $familyFields = self::select('SELECT * FROM family_custom_master ORDER BY fam_custom_Order')->fetchAll(PDO::FETCH_ASSOC);
         }
 
         //Get membership classes
@@ -276,12 +267,9 @@ class CsvExportService
         }
 
         //Get family roles
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-        $rsFamilyRoles = FunctionsUtils::runQuery($sSQL);
-        while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-            extract($aRow);
-            $familyRoles[$lst_OptionID] = $lst_OptionName;
-            $roleSequence[$lst_OptionSequence] = $lst_OptionID;
+        foreach (ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find() as $role) {
+            $familyRoles[$role->getOptionId()] = $role->getOptionName();
+            $roleSequence[$role->getOptionSequence()] = $role->getOptionId();
         }
 
         $customFieldService = new CustomFieldService();
@@ -290,8 +278,7 @@ class CsvExportService
         // Prepare the MySQL query
         $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
         $sPerTable = 'person_per';
-        $whereParams = [];  // Bound parameter values for RunPreparedQuery
-        $whereTypes  = '';  // MySQLi type string (i=int, s=string)
+        $whereParams = [];
 
         // If our source is the cart contents, we don't need to build a WHERE filter string.
         // Cart IDs come from the session (trusted), so no parameterisation needed here.
@@ -310,6 +297,7 @@ class CsvExportService
             }
             if (!empty($input['Classification'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['Classification'] as $Cls) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Cls, 'int');
                 }
@@ -317,17 +305,17 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_cls_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_cls_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
             }
 
             if (!empty($input['FamilyRole'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['FamilyRole'] as $Fmr) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Fmr, 'int');
                 }
@@ -335,23 +323,22 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_fmr_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_fmr_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
             }
 
             if (!empty($input['Gender'])) {
                 $sWhereExt .= 'AND per_Gender = ? ';
                 $whereParams[] = (int) InputUtils::legacyFilterInput($input['Gender'], 'int');
-                $whereTypes .= 'i';
             }
 
             if (!empty($input['GroupID'])) {
                 $count = 0;
+                $Class = [];
                 foreach ($input['GroupID'] as $Grp) {
                     $Class[$count++] = (int) InputUtils::legacyFilterInput($Grp, 'int');
                 }
@@ -359,12 +346,11 @@ class CsvExportService
                     if ($Class[0]) {
                         $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ? ';
                         $whereParams[] = $Class[0];
-                        $whereTypes .= 'i';
                     }
                 } else {
                     $placeholders = implode(',', array_fill(0, $count, '?'));
                     $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID IN (' . $placeholders . ') ';
-                    foreach ($Class as $v) { $whereParams[] = $v; $whereTypes .= 'i'; }
+                    $whereParams = array_merge($whereParams, $Class);
                 }
 
                 // This is used for individual mode to remove duplicate rows from people assigned multiple groups.
@@ -397,12 +383,10 @@ class CsvExportService
                 if ($dates[$field . '1'] !== '') {
                     $sWhereExt .= "AND $column >= ? ";
                     $whereParams[] = $dates[$field . '1'];
-                    $whereTypes .= 's';
                 }
                 if ($dates[$field . '2'] !== '' && $dates[$field . '2'] !== $today) {
                     $sWhereExt .= "AND $column <= ? ";
                     $whereParams[] = $dates[$field . '2'];
-                    $whereTypes .= 's';
                 }
             }
 
@@ -416,7 +400,6 @@ class CsvExportService
                     $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR(?) ';
                 }
                 $whereParams[] = $dates['AnniversaryDate1'];
-                $whereTypes .= 's';
             }
 
             if ($dates['AnniversaryDate2'] !== '' && $dates['AnniversaryDate2'] !== $today) {
@@ -430,7 +413,6 @@ class CsvExportService
                     $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR(?) ';
                 }
                 $whereParams[] = $dates['AnniversaryDate2'];
-                $whereTypes .= 's';
             }
         }
         $sWhereExt .= ' AND per_NeedsReview = 0 ' . self::activePeopleSql();
@@ -439,17 +421,15 @@ class CsvExportService
 
             if ($sFormat === 'rollup') {
                 // UNION query uses $sWhereExt three times → bind params three times in sequence
-                $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
+                $rsLabelsToWrite = self::select(
                     "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
                 UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
                 UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe",
-                    str_repeat($whereTypes, 3),
                     array_merge($whereParams, $whereParams, $whereParams)
                 );
             } else {
-                $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
+                $rsLabelsToWrite = self::select(
                     "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
-                    $whereTypes,
                     $whereParams
                 );
             }
@@ -560,14 +540,14 @@ class CsvExportService
             // Add any custom field names to the header, unless using family roll-up mode
             $bUsedCustomFields = false;
             if ($sFormat === 'default') {
-                while ($aRow = mysqli_fetch_array($rsCustomFields)) {
+                foreach ($personFields as $aRow) {
                     extract($aRow);
                     if (isset($input["$custom_Field"])) {
                         $bUsedCustomFields = true;
                         $headers[] = $custom_Name;
                     }
                 }
-                while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
+                foreach ($familyFields as $aFamRow) {
                     extract($aFamRow);
                     if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
                         if (isset($input["$fam_custom_Field"])) {
@@ -579,7 +559,7 @@ class CsvExportService
             }
             // Add any family custom fields names to the header
             if ($sFormat === 'rollup') {
-                while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
+                foreach ($familyFields as $aFamRow) {
                     extract($aFamRow);
                     if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
                         if (isset($input["$fam_custom_Field"])) {
@@ -591,7 +571,7 @@ class CsvExportService
             }
 
 
-            while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
+            while (($aRow = $rsLabelsToWrite->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $per_Title = '';
                 $per_FirstName = '';
                 $per_MiddleName = '';
@@ -798,13 +778,10 @@ class CsvExportService
                         }
 
                         if ($bUsedCustomFields && ($sFormat === 'default')) {
-                            $rsCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [(int) $per_ID]);
-                            $aCustomData = mysqli_fetch_array($rsCustomData);
+                            $aCustomData = self::select('SELECT * FROM person_custom WHERE per_ID = ?', [(int) $per_ID])->fetch(PDO::FETCH_ASSOC);
 
-                            if (mysqli_num_rows($rsCustomData) > 0) {
-                                // Add custom field data
-                                mysqli_data_seek($rsCustomFields, 0);
-                                while ($aCustomField = mysqli_fetch_array($rsCustomFields)) {
+                            if ($aCustomData !== false) {
+                                foreach ($personFields as $aCustomField) {
                                     $custom_Field = '';
                                     $custom_Special = '';
                                     $type_ID = '';
@@ -821,13 +798,10 @@ class CsvExportService
                                 }
                             }
 
-                            $rsFamCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
-                            $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
+                            $aFamCustomData = self::select('SELECT * FROM family_custom WHERE fam_ID = ?', [(int) $per_fam_ID])->fetch(PDO::FETCH_ASSOC);
 
-                            if (@mysqli_num_rows($rsFamCustomData) > 0) {
-                                // Add custom field data
-                                mysqli_data_seek($rsFamCustomFields, 0);
-                                while ($aFamCustomField = mysqli_fetch_array($rsFamCustomFields)) {
+                            if ($aFamCustomData !== false) {
+                                foreach ($familyFields as $aFamCustomField) {
                                     $fam_custom_Field = '';
                                     $fam_custom_Special = '';
                                     $type_ID = '';
@@ -844,13 +818,10 @@ class CsvExportService
                         }
 
                         if ($bUsedCustomFields && ($sFormat === 'rollup')) {
-                            $rsFamCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
-                            $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
+                            $aFamCustomData = self::select('SELECT * FROM family_custom WHERE fam_ID = ?', [(int) $per_fam_ID])->fetch(PDO::FETCH_ASSOC);
 
-                            if (@mysqli_num_rows($rsFamCustomData) > 0) {
-                                // Add custom field data
-                                mysqli_data_seek($rsFamCustomFields, 0);
-                                while ($aFamCustomField = mysqli_fetch_array($rsFamCustomFields)) {
+                            if ($aFamCustomData !== false) {
+                                foreach ($familyFields as $aFamCustomField) {
                                     $fam_custom_Field = '';
                                     $fam_custom_Special = '';
                                     $type_ID = '';
@@ -873,6 +844,18 @@ class CsvExportService
             }
 
         return ['headers' => $headers, 'rows' => $rows];
+    }
+
+    /** @param list<int|string> $params */
+    private static function select(string $sql, array $params = []): StatementInterface
+    {
+        $statement = Propel::getConnection()->prepare($sql);
+        foreach ($params as $index => $value) {
+            $statement->bindValue($index + 1, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        $statement->execute();
+
+        return $statement;
     }
 
     private static function sortableName(string $lastName, string $firstNames): string
